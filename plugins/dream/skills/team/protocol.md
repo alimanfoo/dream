@@ -81,12 +81,13 @@ reviewer would get from `git diff`, drop it.
 
 **Close the issues you addressed.** GitHub auto-closes an issue on
 merge only when the PR body has a closing keyword for it: `Closes
-#N`, `Fixes #N`, `Resolves #N`. The keyword is per-issue — `Closes
-#1, #2, #3` closes only #1. Repeat the keyword (`Closes #1, closes
-#2, closes #3`) or put each on its own line. Without this, the PR
-merges and the addressed issues sit open as triage debt. Verify
-after opening: `gh pr view <N> --json closingIssuesReferences`
-should list every issue the PR fixed.
+#N`, `Fixes #N`, `Resolves #N`. The keyword is per-issue — a single
+keyword followed by a comma-separated list of numbers closes only
+the first number. Repeat the keyword for each issue, or put each
+on its own line. Without this, the PR merges and the addressed
+issues sit open as triage debt. Verify after opening: `gh pr view
+<N> --json closingIssuesReferences` should list every issue the PR
+fixed.
 
 **Plain English, written for a junior developer joining the team.**
 Lead with the *why*, then the *what*. Imagine your reader is fluent
