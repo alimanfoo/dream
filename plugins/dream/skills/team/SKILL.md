@@ -97,6 +97,11 @@ Lead never:
   session, in plain English; don't duplicate what's visible in the
   diff; include a Test plan only when a human still has verification
   to do beyond CI. See "Opening the PR" in `protocol.md`.
+- Issue descriptions: same dispositions as PR descriptions. Lead
+  with the concern, then cause with a file/symbol citation, then
+  suggested direction. Title is a complete thought, not a
+  stacked-qualifier noun phrase. See "Ancillary findings → GitHub
+  issues" in `protocol.md`.
 - Ancillary findings from any role are not silently discarded — lead
   accumulates them through the session and triages them once,
   post-merge, after the sweep aggregates from all three roles.

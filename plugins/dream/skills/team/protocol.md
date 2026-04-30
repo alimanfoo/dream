@@ -182,10 +182,18 @@ moment.
 
 **Triage.** Lead compiles the lists, deduplicates (the same
 observation may appear in more than one source), and files each
-warranted item as a GitHub issue via `gh issue create`. Issues are
-concise and factual: title naming the concern, body with file /
-symbol citations and a short rationale. Lead does not implement;
-the issue enters the project's normal backlog.
+warranted item as a GitHub issue via `gh issue create`. Lead does
+not implement; the issue enters the project's normal backlog.
+
+**Issue shape.** Issues follow the same dispositions as the PR
+description (see "Opening the PR" above): plain English written for
+a junior developer, don't duplicate what's visible in the source,
+keep it tight. Issue-specific structure: lead with the concern in
+one sentence, then the cause with a file/symbol citation, then the
+suggested direction (not a fix — issues describe, they don't
+implement). The title states the concern as a complete thought
+("status-verb keys can drift from helper returns"), not a
+stacked-qualifier noun phrase ("an unenforced string protocol").
 
 ## Branch and commit protocol
 
