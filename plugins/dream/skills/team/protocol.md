@@ -213,10 +213,12 @@ stacked-qualifier noun phrase ("an unenforced string protocol").
   working tree is dirty or on another branch, the lead asks the user
   before doing anything. No teammates are spawned against an unsynced
   tree.
-- **Single branch per session**, off latest `main`. The feature
-  branch is created **once the user has provided initial scope**,
-  not at session activation — the branch name should reflect the
-  scope.
+- **Single branch per session**, off `main` at origin's current
+  tip. The feature branch is created **once the user has provided
+  initial scope**, not at session activation — the branch name
+  should reflect the scope. Pull `main` from origin immediately
+  before branching; the session-start sync may be stale by the time
+  scope arrives.
 - One commit per task — task ↔ commit. Lead is the committer.
 - Commit message style matches the existing repo log: short subject,
   issue `(#N)` in parens where applicable, no body unless needed, no
