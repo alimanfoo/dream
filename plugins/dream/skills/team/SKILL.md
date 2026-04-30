@@ -95,8 +95,10 @@ Lead never:
   "Marking agent-authored GitHub items" in `protocol.md`.
 - PR descriptions: write for a junior developer who wasn't in the
   session, in plain English; don't duplicate what's visible in the
-  diff; include a Test plan only when a human still has verification
-  to do beyond CI. See "Opening the PR" in `protocol.md`.
+  diff; close the issues addressed with `Closes #N` keywords
+  (per-issue, not comma-listed); include a Test plan only when a
+  human still has verification to do beyond CI. See "Opening the PR"
+  in `protocol.md`.
 - Issue descriptions: same dispositions as PR descriptions. Lead
   with the concern, then cause with a file/symbol citation, then
   suggested direction. Title is a complete thought, not a
