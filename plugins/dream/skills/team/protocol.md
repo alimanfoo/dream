@@ -64,10 +64,33 @@ calls — only describes findings.
    triage (see below) — not filed mid-session.
 7. **Loop.** Lead picks up the next task and returns to step 1.
 
+## Opening the PR
+
+After all in-session tasks are complete and the branch has been
+pushed, the lead opens a PR for the session branch. Title and body
+markers follow "Marking agent-authored GitHub items" below. The body
+follows the repo's contribution norms with one specific deviation
+from the Claude Code default template:
+
+**Test plan only when a human still has work to do.** By the time a
+dream-team PR opens, three gates have already run: the developer's
+lint + test pass (pre-report), the commit hook (pre-commit), and CI
+(pre-merge). A "Test plan" checklist that restates CI-covered work
+is noise, and the agent will pad it with nonsense items to fill the
+template if pushed to.
+
+Include the Test plan section only when there are genuine
+human-verification steps not covered by CI — visual checks on a UI
+change, manual reproduction of a hard-to-test bug, smoke tests
+against staging, end-to-end exercises the suite cannot run. If
+there are no such steps, **omit the section entirely.** Doubt →
+omit. Don't compensate by adding a "Verification" section listing
+what CI already covers — that's the same noise under a different
+name.
+
 ## Per-PR workflow
 
-After all in-session tasks are complete and the lead has opened a PR
-for the session branch:
+Once the PR is open:
 
 1. **Spawn.** Lead spawns a fresh `reviewer` (no session memory).
 2. **Review.** Reviewer studies the PR — description, diff, related

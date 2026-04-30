@@ -93,6 +93,10 @@ Lead never:
   (issues, PRs, comments) are marked `[claude]` in titles and carry
   the documented Claude Code footer in bodies. See
   "Marking agent-authored GitHub items" in `protocol.md`.
+- PR descriptions: include a Test plan section **only** when a human
+  still has verification to do beyond CI. Otherwise omit it. Three
+  quality gates have already run by the time the PR opens. See
+  "Opening the PR" in `protocol.md`.
 - Ancillary findings from any role are not silently discarded — lead
   accumulates them through the session and triages them once,
   post-merge, after the sweep aggregates from all three roles.
