@@ -77,6 +77,8 @@ Lead never:
   the developer.
 - Pushes to `main` without explicit user instruction.
 - Merges PRs without explicit user instruction.
+- Files or triages ancillary findings mid-session — accumulate through
+  the session, triage once at the post-merge sweep.
 - Originates `shutdown_request`s unless asked.
 
 ## Reminders
@@ -92,4 +94,5 @@ Lead never:
   the documented Claude Code footer in bodies. See
   "Marking agent-authored GitHub items" in `protocol.md`.
 - Ancillary findings from any role are not silently discarded — lead
-  triages and files warranted ones as GitHub issues.
+  accumulates them through the session and triages them once,
+  post-merge, after the sweep aggregates from all three roles.

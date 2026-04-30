@@ -60,8 +60,8 @@ calls — only describes findings.
 6. **Triage.** Lead accepts or rejects each proposed follow-on. Accepted
    ones become new tasks on the list, **inserted as the next tasks
    before any pending original-scope work** (depth-first drain — see
-   below). Ancillary findings are filed as GitHub issues where
-   warranted (see below).
+   below). Ancillary findings are noted by the lead for the post-merge
+   triage (see below) — not filed mid-session.
 7. **Loop.** Lead picks up the next task and returns to step 1.
 
 ## Per-PR workflow
@@ -84,11 +84,12 @@ for the session branch:
      via the standard per-task workflow including maintainer review.
    - **Reject** → noted in the lead's reply to the user, with
      rationale.
-   - **Out of scope** → captured as a GitHub issue (see below).
+   - **Out of scope** → noted by the lead for the post-merge triage
+     (see below) — not filed mid-session.
 5. **Hand back.** Once all review comments have been addressed
    (accepted tasks completed, rejected items annotated, out-of-scope
-   items filed as issues), the PR returns to the user for final
-   review and approval. Lead does not merge — that is always the
+   items noted for post-merge triage), the PR returns to the user for
+   final review and approval. Lead does not merge — that is always the
    user's call.
 6. **Merge (user).** Final merge gates — both must be green:
    - User approval on GitHub.
@@ -110,7 +111,9 @@ shutting down the existing `reviewer` and spawning a new one
 
 Reviewers, maintainers, and developers regularly notice items outside
 the immediate scope of their current work. These observations have
-value and must not be silently discarded.
+value and must not be silently discarded. The lead accumulates them
+through the session and triages them **once**, post-merge — never
+mid-session.
 
 **Sources:**
 
@@ -129,6 +132,13 @@ value and must not be silently discarded.
 
 In all sources, the contributor describes what was observed and why
 it caught the eye — they do not propose fixes.
+
+**Timing.** Triage happens **once**, after PR merge and after the
+post-merge sweep has aggregated all three sources. During the
+session, the lead accumulates ancillary observations but does not
+file or triage them. Batching has a purpose: dedup across sources, a
+full picture before judgment, and a single uninterrupted triage
+moment.
 
 **Triage.** Lead compiles the lists, deduplicates (the same
 observation may appear in more than one source), and files each
@@ -260,6 +270,8 @@ that helps reviewers weight the artifact appropriately.
 - Fixes lint, format, or test failures directly — bounce them back
 - Pushes to `main` without explicit user instruction
 - Merges PRs without explicit user instruction
+- Files or triages ancillary findings mid-session — accumulate
+  through the session, triage once at the post-merge sweep
 - Originates `shutdown_request`s unless asked
 
 **Developer never:**
