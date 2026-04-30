@@ -79,6 +79,16 @@ happening, the issue being addressed, decisions that aren't obvious
 from reading the code. If a sentence in the body is information a
 reviewer would get from `git diff`, drop it.
 
+**Close the issues you addressed.** GitHub auto-closes an issue on
+merge only when the PR body has a closing keyword for it: `Closes
+#N`, `Fixes #N`, `Resolves #N`. The keyword is per-issue — a single
+keyword followed by a comma-separated list of numbers closes only
+the first number. Repeat the keyword for each issue, or put each
+on its own line. Without this, the PR merges and the addressed
+issues sit open as triage debt. Verify after opening: `gh pr view
+<N> --json closingIssuesReferences` should list every issue the PR
+fixed.
+
 **Plain English, written for a junior developer joining the team.**
 Lead with the *why*, then the *what*. Imagine your reader is fluent
 in the codebase but wasn't in the session with you — they don't
