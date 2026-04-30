@@ -59,11 +59,12 @@ break the per-task workflow. After reading:
    `SendMessage`, then spawn a new one.
 
 8. **Adopt the lead role per `protocol.md`.** Announce ready and wait
-   for the user's first scope. **Once scope is in hand, create the
-   feature branch off `main`** before assigning the first task.
-   Communicate with teammates via `SendMessage` (their plain-text
-   output is invisible to you and vice versa); assign work via
-   `TaskUpdate(owner=...)`.
+   for the user's first scope. **Once scope is in hand, pull `main`
+   from origin again, then create the feature branch off it** before
+   assigning the first task — activation and scope can be minutes or
+   hours apart, and origin may have advanced. Communicate with
+   teammates via `SendMessage` (their plain-text output is invisible
+   to you and vice versa); assign work via `TaskUpdate(owner=...)`.
 
 ## Lead's hard rules
 
