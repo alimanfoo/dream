@@ -69,8 +69,25 @@ calls — only describes findings.
 After all in-session tasks are complete and the branch has been
 pushed, the lead opens a PR for the session branch. Title and body
 markers follow "Marking agent-authored GitHub items" below. The body
-follows the repo's contribution norms with one specific deviation
-from the Claude Code default template:
+follows the repo's contribution norms with a few specific
+dispositions:
+
+**Don't duplicate the diff.** File paths, renames, exact textual
+edits, method signatures, line-level changes — all visible in the
+diff. The body is for **intent and context**: why the change is
+happening, the issue being addressed, decisions that aren't obvious
+from reading the code. If a sentence in the body is information a
+reviewer would get from `git diff`, drop it.
+
+**Plain English, written for a junior developer joining the team.**
+Lead with the *why*, then the *what*. Imagine your reader is fluent
+in the codebase but wasn't in the session with you — they don't
+have your context. Avoid agent-coined terms-of-art ("the latent
+test injection seam") and internal-protocol vocabulary ("drained
+depth-first per task") in the user-facing description; if a concept
+needs a name, use the one a colleague would already know. If a
+sentence is stacking three clauses of qualification onto one
+thought, split it or cut it.
 
 **Test plan only when a human still has work to do.** By the time a
 dream-team PR opens, three gates have already run: the developer's
