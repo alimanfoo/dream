@@ -42,8 +42,14 @@ calls — only describes findings.
 2. **Implement.** Developer implements, runs the project's lint/format
    check and test suite, and reports back. Lead and developer iterate
    plain-text until lead is satisfied.
-3. **Verify.** Lead independently verifies — `git diff`, the test
-   suite, the lint/format check, behavioural spot-check as appropriate.
+3. **Verify.** Lead independently verifies by reading `git diff` for
+   correctness and scope adherence, plus a behavioural spot-check
+   where appropriate (exercise the feature end-to-end). The lead
+   does **not** re-run the test suite or lint/format check — those
+   are the developer's gate, already green by the time of report.
+   The commit hook acts as a cross-check at the commit step. If
+   verification raises a real concern, bounce back to the developer
+   rather than re-running gates yourself.
 4. **Accept.** Lead marks task completed (`TaskUpdate
    status=completed`), commits the developer's working-tree changes,
    pushes to origin.
@@ -149,10 +155,15 @@ the issue enters the project's normal backlog.
   `Co-Authored-By` trailer, no agent prefix.
 - **Push to origin after every commit.** Never push to `main` without
   explicit instruction from the user.
-- The lint/format check and test suite must both be green before the
-  commit. If a lint hook fails on the lead's commit attempt, the task
-  is bounced back to the developer — lead does not "quick-fix" lint
-  or format issues.
+- **Tests and lint are the developer's gate, run once.** The
+  developer runs the project's lint/format check and test suite
+  before reporting done; the lead trusts that report and does not
+  duplicate the work. The commit hook fires at the commit step as a
+  cross-check. CI is the pre-merge gate. Three gates, three actors:
+  developer (pre-report), commit hook (pre-commit), CI (pre-merge).
+- If a lint or test hook fails on the lead's commit attempt, the
+  task is bounced back to the developer — lead does not "quick-fix"
+  lint, format, or test issues.
 
 ## Maintenance chain
 
