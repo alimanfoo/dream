@@ -9,9 +9,9 @@ responsibility, one task at a time, coherence restored before moving on.
 completion, commits and pushes after marking complete, decides which
 maintainer-proposed follow-ons to accept onto the task list, posts the
 reviewer's review to the PR, decides which reviewer findings warrant
-follow-on tasks, files GitHub issues for ancillary findings noticed by
-maintainer or reviewer. Makes **no file changes** other than `git add`
-/ `git commit` / `git push`. Does not edit, write, run codegen / index
+follow-on tasks, files GitHub issues post-merge for ancillary findings
+from all three roles. Makes **no file changes** other than `git add` /
+`git commit` / `git push`. Does not edit, write, run codegen / index
 sync, or fix lint issues — those go back to the developer.
 
 **Developer.** Full-capability. Implements every accepted task,
@@ -60,14 +60,54 @@ calls — only describes findings.
 6. **Triage.** Lead accepts or rejects each proposed follow-on. Accepted
    ones become new tasks on the list, **inserted as the next tasks
    before any pending original-scope work** (depth-first drain — see
-   below). Ancillary findings are filed as GitHub issues where
-   warranted (see below).
+   below). Ancillary findings are noted by the lead for the post-merge
+   triage (see below) — not filed mid-session.
 7. **Loop.** Lead picks up the next task and returns to step 1.
+
+## Opening the PR
+
+After all in-session tasks are complete and the branch has been
+pushed, the lead opens a PR for the session branch. Title and body
+markers follow "Marking agent-authored GitHub items" below. The body
+follows the repo's contribution norms with a few specific
+dispositions:
+
+**Don't duplicate the diff.** File paths, renames, exact textual
+edits, method signatures, line-level changes — all visible in the
+diff. The body is for **intent and context**: why the change is
+happening, the issue being addressed, decisions that aren't obvious
+from reading the code. If a sentence in the body is information a
+reviewer would get from `git diff`, drop it.
+
+**Plain English, written for a junior developer joining the team.**
+Lead with the *why*, then the *what*. Imagine your reader is fluent
+in the codebase but wasn't in the session with you — they don't
+have your context. Avoid agent-coined terms-of-art ("the latent
+test injection seam") and internal-protocol vocabulary ("drained
+depth-first per task") in the user-facing description; if a concept
+needs a name, use the one a colleague would already know. If a
+sentence is stacking three clauses of qualification onto one
+thought, split it or cut it.
+
+**Test plan only when a human still has work to do.** By the time a
+dream-team PR opens, three gates have already run: the developer's
+lint + test pass (pre-report), the commit hook (pre-commit), and CI
+(pre-merge). A "Test plan" checklist that restates CI-covered work
+is noise, and the agent will pad it with nonsense items to fill the
+template if pushed to.
+
+Include the Test plan section only when there are genuine
+human-verification steps not covered by CI — visual checks on a UI
+change, manual reproduction of a hard-to-test bug, smoke tests
+against staging, end-to-end exercises the suite cannot run. If
+there are no such steps, **omit the section entirely.** Doubt →
+omit. Don't compensate by adding a "Verification" section listing
+what CI already covers — that's the same noise under a different
+name.
 
 ## Per-PR workflow
 
-After all in-session tasks are complete and the lead has opened a PR
-for the session branch:
+Once the PR is open:
 
 1. **Spawn.** Lead spawns a fresh `reviewer` (no session memory).
 2. **Review.** Reviewer studies the PR — description, diff, related
@@ -84,11 +124,12 @@ for the session branch:
      via the standard per-task workflow including maintainer review.
    - **Reject** → noted in the lead's reply to the user, with
      rationale.
-   - **Out of scope** → captured as a GitHub issue (see below).
+   - **Out of scope** → noted by the lead for the post-merge triage
+     (see below) — not filed mid-session.
 5. **Hand back.** Once all review comments have been addressed
    (accepted tasks completed, rejected items annotated, out-of-scope
-   items filed as issues), the PR returns to the user for final
-   review and approval. Lead does not merge — that is always the
+   items noted for post-merge triage), the PR returns to the user for
+   final review and approval. Lead does not merge — that is always the
    user's call.
 6. **Merge (user).** Final merge gates — both must be green:
    - User approval on GitHub.
@@ -110,7 +151,9 @@ shutting down the existing `reviewer` and spawning a new one
 
 Reviewers, maintainers, and developers regularly notice items outside
 the immediate scope of their current work. These observations have
-value and must not be silently discarded.
+value and must not be silently discarded. The lead accumulates them
+through the session and triages them **once**, post-merge — never
+mid-session.
 
 **Sources:**
 
@@ -130,12 +173,27 @@ value and must not be silently discarded.
 In all sources, the contributor describes what was observed and why
 it caught the eye — they do not propose fixes.
 
+**Timing.** Triage happens **once**, after PR merge and after the
+post-merge sweep has aggregated all three sources. During the
+session, the lead accumulates ancillary observations but does not
+file or triage them. Batching has a purpose: dedup across sources, a
+full picture before judgment, and a single uninterrupted triage
+moment.
+
 **Triage.** Lead compiles the lists, deduplicates (the same
 observation may appear in more than one source), and files each
-warranted item as a GitHub issue via `gh issue create`. Issues are
-concise and factual: title naming the concern, body with file /
-symbol citations and a short rationale. Lead does not implement;
-the issue enters the project's normal backlog.
+warranted item as a GitHub issue via `gh issue create`. Lead does
+not implement; the issue enters the project's normal backlog.
+
+**Issue shape.** Issues follow the same dispositions as the PR
+description (see "Opening the PR" above): plain English written for
+a junior developer, don't duplicate what's visible in the source,
+keep it tight. Issue-specific structure: lead with the concern in
+one sentence, then the cause with a file/symbol citation, then the
+suggested direction (not a fix — issues describe, they don't
+implement). The title states the concern as a complete thought
+("status-verb keys can drift from helper returns"), not a
+stacked-qualifier noun phrase ("an unenforced string protocol").
 
 ## Branch and commit protocol
 
@@ -177,7 +235,7 @@ maintenance work itself — particularly important for structural changes
 - The maintainer's remit is "restore coherence relative to the
   *original scope*" — not "find anything else wrong with the codebase."
   (Anything else wrong with the codebase belongs in the ancillary
-  findings section, for issue-filing.)
+  findings section, for the post-merge triage.)
 - A finding only counts as a follow-on if it is a consequence of the
   changes made in this session.
 - Pre-existing concerns enter scope as follow-on tasks only when our
@@ -194,6 +252,17 @@ maintenance work itself — particularly important for structural changes
 findings than the previous one. If a review starts producing scope-creep
 findings ("while we're here, we should also..."), reject them — that's
 divergence, not convergence.
+
+**Defend behaviour, not surface.** Any machinery the maintainer
+proposes — a test, a glossary, a regen step, a cross-reference rule —
+should defend meaningful behaviour with a real consumer, not pin
+incidental surface (a count nothing depends on, a docstring phrasing,
+a constant whose value is arbitrary, a term used loosely). When a
+finding proposes alignment machinery for a prose inconsistency or an
+arbitrary value, ask whether removing the decorative side dissolves
+the concern. If yes, simplify the surface rather than build structure
+to protect it. The maintainer frames these as simplification
+candidates; the lead is the fallback gate at triage.
 
 ## Task ordering
 
@@ -260,6 +329,8 @@ that helps reviewers weight the artifact appropriately.
 - Fixes lint, format, or test failures directly — bounce them back
 - Pushes to `main` without explicit user instruction
 - Merges PRs without explicit user instruction
+- Files or triages ancillary findings mid-session — accumulate
+  through the session, triage once at the post-merge sweep
 - Originates `shutdown_request`s unless asked
 
 **Developer never:**
@@ -277,7 +348,7 @@ that helps reviewers weight the artifact appropriately.
 - Drifts off-scope into pre-existing concerns the session hasn't made
   visible
 - Silently discards out-of-scope observations — surfaces them as
-  ancillary findings for the lead to triage as potential issues
+  ancillary findings
 
 **Reviewer never:**
 - Edits files (read-only by tool design)
@@ -286,4 +357,4 @@ that helps reviewers weight the artifact appropriately.
   findings
 - Carries memory between PRs — each spawn is fresh
 - Silently discards out-of-scope observations — surfaces them as
-  ancillary findings for the lead to triage as potential issues
+  ancillary findings

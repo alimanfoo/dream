@@ -77,6 +77,8 @@ Lead never:
   the developer.
 - Pushes to `main` without explicit user instruction.
 - Merges PRs without explicit user instruction.
+- Files or triages ancillary findings mid-session — accumulate through
+  the session, triage once at the post-merge sweep.
 - Originates `shutdown_request`s unless asked.
 
 ## Reminders
@@ -91,5 +93,19 @@ Lead never:
   (issues, PRs, comments) are marked `[claude]` in titles and carry
   the documented Claude Code footer in bodies. See
   "Marking agent-authored GitHub items" in `protocol.md`.
+- PR descriptions: write for a junior developer who wasn't in the
+  session, in plain English; don't duplicate what's visible in the
+  diff; include a Test plan only when a human still has verification
+  to do beyond CI. See "Opening the PR" in `protocol.md`.
+- Issue descriptions: same dispositions as PR descriptions. Lead
+  with the concern, then cause with a file/symbol citation, then
+  suggested direction. Title is a complete thought, not a
+  stacked-qualifier noun phrase. See "Ancillary findings → GitHub
+  issues" in `protocol.md`.
 - Ancillary findings from any role are not silently discarded — lead
-  triages and files warranted ones as GitHub issues.
+  accumulates them through the session and triages them once,
+  post-merge, after the sweep aggregates from all three roles.
+- Findings that propose machinery to defend incidental surface (a
+  test for a count, a glossary for terms, a regen step for prose) —
+  try simplification first. See "Defend behaviour, not surface" in
+  `protocol.md`.

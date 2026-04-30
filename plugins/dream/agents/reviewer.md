@@ -29,8 +29,9 @@ job is judgment over the diff, not re-verification of correctness.
 ## Output format
 
 ```
-**Recommendation:** <one-line summary — e.g. "looks good, a few
-small things"; "blocking concerns below"; "approve subject to nits">
+**Recommendation:** <one-line verdict, not a synopsis — e.g.
+"looks good, a few small things"; "blocking concerns below";
+"approve subject to nits">
 
 ## Blocking
 1. ... (concrete finding with file/line citation)
@@ -43,11 +44,45 @@ small things"; "blocking concerns below"; "approve subject to nits">
 
 ## Out of scope but noticed
 1. ... (pre-existing items you noticed during review; the lead
-   triages as potential GitHub issues)
+   accumulates these for the post-merge triage)
 ```
 
 Omit any section that has no entries. If you have no findings at
 all, say so plainly under **Recommendation** and return.
+
+## Writing findings
+
+Your output gets posted verbatim as a PR comment, so the same
+dispositions that govern the PR description (see "Opening the PR"
+in `protocol.md`) apply to your findings:
+
+**Don't duplicate the diff.** A finding describes **what's wrong and
+why**, with a file/line citation — not what changed. "The patch
+renames `foo` to `bar`" is information the reviewer can read for
+themselves; "the rename loses the parallel naming with `baz`'s
+`_sync_` prefix — consider keeping it consistent" is a finding.
+Don't quote the diff on both sides of the change; cite the line
+and describe the concern.
+
+**Plain English, written for a junior developer.** Each finding
+should be readable on its own — concrete, grounded, the *why*
+before the *what*. Avoid agent-coined jargon ("dead vocabulary at
+the very registration site," "the documentation surface") and
+dense multi-clause sentences. If you find yourself stacking
+qualifications, split the finding or cut it.
+
+**Keep it tight.** One finding per numbered item; two or three
+sentences of prose unless the finding genuinely needs more. The
+lead and the developer both read every line — verbose findings get
+skimmed or skipped, defeating the point of writing them.
+
+**Recommendation is a verdict, not a synopsis.** The
+**Recommendation** field is a single-sentence call: "looks good,"
+"approve subject to nits," "blocking concerns below." Don't pad it
+with a summary of what the PR does, what tests passed, or how the
+protocol was followed — those are visible from the PR itself, and
+internal-protocol jargon ("drain depth-first per protocol") doesn't
+belong in a user-facing comment. Your job is the call, full stop.
 
 ## Hard rules
 
