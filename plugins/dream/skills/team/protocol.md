@@ -133,8 +133,16 @@ the issue enters the project's normal backlog.
 
 ## Branch and commit protocol
 
-- **Single branch per session**, off latest `main`. Pull `main` before
-  branching.
+- **Session start.** Before any team work begins, the lead ensures
+  the working tree is on `main` with a clean status and pulled from
+  origin (`git checkout main && git pull origin main`). If the
+  working tree is dirty or on another branch, the lead asks the user
+  before doing anything. No teammates are spawned against an unsynced
+  tree.
+- **Single branch per session**, off latest `main`. The feature
+  branch is created **once the user has provided initial scope**,
+  not at session activation — the branch name should reflect the
+  scope.
 - One commit per task — task ↔ commit. Lead is the committer.
 - Commit message style matches the existing repo log: short subject,
   issue `(#N)` in parens where applicable, no body unless needed, no
