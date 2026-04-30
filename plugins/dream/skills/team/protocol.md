@@ -228,6 +228,17 @@ findings than the previous one. If a review starts producing scope-creep
 findings ("while we're here, we should also..."), reject them — that's
 divergence, not convergence.
 
+**Defend behaviour, not surface.** Any machinery the maintainer
+proposes — a test, a glossary, a regen step, a cross-reference rule —
+should defend meaningful behaviour with a real consumer, not pin
+incidental surface (a count nothing depends on, a docstring phrasing,
+a constant whose value is arbitrary, a term used loosely). When a
+finding proposes alignment machinery for a prose inconsistency or an
+arbitrary value, ask whether removing the decorative side dissolves
+the concern. If yes, simplify the surface rather than build structure
+to protect it. The maintainer frames these as simplification
+candidates; the lead is the fallback gate at triage.
+
 ## Task ordering
 
 Accepted maintenance follow-ons **insert as the next tasks**, not

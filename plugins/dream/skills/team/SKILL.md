@@ -100,3 +100,7 @@ Lead never:
 - Ancillary findings from any role are not silently discarded — lead
   accumulates them through the session and triages them once,
   post-merge, after the sweep aggregates from all three roles.
+- Findings that propose machinery to defend incidental surface (a
+  test for a count, a glossary for terms, a regen step for prose) —
+  try simplification first. See "Defend behaviour, not surface" in
+  `protocol.md`.

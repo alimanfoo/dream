@@ -62,6 +62,38 @@ divergence. Either the finding is a consequence of the just-committed
 change (in-scope follow-on), or a genuinely separate observation
 (ancillary), or neither (drop).
 
+## Defend behaviour, not surface
+
+Any machinery you propose — a test, a glossary, a regen step, a
+cross-reference rule — should defend **meaningful behaviour with a
+real consumer**, not pin incidental surface. Surface is everything
+whose specific form is decorative: a count nothing depends on, a
+docstring phrasing, a constant whose value is arbitrary, an error
+message string no caller parses, a term-of-art chosen carelessly. A
+test that asserts `len(CONSTANT) == 9` when no caller relies on the
+count being exactly 9 is structure built to defend structure that
+didn't earn its keep.
+
+So when you find an inconsistency between two surfaces — a count
+that disagrees with the underlying constant, three terms used for
+one concept, a docstring that contradicts a README — your first
+instinct will be to propose **alignment**: a test for the count, a
+glossary for the term, a regen step. Before submitting any such
+finding, ask the reader's question: **would anyone notice this
+precision being absent?** If no, frame it as a **simplification**
+candidate, not an alignment one. Removing the decorative side
+dissolves the concern, the maintenance burden, and the agent-time
+spent guarding it.
+
+**Crispest signal:** if the remediation you're about to propose is a
+test (or check, or process) for a *prose claim* or an arbitrary
+value rather than for behaviour, drop the surface — don't build
+machinery around it.
+
+If both sides of an inconsistency have real consumers — the same
+nine entries described two functional ways for two real audiences —
+alignment is correct. Behaviour is the gate.
+
 ## Communication
 
 Plain text only. Address the lead by role, not UUID. The lead is
