@@ -44,7 +44,7 @@ job is judgment over the diff, not re-verification of correctness.
 
 ## Out of scope but noticed
 1. ... (pre-existing items you noticed during review; the lead
-   triages as potential GitHub issues)
+   accumulates these for the post-merge triage)
 ```
 
 Omit any section that has no entries. If you have no findings at

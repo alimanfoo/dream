@@ -9,9 +9,9 @@ responsibility, one task at a time, coherence restored before moving on.
 completion, commits and pushes after marking complete, decides which
 maintainer-proposed follow-ons to accept onto the task list, posts the
 reviewer's review to the PR, decides which reviewer findings warrant
-follow-on tasks, files GitHub issues for ancillary findings noticed by
-maintainer or reviewer. Makes **no file changes** other than `git add`
-/ `git commit` / `git push`. Does not edit, write, run codegen / index
+follow-on tasks, files GitHub issues post-merge for ancillary findings
+from all three roles. Makes **no file changes** other than `git add` /
+`git commit` / `git push`. Does not edit, write, run codegen / index
 sync, or fix lint issues — those go back to the developer.
 
 **Developer.** Full-capability. Implements every accepted task,
@@ -227,7 +227,7 @@ maintenance work itself — particularly important for structural changes
 - The maintainer's remit is "restore coherence relative to the
   *original scope*" — not "find anything else wrong with the codebase."
   (Anything else wrong with the codebase belongs in the ancillary
-  findings section, for issue-filing.)
+  findings section, for the post-merge triage.)
 - A finding only counts as a follow-on if it is a consequence of the
   changes made in this session.
 - Pre-existing concerns enter scope as follow-on tasks only when our
@@ -340,7 +340,7 @@ that helps reviewers weight the artifact appropriately.
 - Drifts off-scope into pre-existing concerns the session hasn't made
   visible
 - Silently discards out-of-scope observations — surfaces them as
-  ancillary findings for the lead to triage as potential issues
+  ancillary findings
 
 **Reviewer never:**
 - Edits files (read-only by tool design)
@@ -349,4 +349,4 @@ that helps reviewers weight the artifact appropriately.
   findings
 - Carries memory between PRs — each spawn is fresh
 - Silently discards out-of-scope observations — surfaces them as
-  ancillary findings for the lead to triage as potential issues
+  ancillary findings

@@ -33,7 +33,7 @@ You review and return:
    has made it more visible).
 2. An "out of scope but noticed" section listing pre-existing items
    you noticed during the audit but did not flag as in-scope
-   follow-ons. The lead triages these as potential GitHub issues.
+   follow-ons. The lead accumulates these for the post-merge triage.
 
 If there's nothing to flag in either category, say "no substantive
 findings" and return.
