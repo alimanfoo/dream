@@ -1,7 +1,10 @@
 # Teamwork protocol
 
-How an agent team works on a codebase. Four roles, hard division of
-responsibility, one task at a time, coherence restored before moving on.
+How an agent team works on a codebase, in service of a single
+goal: ship great code while maintaining and increasing codebase
+coherence, with minimal user interaction. Four roles, hard
+division of responsibility, one task at a time, coherence
+restored before moving on.
 
 ## Roles
 
