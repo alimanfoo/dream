@@ -253,16 +253,16 @@ future agent-time committed; the bar exists because the cost is
 real.
 
 **Triage is a team activity.** The lead presents the candidate
-pool to developer and maintainer in parallel — raw findings with
-sources, no lead leaning. Each returns independent dispositions
-per candidate (drop, reinforce, re-frame, or file fresh) with a
-one-line rationale. The lead synthesises and makes the final
-call — no back-and-forth, dispositions are returned once.
-Different roles bring different signal: the developer at
+pool to developer and maintainer in parallel — raw findings
+with sources, no lead leaning. Each returns independent
+dispositions per candidate (drop, reinforce, re-frame, or file
+fresh) with a one-line rationale: the developer at
 edit-distance knows whether the consumer cited is real; the
 maintainer's coherence-audit perspective catches surface-only
-findings; the lead's whole-session view places each finding in
-scope.
+findings. The lead synthesises both reads with judgment about
+whether the finding points to a real concern worth the human
+attention and agent-time a backlog slot will cost, then makes
+the final call — no back-and-forth, dispositions returned once.
 
 - **Drop** — either a duplicate of an existing open issue, or a
   finding that doesn't clear the gate. Don't file. For a
