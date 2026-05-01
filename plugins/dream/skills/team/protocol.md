@@ -90,14 +90,21 @@ issues sit open as triage debt. Verify after opening: `gh pr view
 fixed.
 
 **Plain English, written for a junior developer joining the team.**
-Lead with the *why*, then the *what*. Imagine your reader is fluent
-in the codebase but wasn't in the session with you — they don't
-have your context. Avoid agent-coined terms-of-art ("the latent
-test injection seam") and internal-protocol vocabulary ("drained
-depth-first per task") in the user-facing description; if a concept
-needs a name, use the one a colleague would already know. If a
-sentence is stacking three clauses of qualification onto one
-thought, split it or cut it.
+Lead with the *why*, then the *what*. The reader is fluent in the
+codebase but wasn't in the session with you and does not know the
+dream:team plugin exists. The PR describes the **code change**, not
+the **process that produced it**: if a sentence references the
+protocol, a role on it, or the way it organises work, that sentence
+does not belong here. Internal-protocol vocabulary — *the protocol*,
+*lead* / *developer* / *maintainer* / *reviewer* as role labels,
+*task* as the unit of dream-team work, *post-merge sweep*,
+*maintenance chain*, *depth-first drain*, *follow-on*, *ancillary
+finding* — should never appear in the description. Agent-coined
+terms-of-art coined mid-session ("the latent test injection seam")
+are out for the same reason: the reader hasn't been in the session.
+If a concept needs a name, use the one a colleague would already
+know. If a sentence stacks three clauses of qualification, split it
+or cut it.
 
 **Test plan only when a human still has work to do.** By the time a
 dream-team PR opens, three gates have already run: the developer's
