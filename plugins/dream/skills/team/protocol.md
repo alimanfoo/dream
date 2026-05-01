@@ -69,8 +69,21 @@ calls — only describes findings.
 After all in-session tasks are complete and the branch has been
 pushed, the lead opens a PR for the session branch. Title and body
 markers follow "Marking agent-authored GitHub items" below. The body
-follows the repo's contribution norms with a few specific
-dispositions:
+follows the dispositions below — these are canonical for PR
+content, voice, and structure — together with any documented
+contribution rules the repo provides (a ``CONTRIBUTING.md``, a PR
+template).
+
+**Don't sample existing PRs for style.** The reflex to read recent
+PRs in the same repo to "match the established style" lands on
+whatever noise was in the three PRs the agent happened to open —
+most repos have heterogeneous styles across contributors, and the
+sample isn't a style. Documented contribution rules
+(``CONTRIBUTING.md``, a PR template, a commit message convention)
+are real and should be followed; the existing PR log is not a style
+reference. (Searching prior issues for content overlap, per the
+deepen step in "Ancillary findings → GitHub issues," is a different
+activity and remains required.)
 
 **Don't duplicate the diff.** File paths, renames, exact textual
 edits, method signatures, line-level changes — all visible in the
@@ -245,10 +258,11 @@ Lead does not implement anything in any phase; what enters the
 backlog is an issue or a comment, never a fix.
 
 **Issue shape.** Issues follow the same dispositions as the PR
-description (see "Opening the PR" above): plain English written for
-a junior developer, don't duplicate what's visible in the source,
-keep it tight. Issue-specific structure: lead with the concern in
-one sentence, then the cause with a file/symbol citation, then the
+description (see "Opening the PR" above) — including "don't sample
+existing issues for style." Plain English written for a junior
+developer, don't duplicate what's visible in the source, keep it
+tight. Issue-specific structure: lead with the concern in one
+sentence, then the cause with a file/symbol citation, then the
 suggested direction (not a fix — issues describe, they don't
 implement). The title states the concern as a complete thought
 ("status-verb keys can drift from helper returns"), not a
