@@ -1,5 +1,5 @@
 {
   "name": "dream",
-  "description": "Dream team — a four-agent protocol with strict role boundaries, depth-first per-task coherence audits, and fresh-context per-PR review.",
+  "description": "A Claude Code agent team — developer, maintainer, reviewer — for shipping great code while maintaining codebase coherence with minimal hand-holding. Requires Claude Code's experimental agent teams feature.",
   "version": "0.3.0"
 }

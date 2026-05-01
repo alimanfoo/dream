@@ -1,6 +1,6 @@
 ---
 name: team
-description: Activate the dream team protocol — a four-agent Claude Code workflow with this session as lead plus developer, maintainer, and per-PR reviewer subagents. Hard role boundaries, depth-first per-task coherence audits, fresh-context PR review, ancillary findings filed as GitHub issues. Use when the user invokes /dream:team, asks to set up the dream team, or wants disciplined multi-agent execution with strict role separation. Apply when the work involves coupled tasks, structural changes, or code that benefits from a coherence audit between commits.
+description: Activate the dream:team protocol — a Claude Code agent team with this session as lead plus developer, maintainer, and reviewer agents — for shipping great code while maintaining codebase coherence with minimal hand-holding. Use when the user invokes /dream:team, asks to set up the dream team, or wants disciplined multi-agent execution with strict role separation. Apply when the work involves coupled tasks, structural changes, or code that benefits from a coherence audit between commits. Requires Claude Code's experimental agent teams feature.
 ---
 
 # Dream team
