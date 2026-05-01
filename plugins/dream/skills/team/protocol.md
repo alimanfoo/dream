@@ -325,6 +325,20 @@ the concern. If yes, simplify the surface rather than build structure
 to protect it. The maintainer frames these as simplification
 candidates; the lead is the fallback gate at triage.
 
+**Compensation patterns are tells.** Some diffs include scaffolding
+that compensates for what the change doesn't do — a comment
+asserting a property the code doesn't demonstrate, a test mock
+insulating the change from the dependency it's wiring through, an
+exception handler swallowing an error whose cause the change could
+address, a runtime validator rejecting inputs upstream types should
+have prevented. The scaffolding does semantic work the code itself
+isn't doing, making the change appear complete by absorbing the gap.
+When the maintainer spots one, the in-scope finding is the
+underlying gap, not the scaffolding itself. General test: strip the
+compensation in your head — does the change still do what it claims?
+See "Compensation patterns" in the maintainer agent definition for a
+fuller list of common shapes.
+
 ## Task ordering
 
 Accepted maintenance follow-ons **insert as the next tasks**, not
