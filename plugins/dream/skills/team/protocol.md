@@ -215,7 +215,8 @@ full picture before judgment, and a single uninterrupted triage
 moment.
 
 **Triage.** Triage proceeds in three phases — compile, deepen,
-dispose — before any issue is filed.
+dispose — before any issue is filed. Compile and deepen are lead
+activities; dispose brings in the team.
 
 **Compile.** Lead aggregates the three sources and collapses
 observations that appear in more than one source into a single
@@ -252,7 +253,7 @@ behavioural consequence — do not earn an issue. An issue filed is
 future agent-time committed; the bar exists because the cost is
 real.
 
-**Triage is a team activity.** The lead presents the candidate
+Triage is a team activity. The lead presents the candidate
 pool to developer and maintainer in parallel — raw findings
 with sources, no lead leaning. Each returns independent
 dispositions per candidate (drop, reinforce, re-frame, or file
@@ -294,11 +295,12 @@ description (see "Opening the PR" above) — including "don't sample
 existing issues for style." Plain English written for a junior
 developer, don't duplicate what's visible in the source, keep it
 tight. Issue-specific structure: lead with the concern in one
-sentence, then the cause with a file/symbol citation, then the
-suggested direction (not a fix — issues describe, they don't
-implement). The title states the concern as a complete thought
-("status-verb keys can drift from helper returns"), not a
-stacked-qualifier noun phrase ("an unenforced string protocol").
+sentence, then the cause with a file/symbol citation, then a
+suggested direction (issues point to a resolvable concern; they
+don't prescribe the implementation). The title states the concern
+as a complete thought ("status-verb keys can drift from helper
+returns"), not a stacked-qualifier noun phrase ("an unenforced
+string protocol").
 
 ## Branch and commit protocol
 
@@ -315,9 +317,9 @@ stacked-qualifier noun phrase ("an unenforced string protocol").
   before branching; the session-start sync may be stale by the time
   scope arrives.
 - One commit per task — task ↔ commit. Lead is the committer.
-- Commit message style matches the existing repo log: short subject,
-  issue `(#N)` in parens where applicable, no body unless needed, no
-  `Co-Authored-By` trailer, no agent prefix.
+- Commit message style: short subject with `[claude]` prefix,
+  issue `(#N)` in parens where applicable, no body unless needed,
+  no `Co-Authored-By` trailer.
 - **Push to origin after every commit.** Never push to `main` without
   explicit instruction from the user.
 - **Tests and lint are the developer's gate, run once.** The
@@ -434,22 +436,22 @@ fully drained.
 
 ## Marking agent-authored GitHub items
 
-GitHub artifacts raised by an agent should be marked so a reader can
-tell at a glance whether a comment, issue, or PR came from an agent
-or from a person. The distinction matters for triage — it's signal
-that helps reviewers weight the artifact appropriately.
+Agent-authored GitHub items should be marked so a reader can tell
+at a glance whether a commit, comment, issue, or PR came from an
+agent or from a person. The distinction matters for triage — it's
+signal that helps reviewers weight the artifact appropriately.
 
-- **Titles** (PRs, issues): prefix with `[claude]`.
+- **Subjects and titles** (commit subjects, PR titles, issue
+  titles): prefix with `[claude]`.
 - **Bodies and comments** (PR descriptions, issue bodies, PR
   comments, issue comments): append the documented Claude Code
   footer at the end of the body:
 
   > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
 
-- **Commits stay clean** — no prefix, no footer — matching the
-  conventional repo log style. Commits are immutable history; an
-  agent-attribution marker would clutter the log without adding
-  signal.
+- **Commit bodies stay clean** — no footer. The subject prefix
+  carries the signal; a footer on every commit would clutter the
+  log.
 
 ## Hard rules
 

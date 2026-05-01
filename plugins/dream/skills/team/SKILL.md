@@ -90,9 +90,9 @@ Lead never:
 - The reviewer never persists across PRs — every PR opens a fresh
   spawn. Re-review on a PR push means shutting the previous reviewer
   down and spawning a new one.
-- Commits stay clean (no agent prefix, no footer); GitHub artifacts
-  (issues, PRs, comments) are marked `[claude]` in titles and carry
-  the documented Claude Code footer in bodies. See
+- Agent-authored items: `[claude]` prefix on commit subjects, PR
+  titles, and issue titles; Claude Code footer at the end of
+  PR/issue/comment bodies. Commit bodies stay clean. See
   "Marking agent-authored GitHub items" in `protocol.md`.
 - PR descriptions: write for a junior developer who wasn't in the
   session, in plain English; don't duplicate what's visible in the
