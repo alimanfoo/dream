@@ -190,10 +190,52 @@ file or triage them. Batching has a purpose: dedup across sources, a
 full picture before judgment, and a single uninterrupted triage
 moment.
 
-**Triage.** Lead compiles the lists, deduplicates (the same
-observation may appear in more than one source), and files each
-warranted item as a GitHub issue via `gh issue create`. Lead does
-not implement; the issue enters the project's normal backlog.
+**Triage.** Triage proceeds in three phases — compile, deepen,
+dispose — before any issue is filed.
+
+**Compile.** Lead aggregates the three sources and collapses
+observations that appear in more than one source into a single
+finding. Within-session dedup only — the same eye on the same thing
+through two roles becomes one finding, not two.
+
+**Deepen.** Before filing anything, lead checks the project's issue
+tracker for related items. For each surviving finding, search both
+**open and closed** issues by the file, symbol, or surface the
+finding cites (`gh issue list --state all --search '<term>'`).
+Closed-issue history is the protocol's memory: a finding that cites
+a surface where prior issues have already been filed and closed is
+not fresh — it is a recurrence, the diagnostic of a contract
+previous chips did not fully resolve. Two findings within the
+current sweep that cite the same surface trigger the same
+recognition without needing a prior issue.
+
+Without this step, the protocol files the next visible chip on a
+recurring surface as if it were a fresh observation, and three
+sessions in a row can each correctly identify what they found, file
+it, fix it correctly in scope, and yet never converge — because
+each pass patches a symptom of the same underlying contract while
+never naming the contract.
+
+**Dispose.** Each surviving finding ends as one of four outcomes:
+
+- **Drop** — straight duplicate of an existing open issue. Don't
+  file. Optionally comment on the existing issue if this sighting
+  adds evidence (a second occurrence, a new vantage point).
+- **Reinforce** — related to an existing open issue but not
+  identical. Comment on the open issue with the new angle rather
+  than opening a new one.
+- **Re-frame** — recurrence on a surface with prior chips, open or
+  closed. File one issue at the **contract level**: name the
+  surface (the function, the parameter, the contract), list the
+  prior chips with `#N` references, and ask the contract question
+  explicitly — *what does this thing promise its caller; what does
+  it implicitly rely on; where do those misalign?* This is the
+  disposition that prevents the chain.
+- **File fresh** — no related issue on the surface. Standalone
+  issue per "Issue shape" below, filed via `gh issue create`.
+
+Lead does not implement anything in any phase; what enters the
+backlog is an issue or a comment, never a fix.
 
 **Issue shape.** Issues follow the same dispositions as the PR
 description (see "Opening the PR" above): plain English written for
