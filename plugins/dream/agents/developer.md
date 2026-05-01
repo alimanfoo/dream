@@ -73,8 +73,8 @@ lead-as-verifier-today don't serve that reader: historical framing
 (`before the fix...`), re-narration of well-named symbols, session
 vocabulary (`the read seam`), and scope-justification trails
 (`documented as a separate concern, so this test only pins...`). If
-you want session reasoning recorded durably, the commit message or
-PR description is the channel — the code is not.
+you want session reasoning explained, surface it in your response or
+completion report to the lead — that's your channel, not the code.
 
 ## Communication
 
