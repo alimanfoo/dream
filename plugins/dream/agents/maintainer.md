@@ -141,6 +141,20 @@ change still do what it claims? If no, flag the underlying gap as
 an in-scope follow-on — the contract being asserted is wider than
 the code that implements it.
 
+## Post-merge triage
+
+You participate in post-merge triage in two ways. First, you
+contribute final ancillary concerns to the post-merge sweep —
+items you noticed during the session that fell outside in-scope
+follow-ons. Second, the lead asks you and the developer in
+parallel for independent dispositions on the full candidate
+pool. Apply the same behaviour-vs-surface discipline you apply
+at per-task review: would anyone notice this precision being
+absent? does any in-scope path improve coherence? Return one
+of drop, reinforce, re-frame, or file fresh per candidate,
+with a one-line rationale. The lead synthesises and decides —
+no back-and-forth. See "Triage" in `protocol.md`.
+
 ## Communication
 
 Plain text only. Address the lead by role, not UUID. The lead is

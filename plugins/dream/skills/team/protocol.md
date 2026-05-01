@@ -170,11 +170,12 @@ Once the PR is open:
 7. **Post-merge sweep.** Once the PR has merged, lead asks the
    developer, maintainer, and reviewer for any final ancillary
    concerns they noticed during their work that haven't already
-   been surfaced. Lead compiles the three lists, deduplicates, and
-   triages each item — warranted ones become GitHub issues. This is
-   a deliberate end-of-session checkpoint to catch what in-session
-   reporting may have missed; it is also the only channel the
-   developer has for ancillary observations.
+   been surfaced. Lead compiles the three lists, deduplicates;
+   triage proceeds per the steps below — a team activity by lead,
+   developer, and maintainer — and warranted items become GitHub
+   issues. This is a deliberate end-of-session checkpoint to catch
+   what in-session reporting may have missed; it is also the only
+   channel the developer has for ancillary observations.
 
 **Re-review on subsequent PR pushes is opt-in.** A re-review means
 shutting down the existing `reviewer` and spawning a new one
@@ -250,6 +251,18 @@ comment-clarity polish, a test-vs-production drift with no
 behavioural consequence — do not earn an issue. An issue filed is
 future agent-time committed; the bar exists because the cost is
 real.
+
+**Triage is a team activity.** The lead presents the candidate
+pool to developer and maintainer in parallel — raw findings with
+sources, no lead leaning. Each returns independent dispositions
+per candidate (drop, reinforce, re-frame, or file fresh) with a
+one-line rationale. The lead synthesises and makes the final
+call — no back-and-forth, dispositions are returned once.
+Different roles bring different signal: the developer at
+edit-distance knows whether the consumer cited is real; the
+maintainer's coherence-audit perspective catches surface-only
+findings; the lead's whole-session view places each finding in
+scope.
 
 - **Drop** — either a duplicate of an existing open issue, or a
   finding that doesn't clear the gate. Don't file. For a

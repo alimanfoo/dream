@@ -115,3 +115,7 @@ Lead never:
 - Ancillary findings, post-merge: the bar for filing a new issue
   is a behaviour gap with a real consumer; default to drop. See
   "Dispose" in `protocol.md`.
+- Post-merge triage is a team activity: lead presents the
+  candidate pool to developer and maintainer in parallel, each
+  returns independent dispositions, lead synthesises and decides.
+  No back-and-forth.
