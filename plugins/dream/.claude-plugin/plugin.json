@@ -1,5 +1,5 @@
 {
   "name": "dream",
   "description": "Dream team — a four-agent protocol with strict role boundaries, depth-first per-task coherence audits, and fresh-context per-PR review.",
-  "version": "0.2.4"
+  "version": "0.2.5"
 }
