@@ -112,3 +112,6 @@ Lead never:
   test for a count, a glossary for terms, a regen step for prose) —
   try simplification first. See "Defend behaviour, not surface" in
   `protocol.md`.
+- Ancillary findings, post-merge: the bar for filing a new issue
+  is a behaviour gap with a real consumer; default to drop. See
+  "Dispose" in `protocol.md`.

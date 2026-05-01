@@ -236,23 +236,39 @@ it, fix it correctly in scope, and yet never converge — because
 each pass patches a symptom of the same underlying contract while
 never naming the contract.
 
-**Dispose.** Each surviving finding ends as one of four outcomes:
+**Dispose.** Each surviving finding ends as one of four outcomes.
+The bar for filing a **new** issue is *a behaviour gap with a real
+consumer* — see "Defend behaviour, not surface." Default to drop
+on findings that don't clear the bar; closed-issue history is the
+protocol's memory, and a future contributor on the same surface
+will see the shape and make the call in context. Surface-only
+findings — a future-proofing concern with no current consumer, a
+comment-clarity polish, a test-vs-production drift with no
+behavioural consequence — do not earn an issue. An issue filed is
+future agent-time committed; the bar exists because the cost is
+real.
 
-- **Drop** — straight duplicate of an existing open issue. Don't
-  file. Optionally comment on the existing issue if this sighting
-  adds evidence (a second occurrence, a new vantage point).
+- **Drop** — either a duplicate of an existing open issue, or a
+  finding that doesn't clear the gate. Don't file. For a
+  duplicate, optionally comment on the existing issue if this
+  sighting adds evidence (a second occurrence, a new vantage point).
 - **Reinforce** — related to an existing open issue but not
   identical. Comment on the open issue with the new angle rather
-  than opening a new one.
+  than opening a new one. (Comments on existing issues are not
+  gated — the issue is already filed and added vantage is cheap.)
 - **Re-frame** — recurrence on a surface with prior chips, open or
   closed. File one issue at the **contract level**: name the
   surface (the function, the parameter, the contract), list the
   prior chips with `#N` references, and ask the contract question
   explicitly — *what does this thing promise its caller; what does
-  it implicitly rely on; where do those misalign?* This is the
-  disposition that prevents the chain.
-- **File fresh** — no related issue on the surface. Standalone
-  issue per "Issue shape" below, filed via `gh issue create`.
+  it implicitly rely on; where do those misalign?* The recurrence
+  pattern itself is the behaviour gap — chips landing on the same
+  surface is evidence of an unresolved contract — so Re-frame
+  clears the gate independently. This is the disposition that
+  prevents the chain.
+- **File fresh** — no related issue on the surface, and the
+  finding clears the gate. Standalone issue per "Issue shape"
+  below, filed via `gh issue create`.
 
 Lead does not implement anything in any phase; what enters the
 backlog is an issue or a comment, never a fix.
@@ -328,16 +344,17 @@ findings than the previous one. If a review starts producing scope-creep
 findings ("while we're here, we should also..."), reject them — that's
 divergence, not convergence.
 
-**Defend behaviour, not surface.** Any machinery the maintainer
-proposes — a test, a glossary, a regen step, a cross-reference rule —
-should defend meaningful behaviour with a real consumer, not pin
-incidental surface (a count nothing depends on, a docstring phrasing,
-a constant whose value is arbitrary, a term used loosely). When a
-finding proposes alignment machinery for a prose inconsistency or an
-arbitrary value, ask whether removing the decorative side dissolves
-the concern. If yes, simplify the surface rather than build structure
-to protect it. The maintainer frames these as simplification
-candidates; the lead is the fallback gate at triage.
+**Defend behaviour, not surface.** Any machinery proposed — a
+test, a glossary, a regen step, a cross-reference rule, a backlog
+issue — should defend meaningful behaviour with a real consumer,
+not pin incidental surface (a count nothing depends on, a
+docstring phrasing, a constant whose value is arbitrary, a term
+used loosely). When a finding proposes alignment machinery for a
+prose inconsistency or an arbitrary value, ask whether removing
+the decorative side dissolves the concern. If yes, simplify the
+surface rather than build structure to protect it. The maintainer
+frames these as simplification candidates in per-task review; the
+lead is the fallback gate at post-merge triage.
 
 **Compensation patterns are tells.** Some diffs include scaffolding
 that compensates for what the change doesn't do — a comment
