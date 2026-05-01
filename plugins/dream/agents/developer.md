@@ -52,6 +52,30 @@ When the lead assigns you a task:
    If you continue iterating after reporting done, re-report so
    the lead's verify doesn't go stale.
 
+## Code comments
+
+Default to writing no comments. Only add one when the **why** is
+non-obvious — a hidden constraint, a subtle invariant, a workaround
+for a specific bug, behaviour that would surprise a reader. If
+removing the comment wouldn't confuse a future reader, don't write
+it.
+
+Don't explain **what** the code does — well-named identifiers already
+do that. Don't reference the current task, fix, or callers (`used by
+X`, `added for the Y flow`, `handles the case from GH123`), since
+those belong in the PR description and rot as the codebase evolves.
+
+**Specific to this protocol.** The lead reads `git diff` to verify
+correctness and scope, but the lead is not the audience for code
+comments — the audience is a future reader six months on with no
+memory of this session. Comments that serve the
+lead-as-verifier-today don't serve that reader: historical framing
+(`before the fix...`), re-narration of well-named symbols, session
+vocabulary (`the read seam`), and scope-justification trails
+(`documented as a separate concern, so this test only pins...`). If
+you want session reasoning explained, surface it in your response or
+completion report to the lead — that's your channel, not the code.
+
 ## Communication
 
 Plain text only between teammates. The lead addresses you as
