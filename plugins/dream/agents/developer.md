@@ -49,6 +49,8 @@ When the lead assigns you a task:
    so generated artefacts match the source.
 5. Report back to the lead in plain text. Don't mark the task
    complete — the lead does that after independent verification.
+   If you continue iterating after reporting done, re-report so
+   the lead's verify doesn't go stale.
 
 ## Communication
 

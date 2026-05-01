@@ -53,9 +53,12 @@ calls — only describes findings.
    The commit hook acts as a cross-check at the commit step. If
    verification raises a real concern, bounce back to the developer
    rather than re-running gates yourself.
-4. **Accept.** Lead marks task completed (`TaskUpdate
-   status=completed`), commits the developer's working-tree changes,
-   pushes to origin.
+4. **Accept.** Re-diff before staging — the working tree is live
+   between verify and accept, and any iteration in that window
+   will land silently if the lead stages on the earlier read.
+   `git diff --name-only` should match what the developer
+   reported. Then `TaskUpdate status=completed`, stage the
+   developer's working-tree changes, commit, push.
 5. **Review.** Lead calls the maintainer. Maintainer audits the
    committed change for coherence and returns a numbered plain-text
    list of proposed follow-on tasks (or "no substantive findings"),
