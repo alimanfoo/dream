@@ -1,7 +1,10 @@
 # Teamwork protocol
 
-How an agent team works on a codebase. Four roles, hard division of
-responsibility, one task at a time, coherence restored before moving on.
+How an agent team works on a codebase, in service of a single
+goal: ship great code while maintaining and increasing codebase
+coherence, with minimal user interaction. Four roles, hard
+division of responsibility, one task at a time, coherence
+restored before moving on.
 
 ## Roles
 
@@ -167,11 +170,12 @@ Once the PR is open:
 7. **Post-merge sweep.** Once the PR has merged, lead asks the
    developer, maintainer, and reviewer for any final ancillary
    concerns they noticed during their work that haven't already
-   been surfaced. Lead compiles the three lists, deduplicates, and
-   triages each item — warranted ones become GitHub issues. This is
-   a deliberate end-of-session checkpoint to catch what in-session
-   reporting may have missed; it is also the only channel the
-   developer has for ancillary observations.
+   been surfaced. Lead compiles the three lists, deduplicates;
+   triage proceeds per the steps below — a team activity by lead,
+   developer, and maintainer — and warranted items become GitHub
+   issues. This is a deliberate end-of-session checkpoint to catch
+   what in-session reporting may have missed; it is also the only
+   channel the developer has for ancillary observations.
 
 **Re-review on subsequent PR pushes is opt-in.** A re-review means
 shutting down the existing `reviewer` and spawning a new one
@@ -211,7 +215,8 @@ full picture before judgment, and a single uninterrupted triage
 moment.
 
 **Triage.** Triage proceeds in three phases — compile, deepen,
-dispose — before any issue is filed.
+dispose — before any issue is filed. Compile and deepen are lead
+activities; dispose brings in the team.
 
 **Compile.** Lead aggregates the three sources and collapses
 observations that appear in more than one source into a single
@@ -236,23 +241,51 @@ it, fix it correctly in scope, and yet never converge — because
 each pass patches a symptom of the same underlying contract while
 never naming the contract.
 
-**Dispose.** Each surviving finding ends as one of four outcomes:
+**Dispose.** Each surviving finding ends as one of four outcomes.
+The bar for filing a **new** issue is *a behaviour gap with a real
+consumer* — see "Defend behaviour, not surface." Default to drop
+on findings that don't clear the bar; closed-issue history is the
+protocol's memory, and a future contributor on the same surface
+will see the shape and make the call in context. Surface-only
+findings — a future-proofing concern with no current consumer, a
+comment-clarity polish, a test-vs-production drift with no
+behavioural consequence — do not earn an issue. An issue filed is
+future agent-time committed; the bar exists because the cost is
+real.
 
-- **Drop** — straight duplicate of an existing open issue. Don't
-  file. Optionally comment on the existing issue if this sighting
-  adds evidence (a second occurrence, a new vantage point).
+Triage is a team activity. The lead presents the candidate
+pool to developer and maintainer in parallel — raw findings
+with sources, no lead leaning. Each returns independent
+dispositions per candidate (drop, reinforce, re-frame, or file
+fresh) with a one-line rationale: the developer at
+edit-distance knows whether the consumer cited is real; the
+maintainer's coherence-audit perspective catches surface-only
+findings. The lead synthesises both reads with judgment about
+whether the finding points to a real concern worth the human
+attention and agent-time a backlog slot will cost, then makes
+the final call — no back-and-forth, dispositions returned once.
+
+- **Drop** — either a duplicate of an existing open issue, or a
+  finding that doesn't clear the gate. Don't file. For a
+  duplicate, optionally comment on the existing issue if this
+  sighting adds evidence (a second occurrence, a new vantage point).
 - **Reinforce** — related to an existing open issue but not
   identical. Comment on the open issue with the new angle rather
-  than opening a new one.
+  than opening a new one. (Comments on existing issues are not
+  gated — the issue is already filed and added vantage is cheap.)
 - **Re-frame** — recurrence on a surface with prior chips, open or
   closed. File one issue at the **contract level**: name the
   surface (the function, the parameter, the contract), list the
   prior chips with `#N` references, and ask the contract question
   explicitly — *what does this thing promise its caller; what does
-  it implicitly rely on; where do those misalign?* This is the
-  disposition that prevents the chain.
-- **File fresh** — no related issue on the surface. Standalone
-  issue per "Issue shape" below, filed via `gh issue create`.
+  it implicitly rely on; where do those misalign?* The recurrence
+  pattern itself is the behaviour gap — chips landing on the same
+  surface is evidence of an unresolved contract — so Re-frame
+  clears the gate independently. This is the disposition that
+  prevents the chain.
+- **File fresh** — no related issue on the surface, and the
+  finding clears the gate. Standalone issue per "Issue shape"
+  below, filed via `gh issue create`.
 
 Lead does not implement anything in any phase; what enters the
 backlog is an issue or a comment, never a fix.
@@ -262,11 +295,12 @@ description (see "Opening the PR" above) — including "don't sample
 existing issues for style." Plain English written for a junior
 developer, don't duplicate what's visible in the source, keep it
 tight. Issue-specific structure: lead with the concern in one
-sentence, then the cause with a file/symbol citation, then the
-suggested direction (not a fix — issues describe, they don't
-implement). The title states the concern as a complete thought
-("status-verb keys can drift from helper returns"), not a
-stacked-qualifier noun phrase ("an unenforced string protocol").
+sentence, then the cause with a file/symbol citation, then a
+suggested direction (issues point to a resolvable concern; they
+don't prescribe the implementation). The title states the concern
+as a complete thought ("status-verb keys can drift from helper
+returns"), not a stacked-qualifier noun phrase ("an unenforced
+string protocol").
 
 ## Branch and commit protocol
 
@@ -283,9 +317,9 @@ stacked-qualifier noun phrase ("an unenforced string protocol").
   before branching; the session-start sync may be stale by the time
   scope arrives.
 - One commit per task — task ↔ commit. Lead is the committer.
-- Commit message style matches the existing repo log: short subject,
-  issue `(#N)` in parens where applicable, no body unless needed, no
-  `Co-Authored-By` trailer, no agent prefix.
+- Commit message style: short subject with `[claude]` prefix,
+  issue `(#N)` in parens where applicable, no body unless needed,
+  no `Co-Authored-By` trailer.
 - **Push to origin after every commit.** Never push to `main` without
   explicit instruction from the user.
 - **Tests and lint are the developer's gate, run once.** The
@@ -328,16 +362,17 @@ findings than the previous one. If a review starts producing scope-creep
 findings ("while we're here, we should also..."), reject them — that's
 divergence, not convergence.
 
-**Defend behaviour, not surface.** Any machinery the maintainer
-proposes — a test, a glossary, a regen step, a cross-reference rule —
-should defend meaningful behaviour with a real consumer, not pin
-incidental surface (a count nothing depends on, a docstring phrasing,
-a constant whose value is arbitrary, a term used loosely). When a
-finding proposes alignment machinery for a prose inconsistency or an
-arbitrary value, ask whether removing the decorative side dissolves
-the concern. If yes, simplify the surface rather than build structure
-to protect it. The maintainer frames these as simplification
-candidates; the lead is the fallback gate at triage.
+**Defend behaviour, not surface.** Any machinery proposed — a
+test, a glossary, a regen step, a cross-reference rule, a backlog
+issue — should defend meaningful behaviour with a real consumer,
+not pin incidental surface (a count nothing depends on, a
+docstring phrasing, a constant whose value is arbitrary, a term
+used loosely). When a finding proposes alignment machinery for a
+prose inconsistency or an arbitrary value, ask whether removing
+the decorative side dissolves the concern. If yes, simplify the
+surface rather than build structure to protect it. The maintainer
+frames these as simplification candidates in per-task review; the
+lead is the fallback gate at post-merge triage.
 
 **Compensation patterns are tells.** Some diffs include scaffolding
 that compensates for what the change doesn't do — a comment
@@ -401,22 +436,22 @@ fully drained.
 
 ## Marking agent-authored GitHub items
 
-GitHub artifacts raised by an agent should be marked so a reader can
-tell at a glance whether a comment, issue, or PR came from an agent
-or from a person. The distinction matters for triage — it's signal
-that helps reviewers weight the artifact appropriately.
+Agent-authored GitHub items should be marked so a reader can tell
+at a glance whether a commit, comment, issue, or PR came from an
+agent or from a person. The distinction matters for triage — it's
+signal that helps reviewers weight the artifact appropriately.
 
-- **Titles** (PRs, issues): prefix with `[claude]`.
+- **Subjects and titles** (commit subjects, PR titles, issue
+  titles): prefix with `[claude]`.
 - **Bodies and comments** (PR descriptions, issue bodies, PR
   comments, issue comments): append the documented Claude Code
   footer at the end of the body:
 
   > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
 
-- **Commits stay clean** — no prefix, no footer — matching the
-  conventional repo log style. Commits are immutable history; an
-  agent-attribution marker would clutter the log without adding
-  signal.
+- **Commit bodies stay clean** — no footer. The subject prefix
+  carries the signal; a footer on every commit would clutter the
+  log.
 
 ## Hard rules
 

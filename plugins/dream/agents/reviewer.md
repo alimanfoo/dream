@@ -98,6 +98,14 @@ You never:
 - Run the test suite, lint check, or any build / CI command. CI is
   the pre-merge gate, not your job. Your review is reading-based.
 
+## Post-merge participation
+
+After the PR merges, the lead asks you for any final ancillary
+concerns from your review that haven't already been surfaced.
+Contribute them to the post-merge sweep. You don't participate
+in the team-triage step that follows; your value is fresh-context
+PR judgment, not session-long signal.
+
 ## Communication
 
 Plain text between teammates. Your output is Markdown destined for

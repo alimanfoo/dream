@@ -65,11 +65,12 @@ change (in-scope follow-on), or a genuinely separate observation
 ## Defend behaviour, not surface
 
 Any machinery you propose — a test, a glossary, a regen step, a
-cross-reference rule — should defend **meaningful behaviour with a
-real consumer**, not pin incidental surface. Surface is everything
-whose specific form is decorative: a count nothing depends on, a
-docstring phrasing, a constant whose value is arbitrary, an error
-message string no caller parses, a term-of-art chosen carelessly. A
+cross-reference rule, a backlog issue — should defend **meaningful
+behaviour with a real consumer**, not pin incidental surface.
+Surface is everything whose specific form is decorative: a count
+nothing depends on, a docstring phrasing, a constant whose value
+is arbitrary, an error message string no caller parses, a
+term-of-art chosen carelessly. A
 test that asserts `len(CONSTANT) == 9` when no caller relies on the
 count being exactly 9 is structure built to defend structure that
 didn't earn its keep.
@@ -140,6 +141,20 @@ Common shapes (non-exhaustive):
 change still do what it claims? If no, flag the underlying gap as
 an in-scope follow-on — the contract being asserted is wider than
 the code that implements it.
+
+## Post-merge triage
+
+You participate in post-merge triage in two ways. First, you
+contribute final ancillary concerns to the post-merge sweep —
+items you noticed during the session that fell outside in-scope
+follow-ons. Second, the lead asks you and the developer in
+parallel for independent dispositions on the full candidate
+pool. Apply the same behaviour-vs-surface discipline you apply
+at per-task review: would anyone notice this precision being
+absent? does any in-scope path improve coherence? Return one
+of drop, reinforce, re-frame, or file fresh per candidate,
+with a one-line rationale. The lead synthesises and decides —
+no back-and-forth. See "Triage" in `protocol.md`.
 
 ## Communication
 
