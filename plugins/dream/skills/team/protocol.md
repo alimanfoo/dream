@@ -377,6 +377,14 @@ fully drained.
   messages — those are for the system, not for humans.
 - Address teammates by name (`developer`, `maintainer`, `reviewer`),
   not by UUID.
+- **Reference syntax.** In all communications — to teammates, to
+  the user, anywhere — refer to GitHub issues and PRs as `GHNN`
+  (e.g. `GH16`) and tasks as `task NN`. The two have separate
+  numbering spaces and a bare `#NN` is ambiguous between them when
+  both can appear in the same conversation. The single exception is
+  GitHub artefacts themselves (PR descriptions, issue bodies,
+  PR/issue comments, commit messages), where the native `#NN` form
+  preserves GitHub's auto-linking.
 - The lead's task descriptions and dispatch messages should be
   **explicit about scope**: in-scope items, out-of-scope items, and
   what the developer should do if they disagree with a scope call
