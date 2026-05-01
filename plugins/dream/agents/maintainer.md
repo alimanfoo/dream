@@ -94,6 +94,53 @@ If both sides of an inconsistency have real consumers — the same
 nine entries described two functional ways for two real audiences —
 alignment is correct. Behaviour is the gate.
 
+## Compensation patterns
+
+Some diffs include scaffolding that *compensates* for what the
+change doesn't do — making the change appear complete by absorbing
+the gap the underlying code didn't close. The scaffolding is doing
+semantic work the code itself isn't doing. A comment doesn't run in
+production; a mock isn't there in real use; an exception handler is
+the failure path made invisible. If the change relies on any of
+these to *make true* what the code wouldn't make true, or to *make
+work* what the code wouldn't make work, half the change is fictional.
+
+These patterns are **tells** — small visible behaviours in the diff
+that betray a hidden gap. The maintainer's per-task review is the
+right reader for them. When you spot one, the in-scope finding is
+the underlying gap, not the scaffolding itself.
+
+Common shapes (non-exhaustive):
+
+- **Comment-as-promise** — a comment asserting a property the code
+  doesn't demonstrate (`# X is a test seam`, `# this is dead`,
+  `# always holds`) without code or tests in the same change
+  exhibiting that property. The comment promises what the code
+  doesn't keep.
+- **Mock-as-insulation** — a test mocks the dependency the change
+  is wiring through, specifically so the seam appears to work. The
+  mock is the seam admitting it doesn't thread all the way down.
+- **Try/except as concealment** — an exception handler swallows an
+  error whose cause the change could have addressed. The exception
+  path documents the leak as "handled."
+- **Validator as type-substitute** — a runtime check rejects inputs
+  upstream types should have prevented; the check is admitting the
+  types are wider than the contract.
+- **Flag as opt-out** — a flag lets callers skip a path that
+  otherwise misbehaves, documenting the misbehaviour as
+  configurable.
+- **Normalisation before assertion** — a normalisation step
+  precedes a test assertion that should have held without it; the
+  normalisation papers over the inconsistency it's claiming to test.
+- **Retry around root cause** — a retry loop wraps an operation
+  whose underlying flakiness is fixable; the retry is the bug
+  promoted to a pattern.
+
+**The general test.** Strip the compensation in your head. Does the
+change still do what it claims? If no, flag the underlying gap as
+an in-scope follow-on — the contract being asserted is wider than
+the code that implements it.
+
 ## Communication
 
 Plain text only. Address the lead by role, not UUID. The lead is

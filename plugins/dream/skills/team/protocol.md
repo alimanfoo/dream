@@ -69,8 +69,21 @@ calls — only describes findings.
 After all in-session tasks are complete and the branch has been
 pushed, the lead opens a PR for the session branch. Title and body
 markers follow "Marking agent-authored GitHub items" below. The body
-follows the repo's contribution norms with a few specific
-dispositions:
+follows the dispositions below — these are canonical for PR
+content, voice, and structure — together with any documented
+contribution rules the repo provides (a ``CONTRIBUTING.md``, a PR
+template).
+
+**Don't sample existing PRs for style.** The reflex to read recent
+PRs in the same repo to "match the established style" lands on
+whatever noise was in the three PRs the agent happened to open —
+most repos have heterogeneous styles across contributors, and the
+sample isn't a style. Documented contribution rules
+(``CONTRIBUTING.md``, a PR template, a commit message convention)
+are real and should be followed; the existing PR log is not a style
+reference. (Searching prior issues for content overlap, per the
+deepen step in "Ancillary findings → GitHub issues," is a different
+activity and remains required.)
 
 **Don't duplicate the diff.** File paths, renames, exact textual
 edits, method signatures, line-level changes — all visible in the
@@ -90,14 +103,21 @@ issues sit open as triage debt. Verify after opening: `gh pr view
 fixed.
 
 **Plain English, written for a junior developer joining the team.**
-Lead with the *why*, then the *what*. Imagine your reader is fluent
-in the codebase but wasn't in the session with you — they don't
-have your context. Avoid agent-coined terms-of-art ("the latent
-test injection seam") and internal-protocol vocabulary ("drained
-depth-first per task") in the user-facing description; if a concept
-needs a name, use the one a colleague would already know. If a
-sentence is stacking three clauses of qualification onto one
-thought, split it or cut it.
+Lead with the *why*, then the *what*. The reader is fluent in the
+codebase but wasn't in the session with you and does not know the
+dream:team plugin exists. The PR describes the **code change**, not
+the **process that produced it**: if a sentence references the
+protocol, a role on it, or the way it organises work, that sentence
+does not belong here. Internal-protocol vocabulary — *the protocol*,
+*lead* / *developer* / *maintainer* / *reviewer* as role labels,
+*task* as the unit of dream-team work, *post-merge sweep*,
+*maintenance chain*, *depth-first drain*, *follow-on*, *ancillary
+finding* — should never appear in the description. Agent-coined
+terms-of-art coined mid-session ("the latent test injection seam")
+are out for the same reason: the reader hasn't been in the session.
+If a concept needs a name, use the one a colleague would already
+know. If a sentence stacks three clauses of qualification, split it
+or cut it.
 
 **Test plan only when a human still has work to do.** By the time a
 dream-team PR opens, three gates have already run: the developer's
@@ -238,10 +258,11 @@ Lead does not implement anything in any phase; what enters the
 backlog is an issue or a comment, never a fix.
 
 **Issue shape.** Issues follow the same dispositions as the PR
-description (see "Opening the PR" above): plain English written for
-a junior developer, don't duplicate what's visible in the source,
-keep it tight. Issue-specific structure: lead with the concern in
-one sentence, then the cause with a file/symbol citation, then the
+description (see "Opening the PR" above) — including "don't sample
+existing issues for style." Plain English written for a junior
+developer, don't duplicate what's visible in the source, keep it
+tight. Issue-specific structure: lead with the concern in one
+sentence, then the cause with a file/symbol citation, then the
 suggested direction (not a fix — issues describe, they don't
 implement). The title states the concern as a complete thought
 ("status-verb keys can drift from helper returns"), not a
@@ -317,6 +338,20 @@ arbitrary value, ask whether removing the decorative side dissolves
 the concern. If yes, simplify the surface rather than build structure
 to protect it. The maintainer frames these as simplification
 candidates; the lead is the fallback gate at triage.
+
+**Compensation patterns are tells.** Some diffs include scaffolding
+that compensates for what the change doesn't do — a comment
+asserting a property the code doesn't demonstrate, a test mock
+insulating the change from the dependency it's wiring through, an
+exception handler swallowing an error whose cause the change could
+address, a runtime validator rejecting inputs upstream types should
+have prevented. The scaffolding does semantic work the code itself
+isn't doing, making the change appear complete by absorbing the gap.
+When the maintainer spots one, the in-scope finding is the
+underlying gap, not the scaffolding itself. General test: strip the
+compensation in your head — does the change still do what it claims?
+See "Compensation patterns" in the maintainer agent definition for a
+fuller list of common shapes.
 
 ## Task ordering
 
