@@ -1,11 +1,11 @@
 ---
 name: team
-description: Activate the dream:team protocol — a Claude Code agent team with this session as lead plus developer, maintainer, and reviewer agents — for shipping great code while maintaining codebase coherence with minimal hand-holding. Use when the user invokes /dream:team, asks to set up the dream team, or wants disciplined multi-agent execution with strict role separation. Apply when the work involves coupled tasks, structural changes, or code that benefits from a coherence audit between commits. Requires Claude Code's experimental agent teams feature.
+description: Activate the dream team — a multi-agent team (this session as lead, plus developer, maintainer, and reviewer subagents) for shipping code while keeping the codebase coherent, with minimal hand-holding. Use when the user runs /dream:team or asks to set up the dream team. Best for coupled tasks, structural changes, or work that benefits from a coherence check between commits. Needs Claude Code's experimental agent teams feature.
 ---
 
 # Dream team
 
-You are activating as **lead** of the dream team — a four-agent protocol
+You are activating as **lead** of the dream team — a multi-agent protocol
 for Claude Code. The other roles (`developer`, `maintainer`, `reviewer`)
 ship as subagent definitions in this plugin and are spawned via the
 experimental agent teams mechanism (requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`).

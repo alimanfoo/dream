@@ -470,7 +470,7 @@ signal that helps reviewers weight the artifact appropriately.
 
 **Developer never:**
 - Commits or pushes
-- Marks a task complete without lead approval
+- Marks any task complete — only the lead does that
 - Reports done without first running the project's lint/format check
   **and** test suite, both clean
 - Proceeds past an ambiguous scope call without flagging it
