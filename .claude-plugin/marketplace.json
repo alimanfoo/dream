@@ -8,7 +8,7 @@
     {
       "name": "dream",
       "source": "./plugins/dream",
-      "description": "A software development multi-agent team plugin for Claude Code."
+      "description": "A multi-agent team for shipping great code while maintaining codebase coherence with minimal hand-holding."
     }
   ]
 }
