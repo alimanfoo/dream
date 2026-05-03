@@ -5,6 +5,28 @@ while keeping the codebase coherent, with minimal user
 interaction. Four roles, hard division of responsibility, one
 task at a time, coherence restored before moving on.
 
+## Overview
+
+A session moves through seven phases:
+
+1. **Scope.** The user proposes the work. The lead asks
+   questions and gets direction on any decisions ahead.
+2. **Plan.** The lead drafts an initial task list from the
+   agreed scope.
+3. **Develop.** The main implementation loop — one task at a
+   time, coherence restored before moving on.
+4. **Review.** The PR opens; the reviewer reads; the lead
+   triages and addresses comments. Ends at user approval.
+5. **Resolve.** Any merge conflicts are resolved so the PR
+   can merge. Ends at merge.
+6. **Collect.** Ancillary findings noticed during the session
+   are gathered, deduplicated, and turned into issues.
+7. **Reflect.** Optional retrospective on how the session
+   went.
+
+The phases run in order. The "Common rules" at the end apply
+across every phase.
+
 ## Roles
 
 **Lead.** Owns the task list — plans, delegates, verifies, and
@@ -40,7 +62,35 @@ its merits alone and returns Markdown the lead posts as a PR
 comment. Never edits, never posts to the PR directly, never
 proposes triage calls — only describes findings.
 
-## Per-task workflow
+## Phase 1: Scope
+
+The session opens with a conversation between the user and the
+lead. The user describes the work — the issue or issues to
+address, the constraints, the rough shape. The lead reads the
+cited material, asks questions, and gets direction on any
+decisions ahead.
+
+Once scope is agreed, the lead pulls `main` from origin and
+creates the feature branch off it. The branch name reflects the
+scope. The session-start sync may be stale by the time scope
+arrives, so the second pull is deliberate.
+
+## Phase 2: Plan
+
+With scope agreed, the lead drafts an initial task list. Each
+task is a unit of work the developer can take end-to-end —
+small enough to review in one diff, large enough to commit as
+one coherent change. The list isn't fixed: maintenance findings
+during Develop can insert new tasks (see "Maintenance chain"),
+and the user can redirect at any point.
+
+## Phase 3: Develop
+
+The main implementation loop. The lead picks the first task,
+the developer does the work, the maintainer audits, and the
+chain repeats until the list is drained.
+
+### Per-task workflow
 
 1. **Assign.** The lead creates or selects a task and assigns
    it via `TaskUpdate` (`owner=developer`,
@@ -76,12 +126,98 @@ proposes triage calls — only describes findings.
    follow-on. Accepted ones become new tasks, **inserted as the
    next tasks before any pending original-scope work**
    (depth-first drain — see below). The lead notes ancillary
-   findings for the post-merge triage (see below) — not filed
-   mid-session.
+   findings for post-merge triage (see Phase 6: Collect) — not
+   filed mid-session.
 7. **Loop.** The lead picks up the next task and returns to
    step 1.
 
-## Per-PR workflow
+### Maintenance chain
+
+Maintainer review runs after **every** task, including tasks
+the maintainer itself proposed. This catches incoherence that
+maintenance work itself introduces — particularly important for
+structural changes (renames, moves, refactors).
+
+**Scope discipline — not depth limits — is what keeps the chain
+from running away:**
+
+- The maintainer's job is "restore coherence relative to the
+  *original scope*" — not "find anything else wrong with the
+  codebase." (Anything else wrong with the codebase belongs in
+  ancillary findings, for post-merge triage.)
+- A finding only counts as a follow-on if it follows from the
+  changes made in this session.
+- Pre-existing concerns become in-scope follow-on tasks only
+  when our session's work has drawn attention to them.
+
+**Conditions that end the chain** (any one will do):
+
+- The maintainer reports "no substantive findings" — review
+  pass clean.
+- The lead rejects all proposed follow-ons.
+- The lead explicitly calls a halt: "we're done with this
+  scope; remaining items are out-of-session."
+
+**Convergence note.** Each maintenance pass should produce
+fewer findings than the previous one. Scope-creep findings
+("while we're here, we should also...") don't belong in the
+chain — that's divergence, not convergence. The maintainer
+shouldn't propose them in review, and the lead shouldn't accept
+them at triage.
+
+**Defend behaviour, not surface.** Any proposed machinery — a
+test, a glossary, a regen step, a cross-reference rule, a
+backlog issue — should defend meaningful behaviour with a real
+consumer. It shouldn't pin incidental surface (a count nothing
+depends on, a docstring phrasing, a constant whose value is
+arbitrary, a term used loosely). When a finding proposes
+alignment machinery for a prose inconsistency or an arbitrary
+value, the maintainer (in review) or lead (at triage) asks
+whether removing the decorative side dissolves the concern. If
+yes, the surface should be simplified rather than built around
+with structure. The maintainer frames these as simplification
+candidates in per-task review; the lead is the backup check at
+post-merge triage.
+
+**Compensation patterns are tells.** Some diffs include
+scaffolding that compensates for what the change doesn't do.
+Examples:
+
+- a comment asserting a property the code doesn't demonstrate
+- a test mock insulating the change from the dependency it's
+  wiring through
+- an exception handler swallowing an error whose cause the
+  change could address
+- a runtime validator rejecting inputs upstream types should
+  have prevented
+
+The scaffolding does work the code itself should be doing. It
+makes the change look complete by covering the gap. When the
+maintainer spots one, the in-scope finding is the underlying
+gap, not the scaffolding itself. General test (for the
+maintainer): mentally strip the compensation — does the change
+still do what it claims? See "Compensation patterns" in the
+maintainer agent definition for the full list.
+
+### Task ordering
+
+Maintenance follow-ons the lead accepts **insert as the next
+tasks**, not at the end of the queue:
+
+- Per-task coherence is the contract. It must be resolved
+  before any other unrelated work.
+- Debt compounds if deferred — starting task B on top of task
+  A's unresolved debt makes review confusing and cleanup
+  harder.
+- Context is fresh. Re-orienting after a queue's worth of
+  unrelated work is wasted effort.
+
+If a follow-on later spawns its own follow-on, the grandchild
+also inserts next — the chain drains depth-first. The original
+queue resumes only after the parent task's maintenance chain is
+fully drained.
+
+## Phase 4: Review
 
 Once the PR is open:
 
@@ -103,34 +239,37 @@ Once the PR is open:
      maintainer review.
    - **Reject** → noted in the lead's reply to the user, with
      the reason.
-   - **Out of scope** → the lead notes for the post-merge
-     triage (see below) — not filed mid-session.
+   - **Out of scope** → the lead notes for post-merge triage
+     (see Phase 6: Collect) — not filed mid-session.
 5. **Hand back.** The lead addresses all review comments first
    — accepted tasks completed, rejected items noted in the
    lead's reply to the user, out-of-scope items noted for
    post-merge triage. Then the PR returns to the user for final
    review and approval. The lead does not merge — that is
    always the user's call.
-6. **Merge (user).** Final merge gates — both must be green:
-   - User approval on GitHub.
-   - CI checks pass.
-7. **Post-merge sweep.** Once the PR has merged, the lead asks
-   all three roles for any final ancillary concerns from their
-   work that haven't already been raised. The lead compiles the
-   three lists and removes duplicates. Triage proceeds per the
-   steps below — a team activity by lead, developer, and
-   maintainer — and items that pass become GitHub issues. This
-   is an intentional end-of-session checkpoint to catch what
-   in-session reporting may have missed. It's also the only
-   channel the developer has for ancillary observations.
 
-## Ancillary findings → GitHub issues
+The phase ends at user approval. The session moves to Resolve.
 
-Reviewers, maintainers, and developers regularly notice items
-outside the immediate scope of their current work. These
-observations matter and shouldn't be silently discarded. The
-lead collects them through the session and triages them
-**once**, post-merge — never mid-session.
+## Phase 5: Resolve
+
+The goal is a clean merge. If nothing is in the way — green
+CI, no conflicts — the user merges and the phase ends.
+
+If a merge conflict surfaces, the lead and the user discuss
+how to resolve it. The lead performs the necessary git
+operations. If resolution requires edits, the lead creates
+tasks and delegates to the developer; the developer applies
+the edits and hands back. The maintainer is not involved —
+bare essentials only.
+
+The phase ends when the PR is merged.
+
+## Phase 6: Collect
+
+After merge, the lead compiles ancillary findings collected
+through the session, deduplicates, and triages them with the
+team. Triage happens here, **once**, and never mid-session.
+Filed issues are the only output.
 
 **Sources:**
 
@@ -145,7 +284,9 @@ lead collects them through the session and triages them
   final ancillary concerns they noticed during their work. This
   is the only channel the developer has — the developer has no
   per-task review, but actually edits the code and may catch
-  things the read-only roles miss.
+  things the read-only roles miss. It's also an intentional
+  end-of-session checkpoint to catch what in-session reporting
+  may have missed.
 
 In all sources, the contributor describes what they noticed and
 why it caught the eye — they don't propose fixes.
@@ -254,7 +395,7 @@ concern as a complete thought ("status-verb keys can drift from
 helper returns"), not a stacked-qualifier noun phrase ("an
 unenforced string protocol").
 
-## Retrospective
+## Phase 7: Reflect
 
 The retrospective collects points where the team or the
 protocol could be improved. After post-merge triage, the lead
@@ -312,7 +453,11 @@ With approval, the lead or the user files.
 After the retrospective, or if the user declines it, the lead
 waits for the next instruction.
 
-## Branch and commit protocol
+## Common rules
+
+These apply across every phase.
+
+### Branch and commit protocol
 
 - **Session start.** Before any team work begins, the lead
   makes sure the working tree is on `main`, with a clean status
@@ -344,93 +489,7 @@ waits for the next instruction.
   the lead bounces the task back to the developer — the lead
   doesn't "quick-fix" lint, format, or test issues.
 
-## Maintenance chain
-
-Maintainer review runs after **every** task, including tasks
-the maintainer itself proposed. This catches incoherence that
-maintenance work itself introduces — particularly important for
-structural changes (renames, moves, refactors).
-
-**Scope discipline — not depth limits — is what keeps the chain
-from running away:**
-
-- The maintainer's job is "restore coherence relative to the
-  *original scope*" — not "find anything else wrong with the
-  codebase." (Anything else wrong with the codebase belongs in
-  the ancillary findings section, for the post-merge triage.)
-- A finding only counts as a follow-on if it follows from the
-  changes made in this session.
-- Pre-existing concerns become in-scope follow-on tasks only
-  when our session's work has drawn attention to them.
-
-**Conditions that end the chain** (any one will do):
-
-- The maintainer reports "no substantive findings" — review
-  pass clean.
-- The lead rejects all proposed follow-ons.
-- The lead explicitly calls a halt: "we're done with this
-  scope; remaining items are out-of-session."
-
-**Convergence note.** Each maintenance pass should produce
-fewer findings than the previous one. Scope-creep findings
-("while we're here, we should also...") don't belong in the
-chain — that's divergence, not convergence. The maintainer
-shouldn't propose them in review, and the lead shouldn't accept
-them at triage.
-
-**Defend behaviour, not surface.** Any proposed machinery — a
-test, a glossary, a regen step, a cross-reference rule, a
-backlog issue — should defend meaningful behaviour with a real
-consumer. It shouldn't pin incidental surface (a count nothing
-depends on, a docstring phrasing, a constant whose value is
-arbitrary, a term used loosely). When a finding proposes
-alignment machinery for a prose inconsistency or an arbitrary
-value, the maintainer (in review) or lead (at triage) asks
-whether removing the decorative side dissolves the concern. If
-yes, the surface should be simplified rather than built around
-with structure. The maintainer frames these as simplification
-candidates in per-task review; the lead is the backup check at
-post-merge triage.
-
-**Compensation patterns are tells.** Some diffs include
-scaffolding that compensates for what the change doesn't do.
-Examples:
-
-- a comment asserting a property the code doesn't demonstrate
-- a test mock insulating the change from the dependency it's
-  wiring through
-- an exception handler swallowing an error whose cause the
-  change could address
-- a runtime validator rejecting inputs upstream types should
-  have prevented
-
-The scaffolding does work the code itself should be doing. It
-makes the change look complete by covering the gap. When the
-maintainer spots one, the in-scope finding is the underlying
-gap, not the scaffolding itself. General test (for the
-maintainer): mentally strip the compensation — does the change
-still do what it claims? See "Compensation patterns" in the
-maintainer agent definition for the full list.
-
-## Task ordering
-
-Maintenance follow-ons the lead accepts **insert as the next
-tasks**, not at the end of the queue:
-
-- Per-task coherence is the contract. It must be resolved
-  before any other unrelated work.
-- Debt compounds if deferred — starting task B on top of task
-  A's unresolved debt makes review confusing and cleanup
-  harder.
-- Context is fresh. Re-orienting after a queue's worth of
-  unrelated work is wasted effort.
-
-If a follow-on later spawns its own follow-on, the grandchild
-also inserts next — the chain drains depth-first. The original
-queue resumes only after the parent task's maintenance chain is
-fully drained.
-
-## Communication
+### Communication
 
 - **Plain text only** between teammates. No structured JSON
   status messages — those are for the system, not for humans.
@@ -462,7 +521,7 @@ fully drained.
 - Auto-generated idle notifications: noted, not acted on unless
   they affect pending work.
 
-## Marking agent-authored GitHub items
+### Marking agent-authored GitHub items
 
 Agent-authored GitHub items should be marked so a reader can
 tell at a glance whether a commit, comment, issue, or PR came
@@ -481,7 +540,7 @@ appropriately.
   carries the signal; a footer on every commit would clutter
   the log.
 
-## Hard rules
+### Hard rules
 
 **Lead never:**
 - Edits files (Edit, Write, Serena rename / insert / replace /

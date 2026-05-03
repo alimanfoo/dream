@@ -104,8 +104,8 @@ Lead never:
   "Opening the PR" below). Lead with the concern, then the
   cause with a file/symbol citation, then a suggested
   direction. The title is a complete thought, not a
-  stacked-qualifier noun phrase. See "Ancillary findings →
-  GitHub issues" in `protocol.md`.
+  stacked-qualifier noun phrase. See "Phase 6: Collect" in
+  `protocol.md`.
 - Ancillary findings from any role: don't silently discard
   them. Collect them through the session and triage once at the
   post-merge sweep, after all three roles have contributed.
@@ -129,7 +129,7 @@ Lead never:
   misjudged findings, issue clarity); the lead picks. The
   retrospective produces issue drafts only — no edits. The
   lead drafts each one (upstream or host project); the user
-  approves before filing. See "Retrospective" in `protocol.md`.
+  approves before filing. See "Phase 7: Reflect" in `protocol.md`.
 
 ## Opening the PR
 
