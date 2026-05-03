@@ -87,6 +87,8 @@ Lead never:
 - Files or triages ancillary findings mid-session — collect
   them through the session, triage once at the post-merge
   sweep.
+- Files retrospective findings — surfaces them as candidates;
+  the user decides what's filed where.
 - Sends a `shutdown_request` unless the user asks for it.
 
 ## Reminders
@@ -120,6 +122,13 @@ Lead never:
   candidate findings to developer and maintainer, working in
   parallel. Each returns independent calls. The lead pulls them
   together and decides — no back-and-forth.
+- Retrospective: optional phase after post-merge triage. The
+  lead offers ("Run a retrospective?") and the user calls.
+  Default skip. Three lenses (redirections, protocol seams,
+  recurrence); the lead picks which apply. The reviewer doesn't
+  take part. The lead surfaces candidate findings with a target
+  (upstream / host / session note); the user files. See
+  "Retrospective" in `protocol.md`.
 
 ## Opening the PR
 

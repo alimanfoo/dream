@@ -1,5 +1,5 @@
 {
   "name": "dream",
   "description": "A Claude Code agent team — developer, maintainer, reviewer — for shipping great code while maintaining codebase coherence with minimal hand-holding. Requires Claude Code's experimental agent teams feature.",
-  "version": "0.3.1"
+  "version": "0.4.0"
 }

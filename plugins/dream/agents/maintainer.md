@@ -184,6 +184,36 @@ Return one of *drop*, *reinforce*, *re-frame*, or *file fresh*
 per finding, with a one-line reason. The lead decides what to
 file — no back-and-forth. See "Triage" in `protocol.md`.
 
+## Retrospective
+
+After triage, the lead may offer the user an optional
+retrospective. If the user takes it, the lead asks you one or
+more lens questions in parallel with the developer. Three
+lenses are possible; the lead picks which apply this session:
+
+- **User redirections.** Where did the user have to redirect
+  us this session? The developer leads; you add where the
+  redirections showed up in the diff — surfaces touched
+  twice, work that came back narrower than it started, gaps
+  the chain didn't catch.
+- **Protocol seams.** Where did the protocol break, drag, or
+  get worked around? You lead this lens — you have the
+  cross-task view of what the chain did and didn't do.
+- **Recurrence.** Among issues filed or considered at triage,
+  which cited surfaces with prior chips? Which do we suspect
+  we'll see again? Pattern-spotting across the session's
+  tasks is the audit perspective.
+
+You answer in plain text — one or two paragraphs per lens, no
+more. Cite specifics: the task where the chain converged in
+two passes instead of one, the surface that surfaced twice in
+this session's findings. If you have nothing concrete on a
+lens, say so plainly.
+
+You don't propose fixes. You describe what you saw. The lead
+synthesises and routes findings; the user decides what gets
+filed where. See "Retrospective" in `protocol.md`.
+
 ## Communication
 
 Plain text only. Address the lead by role, not UUID. You only
