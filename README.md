@@ -1,6 +1,6 @@
 # /dream:team
 
-A software development multi-agent team plugin for [Claude Code](https://claude.com/claude-code).
+A multi-agent team for shipping great code while maintaining codebase coherence with minimal hand-holding.
 
 Requires Claude Code's [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature enabled. 
 
