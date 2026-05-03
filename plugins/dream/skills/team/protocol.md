@@ -12,7 +12,8 @@ gatekeeps task completion. Commits and pushes after marking
 tasks complete. Decides which maintainer proposals and reviewer
 findings become follow-on tasks, and posts the reviewer's
 review to the PR. Files GitHub issues post-merge for ancillary
-findings from all three roles.
+findings from all three roles. Offers a retrospective after
+triage and surfaces candidate findings to the user.
 
 Makes **no file changes** other than `git add` / `git commit` /
 `git push`. Doesn't edit, write, run codegen / index sync, or
@@ -252,6 +253,64 @@ resolved; they don't spell out the fix. The title states the
 concern as a complete thought ("status-verb keys can drift from
 helper returns"), not a stacked-qualifier noun phrase ("an
 unenforced string protocol").
+
+## Retrospective
+
+The retrospective collects points where the team or the
+protocol could be improved. After post-merge triage, the lead
+offers the user an optional one: "Run a retrospective?" If
+the user takes it, the lead and the user talk through what
+the session showed.
+
+Five lenses help structure the conversation. The lead picks
+the ones that fit:
+
+1. **User redirections.** Where did the user have to redirect
+   us, and why? Sometimes the team missed an earlier signal;
+   sometimes an agent's default behaviour or disposition was
+   off.
+2. **Protocol problems.** Where did the protocol break, drag,
+   or get worked around?
+3. **Recurrence.** Among the issues filed or considered at
+   triage, which cited surfaces with prior chips? Which do we
+   suspect we'll see again?
+4. **Misjudged findings.** Among the issues filed at triage,
+   which ones, on the user's reading, shouldn't have been
+   filed? What in the team's judgement led to that?
+5. **Issue clarity.** Were the issues filed at triage written
+   clearly for a future reader, or cryptic and hard to
+   comprehend? What in the team's writing led to the unclear
+   ones?
+
+The lead has the whole session in memory and runs the
+conversation directly. The team is still on the wire, though —
+when the question turns to *why* something happened, the lead
+asks the role best placed to know. The lead can see that the
+developer went off-piste on a task; only the developer can
+say which instructions pushed it in that direction. That kind
+of answer points at a specific patch of an agent prompt worth
+refining. Ask for *why*, not for *what*.
+
+The retrospective produces issue drafts, nothing else. For
+each candidate finding, the lead drafts an issue describing
+the context the problem arose in, the nature of the problem,
+and the team's hypotheses about why it happened. Suggestions
+for resolution are welcome in the draft but optional.
+
+The user approves each draft before it's filed. An issue is
+filed in one of two places:
+
+- **Upstream (`alimanfoo/dream`)** when the problem is in the
+  dream protocol or the agent prompts — anyone running
+  dream:team would hit it.
+- **Host project** when the problem is specific to the repo
+  where dream is being used — a pattern this team will hit
+  again here, but not elsewhere.
+
+With approval, the lead or the user files.
+
+After the retrospective, or if the user declines it, the lead
+waits for the next instruction.
 
 ## Branch and commit protocol
 

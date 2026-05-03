@@ -120,6 +120,16 @@ Lead never:
   candidate findings to developer and maintainer, working in
   parallel. Each returns independent calls. The lead pulls them
   together and decides — no back-and-forth.
+- Retrospective: optional phase after triage, for surfacing
+  where the team or the protocol could be improved. The lead
+  offers ("Run a retrospective?") and, if the user takes it,
+  runs a conversation with them — calling on the developer or
+  maintainer for *why* context as needed. Five suggested
+  lenses (redirections, protocol problems, recurrence,
+  misjudged findings, issue clarity); the lead picks. The
+  retrospective produces issue drafts only — no edits. The
+  lead drafts each one (upstream or host project); the user
+  approves before filing. See "Retrospective" in `protocol.md`.
 
 ## Opening the PR
 
