@@ -1,14 +1,14 @@
 {
-  "name": "alimanfoo",
+  "name": "dream",
   "owner": {
     "name": "Alistair Miles"
   },
-  "description": "Claude Code plugins by alimanfoo.",
+  "description": "A Claude Code plugin by alimanfoo.",
   "plugins": [
     {
       "name": "dream",
       "source": "./plugins/dream",
-      "description": "Dream team — a four-agent protocol for Claude Code: a lead in the foreground, a developer that implements, a maintainer that audits coherence per task, and a reviewer that performs fresh-context PR review."
+      "description": "Dream:team — a multi-agent protocol for Claude Code."
     }
   ]
 }
