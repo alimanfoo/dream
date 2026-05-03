@@ -180,10 +180,6 @@ Once the PR is open:
    what in-session reporting may have missed; it is also the only
    channel the developer has for ancillary observations.
 
-**Re-review on subsequent PR pushes is opt-in.** A re-review means
-shutting down the existing `reviewer` and spawning a new one
-(preserving the fresh-context property).
-
 ## Ancillary findings → GitHub issues
 
 Reviewers, maintainers, and developers regularly notice items outside
