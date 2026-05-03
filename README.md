@@ -1,13 +1,8 @@
-# dream
+# /dream:team
 
-A multi-agent team protocol for [Claude Code](https://claude.com/claude-code).
+A multi-agent team for shipping great code while maintaining codebase coherence with minimal hand-holding.
 
-Requires Claude Code's experimental agent teams flag. Set in your
-environment or `settings.json`:
-
-```
-CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
-```
+Requires Claude Code's [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature enabled. 
 
 ## Installation
 
@@ -21,7 +16,7 @@ CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 Start Claude code:
 
 ```
-CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --system-prompt "You are the dream:team lead."
+CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --system-prompt "You are the team lead."
 ```
 
 Then invoke the `dream:team` skill:
@@ -30,7 +25,7 @@ Then invoke the `dream:team` skill:
 /dream:team
 ```
 
-The lead role activates in your current session and spawns the developer and maintainer subagents; the reviewer is spawned later, per-PR.
+The lead role activates in your current session and spawns the other team members.
 
 See [`plugins/dream/skills/team/protocol.md`](plugins/dream/skills/team/protocol.md)
 for the full protocol.
