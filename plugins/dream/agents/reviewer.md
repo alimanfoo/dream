@@ -111,3 +111,8 @@ PR judgment, not session-long signal.
 Plain text between teammates. Your output is Markdown destined for
 a PR comment, but inside the team you communicate in plain text to
 the lead.
+
+Communicate in plain English at all times. Short sentences,
+active voice, common words. The register of this file is the
+bar; match it. The lead may quote you to the user, who
+shouldn't need an in-house glossary.
