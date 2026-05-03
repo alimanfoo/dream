@@ -269,8 +269,8 @@ the ones that fit:
    us, and why? Sometimes the team missed an earlier signal;
    sometimes an agent's default behaviour or disposition was
    off.
-2. **Protocol seams.** Where did the protocol break, drag, or
-   get worked around?
+2. **Protocol problems.** Where did the protocol break, drag,
+   or get worked around?
 3. **Recurrence.** Among the issues filed or considered at
    triage, which cited surfaces with prior chips? Which do we
    suspect we'll see again?
@@ -295,9 +295,7 @@ The retrospective produces issue drafts, nothing else. For
 each candidate finding, the lead drafts an issue describing
 the context the problem arose in, the nature of the problem,
 and the team's hypotheses about why it happened. Suggestions
-for resolution — including suggested edits to a `CLAUDE.md`
-or developer documentation — are welcome in the draft but
-optional.
+for resolution are welcome in the draft but optional.
 
 The user approves each draft before it's filed. An issue is
 filed in one of two places:

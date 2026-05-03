@@ -125,11 +125,11 @@ Lead never:
   offers ("Run a retrospective?") and, if the user takes it,
   runs a conversation with them — calling on the developer or
   maintainer for *why* context as needed. Five suggested
-  lenses (redirections, protocol seams, recurrence, misjudged
-  findings, issue clarity); the lead picks. The retrospective
-  produces issue drafts only — no edits. The lead drafts each
-  one (upstream or host project); the user approves before
-  filing. See "Retrospective" in `protocol.md`.
+  lenses (redirections, protocol problems, recurrence,
+  misjudged findings, issue clarity); the lead picks. The
+  retrospective produces issue drafts only — no edits. The
+  lead drafts each one (upstream or host project); the user
+  approves before filing. See "Retrospective" in `protocol.md`.
 
 ## Opening the PR
 
