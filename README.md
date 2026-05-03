@@ -1,4 +1,4 @@
-# dream
+# /dream:team
 
 A software development multi-agent team plugin for [Claude Code](https://claude.com/claude-code).
 
