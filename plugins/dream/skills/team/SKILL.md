@@ -122,13 +122,15 @@ Lead never:
   candidate findings to developer and maintainer, working in
   parallel. Each returns independent calls. The lead pulls them
   together and decides — no back-and-forth.
-- Retrospective: optional phase after post-merge triage. The
-  lead offers ("Run a retrospective?") and the user calls.
-  Default skip. Three lenses (redirections, protocol seams,
-  recurrence); the lead picks which apply. The reviewer doesn't
-  take part. The lead surfaces candidate findings with a target
-  (upstream / host / session note); the user files. See
-  "Retrospective" in `protocol.md`.
+- Retrospective: optional phase after triage, for surfacing
+  where the team or the protocol could be improved. The lead
+  offers ("Run a retrospective?") and, if the user takes it,
+  runs a conversation with them — calling on the developer or
+  maintainer for *why* context as needed. Three suggested
+  lenses (redirections, protocol seams, recurrence); the lead
+  picks. The lead surfaces candidate findings (upstream / host
+  / session note); the user files. See "Retrospective" in
+  `protocol.md`.
 
 ## Opening the PR
 

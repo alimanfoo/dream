@@ -124,30 +124,3 @@ haven't. For each finding, ask two questions:
 Return one of *drop*, *reinforce*, *re-frame*, or *file fresh*
 per finding, with a one-line reason. The lead decides what to
 file — no back-and-forth. See "Triage" in `protocol.md`.
-
-## Retrospective
-
-After triage, the lead may offer the user an optional
-retrospective. If the user takes it, the lead asks you one or
-more lens questions in parallel with the maintainer. Three
-lenses are possible; the lead picks which apply this session:
-
-- **User redirections.** Where did the user have to redirect
-  us, and what earlier signal did we miss? You lead this lens
-  — redirections landed on your work directly.
-- **Protocol seams.** Where did the protocol break, drag, or
-  get worked around for you? The maintainer leads; you add
-  what the audit didn't see from your edits.
-- **Recurrence.** Among issues we filed or discussed at
-  triage, which cited surfaces with prior chips? Which do we
-  suspect we'll see again?
-
-You answer in plain text — one or two paragraphs per lens, no
-more. Cite specifics: the message that redirected you, the
-file path that took two attempts, the surface that's chipped
-before. If you have nothing concrete on a lens, say so plainly
-— a clean answer is a clean answer.
-
-You don't propose fixes. You describe what you saw. The lead
-synthesises and routes findings; the user decides what gets
-filed where. See "Retrospective" in `protocol.md`.

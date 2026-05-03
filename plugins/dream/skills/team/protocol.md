@@ -256,60 +256,38 @@ unenforced string protocol").
 
 ## Retrospective
 
-After post-merge triage, the lead offers the user an optional
-retrospective. Most sessions don't need one. A session where
-the user redirected the team often, or where the protocol felt
-like it was dragging, or where issues filed at triage cited
-surfaces with prior chips, often does. The retrospective is
-the team's only channel for what it learned about *itself* —
-signal the rest of the protocol doesn't have a home for.
+The retrospective collects points where the team or the
+protocol could be improved. After post-merge triage, the lead
+offers the user an optional one: "Run a retrospective?" If
+the user takes it, the lead and the user talk through what
+the session showed.
 
-**Trigger.** When triage is complete, the lead asks the user
-one sentence: "Run a retrospective?" Default skip. The lead
-doesn't argue with the answer. If the user declines, the lead
-waits for the next instruction — see "End of session" below.
-
-**Participants.** Lead, developer, and maintainer. The
-reviewer doesn't take part. Its fresh-per-PR context is the
-whole point of the role, and a retrospective would erode it.
-If the lead wants an outside read on a specific PR for
-retrospective purposes, that's a fresh reviewer spawn pointed
-at the merged PR — not a held-over reviewer.
-
-**Three lenses, lead picks which apply.** The retrospective
-gathers what the team learned through three lenses. The lead
-picks the lenses that fit this session. A session where the
-user didn't redirect the team has nothing to find on lens 1; a
-session where every issue at triage was a fresh surface has
-nothing on lens 3. Skip what doesn't apply.
+Three lenses help structure the conversation. The lead picks
+the ones that fit:
 
 1. **User redirections.** Where did the user have to redirect
-   us, and what earlier signal did we miss? The developer
-   leads — redirections landed on the developer's work
-   directly. The maintainer adds where they showed up in the
-   diff.
+   us, and what earlier signal did we miss?
 2. **Protocol seams.** Where did the protocol break, drag, or
-   get worked around? The maintainer leads — it has the
-   cross-task view of what the chain did and didn't do. The
-   developer adds friction the audit didn't see.
+   get worked around?
 3. **Recurrence.** Among the issues filed or considered at
    triage, which cited surfaces with prior chips? Which do we
-   suspect we'll see again? Both roles answer.
+   suspect we'll see again?
 
-For each lens the lead picks, the lead sends the question to
-developer and maintainer in parallel. Each returns one or two
-paragraphs in plain text. The lead pulls the answers together
-— no back-and-forth.
+The lead has the whole session in memory and runs the
+conversation directly. The team is still on the wire, though —
+when the question turns to *why* something happened, the lead
+asks the role best placed to know. The lead can see that the
+developer went off-piste on a task; only the developer can
+say which instructions pushed it in that direction. That kind
+of answer points at a specific patch of an agent prompt worth
+refining. Ask for *why*, not for *what*.
 
-**Findings and routing.** The lead synthesises candidate
-findings from the lens answers and surfaces each one to the
-user with a target. Three places a finding can land:
+Findings land in one of three places:
 
 - **Upstream (`alimanfoo/dream`).** A specific protocol or
   agent-prompt change a stranger could implement without
-  context from this session. The lead names the section or
-  file the change would touch. The user files the issue, not
-  the lead — same rule as ancillary-finding triage above.
+  context from this session. The user files the issue, not
+  the lead.
 - **Host project.** A pattern this team will hit again in the
   repo where dream is being used. The lead surfaces it; the
   user decides whether to add it to the host repo's
@@ -317,29 +295,8 @@ user with a target. Three places a finding can land:
   those files.
 - **Session note.** Said once to the user, then dropped.
 
-**Default to drop.** A retrospective with zero candidate
-findings is a normal outcome. The bar for upstream is *I can
-name the edit*. The bar for host is *I can name the pattern*.
-Below those, drop. Loose findings become protocol noise the
-same way loose issue-filing did before the Deepen phase.
-
-**Confabulation guards.** The team has just lived this
-session, but its memory is partial and the temptation to
-narrate a coherent story is real. Three guards:
-
-- **Cite or drop.** Each finding cites a specific message,
-  task, or commit. "We tend to..." with no citation drops.
-- **The lead doesn't lean.** The lead asks the lens questions
-  raw — no leading framing, no preferred answer in the prompt.
-- **Roles speak only to what they saw.** The developer doesn't
-  theorise about user intent; the maintainer doesn't speculate
-  about the developer's process.
-
-**End of session.** After the retrospective, or after the
-lead has offered it and the user has declined, the lead
-waits. The lead never sends `shutdown_request` unless the
-user asks. The session ends on the user's call, not the
-lead's.
+After the retrospective, or if the user declines it, the lead
+waits for the next instruction.
 
 ## Branch and commit protocol
 

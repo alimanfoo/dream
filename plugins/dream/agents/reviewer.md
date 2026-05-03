@@ -108,17 +108,6 @@ Pass them to the post-merge sweep. You don't take part in the
 team triage that follows. Your value is judging this PR with
 fresh eyes, not contributing across the whole session.
 
-## Retrospective
-
-You don't take part in the retrospective. Your value to the
-team is fresh per-PR context, and holding that across triage
-and into a retrospective would erode the only thing you bring.
-The retrospective takes the lead, the developer, and the
-maintainer. If the lead wants an outside read on a specific
-PR's quality at retrospective time, that's a fresh reviewer
-spawn pointed at the merged PR — not a reviewer held over from
-before. See "Retrospective" in `protocol.md`.
-
 ## Communication
 
 Plain text between teammates. Your output is Markdown for a PR
