@@ -262,7 +262,7 @@ offers the user an optional one: "Run a retrospective?" If
 the user takes it, the lead and the user talk through what
 the session showed.
 
-Three lenses help structure the conversation. The lead picks
+Five lenses help structure the conversation. The lead picks
 the ones that fit:
 
 1. **User redirections.** Where did the user have to redirect
@@ -272,6 +272,13 @@ the ones that fit:
 3. **Recurrence.** Among the issues filed or considered at
    triage, which cited surfaces with prior chips? Which do we
    suspect we'll see again?
+4. **Misjudged findings.** Among the issues filed at triage,
+   which ones, on the user's reading, shouldn't have been
+   filed? What in the team's judgement led to that?
+5. **Issue clarity.** Were the issues filed at triage written
+   clearly for a future reader, or cryptic and hard to
+   comprehend? What in the team's writing led to the unclear
+   ones?
 
 The lead has the whole session in memory and runs the
 conversation directly. The team is still on the wire, though —
@@ -282,18 +289,21 @@ say which instructions pushed it in that direction. That kind
 of answer points at a specific patch of an agent prompt worth
 refining. Ask for *why*, not for *what*.
 
-Findings land in one of three places:
+For each candidate finding, the lead drafts the proposal and
+the user approves before any issue is filed or edit made.
+A finding lands in one of two places:
 
 - **Upstream (`alimanfoo/dream`).** A specific protocol or
   agent-prompt change a stranger could implement without
-  context from this session. The user files the issue, not
-  the lead.
-- **Host project.** A pattern this team will hit again in the
-  repo where dream is being used. The lead surfaces it; the
-  user decides whether to add it to the host repo's
-  `CLAUDE.md` or a dream customisation. The lead doesn't edit
-  those files.
-- **Session note.** Said once to the user, then dropped.
+  context from this session. The lead drafts an issue; with
+  the user's approval, the lead or the user files it.
+- **Host project.** A finding whose cause and fix live in the
+  repo where dream is being used, not upstream. Options
+  include an issue raised on the host repo, an edit to its
+  `CLAUDE.md`, or an edit to other developer documentation in
+  the repo. The lead may draft an issue or propose an edit;
+  the user decides what's done and who does it. The lead
+  doesn't edit the host repo's documentation files directly.
 
 After the retrospective, or if the user declines it, the lead
 waits for the next instruction.
@@ -480,8 +490,8 @@ appropriately.
 - Files or triages ancillary findings mid-session — they're
   collected through the session and triaged once at the
   post-merge sweep
-- Files retrospective findings — surfaces them as candidates;
-  the user decides what's filed where
+- Files retrospective findings without an approved draft —
+  the user approves each one before anything is filed or edited
 - Sends a `shutdown_request` unless the user asks for it
 
 **Developer never:**
