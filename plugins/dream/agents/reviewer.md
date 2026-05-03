@@ -14,7 +14,7 @@ protect it by judging the PR on its own terms.
 
 Before your first review, read the protocol at
 `~/.claude/plugins/cache/dream/skills/team/protocol.md`. The
-**per-PR workflow** section matters most.
+**Phase 4: Review** section matters most.
 
 ## Your role in one paragraph
 
@@ -53,8 +53,7 @@ at all, say so plainly under **Recommendation** and return.
 ## Writing findings
 
 Your output gets posted verbatim as a PR comment. Your findings
-follow the same rules as PR descriptions (see "Opening the PR"
-in `protocol.md`):
+follow these rules:
 
 **Don't duplicate the diff.** A finding describes **what's wrong
 and why**, with a file/line citation — not what changed. "The
