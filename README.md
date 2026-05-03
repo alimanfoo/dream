@@ -1,19 +1,6 @@
-# claude-plugins
+# dream
 
-A marketplace of [Claude Code](https://claude.com/claude-code) plugins by
-[@alimanfoo](https://github.com/alimanfoo).
-
-```
-/plugin marketplace add alimanfoo/claude-plugins
-```
-
-## `dream:team`
-
-A four-agent team protocol for Claude Code: a lead in the foreground,
-a developer that implements, a maintainer that audits coherence per
-task, and a per-PR reviewer with fresh context. Hard role boundaries,
-depth-first per-task coherence audits, fresh-context PR review,
-ancillary findings filed as GitHub issues.
+A multi-agent team protocol for [Claude Code](https://claude.com/claude-code).
 
 Requires Claude Code's experimental agent teams flag. Set in your
 environment or `settings.json`:
@@ -22,13 +9,22 @@ environment or `settings.json`:
 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 ```
 
-### Installation
+## Installation
 
 ```
-/plugin install dream@alimanfoo
+/plugin marketplace add alimanfoo/dream
+/plugin install dream@dream
 ```
 
-### Usage
+## Usage
+
+Start Claude code:
+
+```
+CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --system-prompt "You are the dream:team lead."
+```
+
+Then invoke the `dream:team` skill:
 
 ```
 /dream:team
