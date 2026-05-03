@@ -100,15 +100,10 @@ Lead never:
   PR titles, and issue titles; Claude Code footer at the end of
   PR/issue/comment bodies. Commit bodies stay clean. See
   "Marking agent-authored GitHub items" in `protocol.md`.
-- PR descriptions: write for a junior developer who wasn't in
-  the session, in plain English. Don't duplicate what's visible
-  in the diff. Close issues addressed with `Closes #N` keywords
-  (per-issue, not comma-listed). Include a Test plan only when
-  a human still has work to do beyond CI. See "Opening the PR"
-  in `protocol.md`.
-- Issue descriptions: same rules as PR descriptions. Lead with
-  the concern, then the cause with a file/symbol citation, then
-  a suggested direction. The title is a complete thought, not a
+- Issue descriptions: same rules as PR descriptions (see
+  "Opening the PR" below). Lead with the concern, then the
+  cause with a file/symbol citation, then a suggested
+  direction. The title is a complete thought, not a
   stacked-qualifier noun phrase. See "Ancillary findings →
   GitHub issues" in `protocol.md`.
 - Ancillary findings from any role: don't silently discard
@@ -125,3 +120,85 @@ Lead never:
   candidate findings to developer and maintainer, working in
   parallel. Each returns independent calls. The lead pulls them
   together and decides — no back-and-forth.
+
+## Opening the PR
+
+After all in-session tasks are complete and the branch has been
+pushed, open a PR for the session branch. Title and body
+markers follow "Marking agent-authored GitHub items" in
+`protocol.md`. The body follows the rules below — these are the
+standard for PR content, voice, and structure. Follow them
+together with any contribution rules the repo has (a
+`CONTRIBUTING.md`, a PR template).
+
+**Don't sample existing PRs for style.** The instinct to read
+recent PRs to "match the house style" lands on whatever noise
+was in the three PRs the agent happened to open. Most repos
+have varied styles across contributors, and the sample isn't a
+style. Written contribution rules (`CONTRIBUTING.md`, a PR
+template, a commit message convention) are real and should be
+followed; the existing PR log is not a style reference.
+Searching prior issues for content overlap is a different
+activity, still required (see the deepen step in "Ancillary
+findings → GitHub issues" in `protocol.md`).
+
+**Don't duplicate the diff.** File paths, renames, exact
+textual edits, method signatures, line-level changes — all
+visible in the diff. The body is for **intent and context**:
+why the change is happening, what issue it addresses, decisions
+that aren't obvious from reading the code. Drop any sentence in
+the body that's information a reviewer would get from `git
+diff`.
+
+**Close the issues the PR addresses.** GitHub auto-closes an
+issue on merge only when the PR body has a closing keyword for
+it: `Closes #N`, `Fixes #N`, `Resolves #N`. The keyword is
+per-issue — a single keyword followed by a comma-separated list
+of numbers closes only the first number. Repeat the keyword for
+each issue, or put each on its own line. Without this, the PR
+merges and the issues the PR addressed sit open as triage debt.
+After opening, check: `gh pr view <N> --json
+closingIssuesReferences` should list every issue the PR fixed.
+
+**Plain English, written for a junior developer joining the
+team.** Lead with the *why*, then the *what*. The reader is
+fluent in the codebase but wasn't in the session and doesn't
+know the dream:team plugin exists.
+
+The PR describes the **code change**, not the **process that
+produced it**. If a sentence references the protocol, a role on
+it, or the way it organises work, that sentence doesn't belong
+here. Internal-protocol vocabulary should never appear in the
+description:
+
+- *the protocol*
+- *lead* / *developer* / *maintainer* / *reviewer* as role
+  labels
+- *task* as the unit of dream-team work
+- *post-merge sweep*
+- *maintenance chain*
+- *depth-first drain*
+- *follow-on*
+- *ancillary finding*
+
+Agent-coined terms-of-art ("the latent test injection seam")
+are out for the same reason: the reader hasn't been in the
+session. If a concept needs a name, use the one a colleague
+would already know. If a sentence stacks three clauses of
+qualification, split it or cut it.
+
+**Test plan only when a human still has work to do.** By the
+time a dream-team PR opens, three gates have already run: the
+developer's lint + test pass (pre-report), the commit hook
+(pre-commit), and CI (pre-merge). A "Test plan" checklist that
+repeats CI-covered work is noise. If forced to fill the
+template, the agent will pad it with nonsense items.
+
+Include the Test plan section only when a human genuinely needs
+to verify something CI doesn't cover. That includes visual
+checks on a UI change, manual reproduction of a hard-to-test
+bug, smoke tests against staging, or end-to-end exercises the
+suite cannot run. If there are no such steps, skip the section
+entirely. Doubt → skip. Don't make up for this by adding a
+"Verification" section listing what CI already covers — that's
+the same noise under a different name.
