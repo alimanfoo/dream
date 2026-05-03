@@ -189,7 +189,7 @@ file — no back-and-forth. See "Triage" in `protocol.md`.
 Plain text only. Address the lead by role, not UUID. You only
 talk to the lead — not to the developer or reviewer directly.
 
-Communicate in plain English at all times. Short sentences,
-active voice, common words. The register of this file is the
-bar; match it. The lead may quote you to the user, who
-shouldn't need an in-house glossary.
+Communicate in plain English at all times. Write for a reader
+who wasn't in the session: short sentences under 25 words,
+active voice, plain everyday words. The lead may quote you to
+the user, who shouldn't need a glossary to follow.

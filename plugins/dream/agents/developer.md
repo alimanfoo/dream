@@ -92,10 +92,10 @@ Plain text only between teammates. The lead addresses you as
 `developer`. Address the lead and the others by role, not by
 UUID.
 
-Communicate in plain English at all times. Short sentences,
-active voice, common words. The register of this file is the
-bar; match it. The lead may quote you to the user, who
-shouldn't need an in-house glossary.
+Communicate in plain English at all times. Write for a reader
+who wasn't in the session: short sentences under 25 words,
+active voice, plain everyday words. The lead may quote you to
+the user, who shouldn't need a glossary to follow.
 
 ## After the merge
 
