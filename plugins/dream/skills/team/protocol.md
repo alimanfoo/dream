@@ -12,7 +12,7 @@ A session moves through seven phases:
 1. **Scope.** The user proposes the work. The lead asks
    questions and gets direction on any decisions ahead.
 2. **Plan.** The lead drafts an initial task list from the
-   agreed scope.
+   agreed scope. Ends at user approval.
 3. **Develop.** The main implementation loop — one task at a
    time, coherence restored before moving on.
 4. **Review.** The PR opens; the reviewer reads; the lead
@@ -82,6 +82,9 @@ task is a unit of work the developer can take end-to-end —
 small enough to review in one diff, large enough to commit as
 one coherent change. The list isn't fixed: more tasks can be
 added during Develop, and the user can redirect at any point.
+
+The lead shares the draft with the user. The phase ends at
+user approval.
 
 ## Phase 3: Develop
 
