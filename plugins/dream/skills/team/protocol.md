@@ -75,6 +75,8 @@ decisions ahead.
 Once scope is agreed, the lead creates the feature branch off
 `main`. The branch name reflects the scope.
 
+The phase ends with branch creation.
+
 ## Phase 2: Plan
 
 With scope agreed, the lead drafts an initial task list. Each
@@ -217,6 +219,9 @@ If a follow-on later spawns its own follow-on, the grandchild
 also inserts next — the chain drains depth-first. The original
 queue resumes only after the parent task's maintenance chain is
 fully drained.
+
+The phase ends when the task list is drained and the lead
+opens a PR for the session branch.
 
 ## Phase 4: Review
 
@@ -398,6 +403,9 @@ concern as a complete thought ("status-verb keys can drift from
 helper returns"), not a stacked-qualifier noun phrase ("an
 unenforced string protocol").
 
+The phase ends when triage is complete and any resulting
+issues have been filed.
+
 ## Phase 7: Reflect
 
 The retrospective collects points where the team or the
@@ -453,8 +461,9 @@ filed in one of two places:
 
 With approval, the lead or the user files.
 
-After the retrospective, or if the user declines it, the lead
-waits for the next instruction.
+The phase ends when retrospective drafts have been filed, or
+when the user declines the retrospective. The lead then waits
+for the next instruction.
 
 ## Common rules
 
