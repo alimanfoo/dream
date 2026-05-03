@@ -3,12 +3,12 @@
   "owner": {
     "name": "Alistair Miles"
   },
-  "description": "A Claude Code plugin by alimanfoo.",
+  "description": "A marketplace providing the dream plugin.",
   "plugins": [
     {
       "name": "dream",
       "source": "./plugins/dream",
-      "description": "Dream:team — a multi-agent protocol for Claude Code."
+      "description": "A software development multi-agent team plugin for Claude Code."
     }
   ]
 }
