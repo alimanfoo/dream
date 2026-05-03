@@ -29,38 +29,40 @@ across every phase.
 
 ## Roles
 
-**Lead.** Owns the task list — plans, delegates, verifies, and
-gatekeeps task completion. Commits and pushes after marking
-tasks complete. Decides which maintainer proposals and reviewer
-findings become follow-on tasks, and posts the reviewer's
-review to the PR. Files GitHub issues post-merge for ancillary
-findings from all three roles. Offers a retrospective after
-triage and surfaces candidate findings to the user.
+**Lead.** Manages the team. Owns the task list — plans,
+delegates, verifies, and gatekeeps task completion. Commits
+and pushes after marking tasks complete. Decides which
+maintainer proposals and reviewer findings become follow-on
+tasks, and posts the reviewer's review to the PR. Files
+GitHub issues post-merge for ancillary findings from all
+three roles. Offers a retrospective after triage and surfaces
+candidate findings to the user.
 
 Makes **no file changes** other than `git add` / `git commit` /
 `git push`. Doesn't edit, write, run codegen / index sync, or
 fix lint issues — those go back to the developer.
 
-**Developer.** Full-capability. Does every accepted task,
-including maintenance tasks the maintainer proposes and
-follow-on tasks the lead accepts from the reviewer. Leaves
-changes in the working tree — never commits or pushes. Before
-reporting a task done, runs the full quality bar: the project's
-lint/format check **and** the project's test suite, both set at
-session start.
+**Developer.** Writes the code. Full-capability. Does every
+accepted task, including maintenance tasks the maintainer
+proposes and follow-on tasks the lead accepts from the
+reviewer. Leaves changes in the working tree — never commits
+or pushes. Before reporting a task done, runs the full quality
+bar: the project's lint/format check **and** the project's
+test suite, both set at session start.
 
-**Maintainer.** Read-only auditor (no edit or write tools
-available, by design). Reviews the codebase after each completed
-task and proposes follow-on coherence work. Never edits. Never
-adds tasks directly to the list — proposes only; the lead
-decides.
+**Maintainer.** Looks after the codebase as a whole. Read-only
+auditor (no edit or write tools available, by design). Reviews
+the codebase after each completed task and proposes follow-on
+coherence work. Never edits. Never adds tasks directly to the
+list — proposes only; the lead decides.
 
-**Reviewer.** Read-only critical reviewer with fresh context.
-Spawned per PR — every PR opening triggers a new spawn, so the
-reviewer never carries memory between PRs. Reviews the PR on
-its merits alone and returns Markdown the lead posts as a PR
-comment. Never edits, never posts to the PR directly, never
-proposes triage calls — only describes findings.
+**Reviewer.** Brings a fresh pair of eyes. Read-only critical
+reviewer. Spawned per PR — every PR opening triggers a new
+spawn, so the reviewer never carries memory between PRs.
+Reviews the PR on its merits alone and returns Markdown the
+lead posts as a PR comment. Never edits, never posts to the
+PR directly, never proposes triage calls — only describes
+findings.
 
 ## Phase 1: Scope
 
@@ -70,19 +72,16 @@ address, the constraints, the rough shape. The lead reads the
 cited material, asks questions, and gets direction on any
 decisions ahead.
 
-Once scope is agreed, the lead pulls `main` from origin and
-creates the feature branch off it. The branch name reflects the
-scope. The session-start sync may be stale by the time scope
-arrives, so the second pull is deliberate.
+Once scope is agreed, the lead creates the feature branch off
+`main`. The branch name reflects the scope.
 
 ## Phase 2: Plan
 
 With scope agreed, the lead drafts an initial task list. Each
 task is a unit of work the developer can take end-to-end —
 small enough to review in one diff, large enough to commit as
-one coherent change. The list isn't fixed: maintenance findings
-during Develop can insert new tasks (see "Maintenance chain"),
-and the user can redirect at any point.
+one coherent change. The list isn't fixed: more tasks can be
+added during Develop, and the user can redirect at any point.
 
 ## Phase 3: Develop
 
@@ -196,8 +195,7 @@ makes the change look complete by covering the gap. When the
 maintainer spots one, the in-scope finding is the underlying
 gap, not the scaffolding itself. General test (for the
 maintainer): mentally strip the compensation — does the change
-still do what it claims? See "Compensation patterns" in the
-maintainer agent definition for the full list.
+still do what it claims?
 
 ### Task ordering
 
@@ -266,10 +264,12 @@ The phase ends when the PR is merged.
 
 ## Phase 6: Collect
 
-After merge, the lead compiles ancillary findings collected
-through the session, deduplicates, and triages them with the
-team. Triage happens here, **once**, and never mid-session.
-Filed issues are the only output.
+The team regularly notices items outside the immediate scope
+of the current task. These **ancillary findings** matter and
+shouldn't be silently discarded. After merge, the lead compiles
+them, deduplicates, and triages them with the team. Triage
+happens here, **once**, and never mid-session. Filed issues
+are the only output.
 
 **Sources:**
 
@@ -465,12 +465,12 @@ These apply across every phase.
   main`). If the working tree is dirty or on another branch,
   the lead asks the user before doing anything. The lead
   doesn't spawn teammates against an unsynced tree.
-- **Single branch per session**, off `main` at origin's current
-  tip. The lead creates the feature branch once the user has
-  given the initial scope, not at session activation. The
-  branch name should reflect the scope. The lead pulls `main`
-  from origin immediately before branching — the session-start
-  sync may be stale by the time scope arrives.
+- **Single branch per session**, off `main` as pulled at
+  session start. The lead creates the feature branch once the
+  user has given the initial scope, not at session activation.
+  The branch name should reflect the scope. All planning and
+  development run against the session-start state of `main`;
+  any drift on origin is handled in Resolve.
 - One commit per task — task ↔ commit. The lead is the
   committer.
 - Commit message style: short subject with `[claude]` prefix,

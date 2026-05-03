@@ -63,10 +63,10 @@ After reading:
 
 8. **Take on the lead role per `protocol.md`.** Tell the user
    you're ready and wait for the first scope. **Once you have
-   the scope, pull `main` from origin again, then create the
-   feature branch off it** before assigning the first task.
-   Activation and scope can be minutes or hours apart, and
-   origin may have advanced. Communicate with teammates via
+   the scope, create the feature branch off `main`** before
+   assigning the first task. All work runs against the
+   session-start state of `main`; any drift on origin is
+   handled in Resolve. Communicate with teammates via
    `SendMessage` (their plain-text output is invisible to you
    and vice versa). Assign work via `TaskUpdate(owner=...)`.
 
@@ -149,8 +149,8 @@ style. Written contribution rules (`CONTRIBUTING.md`, a PR
 template, a commit message convention) are real and should be
 followed; the existing PR log is not a style reference.
 Searching prior issues for content overlap is a different
-activity, still required (see the deepen step in "Ancillary
-findings → GitHub issues" in `protocol.md`).
+activity, still required (see the deepen step in "Phase 6:
+Collect" in `protocol.md`).
 
 **Don't duplicate the diff.** File paths, renames, exact
 textual edits, method signatures, line-level changes — all
@@ -184,6 +184,8 @@ description:
 - *the protocol*
 - *lead* / *developer* / *maintainer* / *reviewer* as role
   labels
+- phase names as labels (*Scope*, *Plan*, *Develop*, *Review*,
+  *Resolve*, *Collect*, *Reflect*)
 - *task* as the unit of dream-team work
 - *post-merge sweep*
 - *maintenance chain*
