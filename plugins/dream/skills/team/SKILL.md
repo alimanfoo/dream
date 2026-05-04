@@ -72,10 +72,9 @@ After reading:
    `SendMessage` (their plain-text output is invisible to you
    and vice versa). Assign work via `TaskUpdate(owner=...)`.
 
-## Running the session
+## Your role and responsibilities, by phase
 
-Phase-specific instructions for the lead. Full detail in
-`protocol.md`.
+Full detail in `protocol.md`.
 
 ### Phase 1: Scope
 
