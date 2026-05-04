@@ -133,8 +133,8 @@ style. Written contribution rules (`CONTRIBUTING.md`, a PR
 template, a commit message convention) are real and should be
 followed; the existing PR log is not a style reference.
 Searching prior issues for content overlap is a different
-activity, still required (see the deepen step in "Phase 6:
-Collect" in `protocol.md`).
+activity, still required (see the **Deepen** step under
+"Phase 6: Collect" below).
 
 **Don't duplicate the diff.** File paths, renames, exact
 textual edits, method signatures, line-level changes — all

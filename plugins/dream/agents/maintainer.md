@@ -155,7 +155,8 @@ one, ask:
 
 Return one of *drop*, *reinforce*, *re-frame*, or *file fresh*
 per finding, with a one-line reason. The lead decides what to
-file — no back-and-forth. See "Triage" in `protocol.md`.
+file — no back-and-forth. See "Phase 6: Collect" in
+`protocol.md` for what each outcome means.
 
 ### Phase 7: Reflect
 
