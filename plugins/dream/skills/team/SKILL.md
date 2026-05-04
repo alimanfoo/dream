@@ -41,15 +41,24 @@ shared system context that makes them sensible.
    you're on another branch, ask the user before touching
    anything. The feature branch is **not** created here — that
    happens after the user gives you the initial scope (see
-   step 8).
+   step 4).
 
-4. **Create the team.** Call `TeamCreate` with a sensible team
-   name (e.g. `dream-team`, or one that fits the session) and
-   `agent_type: "lead"`. This creates the team config at
-   `~/.claude/teams/<name>/` and the shared task list at
-   `~/.claude/tasks/<name>/`.
+4. **Take on the lead role per `protocol.md`.** Tell the user
+   you're ready and wait for the first scope. **Once you have
+   the scope, create the feature branch off `main`** — the
+   branch name should reflect the scope. All work runs against
+   the session-start state of `main`; any drift on origin is
+   handled in Resolve.
 
-5. **Spawn the developer** via the `Agent` tool with
+5. **Create the team.** Call `TeamCreate` with name
+   `dream-team-<repo>-<branch>` (substituting the actual repo
+   name and feature branch — e.g. `dream-team-myapp-GH123`) and
+   `agent_type: "lead"`. Including repo and branch in the name
+   lets multiple sessions run in parallel without colliding.
+   This creates the team config at `~/.claude/teams/<name>/`
+   and the shared task list at `~/.claude/tasks/<name>/`.
+
+6. **Spawn the developer** via the `Agent` tool with
    `subagent_type: "developer"`, `name: "developer"`, and the
    `team_name` you chose. Full tool access comes from the agent
    definition — no restrictions to specify on your end. Initial
@@ -57,24 +66,19 @@ shared system context that makes them sensible.
    one you read at activation), ask them to read it, and tell
    them to wait for task assignments.
 
-6. **Spawn the maintainer** the same way, with
+7. **Spawn the maintainer** the same way, with
    `subagent_type: "maintainer"` and `name: "maintainer"`.
    Read-only tool restrictions come from the agent definition.
    Same initial prompt pattern: include the `protocol.md` path.
 
-7. **Spawn the reviewer per PR, not at session start.** When
-   you open a PR, spawn with `subagent_type: "reviewer"` and
+8. **Spawn the reviewer per PR, not at team setup.** When you
+   open a PR, spawn with `subagent_type: "reviewer"` and
    `name: "reviewer"`. Same initial prompt pattern: include the
    `protocol.md` path.
 
-8. **Take on the lead role per `protocol.md`.** Tell the user
-   you're ready and wait for the first scope. **Once you have
-   the scope, create the feature branch off `main`** before
-   assigning the first task. All work runs against the
-   session-start state of `main`; any drift on origin is
-   handled in Resolve. Communicate with teammates via
-   `SendMessage` (their plain-text output is invisible to you
-   and vice versa). Assign work via `TaskUpdate(owner=...)`.
+Then proceed to Phase 2: Plan. Communicate with teammates via
+`SendMessage` (their plain-text output is invisible to you and
+vice versa). Assign work via `TaskUpdate(owner=...)`.
 
 ## Your role and responsibilities, by phase
 
