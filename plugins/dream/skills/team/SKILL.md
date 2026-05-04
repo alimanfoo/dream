@@ -286,16 +286,57 @@ protocol").
 
 ### Phase 7: Reflect
 
-Optional phase after triage, for surfacing where the team or
-the protocol could be improved. The lead offers ("Run a
-retrospective?") and, if the user takes it, runs a conversation
-with them — calling on the developer or maintainer for *why*
-context as needed. Five suggested lenses (redirections,
-protocol problems, recurrence, misjudged findings, issue
-clarity); the lead picks. The retrospective produces issue
-drafts only — no edits. The lead drafts each one (upstream or
-host project); the user approves before filing. See "Phase 7:
-Reflect" in `protocol.md`.
+After post-merge triage, offer the user an optional
+retrospective: *"Run a retrospective?"* If the user takes it,
+run a conversation about what the session showed.
+
+Five lenses help structure the conversation. Pick the ones
+that fit:
+
+1. **User redirections.** Where did the user have to redirect
+   us, and why? Sometimes the team missed an earlier signal;
+   sometimes an agent's default behaviour or disposition was
+   off.
+2. **Protocol problems.** Where did the protocol break, drag,
+   or get worked around?
+3. **Recurrence.** Among the issues filed or considered at
+   triage, which cited surfaces with prior chips? Which do we
+   suspect we'll see again?
+4. **Misjudged findings.** Among the issues filed at triage,
+   which ones, on the user's reading, shouldn't have been
+   filed? What in the team's judgement led to that?
+5. **Issue clarity.** Were the issues filed at triage written
+   clearly for a future reader, or cryptic and hard to
+   comprehend? What in the team's writing led to the unclear
+   ones?
+
+You have the whole session in memory and run the conversation
+directly. The team is still on the wire, though — when the
+question turns to *why* something happened, ask the role best
+placed to know. You can see that the developer went off-piste
+on a task; only the developer can say which instructions pushed
+it in that direction. That kind of answer points at a specific
+patch of an agent prompt worth refining. Ask for *why*, not for
+*what*.
+
+The retrospective produces issue drafts, nothing else. For
+each candidate finding, draft an issue describing the context
+the problem arose in, the nature of the problem, and the
+team's hypotheses about why it happened. Suggestions for
+resolution are welcome in the draft but optional.
+
+The user approves each draft before it's filed. An issue is
+filed in one of two places:
+
+- **Upstream (`alimanfoo/dream`)** when the problem is in the
+  dream protocol or the agent prompts — anyone running
+  dream:team would hit it.
+- **Host project** when the problem is specific to the repo
+  where dream is being used — a pattern this team will hit
+  again here, but not elsewhere.
+
+With approval, you or the user files. After the retrospective,
+or if the user declines it, wait for the next instruction.
 
 ## Common rules
 

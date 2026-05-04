@@ -342,49 +342,13 @@ issues have been filed.
 
 ## Phase 7: Reflect
 
-The retrospective collects points where the team or the
-protocol could be improved. After post-merge triage, the lead
-offers the user an optional one: "Run a retrospective?" If
-the user takes it, the lead and the user talk through what
-the session showed.
+After post-merge triage, the lead offers the user an optional
+retrospective: a conversation about where the team or the
+protocol could be improved. If the user takes it, lead and user
+talk through what the session showed.
 
-Five lenses help structure the conversation. The lead picks
-the ones that fit:
-
-1. **User redirections.** Where did the user have to redirect
-   us, and why? Sometimes the team missed an earlier signal;
-   sometimes an agent's default behaviour or disposition was
-   off.
-2. **Protocol problems.** Where did the protocol break, drag,
-   or get worked around?
-3. **Recurrence.** Among the issues filed or considered at
-   triage, which cited surfaces with prior chips? Which do we
-   suspect we'll see again?
-4. **Misjudged findings.** Among the issues filed at triage,
-   which ones, on the user's reading, shouldn't have been
-   filed? What in the team's judgement led to that?
-5. **Issue clarity.** Were the issues filed at triage written
-   clearly for a future reader, or cryptic and hard to
-   comprehend? What in the team's writing led to the unclear
-   ones?
-
-The lead has the whole session in memory and runs the
-conversation directly. The team is still on the wire, though —
-when the question turns to *why* something happened, the lead
-asks the role best placed to know. The lead can see that the
-developer went off-piste on a task; only the developer can
-say which instructions pushed it in that direction. That kind
-of answer points at a specific patch of an agent prompt worth
-refining. Ask for *why*, not for *what*.
-
-The retrospective produces issue drafts, nothing else. For
-each candidate finding, the lead drafts an issue describing
-the context the problem arose in, the nature of the problem,
-and the team's hypotheses about why it happened. Suggestions
-for resolution are welcome in the draft but optional.
-
-The user approves each draft before it's filed. An issue is
-filed in one of two places:
+The retrospective produces issue drafts only — no edits. Drafts
+go to one of two places:
 
 - **Upstream (`alimanfoo/dream`)** when the problem is in the
   dream protocol or the agent prompts — anyone running
@@ -393,7 +357,14 @@ filed in one of two places:
   where dream is being used — a pattern this team will hit
   again here, but not elsewhere.
 
-With approval, the lead or the user files.
+The user approves each draft before it's filed.
+
+The team is still on the wire during the retrospective. When
+the question turns to *why* something happened, the lead asks
+the role best placed to know — only the developer can say which
+instructions pushed an off-piste decision in a particular
+direction; only the maintainer can say why a finding read as
+in-scope when it wasn't.
 
 The phase ends when retrospective drafts have been filed, or
 when the user declines the retrospective. The lead then waits
