@@ -5,51 +5,105 @@ while keeping the codebase coherent, with minimal user
 interaction. Four roles, hard division of responsibility, one
 task at a time, coherence restored before moving on.
 
+## Overview
+
+A session moves through seven phases:
+
+1. **Scope.** The user proposes the work. The lead asks
+   questions and gets direction on any decisions ahead.
+2. **Plan.** The lead drafts an initial task list from the
+   agreed scope. Ends at user approval.
+3. **Develop.** The main implementation loop — one task at a
+   time, coherence restored before moving on.
+4. **Review.** The PR opens; the reviewer reads; the lead
+   triages and addresses comments. Ends at user approval.
+5. **Resolve.** Any merge conflicts are resolved so the PR
+   can merge. Ends at merge.
+6. **Collect.** Ancillary findings noticed during the session
+   are gathered, deduplicated, and turned into issues.
+7. **Reflect.** Optional retrospective on how the session
+   went.
+
+The phases run in order. The "Common rules" at the end apply
+across every phase.
+
 ## Roles
 
-**Lead.** Owns the task list — plans, delegates, verifies, and
-gatekeeps task completion. Commits and pushes after marking
-tasks complete. Decides which maintainer proposals and reviewer
-findings become follow-on tasks, and posts the reviewer's review
-to the PR. Files GitHub issues post-merge for ancillary findings
-from all three roles. Offers a retrospective after triage and
-surfaces candidate findings to the user.
+**Lead.** Manages the team. Owns the task list — plans,
+delegates, verifies, and gatekeeps task completion. Commits
+and pushes after marking tasks complete. Decides which
+maintainer proposals and reviewer findings become follow-on
+tasks, and posts the reviewer's review to the PR. Files
+GitHub issues post-merge for ancillary findings from all
+three roles. Offers a retrospective after triage and surfaces
+candidate findings to the user.
 
 Makes **no file changes** other than `git add` / `git commit` /
 `git push`. Doesn't edit, write, run codegen / index sync, or
 fix lint issues — those go back to the developer.
 
-**Developer.** Full-capability. Does every accepted task,
-including maintenance tasks the maintainer proposes and
-follow-on tasks the lead accepts from the reviewer. Leaves
-changes in the working tree — never commits or pushes. Before
-reporting a task done, runs the full quality bar: the project's
-lint/format check **and** the project's test suite, both set at
-session start.
+**Developer.** Writes the code. Full-capability. Does every
+accepted task, including maintenance tasks the maintainer
+proposes and follow-on tasks the lead accepts from the
+reviewer. Leaves changes in the working tree — never commits
+or pushes. Before reporting a task done, runs the full quality
+bar: the project's lint/format check **and** the project's
+test suite, both set at session start.
 
-**Maintainer.** Read-only auditor (no edit or write tools
-available, by design). Reviews the codebase after each completed
-task and proposes follow-on coherence work. Never edits. Never
-adds tasks directly to the list — proposes only; the lead
-decides.
+**Maintainer.** Looks after the codebase as a whole. Read-only
+auditor (no edit or write tools available, by design). Reviews
+the codebase after each completed task and proposes follow-on
+coherence work. Never edits. Never adds tasks directly to the
+list — proposes only; the lead decides.
 
-**Reviewer.** Read-only critical reviewer with fresh context.
-Spawned per PR — every PR opening triggers a new spawn, so the
-reviewer never carries memory between PRs. Reviews the PR on its
-merits alone and returns Markdown the lead posts as a PR
-comment. Never edits, never posts to the PR directly, never
-proposes triage calls — only describes findings.
+**Reviewer.** Brings a fresh pair of eyes. Read-only critical
+reviewer. Spawned per PR — every PR opening triggers a new
+spawn, so the reviewer never carries memory between PRs.
+Reviews the PR on its merits alone and returns Markdown the
+lead posts as a PR comment. Never edits, never posts to the
+PR directly, never proposes triage calls — only describes
+findings.
 
-## Per-task workflow
+## Phase 1: Scope
+
+The session opens with a conversation between the user and the
+lead. The user describes the work — the issue or issues to
+address, the constraints, the rough shape. The lead reads the
+cited material, asks questions, and gets direction on any
+decisions ahead.
+
+Once scope is agreed, the lead creates the feature branch off
+`main`. The branch name reflects the scope.
+
+The phase ends with branch creation.
+
+## Phase 2: Plan
+
+With scope agreed, the lead drafts an initial task list. Each
+task is a unit of work the developer can take end-to-end —
+small enough to review in one diff, large enough to commit as
+one coherent change. The list isn't fixed: more tasks can be
+added during Develop, and the user can redirect at any point.
+
+The lead shares the draft with the user. The phase ends at
+user approval.
+
+## Phase 3: Develop
+
+The main implementation loop. The lead picks the first task,
+the developer does the work, the maintainer audits, and the
+chain repeats until the list is drained.
+
+### Per-task workflow
 
 1. **Assign.** The lead assigns a task to the developer and
    sends a scope message: explicit in-scope and out-of-scope
-   items, and what to do if the developer disagrees with a scope
-   decision (raise it; don't keep going).
+   items, and what to do if the developer disagrees with a
+   scope decision (raise it; don't keep going).
 2. **Implement.** The developer does the work, runs the
-   project's lint/format check and test suite, and reports back.
-   Lead and developer go back and forth in plain text until the
-   lead is satisfied.
+   project's lint/format check and test suite, and reports
+   back. Lead and developer go back and forth in plain text
+   until the lead is satisfied.
 3. **Verify.** The lead reads `git diff` to check correctness
    and that the work stays in scope, and where useful exercises
    the feature end-to-end. The lead doesn't re-run lint or
@@ -65,155 +119,15 @@ proposes triage calls — only describes findings.
 6. **Triage.** The lead accepts or rejects each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
    next tasks before any pending original-scope work**
-   (depth-first drain — see "Task ordering"). Ancillary findings
-   are held for the post-merge triage — not filed mid-session.
+   (depth-first drain — see "Task ordering"). Ancillary
+   findings are held for post-merge triage (see Phase 6:
+   Collect) — not filed mid-session.
 7. **Loop.** Next task, back to step 1.
 
-## Per-PR workflow
+### Maintenance chain
 
-Once the PR is open:
-
-1. **Spawn.** The lead spawns a fresh `reviewer` (no session
-   memory).
-2. **Review.** The reviewer studies the PR — description, diff,
-   related issue, source files where needed. The reviewer
-   returns Markdown for the lead to post as a single PR comment.
-   The Markdown has a recommendation, findings grouped by
-   severity (blocking / non-blocking / nits), and a separate
-   "out of scope but noticed" section for ancillary findings.
-3. **Post.** The lead posts the review verbatim to the PR as a
-   single comment. Not a formal `gh pr review` (approve /
-   request changes) — those carry more weight than a
-   fresh-context first pass should.
-4. **Triage.** The lead decides on each finding:
-   - **Accept** → becomes a follow-on task on the task list,
-     handled by the standard per-task workflow including
-     maintainer review.
-   - **Reject** → noted in the lead's reply to the user, with
-     the reason.
-   - **Out of scope** → held for the post-merge triage.
-5. **Hand back.** The lead addresses all review comments first —
-   accepted tasks completed, rejections explained, out-of-scope
-   items held — then returns the PR to the user for final review
-   and approval. The lead does not merge; that is always the
-   user's call.
-6. **Merge (user).** Final merge gates — both must be green:
-   - User approval on GitHub.
-   - CI checks pass.
-7. **Post-merge sweep.** Once the PR has merged, the lead asks
-   all three roles for any final ancillary concerns from their
-   work that haven't already been raised. The lead compiles the
-   three lists and removes duplicates. Triage is a team activity
-   by lead, developer, and maintainer; items that pass become
-   GitHub issues. This is an intentional end-of-session
-   checkpoint to catch what in-session reporting may have
-   missed. It's also the only channel the developer has for
-   ancillary observations.
-
-## Ancillary findings → GitHub issues
-
-Reviewers, maintainers, and developers regularly notice items
-outside the immediate scope of their current work. These
-observations matter and shouldn't be silently discarded. The
-lead collects them through the session and triages them
-**once**, post-merge — never mid-session.
-
-**Sources:**
-
-- **In-session, from the maintainer.** Each task review report
-  includes an "out of scope but noticed" section listing
-  pre-existing items the maintainer noticed but didn't flag as
-  in-scope follow-ons.
-- **In-session, from the reviewer.** The PR review includes the
-  same section.
-- **Post-merge sweep.** Once the PR has merged, the lead asks
-  all three roles (developer, maintainer, reviewer) for any
-  final ancillary concerns they noticed during their work. This
-  is the only channel the developer has — the developer has no
-  per-task review, but actually edits the code and may catch
-  things the read-only roles miss.
-
-In all sources, the contributor describes what they noticed and
-why it caught the eye — they don't propose fixes.
-
-**Timing.** Triage happens **once**, after PR merge and after
-the post-merge sweep has gathered all three sources. Batching
-has a purpose: dedup across sources, a full picture before
-judging, and a single uninterrupted triage moment.
-
-**Triage outcomes.** Each surviving finding ends as one of four
-outcomes. Triage is a team activity: the lead presents
-candidates to developer and maintainer in parallel, each returns
-independent calls per finding, and the lead pulls them together
-to decide. The four outcomes:
-
-- **Drop** — duplicate of an existing open issue, or fails the
-  bar for filing. For a duplicate, the lead may comment on the
-  existing issue if the new sighting adds evidence (a second
-  occurrence, a different angle).
-- **Reinforce** — related to an existing open issue but not
-  identical. The lead comments on the open issue with the new
-  angle rather than opening a new one. (Comments on existing
-  issues aren't gated — the issue is already filed and extra
-  context is cheap.)
-- **Re-frame** — recurrence on a surface with prior chips, open
-  or closed. The lead files one issue at the **contract
-  level**: names the surface (the function, the parameter, the
-  contract), and lists the prior chips with `#N` references.
-  The recurrence pattern itself is the behaviour gap — chips
-  landing on the same surface is evidence of an unresolved
-  contract. So Re-frame clears the gate independently. This is
-  the outcome that prevents the chain.
-- **File fresh** — no related issue on the surface, and the
-  finding clears the gate. The lead opens a standalone issue.
-
-The bar for filing a **new** issue is *a behaviour gap with a
-real consumer*. Default to drop on findings that don't clear the
-bar. Surface-only findings don't earn an issue — for example, a
-future-proofing concern with no current consumer, a
-comment-clarity polish, or a test-vs-production drift with no
-behavioural consequence. Filing an issue commits future agent
-time. The bar exists because the cost is real. Closed-issue
-history is the protocol's memory: a future contributor on the
-same surface will see the shape and make the call in context.
-
-The developer's value at triage: knowing from editing whether a
-cited caller is real. The maintainer's: catching surface-only
-findings from a coherence perspective.
-
-The lead doesn't implement anything in this phase. What enters
-the backlog is an issue or a comment, never a fix.
-
-## Retrospective
-
-After post-merge triage, the lead offers the user an optional
-retrospective: a conversation about where the team or the
-protocol could be improved. If the user takes it, lead and user
-talk through what the session showed.
-
-The retrospective produces issue drafts only — no edits. Drafts
-go to one of two places:
-
-- **Upstream (`alimanfoo/dream`)** when the problem is in the
-  dream protocol or the agent prompts — anyone running
-  dream:team would hit it.
-- **Host project** when the problem is specific to the repo
-  where dream is being used — a pattern this team will hit
-  again here, but not elsewhere.
-
-The user approves each draft before it's filed.
-
-The team is still on the wire during the retrospective. When the
-question turns to *why* something happened, the lead asks the
-role best placed to know — only the developer can say which
-instructions pushed an off-piste decision in a particular
-direction; only the maintainer can say why a finding read as
-in-scope when it wasn't.
-
-## Maintenance chain
-
-Maintainer review runs after **every** task, including tasks the
-maintainer itself proposed. This catches incoherence that
+Maintainer review runs after **every** task, including tasks
+the maintainer itself proposed. This catches incoherence that
 maintenance work itself introduces — particularly important for
 structural changes (renames, moves, refactors).
 
@@ -223,11 +137,11 @@ from running away:**
 - The maintainer's job is "restore coherence relative to the
   *original scope*" — not "find anything else wrong with the
   codebase." (Anything else wrong with the codebase belongs in
-  the ancillary findings section, for the post-merge triage.)
+  ancillary findings, for post-merge triage.)
 - A finding only counts as a follow-on if it follows from the
   changes made in this session.
 - Pre-existing concerns become in-scope follow-on tasks only
-  when the session's work has drawn attention to them.
+  when our session's work has drawn attention to them.
 
 **Conditions that end the chain** (any one will do):
 
@@ -237,12 +151,12 @@ from running away:**
 - The lead explicitly calls a halt: "we're done with this
   scope; remaining items are out-of-session."
 
-**Convergence note.** Each maintenance pass should produce fewer
-findings than the previous one. Scope-creep findings ("while
-we're here, we should also...") don't belong in the chain —
-that's divergence, not convergence. The maintainer shouldn't
-propose them in review, and the lead shouldn't accept them at
-triage.
+**Convergence note.** Each maintenance pass should produce
+fewer findings than the previous one. Scope-creep findings
+("while we're here, we should also...") don't belong in the
+chain — that's divergence, not convergence. The maintainer
+shouldn't propose them in review, and the lead shouldn't accept
+them at triage.
 
 **Defend behaviour, not surface.** Any proposed machinery — a
 test, a glossary, a regen step, a cross-reference rule, a
@@ -275,18 +189,18 @@ makes the change look complete by covering the gap. When the
 maintainer spots one, the in-scope finding is the underlying
 gap, not the scaffolding itself. General test (for the
 maintainer): mentally strip the compensation — does the change
-still do what it claims? See "Compensation patterns" in the
-maintainer agent definition for the full list.
+still do what it claims?
 
-## Task ordering
+### Task ordering
 
 Maintenance follow-ons the lead accepts **insert as the next
 tasks**, not at the end of the queue:
 
-- Per-task coherence is the contract. It must be resolved before
-  any other unrelated work.
+- Per-task coherence is the contract. It must be resolved
+  before any other unrelated work.
 - Debt compounds if deferred — starting task B on top of task
-  A's unresolved debt makes review confusing and cleanup harder.
+  A's unresolved debt makes review confusing and cleanup
+  harder.
 - Context is fresh. Re-orienting after a queue's worth of
   unrelated work is wasted effort.
 
@@ -295,31 +209,199 @@ also inserts next — the chain drains depth-first. The original
 queue resumes only after the parent task's maintenance chain is
 fully drained.
 
-## Branches and commits
+The phase ends when the task list is drained and the lead
+opens a PR for the session branch.
 
-- **One branch per session**, off `main` at origin's current
-  tip. The branch name reflects the scope.
-- **One commit per task** — task ↔ commit. The lead is the
+## Phase 4: Review
+
+Once the PR is open:
+
+1. **Spawn.** The lead spawns a fresh `reviewer` (no session
+   memory).
+2. **Review.** The reviewer studies the PR — description, diff,
+   related issue, source files where needed. They return
+   Markdown the lead posts as a PR comment. The Markdown has a
+   recommendation, findings grouped by severity (blocking /
+   non-blocking / nits), and a separate "out of scope but
+   noticed" section for ancillary findings.
+3. **Post.** The lead posts the review verbatim to the PR as a
+   single comment. Not a formal `gh pr review` (approve /
+   request changes) — those carry more weight than a
+   fresh-context first pass should.
+4. **Triage.** The lead decides on each finding:
+   - **Accept** → becomes a follow-on task on the task list,
+     handled by the standard per-task workflow including
+     maintainer review.
+   - **Reject** → noted in the lead's reply to the user, with
+     the reason.
+   - **Out of scope** → held for post-merge triage (see Phase
+     6: Collect) — not filed mid-session.
+5. **Hand back.** The lead addresses all review comments first
+   — accepted tasks completed, rejections explained,
+   out-of-scope items held — then returns the PR to the user
+   for final review and approval. The lead does not merge; that
+   is always the user's call.
+
+The phase ends at user approval. The session moves to Resolve.
+
+## Phase 5: Resolve
+
+The goal is a clean merge. If nothing is in the way — green
+CI, no conflicts — the user merges and the phase ends.
+
+If a merge conflict surfaces, the lead and the user discuss
+how to resolve it. The lead performs the necessary git
+operations. If resolution requires edits, the lead creates
+tasks and delegates to the developer; the developer applies
+the edits and hands back. The maintainer is not involved —
+bare essentials only.
+
+The phase ends when the PR is merged.
+
+## Phase 6: Collect
+
+The team regularly notices items outside the immediate scope
+of the current task. These **ancillary findings** matter and
+shouldn't be silently discarded. After merge, the lead compiles
+them, deduplicates, and triages them with the team. Triage
+happens here, **once**, and never mid-session. Filed issues
+are the only output.
+
+**Sources:**
+
+- **In-session, from the maintainer.** Each task review report
+  includes an "out of scope but noticed" section listing
+  pre-existing items the maintainer noticed but didn't flag as
+  in-scope follow-ons.
+- **In-session, from the reviewer.** The PR review includes the
+  same section.
+- **Post-merge sweep.** Once the PR has merged, the lead asks
+  all three roles (developer, maintainer, reviewer) for any
+  final ancillary concerns they noticed during their work. This
+  is the only channel the developer has — the developer has no
+  per-task review, but actually edits the code and may catch
+  things the read-only roles miss. It's also an intentional
+  end-of-session checkpoint to catch what in-session reporting
+  may have missed.
+
+In all sources, the contributor describes what they noticed and
+why it caught the eye — they don't propose fixes.
+
+**Timing.** Triage happens **once**, after PR merge and after
+the post-merge sweep has gathered all three sources. During the
+session, the lead collects ancillary observations but doesn't
+file or triage them. Batching has a purpose: dedup across
+sources, a full picture before judging, and a single
+uninterrupted triage moment.
+
+**Triage outcomes.** Each surviving finding ends as one of four
+outcomes. Triage is a team activity: the lead presents
+candidates to developer and maintainer in parallel, each
+returns independent calls per finding, and the lead pulls them
+together to decide. The four outcomes:
+
+- **Drop** — duplicate of an existing open issue, or fails the
+  bar for filing. For a duplicate, the lead may comment on the
+  existing issue if the new sighting adds evidence (a second
+  occurrence, a different angle).
+- **Reinforce** — related to an existing open issue but not
+  identical. The lead comments on the open issue with the new
+  angle rather than opening a new one. (Comments on existing
+  issues aren't gated — the issue is already filed and extra
+  context is cheap.)
+- **Re-frame** — recurrence on a surface with prior chips, open
+  or closed. The lead files one issue at the **contract
+  level**: names the surface (the function, the parameter, the
+  contract), and lists the prior chips with `#N` references.
+  The recurrence pattern itself is the behaviour gap — chips
+  landing on the same surface is evidence of an unresolved
+  contract. So Re-frame clears the gate independently. This is
+  the outcome that prevents the chain.
+- **File fresh** — no related issue on the surface, and the
+  finding clears the gate. The lead opens a standalone issue.
+
+The bar for filing a **new** issue is *a behaviour gap with a
+real consumer*. Default to drop on findings that don't clear
+the bar. Surface-only findings don't earn an issue — for
+example, a future-proofing concern with no current consumer, a
+comment-clarity polish, or a test-vs-production drift with no
+behavioural consequence. Filing an issue commits future agent
+time. The bar exists because the cost is real. Closed-issue
+history is the protocol's memory: a future contributor on the
+same surface will see the shape and make the call in context.
+
+The developer's value at triage: knowing from editing whether a
+cited caller is real. The maintainer's: catching surface-only
+findings from a coherence perspective.
+
+The lead doesn't implement anything in this phase. What enters
+the backlog is an issue or a comment, never a fix.
+
+The phase ends when triage is complete and any resulting
+issues have been filed.
+
+## Phase 7: Reflect
+
+After post-merge triage, the lead offers the user an optional
+retrospective: a conversation about where the team or the
+protocol could be improved. If the user takes it, lead and user
+talk through what the session showed.
+
+The retrospective produces issue drafts only — no edits. Drafts
+go to one of two places:
+
+- **Upstream (`alimanfoo/dream`)** when the problem is in the
+  dream protocol or the agent prompts — anyone running
+  dream:team would hit it.
+- **Host project** when the problem is specific to the repo
+  where dream is being used — a pattern this team will hit
+  again here, but not elsewhere.
+
+The user approves each draft before it's filed.
+
+The team is still on the wire during the retrospective. When
+the question turns to *why* something happened, the lead asks
+the role best placed to know — only the developer can say which
+instructions pushed an off-piste decision in a particular
+direction; only the maintainer can say why a finding read as
+in-scope when it wasn't.
+
+The phase ends when retrospective drafts have been filed, or
+when the user declines the retrospective. The lead then waits
+for the next instruction.
+
+## Common rules
+
+These apply across every phase.
+
+### Branch and commit protocol
+
+- **Single branch per session**, off `main` as pulled at
+  session start. The lead creates the feature branch once the
+  user has given the initial scope, not at session activation.
+  The branch name should reflect the scope. All planning and
+  development run against the session-start state of `main`;
+  any drift on origin is handled in Resolve.
+- One commit per task — task ↔ commit. The lead is the
   committer.
-- **Commit message style:** short subject with `[claude]`
-  prefix, issue `(#N)` in parens where applicable, no body
-  unless needed, no `Co-Authored-By` trailer.
+- Commit message style: short subject with `[claude]` prefix,
+  issue `(#N)` in parens where applicable, no body unless
+  needed, no `Co-Authored-By` trailer.
 - The lead never pushes to `main` unless the user explicitly
   asks.
+- **Three gates, three actors.** Lint and tests are the
+  developer's gate, run once before reporting done. The lead
+  trusts that report and doesn't duplicate the work. The commit
+  hook is the cross-check at the commit step. CI is the
+  pre-merge gate. Three actors: developer (pre-report), commit
+  hook (pre-commit), CI (pre-merge).
 
-**Three gates, three actors.** Lint and tests are the
-developer's gate, run once before reporting done. The lead
-trusts that report and doesn't duplicate the work. The commit
-hook is the cross-check at the commit step. CI is the pre-merge
-gate. Three actors: developer (pre-report), commit hook
-(pre-commit), CI (pre-merge).
-
-## Communication
+### Communication
 
 - **Plain text only** between teammates. No structured JSON
   status messages — those are for the system, not for humans.
-- Teammates address each other by role name (`lead`,
-  `developer`, `maintainer`, `reviewer`), not by UUID.
+- Teammates address each other by name (`developer`,
+  `maintainer`, `reviewer`), not by UUID.
 - **Plain English at all times.** Write for a reader who wasn't
   in the session: short sentences under 25 words, active voice,
   plain everyday words. The lead may quote teammates to the
@@ -332,7 +414,7 @@ gate. Three actors: developer (pre-report), commit hook
   exception is GitHub artefacts themselves (PR descriptions,
   issue bodies, PR/issue comments, commit messages), where the
   native `#NN` form preserves GitHub's auto-linking.
-- The lead's task descriptions and dispatch messages are
+- The lead's task descriptions and dispatch messages should be
   **explicit about scope**: in-scope items, out-of-scope items,
   and what the developer should do if they disagree with a
   scope decision (raise it; don't keep going).
@@ -346,26 +428,20 @@ gate. Three actors: developer (pre-report), commit hook
 - Auto-generated idle notifications: noted, not acted on unless
   they affect pending work.
 
-## Marking agent-authored GitHub items
+### Hard rules
 
-Agent-authored GitHub items are marked so a reader can tell at a
-glance whether a commit, comment, issue, or PR came from an
-agent or from a person. The distinction matters for triage —
-it's signal that helps reviewers weigh the artifact
-appropriately.
-
-- **Subjects and titles** (commit subjects, PR titles, issue
-  titles) get the `[claude]` prefix.
-- **Bodies and comments** (PR descriptions, issue bodies, PR
-  comments, issue comments) end with the Claude Code footer:
-
-  > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
-
-- **Commit bodies stay clean** — no footer. The subject prefix
-  carries the signal; a footer on every commit would clutter
-  the log.
-
-## Hard rules
+**Lead never:**
+- Edits files (Edit, Write, Serena rename / insert / replace /
+  delete)
+- Runs project-specific codegen / index / sync steps
+- Fixes lint, format, or test failures directly — those go back
+  to the developer
+- Pushes to `main` unless the user explicitly asks
+- Merges PRs unless the user explicitly asks
+- Files or triages ancillary findings mid-session — they're
+  collected through the session and triaged once at the
+  post-merge sweep
+- Sends a `shutdown_request` unless the user asks for it
 
 **Developer never:**
 - Commits or pushes
