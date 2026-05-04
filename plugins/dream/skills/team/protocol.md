@@ -126,8 +126,8 @@ chain repeats until the list is drained.
 
 ### Maintenance chain
 
-Maintainer review runs after **every** task, including tasks the
-maintainer itself proposed. This catches incoherence that
+Maintainer review runs after **every** task, including tasks
+the maintainer itself proposed. This catches incoherence that
 maintenance work itself introduces — particularly important for
 structural changes (renames, moves, refactors).
 
@@ -141,7 +141,7 @@ from running away:**
 - A finding only counts as a follow-on if it follows from the
   changes made in this session.
 - Pre-existing concerns become in-scope follow-on tasks only
-  when the session's work has drawn attention to them.
+  when our session's work has drawn attention to them.
 
 **Conditions that end the chain** (any one will do):
 
@@ -151,12 +151,12 @@ from running away:**
 - The lead explicitly calls a halt: "we're done with this
   scope; remaining items are out-of-session."
 
-**Convergence note.** Each maintenance pass should produce fewer
-findings than the previous one. Scope-creep findings ("while
-we're here, we should also...") don't belong in the chain —
-that's divergence, not convergence. The maintainer shouldn't
-propose them in review, and the lead shouldn't accept them at
-triage.
+**Convergence note.** Each maintenance pass should produce
+fewer findings than the previous one. Scope-creep findings
+("while we're here, we should also...") don't belong in the
+chain — that's divergence, not convergence. The maintainer
+shouldn't propose them in review, and the lead shouldn't accept
+them at triage.
 
 **Defend behaviour, not surface.** Any proposed machinery — a
 test, a glossary, a regen step, a cross-reference rule, a
@@ -196,10 +196,11 @@ still do what it claims?
 Maintenance follow-ons the lead accepts **insert as the next
 tasks**, not at the end of the queue:
 
-- Per-task coherence is the contract. It must be resolved before
-  any other unrelated work.
+- Per-task coherence is the contract. It must be resolved
+  before any other unrelated work.
 - Debt compounds if deferred — starting task B on top of task
-  A's unresolved debt makes review confusing and cleanup harder.
+  A's unresolved debt makes review confusing and cleanup
+  harder.
 - Context is fresh. Re-orienting after a queue's worth of
   unrelated work is wasted effort.
 
@@ -399,8 +400,8 @@ These apply across every phase.
 
 - **Plain text only** between teammates. No structured JSON
   status messages — those are for the system, not for humans.
-- Teammates address each other by role name (`lead`,
-  `developer`, `maintainer`, `reviewer`), not by UUID.
+- Teammates address each other by name (`developer`,
+  `maintainer`, `reviewer`), not by UUID.
 - **Plain English at all times.** Write for a reader who wasn't
   in the session: short sentences under 25 words, active voice,
   plain everyday words. The lead may quote teammates to the
@@ -413,7 +414,7 @@ These apply across every phase.
   exception is GitHub artefacts themselves (PR descriptions,
   issue bodies, PR/issue comments, commit messages), where the
   native `#NN` form preserves GitHub's auto-linking.
-- The lead's task descriptions and dispatch messages are
+- The lead's task descriptions and dispatch messages should be
   **explicit about scope**: in-scope items, out-of-scope items,
   and what the developer should do if they disagree with a
   scope decision (raise it; don't keep going).
@@ -429,10 +430,10 @@ These apply across every phase.
 
 ### Marking agent-authored GitHub items
 
-Agent-authored GitHub items are marked so a reader can tell at a
-glance whether a commit, comment, issue, or PR came from an
-agent or from a person. The distinction matters for triage —
-it's signal that helps reviewers weigh the artifact
+Agent-authored GitHub items should be marked so a reader can
+tell at a glance whether a commit, comment, issue, or PR came
+from an agent or from a person. The distinction matters for
+triage — it's signal that helps reviewers weigh the artifact
 appropriately.
 
 - **Subjects and titles** (commit subjects, PR titles, issue
@@ -447,6 +448,19 @@ appropriately.
   the log.
 
 ### Hard rules
+
+**Lead never:**
+- Edits files (Edit, Write, Serena rename / insert / replace /
+  delete)
+- Runs project-specific codegen / index / sync steps
+- Fixes lint, format, or test failures directly — those go back
+  to the developer
+- Pushes to `main` unless the user explicitly asks
+- Merges PRs unless the user explicitly asks
+- Files or triages ancillary findings mid-session — they're
+  collected through the session and triaged once at the
+  post-merge sweep
+- Sends a `shutdown_request` unless the user asks for it
 
 **Developer never:**
 - Commits or pushes

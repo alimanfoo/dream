@@ -35,13 +35,13 @@ shared system context that makes them sensible.
    or an index sync that the developer runs after edits. Spell
    it out clearly so the developer knows when to re-run.
 
-3. **Sync the working tree.** Make sure you're on `main`, with a
-   clean working tree, pulled from origin (`git checkout main &&
-   git pull origin main`). If the working tree is dirty or
+3. **Sync the working tree.** Make sure you're on `main`, with
+   a clean working tree, pulled from origin (`git checkout main
+   && git pull origin main`). If the working tree is dirty or
    you're on another branch, ask the user before touching
-   anything. Don't spawn teammates against an unsynced tree. The
-   feature branch is **not** created here — that happens after
-   the user gives you the initial scope (see step 8).
+   anything. The feature branch is **not** created here — that
+   happens after the user gives you the initial scope (see
+   step 8).
 
 4. **Create the team.** Call `TeamCreate` with a sensible team
    name (e.g. `dream-team`, or one that fits the session) and
@@ -136,12 +136,13 @@ Searching prior issues for content overlap is a different
 activity, still required (see the **Deepen** step under
 "Phase 6: Collect" below).
 
-**Don't duplicate the diff.** File paths, renames, exact textual
-edits, method signatures, line-level changes — all visible in
-the diff. The body is for **intent and context**: why the change
-is happening, what issue it addresses, decisions that aren't
-obvious from reading the code. Drop any sentence in the body
-that's information a reviewer would get from `git diff`.
+**Don't duplicate the diff.** File paths, renames, exact
+textual edits, method signatures, line-level changes — all
+visible in the diff. The body is for **intent and context**:
+why the change is happening, what issue it addresses, decisions
+that aren't obvious from reading the code. Drop any sentence in
+the body that's information a reviewer would get from `git
+diff`.
 
 **Close the issues the PR addresses.** GitHub auto-closes an
 issue on merge only when the PR body has a closing keyword for
@@ -176,11 +177,11 @@ description:
 - *follow-on*
 - *ancillary finding*
 
-Agent-coined terms-of-art ("the latent test injection seam") are
-out for the same reason: the reader hasn't been in the session.
-If a concept needs a name, use the one a colleague would already
-know. If a sentence stacks three clauses of qualification, split
-it or cut it.
+Agent-coined terms-of-art ("the latent test injection seam")
+are out for the same reason: the reader hasn't been in the
+session. If a concept needs a name, use the one a colleague
+would already know. If a sentence stacks three clauses of
+qualification, split it or cut it.
 
 **Test plan only when a human still has work to do.** By the
 time a dream-team PR opens, three gates have already run: the
