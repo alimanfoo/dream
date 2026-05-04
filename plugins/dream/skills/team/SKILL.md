@@ -40,45 +40,12 @@ shared system context that makes them sensible.
    && git pull origin main`). If the working tree is dirty or
    you're on another branch, ask the user before touching
    anything. The feature branch is **not** created here — that
-   happens after the user gives you the initial scope (see
-   step 4).
+   happens at the end of Phase 1, once the scope is in.
 
 4. **Take on the lead role per `protocol.md`.** Tell the user
-   you're ready and wait for the first scope. **Once you have
-   the scope, create the feature branch off `main`** — the
-   branch name should reflect the scope. All work runs against
-   the session-start state of `main`; any drift on origin is
-   handled in Resolve.
+   you're ready and wait for the first scope.
 
-5. **Create the team.** Call `TeamCreate` with name
-   `dream-team-<repo>-<branch>` (substituting the actual repo
-   name and feature branch — e.g. `dream-team-myapp-GH123`) and
-   `agent_type: "lead"`. Including repo and branch in the name
-   lets multiple sessions run in parallel without colliding.
-   This creates the team config at `~/.claude/teams/<name>/`
-   and the shared task list at `~/.claude/tasks/<name>/`.
-
-6. **Spawn the developer** via the `Agent` tool with
-   `subagent_type: "developer"`, `name: "developer"`, and the
-   `team_name` you chose. Full tool access comes from the agent
-   definition — no restrictions to specify on your end. Initial
-   prompt: include the absolute path to `protocol.md` (the same
-   one you read at activation), ask them to read it, and tell
-   them to wait for task assignments.
-
-7. **Spawn the maintainer** the same way, with
-   `subagent_type: "maintainer"` and `name: "maintainer"`.
-   Read-only tool restrictions come from the agent definition.
-   Same initial prompt pattern: include the `protocol.md` path.
-
-8. **Spawn the reviewer per PR, not at team setup.** When you
-   open a PR, spawn with `subagent_type: "reviewer"` and
-   `name: "reviewer"`. Same initial prompt pattern: include the
-   `protocol.md` path.
-
-Then proceed to Phase 2: Plan. Communicate with teammates via
-`SendMessage` (their plain-text output is invisible to you and
-vice versa). Assign work via `TaskUpdate(owner=...)`.
+Then proceed to Phase 1: Scope.
 
 ## Your role and responsibilities, by phase
 
@@ -88,13 +55,45 @@ Full detail in `protocol.md`.
 
 See `protocol.md`.
 
+Once you have the scope, create the feature branch off `main` —
+the branch name should reflect the scope. All work runs against
+the session-start state of `main`; any drift on origin is
+handled in Resolve.
+
 ### Phase 2: Plan
 
 See `protocol.md`.
 
 ### Phase 3: Develop
 
-Per-task operations:
+#### Spin up the team
+
+1. **Create the team.** Call `TeamCreate` with name
+   `dream-team-<repo>-<branch>` (substituting the actual repo
+   name and feature branch — e.g. `dream-team-myapp-GH123`) and
+   `agent_type: "lead"`. Including repo and branch in the name
+   lets multiple sessions run in parallel without colliding.
+   This creates the team config at `~/.claude/teams/<name>/`
+   and the shared task list at `~/.claude/tasks/<name>/`.
+
+2. **Spawn the developer** via the `Agent` tool with
+   `subagent_type: "developer"`, `name: "developer"`, and the
+   `team_name` you chose. Full tool access comes from the agent
+   definition — no restrictions to specify on your end. Initial
+   prompt: include the absolute path to `protocol.md` (the same
+   one you read at activation), ask them to read it, and tell
+   them to wait for task assignments.
+
+3. **Spawn the maintainer** the same way, with
+   `subagent_type: "maintainer"` and `name: "maintainer"`.
+   Read-only tool restrictions come from the agent definition.
+   Same initial prompt pattern: include the `protocol.md` path.
+
+Once the team is up, communicate via `SendMessage` (their
+plain-text output is invisible to you and vice versa). Assign
+work via `TaskUpdate(owner=...)`.
+
+#### Per-task operations
 
 1. **Assign.** Use `TaskUpdate(owner=developer,
    status=in_progress)`. Send a `SendMessage` to the developer
@@ -210,7 +209,8 @@ Per-PR operations:
 
 1. **Spawn a fresh reviewer** (`subagent_type: "reviewer"`,
    `name: "reviewer"`). Every PR opens a fresh spawn — no
-   memory carries between PRs.
+   memory carries between PRs. Initial prompt: include the
+   absolute path to `protocol.md`, ask them to read it.
 2. **Post the review verbatim** as a single PR comment via
    `gh pr comment <N> --body "..."`. Not `gh pr review` — that
    carries more weight than a fresh-context first pass should.
@@ -226,7 +226,7 @@ See `protocol.md`.
 
 ### Phase 6: Collect
 
-Three phases — compile, deepen, dispose — before any issue is
+Three sub-phases — compile, deepen, dispose — before any issue is
 filed. Compile and deepen are yours; dispose brings in the
 team.
 
