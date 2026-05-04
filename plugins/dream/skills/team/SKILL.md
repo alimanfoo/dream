@@ -246,6 +246,14 @@ Lead never:
   sweep.
 - Sends a `shutdown_request` unless the user asks for it.
 
+### Branch and commit operations
+
+- Push to origin after every commit. Never push to `main`
+  unless the user explicitly asks.
+- If a lint or test hook fails on commit: bounce the task back
+  to the developer. Don't "quick-fix" lint, format, or test
+  issues yourself.
+
 ### Marking agent-authored GitHub items
 
 `[claude]` prefix on commit subjects, PR titles, and issue

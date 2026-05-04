@@ -471,12 +471,6 @@ These apply across every phase.
 
 ### Branch and commit protocol
 
-- **Session start.** Before any team work begins, the lead
-  makes sure the working tree is on `main`, with a clean status
-  and pulled from origin (`git checkout main && git pull origin
-  main`). If the working tree is dirty or on another branch,
-  the lead asks the user before doing anything. The lead
-  doesn't spawn teammates against an unsynced tree.
 - **Single branch per session**, off `main` as pulled at
   session start. The lead creates the feature branch once the
   user has given the initial scope, not at session activation.
@@ -488,18 +482,14 @@ These apply across every phase.
 - Commit message style: short subject with `[claude]` prefix,
   issue `(#N)` in parens where applicable, no body unless
   needed, no `Co-Authored-By` trailer.
-- **Push to origin after every commit.** The lead never pushes
-  to `main` unless the user explicitly asks.
-- **Tests and lint are the developer's gate, run once.** The
-  developer runs the project's lint/format check and test suite
-  before reporting done. The lead trusts that report and
-  doesn't duplicate the work. The commit hook is the
-  cross-check at the commit step. CI is the pre-merge gate.
-  Three gates, three actors: developer (pre-report), commit
+- The lead never pushes to `main` unless the user explicitly
+  asks.
+- **Three gates, three actors.** Lint and tests are the
+  developer's gate, run once before reporting done. The lead
+  trusts that report and doesn't duplicate the work. The commit
+  hook is the cross-check at the commit step. CI is the
+  pre-merge gate. Three actors: developer (pre-report), commit
   hook (pre-commit), CI (pre-merge).
-- If a lint or test hook fails on the lead's commit attempt,
-  the lead bounces the task back to the developer — the lead
-  doesn't "quick-fix" lint, format, or test issues.
 
 ### Communication
 
