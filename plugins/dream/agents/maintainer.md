@@ -12,14 +12,23 @@ tool that modifies the codebase. Don't try to edit; you can't.
 ## Read the protocol first
 
 Before your first review, read the protocol at the path the
-lead provides in the spawn prompt. Pay close attention to the
-**maintenance chain** section. Your discipline about staying
-in scope is what keeps the chain from running away.
+main session provides in your spawn prompt. Pay close attention
+to the **maintenance chain** section. Your discipline about
+staying in scope is what keeps the chain from running away.
 
-If you can't read the file at that path, tell the lead. Don't
-search for `protocol.md` yourself — multiple plugin versions
-may be installed, and you'd risk reading a different version
-than the lead.
+If you can't read the file at that path, tell the main session.
+Don't search for `protocol.md` yourself — multiple plugin
+versions may be installed, and you'd risk reading a different
+version than the rest of the team.
+
+## Activation steps
+
+Before sending your `maintainer ready` ack:
+
+1. **Read the protocol** (above).
+2. **Send `maintainer ready`** as a plain-text reply.
+
+Then idle until the lead asks you for an audit.
 
 ## Your role in one paragraph
 

@@ -57,12 +57,12 @@ coherence work. Never edits. Never adds tasks directly to the
 list — proposes only; the lead decides.
 
 **Reviewer.** Brings a fresh pair of eyes. Read-only critical
-reviewer. Spawned per PR — every PR opening triggers a new
-spawn, so the reviewer never carries memory between PRs.
-Reviews the PR on its merits alone and returns Markdown the
-lead posts as a PR comment. Never edits, never posts to the
-PR directly, never proposes triage calls — only describes
-findings.
+reviewer. Spawned at session start, idle through Phases 1 to 3,
+engaged in Phase 4. One PR per session, so the reviewer sees
+only the session's PR with no memory of other reviews. Reviews
+the PR on its merits alone and returns Markdown the lead posts
+as a PR comment. Never edits, never posts to the PR directly,
+never proposes triage calls — only describes findings.
 
 ## Phase 1: Scope
 
@@ -216,19 +216,19 @@ opens a PR for the session branch.
 
 Once the PR is open:
 
-1. **Spawn.** The lead spawns a fresh `reviewer` (no session
-   memory).
-2. **Review.** The reviewer studies the PR — description, diff,
-   related issue, source files where needed. They return
-   Markdown the lead posts as a PR comment. The Markdown has a
-   recommendation, findings grouped by severity (blocking /
-   non-blocking / nits), and a separate "out of scope but
-   noticed" section for ancillary findings.
-3. **Post.** The lead posts the review verbatim to the PR as a
+1. **Review.** The lead asks the reviewer for the review (the
+   reviewer has been idle since session start). The reviewer
+   studies the PR — description, diff, related issue, source
+   files where needed — and returns Markdown the lead posts as
+   a PR comment. The Markdown has a recommendation, findings
+   grouped by severity (blocking / non-blocking / nits), and a
+   separate "out of scope but noticed" section for ancillary
+   findings.
+2. **Post.** The lead posts the review verbatim to the PR as a
    single comment. Not a formal `gh pr review` (approve /
    request changes) — those carry more weight than a
    fresh-context first pass should.
-4. **Triage.** The lead decides on each finding:
+3. **Triage.** The lead decides on each finding:
    - **Accept** → becomes a follow-on task on the task list,
      handled by the standard per-task workflow including
      maintainer review.
@@ -236,7 +236,7 @@ Once the PR is open:
      the reason.
    - **Out of scope** → held for post-merge triage (see Phase
      6: Collect) — not filed mid-session.
-5. **Hand back.** The lead addresses all review comments first
+4. **Hand back.** The lead addresses all review comments first
    — accepted tasks completed, rejections explained,
    out-of-scope items held — then returns the PR to the user
    for final review and approval. The lead does not merge; that
@@ -376,12 +376,13 @@ These apply across every phase.
 
 ### Branch and commit protocol
 
-- **Single branch per session**, off `main` as pulled at
-  session start. The lead creates the feature branch once the
-  user has given the initial scope, not at session activation.
-  The branch name should reflect the scope. All planning and
-  development run against the session-start state of `main`;
-  any drift on origin is handled in Resolve.
+- **Single branch and single PR per session.** One feature
+  branch off `main` as pulled at session start, one PR opened
+  on it. The lead creates the branch once the user has given
+  the initial scope, not at session activation. The branch
+  name should reflect the scope. All planning and development
+  run against the session-start state of `main`; any drift on
+  origin is handled in Resolve.
 - One commit per task — task ↔ commit. The lead is the
   committer.
 - Commit message style: short subject with `[claude]` prefix,
@@ -441,7 +442,9 @@ These apply across every phase.
 - Files or triages ancillary findings mid-session — they're
   collected through the session and triaged once at the
   post-merge sweep
-- Sends a `shutdown_request` unless the user asks for it
+- Spawns or shuts down team agents — that's the main session's
+  job
+- Sends a `shutdown_request`
 
 **Developer never:**
 - Commits or pushes
@@ -466,6 +469,8 @@ These apply across every phase.
 - Posts directly to the PR — only the lead does that
 - Proposes triage calls (accept / reject / fix) — only
   describes findings
-- Carries memory between PRs — each spawn is fresh
+- Peeks at the session's work while idling through Phases 1
+  to 3 — freshness against the diff is the value the reviewer
+  brings
 - Silently discards out-of-scope observations — raises them as
   ancillary findings instead
