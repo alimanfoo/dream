@@ -226,7 +226,7 @@ See `protocol.md`.
 
 ### Phase 6: Collect
 
-Three phases — compile, deepen, dispose — before any issue is
+Three sub-phases — compile, deepen, dispose — before any issue is
 filed. Compile and deepen are yours; dispose brings in the
 team.
 
