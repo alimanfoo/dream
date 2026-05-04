@@ -70,7 +70,11 @@ After reading:
    `SendMessage` (their plain-text output is invisible to you
    and vice versa). Assign work via `TaskUpdate(owner=...)`.
 
-## Lead's hard rules
+## Common rules
+
+These apply across every phase.
+
+### Hard rules
 
 Repeated here so they sit at the top of context. (Also in
 `protocol.md`.)
@@ -89,57 +93,41 @@ Lead never:
   sweep.
 - Sends a `shutdown_request` unless the user asks for it.
 
-## Reminders
+### Marking agent-authored GitHub items
 
-- Maintenance follow-ons you accept from the maintainer:
-  **insert as the next tasks**, draining depth-first. Don't add
-  them to the back of the queue.
-- The reviewer never carries memory across PRs — every PR opens
-  a fresh spawn.
-- Agent-authored items: `[claude]` prefix on commit subjects,
-  PR titles, and issue titles; Claude Code footer at the end of
-  PR/issue/comment bodies. Commit bodies stay clean. See
-  "Marking agent-authored GitHub items" in `protocol.md`.
-- Issue descriptions: same rules as PR descriptions (see
-  "Opening the PR" below). Lead with the concern, then the
-  cause with a file/symbol citation, then a suggested
-  direction. The title is a complete thought, not a
-  stacked-qualifier noun phrase. See "Phase 6: Collect" in
-  `protocol.md`.
-- Ancillary findings from any role: don't silently discard
-  them. Collect them through the session and triage once at the
-  post-merge sweep, after all three roles have contributed.
-- Findings that propose machinery to defend incidental surface
-  (a test for a count, a glossary for terms, a regen step for
-  prose) — try simplifying first. See "Defend behaviour, not
-  surface" in `protocol.md`.
-- Ancillary findings, post-merge: the bar for filing a new
-  issue is a behaviour gap with a real consumer. Default to
-  drop. See "Dispose" in `protocol.md`.
-- Post-merge triage is a team activity. The lead presents the
-  candidate findings to developer and maintainer, working in
-  parallel. Each returns independent calls. The lead pulls them
-  together and decides — no back-and-forth.
-- Retrospective: optional phase after triage, for surfacing
-  where the team or the protocol could be improved. The lead
-  offers ("Run a retrospective?") and, if the user takes it,
-  runs a conversation with them — calling on the developer or
-  maintainer for *why* context as needed. Five suggested
-  lenses (redirections, protocol problems, recurrence,
-  misjudged findings, issue clarity); the lead picks. The
-  retrospective produces issue drafts only — no edits. The
-  lead drafts each one (upstream or host project); the user
-  approves before filing. See "Phase 7: Reflect" in `protocol.md`.
+`[claude]` prefix on commit subjects, PR titles, and issue
+titles; Claude Code footer at the end of PR/issue/comment
+bodies. Commit bodies stay clean. See "Marking agent-authored
+GitHub items" in `protocol.md`.
 
-## Opening the PR
+## Running the session
 
-After all in-session tasks are complete and the branch has been
-pushed, open a PR for the session branch. Title and body
-markers follow "Marking agent-authored GitHub items" in
-`protocol.md`. The body follows the rules below — these are the
-standard for PR content, voice, and structure. Follow them
-together with any contribution rules the repo has (a
-`CONTRIBUTING.md`, a PR template).
+Phase-specific instructions for the lead. Full detail in
+`protocol.md`.
+
+### Phase 1: Scope
+
+See `protocol.md`.
+
+### Phase 2: Plan
+
+See `protocol.md`.
+
+### Phase 3: Develop
+
+Maintenance follow-ons you accept from the maintainer: 
+**insert as the next tasks**, draining depth-first. Don't add 
+them to the back of the queue.
+
+#### Opening the PR
+
+At the end of Develop, after all in-session tasks are complete
+and the branch has been pushed, the lead opens a PR for the
+session branch. Title and body markers follow "Marking
+agent-authored GitHub items" (above). The body follows the
+rules below — these are the standard for PR content, voice,
+and structure. Follow them together with any contribution
+rules the repo has (a `CONTRIBUTING.md`, a PR template).
 
 **Don't sample existing PRs for style.** The instinct to read
 recent PRs to "match the house style" lands on whatever noise
@@ -214,3 +202,51 @@ suite cannot run. If there are no such steps, skip the section
 entirely. Doubt → skip. Don't make up for this by adding a
 "Verification" section listing what CI already covers — that's
 the same noise under a different name.
+
+### Phase 4: Review
+
+The reviewer never carries memory across PRs — every PR opens
+a fresh spawn.
+
+### Phase 5: Resolve
+
+See `protocol.md`.
+
+### Phase 6: Collect
+
+Ancillary findings from any role: don't silently discard them.
+Collect them through the session and triage once at the
+post-merge sweep, after all three roles have contributed.
+
+Findings that propose machinery to defend incidental surface
+(a test for a count, a glossary for terms, a regen step for
+prose) — try simplifying first. See "Defend behaviour, not
+surface" in `protocol.md`.
+
+Ancillary findings, post-merge: the bar for filing a new issue
+is a behaviour gap with a real consumer. Default to drop. See
+"Dispose" in `protocol.md`.
+
+Post-merge triage is a team activity. The lead presents the
+candidate findings to developer and maintainer, working in
+parallel. Each returns independent calls. The lead pulls them
+together and decides — no back-and-forth.
+
+Issue descriptions: same rules as PR descriptions (see
+"Opening the PR" above). Lead with the concern, then the cause
+with a file/symbol citation, then a suggested direction. The
+title is a complete thought, not a stacked-qualifier noun
+phrase. See "Phase 6: Collect" in `protocol.md`.
+
+### Phase 7: Reflect
+
+Optional phase after triage, for surfacing where the team or
+the protocol could be improved. The lead offers ("Run a
+retrospective?") and, if the user takes it, runs a conversation
+with them — calling on the developer or maintainer for *why*
+context as needed. Five suggested lenses (redirections,
+protocol problems, recurrence, misjudged findings, issue
+clarity); the lead picks. The retrospective produces issue
+drafts only — no edits. The lead drafts each one (upstream or
+host project); the user approves before filing. See "Phase 7:
+Reflect" in `protocol.md`.
