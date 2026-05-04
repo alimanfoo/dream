@@ -428,25 +428,6 @@ These apply across every phase.
 - Auto-generated idle notifications: noted, not acted on unless
   they affect pending work.
 
-### Marking agent-authored GitHub items
-
-Agent-authored GitHub items should be marked so a reader can
-tell at a glance whether a commit, comment, issue, or PR came
-from an agent or from a person. The distinction matters for
-triage — it's signal that helps reviewers weigh the artifact
-appropriately.
-
-- **Subjects and titles** (commit subjects, PR titles, issue
-  titles) get the `[claude]` prefix.
-- **Bodies and comments** (PR descriptions, issue bodies, PR
-  comments, issue comments) end with the Claude Code footer:
-
-  > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
-
-- **Commit bodies stay clean** — no footer. The subject prefix
-  carries the signal; a footer on every commit would clutter
-  the log.
-
 ### Hard rules
 
 **Lead never:**

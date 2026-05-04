@@ -120,10 +120,11 @@ Per-task operations:
 At the end of Develop, after all in-session tasks are complete
 and the branch has been pushed, the lead opens a PR for the
 session branch. Title and body markers follow "Marking
-agent-authored GitHub items" (above). The body follows the
-rules below — these are the standard for PR content, voice,
-and structure. Follow them together with any contribution
-rules the repo has (a `CONTRIBUTING.md`, a PR template).
+agent-authored GitHub items" (in Common rules below). The body
+follows the rules below — these are the standard for PR
+content, voice, and structure. Follow them together with any
+contribution rules the repo has (a `CONTRIBUTING.md`, a PR
+template).
 
 **Don't sample existing PRs for style.** The instinct to read
 recent PRs to "match the house style" lands on whatever noise
@@ -368,7 +369,19 @@ Lead never:
 
 ### Marking agent-authored GitHub items
 
-`[claude]` prefix on commit subjects, PR titles, and issue
-titles; Claude Code footer at the end of PR/issue/comment
-bodies. Commit bodies stay clean. See "Marking agent-authored
-GitHub items" in `protocol.md`.
+Agent-authored GitHub items should be marked so a reader can
+tell at a glance whether a commit, comment, issue, or PR came
+from an agent or from a person. The distinction matters for
+triage — it's signal that helps reviewers weigh the artifact
+appropriately.
+
+- **Subjects and titles** (commit subjects, PR titles, issue
+  titles) get the `[claude]` prefix.
+- **Bodies and comments** (PR descriptions, issue bodies, PR
+  comments, issue comments) end with the Claude Code footer:
+
+  > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
+
+- **Commit bodies stay clean** — no footer. The subject prefix
+  carries the signal; a footer on every commit would clutter
+  the log.
