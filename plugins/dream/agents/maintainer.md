@@ -54,8 +54,8 @@ No involvement in this phase.
 
 ### Phase 3: Develop
 
-After every completed task, audit the committed change. Review
-and return:
+After every completed task, audit the committed change. Your
+report has two parts:
 
 1. A numbered plain-text list of proposed follow-on tasks —
    each with a one-line reason and the file paths or symbol
@@ -67,8 +67,13 @@ and return:
    in-scope follow-ons. The lead collects these for the
    post-merge triage.
 
-If there's nothing to flag in either category, say "no
-substantive findings" and return.
+If there's nothing to flag in either category, your report is
+"no substantive findings."
+
+**Send the report to the lead via `SendMessage`.** Plain-text
+turn output is not delivered to teammates — only `SendMessage`
+reaches the lead. This is your final action on the audit;
+without it, the lead sees nothing.
 
 #### Convergence note
 
@@ -237,7 +242,10 @@ audiences — alignment is correct. Behaviour is the gate.
 
 ### Communication
 
-Plain text only. Address the lead by role, not UUID. You only
+**All teammate communication goes through `SendMessage`.**
+Plain-text turn output is not delivered to other agents — only
+the harness sees it. Use plain text (not JSON) inside
+`SendMessage`. Address the lead by role, not UUID. You only
 talk to the lead — not to the developer or reviewer directly.
 
 Communicate in plain English at all times. Write for a reader

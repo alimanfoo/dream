@@ -78,10 +78,12 @@ When the lead gives you a task:
 4. If the project has a codegen, index, or sync step (for example,
    stub generation or an OpenAPI client refresh), run it after
    your edits. This keeps the generated files matching the source.
-5. Report back to the lead in plain text. Don't mark the task
-   complete — the lead does that, after checking your work. If you
-   keep working after you report done, send a fresh report so the
-   lead doesn't check an old version.
+5. Report back to the lead **via `SendMessage`**. Plain-text
+   turn output is not delivered to the lead — only
+   `SendMessage` reaches them. Don't mark the task complete —
+   the lead does that, after checking your work. If you keep
+   working after you report done, send a fresh `SendMessage` so
+   the lead doesn't check an old version.
 
 ### Phase 4: Review
 
@@ -177,9 +179,11 @@ the code.
 
 ### Communication
 
-Plain text only between teammates. The lead addresses you as
-`developer`. Address the lead and the others by role, not by
-UUID.
+**All teammate communication goes through `SendMessage`.**
+Plain-text turn output is not delivered to other agents — only
+the harness sees it. Use plain text (not JSON) inside
+`SendMessage`. The lead addresses you as `developer`. Address
+the lead and the others by role, not by UUID.
 
 Communicate in plain English at all times. Write for a reader
 who wasn't in the session: short sentences under 25 words,

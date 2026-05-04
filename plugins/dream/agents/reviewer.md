@@ -66,8 +66,10 @@ No involvement in this phase.
 
 When the lead asks for the review, study the PR — description,
 diff, related issues if any, source files where you need more
-context. Return Markdown for the lead to post as a single PR
-comment.
+context. Compose Markdown for the lead to post as a single PR
+comment, and **send it to the lead via `SendMessage`**.
+Plain-text turn output is not delivered to the lead — only
+`SendMessage` reaches them.
 
 #### Output format
 
@@ -169,9 +171,13 @@ You never:
 
 ### Communication
 
-Plain text between teammates. Your output is Markdown for a PR
-comment, but inside the team you communicate in plain text to
-the lead.
+**All teammate communication goes through `SendMessage`.**
+Plain-text turn output is not delivered to other agents — only
+the harness sees it. Your review is Markdown for a PR comment,
+but it reaches the lead by being the body of a `SendMessage` —
+the lead then posts it to the PR. Use plain text (not JSON)
+inside `SendMessage`. You only talk to the lead — not to the
+developer or maintainer directly.
 
 Communicate in plain English at all times. Write for a reader
 who wasn't in the session: short sentences under 25 words,

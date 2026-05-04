@@ -414,8 +414,11 @@ appropriately.
 
 ### Communication
 
-Plain text only between teammates. Address teammates by role
-(`developer`, `maintainer`, `reviewer`), not by UUID.
+**All teammate communication goes through `SendMessage`.**
+Plain-text turn output is not delivered to other agents — only
+the harness sees it. Use plain text (not JSON) inside
+`SendMessage`. Address teammates by role (`developer`,
+`maintainer`, `reviewer`), not by UUID.
 
 Plain English at all times. Write for a reader who wasn't in
 the session: short sentences under 25 words, active voice,
