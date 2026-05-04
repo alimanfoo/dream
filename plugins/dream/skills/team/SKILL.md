@@ -90,9 +90,30 @@ See `protocol.md`.
 
 ### Phase 3: Develop
 
-Maintenance follow-ons you accept from the maintainer: 
-**insert as the next tasks**, draining depth-first. Don't add 
-them to the back of the queue.
+Per-task operations:
+
+1. **Assign.** Use `TaskUpdate(owner=developer,
+   status=in_progress)`. Send a `SendMessage` to the developer
+   with explicit in-scope items, out-of-scope items, and what
+   to do if they disagree with a scope decision (raise it;
+   don't keep going).
+2. **Verify.** When the developer reports done, read `git diff`
+   for correctness and scope. Where useful, exercise the
+   feature end-to-end. Don't re-run lint or tests — those are
+   the developer's gate, green by the time you're reading. If
+   something looks off, bounce back rather than fixing.
+3. **Accept.** Re-diff before staging. The working tree is live
+   between verify and accept — any changes in that window land
+   silently if you stage on the earlier read. `git diff
+   --name-only` should match what the developer reported. Then
+   `TaskUpdate status=completed`, stage the developer's
+   changes, commit, and push.
+4. **Triage maintainer findings.** Accept or reject each
+   proposed follow-on. Accepted ones become new tasks,
+   **inserted as the next tasks before any pending
+   original-scope work** (depth-first drain). Hold ancillary
+   findings for the post-merge bucket — never filed
+   mid-session.
 
 #### Opening the PR
 

@@ -96,44 +96,33 @@ chain repeats until the list is drained.
 
 ### Per-task workflow
 
-1. **Assign.** The lead creates or selects a task and assigns
-   it via `TaskUpdate` (`owner=developer`,
-   `status=in_progress`). The lead also sends a direct message
-   about the scope, with explicit in-scope and out-of-scope
-   items.
+1. **Assign.** The lead assigns a task to the developer and
+   sends a scope message: explicit in-scope and out-of-scope
+   items, and what to do if the developer disagrees with a
+   scope decision (raise it; don't keep going).
 2. **Implement.** The developer does the work, runs the
    project's lint/format check and test suite, and reports
-   back. The lead and developer go back and forth in plain text
+   back. Lead and developer go back and forth in plain text
    until the lead is satisfied.
-3. **Verify.** The lead checks the work independently by
-   reading `git diff` to check correctness and that the work
-   stays in scope. Where it makes sense, the lead also does a
-   behavioural spot-check (exercise the feature end-to-end).
-   The lead does **not** re-run the test suite or lint/format
-   check — those are the developer's gate, green by the time
-   the lead reviews. The commit hook is the cross-check at the
-   commit step. If the lead spots a real concern, the lead
-   bounces back to the developer rather than re-running gates.
-4. **Accept.** The lead re-diffs before staging. The working
-   tree is live between verify and accept — any further changes
-   in that window will land silently if the lead stages on the
-   earlier read. `git diff --name-only` should match what the
-   developer reported. Then the lead runs `TaskUpdate
-   status=completed`, stages the developer's working-tree
-   changes, commits, and pushes.
-5. **Review.** The lead calls the maintainer. The maintainer
-   audits the committed change for coherence. They return a
-   numbered plain-text list of proposed follow-on tasks (or
-   "no substantive findings"), plus any ancillary findings as a
-   separate section.
+3. **Verify.** The lead reads `git diff` to check correctness
+   and that the work stays in scope, and where useful exercises
+   the feature end-to-end. The lead doesn't re-run lint or
+   tests — those are the developer's gate, green by the time of
+   review. If something looks off, the lead bounces back to the
+   developer rather than fixing.
+4. **Accept.** The lead marks the task complete, stages the
+   developer's working-tree changes, commits, and pushes.
+5. **Review.** The maintainer audits the committed change for
+   coherence. The maintainer returns a numbered plain-text list
+   of proposed follow-on tasks (or "no substantive findings"),
+   plus any ancillary findings as a separate section.
 6. **Triage.** The lead accepts or rejects each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
    next tasks before any pending original-scope work**
-   (depth-first drain — see below). The lead notes ancillary
-   findings for post-merge triage (see Phase 6: Collect) — not
-   filed mid-session.
-7. **Loop.** The lead picks up the next task and returns to
-   step 1.
+   (depth-first drain — see "Task ordering"). Ancillary
+   findings are held for post-merge triage (see Phase 6:
+   Collect) — not filed mid-session.
+7. **Loop.** Next task, back to step 1.
 
 ### Maintenance chain
 
