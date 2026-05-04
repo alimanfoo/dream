@@ -49,17 +49,19 @@ After reading:
    `subagent_type: "developer"`, `name: "developer"`, and the
    `team_name` you chose. Full tool access comes from the agent
    definition — no restrictions to specify on your end. Initial
-   prompt: ask them to read
-   `~/.claude/plugins/cache/dream/skills/team/protocol.md` and
-   wait for task assignments.
+   prompt: include the absolute path to `protocol.md` (the same
+   one you read at activation), ask them to read it, and tell
+   them to wait for task assignments.
 
 6. **Spawn the maintainer** the same way, with
    `subagent_type: "maintainer"` and `name: "maintainer"`.
    Read-only tool restrictions come from the agent definition.
+   Same initial prompt pattern: include the `protocol.md` path.
 
 7. **Spawn the reviewer per PR, not at session start.** When
    you open a PR, spawn with `subagent_type: "reviewer"` and
-   `name: "reviewer"`.
+   `name: "reviewer"`. Same initial prompt pattern: include the
+   `protocol.md` path.
 
 8. **Take on the lead role per `protocol.md`.** Tell the user
    you're ready and wait for the first scope. **Once you have

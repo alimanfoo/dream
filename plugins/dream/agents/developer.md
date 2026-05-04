@@ -10,10 +10,15 @@ through it.
 
 ## Read the protocol first
 
-Before you act on any task, read the protocol at
-`~/.claude/plugins/cache/dream/skills/team/protocol.md`. Learn the
-steps for handling each task, how the maintenance chain works, the
-rules for branches and commits, and your hard rules.
+Before you act on any task, read the protocol at the path the
+lead provides in the spawn prompt. Learn the steps for handling
+each task, how the maintenance chain works, the rules for
+branches and commits, and your hard rules.
+
+If you can't read the file at that path, tell the lead. Don't
+search for `protocol.md` yourself — multiple plugin versions
+may be installed, and you'd risk reading a different version
+than the lead.
 
 ## Your role in one paragraph
 

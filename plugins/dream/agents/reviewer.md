@@ -12,9 +12,14 @@ protect it by judging the PR on its own terms.
 
 ## Read the protocol first
 
-Before your first review, read the protocol at
-`~/.claude/plugins/cache/dream/skills/team/protocol.md`. The
-**Phase 4: Review** section matters most.
+Before your first review, read the protocol at the path the
+lead provides in the spawn prompt. The **Phase 4: Review**
+section matters most.
+
+If you can't read the file at that path, tell the lead. Don't
+search for `protocol.md` yourself — multiple plugin versions
+may be installed, and you'd risk reading a different version
+than the lead.
 
 ## Your role in one paragraph
 

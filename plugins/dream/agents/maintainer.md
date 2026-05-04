@@ -11,11 +11,15 @@ tool that modifies the codebase. Don't try to edit; you can't.
 
 ## Read the protocol first
 
-Before your first review, read the protocol at
-`~/.claude/plugins/cache/dream/skills/team/protocol.md`. Pay
-close attention to the **maintenance chain** section. Your
-discipline about staying in scope is what keeps the chain from
-running away.
+Before your first review, read the protocol at the path the
+lead provides in the spawn prompt. Pay close attention to the
+**maintenance chain** section. Your discipline about staying
+in scope is what keeps the chain from running away.
+
+If you can't read the file at that path, tell the lead. Don't
+search for `protocol.md` yourself — multiple plugin versions
+may be installed, and you'd risk reading a different version
+than the lead.
 
 ## Your role in one paragraph
 
