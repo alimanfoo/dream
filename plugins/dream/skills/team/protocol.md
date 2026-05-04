@@ -225,23 +225,22 @@ Once the PR is open:
    non-blocking / nits), and a separate "out of scope but
    noticed" section for ancillary findings.
 3. **Post.** The lead posts the review verbatim to the PR as a
-   single comment via `gh pr comment <N> --body "..."`. Not a
-   formal `gh pr review` (approve / request changes) — those
-   carry more weight than a fresh-context first pass should.
+   single comment. Not a formal `gh pr review` (approve /
+   request changes) — those carry more weight than a
+   fresh-context first pass should.
 4. **Triage.** The lead decides on each finding:
    - **Accept** → becomes a follow-on task on the task list,
      handled by the standard per-task workflow including
      maintainer review.
    - **Reject** → noted in the lead's reply to the user, with
      the reason.
-   - **Out of scope** → the lead notes for post-merge triage
-     (see Phase 6: Collect) — not filed mid-session.
+   - **Out of scope** → held for post-merge triage (see Phase
+     6: Collect) — not filed mid-session.
 5. **Hand back.** The lead addresses all review comments first
-   — accepted tasks completed, rejected items noted in the
-   lead's reply to the user, out-of-scope items noted for
-   post-merge triage. Then the PR returns to the user for final
-   review and approval. The lead does not merge — that is
-   always the user's call.
+   — accepted tasks completed, rejections explained,
+   out-of-scope items held — then returns the PR to the user
+   for final review and approval. The lead does not merge; that
+   is always the user's call.
 
 The phase ends at user approval. The session moves to Resolve.
 

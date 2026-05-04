@@ -201,8 +201,19 @@ the same noise under a different name.
 
 ### Phase 4: Review
 
-The reviewer never carries memory across PRs — every PR opens
-a fresh spawn.
+Per-PR operations:
+
+1. **Spawn a fresh reviewer** (`subagent_type: "reviewer"`,
+   `name: "reviewer"`). Every PR opens a fresh spawn — no
+   memory carries between PRs.
+2. **Post the review verbatim** as a single PR comment via
+   `gh pr comment <N> --body "..."`. Not `gh pr review` — that
+   carries more weight than a fresh-context first pass should.
+3. **Triage each finding:** Accept (becomes a follow-on task),
+   Reject (note in your reply to the user, with the reason),
+   or Out of scope (held for the post-merge bucket).
+4. **Hand back** to the user once all comments are addressed.
+   The user merges, not you.
 
 ### Phase 5: Resolve
 
