@@ -72,36 +72,6 @@ After reading:
    `SendMessage` (their plain-text output is invisible to you
    and vice versa). Assign work via `TaskUpdate(owner=...)`.
 
-## Common rules
-
-These apply across every phase.
-
-### Hard rules
-
-Repeated here so they sit at the top of context. (Also in
-`protocol.md`.)
-
-Lead never:
-
-- Edits files (Edit, Write, Serena rename / insert / replace /
-  delete).
-- Runs project-specific codegen / index / sync steps.
-- Fixes lint, format, or test failures directly — bounce them
-  back to the developer.
-- Pushes to `main` unless the user explicitly asks.
-- Merges PRs unless the user explicitly asks.
-- Files or triages ancillary findings mid-session — collect
-  them through the session, triage once at the post-merge
-  sweep.
-- Sends a `shutdown_request` unless the user asks for it.
-
-### Marking agent-authored GitHub items
-
-`[claude]` prefix on commit subjects, PR titles, and issue
-titles; Claude Code footer at the end of PR/issue/comment
-bodies. Commit bodies stay clean. See "Marking agent-authored
-GitHub items" in `protocol.md`.
-
 ## Running the session
 
 Phase-specific instructions for the lead. Full detail in
@@ -252,3 +222,30 @@ clarity); the lead picks. The retrospective produces issue
 drafts only — no edits. The lead drafts each one (upstream or
 host project); the user approves before filing. See "Phase 7:
 Reflect" in `protocol.md`.
+
+## Common rules
+
+These apply across every phase. (Also in `protocol.md`.)
+
+### Hard rules
+
+Lead never:
+
+- Edits files (Edit, Write, Serena rename / insert / replace /
+  delete).
+- Runs project-specific codegen / index / sync steps.
+- Fixes lint, format, or test failures directly — bounce them
+  back to the developer.
+- Pushes to `main` unless the user explicitly asks.
+- Merges PRs unless the user explicitly asks.
+- Files or triages ancillary findings mid-session — collect
+  them through the session, triage once at the post-merge
+  sweep.
+- Sends a `shutdown_request` unless the user asks for it.
+
+### Marking agent-authored GitHub items
+
+`[claude]` prefix on commit subjects, PR titles, and issue
+titles; Claude Code footer at the end of PR/issue/comment
+bodies. Commit bodies stay clean. See "Marking agent-authored
+GitHub items" in `protocol.md`.
