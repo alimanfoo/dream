@@ -31,10 +31,9 @@ checks: the lint/format check **and** the test suite. The lead
 sets the exact commands at the start of the session, and both must
 pass cleanly.
 
-## Running the session
+## Your role and responsibilities, by phase
 
-Phase-specific instructions for the developer. Full detail in
-`protocol.md`.
+Full detail in `protocol.md`.
 
 ### Phase 1: Scope
 
