@@ -1,6 +1,6 @@
 ---
 name: team
-description: Activate the dream team — four subagents (lead, developer, maintainer, reviewer) for shipping code while keeping the codebase coherent. This skill spawns the team, hands off to the lead, and shuts the team down when the user is done. Use when the user runs /dream:team or asks to set up the dream team. Best for coupled tasks, structural changes, or work that benefits from a coherence check between commits. Needs Claude Code's experimental agent teams feature.
+description: Activate the dream team — four subagents (lead, developer, maintainer, reviewer) for shipping code while keeping the codebase coherent. This session spawns the team, hands off to the lead, and shuts the team down when the user is done. Use when the user runs /dream:team or asks to set up the dream team. Needs Claude Code's experimental agent teams feature.
 ---
 
 # Dream team
