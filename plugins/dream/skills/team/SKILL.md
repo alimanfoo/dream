@@ -221,23 +221,57 @@ See `protocol.md`.
 
 ### Phase 6: Collect
 
-Ancillary findings from any role: don't silently discard them.
-Collect them through the session and triage once at the
-post-merge sweep, after all three roles have contributed.
+Three phases — compile, deepen, dispose — before any issue is
+filed. Compile and deepen are yours; dispose brings in the
+team.
 
-Findings that propose machinery to defend incidental surface
-(a test for a count, a glossary for terms, a regen step for
-prose) — try simplifying first. See "Defend behaviour, not
-surface" in `protocol.md`.
+**Compile.** Gather the three sources (maintainer in-session,
+reviewer in-session, post-merge sweep). Observations that
+appear in more than one source merge into a single finding.
+Within-session dedup only — the same eye on the same thing
+through two roles becomes one finding, not two.
 
-Ancillary findings, post-merge: the bar for filing a new issue
-is a behaviour gap with a real consumer. Default to drop. See
-"Dispose" in `protocol.md`.
+**Deepen.** Before filing anything, check the project's issue
+tracker for related items. For each surviving finding, search
+both **open and closed** issues by the file, symbol, or
+surface the finding cites:
 
-Post-merge triage is a team activity. The lead presents the
-candidate findings to developer and maintainer, working in
-parallel. Each returns independent calls. The lead pulls them
-together and decides — no back-and-forth.
+```
+gh issue list --state all --search '<term>'
+```
+
+Closed-issue history is the protocol's memory. A finding
+citing a surface where prior issues are filed and closed isn't
+fresh — it's a recurrence, a sign that previous chips didn't
+fully resolve a contract. Two findings within the current
+sweep that cite the same surface trigger the same recognition
+without needing a prior issue.
+
+Without this step, the protocol treats the next visible chip
+on a recurring surface as a fresh observation. Three sessions
+in a row can each correctly identify what they found, file
+it, and fix it in scope — yet never converge. Each pass
+patches a symptom of the same underlying contract without
+naming the contract.
+
+**Dispose.** Present each candidate to developer and
+maintainer in parallel — raw findings with sources, no
+leaning. Each returns independent calls per finding (drop /
+reinforce / re-frame / file fresh) with a one-line reason.
+Pull both reads together, weighing whether the finding is a
+real concern worth the human attention and agent time a
+backlog slot costs. Then make the final call — no
+back-and-forth, calls returned once.
+
+The bar for filing a **new** issue is *a behaviour gap with a
+real consumer*. Default to drop on findings that don't clear
+the bar. See "Defend behaviour, not surface" in `protocol.md`
+— findings that propose machinery for prose inconsistencies or
+arbitrary values usually dissolve when the surface is
+simplified instead.
+
+You don't implement anything in any phase. What enters the
+backlog is an issue or a comment, never a fix.
 
 Issue descriptions: same rules as PR descriptions (see
 "Opening the PR" above). Lead with the concern, then the cause

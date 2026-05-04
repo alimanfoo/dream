@@ -294,67 +294,16 @@ file or triage them. Batching has a purpose: dedup across
 sources, a full picture before judging, and a single
 uninterrupted triage moment.
 
-**Triage.** Triage has three phases — compile, deepen, dispose
-— before any issue is filed. Compile and deepen are lead
-activities; dispose brings in the team.
+**Triage outcomes.** Each surviving finding ends as one of four
+outcomes. Triage is a team activity: the lead presents
+candidates to developer and maintainer in parallel, each
+returns independent calls per finding, and the lead pulls them
+together to decide. The four outcomes:
 
-**Compile.** The lead gathers the three sources. Observations
-that appear in more than one source merge into a single
-finding. Within-session dedup only — the same eye on the same
-thing through two roles becomes one finding, not two.
-
-**Deepen.** Before filing anything, the lead checks the
-project's issue tracker for related items. For each surviving
-finding, the lead searches both **open and closed** issues by
-the file, symbol, or surface the finding cites (`gh issue list
---state all --search '<term>'`). Closed-issue history is the protocol's
-memory. A finding citing a surface where prior issues are
-filed and closed isn't fresh — it's a recurrence, a sign that
-previous chips didn't fully resolve a contract. Two findings
-within the current sweep that cite the same surface trigger the
-same recognition without needing a prior issue.
-
-Without this step, the protocol treats the next visible chip on
-a recurring surface as a fresh observation. Three sessions in a
-row can each correctly identify what they found, file it, and
-fix it in scope — yet never converge. Each pass patches a
-symptom of the same underlying contract without naming the
-contract.
-
-**Dispose.** Each surviving finding ends as one of four
-outcomes. The bar for filing a **new** issue is *a behaviour
-gap with a real consumer* — see "Defend behaviour, not
-surface." Default to drop on findings that don't clear the bar.
-Closed-issue history is the protocol's memory: a future
-contributor on the same surface will see the shape and make the
-call in context.
-
-Surface-only findings don't earn an issue. For example: a
-future-proofing concern with no current consumer, a
-comment-clarity polish, or a test-vs-production drift with no
-behavioural consequence. Filing an issue commits future agent
-time. The bar exists because the cost is real.
-
-Triage is a team activity. The lead presents the candidate
-findings to developer and maintainer in parallel — raw findings
-with sources, no lead leaning.
-
-Each returns independent calls per finding (drop, reinforce,
-re-frame, or file fresh) with a one-line reason. The developer
-knows from editing whether the cited caller is real. The
-maintainer's coherence-audit perspective catches surface-only
-findings.
-
-The lead pulls both reads together, weighing whether the
-finding is a real concern worth the human attention and agent
-time a backlog slot costs. Then the lead makes the final call —
-no back-and-forth, calls returned once.
-
-- **Drop** — either a duplicate of an existing open issue, or a
-  finding that doesn't clear the gate. The lead doesn't file.
-  For a duplicate, the lead may comment on the existing issue
-  if this sighting adds evidence (a second occurrence, a
-  different angle).
+- **Drop** — duplicate of an existing open issue, or fails the
+  bar for filing. For a duplicate, the lead may comment on the
+  existing issue if the new sighting adds evidence (a second
+  occurrence, a different angle).
 - **Reinforce** — related to an existing open issue but not
   identical. The lead comments on the open issue with the new
   angle rather than opening a new one. (Comments on existing
@@ -364,18 +313,28 @@ no back-and-forth, calls returned once.
   or closed. The lead files one issue at the **contract
   level**: names the surface (the function, the parameter, the
   contract), and lists the prior chips with `#N` references.
-  The lead asks the contract question explicitly: *what does
-  this thing promise its caller; what does it implicitly rely
-  on; where do those misalign?* The recurrence pattern itself
-  is the behaviour gap — chips landing on the same surface is
-  evidence of an unresolved contract. So Re-frame clears the
-  gate independently. This is the outcome that prevents the
-  chain.
+  The recurrence pattern itself is the behaviour gap — chips
+  landing on the same surface is evidence of an unresolved
+  contract. So Re-frame clears the gate independently. This is
+  the outcome that prevents the chain.
 - **File fresh** — no related issue on the surface, and the
-  finding clears the gate. The lead opens a standalone issue
-  per "Issue shape" below, via `gh issue create`.
+  finding clears the gate. The lead opens a standalone issue.
 
-The lead doesn't implement anything in any phase. What enters
+The bar for filing a **new** issue is *a behaviour gap with a
+real consumer*. Default to drop on findings that don't clear
+the bar. Surface-only findings don't earn an issue — for
+example, a future-proofing concern with no current consumer, a
+comment-clarity polish, or a test-vs-production drift with no
+behavioural consequence. Filing an issue commits future agent
+time. The bar exists because the cost is real. Closed-issue
+history is the protocol's memory: a future contributor on the
+same surface will see the shape and make the call in context.
+
+The developer's value at triage: knowing from editing whether a
+cited caller is real. The maintainer's: catching surface-only
+findings from a coherence perspective.
+
+The lead doesn't implement anything in this phase. What enters
 the backlog is an issue or a comment, never a fix.
 
 **Issue shape.** When filing an issue, the lead writes in plain
