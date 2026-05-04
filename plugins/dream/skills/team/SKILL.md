@@ -11,12 +11,16 @@ for Claude Code. The other roles (`developer`, `maintainer`,
 experimental agent teams feature spawns them; it requires
 `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
 
-## Activation steps
+## Read the protocol first
 
 Before doing anything else, **read `protocol.md` in this skill
-directory in full**. The protocol is load-bearing — skim it and
-you'll set the team up wrong or break the per-task workflow.
-After reading:
+directory in full**. It describes the system you're leading —
+what each agent does, how the workflow shapes their work, and
+the principles that govern the maintenance chain. This file
+gives you your operating procedures; the protocol gives you the
+shared system context that makes them sensible.
+
+## Activation steps
 
 1. **Find the project's quality bar.** The developer needs to
    know which commands count as "all green" before reporting a
