@@ -125,7 +125,10 @@ fresh eyes, not contributing across the whole session.
 
 ### Phase 7: Reflect
 
-No involvement in this phase.
+The lead may ask you for *why* context on something in your
+review — answer based on what you actually saw and decided at
+the time. The retrospective produces issue drafts only; you
+don't take part in drafting.
 
 ## Common rules
 
