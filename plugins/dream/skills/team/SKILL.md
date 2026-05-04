@@ -273,11 +273,16 @@ simplified instead.
 You don't implement anything in any phase. What enters the
 backlog is an issue or a comment, never a fix.
 
-Issue descriptions: same rules as PR descriptions (see
-"Opening the PR" above). Lead with the concern, then the cause
-with a file/symbol citation, then a suggested direction. The
-title is a complete thought, not a stacked-qualifier noun
-phrase. See "Phase 6: Collect" in `protocol.md`.
+**Issue shape.** When filing, write in plain English for a
+junior developer, don't duplicate what's visible in the source,
+and keep it tight. Don't sample existing issues for style. Lead
+with the concern in one sentence, then the cause with a
+file/symbol citation, then a suggested direction. Issues point
+to a concern that can be resolved; they don't spell out the
+fix. The title states the concern as a complete thought
+("status-verb keys can drift from helper returns"), not a
+stacked-qualifier noun phrase ("an unenforced string
+protocol").
 
 ### Phase 7: Reflect
 

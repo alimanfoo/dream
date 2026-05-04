@@ -337,19 +337,6 @@ findings from a coherence perspective.
 The lead doesn't implement anything in this phase. What enters
 the backlog is an issue or a comment, never a fix.
 
-**Issue shape.** When filing an issue, the lead writes in plain
-English for a junior developer, doesn't duplicate what's
-visible in the source, and keeps it tight. The lead doesn't
-sample existing issues for style.
-
-Issue-specific structure: the lead leads with the concern in
-one sentence, then the cause with a file/symbol citation, then
-a suggested direction. Issues point to a concern that can be
-resolved; they don't spell out the fix. The title states the
-concern as a complete thought ("status-verb keys can drift from
-helper returns"), not a stacked-qualifier noun phrase ("an
-unenforced string protocol").
-
 The phase ends when triage is complete and any resulting
 issues have been filed.
 
