@@ -370,9 +370,10 @@ sees them. `alimanfoo/dream` is a public repo unrelated to the
 host project, and an upstream issue should read as if dream:team
 had run on any codebase. Strip host repo and org names, file
 paths, function and class names, business or product terms,
-branch names, and any other identifiers that tie the finding to
-this codebase. Describe the dream-side behaviour and the pattern
-the team hit, not the host code that revealed it.
+branch names, issue and PR numbers, and any other identifiers
+that tie the finding to this codebase. Describe the dream-side
+behaviour and the pattern the team hit, not the host code that
+revealed it.
 
 The user approves each draft before it's filed. For an upstream
 draft, what the user approves is the already-stripped wording.
