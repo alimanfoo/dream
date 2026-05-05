@@ -176,8 +176,10 @@ Plain-text turn output is not delivered to other agents —
 only the harness sees it. Your review is Markdown for a PR
 comment, but it reaches the lead by being the body of a
 `SendMessage` — the lead then posts it to the PR. Use plain
-text (not JSON) inside `SendMessage`. You only talk to the
-lead — not to the developer or maintainer directly.
+text (not JSON) inside `SendMessage`. Set the `summary`
+field too (5–10 words) when sending — that's the UI preview
+the tool expects. You only talk to the lead — not to the
+developer or maintainer directly.
 
 **Address the lead by role.** Use exactly `lead` in the
 `SendMessage` `to:` field — never `team-lead` or any other
@@ -187,6 +189,9 @@ internally, but `lead` is the canonical address. A
 it returns success but the message reaches no inbox. You
 believe the review was delivered; the lead believes you
 went silent. UUIDs likewise won't reach the right inbox.
+The `SendMessage` tool's own description shows `team-lead`
+in a legacy protocol-response example — that is the exact
+form that fails silently. Ignore the example.
 
 **The discipline applies uniformly across the session, but
 it will not feel uniform from your side.** Through Phases 1

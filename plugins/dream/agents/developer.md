@@ -190,16 +190,20 @@ the code.
 **All teammate communication goes through `SendMessage`.**
 Plain-text turn output is not delivered to other agents —
 only the harness sees it. Use plain text (not JSON) inside
-`SendMessage`.
+`SendMessage`. Set the `summary` field too (5–10 words) when
+sending a string message — that's the UI preview the tool
+expects.
 
 **Address the lead by role.** Use exactly `lead` in the
 `SendMessage` `to:` field — never `team-lead` or any other
 variant. The activation tag may show a different form
 internally, but `lead` is the canonical address. UUIDs
-likewise won't reach the right inbox. The same applies if
-you ever address the maintainer or reviewer: use exactly
-`maintainer` and `reviewer`, never the `team-`-prefixed
-forms.
+likewise won't reach the right inbox. The `SendMessage`
+tool's own description shows `team-lead` in a legacy
+protocol-response example — that exact form is what fails
+silently. Ignore the example. The same applies if you ever
+address the maintainer or reviewer: use exactly `maintainer`
+and `reviewer`, never the `team-`-prefixed forms.
 
 **The discipline applies uniformly across the session, but
 it will not feel uniform from your side.** Inside the
