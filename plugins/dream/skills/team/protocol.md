@@ -365,7 +365,17 @@ go to one of two places:
   where dream is being used — a pattern this team will hit
   again here, but not elsewhere.
 
-The user approves each draft before it's filed.
+Upstream drafts are stripped of host specifics before the user
+sees them. `alimanfoo/dream` is a public repo unrelated to the
+host project, and an upstream issue should read as if dream:team
+had run on any codebase. Strip host repo and org names, file
+paths, function and class names, business or product terms,
+branch names, and any other identifiers that tie the finding to
+this codebase. Describe the dream-side behaviour and the pattern
+the team hit, not the host code that revealed it.
+
+The user approves each draft before it's filed. For an upstream
+draft, what the user approves is the already-stripped wording.
 
 The team is still on the wire during the retrospective. When
 the question turns to *why* something happened, the lead asks

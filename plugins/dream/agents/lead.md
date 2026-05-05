@@ -345,8 +345,7 @@ the problem arose in, the nature of the problem, and the
 team's hypotheses about why it happened. Suggestions for
 resolution are welcome in the draft but optional.
 
-The user approves each draft before it's filed. An issue is
-filed in one of two places:
+An issue is filed in one of two places:
 
 - **Upstream (`alimanfoo/dream`)** when the problem is in the
   dream protocol or the agent prompts — anyone running
@@ -355,6 +354,18 @@ filed in one of two places:
   where dream is being used — a pattern this team will hit
   again here, but not elsewhere.
 
+For an upstream draft, strip host specifics before showing it
+to the user. `alimanfoo/dream` is a public repo unrelated to
+the host project, and an upstream issue should read as if
+dream:team had run on any codebase. Strip host repo and org
+names, file paths, function and class names, business or
+product terms, branch names, and any other identifiers that
+tie the finding to this codebase. Describe the dream-side
+behaviour and the pattern the team hit, not the host code that
+revealed it.
+
+The user approves each draft before it's filed. For an upstream
+draft, what the user approves is the already-stripped wording.
 With approval, you or the user files. After the retrospective,
 or if the user declines it, tell the user the session work is
 done and that they can return to the main session to wind the
