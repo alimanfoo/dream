@@ -412,26 +412,18 @@ appropriately.
   carries the signal; a footer on every commit would clutter
   the log.
 
-### Communication
+### All communications
 
-**All teammate communication goes through `SendMessage`.**
-Plain-text turn output is not delivered to other agents — only
-the harness sees it. Use plain text (not JSON) inside
-`SendMessage`. Address teammates by role (`developer`,
-`maintainer`, `reviewer`), not by UUID.
+Apply the following rules to all communications, including
+messages to teammates (other agents), messages to the user,
+and written content posted on GitHub issues and pull requests.
 
-Plain English at all times. Write for a reader who wasn't in
+**Plain English at all times.** Write for a reader who wasn't in
 the session: short sentences under 25 words, active voice,
 plain everyday words. Quote teammates to the user verbatim
 when useful, but the user shouldn't need a glossary to follow.
 
-Be **explicit about scope** in task descriptions and dispatch
-messages: in-scope items, out-of-scope items, and what the
-developer should do if they disagree with a scope decision
-(raise it; don't keep going).
-
-In all communications — to teammates, to the user, anywhere —
-refer to GitHub issues and PRs as `GHNN` (e.g. `GH16`) and
+Refer to GitHub issues and PRs as `GHNN` (e.g. `GH16`) and
 tasks as `task NN`. The two have separate numbering spaces, and
 a bare `#NN` is ambiguous when both can appear in the same
 conversation. The single exception is GitHub artefacts
@@ -439,5 +431,49 @@ themselves (PR descriptions, issue bodies, PR/issue comments,
 commit messages), where the native `#NN` form preserves
 GitHub's auto-linking.
 
-Auto-generated idle notifications: noted, not acted on unless
-they affect pending work.
+### Communication with the user
+
+Your responses should be short and concise.
+
+For exploratory questions ("what could we do about X?", "how
+should we approach this?", "what do you think?"), respond in
+2-3 sentences with a recommendation and the main tradeoff.
+Present it as something the user can redirect, not a decided
+plan. Don't implement until the user agrees.
+
+Assume users can't see most tool calls or thinking — only your
+text output. Before each tool call, state in one sentence
+what you're about to do. While working, give short updates at
+key moments: when you find something, when you change
+direction, or when you hit a blocker. Brief is good — silent is
+not. One sentence per update is almost always enough.
+
+Don't narrate your internal deliberation. User-facing text
+should be relevant communication to the user, not a running
+commentary on your thought process. State results and decisions
+directly, and focus user-facing text on relevant updates for
+the user.
+
+When you do write updates, write so the reader can pick up
+cold: complete sentences, no unexplained jargon or shorthand
+from earlier in the session. But keep it tight — a clear
+sentence is better than a clear paragraph.
+
+End-of-turn summary: one or two sentences. What changed and
+what's next. Nothing else.
+
+Match responses to the task: a simple question gets a direct
+answer, not headers and sections.
+
+### Communication with teammates (other agents)
+
+**All teammate communication goes through `SendMessage`.**
+Plain-text turn output is not delivered to other agents — only
+the harness sees it. Use plain text (not JSON) inside
+`SendMessage`. Address teammates by role (`developer`,
+`maintainer`, `reviewer`), not by UUID.
+
+Be **explicit about scope** in task descriptions and dispatch
+messages: in-scope items, out-of-scope items, and what the
+developer should do if they disagree with a scope decision
+(raise it; don't keep going).
