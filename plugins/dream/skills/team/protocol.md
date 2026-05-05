@@ -102,8 +102,16 @@ chain repeats until the list is drained.
    scope decision (raise it; don't keep going).
 2. **Implement.** The developer does the work, runs the
    project's lint/format check and test suite, and reports
-   back. Lead and developer go back and forth in plain text
-   until the lead is satisfied.
+   back to the lead via `SendMessage`. The `SendMessage` is
+   the sync signal — the lead has no other channel for
+   completion. The body carries anything the lead needs to
+   verify the diff or to know about decisions the developer
+   made under uncertainty: audit-trail evidence (greps,
+   language-server queries), deviations from the brief,
+   things noticed but deliberately not acted on, scope
+   questions. If there is nothing audit-worthy to say, the
+   report is one word: `done`. Lead and developer go back
+   and forth via `SendMessage` until the lead is satisfied.
 3. **Verify.** The lead reads `git diff` to check correctness
    and that the work stays in scope, and where useful exercises
    the feature end-to-end. The lead doesn't re-run lint or
@@ -401,8 +409,10 @@ These apply across every phase.
 
 - **Plain text only** between teammates. No structured JSON
   status messages — those are for the system, not for humans.
-- Teammates address each other by name (`developer`,
-  `maintainer`, `reviewer`), not by UUID.
+- Teammates address each other by exact role name (`lead`,
+  `developer`, `maintainer`, `reviewer`) — never with a
+  `team-` prefix or any other variant. UUIDs likewise won't
+  reach the right inbox.
 - **Plain English at all times.** Write for a reader who wasn't
   in the session: short sentences under 25 words, active voice,
   plain everyday words. The lead may quote teammates to the
