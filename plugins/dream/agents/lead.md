@@ -96,8 +96,11 @@ repeats until the list is drained.
    Send a `SendMessage` to the developer with explicit in-scope
    items, out-of-scope items, and what to do if they disagree
    with a scope decision (raise it; don't keep going).
-2. **Verify.** When the developer reports done, read `git diff`
-   for correctness and scope. Where useful, exercise the feature
+2. **Verify.** Wait for the developer's `SendMessage` — that
+   is the completion signal. Read their message together with
+   `git diff`: the message carries any audit content,
+   deviations from the brief, or things they noticed; the
+   diff carries the change. Where useful, exercise the feature
    end-to-end. Don't re-run lint or tests — those are the
    developer's gate, green by the time you're reading. If
    something looks off, bounce back rather than fixing.
@@ -468,10 +471,40 @@ answer, not headers and sections.
 ### Communication with teammates (other agents)
 
 **All teammate communication goes through `SendMessage`.**
-Plain-text turn output is not delivered to other agents — only
-the harness sees it. Use plain text (not JSON) inside
-`SendMessage`. Address teammates by role (`developer`,
-`maintainer`, `reviewer`), not by UUID.
+Plain-text turn output is not delivered to other agents —
+only the harness sees it. Use plain text (not JSON) inside
+`SendMessage`.
+
+**Address teammates by role.** Use exactly `developer`,
+`maintainer`, or `reviewer` in the `SendMessage` `to:` field.
+Never use a `team-` prefixed form (`team-developer`,
+`team-maintainer`, `team-reviewer`) or any other variant —
+those silently fail to deliver. UUIDs likewise won't reach
+the right inbox.
+
+**The discipline applies uniformly across the session, but
+it will not feel uniform from your side.** Inside the
+per-task workflow, the surrounding scaffolding — the brief,
+the system reminders, the file-touched hooks — keeps the
+team-agent context salient and `SendMessage` feels like the
+natural endpoint of the work. In conversational frames — the
+retrospective, mid-session clarifications, ancillary-finding
+sweeps — that scaffolding falls away. The pretrained reflex
+is *prose is output*, and that reflex is wrong here.
+Whenever you would naturally write a paragraph in reply to a
+teammate, the paragraph goes via `SendMessage`; the call is
+the reply.
+
+Examples — the rule firing:
+
+- The user (in retro) asks why something happened. You ask
+  the developer for *why* context — that question goes via
+  `SendMessage` to `developer`, not as plain text. The
+  developer's reply comes back the same way.
+- A teammate sends a mid-task clarification. Your reply goes
+  via `SendMessage` to that teammate, not as plain text.
+- The reply is one short sentence ("yes, confirmed"). Still
+  `SendMessage`. The discipline does not have a length gate.
 
 Be **explicit about scope** in task descriptions and dispatch
 messages: in-scope items, out-of-scope items, and what the
