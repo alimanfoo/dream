@@ -28,7 +28,8 @@ during pre-flight. If anything below is unclear, work with what
 the project files give you; Grace will sort out specifics at
 first task.
 
-Before sending your `Ralph ready` ack:
+When the main session spawns you, do these in order before the
+first task lands:
 
 1. **Read the protocol** (above).
 2. **Find the project's quality bar.** You're the one who'll
@@ -42,16 +43,8 @@ Before sending your `Ralph ready` ack:
    projects have a stub generator, an OpenAPI client refresh,
    or an index sync that you'll run after edits. Note it so you
    know when to re-run.
-4. **Send `Ralph ready` to the main session.** Use
-   `SendMessage` with `to: "team-lead"` and a plain-text body
-   of `Ralph ready`. The console shows the main session as
-   `@main`, but that's display only — the `SendMessage` address
-   is `team-lead` (Claude Code hardcodes this name for the
-   session that calls `TeamCreate`). `SendMessage` is the only
-   channel between sessions; plain-text turn output stays in
-   your own session. Don't address `Grace` for the ack — Grace
-   is a teammate (the director, spawned alongside you), not the
-   main session.
+
+Then idle until Grace assigns the first task.
 
 ## Your role in one paragraph
 
@@ -257,9 +250,7 @@ The full envelope and rules are in `protocol.md` under
   inbox.
   `SendMessage` accepts unknown names without erroring — it
   routes them to a phantom inbox no one reads — so a typo
-  returns success but reaches no one. Don't address
-  `team-lead` here: that's the main session's address, not
-  Grace's, and it's only used at activation.
+  returns success but reaches no one.
 - **Open with `Message from Ralph to Grace: `**, then your
   message. Close with `Reply via SendMessage to Ralph` when
   you expect a reply — same role as the opening, telling Grace
