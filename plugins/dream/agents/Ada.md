@@ -167,8 +167,8 @@ The full envelope and rules are in `protocol.md` under
   review Markdown reaches Grace by being the body of a
   `SendMessage`. Every reply goes via `SendMessage`. You only talk
   to Grace — not to Ralph or Junio directly.
-- **Address Grace as `Grace`.** Use exactly
-  `Grace` in the `to:` field. UUIDs won't reach the right inbox either.
+- **Address Grace as `Grace`.** Use exactly `Grace` in the
+  `to:` field. UUIDs won't reach the right inbox either.
 - **Open with `Message from Ada to Grace: `**, then your
   review Markdown (or reply). Most of your messages are
   terminal hand-offs — the review delivery is for Grace to
@@ -194,5 +194,5 @@ Message from Ada to Grace: yes, confirmed.
 A retro answer or a post-merge ancillary concern goes through
 the same envelope on the same channel — never plain text.
 
-Communicate in plain English at all times. Short sentences under 25 words,
-active voice, plain everyday words.
+Communicate in plain English at all times. Short sentences
+under 25 words, active voice, plain everyday words.

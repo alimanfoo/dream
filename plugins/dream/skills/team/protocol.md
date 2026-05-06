@@ -8,9 +8,10 @@ interaction.
 
 A session moves through seven phases:
 
-1. **Scope.** The user proposes an initial scope of work for the session.
+1. **Scope.** The user proposes an initial scope of work for
+   the session.
 
-2. **Plan.** An task list is built from the initial scope.
+2. **Plan.** A task list is built from the initial scope.
 
 3. **Develop.** The main implementation loop — one task at a
    time, coherence restored before moving on.
@@ -36,30 +37,32 @@ across every phase.
 
 Manages the team. Owns the task list — plans, delegates,
 verifies, and gatekeeps task completion. Commits and pushes
-after marking tasks complete. Decides which
-maintenance proposals and review findings become follow-on tasks. Decides how to dispose post-merge
-ancillary findings from all team members, then discusses those
-calls with the user before filing issues or comments. Offers a
-retrospective after triage. 
+after marking tasks complete. Decides which maintenance
+proposals and review findings become follow-on tasks. Decides
+how to dispose post-merge ancillary findings from all team
+members, then discusses those calls with the user before filing
+issues or comments. Offers a retrospective after triage.
 
 ### Ralph (developer)
 
 Writes the code. Full-capability. Does every accepted task,
-including maintenance tasks and follow-on tasks to address review findings. Leaves changes in the working tree —
-never commits or pushes. Before reporting a task done, runs the
-full quality bar: the project's lint/format checks **and** the
+including maintenance tasks and follow-on tasks to address
+review findings. Leaves changes in the working tree — never
+commits or pushes. Before reporting a task done, runs the full
+quality bar: the project's lint/format checks **and** the
 project's test suite.
 
 ### Junio (maintainer)
 
 Looks after the codebase as a whole. Read-only auditor (no edit
 or write tools available, by design). Reviews the codebase after
-each completed task and proposes follow-on coherence work. 
+each completed task and proposes follow-on coherence work.
 
 ### Ada (reviewer)
 
-Brings a fresh pair of eyes. Read-only and critical. Sees only the session's PR with no
-memory of other reviews. Reviews the PR on its merits alone. 
+Brings a fresh pair of eyes. Read-only and critical. Sees only
+the session's PR with no memory of other reviews. Reviews the
+PR on its merits alone.
 
 ## Phase 0: Boot
 
@@ -73,19 +76,21 @@ address, the constraints, the rough shape. Grace reads the
 cited material, asks questions, and gets direction on any
 decisions ahead.
 
-Once the initial scope is agreed, Grace creates the feature branch off
-`main`. The branch name reflects the scope.
+Once the initial scope is agreed, Grace creates the feature
+branch off `main`. The branch name reflects the scope.
 
 The phase ends with branch creation.
 
 ## Phase 2: Plan
 
-With scope agreed, Grace drafts an initial task list. Each
-task is a unit of work Ralph can take end-to-end. The list isn't fixed: more tasks can be
-added during phase 3 (Develop), phase 4 (Review) and phase 5 (Resolve). The the user can redirect at any point.
+With scope agreed, Grace drafts an initial task list. Each task
+is a unit of work Ralph can take end-to-end. The list isn't
+fixed: more tasks can be added during phase 3 (Develop), phase
+4 (Review) and phase 5 (Resolve). The user can redirect at any
+point.
 
-Grace shares the draft task list with the user. The phase ends at
-user approval.
+Grace shares the draft task list with the user. The phase ends
+at user approval.
 
 ## Phase 3: Develop
 
@@ -95,10 +100,10 @@ chain repeats until the list is drained.
 
 ### Per-task workflow
 
-1. **Assign.** Grace assigns the task to Ralph. The brief in the task description spells
-   out in-scope items, out-of-scope items, and what Ralph
-   should do if he disagrees with a scope decision (raise it;
-   don't keep going).
+1. **Assign.** Grace assigns the task to Ralph. The brief in
+   the task description spells out in-scope items, out-of-scope
+   items, and what Ralph should do if he disagrees with a scope
+   decision (raise it; don't keep going).
 
 2. **Implement.** Ralph does the work, runs the
    project's lint/format check and test suite, and reports
@@ -109,8 +114,8 @@ chain repeats until the list is drained.
    the feature end-to-end. If something looks off, Grace
    bounces back to Ralph rather than fixing.
 
-4. **Accept.** Grace stages the
-   working-tree changes, commits, pushes, and marks the task complete.
+4. **Accept.** Grace stages the working-tree changes, commits,
+   pushes, and marks the task complete.
 
 5. **Maintainer audit.** Junio audits the committed
    change for coherence. Junio returns a numbered
@@ -404,7 +409,8 @@ These apply across every phase.
 
 ### Communication between teammates (agents)
 
-- **`SendMessage`**. Use the `SendMessage` tool for all communication between teammates.
+- **`SendMessage`**. Use the `SendMessage` tool for all
+  communication between teammates.
 - **Plain text only**. The `SendMessage`
   tool accepts JSON-typed control messages
   (`shutdown_request`, `plan_approval_response`, and so on)

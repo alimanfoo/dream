@@ -60,9 +60,11 @@ The phase ends with branch creation.
 
 ### Phase 2: Plan
 
-Draft an initial task list from the agreed scope. Each
-task is a unit of work Ralph can take end-to-end. The list isn't fixed: more tasks can be
-added during phase 3 (Develop), phase 4 (Review) and phase 5 (Resolve). The the user can redirect at any point.
+Draft an initial task list from the agreed scope. Each task is
+a unit of work Ralph can take end-to-end. The list isn't fixed:
+more tasks can be added during phase 3 (Develop), phase 4
+(Review) and phase 5 (Resolve). The user can redirect at any
+point.
 
 Share the draft with the user. The phase ends at user approval.
 
@@ -164,13 +166,14 @@ After opening, check: `gh pr view <N> --json
 closingIssuesReferences` should list every issue the PR fixed.
 
 **Plain English, written for a junior developer joining the
-team.** Lead with the *why*, then the *what*. Assume the reader wasn't in the session.
+team.** Lead with the *why*, then the *what*. Assume the reader
+wasn't in the session.
 
 The PR describes the **code change**, not the **process that
-produced it**. If a sentence references the dream team protocol, a role on
-it, or the way it organises work, that sentence doesn't belong
-here. Internal-protocol vocabulary should never appear in the
-description:
+produced it**. If a sentence references the dream team
+protocol, a role on it, or the way it organises work, that
+sentence doesn't belong here. Internal-protocol vocabulary
+should never appear in the description:
 
 - *the protocol*
 - *Grace* / *Ralph* / *Junio* / *Ada* as role names
@@ -448,8 +451,8 @@ Apply the following rules to all communications, including
 messages to teammates (other agents), messages to the user,
 and written content posted on GitHub issues and pull requests.
 
-**Plain English at all times.** Short sentences under 25 words, active voice,
-plain everyday words.
+**Plain English at all times.** Short sentences under 25
+words, active voice, plain everyday words.
 
 Refer to GitHub issues and PRs as `GHNN` (e.g. `GH16`) and
 tasks as `task NN`. The two have separate numbering spaces, and
@@ -498,7 +501,8 @@ answer, not headers and sections.
 The full envelope and rules are in `protocol.md` under
 "Communication between teammates (agents)". Operationally:
 
-- **`SendMessage`**. Use the `SendMessage` tool for all communication between teammates.
+- **`SendMessage`**. Use the `SendMessage` tool for all
+  communication between teammates.
 - **Reply via `SendMessage`.** Turn output is not
   delivered to other agents — only the harness sees it. Every
   reply to a teammate goes via `SendMessage`. A one-word reply

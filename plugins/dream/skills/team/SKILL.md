@@ -48,9 +48,9 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
 4. **Spawn all four agents in parallel** via the `Agent` tool.
    For each, set `subagent_type` to the agent's name (`Grace`,
    `Ralph`, `Junio`, `Ada`), set `name` to the same string,
-   and pass the team name. Initial prompt: include the absolute path to `protocol.md`
-   (it's in this skill's directory) and tell the agent to
-   run its boot sequence.
+   and pass the team name. Initial prompt: include the absolute
+   path to `protocol.md` (it's in this skill's directory) and
+   tell the agent to run its boot sequence.
 
 5. **Hand off.** Tell the user the team is spawned and they
    should switch to Grace's session to start. Grace opens

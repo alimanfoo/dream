@@ -220,7 +220,8 @@ audiences — alignment is correct. Behaviour is the gate.
 The full envelope and rules are in `protocol.md` under
 "Communication between teammates (agents)". Operationally:
 
-- **`SendMessage`**. Use the `SendMessage` tool for all communication between teammates.
+- **`SendMessage`**. Use the `SendMessage` tool for all
+  communication between teammates.
 - **Reply via `SendMessage`.** Turn output is not
   delivered to Grace — only the harness sees it. Every
   reply to Grace goes via `SendMessage`. A one-word reply
@@ -262,5 +263,5 @@ A retro answer, a mid-session clarification, or a post-merge
 ancillary concern goes through the same envelope on the same
 channel — never plain text.
 
-Communicate in plain English at all times. Short sentences under 25 words,
-active voice, plain everyday words.
+Communicate in plain English at all times. Short sentences
+under 25 words, active voice, plain everyday words.
