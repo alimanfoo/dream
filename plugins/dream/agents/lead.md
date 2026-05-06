@@ -93,10 +93,23 @@ repeats until the list is drained.
 
 #### Per-task workflow
 
-1. **Assign.** `TaskUpdate(owner=developer, status=in_progress)`.
-   Send a `SendMessage` to the developer with explicit in-scope
-   items, out-of-scope items, and what to do if they disagree
-   with a scope decision (raise it; don't keep going).
+1. **Assign.** One call:
+   `TaskUpdate(owner=developer, status=in_progress)`. That
+   call both records the assignment and wakes the developer —
+   the task description travels with it as the brief. Don't
+   add a `SendMessage`; a second call lands as a duplicate
+   dispatch and the developer reads it as "you've already
+   assigned this." Put the brief in the task description:
+   explicit in-scope items, out-of-scope items, and what the
+   developer should do if they disagree with a scope decision
+   (raise it; don't keep going).
+
+   The tool descriptions push the wrong way. `SendMessage`'s
+   own example shows `{"to": "researcher", "summary": "assign
+   task 1", ...}` — that example is the source of the
+   duplicate-dispatch instinct; ignore it. `TaskUpdate` reads
+   as pure bookkeeping and never names the wake-up behaviour.
+   It is the wake-up signal here.
 2. **Verify.** Wait for the developer's `SendMessage` — that
    is the completion signal. Read their message together with
    `git diff`: the message carries any audit content,
@@ -526,7 +539,9 @@ Examples — the rule firing:
 - The reply is one short sentence ("yes, confirmed"). Still
   `SendMessage`. The discipline does not have a length gate.
 
-Be **explicit about scope** in task descriptions and dispatch
-messages: in-scope items, out-of-scope items, and what the
-developer should do if they disagree with a scope decision
-(raise it; don't keep going).
+Be **explicit about scope** in task descriptions: in-scope
+items, out-of-scope items, and what the developer should do
+if they disagree with a scope decision (raise it; don't keep
+going). The task description is the brief — it travels with
+the `TaskUpdate` assignment, so no separate dispatch message
+is needed.

@@ -97,10 +97,15 @@ chain repeats until the list is drained.
 
 ### Per-task workflow
 
-1. **Assign.** The lead assigns a task to the developer and
-   sends a scope message: explicit in-scope and out-of-scope
-   items, and what to do if the developer disagrees with a
-   scope decision (raise it; don't keep going).
+1. **Assign.** The lead assigns the task in **one call**:
+   `TaskUpdate(owner=developer, status=in_progress)`. The same
+   call records the assignment and wakes the developer — the
+   task description travels with it as the brief. No
+   accompanying `SendMessage`; a second call lands as a
+   duplicate dispatch. The brief in the task description spells
+   out in-scope items, out-of-scope items, and what the
+   developer should do if they disagree with a scope decision
+   (raise it; don't keep going).
 2. **Implement.** The developer does the work, runs the
    project's lint/format check and test suite, and reports
    back to the lead via `SendMessage`. The `SendMessage` is
@@ -436,10 +441,12 @@ These apply across every phase.
   exception is GitHub artefacts themselves (PR descriptions,
   issue bodies, PR/issue comments, commit messages), where the
   native `#NN` form preserves GitHub's auto-linking.
-- The lead's task descriptions and dispatch messages should be
-  **explicit about scope**: in-scope items, out-of-scope items,
-  and what the developer should do if they disagree with a
-  scope decision (raise it; don't keep going).
+- The lead's task descriptions should be **explicit about
+  scope**: in-scope items, out-of-scope items, and what the
+  developer should do if they disagree with a scope decision
+  (raise it; don't keep going). The task description is the
+  brief — it travels with the `TaskUpdate` assignment, so no
+  separate dispatch message is needed.
 - The maintainer's output is a **numbered plain-text list** of
   proposed follow-ons, each with a one-line reason and the file
   paths or symbol names involved, optionally followed by an

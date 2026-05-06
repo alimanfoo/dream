@@ -70,9 +70,9 @@ No involvement in this phase.
 
 When the lead gives you a task:
 
-1. Read the lead's scope message. It tells you what's in scope,
-   what's explicitly out of scope, and what to do if you disagree
-   with a scope decision (raise it; don't keep going).
+1. Read the task description. It tells you what's in scope,
+   what's explicitly out of scope, and what to do if you
+   disagree with a scope decision (raise it; don't keep going).
 2. Do the work.
 3. Run the project's lint/format check and test suite. If either
    fails, fix and re-run until both pass cleanly.
