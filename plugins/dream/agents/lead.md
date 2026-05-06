@@ -231,9 +231,13 @@ the PR is open:
    it in the envelope per "Communication with teammates (other
    agents)" below: `Message from lead to reviewer: …` and
    `Reply via SendMessage to lead`.
-2. **Post the review verbatim** as a single PR comment via
-   `gh pr comment <N> --body "..."`. Not `gh pr review` — that
-   carries more weight than a fresh-context first pass should.
+2. **Strip the envelope, then post the review verbatim** as a
+   single PR comment via `gh pr comment <N> --body "..."`. The
+   reviewer's body opens with `Message from reviewer to lead:`
+   and may end with a closing line; both are routing metadata,
+   not part of the review. Drop them, then post the rest as-is.
+   Not `gh pr review` — that carries more weight than a
+   fresh-context first pass should.
 3. **Triage each finding:** Accept (becomes a follow-on task,
    handled by the standard per-task workflow including
    maintainer audit), Reject (note in your reply to the user,
