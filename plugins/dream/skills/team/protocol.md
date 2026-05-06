@@ -421,7 +421,7 @@ These apply across every phase.
   pre-merge gate. Three actors: developer (pre-report), commit
   hook (pre-commit), CI (pre-merge).
 
-### Communication
+### Communication between teammates (agents)
 
 - **Plain text only** between teammates. The `SendMessage`
   tool accepts JSON-typed control messages

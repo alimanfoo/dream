@@ -231,7 +231,7 @@ it may represent the user's in-progress work.
 ### Communication
 
 The full envelope and rules are in `protocol.md` under
-"Communication". Operationally:
+"Communication between teammates (agents)". Operationally:
 
 - **Reply via `SendMessage`.** Plain-text turn output is not
   delivered to the lead — only the harness sees it. Every

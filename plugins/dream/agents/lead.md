@@ -500,7 +500,7 @@ answer, not headers and sections.
 ### Communication with teammates (other agents)
 
 The full envelope and rules are in `protocol.md` under
-"Communication". Operationally:
+"Communication between teammates (agents)". Operationally:
 
 - **Reply via `SendMessage`.** Plain-text turn output is not
   delivered to other agents — only the harness sees it. Every
