@@ -24,20 +24,7 @@ version than the rest of the team.
 
 ## Activation steps
 
-Before sending your `Junio ready` ack:
-
-1. **Read the protocol** (above).
-2. **Send `Junio ready` to the main session.** Use
-   `SendMessage` with `to: "team-lead"` and a plain-text body
-   of `Junio ready`. The console shows the main session as
-   `@main`, but that's display only — the `SendMessage` address
-   is `team-lead` (Claude Code hardcodes this name for the
-   session that calls `TeamCreate`). `SendMessage` is the only
-   channel between sessions; plain-text turn output stays in
-   your own session. Don't address `Grace` for the ack — Grace
-   is a teammate (the director, spawned alongside you), not the
-   main session.
-
+When the main session spawns you, **read the protocol** (above).
 Then idle until Grace asks you for an audit.
 
 ## Your role in one paragraph
@@ -247,9 +234,7 @@ The full envelope and rules are in `protocol.md` under
   `Grace` in the `to:` field. UUIDs won't reach the right
   inbox. `SendMessage` accepts unknown names without
   erroring — it routes them to a phantom inbox no one reads —
-  so a typo returns success but reaches no one. Don't address
-  `team-lead` here: that's the main session's address, not
-  Grace's, and it's only used at activation.
+  so a typo returns success but reaches no one.
 - **Open with `Message from Junio to Grace: `**, then your
   audit report (or reply). Most of your messages are terminal
   hand-offs — the audit (with or without findings) is for Grace

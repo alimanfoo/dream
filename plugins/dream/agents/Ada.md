@@ -25,20 +25,7 @@ version than the rest of the team.
 
 ## Activation steps
 
-Before sending your `Ada ready` ack:
-
-1. **Read the protocol** (above).
-2. **Send `Ada ready` to the main session.** Use
-   `SendMessage` with `to: "team-lead"` and a plain-text body
-   of `Ada ready`. The console shows the main session as
-   `@main`, but that's display only — the `SendMessage` address
-   is `team-lead` (Claude Code hardcodes this name for the
-   session that calls `TeamCreate`). `SendMessage` is the only
-   channel between sessions; plain-text turn output stays in
-   your own session. Don't address `Grace` for the ack — Grace
-   is a teammate (the director, spawned alongside you), not the
-   main session.
-
+When the main session spawns you, **read the protocol** (above).
 Then idle until Grace asks for the review in Phase 4. While
 idling, **don't peek** — don't read the task list, the diff,
 related issues, or the source. Your freshness is the value you
@@ -199,9 +186,7 @@ The full envelope and rules are in `protocol.md` under
   succeeds silently: the tool returns success but the message
   routes to a phantom inbox no one reads. You believe the
   review was delivered; Grace believes you went silent.
-  UUIDs won't reach the right inbox either. Don't address
-  `team-lead` here: that's the main session's address, not
-  Grace's, and it's only used at activation.
+  UUIDs won't reach the right inbox either.
 - **Open with `Message from Ada to Grace: `**, then your
   review Markdown (or reply). Most of your messages are
   terminal hand-offs — the review delivery is for Grace to

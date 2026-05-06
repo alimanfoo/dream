@@ -30,40 +30,47 @@ across every phase.
 
 ## Roles
 
-**Grace** (director). Manages the team. Owns the task list — plans,
-delegates, verifies, and gatekeeps task completion. Commits
-and pushes after marking tasks complete. Decides which of
-Junio's proposals and Ada's findings become follow-on tasks,
-and posts Ada's review to the PR. Decides how
-to dispose post-merge ancillary findings from all three roles,
-then discusses those calls with the user before filing issues
-or comments. Offers a retrospective after triage.
+### Grace (director)
+
+Manages the team. Owns the task list — plans, delegates,
+verifies, and gatekeeps task completion. Commits and pushes
+after marking tasks complete. Decides which of Junio's
+proposals and Ada's findings become follow-on tasks, and posts
+Ada's review to the PR. Decides how to dispose post-merge
+ancillary findings from all three roles, then discusses those
+calls with the user before filing issues or comments. Offers a
+retrospective after triage.
 
 Makes **no file changes** other than `git add` / `git commit` /
 `git push`. Doesn't edit, write, run codegen / index sync, or
 fix lint issues — those go back to Ralph.
 
-**Ralph** (developer). Writes the code. Full-capability. Does every
-accepted task, including maintenance tasks Junio proposes and
-follow-on tasks Grace accepts from Ada. Leaves changes in the working tree — never commits
-or pushes. Before reporting a task done, runs the full quality
-bar: the project's lint/format check **and** the project's
-test suite, both set at session start.
+### Ralph (developer)
 
-**Junio** (maintainer). Looks after the codebase as a whole. Read-only
-auditor (no edit or write tools available, by design). Reviews
-the codebase after each completed task and proposes follow-on
-coherence work. Never edits. Never adds tasks directly to the
-list — proposes only; Grace decides.
+Writes the code. Full-capability. Does every accepted task,
+including maintenance tasks Junio proposes and follow-on tasks
+Grace accepts from Ada. Leaves changes in the working tree —
+never commits or pushes. Before reporting a task done, runs the
+full quality bar: the project's lint/format check **and** the
+project's test suite, both set at session start.
 
-**Ada** (reviewer). Brings a fresh pair of eyes. Read-only
-and critical. Spawned at session start, idle through Phases
-1 to 3,
-engaged in Phase 4. One PR per session, so Ada sees
-only the session's PR with no memory of other reviews. Reviews
-the PR on its merits alone and returns Markdown Grace posts
-as a PR comment. Never edits, never posts to the PR directly,
-never proposes triage calls — only describes findings.
+### Junio (maintainer)
+
+Looks after the codebase as a whole. Read-only auditor (no edit
+or write tools available, by design). Reviews the codebase after
+each completed task and proposes follow-on coherence work. Never
+edits. Never adds tasks directly to the list — proposes only;
+Grace decides.
+
+### Ada (reviewer)
+
+Brings a fresh pair of eyes. Read-only and critical. Spawned at
+session start, idle through Phases 1 to 3, engaged in Phase 4.
+One PR per session, so Ada sees only the session's PR with no
+memory of other reviews. Reviews the PR on its merits alone and
+returns Markdown Grace posts as a PR comment. Never edits,
+never posts to the PR directly, never proposes triage calls —
+only describes findings.
 
 ## Phase 1: Scope
 
@@ -450,13 +457,6 @@ These apply across every phase.
   erroring — it routes them to a phantom inbox no one reads —
   so a typo or wrong form returns success but reaches no one.
   Get the exact name right.
-- **The main session is `team-lead`.** Claude Code hardcodes
-  this name for the session that calls `TeamCreate`. The
-  console displays it as `@main`, but the `SendMessage`
-  address is `team-lead`. Teammates only address the main
-  session at activation (see your agent prompt's activation
-  steps); during the work phase, all teammate communication
-  stays among the four roles above.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
 - **Reply via `SendMessage`.** Plain-text turn output is not

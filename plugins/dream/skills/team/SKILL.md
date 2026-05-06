@@ -44,8 +44,9 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    routing. This sets up the team config at
    `~/.claude/teams/<name>/` and the shared task list at
    `~/.claude/tasks/<name>/`. Claude Code hardcodes your
-   addressable name as `team-lead` in the team config; the
-   four agents you spawn next will reach you at that address.
+   addressable name as `team-lead` in the team config; you use
+   that address only to send shutdown signals at the end of the
+   session.
 
 4. **Spawn all four agents in parallel** via the `Agent` tool.
    For each, set `subagent_type` to the agent's name (`Grace`,
@@ -56,18 +57,13 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    (it's in this skill's directory) and tell the agent to
    follow its activation steps.
 
-5. **Wait for all four acks.** Each agent sends a single
-   `SendMessage` to `team-lead` (you, the main session) with
-   a plain-text body: `Grace ready`, `Ralph ready`, `Junio
-   ready`, `Ada ready`. Don't proceed until all four have
-   landed. If any agent fails to ack — error,
-   timeout, or anything other than the expected line — stop
-   and surface the failure to the user. Don't auto-retry.
-   Don't try to fix it yourself.
-
-6. **Hand off.** Once all four acks are in, tell the user the
-   team is ready and they should switch to Grace's session to
-   start. Grace opens Phase 1: Scope.
+5. **Hand off.** Tell the user the team is spawned and they
+   should switch to Grace's session to start. Grace opens
+   Phase 1: Scope. There is no readiness handshake — the four
+   `Agent` calls returning is the only spawn-time signal. Each
+   teammate reads the protocol on its own, and Grace surfaces
+   any teammate that fails to respond when she first uses
+   them.
 
 ## During the session
 
