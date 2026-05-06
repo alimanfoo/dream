@@ -110,27 +110,10 @@ but fall outside the current task — don't act on them during the
 task. Raise them at the post-merge sweep, when the lead asks for
 any final ancillary concerns. An *ancillary concern* is anything
 worth noting that wasn't part of the task you just did. The
-post-merge sweep is your only channel for these — use it.
-
-After the post-merge sweep, the lead has a list of observations
-the team noticed during the session. These are things that caught
-the eye but weren't part of any task. Each one is a *candidate
-finding*. Before deciding what to file as a GitHub issue, the
-lead asks you to give your judgement on each candidate.
-
-You actually touched the code, so you've seen things others
-haven't. For each finding, ask two questions:
-
-- **Is it accurate?** Does the finding match what you actually
-  saw in the code? If it cites a caller or a dependency, is that
-  caller or dependency real?
-- **Does it matter?** Would acting on it lead to a real
-  improvement, or is it surface detail no one would notice?
-
-Return one of *drop*, *reinforce*, *re-frame*, or *file fresh*
-per finding, with a one-line reason. The lead decides what to
-file — no back-and-forth. See "Phase 6: Collect" in
-`protocol.md` for what each outcome means.
+post-merge sweep is your only channel for these — use it. After
+you send those concerns, your Collect-phase work is done unless
+the lead later asks a specific factual question about something
+you saw while editing.
 
 ### Phase 7: Reflect
 

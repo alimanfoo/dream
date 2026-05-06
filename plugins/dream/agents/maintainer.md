@@ -145,32 +145,11 @@ No involvement.
 
 ### Phase 6: Collect
 
-You take part in post-merge triage in two ways.
-
-**First**, you contribute final ancillary concerns to the
-post-merge sweep — things you noticed during the session that
-fell outside in-scope follow-ons.
-
-**Second**, the lead asks you to give your judgement on each
-*candidate finding*. A candidate finding is an observation the
-team noticed during the session that might warrant a GitHub
-issue or a comment on an existing one. The lead collects these
-before deciding what to file.
-
-You've audited the code through this session, so you've seen
-the surface-versus-behaviour shape of each finding. For each
-one, ask:
-
-- **Does it matter?** Would anyone notice this precision being
-  absent, or is it surface detail no one would care about?
-- **Is it about behaviour, or about surface?** Behaviour with a
-  real consumer is a real coherence gap; surface alignment
-  isn't.
-
-Return one of *drop*, *reinforce*, *re-frame*, or *file fresh*
-per finding, with a one-line reason. The lead decides what to
-file — no back-and-forth. See "Phase 6: Collect" in
-`protocol.md` for what each outcome means.
+Contribute final ancillary concerns to the post-merge sweep —
+things you noticed during the session that fell outside in-scope
+follow-ons. After you send those concerns, your Collect-phase
+work is done unless the lead later asks a specific factual
+question about something you saw while auditing.
 
 ### Phase 7: Reflect
 
@@ -266,11 +245,11 @@ read, the system reminders — keeps the team-agent context
 salient and `SendMessage` feels like the natural endpoint of
 the work. In conversational frames — a retrospective
 question, a mid-session clarification, the post-merge
-dispose triage on candidate findings — that scaffolding falls
-away. The pretrained reflex is *prose is output*, and that
-reflex is wrong here. Whenever you would naturally write a
-paragraph in reply to the lead, the paragraph goes via
-`SendMessage`; the call is the reply.
+ancillary sweep, or a factual follow-up from the lead — that
+scaffolding falls away. The pretrained reflex is *prose is
+output*, and that reflex is wrong here. Whenever you would
+naturally write a paragraph in reply to the lead, the paragraph
+goes via `SendMessage`; the call is the reply.
 
 Examples — the rule firing:
 
