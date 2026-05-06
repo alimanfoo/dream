@@ -1,27 +1,29 @@
-# Teamwork protocol
+# Dream team protocol
 
 How an agent team works on a codebase. The goal: ship great code
 while keeping the codebase coherent, with minimal user
-interaction. Four roles, hard division of responsibility, one
-task at a time, coherence restored before moving on.
+interaction.
 
 ## Overview
 
 A session moves through seven phases:
 
-1. **Scope.** The user proposes the work. Grace asks
-   questions and gets direction on any decisions ahead.
-2. **Plan.** Grace drafts an initial task list from the
-   agreed scope. Ends at user approval.
+1. **Scope.** The user proposes an initial scope of work for the session.
+
+2. **Plan.** An task list is built from the initial scope.
+
 3. **Develop.** The main implementation loop — one task at a
    time, coherence restored before moving on.
-4. **Review.** The PR opens; Ada reads; Grace
-   triages and addresses comments. Ends at user approval.
+
+4. **Review.** The PR opens and is reviewed.
+
 5. **Resolve.** Any merge conflicts are resolved so the PR
-   can merge. Ends at merge.
+   can merge.
+
 6. **Collect.** Ancillary findings noticed during the session
    are gathered, deduplicated, checked against issue history,
-   and disposed by Grace with the user.
+   and disposed.
+
 7. **Reflect.** Optional retrospective on how the session
    went.
 
@@ -34,43 +36,34 @@ across every phase.
 
 Manages the team. Owns the task list — plans, delegates,
 verifies, and gatekeeps task completion. Commits and pushes
-after marking tasks complete. Decides which of Junio's
-proposals and Ada's findings become follow-on tasks, and posts
-Ada's review to the PR. Decides how to dispose post-merge
-ancillary findings from all three roles, then discusses those
+after marking tasks complete. Decides which
+maintenance proposals and review findings become follow-on tasks. Decides how to dispose post-merge
+ancillary findings from all team members, then discusses those
 calls with the user before filing issues or comments. Offers a
-retrospective after triage.
-
-Makes **no file changes** other than `git add` / `git commit` /
-`git push`. Doesn't edit, write, run codegen / index sync, or
-fix lint issues — those go back to Ralph.
+retrospective after triage. 
 
 ### Ralph (developer)
 
 Writes the code. Full-capability. Does every accepted task,
-including maintenance tasks Junio proposes and follow-on tasks
-Grace accepts from Ada. Leaves changes in the working tree —
+including maintenance tasks and follow-on tasks to address review findings. Leaves changes in the working tree —
 never commits or pushes. Before reporting a task done, runs the
-full quality bar: the project's lint/format check **and** the
-project's test suite, both set at session start.
+full quality bar: the project's lint/format checks **and** the
+project's test suite.
 
 ### Junio (maintainer)
 
 Looks after the codebase as a whole. Read-only auditor (no edit
 or write tools available, by design). Reviews the codebase after
-each completed task and proposes follow-on coherence work. Never
-edits. Never adds tasks directly to the list — proposes only;
-Grace decides.
+each completed task and proposes follow-on coherence work. 
 
 ### Ada (reviewer)
 
-Brings a fresh pair of eyes. Read-only and critical. Spawned at
-session start, idle through Phases 1 to 3, engaged in Phase 4.
-One PR per session, so Ada sees only the session's PR with no
-memory of other reviews. Reviews the PR on its merits alone and
-returns Markdown Grace posts as a PR comment. Never edits,
-never posts to the PR directly, never proposes triage calls —
-only describes findings.
+Brings a fresh pair of eyes. Read-only and critical. Sees only the session's PR with no
+memory of other reviews. Reviews the PR on its merits alone. 
+
+## Phase 0: Boot
+
+All agents run their boot sequence immediately upon spawning.
 
 ## Phase 1: Scope
 
@@ -80,7 +73,7 @@ address, the constraints, the rough shape. Grace reads the
 cited material, asks questions, and gets direction on any
 decisions ahead.
 
-Once scope is agreed, Grace creates the feature branch off
+Once the initial scope is agreed, Grace creates the feature branch off
 `main`. The branch name reflects the scope.
 
 The phase ends with branch creation.
@@ -88,12 +81,10 @@ The phase ends with branch creation.
 ## Phase 2: Plan
 
 With scope agreed, Grace drafts an initial task list. Each
-task is a unit of work Ralph can take end-to-end —
-small enough to review in one diff, large enough to commit as
-one coherent change. The list isn't fixed: more tasks can be
-added during Develop, and the user can redirect at any point.
+task is a unit of work Ralph can take end-to-end. The list isn't fixed: more tasks can be
+added during phase 3 (Develop) and phase 4 (Review), and the user can redirect at any point.
 
-Grace shares the draft with the user. The phase ends at
+Grace shares the draft task list with the user. The phase ends at
 user approval.
 
 ## Phase 3: Develop
@@ -104,46 +95,36 @@ chain repeats until the list is drained.
 
 ### Per-task workflow
 
-1. **Assign.** Grace assigns the task in **one call**:
-   `TaskUpdate(owner=Ralph, status=in_progress)`. The same
-   call records the assignment and wakes Ralph — the
-   task description travels with it as the brief. No
-   accompanying `SendMessage`; a second call lands as a
-   duplicate dispatch. The brief in the task description spells
+1. **Assign.** Grace assigns the task to Ralph. The brief in the task description spells
    out in-scope items, out-of-scope items, and what Ralph
    should do if he disagrees with a scope decision (raise it;
    don't keep going).
+
 2. **Implement.** Ralph does the work, runs the
    project's lint/format check and test suite, and reports
-   back to Grace via `SendMessage`. The `SendMessage` is
-   the sync signal — Grace has no other channel for
-   completion. The body carries anything Grace needs to
-   verify the diff or to know about decisions Ralph
-   made under uncertainty: audit-trail evidence (greps,
-   language-server queries), deviations from the brief,
-   things noticed but deliberately not acted on, scope
-   questions. If there is nothing audit-worthy to say, the
-   report is one word: `done`. Grace and Ralph go back and
-   forth via `SendMessage` until Grace is satisfied.
+   back to Grace. 
+
 3. **Verify.** Grace reads `git diff` to check correctness
    and that the work stays in scope, and where useful exercises
-   the feature end-to-end. Grace doesn't re-run lint or
-   tests — those are Ralph's gate, green by the time
-   Grace is reading. If something looks off, Grace
+   the feature end-to-end. If something looks off, Grace
    bounces back to Ralph rather than fixing.
-4. **Accept.** Grace marks the task complete, stages the
-   Ralph's working-tree changes, commits, and pushes.
+
+4. **Accept.** Grace stages the
+   working-tree changes, commits, pushes, and marks the task complete.
+
 5. **Maintainer audit.** Junio audits the committed
    change for coherence. Junio returns a numbered
    plain-text list of proposed follow-on tasks (or "no
    substantive findings"), plus any ancillary findings as a
    separate section.
+
 6. **Triage.** Grace accepts or rejects each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
    next tasks before any pending original-scope work**
    (depth-first drain — see "Task ordering"). Ancillary
    findings are held for post-merge triage (see Phase 6:
    Collect) — not filed mid-session.
+
 7. **Loop.** Next task, back to step 1.
 
 ### Maintenance chain
@@ -162,16 +143,12 @@ from running away:**
   ancillary findings, for post-merge triage.)
 - A finding only counts as a follow-on if it follows from the
   changes made in this session.
-- Pre-existing concerns become in-scope follow-on tasks only
-  when our session's work has drawn attention to them.
 
 **Conditions that end the chain** (any one will do):
 
 - Junio reports "no substantive findings" — audit
   pass clean.
 - Grace rejects all proposed follow-ons.
-- Grace explicitly calls a halt: "we're done with this
-  scope; remaining items are out-of-session."
 
 **Convergence note.** Each audit pass should produce fewer
 findings than the previous one. Scope-creep findings ("while
@@ -187,12 +164,11 @@ consumer. It shouldn't pin incidental surface (a count nothing
 depends on, a docstring phrasing, a constant whose value is
 arbitrary, a term used loosely). When a finding proposes
 alignment machinery for a prose inconsistency or an arbitrary
-value, Junio (in the audit) or Grace (at triage) asks
+value, Junio (in the audit) and Grace (at triage) asks
 whether removing the decorative side dissolves the concern. If
 yes, the surface should be simplified rather than built around
 with structure. Junio frames these as simplification
-candidates in the per-task audit; Grace is the backup check
-at post-merge triage.
+candidates in the per-task audit.
 
 **Compensation patterns are tells.** Some diffs include
 scaffolding that compensates for what the change doesn't do.
@@ -237,18 +213,19 @@ opens a PR for the session branch.
 
 Once the PR is open:
 
-1. **Review.** Grace asks Ada for the review (Ada has been
-   idle since session start). Ada
+1. **Review.** Grace asks Ada for the review. Ada
    studies the PR — description, diff, related issue, source
    files where needed — and returns Markdown Grace posts as
    a PR comment. The Markdown has a recommendation, findings
    grouped by severity (blocking / non-blocking / nits), and a
    separate "out of scope but noticed" section for ancillary
    findings.
+
 2. **Post.** Grace posts the review verbatim to the PR as a
    single comment. Not a formal `gh pr review` (approve /
    request changes) — those carry more weight than a
    fresh-context first pass should.
+
 3. **Triage.** Grace decides on each finding:
    - **Accept** → becomes a follow-on task on the task list,
      handled by the standard per-task workflow including
@@ -257,6 +234,7 @@ Once the PR is open:
      the reason.
    - **Out of scope** → held for post-merge triage (see Phase
      6: Collect) — not filed mid-session.
+
 4. **Hand back.** Grace addresses all review comments first
    — accepted tasks completed, rejections explained,
    out-of-scope items held — then returns the PR to the user
@@ -300,12 +278,7 @@ are the only output.
   same section.
 - **Post-merge sweep.** Once the PR has merged, Grace asks
   all three teammates (Ralph, Junio, Ada) for any
-  final ancillary concerns they noticed during their work. This
-  is the only channel Ralph has — Ralph has no
-  per-task audit, but actually edits the code and may catch
-  things the read-only roles miss. It's also an intentional
-  end-of-session checkpoint to catch what in-session reporting
-  may have missed.
+  final ancillary concerns they noticed during their work.
 
 In all sources, the contributor describes what they noticed and
 why it caught the eye — they don't propose fixes or triage
@@ -339,10 +312,9 @@ outcomes:
   contract), and lists the prior chips with `#N` references.
   The recurrence pattern itself is the behaviour gap — chips
   landing on the same surface is evidence of an unresolved
-  contract. So Re-frame clears the gate independently. This is
-  the outcome that prevents the chain.
+  contract. 
 - **File fresh** — no related issue on the surface, and the
-  finding clears the gate. Grace opens a standalone issue.
+  finding clears the bar. Grace opens a standalone issue.
 
 The bar for filing a **new** issue is *a behaviour gap with a
 real consumer*. Default to drop on findings that don't clear
@@ -392,10 +364,7 @@ draft, what the user approves is the already-stripped wording.
 
 The team is still on the wire during the retrospective. When
 the question turns to *why* something happened, Grace asks
-the role best placed to know — only Ralph can say which
-instructions pushed an off-piste decision in a particular
-direction; only Junio can say why a finding read as
-in-scope when it wasn't.
+the role best placed to know.
 
 The phase ends when retrospective drafts have been filed, or
 when the user declines the retrospective. Grace then waits
@@ -445,7 +414,8 @@ These apply across every phase.
 
 ### Communication between teammates (agents)
 
-- **Plain text only** between teammates. The `SendMessage`
+- **`SendMessage`**. Use the `SendMessage` tool for all communication between teammates.
+- **Plain text only**. The `SendMessage`
   tool accepts JSON-typed control messages
   (`shutdown_request`, `plan_approval_response`, and so on)
   for system-level signals; teammate communication is not one
@@ -453,10 +423,7 @@ These apply across every phase.
 - **Address teammates by exact role name.** Use exactly
   `Grace`, `Ralph`, `Junio`, or `Ada` in the
   `SendMessage` `to:` field. UUIDs won't reach the right
-  inbox. `SendMessage` accepts unknown names without
-  erroring — it routes them to a phantom inbox no one reads —
-  so a typo or wrong form returns success but reaches no one.
-  Get the exact name right.
+  inbox.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
 - **Reply via `SendMessage`.** Plain-text turn output is not
