@@ -444,14 +444,20 @@ These apply across every phase.
   (`shutdown_request`, `plan_approval_response`, and so on)
   for system-level signals; teammate communication is not one
   of those. Send a plain-text string.
-- **Address by exact role name.** Use exactly `lead`,
-  `developer`, `maintainer`, or `reviewer` in the
-  `SendMessage` `to:` field — never a `team-` prefix or any
-  other variant. UUIDs likewise won't reach the right inbox.
-  The `SendMessage` tool's own description shows `team-lead`
-  in a legacy protocol-response example. That form fails
-  silently — the message returns success but reaches no
-  inbox. Ignore the example.
+- **Address teammates by exact role name.** Use exactly
+  `lead`, `developer`, `maintainer`, or `reviewer` in the
+  `SendMessage` `to:` field. UUIDs won't reach the right
+  inbox. `SendMessage` accepts unknown names without
+  erroring — it routes them to a phantom inbox no one reads —
+  so a typo or wrong form returns success but reaches no one.
+  Get the exact name right.
+- **The main session is `team-lead`.** Claude Code hardcodes
+  this name for the session that calls `TeamCreate`. The
+  console displays it as `@main`, but the `SendMessage`
+  address is `team-lead`. Teammates only address the main
+  session at activation (see your agent prompt's activation
+  steps); during the work phase, all teammate communication
+  stays among the four roles above.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
 - **Reply via `SendMessage`.** Plain-text turn output is not

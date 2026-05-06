@@ -26,7 +26,16 @@ version than the rest of the team.
 Before sending your `maintainer ready` ack:
 
 1. **Read the protocol** (above).
-2. **Send `maintainer ready`** as a plain-text reply.
+2. **Send `maintainer ready` to the main session.** Use
+   `SendMessage` with `to: "team-lead"` and a plain-text body
+   of `maintainer ready`. The console shows the main session as
+   `@main`, but that's display only — the `SendMessage` address
+   is `team-lead` (Claude Code hardcodes this name for the
+   session that calls `TeamCreate`). `SendMessage` is the only
+   channel between sessions; plain-text turn output stays in
+   your own session. Don't address `lead` for the ack — that's
+   a teammate (the dream lead, spawned alongside you), not the
+   main session.
 
 Then idle until the lead asks you for an audit.
 
@@ -234,11 +243,12 @@ The full envelope and rules are in `protocol.md` under
   rule has no length gate. You only talk to the lead — not
   to the developer or reviewer directly.
 - **Address the lead as `lead`.** Use exactly `lead` in the
-  `to:` field — never `team-lead` or any other variant. UUIDs
-  won't reach the right inbox. The `SendMessage` tool's own
-  description shows `team-lead` in a legacy protocol-response
-  example — that exact form is what fails silently. Ignore
-  the example.
+  `to:` field. UUIDs won't reach the right inbox.
+  `SendMessage` accepts unknown names without erroring — it
+  routes them to a phantom inbox no one reads — so a typo
+  returns success but reaches no one. Don't address
+  `team-lead` here: that's the main session's address, not
+  the dream lead's, and it's only used at activation.
 - **Open with `Message from maintainer to lead: `**, then your
   audit report (or reply). Most maintainer messages are
   terminal hand-offs — the audit (with or without findings) is

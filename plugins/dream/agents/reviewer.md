@@ -28,7 +28,16 @@ version than the rest of the team.
 Before sending your `reviewer ready` ack:
 
 1. **Read the protocol** (above).
-2. **Send `reviewer ready`** as a plain-text reply.
+2. **Send `reviewer ready` to the main session.** Use
+   `SendMessage` with `to: "team-lead"` and a plain-text body
+   of `reviewer ready`. The console shows the main session as
+   `@main`, but that's display only — the `SendMessage` address
+   is `team-lead` (Claude Code hardcodes this name for the
+   session that calls `TeamCreate`). `SendMessage` is the only
+   channel between sessions; plain-text turn output stays in
+   your own session. Don't address `lead` for the ack — that's
+   a teammate (the dream lead, spawned alongside you), not the
+   main session.
 
 Then idle until the lead asks for the review in Phase 4. While
 idling, **don't peek** — don't read the task list, the diff,
@@ -185,14 +194,13 @@ The full envelope and rules are in `protocol.md` under
   `SendMessage` — the rule has no length gate. You only talk
   to the lead — not to the developer or maintainer directly.
 - **Address the lead as `lead`.** Use exactly `lead` in the
-  `to:` field — never `team-lead` or any other variant. A
-  `SendMessage` to an unknown recipient name fails silently:
-  it returns success but the message reaches no inbox. You
-  believe the review was delivered; the lead believes you
-  went silent. UUIDs likewise won't reach the right inbox.
-  The `SendMessage` tool's own description shows `team-lead`
-  in a legacy protocol-response example — that is the exact
-  form that fails silently. Ignore the example.
+  `to:` field. A `SendMessage` to an unknown recipient name
+  succeeds silently: the tool returns success but the message
+  routes to a phantom inbox no one reads. You believe the
+  review was delivered; the lead believes you went silent.
+  UUIDs won't reach the right inbox either. Don't address
+  `team-lead` here: that's the main session's address, not
+  the dream lead's, and it's only used at activation.
 - **Open with `Message from reviewer to lead: `**, then your
   review Markdown (or reply). Most reviewer messages are
   terminal hand-offs — the review delivery is for the lead to

@@ -39,7 +39,14 @@ Before sending your `lead ready` ack:
    another branch, stop and surface it to the main session —
    don't touch anything. The user will sort it out before the
    session restarts.
-3. **Send `lead ready`** as a plain-text reply.
+3. **Send `lead ready` to the main session.** Use
+   `SendMessage` with `to: "team-lead"` and a plain-text body
+   of `lead ready`. The console shows the main session as
+   `@main`, but that's display only — the `SendMessage` address
+   is `team-lead` (Claude Code hardcodes this name for the
+   session that calls `TeamCreate`). `SendMessage` is the only
+   channel between sessions; plain-text turn output stays in
+   your own session and never reaches the main session.
 
 The user will then switch into your session and start Phase 1.
 The feature branch is **not** created here — that happens at the
@@ -518,12 +525,13 @@ The full envelope and rules are in `protocol.md` under
   (`done`, `confirmed`) still goes via `SendMessage` — the
   rule has no length gate.
 - **Address teammates by exact role.** Use `developer`,
-  `maintainer`, or `reviewer` in the `to:` field. Never
-  `team-developer`, `team-maintainer`, `team-reviewer`, or any
-  other variant — those silently fail to deliver. UUIDs
-  likewise won't reach the right inbox. The `SendMessage`
-  tool's own description shows `team-lead` in a legacy
-  protocol-response example; ignore it.
+  `maintainer`, or `reviewer` in the `to:` field. UUIDs won't
+  reach the right inbox. `SendMessage` accepts unknown names
+  without erroring — it routes them to a phantom inbox no one
+  reads — so a typo or `team-` prefix on a teammate name
+  returns success but reaches no one. Note: `team-lead` does
+  resolve, but to the main session, not to a teammate; it's
+  used only by the agents during activation.
 - **Open with `Message from lead to <recipient-role>: `**, then
   your message. Close with `Reply via SendMessage to lead` when
   you expect a reply — same role as the opening, telling the

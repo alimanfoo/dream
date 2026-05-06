@@ -42,7 +42,16 @@ Before sending your `developer ready` ack:
    projects have a stub generator, an OpenAPI client refresh,
    or an index sync that you'll run after edits. Note it so you
    know when to re-run.
-4. **Send `developer ready`** as a plain-text reply.
+4. **Send `developer ready` to the main session.** Use
+   `SendMessage` with `to: "team-lead"` and a plain-text body
+   of `developer ready`. The console shows the main session as
+   `@main`, but that's display only — the `SendMessage` address
+   is `team-lead` (Claude Code hardcodes this name for the
+   session that calls `TeamCreate`). `SendMessage` is the only
+   channel between sessions; plain-text turn output stays in
+   your own session. Don't address `lead` for the ack — that's
+   a teammate (the dream lead, spawned alongside you), not the
+   main session.
 
 ## Your role in one paragraph
 
@@ -244,11 +253,12 @@ The full envelope and rules are in `protocol.md` under
   rule has no length gate. You only talk to the lead — not to
   the maintainer or reviewer directly.
 - **Address the lead as `lead`.** Use exactly `lead` in the
-  `to:` field — never `team-lead` or any other variant. UUIDs
-  won't reach the right inbox. The `SendMessage` tool's own
-  description shows `team-lead` in a legacy protocol-response
-  example — that exact form is what fails silently. Ignore
-  the example.
+  `to:` field. UUIDs won't reach the right inbox.
+  `SendMessage` accepts unknown names without erroring — it
+  routes them to a phantom inbox no one reads — so a typo
+  returns success but reaches no one. Don't address
+  `team-lead` here: that's the main session's address, not
+  the dream lead's, and it's only used at activation.
 - **Open with `Message from developer to lead: `**, then your
   message. Close with `Reply via SendMessage to developer` when
   you expect a reply — same role as the opening, telling the

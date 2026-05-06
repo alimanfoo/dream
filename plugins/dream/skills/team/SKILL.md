@@ -23,10 +23,13 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    timestamp from `date +%Y%m%d-%H%M%S`. The timestamped name
    means multiple sessions in the same repo never collide.
 
-2. **Create the team** by calling `TeamCreate` with that name
-   and `agent_type: "lead"`. This sets up the team config at
+2. **Create the team** by calling `TeamCreate` with that name.
+   No `agent_type` needed — it's optional and doesn't affect
+   routing. This sets up the team config at
    `~/.claude/teams/<name>/` and the shared task list at
-   `~/.claude/tasks/<name>/`.
+   `~/.claude/tasks/<name>/`. Claude Code hardcodes your
+   addressable name as `team-lead` in the team config; the
+   four agents you spawn next will reach you at that address.
 
 3. **Spawn all four agents in parallel** via the `Agent` tool.
    For each, set `subagent_type` to the role (`lead`,
@@ -38,7 +41,8 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    agent to follow its activation steps.
 
 4. **Wait for all four acks.** Each agent sends a single
-   plain-text reply: `lead ready`, `developer ready`,
+   `SendMessage` to `team-lead` (you, the main session) with
+   a plain-text body: `lead ready`, `developer ready`,
    `maintainer ready`, `reviewer ready`. Don't proceed until
    all four have landed. If any agent fails to ack — error,
    timeout, or anything other than the expected line — stop
