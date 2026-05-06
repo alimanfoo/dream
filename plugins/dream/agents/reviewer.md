@@ -138,7 +138,7 @@ No involvement in this phase.
 After the PR merges, the lead asks you for any final ancillary
 concerns from your review that haven't already been raised.
 Pass them to the post-merge sweep. You don't take part in the
-team triage that follows. Your value is judging this PR with
+lead's triage that follows. Your value is judging this PR with
 fresh eyes, not contributing across the whole session.
 
 ### Phase 7: Reflect

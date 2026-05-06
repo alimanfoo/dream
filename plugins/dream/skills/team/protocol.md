@@ -20,7 +20,8 @@ A session moves through seven phases:
 5. **Resolve.** Any merge conflicts are resolved so the PR
    can merge. Ends at merge.
 6. **Collect.** Ancillary findings noticed during the session
-   are gathered, deduplicated, and turned into issues.
+   are gathered, deduplicated, checked against issue history,
+   and disposed by the lead with the user.
 7. **Reflect.** Optional retrospective on how the session
    went.
 
@@ -33,10 +34,10 @@ across every phase.
 delegates, verifies, and gatekeeps task completion. Commits
 and pushes after marking tasks complete. Decides which
 maintainer proposals and reviewer findings become follow-on
-tasks, and posts the reviewer's review to the PR. Files
-GitHub issues post-merge for ancillary findings from all
-three roles. Offers a retrospective after triage and surfaces
-candidate findings to the user.
+tasks, and posts the reviewer's review to the PR. Decides how
+to dispose post-merge ancillary findings from all three roles,
+then discusses those calls with the user before filing issues
+or comments. Offers a retrospective after triage.
 
 Makes **no file changes** other than `git add` / `git commit` /
 `git push`. Doesn't edit, write, run codegen / index sync, or
@@ -271,8 +272,10 @@ The phase ends when the PR is merged.
 The team regularly notices items outside the immediate scope
 of the current task. These **ancillary findings** matter and
 shouldn't be silently discarded. After merge, the lead compiles
-them, deduplicates, and triages them with the team. Triage
-happens here, **once**, and never mid-session. Filed issues
+them, deduplicates, checks issue history, makes a disposition
+call for each one, and discusses those calls with the user
+before filing or commenting. Triage happens here, **once**, and
+never mid-session. Filed issues or comments on existing issues
 are the only output.
 
 **Sources:**
@@ -293,7 +296,8 @@ are the only output.
   may have missed.
 
 In all sources, the contributor describes what they noticed and
-why it caught the eye — they don't propose fixes.
+why it caught the eye — they don't propose fixes or triage
+calls.
 
 **Timing.** Triage happens **once**, after PR merge and after
 the post-merge sweep has gathered all three sources. During the
@@ -303,10 +307,10 @@ sources, a full picture before judging, and a single
 uninterrupted triage moment.
 
 **Triage outcomes.** Each surviving finding ends as one of four
-outcomes. Triage is a team activity: the lead presents
-candidates to developer and maintainer in parallel, each
-returns independent calls per finding, and the lead pulls them
-together to decide. The four outcomes:
+outcomes. The lead makes the call after deduplicating the
+sources and checking related issues, then discusses the proposed
+dispositions with the user before filing or commenting. The four
+outcomes:
 
 - **Drop** — duplicate of an existing open issue, or fails the
   bar for filing. For a duplicate, the lead may comment on the
@@ -337,10 +341,6 @@ behavioural consequence. Filing an issue commits future agent
 time. The bar exists because the cost is real. Closed-issue
 history is the protocol's memory: a future contributor on the
 same surface will see the shape and make the call in context.
-
-The developer's value at triage: knowing from editing whether a
-cited caller is real. The maintainer's: catching surface-only
-findings from a coherence perspective.
 
 The lead doesn't implement anything in this phase. What enters
 the backlog is an issue or a comment, never a fix.
@@ -461,8 +461,8 @@ These apply across every phase.
 - Pushes to `main` unless the user explicitly asks
 - Merges PRs unless the user explicitly asks
 - Files or triages ancillary findings mid-session — they're
-  collected through the session and triaged once at the
-  post-merge sweep
+  collected through the session and triaged once in the
+  post-merge Collect phase
 - Spawns or shuts down team agents — that's the main session's
   job
 - Sends a `shutdown_request`
