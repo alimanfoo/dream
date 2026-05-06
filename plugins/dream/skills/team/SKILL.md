@@ -18,13 +18,28 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
 
 ## Spawning the team
 
-1. **Choose a team name.** Format
+1. **Welcome the user.** Before any tool calls, print this
+   banner verbatim as your first user-visible output:
+
+   ```
+             .  *  .  *  .  *  .  *  .
+          *      The Dream Team       *
+            Grace · Ralph · Junio · Ada
+             .  *  .  *  .  *  .  *  .
+
+      Starting up...
+   ```
+
+   The banner sets the stage; the rest of the flow runs without
+   further commentary until the team is ready.
+
+2. **Choose a team name.** Format
    `dream-team-<repo>-<YYYYMMDD-HHMMSS>`. Get the repo name
    from `basename $(git rev-parse --show-toplevel)` and the
    timestamp from `date +%Y%m%d-%H%M%S`. The timestamped name
    means multiple sessions in the same repo never collide.
 
-2. **Create the team** by calling `TeamCreate` with that name.
+3. **Create the team** by calling `TeamCreate` with that name.
    No `agent_type` needed — it's optional and doesn't affect
    routing. This sets up the team config at
    `~/.claude/teams/<name>/` and the shared task list at
@@ -32,7 +47,7 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    addressable name as `team-lead` in the team config; the
    four agents you spawn next will reach you at that address.
 
-3. **Spawn all four agents in parallel** via the `Agent` tool.
+4. **Spawn all four agents in parallel** via the `Agent` tool.
    For each, set `subagent_type` to the agent's name (`Grace`,
    `Ralph`, `Junio`, `Ada`), set `name` to the same string,
    and pass the team name. Tool restrictions come from each
@@ -41,7 +56,7 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    (it's in this skill's directory) and tell the agent to
    follow its activation steps.
 
-4. **Wait for all four acks.** Each agent sends a single
+5. **Wait for all four acks.** Each agent sends a single
    `SendMessage` to `team-lead` (you, the main session) with
    a plain-text body: `Grace ready`, `Ralph ready`, `Junio
    ready`, `Ada ready`. Don't proceed until all four have
@@ -50,7 +65,7 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    and surface the failure to the user. Don't auto-retry.
    Don't try to fix it yourself.
 
-5. **Hand off.** Once all four acks are in, tell the user the
+6. **Hand off.** Once all four acks are in, tell the user the
    team is ready and they should switch to Grace's session to
    start. Grace opens Phase 1: Scope.
 
