@@ -13,10 +13,10 @@ Requires Claude Code's [experimental agent teams](https://code.claude.com/docs/e
 
 ## Usage
 
-Start Claude code:
+Start Claude Code:
 
 ```
-CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --system-prompt "You are the team lead."
+CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude
 ```
 
 Then invoke the `dream:team` skill:
@@ -25,7 +25,7 @@ Then invoke the `dream:team` skill:
 /dream:team
 ```
 
-The lead role activates in your current session and spawns the other team members.
+Team members are then spawned in separate sessions. Switch to the `@lead` session to start working.
 
 See [`plugins/dream/skills/team/protocol.md`](plugins/dream/skills/team/protocol.md)
 for the full protocol.
