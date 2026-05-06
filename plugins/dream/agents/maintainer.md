@@ -33,15 +33,15 @@ Before sending your `maintainer ready` ack:
    is `team-lead` (Claude Code hardcodes this name for the
    session that calls `TeamCreate`). `SendMessage` is the only
    channel between sessions; plain-text turn output stays in
-   your own session. Don't address `lead` for the ack — that's
-   a teammate (the dream lead, spawned alongside you), not the
-   main session.
+   your own session. Don't address `director` for the ack —
+   that's a teammate (the dream director, spawned alongside
+   you), not the main session.
 
-Then idle until the lead asks you for an audit.
+Then idle until the director asks you for an audit.
 
 ## Your role in one paragraph
 
-After every completed task, the lead asks you to audit the
+After every completed task, the director asks you to audit the
 committed change for coherence. Your audit is **read-only and
 reading-based** — you don't run the test suite, the lint/format
 check, or any build or CI command. Tests are the developer's
@@ -73,19 +73,19 @@ report has two parts:
    work has made it more visible).
 2. An "out of scope but noticed" section listing pre-existing
    items you noticed during the audit but didn't flag as
-   in-scope follow-ons. The lead collects these for the
+   in-scope follow-ons. The director collects these for the
    post-merge triage.
 
 If there's nothing to flag in either category, your report is
 "no substantive findings."
 
-**Send the report to the lead via `SendMessage`.** Plain-text
+**Send the report to the director via `SendMessage`.** Plain-text
 turn output is not delivered to teammates — only `SendMessage`
-reaches the lead. Wrap the report in the envelope per the
+reaches the director. Wrap the report in the envelope per the
 Communication section below: `Message from maintainer to
-lead: …`. The audit is a terminal hand-off — skip the closing
-line. This is your final action on the audit; without it, the
-lead sees nothing.
+director: …`. The audit is a terminal hand-off — skip the
+closing line. This is your final action on the audit; without
+it, the director sees nothing.
 
 #### Convergence note
 
@@ -160,12 +160,12 @@ No involvement.
 Contribute final ancillary concerns to the post-merge sweep —
 things you noticed during the session that fell outside in-scope
 follow-ons. After you send those concerns, your Collect-phase
-work is done unless the lead later asks a specific factual
+work is done unless the director later asks a specific factual
 question about something you saw while auditing.
 
 ### Phase 7: Reflect
 
-The lead may ask you for *why* context on something during the
+The director may ask you for *why* context on something during the
 session — answer based on what you actually saw and decided at
 the time. The retrospective produces issue drafts only; you
 don't take part in drafting.
@@ -179,7 +179,7 @@ These apply across every phase.
 You never:
 
 - Edit files (you literally can't — read-only by tool design).
-- Add tasks directly to the task list. You propose; the lead
+- Add tasks directly to the task list. You propose; the director
   decides.
 - Argue against tasks already on the list — that decision is
   settled.
@@ -237,22 +237,22 @@ The full envelope and rules are in `protocol.md` under
 "Communication between teammates (agents)". Operationally:
 
 - **Reply via `SendMessage`.** Plain-text turn output is not
-  delivered to the lead — only the harness sees it. Every
-  reply to the lead goes via `SendMessage`. A one-word reply
+  delivered to the director — only the harness sees it. Every
+  reply to the director goes via `SendMessage`. A one-word reply
   (`done`, `confirmed`) still goes via `SendMessage` — the
-  rule has no length gate. You only talk to the lead — not
+  rule has no length gate. You only talk to the director — not
   to the developer or reviewer directly.
-- **Address the lead as `lead`.** Use exactly `lead` in the
-  `to:` field. UUIDs won't reach the right inbox.
-  `SendMessage` accepts unknown names without erroring — it
-  routes them to a phantom inbox no one reads — so a typo
-  returns success but reaches no one. Don't address
+- **Address the director as `director`.** Use exactly
+  `director` in the `to:` field. UUIDs won't reach the right
+  inbox. `SendMessage` accepts unknown names without
+  erroring — it routes them to a phantom inbox no one reads —
+  so a typo returns success but reaches no one. Don't address
   `team-lead` here: that's the main session's address, not
-  the dream lead's, and it's only used at activation.
-- **Open with `Message from maintainer to lead: `**, then your
+  the dream director's, and it's only used at activation.
+- **Open with `Message from maintainer to director: `**, then your
   audit report (or reply). Most maintainer messages are
   terminal hand-offs — the audit (with or without findings) is
-  for the lead to read, triage, and act on, not to reply to.
+  for the director to read, triage, and act on, not to reply to.
   Skip the closing line. Add `Reply via SendMessage to
   maintainer` only on the rare occasion you genuinely want a
   reply yourself. Use plain text (not JSON) inside
@@ -263,7 +263,7 @@ The full envelope and rules are in `protocol.md` under
 Examples (envelope only — content is yours):
 
 ```
-Message from maintainer to lead:
+Message from maintainer to director:
 
 1. <finding> — <reason>; involves <file/symbol>.
 2. ...
@@ -273,7 +273,7 @@ Out of scope but noticed:
 ```
 
 ```
-Message from maintainer to lead: no substantive findings.
+Message from maintainer to director: no substantive findings.
 ```
 
 A retro answer, a mid-session clarification, or a post-merge

@@ -1,16 +1,16 @@
 ---
 name: team
-description: Activate the dream team — four subagents (lead, developer, maintainer, reviewer) for shipping code while keeping the codebase coherent. This session spawns the team, hands off to the lead, and shuts the team down when the user is done. Use when the user runs /dream:team or asks to set up the dream team. Needs Claude Code's experimental agent teams feature.
+description: Activate the dream team — four subagents (director, developer, maintainer, reviewer) for shipping code while keeping the codebase coherent. This session spawns the team, hands off to the director, and shuts the team down when the user is done. Use when the user runs /dream:team or asks to set up the dream team. Needs Claude Code's experimental agent teams feature.
 ---
 
 # Dream team
 
 You spawn the dream team and manage its lifecycle. The team is
-four subagents — `lead`, `developer`, `maintainer`, `reviewer` —
-defined in this plugin. The lead is the user-facing role and
-owns everything from scope through retrospective. You stay
-available for help questions during the session and shut the
-team down when the user is done.
+four subagents — `director`, `developer`, `maintainer`,
+`reviewer` — defined in this plugin. The director is the
+user-facing role and owns everything from scope through
+retrospective. You stay available for help questions during the
+session and shut the team down when the user is done.
 
 The experimental agent teams feature spawns the team; it
 requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
@@ -32,7 +32,7 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    four agents you spawn next will reach you at that address.
 
 3. **Spawn all four agents in parallel** via the `Agent` tool.
-   For each, set `subagent_type` to the role (`lead`,
+   For each, set `subagent_type` to the role (`director`,
    `developer`, `maintainer`, `reviewer`), set `name` to the
    same string, and pass the team name. Tool restrictions come
    from each agent's own definition — no restrictions to
@@ -42,7 +42,7 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
 
 4. **Wait for all four acks.** Each agent sends a single
    `SendMessage` to `team-lead` (you, the main session) with
-   a plain-text body: `lead ready`, `developer ready`,
+   a plain-text body: `director ready`, `developer ready`,
    `maintainer ready`, `reviewer ready`. Don't proceed until
    all four have landed. If any agent fails to ack — error,
    timeout, or anything other than the expected line — stop
@@ -50,24 +50,24 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    Don't try to fix it yourself.
 
 5. **Hand off.** Once all four acks are in, tell the user the
-   team is ready and they should switch to the lead session to
-   start. The lead opens Phase 1: Scope.
+   team is ready and they should switch to the director session
+   to start. The director opens Phase 1: Scope.
 
 ## During the session
 
-You stay idle while the lead drives the session. The user may
+You stay idle while the director drives the session. The user may
 return to ask questions about how the team works — protocol
 overview, what each agent does, what happens in each phase.
 Answer using `protocol.md` as the source of truth.
 
 You don't take part in the work itself. Don't read the task
 list, don't message the agents, don't comment on the diff. The
-team is the lead's to run.
+team is the director's to run.
 
 ## Shutting the team down
 
 When the user signals the session is done — typically after the
-lead has finished the retrospective and pointed them back to
+director has finished the retrospective and pointed them back to
 you — wind the team down:
 
 1. Send a shutdown signal to each of the four agents.
