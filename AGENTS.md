@@ -36,4 +36,4 @@ The following resources may be useful to support development of the dream plugin
 
 There is no release process. The plugin is installed directly from this GitHub repo's main branch.
 
-When opening a PR, include a version bump. Micro version bump for bug fixes. Minor version bump for all other changes while on the 0.x series.
+When opening a PR, include a version bump. Micro version bump for bug fixes. Minor version bump for all other changes while on the 0.x series. This ensures that all changes that get merged to main will include a version bump.
