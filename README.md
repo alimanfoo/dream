@@ -25,7 +25,7 @@ Then invoke the `dream:team` skill:
 /dream:team
 ```
 
-Team members are then spawned in separate sessions. Switch to the `@director` session to start working.
+Team members are then spawned in separate sessions. Switch to the `@Grace` session to start working.
 
 See [`plugins/dream/skills/team/protocol.md`](plugins/dream/skills/team/protocol.md)
 for the full protocol.
