@@ -110,32 +110,36 @@ repeats until the list is drained.
    duplicate-dispatch instinct; ignore it. `TaskUpdate` reads
    as pure bookkeeping and never names the wake-up behaviour.
    It is the wake-up signal here.
-2. **Verify.** Wait for the developer's `SendMessage` — that
-   is the completion signal. Read their message together with
-   `git diff`: the message carries any audit content,
-   deviations from the brief, or things they noticed; the
-   diff carries the change. Where useful, exercise the feature
-   end-to-end. Don't re-run lint or tests — those are the
-   developer's gate, green by the time you're reading. If
-   something looks off, bounce back rather than fixing.
-3. **Accept.** Re-diff before staging. The working tree is live
+2. **Implement.** The developer does the work, runs the
+   project's quality checks, and reports back via
+   `SendMessage`. You wait — that `SendMessage` is the only
+   completion channel. Don't poll the working tree or the
+   task list; the message is the signal.
+3. **Verify.** Read their message together with `git diff`:
+   the message carries any audit content, deviations from the
+   brief, or things they noticed; the diff carries the change.
+   Where useful, exercise the feature end-to-end. Don't re-run
+   lint or tests — those are the developer's gate, green by
+   the time you're reading. If something looks off, bounce
+   back rather than fixing.
+4. **Accept.** Re-diff before staging. The working tree is live
    between verify and accept — any changes in that window land
    silently if you stage on the earlier read. `git diff
    --name-only` should match what the developer reported. Then
    `TaskUpdate status=completed`, stage the developer's changes,
    commit, and push.
-4. **Maintainer audit.** Send the maintainer a message asking
+5. **Maintainer audit.** Send the maintainer a message asking
    for the audit on the just-committed change. Wrap it in the
    envelope per "Communication between teammates (agents)"
    below: `Message from lead to maintainer: …` and `Reply via
    SendMessage to lead`. Wait for their numbered list (or "no
    substantive findings").
-5. **Triage findings.** Accept or reject each proposed
+6. **Triage findings.** Accept or reject each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
    next tasks before any pending original-scope work**
    (depth-first drain). Hold ancillary findings for the
    post-merge bucket — never filed mid-session.
-6. **Loop.** Next task, back to step 1.
+7. **Loop.** Next task, back to step 1.
 
 #### Opening the PR
 
