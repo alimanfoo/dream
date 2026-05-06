@@ -190,20 +190,20 @@ The full envelope and rules are in `protocol.md` under
   The `SendMessage` tool's own description shows `team-lead`
   in a legacy protocol-response example — that is the exact
   form that fails silently. Ignore the example.
-- **Open with `Message from reviewer: `**, then your review
-  Markdown (or reply). Close with `Reply via SendMessage to
-  reviewer` when you expect a reply — same role as the
-  opening, telling the lead where to send their reply (back
-  to you). The lead strips the envelope before posting your
-  review to the PR — the review itself posts verbatim. Use
-  plain text (not JSON) inside `SendMessage`.
+- **Open with `Message from reviewer to lead: `**, then your
+  review Markdown (or reply). Close with `Reply via SendMessage
+  to reviewer` when you expect a reply — same role as the
+  opening, telling the lead where to send their reply (back to
+  you). The lead strips the envelope before posting your review
+  to the PR — the review itself posts verbatim. Use plain text
+  (not JSON) inside `SendMessage`.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
 
 Examples (envelope only — content is yours):
 
 ```
-Message from reviewer:
+Message from reviewer to lead:
 
 **Recommendation:** approve subject to nits.
 
@@ -214,7 +214,7 @@ Reply via SendMessage to reviewer.
 ```
 
 ```
-Message from reviewer: yes, confirmed.
+Message from reviewer to lead: yes, confirmed.
 ```
 
 A retro answer or a post-merge ancillary concern goes through

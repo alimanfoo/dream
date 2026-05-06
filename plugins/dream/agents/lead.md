@@ -510,12 +510,12 @@ The full envelope and rules are in `protocol.md` under
   likewise won't reach the right inbox. The `SendMessage`
   tool's own description shows `team-lead` in a legacy
   protocol-response example; ignore it.
-- **Open with `Message from lead: `**, then your message.
-  Close with `Reply via SendMessage to lead` when you expect a
-  reply — same role as the opening, telling the recipient where
-  to send their reply (back to you). Skip the closing line on
-  terminal messages. Use plain text (not JSON) inside
-  `SendMessage`.
+- **Open with `Message from lead to <recipient-role>: `**, then
+  your message. Close with `Reply via SendMessage to lead` when
+  you expect a reply — same role as the opening, telling the
+  recipient where to send their reply (back to you). Skip the
+  closing line on terminal messages. Use plain text (not JSON)
+  inside `SendMessage`.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
 - **Strip the envelope** when forwarding a teammate's message
@@ -525,13 +525,13 @@ The full envelope and rules are in `protocol.md` under
 Lead-specific examples (envelope only — content is yours):
 
 ```
-Message from lead: task 3 committed at <sha>. Please audit.
+Message from lead to maintainer: task 3 committed at <sha>. Please audit.
 Reply via SendMessage to lead.
 ```
 
 ```
-Message from lead: PR open for the session branch. Please
-review and send back the Markdown.
+Message from lead to reviewer: PR open for the session branch.
+Please review and send back the Markdown.
 Reply via SendMessage to lead.
 ```
 
@@ -545,4 +545,4 @@ if they disagree with a scope decision (raise it; don't keep
 going). The task description is the brief — it travels with
 the `TaskUpdate` assignment, so no separate dispatch message
 is needed. (Task descriptions are not `SendMessage` bodies and
-don't take the `Message from lead:` envelope.)
+don't take the `Message from lead to <role>:` envelope.)

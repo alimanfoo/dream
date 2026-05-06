@@ -244,12 +244,12 @@ The full envelope and rules are in `protocol.md` under
   description shows `team-lead` in a legacy protocol-response
   example — that exact form is what fails silently. Ignore
   the example.
-- **Open with `Message from developer: `**, then your message.
-  Close with `Reply via SendMessage to developer` when you
-  expect a reply — same role as the opening, telling the lead
-  where to send their reply (back to you). Skip the closing
-  line on terminal messages — a completion report doesn't
-  invite a reply. Use plain text (not JSON) inside
+- **Open with `Message from developer to lead: `**, then your
+  message. Close with `Reply via SendMessage to developer` when
+  you expect a reply — same role as the opening, telling the
+  lead where to send their reply (back to you). Skip the
+  closing line on terminal messages — a completion report
+  doesn't invite a reply. Use plain text (not JSON) inside
   `SendMessage`.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
@@ -257,13 +257,13 @@ The full envelope and rules are in `protocol.md` under
 Examples (envelope only — content is yours):
 
 ```
-Message from developer: done.
+Message from developer to lead: done.
 ```
 
 ```
-Message from developer: the brief says to rename <foo> but
-<bar> in the same module reads as a near-duplicate — should
-the rename cover both, or only <foo>?
+Message from developer to lead: the brief says to rename <foo>
+but <bar> in the same module reads as a near-duplicate —
+should the rename cover both, or only <foo>?
 Reply via SendMessage to developer.
 ```
 

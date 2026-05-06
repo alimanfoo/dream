@@ -236,11 +236,11 @@ The full envelope and rules are in `protocol.md` under
   description shows `team-lead` in a legacy protocol-response
   example — that exact form is what fails silently. Ignore
   the example.
-- **Open with `Message from maintainer: `**, then your audit
-  report (or reply). Close with `Reply via SendMessage to
+- **Open with `Message from maintainer to lead: `**, then your
+  audit report (or reply). Close with `Reply via SendMessage to
   maintainer` when you expect a reply — same role as the
-  opening, telling the lead where to send their reply (back
-  to you). Skip the closing line on terminal messages — a "no
+  opening, telling the lead where to send their reply (back to
+  you). Skip the closing line on terminal messages — a "no
   substantive findings" report doesn't invite a reply. Use
   plain text (not JSON) inside `SendMessage`.
 - **Set the `summary` field** (5–10 words) when sending a
@@ -249,7 +249,7 @@ The full envelope and rules are in `protocol.md` under
 Examples (envelope only — content is yours):
 
 ```
-Message from maintainer:
+Message from maintainer to lead:
 
 1. <finding> — <reason>; involves <file/symbol>.
 2. ...
@@ -261,7 +261,7 @@ Reply via SendMessage to maintainer.
 ```
 
 ```
-Message from maintainer: no substantive findings.
+Message from maintainer to lead: no substantive findings.
 ```
 
 A retro answer, a mid-session clarification, or a post-merge

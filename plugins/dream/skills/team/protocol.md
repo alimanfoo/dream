@@ -457,27 +457,28 @@ These apply across every phase.
   (`done`, `confirmed`) still goes via `SendMessage` — the
   rule has no length gate.
 - **Message template.** Every outbound `SendMessage` body opens
-  with `Message from <self-role>: ` so the recipient can see at
-  a glance that the message is teammate traffic, not user input.
-  When the message expects a reply, it ends with `Reply via
-  SendMessage to <self-role>` — same role as in the opening
-  prefix. The closing line tells the recipient where to send
-  their reply (back to you). Skip the closing line on terminal
-  messages — a final ack, a `done` report — where no reply is
-  wanted.
+  with `Message from <self-role> to <recipient-role>: ` so the
+  recipient can see at a glance that the message is teammate
+  traffic, not user input — and so a misroute (recipient ≠
+  intended addressee) is visible. When the message expects a
+  reply, it ends with `Reply via SendMessage to <self-role>` —
+  same role as in the opening prefix. The closing line tells
+  the recipient where to send their reply (back to you). Skip
+  the closing line on terminal messages — a final ack, a `done`
+  report — where no reply is wanted.
 
   Example (lead asks maintainer for the audit on a
   just-committed change):
 
   ```
-  Message from lead: task 3 committed at <sha>. Please audit.
+  Message from lead to maintainer: task 3 committed at <sha>. Please audit.
   Reply via SendMessage to lead.
   ```
 
   Example (developer reports completion):
 
   ```
-  Message from developer: done.
+  Message from developer to lead: done.
   ```
 
   The template is the envelope, not the content. Role-specific
