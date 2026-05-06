@@ -451,6 +451,8 @@ These apply across every phase.
   in a legacy protocol-response example. That form fails
   silently — the message returns success but reaches no
   inbox. Ignore the example.
+- **Set the `summary` field** (5–10 words) when sending a
+  string message — that's the UI preview the tool expects.
 - **Reply via `SendMessage`.** Plain-text turn output is not
   delivered to other agents — only the harness sees it. Every
   reply to a teammate goes via `SendMessage`. A one-word reply
