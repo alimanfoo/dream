@@ -241,7 +241,8 @@ The full envelope and rules are in `protocol.md` under
   delivered to the lead — only the harness sees it. Every
   reply to the lead goes via `SendMessage`. A one-word reply
   (`done`, `confirmed`) still goes via `SendMessage` — the
-  rule has no length gate.
+  rule has no length gate. You only talk to the lead — not to
+  the maintainer or reviewer directly.
 - **Address the lead as `lead`.** Use exactly `lead` in the
   `to:` field — never `team-lead` or any other variant. UUIDs
   won't reach the right inbox. The `SendMessage` tool's own
