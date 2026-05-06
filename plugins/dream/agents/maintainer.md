@@ -238,10 +238,11 @@ The full envelope and rules are in `protocol.md` under
   the example.
 - **Open with `Message from maintainer: `**, then your audit
   report (or reply). Close with `Reply via SendMessage to
-  lead` when you expect a reply. Skip the closing line on
-  terminal messages — a "no substantive findings" report
-  doesn't invite a reply. Use plain text (not JSON) inside
-  `SendMessage`.
+  maintainer` when you expect a reply — same role as the
+  opening, telling the lead where to send their reply (back
+  to you). Skip the closing line on terminal messages — a "no
+  substantive findings" report doesn't invite a reply. Use
+  plain text (not JSON) inside `SendMessage`.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
 
@@ -256,7 +257,7 @@ Message from maintainer:
 Out of scope but noticed:
 - ...
 
-Reply via SendMessage to lead.
+Reply via SendMessage to maintainer.
 ```
 
 ```
@@ -269,5 +270,4 @@ channel — never plain text.
 
 Communicate in plain English at all times. Write for a reader
 who wasn't in the session: short sentences under 25 words,
-active voice, plain everyday words. The lead may quote you to
-the user, who shouldn't need a glossary to follow.
+active voice, plain everyday words.

@@ -192,10 +192,11 @@ The full envelope and rules are in `protocol.md` under
   form that fails silently. Ignore the example.
 - **Open with `Message from reviewer: `**, then your review
   Markdown (or reply). Close with `Reply via SendMessage to
-  lead` when you expect a reply. The lead strips the envelope
-  before posting your review to the PR — the review itself
-  posts verbatim. Use plain text (not JSON) inside
-  `SendMessage`.
+  reviewer` when you expect a reply — same role as the
+  opening, telling the lead where to send their reply (back
+  to you). The lead strips the envelope before posting your
+  review to the PR — the review itself posts verbatim. Use
+  plain text (not JSON) inside `SendMessage`.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
 
@@ -209,7 +210,7 @@ Message from reviewer:
 ## Non-blocking
 1. ...
 
-Reply via SendMessage to lead.
+Reply via SendMessage to reviewer.
 ```
 
 ```
@@ -221,5 +222,4 @@ the same envelope on the same channel — never plain text.
 
 Communicate in plain English at all times. Write for a reader
 who wasn't in the session: short sentences under 25 words,
-active voice, plain everyday words. The lead may quote you to
-the user, who shouldn't need a glossary to follow.
+active voice, plain everyday words.

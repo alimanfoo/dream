@@ -421,6 +421,21 @@ These apply across every phase.
   pre-merge gate. Three actors: developer (pre-report), commit
   hook (pre-commit), CI (pre-merge).
 
+### All communications
+
+- **Plain English at all times.** Write for a reader who wasn't
+  in the session: short sentences under 25 words, active voice,
+  plain everyday words. The lead may quote teammates to the
+  user, who shouldn't need a glossary to follow.
+- **Reference syntax.** In all communications — to teammates,
+  to the user, anywhere — refer to GitHub issues and PRs as
+  `GHNN` (e.g. `GH16`) and tasks as `task NN`. The two have
+  separate numbering spaces, and a bare `#NN` is ambiguous when
+  both can appear in the same conversation. The single
+  exception is GitHub artefacts themselves (PR descriptions,
+  issue bodies, PR/issue comments, commit messages), where the
+  native `#NN` form preserves GitHub's auto-linking.
+
 ### Communication between teammates (agents)
 
 - **Plain text only** between teammates. The `SendMessage`
@@ -445,9 +460,11 @@ These apply across every phase.
   with `Message from <self-role>: ` so the recipient can see at
   a glance that the message is teammate traffic, not user input.
   When the message expects a reply, it ends with `Reply via
-  SendMessage to <recipient-role>`. Skip the closing line on
-  terminal messages — a final ack, a `done` report — where no
-  reply is wanted.
+  SendMessage to <self-role>` — same role as in the opening
+  prefix. The closing line tells the recipient where to send
+  their reply (back to you). Skip the closing line on terminal
+  messages — a final ack, a `done` report — where no reply is
+  wanted.
 
   Example (lead asks maintainer for the audit on a
   just-committed change):
@@ -470,18 +487,6 @@ These apply across every phase.
   message to another destination — for example, posting the
   reviewer's review to the PR — the lead strips the envelope
   first.
-- **Plain English at all times.** Write for a reader who wasn't
-  in the session: short sentences under 25 words, active voice,
-  plain everyday words. The lead may quote teammates to the
-  user, who shouldn't need a glossary to follow.
-- **Reference syntax.** In all communications — to teammates,
-  to the user, anywhere — refer to GitHub issues and PRs as
-  `GHNN` (e.g. `GH16`) and tasks as `task NN`. The two have
-  separate numbering spaces, and a bare `#NN` is ambiguous when
-  both can appear in the same conversation. The single
-  exception is GitHub artefacts themselves (PR descriptions,
-  issue bodies, PR/issue comments, commit messages), where the
-  native `#NN` form preserves GitHub's auto-linking.
 - The lead's task descriptions should be **explicit about
   scope**: in-scope items, out-of-scope items, and what the
   developer should do if they disagree with a scope decision
@@ -495,7 +500,7 @@ These apply across every phase.
 - The reviewer's output is **Markdown for a PR comment** —
   recommendation at the top, findings grouped by severity,
   optional ancillary section.
-- Auto-generated idle notifications: noted, not acted on unless
+- Auto-generated idle notifications: not acted on unless
   they affect pending work.
 
 ### Hard rules

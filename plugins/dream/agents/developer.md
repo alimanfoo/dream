@@ -245,10 +245,12 @@ The full envelope and rules are in `protocol.md` under
   example — that exact form is what fails silently. Ignore
   the example.
 - **Open with `Message from developer: `**, then your message.
-  Close with `Reply via SendMessage to lead` when you expect a
-  reply. Skip the closing line on terminal messages — a final
-  `done` ack doesn't invite a reply. Use plain text (not JSON)
-  inside `SendMessage`.
+  Close with `Reply via SendMessage to developer` when you
+  expect a reply — same role as the opening, telling the lead
+  where to send their reply (back to you). Skip the closing
+  line on terminal messages — a completion report doesn't
+  invite a reply. Use plain text (not JSON) inside
+  `SendMessage`.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
 
@@ -259,10 +261,10 @@ Message from developer: done.
 ```
 
 ```
-Message from developer: lint and tests pass. Two notes for
-verification: the rename also touched <file>, and I left the
-old helper in place because <reason>.
-Reply via SendMessage to lead.
+Message from developer: the brief says to rename <foo> but
+<bar> in the same module reads as a near-duplicate — should
+the rename cover both, or only <foo>?
+Reply via SendMessage to developer.
 ```
 
 A retro answer, a mid-task clarification, or a post-merge
@@ -271,5 +273,4 @@ channel — never plain text.
 
 Communicate in plain English at all times. Write for a reader
 who wasn't in the session: short sentences under 25 words,
-active voice, plain everyday words. The lead may quote you to
-the user, who shouldn't need a glossary to follow.
+active voice, plain everyday words.

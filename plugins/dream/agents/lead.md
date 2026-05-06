@@ -449,11 +449,7 @@ and written content posted on GitHub issues and pull requests.
 
 **Plain English at all times.** Write for a reader who wasn't in
 the session: short sentences under 25 words, active voice,
-plain everyday words. Paraphrase teammates' messages back to
-the user rather than quoting them verbatim — Claude Code
-already renders teammate messages to the user when they
-arrive, so quoting duplicates what they've already seen. The
-user shouldn't need a glossary to follow.
+plain everyday words.
 
 Refer to GitHub issues and PRs as `GHNN` (e.g. `GH16`) and
 tasks as `task NN`. The two have separate numbering spaces, and
@@ -515,9 +511,11 @@ The full envelope and rules are in `protocol.md` under
   tool's own description shows `team-lead` in a legacy
   protocol-response example; ignore it.
 - **Open with `Message from lead: `**, then your message.
-  Close with `Reply via SendMessage to <recipient-role>` when
-  you expect a reply. Skip the closing line on terminal
-  messages. Use plain text (not JSON) inside `SendMessage`.
+  Close with `Reply via SendMessage to lead` when you expect a
+  reply — same role as the opening, telling the recipient where
+  to send their reply (back to you). Skip the closing line on
+  terminal messages. Use plain text (not JSON) inside
+  `SendMessage`.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
 - **Strip the envelope** when forwarding a teammate's message
