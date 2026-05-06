@@ -423,12 +423,52 @@ These apply across every phase.
 
 ### Communication
 
-- **Plain text only** between teammates. No structured JSON
-  status messages — those are for the system, not for humans.
-- Teammates address each other by exact role name (`lead`,
-  `developer`, `maintainer`, `reviewer`) — never with a
-  `team-` prefix or any other variant. UUIDs likewise won't
-  reach the right inbox.
+- **Plain text only** between teammates. The `SendMessage`
+  tool accepts JSON-typed control messages
+  (`shutdown_request`, `plan_approval_response`, and so on)
+  for system-level signals; teammate communication is not one
+  of those. Send a plain-text string.
+- **Address by exact role name.** Use exactly `lead`,
+  `developer`, `maintainer`, or `reviewer` in the
+  `SendMessage` `to:` field — never a `team-` prefix or any
+  other variant. UUIDs likewise won't reach the right inbox.
+  The `SendMessage` tool's own description shows `team-lead`
+  in a legacy protocol-response example. That form fails
+  silently — the message returns success but reaches no
+  inbox. Ignore the example.
+- **Reply via `SendMessage`.** Plain-text turn output is not
+  delivered to other agents — only the harness sees it. Every
+  reply to a teammate goes via `SendMessage`. A one-word reply
+  (`done`, `confirmed`) still goes via `SendMessage` — the
+  rule has no length gate.
+- **Message template.** Every outbound `SendMessage` body opens
+  with `Message from <self-role>: ` so the recipient can see at
+  a glance that the message is teammate traffic, not user input.
+  When the message expects a reply, it ends with `Reply via
+  SendMessage to <recipient-role>`. Skip the closing line on
+  terminal messages — a final ack, a `done` report — where no
+  reply is wanted.
+
+  Example (lead asks developer to pick up a task):
+
+  ```
+  Message from lead: please pick up task 3 from the list.
+  Reply via SendMessage to lead.
+  ```
+
+  Example (developer reports completion):
+
+  ```
+  Message from developer: done.
+  ```
+
+  The template is the envelope, not the content. Role-specific
+  outputs (the maintainer's numbered list, the reviewer's
+  Markdown review) sit between the opening prefix and the
+  optional closing line. When the lead forwards a teammate's
+  message to another destination — for example, posting the
+  reviewer's review to the PR — the lead strips the envelope
+  first.
 - **Plain English at all times.** Write for a reader who wasn't
   in the session: short sentences under 25 words, active voice,
   plain everyday words. The lead may quote teammates to the

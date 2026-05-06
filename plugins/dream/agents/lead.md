@@ -499,49 +499,52 @@ answer, not headers and sections.
 
 ### Communication with teammates (other agents)
 
-**All teammate communication goes through `SendMessage`.**
-Plain-text turn output is not delivered to other agents —
-only the harness sees it. Use plain text (not JSON) inside
-`SendMessage`. Set the `summary` field too (5–10 words) when
-sending a string message — that's the UI preview the tool
-expects.
+The full envelope and rules are in `protocol.md` under
+"Communication". Operationally:
 
-**Address teammates by role.** Use exactly `developer`,
-`maintainer`, or `reviewer` in the `SendMessage` `to:` field.
-Never use a `team-` prefixed form (`team-developer`,
-`team-maintainer`, `team-reviewer`) or any other variant —
-those silently fail to deliver. UUIDs likewise won't reach
-the right inbox. The `SendMessage` tool's own description
-shows `team-lead` in a legacy protocol-response example.
-That form does not work as a recipient — ignore the example.
+- **Reply via `SendMessage`.** Plain-text turn output is not
+  delivered to other agents — only the harness sees it. Every
+  reply to a teammate goes via `SendMessage`. A one-word reply
+  (`done`, `confirmed`) still goes via `SendMessage` — the
+  rule has no length gate.
+- **Address teammates by exact role.** Use `developer`,
+  `maintainer`, or `reviewer` in the `to:` field. Never
+  `team-developer`, `team-maintainer`, `team-reviewer`, or any
+  other variant — those silently fail to deliver. UUIDs
+  likewise won't reach the right inbox. The `SendMessage`
+  tool's own description shows `team-lead` in a legacy
+  protocol-response example; ignore it.
+- **Open with `Message from lead: `**, then your message.
+  Close with `Reply via SendMessage to <recipient-role>` when
+  you expect a reply. Skip the closing line on terminal
+  messages. Use plain text (not JSON) inside `SendMessage`.
+- **Set the `summary` field** (5–10 words) when sending a
+  string message — that's the UI preview the tool expects.
+- **Strip the envelope** when forwarding a teammate's message
+  to another destination (e.g., posting the reviewer's review
+  to the PR).
 
-**The discipline applies uniformly across the session, but
-it will not feel uniform from your side.** Inside the
-per-task workflow, the surrounding scaffolding — the brief,
-the system reminders, the file-touched hooks — keeps the
-team-agent context salient and `SendMessage` feels like the
-natural endpoint of the work. In conversational frames — the
-retrospective, mid-session clarifications, ancillary-finding
-sweeps — that scaffolding falls away. The pretrained reflex
-is *prose is output*, and that reflex is wrong here.
-Whenever you would naturally write a paragraph in reply to a
-teammate, the paragraph goes via `SendMessage`; the call is
-the reply.
+Lead-specific examples (envelope only — content is yours):
 
-Examples — the rule firing:
+```
+Message from lead: task 3 committed at <sha>. Please audit.
+Reply via SendMessage to lead.
+```
 
-- The user (in retro) asks why something happened. You ask
-  the developer for *why* context — that question goes via
-  `SendMessage` to `developer`, not as plain text. The
-  developer's reply comes back the same way.
-- A teammate sends a mid-task clarification. Your reply goes
-  via `SendMessage` to that teammate, not as plain text.
-- The reply is one short sentence ("yes, confirmed"). Still
-  `SendMessage`. The discipline does not have a length gate.
+```
+Message from lead: PR open for the session branch. Please
+review and send back the Markdown.
+Reply via SendMessage to lead.
+```
+
+A retro question, an ancillary-sweep prompt, or any other
+mid-session clarification goes through the same envelope on
+the same channel — never plain text.
 
 Be **explicit about scope** in task descriptions: in-scope
 items, out-of-scope items, and what the developer should do
 if they disagree with a scope decision (raise it; don't keep
 going). The task description is the brief — it travels with
 the `TaskUpdate` assignment, so no separate dispatch message
-is needed.
+is needed. (Task descriptions are not `SendMessage` bodies and
+don't take the `Message from lead:` envelope.)

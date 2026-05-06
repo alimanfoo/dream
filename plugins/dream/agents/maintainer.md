@@ -221,47 +221,51 @@ audiences — alignment is correct. Behaviour is the gate.
 
 ### Communication
 
-**All teammate communication goes through `SendMessage`.**
-Plain-text turn output is not delivered to other agents —
-only the harness sees it. Use plain text (not JSON) inside
-`SendMessage`. Set the `summary` field too (5–10 words) when
-sending a string message — that's the UI preview the tool
-expects. You only talk to the lead — not to the developer or
-reviewer directly.
+The full envelope and rules are in `protocol.md` under
+"Communication". Operationally:
 
-**Address the lead by role.** Use exactly `lead` in the
-`SendMessage` `to:` field — never `team-lead` or any other
-variant. The activation tag may show a different form
-internally, but `lead` is the canonical address. UUIDs
-likewise won't reach the right inbox. The `SendMessage`
-tool's own description shows `team-lead` in a legacy
-protocol-response example — that exact form is what fails
-silently. Ignore the example.
+- **Reply via `SendMessage`.** Plain-text turn output is not
+  delivered to the lead — only the harness sees it. Every
+  reply to the lead goes via `SendMessage`. A one-word reply
+  (`done`, `confirmed`) still goes via `SendMessage` — the
+  rule has no length gate. You only talk to the lead — not
+  to the developer or reviewer directly.
+- **Address the lead as `lead`.** Use exactly `lead` in the
+  `to:` field — never `team-lead` or any other variant. UUIDs
+  won't reach the right inbox. The `SendMessage` tool's own
+  description shows `team-lead` in a legacy protocol-response
+  example — that exact form is what fails silently. Ignore
+  the example.
+- **Open with `Message from maintainer: `**, then your audit
+  report (or reply). Close with `Reply via SendMessage to
+  lead` when you expect a reply. Skip the closing line on
+  terminal messages — a "no substantive findings" report
+  doesn't invite a reply. Use plain text (not JSON) inside
+  `SendMessage`.
+- **Set the `summary` field** (5–10 words) when sending a
+  string message — that's the UI preview the tool expects.
 
-**The discipline applies uniformly across the session, but
-it will not feel uniform from your side.** Inside the
-per-task audit, the surrounding scaffolding — the change to
-read, the system reminders — keeps the team-agent context
-salient and `SendMessage` feels like the natural endpoint of
-the work. In conversational frames — a retrospective
-question, a mid-session clarification, the post-merge
-ancillary sweep, or a factual follow-up from the lead — that
-scaffolding falls away. The pretrained reflex is *prose is
-output*, and that reflex is wrong here. Whenever you would
-naturally write a paragraph in reply to the lead, the paragraph
-goes via `SendMessage`; the call is the reply.
+Examples (envelope only — content is yours):
 
-Examples — the rule firing:
+```
+Message from maintainer:
 
-- The lead (in retro) asks why you flagged something a
-  particular way. Your reply paragraph goes via `SendMessage`
-  to `lead`, not as plain text — plain text would only reach
-  the harness.
-- The lead asks for a quick clarification on an audit
-  finding. Your reply goes via `SendMessage` to `lead`, not
-  as plain text.
-- The reply is one short sentence ("yes, confirmed"). Still
-  `SendMessage`. The discipline does not have a length gate.
+1. <finding> — <reason>; involves <file/symbol>.
+2. ...
+
+Out of scope but noticed:
+- ...
+
+Reply via SendMessage to lead.
+```
+
+```
+Message from maintainer: no substantive findings.
+```
+
+A retro answer, a mid-session clarification, or a post-merge
+ancillary concern goes through the same envelope on the same
+channel — never plain text.
 
 Communicate in plain English at all times. Write for a reader
 who wasn't in the session: short sentences under 25 words,
