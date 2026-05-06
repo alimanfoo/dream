@@ -1,6 +1,6 @@
 ---
 name: team
-description: Activate the dream team — four subagents (Grace, Ralph, Junio, Ada) for shipping code while keeping the codebase coherent. This session spawns the team, hands off to Grace, and shuts the team down when the user is done. Use when the user runs /dream:team or asks to set up the dream team. Needs Claude Code's experimental agent teams feature.
+description: Activate the dream team — four subagents (Grace, Ralph, Junio, Ada) for shipping code while keeping the codebase coherent. Use when the user runs /dream:team or asks to set up the dream team. Needs Claude Code's experimental agent teams feature.
 ---
 
 # Dream team
@@ -43,27 +43,19 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    No `agent_type` needed — it's optional and doesn't affect
    routing. This sets up the team config at
    `~/.claude/teams/<name>/` and the shared task list at
-   `~/.claude/tasks/<name>/`. Claude Code hardcodes your
-   addressable name as `team-lead` in the team config; you use
-   that address only to send shutdown signals at the end of the
-   session.
+   `~/.claude/tasks/<name>/`.
 
 4. **Spawn all four agents in parallel** via the `Agent` tool.
    For each, set `subagent_type` to the agent's name (`Grace`,
    `Ralph`, `Junio`, `Ada`), set `name` to the same string,
-   and pass the team name. Tool restrictions come from each
-   agent's own definition — no restrictions to specify here.
-   Initial prompt: include the absolute path to `protocol.md`
+   and pass the team name. Initial prompt: include the absolute path to `protocol.md`
    (it's in this skill's directory) and tell the agent to
-   run its pre-flight checklist.
+   run its boot sequence.
 
 5. **Hand off.** Tell the user the team is spawned and they
    should switch to Grace's session to start. Grace opens
    Phase 1: Scope. There is no readiness handshake — the four
-   `Agent` calls returning is the only spawn-time signal. Each
-   teammate reads the protocol on its own, and Grace surfaces
-   any teammate that fails to respond when she first uses
-   them.
+   `Agent` calls returning is the only spawn-time signal.
 
 ## During the session
 
