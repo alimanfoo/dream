@@ -191,12 +191,14 @@ The full envelope and rules are in `protocol.md` under
   in a legacy protocol-response example — that is the exact
   form that fails silently. Ignore the example.
 - **Open with `Message from reviewer to lead: `**, then your
-  review Markdown (or reply). Close with `Reply via SendMessage
-  to reviewer` when you expect a reply — same role as the
-  opening, telling the lead where to send their reply (back to
-  you). The lead strips the envelope before posting your review
-  to the PR — the review itself posts verbatim. Use plain text
-  (not JSON) inside `SendMessage`.
+  review Markdown (or reply). Most reviewer messages are
+  terminal hand-offs — the review delivery is for the lead to
+  post and triage, not to reply to. Skip the closing line. Add
+  `Reply via SendMessage to reviewer` only on the rare occasion
+  you genuinely want a reply yourself. The lead strips the
+  envelope before posting your review to the PR — the review
+  itself posts verbatim. Use plain text (not JSON) inside
+  `SendMessage`.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
 
@@ -209,8 +211,6 @@ Message from reviewer to lead:
 
 ## Non-blocking
 1. ...
-
-Reply via SendMessage to reviewer.
 ```
 
 ```

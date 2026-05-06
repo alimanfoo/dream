@@ -237,12 +237,13 @@ The full envelope and rules are in `protocol.md` under
   example — that exact form is what fails silently. Ignore
   the example.
 - **Open with `Message from maintainer to lead: `**, then your
-  audit report (or reply). Close with `Reply via SendMessage to
-  maintainer` when you expect a reply — same role as the
-  opening, telling the lead where to send their reply (back to
-  you). Skip the closing line on terminal messages — a "no
-  substantive findings" report doesn't invite a reply. Use
-  plain text (not JSON) inside `SendMessage`.
+  audit report (or reply). Most maintainer messages are
+  terminal hand-offs — the audit (with or without findings) is
+  for the lead to read, triage, and act on, not to reply to.
+  Skip the closing line. Add `Reply via SendMessage to
+  maintainer` only on the rare occasion you genuinely want a
+  reply yourself. Use plain text (not JSON) inside
+  `SendMessage`.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
 
@@ -256,8 +257,6 @@ Message from maintainer to lead:
 
 Out of scope but noticed:
 - ...
-
-Reply via SendMessage to maintainer.
 ```
 
 ```
