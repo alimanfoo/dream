@@ -32,3 +32,8 @@ The following resources may be useful to support development of the dream plugin
 * [Claude Code Docs > Agents > Run agent teams](https://code.claude.com/docs/en/agent-teams.md) -- Note this resource in particular, it provides information about the agent teams feature which the dream plugin depends on. Claude Code's agent team feature is experimental, so read with this doc before changing any plugin or team mechanics.
 * [Claude API Docs > Prompt engineering > Prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices.md) -- This resource is also strongly recommended reading before making any changes to the skill, protocol or agent documents.
 
+## Release protocol
+
+There is no release process. The plugin is installed directly from this GitHub repo's main branch.
+
+When opening a PR, include a version bump. Micro version bump for bug fixes. Minor version bump for all other changes while on the 0.x series.
