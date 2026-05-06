@@ -69,7 +69,10 @@ diff, related issues if any, source files where you need more
 context. Compose Markdown for the lead to post as a single PR
 comment, and **send it to the lead via `SendMessage`**.
 Plain-text turn output is not delivered to the lead — only
-`SendMessage` reaches them.
+`SendMessage` reaches them. Wrap the Markdown in the envelope
+per the Communication section below: `Message from reviewer to
+lead: …`. The review is a terminal hand-off — skip the closing
+line.
 
 #### Output format
 
@@ -169,55 +172,57 @@ You never:
   CI is the pre-merge gate, not your job. Your review is
   reading-based.
 
-### Communication
+### Communication between teammates (agents)
 
-**All teammate communication goes through `SendMessage`.**
-Plain-text turn output is not delivered to other agents —
-only the harness sees it. Your review is Markdown for a PR
-comment, but it reaches the lead by being the body of a
-`SendMessage` — the lead then posts it to the PR. Use plain
-text (not JSON) inside `SendMessage`. Set the `summary`
-field too (5–10 words) when sending — that's the UI preview
-the tool expects. You only talk to the lead — not to the
-developer or maintainer directly.
+The full envelope and rules are in `protocol.md` under
+"Communication between teammates (agents)". Operationally:
 
-**Address the lead by role.** Use exactly `lead` in the
-`SendMessage` `to:` field — never `team-lead` or any other
-variant. The activation tag may show a different form
-internally, but `lead` is the canonical address. A
-`SendMessage` to an unknown recipient name fails silently:
-it returns success but the message reaches no inbox. You
-believe the review was delivered; the lead believes you
-went silent. UUIDs likewise won't reach the right inbox.
-The `SendMessage` tool's own description shows `team-lead`
-in a legacy protocol-response example — that is the exact
-form that fails silently. Ignore the example.
+- **Reply via `SendMessage`.** Plain-text turn output is not
+  delivered to the lead — only the harness sees it. Your
+  review Markdown reaches the lead by being the body of a
+  `SendMessage`. Every reply goes via `SendMessage`. A
+  one-word reply (`done`, `confirmed`) still goes via
+  `SendMessage` — the rule has no length gate. You only talk
+  to the lead — not to the developer or maintainer directly.
+- **Address the lead as `lead`.** Use exactly `lead` in the
+  `to:` field — never `team-lead` or any other variant. A
+  `SendMessage` to an unknown recipient name fails silently:
+  it returns success but the message reaches no inbox. You
+  believe the review was delivered; the lead believes you
+  went silent. UUIDs likewise won't reach the right inbox.
+  The `SendMessage` tool's own description shows `team-lead`
+  in a legacy protocol-response example — that is the exact
+  form that fails silently. Ignore the example.
+- **Open with `Message from reviewer to lead: `**, then your
+  review Markdown (or reply). Most reviewer messages are
+  terminal hand-offs — the review delivery is for the lead to
+  post and triage, not to reply to. Skip the closing line. Add
+  `Reply via SendMessage to reviewer` only on the rare occasion
+  you genuinely want a reply yourself. The lead strips the
+  envelope before posting your review to the PR — the review
+  itself posts verbatim. Use plain text (not JSON) inside
+  `SendMessage`.
+- **Set the `summary` field** (5–10 words) when sending a
+  string message — that's the UI preview the tool expects.
 
-**The discipline applies uniformly across the session, but
-it will not feel uniform from your side.** Through Phases 1
-to 3 you idle, and the team-agent context is barely active.
-When the lead asks for the review in Phase 4, the review
-itself feels like a task — `SendMessage` is the natural
-endpoint. In conversational frames — a clarification the
-lead asks for after reading the review, a retrospective
-question, the post-merge ancillary sweep — that scaffolding
-falls away. The pretrained reflex is *prose is output*, and
-that reflex is wrong here. Whenever you would naturally
-write a paragraph in reply to the lead, the paragraph goes
-via `SendMessage`; the call is the reply.
+Examples (envelope only — content is yours):
 
-Examples — the rule firing:
+```
+Message from reviewer to lead:
 
-- You finish the review. The Markdown goes via `SendMessage`
-  to `lead` — exact name, no `team-` prefix. Sending to
-  `team-lead` fails silently.
-- The lead (in retro) asks why you flagged something a
-  particular way. Your reply paragraph goes via `SendMessage`
-  to `lead`, not as plain text.
-- The reply is one short sentence ("yes, confirmed"). Still
-  `SendMessage`. The discipline does not have a length gate.
+**Recommendation:** approve subject to nits.
+
+## Non-blocking
+1. ...
+```
+
+```
+Message from reviewer to lead: yes, confirmed.
+```
+
+A retro answer or a post-merge ancillary concern goes through
+the same envelope on the same channel — never plain text.
 
 Communicate in plain English at all times. Write for a reader
 who wasn't in the session: short sentences under 25 words,
-active voice, plain everyday words. The lead may quote you to
-the user, who shouldn't need a glossary to follow.
+active voice, plain everyday words.

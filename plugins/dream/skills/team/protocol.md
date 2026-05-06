@@ -121,15 +121,16 @@ chain repeats until the list is drained.
 3. **Verify.** The lead reads `git diff` to check correctness
    and that the work stays in scope, and where useful exercises
    the feature end-to-end. The lead doesn't re-run lint or
-   tests — those are the developer's gate, green by the time of
-   review. If something looks off, the lead bounces back to the
-   developer rather than fixing.
+   tests — those are the developer's gate, green by the time
+   the lead is reading. If something looks off, the lead
+   bounces back to the developer rather than fixing.
 4. **Accept.** The lead marks the task complete, stages the
    developer's working-tree changes, commits, and pushes.
-5. **Review.** The maintainer audits the committed change for
-   coherence. The maintainer returns a numbered plain-text list
-   of proposed follow-on tasks (or "no substantive findings"),
-   plus any ancillary findings as a separate section.
+5. **Maintainer audit.** The maintainer audits the committed
+   change for coherence. The maintainer returns a numbered
+   plain-text list of proposed follow-on tasks (or "no
+   substantive findings"), plus any ancillary findings as a
+   separate section.
 6. **Triage.** The lead accepts or rejects each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
    next tasks before any pending original-scope work**
@@ -140,10 +141,10 @@ chain repeats until the list is drained.
 
 ### Maintenance chain
 
-Maintainer review runs after **every** task, including tasks
-the maintainer itself proposed. This catches incoherence that
-maintenance work itself introduces — particularly important for
-structural changes (renames, moves, refactors).
+The maintainer audit runs after **every** task, including
+tasks the maintainer itself proposed. This catches incoherence
+that maintenance work itself introduces — particularly
+important for structural changes (renames, moves, refactors).
 
 **Scope discipline — not depth limits — is what keeps the chain
 from running away:**
@@ -159,18 +160,18 @@ from running away:**
 
 **Conditions that end the chain** (any one will do):
 
-- The maintainer reports "no substantive findings" — review
+- The maintainer reports "no substantive findings" — audit
   pass clean.
 - The lead rejects all proposed follow-ons.
 - The lead explicitly calls a halt: "we're done with this
   scope; remaining items are out-of-session."
 
-**Convergence note.** Each maintenance pass should produce
-fewer findings than the previous one. Scope-creep findings
-("while we're here, we should also...") don't belong in the
-chain — that's divergence, not convergence. The maintainer
-shouldn't propose them in review, and the lead shouldn't accept
-them at triage.
+**Convergence note.** Each audit pass should produce fewer
+findings than the previous one. Scope-creep findings ("while
+we're here, we should also...") don't belong in the chain —
+that's divergence, not convergence. The maintainer shouldn't
+propose them in the audit, and the lead shouldn't accept them
+at triage.
 
 **Defend behaviour, not surface.** Any proposed machinery — a
 test, a glossary, a regen step, a cross-reference rule, a
@@ -179,12 +180,12 @@ consumer. It shouldn't pin incidental surface (a count nothing
 depends on, a docstring phrasing, a constant whose value is
 arbitrary, a term used loosely). When a finding proposes
 alignment machinery for a prose inconsistency or an arbitrary
-value, the maintainer (in review) or lead (at triage) asks
+value, the maintainer (in the audit) or lead (at triage) asks
 whether removing the decorative side dissolves the concern. If
 yes, the surface should be simplified rather than built around
 with structure. The maintainer frames these as simplification
-candidates in per-task review; the lead is the backup check at
-post-merge triage.
+candidates in the per-task audit; the lead is the backup check
+at post-merge triage.
 
 **Compensation patterns are tells.** Some diffs include
 scaffolding that compensates for what the change doesn't do.
@@ -213,7 +214,7 @@ tasks**, not at the end of the queue:
 - Per-task coherence is the contract. It must be resolved
   before any other unrelated work.
 - Debt compounds if deferred — starting task B on top of task
-  A's unresolved debt makes review confusing and cleanup
+  A's unresolved debt makes the audit confusing and cleanup
   harder.
 - Context is fresh. Re-orienting after a queue's worth of
   unrelated work is wasted effort.
@@ -245,7 +246,7 @@ Once the PR is open:
 3. **Triage.** The lead decides on each finding:
    - **Accept** → becomes a follow-on task on the task list,
      handled by the standard per-task workflow including
-     maintainer review.
+     maintainer audit.
    - **Reject** → noted in the lead's reply to the user, with
      the reason.
    - **Out of scope** → held for post-merge triage (see Phase
@@ -285,7 +286,7 @@ are the only output.
 
 **Sources:**
 
-- **In-session, from the maintainer.** Each task review report
+- **In-session, from the maintainer.** Each task audit report
   includes an "out of scope but noticed" section listing
   pre-existing items the maintainer noticed but didn't flag as
   in-scope follow-ons.
@@ -295,7 +296,7 @@ are the only output.
   all three roles (developer, maintainer, reviewer) for any
   final ancillary concerns they noticed during their work. This
   is the only channel the developer has — the developer has no
-  per-task review, but actually edits the code and may catch
+  per-task audit, but actually edits the code and may catch
   things the read-only roles miss. It's also an intentional
   end-of-session checkpoint to catch what in-session reporting
   may have missed.
@@ -421,14 +422,8 @@ These apply across every phase.
   pre-merge gate. Three actors: developer (pre-report), commit
   hook (pre-commit), CI (pre-merge).
 
-### Communication
+### All communications
 
-- **Plain text only** between teammates. No structured JSON
-  status messages — those are for the system, not for humans.
-- Teammates address each other by exact role name (`lead`,
-  `developer`, `maintainer`, `reviewer`) — never with a
-  `team-` prefix or any other variant. UUIDs likewise won't
-  reach the right inbox.
 - **Plain English at all times.** Write for a reader who wasn't
   in the session: short sentences under 25 words, active voice,
   plain everyday words. The lead may quote teammates to the
@@ -441,6 +436,61 @@ These apply across every phase.
   exception is GitHub artefacts themselves (PR descriptions,
   issue bodies, PR/issue comments, commit messages), where the
   native `#NN` form preserves GitHub's auto-linking.
+
+### Communication between teammates (agents)
+
+- **Plain text only** between teammates. The `SendMessage`
+  tool accepts JSON-typed control messages
+  (`shutdown_request`, `plan_approval_response`, and so on)
+  for system-level signals; teammate communication is not one
+  of those. Send a plain-text string.
+- **Address by exact role name.** Use exactly `lead`,
+  `developer`, `maintainer`, or `reviewer` in the
+  `SendMessage` `to:` field — never a `team-` prefix or any
+  other variant. UUIDs likewise won't reach the right inbox.
+  The `SendMessage` tool's own description shows `team-lead`
+  in a legacy protocol-response example. That form fails
+  silently — the message returns success but reaches no
+  inbox. Ignore the example.
+- **Set the `summary` field** (5–10 words) when sending a
+  string message — that's the UI preview the tool expects.
+- **Reply via `SendMessage`.** Plain-text turn output is not
+  delivered to other agents — only the harness sees it. Every
+  reply to a teammate goes via `SendMessage`. A one-word reply
+  (`done`, `confirmed`) still goes via `SendMessage` — the
+  rule has no length gate.
+- **Message template.** Every outbound `SendMessage` body opens
+  with `Message from <self-role> to <recipient-role>: ` so the
+  recipient can see at a glance that the message is teammate
+  traffic, not user input — and so a misroute (recipient ≠
+  intended addressee) is visible. When the message expects a
+  reply, it ends with `Reply via SendMessage to <self-role>` —
+  same role as in the opening prefix. The closing line tells
+  the recipient where to send their reply (back to you). Skip
+  the closing line on terminal messages — a final ack, a `done`
+  report — where no reply is wanted.
+
+  Example (lead asks maintainer for the audit on a
+  just-committed change):
+
+  ```
+  Message from lead to maintainer: task 3 committed at <sha>. Please audit.
+  Reply via SendMessage to lead.
+  ```
+
+  Example (developer reports completion):
+
+  ```
+  Message from developer to lead: done.
+  ```
+
+  The template is the envelope, not the content. Role-specific
+  outputs (the maintainer's numbered list, the reviewer's
+  Markdown review) sit between the opening prefix and the
+  optional closing line. When the lead forwards a teammate's
+  message to another destination — for example, posting the
+  reviewer's review to the PR — the lead strips the envelope
+  first.
 - The lead's task descriptions should be **explicit about
   scope**: in-scope items, out-of-scope items, and what the
   developer should do if they disagree with a scope decision
@@ -454,7 +504,7 @@ These apply across every phase.
 - The reviewer's output is **Markdown for a PR comment** —
   recommendation at the top, findings grouped by severity,
   optional ancillary section.
-- Auto-generated idle notifications: noted, not acted on unless
+- Auto-generated idle notifications: not acted on unless
   they affect pending work.
 
 ### Hard rules

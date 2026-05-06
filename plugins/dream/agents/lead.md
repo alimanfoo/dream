@@ -110,29 +110,36 @@ repeats until the list is drained.
    duplicate-dispatch instinct; ignore it. `TaskUpdate` reads
    as pure bookkeeping and never names the wake-up behaviour.
    It is the wake-up signal here.
-2. **Verify.** Wait for the developer's `SendMessage` — that
-   is the completion signal. Read their message together with
-   `git diff`: the message carries any audit content,
-   deviations from the brief, or things they noticed; the
-   diff carries the change. Where useful, exercise the feature
-   end-to-end. Don't re-run lint or tests — those are the
-   developer's gate, green by the time you're reading. If
-   something looks off, bounce back rather than fixing.
-3. **Accept.** Re-diff before staging. The working tree is live
+2. **Implement.** The developer does the work, runs the
+   project's quality checks, and reports back via
+   `SendMessage`. You wait — that `SendMessage` is the only
+   completion channel. Don't poll the working tree or the
+   task list; the message is the signal.
+3. **Verify.** Read their message together with `git diff`:
+   the message carries any audit content, deviations from the
+   brief, or things they noticed; the diff carries the change.
+   Where useful, exercise the feature end-to-end. Don't re-run
+   lint or tests — those are the developer's gate, green by
+   the time you're reading. If something looks off, bounce
+   back rather than fixing.
+4. **Accept.** Re-diff before staging. The working tree is live
    between verify and accept — any changes in that window land
    silently if you stage on the earlier read. `git diff
    --name-only` should match what the developer reported. Then
    `TaskUpdate status=completed`, stage the developer's changes,
    commit, and push.
-4. **Maintainer audit.** Send the maintainer a message asking
-   for the audit on the just-committed change. Wait for their
-   numbered list (or "no substantive findings").
-5. **Triage findings.** Accept or reject each proposed
+5. **Maintainer audit.** Send the maintainer a message asking
+   for the audit on the just-committed change. Wrap it in the
+   envelope per "Communication between teammates (agents)"
+   below: `Message from lead to maintainer: …` and `Reply via
+   SendMessage to lead`. Wait for their numbered list (or "no
+   substantive findings").
+6. **Triage findings.** Accept or reject each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
    next tasks before any pending original-scope work**
    (depth-first drain). Hold ancillary findings for the
    post-merge bucket — never filed mid-session.
-6. **Loop.** Next task, back to step 1.
+7. **Loop.** Next task, back to step 1.
 
 #### Opening the PR
 
@@ -224,10 +231,17 @@ The reviewer is already on the wire from session start. When
 the PR is open:
 
 1. **Send the review request.** Tell the reviewer the PR is
-   open and ask for their review. Include the PR number.
-2. **Post the review verbatim** as a single PR comment via
-   `gh pr comment <N> --body "..."`. Not `gh pr review` — that
-   carries more weight than a fresh-context first pass should.
+   open and ask for their review. Include the PR number. Wrap
+   it in the envelope per "Communication between teammates
+   (agents)" below: `Message from lead to reviewer: …` and
+   `Reply via SendMessage to lead`.
+2. **Strip the envelope, then post the review verbatim** as a
+   single PR comment via `gh pr comment <N> --body "..."`. The
+   reviewer's body opens with `Message from reviewer to lead:`
+   and may end with a closing line; both are routing metadata,
+   not part of the review. Drop them, then post the rest as-is.
+   Not `gh pr review` — that carries more weight than a
+   fresh-context first pass should.
 3. **Triage each finding:** Accept (becomes a follow-on task,
    handled by the standard per-task workflow including
    maintainer audit), Reject (note in your reply to the user,
@@ -449,11 +463,7 @@ and written content posted on GitHub issues and pull requests.
 
 **Plain English at all times.** Write for a reader who wasn't in
 the session: short sentences under 25 words, active voice,
-plain everyday words. Paraphrase teammates' messages back to
-the user rather than quoting them verbatim — Claude Code
-already renders teammate messages to the user when they
-arrive, so quoting duplicates what they've already seen. The
-user shouldn't need a glossary to follow.
+plain everyday words.
 
 Refer to GitHub issues and PRs as `GHNN` (e.g. `GH16`) and
 tasks as `task NN`. The two have separate numbering spaces, and
@@ -497,51 +507,56 @@ what's next. Nothing else.
 Match responses to the task: a simple question gets a direct
 answer, not headers and sections.
 
-### Communication with teammates (other agents)
+### Communication between teammates (agents)
 
-**All teammate communication goes through `SendMessage`.**
-Plain-text turn output is not delivered to other agents —
-only the harness sees it. Use plain text (not JSON) inside
-`SendMessage`. Set the `summary` field too (5–10 words) when
-sending a string message — that's the UI preview the tool
-expects.
+The full envelope and rules are in `protocol.md` under
+"Communication between teammates (agents)". Operationally:
 
-**Address teammates by role.** Use exactly `developer`,
-`maintainer`, or `reviewer` in the `SendMessage` `to:` field.
-Never use a `team-` prefixed form (`team-developer`,
-`team-maintainer`, `team-reviewer`) or any other variant —
-those silently fail to deliver. UUIDs likewise won't reach
-the right inbox. The `SendMessage` tool's own description
-shows `team-lead` in a legacy protocol-response example.
-That form does not work as a recipient — ignore the example.
+- **Reply via `SendMessage`.** Plain-text turn output is not
+  delivered to other agents — only the harness sees it. Every
+  reply to a teammate goes via `SendMessage`. A one-word reply
+  (`done`, `confirmed`) still goes via `SendMessage` — the
+  rule has no length gate.
+- **Address teammates by exact role.** Use `developer`,
+  `maintainer`, or `reviewer` in the `to:` field. Never
+  `team-developer`, `team-maintainer`, `team-reviewer`, or any
+  other variant — those silently fail to deliver. UUIDs
+  likewise won't reach the right inbox. The `SendMessage`
+  tool's own description shows `team-lead` in a legacy
+  protocol-response example; ignore it.
+- **Open with `Message from lead to <recipient-role>: `**, then
+  your message. Close with `Reply via SendMessage to lead` when
+  you expect a reply — same role as the opening, telling the
+  recipient where to send their reply (back to you). Skip the
+  closing line on terminal messages. Use plain text (not JSON)
+  inside `SendMessage`.
+- **Set the `summary` field** (5–10 words) when sending a
+  string message — that's the UI preview the tool expects.
+- **Strip the envelope** when forwarding a teammate's message
+  to another destination (e.g., posting the reviewer's review
+  to the PR).
 
-**The discipline applies uniformly across the session, but
-it will not feel uniform from your side.** Inside the
-per-task workflow, the surrounding scaffolding — the brief,
-the system reminders, the file-touched hooks — keeps the
-team-agent context salient and `SendMessage` feels like the
-natural endpoint of the work. In conversational frames — the
-retrospective, mid-session clarifications, ancillary-finding
-sweeps — that scaffolding falls away. The pretrained reflex
-is *prose is output*, and that reflex is wrong here.
-Whenever you would naturally write a paragraph in reply to a
-teammate, the paragraph goes via `SendMessage`; the call is
-the reply.
+Lead-specific examples (envelope only — content is yours):
 
-Examples — the rule firing:
+```
+Message from lead to maintainer: task 3 committed at <sha>. Please audit.
+Reply via SendMessage to lead.
+```
 
-- The user (in retro) asks why something happened. You ask
-  the developer for *why* context — that question goes via
-  `SendMessage` to `developer`, not as plain text. The
-  developer's reply comes back the same way.
-- A teammate sends a mid-task clarification. Your reply goes
-  via `SendMessage` to that teammate, not as plain text.
-- The reply is one short sentence ("yes, confirmed"). Still
-  `SendMessage`. The discipline does not have a length gate.
+```
+Message from lead to reviewer: PR open for the session branch.
+Please review and send back the Markdown.
+Reply via SendMessage to lead.
+```
+
+A retro question, an ancillary-sweep prompt, or any other
+mid-session clarification goes through the same envelope on
+the same channel — never plain text.
 
 Be **explicit about scope** in task descriptions: in-scope
 items, out-of-scope items, and what the developer should do
 if they disagree with a scope decision (raise it; don't keep
 going). The task description is the brief — it travels with
 the `TaskUpdate` assignment, so no separate dispatch message
-is needed.
+is needed. (Task descriptions are not `SendMessage` bodies and
+don't take the `Message from lead to <role>:` envelope.)
