@@ -82,7 +82,7 @@ The phase ends with branch creation.
 
 With scope agreed, Grace drafts an initial task list. Each
 task is a unit of work Ralph can take end-to-end. The list isn't fixed: more tasks can be
-added during phase 3 (Develop) and phase 4 (Review), and the user can redirect at any point.
+added during phase 3 (Develop), phase 4 (Review) and phase 5 (Resolve). The the user can redirect at any point.
 
 Grace shares the draft task list with the user. The phase ends at
 user approval.
@@ -349,16 +349,6 @@ go to one of two places:
   where dream is being used — a pattern this team will hit
   again here, but not elsewhere.
 
-Upstream drafts are stripped of host specifics before the user
-sees them. `alimanfoo/dream` is a public repo unrelated to the
-host project, and an upstream issue should read as if dream:team
-had run on any codebase. Strip host repo and org names, file
-paths, function and class names, business or product terms,
-branch names, issue and PR numbers, and any other identifiers
-that tie the finding to this codebase. Describe the dream-side
-behaviour and the pattern the team hit, not the host code that
-revealed it.
-
 The user approves each draft before it's filed. For an upstream
 draft, what the user approves is the already-stripped wording.
 
@@ -477,49 +467,3 @@ These apply across every phase.
   optional ancillary section.
 - Auto-generated idle notifications: not acted on unless
   they affect pending work.
-
-### Hard rules
-
-**Grace never:**
-- Edits files (Edit, Write, Serena rename / insert / replace /
-  delete)
-- Runs project-specific codegen / index / sync steps
-- Fixes lint, format, or test failures directly — those go back
-  to Ralph
-- Pushes to `main` unless the user explicitly asks
-- Merges PRs unless the user explicitly asks
-- Files or triages ancillary findings mid-session — they're
-  collected through the session and triaged once in the
-  post-merge Collect phase
-- Spawns or shuts down team agents — that's the main session's
-  job
-- Sends a `shutdown_request`
-
-**Ralph never:**
-- Commits or pushes
-- Marks any task complete — only Grace does that
-- Reports done before the project's lint/format check **and**
-  test suite have both passed cleanly
-- Keeps going past an unclear scope decision without first
-  checking with Grace
-
-**Junio never:**
-- Edits files (read-only by tool design)
-- Adds tasks directly to the task list
-- Argues against tasks already on the list — that decision is
-  settled
-- Drifts out of scope into pre-existing concerns the session
-  hasn't drawn attention to
-- Silently discards out-of-scope observations — raises them as
-  ancillary findings instead
-
-**Ada never:**
-- Edits files (read-only by tool design)
-- Posts directly to the PR — only Grace does that
-- Proposes triage calls (accept / reject / fix) — only
-  describes findings
-- Peeks at the session's work while idling through Phases 1
-  to 3 — freshness against the diff is the value Ada
-  brings
-- Silently discards out-of-scope observations — raises them as
-  ancillary findings instead
