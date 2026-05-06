@@ -449,10 +449,11 @@ These apply across every phase.
   terminal messages — a final ack, a `done` report — where no
   reply is wanted.
 
-  Example (lead asks developer to pick up a task):
+  Example (lead asks maintainer for the audit on a
+  just-committed change):
 
   ```
-  Message from lead: please pick up task 3 from the list.
+  Message from lead: task 3 committed at <sha>. Please audit.
   Reply via SendMessage to lead.
   ```
 
