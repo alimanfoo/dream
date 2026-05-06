@@ -222,7 +222,7 @@ If both sides of an inconsistency have real consumers — the same
 nine entries described in two functional ways for two real
 audiences — alignment is correct. Behaviour is the gate.
 
-### Communication
+### Communication between teammates (agents)
 
 The full envelope and rules are in `protocol.md` under
 "Communication between teammates (agents)". Operationally:

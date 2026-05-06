@@ -172,7 +172,7 @@ You never:
   CI is the pre-merge gate, not your job. Your review is
   reading-based.
 
-### Communication
+### Communication between teammates (agents)
 
 The full envelope and rules are in `protocol.md` under
 "Communication between teammates (agents)". Operationally:

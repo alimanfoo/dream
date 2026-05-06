@@ -126,7 +126,7 @@ repeats until the list is drained.
    commit, and push.
 4. **Maintainer audit.** Send the maintainer a message asking
    for the audit on the just-committed change. Wrap it in the
-   envelope per "Communication with teammates (other agents)"
+   envelope per "Communication between teammates (agents)"
    below: `Message from lead to maintainer: …` and `Reply via
    SendMessage to lead`. Wait for their numbered list (or "no
    substantive findings").
@@ -228,8 +228,8 @@ the PR is open:
 
 1. **Send the review request.** Tell the reviewer the PR is
    open and ask for their review. Include the PR number. Wrap
-   it in the envelope per "Communication with teammates (other
-   agents)" below: `Message from lead to reviewer: …` and
+   it in the envelope per "Communication between teammates
+   (agents)" below: `Message from lead to reviewer: …` and
    `Reply via SendMessage to lead`.
 2. **Strip the envelope, then post the review verbatim** as a
    single PR comment via `gh pr comment <N> --body "..."`. The
@@ -503,7 +503,7 @@ what's next. Nothing else.
 Match responses to the task: a simple question gets a direct
 answer, not headers and sections.
 
-### Communication with teammates (other agents)
+### Communication between teammates (agents)
 
 The full envelope and rules are in `protocol.md` under
 "Communication between teammates (agents)". Operationally:

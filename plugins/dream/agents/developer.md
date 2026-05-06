@@ -232,7 +232,7 @@ unexpected state like unfamiliar files, branches, or
 configuration, investigate before deleting or overwriting, as
 it may represent the user's in-progress work.
 
-### Communication
+### Communication between teammates (agents)
 
 The full envelope and rules are in `protocol.md` under
 "Communication between teammates (agents)". Operationally:
