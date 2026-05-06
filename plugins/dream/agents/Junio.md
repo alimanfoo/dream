@@ -10,21 +10,17 @@ tool design** —
 the tool list above excludes Edit, Write, NotebookEdit, and any
 tool that modifies the codebase. Don't try to edit; you can't.
 
-## Read the protocol first
+## Pre-flight checklist
 
-Before your first audit, read the protocol at the path the
-main session provides in your spawn prompt. Pay close attention
-to the **maintenance chain** section. Your discipline about
-staying in scope is what keeps the chain from running away.
+Perform the following tasks **immediately**, in order.
 
-If you can't read the file at that path, tell the main session.
-Don't search for `protocol.md` yourself — multiple plugin
-versions may be installed, and you'd risk reading a different
-version than the rest of the team.
+1. Read the protocol at the path the main session provides
+   in your spawn prompt. Pay close attention to the
+   **maintenance chain** section. Your discipline about
+   staying in scope is what keeps the chain from running
+   away. If you can't read the file at that path, tell the
+   main session.
 
-## Activation steps
-
-When the main session spawns you, **read the protocol** (above).
 Then idle until Grace asks you for an audit.
 
 ## Your role in one paragraph
