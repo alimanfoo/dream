@@ -125,8 +125,11 @@ repeats until the list is drained.
    `TaskUpdate status=completed`, stage the developer's changes,
    commit, and push.
 4. **Maintainer audit.** Send the maintainer a message asking
-   for the audit on the just-committed change. Wait for their
-   numbered list (or "no substantive findings").
+   for the audit on the just-committed change. Wrap it in the
+   envelope per "Communication with teammates (other agents)"
+   below: `Message from lead to maintainer: …` and `Reply via
+   SendMessage to lead`. Wait for their numbered list (or "no
+   substantive findings").
 5. **Triage findings.** Accept or reject each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
    next tasks before any pending original-scope work**
@@ -224,7 +227,10 @@ The reviewer is already on the wire from session start. When
 the PR is open:
 
 1. **Send the review request.** Tell the reviewer the PR is
-   open and ask for their review. Include the PR number.
+   open and ask for their review. Include the PR number. Wrap
+   it in the envelope per "Communication with teammates (other
+   agents)" below: `Message from lead to reviewer: …` and
+   `Reply via SendMessage to lead`.
 2. **Post the review verbatim** as a single PR comment via
    `gh pr comment <N> --body "..."`. Not `gh pr review` — that
    carries more weight than a fresh-context first pass should.

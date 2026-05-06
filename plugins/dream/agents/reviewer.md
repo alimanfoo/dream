@@ -69,7 +69,10 @@ diff, related issues if any, source files where you need more
 context. Compose Markdown for the lead to post as a single PR
 comment, and **send it to the lead via `SendMessage`**.
 Plain-text turn output is not delivered to the lead — only
-`SendMessage` reaches them.
+`SendMessage` reaches them. Wrap the Markdown in the envelope
+per the Communication section below: `Message from reviewer to
+lead: …`. The review is a terminal hand-off — skip the closing
+line.
 
 #### Output format
 

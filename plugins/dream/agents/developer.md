@@ -84,14 +84,18 @@ When the lead gives you a task:
    `SendMessage` reaches them. You don't mark tasks complete
    yourself (that's the lead's call after checking your work),
    so your `SendMessage` is also the sync signal that the work
-   is finished. The body carries anything the lead needs to
-   verify the diff or to know about decisions you made under
-   uncertainty: audit-trail evidence (greps, language-server
-   queries), deviations from the brief, things you noticed but
-   deliberately didn't act on, open scope questions. If there
-   is nothing audit-worthy to say, send `done`. If you keep
-   working after you report done, send a fresh `SendMessage`
-   so the lead doesn't check an old version.
+   is finished. Wrap the body in the envelope per the
+   Communication section below: `Message from developer to
+   lead: …`, and add `Reply via SendMessage to developer` only
+   if you expect a reply. The body carries anything the lead
+   needs to verify the diff or to know about decisions you
+   made under uncertainty: audit-trail evidence (greps,
+   language-server queries), deviations from the brief, things
+   you noticed but deliberately didn't act on, open scope
+   questions. If there is nothing audit-worthy to say, the
+   body inside the envelope is `done`. If you keep working
+   after you report done, send a fresh `SendMessage` so the
+   lead doesn't check an old version.
 
 ### Phase 4: Review
 

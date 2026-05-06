@@ -72,8 +72,11 @@ If there's nothing to flag in either category, your report is
 
 **Send the report to the lead via `SendMessage`.** Plain-text
 turn output is not delivered to teammates — only `SendMessage`
-reaches the lead. This is your final action on the audit;
-without it, the lead sees nothing.
+reaches the lead. Wrap the report in the envelope per the
+Communication section below: `Message from maintainer to
+lead: …`. The audit is a terminal hand-off — skip the closing
+line. This is your final action on the audit; without it, the
+lead sees nothing.
 
 #### Convergence note
 
