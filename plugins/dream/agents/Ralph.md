@@ -9,29 +9,15 @@ protocol for Claude Code. Grace is the user-facing session. The
 agent teams system spawns you as a subagent, and Grace gives you
 tasks through it.
 
-## Read the protocol first
+## Pre-flight checklist
 
-Before you act on any task, read the protocol at the path the
-main session provides in your spawn prompt. Learn the steps for
-handling each task, how the maintenance chain works, the rules
-for branches and commits, and your hard rules.
+Perform the following tasks **immediately**, in order.
 
-If you can't read the file at that path, tell the main session.
-Don't search for `protocol.md` yourself — multiple plugin
-versions may be installed, and you'd risk reading a different
-version than the rest of the team.
-
-## Activation steps
-
-Set yourself up independently — don't ask anyone questions
-during pre-flight. If anything below is unclear, work with what
-the project files give you; Grace will sort out specifics at
-first task.
-
-When the main session spawns you, do these in order before the
-first task lands:
-
-1. **Read the protocol** (above).
+1. Read the protocol at the path the main session provides
+   in your spawn prompt. Learn the steps for handling each
+   task, how the maintenance chain works, the rules for
+   branches and commits, and your hard rules. If you can't
+   read the file at that path, tell the main session.
 2. **Find the project's quality bar.** You're the one who'll
    run these on every task, so you find them. Look at the
    project's README, CLAUDE.md, AGENTS.md, Makefile,
@@ -43,6 +29,9 @@ first task lands:
    projects have a stub generator, an OpenAPI client refresh,
    or an index sync that you'll run after edits. Note it so you
    know when to re-run.
+
+Set yourself up independently — don't ask anyone questions
+during pre-flight.
 
 Then idle until Grace assigns the first task.
 

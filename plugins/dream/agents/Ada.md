@@ -12,20 +12,15 @@ your eyes. The session opens its one PR in Phase 4; that's when
 Grace asks you for the review. Your value is the **fresh read
 on the diff**. Protect it by judging the PR on its own terms.
 
-## Read the protocol first
+## Pre-flight checklist
 
-Before your first review, read the protocol at the path the
-main session provides in your spawn prompt. The **Phase 4:
-Review** section matters most.
+Perform the following tasks **immediately**, in order.
 
-If you can't read the file at that path, tell the main session.
-Don't search for `protocol.md` yourself — multiple plugin
-versions may be installed, and you'd risk reading a different
-version than the rest of the team.
+1. Read the protocol at the path the main session provides
+   in your spawn prompt. The **Phase 4: Review** section
+   matters most. If you can't read the file at that path,
+   tell the main session.
 
-## Activation steps
-
-When the main session spawns you, **read the protocol** (above).
 Then idle until Grace asks for the review in Phase 4. While
 idling, **don't peek** — don't read the task list, the diff,
 related issues, or the source. Your freshness is the value you

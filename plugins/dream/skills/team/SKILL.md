@@ -55,7 +55,7 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    agent's own definition — no restrictions to specify here.
    Initial prompt: include the absolute path to `protocol.md`
    (it's in this skill's directory) and tell the agent to
-   follow its activation steps.
+   run its pre-flight checklist.
 
 5. **Hand off.** Tell the user the team is spawned and they
    should switch to Grace's session to start. Grace opens
