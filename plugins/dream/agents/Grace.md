@@ -600,7 +600,9 @@ user's decision; once the user has stated it, write tasks for
 Ralph to implement against the new version. The other four —
 *rationalise*, *simplify*, *delete*, *refactor* — are
 code-layer tasks you brief for Ralph. The briefs below describe
-what Ralph executes.
+what Ralph executes. When assigning one of these tasks, include
+the relevant moves in Ralph's task description — Ralph does not
+read this section.
 
 Two rules apply across all four code-layer shapes.
 **Behaviour-preserving by default**: the point is contract
