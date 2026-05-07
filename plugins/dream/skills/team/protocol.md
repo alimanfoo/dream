@@ -82,19 +82,22 @@ cited material, asks questions, and gets direction on any
 decisions ahead.
 
 **Check for recurrence.** Before agreeing the scope, Grace
-searches the issue tracker for the surface the user named:
+identifies the surfaces the user has named — a function, a
+class, a module, a parameter; a session may name several —
+and searches the issue tracker for each:
 
 ```
 gh issue list --state all --search '<surface>'
 ```
 
-If the search returns other issues on this surface (open or
-closed), or if the issue body cites prior closed issues, Grace
-applies the pause-and-rescope test — *would finishing the work
-as proposed still leave the deeper cause unresolved?* — before
-agreeing the scope. If yes, Grace starts a pause and rescope
-(see "Pause and rescope" below). If no, she has nothing to act
-on and the conversation continues.
+If the search returns other issues on any of these surfaces
+(open or closed), or if the issue body cites prior closed
+issues, Grace applies the pause-and-rescope test — *would
+finishing the work as proposed still leave the deeper cause
+unresolved?* — before agreeing the scope. If yes, Grace
+starts a pause and rescope (see "Pause and rescope" below).
+If no, she has nothing to act on and the conversation
+continues.
 
 Once the initial scope is agreed, Grace creates the feature
 branch off `main`. The branch name reflects the scope.
@@ -494,20 +497,25 @@ and the narrowing options never come up.
 
 ### The radical rethink
 
-After the removal question, push further:
+After the removal question, push further. Pick *one*
+assumption built into the agreed scope, imagine *one*
+extreme option that challenges it, then return to the
+narrow / wide choice:
 
-> What's the extreme version? What assumption is this
-> session taking for granted, and what becomes possible if
-> we challenge it?
+> What assumption is this session taking for granted, and
+> what becomes possible if we challenge it?
 
-Agents step outside the established frame only when pushed
-across several steps. Name the assumption built into the
-agreed scope — *"this feature is core," "the surface has to
-support both cases," "we can't break callers," "the codebase
-is the right shape for the problem"* — and ask what becomes
-possible if it doesn't hold. Even when the session doesn't
-take the radical path, the exercise often reveals smaller
-moves the conservative frame was hiding.
+Agents step outside the established frame only when pushed.
+Examples of assumptions worth surfacing: *"this feature is
+core," "the surface has to support both cases," "we can't
+break callers," "the codebase is the right shape for the
+problem."* Even when the session doesn't take the radical
+path, naming the assumption often reveals smaller moves the
+conservative frame was hiding.
+
+Bound the move: one assumption, one extreme option, then
+back to the choice. This is a focused step, not open-ended
+brainstorming.
 
 ### Evidence
 
@@ -936,9 +944,11 @@ These apply across every phase.
   the `TaskUpdate` assignment, so no separate dispatch message
   is needed.
 - Junio's output is a **numbered plain-text list** of
-  proposed follow-ons, each with a one-line reason and the file
-  paths or symbol names involved, optionally followed by an
-  "out of scope but noticed" section for ancillary findings.
+  proposed follow-ons (each with a one-line reason and file
+  paths or symbol names), optionally followed by an "out of
+  scope but noticed" section for ancillary findings and an
+  optional **possible rescope signal** when audits on the
+  same surface look symptom-shaped.
 - Ada's output is **Markdown for a PR comment** —
   recommendation at the top, findings grouped by severity,
   optional ancillary section.

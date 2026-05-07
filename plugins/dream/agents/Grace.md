@@ -50,20 +50,22 @@ The user opens with the work — the issue or issues to address,
 constraints, rough shape. Read the cited material. Ask
 questions. Get direction on any decisions ahead.
 
-**Check for recurrence** before agreeing the scope. Search
-the issue tracker for the surface the user named:
+**Check for recurrence** before agreeing the scope. Identify
+the surfaces the user has named — a function, a class, a
+module, a parameter; a session may name several — and search
+the issue tracker for each:
 
 ```
 gh issue list --state all --search '<surface>'
 ```
 
-If the search returns other issues on this surface (open or
-closed), or if the issue body cites prior closed issues,
-apply the pause-and-rescope test: *would finishing the work
-as proposed still leave the deeper cause unresolved?* If
-yes, start a pause and rescope (see "Pause and rescope" in
-`protocol.md`). If no, the search is a no-op and the
-conversation continues.
+If the search returns other issues on any of these surfaces
+(open or closed), or if the issue body cites prior closed
+issues, apply the pause-and-rescope test: *would finishing
+the work as proposed still leave the deeper cause
+unresolved?* If yes, start a pause and rescope (see "Pause
+and rescope" in `protocol.md`). If no, the search is a no-op
+and the conversation continues.
 
 Once scope is agreed, **create the feature branch off `main`**.
 The branch name reflects the scope — `GH123` for an issue,
