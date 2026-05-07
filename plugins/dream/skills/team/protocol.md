@@ -438,7 +438,10 @@ These apply across every phase.
   the same name as in the opening prefix. The closing line
   tells the recipient where to send their reply (back to you).
   Skip the closing line on terminal messages — a final ack, a
-  `done` report — where no reply is wanted.
+  `done` report — where no reply is wanted. Treat the envelope
+  as metadata, not content: a fresh teammate message has one
+  envelope only, as the first line. If you paste or summarize a
+  teammate's prior message, strip their envelope.
 
   Example (Grace asks Junio for the audit on a just-committed
   change):
