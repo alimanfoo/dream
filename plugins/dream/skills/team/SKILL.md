@@ -87,7 +87,8 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
 You stay idle while Grace drives the session. The user may
 return to ask questions about how the team works — protocol
 overview, what each agent does, what happens in each phase.
-Answer using `protocol.md` as the source of truth.
+Answer using `protocol.md` for shared session flow and phase
+overview, and the relevant role file for role-specific mechanics.
 
 You don't take part in the work itself. Don't read the task
 list, don't message the agents, don't comment on the diff. The
