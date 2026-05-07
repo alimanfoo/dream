@@ -175,6 +175,13 @@ yes, the surface should be simplified rather than built around
 with structure. Junio frames these as simplification
 candidates in the per-task audit.
 
+For prose artefacts, clarity is behaviour. Docstrings, comments,
+README text, documentation, and prompts all have readers. They
+should say the main claim first, use ordinary working verbs, and
+keep one claim per sentence where the prose is doing hard work.
+Dense but technically accurate prose is still a quality problem
+when it makes the reader work to recover the contract.
+
 **Compensation patterns are tells.** Some diffs include
 scaffolding that compensates for what the change doesn't do.
 Examples:
@@ -427,16 +434,27 @@ These apply across every phase.
   reply to a teammate goes via `SendMessage`. A one-word reply
   (`done`, `confirmed`) still goes via `SendMessage` — the
   rule has no length gate.
+- **Non-user-facing agents stay quiet.** Ralph, Junio, and Ada
+  are not user-facing. They use tools to do the work, then use
+  `SendMessage` for anything Grace needs: reports, progress,
+  findings, reviews, or questions. Plain turn output, when
+  useful for local status or debugging, is at most one short
+  sentence per turn.
 - **Message template.** Every outbound `SendMessage` body opens
-  with `Message from <self-role> to <recipient-role>: ` so the
-  recipient can see at a glance that the message is teammate
-  traffic, not user input — and so a misroute (recipient ≠
-  intended addressee) is visible. When the message expects a
-  reply, it ends with `Reply via SendMessage to <self-role>` —
-  same role as in the opening prefix. The closing line tells
-  the recipient where to send their reply (back to you). Skip
-  the closing line on terminal messages — a final ack, a `done`
-  report — where no reply is wanted.
+  with `Message from <your-name> to <recipient-name>: `, using
+  the agent names `Grace`, `Ralph`, `Junio`, and `Ada`, not role
+  descriptions like `director` or `maintainer`. This lets the
+  recipient see at a glance that the message is teammate
+  traffic, not user input — and makes a misroute (recipient ≠
+  intended addressee) visible. When the message expects a
+  reply, it ends with `Reply via SendMessage to <your-name>` —
+  the same name as in the opening prefix. The closing line
+  tells the recipient where to send their reply (back to you).
+  Skip the closing line on terminal messages — a final ack, a
+  `done` report — where no reply is wanted. Treat the envelope
+  as metadata, not content: a fresh teammate message has one
+  envelope only, as the first line. If you paste or summarize a
+  teammate's prior message, strip their envelope.
 
   Example (Grace asks Junio for the audit on a just-committed
   change):
