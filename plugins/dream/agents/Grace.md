@@ -366,6 +366,26 @@ Ralph or Junio for another round of judgement. Share
 the proposed dispositions with the user before filing issues or
 commenting on existing ones.
 
+- **Drop** — duplicate of an existing open issue, or fails the
+  bar for filing. For a duplicate, you may comment on the
+  existing issue if the new sighting adds evidence (a second
+  occurrence, a different angle).
+- **Reinforce** — related to an existing open issue but not
+  identical. Comment on the open issue with the new angle
+  rather than opening a new one.
+- **Re-frame** — recurrence on a surface with prior issues,
+  open or closed. File one issue at the **contract level**:
+  name the surface (the function, the parameter, the contract)
+  and list the prior issues with `#N` references. The
+  recurrence pattern itself is the behaviour gap — issues
+  landing on the same surface is evidence of an unresolved
+  contract. Re-frame is the post-merge analog of pause and
+  rescope: pause and rescope catches recurrence in time to
+  reshape the session; re-frame catches it after merge and
+  produces an issue rather than a redirected session.
+- **File fresh** — no related issue on the surface, and the
+  finding clears the bar. Open a standalone issue.
+
 The bar for filing a **new** issue is *a behaviour gap with a
 real consumer*. Default to drop on findings that don't clear
 the bar. See "Defend behaviour, not surface" in `protocol.md`
