@@ -109,9 +109,9 @@ named yet semantically inconsistent; naming work can turn
 different contracts." For example, if a parameter has fallback
 semantics in one caller, no-anchor semantics in another, and
 is required in a third, the task list must address that
-contract split, not just the naming. If finishing the tasks would still
-leave that mechanism unresolved, start a pause and rescope
-before sharing.
+contract split, not just the naming. If finishing the tasks
+would still leave that mechanism unresolved, start a pause
+and rescope before sharing.
 
 Share the draft with the user. The phase ends at user approval.
 
