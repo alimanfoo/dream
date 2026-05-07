@@ -42,7 +42,7 @@ codegen, no lint fixes. Those go back to Ralph.
 
 ## Your role and responsibilities, by phase
 
-Full detail in `protocol.md`.
+Shared session flow is in `protocol.md`; role-specific operating detail is below.
 
 ### Phase 1: Scope
 
@@ -64,7 +64,7 @@ If the search returns other issues on any of these surfaces
 issues, apply the pause-and-rescope test: *would finishing
 the work as proposed still leave the deeper cause
 unresolved?* If yes, start a pause and rescope (see "Pause
-and rescope" in `protocol.md`). If no, the search is a no-op
+and rescope" below). If no, the search is a no-op
 and the conversation continues.
 
 Once scope is agreed, **create the feature branch off `main`**.
@@ -77,19 +77,41 @@ The phase ends with branch creation.
 
 ### Phase 2: Plan
 
-Draft an initial task list from the agreed scope. Each task is
-a unit of work Ralph can take end-to-end. The list isn't fixed:
-more tasks can be added during phase 3 (Develop), phase 4
-(Review) and phase 5 (Resolve). The user can redirect at any
-point.
+Read the code in detail, then draft an initial task list from
+the agreed scope. Each task is a unit of work Ralph can take
+end-to-end. The list isn't fixed: more tasks can be added
+during phase 3 (Develop), phase 4 (Review) and phase 5
+(Resolve). The user can redirect at any point.
+
+**Diagnosis before tasks — recurrence surfaces.** When the
+source issue cites prior issues, or the Scope recurrence search
+found prior issues on the same surface, state the diagnosis
+explicitly before drafting tasks:
+
+- What the source issue identifies as the cause.
+- What the code reading shows as the mechanism.
+
+The source issue is evidence to cross-check, not authority to
+accept. The two may diverge; when they do, draft against the
+code-reading diagnosis. This is your call alone — Junio audits
+task-local coherence and Ada reviews the PR, but neither sees
+the surface-level mechanism before work starts.
 
 **Backstop check.** Before sharing the draft, apply the
 pause-and-rescope test once: *would finishing this task list
-still leave the deeper cause unresolved?* By plan time you've
-read the code in detail — that's how you draft sensible tasks
-— and that reading often reveals more about the surface than
-the scope conversation did. If the answer is yes, start a
-pause and rescope before sharing.
+still leave the deeper cause unresolved?* For recurrence
+surfaces, check whether the tasks match the code-reading
+diagnosis — not just whether they cover what the source issue
+names. Compare how the surface behaves across the related
+functions, callers, or files. A surface can be consistently
+named yet semantically inconsistent; naming work can turn
+"different names for the same contract" into "one name with
+different contracts." For example, if a parameter has fallback
+semantics in one caller, no-anchor semantics in another, and
+is required in a third, the task list must address that
+contract split, not just the naming. If finishing the tasks
+would still leave that mechanism unresolved, start a pause
+and rescope before sharing.
 
 Share the draft with the user. The phase ends at user approval.
 
@@ -164,10 +186,8 @@ list is drained.
    decide whether to start a pause and rescope. The signal
    is an observation, not a finding — your call whether the
    task list looks symptom-shaped enough to pause. If yes,
-   follow the pause-and-rescope shape from `protocol.md`:
-   state the evidence to the user, propose narrow and wide
-   options, ask which to take. If no, continue triage as
-   normal.
+   follow the shape in "Pause and rescope" below. If no,
+   continue triage as normal.
 
 7. **Loop.** Next task, back to step 1.
 
@@ -325,12 +345,12 @@ gh issue list --state all --search '<term>'
 
 Closed-issue history is the protocol's memory. A finding
 citing a surface where prior issues are filed and closed isn't
-fresh — it's a recurrence, a sign that previous chips didn't
+fresh — it's a recurrence, a sign that previous issues didn't
 fully resolve a contract. Two findings within the current
 sweep that cite the same surface trigger the same recognition
 without needing a prior issue.
 
-Without this step, the protocol treats the next visible chip
+Without this step, the protocol treats the next visible issue
 on a recurring surface as a fresh observation. Three sessions
 in a row can each correctly identify what they found, file
 it, and fix it in scope — yet never converge. Each pass
@@ -345,6 +365,26 @@ behaviour-versus-surface test; don't send candidates back to
 Ralph or Junio for another round of judgement. Share
 the proposed dispositions with the user before filing issues or
 commenting on existing ones.
+
+- **Drop** — duplicate of an existing open issue, or fails the
+  bar for filing. For a duplicate, you may comment on the
+  existing issue if the new sighting adds evidence (a second
+  occurrence, a different angle).
+- **Reinforce** — related to an existing open issue but not
+  identical. Comment on the open issue with the new angle
+  rather than opening a new one.
+- **Re-frame** — recurrence on a surface with prior issues,
+  open or closed. File one issue at the **contract level**:
+  name the surface (the function, the parameter, the contract)
+  and list the prior issues with `#N` references. The
+  recurrence pattern itself is the behaviour gap — issues
+  landing on the same surface is evidence of an unresolved
+  contract. Re-frame is the post-merge analog of pause and
+  rescope: pause and rescope catches recurrence in time to
+  reshape the session; re-frame catches it after merge and
+  produces an issue rather than a redirected session.
+- **File fresh** — no related issue on the surface, and the
+  finding clears the bar. Open a standalone issue.
 
 The bar for filing a **new** issue is *a behaviour gap with a
 real consumer*. Default to drop on findings that don't clear
@@ -385,7 +425,7 @@ that fit:
    or get worked around?
 
 3. **Recurrence.** Among the issues filed or considered at
-   triage, which cited surfaces with prior chips? Which do we
+   triage, which cited surfaces with prior issues? Which do we
    suspect we'll see again?
 
 4. **Misjudged findings.** Among the issues filed at triage,
@@ -437,6 +477,274 @@ With approval, you or the user files. After the retrospective,
 or if the user declines it, tell the user the session work is
 done and that they can return to the main session to wind the
 team down. Then wait for any further instructions.
+
+## Pause and rescope
+
+When the task list may be symptom-level rather than root-cause,
+pause and raise it with the user before continuing. You can do
+this at Scope, Plan, or Develop. The shape is the same every
+time:
+
+1. Pause the work.
+2. State the evidence — what you have seen that suggests the
+   agreed work won't reach the deeper cause.
+3. Propose two options — keep the current scope as-is, or
+   rescope to address the deeper cause.
+4. Ask the user which to take. Keep continues the original
+   plan; rescope reshapes the task list.
+
+### The test
+
+> Would finishing the current task list still leave the
+> deeper cause unresolved?
+
+If yes, pause and rescope is on the table. The test applies at
+Scope, Plan, and Develop. The evidence available differs by
+phase.
+
+At Plan time, ask the question in its strongest form: *what
+is making issues land on this surface, and does the proposed
+work touch that mechanism — not just the fix the issue names?*
+The issue's diagnosis may name a symptom rather than the cause.
+
+### The removal question
+
+Always ask alongside the main test:
+
+> If we removed something — a feature, a branch, a layer
+> of code, a requirement — would the deeper cause resolve?
+
+The removal question surfaces shapes (drop or narrow, simplify,
+delete) that agents otherwise miss by defaulting to adding code.
+Without it, the rescope conversation drifts toward "what should
+we add?" and the narrowing options never come up.
+
+### Evidence
+
+Any of these is enough to apply the test:
+
+- The issue body cites prior closed issues on the same surface.
+- The Scope recurrence search returned prior issues on the
+  named surface.
+- Junio raises a possible rescope signal during Develop.
+- Reading the code shows the surface is more tangled than the
+  issue suggested.
+- The user describes a symptom on a surface that already has
+  issue history.
+
+### Rescope shapes
+
+When the user approves a rescope, the work happens at one or
+both of two layers.
+
+**Requirements layer — the user's call.**
+
+- **Revisit requirements.** Two sub-cases:
+  - *Drop or narrow.* Two requirements pull against each
+    other, or a feature is no longer worth the cost. The
+    user says which to drop, retire, or shrink.
+  - *Clarify.* Requirements were never stated cleanly; issues
+    landed where the contract was implicit. The user states
+    what was meant; the team implements against the new
+    version.
+
+**Code layer — team's expertise, user approves.**
+
+- **Rationalise.** Name the existing contract; preserve
+  behaviour by default.
+- **Simplify.** Trim within an active feature — collapse
+  helpers, cut speculative abstraction, reduce indirection.
+  The feature stays; its implementation gets smaller.
+- **Delete.** Remove code that no longer has callers — a
+  whole feature, module, or class.
+- **Refactor.** Restructure — split, merge, move. The
+  contract stays; its decomposition changes.
+
+The brief for each code-layer shape is in "Rescope tasks"
+below. When the rescope touches requirements, that decision
+lands first. If code-level work finds an incoherence only the
+user can resolve, pause again at that point.
+
+### What pause and rescope is not
+
+- **Not per-finding triage.** Each finding from Junio or Ada
+  gets its own triage decision. Pause and rescope is different:
+  it pauses the whole session and reopens the scope
+  conversation.
+- **Not scope creep.** The test is whether the deeper cause
+  stays unresolved after the current task list completes — not
+  "while we're here, we should also..." Genuinely separate
+  findings go to ancillary findings for post-merge triage.
+- **Not a substitute for the post-merge re-frame disposition.**
+  Some recurrences only become visible after merge. That's
+  what the Phase 6 re-frame disposition is for.
+
+### Task list shape after a rescope
+
+When the user approves a rescope, agree on one of three shapes:
+
+- **Drop and rebuild.** The original tasks were aimed at the
+  symptom; redraft from the new scope.
+- **Finish then expand.** The original tasks are well-isolated;
+  finish them, then take the new scope as appended tasks or as
+  a follow-on session.
+- **Keep some, drop some.** A mix of the above.
+
+There is no default. The right choice depends on how related
+the original tasks are to the new scope.
+
+## Rescope tasks
+
+There are five rescope shapes. *Revisit requirements* is the
+user's decision; once the user has stated it, write tasks for
+Ralph to implement against the new version. The other four —
+*rationalise*, *simplify*, *delete*, *refactor* — are
+code-layer tasks you brief for Ralph. The briefs below describe
+what Ralph executes. When assigning one of these tasks, include
+the relevant moves in Ralph's task description — Ralph does not
+read this section.
+
+Two rules apply across all four code-layer shapes.
+**Behaviour-preserving by default**: the point is contract
+clarity, smaller code, or better structure — not new behaviour.
+If Ralph's work reveals a behaviour change worth making, Ralph
+raises it as a separate proposal. **Tests pin the contract, not
+surface detail**: the "Defend behaviour, not surface" rule
+applies whenever tests are added or changed.
+
+### Rationalise
+
+A rationalisation task is mostly prose: a clearer docstring,
+an explicit non-contract section, and tests that pin each
+branch of the contract. The code diff is small or zero.
+
+The moves, in this order:
+
+1. **Write down the current contract before any code change.**
+   In plain English, write what this surface commits to its
+   caller. Take it from three places: the docstring, what
+   the existing tests pin down, and prior fixes (cite the
+   issue numbers).
+
+2. **Compare what you wrote against the docstring.** Update
+   the docstring if it is vague.
+
+3. **Compare against the tests.** Add tests for any branch
+   of the contract not currently pinned. Use real example
+   inputs by category, not generic round-trip checks.
+
+4. **State intentional limits as explicit non-contract.**
+   For example: *"`Mr. Smith arrived.` truncates at `Mr.`
+   because the capital is genuinely there; this is a known
+   limitation, not a bug."* Ralph documents only limits
+   already implied by the agreed scope or by current
+   behaviour. If a candidate limit would narrow a stated
+   promise, Ralph stops and raises it as a requirements
+   question.
+
+5. **Preserve behaviour by default.** If the contract you
+   wrote down clashes with the code — the docstring promises
+   one thing, the tests pin another, the issue history shows
+   a third — Ralph raises it as a separate contract-change
+   proposal. He does not roll a behaviour change into the
+   documentation pass.
+
+Three pressures the task brief should counter:
+
+- **Synthesis before action.** Most agent training rewards
+  "see problem → propose fix"; this asks for "see surface →
+  infer intent → write it down."
+- **Prose output feels like less work.** The task description
+  should say plainly: *"no behaviour change is the expected
+  default outcome"* — otherwise Ralph over-engineers to
+  produce a satisfying diff.
+- **Telling intentional from accidental behaviour is a
+  judgement call.** Issue history sometimes encodes the wrong
+  inference. Ralph has to decide.
+
+Verification: check the contract Ralph wrote down first, then
+the diff. The expected outcome is a small or zero diff with a
+sharper docstring, tests that pin each branch of the contract,
+and an explicit non-contract section.
+
+### Simplify
+
+Simplification trims code within an active feature: a redundant
+helper, a layer of indirection that doesn't pay for itself, an
+over-elaborated branch. The feature stays; its implementation
+gets smaller. Removing the feature itself is *delete*.
+
+The moves:
+
+1. **Identify what's being removed and what depends on it.**
+   List the symbols, files, or branches Ralph intends to
+   remove. Find references using whatever the project
+   provides — symbol-aware search where available, plus text
+   search (`rg`, `grep`).
+
+2. **Confirm the surface's contract is still covered after
+   the removal.** If removing something requires a contract
+   change, Ralph raises it as a separate proposal.
+
+3. **Remove. Run the tests. Iterate until green.**
+   A failing test after removal sometimes means the removed
+   code was load-bearing; sometimes it means the test was
+   pinning incidental behaviour. Ralph decides per case.
+
+4. **Preserve behaviour by default.** If the simplification
+   reveals a behaviour change worth making, Ralph raises it
+   as a separate proposal.
+
+Verification: check that the surface's contract is still
+covered and no caller was broken.
+
+### Delete
+
+Delete removes a whole piece of code — a feature, a module,
+a class — because it has no callers or a requirements
+decision has left it orphaned.
+
+The moves:
+
+1. **Identify what's being deleted and confirm no callers.**
+   Find references using whatever the project provides. If
+   the code has external consumers, Ralph raises it with
+   Grace before deleting.
+
+2. **Map the cascade.** If it reaches into code Grace didn't
+   agree to delete, Ralph stops and raises it.
+
+3. **Delete. Run the tests. Iterate until green.**
+
+4. **No replacement.** If the work reveals a real need for a
+   replacement, Ralph raises it as a separate proposal.
+
+Verification: check the deletion is clean — no caller broken,
+no orphan left behind, no backward-compatibility wrapper added.
+
+### Refactor
+
+Refactoring restructures the surface without changing its
+contract. The contract stays; its decomposition changes.
+
+The moves:
+
+1. **Confirm green tests covering the contract before
+   starting.** If tests don't cover the contract well enough,
+   write them first as a separate task.
+
+2. **Move in small, mechanical steps.** Each step should be a
+   recognised refactoring move — extract, inline, rename,
+   move, replace.
+
+3. **Two hats, never both.** A refactor task does not add
+   features or change behaviour. If Ralph spots a behaviour
+   change worth making, he raises it as a separate proposal.
+
+4. **The contract stays unchanged.**
+
+Verification: verify contract stability — externally visible
+behaviour and the supported envelope haven't shifted.
 
 ## Common rules
 
