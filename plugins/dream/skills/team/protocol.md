@@ -106,33 +106,39 @@ The phase ends with branch creation.
 
 ## Phase 2: Plan
 
-With scope agreed, Grace drafts an initial task list. Each task
-is a unit of work Ralph can take end-to-end. The list isn't
-fixed: more tasks can be added during phase 3 (Develop), phase
-4 (Review) and phase 5 (Resolve). The user can redirect at any
-point.
+With scope agreed, Grace reads the code in detail, then drafts
+an initial task list. Each task is a unit of work Ralph can
+take end-to-end. The list isn't fixed: more tasks can be added
+during phase 3 (Develop), phase 4 (Review) and phase 5
+(Resolve). The user can redirect at any point.
+
+**Diagnosis before tasks — recurrence surfaces.** When the
+source issue cites prior issues on the same surface, state the
+diagnosis explicitly before drafting tasks:
+
+- What the source issue identifies as the cause.
+- What the code reading shows as the mechanism.
+
+The source issue is evidence to cross-check, not authority to
+accept. The two may diverge; when they do, draft against the
+code-reading diagnosis. This is Grace's call alone — Junio
+audits task-local coherence and Ada reviews the PR, but
+neither sees the surface-level mechanism before work starts.
 
 **Backstop check.** Before sharing the draft, Grace applies
 the pause-and-rescope test once: *would finishing this task
-list still leave the deeper cause unresolved?* By plan time,
-Grace has read the code in detail — that's how she drafts
-sensible tasks — and that reading often reveals more about
-the surface than the scope conversation did. If finishing the
-drafted tasks would still leave the deeper cause unresolved,
-Grace starts a pause and rescope before sharing.
-
-At Plan time, apply the substantive form of the test: ask
-what is making issues land on this surface, and whether the
-proposed work reaches that mechanism — not just whether it
-covers what the issue names. When the source issue cites
-prior issues, compare how the surface behaves across the
-related functions, callers, or files. A surface can be
-consistently named yet semantically inconsistent; naming
-work can turn "different names for the same contract" into
-"one name with different contracts." For example, if a
-parameter has fallback semantics in one caller, no-anchor
-semantics in another, and is required in a third, the task
-list must address that contract split, not just the naming.
+list still leave the deeper cause unresolved?* For recurrence
+surfaces, check whether the tasks match the code-reading
+diagnosis — not just whether they cover what the source issue
+names. Compare how the surface behaves across the related
+functions, callers, or files. A surface can be consistently
+named yet semantically inconsistent; naming work can turn
+"different names for the same contract" into "one name with
+different contracts." For example, if a parameter has fallback
+semantics in one caller, no-anchor semantics in another, and
+is required in a third, the task list must address that
+contract split, not just the naming. If yes, Grace starts a
+pause and rescope before sharing.
 
 Grace shares the draft task list with the user. The phase ends
 at user approval.

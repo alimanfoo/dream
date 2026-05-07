@@ -77,32 +77,39 @@ The phase ends with branch creation.
 
 ### Phase 2: Plan
 
-Draft an initial task list from the agreed scope. Each task is
-a unit of work Ralph can take end-to-end. The list isn't fixed:
-more tasks can be added during phase 3 (Develop), phase 4
-(Review) and phase 5 (Resolve). The user can redirect at any
-point.
+Read the code in detail, then draft an initial task list from
+the agreed scope. Each task is a unit of work Ralph can take
+end-to-end. The list isn't fixed: more tasks can be added
+during phase 3 (Develop), phase 4 (Review) and phase 5
+(Resolve). The user can redirect at any point.
+
+**Diagnosis before tasks — recurrence surfaces.** When the
+source issue cites prior issues on the same surface, state the
+diagnosis explicitly before drafting tasks:
+
+- What the source issue identifies as the cause.
+- What the code reading shows as the mechanism.
+
+The source issue is evidence to cross-check, not authority to
+accept. The two may diverge; when they do, draft against the
+code-reading diagnosis. This is your call alone — Junio audits
+task-local coherence and Ada reviews the PR, but neither sees
+the surface-level mechanism before work starts.
 
 **Backstop check.** Before sharing the draft, apply the
 pause-and-rescope test once: *would finishing this task list
-still leave the deeper cause unresolved?* By plan time you've
-read the code in detail — that's how you draft sensible tasks
-— and that reading often reveals more about the surface than
-the scope conversation did. If the answer is yes, start a
-pause and rescope before sharing.
-
-At Plan time, apply the substantive form of the test: ask
-what is making issues land on this surface, and whether the
-proposed work reaches that mechanism — not just whether it
-covers what the issue names. When the source issue cites
-prior issues, compare how the surface behaves across the
-related functions, callers, or files. A surface can be
-consistently named yet semantically inconsistent; naming
-work can turn "different names for the same contract" into
-"one name with different contracts." For example, if a
-parameter has fallback semantics in one caller, no-anchor
-semantics in another, and is required in a third, the task
-list must address that contract split, not just the naming.
+still leave the deeper cause unresolved?* For recurrence
+surfaces, check whether the tasks match the code-reading
+diagnosis — not just whether they cover what the source issue
+names. Compare how the surface behaves across the related
+functions, callers, or files. A surface can be consistently
+named yet semantically inconsistent; naming work can turn
+"different names for the same contract" into "one name with
+different contracts." For example, if a parameter has fallback
+semantics in one caller, no-anchor semantics in another, and
+is required in a third, the task list must address that
+contract split, not just the naming. If yes, start a pause and
+rescope before sharing.
 
 Share the draft with the user. The phase ends at user approval.
 
