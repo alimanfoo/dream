@@ -114,14 +114,14 @@ during phase 3 (Develop), phase 4 (Review) and phase 5
 
 **Diagnosis before tasks — recurrence surfaces.** When the
 source issue cites prior issues, or the Scope recurrence search
-found prior issues on the same surface, state the diagnosis
-explicitly before drafting tasks:
+found prior issues on the same surface, Grace states the
+diagnosis explicitly before drafting tasks:
 
 - What the source issue identifies as the cause.
 - What the code reading shows as the mechanism.
 
 The source issue is evidence to cross-check, not authority to
-accept. The two may diverge; when they do, draft against the
+accept. The two may diverge; when they do, Grace drafts against the
 code-reading diagnosis. This is Grace's call alone — Junio
 audits task-local coherence and Ada reviews the PR, but
 neither sees the surface-level mechanism before work starts.
@@ -129,9 +129,9 @@ neither sees the surface-level mechanism before work starts.
 **Backstop check.** Before sharing the draft, Grace applies
 the pause-and-rescope test once: *would finishing this task
 list still leave the deeper cause unresolved?* For recurrence
-surfaces, check whether the tasks match the code-reading
+surfaces, Grace checks whether the tasks match the code-reading
 diagnosis — not just whether they cover what the source issue
-names. Compare how the surface behaves across the related
+names. Grace compares how the surface behaves across the related
 functions, callers, or files. A surface can be consistently
 named yet semantically inconsistent; naming work can turn
 "different names for the same contract" into "one name with
@@ -498,13 +498,13 @@ become a finding.
 uses it at Scope, Plan, or Develop. The shape is the same
 every time:
 
-1. **Pause** the work.
-2. **State the evidence** — what Grace has seen that
+1. Grace **pauses** the work.
+2. Grace **states the evidence** — what she has seen that
    suggests the agreed work won't reach the deeper cause.
-3. **Propose two options** — keep the current scope as-is,
-   or rescope to address the deeper cause. See "Rescope
-   shapes" below for what rescoping can mean.
-4. **Ask the user** which to take. Keep continues the
+3. Grace **proposes two options** — keep the current scope
+   as-is, or rescope to address the deeper cause. See
+   "Rescope shapes" below for what rescoping can mean.
+4. Grace **asks the user** which to take. Keep continues the
    original plan; rescope reshapes the task list.
 
 This is the protocol's analog of spotting a code smell
@@ -522,7 +522,7 @@ If yes, pause and rescope is on the table. The test is the
 same at Scope, Plan, and Develop. Only the evidence Grace has
 to work with at each phase is different.
 
-At Plan time, ask the question in its strongest form: *what
+At Plan time, Grace asks the question in its strongest form: *what
 is making issues land on this surface, and does the proposed
 work touch that mechanism — not just the fix the issue
 names?* The issue's diagnosis may name a symptom rather than
@@ -530,7 +530,7 @@ the cause.
 
 ### The removal question
 
-Always ask alongside the main test:
+Grace always asks alongside the main test:
 
 > If we removed something — a feature, a branch, a layer
 > of code, a requirement — would the deeper cause resolve?
@@ -650,8 +650,8 @@ There are five rescope shapes in total. *Revisit
 requirements* sits at the requirements layer and is the
 user's decision; the team executes once the user has stated
 it. The other four — *rationalise*, *simplify*, *delete*,
-*refactor* — are code-layer tasks Grace writes a brief for.
-This section gives the brief for each.
+*refactor* — are code-layer tasks Grace writes a brief for
+Ralph to execute. This section gives the brief for each.
 
 Two rules apply across all four code-layer shapes.
 **Behaviour-preserving by default**: the point is contract
@@ -680,7 +680,7 @@ order:
    the existing tests pin down, and prior fixes
    (cite the issue numbers).
 
-2. **Compare what you wrote against the docstring.** Update
+2. **Compare what Ralph wrote against the docstring.** Update
    the docstring if it is vague.
 
 3. **Compare against the tests.** Add tests for any branch
@@ -698,7 +698,7 @@ order:
    requirements question. Narrowing a stated promise is the
    user's call, not Ralph's.
 
-5. **Preserve behaviour by default.** If the contract you
+5. **Preserve behaviour by default.** If the contract Ralph
    wrote down clashes with the code — the docstring promises
    one thing, the tests pin another, the issue history shows
    a third — Ralph raises it as a separate contract-change
@@ -747,7 +747,7 @@ tests that documented the remaining contract.
 The moves:
 
 1. **Identify what's being removed and what depends on it.**
-   List the symbols, files, or branches you intend to remove.
+   List the symbols, files, or branches Ralph intends to remove.
    Find references using whatever the project provides —
    symbol-aware search where available, plus text search
    (`rg`, `grep`). Text search catches references in prose,
