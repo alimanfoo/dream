@@ -428,15 +428,17 @@ These apply across every phase.
   (`done`, `confirmed`) still goes via `SendMessage` — the
   rule has no length gate.
 - **Message template.** Every outbound `SendMessage` body opens
-  with `Message from <self-role> to <recipient-role>: ` so the
-  recipient can see at a glance that the message is teammate
-  traffic, not user input — and so a misroute (recipient ≠
-  intended addressee) is visible. When the message expects a
-  reply, it ends with `Reply via SendMessage to <self-role>` —
-  same role as in the opening prefix. The closing line tells
-  the recipient where to send their reply (back to you). Skip
-  the closing line on terminal messages — a final ack, a `done`
-  report — where no reply is wanted.
+  with `Message from <your-name> to <recipient-name>: `, using
+  the agent names `Grace`, `Ralph`, `Junio`, and `Ada`, not role
+  descriptions like `director` or `maintainer`. This lets the
+  recipient see at a glance that the message is teammate
+  traffic, not user input — and makes a misroute (recipient ≠
+  intended addressee) visible. When the message expects a
+  reply, it ends with `Reply via SendMessage to <your-name>` —
+  the same name as in the opening prefix. The closing line
+  tells the recipient where to send their reply (back to you).
+  Skip the closing line on terminal messages — a final ack, a
+  `done` report — where no reply is wanted.
 
   Example (Grace asks Junio for the audit on a just-committed
   change):
