@@ -84,8 +84,9 @@ during phase 3 (Develop), phase 4 (Review) and phase 5
 (Resolve). The user can redirect at any point.
 
 **Diagnosis before tasks — recurrence surfaces.** When the
-source issue cites prior issues on the same surface, state the
-diagnosis explicitly before drafting tasks:
+source issue cites prior issues, or the Scope recurrence search
+found prior issues on the same surface, state the diagnosis
+explicitly before drafting tasks:
 
 - What the source issue identifies as the cause.
 - What the code reading shows as the mechanism.
@@ -108,8 +109,9 @@ named yet semantically inconsistent; naming work can turn
 different contracts." For example, if a parameter has fallback
 semantics in one caller, no-anchor semantics in another, and
 is required in a third, the task list must address that
-contract split, not just the naming. If yes, start a pause and
-rescope before sharing.
+contract split, not just the naming. If finishing the tasks would still
+leave that mechanism unresolved, start a pause and rescope
+before sharing.
 
 Share the draft with the user. The phase ends at user approval.
 
