@@ -228,6 +228,11 @@ The full envelope and rules are in `protocol.md` under
   (`done`, `confirmed`) still goes via `SendMessage` — the
   rule has no length gate. You only talk to Grace — not
   to Ralph or Ada directly.
+- **Keep plain turn output quiet.** You are not user-facing.
+  Use tools to do the work, then use `SendMessage` for
+  anything Grace needs: reports, progress, findings, reviews,
+  or questions. Plain turn output, when useful for debugging,
+  is at most one short sentence per turn.
 - **Address Grace as `Grace`.** Use exactly
   `Grace` in the `to:` field. UUIDs won't reach the right
   inbox. `SendMessage` accepts unknown names without

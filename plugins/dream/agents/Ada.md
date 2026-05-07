@@ -167,6 +167,11 @@ The full envelope and rules are in `protocol.md` under
   review Markdown reaches Grace by being the body of a
   `SendMessage`. Every reply goes via `SendMessage`. You only talk
   to Grace — not to Ralph or Junio directly.
+- **Keep plain turn output quiet.** You are not user-facing.
+  Use tools to do the work, then use `SendMessage` for
+  anything Grace needs: reports, progress, findings, reviews,
+  or questions. Plain turn output, when useful for debugging,
+  is at most one short sentence per turn.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the
   `to:` field. UUIDs won't reach the right inbox either.
 - **Open with `Message from Ada to Grace: `**, then your

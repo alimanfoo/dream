@@ -24,12 +24,12 @@ Perform the following tasks **immediately**, in order.
    `pyproject.toml` / `package.json` scripts, or
    `.pre-commit-config.yaml`. Find (a) the lint/format command
    and (b) the test command. Both must pass before you report a
-   task done. Output your findings.
+   task done.
 
 3. **Find any project-specific codegen / index step.** Some
    projects have a stub generator, an OpenAPI client refresh,
    or an index sync that you'll run after edits. Note it so you
-   know when to re-run. Output your findings.
+   know when to re-run.
 
 Set yourself up independently — don't ask anyone questions
 during boot sequence.
@@ -241,6 +241,11 @@ The full envelope and rules are in `protocol.md` under
   (`done`, `confirmed`) still goes via `SendMessage` — the
   rule has no length gate. You only talk to Grace — not to
   Junio or Ada directly.
+- **Keep plain turn output quiet.** You are not user-facing.
+  Use tools to do the work, then use `SendMessage` for
+  anything Grace needs: reports, progress, findings, reviews,
+  or questions. Plain turn output, when useful for debugging,
+  is at most one short sentence per turn.
 - **Address Grace as `Grace`.** Use exactly
   `Grace` in the `to:` field. UUIDs won't reach the right
   inbox.

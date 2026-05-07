@@ -427,6 +427,12 @@ These apply across every phase.
   reply to a teammate goes via `SendMessage`. A one-word reply
   (`done`, `confirmed`) still goes via `SendMessage` — the
   rule has no length gate.
+- **Non-user-facing agents stay quiet.** Ralph, Junio, and Ada
+  are not user-facing. They use tools to do the work, then use
+  `SendMessage` for anything Grace needs: reports, progress,
+  findings, reviews, or questions. Plain turn output, when
+  useful for local status or debugging, is at most one short
+  sentence per turn.
 - **Message template.** Every outbound `SendMessage` body opens
   with `Message from <your-name> to <recipient-name>: `, using
   the agent names `Grace`, `Ralph`, `Junio`, and `Ada`, not role
