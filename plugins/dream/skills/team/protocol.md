@@ -121,6 +121,19 @@ the surface than the scope conversation did. If finishing the
 drafted tasks would still leave the deeper cause unresolved,
 Grace starts a pause and rescope before sharing.
 
+At Plan time, apply the substantive form of the test: ask
+what is making issues land on this surface, and whether the
+proposed work reaches that mechanism — not just whether it
+covers what the issue names. When the source issue cites
+prior issues, compare how the surface behaves across the
+related functions, callers, or files. A surface can be
+consistently named yet semantically inconsistent; naming
+work can turn "different names for the same contract" into
+"one name with different contracts." For example, if a
+parameter has fallback semantics in one caller, no-anchor
+semantics in another, and is required in a third, the task
+list must address that contract split, not just the naming.
+
 Grace shares the draft task list with the user. The phase ends
 at user approval.
 
@@ -403,11 +416,11 @@ outcomes:
   angle rather than opening a new one. (Comments on existing
   issues aren't gated — the issue is already filed and extra
   context is cheap.)
-- **Re-frame** — recurrence on a surface with prior chips, open
+- **Re-frame** — recurrence on a surface with prior issues, open
   or closed. Grace files one issue at the **contract
   level**: names the surface (the function, the parameter, the
-  contract), and lists the prior chips with `#N` references.
-  The recurrence pattern itself is the behaviour gap — chips
+  contract), and lists the prior issues with `#N` references.
+  The recurrence pattern itself is the behaviour gap — issues
   landing on the same surface is evidence of an unresolved
   contract. Re-frame is the post-merge analog of pause and
   rescope (see "Pause and rescope" above): pause and rescope
@@ -465,7 +478,7 @@ for the next instruction.
 
 The team can finish every task on the plan and still leave
 the real problem unfixed. Each task gets a locally-correct
-fix. But the surface keeps producing fresh chips because the
+fix. But the surface keeps producing fresh issues because the
 cause is at a deeper level than the per-task fix reaches. The
 cause varies: unclear or conflicting requirements, an unnamed
 contract, over-engineering, a structure that no longer fits.
@@ -501,6 +514,12 @@ If yes, pause and rescope is on the table. The test is the
 same at Scope, Plan, and Develop. Only the evidence Grace has
 to work with at each phase is different.
 
+At Plan time, ask the question in its strongest form: *what
+is making issues land on this surface, and does the proposed
+work touch that mechanism — not just the fix the issue
+names?* The issue's diagnosis may name a symptom rather than
+the cause.
+
 ### The removal question
 
 Always ask alongside the main test:
@@ -522,7 +541,7 @@ on its own:
 
 - The issue body cites prior closed issues on the same
   surface.
-- A search of the issue tracker returns prior chips on the
+- A search of the issue tracker returns prior issues on the
   named surface (open or closed): `gh issue list --state all
   --search '<surface>'`.
 - Junio raises a possible rescope signal during develop —
@@ -530,12 +549,12 @@ on its own:
 - Reading the code shows the surface is more tangled than
   the issue suggested.
 - The user describes a symptom on a surface that already has
-  chip history.
+  issue history.
 
 Closed-issue history is the protocol's memory. Phase 6
 already uses this memory for the post-merge sweep; the same
 memory is in scope at session start. A *surface* is a named
-place in the code where chips can accumulate — a function, a
+place in the code where issues can accumulate — a function, a
 class, a module, a parameter.
 
 ### Rescope shapes
@@ -545,7 +564,7 @@ both of two layers. The conversation names which layer needs
 the change. The user approves the shape before any tasks
 change.
 
-**Requirements layer — the user's call.** Sometimes the chips
+**Requirements layer — the user's call.** Sometimes the issues
 are landing because the codebase's commitments are wrong:
 
 - **Revisit requirements.** The user reconsiders what the
@@ -553,7 +572,7 @@ are landing because the codebase's commitments are wrong:
   - *Drop or narrow.* Two requirements pull against each
     other, or a feature is no longer worth the cost. The
     user says which to drop, retire, or shrink.
-  - *Clarify.* Requirements were never stated cleanly; chips
+  - *Clarify.* Requirements were never stated cleanly; issues
     landed where the contract was implicit. The user states
     what was meant; the team implements against the new
     version.
@@ -650,8 +669,8 @@ order:
 1. **Write down the current contract before any code change.**
    In plain English, write what this surface commits to its
    caller. Take it from three places: the docstring, what
-   the existing tests pin down, and the fixes that landed in
-   prior chips (cite them by issue number).
+   the existing tests pin down, and prior fixes
+   (cite the issue numbers).
 
 2. **Compare what you wrote against the docstring.** Update
    the docstring if it is vague.
@@ -673,7 +692,7 @@ order:
 
 5. **Preserve behaviour by default.** If the contract you
    wrote down clashes with the code — the docstring promises
-   one thing, the tests pin another, the chip history shows
+   one thing, the tests pin another, the issue history shows
    a third — Ralph raises it as a separate contract-change
    proposal. He does not roll a behaviour change into the
    documentation pass.
@@ -694,7 +713,7 @@ Three pressures the task brief should counter:
 - **Telling intentional from accidental behaviour is a
   judgement call.** Tests sometimes pin accidental
   behaviour. The docstring is sometimes more precise than
-  the code. Chip history sometimes encodes the wrong
+  the code. Issue history sometimes encodes the wrong
   inference. Ralph has to decide.
 
 Verification: Grace verifies the contract Ralph wrote down
@@ -703,7 +722,7 @@ main artefact; the code change is its expression. The
 expected outcome is a small or zero diff with a sharper
 docstring, tests that pin each branch of the contract, and
 an explicit non-contract section. A heuristic that doesn't
-name its limits keeps producing chips exactly where those
+name its limits keeps producing issues exactly where those
 limits are — the answer is to name them, not to fix the
 local symptom better.
 

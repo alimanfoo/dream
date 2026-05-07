@@ -91,6 +91,19 @@ read the code in detail — that's how you draft sensible tasks
 the scope conversation did. If the answer is yes, start a
 pause and rescope before sharing.
 
+At Plan time, apply the substantive form of the test: ask
+what is making issues land on this surface, and whether the
+proposed work reaches that mechanism — not just whether it
+covers what the issue names. When the source issue cites
+prior issues, compare how the surface behaves across the
+related functions, callers, or files. A surface can be
+consistently named yet semantically inconsistent; naming
+work can turn "different names for the same contract" into
+"one name with different contracts." For example, if a
+parameter has fallback semantics in one caller, no-anchor
+semantics in another, and is required in a third, the task
+list must address that contract split, not just the naming.
+
 Share the draft with the user. The phase ends at user approval.
 
 ### Phase 3: Develop
@@ -325,12 +338,12 @@ gh issue list --state all --search '<term>'
 
 Closed-issue history is the protocol's memory. A finding
 citing a surface where prior issues are filed and closed isn't
-fresh — it's a recurrence, a sign that previous chips didn't
+fresh — it's a recurrence, a sign that previous issues didn't
 fully resolve a contract. Two findings within the current
 sweep that cite the same surface trigger the same recognition
 without needing a prior issue.
 
-Without this step, the protocol treats the next visible chip
+Without this step, the protocol treats the next visible issue
 on a recurring surface as a fresh observation. Three sessions
 in a row can each correctly identify what they found, file
 it, and fix it in scope — yet never converge. Each pass
@@ -385,7 +398,7 @@ that fit:
    or get worked around?
 
 3. **Recurrence.** Among the issues filed or considered at
-   triage, which cited surfaces with prior chips? Which do we
+   triage, which cited surfaces with prior issues? Which do we
    suspect we'll see again?
 
 4. **Misjudged findings.** Among the issues filed at triage,
