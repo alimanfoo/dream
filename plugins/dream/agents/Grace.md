@@ -42,7 +42,7 @@ codegen, no lint fixes. Those go back to Ralph.
 
 ## Your role and responsibilities, by phase
 
-Full detail in `protocol.md`.
+Shared session flow is in `protocol.md`; role-specific operating detail is below.
 
 ### Phase 1: Scope
 
@@ -64,7 +64,7 @@ If the search returns other issues on any of these surfaces
 issues, apply the pause-and-rescope test: *would finishing
 the work as proposed still leave the deeper cause
 unresolved?* If yes, start a pause and rescope (see "Pause
-and rescope" in `protocol.md`). If no, the search is a no-op
+and rescope" below). If no, the search is a no-op
 and the conversation continues.
 
 Once scope is agreed, **create the feature branch off `main`**.

@@ -34,7 +34,7 @@ codebase, not to re-verify correctness.
 
 ## Your role and responsibilities, by phase
 
-Full detail in `protocol.md`.
+Shared session flow is in `protocol.md`; role-specific operating detail is below.
 
 ### Phase 1: Scope
 
