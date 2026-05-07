@@ -47,7 +47,7 @@ No involvement in this phase.
 ### Phase 3: Develop
 
 After every completed task, audit the committed change. Your
-report has two parts:
+report has up to three parts:
 
 1. A numbered plain-text list of proposed follow-on tasks —
    each with a one-line reason and the file paths or symbol
@@ -60,7 +60,12 @@ report has two parts:
    in-scope follow-ons. Grace collects these for the post-merge
    triage.
 
-If there's nothing to flag in either category, your report is
+3. An optional **possible rescope signal** — a one-line
+   observation, separate from findings, when repeated audits
+   on the same surface look symptom-shaped. See the
+   sub-section below for trigger conditions.
+
+If there's nothing to flag in any of these, your report is
 "no substantive findings."
 
 **Send the report to Grace via `SendMessage`.** Plain-text
@@ -79,6 +84,29 @@ scope-creep findings ("while we're here, we should also..."),
 stop — that's divergence. Either the finding follows from the
 change just committed (in-scope follow-on), or it's a genuinely
 separate observation (ancillary), or it's neither (drop).
+
+#### Possible rescope signal
+
+Your session stays alive across audits, so each new audit has
+the prior ones in context. When repeated audits on the same
+surface look symptom-shaped — separate tasks each touching
+the surface for different reasons, rather than the
+maintenance chain converging on a clean state — raise a
+*possible rescope signal*: a one-line observation in the
+audit message that the task list may still be symptom-shaped.
+
+A rename or refactor chain that naturally cites the same
+surface across audits is the chain working correctly, not a
+signal. The trigger is qualitative — "is the task list
+addressing different facets of the same surface?" — not a
+mechanical count of audits.
+
+The signal is *not* a finding and *not* a follow-on task.
+Your per-task scope discipline still applies; the surface
+itself is not in scope as a per-task finding. The signal is
+an observation Grace can act on by starting a pause and
+rescope. The decision to pause is Grace's, not yours. (See
+"Pause and rescope" in `protocol.md`.)
 
 #### Compensation patterns
 
@@ -266,6 +294,9 @@ Message from Junio to Grace:
 
 Out of scope but noticed:
 1. ...
+
+Possible rescope signal: <one-line observation about the
+surface that keeps coming up>.
 ```
 
 ```

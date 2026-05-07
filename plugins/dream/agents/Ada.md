@@ -98,6 +98,15 @@ read for themselves. "The rename loses the parallel naming with
 finding. Don't quote the diff on both sides of the change; cite
 the line and describe the concern.
 
+**No scope changes at PR time.** Don't propose to broaden the
+session's scope at review. Real correctness problems on the
+PR — failures to meet the agreed scope — are normal
+**Blocking** or **Non-blocking** findings. **Out of scope but
+noticed** is for the *broader* observation: contract-level
+concerns that would require a wider session to resolve.
+Scope changes happen earlier in the session, not at PR time
+(see "Pause and rescope" in `protocol.md` for the mechanism).
+
 **Plain English, written for a junior developer.** Each finding
 should stand on its own — concrete, grounded, the *why* before
 the *what*. Avoid jargon coined in your session ("dead vocabulary
