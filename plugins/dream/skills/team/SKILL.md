@@ -46,11 +46,36 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    `~/.claude/tasks/<name>/`.
 
 4. **Spawn all four agents in parallel** via the `Agent` tool.
-   For each, set `subagent_type` to the agent's name (`Grace`,
-   `Ralph`, `Junio`, `Ada`), set `name` to the same string,
-   and pass the team name. Initial prompt: include the absolute
-   path to `protocol.md` (it's in this skill's directory) and
-   tell the agent to run its boot sequence.
+   For each, set `subagent_type` to `dream:<Name>` (e.g.
+   `dream:Grace`), `name` to `<Name>`, and pass the team name.
+   Use this initial prompt template, substituting `<Name>` and
+   `<role>`:
+
+   ```
+   Boot sequence:
+
+   1. Read the protocol at <absolute path to protocol.md in
+      this skill's directory>.
+   2. Read your role file at <absolute path to
+      ../../agents/<Name>.md> and assume the role of <Name>,
+      the <role> on the dream team.
+   3. Then run any boot/orientation steps that role file
+      specifies.
+   ```
+
+   Roles: Grace is *director*, Ralph is *developer*, Junio is
+   *maintainer*, Ada is *reviewer*.
+
+   The role-file read in step 2 is load-bearing. Claude Code's
+   team-spawn loader currently does not append the
+   agent-definition body to a teammate's system prompt
+   ([anthropics/claude-code#30703](https://github.com/anthropics/claude-code/issues/30703)),
+   so the role file has to be loaded by the agent at boot via
+   this prompt. Without it, teammates come up with no
+   role-specific instructions and rely only on `protocol.md`
+   plus harness defaults. Once #30703 is fixed, step 2 (and
+   this note) can be dropped; the role files themselves don't
+   need to change.
 
 5. **Hand off.** Tell the user the team is spawned and they
    should switch to Grace's session to start. Grace opens
