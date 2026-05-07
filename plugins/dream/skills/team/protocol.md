@@ -492,6 +492,23 @@ question makes those shapes visible by default. Without it,
 the rescope conversation drifts toward "what should we add?"
 and the narrowing options never come up.
 
+### The radical rethink
+
+After the removal question, push further:
+
+> What's the extreme version? What assumption is this
+> session taking for granted, and what becomes possible if
+> we challenge it?
+
+Agents step outside the established frame only when pushed
+across several steps. Name the assumption built into the
+agreed scope — *"this feature is core," "the surface has to
+support both cases," "we can't break callers," "the codebase
+is the right shape for the problem"* — and ask what becomes
+possible if it doesn't hold. Even when the session doesn't
+take the radical path, the exercise often reveals smaller
+moves the conservative frame was hiding.
+
 ### Evidence
 
 Any of these is enough to ask the question. None is required
