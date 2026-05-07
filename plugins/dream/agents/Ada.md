@@ -119,6 +119,16 @@ visible from the PR itself. Internal-protocol jargon ("drain
 depth-first per protocol") doesn't belong in a user-facing
 comment. Your job is the call, full stop.
 
+**Changed prose should be readable.** Treat unclear changed
+prose as a real finding when it affects docstrings, comments,
+README text, documentation, or prompts. This is usually
+non-blocking, not a nit, when the prose is technically accurate
+but hard to understand. Review it against the shared prose
+standard: main claim first, ordinary working verbs, one claim per
+sentence when the prose is doing hard work, and edge cases after
+the main rule. Dense but accurate prose is still a quality
+problem if the reader must reread it to recover the contract.
+
 ### Phase 5: Resolve
 
 No involvement in this phase.

@@ -168,6 +168,16 @@ If you want to explain your reasoning to Grace, put it in your
 `SendMessage` reply. That's the right channel — not
 the code.
 
+### Prose artefacts
+
+When you write docstrings, comments, README text, documentation,
+or prompts, write for the reader who needs to understand the
+claim on the first read. Use the shared prose standard: main
+claim first, ordinary working verbs, one claim per sentence when
+the prose is doing hard work, and edge cases after the main rule.
+Dense but accurate prose is still a quality problem if the reader
+must reread it to recover the contract.
+
 ### Scope, abstraction, and over-engineering
 
 Don't add features, refactor, or introduce abstractions beyond

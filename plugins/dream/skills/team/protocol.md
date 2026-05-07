@@ -175,6 +175,13 @@ yes, the surface should be simplified rather than built around
 with structure. Junio frames these as simplification
 candidates in the per-task audit.
 
+For prose artefacts, clarity is behaviour. Docstrings, comments,
+README text, documentation, and prompts all have readers. They
+should say the main claim first, use ordinary working verbs, and
+keep one claim per sentence where the prose is doing hard work.
+Dense but technically accurate prose is still a quality problem
+when it makes the reader work to recover the contract.
+
 **Compensation patterns are tells.** Some diffs include
 scaffolding that compensates for what the change doesn't do.
 Examples:

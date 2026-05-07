@@ -211,6 +211,14 @@ maintenance burden, and the time agents spend guarding it.
 for a *prose claim* or an arbitrary value, not for behaviour. If
 so, drop the surface — don't build machinery around it.
 
+Prose artefacts are different. Docstrings, comments, README
+text, documentation, and prompts have readers. Flag changed prose
+that breaks the shared prose standard: main claim first, ordinary
+working verbs, one claim per sentence when the prose is doing hard
+work, and edge cases after the main rule. Dense but accurate prose
+is still a quality problem if the reader must reread it to recover
+the contract. Don't police taste.
+
 If both sides of an inconsistency have real consumers — the same
 nine entries described in two functional ways for two real
 audiences — alignment is correct. Behaviour is the gate.
