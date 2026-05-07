@@ -515,28 +515,6 @@ question makes those shapes visible by default. Without it,
 the rescope conversation drifts toward "what should we add?"
 and the narrowing options never come up.
 
-### The radical rethink
-
-After the removal question, push further. Pick *one*
-assumption built into the agreed scope, imagine *one*
-extreme option that challenges it, then return to the
-narrow / wide choice:
-
-> What assumption is this session taking for granted, and
-> what becomes possible if we challenge it?
-
-Agents step outside the established frame only when pushed.
-Examples of assumptions worth surfacing: *"this feature is
-core," "the surface has to support both cases," "we can't
-break callers," "the codebase is the right shape for the
-problem."* Even when the session doesn't take the radical
-path, naming the assumption often reveals smaller moves the
-conservative frame was hiding.
-
-Bound the move: one assumption, one extreme option, then
-back to the choice. This is a focused step, not open-ended
-brainstorming.
-
 ### Evidence
 
 Any of these is enough to ask the question. None is required
