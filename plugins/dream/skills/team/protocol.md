@@ -31,6 +31,11 @@ A session moves through seven phases:
 The phases run in order. The "Common rules" at the end apply
 across every phase.
 
+**Pause and rescope** is a separate mechanism, not a phase.
+Grace uses it to stop the work and ask the user whether the
+session's scope should change. She can do this at Scope, Plan,
+or Develop. The full mechanism is described below.
+
 ## Roles
 
 ### Grace (director)
@@ -76,6 +81,21 @@ address, the constraints, the rough shape. Grace reads the
 cited material, asks questions, and gets direction on any
 decisions ahead.
 
+**Check for recurrence.** Before agreeing the scope, Grace
+searches the issue tracker for the surface the user named:
+
+```
+gh issue list --state all --search '<surface>'
+```
+
+If the search returns other issues on this surface (open or
+closed), or if the issue body cites prior closed issues, Grace
+applies the pause-and-rescope test — *would finishing the work
+as proposed still leave the deeper cause unresolved?* — before
+agreeing the scope. If yes, Grace starts a pause and rescope
+(see "Pause and rescope" below). If no, she has nothing to act
+on and the conversation continues.
+
 Once the initial scope is agreed, Grace creates the feature
 branch off `main`. The branch name reflects the scope.
 
@@ -88,6 +108,15 @@ is a unit of work Ralph can take end-to-end. The list isn't
 fixed: more tasks can be added during phase 3 (Develop), phase
 4 (Review) and phase 5 (Resolve). The user can redirect at any
 point.
+
+**Backstop check.** Before sharing the draft, Grace applies
+the pause-and-rescope test once: *would finishing this task
+list still leave the deeper cause unresolved?* By plan time,
+Grace has read the code in detail — that's how she drafts
+sensible tasks — and that reading often reveals more about
+the surface than the scope conversation did. If finishing the
+drafted tasks would still leave the deeper cause unresolved,
+Grace starts a pause and rescope before sharing.
 
 Grace shares the draft task list with the user. The phase ends
 at user approval.
@@ -121,7 +150,9 @@ chain repeats until the list is drained.
    change for coherence. Junio returns a numbered
    plain-text list of proposed follow-on tasks (or "no
    substantive findings"), plus any ancillary findings as a
-   separate section.
+   separate section, plus an optional **possible rescope
+   signal** when audits keep landing on the same surface
+   this session (see "Maintenance chain" below).
 
 6. **Triage.** Grace accepts or rejects each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
@@ -161,6 +192,24 @@ we're here, we should also...") don't belong in the chain —
 that's divergence, not convergence. Junio shouldn't
 propose them in the audit, and Grace shouldn't accept them
 at triage.
+
+**Possible rescope signal.** Junio's session stays alive
+across audits, so each new audit has the prior ones in
+context. When repeated audits on the same surface look
+symptom-shaped — separate tasks each touching the surface
+for different reasons, rather than the maintenance chain
+converging on a clean state — Junio raises a *possible
+rescope signal*: a one-line note in the audit message that
+the task list may still be symptom-shaped. A rename or
+refactor chain that naturally cites the same surface across
+audits is the chain working correctly, not a signal.
+
+The signal is *not* a finding and *not* a follow-on task.
+Junio's per-task scope discipline still applies; the surface
+itself is not in scope as a per-task finding. The signal is
+an observation Grace can act on by starting a pause and
+rescope (see "Pause and rescope" below). The decision to
+pause is Grace's, not Junio's.
 
 **Defend behaviour, not surface.** Any proposed machinery — a
 test, a glossary, a regen step, a cross-reference rule, a
@@ -253,6 +302,19 @@ Once the PR is open:
    for final review and approval. Grace does not merge; that
    is always the user's call.
 
+**No PR-time rescopes.** Ada doesn't propose changing the
+session's scope at review. Pause and rescope can fire at
+Scope, Plan, or Develop; by Phase 4 the work is in the PR,
+and any rescope would have to be a new session.
+
+Ada still raises normal blocking and non-blocking findings
+when the PR doesn't meet the agreed scope — that's
+correctness within scope, the everyday review job. What goes
+under "out of scope but noticed" is different: broader
+contract-level observations that would require a wider
+session to resolve. Grace handles those at post-merge triage
+as re-frames (see Phase 6: Collect).
+
 The phase ends at user approval. The session moves to Resolve.
 
 ## Phase 5: Resolve
@@ -324,7 +386,11 @@ outcomes:
   contract), and lists the prior chips with `#N` references.
   The recurrence pattern itself is the behaviour gap — chips
   landing on the same surface is evidence of an unresolved
-  contract. 
+  contract. Re-frame is the post-merge analog of pause and
+  rescope (see "Pause and rescope" above): pause and rescope
+  catches recurrence in time to reshape the session; re-frame
+  catches it after merge and produces an issue rather than a
+  redirected session.
 - **File fresh** — no related issue on the surface, and the
   finding clears the bar. Grace opens a standalone issue.
 
@@ -371,6 +437,376 @@ the role best placed to know.
 The phase ends when retrospective drafts have been filed, or
 when the user declines the retrospective. Grace then waits
 for the next instruction.
+
+## Pause and rescope
+
+The team can finish every task on the plan and still leave
+the real problem unfixed. Each task gets a locally-correct
+fix. But the surface keeps producing fresh chips because the
+cause is at a deeper level than the per-task fix reaches. The
+cause varies: unclear or conflicting requirements, an unnamed
+contract, over-engineering, a structure that no longer fits.
+Junio audits one task at a time. Ada reviews one PR. Neither
+has the cross-task angle that would let *the surface itself*
+become a finding.
+
+**Pause and rescope** is how the team catches this. Grace
+uses it at Scope, Plan, or Develop. The shape is the same
+every time:
+
+1. **Pause** the work.
+2. **State the evidence** — what Grace has seen that
+   suggests the agreed work won't reach the deeper cause.
+3. **Propose two options** — keep the current scope as-is,
+   or rescope to address the deeper cause. See "Rescope
+   shapes" below for what rescoping can mean.
+4. **Ask the user** which to take. Keep continues the
+   original plan; rescope reshapes the task list.
+
+This is the protocol's analog of spotting a code smell
+mid-flight: stop the symptom-level work, name the underlying
+pattern, and pick a response that fits.
+
+### The test
+
+Grace's test:
+
+> Would finishing the current task list still leave the
+> deeper cause unresolved?
+
+If yes, pause and rescope is on the table. The test is the
+same at Scope, Plan, and Develop. Only the evidence Grace has
+to work with at each phase is different.
+
+### The removal question
+
+Always ask alongside the main test:
+
+> If we removed something — a feature, a branch, a layer
+> of code, a requirement — would the deeper cause resolve?
+
+Agents default to adding more code, more abstraction, more
+handling. Three of the rescope shapes below (drop or narrow,
+simplify, delete) work by removing instead. The removal
+question makes those shapes visible by default. Without it,
+the rescope conversation drifts toward "what should we add?"
+and the narrowing options never come up.
+
+### Evidence
+
+Any of these is enough to ask the question. None is required
+on its own:
+
+- The issue body cites prior closed issues on the same
+  surface.
+- A search of the issue tracker returns prior chips on the
+  named surface (open or closed): `gh issue list --state all
+  --search '<surface>'`.
+- Junio raises a possible rescope signal during develop —
+  audits keep landing on the same surface.
+- Reading the code shows the surface is more tangled than
+  the issue suggested.
+- The user describes a symptom on a surface that already has
+  chip history.
+
+Closed-issue history is the protocol's memory. Phase 6
+already uses this memory for the post-merge sweep; the same
+memory is in scope at session start. A *surface* is a named
+place in the code where chips can accumulate — a function, a
+class, a module, a parameter.
+
+### Rescope shapes
+
+When the user approves a rescope, the work happens at one or
+both of two layers. The conversation names which layer needs
+the change. The user approves the shape before any tasks
+change.
+
+**Requirements layer — the user's call.** Sometimes the chips
+are landing because the codebase's commitments are wrong:
+
+- **Revisit requirements.** The user reconsiders what the
+  codebase commits to support. Two sub-cases:
+  - *Drop or narrow.* Two requirements pull against each
+    other, or a feature is no longer worth the cost. The
+    user says which to drop, retire, or shrink.
+  - *Clarify.* Requirements were never stated cleanly; chips
+    landed where the contract was implicit. The user states
+    what was meant; the team implements against the new
+    version.
+
+**Code layer — team's expertise, user approves.** Once
+requirements are settled, the team still has to express the
+surface coherently in code:
+
+- **Rationalise.** Name the existing contract; preserve
+  behaviour by default.
+- **Simplify.** Trim within an active feature — collapse
+  helpers, cut speculative abstraction, reduce indirection.
+  The feature stays; its implementation gets smaller.
+- **Delete.** Remove code that no longer has callers — a
+  whole feature, module, or class. The work is gone, not
+  just thinner.
+- **Refactor.** Restructure — split, merge, move. The
+  contract stays; its decomposition changes.
+
+The brief for each code-layer shape is in "Rescope tasks"
+below.
+
+When the rescope touches requirements, that decision lands
+first. The team can't write coherent code for a surface
+whose requirements are still in conflict. The order isn't
+strict, though: code-level work sometimes finds an
+incoherence that only the user can resolve. Grace pauses
+again at that point.
+
+### What pause and rescope is not
+
+- **Acts on the session, not on a single finding.** Each
+  finding from Junio or Ada gets its own triage decision —
+  accept, reject, or out of scope; plus re-frame at
+  post-merge. Pause and rescope is different in kind: it
+  pauses the whole session and reopens the scope
+  conversation.
+- **Not an excuse for scope creep.** The test is whether
+  the deeper cause stays unresolved after the current task
+  list completes — not "while we're here, we should
+  also..." If a finding is genuinely separate from the
+  surface the session is working on, it goes to ancillary
+  findings for post-merge triage, not to a rescope.
+- **Not a substitute for the post-merge re-frame
+  disposition.** Some recurrences only become visible after
+  merge. That's what the Phase 6 re-frame disposition is
+  for.
+
+### Task list shape after a rescope
+
+When the user approves a rescope, the new task list can take
+one of three shapes. Grace and the user agree case by case:
+
+- **Drop and rebuild.** The original tasks were aimed at the
+  symptom; redraft from the new scope.
+- **Finish then expand.** The original tasks are
+  well-isolated; finish them, then take the new scope as
+  appended tasks or as a follow-on session.
+- **Keep some, drop some.** A mix of the above.
+
+There is no default. The right choice depends on how related
+the original tasks are to the new scope.
+
+## Rescope tasks
+
+There are five rescope shapes in total. *Revisit
+requirements* sits at the requirements layer and is the
+user's decision; the team executes once the user has stated
+it. The other four — *rationalise*, *simplify*, *delete*,
+*refactor* — are code-layer tasks Grace writes a brief for.
+This section gives the brief for each.
+
+Two rules apply across all four code-layer shapes.
+**Behaviour-preserving by default**: the point is contract
+clarity, smaller code, or better structure — not new
+behaviour. If the work reveals a behaviour change worth
+making, Ralph raises it as a separate proposal, not folded
+in. **Tests pin the contract, not surface detail**: the
+"Defend behaviour, not surface" rule from the maintenance
+chain applies whenever tests are added or changed.
+
+### Rationalise
+
+The label "rationalise" on its own is too vague; the moves
+below are what make the task workable for Ralph.
+
+A rationalisation task is mostly prose: a clearer docstring,
+an explicit non-contract section, and tests that pin each
+branch of the contract. The code diff is small or zero.
+
+The moves, spelled out in the task description in this
+order:
+
+1. **Write down the current contract before any code change.**
+   In plain English, write what this surface commits to its
+   caller. Take it from three places: the docstring, what
+   the existing tests pin down, and the fixes that landed in
+   prior chips (cite them by issue number).
+
+2. **Compare what you wrote against the docstring.** Update
+   the docstring if it is vague.
+
+3. **Compare against the tests.** Add tests for any branch
+   of the contract not currently pinned. Use real example
+   inputs by category, not generic round-trip checks.
+
+4. **State intentional limits as explicit non-contract.**
+   For example: *"`Mr. Smith arrived.` truncates at `Mr.`
+   because the capital is genuinely there; this is a known
+   limitation, not a bug."* Ralph documents only limits
+   already implied by the agreed scope or by current
+   behaviour. If a candidate limit would narrow a stated
+   promise — anything currently documented or tested as
+   supported — Ralph stops and raises it to Grace as a
+   requirements question. Narrowing a stated promise is the
+   user's call, not Ralph's.
+
+5. **Preserve behaviour by default.** If the contract you
+   wrote down clashes with the code — the docstring promises
+   one thing, the tests pin another, the chip history shows
+   a third — Ralph raises it as a separate contract-change
+   proposal. He does not roll a behaviour change into the
+   documentation pass.
+
+Three pressures the task brief should counter:
+
+- **Synthesis before action.** Most agent training rewards
+  "see problem → propose fix"; this asks for "see surface →
+  infer intent → write it down." Slower and more reflective
+  than the default.
+- **Prose output feels like less work.** A clearer
+  docstring, tests that pin each branch of the contract, and
+  an explicit non-contract section can feel thin next to a
+  code change. The task description should say plainly:
+  *"no behaviour change is the expected default outcome"* —
+  otherwise Ralph over-engineers to produce a satisfying
+  diff.
+- **Telling intentional from accidental behaviour is a
+  judgement call.** Tests sometimes pin accidental
+  behaviour. The docstring is sometimes more precise than
+  the code. Chip history sometimes encodes the wrong
+  inference. Ralph has to decide.
+
+Verification: Grace verifies the contract Ralph wrote down
+first, then the diff. The contract in plain English is the
+main artefact; the code change is its expression. The
+expected outcome is a small or zero diff with a sharper
+docstring, tests that pin each branch of the contract, and
+an explicit non-contract section. A heuristic that doesn't
+name its limits keeps producing chips exactly where those
+limits are — the answer is to name them, not to fix the
+local symptom better.
+
+### Simplify
+
+Simplification trims code within an active feature: a
+redundant helper, a layer of indirection that doesn't pay
+for itself, an over-elaborated branch where a simpler form
+would do. The feature stays; its implementation gets
+smaller. (Removing the feature itself is *delete*, below.)
+The risks are removing something load-bearing, or removing
+tests that documented the remaining contract.
+
+The moves:
+
+1. **Identify what's being removed and what depends on it.**
+   List the symbols, files, or branches you intend to remove.
+   Find references using whatever the project provides —
+   symbol-aware search where available, plus text search
+   (`rg`, `grep`). Text search catches references in prose,
+   configs, and dynamic-language code that symbol-aware
+   tools can miss.
+
+2. **Confirm the surface's contract is still covered after
+   the removal.** What's left should still satisfy what
+   callers rely on. If removing something requires a
+   contract change, raise that as a separate proposal — not
+   as part of the simplification.
+
+3. **Remove. Run the tests. Iterate until they're green.**
+   A failing test after removal sometimes means the removed
+   code was load-bearing; sometimes it means the test was
+   pinning incidental behaviour. Decide per case.
+
+4. **Preserve behaviour by default.** If the simplification
+   reveals a behaviour change worth making, Ralph raises it
+   as a separate proposal.
+
+The agent default pulls against this. Most training rewards
+adding code; removing feels risky and easily reverted. The
+rescope conversation has chosen simplification because the
+user has decided removal is the right move — follow through.
+
+Verification: Grace checks that the surface's contract is
+still covered after the removal, and that nothing was removed
+which a caller depended on. The expected outcome is a smaller
+diff with the contract intact and no callers broken.
+
+### Delete
+
+Delete removes a whole piece of code — a feature, a module,
+a class — because it has no callers, or because a
+requirements decision has left it orphaned. Delete differs
+from simplify: simplify trims within an active feature;
+delete removes the feature itself.
+
+The moves:
+
+1. **Identify what's being deleted and confirm no callers.**
+   Find references using whatever the project provides —
+   symbol-aware search where available, plus text search
+   (`rg`, `grep`). Confirm there are no callers in this
+   codebase. If the code has external consumers (a public
+   API, a downstream package, fixtures used elsewhere),
+   that's a different question — raise it with Grace before
+   deleting.
+
+2. **Map the cascade.** Deleting X may orphan Y and Z.
+   Decide whether the cascade is intentional. If the cascade
+   reaches into code Grace didn't agree to delete, stop and
+   raise it.
+
+3. **Delete. Run the tests. Iterate until they're green.**
+   Tests passing after deletion is the confirmation that
+   nothing still depends on the removed code.
+
+4. **No replacement.** Delete is not "delete then add a
+   wrapper for compatibility." If the work reveals a real
+   need for a replacement, Ralph raises it as a separate
+   proposal — but the default outcome is removal, full stop.
+
+The agent default pulls against this even more strongly than
+simplify. Removing whole pieces of code feels final and
+risky. The rescope conversation has chosen delete because
+the user has decided the code is no longer needed — follow
+through.
+
+Verification: Grace checks that the deletion is clean — no
+caller broken, no orphan left behind — and that no
+backward-compatibility wrapper was added. The expected
+outcome is a noticeably smaller codebase with no broken
+callers.
+
+### Refactor
+
+Refactoring restructures the surface without changing what
+the surface promises its callers. The contract stays; its
+decomposition — where things live, how they connect, how
+they're named — changes.
+
+The moves:
+
+1. **Confirm green tests covering the contract before
+   starting.** Refactoring without tests is a guess. If the
+   existing tests don't cover the contract well enough to
+   catch regressions, write tests that pin the contract
+   first, as a separate task ahead of the refactor.
+
+2. **Move in small, mechanical steps.** Each step should be
+   a recognised refactoring move — extract, inline, rename,
+   move, replace. Use targeted checks after each step where
+   they help; the full lint and test suite runs once before
+   reporting done, per Ralph's standard gate.
+
+3. **Two hats, never both.** A refactor task does not add
+   features or change behaviour. If Ralph spots a behaviour
+   change worth making while refactoring, he raises it as a
+   separate proposal.
+
+4. **The contract stays unchanged.** What callers can rely
+   on does not shift; only the decomposition does.
+
+Verification: Grace verifies contract stability — externally
+visible behaviour and the supported envelope haven't shifted.
+The diff size is irrelevant; what matters is that the
+contract is exactly what it was.
 
 ## Common rules
 

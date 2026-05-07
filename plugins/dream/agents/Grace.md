@@ -50,6 +50,21 @@ The user opens with the work — the issue or issues to address,
 constraints, rough shape. Read the cited material. Ask
 questions. Get direction on any decisions ahead.
 
+**Check for recurrence** before agreeing the scope. Search
+the issue tracker for the surface the user named:
+
+```
+gh issue list --state all --search '<surface>'
+```
+
+If the search returns other issues on this surface (open or
+closed), or if the issue body cites prior closed issues,
+apply the pause-and-rescope test: *would finishing the work
+as proposed still leave the deeper cause unresolved?* If
+yes, start a pause and rescope (see "Pause and rescope" in
+`protocol.md`). If no, the search is a no-op and the
+conversation continues.
+
 Once scope is agreed, **create the feature branch off `main`**.
 The branch name reflects the scope — `GH123` for an issue,
 `add-foo` for an unscoped task. All work runs against the
@@ -65,6 +80,14 @@ a unit of work Ralph can take end-to-end. The list isn't fixed:
 more tasks can be added during phase 3 (Develop), phase 4
 (Review) and phase 5 (Resolve). The user can redirect at any
 point.
+
+**Backstop check.** Before sharing the draft, apply the
+pause-and-rescope test once: *would finishing this task list
+still leave the deeper cause unresolved?* By plan time you've
+read the code in detail — that's how you draft sensible tasks
+— and that reading often reveals more about the surface than
+the scope conversation did. If the answer is yes, start a
+pause and rescope before sharing.
 
 Share the draft with the user. The phase ends at user approval.
 
@@ -119,13 +142,24 @@ list is drained.
    envelope per "Communication between teammates (agents)"
    below: `Message from Grace to Junio: …` and `Reply via
    SendMessage to Grace`. Wait for their numbered list (or "no
-   substantive findings").
+   substantive findings"). The audit may also include an
+   optional **possible rescope signal** when repeated audits
+   on the same surface look symptom-shaped — see step 6.
 
 6. **Triage findings.** Accept or reject each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
    next tasks before any pending original-scope work**
    (depth-first drain). Hold ancillary findings for the
    post-merge bucket — never filed mid-session.
+
+   If the audit included a **possible rescope signal**,
+   decide whether to start a pause and rescope. The signal
+   is an observation, not a finding — your call whether the
+   task list looks symptom-shaped enough to pause. If yes,
+   follow the pause-and-rescope shape from `protocol.md`:
+   state the evidence to the user, propose narrow and wide
+   options, ask which to take. If no, continue triage as
+   normal.
 
 7. **Loop.** Next task, back to step 1.
 
@@ -185,6 +219,8 @@ should never appear in the description:
 - *depth-first drain*
 - *follow-on*
 - *ancillary finding*
+- *pause and rescope*
+- *possible rescope signal*
 
 Agent-coined terms-of-art ("the latent test injection seam")
 are out for the same reason: the reader hasn't been in the
