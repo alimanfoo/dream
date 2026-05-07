@@ -85,6 +85,19 @@ stop — that's divergence. Either the finding follows from the
 change just committed (in-scope follow-on), or it's a genuinely
 separate observation (ancillary), or it's neither (drop).
 
+#### Missed instances
+
+Some findings are not adjacent concerns. They are missed
+instances of the same edit the task is already making. A test
+name may still carry a phrase the task removed from prose. A
+docstring may repeat a claim the task dropped from a header. A
+sibling file may use the same misleading constant name.
+
+Ask the dispatching question: **is this the same edit, just one
+we missed?** If yes, propose it as an in-scope follow-on. If no,
+treat it as ancillary or drop it. Finding the rest of the same
+edit is convergence, not scope creep.
+
 #### Possible rescope signal
 
 Your session stays alive across audits, so each new audit has
