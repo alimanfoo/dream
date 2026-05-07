@@ -52,14 +52,14 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    `<role>`:
 
    ```
-   Boot sequence:
+   Initial instructions:
 
    1. Read the protocol at <absolute path to protocol.md in
       this skill's directory>.
    2. Read your role file at <absolute path to
       ../../agents/<Name>.md> and assume the role of <Name>,
       the <role> on the dream team.
-   3. Then run any boot/orientation steps that role file
+   3. Then run the boot sequence steps that your role file 
       specifies.
    ```
 
