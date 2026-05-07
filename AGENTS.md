@@ -12,11 +12,19 @@ The entry point to launching the plugin is the `plugins/dream/skills/team/SKILL.
 
 The dream:team skill then spawns the agent team. Each agent is defined via a system prompt within the `plugins/dream/agents` folder.
 
-The agents then operate according to a common protocol. The protocol is defined in `plugins/dream/skills/team/protocol.md`.
+The agents then operate according to a common protocol. The shared
+session flow — phases, roles, and cross-agent mechanics — is defined
+in `plugins/dream/skills/team/protocol.md`. Role-specific operating
+detail lives in the agent files under `plugins/dream/agents/`.
 
 ## Development notes
 
-`plugins/dream/skills/team/protocol.md` is the source of truth for team behavior. Keep agent prompts consistent with it rather than letting each role invent its own workflow.
+`protocol.md` is the source of truth for shared session flow and
+cross-agent mechanics. Role-specific detail (Grace's planning and
+triage logic, rescope task briefs, pause-and-rescope mechanics) lives
+in the relevant agent file. Keep protocol.md and agent files
+consistent with each other — neither should invent behaviour the
+other contradicts.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is currently no automated test or lint command; when changing behavior, validate by reading the affected skill/agent prompts together and checking that lifecycle, role boundaries, and tool permissions remain consistent.
 
