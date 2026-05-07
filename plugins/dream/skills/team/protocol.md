@@ -196,6 +196,19 @@ that's divergence, not convergence. Junio shouldn't
 propose them in the audit, and Grace shouldn't accept them
 at triage.
 
+**Defend completeness, not just coherence.** Some findings are
+not adjacent concerns the session happened to surface. They
+are missed instances of the same edit the session is already
+making. Examples: a test name still carrying the phrase the
+session removes from prose; a docstring repeating a claim the
+session drops from a header; a sibling file with the same
+misleading constant name. These are in-scope follow-ons even
+when they sit on a surface the original task did not list.
+Junio asks during audit, and Grace asks during triage: "is
+this the same edit, just one we missed?" If yes, fold it into
+the chain. If no, treat it as ancillary or drop it. Finding
+the rest of the same edit is convergence, not scope creep.
+
 **Possible rescope signal.** Junio's session stays alive
 across audits, so each new audit has the prior ones in
 context. When repeated audits on the same surface look
@@ -298,6 +311,13 @@ Once the PR is open:
      the reason.
    - **Out of scope** → held for post-merge triage (see Phase
      6: Collect) — not filed mid-session.
+
+   A missed instance of the same edit is not out of scope. If
+   Ada puts such an item under "out of scope but noticed",
+   Grace reclassifies it as a normal finding before triage:
+   "is this the same edit, just one the PR missed?" If yes,
+   accept or reject it on the merits. If no, keep it in the
+   post-merge bucket.
 
 4. **Hand back.** Grace addresses all review comments first
    — accepted tasks completed, rejections explained,

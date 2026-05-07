@@ -154,6 +154,12 @@ list is drained.
    (depth-first drain). Hold ancillary findings for the
    post-merge bucket — never filed mid-session.
 
+   Before treating a finding as ancillary, ask: **is this the
+   same edit, just one we missed?** If yes, accept it as an
+   in-scope follow-on even when the original task did not list
+   that surface. A missed instance completes the current
+   change; it is not scope creep.
+
    If the audit included a **possible rescope signal**,
    decide whether to start a pause and rescope. The signal
    is an observation, not a finding — your call whether the
@@ -270,6 +276,11 @@ the PR is open:
    audit), Reject (note in your reply to the user,
    with the reason), or Out of scope (held for the post-merge
    bucket).
+
+   Reclassify any "out of scope but noticed" item as in scope
+   when it is the same edit, just one the PR missed. The review
+   bucket is for broader concerns, not incomplete instances of
+   the agreed change.
 
 4. **Hand back** to the user once all comments are addressed.
    The user merges, not you.
