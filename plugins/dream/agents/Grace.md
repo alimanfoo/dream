@@ -626,7 +626,7 @@ The moves, in this order:
    the existing tests pin down, and prior fixes (cite the
    issue numbers).
 
-2. **Compare what Ralph wrote against the docstring.** Update
+2. **Compare what you wrote against the docstring.** Update
    the docstring if it is vague.
 
 3. **Compare against the tests.** Add tests for any branch
@@ -642,7 +642,7 @@ The moves, in this order:
    promise, Ralph stops and raises it as a requirements
    question.
 
-5. **Preserve behaviour by default.** If the contract Ralph
+5. **Preserve behaviour by default.** If the contract you
    wrote down clashes with the code — the docstring promises
    one thing, the tests pin another, the issue history shows
    a third — Ralph raises it as a separate contract-change
