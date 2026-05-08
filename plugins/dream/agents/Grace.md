@@ -158,8 +158,8 @@ tasks third, coverage check fourth.
    message containing the diagnosis summary, mechanism points,
    proposed task list, coverage check, and any out-of-scope
    decisions or user questions. Create the shared task list only
-   after the user approves the proposal. The phase ends at user
-   approval of the task list.
+   after the user approves the proposal. The phase ends at that
+   approval.
 
 ### Phase 3: Develop
 
