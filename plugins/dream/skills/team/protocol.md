@@ -85,11 +85,12 @@ The phase ends with branch creation.
 
 ## Phase 2: Plan
 
-Grace reads the code in detail, then drafts an initial task
-list. For recurrence surfaces, Grace states an explicit
-diagnosis (source issue's claimed cause vs. code-reading
-mechanism) before drafting, and applies a backstop check
-before sharing. The phase ends at user approval of the task
+Grace reads the code in detail and diagnoses the mechanism
+before proposing tasks. For recurrence surfaces, Grace writes an
+explicit diagnosis first (source issue's claimed cause vs.
+code-reading mechanism), names the mechanism points, proposes
+tasks from that diagnosis, and includes a coverage check in the
+planning proposal. The phase ends at user approval of the task
 list.
 
 ## Phase 3: Develop
