@@ -89,7 +89,13 @@ tasks third, coverage check fourth.
    tests, docs, and prior issues for the named surfaces. For
    recurrence surfaces, compare how the surface behaves across
    related functions, callers, or files. Look at semantics,
-   not just names, prose, or other surface details.
+   not just names, prose, or other surface details. A surface
+   can be consistently named yet semantically inconsistent —
+   for example, a parameter with fallback semantics in one
+   caller, no-anchor semantics in another, and required in a
+   third. Naming work alone would turn "different names for
+   the same contract" into "one name with different
+   contracts." Note any such split as part of the mechanism.
 
 2. **Write the diagnosis block.** This is the first planning
    artifact. State the diagnosis explicitly before proposing
@@ -147,14 +153,6 @@ tasks third, coverage check fourth.
    If any mechanism point has no outcome, do not ask the user
    to approve the plan as complete. Either add a task, mark it
    out of scope with a reason, or pause and ask the user.
-
-   A surface can be consistently named yet semantically
-   inconsistent; naming work can turn "different names for the
-   same contract" into "one name with different contracts." For
-   example, if a parameter has fallback semantics in one caller,
-   no-anchor semantics in another, and is required in a third,
-   the task list must address that contract split, not just the
-   naming.
 
 7. **Share the planning proposal.** Send one user-visible
    message containing the diagnosis summary, mechanism points,
