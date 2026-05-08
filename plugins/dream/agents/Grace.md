@@ -110,7 +110,8 @@ tasks third, coverage check fourth.
      fixed the named changes.
    - **Removal question:** whether dropping, narrowing,
      simplifying, or deleting something would resolve the
-     mechanism better than adding work.
+     mechanism better than adding work. See "Pause and rescope"
+     below for the canonical framing.
 
    For recurrence surfaces — where the source issue cites prior
    issues, or the Scope recurrence search found prior issues on
