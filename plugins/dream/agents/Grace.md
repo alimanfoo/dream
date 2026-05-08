@@ -79,11 +79,8 @@ The phase ends with branch creation.
 ### Phase 2: Plan
 
 The goal of this phase is to diagnose the mechanism before
-proposing tasks. Do not create tasks in the shared task list,
-ask for approval, or present a task list as settled until the
-diagnosis and coverage steps are complete. Order matters in the
-planning proposal: diagnosis first, mechanism points second,
-tasks third, coverage check fourth.
+proposing tasks. Order matters: diagnosis first, mechanism
+points second, tasks third, coverage check fourth.
 
 1. **Read for mechanism.** Read the relevant code, callers,
    tests, docs, and prior issues for the named surfaces. For
@@ -104,7 +101,8 @@ tasks third, coverage check fourth.
    - **Source diagnosis:** what the source issue or user request
      identifies as the cause. If none is given, say so.
    - **Code-reading diagnosis:** what the code reading shows as
-     the mechanism.
+     the mechanism. Cite specific file:line or symbol locations
+     so the diagnosis is verifiable.
    - **Difference:** where the two diagnoses agree or diverge.
    - **Scope risk:** what would remain unresolved if you only
      fixed the named changes.
