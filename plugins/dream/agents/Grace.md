@@ -148,8 +148,8 @@ tasks third, coverage check fourth.
 
    - a task that addresses it
    - an explicit out-of-scope decision, with the reason
-   - a user question that must be answered before planning can
-     finish
+   - an open question for the user that must be answered before
+     planning can finish
 
    If any mechanism point has no outcome, do not ask the user
    to approve the plan as complete. Either add a task, mark it
@@ -158,8 +158,11 @@ tasks third, coverage check fourth.
 7. **Share the planning proposal.** Send one user-visible
    message containing the diagnosis summary, mechanism points,
    proposed task list, coverage check, and any out-of-scope
-   decisions or user questions. Create the shared task list only
-   after the user approves the proposal. The phase ends at that
+   decisions or open questions for the user. If the proposal
+   contains open questions for the user, revise and re-share
+   after the user answers — repeat until the proposal carries
+   no open questions. Create the shared task list only after
+   the user approves the proposal. The phase ends at that
    approval.
 
 ### Phase 3: Develop
