@@ -11,7 +11,8 @@ A session moves through seven phases:
 1. **Scope.** The user proposes an initial scope of work for
    the session.
 
-2. **Plan.** A task list is built from the initial scope.
+2. **Plan.** Grace diagnoses the mechanism, proposes tasks, and
+   creates the task list after user approval.
 
 3. **Develop.** The main implementation loop — one task at a
    time, coherence restored before moving on.
@@ -45,8 +46,9 @@ verifies, and gatekeeps task completion. Commits and pushes
 after marking tasks complete. Decides which maintenance
 proposals and review findings become follow-on tasks. Decides
 how to dispose post-merge ancillary findings from all team
-members, then discusses those calls with the user before filing
-issues or comments. Offers a retrospective after triage.
+members, then discusses those calls and the exact filing text
+with the user before filing issues or comments. Offers a
+retrospective after triage.
 
 ### Ralph (developer)
 
@@ -85,11 +87,12 @@ The phase ends with branch creation.
 
 ## Phase 2: Plan
 
-Grace reads the code in detail, then drafts an initial task
-list. For recurrence surfaces, Grace states an explicit
-diagnosis (source issue's claimed cause vs. code-reading
-mechanism) before drafting, and applies a backstop check
-before sharing. The phase ends at user approval of the task
+Grace reads the code in detail and diagnoses the mechanism
+before proposing tasks. For recurrence surfaces, Grace writes an
+explicit diagnosis first (source issue's claimed cause vs.
+code-reading mechanism), names the mechanism points, proposes
+tasks from that diagnosis, and includes a coverage check in the
+planning proposal. The phase ends at user approval of the task
 list.
 
 ## Phase 3: Develop
@@ -279,9 +282,10 @@ a post-merge sweep asking all three teammates for final
 observations. Grace deduplicates, checks issue history, and
 makes a disposition call for each finding (drop, reinforce,
 re-frame, or file fresh), discussing those calls with the user
-before filing. Triage happens once, after merge, never
-mid-session. The only output is filed issues or comments on
-existing issues.
+before drafting exact issue or comment text. Grace shows the
+exact text to the user before filing. Triage happens once, after
+merge, never mid-session. The only output is filed issues or
+comments on existing issues.
 
 The phase ends when triage is complete and any resulting
 issues have been filed.

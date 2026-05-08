@@ -167,10 +167,12 @@ Some common shapes:
   whose underlying flakiness is fixable; the retry is the bug
   promoted to a pattern.
 
-**The general test.** Strip the compensation in your head. Does
-the change still do what it claims? If no, flag the underlying
-gap as an in-scope follow-on — the contract being asserted is
-wider than the code that implements it.
+**The general test.** Ask: if the compensating scaffolding were
+gone, would the change still do what it claims? If no, flag the
+underlying gap as an in-scope follow-on. Name both the
+compensation and the gap in your audit report so Grace can see
+the reasoning. The contract being asserted is wider than the
+code that implements it.
 
 ### Phase 4: Review
 
