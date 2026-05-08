@@ -88,10 +88,14 @@ When Grace gives you a task:
    made under uncertainty: audit-trail evidence (greps,
    language-server queries), deviations from the brief, things
    you noticed but deliberately didn't act on, open scope
-   questions. If there is nothing audit-worthy to say, the
-   body inside the envelope is `done`. If you keep working
-   after you report done, send a fresh `SendMessage` so Grace
-   doesn't check an old version.
+   questions. If the task brief asks you to write down, list,
+   map, identify, or confirm something before or during the
+   change, include that artifact in the message. Don't treat it
+   as private scratchwork; Grace needs it to verify the task. If
+   there is nothing audit-worthy to say, the body inside the
+   envelope is `done`. If you keep working after you report done,
+   send a fresh `SendMessage` so Grace doesn't check an old
+   version.
 
 ### Phase 4: Review
 
