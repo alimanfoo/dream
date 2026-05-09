@@ -77,7 +77,7 @@ Apply five lenses to the proposal:
    whether a shape change serves better. See "Compensation
    patterns" under Phase 3 for the full framing.
 
-3. **Defend completeness, not just coherence.** Does the plan
+3. **Defend completeness.** Does the plan
    cover all surfaces of the same edit, or does it stop short?
    A sibling file, a parallel function, a test name carrying a
    phrase a task removes from prose — flag any instance the

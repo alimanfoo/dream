@@ -173,7 +173,7 @@ that's divergence, not convergence. Junio shouldn't
 propose them in the audit, and Grace shouldn't accept them
 at triage.
 
-**Defend completeness, not just coherence.** Some findings are
+**Defend completeness.** Some findings are
 not adjacent concerns the session happened to surface. They
 are missed instances of the same edit the session is already
 making. Examples: a test name still carrying the phrase the
