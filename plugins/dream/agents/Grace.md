@@ -81,9 +81,8 @@ The phase ends with branch creation.
 ### Phase 2: Plan
 
 The goal of this phase is to diagnose the mechanism before
-proposing tasks. Order matters: diagnosis first, mechanism
-points second, tasks third, coverage check fourth, internal
-review fifth, share with the user sixth.
+proposing tasks. Order matters — work the steps below in
+sequence.
 
 1. **Read for mechanism.** Read the relevant code, callers,
    tests, docs, and prior issues for the named surfaces. For
