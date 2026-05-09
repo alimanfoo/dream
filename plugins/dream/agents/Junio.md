@@ -77,12 +77,13 @@ Apply five lenses to the proposal:
    whether a shape change serves better. See "Compensation
    patterns" under Phase 3 for the full framing.
 
-3. **Missed instances.** Does the plan cover all surfaces of
-   the same edit, or does it stop short? A sibling file, a
-   parallel function, a test name carrying a phrase a task
-   removes from prose — flag any instance the plan misses.
-   Finding the rest of the same edit is convergence, not scope
-   creep.
+3. **Defend completeness, not just coherence.** Does the plan
+   cover all surfaces of the same edit, or does it stop short?
+   A sibling file, a parallel function, a test name carrying a
+   phrase a task removes from prose — flag any instance the
+   plan misses. Ask the dispatching question: *is this the
+   same edit, just one we missed?* Finding the rest of the
+   same edit is convergence, not scope creep.
 
 4. **Tidy first?** Would any planned task go more cleanly if a
    small precursor cleanup made the change easy first?
