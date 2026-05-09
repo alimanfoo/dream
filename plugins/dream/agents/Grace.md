@@ -192,11 +192,15 @@ review fifth, share with the user sixth.
       "callers must call A before B")
    3. Could a **smart constructor** carry it? (validate at the
       boundary so internal callers can assume validity)
-   4. Only if 1–3 are all no, accept the prose — and prefer
+   4. Could an **assert + property-based test** carry it? (a
+      relational invariant types genuinely can't encode —
+      single-line `assert` at function entry plus a
+      property-based test pinning the invariant)
+   5. Only if 1–4 are all no, accept the prose — and prefer
       one short sentence to a full contract restatement.
 
-   If 1–3 yield yes, reject the docstring task in the draft.
-   Replace it with a shape-change task instead.
+   If 1–4 yield yes, reject the docstring task in the draft.
+   Replace it with a task for the corresponding code change.
 
    When the reply includes a tidy-first finding you accept,
    insert the tidy as a precursor task before the task it
@@ -299,11 +303,16 @@ list is drained.
       "callers must call A before B")
    3. Could a **smart constructor** carry it? (validate at the
       boundary so internal callers can assume validity)
-   4. Only if 1–3 are all no, accept the prose — and prefer
+   4. Could an **assert + property-based test** carry it? (a
+      relational invariant types genuinely can't encode —
+      single-line `assert` at function entry plus a
+      property-based test pinning the invariant)
+   5. Only if 1–4 are all no, accept the prose — and prefer
       one short sentence to a full contract restatement.
 
-   If 1–3 yield yes, reject the docstring expansion. Accept
-   instead a follow-on whose body is the shape change.
+   If 1–4 yield yes, reject the docstring expansion. Accept
+   instead a follow-on whose body is the corresponding code
+   change.
 
    If the audit included a **possible rescope signal**,
    decide whether to start a pause and rescope. The signal
@@ -436,11 +445,16 @@ the PR is open:
       "callers must call A before B")
    3. Could a **smart constructor** carry it? (validate at the
       boundary so internal callers can assume validity)
-   4. Only if 1–3 are all no, accept the prose — and prefer
+   4. Could an **assert + property-based test** carry it? (a
+      relational invariant types genuinely can't encode —
+      single-line `assert` at function entry plus a
+      property-based test pinning the invariant)
+   5. Only if 1–4 are all no, accept the prose — and prefer
       one short sentence to a full contract restatement.
 
-   If 1–3 yield yes, reject the docstring expansion. Accept
-   instead a follow-on whose body is the shape change.
+   If 1–4 yield yes, reject the docstring expansion. Accept
+   instead a follow-on whose body is the corresponding code
+   change.
 
 4. **Hand back** to the user once all comments are addressed.
    The user merges, not you.
