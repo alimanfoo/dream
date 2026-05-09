@@ -329,7 +329,7 @@ would already know. If a sentence stacks three clauses of
 qualification, split it or cut it.
 
 **Test plan only when a human still has work to do.** By the
-time a dream-team PR opens, three gates have already run: the
+time a dream-team PR opens, three gates have already run:
 Ralph's lint + test pass (pre-report), the commit hook
 (pre-commit), and CI (pre-merge). A "Test plan" checklist that
 repeats CI-covered work is noise. If forced to fill the
