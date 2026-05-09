@@ -156,6 +156,13 @@ Some common shapes:
 - **Validator as type-substitute** — a runtime check rejects
   inputs upstream types should have prevented; the check is
   admitting the types are wider than the contract.
+- **Docstring-as-contract** — prose stating an invariant,
+  precondition, or cross-call rule that the function's
+  signature, types, or call structure don't enforce. Trigger
+  phrasings: `must be …`, `the same … must …`,
+  `callers must …`, `the contract is …`,
+  `valid only when …`, `if X then Y`. The docstring is
+  admitting the type or structure is wider than the contract.
 - **Flag as opt-out** — a flag lets callers skip a path that
   otherwise misbehaves. The flag treats the misbehaviour as a
   setting instead of a bug.

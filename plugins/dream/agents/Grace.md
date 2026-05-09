@@ -102,7 +102,14 @@ points second, tasks third, coverage check fourth.
      identifies as the cause. If none is given, say so.
    - **Code-reading diagnosis:** what the code reading shows as
      the mechanism. Cite specific file:line or symbol locations
-     so the diagnosis is verifiable.
+     so the diagnosis is verifiable. When the source issue or
+     user request is framed as "expand the docstring to express
+     a contract," distinguish two cases: a docstring that is
+     vague, wrong, or missing (a real documentation task), vs. a
+     structure that is wider than the contract it should enforce
+     (a shape task wearing docstring clothes). Only the first
+     proceeds as written; the second gets reshaped to address
+     the structural gap before the task list is proposed.
    - **Difference:** where the two diagnoses agree or diverge.
    - **Scope risk:** what would remain unresolved if you only
      fixed the named changes.
@@ -230,6 +237,23 @@ list is drained.
    that surface. A missed instance completes the current
    change; it is not scope creep.
 
+   When a finding proposes adding or expanding a docstring or
+   comment to express a contract, invariant, or precondition,
+   apply the **code-shape-first check** in order:
+
+   1. Could a **type** carry it? (narrower input type,
+      newtype wrapper, `Result[T, E]` instead of "raises on X")
+   2. Could **structure** carry it? (sum type instead of "if
+      mode is X then Y must…"; split function instead of
+      "callers must call A before B")
+   3. Could a **smart constructor** carry it? (validate at the
+      boundary so internal callers can assume validity)
+   4. Only if 1–3 are all no, accept the prose — and prefer
+      one short sentence to a full contract restatement.
+
+   If 1–3 yield yes, reject the docstring expansion. Accept
+   instead a follow-on whose body is the shape change.
+
    If the audit included a **possible rescope signal**,
    decide whether to start a pause and rescope. The signal
    is an observation, not a finding — your call whether the
@@ -349,6 +373,23 @@ the PR is open:
    when it is the same edit, just one the PR missed. The review
    bucket is for broader concerns, not incomplete instances of
    the agreed change.
+
+   When a finding proposes adding or expanding a docstring or
+   comment to express a contract, invariant, or precondition,
+   apply the **code-shape-first check** in order:
+
+   1. Could a **type** carry it? (narrower input type,
+      newtype wrapper, `Result[T, E]` instead of "raises on X")
+   2. Could **structure** carry it? (sum type instead of "if
+      mode is X then Y must…"; split function instead of
+      "callers must call A before B")
+   3. Could a **smart constructor** carry it? (validate at the
+      boundary so internal callers can assume validity)
+   4. Only if 1–3 are all no, accept the prose — and prefer
+      one short sentence to a full contract restatement.
+
+   If 1–3 yield yes, reject the docstring expansion. Accept
+   instead a follow-on whose body is the shape change.
 
 4. **Hand back** to the user once all comments are addressed.
    The user merges, not you.
