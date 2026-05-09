@@ -59,7 +59,7 @@ explicit out-of-scope decision, or an open question. Read the
 cited code as needed to evaluate the proposal — your review is
 reading-based here too.
 
-Apply four lenses to the proposal:
+Apply five lenses to the proposal:
 
 1. **Defend behaviour, not surface.** Does any task pin
    incidental surface — a docstring phrasing, a count nothing
@@ -84,7 +84,28 @@ Apply four lenses to the proposal:
    Finding the rest of the same edit is convergence, not scope
    creep.
 
-4. **Possible rescope signal.** Does the task list look
+4. **Tidy first?** Would any planned task go more cleanly if a
+   small precursor cleanup made the change easy first?
+   Examples: extract a helper before adding a sibling case;
+   rename a confusing parameter before threading new args;
+   split a tangled function before adding a branch.
+
+   A precursor qualifies only when all three hold:
+
+   - **Tied to a named task.** Cite which planned task the tidy
+     supports. Free-floating cleanups don't qualify.
+   - **Behaviour-preserving.** Pure restructure — extract,
+     inline, rename, move, split. No contract change.
+   - **Materially easier or safer.** The named task would be
+     more error-prone, more complex, or touch more places
+     without this precursor. Aesthetic improvements alone don't
+     pass.
+
+   The "?" is deliberate — the lens looks for cases where
+   tidying first genuinely lowers the cost of the planned work,
+   not for every cleanup the codebase could absorb.
+
+5. **Possible rescope signal.** Does the task list look
    symptom-shaped — separate tasks each touching the same
    surface for different reasons? If so, raise it as a one-line
    observation, not a finding. The decision to pause and

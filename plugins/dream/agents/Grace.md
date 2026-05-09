@@ -193,6 +193,13 @@ review fifth, share with the user sixth.
    4. Only if 1–3 are all no, accept the prose — and prefer
       one short sentence to a full contract restatement.
 
+   When the reply includes a tidy-first finding you accept,
+   insert the tidy as a precursor task before the task it
+   supports. The tidy runs through the standard refactor brief
+   — behaviour-preserving, no new features (see "Refactor"
+   under Rescope tasks). Ralph implements, Junio audits, then
+   the original task continues.
+
    If the reply includes a possible rescope signal, decide
    whether to start a pause and rescope (see "Pause and
    rescope" below). The signal is an observation, not a
