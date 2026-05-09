@@ -80,7 +80,8 @@ The phase ends with branch creation.
 
 The goal of this phase is to diagnose the mechanism before
 proposing tasks. Order matters: diagnosis first, mechanism
-points second, tasks third, coverage check fourth.
+points second, tasks third, coverage check fourth, internal
+review fifth, share with the user sixth.
 
 1. **Read for mechanism.** Read the relevant code, callers,
    tests, docs, and prior issues for the named surfaces. For
@@ -160,7 +161,45 @@ points second, tasks third, coverage check fourth.
    to approve the plan as complete. Either add a task, mark it
    out of scope with a reason, or pause and ask the user.
 
-7. **Share the planning proposal.** Send one user-visible
+7. **Internal review.** Before showing the draft to the user,
+   send it to Junio for one round of review. The draft
+   contains the diagnosis, mechanism points, proposed task
+   list, and coverage check — the same content you would
+   otherwise share with the user. Wrap the request in the
+   standard envelope: `Message from Grace to Junio: …` and
+   `Reply via SendMessage to Grace`. Junio replies with a
+   numbered list of findings (or "no substantive findings"),
+   optionally with a possible rescope signal.
+
+   Junio is advisory at Plan, not gating. You own the plan.
+   Read each finding and apply judgement: accept what you
+   find compelling and revise the plan, reject what you don't
+   and note why for your own use. One round only — don't loop
+   back to Junio after revising. The point is fresh attention
+   from a teammate with the same code-reading discipline,
+   caught at the cheapest point to fix.
+
+   When a finding proposes a docstring or comment to express
+   a contract, invariant, or precondition, apply the
+   **code-shape-first check** in order:
+
+   1. Could a **type** carry it? (narrower input type,
+      newtype wrapper, `Result[T, E]` instead of "raises on X")
+   2. Could **structure** carry it? (sum type instead of "if
+      mode is X then Y must…"; split function instead of
+      "callers must call A before B")
+   3. Could a **smart constructor** carry it? (validate at the
+      boundary so internal callers can assume validity)
+   4. Only if 1–3 are all no, accept the prose — and prefer
+      one short sentence to a full contract restatement.
+
+   If the reply includes a possible rescope signal, decide
+   whether to start a pause and rescope (see "Pause and
+   rescope" below). The signal is an observation, not a
+   finding — your call whether the task list looks
+   symptom-shaped enough to pause.
+
+8. **Share the planning proposal.** Send one user-visible
    message containing the diagnosis summary, mechanism points,
    proposed task list, coverage check, and any out-of-scope
    decisions or open questions for the user. If the proposal

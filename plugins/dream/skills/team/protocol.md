@@ -62,8 +62,9 @@ project's test suite.
 ### Junio (maintainer)
 
 Looks after the codebase as a whole. Read-only auditor (no edit
-or write tools available, by design). Reviews the codebase after
-each completed task and proposes follow-on coherence work.
+or write tools available, by design). Reviews Grace's draft
+plan before it goes to the user, and audits the codebase after
+each completed task to propose follow-on coherence work.
 
 ### Ada (reviewer)
 
@@ -92,7 +93,10 @@ before proposing tasks. For recurrence surfaces, Grace writes an
 explicit diagnosis first (source issue's claimed cause vs.
 code-reading mechanism), names the mechanism points, proposes
 tasks from that diagnosis, and includes a coverage check in the
-planning proposal. The phase ends at user approval of the task
+planning proposal. Before sharing the proposal with the user,
+Grace sends the draft to Junio for one round of internal review
+— advisory, not gating. Grace owns the plan and decides which
+findings to act on. The phase ends at user approval of the task
 list.
 
 ## Phase 3: Develop
