@@ -182,6 +182,69 @@ the prose is doing hard work, and edge cases after the main rule.
 Dense but accurate prose is still a quality problem if the reader
 must reread it to recover the contract.
 
+### Expressing contracts through code shape
+
+When a function has a precondition, invariant, or postcondition
+to express, prefer code shape over prose. A docstring that
+states a rule the type system or structure doesn't enforce is a
+signal to refactor, not a contract.
+
+Work through these in order before reaching for a docstring:
+
+1. **Parse, don't validate.** At system boundaries, parse raw
+   input into a type that proves validation has happened.
+   Internal functions accept the parsed type and assume
+   validity.
+
+   ```python
+   def process(items: NonEmptyList[User]) -> ...: ...  # can't be called empty
+   def send(addr: Email) -> ...: ...                   # can't be called with invalid string
+   ```
+
+2. **Smart constructor / newtype wrapper.** Wrap a primitive in
+   a type whose constructor enforces the invariant. Once
+   constructed, the type is the proof; no docstring needed.
+
+   ```python
+   @dataclass(frozen=True)
+   class SKU:
+       value: str
+       def __post_init__(self) -> None:
+           if not _is_valid_sku(self.value):
+               raise ValueError(f"Invalid SKU: {self.value!r}")
+   ```
+
+3. **Sum type for branching state.** When behaviour depends on
+   which kind of input arrived, use a discriminated union
+   instead of a flag plus a documented rule.
+
+   ```python
+   # Avoid — the docstring carries the constraint:
+   def render(content: str, mode: str, language: str | None = None) -> str:
+       """If mode == 'code', language must be provided."""
+
+   # Prefer — the invalid combination doesn't type-check:
+   @dataclass
+   class TextContent:
+       text: str
+
+   @dataclass
+   class CodeContent:
+       text: str
+       language: str  # always required
+
+   def render(content: TextContent | CodeContent) -> str: ...
+   ```
+
+4. **Total over partial.** Return `T | None` or `Result[T, E]`
+   instead of raising on a documented precondition. The
+   signature lists every outcome.
+
+If none of the above applies — a relational invariant types
+genuinely can't encode — add a single-line `assert` at function
+entry and a property-based test (Hypothesis). A prose docstring
+is the last resort, not the first.
+
 ### Scope, abstraction, and over-engineering
 
 Don't add features, refactor, or introduce abstractions beyond
