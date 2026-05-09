@@ -648,8 +648,6 @@ both of two layers.
 
 **Code layer — team's expertise, user approves.**
 
-- **Rationalise.** Name the existing contract; preserve
-  behaviour by default.
 - **Simplify.** Trim within an active feature — collapse
   helpers, cut speculative abstraction, reduce indirection.
   The feature stays; its implementation gets smaller.
@@ -693,82 +691,26 @@ the original tasks are to the new scope.
 
 ## Rescope tasks
 
-There are five rescope shapes. *Revisit requirements* is the
+There are four rescope shapes. *Revisit requirements* is the
 user's decision; once the user has stated it, write tasks for
-Ralph to implement against the new version. The other four —
-*rationalise*, *simplify*, *delete*, *refactor* — are
-code-layer tasks you brief for Ralph. The briefs below describe
-what Ralph executes. When assigning one of these tasks, include
-the relevant moves in Ralph's task description — Ralph does not
-read this section.
+Ralph to implement against the new version. The other three —
+*simplify*, *delete*, *refactor* — are code-layer tasks you
+brief for Ralph. The briefs below describe what Ralph executes.
+When assigning one of these tasks, include the relevant moves
+in Ralph's task description — Ralph does not read this section.
 
 The moves below are not private scratchwork. If a move asks
 Ralph to write down, list, map, identify, or confirm something,
 tell Ralph to include that artifact in his completion report so
 you can verify it before accepting the task.
 
-Two rules apply across all four code-layer shapes.
-**Behaviour-preserving by default**: the point is contract
-clarity, smaller code, or better structure — not new behaviour.
-If Ralph's work reveals a behaviour change worth making, Ralph
-raises it as a separate proposal. **Tests pin the contract, not
-surface detail**: the "Defend behaviour, not surface" rule
-applies whenever tests are added or changed.
-
-### Rationalise
-
-A rationalisation task is mostly prose: a clearer docstring,
-an explicit non-contract section, and tests that pin each
-branch of the contract. The code diff is small or zero.
-
-The moves, in this order:
-
-1. **Write down the current contract before any code change.**
-   In plain English, write what this surface commits to its
-   caller. Take it from three places: the docstring, what
-   the existing tests pin down, and prior fixes (cite the
-   issue numbers).
-
-2. **Compare what you wrote against the docstring.** Update
-   the docstring if it is vague.
-
-3. **Compare against the tests.** Add tests for any branch
-   of the contract not currently pinned. Use real example
-   inputs by category, not generic round-trip checks.
-
-4. **State intentional limits as explicit non-contract.**
-   For example: *"`Mr. Smith arrived.` truncates at `Mr.`
-   because the capital is genuinely there; this is a known
-   limitation, not a bug."* Ralph documents only limits
-   already implied by the agreed scope or by current
-   behaviour. If a candidate limit would narrow a stated
-   promise, Ralph stops and raises it as a requirements
-   question.
-
-5. **Preserve behaviour by default.** If the contract you
-   wrote down clashes with the code — the docstring promises
-   one thing, the tests pin another, the issue history shows
-   a third — Ralph raises it as a separate contract-change
-   proposal. He does not roll a behaviour change into the
-   documentation pass.
-
-Three pressures the task brief should counter:
-
-- **Synthesis before action.** Most agent training rewards
-  "see problem → propose fix"; this asks for "see surface →
-  infer intent → write it down."
-- **Prose output feels like less work.** The task description
-  should say plainly: *"no behaviour change is the expected
-  default outcome"* — otherwise Ralph over-engineers to
-  produce a satisfying diff.
-- **Telling intentional from accidental behaviour is a
-  judgement call.** Issue history sometimes encodes the wrong
-  inference. Ralph has to decide.
-
-Verification: check the contract Ralph wrote down first, then
-the diff. The expected outcome is a small or zero diff with a
-sharper docstring, tests that pin each branch of the contract,
-and an explicit non-contract section.
+Two rules apply across all three code-layer shapes.
+**Behaviour-preserving by default**: the point is smaller code
+or better structure — not new behaviour. If Ralph's work
+reveals a behaviour change worth making, Ralph raises it as a
+separate proposal. **Tests pin the contract, not surface
+detail**: the "Defend behaviour, not surface" rule applies
+whenever tests are added or changed.
 
 ### Simplify
 
