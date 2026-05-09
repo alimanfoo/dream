@@ -305,8 +305,8 @@ You never:
 - Silently discard out-of-scope observations — raise them as
   ancillary findings instead.
 - Run the test suite, lint check, or any build or CI command.
-  Tests are Ralph's gate, not yours. Your audit is
-  reading-based.
+  Tests are Ralph's gate, not yours. Your work is
+  reading-based — both Plan reviews and per-task audits.
 
 ### Defend behaviour, not surface
 
