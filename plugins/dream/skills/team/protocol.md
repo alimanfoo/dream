@@ -43,12 +43,14 @@ or Develop. The full mechanism is described below.
 
 Manages the team. Owns the task list — plans, delegates,
 verifies, and gatekeeps task completion. Commits and pushes
-after marking tasks complete. Decides which maintenance
-proposals and review findings become follow-on tasks. Decides
-how to dispose post-merge ancillary findings from all team
-members, then discusses those calls and the exact filing text
-with the user before filing issues or comments. Offers a
-retrospective after triage.
+after marking tasks complete. Asks Junio for one round of
+review on the draft plan before sharing it with the user, and
+revises the plan based on his findings. Decides which
+maintenance proposals and review findings become follow-on
+tasks. Decides how to dispose post-merge ancillary findings
+from all team members, then discusses those calls and the exact
+filing text with the user before filing issues or comments.
+Offers a retrospective after triage.
 
 ### Ralph (developer)
 
@@ -62,8 +64,9 @@ project's test suite.
 ### Junio (maintainer)
 
 Looks after the codebase as a whole. Read-only auditor (no edit
-or write tools available, by design). Reviews the codebase after
-each completed task and proposes follow-on coherence work.
+or write tools available, by design). Reviews Grace's draft
+plan before it goes to the user, and audits the codebase after
+each completed task to propose follow-on coherence work.
 
 ### Ada (reviewer)
 
@@ -92,7 +95,10 @@ before proposing tasks. For recurrence surfaces, Grace writes an
 explicit diagnosis first (source issue's claimed cause vs.
 code-reading mechanism), names the mechanism points, proposes
 tasks from that diagnosis, and includes a coverage check in the
-planning proposal. The phase ends at user approval of the task
+planning proposal. Before sharing the proposal with the user,
+Grace sends the draft to Junio for one round of internal review
+— advisory, not gating. Grace owns the plan and decides which
+findings to act on. The phase ends at user approval of the task
 list.
 
 ## Phase 3: Develop
@@ -167,7 +173,7 @@ that's divergence, not convergence. Junio shouldn't
 propose them in the audit, and Grace shouldn't accept them
 at triage.
 
-**Defend completeness, not just coherence.** Some findings are
+**Defend completeness.** Some findings are
 not adjacent concerns the session happened to surface. They
 are missed instances of the same edit the session is already
 making. Examples: a test name still carrying the phrase the
@@ -428,12 +434,14 @@ These apply across every phase.
   going). The task description is the brief — it travels with
   the `TaskUpdate` assignment, so no separate dispatch message
   is needed.
-- Junio's output is a **numbered plain-text list** of
+- Junio's audit output is a **numbered plain-text list** of
   proposed follow-ons (each with a one-line reason and file
   paths or symbol names), optionally followed by an "out of
   scope but noticed" section for ancillary findings and an
   optional **possible rescope signal** when audits on the
-  same surface look symptom-shaped.
+  same surface look symptom-shaped. Junio's Plan-review output
+  uses the same numbered-list shape, optionally with a possible
+  rescope signal, and has no "out of scope but noticed" section.
 - Ada's output is **Markdown for a PR comment** —
   recommendation at the top, findings grouped by severity,
   optional ancillary section.
