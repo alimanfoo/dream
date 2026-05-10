@@ -245,6 +245,40 @@ genuinely can't encode — add a single-line `assert` at function
 entry and a property-based test (Hypothesis). A prose docstring
 is the last resort, not the first.
 
+### Private function signatures and call sites
+
+When defining a private function or method (name starts with `_`),
+use a keyword-only signature and omit defaults:
+
+```python
+# Avoid — positional arguments hide meaning; defaults create hidden contracts
+def _apply(data, strict=True, fallback=None):
+    ...
+
+_apply(items, True, None)
+
+# Prefer — every call site is self-documenting; no silent reliance on defaults
+def _apply(*, data, strict, fallback):
+    ...
+
+_apply(data=items, strict=True, fallback=None)
+```
+
+The two rules reinforce each other. Keyword-only signatures force
+callers to name every argument. No defaults force callers to supply
+every value. The result: every call site documents itself, and
+changing the signature surfaces every caller at type-check time
+rather than silently changing behaviour.
+
+Include a default only when the parameter has a universally sensible
+constant — a `maxsize=128` on a private cache helper is fine.
+Otherwise omit it. When in doubt, omit the default.
+
+This applies to private helpers, not to public APIs or third-party
+library calls. When calling a library function, use keyword
+arguments for non-obvious positions, but don't override the
+library's intentional defaults.
+
 ### Scope, abstraction, and over-engineering
 
 Don't add features, refactor, or introduce abstractions beyond
