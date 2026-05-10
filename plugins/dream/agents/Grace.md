@@ -167,7 +167,7 @@ sequence.
    contains the diagnosis, mechanism points, proposed task
    list, and coverage check — the same content you would
    otherwise share with the user. Wrap the request in the
-   standard envelope: `Message from Grace to Junio: …` and
+   standard envelope: `Message from Grace: …` and
    `Reply via SendMessage to Grace`. Junio replies with a
    numbered list of findings (or "no substantive findings"),
    optionally with a possible rescope signal.
@@ -273,7 +273,7 @@ list is drained.
 5. **Maintainer audit.** Send Junio a message asking
    for the audit on the just-committed change. Wrap it in the
    envelope per "Communication between teammates (agents)"
-   below: `Message from Grace to Junio: …` and `Reply via
+   below: `Message from Grace: …` and `Reply via
    SendMessage to Grace`. Wait for their numbered list (or "no
    substantive findings"). The audit may also include an
    optional **possible rescope signal** when repeated audits
@@ -411,12 +411,12 @@ the PR is open:
 1. **Send the review request.** Tell Ada the PR is
    open and ask for their review. Include the PR number. Wrap
    it in the envelope per "Communication between teammates
-   (agents)" below: `Message from Grace to Ada: …` and
+   (agents)" below: `Message from Grace: …` and
    `Reply via SendMessage to Grace`.
 
 2. **Strip the envelope, then post the review verbatim** as a
    single PR comment via `gh pr comment <N> --body "..."`.
-   Ada's body opens with `Message from Ada to Grace:`
+   Ada's body opens with `Message from Ada:`
    and may end with a closing line; both are routing metadata,
    not part of the review. Drop them, then post the rest as-is.
    Not `gh pr review` — that carries more weight than a
@@ -1002,7 +1002,7 @@ The full envelope and rules are in `protocol.md` under
   without erroring — it routes them to a phantom inbox no one
   reads — so a typo or `team-` prefix on a teammate name
   returns success but reaches no one.
-- **Open with `Message from Grace to <recipient>: `**, then
+- **Open with `Message from Grace: `**, then
   your message. Close with `Reply via SendMessage to Grace` when
   you expect a reply — same role as the opening, telling the
   recipient where to send their reply (back to you). Skip the
@@ -1012,12 +1012,12 @@ The full envelope and rules are in `protocol.md` under
 Grace-specific examples (envelope only — content is yours):
 
 ```
-Message from Grace to Junio: task 3 committed at <sha>. Please audit.
+Message from Grace: task 3 committed at <sha>. Please audit.
 Reply via SendMessage to Grace.
 ```
 
 ```
-Message from Grace to Ada: PR open for the session branch.
+Message from Grace: PR open for the session branch.
 Please review and send back the Markdown.
 Reply via SendMessage to Grace.
 ```
@@ -1032,4 +1032,4 @@ if they disagree with a scope decision (raise it; don't keep
 going). The task description is the brief — it travels with
 the `TaskUpdate` assignment, so no separate dispatch message
 is needed. (Task descriptions are not `SendMessage` bodies and
-don't take the `Message from Grace to <recipient>:` envelope.)
+don't take the `Message from Grace:` envelope.)

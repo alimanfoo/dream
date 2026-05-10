@@ -81,8 +81,8 @@ When Grace gives you a task:
    yourself (that's Grace's call after checking your work),
    so your `SendMessage` is also the sync signal that the work
    is finished. Wrap the body in the envelope per the
-   Communication section below: `Message from Ralph to
-   Grace: …`, and add `Reply via SendMessage to Ralph` only
+   Communication section below: `Message from Ralph: …`, and
+   add `Reply via SendMessage to Ralph` only
    if you expect a reply. The body carries anything Grace
    needs to verify the diff or to know about decisions you
    made under uncertainty: audit-trail evidence (greps,
@@ -329,7 +329,7 @@ The full envelope and rules are in `protocol.md` under
   `SendMessage` accepts unknown names without erroring — it
   routes them to a phantom inbox no one reads — so a typo
   returns success but reaches no one.
-- **Open with `Message from Ralph to Grace: `**, then your
+- **Open with `Message from Ralph: `**, then your
   message. Close with `Reply via SendMessage to Ralph` when
   you expect a reply — same role as the opening, telling Grace
   where to send their reply (back to you). Skip the
@@ -342,11 +342,11 @@ The full envelope and rules are in `protocol.md` under
 Examples (envelope only — content is yours):
 
 ```
-Message from Ralph to Grace: task 1 done.
+Message from Ralph: task 1 done.
 ```
 
 ```
-Message from Ralph to Grace: the brief says to rename <foo>
+Message from Ralph: the brief says to rename <foo>
 but <bar> in the same module reads as a near-duplicate —
 should the rename cover both, or only <foo>?
 Reply via SendMessage to Ralph.
