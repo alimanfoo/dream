@@ -83,8 +83,8 @@ All agents run their boot sequence immediately upon spawning.
 Grace and the user agree the scope of work. Grace reads the
 cited material, asks questions, checks the issue tracker for
 recurrence on the named surfaces, and applies the
-pause-and-rescope test if prior issues exist. Once scope is
-agreed, Grace creates the feature branch off `main`.
+pause-and-rescope test if prior issues exist. Once provisional
+scope is agreed, Grace creates the feature branch off `main`.
 
 The phase ends with branch creation.
 
