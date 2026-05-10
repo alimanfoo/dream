@@ -106,13 +106,13 @@ concerns that would require a wider session to resolve.
 Scope changes happen earlier in the session, not at PR time
 (see "Pause and rescope" in `protocol.md` for the mechanism).
 
-Missed instances are not scope changes. If the PR removes,
-renames, or clarifies something, and another surface carries
-the same edit — either pre-existing and untouched, or made
-adjacent by what the PR did (an earlier commit promoted a
-symbol, leaving its underscore prefix a fossil) — raise it as
-a normal finding. Use the dispatching question: **is this the
-same edit — one the PR missed, or one the PR has now made
+The same edit elsewhere is not a scope change. If the PR
+removes, renames, or clarifies something, and another surface
+carries the same edit — either pre-existing and untouched, or
+made adjacent by what the PR did (an earlier commit promoted
+a symbol, leaving its underscore prefix a fossil) — raise it
+as a normal finding. Use the dispatching question: **is this
+the same edit — one the PR missed, or one the PR has now made
 adjacent?** If yes, it belongs in Blocking, Non-blocking, or
 Nits by severity, not in "Out of scope but noticed."
 

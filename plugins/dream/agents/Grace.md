@@ -380,6 +380,8 @@ should never appear in the description:
 - *maintenance chain*
 - *depth-first drain*
 - *follow-on*
+- *missed instance*
+- *consequential adjacency*
 - *ancillary finding*
 - *pause and rescope*
 - *possible rescope signal*
