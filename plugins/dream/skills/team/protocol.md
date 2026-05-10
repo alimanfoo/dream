@@ -8,7 +8,7 @@ interaction.
 
 A session moves through seven phases:
 
-1. **Scope.** The user proposes an initial scope of work for
+1. **Scope.** The user proposes a provisional scope of work for
    the session.
 
 2. **Plan.** Grace diagnoses the mechanism, proposes tasks, and
@@ -347,7 +347,7 @@ These apply across every phase.
 - **Single branch and single PR per session.** One feature
   branch off `main` as pulled at session start, one PR opened
   on it. Grace creates the branch once the user has given
-  the initial scope, not at session activation. The branch
+  the provisional scope, not at session activation. The branch
   name should reflect the scope. All planning and development
   run against the session-start state of `main`; any drift on
   origin is handled in Resolve.
