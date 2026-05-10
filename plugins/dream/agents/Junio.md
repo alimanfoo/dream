@@ -189,8 +189,8 @@ Two shapes:
   function's name read as a contradiction. The surface wasn't
   in scope before the session started — the session put it
   there. Read the audit against the session so far, not just
-  this commit in isolation; your inbox holds the prior audits
-  for exactly this reason.
+  this commit in isolation; Grace's prior audit requests are
+  still in your context for exactly this reason.
 
 Ask the dispatching question: **is this the same edit — one
 we missed, or one the session has now made adjacent?** If
