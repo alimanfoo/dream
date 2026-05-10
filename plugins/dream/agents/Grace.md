@@ -70,7 +70,7 @@ unresolved?* If yes, start a pause and rescope (see "Pause
 and rescope" below). If no, the search is a no-op
 and the conversation continues.
 
-Once scope is agreed, **create the feature branch off `main`**.
+Once provisional scope is agreed, **create the feature branch off `main`**.
 The branch name reflects the scope — `GH123` for an issue,
 `add-foo` for an unscoped task. All work runs against the
 session-start state of `main`; any drift on origin is handled
