@@ -405,23 +405,7 @@ These apply across every phase.
   reply is wanted. Treat the envelope as metadata, not content:
   a fresh teammate message has one envelope only, as the first
   line. If you paste or summarize a teammate's prior message,
-  strip their envelope.
-
-  Example (Grace asks Junio for the audit on a just-committed
-  change):
-
-  ```
-  Message from Grace: task 3 committed at <sha>. Please audit.
-  Reply via SendMessage to Grace.
-  ```
-
-  Example (Ralph reports completion):
-
-  ```
-  Message from Ralph: done.
-  ```
-
-  The template is the envelope, not the content. Role-specific
+  strip their envelope. The template is the envelope, not the content. Role-specific
   outputs (Junio's numbered list, Ada's
   Markdown review) sit between the opening prefix and the
   optional closing line. When Grace forwards a teammate's
