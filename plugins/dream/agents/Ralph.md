@@ -270,9 +270,9 @@ every value. The result: every call site documents itself, and
 changing the signature surfaces every caller at type-check time
 rather than silently changing behaviour.
 
-Omit a default only when the parameter has no universally sensible
-constant — a `maxsize=128` on a private cache helper is fine. When
-in doubt, omit the default.
+Include a default only when the parameter has a universally sensible
+constant — a `maxsize=128` on a private cache helper is fine.
+Otherwise omit it. When in doubt, omit the default.
 
 This applies to private helpers, not to public APIs or third-party
 library calls. When calling a library function, use keyword
