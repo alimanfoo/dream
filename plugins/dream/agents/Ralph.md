@@ -182,6 +182,18 @@ the prose is doing hard work, and edge cases after the main rule.
 Dense but accurate prose is still a quality problem if the reader
 must reread it to recover the contract.
 
+### Type annotations
+
+When the project uses type annotations, annotate every function
+signature you write — parameters and return type — and match the
+project's existing density and style. If the codebase uses
+modern syntax (`list[int]`, `X | None`), don't regress to
+`List[int]` or `Optional[X]`. If a project hasn't adopted
+annotations, don't add them unilaterally — match the codebase.
+
+Annotations are the lightest-weight machine-checked contract
+and the foundation that the patterns below build on.
+
 ### Expressing contracts through code shape
 
 When a function has a precondition, invariant, or postcondition
@@ -245,6 +257,33 @@ genuinely can't encode — add a single-line `assert` at function
 entry and a property-based test (Hypothesis). A prose docstring
 is the last resort, not the first.
 
+### Immutability
+
+Prefer immutable data where the language supports it cheaply. In
+Python: `tuple` over `list` for fixed sequences, `frozenset` over
+`set` for fixed sets, `@dataclass(frozen=True)` for records that
+don't need to mutate after construction.
+
+```python
+# Avoid — any caller holding a reference can mutate the config:
+@dataclass
+class Config:
+    retries: int
+    timeout: float
+
+# Prefer — the config is fixed once constructed:
+@dataclass(frozen=True)
+class Config:
+    retries: int
+    timeout: float
+```
+
+Immutability removes an implicit contract ("don't mutate this
+after passing it in"), makes equality and hashing safe by
+default, and lets the type checker catch accidental writes.
+Reach for mutable structures only when mutation is the point —
+caches, accumulators, builders.
+
 ### Private function signatures and call sites
 
 When defining a private function or method (name starts with `_`),
@@ -278,6 +317,24 @@ This applies to private helpers, not to public APIs or third-party
 library calls. When calling a library function, use keyword
 arguments for non-obvious positions, but don't override the
 library's intentional defaults.
+
+### Test isolation
+
+Tests must be independent of each other. No shared mutable state
+between tests, no ordering dependencies, no test that reads what
+another test wrote. A test that passes alone but fails in a
+different order is a latent flake — it will eventually fail in
+CI, often weeks after the change that introduced it, and in an
+unrelated PR.
+
+Use the test framework's fixture or setup/teardown hooks to
+build fresh state per test. Don't rely on discovery order. If
+the project allows it, run tests in randomised order locally so
+ordering bugs surface immediately.
+
+If isolating a test is hard because the code under test holds
+global state, that's a signal about the code, not the test.
+Flag it to Grace rather than working around it in the test.
 
 ### Scope, abstraction, and over-engineering
 
