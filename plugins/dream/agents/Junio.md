@@ -116,9 +116,8 @@ Apply five lenses to the proposal:
 with a one-line reason and the file paths or symbol names
 involved, optionally followed by a possible rescope signal. If
 nothing to flag, your reply is "no substantive findings." Wrap
-the reply in the standard envelope: `Message from Junio to
-Grace: …`. The reply is a terminal hand-off — skip the closing
-line.
+the reply in the standard envelope: `Message from Junio: …`.
+The reply is a terminal hand-off — skip the closing line.
 
 The Plan review has no "out of scope but noticed" section. That
 section belongs to the per-task audit, where pre-existing
@@ -154,7 +153,7 @@ If there's nothing to flag in any of these, your report is
 **Send the report to Grace via `SendMessage`.** Plain-text
 turn output is not delivered to teammates — only `SendMessage`
 reaches Grace. Wrap the report in the envelope per the
-Communication section below: `Message from Junio to Grace: …`.
+Communication section below: `Message from Junio: …`.
 The audit is a terminal hand-off — skip the closing line. This
 is your final action on the audit; without it, Grace sees
 nothing.
@@ -379,7 +378,7 @@ The full envelope and rules are in `protocol.md` under
   inbox. `SendMessage` accepts unknown names without
   erroring — it routes them to a phantom inbox no one reads —
   so a typo returns success but reaches no one.
-- **Open with `Message from Junio to Grace: `**, then your
+- **Open with `Message from Junio: `**, then your
   audit report (or reply). Most of your messages are terminal
   hand-offs — the audit (with or without findings) is for Grace
   to read, triage, and act on, not to reply to. Skip the
@@ -394,7 +393,7 @@ Examples (envelope only — content is yours):
 Per-task audit reply:
 
 ```
-Message from Junio to Grace:
+Message from Junio:
 
 1. <finding> — <reason>; involves <file/symbol>.
 2. ...
@@ -410,7 +409,7 @@ Plan-time review reply (no "out of scope but noticed" section
 at Plan time):
 
 ```
-Message from Junio to Grace:
+Message from Junio:
 
 1. <finding on the proposal> — <reason>; involves <file or
    task number>.
@@ -423,7 +422,7 @@ list looks symptom-shaped>.
 Clean reply (audit or Plan):
 
 ```
-Message from Junio to Grace: no substantive findings.
+Message from Junio: no substantive findings.
 ```
 
 A retro answer, a mid-session clarification, or a post-merge

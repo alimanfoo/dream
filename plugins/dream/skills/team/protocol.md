@@ -393,36 +393,19 @@ These apply across every phase.
   useful for local status or debugging, is at most one short
   sentence per turn.
 - **Message template.** Every outbound `SendMessage` body opens
-  with `Message from <your-name> to <recipient-name>: `, using
-  the agent names `Grace`, `Ralph`, `Junio`, and `Ada`, not role
-  descriptions like `director` or `maintainer`. This lets the
-  recipient see at a glance that the message is teammate
-  traffic, not user input — and makes a misroute (recipient ≠
-  intended addressee) visible. When the message expects a
-  reply, it ends with `Reply via SendMessage to <your-name>` —
-  the same name as in the opening prefix. The closing line
-  tells the recipient where to send their reply (back to you).
-  Skip the closing line on terminal messages — a final ack, a
-  `done` report — where no reply is wanted. Treat the envelope
-  as metadata, not content: a fresh teammate message has one
-  envelope only, as the first line. If you paste or summarize a
-  teammate's prior message, strip their envelope.
-
-  Example (Grace asks Junio for the audit on a just-committed
-  change):
-
-  ```
-  Message from Grace to Junio: task 3 committed at <sha>. Please audit.
-  Reply via SendMessage to Grace.
-  ```
-
-  Example (Ralph reports completion):
-
-  ```
-  Message from Ralph to Grace: done.
-  ```
-
-  The template is the envelope, not the content. Role-specific
+  with `Message from <your-name>: `, using the agent names
+  `Grace`, `Ralph`, `Junio`, and `Ada`, not role descriptions
+  like `director` or `maintainer`. This lets the recipient see
+  at a glance that the message is teammate traffic, not user
+  input. When the message expects a reply, it ends with
+  `Reply via SendMessage to <your-name>` — the same name as in
+  the opening prefix. The closing line tells the recipient where
+  to send their reply (back to you). Skip the closing line on
+  terminal messages — a final ack, a `done` report — where no
+  reply is wanted. Treat the envelope as metadata, not content:
+  a fresh teammate message has one envelope only, as the first
+  line. If you paste or summarize a teammate's prior message,
+  strip their envelope. The template is the envelope, not the content. Role-specific
   outputs (Junio's numbered list, Ada's
   Markdown review) sit between the opening prefix and the
   optional closing line. When Grace forwards a teammate's

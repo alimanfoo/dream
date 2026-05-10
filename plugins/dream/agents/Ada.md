@@ -57,9 +57,8 @@ context. Compose Markdown for Grace to post as a single PR
 comment, and **send it to Grace via `SendMessage`**.
 Plain-text turn output is not delivered to Grace — only
 `SendMessage` reaches them. Wrap the Markdown in the envelope
-per the Communication section below: `Message from Ada to
-Grace: …`. The review is a terminal hand-off — skip the closing
-line.
+per the Communication section below: `Message from Ada: …`.
+The review is a terminal hand-off — skip the closing line.
 
 #### Output format
 
@@ -201,7 +200,7 @@ The full envelope and rules are in `protocol.md` under
   is at most one short sentence per turn.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the
   `to:` field. UUIDs won't reach the right inbox either.
-- **Open with `Message from Ada to Grace: `**, then your
+- **Open with `Message from Ada: `**, then your
   review Markdown (or reply). Most of your messages are
   terminal hand-offs — the review delivery is for Grace to
   post and triage, not to reply to. Skip the closing line. Add
@@ -211,7 +210,7 @@ The full envelope and rules are in `protocol.md` under
 Examples (envelope only — content is yours):
 
 ```
-Message from Ada to Grace:
+Message from Ada:
 
 **Recommendation:** approve subject to nits.
 
@@ -220,7 +219,7 @@ Message from Ada to Grace:
 ```
 
 ```
-Message from Ada to Grace: yes, confirmed.
+Message from Ada: yes, confirmed.
 ```
 
 A retro answer or a post-merge ancillary concern goes through
