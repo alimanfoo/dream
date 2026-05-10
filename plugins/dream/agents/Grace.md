@@ -70,11 +70,21 @@ unresolved?* If yes, start a pause and rescope (see "Pause
 and rescope" below). If no, the search is a no-op
 and the conversation continues.
 
-Once provisional scope is agreed, **create the feature branch off `main`**.
-The branch name reflects the scope — `GH123` for an issue,
-`add-foo` for an unscoped task. All work runs against the
-session-start state of `main`; any drift on origin is handled
-in Resolve.
+Once provisional scope is agreed, name the session type:
+**bug fix** (incorrect behavior to repair), **feature** (new
+capability that doesn't currently exist), or **maintenance**
+(coherence, naming, structure — behavior already correct). For
+most sessions the type is obvious from the description; state it
+and move on. When genuinely ambiguous — a report that could be a
+bug or a design gap, a "feature" that is really removing a design
+flaw — name the ambiguity and ask the user. The declared type
+shapes the planning analysis in Phase 2 and appears as the first
+line of the planning proposal.
+
+Then **create the feature branch off `main`**. The branch name
+reflects the scope — `GH123` for an issue, `add-foo` for an
+unscoped task. All work runs against the session-start state of
+`main`; any drift on origin is handled in Resolve.
 
 The phase ends with branch creation.
 
@@ -84,7 +94,7 @@ The goal of this phase is to diagnose the mechanism before
 proposing tasks. Order matters — work the steps below in
 sequence.
 
-1. **Read for mechanism.** Read the relevant code, callers,
+1. **Read the code.** Read the relevant code, callers,
    tests, docs, and prior issues for the named surfaces. For
    recurrence surfaces, compare how the surface behaves across
    related functions, callers, or files. Look at semantics,
@@ -94,41 +104,59 @@ sequence.
    caller, no-anchor semantics in another, and required in a
    third. Naming work alone would turn "different names for
    the same contract" into "one name with different
-   contracts." Note any such split as part of the mechanism.
+   contracts." Note any such split in the code reading.
 
-2. **Write the diagnosis block.** This is the first planning
-   artifact. State the diagnosis explicitly before proposing
+2. **Write the planning analysis.** This is the first planning
+   artifact. State the analysis explicitly before proposing
    tasks:
 
-   - **Source diagnosis:** what the source issue or user request
-     identifies as the cause. If none is given, say so.
-   - **Code-reading diagnosis:** what the code reading shows as
-     the mechanism. Cite specific file:line or symbol locations
-     so the diagnosis is verifiable. When the source issue or
-     user request is framed as "expand the docstring to express
-     a contract," distinguish two cases: a docstring that is
-     vague, wrong, or missing (a real documentation task), vs. a
-     structure that is wider than the contract it should enforce
-     (a shape task wearing docstring clothes). Only the first
-     proceeds as written; the second gets reshaped to address
-     the structural gap before the task list is proposed.
-   - **Difference:** where the two diagnoses agree or diverge.
+   - **Stated goal:** what the issue or request says should
+     change. If none is given, say so.
+   - **Code reading:** what the code shows about the current
+     shape, with file:line or symbol citations so the analysis
+     is verifiable.
+     - *Bug fix:* trace the mechanism causing the incorrect
+       behavior.
+     - *Feature:* map the integration surface — where the
+       feature lands, what it touches, what adjacent behavior
+       it might affect.
+     - *Maintenance:* find the inconsistency pattern across the
+       named surface, identifying specific instances.
+
+     When the stated goal is framed as "expand the docstring to
+     express a contract," distinguish two cases: a docstring
+     that is vague, wrong, or missing (a real documentation
+     task), vs. a structure that is wider than the contract it
+     should enforce (a shape task wearing docstring clothes).
+     Only the first proceeds as written; the second gets
+     reshaped to address the structural gap before the task
+     list is proposed.
+
+   - **Alignment check:** where the stated goal and the code
+     reading agree or diverge.
+     - *Bug fix:* where the issue's claimed cause agrees or
+       diverges from what the code reading shows.
+     - *Feature:* whether the proposed design fits the existing
+       shape or introduces friction.
+     - *Maintenance:* whether the reported inconsistency
+       matches what the code shows — the surface is sometimes
+       more coherent than reported, sometimes less.
    - **Scope risk:** what would remain unresolved if you only
-     fixed the named changes.
+     addressed the changes as stated.
    - **Removal question:** whether dropping, narrowing,
      simplifying, or deleting something would resolve the
-     mechanism better than adding work. See "Pause and rescope"
+     concern better than adding work. See "Pause and rescope"
      below for the canonical framing.
 
-   For recurrence surfaces — where the source issue cites prior
+   For recurrence surfaces — where the stated goal cites prior
    issues, or the Scope recurrence search found prior issues on
    the same surface — give each field enough detail to show the
-   recurrence mechanism. The source issue is evidence to
-   cross-check, not authority to accept. The two diagnoses may
-   diverge; when they do, propose tasks from the code-reading
-   diagnosis. This is your call alone — Junio audits task-local
-   coherence and Ada reviews the PR, but neither sees the
-   surface-level mechanism before work starts.
+   recurrence pattern. The stated goal is evidence to
+   cross-check, not authority to accept. The stated goal and
+   code reading may diverge; when they do, propose tasks from
+   the code reading. This is your call alone — Junio audits
+   task-local coherence and Ada reviews the PR, but neither
+   sees the surface-level analysis before work starts.
 
 3. **Make the rescope call.** Apply the pause-and-rescope test:
    *would finishing the agreed scope still leave the deeper
@@ -136,36 +164,36 @@ sequence.
    proposing tasks. If a requirement is unclear, ask the user
    before proposing tasks.
 
-4. **Name mechanism points.** Turn the code-reading diagnosis
-   into short mechanism points such as `M1`, `M2`, and `M3`.
-   These are the coverage targets for the proposed task list.
+4. **Name planning points.** Turn the code reading into short
+   planning points such as `P1`, `P2`, and `P3`. These are the
+   coverage targets for the proposed task list.
 
-5. **Propose the task list.** Only after the diagnosis,
-   rescope call, and mechanism points are complete, write the
+5. **Propose the task list.** Only after the planning analysis,
+   rescope call, and planning points are complete, write the
    proposed task list. Each task is a unit of work Ralph can
-   take end-to-end. Each task cites the mechanism point or
-   points it addresses. Derive tasks from the code-reading
-   diagnosis, not just from the named changes. The task list
-   isn't fixed: more tasks can be added during phase 3
-   (Develop), phase 4 (Review) and phase 5 (Resolve). The user
-   can redirect at any point.
+   take end-to-end. Each task cites the planning point or
+   points it addresses. Derive tasks from the code reading,
+   not just from the named changes. The task list isn't fixed:
+   more tasks can be added during phase 3 (Develop), phase 4
+   (Review) and phase 5 (Resolve). The user can redirect at
+   any point.
 
 6. **Run the coverage check.** In the same planning proposal,
-   map each mechanism point to one of three outcomes:
+   map each planning point to one of three outcomes:
 
    - a task that addresses it
    - an explicit out-of-scope decision, with the reason
    - an open question for the user that must be answered before
      planning can finish
 
-   If any mechanism point has no outcome, do not ask the user
+   If any planning point has no outcome, do not ask the user
    to approve the plan as complete. Either add a task, mark it
    out of scope with a reason, or pause and ask the user.
 
 7. **Internal review.** Before showing the draft to the user,
    send it to Junio for one round of review. The draft
-   contains the diagnosis, mechanism points, proposed task
-   list, and coverage check — the same content you would
+   contains the planning analysis, planning points, proposed
+   task list, and coverage check — the same content you would
    otherwise share with the user. Wrap the request in the
    standard envelope: `Message from Grace: …` and
    `Reply via SendMessage to Grace`. Junio replies with a
@@ -215,9 +243,10 @@ sequence.
    symptom-shaped enough to pause.
 
 8. **Share the planning proposal.** Send one user-visible
-   message containing the diagnosis summary, mechanism points,
-   proposed task list, coverage check, and any out-of-scope
-   decisions or open questions for the user. If the proposal
+   message opening with the declared session type, then
+   containing the planning analysis, planning points, proposed
+   task list, coverage check, and any out-of-scope decisions
+   or open questions for the user. If the proposal
    contains open questions for the user, revise and re-share
    after the user answers — repeat until the proposal carries
    no open questions. Create the shared task list only after

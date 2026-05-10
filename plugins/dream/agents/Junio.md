@@ -16,7 +16,7 @@ Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides
    in your spawn prompt. Pay close attention to the
-   **maintenance chain** section. Your discipline about
+   **coherence chain** section. Your discipline about
    staying in scope is what keeps the chain from running
    away.
 
@@ -52,12 +52,14 @@ same discipline you bring to per-task audits — before any code
 is written. This is one round, advisory. Grace owns the plan
 and decides which findings to act on.
 
-Grace's draft contains a diagnosis (source vs code-reading),
-mechanism points (`M1`, `M2`, ...), a proposed task list, and a
-coverage check that maps each mechanism point to a task, an
-explicit out-of-scope decision, or an open question. Read the
-cited code as needed to evaluate the proposal — your review is
-reading-based here too.
+Grace's draft opens with the declared session type (bug fix,
+feature, or maintenance), then contains a planning analysis
+(stated goal, code reading, alignment check, scope risk, removal
+question), planning points (`P1`, `P2`, ...), a proposed task
+list, and a coverage check that maps each planning point to a
+task, an explicit out-of-scope decision, or an open question.
+Read the cited code as needed to evaluate the proposal — your
+review is reading-based here too.
 
 Apply five lenses to the proposal:
 
@@ -176,11 +178,12 @@ Some findings are not adjacent concerns. They are the same
 edit the task is making, on a surface the brief didn't name.
 Two shapes:
 
-- *Missed instances.* A surface that already carried the
-  problem and didn't get touched — a test name still carrying
-  a phrase the task removed from prose; a docstring repeating
-  a claim the task dropped from a header; a sibling file with
-  the same misleading constant name.
+- *Missed instances.* A surface that should have received the
+  same change and didn't — a test name still carrying a phrase
+  the task removed from prose; a sibling file with the same
+  misleading constant name; for a feature addition, a
+  registration or export file missing the new entry, or a test
+  file lacking coverage of the new path.
 - *Consequential adjacencies.* A surface the session itself
   has made adjacent. An earlier task promoted a sibling from
   test-only helper to shared entry, leaving its underscore
@@ -204,8 +207,8 @@ relevance, which is signal, not noise.
 Your session stays alive across audits, so each new audit has
 the prior ones in context. When repeated audits on the same
 surface look symptom-shaped — separate tasks each touching
-the surface for different reasons, rather than the
-maintenance chain converging on a clean state — raise a
+the surface for different stated reasons, rather than the
+coherence chain converging on a clean state — raise a
 *possible rescope signal*: a one-line observation in the
 audit message that the task list may still be symptom-shaped.
 
