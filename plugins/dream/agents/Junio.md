@@ -414,8 +414,10 @@ Per-task audit reply:
 ```
 Message from Junio:
 
-1. <finding> — <reason>; involves <file/symbol>.
-2. ...
+1. <finding (missed instance)> — <reason>; involves
+   <file/symbol>.
+2. <finding (consequential adjacency)> — <reason: an earlier
+   task made this surface adjacent>; involves <file/symbol>.
 
 Out of scope but noticed:
 1. ...
