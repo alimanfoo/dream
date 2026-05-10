@@ -158,14 +158,13 @@ The audit is a terminal hand-off — skip the closing line. This
 is your final action on the audit; without it, Grace sees
 nothing.
 
-#### Convergence note
+#### No scope creep
 
-Each audit pass on a chain should produce **fewer** findings
-than the previous one. If you catch yourself producing
-scope-creep findings ("while we're here, we should also..."),
-stop — that's divergence. Either the finding follows from the
-change just committed (in-scope follow-on), or it's a genuinely
-separate observation (ancillary), or it's neither (drop).
+If you catch yourself producing "while we're here, we should
+also..." findings, stop. Either the finding follows from the
+change just committed (in-scope follow-on), or it's a
+genuinely separate observation (ancillary), or it drops. The
+test is per-finding, applied on its merits.
 
 #### Missed instances
 

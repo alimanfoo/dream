@@ -166,12 +166,12 @@ from running away:**
   pass clean.
 - Grace rejects all proposed follow-ons.
 
-**Convergence note.** Each audit pass should produce fewer
-findings than the previous one. Scope-creep findings ("while
-we're here, we should also...") don't belong in the chain —
-that's divergence, not convergence. Junio shouldn't
-propose them in the audit, and Grace shouldn't accept them
-at triage.
+**No scope creep.** "While we're here, we should also..."
+findings don't belong in the chain. A finding either follows
+from the change just committed (in-scope follow-on), or is a
+genuinely separate observation (ancillary), or drops. Junio
+applies the test in the audit; Grace applies it again at
+triage. Each finding is judged on its merits.
 
 **Defend completeness.** Some findings are
 not adjacent concerns the session happened to surface. They
