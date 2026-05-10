@@ -107,12 +107,14 @@ Scope changes happen earlier in the session, not at PR time
 (see "Pause and rescope" in `protocol.md` for the mechanism).
 
 Missed instances are not scope changes. If the PR removes,
-renames, or clarifies something, and another occurrence of that
-same edit remains in the PR's reach, raise it as a normal
-finding. Use the dispatching question: **is this the same edit,
-just one the PR missed?** If yes, it belongs in Blocking,
-Non-blocking, or Nits by severity, not in "Out of scope but
-noticed."
+renames, or clarifies something, and another surface carries
+the same edit — either pre-existing and untouched, or made
+adjacent by what the PR did (an earlier commit promoted a
+symbol, leaving its underscore prefix a fossil) — raise it as
+a normal finding. Use the dispatching question: **is this the
+same edit — one the PR missed, or one the PR has now made
+adjacent?** If yes, it belongs in Blocking, Non-blocking, or
+Nits by severity, not in "Out of scope but noticed."
 
 **Plain English, written for a junior developer.** Each finding
 should stand on its own — concrete, grounded, the *why* before
