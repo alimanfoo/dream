@@ -77,13 +77,17 @@ Apply five lenses to the proposal:
    whether a shape change serves better. See "Compensation
    patterns" under Phase 3 for the full framing.
 
-3. **Defend completeness.** Does the plan
-   cover all surfaces of the same edit, or does it stop short?
-   A sibling file, a parallel function, a test name carrying a
-   phrase a task removes from prose — flag any instance the
-   plan misses. Ask the dispatching question: *is this the
-   same edit, just one we missed?* Finding the rest of the
-   same edit is convergence, not scope creep.
+3. **Defend completeness.** Does the plan cover all surfaces
+   of the same edit, or does it stop short? Two shapes:
+   missed instances on pre-existing surfaces (a sibling file,
+   a parallel function, a test name carrying a phrase a task
+   removes from prose) and consequential adjacencies the plan
+   itself will create (an earlier task promotes a symbol,
+   leaving its underscore prefix a fossil no later task
+   touches). Ask the dispatching question: *is this the same
+   edit — one missed, or one the plan will make adjacent?*
+   Finding the rest of the same edit is convergence, not scope
+   creep.
 
 4. **Tidy first?** Would any planned task go more cleanly if a
    small precursor cleanup made the change easy first?
@@ -166,18 +170,34 @@ change just committed (in-scope follow-on), or it's a
 genuinely separate observation (ancillary), or it drops. The
 test is per-finding, applied on its merits.
 
-#### Missed instances
+#### The same edit elsewhere
 
-Some findings are not adjacent concerns. They are missed
-instances of the same edit the task is already making. A test
-name may still carry a phrase the task removed from prose. A
-docstring may repeat a claim the task dropped from a header. A
-sibling file may use the same misleading constant name.
+Some findings are not adjacent concerns. They are the same
+edit the task is making, on a surface the brief didn't name.
+Two shapes:
 
-Ask the dispatching question: **is this the same edit, just one
-we missed?** If yes, propose it as an in-scope follow-on. If no,
-treat it as ancillary or drop it. Finding the rest of the same
-edit is convergence, not scope creep.
+- *Missed instances.* A surface that already carried the
+  problem and didn't get touched — a test name still carrying
+  a phrase the task removed from prose; a docstring repeating
+  a claim the task dropped from a header; a sibling file with
+  the same misleading constant name.
+- *Consequential adjacencies.* A surface the session itself
+  has made adjacent. An earlier task promoted a sibling from
+  test-only helper to shared entry, leaving its underscore
+  prefix a fossil; a removed flag left an orphan branch in a
+  file that handled it; a renamed concept made a parallel
+  function's name read as a contradiction. The surface wasn't
+  in scope before the session started — the session put it
+  there. Read the audit against the session so far, not just
+  this commit in isolation; Grace's prior audit requests are
+  still in your context for exactly this reason.
+
+Ask the dispatching question: **is this the same edit — one
+we missed, or one the session has now made adjacent?** If
+yes, propose it as an in-scope follow-on. If no, treat it as
+ancillary or drop it. An in-session antecedent flips a
+borderline call toward in-scope: the session created the
+relevance, which is signal, not noise.
 
 #### Possible rescope signal
 
@@ -394,8 +414,10 @@ Per-task audit reply:
 ```
 Message from Junio:
 
-1. <finding> — <reason>; involves <file/symbol>.
-2. ...
+1. <finding (missed instance)> — <reason>; involves
+   <file/symbol>.
+2. <finding (consequential adjacency)> — <reason: an earlier
+   task made this surface adjacent>; involves <file/symbol>.
 
 Out of scope but noticed:
 1. ...

@@ -286,10 +286,13 @@ list is drained.
    post-merge bucket — never filed mid-session.
 
    Before treating a finding as ancillary, ask: **is this the
-   same edit, just one we missed?** If yes, accept it as an
-   in-scope follow-on even when the original task did not list
-   that surface. A missed instance completes the current
-   change; it is not scope creep.
+   same edit — one we missed, or one the session has now made
+   adjacent?** If yes, accept it as an in-scope follow-on even
+   when the original task did not list that surface. An
+   in-session antecedent flips a borderline call toward
+   in-scope: the session created the relevance, which is
+   signal, not noise. The same edit on a wider surface
+   completes the current change; it is not scope creep.
 
    When a finding proposes adding or expanding a docstring or
    comment to express a contract, invariant, or precondition,
@@ -377,6 +380,8 @@ should never appear in the description:
 - *maintenance chain*
 - *depth-first drain*
 - *follow-on*
+- *missed instance*
+- *consequential adjacency*
 - *ancillary finding*
 - *pause and rescope*
 - *possible rescope signal*
@@ -429,9 +434,9 @@ the PR is open:
    bucket).
 
    Reclassify any "out of scope but noticed" item as in scope
-   when it is the same edit, just one the PR missed. The review
-   bucket is for broader concerns, not incomplete instances of
-   the agreed change.
+   when it is the same edit — one the PR missed, or one the
+   PR has now made adjacent. The review bucket is for broader
+   concerns, not incomplete instances of the agreed change.
 
    When a finding proposes adding or expanding a docstring or
    comment to express a contract, invariant, or precondition,

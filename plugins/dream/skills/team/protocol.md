@@ -173,18 +173,32 @@ genuinely separate observation (ancillary), or drops. Junio
 applies the test in the audit; Grace applies it again at
 triage. Each finding is judged on its merits.
 
-**Defend completeness.** Some findings are
-not adjacent concerns the session happened to surface. They
-are missed instances of the same edit the session is already
-making. Examples: a test name still carrying the phrase the
-session removes from prose; a docstring repeating a claim the
-session drops from a header; a sibling file with the same
-misleading constant name. These are in-scope follow-ons even
-when they sit on a surface the original task did not list.
-Junio asks during audit, and Grace asks during triage: "is
-this the same edit, just one we missed?" If yes, fold it into
-the chain. If no, treat it as ancillary or drop it. Finding
-the rest of the same edit is convergence, not scope creep.
+**Defend completeness.** Some findings are not adjacent
+concerns the session happened to surface. They are the same
+edit the session is making, on a surface the task list didn't
+name. Two shapes:
+
+- *Missed instances.* A surface that already carried the
+  problem and didn't get touched — a test name still carrying
+  a phrase the session removes from prose; a docstring
+  repeating a claim the session drops from a header; a sibling
+  file with the same misleading constant name.
+- *Consequential adjacencies.* A surface the session itself
+  has made adjacent. An earlier task promoted a sibling from
+  test-only helper to shared entry, leaving its underscore
+  prefix a fossil; a removed flag left an orphan branch in a
+  file that handled it; a renamed concept made a parallel
+  function's name read as a contradiction. The surface wasn't
+  in scope before the session started — the session put it
+  there.
+
+Junio asks during audit, Grace asks during triage: *is this
+the same edit — one we missed, or one the session has now made
+adjacent?* An in-session antecedent flips a borderline call
+toward in-scope: the session created the relevance, which is
+signal, not noise. If yes, fold it into the chain. If no,
+treat it as ancillary or drop it. Finding the rest of the same
+edit is convergence, not scope creep.
 
 **Possible rescope signal.** Junio's session stays alive
 across audits, so each new audit has the prior ones in
