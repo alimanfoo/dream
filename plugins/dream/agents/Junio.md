@@ -55,8 +55,8 @@ and decides which findings to act on.
 Grace's draft opens with the declared session type (bug fix,
 feature, or maintenance), then contains a planning analysis
 (stated goal, code reading, alignment check, scope risk, removal
-question), planning points (`P1`, `P2`, ...), a proposed task
-list, and a coverage check that maps each planning point to a
+question), code findings (`F1`, `F2`, ...), a proposed task
+list, and a coverage check that maps each code finding to a
 task, an explicit out-of-scope decision, or an open question.
 Read the cited code as needed to evaluate the proposal — your
 review is reading-based here too.

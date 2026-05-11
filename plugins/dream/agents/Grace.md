@@ -164,35 +164,50 @@ below in sequence.
    proposing tasks. If a requirement is unclear, ask the user
    before proposing tasks.
 
-4. **Name planning points.** Turn the code reading into short
-   planning points such as `P1`, `P2`, and `P3`. These are the
-   coverage targets for the proposed task list.
+4. **Name code findings.** For each distinct thing the code
+   reading revealed that the task list must address, write a
+   short code finding — `F1`, `F2`, `F3`. These are the
+   coverage targets for the proposed task list. A code finding
+   is not a task description; it is the underlying thing the
+   code reading turned up that demands a response. The
+   substance differs by session type:
+
+   - *Bug fix:* a node in the causal mechanism — a specific
+     function, call site, or data flow path that contributes
+     to the incorrect behavior.
+   - *Feature:* a specific integration requirement the code
+     reading surfaced — for example, "the auth middleware
+     doesn't pass context downstream; the new feature
+     requires it."
+   - *Maintenance:* a specific inconsistency — a particular
+     file, symbol, or call site where the named pattern is
+     broken.
 
 5. **Propose the task list.** Only after the planning analysis,
-   rescope call, and planning points are complete, write the
+   rescope call, and code findings are complete, write the
    proposed task list. Each task is a unit of work Ralph can
-   take end-to-end. Each task cites the planning point or
-   points it addresses. Derive tasks from the code reading,
+   take end-to-end. Each task cites the code finding or
+   findings it addresses. Derive tasks from the code reading,
    not just from the named changes. The task list isn't fixed:
    more tasks can be added during phase 3 (Develop), phase 4
    (Review) and phase 5 (Resolve). The user can redirect at
    any point.
 
 6. **Run the coverage check.** In the same planning proposal,
-   map each planning point to one of three outcomes:
+   map each code finding to one of three outcomes:
 
    - a task that addresses it
    - an explicit out-of-scope decision, with the reason
    - an open question for the user that must be answered before
      planning can finish
 
-   If any planning point has no outcome, do not ask the user
+   If any code finding has no outcome, do not ask the user
    to approve the plan as complete. Either add a task, mark it
    out of scope with a reason, or pause and ask the user.
 
 7. **Internal review.** Before showing the draft to the user,
    send it to Junio for one round of review. The draft
-   contains the planning analysis, planning points, proposed
+   contains the planning analysis, code findings, proposed
    task list, and coverage check — the same content you would
    otherwise share with the user. Wrap the request in the
    standard envelope: `Message from Grace: …` and
@@ -244,7 +259,7 @@ below in sequence.
 
 8. **Share the planning proposal.** Send one user-visible
    message opening with the declared session type, then
-   containing the planning analysis, planning points, proposed
+   containing the planning analysis, code findings, proposed
    task list, coverage check, and any out-of-scope decisions
    or open questions for the user. If the proposal
    contains open questions for the user, revise and re-share
