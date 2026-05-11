@@ -716,9 +716,10 @@ Scope, Plan, and Develop. The evidence available differs by
 phase.
 
 At Plan time, ask the question in its strongest form: *what
-is making issues land on this surface, and does the proposed
-work touch that mechanism — not just the fix the issue names?*
-The issue's diagnosis may name a symptom rather than the cause.
+is the underlying root cause, unmet requirement, or broader
+inconsistency, and does the proposed work reach it — not just
+the surface change the stated goal names?* The stated goal
+may name a symptom rather than what's behind it.
 
 ### The removal question
 

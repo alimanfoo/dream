@@ -86,7 +86,9 @@ Grace and the user agree the scope of work. Grace reads the
 cited material, asks questions, checks the issue tracker for
 recurrence on the named surfaces, and applies the
 pause-and-rescope test if prior issues exist. Once provisional
-scope is agreed, Grace creates the feature branch off `main`.
+scope is agreed, Grace names the session type (bug fix,
+feature, or maintenance) and creates the feature branch off
+`main`.
 
 The phase ends with branch creation.
 

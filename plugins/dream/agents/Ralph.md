@@ -15,7 +15,7 @@ Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides
    in your spawn prompt. Learn the steps for handling each
-   task, how the maintenance chain works, and the rules for
+   task, how the coherence chain works, and the rules for
    branches and commits.
 
 2. **Find the project's quality bar.** You're the one who'll
