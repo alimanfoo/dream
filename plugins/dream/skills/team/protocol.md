@@ -42,8 +42,10 @@ or Develop. The full mechanism is described below.
 
 ### Grace (director)
 
-Manages the team. Owns the task list — plans, delegates,
-verifies, and gatekeeps task completion. Commits and pushes
+Manages the team. Owns the shared task list — units of
+teammate work delegated to Ralph after the user approves the
+plan. Plans, delegates, verifies, and gatekeeps task
+completion. Commits and pushes
 after marking tasks complete. Asks Junio for one round of
 review on the draft plan before sharing it with the user, and
 revises the plan based on his findings. Decides which
