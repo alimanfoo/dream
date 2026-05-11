@@ -65,26 +65,36 @@ gh issue list --state all --search '<surface>'
 If the search returns other issues on any of these surfaces
 (open or closed), or if the issue body cites prior closed
 issues, apply the pause-and-rescope test: *would finishing
-the work as proposed still leave the deeper cause
-unresolved?* If yes, start a pause and rescope (see "Pause
-and rescope" below). If no, the search is a no-op
-and the conversation continues.
+the work as proposed still leave the root cause, unmet
+requirement, or broader inconsistency unresolved?* If yes,
+start a pause and rescope (see "Pause and rescope" below). If no,
+the search is a no-op and the conversation continues.
 
-Once provisional scope is agreed, **create the feature branch off `main`**.
-The branch name reflects the scope — `GH123` for an issue,
-`add-foo` for an unscoped task. All work runs against the
-session-start state of `main`; any drift on origin is handled
-in Resolve.
+Once provisional scope is agreed, name the session type:
+**bug fix** (incorrect behavior to repair), **enhancement** (new
+feature or capability that doesn't currently exist), or **maintenance**
+(coherence, naming, structure — behavior already correct). For
+most sessions the type is obvious from the description; state it
+and move on. When genuinely ambiguous — a report that could be a
+bug or a design gap, an "enhancement" that is really removing a
+design flaw — name the ambiguity and ask the user. The declared type
+shapes the planning analysis in Phase 2 and appears as the first
+line of the planning proposal.
+
+Then **create the feature branch off `main`**. The branch name
+reflects the scope — `GH123` for an issue, `add-foo` for an
+unscoped task. All work runs against the session-start state of
+`main`; any drift on origin is handled in Resolve.
 
 The phase ends with branch creation.
 
 ### Phase 2: Plan
 
-The goal of this phase is to diagnose the mechanism before
-proposing tasks. Order matters — work the steps below in
-sequence.
+The goal of this phase is to read the code and produce a planning
+analysis before proposing tasks. Order matters — work the steps
+below in sequence.
 
-1. **Read for mechanism.** Read the relevant code, callers,
+1. **Read the code.** Read the relevant code, callers,
    tests, docs, and prior issues for the named surfaces. For
    recurrence surfaces, compare how the surface behaves across
    related functions, callers, or files. Look at semantics,
@@ -94,78 +104,108 @@ sequence.
    caller, no-anchor semantics in another, and required in a
    third. Naming work alone would turn "different names for
    the same contract" into "one name with different
-   contracts." Note any such split as part of the mechanism.
+   contracts." Note any such split in the code reading.
 
-2. **Write the diagnosis block.** This is the first planning
-   artifact. State the diagnosis explicitly before proposing
+2. **Write the planning analysis.** This is the first planning
+   artifact. State the analysis explicitly before proposing
    tasks:
 
-   - **Source diagnosis:** what the source issue or user request
-     identifies as the cause. If none is given, say so.
-   - **Code-reading diagnosis:** what the code reading shows as
-     the mechanism. Cite specific file:line or symbol locations
-     so the diagnosis is verifiable. When the source issue or
-     user request is framed as "expand the docstring to express
-     a contract," distinguish two cases: a docstring that is
-     vague, wrong, or missing (a real documentation task), vs. a
-     structure that is wider than the contract it should enforce
-     (a shape task wearing docstring clothes). Only the first
+   - **Stated goal:** what the issue or request says should
+     change. If none is given, say so. When the stated goal is
+     framed as "expand the docstring to express a contract,"
+     distinguish two cases: a docstring that is vague, wrong,
+     or missing (a real documentation task), vs. a structure
+     that is wider than the contract it should enforce (a
+     shape task wearing docstring clothes). Only the first
      proceeds as written; the second gets reshaped to address
      the structural gap before the task list is proposed.
-   - **Difference:** where the two diagnoses agree or diverge.
+   - **Code reading:** what the code shows about the current
+     shape, with file:line or symbol citations so the analysis
+     is verifiable.
+     - *Bug fix:* trace the mechanism causing the incorrect
+       behavior.
+     - *Enhancement:* map the integration surface — where the
+       enhancement lands, what it touches, what adjacent behavior
+       it might affect.
+     - *Maintenance:* find the inconsistency pattern across the
+       named surface, identifying specific instances.
+   - **Alignment check:** where the stated goal and the code
+     reading agree or diverge.
+     - *Bug fix:* where the issue's claimed cause agrees or
+       diverges from what the code reading shows.
+     - *Enhancement:* whether the proposed design fits the existing
+       shape or introduces friction.
+     - *Maintenance:* whether the reported inconsistency
+       matches what the code shows — the surface is sometimes
+       more coherent than reported, sometimes less.
    - **Scope risk:** what would remain unresolved if you only
-     fixed the named changes.
+     addressed the changes as stated.
    - **Removal question:** whether dropping, narrowing,
      simplifying, or deleting something would resolve the
-     mechanism better than adding work. See "Pause and rescope"
+     concern better than adding work. See "Pause and rescope"
      below for the canonical framing.
 
-   For recurrence surfaces — where the source issue cites prior
+   For recurrence surfaces — where the stated goal cites prior
    issues, or the Scope recurrence search found prior issues on
    the same surface — give each field enough detail to show the
-   recurrence mechanism. The source issue is evidence to
-   cross-check, not authority to accept. The two diagnoses may
-   diverge; when they do, propose tasks from the code-reading
-   diagnosis. This is your call alone — Junio audits task-local
-   coherence and Ada reviews the PR, but neither sees the
-   surface-level mechanism before work starts.
+   recurrence pattern. The stated goal is evidence to
+   cross-check, not authority to accept. The stated goal and
+   code reading may diverge; when they do, propose tasks from
+   the code reading. This is your call alone — Junio audits
+   task-local coherence and Ada reviews the PR, but neither
+   sees the surface-level analysis before work starts.
 
 3. **Make the rescope call.** Apply the pause-and-rescope test:
-   *would finishing the agreed scope still leave the deeper
-   cause unresolved?* If yes, start a pause and rescope before
+   *would finishing the agreed scope still leave the root
+   cause, unmet requirement, or broader inconsistency
+   unresolved?* If yes, start a pause and rescope before
    proposing tasks. If a requirement is unclear, ask the user
    before proposing tasks.
 
-4. **Name mechanism points.** Turn the code-reading diagnosis
-   into short mechanism points such as `M1`, `M2`, and `M3`.
-   These are the coverage targets for the proposed task list.
+4. **Name code findings.** For each distinct thing the code
+   reading revealed that the task list must address, write a
+   short code finding — `F1`, `F2`, `F3`. These are the
+   coverage targets for the proposed task list. A code finding
+   is not a task description; it is the underlying thing the
+   code reading turned up that demands a response. The
+   substance differs by session type:
 
-5. **Propose the task list.** Only after the diagnosis,
-   rescope call, and mechanism points are complete, write the
+   - *Bug fix:* a node in the causal mechanism — a specific
+     function, call site, or data flow path that contributes
+     to the incorrect behavior.
+   - *Enhancement:* a specific integration requirement the code
+     reading surfaced — for example, "the auth middleware
+     doesn't pass context downstream; the new enhancement
+     requires it."
+   - *Maintenance:* a specific inconsistency — a particular
+     file, symbol, or call site where the named pattern is
+     broken.
+
+5. **Propose the task list.** Only after the planning analysis,
+   rescope call, and code findings are complete, write the
    proposed task list. Each task is a unit of work Ralph can
-   take end-to-end. Each task cites the mechanism point or
-   points it addresses. Derive tasks from the code-reading
-   diagnosis, not just from the named changes. The task list
-   isn't fixed: more tasks can be added during phase 3
-   (Develop), phase 4 (Review) and phase 5 (Resolve). The user
-   can redirect at any point.
+   take end-to-end. Derive tasks from the code reading, not
+   just from the named changes. The task list isn't fixed:
+   more tasks can be added during phase 3 (Develop), phase 4
+   (Review) and phase 5 (Resolve). The user can redirect at
+   any point.
 
 6. **Run the coverage check.** In the same planning proposal,
-   map each mechanism point to one of three outcomes:
+   map each code finding to one of three outcomes:
 
    - a task that addresses it
    - an explicit out-of-scope decision, with the reason
    - an open question for the user that must be answered before
      planning can finish
 
-   If any mechanism point has no outcome, do not ask the user
+   If any code finding has no outcome, do not ask the user
    to approve the plan as complete. Either add a task, mark it
    out of scope with a reason, or pause and ask the user.
 
 7. **Internal review.** Before showing the draft to the user,
    send it to Junio for one round of review. The draft
-   contains the diagnosis, mechanism points, proposed task
-   list, and coverage check — the same content you would
+   contains the planning analysis, code findings, proposed
+   task list, and coverage check — the same content you would
    otherwise share with the user. Wrap the request in the
    standard envelope: `Message from Grace: …` and
    `Reply via SendMessage to Grace`. Junio replies with a
@@ -215,9 +255,10 @@ sequence.
    symptom-shaped enough to pause.
 
 8. **Share the planning proposal.** Send one user-visible
-   message containing the diagnosis summary, mechanism points,
-   proposed task list, coverage check, and any out-of-scope
-   decisions or open questions for the user. If the proposal
+   message opening with the declared session type, then
+   containing the planning analysis, code findings, proposed
+   task list, coverage check, and any out-of-scope decisions
+   or open questions for the user. If the proposal
    contains open questions for the user, revise and re-share
    after the user answers — repeat until the proposal carries
    no open questions. Create the shared task list only after
@@ -378,6 +419,7 @@ should never appear in the description:
 - *task* as the unit of dream-team work
 - *post-merge sweep*
 - *maintenance chain*
+- *coherence chain*
 - *depth-first drain*
 - *follow-on*
 - *missed instance*
@@ -647,39 +689,45 @@ team down. Then wait for any further instructions.
 
 ## Pause and rescope
 
-When the task list may be symptom-level rather than root-cause,
-pause and raise it with the user before continuing. You can do
-this at Scope, Plan, or Develop. The shape is the same every
-time:
+When the task list may be addressing the symptom rather than
+the root cause, unmet requirement, or broader inconsistency
+behind it, pause and raise it with the user before continuing.
+You can do this at Scope, Plan, or Develop. The shape is the
+same every time:
 
 1. Pause the work.
 2. State the evidence — what you have seen that suggests the
-   agreed work won't reach the deeper cause.
+   agreed work won't reach the root cause, unmet requirement,
+   or broader inconsistency.
 3. Propose two options — keep the current scope as-is, or
-   rescope to address the deeper cause.
+   rescope to address the root cause, unmet requirement, or
+   broader inconsistency.
 4. Ask the user which to take. Keep continues the original
    plan; rescope reshapes the task list.
 
 ### The test
 
-> Would finishing the current task list still leave the
-> deeper cause unresolved?
+> Would finishing the current task list still leave the root
+> cause, unmet requirement, or broader inconsistency
+> unresolved?
 
 If yes, pause and rescope is on the table. The test applies at
 Scope, Plan, and Develop. The evidence available differs by
 phase.
 
 At Plan time, ask the question in its strongest form: *what
-is making issues land on this surface, and does the proposed
-work touch that mechanism — not just the fix the issue names?*
-The issue's diagnosis may name a symptom rather than the cause.
+is the underlying root cause, unmet requirement, or broader
+inconsistency, and does the proposed work reach it — not just
+the surface change the stated goal names?* The stated goal
+may name a symptom rather than what's behind it.
 
 ### The removal question
 
 Always ask alongside the main test:
 
 > If we removed something — a feature, a branch, a layer
-> of code, a requirement — would the deeper cause resolve?
+> of code, a requirement — would the root cause, unmet
+> requirement, or broader inconsistency resolve?
 
 The removal question surfaces shapes (drop or narrow, simplify,
 delete) that agents otherwise miss by defaulting to adding code.
@@ -736,10 +784,11 @@ user can resolve, pause again at that point.
   gets its own triage decision. Pause and rescope is different:
   it pauses the whole session and reopens the scope
   conversation.
-- **Not scope creep.** The test is whether the deeper cause
-  stays unresolved after the current task list completes — not
-  "while we're here, we should also..." Genuinely separate
-  findings go to ancillary findings for post-merge triage.
+- **Not scope creep.** The test is whether the root cause,
+  unmet requirement, or broader inconsistency stays unresolved
+  after the current task list completes — not "while we're
+  here, we should also..." Genuinely separate findings go to
+  ancillary findings for post-merge triage.
 - **Not a substitute for the post-merge re-frame disposition.**
   Some recurrences only become visible after merge. That's
   what the Phase 6 re-frame disposition is for.

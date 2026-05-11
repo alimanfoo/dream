@@ -11,8 +11,9 @@ A session moves through seven phases:
 1. **Scope.** The user proposes a provisional scope of work for
    the session.
 
-2. **Plan.** Grace diagnoses the mechanism, proposes tasks, and
-   creates the task list after user approval.
+2. **Plan.** Grace reads the code in depth, produces a planning
+   analysis, proposes tasks, and creates the task list after user
+   approval.
 
 3. **Develop.** The main implementation loop — one task at a
    time, coherence restored before moving on.
@@ -46,20 +47,21 @@ verifies, and gatekeeps task completion. Commits and pushes
 after marking tasks complete. Asks Junio for one round of
 review on the draft plan before sharing it with the user, and
 revises the plan based on his findings. Decides which
-maintenance proposals and review findings become follow-on
-tasks. Decides how to dispose post-merge ancillary findings
-from all team members, then discusses those calls and the exact
-filing text with the user before filing issues or comments.
+of Junio's audit proposals and Ada's review findings become
+follow-on tasks. Decides how to dispose post-merge ancillary
+findings from all team members, then discusses those calls
+and the exact filing text with the user before filing issues
+or comments.
 Offers a retrospective after triage.
 
 ### Ralph (developer)
 
 Writes the code. Full-capability. Does every accepted task,
-including maintenance tasks and follow-on tasks to address
-review findings. Leaves changes in the working tree — never
-commits or pushes. Before reporting a task done, runs the full
-quality bar: the project's lint/format checks **and** the
-project's test suite.
+including coherence follow-ons from Junio's audits and tasks
+to address review findings. Leaves changes in the working tree
+— never commits or pushes. Before reporting a task done, runs
+the full quality bar: the project's lint/format checks **and**
+the project's test suite.
 
 ### Junio (maintainer)
 
@@ -84,22 +86,23 @@ Grace and the user agree the scope of work. Grace reads the
 cited material, asks questions, checks the issue tracker for
 recurrence on the named surfaces, and applies the
 pause-and-rescope test if prior issues exist. Once provisional
-scope is agreed, Grace creates the feature branch off `main`.
+scope is agreed, Grace names the session type (bug fix,
+enhancement, or maintenance) and creates the feature branch off
+`main`.
 
 The phase ends with branch creation.
 
 ## Phase 2: Plan
 
-Grace reads the code in detail and diagnoses the mechanism
-before proposing tasks. For recurrence surfaces, Grace writes an
-explicit diagnosis first (source issue's claimed cause vs.
-code-reading mechanism), names the mechanism points, proposes
-tasks from that diagnosis, and includes a coverage check in the
-planning proposal. Before sharing the proposal with the user,
-Grace sends the draft to Junio for one round of internal review
-— advisory, not gating. Grace owns the plan and decides which
-findings to act on. The phase ends at user approval of the task
-list.
+Grace reads the code in depth and produces a planning analysis
+before proposing tasks. Grace writes the analysis first (stated
+goal vs. code reading), names the code findings, proposes tasks
+from the code reading, and includes a coverage check in the
+planning proposal. Before
+sharing the proposal with the user, Grace sends the draft to
+Junio for one round of internal review — advisory, not gating.
+Grace owns the plan and decides which findings to act on. The
+phase ends at user approval of the task list.
 
 ## Phase 3: Develop
 
@@ -132,7 +135,7 @@ chain repeats until the list is drained.
    substantive findings"), plus any ancillary findings as a
    separate section, plus an optional **possible rescope
    signal** when audits keep landing on the same surface
-   this session (see "Maintenance chain" below).
+   this session (see "Coherence chain" below).
 
 6. **Triage.** Grace accepts or rejects each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
@@ -143,11 +146,11 @@ chain repeats until the list is drained.
 
 7. **Loop.** Next task, back to step 1.
 
-### Maintenance chain
+### Coherence chain
 
 Junio audit runs after **every** task, including
 tasks Junio itself proposed. This catches incoherence
-that maintenance work itself introduces — particularly
+that completed tasks introduce — particularly
 important for structural changes (renames, moves, refactors).
 
 **Scope discipline — not depth limits — is what keeps the chain
@@ -178,11 +181,12 @@ concerns the session happened to surface. They are the same
 edit the session is making, on a surface the task list didn't
 name. Two shapes:
 
-- *Missed instances.* A surface that already carried the
-  problem and didn't get touched — a test name still carrying
-  a phrase the session removes from prose; a docstring
-  repeating a claim the session drops from a header; a sibling
-  file with the same misleading constant name.
+- *Missed instances.* A surface that should have received the
+  same change and didn't — a test name still carrying a phrase
+  the session removes from prose; a sibling file with the same
+  misleading constant name; for an enhancement, a registration
+  or export file missing the new entry, or a test file lacking
+  coverage of the new path.
 - *Consequential adjacencies.* A surface the session itself
   has made adjacent. An earlier task promoted a sibling from
   test-only helper to shared entry, leaving its underscore
@@ -204,7 +208,7 @@ edit is convergence, not scope creep.
 across audits, so each new audit has the prior ones in
 context. When repeated audits on the same surface look
 symptom-shaped — separate tasks each touching the surface
-for different reasons, rather than the maintenance chain
+for different stated reasons, rather than the coherence chain
 converging on a clean state — Junio raises a *possible
 rescope signal*: a one-line note in the audit message that
 the task list may still be symptom-shaped. A rename or
@@ -258,7 +262,7 @@ the compensation — does the change still do what it claims?
 
 ### Task ordering
 
-Maintenance follow-ons Grace accepts **insert as the next
+Follow-ons Grace accepts **insert as the next
 tasks**, not at the end of the queue:
 
 - Per-task coherence is the contract. It must be resolved
@@ -271,7 +275,7 @@ tasks**, not at the end of the queue:
 
 If a follow-on later spawns its own follow-on, the grandchild
 also inserts next — the chain drains depth-first. The original
-queue resumes only after the parent task's maintenance chain is
+queue resumes only after the parent task's coherence chain is
 fully drained.
 
 The phase ends when the task list is drained and Grace
@@ -324,15 +328,17 @@ declines.
 ## Pause and rescope
 
 Grace uses this mechanism at Scope, Plan, or Develop when the
-task list may be addressing symptoms rather than the root cause.
-Grace pauses the work, states the evidence, proposes two options
+task list may be addressing symptoms rather than the root cause,
+unmet requirement, or broader inconsistency behind them. Grace
+pauses the work, states the evidence, proposes two options
 (keep scope or rescope), and asks the user which to take. A
 rescope reshapes the task list; keep continues the original plan.
 
 The test: *would finishing the current task list still leave the
-deeper cause unresolved?* Evidence includes prior issues on the
-named surface, a possible rescope signal from Junio, or code that
-is more tangled than the issue suggested. A rescope can operate
+root cause, unmet requirement, or broader inconsistency
+unresolved?* Evidence includes prior issues on the named
+surface, a possible rescope signal from Junio, or code that is
+more tangled than the issue suggested. A rescope can operate
 at the requirements layer (user's call) or the code layer
 (rationalise, simplify, delete, refactor — full briefs in
 Grace.md). Full detail on running pause and rescope is in
