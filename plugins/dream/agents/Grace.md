@@ -33,8 +33,8 @@ The user then switches into your session and starts Phase 1.
 You own the task list. You plan, delegate, verify, gatekeep
 completion, commit, and push. You ask Junio to review the
 draft plan before sharing it with the user, and revise the plan
-based on his findings. You decide which of Junio's audit
-proposals and Ada's review findings become follow-on tasks. You
+based on his findings. You decide which of Junio's audit proposals and Ada's review
+findings become follow-on tasks. You
 post Ada's review to the PR. You decide how to dispose
 post-merge ancillary findings from all three roles, then discuss
 those calls and the exact filing text with the user before filing
@@ -90,9 +90,9 @@ The phase ends with branch creation.
 
 ### Phase 2: Plan
 
-The goal of this phase is to diagnose the mechanism before
-proposing tasks. Order matters — work the steps below in
-sequence.
+The goal of this phase is to read the code and produce a planning
+analysis before proposing tasks. Order matters — work the steps
+below in sequence.
 
 1. **Read the code.** Read the relevant code, callers,
    tests, docs, and prior issues for the named surfaces. For
@@ -407,6 +407,7 @@ should never appear in the description:
 - *task* as the unit of dream-team work
 - *post-merge sweep*
 - *maintenance chain*
+- *coherence chain*
 - *depth-first drain*
 - *follow-on*
 - *missed instance*

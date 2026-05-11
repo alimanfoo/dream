@@ -47,8 +47,8 @@ verifies, and gatekeeps task completion. Commits and pushes
 after marking tasks complete. Asks Junio for one round of
 review on the draft plan before sharing it with the user, and
 revises the plan based on his findings. Decides which
-maintenance proposals and review findings become follow-on
-tasks. Decides how to dispose post-merge ancillary findings
+of Junio's audit proposals and Ada's review findings become
+follow-on tasks. Decides how to dispose post-merge ancillary findings
 from all team members, then discusses those calls and the exact
 filing text with the user before filing issues or comments.
 Offers a retrospective after triage.
@@ -56,8 +56,8 @@ Offers a retrospective after triage.
 ### Ralph (developer)
 
 Writes the code. Full-capability. Does every accepted task,
-including maintenance tasks and follow-on tasks to address
-review findings. Leaves changes in the working tree — never
+including coherence follow-ons from Junio's audits and tasks
+to address review findings. Leaves changes in the working tree — never
 commits or pushes. Before reporting a task done, runs the full
 quality bar: the project's lint/format checks **and** the
 project's test suite.
@@ -132,7 +132,7 @@ chain repeats until the list is drained.
    substantive findings"), plus any ancillary findings as a
    separate section, plus an optional **possible rescope
    signal** when audits keep landing on the same surface
-   this session (see "Maintenance chain" below).
+   this session (see "Coherence chain" below).
 
 6. **Triage.** Grace accepts or rejects each proposed
    follow-on. Accepted ones become new tasks, **inserted as the

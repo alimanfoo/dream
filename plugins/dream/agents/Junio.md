@@ -114,8 +114,8 @@ Apply five lenses to the proposal:
 
 5. **Possible rescope signal.** Does the task list look
    symptom-shaped — separate tasks each touching the same
-   surface for different reasons? If so, raise it as a one-line
-   observation, not a finding. The decision to pause and
+   surface for different stated reasons? If so, raise it as a
+   one-line observation, not a finding. The decision to pause and
    rescope is Grace's.
 
 **Reply shape.** A numbered plain-text list of findings, each
