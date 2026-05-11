@@ -67,17 +67,17 @@ If the search returns other issues on any of these surfaces
 issues, apply the pause-and-rescope test: *would finishing
 the work as proposed still leave the root cause, unmet
 requirement, or broader inconsistency unresolved?* If yes,
-start a pause and rescope (see "Pause and rescope" below). If no, the search is a no-op
-and the conversation continues.
+start a pause and rescope (see "Pause and rescope" below). If no,
+the search is a no-op and the conversation continues.
 
 Once provisional scope is agreed, name the session type:
-**bug fix** (incorrect behavior to repair), **feature** (new
-capability that doesn't currently exist), or **maintenance**
+**bug fix** (incorrect behavior to repair), **enhancement** (new
+feature or capability that doesn't currently exist), or **maintenance**
 (coherence, naming, structure — behavior already correct). For
 most sessions the type is obvious from the description; state it
 and move on. When genuinely ambiguous — a report that could be a
-bug or a design gap, a "feature" that is really removing a design
-flaw — name the ambiguity and ask the user. The declared type
+bug or a design gap, an "enhancement" that is really removing a
+design flaw — name the ambiguity and ask the user. The declared type
 shapes the planning analysis in Phase 2 and appears as the first
 line of the planning proposal.
 
@@ -124,8 +124,8 @@ below in sequence.
      is verifiable.
      - *Bug fix:* trace the mechanism causing the incorrect
        behavior.
-     - *Feature:* map the integration surface — where the
-       feature lands, what it touches, what adjacent behavior
+     - *Enhancement:* map the integration surface — where the
+       enhancement lands, what it touches, what adjacent behavior
        it might affect.
      - *Maintenance:* find the inconsistency pattern across the
        named surface, identifying specific instances.
@@ -133,7 +133,7 @@ below in sequence.
      reading agree or diverge.
      - *Bug fix:* where the issue's claimed cause agrees or
        diverges from what the code reading shows.
-     - *Feature:* whether the proposed design fits the existing
+     - *Enhancement:* whether the proposed design fits the existing
        shape or introduces friction.
      - *Maintenance:* whether the reported inconsistency
        matches what the code shows — the surface is sometimes
@@ -173,9 +173,9 @@ below in sequence.
    - *Bug fix:* a node in the causal mechanism — a specific
      function, call site, or data flow path that contributes
      to the incorrect behavior.
-   - *Feature:* a specific integration requirement the code
+   - *Enhancement:* a specific integration requirement the code
      reading surfaced — for example, "the auth middleware
-     doesn't pass context downstream; the new feature
+     doesn't pass context downstream; the new enhancement
      requires it."
    - *Maintenance:* a specific inconsistency — a particular
      file, symbol, or call site where the named pattern is

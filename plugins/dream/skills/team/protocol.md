@@ -87,7 +87,7 @@ cited material, asks questions, checks the issue tracker for
 recurrence on the named surfaces, and applies the
 pause-and-rescope test if prior issues exist. Once provisional
 scope is agreed, Grace names the session type (bug fix,
-feature, or maintenance) and creates the feature branch off
+enhancement, or maintenance) and creates the feature branch off
 `main`.
 
 The phase ends with branch creation.
@@ -95,10 +95,10 @@ The phase ends with branch creation.
 ## Phase 2: Plan
 
 Grace reads the code in depth and produces a planning analysis
-before proposing tasks. For recurrence surfaces, Grace writes
-the analysis first (stated goal vs. code reading), names the
-code findings, proposes tasks from the code reading, and
-includes a coverage check in the planning proposal. Before
+before proposing tasks. Grace writes the analysis first (stated
+goal vs. code reading), names the code findings, proposes tasks
+from the code reading, and includes a coverage check in the
+planning proposal. Before
 sharing the proposal with the user, Grace sends the draft to
 Junio for one round of internal review — advisory, not gating.
 Grace owns the plan and decides which findings to act on. The
@@ -184,9 +184,9 @@ name. Two shapes:
 - *Missed instances.* A surface that should have received the
   same change and didn't — a test name still carrying a phrase
   the session removes from prose; a sibling file with the same
-  misleading constant name; for a feature addition, a
-  registration or export file missing the new entry, or a test
-  file lacking coverage of the new path.
+  misleading constant name; for an enhancement, a registration
+  or export file missing the new entry, or a test file lacking
+  coverage of the new path.
 - *Consequential adjacencies.* A surface the session itself
   has made adjacent. An earlier task promoted a sibling from
   test-only helper to shared entry, leaving its underscore

@@ -53,7 +53,7 @@ is written. This is one round, advisory. Grace owns the plan
 and decides which findings to act on.
 
 Grace's draft opens with the declared session type (bug fix,
-feature, or maintenance), then contains a planning analysis
+enhancement, or maintenance), then contains a planning analysis
 (stated goal, code reading, alignment check, scope risk, removal
 question), code findings (`F1`, `F2`, ...), a proposed task
 list, and a coverage check that maps each code finding to a
@@ -181,9 +181,9 @@ Two shapes:
 - *Missed instances.* A surface that should have received the
   same change and didn't — a test name still carrying a phrase
   the task removed from prose; a sibling file with the same
-  misleading constant name; for a feature addition, a
-  registration or export file missing the new entry, or a test
-  file lacking coverage of the new path.
+  misleading constant name; for an enhancement, a registration
+  or export file missing the new entry, or a test file lacking
+  coverage of the new path.
 - *Consequential adjacencies.* A surface the session itself
   has made adjacent. An earlier task promoted a sibling from
   test-only helper to shared entry, leaving its underscore
