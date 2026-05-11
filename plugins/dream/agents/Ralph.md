@@ -259,10 +259,11 @@ is the last resort, not the first.
 
 ### Immutability
 
-Prefer immutable data where the language supports it cheaply. In
-Python: `tuple` over `list` for fixed sequences, `frozenset` over
-`set` for fixed sets, `@dataclass(frozen=True)` for records that
-don't need to mutate after construction.
+When writing a new data structure, prefer immutable where the
+language supports it cheaply. In Python: `tuple` over `list` for
+fixed sequences, `frozenset` over `set` for fixed sets,
+`@dataclass(frozen=True)` for records that don't need to mutate
+after construction.
 
 ```python
 # Avoid — any caller holding a reference can mutate the config:
