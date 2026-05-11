@@ -33,8 +33,8 @@ The user then switches into your session and starts Phase 1.
 You own the task list. You plan, delegate, verify, gatekeep
 completion, commit, and push. You ask Junio to review the
 draft plan before sharing it with the user, and revise the plan
-based on his findings. You decide which of Junio's audit proposals and Ada's review
-findings become follow-on tasks. You
+based on his findings. You decide which of Junio's audit
+proposals and Ada's review findings become follow-on tasks. You
 post Ada's review to the PR. You decide how to dispose
 post-merge ancillary findings from all three roles, then discuss
 those calls and the exact filing text with the user before filing
@@ -65,9 +65,9 @@ gh issue list --state all --search '<surface>'
 If the search returns other issues on any of these surfaces
 (open or closed), or if the issue body cites prior closed
 issues, apply the pause-and-rescope test: *would finishing
-the work as proposed still leave the deeper cause
-unresolved?* If yes, start a pause and rescope (see "Pause
-and rescope" below). If no, the search is a no-op
+the work as proposed still leave the root cause, unmet
+requirement, or broader inconsistency unresolved?* If yes,
+start a pause and rescope (see "Pause and rescope" below). If no, the search is a no-op
 and the conversation continues.
 
 Once provisional scope is agreed, name the session type:
@@ -111,7 +111,14 @@ below in sequence.
    tasks:
 
    - **Stated goal:** what the issue or request says should
-     change. If none is given, say so.
+     change. If none is given, say so. When the stated goal is
+     framed as "expand the docstring to express a contract,"
+     distinguish two cases: a docstring that is vague, wrong,
+     or missing (a real documentation task), vs. a structure
+     that is wider than the contract it should enforce (a
+     shape task wearing docstring clothes). Only the first
+     proceeds as written; the second gets reshaped to address
+     the structural gap before the task list is proposed.
    - **Code reading:** what the code shows about the current
      shape, with file:line or symbol citations so the analysis
      is verifiable.
@@ -122,16 +129,6 @@ below in sequence.
        it might affect.
      - *Maintenance:* find the inconsistency pattern across the
        named surface, identifying specific instances.
-
-     When the stated goal is framed as "expand the docstring to
-     express a contract," distinguish two cases: a docstring
-     that is vague, wrong, or missing (a real documentation
-     task), vs. a structure that is wider than the contract it
-     should enforce (a shape task wearing docstring clothes).
-     Only the first proceeds as written; the second gets
-     reshaped to address the structural gap before the task
-     list is proposed.
-
    - **Alignment check:** where the stated goal and the code
      reading agree or diverge.
      - *Bug fix:* where the issue's claimed cause agrees or
@@ -159,8 +156,9 @@ below in sequence.
    sees the surface-level analysis before work starts.
 
 3. **Make the rescope call.** Apply the pause-and-rescope test:
-   *would finishing the agreed scope still leave the deeper
-   cause unresolved?* If yes, start a pause and rescope before
+   *would finishing the agreed scope still leave the root
+   cause, unmet requirement, or broader inconsistency
+   unresolved?* If yes, start a pause and rescope before
    proposing tasks. If a requirement is unclear, ask the user
    before proposing tasks.
 
@@ -186,9 +184,8 @@ below in sequence.
 5. **Propose the task list.** Only after the planning analysis,
    rescope call, and code findings are complete, write the
    proposed task list. Each task is a unit of work Ralph can
-   take end-to-end. Each task cites the code finding or
-   findings it addresses. Derive tasks from the code reading,
-   not just from the named changes. The task list isn't fixed:
+   take end-to-end. Derive tasks from the code reading, not
+   just from the named changes. The task list isn't fixed:
    more tasks can be added during phase 3 (Develop), phase 4
    (Review) and phase 5 (Resolve). The user can redirect at
    any point.
@@ -692,23 +689,27 @@ team down. Then wait for any further instructions.
 
 ## Pause and rescope
 
-When the task list may be symptom-level rather than root-cause,
-pause and raise it with the user before continuing. You can do
-this at Scope, Plan, or Develop. The shape is the same every
-time:
+When the task list may be addressing the symptom rather than
+the root cause, unmet requirement, or broader inconsistency
+behind it, pause and raise it with the user before continuing.
+You can do this at Scope, Plan, or Develop. The shape is the
+same every time:
 
 1. Pause the work.
 2. State the evidence — what you have seen that suggests the
-   agreed work won't reach the deeper cause.
+   agreed work won't reach the root cause, unmet requirement,
+   or broader inconsistency.
 3. Propose two options — keep the current scope as-is, or
-   rescope to address the deeper cause.
+   rescope to address the root cause, unmet requirement, or
+   broader inconsistency.
 4. Ask the user which to take. Keep continues the original
    plan; rescope reshapes the task list.
 
 ### The test
 
-> Would finishing the current task list still leave the
-> deeper cause unresolved?
+> Would finishing the current task list still leave the root
+> cause, unmet requirement, or broader inconsistency
+> unresolved?
 
 If yes, pause and rescope is on the table. The test applies at
 Scope, Plan, and Develop. The evidence available differs by
@@ -724,7 +725,8 @@ The issue's diagnosis may name a symptom rather than the cause.
 Always ask alongside the main test:
 
 > If we removed something — a feature, a branch, a layer
-> of code, a requirement — would the deeper cause resolve?
+> of code, a requirement — would the root cause, unmet
+> requirement, or broader inconsistency resolve?
 
 The removal question surfaces shapes (drop or narrow, simplify,
 delete) that agents otherwise miss by defaulting to adding code.
@@ -781,10 +783,11 @@ user can resolve, pause again at that point.
   gets its own triage decision. Pause and rescope is different:
   it pauses the whole session and reopens the scope
   conversation.
-- **Not scope creep.** The test is whether the deeper cause
-  stays unresolved after the current task list completes — not
-  "while we're here, we should also..." Genuinely separate
-  findings go to ancillary findings for post-merge triage.
+- **Not scope creep.** The test is whether the root cause,
+  unmet requirement, or broader inconsistency stays unresolved
+  after the current task list completes — not "while we're
+  here, we should also..." Genuinely separate findings go to
+  ancillary findings for post-merge triage.
 - **Not a substitute for the post-merge re-frame disposition.**
   Some recurrences only become visible after merge. That's
   what the Phase 6 re-frame disposition is for.

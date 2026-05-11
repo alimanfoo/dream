@@ -48,19 +48,20 @@ after marking tasks complete. Asks Junio for one round of
 review on the draft plan before sharing it with the user, and
 revises the plan based on his findings. Decides which
 of Junio's audit proposals and Ada's review findings become
-follow-on tasks. Decides how to dispose post-merge ancillary findings
-from all team members, then discusses those calls and the exact
-filing text with the user before filing issues or comments.
+follow-on tasks. Decides how to dispose post-merge ancillary
+findings from all team members, then discusses those calls
+and the exact filing text with the user before filing issues
+or comments.
 Offers a retrospective after triage.
 
 ### Ralph (developer)
 
 Writes the code. Full-capability. Does every accepted task,
 including coherence follow-ons from Junio's audits and tasks
-to address review findings. Leaves changes in the working tree — never
-commits or pushes. Before reporting a task done, runs the full
-quality bar: the project's lint/format checks **and** the
-project's test suite.
+to address review findings. Leaves changes in the working tree
+— never commits or pushes. Before reporting a task done, runs
+the full quality bar: the project's lint/format checks **and**
+the project's test suite.
 
 ### Junio (maintainer)
 
@@ -92,14 +93,14 @@ The phase ends with branch creation.
 ## Phase 2: Plan
 
 Grace reads the code in depth and produces a planning analysis
-before proposing tasks. For recurrence surfaces, Grace writes the
-analysis first (stated goal vs. code reading), names the planning
-points, proposes tasks from the code reading, and includes a
-coverage check in the planning proposal. Before sharing the proposal with the user,
-Grace sends the draft to Junio for one round of internal review
-— advisory, not gating. Grace owns the plan and decides which
-findings to act on. The phase ends at user approval of the task
-list.
+before proposing tasks. For recurrence surfaces, Grace writes
+the analysis first (stated goal vs. code reading), names the
+code findings, proposes tasks from the code reading, and
+includes a coverage check in the planning proposal. Before
+sharing the proposal with the user, Grace sends the draft to
+Junio for one round of internal review — advisory, not gating.
+Grace owns the plan and decides which findings to act on. The
+phase ends at user approval of the task list.
 
 ## Phase 3: Develop
 
@@ -325,15 +326,17 @@ declines.
 ## Pause and rescope
 
 Grace uses this mechanism at Scope, Plan, or Develop when the
-task list may be addressing symptoms rather than the root cause.
-Grace pauses the work, states the evidence, proposes two options
+task list may be addressing symptoms rather than the root cause,
+unmet requirement, or broader inconsistency behind them. Grace
+pauses the work, states the evidence, proposes two options
 (keep scope or rescope), and asks the user which to take. A
 rescope reshapes the task list; keep continues the original plan.
 
 The test: *would finishing the current task list still leave the
-deeper cause unresolved?* Evidence includes prior issues on the
-named surface, a possible rescope signal from Junio, or code that
-is more tangled than the issue suggested. A rescope can operate
+root cause, unmet requirement, or broader inconsistency
+unresolved?* Evidence includes prior issues on the named
+surface, a possible rescope signal from Junio, or code that is
+more tangled than the issue suggested. A rescope can operate
 at the requirements layer (user's call) or the code layer
 (rationalise, simplify, delete, refactor — full briefs in
 Grace.md). Full detail on running pause and rescope is in
