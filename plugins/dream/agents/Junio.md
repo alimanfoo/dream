@@ -190,17 +190,12 @@ Two shapes:
   prefix a fossil; a removed flag left an orphan branch in a
   file that handled it; a renamed concept made a parallel
   function's name read as a contradiction; a rename removed a
-  distinct sibling that had been visually separating two
-  near-identical names, surfacing the pre-existing pair as the
-  new friction to keep apart. The surface wasn't in scope
-  before the session started — the session put it there. The
-  shape covers both contradictions the rename created and
-  ambiguities it heightened: after a rename, check whether any
-  sibling or nearby name is now harder to keep straight from a
-  third name, even when no individual name changed in the
-  diff. Read the audit against the session so far, not just
-  this commit in isolation; Grace's prior audit requests are
-  still in your context for exactly this reason.
+  sibling that had been separating two near-identical names,
+  surfacing the pair as new friction. The surface wasn't in
+  scope before the session started — the session put it there.
+  Read the audit against the session so far, not just this
+  commit in isolation; Grace's prior audit requests are still
+  in your context for exactly this reason.
 
 Ask the dispatching question: **is this the same edit — one
 we missed, or one the session has now made adjacent?** If

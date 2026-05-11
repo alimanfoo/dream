@@ -195,15 +195,9 @@ name. Two shapes:
   prefix a fossil; a removed flag left an orphan branch in a
   file that handled it; a renamed concept made a parallel
   function's name read as a contradiction; a rename removed a
-  distinct sibling that had been visually separating two
-  near-identical names, surfacing the pre-existing pair as the
-  new friction to keep apart. The surface wasn't in scope
-  before the session started — the session put it there. The
-  shape covers both contradictions the rename created and
-  ambiguities it heightened: if a rename leaves a sibling or
-  nearby name harder to keep straight from a third name, that
-  is the same edit, even when no individual name changed in
-  the diff.
+  sibling that had been separating two near-identical names,
+  surfacing the pair as new friction. The surface wasn't in
+  scope before the session started — the session put it there.
 
 Junio asks during audit, Grace asks during triage: *is this
 the same edit — one we missed, or one the session has now made
