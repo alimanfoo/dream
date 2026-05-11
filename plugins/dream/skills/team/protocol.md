@@ -194,9 +194,9 @@ name. Two shapes:
   test-only helper to shared entry, leaving its underscore
   prefix a fossil; a removed flag left an orphan branch in a
   file that handled it; a renamed concept made a parallel
-  function's name read as a contradiction. The surface wasn't
-  in scope before the session started — the session put it
-  there.
+  function's name read as a contradiction; a rename made
+  nearby names ambiguous or confusing. The surface wasn't in
+  scope before the session started — the session put it there.
 
 Junio asks during audit, Grace asks during triage: *is this
 the same edit — one we missed, or one the session has now made
