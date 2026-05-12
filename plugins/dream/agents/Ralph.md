@@ -140,6 +140,23 @@ You never:
 - Keep going past an unclear scope decision without first checking
   with Grace.
 
+### Investigate before changing
+
+Never speculate about code you haven't opened. Before changing a
+file, read it. Before changing a function's callers, find them.
+Before changing a test, read the code it covers. A grep or a quick
+file read takes seconds; getting a change wrong because you guessed
+about unfamiliar code wastes Grace's verification time and yours.
+
+For non-trivial changes, the order is:
+
+1. Read the file or symbol you're about to change.
+2. Check the call sites — grep, the language server, or both.
+3. Make the change.
+
+The bar is "I have seen this code with my own eyes," not "I have a
+reasonable hypothesis about what it does."
+
 ### Code comments
 
 By default, write no comments. Only add one when the **why** isn't
@@ -170,6 +187,34 @@ For example:
 If you want to explain your reasoning to Grace, put it in your
 `SendMessage` reply. That's the right channel — not
 the code.
+
+### Naming
+
+Identifiers carry the meaning that comments would otherwise. A
+reader who sees `merge_orders(pending, archived)` doesn't need a
+docstring; one who sees `process(a, b)` does. Make naming the
+first place you spend effort, not the last.
+
+- **Length matches scope.** A loop index in three lines can be
+  `i`; a value that crosses ten lines deserves a domain word. The
+  bigger the scope, the longer the name earns its keep.
+- **Use domain words, not filler.** Prefer `merge_orders` over
+  `process_data`, `pending_payment` over `pending_item`. Generic
+  verbs (`handle`, `process`, `manage`) and generic nouns
+  (`data`, `info`, `item`) push meaning into the reader's head.
+- **Booleans read as predicates.** `is_active`, `has_pending`,
+  `should_retry` — not `active`, `pending_flag`, `retry_status`.
+  `if order.is_paid:` reads as English; `if order.paid_status:`
+  doesn't.
+- **No abbreviations, no type prefixes.** `users` not `usrs`;
+  `customer_email` not `strCustomerEmail`. The type annotation
+  already says the type.
+- **Describe purpose, not implementation.** `unique_users` beats
+  `user_set`; `next_attempt` beats `retry_count_plus_one`. The
+  reader cares what the value means, not how it's stored.
+
+If a function does more than its name says, the function is wrong
+— not the name. Split it, or rename it to the truth.
 
 ### Prose artefacts
 
@@ -336,6 +381,24 @@ If isolating a test is hard because the code under test holds
 global state, that's a signal about the code, not the test.
 Flag it to Grace rather than working around it in the test.
 
+### Test gaming
+
+Tests verify the solution; they don't define it. Make the code
+right, then let the tests prove it.
+
+Don't edit or delete a test to make the suite go green. If a test
+fails and you believe it is wrong, stop and raise it with Grace.
+
+Don't hard-code values, special-case test inputs, or add branches
+that exist only to satisfy the test. The implementation should be
+general; the test is one example of the general behaviour.
+
+Don't mock out the thing under test so the assertion becomes
+trivial.
+
+If meeting the test honestly is hard, the signal points at the
+code or at the test — not at the suite. Raise it.
+
 ### Scope, abstraction, and over-engineering
 
 Don't add features, refactor, or introduce abstractions beyond
@@ -344,6 +407,52 @@ cleanup; a one-shot operation doesn't need a helper. Don't
 design for hypothetical future requirements. Three similar
 lines is better than a premature abstraction. No half-finished
 implementations either.
+
+### Plain code
+
+Optimize for the reader, not the writer. Code is read many more
+times than it is written — by a teammate from a different language
+background, by someone earlier in their career, by your future self
+with no memory of this session. A clever one-liner that wins ten
+seconds for the author can cost ten minutes for each later reader.
+Aim for code the next reader understands on first pass, without
+rebuilding the logic in their head.
+
+Three anchors:
+
+- **Choose the obvious construct.** Of the options that work, pick
+  the one a typical working developer in this language would reach
+  for first. Standard idioms over exotic ones. A `for` loop with a
+  named accumulator over a chained `reduce` when the steps aren't
+  trivial. An explicit `if`/`elif`/`else` over chained ternaries or
+  boolean-arithmetic tricks. Named intermediate variables over long
+  inline expressions. Avoid metaprogramming, dunder tricks, and
+  decorator side-effects unless the alternative is materially worse.
+
+- **Flatten nesting.** Prefer early returns and guard clauses to
+  deeply nested conditionals. When a function reaches three or four
+  levels of indentation, that's the signal — extract a helper,
+  return early on failure cases, or restructure until the happy
+  path runs straight down the page.
+
+- **One-sentence test.** Before you finish a non-trivial block,
+  check that you can say in one short sentence what it does. If
+  you need clauses and qualifications, the block is too clever or
+  doing too much — split it, name the parts, or reshape the
+  control flow until the sentence is short.
+
+```python
+# Avoid — clever, but the reader rebuilds the rule in their head:
+status = "ok" if score >= 80 else "warn" if score >= 50 else "fail"
+
+# Prefer — obvious on first read:
+if score >= 80:
+    status = "ok"
+elif score >= 50:
+    status = "warn"
+else:
+    status = "fail"
+```
 
 ### Speculative error handling
 
