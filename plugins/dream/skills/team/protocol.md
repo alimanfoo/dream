@@ -416,25 +416,24 @@ These apply across every phase.
   findings, reviews, or questions. Plain turn output, when
   useful for local status or debugging, is at most one short
   sentence per turn.
-- **Message template.** Every outbound `SendMessage` body opens
-  with `Message from <your-name>: `, using the agent names
-  `Grace`, `Ralph`, `Junio`, and `Ada`, not role descriptions
-  like `director` or `maintainer`. This lets the recipient see
-  at a glance that the message is teammate traffic, not user
-  input. When the message expects a reply, it ends with
-  `Reply via SendMessage to <your-name>` — the same name as in
-  the opening prefix. The closing line tells the recipient where
-  to send their reply (back to you). Skip the closing line on
-  terminal messages — a final ack, a `done` report — where no
-  reply is wanted. Treat the envelope as metadata, not content:
-  a fresh teammate message has one envelope only, as the first
-  line. If you paste or summarize a teammate's prior message,
-  strip their envelope. The template is the envelope, not the content. Role-specific
-  outputs (Junio's numbered list, Ada's
-  Markdown review) sit between the opening prefix and the
-  optional closing line. When Grace forwards a teammate's
-  message to another destination — for example, posting Ada's
-  review to the PR — Grace strips the envelope first.
+- **Signature line.** Every outbound `SendMessage` body ends
+  with a signature: `From <your-name>.`, using the agent names
+  `Grace`, `Ralph`, `Junio`, or `Ada` — not role descriptions
+  like `director` or `maintainer`. The signature tells the
+  recipient that the message is teammate traffic, not user
+  input, and names who to reply to. When you want a reply,
+  append `RSVP via SendMessage.` to the signature, on the same
+  line: `From Grace. RSVP via SendMessage.` Skip the RSVP on
+  terminal messages — a final ack, a `done` report, an audit
+  hand-off — where no reply is wanted. Treat the signature as
+  metadata, not content: a fresh teammate message carries one
+  signature only, at the end. If you paste or summarise a
+  teammate's prior message, strip their signature.
+  Role-specific outputs (Junio's numbered list, Ada's Markdown
+  review) sit above the signature. When Grace forwards a
+  teammate's message to another destination — for example,
+  posting Ada's review to the PR — Grace strips the signature
+  first.
 - Grace's task descriptions should be **explicit about scope**:
   in-scope items, out-of-scope items, and what Ralph should do
   if he disagrees with a scope decision (raise it; don't keep

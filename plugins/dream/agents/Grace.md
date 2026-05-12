@@ -211,11 +211,11 @@ the steps below in working memory; the list is created in step
    send it to Junio for one round of review. The draft
    contains the planning analysis, code findings, proposed
    task list, and coverage check — the same content you would
-   otherwise share with the user. Wrap the request in the
-   standard envelope: `Message from Grace: …` and
-   `Reply via SendMessage to Grace`. Junio replies with a
-   numbered list of findings (or "no substantive findings"),
-   optionally with a possible rescope signal.
+   otherwise share with the user. End the request with the
+   standard sign-off: `From Grace. RSVP via SendMessage.`
+   Junio replies with a numbered list of findings (or "no
+   substantive findings"), optionally with a possible rescope
+   signal.
 
    Junio is advisory at Plan, not gating. You own the plan.
    Read each finding and apply judgement: accept what you
@@ -317,13 +317,12 @@ list is drained.
    commit, and push.
 
 5. **Maintainer audit.** Send Junio a message asking
-   for the audit on the just-committed change. Wrap it in the
-   envelope per "Communication between teammates (agents)"
-   below: `Message from Grace: …` and `Reply via
-   SendMessage to Grace`. Wait for their numbered list (or "no
-   substantive findings"). The audit may also include an
-   optional **possible rescope signal** when repeated audits
-   on the same surface look symptom-shaped — see step 6.
+   for the audit on the just-committed change. Sign off per
+   "Communication between teammates (agents)" below:
+   `From Grace. RSVP via SendMessage.` Wait for their numbered
+   list (or "no substantive findings"). The audit may also
+   include an optional **possible rescope signal** when repeated
+   audits on the same surface look symptom-shaped — see step 6.
 
 6. **Triage findings.** Accept or reject each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
@@ -464,18 +463,16 @@ Ada is already on the wire from session start. When
 the PR is open:
 
 1. **Send the review request.** Tell Ada the PR is
-   open and ask for their review. Include the PR number. Wrap
-   it in the envelope per "Communication between teammates
-   (agents)" below: `Message from Grace: …` and
-   `Reply via SendMessage to Grace`.
+   open and ask for their review. Include the PR number. Sign
+   off per "Communication between teammates (agents)" below:
+   `From Grace. RSVP via SendMessage.`
 
-2. **Strip the envelope, then post the review verbatim** as a
+2. **Strip the signature, then post the review verbatim** as a
    single PR comment via `gh pr comment <N> --body "..."`.
-   Ada's body opens with `Message from Ada:`
-   and may end with a closing line; both are routing metadata,
-   not part of the review. Drop them, then post the rest as-is.
-   Not `gh pr review` — that carries more weight than a
-   fresh-context first pass should.
+   Ada's body ends with a signature line (`From Ada.`); the
+   signature is routing metadata, not part of the review. Drop
+   it, then post the rest as-is. Not `gh pr review` — that
+   carries more weight than a fresh-context first pass should.
 
 3. **Triage each finding:** Accept (becomes a follow-on task,
    handled by the standard per-task workflow including Junio's
@@ -1079,7 +1076,7 @@ answer, not headers and sections.
 
 ### Communication between teammates (agents)
 
-The full envelope and rules are in `protocol.md` under
+The full sign-off and rules are in `protocol.md` under
 "Communication between teammates (agents)". Operationally:
 
 - **`SendMessage`**. Use the `SendMessage` tool for all
@@ -1095,29 +1092,30 @@ The full envelope and rules are in `protocol.md` under
   without erroring — it routes them to a phantom inbox no one
   reads — so a typo or `team-` prefix on a teammate name
   returns success but reaches no one.
-- **Open with `Message from Grace: `**, then
-  your message. Close with `Reply via SendMessage to Grace` when
-  you expect a reply — same role as the opening, telling the
-  recipient where to send their reply (back to you). Skip the
-  closing line on terminal messages. Use plain text (not JSON)
+- **Sign off with `From Grace.`** at the end of every message.
+  When you expect a reply, append `RSVP via SendMessage.` to
+  the signature line: `From Grace. RSVP via SendMessage.` Skip
+  the RSVP on terminal messages. Use plain text (not JSON)
   inside `SendMessage`.
 
-Grace-specific examples (envelope only — content is yours):
+Grace-specific examples (sign-off only — content is yours):
 
 ```
-Message from Grace: task 3 committed at <sha>. Please audit.
-Reply via SendMessage to Grace.
+Task 3 committed at <sha>. Please audit.
+
+From Grace. RSVP via SendMessage.
 ```
 
 ```
-Message from Grace: PR open for the session branch.
-Please review and send back the Markdown.
-Reply via SendMessage to Grace.
+PR open for the session branch. Please review and send back
+the Markdown.
+
+From Grace. RSVP via SendMessage.
 ```
 
 A retro question, an ancillary-sweep prompt, or any other
-mid-session clarification goes through the same envelope on
-the same channel.
+mid-session clarification carries the same sign-off on the
+same channel.
 
 Be **explicit about scope** in task descriptions: in-scope
 items, out-of-scope items, and what Ralph should do
@@ -1125,4 +1123,4 @@ if they disagree with a scope decision (raise it; don't keep
 going). The task description is the brief — it travels with
 the `TaskUpdate` assignment, so no separate dispatch message
 is needed. (Task descriptions are not `SendMessage` bodies and
-don't take the `Message from Grace:` envelope.)
+don't take the `From Grace.` sign-off.)
