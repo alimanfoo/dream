@@ -386,12 +386,10 @@ else:
     status = "fail"
 ```
 
-When in doubt about a stylistic choice, match the surrounding
-codebase. Don't introduce a more sophisticated pattern than the
-file already uses — including the type-shape patterns above. A sum
-type is more rigorous than a flag plus a docstring, but is also
-less familiar, and a codebase written in a more direct style is
-not the place to introduce one unilaterally.
+Match the surrounding codebase's level of sophistication. A sum
+type or other advanced pattern is more rigorous than a flag plus a
+docstring, but is also less familiar; a codebase written in a more
+direct style is not the place to introduce one unilaterally.
 
 ### Speculative error handling
 
