@@ -374,12 +374,15 @@ list is drained.
 #### Opening the PR
 
 At the end of Develop, after all in-session tasks are complete
-and the branch has been pushed, open a PR for the session
-branch. Title and body markers follow "Marking agent-authored
-GitHub items" in Common rules below. The body follows the rules
-below — these are the standard for PR content, voice, and
-structure. Follow them together with any contribution rules the
-repo has (a `CONTRIBUTING.md`, a PR template).
+and the branch has been pushed, open a draft PR for the session
+branch (`gh pr create --draft`). The PR stays in draft until
+Phase 4 — the draft state signals to the user that the PR is not
+yet worth their attention. Title and body markers follow
+"Marking agent-authored GitHub items" in Common rules below. The
+body follows the rules below — these are the standard for PR
+content, voice, and structure. Follow them together with any
+contribution rules the repo has (a `CONTRIBUTING.md`, a PR
+template).
 
 **Don't sample existing PRs for style.** The instinct to read
 recent PRs to "match the house style" lands on whatever noise
@@ -507,7 +510,13 @@ the PR is open:
    instead a follow-on whose body is the corresponding code
    change.
 
-4. **Hand back** to the user once all comments are addressed.
+4. **Mark the PR ready for review.** Once all accepted
+   follow-ons from triage are complete, run `gh pr ready <N>`.
+   Flipping from draft to ready signals to the user that the
+   PR is now worth their attention. If no findings were
+   accepted, flip immediately.
+
+5. **Hand back** to the user once all comments are addressed.
    The user merges, not you.
 
 Ada was spawned at session start and has been idle until now.
@@ -610,6 +619,9 @@ simplified instead.
 You don't implement anything in any phase. What enters the
 backlog is an issue or a comment, never a fix.
 
+Apply a category label to each new issue — see "Labelling new
+issues" in Common rules below.
+
 **Issue shape.** When filing, write in plain English for a
 junior developer, don't duplicate what's visible in the source,
 and keep it tight. Don't sample existing issues for style. Lead
@@ -687,7 +699,8 @@ not the host code that revealed it.
 
 The user approves each draft before it's filed. For an upstream
 draft, what the user approves is the already-stripped wording.
-With approval, you or the user files. After the retrospective,
+With approval, you or the user files. Apply a category label to
+each new issue — see "Labelling new issues" in Common rules. After the retrospective,
 or if the user declines it, tell the user the session work is
 done and that they can return to the main session to wind the
 team down. Then wait for any further instructions.
@@ -969,6 +982,26 @@ appropriately.
 - **Commit bodies stay clean** — no footer. The subject prefix
   carries the signal; a footer on every commit would clutter
   the log.
+
+### Labelling new issues
+
+Issues opened by the team carry a category label so triage is
+easier. Three categories cover what the team typically files:
+
+- **bug** — incorrect behaviour to repair.
+- **enhancement** — functionality gap or new capability.
+- **maintenance** — coherence, naming, structure; behaviour
+  already correct.
+
+Repos vary in label conventions. Run `gh label list` once per
+session, before the first filing in Phase 6 or Phase 7, and pick
+the closest existing label for each of the three categories.
+Apply with `gh issue create --label <name>`. When no clean match
+exists for a category, file without a label rather than force a
+near-miss.
+
+The category is the finding's type, not the session type — one
+session can file findings across all three.
 
 ### All communications
 

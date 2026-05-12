@@ -281,15 +281,16 @@ queue resumes only after the parent task's coherence chain is
 fully drained.
 
 The phase ends when the task list is drained and Grace
-opens a PR for the session branch.
+opens a draft PR for the session branch.
 
 ## Phase 4: Review
 
 Grace asks Ada for the review. Ada returns Markdown which
 Grace posts verbatim as a single PR comment. Grace triages
 each finding (accept as a follow-on task, reject, or hold for
-post-merge). Grace then hands back to the user for final
-approval. The user merges; Grace does not.
+post-merge). Once all accepted follow-ons are complete, Grace
+marks the PR ready for review and hands back to the user for
+final approval. The user merges; Grace does not.
 
 The phase ends at user approval. The session moves to Resolve.
 
@@ -311,7 +312,8 @@ re-frame, or file fresh), discussing those calls with the user
 before drafting exact issue or comment text. Grace shows the
 exact text to the user before filing. Triage happens once, after
 merge, never mid-session. The only output is filed issues or
-comments on existing issues.
+comments on existing issues; new issues carry a category label
+(bug, enhancement, or maintenance) for triage.
 
 The phase ends when triage is complete and any resulting
 issues have been filed.
