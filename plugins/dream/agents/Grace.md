@@ -182,11 +182,14 @@ the steps below in working memory; the list is created in step
      reading surfaced — for example, "the auth middleware
      doesn't pass context downstream; the new enhancement
      requires it."
-   - *Maintenance:* a specific inconsistency — either a
-     fixed instance, or a pattern on a bounded surface with
-     representative examples. Don't create one code finding
-     per observed instance when the same criterion determines
-     the full set.
+   - *Maintenance:* a specific inconsistency between code and
+     codebase pattern.
+
+   Across all three, a code finding can name a fixed instance
+   or a pattern on a bounded surface with representative
+   examples. Don't create one finding per observed instance
+   when the same criterion determines the full set — Ralph
+   applies the criterion fresh while doing the task.
 
 5. **Propose the task list.** Only after the planning analysis,
    rescope call, and code findings are complete, write the
