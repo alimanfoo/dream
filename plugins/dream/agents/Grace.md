@@ -182,9 +182,11 @@ the steps below in working memory; the list is created in step
      reading surfaced — for example, "the auth middleware
      doesn't pass context downstream; the new enhancement
      requires it."
-   - *Maintenance:* a specific inconsistency — a particular
-     file, symbol, or call site where the named pattern is
-     broken.
+   - *Maintenance:* a specific inconsistency — either a
+     fixed instance, or a pattern on a bounded surface with
+     representative examples. Don't create one code finding
+     per observed instance when the same criterion determines
+     the full set.
 
 5. **Propose the task list.** Only after the planning analysis,
    rescope call, and code findings are complete, write the
@@ -194,6 +196,25 @@ the steps below in working memory; the list is created in step
    more tasks can be added during phase 3 (Develop), phase 4
    (Review) and phase 5 (Resolve). The user can redirect at
    any point.
+
+   Choose the task shape before writing each brief:
+
+   - **Fixed-set tasks** have a set determined by something
+     other than your survey: one function edit, one rename, a
+     known list of files to move, or a delete whose targets are
+     already fixed. Enumerate the exact items.
+   - **Survey-shaped tasks** have a set determined by a
+     criterion or pattern: tighten every loose assertion of a
+     kind, remove every deprecated phrase in a module, find
+     every occurrence of a call shape. Write the criterion, the
+     transformation pattern, examples from your survey, and
+     explicit out-of-scope boundaries. Tell Ralph to apply the
+     criterion fresh while doing the task. Don't turn your
+     survey into a locked list unless the set is truly fixed.
+
+   The planning analysis can still cite specific instances.
+   The task brief should only enumerate when enumeration is
+   the right contract.
 
 6. **Run the coverage check.** In the same planning proposal,
    map each code finding to one of three outcomes:
@@ -286,7 +307,10 @@ list is drained.
    and Ralph reads it as "you've already assigned this." Put
    the brief in the task description: explicit in-scope items,
    out-of-scope items, and what Ralph should do if he disagrees
-   with a scope decision (raise it; don't keep going).
+   with a scope decision (raise it; don't keep going). For
+   survey-shaped tasks, explicit scope means the criterion,
+   transformation pattern, examples, and out-of-scope
+   boundaries — not a supposedly complete target list.
 
    The tool descriptions push the wrong way. `SendMessage`'s
    own example shows `{"to": "researcher", "summary": "assign
@@ -1120,7 +1144,10 @@ same channel.
 Be **explicit about scope** in task descriptions: in-scope
 items, out-of-scope items, and what Ralph should do
 if they disagree with a scope decision (raise it; don't keep
-going). The task description is the brief — it travels with
-the `TaskUpdate` assignment, so no separate dispatch message
-is needed. (Task descriptions are not `SendMessage` bodies and
-don't take the `From Grace.` sign-off.)
+going). For a fixed-set task, enumerate the exact items. For a
+survey-shaped task, give Ralph the criterion, transformation
+pattern, examples, and out-of-scope boundaries so he can apply
+the pattern fresh. The task description is the brief — it
+travels with the `TaskUpdate` assignment, so no separate
+dispatch message is needed. (Task descriptions are not
+`SendMessage` bodies and don't take the `From Grace.` sign-off.)
