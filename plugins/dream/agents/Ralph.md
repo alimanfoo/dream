@@ -386,11 +386,6 @@ else:
     status = "fail"
 ```
 
-Match the surrounding codebase's level of sophistication. A sum
-type or other advanced pattern is more rigorous than a flag plus a
-docstring, but is also less familiar; a codebase written in a more
-direct style is not the place to introduce one unilaterally.
-
 ### Speculative error handling
 
 Don't add error handling, fallbacks, or validation for
