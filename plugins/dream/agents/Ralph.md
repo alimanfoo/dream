@@ -346,6 +346,53 @@ design for hypothetical future requirements. Three similar
 lines is better than a premature abstraction. No half-finished
 implementations either.
 
+### Plain code
+
+Optimize for the reader, not the writer. Code is read many more
+times than it is written — by a teammate from a different language
+background, by someone earlier in their career, by your future self
+with no memory of this session. A clever one-liner that wins ten
+seconds for the author can cost ten minutes for each later reader.
+Aim for code the next reader understands on first pass, without
+rebuilding the logic in their head.
+
+Two anchors:
+
+- **Choose the obvious construct.** Of the options that work, pick
+  the one a typical working developer in this language would reach
+  for first. Standard idioms over exotic ones. A `for` loop with a
+  named accumulator over a chained `reduce` when the steps aren't
+  trivial. An explicit `if`/`elif`/`else` over chained ternaries or
+  boolean-arithmetic tricks. Named intermediate variables over long
+  inline expressions. Avoid metaprogramming, dunder tricks, and
+  decorator side-effects unless the alternative is materially worse.
+
+- **One-sentence test.** Before you finish a non-trivial block,
+  check that you can say in one short sentence what it does. If
+  you need clauses and qualifications, the block is too clever or
+  doing too much — split it, name the parts, or reshape the
+  control flow until the sentence is short.
+
+```python
+# Avoid — clever, but the reader rebuilds the rule in their head:
+status = "ok" if score >= 80 else "warn" if score >= 50 else "fail"
+
+# Prefer — obvious on first read:
+if score >= 80:
+    status = "ok"
+elif score >= 50:
+    status = "warn"
+else:
+    status = "fail"
+```
+
+When in doubt about a stylistic choice, match the surrounding
+codebase. Don't introduce a more sophisticated pattern than the
+file already uses — including the type-shape patterns above. A sum
+type is more rigorous than a flag plus a docstring, but is also
+less familiar, and a codebase written in a more direct style is
+not the place to introduce one unilaterally.
+
 ### Speculative error handling
 
 Don't add error handling, fallbacks, or validation for
