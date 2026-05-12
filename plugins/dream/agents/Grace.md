@@ -700,10 +700,11 @@ not the host code that revealed it.
 The user approves each draft before it's filed. For an upstream
 draft, what the user approves is the already-stripped wording.
 With approval, you or the user files. Apply a category label to
-each new issue — see "Labelling new issues" in Common rules. After the retrospective,
-or if the user declines it, tell the user the session work is
-done and that they can return to the main session to wind the
-team down. Then wait for any further instructions.
+each new issue — see "Labelling new issues" in Common rules.
+After the retrospective, or if the user declines it, tell the
+user the session work is done and that they can return to the
+main session to wind the team down. Then wait for any further
+instructions.
 
 ## Pause and rescope
 
