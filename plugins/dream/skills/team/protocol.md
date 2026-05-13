@@ -107,11 +107,11 @@ That review may include a generalisation candidate: an
 opportunity to name a deeper code pattern that would make the
 plan smaller or simpler. Grace owns the plan and decides which
 findings to act on. After the review Grace drafts a wider
-version of the plan that adds further tasks alongside the
-narrow tasks to address the scope-risk observations from her
-analysis and any related items Junio raised. The proposal
-carries both versions when the wider plan adds anything; the
-user picks. The phase ends at user approval of the task list.
+version of the plan that extends the narrow plan with further
+tasks to address the scope-risk observations from her analysis
+and any related items Junio raised. The proposal carries both
+versions when the wider plan adds anything; the user picks.
+The phase ends at user approval of the task list.
 
 ## Phase 3: Develop
 
@@ -363,17 +363,17 @@ Grace.md.
 ## Wider plan
 
 After Junio's internal review of the narrow draft, Grace drafts
-a wider version. The wider plan adds further tasks alongside
-the narrow tasks to address the scope-risk observations in her
+a wider version. The wider plan extends the narrow plan with
+further tasks to address the scope-risk observations in her
 analysis and any related items Junio raised. When the wider
 plan adds anything, the planning proposal carries both versions
 and the user picks; when nothing surfaced to add, the proposal
 carries only the narrow plan.
 
 Wider plan is separate from pause and rescope: wider plan
-extends (narrow tasks stand on their own under either version);
-pause and rescope restructures (narrow tasks may not survive).
-Full detail is in Grace.md.
+extends (the narrow plan still stands on its own as the
+alternative); pause and rescope restructures (the narrow plan
+may not survive). Full detail is in Grace.md.
 
 ## No orphaned observations
 
