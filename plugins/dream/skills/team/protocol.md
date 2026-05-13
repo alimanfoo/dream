@@ -127,7 +127,7 @@ chain repeats until the list is drained.
 
 2. **Implement.** Ralph does the work, runs the
    project's lint/format check and test suite, and reports
-   back to Grace. 
+   back to Grace.
 
 3. **Verify.** Grace reads `git diff` to check correctness
    and that the work stays in scope, and where useful exercises

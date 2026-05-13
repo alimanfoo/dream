@@ -2,11 +2,11 @@
 
 A multi-agent team for shipping great code while maintaining codebase coherence with minimal hand-holding.
 
-Requires Claude Code's [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature enabled. 
+Requires Claude Code's [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature enabled.
 
 ## Installation
 
-```
+```text
 /plugin marketplace add alimanfoo/dream
 /plugin install dream@dream
 ```
@@ -15,13 +15,13 @@ Requires Claude Code's [experimental agent teams](https://code.claude.com/docs/e
 
 Start Claude Code:
 
-```
+```bash
 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude
 ```
 
 Then invoke the `dream:team` skill:
 
-```
+```text
 /dream:team
 ```
 

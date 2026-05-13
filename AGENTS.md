@@ -6,7 +6,7 @@ This repo defines the dream plugin for claude code. You are a coding assistant h
 
 The dream plugin launches a multi-agent team for software development. The goal is to ship high-quality code while maintaining codebase coherence with minimal user interaction.
 
-The plugin is defined within the `plugins/dream` folder. 
+The plugin is defined within the `plugins/dream` folder.
 
 The entry point to launching the plugin is the `plugins/dream/skills/team/SKILL.md` skill, which the user invokes via the `/dream:team` command.
 
@@ -26,13 +26,25 @@ in the relevant agent file. Keep protocol.md and agent files
 consistent with each other — neither should invent behaviour the
 other contradicts.
 
-This repo is mostly plugin metadata, skills, and agent prompts. There is currently no automated test or lint command; when changing behavior, validate by reading the affected skill/agent prompts together and checking that lifecycle, role boundaries, and tool permissions remain consistent.
+This repo is mostly plugin metadata, skills, and agent prompts. There is no test suite. When changing behavior, validate by reading the affected skill/agent prompts together and checking that lifecycle, role boundaries, and tool permissions remain consistent.
 
 Important invariants: the lead never edits files, the developer never commits, maintainer and reviewer are read-only.
 
+## Linting
+
+The repo uses [`pre-commit`](https://pre-commit.com/) for lightweight checks: trailing whitespace, end-of-file newlines, JSON syntax, Markdown style (`markdownlint-cli2` — see `.markdownlint.json` for tuned rules), `claude plugin validate` on the plugin and marketplace manifests, and YAML frontmatter validation on skill and agent files.
+
+Set up locally:
+
+```bash
+uvx pre-commit install
+```
+
+Run all hooks once: `uvx pre-commit run --all-files`. The same hooks run in CI on every push and pull request (see `.github/workflows/lint.yml`). The `claude plugin validate` hook requires the Claude Code CLI on `PATH`; CI installs it via `npm`.
+
 ## Recommended resources
 
-The following resources may be useful to support development of the dream plugin. 
+The following resources may be useful to support development of the dream plugin.
 
 * [Claude Code Docs > Tools and plugins > Create plugins](https://code.claude.com/docs/en/plugins.md)
 * [Claude Code Docs > Tools and plugins > Extend Claude with skills](https://code.claude.com/docs/en/skills.md)
