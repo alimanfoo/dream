@@ -160,12 +160,33 @@ the steps below in working memory; the list is created in step
    task-local coherence and Ada reviews the PR, but neither
    sees the surface-level analysis before work starts.
 
-3. **Make the rescope call.** Apply the pause-and-rescope test:
-   *would finishing the agreed scope still leave the root
-   cause, unmet requirement, or broader inconsistency
-   unresolved?* If yes, start a pause and rescope before
-   proposing tasks. If a requirement is unclear, ask the user
-   before proposing tasks.
+3. **Make the rescope call. Decide once.** Apply two tests
+   against the planning analysis:
+
+   - The pause-and-rescope test — *would finishing the agreed
+     scope still leave the root cause, unmet requirement, or
+     broader inconsistency unresolved?*
+   - The removal question — *would dropping, narrowing,
+     simplifying, or deleting something resolve the concern
+     better than adding work?*
+
+   When either test surfaces a real structural option, take
+   one of two paths and only two:
+
+   - **Raise it to the user** as a pause-and-rescope
+     candidate, with the option named clearly and the
+     evidence behind it.
+   - **Accept it as out of scope** with a stated reason the
+     user agrees to.
+
+   Decide before moving on. Don't name the option in prose
+   and carry it forward — that parks the call somewhere the
+   user can't see, and the Sweep phase is not a do-over for
+   in-session deferral. If the call is hard, that is a sign
+   it belongs to the user.
+
+   If a requirement is unclear, ask the user before proposing
+   tasks.
 
 4. **Name code findings.** For each distinct thing the code
    reading revealed that the task list must address, write a
@@ -625,15 +646,25 @@ text.
   identical. Comment on the open issue with the new angle
   rather than opening a new one.
 - **Re-frame** — recurrence on a surface with prior issues,
-  open or closed. File one issue at the **contract level**:
-  name the surface (the function, the parameter, the contract)
-  and list the prior issues with `#N` references. The
-  recurrence pattern itself is the behaviour gap — issues
-  landing on the same surface is evidence of an unresolved
-  contract. Re-frame is the post-merge analog of pause and
-  rescope: pause and rescope catches recurrence in time to
-  reshape the session; re-frame catches it after merge and
-  produces an issue rather than a redirected session.
+  open or closed, surfaced only after merge. File one issue
+  at the **contract level**: name the surface (the function,
+  the parameter, the contract) and list the prior issues
+  with `#N` references. The recurrence pattern itself is the
+  behaviour gap — issues landing on the same surface is
+  evidence of an unresolved contract. Re-frame is the
+  post-merge analog of pause and rescope: pause and rescope
+  catches recurrence in time to reshape the session;
+  re-frame catches it after merge and produces an issue
+  rather than a redirected session.
+
+  Before disposing as Re-frame, check the candidate against
+  the planning analysis. If the substance was already named
+  at Plan — in the code reading, scope risk, or removal
+  question — Re-frame is not the right call. That is a
+  reversal of a Plan-time decision, not fresh observation.
+  Raise it to the user as a reversal: show the prior call,
+  show the new reading, and ask whether to overturn the
+  prior or hold it. Filing as Re-frame hides the reversal.
 - **File fresh** — no related issue on the surface, and the
   finding clears the bar. Open a standalone issue.
 
@@ -781,6 +812,11 @@ delete) that agents otherwise miss by defaulting to adding code.
 Without it, the rescope conversation drifts toward "what should
 we add?" and the narrowing options never come up.
 
+When the question surfaces a real option in the planning
+analysis, two paths follow — raise it to the user, or accept
+it as out of scope with an agreed reason. There is no third
+path. See Phase 2 step 3 for the call.
+
 ### Evidence
 
 Any of these is enough to apply the test:
@@ -838,7 +874,10 @@ user can resolve, pause again at that point.
   ancillary findings for post-merge triage.
 - **Not a substitute for the post-merge re-frame disposition.**
   Some recurrences only become visible after merge. That's
-  what the Phase 6 re-frame disposition is for.
+  what the Phase 6 re-frame disposition is for. The reverse
+  also holds: re-frame is not a substitute for pause and
+  rescope. If the recurrence was visible at Plan, the call
+  belongs at Plan.
 
 ### Task list shape after a rescope
 

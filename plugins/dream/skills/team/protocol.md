@@ -351,6 +351,13 @@ at the requirements layer (user's call) or the code layer
 Grace.md). Full detail on running pause and rescope is in
 Grace.md.
 
+When the planning analysis surfaces a structural option — via
+the test or the removal question — Grace decides once: raise
+it to the user, or accept it as out of scope with an agreed
+reason. The Sweep phase's re-frame disposition is for findings
+that genuinely surface only after merge, not a do-over for
+in-session deferral.
+
 ## Common rules
 
 These apply across every phase.
