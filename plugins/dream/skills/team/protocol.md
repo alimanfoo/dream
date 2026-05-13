@@ -106,12 +106,13 @@ Junio for one round of internal review — advisory, not gating.
 That review may include a generalisation candidate: an
 opportunity to name a deeper code pattern that would make the
 plan smaller or simpler. Grace owns the plan and decides which
-findings to act on. After the review Grace drafts a wider
-version of the plan that extends the narrow plan with further
-tasks to address the scope-risk observations from her analysis
-and any related items Junio raised. The proposal carries both
-versions when the wider plan adds anything; the user picks.
-The phase ends at user approval of the task list.
+findings to act on. The initial draft is Plan A. After the
+review Grace drafts a second version, Plan B, that extends
+Plan A with further tasks to address the scope-risk
+observations from her analysis and any related items Junio
+raised. The proposal carries both options when Plan B adds
+anything; the user picks. The phase ends at user approval of
+the task list.
 
 ## Phase 3: Develop
 
@@ -360,20 +361,20 @@ at the requirements layer (user's call) or the code layer
 Grace.md). Full detail on running pause and rescope is in
 Grace.md.
 
-## Wider plan
+## Plan A and Plan B
 
-After Junio's internal review of the narrow draft, Grace drafts
-a wider version. The wider plan extends the narrow plan with
-further tasks to address the scope-risk observations in her
-analysis and any related items Junio raised. When the wider
-plan adds anything, the planning proposal carries both versions
-and the user picks; when nothing surfaced to add, the proposal
-carries only the narrow plan.
+Grace's initial draft is Plan A. After Junio's internal
+review, Grace drafts a second version, Plan B, that extends
+Plan A with further tasks to address the scope-risk
+observations in her analysis and any related items Junio
+raised. When Plan B adds anything, the planning proposal
+carries both options and the user picks; when nothing
+surfaced to add, the proposal carries only Plan A.
 
-Wider plan is separate from pause and rescope: wider plan
-extends (the narrow plan still stands on its own as the
-alternative); pause and rescope restructures (the narrow plan
-may not survive). Full detail is in Grace.md.
+Plan B is separate from pause and rescope: Plan B extends
+Plan A (Plan A still stands on its own as the alternative);
+pause and rescope restructures (Plan A may not survive).
+Full detail is in Grace.md.
 
 ## No orphaned observations
 

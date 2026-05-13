@@ -312,10 +312,10 @@ the steps below in working memory; the list is created in step
    finding — your call whether the task list looks
    symptom-shaped enough to pause.
 
-   After incorporating Junio's findings into the narrow
-   plan, draft a wider version — see "Wider plan" below for
-   the sources and shape. The user picks between narrow and
-   wider in step 8.
+   After incorporating Junio's findings into the initial
+   draft (Plan A), draft a second version (Plan B) — see
+   "Plan A and Plan B" below for the sources and shape. The
+   user picks between the two versions in step 8.
 
 8. **Share the planning proposal.** Send one user-visible
    message opening with the declared session type, then
@@ -323,11 +323,10 @@ the steps below in working memory; the list is created in step
    task list, coverage check, and any out-of-scope decisions
    or open questions for the user.
 
-   When the wider plan adds tasks beyond the narrow plan, the
-   proposal carries both versions and asks the user to pick.
-   Frame the choice plainly without recommending one over the
-   other. When the wider plan adds nothing, the proposal
-   carries only the narrow plan.
+   When Plan B adds tasks beyond Plan A, the proposal carries
+   both versions and asks the user to pick. Frame the choice
+   plainly without recommending one over the other. When Plan
+   B adds nothing, the proposal carries only Plan A.
 
    If the proposal contains open questions for the user,
    revise and re-share after the user answers — repeat until
@@ -904,59 +903,56 @@ When the user approves a rescope, agree on one of three shapes:
 There is no default. The right choice depends on how related
 the original tasks are to the new scope.
 
-## Wider plan
+## Plan A and Plan B
 
-After Junio's internal review on the narrow draft, draft a
-wider version. The provisional scope agreed in Phase 1 is a
-starting point, not a ceiling — Plan-time code reading and
-Junio's review often surface extensions that belong alongside
-the stated work, and offering them once now is cheaper than
-fragmenting a coherent edit across sessions.
+Grace's initial draft is Plan A. After Junio's internal
+review, draft a second version, Plan B. The provisional scope
+agreed in Phase 1 is a starting point, not a ceiling —
+Plan-time code reading and Junio's review often surface
+additions that belong alongside the stated work, and offering
+them once now is cheaper than fragmenting a coherent edit
+across sessions.
 
-The wider plan extends the narrow plan with further tasks to
-address the scope-risk observations in your planning analysis
-and any related items Junio raised in his review. Shape the
-additions the same way you shape any task (see step 5 above) —
-group observations as the criterion dictates, rather than
-mapping one task per observation.
+Plan B extends Plan A with further tasks to address the
+scope-risk observations in your planning analysis and any
+related items Junio raised in his review. Shape the additions
+the same way you shape any task (see step 5 above) — group
+observations as the criterion dictates, rather than mapping
+one task per observation.
 
 Example: the stated goal tightens one test assertion. Your
 planning analysis records two scope-risk observations — a
 parallel test on the sibling side that would mirror the
 change, and a small consistency tidy in an adjacent test.
-The wider plan extends the narrow plan with both as further
-tasks.
+Plan B extends Plan A with both as further tasks.
 
-When the wider plan adds tasks beyond the narrow plan, present
-both versions to the user. Frame the choice plainly: "narrow
-takes the agreed scope; wider folds in `N` additional items."
-Name each addition briefly. Don't recommend one version over
-the other — the wider version is more work the team takes on,
-not an upgrade. After the user picks, the chosen version
-becomes the task list. When nothing surfaced to add — no
-scope-risk observations and nothing related from Junio — the
-proposal carries only the narrow plan.
+When Plan B adds tasks beyond Plan A, present both options to
+the user. Frame the choice plainly: "Plan A takes the agreed
+scope; Plan B folds in `N` additional items." Name each
+addition briefly. Don't recommend one option over the other —
+Plan B is more work the team takes on, not an upgrade. After
+the user picks, the chosen plan becomes the task list. When
+nothing surfaced to add — no scope-risk observations and
+nothing related from Junio — the proposal carries only Plan A.
 
 If a candidate addition would require dropping or reshaping
-the narrow plan rather than extending it, that is pause and
-rescope territory — handle there instead of folding the
-option into the wider plan.
+Plan A rather than extending it, that is pause and rescope
+territory — handle there instead of folding the option into
+Plan B.
 
-### Wider plan versus pause and rescope
+### Plan B versus pause and rescope
 
 The two mechanisms target different shapes:
 
-- **Wider plan** is for **extension** — adding tasks to the
-  narrow plan, which still stands on its own as the
-  alternative. The work is additive.
+- **Plan B** is for **extension** — adding tasks to Plan A,
+  which still stands on its own as the alternative. The work
+  is additive.
 - **Pause and rescope** is for **restructuring** — the agreed
   scope addresses symptoms, and the right work has a different
-  shape (drop, simplify, refactor). The narrow plan may not
-  survive.
+  shape (drop, simplify, refactor). Plan A may not survive.
 
-If the option fits as an extension to the narrow plan, use
-wider plan. If it requires reshaping the narrow plan, use
-pause and rescope.
+If the option fits as an extension to Plan A, use Plan B. If
+it requires reshaping Plan A, use pause and rescope.
 
 ## Rescope tasks
 
