@@ -351,11 +351,21 @@ at the requirements layer (user's call) or the code layer
 Grace.md). Full detail on running pause and rescope is in
 Grace.md.
 
-When the planning analysis surfaces a structural option — via
-the test or the removal question — Grace decides once: raise
-it to the user, or accept it as out of scope with an agreed
-reason. Phase 6's re-frame disposition is for genuinely new
-recurrence, not a do-over for substance already named at Plan.
+## No orphaned observations
+
+Every observation Grace records gets a named disposition at
+the next decision boundary. The dispositions available depend
+on phase — task, rescope, out of scope, ancillary, drop,
+reinforce, re-frame, file fresh — but the rule is the same:
+no observation stays "interesting prose." Each is named, each
+gets a disposition, each disposition is checkable.
+
+Later dispositions respect earlier ones. If new evidence at a
+later phase changes the picture, that is a reversal — surface
+the prior disposition, surface the new reading, and ask the
+user whether to overturn or hold. Don't dispose of a reversal
+under a procedure that frames it as fresh observation; the
+procedure hides the reversal.
 
 ## Common rules
 

@@ -160,8 +160,8 @@ the steps below in working memory; the list is created in step
    task-local coherence and Ada reviews the PR, but neither
    sees the surface-level analysis before work starts.
 
-3. **Make the rescope call. Decide once.** Apply two tests
-   against the planning analysis:
+3. **Make the rescope call.** Apply two tests against the
+   planning analysis:
 
    - The pause-and-rescope test — *would finishing the agreed
      scope still leave the root cause, unmet requirement, or
@@ -170,20 +170,11 @@ the steps below in working memory; the list is created in step
      simplifying, or deleting something resolve the concern
      better than adding work?*
 
-   When either test surfaces a real structural option, take
-   one of two paths and only two:
-
-   - **Raise it to the user** as a pause-and-rescope
-     candidate, with the option named clearly and the
-     evidence behind it.
-   - **Accept it as out of scope** with a stated reason the
-     user agrees to.
-
-   Decide before moving on. Don't name the option in prose
-   and carry it forward — that parks the call somewhere the
-   user can't see, and Phase 6 is not a do-over for
-   in-session deferral. If the call is hard, that is a sign
-   it belongs to the user.
+   When either test surfaces a real structural option, two
+   paths follow — raise it to the user as a pause-and-rescope
+   candidate, or accept it as out of scope with a stated
+   reason the user agrees to. If the call is hard, that is a
+   sign it belongs to the user.
 
    If a requirement is unclear, ask the user before proposing
    tasks.
@@ -243,17 +234,20 @@ the steps below in working memory; the list is created in step
    The task brief should only enumerate when enumeration is
    the right contract.
 
-6. **Run the coverage check.** In the same planning proposal,
-   map each code finding to one of three outcomes:
+6. **Run the coverage check.** Map every observation in the
+   planning analysis to one of three outcomes:
 
    - a task that addresses it
    - an explicit out-of-scope decision, with the reason
    - an open question for the user that must be answered before
      planning can finish
 
-   If any code finding has no outcome, do not ask the user
-   to approve the plan as complete. Either add a task, mark it
-   out of scope with a reason, or pause and ask the user.
+   Observations include the enumerated code findings, the
+   scope risk, any structural option the removal question
+   surfaces, and any divergence between stated goal and code
+   reading. If any observation has no outcome, do not ask the
+   user to approve the plan as complete. See "No orphaned
+   observations" in `protocol.md`.
 
 7. **Internal review.** Before showing the draft to the user,
    send it to Junio for one round of review. The draft
@@ -657,14 +651,9 @@ text.
   merge and produces an issue rather than a redirected
   session.
 
-  Before disposing as Re-frame, check the candidate against
-  the planning analysis. If the substance was already named
-  at Plan — in the code reading, scope risk, or removal
-  question — Re-frame is not the right call. That is a
-  reversal of a Plan-time decision, not fresh observation.
-  Raise it to the user as a reversal: show the prior call,
-  show the new reading, and ask whether to overturn the
-  prior or hold it. Filing as Re-frame hides the reversal.
+  Substance already disposed at Plan is a reversal, not
+  fresh observation — see "No orphaned observations" in
+  `protocol.md`.
 - **File fresh** — no related issue on the surface, and the
   finding clears the bar. Open a standalone issue.
 
@@ -812,11 +801,6 @@ delete) that agents otherwise miss by defaulting to adding code.
 Without it, the rescope conversation drifts toward "what should
 we add?" and the narrowing options never come up.
 
-When the question surfaces a real option in the planning
-analysis, two paths follow — raise it to the user, or accept
-it as out of scope with an agreed reason. There is no third
-path. See Phase 2 step 3 for the call.
-
 ### Evidence
 
 Any of these is enough to apply the test:
@@ -872,12 +856,11 @@ user can resolve, pause again at that point.
   after the current task list completes — not "while we're
   here, we should also..." Genuinely separate findings go to
   ancillary findings for post-merge triage.
-- **Not a substitute for the post-merge re-frame disposition.**
-  Some recurrences only become visible after merge. That's
-  what the Phase 6 re-frame disposition is for. The reverse
-  also holds: re-frame is not a substitute for pause and
-  rescope. If the recurrence was visible at Plan, the call
-  belongs at Plan.
+- **Not a substitute for the Phase 6 re-frame disposition,
+  and vice versa.** Recurrences first surfacing after merge
+  are re-frame's territory; recurrences visible at Plan are
+  pause-and-rescope's. See "No orphaned observations" in
+  `protocol.md`.
 
 ### Task list shape after a rescope
 
