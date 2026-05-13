@@ -21,7 +21,7 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
 1. **Welcome the user.** Before any tool calls, print this
    banner verbatim as your first user-visible output:
 
-   ```
+   ```text
              .  *  .  *  .  *  .  *  .
           *      The Dream Team       *
             Grace · Ralph · Junio · Ada
@@ -51,7 +51,7 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    Use this initial prompt template, substituting `<Name>` and
    `<role>`:
 
-   ```
+   ```text
    Initial instructions:
 
    1. Read the protocol at <absolute path to protocol.md in
@@ -59,7 +59,7 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    2. Read your role file at <absolute path to
       ../../agents/<Name>.md> and assume the role of <Name>,
       the <role> on the dream team.
-   3. Then run the boot sequence steps that your role file 
+   3. Then run the boot sequence steps that your role file
       specifies.
    ```
 

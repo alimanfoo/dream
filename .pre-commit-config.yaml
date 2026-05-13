@@ -1,0 +1,45 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-added-large-files
+      - id: check-json
+      - id: check-yaml
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.18.1
+    hooks:
+      - id: markdownlint-cli2
+
+  - repo: local
+    hooks:
+      - id: claude-plugin-validate
+        name: claude plugin validate (plugin manifest)
+        entry: claude plugin validate plugins/dream
+        language: system
+        files: ^plugins/dream/\.claude-plugin/plugin\.json$
+        pass_filenames: false
+
+      - id: claude-marketplace-validate
+        name: claude plugin validate (marketplace manifest)
+        entry: claude plugin validate .
+        language: system
+        files: ^\.claude-plugin/marketplace\.json$
+        pass_filenames: false
+
+      - id: validate-skill
+        name: validate skill frontmatter
+        entry: python3 scripts/validate_skill.py
+        language: python
+        additional_dependencies: [pyyaml]
+        files: ^plugins/.+/skills/.+/SKILL\.md$
+
+      - id: validate-agent
+        name: validate agent frontmatter
+        entry: python3 scripts/validate_agent.py
+        language: python
+        additional_dependencies: [pyyaml]
+        files: ^plugins/.+/agents/.+\.md$
