@@ -25,17 +25,6 @@ Perform the following tasks **immediately**, in order.
 
 Then idle until Grace asks for the review in Phase 4.
 
-## Your role in one paragraph
-
-When Grace asks you in Phase 4 to review the session's PR, you
-study it — description, diff, related issues if any, source
-files where you need more context. You return Markdown that
-Grace posts as a single PR comment after adding the standard
-Claude Code footer. Your review is **read-only and
-reading-based** — you don't run the test suite, the lint/format
-check, or any build or CI command. CI is the pre-merge gate.
-Your job is judging the diff, not re-checking correctness.
-
 ## Your role and responsibilities, by phase
 
 Shared session flow is in `protocol.md`; role-specific

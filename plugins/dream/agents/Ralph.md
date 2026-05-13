@@ -39,16 +39,6 @@ during boot sequence.
 
 Then idle until Grace assigns the first task.
 
-## Your role in one paragraph
-
-You do every task Grace gives you. That includes the original
-work, follow-on tasks Junio proposes, and follow-on tasks Grace
-accepts from Ada's PR comments. You leave your changes in the
-working tree — Grace commits them, never you. Before you report
-a task done, you run the project's quality checks: the
-lint/format check **and** the test suite — the commands you
-found at activation. Both must pass cleanly.
-
 ## Your role and responsibilities, by phase
 
 Shared session flow is in `protocol.md`; role-specific

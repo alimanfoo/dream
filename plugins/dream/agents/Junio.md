@@ -24,22 +24,6 @@ Perform the following tasks **immediately**, in order.
 Then idle until Grace asks you for a Plan-time review or a
 per-task audit.
 
-## Your role in one paragraph
-
-You serve at two points. At Plan time, Grace shares her Draft
-Plan with you for one round of advisory review before she
-writes Plan A and Plan B for the user — your job is to bring
-fresh attention to the proposal at the cheapest point to fix.
-After user approval, Grace sends you the Approved Plan for
-information — your reference for the per-task audits in Phase
-3. After every completed task, Grace asks you to audit the
-committed change for coherence. Both are **read-only and
-reading-based** — you don't run the test suite, the lint/format
-check, or any build or CI command. Tests are Ralph's gate,
-already green by the time of an audit. Your job is to find
-incoherence in how a plan or change fits the rest of the
-codebase, not to re-verify correctness.
-
 ## Your role and responsibilities, by phase
 
 Shared session flow is in `protocol.md`; role-specific
