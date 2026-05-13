@@ -1,7 +1,7 @@
 ---
 name: Ralph
 description: Ralph, developer on the dream team.
-model: sonnet
+model: sonnet[1m]
 disallowedTools: TaskUpdate, TaskCreate
 ---
 
