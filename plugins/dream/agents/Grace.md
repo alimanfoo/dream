@@ -871,7 +871,7 @@ or better structure — not new behaviour. If Ralph's work
 reveals a behaviour change worth making, Ralph raises it as a
 separate proposal. **Defend behaviour, not surface, in tests
 too**: whenever tests are added or changed, ask of each test —
-*what contract does it pin? would it still pass under a
+*What contract does it pin? Would it still pass under a
 contract-preserving refactor?* A test that pins no contract is
 decorative; apply the discipline in `protocol.md`.
 

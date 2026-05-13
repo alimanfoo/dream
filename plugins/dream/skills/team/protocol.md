@@ -226,8 +226,8 @@ pause is Grace's, not Junio's.
 
 **Defend behaviour, not surface.** For any proposed machinery
 — a test, a glossary, a regen step, a cross-reference rule, a
-backlog issue — ask: *what specific behaviour does this
-defend? who is the real consumer? what would the machinery pin
+backlog issue — ask: *What specific behaviour does this
+defend? Who is the real consumer? What would the machinery pin
 if no behaviour is at stake?* If the only answer is incidental
 surface (a count nothing depends on, a docstring phrasing, an
 arbitrary constant, a term used loosely), frame the finding as

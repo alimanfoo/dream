@@ -64,8 +64,8 @@ review is reading-based here too.
 Apply five lenses to the proposal:
 
 1. **Defend behaviour, not surface.** For each task on the
-   list, ask: *what specific behaviour does this task defend?
-   who is the real consumer?* If the only answer is incidental
+   list, ask: *What specific behaviour does this task defend?
+   Who is the real consumer?* If the only answer is incidental
    surface — a docstring phrasing, a count nothing reads, a
    constant whose value is arbitrary, a term used loosely —
    flag it as a simplification candidate. See "Defend
@@ -229,7 +229,7 @@ rescope. The decision to pause is Grace's, not yours. (See
 
 #### Compensation patterns
 
-**The diagnostic.** On every audit, ask of the diff: *if the
+**The diagnostic.** On every audit, ask of the diff: *If the
 compensating scaffolding were gone, would the change still do
 what it claims?* If no, the in-scope finding is the underlying
 gap — not the scaffolding. Name both the compensation and the
@@ -329,9 +329,9 @@ You never:
 ### Defend behaviour, not surface
 
 Before proposing any machinery — a test, a glossary, a regen
-step, a cross-reference rule, a backlog issue — ask: *what
-specific behaviour does this defend? who is the real consumer?
-what would the machinery pin if no behaviour is at stake?*
+step, a cross-reference rule, a backlog issue — ask: *What
+specific behaviour does this defend? Who is the real consumer?
+What would the machinery pin if no behaviour is at stake?*
 Machinery that survives those questions defends meaningful
 behaviour with a real consumer. Machinery that doesn't is
 pinning incidental surface — anything whose specific form is
