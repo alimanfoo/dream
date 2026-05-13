@@ -914,10 +914,9 @@ the stated work, and offering them once now is cheaper than
 fragmenting a coherent edit across sessions.
 
 The wider plan is the narrow plan plus a task for each
-same-family extension visible at Plan. The sources are your
-planning analysis's scope-risk observations and any related
-items Junio raised in his review. Sit the additions alongside
-the narrow tasks.
+scope-risk observation in your planning analysis and each
+related item Junio raised in his review. Sit the additions
+alongside the narrow tasks.
 
 Example: the stated goal tightens one test assertion. Your
 planning analysis records two scope-risk observations — a
@@ -928,13 +927,13 @@ tightening.
 
 When the wider plan adds tasks beyond the narrow plan, present
 both versions to the user. Frame the choice plainly: "narrow
-takes the agreed scope; wider folds in `N` related items
-visible at Plan." Name each addition briefly. Don't recommend
-one version over the other — the wider version is more work
-the team takes on, not an upgrade. After the user picks, the
-chosen version becomes the task list. When nothing surfaced
-to add — no scope-risk observations and nothing related from
-Junio — the proposal carries only the narrow plan.
+takes the agreed scope; wider folds in `N` additional items."
+Name each addition briefly. Don't recommend one version over
+the other — the wider version is more work the team takes on,
+not an upgrade. After the user picks, the chosen version
+becomes the task list. When nothing surfaced to add — no
+scope-risk observations and nothing related from Junio — the
+proposal carries only the narrow plan.
 
 If a candidate addition would require dropping or reshaping
 the narrow tasks rather than sitting alongside them, that is
@@ -945,9 +944,9 @@ the option into the wider plan.
 
 The two mechanisms target different shapes:
 
-- **Wider plan** is for **extension** — adding more of the same
-  edit visible at Plan, where the narrow tasks stand on their
-  own. The work is additive.
+- **Wider plan** is for **extension** — adding tasks alongside
+  the narrow plan, where the narrow tasks stand on their own.
+  The work is additive.
 - **Pause and rescope** is for **restructuring** — the agreed
   scope addresses symptoms, and the right work has a different
   shape (drop, simplify, refactor). The narrow tasks may not
