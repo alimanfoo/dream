@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Validate the YAML frontmatter of a SKILL.md file.
 
-Adapted from `quick_validate.py` in the upstream `skill-creator` skill
-(claude-plugins-official marketplace). Vendored here so the repo can lint
-its own skills without depending on the user's local plugin install.
+Schema sourced from the Claude Code skill frontmatter reference at
+https://code.claude.com/docs/en/skills.md (refreshed 2026-05-13). Refresh
+the allowed-key list when the docs add or remove fields.
+
+Initially adapted from `quick_validate.py` in the upstream `skill-creator`
+skill (claude-plugins-official marketplace).
 """
 
 from __future__ import annotations
@@ -17,11 +20,22 @@ import yaml
 ALLOWED_PROPERTIES = {
     "name",
     "description",
-    "license",
+    "when_to_use",
+    "argument-hint",
+    "arguments",
+    "disable-model-invocation",
+    "user-invocable",
     "allowed-tools",
-    "metadata",
-    "compatibility",
+    "model",
+    "effort",
+    "context",
+    "agent",
+    "hooks",
+    "paths",
+    "shell",
 }
+
+DESCRIPTION_CAP = 1536  # combined description + when_to_use cap per docs
 
 
 def validate_skill(skill_md: Path) -> tuple[bool, str]:
@@ -52,54 +66,50 @@ def validate_skill(skill_md: Path) -> tuple[bool, str]:
             f"Allowed: {', '.join(sorted(ALLOWED_PROPERTIES))}"
         )
 
-    if "name" not in frontmatter:
-        return False, f"{skill_md}: missing 'name' in frontmatter"
-    if "description" not in frontmatter:
-        return False, f"{skill_md}: missing 'description' in frontmatter"
+    # `name` is optional per docs — falls back to directory name. Validate
+    # only when present.
+    name = frontmatter.get("name")
+    if name is not None:
+        if not isinstance(name, str):
+            return False, (
+                f"{skill_md}: name must be a string, got {type(name).__name__}"
+            )
+        name = name.strip()
+        if not re.match(r"^[a-z0-9-]+$", name):
+            return False, (
+                f"{skill_md}: name '{name}' must be kebab-case "
+                f"(lowercase letters, digits, hyphens)"
+            )
+        if name.startswith("-") or name.endswith("-") or "--" in name:
+            return False, (
+                f"{skill_md}: name '{name}' cannot start/end with hyphen "
+                f"or contain consecutive hyphens"
+            )
+        if len(name) > 64:
+            return False, (
+                f"{skill_md}: name too long ({len(name)} chars, max 64)"
+            )
 
-    name = frontmatter["name"]
-    if not isinstance(name, str):
-        return False, (
-            f"{skill_md}: name must be a string, got {type(name).__name__}"
-        )
-    name = name.strip()
-    if not re.match(r"^[a-z0-9-]+$", name):
-        return False, (
-            f"{skill_md}: name '{name}' must be kebab-case "
-            f"(lowercase letters, digits, hyphens)"
-        )
-    if name.startswith("-") or name.endswith("-") or "--" in name:
-        return False, (
-            f"{skill_md}: name '{name}' cannot start/end with hyphen "
-            f"or contain consecutive hyphens"
-        )
-    if len(name) > 64:
-        return False, f"{skill_md}: name too long ({len(name)} chars, max 64)"
-
-    description = frontmatter["description"]
-    if not isinstance(description, str):
+    description = frontmatter.get("description")
+    if description is not None and not isinstance(description, str):
         return False, (
             f"{skill_md}: description must be a string, "
             f"got {type(description).__name__}"
         )
-    description = description.strip()
-    if "<" in description or ">" in description:
-        return False, f"{skill_md}: description cannot contain angle brackets"
-    if len(description) > 1024:
+
+    when_to_use = frontmatter.get("when_to_use")
+    if when_to_use is not None and not isinstance(when_to_use, str):
         return False, (
-            f"{skill_md}: description too long "
-            f"({len(description)} chars, max 1024)"
+            f"{skill_md}: when_to_use must be a string, "
+            f"got {type(when_to_use).__name__}"
         )
 
-    compatibility = frontmatter.get("compatibility")
-    if compatibility is not None:
-        if not isinstance(compatibility, str):
-            return False, f"{skill_md}: compatibility must be a string"
-        if len(compatibility) > 500:
-            return False, (
-                f"{skill_md}: compatibility too long "
-                f"({len(compatibility)} chars, max 500)"
-            )
+    combined = len(description or "") + len(when_to_use or "")
+    if combined > DESCRIPTION_CAP:
+        return False, (
+            f"{skill_md}: combined description + when_to_use too long "
+            f"({combined} chars, max {DESCRIPTION_CAP})"
+        )
 
     return True, f"{skill_md}: ok"
 
