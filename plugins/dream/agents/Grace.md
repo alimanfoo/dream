@@ -750,18 +750,27 @@ An issue is filed in one of two places:
   where dream is being used — a pattern this team will hit
   again here, but not elsewhere.
 
-For an upstream draft, strip host specifics before showing it
-to the user. `alimanfoo/dream` is a public repo unrelated to
-the host project, and an upstream issue should read as if
-dream:team had run on any codebase. Strip host repo and org
-names, file paths, function and class names, business or
-product terms, branch names, issue and PR numbers, and any
-other identifiers that tie the finding to this codebase.
-Describe the dream-side behaviour and the pattern the team hit,
-not the host code that revealed it.
+For an upstream draft, check the host repo's visibility before
+drafting: run `gh repo view --json visibility -q .visibility`.
+If it returns `PUBLIC`, keep concrete host detail in the
+draft — file paths, symbols, PR or issue links, branch
+names — these make the finding easier to reproduce and
+diagnose, and `alimanfoo/dream` is public so nothing leaks
+that the host doesn't already expose.
 
-The user approves each draft before it's filed. For an upstream
-draft, what the user approves is the already-stripped wording.
+Otherwise — `PRIVATE`, `INTERNAL`, or any error from the
+visibility check — strip host specifics. `alimanfoo/dream` is
+a public repo unrelated to the host project, and the upstream
+draft should read as if dream:team had run on any codebase.
+Strip host repo and org names, file paths, function and class
+names, business or product terms, branch names, issue and PR
+numbers, and any other identifiers that tie the finding to
+this codebase. Describe the dream-side behaviour and the
+pattern the team hit, not the host code that revealed it.
+
+The user approves each draft before it's filed; for an upstream
+draft, what the user approves is the wording as it will be
+filed (already stripped if the host repo isn't public).
 With approval, you or the user files. Apply a category label to
 each new issue — see "Labelling new issues" in Common rules.
 After the retrospective, or if the user declines it, tell the
