@@ -62,9 +62,16 @@ No involvement in this phase.
 
 When Grace gives you a task:
 
-1. Read the task description. It tells you what's in scope,
-   what's explicitly out of scope, and what to do if you
-   disagree with a scope decision (raise it; don't keep going).
+1. Read the task description. It tells you what's in scope
+   and what to do if you disagree with a scope decision (raise
+   it; don't keep going). The brief won't list what's out of
+   scope. If, while doing the work, you notice a sibling
+   surface that looks like the same edit on a wider footprint
+   — a missed instance, or one this change has now made
+   adjacent — raise it through the same channel. That's the
+   protocol's "Defend completeness" call, and the brief's
+   silence on out-of-scope items is what keeps that channel
+   open (see `protocol.md`).
 
 2. Do the work.
 

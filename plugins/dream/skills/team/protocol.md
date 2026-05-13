@@ -115,9 +115,12 @@ chain repeats until the list is drained.
 ### Per-task workflow
 
 1. **Assign.** Grace assigns the task to Ralph. The brief in
-   the task description spells out in-scope items, out-of-scope
-   items, and what Ralph should do if he disagrees with a scope
-   decision (raise it; don't keep going).
+   the task description spells out in-scope items and what
+   Ralph should do if he disagrees with a scope decision (raise
+   it; don't keep going). The brief doesn't list what's out of
+   scope — the positive in-scope statement bounds the work, and
+   a list of what isn't in scope can point Ralph away from
+   sibling surfaces the session should also be repairing.
 
 2. **Implement.** Ralph does the work, runs the
    project's lint/format check and test suite, and reports
@@ -432,11 +435,14 @@ These apply across every phase.
   posting Ada's review to the PR — Grace strips the signature
   first.
 - Grace's task descriptions should be **explicit about scope**:
-  in-scope items, out-of-scope items, and what Ralph should do
-  if he disagrees with a scope decision (raise it; don't keep
-  going). The task description is the brief — it travels with
-  the `TaskUpdate` assignment, so no separate dispatch message
-  is needed.
+  in-scope items and what Ralph should do if he disagrees with
+  a scope decision (raise it; don't keep going). The brief
+  doesn't list what's out of scope — the positive in-scope
+  statement bounds the work, and a list of what isn't in scope
+  can point Ralph away from sibling surfaces the session should
+  also be repairing. The task description is the brief — it
+  travels with the `TaskUpdate` assignment, so no separate
+  dispatch message is needed.
 - Junio's audit output is a **numbered plain-text list** of
   proposed follow-ons (each with a one-line reason and file
   paths or symbol names), optionally followed by an "out of

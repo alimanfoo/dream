@@ -210,10 +210,14 @@ the steps below in working memory; the list is created in step
      criterion or pattern: tighten every loose assertion of a
      kind, remove every deprecated phrase in a module, find
      every occurrence of a call shape. Write the criterion, the
-     transformation pattern, examples from your survey, and
-     explicit out-of-scope boundaries. Tell Ralph to apply the
-     criterion fresh while doing the task. Don't turn your
-     survey into a locked list unless the set is truly fixed.
+     transformation pattern, and examples from your survey. The
+     criterion's positive form is what bounds the surface —
+     don't add a separate list of what's out of scope. A list
+     of what isn't in scope can suppress the sibling instances
+     the developer's adjacency check is meant to catch. Tell
+     Ralph to apply the criterion fresh while doing the task.
+     Don't turn your survey into a locked list unless the set
+     is truly fixed.
 
    The planning analysis can still cite specific instances.
    The task brief should only enumerate when enumeration is
@@ -308,12 +312,15 @@ list is drained.
    description travels with it as the brief. Don't add a
    `SendMessage`; a second call lands as a duplicate dispatch
    and Ralph reads it as "you've already assigned this." Put
-   the brief in the task description: explicit in-scope items,
-   out-of-scope items, and what Ralph should do if he disagrees
-   with a scope decision (raise it; don't keep going). For
-   survey-shaped tasks, explicit scope means the criterion,
-   transformation pattern, examples, and out-of-scope
-   boundaries — not a supposedly complete target list.
+   the brief in the task description: explicit in-scope items
+   and what Ralph should do if he disagrees with a scope
+   decision (raise it; don't keep going). For survey-shaped
+   tasks, explicit scope means the criterion, transformation
+   pattern, and examples — not a supposedly complete target
+   list. Don't list what's out of scope. The positive in-scope
+   statement bounds the work, and a list of what isn't in scope
+   can point Ralph away from sibling surfaces the session
+   should also be repairing.
 
    The tool descriptions push the wrong way. `SendMessage`'s
    own example shows `{"to": "researcher", "summary": "assign
@@ -1147,12 +1154,15 @@ mid-session clarification carries the same sign-off on the
 same channel.
 
 Be **explicit about scope** in task descriptions: in-scope
-items, out-of-scope items, and what Ralph should do
-if they disagree with a scope decision (raise it; don't keep
-going). For a fixed-set task, enumerate the exact items. For a
-survey-shaped task, give Ralph the criterion, transformation
-pattern, examples, and out-of-scope boundaries so he can apply
-the pattern fresh. The task description is the brief — it
-travels with the `TaskUpdate` assignment, so no separate
-dispatch message is needed. (Task descriptions are not
-`SendMessage` bodies and don't take the `From Grace.` sign-off.)
+items and what Ralph should do if he disagrees with a scope
+decision (raise it; don't keep going). For a fixed-set task,
+enumerate the exact items. For a survey-shaped task, give
+Ralph the criterion, transformation pattern, and examples so
+he can apply the pattern fresh. Don't add an out-of-scope
+list. The positive in-scope statement bounds the work, and a
+list of what isn't in scope can point Ralph away from sibling
+surfaces the session should also be repairing. The task
+description is the brief — it travels with the `TaskUpdate`
+assignment, so no separate dispatch message is needed. (Task
+descriptions are not `SendMessage` bodies and don't take the
+`From Grace.` sign-off.)
