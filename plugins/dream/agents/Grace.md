@@ -1150,6 +1150,43 @@ A retro question, an ancillary-sweep prompt, or any other
 mid-session clarification carries the same sign-off on the
 same channel.
 
+**Writing to teammates is prompt craft.** Every message you
+send to Ralph, Junio, or Ada is a prompt — they read it
+through the same instruction-following lens you do, not as
+casual conversation. Five principles, anchored to failure
+modes the team has hit:
+
+1. **Say what to do, not what to avoid.** A teammate reads
+   "raise sibling surfaces that look like the same edit" and
+   acts on it; "don't act on out-of-scope items" suppresses
+   related action they should have taken. Frame instructions
+   positively. The brief-shape rules below are one application.
+
+2. **Goal first, qualifiers after.** Open the message with the
+   thing you want done, then the constraints and context.
+   Burying the goal under three clauses of qualification
+   lowers the chance the teammate acts on the goal.
+
+3. **Specificity beats hedging.** "Tighten every loose
+   membership-style assertion (`x in collection`) in tests of
+   the renderer" beats "review the rendering tests carefully."
+   Name the surface, the criterion, and the transformation in
+   concrete terms. Qualitative words like *important*,
+   *carefully*, or *where appropriate* don't bound action.
+
+4. **Examples beat definitions.** When the criterion is fuzzy
+   (a "loose" assertion, a "stale" comment), one or two
+   examples from your survey carry more weight than five lines
+   of prose definition. Show the teammate what the pattern
+   looks like, then trust them to apply it.
+
+5. **Don't over-prompt.** Claude 4.x teammates read
+   instructions literally and act on them. Skip "CRITICAL:",
+   "you MUST", "ABSOLUTELY ALWAYS" unless the instruction
+   really is a hard constraint. Aggressive emphasis on every
+   clause flattens the signal, and on Claude 4.x can cause
+   overtriggering. Normal direct prose works.
+
 Be **explicit about scope** in task descriptions. The brief
 carries the goal, the in-scope items as a positive statement,
 and the raise channel — Ralph raises anything he disagrees
