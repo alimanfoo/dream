@@ -47,8 +47,8 @@ teammate work delegated to Ralph after the user approves the
 plan. Plans, delegates, verifies, and gatekeeps task
 completion. Commits and pushes
 after marking tasks complete. Asks Junio for one round of
-review on the draft plan before sharing it with the user, and
-revises the plan based on his findings. Decides which
+review on the Draft Plan before writing Plan A and Plan B for
+the user, and revises based on his findings. Decides which
 of Junio's audit proposals and Ada's review findings become
 follow-on tasks. Decides how to dispose post-merge ancillary
 findings from all team members, then discusses those calls
@@ -68,9 +68,10 @@ the project's test suite.
 ### Junio (maintainer)
 
 Looks after the codebase as a whole. Read-only auditor (no edit
-or write tools available, by design). Reviews Grace's draft
-plan before it goes to the user, and audits the codebase after
-each completed task to propose follow-on coherence work.
+or write tools available, by design). Reviews Grace's Draft
+Plan before she writes Plan A and Plan B for the user, and
+audits the codebase after each completed task to propose
+follow-on coherence work.
 
 ### Ada (reviewer)
 
@@ -100,22 +101,22 @@ Grace reads the code in depth and produces a planning analysis
 before proposing tasks. Grace writes the analysis first (stated
 goal vs. code reading), names the code findings, proposes tasks
 from the code reading, and adds a coverage check. The result
-is a single draft plan. Before drafting the versions she will
-show the user, Grace sends the draft to Junio for one round of
-internal review — advisory, not gating. That review may include
-a generalisation candidate: an opportunity to name a deeper
-code pattern that would make the plan smaller or simpler. Grace
-owns the plan and decides which findings to act on. After
-Junio's review Grace drafts two versions of the plan — Plan A
-and Plan B — and presents them to the user. Plan A is a
-sensible, coherent treatment of the agreed scope with the
-findings from Junio's review she accepts folded in. Plan B
-extends Plan A with further tasks to address scope-risk
+is a single Draft Plan. Before writing the versions she will
+show the user, Grace sends the Draft Plan to Junio for one
+round of internal review — advisory, not gating. That review
+may include a generalisation candidate: an opportunity to name
+a deeper code pattern that would make the plan smaller or
+simpler. Grace owns the plan and decides which findings to act
+on. After Junio's review Grace writes two versions of the
+plan — Plan A and Plan B — and presents them to the user.
+Plan A aims for a complete and coherent resolution of the
+provisional scope, with the findings from Junio's review she
+accepts folded in. Plan B extends Plan A with further tasks
+that anticipate work beyond the provisional scope — scope-risk
 observations from Grace's analysis and related items Junio
-raised, anticipating further work for a complete and coherent
-resolution. The proposal carries both options when Plan B
-adds anything; the user picks. The phase ends at user approval
-of the task list.
+raised. The proposal carries both options when Plan B adds
+anything; the user picks. The phase ends at user approval of
+the task list.
 
 ## Phase 3: Develop
 
@@ -366,15 +367,15 @@ Grace.md.
 
 ## Plan A and Plan B
 
-Grace writes a single draft plan first and sends it to Junio
-for review. After Junio's review Grace drafts two versions of
+Grace writes a single Draft Plan first and sends it to Junio
+for review. After Junio's review Grace writes two versions of
 the plan — Plan A and Plan B — and presents them to the user.
-Plan A is a sensible, coherent treatment of the agreed scope
-with the findings from Junio's review she accepts folded in.
-Plan B extends Plan A with further tasks to address
+Plan A aims for a complete and coherent resolution of the
+provisional scope, with the findings from Junio's review she
+accepts folded in. Plan B extends Plan A with further tasks
+that anticipate work beyond the provisional scope —
 scope-risk observations in Grace's analysis and related items
-Junio raised, anticipating further work for a complete and
-coherent resolution. When Plan B adds anything, the planning
+Junio raised. When Plan B adds anything, the planning
 proposal carries both options and the user picks; when
 nothing surfaced to add, the proposal carries only Plan A.
 
