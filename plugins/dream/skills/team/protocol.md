@@ -351,6 +351,29 @@ at the requirements layer (user's call) or the code layer
 Grace.md). Full detail on running pause and rescope is in
 Grace.md.
 
+## No orphaned observations
+
+Every observation Grace records gets a named disposition at
+the next decision boundary. The dispositions available depend
+on phase — task, rescope, out of scope, ancillary, drop,
+reinforce, re-frame, file fresh — but the rule is the same:
+no observation stays "interesting prose." Each is named, each
+gets a disposition, each disposition is checkable.
+
+Some dispositions defer the call to a later phase: ancillary
+defers to Phase 6 Collect; an open question defers to the
+user before planning approval. Both have a named destination
+and a reason that matches the receiving phase's job. There is
+no other deferral — "we'll come back to this" is not a
+disposition.
+
+Later dispositions respect earlier ones. If new evidence at a
+later phase changes the picture, that is a reversal — surface
+the prior disposition, surface the new reading, and ask the
+user whether to overturn or hold. Don't dispose of a reversal
+under a procedure that frames it as fresh observation; the
+procedure hides the reversal.
+
 ## Common rules
 
 These apply across every phase.
