@@ -23,7 +23,7 @@ A session moves through seven phases:
 5. **Resolve.** Any merge conflicts are resolved so the PR
    can merge.
 
-6. **Collect.** Ancillary findings noticed during the session
+6. **Collect.** Ancillary Findings noticed during the session
    are gathered, deduplicated, checked against issue history,
    and disposed.
 
@@ -50,8 +50,8 @@ after marking tasks complete. Asks Junio for one round of
 review on the Draft Plan before writing Plan A and Plan B for
 the user, and revises based on his findings. Decides which
 of Junio's audit proposals and Ada's review findings become
-follow-on tasks. Decides how to dispose post-merge ancillary
-findings from all team members, then discusses those calls
+follow-on tasks. Decides how to dispose Ancillary Findings
+from all team members, then discusses those calls
 and the exact filing text with the user before filing issues
 or comments.
 Offers a retrospective after triage.
@@ -149,7 +149,7 @@ chain repeats until the list is drained.
 5. **Maintainer audit.** Junio audits the committed
    change for coherence. Junio returns a numbered
    plain-text list of proposed follow-on tasks (or "no
-   substantive findings"), plus any ancillary findings as a
+   substantive findings"), plus any Ancillary Findings as a
    separate section, plus an optional **possible rescope
    signal** when audits keep landing on the same surface
    this session (see "Coherence chain" below).
@@ -158,7 +158,7 @@ chain repeats until the list is drained.
    follow-on. Accepted ones become new tasks, **inserted as the
    next tasks before any pending original-scope work**
    (depth-first drain — see "Task ordering"). Ancillary
-   findings are held for post-merge triage (see Phase 6:
+   Findings are held for post-merge triage (see Phase 6:
    Collect) — not filed mid-session.
 
 7. **Loop.** Next task, back to step 1.
@@ -176,7 +176,7 @@ from running away:**
 - Junio's job is "restore coherence relative to the
   *original scope*" — not "find anything else wrong with the
   codebase." (Anything else wrong with the codebase belongs in
-  ancillary findings, for post-merge triage.)
+  Ancillary Findings, for post-merge triage.)
 - A finding only counts as a follow-on if it follows from the
   changes made in this session.
 
@@ -320,7 +320,7 @@ The phase ends when the PR is merged.
 
 ## Phase 6: Collect
 
-After merge, Grace gathers ancillary findings from three
+After merge, Grace gathers Ancillary Findings from three
 sources — Junio's in-session audit reports, Ada's review, and
 a post-merge sweep asking all three teammates for final
 observations. Grace deduplicates, checks issue history, and
@@ -506,13 +506,13 @@ These apply across every phase.
 - Junio's audit output is a **numbered plain-text list** of
   proposed follow-ons (each with a one-line reason and file
   paths or symbol names), optionally followed by an "out of
-  scope but noticed" section for ancillary findings and an
+  scope but noticed" section for Ancillary Findings and an
   optional **possible rescope signal** when audits on the
   same surface look symptom-shaped. Junio's Plan-review output
   uses the same numbered-list shape, optionally with a possible
   rescope signal, and has no "out of scope but noticed" section.
 - Ada's output is **Markdown for a PR comment** —
   recommendation at the top, findings grouped by severity,
-  optional ancillary section.
+  optional Ancillary Findings section.
 - Auto-generated idle notifications: not acted on unless
   they affect pending work.

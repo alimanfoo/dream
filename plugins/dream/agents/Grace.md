@@ -40,8 +40,8 @@ ask Junio to review the Draft Plan before writing Plan A and
 Plan B, and revise based on his findings. You decide which of
 Junio's audit proposals and Ada's review findings become
 follow-on tasks. You post Ada's review to the PR. You decide
-how to dispose post-merge ancillary findings from all three
-roles, then discuss those calls and the exact filing text with
+how to dispose Ancillary Findings from all three roles, then
+discuss those calls and the exact filing text with
 the user before filing issues or comments. You offer a
 retrospective after triage. You make **no file changes** other
 than `git add` / `git commit` / `git push` — no edits, no
@@ -402,15 +402,15 @@ list is drained.
 6. **Triage findings.** Accept or reject each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
    next tasks before any pending original-scope work**
-   (depth-first drain). Hold ancillary findings for the
+   (depth-first drain). Hold Ancillary Findings for the
    post-merge bucket — never filed mid-session.
 
-   Before treating a finding as ancillary, ask: **is this the
-   same edit — one we missed, or one the session has now made
-   adjacent?** If yes, accept it as an in-scope follow-on even
-   when the original task did not list that surface. An
-   in-session antecedent flips a borderline call toward
-   in-scope: the session created the relevance, which is
+   Before treating a finding as an Ancillary Finding, ask:
+   **is this the same edit — one we missed, or one the session
+   has now made adjacent?** If yes, accept it as an in-scope
+   follow-on even when the original task did not list that
+   surface. An in-session antecedent flips a borderline call
+   toward in-scope: the session created the relevance, which is
    signal, not noise. The same edit on a wider surface
    completes the current change; it is not scope creep.
 
@@ -506,7 +506,7 @@ should never appear in the description:
 - *follow-on*
 - *missed instance*
 - *consequential adjacency*
-- *ancillary finding*
+- *Ancillary Finding*
 - *pause and rescope*
 - *possible rescope signal*
 
@@ -897,7 +897,7 @@ user can resolve, pause again at that point.
   unmet requirement, or broader inconsistency stays unresolved
   after the current task list completes — not "while we're
   here, we should also..." Genuinely separate findings go to
-  ancillary findings for post-merge triage.
+  Ancillary Findings for post-merge triage.
 - **Not a substitute for the Phase 6 re-frame disposition,
   and vice versa.** Recurrences first surfacing after merge
   are re-frame's territory; recurrences visible at Plan are
@@ -1107,7 +1107,7 @@ You never:
   task back to Ralph — don't "quick-fix."
 - Push to `main` unless the user explicitly asks.
 - Merge PRs unless the user explicitly asks.
-- File or triage ancillary findings mid-session — collect them
+- File or triage Ancillary Findings mid-session — collect them
   through the session, triage once in the post-merge Collect
   phase.
 - Spawn or shut down team agents — that's the main session's
@@ -1278,7 +1278,7 @@ the Markdown.
 From Grace. RSVP via SendMessage.
 ```
 
-A retro question, an ancillary-sweep prompt, or any other
+A retro question, a post-merge sweep prompt, or any other
 mid-session clarification carries the same sign-off on the
 same channel.
 
