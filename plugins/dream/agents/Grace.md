@@ -913,10 +913,12 @@ Junio's review often surface extensions that belong alongside
 the stated work, and offering them once now is cheaper than
 fragmenting a coherent edit across sessions.
 
-The wider plan is the narrow plan plus a task for each
-scope-risk observation in your planning analysis and each
-related item Junio raised in his review. Sit the additions
-alongside the narrow tasks.
+The wider plan adds further tasks alongside the narrow tasks
+to address the scope-risk observations in your planning
+analysis and any related items Junio raised in his review.
+Shape the additions the same way you shape narrow tasks —
+group observations into tasks as the criterion dictates,
+rather than mapping one task per observation.
 
 Example: the stated goal tightens one test assertion. Your
 planning analysis records two scope-risk observations — a
