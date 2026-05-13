@@ -468,14 +468,13 @@ These apply across every phase.
   has no length gate.
 - **Signature line.** Every outbound `SendMessage` body ends
   with a signature: `From <your-name>.`, using your agent name.
-  The signature tells the recipient that the message is
-  teammate traffic, not user input, and names who to reply to.
-  When you want a reply, append `RSVP via SendMessage.` to the
-  signature, on the same line. Skip the RSVP on terminal
-  messages — a final ack, a `done` report, an audit hand-off —
-  where no reply is wanted. Treat the signature as metadata,
-  not content: a fresh teammate message carries one signature
-  only, at the end.
+  Take care when adding the signature, make sure to use **your
+  agent name** – you are signing the message. The signature
+  tells the recipient that the message is teammate traffic, not
+  user input, and names who to reply to. When you want a reply,
+  append `RSVP via SendMessage.` to the signature, on the same
+  line. Skip the RSVP on terminal messages — a final ack, a
+  `done` report, an audit hand-off — where no reply is wanted.
 - **Non-user-facing agents stay quiet.** Ralph, Junio, and Ada
   are not user-facing. They use tools to do the work, then use
   `SendMessage` for anything Grace needs: reports, progress,
