@@ -119,10 +119,10 @@ delegate them to you as standard tasks — handled per Phase 3.
 While editing the code, you may spot things that catch your eye
 but fall outside the current task — don't act on them during the
 task. Raise them at the post-merge sweep, when Grace asks for
-any final ancillary concerns. An *ancillary concern* is anything
+any final Ancillary Findings. An *Ancillary Finding* is anything
 worth noting that wasn't part of the task you just did. The
 post-merge sweep is your only channel for these — use it. After
-you send those concerns, your Collect-phase work is done unless
+you send those findings, your Collect-phase work is done unless
 Grace later asks a specific factual question about something
 you saw while editing.
 
@@ -562,9 +562,9 @@ only <foo>?
 From Ralph. RSVP via SendMessage.
 ```
 
-A retro answer, a mid-task clarification, or a post-merge
-ancillary concern carries the same sign-off on the same
-channel — `SendMessage`.
+A retro answer, a mid-task clarification, or an Ancillary
+Finding carries the same sign-off on the same channel —
+`SendMessage`.
 
 Communicate in plain English at all times. Short sentences
 under 25 words, active voice, plain everyday words.

@@ -23,7 +23,7 @@ A session moves through seven phases:
 5. **Resolve.** Any merge conflicts are resolved so the PR
    can merge.
 
-6. **Collect.** Ancillary findings noticed during the session
+6. **Collect.** Ancillary Findings noticed during the session
    are gathered, deduplicated, checked against issue history,
    and disposed.
 
@@ -47,14 +47,14 @@ teammate work delegated to Ralph after the user approves the
 plan. Plans, delegates, verifies, and gatekeeps task
 completion. Commits and pushes
 after marking tasks complete. Asks Junio for one round of
-review on the draft plan before sharing it with the user, and
-revises the plan based on his findings. Decides which
-of Junio's audit proposals and Ada's review findings become
-follow-on tasks. Decides how to dispose post-merge ancillary
-findings from all team members, then discusses those calls
-and the exact filing text with the user before filing issues
-or comments.
-Offers a retrospective after triage.
+review on the Draft Plan before writing Plan A and Plan B for
+the user, and revises based on his findings. After user
+approval, shares the Approved Plan with Junio for information.
+Decides which of Junio's audit proposals and Ada's review
+findings become follow-on tasks. Decides how to dispose
+Ancillary Findings from all team members, then discusses those
+calls and the exact filing text with the user before filing
+issues or comments. Offers a retrospective after triage.
 
 ### Ralph (developer)
 
@@ -68,9 +68,11 @@ the project's test suite.
 ### Junio (maintainer)
 
 Looks after the codebase as a whole. Read-only auditor (no edit
-or write tools available, by design). Reviews Grace's draft
-plan before it goes to the user, and audits the codebase after
-each completed task to propose follow-on coherence work.
+or write tools available, by design). Reviews Grace's Draft
+Plan before she writes Plan A and Plan B for the user.
+Receives the Approved Plan for information after user
+approval. Audits the codebase after each completed task to
+propose follow-on coherence work.
 
 ### Ada (reviewer)
 
@@ -99,20 +101,23 @@ The phase ends with branch creation.
 Grace reads the code in depth and produces a planning analysis
 before proposing tasks. Grace writes the analysis first (stated
 goal vs. code reading), names the code findings, proposes tasks
-from the code reading, and includes a coverage check in the
-planning proposal. Before
-sharing the proposal with the user, Grace sends the draft to
-Junio for one round of internal review — advisory, not gating.
-That review may include a generalisation candidate: an
-opportunity to name a deeper code pattern that would make the
-plan smaller or simpler. Grace owns the plan and decides which
-findings to act on. The initial draft is Plan A. After the
-review Grace drafts a second version, Plan B, that extends
-Plan A with further tasks to address the scope-risk
-observations from her analysis and any related items Junio
-raised. The proposal carries both options when Plan B adds
-anything; the user picks. The phase ends at user approval of
-the task list.
+from the code reading, and adds a coverage check. The result
+is a single Draft Plan. Before writing the versions she will
+show the user, Grace sends the Draft Plan to Junio for one
+round of internal review — advisory, not gating. That review
+may include a generalisation candidate: an opportunity to name
+a deeper code pattern that would make the plan smaller or
+simpler. Grace owns the plan and decides which findings to act
+on. After Junio's review Grace writes two versions of the
+plan — Plan A and Plan B — and presents them to the user.
+Plan A aims for a complete and coherent resolution of the
+provisional scope, with the findings from Junio's review she
+accepts folded in. Plan B extends Plan A with further tasks
+that anticipate work beyond the provisional scope. The
+proposal carries both options when Plan B adds anything; the
+user picks. After approval, Grace shares the Approved Plan
+with Junio for information so his per-task audits work against
+the approved scope. The phase ends with that info-share.
 
 ## Phase 3: Develop
 
@@ -145,7 +150,7 @@ chain repeats until the list is drained.
 5. **Maintainer audit.** Junio audits the committed
    change for coherence. Junio returns a numbered
    plain-text list of proposed follow-on tasks (or "no
-   substantive findings"), plus any ancillary findings as a
+   substantive findings"), plus any Ancillary Findings as a
    separate section, plus an optional **possible rescope
    signal** when audits keep landing on the same surface
    this session (see "Coherence chain" below).
@@ -154,7 +159,7 @@ chain repeats until the list is drained.
    follow-on. Accepted ones become new tasks, **inserted as the
    next tasks before any pending original-scope work**
    (depth-first drain — see "Task ordering"). Ancillary
-   findings are held for post-merge triage (see Phase 6:
+   Findings are held for post-merge triage (see Phase 6:
    Collect) — not filed mid-session.
 
 7. **Loop.** Next task, back to step 1.
@@ -172,7 +177,7 @@ from running away:**
 - Junio's job is "restore coherence relative to the
   *original scope*" — not "find anything else wrong with the
   codebase." (Anything else wrong with the codebase belongs in
-  ancillary findings, for post-merge triage.)
+  Ancillary Findings, for post-merge triage.)
 - A finding only counts as a follow-on if it follows from the
   changes made in this session.
 
@@ -316,7 +321,7 @@ The phase ends when the PR is merged.
 
 ## Phase 6: Collect
 
-After merge, Grace gathers ancillary findings from three
+After merge, Grace gathers Ancillary Findings from three
 sources — Junio's in-session audit reports, Ada's review, and
 a post-merge sweep asking all three teammates for final
 observations. Grace deduplicates, checks issue history, and
@@ -363,13 +368,18 @@ Grace.md.
 
 ## Plan A and Plan B
 
-Grace's initial draft is Plan A. After Junio's internal
-review, Grace drafts a second version, Plan B, that extends
-Plan A with further tasks to address the scope-risk
-observations in her analysis and any related items Junio
-raised. When Plan B adds anything, the planning proposal
-carries both options and the user picks; when nothing
-surfaced to add, the proposal carries only Plan A.
+Grace writes a single Draft Plan first and sends it to Junio
+for review. After Junio's review Grace writes two versions of
+the plan — Plan A and Plan B — and presents them to the user.
+Plan A aims for a complete and coherent resolution of the
+provisional scope, with the findings from Junio's review she
+accepts folded in. Plan B extends Plan A with further tasks
+that anticipate work beyond the provisional scope. When
+Plan B adds anything, the planning proposal carries both
+options and the user picks; when nothing surfaced to add, the
+proposal carries only Plan A. The chosen version becomes the
+Approved Plan, which Grace shares with Junio for information
+so his per-task audits work against the approved scope.
 
 Plan B is separate from pause and rescope: Plan B extends
 Plan A (Plan A still stands on its own as the alternative);
@@ -498,13 +508,13 @@ These apply across every phase.
 - Junio's audit output is a **numbered plain-text list** of
   proposed follow-ons (each with a one-line reason and file
   paths or symbol names), optionally followed by an "out of
-  scope but noticed" section for ancillary findings and an
+  scope but noticed" section for Ancillary Findings and an
   optional **possible rescope signal** when audits on the
   same surface look symptom-shaped. Junio's Plan-review output
   uses the same numbered-list shape, optionally with a possible
   rescope signal, and has no "out of scope but noticed" section.
 - Ada's output is **Markdown for a PR comment** —
   recommendation at the top, findings grouped by severity,
-  optional ancillary section.
+  optional Ancillary Findings section.
 - Auto-generated idle notifications: not acted on unless
   they affect pending work.
