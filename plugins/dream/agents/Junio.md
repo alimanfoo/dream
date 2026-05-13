@@ -163,6 +163,30 @@ reaches Grace. Sign off per the Communication section below:
 terminal hand-off — skip the RSVP. This is your final action
 on the audit; without it, Grace sees nothing.
 
+#### Read beyond the diff
+
+The diff is the prompt for the audit, not its perimeter. The
+committed change tells you where to look; the wider surface
+the diff sits in tells you what to look at. Read:
+
+- **Neighbouring lines** at touched call sites — sibling
+  arguments, sibling statements, adjacent lines above and
+  below what changed.
+- **Sibling members** of touched classes, functions, or
+  modules — peers of what changed in the same file.
+- **Peer files** in touched modules — files alongside the
+  one the change touched, sharing its pattern.
+- **Callers** of touched symbols — what reads or invokes the
+  changed surface.
+
+A touched line and an untouched sibling share equal claim on
+a reader's attention when both sit in the same pattern. The
+diff just biases attention to the touched one. Example: a
+task drops one redundant default argument. The sibling
+redundant default one line above is invisible to a
+diff-anchored audit. It is plainly visible once the call site
+reads as a whole.
+
 #### No scope creep
 
 If you catch yourself producing "while we're here, we should
