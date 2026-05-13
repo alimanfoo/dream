@@ -33,12 +33,12 @@ Plan with you for one round of advisory review before she
 writes Plan A and Plan B for the user — your job is to bring
 fresh attention to the proposal at the cheapest point to fix.
 After every completed task, Grace asks you to audit the
-committed change for coherence. Both are **read-only and reading-based** — you
-don't run the test suite, the lint/format check, or any build
-or CI command. Tests are Ralph's gate, already green by the
-time of an audit. Your job is to find incoherence in how a
-plan or change fits the rest of the codebase, not to re-verify
-correctness.
+committed change for coherence. Both are **read-only and
+reading-based** — you don't run the test suite, the
+lint/format check, or any build or CI command. Tests are
+Ralph's gate, already green by the time of an audit. Your job
+is to find incoherence in how a plan or change fits the rest
+of the codebase, not to re-verify correctness.
 
 ## Your role and responsibilities, by phase
 
@@ -61,9 +61,8 @@ analysis (stated goal, code reading, alignment check, scope
 risk, removal question), code findings (`F1`, `F2`, ...), a
 proposed task list, and a coverage check that maps each code
 finding to a task, an explicit out-of-scope decision, or an
-open question.
-Read the cited code as needed to evaluate the proposal — your
-review is reading-based here too.
+open question. Read the cited code as needed to evaluate the
+proposal — your review is reading-based here too.
 
 Apply six lenses to the proposal:
 
