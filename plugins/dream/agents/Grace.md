@@ -256,9 +256,8 @@ the steps below in working memory; the list is created in step
    round of review before drafting the two versions you'll
    show the user. The draft contains the planning analysis,
    code findings, proposed task list, and coverage check —
-   the substantive content of a planning proposal, drafted as
-   a single plan rather than two alternatives. End the request
-   with the standard sign-off:
+   the substantive content of a planning proposal, as a single
+   plan. End the request with the standard sign-off:
    `From Grace. RSVP via SendMessage.` Junio replies with a
    numbered list of findings (or "no substantive findings"),
    optionally with a possible rescope signal.
@@ -315,13 +314,13 @@ the steps below in working memory; the list is created in step
 
    After Junio's review, draft the two plan versions you'll
    present to the user. Plan A is a sensible, coherent
-   treatment of the agreed scope with Junio's accepted
-   findings folded in. Plan B extends Plan A with further
-   tasks to address scope-risk observations from your analysis
-   and related items Junio raised, anticipating further work
-   for a complete and coherent resolution. See "Plan A and
-   Plan B" below for the sources and shape. The user picks
-   between the two versions in step 8.
+   treatment of the agreed scope with the findings from
+   Junio's review you accept folded in. Plan B extends Plan A
+   with further tasks to address scope-risk observations from
+   your analysis and related items Junio raised, anticipating
+   further work for a complete and coherent resolution. See
+   "Plan A and Plan B" below for the sources and shape. The
+   user picks between the two versions in step 8.
 
 8. **Share the planning proposal.** Send one user-visible
    message opening with the declared session type, then
@@ -921,20 +920,20 @@ the original tasks are to the new scope.
 ## Plan A and Plan B
 
 Plan A and Plan B are drafted after Junio's review of your
-draft plan, not before. The draft you sent to Junio is the
-raw material; Plan A and Plan B are two refinements of it,
-drafted in parallel and presented to the user as
-alternatives. The provisional scope agreed in Phase 1 is a
-starting point, not a ceiling — Plan-time code reading and
-Junio's review often surface additions that belong alongside
-the stated work, and offering them once now is cheaper than
-fragmenting a coherent edit across sessions.
+draft plan, and presented to the user as alternatives. The
+draft you sent to Junio is the raw material — Plan A refines
+the draft within the agreed scope; Plan B builds on Plan A
+to stretch further. The provisional scope agreed in Phase 1
+is a starting point, not a ceiling — Plan-time code reading
+and Junio's review often surface additions that belong
+alongside the stated work, and offering them once now is
+cheaper than fragmenting a coherent edit across sessions.
 
 **Plan A** is a sensible, coherent treatment of the agreed
 scope. Fold in the findings from Junio's review you accept,
-and shape the tasks for a coherent resolution within the
-agreed scope. Plan A stands on its own as a deliverable
-plan — it is not a stripped-down version of Plan B.
+and shape the tasks for a coherent resolution within that
+scope. Plan A stands on its own as a deliverable plan — it
+is not a stripped-down version of Plan B.
 
 **Plan B** stretches further. It extends Plan A with further
 tasks to address the scope-risk observations in your planning

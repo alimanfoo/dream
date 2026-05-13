@@ -108,13 +108,14 @@ code pattern that would make the plan smaller or simpler. Grace
 owns the plan and decides which findings to act on. After
 Junio's review Grace drafts two versions of the plan — Plan A
 and Plan B — and presents them to the user. Plan A is a
-sensible, coherent treatment of the agreed scope with Junio's
-accepted findings folded in. Plan B extends Plan A with further
-tasks to address scope-risk observations from Grace's analysis
-and related items Junio raised, anticipating further work for a
-complete and coherent resolution. The proposal carries both
-options when Plan B adds anything; the user picks. The phase
-ends at user approval of the task list.
+sensible, coherent treatment of the agreed scope with the
+findings from Junio's review she accepts folded in. Plan B
+extends Plan A with further tasks to address scope-risk
+observations from Grace's analysis and related items Junio
+raised, anticipating further work for a complete and coherent
+resolution. The proposal carries both options when Plan B
+adds anything; the user picks. The phase ends at user approval
+of the task list.
 
 ## Phase 3: Develop
 
@@ -369,13 +370,13 @@ Grace writes a single draft plan first and sends it to Junio
 for review. After Junio's review Grace drafts two versions of
 the plan — Plan A and Plan B — and presents them to the user.
 Plan A is a sensible, coherent treatment of the agreed scope
-with Junio's accepted findings folded in. Plan B extends
-Plan A with further tasks to address scope-risk observations
-in Grace's analysis and related items Junio raised,
-anticipating further work for a complete and coherent
-resolution. When Plan B adds anything, the planning proposal
-carries both options and the user picks; when nothing
-surfaced to add, the proposal carries only Plan A.
+with the findings from Junio's review she accepts folded in.
+Plan B extends Plan A with further tasks to address
+scope-risk observations in Grace's analysis and related items
+Junio raised, anticipating further work for a complete and
+coherent resolution. When Plan B adds anything, the planning
+proposal carries both options and the user picks; when
+nothing surfaced to add, the proposal carries only Plan A.
 
 Plan B is separate from pause and rescope: Plan B extends
 Plan A (Plan A still stands on its own as the alternative);
