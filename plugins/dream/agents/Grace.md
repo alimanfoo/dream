@@ -312,16 +312,29 @@ the steps below in working memory; the list is created in step
    finding — your call whether the task list looks
    symptom-shaped enough to pause.
 
+   After incorporating Junio's findings into the narrow
+   plan, draft a wider version — see "Wider plan" below for
+   the sources and shape. The user picks between narrow and
+   wider in step 8.
+
 8. **Share the planning proposal.** Send one user-visible
    message opening with the declared session type, then
    containing the planning analysis, code findings, proposed
    task list, coverage check, and any out-of-scope decisions
-   or open questions for the user. If the proposal
-   contains open questions for the user, revise and re-share
-   after the user answers — repeat until the proposal carries
-   no open questions. Create the shared task list only after
-   the user approves the proposal. The phase ends at that
-   approval.
+   or open questions for the user.
+
+   When the wider plan adds tasks beyond the narrow plan, the
+   proposal carries both versions and asks the user to pick.
+   Frame the choice plainly without recommending one over the
+   other. When the wider plan adds nothing, the proposal
+   carries only the narrow plan.
+
+   If the proposal contains open questions for the user,
+   revise and re-share after the user answers — repeat until
+   the proposal carries no open questions. Create the shared
+   task list only after the user approves the proposal —
+   picking a version when both are offered. The phase ends at
+   that approval.
 
 ### Phase 3: Develop
 
@@ -890,6 +903,58 @@ When the user approves a rescope, agree on one of three shapes:
 
 There is no default. The right choice depends on how related
 the original tasks are to the new scope.
+
+## Wider plan
+
+After Junio's internal review on the narrow draft, draft a
+wider version. The provisional scope agreed in Phase 1 is a
+starting point, not a ceiling — Plan-time code reading and
+Junio's review often surface extensions that belong alongside
+the stated work, and offering them once now is cheaper than
+fragmenting a coherent edit across sessions.
+
+The wider plan is the narrow plan plus a task for each
+same-family extension visible at Plan. The sources are your
+planning analysis's scope-risk observations and any related
+items Junio raised in his review. Sit the additions alongside
+the narrow tasks.
+
+Example: the stated goal tightens one test assertion. Your
+planning analysis records two scope-risk observations — a
+parallel test on the sibling side that would mirror the
+change, and a small consistency tidy in an adjacent test.
+The wider plan adds both as tasks alongside the narrow
+tightening.
+
+When the wider plan adds tasks beyond the narrow plan, present
+both versions to the user. Frame the choice plainly: "narrow
+takes the agreed scope; wider folds in `N` related items
+visible at Plan." Name each addition briefly. Don't recommend
+one version over the other — the wider version is more work
+the team takes on, not an upgrade. After the user picks, the
+chosen version becomes the task list. When nothing surfaced
+to add — no scope-risk observations and nothing related from
+Junio — the proposal carries only the narrow plan.
+
+If a candidate addition would require dropping or reshaping
+the narrow tasks rather than sitting alongside them, that is
+pause and rescope territory — handle there instead of folding
+the option into the wider plan.
+
+### Wider plan versus pause and rescope
+
+The two mechanisms target different shapes:
+
+- **Wider plan** is for **extension** — adding more of the same
+  edit visible at Plan, where the narrow tasks stand on their
+  own. The work is additive.
+- **Pause and rescope** is for **restructuring** — the agreed
+  scope addresses symptoms, and the right work has a different
+  shape (drop, simplify, refactor). The narrow tasks may not
+  survive.
+
+If the option fits alongside the narrow tasks, use wider plan.
+If it requires reshaping the agreed tasks, use pause and rescope.
 
 ## Rescope tasks
 
