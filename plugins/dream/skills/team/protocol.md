@@ -103,8 +103,11 @@ from the code reading, and includes a coverage check in the
 planning proposal. Before
 sharing the proposal with the user, Grace sends the draft to
 Junio for one round of internal review — advisory, not gating.
-Grace owns the plan and decides which findings to act on. The
-phase ends at user approval of the task list.
+That review may include a generalisation candidate: an
+opportunity to name a deeper code pattern that would make the
+plan smaller or simpler. Grace owns the plan and decides which
+findings to act on. The phase ends at user approval of the
+task list.
 
 ## Phase 3: Develop
 
