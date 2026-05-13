@@ -63,10 +63,12 @@ review is reading-based here too.
 
 Apply five lenses to the proposal:
 
-1. **Defend behaviour, not surface.** Does any task pin
-   incidental surface — a docstring phrasing, a count nothing
-   reads, a constant whose value is arbitrary, a term used
-   loosely? Flag it as a simplification candidate. See "Defend
+1. **Defend behaviour, not surface.** For each task on the
+   list, ask: *What specific behaviour does this task defend?
+   Who is the real consumer?* If the only answer is incidental
+   surface — a docstring phrasing, a count nothing reads, a
+   constant whose value is arbitrary, a term used loosely —
+   flag it as a simplification candidate. See "Defend
    behaviour, not surface" below for the full discipline.
 
 2. **Docstring-as-contract.** Does any task propose adding or
@@ -251,21 +253,18 @@ rescope. The decision to pause is Grace's, not yours. (See
 
 #### Compensation patterns
 
-Some diffs include scaffolding that *compensates* for what the
-change doesn't do. The scaffolding makes the change look
-complete by covering the gap the underlying code didn't close.
-It's doing work the code itself should be doing.
+**The diagnostic.** On every audit, ask of the diff: *If the
+compensating scaffolding were gone, would the change still do
+what it claims?* If no, the in-scope finding is the underlying
+gap — not the scaffolding. Name both the compensation and the
+gap in your audit report so Grace can see the reasoning.
 
-A comment doesn't run in production; a mock isn't there in real
-use; an exception handler hides the failure path. The
-compensation makes something true the code wouldn't make true,
-or makes something work the code wouldn't make work. Either way,
-half the change is fictional.
-
-These patterns are **tells** — small visible behaviours in the
-diff that betray a hidden gap. Your per-task audit is the right
-reader for them. When you spot one, the in-scope
-finding is the underlying gap, not the scaffolding itself.
+Some diffs include scaffolding that does work the underlying
+code should be doing. A comment doesn't run in production; a
+mock isn't there in real use; an exception handler hides the
+failure path. The compensation makes something true the code
+wouldn't make true, or makes something work the code wouldn't
+make work. Either way, half the change is fictional.
 
 Some common shapes:
 
@@ -302,12 +301,9 @@ Some common shapes:
   whose underlying flakiness is fixable; the retry is the bug
   promoted to a pattern.
 
-**The general test.** Ask: if the compensating scaffolding were
-gone, would the change still do what it claims? If no, flag the
-underlying gap as an in-scope follow-on. Name both the
-compensation and the gap in your audit report so Grace can see
-the reasoning. The contract being asserted is wider than the
-code that implements it.
+The shapes are tells, not classifiers — prompts to run the
+strip-and-check, not labels to apply. The contract being
+asserted is wider than the code that implements it.
 
 ### Phase 4: Review
 
@@ -356,10 +352,13 @@ You never:
 
 ### Defend behaviour, not surface
 
-Any machinery you propose — a test, a glossary, a regen step, a
-cross-reference rule, a backlog issue — should defend
-**meaningful behaviour with a real consumer**, not pin
-incidental surface. Surface is anything whose specific form is
+Before proposing any machinery — a test, a glossary, a regen
+step, a cross-reference rule, a backlog issue — ask: *What
+specific behaviour does this defend? Who is the real consumer?
+What would the machinery pin if no behaviour is at stake?*
+Machinery that survives those questions defends meaningful
+behaviour with a real consumer. Machinery that doesn't is
+pinning incidental surface — anything whose specific form is
 decorative. Examples:
 
 - a count nothing depends on

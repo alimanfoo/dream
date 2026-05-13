@@ -224,18 +224,16 @@ an observation Grace can act on by starting a pause and
 rescope (see "Pause and rescope" below). The decision to
 pause is Grace's, not Junio's.
 
-**Defend behaviour, not surface.** Any proposed machinery — a
-test, a glossary, a regen step, a cross-reference rule, a
-backlog issue — should defend meaningful behaviour with a real
-consumer. It shouldn't pin incidental surface (a count nothing
-depends on, a docstring phrasing, a constant whose value is
-arbitrary, a term used loosely). When a finding proposes
-alignment machinery for a prose inconsistency or an arbitrary
-value, Junio (in the audit) and Grace (at triage) asks
-whether removing the decorative side dissolves the concern. If
-yes, the surface should be simplified rather than built around
-with structure. Junio frames these as simplification
-candidates in the per-task audit.
+**Defend behaviour, not surface.** For any proposed machinery
+— a test, a glossary, a regen step, a cross-reference rule, a
+backlog issue — ask: *What specific behaviour does this
+defend? Who is the real consumer? What would the machinery pin
+if no behaviour is at stake?* If the only answer is incidental
+surface (a count nothing depends on, a docstring phrasing, an
+arbitrary constant, a term used loosely), frame the finding as
+a simplification candidate — drop the decorative side rather
+than build structure around it. Junio asks the question in
+the audit; Grace asks it again at triage.
 
 For prose artefacts, clarity is behaviour. Docstrings, comments,
 README text, documentation, and prompts all have readers. They
@@ -244,9 +242,9 @@ keep one claim per sentence where the prose is doing hard work.
 Dense but technically accurate prose is still a quality problem
 when it makes the reader work to recover the contract.
 
-**Compensation patterns are tells.** Some diffs include
-scaffolding that compensates for what the change doesn't do.
-Examples:
+**Strip the compensation — does the change still do what it
+claims?** Some diffs include scaffolding that does work the
+underlying code should be doing. Examples:
 
 - a comment asserting a property the code doesn't demonstrate
 - a test mock insulating the change from the dependency it's
@@ -256,11 +254,10 @@ Examples:
 - a runtime validator rejecting inputs upstream types should
   have prevented
 
-The scaffolding does work the code itself should be doing. It
-makes the change look complete by covering the gap. When Junio
-spots one, the in-scope finding is the underlying gap, not the
-scaffolding itself. General test (for Junio): mentally strip
-the compensation — does the change still do what it claims?
+Junio applies the test on every audit: mentally remove the
+scaffolding and read the diff again. If the change no longer
+holds, the in-scope finding is the underlying gap — not the
+scaffolding.
 
 ### Task ordering
 

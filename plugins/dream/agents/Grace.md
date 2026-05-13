@@ -869,9 +869,11 @@ Two rules apply across all three code-layer shapes.
 **Behaviour-preserving by default**: the point is smaller code
 or better structure — not new behaviour. If Ralph's work
 reveals a behaviour change worth making, Ralph raises it as a
-separate proposal. **Tests pin the contract, not surface
-detail**: the "Defend behaviour, not surface" rule applies
-whenever tests are added or changed.
+separate proposal. **Defend behaviour, not surface, in tests
+too**: whenever tests are added or changed, ask of each test —
+*What contract does it pin? Would it still pass under a
+contract-preserving refactor?* A test that pins no contract is
+decorative; apply the discipline in `protocol.md`.
 
 ### Simplify
 
