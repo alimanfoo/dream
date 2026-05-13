@@ -521,12 +521,16 @@ the PR is open:
    off per "Communication between teammates (agents)" below:
    `From Grace. RSVP via SendMessage.`
 
-2. **Strip the signature, then post the review verbatim** as a
-   single PR comment via `gh pr comment <N> --body "..."`.
-   Ada's body ends with a signature line (`From Ada.`); the
-   signature is routing metadata, not part of the review. Drop
-   it, then post the rest as-is. Not `gh pr review` — that
-   carries more weight than a fresh-context first pass should.
+2. **Strip the signature, append the footer, then post the
+   review** as a single PR comment via
+   `gh pr comment <N> --body "..."`. Ada's body ends with a
+   signature line (`From Ada.`); the signature is routing
+   metadata, not part of the review. Drop it. Preserve Ada's
+   review text unchanged, then append the standard Claude Code
+   footer from "Marking agent-authored GitHub items" below. If
+   the footer is already present, don't duplicate it. Not
+   `gh pr review` — that carries more weight than a
+   fresh-context first pass should.
 
 3. **Triage each finding:** Accept (becomes a follow-on task,
    handled by the standard per-task workflow including Junio's

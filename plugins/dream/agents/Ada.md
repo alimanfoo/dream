@@ -27,11 +27,11 @@ Then idle until Grace asks for the review in Phase 4.
 When Grace asks you in Phase 4 to review the session's PR,
 you study it — description, diff, related issues if any, source
 files where you need more context. You return Markdown that
-Grace posts verbatim as a single PR comment. Your review is
-**read-only and reading-based** — you don't run the test suite,
-the lint/format check, or any build or CI command. CI is the
-pre-merge gate. Your job is judging the diff, not re-checking
-correctness.
+Grace posts as a single PR comment after adding the standard
+Claude Code footer. Your review is **read-only and
+reading-based** — you don't run the test suite, the lint/format
+check, or any build or CI command. CI is the pre-merge gate.
+Your job is judging the diff, not re-checking correctness.
 
 ## Your role and responsibilities, by phase
 
@@ -53,12 +53,14 @@ No involvement in this phase.
 
 When Grace asks for the review, study the PR — description,
 diff, related issues if any, source files where you need more
-context. Compose Markdown for Grace to post as a single PR
-comment, and **send it to Grace via `SendMessage`**.
+context. Compose Markdown review text for Grace to post as a
+single PR comment, and **send it to Grace via `SendMessage`**.
 Plain-text turn output is not delivered to Grace — only
 `SendMessage` reaches them. Sign off per the Communication
 section below: `From Ada.` at the end of the message. The
-review is a terminal hand-off — skip the RSVP.
+review is a terminal hand-off — skip the RSVP. Do not include
+the Claude Code footer; Grace adds GitHub-visible footer
+metadata when posting.
 
 #### Output format
 
@@ -86,8 +88,9 @@ at all, say so plainly under **Recommendation** and return.
 
 #### Writing findings
 
-Your output gets posted verbatim as a PR comment. Your findings
-follow these rules:
+Your review text gets posted as a PR comment, with only the
+standard Claude Code footer added by Grace. Your findings follow
+these rules:
 
 **Don't duplicate the diff.** A finding describes **what's wrong
 and why**, with a file/line citation — not what changed. "The

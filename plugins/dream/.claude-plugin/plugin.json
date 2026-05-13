@@ -1,5 +1,9 @@
 {
   "name": "dream",
   "description": "A multi-agent team for shipping great code while maintaining codebase coherence with minimal hand-holding. Requires Claude Code's experimental agent teams feature.",
+<<<<<<< GH146
   "version": "0.35.0"
+=======
+  "version": "0.34.1"
+>>>>>>> main
 }

@@ -291,12 +291,14 @@ opens a draft PR for the session branch.
 
 ## Phase 4: Review
 
-Grace asks Ada for the review. Ada returns Markdown which
-Grace posts verbatim as a single PR comment. Grace triages
-each finding (accept as a follow-on task, reject, or hold for
-post-merge). Once all accepted follow-ons are complete, Grace
-marks the PR ready for review and hands back to the user for
-final approval. The user merges; Grace does not.
+Grace asks Ada for the review. Ada returns Markdown. Grace
+strips Ada's teammate signature, appends the standard Claude
+Code footer for GitHub-visible comments, and posts the review
+text as a single PR comment. Grace triages each finding (accept
+as a follow-on task, reject, or hold for post-merge). Once all
+accepted follow-ons are complete, Grace marks the PR ready for
+review and hands back to the user for final approval. The user
+merges; Grace does not.
 
 The phase ends at user approval. The session moves to Resolve.
 
@@ -462,7 +464,9 @@ These apply across every phase.
   review) sit above the signature. When Grace forwards a
   teammate's message to another destination — for example,
   posting Ada's review to the PR — Grace strips the signature
-  first.
+  first. GitHub-visible markers, such as the Claude Code footer,
+  are added by the agent posting to GitHub, not by teammate
+  signatures.
 - Grace's task descriptions are **explicit about scope**: the
   brief carries the goal, the in-scope items as a positive
   statement, and the raise channel — Ralph raises anything he
