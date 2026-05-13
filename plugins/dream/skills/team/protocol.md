@@ -115,9 +115,12 @@ chain repeats until the list is drained.
 ### Per-task workflow
 
 1. **Assign.** Grace assigns the task to Ralph. The brief in
-   the task description spells out in-scope items, out-of-scope
-   items, and what Ralph should do if he disagrees with a scope
-   decision (raise it; don't keep going).
+   the task description carries the goal, the in-scope items
+   as a positive statement, and the raise channel — Ralph
+   raises anything he disagrees with, anything ambiguous, and
+   any sibling surface he spots that looks like the same edit
+   on a wider footprint (see "Defend completeness" under
+   Coherence chain below).
 
 2. **Implement.** Ralph does the work, runs the
    project's lint/format check and test suite, and reports
@@ -198,13 +201,16 @@ name. Two shapes:
   nearby names ambiguous or confusing. The surface wasn't in
   scope before the session started — the session put it there.
 
-Junio asks during audit, Grace asks during triage: *is this
-the same edit — one we missed, or one the session has now made
-adjacent?* An in-session antecedent flips a borderline call
-toward in-scope: the session created the relevance, which is
-signal, not noise. If yes, fold it into the chain. If no,
-treat it as ancillary or drop it. Finding the rest of the same
-edit is convergence, not scope creep.
+Ralph asks while implementing, Junio asks during audit, Grace
+asks during triage: *is this the same edit — one we missed, or
+one the session has now made adjacent?* An in-session
+antecedent flips a borderline call toward in-scope: the
+session created the relevance, which is signal, not noise.
+Ralph surfaces suspected siblings to Grace through the raise
+channel; Junio surfaces them in the audit; Grace decides at
+triage whether to fold them into the chain, treat them as
+ancillary, or drop. Finding the rest of the same edit is
+convergence, not scope creep.
 
 **Possible rescope signal.** Junio's session stays alive
 across audits, so each new audit has the prior ones in
@@ -431,12 +437,14 @@ These apply across every phase.
   teammate's message to another destination — for example,
   posting Ada's review to the PR — Grace strips the signature
   first.
-- Grace's task descriptions should be **explicit about scope**:
-  in-scope items, out-of-scope items, and what Ralph should do
-  if he disagrees with a scope decision (raise it; don't keep
-  going). The task description is the brief — it travels with
-  the `TaskUpdate` assignment, so no separate dispatch message
-  is needed.
+- Grace's task descriptions are **explicit about scope**: the
+  brief carries the goal, the in-scope items as a positive
+  statement, and the raise channel — Ralph raises anything he
+  disagrees with, anything ambiguous, and any sibling surface
+  he spots that looks like the same edit on a wider footprint.
+  The task description is the brief — it travels with the
+  `TaskUpdate` assignment, so no separate dispatch message is
+  needed.
 - Junio's audit output is a **numbered plain-text list** of
   proposed follow-ons (each with a one-line reason and file
   paths or symbol names), optionally followed by an "out of

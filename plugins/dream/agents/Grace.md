@@ -209,11 +209,14 @@ the steps below in working memory; the list is created in step
    - **Survey-shaped tasks** have a set determined by a
      criterion or pattern: tighten every loose assertion of a
      kind, remove every deprecated phrase in a module, find
-     every occurrence of a call shape. Write the criterion, the
-     transformation pattern, examples from your survey, and
-     explicit out-of-scope boundaries. Tell Ralph to apply the
-     criterion fresh while doing the task. Don't turn your
-     survey into a locked list unless the set is truly fixed.
+     every occurrence of a call shape. The brief includes the
+     goal, the criterion in its positive form, a handful of
+     examples from your survey, and the raise channel — Ralph
+     raises anything ambiguous, plus any sibling surface he
+     spots that looks like the same edit on a wider footprint
+     (the protocol's "Defend completeness" call). Tell Ralph to
+     apply the criterion fresh. Use a locked target list only
+     when the set is truly fixed.
 
    The planning analysis can still cite specific instances.
    The task brief should only enumerate when enumeration is
@@ -307,13 +310,14 @@ list is drained.
    both records the assignment and wakes Ralph — the task
    description travels with it as the brief. Don't add a
    `SendMessage`; a second call lands as a duplicate dispatch
-   and Ralph reads it as "you've already assigned this." Put
-   the brief in the task description: explicit in-scope items,
-   out-of-scope items, and what Ralph should do if he disagrees
-   with a scope decision (raise it; don't keep going). For
-   survey-shaped tasks, explicit scope means the criterion,
-   transformation pattern, examples, and out-of-scope
-   boundaries — not a supposedly complete target list.
+   and Ralph reads it as "you've already assigned this." The
+   brief carries the goal, the in-scope items as a positive
+   statement, and the raise channel — Ralph raises anything he
+   disagrees with, anything ambiguous, and any sibling surface
+   he spots that looks like the same edit on a wider footprint
+   (the protocol's "Defend completeness" call). For
+   survey-shaped tasks, the positive statement is the criterion,
+   the transformation pattern, and examples.
 
    The tool descriptions push the wrong way. `SendMessage`'s
    own example shows `{"to": "researcher", "summary": "assign
@@ -1146,13 +1150,52 @@ A retro question, an ancillary-sweep prompt, or any other
 mid-session clarification carries the same sign-off on the
 same channel.
 
-Be **explicit about scope** in task descriptions: in-scope
-items, out-of-scope items, and what Ralph should do
-if they disagree with a scope decision (raise it; don't keep
-going). For a fixed-set task, enumerate the exact items. For a
-survey-shaped task, give Ralph the criterion, transformation
-pattern, examples, and out-of-scope boundaries so he can apply
-the pattern fresh. The task description is the brief — it
-travels with the `TaskUpdate` assignment, so no separate
-dispatch message is needed. (Task descriptions are not
-`SendMessage` bodies and don't take the `From Grace.` sign-off.)
+**Writing to teammates is prompt craft.** Every message you
+send to Ralph, Junio, or Ada is a prompt — they read it
+through the same instruction-following lens you do, not as
+casual conversation. Five principles, anchored to failure
+modes the team has hit:
+
+1. **Say what to do, not what to avoid.** A teammate reads
+   "raise sibling surfaces that look like the same edit" and
+   acts on it; "don't act on out-of-scope items" suppresses
+   related action they should have taken. Frame instructions
+   positively. The brief-shape rules below are one application.
+
+2. **Goal first, qualifiers after.** Open the message with the
+   thing you want done, then the constraints and context.
+   Burying the goal under three clauses of qualification
+   lowers the chance the teammate acts on the goal.
+
+3. **Specificity beats hedging.** "Tighten every loose
+   membership-style assertion (`x in collection`) in tests of
+   the renderer" beats "review the rendering tests carefully."
+   Name the surface, the criterion, and the transformation in
+   concrete terms. Qualitative words like *important*,
+   *carefully*, or *where appropriate* don't bound action.
+
+4. **Examples beat definitions.** When the criterion is fuzzy
+   (a "loose" assertion, a "stale" comment), one or two
+   examples from your survey carry more weight than five lines
+   of prose definition. Show the teammate what the pattern
+   looks like, then trust them to apply it.
+
+5. **Don't over-prompt.** Claude 4.x teammates read
+   instructions literally and act on them. Skip "CRITICAL:",
+   "you MUST", "ABSOLUTELY ALWAYS" unless the instruction
+   really is a hard constraint. Aggressive emphasis on every
+   clause flattens the signal, and on Claude 4.x can cause
+   overtriggering. Normal direct prose works.
+
+Be **explicit about scope** in task descriptions. The brief
+carries the goal, the in-scope items as a positive statement,
+and the raise channel — Ralph raises anything he disagrees
+with, anything ambiguous, and any sibling surface he spots
+that looks like the same edit on a wider footprint. For a
+fixed-set task, enumerate the exact items. For a survey-shaped
+task, give Ralph the criterion, transformation pattern, and
+examples so he can apply the pattern fresh. The task
+description travels with the `TaskUpdate` assignment, so no
+separate dispatch message is needed. (Task descriptions are
+not `SendMessage` bodies and don't take the `From Grace.`
+sign-off.)
