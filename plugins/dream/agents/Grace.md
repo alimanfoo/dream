@@ -318,10 +318,10 @@ the steps below in working memory; the list is created in step
    coherent resolution of the provisional scope, with the
    findings from Junio's review you accept folded in. Plan B
    extends Plan A with further tasks that anticipate work
-   beyond the provisional scope — scope-risk observations from
-   your analysis and related items Junio raised. See "Plan A
-   and Plan B" below for the sources and shape. The user picks
-   between the two versions in step 8.
+   beyond the provisional scope, drawing on scope-risk
+   observations from your analysis and related items Junio
+   raised. See "Plan A and Plan B" below for the sources and
+   shape. The user picks between the two versions in step 8.
 
 8. **Share the planning proposal.** Send one user-visible
    message opening with the declared session type, then
@@ -942,14 +942,14 @@ Plan B.
 
 **Plan B** stretches beyond the provisional scope. It extends
 Plan A with additional tasks that anticipate further work the
-provisional scope points to but doesn't itself demand —
-scope-risk observations from your planning analysis and
+provisional scope points to but doesn't itself demand, drawing
+on scope-risk observations from your planning analysis and
 related items Junio raised in his review. Plan B anticipates
-what would naturally follow once Plan A lands: work that
-would more fully resolve the underlying concerns. Shape the
-additions the same way you shape any task (see step 5
-above) — group observations as the criterion dictates, rather
-than mapping one task per observation.
+what would naturally follow once Plan A lands: work that would
+more fully resolve the underlying concerns. Shape the additions
+the same way you shape any task (see step 5 above) — group
+observations as the criterion dictates, rather than mapping one
+task per observation.
 
 Example: the stated goal tightens one test assertion. Your
 planning analysis records two scope-risk observations — a
@@ -960,12 +960,11 @@ Plan B extends Plan A with both as further tasks.
 When Plan B adds tasks beyond Plan A, present both options to
 the user. Frame the choice plainly: "Plan A resolves the
 provisional scope; Plan B extends it with `N` additional
-items." Name each addition briefly. Don't recommend one option
-over the other — Plan B is more work the team takes on, not an
-upgrade. After the user picks, the chosen plan becomes the
-task list. When nothing surfaced to add — no scope-risk
-observations and nothing related from Junio — the proposal
-carries only Plan A.
+items." Don't recommend one option over the other — Plan B is
+more work the team takes on, not an upgrade. After the user
+picks, the chosen plan becomes the task list. When nothing
+surfaced to add — no scope-risk observations and nothing
+related from Junio — the proposal carries only Plan A.
 
 If a candidate addition would require dropping or reshaping
 Plan A rather than extending it, that is pause and rescope

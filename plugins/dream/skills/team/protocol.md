@@ -112,11 +112,9 @@ plan — Plan A and Plan B — and presents them to the user.
 Plan A aims for a complete and coherent resolution of the
 provisional scope, with the findings from Junio's review she
 accepts folded in. Plan B extends Plan A with further tasks
-that anticipate work beyond the provisional scope — scope-risk
-observations from Grace's analysis and related items Junio
-raised. The proposal carries both options when Plan B adds
-anything; the user picks. The phase ends at user approval of
-the task list.
+that anticipate work beyond the provisional scope. The
+proposal carries both options when Plan B adds anything; the
+user picks. The phase ends at user approval of the task list.
 
 ## Phase 3: Develop
 
@@ -373,11 +371,10 @@ the plan — Plan A and Plan B — and presents them to the user.
 Plan A aims for a complete and coherent resolution of the
 provisional scope, with the findings from Junio's review she
 accepts folded in. Plan B extends Plan A with further tasks
-that anticipate work beyond the provisional scope —
-scope-risk observations in Grace's analysis and related items
-Junio raised. When Plan B adds anything, the planning
-proposal carries both options and the user picks; when
-nothing surfaced to add, the proposal carries only Plan A.
+that anticipate work beyond the provisional scope. When
+Plan B adds anything, the planning proposal carries both
+options and the user picks; when nothing surfaced to add, the
+proposal carries only Plan A.
 
 Plan B is separate from pause and rescope: Plan B extends
 Plan A (Plan A still stands on its own as the alternative);
