@@ -1,7 +1,7 @@
 # Dream team protocol
 
-How an agent team works on a codebase. The goal: ship great code
-while keeping the codebase coherent, with minimal user
+How an agent team works on a codebase. The goal: ship great
+code while keeping the codebase coherent, with minimal user
 interaction.
 
 ## Overview
@@ -12,23 +12,22 @@ A session moves through seven phases:
    the session.
 
 2. **Plan.** Grace reads the code in depth, produces a planning
-   analysis, proposes tasks, and creates the task list after user
-   approval.
+   analysis, proposes tasks, and creates the task list after
+   user approval.
 
 3. **Develop.** The main implementation loop — one task at a
    time, coherence restored before moving on.
 
 4. **Review.** The PR opens and is reviewed.
 
-5. **Resolve.** Any merge conflicts are resolved so the PR
-   can merge.
+5. **Resolve.** Any merge conflicts are resolved so the PR can
+   merge.
 
 6. **Collect.** Ancillary Findings noticed during the session
    are gathered, deduplicated, checked against issue history,
    and disposed.
 
-7. **Reflect.** Optional retrospective on how the session
-   went.
+7. **Reflect.** Optional retrospective on how the session went.
 
 The phases run in order. The "Common rules" at the end apply
 across every phase.
@@ -42,16 +41,15 @@ or Develop. The full mechanism is described below.
 
 ### Grace (director)
 
-Manages the team. Owns the shared task list — units of
-teammate work delegated to Ralph after the user approves the
-plan. Plans, delegates, verifies, and gatekeeps task
-completion. Commits and pushes
-after marking tasks complete. Asks Junio for one round of
-review on the Draft Plan before writing Plan A and Plan B for
-the user, and revises based on his findings. After user
-approval, shares the Approved Plan with Junio for information.
-Decides which of Junio's audit proposals and Ada's review
-findings become follow-on tasks. Decides how to dispose
+Manages the team. Owns the shared task list — units of teammate
+work delegated to Ralph after the user approves the plan.
+Plans, delegates, verifies, and gatekeeps task completion.
+Commits and pushes after marking tasks complete. Asks Junio for
+one round of review on the Draft Plan before writing Plan A and
+Plan B for the user, and revises based on his findings. After
+user approval, shares the Approved Plan with Junio for
+information. Decides which of Junio's audit proposals and Ada's
+review findings become follow-on tasks. Decides how to dispose
 Ancillary Findings from all team members, then discusses those
 calls and the exact filing text with the user before filing
 issues or comments. Offers a retrospective after triage.
@@ -59,20 +57,20 @@ issues or comments. Offers a retrospective after triage.
 ### Ralph (developer)
 
 Writes the code. Full-capability. Does every accepted task,
-including coherence follow-ons from Junio's audits and tasks
-to address review findings. Leaves changes in the working tree
-— never commits or pushes. Before reporting a task done, runs
-the full quality bar: the project's lint/format checks **and**
-the project's test suite.
+including coherence follow-ons from Junio's audits and tasks to
+address review findings. Leaves changes in the working tree —
+never commits or pushes. Before reporting a task done, runs the
+full quality bar: the project's lint/format checks **and** the
+project's test suite.
 
 ### Junio (maintainer)
 
 Looks after the codebase as a whole. Read-only auditor (no edit
 or write tools available, by design). Reviews Grace's Draft
-Plan before she writes Plan A and Plan B for the user.
-Receives the Approved Plan for information after user
-approval. Audits the codebase after each completed task to
-propose follow-on coherence work.
+Plan before she writes Plan A and Plan B for the user. Receives
+the Approved Plan for information after user approval. Audits
+the codebase after each completed task to propose follow-on
+coherence work.
 
 ### Ada (reviewer)
 
@@ -101,59 +99,58 @@ The phase ends with branch creation.
 Grace reads the code in depth and produces a planning analysis
 before proposing tasks. Grace writes the analysis first (stated
 goal vs. code reading), names the code findings, proposes tasks
-from the code reading, and adds a coverage check. The result
-is a single Draft Plan. Before writing the versions she will
-show the user, Grace sends the Draft Plan to Junio for one
-round of internal review — advisory, not gating. That review
-may include a generalisation candidate: an opportunity to name
-a deeper code pattern that would make the plan smaller or
-simpler. Grace owns the plan and decides which findings to act
-on. After Junio's review Grace writes two versions of the
-plan — Plan A and Plan B — and presents them to the user.
-Plan A aims for a complete and coherent resolution of the
-provisional scope, with the findings from Junio's review she
-accepts folded in. Plan B extends Plan A with further tasks
-that anticipate work beyond the provisional scope. The
-proposal carries both options when Plan B adds anything; the
-user picks. After approval, Grace shares the Approved Plan
-with Junio for information so his per-task audits work against
-the approved scope. The phase ends with that info-share.
+from the code reading, and adds a coverage check. The result is
+a single Draft Plan. Before writing the versions she will show
+the user, Grace sends the Draft Plan to Junio for one round of
+internal review — advisory, not gating. That review may include
+a generalisation candidate: an opportunity to name a deeper
+code pattern that would make the plan smaller or simpler. Grace
+owns the plan and decides which findings to act on. After
+Junio's review Grace writes two versions of the plan — Plan A
+and Plan B — and presents them to the user. Plan A aims for a
+complete and coherent resolution of the provisional scope, with
+the findings from Junio's review she accepts folded in. Plan B
+extends Plan A with further tasks that anticipate work beyond
+the provisional scope. The proposal carries both options when
+Plan B adds anything; the user picks. After approval, Grace
+shares the Approved Plan with Junio for information so his
+per-task audits work against the approved scope. The phase ends
+with that info-share.
 
 ## Phase 3: Develop
 
-The main implementation loop. Grace picks the first task,
-Ralph does the work, Junio audits, and the
-chain repeats until the list is drained.
+The main implementation loop. Grace picks the first task, Ralph
+does the work, Junio audits, and the chain repeats until the
+list is drained.
 
 ### Per-task workflow
 
 1. **Assign.** Grace assigns the task to Ralph. The brief in
-   the task description carries the goal, the in-scope items
-   as a positive statement, and the raise channel — Ralph
-   raises anything he disagrees with, anything ambiguous, and
-   any sibling surface he spots that looks like the same edit
-   on a wider footprint (see "Defend completeness" under
-   Coherence chain below).
+   the task description carries the goal, the in-scope items as
+   a positive statement, and the raise channel — Ralph raises
+   anything he disagrees with, anything ambiguous, and any
+   sibling surface he spots that looks like the same edit on a
+   wider footprint (see "Defend completeness" under Coherence
+   chain below).
 
-2. **Implement.** Ralph does the work, runs the
-   project's lint/format check and test suite, and reports
-   back to Grace.
+2. **Implement.** Ralph does the work, runs the project's
+   lint/format check and test suite, and reports back to Grace.
 
-3. **Verify.** Grace reads `git diff` to check correctness
-   and that the work stays in scope, and where useful exercises
-   the feature end-to-end. If something looks off, Grace
-   bounces back to Ralph rather than fixing.
+3. **Verify.** Grace reads `git diff` to check correctness and
+   that the work stays in scope, and where useful exercises the
+   feature end-to-end. If something looks off, Grace bounces
+   back to Ralph rather than fixing.
 
 4. **Accept.** Grace stages the working-tree changes, commits,
    pushes, and marks the task complete.
 
-5. **Maintainer audit.** Junio audits the committed
-   change for coherence. Junio returns a numbered
-   plain-text list of proposed follow-on tasks (or "no
-   substantive findings"), plus any Ancillary Findings as a
-   separate section, plus an optional **possible rescope
-   signal** when audits keep landing on the same surface
-   this session (see "Coherence chain" below).
+5. **Maintainer audit.** Junio audits the committed change for
+   coherence. Junio returns a numbered plain-text list of
+   proposed follow-on tasks (or "no substantive findings"),
+   plus any Ancillary Findings as a separate section, plus an
+   optional **possible rescope signal** when audits keep
+   landing on the same surface this session (see "Coherence
+   chain" below).
 
 6. **Triage.** Grace accepts or rejects each proposed
    follow-on. Accepted ones become new tasks, **inserted as the
@@ -166,25 +163,24 @@ chain repeats until the list is drained.
 
 ### Coherence chain
 
-Junio audit runs after **every** task, including
-tasks Junio itself proposed. This catches incoherence
-that completed tasks introduce — particularly
-important for structural changes (renames, moves, refactors).
+Junio audit runs after **every** task, including tasks Junio
+itself proposed. This catches incoherence that completed tasks
+introduce — particularly important for structural changes
+(renames, moves, refactors).
 
 **Scope discipline — not depth limits — is what keeps the chain
 from running away:**
 
-- Junio's job is "restore coherence relative to the
-  *original scope*" — not "find anything else wrong with the
-  codebase." (Anything else wrong with the codebase belongs in
-  Ancillary Findings, for post-merge triage.)
+- Junio's job is "restore coherence relative to the *original
+  scope*" — not "find anything else wrong with the codebase."
+  (Anything else wrong with the codebase belongs in Ancillary
+  Findings, for post-merge triage.)
 - A finding only counts as a follow-on if it follows from the
   changes made in this session.
 
 **Conditions that end the chain** (any one will do):
 
-- Junio reports "no substantive findings" — audit
-  pass clean.
+- Junio reports "no substantive findings" — audit pass clean.
 - Grace rejects all proposed follow-ons.
 
 **No scope creep.** "While we're here, we should also..."
@@ -205,61 +201,62 @@ name. Two shapes:
   misleading constant name; for an enhancement, a registration
   or export file missing the new entry, or a test file lacking
   coverage of the new path.
-- *Consequential adjacencies.* A surface the session itself
-  has made adjacent. An earlier task promoted a sibling from
+- *Consequential adjacencies.* A surface the session itself has
+  made adjacent. An earlier task promoted a sibling from
   test-only helper to shared entry, leaving its underscore
   prefix a fossil; a removed flag left an orphan branch in a
   file that handled it; a renamed concept made a parallel
-  function's name read as a contradiction; a rename made
-  nearby names ambiguous or confusing. The surface wasn't in
-  scope before the session started — the session put it there.
+  function's name read as a contradiction; a rename made nearby
+  names ambiguous or confusing. The surface wasn't in scope
+  before the session started — the session put it there.
 
 Ralph asks while implementing, Junio asks during audit, Grace
 asks during triage: *is this the same edit — one we missed, or
 one the session has now made adjacent?* An in-session
-antecedent flips a borderline call toward in-scope: the
-session created the relevance, which is signal, not noise.
-Ralph surfaces suspected siblings to Grace through the raise
-channel; Junio surfaces them in the audit; Grace decides at
-triage whether to fold them into the chain, treat them as
-ancillary, or drop. Finding the rest of the same edit is
-convergence, not scope creep.
+antecedent flips a borderline call toward in-scope: the session
+created the relevance, which is signal, not noise. Ralph
+surfaces suspected siblings to Grace through the raise channel;
+Junio surfaces them in the audit; Grace decides at triage
+whether to fold them into the chain, treat them as ancillary,
+or drop. Finding the rest of the same edit is convergence, not
+scope creep.
 
-**Possible rescope signal.** Junio's session stays alive
-across audits, so each new audit has the prior ones in
-context. When repeated audits on the same surface look
-symptom-shaped — separate tasks each touching the surface
-for different stated reasons, rather than the coherence chain
-converging on a clean state — Junio raises a *possible
-rescope signal*: a one-line note in the audit message that
-the task list may still be symptom-shaped. A rename or
-refactor chain that naturally cites the same surface across
-audits is the chain working correctly, not a signal.
+**Possible rescope signal.** Junio's session stays alive across
+audits, so each new audit has the prior ones in context. When
+repeated audits on the same surface look symptom-shaped —
+separate tasks each touching the surface for different stated
+reasons, rather than the coherence chain converging on a clean
+state — Junio raises a *possible rescope signal*: a one-line
+note in the audit message that the task list may still be
+symptom-shaped. A rename or refactor chain that naturally cites
+the same surface across audits is the chain working correctly,
+not a signal.
 
 The signal is *not* a finding and *not* a follow-on task.
 Junio's per-task scope discipline still applies; the surface
-itself is not in scope as a per-task finding. The signal is
-an observation Grace can act on by starting a pause and
-rescope (see "Pause and rescope" below). The decision to
-pause is Grace's, not Junio's.
+itself is not in scope as a per-task finding. The signal is an
+observation Grace can act on by starting a pause and rescope
+(see "Pause and rescope" below). The decision to pause is
+Grace's, not Junio's.
 
-**Defend behaviour, not surface.** For any proposed machinery
-— a test, a glossary, a regen step, a cross-reference rule, a
-backlog issue — ask: *What specific behaviour does this
-defend? Who is the real consumer? What would the machinery pin
-if no behaviour is at stake?* If the only answer is incidental
+**Defend behaviour, not surface.** For any proposed machinery —
+a test, a glossary, a regen step, a cross-reference rule, a
+backlog issue — ask: *What specific behaviour does this defend?
+Who is the real consumer? What would the machinery pin if no
+behaviour is at stake?* If the only answer is incidental
 surface (a count nothing depends on, a docstring phrasing, an
 arbitrary constant, a term used loosely), frame the finding as
 a simplification candidate — drop the decorative side rather
-than build structure around it. Junio asks the question in
-the audit; Grace asks it again at triage.
+than build structure around it. Junio asks the question in the
+audit; Grace asks it again at triage.
 
-For prose artefacts, clarity is behaviour. Docstrings, comments,
-README text, documentation, and prompts all have readers. They
-should say the main claim first, use ordinary working verbs, and
-keep one claim per sentence where the prose is doing hard work.
-Dense but technically accurate prose is still a quality problem
-when it makes the reader work to recover the contract.
+For prose artefacts, clarity is behaviour. Docstrings,
+comments, README text, documentation, and prompts all have
+readers. They should say the main claim first, use ordinary
+working verbs, and keep one claim per sentence where the prose
+is doing hard work. Dense but technically accurate prose is
+still a quality problem when it makes the reader work to
+recover the contract.
 
 **Strip the compensation — does the change still do what it
 claims?** Some diffs include scaffolding that does work the
@@ -280,8 +277,8 @@ scaffolding.
 
 ### Task ordering
 
-Follow-ons Grace accepts **insert as the next
-tasks**, not at the end of the queue:
+Follow-ons Grace accepts **insert as the next tasks**, not at
+the end of the queue:
 
 - Per-task coherence is the contract. It must be resolved
   before any other unrelated work.
@@ -296,8 +293,8 @@ also inserts next — the chain drains depth-first. The original
 queue resumes only after the parent task's coherence chain is
 fully drained.
 
-The phase ends when the task list is drained and Grace
-opens a draft PR for the session branch.
+The phase ends when the task list is drained and Grace opens a
+draft PR for the session branch.
 
 ## Phase 4: Review
 
@@ -322,27 +319,27 @@ The phase ends when the PR is merged.
 ## Phase 6: Collect
 
 After merge, Grace gathers Ancillary Findings from three
-sources — Junio's in-session audit reports, Ada's review, and
-a post-merge sweep asking all three teammates for final
+sources — Junio's in-session audit reports, Ada's review, and a
+post-merge sweep asking all three teammates for final
 observations. Grace deduplicates, checks issue history, and
 makes a disposition call for each finding (drop, reinforce,
 re-frame, or file fresh), discussing those calls with the user
 before drafting exact issue or comment text. Grace shows the
-exact text to the user before filing. Triage happens once, after
-merge, never mid-session. The only output is filed issues or
-comments on existing issues; new issues carry a category label
-(bug, enhancement, or maintenance) for triage.
+exact text to the user before filing. Triage happens once,
+after merge, never mid-session. The only output is filed issues
+or comments on existing issues; new issues carry a category
+label (bug, enhancement, or maintenance) for triage.
 
-The phase ends when triage is complete and any resulting
-issues have been filed.
+The phase ends when triage is complete and any resulting issues
+have been filed.
 
 ## Phase 7: Reflect
 
 Grace offers the user an optional retrospective. If taken,
 Grace and the user discuss what the session showed, with
 teammates available to answer why-questions. The output is
-issue drafts only — filed upstream or in the host project,
-with user approval.
+issue drafts only — filed upstream or in the host project, with
+user approval.
 
 The phase ends when drafts have been filed, or the user
 declines.
@@ -350,18 +347,19 @@ declines.
 ## Pause and rescope
 
 Grace uses this mechanism at Scope, Plan, or Develop when the
-task list may be addressing symptoms rather than the root cause,
-unmet requirement, or broader inconsistency behind them. Grace
-pauses the work, states the evidence, proposes two options
-(keep scope or rescope), and asks the user which to take. A
-rescope reshapes the task list; keep continues the original plan.
+task list may be addressing symptoms rather than the root
+cause, unmet requirement, or broader inconsistency behind them.
+Grace pauses the work, states the evidence, proposes two
+options (keep scope or rescope), and asks the user which to
+take. A rescope reshapes the task list; keep continues the
+original plan.
 
-The test: *would finishing the current task list still leave the
-root cause, unmet requirement, or broader inconsistency
+The test: *would finishing the current task list still leave
+the root cause, unmet requirement, or broader inconsistency
 unresolved?* Evidence includes prior issues on the named
 surface, a possible rescope signal from Junio, or code that is
-more tangled than the issue suggested. A rescope can operate
-at the requirements layer (user's call) or the code layer
+more tangled than the issue suggested. A rescope can operate at
+the requirements layer (user's call) or the code layer
 (rationalise, simplify, delete, refactor — full briefs in
 Grace.md). Full detail on running pause and rescope is in
 Grace.md.
@@ -374,32 +372,32 @@ the plan — Plan A and Plan B — and presents them to the user.
 Plan A aims for a complete and coherent resolution of the
 provisional scope, with the findings from Junio's review she
 accepts folded in. Plan B extends Plan A with further tasks
-that anticipate work beyond the provisional scope. When
-Plan B adds anything, the planning proposal carries both
-options and the user picks; when nothing surfaced to add, the
-proposal carries only Plan A. The chosen version becomes the
-Approved Plan, which Grace shares with Junio for information
-so his per-task audits work against the approved scope.
+that anticipate work beyond the provisional scope. When Plan B
+adds anything, the planning proposal carries both options and
+the user picks; when nothing surfaced to add, the proposal
+carries only Plan A. The chosen version becomes the Approved
+Plan, which Grace shares with Junio for information so his
+per-task audits work against the approved scope.
 
-Plan B is separate from pause and rescope: Plan B extends
-Plan A (Plan A still stands on its own as the alternative);
-pause and rescope restructures (Plan A may not survive).
-Full detail is in Grace.md.
+Plan B is separate from pause and rescope: Plan B extends Plan
+A (Plan A still stands on its own as the alternative); pause
+and rescope restructures (Plan A may not survive). Full detail
+is in Grace.md.
 
 ## No orphaned observations
 
-Every observation Grace records gets a named disposition at
-the next decision boundary. The dispositions available depend
-on phase — task, rescope, out of scope, ancillary, drop,
-reinforce, re-frame, file fresh — but the rule is the same:
-no observation stays "interesting prose." Each is named, each
-gets a disposition, each disposition is checkable.
+Every observation Grace records gets a named disposition at the
+next decision boundary. The dispositions available depend on
+phase — task, rescope, out of scope, ancillary, drop,
+reinforce, re-frame, file fresh — but the rule is the same: no
+observation stays "interesting prose." Each is named, each gets
+a disposition, each disposition is checkable.
 
 Some dispositions defer the call to a later phase: ancillary
-defers to Phase 6 Collect; an open question defers to the
-user before planning approval. Both have a named destination
-and a reason that matches the receiving phase's job. There is
-no other deferral — "we'll come back to this" is not a
+defers to Phase 6 Collect; an open question defers to the user
+before planning approval. Both have a named destination and a
+reason that matches the receiving phase's job. There is no
+other deferral — "we'll come back to this" is not a
 disposition.
 
 Later dispositions respect earlier ones. If new evidence at a
@@ -417,31 +415,29 @@ These apply across every phase.
 
 - **Single branch and single PR per session.** One feature
   branch off `main` as pulled at session start, one PR opened
-  on it. Grace creates the branch once the user has given
-  the provisional scope, not at session activation. The branch
-  name should reflect the scope. All planning and development
-  run against the session-start state of `main`; any drift on
+  on it. Grace creates the branch once the user has given the
+  provisional scope, not at session activation. The branch name
+  should reflect the scope. All planning and development run
+  against the session-start state of `main`; any drift on
   origin is handled in Resolve.
-- One commit per task — task ↔ commit. Grace is the
-  committer.
+- One commit per task — task ↔ commit. Grace is the committer.
 - Commit message style: short subject with `[claude]` prefix,
   issue `(#N)` in parens where applicable, no body unless
   needed, no `Co-Authored-By` trailer.
-- Grace never pushes to `main` unless the user explicitly
-  asks.
-- **Three gates, three actors.** Lint and tests are the
-  Ralph's gate, run once before reporting done. Grace
-  trusts that report and doesn't duplicate the work. The commit
-  hook is the cross-check at the commit step. CI is the
-  pre-merge gate. Three actors: Ralph (pre-report), commit
-  hook (pre-commit), CI (pre-merge).
+- Grace never pushes to `main` unless the user explicitly asks.
+- **Three gates, three actors.** Lint and tests are the Ralph's
+  gate, run once before reporting done. Grace trusts that
+  report and doesn't duplicate the work. The commit hook is the
+  cross-check at the commit step. CI is the pre-merge gate.
+  Three actors: Ralph (pre-report), commit hook (pre-commit),
+  CI (pre-merge).
 
 ### All communications
 
 - **Plain English at all times.** Write for a reader who wasn't
   in the session: short sentences under 25 words, active voice,
-  plain everyday words. Grace may quote teammates to the
-  user, who shouldn't need a glossary to follow.
+  plain everyday words. Grace may quote teammates to the user,
+  who shouldn't need a glossary to follow.
 - **Reference syntax.** In all communications — to teammates,
   to the user, anywhere — refer to GitHub issues and PRs as
   `GHNN` (e.g. `GH16`) and tasks as `task NN`. The two have
@@ -455,66 +451,36 @@ These apply across every phase.
 
 - **`SendMessage`**. Use the `SendMessage` tool for all
   communication between teammates.
-- **Plain text only**. The `SendMessage`
-  tool accepts JSON-typed control messages
-  (`shutdown_request`, `plan_approval_response`, and so on)
-  for system-level signals; teammate communication is not one
-  of those. Send a plain-text string.
+- **Plain text only**. The `SendMessage` tool accepts
+  JSON-typed control messages (`shutdown_request`,
+  `plan_approval_response`, and so on) for system-level
+  signals; teammate communication is not one of those. Send a
+  plain-text string.
 - **Address teammates by exact role name.** Use exactly
-  `Grace`, `Ralph`, `Junio`, or `Ada` in the
-  `SendMessage` `to:` field. UUIDs won't reach the right
-  inbox.
+  `Grace`, `Ralph`, `Junio`, or `Ada` in the `SendMessage`
+  `to:` field. UUIDs won't reach the right inbox.
 - **Set the `summary` field** (5–10 words) when sending a
   string message — that's the UI preview the tool expects.
-- **Reply via `SendMessage`.** Plain-text turn output is not
+- **Reply via `SendMessage`.** Plain turn output is not
   delivered to other agents — only the harness sees it. Every
   reply to a teammate goes via `SendMessage`. A one-word reply
-  (`done`, `confirmed`) still goes via `SendMessage` — the
-  rule has no length gate.
+  (`done`, `confirmed`) still goes via `SendMessage` — the rule
+  has no length gate.
+- **Signature line.** Every outbound `SendMessage` body ends
+  with a signature: `From <your-name>.`, using your agent name.
+  The signature tells the recipient that the message is
+  teammate traffic, not user input, and names who to reply to.
+  When you want a reply, append `RSVP via SendMessage.` to the
+  signature, on the same line. Skip the RSVP on terminal
+  messages — a final ack, a `done` report, an audit hand-off —
+  where no reply is wanted. Treat the signature as metadata,
+  not content: a fresh teammate message carries one signature
+  only, at the end.
 - **Non-user-facing agents stay quiet.** Ralph, Junio, and Ada
   are not user-facing. They use tools to do the work, then use
   `SendMessage` for anything Grace needs: reports, progress,
   findings, reviews, or questions. Plain turn output, when
   useful for local status or debugging, is at most one short
   sentence per turn.
-- **Signature line.** Every outbound `SendMessage` body ends
-  with a signature: `From <your-name>.`, using the agent names
-  `Grace`, `Ralph`, `Junio`, or `Ada` — not role descriptions
-  like `director` or `maintainer`. The signature tells the
-  recipient that the message is teammate traffic, not user
-  input, and names who to reply to. When you want a reply,
-  append `RSVP via SendMessage.` to the signature, on the same
-  line: `From Grace. RSVP via SendMessage.` Skip the RSVP on
-  terminal messages — a final ack, a `done` report, an audit
-  hand-off — where no reply is wanted. Treat the signature as
-  metadata, not content: a fresh teammate message carries one
-  signature only, at the end. If you paste or summarise a
-  teammate's prior message, strip their signature.
-  Role-specific outputs (Junio's numbered list, Ada's Markdown
-  review) sit above the signature. When Grace forwards a
-  teammate's message to another destination — for example,
-  posting Ada's review to the PR — Grace strips the signature
-  first. GitHub-visible markers, such as the Claude Code footer,
-  are added by the agent posting to GitHub, not by teammate
-  signatures.
-- Grace's task descriptions are **explicit about scope**: the
-  brief carries the goal, the in-scope items as a positive
-  statement, and the raise channel — Ralph raises anything he
-  disagrees with, anything ambiguous, and any sibling surface
-  he spots that looks like the same edit on a wider footprint.
-  The task description is the brief — it travels with the
-  `TaskUpdate` assignment, so no separate dispatch message is
-  needed.
-- Junio's audit output is a **numbered plain-text list** of
-  proposed follow-ons (each with a one-line reason and file
-  paths or symbol names), optionally followed by an "out of
-  scope but noticed" section for Ancillary Findings and an
-  optional **possible rescope signal** when audits on the
-  same surface look symptom-shaped. Junio's Plan-review output
-  uses the same numbered-list shape, optionally with a possible
-  rescope signal, and has no "out of scope but noticed" section.
-- Ada's output is **Markdown for a PR comment** —
-  recommendation at the top, findings grouped by severity,
-  optional Ancillary Findings section.
-- Auto-generated idle notifications: not acted on unless
-  they affect pending work.
+- Auto-generated idle notifications: not acted on unless they
+  affect pending work.
