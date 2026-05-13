@@ -106,8 +106,13 @@ Junio for one round of internal review — advisory, not gating.
 That review may include a generalisation candidate: an
 opportunity to name a deeper code pattern that would make the
 plan smaller or simpler. Grace owns the plan and decides which
-findings to act on. The phase ends at user approval of the
-task list.
+findings to act on. The initial draft is Plan A. After the
+review Grace drafts a second version, Plan B, that extends
+Plan A with further tasks to address the scope-risk
+observations from her analysis and any related items Junio
+raised. The proposal carries both options when Plan B adds
+anything; the user picks. The phase ends at user approval of
+the task list.
 
 ## Phase 3: Develop
 
@@ -355,6 +360,21 @@ at the requirements layer (user's call) or the code layer
 (rationalise, simplify, delete, refactor — full briefs in
 Grace.md). Full detail on running pause and rescope is in
 Grace.md.
+
+## Plan A and Plan B
+
+Grace's initial draft is Plan A. After Junio's internal
+review, Grace drafts a second version, Plan B, that extends
+Plan A with further tasks to address the scope-risk
+observations in her analysis and any related items Junio
+raised. When Plan B adds anything, the planning proposal
+carries both options and the user picks; when nothing
+surfaced to add, the proposal carries only Plan A.
+
+Plan B is separate from pause and rescope: Plan B extends
+Plan A (Plan A still stands on its own as the alternative);
+pause and rescope restructures (Plan A may not survive).
+Full detail is in Grace.md.
 
 ## No orphaned observations
 
