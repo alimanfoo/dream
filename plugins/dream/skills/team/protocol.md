@@ -99,20 +99,22 @@ The phase ends with branch creation.
 Grace reads the code in depth and produces a planning analysis
 before proposing tasks. Grace writes the analysis first (stated
 goal vs. code reading), names the code findings, proposes tasks
-from the code reading, and includes a coverage check in the
-planning proposal. Before
-sharing the proposal with the user, Grace sends the draft to
-Junio for one round of internal review — advisory, not gating.
-That review may include a generalisation candidate: an
-opportunity to name a deeper code pattern that would make the
-plan smaller or simpler. Grace owns the plan and decides which
-findings to act on. The initial draft is Plan A. After the
-review Grace drafts a second version, Plan B, that extends
-Plan A with further tasks to address the scope-risk
-observations from her analysis and any related items Junio
-raised. The proposal carries both options when Plan B adds
-anything; the user picks. The phase ends at user approval of
-the task list.
+from the code reading, and adds a coverage check. The result
+is a single draft plan. Before drafting the versions she will
+show the user, Grace sends the draft to Junio for one round of
+internal review — advisory, not gating. That review may include
+a generalisation candidate: an opportunity to name a deeper
+code pattern that would make the plan smaller or simpler. Grace
+owns the plan and decides which findings to act on. After
+Junio's review Grace drafts two versions of the plan — Plan A
+and Plan B — and presents them to the user. Plan A is a
+sensible, coherent treatment of the agreed scope with Junio's
+accepted findings folded in. Plan B extends Plan A with further
+tasks to address scope-risk observations from Grace's analysis
+and related items Junio raised, anticipating further work for a
+complete and coherent resolution. The proposal carries both
+options when Plan B adds anything; the user picks. The phase
+ends at user approval of the task list.
 
 ## Phase 3: Develop
 
@@ -363,11 +365,15 @@ Grace.md.
 
 ## Plan A and Plan B
 
-Grace's initial draft is Plan A. After Junio's internal
-review, Grace drafts a second version, Plan B, that extends
-Plan A with further tasks to address the scope-risk
-observations in her analysis and any related items Junio
-raised. When Plan B adds anything, the planning proposal
+Grace writes a single draft plan first and sends it to Junio
+for review. After Junio's review Grace drafts two versions of
+the plan — Plan A and Plan B — and presents them to the user.
+Plan A is a sensible, coherent treatment of the agreed scope
+with Junio's accepted findings folded in. Plan B extends
+Plan A with further tasks to address scope-risk observations
+in Grace's analysis and related items Junio raised,
+anticipating further work for a complete and coherent
+resolution. When Plan B adds anything, the planning proposal
 carries both options and the user picks; when nothing
 surfaced to add, the proposal carries only Plan A.
 

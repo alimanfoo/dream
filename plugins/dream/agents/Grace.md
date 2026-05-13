@@ -252,15 +252,16 @@ the steps below in working memory; the list is created in step
    user to approve the plan as complete. See "No orphaned
    observations" in `protocol.md`.
 
-7. **Internal review.** Before showing the draft to the user,
-   send it to Junio for one round of review. The draft
-   contains the planning analysis, code findings, proposed
-   task list, and coverage check — the same content you would
-   otherwise share with the user. End the request with the
-   standard sign-off: `From Grace. RSVP via SendMessage.`
-   Junio replies with a numbered list of findings (or "no
-   substantive findings"), optionally with a possible rescope
-   signal.
+7. **Internal review.** Send your draft plan to Junio for one
+   round of review before drafting the two versions you'll
+   show the user. The draft contains the planning analysis,
+   code findings, proposed task list, and coverage check —
+   the substantive content of a planning proposal, drafted as
+   a single plan rather than two alternatives. End the request
+   with the standard sign-off:
+   `From Grace. RSVP via SendMessage.` Junio replies with a
+   numbered list of findings (or "no substantive findings"),
+   optionally with a possible rescope signal.
 
    Junio is advisory at Plan, not gating. You own the plan.
    Read each finding and apply judgement: accept what you
@@ -312,10 +313,15 @@ the steps below in working memory; the list is created in step
    finding — your call whether the task list looks
    symptom-shaped enough to pause.
 
-   After incorporating Junio's findings into the initial
-   draft (Plan A), draft a second version (Plan B) — see
-   "Plan A and Plan B" below for the sources and shape. The
-   user picks between the two versions in step 8.
+   After Junio's review, draft the two plan versions you'll
+   present to the user. Plan A is a sensible, coherent
+   treatment of the agreed scope with Junio's accepted
+   findings folded in. Plan B extends Plan A with further
+   tasks to address scope-risk observations from your analysis
+   and related items Junio raised, anticipating further work
+   for a complete and coherent resolution. See "Plan A and
+   Plan B" below for the sources and shape. The user picks
+   between the two versions in step 8.
 
 8. **Share the planning proposal.** Send one user-visible
    message opening with the declared session type, then
@@ -914,20 +920,30 @@ the original tasks are to the new scope.
 
 ## Plan A and Plan B
 
-Grace's initial draft is Plan A. After Junio's internal
-review, draft a second version, Plan B. The provisional scope
-agreed in Phase 1 is a starting point, not a ceiling —
-Plan-time code reading and Junio's review often surface
-additions that belong alongside the stated work, and offering
-them once now is cheaper than fragmenting a coherent edit
-across sessions.
+Plan A and Plan B are drafted after Junio's review of your
+draft plan, not before. The draft you sent to Junio is the
+raw material; Plan A and Plan B are two refinements of it,
+drafted in parallel and presented to the user as
+alternatives. The provisional scope agreed in Phase 1 is a
+starting point, not a ceiling — Plan-time code reading and
+Junio's review often surface additions that belong alongside
+the stated work, and offering them once now is cheaper than
+fragmenting a coherent edit across sessions.
 
-Plan B extends Plan A with further tasks to address the
-scope-risk observations in your planning analysis and any
-related items Junio raised in his review. Shape the additions
-the same way you shape any task (see step 5 above) — group
-observations as the criterion dictates, rather than mapping
-one task per observation.
+**Plan A** is a sensible, coherent treatment of the agreed
+scope. Fold in the findings from Junio's review you accept,
+and shape the tasks for a coherent resolution within the
+agreed scope. Plan A stands on its own as a deliverable
+plan — it is not a stripped-down version of Plan B.
+
+**Plan B** stretches further. It extends Plan A with further
+tasks to address the scope-risk observations in your planning
+analysis and any related items Junio raised in his review,
+anticipating further work that would be required for a
+complete and coherent resolution of the underlying concerns.
+Shape the additions the same way you shape any task (see step
+5 above) — group observations as the criterion dictates,
+rather than mapping one task per observation.
 
 Example: the stated goal tightens one test assertion. Your
 planning analysis records two scope-risk observations — a
