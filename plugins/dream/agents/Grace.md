@@ -181,7 +181,7 @@ the steps below in working memory; the list is created in step
 
    Decide before moving on. Don't name the option in prose
    and carry it forward — that parks the call somewhere the
-   user can't see, and the Sweep phase is not a do-over for
+   user can't see, and Phase 6 is not a do-over for
    in-session deferral. If the call is hard, that is a sign
    it belongs to the user.
 
@@ -646,16 +646,16 @@ text.
   identical. Comment on the open issue with the new angle
   rather than opening a new one.
 - **Re-frame** — recurrence on a surface with prior issues,
-  open or closed, surfaced only after merge. File one issue
-  at the **contract level**: name the surface (the function,
-  the parameter, the contract) and list the prior issues
-  with `#N` references. The recurrence pattern itself is the
-  behaviour gap — issues landing on the same surface is
-  evidence of an unresolved contract. Re-frame is the
-  post-merge analog of pause and rescope: pause and rescope
-  catches recurrence in time to reshape the session;
-  re-frame catches it after merge and produces an issue
-  rather than a redirected session.
+  open or closed. File one issue at the **contract level**:
+  name the surface (the function, the parameter, the
+  contract) and list the prior issues with `#N` references.
+  The recurrence pattern itself is the behaviour gap —
+  issues landing on the same surface is evidence of an
+  unresolved contract. Re-frame is the post-merge analog of
+  pause and rescope: pause and rescope catches recurrence in
+  time to reshape the session; re-frame catches it after
+  merge and produces an issue rather than a redirected
+  session.
 
   Before disposing as Re-frame, check the candidate against
   the planning analysis. If the substance was already named

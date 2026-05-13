@@ -354,9 +354,8 @@ Grace.md.
 When the planning analysis surfaces a structural option — via
 the test or the removal question — Grace decides once: raise
 it to the user, or accept it as out of scope with an agreed
-reason. The Sweep phase's re-frame disposition is for findings
-that genuinely surface only after merge, not a do-over for
-in-session deferral.
+reason. Phase 6's re-frame disposition is for genuinely new
+recurrence, not a do-over for substance already named at Plan.
 
 ## Common rules
 
