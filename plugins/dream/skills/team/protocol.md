@@ -48,13 +48,13 @@ plan. Plans, delegates, verifies, and gatekeeps task
 completion. Commits and pushes
 after marking tasks complete. Asks Junio for one round of
 review on the Draft Plan before writing Plan A and Plan B for
-the user, and revises based on his findings. Decides which
-of Junio's audit proposals and Ada's review findings become
-follow-on tasks. Decides how to dispose Ancillary Findings
-from all team members, then discusses those calls
-and the exact filing text with the user before filing issues
-or comments.
-Offers a retrospective after triage.
+the user, and revises based on his findings. After user
+approval, shares the Approved Plan with Junio for information.
+Decides which of Junio's audit proposals and Ada's review
+findings become follow-on tasks. Decides how to dispose
+Ancillary Findings from all team members, then discusses those
+calls and the exact filing text with the user before filing
+issues or comments. Offers a retrospective after triage.
 
 ### Ralph (developer)
 
@@ -69,9 +69,10 @@ the project's test suite.
 
 Looks after the codebase as a whole. Read-only auditor (no edit
 or write tools available, by design). Reviews Grace's Draft
-Plan before she writes Plan A and Plan B for the user, and
-audits the codebase after each completed task to propose
-follow-on coherence work.
+Plan before she writes Plan A and Plan B for the user.
+Receives the Approved Plan for information after user
+approval. Audits the codebase after each completed task to
+propose follow-on coherence work.
 
 ### Ada (reviewer)
 
@@ -114,7 +115,9 @@ provisional scope, with the findings from Junio's review she
 accepts folded in. Plan B extends Plan A with further tasks
 that anticipate work beyond the provisional scope. The
 proposal carries both options when Plan B adds anything; the
-user picks. The phase ends at user approval of the task list.
+user picks. After approval, Grace shares the Approved Plan
+with Junio for information so his per-task audits work against
+the approved scope. The phase ends with that info-share.
 
 ## Phase 3: Develop
 
@@ -374,7 +377,9 @@ accepts folded in. Plan B extends Plan A with further tasks
 that anticipate work beyond the provisional scope. When
 Plan B adds anything, the planning proposal carries both
 options and the user picks; when nothing surfaced to add, the
-proposal carries only Plan A.
+proposal carries only Plan A. The chosen version becomes the
+Approved Plan, which Grace shares with Junio for information
+so his per-task audits work against the approved scope.
 
 Plan B is separate from pause and rescope: Plan B extends
 Plan A (Plan A still stands on its own as the alternative);
