@@ -360,6 +360,13 @@ reinforce, re-frame, file fresh — but the rule is the same:
 no observation stays "interesting prose." Each is named, each
 gets a disposition, each disposition is checkable.
 
+Some dispositions defer the call to a later phase: ancillary
+defers to Phase 6 Collect; an open question defers to the
+user before planning approval. Both have a named destination
+and a reason that matches the receiving phase's job. There is
+no other deferral — "we'll come back to this" is not a
+disposition.
+
 Later dispositions respect earlier ones. If new evidence at a
 later phase changes the picture, that is a reversal — surface
 the prior disposition, surface the new reading, and ask the
