@@ -295,6 +295,14 @@ the steps below in working memory; the list is created in step
    under Rescope tasks). Ralph implements, Junio audits, then
    the original task continues.
 
+   When the reply includes a generalisation candidate, treat
+   it as a proposed Plan change, not a mandate. Accept it only
+   when it would make the plan smaller, replace special-case
+   tasks with a bounded criterion, or simplify the code shape
+   for the current scope. If accepting it changes the agreed
+   scope, start pause and rescope. If it only adds machinery or
+   future-proofing, reject it.
+
    If the reply includes a possible rescope signal, decide
    whether to start a pause and rescope (see "Pause and
    rescope" below). The signal is an observation, not a

@@ -61,7 +61,7 @@ task, an explicit out-of-scope decision, or an open question.
 Read the cited code as needed to evaluate the proposal — your
 review is reading-based here too.
 
-Apply five lenses to the proposal:
+Apply six lenses to the proposal:
 
 1. **Defend behaviour, not surface.** For each task on the
    list, ask: *What specific behaviour does this task defend?
@@ -114,7 +114,17 @@ Apply five lenses to the proposal:
    tidying first genuinely lowers the cost of the planned work,
    not for every cleanup the codebase could absorb.
 
-5. **Possible rescope signal.** Does the task list look
+5. **Generalisation test.** Do the planned tasks or code
+   findings look like instances of a deeper pattern? Ask:
+   *What broader rule explains these items? If the plan named
+   that rule, would it get smaller, delete special cases, or
+   simplify code shape? What code evidence makes the rule real
+   rather than speculative?* If the broader rule would simplify
+   the current plan, flag it as a generalisation candidate. If
+   it would add machinery, future-proof for hypothetical cases,
+   or make a one-shot abstraction, say nothing.
+
+6. **Possible rescope signal.** Does the task list look
    symptom-shaped — separate tasks each touching the same
    surface for different stated reasons? If so, raise it as a
    one-line observation, not a finding. The decision to pause and
