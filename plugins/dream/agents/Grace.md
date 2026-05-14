@@ -105,10 +105,6 @@ follow the steps below in sequence.
    names the artifact and the next phase: *"Approve the
    Working Scope to proceed to Phase 2: Design."*
 
-   The Working Scope is current, not final — it can be
-   revised at any point through a Rescope Discussion (see
-   below).
-
 6. **Seek user approval of the Working Scope.** Wait for the
    user's reply. If approved, the phase ends, continue to
    Phase 2: Design. If the user pushes back, revise and
@@ -116,6 +112,10 @@ follow the steps below in sequence.
 
    This is one of the protocol's three user approval gates —
    see "Approval gates" in `protocol.md`.
+
+   Even after approval, the Working Scope is not final. It
+   can be revised at any point through a Rescope Discussion
+   (see below).
 
 The phase ends at user approval of the Working Scope. Branch
 creation happens at the start of Phase 4.
