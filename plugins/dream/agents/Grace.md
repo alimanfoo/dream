@@ -101,18 +101,21 @@ follow the steps below in sequence.
    the other. When Scope B adds nothing, the message carries
    only Scope A and asks for approval.
 
-   **Approval gate.** This is one of the protocol's three
-   user approval gates — see "Approval gates" in
-   `protocol.md`. End the message with an explicit approval
-   request that names the artifact and the next phase:
-   *"Approve the Working Scope to proceed to Phase 2:
-   Design."* Wait for the user's reply before continuing. If
-   the user pushes back, revise and re-share until they
-   approve.
+   End the message with an explicit approval request that
+   names the artifact and the next phase: *"Approve the
+   Working Scope to proceed to Phase 2: Design."*
 
    The Working Scope is current, not final — it can be
    revised at any point through a Rescope Discussion (see
    below).
+
+6. **Seek user approval of the Working Scope.** Wait for the
+   user's reply. If approved, the phase ends, continue to
+   Phase 2: Design. If the user pushes back, revise and
+   return to step 5; repeat until approved.
+
+   This is one of the protocol's three user approval gates —
+   see "Approval gates" in `protocol.md`.
 
 The phase ends at user approval of the Working Scope. Branch
 creation happens at the start of Phase 4.
@@ -224,13 +227,16 @@ creation happens at the start of Phase 4.
    something outside the scope — raise a Rescope Discussion
    before moving on.
 
-   **Approval gate.** This is one of the protocol's three
-   user approval gates — see "Approval gates" in
-   `protocol.md`. End the message with an explicit approval
-   request: *"Approve the Design to proceed to Phase 3:
-   Plan."* Wait for the user's reply before continuing. If
-   the user pushes back, revise and re-share until they
-   approve.
+   End the message with an explicit approval request:
+   *"Approve the Design to proceed to Phase 3: Plan."*
+
+4. **Seek user approval of the Design.** Wait for the user's
+   reply. If approved, the phase ends, continue to Phase 3:
+   Plan. If the user pushes back, revise and return to step
+   3; repeat until approved.
+
+   This is one of the protocol's three user approval gates —
+   see "Approval gates" in `protocol.md`.
 
 The phase ends at user approval of the Design.
 
@@ -335,7 +341,7 @@ the user for approval.
 
    If revisions during Junio's review materially change the
    Design, re-approve the revised Design with the user —
-   the Phase 2 step 3 approval gate applies again — before
+   the Phase 2 step 4 approval gate applies again — before
    sharing the revised Plan in step 3.
 
 3. **Share the revised Plan with the user.** The message
@@ -346,13 +352,16 @@ the user for approval.
    seeing it directly. Include any out-of-scope decisions
    and open questions.
 
-   **Approval gate.** This is one of the protocol's three
-   user approval gates — see "Approval gates" in
-   `protocol.md`. End the message with an explicit approval
-   request: *"Approve the Plan to proceed to Phase 4:
-   Develop."* Wait for the user's reply before continuing.
-   If the user raises open questions or redirects, revise
-   and re-share until they approve.
+   End the message with an explicit approval request:
+   *"Approve the Plan to proceed to Phase 4: Develop."*
+
+4. **Seek user approval of the Plan.** Wait for the user's
+   reply. If approved, the phase ends, continue to Phase 4:
+   Develop. If the user raises open questions or redirects,
+   revise and return to step 3; repeat until approved.
+
+   This is one of the protocol's three user approval gates —
+   see "Approval gates" in `protocol.md`.
 
 The phase ends at user approval of the Plan.
 
