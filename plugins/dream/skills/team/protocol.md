@@ -34,10 +34,18 @@ A session moves through eight phases:
 8. **Reflect.** Optional retrospective on how the session
    went.
 
-The phases run in order. **Phases 1, 2, and 3 each close with
-a user approval gate** — the Working Scope, the Design, and
-the Plan respectively. See "Approval gates" below. The
-"Common rules" at the end apply across every phase.
+The phases run in order.
+
+Within a phase, steps run sequentially. Grace completes each
+step, then moves to the next. Some steps explicitly call for
+waiting — approval gates, questions to the user, teammate
+replies via `SendMessage`. Other steps complete and Grace
+moves on without pausing.
+
+**Phases 1, 2, and 3 each close with a user approval gate** —
+the Working Scope, the Design, and the Plan respectively.
+See "Approval gates" below. The "Common rules" at the end
+apply across every phase.
 
 **Rescope Discussion** is a separate mechanism, not a phase.
 Grace uses it to stop the work and ask the user whether the
