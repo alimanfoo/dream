@@ -117,55 +117,52 @@ creation happens at the start of Phase 4.
 
 ### Phase 2: Design
 
-This phase produces the agreed Design. Output is one of two
-messages: a Rescope Discussion if the rescope test triggers,
-or a Design Options message otherwise. Both messages include
-the **Analysis** in the body — it is the diagnostic context
-the message opens with, not a separate output.
+1. **Share the Analysis with the user.** Diagnostic — names
+   what is, not what to build. The Analysis contains:
 
-**The Analysis** names what is, not what to build. Fields:
+   - **Stated goal:** what the issue or request says should
+     change. If none is given, say so. Flag goals that
+     propose adding prose to express a contract (a
+     docstring, a comment) — these have two readings, a
+     real documentation task or a shape task wearing
+     docstring clothes, and the Design resolves which.
+   - **Code findings:** what the Phase 1 read showed about
+     the current shape, with file:line or symbol citations
+     so the Analysis is verifiable.
+     - *Bug fix:* the mechanism causing the incorrect
+       behaviour.
+     - *Enhancement:* the integration surface — where the
+       enhancement would land, what it touches, what
+       adjacent behaviour it might affect.
+     - *Maintenance:* the inconsistency pattern across the
+       named surface, with specific instances.
+   - **Alignment check:** where the stated goal and the
+     code findings agree or diverge.
+     - *Bug fix:* where the issue's claimed cause agrees
+       or diverges from what the code findings show.
+     - *Enhancement:* whether the integration surface in
+       the code findings supports the stated goal's
+       framing of the change, or where it doesn't.
+     - *Maintenance:* whether the reported inconsistency
+       matches what the code findings show — the surface
+       is sometimes more coherent than reported, sometimes
+       less.
+   - **Scope risk:** what would remain unresolved if the
+     work stays inside the Working Scope. The Design
+     responds to these risks — a risk that points to a
+     wider option can surface as Design B; a structural
+     risk goes to step 2's rescope call.
 
-- **Stated goal:** what the issue or request says should
-  change. If none is given, say so. Flag goals that propose
-  adding prose to express a contract (a docstring, a
-  comment) — these have two readings, a real documentation
-  task or a shape task wearing docstring clothes, and the
-  Design resolves which.
-- **Code findings:** what the Phase 1 read showed about the
-  current shape, with file:line or symbol citations so the
-  Analysis is verifiable.
-  - *Bug fix:* the mechanism causing the incorrect
-    behaviour.
-  - *Enhancement:* the integration surface — where the
-    enhancement would land, what it touches, what adjacent
-    behaviour it might affect.
-  - *Maintenance:* the inconsistency pattern across the
-    named surface, with specific instances.
-- **Alignment check:** where the stated goal and the code
-  findings agree or diverge.
-  - *Bug fix:* where the issue's claimed cause agrees or
-    diverges from what the code findings show.
-  - *Enhancement:* whether the integration surface in the
-    code findings supports the stated goal's framing of the
-    change, or where it doesn't.
-  - *Maintenance:* whether the reported inconsistency
-    matches what the code findings show — the surface is
-    sometimes more coherent than reported, sometimes less.
-- **Scope risk:** what would remain unresolved if the work
-  stays inside the Working Scope. The Design responds to
-  these risks — a risk that points to a wider option can
-  surface as Design B; a structural risk goes to step 1's
-  rescope call.
+   For recurrence surfaces — where the stated goal cites
+   prior issues, or the Scope recurrence search found
+   prior issues on the same surface — give each field
+   enough detail to show the recurrence pattern. The
+   stated goal is evidence to cross-check, not authority
+   to accept. The stated goal and code findings may
+   diverge; when they do, the Design follows the code
+   findings.
 
-For recurrence surfaces — where the stated goal cites prior
-issues, or the Scope recurrence search found prior issues on
-the same surface — give each field enough detail to show the
-recurrence pattern. The stated goal is evidence to
-cross-check, not authority to accept. The stated goal and
-code findings may diverge; when they do, the Design follows
-the code findings.
-
-1. **Make the rescope call.** Apply two tests against the
+2. **Make the rescope call.** Apply two tests against the
    Analysis:
 
    - The rescope test — *would finishing the Working Scope
@@ -176,14 +173,12 @@ the code findings.
      better than adding work?*
 
    When either surfaces a real structural option, raise a
-   Rescope Discussion (see "Rescope Discussion" below) —
-   the Analysis goes into the message as evidence. If a
-   requirement is unclear, ask the user before moving on.
+   Rescope Discussion (see "Rescope Discussion" below). If
+   a requirement is unclear, ask the user before moving on.
 
-2. **Share Design Options with the user.** One message:
-   open with the Analysis as context, then Design A (and
-   Design B when there's a real fork), then the approval
-   request.
+3. **Share Design Options with the user.** One message:
+   Design A (and Design B when there's a real fork), then
+   the approval request.
 
    The Design names what the code will look like when the
    work is done, the approach you propose, and the key
@@ -338,7 +333,7 @@ the user for approval.
 
    If revisions during Junio's review materially change the
    Design, re-approve the revised Design with the user —
-   the Phase 2 step 2 approval gate applies again — before
+   the Phase 2 step 3 approval gate applies again — before
    sharing the revised Plan in step 3.
 
 3. **Share the revised Plan with the user.** The message
