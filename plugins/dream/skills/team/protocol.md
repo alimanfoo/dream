@@ -8,8 +8,8 @@ interaction.
 
 A session moves through seven phases:
 
-1. **Scope.** The user proposes a provisional scope of work for
-   the session.
+1. **Scope.** The user proposes a scope of work for
+   the session and discusses with Grace.
 
 2. **Plan.** Grace reads the code in depth, produces a planning
    analysis, proposes tasks, and creates the task list after
@@ -32,7 +32,7 @@ A session moves through seven phases:
 The phases run in order. The "Common rules" at the end apply
 across every phase.
 
-**Pause and rescope** is a separate mechanism, not a phase.
+**Rescope Discussion** is a separate mechanism, not a phase.
 Grace uses it to stop the work and ask the user whether the
 session's scope should change. She can do this at Scope, Plan,
 or Develop. The full mechanism is described below.
@@ -41,42 +41,19 @@ or Develop. The full mechanism is described below.
 
 ### Grace (director)
 
-Manages the team. Owns the shared task list — units of teammate
-work delegated to Ralph after the user approves the plan.
-Plans, delegates, verifies, and gatekeeps task completion.
-Commits and pushes after marking tasks complete. Asks Junio for
-one round of review on the Draft Plan before writing Plan A and
-Plan B for the user, and revises based on his findings. After
-user approval, shares the Approved Plan with Junio for
-information. Decides which of Junio's audit proposals and Ada's
-review findings become follow-on tasks. Decides how to dispose
-Ancillary Findings from all team members, then discusses those
-calls and the exact filing text with the user before filing
-issues or comments. Offers a retrospective after triage.
+Directs the team.
 
 ### Ralph (developer)
 
-Writes the code. Full-capability. Does every accepted task,
-including coherence follow-ons from Junio's audits and tasks to
-address review findings. Leaves changes in the working tree —
-never commits or pushes. Before reporting a task done, runs the
-full quality bar: the project's lint/format checks **and** the
-project's test suite.
+Writes the code.
 
 ### Junio (maintainer)
 
-Looks after the codebase as a whole. Read-only auditor (no edit
-or write tools available, by design). Reviews Grace's Draft
-Plan before she writes Plan A and Plan B for the user. Receives
-the Approved Plan for information after user approval. Audits
-the codebase after each completed task to propose follow-on
-coherence work.
+Looks after the codebase as a whole.
 
 ### Ada (reviewer)
 
-Brings a fresh pair of eyes. Read-only and critical. Sees only
-the session's PR with no memory of other reviews. Reviews the
-PR on its merits alone.
+Brings a fresh pair of eyes.
 
 ## Phase 0: Boot
 
@@ -84,29 +61,15 @@ All agents run their boot sequence immediately upon spawning.
 
 ## Phase 1: Scope
 
-Grace and the user agree the scope of work. Grace reads the
-cited material, asks questions, checks the issue tracker for
-recurrence on the named surfaces, and applies the
-pause-and-rescope test if prior issues exist. Once provisional
-scope is agreed, Grace names the session type (bug fix,
-enhancement, or maintenance) and creates the feature branch off
-`main`.
+Grace and the user discuss the scope of work for the session.
 
 The phase ends with branch creation.
 
 ## Phase 2: Plan
 
-Grace reads the code in depth and produces a planning analysis
-before proposing tasks. Grace writes the analysis first (stated
-goal vs. code reading), names the code findings, proposes tasks
-from the code reading, and adds a coverage check. The result is
-a single Draft Plan. Before writing the versions she will show
-the user, Grace sends the Draft Plan to Junio for one round of
-internal review — advisory, not gating. That review may include
-a generalisation candidate: an opportunity to name a deeper
-code pattern that would make the plan smaller or simpler. Grace
-owns the plan and decides which findings to act on. After
-Junio's review Grace writes two versions of the plan — Plan A
+Grace writes a planning analysis before creating a Draft Plan. Grace sends the Draft Plan to Junio for one round of
+internal review — advisory, not gating. After
+Junio's review, Grace writes two versions of the plan — Plan A
 and Plan B — and presents them to the user. Plan A aims for a
 complete and coherent resolution of the provisional scope, with
 the findings from Junio's review she accepts folded in. Plan B
@@ -114,8 +77,11 @@ extends Plan A with further tasks that anticipate work beyond
 the provisional scope. The proposal carries both options when
 Plan B adds anything; the user picks. After approval, Grace
 shares the Approved Plan with Junio for information so his
-per-task audits work against the approved scope. The phase ends
-with that info-share.
+per-task audits work against the approved scope. Grace then creates the shared task list
+
+The phase ends once the shared task list has been created.
+
+Note that the task list isn't fixed: more tasks can be added during phase 3 (Develop), phase 4 (Review) and phase 5 (Resolve). The user can redirect at any point.
 
 ## Phase 3: Develop
 
@@ -235,8 +201,8 @@ not a signal.
 The signal is *not* a finding and *not* a follow-on task.
 Junio's per-task scope discipline still applies; the surface
 itself is not in scope as a per-task finding. The signal is an
-observation Grace can act on by starting a pause and rescope
-(see "Pause and rescope" below). The decision to pause is
+observation Grace can act on by starting a Rescope
+(see "Rescope Discussion" below). The decision to rescope is
 Grace's, not Junio's.
 
 **Defend behaviour, not surface.** For any proposed machinery —
@@ -344,7 +310,7 @@ user approval.
 The phase ends when drafts have been filed, or the user
 declines.
 
-## Pause and rescope
+## Rescope Discussion
 
 Grace uses this mechanism at Scope, Plan, or Develop when the
 task list may be addressing symptoms rather than the root
@@ -361,7 +327,7 @@ surface, a possible rescope signal from Junio, or code that is
 more tangled than the issue suggested. A rescope can operate at
 the requirements layer (user's call) or the code layer
 (rationalise, simplify, delete, refactor — full briefs in
-Grace.md). Full detail on running pause and rescope is in
+Grace.md). Full detail on running a Rescope Discussion is in
 Grace.md.
 
 ## Plan A and Plan B
@@ -379,9 +345,8 @@ carries only Plan A. The chosen version becomes the Approved
 Plan, which Grace shares with Junio for information so his
 per-task audits work against the approved scope.
 
-Plan B is separate from pause and rescope: Plan B extends Plan
-A (Plan A still stands on its own as the alternative); pause
-and rescope restructures (Plan A may not survive). Full detail
+Plan B is separate from Rescope: Plan B extends Plan
+A (Plan A still stands on its own as the alternative); Rescope restructures (Plan A may not survive). Full detail
 is in Grace.md.
 
 ## No orphaned observations

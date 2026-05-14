@@ -37,58 +37,31 @@ operating detail is below.
 
 ### Phase 1: Scope
 
-The user opens with the work — the issue or issues to address,
-constraints, rough shape. Read the cited material. Ask
-questions. Get direction on any decisions ahead.
+The user opens with a proposed scope for the session — an issue or issues to address, constraints, rough shape. Follow the steps below in sequence.
 
-**Check for recurrence** before agreeing the scope. Identify
-the surfaces the user has named — a function, a class, a
-module, a parameter; a session may name several — and search
-the issue tracker for each:
+1. **Read the cited material.**
 
-```bash
-gh issue list --state all --search '<surface>'
-```
+2. **Ask questions.** Get clarification. Get direction on any
+   decisions ahead.
 
-If the search returns other issues on any of these surfaces
-(open or closed), or if the issue body cites prior closed
-issues, apply the pause-and-rescope test: *would finishing the
-work as proposed still leave the root cause, unmet requirement,
-or broader inconsistency unresolved?* If yes, start a pause and
-rescope (see "Pause and rescope" below). If no, the search is a
-no-op and the conversation continues.
+3. **Check for recurrence.** Identify the surfaces the user has named
+   — a function, a class, a module, a parameter; a session may name
+   several — and search the issue tracker for each:
 
-Once provisional scope is agreed, name the session type: **bug
-fix** (incorrect behavior to repair), **enhancement** (new
-feature or capability that doesn't currently exist), or
-**maintenance** (coherence, naming, structure — behavior
-already correct). For most sessions the type is obvious from
-the description; state it and move on. When genuinely ambiguous
-— a report that could be a bug or a design gap, an
-"enhancement" that is really removing a design flaw — name the
-ambiguity and ask the user. The declared type shapes the
-planning analysis in Phase 2 and appears as the first line of
-the planning proposal.
+   ```bash
+   gh issue list --state all --search '<surface>'
+   ```
 
-Then **create the feature branch off `main`**. The branch name
-reflects the scope — `GH123` for an issue, `add-foo` for an
-unscoped task. All work runs against the session-start state of
-`main`; any drift on origin is handled in Resolve.
+   If the search returns other issues on any of these surfaces
+   (open or closed), or if the issue body cites prior closed
+   issues, apply the rescope test: *would finishing the
+   work as proposed still leave the root cause, unmet requirement,
+   or broader inconsistency unresolved?* If yes, discuss scope revisions with the user (see "Rescope Discussion" below).
 
-The phase ends with branch creation.
+4. **Read the code.** Read the relevant code, callers, tests,
+   docs, and prior issues for the named surfaces.
 
-### Phase 2: Plan
-
-The goal of this phase is to read the code and produce a
-planning analysis before proposing tasks. Order matters — work
-the steps below in sequence.
-
-The shared task list does not yet exist in this phase. Carry
-the steps below in working memory; the list is created in step
-8, after the user approves the proposal.
-
-1. **Read the code.** Read the relevant code, callers, tests,
-   docs, and prior issues for the named surfaces. For
+   For
    recurrence surfaces, compare how the surface behaves across
    related functions, callers, or files. Look at semantics, not
    just names, prose, or other surface details. A surface can
@@ -99,9 +72,26 @@ the steps below in working memory; the list is created in step
    contract" into "one name with different contracts." Note any
    such split in the code reading.
 
-2. **Write the planning analysis.** This is the first planning
-   artifact. State the analysis explicitly before proposing
-   tasks:
+5. **Agree the scope with the user.** Play back the proposed scope for the session,
+   with any clarifications and revisions. Ask the user if they are happy to proceed. If not, iterate on the scope until they are.
+
+6. **Name the session type:** "bug fix" (incorrect behavior to repair),
+   "enhancement" (new feature or capability that doesn't currently exist), or "maintenance" (coherence, naming, structure — behavior
+   already correct). If the session type is not obvious, ask the user. The declared type shapes the planning analysis in Phase 2.
+
+7. **Create the feature branch off `main`**. The branch name reflects
+   the scope — `GH123` for an issue, `add-foo` for an
+   unscoped task. All work runs against the session-start state of
+   `main`; any drift on origin is handled in Resolve.
+
+The phase ends with branch creation.
+
+### Phase 2: Plan
+
+The goal of this phase is to produce a
+planning analysis before proposing tasks. Follow the steps below in sequence.
+
+1. **Write the planning analysis.** State the analysis explicitly, with the following sections:
 
    - **Stated goal:** what the issue or request says should
      change. If none is given, say so. When the stated goal is
@@ -133,74 +123,32 @@ the steps below in working memory; the list is created in step
        more coherent than reported, sometimes less.
    - **Scope risk:** what would remain unresolved if you only
      addressed the changes as stated.
-   - **Removal question:** whether dropping, narrowing,
-     simplifying, or deleting something would resolve the
-     concern better than adding work. See "Pause and rescope"
-     below for the canonical framing.
 
    For recurrence surfaces — where the stated goal cites prior
    issues, or the Scope recurrence search found prior issues on
    the same surface — give each field enough detail to show the
    recurrence pattern. The stated goal is evidence to cross-check,
    not authority to accept. The stated goal and code reading may
-   diverge; when they do, propose tasks from the code reading.
-   This is your call alone — Junio audits task-local coherence and
-   Ada reviews the PR, but neither sees the surface-level analysis
-   before work starts.
+   diverge; when they do, plan based on the code reading.
 
-3. **Make the rescope call.** Apply two tests against the
-   planning analysis:
+2. **Make the rescope call.** Take a step back and apply two tests against the planning analysis:
 
-   - The pause-and-rescope test — *would finishing the agreed
+   - The rescope test — *would finishing the agreed
      scope still leave the root cause, unmet requirement, or
      broader inconsistency unresolved?*
    - The removal question — *would dropping, narrowing,
      simplifying, or deleting something resolve the concern
      better than adding work?*
 
-   When either test surfaces a real structural option, two paths
-   follow — raise it to the user as a pause-and-rescope candidate,
-   or accept it as out of scope with a stated reason the user
-   agrees to. If the call is hard, that is a sign it belongs to
-   the user.
+   When either test surfaces a real structural option, raise it to the user as a rescope candidate and discuss scope revisions. If a requirement is unclear, ask the user before proposing tasks.
 
-   If a requirement is unclear, ask the user before proposing
-   tasks.
-
-4. **Name code findings.** For each distinct thing the code
-   reading revealed that the task list must address, write a
-   short code finding — `F1`, `F2`, `F3`. These are the
-   coverage targets for the proposed task list. A code finding
-   is not a task description; it is the underlying thing the
-   code reading turned up that demands a response. The
-   substance differs by session type:
-
-   - *Bug fix:* a node in the causal mechanism — a specific
-     function, call site, or data flow path that contributes to
-     the incorrect behavior.
-   - *Enhancement:* a specific integration requirement the code
-     reading surfaced — for example, "the auth middleware
-     doesn't pass context downstream; the new enhancement
-     requires it."
-   - *Maintenance:* a specific inconsistency between code and
-     codebase pattern.
-
-   Across all three, a code finding can name a fixed instance or a
-   pattern on a bounded surface with representative examples.
-   Don't create one finding per observed instance when the same
-   criterion determines the full set — Ralph applies the criterion
-   fresh while doing the task.
-
-5. **Propose the task list.** Only after the planning analysis,
-   rescope call, and code findings are complete, write the
-   proposed task list. Each task is a unit of work Ralph can
+3. **Write the Draft Plan.** Only after the planning analysis
+   and rescope call are complete, write a
+   draft task list. Each task is a unit of work Ralph can
    take end-to-end. Derive tasks from the code reading, not
-   just from the named changes. The task list isn't fixed: more
-   tasks can be added during phase 3 (Develop), phase 4
-   (Review) and phase 5 (Resolve). The user can redirect at any
-   point.
+   just from the named changes.
 
-   Choose the task shape before writing each brief:
+   Choose the task shape before writing each task brief:
 
    - **Fixed-set tasks** have a set determined by something
      other than your survey: one function edit, one rename, a
@@ -215,32 +163,12 @@ the steps below in working memory; the list is created in step
      raises anything ambiguous, plus any sibling surface he
      spots that looks like the same edit on a wider footprint
      (the protocol's "Defend completeness" call). Tell Ralph to
-     apply the criterion fresh. Use a locked target list only
-     when the set is truly fixed.
+     apply the criterion fresh.
 
-   The planning analysis can still cite specific instances. The
-   task brief should only enumerate when enumeration is the right
-   contract.
-
-6. **Run the coverage check.** Map every observation in the
-   planning analysis to one of three outcomes:
-
-   - a task that addresses it
-   - an explicit out-of-scope decision, with the reason
-   - an open question for the user that must be answered before
-     planning can finish
-
-   Observations include the enumerated code findings, the scope
-   risk, any structural option the removal question surfaces, and
-   any divergence between stated goal and code reading. If any
-   observation has no outcome, do not ask the user to approve the
-   plan as complete. See "No orphaned observations" in
-   `protocol.md`.
-
-7. **Internal review.** Send your Draft Plan to Junio for one
+4. **Internal review.** Send your Draft Plan to Junio for one
    round of review before writing the two versions you'll show
    the user. The Draft Plan contains the planning analysis,
-   code findings, proposed task list, and coverage check — the
+   code findings and proposed task list — the
    substantive content of a planning proposal. End the request
    with the standard sign-off: `From Grace. RSVP via
    SendMessage.` Junio replies with a numbered list of findings
@@ -292,24 +220,22 @@ the steps below in working memory; the list is created in step
    reject it.
 
    If the reply includes a possible rescope signal, decide whether
-   to start a pause and rescope (see "Pause and rescope" below).
+   to start a Rescope (see "Rescope Discussion" below).
    The signal is an observation, not a finding — your call whether
-   the task list looks symptom-shaped enough to pause.
+   the task list looks symptom-shaped enough to pause and reopen the scope discussion.
 
-   After Junio's review, write the two plan versions you'll
+5. **Write the Planning Proposal.** After Junio's review, write two plan versions you'll
    present to the user. Plan A aims for a complete and coherent
-   resolution of the provisional scope, with the findings from
+   resolution of the proposed scope, with the findings from
    Junio's review you accept folded in. Plan B extends Plan A with
-   further tasks that anticipate work beyond the provisional
+   further tasks that anticipate work beyond the proposed
    scope, drawing on scope-risk observations from your analysis
    and related items Junio raised. See "Plan A and Plan B" below
-   for the sources and shape. The user picks between the two
-   versions in step 8.
+   for the sources and shape.
 
-8. **Share the planning proposal.** Send one user-visible
-   message opening with the declared session type, then
-   containing the planning analysis, code findings, proposed
-   task list, coverage check, and any out-of-scope decisions or
+6. **Share the Planning Proposal.** Send one user-visible
+   message opening with the proposed
+   task list, and any out-of-scope decisions or
    open questions for the user.
 
    When Plan B adds tasks beyond Plan A, the proposal carries both
@@ -319,19 +245,19 @@ the steps below in working memory; the list is created in step
 
    If the proposal contains open questions for the user, revise
    and re-share after the user answers — repeat until the proposal
-   carries no open questions. Create the shared task list only
-   after the user approves the proposal — picking a version when
-   both are offered.
+   carries no open questions.
 
-9. **Share the Approved Plan with Junio.** He reviewed the
+7. **Share the Approved Plan with Junio.** He reviewed the
    Draft Plan in step 7 but hasn't seen what came out of the
    Plan A and Plan B step or what the user picked, and his
-   per-task audits in Phase 3 work against the approved scope.
+   per-task audits in Phase 3 work against the approved plan.
    Send him the same content you sent the user, flagged as for
    information only. Sign off `From Grace.` and skip the RSVP —
    no reply is expected.
 
-The phase ends with that info-share.
+8. **Create the shared task list.**
+
+The phase ends once the shared task list has been created.
 
 ### Phase 3: Develop
 
@@ -428,10 +354,10 @@ list is drained.
    change.
 
    If the audit included a **possible rescope signal**, decide
-   whether to start a pause and rescope. The signal is an
+   whether to start a Rescope. The signal is an
    observation, not a finding — your call whether the task list
    looks symptom-shaped enough to pause. If yes, follow the shape
-   in "Pause and rescope" below. If no, continue triage as normal.
+   in "Rescope" below. If no, continue triage as normal.
 
 7. **Loop.** Next task, back to step 1.
 
@@ -497,7 +423,7 @@ should never appear in the description:
 - *missed instance*
 - *consequential adjacency*
 - *Ancillary Finding*
-- *pause and rescope*
+- *Rescope*
 - *possible rescope signal*
 
 Agent-coined terms-of-art ("the latent test injection seam")
@@ -666,12 +592,7 @@ text.
   and list the prior issues with `#N` references. The
   recurrence pattern itself is the behaviour gap — issues
   landing on the same surface is evidence of an unresolved
-  contract. Re-frame is the post-merge analog of pause and
-  rescope: pause and rescope catches recurrence in time to
-  reshape the session; re-frame catches it after merge and
-  produces an issue rather than a redirected session. Substance
-  already disposed at Plan is a reversal, not fresh observation
-  — see "No orphaned observations" in `protocol.md`.
+  contract. Substance already disposed at Plan is a reversal, not fresh observation — see "No orphaned observations" in `protocol.md`.
 - **File fresh** — no related issue on the surface, and the
   finding clears the bar. Open a standalone issue.
 
@@ -780,7 +701,7 @@ the session work is done and that they can return to the main
 session to wind the team down. Then wait for any further
 instructions.
 
-## Pause and rescope
+## Rescope Discussion
 
 When the task list may be addressing the symptom rather than
 the root cause, unmet requirement, or broader inconsistency
@@ -804,7 +725,7 @@ same every time:
 > cause, unmet requirement, or broader inconsistency
 > unresolved?
 
-If yes, pause and rescope is on the table. The test applies at
+If yes, Rescope is on the table. The test applies at
 Scope, Plan, and Develop. The evidence available differs by
 phase.
 
@@ -871,10 +792,10 @@ below. When the rescope touches requirements, that decision
 lands first. If code-level work finds an incoherence only the
 user can resolve, pause again at that point.
 
-### What pause and rescope is not
+### What Rescope is not
 
 - **Not per-finding triage.** Each finding from Junio or Ada
-  gets its own triage decision. Pause and rescope is different:
+  gets its own triage decision. Rescope is different:
   it pauses the whole session and reopens the scope
   conversation.
 - **Not scope creep.** The test is whether the root cause,
@@ -885,7 +806,7 @@ user can resolve, pause again at that point.
 - **Not a substitute for the Phase 6 re-frame disposition, and
   vice versa.** Recurrences first surfacing after merge are
   re-frame's territory; recurrences visible at Plan are
-  pause-and-rescope's. See "No orphaned observations" in
+  Rescope's. See "No orphaned observations" in
   `protocol.md`.
 
 ### Task list shape after a rescope
@@ -954,19 +875,19 @@ Plan A rather than extending it, that is pause and rescope
 territory — handle there instead of folding the option into
 Plan B.
 
-### Plan B versus pause and rescope
+### Plan B versus Rescope
 
 The two mechanisms target different shapes:
 
 - **Plan B** is for **extension** — adding tasks to Plan A,
   which still stands on its own as the alternative. The work is
   additive.
-- **Pause and rescope** is for **restructuring** — the agreed
+- **Rescope** is for **restructuring** — the agreed
   scope addresses symptoms, and the right work has a different
   shape (drop, simplify, refactor). Plan A may not survive.
 
 If the option fits as an extension to Plan A, use Plan B. If it
-requires reshaping Plan A, use pause and rescope.
+requires reshaping Plan A, use Rescope.
 
 ## Rescope tasks
 
