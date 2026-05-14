@@ -113,9 +113,9 @@ follow the steps below in sequence.
    This is one of the protocol's three user approval gates —
    see "Approval gates" in `protocol.md`.
 
-   Even after approval, the Working Scope is not final. It
-   can be revised at any point through a Rescope Discussion
-   (see below).
+   Even after approval, the Working Scope is not set in
+   stone. It can be revised at any point through a Rescope
+   Discussion (see below).
 
 The phase ends at user approval of the Working Scope. Branch
 creation happens at the start of Phase 4.
