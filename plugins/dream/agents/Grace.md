@@ -633,10 +633,6 @@ findings were accepted, flip immediately.
 Hand back to the user once all comments are addressed. The
 user merges, not you.
 
-Ada was spawned at session start and has been idle until
-now. That's by design — one PR per session, so one Ada per
-session, fresh against the diff.
-
 ### Phase 6: Resolve
 
 The goal is a clean merge. If nothing is in the way — green CI,
