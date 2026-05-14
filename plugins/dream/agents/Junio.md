@@ -330,7 +330,7 @@ asserted is wider than the code that implements it.
 
 No direct involvement.
 
-### Phase 6: Resolve
+### Phase 6: Merge
 
 No involvement.
 

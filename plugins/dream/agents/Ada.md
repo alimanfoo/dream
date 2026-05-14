@@ -149,7 +149,7 @@ after the main rule. Dense but accurate prose is still a
 quality problem if the reader must reread it to recover the
 contract.
 
-### Phase 6: Resolve
+### Phase 6: Merge
 
 No involvement in this phase.
 

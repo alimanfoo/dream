@@ -113,7 +113,7 @@ keep working after you report done, send a fresh
 No direct involvement. If Grace accepts Ada's finding, it comes
 to you as a standard task — handled per Phase 4.
 
-### Phase 6: Resolve
+### Phase 6: Merge
 
 If resolving merge conflicts requires edits, Grace may delegate
 them to you as standard tasks — handled per Phase 4.

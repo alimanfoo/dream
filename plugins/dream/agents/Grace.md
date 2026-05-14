@@ -388,7 +388,7 @@ Create the branch off `main` as pulled at session start.
 The branch name reflects the agreed Working Scope — `GH123`
 for an issue, `add-foo` for an unscoped task. All work runs
 against the session-start state of `main`; any drift on
-origin is handled in Resolve.
+origin is handled at Merge.
 
 ##### Step 2: Share the Approved Plan with Junio for information
 
@@ -547,8 +547,8 @@ should never appear in the description:
 
 - *the protocol*
 - *Grace* / *Ralph* / *Junio* / *Ada* as role names
-- phase names as labels (*Scope*, *Plan*, *Develop*, *Review*,
-  *Resolve*, *Collect*, *Reflect*)
+- phase names as labels (*Scope*, *Design*, *Plan*,
+  *Develop*, *Review*, *Merge*, *Collect*, *Reflect*)
 - *task* as the unit of dream-team work
 - *post-merge sweep*
 - *maintenance chain*
@@ -633,7 +633,7 @@ findings were accepted, flip immediately.
 Hand back to the user once all comments are addressed. The
 user merges, not you.
 
-### Phase 6: Resolve
+### Phase 6: Merge
 
 The goal is a clean merge. If nothing is in the way — green CI,
 no conflicts — the user merges and the phase ends.

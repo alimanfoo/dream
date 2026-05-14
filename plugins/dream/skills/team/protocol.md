@@ -24,8 +24,8 @@ A session moves through eight phases:
 
 5. **Review.** The PR is reviewed.
 
-6. **Resolve.** Any merge conflicts are resolved so the PR
-   can merge.
+6. **Merge.** The user merges the PR. Any conflicts are
+   resolved first.
 
 7. **Collect.** Ancillary Findings noticed during the session
    are gathered, deduplicated, checked against issue history,
@@ -103,7 +103,7 @@ review.
 The phase ends at user approval of the Plan.
 
 The task list isn't fixed: more tasks can be added during
-Phase 4 (Develop), Phase 5 (Review), and Phase 6 (Resolve).
+Phase 4 (Develop), Phase 5 (Review), and Phase 6 (Merge).
 The user can redirect at any point.
 
 ## Phase 4: Develop
@@ -210,10 +210,10 @@ and once accepted follow-ons are complete, marks the PR ready
 and hands back to the user. Full Phase 5 procedure in
 `Grace.md`; Ada's review shape in `Ada.md`.
 
-The phase ends at user approval of the PR. The session moves
-to Resolve.
+The phase ends at user approval of the PR. The session
+moves to Merge.
 
-## Phase 6: Resolve
+## Phase 6: Merge
 
 The goal is a clean merge. Grace resolves any conflicts,
 delegating edits to Ralph if needed. The user merges.
@@ -316,7 +316,7 @@ These apply across every phase.
   (Develop), once the Plan is approved. The branch name
   reflects the agreed Working Scope. All planning and
   development run against the session-start state of `main`;
-  any drift on origin is handled in Resolve.
+  any drift on origin is handled at Merge.
 - One commit per task — task ↔ commit. Grace is the committer.
 - Commit message style: short subject with `[claude]` prefix,
   issue `(#N)` in parens where applicable, no body unless
