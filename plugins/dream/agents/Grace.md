@@ -59,18 +59,21 @@ The user opens with a proposed scope for the session — an issue or issues to a
    or broader inconsistency unresolved?* If yes, discuss scope revisions with the user (see "Rescope Discussion" below).
 
 4. **Read the code.** Read the relevant code, callers, tests,
-   docs, and prior issues for the named surfaces.
+   docs, and prior issues for the named surfaces. This is what
+   makes step 5's agreement substantive — without it, you risk
+   agreeing to work the code can't support, or missing work the
+   code makes obvious. What you find here gets written up as
+   code findings in Phase 2 step 1.
 
-   For
-   recurrence surfaces, compare how the surface behaves across
-   related functions, callers, or files. Look at semantics, not
-   just names, prose, or other surface details. A surface can
-   be consistently named yet semantically inconsistent — for
-   example, a parameter with fallback semantics in one caller,
-   no-anchor semantics in another, and required in a third.
-   Naming work alone would turn "different names for the same
-   contract" into "one name with different contracts." Note any
-   such split in the code reading.
+   For recurrence surfaces, compare how the surface behaves
+   across related functions, callers, or files. Look at
+   semantics, not just names, prose, or other surface details.
+   A surface can be consistently named yet semantically
+   inconsistent — for example, a parameter with fallback
+   semantics in one caller, no-anchor semantics in another, and
+   required in a third. Naming work alone would turn "different
+   names for the same contract" into "one name with different
+   contracts." Note any such split for the Phase 2 write-up.
 
 5. **Agree the scope with the user.** Play back the proposed scope for the session,
    with any clarifications and revisions. Ask the user if they are happy to proceed. If not, iterate on the scope until they are.
@@ -88,48 +91,54 @@ The phase ends with branch creation.
 
 ### Phase 2: Plan
 
-The goal of this phase is to produce a
-planning analysis before proposing tasks. Follow the steps below in sequence.
+The goal of this phase is three layers, in order: a planning
+analysis (what the situation is), a design (what you propose
+to build), and a Draft Plan (the tasks that deliver it). Each
+layer is the input to the next. Follow the steps below in
+sequence.
 
-1. **Write the planning analysis.** State the analysis explicitly, with the following sections:
+1. **Write the planning analysis.** This layer is diagnostic —
+   it states what is, not what to build. State the analysis
+   explicitly, with the following sections:
 
    - **Stated goal:** what the issue or request says should
-     change. If none is given, say so. When the stated goal is
-     framed as "expand the docstring to express a contract,"
-     distinguish two cases: a docstring that is vague, wrong,
-     or missing (a real documentation task), vs. a structure
-     that is wider than the contract it should enforce (a shape
-     task wearing docstring clothes). Only the first proceeds
-     as written; the second gets reshaped to address the
-     structural gap before the task list is proposed.
-   - **Code findings:** what the code shows about the current
-     shape, with file:line or symbol citations so the analysis
-     is verifiable.
-     - *Bug fix:* trace the mechanism causing the incorrect
-       behavior.
-     - *Enhancement:* map the integration surface — where the
-       enhancement lands, what it touches, what adjacent
-       behavior it might affect.
-     - *Maintenance:* find the inconsistency pattern across the
-       named surface, identifying specific instances.
+     change. If none is given, say so. Flag goals that propose
+     adding prose to express a contract (a docstring, a
+     comment) — these have two readings, a real documentation
+     task or a shape task wearing docstring clothes, and the
+     design step resolves which.
+   - **Code findings:** what the Phase 1 read showed about the
+     current shape, with file:line or symbol citations so the
+     analysis is verifiable.
+     - *Bug fix:* the mechanism causing the incorrect
+       behaviour.
+     - *Enhancement:* the integration surface — where the
+       enhancement would land, what it touches, what adjacent
+       behaviour it might affect.
+     - *Maintenance:* the inconsistency pattern across the
+       named surface, with specific instances.
    - **Alignment check:** where the stated goal and the code
-     reading agree or diverge.
+     findings agree or diverge.
      - *Bug fix:* where the issue's claimed cause agrees or
-       diverges from what the code reading shows.
-     - *Enhancement:* whether the proposed design fits the
-       existing shape or introduces friction.
+       diverges from what the code findings show.
+     - *Enhancement:* whether the integration surface in the
+       code findings supports the stated goal's framing of the
+       change, or where it doesn't.
      - *Maintenance:* whether the reported inconsistency
-       matches what the code shows — the surface is sometimes
-       more coherent than reported, sometimes less.
-   - **Scope risk:** what would remain unresolved if you only
-     addressed the changes as stated.
+       matches what the code findings show — the surface is
+       sometimes more coherent than reported, sometimes less.
+   - **Scope risk:** what would remain unresolved if the work
+     stays inside the agreed scope. The design step responds
+     to these risks; Plan B may extend the design to address
+     them.
 
    For recurrence surfaces — where the stated goal cites prior
    issues, or the Scope recurrence search found prior issues on
    the same surface — give each field enough detail to show the
-   recurrence pattern. The stated goal is evidence to cross-check,
-   not authority to accept. The stated goal and code reading may
-   diverge; when they do, plan based on the code reading.
+   recurrence pattern. The stated goal is evidence to
+   cross-check, not authority to accept. The stated goal and
+   code findings may diverge; when they do, the design follows
+   the code findings.
 
 2. **Make the rescope call.** Take a step back and apply two tests against the planning analysis:
 
@@ -142,11 +151,44 @@ planning analysis before proposing tasks. Follow the steps below in sequence.
 
    When either test surfaces a real structural option, raise it to the user as a rescope candidate and discuss scope revisions. If a requirement is unclear, ask the user before proposing tasks.
 
-3. **Write the Draft Plan.** Only after the planning analysis
-   and rescope call are complete, write a
-   draft task list. Each task is a unit of work Ralph can
-   take end-to-end. Derive tasks from the code reading, not
-   just from the named changes.
+3. **Design the change.** State what the code will look like
+   when the work is done, the approach you propose, and the
+   key design calls that follow from the findings. Depth scales
+   with session type:
+
+   - *Bug fix:* the fix approach. When more than one fix shape
+     is plausible (defensive check, structural fix, removal),
+     name the alternatives and why this one. For
+     straightforward bugs this is one or two sentences.
+   - *Enhancement:* the new shape — the contract of the new
+     feature, where it slots in, how callers interact with it,
+     and the key integration calls.
+   - *Maintenance:* the target shape — what the surface looks
+     like when done. Specifically: which name, which structure,
+     which abstraction wins, and what the migration path looks
+     like.
+
+   If the stated goal reads as a shape task wearing docstring
+   clothes — for example "expand the docstring to express a
+   contract" when the structure is wider than the contract —
+   this is where you reshape it. Name the structural change in
+   the design; the Draft Plan derives from the design, not
+   from the original stated goal. For docstring or comment
+   proposals more generally, apply the **code-shape-first
+   check** (see Internal review below for the full ladder)
+   before accepting them as prose work.
+
+   When the design has more than one plausible shape, name the
+   forks and pick one with a reason. If the user holds the
+   call on a fork, carry the choice forward to the planning
+   proposal — don't decide for them.
+
+4. **Write the Draft Plan.** Only after the planning analysis,
+   rescope call, and design are complete, write a draft task
+   list. Each task is a unit of work Ralph can take end-to-end.
+   Derive tasks from the design — they are the work that
+   delivers it — and the code findings, not from the named
+   changes.
 
    Choose the task shape before writing each task brief:
 
@@ -165,15 +207,14 @@ planning analysis before proposing tasks. Follow the steps below in sequence.
      (the protocol's "Defend completeness" call). Tell Ralph to
      apply the criterion fresh.
 
-4. **Internal review.** Send your Draft Plan to Junio for one
+5. **Internal review.** Send your Draft Plan to Junio for one
    round of review before writing the two versions you'll show
-   the user. The Draft Plan contains the planning analysis,
-   code findings and proposed task list — the
-   substantive content of a planning proposal. End the request
-   with the standard sign-off: `From Grace. RSVP via
-   SendMessage.` Junio replies with a numbered list of findings
-   (or "no substantive findings"), optionally with a possible
-   rescope signal.
+   the user. The Draft Plan contains the planning analysis, the
+   design, and the draft task list — the substantive content of
+   a planning proposal. End the request with the standard
+   sign-off: `From Grace. RSVP via SendMessage.` Junio replies
+   with a numbered list of findings (or "no substantive
+   findings"), optionally with a possible rescope signal.
 
    Junio is advisory at Plan, not gating. You own the plan. Read
    each finding and apply judgement: accept what you find
@@ -224,19 +265,19 @@ planning analysis before proposing tasks. Follow the steps below in sequence.
    The signal is an observation, not a finding — your call whether
    the task list looks symptom-shaped enough to pause and reopen the scope discussion.
 
-5. **Write the Planning Proposal.** After Junio's review, write two plan versions you'll
-   present to the user. Plan A aims for a complete and coherent
-   resolution of the proposed scope, with the findings from
-   Junio's review you accept folded in. Plan B extends Plan A with
-   further tasks that anticipate work beyond the proposed
-   scope, drawing on scope-risk observations from your analysis
-   and related items Junio raised. See "Plan A and Plan B" below
-   for the sources and shape.
+6. **Write the Planning Proposal.** After Junio's review, write
+   two plan versions you'll present to the user. Plan A aims
+   for a complete and coherent resolution of the proposed
+   scope, with the findings from Junio's review you accept
+   folded in. Plan B extends Plan A with further tasks that
+   anticipate work beyond the proposed scope, drawing on
+   scope-risk observations from your analysis and related items
+   Junio raised. See "Plan A and Plan B" below for the sources
+   and shape.
 
-6. **Share the Planning Proposal.** Send one user-visible
-   message opening with the proposed
-   task list, and any out-of-scope decisions or
-   open questions for the user.
+7. **Share the Planning Proposal.** Send one user-visible
+   message containing the design, the proposed task list, and
+   any out-of-scope decisions or open questions for the user.
 
    When Plan B adds tasks beyond Plan A, the proposal carries both
    versions and asks the user to pick. Frame the choice plainly
@@ -247,15 +288,15 @@ planning analysis before proposing tasks. Follow the steps below in sequence.
    and re-share after the user answers — repeat until the proposal
    carries no open questions.
 
-7. **Share the Approved Plan with Junio.** He reviewed the
-   Draft Plan in step 4 but hasn't seen what came out of the
+8. **Share the Approved Plan with Junio.** He reviewed the
+   Draft Plan in step 5 but hasn't seen what came out of the
    Plan A and Plan B step or what the user picked, and his
    per-task audits in Phase 3 work against the approved plan.
    Send him the same content you sent the user, flagged as for
    information only. Sign off `From Grace.` and skip the RSVP —
    no reply is expected.
 
-8. **Create the shared task list.**
+9. **Create the shared task list.**
 
 The phase ends once the shared task list has been created.
 
@@ -831,13 +872,13 @@ Draft Plan is the raw material — Plan A aims for a complete and
 coherent resolution of the provisional scope; Plan B extends
 Plan A to anticipate further work the provisional scope points
 beyond. The provisional scope is a starting point, not a
-ceiling — Plan-time code reading and Junio's review often
-surface additions that belong alongside the stated work, and
-offering them once now is cheaper than fragmenting a coherent
-edit across sessions.
+ceiling — the code findings and Junio's review often surface
+additions that belong alongside the stated work, and offering
+them once now is cheaper than fragmenting a coherent edit
+across sessions.
 
 **Plan A** aims for a complete and coherent resolution of the
-provisional scope. Cover everything the code reading shows must
+provisional scope. Cover everything the code findings show must
 change to leave the surface coherent and the concerns named in
 the provisional scope fully resolved — not just the minimum the
 stated ask would satisfy. Fold in the findings from Junio's
@@ -851,7 +892,7 @@ on scope-risk observations from your planning analysis and
 related items Junio raised in his review. Plan B anticipates
 what would naturally follow once Plan A lands: work that would
 more fully resolve the underlying concerns. Shape the additions
-the same way you shape any task (see step 3 above) — group
+the same way you shape any task (see step 4 above) — group
 observations as the criterion dictates, rather than mapping one
 task per observation.
 

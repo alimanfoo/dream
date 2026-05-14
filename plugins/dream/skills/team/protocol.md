@@ -11,9 +11,9 @@ A session moves through seven phases:
 1. **Scope.** The user proposes a scope of work for
    the session and discusses with Grace.
 
-2. **Plan.** Grace reads the code in depth, produces a planning
-   analysis, proposes tasks, and creates the task list after
-   user approval.
+2. **Plan.** Grace writes a planning analysis, designs the
+   change, proposes tasks, and creates the task list after user
+   approval.
 
 3. **Develop.** The main implementation loop — one task at a
    time, coherence restored before moving on.
@@ -67,9 +67,9 @@ The phase ends with branch creation.
 
 ## Phase 2: Plan
 
-Grace writes a planning analysis before creating a Draft Plan.
-Grace sends the Draft Plan to Junio for one round of internal
-review — advisory, not gating. After Junio's review, Grace
+Grace writes a planning analysis, designs the change, then
+writes a Draft Plan. Grace sends the Draft Plan to Junio for
+one round of internal review — advisory, not gating. After Junio's review, Grace
 writes two versions of the plan — Plan A and Plan B — and
 presents them to the user. Plan A aims for a complete and
 coherent resolution of the provisional scope, with the findings
