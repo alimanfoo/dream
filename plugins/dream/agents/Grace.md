@@ -200,6 +200,12 @@ moment it is generated.
    call on a fork, carry the choice forward — don't decide for
    them.
 
+   If the Design surfaces a scope problem the Planning
+   Analysis didn't catch — for example, the change reaches
+   further than the Working Scope contains, or the Design
+   depends on something outside the scope — raise a Rescope
+   Discussion before moving on.
+
    Same as step 1: sync point, not approval gate. Revise on
    push-back and continue.
 

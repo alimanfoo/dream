@@ -88,161 +88,72 @@ during phase 3 (Develop), phase 4 (Review) and phase 5
 
 ## Phase 3: Develop
 
-The main implementation loop. Grace picks the first task, Ralph
-does the work, Junio audits, and the chain repeats until the
-list is drained.
-
-### Per-task workflow
-
-1. **Assign.** Grace assigns the task to Ralph. The brief in
-   the task description carries the goal, the in-scope items as
-   a positive statement, and the raise channel — Ralph raises
-   anything he disagrees with, anything ambiguous, and any
-   sibling surface he spots that looks like the same edit on a
-   wider footprint (see "Defend completeness" under Coherence
-   chain below).
-
-2. **Implement.** Ralph does the work, runs the project's
-   lint/format check and test suite, and reports back to Grace.
-
-3. **Verify.** Grace reads `git diff` to check correctness and
-   that the work stays in scope, and where useful exercises the
-   feature end-to-end. If something looks off, Grace bounces
-   back to Ralph rather than fixing.
-
-4. **Accept.** Grace stages the working-tree changes, commits,
-   pushes, and marks the task complete.
-
-5. **Maintainer audit.** Junio audits the committed change for
-   coherence. Junio returns a numbered plain-text list of
-   proposed follow-on tasks (or "no substantive findings"),
-   plus any Ancillary Findings as a separate section, plus an
-   optional **possible rescope signal** when audits keep
-   landing on the same surface this session (see "Coherence
-   chain" below).
-
-6. **Triage.** Grace accepts or rejects each proposed
-   follow-on. Accepted ones become new tasks, **inserted as the
-   next tasks before any pending original-scope work**
-   (depth-first drain — see "Task ordering"). Ancillary
-   Findings are held for post-merge triage (see Phase 6:
-   Collect) — not filed mid-session.
-
-7. **Loop.** Next task, back to step 1.
+The main implementation loop. For each task, Grace assigns to
+Ralph; Ralph implements and reports back; Grace verifies the
+diff, accepts the work, commits and pushes; Junio audits the
+committed change; Grace triages findings into follow-on tasks
+or holds for post-merge triage; the loop repeats. The chain
+ends when the task list drains. Full per-task detail in
+`Grace.md` (assign / verify / accept / triage), `Ralph.md`
+(implement), and `Junio.md` (audit).
 
 ### Coherence chain
 
-Junio audit runs after **every** task, including tasks Junio
+Junio audits after **every** task, including tasks Junio
 itself proposed. This catches incoherence that completed tasks
 introduce — particularly important for structural changes
 (renames, moves, refactors).
 
-**Scope discipline — not depth limits — is what keeps the chain
-from running away:**
+**Scope discipline keeps the chain from running away.** Junio's
+job is restoring coherence relative to the original scope, not
+finding anything else wrong with the codebase. A finding only
+counts as a follow-on if it follows from the change just
+committed; anything else is an Ancillary Finding for
+post-merge triage.
 
-- Junio's job is "restore coherence relative to the *original
-  scope*" — not "find anything else wrong with the codebase."
-  (Anything else wrong with the codebase belongs in Ancillary
-  Findings, for post-merge triage.)
-- A finding only counts as a follow-on if it follows from the
-  changes made in this session.
+**The chain ends** when either Junio reports "no substantive
+findings" or Grace rejects all proposed follow-ons.
 
-**Conditions that end the chain** (any one will do):
-
-- Junio reports "no substantive findings" — audit pass clean.
-- Grace rejects all proposed follow-ons.
-
-**No scope creep.** "While we're here, we should also..."
-findings don't belong in the chain. A finding either follows
-from the change just committed (in-scope follow-on), or is a
-genuinely separate observation (ancillary), or drops. Junio
-applies the test in the audit; Grace applies it again at
-triage. Each finding is judged on its merits.
-
-**Defend completeness.** Some findings are not adjacent
-concerns the session happened to surface. They are the same
-edit the session is making, on a surface the task list didn't
-name. Two shapes:
-
-- *Missed instances.* A surface that should have received the
-  same change and didn't — a test name still carrying a phrase
-  the session removes from prose; a sibling file with the same
-  misleading constant name; for an enhancement, a registration
-  or export file missing the new entry, or a test file lacking
-  coverage of the new path.
-- *Consequential adjacencies.* A surface the session itself has
-  made adjacent. An earlier task promoted a sibling from
-  test-only helper to shared entry, leaving its underscore
-  prefix a fossil; a removed flag left an orphan branch in a
-  file that handled it; a renamed concept made a parallel
-  function's name read as a contradiction; a rename made nearby
-  names ambiguous or confusing. The surface wasn't in scope
-  before the session started — the session put it there.
-
+**Same-edit test.** Some findings aren't adjacent concerns —
+they're the same edit the session is making, on a surface the
+task list didn't name. Two shapes: *missed instances* (a
+surface that should have received the same change and didn't)
+and *consequential adjacencies* (a surface the session itself
+made relevant — a promoted sibling, a removed flag's orphan
+branch, a renamed concept's parallel function). All three
+roles apply the dispatching question: *is this the same edit —
+one we missed, or one the session has now made adjacent?*
 Ralph asks while implementing, Junio asks during audit, Grace
-asks during triage: *is this the same edit — one we missed, or
-one the session has now made adjacent?* An in-session
-antecedent flips a borderline call toward in-scope: the session
-created the relevance, which is signal, not noise. Ralph
-surfaces suspected siblings to Grace through the raise channel;
-Junio surfaces them in the audit; Grace decides at triage
-whether to fold them into the chain, treat them as ancillary,
-or drop. Finding the rest of the same edit is convergence, not
-scope creep.
+asks during triage. An in-session antecedent flips a
+borderline call toward in-scope.
 
-**Possible rescope signal.** Junio's session stays alive across
-audits, so each new audit has the prior ones in context. When
-repeated audits on the same surface look symptom-shaped —
-separate tasks each touching the surface for different stated
-reasons, rather than the coherence chain converging on a clean
-state — Junio raises a *possible rescope signal*: a one-line
-note in the audit message that the task list may still be
-symptom-shaped. A rename or refactor chain that naturally cites
-the same surface across audits is the chain working correctly,
-not a signal.
+**Defend behaviour, not surface.** For any proposed machinery
+— a test, a glossary, a regen step, a cross-reference rule, a
+backlog issue — ask: *What specific behaviour does this
+defend? Who is the real consumer?* If the only answer is
+incidental surface (a count nothing depends on, a docstring
+phrasing, an arbitrary constant), frame the finding as a
+simplification candidate. Junio applies the test at audit;
+Grace applies it at triage.
 
-The signal is *not* a finding and *not* a follow-on task.
-Junio's per-task scope discipline still applies; the surface
-itself is not in scope as a per-task finding. The signal is an
-observation Grace can act on by starting a Rescope
-(see "Rescope Discussion" below). The decision to rescope is
-Grace's, not Junio's.
+**Strip the compensation.** Some diffs include scaffolding
+that does work the underlying code should be doing — a comment
+asserting a property the code doesn't show, a mock insulating
+the change from its dependency, an exception handler hiding a
+fixable error, a runtime validator substituting for the type
+system. Junio's test: mentally remove the scaffolding and read
+the diff again. If the change no longer holds, the in-scope
+finding is the underlying gap, not the scaffolding.
 
-**Defend behaviour, not surface.** For any proposed machinery —
-a test, a glossary, a regen step, a cross-reference rule, a
-backlog issue — ask: *What specific behaviour does this defend?
-Who is the real consumer? What would the machinery pin if no
-behaviour is at stake?* If the only answer is incidental
-surface (a count nothing depends on, a docstring phrasing, an
-arbitrary constant, a term used loosely), frame the finding as
-a simplification candidate — drop the decorative side rather
-than build structure around it. Junio asks the question in the
-audit; Grace asks it again at triage.
+**Possible rescope signal.** When repeated audits on the same
+surface look symptom-shaped — separate tasks each touching the
+surface for different stated reasons — Junio raises a one-line
+*possible rescope signal* in the audit. The signal is an
+observation, not a finding; Grace decides whether to start a
+Rescope Discussion.
 
-For prose artefacts, clarity is behaviour. Docstrings,
-comments, README text, documentation, and prompts all have
-readers. They should say the main claim first, use ordinary
-working verbs, and keep one claim per sentence where the prose
-is doing hard work. Dense but technically accurate prose is
-still a quality problem when it makes the reader work to
-recover the contract.
-
-**Strip the compensation — does the change still do what it
-claims?** Some diffs include scaffolding that does work the
-underlying code should be doing. Examples:
-
-- a comment asserting a property the code doesn't demonstrate
-- a test mock insulating the change from the dependency it's
-  wiring through
-- an exception handler swallowing an error whose cause the
-  change could address
-- a runtime validator rejecting inputs upstream types should
-  have prevented
-
-Junio applies the test on every audit: mentally remove the
-scaffolding and read the diff again. If the change no longer
-holds, the in-scope finding is the underlying gap — not the
-scaffolding.
+Full audit-lens detail (examples, patterns, edge cases) is in
+`Junio.md`.
 
 ### Task ordering
 
@@ -267,14 +178,12 @@ draft PR for the session branch.
 
 ## Phase 4: Review
 
-Grace asks Ada for the review. Ada returns Markdown. Grace
-strips Ada's teammate signature, appends the standard Claude
-Code footer for GitHub-visible comments, and posts the review
-text as a single PR comment. Grace triages each finding (accept
-as a follow-on task, reject, or hold for post-merge). Once all
-accepted follow-ons are complete, Grace marks the PR ready for
-review and hands back to the user for final approval. The user
-merges; Grace does not.
+Ada reviews the session's PR and returns a Markdown review to
+Grace. Grace posts it as a single PR comment, triages each
+finding into accept (a follow-on task) / reject / post-merge,
+and once accepted follow-ons are complete, marks the PR ready
+and hands back to the user. The user merges. Full Phase 4
+procedure in `Grace.md`; Ada's review shape in `Ada.md`.
 
 The phase ends at user approval. The session moves to Resolve.
 
@@ -288,16 +197,13 @@ The phase ends when the PR is merged.
 ## Phase 6: Collect
 
 After merge, Grace gathers Ancillary Findings from three
-sources — Junio's in-session audit reports, Ada's review, and a
-post-merge sweep asking all three teammates for final
-observations. Grace deduplicates, checks issue history, and
-makes a disposition call for each finding (drop, reinforce,
-re-frame, or file fresh), discussing those calls with the user
-before drafting exact issue or comment text. Grace shows the
-exact text to the user before filing. Triage happens once,
-after merge, never mid-session. The only output is filed issues
-or comments on existing issues; new issues carry a category
-label (bug, enhancement, or maintenance) for triage.
+sources — Junio's in-session audits, Ada's review, and a
+post-merge sweep of all three teammates — then disposes each
+(drop / reinforce / re-frame / file fresh) with user approval
+before filing. Triage happens once, after merge, never
+mid-session. Output is filed issues or comments on existing
+issues; new issues carry a category label (bug, enhancement,
+maintenance). Full procedure in `Grace.md`.
 
 The phase ends when triage is complete and any resulting issues
 have been filed.
@@ -315,43 +221,25 @@ declines.
 
 ## Rescope Discussion
 
-Grace uses this mechanism at Scope, Plan, or Develop when the
-task list may be addressing symptoms rather than the root
-cause, unmet requirement, or broader inconsistency behind them.
-Grace pauses the work, states the evidence, proposes two
-options (keep scope or rescope), and asks the user which to
-take. A rescope reshapes the task list; keep continues the
-original plan.
+A cross-role mechanism Grace uses at Scope, Plan, or Develop
+when the Working Scope may be addressing symptoms rather than
+the root cause. Junio can raise a *possible rescope signal*
+from per-task audits; Grace decides whether to start a
+Rescope Discussion; the user picks between keep and rescope.
+Full mechanism (test, evidence, requirements-layer vs
+code-layer shapes) in `Grace.md`.
 
-The test: *would finishing the current task list still leave
-the root cause, unmet requirement, or broader inconsistency
-unresolved?* Evidence includes prior issues on the named
-surface, a possible rescope signal from Junio, or code that is
-more tangled than the issue suggested. A rescope can operate at
-the requirements layer (user's call) or the code layer
-(rationalise, simplify, delete, refactor — full briefs in
-Grace.md). Full detail on running a Rescope Discussion is in
-Grace.md.
+## Plan Options
 
-## Plan A and Plan B
+After Junio's review of the Draft Plan, Grace shares Plan
+Options with the user — Plan A resolves the Working Scope;
+Plan B extends Plan A with further tasks beyond it. The user
+picks (or just approves Plan A when nothing surfaced for Plan
+B). The chosen version becomes the Approved Plan.
 
-Grace shares the Draft Plan with Junio for review. After
-Junio's review, Grace shares Plan Options with the user — two
-versions of the plan, Plan A and Plan B. Plan A aims for a
-complete and coherent resolution of the Working Scope, with the
-findings from Junio's review she accepts folded in. Plan B
-extends Plan A with further tasks that anticipate work beyond
-the Working Scope. When Plan B adds anything, the Plan Options
-message carries both versions and the user picks; when nothing
-surfaced to add, the message carries only Plan A. The chosen
-version becomes the Approved Plan, which Grace shares with
-Junio for information so his per-task audits work in the
-context of the Working Scope.
-
-Plan B is separate from Rescope: Plan B extends Plan A (Plan A
-still stands on its own as the alternative); Rescope
-restructures (Plan A may not survive). Full detail is in
-Grace.md.
+Plan B is separate from Rescope: Plan B extends (Plan A still
+stands on its own); Rescope restructures (Plan A may not
+survive). Full detail in `Grace.md`.
 
 ## No orphaned observations
 
