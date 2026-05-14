@@ -11,9 +11,9 @@ A session moves through seven phases:
 1. **Scope.** The user proposes a scope of work for
    the session and discusses with Grace.
 
-2. **Plan.** Grace writes a planning analysis, designs the
-   change, proposes tasks, and creates the task list after user
-   approval.
+2. **Plan.** Grace shares a Planning Analysis and a Design
+   with the user, presents Plan Options, and creates the task
+   list after user approval.
 
 3. **Develop.** The main implementation loop — one task at a
    time, coherence restored before moving on.
@@ -67,19 +67,18 @@ The phase ends with branch creation.
 
 ## Phase 2: Plan
 
-Grace writes a planning analysis, designs the change, then
-writes a Draft Plan. Grace sends the Draft Plan to Junio for
-one round of internal review — advisory, not gating. After Junio's review, Grace
-writes two versions of the plan — Plan A and Plan B — and
-presents them to the user. Plan A aims for a complete and
-coherent resolution of the provisional scope, with the findings
-from Junio's review she accepts folded in. Plan B extends Plan
-A with further tasks that anticipate work beyond the
-provisional scope. The proposal carries both options when Plan
-B adds anything; the user picks. After approval, Grace shares
-the Approved Plan with Junio for information so his per-task
-audits work against the approved scope. Grace then creates the
-shared task list.
+Grace shares a Planning Analysis and a Design with the user,
+then shares a Draft Plan with Junio for one round of internal
+review — advisory, not gating. After Junio's review, Grace
+shares Plan Options with the user — Plan A aims for a
+complete and coherent resolution of the agreed scope, with
+the findings from Junio's review she accepts folded in; Plan
+B extends Plan A with further tasks that anticipate work
+beyond the agreed scope. The message carries both versions
+when Plan B adds anything; the user picks. After approval,
+Grace shares the Approved Plan with Junio for information so
+his per-task audits work against the approved scope. Grace
+then creates the shared task list.
 
 The phase ends once the shared task list has been created.
 
@@ -336,18 +335,18 @@ Grace.md.
 
 ## Plan A and Plan B
 
-Grace writes a single Draft Plan first and sends it to Junio
-for review. After Junio's review Grace writes two versions of
-the plan — Plan A and Plan B — and presents them to the user.
-Plan A aims for a complete and coherent resolution of the
-provisional scope, with the findings from Junio's review she
-accepts folded in. Plan B extends Plan A with further tasks
-that anticipate work beyond the provisional scope. When Plan B
-adds anything, the planning proposal carries both options and
-the user picks; when nothing surfaced to add, the proposal
-carries only Plan A. The chosen version becomes the Approved
-Plan, which Grace shares with Junio for information so his
-per-task audits work against the approved scope.
+Grace shares the Draft Plan with Junio for review. After
+Junio's review, Grace shares Plan Options with the user — two
+versions of the plan, Plan A and Plan B. Plan A aims for a
+complete and coherent resolution of the agreed scope, with the
+findings from Junio's review she accepts folded in. Plan B
+extends Plan A with further tasks that anticipate work beyond
+the agreed scope. When Plan B adds anything, the Plan Options
+message carries both versions and the user picks; when nothing
+surfaced to add, the message carries only Plan A. The chosen
+version becomes the Approved Plan, which Grace shares with
+Junio for information so his per-task audits work against the
+approved scope.
 
 Plan B is separate from Rescope: Plan B extends Plan A (Plan A
 still stands on its own as the alternative); Rescope

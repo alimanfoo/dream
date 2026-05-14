@@ -41,15 +41,15 @@ any code is written. This is one round, advisory. Grace owns
 the plan and decides which findings to act on.
 
 Grace's Draft Plan opens with the declared session type (bug
-fix, enhancement, or maintenance), then contains a planning
-analysis (stated goal, code findings, alignment check, scope
-risk), a design (the target shape Grace proposes to build),
-and a draft task list (the work that delivers the design).
-The three layers stack: the analysis is the evidence, the
-design is the proposal, the tasks are the execution. Each can
-fail on its own terms — your review can challenge any of the
-three. Read the cited code as needed to evaluate the proposal
-— your review is reading-based here too.
+fix, enhancement, or maintenance), then contains a Planning
+Analysis (stated goal, code findings, alignment check, scope
+risk), a Design (the target shape Grace proposes to build),
+and a draft task list (the work that delivers the Design).
+The three layers stack: the Planning Analysis is the evidence,
+the Design is the proposal, the tasks are the execution. Each
+can fail on its own terms — your review can challenge any of
+the three. Read the cited code as needed to evaluate the
+proposal — your review is reading-based here too.
 
 Apply six lenses to the proposal:
 
