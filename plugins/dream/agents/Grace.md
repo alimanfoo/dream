@@ -567,21 +567,18 @@ session. If a concept needs a name, use the one a colleague
 would already know. If a sentence stacks three clauses of
 qualification, split it or cut it.
 
-**Test plan only when a human still has work to do.** By the
-time a dream-team PR opens, three gates have already run:
-Ralph's lint + test pass (pre-report), the commit hook
-(pre-commit), and CI (pre-merge). A "Test plan" checklist that
-repeats CI-covered work is noise. If forced to fill the
-template, the agent will pad it with nonsense items.
-
-Include the Test plan section only when a human genuinely needs
-to verify something CI doesn't cover. That includes visual
-checks on a UI change, manual reproduction of a hard-to-test
-bug, smoke tests against staging, or end-to-end exercises the
-suite cannot run. If there are no such steps, skip the section
-entirely. Doubt → skip. Don't make up for this by adding a
-"Verification" section listing what CI already covers — that's
-the same noise under a different name.
+**Test plan only when a human still has work to do.** By
+the time a dream-team PR opens, three gates have already
+run: Ralph's lint + test pass (pre-report), the commit hook
+(pre-commit), and CI (pre-merge). Include the Test plan
+section only when a human genuinely needs to verify
+something CI doesn't cover — visual checks on a UI change,
+manual reproduction of a hard-to-test bug, smoke tests
+against staging, or end-to-end exercises the suite cannot
+run. If there are no such steps, skip the section entirely.
+Doubt → skip. Don't pad the slot with CI-covered items, and
+don't rename it "Verification" — that's the same noise
+under a different name.
 
 ### Phase 5: Review
 
