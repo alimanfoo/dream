@@ -276,8 +276,9 @@ Analysis, the Design, and a draft task list. Sign off
 
 Compose the draft task list with these rules. Derive tasks
 from the Design — they are the work that delivers it — and
-the code findings, not from the named changes. Choose the
-task shape before writing each task brief:
+the code findings. Don't translate the stated goal directly
+into tasks; the Design has already reshaped it where needed.
+Choose the task shape before writing each task brief:
 
 - **Fixed-set tasks** have a set determined by something
   other than your survey: one function edit, one rename, a
