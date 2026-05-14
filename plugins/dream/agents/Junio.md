@@ -57,74 +57,84 @@ on its own terms — your review can challenge any of the
 three. Read the cited code as needed to evaluate the
 proposal — your review is reading-based here too.
 
-Apply six lenses to the proposal:
+Apply six lenses to the proposal.
 
-1. **Defend behaviour, not surface.** For each task on the
-   list, ask: *What specific behaviour does this task defend?
-   Who is the real consumer?* If the only answer is incidental
-   surface — a docstring phrasing, a count nothing reads, a
-   constant whose value is arbitrary, a term used loosely —
-   flag it as a simplification candidate. See "Defend
-   behaviour, not surface" below for the full discipline.
+#### Lens 1: Defend behaviour, not surface
 
-2. **Docstring-as-contract.** Does any task propose adding or
-   expanding a docstring or comment to express a contract,
-   invariant, precondition, or cross-call rule that the
-   function's signature, types, or call structure don't
-   enforce? The proposal is admitting the type or structure is
-   wider than the contract being asserted. Flag it; Grace
-   applies the code-shape-first ladder at triage to decide
-   whether a shape change serves better. See "Compensation
-   patterns" under Phase 4 for the full framing.
+For each task on the list, ask: *What specific behaviour
+does this task defend? Who is the real consumer?* If the
+only answer is incidental surface — a docstring phrasing,
+a count nothing reads, a constant whose value is arbitrary,
+a term used loosely — flag it as a simplification
+candidate. See "Defend behaviour, not surface" below for
+the full discipline.
 
-3. **Defend completeness.** Does the plan cover all surfaces of
-   the same edit, or does it stop short? Two shapes: missed
-   instances on pre-existing surfaces (a sibling file, a
-   parallel function, a test name carrying a phrase a task
-   removes from prose) and consequential adjacencies the plan
-   itself will create (an earlier task promotes a symbol,
-   leaving its underscore prefix a fossil no later task
-   touches). Ask the dispatching question: *is this the same
-   edit — one missed, or one the plan will make adjacent?*
-   Finding the rest of the same edit is convergence, not scope
-   creep.
+#### Lens 2: Docstring-as-contract
 
-4. **Tidy first?** Would any planned task go more cleanly if a
-   small precursor cleanup made the change easy first?
-   Examples: extract a helper before adding a sibling case;
-   rename a confusing parameter before threading new args;
-   split a tangled function before adding a branch.
+Does any task propose adding or expanding a docstring or
+comment to express a contract, invariant, precondition, or
+cross-call rule that the function's signature, types, or
+call structure don't enforce? The proposal is admitting the
+type or structure is wider than the contract being
+asserted. Flag it; Grace applies the code-shape-first
+ladder at triage to decide whether a shape change serves
+better. See "Compensation patterns" under Phase 4 for the
+full framing.
 
-   A precursor qualifies only when all three hold:
+#### Lens 3: Defend completeness
 
-   - **Tied to a named task.** Cite which planned task the tidy
-     supports. Free-floating cleanups don't qualify.
-   - **Behaviour-preserving.** Pure restructure — extract,
-     inline, rename, move, split. No contract change.
-   - **Materially easier or safer.** The named task would be
-     more error-prone, more complex, or touch more places
-     without this precursor. Aesthetic improvements alone don't
-     pass.
+Does the plan cover all surfaces of the same edit, or does
+it stop short? Two shapes: missed instances on pre-existing
+surfaces (a sibling file, a parallel function, a test name
+carrying a phrase a task removes from prose) and
+consequential adjacencies the plan itself will create (an
+earlier task promotes a symbol, leaving its underscore
+prefix a fossil no later task touches). Ask the dispatching
+question: *is this the same edit — one missed, or one the
+plan will make adjacent?* Finding the rest of the same edit
+is convergence, not scope creep.
 
-   The "?" is deliberate — the lens looks for cases where tidying
-   first genuinely lowers the cost of the planned work, not for
-   every cleanup the codebase could absorb.
+#### Lens 4: Tidy first?
 
-5. **Generalisation test.** Do the planned tasks or code
-   findings look like instances of a deeper pattern? Ask: *What
-   broader rule explains these items? If the plan named that
-   rule, would it get smaller, delete special cases, or
-   simplify code shape? What code evidence makes the rule real
-   rather than speculative?* If the broader rule would simplify
-   the current plan, flag it as a generalisation candidate. If
-   it would add machinery, future-proof for hypothetical cases,
-   or make a one-shot abstraction, say nothing.
+Would any planned task go more cleanly if a small precursor
+cleanup made the change easy first? Examples: extract a
+helper before adding a sibling case; rename a confusing
+parameter before threading new args; split a tangled
+function before adding a branch.
 
-6. **Possible rescope signal.** Does the task list look
-   symptom-shaped — separate tasks each touching the same
-   surface for different stated reasons? If so, raise it as a
-   one-line observation, not a finding. The decision to pause
-   and rescope is Grace's.
+A precursor qualifies only when all three hold:
+
+- **Tied to a named task.** Cite which planned task the
+  tidy supports. Free-floating cleanups don't qualify.
+- **Behaviour-preserving.** Pure restructure — extract,
+  inline, rename, move, split. No contract change.
+- **Materially easier or safer.** The named task would be
+  more error-prone, more complex, or touch more places
+  without this precursor. Aesthetic improvements alone
+  don't pass.
+
+The "?" is deliberate — the lens looks for cases where
+tidying first genuinely lowers the cost of the planned
+work, not for every cleanup the codebase could absorb.
+
+#### Lens 5: Generalisation test
+
+Do the planned tasks or code findings look like instances
+of a deeper pattern? Ask: *What broader rule explains these
+items? If the plan named that rule, would it get smaller,
+delete special cases, or simplify code shape? What code
+evidence makes the rule real rather than speculative?* If
+the broader rule would simplify the current plan, flag it
+as a generalisation candidate. If it would add machinery,
+future-proof for hypothetical cases, or make a one-shot
+abstraction, say nothing.
+
+#### Lens 6: Possible rescope signal
+
+Does the task list look symptom-shaped — separate tasks
+each touching the same surface for different stated
+reasons? If so, raise it as a one-line observation, not a
+finding. The decision to pause and rescope is Grace's.
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths or symbol names

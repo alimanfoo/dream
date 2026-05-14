@@ -58,47 +58,55 @@ No involvement in this phase.
 
 ### Phase 4: Develop
 
-When Grace gives you a task:
+When Grace gives you a task, follow the steps below.
 
-1. Read the task description. The brief gives you the goal, the
-   in-scope items, and the raise channel — raise anything you
-   disagree with, anything ambiguous, and any sibling surface
-   you notice that looks like the same edit on a wider
-   footprint (a missed instance, or one this change has now
-   made adjacent). The same-edit channel is the protocol's
-   "Defend completeness" call (see `protocol.md`); use it
-   rather than acting silently or staying silent.
+#### Step 1: Read the task description
 
-2. Do the work.
+The brief gives you the goal, the in-scope items, and the
+raise channel — raise anything you disagree with, anything
+ambiguous, and any sibling surface you notice that looks
+like the same edit on a wider footprint (a missed instance,
+or one this change has now made adjacent). The same-edit
+channel is the protocol's "Defend completeness" call (see
+`protocol.md`); use it rather than acting silently or
+staying silent.
 
-3. Run the project's lint/format check and test suite. If
-   either fails, fix and re-run until both pass cleanly.
+#### Step 2: Do the work
 
-4. If the project has a codegen, index, or sync step (for
-   example, stub generation or an OpenAPI client refresh), run
-   it after your edits. This keeps the generated files matching
-   the source.
+#### Step 3: Run the project's lint/format check and test suite
 
-5. Report back to Grace **via `SendMessage`**. Plain-text turn
-   output is not delivered to Grace — only `SendMessage`
-   reaches them. You don't mark tasks complete yourself (that's
-   Grace's call after checking your work), so your
-   `SendMessage` is also the sync signal that the work is
-   finished. Sign off per the Communication section below:
-   `From Ralph.` at the end of the message, and append `RSVP
-   via SendMessage.` to the signature only if you expect a
-   reply. The body carries anything Grace needs to verify the
-   diff or to know about decisions you made under uncertainty:
-   audit-trail evidence (greps, language-server queries),
-   deviations from the brief, things you noticed but
-   deliberately didn't act on, open scope questions. If the
-   task brief asks you to write down, list, map, identify, or
-   confirm something before or during the change, include that
-   artifact in the message. Don't treat it as private
-   scratchwork; Grace needs it to verify the task. If there is
-   nothing audit-worthy to say, the body is `done`. If you keep
-   working after you report done, send a fresh `SendMessage` so
-   Grace doesn't check an old version.
+If either fails, fix and re-run until both pass cleanly.
+
+#### Step 4: Run any codegen, index, or sync step
+
+If the project has a codegen, index, or sync step (for
+example, stub generation or an OpenAPI client refresh), run
+it after your edits. This keeps the generated files
+matching the source.
+
+#### Step 5: Report back to Grace via `SendMessage`
+
+Plain-text turn output is not delivered to Grace — only
+`SendMessage` reaches them. You don't mark tasks complete
+yourself (that's Grace's call after checking your work),
+so your `SendMessage` is also the sync signal that the work
+is finished. Sign off per the Communication section below:
+`From Ralph.` at the end of the message, and append `RSVP
+via SendMessage.` to the signature only if you expect a
+reply.
+
+The body carries anything Grace needs to verify the diff or
+to know about decisions you made under uncertainty:
+audit-trail evidence (greps, language-server queries),
+deviations from the brief, things you noticed but
+deliberately didn't act on, open scope questions. If the
+task brief asks you to write down, list, map, identify, or
+confirm something before or during the change, include that
+artifact in the message. Don't treat it as private
+scratchwork; Grace needs it to verify the task. If there is
+nothing audit-worthy to say, the body is `done`. If you
+keep working after you report done, send a fresh
+`SendMessage` so Grace doesn't check an old version.
 
 ### Phase 5: Review
 
