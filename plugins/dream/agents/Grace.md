@@ -204,10 +204,10 @@ Compose one message. It carries the Design — Design Option A,
 plus Design Option B when there's a real fork — and ends with
 the approval request.
 
-The Design names what the code will look like when the work
-is done, the approach you propose, and the key design calls
-that follow from the findings. Depth scales with session
-type:
+The Design Options name what the code will look like when
+the work is done, the approach you propose, and the key
+design calls that follow from the findings. Depth scales
+with session type:
 
 - *Bug fix:* the fix approach. When more than one fix shape
   is plausible (defensive check, structural fix, removal),
