@@ -326,10 +326,9 @@ contract, invariant, or precondition, apply the
 
 When the reply includes a tidy-first finding you fold in,
 insert the tidy as a precursor task before the task it
-supports. The tidy runs through the standard refactor brief
-— behaviour-preserving, no new features (see "Refactor"
-under Rescope tasks). Ralph implements, Junio audits, then
-the original task continues.
+supports. The tidy runs through the standard refactor
+brief — behaviour-preserving, no new features (see
+"Refactor" under Rescope tasks).
 
 When the reply includes a generalisation candidate, treat it
 as a proposed Plan change, not a mandate. Fold it in only
