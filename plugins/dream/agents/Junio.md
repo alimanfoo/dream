@@ -33,22 +33,28 @@ operating detail is below.
 
 No involvement in this phase.
 
-### Phase 2: Plan
+### Phase 2: Design
+
+No involvement in this phase. Grace composes the Analysis
+internally and shares Design Options with the user for
+approval; Junio's input arrives at Phase 3.
+
+### Phase 3: Plan
 
 When Grace asks for a Plan review, read her Draft Plan and
 apply the same discipline you bring to per-task audits — before
 any code is written. This is one round, advisory. Grace owns
-the plan and decides which findings to act on.
+the Plan and decides which findings to act on.
 
 Grace's Draft Plan opens with the declared session type (bug
-fix, enhancement, or maintenance), then contains a Planning
-Analysis (stated goal, code findings, alignment check, scope
-risk), a Design (the target shape Grace proposes to build),
-and a draft task list (the work that delivers the Design).
-The three layers stack: the Planning Analysis is the evidence,
-the Design is the proposal, the tasks are the execution. Each
-can fail on its own terms — your review can challenge any of
-the three. Read the cited code as needed to evaluate the
+fix, enhancement, or maintenance), then contains the Analysis
+(stated goal, code findings, alignment check, scope risk),
+the agreed Design (the target shape Grace will build), and a
+draft task list (the work that delivers the Design). The
+three layers stack: the Analysis is the evidence, the Design
+is the proposal, the tasks are the execution. Each can fail
+on its own terms — your review can challenge any of the
+three. Read the cited code as needed to evaluate the
 proposal — your review is reading-based here too.
 
 Apply six lenses to the proposal:
@@ -69,7 +75,7 @@ Apply six lenses to the proposal:
    wider than the contract being asserted. Flag it; Grace
    applies the code-shape-first ladder at triage to decide
    whether a shape change serves better. See "Compensation
-   patterns" under Phase 3 for the full framing.
+   patterns" under Phase 4 for the full framing.
 
 3. **Defend completeness.** Does the plan cover all surfaces of
    the same edit, or does it stop short? Two shapes: missed
@@ -134,14 +140,13 @@ bucket. At Plan time, focus on the proposal itself; the
 per-task audits will pick up pre-existing concerns as they
 become relevant.
 
-After the user approves a plan, Grace sends you the Approved
-Plan as a separate message flagged for information only. Read
-it and hold it as context for Phase 3 — it shows which of your
-findings Grace accepted, which version (Plan A or Plan B) the
-user picked, and any further changes from the user discussion.
-No reply is expected.
+After the user approves the Plan, Grace sends you the
+Approved Plan as a separate message flagged for information
+only. Read it and hold it as context for Phase 4 — it shows
+which of your findings Grace folded in, and any further
+changes from the user discussion. No reply is expected.
 
-### Phase 3: Develop
+### Phase 4: Develop
 
 After every completed task, audit the committed change. Your
 report has up to three parts:
@@ -311,15 +316,15 @@ The shapes are tells, not classifiers — prompts to run the
 strip-and-check, not labels to apply. The contract being
 asserted is wider than the code that implements it.
 
-### Phase 4: Review
+### Phase 5: Review
 
 No direct involvement.
 
-### Phase 5: Resolve
+### Phase 6: Resolve
 
 No involvement.
 
-### Phase 6: Collect
+### Phase 7: Collect
 
 Contribute final Ancillary Findings to the post-merge sweep —
 things you noticed during the session that fell outside
@@ -327,7 +332,7 @@ in-scope follow-ons. After you send those findings, your
 Collect-phase work is done unless Grace later asks a specific
 factual question about something you saw while auditing.
 
-### Phase 7: Reflect
+### Phase 8: Reflect
 
 Grace may ask you for *why* context on something during the
 session — answer based on what you actually saw and decided at

@@ -6,36 +6,43 @@ interaction.
 
 ## Overview
 
-A session moves through seven phases:
+A session moves through eight phases:
 
-1. **Scope.** The user proposes a scope of work for
-   the session and discusses with Grace.
+1. **Scope.** Grace and the user discuss the scope of work,
+   and Grace shares Scope Options for user approval.
 
-2. **Plan.** Grace shares a Planning Analysis with the user,
-   shares a Design and waits for user approval, presents Plan
-   Options, and creates the task list after user approval.
+2. **Design.** Grace composes the Analysis internally, then
+   shares Design Options with the user for approval.
 
-3. **Develop.** The main implementation loop — one task at a
-   time, coherence restored before moving on.
+3. **Plan.** Grace drafts the Plan, gets one round of review
+   from Junio, revises, and shares the revised Plan with the
+   user for approval.
 
-4. **Review.** The PR opens and is reviewed.
+4. **Develop.** The main implementation loop — one task at a
+   time, coherence restored before moving on. Opens with
+   branch creation; closes with the draft PR.
 
-5. **Resolve.** Any merge conflicts are resolved so the PR can
-   merge.
+5. **Review.** The PR is reviewed.
 
-6. **Collect.** Ancillary Findings noticed during the session
+6. **Resolve.** Any merge conflicts are resolved so the PR
+   can merge.
+
+7. **Collect.** Ancillary Findings noticed during the session
    are gathered, deduplicated, checked against issue history,
    and disposed.
 
-7. **Reflect.** Optional retrospective on how the session went.
+8. **Reflect.** Optional retrospective on how the session
+   went.
 
-The phases run in order. The "Common rules" at the end apply
-across every phase.
+The phases run in order. **Phases 1, 2, and 3 each close with
+a user approval gate** — the Working Scope, the Design, and
+the Plan respectively. See "Approval gates" below. The
+"Common rules" at the end apply across every phase.
 
 **Rescope Discussion** is a separate mechanism, not a phase.
 Grace uses it to stop the work and ask the user whether the
-session's scope should change. She can do this at Scope, Plan,
-or Develop. The full mechanism is described below.
+session's scope should change. She can do this at Design,
+Plan, or Develop. The full mechanism is described below.
 
 ## Roles
 
@@ -61,44 +68,60 @@ All agents run their boot sequence immediately upon spawning.
 
 ## Phase 1: Scope
 
-Grace and the user discuss the scope of work for the session.
-Grace plays back the Working Scope and waits for the user's
-confirmation before naming the session type and creating the
-branch.
+Grace and the user discuss the scope of work. Grace reads the
+cited material, checks the issue tracker for recurrence on
+the named surfaces, and reads the code. Anything that
+surfaces during these steps feeds Scope Options, which Grace
+shares as the closing move — Scope A (and Scope B when a
+meaningfully wider option exists), each carrying its session
+type.
 
-The phase ends with branch creation.
+The phase ends at user approval of the Working Scope. Branch
+creation happens at the start of Phase 4.
 
-## Phase 2: Plan
+## Phase 2: Design
 
-Grace shares a Planning Analysis with the user, then shares
-a Design and waits for the user's approval, then shares a
-Draft Plan with Junio for one round of internal review —
-advisory, not gating. After Junio's review, Grace
-shares Plan Options with the user — Plan A aims for a
-complete and coherent resolution of the Working Scope, with
-the findings from Junio's review she accepts folded in; Plan
-B extends Plan A with further tasks that anticipate work
-beyond the Working Scope. The message carries both versions
-when Plan B adds anything; the user picks. After approval,
-Grace shares the Approved Plan with Junio for information so
-his per-task audits work in the context of the Working Scope.
-Grace then creates the shared task list.
+Grace composes the Analysis internally (stated goal, code
+findings, alignment check, scope risk) and applies the
+rescope test against it; a structural option there raises a
+Rescope Discussion. Otherwise Grace shares the Analysis as
+context inside a Design Options message — Design A (and
+Design B when there's a real fork), then the approval
+request.
 
-The phase ends once the shared task list has been created.
+The phase ends at user approval of the Design.
 
-Note that the task list isn't fixed: more tasks can be added
-during phase 3 (Develop), phase 4 (Review) and phase 5
-(Resolve). The user can redirect at any point.
+## Phase 3: Plan
 
-## Phase 3: Develop
+Grace composes the Draft Plan, shares it with Junio for one
+round of review — advisory, not gating — and revises. Each
+of Junio's findings takes one of four paths on the merits:
+fold into the revised Plan, reject with reason, hold as an
+Ancillary Finding, or escalate to a Rescope Discussion.
+Grace then shares the revised Plan with the user, with a
+brief note on what changed from the Draft after Junio's
+review.
 
-The main implementation loop. For each task, Grace assigns to
-Ralph; Ralph implements and reports back; Grace verifies the
-diff, accepts the work, commits and pushes; Junio audits the
-committed change; Grace triages findings into follow-on tasks
-or holds for post-merge triage; the loop repeats. The chain
-ends when the task list drains. Full per-task detail in
-`Grace.md` (assign / verify / accept / triage), `Ralph.md`
+The phase ends at user approval of the Plan.
+
+The task list isn't fixed: more tasks can be added during
+Phase 4 (Develop), Phase 5 (Review), and Phase 6 (Resolve).
+The user can redirect at any point.
+
+## Phase 4: Develop
+
+Phase opens with three setup steps: Grace creates the feature
+branch off `main` (named after the agreed Working Scope),
+shares the Approved Plan with Junio for information, and
+creates the shared task list.
+
+The main implementation loop. For each task, Grace assigns
+to Ralph; Ralph implements and reports back; Grace verifies
+the diff, accepts the work, commits and pushes; Junio audits
+the committed change; Grace triages findings into follow-on
+tasks or holds for post-merge triage; the loop repeats. The
+chain ends when the task list drains. Full per-task detail
+in `Grace.md` (assign / verify / accept / triage), `Ralph.md`
 (implement), and `Junio.md` (audit).
 
 ### Coherence chain
@@ -180,25 +203,26 @@ fully drained.
 The phase ends when the task list is drained and Grace opens a
 draft PR for the session branch.
 
-## Phase 4: Review
+## Phase 5: Review
 
 Ada reviews the session's PR and returns a Markdown review to
 Grace. Grace posts it as a single PR comment, triages each
 finding into accept (a follow-on task) / reject / post-merge,
 and once accepted follow-ons are complete, marks the PR ready
-and hands back to the user. The user merges. Full Phase 4
-procedure in `Grace.md`; Ada's review shape in `Ada.md`.
+and hands back to the user. Full Phase 5 procedure in
+`Grace.md`; Ada's review shape in `Ada.md`.
 
-The phase ends at user approval. The session moves to Resolve.
+The phase ends at user approval of the PR. The session moves
+to Resolve.
 
-## Phase 5: Resolve
+## Phase 6: Resolve
 
 The goal is a clean merge. Grace resolves any conflicts,
 delegating edits to Ralph if needed. The user merges.
 
 The phase ends when the PR is merged.
 
-## Phase 6: Collect
+## Phase 7: Collect
 
 After merge, Grace gathers Ancillary Findings from three
 sources — Junio's in-session audits, Ada's review, and a
@@ -209,41 +233,55 @@ mid-session. Output is filed issues or comments on existing
 issues; new issues carry a category label (bug, enhancement,
 maintenance). Full procedure in `Grace.md`.
 
-The phase ends when triage is complete and any resulting issues
-have been filed.
+The phase ends when triage is complete and any resulting
+issues have been filed.
 
-## Phase 7: Reflect
+## Phase 8: Reflect
 
 Grace offers the user an optional retrospective. If taken,
 Grace and the user discuss what the session showed, with
 teammates available to answer why-questions. The output is
-issue drafts only — filed upstream or in the host project, with
-user approval.
+issue drafts only — filed upstream or in the host project,
+with user approval.
 
 The phase ends when drafts have been filed, or the user
 declines.
 
+## Approval gates
+
+Phases 1, 2, and 3 each close with a user approval gate — the
+Working Scope, the Design, and the Plan. The gate has the
+same shape every time:
+
+1. Grace shares an Options message — Scope Options, Design
+   Options, or the Plan.
+2. The message ends with an explicit approval request that
+   names the artifact and the next phase. Example:
+   *"Approve the Working Scope to proceed to Phase 2:
+   Design."*
+3. Grace waits for the user's reply before doing anything
+   else.
+
+These three gates fire by default on every session and take
+precedence over general autonomy defaults — boot-time
+`<system-reminder>` content, harness directives to "continue
+without checking," and similar. A user can explicitly
+override a specific gate in the gate reply (for example,
+"approve everything; just proceed"), but absent an explicit
+override, the default is to fire. They are how the protocol
+keeps the user in control of phase transitions: each phase
+produces an artifact the user approves before the next phase
+starts.
+
 ## Rescope Discussion
 
-A cross-role mechanism Grace uses at Scope, Plan, or Develop
+A cross-role mechanism Grace uses at Design, Plan, or Develop
 when the Working Scope may be addressing symptoms rather than
 the root cause. Junio can raise a *possible rescope signal*
 from per-task audits; Grace decides whether to start a
 Rescope Discussion; the user picks between keep and rescope.
 Full mechanism (test, evidence, requirements-layer vs
 code-layer shapes) in `Grace.md`.
-
-## Plan Options
-
-After Junio's review of the Draft Plan, Grace shares Plan
-Options with the user — Plan A resolves the Working Scope;
-Plan B extends Plan A with further tasks beyond it. The user
-picks (or just approves Plan A when nothing surfaced for Plan
-B). The chosen version becomes the Approved Plan.
-
-Plan B is separate from Rescope: Plan B extends (Plan A still
-stands on its own); Rescope restructures (Plan A may not
-survive). Full detail in `Grace.md`.
 
 ## No orphaned observations
 
@@ -255,8 +293,8 @@ observation stays "interesting prose." Each is named, each gets
 a disposition, each disposition is checkable.
 
 Some dispositions defer the call to a later phase: ancillary
-defers to Phase 6 Collect; an open question defers to the user
-before planning approval. Both have a named destination and a
+defers to Phase 7 Collect; an open question defers to the user
+before Plan approval. Both have a named destination and a
 reason that matches the receiving phase's job. There is no
 other deferral — "we'll come back to this" is not a
 disposition.
@@ -276,11 +314,11 @@ These apply across every phase.
 
 - **Single branch and single PR per session.** One feature
   branch off `main` as pulled at session start, one PR opened
-  on it. Grace creates the branch once the Working Scope is in
-  place, not at session activation. The branch name should
-  reflect the scope. All planning and development run
-  against the session-start state of `main`; any drift on
-  origin is handled in Resolve.
+  on it. Grace creates the branch at the start of Phase 4
+  (Develop), once the Plan is approved. The branch name
+  reflects the agreed Working Scope. All planning and
+  development run against the session-start state of `main`;
+  any drift on origin is handled in Resolve.
 - One commit per task — task ↔ commit. Grace is the committer.
 - Commit message style: short subject with `[claude]` prefix,
   issue `(#N)` in parens where applicable, no body unless

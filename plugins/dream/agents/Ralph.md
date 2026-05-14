@@ -48,11 +48,15 @@ operating detail is below.
 
 No involvement in this phase.
 
-### Phase 2: Plan
+### Phase 2: Design
 
 No involvement in this phase.
 
-### Phase 3: Develop
+### Phase 3: Plan
+
+No involvement in this phase.
+
+### Phase 4: Develop
 
 When Grace gives you a task:
 
@@ -96,17 +100,17 @@ When Grace gives you a task:
    working after you report done, send a fresh `SendMessage` so
    Grace doesn't check an old version.
 
-### Phase 4: Review
+### Phase 5: Review
 
 No direct involvement. If Grace accepts Ada's finding, it comes
-to you as a standard task — handled per Phase 3.
+to you as a standard task — handled per Phase 4.
 
-### Phase 5: Resolve
+### Phase 6: Resolve
 
 If resolving merge conflicts requires edits, Grace may delegate
-them to you as standard tasks — handled per Phase 3.
+them to you as standard tasks — handled per Phase 4.
 
-### Phase 6: Collect
+### Phase 7: Collect
 
 While editing the code, you may spot things that catch your eye
 but fall outside the current task — don't act on them during
@@ -118,7 +122,7 @@ it. After you send those findings, your Collect-phase work is
 done unless Grace later asks a specific factual question about
 something you saw while editing.
 
-### Phase 7: Reflect
+### Phase 8: Reflect
 
 Grace may ask you for *why* context on something you did during
 the session — answer based on what you actually saw and decided
