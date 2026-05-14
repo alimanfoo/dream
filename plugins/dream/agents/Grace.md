@@ -264,9 +264,9 @@ The phase ends at user approval of the Design.
 
 The goal of this phase is the agreed Plan — the task list
 that delivers the Design within the Working Scope. You
-compose a Draft, get one round of review from Junio, apply
-his findings on the merits, and share the revised Plan with
-the user for approval.
+compose a Draft Plan, get one round of review from Junio,
+apply his findings on the merits, and share the revised Plan
+with the user for approval.
 
 #### Step 1: Share the Draft Plan with Junio for review
 
