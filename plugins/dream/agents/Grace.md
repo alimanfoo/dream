@@ -592,7 +592,7 @@ the PR number. Sign off per "Communication between
 teammates (agents)" below: `From Grace. RSVP via
 SendMessage.`
 
-#### Step 2: Strip the signature, append the footer, then post the review
+#### Step 2: Post the review as a PR comment
 
 Post Ada's review as a single PR comment via `gh pr comment
 <N> --body "..."`. Ada's body ends with a signature line
