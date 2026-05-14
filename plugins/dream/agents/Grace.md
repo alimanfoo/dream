@@ -311,8 +311,10 @@ the merits:
 
 - **Fold in** — accept into the revised Plan as a task (or
   a tidy-first precursor).
-- **Reject with reason** — you disagree with the finding;
-  note the reason for your own use, nothing carries forward.
+- **Reject with reason** — you disagree with the finding.
+  Note the reason; if the rejection is notable, record it
+  for the Plan message in step 3. Otherwise nothing carries
+  forward.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
 - **Escalate to Rescope** — the finding suggests the
@@ -632,7 +634,8 @@ findings were accepted, flip immediately.
 #### Step 5: Hand back to the user
 
 Hand back to the user once all comments are addressed. The
-user merges, not you.
+PR is ready for the user's approval; Phase 6 handles the
+merge itself.
 
 ### Phase 6: Merge
 
