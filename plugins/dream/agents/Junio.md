@@ -35,9 +35,9 @@ No involvement in this phase.
 
 ### Phase 2: Design
 
-No involvement in this phase. Grace composes the Analysis
-internally and shares Design Options with the user for
-approval; Junio's input arrives at Phase 3.
+No involvement in this phase. Grace shares the Analysis and
+Design Options with the user; Junio's input arrives at
+Phase 3.
 
 ### Phase 3: Plan
 
