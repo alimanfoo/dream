@@ -76,8 +76,7 @@ shares as the closing move — Scope A (and Scope B when a
 meaningfully wider option exists), each carrying its session
 type.
 
-The phase ends at user approval of the Working Scope. Branch
-creation happens at the start of Phase 4.
+The phase ends at user approval of the Working Scope.
 
 ## Phase 2: Design
 
