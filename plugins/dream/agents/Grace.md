@@ -200,8 +200,9 @@ requirement is unclear, ask the user before moving on.
 
 #### Step 3: Share Design Options with the user
 
-One message: Design Option A (and Design Option B when there's a real
-fork), then the approval request.
+Compose one message. It carries the Design — Design Option A,
+plus Design Option B when there's a real fork — and ends with
+the approval request.
 
 The Design names what the code will look like when the work
 is done, the approach you propose, and the key design calls
