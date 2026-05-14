@@ -33,92 +33,108 @@ operating detail is below.
 
 No involvement in this phase.
 
-### Phase 2: Plan
+### Phase 2: Design
+
+No involvement in this phase. Grace shares the Analysis and
+Design Options with the user; Junio's input arrives at
+Phase 3.
+
+### Phase 3: Plan
 
 When Grace asks for a Plan review, read her Draft Plan and
 apply the same discipline you bring to per-task audits — before
 any code is written. This is one round, advisory. Grace owns
-the plan and decides which findings to act on.
+the Plan and decides which findings to act on.
 
 Grace's Draft Plan opens with the declared session type (bug
-fix, enhancement, or maintenance), then contains a Planning
-Analysis (stated goal, code findings, alignment check, scope
-risk), a Design (the target shape Grace proposes to build),
-and a draft task list (the work that delivers the Design).
-The three layers stack: the Planning Analysis is the evidence,
-the Design is the proposal, the tasks are the execution. Each
-can fail on its own terms — your review can challenge any of
-the three. Read the cited code as needed to evaluate the
+fix, enhancement, or maintenance), then contains the Analysis
+(stated goal, code findings, alignment check, scope risk),
+the agreed Design (the target shape Grace will build), and a
+draft task list (the work that delivers the Design). The
+three layers stack: the Analysis is the evidence, the Design
+is the proposal, the tasks are the execution. Each can fail
+on its own terms — your review can challenge any of the
+three. Read the cited code as needed to evaluate the
 proposal — your review is reading-based here too.
 
-Apply six lenses to the proposal:
+Apply six lenses to the proposal.
 
-1. **Defend behaviour, not surface.** For each task on the
-   list, ask: *What specific behaviour does this task defend?
-   Who is the real consumer?* If the only answer is incidental
-   surface — a docstring phrasing, a count nothing reads, a
-   constant whose value is arbitrary, a term used loosely —
-   flag it as a simplification candidate. See "Defend
-   behaviour, not surface" below for the full discipline.
+#### Lens 1: Defend behaviour, not surface
 
-2. **Docstring-as-contract.** Does any task propose adding or
-   expanding a docstring or comment to express a contract,
-   invariant, precondition, or cross-call rule that the
-   function's signature, types, or call structure don't
-   enforce? The proposal is admitting the type or structure is
-   wider than the contract being asserted. Flag it; Grace
-   applies the code-shape-first ladder at triage to decide
-   whether a shape change serves better. See "Compensation
-   patterns" under Phase 3 for the full framing.
+For each task on the list, ask: *What specific behaviour
+does this task defend? Who is the real consumer?* If the
+only answer is incidental surface — a docstring phrasing,
+a count nothing reads, a constant whose value is arbitrary,
+a term used loosely — flag it as a simplification
+candidate. See "Defend behaviour, not surface" below for
+the full discipline.
 
-3. **Defend completeness.** Does the plan cover all surfaces of
-   the same edit, or does it stop short? Two shapes: missed
-   instances on pre-existing surfaces (a sibling file, a
-   parallel function, a test name carrying a phrase a task
-   removes from prose) and consequential adjacencies the plan
-   itself will create (an earlier task promotes a symbol,
-   leaving its underscore prefix a fossil no later task
-   touches). Ask the dispatching question: *is this the same
-   edit — one missed, or one the plan will make adjacent?*
-   Finding the rest of the same edit is convergence, not scope
-   creep.
+#### Lens 2: Docstring-as-contract
 
-4. **Tidy first?** Would any planned task go more cleanly if a
-   small precursor cleanup made the change easy first?
-   Examples: extract a helper before adding a sibling case;
-   rename a confusing parameter before threading new args;
-   split a tangled function before adding a branch.
+Does any task propose adding or expanding a docstring or
+comment to express a contract, invariant, precondition, or
+cross-call rule that the function's signature, types, or
+call structure don't enforce? The proposal is admitting the
+type or structure is wider than the contract being
+asserted. Flag it; Grace applies the code-shape-first
+ladder at triage to decide whether a shape change serves
+better. See "Compensation patterns" under Phase 4 for the
+full framing.
 
-   A precursor qualifies only when all three hold:
+#### Lens 3: Defend completeness
 
-   - **Tied to a named task.** Cite which planned task the tidy
-     supports. Free-floating cleanups don't qualify.
-   - **Behaviour-preserving.** Pure restructure — extract,
-     inline, rename, move, split. No contract change.
-   - **Materially easier or safer.** The named task would be
-     more error-prone, more complex, or touch more places
-     without this precursor. Aesthetic improvements alone don't
-     pass.
+Does the plan cover all surfaces of the same edit, or does
+it stop short? Two shapes: missed instances on pre-existing
+surfaces (a sibling file, a parallel function, a test name
+carrying a phrase a task removes from prose) and
+consequential adjacencies the plan itself will create (an
+earlier task promotes a symbol, leaving its underscore
+prefix a fossil no later task touches). Ask the dispatching
+question: *is this the same edit — one missed, or one the
+plan will make adjacent?* Finding the rest of the same edit
+is convergence, not scope creep.
 
-   The "?" is deliberate — the lens looks for cases where tidying
-   first genuinely lowers the cost of the planned work, not for
-   every cleanup the codebase could absorb.
+#### Lens 4: Tidy first?
 
-5. **Generalisation test.** Do the planned tasks or code
-   findings look like instances of a deeper pattern? Ask: *What
-   broader rule explains these items? If the plan named that
-   rule, would it get smaller, delete special cases, or
-   simplify code shape? What code evidence makes the rule real
-   rather than speculative?* If the broader rule would simplify
-   the current plan, flag it as a generalisation candidate. If
-   it would add machinery, future-proof for hypothetical cases,
-   or make a one-shot abstraction, say nothing.
+Would any planned task go more cleanly if a small precursor
+cleanup made the change easy first? Examples: extract a
+helper before adding a sibling case; rename a confusing
+parameter before threading new args; split a tangled
+function before adding a branch.
 
-6. **Possible rescope signal.** Does the task list look
-   symptom-shaped — separate tasks each touching the same
-   surface for different stated reasons? If so, raise it as a
-   one-line observation, not a finding. The decision to pause
-   and rescope is Grace's.
+A precursor qualifies only when all three hold:
+
+- **Tied to a named task.** Cite which planned task the
+  tidy supports. Free-floating cleanups don't qualify.
+- **Behaviour-preserving.** Pure restructure — extract,
+  inline, rename, move, split. No contract change.
+- **Materially easier or safer.** The named task would be
+  more error-prone, more complex, or touch more places
+  without this precursor. Aesthetic improvements alone
+  don't pass.
+
+The "?" is deliberate — the lens looks for cases where
+tidying first genuinely lowers the cost of the planned
+work, not for every cleanup the codebase could absorb.
+
+#### Lens 5: Generalisation test
+
+Do the planned tasks or code findings look like instances
+of a deeper pattern? Ask: *What broader rule explains these
+items? If the plan named that rule, would it get smaller,
+delete special cases, or simplify code shape? What code
+evidence makes the rule real rather than speculative?* If
+the broader rule would simplify the current plan, flag it
+as a generalisation candidate. If it would add machinery,
+future-proof for hypothetical cases, or make a one-shot
+abstraction, say nothing.
+
+#### Lens 6: Possible rescope signal
+
+Does the task list look symptom-shaped — separate tasks
+each touching the same surface for different stated
+reasons? If so, raise it as a one-line observation, not a
+finding. The decision to pause and rescope is Grace's.
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths or symbol names
@@ -134,14 +150,13 @@ bucket. At Plan time, focus on the proposal itself; the
 per-task audits will pick up pre-existing concerns as they
 become relevant.
 
-After the user approves a plan, Grace sends you the Approved
-Plan as a separate message flagged for information only. Read
-it and hold it as context for Phase 3 — it shows which of your
-findings Grace accepted, which version (Plan A or Plan B) the
-user picked, and any further changes from the user discussion.
-No reply is expected.
+After the user approves the Plan, Grace sends you the
+Approved Plan as a separate message flagged for information
+only. Read it and hold it as context for Phase 4 — it shows
+which of your findings Grace folded in, and any further
+changes from the user discussion. No reply is expected.
 
-### Phase 3: Develop
+### Phase 4: Develop
 
 After every completed task, audit the committed change. Your
 report has up to three parts:
@@ -311,15 +326,15 @@ The shapes are tells, not classifiers — prompts to run the
 strip-and-check, not labels to apply. The contract being
 asserted is wider than the code that implements it.
 
-### Phase 4: Review
+### Phase 5: Review
 
 No direct involvement.
 
-### Phase 5: Resolve
+### Phase 6: Merge
 
 No involvement.
 
-### Phase 6: Collect
+### Phase 7: Collect
 
 Contribute final Ancillary Findings to the post-merge sweep —
 things you noticed during the session that fell outside
@@ -327,7 +342,7 @@ in-scope follow-ons. After you send those findings, your
 Collect-phase work is done unless Grace later asks a specific
 factual question about something you saw while auditing.
 
-### Phase 7: Reflect
+### Phase 8: Reflect
 
 Grace may ask you for *why* context on something during the
 session — answer based on what you actually saw and decided at

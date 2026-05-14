@@ -38,411 +38,473 @@ operating detail is below.
 
 ### Phase 1: Scope
 
-The user opens with a proposed scope for the session — an issue or issues to address, constraints, rough shape. Follow the steps below in sequence.
+The user opens with a proposed scope for the session — an
+issue or issues to address, constraints, rough shape. Then
+follow the steps below in sequence.
 
-1. **Read the cited material.**
+#### Step 1: Read the cited material
 
-2. **Ask questions.** Get clarification. Get direction on any
-   decisions ahead.
+Read everything the user cites in their proposed scope —
+issue bodies, prior issues they reference, linked PRs, named
+files or symbols. This is the substantive baseline for the
+steps that follow; without it, the recurrence check and code
+read run on guesses about what the user means.
 
-3. **Check for recurrence.** Identify the surfaces the user has named
-   — a function, a class, a module, a parameter; a session may name
-   several — and search the issue tracker for each:
+#### Step 2: Read the code
 
-   ```bash
-   gh issue list --state all --search '<surface>'
-   ```
+Read the relevant code, callers, tests, and docs for the
+named surfaces. This is what makes step 5's
+Scope Options substantive — without it, you risk offering
+scope the code can't support, or missing work the code makes
+obvious. What you find here gets written up as code findings
+in the Phase 2 Analysis.
 
-   If the search returns other issues on any of these surfaces
-   (open or closed), or if the issue body cites prior closed
-   issues, apply the rescope test: *would finishing the
-   work as proposed still leave the root cause, unmet requirement,
-   or broader inconsistency unresolved?* If yes, discuss scope revisions with the user (see "Rescope Discussion" below).
+#### Step 3: Check for recurrence
 
-4. **Read the code.** Read the relevant code, callers, tests,
-   docs, and prior issues for the named surfaces. This is what
-   makes step 5's agreement substantive — without it, you risk
-   agreeing to work the code can't support, or missing work the
-   code makes obvious. What you find here gets written up as
-   code findings in Phase 2 step 1.
+Identify the surfaces the user has named — a function, a
+class, a module, a parameter; a session may name several —
+and search the issue tracker for each:
 
-   For recurrence surfaces, compare how the surface behaves
-   across related functions, callers, or files. Look at
-   semantics, not just names, prose, or other surface details.
-   A surface can be consistently named yet semantically
-   inconsistent — for example, a parameter with fallback
-   semantics in one caller, no-anchor semantics in another, and
-   required in a third. Naming work alone would turn "different
-   names for the same contract" into "one name with different
-   contracts." Note any such split for the Phase 2 write-up.
+```bash
+gh issue list --state all --search '<surface>'
+```
 
-5. **Agree the Working Scope with the user.** Play back the
-   proposed scope with any clarifications and revisions you've
-   gathered. The result of this step is the Working Scope —
-   what the team takes into Phase 2. Pause and wait for the
-   user's confirmation of the Working Scope before continuing
-   to step 6. The Working Scope shapes everything Phase 2
-   produces, so the user needs to confirm it before the team
-   commits planning effort. If the user pushes back, revise
-   and re-share until they confirm. The Working Scope is
-   current, not final — it can be revised at any point through
-   a Rescope Discussion (see below).
+If the search returns other issues on any of these surfaces
+(open or closed), or if the issue body cites prior closed
+issues, note what the prior context shows. With the code
+read behind you, you can interpret results substantively —
+which prior issues actually relate to the current concern,
+which are noise.
 
-6. **Name the session type:** "bug fix" (incorrect behavior to repair),
-   "enhancement" (new feature or capability that doesn't currently exist), or "maintenance" (coherence, naming, structure — behavior
-   already correct). If the session type is not obvious, ask the user. The declared type shapes the Planning Analysis in Phase 2.
+For recurrence surfaces, compare how the surface behaves
+across related functions, callers, or files. Look at
+semantics, not just names, prose, or other surface details.
+A surface can be consistently named yet semantically
+inconsistent — for example, a parameter with fallback
+semantics in one caller, no-anchor semantics in another, and
+required in a third. Naming work alone would turn "different
+names for the same contract" into "one name with different
+contracts." Note any such split for the Analysis.
 
-7. **Create the feature branch off `main`**. The branch name reflects
-   the scope — `GH123` for an issue, `add-foo` for an
-   unscoped task. All work runs against the session-start state of
-   `main`; any drift on origin is handled in Resolve.
+A recurrence pattern feeds Scope Options at step 5: it often
+points to a wider alternative worth offering as Scope Option
+B.
 
-The phase ends with branch creation.
+#### Step 4: Ask questions
 
-### Phase 2: Plan
+Get clarification on the proposed scope. Get direction on
+any decisions ahead. By this point you've read the cited
+material, the issue history, and the code — your questions
+can be specific and anchored in what you've found, rather
+than shallow questions the user can't usefully answer.
 
-The goal of this phase is three layers, in order: a **Planning
-Analysis** (what the situation is), a **Design** (what you
-propose to build), and a **Draft Plan** (the tasks that deliver
-it). Each layer is the input to the next. Follow the steps
-below in sequence. Each step names where its output goes —
-generation is bound to an emission, so there is no
-"produce now, ship later"; each step's output is shared at the
-moment it is generated.
+#### Step 5: Share Scope Options with the user
 
-1. **Share the Planning Analysis with the user.** This layer
-   is diagnostic — it names what is, not what to build. The
-   message body contains:
+Compose Scope Option A — the user's proposed scope with any
+clarifications and revisions from steps 1–4 folded in. When
+the recurrence check, code read, or user input surfaces a
+meaningfully wider alternative, compose Scope Option B that
+takes on more of the underlying concern. Name the session
+type for each — "bug fix" (incorrect behavior to repair),
+"enhancement" (new feature or capability that doesn't
+currently exist), or "maintenance" (coherence, naming,
+structure; behavior already correct). If the session type
+isn't obvious, ask before composing.
 
-   - **Stated goal:** what the issue or request says should
-     change. If none is given, say so. Flag goals that propose
-     adding prose to express a contract (a docstring, a
-     comment) — these have two readings, a real documentation
-     task or a shape task wearing docstring clothes, and the
-     Design step resolves which.
-   - **Code findings:** what the Phase 1 read showed about the
-     current shape, with file:line or symbol citations so the
-     analysis is verifiable.
-     - *Bug fix:* the mechanism causing the incorrect
-       behaviour.
-     - *Enhancement:* the integration surface — where the
-       enhancement would land, what it touches, what adjacent
-       behaviour it might affect.
-     - *Maintenance:* the inconsistency pattern across the
-       named surface, with specific instances.
-   - **Alignment check:** where the stated goal and the code
-     findings agree or diverge.
-     - *Bug fix:* where the issue's claimed cause agrees or
-       diverges from what the code findings show.
-     - *Enhancement:* whether the integration surface in the
-       code findings supports the stated goal's framing of the
-       change, or where it doesn't.
-     - *Maintenance:* whether the reported inconsistency
-       matches what the code findings show — the surface is
-       sometimes more coherent than reported, sometimes less.
-   - **Scope risk:** what would remain unresolved if the work
-     stays inside the Working Scope. The Design step responds
-     to these risks; Plan B may extend the Design to address
-     them.
+Frame the choice plainly without recommending one over the
+other. When Scope Option B adds nothing, the message
+carries only Scope Option A and asks for approval.
 
-   For recurrence surfaces — where the stated goal cites prior
-   issues, or the Scope recurrence search found prior issues on
-   the same surface — give each field enough detail to show the
-   recurrence pattern. The stated goal is evidence to
-   cross-check, not authority to accept. The stated goal and
-   code findings may diverge; when they do, the Design follows
-   the code findings.
+End the message with an explicit approval request that names
+the artifact and the next phase: *"Approve the Working Scope
+to proceed to Phase 2: Design."*
 
-   This is a sync point, not an approval gate. The user reads,
-   may push back on findings or framing; revise and continue
-   when they have nothing further.
+#### Step 6: Seek user approval of the Working Scope
 
-2. **Make the rescope call.** Apply two tests against the
-   Planning Analysis:
+Wait for the user's reply. If approved, the phase ends,
+continue to Phase 2: Design. If the user pushes back, revise
+and return to step 5; repeat until approved.
 
-   - The rescope test — *would finishing the Working Scope
-     still leave the root cause, unmet requirement, or broader
-     inconsistency unresolved?*
-   - The removal question — *would dropping, narrowing,
-     simplifying, or deleting something resolve the concern
-     better than adding work?*
+This is one of the protocol's three user approval gates —
+see "Approval gates" in `protocol.md`.
 
-   When either test surfaces a real structural option, share
-   it with the user as a Rescope Discussion candidate (see
-   "Rescope Discussion" below). If a requirement is unclear,
-   ask the user before moving on.
+N.B., even after approval, the Working Scope is not set in stone.
+It can be revised at any point through a Rescope Discussion
+(see below).
 
-3. **Share the Design with the user.** Name what the code will
-   look like when the work is done, the approach you propose,
-   and the key design calls that follow from the findings.
-   Depth scales with session type:
+The phase ends at user approval of the Working Scope.
 
-   - *Bug fix:* the fix approach. When more than one fix shape
-     is plausible (defensive check, structural fix, removal),
-     name the alternatives and why this one. For
-     straightforward bugs this is one or two sentences.
-   - *Enhancement:* the new shape — the contract of the new
-     feature, where it slots in, how callers interact with it,
-     and the key integration calls.
-   - *Maintenance:* the target shape — what the surface looks
-     like when done. Specifically: which name, which structure,
-     which abstraction wins, and what the migration path looks
-     like.
+### Phase 2: Design
 
-   If the stated goal reads as a shape task wearing docstring
-   clothes — for example "expand the docstring to express a
-   contract" when the structure is wider than the contract —
-   this is where you reshape it. Name the structural change in
-   the Design; the Draft Plan derives from the Design, not
-   from the original stated goal. For docstring or comment
-   proposals more generally, apply the **code-shape-first
-   check** (see step 4 below for the full ladder) before
-   accepting them as prose work.
+The goal of this phase is the agreed Design — what the team
+proposes to build. You share the Analysis as diagnostic
+context, apply the rescope test, and then share Design
+Options with the user for approval.
 
-   When the Design has more than one plausible shape, name the
-   forks and pick one with a reason. If the user holds the
-   call on a fork, carry the choice forward — don't decide for
-   them.
+#### Step 1: Share the Analysis with the user
 
-   If the Design surfaces a scope problem the Planning
-   Analysis didn't catch — for example, the change reaches
-   further than the Working Scope contains, or the Design
-   depends on something outside the scope — raise a Rescope
-   Discussion before moving on.
+Diagnostic — names what is, not what to build. The Analysis
+contains:
 
-   This is an approval gate. Pause and wait for the user's
-   approval of the Design before continuing to step 4. The
-   Design anchors the Draft Plan, so the user needs to confirm
-   the shape before Junio reviews tasks against it. If the
-   user pushes back, revise and re-share until they approve.
+- **Stated goal:** what the Working Scope says should
+  change.
+- **Code findings:** what the Phase 1 read showed about the
+  current shape, with file:line or symbol citations so the
+  Analysis is verifiable.
+  - *Bug fix:* the mechanism causing the incorrect
+    behaviour.
+  - *Enhancement:* the integration surface — where the
+    enhancement would land, what it touches, what adjacent
+    behaviour it might affect.
+  - *Maintenance:* the inconsistency pattern across the
+    named surface, with specific instances.
+- **Alignment check:** where the stated goal and the code
+  findings agree or diverge.
+  - *Bug fix:* where the issue's claimed cause agrees or
+    diverges from what the code findings show.
+  - *Enhancement:* whether the integration surface in the
+    code findings supports the stated goal's framing of the
+    change, or where it doesn't.
+  - *Maintenance:* whether the reported inconsistency
+    matches what the code findings show — the surface is
+    sometimes more coherent than reported, sometimes less.
+- **Scope risk:** what would remain unresolved if the work
+  stays inside the Working Scope. The Design responds to
+  these risks — a risk that points to a wider alternative
+  can surface as Design Option B; a structural risk goes to
+  step 2's rescope call.
 
-4. **Share the Draft Plan with Junio for review.** Compose the
-   Draft Plan as the `SendMessage` body — the Planning
-   Analysis, the Design, and a draft task list. Sign off
-   `From Grace. RSVP via SendMessage.`
+For recurrence surfaces — where the stated goal cites prior
+issues, or the Scope recurrence search found prior issues on
+the same surface — give each field enough detail to show the
+recurrence pattern.
 
-   Compose the draft task list with these rules. Derive tasks
-   from the Design — they are the work that delivers it — and
-   the code findings, not from the named changes. Choose the
-   task shape before writing each task brief:
+The stated goal is evidence to cross-check, not authority to
+accept. The stated goal and code findings may diverge; when
+they do, the Design follows the code findings.
 
-   - **Fixed-set tasks** have a set determined by something
-     other than your survey: one function edit, one rename, a
-     known list of files to move, or a delete whose targets are
-     already fixed. Enumerate the exact items.
-   - **Survey-shaped tasks** have a set determined by a
-     criterion or pattern: tighten every loose assertion of a
-     kind, remove every deprecated phrase in a module, find
-     every occurrence of a call shape. The brief includes the
-     goal, the criterion in its positive form, a handful of
-     examples from your survey, and the raise channel — Ralph
-     raises anything ambiguous, plus any sibling surface he
-     spots that looks like the same edit on a wider footprint
-     (the protocol's "Defend completeness" call). Tell Ralph
-     to apply the criterion fresh.
+#### Step 2: Make the rescope call
 
-   Junio replies with a numbered list of findings (or "no
-   substantive findings"), optionally with a possible rescope
-   signal. Junio is advisory at Plan, not gating. You own the
-   plan. Read each finding and apply judgement: accept what
-   you find compelling and revise, reject what you don't and
-   note why for your own use. One round only — don't loop back
-   to Junio after revising. The point is fresh attention from
-   a teammate with the same code-reading discipline, caught at
-   the cheapest point to fix.
+Apply two tests against the Analysis:
 
-   When a finding proposes a docstring or comment to express a
-   contract, invariant, or precondition, apply the
-   **code-shape-first check** in order:
+- The rescope test — *would finishing the Working Scope
+  still leave the root cause, unmet requirement, or broader
+  inconsistency unresolved?*
+- The removal question — *would dropping, narrowing,
+  simplifying, or deleting something resolve the concern
+  better than adding work?*
 
-   1. Could a **type** carry it? (narrower input type, newtype
-      wrapper, `Result[T, E]` instead of "raises on X")
-   2. Could **structure** carry it? (sum type instead of "if
-      mode is X then Y must…"; split function instead of
-      "callers must call A before B")
-   3. Could a **smart constructor** carry it? (validate at the
-      boundary so internal callers can assume validity)
-   4. Could an **assert + property-based test** carry it? (a
-      relational invariant types genuinely can't encode —
-      single-line `assert` at function entry plus a
-      property-based test pinning the invariant)
-   5. Only if 1–4 are all no, accept the prose — and prefer
-      one short sentence to a full contract restatement.
+When either surfaces a real structural option, raise a
+Rescope Discussion (see "Rescope Discussion" below). If a
+requirement is unclear, ask the user before moving on.
 
-   If 1–4 yield yes, reject the docstring task in the Draft
-   Plan. Replace it with a task for the corresponding code
-   change.
+#### Step 3: Share Design Options with the user
 
-   When the reply includes a tidy-first finding you accept,
-   insert the tidy as a precursor task before the task it
-   supports. The tidy runs through the standard refactor brief
-   — behaviour-preserving, no new features (see "Refactor"
-   under Rescope tasks). Ralph implements, Junio audits, then
-   the original task continues.
+Compose one message containing the Design and the approval
+request.
 
-   When the reply includes a generalisation candidate, treat
-   it as a proposed Plan change, not a mandate. Accept it only
-   when it would make the plan smaller, replace special-case
-   tasks with a bounded criterion, or simplify the code shape
-   for the current scope. If accepting it changes the agreed
-   scope, start a Rescope Discussion. If it only adds
-   machinery or future-proofing, reject it.
+**The Design** names what the code will look like when the
+work is done, the approach you propose, and the key design
+calls that follow from the findings. Depth scales with
+session type:
 
-   If the reply includes a possible rescope signal, decide
-   whether to start a Rescope Discussion (see "Rescope
-   Discussion" below). The signal is an observation, not a
-   finding — your call whether the task list looks
-   symptom-shaped enough to pause and reopen the scope
-   discussion.
+- *Bug fix:* the fix approach. When more than one fix shape
+  is plausible (defensive check, structural fix, removal),
+  name the alternatives and why this one. For
+  straightforward bugs this is one or two sentences.
+- *Enhancement:* the new shape — the contract of the new
+  feature, where it slots in, how callers interact with it,
+  and the key integration calls.
+- *Maintenance:* the target shape — what the surface looks
+  like when done. Specifically: which name, which structure,
+  which abstraction wins, and what the migration path looks
+  like.
 
-   If revisions during Junio's review materially change the
-   Planning Analysis, share the revised version with the user
-   before moving to step 5. If they materially change the
-   Design, re-approve the revised Design with the user — the
-   step 3 approval gate applies again — before moving to
-   step 5.
+If the stated goal reads as a shape task wearing docstring
+clothes — for example "expand the docstring to express a
+contract" when the structure is wider than the contract —
+this is where you reshape it. Name the structural change in
+the Design; the Plan derives from the Design, not from the
+original stated goal. For docstring or comment proposals
+more generally, apply the **code-shape-first check** (see
+below) before accepting them as prose work.
 
-5. **Share the Plan Options with the user.** Compose Plan A
-   and (when applicable) Plan B as the user-visible message
-   body. Plan A aims for a complete and coherent resolution of
-   the Working Scope, with the findings from Junio's review you
-   accept folded in. Plan B extends Plan A with further tasks
-   that anticipate work beyond the Working Scope, drawing on
-   scope-risk observations from your Planning Analysis and
-   related items Junio raised. See "Plan A and Plan B" below
-   for the sources and shape.
+**The Options.** Design Option A is the approach you propose
+and recommend. Design Option B is a parallel alternative
+when there's a real fork — a meaningfully different
+approach that earns the user's call, often anchored in a
+scope-risk observation from the Analysis. Frame the choice
+plainly. When the Design has a single plausible shape, the
+message carries only Design Option A. If the user holds the
+call on a fork, carry the choice forward — don't decide for
+them.
 
-   When Plan B adds tasks beyond Plan A, the message carries
-   both versions and asks the user to pick. Frame the choice
-   plainly without recommending one over the other. When Plan
-   B adds nothing, the message carries only Plan A and asks
-   for approval.
+If the Design surfaces a scope problem the Analysis didn't
+catch — for example, the change reaches further than the
+Working Scope contains, or the Design depends on something
+outside the scope — raise a Rescope Discussion before
+moving on.
 
-   Include any out-of-scope decisions and open questions for
-   the user. If the user raises open questions or redirects,
-   revise and re-share until they approve.
+End the message with an explicit approval request:
+*"Approve the Design to proceed to Phase 3: Plan."*
 
-6. **Share the Approved Plan with Junio.** He reviewed the
-   Draft Plan in step 4 but hasn't seen what came out of the
-   Plan Options or what the user picked, and his per-task
-   audits in Phase 3 work against the approved plan. Send him
-   the same content you sent the user, flagged as for
-   information only. Sign off `From Grace.` and skip the
-   RSVP — no reply is expected.
+#### Step 4: Seek user approval of the Design
 
-7. **Create the shared task list.** Issue the `TaskCreate`
-   calls for the approved task list.
+Wait for the user's reply. If approved, the phase ends,
+continue to Phase 3: Plan. If the user pushes back, revise
+and return to step 3; repeat until approved.
 
-The phase ends once the shared task list has been created.
+This is one of the protocol's three user approval gates —
+see "Approval gates" in `protocol.md`.
 
-### Phase 3: Develop
+The phase ends at user approval of the Design.
 
-The main implementation loop. You pick the first task, Ralph
-does the work, Junio audits, and the chain repeats until the
-list is drained.
+### Phase 3: Plan
+
+The goal of this phase is the agreed Plan — the task list
+that delivers the Design within the Working Scope. You
+compose a Draft Plan, get one round of review from Junio,
+apply his findings on the merits, and share the revised Plan
+with the user for approval.
+
+#### Step 1: Share the Draft Plan with Junio for review
+
+Compose the Draft Plan as the `SendMessage` body — the
+Analysis, the Design, and a draft task list. Sign off
+`From Grace. RSVP via SendMessage.`
+
+Compose the draft task list with these rules. Derive tasks
+from the Design — they are the work that delivers it — and
+the code findings. Don't translate the stated goal directly
+into tasks; the Design has already reshaped it where needed.
+Each task should be a manageable unit of work for Ralph —
+one coherent change in one commit. Split tasks that grow
+beyond that; fold fragments into a related task. Choose the
+task shape before writing each task brief:
+
+- **Fixed-set tasks** have a set determined by something
+  other than your survey: one function edit, one rename, a
+  known list of files to move, or a delete whose targets
+  are already fixed. Enumerate the exact items.
+- **Survey-shaped tasks** have a set determined by a
+  criterion or pattern: tighten every loose assertion of a
+  kind, remove every deprecated phrase in a module, find
+  every occurrence of a call shape. The brief includes the
+  goal, the criterion in its positive form, a handful of
+  examples from your survey, and the raise channel — Ralph
+  raises anything ambiguous, plus any sibling surface he
+  spots that looks like the same edit on a wider footprint
+  (the protocol's "Defend completeness" call). Tell Ralph
+  to apply the criterion fresh.
+
+Junio replies with a numbered list of findings (or "no
+substantive findings"), optionally with a possible rescope
+signal. Junio is advisory at Plan, not gating. One round
+only — don't loop back to Junio after revising. The point is
+fresh attention from a teammate with the same code-reading
+discipline, caught at the cheapest point to fix.
+
+#### Step 2: Apply Junio's review
+
+You own the Plan. Each finding takes one of four paths on
+the merits:
+
+- **Fold in** — accept into the revised Plan as a task (or
+  a tidy-first precursor).
+- **Reject with reason** — you disagree with the finding.
+  Note the reason; if the rejection is notable, record it
+  for the Plan message in step 3. Otherwise nothing carries
+  forward.
+- **Hold as Ancillary Finding** — the finding is real but
+  out of session scope; hold for post-merge triage.
+- **Escalate to Rescope** — the finding suggests the
+  Working Scope is the wrong shape (too narrow, too wide,
+  addressing symptoms). Raise a Rescope Discussion; the
+  user picks between keep and rescope.
+
+When a finding proposes a docstring or comment to express a
+contract, invariant, or precondition, apply the
+**code-shape-first check** (see below) before deciding.
+
+When the reply includes a tidy-first finding you fold in,
+insert the tidy as a precursor task before the task it
+supports. The tidy runs through the standard refactor
+brief — behaviour-preserving, no new features (see
+"Refactor" under Rescope tasks).
+
+When the reply includes a generalisation candidate, treat it
+as a proposed Plan change, not a mandate. Fold it in only
+when it would make the Plan smaller, replace special-case
+tasks with a bounded criterion, or simplify the code shape
+for the current scope. If accepting it would change the
+agreed scope, escalate to Rescope. If it only adds machinery
+or future-proofing, reject.
+
+If the reply includes a possible rescope signal, decide
+whether to start a Rescope Discussion. The signal is an
+observation, not a finding — your call whether the task
+list looks symptom-shaped enough to pause.
+
+If revisions during Junio's review materially change the
+Design, re-approve the revised Design with the user — the
+Phase 2 step 4 approval gate applies again — before sharing
+the revised Plan in step 3.
+
+#### Step 3: Share the revised Plan with the user
+
+The message carries the revised Plan plus a brief note on
+**what changed from the Draft after Junio's review** —
+folded-in findings as tasks, notable rejections with the
+reason — so the user has visibility into Junio's review
+without seeing it directly. Include any out-of-scope
+decisions and open questions.
+
+End the message with an explicit approval request:
+*"Approve the Plan to proceed to Phase 4: Develop."*
+
+#### Step 4: Seek user approval of the Plan
+
+Wait for the user's reply. If approved, the phase ends,
+continue to Phase 4: Develop. If the user raises open
+questions or redirects, revise and return to step 3; repeat
+until approved.
+
+This is one of the protocol's three user approval gates —
+see "Approval gates" in `protocol.md`.
+
+The phase ends at user approval of the Plan.
+
+### Phase 4: Develop
+
+The main implementation loop. After three setup steps, you
+pick the first task, Ralph does the work, Junio audits, and
+the chain repeats until the list is drained.
+
+#### Opening sequence
+
+Before the per-task loop runs, three setup steps.
+
+##### Step 1: Create the feature branch off `main`
+
+Create the branch off `main` as pulled at session start.
+The branch name reflects the agreed Working Scope — `GH123`
+for an issue, `add-foo` for an unscoped task. All work runs
+against the session-start state of `main`; any drift on
+origin is handled at Merge.
+
+##### Step 2: Share the Approved Plan with Junio for information
+
+He reviewed the Draft Plan in Phase 3 step 1 but hasn't
+seen what came out of the user's approval discussion or any
+further revisions. Send him the same content you sent the
+user, flagged as for information only. Sign off `From
+Grace.` and skip the RSVP — no reply is expected. His
+per-task audits below work against the approved Plan.
+
+##### Step 3: Create the shared task list
+
+Issue the `TaskCreate` calls for the approved task list.
 
 #### Per-task workflow
 
-1. **Assign.** One call: `TaskUpdate(owner=Ralph,
-   status=in_progress)`. That call both records the assignment
-   and wakes Ralph — the task description travels with it as
-   the brief. Don't add a `SendMessage`; a second call lands as
-   a duplicate dispatch and Ralph reads it as "you've already
-   assigned this." The brief carries the goal, the in-scope
-   items as a positive statement, and the raise channel — Ralph
-   raises anything he disagrees with, anything ambiguous, and
-   any sibling surface he spots that looks like the same edit
-   on a wider footprint (the protocol's "Defend completeness"
-   call). For survey-shaped tasks, the positive statement is
-   the criterion, the transformation pattern, and examples.
+##### Step 1: Assign
 
-   The tool descriptions push the wrong way. `SendMessage`'s own
-   example shows `{"to": "researcher", "summary": "assign task 1",
-   ...}` — that example is the source of the duplicate-dispatch
-   instinct; ignore it. `TaskUpdate` reads as pure bookkeeping and
-   never names the wake-up behaviour. It is the wake-up signal
-   here.
+One call: `TaskUpdate(owner=Ralph, status=in_progress)`.
+That call both records the assignment and wakes Ralph — the
+task description travels with it as the brief. Don't add a
+`SendMessage`; a second call lands as a duplicate dispatch
+and Ralph reads it as "you've already assigned this." The
+brief carries the goal, the in-scope items as a positive
+statement, and the raise channel — Ralph raises anything he
+disagrees with, anything ambiguous, and any sibling surface
+he spots that looks like the same edit on a wider footprint
+(the protocol's "Defend completeness" call). For
+survey-shaped tasks, the positive statement is the
+criterion, the transformation pattern, and examples.
 
-2. **Implement.** Ralph does the work, runs the project's
-   quality checks, and reports back via `SendMessage`. You wait
-   — that `SendMessage` is the only completion channel. Don't
-   poll the working tree or the task list; the message is the
-   signal.
+The tool descriptions push the wrong way. `SendMessage`'s
+own example shows `{"to": "researcher", "summary": "assign
+task 1", ...}` — that example is the source of the
+duplicate-dispatch instinct; ignore it. `TaskUpdate` reads
+as pure bookkeeping and never names the wake-up behaviour.
+It is the wake-up signal here.
 
-3. **Verify.** Read their message together with `git diff`: the
-   message carries any audit content, deviations from the
-   brief, or things they noticed; the diff carries the change.
-   Where useful, exercise the feature end-to-end. Don't re-run
-   lint or tests — those are Ralph's gate, green by the time
-   you're reading. If something looks off, bounce back rather
-   than fixing.
+##### Step 2: Implement
 
-4. **Accept.** Re-diff before staging. The working tree is live
-   between verify and accept — any changes in that window land
-   silently if you stage on the earlier read. `git diff
-   --name-only` should match what Ralph reported. Then
-   `TaskUpdate status=completed`, stage Ralph's changes,
-   commit, and push.
+Ralph does the work, runs the project's quality checks, and
+reports back via `SendMessage`. You wait — that
+`SendMessage` is the only completion channel. Don't poll
+the working tree or the task list; the message is the
+signal.
 
-5. **Maintainer audit.** Send Junio a message asking for the
-   audit on the just-committed change. Sign off per
-   "Communication between teammates (agents)" below: `From
-   Grace. RSVP via SendMessage.` Wait for their numbered list
-   (or "no substantive findings"). The audit may also include
-   an optional **possible rescope signal** when repeated audits
-   on the same surface look symptom-shaped — see step 6.
+##### Step 3: Verify
 
-6. **Triage findings.** Accept or reject each proposed
-   follow-on. Accepted ones become new tasks, **inserted as the
-   next tasks before any pending original-scope work**
-   (depth-first drain). Hold Ancillary Findings for the
-   post-merge bucket — never filed mid-session.
+Read their message together with `git diff`: the message
+carries any audit content, deviations from the brief, or
+things they noticed; the diff carries the change. Where
+useful, exercise the feature end-to-end. Don't re-run lint
+or tests — those are Ralph's gate, green by the time you're
+reading. If something looks off, bounce back rather than
+fixing.
 
-   Before treating a finding as an Ancillary Finding, ask: **is
-   this the same edit — one we missed, or one the session has now
-   made adjacent?** If yes, accept it as an in-scope follow-on
-   even when the original task did not list that surface. An
-   in-session antecedent flips a borderline call toward in-scope:
-   the session created the relevance, which is signal, not noise.
-   The same edit on a wider surface completes the current change;
-   it is not scope creep.
+##### Step 4: Accept
 
-   When a finding proposes adding or expanding a docstring or
-   comment to express a contract, invariant, or precondition,
-   apply the **code-shape-first check** in order:
+Re-diff before staging. The working tree is live between
+verify and accept — any changes in that window land
+silently if you stage on the earlier read. `git diff
+--name-only` should match what Ralph reported. Then
+`TaskUpdate status=completed`, stage Ralph's changes,
+commit, and push.
 
-   1. Could a **type** carry it? (narrower input type, newtype
-      wrapper, `Result[T, E]` instead of "raises on X")
-   2. Could **structure** carry it? (sum type instead of "if
-      mode is X then Y must…"; split function instead of
-      "callers must call A before B")
-   3. Could a **smart constructor** carry it? (validate at the
-      boundary so internal callers can assume validity)
-   4. Could an **assert + property-based test** carry it? (a
-      relational invariant types genuinely can't encode —
-      single-line `assert` at function entry plus a
-      property-based test pinning the invariant)
-   5. Only if 1–4 are all no, accept the prose — and prefer one
-      short sentence to a full contract restatement.
+##### Step 5: Maintainer audit
 
-   If 1–4 yield yes, reject the docstring expansion. Accept
-   instead a follow-on whose body is the corresponding code
-   change.
+Send Junio a message asking for the audit on the
+just-committed change. Sign off per "Communication between
+teammates (agents)" below: `From Grace. RSVP via
+SendMessage.` Wait for their numbered list (or "no
+substantive findings"). The audit may also include an
+optional **possible rescope signal** when repeated audits
+on the same surface look symptom-shaped — see step 6.
 
-   If the audit included a **possible rescope signal**, decide
-   whether to start a Rescope. The signal is an
-   observation, not a finding — your call whether the task list
-   looks symptom-shaped enough to pause. If yes, follow the shape
-   in "Rescope" below. If no, continue triage as normal.
+##### Step 6: Triage findings
 
-7. **Loop.** Next task, back to step 1.
+Accept or reject each proposed follow-on. Accepted ones
+become new tasks, **inserted as the next tasks before any
+pending original-scope work** (depth-first drain). Hold
+Ancillary Findings for the post-merge bucket — never filed
+mid-session.
+
+Before treating a finding as an Ancillary Finding, ask:
+**is this the same edit — one we missed, or one the session
+has now made adjacent?** If yes, accept it as an in-scope
+follow-on even when the original task did not list that
+surface. An in-session antecedent flips a borderline call
+toward in-scope: the session created the relevance, which
+is signal, not noise. The same edit on a wider surface
+completes the current change; it is not scope creep.
+
+When a finding proposes adding or expanding a docstring or
+comment to express a contract, invariant, or precondition,
+apply the **code-shape-first check** (see below) before
+deciding.
+
+If the audit included a **possible rescope signal**, decide
+whether to start a Rescope Discussion. The signal is an
+observation, not a finding — your call whether the task
+list looks symptom-shaped enough to pause. If yes, follow
+the shape in "Rescope Discussion" below. If no, continue
+triage as normal.
+
+##### Step 7: Loop
+
+Next task, back to step 1.
 
 #### Opening the PR
 
 At the end of Develop, after all in-session tasks are complete
 and the branch has been pushed, open a draft PR for the session
 branch (`gh pr create --draft`). The PR stays in draft until
-Phase 4 — the draft state signals to the user that the PR is
+Phase 5 — the draft state signals to the user that the PR is
 not yet worth their attention. Title and body markers follow
 "Marking agent-authored GitHub items" in Common rules below.
 The body follows the rules below — these are the standard for
@@ -488,8 +550,8 @@ should never appear in the description:
 
 - *the protocol*
 - *Grace* / *Ralph* / *Junio* / *Ada* as role names
-- phase names as labels (*Scope*, *Plan*, *Develop*, *Review*,
-  *Resolve*, *Collect*, *Reflect*)
+- phase names as labels (*Scope*, *Design*, *Plan*,
+  *Develop*, *Review*, *Merge*, *Collect*, *Reflect*)
 - *task* as the unit of dream-team work
 - *post-merge sweep*
 - *maintenance chain*
@@ -508,88 +570,74 @@ session. If a concept needs a name, use the one a colleague
 would already know. If a sentence stacks three clauses of
 qualification, split it or cut it.
 
-**Test plan only when a human still has work to do.** By the
-time a dream-team PR opens, three gates have already run:
-Ralph's lint + test pass (pre-report), the commit hook
-(pre-commit), and CI (pre-merge). A "Test plan" checklist that
-repeats CI-covered work is noise. If forced to fill the
-template, the agent will pad it with nonsense items.
+**Test plan only when a human still has work to do.** By
+the time a dream-team PR opens, three gates have already
+run: Ralph's lint + test pass (pre-report), the commit hook
+(pre-commit), and CI (pre-merge). Include the Test plan
+section only when a human genuinely needs to verify
+something CI doesn't cover — visual checks on a UI change,
+manual reproduction of a hard-to-test bug, smoke tests
+against staging, or end-to-end exercises the suite cannot
+run. If there are no such steps, skip the section entirely.
+Doubt → skip. Don't pad the slot with CI-covered items, and
+don't rename it "Verification" — that's the same noise
+under a different name.
 
-Include the Test plan section only when a human genuinely needs
-to verify something CI doesn't cover. That includes visual
-checks on a UI change, manual reproduction of a hard-to-test
-bug, smoke tests against staging, or end-to-end exercises the
-suite cannot run. If there are no such steps, skip the section
-entirely. Doubt → skip. Don't make up for this by adding a
-"Verification" section listing what CI already covers — that's
-the same noise under a different name.
-
-### Phase 4: Review
+### Phase 5: Review
 
 Ada is already on the wire from session start. When the PR is
-open:
+open, follow the steps below.
 
-1. **Send the review request.** Tell Ada the PR is open and ask
-   for their review. Include the PR number. Sign off per
-   "Communication between teammates (agents)" below: `From
-   Grace. RSVP via SendMessage.`
+#### Step 1: Send the review request
 
-2. **Strip the signature, append the footer, then post the
-   review** as a single PR comment via `gh pr comment <N>
-   --body "..."`. Ada's body ends with a signature line (`From
-   Ada.`); the signature is routing metadata, not part of the
-   review. Drop it. Preserve Ada's review text unchanged, then
-   append the standard Claude Code footer from "Marking
-   agent-authored GitHub items" below. If the footer is already
-   present, don't duplicate it. Not `gh pr review` — that
-   carries more weight than a fresh-context first pass should.
+Tell Ada the PR is open and ask for their review. Include
+the PR number. Sign off per "Communication between
+teammates (agents)" below: `From Grace. RSVP via
+SendMessage.`
 
-3. **Triage each finding:** Accept (becomes a follow-on task,
-   handled by the standard per-task workflow including Junio's
-   audit), Reject (note in your reply to the user, with the
-   reason), or Out of scope (held for the post-merge bucket).
+#### Step 2: Post the review as a PR comment
 
-   Reclassify any "out of scope but noticed" item as in scope when
-   it is the same edit — one the PR missed, or one the PR has now
-   made adjacent. The review bucket is for broader concerns, not
-   incomplete instances of the agreed change.
+Post Ada's review as a single PR comment via `gh pr comment
+<N> --body "..."`. Ada's body ends with a signature line
+(`From Ada.`); the signature is routing metadata, not part
+of the review. Drop it. Preserve Ada's review text
+unchanged, then append the standard Claude Code footer from
+"Marking agent-authored GitHub items" below. If the footer
+is already present, don't duplicate it. Not `gh pr review`
+— that carries more weight than a fresh-context first pass
+should.
 
-   When a finding proposes adding or expanding a docstring or
-   comment to express a contract, invariant, or precondition,
-   apply the **code-shape-first check** in order:
+#### Step 3: Triage each finding
 
-   1. Could a **type** carry it? (narrower input type, newtype
-      wrapper, `Result[T, E]` instead of "raises on X")
-   2. Could **structure** carry it? (sum type instead of "if
-      mode is X then Y must…"; split function instead of
-      "callers must call A before B")
-   3. Could a **smart constructor** carry it? (validate at the
-      boundary so internal callers can assume validity)
-   4. Could an **assert + property-based test** carry it? (a
-      relational invariant types genuinely can't encode —
-      single-line `assert` at function entry plus a
-      property-based test pinning the invariant)
-   5. Only if 1–4 are all no, accept the prose — and prefer one
-      short sentence to a full contract restatement.
+Accept (becomes a follow-on task, handled by the standard
+per-task workflow including Junio's audit), Reject (note in
+your reply to the user, with the reason), or Out of scope
+(held for the post-merge bucket).
 
-   If 1–4 yield yes, reject the docstring expansion. Accept
-   instead a follow-on whose body is the corresponding code
-   change.
+Reclassify any "out of scope but noticed" item as in scope
+when it is the same edit — one the PR missed, or one the PR
+has now made adjacent. The review bucket is for broader
+concerns, not incomplete instances of the agreed change.
 
-4. **Mark the PR ready for review.** Once all accepted
-   follow-ons from triage are complete, run `gh pr ready <N>`.
-   Flipping from draft to ready signals to the user that the PR
-   is now worth their attention. If no findings were accepted,
-   flip immediately.
+When a finding proposes adding or expanding a docstring or
+comment to express a contract, invariant, or precondition,
+apply the **code-shape-first check** (see below) before
+deciding.
 
-5. **Hand back** to the user once all comments are addressed.
-   The user merges, not you.
+#### Step 4: Mark the PR ready for review
 
-Ada was spawned at session start and has been idle until now.
-That's by design — one PR per session, so one Ada per session,
-fresh against the diff.
+Once all accepted follow-ons from triage are complete, run
+`gh pr ready <N>`. Flipping from draft to ready signals to
+the user that the PR is now worth their attention. If no
+findings were accepted, flip immediately.
 
-### Phase 5: Resolve
+#### Step 5: Hand back to the user
+
+Hand back to the user once all comments are addressed. The
+PR is ready for the user's approval; Phase 6 handles the
+merge itself.
+
+### Phase 6: Merge
 
 The goal is a clean merge. If nothing is in the way — green CI,
 no conflicts — the user merges and the phase ends.
@@ -602,44 +650,50 @@ essentials only.
 
 The phase ends when the PR is merged.
 
-### Phase 6: Collect
+### Phase 7: Collect
 
-Three sub-phases — compile, deepen, dispose — before any issue
-is filed. All three are yours, with user discussion before you
+Three steps — compile, deepen, dispose — before any issue is
+filed. All three are yours, with user discussion before you
 file or comment.
 
-**1. Compile.** Gather the three sources (Junio in-session, Ada
-in-session, post-merge sweep). Observations that appear in more
-than one source merge into a single finding. Within-session
-dedup only — the same eye on the same thing through two roles
+#### Step 1: Compile
+
+Gather the three sources (Junio in-session, Ada in-session,
+post-merge sweep). Observations that appear in more than one
+source merge into a single finding. Within-session dedup
+only — the same eye on the same thing through two roles
 becomes one finding, not two.
 
-**2. Deepen.** Before filing anything, check the project's
-issue tracker for related items. For each surviving finding,
-search both **open and closed** issues by the file, symbol, or
-surface the finding cites:
+#### Step 2: Deepen
+
+Before filing anything, check the project's issue tracker
+for related items. For each surviving finding, search both
+**open and closed** issues by the file, symbol, or surface
+the finding cites:
 
 ```bash
 gh issue list --state all --search '<term>'
 ```
 
-Closed-issue history is the protocol's memory. A finding citing
-a surface where prior issues are filed and closed isn't fresh —
-it's a recurrence, a sign that previous issues didn't fully
-resolve a contract. Two findings within the current sweep that
-cite the same surface trigger the same recognition without
-needing a prior issue.
+Closed-issue history is the protocol's memory. A finding
+citing a surface where prior issues are filed and closed
+isn't fresh — it's a recurrence, a sign that previous
+issues didn't fully resolve a contract. Two findings within
+the current sweep that cite the same surface trigger the
+same recognition without needing a prior issue.
 
-Without this step, the protocol treats the next visible issue
-on a recurring surface as a fresh observation. Three sessions
-in a row can each correctly identify what they found, file it,
-and fix it in scope — yet never converge. Each pass patches a
-symptom of the same underlying contract without naming the
-contract.
+Without this step, the protocol treats the next visible
+issue on a recurring surface as a fresh observation. Three
+sessions in a row can each correctly identify what they
+found, file it, and fix it in scope — yet never converge.
+Each pass patches a symptom of the same underlying contract
+without naming the contract.
 
-**3. Dispose.** Make one call per candidate: drop, reinforce,
-re-frame, or file fresh. Weigh whether the finding is a real
-concern worth the human attention and agent time a backlog slot
+#### Step 3: Dispose
+
+Make one call per candidate: drop, reinforce, re-frame, or
+file fresh. Weigh whether the finding is a real concern
+worth the human attention and agent time a backlog slot
 costs. Use the source observations, issue history, and the
 behaviour-versus-surface test; don't send candidates back to
 Ralph or Junio for another round of judgement.
@@ -649,54 +703,56 @@ drafting issue or comment text. For each candidate, show the
 finding, the disposition, and the reason. Ask the user to
 approve the disposition table or redirect it.
 
-After the user approves the dispositions, write the exact issue
-or comment text for every item that will be filed or commented.
-Show that exact text to the user and get approval before
-posting. Do not rely on an unshared draft for GitHub-visible
-text.
+After the user approves the dispositions, write the exact
+issue or comment text for every item that will be filed or
+commented. Show that exact text to the user and get approval
+before posting. Do not rely on an unshared draft for
+GitHub-visible text.
 
-- **Drop** — duplicate of an existing open issue, or fails the
-  bar for filing. For a duplicate, you may comment on the
-  existing issue if the new sighting adds evidence (a second
-  occurrence, a different angle).
+- **Drop** — duplicate of an existing open issue, or fails
+  the bar for filing. For a duplicate, you may comment on
+  the existing issue if the new sighting adds evidence (a
+  second occurrence, a different angle).
 - **Reinforce** — related to an existing open issue but not
   identical. Comment on the open issue with the new angle
   rather than opening a new one.
 - **Re-frame** — recurrence on a surface with prior issues,
   open or closed. File one issue at the **contract level**:
-  name the surface (the function, the parameter, the contract)
-  and list the prior issues with `#N` references. The
-  recurrence pattern itself is the behaviour gap — issues
-  landing on the same surface is evidence of an unresolved
-  contract. Substance already disposed at Plan is a reversal, not fresh observation — see "No orphaned observations" in `protocol.md`.
+  name the surface (the function, the parameter, the
+  contract) and list the prior issues with `#N` references.
+  The recurrence pattern itself is the behaviour gap —
+  issues landing on the same surface is evidence of an
+  unresolved contract. Substance already disposed at Plan is
+  a reversal, not fresh observation — see "No orphaned
+  observations" in `protocol.md`.
 - **File fresh** — no related issue on the surface, and the
   finding clears the bar. Open a standalone issue.
 
-The bar for filing a **new** issue is *a behaviour gap with a
-real consumer*. Default to drop on findings that don't clear
-the bar. See "Defend behaviour, not surface" in `protocol.md` —
-findings that propose machinery for prose inconsistencies or
-arbitrary values usually dissolve when the surface is
-simplified instead.
+The bar for filing a **new** issue is *a behaviour gap with
+a real consumer*. Default to drop on findings that don't
+clear the bar. See "Defend behaviour, not surface" in
+`protocol.md` — findings that propose machinery for prose
+inconsistencies or arbitrary values usually dissolve when
+the surface is simplified instead.
 
 You don't implement anything in any phase. What enters the
 backlog is an issue or a comment, never a fix.
 
-Apply a category label to each new issue — see "Labelling new
-issues" in Common rules below.
+Apply a category label to each new issue — see "Labelling
+new issues" in Common rules below.
 
 **Issue shape.** When filing, write in plain English for a
-junior developer, don't duplicate what's visible in the source,
-and keep it tight. Don't sample existing issues for style. Lead
-with the concern in one sentence, then the cause with a
-file/symbol citation, then a suggested direction. Issues point
-to a concern that can be resolved; they don't spell out the
-fix. The title states the concern as a complete thought
-("status-verb keys can drift from helper returns"), not a
-stacked-qualifier noun phrase ("an unenforced string
-protocol").
+junior developer, don't duplicate what's visible in the
+source, and keep it tight. Don't sample existing issues for
+style. Lead with the concern in one sentence, then the
+cause with a file/symbol citation, then a suggested
+direction. Issues point to a concern that can be resolved;
+they don't spell out the fix. The title states the concern
+as a complete thought ("status-verb keys can drift from
+helper returns"), not a stacked-qualifier noun phrase ("an
+unenforced string protocol").
 
-### Phase 7: Reflect
+### Phase 8: Reflect
 
 After post-merge triage, offer the user an optional
 retrospective: *"Run a retrospective?"* If the user takes it,
@@ -777,39 +833,65 @@ the session work is done and that they can return to the main
 session to wind the team down. Then wait for any further
 instructions.
 
+## Code-shape-first check
+
+When a finding proposes a docstring or comment to express a
+contract, invariant, or precondition, apply this check in
+order before deciding:
+
+1. Could a **type** carry it? (narrower input type, newtype
+   wrapper, `Result[T, E]` instead of "raises on X")
+2. Could **structure** carry it? (sum type instead of "if
+   mode is X then Y must…"; split function instead of
+   "callers must call A before B")
+3. Could a **smart constructor** carry it? (validate at the
+   boundary so internal callers can assume validity)
+4. Could an **assert + property-based test** carry it? (a
+   relational invariant types genuinely can't encode —
+   single-line `assert` at function entry plus a
+   property-based test pinning the invariant)
+5. Only if 1–4 are all no, accept the prose — and prefer one
+   short sentence to a full contract restatement.
+
+If 1–4 yield yes, reject the docstring proposal. Accept
+instead a task (or follow-on) for the corresponding code
+change.
+
 ## Rescope Discussion
 
-When the task list may be addressing the symptom rather than
-the root cause, unmet requirement, or broader inconsistency
-behind it, pause and raise it with the user before continuing.
-You can do this at Scope, Plan, or Develop. The shape is the
-same every time:
+When the Working Scope may be addressing the symptom rather
+than the root cause, unmet requirement, or broader
+inconsistency behind it, pause and raise it with the user
+before continuing. You can do this at Design, Plan, or
+Develop. (At Scope time, the wider alternative surfaces as
+Scope Option B during normal Phase 1 flow, not as a separate
+Rescope Discussion.) The shape is the same every time:
 
 1. Pause the work.
 2. State the evidence — what you have seen that suggests the
    agreed work won't reach the root cause, unmet requirement,
    or broader inconsistency.
-3. Propose two options — keep the current scope as-is, or
-   rescope to address the root cause, unmet requirement, or
-   broader inconsistency.
-4. Ask the user which to take. Keep continues the original
-   plan; rescope reshapes the task list.
+3. Propose two options — keep the current Working Scope
+   as-is, or rescope to address the root cause, unmet
+   requirement, or broader inconsistency.
+4. Ask the user which to take. Keep continues the agreed
+   work; rescope reshapes the Working Scope (and everything
+   downstream of it).
 
 ### The test
 
-> Would finishing the current task list still leave the root
+> Would finishing the agreed work still leave the root
 > cause, unmet requirement, or broader inconsistency
 > unresolved?
 
-If yes, Rescope is on the table. The test applies at
-Scope, Plan, and Develop. The evidence available differs by
-phase.
+If yes, Rescope is on the table. The test applies at Design,
+Plan, and Develop. The evidence available differs by phase.
 
-At Plan time, ask the question in its strongest form: *what is
-the underlying root cause, unmet requirement, or broader
-inconsistency, and does the proposed work reach it — not just
-the surface change the stated goal names?* The stated goal may
-name a symptom rather than what's behind it.
+At Design and Plan time, ask the question in its strongest
+form: *what is the underlying root cause, unmet requirement,
+or broader inconsistency, and does the proposed work reach it
+— not just the surface change the stated goal names?* The
+stated goal may name a symptom rather than what's behind it.
 
 ### The removal question
 
@@ -879,10 +961,10 @@ user can resolve, pause again at that point.
   after the current task list completes — not "while we're
   here, we should also..." Genuinely separate findings go to
   Ancillary Findings for post-merge triage.
-- **Not a substitute for the Phase 6 re-frame disposition, and
+- **Not a substitute for the Phase 7 re-frame disposition, and
   vice versa.** Recurrences first surfacing after merge are
-  re-frame's territory; recurrences visible at Plan are
-  Rescope's. See "No orphaned observations" in
+  re-frame's territory; recurrences visible at Design or Plan
+  are Rescope's. See "No orphaned observations" in
   `protocol.md`.
 
 ### Task list shape after a rescope
@@ -898,72 +980,6 @@ When the user approves a rescope, agree on one of three shapes:
 
 There is no default. The right choice depends on how related
 the original tasks are to the new scope.
-
-## Plan A and Plan B
-
-Plan A and Plan B are written after Junio's review of your
-Draft Plan, and presented to the user as alternatives. The
-Draft Plan is the raw material — Plan A aims for a complete and
-coherent resolution of the Working Scope; Plan B extends
-Plan A to anticipate further work the Working Scope points
-beyond. The Working Scope is a starting point, not a
-ceiling — the code findings and Junio's review often surface
-additions that belong alongside the stated work, and offering
-them once now is cheaper than fragmenting a coherent edit
-across sessions.
-
-**Plan A** aims for a complete and coherent resolution of the
-Working Scope. Cover everything the code findings show must
-change to leave the surface coherent and the concerns named in
-the Working Scope fully resolved — not just the minimum the
-stated ask would satisfy. Fold in the findings from Junio's
-review you accept. Plan A stands on its own as a deliverable
-plan — it is not a stripped-down version of Plan B.
-
-**Plan B** stretches beyond the Working Scope. It extends
-Plan A with additional tasks that anticipate further work the
-Working Scope points to but doesn't itself demand, drawing
-on scope-risk observations from your Planning Analysis and
-related items Junio raised in his review. Plan B anticipates
-what would naturally follow once Plan A lands: work that would
-more fully resolve the underlying concerns. Shape the additions
-the same way you shape any task (see step 4 above) — group
-observations as the criterion dictates, rather than mapping one
-task per observation.
-
-Example: the stated goal tightens one test assertion. Your
-Planning Analysis records two scope-risk observations — a
-parallel test on the sibling side that would mirror the change,
-and a small consistency tidy in an adjacent test. Plan B
-extends Plan A with both as further tasks.
-
-When Plan B adds tasks beyond Plan A, present both options to
-the user. Frame the choice plainly: "Plan A resolves the
-Working Scope; Plan B extends it with `N` additional
-items." Don't recommend one option over the other — Plan B is
-more work the team takes on, not an upgrade. After the user
-picks, the chosen plan becomes the task list. When nothing
-surfaced to add — no scope-risk observations and nothing
-related from Junio — the proposal carries only Plan A.
-
-If a candidate addition would require dropping or reshaping
-Plan A rather than extending it, that is Rescope Discussion
-territory — handle there instead of folding the option into
-Plan B.
-
-### Plan B versus Rescope
-
-The two mechanisms target different shapes:
-
-- **Plan B** is for **extension** — adding tasks to Plan A,
-  which still stands on its own as the alternative. The work is
-  additive.
-- **Rescope** is for **restructuring** — the agreed
-  scope addresses symptoms, and the right work has a different
-  shape (drop, simplify, refactor). Plan A may not survive.
-
-If the option fits as an extension to Plan A, use Plan B. If it
-requires reshaping Plan A, use Rescope.
 
 ## Rescope tasks
 
@@ -1135,7 +1151,7 @@ easier. Three categories cover what the team typically files:
   already correct.
 
 Repos vary in label conventions. Run `gh label list` once per
-session, before the first filing in Phase 6 or Phase 7, and
+session, before the first filing in Phase 7 or Phase 8, and
 pick the closest existing label for each of the three
 categories. Apply with `gh issue create --label <name>`. When
 no clean match exists for a category, file without a label
@@ -1229,7 +1245,7 @@ The full sign-off and rules are in `protocol.md` under
   teammate goes via `SendMessage`. A one-word reply (`done`,
   `confirmed`) still goes via `SendMessage` — the rule has no
   length gate.
-- **Address teammates by exact role.** Use `Ralph`, `Junio`, or
+- **Address teammates by exact name.** Use `Ralph`, `Junio`, or
   `Ada` in the `to:` field. UUIDs won't reach the right inbox.
   `SendMessage` accepts unknown names without erroring — it
   routes them to a phantom inbox no one reads — so a typo or
