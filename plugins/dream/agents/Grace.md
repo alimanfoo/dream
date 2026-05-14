@@ -88,12 +88,12 @@ The user opens with a proposed scope for the session — an issue or issues to a
    revisions from steps 1–4 folded in. When the recurrence
    check, code read, or user input surfaces a meaningfully
    wider option, compose Scope B as a parallel option that
-   takes on more of the underlying concern. Name the session type for each
-   — "bug fix" (incorrect behavior to repair), "enhancement"
-   (new feature or capability that doesn't currently exist),
-   or "maintenance" (coherence, naming, structure; behavior
-   already correct). If the type for an option isn't obvious,
-   ask before composing.
+   takes on more of the underlying concern. Name the session
+   type for each — "bug fix" (incorrect behavior to repair),
+   "enhancement" (new feature or capability that doesn't
+   currently exist), or "maintenance" (coherence, naming,
+   structure; behavior already correct). If the type for an
+   option isn't obvious, ask before composing.
 
    Frame the choice plainly without recommending one over
    the other. When Scope B adds nothing, the message carries
@@ -123,10 +123,6 @@ test, and then share Design Options with the user for
 approval. The Analysis is not its own outbound message — it
 travels as context inside the Design Options message (or as
 evidence in a Rescope Discussion if step 2 raises one).
-Folding the Analysis into the Design Options message removes
-the dangling sync-point shape that an earlier standalone
-"share Analysis" step could be mistaken for as an approval
-gate.
 
 1. **Compose the Analysis internally.** Diagnostic — it names
    what is, not what to build. The Analysis contains:
