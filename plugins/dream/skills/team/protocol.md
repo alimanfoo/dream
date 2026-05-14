@@ -11,9 +11,9 @@ A session moves through seven phases:
 1. **Scope.** The user proposes a scope of work for
    the session and discusses with Grace.
 
-2. **Plan.** Grace shares a Planning Analysis and a Design
-   with the user, presents Plan Options, and creates the task
-   list after user approval.
+2. **Plan.** Grace shares a Planning Analysis with the user,
+   shares a Design and waits for user approval, presents Plan
+   Options, and creates the task list after user approval.
 
 3. **Develop.** The main implementation loop — one task at a
    time, coherence restored before moving on.
@@ -62,14 +62,18 @@ All agents run their boot sequence immediately upon spawning.
 ## Phase 1: Scope
 
 Grace and the user discuss the scope of work for the session.
+Grace plays back the Working Scope and waits for the user's
+confirmation before naming the session type and creating the
+branch.
 
 The phase ends with branch creation.
 
 ## Phase 2: Plan
 
-Grace shares a Planning Analysis and a Design with the user,
-then shares a Draft Plan with Junio for one round of internal
-review — advisory, not gating. After Junio's review, Grace
+Grace shares a Planning Analysis with the user, then shares
+a Design and waits for the user's approval, then shares a
+Draft Plan with Junio for one round of internal review —
+advisory, not gating. After Junio's review, Grace
 shares Plan Options with the user — Plan A aims for a
 complete and coherent resolution of the Working Scope, with
 the findings from Junio's review she accepts folded in; Plan

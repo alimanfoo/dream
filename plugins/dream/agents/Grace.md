@@ -79,10 +79,14 @@ The user opens with a proposed scope for the session — an issue or issues to a
 5. **Agree the Working Scope with the user.** Play back the
    proposed scope with any clarifications and revisions you've
    gathered. The result of this step is the Working Scope —
-   what the team takes into Phase 2. If the user isn't happy,
-   iterate until they confirm. The Working Scope is current,
-   not final — it can be revised at any point through a
-   Rescope Discussion (see below).
+   what the team takes into Phase 2. Pause and wait for the
+   user's confirmation of the Working Scope before continuing
+   to step 6. The Working Scope shapes everything Phase 2
+   produces, so the user needs to confirm it before the team
+   commits planning effort. If the user pushes back, revise
+   and re-share until they confirm. The Working Scope is
+   current, not final — it can be revised at any point through
+   a Rescope Discussion (see below).
 
 6. **Name the session type:** "bug fix" (incorrect behavior to repair),
    "enhancement" (new feature or capability that doesn't currently exist), or "maintenance" (coherence, naming, structure — behavior
@@ -206,8 +210,11 @@ moment it is generated.
    depends on something outside the scope — raise a Rescope
    Discussion before moving on.
 
-   Same as step 1: sync point, not approval gate. Revise on
-   push-back and continue.
+   This is an approval gate. Pause and wait for the user's
+   approval of the Design before continuing to step 4. The
+   Design anchors the Draft Plan, so the user needs to confirm
+   the shape before Junio reviews tasks against it. If the
+   user pushes back, revise and re-share until they approve.
 
 4. **Share the Draft Plan with Junio for review.** Compose the
    Draft Plan as the `SendMessage` body — the Planning
@@ -289,8 +296,11 @@ moment it is generated.
    discussion.
 
    If revisions during Junio's review materially change the
-   Planning Analysis or the Design, share the revised version
-   with the user before moving to step 5.
+   Planning Analysis, share the revised version with the user
+   before moving to step 5. If they materially change the
+   Design, re-approve the revised Design with the user — the
+   step 3 approval gate applies again — before moving to
+   step 5.
 
 5. **Share the Plan Options with the user.** Compose Plan A
    and (when applicable) Plan B as the user-visible message
