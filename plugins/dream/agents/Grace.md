@@ -86,9 +86,9 @@ The user opens with a proposed scope for the session — an issue or issues to a
 5. **Share Scope Options with the user.** Compose Scope A —
    the user's proposed scope with any clarifications and
    revisions from steps 1–4 folded in. When the recurrence
-   check or code read surfaces a meaningfully wider option,
-   compose Scope B as a parallel option that takes on more
-   of the underlying concern. Name the session type for each
+   check, code read, or user input surfaces a meaningfully
+   wider option, compose Scope B as a parallel option that
+   takes on more of the underlying concern. Name the session type for each
    — "bug fix" (incorrect behavior to repair), "enhancement"
    (new feature or capability that doesn't currently exist),
    or "maintenance" (coherence, naming, structure; behavior
