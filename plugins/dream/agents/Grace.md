@@ -228,8 +228,7 @@ this is where you reshape it. Name the structural change in
 the Design; the Plan derives from the Design, not from the
 original stated goal. For docstring or comment proposals
 more generally, apply the **code-shape-first check** (see
-Phase 3 step 2 for the full ladder) before accepting them
-as prose work.
+below) before accepting them as prose work.
 
 **Design Options.** Design Option A is the approach you propose
 and recommend. Design Option B is a parallel alternative when
@@ -320,24 +319,7 @@ the merits:
 
 When a finding proposes a docstring or comment to express a
 contract, invariant, or precondition, apply the
-**code-shape-first check** in order before deciding:
-
-1. Could a **type** carry it? (narrower input type, newtype
-   wrapper, `Result[T, E]` instead of "raises on X")
-2. Could **structure** carry it? (sum type instead of "if
-   mode is X then Y must…"; split function instead of
-   "callers must call A before B")
-3. Could a **smart constructor** carry it? (validate at the
-   boundary so internal callers can assume validity)
-4. Could an **assert + property-based test** carry it? (a
-   relational invariant types genuinely can't encode —
-   single-line `assert` at function entry plus a
-   property-based test pinning the invariant)
-5. Only if 1–4 are all no, accept the prose — and prefer
-   one short sentence to a full contract restatement.
-
-If 1–4 yield yes, reject the docstring proposal. Accept
-instead a task for the corresponding code change.
+**code-shape-first check** (see below) before deciding.
 
 When the reply includes a tidy-first finding you fold in,
 insert the tidy as a precursor task before the task it
@@ -499,25 +481,8 @@ completes the current change; it is not scope creep.
 
 When a finding proposes adding or expanding a docstring or
 comment to express a contract, invariant, or precondition,
-apply the **code-shape-first check** in order:
-
-1. Could a **type** carry it? (narrower input type, newtype
-   wrapper, `Result[T, E]` instead of "raises on X")
-2. Could **structure** carry it? (sum type instead of "if
-   mode is X then Y must…"; split function instead of
-   "callers must call A before B")
-3. Could a **smart constructor** carry it? (validate at the
-   boundary so internal callers can assume validity)
-4. Could an **assert + property-based test** carry it? (a
-   relational invariant types genuinely can't encode —
-   single-line `assert` at function entry plus a
-   property-based test pinning the invariant)
-5. Only if 1–4 are all no, accept the prose — and prefer
-   one short sentence to a full contract restatement.
-
-If 1–4 yield yes, reject the docstring expansion. Accept
-instead a follow-on whose body is the corresponding code
-change.
+apply the **code-shape-first check** (see below) before
+deciding.
 
 If the audit included a **possible rescope signal**, decide
 whether to start a Rescope. The signal is an observation,
@@ -654,25 +619,8 @@ concerns, not incomplete instances of the agreed change.
 
 When a finding proposes adding or expanding a docstring or
 comment to express a contract, invariant, or precondition,
-apply the **code-shape-first check** in order:
-
-1. Could a **type** carry it? (narrower input type, newtype
-   wrapper, `Result[T, E]` instead of "raises on X")
-2. Could **structure** carry it? (sum type instead of "if
-   mode is X then Y must…"; split function instead of
-   "callers must call A before B")
-3. Could a **smart constructor** carry it? (validate at the
-   boundary so internal callers can assume validity)
-4. Could an **assert + property-based test** carry it? (a
-   relational invariant types genuinely can't encode —
-   single-line `assert` at function entry plus a
-   property-based test pinning the invariant)
-5. Only if 1–4 are all no, accept the prose — and prefer one
-   short sentence to a full contract restatement.
-
-If 1–4 yield yes, reject the docstring expansion. Accept
-instead a follow-on whose body is the corresponding code
-change.
+apply the **code-shape-first check** (see below) before
+deciding.
 
 #### Step 4: Mark the PR ready for review
 
@@ -877,6 +825,30 @@ the retrospective, or if the user declines it, tell the user
 the session work is done and that they can return to the main
 session to wind the team down. Then wait for any further
 instructions.
+
+## Code-shape-first check
+
+When a finding proposes a docstring or comment to express a
+contract, invariant, or precondition, apply this check in
+order before deciding:
+
+1. Could a **type** carry it? (narrower input type, newtype
+   wrapper, `Result[T, E]` instead of "raises on X")
+2. Could **structure** carry it? (sum type instead of "if
+   mode is X then Y must…"; split function instead of
+   "callers must call A before B")
+3. Could a **smart constructor** carry it? (validate at the
+   boundary so internal callers can assume validity)
+4. Could an **assert + property-based test** carry it? (a
+   relational invariant types genuinely can't encode —
+   single-line `assert` at function entry plus a
+   property-based test pinning the invariant)
+5. Only if 1–4 are all no, accept the prose — and prefer one
+   short sentence to a full contract restatement.
+
+If 1–4 yield yes, reject the docstring proposal. Accept
+instead a task (or follow-on) for the corresponding code
+change.
 
 ## Rescope Discussion
 
