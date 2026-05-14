@@ -855,27 +855,28 @@ change.
 
 ## Rescope Discussion
 
-When the task list may be addressing the symptom rather than
-the root cause, unmet requirement, or broader inconsistency
-behind it, pause and raise it with the user before continuing.
-You can do this at Design, Plan, or Develop. (At Scope time,
-the wider alternative surfaces as Scope Option B during normal Phase 1
-flow, not as a separate Rescope Discussion.) The shape is the
-same every time:
+When the Working Scope may be addressing the symptom rather
+than the root cause, unmet requirement, or broader
+inconsistency behind it, pause and raise it with the user
+before continuing. You can do this at Design, Plan, or
+Develop. (At Scope time, the wider alternative surfaces as
+Scope Option B during normal Phase 1 flow, not as a separate
+Rescope Discussion.) The shape is the same every time:
 
 1. Pause the work.
 2. State the evidence — what you have seen that suggests the
    agreed work won't reach the root cause, unmet requirement,
    or broader inconsistency.
-3. Propose two options — keep the current scope as-is, or
-   rescope to address the root cause, unmet requirement, or
-   broader inconsistency.
-4. Ask the user which to take. Keep continues the original
-   plan; rescope reshapes the task list.
+3. Propose two options — keep the current Working Scope
+   as-is, or rescope to address the root cause, unmet
+   requirement, or broader inconsistency.
+4. Ask the user which to take. Keep continues the agreed
+   work; rescope reshapes the Working Scope (and everything
+   downstream of it).
 
 ### The test
 
-> Would finishing the current task list still leave the root
+> Would finishing the agreed work still leave the root
 > cause, unmet requirement, or broader inconsistency
 > unresolved?
 
