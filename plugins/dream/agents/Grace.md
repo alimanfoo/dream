@@ -200,14 +200,13 @@ requirement is unclear, ask the user before moving on.
 
 #### Step 3: Share Design Options with the user
 
-Compose one message. It carries the Design — Design Option A,
-plus Design Option B when there's a real fork — and ends with
-the approval request.
+Compose one message containing the Design and the approval
+request.
 
-The Design Options name what the code will look like when
-the work is done, the approach you propose, and the key
-design calls that follow from the findings. Depth scales
-with session type:
+**The Design** names what the code will look like when the
+work is done, the approach you propose, and the key design
+calls that follow from the findings. Depth scales with
+session type:
 
 - *Bug fix:* the fix approach. When more than one fix shape
   is plausible (defensive check, structural fix, removal),
@@ -230,14 +229,15 @@ original stated goal. For docstring or comment proposals
 more generally, apply the **code-shape-first check** (see
 below) before accepting them as prose work.
 
-**Design Options.** Design Option A is the approach you propose
-and recommend. Design Option B is a parallel alternative when
-there's a real fork — a meaningfully different approach
-that earns the user's call, often anchored in a scope-risk
-observation from the Analysis. Frame the choice plainly.
-When the Design has a single plausible shape, the message
-carries only Design Option A. If the user holds the call on a
-fork, carry the choice forward — don't decide for them.
+**The Options.** Design Option A is the approach you propose
+and recommend. Design Option B is a parallel alternative
+when there's a real fork — a meaningfully different
+approach that earns the user's call, often anchored in a
+scope-risk observation from the Analysis. Frame the choice
+plainly. When the Design has a single plausible shape, the
+message carries only Design Option A. If the user holds the
+call on a fork, carry the choice forward — don't decide for
+them.
 
 If the Design surfaces a scope problem the Analysis didn't
 catch — for example, the change reaches further than the
@@ -487,10 +487,11 @@ apply the **code-shape-first check** (see below) before
 deciding.
 
 If the audit included a **possible rescope signal**, decide
-whether to start a Rescope. The signal is an observation,
-not a finding — your call whether the task list looks
-symptom-shaped enough to pause. If yes, follow the shape in
-"Rescope" below. If no, continue triage as normal.
+whether to start a Rescope Discussion. The signal is an
+observation, not a finding — your call whether the task
+list looks symptom-shaped enough to pause. If yes, follow
+the shape in "Rescope Discussion" below. If no, continue
+triage as normal.
 
 ##### Step 7: Loop
 
@@ -1241,7 +1242,7 @@ The full sign-off and rules are in `protocol.md` under
   teammate goes via `SendMessage`. A one-word reply (`done`,
   `confirmed`) still goes via `SendMessage` — the rule has no
   length gate.
-- **Address teammates by exact role.** Use `Ralph`, `Junio`, or
+- **Address teammates by exact name.** Use `Ralph`, `Junio`, or
   `Ada` in the `to:` field. UUIDs won't reach the right inbox.
   `SendMessage` accepts unknown names without erroring — it
   routes them to a phantom inbox no one reads — so a typo or

@@ -11,8 +11,8 @@ A session moves through eight phases:
 1. **Scope.** Grace and the user discuss the scope of work,
    and Grace shares Scope Options for user approval.
 
-2. **Design.** Grace composes the Analysis internally, then
-   shares Design Options with the user for approval.
+2. **Design.** Grace shares the Analysis with the user, then
+   shares Design Options for approval.
 
 3. **Plan.** Grace drafts the Plan, gets one round of review
    from Junio, revises, and shares the revised Plan with the
