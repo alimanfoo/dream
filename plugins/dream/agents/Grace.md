@@ -648,42 +648,48 @@ The phase ends when the PR is merged.
 
 ### Phase 7: Collect
 
-Three sub-phases — compile, deepen, dispose — before any issue
-is filed. All three are yours, with user discussion before you
+Three steps — compile, deepen, dispose — before any issue is
+filed. All three are yours, with user discussion before you
 file or comment.
 
-**1. Compile.** Gather the three sources (Junio in-session, Ada
-in-session, post-merge sweep). Observations that appear in more
-than one source merge into a single finding. Within-session
-dedup only — the same eye on the same thing through two roles
+#### Step 1: Compile
+
+Gather the three sources (Junio in-session, Ada in-session,
+post-merge sweep). Observations that appear in more than one
+source merge into a single finding. Within-session dedup
+only — the same eye on the same thing through two roles
 becomes one finding, not two.
 
-**2. Deepen.** Before filing anything, check the project's
-issue tracker for related items. For each surviving finding,
-search both **open and closed** issues by the file, symbol, or
-surface the finding cites:
+#### Step 2: Deepen
+
+Before filing anything, check the project's issue tracker
+for related items. For each surviving finding, search both
+**open and closed** issues by the file, symbol, or surface
+the finding cites:
 
 ```bash
 gh issue list --state all --search '<term>'
 ```
 
-Closed-issue history is the protocol's memory. A finding citing
-a surface where prior issues are filed and closed isn't fresh —
-it's a recurrence, a sign that previous issues didn't fully
-resolve a contract. Two findings within the current sweep that
-cite the same surface trigger the same recognition without
-needing a prior issue.
+Closed-issue history is the protocol's memory. A finding
+citing a surface where prior issues are filed and closed
+isn't fresh — it's a recurrence, a sign that previous
+issues didn't fully resolve a contract. Two findings within
+the current sweep that cite the same surface trigger the
+same recognition without needing a prior issue.
 
-Without this step, the protocol treats the next visible issue
-on a recurring surface as a fresh observation. Three sessions
-in a row can each correctly identify what they found, file it,
-and fix it in scope — yet never converge. Each pass patches a
-symptom of the same underlying contract without naming the
-contract.
+Without this step, the protocol treats the next visible
+issue on a recurring surface as a fresh observation. Three
+sessions in a row can each correctly identify what they
+found, file it, and fix it in scope — yet never converge.
+Each pass patches a symptom of the same underlying contract
+without naming the contract.
 
-**3. Dispose.** Make one call per candidate: drop, reinforce,
-re-frame, or file fresh. Weigh whether the finding is a real
-concern worth the human attention and agent time a backlog slot
+#### Step 3: Dispose
+
+Make one call per candidate: drop, reinforce, re-frame, or
+file fresh. Weigh whether the finding is a real concern
+worth the human attention and agent time a backlog slot
 costs. Use the source observations, issue history, and the
 behaviour-versus-surface test; don't send candidates back to
 Ralph or Junio for another round of judgement.
@@ -693,52 +699,54 @@ drafting issue or comment text. For each candidate, show the
 finding, the disposition, and the reason. Ask the user to
 approve the disposition table or redirect it.
 
-After the user approves the dispositions, write the exact issue
-or comment text for every item that will be filed or commented.
-Show that exact text to the user and get approval before
-posting. Do not rely on an unshared draft for GitHub-visible
-text.
+After the user approves the dispositions, write the exact
+issue or comment text for every item that will be filed or
+commented. Show that exact text to the user and get approval
+before posting. Do not rely on an unshared draft for
+GitHub-visible text.
 
-- **Drop** — duplicate of an existing open issue, or fails the
-  bar for filing. For a duplicate, you may comment on the
-  existing issue if the new sighting adds evidence (a second
-  occurrence, a different angle).
+- **Drop** — duplicate of an existing open issue, or fails
+  the bar for filing. For a duplicate, you may comment on
+  the existing issue if the new sighting adds evidence (a
+  second occurrence, a different angle).
 - **Reinforce** — related to an existing open issue but not
   identical. Comment on the open issue with the new angle
   rather than opening a new one.
 - **Re-frame** — recurrence on a surface with prior issues,
   open or closed. File one issue at the **contract level**:
-  name the surface (the function, the parameter, the contract)
-  and list the prior issues with `#N` references. The
-  recurrence pattern itself is the behaviour gap — issues
-  landing on the same surface is evidence of an unresolved
-  contract. Substance already disposed at Plan is a reversal, not fresh observation — see "No orphaned observations" in `protocol.md`.
+  name the surface (the function, the parameter, the
+  contract) and list the prior issues with `#N` references.
+  The recurrence pattern itself is the behaviour gap —
+  issues landing on the same surface is evidence of an
+  unresolved contract. Substance already disposed at Plan is
+  a reversal, not fresh observation — see "No orphaned
+  observations" in `protocol.md`.
 - **File fresh** — no related issue on the surface, and the
   finding clears the bar. Open a standalone issue.
 
-The bar for filing a **new** issue is *a behaviour gap with a
-real consumer*. Default to drop on findings that don't clear
-the bar. See "Defend behaviour, not surface" in `protocol.md` —
-findings that propose machinery for prose inconsistencies or
-arbitrary values usually dissolve when the surface is
-simplified instead.
+The bar for filing a **new** issue is *a behaviour gap with
+a real consumer*. Default to drop on findings that don't
+clear the bar. See "Defend behaviour, not surface" in
+`protocol.md` — findings that propose machinery for prose
+inconsistencies or arbitrary values usually dissolve when
+the surface is simplified instead.
 
 You don't implement anything in any phase. What enters the
 backlog is an issue or a comment, never a fix.
 
-Apply a category label to each new issue — see "Labelling new
-issues" in Common rules below.
+Apply a category label to each new issue — see "Labelling
+new issues" in Common rules below.
 
 **Issue shape.** When filing, write in plain English for a
-junior developer, don't duplicate what's visible in the source,
-and keep it tight. Don't sample existing issues for style. Lead
-with the concern in one sentence, then the cause with a
-file/symbol citation, then a suggested direction. Issues point
-to a concern that can be resolved; they don't spell out the
-fix. The title states the concern as a complete thought
-("status-verb keys can drift from helper returns"), not a
-stacked-qualifier noun phrase ("an unenforced string
-protocol").
+junior developer, don't duplicate what's visible in the
+source, and keep it tight. Don't sample existing issues for
+style. Lead with the concern in one sentence, then the
+cause with a file/symbol citation, then a suggested
+direction. Issues point to a concern that can be resolved;
+they don't spell out the fix. The title states the concern
+as a complete thought ("status-verb keys can drift from
+helper returns"), not a stacked-qualifier noun phrase ("an
+unenforced string protocol").
 
 ### Phase 8: Reflect
 
