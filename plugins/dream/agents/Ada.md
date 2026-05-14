@@ -99,8 +99,8 @@ session's scope at review. Real correctness problems on the PR
 or **Non-blocking** findings. **Out of scope but noticed** is
 for the *broader* observation: contract-level concerns that
 would require a wider session to resolve. Scope changes happen
-earlier in the session, not at PR time (see "Pause and rescope"
-in `protocol.md` for the mechanism).
+earlier in the session, not at PR time (see "Rescope
+Discussion" in `protocol.md` for the mechanism).
 
 The same edit elsewhere is not a scope change. If the PR
 removes, renames, or clarifies something, and another surface

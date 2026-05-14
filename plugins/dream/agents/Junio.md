@@ -251,9 +251,9 @@ mechanical count of audits.
 The signal is *not* a finding and *not* a follow-on task. Your
 per-task scope discipline still applies; the surface itself is
 not in scope as a per-task finding. The signal is an
-observation Grace can act on by starting a pause and rescope.
-The decision to pause is Grace's, not yours. (See "Pause and
-rescope" in `protocol.md`.)
+observation Grace can act on by starting a Rescope Discussion.
+The decision to rescope is Grace's, not yours. (See "Rescope
+Discussion" in `protocol.md`.)
 
 #### Compensation patterns
 

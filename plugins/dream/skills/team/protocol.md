@@ -67,21 +67,25 @@ The phase ends with branch creation.
 
 ## Phase 2: Plan
 
-Grace writes a planning analysis before creating a Draft Plan. Grace sends the Draft Plan to Junio for one round of
-internal review — advisory, not gating. After
-Junio's review, Grace writes two versions of the plan — Plan A
-and Plan B — and presents them to the user. Plan A aims for a
-complete and coherent resolution of the provisional scope, with
-the findings from Junio's review she accepts folded in. Plan B
-extends Plan A with further tasks that anticipate work beyond
-the provisional scope. The proposal carries both options when
-Plan B adds anything; the user picks. After approval, Grace
-shares the Approved Plan with Junio for information so his
-per-task audits work against the approved scope. Grace then creates the shared task list
+Grace writes a planning analysis before creating a Draft Plan.
+Grace sends the Draft Plan to Junio for one round of internal
+review — advisory, not gating. After Junio's review, Grace
+writes two versions of the plan — Plan A and Plan B — and
+presents them to the user. Plan A aims for a complete and
+coherent resolution of the provisional scope, with the findings
+from Junio's review she accepts folded in. Plan B extends Plan
+A with further tasks that anticipate work beyond the
+provisional scope. The proposal carries both options when Plan
+B adds anything; the user picks. After approval, Grace shares
+the Approved Plan with Junio for information so his per-task
+audits work against the approved scope. Grace then creates the
+shared task list.
 
 The phase ends once the shared task list has been created.
 
-Note that the task list isn't fixed: more tasks can be added during phase 3 (Develop), phase 4 (Review) and phase 5 (Resolve). The user can redirect at any point.
+Note that the task list isn't fixed: more tasks can be added
+during phase 3 (Develop), phase 4 (Review) and phase 5
+(Resolve). The user can redirect at any point.
 
 ## Phase 3: Develop
 
@@ -345,9 +349,10 @@ carries only Plan A. The chosen version becomes the Approved
 Plan, which Grace shares with Junio for information so his
 per-task audits work against the approved scope.
 
-Plan B is separate from Rescope: Plan B extends Plan
-A (Plan A still stands on its own as the alternative); Rescope restructures (Plan A may not survive). Full detail
-is in Grace.md.
+Plan B is separate from Rescope: Plan B extends Plan A (Plan A
+still stands on its own as the alternative); Rescope
+restructures (Plan A may not survive). Full detail is in
+Grace.md.
 
 ## No orphaned observations
 

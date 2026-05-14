@@ -102,7 +102,7 @@ planning analysis before proposing tasks. Follow the steps below in sequence.
      task wearing docstring clothes). Only the first proceeds
      as written; the second gets reshaped to address the
      structural gap before the task list is proposed.
-   - **Code reading:** what the code shows about the current
+   - **Code findings:** what the code shows about the current
      shape, with file:line or symbol citations so the analysis
      is verifiable.
      - *Bug fix:* trace the mechanism causing the incorrect
@@ -215,9 +215,9 @@ planning analysis before proposing tasks. Follow the steps below in sequence.
    a proposed Plan change, not a mandate. Accept it only when it
    would make the plan smaller, replace special-case tasks with a
    bounded criterion, or simplify the code shape for the current
-   scope. If accepting it changes the agreed scope, start pause
-   and rescope. If it only adds machinery or future-proofing,
-   reject it.
+   scope. If accepting it changes the agreed scope, start a
+   Rescope Discussion. If it only adds machinery or
+   future-proofing, reject it.
 
    If the reply includes a possible rescope signal, decide whether
    to start a Rescope (see "Rescope Discussion" below).
@@ -248,7 +248,7 @@ planning analysis before proposing tasks. Follow the steps below in sequence.
    carries no open questions.
 
 7. **Share the Approved Plan with Junio.** He reviewed the
-   Draft Plan in step 7 but hasn't seen what came out of the
+   Draft Plan in step 4 but hasn't seen what came out of the
    Plan A and Plan B step or what the user picked, and his
    per-task audits in Phase 3 work against the approved plan.
    Send him the same content you sent the user, flagged as for
@@ -851,7 +851,7 @@ on scope-risk observations from your planning analysis and
 related items Junio raised in his review. Plan B anticipates
 what would naturally follow once Plan A lands: work that would
 more fully resolve the underlying concerns. Shape the additions
-the same way you shape any task (see step 5 above) — group
+the same way you shape any task (see step 3 above) — group
 observations as the criterion dictates, rather than mapping one
 task per observation.
 
@@ -871,7 +871,7 @@ surfaced to add — no scope-risk observations and nothing
 related from Junio — the proposal carries only Plan A.
 
 If a candidate addition would require dropping or reshaping
-Plan A rather than extending it, that is pause and rescope
+Plan A rather than extending it, that is Rescope Discussion
 territory — handle there instead of folding the option into
 Plan B.
 
