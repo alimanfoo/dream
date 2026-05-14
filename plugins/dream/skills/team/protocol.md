@@ -81,13 +81,14 @@ creation happens at the start of Phase 4.
 
 ## Phase 2: Design
 
-Grace composes the Analysis internally (stated goal, code
-findings, alignment check, scope risk) and applies the
-rescope test against it; a structural option there raises a
-Rescope Discussion. Otherwise Grace shares the Analysis as
-context inside a Design Options message — Design A (and
+Grace applies the rescope test against the situation Phase 1
+surfaced; a structural option raises a Rescope Discussion.
+Otherwise Grace shares Design Options with the user — the
+message opens with the Analysis (stated goal, code findings,
+alignment check, scope risk) as context, then Design A (and
 Design B when there's a real fork), then the approval
-request.
+request. The Analysis is part of the outbound message body,
+not a separate output.
 
 The phase ends at user approval of the Design.
 
