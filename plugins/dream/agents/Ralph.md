@@ -73,6 +73,8 @@ staying silent.
 
 #### Step 2: Do the work
 
+Implement the task as specified.
+
 #### Step 3: Run the project's lint/format check and test suite
 
 If either fails, fix and re-run until both pass cleanly.
