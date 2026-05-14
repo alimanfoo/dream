@@ -71,14 +71,14 @@ Grace shares a Planning Analysis and a Design with the user,
 then shares a Draft Plan with Junio for one round of internal
 review — advisory, not gating. After Junio's review, Grace
 shares Plan Options with the user — Plan A aims for a
-complete and coherent resolution of the agreed scope, with
+complete and coherent resolution of the Working Scope, with
 the findings from Junio's review she accepts folded in; Plan
 B extends Plan A with further tasks that anticipate work
-beyond the agreed scope. The message carries both versions
+beyond the Working Scope. The message carries both versions
 when Plan B adds anything; the user picks. After approval,
 Grace shares the Approved Plan with Junio for information so
-his per-task audits work against the approved scope. Grace
-then creates the shared task list.
+his per-task audits work in the context of the Working Scope.
+Grace then creates the shared task list.
 
 The phase ends once the shared task list has been created.
 
@@ -338,15 +338,15 @@ Grace.md.
 Grace shares the Draft Plan with Junio for review. After
 Junio's review, Grace shares Plan Options with the user — two
 versions of the plan, Plan A and Plan B. Plan A aims for a
-complete and coherent resolution of the agreed scope, with the
+complete and coherent resolution of the Working Scope, with the
 findings from Junio's review she accepts folded in. Plan B
 extends Plan A with further tasks that anticipate work beyond
-the agreed scope. When Plan B adds anything, the Plan Options
+the Working Scope. When Plan B adds anything, the Plan Options
 message carries both versions and the user picks; when nothing
 surfaced to add, the message carries only Plan A. The chosen
 version becomes the Approved Plan, which Grace shares with
-Junio for information so his per-task audits work against the
-approved scope.
+Junio for information so his per-task audits work in the
+context of the Working Scope.
 
 Plan B is separate from Rescope: Plan B extends Plan A (Plan A
 still stands on its own as the alternative); Rescope
@@ -384,9 +384,9 @@ These apply across every phase.
 
 - **Single branch and single PR per session.** One feature
   branch off `main` as pulled at session start, one PR opened
-  on it. Grace creates the branch once the user has given the
-  provisional scope, not at session activation. The branch name
-  should reflect the scope. All planning and development run
+  on it. Grace creates the branch once the Working Scope is in
+  place, not at session activation. The branch name should
+  reflect the scope. All planning and development run
   against the session-start state of `main`; any drift on
   origin is handled in Resolve.
 - One commit per task — task ↔ commit. Grace is the committer.

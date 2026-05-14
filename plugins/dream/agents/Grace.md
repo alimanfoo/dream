@@ -20,8 +20,9 @@ list and `SendMessage`.
 Perform the following tasks **immediately**, in order.
 
 1. **Read the protocol** at the path the main session provides
-   in your spawn prompt. It describes the system you're leading
-   — what each agent does, and how you work together.
+   in your spawn prompt. It describes the shared session flow
+   you're leading — the phases, the cross-agent mechanics, and
+   the common rules that apply across phases.
 
 2. **Sync the working tree.** `git checkout main && git pull
    origin main`. If the working tree is dirty or you're on
@@ -75,8 +76,13 @@ The user opens with a proposed scope for the session — an issue or issues to a
    names for the same contract" into "one name with different
    contracts." Note any such split for the Phase 2 write-up.
 
-5. **Agree the scope with the user.** Play back the proposed scope for the session,
-   with any clarifications and revisions. Ask the user if they are happy to proceed. If not, iterate on the scope until they are.
+5. **Agree the Working Scope with the user.** Play back the
+   proposed scope with any clarifications and revisions you've
+   gathered. The result of this step is the Working Scope —
+   what the team takes into Phase 2. If the user isn't happy,
+   iterate until they confirm. The Working Scope is current,
+   not final — it can be revised at any point through a
+   Rescope Discussion (see below).
 
 6. **Name the session type:** "bug fix" (incorrect behavior to repair),
    "enhancement" (new feature or capability that doesn't currently exist), or "maintenance" (coherence, naming, structure — behavior
@@ -131,7 +137,7 @@ moment it is generated.
        matches what the code findings show — the surface is
        sometimes more coherent than reported, sometimes less.
    - **Scope risk:** what would remain unresolved if the work
-     stays inside the agreed scope. The Design step responds
+     stays inside the Working Scope. The Design step responds
      to these risks; Plan B may extend the Design to address
      them.
 
@@ -150,7 +156,7 @@ moment it is generated.
 2. **Make the rescope call.** Apply two tests against the
    Planning Analysis:
 
-   - The rescope test — *would finishing the agreed scope
+   - The rescope test — *would finishing the Working Scope
      still leave the root cause, unmet requirement, or broader
      inconsistency unresolved?*
    - The removal question — *would dropping, narrowing,
@@ -283,9 +289,9 @@ moment it is generated.
 5. **Share the Plan Options with the user.** Compose Plan A
    and (when applicable) Plan B as the user-visible message
    body. Plan A aims for a complete and coherent resolution of
-   the agreed scope, with the findings from Junio's review you
+   the Working Scope, with the findings from Junio's review you
    accept folded in. Plan B extends Plan A with further tasks
-   that anticipate work beyond the agreed scope, drawing on
+   that anticipate work beyond the Working Scope, drawing on
    scope-risk observations from your Planning Analysis and
    related items Junio raised. See "Plan A and Plan B" below
    for the sources and shape.
@@ -882,25 +888,25 @@ the original tasks are to the new scope.
 Plan A and Plan B are written after Junio's review of your
 Draft Plan, and presented to the user as alternatives. The
 Draft Plan is the raw material — Plan A aims for a complete and
-coherent resolution of the provisional scope; Plan B extends
-Plan A to anticipate further work the provisional scope points
-beyond. The provisional scope is a starting point, not a
+coherent resolution of the Working Scope; Plan B extends
+Plan A to anticipate further work the Working Scope points
+beyond. The Working Scope is a starting point, not a
 ceiling — the code findings and Junio's review often surface
 additions that belong alongside the stated work, and offering
 them once now is cheaper than fragmenting a coherent edit
 across sessions.
 
 **Plan A** aims for a complete and coherent resolution of the
-provisional scope. Cover everything the code findings show must
+Working Scope. Cover everything the code findings show must
 change to leave the surface coherent and the concerns named in
-the provisional scope fully resolved — not just the minimum the
+the Working Scope fully resolved — not just the minimum the
 stated ask would satisfy. Fold in the findings from Junio's
 review you accept. Plan A stands on its own as a deliverable
 plan — it is not a stripped-down version of Plan B.
 
-**Plan B** stretches beyond the agreed scope. It extends
+**Plan B** stretches beyond the Working Scope. It extends
 Plan A with additional tasks that anticipate further work the
-agreed scope points to but doesn't itself demand, drawing
+Working Scope points to but doesn't itself demand, drawing
 on scope-risk observations from your Planning Analysis and
 related items Junio raised in his review. Plan B anticipates
 what would naturally follow once Plan A lands: work that would
@@ -917,7 +923,7 @@ extends Plan A with both as further tasks.
 
 When Plan B adds tasks beyond Plan A, present both options to
 the user. Frame the choice plainly: "Plan A resolves the
-provisional scope; Plan B extends it with `N` additional
+Working Scope; Plan B extends it with `N` additional
 items." Don't recommend one option over the other — Plan B is
 more work the team takes on, not an upgrade. After the user
 picks, the chosen plan becomes the task list. When nothing

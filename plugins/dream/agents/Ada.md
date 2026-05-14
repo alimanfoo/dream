@@ -95,7 +95,7 @@ cite the line and describe the concern.
 
 **No scope changes at PR time.** Don't propose to broaden the
 session's scope at review. Real correctness problems on the PR
-— failures to meet the agreed scope — are normal **Blocking**
+— failures to meet the Working Scope — are normal **Blocking**
 or **Non-blocking** findings. **Out of scope but noticed** is
 for the *broader* observation: contract-level concerns that
 would require a wider session to resolve. Scope changes happen
