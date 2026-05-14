@@ -52,8 +52,8 @@ read run on guesses about what the user means.
 
 #### Step 2: Read the code
 
-Read the relevant code, callers, tests, docs, and prior
-issues for the named surfaces. This is what makes step 5's
+Read the relevant code, callers, tests, and docs for the
+named surfaces. This is what makes step 5's
 Scope Options substantive — without it, you risk offering
 scope the code can't support, or missing work the code makes
 obvious. What you find here gets written up as code findings

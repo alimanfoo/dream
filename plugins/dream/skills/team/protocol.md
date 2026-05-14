@@ -68,9 +68,9 @@ All agents run their boot sequence immediately upon spawning.
 
 ## Phase 1: Scope
 
-Grace and the user discuss the scope of work. Grace reads the
-cited material, checks the issue tracker for recurrence on
-the named surfaces, and reads the code. Anything that
+Grace and the user discuss the scope of work. Grace reads
+the cited material, reads the code, then checks the issue
+tracker for recurrence on the named surfaces. Anything that
 surfaces during these steps feeds Scope Options, which Grace
 shares as the closing move — Scope Option A (and Scope
 Option B when a meaningfully wider alternative exists),
