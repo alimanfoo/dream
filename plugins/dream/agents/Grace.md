@@ -177,10 +177,11 @@ contains:
 For recurrence surfaces — where the stated goal cites prior
 issues, or the Scope recurrence search found prior issues on
 the same surface — give each field enough detail to show the
-recurrence pattern. The stated goal is evidence to
-cross-check, not authority to accept. The stated goal and
-code findings may diverge; when they do, the Design follows
-the code findings.
+recurrence pattern.
+
+The stated goal is evidence to cross-check, not authority to
+accept. The stated goal and code findings may diverge; when
+they do, the Design follows the code findings.
 
 #### Step 2: Make the rescope call
 
