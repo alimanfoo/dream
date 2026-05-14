@@ -44,6 +44,12 @@ follow the steps below in sequence.
 
 #### Step 1: Read the cited material
 
+Read everything the user cites in their proposed scope —
+issue bodies, prior issues they reference, linked PRs, named
+files or symbols. This is the substantive baseline for the
+steps that follow; without it, the recurrence check and code
+read run on guesses about what the user means.
+
 #### Step 2: Check for recurrence
 
 Identify the surfaces the user has named — a function, a
