@@ -147,10 +147,7 @@ Diagnostic — names what is, not what to build. The Analysis
 contains:
 
 - **Stated goal:** what the Working Scope says should
-  change. Flag goals that propose adding prose to express a
-  contract (a docstring, a comment) — these have two
-  readings, a real documentation task or a shape task
-  wearing docstring clothes, and the Design resolves which.
+  change.
 - **Code findings:** what the Phase 1 read showed about the
   current shape, with file:line or symbol citations so the
   Analysis is verifiable.
