@@ -87,7 +87,8 @@ names for the same contract" into "one name with different
 contracts." Note any such split for the Analysis.
 
 A recurrence pattern feeds Scope Options at step 5: it often
-points to a wider option Scope B can offer the user.
+points to a wider alternative worth offering as Scope Option
+B.
 
 #### Step 4: Ask questions
 
@@ -99,20 +100,20 @@ than shallow questions the user can't usefully answer.
 
 #### Step 5: Share Scope Options with the user
 
-Compose Scope A — the user's proposed scope with any
+Compose Scope Option A — the user's proposed scope with any
 clarifications and revisions from steps 1–4 folded in. When
 the recurrence check, code read, or user input surfaces a
-meaningfully wider option, compose Scope B as a parallel
-option that takes on more of the underlying concern. Name
-the session type for each — "bug fix" (incorrect behavior to
-repair), "enhancement" (new feature or capability that
-doesn't currently exist), or "maintenance" (coherence,
-naming, structure; behavior already correct). If the type
-for an option isn't obvious, ask before composing.
+meaningfully wider alternative, compose Scope Option B that
+takes on more of the underlying concern. Name the session
+type for each — "bug fix" (incorrect behavior to repair),
+"enhancement" (new feature or capability that doesn't
+currently exist), or "maintenance" (coherence, naming,
+structure; behavior already correct). If the session type
+isn't obvious, ask before composing.
 
 Frame the choice plainly without recommending one over the
-other. When Scope B adds nothing, the message carries only
-Scope A and asks for approval.
+other. When Scope Option B adds nothing, the message
+carries only Scope Option A and asks for approval.
 
 End the message with an explicit approval request that names
 the artifact and the next phase: *"Approve the Working Scope
@@ -127,7 +128,7 @@ and return to step 5; repeat until approved.
 This is one of the protocol's three user approval gates —
 see "Approval gates" in `protocol.md`.
 
-Even after approval, the Working Scope is not set in stone.
+N.B., even after approval, the Working Scope is not set in stone.
 It can be revised at any point through a Rescope Discussion
 (see below).
 
@@ -172,9 +173,9 @@ contains:
     sometimes more coherent than reported, sometimes less.
 - **Scope risk:** what would remain unresolved if the work
   stays inside the Working Scope. The Design responds to
-  these risks — a risk that points to a wider option can
-  surface as Design B; a structural risk goes to step 2's
-  rescope call.
+  these risks — a risk that points to a wider alternative
+  can surface as Design Option B; a structural risk goes to
+  step 2's rescope call.
 
 For recurrence surfaces — where the stated goal cites prior
 issues, or the Scope recurrence search found prior issues on
@@ -201,7 +202,7 @@ requirement is unclear, ask the user before moving on.
 
 #### Step 3: Share Design Options with the user
 
-One message: Design A (and Design B when there's a real
+One message: Design Option A (and Design Option B when there's a real
 fork), then the approval request.
 
 The Design names what the code will look like when the work
@@ -231,13 +232,13 @@ more generally, apply the **code-shape-first check** (see
 Phase 3 step 2 for the full ladder) before accepting them
 as prose work.
 
-**Design Options.** Design A is the approach you propose
-and recommend. Design B is a parallel alternative when
+**Design Options.** Design Option A is the approach you propose
+and recommend. Design Option B is a parallel alternative when
 there's a real fork — a meaningfully different approach
 that earns the user's call, often anchored in a scope-risk
 observation from the Analysis. Frame the choice plainly.
 When the Design has a single plausible shape, the message
-carries only Design A. If the user holds the call on a
+carries only Design Option A. If the user holds the call on a
 fork, carry the choice forward — don't decide for them.
 
 If the Design surfaces a scope problem the Analysis didn't
@@ -883,7 +884,7 @@ When the task list may be addressing the symptom rather than
 the root cause, unmet requirement, or broader inconsistency
 behind it, pause and raise it with the user before continuing.
 You can do this at Design, Plan, or Develop. (At Scope time,
-the wider option surfaces as Scope B during normal Phase 1
+the wider alternative surfaces as Scope Option B during normal Phase 1
 flow, not as a separate Rescope Discussion.) The shape is the
 same every time:
 

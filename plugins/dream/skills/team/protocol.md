@@ -72,9 +72,9 @@ Grace and the user discuss the scope of work. Grace reads the
 cited material, checks the issue tracker for recurrence on
 the named surfaces, and reads the code. Anything that
 surfaces during these steps feeds Scope Options, which Grace
-shares as the closing move — Scope A (and Scope B when a
-meaningfully wider option exists), each carrying its session
-type.
+shares as the closing move — Scope Option A (and Scope
+Option B when a meaningfully wider alternative exists),
+each carrying its session type.
 
 The phase ends at user approval of the Working Scope.
 
@@ -84,7 +84,7 @@ Grace shares the Analysis (stated goal, code findings,
 alignment check, scope risk) with the user, then applies
 the rescope test; a structural option raises a Rescope
 Discussion. Otherwise Grace shares Design Options with the
-user — Design A (and Design B when there's a real fork),
+user — Design Option A (and Design Option B when there's a real fork),
 then the approval request.
 
 The phase ends at user approval of the Design.
