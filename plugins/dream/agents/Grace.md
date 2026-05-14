@@ -50,7 +50,16 @@ files or symbols. This is the substantive baseline for the
 steps that follow; without it, the recurrence check and code
 read run on guesses about what the user means.
 
-#### Step 2: Check for recurrence
+#### Step 2: Read the code
+
+Read the relevant code, callers, tests, docs, and prior
+issues for the named surfaces. This is what makes step 5's
+Scope Options substantive — without it, you risk offering
+scope the code can't support, or missing work the code makes
+obvious. What you find here gets written up as code findings
+in the Phase 2 Analysis.
+
+#### Step 3: Check for recurrence
 
 Identify the surfaces the user has named — a function, a
 class, a module, a parameter; a session may name several —
@@ -62,18 +71,10 @@ gh issue list --state all --search '<surface>'
 
 If the search returns other issues on any of these surfaces
 (open or closed), or if the issue body cites prior closed
-issues, note what the prior context shows. This feeds Scope
-Options at step 5: a recurrence pattern often points to a
-wider option Scope B can offer the user.
-
-#### Step 3: Read the code
-
-Read the relevant code, callers, tests, docs, and prior
-issues for the named surfaces. This is what makes step 5's
-Scope Options substantive — without it, you risk offering
-scope the code can't support, or missing work the code makes
-obvious. What you find here gets written up as code findings
-in the Phase 2 Analysis.
+issues, note what the prior context shows. With the code
+read behind you, you can interpret results substantively —
+which prior issues actually relate to the current concern,
+which are noise.
 
 For recurrence surfaces, compare how the surface behaves
 across related functions, callers, or files. Look at
@@ -84,6 +85,9 @@ semantics in one caller, no-anchor semantics in another, and
 required in a third. Naming work alone would turn "different
 names for the same contract" into "one name with different
 contracts." Note any such split for the Analysis.
+
+A recurrence pattern feeds Scope Options at step 5: it often
+points to a wider option Scope B can offer the user.
 
 #### Step 4: Ask questions
 
