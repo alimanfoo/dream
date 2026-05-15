@@ -342,6 +342,7 @@ from the Design — they are the work that delivers it — and
 the Code Analysis. Don't translate the original user
 framing directly into tasks; the Design has already
 reshaped it where needed.
+
 Each task should be a manageable unit of work for Ralph —
 one coherent change in one commit. Split tasks that grow
 beyond that; fold fragments into a related task. Choose the
