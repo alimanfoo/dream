@@ -85,10 +85,10 @@ the session type (bug fix, enhancement, or maintenance) and
 shares the Requirements Analysis — consumers, use cases,
 non-goals, and open questions, with each inference marked
 stated or assumed — for user approval. With the Requirements
-Analysis approved, anything that surfaced during the prior
-steps feeds Scope Options, which Grace shares as the closing
-move — Scope Option A (and Scope Option B when a meaningfully
-wider alternative exists).
+Analysis approved, Grace shares Scope Options as the closing
+move — the Coherent Scope (always), the Minimal Scope (when
+narrower than Coherent), and the Expanded Scope (when a wider
+alternative is real).
 
 The phase ends at user approval of the Working Scope.
 
