@@ -269,6 +269,11 @@ approval request. Two named options, both always present:
   - **Removal over addition.** Ask "could removing
     something achieve the goal?" — drop or narrow a
     feature, remove a branch, delete a layer.
+  - **Surviving-purpose check.** For each function the
+    Design modifies, ask: after the change lands, does
+    any remaining code still have a purpose? Code the
+    change leaves purposeless should be removed in the
+    same Design.
   - **Modification over new code.** Ask "could modifying
     existing code achieve the goal rather than adding
     alongside?"
