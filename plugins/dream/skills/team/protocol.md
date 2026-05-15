@@ -87,7 +87,7 @@ non-goals, and open questions, with each inference marked
 stated or assumed — for user approval. With the Requirements
 Analysis approved, Grace shares Scope Options as the closing
 move — the Coherent Scope (always), the Minimal Scope (when
-narrower than Coherent), and the Expanded Scope (when a wider
+narrower than Coherent), and the Maximal Scope (when a wider
 alternative is real).
 
 The phase ends at user approval of the Working Scope.

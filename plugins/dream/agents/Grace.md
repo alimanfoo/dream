@@ -87,7 +87,7 @@ names for the same contract" into "one name with different
 contracts." Note any such split for the Analysis.
 
 A recurrence pattern feeds Scope Options at step 7: it often
-points to a wider alternative worth offering as the Expanded
+points to a wider alternative worth offering as the Maximal
 Scope.
 
 #### Step 4: Name the session type
@@ -179,10 +179,11 @@ Three named options, presented conditional on existing:
   gaps named. Gives the user a way to decline the
   coherence work explicitly (time pressure, scope
   discipline, will handle the rest separately).
-- **Expanded Scope** (when a wider alternative is real) —
+- **Maximal Scope** (when a wider alternative is real) —
   beyond the Coherent Scope, takes on anticipated further
   work that the recurrence check, code read, or user
-  input surfaced.
+  input surfaced. Not everything imaginable — the widest
+  sensible alternative the investigation surfaced.
 
 The Coherent Scope is always present. The other two are
 conditional — most sessions land on Coherent alone.
@@ -940,7 +941,7 @@ than the root cause, unmet requirement, or broader
 inconsistency behind it, pause and raise it with the user
 before continuing. You can do this at Design, Plan, or
 Develop. (At Scope time, the wider alternative surfaces as
-the Expanded Scope during normal Phase 1 flow, not as a
+the Maximal Scope during normal Phase 1 flow, not as a
 separate Rescope Discussion.) The shape is the same every
 time:
 
