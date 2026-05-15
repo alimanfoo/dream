@@ -185,9 +185,6 @@ Three named options, each with its presence condition:
   everything imaginable — the widest sensible
   anticipation, not speculation.
 
-The Coherent Scope is always present. The other two are
-conditional — most sessions land on Coherent alone.
-
 Frame the choice plainly without recommending one over the
 others. When only the Coherent Scope applies, the message
 carries that alone and asks for approval.
@@ -205,9 +202,9 @@ and return to step 7; repeat until approved.
 This is one of the protocol's four user approval gates —
 see "Approval gates" in `protocol.md`.
 
-N.B., even after approval, the Working Scope is not set in stone.
-It can be revised at any point through a Rescope Discussion
-(see below).
+Even after approval, the Working Scope is not set in
+stone. It can be revised at any point through a Rescope
+Discussion (see below).
 
 The phase ends at user approval of the Working Scope.
 
@@ -266,7 +263,7 @@ approval request. Two named options, both always present:
   that could possibly work." Agents are biased to
   overengineer, overcomplicate, add rather than remove,
   and avoid modifying existing code; the Simplest Design
-  slot upturns that. Construct it by deliberately
+  slot counters that. Construct it by deliberately
   counterbalancing each bias:
 
   - **Removal over addition.** Ask "could removing
@@ -292,20 +289,17 @@ approval request. Two named options, both always present:
   not recommend it. Name it and what it gives up versus
   the Proposed; the user picks.
 
-If the work reads as a shape task wearing docstring
-clothes — for example "expand the docstring to express a
-contract" when the structure is wider than the contract —
-this is where you reshape it. Name the structural change in
-the Proposed Design; the Plan derives from the Design, not
-from the original framing. For docstring or comment
-proposals more generally, apply the **code-shape-first
-check** (see below) before accepting them as prose work.
+Sometimes the user asks for a docstring or comment change
+when the real fix is structural. Example: "expand the
+docstring to express a contract" — but the function's
+signature doesn't enforce the contract, so the prose stands
+in for what the code should carry. When you spot this,
+reshape the Proposed Design around the structural change.
+The Plan follows the Design, not the original framing.
 
-If the Design surfaces a scope problem the Code Analysis
-didn't catch — for example, the change reaches further than
-the Working Scope contains, or the Design depends on
-something outside the scope — raise a Rescope Discussion
-before moving on.
+Apply the **code-shape-first check** (see below) to any
+docstring or comment proposal before treating it as prose
+work.
 
 End the message with an explicit approval request:
 *"Approve the Design to proceed to Phase 3: Plan."*
@@ -332,8 +326,9 @@ with the user for approval.
 #### Step 1: Share the Draft Plan with Junio for review
 
 Compose the Draft Plan as the `SendMessage` body — the
-Code Analysis, the Design, and a draft task list. Sign off
-`From Grace. RSVP via SendMessage.`
+Session Type, the Requirements Analysis, the Code Analysis,
+the Design, and a draft task list. Sign off `From Grace.
+RSVP via SendMessage.`
 
 Compose the draft task list with these rules. Derive tasks
 from the Design — they are the work that delivers it — and
@@ -342,24 +337,30 @@ framing directly into tasks; the Design has already
 reshaped it where needed.
 
 Each task should be a manageable unit of work for Ralph —
-one coherent change in one commit. Split tasks that grow
-beyond that; fold fragments into a related task. Choose the
-task shape before writing each task brief:
+one commit per task. Split tasks that grow beyond
+manageable; fold fragments into a related task.
 
-- **Fixed-set tasks** have a set determined by something
-  other than your survey: one function edit, one rename, a
-  known list of files to move, or a delete whose targets
-  are already fixed. Enumerate the exact items.
-- **Survey-shaped tasks** have a set determined by a
-  criterion or pattern: tighten every loose assertion of a
+Your default bias is to enumerate exhaustively — every
+file, every site, every instance. This works for fixed-set
+work but suppresses Ralph's judgment when the set is
+pattern-shaped. Choose the task shape before writing each
+brief:
+
+- **Fixed-set tasks** have a set you can fully enumerate:
+  one function edit, one rename, a known list of files to
+  move, a delete whose targets are already fixed. List the
+  exact items.
+- **Pattern-shaped tasks** have a set Ralph determines by
+  applying a criterion: tighten every loose assertion of a
   kind, remove every deprecated phrase in a module, find
-  every occurrence of a call shape. The brief includes the
-  goal, the criterion in its positive form, a handful of
-  examples from your survey, and the raise channel — Ralph
-  raises anything ambiguous, plus any sibling surface he
-  spots that looks like the same edit on a wider footprint
-  (the protocol's "Defend completeness" call). Tell Ralph
-  to apply the criterion fresh.
+  every occurrence of a call shape. The brief gives the
+  goal, the criterion in its positive form, two or three
+  concrete examples, and the raise channel — Ralph raises
+  anything ambiguous, plus any sibling surface that looks
+  like the same edit on a wider footprint (see the
+  same-edit test in the coherence chain). Tell Ralph to
+  apply the criterion fresh, not to mirror what the
+  examples cover.
 
 Junio replies with a numbered list of findings (or "no
 substantive findings"), optionally with a possible rescope
@@ -400,19 +401,13 @@ When the reply includes a generalisation candidate, treat it
 as a proposed Plan change, not a mandate. Fold it in only
 when it would make the Plan smaller, replace special-case
 tasks with a bounded criterion, or simplify the code shape
-for the current scope. If accepting it would change the
-Working Scope, escalate to Rescope. If it only adds machinery
-or future-proofing, reject.
+for the current scope. If it only adds machinery or
+future-proofing, reject.
 
 If the reply includes a possible rescope signal, decide
 whether to start a Rescope Discussion. The signal is an
 observation, not a finding — your call whether the task
 list looks symptom-shaped enough to pause.
-
-If revisions during Junio's review materially change the
-Design, re-approve the revised Design with the user — the
-Phase 2 step 3 approval gate applies again — before sharing
-the revised Plan in step 3.
 
 #### Step 3: Share the revised Plan with the user
 
@@ -482,8 +477,8 @@ brief carries the goal, the in-scope items as a positive
 statement, and the raise channel — Ralph raises anything he
 disagrees with, anything ambiguous, and any sibling surface
 he spots that looks like the same edit on a wider footprint
-(the protocol's "Defend completeness" call). For
-survey-shaped tasks, the positive statement is the
+(see the same-edit test in the coherence chain). For
+pattern-shaped tasks, the positive statement is the
 criterion, the transformation pattern, and examples.
 
 The tool descriptions push the wrong way. `SendMessage`'s
@@ -1385,7 +1380,7 @@ carries the goal, the in-scope items as a positive statement,
 and the raise channel — Ralph raises anything he disagrees
 with, anything ambiguous, and any sibling surface he spots that
 looks like the same edit on a wider footprint. For a fixed-set
-task, enumerate the exact items. For a survey-shaped task, give
+task, enumerate the exact items. For a pattern-shaped task, give
 Ralph the criterion, transformation pattern, and examples so he
 can apply the pattern fresh. The task description travels with
 the `TaskUpdate` assignment, so no separate dispatch message is

@@ -337,7 +337,7 @@ These apply across every phase.
   issue `(#N)` in parens where applicable, no body unless
   needed, no `Co-Authored-By` trailer.
 - Grace never pushes to `main` unless the user explicitly asks.
-- **Three gates, three actors.** Lint and tests are the Ralph's
+- **Three gates, three actors.** Lint and tests are Ralph's
   gate, run once before reporting done. Grace trusts that
   report and doesn't duplicate the work. The commit hook is the
   cross-check at the commit step. CI is the pre-merge gate.
