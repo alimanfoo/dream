@@ -220,47 +220,27 @@ proposes to build. You share the Analysis as diagnostic
 context, apply the rescope test, and then share Design
 Options with the user for approval.
 
-#### Step 1: Share the Analysis with the user
+#### Step 1: Share the Code Analysis with the user
 
-Diagnostic — names what is, not what to build. The Analysis
-contains:
+Share the Code Analysis — a verifiable read of what the
+current code does and where, with file:line or symbol
+citations. The purpose is visible grounding for the Design
+that follows: the user sees the code as Grace reads it
+before seeing what Grace proposes to build on top of it.
+Depth scales with session type:
 
-- **Stated goal:** what the Working Scope says should
-  change.
-- **Code findings:** what the Phase 1 read showed about the
-  current shape, with file:line or symbol citations so the
-  Analysis is verifiable.
-  - *Bug fix:* the mechanism causing the incorrect
-    behaviour.
-  - *Enhancement:* the integration surface — where the
-    enhancement would land, what it touches, what adjacent
-    behaviour it might affect.
-  - *Maintenance:* the inconsistency pattern across the
-    named surface, with specific instances.
-- **Alignment check:** where the stated goal and the code
-  findings agree or diverge.
-  - *Bug fix:* where the issue's claimed cause agrees or
-    diverges from what the code findings show.
-  - *Enhancement:* whether the integration surface in the
-    code findings supports the stated goal's framing of the
-    change, or where it doesn't.
-  - *Maintenance:* whether the reported inconsistency
-    matches what the code findings show — the surface is
-    sometimes more coherent than reported, sometimes less.
-- **Scope risk:** what would remain unresolved if the work
-  stays inside the Working Scope. The Design responds to
-  these risks — a risk that points to a wider alternative
-  can surface as Design Option B; a structural risk goes to
-  step 2's rescope call.
+- *Bug fix:* the mechanism causing the incorrect
+  behaviour.
+- *Enhancement:* the integration surface — where the
+  enhancement would land, what it touches, what adjacent
+  behaviour it might affect.
+- *Maintenance:* the inconsistency pattern across the
+  named surface, with specific instances.
 
-For recurrence surfaces — where the stated goal cites prior
-issues, or the Scope recurrence search found prior issues on
-the same surface — give each field enough detail to show the
+For recurrence surfaces — where the Working Scope cited
+prior issues, or the Phase 1 recurrence search found prior
+issues on the same surface — give enough detail to show the
 recurrence pattern.
-
-The stated goal is evidence to cross-check, not authority to
-accept. The stated goal and code findings may diverge; when
-they do, the Design follows the code findings.
 
 #### Step 2: Make the rescope call
 
