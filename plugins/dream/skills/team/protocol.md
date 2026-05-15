@@ -96,7 +96,7 @@ The phase ends at user approval of the Working Scope.
 
 Grace shares the Analysis (stated goal, code findings,
 alignment check, scope risk) with the user, then applies
-the rescope test; a structural option raises a Rescope
+the Coherence Test; a structural option raises a Rescope
 Discussion. Otherwise Grace shares Design Options with the
 user — Design Option A (and Design Option B when there's a real fork),
 then the approval request.

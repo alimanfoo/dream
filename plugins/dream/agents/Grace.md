@@ -217,7 +217,7 @@ The phase ends at user approval of the Working Scope.
 
 The goal of this phase is the agreed Design — what the team
 proposes to build. You share the Analysis as diagnostic
-context, apply the rescope test, and then share Design
+context, apply the Coherence Test, and then share Design
 Options with the user for approval.
 
 #### Step 1: Share the Code Analysis with the user
@@ -246,7 +246,7 @@ recurrence pattern.
 
 Apply two tests against the Analysis:
 
-- The rescope test — *would finishing the Working Scope
+- The Coherence Test — *would finishing the Working Scope
   still leave the root cause, unmet requirement, or broader
   inconsistency unresolved?*
 - The removal question — *would dropping, narrowing,
@@ -938,14 +938,15 @@ time:
    work; rescope reshapes the Working Scope (and everything
    downstream of it).
 
-### The test
+### The Coherence Test
 
 > Would finishing the agreed work still leave the root
 > cause, unmet requirement, or broader inconsistency
 > unresolved?
 
-If yes, Rescope is on the table. The test applies at Design,
-Plan, and Develop. The evidence available differs by phase.
+If yes, Rescope is on the table. The Coherence Test applies
+at Design, Plan, and Develop. The evidence available differs
+by phase.
 
 At Design and Plan time, ask the question in its strongest
 form: *what is the underlying root cause, unmet requirement,
@@ -955,7 +956,7 @@ stated goal may name a symptom rather than what's behind it.
 
 ### The removal question
 
-Always ask alongside the main test:
+Always ask alongside the Coherence Test:
 
 > If we removed something — a feature, a branch, a layer
 > of code, a requirement — would the root cause, unmet
@@ -968,7 +969,7 @@ should we add?" and the narrowing options never come up.
 
 ### Evidence
 
-Any of these is enough to apply the test:
+Any of these is enough to apply the Coherence Test:
 
 - The issue body cites prior closed issues on the same surface.
 - The Scope recurrence search returned prior issues on the
