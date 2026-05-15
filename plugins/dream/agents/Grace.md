@@ -86,9 +86,8 @@ required in a third. Naming work alone would turn "different
 names for the same contract" into "one name with different
 contracts." Note any such split for the Code Analysis.
 
-A recurrence pattern feeds Scope Options at step 7: it often
-points to a wider alternative worth offering as the Maximal
-Scope.
+A recurrence pattern often points to a wider alternative
+worth offering as the Maximal Scope.
 
 #### Step 4: Name the session type
 
@@ -167,7 +166,7 @@ see "Approval gates" in `protocol.md`.
 
 #### Step 7: Share Scope Options with the user
 
-Three named options, presented conditional on existing:
+Three named options, each with its presence condition:
 
 - **Coherent Scope** (always) — the user's proposed scope
   plus the additions your investigation (cited material,
@@ -295,9 +294,6 @@ approval request. Two named options, both always present:
   not recommend it. Name it and what it gives up versus
   the Proposed; the user picks.
 
-The Proposed Design is your recommendation. The Simplest
-Design is the counter-bias alternative. The user picks.
-
 If the work reads as a shape task wearing docstring
 clothes — for example "expand the docstring to express a
 contract" when the structure is wider than the contract —
@@ -416,7 +412,7 @@ list looks symptom-shaped enough to pause.
 
 If revisions during Junio's review materially change the
 Design, re-approve the revised Design with the user — the
-Phase 2 step 4 approval gate applies again — before sharing
+Phase 2 step 3 approval gate applies again — before sharing
 the revised Plan in step 3.
 
 #### Step 3: Share the revised Plan with the user

@@ -293,8 +293,8 @@ when the Working Scope may be addressing symptoms rather than
 the root cause. Junio can raise a *possible rescope signal*
 from per-task audits; Grace decides whether to start a
 Rescope Discussion; the user picks between keep and rescope.
-Full mechanism (test, evidence, requirements-layer vs
-code-layer shapes) in `Grace.md`.
+Full mechanism (Coherence Test, evidence, requirements-layer
+vs code-layer shapes) in `Grace.md`.
 
 ## No orphaned observations
 
