@@ -679,6 +679,13 @@ per-task workflow including Junio's audit), Reject (note in
 your reply to the user, with the reason), or Out of scope
 (held for the post-merge bucket).
 
+Keep one response note per Ada finding as you triage. Accepted
+findings record the follow-on task and, once complete, the
+commit or PR-visible evidence that addressed it. Rejected
+findings record the reason. Out-of-scope findings record that
+they are held for post-merge triage. These notes become the
+public response in step 4.
+
 Reclassify any "out of scope but noticed" item as in scope
 when it is the same edit — one the PR missed, or one the PR
 has now made adjacent. The review bucket is for broader
@@ -689,14 +696,40 @@ comment, or section-header to express a contract,
 invariant, precondition, or convention, apply the
 **code-shape-first check** (see below) before deciding.
 
-#### Step 4: Mark the PR ready for review
+#### Step 4: Post Grace's response as a PR comment
+
+After all accepted findings have been handled through the
+standard per-task workflow, post one response comment via
+`gh pr comment <N> --body "..."`. This is Grace's public answer
+to Ada's review. It records how the review was acted on so a
+reader does not have to reconstruct the outcome from commits,
+task messages, or the user's chat.
+
+The response is concise and GitHub-facing:
+
+- One item per Ada finding, using Ada's section labels or short
+  finding names.
+- **Accepted** items say they were addressed, with the
+  follow-up commit or PR-visible evidence when useful.
+- **Rejected** items give the reason.
+- **Out of scope** items say they are held for post-merge
+  triage.
+- If Ada had no findings, say no response work was needed.
+
+Do not repost Ada's review text, quote internal teammate
+messages, or use dream-team protocol vocabulary. Append the
+standard Claude Code footer from "Marking agent-authored GitHub
+items" below. If the footer is already present, don't duplicate
+it.
+
+#### Step 5: Mark the PR ready for review
 
 Once all accepted follow-ons from triage are complete, run
 `gh pr ready <N>`. Flipping from draft to ready signals to
 the user that the PR is now worth their attention. If no
 findings were accepted, flip immediately.
 
-#### Step 5: Hand back to the user
+#### Step 6: Hand back to the user
 
 Hand back to the user once all comments are addressed. The
 PR is ready for the user's approval; Phase 6 handles the

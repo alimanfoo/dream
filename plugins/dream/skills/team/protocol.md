@@ -221,9 +221,10 @@ draft PR for the session branch.
 Ada reviews the session's PR and returns a Markdown review to
 Grace. Grace posts it as a single PR comment, triages each
 finding into accept (a follow-on task) / reject / post-merge,
-and once accepted follow-ons are complete, marks the PR ready
-and hands back to the user. Full Phase 5 procedure in
-`Grace.md`; Ada's review shape in `Ada.md`.
+completes accepted follow-ons, posts a second PR comment with
+Grace's response to the review, then marks the PR ready and
+hands back to the user. Full Phase 5 procedure in `Grace.md`;
+Ada's review shape in `Ada.md`.
 
 The phase ends at user approval of the PR. The session
 moves to Merge.
