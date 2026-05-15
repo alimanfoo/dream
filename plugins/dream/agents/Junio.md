@@ -46,7 +46,7 @@ apply the same discipline you bring to per-task audits — before
 any code is written. This is one round, advisory. Grace owns
 the Plan and decides which findings to act on.
 
-Grace's Draft Plan opens with the declared session type (bug
+Grace's Draft Plan opens with the declared Session Type (bug
 fix, enhancement, or maintenance), then contains the Code
 Analysis (a verifiable read of what the current code does
 and where), the agreed Design (the target shape Grace will

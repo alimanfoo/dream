@@ -87,9 +87,9 @@ contracts." Note any such split for the Code Analysis.
 A recurrence pattern often points to a wider alternative
 worth offering as the Maximal Scope.
 
-#### Step 4: Name the session type
+#### Step 4: Name the Session Type
 
-Pin the session type before composing the Requirements
+Pin the Session Type before composing the Requirements
 Analysis — it shapes how much depth the Requirements
 Analysis carries and what later phases focus on. Three
 types:
@@ -109,7 +109,7 @@ continuing.
 #### Step 5: Share the Requirements Analysis
 
 By this point you have read the cited material, the issue
-history, and the code, and pinned the session type.
+history, and the code, and pinned the Session Type.
 Compose the Requirements Analysis — your explicit reading
 of who the work serves and what they do with it — and
 share it with the user. Without this step, hidden
@@ -133,7 +133,7 @@ The Requirements Analysis contains:
   the candidate answers you can see, not as a freeform
   request for clarification.
 
-Depth scales with the session type from step 4. For a bug
+Depth scales with the Session Type from step 4. For a bug
 fix, consumers are usually unchanged from current
 behaviour — one or two sentences is enough. For
 maintenance, the consumer is typically the codebase itself
@@ -156,7 +156,7 @@ Options."*
 Wait for the user's reply. If approved, continue to step
 7. If the user pushes back, revise and return to step 5;
 repeat until approved. If the pushback challenges the
-session type itself, return to step 4 and recompose from
+Session Type itself, return to step 4 and recompose from
 there.
 
 This is one of the protocol's four user approval gates —
@@ -224,7 +224,7 @@ current code does and where, with file:line or symbol
 citations. The purpose is visible grounding for the Design
 that follows: the user sees the code as Grace reads it
 before seeing what Grace proposes to build on top of it.
-Depth scales with session type:
+Depth scales with Session Type:
 
 - *Bug fix:* the mechanism causing the incorrect
   behaviour.
@@ -247,7 +247,7 @@ approval request. Two named options, both always present:
 - **Proposed Design** — your recommendation. Names what
   the code will look like when the work is done, the
   approach proposed, and the key design calls that follow
-  from the Code Analysis. Depth scales with session type:
+  from the Code Analysis. Depth scales with Session Type:
 
   - *Bug fix:* the fix approach. When more than one fix
     shape is plausible (defensive check, structural fix,
@@ -1224,7 +1224,7 @@ categories. Apply with `gh issue create --label <name>`. When
 no clean match exists for a category, file without a label
 rather than force a near-miss.
 
-The category is the finding's type, not the session type — one
+The category is the finding's type, not the Session Type — one
 session can file findings across all three.
 
 ### All communications

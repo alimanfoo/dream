@@ -81,7 +81,7 @@ All agents run their boot sequence immediately upon spawning.
 Grace and the user discuss the scope of work. Grace reads
 the cited material, reads the code, then checks the issue
 tracker for recurrence on the named surfaces. Grace names
-the session type (bug fix, enhancement, or maintenance) and
+the Session Type (bug fix, enhancement, or maintenance) and
 shares the Requirements Analysis — consumers, use cases,
 non-goals, and open questions, with each inference marked
 stated or assumed — for user approval. With the Requirements
