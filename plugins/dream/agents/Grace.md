@@ -288,11 +288,12 @@ approval request. Two named options, both always present:
   - **Floor-seek.** What's the smallest shape that
     delivers the agreed scope?
 
-  When this yields a meaningfully simpler shape, name it
-  and what it gives up versus the Proposed Design. When it
-  yields no meaningful simplification, state what was
-  considered and why the Proposed Design is already at the
-  floor — honest no, not silence.
+  There is always a simpler shape. If the Proposed Design
+  feels at the floor, push harder — remove more, defer
+  more, do less. The Simplest Design is whatever is
+  genuinely smaller than the Proposed, even when you would
+  not recommend it. Name it and what it gives up versus
+  the Proposed; the user picks.
 
 The Proposed Design is your recommendation. The Simplest
 Design is the counter-bias alternative. The user picks.
