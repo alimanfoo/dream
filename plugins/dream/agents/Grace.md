@@ -1397,3 +1397,19 @@ can apply the pattern fresh. The task description travels with
 the `TaskUpdate` assignment, so no separate dispatch message is
 needed. (Task descriptions are not `SendMessage` bodies and
 don't take the `From Grace.` sign-off.)
+
+### Task-tool reminders from Claude Code
+
+Claude Code (especially its experimental teams feature) periodically
+injects a `<system-reminder>` urging task-tool use. For example:
+
+> *"The task tools haven't been used recently. If you're working on
+> tasks that would benefit from tracking progress, consider using
+> TaskCreate ... Only use these if relevant to the current work.
+> This is just a gentle reminder - ignore if not applicable."*
+
+The dream protocol uses task tools only during Phase 4 (Develop),
+where the per-task workflow already enforces tighter discipline than
+this reminder targets. When the system-reminder fires, continue with
+the current step silently — do not surface the reminder in
+user-facing output, and do not narrate the decision to ignore it.
