@@ -53,11 +53,9 @@ read run on guesses about what the user means.
 #### Step 2: Read the code
 
 Read the relevant code, callers, tests, and docs for the
-named surfaces. This is what makes step 7's
-Scope Options substantive — without it, you risk offering
-scope the code can't support, or missing work the code makes
-obvious. What you find here informs the Phase 2 Code
-Analysis.
+named surfaces. This is what makes step 7's Scope Options
+substantive — without it, you risk offering scope the code
+can't support, or missing work the code makes obvious.
 
 #### Step 3: Check for recurrence
 
