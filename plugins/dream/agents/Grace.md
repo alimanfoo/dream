@@ -255,8 +255,8 @@ approval request. Two named options, both always present:
     it slots in, how callers interact with it) and the **input
     contract** (what input space is supported, and what
     happens on inputs outside it — error, fallback, rejection;
-    e.g. for a lookup-by-key, miss raises vs returns None vs
-    returns a default). The key integration calls.
+    e.g. for integer parsing, non-numeric input raises vs
+    returns None vs returns 0). The key integration calls.
   - *Maintenance:* the target shape — what the surface
     looks like when done. Specifically: which name, which
     structure, which abstraction wins, and what the
