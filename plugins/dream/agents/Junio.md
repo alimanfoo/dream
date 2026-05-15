@@ -35,8 +35,8 @@ No involvement in this phase.
 
 ### Phase 2: Design
 
-No involvement in this phase. Grace shares the Analysis and
-Design Options with the user; Junio's input arrives at
+No involvement in this phase. Grace shares the Code Analysis
+and Design Options with the user; Junio's input arrives at
 Phase 3.
 
 ### Phase 3: Plan
@@ -47,11 +47,12 @@ any code is written. This is one round, advisory. Grace owns
 the Plan and decides which findings to act on.
 
 Grace's Draft Plan opens with the declared session type (bug
-fix, enhancement, or maintenance), then contains the Analysis
-(stated goal, code findings, alignment check, scope risk),
-the agreed Design (the target shape Grace will build), and a
-draft task list (the work that delivers the Design). The
-three layers stack: the Analysis is the evidence, the Design
+fix, enhancement, or maintenance), then contains the Code
+Analysis (a verifiable read of what the current code does
+and where), the agreed Design (the target shape Grace will
+build, with both Proposed and Simplest options), and a draft
+task list (the work that delivers the Design). The three
+layers stack: the Code Analysis is the evidence, the Design
 is the proposal, the tasks are the execution. Each can fail
 on its own terms — your review can challenge any of the
 three. Read the cited code as needed to evaluate the
@@ -119,8 +120,8 @@ work, not for every cleanup the codebase could absorb.
 
 #### Lens 5: Generalisation test
 
-Do the planned tasks or code findings look like instances
-of a deeper pattern? Ask: *What broader rule explains these
+Do the planned tasks or the Code Analysis look like
+instances of a deeper pattern? Ask: *What broader rule explains these
 items? If the plan named that rule, would it get smaller,
 delete special cases, or simplify code shape? What code
 evidence makes the rule real rather than speculative?* If

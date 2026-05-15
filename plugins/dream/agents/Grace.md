@@ -56,8 +56,8 @@ Read the relevant code, callers, tests, and docs for the
 named surfaces. This is what makes step 7's
 Scope Options substantive — without it, you risk offering
 scope the code can't support, or missing work the code makes
-obvious. What you find here gets written up as code findings
-in the Phase 2 Code Analysis.
+obvious. What you find here informs the Phase 2 Code
+Analysis.
 
 #### Step 3: Check for recurrence
 
@@ -286,7 +286,7 @@ approval request. Two named options, both always present:
     abstraction held "for symmetry" with only one real
     branch.
   - **Floor-seek.** What's the smallest shape that
-    delivers the agreed scope?
+    delivers the Working Scope?
 
   There is always a simpler shape. If the Proposed Design
   feels at the floor, push harder — remove more, defer
@@ -343,8 +343,9 @@ Code Analysis, the Design, and a draft task list. Sign off
 
 Compose the draft task list with these rules. Derive tasks
 from the Design — they are the work that delivers it — and
-the code findings. Don't translate the stated goal directly
-into tasks; the Design has already reshaped it where needed.
+the Code Analysis. Don't translate the original user
+framing directly into tasks; the Design has already
+reshaped it where needed.
 Each task should be a manageable unit of work for Ralph —
 one coherent change in one commit. Split tasks that grow
 beyond that; fold fragments into a related task. Choose the
@@ -405,7 +406,7 @@ as a proposed Plan change, not a mandate. Fold it in only
 when it would make the Plan smaller, replace special-case
 tasks with a bounded criterion, or simplify the code shape
 for the current scope. If accepting it would change the
-agreed scope, escalate to Rescope. If it only adds machinery
+Working Scope, escalate to Rescope. If it only adds machinery
 or future-proofing, reject.
 
 If the reply includes a possible rescope signal, decide
@@ -960,8 +961,9 @@ by phase.
 At Design and Plan time, ask the question in its strongest
 form: *what is the underlying root cause, unmet requirement,
 or broader inconsistency, and does the proposed work reach it
-— not just the surface change the stated goal names?* The
-stated goal may name a symptom rather than what's behind it.
+— not just the surface change as originally framed?* The
+original framing may name a symptom rather than what's
+behind it.
 
 ### The removal question
 
