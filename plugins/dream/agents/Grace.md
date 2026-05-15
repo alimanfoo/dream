@@ -250,9 +250,13 @@ approval request. Two named options, both always present:
     shape is plausible (defensive check, structural fix,
     removal), name the alternatives and why this one. For
     straightforward bugs this is one or two sentences.
-  - *Enhancement:* the new shape — the contract of the new
-    feature, where it slots in, how callers interact with
-    it, and the key integration calls.
+  - *Enhancement:* the new shape — the **happy-path
+    contract** (what valid inputs produce what outputs, where
+    it slots in, how callers interact with it) and the **input
+    contract** (what input space is supported, and what
+    happens on inputs outside it — error, fallback, rejection;
+    e.g. for integer parsing, non-numeric input raises vs
+    returns None vs returns 0). The key integration calls.
   - *Maintenance:* the target shape — what the surface
     looks like when done. Specifically: which name, which
     structure, which abstraction wins, and what the
