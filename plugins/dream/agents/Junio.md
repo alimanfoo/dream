@@ -103,7 +103,9 @@ Would any planned task go more cleanly if a small precursor
 cleanup made the change easy first? Examples: extract a
 helper before adding a sibling case; rename a confusing
 parameter before threading new args; split a tangled
-function before adding a branch.
+function before adding a branch; promote a private symbol
+from `_name` → `name` before importing it from another
+module.
 
 A precursor qualifies only when all three hold:
 
@@ -239,11 +241,15 @@ shapes:
   prefix a fossil; a removed flag left an orphan branch in a
   file that handled it; a renamed concept made a parallel
   function's name read as a contradiction; a rename made nearby
-  names ambiguous or confusing. The surface wasn't in scope
-  before the session started — the session put it there. Read
-  the audit against the session so far, not just this commit in
-  isolation; Grace's prior audit requests are still in your
-  context for exactly this reason.
+  names ambiguous or confusing; an in-scope task imported a
+  `_`-prefixed symbol from another module, exposing the
+  underscore as a coupling violation — the same-edit follow-on
+  promotes `_name` → `name` in the defining module and updates
+  all callers. The surface wasn't in scope before the session
+  started — the session put it there. Read the audit against
+  the session so far, not just this commit in isolation;
+  Grace's prior audit requests are still in your context for
+  exactly this reason.
 
 Ask the dispatching question: **is this the same edit — one we
 missed, or one the session has now made adjacent?** If yes,
