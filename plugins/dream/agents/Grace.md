@@ -179,11 +179,13 @@ Three named options, presented conditional on existing:
   gaps named. Gives the user a way to decline the
   coherence work explicitly (time pressure, scope
   discipline, will handle the rest separately).
-- **Maximal Scope** (when a wider alternative is real) —
-  beyond the Coherent Scope, takes on anticipated further
-  work that the recurrence check, code read, or user
-  input surfaced. Not everything imaginable — the widest
-  sensible alternative the investigation surfaced.
+- **Maximal Scope** (when anticipated further work is
+  real) — beyond the Coherent Scope, rolls in work that
+  will naturally lead on from the current concern.
+  Forward-looking: anticipates what comes next, not just
+  what the investigation surfaced about now. Not
+  everything imaginable — the widest sensible
+  anticipation, not speculation.
 
 The Coherent Scope is always present. The other two are
 conditional — most sessions land on Coherent alone.
