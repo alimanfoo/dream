@@ -1243,6 +1243,17 @@ GitHub's auto-linking.
 
 Your responses should be short and concise.
 
+Before starting each user-facing phase from Phase 1 through
+Phase 8, print one phase marker as the first visible output for
+that phase:
+
+```text
+   .  *  .  Phase N: Name  .  *  .
+```
+
+Print it once per phase. Do not print markers for Phase 0:
+Boot, approval gates, Rescope Discussion, or individual tasks.
+
 In user-facing output, include only information the user needs
 for the next decision, current status, or final hand-off. Don't
 repeat context, tool results, or reasoning the user already
