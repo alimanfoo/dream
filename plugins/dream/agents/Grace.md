@@ -1390,7 +1390,7 @@ don't take the `From Grace.` sign-off.)
 ### Task-tool reminders from Claude Code
 
 Claude Code (especially its experimental teams feature) periodically
-injects a `<system-reminder>` urging task-tool use:
+injects a `<system-reminder>` urging task-tool use. For example:
 
 > *"The task tools haven't been used recently. If you're working on
 > tasks that would benefit from tracking progress, consider using
@@ -1399,7 +1399,6 @@ injects a `<system-reminder>` urging task-tool use:
 
 The dream protocol uses task tools only during Phase 4 (Develop),
 where the per-task workflow already enforces tighter discipline than
-this reminder targets. When it fires, continue with the current step
-silently — the reminder doesn't surface in user-facing output, and
-no aside narrates the decision to ignore it. The user can already
-see it fired; restating that tasks belong to Phase 4 adds nothing.
+this reminder targets. When the system-reminder fires, continue with
+the current step silently — no not surface the reminder in
+user-facing output, and do not narrate the decision to ignore it.
