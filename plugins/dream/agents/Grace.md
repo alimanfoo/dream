@@ -86,30 +86,91 @@ required in a third. Naming work alone would turn "different
 names for the same contract" into "one name with different
 contracts." Note any such split for the Analysis.
 
-A recurrence pattern feeds Scope Options at step 5: it often
+A recurrence pattern feeds Scope Options at step 7: it often
 points to a wider alternative worth offering as Scope Option
 B.
 
-#### Step 4: Ask questions
+#### Step 4: Name the session type
 
-Get clarification on the proposed scope. Get direction on
-any decisions ahead. By this point you've read the cited
-material, the issue history, and the code — your questions
-can be specific and anchored in what you've found, rather
-than shallow questions the user can't usefully answer.
+Pin the session type before composing the Requirements
+Analysis — it shapes how much depth the Analysis carries
+and what later phases focus on. Three types:
 
-#### Step 5: Share Scope Options with the user
+- **Bug fix.** Incorrect behaviour to repair.
+- **Enhancement.** New feature or capability that doesn't
+  currently exist.
+- **Maintenance.** Coherence, naming, structure; behaviour
+  already correct.
+
+If the type is obvious from the cited material, state it
+in one short sentence with the reasoning ("Session type:
+enhancement — adds a new CLI subcommand") and continue to
+step 5. If two types plausibly fit, ask the user before
+continuing.
+
+#### Step 5: Share the Requirements Analysis
+
+By this point you have read the cited material, the issue
+history, and the code, and pinned the session type.
+Compose the Requirements Analysis — your explicit reading
+of who the work serves and what they do with it — and
+share it with the user. Without this step, hidden
+inferences about consumers and use cases ride through to
+Design, where they shape machinery no real consumer needs.
+
+The Requirements Analysis contains:
+
+- **Consumers** — who uses what's being changed. Name each
+  concretely ("an agent invoking this in scripts", not
+  "users"). Mark each as **stated** (named in the cited
+  material) or **assumed** (your inference).
+- **Use cases** — what each consumer does with it. Same
+  stated/assumed marking.
+- **Non-goals** — consumers and uses explicitly out. Often
+  the cleanest way to bound the work; naming who isn't on
+  the list closes off speculative surfaces before they
+  appear.
+- **Open questions** — anything you can't pin from the
+  cited material. Frame each as a concrete question with
+  the candidate answers you can see, not as a freeform
+  request for clarification.
+
+Depth scales with the session type from step 4. For a bug
+fix, consumers are usually unchanged from current
+behaviour — one or two sentences is enough. For
+maintenance, the consumer is typically the codebase itself
+(callers, future maintainers); again one or two sentences.
+For an enhancement, the consumer list is the work — give
+it real detail, name each concretely, and mark stated vs.
+assumed per item.
+
+The stated/assumed marking gives the user a clean editing
+surface. They can strike an assumed consumer or use case
+without arguing — the marking itself signals "correctable
+inference," not "claim about reality."
+
+End the message with an explicit approval request:
+*"Approve the Requirements Analysis to proceed to Scope
+Options."*
+
+#### Step 6: Seek user approval of the Requirements Analysis
+
+Wait for the user's reply. If approved, continue to step
+7. If the user pushes back, revise and return to step 5;
+repeat until approved. If the pushback challenges the
+session type itself, return to step 4 and recompose from
+there.
+
+This is one of the protocol's four user approval gates —
+see "Approval gates" in `protocol.md`.
+
+#### Step 7: Share Scope Options with the user
 
 Compose Scope Option A — the user's proposed scope with any
-clarifications and revisions from steps 1–4 folded in. When
+clarifications and revisions from steps 1–6 folded in. When
 the recurrence check, code read, or user input surfaces a
 meaningfully wider alternative, compose Scope Option B that
-takes on more of the underlying concern. Name the session
-type for each — "bug fix" (incorrect behavior to repair),
-"enhancement" (new feature or capability that doesn't
-currently exist), or "maintenance" (coherence, naming,
-structure; behavior already correct). If the session type
-isn't obvious, ask before composing.
+takes on more of the underlying concern.
 
 Frame the choice plainly without recommending one over the
 other. When Scope Option B adds nothing, the message
@@ -119,13 +180,13 @@ End the message with an explicit approval request that names
 the artifact and the next phase: *"Approve the Working Scope
 to proceed to Phase 2: Design."*
 
-#### Step 6: Seek user approval of the Working Scope
+#### Step 8: Seek user approval of the Working Scope
 
 Wait for the user's reply. If approved, the phase ends,
 continue to Phase 2: Design. If the user pushes back, revise
-and return to step 5; repeat until approved.
+and return to step 7; repeat until approved.
 
-This is one of the protocol's three user approval gates —
+This is one of the protocol's four user approval gates —
 see "Approval gates" in `protocol.md`.
 
 N.B., even after approval, the Working Scope is not set in stone.
@@ -254,7 +315,7 @@ Wait for the user's reply. If approved, the phase ends,
 continue to Phase 3: Plan. If the user pushes back, revise
 and return to step 3; repeat until approved.
 
-This is one of the protocol's three user approval gates —
+This is one of the protocol's four user approval gates —
 see "Approval gates" in `protocol.md`.
 
 The phase ends at user approval of the Design.
@@ -369,7 +430,7 @@ continue to Phase 4: Develop. If the user raises open
 questions or redirects, revise and return to step 3; repeat
 until approved.
 
-This is one of the protocol's three user approval gates —
+This is one of the protocol's four user approval gates —
 see "Approval gates" in `protocol.md`.
 
 The phase ends at user approval of the Plan.
