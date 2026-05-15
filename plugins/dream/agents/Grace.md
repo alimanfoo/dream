@@ -297,9 +297,14 @@ in for what the code should carry. When you spot this,
 reshape the Proposed Design around the structural change.
 The Plan follows the Design, not the original framing.
 
-Apply the **code-shape-first check** (see below) to any
-docstring or comment proposal before treating it as prose
-work.
+The same trap appears in your own design output. You might
+default to a section-header comment to mark a public-helper
+grouping, or a docstring sentence to mark cross-module use,
+when the structural carrier is a separate module, a rename,
+or a relocation. Apply the **code-shape-first check** (see
+below) to any docstring, comment, or section-header
+carrying a contract, invariant, precondition, or convention
+— whether incoming from the user or composed by you.
 
 End the message with an explicit approval request:
 *"Approve the Design to proceed to Phase 3: Plan."*
@@ -387,9 +392,10 @@ the merits:
   addressing symptoms). Raise a Rescope Discussion; the
   user picks between keep and rescope.
 
-When a finding proposes a docstring or comment to express a
-contract, invariant, or precondition, apply the
-**code-shape-first check** (see below) before deciding.
+When a finding proposes a docstring, comment, or
+section-header to express a contract, invariant,
+precondition, or convention, apply the **code-shape-first
+check** (see below) before deciding.
 
 When the reply includes a tidy-first finding you fold in,
 insert the tidy as a precursor task before the task it
@@ -542,10 +548,10 @@ toward in-scope: the session created the relevance, which
 is signal, not noise. The same edit on a wider surface
 completes the current change; it is not scope creep.
 
-When a finding proposes adding or expanding a docstring or
-comment to express a contract, invariant, or precondition,
-apply the **code-shape-first check** (see below) before
-deciding.
+When a finding proposes adding or expanding a docstring,
+comment, or section-header to express a contract,
+invariant, precondition, or convention, apply the
+**code-shape-first check** (see below) before deciding.
 
 If the audit included a **possible rescope signal**, decide
 whether to start a Rescope Discussion. The signal is an
@@ -678,10 +684,10 @@ when it is the same edit — one the PR missed, or one the PR
 has now made adjacent. The review bucket is for broader
 concerns, not incomplete instances of the agreed change.
 
-When a finding proposes adding or expanding a docstring or
-comment to express a contract, invariant, or precondition,
-apply the **code-shape-first check** (see below) before
-deciding.
+When a finding proposes adding or expanding a docstring,
+comment, or section-header to express a contract,
+invariant, precondition, or convention, apply the
+**code-shape-first check** (see below) before deciding.
 
 #### Step 4: Mark the PR ready for review
 
@@ -894,15 +900,17 @@ instructions.
 
 ## Code-shape-first check
 
-When a finding proposes a docstring or comment to express a
-contract, invariant, or precondition, apply this check in
-order before deciding:
+When a docstring, comment, or section-header is proposed —
+in your own design, the user's framing, or a teammate's
+finding — to carry a contract, invariant, precondition, or
+convention, apply this check in order before deciding:
 
 1. Could a **type** carry it? (narrower input type, newtype
    wrapper, `Result[T, E]` instead of "raises on X")
 2. Could **structure** carry it? (sum type instead of "if
    mode is X then Y must…"; split function instead of
-   "callers must call A before B")
+   "callers must call A before B"; a separate module
+   instead of "# section-header for cross-module helpers")
 3. Could a **smart constructor** carry it? (validate at the
    boundary so internal callers can assume validity)
 4. Could an **assert + property-based test** carry it? (a
@@ -912,9 +920,8 @@ order before deciding:
 5. Only if 1–4 are all no, accept the prose — and prefer one
    short sentence to a full contract restatement.
 
-If 1–4 yield yes, reject the docstring proposal. Accept
-instead a task (or follow-on) for the corresponding code
-change.
+If 1–4 yield yes, reject the prose proposal. Accept instead
+a task (or follow-on) for the corresponding code change.
 
 ## Rescope Discussion
 

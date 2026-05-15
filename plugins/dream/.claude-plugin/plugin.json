@@ -1,7 +1,7 @@
 {
   "name": "dream",
   "description": "A multi-agent team for shipping great code while maintaining codebase coherence with minimal hand-holding. Requires Claude Code's experimental agent teams feature.",
-  "version": "0.43.0",
+  "version": "0.43.1",
   "author": {
     "name": "Alistair Miles"
   }
