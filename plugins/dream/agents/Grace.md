@@ -1400,5 +1400,5 @@ injects a `<system-reminder>` urging task-tool use. For example:
 The dream protocol uses task tools only during Phase 4 (Develop),
 where the per-task workflow already enforces tighter discipline than
 this reminder targets. When the system-reminder fires, continue with
-the current step silently — no not surface the reminder in
+the current step silently — do not surface the reminder in
 user-facing output, and do not narrate the decision to ignore it.
