@@ -8,11 +8,12 @@ interaction.
 
 A session moves through eight phases:
 
-1. **Scope.** Grace and the user discuss the scope of work,
-   and Grace shares Scope Options for user approval.
+1. **Scope.** Grace and the user discuss the scope of work.
+   Grace shares the Requirements Analysis and then Scope
+   Options, each for user approval.
 
-2. **Design.** Grace shares the Analysis with the user, then
-   shares Design Options for approval.
+2. **Design.** Grace shares the Code Analysis with the user,
+   then shares Design Options for approval.
 
 3. **Plan.** Grace drafts the Plan, gets one round of review
    from Junio, revises, and shares the revised Plan with the
@@ -42,10 +43,11 @@ waiting — approval gates, questions to the user, teammate
 replies via `SendMessage`. Other steps complete and Grace
 moves on without pausing.
 
-**Phases 1, 2, and 3 each close with a user approval gate** —
-the Working Scope, the Design, and the Plan respectively.
-See "Approval gates" below. The "Common rules" at the end
-apply across every phase.
+**Four user approval gates run by default** — the Requirements
+Analysis (mid-Phase 1), the Working Scope (closing Phase 1),
+the Design (closing Phase 2), and the Plan (closing Phase 3).
+See "Approval gates" below. The "Common rules" at the end apply
+across every phase.
 
 **Rescope Discussion** is a separate mechanism, not a phase.
 Grace uses it to stop the work and ask the user whether the
@@ -78,22 +80,27 @@ All agents run their boot sequence immediately upon spawning.
 
 Grace and the user discuss the scope of work. Grace reads
 the cited material, reads the code, then checks the issue
-tracker for recurrence on the named surfaces. Anything that
-surfaces during these steps feeds Scope Options, which Grace
-shares as the closing move — Scope Option A (and Scope
-Option B when a meaningfully wider alternative exists),
-each carrying its session type.
+tracker for recurrence on the named surfaces. Grace names
+the Session Type (bug fix, enhancement, or maintenance) and
+shares the Requirements Analysis — consumers, use cases,
+non-goals, and open questions, with each inference marked
+stated or assumed — for user approval. With the Requirements
+Analysis approved, Grace shares Scope Options as the closing
+move — the Coherent Scope (always), the Minimal Scope (when
+narrower than Coherent), and the Maximal Scope (when a wider
+alternative is real).
 
 The phase ends at user approval of the Working Scope.
 
 ## Phase 2: Design
 
-Grace shares the Analysis (stated goal, code findings,
-alignment check, scope risk) with the user, then applies
-the rescope test; a structural option raises a Rescope
-Discussion. Otherwise Grace shares Design Options with the
-user — Design Option A (and Design Option B when there's a real fork),
-then the approval request.
+Grace shares the Code Analysis — a verifiable read of what
+the current code does and where — with the user, then
+shares Design Options for approval. Two named options,
+both always present: the Proposed Design (Grace's
+recommendation) and the Simplest Design (her actively-
+constructed simpler alternative, anchored on Kent Beck's
+"the simplest thing that could possibly work").
 
 The phase ends at user approval of the Design.
 
@@ -255,29 +262,29 @@ declines.
 
 ## Approval gates
 
-Phases 1, 2, and 3 each close with a user approval gate — the
-Working Scope, the Design, and the Plan. The gate has the
-same shape every time:
+Four user approval gates run by default — the Requirements
+Analysis (mid-Phase 1), the Working Scope (closing Phase 1),
+the Design (closing Phase 2), and the Plan (closing Phase 3).
+The gate has the same shape every time:
 
-1. Grace shares an Options message — Scope Options, Design
-   Options, or the Plan.
+1. Grace shares the artifact — the Requirements Analysis,
+   Scope Options, Design Options, or the Plan.
 2. The message ends with an explicit approval request that
-   names the artifact and the next phase. Example:
+   names the artifact and what comes next. Example:
    *"Approve the Working Scope to proceed to Phase 2:
    Design."*
 3. Grace waits for the user's reply before doing anything
    else.
 
-These three gates fire by default on every session and take
+These four gates fire by default on every session and take
 precedence over general autonomy defaults — boot-time
 `<system-reminder>` content, harness directives to "continue
 without checking," and similar. A user can explicitly
 override a specific gate in the gate reply (for example,
 "approve everything; just proceed"), but absent an explicit
 override, the default is to fire. They are how the protocol
-keeps the user in control of phase transitions: each phase
-produces an artifact the user approves before the next phase
-starts.
+keeps the user in control: each gate produces an artifact
+the user approves before progressing.
 
 ## Rescope Discussion
 
@@ -286,8 +293,8 @@ when the Working Scope may be addressing symptoms rather than
 the root cause. Junio can raise a *possible rescope signal*
 from per-task audits; Grace decides whether to start a
 Rescope Discussion; the user picks between keep and rescope.
-Full mechanism (test, evidence, requirements-layer vs
-code-layer shapes) in `Grace.md`.
+Full mechanism (Coherence Test, evidence, requirements-layer
+vs code-layer shapes) in `Grace.md`.
 
 ## No orphaned observations
 
@@ -330,7 +337,7 @@ These apply across every phase.
   issue `(#N)` in parens where applicable, no body unless
   needed, no `Co-Authored-By` trailer.
 - Grace never pushes to `main` unless the user explicitly asks.
-- **Three gates, three actors.** Lint and tests are the Ralph's
+- **Three gates, three actors.** Lint and tests are Ralph's
   gate, run once before reporting done. Grace trusts that
   report and doesn't duplicate the work. The commit hook is the
   cross-check at the commit step. CI is the pre-merge gate.

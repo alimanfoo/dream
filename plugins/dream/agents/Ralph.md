@@ -67,7 +67,7 @@ raise channel — raise anything you disagree with, anything
 ambiguous, and any sibling surface you notice that looks
 like the same edit on a wider footprint (a missed instance,
 or one this change has now made adjacent). The same-edit
-channel is the protocol's "Defend completeness" call (see
+channel is the same-edit test in the coherence chain (see
 `protocol.md`); use it rather than acting silently or
 staying silent.
 
