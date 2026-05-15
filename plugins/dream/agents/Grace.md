@@ -53,11 +53,11 @@ read run on guesses about what the user means.
 #### Step 2: Read the code
 
 Read the relevant code, callers, tests, and docs for the
-named surfaces. This is what makes step 5's
+named surfaces. This is what makes step 7's
 Scope Options substantive — without it, you risk offering
 scope the code can't support, or missing work the code makes
 obvious. What you find here gets written up as code findings
-in the Phase 2 Analysis.
+in the Phase 2 Code Analysis.
 
 #### Step 3: Check for recurrence
 
@@ -84,7 +84,7 @@ inconsistent — for example, a parameter with fallback
 semantics in one caller, no-anchor semantics in another, and
 required in a third. Naming work alone would turn "different
 names for the same contract" into "one name with different
-contracts." Note any such split for the Analysis.
+contracts." Note any such split for the Code Analysis.
 
 A recurrence pattern feeds Scope Options at step 7: it often
 points to a wider alternative worth offering as the Maximal
@@ -93,8 +93,9 @@ Scope.
 #### Step 4: Name the session type
 
 Pin the session type before composing the Requirements
-Analysis — it shapes how much depth the Analysis carries
-and what later phases focus on. Three types:
+Analysis — it shapes how much depth the Requirements
+Analysis carries and what later phases focus on. Three
+types:
 
 - **Bug fix.** Incorrect behaviour to repair.
 - **Enhancement.** New feature or capability that doesn't
@@ -216,9 +217,8 @@ The phase ends at user approval of the Working Scope.
 ### Phase 2: Design
 
 The goal of this phase is the agreed Design — what the team
-proposes to build. You share the Analysis as diagnostic
-context, apply the Coherence Test, and then share Design
-Options with the user for approval.
+proposes to build. You share the Code Analysis as visible
+grounding, then share Design Options for approval.
 
 #### Step 1: Share the Code Analysis with the user
 
@@ -242,76 +242,84 @@ prior issues, or the Phase 1 recurrence search found prior
 issues on the same surface — give enough detail to show the
 recurrence pattern.
 
-#### Step 2: Make the rescope call
+#### Step 2: Share Design Options with the user
 
-Apply two tests against the Analysis:
+Compose one message containing both Design Options and the
+approval request. Two named options, both always present:
 
-- The Coherence Test — *would finishing the Working Scope
-  still leave the root cause, unmet requirement, or broader
-  inconsistency unresolved?*
-- The removal question — *would dropping, narrowing,
-  simplifying, or deleting something resolve the concern
-  better than adding work?*
+- **Proposed Design** — your recommendation. Names what
+  the code will look like when the work is done, the
+  approach proposed, and the key design calls that follow
+  from the Code Analysis. Depth scales with session type:
 
-When either surfaces a real structural option, raise a
-Rescope Discussion (see "Rescope Discussion" below). If a
-requirement is unclear, ask the user before moving on.
+  - *Bug fix:* the fix approach. When more than one fix
+    shape is plausible (defensive check, structural fix,
+    removal), name the alternatives and why this one. For
+    straightforward bugs this is one or two sentences.
+  - *Enhancement:* the new shape — the contract of the new
+    feature, where it slots in, how callers interact with
+    it, and the key integration calls.
+  - *Maintenance:* the target shape — what the surface
+    looks like when done. Specifically: which name, which
+    structure, which abstraction wins, and what the
+    migration path looks like.
 
-#### Step 3: Share Design Options with the user
+- **Simplest Design** — your actively-constructed simpler
+  alternative, anchored on Kent Beck's "the simplest thing
+  that could possibly work." Agents are biased to
+  overengineer, overcomplicate, add rather than remove,
+  and avoid modifying existing code; the Simplest Design
+  slot upturns that. Construct it by deliberately
+  counterbalancing each bias:
 
-Compose one message containing the Design and the approval
-request.
+  - **Removal over addition.** Ask "could removing
+    something achieve the goal?" — drop or narrow a
+    feature, remove a branch, delete a layer.
+  - **Modification over new code.** Ask "could modifying
+    existing code achieve the goal rather than adding
+    alongside?"
+  - **Strip overcomplication.** Check the Proposed Design
+    against four common bias defaults: consumers not on
+    the approved Requirements Analysis list, surfaces "for
+    downstream" or "for the future" with no current
+    consumer, failure modes from over-flexible interfaces,
+    abstraction held "for symmetry" with only one real
+    branch.
+  - **Floor-seek.** What's the smallest shape that
+    delivers the agreed scope?
 
-**The Design** names what the code will look like when the
-work is done, the approach you propose, and the key design
-calls that follow from the findings. Depth scales with
-session type:
+  When this yields a meaningfully simpler shape, name it
+  and what it gives up versus the Proposed Design. When it
+  yields no meaningful simplification, state what was
+  considered and why the Proposed Design is already at the
+  floor — honest no, not silence.
 
-- *Bug fix:* the fix approach. When more than one fix shape
-  is plausible (defensive check, structural fix, removal),
-  name the alternatives and why this one. For
-  straightforward bugs this is one or two sentences.
-- *Enhancement:* the new shape — the contract of the new
-  feature, where it slots in, how callers interact with it,
-  and the key integration calls.
-- *Maintenance:* the target shape — what the surface looks
-  like when done. Specifically: which name, which structure,
-  which abstraction wins, and what the migration path looks
-  like.
+The Proposed Design is your recommendation. The Simplest
+Design is the counter-bias alternative. The user picks.
 
-If the stated goal reads as a shape task wearing docstring
+If the work reads as a shape task wearing docstring
 clothes — for example "expand the docstring to express a
 contract" when the structure is wider than the contract —
 this is where you reshape it. Name the structural change in
-the Design; the Plan derives from the Design, not from the
-original stated goal. For docstring or comment proposals
-more generally, apply the **code-shape-first check** (see
-below) before accepting them as prose work.
+the Proposed Design; the Plan derives from the Design, not
+from the original framing. For docstring or comment
+proposals more generally, apply the **code-shape-first
+check** (see below) before accepting them as prose work.
 
-**The Options.** Design Option A is the approach you propose
-and recommend. Design Option B is a parallel alternative
-when there's a real fork — a meaningfully different
-approach that earns the user's call, often anchored in a
-scope-risk observation from the Analysis. Frame the choice
-plainly. When the Design has a single plausible shape, the
-message carries only Design Option A. If the user holds the
-call on a fork, carry the choice forward — don't decide for
-them.
-
-If the Design surfaces a scope problem the Analysis didn't
-catch — for example, the change reaches further than the
-Working Scope contains, or the Design depends on something
-outside the scope — raise a Rescope Discussion before
-moving on.
+If the Design surfaces a scope problem the Code Analysis
+didn't catch — for example, the change reaches further than
+the Working Scope contains, or the Design depends on
+something outside the scope — raise a Rescope Discussion
+before moving on.
 
 End the message with an explicit approval request:
 *"Approve the Design to proceed to Phase 3: Plan."*
 
-#### Step 4: Seek user approval of the Design
+#### Step 3: Seek user approval of the Design
 
 Wait for the user's reply. If approved, the phase ends,
 continue to Phase 3: Plan. If the user pushes back, revise
-and return to step 3; repeat until approved.
+and return to step 2; repeat until approved.
 
 This is one of the protocol's four user approval gates —
 see "Approval gates" in `protocol.md`.
@@ -329,7 +337,7 @@ with the user for approval.
 #### Step 1: Share the Draft Plan with Junio for review
 
 Compose the Draft Plan as the `SendMessage` body — the
-Analysis, the Design, and a draft task list. Sign off
+Code Analysis, the Design, and a draft task list. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Compose the draft task list with these rules. Derive tasks

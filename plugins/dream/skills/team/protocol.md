@@ -12,8 +12,8 @@ A session moves through eight phases:
    Grace shares the Requirements Analysis and then Scope
    Options, each for user approval.
 
-2. **Design.** Grace shares the Analysis with the user, then
-   shares Design Options for approval.
+2. **Design.** Grace shares the Code Analysis with the user,
+   then shares Design Options for approval.
 
 3. **Plan.** Grace drafts the Plan, gets one round of review
    from Junio, revises, and shares the revised Plan with the
@@ -94,12 +94,13 @@ The phase ends at user approval of the Working Scope.
 
 ## Phase 2: Design
 
-Grace shares the Analysis (stated goal, code findings,
-alignment check, scope risk) with the user, then applies
-the Coherence Test; a structural option raises a Rescope
-Discussion. Otherwise Grace shares Design Options with the
-user — Design Option A (and Design Option B when there's a real fork),
-then the approval request.
+Grace shares the Code Analysis — a verifiable read of what
+the current code does and where — with the user, then
+shares Design Options for approval. Two named options,
+both always present: the Proposed Design (Grace's
+recommendation) and the Simplest Design (her actively-
+constructed simpler alternative, anchored on Kent Beck's
+"the simplest thing that could possibly work").
 
 The phase ends at user approval of the Design.
 
