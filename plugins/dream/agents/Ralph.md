@@ -58,10 +58,11 @@ parallel from the maintainer's view. Grace owns the Design
 and decides which findings to act on.
 
 Grace's Draft Design Options contain the declared Session
-Type, the Requirements Analysis, the Code Analysis, and the
-Design options — the Proposed Design and the Simplest
-Design. Both options are in scope for review. Read the
-cited code as needed; your review is reading-based here.
+Type, the Requirements Analysis, the Code Analysis, the
+Proposed Design (Grace's recommendation), and the Simplest
+Design (her actively-constructed simpler alternative). Both
+options are in scope for review. Read the cited code as
+needed; your review is reading-based here.
 
 Your lens is **software engineering patterns** — the same
 discipline you apply when implementing. Apply four lenses

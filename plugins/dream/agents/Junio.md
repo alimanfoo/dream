@@ -46,18 +46,17 @@ Grace's Draft Design Options open with the declared Session
 Type (bug fix, enhancement, or maintenance), then contain
 the Requirements Analysis (consumers, use cases, non-goals,
 open questions), the Code Analysis (a verifiable read of
-what the current code does and where), and the Design
-options — the Proposed Design (Grace's recommendation) and
-the Simplest Design (her actively-constructed simpler
-alternative). Both options are in scope for review. The
-three layers stack: the Requirements Analysis is the
-consumer truth, the Code Analysis is the code truth, the
-Design is the proposal. Each can fail on its own terms —
-your review can challenge any of the three. Read the cited
-code as needed to evaluate the proposal — your review is
-reading-based here too.
+what the current code does and where), the Proposed Design
+(Grace's recommendation), and the Simplest Design (her
+actively-constructed simpler alternative). Both options are
+in scope for review. The three layers stack: the
+Requirements Analysis is the consumer truth, the Code
+Analysis is the code truth, the Design is the proposal.
+Each can fail on its own terms — your review can challenge
+any of the three. Read the cited code as needed to evaluate
+the proposal — your review is reading-based here too.
 
-Apply four lenses to the Design.
+Apply five lenses to the Design.
 
 #### Lens 1: Defend behaviour, not surface
 
@@ -95,7 +94,35 @@ candidate. If it would add machinery, future-proof for
 hypothetical cases, or make a one-shot abstraction, say
 nothing.
 
-#### Lens 4: Possible rescope signal
+#### Lens 4: Surviving-fit check
+
+After the Design's changes land, does every existing name,
+location, and convention the change touches still fit its
+contract? When a Design widens a function's scope, lifts
+shared code across modules, or shifts the contract of an
+existing surface, names and locations chosen for the
+original narrower context can quietly become misfit. Two
+shapes commonly drift:
+
+- *Name no longer fits contract.* The Design extends a
+  function's scope or shifts what it raises, but an
+  existing name was chosen for the original narrower
+  context — an exception, parameter, or symbol whose name
+  still reads as the old, narrower role.
+- *Location no longer fits ownership.* Shared machinery
+  lives where the first consumer put it, but the Design
+  introduces a second consumer reaching across module
+  boundaries — a helper private to one module that another
+  module now imports.
+
+Flag any existing surface the Design's changes leave
+mis-fit so the Design can rename, relocate, or otherwise
+restore fit before the change lands. The parallel
+Surviving-purpose check (under the Simplest Design slot in
+`Grace.md`) is the same discipline applied to *purpose*;
+this lens is its companion applied to *fit*.
+
+#### Lens 5: Possible rescope signal
 
 Does the Design look symptom-shaped — building machinery on
 a surface the cited material or prior issue history shows
@@ -130,12 +157,11 @@ reviews the same Draft Plan in parallel from the
 implementer's view. Grace owns the Plan and decides which
 findings to act on.
 
-Grace's Draft Plan message body carries the draft task list
-(the work that delivers the Design). You already hold the
-Session Type, Requirements Analysis, Code Analysis, and
-agreed Design (the option the user picked from Proposed or
-Simplest) in context from Phase 2 and the Phase 3 step 1
-info handoff.
+The message body is the Draft Plan — the task list that
+delivers the Design. The prior layers (Session Type,
+Requirements Analysis, Code Analysis, agreed Design) are
+already in your context from the Phase 2 review and the
+Approved Design handoff at the start of Phase 3.
 
 Focus on the task list and its decomposition. Design-shaped
 concerns — defend behaviour, docstring-as-contract,

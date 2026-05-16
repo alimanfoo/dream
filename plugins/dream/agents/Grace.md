@@ -329,16 +329,17 @@ and Simplest). Both options are in scope for review. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Junio reads from the maintainer's view — defend behaviour,
-docstring-as-contract, generalisation, rescope signal.
-Ralph reads from the engineering-pattern view — code-shape
-ladder, naming, scope and abstraction, plain code. Send the
-same body to each; their role files steer the lens. Each
-replies with a numbered list of findings (or "no
-substantive findings"), optionally with a possible rescope
-signal. Junio and Ralph are advisory at Design, not gating.
-One round only — don't loop back to either reviewer after
-revising. The point is fresh attention from two teammates,
-caught at the cheapest point to fix.
+docstring-as-contract, generalisation, surviving-fit,
+rescope signal. Ralph reads from the engineering-pattern
+view — code-shape ladder, naming, scope and abstraction,
+plain code. Send the same body to each; their role files
+steer the lens. Each replies with a numbered list of
+findings (or "no substantive findings"), optionally with a
+possible rescope signal. Junio and Ralph are advisory at
+Design, not gating. One round only — don't loop back to
+either reviewer after revising. The point is fresh
+attention from two teammates, caught at the cheapest point
+to fix.
 
 #### Step 4: Apply the reviews
 
@@ -407,20 +408,22 @@ and share the revised Plan with the user for approval.
 Junio and Ralph reviewed the Draft Design Options in Phase
 2 step 3 but haven't seen which option the user picked or
 what came out of the approval discussion. Send each the
-same content you sent the user, flagged as for information
-only — two `SendMessage` calls in the same turn. Sign off
-`From Grace.` and skip the RSVP — no reply is expected. The
-picked Design feeds the Plan review work that follows.
+Approved Design (the option the user picked, plus any
+changes from the approval discussion), flagged as for
+information only — two `SendMessage` calls in the same
+turn. Sign off `From Grace.` and skip the RSVP — no reply
+is expected. The Approved Design feeds the Plan review work
+that follows.
 
 #### Step 2: Share the Draft Plan with Junio and Ralph for review
 
-Compose the draft task list — the work that delivers the
+Compose the Draft Plan — the task list that delivers the
 Design. Junio and Ralph already hold the Session Type,
 Requirements Analysis, Code Analysis, and Design in context
-from Phase 2 and step 1, so the message body focuses on the
-task list.
+from Phase 2 and step 1, so the message body is the Draft
+Plan.
 
-Apply these rules to the task list. Derive tasks from the
+Apply these rules to the Draft Plan. Derive tasks from the
 Design — they are the work that delivers it — and the Code
 Analysis. Don't translate the original user framing
 directly into tasks; the Design has already reshaped it

@@ -139,8 +139,8 @@ The user can redirect at any point.
 
 Phase opens with three setup steps: Grace creates the feature
 branch off `main` (named after the agreed Working Scope),
-shares the Approved Plan with Junio for information, and
-creates the shared task list.
+shares the Approved Plan with Junio and Ralph for
+information, and creates the shared task list.
 
 The main implementation loop. For each task, Grace assigns
 to Ralph; Ralph implements and reports back; Grace verifies
