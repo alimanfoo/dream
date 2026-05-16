@@ -759,9 +759,9 @@ The phase ends when the PR is merged.
 
 ### Phase 7: Collect
 
-Three steps — compile, deepen, dispose — before any issue is
-filed. All three are yours, with user discussion before you
-file or comment.
+Four steps — compile, deepen, test, dispose — before any
+issue is filed. All four are yours, with user discussion
+before you file or comment.
 
 #### Step 1: Compile
 
@@ -796,13 +796,47 @@ found, file it, and fix it in scope — yet never converge.
 Each pass patches a symptom of the same underlying contract
 without naming the contract.
 
-#### Step 3: Dispose
+#### Step 3: Test
+
+Apply the following tests to each candidate before picking a
+disposition. Both are already in the protocol; this step
+names them at the point where they shape the call.
+
+**Defend behaviour, not surface** (full test in `protocol.md`,
+under "Coherence chain"):
+
+> *Does the surface defend real behaviour with a real
+> consumer?*
+
+If yes — the finding earns a slot, and Dispose picks among
+`reinforce`, `re-frame`, or `file fresh` on the merits. If
+no — the surface is decorative (a count nothing depends on, a
+docstring phrasing, an arbitrary constant). Continue to the
+removal question before defaulting to `drop`.
+
+**The removal question** (full test under "Rescope Discussion"
+below):
+
+> *Could removing something — a feature, a branch, a layer of
+> code, a decorative phrase — resolve the concern?*
+
+If yes — `file fresh` as a **simplification candidate**. Frame
+the issue around the removal, not around a contract the
+surface doesn't actually carry. If no — `drop` is usually
+the right call.
+
+The two tests work together. The defend-behaviour test alone
+points to `drop` when the surface is decorative. That's
+clean, but it loses a simplification the team has already
+noticed. The removal question surfaces removal as a positive
+direction so the noticing becomes a filed issue rather than a
+dropped observation.
+
+#### Step 4: Dispose
 
 Make one call per candidate: drop, reinforce, re-frame, or
-file fresh. Weigh whether the finding is a real concern
-worth the human attention and agent time a backlog slot
-costs. Use the source observations, issue history, and the
-behaviour-versus-surface test; don't send candidates back to
+file fresh. Use the source observations, the issue history,
+and what the Test step showed; don't send candidates back to
 Ralph or Junio for another round of judgement.
 
 Share the proposed disposition table with the user before
@@ -836,11 +870,9 @@ GitHub-visible text.
   finding clears the bar. Open a standalone issue.
 
 The bar for filing a **new** issue is *a behaviour gap with
-a real consumer*. Default to drop on findings that don't
-clear the bar. See "Defend behaviour, not surface" in
-`protocol.md` — findings that propose machinery for prose
-inconsistencies or arbitrary values usually dissolve when
-the surface is simplified instead.
+a real consumer*. Findings that don't clear the bar default
+to `drop` — or, when the Test step surfaced a removal
+direction, to `file fresh` as a simplification.
 
 You don't implement anything in any phase. What enters the
 backlog is an issue or a comment, never a fix.
