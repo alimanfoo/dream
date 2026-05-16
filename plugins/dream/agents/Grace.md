@@ -212,7 +212,7 @@ The phase ends at user approval of the Working Scope.
 
 The goal of this phase is the agreed Design — what the team
 proposes to build. You share the Code Analysis as visible
-grounding, compose the Draft Design, get one round of
+grounding, compose the Draft Design Options, get one round of
 review from Junio and Ralph, revise, and share with the
 user for approval.
 
@@ -238,12 +238,12 @@ prior issues, or the Phase 1 recurrence search found prior
 issues on the same surface — give enough detail to show the
 recurrence pattern.
 
-#### Step 2: Compose the Draft Design
+#### Step 2: Compose the Draft Design Options
 
-Compose the Draft Design — Proposed Design and Simplest
-Design — to the shape below. This is the artifact reviewers
-will see next; do not yet send to the user. Two named
-options, both always present:
+Compose the Draft Design Options — Proposed Design and
+Simplest Design — to the shape below. This is the artifact
+reviewers will see next; do not yet send to the user. Two
+named options, both always present:
 
 - **Proposed Design** — your recommendation. Names what
   the code will look like when the work is done, the
@@ -319,13 +319,13 @@ below) to any docstring, comment, or section-header
 carrying a contract, invariant, precondition, or convention
 — whether incoming from the user or composed by you.
 
-#### Step 3: Share the Draft Design with Junio and Ralph for review
+#### Step 3: Share the Draft Design Options with Junio and Ralph for review
 
-Send the Draft Design to both Junio and Ralph in parallel —
-two `SendMessage` calls in the same turn. The body for each
-carries the Session Type, the Requirements Analysis, the
-Code Analysis, and the Draft Design (both Proposed and
-Simplest). Both options are in scope for review. Sign off
+Send the Draft Design Options to both Junio and Ralph in
+parallel — two `SendMessage` calls in the same turn. The body
+for each carries the Session Type, the Requirements Analysis,
+the Code Analysis, and the Draft Design Options (both Proposed
+and Simplest). Both options are in scope for review. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Junio reads from the maintainer's view — defend behaviour,
@@ -345,7 +345,7 @@ caught at the cheapest point to fix.
 You own the Design. Each finding — from either reviewer —
 takes one of four paths on the merits:
 
-- **Fold in** — accept into the revised Design.
+- **Fold in** — accept into the revised Design Options.
 - **Reject with reason** — you disagree with the finding.
   Note the reason; if the rejection is notable, record it
   for the Design message in step 5. Otherwise nothing
@@ -370,14 +370,14 @@ whether to start a Rescope Discussion. The signal is an
 observation, not a finding — your call whether the Design
 looks symptom-shaped enough to pause.
 
-#### Step 5: Share the revised Design with the user
+#### Step 5: Share the revised Design Options with the user
 
-The message carries both Design Options (revised) plus a
-brief note on **what changed from the Draft after the
-reviews** — folded-in findings, notable rejections with the
-reason — so the user has visibility into the reviews
-without seeing them directly. Include any out-of-scope
-decisions and open questions.
+The message carries the revised Design Options plus a brief
+note on **what changed from the Draft after the reviews** —
+folded-in findings, notable rejections with the reason — so
+the user has visibility into the reviews without seeing them
+directly. Include any out-of-scope decisions and open
+questions.
 
 End the message with an explicit approval request:
 *"Approve the Design to proceed to Phase 3: Plan."*
@@ -397,21 +397,34 @@ The phase ends at user approval of the Design.
 
 The goal of this phase is the agreed Plan — the task list
 that delivers the Design within the Working Scope. You
-compose a Draft Plan, get one round of review from Junio
-and Ralph, apply their findings on the merits, and share
-the revised Plan with the user for approval.
+share the Approved Design with Junio and Ralph for
+information, compose a Draft Plan, get one round of review
+from Junio and Ralph, apply their findings on the merits,
+and share the revised Plan with the user for approval.
 
-#### Step 1: Share the Draft Plan with Junio and Ralph for review
+#### Step 1: Share the Approved Design with Junio and Ralph for information
 
-Compose the Draft Plan — the Session Type, the Requirements
-Analysis, the Code Analysis, the Design, and a draft task
-list.
+Junio and Ralph reviewed the Draft Design Options in Phase
+2 step 3 but haven't seen which option the user picked or
+what came out of the approval discussion. Send each the
+same content you sent the user, flagged as for information
+only — two `SendMessage` calls in the same turn. Sign off
+`From Grace.` and skip the RSVP — no reply is expected. The
+picked Design feeds the Plan review work that follows.
 
-Compose the draft task list with these rules. Derive tasks
-from the Design — they are the work that delivers it — and
-the Code Analysis. Don't translate the original user
-framing directly into tasks; the Design has already
-reshaped it where needed.
+#### Step 2: Share the Draft Plan with Junio and Ralph for review
+
+Compose the draft task list — the work that delivers the
+Design. Junio and Ralph already hold the Session Type,
+Requirements Analysis, Code Analysis, and Design in context
+from Phase 2 and step 1, so the message body focuses on the
+task list.
+
+Apply these rules to the task list. Derive tasks from the
+Design — they are the work that delivers it — and the Code
+Analysis. Don't translate the original user framing
+directly into tasks; the Design has already reshaped it
+where needed.
 
 Each task should be a manageable unit of work for Ralph —
 one commit per task. Split tasks that grow beyond
@@ -455,7 +468,7 @@ loop back to either reviewer after revising. The point is
 fresh attention from two teammates, caught at the cheapest
 point to fix.
 
-#### Step 2: Apply the reviews
+#### Step 3: Apply the reviews
 
 You own the Plan. Each finding — from either reviewer —
 takes one of four paths on the merits:
@@ -464,7 +477,7 @@ takes one of four paths on the merits:
   a tidy-first precursor).
 - **Reject with reason** — you disagree with the finding.
   Note the reason; if the rejection is notable, record it
-  for the Plan message in step 3. Otherwise nothing carries
+  for the Plan message in step 4. Otherwise nothing carries
   forward.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
@@ -496,7 +509,7 @@ whether to start a Rescope Discussion. The signal is an
 observation, not a finding — your call whether the task
 list looks symptom-shaped enough to pause.
 
-#### Step 3: Share the revised Plan with the user
+#### Step 4: Share the revised Plan with the user
 
 The message carries the revised Plan plus a brief note on
 **what changed from the Draft after the reviews** —
@@ -508,11 +521,11 @@ decisions and open questions.
 End the message with an explicit approval request:
 *"Approve the Plan to proceed to Phase 4: Develop."*
 
-#### Step 4: Seek user approval of the Plan
+#### Step 5: Seek user approval of the Plan
 
 Wait for the user's reply. If approved, the phase ends,
 continue to Phase 4: Develop. If the user raises open
-questions or redirects, revise and return to step 3; repeat
+questions or redirects, revise and return to step 4; repeat
 until approved.
 
 This is one of the protocol's four user approval gates —
@@ -540,7 +553,7 @@ origin is handled at Merge.
 
 ##### Step 2: Share the Approved Plan with Junio and Ralph for information
 
-Junio and Ralph reviewed the Draft Plan in Phase 3 step 1
+Junio and Ralph reviewed the Draft Plan in Phase 3 step 2
 but haven't seen what came out of the user's approval
 discussion or any further revisions. Send each the same
 content you sent the user, flagged as for information only

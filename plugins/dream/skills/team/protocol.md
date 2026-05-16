@@ -14,8 +14,8 @@ A session moves through eight phases:
 
 2. **Design.** Grace shares the Code Analysis with the user,
    drafts the Design, gets one round of review from Junio and
-   Ralph, revises, and shares the revised Design with the user
-   for approval.
+   Ralph, revises, and shares the revised Design Options with
+   the user for approval.
 
 3. **Plan.** Grace drafts the Plan, gets one round of review
    from Junio and Ralph, revises, and shares the revised Plan
@@ -103,29 +103,31 @@ the Proposed Design (Grace's recommendation) and the
 Simplest Design (her actively-constructed simpler
 alternative, anchored on Kent Beck's "the simplest thing
 that could possibly work"). Grace shares the Draft Design
-with Junio and Ralph for one round of review — advisory,
-not gating — and revises. Junio reads from the maintainer's
-view; Ralph reads from the engineering-pattern view. Each
-finding takes one of four paths on the merits: fold into
-the revised Design, reject with reason, hold as an
-Ancillary Finding, or escalate to a Rescope Discussion.
-Grace then shares the revised Design with the user, with a
-brief note on what changed from the Draft after the
-reviews.
+Options with Junio and Ralph for one round of review —
+advisory, not gating — and revises. Junio reads from the
+maintainer's view; Ralph reads from the engineering-pattern
+view. Each finding takes one of four paths on the merits:
+fold into the revised Design Options, reject with reason,
+hold as an Ancillary Finding, or escalate to a Rescope
+Discussion. Grace then shares the revised Design Options
+with the user, with a brief note on what changed from the
+Draft after the reviews.
 
 The phase ends at user approval of the Design.
 
 ## Phase 3: Plan
 
-Grace composes the Draft Plan, shares it with Junio and
-Ralph for one round of review — advisory, not gating — and
-revises. Junio reads from the maintainer's view; Ralph
-reads from the implementer's view. Each finding takes one
-of four paths on the merits: fold into the revised Plan,
-reject with reason, hold as an Ancillary Finding, or
-escalate to a Rescope Discussion. Grace then shares the
-revised Plan with the user, with a brief note on what
-changed from the Draft after the reviews.
+Phase opens with Grace sharing the Approved Design with
+Junio and Ralph for information. Grace then composes the
+Draft Plan, shares it with Junio and Ralph for one round of
+review — advisory, not gating — and revises. Junio reads
+from the maintainer's view; Ralph reads from the
+implementer's view. Each finding takes one of four paths on
+the merits: fold into the revised Plan, reject with reason,
+hold as an Ancillary Finding, or escalate to a Rescope
+Discussion. Grace then shares the revised Plan with the
+user, with a brief note on what changed from the Draft
+after the reviews.
 
 The phase ends at user approval of the Plan.
 

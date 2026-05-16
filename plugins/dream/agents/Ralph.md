@@ -52,13 +52,13 @@ No involvement in this phase.
 ### Phase 2: Design
 
 When Grace asks for a Design review, read her Draft Design
-and apply the lenses below. This is one round, advisory;
-Junio reviews the same Draft Design in parallel from the
-maintainer's view. Grace owns the Design and decides which
-findings to act on.
+Options and apply the lenses below. This is one round,
+advisory; Junio reviews the same Draft Design Options in
+parallel from the maintainer's view. Grace owns the Design
+and decides which findings to act on.
 
-Grace's Draft Design contains the declared Session Type,
-the Requirements Analysis, the Code Analysis, and the
+Grace's Draft Design Options contain the declared Session
+Type, the Requirements Analysis, the Code Analysis, and the
 Design options — the Proposed Design and the Simplest
 Design. Both options are in scope for review. Read the
 cited code as needed; your review is reading-based here.
@@ -128,6 +128,12 @@ Design parts involved. If nothing to flag, your reply is
 "no substantive findings." End the reply with the standard
 sign-off: `From Ralph.`. The reply is a terminal hand-off —
 skip the RSVP.
+
+After the user approves the Design, Grace sends you the
+Approved Design as a separate message flagged for
+information only. Read it and hold it as context for Phase
+3 — it shows which option the user picked and any further
+changes from the user discussion. No reply is expected.
 
 ### Phase 3: Plan
 

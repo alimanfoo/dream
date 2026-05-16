@@ -36,14 +36,15 @@ No involvement in this phase.
 ### Phase 2: Design
 
 When Grace asks for a Design review, read her Draft Design
-and apply the lenses below — before any tasks are written.
-This is one round, advisory; Ralph reviews the same Draft
-Design in parallel from the engineering-pattern view. Grace
-owns the Design and decides which findings to act on.
+Options and apply the lenses below — before any tasks are
+written. This is one round, advisory; Ralph reviews the same
+Draft Design Options in parallel from the engineering-pattern
+view. Grace owns the Design and decides which findings to
+act on.
 
-Grace's Draft Design opens with the declared Session Type
-(bug fix, enhancement, or maintenance), then contains the
-Requirements Analysis (consumers, use cases, non-goals,
+Grace's Draft Design Options open with the declared Session
+Type (bug fix, enhancement, or maintenance), then contain
+the Requirements Analysis (consumers, use cases, non-goals,
 open questions), the Code Analysis (a verifiable read of
 what the current code does and where), and the Design
 options — the Proposed Design (Grace's recommendation) and
@@ -115,6 +116,12 @@ Pre-existing concerns the session makes more visible feed
 the post-merge bucket through per-task audits, not the
 Design review.
 
+After the user approves the Design, Grace sends you the
+Approved Design as a separate message flagged for
+information only. Read it and hold it as context for Phase
+3 — it shows which option the user picked and any further
+changes from the user discussion. No reply is expected.
+
 ### Phase 3: Plan
 
 When Grace asks for a Plan review, read her Draft Plan and
@@ -123,11 +130,12 @@ reviews the same Draft Plan in parallel from the
 implementer's view. Grace owns the Plan and decides which
 findings to act on.
 
-Grace's Draft Plan opens with the declared Session Type,
-then contains the Requirements Analysis, the Code Analysis,
-the agreed Design (the option the user picked from Proposed
-or Simplest), and a draft task list (the work that delivers
-the Design).
+Grace's Draft Plan message body carries the draft task list
+(the work that delivers the Design). You already hold the
+Session Type, Requirements Analysis, Code Analysis, and
+agreed Design (the option the user picked from Proposed or
+Simplest) in context from Phase 2 and the Phase 3 step 1
+info handoff.
 
 Focus on the task list and its decomposition. Design-shaped
 concerns — defend behaviour, docstring-as-contract,
