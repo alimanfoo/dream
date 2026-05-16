@@ -871,8 +871,8 @@ GitHub-visible text.
 
 The bar for filing a **new** issue is *a behaviour gap with
 a real consumer*. Findings that don't clear the bar default
-to `drop` — or, when the Test step surfaced a removal
-direction, to `file fresh` as a simplification.
+to `drop` — or, when the Test step surfaced a simplification
+candidate, to `file fresh`.
 
 You don't implement anything in any phase. What enters the
 backlog is an issue or a comment, never a fix.
