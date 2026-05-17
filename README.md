@@ -30,6 +30,22 @@ Team members are then spawned in separate sessions. Switch to the `@Grace` sessi
 See [`plugins/dream/skills/team/protocol.md`](plugins/dream/skills/team/protocol.md)
 for the full protocol.
 
+## Concurrent sessions
+
+The team works on one branch in one working tree. To run two
+sessions on the same repo at the same time, give each its own
+`git worktree`:
+
+```bash
+git worktree add ../<repo>-<topic> -b <topic> main
+cd ../<repo>-<topic>
+CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude
+```
+
+Grace's boot detects the worktree, fetches `main`, and adopts
+the worktree's branch as the session branch. The primary
+checkout stays free for a second session.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

@@ -156,10 +156,11 @@ The user can redirect at any point.
 
 ## Phase 5: Develop
 
-Phase opens with three setup steps: Grace creates the feature
-branch off `main` (named after the agreed Working Scope),
-shares the Approved Plan with Junio and Ralph for
-information, and creates the shared task list.
+Phase opens with three setup steps: Grace sets the feature
+branch (creates it off `main`, or adopts the worktree's branch
+when the session started in one — see `Grace.md`), shares the
+Approved Plan with Junio and Ralph for information, and creates
+the shared task list.
 
 The main implementation loop. For each task, Grace assigns
 to Ralph; Ralph implements and reports back; Grace verifies
@@ -361,12 +362,13 @@ These apply across every phase.
 ### Branch and commit protocol
 
 - **Single branch and single PR per session.** One feature
-  branch off `main` as pulled at session start, one PR opened
-  on it. Grace creates the branch at the start of Phase 5
-  (Develop), once the Plan is approved. The branch name
-  reflects the agreed Working Scope. All planning and
-  development run against the session-start state of `main`;
-  any drift on origin is handled at Merge.
+  branch off `main` as of session start, one PR opened on it.
+  Grace either creates the branch at the start of Phase 5
+  (Develop) once the Plan is approved, or adopts the worktree's
+  branch when the user launched Claude Code inside a worktree.
+  The branch name reflects the agreed Working Scope. All
+  planning and development run against the session-start state
+  of `main`; any drift on origin is handled at Merge.
 - One commit per task — task ↔ commit. Grace is the committer.
 - Grace never pushes to `main` unless the user explicitly asks.
 - **Three gates, three actors.** Lint and tests are Ralph's
