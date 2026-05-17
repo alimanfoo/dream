@@ -751,7 +751,7 @@ under a different name.
 Claude Code footer:**
 
 ```text
-`dream:<version> type:<type> req:<n> scope:<n> design:<n> plan:<n> rescope:<value>`
+<!-- dream:<version> type:<type> req:<n> scope:<n> design:<n> plan:<n> rescope:<value> -->
 ```
 
 Plugin version from `../../.claude-plugin/plugin.json`
