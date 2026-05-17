@@ -55,11 +55,12 @@ Apply two lenses to the Scope Options.
 
 #### Lens 1: Coherent Scope is earned
 
-For each addition the Coherent Scope names beyond the
-user's proposed scope, ask: *Does code or recurrence
+For each addition the Coherent Scope names beyond what
+the requirements call for, ask: *Does code or recurrence
 evidence justify this as coherence work, or is it "while
-we're here" scope creep dressed as coherence?* An addition
-that isn't earned belongs in Maximal, not Coherent.
+we're here" scope creep dressed as coherence?* An
+addition that isn't earned belongs in Maximal, not
+Coherent.
 
 For the Maximal Scope, when present, ask the converse:
 *Does the work it rolls in genuinely lead on from the

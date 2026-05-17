@@ -41,9 +41,10 @@ operating detail is below.
 The user opens with a proposed scope for the session — an
 issue or issues to address, constraints, rough shape. Phase
 1 turns that into an approved Requirements Analysis: who the
-work serves, what they do with it, what's out of scope, and
-any open questions. The Working Scope itself comes next, in
-Phase 2. Follow the steps below in sequence.
+work serves, what they do with it, who and what is
+explicitly excluded, and any open questions. The Working
+Scope itself comes next, in Phase 2. Follow the steps below
+in sequence.
 
 #### Step 1: Read the cited material
 
@@ -127,10 +128,10 @@ The Requirements Analysis contains:
   material) or **assumed** (your inference).
 - **Use cases** — what each consumer does with it. Same
   stated/assumed marking.
-- **Non-goals** — consumers and uses explicitly out. Often
-  the cleanest way to bound the work; naming who isn't on
-  the list closes off speculative surfaces before they
-  appear.
+- **Non-goals** — consumers and use cases explicitly off
+  the list. Naming who isn't served and what isn't
+  supported closes off speculative surfaces before they
+  shape Design or Plan.
 - **Open questions** — anything you can't pin from the
   cited material. Frame each as a concrete question with
   the candidate answers you can see, not as a freeform
@@ -181,16 +182,17 @@ is the artifact reviewers will see next; do not yet send
 to the user. Three named options, each with its presence
 condition:
 
-- **Coherent Scope** (always) — the user's proposed scope
-  plus the additions your investigation (cited material,
-  code read, recurrence check) showed are needed to
-  resolve the underlying concern coherently. Name each
-  addition explicitly so the user can see what came in
-  from the investigation.
+- **Coherent Scope** (always) — the work needed to meet
+  the approved Requirements Analysis, plus the additions
+  your investigation (cited material, code read,
+  recurrence check) showed are needed to leave the
+  surrounding code in a coherent state. Name each addition
+  explicitly so the user can see what came in from the
+  investigation.
 - **Minimal Scope** (when narrower than Coherent) —
-  strictly what the user asked for, with the coherence
-  gaps named. Gives the user a way to decline the
-  coherence work explicitly (time pressure, scope
+  strictly what the requirements call for, with the
+  coherence gaps named. Gives the user a way to decline
+  the coherence work explicitly (time pressure, scope
   discipline, will handle the rest separately).
 - **Maximal Scope** (when anticipated further work is
   real) — beyond the Coherent Scope, rolls in work that
