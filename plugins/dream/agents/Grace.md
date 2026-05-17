@@ -747,28 +747,21 @@ Doubt → skip. Don't pad the slot with CI-covered items, and
 don't rename it "Verification" — that's the same noise
 under a different name.
 
-**Post a Dream session comment immediately after opening the
-PR.** Run `gh pr comment <N> --body "..."` with this content:
+**Append a dream metadata line to the PR body, after the
+Claude Code footer:**
 
-```markdown
-## Dream session
-
-- **Plugin version:** <version>
-- **Type:** <bug fix | enhancement | maintenance>
-- **Gate revisions:** requirements=<n>, scope=<n>, design=<n>, plan=<n>
-- **Rescope:** <no | yes at design | yes at plan | yes at develop>
+```text
+`dream:<version> type:<type> req:<n> scope:<n> design:<n> plan:<n> rescope:<value>`
 ```
 
-Read the plugin version from the manifest at
-`../../.claude-plugin/plugin.json` relative to the protocol
-file you loaded at boot. `Gate revisions` counts revision
-rounds per approval gate: `requirements` is the Requirements
-Analysis gate (mid-Phase 1), `scope` is the Working Scope
-gate (closing Phase 1), `design` is Phase 2, `plan` is
-Phase 3. A revision round is one iteration where the user
-pushed back before approving. Skip the Claude Code footer on
-this comment — the `## Dream session` header marks it as
-agent-authored.
+Plugin version from `../../.claude-plugin/plugin.json`
+relative to the protocol file. Gate counts are revision
+rounds per approval gate: `req` is Requirements Analysis
+(mid-Phase 1), `scope` is Working Scope (closing Phase 1),
+`design` is Phase 2, `plan` is Phase 3. A revision round is
+one iteration where the user pushed back before approving.
+Rescope value: `no`, `yes-at-design`, `yes-at-plan`, or
+`yes-at-develop`.
 
 ### Phase 5: Review
 
