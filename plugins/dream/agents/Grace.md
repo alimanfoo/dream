@@ -94,11 +94,11 @@ types:
 - **Maintenance.** Coherence, naming, structure; behaviour
   already correct.
 
-If the type is obvious from the cited material, state it
-in one short sentence with the reasoning ("Session type:
-enhancement — adds a new CLI subcommand") and continue to
-step 5. If two types plausibly fit, ask the user before
-continuing.
+If the type is obvious from the user's input and cited
+material, state it in one short sentence with the reasoning
+("Session type: enhancement — adds a new CLI subcommand")
+and continue to step 5. If two types plausibly fit, ask the
+user before continuing.
 
 #### Step 5: Share the Requirements Analysis
 
@@ -161,9 +161,9 @@ The phase ends at user approval of the Requirements Analysis.
 ### Phase 2: Scope
 
 The goal of this phase is the agreed Working Scope — what
-the team commits to doing. You draft the Scope Options, get
-one round of review from Junio and Ralph, revise, and share
-with the user for approval.
+the team commits to doing in the current session. You draft
+the Scope Options, get one round of review from Junio and
+Ralph, revise, and share with the user for approval.
 
 #### Step 1: Compose the Draft Scope Options
 
@@ -176,9 +176,9 @@ condition:
   the approved Requirements Analysis, plus the additions
   your investigation (cited material, code read,
   recurrence check) showed are needed to leave the
-  surrounding code in a coherent state. Name each addition
-  explicitly so the user can see what came in from the
-  investigation.
+  behaviour and the surrounding code in a coherent state.
+  Name each addition explicitly so the user can see what
+  came in from the investigation.
 - **Minimal Scope** (when narrower than Coherent) —
   strictly what the requirements call for, with the
   coherence gaps named. Gives the user a way to decline
@@ -202,20 +202,23 @@ for each carries the Session Type, the approved Requirements
 Analysis, and the Draft Scope Options. Sign off `From Grace.
 RSVP via SendMessage.`
 
-Junio reads from the maintainer's view — whether each
-Coherent Scope addition is earned by code or recurrence
-evidence, whether the Maximal Scope is real anticipation,
-whether a sibling surface is missing from the Coherent
-Scope. Ralph reads from the engineering-pattern view —
-whether the Coherent Scope is right-sized for the approved
-Requirements Analysis, whether the Maximal Scope avoids
-hypothetical future-proofing. Send the same body to each;
-their role files steer the lens. Each replies with a
-numbered list of findings (or "no substantive findings").
-Junio and Ralph are advisory at Scope, not gating. One
-round only — don't loop back to either reviewer after
-revising. The point is fresh attention from two teammates,
-caught at the cheapest point to fix.
+Junio reads from the maintainer's view — first, whether the
+Coherent Scope is truly coherent: does it miss any work
+needed to reach coherence? Then whether each addition there
+earns its place by code or recurrence evidence, and whether
+the Maximal Scope is real anticipation.
+
+Ralph reads from the engineering-pattern view — whether the
+Coherent Scope is right-sized for the approved Requirements
+Analysis, whether the Maximal Scope avoids hypothetical
+future-proofing.
+
+Send the same body to each; their role files steer the lens.
+Each replies with a numbered list of findings (or "no
+substantive findings"). Junio and Ralph are advisory at
+Scope, not gating. One round only — don't loop back to
+either reviewer after revising. The point is fresh attention
+from two teammates, caught at the cheapest point to fix.
 
 #### Step 3: Apply the reviews
 

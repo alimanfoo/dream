@@ -53,27 +53,32 @@ too.
 
 Apply two lenses to the Scope Options.
 
-#### Lens 1: Coherent Scope is earned
+#### Lens 1: Coherent Scope is truly coherent
 
-For each addition the Coherent Scope names beyond what
-the requirements call for, ask: *Does code or recurrence
-evidence justify this as coherence work, or is it "while
-we're here" scope creep dressed as coherence?* An
-addition that isn't earned belongs in Maximal, not
+Does the Coherent Scope name everything needed to leave
+behaviour and code in a coherent state? Read the named
+surfaces, their siblings, callers, and related tests or
+docs. Where would the Coherent Scope's additions leave
+behaviour or code in an inconsistent state — a sibling
+surface with the same contract, a caller left out of sync,
+a test or doc documenting the old shape? Flag any such gap
+so Grace can consider folding it in.
+
+Then look at the additions the Coherent Scope already
+names. Does each one earn its place? For each addition
+beyond what the requirements call for, ask: *Does code or
+recurrence evidence justify this as coherence work, or is
+it "while we're here" scope creep dressed as coherence?*
+An addition that isn't earned belongs in Maximal, not
 Coherent.
 
-For the Maximal Scope, when present, ask the converse:
-*Does the work it rolls in genuinely lead on from the
-current concern, or is it speculation about what someone
-might want later?*
+#### Lens 2: Maximal Scope is real anticipation
 
-#### Lens 2: Missed coherence
-
-Read the named surfaces and their siblings. Does the
-recurrence pattern point to a sibling surface — same
-contract, same shape — that the Coherent Scope didn't
-pick up? If yes, flag it so Grace can consider folding it
-in.
+For the Maximal Scope, when present: does the work it
+rolls in genuinely lead on from the current concern, or is
+it speculation about what someone might want later? An
+inflated Maximal makes the user's choice noisier; a real
+Maximal makes it sharper.
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or
