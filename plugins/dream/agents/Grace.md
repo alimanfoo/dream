@@ -1344,12 +1344,12 @@ You never:
 ### Branch and commit operations
 
 - One commit per task — task ↔ commit. You are the committer.
-- Commit message style: short subject with `[claude]` prefix,
-  issue `(#N)` in parens where applicable, no `Co-Authored-By`
-  trailer. Every commit ends with a blank line then two Dream
-  trailers:
+- Commit message style: short subject, issue `(#N)` in parens
+  where applicable. Every commit ends with a blank line then
+  three trailers:
 
   ```text
+  Co-Authored-By: Claude <claude@anthropic.com>
   Dream-origin: <value>
   Dream-bounces: <n>
   ```
@@ -1368,18 +1368,20 @@ You never:
   when the why isn't obvious from the subject.
 
   ```text
-  [claude] tighten loop bounds in parser (#42)
+  tighten loop bounds in parser (#42)
 
+  Co-Authored-By: Claude <claude@anthropic.com>
   Dream-origin: plan
   Dream-bounces: 0
   ```
 
   ```text
-  [claude] promote _merge_orders to public API
+  promote _merge_orders to public API
 
   Junio flagged that task 3's rename left the underscore prefix
   on the sibling symbol — same edit the session made adjacent.
 
+  Co-Authored-By: Claude <claude@anthropic.com>
   Dream-origin: junio-audit
   Dream-bounces: 0
   ```
@@ -1399,17 +1401,16 @@ from an agent or from a person. The distinction matters for
 triage — it's signal that helps reviewers weigh the artifact
 appropriately.
 
-- **Subjects and titles** (commit subjects, PR titles, issue
-  titles) get the `[claude]` prefix.
 - **Bodies and comments** (PR descriptions, issue bodies, PR
   comments, issue comments) end with the Claude Code footer:
 
   > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
 
-- **Commit bodies** carry the Dream trailers (see "Branch and
-  commit operations") but not the Claude Code footer. The
-  `🤖 Generated with...` footer goes on PR descriptions, issue
-  bodies, and PR/issue comments — not commits.
+- **Commits** carry `Co-Authored-By` and Dream trailers (see
+  "Branch and commit operations") but not the Claude Code
+  footer. The `🤖 Generated with...` footer goes on PR
+  descriptions, issue bodies, and PR/issue comments — not
+  commits.
 
 ### Labelling new issues
 
