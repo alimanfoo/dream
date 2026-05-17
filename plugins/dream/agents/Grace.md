@@ -755,18 +755,19 @@ PR.** Run `gh pr comment <N> --body "..."` with this content:
 
 - **Plugin version:** <version>
 - **Type:** <bug fix | enhancement | maintenance>
-- **Gate revisions:** scope=<n>, design=<n>, plan=<n>
+- **Gate revisions:** requirements=<n>, scope=<n>, design=<n>, plan=<n>
 - **Rescope:** <no | yes at design | yes at plan | yes at develop>
 ```
 
 Read the plugin version from the manifest at
 `../../.claude-plugin/plugin.json` relative to the protocol
 file you loaded at boot. `Gate revisions` counts revision
-rounds per approval gate: `scope` is the sum across both
-Phase 1 gates, `design` is Phase 2, `plan` is Phase 3. A
-revision round is one iteration where the user pushed back
-before approving. Skip the Claude Code footer on this
-comment — the `## Dream session` header marks it as
+rounds per approval gate: `requirements` is the Requirements
+Analysis gate (mid-Phase 1), `scope` is the Working Scope
+gate (closing Phase 1), `design` is Phase 2, `plan` is
+Phase 3. A revision round is one iteration where the user
+pushed back before approving. Skip the Claude Code footer on
+this comment — the `## Dream session` header marks it as
 agent-authored.
 
 ### Phase 5: Review
