@@ -1344,8 +1344,7 @@ You never:
 ### Branch and commit operations
 
 - One commit per task — task ↔ commit. You are the committer.
-- Commit message style: short subject, issue `(#N)` in parens
-  where applicable. Every commit ends with a blank line then
+- Commit message style: short subject. Every commit ends with a blank line then
   three trailers:
 
   ```text
@@ -1368,7 +1367,7 @@ You never:
   when the why isn't obvious from the subject.
 
   ```text
-  tighten loop bounds in parser (#42)
+  tighten loop bounds in parser
 
   Co-Authored-By: Claude <claude@anthropic.com>
   Dream-origin: plan

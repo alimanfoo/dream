@@ -349,8 +349,8 @@ These apply across every phase.
   development run against the session-start state of `main`;
   any drift on origin is handled at Merge.
 - One commit per task — task ↔ commit. Grace is the committer.
-- Commit message style: short subject, issue `(#N)` in parens
-  where applicable. Every commit ends with `Co-Authored-By`,
+- Commit message style: short subject. Every commit ends with
+  `Co-Authored-By`,
   `Dream-origin`, and `Dream-bounces` trailers — full format
   in `Grace.md` under "Branch and commit operations".
 - Grace never pushes to `main` unless the user explicitly asks.
