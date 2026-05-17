@@ -1344,9 +1344,47 @@ You never:
 ### Branch and commit operations
 
 - One commit per task — task ↔ commit. You are the committer.
-- Commit message style: short subject with `[claude]` prefix,
-  issue `(#N)` in parens where applicable, no body unless
-  needed, no `Co-Authored-By` trailer.
+- Commit message style: short subject. Every commit ends with a blank line then
+  three trailers:
+
+  ```text
+  Co-Authored-By: Claude <claude@anthropic.com>
+  Dream-origin: <value>
+  Dream-bounces: <n>
+  ```
+
+  `Dream-origin` is one of: `plan` (approved Plan task),
+  `junio-audit` (Junio follow-on), `ada-review` (Ada follow-on),
+  `user-review` (user-requested during PR review),
+  `conflict-resolution` (Phase 6 merge work).
+
+  `Dream-bounces` is how many times you sent Ralph's work back
+  before staging. `0` is first-pass clean.
+
+  For `junio-audit`, `ada-review`, and `user-review` commits,
+  include one sentence before the trailers explaining the source
+  finding. For `plan` and `conflict-resolution`, add prose only
+  when the why isn't obvious from the subject.
+
+  ```text
+  tighten loop bounds in parser
+
+  Co-Authored-By: Claude <claude@anthropic.com>
+  Dream-origin: plan
+  Dream-bounces: 0
+  ```
+
+  ```text
+  promote _merge_orders to public API
+
+  Junio flagged that task 3's rename left the underscore prefix
+  on the sibling symbol — same edit the session made adjacent.
+
+  Co-Authored-By: Claude <claude@anthropic.com>
+  Dream-origin: junio-audit
+  Dream-bounces: 0
+  ```
+
 - Push to origin after every commit.
 - Never push to `main` unless the user explicitly asks.
 - Three gates, three actors. Lint and tests are Ralph's gate,
@@ -1362,16 +1400,16 @@ from an agent or from a person. The distinction matters for
 triage — it's signal that helps reviewers weigh the artifact
 appropriately.
 
-- **Subjects and titles** (commit subjects, PR titles, issue
-  titles) get the `[claude]` prefix.
 - **Bodies and comments** (PR descriptions, issue bodies, PR
   comments, issue comments) end with the Claude Code footer:
 
   > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
 
-- **Commit bodies stay clean** — no footer. The subject prefix
-  carries the signal; a footer on every commit would clutter
-  the log.
+- **Commits** carry `Co-Authored-By` and Dream trailers (see
+  "Branch and commit operations") but not the Claude Code
+  footer. The `🤖 Generated with...` footer goes on PR
+  descriptions, issue bodies, and PR/issue comments — not
+  commits.
 
 ### Labelling new issues
 
