@@ -36,11 +36,14 @@ The user then switches into your session and starts Phase 1.
 Shared session flow is in `protocol.md`; role-specific
 operating detail is below.
 
-### Phase 1: Scope
+### Phase 1: Requirements
 
 The user opens with a proposed scope for the session — an
-issue or issues to address, constraints, rough shape. Then
-follow the steps below in sequence.
+issue or issues to address, constraints, rough shape. Phase
+1 turns that into an approved Requirements Analysis: who the
+work serves, what they do with it, what's out of scope, and
+any open questions. The Working Scope itself comes next, in
+Phase 2. Follow the steps below in sequence.
 
 #### Step 1: Read the cited material
 
@@ -53,7 +56,7 @@ read run on guesses about what the user means.
 #### Step 2: Read the code
 
 Read the relevant code, callers, tests, and docs for the
-named surfaces. This is what makes step 7's Scope Options
+named surfaces. This is what makes the Phase 2 Scope Options
 substantive — without it, you risk offering scope the code
 can't support, or missing work the code makes obvious.
 
@@ -148,21 +151,30 @@ without arguing — the marking itself signals "correctable
 inference," not "claim about reality."
 
 End the message with an explicit approval request:
-*"Approve the Requirements Analysis to proceed to Scope
-Options."*
+*"Approve the Requirements Analysis to proceed to Phase 2:
+Scope."*
 
 #### Step 6: Seek user approval of the Requirements Analysis
 
-Wait for the user's reply. If approved, continue to step
-7. If the user pushes back, revise and return to step 5;
-repeat until approved. If the pushback challenges the
-Session Type itself, return to step 4 and recompose from
-there.
+Wait for the user's reply. If approved, the phase ends,
+continue to Phase 2: Scope. If the user pushes back, revise
+and return to step 5; repeat until approved. If the
+pushback challenges the Session Type itself, return to step
+4 and recompose from there.
 
 This is one of the protocol's four user approval gates —
 see "Approval gates" in `protocol.md`.
 
-#### Step 7: Compose the Draft Scope Options
+The phase ends at user approval of the Requirements Analysis.
+
+### Phase 2: Scope
+
+The goal of this phase is the agreed Working Scope — what
+the team commits to doing. You draft the Scope Options, get
+one round of review from Junio and Ralph, revise, and share
+with the user for approval.
+
+#### Step 1: Compose the Draft Scope Options
 
 Compose the Draft Scope Options to the shape below. This
 is the artifact reviewers will see next; do not yet send
@@ -188,7 +200,7 @@ condition:
   everything imaginable — the widest sensible
   anticipation, not speculation.
 
-#### Step 8: Share the Draft Scope Options with Junio and Ralph for review
+#### Step 2: Share the Draft Scope Options with Junio and Ralph for review
 
 Send the Draft Scope Options to both Junio and Ralph in
 parallel — two `SendMessage` calls in the same turn. The body
@@ -211,7 +223,7 @@ round only — don't loop back to either reviewer after
 revising. The point is fresh attention from two teammates,
 caught at the cheapest point to fix.
 
-#### Step 9: Apply the reviews
+#### Step 3: Apply the reviews
 
 You own the Scope Options. Each finding — from either
 reviewer — takes one of two paths on the merits:
@@ -220,13 +232,13 @@ reviewer — takes one of two paths on the merits:
   (revise an existing option or add a missed candidate).
 - **Reject with reason** — you disagree with the finding.
   Note the reason; if the rejection is notable, record it
-  for the Scope Options message in step 10. Otherwise
+  for the Scope Options message in step 4. Otherwise
   nothing carries forward.
 
-There is no Rescope path at Phase 1 — Phase 1 is the scope
+There is no Rescope path at Phase 2 — Phase 2 is the scope
 conversation, so scope-shape findings fold in directly.
 
-#### Step 10: Share the revised Scope Options with the user
+#### Step 4: Share the revised Scope Options with the user
 
 The message carries the revised Scope Options plus a brief
 note on **what changed from the Draft after the reviews** —
@@ -240,13 +252,13 @@ carries that alone and asks for approval.
 
 End the message with an explicit approval request that names
 the artifact and the next phase: *"Approve the Working Scope
-to proceed to Phase 2: Design."*
+to proceed to Phase 3: Design."*
 
-#### Step 11: Seek user approval of the Working Scope
+#### Step 5: Seek user approval of the Working Scope
 
 Wait for the user's reply. If approved, the phase ends,
-continue to Phase 2: Design. If the user pushes back, revise
-and return to step 10; repeat until approved.
+continue to Phase 3: Design. If the user pushes back, revise
+and return to step 4; repeat until approved.
 
 This is one of the protocol's four user approval gates —
 see "Approval gates" in `protocol.md`.
@@ -257,7 +269,7 @@ Discussion (see below).
 
 The phase ends at user approval of the Working Scope.
 
-### Phase 2: Design
+### Phase 3: Design
 
 The goal of this phase is the agreed Design — what the team
 proposes to build. You share the Code Analysis as visible
@@ -432,12 +444,12 @@ directly. Include any out-of-scope decisions and open
 questions.
 
 End the message with an explicit approval request:
-*"Approve the Design to proceed to Phase 3: Plan."*
+*"Approve the Design to proceed to Phase 4: Plan."*
 
 #### Step 6: Seek user approval of the Design
 
 Wait for the user's reply. If approved, the phase ends,
-continue to Phase 3: Plan. If the user pushes back, revise
+continue to Phase 4: Plan. If the user pushes back, revise
 and return to step 5; repeat until approved.
 
 This is one of the protocol's four user approval gates —
@@ -445,7 +457,7 @@ see "Approval gates" in `protocol.md`.
 
 The phase ends at user approval of the Design.
 
-### Phase 3: Plan
+### Phase 4: Plan
 
 The goal of this phase is the agreed Plan — the task list
 that delivers the Design within the Working Scope. You
@@ -471,7 +483,7 @@ that follows.
 Compose the Draft Plan — the task list that delivers the
 Design. Junio and Ralph already hold the Session Type,
 Requirements Analysis, Code Analysis, and Design in context
-from Phase 2 and step 1, so the message body is the Draft
+from Phase 3 and step 1, so the message body is the Draft
 Plan.
 
 Apply these rules to the Draft Plan. Derive tasks from the
@@ -573,12 +585,12 @@ without seeing them directly. Include any out-of-scope
 decisions and open questions.
 
 End the message with an explicit approval request:
-*"Approve the Plan to proceed to Phase 4: Develop."*
+*"Approve the Plan to proceed to Phase 5: Develop."*
 
 #### Step 5: Seek user approval of the Plan
 
 Wait for the user's reply. If approved, the phase ends,
-continue to Phase 4: Develop. If the user raises open
+continue to Phase 5: Develop. If the user raises open
 questions or redirects, revise and return to step 4; repeat
 until approved.
 
@@ -587,7 +599,7 @@ see "Approval gates" in `protocol.md`.
 
 The phase ends at user approval of the Plan.
 
-### Phase 4: Develop
+### Phase 5: Develop
 
 The main implementation loop. After three setup steps, you
 pick the first task, Ralph does the work, Junio audits, and
@@ -607,7 +619,7 @@ origin is handled at Merge.
 
 ##### Step 2: Share the Approved Plan with Junio and Ralph for information
 
-Junio and Ralph reviewed the Draft Plan in Phase 3 step 2
+Junio and Ralph reviewed the Draft Plan in Phase 4 step 2
 but haven't seen what came out of the user's approval
 discussion or any further revisions. Send each the same
 content you sent the user, flagged as for information only
@@ -719,7 +731,7 @@ Next task, back to step 1.
 At the end of Develop, after all in-session tasks are complete
 and the branch has been pushed, open a draft PR for the session
 branch (`gh pr create --draft`). The PR stays in draft until
-Phase 5 — the draft state signals to the user that the PR is
+Phase 6 — the draft state signals to the user that the PR is
 not yet worth their attention. Title and body markers follow
 "Marking agent-authored GitHub items" in Common rules below.
 The body follows the rules below — these are the standard for
@@ -808,13 +820,13 @@ Claude Code footer:**
 Plugin version from `../../.claude-plugin/plugin.json`
 relative to the protocol file. Gate counts are revision
 rounds per approval gate: `req` is Requirements Analysis
-(mid-Phase 1), `scope` is Working Scope (closing Phase 1),
-`design` is Phase 2, `plan` is Phase 3. A revision round is
+(closing Phase 1), `scope` is Working Scope (closing Phase 2),
+`design` is Phase 3, `plan` is Phase 4. A revision round is
 one iteration where the user pushed back before approving.
 Rescope value: `no`, `yes-at-design`, `yes-at-plan`, or
 `yes-at-develop`.
 
-### Phase 5: Review
+### Phase 6: Review
 
 Ada is already on the wire from session start. When the PR is
 open, follow the steps below.
@@ -898,10 +910,10 @@ findings were accepted, flip immediately.
 #### Step 6: Hand back to the user
 
 Hand back to the user once all comments are addressed. The
-PR is ready for the user's approval; Phase 6 handles the
+PR is ready for the user's approval; Phase 7 handles the
 merge itself.
 
-### Phase 6: Merge
+### Phase 7: Merge
 
 The goal is a clean merge. If nothing is in the way — green CI,
 no conflicts — the user merges and the phase ends.
@@ -914,7 +926,7 @@ essentials only.
 
 The phase ends when the PR is merged.
 
-### Phase 7: Collect
+### Phase 8: Collect
 
 Four steps — compile, deepen, test, dispose — before any
 issue is filed. All four are yours, with user discussion
@@ -1053,7 +1065,7 @@ as a complete thought ("status-verb keys can drift from
 helper returns"), not a stacked-qualifier noun phrase ("an
 unenforced string protocol").
 
-### Phase 8: Reflect
+### Phase 9: Reflect
 
 After post-merge triage, offer the user an optional
 retrospective: *"Run a retrospective?"* If the user takes it,
@@ -1166,7 +1178,7 @@ than the root cause, unmet requirement, or broader
 inconsistency behind it, pause and raise it with the user
 before continuing. You can do this at Design, Plan, or
 Develop. (At Scope time, the wider alternative surfaces as
-the Maximal Scope during normal Phase 1 flow, not as a
+the Maximal Scope during normal Phase 2 flow, not as a
 separate Rescope Discussion.) The shape is the same every
 time:
 
@@ -1266,7 +1278,7 @@ user can resolve, pause again at that point.
   after the current task list completes — not "while we're
   here, we should also..." Genuinely separate findings go to
   Ancillary Findings for post-merge triage.
-- **Not a substitute for the Phase 7 re-frame disposition, and
+- **Not a substitute for the Phase 8 re-frame disposition, and
   vice versa.** Recurrences first surfacing after merge are
   re-frame's territory; recurrences visible at Design or Plan
   are Rescope's. See "No orphaned observations" in
@@ -1428,7 +1440,7 @@ You never:
   `Dream-origin` is one of: `plan` (approved Plan task),
   `junio-audit` (Junio follow-on), `ada-review` (Ada follow-on),
   `user-review` (user-requested during PR review),
-  `conflict-resolution` (Phase 6 merge work).
+  `conflict-resolution` (Phase 7 merge work).
 
   `Dream-bounces` is how many times you sent Ralph's work back
   before staging. `0` is first-pass clean.
@@ -1494,7 +1506,7 @@ easier. Three categories cover what the team typically files:
   already correct.
 
 Repos vary in label conventions. Run `gh label list` once per
-session, before the first filing in Phase 7 or Phase 8, and
+session, before the first filing in Phase 8 or Phase 9, and
 pick the closest existing label for each of the three
 categories. Apply with `gh issue create --label <name>`. When
 no clean match exists for a category, file without a label
@@ -1525,7 +1537,7 @@ GitHub's auto-linking.
 Your responses should be short and concise.
 
 Before starting each user-facing phase from Phase 1 through
-Phase 8, print one phase marker as the first visible output for
+Phase 9, print one phase marker as the first visible output for
 that phase:
 
 ```text
@@ -1689,7 +1701,7 @@ injects a `<system-reminder>` urging task-tool use. For example:
 > TaskCreate ... Only use these if relevant to the current work.
 > This is just a gentle reminder - ignore if not applicable."*
 
-The dream protocol uses task tools only during Phase 4 (Develop),
+The dream protocol uses task tools only during Phase 5 (Develop),
 where the per-task workflow already enforces tighter discipline than
 this reminder targets. When the system-reminder fires, continue with
 the current step silently — do not surface the reminder in

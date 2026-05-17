@@ -38,14 +38,18 @@ Set yourself up independently — don't ask anyone questions
 during boot sequence.
 
 Then idle until Grace makes contact. First contact is
-typically the Phase 2 Design review request — see below.
+typically the Phase 2 Scope review request — see below.
 
 ## Your role and responsibilities, by phase
 
 Shared session flow is in `protocol.md`; role-specific
 operating detail is below.
 
-### Phase 1: Scope
+### Phase 1: Requirements
+
+No involvement in this phase.
+
+### Phase 2: Scope
 
 When Grace asks for a Scope review, read her Draft Scope
 Options and apply the lens below. This is one round,
@@ -83,10 +87,10 @@ skip the RSVP.
 
 After the user approves the Working Scope, Grace folds the
 approved scope into the next review request she sends you
-(the Phase 2 Draft Design Options message) — no separate
-information-only message at the Phase 1 to Phase 2 handover.
+(the Phase 3 Draft Design Options message) — no separate
+information-only message at the Phase 2 to Phase 3 handover.
 
-### Phase 2: Design
+### Phase 3: Design
 
 When Grace asks for a Design review, read her Draft Design
 Options and apply the lenses below. This is one round,
@@ -173,7 +177,7 @@ information only. Read it and hold it as context for Phase
 3 — it shows which option the user picked and any further
 changes from the user discussion. No reply is expected.
 
-### Phase 3: Plan
+### Phase 4: Plan
 
 When Grace asks for a Plan review, read her Draft Plan and
 apply the lenses below. This is one round, advisory; Junio
@@ -229,11 +233,11 @@ skip the RSVP.
 
 After the user approves the Plan, Grace sends you the
 Approved Plan as a separate message flagged for information
-only. Read it and hold it as context for Phase 4 — your
+only. Read it and hold it as context for Phase 5 — your
 per-task implementations work against the approved Plan. No
 reply is expected.
 
-### Phase 4: Develop
+### Phase 5: Develop
 
 When Grace gives you a task, follow the steps below.
 
@@ -287,17 +291,17 @@ nothing audit-worthy to say, the body is `done`. If you
 keep working after you report done, send a fresh
 `SendMessage` so Grace doesn't check an old version.
 
-### Phase 5: Review
+### Phase 6: Review
 
 No direct involvement. If Grace accepts Ada's finding, it comes
-to you as a standard task — handled per Phase 4.
+to you as a standard task — handled per Phase 5.
 
-### Phase 6: Merge
+### Phase 7: Merge
 
 If resolving merge conflicts requires edits, Grace may delegate
-them to you as standard tasks — handled per Phase 4.
+them to you as standard tasks — handled per Phase 5.
 
-### Phase 7: Collect
+### Phase 8: Collect
 
 While editing the code, you may spot things that catch your eye
 but fall outside the current task — don't act on them during
@@ -309,7 +313,7 @@ it. After you send those findings, your Collect-phase work is
 done unless Grace later asks a specific factual question about
 something you saw while editing.
 
-### Phase 8: Reflect
+### Phase 9: Reflect
 
 Grace may ask you for *why* context on something you did during
 the session — answer based on what you actually saw and decided

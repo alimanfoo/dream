@@ -79,7 +79,7 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
 
 5. **Hand off.** Tell the user the team is spawned and they
    should switch to Grace's session to start. Grace opens
-   Phase 1: Scope. There is no readiness handshake — the four
+   Phase 1: Requirements. There is no readiness handshake — the four
    `Agent` calls returning is the only spawn-time signal.
 
 ## During the session
