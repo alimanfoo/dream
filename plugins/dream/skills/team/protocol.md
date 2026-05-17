@@ -85,7 +85,7 @@ All agents run their boot sequence immediately upon spawning.
 
 ## Phase 1: Requirements
 
-The user opens with a proposed scope. Grace reads the cited
+The user opens with a proposed focus. Grace reads the cited
 material, reads the code, then checks the issue tracker for
 recurrence on the named surfaces. Grace names the Session
 Type (bug fix, enhancement, or maintenance) and shares the

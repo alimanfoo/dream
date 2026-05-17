@@ -38,17 +38,19 @@ operating detail is below.
 
 ### Phase 1: Requirements
 
-The user opens with a proposed scope for the session — an
-issue or issues to address, constraints, rough shape. Phase
-1 turns that into an approved Requirements Analysis: who the
-work serves, what they do with it, who and what is
-explicitly excluded, and any open questions. The Working
-Scope itself comes next, in Phase 2. Follow the steps below
-in sequence.
+The user opens with a proposed focus for the session — an
+idea for a new feature, an issue or issues to address, a
+piece of code to tidy up, constraints, rough shape. Phase
+1's job is to gather and elicit the requirements behind that
+focus, and to make any assumptions explicit so the user can
+correct them. It ends at an approved Requirements Analysis:
+who the work serves, what they do with it, who and what is
+explicitly excluded, and any open questions. Follow the
+steps below in sequence.
 
 #### Step 1: Read the cited material
 
-Read everything the user cites in their proposed scope —
+Read everything the user cites in their proposed focus —
 issue bodies, prior issues they reference, linked PRs, named
 files or symbols. This is the substantive baseline for the
 steps that follow; without it, the recurrence check and code
@@ -57,9 +59,10 @@ read run on guesses about what the user means.
 #### Step 2: Read the code
 
 Read the relevant code, callers, tests, and docs for the
-named surfaces. This is what makes the Phase 2 Scope Options
-substantive — without it, you risk offering scope the code
-can't support, or missing work the code makes obvious.
+named surfaces. This is what makes the Requirements Analysis
+substantive — without it, you're inferring consumers and use
+cases from prose alone, with no check against what the code
+actually does.
 
 #### Step 3: Check for recurrence
 
@@ -77,19 +80,6 @@ issues, note what the prior context shows. With the code
 read behind you, you can interpret results substantively —
 which prior issues actually relate to the current concern,
 which are noise.
-
-For recurrence surfaces, compare how the surface behaves
-across related functions, callers, or files. Look at
-semantics, not just names, prose, or other surface details.
-A surface can be consistently named yet semantically
-inconsistent — for example, a parameter with fallback
-semantics in one caller, no-anchor semantics in another, and
-required in a third. Naming work alone would turn "different
-names for the same contract" into "one name with different
-contracts." Note any such split for the Code Analysis.
-
-A recurrence pattern often points to a wider alternative
-worth offering as the Maximal Scope.
 
 #### Step 4: Name the Session Type
 
@@ -200,7 +190,9 @@ condition:
   Forward-looking: anticipates what comes next, not just
   what the investigation surfaced about now. Not
   everything imaginable — the widest sensible
-  anticipation, not speculation.
+  anticipation, not speculation. A recurrence pattern
+  across related surfaces often points to a Maximal Scope
+  worth offering.
 
 #### Step 2: Share the Draft Scope Options with Junio and Ralph for review
 
@@ -299,7 +291,14 @@ Depth scales with Session Type:
 For recurrence surfaces — where the Working Scope cited
 prior issues, or the Phase 1 recurrence search found prior
 issues on the same surface — give enough detail to show the
-recurrence pattern.
+recurrence pattern. Read for semantics, not just names,
+prose, or other surface details. A surface can be
+consistently named yet semantically inconsistent — for
+example, a parameter with fallback semantics in one caller,
+no-anchor semantics in another, and required in a third.
+Naming work alone would turn "different names for the same
+contract" into "one name with different contracts." Note
+any such split.
 
 #### Step 2: Compose the Draft Design Options
 
