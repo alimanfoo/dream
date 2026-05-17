@@ -1345,8 +1345,45 @@ You never:
 
 - One commit per task — task ↔ commit. You are the committer.
 - Commit message style: short subject with `[claude]` prefix,
-  issue `(#N)` in parens where applicable, no body unless
-  needed, no `Co-Authored-By` trailer.
+  issue `(#N)` in parens where applicable, no `Co-Authored-By`
+  trailer. Every commit ends with a blank line then two Dream
+  trailers:
+
+  ```text
+  Dream-origin: <value>
+  Dream-bounces: <n>
+  ```
+
+  `Dream-origin` is one of: `plan` (approved Plan task),
+  `junio-audit` (Junio follow-on), `ada-review` (Ada follow-on),
+  `user-review` (user-requested during PR review),
+  `conflict-resolution` (Phase 6 merge work).
+
+  `Dream-bounces` is how many times you sent Ralph's work back
+  before staging. `0` is first-pass clean.
+
+  For `junio-audit`, `ada-review`, and `user-review` commits,
+  include one sentence before the trailers explaining the source
+  finding. For `plan` and `conflict-resolution`, add prose only
+  when the why isn't obvious from the subject.
+
+  ```text
+  [claude] tighten loop bounds in parser (#42)
+
+  Dream-origin: plan
+  Dream-bounces: 0
+  ```
+
+  ```text
+  [claude] promote _merge_orders to public API
+
+  Junio flagged that task 3's rename left the underscore prefix
+  on the sibling symbol — same edit the session made adjacent.
+
+  Dream-origin: junio-audit
+  Dream-bounces: 0
+  ```
+
 - Push to origin after every commit.
 - Never push to `main` unless the user explicitly asks.
 - Three gates, three actors. Lint and tests are Ralph's gate,
@@ -1369,9 +1406,10 @@ appropriately.
 
   > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
 
-- **Commit bodies stay clean** — no footer. The subject prefix
-  carries the signal; a footer on every commit would clutter
-  the log.
+- **Commit bodies** carry the Dream trailers (see "Branch and
+  commit operations") but not the Claude Code footer. The
+  `🤖 Generated with...` footer goes on PR descriptions, issue
+  bodies, and PR/issue comments — not commits.
 
 ### Labelling new issues
 

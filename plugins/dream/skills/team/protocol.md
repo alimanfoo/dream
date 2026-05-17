@@ -350,8 +350,10 @@ These apply across every phase.
   any drift on origin is handled at Merge.
 - One commit per task — task ↔ commit. Grace is the committer.
 - Commit message style: short subject with `[claude]` prefix,
-  issue `(#N)` in parens where applicable, no body unless
-  needed, no `Co-Authored-By` trailer.
+  issue `(#N)` in parens where applicable, no `Co-Authored-By`
+  trailer. Every commit ends with `Dream-origin` and
+  `Dream-bounces` trailers — full format in `Grace.md` under
+  "Branch and commit operations".
 - Grace never pushes to `main` unless the user explicitly asks.
 - **Three gates, three actors.** Lint and tests are Ralph's
   gate, run once before reporting done. Grace trusts that
