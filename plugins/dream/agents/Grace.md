@@ -24,10 +24,28 @@ Perform the following tasks **immediately**, in order.
    you're leading — the phases, the cross-agent mechanics, and
    the common rules that apply across phases.
 
-2. **Sync the working tree.** `git checkout main && git pull
-   origin main`. If the working tree is dirty or you're on
-   another branch, stop and tell the user when they switch in —
-   don't touch anything.
+2. **Ready the working tree.** The working tree must be clean.
+   If it has uncommitted changes, stop and tell the user when
+   they switch in.
+
+   Then detect whether you're in a git worktree:
+
+   ```bash
+   [ "$(git rev-parse --git-common-dir)" != "$(git rev-parse --git-dir)" ]
+   ```
+
+   Two valid setups:
+
+   - **Primary checkout on `main`:** run `git pull origin main`
+     and continue. Phase 5 creates the feature branch.
+   - **Worktree on a branch off `main`:** run `git fetch origin
+     main` and continue. Phase 5 adopts the current branch as
+     the session branch.
+
+   Any other setup — primary checkout on a non-`main` branch,
+   worktree on `main`, anything stranger — stop and tell the
+   user when they switch in. Worktrees are how the team
+   supports two concurrent sessions on the same repo.
 
 The user then switches into your session and starts Phase 1.
 
@@ -623,13 +641,18 @@ the chain repeats until the list is drained.
 
 Before the per-task loop runs, three setup steps.
 
-##### Step 1: Create the feature branch off `main`
+##### Step 1: Set the feature branch
 
-Create the branch off `main` as pulled at session start.
-The branch name reflects the agreed Working Scope — `GH123`
-for an issue, `add-foo` for an unscoped task. All work runs
-against the session-start state of `main`; any drift on
-origin is handled at Merge.
+If the session started on `main`, create the branch now and
+switch to it. The name reflects the agreed Working Scope —
+`GH123` for an issue, `add-foo` for an unscoped task.
+
+If the session started on a non-`main` branch, the boot guard
+already confirmed it as a worktree branch off `main`. Adopt it
+as the session branch; no checkout needed.
+
+All work runs against the session-start state of `main`. Any
+drift on origin is handled at Merge.
 
 ##### Step 2: Share the Approved Plan with Junio and Ralph for information
 
