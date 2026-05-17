@@ -469,7 +469,7 @@ and share the revised Plan with the user for approval.
 #### Step 1: Share the Approved Design with Junio and Ralph for information
 
 Junio and Ralph reviewed the Draft Design Options in Phase
-2 step 3 but haven't seen which option the user picked or
+3 step 3 but haven't seen which option the user picked or
 what came out of the approval discussion. Send each the
 Approved Design (the option the user picked, plus any
 changes from the approval discussion), flagged as for
@@ -482,9 +482,9 @@ that follows.
 
 Compose the Draft Plan — the task list that delivers the
 Design. Junio and Ralph already hold the Session Type,
-Requirements Analysis, Code Analysis, and Design in context
-from Phase 3 and step 1, so the message body is the Draft
-Plan.
+Requirements Analysis, Working Scope, Code Analysis, and
+Design in context from Phase 3 and step 1, so the message
+body is the Draft Plan.
 
 Apply these rules to the Draft Plan. Derive tasks from the
 Design — they are the work that delivers it — and the Code
@@ -777,8 +777,8 @@ should never appear in the description:
 
 - *the protocol*
 - *Grace* / *Ralph* / *Junio* / *Ada* as role names
-- phase names as labels (*Scope*, *Design*, *Plan*,
-  *Develop*, *Review*, *Merge*, *Collect*, *Reflect*)
+- phase names as labels (*Requirements*, *Scope*, *Design*,
+  *Plan*, *Develop*, *Review*, *Merge*, *Collect*, *Reflect*)
 - *task* as the unit of dream-team work
 - *post-merge sweep*
 - *maintenance chain*

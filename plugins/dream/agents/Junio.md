@@ -102,16 +102,18 @@ act on.
 Grace's Draft Design Options open with the declared Session
 Type (bug fix, enhancement, or maintenance), then contain
 the Requirements Analysis (consumers, use cases, non-goals,
-open questions), the Code Analysis (a verifiable read of
-what the current code does and where), the Proposed Design
-(Grace's recommendation), and the Simplest Design (her
-actively-constructed simpler alternative). Both options are
-in scope for review. The three layers stack: the
-Requirements Analysis is the consumer truth, the Code
+open questions), the approved Working Scope (which option
+the user picked and any revisions), the Code Analysis (a
+verifiable read of what the current code does and where),
+the Proposed Design (Grace's recommendation), and the
+Simplest Design (her actively-constructed simpler
+alternative). Both options are in scope for review. The
+layers stack: the Requirements Analysis is the consumer
+truth, the Working Scope is the agreed commitment, the Code
 Analysis is the code truth, the Design is the proposal.
 Each can fail on its own terms — your review can challenge
-any of the three. Read the cited code as needed to evaluate
-the proposal — your review is reading-based here too.
+any of them. Read the cited code as needed to evaluate the
+proposal — your review is reading-based here too.
 
 Apply five lenses to the Design.
 
@@ -203,7 +205,7 @@ Design review.
 After the user approves the Design, Grace sends you the
 Approved Design as a separate message flagged for
 information only. Read it and hold it as context for Phase
-3 — it shows which option the user picked and any further
+4 — it shows which option the user picked and any further
 changes from the user discussion. No reply is expected.
 
 ### Phase 4: Plan
@@ -216,9 +218,9 @@ findings to act on.
 
 The message body is the Draft Plan — the task list that
 delivers the Design. The prior layers (Session Type,
-Requirements Analysis, Code Analysis, agreed Design) are
-already in your context from the Phase 3 review and the
-Approved Design handoff at the start of Phase 4.
+Requirements Analysis, Working Scope, Code Analysis, agreed
+Design) are already in your context from the Phase 3 review
+and the Approved Design handoff at the start of Phase 4.
 
 Focus on the task list and its decomposition. Design-shaped
 concerns — defend behaviour, docstring-as-contract,

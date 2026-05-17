@@ -99,11 +99,12 @@ parallel from the maintainer's view. Grace owns the Design
 and decides which findings to act on.
 
 Grace's Draft Design Options contain the declared Session
-Type, the Requirements Analysis, the Code Analysis, the
-Proposed Design (Grace's recommendation), and the Simplest
-Design (her actively-constructed simpler alternative). Both
-options are in scope for review. Read the cited code as
-needed; your review is reading-based here.
+Type, the Requirements Analysis, the approved Working Scope,
+the Code Analysis, the Proposed Design (Grace's
+recommendation), and the Simplest Design (her
+actively-constructed simpler alternative). Both options are
+in scope for review. Read the cited code as needed; your
+review is reading-based here.
 
 Your lens is **software engineering patterns** — the same
 discipline you apply when implementing. Apply four lenses
@@ -174,7 +175,7 @@ skip the RSVP.
 After the user approves the Design, Grace sends you the
 Approved Design as a separate message flagged for
 information only. Read it and hold it as context for Phase
-3 — it shows which option the user picked and any further
+4 — it shows which option the user picked and any further
 changes from the user discussion. No reply is expected.
 
 ### Phase 4: Plan
