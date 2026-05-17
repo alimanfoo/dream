@@ -214,7 +214,7 @@ After the user approves the Design, Grace sends you the
 Approved Design as a separate message flagged for
 information only. Read it and hold it as context for Phase
 4 — it shows which option the user picked and any further
-changes from the user discussion. No reply is expected.
+changes from the approval discussion. No reply is expected.
 
 ### Phase 4: Plan
 
@@ -306,7 +306,7 @@ After the user approves the Plan, Grace sends you the
 Approved Plan as a separate message flagged for information
 only. Read it and hold it as context for Phase 5 — it shows
 which of your findings Grace folded in, and any further
-changes from the user discussion. No reply is expected.
+changes from the approval discussion. No reply is expected.
 
 ### Phase 5: Develop
 
