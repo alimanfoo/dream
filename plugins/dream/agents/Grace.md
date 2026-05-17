@@ -747,6 +747,22 @@ Doubt → skip. Don't pad the slot with CI-covered items, and
 don't rename it "Verification" — that's the same noise
 under a different name.
 
+**Append a dream metadata line to the PR body, after the
+Claude Code footer:**
+
+```text
+<!-- dream:<version> type:<type> req:<n> scope:<n> design:<n> plan:<n> rescope:<value> -->
+```
+
+Plugin version from `../../.claude-plugin/plugin.json`
+relative to the protocol file. Gate counts are revision
+rounds per approval gate: `req` is Requirements Analysis
+(mid-Phase 1), `scope` is Working Scope (closing Phase 1),
+`design` is Phase 2, `plan` is Phase 3. A revision round is
+one iteration where the user pushed back before approving.
+Rescope value: `no`, `yes-at-design`, `yes-at-plan`, or
+`yes-at-develop`.
+
 ### Phase 5: Review
 
 Ada is already on the wire from session start. When the PR is
@@ -943,21 +959,26 @@ GitHub-visible text.
 - **Drop** — duplicate of an existing open issue, or fails
   the bar for filing. For a duplicate, you may comment on
   the existing issue if the new sighting adds evidence (a
-  second occurrence, a different angle).
+  second occurrence, a different angle). Reference the
+  session PR in any such comment.
 - **Reinforce** — related to an existing open issue but not
   identical. Comment on the open issue with the new angle
-  rather than opening a new one.
+  rather than opening a new one. Open the comment with a
+  reference to the session PR: "Noticed during #N, ..."
 - **Re-frame** — recurrence on a surface with prior issues,
   open or closed. File one issue at the **contract level**:
   name the surface (the function, the parameter, the
   contract) and list the prior issues with `#N` references.
-  The recurrence pattern itself is the behaviour gap —
-  issues landing on the same surface is evidence of an
-  unresolved contract. Substance already disposed at Plan is
-  a reversal, not fresh observation — see "No orphaned
-  observations" in `protocol.md`.
+  Open the issue body with a reference to the session PR:
+  "Noticed during #N, ..." The recurrence pattern itself is
+  the behaviour gap — issues landing on the same surface is
+  evidence of an unresolved contract. Substance already
+  disposed at Plan is a reversal, not fresh observation —
+  see "No orphaned observations" in `protocol.md`.
 - **File fresh** — no related issue on the surface, and the
-  finding clears the bar. Open a standalone issue.
+  finding clears the bar. Open a standalone issue. Open the
+  issue body with a reference to the session PR:
+  "Noticed during #N, ..."
 
 The bar for filing a **new** issue is *a behaviour gap with
 a real consumer*. Findings that don't clear the bar default
