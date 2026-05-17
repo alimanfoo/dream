@@ -47,7 +47,44 @@ operating detail is below.
 
 ### Phase 1: Scope
 
-No involvement in this phase.
+When Grace asks for a Scope review, read her Draft Scope
+Options and apply the lens below. This is one round,
+advisory; Junio reviews the same Draft Scope Options in
+parallel from the maintainer's view. Grace owns the Scope
+Options and decides which findings to act on.
+
+The message body carries the Session Type, the approved
+Requirements Analysis (consumers, use cases, non-goals,
+open questions), and the Draft Scope Options — Coherent
+Scope (always), Minimal Scope (when narrower than
+Coherent), Maximal Scope (when a wider alternative is
+real). All present options are in scope for review. Open
+the named files or symbols or read code as needed.
+
+Apply this lens to the Scope Options.
+
+#### Lens: Scope and abstraction
+
+Does the Coherent Scope match what the approved
+Requirements Analysis calls for, or does it pull in work
+the requirements don't justify? Check additions against
+the consumer list — an addition serving consumers not on
+the list is a finding. For the Maximal Scope, when
+present, ask the same: does the work it rolls in serve
+real consumers from the Requirements Analysis, or is it
+hypothetical future-proofing?
+
+**Reply shape.** A numbered plain-text list of findings, each
+with a one-line reason and the file paths, symbol names, or
+Scope Option parts involved. If nothing to flag, your reply
+is "no substantive findings." End the reply with the standard
+sign-off: `From Ralph.`. The reply is a terminal hand-off —
+skip the RSVP.
+
+After the user approves the Working Scope, Grace folds the
+approved scope into the next review request she sends you
+(the Phase 2 Draft Design Options message) — no separate
+information-only message at the Phase 1 to Phase 2 handover.
 
 ### Phase 2: Design
 

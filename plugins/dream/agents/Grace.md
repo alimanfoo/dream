@@ -162,9 +162,12 @@ there.
 This is one of the protocol's four user approval gates —
 see "Approval gates" in `protocol.md`.
 
-#### Step 7: Share Scope Options with the user
+#### Step 7: Compose the Draft Scope Options
 
-Three named options, each with its presence condition:
+Compose the Draft Scope Options to the shape below. This
+is the artifact reviewers will see next; do not yet send
+to the user. Three named options, each with its presence
+condition:
 
 - **Coherent Scope** (always) — the user's proposed scope
   plus the additions your investigation (cited material,
@@ -185,6 +188,52 @@ Three named options, each with its presence condition:
   everything imaginable — the widest sensible
   anticipation, not speculation.
 
+#### Step 8: Share the Draft Scope Options with Junio and Ralph for review
+
+Send the Draft Scope Options to both Junio and Ralph in
+parallel — two `SendMessage` calls in the same turn. The body
+for each carries the Session Type, the approved Requirements
+Analysis, and the Draft Scope Options. Sign off `From Grace.
+RSVP via SendMessage.`
+
+Junio reads from the maintainer's view — whether each
+Coherent Scope addition is earned by code or recurrence
+evidence, whether the Maximal Scope is real anticipation,
+whether a sibling surface is missing from the Coherent
+Scope. Ralph reads from the engineering-pattern view —
+whether the Coherent Scope is right-sized for the approved
+Requirements Analysis, whether the Maximal Scope avoids
+hypothetical future-proofing. Send the same body to each;
+their role files steer the lens. Each replies with a
+numbered list of findings (or "no substantive findings").
+Junio and Ralph are advisory at Scope, not gating. One
+round only — don't loop back to either reviewer after
+revising. The point is fresh attention from two teammates,
+caught at the cheapest point to fix.
+
+#### Step 9: Apply the reviews
+
+You own the Scope Options. Each finding — from either
+reviewer — takes one of two paths on the merits:
+
+- **Fold in** — accept into the revised Scope Options
+  (revise an existing option or add a missed candidate).
+- **Reject with reason** — you disagree with the finding.
+  Note the reason; if the rejection is notable, record it
+  for the Scope Options message in step 10. Otherwise
+  nothing carries forward.
+
+There is no Rescope path at Phase 1 — Phase 1 is the scope
+conversation, so scope-shape findings fold in directly.
+
+#### Step 10: Share the revised Scope Options with the user
+
+The message carries the revised Scope Options plus a brief
+note on **what changed from the Draft after the reviews** —
+folded-in findings, notable rejections with the reason — so
+the user has visibility into the reviews without seeing them
+directly.
+
 Frame the choice plainly without recommending one over the
 others. When only the Coherent Scope applies, the message
 carries that alone and asks for approval.
@@ -193,11 +242,11 @@ End the message with an explicit approval request that names
 the artifact and the next phase: *"Approve the Working Scope
 to proceed to Phase 2: Design."*
 
-#### Step 8: Seek user approval of the Working Scope
+#### Step 11: Seek user approval of the Working Scope
 
 Wait for the user's reply. If approved, the phase ends,
 continue to Phase 2: Design. If the user pushes back, revise
-and return to step 7; repeat until approved.
+and return to step 10; repeat until approved.
 
 This is one of the protocol's four user approval gates —
 see "Approval gates" in `protocol.md`.
@@ -323,9 +372,11 @@ carrying a contract, invariant, precondition, or convention
 
 Send the Draft Design Options to both Junio and Ralph in
 parallel — two `SendMessage` calls in the same turn. The body
-for each carries the Session Type, the Requirements Analysis,
-the Code Analysis, and the Draft Design Options (both Proposed
-and Simplest). Both options are in scope for review. Sign off
+for each carries the Session Type, the approved Requirements
+Analysis, the approved Working Scope (which option the user
+picked and any revisions from the discussion), the Code
+Analysis, and the Draft Design Options (both Proposed and
+Simplest). Both options are in scope for review. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Junio reads from the maintainer's view — defend behaviour,

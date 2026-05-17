@@ -31,7 +31,60 @@ operating detail is below.
 
 ### Phase 1: Scope
 
-No involvement in this phase.
+When Grace asks for a Scope review, read her Draft Scope
+Options and apply the lenses below. This is one round,
+advisory; Ralph reviews the same Draft Scope Options in
+parallel from the engineering-pattern view. Grace owns the
+Scope Options and decides which findings to act on.
+
+The message body carries the Session Type, the approved
+Requirements Analysis (consumers, use cases, non-goals,
+open questions), and the Draft Scope Options — Coherent
+Scope (always), Minimal Scope (when narrower than
+Coherent), Maximal Scope (when a wider alternative is
+real). All present options are in scope for review. Open
+the named files or symbols, run a recurrence search, or
+read code as needed — your review is reading-based here
+too.
+
+Apply two lenses to the Scope Options.
+
+#### Lens 1: Coherent Scope is earned
+
+For each addition the Coherent Scope names beyond the
+user's proposed scope, ask: *Does code or recurrence
+evidence justify this as coherence work, or is it "while
+we're here" scope creep dressed as coherence?* An addition
+that isn't earned belongs in Maximal, not Coherent.
+
+For the Maximal Scope, when present, ask the converse:
+*Does the work it rolls in genuinely lead on from the
+current concern, or is it speculation about what someone
+might want later?*
+
+#### Lens 2: Missed coherence
+
+Read the named surfaces and their siblings. Does the
+recurrence pattern point to a sibling surface — same
+contract, same shape — that the Coherent Scope didn't
+pick up? If yes, flag it so Grace can consider folding it
+in.
+
+**Reply shape.** A numbered plain-text list of findings, each
+with a one-line reason and the file paths, symbol names, or
+Scope Option parts involved. If nothing to flag, your reply
+is "no substantive findings." End the reply with the standard
+sign-off: `From Junio.`. The reply is a terminal hand-off —
+skip the RSVP.
+
+The Scope review has no "out of scope but noticed" section.
+Tangential observations don't fit at Phase 1 — they wait for
+per-task audits or the post-merge sweep.
+
+After the user approves the Working Scope, Grace folds the
+approved scope into the next review request she sends you
+(the Phase 2 Draft Design Options message) — no separate
+information-only message at the Phase 1 to Phase 2 handover.
 
 ### Phase 2: Design
 

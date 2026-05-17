@@ -9,8 +9,10 @@ interaction.
 A session moves through eight phases:
 
 1. **Scope.** Grace and the user discuss the scope of work.
-   Grace shares the Requirements Analysis and then Scope
-   Options, each for user approval.
+   Grace shares the Requirements Analysis for user approval,
+   drafts the Scope Options, gets one round of review from
+   Junio and Ralph, revises, and shares the revised Scope
+   Options with the user for approval.
 
 2. **Design.** Grace shares the Code Analysis with the user,
    drafts the Design, gets one round of review from Junio and
@@ -87,10 +89,19 @@ the Session Type (bug fix, enhancement, or maintenance) and
 shares the Requirements Analysis — consumers, use cases,
 non-goals, and open questions, with each inference marked
 stated or assumed — for user approval. With the Requirements
-Analysis approved, Grace shares Scope Options as the closing
-move — the Coherent Scope (always), the Minimal Scope (when
-narrower than Coherent), and the Maximal Scope (when a wider
-alternative is real).
+Analysis approved, Grace drafts the Scope Options — the
+Coherent Scope (always), the Minimal Scope (when narrower
+than Coherent), and the Maximal Scope (when a wider
+alternative is real). Grace shares the Draft Scope Options
+with Junio and Ralph for one round of review — advisory,
+not gating — and revises. Junio reads from the maintainer's
+view; Ralph reads from the engineering-pattern view. Each
+finding takes one of two paths on the merits: fold into the
+revised Scope Options, or reject with reason. There is no
+Rescope path at Phase 1 — Phase 1 is the scope conversation,
+so scope-shape findings fold in directly. Grace then shares
+the revised Scope Options with the user, with a brief note
+on what changed from the Draft after the reviews.
 
 The phase ends at user approval of the Working Scope.
 
