@@ -91,10 +91,12 @@ The Scope review has no "out of scope but noticed" section.
 Tangential observations don't fit at Phase 2 — they wait for
 per-task audits or the post-merge sweep.
 
-After the user approves the Working Scope, Grace folds the
-approved scope into the next review request she sends you
-(the Phase 3 Draft Design Options message) — no separate
-information-only message at the Phase 2 to Phase 3 handover.
+After the user approves the Working Scope, Grace sends you
+the Approved Working Scope as a separate message flagged for
+information only at the start of Phase 3. Read it and hold
+it as context for the Design review that follows — it shows
+which option the user picked and any further changes from
+the approval discussion. No reply is expected.
 
 ### Phase 3: Design
 
@@ -105,21 +107,21 @@ Draft Design Options in parallel from the engineering-pattern
 view. Grace owns the Design and decides which findings to
 act on.
 
-Grace's Draft Design Options open with the declared Session
-Type (bug fix, enhancement, or maintenance), then contain
-the Requirements Analysis (consumers, use cases, non-goals,
-open questions), the approved Working Scope (which option
-the user picked and any revisions), the Code Analysis (a
-verifiable read of what the current code does and where),
-the Proposed Design (Grace's recommendation), and the
-Simplest Design (her actively-constructed simpler
-alternative). Both options are in scope for review. The
-layers stack: the Requirements Analysis is the consumer
-truth, the Working Scope is the agreed commitment, the Code
-Analysis is the code truth, the Design is the proposal.
-Each can fail on its own terms — your review can challenge
-any of them. Read the cited code as needed to evaluate the
-proposal — your review is reading-based here too.
+You already hold the Session Type and Requirements Analysis
+in context from the Phase 2 Scope review, and the approved
+Working Scope from the information-only message at the start
+of Phase 3. The Draft Design Options message body contains
+the Code Analysis (a verifiable read of what the current
+code does and where), the Proposed Design (Grace's
+recommendation), and the Simplest Design (her
+actively-constructed simpler alternative). Both options are
+in scope for review. The layers stack: the Requirements
+Analysis is the consumer truth, the Working Scope is the
+agreed commitment, the Code Analysis is the code truth, the
+Design is the proposal. Each can fail on its own terms —
+your review can challenge any of them. Read the cited code
+as needed to evaluate the proposal — your review is
+reading-based here too.
 
 Apply five lenses to the Design.
 
@@ -225,8 +227,8 @@ findings to act on.
 The message body is the Draft Plan — the task list that
 delivers the Design. The prior layers (Session Type,
 Requirements Analysis, Working Scope, Code Analysis, agreed
-Design) are already in your context from the Phase 3 review
-and the Approved Design handoff at the start of Phase 4.
+Design) are already in your context from prior phases and
+the Approved Design handoff at the start of Phase 4.
 
 Focus on the task list and its decomposition. Design-shaped
 concerns — defend behaviour, docstring-as-contract,

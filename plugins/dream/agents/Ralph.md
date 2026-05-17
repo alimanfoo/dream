@@ -85,10 +85,12 @@ is "no substantive findings." End the reply with the standard
 sign-off: `From Ralph.`. The reply is a terminal hand-off —
 skip the RSVP.
 
-After the user approves the Working Scope, Grace folds the
-approved scope into the next review request she sends you
-(the Phase 3 Draft Design Options message) — no separate
-information-only message at the Phase 2 to Phase 3 handover.
+After the user approves the Working Scope, Grace sends you
+the Approved Working Scope as a separate message flagged for
+information only at the start of Phase 3. Read it and hold
+it as context for the Design review that follows — it shows
+which option the user picked and any further changes from
+the approval discussion. No reply is expected.
 
 ### Phase 3: Design
 
@@ -98,8 +100,10 @@ advisory; Junio reviews the same Draft Design Options in
 parallel from the maintainer's view. Grace owns the Design
 and decides which findings to act on.
 
-Grace's Draft Design Options contain the declared Session
-Type, the Requirements Analysis, the approved Working Scope,
+You already hold the Session Type and Requirements Analysis
+in context from the Phase 2 Scope review, and the approved
+Working Scope from the information-only message at the start
+of Phase 3. The Draft Design Options message body contains
 the Code Analysis, the Proposed Design (Grace's
 recommendation), and the Simplest Design (her
 actively-constructed simpler alternative). Both options are

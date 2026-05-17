@@ -232,9 +232,6 @@ reviewer — takes one of two paths on the merits:
   for the Scope Options message in step 4. Otherwise
   nothing carries forward.
 
-There is no Rescope path at Phase 2 — Phase 2 is the scope
-conversation, so scope-shape findings fold in directly.
-
 #### Step 4: Share the revised Scope Options with the user
 
 The message carries the revised Scope Options plus a brief
@@ -269,12 +266,25 @@ The phase ends at user approval of the Working Scope.
 ### Phase 3: Design
 
 The goal of this phase is the agreed Design — what the team
-proposes to build. You share the Code Analysis as visible
-grounding, compose the Draft Design Options, get one round of
-review from Junio and Ralph, revise, and share with the
-user for approval.
+proposes to build. You share the Approved Working Scope with
+Junio and Ralph for information, share the Code Analysis with
+the user as visible grounding, compose the Draft Design
+Options, get one round of review from Junio and Ralph,
+revise, and share with the user for approval.
 
-#### Step 1: Share the Code Analysis with the user
+#### Step 1: Share the Approved Working Scope with Junio and Ralph for information
+
+Junio and Ralph reviewed the Draft Scope Options in Phase 2
+step 2 but haven't seen which option the user picked or what
+came out of the approval discussion. Send each the Approved
+Working Scope (the option the user picked, plus any changes
+from the approval discussion), flagged as for information
+only — two `SendMessage` calls in the same turn. Sign off
+`From Grace.` and skip the RSVP — no reply is expected. The
+Approved Working Scope feeds the Design review work that
+follows.
+
+#### Step 2: Share the Code Analysis with the user
 
 Share the Code Analysis — a verifiable read of what the
 current code does and where, with file:line or symbol
@@ -303,7 +313,7 @@ Naming work alone would turn "different names for the same
 contract" into "one name with different contracts." Note
 any such split.
 
-#### Step 2: Compose the Draft Design Options
+#### Step 3: Compose the Draft Design Options
 
 Compose the Draft Design Options — Proposed Design and
 Simplest Design — to the shape below. This is the artifact
@@ -384,15 +394,15 @@ below) to any docstring, comment, or section-header
 carrying a contract, invariant, precondition, or convention
 — whether incoming from the user or composed by you.
 
-#### Step 3: Share the Draft Design Options with Junio and Ralph for review
+#### Step 4: Share the Draft Design Options with Junio and Ralph for review
 
 Send the Draft Design Options to both Junio and Ralph in
-parallel — two `SendMessage` calls in the same turn. The body
-for each carries the Session Type, the approved Requirements
-Analysis, the approved Working Scope (which option the user
-picked and any revisions from the discussion), the Code
-Analysis, and the Draft Design Options (both Proposed and
-Simplest). Both options are in scope for review. Sign off
+parallel — two `SendMessage` calls in the same turn. Junio
+and Ralph already hold the Session Type and Requirements
+Analysis in context from the Phase 2 Scope review, and the
+approved Working Scope from step 1, so the message body is
+the Code Analysis and the Draft Design Options (both Proposed
+and Simplest). Both options are in scope for review. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Junio reads from the maintainer's view — defend behaviour,
@@ -408,7 +418,7 @@ either reviewer after revising. The point is fresh
 attention from two teammates, caught at the cheapest point
 to fix.
 
-#### Step 4: Apply the reviews
+#### Step 5: Apply the reviews
 
 You own the Design. Each finding — from either reviewer —
 takes one of four paths on the merits:
@@ -416,7 +426,7 @@ takes one of four paths on the merits:
 - **Fold in** — accept into the revised Design Options.
 - **Reject with reason** — you disagree with the finding.
   Note the reason; if the rejection is notable, record it
-  for the Design message in step 5. Otherwise nothing
+  for the Design message in step 6. Otherwise nothing
   carries forward.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
@@ -438,7 +448,7 @@ whether to start a Rescope Discussion. The signal is an
 observation, not a finding — your call whether the Design
 looks symptom-shaped enough to pause.
 
-#### Step 5: Share the revised Design Options with the user
+#### Step 6: Share the revised Design Options with the user
 
 The message carries the revised Design Options plus a brief
 note on **what changed from the Draft after the reviews** —
@@ -450,11 +460,11 @@ questions.
 End the message with an explicit approval request:
 *"Approve the Design to proceed to Phase 4: Plan."*
 
-#### Step 6: Seek user approval of the Design
+#### Step 7: Seek user approval of the Design
 
 Wait for the user's reply. If approved, the phase ends,
 continue to Phase 4: Plan. If the user pushes back, revise
-and return to step 5; repeat until approved.
+and return to step 6; repeat until approved.
 
 This is one of the protocol's four user approval gates —
 see "Approval gates" in `protocol.md`.
@@ -473,7 +483,7 @@ and share the revised Plan with the user for approval.
 #### Step 1: Share the Approved Design with Junio and Ralph for information
 
 Junio and Ralph reviewed the Draft Design Options in Phase
-3 step 3 but haven't seen which option the user picked or
+3 step 4 but haven't seen which option the user picked or
 what came out of the approval discussion. Send each the
 Approved Design (the option the user picked, plus any
 changes from the approval discussion), flagged as for

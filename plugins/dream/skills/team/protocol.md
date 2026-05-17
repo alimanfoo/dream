@@ -106,18 +106,18 @@ advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
 view. Each finding takes one of two paths on the merits:
 fold into the revised Scope Options, or reject with reason.
-There is no Rescope path at Phase 2 — Phase 2 is the scope
-conversation, so scope-shape findings fold in directly. Grace
-then shares the revised Scope Options with the user, with a
-brief note on what changed from the Draft after the reviews.
+Grace then shares the revised Scope Options with the user,
+with a brief note on what changed from the Draft after the
+reviews.
 
 The phase ends at user approval of the Working Scope.
 
 ## Phase 3: Design
 
-Grace shares the Code Analysis — a verifiable read of what
-the current code does and where — with the user, then
-drafts the Design. Two named options are always present:
+Phase opens with Grace sharing the Approved Working Scope
+with Junio and Ralph for information. Grace then shares the
+Code Analysis — a verifiable read of what the current code
+does and where — with the user, then drafts the Design. Two named options are always present:
 the Proposed Design (Grace's recommendation) and the
 Simplest Design (her actively-constructed simpler
 alternative, anchored on Kent Beck's "the simplest thing
