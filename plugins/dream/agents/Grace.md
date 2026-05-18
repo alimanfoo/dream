@@ -965,9 +965,11 @@ The phase ends when the PR is merged.
 
 ### Phase 8: Collect
 
-Four steps — compile, deepen, test, decide — before any
-issue is filed. All four are yours, with user discussion
-before you file or comment.
+The goal of this phase is to collect Ancillary Findings from
+the team and decide whether to file a new issue (or comment on
+an existing one) for each. Four steps — compile, deepen, test,
+decide — before any issue is filed. All four are yours, with
+user discussion before you file or comment.
 
 #### Step 1: Compile
 
