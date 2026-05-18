@@ -37,7 +37,7 @@ A session moves through nine phases:
 
 8. **Collect.** Ancillary Findings noticed during the session
    are gathered, deduplicated, checked against issue history,
-   and disposed.
+   and decided.
 
 9. **Reflect.** Optional retrospective on how the session
    went.
@@ -275,7 +275,7 @@ The phase ends when the PR is merged.
 After merge, Grace gathers Ancillary Findings from three
 sources — Junio's in-session audits, Ada's review, and a
 post-merge sweep of all three teammates — tests each
-candidate (defend behaviour, removal question) and disposes
+candidate (defend behaviour, removal question) and decides
 each (drop / reinforce / re-frame / file fresh) with user
 approval before filing. Triage happens once, after merge, never
 mid-session. Output is filed issues or comments on existing
@@ -334,26 +334,25 @@ vs code-layer shapes) in `Grace.md`.
 
 ## No orphaned observations
 
-Every observation Grace records gets a named disposition at the
-next decision boundary. The dispositions available depend on
+Every observation Grace records gets a named outcome at the
+next decision boundary. The outcomes available depend on
 phase — task, rescope, out of scope, ancillary, drop,
 reinforce, re-frame, file fresh — but the rule is the same: no
 observation stays "interesting prose." Each is named, each gets
-a disposition, each disposition is checkable.
+an outcome, each outcome is checkable.
 
-Some dispositions defer the call to a later phase: ancillary
+Some outcomes defer the call to a later phase: ancillary
 defers to Phase 8 Collect; an open question defers to the user
 before Plan approval. Both have a named destination and a
 reason that matches the receiving phase's job. There is no
-other deferral — "we'll come back to this" is not a
-disposition.
+other deferral — "we'll come back to this" is not an outcome.
 
-Later dispositions respect earlier ones. If new evidence at a
+Later outcomes respect earlier ones. If new evidence at a
 later phase changes the picture, that is a reversal — surface
-the prior disposition, surface the new reading, and ask the
-user whether to overturn or hold. Don't dispose of a reversal
-under a procedure that frames it as fresh observation; the
-procedure hides the reversal.
+the prior outcome, surface the new reading, and ask the
+user whether to overturn or hold. Don't run a reversal through
+a procedure that frames it as fresh observation; the procedure
+hides the reversal.
 
 ## Common rules
 

@@ -965,9 +965,11 @@ The phase ends when the PR is merged.
 
 ### Phase 8: Collect
 
-Four steps — compile, deepen, test, dispose — before any
-issue is filed. All four are yours, with user discussion
-before you file or comment.
+The goal of this phase is to collect Ancillary Findings from
+the team and decide whether to file a new issue (or comment on
+an existing one) for each. Four steps — compile, deepen, test,
+decide — before any issue is filed. All four are yours, with
+user discussion before you file or comment.
 
 #### Step 1: Compile
 
@@ -1004,9 +1006,9 @@ without naming the contract.
 
 #### Step 3: Test
 
-Apply the following tests to each candidate before picking a
-disposition. Both are already in the protocol; this step
-names them at the point where they shape the call.
+Apply the following tests to each candidate before deciding.
+Both are already in the protocol; this step names them at the
+point where they shape the call.
 
 **Defend behaviour, not surface** (full test in `protocol.md`,
 under "Coherence chain"):
@@ -1014,7 +1016,7 @@ under "Coherence chain"):
 > *Does the surface defend real behaviour with a real
 > consumer?*
 
-If yes — the finding earns a slot, and Dispose picks among
+If yes — the finding earns a slot, and Decide picks among
 `reinforce`, `re-frame`, or `file fresh` on the merits. If
 no — the surface is decorative (a count nothing depends on, a
 docstring phrasing, an arbitrary constant). Continue to the
@@ -1038,19 +1040,19 @@ noticed. The removal question surfaces removal as a positive
 direction so the noticing becomes a filed issue rather than a
 dropped observation.
 
-#### Step 4: Dispose
+#### Step 4: Decide
 
 Make one call per candidate: drop, reinforce, re-frame, or
 file fresh. Use the source observations, the issue history,
 and what the Test step showed; don't send candidates back to
 Ralph or Junio for another round of judgement.
 
-Share the proposed disposition table with the user before
+Share the proposed decision table with the user before
 drafting issue or comment text. For each candidate, show the
-finding, the disposition, and the reason. Ask the user to
-approve the disposition table or redirect it.
+finding, the decision, and the reason. Ask the user to
+approve the decision table or redirect it.
 
-After the user approves the dispositions, write the exact
+After the user approves the decisions, write the exact
 issue or comment text for every item that will be filed or
 commented. Show that exact text to the user and get approval
 before posting. Do not rely on an unshared draft for
@@ -1073,7 +1075,7 @@ GitHub-visible text.
   "Noticed during #N, ..." The recurrence pattern itself is
   the behaviour gap — issues landing on the same surface is
   evidence of an unresolved contract. Substance already
-  disposed at Plan is a reversal, not fresh observation —
+  decided at Plan is a reversal, not fresh observation —
   see "No orphaned observations" in `protocol.md`.
 - **File fresh** — no related issue on the surface, and the
   finding clears the bar. Open a standalone issue. Open the
@@ -1113,8 +1115,7 @@ fit:
 
 1. **User redirections.** Where did the user have to redirect
    us, and why? Sometimes the team missed an earlier signal;
-   sometimes an agent's default behaviour or disposition was
-   off.
+   sometimes an agent's default behaviour was off.
 
 2. **Protocol problems.** Where did the protocol break, drag,
    or get worked around?
@@ -1315,10 +1316,10 @@ user can resolve, pause again at that point.
   after the current task list completes — not "while we're
   here, we should also..." Genuinely separate findings go to
   Ancillary Findings for post-merge triage.
-- **Not a substitute for the Phase 8 re-frame disposition, and
-  vice versa.** Recurrences first surfacing after merge are
-  re-frame's territory; recurrences visible at Design or Plan
-  are Rescope's. See "No orphaned observations" in
+- **Not a substitute for Phase 8 re-frame, and vice versa.**
+  Recurrences first surfacing after merge are re-frame's
+  territory; recurrences visible at Design or Plan are
+  Rescope's. See "No orphaned observations" in
   `protocol.md`.
 
 ### Task list shape after a rescope
@@ -1531,6 +1532,13 @@ appropriately.
   footer. The `🤖 Generated with...` footer goes on PR
   descriptions, issue bodies, and PR/issue comments — not
   commits.
+
+- **Titles** (PR titles, commit subjects, issue titles) state
+  the change itself. They carry no agent-author prefix
+  (`[claude]`, `[dream]`, etc.) — the marking is in the
+  trailers and footer above. Prior agent-authored titles in
+  the host repo aren't a style precedent; treat them as you
+  would any other contributor's work.
 
 ### Labelling new issues
 
