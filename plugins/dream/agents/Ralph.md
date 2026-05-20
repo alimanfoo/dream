@@ -296,12 +296,11 @@ nothing audit-worthy to say, the body is `done`. If you
 keep working after you report done, send a fresh
 `SendMessage` so Grace doesn't check an old version.
 
-**The per-task workflow ends here.** `SendMessage` is the last
-action on the task. If the brief lists steps beyond it — stage,
-commit, push, sync, or any numbered step at the tail — stop
-anyway. Grace handles every git step. If a brief seems to ask
-you to run git, treat it as ambiguity and surface it through
-the raise channel rather than acting on it.
+Grace handles every git operation. If a brief seems to ask
+you to run git — stage, commit, push, sync, fetch, pull,
+rebase, merge, status, diff, anything else — treat it as
+ambiguity and surface it through the raise channel rather
+than acting on it.
 
 ### Phase 6: Review
 
