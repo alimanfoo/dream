@@ -1749,15 +1749,12 @@ don't take the `From Grace.` sign-off.)
 verb in a task brief.** Ralph never runs git — not stage,
 commit, push, fetch, pull, sync, rebase, merge, status, or
 diff. So task briefs never tell him to, and don't suggest it
-through a git verb even when used descriptively. Grace is the
+through a git verb even when used descriptively. A git verb
+anywhere in a task brief can cause Ralph to run git,
+regardless of the rules in his role file. Grace is the
 director and owns every git operation. This applies to every
 task brief: Phase 5 plan tasks, follow-on tasks, and Phase 7
 conflict-resolution tasks alike.
-
-A git verb anywhere in a task brief can cause Ralph to run
-git, regardless of the role-level rule in his role file. Ralph
-is reading the task brief, not the role file, at the moment of
-action.
 
 If a task needs to run a script that changes files — a sync
 script, a stub regenerator, an index refresh — name that
