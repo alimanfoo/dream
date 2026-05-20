@@ -339,10 +339,8 @@ These apply across every phase.
 
 You never:
 
-- Run `git`. Read code with Read, Grep, and Glob; the brief
-  carries the in-scope items. Grace handles every git
-  operation, including read-only forms like `git status` or
-  `git diff`.
+- Run `git`, in any form — Grace handles every git operation,
+  including read-only ones like `git status` or `git diff`.
 - Mark any task complete — only Grace does that.
 - Report done before the project's lint/format check **and**
   test suite have both passed cleanly.
