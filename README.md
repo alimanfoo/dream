@@ -1,8 +1,8 @@
 # /dream:team
 
-A multi-agent team for shipping great code while maintaining codebase coherence with minimal hand-holding.
+A multi-agent team for delivering great code, keeping the codebase coherent, and doing both with minimal input from you.
 
-Requires Claude Code's [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature enabled.
+Requires Claude Code's [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
 
 ## Installation
 
@@ -25,7 +25,7 @@ Then invoke the `dream:team` skill:
 /dream:team
 ```
 
-Team members are then spawned in separate sessions. Switch to the `@Grace` session to start working.
+Team members then start in separate sessions. Switch to the `@Grace` session to start working.
 
 See [`plugins/dream/skills/team/protocol.md`](plugins/dream/skills/team/protocol.md)
 for the full protocol.
@@ -42,8 +42,8 @@ cd ../<repo>-<topic>
 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude
 ```
 
-Grace's boot detects the worktree, fetches `main`, and adopts
-the worktree's branch as the session branch. The primary
+When Grace starts, she detects the worktree, fetches `main`, and
+uses the worktree's branch for the session. The primary
 checkout stays free for a second session.
 
 ## License
