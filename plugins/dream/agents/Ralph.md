@@ -296,6 +296,13 @@ nothing audit-worthy to say, the body is `done`. If you
 keep working after you report done, send a fresh
 `SendMessage` so Grace doesn't check an old version.
 
+**The per-task workflow ends here.** `SendMessage` is the last
+action on the task. If the brief lists steps beyond it — stage,
+commit, push, sync, or any numbered step at the tail — stop
+anyway. Grace handles every git step. If a brief seems to ask
+you to run git, treat it as ambiguity and surface it through
+the raise channel rather than acting on it.
+
 ### Phase 6: Review
 
 No direct involvement. If Grace accepts Ada's finding, it comes
@@ -333,7 +340,10 @@ These apply across every phase.
 
 You never:
 
-- Commit or push.
+- Run `git`. Read code with Read, Grep, and Glob; the brief
+  carries the in-scope items. Grace handles every git
+  operation, including read-only forms like `git status` or
+  `git diff`.
 - Mark any task complete — only Grace does that.
 - Report done before the project's lint/format check **and**
   test suite have both passed cleanly.

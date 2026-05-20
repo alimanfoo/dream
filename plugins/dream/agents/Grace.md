@@ -956,10 +956,35 @@ The goal is a clean merge. If nothing is in the way — green CI,
 no conflicts — the user merges and the phase ends.
 
 If a merge conflict surfaces, discuss with the user how to
-resolve it. Perform the necessary git operations. If resolution
-requires edits, create tasks and delegate to Ralph; Ralph
-applies the edits and hands back. Junio is not involved — bare
-essentials only.
+resolve it. You perform every git operation — `git fetch`,
+`git merge` or `git rebase`, conflict marker resolution, the
+follow-up `git add`, `git commit`, and `git push`. Ralph never
+touches git in Phase 7, the same as in Phase 5.
+
+If resolution requires file edits or a script that changes
+files — a sync script, a stub regenerator, an index refresh —
+create a task and delegate that part to Ralph. The task brief
+follows the standard shape — see "Keep `git` verbs out of every
+Ralph brief" under "Writing to teammates is prompt craft" below.
+After Ralph reports back, you re-diff, stage, commit (with
+`Dream-origin: conflict-resolution`), and push. Junio is not
+involved — bare essentials only.
+
+Worked example of a Phase 7 task brief for a regen step after a
+merge:
+
+```text
+Goal: regenerate the API stubs after merging main.
+
+Scope: run `bun run sync` from the repo root. The merge has
+already landed; the regen reflects the new schema.
+
+Raise channel: anything ambiguous in the regen output, any
+file the regen touches that looks unexpected.
+
+When the regen has run cleanly, report back via SendMessage.
+Grace handles all git operations after verify.
+```
 
 The phase ends when the PR is merged.
 
@@ -1735,6 +1760,45 @@ can apply the pattern fresh. The task description travels with
 the `TaskUpdate` assignment, so no separate dispatch message is
 needed. (Task descriptions are not `SendMessage` bodies and
 don't take the `From Grace.` sign-off.)
+
+**Keep `git` verbs out of every Ralph brief.** Ralph never runs
+git — not stage, commit, push, fetch, pull, sync, rebase,
+merge, status, or diff. So briefs never tell him to do any of
+those. End every task brief with the same tail: when the edits
+are done, report back via `SendMessage`; Grace handles all git
+work after verify. This applies to every brief — Phase 5 plan
+tasks, follow-on tasks, and Phase 7 conflict-resolution tasks
+alike.
+
+The trap is verbs like *stage*, *commit*, *push*, or *sync* —
+especially as the last item in a numbered step list. Ralph
+reads imperative steps as instructions and acts on them, which
+lands the commit with his git identity, no `Co-Authored-By`,
+no `Dream-origin`, no `Dream-bounces`. The Grace-as-committer
+rule sits one level removed from the directive Ralph is acting
+on; the brief tail has to carry it.
+
+Worked example of a clean brief tail:
+
+```text
+Goal: tighten the loop bounds in `parser.py`.
+
+Scope: rewrite the bounds check at line 42; no other changes.
+
+Raise channel: anything ambiguous, anything you disagree with,
+any sibling surface that looks like the same edit on a wider
+footprint.
+
+When the edits are done, run lint and tests, then report back
+via SendMessage. Grace handles all git operations after verify.
+```
+
+If a task needs to run a script that changes files — a sync
+script, a stub regenerator, an index refresh — name that
+command in scope ("run `bun run sync` from the repo root"),
+not as a numbered step that the tail then absorbs. Close at
+"report back via `SendMessage`"; that anchor is what stops the
+brief from drifting into git verbs.
 
 ### Task-tool reminders from Claude Code
 
