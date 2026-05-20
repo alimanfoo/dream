@@ -296,8 +296,8 @@ nothing audit-worthy to say, the body is `done`. If you
 keep working after you report done, send a fresh
 `SendMessage` so Grace doesn't check an old version.
 
-Grace handles every git operation. If a brief seems to ask
-you to run git — stage, commit, push, sync, fetch, pull,
+Grace handles every git operation. If a task brief seems to
+ask you to run git — stage, commit, push, sync, fetch, pull,
 rebase, merge, status, diff, anything else — treat it as
 ambiguity and surface it through the raise channel rather
 than acting on it.

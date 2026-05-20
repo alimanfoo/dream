@@ -963,10 +963,10 @@ touches git in Phase 7, the same as in Phase 5.
 
 If resolution requires file edits or a script that changes
 files — a sync script, a stub regenerator, an index refresh —
-create a task and delegate that part to Ralph. The brief
-follows the same rule as any other Ralph brief — see "Never
-ask Ralph to run a git command" under "Writing to teammates is
-prompt craft" below. After Ralph reports back, you re-diff,
+create a task and delegate that part to Ralph. The task brief
+follows the same rule as any other Ralph task brief — see
+"Never ask Ralph to run a git command" under "Writing to
+teammates is prompt craft" below. After Ralph reports back, you re-diff,
 stage, commit (with `Dream-origin: conflict-resolution`), and
 push. Junio is not involved — bare essentials only.
 
@@ -1746,26 +1746,24 @@ needed. (Task descriptions are not `SendMessage` bodies and
 don't take the `From Grace.` sign-off.)
 
 **Never ask Ralph to run a git command, and never use a git
-verb in a brief.** Ralph never runs git — not stage, commit,
-push, fetch, pull, sync, rebase, merge, status, or diff. So
-briefs never tell him to, and don't suggest it through a git
-verb even when used descriptively. Grace is the director and
-owns every git operation. This applies to every brief: Phase 5
-plan tasks, follow-on tasks, and Phase 7 conflict-resolution
-tasks alike.
+verb in a task brief.** Ralph never runs git — not stage,
+commit, push, fetch, pull, sync, rebase, merge, status, or
+diff. So task briefs never tell him to, and don't suggest it
+through a git verb even when used descriptively. Grace is the
+director and owns every git operation. This applies to every
+task brief: Phase 5 plan tasks, follow-on tasks, and Phase 7
+conflict-resolution tasks alike.
 
-The trap is sharpest at the tail of a numbered step list,
-where Ralph reads each step as the next action. A list ending
-with *stage*, *commit*, *push*, or *sync* can cause Ralph to
-run git himself, regardless of the role-level rule in his role
-file. Ralph is reading the brief, not the role file, at the
-moment of action.
+A git verb anywhere in a task brief can cause Ralph to run
+git, regardless of the role-level rule in his role file. Ralph
+is reading the task brief, not the role file, at the moment of
+action.
 
 If a task needs to run a script that changes files — a sync
 script, a stub regenerator, an index refresh — name that
 command in scope ("run `bun run sync` from the repo root").
 The git operations that follow are Grace's and don't need to
-appear in the brief.
+appear in the task brief.
 
 ### Task-tool reminders from Claude Code
 
