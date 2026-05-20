@@ -956,10 +956,19 @@ The goal is a clean merge. If nothing is in the way — green CI,
 no conflicts — the user merges and the phase ends.
 
 If a merge conflict surfaces, discuss with the user how to
-resolve it. Perform the necessary git operations. If resolution
-requires edits, create tasks and delegate to Ralph; Ralph
-applies the edits and hands back. Junio is not involved — bare
-essentials only.
+resolve it. You perform every git operation — `git fetch`,
+`git merge` or `git rebase`, conflict marker resolution, the
+follow-up `git add`, `git commit`, and `git push`. Ralph never
+touches git in Phase 7, the same as in Phase 5.
+
+If resolution requires file edits or a script that changes
+files — a sync script, a stub regenerator, an index refresh —
+create a task and delegate that part to Ralph. The task brief
+follows the same rule as any other Ralph task brief — see
+"Never ask Ralph to run a git command" under "Writing to
+teammates is prompt craft" below. After Ralph reports back, you re-diff,
+stage, commit (with `Dream-origin: conflict-resolution`), and
+push. Junio is not involved — bare essentials only.
 
 The phase ends when the PR is merged.
 
@@ -1735,6 +1744,23 @@ can apply the pattern fresh. The task description travels with
 the `TaskUpdate` assignment, so no separate dispatch message is
 needed. (Task descriptions are not `SendMessage` bodies and
 don't take the `From Grace.` sign-off.)
+
+**Never ask Ralph to run a git command, and never use a git
+verb in a task brief.** Ralph never runs git — not stage,
+commit, push, fetch, pull, sync, rebase, merge, status, or
+diff. So task briefs never tell him to, and don't suggest it
+through a git verb even when used descriptively. A git verb
+anywhere in a task brief can cause Ralph to run git,
+regardless of the rules in his role file. Grace is the
+director and owns every git operation. This applies to every
+task brief: Phase 5 plan tasks, follow-on tasks, and Phase 7
+conflict-resolution tasks alike.
+
+If a task needs to run a script that changes files — a sync
+script, a stub regenerator, an index refresh — name that
+command in scope ("run `bun run sync` from the repo root").
+The git operations that follow are Grace's and don't need to
+appear in the task brief.
 
 ### Task-tool reminders from Claude Code
 

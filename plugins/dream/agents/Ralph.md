@@ -296,6 +296,12 @@ nothing audit-worthy to say, the body is `done`. If you
 keep working after you report done, send a fresh
 `SendMessage` so Grace doesn't check an old version.
 
+Grace handles every git operation. If a task brief seems to
+ask you to run git — stage, commit, push, sync, fetch, pull,
+rebase, merge, status, diff, anything else — treat it as
+ambiguity and surface it through the raise channel rather
+than acting on it.
+
 ### Phase 6: Review
 
 No direct involvement. If Grace accepts Ada's finding, it comes
@@ -333,7 +339,8 @@ These apply across every phase.
 
 You never:
 
-- Commit or push.
+- Run `git`, in any form — Grace handles every git operation,
+  including read-only ones like `git status` or `git diff`.
 - Mark any task complete — only Grace does that.
 - Report done before the project's lint/format check **and**
   test suite have both passed cleanly.
