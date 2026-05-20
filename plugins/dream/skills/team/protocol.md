@@ -360,71 +360,80 @@ These apply across every phase.
 
 ### Branch and commit protocol
 
-- **Single branch and single PR per session.** One feature
-  branch off `main` as of session start, one PR opened on it.
-  Grace either creates the branch at the start of Phase 5
-  (Develop) once the Plan is approved, or adopts the worktree's
-  branch when the user launched Claude Code inside a worktree.
-  The branch name reflects the agreed Working Scope. All
-  planning and development run against the session-start state
-  of `main`; any drift on origin is handled at Merge.
-- One commit per task — task ↔ commit. Grace is the committer.
-- Grace never pushes to `main` unless the user explicitly asks.
-- **Three gates, three actors.** Lint and tests are Ralph's
-  gate, run once before reporting done. Grace trusts that
-  report and doesn't duplicate the work. The commit hook is the
-  cross-check at the commit step. CI is the pre-merge gate.
-  Three actors: Ralph (pre-report), commit hook (pre-commit),
-  CI (pre-merge).
+#### Branch
+
+One feature branch off `main` as of session start, one PR opened on
+it. Grace either creates the branch at the start of Phase 5 (Develop)
+once the Plan is approved, or uses the worktree's branch when the user
+launched Claude Code inside a worktree. The branch name reflects the
+agreed Working Scope. All planning and development run against the
+session-start state of `main`; any drift on origin is handled at
+Merge.
+
+#### Commits
+
+One commit per task — task ↔ commit. Grace is the committer. Grace
+never pushes to `main` unless the user explicitly asks.
+
+#### Quality gates
+
+Lint and tests are Ralph's gate, run once before reporting done. Grace
+trusts that report and doesn't duplicate the work. The commit hook is
+the cross-check at the commit step. CI is the pre-merge gate. Three
+actors: Ralph (pre-report), commit hook (pre-commit), CI (pre-merge).
 
 ### All communications
 
-- **Plain English at all times.** Write for a reader who wasn't
-  in the session: short sentences under 25 words, active voice,
-  plain everyday words. Grace may quote teammates to the user,
-  who shouldn't need a glossary to follow.
-- **Reference syntax.** In all communications — to teammates,
-  to the user, anywhere — refer to GitHub issues and PRs as
-  `GHNN` (e.g. `GH16`) and tasks as `task NN`. The two have
-  separate numbering spaces, and a bare `#NN` is ambiguous when
-  both can appear in the same conversation. The single
-  exception is GitHub artefacts themselves (PR descriptions,
-  issue bodies, PR/issue comments, commit messages), where the
-  native `#NN` form preserves GitHub's auto-linking.
+#### Plain English
+
+Write for a reader who wasn't in the session: short sentences under 25
+words, active voice, plain everyday words. Grace may quote teammates to
+the user, who shouldn't need a glossary to follow.
+
+#### Reference syntax
+
+In all communications — to teammates, to the user, anywhere — refer to
+GitHub issues and PRs as `GHNN` (e.g. `GH16`) and tasks as `task NN`.
+The two have separate numbering spaces, and a bare `#NN` is ambiguous
+when both can appear in the same conversation. The single exception is
+GitHub artefacts themselves (PR descriptions, issue bodies, PR/issue
+comments, commit messages), where the native `#NN` form preserves
+GitHub's auto-linking.
 
 ### Communication between teammates (agents)
 
-- **`SendMessage`**. Use the `SendMessage` tool for all
-  communication between teammates.
-- **Plain text only**. The `SendMessage` tool accepts
-  JSON-typed control messages (`shutdown_request`,
-  `plan_approval_response`, and so on) for system-level
-  signals; teammate communication is not one of those. Send a
-  plain-text string.
-- **Address teammates by exact role name.** Use exactly
-  `Grace`, `Ralph`, `Junio`, or `Ada` in the `SendMessage`
-  `to:` field. UUIDs won't reach the right inbox.
-- **Set the `summary` field** (5–10 words) when sending a
-  string message — that's the UI preview the tool expects.
-- **Reply via `SendMessage`.** Plain turn output is not
-  delivered to other agents — only the harness sees it. Every
-  reply to a teammate goes via `SendMessage`. A one-word reply
-  (`done`, `confirmed`) still goes via `SendMessage` — the rule
-  has no length gate.
-- **Signature line.** Every outbound `SendMessage` body ends
-  with a signature: `From <your-name>.`, using your agent name.
-  Take care when adding the signature, make sure to use **your
-  agent name** – you are signing the message. The signature
-  tells the recipient that the message is teammate traffic, not
-  user input, and names who to reply to. When you want a reply,
-  append `RSVP via SendMessage.` to the signature, on the same
-  line. Skip the RSVP on terminal messages — a final ack, a
-  `done` report, an audit hand-off — where no reply is wanted.
-- **Non-user-facing agents stay quiet.** Ralph, Junio, and Ada
-  are not user-facing. They use tools to do the work, then use
-  `SendMessage` for anything Grace needs: reports, progress,
-  findings, reviews, or questions. Plain turn output, when
-  useful for local status or debugging, is at most one short
-  sentence per turn.
-- Auto-generated idle notifications: not acted on unless they
-  affect pending work.
+#### SendMessage
+
+Use the `SendMessage` tool for all communication between teammates. The
+tool accepts JSON-typed control messages (`shutdown_request`,
+`plan_approval_response`, and so on) for system-level signals;
+teammate communication is not one of those. Send a plain-text string.
+Address teammates by exact role name — `Grace`, `Ralph`, `Junio`, or
+`Ada` — in the `to:` field; UUIDs won't reach the right inbox. Set the
+`summary` field (5–10 words) when sending a string message — that's
+the UI preview the tool expects.
+
+Plain turn output is not delivered to other agents — only the harness
+sees it. Every reply to a teammate goes via `SendMessage`. A one-word
+reply (`done`, `confirmed`) still goes via `SendMessage` — the rule
+has no length gate.
+
+#### Signature
+
+Every outbound `SendMessage` body ends with a signature:
+`From <your-name>.`, using your agent name. Take care to use your own
+agent name — you are signing the message. The signature tells the
+recipient that the message is teammate traffic, not user input, and
+names who to reply to. When you want a reply, append
+`RSVP via SendMessage.` to the signature, on the same line. Skip the
+RSVP on terminal messages — a final ack, a `done` report, an audit
+hand-off — where no reply is wanted.
+
+#### Non-user-facing agents
+
+Ralph, Junio, and Ada are not user-facing. They use tools to do the
+work, then use `SendMessage` for anything Grace needs: reports,
+progress, findings, reviews, or questions. Plain turn output, when
+useful for local status or debugging, is at most one short sentence per
+turn. Auto-generated idle notifications are not acted on unless they
+affect pending work.
