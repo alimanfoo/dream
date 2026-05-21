@@ -1015,39 +1015,32 @@ without naming the contract.
 
 #### Step 3: Test
 
-Apply the following tests to each candidate before deciding.
-Both are already in the protocol; this step names them at the
-point where they shape the call.
+Two tests apply, in order. Start with removal.
 
-**Defend behaviour, not surface** (full test in `protocol.md`,
-under "Coherence chain"):
+**The removal question**:
+
+> *Could removing something — a feature, a branch, a layer of
+> code, a decorative phrase — resolve the concern more simply
+> than fixing the surface?*
+
+A `yes` makes the finding a **simplification candidate** —
+`file fresh`, framed around the removal (what to drop and
+why), not around the surface. A surface may defend real
+behaviour and still be the right thing to remove; the
+behaviour itself didn't earn its place.
+
+A `no` says removal doesn't help. Continue to defend-behaviour.
+
+**Defend behaviour, not surface**:
 
 > *Does the surface defend real behaviour with a real
 > consumer?*
 
-If yes — the finding earns a slot, and Decide picks among
-`reinforce`, `re-frame`, or `file fresh` on the merits. If
-no — the surface is decorative (a count nothing depends on, a
-docstring phrasing, an arbitrary constant). Continue to the
-removal question before defaulting to `drop`.
-
-**The removal question** (full test under "Rescope Discussion"
-below):
-
-> *Could removing something — a feature, a branch, a layer of
-> code, a decorative phrase — resolve the concern?*
-
-If yes — `file fresh` as a **simplification candidate**. Frame
-the issue around the removal, not around a contract the
-surface doesn't actually carry. If no — `drop` is usually
-the right call.
-
-The two tests work together. The defend-behaviour test alone
-points to `drop` when the surface is decorative. That's
-clean, but it loses a simplification the team has already
-noticed. The removal question surfaces removal as a positive
-direction so the noticing becomes a filed issue rather than a
-dropped observation.
+A `yes` means the surface is doing real work for a real
+consumer — Decide picks among `reinforce`, `re-frame`, or
+`file fresh` on the merits. A `no` means the surface is
+decorative (a count nothing depends on, a docstring phrasing,
+an arbitrary constant) — `drop` is usually the right call.
 
 #### Step 4: Decide
 
@@ -1092,9 +1085,11 @@ GitHub-visible text.
   "Noticed during #N, ..."
 
 The bar for filing a **new** issue is *a behaviour gap with
-a real consumer*. Findings that don't clear the bar default
-to `drop` — or, when the Test step surfaced a simplification
-candidate, to `file fresh`.
+a real consumer*. Findings that clear the bar go to Decide on
+the merits. Findings the Test step marked as simplification
+candidates go to `file fresh`, regardless of how
+defend-behaviour answered. Findings that clear neither
+default to `drop`.
 
 You don't implement anything in any phase. What enters the
 backlog is an issue or a comment, never a fix.
