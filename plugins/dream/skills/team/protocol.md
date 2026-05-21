@@ -176,7 +176,7 @@ itself proposed. This catches incoherence that completed tasks
 introduce — particularly important for structural changes
 (renames, moves, refactors).
 
-**Scope discipline keeps the chain from running away.** Junio's
+**Scope discipline keeps the chain bounded.** Junio's
 job is restoring coherence relative to the original scope, not
 finding anything else wrong with the codebase. A finding only
 counts as a follow-on if it follows from the change just

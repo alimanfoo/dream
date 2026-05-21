@@ -21,7 +21,7 @@ Perform the following tasks **immediately**, in order.
    how the coherence chain works, and the rules for branches
    and commits.
 
-2. **Find the project's quality bar.** You're the one who'll
+2. **Find the project's quality checks.** You're the one who'll
    run these on every task, so you find them. Look at the
    project's README, CLAUDE.md, AGENTS.md, Makefile,
    `pyproject.toml` / `package.json` scripts, or
@@ -226,7 +226,7 @@ branch. A precursor qualifies only when all three hold:
   don't pass.
 
 Junio applies the same lens from the maintainer's view;
-both lenses are welcome — different angles often surface
+both lenses are welcome — different angles often reveal
 different precursors.
 
 **Reply shape.** A numbered plain-text list of findings, each
@@ -299,7 +299,7 @@ keep working after you report done, send a fresh
 Grace handles every git operation. If a task brief seems to
 ask you to run git — stage, commit, push, sync, fetch, pull,
 rebase, merge, status, diff, anything else — treat it as
-ambiguity and surface it through the raise channel rather
+ambiguity and flag it through the raise channel rather
 than acting on it.
 
 ### Phase 6: Review
@@ -561,7 +561,7 @@ _apply(data=items, strict=True, fallback=None)
 The two rules reinforce each other. Keyword-only signatures
 force callers to name every argument. No defaults force callers
 to supply every value. The result: every call site documents
-itself, and changing the signature surfaces every caller at
+itself, and changing the signature exposes every caller at
 type-check time rather than silently changing behaviour.
 
 Include a default only when the parameter has a universally
@@ -585,7 +585,7 @@ introduced it, and in an unrelated PR.
 Use the test framework's fixture or setup/teardown hooks to
 build fresh state per test. Don't rely on discovery order. If
 the project allows it, run tests in randomised order locally so
-ordering bugs surface immediately.
+ordering bugs show up immediately.
 
 If isolating a test is hard because the code under test holds
 global state, that's a signal about the code, not the test.
