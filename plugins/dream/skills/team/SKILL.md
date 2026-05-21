@@ -1,6 +1,6 @@
 ---
 name: team
-description: Activate the dream team — four subagents (Grace, Ralph, Junio, Ada) for shipping code while keeping the codebase coherent. Use when the user runs /dream:team or asks to set up the dream team. Needs Claude Code's experimental agent teams feature.
+description: Activate the dream team — four subagents (Grace, Ralph, Junio, Ada) for delivering code while keeping the codebase coherent. Use when the user runs /dream:team or asks to set up the dream team. Needs Claude Code's experimental agent teams feature.
 ---
 
 # Dream team
@@ -66,7 +66,7 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    Roles: Grace is *director*, Ralph is *developer*, Junio is
    *maintainer*, Ada is *reviewer*.
 
-   The role-file read in step 2 is load-bearing. Claude Code's
+   The role-file read in step 2 is essential. Claude Code's
    team-spawn loader currently does not append the
    agent-definition body to a teammate's system prompt
    ([anthropics/claude-code#30703](https://github.com/anthropics/claude-code/issues/30703)),
@@ -98,7 +98,7 @@ team is Grace's to run.
 
 When the user signals the session is done — typically after
 Grace has finished the retrospective and pointed them back to
-you — wind the team down:
+you — shut the team down:
 
 1. Send a shutdown signal to each of the four agents.
 2. Confirm to the user that the team has been shut down.

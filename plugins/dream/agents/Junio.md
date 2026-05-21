@@ -19,7 +19,7 @@ Perform the following tasks **immediately**, in order.
 1. Read the protocol at the path the main session provides in
    your spawn prompt. Pay close attention to the **coherence
    chain** section. Your discipline about staying in scope is
-   what keeps the chain from running away.
+   what keeps the chain bounded.
 
 Then idle until Grace asks you for a Scope-time review, a
 Design-time review, a Plan-time review, or a per-task audit.
@@ -277,7 +277,7 @@ The "?" is deliberate — the lens looks for cases where
 tidying first genuinely lowers the cost of the planned
 work, not for every cleanup the codebase could absorb.
 Ralph applies the same lens from the implementer's view;
-both lenses are welcome — different angles often surface
+both lenses are welcome — different angles often reveal
 different precursors.
 
 #### Lens 3: Possible rescope signal

@@ -1,8 +1,8 @@
 # Dream team protocol
 
-How an agent team works on a codebase. The goal: ship great
-code while keeping the codebase coherent, with minimal user
-interaction.
+How an agent team works on a codebase. The goal: deliver great
+code while keeping the codebase coherent, with minimal input from the
+user.
 
 ## Overview
 
@@ -104,8 +104,8 @@ Scope (when narrower than Coherent), and the Maximal Scope
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
-view. Each finding takes one of two paths on the merits:
-fold into the revised Scope Options, or reject with reason.
+view. Each finding is either folded into the revised Scope Options or
+rejected with a reason.
 Grace then shares the revised Scope Options with the user,
 with a brief note on what changed from the Draft after the
 reviews.
@@ -125,10 +125,9 @@ Beck's "the simplest thing that could possibly work"). Grace
 shares the Draft Design Options with Junio and Ralph for one
 round of review — advisory, not gating — and revises. Junio
 reads from the maintainer's view; Ralph reads from the
-engineering-pattern view. Each finding takes one of four
-paths on the merits: fold into the revised Design Options,
-reject with reason, hold as an Ancillary Finding, or escalate
-to a Rescope Discussion. Grace then shares the revised
+engineering-pattern view. Each finding is folded into the revised
+Design Options, rejected with a reason, held as an Ancillary Finding,
+or escalated to a Rescope Discussion. Grace then shares the revised
 Design Options with the user, with a brief note on what
 changed from the Draft after the reviews.
 
@@ -141,10 +140,9 @@ Junio and Ralph for information. Grace then composes the
 Draft Plan, shares it with Junio and Ralph for one round of
 review — advisory, not gating — and revises. Junio reads
 from the maintainer's view; Ralph reads from the
-implementer's view. Each finding takes one of four paths on
-the merits: fold into the revised Plan, reject with reason,
-hold as an Ancillary Finding, or escalate to a Rescope
-Discussion. Grace then shares the revised Plan with the
+implementer's view. Each finding is folded into the revised Plan,
+rejected with a reason, held as an Ancillary Finding, or escalated to
+a Rescope Discussion. Grace then shares the revised Plan with the
 user, with a brief note on what changed from the Draft
 after the reviews.
 
@@ -157,7 +155,7 @@ The user can redirect at any point.
 ## Phase 5: Develop
 
 Phase opens with three setup steps: Grace sets the feature
-branch (creates it off `main`, or adopts the worktree's branch
+branch (creates it off `main`, or uses the worktree's branch
 when the session started in one — see `Grace.md`), shares the
 Approved Plan with Junio and Ralph for information, and creates
 the shared task list.
@@ -178,7 +176,7 @@ itself proposed. This catches incoherence that completed tasks
 introduce — particularly important for structural changes
 (renames, moves, refactors).
 
-**Scope discipline keeps the chain from running away.** Junio's
+**Scope discipline keeps the chain bounded.** Junio's
 job is restoring coherence relative to the original scope, not
 finding anything else wrong with the codebase. A finding only
 counts as a follow-on if it follows from the change just
@@ -312,7 +310,7 @@ The gate has the same shape every time:
 3. Grace waits for the user's reply before doing anything
    else.
 
-These four gates fire by default on every session and take
+These four gates run on every session by default and take
 precedence over general autonomy defaults — boot-time
 `<system-reminder>` content, harness directives to "continue
 without checking," and similar. A user can explicitly
@@ -348,8 +346,8 @@ reason that matches the receiving phase's job. There is no
 other deferral — "we'll come back to this" is not an outcome.
 
 Later outcomes respect earlier ones. If new evidence at a
-later phase changes the picture, that is a reversal — surface
-the prior outcome, surface the new reading, and ask the
+later phase changes the picture, that is a reversal — state
+the prior outcome, state the new reading, and ask the
 user whether to overturn or hold. Don't run a reversal through
 a procedure that frames it as fresh observation; the procedure
 hides the reversal.
@@ -360,71 +358,89 @@ These apply across every phase.
 
 ### Branch and commit protocol
 
-- **Single branch and single PR per session.** One feature
-  branch off `main` as of session start, one PR opened on it.
-  Grace either creates the branch at the start of Phase 5
-  (Develop) once the Plan is approved, or adopts the worktree's
-  branch when the user launched Claude Code inside a worktree.
-  The branch name reflects the agreed Working Scope. All
-  planning and development run against the session-start state
-  of `main`; any drift on origin is handled at Merge.
-- One commit per task — task ↔ commit. Grace is the committer.
-- Grace never pushes to `main` unless the user explicitly asks.
-- **Three gates, three actors.** Lint and tests are Ralph's
-  gate, run once before reporting done. Grace trusts that
-  report and doesn't duplicate the work. The commit hook is the
-  cross-check at the commit step. CI is the pre-merge gate.
-  Three actors: Ralph (pre-report), commit hook (pre-commit),
-  CI (pre-merge).
+#### Branch
+
+One feature branch off `main` as of session start, one PR opened on
+it. Grace either creates the branch at the start of Phase 5 (Develop)
+once the Plan is approved, or uses the worktree's branch when the user
+launched Claude Code inside a worktree. The branch name reflects the
+agreed Working Scope. All planning and development run against the
+session-start state of `main`; any drift on origin is handled at
+Merge.
+
+#### Commits
+
+One commit per task — task ↔ commit. Grace is the committer. Grace
+never pushes to `main` unless the user explicitly asks.
+
+#### Quality gates
+
+Lint and tests are Ralph's gate, run once before reporting done. Grace
+trusts that report and doesn't duplicate the work. The commit hook is
+the cross-check at the commit step. CI is the pre-merge gate. Three
+actors: Ralph (pre-report), commit hook (pre-commit), CI (pre-merge).
 
 ### All communications
 
-- **Plain English at all times.** Write for a reader who wasn't
-  in the session: short sentences under 25 words, active voice,
-  plain everyday words. Grace may quote teammates to the user,
-  who shouldn't need a glossary to follow.
-- **Reference syntax.** In all communications — to teammates,
-  to the user, anywhere — refer to GitHub issues and PRs as
-  `GHNN` (e.g. `GH16`) and tasks as `task NN`. The two have
-  separate numbering spaces, and a bare `#NN` is ambiguous when
-  both can appear in the same conversation. The single
-  exception is GitHub artefacts themselves (PR descriptions,
-  issue bodies, PR/issue comments, commit messages), where the
-  native `#NN` form preserves GitHub's auto-linking.
+#### Plain English
+
+Write for a reader who wasn't in the session: short sentences under 25
+words, active voice, plain everyday words. Grace may quote teammates to
+the user, who shouldn't need a glossary to follow.
+
+Don't invent umbrella terms mid-session. If you've named the items,
+let the list do the work.
+
+Use plain verbs, not developer shorthand. "Creates the commit" not
+"lands the commit." "Opens the PR" not "ships the change."
+
+In reports and messages, state the conclusion first, then the detail.
+"Tests pass; ready to commit" before the reasons, not after.
+
+#### Reference syntax
+
+In all communications — to teammates, to the user, anywhere — refer to
+GitHub issues and PRs as `GHNN` (e.g. `GH16`) and tasks as `task NN`.
+The two have separate numbering spaces, and a bare `#NN` is ambiguous
+when both can appear in the same conversation. The single exception is
+GitHub artefacts themselves (PR descriptions, issue bodies, PR/issue
+comments, commit messages), where the native `#NN` form preserves
+GitHub's auto-linking.
 
 ### Communication between teammates (agents)
 
-- **`SendMessage`**. Use the `SendMessage` tool for all
-  communication between teammates.
-- **Plain text only**. The `SendMessage` tool accepts
-  JSON-typed control messages (`shutdown_request`,
-  `plan_approval_response`, and so on) for system-level
-  signals; teammate communication is not one of those. Send a
-  plain-text string.
-- **Address teammates by exact role name.** Use exactly
-  `Grace`, `Ralph`, `Junio`, or `Ada` in the `SendMessage`
-  `to:` field. UUIDs won't reach the right inbox.
-- **Set the `summary` field** (5–10 words) when sending a
-  string message — that's the UI preview the tool expects.
-- **Reply via `SendMessage`.** Plain turn output is not
-  delivered to other agents — only the harness sees it. Every
-  reply to a teammate goes via `SendMessage`. A one-word reply
-  (`done`, `confirmed`) still goes via `SendMessage` — the rule
-  has no length gate.
-- **Signature line.** Every outbound `SendMessage` body ends
-  with a signature: `From <your-name>.`, using your agent name.
-  Take care when adding the signature, make sure to use **your
-  agent name** – you are signing the message. The signature
-  tells the recipient that the message is teammate traffic, not
-  user input, and names who to reply to. When you want a reply,
-  append `RSVP via SendMessage.` to the signature, on the same
-  line. Skip the RSVP on terminal messages — a final ack, a
-  `done` report, an audit hand-off — where no reply is wanted.
-- **Non-user-facing agents stay quiet.** Ralph, Junio, and Ada
-  are not user-facing. They use tools to do the work, then use
-  `SendMessage` for anything Grace needs: reports, progress,
-  findings, reviews, or questions. Plain turn output, when
-  useful for local status or debugging, is at most one short
-  sentence per turn.
-- Auto-generated idle notifications: not acted on unless they
-  affect pending work.
+#### SendMessage
+
+Use the `SendMessage` tool for all communication between teammates. The
+tool accepts JSON-typed control messages (`shutdown_request`,
+`plan_approval_response`, and so on) for system-level signals;
+teammate communication is not one of those. Send a plain-text string.
+Address teammates by exact role name — `Grace`, `Ralph`, `Junio`, or
+`Ada` — in the `to:` field; UUIDs won't reach the right inbox. Set the
+`summary` field (5–10 words) when sending a string message — that's
+the UI preview the tool expects.
+
+Plain turn output is not delivered to other agents — only the harness
+sees it. Every reply to a teammate goes via `SendMessage`. A one-word
+reply (`done`, `confirmed`) still goes via `SendMessage` — the rule
+has no length gate.
+
+#### Signature
+
+Every outbound `SendMessage` body ends with a signature:
+`From <your-name>.`, using your agent name. Take care to use your own
+agent name — you are signing the message. The signature tells the
+recipient that the message is teammate traffic, not user input, and
+names who to reply to. When you want a reply, append
+`RSVP via SendMessage.` to the signature, on the same line. Skip the
+RSVP on terminal messages — a final ack, a `done` report, an audit
+hand-off — where no reply is wanted.
+
+#### Non-user-facing agents
+
+Ralph, Junio, and Ada are not user-facing. They use tools to do the
+work, then use `SendMessage` for anything Grace needs: reports,
+progress, findings, reviews, or questions. Plain turn output, when
+useful for local status or debugging, is at most one short sentence per
+turn. Auto-generated idle notifications are not acted on unless they
+affect pending work.
