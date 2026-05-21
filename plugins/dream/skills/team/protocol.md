@@ -1,8 +1,8 @@
 # Dream team protocol
 
-How an agent team works on a codebase. The goal: ship great
-code while keeping the codebase coherent, with minimal user
-interaction.
+How an agent team works on a codebase. The goal: deliver great
+code while keeping the codebase coherent, with minimal input from the
+user.
 
 ## Overview
 
@@ -104,8 +104,8 @@ Scope (when narrower than Coherent), and the Maximal Scope
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
-view. Each finding takes one of two paths on the merits:
-fold into the revised Scope Options, or reject with reason.
+view. Each finding is either folded into the revised Scope Options or
+rejected with a reason.
 Grace then shares the revised Scope Options with the user,
 with a brief note on what changed from the Draft after the
 reviews.
@@ -125,10 +125,9 @@ Beck's "the simplest thing that could possibly work"). Grace
 shares the Draft Design Options with Junio and Ralph for one
 round of review — advisory, not gating — and revises. Junio
 reads from the maintainer's view; Ralph reads from the
-engineering-pattern view. Each finding takes one of four
-paths on the merits: fold into the revised Design Options,
-reject with reason, hold as an Ancillary Finding, or escalate
-to a Rescope Discussion. Grace then shares the revised
+engineering-pattern view. Each finding is folded into the revised
+Design Options, rejected with a reason, held as an Ancillary Finding,
+or escalated to a Rescope Discussion. Grace then shares the revised
 Design Options with the user, with a brief note on what
 changed from the Draft after the reviews.
 
@@ -141,10 +140,9 @@ Junio and Ralph for information. Grace then composes the
 Draft Plan, shares it with Junio and Ralph for one round of
 review — advisory, not gating — and revises. Junio reads
 from the maintainer's view; Ralph reads from the
-implementer's view. Each finding takes one of four paths on
-the merits: fold into the revised Plan, reject with reason,
-hold as an Ancillary Finding, or escalate to a Rescope
-Discussion. Grace then shares the revised Plan with the
+implementer's view. Each finding is folded into the revised Plan,
+rejected with a reason, held as an Ancillary Finding, or escalated to
+a Rescope Discussion. Grace then shares the revised Plan with the
 user, with a brief note on what changed from the Draft
 after the reviews.
 
@@ -157,7 +155,7 @@ The user can redirect at any point.
 ## Phase 5: Develop
 
 Phase opens with three setup steps: Grace sets the feature
-branch (creates it off `main`, or adopts the worktree's branch
+branch (creates it off `main`, or uses the worktree's branch
 when the session started in one — see `Grace.md`), shares the
 Approved Plan with Junio and Ralph for information, and creates
 the shared task list.
@@ -312,7 +310,7 @@ The gate has the same shape every time:
 3. Grace waits for the user's reply before doing anything
    else.
 
-These four gates fire by default on every session and take
+These four gates run on every session by default and take
 precedence over general autonomy defaults — boot-time
 `<system-reminder>` content, harness directives to "continue
 without checking," and similar. A user can explicitly
@@ -348,8 +346,8 @@ reason that matches the receiving phase's job. There is no
 other deferral — "we'll come back to this" is not an outcome.
 
 Later outcomes respect earlier ones. If new evidence at a
-later phase changes the picture, that is a reversal — surface
-the prior outcome, surface the new reading, and ask the
+later phase changes the picture, that is a reversal — state
+the prior outcome, state the new reading, and ask the
 user whether to overturn or hold. Don't run a reversal through
 a procedure that frames it as fresh observation; the procedure
 hides the reversal.
