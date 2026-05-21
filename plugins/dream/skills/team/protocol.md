@@ -407,6 +407,14 @@ GitHub artefacts themselves (PR descriptions, issue bodies, PR/issue
 comments, commit messages), where the native `#NN` form preserves
 GitHub's auto-linking.
 
+### GitHub-rendered artefacts
+
+PR bodies, issue bodies, and PR/issue comments are rendered by GitHub
+to the reader's viewport. Write each paragraph on a single line — no
+hard wraps inside paragraphs — so the rendered output flows cleanly.
+Newlines inside fenced code blocks and between table rows are
+structural; leave those alone.
+
 ### Communication between teammates (agents)
 
 #### SendMessage
