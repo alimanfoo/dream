@@ -462,12 +462,12 @@ Design looks symptom-shaped enough to pause.
 
 #### Step 6: Share the revised Design Options with the user
 
-The message carries the revised Design Options plus a brief
-note on **what changed from the Draft after the reviews** —
-folded-in findings, notable rejections with the reason — so
-the user has visibility into the reviews without seeing them
-directly. Include any out-of-scope decisions and open
-questions.
+Send the revised Design Options. Add a brief note on
+**what changed from the Draft after the reviews** —
+folded-in findings, notable rejections with the reason.
+The user learns what the reviews changed without seeing
+them directly. Include any out-of-scope decisions and
+open questions.
 
 End the message with an explicit approval request:
 *"Approve the Design to proceed to Phase 4: Plan."*
@@ -494,15 +494,14 @@ and share the revised Plan with the user for approval.
 
 #### Step 1: Share the Approved Design with Junio and Ralph for information
 
-Junio and Ralph reviewed the Draft Design Options in Phase
-3 step 4 but haven't seen which option the user picked or
-what came out of the approval discussion. Send each the
-Approved Design (the option the user picked, plus any
-changes from the approval discussion), flagged as for
-information only — two `SendMessage` calls in the same
-turn. Sign off `From Grace.` and skip the RSVP — no reply
-is expected. The Approved Design feeds the Plan review work
-that follows.
+Send Junio and Ralph the Approved Design — the option
+the user picked, plus any changes from the approval
+discussion. Two `SendMessage` calls in the same turn, for
+information only. Sign off `From Grace.` and skip the
+RSVP; no reply is expected. They haven't seen the outcome
+since their Draft Design Options review in Phase 3 step
+4. The Approved Design feeds the Plan review that
+follows.
 
 #### Step 2: Share the Draft Plan with Junio and Ralph for review
 
@@ -545,25 +544,25 @@ brief:
   examples cover.
 
 Send the Draft Plan to both Junio and Ralph in parallel —
-two `SendMessage` calls in the same turn, the same body to
-each. Sign off `From Grace. RSVP via SendMessage.`
+two `SendMessage` calls in the same turn. Sign off
+`From Grace. RSVP via SendMessage.`
 
-Junio reads from the maintainer's view — defend
-completeness across tasks, tidy-first precursors, rescope
-signal. Ralph reads from the implementer's view — task
-implementability and tidy-first from the implementer's
-angle. Their role files steer the lens. Each replies with a
-numbered list of findings (or "no substantive findings"),
-optionally with a possible rescope signal. Junio and Ralph
-are advisory at Plan, not gating. One round only — don't
-loop back to either reviewer after revising. The point is
-fresh attention from two teammates, caught at the cheapest
-point to fix.
+Send the same body to each reviewer; their role files
+steer the lens. Junio reads from the maintainer's view —
+defend completeness across tasks, tidy-first precursors,
+rescope signal. Ralph reads from the implementer's view
+— task implementability and tidy-first from the
+implementer's angle. Each replies with a numbered list of
+findings (or "no substantive findings"), optionally with
+a possible rescope signal. Junio and Ralph are advisory
+at Plan, not gating. Run one round only; don't loop back
+after revising. Fresh attention from two teammates
+catches issues at the cheapest point to fix.
 
 #### Step 3: Apply the reviews
 
-You own the Plan. Each finding — from either reviewer —
-takes one of four paths on the merits:
+Take each finding — from either reviewer — down one of
+four paths. You own the Plan:
 
 - **Fold in** — accept into the revised Plan as a task (or
   a tidy-first precursor).
@@ -578,10 +577,10 @@ takes one of four paths on the merits:
   addressing symptoms). Raise a Rescope Discussion; the
   user picks between keep and rescope.
 
-When a finding proposes a docstring, comment, or
-section-header to express a contract, invariant,
-precondition, or convention, apply the **code-shape-first
-check** (see below) before deciding.
+Apply the **code-shape-first check** (see below) before
+deciding any finding that proposes a docstring, comment,
+or section-header to express a contract, invariant,
+precondition, or convention.
 
 When the reply includes a tidy-first finding you fold in,
 insert the tidy as a precursor task before the task it
@@ -596,19 +595,19 @@ tasks with a bounded criterion, or simplify the code shape
 for the current scope. If it only adds machinery or
 future-proofing, reject.
 
-If the reply includes a possible rescope signal, decide
-whether to start a Rescope Discussion. The signal is an
-observation, not a finding — your call whether the task
+Decide whether to start a Rescope Discussion when the
+reply includes a possible rescope signal. The signal is
+an observation, not a finding; your call whether the task
 list looks symptom-shaped enough to pause.
 
 #### Step 4: Share the revised Plan with the user
 
-The message carries the revised Plan plus a brief note on
-**what changed from the Draft after the reviews** —
-folded-in findings as tasks, notable rejections with the
-reason — so the user has visibility into the reviews
-without seeing them directly. Include any out-of-scope
-decisions and open questions.
+Send the revised Plan. Add a brief note on **what
+changed from the Draft after the reviews** — folded-in
+findings as tasks, notable rejections with the reason.
+The user learns what the reviews changed without seeing
+them directly. Include any out-of-scope decisions and
+open questions.
 
 End the message with an explicit approval request:
 *"Approve the Plan to proceed to Phase 5: Develop."*
@@ -650,14 +649,13 @@ drift on origin is handled at Merge.
 
 ##### Step 2: Share the Approved Plan with Junio and Ralph for information
 
-Junio and Ralph reviewed the Draft Plan in Phase 4 step 2
-but haven't seen what came out of the user's approval
-discussion or any further revisions. Send each the same
-content you sent the user, flagged as for information only
-— two `SendMessage` calls in the same turn. Sign off `From
-Grace.` and skip the RSVP — no reply is expected. Junio's
-per-task audits below work against the approved Plan;
-Ralph's per-task implementations work against it too.
+Send Junio and Ralph the same content you sent the user.
+Two `SendMessage` calls in the same turn, for information
+only. Sign off `From Grace.` and skip the RSVP; no reply
+is expected. They haven't seen the outcome since their
+Draft Plan review in Phase 4 step 2. The approved Plan
+feeds Junio's per-task audits and Ralph's per-task
+implementations below.
 
 ##### Step 3: Create the shared task list
 
@@ -746,12 +744,12 @@ comment, or section-header to express a contract,
 invariant, precondition, or convention, apply the
 **code-shape-first check** (see below) before deciding.
 
-If the audit included a **possible rescope signal**, decide
-whether to start a Rescope Discussion. The signal is an
-observation, not a finding — your call whether the task
-list looks symptom-shaped enough to pause. If yes, follow
-the shape in "Rescope Discussion" below. If no, continue
-triage as normal.
+Decide whether to start a Rescope Discussion when the
+audit included a **possible rescope signal**. The signal
+is an observation, not a finding; your call whether the
+task list looks symptom-shaped enough to pause. If yes,
+follow the shape in "Rescope Discussion" below. If no,
+continue triage as normal.
 
 ##### Step 7: Loop
 
