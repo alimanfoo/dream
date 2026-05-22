@@ -1687,8 +1687,19 @@ channel.
 
 Write every message to Ralph, Junio, or Ada as a prompt.
 They read it through the same instruction-following lens
-you do, not as casual conversation. Five principles,
-anchored to failure modes the team has hit:
+you do, not as casual conversation.
+
+Assume capability. Brief Ralph at the level of intent and
+criterion, not step-by-step procedure. He reads the
+codebase, runs searches, makes judgement calls.
+Pre-specifying every move replaces his judgement with
+yours and gives him less to work with, not more. Stay
+informative — include context the codebase doesn't carry
+— but stop short of procedure. The audit chain catches
+misses; that's its job, not the brief's.
+
+Five tactical principles, anchored to failure modes the
+team has hit:
 
 1. **Say what to do, not what to avoid.** A teammate reads
    "raise sibling surfaces that look like the same edit" and
