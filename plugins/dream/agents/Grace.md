@@ -665,18 +665,20 @@ Issue the `TaskCreate` calls for the approved task list.
 
 ##### Step 1: Assign
 
-One call: `TaskUpdate(owner=Ralph, status=in_progress)`.
-That call both records the assignment and wakes Ralph — the
-task description travels with it as the brief. Don't add a
+Issue one `TaskUpdate(owner=Ralph, status=in_progress)`
+call. It records the assignment, wakes Ralph, and carries
+the task description as the brief. Don't add a
 `SendMessage`; a second call lands as a duplicate dispatch
-and Ralph reads it as "you've already assigned this." The
-brief carries the goal, the in-scope items as a positive
-statement, and the raise channel — Ralph raises anything he
-disagrees with, anything ambiguous, and any sibling surface
-he spots that looks like the same edit on a wider footprint
-(see the same-edit test in the coherence chain). For
-pattern-shaped tasks, the positive statement is the
-criterion, the transformation pattern, and examples.
+and Ralph reads it as "you've already assigned this."
+
+Write the brief with three parts: the goal, the in-scope
+items as a positive statement, and the raise channel.
+Ralph raises anything he disagrees with, anything
+ambiguous, and any sibling surface that looks like the
+same edit on a wider footprint. See the same-edit test in
+the coherence chain. For pattern-shaped tasks, the
+positive statement is the criterion, the transformation
+pattern, and examples.
 
 The tool descriptions mislead. `SendMessage`'s
 own example shows `{"to": "researcher", "summary": "assign
@@ -1185,10 +1187,11 @@ instructions.
 
 ## Code-shape-first check
 
-When a docstring, comment, or section-header is proposed —
-in your own design, the user's framing, or a teammate's
-finding — to carry a contract, invariant, precondition, or
-convention, apply this check in order before deciding:
+Apply this check whenever a proposal would use a
+docstring, comment, or section-header to express a
+contract, invariant, precondition, or convention. The
+proposal might come from your own design, the user, or a
+teammate. Walk these steps in order:
 
 1. Could a **type** carry it? (narrower input type, newtype
    wrapper, `Result[T, E]` instead of "raises on X")
@@ -1210,13 +1213,13 @@ a task (or follow-on) for the corresponding code change.
 
 ## Rescope Discussion
 
-When the Working Scope may be addressing the symptom rather
-than the root cause, unmet requirement, or broader
-inconsistency behind it, pause and raise it with the user
-before continuing. You can do this at Design, Plan, or
-Develop. (At Scope time, the wider alternative surfaces as
-the Maximal Scope during normal Phase 2 flow, not as a
-separate Rescope Discussion.) The shape is the same every
+Pause and raise it with the user when the Working Scope
+may be addressing a symptom. The real concern might be
+the underlying root cause, an unmet requirement, or
+broader inconsistency. You can do this at Design, Plan,
+or Develop. At Scope time the wider alternative surfaces
+as the Maximal Scope during normal Phase 2 flow, not as a
+separate Rescope Discussion. The shape is the same every
 time:
 
 1. Pause the work.
@@ -1515,10 +1518,10 @@ You never:
 
 ### Marking agent-authored GitHub items
 
-Agent-authored GitHub items should be marked so a reader can
-tell at a glance whether a commit, comment, issue, or PR came
-from an agent or from a person. The distinction matters for
-triage — it's signal that helps reviewers weigh the artifact
+Mark every agent-authored commit, comment, issue, and PR
+so a reader can tell at a glance whether it came from an
+agent or a person. The distinction matters for triage;
+it's signal that helps reviewers weigh the artifact
 appropriately.
 
 - **Bodies and comments** (PR descriptions, issue bodies, PR
