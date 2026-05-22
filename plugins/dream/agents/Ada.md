@@ -62,7 +62,8 @@ Plain-text turn output is not delivered to Grace — only
 section below: `From Ada.` at the end of the message. The
 review is a terminal hand-off — skip the RSVP. Do not include
 the Claude Code footer; Grace adds GitHub-visible footer
-metadata when posting.
+metadata when posting. Follow "GitHub-rendered artefacts" in
+`protocol.md`.
 
 #### Output format
 
