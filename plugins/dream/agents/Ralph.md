@@ -247,8 +247,9 @@ When Grace gives you a task, follow the steps below.
 
 Read the brief for the goal, the criterion that selects
 the work, and the raise channel. Apply the criterion
-fresh across the named surface — examples illustrate the
-criterion, they don't bound the work. Sibling sites
+fresh — the criterion's wording sets the scope, and you
+find the instances within it. Examples illustrate the
+criterion; they don't bound the work. Sibling sites
 matching the criterion are part of the task, not scope
 creep. Raise anything you disagree with, anything
 ambiguous, and any surface this change makes adjacent

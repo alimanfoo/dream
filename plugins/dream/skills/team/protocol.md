@@ -198,12 +198,13 @@ during triage. An in-session antecedent flips a borderline
 call toward in-scope.
 
 Missed instances of the brief's criterion don't need a
-separate test. Ralph applies the criterion fresh across the
-named surface, so sibling sites matching the criterion are
-part of the work. See Phase 4 in `Grace.md` for the brief
-shape and Phase 5 in `Ralph.md` for how Ralph reads it. Junio
-still catches missed instances during audit when Ralph's
-application of the criterion left some out.
+separate test. Ralph applies the criterion fresh — the
+criterion's wording sets the scope, so sibling sites
+matching the criterion are part of the work. See Phase 4
+in `Grace.md` for the brief shape and Phase 5 in
+`Ralph.md` for how Ralph reads it. Junio still catches
+missed instances during audit when Ralph's application of
+the criterion left some out.
 
 **Defend behaviour, not surface.** For any proposed machinery
 — a test, a glossary, a regen step, a cross-reference rule, a

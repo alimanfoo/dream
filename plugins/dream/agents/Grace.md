@@ -525,16 +525,17 @@ Lead each brief with the goal, then name the **criterion**
 that selects the work, then offer concrete examples as
 scaffold. The criterion is what makes a site count;
 examples illustrate, they don't bound. Ralph applies the
-criterion fresh across the named surface and finds the
-instances himself.
+criterion fresh and finds the instances himself.
 
-Scale the criterion to the work. A single specific edit
-("rename `foo` to `bar` at `module.py:42`") is a criterion
-with one application — state it directly, no examples
-needed. A pattern across many sites ("remove every
-docstring of kind X in module Y") is a criterion Ralph
-applies across the named surface; show two or three
-examples to anchor the kind.
+Write the criterion so its wording sets its own scope.
+"Every occurrence of `foo`" spans wherever the literal
+appears — tree-wide unless the criterion's wording bounds
+it. "Every docstring of kind X in the parser module"
+bounds itself to the kind within the parser module.
+"Rename `foo` to `bar` at `module.py:42`" has a single
+application — state it directly, no examples needed. For
+kind-based criteria, show two or three examples to anchor
+the kind.
 
 Send the Draft Plan to both Junio and Ralph in parallel —
 two `SendMessage` calls in the same turn. Sign off
