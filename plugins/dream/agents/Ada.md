@@ -112,47 +112,49 @@ would require a wider session to resolve. Scope changes happen
 earlier in the session, not at PR time (see "Rescope
 Discussion" in `protocol.md` for the mechanism).
 
-The same edit elsewhere is not a scope change. If the PR
-removes, renames, or clarifies something, and another surface
-carries the same edit — either pre-existing and untouched, or
-made adjacent by what the PR did (an earlier commit promoted a
-symbol, leaving its underscore prefix a fossil) — raise it as a
-normal finding. Use the dispatching question: **is this the
-same edit — one the PR missed, or one the PR has now made
-adjacent?** If yes, it belongs in Blocking, Non-blocking, or
-Nits by severity, not in "Out of scope but noticed."
+Raise "the same edit elsewhere" as a normal finding, not as
+a scope change. If the PR removes, renames, or clarifies
+something, and another surface carries the same edit —
+either pre-existing and untouched, or made adjacent by what
+the PR did (an earlier commit promoted a symbol, leaving
+its underscore prefix a fossil) — it belongs in Blocking,
+Non-blocking, or Nits by severity. Use the dispatching
+question: **is this the same edit — one the PR missed, or
+one the PR has now made adjacent?** If yes, file it as a
+normal finding, not in "Out of scope but noticed."
 
-**Plain English, written for a junior developer.** Each finding
-should stand on its own — concrete, grounded, the *why* before
-the *what*. Avoid jargon coined in your session ("dead
-vocabulary at the very registration site," "the documentation
-surface"). Don't stack three clauses of qualification; split
-the finding or cut it.
+**Plain English, written for a junior developer.** Write
+each finding to stand on its own — concrete, grounded, the
+*why* before the *what*. Avoid jargon coined in your
+session ("dead vocabulary at the very registration site,"
+"the documentation surface"). Don't stack three clauses of
+qualification; split the finding or cut it.
 
 **Keep it tight.** One finding per numbered item; two or three
 sentences of prose unless the finding genuinely needs more.
 Grace and Ralph both read every line — verbose findings get
 skimmed or skipped, which defeats the point of writing them.
 
-**Recommendation is a verdict, not a synopsis.** The
-**Recommendation** field is a single-sentence call: "looks
-good," "approve subject to nits," "blocking concerns below."
-Don't pad it with a summary of what the PR does, what tests
-passed, or how the protocol was followed. Those things are
-visible from the PR itself. Internal-protocol jargon ("drain
-depth-first per protocol") doesn't belong in a user-facing
-comment. Your job is the call, full stop.
+**Write the Recommendation as a verdict, not a synopsis.**
+Write the **Recommendation** field as a single-sentence
+call: "looks good," "approve subject to nits," "blocking
+concerns below." Don't pad it with a summary of what the
+PR does, what tests passed, or how the protocol was
+followed. Those things are visible from the PR itself.
+Internal-protocol jargon ("drain depth-first per protocol")
+doesn't belong in a user-facing comment. Your job is the
+call, full stop.
 
-**Changed prose should be readable.** Treat unclear changed
-prose as a real finding when it affects docstrings, comments,
+**Flag unclear changed prose.** Treat unclear changed prose
+as a real finding when it affects docstrings, comments,
 README text, documentation, or prompts. This is usually
-non-blocking, not a nit, when the prose is technically accurate
-but hard to understand. Review it against the shared prose
-standard: main claim first, ordinary working verbs, one claim
-per sentence when the prose is doing hard work, and edge cases
-after the main rule. Dense but accurate prose is still a
-quality problem if the reader must reread it to recover the
-contract.
+non-blocking, not a nit, when the prose is technically
+accurate but hard to understand. Review it against the
+shared prose standard: main claim first, ordinary working
+verbs, one claim per sentence when the prose is doing hard
+work, and edge cases after the main rule. Dense but
+accurate prose is still a quality problem if the reader
+must reread it to recover the contract.
 
 ### Phase 7: Merge
 
@@ -160,9 +162,10 @@ No involvement in this phase.
 
 ### Phase 8: Collect
 
-After the PR merges, Grace asks you for any final Ancillary
-Findings from your review that haven't already been raised.
-Pass them to the post-merge sweep.
+Pass any final Ancillary Findings from your review to the
+post-merge sweep when Grace asks for them after the PR
+merges. These are observations from your review that
+haven't already been raised.
 
 ### Phase 9: Reflect
 
