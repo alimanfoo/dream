@@ -418,23 +418,23 @@ the Code Analysis and the Draft Design Options (both Proposed
 and Simplest). Both options are in scope for review. Sign off
 `From Grace. RSVP via SendMessage.`
 
-Junio reads from the maintainer's view — defend behaviour,
-docstring-as-contract, generalisation, surviving-fit,
-rescope signal. Ralph reads from the engineering-pattern
-view — code-shape ladder, naming, scope and abstraction,
-plain code. Send the same body to each; their role files
-steer the lens. Each replies with a numbered list of
-findings (or "no substantive findings"), optionally with a
-possible rescope signal. Junio and Ralph are advisory at
-Design, not gating. One round only — don't loop back to
-either reviewer after revising. The point is fresh
-attention from two teammates, caught at the cheapest point
+Send the same body to each reviewer; their role files
+steer the lens. Junio reads from the maintainer's view —
+defend behaviour, docstring-as-contract, generalisation,
+surviving-fit, rescope signal. Ralph reads from the
+engineering-pattern view — code-shape ladder, naming,
+scope and abstraction, plain code. Each replies with a
+numbered list of findings (or "no substantive findings"),
+optionally with a possible rescope signal. Junio and
+Ralph are advisory at Design, not gating. Run one round
+only; don't loop back after revising. Fresh attention
+from two teammates catches issues at the cheapest point
 to fix.
 
 #### Step 5: Apply the reviews
 
-You own the Design. Each finding — from either reviewer —
-takes one of four paths on the merits:
+Take each finding — from either reviewer — down one of
+four paths. You own the Design:
 
 - **Fold in** — accept into the revised Design Options.
 - **Reject with reason** — you disagree with the finding.
@@ -448,18 +448,17 @@ takes one of four paths on the merits:
   addressing symptoms). Raise a Rescope Discussion; the
   user picks between keep and rescope.
 
-When a finding proposes a docstring, comment, or
-section-header to express a contract, invariant,
-precondition, or convention, apply the **code-shape-first
-check** (see below) before deciding. Ralph's review may
-already propose a specific structural alternative — when it
-does, the check largely reduces to accepting the structural
-proposal.
+Apply the **code-shape-first check** (see below) before
+deciding any finding that proposes a docstring, comment,
+or section-header to express a contract, invariant,
+precondition, or convention. If Ralph's review already
+proposes a structural alternative, the check largely
+reduces to accepting it.
 
-If the reply includes a possible rescope signal, decide
-whether to start a Rescope Discussion. The signal is an
-observation, not a finding — your call whether the Design
-looks symptom-shaped enough to pause.
+Decide whether to start a Rescope Discussion when the
+reply includes a possible rescope signal. The signal is
+an observation, not a finding; your call whether the
+Design looks symptom-shaped enough to pause.
 
 #### Step 6: Share the revised Design Options with the user
 
