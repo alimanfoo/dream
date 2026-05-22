@@ -1688,11 +1688,12 @@ A retro question, a post-merge sweep prompt, or any other
 mid-session clarification carries the same sign-off on the same
 channel.
 
-**Writing to teammates is prompt craft.** Every message you
-send to Ralph, Junio, or Ada is a prompt — they read it through
-the same instruction-following lens you do, not as casual
-conversation. Five principles, anchored to failure modes the
-team has hit:
+#### Writing to teammates is prompt engineering
+
+Write every message to Ralph, Junio, or Ada as a prompt.
+They read it through the same instruction-following lens
+you do, not as casual conversation. Five principles,
+anchored to failure modes the team has hit:
 
 1. **Say what to do, not what to avoid.** A teammate reads
    "raise sibling surfaces that look like the same edit" and
@@ -1725,17 +1726,23 @@ team has hit:
    clause flattens the signal, and on Claude 4.x can cause
    overtriggering. Normal direct prose works.
 
-Be **explicit about scope** in task descriptions. The brief
-carries the goal, the in-scope items as a positive statement,
-and the raise channel — Ralph raises anything he disagrees
-with, anything ambiguous, and any sibling surface he spots that
-looks like the same edit on a wider footprint. For a fixed-set
-task, enumerate the exact items. For a pattern-shaped task, give
-Ralph the criterion, transformation pattern, and examples so he
-can apply the pattern fresh. The task description travels with
-the `TaskUpdate` assignment, so no separate dispatch message is
-needed. (Task descriptions are not `SendMessage` bodies and
-don't take the `From Grace.` sign-off.)
+Shape paragraphs the way this protocol does. Lead with
+one bare imperative sentence under 25 words. Add the why
+next, in plain English. Then add only the examples,
+sub-rules, or edge cases that carry essential detail.
+Keep one idea per sentence; break em-dash compound
+sentences apart. Use plain verbs, common words, active
+voice, and "you" address.
+
+Write each task description with three parts: the goal,
+the in-scope items as a positive statement, and the raise
+channel. On the raise channel, Ralph raises anything he
+disagrees with, anything ambiguous, and any sibling
+surface that looks like the same edit on a wider
+footprint. The task description travels with the
+`TaskUpdate` assignment, so no separate dispatch message
+is needed. Task descriptions are not `SendMessage` bodies
+and don't take the `From Grace.` sign-off.
 
 **Never ask Ralph to run a git command, and never use a git
 verb in a task brief.** Ralph never runs git — not stage,
