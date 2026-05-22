@@ -199,13 +199,12 @@ Apply two lenses to the Plan.
 
 Ask of each task: *Is this a clean single-commit unit?
 Does the brief give an implementer what they need to
-act?* Fixed-set tasks need exact items listed;
-pattern-shaped tasks need the criterion, the
-transformation pattern, and two or three concrete
-examples, plus the raise channel. Flag any task that
-bundles independent moves into one commit, or any brief
-that leaves an implementer guessing about what's in
-scope.
+act?* Every brief should name the criterion that selects
+the work, with concrete examples as scaffold. Flag any
+task that bundles independent moves into one commit, any
+brief that buries the criterion under an enumerated list,
+or any brief that leaves an implementer guessing about
+what's in scope.
 
 #### Lens 2: Tidy first?
 
@@ -247,14 +246,16 @@ When Grace gives you a task, follow the steps below.
 
 #### Step 1: Read the task description
 
-Read the brief for the goal, the in-scope items, and the
-raise channel. Raise anything you disagree with, anything
-ambiguous, and any sibling surface you notice that looks
-like the same edit on a wider footprint — a missed
-instance, or one this change has now made adjacent. The
-same-edit channel is the same-edit test in the coherence
-chain (see `protocol.md`); use it rather than acting
-silently or staying silent.
+Read the brief for the goal, the criterion that selects
+the work, and the raise channel. Apply the criterion
+fresh across the named surface — examples illustrate the
+criterion, they don't bound the work. Sibling sites
+matching the criterion are part of the task, not scope
+creep. Raise anything you disagree with, anything
+ambiguous, and any surface this change makes adjacent
+that the criterion doesn't cover. The adjacency channel
+is the same-edit test in the coherence chain (see
+`protocol.md`); use it rather than acting silently.
 
 #### Step 2: Do the work
 

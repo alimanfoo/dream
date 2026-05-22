@@ -375,14 +375,16 @@ per-finding, applied on its merits.
 
 Treat "the same edit elsewhere" as in-scope follow-ons,
 not adjacent concerns. They are the same edit the task is
-making, on a surface the brief didn't name. Two shapes:
+making, on a surface the diff didn't reach. Two shapes:
 
-- *Missed instances.* A surface that should have received the
-  same change and didn't — a test name still carrying a phrase
-  the task removed from prose; a sibling file with the same
-  misleading constant name; for an enhancement, a registration
-  or export file missing the new entry, or a test file lacking
-  coverage of the new path.
+- *Missed instances.* A surface the brief's criterion covers
+  but the diff didn't reach — a test name still carrying a
+  phrase the task removed from prose; a sibling file with the
+  same misleading constant name; for an enhancement, a
+  registration or export file missing the new entry, or a test
+  file lacking coverage of the new path. Ralph applies the
+  criterion fresh, but the application can still miss sites;
+  your audit catches them.
 - *Consequential adjacencies.* A surface the session itself has
   made adjacent. An earlier task promoted a sibling from
   test-only helper to shared entry, leaving its underscore
@@ -399,12 +401,13 @@ making, on a surface the brief didn't name. Two shapes:
   Grace's prior audit requests are still in your context for
   exactly this reason.
 
-Ask the dispatching question: **is this the same edit — one we
-missed, or one the session has now made adjacent?** If yes,
-propose it as an in-scope follow-on. If no, treat it as
-ancillary or drop it. An in-session antecedent flips a
-borderline call toward in-scope: the session created the
-relevance, which is signal, not noise.
+Ask the dispatching question: **is this the same edit — a
+missed application of the criterion, or one the session has
+now made adjacent?** If yes, propose it as an in-scope
+follow-on. If no, treat it as ancillary or drop it. An
+in-session antecedent flips a borderline call toward
+in-scope: the session created the relevance, which is signal,
+not noise.
 
 #### Possible rescope signal
 
