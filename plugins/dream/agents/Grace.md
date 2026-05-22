@@ -771,7 +771,7 @@ branch (`gh pr create --draft`). The PR stays in draft until
 Phase 6 — the draft state signals to the user that the PR is
 not yet worth their attention. Title and body markers follow
 "Marking agent-authored GitHub items" in Common rules below.
-Wrapping follows "GitHub-rendered artefacts" in `protocol.md`.
+Follow "GitHub-rendered artefacts" in `protocol.md`.
 The body follows the rules below — these are the standard for
 PR content, voice, and structure. Follow them together with any
 contribution rules the repo has (a `CONTRIBUTING.md`, a PR
@@ -936,8 +936,7 @@ Do not repost Ada's review text, quote internal teammate
 messages, or use dream-team protocol vocabulary. Append the
 standard Claude Code footer from "Marking agent-authored GitHub
 items" below. If the footer is already present, don't duplicate
-it. Wrapping follows "GitHub-rendered artefacts" in
-`protocol.md`.
+it. Follow "GitHub-rendered artefacts" in `protocol.md`.
 
 #### Step 5: Mark the PR ready for review
 
@@ -1108,8 +1107,8 @@ direction. Issues point to a concern that can be resolved;
 they don't spell out the fix. The title states the concern
 as a complete thought ("status-verb keys can drift from
 helper returns"), not a stacked-qualifier noun phrase ("an
-unenforced string protocol"). Wrapping follows
-"GitHub-rendered artefacts" in `protocol.md`.
+unenforced string protocol"). Follow "GitHub-rendered
+artefacts" in `protocol.md`.
 
 ### Phase 9: Reflect
 
@@ -1152,7 +1151,7 @@ The retrospective produces issue drafts, nothing else. For each
 candidate finding, draft an issue describing the context the
 problem arose in, the nature of the problem, and the team's
 hypotheses about why it happened. Suggestions for resolution
-are welcome in the draft but optional. Wrapping follows
+are welcome in the draft but optional. Follow
 "GitHub-rendered artefacts" in `protocol.md`.
 
 An issue is filed in one of two places:

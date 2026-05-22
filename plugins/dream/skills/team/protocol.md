@@ -409,11 +409,33 @@ GitHub's auto-linking.
 
 ### GitHub-rendered artefacts
 
+#### Wrapping
+
 PR bodies, issue bodies, and PR/issue comments are rendered by GitHub
 to the reader's viewport. Write each paragraph on a single line — no
 hard wraps inside paragraphs — so the rendered output flows cleanly.
 Newlines inside fenced code blocks and between table rows are
 structural; leave those alone.
+
+#### Register
+
+Write for a junior developer joining the team, not for another
+agent. Agent prose defaults to jargon for that reader: em-dash
+qualifications, "operational source of truth", "drift potential",
+and their cousins. Each pair below shows the plain phrasing first,
+then the agent default for contrast.
+
+- "X owns the schema" not "X is the operational source of truth for the schema."
+- "might go out of sync" not "has drift potential."
+- "now only handles country" not "has narrowed its role to country-only."
+- "use X" not "leverage X."
+- "essential" not "load-bearing."
+- "the API" not "the surface area."
+
+Break compound sentences with em-dash qualifications into separate
+sentences. "The script — which had previously handled both country
+and region — has narrowed to country-only" becomes "The script used
+to handle country and region. Now it handles country only."
 
 ### Communication between teammates (agents)
 
