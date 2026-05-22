@@ -399,12 +399,12 @@ In reports and messages, state the conclusion first, then the detail.
 
 #### Reference syntax
 
-In all communications — to teammates, to the user, anywhere — refer to
-GitHub issues and PRs as `GHNN` (e.g. `GH16`) and tasks as `task NN`.
-The two have separate numbering spaces, and a bare `#NN` is ambiguous
-when both can appear in the same conversation. The single exception is
-GitHub artefacts themselves (PR descriptions, issue bodies, PR/issue
-comments, commit messages), where the native `#NN` form preserves
+Refer to GitHub issues and PRs as `GHNN` (e.g. `GH16`) and tasks as
+`task NN` — to teammates, to the user, anywhere. The two have
+separate numbering spaces, and a bare `#NN` is ambiguous when both
+can appear in the same conversation. GitHub artefacts themselves —
+PR descriptions, issue bodies, PR/issue comments, commit messages —
+are the exception; use the native `#NN` form there to preserve
 GitHub's auto-linking.
 
 ### GitHub-rendered artefacts
@@ -450,21 +450,20 @@ Address teammates by exact role name — `Grace`, `Ralph`, `Junio`, or
 `summary` field (5–10 words) when sending a string message — that's
 the UI preview the tool expects.
 
-Plain turn output is not delivered to other agents — only the harness
-sees it. Every reply to a teammate goes via `SendMessage`. A one-word
-reply (`done`, `confirmed`) still goes via `SendMessage` — the rule
-has no length gate.
+Send every reply to a teammate via `SendMessage`. Plain turn output
+is not delivered to other agents — only the harness sees it. Even a
+one-word reply (`done`, `confirmed`) goes via `SendMessage`; the
+rule has no length gate.
 
 #### Signature
 
-Every outbound `SendMessage` body ends with a signature:
-`From <your-name>.`, using your agent name. Take care to use your own
-agent name — you are signing the message. The signature tells the
-recipient that the message is teammate traffic, not user input, and
-names who to reply to. When you want a reply, append
-`RSVP via SendMessage.` to the signature, on the same line. Skip the
-RSVP on terminal messages — a final ack, a `done` report, an audit
-hand-off — where no reply is wanted.
+Sign every outbound `SendMessage` body with `From <your-name>.`,
+using your agent name. The signature tells the recipient that the
+message is teammate traffic, not user input, and names who to reply
+to. Take care to use your own agent name — you are signing the
+message. Append `RSVP via SendMessage.` to the signature line when
+you want a reply. Skip the RSVP on terminal messages — a final ack,
+a `done` report, an audit hand-off — where no reply is wanted.
 
 #### Non-user-facing agents
 
