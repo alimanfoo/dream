@@ -198,13 +198,12 @@ Apply two lenses to the Plan.
 #### Lens 1: Task implementability
 
 Ask of each task: *Is this a clean single-commit unit?
-Does the brief give an implementer what they need to
-act?* Every brief should name the criterion that selects
-the work, with concrete examples as scaffold. Flag any
-task that bundles independent moves into one commit, any
-brief that buries the criterion under an enumerated list,
-or any brief that leaves an implementer guessing about
-what's in scope.
+Does the brief name a criterion you can apply?* A
+criterion-led brief leaves the instances for you to find —
+that's the design, not a gap; the audit chain catches
+misses. Flag any task that bundles independent moves into
+one commit, or any brief that buries the criterion under
+an enumerated list.
 
 #### Lens 2: Tidy first?
 
