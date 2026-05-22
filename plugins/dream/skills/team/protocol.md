@@ -411,11 +411,11 @@ GitHub's auto-linking.
 
 #### Wrapping
 
-PR bodies, issue bodies, and PR/issue comments are rendered by GitHub
-to the reader's viewport. Write each paragraph on a single line — no
-hard wraps inside paragraphs — so the rendered output flows cleanly.
-Newlines inside fenced code blocks and between table rows are
-structural; leave those alone.
+Write each paragraph on a single line. GitHub renders PR bodies,
+issue bodies, and PR/issue comments to the reader's viewport, so
+hard wraps inside paragraphs appear as stair-step lines. Newlines
+inside fenced code blocks and between table rows are structural;
+leave those alone.
 
 #### Register
 
