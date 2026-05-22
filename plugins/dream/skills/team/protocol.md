@@ -186,18 +186,24 @@ post-merge triage.
 **The chain ends** when either Junio reports "no substantive
 findings" or Grace rejects all proposed follow-ons.
 
-**Same-edit test.** Some findings aren't adjacent concerns —
-they're the same edit the session is making, on a surface the
-task list didn't name. Two shapes: *missed instances* (a
-surface that should have received the same change and didn't)
-and *consequential adjacencies* (a surface the session itself
-made relevant — a promoted sibling, a removed flag's orphan
-branch, a renamed concept's parallel function). All three
-roles apply the dispatching question: *is this the same edit —
-one we missed, or one the session has now made adjacent?*
-Ralph asks while implementing, Junio asks during audit, Grace
-asks during triage. An in-session antecedent flips a
-borderline call toward in-scope.
+**Same-edit test.** Treat a surface the session itself has
+made relevant as in scope, not as an adjacent concern.
+Examples: a promoted sibling whose underscore prefix is now a
+fossil, a removed flag's orphan branch, a renamed concept's
+parallel function. The session created the relevance, which
+is signal, not noise. All three roles apply the dispatching
+question: *has the session made this surface adjacent?* Ralph
+asks while implementing, Junio asks during audit, Grace asks
+during triage. An in-session antecedent flips a borderline
+call toward in-scope.
+
+Missed instances of the brief's criterion don't need a
+separate test. Ralph applies the criterion fresh across the
+named surface, so sibling sites matching the criterion are
+part of the work. See Phase 4 in `Grace.md` for the brief
+shape and Phase 5 in `Ralph.md` for how Ralph reads it. Junio
+still catches missed instances during audit when Ralph's
+application of the criterion left some out.
 
 **Defend behaviour, not surface.** For any proposed machinery
 — a test, a glossary, a regen step, a cross-reference rule, a
