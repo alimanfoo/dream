@@ -536,13 +536,6 @@ docstring of kind X in module Y") is a criterion Ralph
 applies across the named surface; show two or three
 examples to anchor the kind.
 
-Name your search method when you've already grepped or
-read the code. "Grepped for `X` in module Y, found these
-three" marks the list as verified scaffold rather than a
-closed set whose boundary is implied. Without that
-marking, a list of named sites reads as the complete work
-and overrides Ralph's judgment on sibling surfaces.
-
 Send the Draft Plan to both Junio and Ralph in parallel —
 two `SendMessage` calls in the same turn. Sign off
 `From Grace. RSVP via SendMessage.`
