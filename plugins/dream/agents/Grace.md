@@ -1343,29 +1343,30 @@ deletion, Ada review follow-ons of the same shape, and
 Plan-derived pure refactors. The templates below describe the
 brief you write for Ralph; Ralph does not read this section.
 
-Each template carries the goal, the criterion that selects
-the work, the raise channel, and any constraint specific to
-the shape. Add concrete examples from your investigation when
-you assign the task — they scaffold the criterion; Ralph
-applies it fresh.
+Add concrete examples from your investigation when you
+assign the task — they scaffold the criterion; Ralph
+applies it fresh. Each template below carries the goal,
+the criterion, the raise channel, and any shape-specific
+constraint.
 
 Two rules apply across all three shapes.
 
-**Behaviour-preserving by default.** The point is smaller
-code or better structure, not new behaviour. If Ralph spots a
-behaviour change worth making, he raises it as a separate
-proposal.
+**Behaviour-preserving by default.** Preserve behaviour
+unless the task explicitly authorises change. Smaller code
+or better structure is the point, not new behaviour. If
+Ralph spots a behaviour change worth making, he raises it
+as a separate proposal.
 
-**Defend behaviour, not surface, in tests too.** Whenever
-tests are added or changed, ask of each test — *what
-contract does it pin? Would it still pass under a
-contract-preserving refactor?* A test that pins no contract
-is decorative; apply the discipline in `protocol.md`.
+**Defend behaviour, not surface, in tests too.** Ask of
+each test added or changed: *what contract does it pin?
+Would it still pass under a contract-preserving refactor?*
+A test that pins no contract is decorative; apply the
+discipline in `protocol.md`.
 
-When the brief asks Ralph to confirm something — references
-checked, cascade mapped, contract coverage verified — tell
-him to include that artifact in his completion report so you
-can verify it before accepting.
+Tell Ralph to include any artifact the brief asks him to
+produce — references checked, cascade mapped, contract
+coverage verified — in his completion report, so you can
+verify before accepting.
 
 ### Simplify
 
@@ -1413,9 +1414,9 @@ wrapper added.
 - **Criterion.** A recognised refactoring move — extract,
   inline, rename, move, replace — applied to the named
   surface.
-- **Constraint.** Green tests covering the contract before
-  starting. If tests don't cover the contract well enough,
-  write them first as a separate task. Refactor and
+- **Constraint.** Verify green tests cover the contract
+  before starting. If tests don't cover the contract well
+  enough, write them first as a separate task. Refactor and
   feature change never share a task.
 - **Raise channel.** Contract-coverage gaps that need new
   tests first, behaviour changes worth making, or adjacent
