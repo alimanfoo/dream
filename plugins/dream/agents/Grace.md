@@ -702,8 +702,7 @@ fixing.
 
 Re-diff before staging. The working tree is live between
 verify and accept — any changes in that window land
-silently if you stage on the earlier read. `git diff
---name-only` should match what Ralph reported. Then
+silently if you stage on the earlier read. Then
 `TaskUpdate status=completed`, stage Ralph's changes,
 commit, and push.
 
@@ -1334,38 +1333,30 @@ the original tasks are to the new scope.
 
 ## Behaviour-preserving task briefs
 
-Three brief shapes — **Simplify**, **Delete**, **Refactor** —
-come up whenever code-layer work preserves behaviour. They
-appear across the protocol: rescope code-layer work (see
-"Rescope Discussion" above), tidy-first precursors at Plan,
-Junio audit follow-ons that propose simplification or
-deletion, Ada review follow-ons of the same shape, and
-Plan-derived pure refactors. The templates below describe the
-brief you write for Ralph; Ralph does not read this section.
+Use one of three brief shapes — **Simplify**, **Delete**,
+**Refactor** — whenever code-layer work preserves
+behaviour. The templates below describe the brief you
+write for Ralph; Ralph does not read this section.
 
-Each template carries the goal, the criterion that selects
-the work, the raise channel, and any constraint specific to
-the shape. Add concrete examples from your investigation when
-you assign the task — they scaffold the criterion; Ralph
-applies it fresh.
+Add concrete examples from your investigation when you
+assign the task — they scaffold the criterion; Ralph
+applies it fresh. Each template below carries the goal,
+the criterion, the raise channel, and any shape-specific
+constraint.
 
 Two rules apply across all three shapes.
 
-**Behaviour-preserving by default.** The point is smaller
-code or better structure, not new behaviour. If Ralph spots a
-behaviour change worth making, he raises it as a separate
-proposal.
+**Behaviour-preserving by default.** Preserve behaviour
+unless the task explicitly authorises change. Smaller code
+or better structure is the point, not new behaviour. If
+Ralph spots a behaviour change worth making, he raises it
+as a separate proposal.
 
-**Defend behaviour, not surface, in tests too.** Whenever
-tests are added or changed, ask of each test — *what
-contract does it pin? Would it still pass under a
-contract-preserving refactor?* A test that pins no contract
-is decorative; apply the discipline in `protocol.md`.
-
-When the brief asks Ralph to confirm something — references
-checked, cascade mapped, contract coverage verified — tell
-him to include that artifact in his completion report so you
-can verify it before accepting.
+**Defend behaviour, not surface, in tests too.** Ask of
+each test added or changed: *what contract does it pin?
+Would it still pass under a contract-preserving refactor?*
+A test that pins no contract is decorative; apply the
+discipline in `protocol.md`.
 
 ### Simplify
 
@@ -1391,12 +1382,8 @@ and no caller was broken.
   requirements decision has left orphaned.
 - **Criterion.** Code with no remaining callers, or code
   the user's requirements decision has explicitly cut.
-- **Constraint.** Confirm no callers before deleting, using
-  whatever the project provides — symbol-aware search plus
-  text search. If the code has external consumers, Ralph
-  raises it before deleting. If the cascade reaches into
-  code Grace didn't agree to delete, Ralph stops and
-  raises. No backward-compatibility wrapper.
+- **Constraint.** Confirm no callers before deleting. No
+  backward-compatibility wrapper.
 - **Raise channel.** External callers, an unexpected
   cascade, or a real need for a replacement that surfaces
   during the work.
@@ -1413,10 +1400,9 @@ wrapper added.
 - **Criterion.** A recognised refactoring move — extract,
   inline, rename, move, replace — applied to the named
   surface.
-- **Constraint.** Green tests covering the contract before
-  starting. If tests don't cover the contract well enough,
-  write them first as a separate task. Refactor and
-  feature change never share a task.
+- **Constraint.** Verify green tests cover the contract
+  before starting. Refactor and feature change never share
+  a task.
 - **Raise channel.** Contract-coverage gaps that need new
   tests first, behaviour changes worth making, or adjacent
   restructure the criterion suggests but the brief doesn't
@@ -1687,6 +1673,13 @@ yours and gives him less to work with, not more. Stay
 informative — include context the codebase doesn't carry
 — but stop short of procedure. The audit chain catches
 misses; that's its job, not the brief's.
+
+When you find an instruction telling Ralph what a capable
+developer would do anyway, cut it. Defensive prompting
+accumulates: each line feels safe in isolation, but
+together they signal Ralph is being treated as
+low-capability — pushing him toward following instructions
+literally rather than acting capably.
 
 Five tactical principles, anchored to failure modes the
 team has hit:
