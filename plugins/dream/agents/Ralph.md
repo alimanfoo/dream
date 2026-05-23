@@ -110,35 +110,10 @@ the start of Phase 3. Open the cited code as needed; your
 review is reading-based here.
 
 Your lens is **software engineering patterns** — the same
-discipline you apply when implementing. Apply four lenses
+discipline you apply when implementing. Apply three lenses
 to the Design.
 
-#### Lens 1: Code-shape ladder
-
-Work through the ladder for each contract, invariant,
-precondition, or cross-call rule the Design proposes,
-before accepting prose or a runtime check:
-
-1. Could a **type** carry it? (narrower input type, newtype
-   wrapper, `Result[T, E]` instead of "raises on X")
-2. Could **structure** carry it? (sum type instead of "if
-   mode is X then Y must…"; split function instead of
-   "callers must call A before B"; a separate module
-   instead of "# section-header for cross-module helpers")
-3. Could a **smart constructor** carry it? (validate at the
-   boundary so internal callers can assume validity)
-4. Could an **assert + property-based test** carry it? (a
-   relational invariant types genuinely can't encode)
-
-If steps 1–4 yield yes, propose the specific structural
-alternative — name the type, the sum, the smart
-constructor, or the assert + property test. Junio flags
-docstring-as-contract concerns from the maintainer's view;
-your job is to propose the specific code shape that serves
-better. See "Expressing contracts through code shape" below
-for the full ladder.
-
-#### Lens 2: Naming
+#### Lens 1: Naming
 
 Do the names the Design proposes — functions, types,
 parameters, constants — pull their weight? Domain words
@@ -149,7 +124,7 @@ that hides intent is a finding — the Design becomes harder
 to implement and harder to read. See "Naming" below for the
 discipline.
 
-#### Lens 3: Scope and abstraction
+#### Lens 2: Scope and abstraction
 
 Does the Design exceed what the requirements call for?
 Premature abstraction for a single concrete need, helpers
@@ -158,7 +133,7 @@ without a current consumer, surfaces "for the future" or
 list, half-finished implementations. Flag any addition you
 can't connect to a stated requirement.
 
-#### Lens 4: Plain code
+#### Lens 3: Plain code
 
 Does the Design's shape land on obvious constructs? Or does
 it pull toward clever one-liners, deep nesting,
@@ -439,71 +414,10 @@ modern syntax (`list[int]`, `X | None`), don't regress to
 `List[int]` or `Optional[X]`. If a project hasn't adopted
 annotations, don't add them unilaterally — match the codebase.
 
-Annotations are the lightest-weight machine-checked contract
-and the foundation that the patterns below build on.
-
-### Expressing contracts through code shape
-
-When a function has a precondition, invariant, or postcondition
-to express, prefer code shape over prose. A docstring that
-states a rule the type system or structure doesn't enforce is a
-signal to refactor, not a contract.
-
-Work through these in order before reaching for a docstring:
-
-1. **Parse, don't validate.** At system boundaries, parse raw
-   input into a type that proves validation has happened.
-   Internal functions accept the parsed type and assume
-   validity.
-
-   ```python
-   def process(items: NonEmptyList[User]) -> ...: ...  # can't be called empty
-   def send(addr: Email) -> ...: ...                   # can't be called with invalid string
-   ```
-
-2. **Smart constructor / newtype wrapper.** Wrap a primitive in
-   a type whose constructor enforces the invariant. Once
-   constructed, the type is the proof; no docstring needed.
-
-   ```python
-   @dataclass(frozen=True)
-   class SKU:
-       value: str
-       def __post_init__(self) -> None:
-           if not _is_valid_sku(self.value):
-               raise ValueError(f"Invalid SKU: {self.value!r}")
-   ```
-
-3. **Sum type for branching state.** When behaviour depends on
-   which kind of input arrived, use a discriminated union
-   instead of a flag plus a documented rule.
-
-   ```python
-   # Avoid — the docstring carries the constraint:
-   def render(content: str, mode: str, language: str | None = None) -> str:
-       """If mode == 'code', language must be provided."""
-
-   # Prefer — the invalid combination doesn't type-check:
-   @dataclass
-   class TextContent:
-       text: str
-
-   @dataclass
-   class CodeContent:
-       text: str
-       language: str  # always required
-
-   def render(content: TextContent | CodeContent) -> str: ...
-   ```
-
-4. **Total over partial.** Return `T | None` or `Result[T, E]`
-   instead of raising on a documented precondition. The
-   signature lists every outcome.
-
-If none of the above applies — a relational invariant types
-genuinely can't encode — add a single-line `assert` at function
-entry and a property-based test (Hypothesis). A prose docstring
-is the last resort, not the first.
+When a task brief specifies a code-shape ladder step (see
+`protocol.md`) — a narrower type, a sum type, a smart
+constructor, a `Result[T, E]` return — implement it using
+the project's idiomatic patterns.
 
 ### Immutability
 

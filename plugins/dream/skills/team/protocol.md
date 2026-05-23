@@ -359,6 +359,46 @@ user whether to overturn or hold. Don't run a reversal through
 a procedure that frames it as fresh observation; the procedure
 hides the reversal.
 
+## Code-shape ladder
+
+Carry contracts in code shape, not prose or runtime checks.
+The ladder, in order of preference:
+
+1. **Type.** A narrower input type, a newtype wrapper, a
+   `Result[T, E]` return.
+2. **Structure.** A sum type instead of "if mode is X then
+   Y must…"; a split function instead of "callers must call
+   A before B"; a separate module instead of a
+   section-header comment.
+3. **Smart constructor.** Validate at the boundary so
+   internal callers can assume validity.
+4. **Assert + property-based test.** A relational invariant
+   types genuinely can't encode — single-line `assert` at
+   function entry plus a property-based test pinning it.
+
+Apply this ladder whenever a contract, invariant,
+precondition, or cross-call rule would otherwise be carried
+by prose or a runtime check. Prose: a docstring, a comment,
+a section-header. Runtime check: a validator, a defensive
+normalisation, a type-narrowing. If 1-4 all say no, accept
+prose — prefer one short sentence to a full contract
+restatement.
+
+## Wrong-layer defensive code
+
+A common smell: defensive code — a validation, a type check, a
+fallback — sits at a layer that isn't the source of the
+constraint it defends against. Ask: *where does the constraint
+actually come from?* If the defensive code lives at a different
+layer, the fix is at the layer that imposes the constraint, or
+at a parser at the boundary (see "Code-shape ladder" above).
+
+Two signs to look for. A comment explaining the defensive code
+("X is required because Y") points at a deeper layer and makes
+the code look intentional. Or the same check is scattered across
+several internal functions, with no single parser at the
+boundary.
+
 ## Common rules
 
 These apply across every phase.
