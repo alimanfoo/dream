@@ -578,9 +578,8 @@ precondition, or convention.
 
 When the reply includes a tidy-first finding you fold in,
 insert the tidy as a precursor task before the task it
-supports. The tidy runs through the standard refactor
-brief — behaviour-preserving, no new features (see
-"Refactor" under Rescope tasks).
+supports. The tidy runs through the standard Refactor brief
+(see "Refactor" under Behaviour-preserving task briefs).
 
 When the reply includes a generalisation candidate, treat it
 as a proposed Plan change, not a mandate. Fold it in only
@@ -1296,10 +1295,11 @@ both of two layers.
 - **Refactor.** Restructure — split, merge, move. The contract
   stays; its decomposition changes.
 
-The brief for each code-layer shape is in "Rescope tasks"
-below. When the rescope touches requirements, that decision
-lands first. If code-level work finds an incoherence only the
-user can resolve, pause again at that point.
+The brief for each code-layer shape is in "Behaviour-preserving
+task briefs" below. When the rescope touches requirements,
+that decision lands first. If code-level work finds an
+incoherence only the user can resolve, pause again at that
+point.
 
 ### What Rescope is not
 
@@ -1332,109 +1332,99 @@ When the user approves a rescope, agree on one of three shapes:
 There is no default. The right choice depends on how related
 the original tasks are to the new scope.
 
-## Rescope tasks
+## Behaviour-preserving task briefs
 
-There are four rescope shapes. *Revisit requirements* is the
-user's decision; once the user has stated it, write tasks for
-Ralph to implement against the new version. The other three —
-*simplify*, *delete*, *refactor* — are code-layer tasks you
-brief for Ralph. The briefs below describe what Ralph executes.
-When assigning one of these tasks, include the relevant moves
-in Ralph's task description — Ralph does not read this section.
+Three brief shapes — **Simplify**, **Delete**, **Refactor** —
+come up whenever code-layer work preserves behaviour. They
+appear across the protocol: rescope code-layer work (see
+"Rescope Discussion" above), tidy-first precursors at Plan,
+Junio audit follow-ons that propose simplification or
+deletion, Ada review follow-ons of the same shape, and
+Plan-derived pure refactors. The templates below describe the
+brief you write for Ralph; Ralph does not read this section.
 
-The moves below are not private scratchwork. If a move asks
-Ralph to write down, list, map, identify, or confirm something,
-tell Ralph to include that artifact in his completion report so
-you can verify it before accepting the task.
+Each template carries the goal, the criterion that selects
+the work, the raise channel, and any constraint specific to
+the shape. Add concrete examples from your investigation when
+you assign the task — they scaffold the criterion; Ralph
+applies it fresh.
 
-Two rules apply across all three code-layer shapes.
-**Behaviour-preserving by default**: the point is smaller code
-or better structure — not new behaviour. If Ralph's work
-reveals a behaviour change worth making, Ralph raises it as a
-separate proposal. **Defend behaviour, not surface, in tests
-too**: whenever tests are added or changed, ask of each test —
-*What contract does it pin? Would it still pass under a
-contract-preserving refactor?* A test that pins no contract is
-decorative; apply the discipline in `protocol.md`.
+Two rules apply across all three shapes.
+
+**Behaviour-preserving by default.** The point is smaller
+code or better structure, not new behaviour. If Ralph spots a
+behaviour change worth making, he raises it as a separate
+proposal.
+
+**Defend behaviour, not surface, in tests too.** Whenever
+tests are added or changed, ask of each test — *what
+contract does it pin? Would it still pass under a
+contract-preserving refactor?* A test that pins no contract
+is decorative; apply the discipline in `protocol.md`.
+
+When the brief asks Ralph to confirm something — references
+checked, cascade mapped, contract coverage verified — tell
+him to include that artifact in his completion report so you
+can verify it before accepting.
 
 ### Simplify
 
-Simplification trims code within an active feature: a redundant
-helper, a layer of indirection that doesn't pay for itself, an
-over-elaborated branch. The feature stays; its implementation
-gets smaller. Removing the feature itself is *delete*.
+- **Goal.** Trim within the named feature. The feature
+  stays; its implementation gets smaller. Removing the
+  feature itself is *Delete*.
+- **Criterion.** Code that doesn't pay for itself — a
+  redundant helper, a layer of indirection that doesn't
+  earn its place, an over-elaborated branch.
+- **Raise channel.** Anything ambiguous, anything Ralph
+  disagrees with, or any adjacent site the criterion
+  suggests but the brief doesn't list. If a simplification
+  would require a contract change, Ralph raises it as a
+  separate proposal before doing the work.
 
-The moves:
-
-1. **Identify what's being removed and what depends on it.**
-   List the symbols, files, or branches Ralph intends to
-   remove. Find references using whatever the project provides
-   — symbol-aware search where available, plus text search
-   (`rg`, `grep`).
-
-2. **Confirm the surface's contract is still covered after the
-   removal.** If removing something requires a contract change,
-   Ralph raises it as a separate proposal.
-
-3. **Remove. Run the tests. Iterate until green.** A failing
-   test after removal sometimes means the removed code was
-   load-bearing; sometimes it means the test was pinning
-   incidental behaviour. Ralph decides per case.
-
-4. **Preserve behaviour by default.** If the simplification
-   reveals a behaviour change worth making, Ralph raises it as
-   a separate proposal.
-
-Verification: check that the surface's contract is still
-covered and no caller was broken.
+Verification: check the surface's contract is still covered
+and no caller was broken.
 
 ### Delete
 
-Delete removes a whole piece of code — a feature, a module, a
-class — because it has no callers or a requirements decision
-has left it orphaned.
+- **Goal.** Remove a whole piece of code — a feature, a
+  module, a class — that has no callers or that a
+  requirements decision has left orphaned.
+- **Criterion.** Code with no remaining callers, or code
+  the user's requirements decision has explicitly cut.
+- **Constraint.** Confirm no callers before deleting, using
+  whatever the project provides — symbol-aware search plus
+  text search. If the code has external consumers, Ralph
+  raises it before deleting. If the cascade reaches into
+  code Grace didn't agree to delete, Ralph stops and
+  raises. No backward-compatibility wrapper.
+- **Raise channel.** External callers, an unexpected
+  cascade, or a real need for a replacement that surfaces
+  during the work.
 
-The moves:
-
-1. **Identify what's being deleted and confirm no callers.**
-   Find references using whatever the project provides. If the
-   code has external consumers, Ralph raises it with Grace
-   before deleting.
-
-2. **Map the cascade.** If it reaches into code Grace didn't
-   agree to delete, Ralph stops and raises it.
-
-3. **Delete. Run the tests. Iterate until green.**
-
-4. **No replacement.** If the work reveals a real need for a
-   replacement, Ralph raises it as a separate proposal.
-
-Verification: check the deletion is clean — no caller broken,
-no orphan left behind, no backward-compatibility wrapper added.
+Verification: check the deletion is clean — no caller
+broken, no orphan left behind, no backward-compatibility
+wrapper added.
 
 ### Refactor
 
-Refactoring restructures the surface without changing its
-contract. The contract stays; its decomposition changes.
+- **Goal.** Restructure the named surface without changing
+  its contract. The contract stays; its decomposition
+  changes.
+- **Criterion.** A recognised refactoring move — extract,
+  inline, rename, move, replace — applied to the named
+  surface.
+- **Constraint.** Green tests covering the contract before
+  starting. If tests don't cover the contract well enough,
+  write them first as a separate task. Refactor and
+  feature change never share a task.
+- **Raise channel.** Contract-coverage gaps that need new
+  tests first, behaviour changes worth making, or adjacent
+  restructure the criterion suggests but the brief doesn't
+  list.
 
-The moves:
-
-1. **Confirm green tests covering the contract before
-   starting.** If tests don't cover the contract well enough,
-   write them first as a separate task.
-
-2. **Move in small, mechanical steps.** Each step should be a
-   recognised refactoring move — extract, inline, rename, move,
-   replace.
-
-3. **Two hats, never both.** A refactor task does not add
-   features or change behaviour. If Ralph spots a behaviour
-   change worth making, he raises it as a separate proposal.
-
-4. **The contract stays unchanged.**
-
-Verification: verify contract stability — externally visible
-behaviour and the supported envelope haven't shifted.
+Verification: verify contract stability — externally
+visible behaviour and the supported envelope haven't
+shifted.
 
 ## Common rules
 
