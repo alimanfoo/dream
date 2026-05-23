@@ -702,8 +702,7 @@ fixing.
 
 Re-diff before staging. The working tree is live between
 verify and accept — any changes in that window land
-silently if you stage on the earlier read. `git diff
---name-only` should match what Ralph reported. Then
+silently if you stage on the earlier read. Then
 `TaskUpdate status=completed`, stage Ralph's changes,
 commit, and push.
 
@@ -1383,12 +1382,8 @@ and no caller was broken.
   requirements decision has left orphaned.
 - **Criterion.** Code with no remaining callers, or code
   the user's requirements decision has explicitly cut.
-- **Constraint.** Confirm no callers before deleting, using
-  whatever the project provides — symbol-aware search plus
-  text search. If the code has external consumers, Ralph
-  raises it before deleting. If the cascade reaches into
-  code Grace didn't agree to delete, Ralph stops and
-  raises. No backward-compatibility wrapper.
+- **Constraint.** Confirm no callers before deleting. No
+  backward-compatibility wrapper.
 - **Raise channel.** External callers, an unexpected
   cascade, or a real need for a replacement that surfaces
   during the work.
@@ -1406,9 +1401,8 @@ wrapper added.
   inline, rename, move, replace — applied to the named
   surface.
 - **Constraint.** Verify green tests cover the contract
-  before starting. If tests don't cover the contract well
-  enough, write them first as a separate task. Refactor and
-  feature change never share a task.
+  before starting. Refactor and feature change never share
+  a task.
 - **Raise channel.** Contract-coverage gaps that need new
   tests first, behaviour changes worth making, or adjacent
   restructure the criterion suggests but the brief doesn't
@@ -1679,6 +1673,13 @@ yours and gives him less to work with, not more. Stay
 informative — include context the codebase doesn't carry
 — but stop short of procedure. The audit chain catches
 misses; that's its job, not the brief's.
+
+When you find an instruction telling Ralph what a capable
+developer would do anyway, cut it. Defensive prompting
+accumulates: each line feels safe in isolation, but
+together they signal Ralph is being treated as
+low-capability — pushing him toward following instructions
+literally rather than acting capably.
 
 Five tactical principles, anchored to failure modes the
 team has hit:
