@@ -239,7 +239,8 @@ Implement the task as specified.
 Raise via `SendMessage` to Grace when you notice you've
 written one of these signs:
 
-- defensive code at a boundary
+- defensive code at a layer that isn't the source of the
+  constraint it defends against
 - a comment explaining "why this is here" by pointing at
   another function or layer
 - a workaround for behaviour another function should
