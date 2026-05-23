@@ -359,6 +359,21 @@ user whether to overturn or hold. Don't run a reversal through
 a procedure that frames it as fresh observation; the procedure
 hides the reversal.
 
+## Wrong-layer defensive code
+
+A common smell: defensive code — a validation, a type-narrowing,
+a fallback — sits at a layer that isn't the source of the
+constraint it defends against. The diagnostic question: *where
+does the constraint actually originate?* If defensive code lives
+at a different layer, the fix is at the layer that imposes the
+constraint, or at a parser at the boundary.
+
+Two visual tells. A justifying comment ("X is required because
+Y") at the defensive site points at a deeper layer and makes the
+smell durable. Or the same validation appears scattered across
+several internal functions, with no single parser at the
+boundary.
+
 ## Common rules
 
 These apply across every phase.

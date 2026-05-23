@@ -50,7 +50,7 @@ scope for review. Open the named files or symbols, run a
 recurrence search, or read code as needed — your review is
 reading-based here too.
 
-Apply two lenses to the Scope Options.
+Apply three lenses to the Scope Options.
 
 #### Lens 1: Coherent Scope is truly coherent
 
@@ -78,6 +78,16 @@ rolls in genuinely lead on from the current concern, or
 is it speculation about what someone might want later? An
 inflated Maximal makes the user's choice noisier; a real
 Maximal makes it sharper.
+
+#### Lens 3: Symptom or cause?
+
+For each scope item, check whether it names the underlying
+cause or a downstream symptom. A scope item that proposes
+tightening defensive code at a layer that isn't the source
+of the constraint names a symptom — see "Wrong-layer
+defensive code" in `protocol.md`. Flag it and propose
+widening the scope item to the layer where the constraint
+is imposed.
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or

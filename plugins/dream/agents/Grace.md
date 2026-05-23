@@ -316,6 +316,11 @@ Depth scales with Session Type:
 - *Maintenance:* the inconsistency pattern across the
   named surface, with specific instances.
 
+For any constraint the surface defends against, trace it
+to the function that imposes it. If defensive code sits at
+a different layer, name it in the Code Analysis — see
+"Wrong-layer defensive code" in `protocol.md`.
+
 Show the recurrence pattern in enough detail for
 surfaces where the Working Scope cited prior issues or
 the Phase 1 search found them. Read for semantics, not

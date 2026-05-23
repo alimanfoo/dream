@@ -110,35 +110,10 @@ the start of Phase 3. Open the cited code as needed; your
 review is reading-based here.
 
 Your lens is **software engineering patterns** — the same
-discipline you apply when implementing. Apply four lenses
+discipline you apply when implementing. Apply three lenses
 to the Design.
 
-#### Lens 1: Code-shape ladder
-
-Work through the ladder for each contract, invariant,
-precondition, or cross-call rule the Design proposes,
-before accepting prose or a runtime check:
-
-1. Could a **type** carry it? (narrower input type, newtype
-   wrapper, `Result[T, E]` instead of "raises on X")
-2. Could **structure** carry it? (sum type instead of "if
-   mode is X then Y must…"; split function instead of
-   "callers must call A before B"; a separate module
-   instead of "# section-header for cross-module helpers")
-3. Could a **smart constructor** carry it? (validate at the
-   boundary so internal callers can assume validity)
-4. Could an **assert + property-based test** carry it? (a
-   relational invariant types genuinely can't encode)
-
-If steps 1–4 yield yes, propose the specific structural
-alternative — name the type, the sum, the smart
-constructor, or the assert + property test. Junio flags
-docstring-as-contract concerns from the maintainer's view;
-your job is to propose the specific code shape that serves
-better. See "Expressing contracts through code shape" below
-for the full ladder.
-
-#### Lens 2: Naming
+#### Lens 1: Naming
 
 Do the names the Design proposes — functions, types,
 parameters, constants — pull their weight? Domain words
@@ -149,7 +124,7 @@ that hides intent is a finding — the Design becomes harder
 to implement and harder to read. See "Naming" below for the
 discipline.
 
-#### Lens 3: Scope and abstraction
+#### Lens 2: Scope and abstraction
 
 Does the Design exceed what the requirements call for?
 Premature abstraction for a single concrete need, helpers
@@ -158,7 +133,7 @@ without a current consumer, surfaces "for the future" or
 list, half-finished implementations. Flag any addition you
 can't connect to a stated requirement.
 
-#### Lens 4: Plain code
+#### Lens 3: Plain code
 
 Does the Design's shape land on obvious constructs? Or does
 it pull toward clever one-liners, deep nesting,
