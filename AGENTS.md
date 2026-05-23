@@ -45,6 +45,11 @@ maintain it. Both pay a tax on jargon and indirection.
   imperative verbs as instructions" beats "the trap is verbs
   like…" — the second form makes the reader decode who's
   trapped before they can act.
+- **Open instruction paragraphs with the imperative.** Lead
+  with what to do, then 1-3 sentences of examples or
+  follow-on, then any exceptions. "Check each scope item for
+  X" beats "For each scope item, check whether X" — the
+  qualifier shouldn't bury the verb.
 - **Lead with the main point; cut tangential consequence
   detail.** State the boundary first. Mention the one or two
   reasons that actually shape decisions, not every downstream
