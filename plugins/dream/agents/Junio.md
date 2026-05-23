@@ -473,6 +473,13 @@ Some common shapes:
 - **Validator as type-substitute** — a runtime check rejects
   inputs upstream types should have prevented; the check is
   admitting the types are wider than the contract.
+- **Wrong-layer defensive code** — a validation, a
+  type-narrowing, or a fallback at a layer that isn't the
+  source of the constraint. See "Wrong-layer defensive
+  code" in `protocol.md`. A justifying comment ("X is
+  required because Y") is a tell, not an explanation that
+  settles the matter — read the underlying code with extra
+  scrutiny when one is present.
 - **Docstring-as-contract** — prose stating an invariant,
   precondition, or cross-call rule that the function's
   signature, types, or call structure don't enforce. Trigger

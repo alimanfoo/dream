@@ -236,6 +236,20 @@ is the same-edit test in the coherence chain (see
 
 Implement the task as specified.
 
+Raise via `SendMessage` to Grace when you notice you've
+written one of these signs:
+
+- defensive code at a boundary
+- a comment explaining "why this is here" by pointing at
+  another function or layer
+- a workaround for behaviour another function should
+  produce
+
+In the message, name the sign, name where the constraint
+actually lives, and name the alternative fix you see.
+Grace decides whether to update the task scope. See
+"Wrong-layer defensive code" in `protocol.md`.
+
 #### Step 3: Run the project's lint/format check and test suite
 
 If either fails, fix and re-run until both pass cleanly.
