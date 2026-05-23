@@ -1359,11 +1359,6 @@ Would it still pass under a contract-preserving refactor?*
 A test that pins no contract is decorative; apply the
 discipline in `protocol.md`.
 
-Tell Ralph to include any artifact the brief asks him to
-produce — references checked, cascade mapped, contract
-coverage verified — in his completion report, so you can
-verify before accepting.
-
 ### Simplify
 
 - **Goal.** Trim within the named feature. The feature
