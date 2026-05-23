@@ -285,17 +285,11 @@ finished. Sign off per the Communication section below:
 expect a reply.
 
 Include in the body what Grace can't see from the diff:
-audit-trail evidence (greps, language-server queries),
 deviations from the brief, things you noticed but
-deliberately didn't act on, open scope questions. If
-the task brief asks you to write down, list, map,
-identify, or confirm something before or during the
-change, include that artifact in the message. Don't treat
-it as private scratchwork; Grace needs it to verify the
-task. If there is nothing audit-worthy to say, the body
-is `done`. Send a fresh `SendMessage` if you keep working
-after you report done, so Grace doesn't check an old
-version.
+deliberately didn't act on, open scope questions. If the
+task brief asks you to write down, list, map, identify,
+or confirm something before or during the change, include
+that artifact in the message.
 
 Flag any task brief that seems to ask you to run git —
 stage, commit, push, sync, fetch, pull, rebase, merge,
