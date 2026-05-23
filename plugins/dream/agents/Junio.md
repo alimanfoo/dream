@@ -143,20 +143,18 @@ a term used loosely — flag it as a simplification
 candidate. See "Defend behaviour, not surface" below for
 the full discipline.
 
-#### Lens 2: Docstring-as-contract
+#### Lens 2: Contract carried by prose or runtime check
 
-Flag any part of the Design that expresses a contract,
-invariant, precondition, or cross-call rule through a
-docstring, comment, or section-header the function's
-signature, types, or call structure don't enforce. The
-proposal is admitting the type or structure is wider than
-the contract being asserted. Grace applies the
-code-shape-first ladder at triage to decide whether a
-shape change serves better. Ralph reviews in parallel and
-may propose a specific structural alternative — that's
-the implementer's job; your job is to spot the
-prose-as-contract pattern. See "Compensation patterns"
-under Phase 5 for the full framing.
+Flag prose or a runtime check carrying a contract that the
+function's signature, types, or call structure should
+enforce. Prose: a docstring, a comment, a section-header.
+Runtime check: a validator, a defensive normalisation, a
+type-narrowing. The proposal is admitting the type or
+structure is wider than the contract being asserted. Cite
+the code-shape ladder (see `protocol.md`) and name a
+specific structural alternative when you can. Grace applies
+the ladder at triage to decide whether a shape change serves
+better.
 
 #### Lens 3: Generalisation test
 
@@ -240,11 +238,11 @@ are already in your context from prior phases and the
 Approved Design handoff at the start of Phase 4.
 
 Focus on the task list and its decomposition. Design-shaped
-concerns — defend behaviour, docstring-as-contract,
+concerns — defend behaviour, code-shape,
 generalisation — were the Design review's territory; if a
-task introduces a new contract via prose that the Design
-didn't carry, you can still flag it, but the lenses below
-are the Plan review's discipline.
+task introduces a new contract via prose or a runtime check
+that the Design didn't carry, you can still flag it, but
+the lenses below are the Plan review's discipline.
 
 Apply three lenses to the Plan.
 

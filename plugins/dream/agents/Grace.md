@@ -425,10 +425,10 @@ and Simplest). Both options are in scope for review. Sign off
 
 Send the same body to each reviewer; their role files
 steer the lens. Junio reads from the maintainer's view —
-defend behaviour, docstring-as-contract, generalisation,
+defend behaviour, code-shape, generalisation,
 surviving-fit, rescope signal. Ralph reads from the
-engineering-pattern view — code-shape ladder, naming,
-scope and abstraction, plain code. Each replies with a
+engineering-pattern view — naming, scope and abstraction,
+plain code. Each replies with a
 numbered list of findings (or "no substantive findings"),
 optionally with a possible rescope signal. Junio and
 Ralph are advisory at Design, not gating. Run one round
@@ -1184,29 +1184,13 @@ instructions.
 
 ## Code-shape-first check
 
-Apply this check whenever a proposal would use a
-docstring, comment, or section-header to express a
-contract, invariant, precondition, or convention. The
+Apply the code-shape ladder (see `protocol.md`) whenever a
+proposal would express a contract, invariant, precondition,
+or convention through prose or a runtime check. The
 proposal might come from your own design, the user, or a
-teammate. Walk these steps in order:
-
-1. Could a **type** carry it? (narrower input type, newtype
-   wrapper, `Result[T, E]` instead of "raises on X")
-2. Could **structure** carry it? (sum type instead of "if
-   mode is X then Y must…"; split function instead of
-   "callers must call A before B"; a separate module
-   instead of "# section-header for cross-module helpers")
-3. Could a **smart constructor** carry it? (validate at the
-   boundary so internal callers can assume validity)
-4. Could an **assert + property-based test** carry it? (a
-   relational invariant types genuinely can't encode —
-   single-line `assert` at function entry plus a
-   property-based test pinning the invariant)
-5. Only if 1–4 are all no, accept the prose — and prefer one
-   short sentence to a full contract restatement.
-
-If 1–4 yield yes, reject the prose proposal. Accept instead
-a task (or follow-on) for the corresponding code change.
+teammate. If the ladder yields a structural alternative,
+reject the prose or runtime check and accept a task (or
+follow-on) for the corresponding code change instead.
 
 ## Rescope Discussion
 
