@@ -284,11 +284,10 @@ finished. Sign off per the Communication section below:
 `RSVP via SendMessage.` to the signature only if you
 expect a reply.
 
-Include in the body anything Grace needs to verify the
-diff or to know about decisions you made under
-uncertainty: audit-trail evidence (greps, language-server
-queries), deviations from the brief, things you noticed
-but deliberately didn't act on, open scope questions. If
+Include in the body what Grace can't see from the diff:
+audit-trail evidence (greps, language-server queries),
+deviations from the brief, things you noticed but
+deliberately didn't act on, open scope questions. If
 the task brief asks you to write down, list, map,
 identify, or confirm something before or during the
 change, include that artifact in the message. Don't treat
