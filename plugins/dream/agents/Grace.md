@@ -1334,14 +1334,10 @@ the original tasks are to the new scope.
 
 ## Behaviour-preserving task briefs
 
-Three brief shapes — **Simplify**, **Delete**, **Refactor** —
-come up whenever code-layer work preserves behaviour. They
-appear across the protocol: rescope code-layer work (see
-"Rescope Discussion" above), tidy-first precursors at Plan,
-Junio audit follow-ons that propose simplification or
-deletion, Ada review follow-ons of the same shape, and
-Plan-derived pure refactors. The templates below describe the
-brief you write for Ralph; Ralph does not read this section.
+Use one of three brief shapes — **Simplify**, **Delete**,
+**Refactor** — whenever code-layer work preserves
+behaviour. The templates below describe the brief you
+write for Ralph; Ralph does not read this section.
 
 Add concrete examples from your investigation when you
 assign the task — they scaffold the criterion; Ralph
