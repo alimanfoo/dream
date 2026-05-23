@@ -361,16 +361,16 @@ hides the reversal.
 
 ## Wrong-layer defensive code
 
-A common smell: defensive code — a validation, a type-narrowing,
-a fallback — sits at a layer that isn't the source of the
-constraint it defends against. The diagnostic question: *where
-does the constraint actually originate?* If defensive code lives
-at a different layer, the fix is at the layer that imposes the
-constraint, or at a parser at the boundary.
+A common smell: defensive code — a validation, a type check, a
+fallback — sits at a layer that isn't the source of the
+constraint it defends against. Ask: *where does the constraint
+actually come from?* If the defensive code lives at a different
+layer, the fix is at the layer that imposes the constraint, or
+at a parser at the boundary.
 
-Two visual tells. A justifying comment ("X is required because
-Y") at the defensive site points at a deeper layer and makes the
-smell durable. Or the same validation appears scattered across
+Two signs to look for. A comment explaining the defensive code
+("X is required because Y") points at a deeper layer and makes
+the code look intentional. Or the same check is scattered across
 several internal functions, with no single parser at the
 boundary.
 
