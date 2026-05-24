@@ -17,6 +17,30 @@ session flow — phases, roles, and cross-agent mechanics — is defined
 in `plugins/dream/skills/team/protocol.md`. Role-specific operating
 detail lives in the agent files under `plugins/dream/agents/`.
 
+## Two layers
+
+This repo has two layers, easy to confuse:
+
+- **The dream plugin** — `protocol.md`, the skill, and the
+  agent files. These are the plugin's code; they get
+  installed and run when someone uses `/dream:team`.
+- **This file (AGENTS.md)** — meta-documentation for the
+  coding assistant helping the dream plugin developer. One
+  layer up; describes how to develop the plugin.
+
+Two ways they get crossed:
+
+- **In chat**, slipping into protocol vocabulary — phase
+  names, role names, Ancillary Finding, post-merge sweep —
+  when not inside a `/dream:team` session. The developer is
+  developing the protocol, not running it.
+- **When writing AGENTS.md**, speaking as if it's inside
+  the protocol. "The agents in this protocol", "Surface
+  what investigation reveals", "in a SendMessage to a
+  teammate" all treat AGENTS.md as part of the protocol.
+  Use third-party voice instead: "the dream-team agents",
+  "the team surfaces…", "to another agent".
+
 ## Development notes
 
 `protocol.md` is the source of truth for shared session flow and
@@ -25,6 +49,50 @@ consistent with each other — neither should invent behaviour the
 other contradicts.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test suite. When changing behavior, validate by reading the affected skill/agent prompts together and checking that lifecycle, role boundaries, and tool permissions remain consistent. Run the pre-commit hooks to check formatting; see the Linting section.
+
+## Design principles
+
+The dream plugin's goal is **autonomous coherent coding** —
+great code with minimal user intervention. Several
+principles follow:
+
+- **Evaluate every change against autonomy.** A change that
+  makes the team more responsive to user pushback doesn't
+  count — it papers over the failure rather than preventing
+  it. The team should catch what would otherwise require
+  user redirection.
+- **The user's framing is a seed, not a contract.** The user
+  opens with a focus that seeds the Requirements Analysis.
+  Subsequent phases build a more systematic picture from
+  that seed and may revise it. The team surfaces what
+  investigation reveals, even when it widens beyond the
+  literal ask. The user can decline the wider scope
+  explicitly via the Minimal Scope option.
+- **Each phase artifact has its own purpose; don't mix
+  concerns.** Requirements Analysis is about user intent.
+  Code Analysis is about code patterns. Scope is the work
+  commitment. Design is the proposal. Code-pattern findings
+  don't belong in the Requirements Analysis, and vice versa.
+
+## Writing agent prompts
+
+The dream-team agents are LLMs. Two things matter when
+writing or revising their prompts:
+
+- **Agents reason by producing tokens** — thinking tokens,
+  turn output, or tokens written to files or messages. An
+  instruction like "pause and consider X" produces no tokens
+  and has no effect; the agent reads it and moves on. To
+  make a check real, direct the agent to externalise: write
+  the answer in turn output, in a `SendMessage` to another
+  agent, or in an artifact.
+- **Agents reason forward from context** — they're
+  next-token machines, with no premonition about what
+  they're about to write. So "before reaching for X, do Y"
+  doesn't work; the agent doesn't know they're about to
+  reach for X. Checks have to fire after the candidate
+  content exists in context. "If you notice you've written
+  X" is what works.
 
 ## Writing prose
 
@@ -67,11 +135,6 @@ maintain it. Both pay a tax on jargon and indirection.
   shouldn't slip into "you do this instead" mid-bullet. Pick the
   voice and stay in it; cross-references can carry the positive
   alternative.
-
-In normal coding-assistant conversation (i.e. when we are not
-inside a `/dream:team` session), don't use protocol vocabulary —
-phase names, role names, Ancillary Finding, post-merge sweep,
-and so on. The user is developing the protocol, not running it.
 
 ## Linting
 
