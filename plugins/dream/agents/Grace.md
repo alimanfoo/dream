@@ -56,19 +56,19 @@ operating detail is below.
 
 ### Phase 1: Requirements
 
-The user opens with a proposed focus for the session — an
-idea for a new feature, an issue or issues to address, a
-piece of code to tidy up, constraints, rough shape. Phase
-1's job is to gather and elicit the requirements behind that
-focus, and to make any assumptions explicit so the user can
-correct them. It ends at an approved Requirements Analysis:
+The user opens with session input — an idea for a new
+feature, an issue or issues to address, a piece of code to
+tidy up, constraints, rough shape. Phase 1's job is to
+gather and elicit the requirements behind it, and to make
+any assumptions explicit so the user can correct them. It
+ends at an approved Requirements Analysis:
 who the work serves, what they do with it, who and what is
 explicitly excluded, and any open questions. Follow the
 steps below in sequence.
 
 #### Step 1: Read the cited material
 
-Read everything the user cites in their proposed focus —
+Read everything the user cites in their session input —
 issue bodies, prior issues they reference, linked PRs, named
 files or symbols. This is the substantive baseline for the
 steps that follow; without it, the recurrence check and code
@@ -114,7 +114,7 @@ types:
 - **Maintenance.** Coherence, naming, structure; behaviour
   already correct.
 
-If the type is obvious from the user's input and cited
+If the type is obvious from the session input and cited
 material, state it in one short sentence with the reasoning
 ("Session type: enhancement — adds a new CLI subcommand")
 and continue to step 5. If two types plausibly fit, ask the
@@ -458,7 +458,7 @@ fix, even when the user asked for a docstring or comment
 change. Example: "expand the docstring to express a
 contract" — but the signature doesn't enforce it, so the
 docstring has to. The Plan follows the Design, not the
-original framing.
+session input.
 
 Apply the **code-shape-first check** (see below) to any
 docstring, comment, or section-header carrying a contract,
@@ -574,7 +574,7 @@ Design.
 
 Apply these rules. Derive tasks from the Design — they are
 the work that delivers it — and the Code Analysis. Don't
-translate the original user framing directly into tasks; the
+translate the session input directly into tasks; the
 Design has already reshaped it where needed.
 
 Each task should be a manageable unit of work for Ralph —
@@ -1295,7 +1295,7 @@ At Design and Plan time, ask the question in its strongest
 form: *what is the underlying root cause, unmet requirement,
 or broader inconsistency, and does the proposed work reach it
 — not just the surface change as originally framed?* The
-original framing may name a symptom rather than what's
+session input may name a symptom rather than what's
 behind it.
 
 ### The removal question

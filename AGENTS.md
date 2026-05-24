@@ -61,8 +61,9 @@ principles follow:
   count — it papers over the failure rather than preventing
   it. The team should catch what would otherwise require
   user redirection.
-- **The user's framing is a seed, not a contract.** The user
-  opens with a focus that seeds the Requirements Analysis.
+- **The session input is a seed, not a contract.** The user
+  opens with session input that seeds the Requirements
+  Analysis.
   Subsequent phases build a more systematic picture from
   that seed and may revise it. The team surfaces what
   investigation reveals, even when it widens beyond the
