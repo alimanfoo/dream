@@ -26,6 +26,50 @@ other contradicts.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test suite. When changing behavior, validate by reading the affected skill/agent prompts together and checking that lifecycle, role boundaries, and tool permissions remain consistent. Run the pre-commit hooks to check formatting; see the Linting section.
 
+## Design principles
+
+The dream plugin's goal is **autonomous coherent coding** —
+great code with minimal user intervention. Several
+principles follow:
+
+- **Evaluate every change against autonomy.** A change that
+  makes the team more responsive to user pushback doesn't
+  count — it papers over the failure rather than preventing
+  it. The team should catch what would otherwise require
+  user redirection.
+- **The user's framing is a seed, not a contract.** The user
+  opens with a focus that seeds the Requirements Analysis.
+  Subsequent phases build a more systematic picture from
+  that seed and may revise it. Surface what investigation
+  reveals, even when it widens beyond the literal ask. The
+  user can decline the wider scope explicitly via the
+  Minimal Scope option.
+- **Each phase artifact has its own purpose; don't mix
+  concerns.** Requirements Analysis is about user intent.
+  Code Analysis is about code patterns. Scope is the work
+  commitment. Design is the proposal. Code-pattern findings
+  don't belong in the Requirements Analysis, and vice versa.
+
+## Writing agent prompts
+
+The agents in this protocol are LLMs. Two things matter
+when writing or revising their prompts:
+
+- **Agents reason by producing tokens** — thinking tokens,
+  turn output, or tokens written to files or messages. An
+  instruction like "pause and consider X" produces no tokens
+  and has no effect; the agent reads it and moves on. To
+  make a check real, direct the agent to externalise: write
+  the answer in turn output, in a `SendMessage` to a
+  teammate, or in an artifact.
+- **Agents reason forward from context** — they're
+  next-token machines, with no premonition about what
+  they're about to write. So "before reaching for X, do Y"
+  doesn't work; the agent doesn't know they're about to
+  reach for X. Checks have to fire after the candidate
+  content exists in context. "If you notice you've written
+  X" is what works.
+
 ## Writing prose
 
 When you write or edit prose in this repo — agent prompts, the
