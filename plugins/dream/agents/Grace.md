@@ -327,15 +327,17 @@ from two teammates, caught at the cheapest point to fix.
 
 #### Step 3: Apply the reviews
 
-Take each finding — from either reviewer — down one of
-two paths. You own the Scope Options:
+Decide each finding — from either reviewer — on its
+merits, and record a one-line reason for the call. You own
+the Scope Options; a teammate raising a finding is not
+itself a reason to fold it in. Each finding takes one of
+two paths:
 
 - **Fold in** — accept into the revised Scope Options
   (revise an existing option or add a missed candidate).
-- **Reject with reason** — you disagree with the finding.
-  Note the reason; if the rejection is notable, record it
-  for the Scope Options message in step 4. Otherwise
-  nothing carries forward.
+- **Reject** — you disagree with the finding. If the
+  rejection is notable, carry the reason into the Scope
+  Options message in step 4.
 
 #### Step 4: Share the revised Scope Options with the user
 
@@ -493,14 +495,16 @@ to fix.
 
 #### Step 4: Apply the reviews
 
-Take each finding — from either reviewer — down one of
-four paths. You own the Design:
+Decide each finding — from either reviewer — on its
+merits, and record a one-line reason for the call. You own
+the Design; a teammate raising a finding is not itself a
+reason to fold it in. Each finding takes one of four
+paths:
 
 - **Fold in** — accept into the revised Design Options.
-- **Reject with reason** — you disagree with the finding.
-  Note the reason; if the rejection is notable, record it
-  for the Design message in step 5. Otherwise nothing
-  carries forward.
+- **Reject** — you disagree with the finding. If the
+  rejection is notable, carry the reason into the Design
+  message in step 5.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
 - **Escalate to Rescope** — the finding suggests the
@@ -549,8 +553,8 @@ The goal of this phase is the agreed Plan — the task list
 that delivers the Design within the Working Scope. You
 share the Approved Design with Junio and Ralph for
 information, compose a Draft Plan, get one round of review
-from Junio and Ralph, apply their findings on the merits,
-and share the revised Plan with the user for approval.
+from Junio and Ralph, revise, and share the revised Plan
+with the user for approval.
 
 #### Step 1: Share the Approved Design with Junio and Ralph for information
 
@@ -616,15 +620,17 @@ catches issues at the cheapest point to fix.
 
 #### Step 4: Apply the reviews
 
-Take each finding — from either reviewer — down one of
-four paths. You own the Plan:
+Decide each finding — from either reviewer — on its
+merits, and record a one-line reason for the call. You own
+the Plan; a teammate raising a finding is not itself a
+reason to fold it in. Each finding takes one of four
+paths:
 
 - **Fold in** — accept into the revised Plan as a task (or
   a tidy-first precursor).
-- **Reject with reason** — you disagree with the finding.
-  Note the reason; if the rejection is notable, record it
-  for the Plan message in step 5. Otherwise nothing carries
-  forward.
+- **Reject** — you disagree with the finding. If the
+  rejection is notable, carry the reason into the Plan
+  message in step 5.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
 - **Escalate to Rescope** — the finding suggests the
@@ -779,7 +785,8 @@ on the same surface look symptom-shaped — see step 6.
 
 ##### Step 6: Triage findings
 
-Accept or reject each proposed follow-on. Accepted ones
+Accept or reject each proposed follow-on on its merits,
+recording a one-line reason for the call. Accepted ones
 become new tasks, **inserted as the next tasks before any
 pending original-scope work** (depth-first drain). Hold
 Ancillary Findings for the post-merge bucket — never filed

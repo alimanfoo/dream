@@ -124,8 +124,9 @@ Code Analysis findings they rest on. Grace shares the Draft
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
-view. Each finding is either folded into the revised Scope Options or
-rejected with a reason.
+view. Grace decides each finding on its merits, recording a
+one-line reason: folded into the revised Scope Options or
+rejected.
 Grace then shares the revised Scope Options with the user,
 with a brief note on what changed from the Draft after the
 reviews.
@@ -143,9 +144,10 @@ Beck's "the simplest thing that could possibly work"). Grace
 shares the Draft Design Options with Junio and Ralph for one
 round of review — advisory, not gating — and revises. Junio
 reads from the maintainer's view; Ralph reads from the
-engineering-pattern view. Each finding is folded into the revised
-Design Options, rejected with a reason, held as an Ancillary Finding,
-or escalated to a Rescope Discussion. Grace then shares the revised
+engineering-pattern view. Grace decides each finding on its
+merits, recording a one-line reason: folded into the revised
+Design Options, rejected, held as an Ancillary Finding, or
+escalated to a Rescope Discussion. Grace then shares the revised
 Design Options with the user, with a brief note on what
 changed from the Draft after the reviews.
 
@@ -158,9 +160,10 @@ Junio and Ralph for information. Grace then composes the
 Draft Plan, shares it with Junio and Ralph for one round of
 review — advisory, not gating — and revises. Junio reads
 from the maintainer's view; Ralph reads from the
-implementer's view. Each finding is folded into the revised Plan,
-rejected with a reason, held as an Ancillary Finding, or escalated to
-a Rescope Discussion. Grace then shares the revised Plan with the
+implementer's view. Grace decides each finding on its merits,
+recording a one-line reason: folded into the revised Plan,
+rejected, held as an Ancillary Finding, or escalated to a
+Rescope Discussion. Grace then shares the revised Plan with the
 user, with a brief note on what changed from the Draft
 after the reviews.
 
