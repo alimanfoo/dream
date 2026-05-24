@@ -387,6 +387,26 @@ user whether to overturn or hold. Don't run a reversal through
 a procedure that frames it as fresh observation; the procedure
 hides the reversal.
 
+## Existing code is unproven
+
+Treat every property of existing code — that it is correct, that
+it performs, that it still has a consumer — as unproven until you
+have seen the evidence. Code in the tree records a past decision;
+it is not proof the decision was right. The burden of proof is on
+the code, not on the reader who doubts it.
+
+Demand evidence in proportion to what you rely on. Before building
+on a function's behaviour, trace it rather than infer it from the
+name; before relying on it being fast, find the benchmark, because
+"it looks optimised" is not evidence. Where no decision rests on a
+property, leave it — the rule asks for proof where reliance is
+real, not a blanket audit.
+
+Unproven is not wrong. The stance is dispassionate, not hostile:
+missing evidence is a reason to check, not a licence to rewrite
+working code. The behaviour-preserving and over-engineering rules
+in the agent files still hold.
+
 ## Code-shape ladder
 
 Carry contracts in code shape, not prose or runtime checks.
