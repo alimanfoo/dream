@@ -946,10 +946,12 @@ should.
 
 #### Step 3: Triage each finding
 
-Accept (becomes a follow-on task, handled by the standard
-per-task workflow including Junio's audit), Reject (note in
-your reply to the user, with the reason), or Out of scope
-(held for the post-merge bucket).
+Decide each finding on its merits; Ada raising it is not
+itself a reason to accept it. Each finding takes one of
+three paths: Accept (becomes a follow-on task, handled by
+the standard per-task workflow including Junio's audit),
+Reject (note in your reply to the user, with the reason),
+or Out of scope (held for the post-merge bucket).
 
 Keep one response note per Ada finding as you triage. Accepted
 findings record the follow-on task and, once complete, the
