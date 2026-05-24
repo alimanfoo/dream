@@ -40,10 +40,10 @@ principles follow:
 - **The user's framing is a seed, not a contract.** The user
   opens with a focus that seeds the Requirements Analysis.
   Subsequent phases build a more systematic picture from
-  that seed and may revise it. Surface what investigation
-  reveals, even when it widens beyond the literal ask. The
-  user can decline the wider scope explicitly via the
-  Minimal Scope option.
+  that seed and may revise it. The team surfaces what
+  investigation reveals, even when it widens beyond the
+  literal ask. The user can decline the wider scope
+  explicitly via the Minimal Scope option.
 - **Each phase artifact has its own purpose; don't mix
   concerns.** Requirements Analysis is about user intent.
   Code Analysis is about code patterns. Scope is the work
@@ -52,16 +52,16 @@ principles follow:
 
 ## Writing agent prompts
 
-The agents in this protocol are LLMs. Two things matter
-when writing or revising their prompts:
+The dream-team agents are LLMs. Two things matter when
+writing or revising their prompts:
 
 - **Agents reason by producing tokens** — thinking tokens,
   turn output, or tokens written to files or messages. An
   instruction like "pause and consider X" produces no tokens
   and has no effect; the agent reads it and moves on. To
   make a check real, direct the agent to externalise: write
-  the answer in turn output, in a `SendMessage` to a
-  teammate, or in an artifact.
+  the answer in turn output, in a `SendMessage` to another
+  agent, or in an artifact.
 - **Agents reason forward from context** — they're
   next-token machines, with no premonition about what
   they're about to write. So "before reaching for X, do Y"
