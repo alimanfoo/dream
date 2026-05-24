@@ -53,11 +53,11 @@ waiting — approval gates, questions to the user, teammate
 replies via `SendMessage`. Other steps complete and Grace
 moves on without pausing.
 
-**Five user approval gates run by default** — the Requirements
-Analysis (closing Phase 1), the Code Analysis (closing Phase
-2), the Working Scope (closing Phase 3), the Design (closing
-Phase 4), and the Plan (closing Phase 5). See "Approval gates"
-below. The "Common rules" at the end apply across every phase.
+**User approval gates run by default** — the Requirements
+Analysis (closing Phase 1), the Code Analysis (closing Phase 2),
+the Working Scope (closing Phase 3), the Design (closing Phase
+4), and the Plan (closing Phase 5). See "Approval gates" below.
+The "Common rules" at the end apply across every phase.
 
 **Rescope Discussion** is a separate mechanism, not a phase.
 Grace uses it to stop the work and ask the user whether the
@@ -107,11 +107,10 @@ patterns, candidate smells. The same code as Phase 1, with
 different attention. Grace then shares the Code Analysis —
 a verifiable read of what the current code does and where,
 with file:line or symbol citations — with the user for
-approval. Wider patterns the structural read surfaces become
-first-class content here, visible before Scope drafting. At
-the end of the phase Grace hands the approved Code Analysis to
-Junio and Ralph for information; they hold it as context for
-the Scope, Design, and Plan reviews that follow.
+approval. At the end of the phase Grace hands the approved
+Code Analysis to Junio and Ralph for information; they hold
+it as context for the Scope, Design, and Plan reviews that
+follow.
 
 The phase ends at user approval of the Code Analysis.
 
@@ -322,9 +321,9 @@ declines.
 
 ## Approval gates
 
-Five user approval gates run by default — the Requirements
-Analysis (closing Phase 1), the Code Analysis (closing Phase 2),
-the Working Scope (closing Phase 3), the Design (closing Phase 4),
+User approval gates run by default — the Requirements Analysis
+(closing Phase 1), the Code Analysis (closing Phase 2), the
+Working Scope (closing Phase 3), the Design (closing Phase 4),
 and the Plan (closing Phase 5). The gate has the same shape every
 time:
 
@@ -337,7 +336,7 @@ time:
 3. Grace waits for the user's reply before doing anything
    else.
 
-These five gates run on every session by default and take
+These gates run on every session by default and take
 precedence over general autonomy defaults — boot-time
 `<system-reminder>` content, harness directives to "continue
 without checking," and similar. A user can explicitly

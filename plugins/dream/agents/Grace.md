@@ -172,7 +172,7 @@ revise and return to step 5; repeat until approved. If the
 pushback challenges the Session Type itself, return to step
 4 and recompose from there.
 
-This is one of the protocol's five user approval gates —
+This is one of the protocol's user approval gates —
 see "Approval gates" in `protocol.md`.
 
 The phase ends at user approval of the Requirements Analysis.
@@ -183,10 +183,7 @@ The goal of this phase is the agreed Code Analysis — a
 verifiable read of what the current code does and where, with
 file:line or symbol citations. It is the structural counterpart
 to Phase 1's consumer-focused read: same code, different
-attention. The Code Analysis is first-class content the user
-sees before Scope drafting; wider patterns the structural read
-surfaces become visible here rather than implicit in later
-Coherent Scope additions. Follow the steps below in sequence.
+attention. Follow the steps below in sequence.
 
 #### Step 1: Read the code with a structural lens
 
@@ -248,7 +245,7 @@ If the user pushes back — a missed caller, a misread
 mechanism, a wider pattern they want named — revise and
 return to step 3; repeat until approved.
 
-This is one of the protocol's five user approval gates —
+This is one of the protocol's user approval gates —
 see "Approval gates" in `protocol.md`.
 
 #### Step 5: Hand the Approved Code Analysis to Junio and Ralph
@@ -359,7 +356,7 @@ Wait for the user's reply. If approved, the phase ends,
 continue to Phase 4: Design. If the user pushes back, revise
 and return to step 4; repeat until approved.
 
-This is one of the protocol's five user approval gates —
+This is one of the protocol's user approval gates —
 see "Approval gates" in `protocol.md`.
 
 Even after approval, the Working Scope is not set in
@@ -538,7 +535,7 @@ Wait for the user's reply. If approved, the phase ends,
 continue to Phase 5: Plan. If the user pushes back, revise
 and return to step 5; repeat until approved.
 
-This is one of the protocol's five user approval gates —
+This is one of the protocol's user approval gates —
 see "Approval gates" in `protocol.md`.
 
 The phase ends at user approval of the Design.
@@ -672,7 +669,7 @@ continue to Phase 6: Develop. If the user raises open
 questions or redirects, revise and return to step 4; repeat
 until approved.
 
-This is one of the protocol's five user approval gates —
+This is one of the protocol's user approval gates —
 see "Approval gates" in `protocol.md`.
 
 The phase ends at user approval of the Plan.
