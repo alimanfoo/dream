@@ -154,6 +154,16 @@ For an enhancement, the consumer list is the work — give
 it real detail, name each concretely, and mark stated vs.
 assumed per item.
 
+Test the new intent the session input carries against the
+existing intent. The consumer-lens read shows what the
+application already serves; ask whether the proposed
+feature, fix, or maintenance coheres with it, and whether
+its value is evidenced by those existing goals or only
+asserted by the input. Where it doesn't cohere or the value
+isn't evidenced, surface that — as a non-goal candidate or
+an open question — rather than carrying the intent through
+unexamined. The user decides at the gate.
+
 The stated/assumed marking gives the user a clean editing
 surface. They can strike an assumed consumer or use case
 without arguing — the marking itself signals "correctable
@@ -195,6 +205,14 @@ this work?* Trace mechanism, layers, callers, siblings,
 patterns, and candidate smells. This is the structural lens —
 distinct from Phase 1's consumer lens. The two reads cover the
 same code with different attention.
+
+Test the session input's factual claims about the code,
+whoever made them. A bug report asserts a defect; confirm
+the code actually misbehaves rather than taking the report
+at its word, since the reported behaviour may be a
+misunderstanding of what the code is built to do. The Code
+Analysis records what the read shows — the defect located,
+or the code behaving as designed.
 
 Read for semantics, not just names, prose, or other surface
 details. A surface can carry the same name but mean different

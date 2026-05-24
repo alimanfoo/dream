@@ -88,8 +88,17 @@ All agents run their boot sequence immediately upon spawning.
 
 ## Phase 1: Requirements
 
-The user opens with session input. Grace reads the cited
-material, reads the code with a consumer lens (who uses these
+The user opens with session input. The session input is a
+seed, not a contract. Its claims — this is a bug, this
+feature is worth building, this code needs work — are
+unproven until the evidence shows them, whoever wrote them.
+The user often carries in input they didn't author: a
+colleague's proposal, an external bug report, another
+agent's idea. Testing it is scrutiny of the input, not of
+the user, who decides at the gate.
+
+Grace reads the cited material, reads the code with a
+consumer lens (who uses these
 surfaces and what they do with them), then checks the issue
 tracker for recurrence on the named surfaces. Grace names the
 Session Type (bug fix, enhancement, or maintenance) and shares
