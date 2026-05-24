@@ -17,6 +17,30 @@ session flow — phases, roles, and cross-agent mechanics — is defined
 in `plugins/dream/skills/team/protocol.md`. Role-specific operating
 detail lives in the agent files under `plugins/dream/agents/`.
 
+## Two layers
+
+This repo has two layers, easy to confuse:
+
+- **The dream plugin** — `protocol.md`, the skill, and the
+  agent files. These are the plugin's code; they get
+  installed and run when someone uses `/dream:team`.
+- **This file (AGENTS.md)** — meta-documentation for the
+  coding assistant helping the dream plugin developer. One
+  layer up; describes how to develop the plugin.
+
+Two ways they get crossed:
+
+- **In chat**, slipping into protocol vocabulary — phase
+  names, role names, Ancillary Finding, post-merge sweep —
+  when not inside a `/dream:team` session. The developer is
+  developing the protocol, not running it.
+- **When writing AGENTS.md**, speaking as if it's inside
+  the protocol. "The agents in this protocol", "Surface
+  what investigation reveals", "in a SendMessage to a
+  teammate" all treat AGENTS.md as part of the protocol.
+  Use third-party voice instead: "the dream-team agents",
+  "the team surfaces…", "to another agent".
+
 ## Development notes
 
 `protocol.md` is the source of truth for shared session flow and
@@ -111,11 +135,6 @@ maintain it. Both pay a tax on jargon and indirection.
   shouldn't slip into "you do this instead" mid-bullet. Pick the
   voice and stay in it; cross-references can carry the positive
   alternative.
-
-In normal coding-assistant conversation (i.e. when we are not
-inside a `/dream:team` session), don't use protocol vocabulary —
-phase names, role names, Ancillary Finding, post-merge sweep,
-and so on. The user is developing the protocol, not running it.
 
 ## Linting
 
