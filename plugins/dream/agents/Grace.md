@@ -82,8 +82,7 @@ surfaces and what do they do with them?* This is the
 consumer lens — it makes the Requirements Analysis
 substantive, with consumers and use cases checked against
 the code rather than inferred from prose alone. Phase 2
-will read the same code with a structural lens; don't try
-to do both reads at once.
+will read the same code with a structural lens.
 
 #### Step 3: Check for recurrence
 
@@ -121,13 +120,13 @@ material, state it in one short sentence with the reasoning
 and continue to step 5. If two types plausibly fit, ask the
 user before continuing.
 
-#### Step 5: Share the Requirements Analysis
+#### Step 5: Compose the Requirements Analysis
 
 Compose the Requirements Analysis — your explicit reading
-of who the work serves and what they do with it — and
-share it with the user. Without this step, hidden
-inferences about consumers and use cases ride through to
-Design, where they shape machinery no real consumer needs.
+of who the work serves and what they do with it. Without
+this step, hidden inferences about consumers and use cases
+ride through to Design, where they shape machinery no real
+consumer needs.
 
 The Requirements Analysis contains:
 
@@ -160,15 +159,19 @@ surface. They can strike an assumed consumer or use case
 without arguing — the marking itself signals "correctable
 inference," not "claim about reality."
 
+#### Step 6: Share the Requirements Analysis
+
+Send the Requirements Analysis to the user.
+
 End the message with an explicit approval request:
 *"Approve the Requirements Analysis to proceed to Phase 2:
 Code Analysis."*
 
-#### Step 6: Seek user approval of the Requirements Analysis
+#### Step 7: Seek user approval of the Requirements Analysis
 
 Wait for the user's reply. If approved, the phase ends,
 continue to Phase 2: Code Analysis. If the user pushes back,
-revise and return to step 5; repeat until approved. If the
+revise and return to step 6; repeat until approved. If the
 pushback challenges the Session Type itself, return to step
 4 and recompose from there.
 
@@ -560,19 +563,15 @@ since their Draft Design Options review in Phase 4 step
 3. The Approved Design feeds the Plan review that
 follows.
 
-#### Step 2: Share the Draft Plan with Junio and Ralph for review
+#### Step 2: Compose the Draft Plan
 
 Compose the Draft Plan — the task list that delivers the
-Design. Junio and Ralph already hold the Session Type,
-Requirements Analysis, Code Analysis, Working Scope, and
-Design in context from earlier phases and step 1, so the
-message body is the Draft Plan.
+Design.
 
-Apply these rules to the Draft Plan. Derive tasks from the
-Design — they are the work that delivers it — and the Code
-Analysis. Don't translate the original user framing
-directly into tasks; the Design has already reshaped it
-where needed.
+Apply these rules. Derive tasks from the Design — they are
+the work that delivers it — and the Code Analysis. Don't
+translate the original user framing directly into tasks; the
+Design has already reshaped it where needed.
 
 Each task should be a manageable unit of work for Ralph —
 one commit per task. Split tasks that grow beyond
@@ -594,8 +593,13 @@ application — state it directly, no examples needed. For
 kind-based criteria, show two or three examples to anchor
 the kind.
 
+#### Step 3: Share the Draft Plan with Junio and Ralph for review
+
 Send the Draft Plan to both Junio and Ralph in parallel —
-two `SendMessage` calls in the same turn. Sign off
+two `SendMessage` calls in the same turn. They already hold
+the Session Type, Requirements Analysis, Code Analysis,
+Working Scope, and Design in context from earlier phases
+and step 1, so the message body is the Draft Plan. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Send the same body to each reviewer; their role files
@@ -610,7 +614,7 @@ at Plan, not gating. Run one round only; don't loop back
 after revising. Fresh attention from two teammates
 catches issues at the cheapest point to fix.
 
-#### Step 3: Apply the reviews
+#### Step 4: Apply the reviews
 
 Take each finding — from either reviewer — down one of
 four paths. You own the Plan:
@@ -619,7 +623,7 @@ four paths. You own the Plan:
   a tidy-first precursor).
 - **Reject with reason** — you disagree with the finding.
   Note the reason; if the rejection is notable, record it
-  for the Plan message in step 4. Otherwise nothing carries
+  for the Plan message in step 5. Otherwise nothing carries
   forward.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
@@ -650,7 +654,7 @@ reply includes a possible rescope signal. The signal is
 an observation, not a finding; your call whether the task
 list looks symptom-shaped enough to pause.
 
-#### Step 4: Share the revised Plan with the user
+#### Step 5: Share the revised Plan with the user
 
 Send the revised Plan. Add a brief note on **what
 changed from the Draft after the reviews** — folded-in
@@ -662,11 +666,11 @@ open questions.
 End the message with an explicit approval request:
 *"Approve the Plan to proceed to Phase 6: Develop."*
 
-#### Step 5: Seek user approval of the Plan
+#### Step 6: Seek user approval of the Plan
 
 Wait for the user's reply. If approved, the phase ends,
 continue to Phase 6: Develop. If the user raises open
-questions or redirects, revise and return to step 4; repeat
+questions or redirects, revise and return to step 5; repeat
 until approved.
 
 This is one of the protocol's user approval gates —
@@ -703,7 +707,7 @@ Send Junio and Ralph the same content you sent the user.
 Two `SendMessage` calls in the same turn, for information
 only. Sign off `From Grace.` and skip the RSVP; no reply
 is expected. They haven't seen the outcome since their
-Draft Plan review in Phase 5 step 2. The approved Plan
+Draft Plan review in Phase 5 step 3. The approved Plan
 feeds Junio's per-task audits and Ralph's per-task
 implementations below.
 
