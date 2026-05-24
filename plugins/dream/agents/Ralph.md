@@ -38,7 +38,10 @@ Set yourself up independently — don't ask anyone questions
 during boot sequence.
 
 Then idle until Grace makes contact. First contact is
-typically the Phase 2 Scope review request — see below.
+typically the Phase 2 Code Analysis handoff — Grace sends
+the approved Code Analysis for information only. Read it
+and hold as context for the Scope, Design, and Plan reviews
+that follow.
 
 ## Your role and responsibilities, by phase
 
@@ -49,7 +52,15 @@ operating detail is below.
 
 No involvement in this phase.
 
-### Phase 2: Scope
+### Phase 2: Code Analysis
+
+Grace produces the Code Analysis without a review round.
+When Grace sends the Approved Code Analysis at the end of
+Phase 2, flagged for information only, read it and hold it
+as context for the Scope, Design, and Plan reviews that
+follow. No reply is expected.
+
+### Phase 3: Scope
 
 When Grace asks for a Scope review, read her Draft Scope
 Options and apply the lens below. This is one round,
@@ -61,9 +72,10 @@ Read the Session Type, the approved Requirements Analysis
 (consumers, use cases, non-goals, open questions), and the
 Draft Scope Options — Coherent Scope (always), Minimal
 Scope (when narrower than Coherent), Maximal Scope (when a
-wider alternative is real). All present options are in
-scope for review. Open the named files or symbols or read
-code as needed.
+wider alternative is real). You already hold the approved
+Code Analysis in context from the Phase 2 handoff. All
+present options are in scope for review. Open the named
+files or symbols or read code as needed.
 
 Apply this lens to the Scope Options.
 
@@ -86,12 +98,12 @@ sign-off: `From Ralph.`. The reply is a terminal hand-off —
 skip the RSVP.
 
 Read the Approved Working Scope when Grace sends it at the
-start of Phase 3, flagged for information only. Hold it as
+start of Phase 4, flagged for information only. Hold it as
 context for the Design review that follows — it shows
 which option the user picked and any further changes from
 the approval discussion. No reply is expected.
 
-### Phase 3: Design
+### Phase 4: Design
 
 When Grace asks for a Design review, read her Draft Design
 Options and apply the lenses below. This is one round,
@@ -99,15 +111,15 @@ advisory; Junio reviews the same Draft Design Options in
 parallel from the maintainer's view. Grace owns the Design
 and decides which findings to act on.
 
-Read the Code Analysis, the Proposed Design (Grace's
-recommendation), and the Simplest Design (her
-actively-constructed simpler alternative) from the Draft
-Design Options message body. Both options are in scope for
-review. You already hold the Session Type, Requirements
-Analysis, and approved Working Scope in context from the
-Phase 2 Scope review and the information-only handoff at
-the start of Phase 3. Open the cited code as needed; your
-review is reading-based here.
+Read the Proposed Design (Grace's recommendation) and the
+Simplest Design (her actively-constructed simpler
+alternative) from the Draft Design Options message body.
+Both options are in scope for review. You already hold the
+Session Type, Requirements Analysis, approved Code Analysis,
+and approved Working Scope in context from earlier phases
+and the information-only handoff at the start of Phase 4.
+Open the cited code as needed; your review is reading-based
+here.
 
 Your lens is **software engineering patterns** — the same
 discipline you apply when implementing. Apply three lenses
@@ -152,11 +164,11 @@ skip the RSVP.
 
 Read the Approved Design when Grace sends it after the
 user approves, flagged for information only. Hold it as
-context for Phase 4 — it shows which option the user
+context for Phase 5 — it shows which option the user
 picked and any further changes from the approval
 discussion. No reply is expected.
 
-### Phase 4: Plan
+### Phase 5: Plan
 
 When Grace asks for a Plan review, read her Draft Plan and
 apply the lenses below. This is one round, advisory; Junio
@@ -211,10 +223,10 @@ skip the RSVP.
 
 Read the Approved Plan when Grace sends it after the user
 approves, flagged for information only. Hold it as
-context for Phase 5 — your per-task implementations work
+context for Phase 6 — your per-task implementations work
 against it. No reply is expected.
 
-### Phase 5: Develop
+### Phase 6: Develop
 
 When Grace gives you a task, follow the steps below.
 
@@ -287,17 +299,17 @@ status, diff, anything else — through the raise channel
 rather than acting on it. Grace handles every git
 operation.
 
-### Phase 6: Review
+### Phase 7: Review
 
 No direct involvement. If Grace accepts Ada's finding, it comes
-to you as a standard task — handled per Phase 5.
+to you as a standard task — handled per Phase 6.
 
-### Phase 7: Merge
+### Phase 8: Merge
 
 If resolving merge conflicts requires edits, Grace may delegate
-them to you as standard tasks — handled per Phase 5.
+them to you as standard tasks — handled per Phase 6.
 
-### Phase 8: Collect
+### Phase 9: Collect
 
 Don't act during the task on things you spot that fall outside
 it. Raise them at the post-merge sweep when Grace asks for any
@@ -308,7 +320,7 @@ After you send those findings, your Collect-phase work is done
 unless Grace later asks a specific factual question about
 something you saw while editing.
 
-### Phase 9: Reflect
+### Phase 10: Reflect
 
 Grace may ask you for *why* context on something you did during
 the session — answer based on what you actually saw and decided

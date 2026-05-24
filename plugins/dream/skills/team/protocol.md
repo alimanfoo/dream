@@ -6,41 +6,44 @@ user.
 
 ## Overview
 
-A session moves through nine phases:
+A session moves through ten phases:
 
 1. **Requirements.** Grace reads the cited material and the
-   code, then shares the Requirements Analysis — consumers,
-   use cases, non-goals, open questions — with the user for
-   approval.
+   code with a consumer lens, then shares the Requirements
+   Analysis — consumers, use cases, non-goals, open
+   questions — with the user for approval.
 
-2. **Scope.** Grace drafts the Scope Options, gets one round
+2. **Code Analysis.** Grace reads the code with a structural
+   lens — mechanism, layers, siblings, patterns — and shares
+   the Code Analysis with the user for approval.
+
+3. **Scope.** Grace drafts the Scope Options, gets one round
    of review from Junio and Ralph, revises, and shares the
    revised Scope Options with the user for approval.
 
-3. **Design.** Grace shares the Code Analysis with the user,
-   drafts the Design, gets one round of review from Junio and
-   Ralph, revises, and shares the revised Design Options with
-   the user for approval.
+4. **Design.** Grace drafts the Design, gets one round of
+   review from Junio and Ralph, revises, and shares the
+   revised Design Options with the user for approval.
 
-4. **Plan.** Grace drafts the Plan, gets one round of review
+5. **Plan.** Grace drafts the Plan, gets one round of review
    from Junio and Ralph, revises, and shares the revised Plan
    with the user for approval.
 
-5. **Develop.** The main implementation loop — one task at a
+6. **Develop.** The main implementation loop — one task at a
    time, coherence restored before moving on. Opens with
    branch creation; closes with the draft PR.
 
-6. **Review.** The PR is reviewed.
+7. **Review.** The PR is reviewed.
 
-7. **Merge.** The user merges the PR. Any conflicts are
+8. **Merge.** The user merges the PR. Any conflicts are
    resolved first.
 
-8. **Collect.** Ancillary Findings noticed during the session
+9. **Collect.** Ancillary Findings noticed during the session
    are gathered, deduplicated, checked against issue history,
    and decided.
 
-9. **Reflect.** Optional retrospective on how the session
-   went.
+10. **Reflect.** Optional retrospective on how the session
+    went.
 
 The phases run in order.
 
@@ -50,11 +53,11 @@ waiting — approval gates, questions to the user, teammate
 replies via `SendMessage`. Other steps complete and Grace
 moves on without pausing.
 
-**Four user approval gates run by default** — the Requirements
-Analysis (closing Phase 1), the Working Scope (closing Phase 2),
-the Design (closing Phase 3), and the Plan (closing Phase 4).
-See "Approval gates" below. The "Common rules" at the end apply
-across every phase.
+**User approval gates run by default** — the Requirements
+Analysis (closing Phase 1), the Code Analysis (closing Phase 2),
+the Working Scope (closing Phase 3), the Design (closing Phase
+4), and the Plan (closing Phase 5). See "Approval gates" below.
+The "Common rules" at the end apply across every phase.
 
 **Rescope Discussion** is a separate mechanism, not a phase.
 Grace uses it to stop the work and ask the user whether the
@@ -86,21 +89,38 @@ All agents run their boot sequence immediately upon spawning.
 ## Phase 1: Requirements
 
 The user opens with a proposed focus. Grace reads the cited
-material, reads the code, then checks the issue tracker for
-recurrence on the named surfaces. Grace names the Session
-Type (bug fix, enhancement, or maintenance) and shares the
-Requirements Analysis — consumers, use cases, non-goals, and
+material, reads the code with a consumer lens (who uses these
+surfaces and what they do with them), then checks the issue
+tracker for recurrence on the named surfaces. Grace names the
+Session Type (bug fix, enhancement, or maintenance) and shares
+the Requirements Analysis — consumers, use cases, non-goals, and
 open questions, with each inference marked stated or
 assumed — with the user for approval.
 
 The phase ends at user approval of the Requirements Analysis.
 
-## Phase 2: Scope
+## Phase 2: Code Analysis
 
-With the Requirements Analysis approved, Grace drafts the
-Scope Options — the Coherent Scope (always), the Minimal
-Scope (when narrower than Coherent), and the Maximal Scope
-(when a wider alternative is real). Grace shares the Draft
+With the Requirements Analysis approved, Grace reads the code
+with a structural lens — mechanism, layers, siblings, callers,
+patterns, candidate smells. The same code as Phase 1, with
+different attention. Grace then shares the Code Analysis —
+a verifiable read of what the current code does and where,
+with file:line or symbol citations — with the user for
+approval. At the end of the phase Grace hands the approved
+Code Analysis to Junio and Ralph for information; they hold
+it as context for the Scope, Design, and Plan reviews that
+follow.
+
+The phase ends at user approval of the Code Analysis.
+
+## Phase 3: Scope
+
+With the Code Analysis approved, Grace drafts the Scope
+Options — the Coherent Scope (always), the Minimal Scope
+(when narrower than Coherent), and the Maximal Scope (when a
+wider alternative is real). Coherent Scope additions cite the
+Code Analysis findings they rest on. Grace shares the Draft
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
@@ -112,14 +132,12 @@ reviews.
 
 The phase ends at user approval of the Working Scope.
 
-## Phase 3: Design
+## Phase 4: Design
 
 Phase opens with Grace sharing the Approved Working Scope
-with Junio and Ralph for information. Grace then shares the
-Code Analysis — a verifiable read of what the current code
-does and where — with the user, then drafts the Design. Two
-named options are always present: the Proposed Design
-(Grace's recommendation) and the Simplest Design (her
+with Junio and Ralph for information. Grace then drafts the
+Design. Two named options are always present: the Proposed
+Design (Grace's recommendation) and the Simplest Design (her
 actively-constructed simpler alternative, anchored on Kent
 Beck's "the simplest thing that could possibly work"). Grace
 shares the Draft Design Options with Junio and Ralph for one
@@ -133,7 +151,7 @@ changed from the Draft after the reviews.
 
 The phase ends at user approval of the Design.
 
-## Phase 4: Plan
+## Phase 5: Plan
 
 Phase opens with Grace sharing the Approved Design with
 Junio and Ralph for information. Grace then composes the
@@ -149,10 +167,10 @@ after the reviews.
 The phase ends at user approval of the Plan.
 
 The task list isn't fixed: more tasks can be added during
-Phase 5 (Develop), Phase 6 (Review), and Phase 7 (Merge).
+Phase 6 (Develop), Phase 7 (Review), and Phase 8 (Merge).
 The user can redirect at any point.
 
-## Phase 5: Develop
+## Phase 6: Develop
 
 Phase opens with three setup steps: Grace sets the feature
 branch (creates it off `main`, or uses the worktree's branch
@@ -200,8 +218,8 @@ call toward in-scope.
 Missed instances of the brief's criterion don't need a
 separate test. Ralph applies the criterion fresh — the
 criterion's wording sets the scope, so sibling sites
-matching the criterion are part of the work. See Phase 4
-in `Grace.md` for the brief shape and Phase 5 in
+matching the criterion are part of the work. See Phase 5
+in `Grace.md` for the brief shape and Phase 6 in
 `Ralph.md` for how Ralph reads it. Junio still catches
 missed instances during audit when Ralph's application of
 the criterion left some out.
@@ -255,27 +273,27 @@ fully drained.
 The phase ends when the task list is drained and Grace opens a
 draft PR for the session branch.
 
-## Phase 6: Review
+## Phase 7: Review
 
 Ada reviews the session's PR and returns a Markdown review to
 Grace. Grace posts it as a single PR comment, triages each
 finding into accept (a follow-on task) / reject / post-merge,
 completes accepted follow-ons, posts a second PR comment with
 Grace's response to the review, then marks the PR ready and
-hands back to the user. Full Phase 6 procedure in `Grace.md`;
+hands back to the user. Full Phase 7 procedure in `Grace.md`;
 Ada's review shape in `Ada.md`.
 
 The phase ends at user approval of the PR. The session
 moves to Merge.
 
-## Phase 7: Merge
+## Phase 8: Merge
 
 The goal is a clean merge. Grace resolves any conflicts,
 delegating edits to Ralph if needed. The user merges.
 
 The phase ends when the PR is merged.
 
-## Phase 8: Collect
+## Phase 9: Collect
 
 After merge, Grace gathers Ancillary Findings from three
 sources — Junio's in-session audits, Ada's review, and a
@@ -290,7 +308,7 @@ maintenance). Full procedure in `Grace.md`.
 The phase ends when triage is complete and any resulting
 issues have been filed.
 
-## Phase 9: Reflect
+## Phase 10: Reflect
 
 Grace offers the user an optional retrospective. If taken,
 Grace and the user discuss what the session showed, with
@@ -303,21 +321,22 @@ declines.
 
 ## Approval gates
 
-Four user approval gates run by default — the Requirements
-Analysis (closing Phase 1), the Working Scope (closing Phase 2),
-the Design (closing Phase 3), and the Plan (closing Phase 4).
-The gate has the same shape every time:
+User approval gates run by default — the Requirements Analysis
+(closing Phase 1), the Code Analysis (closing Phase 2), the
+Working Scope (closing Phase 3), the Design (closing Phase 4),
+and the Plan (closing Phase 5). The gate has the same shape every
+time:
 
-1. Grace shares the artifact — the Requirements Analysis,
-   Scope Options, Design Options, or the Plan.
+1. Grace shares the artifact — the Requirements Analysis, Code
+   Analysis, Scope Options, Design Options, or the Plan.
 2. The message ends with an explicit approval request that
    names the artifact and what comes next. Example:
-   *"Approve the Working Scope to proceed to Phase 3:
+   *"Approve the Working Scope to proceed to Phase 4:
    Design."*
 3. Grace waits for the user's reply before doing anything
    else.
 
-These four gates run on every session by default and take
+These gates run on every session by default and take
 precedence over general autonomy defaults — boot-time
 `<system-reminder>` content, harness directives to "continue
 without checking," and similar. A user can explicitly
@@ -326,6 +345,12 @@ override a specific gate in the gate reply (for example,
 override, the default is to fire. They are how the protocol
 keeps the user in control: each gate produces an artifact
 the user approves before progressing.
+
+Each gate's approval message names the next phase. Memorise
+the chain so the names match: Requirements Analysis →
+Phase 2: Code Analysis; Code Analysis → Phase 3: Scope;
+Working Scope → Phase 4: Design; Design → Phase 5: Plan;
+Plan → Phase 6: Develop.
 
 ## Rescope Discussion
 
@@ -347,7 +372,7 @@ observation stays "interesting prose." Each is named, each gets
 an outcome, each outcome is checkable.
 
 Some outcomes defer the call to a later phase: ancillary
-defers to Phase 8 Collect; an open question defers to the user
+defers to Phase 9 Collect; an open question defers to the user
 before Plan approval. Both have a named destination and a
 reason that matches the receiving phase's job. There is no
 other deferral — "we'll come back to this" is not an outcome.
@@ -408,7 +433,7 @@ These apply across every phase.
 #### Branch
 
 One feature branch off `main` as of session start, one PR opened on
-it. Grace either creates the branch at the start of Phase 5 (Develop)
+it. Grace either creates the branch at the start of Phase 6 (Develop)
 once the Plan is approved, or uses the worktree's branch when the user
 launched Claude Code inside a worktree. The branch name reflects the
 agreed Working Scope. All planning and development run against the
