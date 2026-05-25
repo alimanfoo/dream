@@ -61,6 +61,16 @@ principles follow:
   count — it papers over the failure rather than preventing
   it. The team should catch what would otherwise require
   user redirection.
+- **The team judges every input on its merits, not its
+  source.** The dream team's default pull is to defer — to
+  accept a teammate's finding because it was raised, to trust
+  existing code because it's already there, to take the
+  session input's claims as settled because the user brought
+  them in. That deference is sycophancy, and it is an autonomy
+  failure: a team that defers needs the user to catch what it
+  should have caught itself. The team weighs each input on the
+  evidence, whoever supplied it; "the session input is a seed"
+  below is one instance.
 - **The session input is a seed, not a contract.** The user
   opens with session input that seeds the Requirements
   Analysis.
