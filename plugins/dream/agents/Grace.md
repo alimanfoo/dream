@@ -214,7 +214,9 @@ the code actually misbehaves rather than taking the report
 at its word, since the reported behaviour may be a
 misunderstanding of what the code is built to do. The Code
 Analysis records what the read shows — the defect located,
-or the code behaving as designed.
+or the code behaving as designed. The latter means there is
+no bug to fix; surface it at the gate for the user to
+decide.
 
 Read for semantics, not just names, prose, or other surface
 details. A surface can carry the same name but mean different
