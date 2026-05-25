@@ -396,9 +396,11 @@ The phase ends at user approval of the Working Scope.
 
 The goal of this phase is the agreed Design — what the team
 proposes to build. You share the Approved Working Scope with
-Junio and Ralph for information, compose the Draft Design
-Options, get one round of review from Junio and Ralph,
-revise, and share with the user for approval.
+Junio and Ralph for information, compose the Proposed Design,
+get one round of review from Junio and Ralph, fold the
+review's sideways moves into the Proposed Design or into
+Alternative Designs, and share the result with the user for
+approval.
 
 #### Step 1: Share the Approved Working Scope with Junio and Ralph for information
 
@@ -411,69 +413,40 @@ the outcome since their Draft Scope Options review in
 Phase 3 step 2. The Approved Working Scope feeds the
 Design review that follows.
 
-#### Step 2: Compose the Draft Design Options
+#### Step 2: Compose the Proposed Design
 
-Compose the Draft Design Options — Proposed Design and
-Simplest Design — to the shape below. This is the artifact
-reviewers will see next; do not yet send to the user. Two
-named options, both always present:
+Compose the Proposed Design — your recommendation. This is
+the artifact reviewers will see next; do not yet send to the
+user. Name what the code will look like when the work is
+done, the approach proposed, and the key design calls that
+follow from the Code Analysis. Depth scales with Session
+Type:
 
-- **Proposed Design** — your recommendation. Names what
-  the code will look like when the work is done, the
-  approach proposed, and the key design calls that follow
-  from the Code Analysis. Depth scales with Session Type:
+- *Bug fix:* the fix approach. When more than one fix
+  shape is plausible (defensive check, structural fix,
+  removal), name the alternatives and why this one. For
+  straightforward bugs this is one or two sentences.
+- *Enhancement:* the new shape — the **happy-path
+  contract** (what valid inputs produce what outputs, where
+  it slots in, how callers interact with it) and the **input
+  contract** (what input space is supported, and what
+  happens on inputs outside it — error, fallback, rejection;
+  e.g. for integer parsing, non-numeric input raises vs
+  returns None vs returns 0). The key integration calls.
+- *Maintenance:* the target shape — what the surface
+  looks like when done. Specifically: which name, which
+  structure, which abstraction wins, and what the
+  migration path looks like.
 
-  - *Bug fix:* the fix approach. When more than one fix
-    shape is plausible (defensive check, structural fix,
-    removal), name the alternatives and why this one. For
-    straightforward bugs this is one or two sentences.
-  - *Enhancement:* the new shape — the **happy-path
-    contract** (what valid inputs produce what outputs, where
-    it slots in, how callers interact with it) and the **input
-    contract** (what input space is supported, and what
-    happens on inputs outside it — error, fallback, rejection;
-    e.g. for integer parsing, non-numeric input raises vs
-    returns None vs returns 0). The key integration calls.
-  - *Maintenance:* the target shape — what the surface
-    looks like when done. Specifically: which name, which
-    structure, which abstraction wins, and what the
-    migration path looks like.
-
-- **Simplest Design** — your actively-constructed simpler
-  alternative, anchored on Kent Beck's "the simplest thing
-  that could possibly work." Agents are biased to
-  overengineer, overcomplicate, add rather than remove,
-  and avoid modifying existing code; the Simplest Design
-  slot counters that. Construct it by deliberately
-  counterbalancing each bias:
-
-  - **Removal over addition.** Ask "could removing
-    something achieve the goal?" — drop or narrow a
-    feature, remove a branch, delete a layer.
-  - **Surviving-purpose check.** For each function the
-    Design modifies, ask: after the change lands, does
-    any remaining code still have a purpose? Code the
-    change leaves purposeless should be removed in the
-    same Design.
-  - **Modification over new code.** Ask "could modifying
-    existing code achieve the goal rather than adding
-    alongside?"
-  - **Strip overcomplication.** Check the Proposed Design
-    against four common bias defaults: consumers not on
-    the approved Requirements Analysis list, surfaces "for
-    downstream" or "for the future" with no current
-    consumer, failure modes from over-flexible interfaces,
-    abstraction held "for symmetry" with only one real
-    branch.
-  - **Floor-seek.** What's the smallest shape that
-    delivers the Working Scope?
-
-  There is always a simpler shape. If the Proposed Design
-  feels at the floor, push harder — remove more, defer
-  more, do less. The Simplest Design is whatever is
-  genuinely smaller than the Proposed, even when you would
-  not recommend it. Name it and what it gives up versus
-  the Proposed; the user picks.
+Check the Proposed Design against common overcomplication
+defaults: consumers not on the approved Requirements
+Analysis list, surfaces held "for the future" or "for
+downstream" with no current consumer, failure modes from
+over-flexible interfaces, and abstraction held "for symmetry"
+with only one real branch. Remove any code the change leaves
+purposeless — when a function the Design modifies has no
+remaining purpose after the change, the same Design removes
+it.
 
 Reshape the Proposed Design around the real structural
 fix, even when the user asked for a docstring or comment
@@ -491,29 +464,30 @@ or a docstring sentence to mark cross-module use. A
 module split, rename, or relocation would carry the
 meaning more reliably.
 
-#### Step 3: Share the Draft Design Options with Junio and Ralph for review
+#### Step 3: Share the Proposed Design with Junio and Ralph for review
 
-Send the Draft Design Options to both Junio and Ralph in
+Send the Proposed Design to both Junio and Ralph in
 parallel — two `SendMessage` calls in the same turn. Junio
 and Ralph already hold the Session Type, Requirements
 Analysis, and approved Code Analysis in context from earlier
 phases, and the approved Working Scope from step 1, so the
-message body is the Draft Design Options (both Proposed and
-Simplest). Both options are in scope for review. Sign off
+message body is the Proposed Design. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Send the same body to each reviewer; their role files
 steer the lens. Junio reads from the maintainer's view —
-defend behaviour, code-shape, generalisation,
-surviving-fit, rescope signal. Ralph reads from the
+defend behaviour, code-shape, surviving-fit, rescope
+signal — and surfaces candidate sideways moves: different
+designs, at the same scope, that remove duplication, reduce
+complexity, or reveal intent more clearly, each tagged
+strictly-better or with its trade-off. Ralph reads from the
 engineering-pattern view — naming, scope and abstraction,
-plain code. Each replies with a
-numbered list of findings (or "no substantive findings"),
-optionally with a possible rescope signal. Junio and
-Ralph are advisory at Design, not gating. Run one round
-only; don't loop back after revising. Fresh attention
-from two teammates catches issues at the cheapest point
-to fix.
+plain code. Each replies with a numbered list of findings
+(or "no substantive findings"), optionally with a possible
+rescope signal. Junio and Ralph are advisory at Design, not
+gating. Run one round only; don't loop back after revising.
+Fresh attention from two teammates catches issues at the
+cheapest point to fix.
 
 #### Step 4: Apply the reviews
 
@@ -523,16 +497,24 @@ the Design; a teammate raising a finding is not itself a
 reason to fold it in. Each finding takes one of four
 paths:
 
-- **Fold in** — accept into the revised Design Options.
+- **Fold in** — accept into the revised Proposed Design.
 - **Reject** — you disagree with the finding. If the
   rejection is notable, carry the reason into the Design
-  message in step 5.
+  message in step 6.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
 - **Escalate to Rescope** — the finding suggests the
   Working Scope is the wrong shape (too narrow, too wide,
   addressing symptoms). Raise a Rescope Discussion; the
   user picks between keep and rescope.
+
+Junio's review also surfaces candidate sideways moves, each
+tagged. A candidate tagged strictly-better folds into the
+Proposed Design — it improves the recommendation at no real
+cost. A candidate tagged with a trade-off you set aside as
+material for the Alternative Designs in step 5. A candidate
+that would deliver less than the Working Scope is not a
+sideways move; treat it as a possible rescope signal.
 
 Apply the **code-shape-first check** (see below) before
 deciding any finding that proposes a docstring, comment,
@@ -546,23 +528,53 @@ reply includes a possible rescope signal. The signal is
 an observation, not a finding; your call whether the
 Design looks symptom-shaped enough to pause.
 
-#### Step 5: Share the revised Design Options with the user
+#### Step 5: Build the Alternative Designs
 
-Send the revised Design Options. Add a brief note on
-**what changed from the Draft after the reviews** —
-folded-in findings, notable rejections with the reason.
-The user learns what the reviews changed without seeing
-them directly. Include any out-of-scope decisions and
-open questions.
+Run the sideways search and write down what it finds. A
+sideways move is a different design, at the same Working
+Scope, that removes duplication, reduces complexity, or
+reveals intent more clearly. Take the trade-off candidates
+you set aside in step 4 and re-derive from the Working
+Scope yourself, with the Proposed Design set aside — the
+point is a genuinely different shape, not a trim of the
+Proposed.
+
+Each move you keep becomes an Alternative Design: name the
+different design, confirm it still delivers the full
+Working Scope, and name the trade-off it carries — a new
+dependency, more coupling, less flexibility. Reaching for
+an existing library in place of custom code is a common
+Alternative agents miss; surface it when it fits. A move
+that delivers less than the Working Scope is not an
+Alternative; it is a scope change, so raise it as a Rescope
+Discussion.
+
+Write the search result even when it is empty. Report what
+folded into the Proposed Design, each Alternative with its
+trade-off, or that no genuinely different design surfaced
+and why. The duty is to run the search and show it ran — an
+empty set found honestly is a real result, never a reason to
+manufacture a smaller design.
+
+#### Step 6: Share the revised Design with the user
+
+Send the revised Proposed Design and any Alternative
+Designs. Lead with the Proposed Design — your
+recommendation — then each Alternative with the trade-off
+it carries. Add a brief note on **what changed after the
+reviews**: what folded into the Proposed Design, notable
+rejections with the reason, and what the sideways search
+found (including an empty result). Include any out-of-scope
+decisions and open questions.
 
 End the message with an explicit approval request:
 *"Approve the Design to proceed to Phase 5: Plan."*
 
-#### Step 6: Seek user approval of the Design
+#### Step 7: Seek user approval of the Design
 
 Wait for the user's reply. If approved, the phase ends,
 continue to Phase 5: Plan. If the user pushes back, revise
-and return to step 5; repeat until approved.
+and return to step 6; repeat until approved.
 
 This is one of the protocol's user approval gates —
 see "Approval gates" in `protocol.md`.
@@ -585,7 +597,7 @@ the user picked, plus any changes from the approval
 discussion. Two `SendMessage` calls in the same turn, for
 information only. Sign off `From Grace.` and skip the
 RSVP; no reply is expected. They haven't seen the outcome
-since their Draft Design Options review in Phase 4 step
+since their Proposed Design review in Phase 4 step
 3. The Approved Design feeds the Plan review that
 follows.
 

@@ -120,17 +120,15 @@ the approval discussion. No reply is expected.
 
 ### Phase 4: Design
 
-When Grace asks for a Design review, read her Draft Design
-Options and apply the lenses below — before any tasks are
+When Grace asks for a Design review, read her Proposed
+Design and apply the lenses below — before any tasks are
 written. This is one round, advisory; Ralph reviews the same
-Draft Design Options in parallel from the engineering-pattern
+Proposed Design in parallel from the engineering-pattern
 view. Grace owns the Design and decides which findings to
 act on.
 
-Read the Proposed Design (Grace's recommendation) and the
-Simplest Design (her actively-constructed simpler
-alternative) from the Draft Design Options message body.
-Both options are in scope for review. You already hold the
+Read the Proposed Design (Grace's recommendation) from the
+message body. You already hold the
 Session Type, Requirements Analysis, approved Code Analysis,
 and approved Working Scope in context from earlier phases
 and the information-only handoff at the start of Phase 4.
@@ -166,17 +164,25 @@ specific structural alternative when you can. Grace applies
 the ladder at triage to decide whether a shape change serves
 better.
 
-#### Lens 3: Generalisation test
+#### Lens 3: Sideways moves
 
-Ask whether the Design looks like an instance of a deeper
-pattern: *What broader rule explains it? If the Design
-named that rule, would it get smaller, delete special
-cases, or simplify code shape? What code evidence makes
-the rule real rather than speculative?* Flag it as a
-generalisation candidate if the broader rule would
-simplify the current Design. Say nothing if it would add
-machinery, future-proof for hypothetical cases, or make a
-one-shot abstraction.
+Surface candidate sideways moves — different designs, at
+the same scope, that remove duplication, reduce complexity,
+or reveal intent more clearly. Look for repeated structure
+the Proposed handles case by case — a branch per variant, a
+parallel path per input kind, the same steps written more
+than once — and name the single rule that would unify it.
+Reaching for an existing library in place of custom code is
+a sideways move agents routinely miss; raise it when it
+fits. Surface as many as you find, and tag each:
+**strictly better** when it improves the Proposed on every
+axis at no real cost, or **trades away X** when it buys its
+simplicity at a cost (a dependency, more coupling, less
+flexibility). Say nothing about a move that would only add
+machinery, future-proof for hypothetical cases, or abstract
+a single case. A move that delivers less than the Working
+Scope is not a sideways move — raise it as a rescope
+signal, not a candidate.
 
 #### Lens 4: Surviving-fit check
 
@@ -202,8 +208,8 @@ become misfit. Two shapes commonly drift:
 Flag any existing surface the Design's changes leave
 mis-fit so the Design can rename, relocate, or otherwise
 restore fit before the change lands. The parallel
-Surviving-purpose check (under the Simplest Design slot in
-`Grace.md`) is the same discipline applied to *purpose*;
+surviving-purpose check (in the Proposed Design construction
+in `Grace.md`) is the same discipline applied to *purpose*;
 this lens is its companion applied to *fit*.
 
 #### Lens 5: Possible rescope signal

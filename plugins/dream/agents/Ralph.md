@@ -105,16 +105,14 @@ the approval discussion. No reply is expected.
 
 ### Phase 4: Design
 
-When Grace asks for a Design review, read her Draft Design
-Options and apply the lenses below. This is one round,
-advisory; Junio reviews the same Draft Design Options in
+When Grace asks for a Design review, read her Proposed
+Design and apply the lenses below. This is one round,
+advisory; Junio reviews the same Proposed Design in
 parallel from the maintainer's view. Grace owns the Design
 and decides which findings to act on.
 
-Read the Proposed Design (Grace's recommendation) and the
-Simplest Design (her actively-constructed simpler
-alternative) from the Draft Design Options message body.
-Both options are in scope for review. You already hold the
+Read the Proposed Design (Grace's recommendation) from the
+message body. You already hold the
 Session Type, Requirements Analysis, approved Code Analysis,
 and approved Working Scope in context from earlier phases
 and the information-only handoff at the start of Phase 4.
