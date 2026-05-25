@@ -164,10 +164,12 @@ isn't evidenced, surface that — as a non-goal candidate or
 an open question — rather than carrying the intent through
 unexamined. The user decides at the gate.
 
-The stated/assumed marking gives the user a clean editing
-surface. They can strike an assumed consumer or use case
-without arguing — the marking itself signals "correctable
-inference," not "claim about reality."
+The marking shows where each item came from — the session
+input, or your own inference — not whether it's true. The
+user can edit either kind. They can drop an assumed item
+freely, since it's your inference, not the input's claim.
+They can drop a stated item too, when the consumer-lens
+read or the intent test shows the input got it wrong.
 
 #### Step 6: Share the Requirements Analysis
 
