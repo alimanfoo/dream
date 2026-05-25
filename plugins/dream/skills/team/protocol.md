@@ -88,8 +88,17 @@ All agents run their boot sequence immediately upon spawning.
 
 ## Phase 1: Requirements
 
-The user opens with a proposed focus. Grace reads the cited
-material, reads the code with a consumer lens (who uses these
+The user opens with session input. The session input is a
+seed, not a contract. Its claims — this is a bug, this
+feature is worth building, this code needs work — are
+unproven until the evidence shows them, whoever wrote them.
+The user often carries in input they didn't author: a
+colleague's proposal, an external bug report, another
+agent's idea. Testing it is scrutiny of the input, not of
+the user, who decides at the gate.
+
+Grace reads the cited material, reads the code with a
+consumer lens (who uses these
 surfaces and what they do with them), then checks the issue
 tracker for recurrence on the named surfaces. Grace names the
 Session Type (bug fix, enhancement, or maintenance) and shares
@@ -124,8 +133,9 @@ Code Analysis findings they rest on. Grace shares the Draft
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
-view. Each finding is either folded into the revised Scope Options or
-rejected with a reason.
+view. Grace decides each finding on its merits, recording a
+one-line reason: folded into the revised Scope Options or
+rejected.
 Grace then shares the revised Scope Options with the user,
 with a brief note on what changed from the Draft after the
 reviews.
@@ -143,9 +153,10 @@ Beck's "the simplest thing that could possibly work"). Grace
 shares the Draft Design Options with Junio and Ralph for one
 round of review — advisory, not gating — and revises. Junio
 reads from the maintainer's view; Ralph reads from the
-engineering-pattern view. Each finding is folded into the revised
-Design Options, rejected with a reason, held as an Ancillary Finding,
-or escalated to a Rescope Discussion. Grace then shares the revised
+engineering-pattern view. Grace decides each finding on its
+merits, recording a one-line reason: folded into the revised
+Design Options, rejected, held as an Ancillary Finding, or
+escalated to a Rescope Discussion. Grace then shares the revised
 Design Options with the user, with a brief note on what
 changed from the Draft after the reviews.
 
@@ -158,9 +169,10 @@ Junio and Ralph for information. Grace then composes the
 Draft Plan, shares it with Junio and Ralph for one round of
 review — advisory, not gating — and revises. Junio reads
 from the maintainer's view; Ralph reads from the
-implementer's view. Each finding is folded into the revised Plan,
-rejected with a reason, held as an Ancillary Finding, or escalated to
-a Rescope Discussion. Grace then shares the revised Plan with the
+implementer's view. Grace decides each finding on its merits,
+recording a one-line reason: folded into the revised Plan,
+rejected, held as an Ancillary Finding, or escalated to a
+Rescope Discussion. Grace then shares the revised Plan with the
 user, with a brief note on what changed from the Draft
 after the reviews.
 
@@ -383,6 +395,26 @@ the prior outcome, state the new reading, and ask the
 user whether to overturn or hold. Don't run a reversal through
 a procedure that frames it as fresh observation; the procedure
 hides the reversal.
+
+## Existing code is unproven
+
+Treat every property of existing code — that it is correct, that
+it performs, that it still has a consumer — as unproven until you
+have seen the evidence. Code in the tree records a past decision;
+it is not proof the decision was right. The burden of proof is on
+the code, not on the reader who doubts it.
+
+Demand evidence in proportion to what you rely on. Before building
+on a function's behaviour, trace it rather than infer it from the
+name; before relying on it being fast, find the benchmark, because
+"it looks optimised" is not evidence. Where no decision rests on a
+property, leave it — the rule asks for proof where reliance is
+real, not a blanket audit.
+
+Unproven is not wrong. The stance is dispassionate, not hostile:
+missing evidence is a reason to check, not a licence to rewrite
+working code. The behaviour-preserving and over-engineering rules
+in the agent files still hold.
 
 ## Code-shape ladder
 

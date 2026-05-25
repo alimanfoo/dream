@@ -56,19 +56,19 @@ operating detail is below.
 
 ### Phase 1: Requirements
 
-The user opens with a proposed focus for the session — an
-idea for a new feature, an issue or issues to address, a
-piece of code to tidy up, constraints, rough shape. Phase
-1's job is to gather and elicit the requirements behind that
-focus, and to make any assumptions explicit so the user can
-correct them. It ends at an approved Requirements Analysis:
+The user opens with session input — an idea for a new
+feature, an issue or issues to address, a piece of code to
+tidy up, constraints, rough shape. Phase 1's job is to
+gather and elicit the requirements behind it, and to make
+any assumptions explicit so the user can correct them. It
+ends at an approved Requirements Analysis:
 who the work serves, what they do with it, who and what is
 explicitly excluded, and any open questions. Follow the
 steps below in sequence.
 
 #### Step 1: Read the cited material
 
-Read everything the user cites in their proposed focus —
+Read everything the user cites in their session input —
 issue bodies, prior issues they reference, linked PRs, named
 files or symbols. This is the substantive baseline for the
 steps that follow; without it, the recurrence check and code
@@ -114,7 +114,7 @@ types:
 - **Maintenance.** Coherence, naming, structure; behaviour
   already correct.
 
-If the type is obvious from the user's input and cited
+If the type is obvious from the session input and cited
 material, state it in one short sentence with the reasoning
 ("Session type: enhancement — adds a new CLI subcommand")
 and continue to step 5. If two types plausibly fit, ask the
@@ -154,10 +154,22 @@ For an enhancement, the consumer list is the work — give
 it real detail, name each concretely, and mark stated vs.
 assumed per item.
 
-The stated/assumed marking gives the user a clean editing
-surface. They can strike an assumed consumer or use case
-without arguing — the marking itself signals "correctable
-inference," not "claim about reality."
+Test the new intent the session input carries against the
+existing intent. The consumer-lens read shows what the
+application already serves; ask whether the proposed
+feature, fix, or maintenance coheres with it, and whether
+its value is evidenced by those existing goals or only
+asserted by the input. Where it doesn't cohere or the value
+isn't evidenced, surface that — as a non-goal candidate or
+an open question — rather than carrying the intent through
+unexamined. The user decides at the gate.
+
+The marking shows where each item came from — the session
+input, or your own inference — not whether it's true. The
+user can edit either kind. They can drop an assumed item
+freely, since it's your inference, not the input's claim.
+They can drop a stated item too, when the consumer-lens
+read or the intent test shows the input got it wrong.
 
 #### Step 6: Share the Requirements Analysis
 
@@ -195,6 +207,16 @@ this work?* Trace mechanism, layers, callers, siblings,
 patterns, and candidate smells. This is the structural lens —
 distinct from Phase 1's consumer lens. The two reads cover the
 same code with different attention.
+
+Test the session input's factual claims about the code,
+whoever made them. A bug report asserts a defect; confirm
+the code actually misbehaves rather than taking the report
+at its word, since the reported behaviour may be a
+misunderstanding of what the code is built to do. The Code
+Analysis records what the read shows — the defect located,
+or the code behaving as designed. The latter means there is
+no bug to fix; surface it at the gate for the user to
+decide.
 
 Read for semantics, not just names, prose, or other surface
 details. A surface can carry the same name but mean different
@@ -327,15 +349,17 @@ from two teammates, caught at the cheapest point to fix.
 
 #### Step 3: Apply the reviews
 
-Take each finding — from either reviewer — down one of
-two paths. You own the Scope Options:
+Decide each finding — from either reviewer — on its
+merits, and record a one-line reason for the call. You own
+the Scope Options; a teammate raising a finding is not
+itself a reason to fold it in. Each finding takes one of
+two paths:
 
 - **Fold in** — accept into the revised Scope Options
   (revise an existing option or add a missed candidate).
-- **Reject with reason** — you disagree with the finding.
-  Note the reason; if the rejection is notable, record it
-  for the Scope Options message in step 4. Otherwise
-  nothing carries forward.
+- **Reject** — you disagree with the finding. If the
+  rejection is notable, carry the reason into the Scope
+  Options message in step 4.
 
 #### Step 4: Share the revised Scope Options with the user
 
@@ -456,7 +480,7 @@ fix, even when the user asked for a docstring or comment
 change. Example: "expand the docstring to express a
 contract" — but the signature doesn't enforce it, so the
 docstring has to. The Plan follows the Design, not the
-original framing.
+session input.
 
 Apply the **code-shape-first check** (see below) to any
 docstring, comment, or section-header carrying a contract,
@@ -493,14 +517,16 @@ to fix.
 
 #### Step 4: Apply the reviews
 
-Take each finding — from either reviewer — down one of
-four paths. You own the Design:
+Decide each finding — from either reviewer — on its
+merits, and record a one-line reason for the call. You own
+the Design; a teammate raising a finding is not itself a
+reason to fold it in. Each finding takes one of four
+paths:
 
 - **Fold in** — accept into the revised Design Options.
-- **Reject with reason** — you disagree with the finding.
-  Note the reason; if the rejection is notable, record it
-  for the Design message in step 5. Otherwise nothing
-  carries forward.
+- **Reject** — you disagree with the finding. If the
+  rejection is notable, carry the reason into the Design
+  message in step 5.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
 - **Escalate to Rescope** — the finding suggests the
@@ -549,8 +575,8 @@ The goal of this phase is the agreed Plan — the task list
 that delivers the Design within the Working Scope. You
 share the Approved Design with Junio and Ralph for
 information, compose a Draft Plan, get one round of review
-from Junio and Ralph, apply their findings on the merits,
-and share the revised Plan with the user for approval.
+from Junio and Ralph, revise, and share the revised Plan
+with the user for approval.
 
 #### Step 1: Share the Approved Design with Junio and Ralph for information
 
@@ -570,7 +596,7 @@ Design.
 
 Apply these rules. Derive tasks from the Design — they are
 the work that delivers it — and the Code Analysis. Don't
-translate the original user framing directly into tasks; the
+translate the session input directly into tasks; the
 Design has already reshaped it where needed.
 
 Each task should be a manageable unit of work for Ralph —
@@ -616,15 +642,17 @@ catches issues at the cheapest point to fix.
 
 #### Step 4: Apply the reviews
 
-Take each finding — from either reviewer — down one of
-four paths. You own the Plan:
+Decide each finding — from either reviewer — on its
+merits, and record a one-line reason for the call. You own
+the Plan; a teammate raising a finding is not itself a
+reason to fold it in. Each finding takes one of four
+paths:
 
 - **Fold in** — accept into the revised Plan as a task (or
   a tidy-first precursor).
-- **Reject with reason** — you disagree with the finding.
-  Note the reason; if the rejection is notable, record it
-  for the Plan message in step 5. Otherwise nothing carries
-  forward.
+- **Reject** — you disagree with the finding. If the
+  rejection is notable, carry the reason into the Plan
+  message in step 5.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
 - **Escalate to Rescope** — the finding suggests the
@@ -779,7 +807,8 @@ on the same surface look symptom-shaped — see step 6.
 
 ##### Step 6: Triage findings
 
-Accept or reject each proposed follow-on. Accepted ones
+Accept or reject each proposed follow-on on its merits,
+recording a one-line reason for the call. Accepted ones
 become new tasks, **inserted as the next tasks before any
 pending original-scope work** (depth-first drain). Hold
 Ancillary Findings for the post-merge bucket — never filed
@@ -939,10 +968,12 @@ should.
 
 #### Step 3: Triage each finding
 
-Accept (becomes a follow-on task, handled by the standard
-per-task workflow including Junio's audit), Reject (note in
-your reply to the user, with the reason), or Out of scope
-(held for the post-merge bucket).
+Decide each finding on its merits; Ada raising it is not
+itself a reason to accept it. Each finding takes one of
+three paths: Accept (becomes a follow-on task, handled by
+the standard per-task workflow including Junio's audit),
+Reject (note in your reply to the user, with the reason),
+or Out of scope (held for the post-merge bucket).
 
 Keep one response note per Ada finding as you triage. Accepted
 findings record the follow-on task and, once complete, the
@@ -1286,7 +1317,7 @@ At Design and Plan time, ask the question in its strongest
 form: *what is the underlying root cause, unmet requirement,
 or broader inconsistency, and does the proposed work reach it
 — not just the surface change as originally framed?* The
-original framing may name a symptom rather than what's
+session input may name a symptom rather than what's
 behind it.
 
 ### The removal question

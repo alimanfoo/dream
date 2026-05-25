@@ -361,6 +361,12 @@ For non-trivial changes, the order is:
 The bar is "I have seen this code with my own eyes," not "I
 have a reasonable hypothesis about what it does."
 
+Seeing the code is not trusting it. Treat its correctness,
+performance, and remaining use as unproven until the evidence
+shows otherwise; don't preserve or match a pattern only because
+it is already there. See "Existing code is unproven" in
+`protocol.md`.
+
 ### Code comments
 
 By default, write no comments. Only add one when the **why**
