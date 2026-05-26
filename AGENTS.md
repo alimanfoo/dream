@@ -53,8 +53,23 @@ This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 ## Design principles
 
 The dream plugin's goal is **autonomous coherent coding** —
-great code with minimal user intervention. Several
-principles follow:
+great code with minimal user intervention.
+
+Coherent is the baseline, not the ceiling. The deeper aim is
+for the team to find the productive generalisation — a design
+that names a real concept, a domain idea or a technical
+pattern, collapses duplication, and reveals intent — so the
+code comes out simpler, easier to maintain, easier to test
+and check for correctness, and cheaper to build on. Default
+coding agents rarely get there: they follow instructions
+literally, add rather than restructure, and leave the latent
+generalisation unseen. Setting the conditions that let the
+team find it is part of the dream. It stays bounded by the
+discipline against speculative abstraction — the
+generalisation must genuinely simplify the code in hand,
+never add machinery for a future that may not come.
+
+Several principles follow:
 
 - **Evaluate every change against autonomy.** A change that
   makes the team more responsive to user pushback doesn't
