@@ -150,7 +150,7 @@ with Junio and Ralph for information. Grace then drafts the
 Proposed Design — her recommendation — and shares it with
 Junio and Ralph for one round of review — advisory, not
 gating. Junio reads from the maintainer's view and surfaces
-candidate sideways moves: different designs, at the same
+candidate lateral moves: different designs, at the same
 scope, that remove duplication, reduce complexity, or reveal
 intent more clearly. Ralph reads from the engineering-pattern
 view. Grace decides each finding on its merits, recording a
@@ -158,7 +158,7 @@ one-line reason: folded into the revised Proposed Design,
 rejected, held as an Ancillary Finding, or escalated to a
 Rescope Discussion.
 
-A candidate sideways move that is strictly better folds into
+A candidate lateral move that is strictly better folds into
 the Proposed Design. A candidate that buys its simplicity at a
 cost — a new dependency, more coupling, less flexibility —
 becomes an Alternative Design: a genuinely different design

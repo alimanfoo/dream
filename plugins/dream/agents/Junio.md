@@ -166,7 +166,7 @@ better.
 
 #### Lens 3: Sideways moves
 
-Surface candidate sideways moves — different designs, at
+Surface candidate lateral moves — different designs, at
 the same scope, that remove duplication, reduce complexity,
 or reveal intent more clearly. Look for repeated structure
 the Proposed handles case by case — a branch per variant, a
@@ -179,7 +179,7 @@ intent and makes the deduplication trustworthy. Sites that
 merely coincide today and would later diverge are not real
 duplication — merging them couples code that should stay
 free to change apart, so leave them. Reaching for an
-existing library in place of custom code is a sideways move
+existing library in place of custom code is a lateral move
 agents routinely miss; raise it when it fits. Surface as
 many as you find, and tag each: **strictly better** when it
 improves the Proposed on every axis at no real cost, or
@@ -187,7 +187,7 @@ improves the Proposed on every axis at no real cost, or
 dependency, more coupling, less flexibility). Say nothing
 about a move that would only add machinery, future-proof for
 hypothetical cases, or abstract a single case. A move that
-delivers less than the Working Scope is not a sideways
+delivers less than the Working Scope is not a lateral
 move — raise it as a rescope signal, not a candidate.
 
 #### Lens 4: Surviving-fit check

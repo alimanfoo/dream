@@ -398,7 +398,7 @@ The goal of this phase is the agreed Design — what the team
 proposes to build. You share the Approved Working Scope with
 Junio and Ralph for information, compose the Proposed Design,
 get one round of review from Junio and Ralph, fold the
-review's sideways moves into the Proposed Design or into
+review's lateral moves into the Proposed Design or into
 Alternative Designs, and share the result with the user for
 approval.
 
@@ -477,7 +477,7 @@ message body is the Proposed Design. Sign off
 Send the same body to each reviewer; their role files
 steer the lens. Junio reads from the maintainer's view —
 defend behaviour, code-shape, surviving-fit, rescope
-signal — and surfaces candidate sideways moves: different
+signal — and surfaces candidate lateral moves: different
 designs, at the same scope, that remove duplication, reduce
 complexity, or reveal intent more clearly, each tagged
 strictly-better or with its trade-off. Ralph reads from the
@@ -508,13 +508,13 @@ paths:
   addressing symptoms). Raise a Rescope Discussion; the
   user picks between keep and rescope.
 
-Junio's review also surfaces candidate sideways moves, each
+Junio's review also surfaces candidate lateral moves, each
 tagged. A candidate tagged strictly-better folds into the
 Proposed Design — it improves the recommendation at no real
 cost. A candidate tagged with a trade-off you set aside as
 material for the Alternative Designs in step 5. A candidate
 that would deliver less than the Working Scope is not a
-sideways move; treat it as a possible rescope signal.
+lateral move; treat it as a possible rescope signal.
 
 Apply the **code-shape-first check** (see below) before
 deciding any finding that proposes a docstring, comment,
@@ -530,8 +530,8 @@ Design looks symptom-shaped enough to pause.
 
 #### Step 5: Build the Alternative Designs
 
-Run the sideways search and write down what it finds. A
-sideways move is a different design, at the same Working
+Run the lateral search and write down what it finds. A
+lateral move is a different design, at the same Working
 Scope, that removes duplication, reduces complexity, or
 reveals intent more clearly. A move counts only when the
 shape it unifies names a real concept — a domain idea, a
@@ -567,7 +567,7 @@ Designs. Lead with the Proposed Design — your
 recommendation — then each Alternative with the trade-off
 it carries. Add a brief note on **what changed after the
 reviews**: what folded into the Proposed Design, notable
-rejections with the reason, and what the sideways search
+rejections with the reason, and what the lateral search
 found (including an empty result). Include any out-of-scope
 decisions and open questions.
 
