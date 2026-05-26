@@ -87,7 +87,7 @@ principles follow:
 
 ## Writing agent prompts
 
-The dream-team agents are LLMs. Two things matter when
+The dream-team agents are LLMs. Three things matter when
 writing or revising their prompts:
 
 - **Agents reason by producing tokens** — thinking tokens,
@@ -104,6 +104,16 @@ writing or revising their prompts:
   reach for X. Checks have to fire after the candidate
   content exists in context. "If you notice you've written
   X" is what works.
+- **Agents act on a name's face value** — a literal-following
+  model obeys the everyday sense of the words you name things
+  with: slots, moves, roles, phases. The name is a stronger
+  instruction than the prose beneath it, so the body won't
+  rescue a name that pulls the wrong way. Treat naming as a
+  design decision: when you introduce or rename a concept,
+  weigh the word's plain pull against the behaviour you want,
+  and pick a different word when they conflict. A name whose
+  plain sense already points at the behaviour needs no help
+  from the prose.
 
 ## Writing prose
 
