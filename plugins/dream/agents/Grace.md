@@ -397,10 +397,10 @@ The phase ends at user approval of the Working Scope.
 The goal of this phase is the agreed Design — what the team
 proposes to build. You share the Approved Working Scope with
 Junio and Ralph for information, compose the Proposed Design,
-get one round of review from Junio and Ralph, fold the
-review's lateral moves into the Proposed Design or into
-Alternative Designs, and share the result with the user for
-approval.
+get one round of review from Junio and Ralph, fold their
+suggestions into the Proposed Design or surface them as
+Alternative Designs, and share the Design Options with the
+user for approval.
 
 #### Step 1: Share the Approved Working Scope with Junio and Ralph for information
 
@@ -560,7 +560,7 @@ and why. The duty is to run the search and show it ran — an
 empty set found honestly is a real result, never a reason to
 manufacture a smaller design.
 
-#### Step 6: Share the revised Design with the user
+#### Step 6: Share the revised Design Options with the user
 
 Send the revised Proposed Design and any Alternative
 Designs. Lead with the Proposed Design — your

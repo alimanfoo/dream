@@ -23,7 +23,7 @@ A session moves through ten phases:
 
 4. **Design.** Grace drafts the Proposed Design, gets one
    round of review from Junio and Ralph, revises, and shares
-   the revised Design — the Proposed Design and any
+   the revised Design Options — the Proposed Design and any
    Alternative Designs — with the user for approval.
 
 5. **Plan.** Grace drafts the Plan, gets one round of review
@@ -155,8 +155,8 @@ scope, that remove duplication, reduce complexity, or reveal
 intent more clearly. Ralph reads from the engineering-pattern
 view. Grace decides each finding on its merits, recording a
 one-line reason: folded into the revised Proposed Design,
-rejected, held as an Ancillary Finding, or escalated to a
-Rescope Discussion.
+turned into an Alternative Design, rejected, held as an
+Ancillary Finding, or escalated to a Rescope Discussion.
 
 A candidate lateral move that is strictly better folds into
 the Proposed Design. A candidate that buys its simplicity at a
@@ -166,9 +166,9 @@ delivering the same Working Scope, with its trade-off named.
 There may be several, one, or none — an empty set found
 honestly is a result, not a failure. A design that delivers
 less than the Working Scope is never an Alternative; that is a
-Rescope. Grace then shares the revised Proposed Design and any
-Alternative Designs with the user, with a brief note on what
-changed after the reviews.
+Rescope. Grace then shares the revised Design Options — the
+Proposed Design and any Alternative Designs — with the user,
+with a brief note on what changed after the reviews.
 
 The phase ends at user approval of the Design.
 
@@ -350,7 +350,7 @@ and the Plan (closing Phase 5). The gate has the same shape every
 time:
 
 1. Grace shares the artifact — the Requirements Analysis, Code
-   Analysis, Scope Options, the Design, or the Plan.
+   Analysis, Scope Options, Design Options, or the Plan.
 2. The message ends with an explicit approval request that
    names the artifact and what comes next. Example:
    *"Approve the Working Scope to proceed to Phase 4:

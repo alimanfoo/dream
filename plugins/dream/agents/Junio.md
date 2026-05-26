@@ -164,7 +164,7 @@ specific structural alternative when you can. Grace applies
 the ladder at triage to decide whether a shape change serves
 better.
 
-#### Lens 3: Sideways moves
+#### Lens 3: Lateral moves
 
 Surface candidate lateral moves — different designs, at
 the same scope, that remove duplication, reduce complexity,
