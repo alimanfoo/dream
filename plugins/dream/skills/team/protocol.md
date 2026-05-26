@@ -21,9 +21,10 @@ A session moves through ten phases:
    of review from Junio and Ralph, revises, and shares the
    revised Scope Options with the user for approval.
 
-4. **Design.** Grace drafts the Design, gets one round of
-   review from Junio and Ralph, revises, and shares the
-   revised Design Options with the user for approval.
+4. **Design.** Grace drafts the Proposed Design, gets one
+   round of review from Junio and Ralph, revises, and shares
+   the revised Design Options — the Proposed Design and any
+   Alternative Designs — with the user for approval.
 
 5. **Plan.** Grace drafts the Plan, gets one round of review
    from Junio and Ralph, revises, and shares the revised Plan
@@ -146,19 +147,28 @@ The phase ends at user approval of the Working Scope.
 
 Phase opens with Grace sharing the Approved Working Scope
 with Junio and Ralph for information. Grace then drafts the
-Design. Two named options are always present: the Proposed
-Design (Grace's recommendation) and the Simplest Design (her
-actively-constructed simpler alternative, anchored on Kent
-Beck's "the simplest thing that could possibly work"). Grace
-shares the Draft Design Options with Junio and Ralph for one
-round of review — advisory, not gating — and revises. Junio
-reads from the maintainer's view; Ralph reads from the
-engineering-pattern view. Grace decides each finding on its
-merits, recording a one-line reason: folded into the revised
-Design Options, rejected, held as an Ancillary Finding, or
-escalated to a Rescope Discussion. Grace then shares the revised
-Design Options with the user, with a brief note on what
-changed from the Draft after the reviews.
+Proposed Design — her recommendation — and shares it with
+Junio and Ralph for one round of review — advisory, not
+gating. Junio reads from the maintainer's view and surfaces
+candidate lateral moves: different designs, at the same
+scope, that remove duplication, reduce complexity, or reveal
+intent more clearly. Ralph reads from the engineering-pattern
+view. Grace decides each finding on its merits, recording a
+one-line reason: folded into the revised Proposed Design,
+turned into an Alternative Design, rejected, held as an
+Ancillary Finding, or escalated to a Rescope Discussion.
+
+A candidate lateral move that is strictly better folds into
+the Proposed Design. A candidate that buys its simplicity at a
+cost — a new dependency, more coupling, less flexibility —
+becomes an Alternative Design: a genuinely different design
+delivering the same Working Scope, with its trade-off named.
+There may be several, one, or none — an empty set found
+honestly is a result, not a failure. A design that delivers
+less than the Working Scope is never an Alternative; that is a
+Rescope. Grace then shares the revised Design Options — the
+Proposed Design and any Alternative Designs — with the user,
+with a brief note on what changed after the reviews.
 
 The phase ends at user approval of the Design.
 

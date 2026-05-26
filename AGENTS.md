@@ -53,8 +53,23 @@ This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 ## Design principles
 
 The dream plugin's goal is **autonomous coherent coding** —
-great code with minimal user intervention. Several
-principles follow:
+great code with minimal user intervention.
+
+Coherent is the baseline, not the ceiling. The deeper aim is
+for the team to find the productive generalisation — a design
+that names a real concept, a domain idea or a technical
+pattern, collapses duplication, and reveals intent — so the
+code comes out simpler, easier to maintain, easier to test
+and check for correctness, and cheaper to build on. Default
+coding agents rarely get there: they follow instructions
+literally, add rather than restructure, and leave the latent
+generalisation unseen. Setting the conditions that let the
+team find it is part of the dream. It stays bounded by the
+discipline against speculative abstraction — the
+generalisation must genuinely simplify the code in hand,
+never add machinery for a future that may not come.
+
+Several principles follow:
 
 - **Evaluate every change against autonomy.** A change that
   makes the team more responsive to user pushback doesn't
@@ -87,7 +102,7 @@ principles follow:
 
 ## Writing agent prompts
 
-The dream-team agents are LLMs. Two things matter when
+The dream-team agents are LLMs. Three things matter when
 writing or revising their prompts:
 
 - **Agents reason by producing tokens** — thinking tokens,
@@ -104,6 +119,16 @@ writing or revising their prompts:
   reach for X. Checks have to fire after the candidate
   content exists in context. "If you notice you've written
   X" is what works.
+- **Agents act on a name's face value** — a literal-following
+  model obeys the everyday sense of the words you name things
+  with: slots, moves, roles, phases. The name is a stronger
+  instruction than the prose beneath it, so the body won't
+  rescue a name that pulls the wrong way. Treat naming as a
+  design decision: when you introduce or rename a concept,
+  weigh the word's plain pull against the behaviour you want,
+  and pick a different word when they conflict. A name whose
+  plain sense already points at the behaviour needs no help
+  from the prose.
 
 ## Writing prose
 
