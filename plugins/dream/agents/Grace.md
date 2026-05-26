@@ -533,11 +533,15 @@ Design looks symptom-shaped enough to pause.
 Run the sideways search and write down what it finds. A
 sideways move is a different design, at the same Working
 Scope, that removes duplication, reduces complexity, or
-reveals intent more clearly. Take the trade-off candidates
-you set aside in step 4 and re-derive from the Working
-Scope yourself, with the Proposed Design set aside — the
-point is a genuinely different shape, not a trim of the
-Proposed.
+reveals intent more clearly. A move counts only when the
+shape it unifies names a real concept — a domain idea, a
+behaviour, or a technical pattern — that changes as one
+unit; deduplicating sites that merely coincide today couples
+code that should stay separate, so it is not a
+simplification. Take the trade-off candidates you set aside
+in step 4 and re-derive from the Working Scope yourself,
+with the Proposed Design set aside — the point is a
+genuinely different shape, not a trim of the Proposed.
 
 Each move you keep becomes an Alternative Design: name the
 different design, confirm it still delivers the full

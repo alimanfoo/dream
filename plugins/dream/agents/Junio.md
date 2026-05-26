@@ -172,17 +172,23 @@ or reveal intent more clearly. Look for repeated structure
 the Proposed handles case by case — a branch per variant, a
 parallel path per input kind, the same steps written more
 than once — and name the single rule that would unify it.
-Reaching for an existing library in place of custom code is
-a sideways move agents routinely miss; raise it when it
-fits. Surface as many as you find, and tag each:
-**strictly better** when it improves the Proposed on every
-axis at no real cost, or **trades away X** when it buys its
-simplicity at a cost (a dependency, more coupling, less
-flexibility). Say nothing about a move that would only add
-machinery, future-proof for hypothetical cases, or abstract
-a single case. A move that delivers less than the Working
-Scope is not a sideways move — raise it as a rescope
-signal, not a candidate.
+The rule earns its place only when it names a real concept —
+a domain idea, a behaviour, or a technical pattern — that
+changes as one unit; that correspondence is what reveals
+intent and makes the deduplication trustworthy. Sites that
+merely coincide today and would later diverge are not real
+duplication — merging them couples code that should stay
+free to change apart, so leave them. Reaching for an
+existing library in place of custom code is a sideways move
+agents routinely miss; raise it when it fits. Surface as
+many as you find, and tag each: **strictly better** when it
+improves the Proposed on every axis at no real cost, or
+**trades away X** when it buys its simplicity at a cost (a
+dependency, more coupling, less flexibility). Say nothing
+about a move that would only add machinery, future-proof for
+hypothetical cases, or abstract a single case. A move that
+delivers less than the Working Scope is not a sideways
+move — raise it as a rescope signal, not a candidate.
 
 #### Lens 4: Surviving-fit check
 
