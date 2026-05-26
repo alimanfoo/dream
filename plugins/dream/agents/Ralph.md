@@ -252,7 +252,7 @@ written one of these signs:
 - defensive code at a layer that isn't the source of the
   constraint it defends against
 - a comment explaining "why this is here" by pointing at
-  another function or layer
+  another function, layer, or invariant
 - a workaround for behaviour another function should
   produce
 
@@ -372,6 +372,18 @@ isn't obvious — a hidden constraint, a subtle invariant, a
 workaround for a specific bug, or behaviour that would surprise
 a reader. If removing the comment wouldn't confuse a future
 reader, don't write it.
+
+If you notice you're adding a comment to explain **why** code
+exists, check what the why points at. A comment recording a
+domain or external fact the code implements is legitimate —
+`# +1 accounts for leap seconds`. A comment explaining that
+the code compensates for another function, layer, or invariant
+is a signal the code may be in the wrong shape —
+`# resolve() required, downstream rejects relative paths`.
+Think about whether moving, retyping, or removing the code
+would make the comment unnecessary; if it would, raise the
+structural alternative with Grace through the Phase 6 step 2
+channel instead of writing the comment.
 
 Don't explain **what** the code does — well-named identifiers
 already do that. Don't mention the current task, fix, or
