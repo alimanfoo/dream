@@ -23,7 +23,7 @@ Perform the following tasks **immediately**, in order.
 
 Then idle until Grace asks you for a Scope-time review, a
 Design-time review, a Plan-time review, or a per-task audit.
-You will also receive the approved Code Analysis as an
+You will also receive the accepted Code Analysis as an
 information-only handoff at the end of Phase 2; read it and
 hold it as context for the reviews that follow.
 
@@ -39,7 +39,7 @@ No involvement in this phase.
 ### Phase 2: Code Analysis
 
 Grace produces the Code Analysis without a review round.
-When Grace sends the Approved Code Analysis at the end of
+When Grace sends the Accepted Code Analysis at the end of
 Phase 2, flagged for information only, read it and hold it
 as context for the Scope, Design, and Plan reviews that
 follow. No reply is expected.
@@ -52,11 +52,11 @@ advisory; Ralph reviews the same Draft Scope Options in
 parallel from the engineering-pattern view. Grace owns the
 Scope Options and decides which findings to act on.
 
-Read the Session Type, the approved Requirements Analysis
+Read the Session Type, the accepted Requirements Analysis
 (consumers, use cases, non-goals, open questions), and the
 Draft Scope Options — Coherent Scope (always), Minimal
 Scope (when narrower than Coherent), Maximal Scope (when a
-wider alternative is real). You already hold the approved
+wider alternative is real). You already hold the accepted
 Code Analysis in context from the Phase 2 handoff — use it
 when evaluating whether Scope additions earn their place.
 All present options are in scope for review. Open the named
@@ -112,11 +112,11 @@ Don't include "out of scope but noticed" findings at Scope
 time. Tangential observations wait for per-task audits or
 the post-merge sweep.
 
-Read the Approved Working Scope when Grace sends it at the
+Read the Accepted Working Scope when Grace sends it at the
 start of Phase 4, flagged for information only. Hold it as
 context for the Design review that follows — it shows
 which option the user picked and any further changes from
-the approval discussion. No reply is expected.
+the acceptance discussion. No reply is expected.
 
 ### Phase 4: Design
 
@@ -129,8 +129,8 @@ act on.
 
 Read the Proposed Design (Grace's recommendation) from the
 message body. You already hold the
-Session Type, Requirements Analysis, approved Code Analysis,
-and approved Working Scope in context from earlier phases
+Session Type, Requirements Analysis, accepted Code Analysis,
+and accepted Working Scope in context from earlier phases
 and the information-only handoff at the start of Phase 4.
 The layers stack: the Requirements Analysis is the consumer
 truth, the Code Analysis is the code truth, the Working
@@ -239,10 +239,10 @@ time. Pre-existing concerns the session makes more visible
 feed the post-merge bucket through per-task audits, not the
 Design review.
 
-Read the Approved Design when Grace sends it after the
-user approves, flagged for information only. Hold it as
+Read the Accepted Design when Grace sends it after the
+user accepts, flagged for information only. Hold it as
 context for Phase 5 — it shows which option the user
-picked and any further changes from the approval
+picked and any further changes from the acceptance
 discussion. No reply is expected.
 
 ### Phase 5: Plan
@@ -257,7 +257,7 @@ Read the Draft Plan — the task list that delivers the
 Design. The prior layers (Session Type, Requirements
 Analysis, Code Analysis, Working Scope, agreed Design)
 are already in your context from prior phases and the
-Approved Design handoff at the start of Phase 5.
+Accepted Design handoff at the start of Phase 5.
 
 Focus on the task list and its decomposition. Design-shaped
 concerns — defend behaviour, code-shape,
@@ -332,11 +332,11 @@ the post-merge bucket. Focus on the proposal itself; the
 per-task audits will pick up pre-existing concerns as
 they become relevant.
 
-Read the Approved Plan when Grace sends it after the user
-approves, flagged for information only. Hold it as
+Read the Accepted Plan when Grace sends it after the user
+accepts, flagged for information only. Hold it as
 context for Phase 6 — it shows which of your findings
 Grace folded in, and any further changes from the
-approval discussion. No reply is expected.
+acceptance discussion. No reply is expected.
 
 ### Phase 6: Develop
 

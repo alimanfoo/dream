@@ -61,7 +61,7 @@ feature, an issue or issues to address, a piece of code to
 tidy up, constraints, rough shape. Phase 1's job is to
 gather and elicit the requirements behind it, and to make
 any assumptions explicit so the user can correct them. It
-ends at an approved Requirements Analysis:
+ends at an accepted Requirements Analysis:
 who the work serves, what they do with it, who and what is
 explicitly excluded, and any open questions. Follow the
 steps below in sequence.
@@ -175,22 +175,22 @@ read or the intent test shows the input got it wrong.
 
 Send the Requirements Analysis to the user.
 
-End the message with an explicit approval request:
-*"Approve the Requirements Analysis to proceed to Phase 2:
+End the message with an explicit acceptance request:
+*"Accept the Requirements Analysis to proceed to Phase 2:
 Code Analysis."*
 
-#### Step 7: Seek user approval of the Requirements Analysis
+#### Step 7: Seek user acceptance of the Requirements Analysis
 
-Wait for the user's reply. If approved, the phase ends,
+Wait for the user's reply. If accepted, the phase ends,
 continue to Phase 2: Code Analysis. If the user pushes back,
-revise and return to step 6; repeat until approved. If the
+revise and return to step 6; repeat until accepted. If the
 pushback challenges the Session Type itself, return to step
 4 and recompose from there.
 
-This is one of the protocol's user approval gates —
-see "Approval gates" in `protocol.md`.
+This is one of the protocol's user acceptance gates —
+see "Acceptance gates" in `protocol.md`.
 
-The phase ends at user approval of the Requirements Analysis.
+The phase ends at user acceptance of the Requirements Analysis.
 
 ### Phase 2: Code Analysis
 
@@ -267,36 +267,36 @@ Design. Name what is, name what's tangled, name what recurs.
 
 Send the Code Analysis to the user.
 
-End the message with an explicit approval request:
-*"Approve the Code Analysis to proceed to Phase 3: Scope."*
+End the message with an explicit acceptance request:
+*"Accept the Code Analysis to proceed to Phase 3: Scope."*
 
-#### Step 4: Seek user approval of the Code Analysis
+#### Step 4: Seek user acceptance of the Code Analysis
 
-Wait for the user's reply. If approved, continue to step 5.
+Wait for the user's reply. If accepted, continue to step 5.
 If the user pushes back — a missed caller, a misread
 mechanism, a wider pattern they want named — revise and
-return to step 3; repeat until approved.
+return to step 3; repeat until accepted.
 
-This is one of the protocol's user approval gates —
-see "Approval gates" in `protocol.md`.
+This is one of the protocol's user acceptance gates —
+see "Acceptance gates" in `protocol.md`.
 
-#### Step 5: Hand the Approved Code Analysis to Junio and Ralph
+#### Step 5: Hand the Accepted Code Analysis to Junio and Ralph
 
-Send Junio and Ralph the Approved Code Analysis — the version
-the user approved, plus any changes from the approval
+Send Junio and Ralph the Accepted Code Analysis — the version
+the user accepted, plus any changes from the acceptance
 discussion. Two `SendMessage` calls in the same turn, for
 information only. Sign off `From Grace.` and skip the RSVP;
 no reply is expected. They hold it as context for the Scope,
 Design, and Plan reviews that follow.
 
-The phase ends at user approval of the Code Analysis.
+The phase ends at user acceptance of the Code Analysis.
 
 ### Phase 3: Scope
 
 The goal of this phase is the agreed Working Scope — what
 the team commits to doing in the current session. You draft
 the Scope Options, get one round of review from Junio and
-Ralph, revise, and share with the user for approval.
+Ralph, revise, and share with the user for acceptance.
 
 #### Step 1: Compose the Draft Scope Options
 
@@ -306,12 +306,12 @@ to the user. Three named options, each with its presence
 condition:
 
 - **Coherent Scope** (always) — the work needed to meet
-  the approved Requirements Analysis, plus the additions
-  the approved Code Analysis showed are needed to leave the
+  the accepted Requirements Analysis, plus the additions
+  the accepted Code Analysis showed are needed to leave the
   behaviour and the surrounding code in a coherent state.
   Cite the Code Analysis finding behind each addition so the
   user can trace each one back to the structural read they
-  already approved.
+  already accepted.
 - **Minimal Scope** (when narrower than Coherent) —
   strictly what the requirements call for, with the
   coherence gaps named. Gives the user a way to decline
@@ -331,9 +331,9 @@ condition:
 
 Send the Draft Scope Options to both Junio and Ralph in
 parallel — two `SendMessage` calls in the same turn. They
-already hold the approved Code Analysis from the Phase 2
+already hold the accepted Code Analysis from the Phase 2
 handoff, so the body for each carries the Session Type, the
-approved Requirements Analysis, and the Draft Scope Options.
+accepted Requirements Analysis, and the Draft Scope Options.
 Sign off `From Grace. RSVP via SendMessage.`
 
 Junio reads from the maintainer's view — first, whether the
@@ -343,7 +343,7 @@ earns its place by code or recurrence evidence, and whether
 the Maximal Scope is real anticipation.
 
 Ralph reads from the engineering-pattern view — whether the
-Coherent Scope is right-sized for the approved Requirements
+Coherent Scope is right-sized for the accepted Requirements
 Analysis, whether the Maximal Scope avoids hypothetical
 future-proofing.
 
@@ -378,46 +378,46 @@ them directly.
 
 Frame the choice plainly without recommending one over the
 others. When only the Coherent Scope applies, the message
-carries that alone and asks for approval.
+carries that alone and asks for acceptance.
 
-End the message with an explicit approval request that names
-the artifact and the next phase: *"Approve the Working Scope
+End the message with an explicit acceptance request that names
+the artifact and the next phase: *"Accept the Working Scope
 to proceed to Phase 4: Design."*
 
-#### Step 5: Seek user approval of the Working Scope
+#### Step 5: Seek user acceptance of the Working Scope
 
-Wait for the user's reply. If approved, the phase ends,
+Wait for the user's reply. If accepted, the phase ends,
 continue to Phase 4: Design. If the user pushes back, revise
-and return to step 4; repeat until approved.
+and return to step 4; repeat until accepted.
 
-This is one of the protocol's user approval gates —
-see "Approval gates" in `protocol.md`.
+This is one of the protocol's user acceptance gates —
+see "Acceptance gates" in `protocol.md`.
 
-Even after approval, the Working Scope is not set in
+Even after acceptance, the Working Scope is not set in
 stone. It can be revised at any point through a Rescope
 Discussion (see below).
 
-The phase ends at user approval of the Working Scope.
+The phase ends at user acceptance of the Working Scope.
 
 ### Phase 4: Design
 
 The goal of this phase is the agreed Design — what the team
-proposes to build. You share the Approved Working Scope with
+proposes to build. You share the Accepted Working Scope with
 Junio and Ralph for information, compose the Proposed Design,
 get one round of review from Junio and Ralph, fold their
 suggestions into the Proposed Design or surface them as
 Alternative Designs, and share the Design Options with the
-user for approval.
+user for acceptance.
 
-#### Step 1: Share the Approved Working Scope with Junio and Ralph for information
+#### Step 1: Share the Accepted Working Scope with Junio and Ralph for information
 
-Send Junio and Ralph the Approved Working Scope — the
+Send Junio and Ralph the Accepted Working Scope — the
 option the user picked, plus any changes from the
-approval discussion. Two `SendMessage` calls in the same
+acceptance discussion. Two `SendMessage` calls in the same
 turn, for information only. Sign off `From Grace.` and
 skip the RSVP; no reply is expected. They haven't seen
 the outcome since their Draft Scope Options review in
-Phase 3 step 2. The Approved Working Scope feeds the
+Phase 3 step 2. The Accepted Working Scope feeds the
 Design review that follows.
 
 #### Step 2: Compose the Proposed Design
@@ -446,7 +446,7 @@ Type:
   migration path looks like.
 
 Check the Proposed Design against common overcomplication
-defaults: consumers not on the approved Requirements
+defaults: consumers not on the accepted Requirements
 Analysis list, surfaces held "for the future" or "for
 downstream" with no current consumer, failure modes from
 over-flexible interfaces, and abstraction held "for symmetry"
@@ -476,8 +476,8 @@ meaning more reliably.
 Send the Proposed Design to both Junio and Ralph in
 parallel — two `SendMessage` calls in the same turn. Junio
 and Ralph already hold the Session Type, Requirements
-Analysis, and approved Code Analysis in context from earlier
-phases, and the approved Working Scope from step 1, so the
+Analysis, and accepted Code Analysis in context from earlier
+phases, and the accepted Working Scope from step 1, so the
 message body is the Proposed Design. Sign off
 `From Grace. RSVP via SendMessage.`
 
@@ -578,38 +578,38 @@ rejections with the reason, and what the lateral search
 found (including an empty result). Include any out-of-scope
 decisions and open questions.
 
-End the message with an explicit approval request:
-*"Approve the Design to proceed to Phase 5: Plan."*
+End the message with an explicit acceptance request:
+*"Accept the Design to proceed to Phase 5: Plan."*
 
-#### Step 7: Seek user approval of the Design
+#### Step 7: Seek user acceptance of the Design
 
-Wait for the user's reply. If approved, the phase ends,
+Wait for the user's reply. If accepted, the phase ends,
 continue to Phase 5: Plan. If the user pushes back, revise
-and return to step 6; repeat until approved.
+and return to step 6; repeat until accepted.
 
-This is one of the protocol's user approval gates —
-see "Approval gates" in `protocol.md`.
+This is one of the protocol's user acceptance gates —
+see "Acceptance gates" in `protocol.md`.
 
-The phase ends at user approval of the Design.
+The phase ends at user acceptance of the Design.
 
 ### Phase 5: Plan
 
 The goal of this phase is the agreed Plan — the task list
 that delivers the Design within the Working Scope. You
-share the Approved Design with Junio and Ralph for
+share the Accepted Design with Junio and Ralph for
 information, compose a Draft Plan, get one round of review
 from Junio and Ralph, revise, and share the revised Plan
-with the user for approval.
+with the user for acceptance.
 
-#### Step 1: Share the Approved Design with Junio and Ralph for information
+#### Step 1: Share the Accepted Design with Junio and Ralph for information
 
-Send Junio and Ralph the Approved Design — the option
-the user picked, plus any changes from the approval
+Send Junio and Ralph the Accepted Design — the option
+the user picked, plus any changes from the acceptance
 discussion. Two `SendMessage` calls in the same turn, for
 information only. Sign off `From Grace.` and skip the
 RSVP; no reply is expected. They haven't seen the outcome
 since their Proposed Design review in Phase 4 step
-3. The Approved Design feeds the Plan review that
+3. The Accepted Design feeds the Plan review that
 follows.
 
 #### Step 2: Compose the Draft Plan
@@ -714,20 +714,20 @@ The user learns what the reviews changed without seeing
 them directly. Include any out-of-scope decisions and
 open questions.
 
-End the message with an explicit approval request:
-*"Approve the Plan to proceed to Phase 6: Develop."*
+End the message with an explicit acceptance request:
+*"Accept the Plan to proceed to Phase 6: Develop."*
 
-#### Step 6: Seek user approval of the Plan
+#### Step 6: Seek user acceptance of the Plan
 
-Wait for the user's reply. If approved, the phase ends,
+Wait for the user's reply. If accepted, the phase ends,
 continue to Phase 6: Develop. If the user raises open
 questions or redirects, revise and return to step 5; repeat
-until approved.
+until accepted.
 
-This is one of the protocol's user approval gates —
-see "Approval gates" in `protocol.md`.
+This is one of the protocol's user acceptance gates —
+see "Acceptance gates" in `protocol.md`.
 
-The phase ends at user approval of the Plan.
+The phase ends at user acceptance of the Plan.
 
 ### Phase 6: Develop
 
@@ -752,19 +752,19 @@ as the session branch; no checkout needed.
 All work runs against the session-start state of `main`. Any
 drift on origin is handled at Merge.
 
-##### Step 2: Share the Approved Plan with Junio and Ralph for information
+##### Step 2: Share the Accepted Plan with Junio and Ralph for information
 
 Send Junio and Ralph the same content you sent the user.
 Two `SendMessage` calls in the same turn, for information
 only. Sign off `From Grace.` and skip the RSVP; no reply
 is expected. They haven't seen the outcome since their
-Draft Plan review in Phase 5 step 3. The approved Plan
+Draft Plan review in Phase 5 step 3. The accepted Plan
 feeds Junio's per-task audits and Ralph's per-task
 implementations below.
 
 ##### Step 3: Create the shared task list
 
-Issue the `TaskCreate` calls for the approved task list.
+Issue the `TaskCreate` calls for the accepted task list.
 
 #### Per-task workflow
 
@@ -957,11 +957,11 @@ Claude Code footer:**
 
 Plugin version from `../../.claude-plugin/plugin.json`
 relative to the protocol file. Gate counts are revision
-rounds per approval gate: `req` is Requirements Analysis
+rounds per acceptance gate: `req` is Requirements Analysis
 (closing Phase 1), `ca` is Code Analysis (closing Phase 2),
 `scope` is Working Scope (closing Phase 3), `design` is
 Phase 4, `plan` is Phase 5. A revision round is one
-iteration where the user pushed back before approving.
+iteration where the user pushed back before accepting.
 Rescope value: `no`, `yes-at-design`, `yes-at-plan`, or
 `yes-at-develop`.
 
@@ -1051,7 +1051,7 @@ findings were accepted, flip immediately.
 #### Step 6: Hand back to the user
 
 Hand back to the user once all comments are addressed. The
-PR is ready for the user's approval; Phase 8 handles the
+PR is ready for the user's acceptance; Phase 8 handles the
 merge itself.
 
 ### Phase 8: Merge
@@ -1156,11 +1156,11 @@ Ralph or Junio for another round of judgement.
 Share the proposed decision table with the user before
 drafting issue or comment text. For each candidate, show the
 finding, the decision, and the reason. Ask the user to
-approve the decision table or redirect it.
+accept the decision table or redirect it.
 
-After the user approves the decisions, write the exact
+After the user accepts the decisions, write the exact
 issue or comment text for every item that will be filed or
-commented. Show that exact text to the user and get approval
+commented. Show that exact text to the user and get acceptance
 before posting. Do not rely on an unshared draft for
 GitHub-visible text.
 
@@ -1284,10 +1284,10 @@ numbers, and any other identifiers that tie the finding to this
 codebase. Describe the dream-side behaviour and the pattern the
 team hit, not the host code that revealed it.
 
-The user approves each draft before it's filed; for an upstream
-draft, what the user approves is the wording as it will be
+The user accepts each draft before it's filed; for an upstream
+draft, what the user accepts is the wording as it will be
 filed (already stripped if the host repo isn't public). With
-approval, you or the user files. Apply a category label to each
+acceptance, you or the user files. Apply a category label to each
 new issue — see "Labelling new issues" in Common rules. After
 the retrospective, or if the user declines it, tell the user
 the session work is done and that they can return to the main
@@ -1371,7 +1371,7 @@ Any of these is enough to apply the Coherence Test:
 
 ### Rescope shapes
 
-When the user approves a rescope, the work happens at one or
+When the user accepts a rescope, the work happens at one or
 both of two layers.
 
 **Requirements layer — the user's call.**
@@ -1385,7 +1385,7 @@ both of two layers.
     what was meant; the team implements against the new
     version.
 
-**Code layer — team's expertise, user approves.**
+**Code layer — team's expertise, user accepts.**
 
 - **Simplify.** Trim within an active feature — collapse
   helpers, cut speculative abstraction, reduce indirection. The
@@ -1420,7 +1420,7 @@ point.
 
 ### Task list shape after a rescope
 
-When the user approves a rescope, agree on one of three shapes:
+When the user accepts a rescope, agree on one of three shapes:
 
 - **Drop and rebuild.** The original tasks were aimed at the
   symptom; redraft from the new scope.
@@ -1548,7 +1548,7 @@ You never:
   Dream-bounces: <n>
   ```
 
-  `Dream-origin` is one of: `plan` (approved Plan task),
+  `Dream-origin` is one of: `plan` (accepted Plan task),
   `junio-audit` (Junio follow-on), `ada-review` (Ada follow-on),
   `user-review` (user-requested during PR review),
   `conflict-resolution` (Phase 8 merge work).
@@ -1663,7 +1663,7 @@ for that phase:
 ```
 
 Print it once per phase. Do not print markers for Phase 0:
-Boot, approval gates, Rescope Discussion, or individual tasks.
+Boot, acceptance gates, Rescope Discussion, or individual tasks.
 
 In user-facing output, include only information the user needs
 for the next decision, current status, or final hand-off. Don't

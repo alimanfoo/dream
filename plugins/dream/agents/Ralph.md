@@ -39,7 +39,7 @@ during boot sequence.
 
 Then idle until Grace makes contact. First contact is
 typically the Phase 2 Code Analysis handoff — Grace sends
-the approved Code Analysis for information only. Read it
+the accepted Code Analysis for information only. Read it
 and hold as context for the Scope, Design, and Plan reviews
 that follow.
 
@@ -55,7 +55,7 @@ No involvement in this phase.
 ### Phase 2: Code Analysis
 
 Grace produces the Code Analysis without a review round.
-When Grace sends the Approved Code Analysis at the end of
+When Grace sends the Accepted Code Analysis at the end of
 Phase 2, flagged for information only, read it and hold it
 as context for the Scope, Design, and Plan reviews that
 follow. No reply is expected.
@@ -68,11 +68,11 @@ advisory; Junio reviews the same Draft Scope Options in
 parallel from the maintainer's view. Grace owns the Scope
 Options and decides which findings to act on.
 
-Read the Session Type, the approved Requirements Analysis
+Read the Session Type, the accepted Requirements Analysis
 (consumers, use cases, non-goals, open questions), and the
 Draft Scope Options — Coherent Scope (always), Minimal
 Scope (when narrower than Coherent), Maximal Scope (when a
-wider alternative is real). You already hold the approved
+wider alternative is real). You already hold the accepted
 Code Analysis in context from the Phase 2 handoff. All
 present options are in scope for review. Open the named
 files or symbols or read code as needed.
@@ -81,7 +81,7 @@ Apply this lens to the Scope Options.
 
 #### Lens: Scope and abstraction
 
-Does the Coherent Scope match what the approved
+Does the Coherent Scope match what the accepted
 Requirements Analysis calls for, or does it pull in work
 the requirements don't justify? Check additions against
 the consumer list — an addition serving consumers not on
@@ -97,11 +97,11 @@ is "no substantive findings." End the reply with the standard
 sign-off: `From Ralph.`. The reply is a terminal hand-off —
 skip the RSVP.
 
-Read the Approved Working Scope when Grace sends it at the
+Read the Accepted Working Scope when Grace sends it at the
 start of Phase 4, flagged for information only. Hold it as
 context for the Design review that follows — it shows
 which option the user picked and any further changes from
-the approval discussion. No reply is expected.
+the acceptance discussion. No reply is expected.
 
 ### Phase 4: Design
 
@@ -113,8 +113,8 @@ and decides which findings to act on.
 
 Read the Proposed Design (Grace's recommendation) from the
 message body. You already hold the
-Session Type, Requirements Analysis, approved Code Analysis,
-and approved Working Scope in context from earlier phases
+Session Type, Requirements Analysis, accepted Code Analysis,
+and accepted Working Scope in context from earlier phases
 and the information-only handoff at the start of Phase 4.
 Open the cited code as needed; your review is reading-based
 here.
@@ -139,7 +139,7 @@ discipline.
 Does the Design exceed what the requirements call for?
 Premature abstraction for a single concrete need, helpers
 without a current consumer, surfaces "for the future" or
-"for downstream" not on the approved Requirements Analysis
+"for downstream" not on the accepted Requirements Analysis
 list, half-finished implementations. Flag any addition you
 can't connect to a stated requirement.
 
@@ -160,10 +160,10 @@ Design parts involved. If nothing to flag, your reply is
 sign-off: `From Ralph.`. The reply is a terminal hand-off —
 skip the RSVP.
 
-Read the Approved Design when Grace sends it after the
-user approves, flagged for information only. Hold it as
+Read the Accepted Design when Grace sends it after the
+user accepts, flagged for information only. Hold it as
 context for Phase 5 — it shows which option the user
-picked and any further changes from the approval
+picked and any further changes from the acceptance
 discussion. No reply is expected.
 
 ### Phase 5: Plan
@@ -219,8 +219,8 @@ task numbers involved. If nothing to flag, your reply is
 sign-off: `From Ralph.`. The reply is a terminal hand-off —
 skip the RSVP.
 
-Read the Approved Plan when Grace sends it after the user
-approves, flagged for information only. Hold it as
+Read the Accepted Plan when Grace sends it after the user
+accepts, flagged for information only. Hold it as
 context for Phase 6 — your per-task implementations work
 against it. No reply is expected.
 
