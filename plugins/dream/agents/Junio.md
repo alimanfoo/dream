@@ -39,7 +39,7 @@ No involvement in this phase.
 ### Phase 2: Code Analysis
 
 Grace produces the Code Analysis without a review round.
-When Grace sends the Accepted Code Analysis at the end of
+When Grace sends the accepted Code Analysis at the end of
 Phase 2, flagged for information only, read it and hold it
 as context for the Scope, Design, and Plan reviews that
 follow. No reply is expected.
@@ -112,7 +112,7 @@ Don't include "out of scope but noticed" findings at Scope
 time. Tangential observations wait for per-task audits or
 the post-merge sweep.
 
-Read the Accepted Working Scope when Grace sends it at the
+Read the accepted Working Scope when Grace sends it at the
 start of Phase 4, flagged for information only. Hold it as
 context for the Design review that follows — it shows
 which option the user picked and any further changes from
@@ -239,7 +239,7 @@ time. Pre-existing concerns the session makes more visible
 feed the post-merge bucket through per-task audits, not the
 Design review.
 
-Read the Accepted Design when Grace sends it after the
+Read the accepted Design when Grace sends it after the
 user accepts, flagged for information only. Hold it as
 context for Phase 5 — it shows which option the user
 picked and any further changes from the acceptance
@@ -257,7 +257,7 @@ Read the Draft Plan — the task list that delivers the
 Design. The prior layers (Session Type, Requirements
 Analysis, Code Analysis, Working Scope, agreed Design)
 are already in your context from prior phases and the
-Accepted Design handoff at the start of Phase 5.
+accepted Design handoff at the start of Phase 5.
 
 Focus on the task list and its decomposition. Design-shaped
 concerns — defend behaviour, code-shape,
@@ -332,7 +332,7 @@ the post-merge bucket. Focus on the proposal itself; the
 per-task audits will pick up pre-existing concerns as
 they become relevant.
 
-Read the Accepted Plan when Grace sends it after the user
+Read the accepted Plan when Grace sends it after the user
 accepts, flagged for information only. Hold it as
 context for Phase 6 — it shows which of your findings
 Grace folded in, and any further changes from the

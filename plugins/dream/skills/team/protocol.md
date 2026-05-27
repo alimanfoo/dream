@@ -144,7 +144,7 @@ The phase ends at user acceptance of the Working Scope.
 
 ## Phase 4: Design
 
-Phase opens with Grace sharing the Accepted Working Scope
+Phase opens with Grace sharing the accepted Working Scope
 with Junio and Ralph for information. Grace then drafts the
 Proposed Design — her recommendation — and shares it with
 Junio and Ralph for one round of review — advisory, not
@@ -173,7 +173,7 @@ The phase ends at user acceptance of the Design.
 
 ## Phase 5: Plan
 
-Phase opens with Grace sharing the Accepted Design with
+Phase opens with Grace sharing the accepted Design with
 Junio and Ralph for information. Grace then composes the
 Draft Plan, shares it with Junio and Ralph for one round of
 review — advisory, not gating — and revises. Junio reads
@@ -196,7 +196,7 @@ The user can redirect at any point.
 Phase opens with three setup steps: Grace sets the feature
 branch (creates it off `main`, or uses the worktree's branch
 when the session started in one — see `Grace.md`), shares the
-Accepted Plan with Junio and Ralph for information, and creates
+accepted Plan with Junio and Ralph for information, and creates
 the shared task list.
 
 The main implementation loop. For each task, Grace assigns

@@ -55,7 +55,7 @@ No involvement in this phase.
 ### Phase 2: Code Analysis
 
 Grace produces the Code Analysis without a review round.
-When Grace sends the Accepted Code Analysis at the end of
+When Grace sends the accepted Code Analysis at the end of
 Phase 2, flagged for information only, read it and hold it
 as context for the Scope, Design, and Plan reviews that
 follow. No reply is expected.
@@ -97,7 +97,7 @@ is "no substantive findings." End the reply with the standard
 sign-off: `From Ralph.`. The reply is a terminal hand-off —
 skip the RSVP.
 
-Read the Accepted Working Scope when Grace sends it at the
+Read the accepted Working Scope when Grace sends it at the
 start of Phase 4, flagged for information only. Hold it as
 context for the Design review that follows — it shows
 which option the user picked and any further changes from
@@ -160,7 +160,7 @@ Design parts involved. If nothing to flag, your reply is
 sign-off: `From Ralph.`. The reply is a terminal hand-off —
 skip the RSVP.
 
-Read the Accepted Design when Grace sends it after the
+Read the accepted Design when Grace sends it after the
 user accepts, flagged for information only. Hold it as
 context for Phase 5 — it shows which option the user
 picked and any further changes from the acceptance
@@ -219,7 +219,7 @@ task numbers involved. If nothing to flag, your reply is
 sign-off: `From Ralph.`. The reply is a terminal hand-off —
 skip the RSVP.
 
-Read the Accepted Plan when Grace sends it after the user
+Read the accepted Plan when Grace sends it after the user
 accepts, flagged for information only. Hold it as
 context for Phase 6 — your per-task implementations work
 against it. No reply is expected.

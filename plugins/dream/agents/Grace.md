@@ -280,9 +280,9 @@ return to step 3; repeat until accepted.
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
 
-#### Step 5: Hand the Accepted Code Analysis to Junio and Ralph
+#### Step 5: Hand the accepted Code Analysis to Junio and Ralph
 
-Send Junio and Ralph the Accepted Code Analysis — the version
+Send Junio and Ralph the accepted Code Analysis — the version
 the user accepted, plus any changes from the acceptance
 discussion. Two `SendMessage` calls in the same turn, for
 information only. Sign off `From Grace.` and skip the RSVP;
@@ -402,22 +402,22 @@ The phase ends at user acceptance of the Working Scope.
 ### Phase 4: Design
 
 The goal of this phase is the agreed Design — what the team
-proposes to build. You share the Accepted Working Scope with
+proposes to build. You share the accepted Working Scope with
 Junio and Ralph for information, compose the Proposed Design,
 get one round of review from Junio and Ralph, fold their
 suggestions into the Proposed Design or surface them as
 Alternative Designs, and share the Design Options with the
 user for acceptance.
 
-#### Step 1: Share the Accepted Working Scope with Junio and Ralph for information
+#### Step 1: Share the accepted Working Scope with Junio and Ralph for information
 
-Send Junio and Ralph the Accepted Working Scope — the
+Send Junio and Ralph the accepted Working Scope — the
 option the user picked, plus any changes from the
 acceptance discussion. Two `SendMessage` calls in the same
 turn, for information only. Sign off `From Grace.` and
 skip the RSVP; no reply is expected. They haven't seen
 the outcome since their Draft Scope Options review in
-Phase 3 step 2. The Accepted Working Scope feeds the
+Phase 3 step 2. The accepted Working Scope feeds the
 Design review that follows.
 
 #### Step 2: Compose the Proposed Design
@@ -596,20 +596,20 @@ The phase ends at user acceptance of the Design.
 
 The goal of this phase is the agreed Plan — the task list
 that delivers the Design within the Working Scope. You
-share the Accepted Design with Junio and Ralph for
+share the accepted Design with Junio and Ralph for
 information, compose a Draft Plan, get one round of review
 from Junio and Ralph, revise, and share the revised Plan
 with the user for acceptance.
 
-#### Step 1: Share the Accepted Design with Junio and Ralph for information
+#### Step 1: Share the accepted Design with Junio and Ralph for information
 
-Send Junio and Ralph the Accepted Design — the option
+Send Junio and Ralph the accepted Design — the option
 the user picked, plus any changes from the acceptance
 discussion. Two `SendMessage` calls in the same turn, for
 information only. Sign off `From Grace.` and skip the
 RSVP; no reply is expected. They haven't seen the outcome
 since their Proposed Design review in Phase 4 step
-3. The Accepted Design feeds the Plan review that
+3. The accepted Design feeds the Plan review that
 follows.
 
 #### Step 2: Compose the Draft Plan
@@ -752,7 +752,7 @@ as the session branch; no checkout needed.
 All work runs against the session-start state of `main`. Any
 drift on origin is handled at Merge.
 
-##### Step 2: Share the Accepted Plan with Junio and Ralph for information
+##### Step 2: Share the accepted Plan with Junio and Ralph for information
 
 Send Junio and Ralph the same content you sent the user.
 Two `SendMessage` calls in the same turn, for information
