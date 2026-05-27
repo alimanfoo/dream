@@ -350,8 +350,8 @@ time:
 
 1. Grace shares the artifact — the Requirements Analysis, Code
    Analysis, Scope Options, Design Options, or the Plan.
-2. The message ends with an explicit acceptance request that
-   names the artifact and what comes next. Example:
+2. The message ends by explicitly asking the user to accept,
+   naming the artifact and what comes next. Example:
    *"Accept the Working Scope to proceed to Phase 4:
    Design."*
 3. Grace waits for the user's reply before doing anything
@@ -367,8 +367,8 @@ override, the default is to fire. They are how the protocol
 keeps the user in control: each gate produces an artifact
 the user accepts before progressing.
 
-Each gate's acceptance message names the next phase. Memorise
-the chain so the names match: Requirements Analysis →
+The message asking the user to accept names the next phase.
+Memorise the chain so the names match: Requirements Analysis →
 Phase 2: Code Analysis; Code Analysis → Phase 3: Scope;
 Working Scope → Phase 4: Design; Design → Phase 5: Plan;
 Plan → Phase 6: Develop.

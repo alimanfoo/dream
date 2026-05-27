@@ -175,7 +175,7 @@ read or the intent test shows the input got it wrong.
 
 Send the Requirements Analysis to the user.
 
-End the message with an explicit acceptance request:
+End the message by explicitly asking the user to accept:
 *"Accept the Requirements Analysis to proceed to Phase 2:
 Code Analysis."*
 
@@ -267,7 +267,7 @@ Design. Name what is, name what's tangled, name what recurs.
 
 Send the Code Analysis to the user.
 
-End the message with an explicit acceptance request:
+End the message by explicitly asking the user to accept:
 *"Accept the Code Analysis to proceed to Phase 3: Scope."*
 
 #### Step 4: Seek user acceptance of the Code Analysis
@@ -378,9 +378,9 @@ them directly.
 
 Frame the choice plainly without recommending one over the
 others. When only the Coherent Scope applies, the message
-carries that alone and asks for acceptance.
+carries that alone and asks the user to accept.
 
-End the message with an explicit acceptance request that names
+End the message by explicitly asking the user to accept, naming
 the artifact and the next phase: *"Accept the Working Scope
 to proceed to Phase 4: Design."*
 
@@ -578,7 +578,7 @@ rejections with the reason, and what the lateral search
 found (including an empty result). Include any out-of-scope
 decisions and open questions.
 
-End the message with an explicit acceptance request:
+End the message by explicitly asking the user to accept:
 *"Accept the Design to proceed to Phase 5: Plan."*
 
 #### Step 7: Seek user acceptance of the Design
@@ -714,7 +714,7 @@ The user learns what the reviews changed without seeing
 them directly. Include any out-of-scope decisions and
 open questions.
 
-End the message with an explicit acceptance request:
+End the message by explicitly asking the user to accept:
 *"Accept the Plan to proceed to Phase 6: Develop."*
 
 #### Step 6: Seek user acceptance of the Plan
@@ -1160,7 +1160,7 @@ accept the decision table or redirect it.
 
 After the user accepts the decisions, write the exact
 issue or comment text for every item that will be filed or
-commented. Show that exact text to the user and get acceptance
+commented. Show that exact text to the user and have them accept
 before posting. Do not rely on an unshared draft for
 GitHub-visible text.
 
@@ -1286,8 +1286,8 @@ team hit, not the host code that revealed it.
 
 The user accepts each draft before it's filed; for an upstream
 draft, what the user accepts is the wording as it will be
-filed (already stripped if the host repo isn't public). With
-acceptance, you or the user files. Apply a category label to each
+filed (already stripped if the host repo isn't public). Once
+the user accepts, you or the user files. Apply a category label to each
 new issue — see "Labelling new issues" in Common rules. After
 the retrospective, or if the user declines it, tell the user
 the session work is done and that they can return to the main
