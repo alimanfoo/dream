@@ -8,7 +8,7 @@
     {
       "name": "dream",
       "source": "./plugins/dream",
-      "description": "A multi-agent team for shipping great code while maintaining codebase coherence with minimal hand-holding."
+      "description": "A multi-agent team for delivering great code, keeping the codebase coherent, and doing both with minimal input from you. Requires Claude Code's experimental agent teams feature."
     }
   ]
 }
