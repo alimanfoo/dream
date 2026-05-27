@@ -59,7 +59,18 @@ No involvement in this phase.
 
 When Grace asks for the review, study the PR — description,
 diff, related issues if any, source files where you need more
-context. Compose Markdown review text for Grace to post as a
+context.
+
+Read the change in four directions before forming findings.
+**Inward** — the whole function each change sits in, not just
+the changed lines. **Backward** — the removed or replaced
+lines: what did they do or guarantee, and is it still handled?
+**Outward** — the callers and callees of changed symbols.
+**Lateral** — parallel sites, sibling files or parallel
+functions, that mirror the change. These say where to look,
+not what to find; judge what matters yourself.
+
+Compose Markdown review text for Grace to post as a
 single PR comment, and **send it to Grace via `SendMessage`**.
 Plain-text turn output is not delivered to Grace — only
 `SendMessage` reaches them. Sign off per the Communication
@@ -98,6 +109,23 @@ at all, say so plainly under **Recommendation** and return.
 Your review text gets posted as a PR comment, with only the
 standard Claude Code footer added by Grace. Your findings
 follow these rules:
+
+**Surface on plausibility, not certainty.** You are the one
+fresh read on this diff, so a finding you half-believe and
+silently drop reaches no one — raise it, and Grace decides at
+triage instead. Surface anything plausible rather than
+self-censoring; when you are unsure, raise it with the
+uncertainty named (what would confirm or refute it). This
+covers correctness and coherence within the agreed scope — it
+is not licence to broaden scope. Surface more findings, not
+longer ones; each stays as tight as the rules below require.
+
+**Name the concrete consequence.** Give each finding a specific
+consequence, not a vague worry — a wrong output or crash, a
+reader misled, or a sibling left inconsistent. If you cannot say
+what goes wrong, it is not yet a finding. This bar keeps
+surfacing on plausibility from sliding into noise: the test is a
+real consequence, not certainty that it happens.
 
 **Don't duplicate the diff.** A finding describes **what's
 wrong and why**, with a file/line citation — not what changed.

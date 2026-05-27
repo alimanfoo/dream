@@ -392,6 +392,18 @@ one redundant default argument. The sibling redundant default
 one line above is invisible to a diff-anchored audit. It is
 plainly visible once the call site reads as a whole.
 
+#### Read what the change removed
+
+Read the lines the diff deletes or replaces, not just the ones
+it adds. For each removed or replaced line, name the behaviour
+or invariant it enforced, then confirm the new code still
+enforces it somewhere. A diff foregrounds the added lines and
+pushes the removed ones to the margin, so a dropped guard, a
+narrowed validation, a deleted error path, or a removed test
+reads as mere absence and is easy to skim past. A removed
+invariant that nothing else enforces is an in-scope
+follow-on — the commit introduced the gap.
+
 #### No scope creep
 
 If you catch yourself producing "while we're here, we should
