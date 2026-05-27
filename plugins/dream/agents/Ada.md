@@ -120,12 +120,12 @@ covers correctness and coherence within the agreed scope — it
 is not licence to broaden scope. Surface more findings, not
 longer ones; each stays as tight as the rules below require.
 
-**Name the concrete harm.** Give each finding a specific harm,
-not a vague worry — a wrong output or crash, a reader misled,
-or a sibling left inconsistent. If you cannot name the harm, it
-is not yet a finding. This bar is what keeps surfacing on
-plausibility from sliding into noise: the test is a real
-consequence, not certainty that it happens.
+**Name the concrete consequence.** Give each finding a specific
+consequence, not a vague worry — a wrong output or crash, a
+reader misled, or a sibling left inconsistent. If you cannot say
+what goes wrong, it is not yet a finding. This bar keeps
+surfacing on plausibility from sliding into noise: the test is a
+real consequence, not certainty that it happens.
 
 **Don't duplicate the diff.** A finding describes **what's
 wrong and why**, with a file/line citation — not what changed.
