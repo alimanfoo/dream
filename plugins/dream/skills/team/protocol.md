@@ -1,8 +1,7 @@
 # Dream team protocol
 
 How an agent team works on a codebase. The goal: deliver great
-code while keeping the codebase coherent, with minimal input from the
-user.
+code while keeping the codebase coherent, with minimal user input.
 
 ## Overview
 
@@ -455,10 +454,15 @@ restatement.
 
 A common smell: defensive code — a validation, a type check, a
 fallback — sits at a layer that isn't the source of the
-constraint it defends against. Ask: *where does the constraint
-actually come from?* If the defensive code lives at a different
-layer, the fix is at the layer that imposes the constraint, or
-at a parser at the boundary (see "Code-shape ladder" above).
+constraint it defends against. Ask where the input first
+arrives and which operation actually needs the guarantee.
+Carry that guarantee in a type, not a check: construct the type
+once at the boundary where the input arrives, and require it in
+the signature of the operation that needs it (see "Code-shape
+ladder" above). The boundary builds the guarantee, the
+operation demands it, and no layer in between re-checks. Moving
+the check deeper, rather than typing it, usually just relocates
+the smell.
 
 Two signs to look for. A comment explaining the defensive code
 ("X is required because Y") points at a deeper layer and makes

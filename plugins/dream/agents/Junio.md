@@ -95,11 +95,11 @@ Maximal makes it sharper.
 #### Lens 3: Symptom or cause?
 
 Check each scope item: does it name the cause, or a symptom?
-Tightening defensive code at a layer that isn't the source
-of the constraint is symptom-shaped. The cause lives at the
-layer that imposes the constraint. Flag the item and propose
-widening the scope to that layer. See "Wrong-layer defensive
-code" in `protocol.md`.
+Defensive code at a layer that isn't the source of the
+constraint is symptom-shaped. Flag the item and propose
+widening the scope to reach the cause — not just the layer
+where the symptom shows. See "Wrong-layer defensive code" in
+`protocol.md`.
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or

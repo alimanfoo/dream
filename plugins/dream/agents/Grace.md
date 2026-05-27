@@ -230,6 +230,13 @@ function that imposes it. Name any defensive code that sits at
 a different layer — see "Wrong-layer defensive code" in
 `protocol.md`.
 
+Treat a comment that justifies non-obvious code as a candidate
+smell, not description. A comment explaining why code exists by
+citing another function, layer, or invariant is a tell, not an
+explanation that settles the matter — read the underlying code
+with extra scrutiny and flag it in the analysis rather than
+recording the comment's rationale as fact.
+
 #### Step 2: Compose the Code Analysis
 
 Compose the Code Analysis — your structural read of the
