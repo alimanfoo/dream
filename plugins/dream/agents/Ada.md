@@ -112,7 +112,7 @@ follow these rules:
 
 **Surface on plausibility, not certainty.** You are the one
 fresh read on this diff, so a finding you half-believe and
-silently drop dies with you — raise it and Grace decides at
+silently drop reaches no one — raise it, and Grace decides at
 triage instead. Surface anything plausible rather than
 self-censoring; when you are unsure, raise it with the
 uncertainty named (what would confirm or refute it). This

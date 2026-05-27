@@ -401,8 +401,8 @@ enforces it somewhere. A diff foregrounds the added lines and
 pushes the removed ones to the margin, so a dropped guard, a
 narrowed validation, a deleted error path, or a removed test
 reads as mere absence and is easy to skim past. A removed
-invariant with no new home is an in-scope follow-on — the
-commit introduced the gap.
+invariant that nothing else enforces is an in-scope
+follow-on — the commit introduced the gap.
 
 #### No scope creep
 
