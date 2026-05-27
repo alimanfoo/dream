@@ -1,8 +1,7 @@
 # Dream team protocol
 
 How an agent team works on a codebase. The goal: deliver great
-code while keeping the codebase coherent, with minimal input from the
-user.
+code while keeping the codebase coherent, with minimal user input.
 
 ## Overview
 
