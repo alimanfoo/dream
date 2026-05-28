@@ -500,8 +500,8 @@ message body is the Proposed Design. Sign off
 
 Send the same body to each reviewer; their role files
 steer the lens. Junio reads from the maintainer's view —
-defend behaviour, code-shape, surviving-fit,
-Challenge — and surfaces candidate lateral moves: different
+defend behaviour, code-shape, surviving-fit — and surfaces
+candidate lateral moves: different
 designs, at the same scope, that remove duplication, reduce
 complexity, or reveal intent more clearly, each tagged
 strictly-better or with its trade-off. Ralph reads from the
@@ -671,8 +671,8 @@ and step 1, so the message body is the Draft Plan. Sign off
 
 Send the same body to each reviewer; their role files
 steer the lens. Junio reads from the maintainer's view —
-defend completeness across tasks, tidy-first precursors,
-Challenge. Ralph reads from the implementer's view
+defend completeness across tasks, tidy-first precursors.
+Ralph reads from the implementer's view
 — task implementability and tidy-first from the
 implementer's angle. Each replies with a numbered list of
 findings (or "no substantive findings"), optionally with
