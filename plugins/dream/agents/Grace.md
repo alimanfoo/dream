@@ -829,10 +829,10 @@ or tests — those are Ralph's gate, green by the time you're
 reading. If something looks off, bounce back rather than
 fixing.
 
-##### Step 4: Accept
+##### Step 4: Commit
 
 Re-diff before staging. The working tree is live between
-verify and accept — any changes in that window land
+verify and commit — any changes in that window land
 silently if you stage on the earlier read. Then
 `TaskUpdate status=completed`, stage Ralph's changes,
 commit, and push.

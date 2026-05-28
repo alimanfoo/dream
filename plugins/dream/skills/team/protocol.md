@@ -209,11 +209,11 @@ the shared task list.
 
 The main implementation loop. For each task, Grace assigns
 to Ralph; Ralph implements and reports back; Grace verifies
-the diff, accepts the work, commits and pushes; Junio audits
+the diff, commits and pushes; Junio audits
 the committed change; Grace triages findings into follow-on
 tasks or holds for post-merge triage; the loop repeats. The
 chain ends when the task list drains. Full per-task detail
-in `Grace.md` (assign / verify / accept / triage), `Ralph.md`
+in `Grace.md` (assign / verify / commit / triage), `Ralph.md`
 (implement), and `Junio.md` (audit).
 
 ### Coherence chain
