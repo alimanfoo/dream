@@ -104,7 +104,10 @@ tracker for recurrence on the named surfaces. Grace names the
 Session Type (bug fix, enhancement, or maintenance) and shares
 the Requirements Analysis — consumers, use cases, non-goals, and
 open questions, with each inference marked stated or
-assumed — with the user for acceptance.
+assumed — with the user for acceptance. At the end of the phase
+Grace hands the accepted Requirements Analysis and the Session
+Type to Junio and Ralph for information; they hold them as
+context for the Scope, Design, and Plan reviews that follow.
 
 The phase ends at user acceptance of the Requirements Analysis.
 
