@@ -396,10 +396,10 @@ it from a blocked position.
 
 A challenge is admissible only on new evidence the earlier
 phase didn't have. Wanting to redesign on reflection is not a
-challenge; see "No orphaned observations" on holding to a
-decision once made. Grace can raise one at Design, Plan,
-Develop, or when triaging an Ada review finding. "Rescope" is
-one case: a challenge to the Working Scope. Full mechanism in
+challenge. Overturning an accepted decision goes through a
+challenge, openly — not slipped through as a fresh
+observation. Grace can raise one at Design, Plan, Develop, or
+when triaging an Ada review finding. Full mechanism in
 `Grace.md`.
 
 ## No orphaned observations
@@ -416,16 +416,6 @@ defers to Phase 9 Collect; an open question defers to the user
 before Plan acceptance. Both have a named destination and a
 reason that matches the receiving phase's job. There is no
 other deferral — "we'll come back to this" is not an outcome.
-
-Later outcomes respect earlier ones. Hold to a decision
-once made; the one licence to overturn it is new evidence
-the earlier call didn't have — and the channel for that is
-a challenge (see above), which states the prior outcome and
-the new reading and takes the call to the user.
-Reconsidering without new evidence is flip-flopping, not a
-challenge. Don't run an overturn through a procedure that
-frames it as fresh observation; that hides it from the
-user.
 
 ## Existing code is unproven
 
