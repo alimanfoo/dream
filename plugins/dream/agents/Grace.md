@@ -1356,16 +1356,18 @@ The shape is the same every time:
 
 ### Evidence
 
-Any of these can show an accepted artifact no longer holds:
+New evidence can break an accepted artifact in many ways — for
+example:
 
-- The work shows the code is shaped differently from the Code
+- The code turns out shaped differently from the Code
   Analysis.
+- A consumer or use case the Requirements Analysis named
+  behaves differently than recorded.
 - The Design's approach doesn't hold once implementation
-  starts.
-- Repeated audits circle the same surface for different stated
-  reasons — the Working Scope may be aimed at a symptom rather
-  than the root cause. The test: would finishing the agreed
-  work leave the root cause unresolved?
+  starts, or a planned task proves impossible as written.
+- Repeated audits circle the same surface — the Working Scope
+  may be aimed at a symptom; the test is whether finishing the
+  agreed work would leave the root cause unresolved.
 
 ### On accept, who revises
 
