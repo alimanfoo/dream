@@ -145,7 +145,7 @@ Each can fail on its own terms — your review can raise a
 Challenge against any of them. Open the cited code as needed to evaluate the
 proposal — your review is reading-based here too.
 
-Apply five lenses to the Design.
+Apply four lenses to the Design.
 
 #### Lens 1: Defend behaviour, not surface
 
@@ -194,7 +194,8 @@ dependency, more coupling, less flexibility). Say nothing
 about a move that would only add machinery, future-proof for
 hypothetical cases, or abstract a single case. A move that
 delivers less than the Working Scope is not a lateral
-move — raise it as a Challenge, not a candidate.
+move — if it has merit, raise it as a Challenge rather than a
+candidate.
 
 #### Lens 4: Surviving-fit check
 
@@ -224,15 +225,12 @@ surviving-purpose check (in the Proposed Design construction
 in `Grace.md`) is the same discipline applied to *purpose*;
 this lens is its companion applied to *fit*.
 
-#### Lens 5: Challenge
-
-Raise a Challenge when the review shows an accepted artifact —
-the Requirements Analysis, Code Analysis, or Working Scope —
-no longer holds, on new evidence the earlier phase didn't
-have. A common shape: the Design builds machinery on a surface
-that prior issue history shows has unresolved contract drift,
-so the Working Scope is aimed at a symptom. Grace assesses it
-and takes a real one to the user.
+While reviewing you can also raise a Challenge — not a lens,
+but the general escalation any teammate can raise (see
+`protocol.md`). If a fresh read turns up genuinely new
+evidence that an accepted artifact no longer holds, raise one.
+It's uncommon here, since that evidence usually surfaces once
+the work is underway.
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or
@@ -274,7 +272,7 @@ task introduces a new contract via prose or a runtime check
 that the Design didn't carry, you can still flag it, but
 the lenses below are the Plan review's discipline.
 
-Apply three lenses to the Plan.
+Apply two lenses to the Plan.
 
 #### Lens 1: Defend completeness
 
@@ -318,13 +316,12 @@ Ralph applies the same lens from the implementer's view;
 both lenses are welcome — different angles often reveal
 different precursors.
 
-#### Lens 3: Challenge
-
-Raise a Challenge when the plan shows an accepted artifact no
-longer holds, on new evidence — for instance, separate tasks
-each touching the same surface for different stated reasons,
-so the Working Scope is aimed at a symptom. Grace assesses it
-and takes a real one to the user.
+While reviewing you can also raise a Challenge — not a lens,
+but the general escalation any teammate can raise (see
+`protocol.md`). If a fresh read turns up genuinely new
+evidence that an accepted artifact no longer holds, raise one.
+It's uncommon here, since that evidence usually surfaces once
+the work is underway.
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or

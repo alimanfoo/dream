@@ -576,8 +576,8 @@ dependency, more coupling, less flexibility. Reaching for
 an existing library in place of custom code is a common
 Alternative agents miss; surface it when it fits. A move
 that delivers less than the Working Scope is not an
-Alternative; it is a scope change, so raise it as a
-Challenge.
+Alternative; it is a scope change — raise it as a Challenge if
+it has merit.
 
 Write the search result even when it is empty. Report what
 folded into the Proposed Design, each Alternative with its
