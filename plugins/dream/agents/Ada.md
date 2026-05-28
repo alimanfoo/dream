@@ -134,9 +134,9 @@ with `baz`'s `_sync_` prefix — consider keeping it consistent"
 is a finding. Don't quote the diff on both sides of the change;
 cite the line and describe the concern.
 
-**You judge the diff; Grace judges scope.** You haven't seen
+**You judge the PR; Grace judges scope.** You haven't seen
 the Working Scope, so don't police it — say what you see. A
-correctness or coherence problem in the diff is a normal
+correctness or coherence problem in the PR is a normal
 **Blocking** or **Non-blocking** finding. A broader,
 pre-existing concern, not part of what the PR changed, goes
 under **Out of scope but noticed**. Grace holds the artifacts
