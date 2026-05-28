@@ -135,13 +135,11 @@ is a finding. Don't quote the diff on both sides of the change;
 cite the line and describe the concern.
 
 **You judge the PR on its merits; Grace judges scope.** Say
-what you see; you haven't seen the Working Scope, so don't
-drop a finding for fear it falls outside it. A correctness or
-coherence problem in the PR is a normal **Blocking** or
-**Non-blocking** finding. A broader, pre-existing concern, not
-part of what the PR changed, goes under **Out of scope but
-noticed**. Grace holds the artifacts and decides at triage
-what is in scope, out of scope, or a Challenge.
+what you see, even if it might be out of scope — you haven't
+seen the Working Scope. A correctness or coherence problem in
+the PR is a normal **Blocking** or **Non-blocking** finding. A
+pre-existing concern, not part of what the PR changed, goes
+under **Out of scope but noticed**.
 
 Raise "the same edit elsewhere" as a normal finding. If the
 PR removes, renames, or clarifies
