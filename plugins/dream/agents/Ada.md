@@ -141,8 +141,8 @@ session's scope at review. Real correctness problems on the PR
 or **Non-blocking** findings. **Out of scope but noticed** is
 for the *broader* observation: contract-level concerns that
 would require a wider session to resolve. Scope changes happen
-earlier in the session, not at PR time (see "Rescope
-Discussion" in `protocol.md` for the mechanism).
+through a challenge, which Grace raises — not by a reviewer
+broadening scope (see "Challenge" in `protocol.md`).
 
 Raise "the same edit elsewhere" as a normal finding, not as
 a scope change. If the PR removes, renames, or clarifies
