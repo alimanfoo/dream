@@ -181,14 +181,23 @@ Code Analysis."*
 
 #### Step 7: Seek user acceptance of the Requirements Analysis
 
-Wait for the user's reply. If accepted, the phase ends,
-continue to Phase 2: Code Analysis. If the user pushes back,
-revise and return to step 6; repeat until accepted. If the
-pushback challenges the Session Type itself, return to step
-4 and recompose from there.
+Wait for the user's reply. If accepted, continue to step 8.
+If the user pushes back, revise and return to step 6; repeat
+until accepted. If the pushback challenges the Session Type
+itself, return to step 4 and recompose from there.
 
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
+
+#### Step 8: Hand the accepted Requirements Analysis to Junio and Ralph
+
+Send Junio and Ralph the accepted Requirements Analysis and
+the Session Type — the version the user accepted, plus any
+changes from the acceptance discussion. Two `SendMessage`
+calls in the same turn, for information only. Sign off
+`From Grace.` and skip the RSVP; no reply is expected. They
+hold them as context for the Scope, Design, and Plan reviews
+that follow.
 
 The phase ends at user acceptance of the Requirements Analysis.
 
@@ -331,10 +340,11 @@ condition:
 
 Send the Draft Scope Options to both Junio and Ralph in
 parallel — two `SendMessage` calls in the same turn. They
-already hold the accepted Code Analysis from the Phase 2
-handoff, so the body for each carries the Session Type, the
-accepted Requirements Analysis, and the Draft Scope Options.
-Sign off `From Grace. RSVP via SendMessage.`
+already hold the Session Type and accepted Requirements
+Analysis from the Phase 1 handoff and the accepted Code
+Analysis from the Phase 2 handoff, so the body for each
+carries the Draft Scope Options. Sign off
+`From Grace. RSVP via SendMessage.`
 
 Junio reads from the maintainer's view — first, whether the
 Coherent Scope is truly coherent: does it miss any work
