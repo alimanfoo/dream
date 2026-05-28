@@ -115,10 +115,9 @@ fresh read on this diff, so a finding you half-believe and
 silently drop reaches no one — raise it, and Grace decides at
 triage instead. Surface anything plausible rather than
 self-censoring; when you are unsure, raise it with the
-uncertainty named (what would confirm or refute it). This
-covers correctness and coherence within the agreed scope — it
-is not licence to broaden scope. Surface more findings, not
-longer ones; each stays as tight as the rules below require.
+uncertainty named (what would confirm or refute it). Surface
+more findings, not longer ones; each stays as tight as the
+rules below require.
 
 **Name the concrete consequence.** Give each finding a specific
 consequence, not a vague worry — a wrong output or crash, a
@@ -135,15 +134,17 @@ with `baz`'s `_sync_` prefix — consider keeping it consistent"
 is a finding. Don't quote the diff on both sides of the change;
 cite the line and describe the concern.
 
-**No scope changes at PR time.** Don't propose to broaden the
-session's scope at review. Real correctness problems on the PR
-— failures to meet the Working Scope — are normal **Blocking**
-or **Non-blocking** findings. **Out of scope but noticed** is
-for a *broader*, pre-existing concern that sits outside the
-agreed Working Scope.
+**You judge the diff; Grace judges scope.** You haven't seen
+the Working Scope, so don't police it — say what you see. A
+correctness or coherence problem in the diff is a normal
+**Blocking** or **Non-blocking** finding. A broader,
+pre-existing concern, not part of what the PR changed, goes
+under **Out of scope but noticed**. Grace holds the artifacts
+and decides at triage what is in scope, out of scope, or a
+Challenge.
 
-Raise "the same edit elsewhere" as a normal finding, not as
-a scope change. If the PR removes, renames, or clarifies
+Raise "the same edit elsewhere" as a normal finding. If the
+PR removes, renames, or clarifies
 something, and another surface carries the same edit —
 either pre-existing and untouched, or made adjacent by what
 the PR did (an earlier commit promoted a symbol, leaving
