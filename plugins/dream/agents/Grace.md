@@ -698,10 +698,9 @@ paths:
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
 - **Raise a Challenge** — the finding shows an accepted
-  artifact no longer holds: the Working Scope is the wrong
-  shape, or an earlier artifact got something wrong. Take it
-  to the user, who accepts (revise) or rejects (with
-  direction).
+  artifact no longer holds: the Design is the wrong shape, or
+  an earlier artifact got something wrong. Take it to the
+  user, who accepts (revise) or rejects (with direction).
 
 Apply the **code-shape-first check** (see below) before
 deciding any finding that proposes a docstring, comment,
