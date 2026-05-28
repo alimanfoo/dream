@@ -539,7 +539,8 @@ Proposed Design — it improves the recommendation at no real
 cost. A candidate tagged with a trade-off you set aside as
 material for the Alternative Designs in step 5. A candidate
 that would deliver less than the Working Scope is not a
-lateral move; raise it as a Challenge.
+lateral move; raise it as a Challenge if it has merits worth
+considering.
 
 Apply the **code-shape-first check** (see below) before
 deciding any finding that proposes a docstring, comment,
