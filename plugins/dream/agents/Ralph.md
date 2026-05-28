@@ -76,11 +76,10 @@ Options and decides which findings to act on.
 Read the Draft Scope Options — Coherent Scope (always),
 Minimal Scope (when narrower than Coherent), Maximal Scope
 (when a wider alternative is real). You already hold the
-Session Type, accepted Requirements Analysis (consumers, use
-cases, non-goals, open questions), and accepted Code Analysis
-in context from the Phase 1 and Phase 2 handoffs. All present
-options are in scope for review. Open the named files or
-symbols or read code as needed.
+Session Type, accepted Requirements Analysis, and accepted
+Code Analysis in context from the Phase 1 and Phase 2
+handoffs. All present options are in scope for review. Open
+the named files or symbols or read code as needed.
 
 Apply this lens to the Scope Options.
 
