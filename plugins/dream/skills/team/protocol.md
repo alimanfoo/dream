@@ -65,9 +65,8 @@ that breaks an accepted artifact — the Requirements
 Analysis, Code Analysis, Working Scope, Design, or Plan.
 Grace takes a real Challenge to the user, who accepts it
 (the artifact is revised) or rejects it (and says how to
-proceed). It can be raised at Design, Plan, Develop, or
-when Grace triages an Ada review finding. The full
-mechanism is described below.
+proceed). It can be raised in any phase once an artifact has
+been accepted. The full mechanism is described below.
 
 ## Roles
 
@@ -398,9 +397,8 @@ A Challenge is admissible only on new evidence the earlier
 phase didn't have. Wanting to redesign on reflection is not a
 Challenge. Overturning an accepted decision goes through a
 Challenge, openly — not slipped through as a fresh
-observation. Grace can raise one at Design, Plan, Develop, or
-when triaging an Ada review finding. Full mechanism in
-`Grace.md`.
+observation. Grace can raise one in any phase once an artifact
+has been accepted. Full mechanism in `Grace.md`.
 
 ## No orphaned observations
 

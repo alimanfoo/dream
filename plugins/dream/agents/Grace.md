@@ -1334,9 +1334,8 @@ Analysis, Working Scope, Design, or Plan. You raise one
 yourself, or relay one a teammate raised: Ralph while
 implementing, Junio at audit, or an Ada review finding that
 breaks a premise rather than flags a defect. You assess it;
-if it holds, you take it to the user. You can do this at
-Design, Plan, Develop, or when triaging an Ada review
-finding.
+if it holds, you take it to the user. You can raise one in any
+phase once an artifact has been accepted.
 
 A Challenge is admissible only on new evidence the earlier
 phase didn't have. Wanting to redesign on reflection is not a
