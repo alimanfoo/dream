@@ -59,10 +59,15 @@ the Working Scope (closing Phase 3), the Design (closing Phase
 4), and the Plan (closing Phase 5). See "Acceptance gates" below.
 The "Common rules" at the end apply across every phase.
 
-**Rescope Discussion** is a separate mechanism, not a phase.
-Grace uses it to stop the work and ask the user whether the
-session's scope should change. She can do this at Design,
-Plan, or Develop. The full mechanism is described below.
+**Challenge** is a separate mechanism, not a phase. A
+teammate raises one when the work surfaces something new
+that breaks an accepted artifact — the Requirements
+Analysis, Code Analysis, Working Scope, Design, or Plan.
+Grace takes a real challenge to the user, who accepts it
+(the artifact is revised) or rejects it (and says how to
+proceed). It can be raised at Design, Plan, Develop, or
+when Grace triages an Ada review finding. The full
+mechanism is described below.
 
 ## Roles
 
@@ -158,7 +163,7 @@ intent more clearly. Ralph reads from the engineering-pattern
 view. Grace decides each finding on its merits, recording a
 one-line reason: folded into the revised Proposed Design,
 turned into an Alternative Design, rejected, held as an
-Ancillary Finding, or escalated to a Rescope Discussion.
+Ancillary Finding, or raised as a challenge.
 
 A candidate lateral move that is strictly better folds into
 the Proposed Design. A candidate that buys its simplicity at a
@@ -168,7 +173,7 @@ delivering the same Working Scope, with its trade-off named.
 There may be several, one, or none — an empty set found
 honestly is a result, not a failure. A design that delivers
 less than the Working Scope is never an Alternative; that is a
-Rescope. Grace then shares the revised Design Options — the
+challenge to the Working Scope. Grace then shares the revised Design Options — the
 Proposed Design and any Alternative Designs — with the user,
 with a brief note on what changed after the reviews.
 
@@ -183,8 +188,8 @@ review — advisory, not gating — and revises. Junio reads
 from the maintainer's view; Ralph reads from the
 implementer's view. Grace decides each finding on its merits,
 recording a one-line reason: folded into the revised Plan,
-rejected, held as an Ancillary Finding, or escalated to a
-Rescope Discussion. Grace then shares the revised Plan with the
+rejected, held as an Ancillary Finding, or raised as a
+challenge. Grace then shares the revised Plan with the
 user, with a brief note on what changed from the Draft
 after the reviews.
 
@@ -266,12 +271,12 @@ system. Junio's test: mentally remove the scaffolding and read
 the diff again. If the change no longer holds, the in-scope
 finding is the underlying gap, not the scaffolding.
 
-**Possible rescope signal.** When repeated audits on the same
-surface look symptom-shaped — separate tasks each touching the
-surface for different stated reasons — Junio raises a one-line
-*possible rescope signal* in the audit. The signal is an
-observation, not a finding; Grace decides whether to start a
-Rescope Discussion.
+**Challenge.** When an audit surfaces something new that
+breaks an accepted artifact, Junio raises a challenge to
+Grace — for instance, repeated audits circling the same
+surface for different stated reasons, which points at the
+Working Scope. Grace assesses it and, if it holds, takes
+it to the user. See "Challenge" below.
 
 Full audit-lens detail (examples, patterns, edge cases) is in
 `Junio.md`.
@@ -376,21 +381,32 @@ Phase 2: Code Analysis; Code Analysis → Phase 3: Scope;
 Working Scope → Phase 4: Design; Design → Phase 5: Plan;
 Plan → Phase 6: Develop.
 
-## Rescope Discussion
+## Challenge
 
-A cross-role mechanism Grace uses at Design, Plan, or Develop
-when the Working Scope may be addressing symptoms rather than
-the root cause. Junio can raise a *possible rescope signal*
-from per-task audits; Grace decides whether to start a
-Rescope Discussion; the user picks between keep and rescope.
-Full mechanism (Coherence Test, evidence, requirements-layer
-vs code-layer shapes) in `Grace.md`.
+A challenge says an accepted artifact no longer holds — the
+Requirements Analysis, Code Analysis, Working Scope, Design,
+or Plan — because the work surfaced something new that
+breaks it. Any teammate can raise one to Grace: Ralph while
+implementing, Junio at audit, Grace at verify; an Ada review
+finding can supply the evidence too. Grace assesses it. If it
+holds, she takes it to the user, who either accepts it — the
+artifact is revised and the downstream work reshaped — or
+rejects it and says how to proceed, since the teammate raised
+it from a blocked position.
+
+A challenge is admissible only on new evidence the earlier
+phase didn't have. Wanting to redesign on reflection is not a
+challenge; see "No orphaned observations" on holding to a
+decision once made. Grace can raise one at Design, Plan,
+Develop, or when triaging an Ada review finding. "Rescope" is
+one case: a challenge to the Working Scope. Full mechanism in
+`Grace.md`.
 
 ## No orphaned observations
 
 Every observation Grace records gets a named outcome at the
 next decision boundary. The outcomes available depend on
-phase — task, rescope, out of scope, ancillary, drop,
+phase — task, challenge, out of scope, ancillary, drop,
 reinforce, re-frame, file fresh — but the rule is the same: no
 observation stays "interesting prose." Each is named, each gets
 an outcome, each outcome is checkable.
@@ -401,12 +417,15 @@ before Plan acceptance. Both have a named destination and a
 reason that matches the receiving phase's job. There is no
 other deferral — "we'll come back to this" is not an outcome.
 
-Later outcomes respect earlier ones. If new evidence at a
-later phase changes the picture, that is a reversal — state
-the prior outcome, state the new reading, and ask the
-user whether to overturn or hold. Don't run a reversal through
-a procedure that frames it as fresh observation; the procedure
-hides the reversal.
+Later outcomes respect earlier ones. Hold to a decision
+once made; the one licence to overturn it is new evidence
+the earlier call didn't have — and the channel for that is
+a challenge (see above), which states the prior outcome and
+the new reading and takes the call to the user.
+Reconsidering without new evidence is flip-flopping, not a
+challenge. Don't run an overturn through a procedure that
+frames it as fresh observation; that hides it from the
+user.
 
 ## Existing code is unproven
 
