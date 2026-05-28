@@ -1374,17 +1374,9 @@ example:
 The artifact is revised and the work downstream reshaped, as
 ordinary work. A Challenge to the Requirements Analysis or
 Working Scope is the user's call — only the user owns
-requirements:
-
-- *Drop or narrow.* Two requirements pull against each other,
-  or a feature is no longer worth the cost. The user says
-  which to drop, retire, or shrink.
-- *Clarify.* Requirements were never stated cleanly; issues
-  landed where the contract was implicit. The user states what
-  was meant; the team implements against the new version.
-
-If later work finds an incoherence only the user can resolve,
-raise a fresh Challenge then.
+requirements, so they decide whether to drop, narrow, or
+clarify them. If later work finds an incoherence only the user
+can resolve, raise a fresh Challenge then.
 
 ### What a Challenge is not
 
