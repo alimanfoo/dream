@@ -63,7 +63,7 @@ The "Common rules" at the end apply across every phase.
 teammate raises one when the work surfaces something new
 that breaks an accepted artifact — the Requirements
 Analysis, Code Analysis, Working Scope, Design, or Plan.
-Grace takes a real challenge to the user, who accepts it
+Grace takes a real Challenge to the user, who accepts it
 (the artifact is revised) or rejects it (and says how to
 proceed). It can be raised at Design, Plan, Develop, or
 when Grace triages an Ada review finding. The full
@@ -163,7 +163,7 @@ intent more clearly. Ralph reads from the engineering-pattern
 view. Grace decides each finding on its merits, recording a
 one-line reason: folded into the revised Proposed Design,
 turned into an Alternative Design, rejected, held as an
-Ancillary Finding, or raised as a challenge.
+Ancillary Finding, or raised as a Challenge.
 
 A candidate lateral move that is strictly better folds into
 the Proposed Design. A candidate that buys its simplicity at a
@@ -173,7 +173,7 @@ delivering the same Working Scope, with its trade-off named.
 There may be several, one, or none — an empty set found
 honestly is a result, not a failure. A design that delivers
 less than the Working Scope is never an Alternative; that is a
-challenge to the Working Scope. Grace then shares the revised Design Options — the
+Challenge to the Working Scope. Grace then shares the revised Design Options — the
 Proposed Design and any Alternative Designs — with the user,
 with a brief note on what changed after the reviews.
 
@@ -189,7 +189,7 @@ from the maintainer's view; Ralph reads from the
 implementer's view. Grace decides each finding on its merits,
 recording a one-line reason: folded into the revised Plan,
 rejected, held as an Ancillary Finding, or raised as a
-challenge. Grace then shares the revised Plan with the
+Challenge. Grace then shares the revised Plan with the
 user, with a brief note on what changed from the Draft
 after the reviews.
 
@@ -272,7 +272,7 @@ the diff again. If the change no longer holds, the in-scope
 finding is the underlying gap, not the scaffolding.
 
 **Challenge.** When an audit surfaces something new that
-breaks an accepted artifact, Junio raises a challenge to
+breaks an accepted artifact, Junio raises a Challenge to
 Grace — for instance, repeated audits circling the same
 surface for different stated reasons, which points at the
 Working Scope. Grace assesses it and, if it holds, takes
@@ -383,7 +383,7 @@ Plan → Phase 6: Develop.
 
 ## Challenge
 
-A challenge says an accepted artifact no longer holds — the
+A Challenge says an accepted artifact no longer holds — the
 Requirements Analysis, Code Analysis, Working Scope, Design,
 or Plan — because the work surfaced something new that
 breaks it. Any teammate can raise one to Grace: Ralph while
@@ -394,10 +394,10 @@ artifact is revised and the downstream work reshaped — or
 rejects it and says how to proceed, since the teammate raised
 it from a blocked position.
 
-A challenge is admissible only on new evidence the earlier
+A Challenge is admissible only on new evidence the earlier
 phase didn't have. Wanting to redesign on reflection is not a
-challenge. Overturning an accepted decision goes through a
-challenge, openly — not slipped through as a fresh
+Challenge. Overturning an accepted decision goes through a
+Challenge, openly — not slipped through as a fresh
 observation. Grace can raise one at Design, Plan, Develop, or
 when triaging an Ada review finding. Full mechanism in
 `Grace.md`.
@@ -406,7 +406,7 @@ when triaging an Ada review finding. Full mechanism in
 
 Every observation Grace records gets a named outcome at the
 next decision boundary. The outcomes available depend on
-phase — task, challenge, out of scope, ancillary, drop,
+phase — task, Challenge, out of scope, ancillary, drop,
 reinforce, re-frame, file fresh — but the rule is the same: no
 observation stays "interesting prose." Each is named, each gets
 an outcome, each outcome is checkable.

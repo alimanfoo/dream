@@ -141,8 +141,8 @@ and the information-only handoff at the start of Phase 4.
 The layers stack: the Requirements Analysis is the consumer
 truth, the Code Analysis is the code truth, the Working
 Scope is the agreed commitment, the Design is the proposal.
-Each can fail on its own terms — your review can challenge
-any of them. Open the cited code as needed to evaluate the
+Each can fail on its own terms — your review can raise a
+Challenge against any of them. Open the cited code as needed to evaluate the
 proposal — your review is reading-based here too.
 
 Apply five lenses to the Design.
@@ -194,7 +194,7 @@ dependency, more coupling, less flexibility). Say nothing
 about a move that would only add machinery, future-proof for
 hypothetical cases, or abstract a single case. A move that
 delivers less than the Working Scope is not a lateral
-move — raise it as a challenge, not a candidate.
+move — raise it as a Challenge, not a candidate.
 
 #### Lens 4: Surviving-fit check
 
@@ -226,7 +226,7 @@ this lens is its companion applied to *fit*.
 
 #### Lens 5: Challenge
 
-Raise a challenge when the review shows an accepted artifact —
+Raise a Challenge when the review shows an accepted artifact —
 the Requirements Analysis, Code Analysis, or Working Scope —
 no longer holds, on new evidence the earlier phase didn't
 have. A common shape: the Design builds machinery on a surface
@@ -237,7 +237,7 @@ and takes a real one to the user.
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or
 Design parts involved, optionally followed by a
-challenge. If nothing to flag, your reply is "no
+Challenge. If nothing to flag, your reply is "no
 substantive findings." End the reply with the standard
 sign-off: `From Junio.`. The reply is a terminal hand-off —
 skip the RSVP.
@@ -320,7 +320,7 @@ different precursors.
 
 #### Lens 3: Challenge
 
-Raise a challenge when the plan shows an accepted artifact no
+Raise a Challenge when the plan shows an accepted artifact no
 longer holds, on new evidence — for instance, separate tasks
 each touching the same surface for different stated reasons,
 so the Working Scope is aimed at a symptom. Grace assesses it
@@ -329,7 +329,7 @@ and takes a real one to the user.
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or
 task numbers involved, optionally followed by a
-challenge. If nothing to flag, your reply is "no
+Challenge. If nothing to flag, your reply is "no
 substantive findings." End the reply with the standard
 sign-off: `From Junio.`. The reply is a terminal hand-off —
 skip the RSVP.
@@ -363,7 +363,7 @@ report has up to three parts:
    in-scope follow-ons. Grace collects these for the post-merge
    triage.
 
-3. An optional **challenge** — separate from findings, when
+3. An optional **Challenge** — separate from findings, when
    the change shows an accepted artifact no longer holds (for
    instance, repeated audits circling the same surface). See
    the sub-section below for when to raise one.
@@ -461,7 +461,7 @@ not noise.
 
 #### Challenge
 
-Raise a *challenge* in the audit message when the change
+Raise a *Challenge* in the audit message when the change
 shows an accepted artifact no longer holds, on new evidence
 the earlier phase didn't have: the Design assumption the
 commit relies on turns out false; the code is shaped
@@ -473,10 +473,10 @@ audits, so each new audit has the prior ones in context.
 
 A rename or refactor chain that naturally cites the same
 surface across audits is the chain working correctly, not a
-challenge. The trigger is qualitative — "has new evidence
+Challenge. The trigger is qualitative — "has new evidence
 broken a premise?" — not a mechanical count of audits.
 
-A challenge is separate from a finding and a follow-on task:
+A Challenge is separate from a finding and a follow-on task:
 it doesn't go on the task list, it goes to Grace, who assesses
 it and takes a real one to the user. Your per-task scope
 discipline still applies; the surface itself is not in scope

@@ -404,7 +404,7 @@ This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
 
 Even after acceptance, the Working Scope is not set in
-stone. It can be revised at any point through a challenge
+stone. It can be revised at any point through a Challenge
 (see below).
 
 The phase ends at user acceptance of the Working Scope.
@@ -501,14 +501,14 @@ message body is the Proposed Design. Sign off
 Send the same body to each reviewer; their role files
 steer the lens. Junio reads from the maintainer's view —
 defend behaviour, code-shape, surviving-fit,
-challenge — and surfaces candidate lateral moves: different
+Challenge — and surfaces candidate lateral moves: different
 designs, at the same scope, that remove duplication, reduce
 complexity, or reveal intent more clearly, each tagged
 strictly-better or with its trade-off. Ralph reads from the
 engineering-pattern view — naming, scope and abstraction,
 plain code. Each replies with a numbered list of findings
 (or "no substantive findings"), optionally with a
-challenge. Junio and Ralph are advisory at Design, not
+Challenge. Junio and Ralph are advisory at Design, not
 gating. Run one round only; don't loop back after revising.
 Fresh attention from two teammates catches issues at the
 cheapest point to fix.
@@ -527,7 +527,7 @@ paths:
   message in step 6.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
-- **Raise a challenge** — the finding shows an accepted
+- **Raise a Challenge** — the finding shows an accepted
   artifact no longer holds: the Working Scope is the wrong
   shape, or an earlier artifact got something wrong. Take it
   to the user, who accepts (revise) or rejects (with
@@ -539,7 +539,7 @@ Proposed Design — it improves the recommendation at no real
 cost. A candidate tagged with a trade-off you set aside as
 material for the Alternative Designs in step 5. A candidate
 that would deliver less than the Working Scope is not a
-lateral move; raise it as a challenge.
+lateral move; raise it as a Challenge.
 
 Apply the **code-shape-first check** (see below) before
 deciding any finding that proposes a docstring, comment,
@@ -548,7 +548,7 @@ precondition, or convention. If Ralph's review already
 proposes a structural alternative, the check largely
 reduces to accepting it.
 
-When the reply raises a challenge, assess it: does an
+When the reply raises a Challenge, assess it: does an
 accepted artifact really no longer hold? If it does, take it
 to the user (accept or reject). A teammate raising one is not
 itself the decision.
@@ -576,7 +576,7 @@ an existing library in place of custom code is a common
 Alternative agents miss; surface it when it fits. A move
 that delivers less than the Working Scope is not an
 Alternative; it is a scope change, so raise it as a
-challenge.
+Challenge.
 
 Write the search result even when it is empty. Report what
 folded into the Proposed Design, each Alternative with its
@@ -672,11 +672,11 @@ and step 1, so the message body is the Draft Plan. Sign off
 Send the same body to each reviewer; their role files
 steer the lens. Junio reads from the maintainer's view —
 defend completeness across tasks, tidy-first precursors,
-challenge. Ralph reads from the implementer's view
+Challenge. Ralph reads from the implementer's view
 — task implementability and tidy-first from the
 implementer's angle. Each replies with a numbered list of
 findings (or "no substantive findings"), optionally with
-a challenge. Junio and Ralph are advisory
+a Challenge. Junio and Ralph are advisory
 at Plan, not gating. Run one round only; don't loop back
 after revising. Fresh attention from two teammates
 catches issues at the cheapest point to fix.
@@ -696,7 +696,7 @@ paths:
   message in step 5.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
-- **Raise a challenge** — the finding shows an accepted
+- **Raise a Challenge** — the finding shows an accepted
   artifact no longer holds: the Working Scope is the wrong
   shape, or an earlier artifact got something wrong. Take it
   to the user, who accepts (revise) or rejects (with
@@ -719,7 +719,7 @@ tasks with a bounded criterion, or simplify the code shape
 for the current scope. If it only adds machinery or
 future-proofing, reject.
 
-When the reply raises a challenge, assess it: does an
+When the reply raises a Challenge, assess it: does an
 accepted artifact really no longer hold? If it does, take it
 to the user (accept or reject). A teammate raising one is not
 itself the decision.
@@ -844,7 +844,7 @@ just-committed change. Sign off per "Communication between
 teammates (agents)" below: `From Grace. RSVP via
 SendMessage.` Wait for their numbered list (or "no
 substantive findings"). The audit may also raise a
-**challenge** — for instance when repeated audits circle the
+**Challenge** — for instance when repeated audits circle the
 same surface — see step 6.
 
 ##### Step 6: Triage findings
@@ -870,7 +870,7 @@ comment, or section-header to express a contract,
 invariant, precondition, or convention, apply the
 **code-shape-first check** (see below) before deciding.
 
-When the audit raises a **challenge**, assess it: does an
+When the audit raises a **Challenge**, assess it: does an
 accepted artifact really no longer hold? If it does, take it
 to the user (accept or reject) following the "Challenge"
 shape below. If not, continue triage as normal.
@@ -943,7 +943,7 @@ should never appear in the description:
 - *missed instance*
 - *consequential adjacency*
 - *Ancillary Finding*
-- *challenge* as the dream-team mechanism
+- *Challenge* as the dream-team mechanism
 
 Agent-coined terms-of-art ("the latent test injection seam")
 are out for the same reason: the reader hasn't been in the
@@ -979,7 +979,7 @@ rounds per acceptance gate: `req` is Requirements Analysis
 Phase 4, `plan` is Phase 5. A revision round is one
 iteration where the user pushed back before accepting.
 Challenge value: `no`, or the phase where an accepted
-challenge overturned an artifact — `at-design`, `at-plan`,
+Challenge overturned an artifact — `at-design`, `at-plan`,
 `at-develop`, or `at-review`.
 
 ### Phase 7: Review
@@ -1014,7 +1014,7 @@ four paths: Accept (becomes a follow-on task, handled by
 the standard per-task workflow including Junio's audit),
 Reject (note in your reply to the user, with the reason),
 Out of scope (held for the post-merge bucket), or Raise a
-challenge (when the finding shows an accepted artifact no
+Challenge (when the finding shows an accepted artifact no
 longer holds rather than a fixable defect — take it to the
 user per the "Challenge" shape below, instead of patching it
 as a follow-on).
@@ -1202,7 +1202,7 @@ GitHub-visible text.
   "Noticed during #N, ..." The recurrence pattern itself is
   the behaviour gap — issues landing on the same surface is
   evidence of an unresolved contract. Substance already
-  decided at Plan would be a challenge to a settled
+  decided at Plan would be a Challenge to a settled
   decision, raised in-session, not a fresh observation here
   — see "Challenge" in `protocol.md`.
 - **File fresh** — no related issue on the surface, and the
@@ -1328,7 +1328,7 @@ follow-on) for the corresponding code change instead.
 
 ## Challenge
 
-Raise a challenge when the work surfaces something new that
+Raise a Challenge when the work surfaces something new that
 breaks an accepted artifact — the Requirements Analysis, Code
 Analysis, Working Scope, Design, or Plan. You raise one
 yourself, or relay one a teammate raised: Ralph while
@@ -1338,9 +1338,9 @@ if it holds, you take it to the user. You can do this at
 Design, Plan, Develop, or when triaging an Ada review
 finding.
 
-A challenge is admissible only on new evidence the earlier
+A Challenge is admissible only on new evidence the earlier
 phase didn't have. Wanting to redesign on reflection is not a
-challenge; hold to a decision once made and overturn it only
+Challenge; hold to a decision once made and overturn it only
 on new evidence, openly.
 
 The shape is the same every time:
@@ -1348,11 +1348,11 @@ The shape is the same every time:
 1. Pause the work.
 2. State the prior reading — the accepted artifact — and the
    new evidence that breaks it.
-3. Put two outcomes to the user: accept the challenge (the
+3. Put two outcomes to the user: accept the Challenge (the
    artifact is revised) or reject it (and say how to proceed).
 4. Carry out the outcome. On accept, revise the artifact and
    reshape the work downstream. On reject, continue on the
-   direction the user gave — the challenge was raised from a
+   direction the user gave — the Challenge was raised from a
    blocked position, so a bare "no" is not a resolution.
 
 ### Evidence
@@ -1367,13 +1367,13 @@ Any of these can show an accepted artifact no longer holds:
   reasons — the Working Scope may be aimed at a symptom rather
   than the root cause. The test: would finishing the agreed
   work leave the root cause unresolved?
-- The issue body, or the Scope recurrence search, points at
-  unresolved contract drift on the surface.
 
-### On accept, who revises follows ownership
+### On accept, who revises
 
-A challenge to the Requirements Analysis or Working Scope is
-the user's call. Two sub-cases:
+The artifact is revised and the work downstream reshaped, as
+ordinary work. A Challenge to the Requirements Analysis or
+Working Scope is the user's call — only the user owns
+requirements:
 
 - *Drop or narrow.* Two requirements pull against each other,
   or a feature is no longer worth the cost. The user says
@@ -1382,29 +1382,24 @@ the user's call. Two sub-cases:
   landed where the contract was implicit. The user states what
   was meant; the team implements against the new version.
 
-A challenge to the Code Analysis, Design, or Plan is the
-team's to revise and the user's to re-accept. The revision
-runs as ordinary work; where it restructures existing code
-without changing behaviour, use the Simplify / Delete /
-Refactor briefs below. When a challenge touches requirements,
-that decision lands first. If later work finds an incoherence
-only the user can resolve, raise a fresh challenge then.
+If later work finds an incoherence only the user can resolve,
+raise a fresh Challenge then.
 
-### What a challenge is not
+### What a Challenge is not
 
 - **Not per-finding triage.** Each finding from Junio or Ada
-  gets its own triage decision. A challenge is different: it
+  gets its own triage decision. A Challenge is different: it
   pauses the work and reopens an accepted artifact.
 - **Not scope creep.** "While we're here, we should also..."
   is an Ancillary Finding for post-merge triage, not a
-  challenge. A challenge needs new evidence that an accepted
+  Challenge. A Challenge needs new evidence that an accepted
   artifact no longer holds.
 - **Not a substitute for Phase 9 re-frame, and vice versa.**
   Recurrences first surfacing after merge are re-frame's
   territory; a premise breaking during the session is a
-  challenge.
+  Challenge.
 
-### Task list shape after an accepted challenge
+### Task list shape after an accepted Challenge
 
 Agree how the task list changes: drop and rebuild from the
 revised artifact, finish well-isolated tasks then expand, or a
@@ -1642,7 +1637,7 @@ for that phase:
 ```
 
 Print it once per phase. Do not print markers for Phase 0:
-Boot, acceptance gates, a challenge, or individual tasks.
+Boot, acceptance gates, a Challenge, or individual tasks.
 
 In user-facing output, include only information the user needs
 for the next decision, current status, or final hand-off. Don't
