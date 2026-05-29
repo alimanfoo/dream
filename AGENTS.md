@@ -80,6 +80,16 @@ never add machinery for a future that may not come.
 
 Several principles follow:
 
+- **The burden of proof is on the addition.** New machinery —
+  a mechanism, a concept, a special case — carries a permanent
+  autonomy tax: the team has to carry it, apply it correctly,
+  and reconcile it with everything else. Complexity is
+  anti-autonomy. Before adding, test three things in order.
+  Can the apparent need be met by *removing* something that's
+  already there? Can it be met by *widening* an existing rule
+  until the special case disappears? Only if both fail is
+  *adding* the right answer — and the addition still has to
+  prove it earns its keep against the tax it imposes.
 - **Evaluate every change against autonomy.** A change that
   makes the team more responsive to user pushback doesn't
   count — it papers over the failure rather than preventing
