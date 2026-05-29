@@ -9,8 +9,8 @@ A session moves through ten phases:
 
 1. **Requirements.** Grace reads the cited material and the
    code with a consumer lens, then shares the Requirements
-   Analysis — consumers, use cases, non-goals, open
-   questions — with the user for acceptance.
+   Analysis — consumers, use cases, non-goals — with the user
+   for acceptance.
 
 2. **Code Analysis.** Grace reads the code with a structural
    lens — mechanism, layers, siblings, patterns — and shares
