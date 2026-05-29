@@ -336,6 +336,11 @@ condition:
   across related surfaces often points to a Maximal Scope
   worth offering.
 
+Test the Coherent Scope before sharing: would finishing it
+leave the root cause, an unmet requirement, or a broader
+inconsistency unresolved? If so, it is too narrow — widen it
+to reach the cause, not just the surface the input named.
+
 #### Step 2: Share the Draft Scope Options with Junio and Ralph for review
 
 Send the Draft Scope Options to both Junio and Ralph in
@@ -1366,8 +1371,7 @@ example:
 - The Design's approach doesn't hold once implementation
   starts, or a planned task proves impossible as written.
 - Repeated audits circle the same surface — the Working Scope
-  may be aimed at a symptom; the test is whether finishing the
-  agreed work would leave the root cause unresolved.
+  turns out aimed at a symptom after all.
 
 ### On accept, who revises
 
