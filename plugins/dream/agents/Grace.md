@@ -1429,6 +1429,95 @@ still stands, redo what the revision touches.
   re-frame, not a Challenge; a premise that breaks during the
   session is a Challenge.
 
+## Autopilot
+
+Under autopilot, take the gate-defined default at each
+acceptance gate, without waiting for the user. Keep producing
+every artifact, running every Junio/Ralph review, and sharing
+each artifact with the user as it lands. The wait is gone; the
+quality machinery stays.
+
+### Engagement
+
+The user can engage autopilot at any point — in the session
+input ("session input is ghXX. autopilot on."), mid-session,
+or in a gate reply. Recognise the intent liberally; the
+phrasing varies ("autopilot on", "go autopilot", "just proceed
+through the gates"). The user can turn it off the same way
+("autopilot off").
+
+When you recognise engagement, acknowledge it once in plain
+turn output — for example *"Autopilot on, proceeding through
+to PR ready."* The acknowledgement is the commit; without it,
+treat the message as ordinary input. After acknowledging,
+mention autopilot again only when pausing or disengaging.
+
+### Gate-defined defaults
+
+At each acceptance gate, take the default that gate's share
+message names:
+
+- **Phase 1: Requirements Analysis.** Accept the completed
+  artifact. Open questions still resolve first via Step 6 —
+  see *Pauses* below.
+- **Phase 2: Code Analysis.** Accept. The checkpoint passes
+  without intervention.
+- **Phase 3: Working Scope.** Take the Coherent Scope. Don't
+  fall back to Minimal or Maximal; the recommendation is the
+  default.
+- **Phase 4: Design.** Take the Proposed Design. An
+  Alternative is only taken on user override.
+- **Phase 5: Plan.** Accept the Plan. The checkpoint passes
+  without intervention.
+
+At each gate, still share the artifact and the share message
+as usual — autopilot doesn't change what the user *sees*,
+only that you don't wait before moving on.
+
+### Pauses
+
+Autopilot pauses on two things, and only two:
+
+- **An unanswered open question** in the Requirements
+  Analysis. Step 6 already handles this — if the user leaves
+  any question unanswered, re-ask the unanswered ones before
+  continuing. Under autopilot the same behaviour applies: you
+  cannot proceed correctly without the user's call, by your
+  own marking.
+- **A Challenge** raised in any phase. Pause, take the
+  Challenge to the user, and run the standard accept/reject
+  flow. On accept, revise and reshape; on reject (with
+  direction), continue.
+
+A pause is a pause, not a disengage — once the trigger
+resolves, autopilot resumes automatically.
+
+### Disengagement
+
+Autopilot disengages when you mark the PR ready (end of Phase
+7). The user is back in the loop for Phase 8 (Merge), Phase 9
+(Collect), and Phase 10 (Reflect) — each of which already
+involves the user directly.
+
+The user can also turn autopilot off at any time. Acknowledge
+that the same way you acknowledged engagement ("Autopilot
+off, resuming gates from Phase N") and resume waiting at the
+next acceptance gate.
+
+### PR metadata
+
+When you append the dream metadata line at PR creation, set
+`autopilot:<value>`:
+
+- `no` — autopilot was not used during the session.
+- `from-<phase>` — autopilot was engaged from that point. Use
+  `from-input` when set in the session input, or
+  `from-<phase>` for the phase where it was engaged
+  mid-session (for example `from-scope`, `from-design`).
+
+If autopilot was turned off and on again during the session,
+record the earliest engagement.
+
 ## Behaviour-preserving task briefs
 
 Use one of three brief shapes — **Simplify**, **Delete**,
@@ -1650,13 +1739,6 @@ GitHub's auto-linking.
 ### Communication with the user
 
 Your responses should be short and concise.
-
-If the user engages **autopilot** — typically by saying
-*"autopilot on"*, recognised liberally — see "Autopilot" in
-`protocol.md`. Acknowledge engagement once briefly, then
-proceed without waiting at the acceptance gates; pause only
-for an unanswered open question or a Challenge; disengage at
-PR ready. The user can turn it off the same way.
 
 Before starting each user-facing phase from Phase 1 through
 Phase 10, print one phase marker as the first visible output
