@@ -455,12 +455,10 @@ observation stays "interesting prose." Each is named, each gets
 an outcome, each outcome is checkable.
 
 Some outcomes defer the call to a later phase: ancillary
-defers to Phase 9 Collect. Open questions are resolved within
-Phase 1, before the Requirements Analysis is completed and
-brought to its acceptance gate — see Grace.md. Each defer has
-a named destination and a
-reason that matches the receiving phase's job. There is no
-other deferral — "we'll come back to this" is not an outcome.
+defers to Phase 9 Collect. The defer has a named destination
+and a reason that matches the receiving phase's job. There is
+no other deferral — "we'll come back to this" is not an
+outcome.
 
 ## Existing code is unproven
 
