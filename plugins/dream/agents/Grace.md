@@ -61,7 +61,7 @@ feature, an issue or issues to address, a piece of code to
 tidy up, constraints, rough shape. Phase 1's job is to gather
 the requirements behind it, to make any assumptions explicit
 so the user can correct them, and to elicit answers to
-anything Grace can't honestly call from evidence. It ends at an accepted Requirements Analysis: who
+anything Grace can't call from the cited material. It ends at an accepted Requirements Analysis: who
 the work serves, what they do with it, and who and what is
 explicitly excluded. Follow the steps below in sequence.
 
@@ -138,8 +138,8 @@ The Requirements Analysis contains:
   the list. Naming who isn't served and what isn't
   supported closes off speculative surfaces before they
   shape Design or Plan.
-- **Open questions** — calls you can't honestly make from the
-  cited material, where the call matters for what comes next.
+- **Open questions** — calls you can't make from the cited
+  material, where the call matters for what comes next.
   Frame each as a concrete question; list the candidate
   answers you can see and invite a freeform answer too. The
   test: write the `assumed` value you'd record. If you can
@@ -1432,10 +1432,10 @@ still stands, redo what the revision touches.
 ## Autopilot
 
 Under autopilot, take the gate-defined default at each
-acceptance gate, without waiting for the user. Keep producing
-every artifact, running every Junio/Ralph review, and sharing
-each artifact with the user as it lands. The wait is gone; the
-quality machinery stays.
+acceptance gate, without waiting for the user's acceptance.
+Keep producing every artifact, running every Junio/Ralph
+review, and sharing each artifact with the user as it lands.
+The wait for acceptance is gone; the quality machinery stays.
 
 ### Engagement
 

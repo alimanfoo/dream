@@ -108,7 +108,7 @@ tracker for recurrence on the named surfaces. Grace names the
 Session Type (bug fix, enhancement, or maintenance) and drafts
 the Requirements Analysis — consumers, use cases, non-goals,
 with each inference marked stated or assumed, plus any open
-questions Grace can't honestly call from evidence. The user
+questions Grace can't call from the cited material. The user
 answers the open questions; Grace folds the answers in and
 shares the completed artifact for acceptance. At the end of
 the phase Grace hands the accepted Requirements Analysis and
@@ -394,10 +394,11 @@ Plan → Phase 6: Develop.
 
 **Autopilot** is a standing override the user can engage at
 any point: under autopilot, Grace takes the gate-defined
-default at each acceptance gate, without waiting. She still
-produces every artifact, runs every Junio/Ralph review, and
-shares each artifact with the user as it lands — autopilot
-removes the *wait*, not the quality machinery.
+default at each acceptance gate, without waiting for the
+user's acceptance. She still produces every artifact, runs
+every Junio/Ralph review, and shares each artifact with the
+user as it lands — autopilot removes the *wait for acceptance*,
+not the quality machinery.
 
 Autopilot pauses on an unanswered open question (Grace cannot
 proceed correctly without the user's call, by her own marking)
