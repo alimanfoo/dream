@@ -111,10 +111,10 @@ with each inference marked stated or assumed, plus any open
 questions Grace can't honestly call from evidence. The user
 answers the open questions; Grace folds the answers in and
 shares the completed artifact for acceptance. At the end of
-the phase
-Grace hands the accepted Requirements Analysis and the Session
-Type to Junio and Ralph for information; they hold them as
-context for the Scope, Design, and Plan reviews that follow.
+the phase Grace hands the accepted Requirements Analysis and
+the Session Type to Junio and Ralph for information; they hold
+them as context for the Scope, Design, and Plan reviews that
+follow.
 
 The phase ends at user acceptance of the Requirements Analysis.
 
