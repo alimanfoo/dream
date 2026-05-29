@@ -1376,19 +1376,12 @@ example:
 - Repeated audits circle the same surface — the Working Scope
   turns out aimed at a symptom after all.
 
-### On accept, who revises
+### On accept
 
-Revise the broken artifact, then reshape the work below it.
-Who revises depends on what broke:
-
-- **Requirements Analysis or Working Scope** — the user's
-  call. Only the user owns requirements, so they choose to
-  drop, narrow, or clarify.
-- **Code Analysis, Design, or Plan** — the team revises and
-  the user re-accepts, as ordinary work.
-
-If the revision then surfaces an incoherence only the user can
-resolve, raise a fresh Challenge.
+Revising the artifact is ordinary work: return to the phase
+that owns it and follow the protocol as normal from there. The
+artifact is revised and re-accepted through that phase's usual
+flow, and the work downstream reshapes to match.
 
 ### What a Challenge is not
 
