@@ -851,7 +851,8 @@ teammates (agents)" below: `From Grace. RSVP via
 SendMessage.` Wait for their numbered list (or "no
 substantive findings"). The audit may also raise a
 **Challenge** — for instance when repeated audits circle the
-same surface — see step 6.
+same surface, suggesting the Working Scope is too narrow to
+reach the root cause (see step 6).
 
 ##### Step 6: Triage findings
 
