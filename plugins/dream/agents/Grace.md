@@ -506,11 +506,11 @@ message body is the Proposed Design. Sign off
 
 Send the same body to each reviewer; their role files
 steer the lens. Junio reads from the maintainer's view —
-defend behaviour, code-shape, surviving-fit — and surfaces
-candidate lateral moves: different
-designs, at the same scope, that remove duplication, reduce
-complexity, or reveal intent more clearly, each tagged
-strictly-better or with its trade-off. Ralph reads from the
+defend behaviour, code-shape, surviving-fit — and proposes
+candidate lateral moves: different designs, at the same scope,
+that remove duplication, reduce complexity, or reveal intent
+more clearly, each tagged strictly-better or with its
+trade-off. Ralph reads from the
 engineering-pattern view — naming, scope and abstraction,
 plain code. Each replies with a numbered list of findings
 (or "no substantive findings"), optionally with a
@@ -539,7 +539,7 @@ paths:
   to the user, who accepts (revise) or rejects (with
   direction).
 
-Junio's review also surfaces candidate lateral moves, each
+Junio's review also proposes candidate lateral moves, each
 tagged. A candidate tagged strictly-better folds into the
 Proposed Design — it improves the recommendation at no real
 cost. A candidate tagged with a trade-off you set aside as

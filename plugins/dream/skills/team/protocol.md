@@ -160,7 +160,7 @@ Phase opens with Grace sharing the accepted Working Scope
 with Junio and Ralph for information. Grace then drafts the
 Proposed Design — her recommendation — and shares it with
 Junio and Ralph for one round of review — advisory, not
-gating. Junio reads from the maintainer's view and surfaces
+gating. Junio reads from the maintainer's view and proposes
 candidate lateral moves: different designs, at the same
 scope, that remove duplication, reduce complexity, or reveal
 intent more clearly. Ralph reads from the engineering-pattern

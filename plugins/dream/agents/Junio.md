@@ -172,7 +172,7 @@ better.
 
 #### Lens 3: Lateral moves
 
-Surface candidate lateral moves — different designs, at
+Propose candidate lateral moves — different designs, at
 the same scope, that remove duplication, reduce complexity,
 or reveal intent more clearly. Look for repeated structure
 the Proposed handles case by case — a branch per variant, a
