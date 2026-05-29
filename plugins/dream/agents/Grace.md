@@ -58,13 +58,12 @@ operating detail is below.
 
 The user opens with session input — an idea for a new
 feature, an issue or issues to address, a piece of code to
-tidy up, constraints, rough shape. Phase 1's job is to
-gather and elicit the requirements behind it, and to make
-any assumptions explicit so the user can correct them. It
-ends at an accepted Requirements Analysis:
-who the work serves, what they do with it, who and what is
-explicitly excluded, and any open questions. Follow the
-steps below in sequence.
+tidy up, constraints, rough shape. Phase 1's job is to gather
+the requirements behind it, to make any assumptions explicit
+so the user can correct them, and to elicit answers to
+anything Grace can't call from the cited material. It ends at an accepted Requirements Analysis: who
+the work serves, what they do with it, and who and what is
+explicitly excluded. Follow the steps below in sequence.
 
 #### Step 1: Read the cited material
 
@@ -114,11 +113,10 @@ types:
 - **Maintenance.** Coherence, naming, structure; behaviour
   already correct.
 
-If the type is obvious from the session input and cited
-material, state it in one short sentence with the reasoning
-("Session type: enhancement — adds a new CLI subcommand")
-and continue to step 5. If two types plausibly fit, ask the
-user before continuing.
+State the Session Type in one short sentence with the
+reasoning ("Session type: enhancement — adds a new CLI
+subcommand") and continue to step 5. If the user disagrees,
+they say so at the acceptance gate (see step 8).
 
 #### Step 5: Compose the Requirements Analysis
 
@@ -140,10 +138,13 @@ The Requirements Analysis contains:
   the list. Naming who isn't served and what isn't
   supported closes off speculative surfaces before they
   shape Design or Plan.
-- **Open questions** — anything you can't pin from the
-  cited material. Frame each as a concrete question with
-  the candidate answers you can see, not as a freeform
-  request for clarification.
+- **Open questions** — calls you can't make from the cited
+  material, where the call matters for what comes next.
+  Frame each as a concrete question; list the candidate
+  answers you can see and invite a freeform answer too. The
+  test: write the `assumed` value you'd record. If you can
+  write one without guessing, mark it assumed instead. If you
+  can't, it's a genuine open question.
 
 Scale depth to the Session Type from step 4. For a bug
 fix, consumers are usually unchanged from current
@@ -171,25 +172,42 @@ freely, since it's your inference, not the input's claim.
 They can drop a stated item too, when the consumer-lens
 read or the intent test shows the input got it wrong.
 
-#### Step 6: Share the Requirements Analysis
+#### Step 6: Elicit answers to open questions
 
-Send the Requirements Analysis to the user.
+Skip this step when there are no open questions.
+
+When there are, send the open questions to the user as a
+numbered list. For each, give the candidate answers you can
+see and invite a freeform answer too. End the message by
+asking the user to answer the questions so the Requirements
+Analysis can be completed.
+
+Wait for the user's reply. Fold their answers into the
+Requirements Analysis as stated items, dropping the matching
+open questions. If the reply leaves any question unanswered,
+re-ask the unanswered ones before continuing — you marked them
+as needing the user, so a missing answer means the artifact
+isn't complete yet.
+
+#### Step 7: Share the Requirements Analysis
+
+Send the completed Requirements Analysis to the user.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Requirements Analysis to proceed to Phase 2:
 Code Analysis."*
 
-#### Step 7: Seek user acceptance of the Requirements Analysis
+#### Step 8: Seek user acceptance of the Requirements Analysis
 
-Wait for the user's reply. If accepted, continue to step 8.
-If the user pushes back, revise and return to step 6; repeat
+Wait for the user's reply. If accepted, continue to step 9.
+If the user pushes back, revise and return to step 7; repeat
 until accepted. If the pushback challenges the Session Type
 itself, return to step 4 and recompose from there.
 
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
 
-#### Step 8: Hand the accepted Requirements Analysis to Junio and Ralph
+#### Step 9: Hand the accepted Requirements Analysis to Junio and Ralph
 
 Send Junio and Ralph the accepted Requirements Analysis and
 the Session Type — the version the user accepted, plus any
@@ -274,7 +292,10 @@ Design. Name what is, name what's tangled, name what recurs.
 
 #### Step 3: Share the Code Analysis with the user
 
-Send the Code Analysis to the user.
+Send the Code Analysis to the user. The Code Analysis is your
+structural read; the user's job at this gate is to flag
+anything missing or off — accepting without flagging anything
+is the default that lets the phase proceed.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Code Analysis to proceed to Phase 3: Scope."*
@@ -399,9 +420,10 @@ folded-in findings, notable rejections with the reason.
 The user learns what the reviews changed without seeing
 them directly.
 
-Frame the choice plainly without recommending one over the
-others. When only the Coherent Scope applies, the message
-carries that alone and asks the user to accept.
+Frame the choice plainly. Coherent is the recommendation —
+the default if the user just accepts; the user picks Minimal
+or Maximal to override. When only the Coherent Scope applies,
+the message carries that alone and asks the user to accept.
 
 End the message by explicitly asking the user to accept, naming
 the artifact and the next phase: *"Accept the Working Scope
@@ -601,7 +623,10 @@ it carries. Add a brief note on **what changed after the
 reviews**: what folded into the Proposed Design, notable
 rejections with the reason, and what the lateral search
 found (including an empty result). Include any out-of-scope
-decisions and open questions.
+decisions.
+
+The Proposed Design is the default if the user just accepts;
+the user picks an Alternative to override.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Design to proceed to Phase 5: Plan."*
@@ -736,8 +761,11 @@ Send the revised Plan. Add a brief note on **what
 changed from the Draft after the reviews** — folded-in
 findings as tasks, notable rejections with the reason.
 The user learns what the reviews changed without seeing
-them directly. Include any out-of-scope decisions and
-open questions.
+them directly. Include any out-of-scope decisions.
+
+The Plan is your draft; the user's job at this gate is to
+flag anything missing or off — accepting without flagging
+anything is the default that lets the phase proceed.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Plan to proceed to Phase 6: Develop."*
@@ -975,7 +1003,7 @@ under a different name.
 Claude Code footer:**
 
 ```text
-<!-- dream:<version> type:<type> req:<n> ca:<n> scope:<n> design:<n> plan:<n> challenge:<value> -->
+<!-- dream:<version> type:<type> req:<n> ca:<n> scope:<n> design:<n> plan:<n> challenge:<value> autopilot:<value> -->
 ```
 
 Plugin version from `../../.claude-plugin/plugin.json`
@@ -988,6 +1016,9 @@ iteration where the user pushed back before accepting.
 Challenge value: `no`, or `at-<phase>` for the phase where an
 accepted Challenge overturned an artifact (for example
 `at-scope` or `at-develop`).
+Autopilot value: `no`, or `from-<phase>` for the phase where
+autopilot first engaged (for example `from-input` when set in
+the session input, or `from-scope` when set mid-session).
 
 ### Phase 7: Review
 
@@ -1397,6 +1428,95 @@ still stands, redo what the revision touches.
   A recurrence that first surfaces after merge goes to Phase 9
   re-frame, not a Challenge; a premise that breaks during the
   session is a Challenge.
+
+## Autopilot
+
+Under autopilot, take the gate-defined default at each
+acceptance gate, without waiting for the user's acceptance.
+Keep producing every artifact, running every Junio/Ralph
+review, and sharing each artifact with the user as it lands.
+The wait for acceptance is gone; the quality machinery stays.
+
+### Engagement
+
+The user can engage autopilot at any point — in the session
+input ("session input is ghXX. autopilot on."), mid-session,
+or in a gate reply. Recognise the intent liberally; the
+phrasing varies ("autopilot on", "go autopilot", "just proceed
+through the gates"). The user can turn it off the same way
+("autopilot off").
+
+When you recognise engagement, acknowledge it once in plain
+turn output — for example *"Autopilot on, proceeding through
+to PR ready."* The acknowledgement is the commitment; without
+it, treat the message as ordinary input. After acknowledging,
+mention autopilot again only when pausing or disengaging.
+
+### Gate-defined defaults
+
+At each acceptance gate, take the default that gate's share
+message names:
+
+- **Phase 1: Requirements Analysis.** Accept the completed
+  artifact. Open questions still resolve first via Step 6 —
+  see *Pauses* below.
+- **Phase 2: Code Analysis.** Accept. The checkpoint passes
+  without intervention.
+- **Phase 3: Working Scope.** Take the Coherent Scope. Don't
+  fall back to Minimal or Maximal; the recommendation is the
+  default.
+- **Phase 4: Design.** Take the Proposed Design. An
+  Alternative is only taken on user override.
+- **Phase 5: Plan.** Accept the Plan. The checkpoint passes
+  without intervention.
+
+At each gate, still share the artifact and the share message
+as usual — autopilot doesn't change what the user *sees*,
+only that you don't wait before moving on.
+
+### Pauses
+
+Autopilot pauses on two things, and only two:
+
+- **An unanswered open question** in the Requirements
+  Analysis. Step 6 already handles this — if the user leaves
+  any question unanswered, re-ask the unanswered ones before
+  continuing. Under autopilot the same behaviour applies: you
+  cannot proceed correctly without the user's call, by your
+  own marking.
+- **A Challenge** raised in any phase. Pause, take the
+  Challenge to the user, and run the standard accept/reject
+  flow. On accept, revise and reshape; on reject (with
+  direction), continue.
+
+A pause is a pause, not a disengage — once the trigger
+resolves, autopilot resumes automatically.
+
+### Disengagement
+
+Autopilot disengages when you mark the PR ready (end of Phase
+7). The user is back in the loop for Phase 8 (Merge), Phase 9
+(Collect), and Phase 10 (Reflect) — each of which already
+involves the user directly.
+
+The user can also turn autopilot off at any time. Acknowledge
+that the same way you acknowledged engagement ("Autopilot
+off, resuming gates from Phase N") and resume waiting at the
+next acceptance gate.
+
+### PR metadata
+
+When you append the dream metadata line at PR creation, set
+`autopilot:<value>`:
+
+- `no` — autopilot was not used during the session.
+- `from-<phase>` — autopilot was engaged from that point. Use
+  `from-input` when set in the session input, or
+  `from-<phase>` for the phase where it was engaged
+  mid-session (for example `from-scope`, `from-design`).
+
+If autopilot was turned off and on again during the session,
+record the earliest engagement.
 
 ## Behaviour-preserving task briefs
 

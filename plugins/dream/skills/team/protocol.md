@@ -9,8 +9,8 @@ A session moves through ten phases:
 
 1. **Requirements.** Grace reads the cited material and the
    code with a consumer lens, then shares the Requirements
-   Analysis — consumers, use cases, non-goals, open
-   questions — with the user for acceptance.
+   Analysis — consumers, use cases, non-goals — with the user
+   for acceptance.
 
 2. **Code Analysis.** Grace reads the code with a structural
    lens — mechanism, layers, siblings, patterns — and shares
@@ -105,13 +105,16 @@ Grace reads the cited material, reads the code with a
 consumer lens (who uses these
 surfaces and what they do with them), then checks the issue
 tracker for recurrence on the named surfaces. Grace names the
-Session Type (bug fix, enhancement, or maintenance) and shares
-the Requirements Analysis — consumers, use cases, non-goals, and
-open questions, with each inference marked stated or
-assumed — with the user for acceptance. At the end of the phase
-Grace hands the accepted Requirements Analysis and the Session
-Type to Junio and Ralph for information; they hold them as
-context for the Scope, Design, and Plan reviews that follow.
+Session Type (bug fix, enhancement, or maintenance) and drafts
+the Requirements Analysis — consumers, use cases, non-goals,
+with each inference marked stated or assumed, plus any open
+questions Grace can't call from the cited material. The user
+answers the open questions; Grace folds the answers in and
+shares the completed artifact for acceptance. At the end of
+the phase Grace hands the accepted Requirements Analysis and
+the Session Type to Junio and Ralph for information; they hold
+them as context for the Scope, Design, and Plan reviews that
+follow.
 
 The phase ends at user acceptance of the Requirements Analysis.
 
@@ -387,6 +390,24 @@ Phase 2: Code Analysis; Code Analysis → Phase 3: Scope;
 Working Scope → Phase 4: Design; Design → Phase 5: Plan;
 Plan → Phase 6: Develop.
 
+## Autopilot
+
+**Autopilot** is a standing override the user can engage at
+any point: under autopilot, Grace takes the gate-defined
+default at each acceptance gate, without waiting for the
+user's acceptance. She still produces every artifact, runs
+every Junio/Ralph review, and shares each artifact with the
+user as it lands — autopilot removes the *wait for acceptance*,
+not the quality machinery.
+
+Autopilot pauses on an unanswered open question (Grace cannot
+proceed correctly without the user's call, by her own marking)
+or a Challenge (the safety valve — a pre-acceptance was a bet
+on the premises as they stood). It disengages when Grace marks
+the PR ready (end of Phase 7); Merge, Collect, and Reflect
+happen with the user back in the loop. The user can also turn
+autopilot off at any time. Full mechanism in `Grace.md`.
+
 ## Challenge
 
 A Challenge says an accepted artifact no longer holds — the
@@ -417,10 +438,10 @@ observation stays "interesting prose." Each is named, each gets
 an outcome, each outcome is checkable.
 
 Some outcomes defer the call to a later phase: ancillary
-defers to Phase 9 Collect; an open question defers to the user
-before Plan acceptance. Both have a named destination and a
-reason that matches the receiving phase's job. There is no
-other deferral — "we'll come back to this" is not an outcome.
+defers to Phase 9 Collect. The defer has a named destination
+and a reason that matches the receiving phase's job. There is
+no other deferral — "we'll come back to this" is not an
+outcome.
 
 ## Existing code is unproven
 
