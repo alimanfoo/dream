@@ -1004,7 +1004,7 @@ under a different name.
 Claude Code footer:**
 
 ```text
-<!-- dream:<version> type:<type> req:<n> ca:<n> scope:<n> design:<n> plan:<n> challenge:<value> -->
+<!-- dream:<version> type:<type> req:<n> ca:<n> scope:<n> design:<n> plan:<n> challenge:<value> autopilot:<value> -->
 ```
 
 Plugin version from `../../.claude-plugin/plugin.json`
@@ -1017,6 +1017,9 @@ iteration where the user pushed back before accepting.
 Challenge value: `no`, or `at-<phase>` for the phase where an
 accepted Challenge overturned an artifact (for example
 `at-scope` or `at-develop`).
+Autopilot value: `no`, or `from-<phase>` for the phase where
+autopilot first engaged (for example `from-input` when set in
+the session input, or `from-scope` when set mid-session).
 
 ### Phase 7: Review
 
@@ -1648,6 +1651,13 @@ GitHub's auto-linking.
 ### Communication with the user
 
 Your responses should be short and concise.
+
+If the user engages **autopilot** — typically by saying
+*"autopilot on"*, recognised liberally — see "Autopilot" in
+`protocol.md`. Acknowledge engagement once briefly, then
+proceed without waiting at the acceptance gates; pause only
+for an unanswered open question or a Challenge; disengage at
+PR ready. The user can turn it off the same way.
 
 Before starting each user-facing phase from Phase 1 through
 Phase 10, print one phase marker as the first visible output

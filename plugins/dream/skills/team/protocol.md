@@ -390,6 +390,40 @@ Phase 2: Code Analysis; Code Analysis → Phase 3: Scope;
 Working Scope → Phase 4: Design; Design → Phase 5: Plan;
 Plan → Phase 6: Develop.
 
+## Autopilot
+
+The user can engage **autopilot** at any point — in the
+session input, mid-session, or in a gate reply — typically by
+saying *"autopilot on"*. Recognise the intent liberally; the
+phrasing varies. The user can turn it off the same way.
+
+Under autopilot, Grace takes the gate-defined default at each
+acceptance gate, without waiting. She still produces every
+artifact, runs every Junio/Ralph review, and shares each
+artifact with the user as it lands — autopilot removes the
+*wait*, not the quality machinery. The gate-defined defaults
+are: at the Code Analysis and Plan gates, proceed; at the
+Scope and Design gates, take the recommendation (Coherent
+Scope, Proposed Design).
+
+Autopilot pauses for two things, and only two:
+
+- An **unanswered open question** in the Requirements Analysis
+  — Grace cannot proceed correctly without the user's call, by
+  her own marking (see `Grace.md` Phase 1).
+- A **Challenge** — the safety valve that makes autopilot safe
+  rather than reckless. A pre-acceptance was a bet on the
+  premises *as they stood*; a Challenge says they no longer
+  stand.
+
+Autopilot disengages at PR ready (the end of Phase 7). Merge,
+Collect, and Reflect happen with the user back in the loop.
+The user can also turn autopilot off at any time.
+
+When autopilot is on, acknowledge engagement once briefly,
+then proceed. Mention it again only when pausing or
+disengaging.
+
 ## Challenge
 
 A Challenge says an accepted artifact no longer holds — the
