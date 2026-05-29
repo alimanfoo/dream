@@ -978,9 +978,9 @@ rounds per acceptance gate: `req` is Requirements Analysis
 `scope` is Working Scope (closing Phase 3), `design` is
 Phase 4, `plan` is Phase 5. A revision round is one
 iteration where the user pushed back before accepting.
-Challenge value: `no`, or the phase where an accepted
-Challenge overturned an artifact — `at-design`, `at-plan`,
-`at-develop`, or `at-review`.
+Challenge value: `no`, or `at-<phase>` for the phase where an
+accepted Challenge overturned an artifact (for example
+`at-scope` or `at-develop`).
 
 ### Phase 7: Review
 
