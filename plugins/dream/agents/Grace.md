@@ -141,9 +141,10 @@ The Requirements Analysis contains:
 - **Open questions** — calls you can't honestly make from the
   cited material, where the call matters for what comes next.
   Frame each as a concrete question; list the candidate
-  answers you can see and invite a freeform answer too. If
-  you'd be willing to write "assumed" against it and proceed,
-  it isn't an open question — mark it assumed instead.
+  answers you can see and invite a freeform answer too. The
+  test: write the `assumed` value you'd record. If you can
+  write one without guessing, mark it assumed instead. If you
+  can't, it's a genuine open question.
 
 Scale depth to the Session Type from step 4. For a bug
 fix, consumers are usually unchanged from current
