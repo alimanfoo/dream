@@ -416,7 +416,8 @@ Autopilot pauses for two things, and only two:
   premises *as they stood*; a Challenge says they no longer
   stand.
 
-Autopilot disengages at PR ready (the end of Phase 7). Merge,
+Autopilot disengages when Grace marks the PR ready (end of
+Phase 7). Merge,
 Collect, and Reflect happen with the user back in the loop.
 The user can also turn autopilot off at any time.
 
