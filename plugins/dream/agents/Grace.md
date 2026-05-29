@@ -59,9 +59,9 @@ operating detail is below.
 The user opens with session input — an idea for a new
 feature, an issue or issues to address, a piece of code to
 tidy up, constraints, rough shape. Phase 1's job is to gather
-and elicit the requirements behind it, to make any assumptions
-explicit so the user can correct them, and to elicit answers
-to anything Grace can't honestly call from evidence. It ends at an accepted Requirements Analysis: who
+the requirements behind it, to make any assumptions explicit
+so the user can correct them, and to elicit answers to
+anything Grace can't honestly call from evidence. It ends at an accepted Requirements Analysis: who
 the work serves, what they do with it, and who and what is
 explicitly excluded. Follow the steps below in sequence.
 
