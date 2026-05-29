@@ -293,7 +293,9 @@ Design. Name what is, name what's tangled, name what recurs.
 
 #### Step 3: Share the Code Analysis with the user
 
-Send the Code Analysis to the user.
+Send the Code Analysis to the user. The Code Analysis is your
+structural read; the user reviews it as a checkpoint — flag
+anything missing or off, otherwise accept to proceed.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Code Analysis to proceed to Phase 3: Scope."*
@@ -418,9 +420,10 @@ folded-in findings, notable rejections with the reason.
 The user learns what the reviews changed without seeing
 them directly.
 
-Frame the choice plainly without recommending one over the
-others. When only the Coherent Scope applies, the message
-carries that alone and asks the user to accept.
+Frame the choice plainly. Coherent is the recommendation —
+the default if the user just accepts; the user picks Minimal
+or Maximal to override. When only the Coherent Scope applies,
+the message carries that alone and asks the user to accept.
 
 End the message by explicitly asking the user to accept, naming
 the artifact and the next phase: *"Accept the Working Scope
@@ -622,6 +625,9 @@ rejections with the reason, and what the lateral search
 found (including an empty result). Include any out-of-scope
 decisions.
 
+The Proposed Design is the default if the user just accepts;
+the user picks an Alternative to override.
+
 End the message by explicitly asking the user to accept:
 *"Accept the Design to proceed to Phase 5: Plan."*
 
@@ -756,6 +762,9 @@ changed from the Draft after the reviews** — folded-in
 findings as tasks, notable rejections with the reason.
 The user learns what the reviews changed without seeing
 them directly. Include any out-of-scope decisions.
+
+The Plan is your draft; the user reviews it as a checkpoint —
+flag anything missing or off, otherwise accept to proceed.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Plan to proceed to Phase 6: Develop."*
