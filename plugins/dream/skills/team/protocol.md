@@ -280,8 +280,9 @@ finding is the underlying gap, not the scaffolding.
 breaks an accepted artifact, Junio raises a Challenge to
 Grace — for instance, repeated audits circling the same
 surface for different stated reasons, which points at the
-Working Scope. Grace assesses it and, if it holds, takes
-it to the user. See "Challenge" below.
+Working Scope being too narrow to reach the root cause. Grace
+assesses it and, if it holds, takes it to the user. See
+"Challenge" below.
 
 Full audit-lens detail (examples, patterns, edge cases) is in
 `Junio.md`.

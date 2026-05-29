@@ -1381,7 +1381,8 @@ example:
 Revising the artifact is ordinary work: return to the phase
 that owns it and follow the protocol as normal from there. The
 artifact is revised and re-accepted through that phase's usual
-flow, and the work downstream reshapes to match.
+flow, and the work downstream reshapes to match — keep what
+still stands, redo what the revision touches.
 
 ### What a Challenge is not
 
@@ -1396,13 +1397,6 @@ flow, and the work downstream reshapes to match.
   A recurrence that first surfaces after merge goes to Phase 9
   re-frame, not a Challenge; a premise that breaks during the
   session is a Challenge.
-
-### Task list shape after an accepted Challenge
-
-Agree how the task list changes: drop and rebuild from the
-revised artifact, finish well-isolated tasks then expand, or a
-mix. There is no default — it depends how related the existing
-tasks are to the revision.
 
 ## Behaviour-preserving task briefs
 
