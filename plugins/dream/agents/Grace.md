@@ -341,6 +341,14 @@ leave the root cause, an unmet requirement, or a broader
 inconsistency unresolved? If so, it is too narrow — widen it
 to reach the cause, not just the surface the input named.
 
+Ask the removal question too: could dropping or narrowing
+something — a feature, a branch, a layer, a hand-maintained
+count — resolve the concern or leave the code simpler to
+maintain, instead of adding? Agents default to adding and to
+keeping what's there. The classic case is a count in prose
+that has to change whenever the things it counts do — remove
+the count.
+
 #### Step 2: Share the Draft Scope Options with Junio and Ralph for review
 
 Send the Draft Scope Options to both Junio and Ralph in
@@ -469,13 +477,6 @@ with only one real branch. Remove any code the change leaves
 purposeless — when a function the Design modifies has no
 remaining purpose after the change, the same Design removes
 it.
-
-Ask the removal question too: could dropping a feature, a
-branch, or a layer reach the Working Scope, rather than adding
-to it? Agents default to adding, and the question surfaces the
-drop-or-narrow shapes that default hides. This is broader than
-removing purposeless code above — it weighs cutting a whole
-part, not just clearing what the change orphaned.
 
 Reshape the Proposed Design around the real structural
 fix, even when the user asked for a docstring or comment

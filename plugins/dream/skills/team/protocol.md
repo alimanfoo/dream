@@ -139,7 +139,9 @@ wider alternative is real). Coherent Scope additions cite the
 Code Analysis findings they rest on. The Coherent Scope must
 reach the root cause: if finishing it would leave the root
 cause, an unmet requirement, or a broader inconsistency
-unresolved, it is too narrow. Grace shares the Draft
+unresolved, it is too narrow. Prefer removal where it serves,
+too: dropping or narrowing can resolve the concern, or ease
+maintenance, better than adding. Grace shares the Draft
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
