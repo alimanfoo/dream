@@ -1357,9 +1357,10 @@ The shape is the same every time:
 3. Put two outcomes to the user: accept the Challenge (the
    artifact is revised) or reject it (and say how to proceed).
 4. Carry out the outcome. On accept, revise the artifact and
-   reshape the work downstream. On reject, continue on the
-   direction the user gave — the Challenge was raised from a
-   blocked position, so a bare "no" is not a resolution.
+   reshape the work downstream. On reject, the work continues;
+   where a teammate was blocked on the Challenge, the reject
+   must say how to proceed, since a bare "no" would leave them
+   stuck.
 
 ### Evidence
 

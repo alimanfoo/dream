@@ -142,8 +142,9 @@ The layers stack: the Requirements Analysis is the consumer
 truth, the Code Analysis is the code truth, the Working
 Scope is the agreed commitment, the Design is the proposal.
 Each can fail on its own terms — your review can raise a
-Challenge against any of them. Open the cited code as needed to evaluate the
-proposal — your review is reading-based here too.
+Challenge against any of them. Open the cited code as needed
+to evaluate the proposal — your review is reading-based here
+too.
 
 Apply these lenses to the Design.
 

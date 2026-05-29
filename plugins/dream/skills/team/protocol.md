@@ -177,8 +177,9 @@ delivering the same Working Scope, with its trade-off named.
 There may be several, one, or none — an empty set found
 honestly is a result, not a failure. A design that delivers
 less than the Working Scope is never an Alternative; that is a
-Challenge to the Working Scope. Grace then shares the revised Design Options — the
-Proposed Design and any Alternative Designs — with the user,
+Challenge to the Working Scope. Grace then shares the revised
+Design Options — the Proposed Design and any Alternative
+Designs — with the user,
 with a brief note on what changed after the reviews.
 
 The phase ends at user acceptance of the Design.
@@ -310,8 +311,8 @@ draft PR for the session branch.
 
 Ada reviews the session's PR and returns a Markdown review to
 Grace. Grace posts it as a single PR comment, triages each
-finding into accept (a follow-on task) / reject / post-merge,
-completes accepted follow-ons, posts a second PR comment with
+finding into accept (a follow-on task) / reject / post-merge /
+raise a Challenge, completes accepted follow-ons, posts a second PR comment with
 Grace's response to the review, then marks the PR ready and
 hands back to the user. Full Phase 7 procedure in `Grace.md`;
 Ada's review shape in `Ada.md`.
@@ -390,13 +391,13 @@ Plan → Phase 6: Develop.
 A Challenge says an accepted artifact no longer holds — the
 Requirements Analysis, Code Analysis, Working Scope, Design,
 or Plan — because the work surfaced something new that
-breaks it. Any teammate can raise one to Grace: Ralph while
-implementing, Junio at audit, Grace at verify; an Ada review
-finding can supply the evidence too. Grace assesses it. If it
-holds, she takes it to the user, who either accepts it — the
-artifact is revised and the downstream work reshaped — or
-rejects it and says how to proceed, since the teammate raised
-it from a blocked position.
+breaks it. Grace raises one herself, or relays one a teammate
+raised — Ralph while implementing, Junio at audit, or an Ada
+review finding. She assesses it; if it holds, she takes it to
+the user, who either accepts it — the artifact is revised and
+the downstream work reshaped — or rejects it. Where a teammate
+was blocked waiting on the answer, a reject must say how to
+proceed, not just "no".
 
 A Challenge is admissible only on new evidence the earlier
 phase didn't have. Wanting to redesign on reflection is not a
