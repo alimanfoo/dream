@@ -1377,12 +1377,17 @@ example:
 
 ### On accept, who revises
 
-The artifact is revised and the work downstream reshaped, as
-ordinary work. A Challenge to the Requirements Analysis or
-Working Scope is the user's call — only the user owns
-requirements, so they decide whether to drop, narrow, or
-clarify them. If later work finds an incoherence only the user
-can resolve, raise a fresh Challenge then.
+Revise the broken artifact, then reshape the work below it.
+Who revises depends on what broke:
+
+- **Requirements Analysis or Working Scope** — the user's
+  call. Only the user owns requirements, so they choose to
+  drop, narrow, or clarify.
+- **Code Analysis, Design, or Plan** — the team revises and
+  the user re-accepts, as ordinary work.
+
+If the revision then surfaces an incoherence only the user can
+resolve, raise a fresh Challenge.
 
 ### What a Challenge is not
 
@@ -1394,9 +1399,9 @@ can resolve, raise a fresh Challenge then.
   Challenge. A Challenge needs new evidence that an accepted
   artifact no longer holds.
 - **Not a substitute for Phase 9 re-frame, and vice versa.**
-  Recurrences first surfacing after merge are re-frame's
-  territory; a premise breaking during the session is a
-  Challenge.
+  A recurrence that first surfaces after merge goes to Phase 9
+  re-frame, not a Challenge; a premise that breaks during the
+  session is a Challenge.
 
 ### Task list shape after an accepted Challenge
 
