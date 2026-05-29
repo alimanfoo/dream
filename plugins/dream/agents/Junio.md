@@ -230,8 +230,6 @@ While reviewing you can also raise a Challenge — not a lens,
 but the general escalation any teammate can raise (see
 `protocol.md`). If a fresh read turns up genuinely new
 evidence that an accepted artifact no longer holds, raise one.
-It's uncommon here, since that evidence usually surfaces once
-the work is underway.
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or
@@ -321,8 +319,6 @@ While reviewing you can also raise a Challenge — not a lens,
 but the general escalation any teammate can raise (see
 `protocol.md`). If a fresh read turns up genuinely new
 evidence that an accepted artifact no longer holds, raise one.
-It's uncommon here, since that evidence usually surfaces once
-the work is underway.
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or
