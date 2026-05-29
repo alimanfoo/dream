@@ -508,8 +508,8 @@ Send the same body to each reviewer; their role files
 steer the lens. Junio reads from the maintainer's view —
 defend behaviour, code-shape, surviving-fit — and proposes
 candidate lateral moves: different designs, at the same scope,
-that remove duplication, reduce complexity, or reveal intent
-more clearly, each tagged strictly-better or with its
+that remove duplication and reveal intent, or reduce
+complexity, each tagged strictly-better or with its
 trade-off. Ralph reads from the
 engineering-pattern view — naming, scope and abstraction,
 plain code. Each replies with a numbered list of findings
