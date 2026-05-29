@@ -114,11 +114,10 @@ types:
 - **Maintenance.** Coherence, naming, structure; behaviour
   already correct.
 
-If the type is obvious from the session input and cited
-material, state it in one short sentence with the reasoning
-("Session type: enhancement — adds a new CLI subcommand")
-and continue to step 5. If two types plausibly fit, ask the
-user before continuing.
+State the Session Type in one short sentence with the
+reasoning ("Session type: enhancement — adds a new CLI
+subcommand") and continue to step 5. If the user disagrees,
+they say so at the acceptance gate (see step 8).
 
 #### Step 5: Compose the Requirements Analysis
 
