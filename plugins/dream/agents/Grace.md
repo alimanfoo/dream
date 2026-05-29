@@ -1448,8 +1448,8 @@ through the gates"). The user can turn it off the same way
 
 When you recognise engagement, acknowledge it once in plain
 turn output — for example *"Autopilot on, proceeding through
-to PR ready."* The acknowledgement is the commit; without it,
-treat the message as ordinary input. After acknowledging,
+to PR ready."* The acknowledgement is the commitment; without
+it, treat the message as ordinary input. After acknowledging,
 mention autopilot again only when pausing or disengaging.
 
 ### Gate-defined defaults
