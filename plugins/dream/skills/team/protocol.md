@@ -105,10 +105,13 @@ Grace reads the cited material, reads the code with a
 consumer lens (who uses these
 surfaces and what they do with them), then checks the issue
 tracker for recurrence on the named surfaces. Grace names the
-Session Type (bug fix, enhancement, or maintenance) and shares
-the Requirements Analysis — consumers, use cases, non-goals, and
-open questions, with each inference marked stated or
-assumed — with the user for acceptance. At the end of the phase
+Session Type (bug fix, enhancement, or maintenance) and drafts
+the Requirements Analysis — consumers, use cases, non-goals,
+with each inference marked stated or assumed, plus any open
+questions Grace can't honestly call from evidence. The user
+answers the open questions; Grace folds the answers in and
+shares the completed artifact for acceptance. At the end of
+the phase
 Grace hands the accepted Requirements Analysis and the Session
 Type to Junio and Ralph for information; they hold them as
 context for the Scope, Design, and Plan reviews that follow.
@@ -417,8 +420,10 @@ observation stays "interesting prose." Each is named, each gets
 an outcome, each outcome is checkable.
 
 Some outcomes defer the call to a later phase: ancillary
-defers to Phase 9 Collect; an open question defers to the user
-before Plan acceptance. Both have a named destination and a
+defers to Phase 9 Collect. Open questions are resolved within
+Phase 1, before the Requirements Analysis is completed and
+brought to its acceptance gate — see Grace.md. Each defer has
+a named destination and a
 reason that matches the receiving phase's job. There is no
 other deferral — "we'll come back to this" is not an outcome.
 

@@ -60,11 +60,11 @@ The user opens with session input — an idea for a new
 feature, an issue or issues to address, a piece of code to
 tidy up, constraints, rough shape. Phase 1's job is to
 gather and elicit the requirements behind it, and to make
-any assumptions explicit so the user can correct them. It
-ends at an accepted Requirements Analysis:
-who the work serves, what they do with it, who and what is
-explicitly excluded, and any open questions. Follow the
-steps below in sequence.
+any assumptions explicit so the user can correct them, and
+eliciting answers to anything Grace can't honestly call from
+evidence. It ends at an accepted Requirements Analysis: who
+the work serves, what they do with it, and who and what is
+explicitly excluded. Follow the steps below in sequence.
 
 #### Step 1: Read the cited material
 
@@ -140,10 +140,12 @@ The Requirements Analysis contains:
   the list. Naming who isn't served and what isn't
   supported closes off speculative surfaces before they
   shape Design or Plan.
-- **Open questions** — anything you can't pin from the
-  cited material. Frame each as a concrete question with
-  the candidate answers you can see, not as a freeform
-  request for clarification.
+- **Open questions** — calls you can't honestly make from the
+  cited material, where the call matters for what comes next.
+  Frame each as a concrete question; list the candidate
+  answers you can see and invite a freeform answer too. If
+  you'd be willing to write "assumed" against it and proceed,
+  it isn't an open question — mark it assumed instead.
 
 Scale depth to the Session Type from step 4. For a bug
 fix, consumers are usually unchanged from current
@@ -171,25 +173,42 @@ freely, since it's your inference, not the input's claim.
 They can drop a stated item too, when the consumer-lens
 read or the intent test shows the input got it wrong.
 
-#### Step 6: Share the Requirements Analysis
+#### Step 6: Elicit answers to open questions
 
-Send the Requirements Analysis to the user.
+Skip this step when there are no open questions.
+
+When there are, send the open questions to the user as a
+numbered list. For each, give the candidate answers you can
+see and invite a freeform answer too. End the message by
+asking the user to answer the questions so the Requirements
+Analysis can be completed.
+
+Wait for the user's reply. Fold their answers into the
+Requirements Analysis as stated items, dropping the matching
+open questions. If the reply leaves any question unanswered,
+re-ask the unanswered ones before continuing — you marked them
+as needing the user, so a missing answer means the artifact
+isn't complete yet.
+
+#### Step 7: Share the Requirements Analysis
+
+Send the completed Requirements Analysis to the user.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Requirements Analysis to proceed to Phase 2:
 Code Analysis."*
 
-#### Step 7: Seek user acceptance of the Requirements Analysis
+#### Step 8: Seek user acceptance of the Requirements Analysis
 
-Wait for the user's reply. If accepted, continue to step 8.
-If the user pushes back, revise and return to step 6; repeat
+Wait for the user's reply. If accepted, continue to step 9.
+If the user pushes back, revise and return to step 7; repeat
 until accepted. If the pushback challenges the Session Type
 itself, return to step 4 and recompose from there.
 
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
 
-#### Step 8: Hand the accepted Requirements Analysis to Junio and Ralph
+#### Step 9: Hand the accepted Requirements Analysis to Junio and Ralph
 
 Send Junio and Ralph the accepted Requirements Analysis and
 the Session Type — the version the user accepted, plus any
@@ -601,7 +620,7 @@ it carries. Add a brief note on **what changed after the
 reviews**: what folded into the Proposed Design, notable
 rejections with the reason, and what the lateral search
 found (including an empty result). Include any out-of-scope
-decisions and open questions.
+decisions.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Design to proceed to Phase 5: Plan."*
@@ -736,8 +755,7 @@ Send the revised Plan. Add a brief note on **what
 changed from the Draft after the reviews** — folded-in
 findings as tasks, notable rejections with the reason.
 The user learns what the reviews changed without seeing
-them directly. Include any out-of-scope decisions and
-open questions.
+them directly. Include any out-of-scope decisions.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Plan to proceed to Phase 6: Develop."*
