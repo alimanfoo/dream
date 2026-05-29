@@ -59,10 +59,14 @@ the Working Scope (closing Phase 3), the Design (closing Phase
 4), and the Plan (closing Phase 5). See "Acceptance gates" below.
 The "Common rules" at the end apply across every phase.
 
-**Rescope Discussion** is a separate mechanism, not a phase.
-Grace uses it to stop the work and ask the user whether the
-session's scope should change. She can do this at Design,
-Plan, or Develop. The full mechanism is described below.
+**Challenge** is a separate mechanism, not a phase. A
+teammate raises one when the work surfaces something new
+that breaks an accepted artifact — the Requirements
+Analysis, Code Analysis, Working Scope, Design, or Plan.
+Grace takes a real Challenge to the user, who accepts it
+(the artifact is revised) or rejects it (and says how to
+proceed). It can be raised in any phase once an artifact has
+been accepted. The full mechanism is described below.
 
 ## Roles
 
@@ -132,7 +136,12 @@ With the Code Analysis accepted, Grace drafts the Scope
 Options — the Coherent Scope (always), the Minimal Scope
 (when narrower than Coherent), and the Maximal Scope (when a
 wider alternative is real). Coherent Scope additions cite the
-Code Analysis findings they rest on. Grace shares the Draft
+Code Analysis findings they rest on. The Coherent Scope must
+reach the root cause: if finishing it would leave the root
+cause, an unmet requirement, or a broader inconsistency
+unresolved, it is too narrow. Prefer removal where it serves,
+too: dropping or narrowing can resolve the concern, or ease
+maintenance, better than adding. Grace shares the Draft
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
@@ -151,14 +160,14 @@ Phase opens with Grace sharing the accepted Working Scope
 with Junio and Ralph for information. Grace then drafts the
 Proposed Design — her recommendation — and shares it with
 Junio and Ralph for one round of review — advisory, not
-gating. Junio reads from the maintainer's view and surfaces
+gating. Junio reads from the maintainer's view and proposes
 candidate lateral moves: different designs, at the same
-scope, that remove duplication, reduce complexity, or reveal
-intent more clearly. Ralph reads from the engineering-pattern
+scope, that remove duplication and reveal intent, or reduce
+complexity. Ralph reads from the engineering-pattern
 view. Grace decides each finding on its merits, recording a
 one-line reason: folded into the revised Proposed Design,
 turned into an Alternative Design, rejected, held as an
-Ancillary Finding, or escalated to a Rescope Discussion.
+Ancillary Finding, or raised as a Challenge.
 
 A candidate lateral move that is strictly better folds into
 the Proposed Design. A candidate that buys its simplicity at a
@@ -168,8 +177,9 @@ delivering the same Working Scope, with its trade-off named.
 There may be several, one, or none — an empty set found
 honestly is a result, not a failure. A design that delivers
 less than the Working Scope is never an Alternative; that is a
-Rescope. Grace then shares the revised Design Options — the
-Proposed Design and any Alternative Designs — with the user,
+Challenge to the Working Scope. Grace then shares the revised
+Design Options — the Proposed Design and any Alternative
+Designs — with the user,
 with a brief note on what changed after the reviews.
 
 The phase ends at user acceptance of the Design.
@@ -183,8 +193,8 @@ review — advisory, not gating — and revises. Junio reads
 from the maintainer's view; Ralph reads from the
 implementer's view. Grace decides each finding on its merits,
 recording a one-line reason: folded into the revised Plan,
-rejected, held as an Ancillary Finding, or escalated to a
-Rescope Discussion. Grace then shares the revised Plan with the
+rejected, held as an Ancillary Finding, or raised as a
+Challenge. Grace then shares the revised Plan with the
 user, with a brief note on what changed from the Draft
 after the reviews.
 
@@ -204,11 +214,11 @@ the shared task list.
 
 The main implementation loop. For each task, Grace assigns
 to Ralph; Ralph implements and reports back; Grace verifies
-the diff, accepts the work, commits and pushes; Junio audits
+the diff, commits and pushes; Junio audits
 the committed change; Grace triages findings into follow-on
 tasks or holds for post-merge triage; the loop repeats. The
 chain ends when the task list drains. Full per-task detail
-in `Grace.md` (assign / verify / accept / triage), `Ralph.md`
+in `Grace.md` (assign / verify / commit / triage), `Ralph.md`
 (implement), and `Junio.md` (audit).
 
 ### Coherence chain
@@ -266,12 +276,13 @@ system. Junio's test: mentally remove the scaffolding and read
 the diff again. If the change no longer holds, the in-scope
 finding is the underlying gap, not the scaffolding.
 
-**Possible rescope signal.** When repeated audits on the same
-surface look symptom-shaped — separate tasks each touching the
-surface for different stated reasons — Junio raises a one-line
-*possible rescope signal* in the audit. The signal is an
-observation, not a finding; Grace decides whether to start a
-Rescope Discussion.
+**Challenge.** When an audit surfaces something new that
+breaks an accepted artifact, Junio raises a Challenge to
+Grace — for instance, repeated audits circling the same
+surface for different stated reasons, which points at the
+Working Scope being too narrow to reach the root cause. Grace
+assesses it and, if it holds, takes it to the user. See
+"Challenge" below.
 
 Full audit-lens detail (examples, patterns, edge cases) is in
 `Junio.md`.
@@ -301,8 +312,8 @@ draft PR for the session branch.
 
 Ada reviews the session's PR and returns a Markdown review to
 Grace. Grace posts it as a single PR comment, triages each
-finding into accept (a follow-on task) / reject / post-merge,
-completes accepted follow-ons, posts a second PR comment with
+finding into accept (a follow-on task) / reject / post-merge /
+raise a Challenge, completes accepted follow-ons, posts a second PR comment with
 Grace's response to the review, then marks the PR ready and
 hands back to the user. Full Phase 7 procedure in `Grace.md`;
 Ada's review shape in `Ada.md`.
@@ -376,21 +387,31 @@ Phase 2: Code Analysis; Code Analysis → Phase 3: Scope;
 Working Scope → Phase 4: Design; Design → Phase 5: Plan;
 Plan → Phase 6: Develop.
 
-## Rescope Discussion
+## Challenge
 
-A cross-role mechanism Grace uses at Design, Plan, or Develop
-when the Working Scope may be addressing symptoms rather than
-the root cause. Junio can raise a *possible rescope signal*
-from per-task audits; Grace decides whether to start a
-Rescope Discussion; the user picks between keep and rescope.
-Full mechanism (Coherence Test, evidence, requirements-layer
-vs code-layer shapes) in `Grace.md`.
+A Challenge says an accepted artifact no longer holds — the
+Requirements Analysis, Code Analysis, Working Scope, Design,
+or Plan — because the work surfaced something new that
+breaks it. Grace raises one herself, or relays one a teammate
+raised — Ralph while implementing, Junio at audit, or an Ada
+review finding. She assesses it; if it holds, she takes it to
+the user, who either accepts it — the artifact is revised and
+the downstream work reshaped — or rejects it. Where a teammate
+was blocked waiting on the answer, a reject must say how to
+proceed, not just "no".
+
+A Challenge is admissible only on new evidence the earlier
+phase didn't have. Wanting to redesign on reflection is not a
+Challenge. Overturning an accepted decision goes through a
+Challenge, openly — not slipped through as a fresh
+observation. Grace can raise one in any phase once an artifact
+has been accepted. Full mechanism in `Grace.md`.
 
 ## No orphaned observations
 
 Every observation Grace records gets a named outcome at the
 next decision boundary. The outcomes available depend on
-phase — task, rescope, out of scope, ancillary, drop,
+phase — task, Challenge, out of scope, ancillary, drop,
 reinforce, re-frame, file fresh — but the rule is the same: no
 observation stays "interesting prose." Each is named, each gets
 an outcome, each outcome is checkable.
@@ -400,13 +421,6 @@ defers to Phase 9 Collect; an open question defers to the user
 before Plan acceptance. Both have a named destination and a
 reason that matches the receiving phase's job. There is no
 other deferral — "we'll come back to this" is not an outcome.
-
-Later outcomes respect earlier ones. If new evidence at a
-later phase changes the picture, that is a reversal — state
-the prior outcome, state the new reading, and ask the
-user whether to overturn or hold. Don't run a reversal through
-a procedure that frames it as fresh observation; the procedure
-hides the reversal.
 
 ## Existing code is unproven
 

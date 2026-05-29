@@ -69,7 +69,7 @@ scope for review. Open the named files or symbols, run a
 recurrence search, or read code as needed — your review is
 reading-based here too.
 
-Apply three lenses to the Scope Options.
+Apply these lenses to the Scope Options.
 
 #### Lens 1: Coherent Scope is truly coherent
 
@@ -141,11 +141,12 @@ and the information-only handoff at the start of Phase 4.
 The layers stack: the Requirements Analysis is the consumer
 truth, the Code Analysis is the code truth, the Working
 Scope is the agreed commitment, the Design is the proposal.
-Each can fail on its own terms — your review can challenge
-any of them. Open the cited code as needed to evaluate the
-proposal — your review is reading-based here too.
+Each can fail on its own terms — your review can raise a
+Challenge against any of them. Open the cited code as needed
+to evaluate the proposal — your review is reading-based here
+too.
 
-Apply five lenses to the Design.
+Apply these lenses to the Design.
 
 #### Lens 1: Defend behaviour, not surface
 
@@ -172,9 +173,9 @@ better.
 
 #### Lens 3: Lateral moves
 
-Surface candidate lateral moves — different designs, at
-the same scope, that remove duplication, reduce complexity,
-or reveal intent more clearly. Look for repeated structure
+Propose candidate lateral moves — different designs, at
+the same scope, that remove duplication and reveal intent, or
+reduce complexity. Look for repeated structure
 the Proposed handles case by case — a branch per variant, a
 parallel path per input kind, the same steps written more
 than once — and name the single rule that would unify it.
@@ -194,7 +195,8 @@ dependency, more coupling, less flexibility). Say nothing
 about a move that would only add machinery, future-proof for
 hypothetical cases, or abstract a single case. A move that
 delivers less than the Working Scope is not a lateral
-move — raise it as a rescope signal, not a candidate.
+move — if it has merit, raise it as a Challenge rather than a
+candidate.
 
 #### Lens 4: Surviving-fit check
 
@@ -224,18 +226,15 @@ surviving-purpose check (in the Proposed Design construction
 in `Grace.md`) is the same discipline applied to *purpose*;
 this lens is its companion applied to *fit*.
 
-#### Lens 5: Possible rescope signal
-
-Raise a one-line observation — not a finding — when the
-Design looks symptom-shaped: building machinery on a
-surface the cited material or prior issue history shows
-has unresolved contract drift. The decision to pause and
-rescope is Grace's.
+While reviewing you can also raise a Challenge — not a lens,
+but the general escalation any teammate can raise (see
+`protocol.md`). If a fresh read turns up genuinely new
+evidence that an accepted artifact no longer holds, raise one.
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or
-Design parts involved, optionally followed by a possible
-rescope signal. If nothing to flag, your reply is "no
+Design parts involved, optionally followed by a
+Challenge. If nothing to flag, your reply is "no
 substantive findings." End the reply with the standard
 sign-off: `From Junio.`. The reply is a terminal hand-off —
 skip the RSVP.
@@ -272,7 +271,7 @@ task introduces a new contract via prose or a runtime check
 that the Design didn't carry, you can still flag it, but
 the lenses below are the Plan review's discipline.
 
-Apply three lenses to the Plan.
+Apply these lenses to the Plan.
 
 #### Lens 1: Defend completeness
 
@@ -316,17 +315,15 @@ Ralph applies the same lens from the implementer's view;
 both lenses are welcome — different angles often reveal
 different precursors.
 
-#### Lens 3: Possible rescope signal
-
-Raise a one-line observation — not a finding — when the
-task list looks symptom-shaped: separate tasks each
-touching the same surface for different stated reasons.
-The decision to pause and rescope is Grace's.
+While reviewing you can also raise a Challenge — not a lens,
+but the general escalation any teammate can raise (see
+`protocol.md`). If a fresh read turns up genuinely new
+evidence that an accepted artifact no longer holds, raise one.
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or
-task numbers involved, optionally followed by a possible
-rescope signal. If nothing to flag, your reply is "no
+task numbers involved, optionally followed by a
+Challenge. If nothing to flag, your reply is "no
 substantive findings." End the reply with the standard
 sign-off: `From Junio.`. The reply is a terminal hand-off —
 skip the RSVP.
@@ -360,10 +357,10 @@ report has up to three parts:
    in-scope follow-ons. Grace collects these for the post-merge
    triage.
 
-3. An optional **possible rescope signal** — a one-line
-   observation, separate from findings, when repeated audits on
-   the same surface look symptom-shaped. See the sub-section
-   below for trigger conditions.
+3. An optional **Challenge** — separate from findings, when
+   the change shows an accepted artifact no longer holds (for
+   instance, repeated audits circling the same surface). See
+   the sub-section below for when to raise one.
 
 If there's nothing to flag in any of these, your report is "no
 substantive findings."
@@ -456,29 +453,29 @@ in-session antecedent flips a borderline call toward
 in-scope: the session created the relevance, which is signal,
 not noise.
 
-#### Possible rescope signal
+#### Challenge
 
-Raise a *possible rescope signal* — a one-line observation
-in the audit message that the task list may still be
-symptom-shaped — when repeated audits on the same surface
-look symptom-shaped, with separate tasks each touching the
-surface for different stated reasons rather than the
-coherence chain converging on a clean state. Your session
-stays alive across audits, so each new audit has the prior
-ones in context.
+Raise a *Challenge* in the audit message when the change
+shows an accepted artifact no longer holds, on new evidence
+the earlier phase didn't have: the Design assumption the
+commit relies on turns out false; the code is shaped
+differently from the Code Analysis; or repeated audits circle
+the same surface for different stated reasons rather than the
+coherence chain converging on a clean state, so the Working
+Scope is aimed at a symptom. Your session stays alive across
+audits, so each new audit has the prior ones in context.
 
 A rename or refactor chain that naturally cites the same
 surface across audits is the chain working correctly, not a
-signal. The trigger is qualitative — "is the task list
-addressing different facets of the same surface?" — not a
-mechanical count of audits.
+Challenge. The trigger is qualitative — "has new evidence
+broken a premise?" — not a mechanical count of audits.
 
-Keep the signal as an observation Grace can act on by
-starting a Rescope Discussion — not a finding, not a
-follow-on task. Your per-task scope discipline still
-applies; the surface itself is not in scope as a per-task
-finding. The decision to rescope is Grace's, not yours.
-(See "Rescope Discussion" in `protocol.md`.)
+A Challenge is separate from a finding and a follow-on task:
+it doesn't go on the task list, it goes to Grace, who assesses
+it and takes a real one to the user. Your per-task scope
+discipline still applies; the surface itself is not in scope
+as a per-task finding. The decision is Grace's, not yours.
+(See "Challenge" in `protocol.md`.)
 
 #### Compensation patterns
 
@@ -685,8 +682,8 @@ Per-task audit reply:
 Out of scope but noticed:
 1. ...
 
-Possible rescope signal: <one-line observation about the
-surface that keeps coming up>.
+Challenge: <one-line claim that an accepted artifact no
+longer holds, with the new evidence>.
 
 From Junio.
 ```
@@ -699,8 +696,8 @@ section at Design time):
    or Design part>.
 2. ...
 
-Possible rescope signal: <one-line observation when the
-Design looks symptom-shaped>.
+Challenge: <one-line claim that a prior accepted artifact no
+longer holds>.
 
 From Junio.
 ```
@@ -713,8 +710,8 @@ at Plan time):
    task number>.
 2. ...
 
-Possible rescope signal: <one-line observation when the task
-list looks symptom-shaped>.
+Challenge: <one-line claim that a prior accepted artifact no
+longer holds>.
 
 From Junio.
 ```

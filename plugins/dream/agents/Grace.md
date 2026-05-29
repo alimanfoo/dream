@@ -336,6 +336,19 @@ condition:
   across related surfaces often points to a Maximal Scope
   worth offering.
 
+Test the Coherent Scope before sharing: would finishing it
+leave the root cause, an unmet requirement, or a broader
+inconsistency unresolved? If so, it is too narrow — widen it
+to reach the cause, not just the surface the input named.
+
+Ask the removal question too: could dropping or narrowing
+something — a feature, a branch, a layer, a hand-maintained
+count — resolve the concern or leave the code simpler to
+maintain, instead of adding? Agents default to adding and to
+keeping what's there. The classic case is a count in prose
+that has to change whenever the things it counts do — remove
+the count.
+
 #### Step 2: Share the Draft Scope Options with Junio and Ralph for review
 
 Send the Draft Scope Options to both Junio and Ralph in
@@ -369,8 +382,8 @@ from two teammates, caught at the cheapest point to fix.
 Decide each finding — from either reviewer — on its
 merits, and record a one-line reason for the call. You own
 the Scope Options; a teammate raising a finding is not
-itself a reason to fold it in. Each finding takes one of
-two paths:
+itself a reason to fold it in. Each finding takes one of these
+paths:
 
 - **Fold in** — accept into the revised Scope Options
   (revise an existing option or add a missed candidate).
@@ -404,8 +417,8 @@ This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
 
 Even after acceptance, the Working Scope is not set in
-stone. It can be revised at any point through a Rescope
-Discussion (see below).
+stone. It can be revised at any point through a Challenge
+(see below).
 
 The phase ends at user acceptance of the Working Scope.
 
@@ -493,15 +506,15 @@ message body is the Proposed Design. Sign off
 
 Send the same body to each reviewer; their role files
 steer the lens. Junio reads from the maintainer's view —
-defend behaviour, code-shape, surviving-fit, rescope
-signal — and surfaces candidate lateral moves: different
-designs, at the same scope, that remove duplication, reduce
-complexity, or reveal intent more clearly, each tagged
-strictly-better or with its trade-off. Ralph reads from the
+defend behaviour, code-shape, surviving-fit — and proposes
+candidate lateral moves: different designs, at the same scope,
+that remove duplication and reveal intent, or reduce
+complexity, each tagged strictly-better or with its
+trade-off. Ralph reads from the
 engineering-pattern view — naming, scope and abstraction,
 plain code. Each replies with a numbered list of findings
-(or "no substantive findings"), optionally with a possible
-rescope signal. Junio and Ralph are advisory at Design, not
+(or "no substantive findings"), optionally with a
+Challenge. Junio and Ralph are advisory at Design, not
 gating. Run one round only; don't loop back after revising.
 Fresh attention from two teammates catches issues at the
 cheapest point to fix.
@@ -511,7 +524,7 @@ cheapest point to fix.
 Decide each finding — from either reviewer — on its
 merits, and record a one-line reason for the call. You own
 the Design; a teammate raising a finding is not itself a
-reason to fold it in. Each finding takes one of four
+reason to fold it in. Each finding takes one of these
 paths:
 
 - **Fold in** — accept into the revised Proposed Design.
@@ -520,18 +533,20 @@ paths:
   message in step 6.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
-- **Escalate to Rescope** — the finding suggests the
-  Working Scope is the wrong shape (too narrow, too wide,
-  addressing symptoms). Raise a Rescope Discussion; the
-  user picks between keep and rescope.
+- **Raise a Challenge** — the finding shows an accepted
+  artifact no longer holds: the Working Scope is the wrong
+  shape, or an earlier artifact got something wrong. Take it
+  to the user, who accepts (revise) or rejects (with
+  direction).
 
-Junio's review also surfaces candidate lateral moves, each
+Junio's review also proposes candidate lateral moves, each
 tagged. A candidate tagged strictly-better folds into the
 Proposed Design — it improves the recommendation at no real
 cost. A candidate tagged with a trade-off you set aside as
 material for the Alternative Designs in step 5. A candidate
 that would deliver less than the Working Scope is not a
-lateral move; treat it as a possible rescope signal.
+lateral move; raise it as a Challenge if it has merits worth
+considering.
 
 Apply the **code-shape-first check** (see below) before
 deciding any finding that proposes a docstring, comment,
@@ -540,10 +555,10 @@ precondition, or convention. If Ralph's review already
 proposes a structural alternative, the check largely
 reduces to accepting it.
 
-Decide whether to start a Rescope Discussion when the
-reply includes a possible rescope signal. The signal is
-an observation, not a finding; your call whether the
-Design looks symptom-shaped enough to pause.
+When the reply raises a Challenge, assess it: does an
+accepted artifact really no longer hold? If it does, take it
+to the user (accept or reject). A teammate raising one is not
+itself the decision.
 
 #### Step 5: Build the Alternative Designs
 
@@ -567,8 +582,8 @@ dependency, more coupling, less flexibility. Reaching for
 an existing library in place of custom code is a common
 Alternative agents miss; surface it when it fits. A move
 that delivers less than the Working Scope is not an
-Alternative; it is a scope change, so raise it as a Rescope
-Discussion.
+Alternative; it is a scope change — raise it as a Challenge if
+it has merit.
 
 Write the search result even when it is empty. Report what
 folded into the Proposed Design, each Alternative with its
@@ -663,12 +678,12 @@ and step 1, so the message body is the Draft Plan. Sign off
 
 Send the same body to each reviewer; their role files
 steer the lens. Junio reads from the maintainer's view —
-defend completeness across tasks, tidy-first precursors,
-rescope signal. Ralph reads from the implementer's view
+defend completeness across tasks, tidy-first precursors.
+Ralph reads from the implementer's view
 — task implementability and tidy-first from the
 implementer's angle. Each replies with a numbered list of
 findings (or "no substantive findings"), optionally with
-a possible rescope signal. Junio and Ralph are advisory
+a Challenge. Junio and Ralph are advisory
 at Plan, not gating. Run one round only; don't loop back
 after revising. Fresh attention from two teammates
 catches issues at the cheapest point to fix.
@@ -678,7 +693,7 @@ catches issues at the cheapest point to fix.
 Decide each finding — from either reviewer — on its
 merits, and record a one-line reason for the call. You own
 the Plan; a teammate raising a finding is not itself a
-reason to fold it in. Each finding takes one of four
+reason to fold it in. Each finding takes one of these
 paths:
 
 - **Fold in** — accept into the revised Plan as a task (or
@@ -688,10 +703,10 @@ paths:
   message in step 5.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
-- **Escalate to Rescope** — the finding suggests the
-  Working Scope is the wrong shape (too narrow, too wide,
-  addressing symptoms). Raise a Rescope Discussion; the
-  user picks between keep and rescope.
+- **Raise a Challenge** — the finding shows an accepted
+  artifact no longer holds: the Design is the wrong shape, or
+  an earlier artifact got something wrong. Take it to the
+  user, who accepts (revise) or rejects (with direction).
 
 Apply the **code-shape-first check** (see below) before
 deciding any finding that proposes a docstring, comment,
@@ -710,10 +725,10 @@ tasks with a bounded criterion, or simplify the code shape
 for the current scope. If it only adds machinery or
 future-proofing, reject.
 
-Decide whether to start a Rescope Discussion when the
-reply includes a possible rescope signal. The signal is
-an observation, not a finding; your call whether the task
-list looks symptom-shaped enough to pause.
+When the reply raises a Challenge, assess it: does an
+accepted artifact really no longer hold? If it does, take it
+to the user (accept or reject). A teammate raising one is not
+itself the decision.
 
 #### Step 5: Share the revised Plan with the user
 
@@ -820,10 +835,10 @@ or tests — those are Ralph's gate, green by the time you're
 reading. If something looks off, bounce back rather than
 fixing.
 
-##### Step 4: Accept
+##### Step 4: Commit
 
 Re-diff before staging. The working tree is live between
-verify and accept — any changes in that window land
+verify and commit — any changes in that window land
 silently if you stage on the earlier read. Then
 `TaskUpdate status=completed`, stage Ralph's changes,
 commit, and push.
@@ -834,9 +849,10 @@ Send Junio a message asking for the audit on the
 just-committed change. Sign off per "Communication between
 teammates (agents)" below: `From Grace. RSVP via
 SendMessage.` Wait for their numbered list (or "no
-substantive findings"). The audit may also include an
-optional **possible rescope signal** when repeated audits
-on the same surface look symptom-shaped — see step 6.
+substantive findings"). The audit may also raise a
+**Challenge** — for instance when repeated audits circle the
+same surface, suggesting the Working Scope is too narrow to
+reach the root cause (see step 6).
 
 ##### Step 6: Triage findings
 
@@ -861,12 +877,10 @@ comment, or section-header to express a contract,
 invariant, precondition, or convention, apply the
 **code-shape-first check** (see below) before deciding.
 
-Decide whether to start a Rescope Discussion when the
-audit included a **possible rescope signal**. The signal
-is an observation, not a finding; your call whether the
-task list looks symptom-shaped enough to pause. If yes,
-follow the shape in "Rescope Discussion" below. If no,
-continue triage as normal.
+When the audit raises a **Challenge**, assess it: does an
+accepted artifact really no longer hold? If it does, take it
+to the user (accept or reject) following the "Challenge"
+shape below. If not, continue triage as normal.
 
 ##### Step 7: Loop
 
@@ -936,8 +950,7 @@ should never appear in the description:
 - *missed instance*
 - *consequential adjacency*
 - *Ancillary Finding*
-- *Rescope*
-- *possible rescope signal*
+- *Challenge* as the dream-team mechanism
 
 Agent-coined terms-of-art ("the latent test injection seam")
 are out for the same reason: the reader hasn't been in the
@@ -962,7 +975,7 @@ under a different name.
 Claude Code footer:**
 
 ```text
-<!-- dream:<version> type:<type> req:<n> ca:<n> scope:<n> design:<n> plan:<n> rescope:<value> -->
+<!-- dream:<version> type:<type> req:<n> ca:<n> scope:<n> design:<n> plan:<n> challenge:<value> -->
 ```
 
 Plugin version from `../../.claude-plugin/plugin.json`
@@ -972,8 +985,9 @@ rounds per acceptance gate: `req` is Requirements Analysis
 `scope` is Working Scope (closing Phase 3), `design` is
 Phase 4, `plan` is Phase 5. A revision round is one
 iteration where the user pushed back before accepting.
-Rescope value: `no`, `yes-at-design`, `yes-at-plan`, or
-`yes-at-develop`.
+Challenge value: `no`, or `at-<phase>` for the phase where an
+accepted Challenge overturned an artifact (for example
+`at-scope` or `at-develop`).
 
 ### Phase 7: Review
 
@@ -1002,11 +1016,15 @@ should.
 #### Step 3: Triage each finding
 
 Decide each finding on its merits; Ada raising it is not
-itself a reason to accept it. Each finding takes one of
-three paths: Accept (becomes a follow-on task, handled by
+itself a reason to accept it. Each finding takes one of these
+paths: Accept (becomes a follow-on task, handled by
 the standard per-task workflow including Junio's audit),
 Reject (note in your reply to the user, with the reason),
-or Out of scope (held for the post-merge bucket).
+Out of scope (held for the post-merge bucket), or Raise a
+Challenge (when the finding shows an accepted artifact no
+longer holds rather than a fixable defect — take it to the
+user per the "Challenge" shape below, instead of patching it
+as a follow-on).
 
 Keep one response note per Ada finding as you triage. Accepted
 findings record the follow-on task and, once complete, the
@@ -1191,8 +1209,9 @@ GitHub-visible text.
   "Noticed during #N, ..." The recurrence pattern itself is
   the behaviour gap — issues landing on the same surface is
   evidence of an unresolved contract. Substance already
-  decided at Plan is a reversal, not fresh observation —
-  see "No orphaned observations" in `protocol.md`.
+  decided at Plan would be a Challenge to a settled
+  decision, raised in-session, not a fresh observation here
+  — see "Challenge" in `protocol.md`.
 - **File fresh** — no related issue on the surface, and the
   finding clears the bar. Open a standalone issue. Open the
   issue body with a reference to the session PR:
@@ -1314,133 +1333,70 @@ teammate. If the ladder yields a structural alternative,
 reject the prose or runtime check and accept a task (or
 follow-on) for the corresponding code change instead.
 
-## Rescope Discussion
+## Challenge
 
-Pause and raise it with the user when the Working Scope
-may be addressing a symptom. The real concern might be
-the underlying root cause, an unmet requirement, or
-broader inconsistency. You can do this at Design, Plan,
-or Develop. At Scope time the wider alternative surfaces
-as the Maximal Scope during normal Phase 3 flow, not as a
-separate Rescope Discussion. The shape is the same every
-time:
+Raise a Challenge when the work surfaces something new that
+breaks an accepted artifact — the Requirements Analysis, Code
+Analysis, Working Scope, Design, or Plan. You raise one
+yourself, or relay one a teammate raised: Ralph while
+implementing, Junio at audit, or an Ada review finding that
+breaks a premise rather than flags a defect. You assess it;
+if it holds, you take it to the user. You can raise one in any
+phase once an artifact has been accepted.
+
+A Challenge is admissible only on new evidence the earlier
+phase didn't have. Wanting to redesign on reflection is not a
+Challenge; hold to a decision once made and overturn it only
+on new evidence, openly.
+
+The shape is the same every time:
 
 1. Pause the work.
-2. State the evidence — what you have seen that suggests the
-   agreed work won't reach the root cause, unmet requirement,
-   or broader inconsistency.
-3. Propose two options — keep the current Working Scope
-   as-is, or rescope to address the root cause, unmet
-   requirement, or broader inconsistency.
-4. Ask the user which to take. Keep continues the agreed
-   work; rescope reshapes the Working Scope (and everything
-   downstream of it).
-
-### The Coherence Test
-
-> Would finishing the agreed work still leave the root
-> cause, unmet requirement, or broader inconsistency
-> unresolved?
-
-If yes, Rescope is on the table. The Coherence Test applies
-at Design, Plan, and Develop. The evidence available differs
-by phase.
-
-At Design and Plan time, ask the question in its strongest
-form: *what is the underlying root cause, unmet requirement,
-or broader inconsistency, and does the proposed work reach it
-— not just the surface change as originally framed?* The
-session input may name a symptom rather than what's
-behind it.
-
-### The removal question
-
-Always ask alongside the Coherence Test:
-
-> If we removed something — a feature, a branch, a layer
-> of code, a requirement — would the root cause, unmet
-> requirement, or broader inconsistency resolve?
-
-The removal question surfaces shapes (drop or narrow, simplify,
-delete) that agents otherwise miss by defaulting to adding
-code. Without it, the rescope conversation drifts toward "what
-should we add?" and the narrowing options never come up.
+2. State the prior reading — the accepted artifact — and the
+   new evidence that breaks it.
+3. Put two outcomes to the user: accept the Challenge (the
+   artifact is revised) or reject it (and say how to proceed).
+4. Carry out the outcome. On accept, revise the artifact and
+   reshape the work downstream. On reject, the work continues;
+   where a teammate was blocked on the Challenge, the reject
+   must say how to proceed, since a bare "no" would leave them
+   stuck.
 
 ### Evidence
 
-Any of these is enough to apply the Coherence Test:
+New evidence can break an accepted artifact in many ways — for
+example:
 
-- The issue body cites prior closed issues on the same surface.
-- The Scope recurrence search returned prior issues on the
-  named surface.
-- Junio raises a possible rescope signal during Develop.
-- Reading the code shows the surface is more tangled than the
-  issue suggested.
-- The user describes a symptom on a surface that already has
-  issue history.
+- The code turns out shaped differently from the Code
+  Analysis.
+- A consumer or use case the Requirements Analysis named
+  behaves differently than recorded.
+- The Design's approach doesn't hold once implementation
+  starts, or a planned task proves impossible as written.
+- Repeated audits circle the same surface — the Working Scope
+  turns out aimed at a symptom after all.
 
-### Rescope shapes
+### On accept
 
-When the user accepts a rescope, the work happens at one or
-both of two layers.
+Revising the artifact is ordinary work: return to the phase
+that owns it and follow the protocol as normal from there. The
+artifact is revised and re-accepted through that phase's usual
+flow, and the work downstream reshapes to match — keep what
+still stands, redo what the revision touches.
 
-**Requirements layer — the user's call.**
-
-- **Revisit requirements.** Two sub-cases:
-  - *Drop or narrow.* Two requirements pull against each other,
-    or a feature is no longer worth the cost. The user says
-    which to drop, retire, or shrink.
-  - *Clarify.* Requirements were never stated cleanly; issues
-    landed where the contract was implicit. The user states
-    what was meant; the team implements against the new
-    version.
-
-**Code layer — team's expertise, user accepts.**
-
-- **Simplify.** Trim within an active feature — collapse
-  helpers, cut speculative abstraction, reduce indirection. The
-  feature stays; its implementation gets smaller.
-- **Delete.** Remove code that no longer has callers — a whole
-  feature, module, or class.
-- **Refactor.** Restructure — split, merge, move. The contract
-  stays; its decomposition changes.
-
-The brief for each code-layer shape is in "Behaviour-preserving
-task briefs" below. When the rescope touches requirements,
-that decision lands first. If code-level work finds an
-incoherence only the user can resolve, pause again at that
-point.
-
-### What Rescope is not
+### What a Challenge is not
 
 - **Not per-finding triage.** Each finding from Junio or Ada
-  gets its own triage decision. Rescope is different:
-  it pauses the whole session and reopens the scope
-  conversation.
-- **Not scope creep.** The test is whether the root cause,
-  unmet requirement, or broader inconsistency stays unresolved
-  after the current task list completes — not "while we're
-  here, we should also..." Genuinely separate findings go to
-  Ancillary Findings for post-merge triage.
+  gets its own triage decision. A Challenge is different: it
+  pauses the work and reopens an accepted artifact.
+- **Not scope creep.** "While we're here, we should also..."
+  is an Ancillary Finding for post-merge triage, not a
+  Challenge. A Challenge needs new evidence that an accepted
+  artifact no longer holds.
 - **Not a substitute for Phase 9 re-frame, and vice versa.**
-  Recurrences first surfacing after merge are re-frame's
-  territory; recurrences visible at Design or Plan are
-  Rescope's. See "No orphaned observations" in
-  `protocol.md`.
-
-### Task list shape after a rescope
-
-When the user accepts a rescope, agree on one of three shapes:
-
-- **Drop and rebuild.** The original tasks were aimed at the
-  symptom; redraft from the new scope.
-- **Finish then expand.** The original tasks are well-isolated;
-  finish them, then take the new scope as appended tasks or as
-  a follow-on session.
-- **Keep some, drop some.** A mix of the above.
-
-There is no default. The right choice depends on how related
-the original tasks are to the new scope.
+  A recurrence that first surfaces after merge goes to Phase 9
+  re-frame, not a Challenge; a premise that breaks during the
+  session is a Challenge.
 
 ## Behaviour-preserving task briefs
 
@@ -1673,7 +1629,7 @@ for that phase:
 ```
 
 Print it once per phase. Do not print markers for Phase 0:
-Boot, acceptance gates, Rescope Discussion, or individual tasks.
+Boot, acceptance gates, a Challenge, or individual tasks.
 
 In user-facing output, include only information the user needs
 for the next decision, current status, or final hand-off. Don't
