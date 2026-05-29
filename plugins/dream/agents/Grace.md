@@ -294,8 +294,9 @@ Design. Name what is, name what's tangled, name what recurs.
 #### Step 3: Share the Code Analysis with the user
 
 Send the Code Analysis to the user. The Code Analysis is your
-structural read; the user reviews it as a checkpoint — flag
-anything missing or off, otherwise accept to proceed.
+structural read; the user's job at this gate is to flag
+anything missing or off — accepting without flagging anything
+is the default that lets the phase proceed.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Code Analysis to proceed to Phase 3: Scope."*
@@ -763,8 +764,9 @@ findings as tasks, notable rejections with the reason.
 The user learns what the reviews changed without seeing
 them directly. Include any out-of-scope decisions.
 
-The Plan is your draft; the user reviews it as a checkpoint —
-flag anything missing or off, otherwise accept to proceed.
+The Plan is your draft; the user's job at this gate is to
+flag anything missing or off — accepting without flagging
+anything is the default that lets the phase proceed.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Plan to proceed to Phase 6: Develop."*
