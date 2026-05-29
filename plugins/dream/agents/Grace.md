@@ -382,8 +382,8 @@ from two teammates, caught at the cheapest point to fix.
 Decide each finding — from either reviewer — on its
 merits, and record a one-line reason for the call. You own
 the Scope Options; a teammate raising a finding is not
-itself a reason to fold it in. Each finding takes one of
-two paths:
+itself a reason to fold it in. Each finding takes one of these
+paths:
 
 - **Fold in** — accept into the revised Scope Options
   (revise an existing option or add a missed candidate).
@@ -524,7 +524,7 @@ cheapest point to fix.
 Decide each finding — from either reviewer — on its
 merits, and record a one-line reason for the call. You own
 the Design; a teammate raising a finding is not itself a
-reason to fold it in. Each finding takes one of four
+reason to fold it in. Each finding takes one of these
 paths:
 
 - **Fold in** — accept into the revised Proposed Design.
@@ -693,7 +693,7 @@ catches issues at the cheapest point to fix.
 Decide each finding — from either reviewer — on its
 merits, and record a one-line reason for the call. You own
 the Plan; a teammate raising a finding is not itself a
-reason to fold it in. Each finding takes one of four
+reason to fold it in. Each finding takes one of these
 paths:
 
 - **Fold in** — accept into the revised Plan as a task (or
@@ -1016,8 +1016,8 @@ should.
 #### Step 3: Triage each finding
 
 Decide each finding on its merits; Ada raising it is not
-itself a reason to accept it. Each finding takes one of
-four paths: Accept (becomes a follow-on task, handled by
+itself a reason to accept it. Each finding takes one of these
+paths: Accept (becomes a follow-on task, handled by
 the standard per-task workflow including Junio's audit),
 Reject (note in your reply to the user, with the reason),
 Out of scope (held for the post-merge bucket), or Raise a

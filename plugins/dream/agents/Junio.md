@@ -69,7 +69,7 @@ scope for review. Open the named files or symbols, run a
 recurrence search, or read code as needed — your review is
 reading-based here too.
 
-Apply three lenses to the Scope Options.
+Apply these lenses to the Scope Options.
 
 #### Lens 1: Coherent Scope is truly coherent
 
@@ -145,7 +145,7 @@ Each can fail on its own terms — your review can raise a
 Challenge against any of them. Open the cited code as needed to evaluate the
 proposal — your review is reading-based here too.
 
-Apply four lenses to the Design.
+Apply these lenses to the Design.
 
 #### Lens 1: Defend behaviour, not surface
 
@@ -272,7 +272,7 @@ task introduces a new contract via prose or a runtime check
 that the Design didn't carry, you can still flag it, but
 the lenses below are the Plan review's discipline.
 
-Apply two lenses to the Plan.
+Apply these lenses to the Plan.
 
 #### Lens 1: Defend completeness
 
