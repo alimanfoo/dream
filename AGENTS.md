@@ -48,6 +48,15 @@ cross-agent mechanics. Role-specific detail goes in the relevant agent file. Kee
 consistent with each other — neither should invent behaviour the
 other contradicts.
 
+That split follows a general locality principle: **information belongs
+where it is acted on, not where it is named.** Each file carries what
+its readers need to do their job, not what its writers found
+interesting to elaborate. The protocol introduces; the actor acts.
+When a new mechanism gets sketched in protocol.md first, the
+operational detail still needs to move to the agent file of whoever
+runs it. `Grace.md`'s Challenge and Autopilot sections are the
+templates.
+
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test suite. When changing behavior, validate by reading the affected skill/agent prompts together and checking that lifecycle, role boundaries, and tool permissions remain consistent. Run the pre-commit hooks to check formatting; see the Linting section.
 
 ## Design principles
@@ -71,6 +80,16 @@ never add machinery for a future that may not come.
 
 Several principles follow:
 
+- **The burden of proof is on the addition.** New machinery —
+  a mechanism, a concept, a special case — carries a permanent
+  autonomy tax: the team has to carry it, apply it correctly,
+  and reconcile it with everything else. Complexity is
+  anti-autonomy. Before adding, test three things in order.
+  Can the apparent need be met by *removing* something that's
+  already there? Can it be met by *widening* an existing rule
+  until the special case disappears? Only if both fail is
+  *adding* the right answer — and the addition still has to
+  prove it earns its keep against the tax it imposes.
 - **Evaluate every change against autonomy.** A change that
   makes the team more responsive to user pushback doesn't
   count — it papers over the failure rather than preventing
@@ -99,6 +118,15 @@ Several principles follow:
   Code Analysis is about code patterns. Scope is the work
   commitment. Design is the proposal. Code-pattern findings
   don't belong in the Requirements Analysis, and vice versa.
+- **Adding a concept reframes the existing ones.** When you
+  introduce a named mechanism to a system that already has
+  named mechanisms, the existing ones' roles shift. Some
+  become special cases of the new one; some become redundant;
+  some become stale. The discipline is to list every existing
+  concept the new one touches and ask of each: is it still
+  doing the same job? Has its role narrowed? Is it now
+  incidental? Adding-while-pruning is the rhythm; adding alone
+  leaves the system carrying both.
 
 ## Writing agent prompts
 
@@ -111,7 +139,12 @@ writing or revising their prompts:
   and has no effect; the agent reads it and moves on. To
   make a check real, direct the agent to externalise: write
   the answer in turn output, in a `SendMessage` to another
-  agent, or in an artifact.
+  agent, or in an artifact. Tests framed as hypothetical
+  dispositions — *would you be willing to X, could you Y,
+  should you Z, is this the kind of thing that A* — read
+  as text and pass without firing. Rewrite each as an act:
+  *write X, check Y, name Z*. The act is the token; the test
+  becomes real.
 - **Agents reason forward from context** — they're
   next-token machines, with no premonition about what
   they're about to write. So "before reaching for X, do Y"
@@ -128,7 +161,15 @@ writing or revising their prompts:
   weigh the word's plain pull against the behaviour you want,
   and pick a different word when they conflict. A name whose
   plain sense already points at the behaviour needs no help
-  from the prose.
+  from the prose. The same trap fires in reverse with words
+  you reach for in passing: the writer draws from general
+  English by reflex, while the reader reads each word against
+  the local glossary first. *Commit, accept, hold, ready,
+  honestly* get read in their plugin sense before their
+  English one. Before reaching for a word in prose, scan
+  whether it already carries weight in the protocol. If it
+  does, pick a different word — even a slightly less elegant
+  one is safer than a collision.
 
 ## Writing prose
 
