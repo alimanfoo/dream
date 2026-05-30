@@ -33,22 +33,20 @@ make agent-led coding more sustainable on its own, or does it
 lean on the human to hold something together? The design
 principles below all descend from this.
 
-This is not a distant ambition. Agent-written code is fast
-becoming the mainstream of software development, and the raw
-capability to generate it is becoming common — table stakes,
-not an advantage. What stays scarce is the ability to keep
-accepting that code indefinitely without the codebase rotting.
-Generation speed and coherence pull against each other: the
-faster agents write, the faster duplication, drift, and
-half-finished structure pile up — faster than any human can
-review. So the durable edge is not a better generator; it is a
-protocol that makes coherence keep pace with generation. That
-is the layer this plugin works at, and it is the layer a
-stronger base model does not hand you for free. A smarter model
-writes a better single change; it does not, on its own,
-single-source a duplicated fact, add a missing check, or refuse
-a scope that patches a symptom. Those are disciplines the
-protocol imposes, not capabilities the model arrives with.
+This is not a distant ambition. The capability to generate code
+is becoming common — table stakes, not an advantage. What stays
+scarce is the ability to keep accepting that code indefinitely
+without the codebase rotting, because generation speed and
+coherence pull against each other: the faster agents write, the
+faster duplication and drift pile up, faster than any human can
+review. So the durable edge is not a better generator but a
+protocol that makes coherence keep pace with generation — and
+that is a layer a stronger base model does not hand you for
+free. A smarter model writes a better single change; it does
+not, on its own, single-source a duplicated fact, add a missing
+check, or refuse a scope that patches a symptom. Those are
+disciplines the protocol imposes, not capabilities the model
+arrives with.
 
 The line between what to automate and what to keep human is
 drawn by kind, not degree. Coherence has a ground truth — code
@@ -149,77 +147,74 @@ This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 
 ## Design principles
 
-These principles all descend from the dream. Coherent is the
-baseline, not the ceiling; the ceiling is the dream itself, not
-any single technique. One pathway toward it is the productive
-generalisation: a design that names a real concept, a domain
-idea or a technical pattern, collapses duplication, and reveals
-intent, so the code comes out simpler — less to maintain,
-easier to test and check for correctness, cheaper to build on.
-That simplicity is part of the dream, not a goal beside it:
-less code and fewer special cases are less for a future session
-to carry. Default coding agents rarely get there: they follow
-instructions literally, add rather than restructure, and leave
-the latent generalisation unseen. Setting the conditions that
-let the team find it is part of moving toward the dream,
-bounded by the discipline against speculative abstraction: the
-generalisation must genuinely simplify the code in hand, never
-add machinery for a future that may not come.
+These principles all descend from the dream. Some are subgoals
+that serve it; some are disciplines that keep the pursuit
+honest.
 
-Several principles follow:
+**The burden of proof is on the addition.** New machinery — a
+mechanism, a concept, a special case — carries a permanent
+autonomy tax: the team has to carry it, apply it correctly, and
+reconcile it with everything else. Complexity is anti-autonomy.
+Before adding, test three things in order. Can the apparent
+need be met by removing something already there? Can it be met
+by widening an existing rule until the special case disappears?
+Only if both fail is adding the right answer — and the addition
+still has to prove it earns its keep against the tax it imposes.
 
-- **The burden of proof is on the addition.** New machinery —
-  a mechanism, a concept, a special case — carries a permanent
-  autonomy tax: the team has to carry it, apply it correctly,
-  and reconcile it with everything else. Complexity is
-  anti-autonomy. Before adding, test three things in order.
-  Can the apparent need be met by *removing* something that's
-  already there? Can it be met by *widening* an existing rule
-  until the special case disappears? Only if both fail is
-  *adding* the right answer — and the addition still has to
-  prove it earns its keep against the tax it imposes.
-- **Sort every human touch: coherence or intent.** When the
-  human steps in, name which it is — *The dream* draws the
-  line. A coherence touch (drift, a duplicated fact, cleanup
-  left behind) is a defect to design out, never a reason to
-  make the team defer more; an intent touch (choosing scope,
-  accepting a trade-off at a gate) is the system working, and
-  stays. Drive coherence touches toward zero; hold intent
-  touches in place. The test for every change: does it remove a
-  coherence touch, or lean on the human to hold something
-  together?
-- **The team judges every input on its merits, not its
-  source.** The dream team's default pull is to defer — to
-  accept a teammate's finding because it was raised, to trust
-  existing code because it's already there, to take the
-  session input's claims as settled because the user brought
-  them in. That deference is sycophancy, and it is an autonomy
-  failure: a team that defers needs the user to catch what it
-  should have caught itself. The team weighs each input on the
-  evidence, whoever supplied it; "the session input is a seed"
-  below is one instance.
-- **The session input is a seed, not a contract.** The user
-  opens with session input that seeds the Requirements
-  Analysis.
-  Subsequent phases build a more systematic picture from
-  that seed and may revise it. The team surfaces what
-  investigation reveals, even when it widens beyond the
-  literal ask. The user can decline the wider scope
-  explicitly via the Minimal Scope option.
-- **Each phase artifact has its own purpose; don't mix
-  concerns.** Requirements Analysis is about user intent.
-  Code Analysis is about code patterns. Scope is the work
-  commitment. Design is the proposal. Code-pattern findings
-  don't belong in the Requirements Analysis, and vice versa.
-- **Adding a concept reframes the existing ones.** When you
-  introduce a named mechanism to a system that already has
-  named mechanisms, the existing ones' roles shift. Some
-  become special cases of the new one; some become redundant;
-  some become stale. The discipline is to list every existing
-  concept the new one touches and ask of each: is it still
-  doing the same job? Has its role narrowed? Is it now
-  incidental? Adding-while-pruning is the rhythm; adding alone
-  leaves the system carrying both.
+**Coherent is the baseline, not the ceiling.** A codebase that
+merely fits together is the floor. The aim above it is the
+productive generalisation — a design that names a real concept,
+a domain idea or a technical pattern, collapses duplication, and
+reveals intent, so the code comes out simpler: less to maintain,
+less for a future session to carry. That simplicity is part of
+the dream, not a goal beside it. Default coding agents rarely
+reach it; they follow instructions literally, add rather than
+restructure, and leave the generalisation unseen. The plugin's
+job is to set the conditions that let the team find it — bounded
+by the discipline against speculative abstraction: the
+generalisation must simplify the code in hand, never add
+machinery for a future that may not come.
+
+**Sort every human touch: coherence or intent.** When the human
+steps in, name which it is — *The dream* draws the line. A
+coherence touch — drift, a duplicated fact, cleanup left behind
+— is a defect to design out. An intent touch — choosing scope,
+accepting a trade-off at a gate — is the system working, and
+stays. Drive coherence touches toward zero; hold intent touches
+in place. The test for any change: does it remove a coherence
+touch, or does it lean on the human to hold something together?
+
+**Judge every input on its merits, not its source.** The team's
+default pull is to defer — to accept a teammate's finding
+because it was raised, to trust existing code because it is
+already there, to take the session input's claims as settled
+because the user brought them in. That deference is sycophancy,
+and an autonomy failure: a team that defers needs the user to
+catch what it should have caught itself. Weigh each input on the
+evidence, whoever supplied it.
+
+**The session input is a seed, not a contract.** This is one
+instance of judging input on its merits. The user opens with
+session input that seeds the Requirements Analysis; later phases
+build a more systematic picture from that seed and may revise
+it. The team surfaces what investigation reveals, even when it
+widens beyond the literal ask — and the user can decline the
+wider scope explicitly via the Minimal Scope option.
+
+**Each phase artifact has its own purpose; don't mix concerns.**
+Requirements Analysis is about user intent. Code Analysis is
+about code patterns. Scope is the work commitment. Design is the
+proposal. Code-pattern findings don't belong in the Requirements
+Analysis, and vice versa.
+
+**Adding a concept reframes the existing ones.** When you
+introduce a named mechanism to a system that already has named
+mechanisms, the existing ones' roles shift. Some become special
+cases of the new one; some become redundant; some become stale.
+List every existing concept the new one touches and ask of each:
+is it still doing the same job? Has its role narrowed? Is it now
+incidental? Adding-while-pruning is the rhythm; adding alone
+leaves the system carrying both.
 
 ## Writing agent prompts
 
