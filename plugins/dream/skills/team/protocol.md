@@ -591,7 +591,8 @@ use to throw out a pointless one: does it guard real behaviour,
 relied on by real code, that you have actually seen break? A
 check guarding a count nothing reads, or a docstring's exact
 wording, is noise — it fails on harmless edits, and the next
-session learns to ignore it. A check guarding a real rule pays
+session burns time and attention fixing code that was never
+broken. A check guarding a real rule pays
 for itself: it removes work a human would otherwise redo by
 hand every session. When the rule is real and you have watched
 it break, the check is Coherent work, not an optional extra —
@@ -604,10 +605,11 @@ Two cautions:
   setting, numpydoc — an off-the-shelf checker is cheaper and
   steadier than one you write yourself. Build a custom check
   only when nothing existing fits.
-- **A flaky check is worse than none.** A check that fails on
-  harmless edits, or encodes the rule wrongly, teaches the team
-  to switch it off — and then no check is trusted. A check must
-  be as reliable as the rule it guards, or leave it out.
+- **A flaky check is worse than none.** A flaky check guards a
+  real rule but fires when nothing is wrong. Each false
+  failure sends a fresh session chasing a fix it doesn't
+  need, and erodes trust in every check. Make it as reliable
+  as the rule it guards, or leave it out.
 
 ## Common rules
 
