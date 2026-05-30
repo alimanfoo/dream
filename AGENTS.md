@@ -149,20 +149,22 @@ This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 
 ## Design principles
 
-These principles all serve the dream. Coherent is the baseline,
-not the ceiling. The deeper aim is
-for the team to find the productive generalisation — a design
-that names a real concept, a domain idea or a technical
-pattern, collapses duplication, and reveals intent — so the
-code comes out simpler, easier to maintain, easier to test
-and check for correctness, and cheaper to build on. Default
-coding agents rarely get there: they follow instructions
-literally, add rather than restructure, and leave the latent
-generalisation unseen. Setting the conditions that let the
-team find it is part of the dream. It stays bounded by the
-discipline against speculative abstraction — the
-generalisation must genuinely simplify the code in hand,
-never add machinery for a future that may not come.
+These principles all descend from the dream. Coherent is the
+baseline, not the ceiling; the ceiling is the dream itself, not
+any single technique. One pathway toward it is the productive
+generalisation: a design that names a real concept, a domain
+idea or a technical pattern, collapses duplication, and reveals
+intent, so the code comes out simpler — less to maintain,
+easier to test and check for correctness, cheaper to build on.
+That simplicity is part of the dream, not a goal beside it:
+less code and fewer special cases are less for a future session
+to carry. Default coding agents rarely get there: they follow
+instructions literally, add rather than restructure, and leave
+the latent generalisation unseen. Setting the conditions that
+let the team find it is part of moving toward the dream,
+bounded by the discipline against speculative abstraction: the
+generalisation must genuinely simplify the code in hand, never
+add machinery for a future that may not come.
 
 Several principles follow:
 
@@ -176,11 +178,16 @@ Several principles follow:
   until the special case disappears? Only if both fail is
   *adding* the right answer — and the addition still has to
   prove it earns its keep against the tax it imposes.
-- **Evaluate every change against autonomy.** A change that
-  makes the team more responsive to user pushback doesn't
-  count — it papers over the failure rather than preventing
-  it. The team should catch what would otherwise require
-  user redirection.
+- **Sort every human touch: coherence or intent.** When the
+  human steps in, name which it is — *The dream* draws the
+  line. A coherence touch (drift, a duplicated fact, cleanup
+  left behind) is a defect to design out, never a reason to
+  make the team defer more; an intent touch (choosing scope,
+  accepting a trade-off at a gate) is the system working, and
+  stays. Drive coherence touches toward zero; hold intent
+  touches in place. The test for every change: does it remove a
+  coherence touch, or lean on the human to hold something
+  together?
 - **The team judges every input on its merits, not its
   source.** The dream team's default pull is to defer — to
   accept a teammate's finding because it was raised, to trust
