@@ -147,7 +147,10 @@ too: dropping or narrowing can resolve the concern, or ease
 maintenance, better than adding. A recurring surface whose root
 cause is a duplicated fact is Coherent work, not optional
 anticipation — single-sourcing it reaches the cause (see "One
-fact, one home"). Grace shares the Draft
+fact, one home"). When the recurring rule has no single home to
+move it to — many sites that must each follow it — a check that
+enforces it is the Coherent fix instead (see "One invariant,
+one check"). Grace shares the Draft
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern

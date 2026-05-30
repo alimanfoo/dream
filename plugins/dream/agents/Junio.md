@@ -99,6 +99,20 @@ scope that only re-syncs the copies (a regen step, an alignment
 test) is not the fix — it keeps both copies, so the drift
 returns. See "One fact, one home" in `protocol.md`.
 
+When the recurring surface is one rule with no single home —
+many hand-written sites that must each follow it —
+single-sourcing has no move, and the earned coherence fix is
+a check that enforces the rule. Don't push this into Maximal
+as an unearned addition. A check enforcing a real rule that
+real code relies on, and that you can see breaking, is the
+root-cause fix, the same as single-sourcing a duplicated
+fact. The test is the one you already run to remove a
+decorative check — real behaviour, real consumer, actually
+breaking — turned to add one. A check guarding incidental
+surface, or a rule nothing relies on, still belongs in
+Maximal or nowhere. See "One invariant, one check" in
+`protocol.md`.
+
 #### Lens 2: Maximal Scope is real anticipation
 
 Test the Maximal Scope, when present: does the work it
@@ -478,7 +492,11 @@ Read circling audits through "One fact, one home" (see
 `protocol.md`): each fix patches one case of a fact that has no
 single home, so the next case keeps surfacing and the chain
 never converges. The Challenge is that the Working Scope should
-single-source the fact, not patch another case.
+single-source the fact, not patch another case. When the
+circling surface is one rule many sites must each follow, with
+no single home, the Challenge is that the Working Scope should
+add a check that enforces the rule, not patch the next site to
+break it (see "One invariant, one check").
 
 A rename or refactor chain that naturally cites the same
 surface across audits is the chain working correctly, not a

@@ -300,6 +300,15 @@ the copies that derive or drift from it. A run of fixes
 tightening on one surface is usually this drift, not a run of
 unrelated defects (see "One fact, one home" in `protocol.md`).
 
+Some recurring surfaces are not one fact copied to several
+places but one rule that many hand-written sites must each
+follow, with no single home to name — every endpoint building
+its own error response, every public function carrying its own
+docstring. Record the rule and that nothing checks it, citing
+the sites seen breaking it. Naming it is factual; whether to
+enforce it with a check is Scope's call (see "One invariant,
+one check" in `protocol.md`).
+
 The Code Analysis is a read, not a transcription. Tell the
 reader something they couldn't get line by line. Root cause
 analysis is the clearest case: for a
@@ -384,7 +393,12 @@ written in two places, single-sourcing it is the root-cause fix
 — Coherent work, not a Maximal add-on (see "One fact, one home"
 in `protocol.md`). A script or test that re-syncs the two
 copies is not the fix — it keeps both copies, so the drift
-returns the next time the code changes.
+returns the next time the code changes. When the recurring
+surface is one rule many sites must each follow, with no single
+home to single-source, a check that enforces the rule is the
+root-cause fix instead — Coherent work when the rule is real
+and the drift is observed, not a Maximal add-on (see "One
+invariant, one check" in `protocol.md`).
 
 Ask the removal question too: could dropping or narrowing
 something — a feature, a branch, a layer, a hand-maintained
@@ -1263,6 +1277,9 @@ GitHub-visible text.
   Where the recurrence is drift between copies of one fact,
   name the home and the copies and frame the issue around
   single-sourcing them (see "One fact, one home" in
+  `protocol.md`). Where it is one rule many sites must each
+  follow, with no single home, frame the issue around adding a
+  check to enforce it (see "One invariant, one check" in
   `protocol.md`). Open the issue body with a reference to the
   session PR: "Noticed during #N, ..." The recurrence pattern
   itself is the behaviour gap — issues landing on the same
