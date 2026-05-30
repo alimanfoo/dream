@@ -94,10 +94,10 @@ Check the other direction too, where the Code Analysis traced a
 recurring surface to one fact written in two places. The
 Coherent Scope is too narrow if it patches the copies without
 naming the one place the fact belongs and single-sourcing it —
-that leaves the root cause and the recurrence will return. Flag
-a scope that re-syncs the copies (a regen step, an alignment
-test) as the false summit: it keeps two homes. See "One fact,
-one home" in `protocol.md`.
+that leaves the root cause and the recurrence will return. A
+scope that only re-syncs the copies (a regen step, an alignment
+test) is not the fix — it keeps both copies, so the drift
+returns. See "One fact, one home" in `protocol.md`.
 
 #### Lens 2: Maximal Scope is real anticipation
 

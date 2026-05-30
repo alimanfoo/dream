@@ -382,9 +382,9 @@ to reach the cause, not just the surface the input named.
 When the Code Analysis traced a recurring surface to one fact
 written in two places, single-sourcing it is the root-cause fix
 — Coherent work, not a Maximal add-on (see "One fact, one home"
-in `protocol.md`). Watch the false summit: a script or test
-that re-syncs the copies keeps two homes and leaves the drift
-to recur.
+in `protocol.md`). A script or test that re-syncs the two
+copies is not the fix — it keeps both copies, so the drift
+returns the next time the code changes.
 
 Ask the removal question too: could dropping or narrowing
 something — a feature, a branch, a layer, a hand-maintained
