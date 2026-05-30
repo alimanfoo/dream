@@ -606,10 +606,11 @@ Two cautions:
   steadier than one you write yourself. Build a custom check
   only when nothing existing fits.
 - **A flaky check is worse than none.** A flaky check guards a
-  real rule but fires when nothing is wrong. Each false
-  failure sends a fresh session chasing a fix it doesn't
-  need, and erodes trust in every check. Make it as reliable
-  as the rule it guards, or leave it out.
+  real rule but fires when nothing is wrong. An agent team
+  won't switch it off — it reads each false failure as a work
+  item and keeps trying to fix what isn't broken, session
+  after session. Make it as reliable as the rule it guards,
+  or leave it out.
 
 ## Common rules
 
