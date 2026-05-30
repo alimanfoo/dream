@@ -109,8 +109,9 @@ root-cause fix, the same as single-sourcing a duplicated
 fact. The test is the one you already run to remove a
 decorative check — real behaviour, real consumer, actually
 breaking — turned to add one. A check guarding incidental
-surface, or a rule nothing relies on, still belongs in
-Maximal or nowhere. See "One invariant, one check" in
+surface, or a rule nothing relies on, fails that test — flag
+it as decorative and keep it out, the same as a check you
+would remove. See "One invariant, one check" in
 `protocol.md`.
 
 #### Lens 2: Maximal Scope is real anticipation
