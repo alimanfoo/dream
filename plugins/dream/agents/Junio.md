@@ -90,12 +90,12 @@ it "while we're here" scope creep dressed as coherence?*
 An addition that isn't earned belongs in Maximal, not
 Coherent.
 
-Check the other direction too, where the Code Analysis
-fact-map named a recurring surface as drift between copies of
-one fact. The Coherent Scope is too narrow if it patches the
-cells without naming the home and single-sourcing it — that
-leaves the root cause and the recurrence will return. Flag a
-scope that re-syncs the copies (a regen step, an alignment
+Check the other direction too, where the Code Analysis traced a
+recurring surface to one fact written in two places. The
+Coherent Scope is too narrow if it patches the copies without
+naming the one place the fact belongs and single-sourcing it —
+that leaves the root cause and the recurrence will return. Flag
+a scope that re-syncs the copies (a regen step, an alignment
 test) as the false summit: it keeps two homes. See "One fact,
 one home" in `protocol.md`.
 
