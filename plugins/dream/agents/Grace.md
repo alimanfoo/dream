@@ -300,9 +300,9 @@ the copies that derive or drift from it. A run of fixes
 tightening on one surface is usually this drift, not a run of
 unrelated defects (see "One fact, one home" in `protocol.md`).
 
-The Code Analysis is a read, not a transcription. Don't parrot
-the code back — tell the reader something they couldn't get line
-by line. Root cause analysis is the clearest case: for a
+The Code Analysis is a read, not a transcription. Tell the
+reader something they couldn't get line by line. Root cause
+analysis is the clearest case: for a
 reported bug, the transcription is the line where the error
 surfaces; the analysis is the mechanism that produces it, often
 layers away. The same read finds what's tangled, what a surface
