@@ -103,6 +103,8 @@ session flow — phases, roles, and cross-agent mechanics — is defined
 in `plugins/dream/skills/team/protocol.md`. Role-specific operating
 detail lives in the agent files under `plugins/dream/agents/`.
 
+**Read all of the plugin files, in full, before doing amything else.**
+
 ## Two layers
 
 This repo has two layers, easy to confuse:
