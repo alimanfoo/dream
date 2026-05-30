@@ -149,8 +149,8 @@ cause is a duplicated fact is Coherent work, not optional
 anticipation — single-sourcing it reaches the cause (see "One
 fact, one home"). When the recurring rule has no single home to
 move it to — many sites that must each follow it — a check that
-enforces it is the Coherent fix instead (see "One invariant,
-one check"). Grace shares the Draft
+enforces it is the Coherent fix instead (see "One rule, one
+check"). Grace shares the Draft
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
@@ -538,7 +538,10 @@ Single-sourcing is usually removal of a copy, not new
 machinery. When a duplicated fact is the root cause of a
 recurring surface, single-sourcing it is Coherent work,
 not optional anticipation — finishing without it leaves the
-root cause unresolved.
+root cause unresolved. When a recurring rule has no single home
+to derive from — many sites that each restate it — there is
+nothing to single-source; enforce it with a check instead (see
+"One rule, one check").
 
 Two traps:
 
@@ -554,27 +557,29 @@ Two traps:
   if this fact changed, would every copy have to change too? A
   no means they are different facts — leave them apart.
 
-## One invariant, one check
+## One rule, one check
 
-An invariant is a rule that must hold in many places at once:
-every API endpoint returns errors in the same shape, every
-public function in a module has a docstring, no query in a hot
-path runs more than once per row. No single line owns the rule.
-Each place follows it on its own.
+Some rules have to hold in many places at once: every API
+endpoint returns errors in the same shape, every public
+function in a module has a docstring, no query in a hot path
+runs more than once per row. No single line owns the rule. Each
+place follows it on its own.
 
 This is what sets it apart from a duplicated fact. A duplicated
 fact lives in one place and is copied to others, so you can
 delete the copies and derive them from the one home (see "One
 fact, one home"). A rule that twenty endpoints each write by
-hand has no one home to move it to — single-sourcing has no
-move here. Single-source a fact where you can; where you can't,
-a check is what's left.
+hand has no one home to move it to. Single-source a fact where
+you can; where you can't, a check is what's left.
 
 So when the rule keeps getting broken — a new endpoint returns
 the wrong error shape, a new function ships with no docstring —
 fixing the one site is not enough. The next session adds the
-next site and breaks it again. The fix that holds is a check: a
-lint rule, a pre-commit hook, or a CI assertion that fails the
+next site and breaks it again. At a single site you would carry
+a rule in a type or structure rather than guard it with a check
+(see "Code-shape ladder"), but no single type can hold a rule
+spread across independent sites. The fix that holds is a check:
+a lint rule, a pre-commit hook, or a CI assertion that fails the
 moment any site breaks the rule.
 
 Why a check, and not an issue that says "keep the error shapes

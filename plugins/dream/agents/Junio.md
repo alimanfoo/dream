@@ -99,20 +99,16 @@ scope that only re-syncs the copies (a regen step, an alignment
 test) is not the fix — it keeps both copies, so the drift
 returns. See "One fact, one home" in `protocol.md`.
 
-When the recurring surface is one rule with no single home —
-many hand-written sites that must each follow it —
-single-sourcing has no move, and the earned coherence fix is
-a check that enforces the rule. Don't push this into Maximal
-as an unearned addition. A check enforcing a real rule that
-real code relies on, and that you can see breaking, is the
-root-cause fix, the same as single-sourcing a duplicated
-fact. The test is the one you already run to remove a
-decorative check — real behaviour, real consumer, actually
-breaking — turned to add one. A check guarding incidental
-surface, or a rule nothing relies on, fails that test — flag
-it as decorative and keep it out, the same as a check you
-would remove. See "One invariant, one check" in
-`protocol.md`.
+Check the same direction for a rule with no single home —
+many sites that each must follow it. Single-sourcing doesn't
+apply, so the earned coherence fix is a check that enforces
+the rule; flag the Coherent Scope as too narrow if it patches
+the sites without one, when the rule is real and you have seen
+it break. Don't push that check into Maximal as an unearned
+addition — enforcing a real, drifting rule is the root-cause
+fix, the same as single-sourcing a duplicated fact. A check
+guarding a rule nothing relies on still fails the test and
+stays out. See "One rule, one check" in `protocol.md`.
 
 #### Lens 2: Maximal Scope is real anticipation
 
@@ -211,7 +207,11 @@ merely coincide today and would later diverge are not real
 duplication — merging them couples code that should stay
 free to change apart, so leave them. Reaching for an
 existing library in place of custom code is a lateral move
-agents routinely miss; raise it when it fits. Surface as
+agents routinely miss; raise it when it fits. When the Design
+enforces a rule across many sites with a check, adopting an
+existing checker — a ruff rule, mypy strictness, numpydoc —
+over a bespoke one is the same move (see "One rule, one check"
+in `protocol.md`). Surface as
 many as you find, and tag each: **strictly better** when it
 improves the Proposed on every axis at no real cost, or
 **trades away X** when it buys its simplicity at a cost (a
@@ -497,7 +497,7 @@ single-source the fact, not patch another case. When the
 circling surface is one rule many sites must each follow, with
 no single home, the Challenge is that the Working Scope should
 add a check that enforces the rule, not patch the next site to
-break it (see "One invariant, one check").
+break it (see "One rule, one check").
 
 A rename or refactor chain that naturally cites the same
 surface across audits is the chain working correctly, not a
