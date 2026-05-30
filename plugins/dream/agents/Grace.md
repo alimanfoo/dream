@@ -293,12 +293,14 @@ fact lives (its one home, or that it has none yet) and what
 copies derive or drift from it. A run of fixes tightening on
 one surface is usually drift between copies of one fact, not a
 run of separate defects (see "One fact, one home" in
-`protocol.md`). This stays factual — name the home and the
-copies; the response belongs to Scope.
+`protocol.md`).
 
-The Code Analysis is factual, not proposal. Don't smuggle in
-recommendations about what to change — those land in Scope and
-Design. Name what is, name what's tangled, name what recurs.
+The Code Analysis is a read, not a transcription. Don't parrot
+the code back — tell the reader something they couldn't get line
+by line: what's tangled, what a surface means across its
+callers, what recurs. It stays factual, not proposal: name what
+is, don't recommend what to change — those changes land in
+Scope and Design.
 
 #### Step 3: Share the Code Analysis with the user
 
