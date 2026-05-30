@@ -553,53 +553,58 @@ Two traps:
 
 ## One invariant, one check
 
-A recurring invariant whose copies have no single home is
-enforced by a check, not re-fixed by hand each session. Some
-facts can't be single-sourced: many hand-authored endpoints
-that must share a convention, a docstring convention across a
-module, a performance envelope across call sites. The copies
-can't be made to derive from one home, so "One fact, one home"
-has no move. What's left is to add a check — a pre-commit hook,
-a CI assertion, a lint rule — so the next drift fails loudly
-instead of surfacing as a fresh, local bug.
+An invariant is a rule that must hold in many places at once:
+every API endpoint returns errors in the same shape, every
+public function in a module has a docstring, no query in a hot
+path runs more than once per row. No single line owns the rule.
+Each place follows it on its own.
 
-Single-sourcing and the check are one ordering at project
-scale, the same one the code-shape ladder carries at function
-scale: construction first — remove the copy so it can't drift —
-and a check second, to catch the drift when the copy can't be
-removed. Prefer construction; reach for the check only when
-single-sourcing isn't available.
+This is what sets it apart from a duplicated fact. A duplicated
+fact lives in one place and is copied to others, so you can
+delete the copies and derive them from the one home (see "One
+fact, one home"). A rule that twenty endpoints each write by
+hand has no one home to move it to — single-sourcing has no
+move here. Single-source a fact where you can; where you can't,
+a check is what's left.
 
-A check is active memory. It enforces the decision itself, so
-no future session has to remember it. An issue is passive
-memory — a note a future session reads, re-interprets, and
-re-fixes at the symptom, so the surface comes back. The check
-fails the moment drift appears; the note decays under
-re-interpretation.
+So when the rule keeps getting broken — a new endpoint returns
+the wrong error shape, a new function ships with no docstring —
+fixing the one site is not enough. The next session adds the
+next site and breaks it again. The fix that holds is a check: a
+lint rule, a pre-commit hook, or a CI assertion that fails the
+moment any site breaks the rule.
 
-Add a check on the same test that removes a decorative one, run
-the other way: does it defend real behaviour, with a real
-consumer, that is actually drifting (see "Defend behaviour, not
-surface")? A check that passes removes a standing
-hand-maintenance tax, paid once — autonomy-positive, not
-machinery for its own sake. The same test that kills a
-`len(CONSTANT) == 9` check licenses an error-shape lint rule.
-When the invariant is real and the drift is observed, enforcing
-it with a check is Coherent work, not optional anticipation —
-finishing without it leaves the drift unresolved.
+Why a check, and not an issue that says "keep the error shapes
+consistent"? Because every session starts fresh, with no memory
+of the last. An issue is a note someone has to find, read, and
+act on — and a new session usually won't. A check needs no
+memory. It runs on its own and fails loudly, so the rule holds
+in the next session without anyone remembering it was decided.
+For a team of agents that share no memory, that is the
+difference between a rule that holds and one that quietly rots.
 
-Two traps:
+Not every rule is worth a check. Apply the same test you would
+use to throw out a pointless one: does it guard real behaviour,
+relied on by real code, that you have actually seen break? A
+check guarding a count nothing reads, or a docstring's exact
+wording, is noise — it fails on harmless edits, and the next
+session learns to ignore it. A check guarding a real rule pays
+for itself: it removes work a human would otherwise redo by
+hand every session. When the rule is real and you have watched
+it break, the check is Coherent work, not an optional extra —
+fixing the sites without it leaves the rule free to break
+again.
 
-- **Adopt before authoring.** The cheapest, most stable check
-  is usually an existing tool switched on — a ruff rule, mypy
-  strictness, numpydoc — not a bespoke script. Reaching for the
-  existing checker is the same lateral move as reaching for a
-  library over custom code.
-- **A flaky check is worse than none.** A check that fires on
-  noise, or encodes the invariant wrongly, is corrupted
-  memory — the next session disables it and trusts nothing. The
-  check must be as stable as the invariant it enforces, or it
-  doesn't earn its place.
+Two cautions:
+
+- **Reach for an existing tool first.** A ruff rule, a mypy
+  setting, numpydoc — an off-the-shelf checker is cheaper and
+  steadier than one you write yourself. Build a custom check
+  only when nothing existing fits.
+- **A flaky check is worse than none.** A check that fails on
+  harmless edits, or encodes the rule wrongly, teaches the team
+  to switch it off — and then no check is trusted. A check must
+  be as reliable as the rule it guards, or leave it out.
 
 ## Common rules
 
