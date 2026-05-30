@@ -33,6 +33,63 @@ make agent-led coding more sustainable on its own, or does it
 lean on the human to hold something together? The design
 principles below all descend from this.
 
+This is not a distant ambition. Agent-written code is fast
+becoming the mainstream of software development, and the raw
+capability to generate it is becoming common — table stakes,
+not an advantage. What stays scarce is the ability to keep
+accepting that code indefinitely without the codebase rotting.
+Generation speed and coherence pull against each other: the
+faster agents write, the faster duplication, drift, and
+half-finished structure pile up — faster than any human can
+review. So the durable edge is not a better generator; it is a
+protocol that makes coherence keep pace with generation. That
+is the layer this plugin works at, and it is the layer a
+stronger base model does not hand you for free. A smarter model
+writes a better single change; it does not, on its own,
+single-source a duplicated fact, add a missing check, or refuse
+a scope that patches a symptom. Those are disciplines the
+protocol imposes, not capabilities the model arrives with.
+
+The line between what to automate and what to keep human is
+drawn by kind, not degree. Coherence has a ground truth — code
+either fits or it does not, drifts or it does not — so it can be
+delegated completely. Intent does not: what to build, which
+trade-off to accept, what "good" means here are value
+judgements, not facts, so they stay with the human permanently.
+These are different axes, not two ends of one slider, which is
+why the dream pushes both to the extreme at once — the human
+needed as rarely as possible for coherence, and kept firmly in
+place for intent. This gives a test for every human touch in a
+session. A coherence touch — the human spotting a duplicated
+fact, catching drift, cleaning up after the team — is a defect:
+the protocol should have caught it, and it is work to design
+out. An intent touch — choosing the scope, accepting a
+trade-off at a gate — is the system working as intended, and
+trying to remove it is itself the failure. Same intervention,
+opposite verdicts. Drive the first kind toward zero; hold the
+second in place. The acceptance gates are not incomplete
+automation waiting to be removed — they are the channel intent
+comes through, to be made cheap but never closed.
+
+Sustaining coherence over a long horizon is, at bottom, a
+memory problem. What rots a codebase is not any single bad
+change but the slow loss of the decisions that kept it
+coherent. Human teams hold those decisions in people's heads;
+an agent team has no heads — each session is a fresh mind with
+no memory of the last. So the only place its coherence-decisions
+can live is the environment the sessions share: the structure
+of the code, the checks that run, the issues on the tracker. A
+decision recorded only as prose — a note a future session must
+read, re-understand, and choose to honour — decays under
+re-interpretation, which is why a surface keeps recurring even
+after an issue was filed and fixed for it. The mechanisms that
+matter most are the ones that write a decision into a form the
+next session cannot drift from: a fact given one home, an
+invariant made a check. The team's deepest job is not writing
+today's code well — the acceptance gates already secure that —
+but curating the environment a future amnesiac version of
+itself will inherit.
+
 ## Introduction and orientation
 
 The dream plugin launches a multi-agent team for software development.
