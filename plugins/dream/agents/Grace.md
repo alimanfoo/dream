@@ -273,7 +273,9 @@ that follow: the user sees the code as you read it before
 seeing what you propose to commit to or build on top of it.
 Depth scales with Session Type:
 
-- *Bug fix:* the mechanism causing the incorrect behaviour.
+- *Bug fix:* the root cause — traced back from where the error
+  surfaces to the mechanism that produces it, not the symptom
+  site alone.
 - *Enhancement:* the integration surface — where the
   enhancement would land, what it touches, what adjacent
   behaviour it might affect.
@@ -286,9 +288,27 @@ wrong-layer defensive code and same-name-different-contract
 splits from step 1 explicitly so a reader can see what the
 read surfaced.
 
-The Code Analysis is factual, not proposal. Don't smuggle in
-recommendations about what to change — those land in Scope and
-Design. Name what is, name what's tangled, name what recurs.
+Where Phase 1's recurrence check found prior issues on a
+surface — or where this read shows the same fix shape landing
+in more than one place — say where the underlying fact lives.
+A fact is one decision the code makes: a set of valid cases, a
+formula, the shape of a response. When the same fact is written
+out in two places, the copies drift apart as the code changes,
+and each drift looks like a fresh, separate bug. So name the one
+place the fact belongs (or note it has no single home yet) and
+the copies that derive or drift from it. A run of fixes
+tightening on one surface is usually this drift, not a run of
+unrelated defects (see "One fact, one home" in `protocol.md`).
+
+The Code Analysis is a read, not a transcription. Tell the
+reader something they couldn't get line by line. Root cause
+analysis is the clearest case: for a
+reported bug, the transcription is the line where the error
+surfaces; the analysis is the mechanism that produces it, often
+layers away. The same read finds what's tangled, what a surface
+means across its callers, and what recurs. It stays factual, not
+proposal: name what is, don't recommend what to change — those
+changes land in Scope and Design.
 
 #### Step 3: Share the Code Analysis with the user
 
@@ -353,14 +373,18 @@ condition:
   Forward-looking: anticipates what comes next, not just
   what the investigation surfaced about now. Not
   everything imaginable — the widest sensible
-  anticipation, not speculation. A recurrence pattern
-  across related surfaces often points to a Maximal Scope
-  worth offering.
+  anticipation, not speculation.
 
 Test the Coherent Scope before sharing: would finishing it
 leave the root cause, an unmet requirement, or a broader
 inconsistency unresolved? If so, it is too narrow — widen it
 to reach the cause, not just the surface the input named.
+When the Code Analysis traced a recurring surface to one fact
+written in two places, single-sourcing it is the root-cause fix
+— Coherent work, not a Maximal add-on (see "One fact, one home"
+in `protocol.md`). A script or test that re-syncs the two
+copies is not the fix — it keeps both copies, so the drift
+returns the next time the code changes.
 
 Ask the removal question too: could dropping or narrowing
 something — a feature, a branch, a layer, a hand-maintained
@@ -1236,10 +1260,13 @@ GitHub-visible text.
   open or closed. File one issue at the **contract level**:
   name the surface (the function, the parameter, the
   contract) and list the prior issues with `#N` references.
-  Open the issue body with a reference to the session PR:
-  "Noticed during #N, ..." The recurrence pattern itself is
-  the behaviour gap — issues landing on the same surface is
-  evidence of an unresolved contract. Substance already
+  Where the recurrence is drift between copies of one fact,
+  name the home and the copies and frame the issue around
+  single-sourcing them (see "One fact, one home" in
+  `protocol.md`). Open the issue body with a reference to the
+  session PR: "Noticed during #N, ..." The recurrence pattern
+  itself is the behaviour gap — issues landing on the same
+  surface is evidence of an unresolved contract. Substance already
   decided at Plan would be a Challenge to a settled
   decision, raised in-session, not a fresh observation here
   — see "Challenge" in `protocol.md`.

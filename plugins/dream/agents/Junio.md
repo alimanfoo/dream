@@ -90,6 +90,15 @@ it "while we're here" scope creep dressed as coherence?*
 An addition that isn't earned belongs in Maximal, not
 Coherent.
 
+Check the other direction too, where the Code Analysis traced a
+recurring surface to one fact written in two places. The
+Coherent Scope is too narrow if it patches the copies without
+naming the one place the fact belongs and single-sourcing it —
+that leaves the root cause and the recurrence will return. A
+scope that only re-syncs the copies (a regen step, an alignment
+test) is not the fix — it keeps both copies, so the drift
+returns. See "One fact, one home" in `protocol.md`.
+
 #### Lens 2: Maximal Scope is real anticipation
 
 Test the Maximal Scope, when present: does the work it
@@ -464,6 +473,12 @@ the same surface for different stated reasons rather than the
 coherence chain converging on a clean state, so the Working
 Scope is aimed at a symptom. Your session stays alive across
 audits, so each new audit has the prior ones in context.
+
+Read circling audits through "One fact, one home" (see
+`protocol.md`): each fix patches one case of a fact that has no
+single home, so the next case keeps surfacing and the chain
+never converges. The Challenge is that the Working Scope should
+single-source the fact, not patch another case.
 
 A rename or refactor chain that naturally cites the same
 surface across audits is the chain working correctly, not a
