@@ -581,10 +581,13 @@ Why a check, and not an issue that says "keep the error shapes
 consistent"? Because every session starts fresh, with no memory
 of the last. An issue is a note someone has to find, read, and
 act on — and a new session usually won't. A check needs no
-memory. It runs on its own and fails loudly, so the rule holds
-in the next session without anyone remembering it was decided.
-For a team of agents that share no memory, that is the
-difference between a rule that holds and one that quietly rots.
+memory. It runs on its own and fails the moment a later change
+breaks the rule. That failure becomes a task the next agent
+picks up — it reads the failure and repairs the drift in its
+normal loop, with no human to notice it or assign it. So the
+rule holds without anyone remembering it was decided. For a
+team of agents that share no memory, that is the difference
+between a rule that holds and one that quietly rots.
 
 Not every rule is worth a check. Apply the same test you would
 use to throw out a pointless one: does it guard real behaviour,
