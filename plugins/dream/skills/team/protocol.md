@@ -551,6 +551,56 @@ Two traps:
   if this fact changed, would every copy have to change too? A
   no means they are different facts — leave them apart.
 
+## One invariant, one check
+
+A recurring invariant whose copies have no single home is
+enforced by a check, not re-fixed by hand each session. Some
+facts can't be single-sourced: many hand-authored endpoints
+that must share a convention, a docstring convention across a
+module, a performance envelope across call sites. The copies
+can't be made to derive from one home, so "One fact, one home"
+has no move. What's left is to add a check — a pre-commit hook,
+a CI assertion, a lint rule — so the next drift fails loudly
+instead of surfacing as a fresh, local bug.
+
+Single-sourcing and the check are one ordering at project
+scale, the same one the code-shape ladder carries at function
+scale: construction first — remove the copy so it can't drift —
+and a check second, to catch the drift when the copy can't be
+removed. Prefer construction; reach for the check only when
+single-sourcing isn't available.
+
+A check is active memory. It enforces the decision itself, so
+no future session has to remember it. An issue is passive
+memory — a note a future session reads, re-interprets, and
+re-fixes at the symptom, so the surface comes back. The check
+fails the moment drift appears; the note decays under
+re-interpretation.
+
+Add a check on the same test that removes a decorative one, run
+the other way: does it defend real behaviour, with a real
+consumer, that is actually drifting (see "Defend behaviour, not
+surface")? A check that passes removes a standing
+hand-maintenance tax, paid once — autonomy-positive, not
+machinery for its own sake. The same test that kills a
+`len(CONSTANT) == 9` check licenses an error-shape lint rule.
+When the invariant is real and the drift is observed, enforcing
+it with a check is Coherent work, not optional anticipation —
+finishing without it leaves the drift unresolved.
+
+Two traps:
+
+- **Adopt before authoring.** The cheapest, most stable check
+  is usually an existing tool switched on — a ruff rule, mypy
+  strictness, numpydoc — not a bespoke script. Reaching for the
+  existing checker is the same lateral move as reaching for a
+  library over custom code.
+- **A flaky check is worse than none.** A check that fires on
+  noise, or encodes the invariant wrongly, is corrupted
+  memory — the next session disables it and trusts nothing. The
+  check must be as stable as the invariant it enforces, or it
+  doesn't earn its place.
+
 ## Common rules
 
 These apply across every phase.
