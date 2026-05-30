@@ -594,6 +594,15 @@ rule holds without anyone remembering it was decided. For a
 team of agents that share no memory, that is the difference
 between a rule that holds and one that quietly rots.
 
+This is also how the team does architecture. No one hands down
+the boundaries and conventions that hold the code together; the
+team draws them as it works, and a check is how each one lasts.
+Where another team would write the decision in a doc and trust
+people to honour it, here the doc decays and the check enforces
+the decision itself. So the trigger is not only a rule you have
+watched break — it is a decision you are making now that a
+future session must keep.
+
 Not every rule is worth a check. Apply the same test you would
 use to throw out a pointless one: does it guard a real rule
 that real code relies on? The evidence is either that you have
