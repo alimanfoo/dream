@@ -273,7 +273,9 @@ that follow: the user sees the code as you read it before
 seeing what you propose to commit to or build on top of it.
 Depth scales with Session Type:
 
-- *Bug fix:* the mechanism causing the incorrect behaviour.
+- *Bug fix:* the root cause — traced back from where the error
+  surfaces to the mechanism that produces it, not the symptom
+  site alone.
 - *Enhancement:* the integration surface — where the
   enhancement would land, what it touches, what adjacent
   behaviour it might affect.
@@ -297,10 +299,13 @@ run of separate defects (see "One fact, one home" in
 
 The Code Analysis is a read, not a transcription. Don't parrot
 the code back — tell the reader something they couldn't get line
-by line: what's tangled, what a surface means across its
-callers, what recurs. It stays factual, not proposal: name what
-is, don't recommend what to change — those changes land in
-Scope and Design.
+by line. Root cause analysis is the clearest case: for a
+reported bug, the transcription is the line where the error
+surfaces; the analysis is the mechanism that produces it, often
+layers away. The same read finds what's tangled, what a surface
+means across its callers, and what recurs. It stays factual, not
+proposal: name what is, don't recommend what to change — those
+changes land in Scope and Design.
 
 #### Step 3: Share the Code Analysis with the user
 
