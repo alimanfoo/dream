@@ -524,18 +524,16 @@ that touches the fact.
 A surface that keeps coming back is itself evidence. When the
 recurrence check, an audit, or the issue history shows fixes
 landing on the same surface across sessions, suspect a
-duplicated fact before a run of unrelated defects. The fixes
-patch cells of one fact that has no single home — each pass
-names one more case of an enumeration the code already holds —
-and there is always one more cell, so the chain never
-converges.
+duplicated fact before a run of unrelated defects. Each fix
+patches one case of an enumeration the code already holds, and
+there is always one more case, so the chain never converges.
 
-Find the home and make the copies derive from it: reify the
-enumeration as a sum type the test iterates, generate the
+Find the home and make the copies derive from it: make the
+enumeration a sum type the test iterates, generate the
 client from the spec, derive the doc from the code.
 Single-sourcing is usually removal of a copy, not new
 machinery. When a duplicated fact is the root cause of a
-recurring surface, single-sourcing it is Coherent-Scope work,
+recurring surface, single-sourcing it is Coherent work,
 not optional anticipation — finishing without it leaves the
 root cause unresolved.
 

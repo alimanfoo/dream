@@ -475,10 +475,10 @@ Scope is aimed at a symptom. Your session stays alive across
 audits, so each new audit has the prior ones in context.
 
 Read circling audits through "One fact, one home" (see
-`protocol.md`): fixes landing on cells of one fact that has no
-single home keep finding the next cell, so the chain never
-converges. The Challenge is that the Working Scope should
-single-source the fact, not patch another cell.
+`protocol.md`): each fix patches one case of a fact that has no
+single home, so the next case keeps surfacing and the chain
+never converges. The Challenge is that the Working Scope should
+single-source the fact, not patch another case.
 
 A rename or refactor chain that naturally cites the same
 surface across audits is the chain working correctly, not a
