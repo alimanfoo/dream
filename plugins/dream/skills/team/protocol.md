@@ -595,17 +595,20 @@ team of agents that share no memory, that is the difference
 between a rule that holds and one that quietly rots.
 
 Not every rule is worth a check. Apply the same test you would
-use to throw out a pointless one: does it guard real behaviour,
-relied on by real code, that you have actually seen break? A
-check guarding a count nothing reads, or a docstring's exact
-wording, is noise — it fails on harmless edits, and the next
-session burns time and attention fixing code that was never
-broken. A check guarding a real rule pays
-for itself: it removes work a human would otherwise redo by
-hand every session. When the rule is real and you have watched
-it break, the check is Coherent work, not an optional extra —
-fixing the sites without it leaves the rule free to break
-again.
+use to throw out a pointless one: does it guard a real rule
+that real code relies on? The evidence is either that you have
+watched the rule break across sessions, or that you are
+deliberately establishing it now — a boundary or convention the
+Design introduces is real by construction, and a check is how
+it survives to the next session. A check guarding a count
+nothing reads, or a docstring's exact wording, is noise — it
+fails on harmless edits, and the next session burns time and
+attention fixing code that was never broken. A check guarding a
+real rule pays for itself: it removes work a human would
+otherwise redo by hand every session. When the rule is real —
+whether it is drifting or freshly established — enforcing it
+with a check is Coherent work, not an optional extra; without
+it the rule is free to break unnoticed.
 
 Two cautions:
 

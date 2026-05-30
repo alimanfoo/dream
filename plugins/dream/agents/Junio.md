@@ -207,11 +207,36 @@ merely coincide today and would later diverge are not real
 duplication — merging them couples code that should stay
 free to change apart, so leave them. Reaching for an
 existing library in place of custom code is a lateral move
-agents routinely miss; raise it when it fits. When the Design
-enforces a rule across many sites with a check, adopting an
-existing checker — a ruff rule, mypy strictness, numpydoc —
-over a bespoke one is the same move (see "One rule, one check"
-in `protocol.md`). Surface as
+agents routinely miss; raise it when it fits.
+
+A check is itself a lateral move, and the one agents miss most.
+Instead of solving the immediate problem in code, it enforces
+the rule the problem is an instance of, so the environment
+holds the rule and no later session has to remember it. Propose
+one whenever the Design establishes or leans on a rule that
+spans many sites — above all a boundary or convention the
+Design introduces, which otherwise lives only in prose and
+erodes the first session that doesn't know it. Kinds worth
+scanning for:
+
+- **A boundary** — a layer that must not import another, a
+  module's public surface — held by an import or dependency
+  rule (import-linter, dependency-cruiser).
+- **A budget** — a query count per request, a latency or
+  bundle-size ceiling — pinned by an assertion in a test, so a
+  regression fails loudly instead of merging.
+- **A ratchet** — a debt count (type suppressions, skipped
+  tests, untyped modules) allowed only to fall, so no session
+  quietly adds to it.
+- **A surface that must stay in sync** — a generated client, a
+  public API, a schema — held by a drift check or snapshot that
+  fails when it changes without its source.
+- **A just-fixed bug** — turned into a rule that forbids its
+  shape, so the same defect cannot return.
+
+Prefer an existing checker to a bespoke one — a ruff rule, mypy
+strictness, numpydoc — the same instinct as reaching for a
+library (see "One rule, one check" in `protocol.md`). Surface as
 many as you find, and tag each: **strictly better** when it
 improves the Proposed on every axis at no real cost, or
 **trades away X** when it buys its simplicity at a cost (a
