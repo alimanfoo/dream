@@ -286,6 +286,16 @@ wrong-layer defensive code and same-name-different-contract
 splits from step 1 explicitly so a reader can see what the
 read surfaced.
 
+Where Phase 1's recurrence check found prior issues on a
+surface — or where this read shows the same fix shape landing
+in more than one place — write the fact-map: name where the
+fact lives (its one home, or that it has none yet) and what
+copies derive or drift from it. A run of fixes tightening on
+one surface is usually drift between copies of one fact, not a
+run of separate defects (see "One fact, one home" in
+`protocol.md`). This stays factual — name the home and the
+copies; the response belongs to Scope.
+
 The Code Analysis is factual, not proposal. Don't smuggle in
 recommendations about what to change — those land in Scope and
 Design. Name what is, name what's tangled, name what recurs.
@@ -353,14 +363,18 @@ condition:
   Forward-looking: anticipates what comes next, not just
   what the investigation surfaced about now. Not
   everything imaginable — the widest sensible
-  anticipation, not speculation. A recurrence pattern
-  across related surfaces often points to a Maximal Scope
-  worth offering.
+  anticipation, not speculation.
 
 Test the Coherent Scope before sharing: would finishing it
 leave the root cause, an unmet requirement, or a broader
 inconsistency unresolved? If so, it is too narrow — widen it
 to reach the cause, not just the surface the input named.
+When the fact-map named a recurring surface as drift between
+copies of one fact, single-sourcing it is the root-cause fix —
+Coherent work, not a Maximal add-on (see "One fact, one home"
+in `protocol.md`). Watch the false summit: a script or test
+that re-syncs the copies keeps two homes and leaves the drift
+to recur.
 
 Ask the removal question too: could dropping or narrowing
 something — a feature, a branch, a layer, a hand-maintained
@@ -1236,10 +1250,13 @@ GitHub-visible text.
   open or closed. File one issue at the **contract level**:
   name the surface (the function, the parameter, the
   contract) and list the prior issues with `#N` references.
-  Open the issue body with a reference to the session PR:
-  "Noticed during #N, ..." The recurrence pattern itself is
-  the behaviour gap — issues landing on the same surface is
-  evidence of an unresolved contract. Substance already
+  Where the recurrence is drift between copies of one fact,
+  name the home and the copies and frame the issue around
+  single-sourcing them (see "One fact, one home" in
+  `protocol.md`). Open the issue body with a reference to the
+  session PR: "Noticed during #N, ..." The recurrence pattern
+  itself is the behaviour gap — issues landing on the same
+  surface is evidence of an unresolved contract. Substance already
   decided at Plan would be a Challenge to a settled
   decision, raised in-session, not a fresh observation here
   — see "Challenge" in `protocol.md`.

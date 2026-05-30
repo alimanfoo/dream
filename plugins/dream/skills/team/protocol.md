@@ -144,7 +144,10 @@ reach the root cause: if finishing it would leave the root
 cause, an unmet requirement, or a broader inconsistency
 unresolved, it is too narrow. Prefer removal where it serves,
 too: dropping or narrowing can resolve the concern, or ease
-maintenance, better than adding. Grace shares the Draft
+maintenance, better than adding. A recurring surface whose root
+cause is a duplicated fact is Coherent work, not optional
+anticipation — single-sourcing it reaches the cause (see "One
+fact, one home"). Grace shares the Draft
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
@@ -507,6 +510,48 @@ Two signs to look for. A comment explaining the defensive code
 the code look intentional. Or the same check is scattered across
 several internal functions, with no single parser at the
 boundary.
+
+## One fact, one home
+
+A fact is one decision the code makes — the set of valid
+cases, the shape of an API response, a formula, a naming
+convention. Each fact belongs in one place; everything else
+derives from it. A fact kept in two places drifts the moment
+either side changes, and each drift reads as a fresh, local
+bug. Duplication doesn't cost once — it taxes every session
+that touches the fact.
+
+A surface that keeps coming back is itself evidence. When the
+recurrence check, an audit, or the issue history shows fixes
+landing on the same surface across sessions, suspect a
+duplicated fact before a run of unrelated defects. The fixes
+patch cells of one fact that has no single home — each pass
+names one more case of an enumeration the code already holds —
+and there is always one more cell, so the chain never
+converges.
+
+Find the home and make the copies derive from it: reify the
+enumeration as a sum type the test iterates, generate the
+client from the spec, derive the doc from the code.
+Single-sourcing is usually removal of a copy, not new
+machinery. When a duplicated fact is the root cause of a
+recurring surface, single-sourcing it is Coherent-Scope work,
+not optional anticipation — finishing without it leaves the
+root cause unresolved.
+
+Two traps:
+
+- **Cheaper re-sync is not a home.** A script that regenerates
+  a checked-in copy, a pass that re-aligns two surfaces, a test
+  asserting copy A equals copy B — each keeps two homes and
+  only lowers the cost of one reconciliation. The copies still
+  drift. The test: can the two copies still drift? If yes, the
+  fact still has two homes.
+- **Only unify facts that must always change together.** Two
+  things that merely look alike today are not one fact; merging
+  them couples code that should stay free to change apart. Ask:
+  if this fact changed, would every copy have to change too? A
+  no means they are different facts — leave them apart.
 
 ## Common rules
 
