@@ -2,9 +2,40 @@
 
 This repo defines the dream plugin for claude code. You are a coding assistant helping the user to develop the dream plugin.
 
+## The dream
+
+The plugin is named for its purpose. The dream is
+**autonomous coherent coding**: software that agents carry end
+to end, indefinitely, without the codebase deteriorating and
+without the human stepping in to keep it healthy. Take both
+words at full strength.
+
+**Autonomous** means agent-first. The agents write all the
+code. The human brings the value judgements — what to build,
+which trade-off to accept, what "good" means here — and as
+little else as possible. A change that needs the human to catch
+a mistake, carry a decision from one session to the next, or
+clean up afterwards is a failure of autonomy, however small.
+
+**Coherent** means everything fits, and stays fitting —
+self-maintaining and self-healing. Each session leaves the
+codebase whole, so the next one builds on solid ground instead
+of first repairing the last one's wake. Nothing is left to tidy
+up after the fact; there is no drift, no rot, no periodic human
+rescue. Coding that can run this way forever is the target.
+
+That is the dream: to unlock the full potential of autonomous
+software development. Naming it is not claiming it — it is not
+reached yet. But every part of this plugin exists to move
+toward it, and that makes it the axiom every design decision
+answers to. When a choice is unclear, this settles it: does it
+make agent-led coding more sustainable on its own, or does it
+lean on the human to hold something together? The design
+principles below all descend from this.
+
 ## Introduction and orientation
 
-The dream plugin launches a multi-agent team for software development. The goal is to deliver high-quality code, keep the codebase coherent, and do both with minimal input from the user.
+The dream plugin launches a multi-agent team for software development.
 
 The plugin is defined within the `plugins/dream` folder.
 
@@ -61,10 +92,8 @@ This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 
 ## Design principles
 
-The dream plugin's goal is **autonomous coherent coding** —
-great code with minimal user intervention.
-
-Coherent is the baseline, not the ceiling. The deeper aim is
+These principles all serve the dream. Coherent is the baseline,
+not the ceiling. The deeper aim is
 for the team to find the productive generalisation — a design
 that names a real concept, a domain idea or a technical
 pattern, collapses duplication, and reveals intent — so the
