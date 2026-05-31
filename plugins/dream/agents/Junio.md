@@ -230,9 +230,7 @@ changes as one unit; that correspondence is what reveals
 intent and makes the deduplication trustworthy. Sites that
 merely coincide today and would later diverge are not real
 duplication — merging them couples code that should stay
-free to change apart, so leave them. Reaching for an
-existing library in place of custom code is a lateral move
-agents routinely miss; raise it when it fits.
+free to change apart, so leave them.
 
 A check is itself a lateral move, and the one agents miss most.
 Instead of solving the immediate problem in code, it enforces
@@ -302,7 +300,44 @@ delivers less than the Working Scope is not a lateral
 move — if it has merit, raise it as a Challenge rather than a
 candidate.
 
-#### Lens 4: Separation of concerns
+#### Lens 4: Reinvention
+
+Spot where the Design rebuilds something that already exists,
+and name what already does the job. Two faces, both knowledge a
+model holds but rarely volunteers:
+
+- **External** — a library, a standard algorithm or technique,
+  or a language or platform feature the Design hand-rolls. A
+  Design writing its own argument parser, date arithmetic, state
+  machine, topological sort, retry-with-backoff, or LRU cache is
+  the common shape.
+- **Internal** — a helper, module, or pattern already in this
+  tree that does what the Design is about to build again.
+  Shallow reading hides these, so the same fact ends up with a
+  second home.
+
+Name what the Design duplicates — a named library, a named
+technique, or a named symbol already in the repo. If you can
+name it, raise it. Say what adopting it buys: tasks that
+disappear, a subsystem dropped, a class of bugs gone. "There may
+be a library for this" is not a finding; "`tomllib` in the
+stdlib replaces the hand-rolled parser the Design spreads across
+tasks 2–4" is.
+
+Tag each the way you tag a lateral move — **strictly better**
+when the swap wins on every axis at no real cost, or **trades
+away X** when it costs a dependency, some control, or
+flexibility. Adopting an existing thing doesn't change the
+Working Scope just because its surface is wider or narrower than
+the design needs. You take as much or as little as you need.
+
+Raise it on plausibility, not certainty. Grace decides each
+finding on its merits and the user holds the Design gate, so a
+named rebuild you flag and Grace sets aside costs little; a real
+one you sat on costs the whole session the simpler design. When
+you hold the knowledge, surface it.
+
+#### Lens 5: Separation of concerns
 
 Read the architecture — both the structure the Design draws and
 the structure it sits in. Does each piece do one job, and do the
@@ -330,7 +365,7 @@ A clean boundary — whether the Design draws it or the review
 names it — is often one worth holding with a check. The
 recognition here feeds the boundary kind in Lens 3.
 
-#### Lens 5: Surviving-fit check
+#### Lens 6: Surviving-fit check
 
 Check that every existing name, location, and convention
 the change touches still fits its contract after the
