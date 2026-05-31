@@ -1324,11 +1324,10 @@ defend-behaviour answered. Findings that clear neither default to
 
 An Opportunity clears the bar when it names worthwhile follow-up
 work the session suggested, with a plausible consumer or value.
-State the potential value you see — it is a hypothesis the user
-can judge, not a verdict to withhold. Whether the work is worth
-doing is the user's call at the decision table; surface the
-Opportunity, the evidence, and the value you'd expect, then let
-the user weigh it.
+Say what you see — the value you'd expect, the consumer it
+serves, the idea the work opened up — as a hypothesis with its
+evidence. The user judges it at the decision table, so this is
+the place to reach for the strong idea, not the safe one.
 
 You don't implement anything in any phase. What enters the
 backlog is an issue or a comment, never a fix.
