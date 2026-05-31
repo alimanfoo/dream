@@ -1324,11 +1324,11 @@ defend-behaviour answered. Findings that clear neither default to
 
 An Opportunity clears the bar when it names worthwhile follow-up
 work the session suggested, with a plausible consumer or value.
-Whether that work is worth doing is a value judgement, so the
-user's acceptance at the decision table is the real gate — surface
-the technical Opportunity and the evidence for it, and let the
-user call the value rather than pre-judging it or authoring
-product direction yourself.
+State the potential value you see — it is a hypothesis the user
+can judge, not a verdict to withhold. Whether the work is worth
+doing is the user's call at the decision table; surface the
+Opportunity, the evidence, and the value you'd expect, then let
+the user weigh it.
 
 You don't implement anything in any phase. What enters the
 backlog is an issue or a comment, never a fix.
