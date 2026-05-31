@@ -317,12 +317,12 @@ Don't act during the task on things you spot that fall outside
 it. Raise them at the post-merge sweep when Grace asks for any
 final Ancillary Findings and opportunities. An *Ancillary
 Finding* is anything worth noting that wasn't part of the task
-you just did. An *opportunity* is worthwhile follow-up work the
-session's own work suggests — a refactor the changed code now
-invites, a feature its new shape makes cheap, a technique that
-would simplify a neighbouring area you touched. Raise an
-opportunity only when the work just done suggests it, not as a
-free-standing wishlist. The post-merge sweep is your only channel
+you just did. An *opportunity* is worthwhile follow-up work the session's own
+work suggests, big or small — a refactor the changed code now
+invites, a feature its new shape makes cheap, a different
+approach to a neighbouring area, or a technique that would
+simplify it. Raise an opportunity only when the work just done
+suggests it, not as a free-standing wishlist. The post-merge sweep is your only channel
 for both — use it. After you send them, your Collect-phase work
 is done unless Grace later asks a specific factual question about
 something you saw while editing.

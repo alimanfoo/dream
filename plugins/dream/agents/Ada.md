@@ -194,11 +194,12 @@ No involvement in this phase.
 Pass any final Ancillary Findings and opportunities from your
 review to the post-merge sweep when Grace asks for them after
 the PR merges. Ancillary Findings are observations from your
-review that haven't already been raised. Opportunities are
-worthwhile follow-up work the diff suggests — a refactor it now
-invites, a simplification the change opens up. Raise an
-opportunity only when the diff suggests it, not as a
-free-standing wishlist.
+review that haven't already been raised. Opportunities are worthwhile follow-up work the diff suggests,
+big or small — a refactor it now invites, a simplification it
+opens up, or a larger idea the change points to, like a feature
+its new shape makes cheap or a simpler approach to the area it
+touched. Raise an opportunity only when the diff suggests it,
+not as a free-standing wishlist.
 
 ### Phase 10: Reflect
 
