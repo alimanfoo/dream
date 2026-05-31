@@ -218,6 +218,63 @@ is it still doing the same job? Has its role narrowed? Is it now
 incidental? Adding-while-pruning is the rhythm; adding alone
 leaves the system carrying both.
 
+## What the design is answering
+
+Coding agents carry inherent traits that work against the
+dream. Naming them is useful, because most of the plugin's
+machinery exists to answer one or more:
+
+- **Perimeter fixation** — fixes the named site, not the cause.
+- **Shallow code reading** — infers from names instead of
+  tracing.
+- **Over-engineering** — adds abstraction the need doesn't earn.
+- **Add over remove** — reaches for a new line, never a
+  deletion.
+- **Sycophancy** — defers to whoever spoke, rather than the
+  evidence.
+- **Literal-mindedness** — follows the instance, misses the
+  general rule.
+- **Saliency decay** — loses earlier context as the session
+  grows.
+- **No memory between sessions** — each session starts with a
+  blank mind.
+- **Over-eagerness** — attempts an underspecified ask rather
+  than question it.
+- **Reactivity** — answers what's asked, volunteers nothing.
+
+Three things about how the plugin answers these matter more
+than the list itself.
+
+**The answer is structural, not exhortative.** The plugin
+almost never tells an agent to be less sycophantic or to read
+code better — an instruction to hold a different disposition
+produces no tokens and changes nothing (see "Writing agent
+prompts"). Instead it assigns a role whose job is the missing
+disposition (Ada's fresh read, Junio's audit), a gate that
+forces the act (Requirements open questions answered before
+any building), or an artifact that carries a decision past the
+session that made it. The trait doesn't change; the structure
+around it does. This is why the plugin works where a list of
+good intentions wouldn't.
+
+**Two traits are exploited, not fought.** Literal-mindedness is
+turned into a lever: name a thing so its plain sense pulls the
+right way (see "Writing agent prompts"), and the agent's
+obedience to the name does the work. Over-eagerness is the
+engine behind active memory — an agent that will dutifully
+attempt whatever sits in front of it is exactly what a failing
+check needs, because the red check becomes a task the next
+session picks up and fixes without being asked. A liability
+aimed at the right target becomes a mechanism.
+
+**The traits that resist structure are where the human
+stays.** Reactivity is the hardest, because you cannot gate on
+the absence of a suggestion — nothing is there to point at, so
+the failure is silent. Sycophancy keeps re-emerging for the
+same reason. These are exactly the traits whose residue still
+leans on the user at a gate — the coherence-or-intent line
+from *The dream* drawn through the agent's own grain.
+
 ## Writing agent prompts
 
 The dream-team agents are LLMs. Three things matter when
