@@ -227,8 +227,8 @@ machinery exists to answer one or more:
 - **Perimeter fixation** — fixes the named site, not the cause,
   and resists working past a tight, mostly self-imposed
   boundary.
-- **Shallow code reading** — infers from names instead of
-  tracing.
+- **Shallow code reading** — guesses names and greps for them
+  instead of tracing, and misses what the guess didn't name.
 - **Over-engineering** — adds abstraction the need doesn't earn.
 - **Add over remove** — reaches for a new line, never a
   deletion.
