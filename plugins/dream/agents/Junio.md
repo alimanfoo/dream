@@ -316,15 +316,13 @@ model holds but rarely volunteers:
   Shallow reading hides these, so the same fact ends up with a
   second home.
 
-The trigger is concrete and it terminates: you notice the Design
-builds something that has a name — a named library, a named
+Name what the Design duplicates — a named library, a named
 technique, or a named symbol already in the repo. If you can
-name what it duplicates, raise it; if you can't, there is
-nothing here, so say nothing. Name the thing and what adopting
-it buys: tasks that disappear, a subsystem dropped, a class of
-bugs gone. "There may be a library for this" is not a finding;
-"`tomllib` in the stdlib replaces the hand-rolled parser the
-Design spreads across tasks 2–4" is.
+name it, raise it; if you can't, there is nothing here, so say
+nothing. Say what adopting it buys: tasks that disappear, a
+subsystem dropped, a class of bugs gone. "There may be a library
+for this" is not a finding; "`tomllib` in the stdlib replaces
+the hand-rolled parser the Design spreads across tasks 2–4" is.
 
 Tag each the way you tag a lateral move — **strictly better**
 when the swap wins on every axis at no real cost, or **trades
