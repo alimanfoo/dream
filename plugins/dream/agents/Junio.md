@@ -293,26 +293,31 @@ candidate.
 
 #### Lens 4: Separation of concerns
 
-Read the structure the Design itself draws. Does each piece it
-adds or reshapes do one job, and do the pieces stay separate
-where they change for separate reasons? Look for a module or
-function the Design hands two unrelated jobs, a layer it lets
-reach across a boundary it shouldn't, or two concerns it tangles
-into one unit that later sessions will have to pull apart. Name
-the boundary the work implies and flag where the Design blurs
-it, so the seam comes out clean before the change lands.
+Read the architecture — both the structure the Design draws and
+the structure it sits in. Does each piece do one job, and do the
+pieces stay separate where they change for separate reasons?
+Look for a module or function handed two unrelated jobs, a layer
+reaching across a boundary it shouldn't, or two concerns tangled
+into one unit that later sessions will have to pull apart. This
+is the design-time companion to the per-task audit's structural
+checks: catch the tangle in the proposal, before it lands.
 
-Stay inside the Working Scope. This lens reads the structure the
-Design draws or crosses, not the architecture it sits in.
-Pre-existing tangles the Design doesn't touch are an Ancillary
-Finding at most, not a Design finding — naming them here invites
-a redesign the scope never asked for. The discipline is the same
-as the proactive check in Lens 3: assess the seams the work
-creates, don't invent architecture for its own sake.
+Route each finding by where it sits:
 
-A clean boundary the Design draws is often one worth holding
-with a check — the recognition here feeds the boundary kind in
-Lens 3.
+- *In what the Design draws.* A tangle the proposal itself
+  creates is a normal Design finding — flag it so the seam comes
+  out clean before the change lands.
+- *In the structure the Design sits on.* A pre-existing tangle
+  the work exposes or builds on can be the real root cause. If
+  the Working Scope can't reach a clean result without
+  addressing it, raise a **Challenge** that the scope is too
+  narrow. If it's genuinely separate, hold it as an Ancillary
+  Finding for post-merge triage. Don't fold a pre-existing
+  redesign into the Design silently.
+
+A clean boundary — whether the Design draws it or the review
+names it — is often one worth holding with a check. The
+recognition here feeds the boundary kind in Lens 3.
 
 #### Lens 5: Surviving-fit check
 
