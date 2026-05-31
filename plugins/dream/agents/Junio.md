@@ -234,7 +234,8 @@ erodes the first session that doesn't know it. The rule must be
 one the team's own work is already drawing — name what the
 Design implies, not architecture invented for its own sake. The
 test is the same as for a surface the session has made adjacent:
-the work created the relevance. Kinds worth scanning for:
+the work created the relevance. These kinds recur, but the list
+is open — scan for the rule, then find the check that fits it:
 
 - **A boundary** — a layer that must not import another, a
   module's public surface — held by an import or dependency
@@ -250,6 +251,25 @@ the work created the relevance. Kinds worth scanning for:
   fails when it changes without its source.
 - **A just-fixed bug** — turned into a rule that forbids its
   shape, so the same defect cannot return.
+- **A seam** — code that must reach the world through an
+  injected abstraction, not `datetime.now()`, `os.environ`, or
+  `random` directly — held by a grep or lint rule, so the test
+  seam stays intact.
+- **A house convention** — booleans named as predicates,
+  private helpers keyword-only, no `print` in library code —
+  encoded as a small lint rule, so a convention stated in prose
+  becomes one the environment enforces.
+- **A completeness rule** — every command has a `--help` test,
+  every registered type appears in the registry, every feature
+  flag has an owner — held by a check that fails on the
+  half-wired addition.
+- **Determinism** — a build or transform that must produce
+  identical output twice — pinned by a check that runs it twice
+  and compares, surfacing hidden ordering or clock dependence.
+- **Documentation that must match code** — a `--help` block
+  quoted in the README, an example that must run — held by a
+  doctest or a check that compares the two, so the doc can't
+  drift from behaviour.
 
 Prefer an existing checker to a bespoke one — a ruff rule, mypy
 strictness, numpydoc — the same instinct as reaching for a
