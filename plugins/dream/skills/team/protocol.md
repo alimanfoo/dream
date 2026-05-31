@@ -357,6 +357,26 @@ Output is filed issues or comments on existing issues; new issues
 carry a category label (bug, enhancement, maintenance). Full
 procedure in `Grace.md`.
 
+When searching for Opportunities, draw on knowledge the
+immediate task leaves dormant. Five cues, each anchored to what
+the session actually did:
+
+- **Analogy** — what does this session remind you of? Where have
+  you seen this pattern before, and what worked or failed there?
+- **Expert lens** — what would a specialist flag that a
+  generalist pass skips: a security engineer, an SRE, someone
+  who has maintained this kind of system for years?
+- **Premortem** — a year on, what will we wish we'd done sooner?
+  What is most likely to bite?
+- **Best-in-class** — how do the strongest projects in this
+  space handle what the session just touched?
+- **Negative space** — what is conspicuously absent? What did
+  the session not do that a careful reviewer would expect?
+
+These widen the net; the grounding bar still holds — an
+Opportunity must be suggested by the work just done, not a
+free-standing wishlist.
+
 The phase ends when triage is complete and any resulting
 issues have been filed.
 
