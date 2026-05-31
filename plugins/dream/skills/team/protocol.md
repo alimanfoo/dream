@@ -175,7 +175,9 @@ Junio and Ralph for one round of review — advisory, not
 gating. Junio reads from the maintainer's view and proposes
 candidate lateral moves: different designs, at the same
 scope, that remove duplication and reveal intent, or reduce
-complexity. Ralph reads from the engineering-pattern
+complexity. He also runs a reinvention check, flagging where
+the Design rebuilds a library, technique, or in-tree helper
+that already exists. Ralph reads from the engineering-pattern
 view. Grace decides each finding on its merits, recording a
 one-line reason: folded into the revised Proposed Design,
 turned into an Alternative Design, rejected, held as an
