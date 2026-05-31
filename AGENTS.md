@@ -272,13 +272,18 @@ check needs, because the red check becomes a task the next
 session picks up and fixes without being asked. A liability
 aimed at the right target becomes a mechanism.
 
-**The traits that resist structure are where the human
-stays.** Reactivity is the hardest, because you cannot gate on
-the absence of a suggestion — nothing is there to point at, so
-the failure is silent. Sycophancy keeps re-emerging for the
-same reason. These are exactly the traits whose residue still
-leans on the user at a gate — the coherence-or-intent line
-from *The dream* drawn through the agent's own grain.
+**Some traits still resist structure — the open frontier.**
+Reactivity is the hardest: you cannot gate on the absence of a
+suggestion, because nothing is there to point at, so the
+failure is silent. Sycophancy keeps re-emerging for the same
+reason. The user catching these at a gate today is the current
+state, not the design's resting place — every such catch is a
+coherence touch the dream means to drive toward zero (see *The
+dream*). The win condition is finding the structure that fires
+on a silent failure — the way the failing check turned
+over-eagerness from liability to mechanism. These traits are
+where that structure is still missing, and so where the next
+work is.
 
 ## Writing agent prompts
 
