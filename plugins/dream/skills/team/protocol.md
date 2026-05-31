@@ -122,7 +122,10 @@ The phase ends at user acceptance of the Requirements Analysis.
 
 With the Requirements Analysis accepted, Grace reads the code
 with a structural lens — mechanism, layers, siblings, callers,
-patterns, candidate smells. The same code as Phase 1, with
+patterns, candidate smells. This read also names the
+architecture the work touches: the boundaries, separation of
+concerns, and conventions the surfaces already follow, and
+which of them nothing enforces. The same code as Phase 1, with
 different attention. Grace then shares the Code Analysis —
 a verifiable read of what the current code does and where,
 with file:line or symbol citations — with the user for

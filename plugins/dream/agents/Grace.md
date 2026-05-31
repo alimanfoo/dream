@@ -252,6 +252,19 @@ fallback semantics in one caller, no-anchor semantics in
 another, and required in a third. Note any such split — the
 Code Analysis names it explicitly.
 
+Name the architecture the work touches. Which layers or modules
+the surfaces sit in, the boundaries between them, the
+separation of concerns the code already keeps, and the
+conventions the surfaces follow — a shared error shape, a
+naming pattern, a structural rule. Note which of these are
+enforced and which hold only by convention, with nothing
+checking them. This is the structural baseline the Design later
+builds on and Junio reads when judging whether the Design keeps
+concerns separate (see his Design separation-of-concerns lens).
+State it factually — name the boundary that exists, don't
+propose one; the read stays a read. Keep it to the architecture
+the session's surfaces touch, not a tour of the whole codebase.
+
 Trace each constraint the surface defends against back to the
 function that imposes it. Name any defensive code that sits at
 a different layer — see "Wrong-layer defensive code" in
@@ -284,9 +297,11 @@ Depth scales with Session Type:
 
 Show the recurrence pattern in enough detail for surfaces
 where Phase 1's tracker search found prior issues. Name
-wrong-layer defensive code and same-name-different-contract
-splits from step 1 explicitly so a reader can see what the
-read surfaced.
+wrong-layer defensive code, same-name-different-contract
+splits, and the architecture the work touches — boundaries,
+separation of concerns, conventions, and which hold only by
+convention — from step 1 explicitly so a reader can see what
+the read surfaced.
 
 Where Phase 1's recurrence check found prior issues on a
 surface — or where this read shows the same fix shape landing
