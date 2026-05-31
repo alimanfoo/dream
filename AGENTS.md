@@ -229,7 +229,10 @@ machinery exists to answer one or more:
   boundary.
 - **Shallow code reading** — guesses names and greps for them
   instead of tracing, and misses what the guess didn't name.
-- **Over-engineering** — adds abstraction the need doesn't earn.
+- **Over-engineering** — adds abstraction the need doesn't
+  earn, with no felt bound on complexity: no alarm that says
+  step back, this is getting too complex, where a human would
+  stop.
 - **Add over remove** — reaches for a new line, never a
   deletion.
 - **Sycophancy** — defers to whoever spoke, rather than the
