@@ -1932,7 +1932,7 @@ codebase, runs searches, makes judgement calls.
 Pre-specifying every move replaces his judgement with
 yours and gives him less to work with, not more. Stay
 informative — include context the codebase doesn't carry
-— but stop short of procedure. The audit chain catches
+— but stop short of procedure. The coherence chain catches
 misses; that's its job, not the brief's.
 
 When you find an instruction telling Ralph what a capable

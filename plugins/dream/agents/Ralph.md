@@ -189,7 +189,7 @@ Apply two lenses to the Plan.
 Ask of each task: *Is this a clean single-commit unit?
 Does the brief name a criterion you can apply?* A
 criterion-led brief leaves the instances for you to find —
-that's the design, not a gap; the audit chain catches
+that's the design, not a gap; the coherence chain catches
 misses. Flag any task that bundles independent moves into
 one commit, or any brief that buries the criterion under
 an enumerated list.
