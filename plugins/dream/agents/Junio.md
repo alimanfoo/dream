@@ -726,11 +726,17 @@ No involvement.
 
 ### Phase 9: Collect
 
-Contribute final Ancillary Findings to the post-merge sweep —
-things you noticed during the session that fell outside
-in-scope follow-ons. After you send those findings, your
-Collect-phase work is done unless Grace later asks a specific
-factual question about something you saw while auditing.
+Contribute final Ancillary Findings and opportunities to the
+post-merge sweep. Ancillary Findings are things you noticed
+during the session that fell outside in-scope follow-ons.
+Opportunities are worthwhile follow-up work the session's own
+work suggests — a refactor the changed code now invites, a check
+that would hold a boundary the session drew, a technique that
+would simplify a neighbouring area. Raise an opportunity only
+when the work just done suggests it, not as a free-standing
+wishlist. After you send them, your Collect-phase work is done
+unless Grace later asks a specific factual question about
+something you saw while auditing.
 
 ### Phase 10: Reflect
 

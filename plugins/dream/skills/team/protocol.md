@@ -344,15 +344,18 @@ The phase ends when the PR is merged.
 
 ## Phase 9: Collect
 
-After merge, Grace gathers Ancillary Findings from three
+After merge, Grace gathers two kinds of input from three
 sources — Junio's in-session audits, Ada's review, and a
-post-merge sweep of all three teammates — tests each
-candidate (defend behaviour, removal question) and decides
-each (drop / reinforce / re-frame / file fresh) with user
-acceptance before filing. Triage happens once, after merge, never
-mid-session. Output is filed issues or comments on existing
-issues; new issues carry a category label (bug, enhancement,
-maintenance). Full procedure in `Grace.md`.
+post-merge sweep of all three teammates. Ancillary Findings are
+concerns the session noticed but left out of scope; opportunities
+are worthwhile follow-up work the session's own work suggests.
+Findings are tested (defend behaviour, removal question);
+opportunities skip those defect tests. Grace decides each (drop /
+reinforce / re-frame / file fresh) with user acceptance before
+filing. Triage happens once, after merge, never mid-session.
+Output is filed issues or comments on existing issues; new issues
+carry a category label (bug, enhancement, maintenance). Full
+procedure in `Grace.md`.
 
 The phase ends when triage is complete and any resulting
 issues have been filed.

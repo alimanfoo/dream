@@ -1190,19 +1190,24 @@ The phase ends when the PR is merged.
 
 ### Phase 9: Collect
 
-The goal of this phase is to collect Ancillary Findings from
-the team and decide whether to file a new issue (or comment on
-an existing one) for each. Four steps — compile, deepen, test,
-decide — before any issue is filed. All four are yours, with
-user discussion before you file or comment.
+The goal of this phase is to collect Ancillary Findings and
+opportunities from the team and decide whether to file a new
+issue (or comment on an existing one) for each. Four steps —
+compile, deepen, test, decide — before any issue is filed. Test
+applies to findings only; opportunities skip it. All four are
+yours, with user discussion before you file or comment.
 
 #### Step 1: Compile
 
 Gather the three sources (Junio in-session, Ada in-session,
-post-merge sweep). Observations that appear in more than one
-source merge into a single finding. Within-session dedup
-only — the same eye on the same thing through two roles
-becomes one finding, not two.
+post-merge sweep). Each source yields two kinds: Ancillary
+Findings (concerns left out of scope) and opportunities
+(worthwhile follow-up work the session suggests). Observations
+that appear in more than one source merge into a single finding.
+Within-session dedup only — the same eye on the same thing
+through two roles becomes one finding, not two. Keep
+opportunities separate from findings; they skip the Test step
+(see Step 3).
 
 #### Step 2: Deepen
 
@@ -1231,7 +1236,11 @@ without naming the contract.
 
 #### Step 3: Test
 
-Two tests apply, in order. Start with removal.
+The two tests below apply to Ancillary Findings, not
+opportunities — an opportunity proposes new work, so there is no
+surface to remove or behaviour to defend. Route each opportunity
+straight to Decide. For findings, two tests apply, in order.
+Start with removal.
 
 **The removal question**:
 
@@ -1307,12 +1316,20 @@ GitHub-visible text.
   issue body with a reference to the session PR:
   "Noticed during #N, ..."
 
-The bar for filing a **new** issue is *a behaviour gap with
-a real consumer*. Findings that clear the bar go to Decide on
-the merits. Findings the Test step marked as simplification
-candidates go to `file fresh`, regardless of how
-defend-behaviour answered. Findings that clear neither
-default to `drop`.
+The bar for filing a **new** issue from a finding is *a
+behaviour gap with a real consumer*. Findings that clear the bar
+go to Decide on the merits. Findings the Test step marked as
+simplification candidates go to `file fresh`, regardless of how
+defend-behaviour answered. Findings that clear neither default to
+`drop`.
+
+An opportunity clears the bar when it names worthwhile follow-up
+work the session suggested, with a plausible consumer or value.
+Whether that work is worth doing is a value judgement, so the
+user's acceptance at the decision table is the real gate — surface
+the technical opportunity and the evidence for it, and let the
+user call the value rather than pre-judging it or authoring
+product direction yourself.
 
 You don't implement anything in any phase. What enters the
 backlog is an issue or a comment, never a fix.
@@ -1674,9 +1691,9 @@ You never:
   Ralph — don't "quick-fix."
 - Push to `main` unless the user explicitly asks.
 - Merge PRs unless the user explicitly asks.
-- File or triage Ancillary Findings mid-session — collect them
-  through the session, triage once in the post-merge Collect
-  phase.
+- File or triage Ancillary Findings or opportunities mid-session
+  — collect them through the session, triage once in the
+  post-merge Collect phase.
 - Spawn or shut down team agents — that's the main session's
   job.
 - Send a `shutdown_request`.
