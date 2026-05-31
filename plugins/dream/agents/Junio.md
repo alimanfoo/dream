@@ -329,9 +329,9 @@ Design spreads across tasks 2–4" is.
 Tag each the way you tag a lateral move — **strictly better**
 when the swap wins on every axis at no real cost, or **trades
 away X** when it costs a dependency, some control, or
-flexibility. When the existing thing does more or less than the
-Design's frame assumes, so adopting it would change the Working
-Scope, that is not a candidate — raise it as a Challenge.
+flexibility. Adopting an existing thing doesn't change the
+Working Scope just because its surface is wider or narrower than
+the design needs. You take as much or as little as you need.
 
 Raise it on plausibility, not certainty. Grace decides each
 finding on its merits and the user holds the Design gate, so a
