@@ -1194,7 +1194,7 @@ The goal of this phase is to collect Ancillary Findings and
 Opportunities from the team and decide whether to file a new
 issue (or comment on an existing one) for each. Four steps —
 compile, deepen, test, decide — before any issue is filed. Test
-applies to findings only; Opportunities skip it. All four are
+applies to Findings only; Opportunities skip it. All four are
 yours, with user discussion before you file or comment.
 
 #### Step 1: Compile
@@ -1202,11 +1202,11 @@ yours, with user discussion before you file or comment.
 Gather the three sources (Junio in-session, Ada in-session,
 post-merge sweep). Each source yields two kinds: Ancillary
 Findings (concerns left out of scope) and Opportunities
-(worthwhile follow-up work the session suggests). A finding or
+(worthwhile follow-up work the session suggests). A Finding or
 Opportunity that appears in more than one source merges into
-one. Within-session dedup only — the same thing seen through two
-roles becomes one item, not two. Keep Opportunities separate
-from findings; they skip the Test step (see Step 3).
+one. Within-session dedup only — the same Finding or Opportunity
+seen through two roles becomes one, not two. Keep Opportunities
+separate from Findings; they skip the Test step (see Step 3).
 
 #### Step 2: Deepen
 
@@ -1238,7 +1238,7 @@ without naming the contract.
 The two tests below apply to Ancillary Findings, not
 Opportunities — an Opportunity proposes new work, so there is no
 surface to remove or behaviour to defend. Route each Opportunity
-straight to Decide. For findings, two tests apply, in order.
+straight to Decide. For Findings, two tests apply, in order.
 Start with removal.
 
 **The removal question**:
@@ -1315,7 +1315,7 @@ GitHub-visible text.
   issue body with a reference to the session PR:
   "Noticed during #N, ..."
 
-The bar for filing a **new** issue from a finding is *a
+The bar for filing a **new** issue from a Finding is *a
 behaviour gap with a real consumer*. Findings that clear the bar
 go to Decide on the merits. Findings the Test step marked as
 simplification candidates go to `file fresh`, regardless of how
