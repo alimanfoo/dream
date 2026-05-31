@@ -291,7 +291,30 @@ delivers less than the Working Scope is not a lateral
 move — if it has merit, raise it as a Challenge rather than a
 candidate.
 
-#### Lens 4: Surviving-fit check
+#### Lens 4: Separation of concerns
+
+Read the structure the Design itself draws. Does each piece it
+adds or reshapes do one job, and do the pieces stay separate
+where they change for separate reasons? Look for a module or
+function the Design hands two unrelated jobs, a layer it lets
+reach across a boundary it shouldn't, or two concerns it tangles
+into one unit that later sessions will have to pull apart. Name
+the boundary the work implies and flag where the Design blurs
+it, so the seam comes out clean before the change lands.
+
+Stay inside the Working Scope. This lens reads the structure the
+Design draws or crosses, not the architecture it sits in.
+Pre-existing tangles the Design doesn't touch are an Ancillary
+Finding at most, not a Design finding — naming them here invites
+a redesign the scope never asked for. The discipline is the same
+as the proactive check in Lens 3: assess the seams the work
+creates, don't invent architecture for its own sake.
+
+A clean boundary the Design draws is often one worth holding
+with a check — the recognition here feeds the boundary kind in
+Lens 3.
+
+#### Lens 5: Surviving-fit check
 
 Check that every existing name, location, and convention
 the change touches still fits its contract after the
