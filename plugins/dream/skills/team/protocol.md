@@ -122,7 +122,10 @@ The phase ends at user acceptance of the Requirements Analysis.
 
 With the Requirements Analysis accepted, Grace reads the code
 with a structural lens — mechanism, layers, siblings, callers,
-patterns, candidate smells. The same code as Phase 1, with
+patterns, candidate smells. This read also names the
+architecture the work touches: the boundaries, separation of
+concerns, and conventions the surfaces already follow, and
+which of them nothing enforces. The same code as Phase 1, with
 different attention. Grace then shares the Code Analysis —
 a verifiable read of what the current code does and where,
 with file:line or symbol citations — with the user for
@@ -147,7 +150,10 @@ too: dropping or narrowing can resolve the concern, or ease
 maintenance, better than adding. A recurring surface whose root
 cause is a duplicated fact is Coherent work, not optional
 anticipation — single-sourcing it reaches the cause (see "One
-fact, one home"). Grace shares the Draft
+fact, one home"). When the recurring rule has no single home to
+move it to — many sites that must each follow it — a check that
+enforces it is the Coherent fix instead (see "One rule, one
+check"). Grace shares the Draft
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
@@ -535,7 +541,10 @@ Single-sourcing is usually removal of a copy, not new
 machinery. When a duplicated fact is the root cause of a
 recurring surface, single-sourcing it is Coherent work,
 not optional anticipation — finishing without it leaves the
-root cause unresolved.
+root cause unresolved. When a recurring rule has no single home
+to derive from — many sites that each restate it — there is
+nothing to single-source; enforce it with a check instead (see
+"One rule, one check").
 
 Two traps:
 
@@ -550,6 +559,81 @@ Two traps:
   them couples code that should stay free to change apart. Ask:
   if this fact changed, would every copy have to change too? A
   no means they are different facts — leave them apart.
+
+## One rule, one check
+
+Some rules have to hold in many places at once: every API
+endpoint returns errors in the same shape, every public
+function in a module has a docstring, no query in a hot path
+runs more than once per row. No single line owns the rule. Each
+place follows it on its own.
+
+This is what sets it apart from a duplicated fact. A duplicated
+fact lives in one place and is copied to others, so you can
+delete the copies and derive them from the one home (see "One
+fact, one home"). A rule that twenty endpoints each write by
+hand has no one home to move it to. Single-source a fact where
+you can; where you can't, a check is what's left.
+
+So when the rule keeps getting broken — a new endpoint returns
+the wrong error shape, a new function ships with no docstring —
+fixing the one site is not enough. The next session adds the
+next site and breaks it again. At a single site you would carry
+a rule in a type or structure rather than guard it with a check
+(see "Code-shape ladder"), but no single type can hold a rule
+spread across independent sites. The fix that holds is a check:
+a lint rule, a pre-commit hook, or a CI assertion that fails the
+moment any site breaks the rule.
+
+Why a check, and not an issue that says "keep the error shapes
+consistent"? Because every session starts fresh, with no memory
+of the last. An issue is a note someone has to find, read, and
+act on — and a new session usually won't. A check needs no
+memory. It runs on its own and fails the moment a later change
+breaks the rule. That failure becomes a task the next agent
+picks up — it reads the failure and repairs the drift in its
+normal loop, with no human to notice it or assign it. So the
+rule holds without anyone remembering it was decided. For a
+team of agents that share no memory, that is the difference
+between a rule that holds and one that quietly rots.
+
+This is also how the team does architecture. No one hands down
+the boundaries and conventions that hold the code together; the
+team draws them as it works, and a check is how each one lasts.
+Where another team would write the decision in a doc and trust
+people to honour it, here the doc decays and the check enforces
+the decision itself. So the trigger is not only a rule you have
+watched break — it is a decision you are making now that a
+future session must keep.
+
+Not every rule is worth a check. Apply the same test you would
+use to throw out a pointless one: does it guard a real rule
+that real code relies on? The evidence is either that you have
+watched the rule break across sessions, or that you are
+deliberately establishing it now — a boundary or convention the
+Design introduces is real by construction, and a check is how
+it survives to the next session. A check guarding a count
+nothing reads, or a docstring's exact wording, is noise — it
+fails on harmless edits, and the next session burns time and
+attention fixing code that was never broken. A check guarding a
+real rule pays for itself: it removes work a human would
+otherwise redo by hand every session. When the rule is real —
+whether it is drifting or freshly established — enforcing it
+with a check is Coherent work, not an optional extra; without
+it the rule is free to break unnoticed.
+
+Two cautions:
+
+- **Reach for an existing tool first.** A ruff rule, a mypy
+  setting, numpydoc — an off-the-shelf checker is cheaper and
+  steadier than one you write yourself. Build a custom check
+  only when nothing existing fits.
+- **A flaky check is worse than none.** A flaky check guards a
+  real rule but fires when nothing is wrong. An agent team
+  won't switch it off — it reads each false failure as a work
+  item and keeps trying to fix what isn't broken, session
+  after session. Make it as reliable as the rule it guards,
+  or leave it out.
 
 ## Common rules
 

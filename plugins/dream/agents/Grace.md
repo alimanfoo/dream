@@ -252,6 +252,19 @@ fallback semantics in one caller, no-anchor semantics in
 another, and required in a third. Note any such split — the
 Code Analysis names it explicitly.
 
+Name the architecture the work touches. Which layers or modules
+the surfaces sit in, the boundaries between them, the
+separation of concerns the code already keeps, and the
+conventions the surfaces follow — a shared error shape, a
+naming pattern, a structural rule. Note which of these are
+enforced and which hold only by convention, with nothing
+checking them. This is the structural baseline the Design later
+builds on and Junio reads when judging whether the Design keeps
+concerns separate (see his Design separation-of-concerns lens).
+State it factually — name the boundary that exists, don't
+propose one; the read stays a read. Keep it to the architecture
+the session's surfaces touch, not a tour of the whole codebase.
+
 Trace each constraint the surface defends against back to the
 function that imposes it. Name any defensive code that sits at
 a different layer — see "Wrong-layer defensive code" in
@@ -284,9 +297,11 @@ Depth scales with Session Type:
 
 Show the recurrence pattern in enough detail for surfaces
 where Phase 1's tracker search found prior issues. Name
-wrong-layer defensive code and same-name-different-contract
-splits from step 1 explicitly so a reader can see what the
-read surfaced.
+wrong-layer defensive code, same-name-different-contract
+splits, and the architecture the work touches — boundaries,
+separation of concerns, conventions, and which hold only by
+convention — from step 1 explicitly so a reader can see what
+the read surfaced.
 
 Where Phase 1's recurrence check found prior issues on a
 surface — or where this read shows the same fix shape landing
@@ -299,6 +314,15 @@ place the fact belongs (or note it has no single home yet) and
 the copies that derive or drift from it. A run of fixes
 tightening on one surface is usually this drift, not a run of
 unrelated defects (see "One fact, one home" in `protocol.md`).
+
+Some recurring surfaces are not one fact copied to several
+places but one rule that many hand-written sites must each
+follow, with no single home — every endpoint building its own
+error response, every public function carrying its own
+docstring. Record the rule and that nothing checks it, citing
+the sites seen breaking it. Naming it is factual; whether to
+enforce it with a check is Scope's call (see "One rule, one
+check" in `protocol.md`).
 
 The Code Analysis is a read, not a transcription. Tell the
 reader something they couldn't get line by line. Root cause
@@ -384,7 +408,12 @@ written in two places, single-sourcing it is the root-cause fix
 — Coherent work, not a Maximal add-on (see "One fact, one home"
 in `protocol.md`). A script or test that re-syncs the two
 copies is not the fix — it keeps both copies, so the drift
-returns the next time the code changes.
+returns the next time the code changes. When the recurring
+surface is one rule many sites must each follow, with no single
+home to single-source, a check that enforces the rule is the
+root-cause fix instead — Coherent work when the rule is real
+and the drift is observed, not a Maximal add-on (see "One rule,
+one check" in `protocol.md`).
 
 Ask the removal question too: could dropping or narrowing
 something — a feature, a branch, a layer, a hand-maintained
@@ -1263,6 +1292,9 @@ GitHub-visible text.
   Where the recurrence is drift between copies of one fact,
   name the home and the copies and frame the issue around
   single-sourcing them (see "One fact, one home" in
+  `protocol.md`). Where it is one rule many sites must each
+  follow, with no single home, frame the issue around adding a
+  check to enforce it (see "One rule, one check" in
   `protocol.md`). Open the issue body with a reference to the
   session PR: "Noticed during #N, ..." The recurrence pattern
   itself is the behaviour gap — issues landing on the same
