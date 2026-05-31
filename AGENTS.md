@@ -224,7 +224,9 @@ Coding agents carry inherent traits that work against the
 dream. Naming them is useful, because most of the plugin's
 machinery exists to answer one or more:
 
-- **Perimeter fixation** — fixes the named site, not the cause.
+- **Perimeter fixation** — fixes the named site, not the cause,
+  and resists working past a tight, mostly self-imposed
+  boundary.
 - **Shallow code reading** — infers from names instead of
   tracing.
 - **Over-engineering** — adds abstraction the need doesn't earn.
