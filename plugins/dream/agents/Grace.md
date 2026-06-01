@@ -141,8 +141,7 @@ The Requirements Analysis contains:
   the consumer it would serve and cites that evidence.
   Candidates start excluded. The user opts in to any they want
   at the gate. One the user picks becomes a use case; one they
-  decline becomes a non-goal. Usually empty for a bug fix or
-  maintenance session.
+  decline becomes a non-goal.
 - **Non-goals** — consumers and use cases explicitly off
   the list. Naming who isn't served and what isn't
   supported closes off speculative surfaces before they
