@@ -865,8 +865,8 @@ Two `SendMessage` calls in the same turn, for information
 only. Sign off `From Grace.` and skip the RSVP; no reply
 is expected. They haven't seen the outcome since their
 Draft Plan review in Phase 5 step 3. The accepted Plan
-feeds Junio's per-task audits and Ralph's per-task
-implementations below.
+feeds Junio's per-task coherence audits and Ralph's
+per-task implementations below.
 
 ##### Step 3: Create the shared task list
 
@@ -924,16 +924,16 @@ silently if you stage on the earlier read. Then
 `TaskUpdate status=completed`, stage Ralph's changes,
 commit, and push.
 
-##### Step 5: Maintainer audit
+##### Step 5: Coherence audit
 
-Send Junio a message asking for the audit on the
+Send Junio a message asking for the coherence audit on the
 just-committed change. Sign off per "Communication between
 teammates (agents)" below: `From Grace. RSVP via
 SendMessage.` Wait for their numbered list (or "no
-substantive findings"). The audit may also raise a
-**Challenge** — for instance when repeated audits circle the
-same surface, suggesting the Working Scope is too narrow to
-reach the root cause (see step 6).
+substantive findings"). The coherence audit may also raise a
+**Challenge** — for instance when repeated coherence audits
+circle the same surface, suggesting the Working Scope is too
+narrow to reach the root cause (see step 6).
 
 ##### Step 6: Triage findings
 
@@ -958,8 +958,8 @@ comment, or section-header to express a contract,
 invariant, precondition, or convention, apply the
 **code-shape-first check** (see below) before deciding.
 
-When the audit raises a **Challenge**, assess it: does an
-accepted artifact really no longer hold? If it does, take it
+When the coherence audit raises a **Challenge**, assess it:
+does an accepted artifact really no longer hold? If it does, take it
 to the user (accept or reject) following the "Challenge"
 shape below. If not, continue triage as normal.
 
@@ -1102,8 +1102,8 @@ should.
 Decide each finding on its merits; Ada raising it is not
 itself a reason to accept it. Each finding takes one of these
 paths: Accept (becomes a follow-on task, handled by
-the standard per-task workflow including Junio's audit),
-Reject (note in your reply to the user, with the reason),
+the standard per-task workflow including Junio's coherence
+audit), Reject (note in your reply to the user, with the reason),
 Out of scope (held for the post-merge bucket), or Raise a
 Challenge (when the finding shows an accepted artifact no
 longer holds rather than a fixable defect — take it to the
@@ -1478,8 +1478,8 @@ example:
   behaves differently than recorded.
 - The Design's approach doesn't hold once implementation
   starts, or a planned task proves impossible as written.
-- Repeated audits circle the same surface — the Working Scope
-  turns out aimed at a symptom after all.
+- Repeated coherence audits circle the same surface — the
+  Working Scope turns out aimed at a symptom after all.
 
 ### On accept
 
@@ -1904,7 +1904,7 @@ The full sign-off and rules are in `protocol.md` under
 Grace-specific examples (sign-off only — content is yours):
 
 ```text
-Task 3 committed at <sha>. Please audit.
+Task 3 committed at <sha>. Please run the coherence audit.
 
 From Grace. RSVP via SendMessage.
 ```

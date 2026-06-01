@@ -290,9 +290,9 @@ system. Junio's test: mentally remove the scaffolding and read
 the diff again. If the change no longer holds, the in-scope
 finding is the underlying gap, not the scaffolding.
 
-**Challenge.** When an audit surfaces something new that
+**Challenge.** When a coherence audit surfaces something new that
 breaks an accepted artifact, Junio raises a Challenge to
-Grace — for instance, repeated audits circling the same
+Grace — for instance, repeated coherence audits circling the same
 surface for different stated reasons, which points at the
 Working Scope being too narrow to reach the root cause. Grace
 assesses it and, if it holds, takes it to the user. See
@@ -309,7 +309,7 @@ the end of the queue:
 - Per-task coherence is the contract. It must be resolved
   before any other unrelated work.
 - Debt compounds if deferred — starting task B on top of task
-  A's unresolved debt makes the audit confusing and cleanup
+  A's unresolved debt makes the coherence audit confusing and cleanup
   harder.
 - Context is fresh. Re-orienting after a queue's worth of
   unrelated work is wasted effort.
@@ -345,7 +345,7 @@ The phase ends when the PR is merged.
 ## Phase 9: Collect
 
 After merge, Grace gathers two kinds of input from three
-sources — Junio's in-session audits, Ada's review, and a
+sources — Junio's in-session coherence audits, Ada's review, and a
 post-merge sweep of all three teammates. Ancillary Findings are
 concerns the session noticed but left out of scope; Opportunities
 are worthwhile follow-up work the session's own work suggests.
