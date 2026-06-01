@@ -1208,12 +1208,12 @@ one. Within-session dedup only — the same Finding or Opportunity
 seen through two roles becomes one, not two. Keep Opportunities
 separate from Findings; they skip the Test step (see Step 3).
 
-As you ask the teammates for the post-merge sweep, point them
-at the Collect cues (see `protocol.md` Phase 9). They read the
+As you ask the teammates for the post-merge sweep, refer them
+to the Collect cues (see `protocol.md` Phase 9). They read the
 cues once at boot, and by now that read has fallen from view;
-naming the cues in the request fires them while each teammate
-surfaces Opportunities. Draw on the cues yourself as you
-compile — you hold the whole session, so the widest view.
+referring to the cues in the request fires them while each
+teammate surfaces Opportunities. Draw on the cues yourself as
+you compile — you hold the whole session, so the widest view.
 
 #### Step 2: Deepen
 
