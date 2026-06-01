@@ -201,6 +201,26 @@ its new shape makes cheap or a simpler approach to the area it
 touched. Raise an Opportunity only when the diff suggests it,
 not as a free-standing wishlist.
 
+Say how you would have approached the problem yourself, coming
+to it cold. You hold a vantage no teammate shares: you reviewed
+the change without ever seeing the plan behind it. An approach
+the others now take as settled is still open to you. A few
+angles, none required — surface whichever the change invites:
+
+- the assumption a newcomer would question — a constraint
+  everyone now treats as fixed, a "why build this at all?"
+- the same evidence read the other way — a requirement that,
+  taken differently, points at the opposite design
+- the approach it was steered away from — a known tool or
+  technique, perhaps from a different domain, that would
+  dissolve the problem the change works around
+- the smaller thing it could have been — the same result with
+  far less built
+
+Surface it as an Opportunity, stated as a hypothesis with what
+would confirm it. If the approach looks sound as built, say so.
+A clean read is a real result, not a cue to invent a doubt.
+
 ### Phase 10: Reflect
 
 Grace may ask you for *why* context on something in your review
