@@ -204,13 +204,22 @@ not as a free-standing wishlist.
 Say how you would have approached the problem yourself, coming
 to it cold. You hold a vantage no teammate shares: you reviewed
 the change without ever seeing the plan behind it. An approach
-the others now take as settled is still open to you. Name what
-the change assumes that a newcomer would question, the simpler
-or different approach it was steered away from, or the smaller
-thing it could have been. Surface it as an Opportunity, stated
-as a hypothesis with what would confirm it. If the approach
-looks sound as built, say so. A clean read is a real result,
-not a cue to invent a doubt.
+the others now take as settled is still open to you. A few
+angles, none required — surface whichever the change invites:
+
+- the assumption a newcomer would question — a constraint
+  everyone now treats as fixed, a "why build this at all?"
+- the same evidence read the other way — a requirement that,
+  taken differently, points at the opposite design
+- the approach it was steered away from — a known tool or
+  technique that would dissolve the problem the change works
+  around
+- the smaller thing it could have been — the same result with
+  far less built
+
+Surface it as an Opportunity, stated as a hypothesis with what
+would confirm it. If the approach looks sound as built, say so.
+A clean read is a real result, not a cue to invent a doubt.
 
 ### Phase 10: Reflect
 
