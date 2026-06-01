@@ -212,8 +212,8 @@ angles, none required — surface whichever the change invites:
 - the same evidence read the other way — a requirement that,
   taken differently, points at the opposite design
 - the approach it was steered away from — a known tool or
-  technique that would dissolve the problem the change works
-  around
+  technique, perhaps from a different domain, that would
+  dissolve the problem the change works around
 - the smaller thing it could have been — the same result with
   far less built
 
