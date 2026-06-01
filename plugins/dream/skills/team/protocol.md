@@ -112,7 +112,7 @@ or assumed, plus any open questions Grace can't call from the
 cited material. Candidate use cases are ones the read or
 analogous systems suggest but the input didn't name; excluded
 by default, the user opts in to any at the acceptance gate, and
-a declined candidate becomes a non-goal. The user answers the
+the rest become non-goals. The user answers the
 open questions; Grace folds the answers in and shares the
 completed artifact for acceptance. At the end of
 the phase Grace hands the accepted Requirements Analysis and

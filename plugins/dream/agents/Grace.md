@@ -140,8 +140,8 @@ The Requirements Analysis contains:
   when you can point to what in the read suggests it. Each names
   the consumer it would serve and cites that evidence.
   Candidates start excluded. The user opts in to any they want
-  at the gate. One the user picks becomes a use case; one they
-  decline becomes a non-goal.
+  at the gate. The ones the user picks become use cases; the
+  rest become non-goals.
 - **Non-goals** — consumers and use cases explicitly off
   the list. Naming who isn't served and what isn't
   supported closes off speculative surfaces before they
