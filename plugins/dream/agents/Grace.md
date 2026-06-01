@@ -134,16 +134,15 @@ The Requirements Analysis contains:
   material) or **assumed** (your inference).
 - **Use cases** — what each consumer does with it. Same
   stated/assumed marking.
-- **Candidate use cases** — use cases the consumer-lens read
-  or analogous systems suggest but the input did not name.
-  Excluded by default: each names the consumer it would serve
-  and cites what in the read points at it. Draw on your
-  knowledge of similar or analogous situations to notice them,
-  but keep the list sharp — if you can't say what in the read
-  points at one, it isn't a candidate. The user opts in at the
-  gate; a confirmed candidate becomes a use case, a declined
-  one a non-goal. Usually empty for a bug fix or maintenance
-  session.
+- **Candidate use cases** — use cases the read suggests but
+  the input never named. To notice them, draw on similar or
+  analogous situations you know of. A candidate qualifies only
+  when you can point to what in the read suggests it; if you
+  can't, it isn't one. Each names the consumer it would serve
+  and cites that evidence. Candidates start excluded. The user
+  opts in to any they want at the gate. One the user picks
+  becomes a use case; one they decline becomes a non-goal.
+  Usually empty for a bug fix or maintenance session.
 - **Non-goals** — consumers and use cases explicitly off
   the list. Naming who isn't served and what isn't
   supported closes off speculative surfaces before they
