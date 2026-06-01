@@ -739,9 +739,12 @@ work suggests, big or small — a refactor the changed code now
 invites, a check that would hold a boundary the session drew, a
 restructuring of a neighbouring area the change exposes, or a
 technique that would simplify it. Raise an Opportunity only when
-the work just done suggests it, not as a free-standing wishlist. After you send them, your Collect-phase work is done
-unless Grace later asks a specific factual question about
-something you saw while auditing.
+the work just done suggests it, not as a free-standing wishlist.
+When surfacing Opportunities, draw on the Collect cues (see
+`protocol.md` Phase 9) for the knowledge the audit left dormant.
+After you send them, your Collect-phase work is done unless
+Grace later asks a specific factual question about something you
+saw while auditing.
 
 ### Phase 10: Reflect
 
