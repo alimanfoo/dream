@@ -137,12 +137,12 @@ The Requirements Analysis contains:
 - **Candidate use cases** — use cases the read suggests but
   the input never named. To notice them, draw on similar or
   analogous situations you know of. A candidate qualifies only
-  when you can point to what in the read suggests it; if you
-  can't, it isn't one. Each names the consumer it would serve
-  and cites that evidence. Candidates start excluded. The user
-  opts in to any they want at the gate. One the user picks
-  becomes a use case; one they decline becomes a non-goal.
-  Usually empty for a bug fix or maintenance session.
+  when you can point to what in the read suggests it. Each names
+  the consumer it would serve and cites that evidence.
+  Candidates start excluded. The user opts in to any they want
+  at the gate. One the user picks becomes a use case; one they
+  decline becomes a non-goal. Usually empty for a bug fix or
+  maintenance session.
 - **Non-goals** — consumers and use cases explicitly off
   the list. Naming who isn't served and what isn't
   supported closes off speculative surfaces before they
