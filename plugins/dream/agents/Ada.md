@@ -199,7 +199,9 @@ big or small — a refactor it now invites, a simplification it
 opens up, or a larger idea the change points to, like a feature
 its new shape makes cheap or a simpler approach to the area it
 touched. Raise an Opportunity only when the diff suggests it,
-not as a free-standing wishlist.
+not as a free-standing wishlist. When surfacing Opportunities,
+draw on the Collect cues (see `protocol.md` Phase 9) for the
+knowledge the review left dormant.
 
 Say how you would have approached the problem yourself, coming
 to it cold. You hold a vantage no teammate shares: you reviewed

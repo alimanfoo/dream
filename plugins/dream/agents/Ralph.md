@@ -322,8 +322,10 @@ work suggests, big or small — a refactor the changed code now
 invites, a feature its new shape makes cheap, a different
 approach to a neighbouring area, or a technique that would
 simplify it. Raise an Opportunity only when the work just done
-suggests it, not as a free-standing wishlist. The post-merge sweep is your only channel
-for both — use it. After you send them, your Collect-phase work
+suggests it, not as a free-standing wishlist. When surfacing
+Opportunities, draw on the Collect cues (see `protocol.md`
+Phase 9) for the knowledge the task left dormant. The
+post-merge sweep is your only channel for both — use it. After you send them, your Collect-phase work
 is done unless Grace later asks a specific factual question about
 something you saw while editing.
 
