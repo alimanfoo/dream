@@ -356,6 +356,11 @@ maintain it. Both pay a tax on jargon and indirection.
   detail.** State the boundary first. Mention the one or two
   reasons that actually shape decisions, not every downstream
   effect.
+- **Cut a negative that only restates the positive.**
+  "Qualifies only when X" already carries "if not X, it
+  doesn't" — don't append the inverse. A negative stays when it
+  adds something the positive didn't: a reason, a named failure
+  mode, or an action.
 - **Generalise rules; don't pin them to the incident.** A rule
   that surfaces from one failure mode (verbs at the tail of a
   numbered step list) should be stated for the general case (git
