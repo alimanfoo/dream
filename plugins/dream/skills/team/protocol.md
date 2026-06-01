@@ -9,8 +9,8 @@ A session moves through ten phases:
 
 1. **Requirements.** Grace reads the cited material and the
    code with a consumer lens, then shares the Requirements
-   Analysis — consumers, use cases, non-goals — with the user
-   for acceptance.
+   Analysis — consumers, use cases, candidate use cases,
+   non-goals — with the user for acceptance.
 
 2. **Code Analysis.** Grace reads the code with a structural
    lens — mechanism, layers, siblings, patterns — and shares
@@ -106,11 +106,15 @@ consumer lens (who uses these
 surfaces and what they do with them), then checks the issue
 tracker for recurrence on the named surfaces. Grace names the
 Session Type (bug fix, enhancement, or maintenance) and drafts
-the Requirements Analysis — consumers, use cases, non-goals,
-with each inference marked stated or assumed, plus any open
-questions Grace can't call from the cited material. The user
-answers the open questions; Grace folds the answers in and
-shares the completed artifact for acceptance. At the end of
+the Requirements Analysis — consumers, use cases, candidate use
+cases, non-goals, with each consumer and use case marked stated
+or assumed, plus any open questions Grace can't call from the
+cited material. Candidate use cases are ones the read or
+analogous systems suggest but the input didn't name; excluded
+by default, the user opts in to any at the acceptance gate, and
+the rest become non-goals. The user answers the
+open questions; Grace folds the answers in and shares the
+completed artifact for acceptance. At the end of
 the phase Grace hands the accepted Requirements Analysis and
 the Session Type to Junio and Ralph for information; they hold
 them as context for the Scope, Design, and Plan reviews that

@@ -134,13 +134,20 @@ The Requirements Analysis contains:
   material) or **assumed** (your inference).
 - **Use cases** — what each consumer does with it. Same
   stated/assumed marking.
+- **Candidate use cases** — use cases the read suggests but
+  the input never named. To notice them, draw on similar or
+  analogous situations you know of. A candidate qualifies only
+  when you can point to what in the read suggests it. Each names
+  the consumer it would serve and cites that evidence. The user
+  opts in to any they want at the gate. The ones the user picks
+  become use cases; the rest become non-goals.
 - **Non-goals** — consumers and use cases explicitly off
   the list. Naming who isn't served and what isn't
   supported closes off speculative surfaces before they
   shape Design or Plan.
 - **Open questions** — calls you can't make from the cited
   material, where the call matters for what comes next.
-  Frame each as a concrete question; list the candidate
+  Frame each as a concrete question; list the possible
   answers you can see and invite a freeform answer too. The
   test: write the `assumed` value you'd record. If you can
   write one without guessing, mark it assumed instead. If you
@@ -161,8 +168,8 @@ application already serves; ask whether the proposed
 feature, fix, or maintenance coheres with it, and whether
 its value is evidenced by those existing goals or only
 asserted by the input. Where it doesn't cohere or the value
-isn't evidenced, surface that — as a non-goal candidate or
-an open question — rather than carrying the intent through
+isn't evidenced, surface that — as a non-goal or an open
+question — rather than carrying the intent through
 unexamined. The user decides at the gate.
 
 The marking shows where each item came from — the session
@@ -177,7 +184,7 @@ read or the intent test shows the input got it wrong.
 Skip this step when there are no open questions.
 
 When there are, send the open questions to the user as a
-numbered list. For each, give the candidate answers you can
+numbered list. For each, give the possible answers you can
 see and invite a freeform answer too. End the message by
 asking the user to answer the questions so the Requirements
 Analysis can be completed.
@@ -191,7 +198,10 @@ isn't complete yet.
 
 #### Step 7: Share the Requirements Analysis
 
-Send the completed Requirements Analysis to the user.
+Send the completed Requirements Analysis to the user. When
+there are candidate use cases, ask the user to name any they
+want included — by number — and note that the rest become
+non-goals.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Requirements Analysis to proceed to Phase 2:
@@ -199,10 +209,12 @@ Code Analysis."*
 
 #### Step 8: Seek user acceptance of the Requirements Analysis
 
-Wait for the user's reply. If accepted, continue to step 9.
-If the user pushes back, revise and return to step 7; repeat
-until accepted. If the pushback challenges the Session Type
-itself, return to step 4 and recompose from there.
+Wait for the user's reply. Any candidate the user opted into
+becomes a use case; record the rest as non-goals. If accepted,
+continue to step 9. If the user pushes back, revise and return
+to step 7; repeat until accepted. If the pushback challenges
+the Session Type itself, return to step 4 and recompose from
+there.
 
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
@@ -1540,7 +1552,8 @@ message names:
 
 - **Phase 1: Requirements Analysis.** Accept the completed
   artifact. Open questions still resolve first via Step 6 —
-  see *Pauses* below.
+  see *Pauses* below. Candidate use cases stay excluded; with
+  no user to opt in, each becomes a non-goal.
 - **Phase 2: Code Analysis.** Accept. The checkpoint passes
   without intervention.
 - **Phase 3: Working Scope.** Take the Coherent Scope. Don't
