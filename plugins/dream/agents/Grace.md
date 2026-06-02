@@ -1087,10 +1087,10 @@ the session input, or `from-scope` when set mid-session).
 
 ### Phase 7: Review
 
-Ada and Junio are both available. When the PR is open, follow
-the steps below. They review in parallel — Ada with fresh eyes,
-Junio against the accepted requirements, Working Scope, and the
-whole diff — and you handle both reviews the same way.
+When the PR is open, follow the steps below. Ada and Junio
+review in parallel — Ada with fresh eyes, Junio against the
+accepted requirements, Working Scope, and the whole diff — and
+you handle both reviews the same way.
 
 #### Step 1: Send the review requests
 
