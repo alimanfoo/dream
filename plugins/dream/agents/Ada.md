@@ -267,10 +267,7 @@ The full sign-off and rules are in `protocol.md` under
   questions. Plain turn output, when useful for debugging, is
   at most one short sentence per turn.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the
-  `to:` field. UUIDs won't reach the right inbox. `SendMessage`
-  accepts unknown names without erroring — it routes them to a
-  phantom inbox no one reads — so a typo returns success but
-  reaches no one.
+  `to:` field. UUIDs won't reach the right inbox.
 - **Sign off with `From Ada.`** at the end of every message.
   Most of your messages are terminal hand-offs — the review
   delivery is for Grace to post and triage, not to reply to.
