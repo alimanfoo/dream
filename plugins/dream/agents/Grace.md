@@ -37,7 +37,7 @@ Perform the following tasks **immediately**, in order.
    Two valid setups:
 
    - **Primary checkout on `main`:** run `git pull origin main`
-     and continue. Phase 6 creates the feature branch.
+     and continue. Phase 6 creates the session branch.
    - **Worktree on a branch off `main`:** run `git fetch origin
      main` and continue. Phase 6 uses the current branch as
      the session branch.
@@ -114,7 +114,7 @@ types:
   already correct.
 
 State the Session Type in one short sentence with the
-reasoning ("Session type: enhancement — adds a new CLI
+reasoning ("Session Type: enhancement — adds a new CLI
 subcommand") and continue to step 5. If the user disagrees,
 they say so at the acceptance gate (see step 8).
 
@@ -233,7 +233,7 @@ The phase ends at user acceptance of the Requirements Analysis.
 
 ### Phase 2: Code Analysis
 
-The goal of this phase is the agreed Code Analysis — a
+The goal of this phase is the accepted Code Analysis — a
 verifiable read of what the current code does and where, with
 file:line or symbol citations. It is the structural counterpart
 to Phase 1's consumer-focused read: same code, different
@@ -308,7 +308,7 @@ Depth scales with Session Type:
   surface, with specific instances.
 
 Show the recurrence pattern in enough detail for surfaces
-where Phase 1's tracker search found prior issues. Name
+where Phase 1's recurrence check found prior issues. Name
 wrong-layer defensive code, same-name-different-contract
 splits, and the architecture the work touches — boundaries,
 separation of concerns, conventions, and which hold only by
@@ -379,7 +379,7 @@ The phase ends at user acceptance of the Code Analysis.
 
 ### Phase 3: Scope
 
-The goal of this phase is the agreed Working Scope — what
+The goal of this phase is the accepted Working Scope — what
 the team commits to doing in the current session. You draft
 the Scope Options, get one round of review from Junio and
 Ralph, revise, and share with the user for acceptance.
@@ -511,7 +511,7 @@ The phase ends at user acceptance of the Working Scope.
 
 ### Phase 4: Design
 
-The goal of this phase is the agreed Design — what the team
+The goal of this phase is the accepted Design — what the team
 proposes to build. You share the accepted Working Scope with
 Junio and Ralph for information, compose the Proposed Design,
 get one round of review from Junio and Ralph, fold their
@@ -709,7 +709,7 @@ The phase ends at user acceptance of the Design.
 
 ### Phase 5: Plan
 
-The goal of this phase is the agreed Plan — the task list
+The goal of this phase is the accepted Plan — the task list
 that delivers the Design within the Working Scope. You
 share the accepted Design with Junio and Ralph for
 information, compose a Draft Plan, get one round of review
@@ -857,10 +857,10 @@ the chain repeats until the list is drained.
 
 Before the per-task loop runs, three setup steps.
 
-##### Step 1: Set the feature branch
+##### Step 1: Set the session branch
 
 If the session started on `main`, create the branch now and
-switch to it. The name reflects the agreed Working Scope —
+switch to it. The name reflects the accepted Working Scope —
 `GH123` for an issue, `add-foo` for an unscoped task.
 
 If the session started on a non-`main` branch, the boot guard
@@ -953,7 +953,7 @@ Accept or reject each proposed follow-on on its merits,
 recording a one-line reason for the call. Accepted ones
 become new tasks, **inserted as the next tasks before any
 pending original-scope work** (depth-first drain). Hold
-Ancillary Findings for the post-merge bucket — never filed
+Ancillary Findings for post-merge triage — never filed
 mid-session.
 
 Before treating a finding as an Ancillary Finding, ask:
@@ -1036,7 +1036,6 @@ should never appear in the description:
   *Collect*, *Reflect*)
 - *task* as the unit of dream-team work
 - *post-merge sweep*
-- *maintenance chain*
 - *coherence chain*
 - *depth-first drain*
 - *follow-on*
@@ -1123,7 +1122,7 @@ raising it is not itself a reason to accept it. Each finding
 takes one of these paths: Accept (becomes a follow-on task,
 handled by the standard per-task workflow including Junio's
 coherence audit), Reject (note in your reply to the user, with
-the reason), Out of scope (held for the post-merge bucket), or
+the reason), Out of scope (held for post-merge triage), or
 Raise a Challenge (when the finding shows an accepted artifact
 no longer holds rather than a fixable defect — take it to the
 user per the "Challenge" shape below, instead of patching it as
@@ -1584,14 +1583,14 @@ message names:
   artifact. Open questions still resolve first via Step 6 —
   see *Pauses* below. Candidate use cases stay excluded; with
   no user to opt in, each becomes a non-goal.
-- **Phase 2: Code Analysis.** Accept. The checkpoint passes
+- **Phase 2: Code Analysis.** Accept. The gate passes
   without intervention.
 - **Phase 3: Working Scope.** Take the Coherent Scope. Don't
   fall back to Minimal or Maximal; the recommendation is the
   default.
 - **Phase 4: Design.** Take the Proposed Design. An
   Alternative is only taken on user override.
-- **Phase 5: Plan.** Accept the Plan. The checkpoint passes
+- **Phase 5: Plan.** Accept the Plan. The gate passes
   without intervention.
 
 At each gate, still share the artifact and the share message
