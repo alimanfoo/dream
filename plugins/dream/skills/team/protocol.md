@@ -368,7 +368,7 @@ become a follow-on task becomes an issue instead. Resolving
 merge conflicts is part of the merge action, not new
 development: Grace still resolves conflicts and may delegate the
 edits to Ralph (see below). This holds especially when merge is
-deferred, since the still-open branch is what tempts the team to
+deferred, since the still-open PR is what tempts the team to
 fold a later finding back in.
 
 The user can still reopen Develop. A user-directed change after
