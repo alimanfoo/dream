@@ -1188,10 +1188,24 @@ Hand back to the user once all comments are addressed. The
 PR is ready for the user's acceptance; Phase 8 handles the
 merge itself.
 
+Marking the PR ready hands off the branch, and from here it is
+frozen (see "Phase 8: Merge" in `protocol.md`). In Merge,
+Collect, and Reflect you open no follow-on tasks on this
+branch: a later finding becomes an issue, not a fix. Only a
+user-directed change reopens Develop, and you handle it as an
+explicit reopening — create a task, Ralph implements, you
+commit, Junio audits, the same as any Phase 6 task. Absent that
+direction, the default is freeze.
+
 ### Phase 8: Merge
 
 The goal is a clean merge. If nothing is in the way — green CI,
 no conflicts — the user merges and the phase ends.
+
+Merge can be skipped or deferred. When a second human reviewer
+is needed, or the user chooses to merge later, the session ends
+with the PR ready and merge left to a human. Say so plainly and
+treat it as a complete outcome, not a deviation.
 
 If a merge conflict arises, discuss with the user how to
 resolve it. You perform every git operation — `git fetch`,
@@ -1359,7 +1373,10 @@ evidence. The user judges it at the decision table, so this is
 the place to reach for the strong idea, not the safe one.
 
 You don't implement anything in any phase. What enters the
-backlog is an issue or a comment, never a fix.
+backlog is an issue or a comment, never a fix. This holds even
+when merge was deferred and the branch is still open: a miss
+this sweep surfaces becomes an issue, not a follow-on on the
+open branch. Only a user-directed change reopens Develop.
 
 Apply a category label to each new issue — see "Labelling
 new issues" in Common rules below.
