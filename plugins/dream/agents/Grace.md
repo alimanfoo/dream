@@ -1103,13 +1103,18 @@ SendMessage.`
 #### Step 2: Post each review as a PR comment
 
 Post each review as its own PR comment via `gh pr comment <N>
---body "..."`. Each body ends with a signature line (`From
-Ada.`, `From Junio.`); the signature is routing metadata, not
-part of the review. Drop it. Preserve the review text
-unchanged, then append the standard Claude Code footer from
-"Marking agent-authored GitHub items" below. If the footer is
-already present, don't duplicate it. Not `gh pr review` — that
-carries more weight than these advisory reviews should.
+--body "..."`. Each review body ends with a `From <reviewer>.`
+signature line — routing metadata, not part of the review. Drop
+it. Preserve the review text unchanged, then append the
+standard Claude Code footer from "Marking agent-authored GitHub
+items" below. If the footer is already present, don't duplicate
+it. Not `gh pr review` — that carries more weight than these
+advisory reviews should.
+
+Keep agent names off GitHub. If you need to tell the two
+comments apart, refer to the reviewers generically — "first
+reviewer", "second reviewer", or by what each examined — never
+by agent name, which is internal protocol detail.
 
 #### Step 3: Triage each finding
 
