@@ -410,7 +410,7 @@ skip the RSVP.
 
 Don't include "out of scope but noticed" findings at Design
 time. Pre-existing concerns the session makes more visible
-feed the post-merge bucket through per-task coherence audits, not the
+feed post-merge triage through per-task coherence audits, not the
 Design review.
 
 Read the accepted Design when Grace sends it after the
@@ -429,7 +429,7 @@ findings to act on.
 
 Read the Draft Plan — the task list that delivers the
 Design. The prior layers (Session Type, Requirements
-Analysis, Code Analysis, Working Scope, agreed Design)
+Analysis, Code Analysis, Working Scope, accepted Design)
 are already in your context from prior phases and the
 accepted Design handoff at the start of Phase 5.
 
@@ -500,7 +500,7 @@ skip the RSVP.
 Don't include "out of scope but noticed" findings at Plan
 time. That section belongs to the per-task coherence audit,
 where pre-existing concerns the change makes more visible
-feed the post-merge bucket. Focus on the proposal itself; the
+feed post-merge triage. Focus on the proposal itself; the
 per-task coherence audits will pick up pre-existing concerns as
 they become relevant.
 
@@ -748,7 +748,7 @@ any criterion applied in some places but not all? A criterion
 the work followed — "remove every stale reference across these
 files", "rename X to Y wherever it appears" — is the test; find
 the instances the diff missed. Ralph applied the criterion
-fresh per task and the per-task audits checked each commit, yet
+fresh per task and the per-task coherence audits checked each commit, yet
 an instance visible only across the whole diff can slip both.
 
 #### Lens 2: Coherence across the whole diff

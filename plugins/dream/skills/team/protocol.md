@@ -224,7 +224,7 @@ at any point.
 
 ## Phase 6: Develop
 
-Phase opens with three setup steps: Grace sets the feature
+Phase opens with three setup steps: Grace sets the session
 branch (creates it off `main`, or uses the worktree's branch
 when the session started in one — see `Grace.md`), shares the
 accepted Plan with Junio and Ralph for information, and creates
@@ -705,7 +705,7 @@ One feature branch off `main` as of session start, one PR opened on
 it. Grace either creates the branch at the start of Phase 6 (Develop)
 once the Plan is accepted, or uses the worktree's branch when the user
 launched Claude Code inside a worktree. The branch name reflects the
-agreed Working Scope. All planning and development run against the
+accepted Working Scope. All planning and development run against the
 session-start state of `main`; any drift on origin is handled at
 Merge.
 
