@@ -35,8 +35,8 @@ A session moves through ten phases:
 
 7. **Review.** The PR is reviewed.
 
-8. **Merge.** The user merges the PR. Any conflicts are
-   resolved first.
+8. **Merge.** The user merges the PR, or merge is deferred to
+   a human. Any conflicts are resolved first.
 
 9. **Collect.** Ancillary Findings noticed during the session
    are gathered, deduplicated, checked against issue history,
@@ -219,8 +219,8 @@ after the reviews.
 The phase ends at user acceptance of the Plan.
 
 The task list isn't fixed: more tasks can be added during
-Phase 6 (Develop), Phase 7 (Review), and Phase 8 (Merge).
-The user can redirect at any point.
+Phase 6 (Develop) and Phase 7 (Review). The user can redirect
+at any point.
 
 ## Phase 6: Develop
 
@@ -354,7 +354,25 @@ moves to Merge.
 The goal is a clean merge. Grace resolves any conflicts,
 delegating edits to Ralph if needed. The user merges.
 
-The phase ends when the PR is merged.
+Merge may be deferred. A second human reviewer may
+be needed, the user may choose to merge later, or release
+timing may sit outside the session. The session can end with
+the PR marked ready and merge left to a human — a supported
+outcome, not a deviation.
+
+The PR is frozen at the Phase 7 handoff. Once Grace marks the
+PR ready and hands back, Merge, Collect, and Reflect do no new
+development — their outputs are the merge action, issues,
+comments, and issue drafts. A finding that would once have
+become a follow-on task becomes an issue instead. Resolving
+merge conflicts is part of the merge action, not new
+development: Grace still resolves conflicts and may delegate the
+edits to Ralph (see below). This holds especially when merge is
+deferred, since the still-open PR is what tempts the team to
+fold a later finding back in.
+
+The phase ends when the PR is merged, or when merge is deferred
+to a human.
 
 ## Phase 9: Collect
 
