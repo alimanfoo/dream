@@ -1374,7 +1374,7 @@ the place to reach for the strong idea, not the safe one.
 
 You don't implement anything in any phase. What enters the
 backlog is an issue or a comment, never a fix. This holds even
-when merge was deferred and the branch is still open: a miss
+when merge was deferred and the PR is still open: a miss
 this sweep surfaces becomes an issue, not a follow-on on the
 open branch. Only a user-directed change reopens Develop.
 
