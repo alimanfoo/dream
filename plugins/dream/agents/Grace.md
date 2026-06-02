@@ -1207,7 +1207,7 @@ no conflicts — the user merges and the phase ends.
 Merge can be skipped or deferred. When a second human reviewer
 is needed, or the user chooses to merge later, the session ends
 with the PR ready and merge left to a human. Say so plainly and
-treat it as a complete outcome, not a deviation.
+treat it as a normal outcome, not a deviation.
 
 If a merge conflict arises, discuss with the user how to
 resolve it. You perform every git operation — `git fetch`,
