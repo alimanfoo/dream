@@ -1087,42 +1087,46 @@ the session input, or `from-scope` when set mid-session).
 
 ### Phase 7: Review
 
-Ada is already on the wire from session start. When the PR is
-open, follow the steps below.
+Ada and Junio are both available. When the PR is open, follow
+the steps below. They review in parallel — Ada with fresh eyes,
+Junio against the accepted requirements, Working Scope, and the
+whole diff — and you handle both reviews the same way.
 
-#### Step 1: Send the review request
+#### Step 1: Send the review requests
 
-Tell Ada the PR is open and ask for their review. Include
-the PR number. Sign off per "Communication between
-teammates (agents)" below: `From Grace. RSVP via
+Tell Ada and Junio the PR is open and ask each for their
+review. Two `SendMessage` calls in the same turn, one to each,
+both carrying the PR number. Sign off per "Communication
+between teammates (agents)" below: `From Grace. RSVP via
 SendMessage.`
 
-#### Step 2: Post the review as a PR comment
+#### Step 2: Post each review as a PR comment
 
-Post Ada's review as a single PR comment via `gh pr comment
-<N> --body "..."`. Ada's body ends with a signature line
-(`From Ada.`); the signature is routing metadata, not part
-of the review. Drop it. Preserve Ada's review text
+Post each review as its own PR comment via `gh pr comment <N>
+--body "..."`. Each body ends with a signature line (`From
+Ada.`, `From Junio.`); the signature is routing metadata, not
+part of the review. Drop it. Preserve the review text
 unchanged, then append the standard Claude Code footer from
-"Marking agent-authored GitHub items" below. If the footer
-is already present, don't duplicate it. Not `gh pr review`
-— that carries more weight than a fresh-context first pass
-should.
+"Marking agent-authored GitHub items" below. If the footer is
+already present, don't duplicate it. Not `gh pr review` — that
+carries more weight than these advisory reviews should.
 
 #### Step 3: Triage each finding
 
-Decide each finding on its merits; Ada raising it is not
-itself a reason to accept it. Each finding takes one of these
-paths: Accept (becomes a follow-on task, handled by
-the standard per-task workflow including Junio's coherence
-audit), Reject (note in your reply to the user, with the reason),
-Out of scope (held for the post-merge bucket), or Raise a
-Challenge (when the finding shows an accepted artifact no
-longer holds rather than a fixable defect — take it to the
-user per the "Challenge" shape below, instead of patching it
-as a follow-on).
+Decide each finding from both reviews on its merits; a reviewer
+raising it is not itself a reason to accept it. Each finding
+takes one of these paths: Accept (becomes a follow-on task,
+handled by the standard per-task workflow including Junio's
+coherence audit), Reject (note in your reply to the user, with
+the reason), Out of scope (held for the post-merge bucket), or
+Raise a Challenge (when the finding shows an accepted artifact
+no longer holds rather than a fixable defect — take it to the
+user per the "Challenge" shape below, instead of patching it as
+a follow-on). A cluster of Junio's completeness misses can be
+the evidence for a Challenge that the Working Scope was too
+narrow, not just a list of follow-ons.
 
-Keep one response note per Ada finding as you triage. Accepted
+Keep one response note per finding as you triage. Accepted
 findings record the follow-on task and, once complete, the
 commit or PR-visible evidence that addressed it. Rejected
 findings record the reason. Out-of-scope findings record that
@@ -1144,22 +1148,23 @@ invariant, precondition, or convention, apply the
 After all accepted findings have been handled through the
 standard per-task workflow, post one response comment via
 `gh pr comment <N> --body "..."`. This is Grace's public answer
-to Ada's review. It records how the review was acted on so a
-reader does not have to reconstruct the outcome from commits,
-task messages, or the user's chat.
+to both reviews. It records how they were acted on so a reader
+does not have to reconstruct the outcome from commits, task
+messages, or the user's chat.
 
 The response is concise and GitHub-facing:
 
-- One item per Ada finding, using Ada's section labels or short
-  finding names.
+- One item per finding, using each review's section labels or
+  short finding names.
 - **Accepted** items say they were addressed, with the
   follow-up commit or PR-visible evidence when useful.
 - **Rejected** items give the reason.
 - **Out of scope** items say they are held for post-merge
   triage.
-- If Ada had no findings, say no response work was needed.
+- If neither review raised findings, say no response work was
+  needed.
 
-Do not repost Ada's review text, quote internal teammate
+Do not repost the review text, quote internal teammate
 messages, or use dream-team protocol vocabulary. Append the
 standard Claude Code footer from "Marking agent-authored GitHub
 items" below. If the footer is already present, don't duplicate
@@ -1463,8 +1468,9 @@ Raise a Challenge when the work surfaces something new that
 breaks an accepted artifact — the Requirements Analysis, Code
 Analysis, Working Scope, Design, or Plan. You raise one
 yourself, or relay one a teammate raised: Ralph while
-implementing, Junio at audit, or an Ada review finding that
-breaks a premise rather than flags a defect. You assess it;
+implementing, Junio at audit, or a Phase 7 review finding from
+Ada or Junio that breaks a premise rather than flags a defect.
+You assess it;
 if it holds, you take it to the user. You can raise one in any
 phase once an artifact has been accepted.
 

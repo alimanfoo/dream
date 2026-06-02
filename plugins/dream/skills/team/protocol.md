@@ -328,13 +328,23 @@ draft PR for the session branch.
 
 ## Phase 7: Review
 
-Ada reviews the session's PR and returns a Markdown review to
-Grace. Grace posts it as a single PR comment, triages each
-finding into accept (a follow-on task) / reject / post-merge /
-raise a Challenge, completes accepted follow-ons, posts a second PR comment with
-Grace's response to the review, then marks the PR ready and
-hands back to the user. Full Phase 7 procedure in `Grace.md`;
-Ada's review shape in `Ada.md`.
+Two reviewers read the session's PR in parallel and each
+returns a Markdown review to Grace. Ada reads with fresh eyes,
+judging the PR on its own terms — she has never seen the scope.
+Junio reads against the accepted requirements and Working
+Scope, and against the whole finished diff: completeness (did
+we deliver every in-scope instance of what we agreed?) and
+coherence (now the whole change is visible, anything still
+needed to reach a coherent state?). The whole-diff read is a
+vantage the per-task coherence audits can't give — each of
+those saw one commit alone.
+
+Grace handles both reviews the same way: she posts each as a PR
+comment, triages every finding into accept (a follow-on task) /
+reject / post-merge / raise a Challenge, completes accepted
+follow-ons, posts one response comment, then marks the PR ready
+and hands back to the user. Full Phase 7 procedure in
+`Grace.md`; the review shapes in `Ada.md` and `Junio.md`.
 
 The phase ends at user acceptance of the PR. The session
 moves to Merge.
@@ -349,10 +359,11 @@ The phase ends when the PR is merged.
 ## Phase 9: Collect
 
 After merge, Grace gathers two kinds of input from three
-sources — Junio's in-session coherence audits, Ada's review, and a
-post-merge sweep of all three teammates. Ancillary Findings are
-concerns the session noticed but left out of scope; Opportunities
-are worthwhile follow-up work the session's own work suggests.
+sources — Junio's in-session coherence audits and PR review,
+Ada's review, and a post-merge sweep of all three teammates.
+Ancillary Findings are concerns the session noticed but left
+out of scope; Opportunities are worthwhile follow-up work the
+session's own work suggests.
 Findings are tested (defend behaviour, removal question);
 Opportunities skip those defect tests. Grace decides each (drop /
 reinforce / re-frame / file fresh) with user acceptance before
@@ -452,12 +463,12 @@ A Challenge says an accepted artifact no longer holds — the
 Requirements Analysis, Code Analysis, Working Scope, Design,
 or Plan — because the work surfaced something new that
 breaks it. Grace raises one herself, or relays one a teammate
-raised — Ralph while implementing, Junio at audit, or an Ada
-review finding. She assesses it; if it holds, she takes it to
-the user, who either accepts it — the artifact is revised and
-the downstream work reshaped — or rejects it. Where a teammate
-was blocked waiting on the answer, a reject must say how to
-proceed, not just "no".
+raised — Ralph while implementing, Junio at audit, or a Phase 7
+review finding from Ada or Junio. She assesses it; if it holds,
+she takes it to the user, who either accepts it — the artifact
+is revised and the downstream work reshaped — or rejects it.
+Where a teammate was blocked waiting on the answer, a reject
+must say how to proceed, not just "no".
 
 A Challenge is admissible only on new evidence the earlier
 phase didn't have. Wanting to redesign on reflection is not a
