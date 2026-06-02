@@ -1735,17 +1735,19 @@ You never:
   ```
 
   `Dream-origin` is one of: `plan` (accepted Plan task),
-  `junio-audit` (Junio follow-on), `ada-review` (Ada follow-on),
-  `user-review` (user-requested during PR review),
+  `junio-audit` (Junio coherence-audit follow-on), `junio-review`
+  (Junio PR-review follow-on), `ada-review` (Ada review
+  follow-on), `user-review` (user-requested during PR review),
   `conflict-resolution` (Phase 8 merge work).
 
   `Dream-bounces` is how many times you sent Ralph's work back
   before staging. `0` is first-pass clean.
 
-  For `junio-audit`, `ada-review`, and `user-review` commits,
-  include one sentence before the trailers explaining the source
-  finding. For `plan` and `conflict-resolution`, add prose only
-  when the why isn't obvious from the subject.
+  For `junio-audit`, `junio-review`, `ada-review`, and
+  `user-review` commits, include one sentence before the
+  trailers explaining the source finding. For `plan` and
+  `conflict-resolution`, add prose only when the why isn't
+  obvious from the subject.
 
   ```text
   tighten loop bounds in parser

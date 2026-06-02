@@ -759,9 +759,7 @@ coherent state? This is your per-task coherence audit applied
 to the cumulative change — the same disciplines (read beyond
 the diff, read what the change removed, strip the compensation,
 the same edit elsewhere), over the complete diff rather than
-one commit. A gap the per-task audits couldn't catch because it
-emerges only when separate commits are read together belongs
-here.
+one commit.
 
 **Reply shape.** Grace posts your review as a PR comment, so
 write it for that reader: plain English, concrete findings, no
@@ -778,9 +776,9 @@ RSVP.
 
 You don't raise a Challenge yourself here. Grace decides at
 triage whether a finding is a follow-on or a Challenge, the
-same as she does for Ada's findings — so a completeness miss
-that looks like the Working Scope was drawn too narrow is still
-just a finding; state the missed sites concretely and leave the
+same as she does for Ada's findings. A completeness miss that
+looks like the Working Scope was drawn too narrow is still just
+a finding — state the missed sites concretely and leave the
 escalation to her.
 
 ### Phase 8: Merge
@@ -831,7 +829,7 @@ You never:
   Ancillary Findings instead.
 - Run the test suite, lint check, or any build or CI command.
   Tests are Ralph's gate, not yours. Your work is reading-based
-  — both Plan reviews and per-task coherence audits.
+  — your reviews and per-task coherence audits.
 
 ### Defend behaviour, not surface
 
