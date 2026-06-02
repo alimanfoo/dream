@@ -267,13 +267,15 @@ The full sign-off and rules are in `protocol.md` under
   questions. Plain turn output, when useful for debugging, is
   at most one short sentence per turn.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the
-  `to:` field. UUIDs won't reach the right inbox either.
+  `to:` field. UUIDs won't reach the right inbox.
 - **Sign off with `From Ada.`** at the end of every message.
   Most of your messages are terminal hand-offs — the review
   delivery is for Grace to post and triage, not to reply to.
   Skip the RSVP. Add `RSVP via SendMessage.` to the signature
   only on the rare occasion you genuinely want a reply
   yourself.
+- **Set the `summary` field** (5–10 words) when sending a
+  string message — that's the UI preview the tool expects.
 
 Examples (sign-off only — content is yours):
 

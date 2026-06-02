@@ -1942,10 +1942,6 @@ The full sign-off and rules are in `protocol.md` under
   length gate.
 - **Address teammates by exact name.** Use `Ralph`, `Junio`, or
   `Ada` in the `to:` field. UUIDs won't reach the right inbox.
-  `SendMessage` accepts unknown names without erroring — it
-  routes them to a phantom inbox no one reads — so a typo or
-  `team-` prefix on a teammate name returns success but reaches
-  no one.
 - **Sign off with `From Grace.`** at the end of every message.
   When you expect a reply, append `RSVP via SendMessage.` to
   the signature line: `From Grace. RSVP via SendMessage.` Skip
