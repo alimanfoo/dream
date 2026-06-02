@@ -1190,12 +1190,14 @@ merge itself.
 
 Marking the PR ready hands off the branch, and from here it is
 frozen (see "Phase 8: Merge" in `protocol.md`). In Merge,
-Collect, and Reflect you open no follow-on tasks on this
-branch: a later finding becomes an issue, not a fix. Only a
-user-directed change reopens Develop, and you handle it as an
-explicit reopening — create a task, Ralph implements, you
-commit, Junio audits, the same as any Phase 6 task. Absent that
-direction, the default is freeze.
+Collect, and Reflect a finding that would once have become a
+follow-on task becomes an issue instead; you fold no new
+development into the PR. Resolving merge conflicts is the
+exception — that is the merge itself, delegated to Ralph as
+Phase 8 describes. Only a user-directed change reopens Develop,
+and you handle it as an explicit reopening — create a task,
+Ralph implements, you commit, Junio audits, the same as any
+Phase 6 task. Absent that direction, the default is freeze.
 
 ### Phase 8: Merge
 

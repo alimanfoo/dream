@@ -361,12 +361,15 @@ the PR marked ready and merge left to a human — a supported
 outcome, not a deviation.
 
 The PR is frozen at the Phase 7 handoff. Once Grace marks the
-PR ready and hands back, the team does no development in Merge,
-Collect, or Reflect — their only outputs are the merge action,
-issues, comments, and issue drafts. A finding that would once
-have become a follow-on task becomes an issue instead. This
-holds especially when merge is deferred, since the still-open
-branch is what tempts the team to fold a later finding back in.
+PR ready and hands back, Merge, Collect, and Reflect do no new
+development — their outputs are the merge action, issues,
+comments, and issue drafts. A finding that would once have
+become a follow-on task becomes an issue instead. Resolving
+merge conflicts is part of the merge action, not new
+development: Grace still resolves conflicts and may delegate the
+edits to Ralph (see below). This holds especially when merge is
+deferred, since the still-open branch is what tempts the team to
+fold a later finding back in.
 
 The user can still reopen Develop. A user-directed change after
 the handoff is an explicit reopening — its own task, commit,
