@@ -371,13 +371,6 @@ edits to Ralph (see below). This holds especially when merge is
 deferred, since the still-open PR is what tempts the team to
 fold a later finding back in.
 
-The user can still reopen Develop. A user-directed change after
-the handoff is an explicit reopening — its own task, commit,
-and coherence audit — not a silent fold-in during a later
-phase. Absent that direction, the default is freeze. The rule
-constrains the team's autonomous behaviour, not the user's
-authority.
-
 The phase ends when the PR is merged, or when merge is deferred
 to a human.
 
