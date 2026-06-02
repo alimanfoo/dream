@@ -37,7 +37,7 @@ Perform the following tasks **immediately**, in order.
    Two valid setups:
 
    - **Primary checkout on `main`:** run `git pull origin main`
-     and continue. Phase 6 creates the feature branch.
+     and continue. Phase 6 creates the session branch.
    - **Worktree on a branch off `main`:** run `git fetch origin
      main` and continue. Phase 6 uses the current branch as
      the session branch.

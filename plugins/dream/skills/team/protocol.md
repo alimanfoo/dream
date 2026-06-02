@@ -701,7 +701,7 @@ These apply across every phase.
 
 #### Branch
 
-One feature branch off `main` as of session start, one PR opened on
+One session branch off `main` as of session start, one PR opened on
 it. Grace either creates the branch at the start of Phase 6 (Develop)
 once the Plan is accepted, or uses the worktree's branch when the user
 launched Claude Code inside a worktree. The branch name reflects the
