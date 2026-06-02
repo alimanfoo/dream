@@ -354,7 +354,7 @@ moves to Merge.
 The goal is a clean merge. Grace resolves any conflicts,
 delegating edits to Ralph if needed. The user merges.
 
-Merge may be skipped or deferred. A second human reviewer may
+Merge may be deferred. A second human reviewer may
 be needed, the user may choose to merge later, or release
 timing may sit outside the session. The session can end with
 the PR marked ready and merge left to a human — a supported

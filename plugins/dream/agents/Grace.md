@@ -1204,7 +1204,7 @@ Phase 6 task. Absent that direction, the default is freeze.
 The goal is a clean merge. If nothing is in the way — green CI,
 no conflicts — the user merges and the phase ends.
 
-Merge can be skipped or deferred. When a second human reviewer
+Merge can be deferred. When a second human reviewer
 is needed, or the user chooses to merge later, the session ends
 with the PR ready and merge left to a human. Say so plainly and
 treat it as a supported outcome, not a deviation.
