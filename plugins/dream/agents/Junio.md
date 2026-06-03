@@ -153,6 +153,17 @@ widening the scope to reach the cause — not just the layer
 where the symptom shows. See "Wrong-layer defensive code" in
 `protocol.md`.
 
+#### Lens 4: Property or implementation?
+
+Does any scope item fix how the work is done rather than what it
+must achieve? A scope item states the property or outcome;
+choosing the how — a tool, an algorithm or structure, an API or
+command shape, a bug's fix shape — is Design's call, where the
+reviewers weigh the alternatives. The test: can you name a
+different way to deliver the same item? If you can, an
+implementation choice has leaked in — flag it so the choice
+waits for Design. See Phase 3 in `protocol.md`.
+
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or
 Scope Option parts involved. If nothing to flag, your reply

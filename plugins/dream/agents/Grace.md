@@ -435,6 +435,12 @@ keeping what's there. The classic case is a count in prose
 that has to change whenever the things it counts do — remove
 the count.
 
+State each scope item as the property or outcome the work must
+achieve, not how it achieves it. Choosing the how — a tool or
+library, an algorithm or structure, an API or command shape, a
+bug's fix shape — is Design's call, where the reviewers weigh
+the alternatives.
+
 #### Step 2: Share the Draft Scope Options with Junio and Ralph for review
 
 Send the Draft Scope Options to both Junio and Ralph in
