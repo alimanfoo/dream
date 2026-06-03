@@ -443,7 +443,8 @@ time:
    *"Accept the Working Scope to proceed to Phase 4:
    Design."*
 3. Grace waits for the user's reply before doing anything
-   else.
+   else — or, under autopilot, takes this gate's default and
+   continues without waiting (see "Autopilot").
 
 These gates run on every session by default and take
 precedence over general autonomy defaults — boot-time

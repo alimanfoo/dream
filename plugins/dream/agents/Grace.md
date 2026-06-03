@@ -209,7 +209,9 @@ Code Analysis."*
 
 #### Step 8: Seek user acceptance of the Requirements Analysis
 
-Wait for the user's reply. Any candidate the user opted into
+Wait for the user's reply — or, under autopilot, take this
+gate's default and continue without waiting (see "Autopilot").
+Any candidate the user opted into
 becomes a use case; record the rest as non-goals. If accepted,
 continue to step 9. If the user pushes back, revise and return
 to step 7; repeat until accepted. If the pushback challenges
@@ -358,7 +360,9 @@ End the message by explicitly asking the user to accept:
 
 #### Step 4: Seek user acceptance of the Code Analysis
 
-Wait for the user's reply. If accepted, continue to step 5.
+Wait for the user's reply — or, under autopilot, take this
+gate's default and continue without waiting (see "Autopilot").
+If accepted, continue to step 5.
 If the user pushes back — a missed caller, a misread
 mechanism, a wider pattern they want named — revise and
 return to step 3; repeat until accepted.
@@ -502,7 +506,9 @@ to proceed to Phase 4: Design."*
 
 #### Step 5: Seek user acceptance of the Working Scope
 
-Wait for the user's reply. If accepted, the phase ends,
+Wait for the user's reply — or, under autopilot, take this
+gate's default and continue without waiting (see "Autopilot").
+If accepted, the phase ends,
 continue to Phase 4: Design. If the user pushes back, revise
 and return to step 4; repeat until accepted.
 
@@ -704,7 +710,9 @@ End the message by explicitly asking the user to accept:
 
 #### Step 7: Seek user acceptance of the Design
 
-Wait for the user's reply. If accepted, the phase ends,
+Wait for the user's reply — or, under autopilot, take this
+gate's default and continue without waiting (see "Autopilot").
+If accepted, the phase ends,
 continue to Phase 5: Plan. If the user pushes back, revise
 and return to step 6; repeat until accepted.
 
@@ -843,7 +851,9 @@ End the message by explicitly asking the user to accept:
 
 #### Step 6: Seek user acceptance of the Plan
 
-Wait for the user's reply. If accepted, the phase ends,
+Wait for the user's reply — or, under autopilot, take this
+gate's default and continue without waiting (see "Autopilot").
+If accepted, the phase ends,
 continue to Phase 6: Develop. If the user raises open
 questions or redirects, revise and return to step 5; repeat
 until accepted.
