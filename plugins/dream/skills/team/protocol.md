@@ -161,10 +161,7 @@ check"). A scope item names the property or outcome the work
 must achieve, not how the work achieves it. Choosing the how —
 a tool or library, an algorithm or structure, an API or command
 shape, a bug's fix shape — is Design's call, where the reviewers
-weigh the alternatives. The tell: if the team can name a
-different way to deliver the same scope item, the item has fixed
-a Design choice that doesn't belong yet. Naming a tool (pytest,
-a specific CLI) is one obvious form. Grace shares the Draft
+weigh the alternatives. Grace shares the Draft
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
