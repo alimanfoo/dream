@@ -436,13 +436,10 @@ that has to change whenever the things it counts do — remove
 the count.
 
 State each scope item as the property or outcome the work must
-achieve, not how it achieves it — the how is Design's, where the
-reviewers weigh the alternatives. If you notice a scope item
-fixing a how — a tool, an algorithm or structure, an API or
-command shape, a bug's fix shape — ask whether you can name a
-different way to deliver the same item. If you can, a Design
-decision has leaked into Scope; restate the item as the property
-the work must have.
+achieve, not how it achieves it. Choosing the how — a tool or
+library, an algorithm or structure, an API or command shape, a
+bug's fix shape — is Design's call, where the reviewers weigh
+the alternatives.
 
 #### Step 2: Share the Draft Scope Options with Junio and Ralph for review
 
