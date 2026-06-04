@@ -536,8 +536,9 @@ The phase ends at user acceptance of the Working Scope.
 
 The goal of this phase is the accepted Design — what the team
 proposes to build. You share the accepted Working Scope with
-Junio and Ralph for information, compose the Proposed Design,
-get one round of review from Junio and Ralph, fold their
+Junio and Ralph for information, run an Analogies round to
+seed the design, compose the Proposed Design, get one round of
+review from Junio and Ralph, fold their
 suggestions into the Proposed Design or surface them as
 Alternative Designs, and share the Design Options with the
 user for acceptance.
@@ -551,16 +552,50 @@ turn, for information only. Sign off `From Grace.` and
 skip the RSVP; no reply is expected. They haven't seen
 the outcome since their Draft Scope Options review in
 Phase 3 step 2. The accepted Working Scope feeds the
-Design review that follows.
+Analogies round and the Design review that follow.
 
-#### Step 2: Compose the Proposed Design
+#### Step 2: Run the Analogies round
 
-Compose the Proposed Design — your recommendation. This is
-the artifact reviewers will see next; do not yet send to the
-user. Name what the code will look like when the work is
-done, the approach proposed, and the key design calls that
-follow from the Code Analysis. Depth scales with Session
-Type:
+Generate a spread of analogies for the work before composing,
+so the Design draws on patterns carried in from elsewhere
+rather than invented cold. An analogy is something this work
+resembles — a feature, a bug, a structure, a technique —
+paired with what happened there. Near analogies come from this
+codebase or domain; far ones from a different domain entirely.
+Variety is the point: several analogies, near and far, let the
+compose step extract what is invariant across them — likelier
+to be the real generalisation than any single one.
+
+Write your own analogies first — a numbered list, near and far
+— as a discrete act, before you have a design direction. Then
+send a parallel request to Junio and Ralph for theirs: two
+`SendMessage` calls in the same turn, each asking for a
+numbered list of near and far analogies for the work. Sign off
+`From Grace. RSVP via SendMessage.` Each replies with a list.
+
+Three generators widen the spread on two axes: stance
+(director, maintainer, developer) and model — you on Opus,
+Junio and Ralph on Sonnet. Don't filter for relevance here;
+quantity and spread are the goal. The grounding bar applies
+next, when you compose. Ada stays out: she holds her fresh
+read for Phase 7.
+
+Hold the lists as context for the compose step. There is no
+merged artifact — the replies sit in your context, weighed on
+their merits like any other input, your own list included.
+
+#### Step 3: Compose the Proposed Design
+
+Compose the Proposed Design — your recommendation, drawing on
+the analogies from Step 2. Pull an analogy into the design only
+where it names a real structural correspondence to the work,
+not a shallow resemblance, and note which analogies fed it — an
+analogy generated but unused is a real result, the same as an
+empty lateral search. This is the artifact reviewers will see
+next; do not yet send to the user. Name what the code will look
+like when the work is done, the approach proposed, and the key
+design calls that follow from the Code Analysis. Depth scales
+with Session Type:
 
 - *Bug fix:* the fix approach. When more than one fix
   shape is plausible (defensive check, structural fix,
@@ -604,7 +639,7 @@ or a docstring sentence to mark cross-module use. A
 module split, rename, or relocation would carry the
 meaning more reliably.
 
-#### Step 3: Share the Proposed Design with Junio and Ralph for review
+#### Step 4: Share the Proposed Design with Junio and Ralph for review
 
 Send the Proposed Design to both Junio and Ralph in
 parallel — two `SendMessage` calls in the same turn. Junio
@@ -629,7 +664,7 @@ gating. Run one round only; don't loop back after revising.
 Fresh attention from two teammates catches issues at the
 cheapest point to fix.
 
-#### Step 4: Apply the reviews
+#### Step 5: Apply the reviews
 
 Decide each finding — from either reviewer — on its
 merits, and record a one-line reason for the call. You own
@@ -640,7 +675,7 @@ paths:
 - **Fold in** — accept into the revised Proposed Design.
 - **Reject** — you disagree with the finding. If the
   rejection is notable, carry the reason into the Design
-  message in step 6.
+  message in step 7.
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
 - **Raise a Challenge** — the finding shows an accepted
@@ -653,7 +688,7 @@ Junio's review also proposes candidate lateral moves, each
 tagged. A candidate tagged strictly-better folds into the
 Proposed Design — it improves the recommendation at no real
 cost. A candidate tagged with a trade-off you set aside as
-material for the Alternative Designs in step 5. A candidate
+material for the Alternative Designs in step 6. A candidate
 that would deliver less than the Working Scope is not a
 lateral move; raise it as a Challenge if it has merits worth
 considering.
@@ -670,7 +705,7 @@ accepted artifact really no longer hold? If it does, take it
 to the user (accept or reject). A teammate raising one is not
 itself the decision.
 
-#### Step 5: Build the Alternative Designs
+#### Step 6: Build the Alternative Designs
 
 Run the lateral search and write down what it finds. A
 lateral move is a different design, at the same Working
@@ -681,7 +716,7 @@ behaviour, or a technical pattern — that changes as one
 unit; deduplicating sites that merely coincide today couples
 code that should stay separate, so it is not a
 simplification. Take the trade-off candidates you set aside
-in step 4 and re-derive from the Working Scope yourself,
+in step 5 and re-derive from the Working Scope yourself,
 with the Proposed Design set aside — the point is a
 genuinely different shape, not a trim of the Proposed.
 
@@ -702,7 +737,7 @@ and why. The duty is to run the search and show it ran — an
 empty set found honestly is a real result, never a reason to
 manufacture a smaller design.
 
-#### Step 6: Share the revised Design Options with the user
+#### Step 7: Share the revised Design Options with the user
 
 Send the revised Proposed Design and any Alternative
 Designs. Lead with the Proposed Design — your
@@ -719,13 +754,13 @@ the user picks an Alternative to override.
 End the message by explicitly asking the user to accept:
 *"Accept the Design to proceed to Phase 5: Plan."*
 
-#### Step 7: Seek user acceptance of the Design
+#### Step 8: Seek user acceptance of the Design
 
 Wait for the user's reply — or, under autopilot, take this
 gate's default and continue without waiting (see "Autopilot").
 If accepted, the phase ends,
 continue to Phase 5: Plan. If the user pushes back, revise
-and return to step 6; repeat until accepted.
+and return to step 7; repeat until accepted.
 
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
@@ -749,7 +784,7 @@ discussion. Two `SendMessage` calls in the same turn, for
 information only. Sign off `From Grace.` and skip the
 RSVP; no reply is expected. They haven't seen the outcome
 since their Proposed Design review in Phase 4 step
-3. The accepted Design feeds the Plan review that
+4. The accepted Design feeds the Plan review that
 follows.
 
 #### Step 2: Compose the Draft Plan

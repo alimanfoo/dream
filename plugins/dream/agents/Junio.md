@@ -194,6 +194,24 @@ the acceptance discussion. No reply is expected.
 
 ### Phase 4: Design
 
+Phase 4 has two parts: an Analogies round, then the Design
+review.
+
+#### Analogies round
+
+When Grace asks for analogies, write a numbered list of things
+this work resembles — near (an in-tree helper, a past change in
+this domain) and far (a library, a technique, a pattern from
+another domain), each with what happened there. Draw on your
+role models and your maintainer's stance — the prior art and
+patterns you carry are what this surfaces. Variety is the
+point: reach for several and don't filter for relevance yet —
+Grace applies that judgement when she composes the design.
+Reply with the list, signed `From Junio.` The reply is a
+terminal hand-off — skip the RSVP.
+
+#### Design review
+
 When Grace asks for a Design review, read her Proposed
 Design and apply the lenses below — before any tasks are
 written. This is one round, advisory; Ralph reviews the same
@@ -359,6 +377,10 @@ finding on its merits and the user holds the Design gate, so a
 named rebuild you flag and Grace sets aside costs little; a real
 one you sat on costs the whole session the simpler design. When
 you hold the knowledge, surface it.
+
+The far analogies you wrote in the Analogies round are a
+natural starting point — if the Design rebuilds one you named
+there, that is a reinvention finding.
 
 #### Lens 5: Separation of concerns
 
