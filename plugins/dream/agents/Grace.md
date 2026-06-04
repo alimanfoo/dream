@@ -577,9 +577,10 @@ Don't filter for relevance here; quantity and spread are the
 goal. The grounding bar applies next, when you compose. Ada
 stays out: she holds her fresh read for Phase 7.
 
-Hold the lists as context for the compose step. There is no
-merged artifact — the replies sit in your context, weighed on
-their merits like any other input, your own list included.
+Wait for both replies, then hold the lists as context for the
+compose step. There is no merged artifact — the replies sit in
+your context, weighed on their merits like any other input,
+your own list included.
 
 #### Step 3: Compose the Proposed Design
 
