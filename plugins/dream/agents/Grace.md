@@ -573,12 +573,9 @@ send a parallel request to Junio and Ralph for theirs: two
 numbered list of near and far analogies for the work. Sign off
 `From Grace. RSVP via SendMessage.` Each replies with a list.
 
-Three generators widen the spread on two axes: stance
-(director, maintainer, developer) and model — you on Opus,
-Junio and Ralph on Sonnet. Don't filter for relevance here;
-quantity and spread are the goal. The grounding bar applies
-next, when you compose. Ada stays out: she holds her fresh
-read for Phase 7.
+Don't filter for relevance here; quantity and spread are the
+goal. The grounding bar applies next, when you compose. Ada
+stays out: she holds her fresh read for Phase 7.
 
 Hold the lists as context for the compose step. There is no
 merged artifact — the replies sit in your context, weighed on
