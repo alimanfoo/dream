@@ -378,9 +378,9 @@ named rebuild you flag and Grace sets aside costs little; a real
 one you sat on costs the whole session the simpler design. When
 you hold the knowledge, surface it.
 
-The far analogies you generated are a natural starting point —
-if the Design rebuilds one you named there, that is a
-reinvention finding.
+The analogies you generated are a natural starting point — if
+the Design rebuilds one you named there, that is a reinvention
+finding.
 
 #### Lens 5: Separation of concerns
 
