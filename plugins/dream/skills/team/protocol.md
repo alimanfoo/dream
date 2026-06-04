@@ -179,16 +179,15 @@ The phase ends at user acceptance of the Working Scope.
 ## Phase 4: Design
 
 Phase opens with Grace sharing the accepted Working Scope
-with Junio and Ralph for information, then analogy generation:
-Grace, Junio, and Ralph each write a spread of analogies —
-what the work resembles, near and far — and Grace draws on
-them when composing the design. Generating analogies as an
-explicit step, across three stances and two models (Grace on
-Opus, Junio and Ralph on Sonnet), seeds the design with
-transferable patterns it would otherwise miss; Ada stays out,
-holding her fresh read for Phase 7. Grace then drafts the
-Proposed Design — her recommendation — and shares it with
-Junio and Ralph for one round of review — advisory, not
+with Junio and Ralph for information. Analogy generation
+follows: Grace, Junio, and Ralph each write a spread of
+analogies — what the work resembles, near and far — and Grace
+draws on them when composing the design. Generating analogies
+as an explicit step, across different stances and models, seeds
+the design with transferable patterns it would otherwise miss;
+Ada stays out, holding her fresh read for Phase 7. Grace then
+drafts the Proposed Design — her recommendation — and shares it
+with Junio and Ralph for one round of review — advisory, not
 gating. Junio reads from the maintainer's view and proposes
 candidate lateral moves: different designs, at the same
 scope, that remove duplication and reveal intent, or reduce
