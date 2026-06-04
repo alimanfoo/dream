@@ -554,7 +554,7 @@ the outcome since their Draft Scope Options review in
 Phase 3 step 2. The accepted Working Scope feeds the
 Analogies round and the Design review that follow.
 
-#### Step 2: Run the Analogies round
+#### Step 2: Generate Analogies
 
 Generate a spread of analogies for the work before composing,
 so the Design draws on patterns carried in from elsewhere
@@ -574,8 +574,7 @@ numbered list of near and far analogies for the work. Sign off
 `From Grace. RSVP via SendMessage.` Each replies with a list.
 
 Don't filter for relevance here; quantity and spread are the
-goal. The grounding bar applies next, when you compose. Ada
-stays out: she holds her fresh read for Phase 7.
+goal. Ada stays out: she holds her fresh read for Phase 7.
 
 Wait for both replies, then hold the lists as context for the
 compose step. There is no merged artifact — the replies sit in
@@ -584,16 +583,12 @@ your own list included.
 
 #### Step 3: Compose the Proposed Design
 
-Compose the Proposed Design — your recommendation, drawing on
-the analogies from Step 2. Pull an analogy into the design only
-where it names a real structural correspondence to the work,
-not a shallow resemblance, and note which analogies fed it — an
-analogy generated but unused is a real result, the same as an
-empty lateral search. This is the artifact reviewers will see
-next; do not yet send to the user. Name what the code will look
-like when the work is done, the approach proposed, and the key
-design calls that follow from the Code Analysis. Depth scales
-with Session Type:
+Compose the Proposed Design — your recommendation. This is
+the artifact reviewers will see next; do not yet send to the
+user. Name what the code will look like when the work is
+done, the approach proposed, and the key design calls that
+follow from the Code Analysis. Depth scales with Session
+Type:
 
 - *Bug fix:* the fix approach. When more than one fix
   shape is plausible (defensive check, structural fix,
