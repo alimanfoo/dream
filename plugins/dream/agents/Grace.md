@@ -536,8 +536,8 @@ The phase ends at user acceptance of the Working Scope.
 
 The goal of this phase is the accepted Design — what the team
 proposes to build. You share the accepted Working Scope with
-Junio and Ralph for information, run an Analogies round to
-seed the design, compose the Proposed Design, get one round of
+Junio and Ralph for information, generate analogies to seed
+the design, compose the Proposed Design, get one round of
 review from Junio and Ralph, fold their
 suggestions into the Proposed Design or surface them as
 Alternative Designs, and share the Design Options with the
@@ -552,7 +552,7 @@ turn, for information only. Sign off `From Grace.` and
 skip the RSVP; no reply is expected. They haven't seen
 the outcome since their Draft Scope Options review in
 Phase 3 step 2. The accepted Working Scope feeds the
-Analogies round and the Design review that follow.
+analogies you generate and the Design review that follow.
 
 #### Step 2: Generate Analogies
 

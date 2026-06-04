@@ -121,10 +121,10 @@ the acceptance discussion. No reply is expected.
 
 ### Phase 4: Design
 
-Phase 4 has two parts: an Analogies round, then the Design
+Phase 4 has two parts: generating analogies, then the Design
 review.
 
-#### Analogies round
+#### Generate analogies
 
 When Grace asks for analogies, write a numbered list of things
 this work resembles — near (the same problem domain) and far (a

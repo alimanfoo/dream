@@ -20,7 +20,7 @@ A session moves through ten phases:
    of review from Junio and Ralph, revises, and shares the
    revised Scope Options with the user for acceptance.
 
-4. **Design.** Grace opens with an Analogies round — she,
+4. **Design.** Grace opens with analogy generation — she,
    Junio, and Ralph each write down what the work resembles —
    then drafts the Proposed Design, gets one round of review
    from Junio and Ralph, revises, and shares the revised Design
@@ -179,7 +179,7 @@ The phase ends at user acceptance of the Working Scope.
 ## Phase 4: Design
 
 Phase opens with Grace sharing the accepted Working Scope
-with Junio and Ralph for information, then an Analogies round:
+with Junio and Ralph for information, then analogy generation:
 Grace, Junio, and Ralph each write a spread of analogies —
 what the work resembles, near and far — and Grace draws on
 them when composing the design. Generating analogies as an

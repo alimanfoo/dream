@@ -194,10 +194,10 @@ the acceptance discussion. No reply is expected.
 
 ### Phase 4: Design
 
-Phase 4 has two parts: an Analogies round, then the Design
+Phase 4 has two parts: generating analogies, then the Design
 review.
 
-#### Analogies round
+#### Generate analogies
 
 When Grace asks for analogies, write a numbered list of things
 this work resembles — near (a system or technique from the same
@@ -378,9 +378,9 @@ named rebuild you flag and Grace sets aside costs little; a real
 one you sat on costs the whole session the simpler design. When
 you hold the knowledge, surface it.
 
-The far analogies you wrote in the Analogies round are a
-natural starting point — if the Design rebuilds one you named
-there, that is a reinvention finding.
+The far analogies you generated are a natural starting point —
+if the Design rebuilds one you named there, that is a
+reinvention finding.
 
 #### Lens 5: Separation of concerns
 
