@@ -563,8 +563,7 @@ resembles — a feature, a bug, a structure, a technique —
 paired with what happened there. Near analogies come from the
 same problem domain; far ones from a different domain entirely.
 Variety is the point: several analogies, near and far, let the
-compose step extract what is useful or invariant across them —
-likelier to be the real generalisation than any single one.
+compose step extract what is useful or invariant across them.
 
 Write your own analogies first — a numbered list, near and far
 — as a discrete act, before you have a design direction. Then
