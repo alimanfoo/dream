@@ -121,6 +121,22 @@ the acceptance discussion. No reply is expected.
 
 ### Phase 4: Design
 
+Phase 4 has two parts: generating analogies, then the Design
+review.
+
+#### Generate analogies
+
+When Grace asks for analogies, write a numbered list of things
+this work resembles — near (the same problem domain) and far (a
+different domain), each with what happened there. Draw on your
+role models and your developer's stance. Variety is the point:
+reach for several and don't filter for relevance yet — Grace
+applies that judgement when she composes the design. Reply with
+the list, signed `From Ralph.` The reply is a terminal hand-off
+— skip the RSVP.
+
+#### Design review
+
 When Grace asks for a Design review, read her Proposed
 Design and apply the lenses below. This is one round,
 advisory; Junio reviews the same Proposed Design in
