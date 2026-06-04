@@ -560,8 +560,8 @@ Generate a spread of analogies for the work before composing,
 so the Design draws on patterns carried in from elsewhere
 rather than invented cold. An analogy is something this work
 resembles — a feature, a bug, a structure, a technique —
-paired with what happened there. Near analogies come from this
-codebase or domain; far ones from a different domain entirely.
+paired with what happened there. Near analogies come from the
+same problem domain; far ones from a different domain entirely.
 Variety is the point: several analogies, near and far, let the
 compose step extract what is invariant across them — likelier
 to be the real generalisation than any single one.

@@ -127,7 +127,7 @@ review.
 #### Analogies round
 
 When Grace asks for analogies, write a numbered list of things
-this work resembles — near (this codebase or domain) and far (a
+this work resembles — near (the same problem domain) and far (a
 different domain), each with what happened there. Draw on your
 role models and your developer's stance. Variety is the point:
 reach for several and don't filter for relevance yet — Grace

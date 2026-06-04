@@ -200,8 +200,8 @@ review.
 #### Analogies round
 
 When Grace asks for analogies, write a numbered list of things
-this work resembles — near (an in-tree helper, a past change in
-this domain) and far (a library, a technique, a pattern from
+this work resembles — near (a system or technique from the same
+problem domain) and far (a library, a technique, a pattern from
 another domain), each with what happened there. Draw on your
 role models and your maintainer's stance — the prior art and
 patterns you carry are what this surfaces. Variety is the
