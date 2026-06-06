@@ -302,8 +302,9 @@ Naming, Plain code, and Code comments rules below to what you
 actually wrote, and fix what reads poorly — a generic name that
 hides intent, a clever expression the reader must decode,
 nesting deep enough to lose the happy path, a block you can't
-say in one sentence, a comment that explains what instead of
-why.
+say in one sentence, a value the reader can't follow without
+tracing state set elsewhere, a comment that explains what
+instead of why.
 
 This pass preserves behaviour: rename, flatten, extract,
 re-comment, never change what the code does. If a readability
@@ -639,7 +640,7 @@ minutes for each later reader. Aim for code the next reader
 understands on first pass, without rebuilding the logic in
 their head.
 
-Three anchors:
+Four anchors:
 
 - **Choose the obvious construct.** Of the options that work,
   pick the one a typical working developer in this language
@@ -662,6 +663,15 @@ Three anchors:
   you need clauses and qualifications, the block is too clever
   or doing too much — split it, name the parts, or reshape the
   control flow until the sentence is short.
+
+- **Keep the reader's context local.** A reader should follow
+  the unit in front of them without tracking state set far away.
+  Prefer an explicit parameter over a reach into module-level or
+  global state, and a visible return over a hidden side effect.
+  When understanding one function means first reading several
+  others, that coupling is the readability cost — restructure it
+  where the task allows, or raise it to Grace when the fix needs
+  a contract change.
 
 ```python
 # Avoid — clever, but the reader rebuilds the rule in their head:
