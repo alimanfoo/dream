@@ -637,10 +637,7 @@ and what a reader crossing between them now has to hold. A
 finding without that cost is policing taste — drop it. When the
 change introduced the clash, the fix is an in-scope follow-on;
 when a pre-existing neighbour is the odd one out, it is an
-Ancillary Finding. Local readability of the change on its own —
-a clearer name, a flatter branch with no neighbour to clash with
-— is Ralph's to fix as he writes; your lens is the inconsistency
-the surrounding code makes visible.
+Ancillary Finding.
 
 #### No scope creep
 
