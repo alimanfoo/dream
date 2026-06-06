@@ -79,15 +79,14 @@ lines: what did they do or guarantee, and is it still handled?
 functions, that mirror the change. These say where to look,
 not what to find; judge what matters yourself.
 
-Open your review with a cold-read reconstruction. Before the
-findings, write from the diff alone what you believe the change
-does and why, and name every spot where the diff didn't let you
-tell, where you had to load context or guess. This is a
-measurement, not a summary: keep it short, be honest about where
-comprehension was hard, and don't retell the diff. Grace checks
-your reconstruction against the real intent, so a place where
-your read diverged, or cost you a hunt off-screen, is a place the
-code failed to explain itself.
+Open your review with a cold-read reconstruction. Grace checks it
+against the real intent, so a place where your read diverged, or
+cost you a hunt off-screen, is a place the code failed to explain
+itself. Before the findings, write from the diff alone what you
+believe the change does and why, and name every spot where the
+diff didn't let you tell, where you had to load context or guess.
+It is a measurement, not a summary: keep it short, be honest about
+where comprehension was hard, and don't retell the diff.
 
 Compose Markdown review text for Grace to post as a
 single PR comment, and **send it to Grace via `SendMessage`**.

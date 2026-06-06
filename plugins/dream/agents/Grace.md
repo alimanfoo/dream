@@ -1174,16 +1174,17 @@ by agent name, which is internal protocol detail.
 
 #### Step 3: Triage each finding
 
-Ada's review opens with a cold-read reconstruction — what she
-read the change to do, from the diff alone, and where she had to
-chase context. Read it first, against the intent you hold. Each
-divergence or flagged hunt is a reviewability finding: a place
-the code failed to explain itself to a reader with no context.
-This is worth real attention. Ada stands in for the human
-reviewer, who also comes to the change cold; where her read
-diverged, theirs will too. As agents write more of the code,
-that review is where the human's scarce attention is spent — code
-that explains itself there is what keeps the review cheap.
+Read Ada's cold-read reconstruction first, against the intent you
+hold. It is what she read the change to do, from the diff alone,
+and where she had to chase context. Each divergence or flagged
+hunt is a reviewability finding: a place the code failed to
+explain itself to a reader with no context. This is worth real
+attention: Ada stands in for the human reviewer, who also comes
+to the change cold, so where her read diverged theirs will too.
+As agents write more of the code, that review is where the
+human's scarce attention is spent — code that explains itself
+there keeps the review cheap.
+
 Triage these the same as any finding — accept one as a follow-on
 that makes the code carry its own intent, or reject it where Ada
 simply misread code that is already clear. A reconstruction that
