@@ -293,13 +293,28 @@ actually lives, and name the alternative fix you see.
 Grace decides whether to update the task scope. See
 "Wrong-layer defensive code" in `protocol.md`.
 
-#### Step 3: Revise for readability
+#### Step 3: Revise for a cold read
 
-Reread what you wrote as a reader coming to it cold, with no
-memory of writing it. Step 2 optimised for working code; this
-step optimises the same code for the next reader. Apply the
-Naming, Plain code, and Code comments rules below to what you
-actually wrote, and fix what reads poorly — a generic name that
+Reread what you wrote as the person who will review it: an
+expert with none of your loaded context, switching in from
+another codebase, with seconds to spend. Step 2 optimised for
+working code; this step optimises the same code so that reader
+recovers the intent and sees it is right at a glance.
+
+Two tests sharpen the reread:
+
+- **Count the off-screen knowledge.** How many things not on
+  the screen must the reader hold to confirm a line is right — a
+  reach into distant state, an implicit ordering, a caller that
+  had to act first? Each is a cost; drive the count down so the
+  code carries its own justification.
+- **Prefer the obviously-correct shape.** Ask whether this is
+  the version that is plainly right or merely not visibly wrong.
+  If the latter, hunt the simpler shape — the one with less to
+  hold and fewer ways to be subtly wrong.
+
+Apply the Naming, Plain code, and Code comments rules below to
+carry it out, and fix what reads poorly — a generic name that
 hides intent, a clever expression the reader must decode,
 nesting deep enough to lose the happy path, a block you can't
 say in one sentence, a value the reader can't follow without
@@ -307,8 +322,8 @@ tracing state set elsewhere, a comment that explains what
 instead of why.
 
 This pass preserves behaviour: rename, flatten, extract,
-re-comment, never change what the code does. If a readability
-fix would need a contract or behaviour change, raise it to Grace
+re-comment, never change what the code does. If a simpler shape
+would need a contract or behaviour change, raise it to Grace
 through the step 2 channel rather than making it.
 
 #### Step 4: Run the project's lint/format check and test suite
