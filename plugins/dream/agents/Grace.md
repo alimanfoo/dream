@@ -791,11 +791,10 @@ Design has already reshaped it where needed.
 
 Each task should be a manageable unit of work for Ralph — one
 commit per task. Test each task by its one-line headline: if the
-headline needs an "and," the task is two ideas — split it. A
-reviewer reads the change one commit at a time, so a commit that
-does one thing is one a cold reader can grasp at a glance. Split
-tasks that grow beyond manageable; fold fragments into a related
-task.
+headline needs an "and," the task is two ideas — split it. One
+idea per task keeps each commit clean and the per-task coherence
+audit focused on a single change. Split tasks that grow beyond
+manageable; fold fragments into a related task.
 
 Lead each brief with the goal, then name the **criterion**
 that selects the work, then offer concrete examples as
@@ -1180,6 +1179,11 @@ read the change to do, from the diff alone, and where she had to
 chase context. Read it first, against the intent you hold. Each
 divergence or flagged hunt is a reviewability finding: a place
 the code failed to explain itself to a reader with no context.
+This is worth real attention. Ada stands in for the human
+reviewer, who also comes to the change cold; where her read
+diverged, theirs will too. As the team writes more of the code,
+that review is where the human's scarce attention is spent — code
+that explains itself there is what keeps the review cheap.
 Triage these the same as any finding — accept one as a follow-on
 that makes the code carry its own intent, or reject it where Ada
 simply misread code that is already clear. A reconstruction that
