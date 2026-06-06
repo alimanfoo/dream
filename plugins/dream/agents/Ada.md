@@ -81,13 +81,13 @@ not what to find; judge what matters yourself.
 
 Open your review with a cold-read reconstruction. Before the
 findings, write from the diff alone what you believe the change
-does and why — two to four sentences — and name every spot where
-the diff didn't let you tell, where you had to load context or
-guess. This is a measurement, not a summary: be honest about
-where comprehension was hard. Grace checks your reconstruction
-against the real intent, so a place where your read diverged, or
-cost you a hunt off-screen, is a place the code failed to explain
-itself.
+does and why, and name every spot where the diff didn't let you
+tell, where you had to load context or guess. This is a
+measurement, not a summary: keep it short, be honest about where
+comprehension was hard, and don't retell the diff. Grace checks
+your reconstruction against the real intent, so a place where
+your read diverged, or cost you a hunt off-screen, is a place the
+code failed to explain itself.
 
 Compose Markdown review text for Grace to post as a
 single PR comment, and **send it to Grace via `SendMessage`**.
@@ -102,10 +102,10 @@ metadata when posting. Follow "GitHub-rendered artefacts" in
 #### Output format
 
 ```text
-## What this change does (cold read)
-<from the diff alone: what you believe the change does and why,
-in 2–4 sentences. Name any spot you couldn't tell from the diff,
-and what you had to load or guess to be sure.>
+**What this change does (cold read):** <from the diff alone:
+what you believe the change does and why, kept short. Name any
+spot you couldn't tell from the diff, and what you had to load or
+guess to be sure.>
 
 **Recommendation:** <one-line verdict, not a synopsis — e.g.
 "looks good, a few small things"; "blocking concerns below";
