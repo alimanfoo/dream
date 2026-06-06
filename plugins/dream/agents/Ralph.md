@@ -295,11 +295,13 @@ Grace decides whether to update the task scope. See
 
 #### Step 3: Revise for a cold read
 
-Reread what you wrote as the person who will review it: an
-expert with none of your loaded context, switching in from
-another codebase, with seconds to spend. Step 2 optimised for
-working code; this step optimises the same code so that reader
-recovers the intent and sees it is right at a glance.
+Reread what you wrote as the person who will review it: a human
+developer with little attention to spend, who may be new to this
+codebase and may not share your context. They could be junior or
+senior — don't pitch to a level; make the code clear to whoever
+arrives. Step 2 optimised for working code; this step optimises
+the same code so that reader recovers the intent and sees it is
+right at a glance.
 
 Two tests sharpen the reread:
 
