@@ -343,13 +343,16 @@ draft PR for the session branch.
 Two reviewers read the session's PR in parallel and each
 returns a Markdown review to Grace. Ada reads with fresh eyes,
 judging the PR on its own terms — she has never seen the scope.
-Junio reads against the accepted requirements and Working
-Scope, and against the whole finished diff: completeness (did
-we deliver every in-scope instance of what we agreed?) and
-coherence (now the whole change is visible, anything still
-needed to reach a coherent state?). The whole-diff read is a
-vantage the per-task coherence audits can't give — each of
-those saw one commit alone.
+Her review opens with a cold-read reconstruction of what the
+change does, built from the diff alone; Grace checks it against
+the real intent, and a divergence marks where the code failed to
+explain itself. Junio reads against the accepted requirements
+and Working Scope, and against the whole finished diff:
+completeness (did we deliver every in-scope instance of what we
+agreed?) and coherence (now the whole change is visible,
+anything still needed to reach a coherent state?). The
+whole-diff read is a vantage the per-task coherence audits
+can't give — each of those saw one commit alone.
 
 Grace handles both reviews the same way: she posts each as a PR
 comment, triages every finding into accept (a follow-on task) /

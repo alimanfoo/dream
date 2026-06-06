@@ -789,8 +789,11 @@ the work that delivers it — and the Code Analysis. Don't
 translate the session input directly into tasks; the
 Design has already reshaped it where needed.
 
-Each task should be a manageable unit of work for Ralph —
-one commit per task. Split tasks that grow beyond
+Each task should be a manageable unit of work for Ralph — one
+commit per task. Test each task by its one-line headline: if the
+headline needs an "and," the task is two ideas — split it. One
+idea per task keeps each commit clean and the per-task coherence
+audit focused on a single change. Split tasks that grow beyond
 manageable; fold fragments into a related task.
 
 Lead each brief with the goal, then name the **criterion**
@@ -1170,6 +1173,22 @@ reviewer", "second reviewer", or by what each examined — never
 by agent name, which is internal protocol detail.
 
 #### Step 3: Triage each finding
+
+Read Ada's cold-read reconstruction first, against the intent you
+hold. It is what she read the change to do, from the diff alone,
+and where she had to chase context. Each divergence or flagged
+hunt is a reviewability finding: a place the code failed to
+explain itself to a reader with no context. This is worth real
+attention: Ada stands in for the human reviewer, who also comes
+to the change cold, so where her read diverged theirs will too.
+As agents write more of the code, that review is where the
+human's scarce attention is spent — code that explains itself
+there keeps the review cheap.
+
+Triage these the same as any finding — accept one as a follow-on
+that makes the code carry its own intent, or reject it where Ada
+simply misread code that is already clear. A reconstruction that
+matched the intent with no hunt needs no action.
 
 Decide each finding from both reviews on its merits; a reviewer
 raising it is not itself a reason to accept it. Each finding

@@ -293,18 +293,53 @@ actually lives, and name the alternative fix you see.
 Grace decides whether to update the task scope. See
 "Wrong-layer defensive code" in `protocol.md`.
 
-#### Step 3: Run the project's lint/format check and test suite
+#### Step 3: Revise for a cold read
+
+Reread what you wrote as the person who will review it. Step 2
+optimised for working code; this step makes the same code recover
+its intent and show it is right at a glance. That reader is a
+human developer with little attention to spend, who may be new to
+this codebase and may not share your context. They could be
+junior or senior — don't pitch to a level; make the code clear to
+whoever arrives.
+
+Two tests sharpen the reread:
+
+- **Count the off-screen knowledge.** How many things not on
+  the screen must the reader hold to confirm a line is right — a
+  reach into distant state, an implicit ordering, a caller that
+  had to act first? Each is a cost; drive the count down so the
+  code carries its own justification.
+- **Prefer the obviously-correct shape.** Ask whether this is
+  the version that is plainly right or merely not visibly wrong.
+  If the latter, hunt the simpler shape — the one with less to
+  hold and fewer ways to be subtly wrong.
+
+Apply the Naming, Plain code, and Code comments rules below to
+carry it out, and fix what reads poorly — a generic name that
+hides intent, a clever expression the reader must decode,
+nesting deep enough to lose the happy path, a block you can't
+say in one sentence, a value the reader can't follow without
+tracing state set elsewhere, a comment that explains what
+instead of why.
+
+This pass preserves behaviour: rename, flatten, extract,
+re-comment, never change what the code does. If a simpler shape
+would need a contract or behaviour change, raise it to Grace
+through the step 2 channel rather than making it.
+
+#### Step 4: Run the project's lint/format check and test suite
 
 If either fails, fix and re-run until both pass cleanly.
 
-#### Step 4: Run any codegen, index, or sync step
+#### Step 5: Run any codegen, index, or sync step
 
 If the project has a codegen, index, or sync step (for
 example, stub generation or an OpenAPI client refresh), run
 it after your edits. This keeps the generated files
 matching the source.
 
-#### Step 5: Report back to Grace via `SendMessage`
+#### Step 6: Report back to Grace via `SendMessage`
 
 Send the report to Grace via `SendMessage`. Plain-text
 turn output is not delivered — only `SendMessage` reaches
@@ -622,7 +657,7 @@ minutes for each later reader. Aim for code the next reader
 understands on first pass, without rebuilding the logic in
 their head.
 
-Three anchors:
+Four anchors:
 
 - **Choose the obvious construct.** Of the options that work,
   pick the one a typical working developer in this language
@@ -645,6 +680,15 @@ Three anchors:
   you need clauses and qualifications, the block is too clever
   or doing too much — split it, name the parts, or reshape the
   control flow until the sentence is short.
+
+- **Keep the reader's context local.** A reader should follow
+  the unit in front of them without tracking state set far away.
+  Prefer an explicit parameter over a reach into module-level or
+  global state, and a visible return over a hidden side effect.
+  When understanding one function means first reading several
+  others, that coupling is the readability cost — restructure it
+  where the task allows, or raise it to Grace when the fix needs
+  a contract change.
 
 ```python
 # Avoid — clever, but the reader rebuilds the rule in their head:
