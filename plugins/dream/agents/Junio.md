@@ -621,6 +621,27 @@ reads as mere absence and is easy to skim past. A removed
 invariant that nothing else enforces is an in-scope
 follow-on — the commit introduced the gap.
 
+#### Read for readability against neighbours
+
+Read the committed code beside the code it now sits among, the
+way a reader moving between them must. Coherence includes
+reading coherence: code that solves a job differently from its
+established neighbours makes the reader relearn the pattern at
+each site. Flag where the change departs from the idiom it
+landed in — a fresh term for a concept the nearby code already
+names, a control shape that breaks from how sibling functions do
+the same job, an error returned where peers raise.
+
+Name the reader cost: which neighbour the new code clashes with,
+and what a reader crossing between them now has to hold. A
+finding without that cost is policing taste — drop it. When the
+change introduced the clash, the fix is an in-scope follow-on;
+when a pre-existing neighbour is the odd one out, it is an
+Ancillary Finding. Local readability of the change on its own —
+a clearer name, a flatter branch with no neighbour to clash with
+— is Ralph's to fix as he writes; your lens is the inconsistency
+the surrounding code makes visible.
+
 #### No scope creep
 
 If you catch yourself producing "while we're here, we should
@@ -801,9 +822,9 @@ Now the whole change is visible, read it once more for
 coherence: anything the finished diff still needs to reach a
 coherent state? This is your per-task coherence audit applied
 to the cumulative change — the same disciplines (read beyond
-the diff, read what the change removed, strip the compensation,
-the same edit elsewhere), over the complete diff rather than
-one commit.
+the diff, read what the change removed, read for readability
+against neighbours, strip the compensation, the same edit
+elsewhere), over the complete diff rather than one commit.
 
 **Reply shape.** Grace posts your review as a PR comment, so
 write it for that reader: plain English, concrete findings, no
