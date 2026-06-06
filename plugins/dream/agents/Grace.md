@@ -1181,7 +1181,7 @@ divergence or flagged hunt is a reviewability finding: a place
 the code failed to explain itself to a reader with no context.
 This is worth real attention. Ada stands in for the human
 reviewer, who also comes to the change cold; where her read
-diverged, theirs will too. As the team writes more of the code,
+diverged, theirs will too. As agents write more of the code,
 that review is where the human's scarce attention is spent — code
 that explains itself there is what keeps the review cheap.
 Triage these the same as any finding — accept one as a follow-on
