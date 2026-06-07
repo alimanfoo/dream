@@ -1044,7 +1044,7 @@ branch (`gh pr create --draft`). The PR stays in draft until
 Phase 7 — the draft state signals to the user that the PR is
 not yet worth their attention. Label the PR with the Session
 Type's category (`gh pr create --label <name>`), skipping the
-label when the repo has no clean match — see "Category labels"
+label when the repo has no clean match — see "GitHub labels"
 in Common rules below. Title and body markers follow
 "Marking agent-authored GitHub items" in Common rules below.
 Follow "GitHub-rendered artefacts" in `protocol.md`.
@@ -1455,7 +1455,7 @@ when merge was deferred and the PR is still open: a miss
 this sweep surfaces becomes an issue, not a follow-on on the
 open branch. Only a user-directed change reopens Develop.
 
-Apply a category label to each new issue — see "Category
+Apply a category label to each new issue — see "GitHub
 labels" in Common rules below.
 
 **Issue shape.** When filing, write in plain English for a
@@ -1545,7 +1545,7 @@ The user accepts each draft before it's filed; for an upstream
 draft, what the user accepts is the wording as it will be
 filed (already stripped if the host repo isn't public). Once
 the user accepts, you or the user files. Apply a category label to each
-new issue — see "Category labels" in Common rules. After
+new issue — see "GitHub labels" in Common rules. After
 the retrospective, or if the user declines it, tell the user
 the session work is done and that they can return to the main
 session to wind the team down. Then wait for any further
@@ -1900,7 +1900,7 @@ appropriately.
   the host repo aren't a style precedent; treat them as you
   would any other contributor's work.
 
-### Category labels
+### GitHub labels
 
 The team labels both the session PR and any issues it files
 with a category label, so triage is easier. Three categories
