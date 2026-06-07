@@ -197,21 +197,13 @@ Options — the Proposed Design, her recommendation, and any
 credible Alternative Designs drawn from the spread, each still
 delivering the full Working Scope with its trade-off named.
 There may be several, one, or none — an empty set found
-honestly is a result, not a failure. A sketch that delivers
-less than the Working Scope is not an Alternative; that is a
-Challenge to the Working Scope. Consolidating the
-recommendation and the alternatives in one act, from the pool,
-is what keeps the alternatives genuine.
+honestly is a result, not a failure.
 
-Grace shares the Proposed Design with Junio and Ralph for one
+Grace shares the Design Options with Junio and Ralph for one
 round of review — advisory, not gating. Junio reads from the
-maintainer's view and proposes candidate lateral moves:
-different designs, at the same scope, that remove duplication
-and reveal intent, or reduce complexity. He also runs a
-reinvention check, flagging where the Design rebuilds a
-library, technique, or in-tree helper that already exists.
-Ralph reads from the engineering-pattern view. Grace decides
-each finding on its merits, recording a one-line reason: folded
+maintainer's view. Ralph reads from the engineering-pattern
+view. Grace decides each finding on its merits, recording a
+one-line reason: folded
 into the Proposed Design, turned into an Alternative Design,
 rejected, held as an Ancillary Finding, or raised as a
 Challenge. Grace then shares the Design Options — the Proposed

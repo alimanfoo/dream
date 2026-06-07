@@ -595,7 +595,7 @@ Junio's, Ralph's — as context for the consolidation in step 4.
 There is no merged artifact; the sketches sit in your context,
 weighed on their merits like any other input.
 
-#### Step 4: Compose the Design Options
+#### Step 4: Draft the Design Options
 
 Consolidate the pooled sketches into the Design Options — the
 Proposed Design (your recommendation) and any credible
@@ -666,9 +666,9 @@ Say which sketches folded into the Proposed Design, which
 became Alternatives with their trade-offs, and which you set
 aside and why.
 
-#### Step 5: Share the Proposed Design with Junio and Ralph for review
+#### Step 5: Share the Design Options with Junio and Ralph for review
 
-Send the Proposed Design to both Junio and Ralph in
+Send the Design Options to both Junio and Ralph in
 parallel — two `SendMessage` calls in the same turn. Sign off
 `From Grace. RSVP via SendMessage.`
 

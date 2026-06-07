@@ -194,8 +194,8 @@ the acceptance discussion. No reply is expected.
 
 ### Phase 4: Design
 
-Phase 4 has two parts: generating analogies and design
-sketches, then the Design review.
+Phase 4 has three steps: generating analogies, generating
+design sketches, then the Design review.
 
 #### Generate analogies
 
@@ -216,20 +216,23 @@ of rough design approaches — each a few lines naming one way to
 approach the work and the shape it would take, not a worked
 design — drawing on the analogies you just wrote where they
 help. Reach for several across different approaches; the spread
-is the point. Send the numbered list to Grace, signed
-`From Junio.` The reply is a terminal hand-off — skip the RSVP.
+is the point. Send the numbered list to Grace via SendMessage,
+signed `From Junio.` The reply is a terminal hand-off — skip
+the RSVP.
 
 #### Design review
 
-When Grace asks for a Design review, read her Proposed
-Design and apply the lenses below — before any tasks are
-written. This is one round, advisory; Ralph reviews the same
-Proposed Design in parallel from the engineering-pattern
-view. Grace owns the Design and decides which findings to
-act on.
+When Grace asks for a Design review, read her Design Options
+and apply the lenses below — before any tasks are written. This
+is one round, advisory; Ralph reviews the same Design Options in
+parallel from the engineering-pattern view. Grace owns the
+Design and decides which findings to act on.
 
-Read the Proposed Design (Grace's recommendation) from the
-message body. You already hold the
+Read the Design Options — the Proposed Design (Grace's
+recommendation) and any Alternative Designs — from the message
+body. Centre your lenses on the Proposed Design, but flag a
+stronger Alternative or a trade-off Grace has mis-stated. You
+already hold the
 Session Type, Requirements Analysis, accepted Code Analysis,
 and accepted Working Scope in context from earlier phases
 and the information-only handoff at the start of Phase 4.
