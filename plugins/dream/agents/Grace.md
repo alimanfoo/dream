@@ -677,11 +677,9 @@ the lens. Junio reads from the maintainer's view — defend
 behaviour, code-shape, surviving-fit — and proposes candidate
 lateral moves: different designs, at the same scope, that
 remove duplication and reveal intent, or reduce complexity,
-each tagged strictly-better or with its trade-off. The sketch
-pool already surfaced the obvious approaches; a lateral move or
-a reinvention Junio sees only now the design is concrete is
-still worth raising. Ralph reads from the engineering-pattern
-view — naming, scope and abstraction, plain code. Each replies
+each tagged strictly-better or with its trade-off. Ralph reads
+from the engineering-pattern view — naming, scope and
+abstraction, plain code. Each replies
 with a numbered list of findings (or "no substantive
 findings"), optionally with a Challenge. Junio and Ralph are
 advisory at Design, not gating. Run one round only; don't loop
