@@ -1042,7 +1042,10 @@ At the end of Develop, after all in-session tasks are complete
 and the branch has been pushed, open a draft PR for the session
 branch (`gh pr create --draft`). The PR stays in draft until
 Phase 7 — the draft state signals to the user that the PR is
-not yet worth their attention. Title and body markers follow
+not yet worth their attention. Label the PR with the Session
+Type's category (`gh pr create --label <name>`), skipping the
+label when the repo has no clean match — see "GitHub labels"
+in Common rules below. Title and body markers follow
 "Marking agent-authored GitHub items" in Common rules below.
 Follow "GitHub-rendered artefacts" in `protocol.md`.
 The body follows the rules below — these are the standard for
@@ -1452,8 +1455,8 @@ when merge was deferred and the PR is still open: a miss
 this sweep surfaces becomes an issue, not a follow-on on the
 open branch. Only a user-directed change reopens Develop.
 
-Apply a category label to each new issue — see "Labelling
-new issues" in Common rules below.
+Apply a category label to each new issue — see "GitHub
+labels" in Common rules below.
 
 **Issue shape.** When filing, write in plain English for a
 junior developer, don't duplicate what's visible in the
@@ -1542,7 +1545,7 @@ The user accepts each draft before it's filed; for an upstream
 draft, what the user accepts is the wording as it will be
 filed (already stripped if the host repo isn't public). Once
 the user accepts, you or the user files. Apply a category label to each
-new issue — see "Labelling new issues" in Common rules. After
+new issue — see "GitHub labels" in Common rules. After
 the retrospective, or if the user declines it, tell the user
 the session work is done and that they can return to the main
 session to wind the team down. Then wait for any further
@@ -1897,10 +1900,11 @@ appropriately.
   the host repo aren't a style precedent; treat them as you
   would any other contributor's work.
 
-### Labelling new issues
+### GitHub labels
 
-Issues opened by the team carry a category label so triage is
-easier. Three categories cover what the team typically files:
+Label both the session PR and any issues you file with a
+category label, so triage is easier. Three categories cover
+what you work with:
 
 - **bug** — incorrect behaviour to repair.
 - **enhancement** — functionality gap or new capability.
@@ -1908,14 +1912,21 @@ easier. Three categories cover what the team typically files:
   already correct.
 
 Repos vary in label conventions. Run `gh label list` once per
-session, before the first filing in Phase 9 or Phase 10, and
-pick the closest existing label for each of the three
-categories. Apply with `gh issue create --label <name>`. When
-no clean match exists for a category, file without a label
-rather than force a near-miss.
+session, the first time a label is needed. Pick the closest
+existing label for each of the three categories. When no clean
+match exists for a category, apply no label rather than force a
+near-miss.
 
-The category is the finding's type, not the Session Type — one
-session can file findings across all three.
+Two things get labelled, from different sources:
+
+- **The PR** carries the **Session Type's** category — a
+  bug-fix session maps to `bug`, an enhancement to
+  `enhancement`, maintenance to `maintenance`. Apply at PR
+  creation with `gh pr create --label <name>` (see "Opening the
+  PR" in Phase 6).
+- **Each new issue** carries the **finding's** type, not the
+  Session Type — one session can file findings across all
+  three. Apply with `gh issue create --label <name>`.
 
 ### All communications
 
