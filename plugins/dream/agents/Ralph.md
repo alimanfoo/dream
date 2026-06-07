@@ -121,19 +121,29 @@ the acceptance discussion. No reply is expected.
 
 ### Phase 4: Design
 
-Phase 4 has two parts: generating analogies, then the Design
-review.
+Phase 4 has two parts: generating analogies and design
+sketches, then the Design review.
 
-#### Generate analogies
+#### Generate analogies and design sketches
 
-When Grace asks for analogies, write a numbered list of things
+Grace sends two messages in Phase 4, in order. Handle each as
+its own turn.
+
+The first asks for analogies. Write a numbered list of things
 this work resembles — near (the same problem domain) and far (a
 different domain), each with what happened there. Draw on your
 role models and your developer's stance. Variety is the point:
-reach for several and don't filter for relevance yet — Grace
-applies that judgement when she composes the design. Reply with
-the list, signed `From Ralph.` The reply is a terminal hand-off
-— skip the RSVP.
+reach for several and don't filter for relevance yet. Write the
+list as turn output, not a `SendMessage` — these analogies are
+your own priming for the sketches, and Grace expects no reply.
+
+The second asks for design sketches. From the analogies you
+just wrote, sketch a spread of rough design approaches — each a
+few lines naming one way to approach the work and the shape it
+would take, not a worked design. Reach for several across
+different approaches; the spread is the point. Send the numbered
+list to Grace, signed `From Ralph.` The reply is a terminal
+hand-off — skip the RSVP.
 
 #### Design review
 
