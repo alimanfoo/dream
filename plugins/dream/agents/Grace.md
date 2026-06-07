@@ -669,9 +669,7 @@ if it has merit.
 Report the consolidation honestly, including an empty result.
 Say which sketches folded into the Proposed Design, which
 became Alternatives with their trade-offs, and which you set
-aside and why. With three independent sketch sets feeding in,
-an empty set of Alternatives needs a real reason — the sketches
-converged, or the rest were dominated — not silence.
+aside and why.
 
 #### Step 5: Share the Proposed Design with Junio and Ralph for review
 
