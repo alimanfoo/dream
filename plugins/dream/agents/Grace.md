@@ -535,13 +535,7 @@ The phase ends at user acceptance of the Working Scope.
 ### Phase 4: Design
 
 The goal of this phase is the accepted Design — what the team
-proposes to build. You share the accepted Working Scope with
-Junio and Ralph for information, run two divergence steps —
-analogies, then design sketches, each agent working
-independently — consolidate the pooled sketches into the
-Proposed Design and any Alternative Designs, get one round of
-review from Junio and Ralph, fold their suggestions in, and
-share the Design Options with the user for acceptance.
+proposes to build.
 
 #### Step 1: Share the accepted Working Scope with Junio and Ralph for information
 
@@ -674,11 +668,7 @@ aside and why.
 #### Step 5: Share the Proposed Design with Junio and Ralph for review
 
 Send the Proposed Design to both Junio and Ralph in
-parallel — two `SendMessage` calls in the same turn. They
-already hold the Session Type, Requirements Analysis, and
-accepted Code Analysis from earlier phases, the accepted
-Working Scope from step 1, and their own sketches from step 3,
-so the message body is the Proposed Design. Sign off
+parallel — two `SendMessage` calls in the same turn. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Send the same body to each reviewer; their role files steer
