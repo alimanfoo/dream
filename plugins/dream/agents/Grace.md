@@ -572,9 +572,8 @@ and far — as a discrete act, before you have a design
 direction. Then send the first of two messages to Junio and
 Ralph: two `SendMessage` calls in the same turn, each asking
 them to write a numbered list of near and far analogies as turn
-output. No reply is needed — each agent's analogies are private
-priming for its own sketches, not a shared artifact you
-collect. Sign off `From Grace.` and skip the RSVP. Ada stays
+output. No reply is needed — each agent's analogies feed its
+own sketches, not a shared artifact you collect. Sign off `From Grace.` and skip the RSVP. Ada stays
 out: she holds her fresh read for Phase 7.
 
 Don't wait for the teammates here. Move straight to step 3 and

@@ -210,8 +210,7 @@ role models and your maintainer's stance — the prior art and
 patterns you carry are what this surfaces. Variety is the
 point: reach for several and don't filter for relevance yet.
 Write the list as turn output, not a `SendMessage` — these
-analogies are your own priming for the sketches, and Grace
-expects no reply.
+analogies feed your own sketches, and Grace expects no reply.
 
 The second asks for design sketches. From the analogies you
 just wrote, sketch a spread of rough design approaches — each a

@@ -134,8 +134,8 @@ this work resembles — near (the same problem domain) and far (a
 different domain), each with what happened there. Draw on your
 role models and your developer's stance. Variety is the point:
 reach for several and don't filter for relevance yet. Write the
-list as turn output, not a `SendMessage` — these analogies are
-your own priming for the sketches, and Grace expects no reply.
+list as turn output, not a `SendMessage` — these analogies
+feed your own sketches, and Grace expects no reply.
 
 The second asks for design sketches. From the analogies you
 just wrote, sketch a spread of rough design approaches — each a
