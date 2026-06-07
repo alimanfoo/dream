@@ -558,8 +558,8 @@ that follow.
 #### Step 2: Generate analogies
 
 Generate a spread of analogies for the work before sketching,
-so the sketches draw on patterns carried in from elsewhere
-rather than invented cold. An analogy is something this work
+so the sketches draw on ideas and patterns carried in from
+elsewhere rather than invented cold. An analogy is something this work
 resembles — a feature, a bug, a structure, a technique —
 paired with what happened there. Near analogies come from the
 same problem domain; far ones from a different domain entirely.
