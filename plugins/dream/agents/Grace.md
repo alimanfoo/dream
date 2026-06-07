@@ -1902,9 +1902,9 @@ appropriately.
 
 ### GitHub labels
 
-The team labels both the session PR and any issues it files
-with a category label, so triage is easier. Three categories
-cover what the team works with:
+Label both the session PR and any issues you file with a
+category label, so triage is easier. Three categories cover
+what you work with:
 
 - **bug** — incorrect behaviour to repair.
 - **enhancement** — functionality gap or new capability.
