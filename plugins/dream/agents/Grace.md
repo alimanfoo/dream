@@ -605,12 +605,9 @@ weighed on their merits like any other input.
 Consolidate the pooled sketches into the Design Options — the
 Proposed Design (your recommendation) and any credible
 Alternative Designs — in one act. This is the artifact
-reviewers will see next; do not yet send to the user. Choosing
-the recommendation and the alternatives together, from the pool
-rather than from a design you have already written, is what
-keeps the alternatives genuine: once a single Proposed Design
-is in your context, "set it aside and re-derive" no longer
-produces a real alternative.
+reviewers will see next; do not yet send to the user. Choose
+the recommendation and the alternatives together, from the
+pool.
 
 **The Proposed Design.** Name what the code will look like when
 the work is done, the approach proposed, and the key design

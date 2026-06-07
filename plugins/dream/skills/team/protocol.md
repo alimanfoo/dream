@@ -200,11 +200,8 @@ There may be several, one, or none — an empty set found
 honestly is a result, not a failure. A sketch that delivers
 less than the Working Scope is not an Alternative; that is a
 Challenge to the Working Scope. Consolidating the
-recommendation and the alternatives in one act, from the pool
-rather than from a design already written, is what keeps the
-alternatives genuine: once a single Proposed Design is in
-context, "set it aside and re-derive" no longer produces a
-real alternative.
+recommendation and the alternatives in one act, from the pool,
+is what keeps the alternatives genuine.
 
 Grace shares the Proposed Design with Junio and Ralph for one
 round of review — advisory, not gating. Junio reads from the
