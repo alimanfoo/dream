@@ -731,8 +731,7 @@ recommendation — then each Alternative with the trade-off
 it carries. Add a brief note on **what changed after the
 reviews**: what folded into the Proposed Design, notable
 rejections with the reason, and what the sketches yielded as
-Alternatives (including an empty result). Include any
-out-of-scope decisions.
+Alternatives (including an empty result).
 
 The Proposed Design is the default if the user just accepts;
 the user picks an Alternative to override.
