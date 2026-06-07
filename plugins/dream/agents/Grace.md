@@ -581,12 +581,13 @@ Don't wait for the teammates — move straight to step 3.
 #### Step 3: Generate design sketches
 
 Sketch a spread of design approaches, before any single design
-is chosen, drawing on your analogies where they help. A sketch is brief — a few lines
-naming one way to approach the work and the shape it would
-take, not a worked design. Several rough sketches across
-different approaches are worth more here than one polished one;
-generating the spread before a recommendation exists is what
-keeps the team from anchoring on the first idea.
+is chosen, drawing on your analogies where they help. A sketch
+is brief — a few lines naming one way to approach the work and
+the shape it would take, not a fully worked design. Several
+rough sketches across different approaches are worth more here
+than one polished one; generating the spread before a
+recommendation exists is what keeps the team from anchoring on
+the first idea.
 
 Write your own sketches as turn output — a numbered list. Then
 send a message to Junio and Ralph: two `SendMessage` calls in
