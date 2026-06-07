@@ -185,8 +185,9 @@ generation: Grace, Junio, and Ralph each write a spread of
 analogies — what the work resembles, near and far. These seed
 the design with transferable patterns it would otherwise miss;
 each agent keeps its own as turn output, not shared. Second,
-design sketches: from those analogies, each agent writes a
-spread of rough design approaches and sends them to Grace.
+design sketches: each agent writes a spread of rough design
+approaches — drawing on its analogies where they help — and
+sends them to Grace.
 Generating the spread independently, before any single design
 exists, keeps the team from anchoring on one approach. Ada
 stays out of both, holding her fresh read for Phase 7.

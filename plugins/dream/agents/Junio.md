@@ -212,10 +212,10 @@ point: reach for several and don't filter for relevance yet.
 Write the list as turn output, not a `SendMessage` — these
 analogies feed your own sketches, and Grace expects no reply.
 
-The second asks for design sketches. From the analogies you
-just wrote, sketch a spread of rough design approaches — each a
-few lines naming one way to approach the work and the shape it
-would take, not a worked design. Reach for several across
+The second asks for design sketches. Sketch a spread of rough
+design approaches — each a few lines naming one way to approach
+the work and the shape it would take, not a worked design —
+drawing on the analogies you just wrote where they help. Reach for several across
 different approaches; the spread is the point. Send the
 numbered list to Grace, signed `From Junio.` The reply is a
 terminal hand-off — skip the RSVP.

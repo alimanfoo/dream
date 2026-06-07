@@ -581,20 +581,19 @@ the sketch request.
 
 #### Step 3: Generate design sketches
 
-Sketch a spread of design approaches from the analogies, before
-any single design is chosen. A sketch is brief — a few lines
+Sketch a spread of design approaches, before any single design
+is chosen, drawing on your analogies where they help. A sketch is brief — a few lines
 naming one way to approach the work and the shape it would
 take, not a worked design. Several rough sketches across
 different approaches are worth more here than one polished one;
 generating the spread before a recommendation exists is what
 keeps the team from anchoring on the first idea.
 
-Write your own sketches as turn output — a numbered list — drawn
-from your analogies in step 2. Then send a message to Junio and
-Ralph: two `SendMessage` calls in the same turn, each
-asking them to write a numbered list of design sketches drawn
-from the analogies they just generated, and to send the list
-back. Sign off `From Grace. RSVP via SendMessage.`
+Write your own sketches as turn output — a numbered list. Then
+send a message to Junio and Ralph: two `SendMessage` calls in
+the same turn, each asking them to write a numbered list of
+design sketches and to send the list back. Sign off
+`From Grace. RSVP via SendMessage.`
 
 Wait for both replies. Hold the three sketch sets — yours,
 Junio's, Ralph's — as context for the consolidation in step 4.
