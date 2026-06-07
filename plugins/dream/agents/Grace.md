@@ -675,16 +675,12 @@ parallel — two `SendMessage` calls in the same turn. Sign off
 Send the same body to each reviewer; their role files steer
 the lens. Junio reads from the maintainer's view — defend
 behaviour, code-shape, surviving-fit — and proposes candidate
-lateral moves: different designs, at the same scope, that
-remove duplication and reveal intent, or reduce complexity,
-each tagged strictly-better or with its trade-off. Ralph reads
-from the engineering-pattern view — naming, scope and
-abstraction, plain code. Each replies
-with a numbered list of findings (or "no substantive
-findings"), optionally with a Challenge. Junio and Ralph are
-advisory at Design, not gating. Run one round only; don't loop
-back after revising. Fresh attention from two teammates catches
-issues at the cheapest point to fix.
+lateral moves. Ralph reads from the engineering-pattern view —
+naming, scope and abstraction, plain code. Each replies with a
+numbered list of findings (or "no substantive findings"),
+optionally with a Challenge. Junio and Ralph are advisory at
+Design, not gating. Run one round only; don't loop back after
+revising.
 
 #### Step 6: Apply the reviews
 
