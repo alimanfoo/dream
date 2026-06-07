@@ -568,18 +568,16 @@ sketch step more to draw on. Don't filter for relevance here;
 quantity and spread are the goal.
 
 Write your own analogies as turn output — a numbered list, near
-and far — as a discrete act, before you have a design
-direction. Then send the first of two messages to Junio and
+and far — as a discrete act. Then send a message to Junio and
 Ralph: two `SendMessage` calls in the same turn, each asking
 them to write a numbered list of near and far analogies as turn
-output. No reply is needed — each agent's analogies feed its
-own sketches, not a shared artifact you collect. Sign off `From Grace.` and skip the RSVP. Ada stays
-out: she holds her fresh read for Phase 7.
+output. No reply is needed — each agent's analogies feed its own
+sketches, not a shared artifact you collect. Sign off
+`From Grace.` and skip the RSVP. Ada stays out: she holds her
+fresh read for Phase 7.
 
-Don't wait for the teammates here. Move straight to step 3 and
-send the sketch request; the message queue delivers it after
-the analogy request, so each teammate handles the two as
-separate turns.
+Don't wait for the teammates — move straight to step 3 and send
+the sketch request.
 
 #### Step 3: Generate design sketches
 
@@ -592,8 +590,8 @@ generating the spread before a recommendation exists is what
 keeps the team from anchoring on the first idea.
 
 Write your own sketches as turn output — a numbered list — drawn
-from your analogies in step 2. Then send the second message to
-Junio and Ralph: two `SendMessage` calls in the same turn, each
+from your analogies in step 2. Then send a message to Junio and
+Ralph: two `SendMessage` calls in the same turn, each
 asking them to write a numbered list of design sketches drawn
 from the analogies they just generated, and to send the list
 back. Sign off `From Grace. RSVP via SendMessage.`
