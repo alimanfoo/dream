@@ -269,21 +269,22 @@ better.
 
 #### Lens 3: Lateral moves
 
-Propose candidate lateral moves — different designs, at
-the same scope, that remove duplication and reveal intent, or
-reduce complexity. The sketch step already surfaced the obvious
-approaches; here the target is a move that becomes visible only
-now the design is concrete. Look for repeated structure
-the Proposed handles case by case — a branch per variant, a
-parallel path per input kind, the same steps written more
-than once — and name the single rule that would unify it.
-The rule earns its place only when it names a real concept —
-a domain idea, a behaviour, or a technical pattern — that
-changes as one unit; that correspondence is what reveals
+Propose candidate lateral moves — different designs, at the
+same scope, that remove duplication and reveal intent, or
+reduce complexity — that become visible only now the design is
+concrete. The sketch step already searched the space of wholly
+different approaches; this lens works on the realised proposal,
+where it catches duplication the fixed shape exposes. Look for
+repeated structure the Proposed handles case by case — a branch
+per variant, a parallel path per input kind, the same steps
+written more than once — and name the single rule that would
+unify it. The rule earns its place only when it names a real
+concept — a domain idea, a behaviour, or a technical pattern —
+that changes as one unit; that correspondence is what reveals
 intent and makes the deduplication trustworthy. Sites that
 merely coincide today and would later diverge are not real
-duplication — merging them couples code that should stay
-free to change apart, so leave them.
+duplication — merging them couples code that should stay free
+to change apart, so leave them.
 
 A check is itself a lateral move, and the one agents miss most.
 Instead of solving the immediate problem in code, it enforces
