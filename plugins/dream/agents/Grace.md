@@ -1912,11 +1912,10 @@ cover what the team works with:
   already correct.
 
 Repos vary in label conventions. Run `gh label list` once per
-session, the first time a label is needed — at PR creation
-(end of Phase 6) or the first issue filing in Phase 9 or Phase
-10, whichever comes first. Pick the closest existing label for
-each of the three categories. When no clean match exists for a
-category, apply no label rather than force a near-miss.
+session, the first time a label is needed. Pick the closest
+existing label for each of the three categories. When no clean
+match exists for a category, apply no label rather than force a
+near-miss.
 
 Two things get labelled, from different sources:
 
