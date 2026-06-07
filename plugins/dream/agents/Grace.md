@@ -576,8 +576,7 @@ sketches, not a shared artifact you collect. Sign off
 `From Grace.` and skip the RSVP. Ada stays out: she holds her
 fresh read for Phase 7.
 
-Don't wait for the teammates — move straight to step 3 and send
-the sketch request.
+Don't wait for the teammates — move straight to step 3.
 
 #### Step 3: Generate design sketches
 
