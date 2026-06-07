@@ -595,7 +595,7 @@ Junio's, Ralph's — as context for the consolidation in step 4.
 There is no merged artifact; the sketches sit in your context,
 weighed on their merits like any other input.
 
-#### Step 4: Consolidate the sketches into the Design Options
+#### Step 4: Compose the Design Options
 
 Consolidate the pooled sketches into the Design Options — the
 Proposed Design (your recommendation) and any credible
