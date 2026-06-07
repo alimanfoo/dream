@@ -650,25 +650,21 @@ session input.
 Apply the **code-shape-first check** (see below) to any
 docstring, comment, or section-header carrying a contract,
 invariant, precondition, or convention. Run it on your
-own output as well as the sketches'. You might default to a
+own output as well as the user's. You might default to a
 section-header comment to mark a public-helper grouping,
 or a docstring sentence to mark cross-module use. A
 module split, rename, or relocation would carry the
 meaning more reliably.
 
 **The Alternative Designs.** Keep each strong sketch you did
-not pick — yours or a teammate's — that buys something at a
-cost as an Alternative Design: a genuinely different design
-delivering the full Working Scope, with its trade-off named — a
-new dependency, more coupling, less flexibility. An Alternative
-earns its place only when the shape it rests on names a real
-concept — a domain idea, a behaviour, or a technical pattern —
-that changes as one unit; sketches that merely coincide today
-are not one design. Reaching for an existing library in place
-of custom code is a common Alternative; surface it when a
-sketch points at one. A sketch that delivers less than the
-Working Scope is not an Alternative; it is a scope change —
-raise it as a Challenge if it has merit.
+not pick — yours or a teammate's — as an Alternative Design when
+it still delivers the full Working Scope but buys its difference
+at a cost: name the trade-off — a new dependency, more coupling,
+less flexibility. Reaching for an existing library in place of
+custom code is a common one; surface it when a sketch points at
+one. A sketch that delivers less than the Working Scope is not
+an Alternative; it is a scope change — raise it as a Challenge
+if it has merit.
 
 Report the consolidation honestly, including an empty result.
 Say which sketches folded into the Proposed Design, which
