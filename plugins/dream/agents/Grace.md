@@ -547,7 +547,7 @@ skip the RSVP; no reply is expected. They haven't seen
 the outcome since their Draft Scope Options review in
 Phase 3 step 2. The accepted Working Scope feeds the
 analogies and sketches you generate and the Design review
-that follow.
+that follows.
 
 #### Step 2: Generate analogies
 
