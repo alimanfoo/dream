@@ -145,6 +145,14 @@ operational detail still needs to move to the agent file of whoever
 runs it. `Grace.md`'s Challenge and Autopilot sections are the
 templates.
 
+Renaming or renumbering a phase, step, or concept ripples past
+the file you edit. Step-number references in other phases, prose
+labels for the thing, and the protocol summary all need the same
+update — grep every agent file and the protocol for the old
+name. `Junio.md` and `Ralph.md` run parallel for shared
+mechanics, so the same instruction often lives in both; edit
+them in lockstep.
+
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test suite. When changing behavior, validate by reading the affected skill/agent prompts together and checking that lifecycle, role boundaries, and tool permissions remain consistent. Run the pre-commit hooks to check formatting; see the Linting section.
 
 ## Design principles
@@ -287,8 +295,42 @@ work is.
 
 ## Writing agent prompts
 
-The dream-team agents are LLMs. Three things matter when
-writing or revising their prompts:
+The dream-team agents are LLMs. Writing well for them turns on
+two things: the shape of an instruction, and the properties of
+the agent as a reader.
+
+### Instruction paragraphs
+
+Build an instruction paragraph in four parts, in this order: the
+imperative, the why, examples, exceptions.
+
+- **Imperative first.** Open with what to do. "Check each scope
+  item for X" beats "For each scope item, check whether X" — the
+  qualifier shouldn't bury the verb.
+- **Then the why.** Give the reason the agent weighs while
+  working: why a default is risky, what a check defends.
+- **Then examples.** One to three, to anchor a fuzzy criterion.
+  They illustrate; they don't bound it (see "Generalise rules;
+  don't pin them to the incident").
+- **Then exceptions.** Edge cases come after the main rule,
+  never before it.
+
+The why is the one that motivates the act, not the one that
+motivates the design. The reason the protocol or the prompt is
+*built* this way — design history, justification for a decision
+already made — belongs in the PR description and commit message,
+not the instruction. A new mechanism tempts you to motivate it
+inline; write the instruction, then move the design-motivation
+out.
+
+Not every paragraph needs all four — a bare imperative is enough
+when the act is obvious. But hold the order: an exception before
+the rule, or a why before the verb, forces the reader to decode
+before they can act.
+
+### The agent as a reader
+
+Four properties of that reader change how you write for it:
 
 - **Agents reason by producing tokens** — thinking tokens,
   turn output, or tokens written to files or messages. An
@@ -327,13 +369,22 @@ writing or revising their prompts:
   whether it already carries weight in the protocol. If it
   does, pick a different word — even a slightly less elegant
   one is safer than a collision.
+- **Agents have a soft per-turn output budget** — quality falls
+  off as a single turn's output grows. Two rich generative acts
+  crammed into one turn compete for that budget, and both come
+  out thinner. When a step needs an agent to produce more than
+  one substantial output — say a wide spread of analogies and
+  then a spread of design sketches — give each its own turn or
+  message rather than asking for both at once.
 
 ## Writing prose
 
-When you write or edit prose in this repo — agent prompts, the
-protocol, skill bodies — write plain English. The reader is the
-agent who will run the protocol or the developer who will
-maintain it. Both pay a tax on jargon and indirection.
+Write plain English in every prose artifact the repo holds —
+agent prompts, the protocol, skill bodies, these dev notes. The
+reader is the agent who runs the protocol or the developer who
+maintains it; both pay a tax on jargon and indirection. These
+are the clarity rules for any reader; what's specific to writing
+for an LLM agent is in "Writing agent prompts".
 
 - **Don't invent umbrella terms.** If you reach for one
   ("tree-shaping command") to cover a list you've already named,
@@ -347,11 +398,6 @@ maintain it. Both pay a tax on jargon and indirection.
   imperative verbs as instructions" beats "the trap is verbs
   like…" — the second form makes the reader decode who's
   trapped before they can act.
-- **Open instruction paragraphs with the imperative.** Lead
-  with what to do, then 1-3 sentences of examples or
-  follow-on, then any exceptions. "Check each scope item for
-  X" beats "For each scope item, check whether X" — the
-  qualifier shouldn't bury the verb.
 - **Lead with the main point; cut tangential consequence
   detail.** State the boundary first. Mention the one or two
   reasons that actually shape decisions, not every downstream

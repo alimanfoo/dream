@@ -20,10 +20,12 @@ A session moves through ten phases:
    of review from Junio and Ralph, revises, and shares the
    revised Scope Options with the user for acceptance.
 
-4. **Design.** Grace drafts the Proposed Design, gets one
-   round of review from Junio and Ralph, revises, and shares
-   the revised Design Options — the Proposed Design and any
-   Alternative Designs — with the user for acceptance.
+4. **Design.** Grace opens two divergence steps — she, Junio,
+   and Ralph each write analogies, then design sketches — then
+   consolidates the pooled sketches into the Proposed Design
+   and any Alternative Designs, gets one round of review from
+   Junio and Ralph, revises, and shares the Design Options with
+   the user for acceptance.
 
 5. **Plan.** Grace drafts the Plan, gets one round of review
    from Junio and Ralph, revises, and shares the revised Plan
@@ -157,7 +159,11 @@ anticipation — single-sourcing it reaches the cause (see "One
 fact, one home"). When the recurring rule has no single home to
 move it to — many sites that must each follow it — a check that
 enforces it is the Coherent fix instead (see "One rule, one
-check"). Grace shares the Draft
+check"). A scope item names the property or outcome the work
+must achieve, not how the work achieves it. Choosing the how —
+a tool or library, an algorithm or structure, an API or command
+shape, a bug's fix shape — is Design's call, where the reviewers
+weigh the alternatives. Grace shares the Draft
 Scope Options with Junio and Ralph for one round of review —
 advisory, not gating — and revises. Junio reads from the
 maintainer's view; Ralph reads from the engineering-pattern
@@ -173,32 +179,33 @@ The phase ends at user acceptance of the Working Scope.
 ## Phase 4: Design
 
 Phase opens with Grace sharing the accepted Working Scope
-with Junio and Ralph for information. Grace then drafts the
-Proposed Design — her recommendation — and shares it with
-Junio and Ralph for one round of review — advisory, not
-gating. Junio reads from the maintainer's view and proposes
-candidate lateral moves: different designs, at the same
-scope, that remove duplication and reveal intent, or reduce
-complexity. He also runs a reinvention check, flagging where
-the Design rebuilds a library, technique, or in-tree helper
-that already exists. Ralph reads from the engineering-pattern
-view. Grace decides each finding on its merits, recording a
-one-line reason: folded into the revised Proposed Design,
-turned into an Alternative Design, rejected, held as an
-Ancillary Finding, or raised as a Challenge.
+with Junio and Ralph for information. Then two divergence
+steps run before any design is chosen. First, analogy
+generation: Grace, Junio, and Ralph each write a spread of
+analogies — what the work resembles, near and far. These seed
+the design with transferable patterns it would otherwise miss;
+each agent keeps its own as turn output, not shared. Second,
+design sketches: each agent writes a spread of rough design
+approaches — drawing on its analogies where they help — and
+sends them to Grace. Generating the spread independently,
+before any single design exists, keeps the team from anchoring
+on one approach. Ada stays out of both, holding her fresh read
+for Phase 7.
 
-A candidate lateral move that is strictly better folds into
-the Proposed Design. A candidate that buys its simplicity at a
-cost — a new dependency, more coupling, less flexibility —
-becomes an Alternative Design: a genuinely different design
-delivering the same Working Scope, with its trade-off named.
+Grace then consolidates the pooled sketches into the Design
+Options — the Proposed Design, her recommendation, and any
+credible Alternative Designs drawn from the spread, each still
+delivering the full Working Scope with its trade-off named.
 There may be several, one, or none — an empty set found
-honestly is a result, not a failure. A design that delivers
-less than the Working Scope is never an Alternative; that is a
-Challenge to the Working Scope. Grace then shares the revised
-Design Options — the Proposed Design and any Alternative
-Designs — with the user,
-with a brief note on what changed after the reviews.
+honestly is a result, not a failure.
+
+Grace shares the Design Options with Junio and Ralph for one
+round of review — advisory, not gating. Junio reads from the
+maintainer's view. Ralph reads from the engineering-pattern
+view. Grace decides each finding on its merits. Grace then
+shares the Design Options — the Proposed Design and any
+Alternative Designs — with the user, with a brief note on what
+changed after the reviews.
 
 The phase ends at user acceptance of the Design.
 
@@ -224,7 +231,7 @@ at any point.
 
 ## Phase 6: Develop
 
-Phase opens with three setup steps: Grace sets the feature
+Phase opens with three setup steps: Grace sets the session
 branch (creates it off `main`, or uses the worktree's branch
 when the session started in one — see `Grace.md`), shares the
 accepted Plan with Junio and Ralph for information, and creates
@@ -331,13 +338,16 @@ draft PR for the session branch.
 Two reviewers read the session's PR in parallel and each
 returns a Markdown review to Grace. Ada reads with fresh eyes,
 judging the PR on its own terms — she has never seen the scope.
-Junio reads against the accepted requirements and Working
-Scope, and against the whole finished diff: completeness (did
-we deliver every in-scope instance of what we agreed?) and
-coherence (now the whole change is visible, anything still
-needed to reach a coherent state?). The whole-diff read is a
-vantage the per-task coherence audits can't give — each of
-those saw one commit alone.
+Her review opens with a cold-read reconstruction of what the
+change does, built from the diff alone; Grace checks it against
+the real intent, and a divergence marks where the code failed to
+explain itself. Junio reads against the accepted requirements
+and Working Scope, and against the whole finished diff:
+completeness (did we deliver every in-scope instance of what we
+agreed?) and coherence (now the whole change is visible,
+anything still needed to reach a coherent state?). The
+whole-diff read is a vantage the per-task coherence audits
+can't give — each of those saw one commit alone.
 
 Grace handles both reviews the same way: she posts each as a PR
 comment, triages every finding into accept (a follow-on task) /
@@ -439,7 +449,8 @@ time:
    *"Accept the Working Scope to proceed to Phase 4:
    Design."*
 3. Grace waits for the user's reply before doing anything
-   else.
+   else — or, under autopilot, takes this gate's default and
+   continues without waiting (see "Autopilot").
 
 These gates run on every session by default and take
 precedence over general autonomy defaults — boot-time
@@ -701,11 +712,11 @@ These apply across every phase.
 
 #### Branch
 
-One feature branch off `main` as of session start, one PR opened on
+One session branch off `main` as of session start, one PR opened on
 it. Grace either creates the branch at the start of Phase 6 (Develop)
 once the Plan is accepted, or uses the worktree's branch when the user
 launched Claude Code inside a worktree. The branch name reflects the
-agreed Working Scope. All planning and development run against the
+accepted Working Scope. All planning and development run against the
 session-start state of `main`; any drift on origin is handled at
 Merge.
 
