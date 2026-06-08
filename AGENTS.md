@@ -362,11 +362,6 @@ maintain it. Both pay a tax on jargon and indirection.
   imperative verbs as instructions" beats "the trap is verbs
   like…" — the second form makes the reader decode who's
   trapped before they can act.
-- **Open instruction paragraphs with the imperative.** Lead
-  with what to do, then 1-3 sentences of examples or
-  follow-on, then any exceptions. "Check each scope item for
-  X" beats "For each scope item, check whether X" — the
-  qualifier shouldn't bury the verb.
 - **Lead with the main point; cut tangential consequence
   detail.** State the boundary first. Mention the one or two
   reasons that actually shape decisions, not every downstream
@@ -376,15 +371,6 @@ maintain it. Both pay a tax on jargon and indirection.
   doesn't" — don't append the inverse. A negative stays when it
   adds something the positive didn't: a reason, a named failure
   mode, or an action.
-- **Keep the why that guides the act; move out the why that
-  only explains the design.** A reason the reader weighs while
-  acting — why a default is risky, what a check defends — earns
-  its place; the dream wants agents to understand that much.
-  Design history, justification for a decision already made, and
-  context the reader already holds do not — those belong in the
-  PR description and commit message. Writing a new mechanism
-  tempts you to motivate it inline; write it, then move the
-  motivation out.
 - **Generalise rules; don't pin them to the incident.** A rule
   that surfaces from one failure mode (verbs at the tail of a
   numbered step list) should be stated for the general case (git
@@ -398,6 +384,35 @@ maintain it. Both pay a tax on jargon and indirection.
   shouldn't slip into "you do this instead" mid-bullet. Pick the
   voice and stay in it; cross-references can carry the positive
   alternative.
+
+## Instruction paragraphs
+
+Build an instruction paragraph in four parts, in this order: the
+imperative, the why, examples, exceptions.
+
+- **Imperative first.** Open with what to do. "Check each scope
+  item for X" beats "For each scope item, check whether X" — the
+  qualifier shouldn't bury the verb.
+- **Then the why — the why that motivates the act, not the why
+  that motivates the design.** Give the reason the agent weighs
+  while working: why a default is risky, what a check defends.
+  The dream wants agents to understand that much. The reason the
+  protocol or the prompt is *built* this way — design history,
+  justification for a decision already made, context the agent
+  already holds — belongs in the PR description and commit
+  message, not the instruction. A new mechanism tempts you to
+  motivate it inline; write the instruction, then move the
+  design-motivation out.
+- **Then examples.** One to three, to anchor a fuzzy criterion.
+  They illustrate; they don't bound it (see "Generalise rules;
+  don't pin them to the incident").
+- **Then exceptions.** Edge cases come after the main rule,
+  never before it.
+
+Not every paragraph needs all four — a bare imperative is enough
+when the act is obvious. But hold the order: an exception before
+the rule, or a why before the verb, forces the reader to decode
+before they can act.
 
 ## Linting
 
