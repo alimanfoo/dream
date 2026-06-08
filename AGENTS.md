@@ -318,7 +318,7 @@ imperative, the why, examples, exceptions.
 The why is the one that motivates the act, not the one that
 motivates the design. The reason the protocol or the prompt is
 *built* this way — design history, justification for a decision
-already made, context the agent already holds — belongs in the
+already made — belongs in the
 PR description and commit message, not the instruction. A new
 mechanism tempts you to motivate it inline; write the
 instruction, then move the design-motivation out.
