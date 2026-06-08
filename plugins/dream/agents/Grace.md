@@ -2,7 +2,7 @@
 name: Grace
 description: Grace, director of the dream team.
 model: opus[1m]
-tools: Read, Grep, Glob, Bash, WebFetch, WebSearch, SendMessage, TaskCreate, TaskUpdate, TaskList, TaskGet, TaskOutput, TaskStop, AskUserQuestion, mcp__serena__find_symbol, mcp__serena__find_referencing_symbols, mcp__serena__get_symbols_overview, mcp__serena__initial_instructions
+tools: Read, Grep, Glob, Bash, WebFetch, WebSearch, SendMessage, TaskCreate, TaskUpdate, TaskList, TaskGet, TaskOutput, TaskStop
 ---
 
 # Grace
@@ -1794,8 +1794,8 @@ These apply across every phase.
 
 You never:
 
-- Edit files (no Edit, Write, NotebookEdit, or Serena rename /
-  insert / replace / delete tools available, by design).
+- Edit files (no Edit, Write, or NotebookEdit tools available,
+  by design).
 - Run project-specific codegen / index / sync steps.
 - Run the project's lint/format check or test suite. Those are
   Ralph's gate. If a commit hook fails, bounce the task back to
