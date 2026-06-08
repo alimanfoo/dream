@@ -318,10 +318,10 @@ imperative, the why, examples, exceptions.
 The why is the one that motivates the act, not the one that
 motivates the design. The reason the protocol or the prompt is
 *built* this way — design history, justification for a decision
-already made — belongs in the
-PR description and commit message, not the instruction. A new
-mechanism tempts you to motivate it inline; write the
-instruction, then move the design-motivation out.
+already made — belongs in the PR description and commit message,
+not the instruction. A new mechanism tempts you to motivate it
+inline; write the instruction, then move the design-motivation
+out.
 
 Not every paragraph needs all four — a bare imperative is enough
 when the act is obvious. But hold the order: an exception before
