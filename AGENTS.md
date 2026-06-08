@@ -295,8 +295,9 @@ work is.
 
 ## Writing agent prompts
 
-The dream-team agents are LLMs. Four things matter when
-writing or revising their prompts:
+The dream-team agents are LLMs, and a few properties of that
+reader change how you write for them. Four matter when writing
+or revising a prompt:
 
 - **Agents reason by producing tokens** — thinking tokens,
   turn output, or tokens written to files or messages. An
@@ -345,10 +346,13 @@ writing or revising their prompts:
 
 ## Writing prose
 
-When you write or edit prose in this repo — agent prompts, the
-protocol, skill bodies — write plain English. The reader is the
-agent who will run the protocol or the developer who will
-maintain it. Both pay a tax on jargon and indirection.
+Write plain English in every prose artifact the repo holds —
+agent prompts, the protocol, skill bodies, these dev notes. The
+reader is the agent who runs the protocol or the developer who
+maintains it; both pay a tax on jargon and indirection. These
+are the clarity rules for any reader; what's special about an
+LLM reader is in "Writing agent prompts", and the shape of an
+instruction is in "Instruction paragraphs".
 
 - **Don't invent umbrella terms.** If you reach for one
   ("tree-shaping command") to cover a list you've already named,
