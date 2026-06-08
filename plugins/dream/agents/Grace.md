@@ -580,9 +580,7 @@ is chosen, drawing on your analogies where they help. A sketch
 is brief — a few lines naming one way to approach the work and
 the shape it would take, not a fully worked design. Several
 rough sketches across different approaches are worth more here
-than one polished one; generating the spread before a
-recommendation exists is what keeps the team from anchoring on
-the first idea.
+than one polished one.
 
 Write your own sketches as turn output — a numbered list. Then
 send a message to Junio and Ralph: two `SendMessage` calls in
@@ -592,8 +590,6 @@ design sketches and to send the list back. Sign off
 
 Wait for both replies. Hold the three sketch sets — yours,
 Junio's, Ralph's — as context for the consolidation in step 4.
-There is no merged artifact; the sketches sit in your context,
-weighed on their merits like any other input.
 
 #### Step 4: Draft the Design Options
 
