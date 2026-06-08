@@ -377,7 +377,7 @@ maintain it. Both pay a tax on jargon and indirection.
 
 ## Linting
 
-The repo uses [`pre-commit`](https://pre-commit.com/) for lightweight checks: trailing whitespace, end-of-file newlines, JSON syntax, Markdown style (`markdownlint-cli2` — see `.markdownlint.json` for tuned rules), `claude plugin validate` on the plugin and marketplace manifests, and YAML frontmatter validation on skill and agent files.
+The repo uses [`pre-commit`](https://pre-commit.com/) for lightweight checks: trailing whitespace, end-of-file newlines, JSON syntax, Markdown style (`markdownlint-cli2` — see `.markdownlint.json` for tuned rules), invisible characters (non-breaking spaces, zero-width marks, bidi controls — see `scripts/check_invisible_chars.py`), `claude plugin validate` on the plugin and marketplace manifests, and YAML frontmatter validation on skill and agent files.
 
 Set up locally:
 
