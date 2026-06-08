@@ -196,13 +196,7 @@ further — is the agents' *default*, the perimeter fixation and
 literal-mindedness the dream exists to correct (see "What the
 design is answering"). The question is never "what is the
 smallest change?" but "what leaves the codebase most coherent?"
-— and the honest answer is usually the larger one. The protocol
-puts teeth on this: a Coherent Scope that would leave the root
-cause unresolved is too narrow; a surface patched again and
-again is single-sourced to one home, not patched once more; a
-rule many sites must each follow becomes a check that fails the
-next violation, not a one-site fix. Each is the larger, more
-durable move chosen over the local one.
+— and the honest answer is usually the larger one.
 
 **Sort every human touch: coherence or intent.** When the human
 steps in, name which it is — *The dream* draws the line. A
