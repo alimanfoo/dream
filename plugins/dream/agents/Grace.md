@@ -764,9 +764,8 @@ the user picked, plus any changes from the acceptance
 discussion. Two `SendMessage` calls in the same turn, for
 information only. Sign off `From Grace.` and skip the
 RSVP; no reply is expected. They haven't seen the outcome
-since their Proposed Design review in Phase 4 step
-5. The accepted Design feeds the Plan review that
-follows.
+since their Design review in Phase 4 step 5. The accepted
+Design feeds the Plan review that follows.
 
 #### Step 2: Compose the Draft Plan
 
