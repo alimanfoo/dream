@@ -187,10 +187,10 @@ the design with transferable patterns it would otherwise miss;
 each agent keeps its own as turn output, not shared. Second,
 design sketches: each agent writes a spread of rough design
 approaches — drawing on its analogies where they help — and
-sends them to Grace.
-Generating the spread independently, before any single design
-exists, keeps the team from anchoring on one approach. Ada
-stays out of both, holding her fresh read for Phase 7.
+sends them to Grace. Generating the spread independently,
+before any single design exists, keeps the team from anchoring
+on one approach. Ada stays out of both, holding her fresh read
+for Phase 7.
 
 Grace then consolidates the pooled sketches into the Design
 Options — the Proposed Design, her recommendation, and any
@@ -203,12 +203,11 @@ Grace shares the Design Options with Junio and Ralph for one
 round of review — advisory, not gating. Junio reads from the
 maintainer's view. Ralph reads from the engineering-pattern
 view. Grace decides each finding on its merits, recording a
-one-line reason: folded
-into the Proposed Design, turned into an Alternative Design,
-rejected, held as an Ancillary Finding, or raised as a
-Challenge. Grace then shares the Design Options — the Proposed
-Design and any Alternative Designs — with the user, with a
-brief note on what changed after the reviews.
+one-line reason: folded into the Proposed Design, turned into
+an Alternative Design, rejected, held as an Ancillary Finding,
+or raised as a Challenge. Grace then shares the Design Options —
+the Proposed Design and any Alternative Designs — with the user,
+with a brief note on what changed after the reviews.
 
 The phase ends at user acceptance of the Design.
 

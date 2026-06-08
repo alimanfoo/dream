@@ -156,13 +156,8 @@ findings to act on.
 Read the Design Options — the Proposed Design (Grace's
 recommendation) and any Alternative Designs — from the message
 body. Centre your lenses on the Proposed Design, but flag a
-stronger Alternative or a trade-off Grace has mis-stated. You
-already hold the Session Type, Requirements Analysis, accepted
-Code Analysis, and accepted Working Scope in context from
-earlier phases and the information-only handoff at the start of
-Phase 4.
-Open the cited code as needed; your review is reading-based
-here.
+stronger Alternative or a trade-off Grace has mis-stated. Open
+the cited code as needed; your review is reading-based here.
 
 Your lens is **software engineering patterns** — the same
 discipline you apply when implementing. Apply three lenses
