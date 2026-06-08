@@ -82,7 +82,7 @@ To launch Claude Code under tmux, first run tmux, then run Claude Code, e.g.:
 ```zsh
 tmux
 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --teammate-mode auto
-``` 
+```
 
 Then run `/dream:team` from the main session, you should see multiple agent panes appear.
 
