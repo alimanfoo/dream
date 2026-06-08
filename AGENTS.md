@@ -145,6 +145,14 @@ operational detail still needs to move to the agent file of whoever
 runs it. `Grace.md`'s Challenge and Autopilot sections are the
 templates.
 
+Renaming or renumbering a phase, step, or concept ripples past
+the file you edit. Step-number references in other phases, prose
+labels for the thing, and the protocol summary all need the same
+update — grep every agent file and the protocol for the old
+name. `Junio.md` and `Ralph.md` run parallel for shared
+mechanics, so the same instruction often lives in both; edit
+them in lockstep.
+
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test suite. When changing behavior, validate by reading the affected skill/agent prompts together and checking that lifecycle, role boundaries, and tool permissions remain consistent. Run the pre-commit hooks to check formatting; see the Linting section.
 
 ## Design principles
@@ -287,7 +295,7 @@ work is.
 
 ## Writing agent prompts
 
-The dream-team agents are LLMs. Three things matter when
+The dream-team agents are LLMs. Four things matter when
 writing or revising their prompts:
 
 - **Agents reason by producing tokens** — thinking tokens,
@@ -327,6 +335,13 @@ writing or revising their prompts:
   whether it already carries weight in the protocol. If it
   does, pick a different word — even a slightly less elegant
   one is safer than a collision.
+- **Agents have a soft per-turn output budget** — quality falls
+  off as a single turn's output grows. Two rich generative acts
+  crammed into one turn compete for that budget, and both come
+  out thinner. When a step needs an agent to produce more than
+  one substantial output — say a wide spread of analogies and
+  then a spread of design sketches — give each its own turn or
+  message rather than asking for both at once.
 
 ## Writing prose
 
@@ -361,6 +376,15 @@ maintain it. Both pay a tax on jargon and indirection.
   doesn't" — don't append the inverse. A negative stays when it
   adds something the positive didn't: a reason, a named failure
   mode, or an action.
+- **Keep the why that guides the act; move out the why that
+  only explains the design.** A reason the reader weighs while
+  acting — why a default is risky, what a check defends — earns
+  its place; the dream wants agents to understand that much.
+  Design history, justification for a decision already made, and
+  context the reader already holds do not — those belong in the
+  PR description and commit message. Writing a new mechanism
+  tempts you to motivate it inline; write it, then move the
+  motivation out.
 - **Generalise rules; don't pin them to the incident.** A rule
   that surfaces from one failure mode (verbs at the tail of a
   numbered step list) should be stated for the general case (git
