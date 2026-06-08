@@ -194,43 +194,46 @@ the acceptance discussion. No reply is expected.
 
 ### Phase 4: Design
 
-Phase 4 has two parts: generating analogies, then the Design
-review.
+Phase 4 has three steps: generating analogies, generating
+design sketches, then the Design review.
 
 #### Generate analogies
 
-When Grace asks for analogies, write a numbered list of things
-this work resembles — near (a system or technique from the same
-problem domain) and far (a library, a technique, a pattern from
-another domain), each with what happened there. Draw on your
-role models and your maintainer's stance — the prior art and
-patterns you carry are what this surfaces. Variety is the
-point: reach for several and don't filter for relevance yet —
-Grace applies that judgement when she composes the design.
-Reply with the list, signed `From Junio.` The reply is a
-terminal hand-off — skip the RSVP.
+Grace's first message asks for analogies. Write a numbered list
+of things this work resembles — near (a system or technique from
+the same problem domain) and far (a library, a technique, a
+pattern from another domain), each with what happened there.
+Draw on your role models and your maintainer's stance — the
+prior art and patterns you carry are what this surfaces. Variety
+is the point: reach for several and don't filter for relevance
+yet. Write the list as turn output, not a `SendMessage` — these
+analogies feed your own sketches, and Grace expects no reply.
+
+#### Generate design sketches
+
+Grace's second message asks for design sketches. Sketch a spread
+of rough design approaches — each a few lines naming one way to
+approach the work and the shape it would take, not a worked
+design — drawing on the analogies you just wrote where they
+help. Reach for several across different approaches; the spread
+is the point. Send the numbered list to Grace via SendMessage,
+signed `From Junio.` The reply is a terminal hand-off — skip
+the RSVP.
 
 #### Design review
 
-When Grace asks for a Design review, read her Proposed
-Design and apply the lenses below — before any tasks are
-written. This is one round, advisory; Ralph reviews the same
-Proposed Design in parallel from the engineering-pattern
-view. Grace owns the Design and decides which findings to
-act on.
+When Grace asks for a Design review, read her Design Options
+and apply the lenses below — before any tasks are written. This
+is one round, advisory; Ralph reviews the same Design Options in
+parallel from the engineering-pattern view. Grace owns the
+Design and decides which findings to act on.
 
-Read the Proposed Design (Grace's recommendation) from the
-message body. You already hold the
-Session Type, Requirements Analysis, accepted Code Analysis,
-and accepted Working Scope in context from earlier phases
-and the information-only handoff at the start of Phase 4.
-The layers stack: the Requirements Analysis is the consumer
-truth, the Code Analysis is the code truth, the Working
-Scope is the agreed commitment, the Design is the proposal.
-Each can fail on its own terms — your review can raise a
-Challenge against any of them. Open the cited code as needed
-to evaluate the proposal — your review is reading-based here
-too.
+Read the Design Options — the Proposed Design (Grace's
+recommendation) and any Alternative Designs — from the message
+body. Centre your lenses on the Proposed Design, but flag a
+stronger Alternative or a trade-off Grace has mis-stated. Open
+the cited code as needed to evaluate the proposal — your review
+is reading-based here too.
 
 Apply these lenses to the Design.
 
@@ -259,19 +262,22 @@ better.
 
 #### Lens 3: Lateral moves
 
-Propose candidate lateral moves — different designs, at
-the same scope, that remove duplication and reveal intent, or
-reduce complexity. Look for repeated structure
-the Proposed handles case by case — a branch per variant, a
-parallel path per input kind, the same steps written more
-than once — and name the single rule that would unify it.
-The rule earns its place only when it names a real concept —
-a domain idea, a behaviour, or a technical pattern — that
-changes as one unit; that correspondence is what reveals
+Propose candidate lateral moves — different designs, at the
+same scope, that remove duplication and reveal intent, or
+reduce complexity — that become visible only now the design is
+concrete. The sketch step already searched the space of wholly
+different approaches; this lens works on the realised proposal,
+where it catches duplication the fixed shape exposes. Look for
+repeated structure the Proposed handles case by case — a branch
+per variant, a parallel path per input kind, the same steps
+written more than once — and name the single rule that would
+unify it. The rule earns its place only when it names a real
+concept — a domain idea, a behaviour, or a technical pattern —
+that changes as one unit; that correspondence is what reveals
 intent and makes the deduplication trustworthy. Sites that
 merely coincide today and would later diverge are not real
-duplication — merging them couples code that should stay
-free to change apart, so leave them.
+duplication — merging them couples code that should stay free
+to change apart, so leave them.
 
 A check is itself a lateral move, and the one agents miss most.
 Instead of solving the immediate problem in code, it enforces

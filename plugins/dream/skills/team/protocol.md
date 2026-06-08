@@ -20,12 +20,12 @@ A session moves through ten phases:
    of review from Junio and Ralph, revises, and shares the
    revised Scope Options with the user for acceptance.
 
-4. **Design.** Grace opens with analogy generation — she,
-   Junio, and Ralph each write down what the work resembles —
-   then drafts the Proposed Design, gets one round of review
-   from Junio and Ralph, revises, and shares the revised Design
-   Options — the Proposed Design and any Alternative Designs —
-   with the user for acceptance.
+4. **Design.** Grace opens two divergence steps — she, Junio,
+   and Ralph each write analogies, then design sketches — then
+   consolidates the pooled sketches into the Proposed Design
+   and any Alternative Designs, gets one round of review from
+   Junio and Ralph, revises, and shares the Design Options with
+   the user for acceptance.
 
 5. **Plan.** Grace drafts the Plan, gets one round of review
    from Junio and Ralph, revises, and shares the revised Plan
@@ -179,38 +179,33 @@ The phase ends at user acceptance of the Working Scope.
 ## Phase 4: Design
 
 Phase opens with Grace sharing the accepted Working Scope
-with Junio and Ralph for information. Analogy generation
-follows: Grace, Junio, and Ralph each write a spread of
-analogies — what the work resembles, near and far — and Grace
-draws on them when composing the design. Generating analogies
-as an explicit step, across different stances and models, seeds
+with Junio and Ralph for information. Then two divergence
+steps run before any design is chosen. First, analogy
+generation: Grace, Junio, and Ralph each write a spread of
+analogies — what the work resembles, near and far. These seed
 the design with transferable patterns it would otherwise miss;
-Ada stays out, holding her fresh read for Phase 7. Grace then
-drafts the Proposed Design — her recommendation — and shares it
-with Junio and Ralph for one round of review — advisory, not
-gating. Junio reads from the maintainer's view and proposes
-candidate lateral moves: different designs, at the same
-scope, that remove duplication and reveal intent, or reduce
-complexity. He also runs a reinvention check, flagging where
-the Design rebuilds a library, technique, or in-tree helper
-that already exists. Ralph reads from the engineering-pattern
-view. Grace decides each finding on its merits, recording a
-one-line reason: folded into the revised Proposed Design,
-turned into an Alternative Design, rejected, held as an
-Ancillary Finding, or raised as a Challenge.
+each agent keeps its own as turn output, not shared. Second,
+design sketches: each agent writes a spread of rough design
+approaches — drawing on its analogies where they help — and
+sends them to Grace. Generating the spread independently,
+before any single design exists, keeps the team from anchoring
+on one approach. Ada stays out of both, holding her fresh read
+for Phase 7.
 
-A candidate lateral move that is strictly better folds into
-the Proposed Design. A candidate that buys its simplicity at a
-cost — a new dependency, more coupling, less flexibility —
-becomes an Alternative Design: a genuinely different design
-delivering the same Working Scope, with its trade-off named.
+Grace then consolidates the pooled sketches into the Design
+Options — the Proposed Design, her recommendation, and any
+credible Alternative Designs drawn from the spread, each still
+delivering the full Working Scope with its trade-off named.
 There may be several, one, or none — an empty set found
-honestly is a result, not a failure. A design that delivers
-less than the Working Scope is never an Alternative; that is a
-Challenge to the Working Scope. Grace then shares the revised
-Design Options — the Proposed Design and any Alternative
-Designs — with the user,
-with a brief note on what changed after the reviews.
+honestly is a result, not a failure.
+
+Grace shares the Design Options with Junio and Ralph for one
+round of review — advisory, not gating. Junio reads from the
+maintainer's view. Ralph reads from the engineering-pattern
+view. Grace decides each finding on its merits. Grace then
+shares the Design Options — the Proposed Design and any
+Alternative Designs — with the user, with a brief note on what
+changed after the reviews.
 
 The phase ends at user acceptance of the Design.
 
