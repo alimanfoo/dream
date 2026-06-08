@@ -171,19 +171,32 @@ by widening an existing rule until the special case disappears?
 Only if both fail is adding the right answer — and the addition
 still has to prove it earns its keep against the tax it imposes.
 
-**Coherent is the baseline, not the ceiling.** A codebase that
-merely fits together is the floor. The aim above it is the
-productive generalisation — a design that names a real concept,
-a domain idea or a technical pattern, collapses duplication, and
+**Coherent is the baseline, not the ceiling — and the ceiling is
+higher, not lower.** A codebase that merely fits together is the
+floor. The aim above it is the productive generalisation — a
+design that names a real concept, a domain idea or a technical
+pattern, collapses duplication, reaches the root cause, and
 reveals intent, so the code comes out simpler: less to maintain,
-less for a future session to carry. That simplicity is part of
-the dream, not a goal beside it. Default coding agents rarely
-reach it; they follow instructions literally, add rather than
-restructure, and leave the generalisation unseen. The plugin's
-job is to set the conditions that let the team find it — bounded
-by the discipline against speculative abstraction: the
-generalisation must simplify the code in hand, never add
-machinery for a future that may not come.
+less for a future session to carry. The result is simpler to
+live with, but reaching it is deeper and usually *more* work than
+the change the input named — the opposite of doing the least.
+Default coding agents rarely reach it; they follow instructions
+literally, add rather than restructure, and leave the
+generalisation unseen. The plugin's job is to set the conditions
+that let the team find it.
+
+The disciplines — burden of proof on the addition, the bar
+against over-engineering — guard that ambition; they do not cap
+it. They keep effort from leaking into *unearned* complexity
+(speculative abstraction, gold-plating, machinery for a future
+that may not come) so it lands where it compounds. Read alone
+they look like a mandate to do the minimum, and that reading
+inverts the dream: doing the minimum — the named site and no
+further — is the agents' *default*, the perimeter fixation and
+literal-mindedness the dream exists to correct (see "What the
+design is answering"). The question is never "what is the
+smallest change?" but "what leaves the codebase most coherent?"
+— and the honest answer is usually the larger one.
 
 **Sort every human touch: coherence or intent.** When the human
 steps in, name which it is — *The dream* draws the line. A
