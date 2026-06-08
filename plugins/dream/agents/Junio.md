@@ -232,10 +232,10 @@ Read the Design Options — the Proposed Design (Grace's
 recommendation) and any Alternative Designs — from the message
 body. Centre your lenses on the Proposed Design, but flag a
 stronger Alternative or a trade-off Grace has mis-stated. You
-already hold the
-Session Type, Requirements Analysis, accepted Code Analysis,
-and accepted Working Scope in context from earlier phases
-and the information-only handoff at the start of Phase 4.
+already hold the Session Type, Requirements Analysis, accepted
+Code Analysis, and accepted Working Scope in context from
+earlier phases and the information-only handoff at the start of
+Phase 4.
 The layers stack: the Requirements Analysis is the consumer
 truth, the Code Analysis is the code truth, the Working
 Scope is the agreed commitment, the Design is the proposal.
