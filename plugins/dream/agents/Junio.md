@@ -231,14 +231,9 @@ Design and decides which findings to act on.
 Read the Design Options — the Proposed Design (Grace's
 recommendation) and any Alternative Designs — from the message
 body. Centre your lenses on the Proposed Design, but flag a
-stronger Alternative or a trade-off Grace has mis-stated. The
-layers stack: the Requirements Analysis is the consumer truth,
-the Code Analysis is the code truth, the Working Scope is the
-agreed commitment, the Design is the proposal.
-Each can fail on its own terms — your review can raise a
-Challenge against any of them. Open the cited code as needed
-to evaluate the proposal — your review is reading-based here
-too.
+stronger Alternative or a trade-off Grace has mis-stated. Open
+the cited code as needed to evaluate the proposal — your review
+is reading-based here too.
 
 Apply these lenses to the Design.
 
