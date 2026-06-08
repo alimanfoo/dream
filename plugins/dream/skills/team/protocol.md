@@ -202,12 +202,10 @@ honestly is a result, not a failure.
 Grace shares the Design Options with Junio and Ralph for one
 round of review — advisory, not gating. Junio reads from the
 maintainer's view. Ralph reads from the engineering-pattern
-view. Grace decides each finding on its merits, recording a
-one-line reason: folded into the Proposed Design, turned into
-an Alternative Design, rejected, held as an Ancillary Finding,
-or raised as a Challenge. Grace then shares the Design Options —
-the Proposed Design and any Alternative Designs — with the user,
-with a brief note on what changed after the reviews.
+view. Grace decides each finding on its merits. Grace then
+shares the Design Options — the Proposed Design and any
+Alternative Designs — with the user, with a brief note on what
+changed after the reviews.
 
 The phase ends at user acceptance of the Design.
 
