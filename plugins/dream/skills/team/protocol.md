@@ -41,9 +41,9 @@ of today's memory, will wake into and must be able to trust.
 A session moves through ten phases:
 
 1. **Requirements.** Grace reads the cited material and the
-   code with a consumer lens, then shares the Requirements
-   Analysis — consumers, use cases, candidate use cases,
-   non-goals — with the user for acceptance.
+   code with a consumer lens, names the Session Type, then
+   shares the Requirements Analysis — in the shape the
+   Session Type selects — with the user for acceptance.
 
 2. **Code Analysis.** Grace reads the code with a structural
    lens — mechanism, layers, siblings, patterns — and shares
@@ -141,15 +141,22 @@ consumer lens (who uses these
 surfaces and what they do with them), then checks the issue
 tracker for recurrence on the named surfaces. Grace names the
 Session Type (bug fix, enhancement, or maintenance) and drafts
-the Requirements Analysis — consumers, use cases, candidate use
-cases, non-goals, with each consumer and use case marked stated
-or assumed, plus any open questions Grace can't call from the
-cited material. Candidate use cases are ones the read or
-analogous systems suggest but the input didn't name; excluded
-by default, the user opts in to any at the acceptance gate, and
-the rest become non-goals. The user answers the
-open questions; Grace folds the answers in and shares the
-completed artifact for acceptance. At the end of
+the Requirements Analysis in the shape the type selects. An
+enhancement names consumers, their use cases, and any
+constraints the work must hold. A bug fix names the expected
+behaviour with its source, the observed behaviour as a claim
+for Phase 2 to verify, and the consumers affected. Maintenance
+names the behaviour to preserve and the improvement goals,
+each stated as a checkable property of the code. Every shape
+marks each item stated or assumed, names non-goals, and
+carries any open questions Grace can't call from the cited
+material; a section that doesn't apply is omitted, not filled.
+Enhancement and maintenance shapes also carry candidates —
+use cases or improvement goals the read suggests but the input
+didn't name; excluded by default, the user opts in to any at
+the acceptance gate, and the rest become non-goals. The user
+answers the open questions; Grace folds the answers in and
+shares the completed artifact for acceptance. At the end of
 the phase Grace hands the accepted Requirements Analysis and
 the Session Type to Junio and Ralph for information; they hold
 them as context for the Scope, Design, and Plan reviews that

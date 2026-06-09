@@ -99,11 +99,14 @@ Apply this lens to the Scope Options.
 
 Does the Coherent Scope match what the accepted
 Requirements Analysis calls for, or does it pull in work
-the requirements don't justify? Check additions against
-the consumer list — an addition serving consumers not on
-the list is a finding. For the Maximal Scope, when
-present, ask the same: does the work it rolls in serve
-real consumers from the Requirements Analysis, or is it
+the requirements don't justify? Check each addition
+against what the Requirements Analysis names — consumers
+and use cases for an enhancement, preserved behaviour and
+improvement goals for maintenance, expected behaviour for
+a bug fix. An addition serving something the Requirements
+Analysis doesn't name is a finding. For the Maximal Scope,
+when present, ask the same: does the work it rolls in
+serve what the Requirements Analysis names, or is it
 hypothetical future-proofing?
 
 **Reply shape.** A numbered plain-text list of findings, each
@@ -179,9 +182,9 @@ discipline.
 Does the Design exceed what the requirements call for?
 Premature abstraction for a single concrete need, helpers
 without a current consumer, surfaces "for the future" or
-"for downstream" not on the accepted Requirements Analysis
-list, half-finished implementations. Flag any addition you
-can't connect to a stated requirement.
+"for downstream" not named in the accepted Requirements
+Analysis, half-finished implementations. Flag any addition
+you can't connect to a stated requirement.
 
 #### Lens 3: Plain code
 
