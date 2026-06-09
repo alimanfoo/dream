@@ -72,9 +72,10 @@ feature, an issue or issues to address, a piece of code to
 tidy up, constraints, rough shape. Phase 1's job is to gather
 the requirements behind it, to make any assumptions explicit
 so the user can correct them, and to elicit answers to
-anything Grace can't call from the cited material. It ends at an accepted Requirements Analysis: who
-the work serves, what they do with it, and who and what is
-explicitly excluded. Follow the steps below in sequence.
+anything Grace can't call from the cited material. It ends at
+an accepted Requirements Analysis — what the work must
+achieve, for whom, and what is explicitly excluded. Follow
+the steps below in sequence.
 
 #### Step 1: Read the cited material
 
@@ -90,9 +91,8 @@ Read the relevant code, callers, tests, and docs for the
 named surfaces with one question in mind: *who uses these
 surfaces and what do they do with them?* This is the
 consumer lens — it makes the Requirements Analysis
-substantive, with consumers and use cases checked against
-the code rather than inferred from prose alone. Phase 2
-will read the same code with a structural lens.
+substantive, with who and what the work serves checked
+against the code rather than inferred from prose alone.
 
 #### Step 3: Check for recurrence
 
@@ -114,9 +114,8 @@ which are noise.
 #### Step 4: Name the Session Type
 
 Pin the Session Type before composing the Requirements
-Analysis — it shapes how much depth the Requirements
-Analysis carries and what later phases focus on. Three
-types:
+Analysis — it selects the shape of the Requirements
+Analysis and what later phases focus on. Three types:
 
 - **Bug fix.** Incorrect behaviour to repair.
 - **Enhancement.** New feature or capability that doesn't
@@ -132,29 +131,70 @@ they say so at the acceptance gate (see step 8).
 #### Step 5: Compose the Requirements Analysis
 
 Compose the Requirements Analysis — your explicit reading
-of who the work serves and what they do with it. Without
-this step, hidden inferences about consumers and use cases
-ride through to Design, where they shape machinery no real
-consumer needs.
+of what the work must achieve and for whom. Without this
+step, hidden inferences about who is served and what counts
+as done ride through to Design, where they shape machinery
+no real consumer needs.
 
-The Requirements Analysis contains:
+Choose the shape based on the Session Type.
 
-- **Consumers** — who uses what's being changed. Name each
-  concretely ("an agent invoking this in scripts", not
-  "users"). Mark each as **stated** (named in the cited
-  material) or **assumed** (your inference).
-- **Use cases** — what each consumer does with it. Same
-  stated/assumed marking.
-- **Candidate use cases** — use cases the read suggests but
-  the input never named. To notice them, draw on similar or
-  analogous situations you know of. A candidate qualifies only
-  when you can point to what in the read suggests it. Each names
-  the consumer it would serve and cites that evidence. The user
-  opts in to any they want at the gate. The ones the user picks
-  become use cases; the rest become non-goals.
-- **Non-goals** — consumers and use cases explicitly off
-  the list. Naming who isn't served and what isn't
-  supported closes off speculative surfaces before they
+For an **enhancement**:
+
+- **Consumers** — who uses what's being built: a person, an
+  agent, or an external system that interacts with the
+  changed surface. Name each concretely ("an agent invoking
+  this in scripts", not "users"). Code inside the repo is
+  never a consumer — caller relationships are Phase 2
+  content.
+- **Use cases** — what each consumer does with it and what
+  they get, written as that action-outcome pair. "Passes a
+  region string and gets back the bounding coordinates" is
+  a use case; "uses the API" is not. A use case you can't
+  write as a pair isn't concrete enough to build from.
+- **Constraints** — qualities the work must hold, when the
+  input or the read names any: performance, compatibility,
+  API stability, security.
+
+For a **bug fix**:
+
+- **Expected behaviour** — what should happen, citing where
+  the expectation comes from: a docstring, a signature,
+  prior behaviour, or only the report itself. The source
+  matters because Phase 2 tests the claim — an expectation
+  backed only by the report is the first thing to check.
+- **Observed behaviour** — what the report says happens,
+  recorded as a claim for Phase 2 to verify.
+- **Affected consumers** — who hits the defect and what it
+  costs them. One or two sentences.
+
+For **maintenance**:
+
+- **Preserved behaviour** — the contract that must not
+  change, and the consumers who rely on it.
+- **Improvement goals** — what "better" means here, each
+  stated as a checkable property of the code: "the
+  valid-cases enumeration has one home", "no caller
+  mentions the old name". A goal you can't state checkably
+  is an open question, not a goal.
+
+Every shape also carries:
+
+- **Candidates** — items of the shape's own kind that the
+  read suggests but the input never named: candidate use
+  cases for an enhancement, candidate improvement goals for
+  maintenance. To notice them, draw on similar or analogous
+  situations you know of. A candidate qualifies only when
+  you can point to what in the read suggests it; each cites
+  that evidence, and a candidate use case also names the
+  consumer it would serve. The user opts in to any they
+  want at the gate; the ones the user picks are promoted,
+  and the rest become non-goals. A bug fix carries no
+  candidates — a related defect the read suggests is an
+  Ancillary Finding, not a requirement.
+- **Non-goals** — what the work explicitly does not serve
+  or support: consumers and use cases off the list,
+  adjacent tidying declined, behaviour left as it is.
+  Naming them closes off speculative surfaces before they
   shape Design or Plan.
 - **Open questions** — calls you can't make from the cited
   material, where the call matters for what comes next.
@@ -164,14 +204,13 @@ The Requirements Analysis contains:
   write one without guessing, mark it assumed instead. If you
   can't, it's a genuine open question.
 
-Scale depth to the Session Type from step 4. For a bug
-fix, consumers are usually unchanged from current
-behaviour — one or two sentences is enough. For
-maintenance, the consumer is typically the codebase itself
-(callers, future maintainers); again one or two sentences.
-For an enhancement, the consumer list is the work — give
-it real detail, name each concretely, and mark stated vs.
-assumed per item.
+Mark every item in every shape as **stated** (named in the
+cited material) or **assumed** (your inference).
+
+Keep bug-fix and maintenance shapes short — one or two
+sentences per section is usually enough. For an
+enhancement, the consumer and use-case sections are the
+work — give them real detail.
 
 Test the new intent the session input carries against the
 existing intent. The consumer-lens read shows what the
@@ -210,8 +249,8 @@ isn't complete yet.
 #### Step 7: Share the Requirements Analysis
 
 Send the completed Requirements Analysis to the user. When
-there are candidate use cases, ask the user to name any they
-want included — by number — and note that the rest become
+there are candidates, ask the user to name any they want
+included — by number — and note that the rest become
 non-goals.
 
 End the message by explicitly asking the user to accept:
@@ -222,8 +261,9 @@ Code Analysis."*
 
 Wait for the user's reply — or, under autopilot, take this
 gate's default and continue without waiting (see "Autopilot").
-Any candidate the user opted into
-becomes a use case; record the rest as non-goals. If accepted,
+Promote any candidate the user opted into — a candidate use
+case becomes a use case, a candidate improvement goal an
+improvement goal — and record the rest as non-goals. If accepted,
 continue to step 9. If the user pushes back, revise and return
 to step 7; repeat until accepted. If the pushback challenges
 the Session Type itself, return to step 4 and recompose from
@@ -622,8 +662,8 @@ Session Type:
   migration path looks like.
 
 Check the Proposed Design against common overcomplication
-defaults: consumers not on the accepted Requirements
-Analysis list, surfaces held "for the future" or "for
+defaults: consumers the accepted Requirements Analysis
+doesn't name, surfaces held "for the future" or "for
 downstream" with no current consumer, failure modes from
 over-flexible interfaces, and abstraction held "for symmetry"
 with only one real branch. Remove any code the change leaves
@@ -1586,8 +1626,9 @@ example:
 
 - The code turns out shaped differently from the Code
   Analysis.
-- A consumer or use case the Requirements Analysis named
-  behaves differently than recorded.
+- An item the Requirements Analysis named — a consumer, a
+  use case, behaviour to preserve — behaves differently
+  than recorded.
 - The Design's approach doesn't hold once implementation
   starts, or a planned task proves impossible as written.
 - Repeated coherence audits circle the same surface — the
@@ -1645,8 +1686,8 @@ message names:
 
 - **Phase 1: Requirements Analysis.** Accept the completed
   artifact. Open questions still resolve first via Step 6 —
-  see *Pauses* below. Candidate use cases stay excluded; with
-  no user to opt in, each becomes a non-goal.
+  see *Pauses* below. Candidates stay excluded; with no
+  user to opt in, each becomes a non-goal.
 - **Phase 2: Code Analysis.** Accept. The gate passes
   without intervention.
 - **Phase 3: Working Scope.** Take the Coherent Scope. Don't
