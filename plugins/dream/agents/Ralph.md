@@ -99,15 +99,12 @@ Apply this lens to the Scope Options.
 
 Does the Coherent Scope match what the accepted
 Requirements Analysis calls for, or does it pull in work
-the requirements don't justify? Check each addition
-against what the Requirements Analysis names — consumers
-and use cases for an enhancement, preserved behaviour and
-improvement goals for maintenance, expected behaviour for
-a bug fix. An addition serving something the Requirements
-Analysis doesn't name is a finding. For the Maximal Scope,
-when present, ask the same: does the work it rolls in
-serve what the Requirements Analysis names, or is it
-hypothetical future-proofing?
+the requirements don't justify? An addition serving
+something the Requirements Analysis doesn't name is a
+finding. For the Maximal Scope, when present, ask the
+same: does the work it rolls in serve what the
+Requirements Analysis names, or is it hypothetical
+future-proofing?
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or
