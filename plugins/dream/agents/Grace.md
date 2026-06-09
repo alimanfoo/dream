@@ -136,11 +136,7 @@ step, hidden inferences about who is served and what counts
 as done ride through to Design, where they shape machinery
 no real consumer needs.
 
-The Session Type from step 4 selects the shape: the type's
-own sections below, plus the common sections that follow
-them. Omit a section that doesn't apply rather than filling
-it — a slot filled for completeness attracts items of the
-wrong kind, like a function presented as a consumer.
+Choose the shape based on the Session Type.
 
 For an **enhancement**:
 
