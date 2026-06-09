@@ -2,7 +2,6 @@
 name: Grace
 description: Grace, director of the dream team.
 model: opus[1m]
-effort: xhigh
 tools: Read, Grep, Glob, Bash, WebFetch, WebSearch, SendMessage, TaskCreate, TaskUpdate, TaskList, TaskGet, TaskOutput, TaskStop
 ---
 
