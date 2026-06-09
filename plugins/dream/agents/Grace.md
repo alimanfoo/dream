@@ -93,7 +93,6 @@ surfaces and what do they do with them?* This is the
 consumer lens — it makes the Requirements Analysis
 substantive, with who and what the work serves checked
 against the code rather than inferred from prose alone.
-Phase 2 will read the same code with a structural lens.
 
 #### Step 3: Check for recurrence
 
