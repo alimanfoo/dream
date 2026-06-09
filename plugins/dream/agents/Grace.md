@@ -74,9 +74,8 @@ the requirements behind it, to make any assumptions explicit
 so the user can correct them, and to elicit answers to
 anything Grace can't call from the cited material. It ends at
 an accepted Requirements Analysis — what the work must
-achieve, for whom, and what is explicitly excluded — in the
-shape the Session Type selects (see step 5). Follow the steps
-below in sequence.
+achieve, for whom, and what is explicitly excluded. Follow
+the steps below in sequence.
 
 #### Step 1: Read the cited material
 
@@ -117,8 +116,7 @@ which are noise.
 
 Pin the Session Type before composing the Requirements
 Analysis — it selects the shape of the Requirements
-Analysis (see step 5) and what later phases focus on.
-Three types:
+Analysis and what later phases focus on. Three types:
 
 - **Bug fix.** Incorrect behaviour to repair.
 - **Enhancement.** New feature or capability that doesn't
