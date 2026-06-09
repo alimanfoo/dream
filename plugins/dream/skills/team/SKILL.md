@@ -66,6 +66,14 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
    Roles: Grace is *director*, Ralph is *developer*, Junio is
    *maintainer*, Ada is *reviewer*.
 
+   **Model overrides.** If the user's invocation names a model for
+   an agent — for example "/dream:team with Ralph on opus" — pass
+   that model in the agent's `Agent` call, overriding the
+   definition's default. Agents the invocation doesn't name keep
+   their own model. Effort can't be set per agent this way: the
+   team inherits the main session's effort, so if the user wants a
+   different level, tell them to set `/effort` before invoking.
+
    The role-file read in step 2 is essential. Claude Code's
    team-spawn loader currently does not append the
    agent-definition body to a teammate's system prompt
