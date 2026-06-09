@@ -46,6 +46,10 @@ alias claude-teams="CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --teammate-mod
 
 This then allows you to run `claude-teams` from the terminal.
 
+### Effort level
+
+The team inherits your main session's effort level when it starts. To run the agents at a higher or lower effort, set it with `/effort` before you invoke `/dream:team`. This applies to all four agents together — per-agent effort isn't currently supported.
+
 ### Concurrent sessions
 
 The team works on one branch in one working tree. To run two
