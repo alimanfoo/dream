@@ -170,10 +170,7 @@ For a **bug fix**:
 For **maintenance**:
 
 - **Preserved behaviour** — the contract that must not
-  change, and for whom. Consumers appear here as who must
-  not notice the work, not as actors with use cases — a
-  maintenance session changes no behaviour, so there is no
-  use case to write.
+  change, and the consumers who rely on it.
 - **Improvement goals** — what "better" means here, each
   stated as a checkable property of the code: "the
   valid-cases enumeration has one home", "no caller
