@@ -150,6 +150,7 @@ each stated as a checkable property of the code. Every shape
 marks each item stated or assumed, names non-goals, and
 carries any open questions Grace can't call from the cited
 material.
+
 Enhancement and maintenance shapes also carry candidates —
 use cases or improvement goals the read suggests but the input
 didn't name; excluded by default, the user opts in to any at
