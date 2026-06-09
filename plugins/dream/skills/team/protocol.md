@@ -42,8 +42,7 @@ A session moves through ten phases:
 
 1. **Requirements.** Grace reads the cited material and the
    code with a consumer lens, names the Session Type, then
-   shares the Requirements Analysis — in the shape the
-   Session Type selects — with the user for acceptance.
+   shares the Requirements Analysis with the user for acceptance.
 
 2. **Code Analysis.** Grace reads the code with a structural
    lens — mechanism, layers, siblings, patterns — and shares
