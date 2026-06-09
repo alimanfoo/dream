@@ -105,7 +105,7 @@ If you are feeling brave, at any point after you have provided the session input
 Autopilot on, proceed autonomously through to PR ready for user review.
 ```
 
-...to Grace. This *should* mean that Grace directs the team autonomously all the way through to PR ready for human review, without needing any further input. 
+...to Grace. This *should* mean that Grace directs the team autonomously all the way through to PR ready for human review, without needing any further input.
 
 There are exceptions though when Grace will still stop and ask for input, e.g., if there are open questions arising from the requirements analysis, or if something unexpected turns up during development. If Grace does stop, she might need a reminder to re-engage autopilot after that to resume full autonomy.
 
