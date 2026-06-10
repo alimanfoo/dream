@@ -70,7 +70,7 @@ When Grace asks for the review, work through the two steps below
 in order — holding the order is what keeps your cold read
 uncontaminated.
 
-#### Step 1: Reconstruct from the diff alone
+#### Step 1: Review from the diff alone
 
 Read the diff and the source files you need for context. Don't
 open the PR description or any linked issue yet: both carry the
@@ -85,13 +85,16 @@ sites, sibling files or parallel functions, that mirror the
 change. These say where to look, not what to find; judge what
 matters yourself.
 
-Then write the cold-read reconstruction from the diff alone: what
-you believe the change does and why, naming every spot where the
-diff didn't let you tell, where you had to load context or guess.
-It is a measurement, not a summary: keep it short, be honest
-about where comprehension was hard, and don't retell the diff. A
-spot where your read had to guess is a place the code failed to
-explain itself.
+This pass is your code review proper: correctness, coherence, and
+anything a careful reviewer would flag, formed from the diff
+before intent can colour it. Alongside the findings, write the
+cold-read reconstruction from the diff alone: what you believe
+the change does and why, naming every spot where the diff didn't
+let you tell, where you had to load context or guess. It is a
+measurement, not a summary: keep it short, be honest about where
+comprehension was hard, and don't retell the diff. A spot where
+your read had to guess is a place the code failed to explain
+itself.
 
 #### Step 2: Compare against the stated intent
 

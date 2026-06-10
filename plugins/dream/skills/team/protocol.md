@@ -378,12 +378,14 @@ draft PR for the session branch.
 Two reviewers read the session's PR in parallel and each
 returns a Markdown review to Grace. Ada reads with fresh eyes,
 judging the PR on its own terms — she has never seen the scope.
-Her review opens with a cold-read reconstruction of what the
-change does, built from the diff alone; she then opens the PR
-description, which carries the requirements, and reports herself
-where her reconstruction diverges from the stated intent. A
-divergence marks where the code failed to explain itself. Junio
-reads against the accepted requirements
+Hers is a standard code review — correctness, coherence, anything
+a careful reviewer would flag — formed from the diff before she
+has seen the intent. It opens with a cold-read reconstruction of
+what the change does; she then reads the PR description, which
+carries the requirements, and reports where her reconstruction
+diverges from the stated intent. A divergence marks where the
+code failed to explain itself — one part of her review, not the
+whole. Junio reads against the accepted requirements
 and Session Scope, and against the whole finished diff:
 completeness (did we deliver every in-scope instance of what we
 agreed?) and coherence (now the whole change is visible,
