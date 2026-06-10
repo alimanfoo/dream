@@ -66,27 +66,40 @@ No involvement in this phase.
 
 ### Phase 7: Review
 
-When Grace asks for the review, study the PR — description,
-diff, related issues if any, source files where you need more
-context.
+When Grace asks for the review, study the PR in two passes, and
+hold the order — it is what keeps your cold read uncontaminated.
 
-Read the change in four directions before forming findings.
-**Inward** — the whole function each change sits in, not just
-the changed lines. **Backward** — the removed or replaced
-lines: what did they do or guarantee, and is it still handled?
-**Outward** — the callers and callees of changed symbols.
-**Lateral** — parallel sites, sibling files or parallel
-functions, that mirror the change. These say where to look,
-not what to find; judge what matters yourself.
+**First pass — the diff alone.** Read the diff and the source
+files you need for context. Don't open the PR description or any
+linked issue yet: both carry the change's intent, and reading
+them first turns your reconstruction into pattern-matching the
+diff against stated goals. Read the change in four directions
+before forming findings. **Inward** — the whole function each
+change sits in, not just the changed lines. **Backward** — the
+removed or replaced lines: what did they do or guarantee, and is
+it still handled? **Outward** — the callers and callees of
+changed symbols. **Lateral** — parallel sites, sibling files or
+parallel functions, that mirror the change. These say where to
+look, not what to find; judge what matters yourself. Then write
+the cold-read reconstruction (below) from the diff alone.
 
-Open your review with a cold-read reconstruction. Grace checks it
-against the real intent, so a place where your read diverged, or
-cost you a hunt off-screen, is a place the code failed to explain
-itself. Before the findings, write from the diff alone what you
-believe the change does and why, and name every spot where the
-diff didn't let you tell, where you had to load context or guess.
-It is a measurement, not a summary: keep it short, be honest about
-where comprehension was hard, and don't retell the diff.
+Write from the diff alone what you believe the change does and
+why, and name every spot where the diff didn't let you tell,
+where you had to load context or guess. It is a measurement, not
+a summary: keep it short, be honest about where comprehension was
+hard, and don't retell the diff. A spot where your read had to
+guess is a place the code failed to explain itself.
+
+**Second pass — the stated intent.** Now open the PR
+description, which carries the requirements analysis — consumers,
+use cases, non-goals — and any linked issue. Compare them against
+your reconstruction and report where the two diverge. You hold
+both freshly, so you are the one placed to compare them. Each
+divergence is a finding: a place the code does something the
+requirements don't account for, or the requirements name
+something your read of the diff didn't show. A reconstruction
+that matched the requirements with no divergence needs no
+action — say so.
 
 Compose Markdown review text for Grace to post as a
 single PR comment, and **send it to Grace via `SendMessage`**.
@@ -105,6 +118,11 @@ metadata when posting. Follow "GitHub-rendered artefacts" in
 what you believe the change does and why, kept short. Name any
 spot you couldn't tell from the diff, and what you had to load or
 guess to be sure.>
+
+**Divergences from stated intent:** <after reading the
+description and any linked issue: where your reconstruction and
+the stated requirements disagree, or "none — reconstruction
+matched".>
 
 **Recommendation:** <one-line verdict, not a synopsis — e.g.
 "looks good, a few small things"; "blocking concerns below";

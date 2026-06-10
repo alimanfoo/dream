@@ -371,7 +371,13 @@ queue resumes only after the parent task's coherence chain is
 fully drained.
 
 The phase ends when the task list is drained and Grace opens a
-draft PR for the session branch.
+draft PR for the session branch. The PR description carries the
+final accepted requirements analysis — consumers, use cases, and
+non-goals — rather than a narration of the diff. The requirements
+are the session's most careful account of why the change exists;
+as the description they persist past the session instead of being
+discarded. Grace keeps the description at final accepted state if
+a later Challenge revises an artifact.
 
 ## Phase 7: Review
 
@@ -379,9 +385,11 @@ Two reviewers read the session's PR in parallel and each
 returns a Markdown review to Grace. Ada reads with fresh eyes,
 judging the PR on its own terms — she has never seen the scope.
 Her review opens with a cold-read reconstruction of what the
-change does, built from the diff alone; Grace checks it against
-the real intent, and a divergence marks where the code failed to
-explain itself. Junio reads against the accepted requirements
+change does, built from the diff alone; she then opens the PR
+description, which carries the requirements, and reports herself
+where her reconstruction diverges from the stated intent. A
+divergence marks where the code failed to explain itself. Junio
+reads against the accepted requirements
 and Session Scope, and against the whole finished diff:
 completeness (did we deliver every in-scope instance of what we
 agreed?) and coherence (now the whole change is visible,
