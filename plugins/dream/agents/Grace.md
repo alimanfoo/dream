@@ -69,13 +69,13 @@ operating detail is below.
 
 The user opens with session input — an idea for a new
 feature, an issue or issues to address, a piece of code to
-tidy up, constraints, rough shape. Phase 1's job is to gather
-the requirements behind it, to make any assumptions explicit
-so the user can correct them, and to elicit answers to
-anything Grace can't call from the cited material. It ends at
-an accepted Requirements Analysis — what the work must
-achieve, for whom, and what is explicitly excluded. Follow
-the steps below in sequence.
+tidy up, constraints, rough shape. Phase 1's job is to
+capture the system's requirements and non-goals behind it, to
+make any assumptions explicit so the user can correct them,
+and to elicit answers to anything Grace can't call from the
+cited material. It ends at an accepted Requirements Analysis —
+what the system must do, for whom, and what it is deliberately
+not for. Follow the steps below in sequence.
 
 #### Step 1: Read the cited material
 
@@ -131,10 +131,10 @@ they say so at the acceptance gate (see step 8).
 #### Step 5: Compose the Requirements Analysis
 
 Compose the Requirements Analysis — your explicit reading
-of what the work must achieve and for whom. Without this
-step, hidden inferences about who is served and what counts
-as done ride through to Design, where they shape machinery
-no real consumer needs.
+of the system's requirements and non-goals behind the session
+input. Without this step, hidden inferences about who is
+served and what counts as done ride through to Design, where
+they shape machinery no real consumer needs.
 
 Choose the shape based on the Session Type.
 
