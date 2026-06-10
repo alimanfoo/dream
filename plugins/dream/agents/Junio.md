@@ -186,7 +186,7 @@ Don't include "out of scope but noticed" findings at Scope
 time. Tangential observations wait for per-task coherence audits or
 the post-merge sweep.
 
-Read the accepted Working Scope when Grace sends it at the
+Read the accepted Session Scope when Grace sends it at the
 start of Phase 4, flagged for information only. Hold it as
 context for the Design review that follows — it shows
 which option the user picked and any further changes from
@@ -343,7 +343,7 @@ improves the Proposed on every axis at no real cost, or
 dependency, more coupling, less flexibility). Say nothing
 about a move that would only add machinery, future-proof for
 hypothetical cases, or abstract a single case. A move that
-delivers less than the Working Scope is not a lateral
+delivers less than the Session Scope is not a lateral
 move — if it has merit, raise it as a Challenge rather than a
 candidate.
 
@@ -375,7 +375,7 @@ Tag each the way you tag a lateral move — **strictly better**
 when the swap wins on every axis at no real cost, or **trades
 away X** when it costs a dependency, some control, or
 flexibility. Adopting an existing thing doesn't change the
-Working Scope just because its surface is wider or narrower than
+Session Scope just because its surface is wider or narrower than
 the design needs. You take as much or as little as you need.
 
 Raise it on plausibility, not certainty. Grace decides each
@@ -407,7 +407,7 @@ Route each finding by where it sits:
   out clean before the change lands.
 - *In the structure the Design sits on.* A pre-existing tangle
   the work exposes or builds on can be the real root cause. If
-  the Working Scope can't reach a clean result without
+  the Session Scope can't reach a clean result without
   addressing it, raise a **Challenge** that the scope is too
   narrow. If it's genuinely separate, hold it as an Ancillary
   Finding for post-merge triage. Don't fold a pre-existing
@@ -479,7 +479,7 @@ findings to act on.
 
 Read the Draft Plan — the task list that delivers the
 Design. The prior layers (Session Type, Requirements
-Analysis, Code Analysis, Working Scope, accepted Design)
+Analysis, Code Analysis, Session Scope, accepted Design)
 are already in your context from prior phases and the
 accepted Design handoff at the start of Phase 5.
 
@@ -706,10 +706,10 @@ coherence audits, so each new one has the prior ones in context.
 Read circling coherence audits through "One fact, one home" (see
 `protocol.md`): each fix patches one case of a fact that has no
 single home, so the next case keeps surfacing and the chain
-never converges. The Challenge is that the Working Scope should
+never converges. The Challenge is that the Session Scope should
 single-source the fact, not patch another case. When the
 circling surface is one rule many sites must each follow, with
-no single home, the Challenge is that the Working Scope should
+no single home, the Challenge is that the Session Scope should
 add a check that enforces the rule, not patch the next site to
 break it (see "One rule, one check").
 
@@ -796,7 +796,7 @@ and apply the two lenses below. You review in parallel with
 Ada, and Grace handles both reviews the same way. Your vantages
 differ and shouldn't blur: Ada comes to the diff fresh, never
 having seen the scope, and judges it on its own terms; you hold
-the accepted requirements, Working Scope, and the whole
+the accepted requirements, Session Scope, and the whole
 session, so you read the finished change against what the team
 agreed.
 
@@ -811,7 +811,7 @@ past them.
 
 Check the finished diff delivers every in-scope instance of
 what the team agreed. Read it against the accepted Requirements
-Analysis and Working Scope you hold: is any requirement unmet,
+Analysis and Session Scope you hold: is any requirement unmet,
 any criterion applied in some places but not all? A criterion
 the work followed — "remove every stale reference across these
 files", "rename X to Y wherever it appears" — is the test; find
@@ -845,7 +845,7 @@ RSVP.
 You don't raise a Challenge yourself here. Grace decides at
 triage whether a finding is a follow-on or a Challenge, the
 same as she does for Ada's findings. A completeness miss that
-looks like the Working Scope was drawn too narrow is still just
+looks like the Session Scope was drawn too narrow is still just
 a finding — state the missed sites concretely and leave the
 escalation to her.
 

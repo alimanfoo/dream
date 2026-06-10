@@ -434,7 +434,7 @@ The phase ends at user acceptance of the Code Analysis.
 
 ### Phase 3: Scope
 
-The goal of this phase is the accepted Working Scope — what
+The goal of this phase is the accepted Session Scope — what
 the team commits to doing in the current session. You draft
 the Scope Options, get one round of review from Junio and
 Ralph, revise, and share with the user for acceptance.
@@ -552,10 +552,10 @@ or Maximal to override. When only the Coherent Scope applies,
 the message carries that alone and asks the user to accept.
 
 End the message by explicitly asking the user to accept, naming
-the artifact and the next phase: *"Accept the Working Scope
+the artifact and the next phase: *"Accept the Session Scope
 to proceed to Phase 4: Design."*
 
-#### Step 5: Seek user acceptance of the Working Scope
+#### Step 5: Seek user acceptance of the Session Scope
 
 Wait for the user's reply — or, under autopilot, take this
 gate's default and continue without waiting (see "Autopilot").
@@ -566,26 +566,26 @@ and return to step 4; repeat until accepted.
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
 
-Even after acceptance, the Working Scope is not set in
+Even after acceptance, the Session Scope is not set in
 stone. It can be revised at any point through a Challenge
 (see below).
 
-The phase ends at user acceptance of the Working Scope.
+The phase ends at user acceptance of the Session Scope.
 
 ### Phase 4: Design
 
 The goal of this phase is the accepted Design — what the team
 proposes to build.
 
-#### Step 1: Share the accepted Working Scope with Junio and Ralph for information
+#### Step 1: Share the accepted Session Scope with Junio and Ralph for information
 
-Send Junio and Ralph the accepted Working Scope — the
+Send Junio and Ralph the accepted Session Scope — the
 option the user picked, plus any changes from the
 acceptance discussion. Two `SendMessage` calls in the same
 turn, for information only. Sign off `From Grace.` and
 skip the RSVP; no reply is expected. They haven't seen
 the outcome since their Draft Scope Options review in
-Phase 3 step 2. The accepted Working Scope feeds the
+Phase 3 step 2. The accepted Session Scope feeds the
 analogies and sketches you generate and the Design review
 that follows.
 
@@ -689,11 +689,11 @@ meaning more reliably.
 
 **The Alternative Designs.** Keep each strong sketch you did
 not pick — yours or a teammate's — as an Alternative Design when
-it still delivers the full Working Scope but buys its difference
+it still delivers the full Session Scope but buys its difference
 at a cost: name the trade-off — a new dependency, more coupling,
 less flexibility. Reaching for an existing library in place of
 custom code is a common one; surface it when a sketch points at
-one. A sketch that delivers less than the Working Scope is not
+one. A sketch that delivers less than the Session Scope is not
 an Alternative; it is a scope change — raise it as a Challenge
 if it has merit.
 
@@ -733,7 +733,7 @@ paths:
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
 - **Raise a Challenge** — the finding shows an accepted
-  artifact no longer holds: the Working Scope is the wrong
+  artifact no longer holds: the Session Scope is the wrong
   shape, or an earlier artifact got something wrong. Take it
   to the user, who accepts (revise) or rejects (with
   direction).
@@ -743,7 +743,7 @@ tagged. A candidate tagged strictly-better folds into the
 Proposed Design — it improves the recommendation at no real
 cost. A candidate tagged with a trade-off joins the Alternative
 Designs from step 4, with its trade-off named. A candidate
-that would deliver less than the Working Scope is not a
+that would deliver less than the Session Scope is not a
 lateral move; raise it as a Challenge if it has merits worth
 considering.
 
@@ -791,7 +791,7 @@ The phase ends at user acceptance of the Design.
 ### Phase 5: Plan
 
 The goal of this phase is the accepted Plan — the task list
-that delivers the Design within the Working Scope. You
+that delivers the Design within the Session Scope. You
 share the accepted Design with Junio and Ralph for
 information, compose a Draft Plan, get one round of review
 from Junio and Ralph, revise, and share the revised Plan
@@ -845,7 +845,7 @@ the kind.
 Send the Draft Plan to both Junio and Ralph in parallel —
 two `SendMessage` calls in the same turn. They already hold
 the Session Type, Requirements Analysis, Code Analysis,
-Working Scope, and Design in context from earlier phases
+Session Scope, and Design in context from earlier phases
 and step 1, so the message body is the Draft Plan. Sign off
 `From Grace. RSVP via SendMessage.`
 
@@ -945,7 +945,7 @@ Before the per-task loop runs, three setup steps.
 ##### Step 1: Set the session branch
 
 If the session started on `main`, create the branch now and
-switch to it. The name reflects the accepted Working Scope —
+switch to it. The name reflects the accepted Session Scope —
 `GH123` for an issue, `add-foo` for an unscoped task.
 
 If the session started on a non-`main` branch, the boot guard
@@ -1029,7 +1029,7 @@ teammates (agents)" below: `From Grace. RSVP via
 SendMessage.` Wait for their numbered list (or "no
 substantive findings"). The coherence audit may also raise a
 **Challenge** — for instance when repeated coherence audits
-circle the same surface, suggesting the Working Scope is too
+circle the same surface, suggesting the Session Scope is too
 narrow to reach the root cause (see step 6).
 
 ##### Step 6: Triage findings
@@ -1162,7 +1162,7 @@ Plugin version from `../../.claude-plugin/plugin.json`
 relative to the protocol file. Gate counts are revision
 rounds per acceptance gate: `req` is Requirements Analysis
 (closing Phase 1), `ca` is Code Analysis (closing Phase 2),
-`scope` is Working Scope (closing Phase 3), `design` is
+`scope` is Session Scope (closing Phase 3), `design` is
 Phase 4, `plan` is Phase 5. A revision round is one
 iteration where the user pushed back before accepting.
 Challenge value: `no`, or `at-<phase>` for the phase where an
@@ -1176,7 +1176,7 @@ the session input, or `from-scope` when set mid-session).
 
 When the PR is open, follow the steps below. Ada and Junio
 review in parallel — Ada with fresh eyes, Junio against the
-accepted requirements, Working Scope, and the whole diff — and
+accepted requirements, Session Scope, and the whole diff — and
 you handle both reviews the same way.
 
 #### Step 1: Send the review requests
@@ -1231,7 +1231,7 @@ Raise a Challenge (when the finding shows an accepted artifact
 no longer holds rather than a fixable defect — take it to the
 user per the "Challenge" shape below, instead of patching it as
 a follow-on). A cluster of Junio's completeness misses can be
-the evidence for a Challenge that the Working Scope was too
+the evidence for a Challenge that the Session Scope was too
 narrow, not just a list of follow-ons.
 
 Keep one response note per finding as you triage. Accepted
@@ -1593,7 +1593,7 @@ follow-on) for the corresponding code change instead.
 
 Raise a Challenge when the work surfaces something new that
 breaks an accepted artifact — the Requirements Analysis, Code
-Analysis, Working Scope, Design, or Plan. You raise one
+Analysis, Session Scope, Design, or Plan. You raise one
 yourself, or relay one a teammate raised: Ralph while
 implementing, Junio at audit, or a Phase 7 review finding from
 Ada or Junio that breaks a premise rather than flags a defect.
@@ -1632,7 +1632,7 @@ example:
 - The Design's approach doesn't hold once implementation
   starts, or a planned task proves impossible as written.
 - Repeated coherence audits circle the same surface — the
-  Working Scope turns out aimed at a symptom after all.
+  Session Scope turns out aimed at a symptom after all.
 
 ### On accept
 
@@ -1690,7 +1690,7 @@ message names:
   user to opt in, each becomes a non-goal.
 - **Phase 2: Code Analysis.** Accept. The gate passes
   without intervention.
-- **Phase 3: Working Scope.** Take the Coherent Scope. Don't
+- **Phase 3: Session Scope.** Take the Coherent Scope. Don't
   fall back to Minimal or Maximal; the recommendation is the
   default.
 - **Phase 4: Design.** Take the Proposed Design. An

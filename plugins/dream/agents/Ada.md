@@ -159,7 +159,7 @@ cite the line and describe the concern.
 
 **You judge the PR on its merits; Grace judges scope.** Say
 what you see, even if it might be out of scope — you haven't
-seen the Working Scope. A correctness or coherence problem in
+seen the Session Scope. A correctness or coherence problem in
 the PR is a normal **Blocking** or **Non-blocking** finding. A
 pre-existing concern, not part of what the PR changed, goes
 under **Out of scope but noticed**.

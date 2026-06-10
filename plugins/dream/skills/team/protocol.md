@@ -89,14 +89,14 @@ moves on without pausing.
 
 **User acceptance gates run by default** — the Requirements
 Analysis (closing Phase 1), the Code Analysis (closing Phase 2),
-the Working Scope (closing Phase 3), the Design (closing Phase
+the Session Scope (closing Phase 3), the Design (closing Phase
 4), and the Plan (closing Phase 5). See "Acceptance gates" below.
 The "Common rules" at the end apply across every phase.
 
 **Challenge** is a separate mechanism, not a phase. A
 teammate raises one when the work surfaces something new
 that breaks an accepted artifact — the Requirements
-Analysis, Code Analysis, Working Scope, Design, or Plan.
+Analysis, Code Analysis, Session Scope, Design, or Plan.
 Grace takes a real Challenge to the user, who accepts it
 (the artifact is revised) or rejects it (and says how to
 proceed). It can be raised in any phase once an artifact has
@@ -214,11 +214,11 @@ Grace then shares the revised Scope Options with the user,
 with a brief note on what changed from the Draft after the
 reviews.
 
-The phase ends at user acceptance of the Working Scope.
+The phase ends at user acceptance of the Session Scope.
 
 ## Phase 4: Design
 
-Phase opens with Grace sharing the accepted Working Scope
+Phase opens with Grace sharing the accepted Session Scope
 with Junio and Ralph for information. Then two divergence
 steps run before any design is chosen. First, analogy
 generation: Grace, Junio, and Ralph each write a spread of
@@ -235,7 +235,7 @@ for Phase 7.
 Grace then consolidates the pooled sketches into the Design
 Options — the Proposed Design, her recommendation, and any
 credible Alternative Designs drawn from the spread, each still
-delivering the full Working Scope with its trade-off named.
+delivering the full Session Scope with its trade-off named.
 There may be several, one, or none — an empty set found
 honestly is a result, not a failure.
 
@@ -345,7 +345,7 @@ finding is the underlying gap, not the scaffolding.
 breaks an accepted artifact, Junio raises a Challenge to
 Grace — for instance, repeated coherence audits circling the same
 surface for different stated reasons, which points at the
-Working Scope being too narrow to reach the root cause. Grace
+Session Scope being too narrow to reach the root cause. Grace
 assesses it and, if it holds, takes it to the user. See
 "Challenge" below.
 
@@ -382,7 +382,7 @@ Her review opens with a cold-read reconstruction of what the
 change does, built from the diff alone; Grace checks it against
 the real intent, and a divergence marks where the code failed to
 explain itself. Junio reads against the accepted requirements
-and Working Scope, and against the whole finished diff:
+and Session Scope, and against the whole finished diff:
 completeness (did we deliver every in-scope instance of what we
 agreed?) and coherence (now the whole change is visible,
 anything still needed to reach a coherent state?). The
@@ -478,7 +478,7 @@ declines.
 
 User acceptance gates run by default — the Requirements Analysis
 (closing Phase 1), the Code Analysis (closing Phase 2), the
-Working Scope (closing Phase 3), the Design (closing Phase 4),
+Session Scope (closing Phase 3), the Design (closing Phase 4),
 and the Plan (closing Phase 5). The gate has the same shape every
 time:
 
@@ -486,7 +486,7 @@ time:
    Analysis, Scope Options, Design Options, or the Plan.
 2. The message ends by explicitly asking the user to accept,
    naming the artifact and what comes next. Example:
-   *"Accept the Working Scope to proceed to Phase 4:
+   *"Accept the Session Scope to proceed to Phase 4:
    Design."*
 3. Grace waits for the user's reply before doing anything
    else — or, under autopilot, takes this gate's default and
@@ -505,7 +505,7 @@ the user accepts before progressing.
 The message asking the user to accept names the next phase.
 Memorise the chain so the names match: Requirements Analysis →
 Phase 2: Code Analysis; Code Analysis → Phase 3: Scope;
-Working Scope → Phase 4: Design; Design → Phase 5: Plan;
+Session Scope → Phase 4: Design; Design → Phase 5: Plan;
 Plan → Phase 6: Develop.
 
 ## Autopilot
@@ -529,7 +529,7 @@ autopilot off at any time. Full mechanism in `Grace.md`.
 ## Challenge
 
 A Challenge says an accepted artifact no longer holds — the
-Requirements Analysis, Code Analysis, Working Scope, Design,
+Requirements Analysis, Code Analysis, Session Scope, Design,
 or Plan — because the work surfaced something new that
 breaks it. Grace raises one herself, or relays one a teammate
 raised — Ralph while implementing, Junio at audit, or a Phase 7
@@ -756,7 +756,7 @@ One session branch off `main` as of session start, one PR opened on
 it. Grace either creates the branch at the start of Phase 6 (Develop)
 once the Plan is accepted, or uses the worktree's branch when the user
 launched Claude Code inside a worktree. The branch name reflects the
-accepted Working Scope. All planning and development run against the
+accepted Session Scope. All planning and development run against the
 session-start state of `main`; any drift on origin is handled at
 Merge.
 
