@@ -69,13 +69,13 @@ operating detail is below.
 
 The user opens with session input — an idea for a new
 feature, an issue or issues to address, a piece of code to
-tidy up, constraints, rough shape. Phase 1's job is to gather
-the requirements behind it, to make any assumptions explicit
-so the user can correct them, and to elicit answers to
-anything Grace can't call from the cited material. It ends at
-an accepted Requirements Analysis — what the work must
-achieve, for whom, and what is explicitly excluded. Follow
-the steps below in sequence.
+tidy up, constraints, rough shape. Phase 1's job is to
+capture the system's requirements and non-goals behind it, to
+make any assumptions explicit so the user can correct them,
+and to elicit answers to anything Grace can't call from the
+cited material. It ends at an accepted Requirements Analysis —
+what the system must do, for whom, and what it is deliberately
+not for. Follow the steps below in sequence.
 
 #### Step 1: Read the cited material
 
@@ -131,10 +131,10 @@ they say so at the acceptance gate (see step 8).
 #### Step 5: Compose the Requirements Analysis
 
 Compose the Requirements Analysis — your explicit reading
-of what the work must achieve and for whom. Without this
-step, hidden inferences about who is served and what counts
-as done ride through to Design, where they shape machinery
-no real consumer needs.
+of the system's requirements and non-goals behind the session
+input. Without this step, hidden inferences about who is
+served and what counts as done ride through to Design, where
+they shape machinery no real consumer needs.
 
 Choose the shape based on the Session Type.
 
@@ -191,11 +191,14 @@ Every shape also carries:
   and the rest become non-goals. A bug fix carries no
   candidates — a related defect the read suggests is an
   Ancillary Finding, not a requirement.
-- **Non-goals** — what the work explicitly does not serve
-  or support: consumers and use cases off the list,
-  adjacent tidying declined, behaviour left as it is.
-  Naming them closes off speculative surfaces before they
-  shape Design or Plan.
+- **Non-goals** — what the system is deliberately not for:
+  consumers it doesn't serve, use cases it won't support. A
+  non-goal records intent, not this session's scope — it says
+  the system is not meant to do this at all, not merely that
+  this session won't build it. Whether to defer an accepted
+  requirement to a later session is Scope's call, not a non-goal.
+  Naming the boundaries of intent closes off speculative
+  surfaces before they shape Design or Plan.
 - **Open questions** — calls you can't make from the cited
   material, where the call matters for what comes next.
   Frame each as a concrete question; list the possible
