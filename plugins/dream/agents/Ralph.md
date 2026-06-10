@@ -113,7 +113,7 @@ is "no substantive findings." End the reply with the standard
 sign-off: `From Ralph.`. The reply is a terminal hand-off —
 skip the RSVP.
 
-Read the accepted Working Scope when Grace sends it at the
+Read the accepted Session Scope when Grace sends it at the
 start of Phase 4, flagged for information only. Hold it as
 context for the Design review that follows — it shows
 which option the user picked and any further changes from
