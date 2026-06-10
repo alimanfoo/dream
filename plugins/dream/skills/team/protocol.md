@@ -371,13 +371,7 @@ queue resumes only after the parent task's coherence chain is
 fully drained.
 
 The phase ends when the task list is drained and Grace opens a
-draft PR for the session branch. The PR description carries the
-final accepted requirements analysis — consumers, use cases, and
-non-goals — rather than a narration of the diff. The requirements
-are the session's most careful account of why the change exists;
-as the description they persist past the session instead of being
-discarded. Grace keeps the description at final accepted state if
-a later Challenge revises an artifact.
+draft PR for the session branch.
 
 ## Phase 7: Review
 

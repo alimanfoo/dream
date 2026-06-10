@@ -1092,7 +1092,7 @@ style. Written contribution rules (`CONTRIBUTING.md`, a PR
 template, a commit message convention) are real and should be
 followed; the existing PR log is not a style reference.
 
-**The body carries the accepted requirements analysis.** Lead
+**Put the accepted requirements analysis in the body.** Lead
 with one or two plain sentences of context — what the change is
 and which issue it addresses — then the final accepted
 requirements analysis in the shape the Session Type selected:
@@ -1101,15 +1101,12 @@ and observed behaviour and affected consumers for a bug fix;
 preserved behaviour and improvement goals for maintenance. Carry
 it near-verbatim from the accepted artifact. This is the most
 careful account of why the change exists, and it would otherwise
-be discarded when the session ends. Non-goals matter most: a
-declined option leaves no diff, so the description is the only
-durable record that something was considered and set aside.
+be discarded when the session ends.
 
 **Don't narrate the diff.** File paths, renames, exact textual
 edits, method signatures, line-level changes are all visible in
 the diff. The body is for intent, carried by the requirements
-analysis — not a retelling of the change. Drop any sentence a
-reviewer would get from `git diff`.
+analysis — not a retelling of the change.
 
 **Keep the description at final accepted state.** If an artifact
 is revised after the PR opens — through a Challenge, say — edit
@@ -1225,23 +1222,22 @@ by agent name, which is internal protocol detail.
 #### Step 3: Triage each finding
 
 Read Ada's cold-read reconstruction first, then the divergences
-she reports against the stated requirements. She built the
+she reports against the stated intent. She built the
 reconstruction from the diff alone, then opened the PR
-description and compared it to the requirements herself — so each
-divergence is already a place her read and the stated intent
-parted: the code failed to explain itself, or it does something
-the requirements don't account for. This is worth real attention:
-Ada stands in for the human reviewer, who also comes to the
-change cold, so where her read diverged theirs will too. As
-agents write more of the code, that review is where the human's
-scarce attention is spent — code that explains itself there keeps
-the review cheap.
+description and compared it to the stated intent herself — so
+each divergence is a reviewability finding: a place the code
+failed to explain itself to a reader with no context. This is
+worth real attention: Ada stands in for the human reviewer, who
+also comes to the change cold, so where her read diverged theirs
+will too. As agents write more of the code, that review is where
+the human's scarce attention is spent — code that explains itself
+there keeps the review cheap.
 
 Triage each divergence the same as any finding — accept one as a
-follow-on that makes the code carry its own intent or closes a
-real gap, or reject it where Ada simply misread code that is
-already clear. A reconstruction that matched the requirements
-with no divergence needs no action.
+follow-on that makes the code carry its own intent, or reject it
+where Ada simply misread code that is already clear. A
+reconstruction that matched the intent with no divergence needs
+no action.
 
 Decide each finding from both reviews on its merits; a reviewer
 raising it is not itself a reason to accept it. Each finding

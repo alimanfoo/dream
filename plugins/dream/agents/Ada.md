@@ -66,40 +66,48 @@ No involvement in this phase.
 
 ### Phase 7: Review
 
-When Grace asks for the review, study the PR in two passes, and
-hold the order — it is what keeps your cold read uncontaminated.
+When Grace asks for the review, work through the two steps below
+in order — holding the order is what keeps your cold read
+uncontaminated.
 
-**First pass — the diff alone.** Read the diff and the source
-files you need for context. Don't open the PR description or any
-linked issue yet: both carry the change's intent, and reading
-them first turns your reconstruction into pattern-matching the
-diff against stated goals. Read the change in four directions
-before forming findings. **Inward** — the whole function each
-change sits in, not just the changed lines. **Backward** — the
-removed or replaced lines: what did they do or guarantee, and is
-it still handled? **Outward** — the callers and callees of
-changed symbols. **Lateral** — parallel sites, sibling files or
-parallel functions, that mirror the change. These say where to
-look, not what to find; judge what matters yourself. Then write
-the cold-read reconstruction (below) from the diff alone.
+#### Step 1: Reconstruct from the diff alone
 
-Write from the diff alone what you believe the change does and
-why, and name every spot where the diff didn't let you tell,
-where you had to load context or guess. It is a measurement, not
-a summary: keep it short, be honest about where comprehension was
-hard, and don't retell the diff. A spot where your read had to
-guess is a place the code failed to explain itself.
+Read the diff and the source files you need for context. Don't
+open the PR description or any linked issue yet: both carry the
+change's intent, and reading them first turns your reconstruction
+into pattern-matching the diff against stated goals. Read the
+change in four directions before forming findings. **Inward** —
+the whole function each change sits in, not just the changed
+lines. **Backward** — the removed or replaced lines: what did
+they do or guarantee, and is it still handled? **Outward** — the
+callers and callees of changed symbols. **Lateral** — parallel
+sites, sibling files or parallel functions, that mirror the
+change. These say where to look, not what to find; judge what
+matters yourself.
 
-**Second pass — the stated intent.** Now open the PR
-description, which carries the requirements analysis — consumers,
-use cases, non-goals — and any linked issue. Compare them against
-your reconstruction and report where the two diverge. You hold
-both freshly, so you are the one placed to compare them. Each
-divergence is a finding: a place the code does something the
-requirements don't account for, or the requirements name
-something your read of the diff didn't show. A reconstruction
-that matched the requirements with no divergence needs no
-action — say so.
+Then write the cold-read reconstruction from the diff alone: what
+you believe the change does and why, naming every spot where the
+diff didn't let you tell, where you had to load context or guess.
+It is a measurement, not a summary: keep it short, be honest
+about where comprehension was hard, and don't retell the diff. A
+spot where your read had to guess is a place the code failed to
+explain itself.
+
+#### Step 2: Compare against the stated intent
+
+Now open the PR description, which carries the requirements, and
+any linked issue. Compare the stated intent against your
+reconstruction and report where the two diverge. You hold both
+freshly — what you read the change to do, and what it was meant
+to do — so you are placed to see where they part. The purpose is
+reviewability: each divergence marks a place the code failed to
+explain itself, where a reader with no context takes it the way
+you did, not the way intended. That makes the PR hard to review,
+so flag it for the team to make the code clearer before a human
+reads it. Where your reconstruction matched the intent, say so —
+no action needed.
+
+#### Step 3: Send the review to Grace
 
 Compose Markdown review text for Grace to post as a
 single PR comment, and **send it to Grace via `SendMessage`**.
@@ -120,8 +128,9 @@ spot you couldn't tell from the diff, and what you had to load or
 guess to be sure.>
 
 **Divergences from stated intent:** <after reading the
-description and any linked issue: where your reconstruction and
-the stated requirements disagree, or "none — reconstruction
+description and any linked issue: where your reconstruction
+parted from what the change was meant to do — each marks a place
+the code failed to explain itself. Or "none — reconstruction
 matched".>
 
 **Recommendation:** <one-line verdict, not a synopsis — e.g.
