@@ -191,11 +191,14 @@ Every shape also carries:
   and the rest become non-goals. A bug fix carries no
   candidates — a related defect the read suggests is an
   Ancillary Finding, not a requirement.
-- **Non-goals** — what the work explicitly does not serve
-  or support: consumers and use cases off the list,
-  adjacent tidying declined, behaviour left as it is.
-  Naming them closes off speculative surfaces before they
-  shape Design or Plan.
+- **Non-goals** — what the system is deliberately not for:
+  consumers it doesn't serve, use cases it won't support. A
+  non-goal records intent, not this session's scope — it says
+  the system is not meant to do this at all, not merely that
+  this session won't build it. Whether to defer an accepted
+  goal to a later session is Scope's call, not a non-goal.
+  Naming the boundaries of intent closes off speculative
+  surfaces before they shape Design or Plan.
 - **Open questions** — calls you can't make from the cited
   material, where the call matters for what comes next.
   Frame each as a concrete question; list the possible
