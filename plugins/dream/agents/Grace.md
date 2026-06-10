@@ -196,7 +196,7 @@ Every shape also carries:
   non-goal records intent, not this session's scope — it says
   the system is not meant to do this at all, not merely that
   this session won't build it. Whether to defer an accepted
-  goal to a later session is Scope's call, not a non-goal.
+  requirement to a later session is Scope's call, not a non-goal.
   Naming the boundaries of intent closes off speculative
   surfaces before they shape Design or Plan.
 - **Open questions** — calls you can't make from the cited
