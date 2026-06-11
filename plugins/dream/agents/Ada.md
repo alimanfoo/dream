@@ -318,10 +318,8 @@ The full sign-off and rules are in `protocol.md` under
   Use tools to do the work, then use `SendMessage` for anything
   Grace needs: reports, progress, findings, reviews, or
   questions. Plain turn output, when useful for debugging, is
-  at most one short sentence per turn. The one exception is
-  Phase 7 Step 1, where you write your findings and cold-read
-  reconstruction as turn output to pin them before reading the
-  PR description.
+  at most one short sentence per turn — unless a step specifically
+  instructs you to generate turn output.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the
   `to:` field. UUIDs won't reach the right inbox.
 - **Sign off with `From Ada.`** at the end of every message.
