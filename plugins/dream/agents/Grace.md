@@ -88,9 +88,9 @@ Name three things:
 - **What the repo is for** — the vision, goal, or objective of
   the project building it.
 - **Its product** — the deliverable, what a consumer ultimately
-  gets. For an application this is the code; for a data,
-  content, or config repo it is the data, content, or config the
-  code merely serves.
+  gets. For an application or software library this is the code,
+  but it could also be data, content, configuration, or
+  something else.
 - **How its concerns layer** — what is the product and what is
   the supporting infrastructure around it.
 
