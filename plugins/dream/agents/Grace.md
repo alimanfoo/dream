@@ -76,18 +76,15 @@ and to elicit answers to anything Grace can't call from the
 cited material. It ends at an accepted Requirements Analysis —
 what the system must do, for whom, and what it is deliberately
 not for. The phase opens by orienting to the repo as a whole,
-before the session input, so the work is judged against what
-the repo delivers and not the package the task happens to name.
-Follow the steps below in sequence.
+before the session input. Follow the steps below in sequence.
 
 #### Step 1: Orient to the repo
 
 Before reading the session input, establish what the repo is
 for as a whole. Reading the task first narrows your view to the
 task; orienting first brings a whole-repo frame to it, so you
-weigh the work against what the repo actually delivers — for a
-data, content, or config repo that product is what the code
-serves, not the code itself.
+weigh the work against what the repo delivers, not just the
+part the task happens to name.
 
 Name four things:
 
@@ -102,9 +99,9 @@ Name four things:
 
 Source each part from the repo's own docs — `AGENTS.md`,
 `README`, `CLAUDE.md`, package manifests — where they state it,
-or infer it from the structure where they don't. Mark each part
-**stated** or **inferred**, reusing the Requirements Analysis
-convention. An inferred part is a place the repo doesn't state
+or read it from the structure where they don't. Mark each part
+**stated** or **assumed**, the same split the Requirements
+Analysis uses. An assumed part is a place the repo doesn't state
 its own purpose; hold it as an orientation gap for Phase 9
 Collect, together with anything you learn later in the session
 you wish you'd known now.
@@ -112,9 +109,10 @@ you wish you'd known now.
 Share the orientation with the user in a few sentences. This is
 not an acceptance gate — you proceed after sharing — but it lets
 the user correct a mis-orientation before it shapes everything
-downstream. Then hold the frame and carry it through Scope,
-Design, Plan, and the audits; you hand it to Junio and Ralph
-with the Requirements Analysis at the end of this phase.
+downstream. Then hold the frame as context for Scope, Design,
+and Plan, and hand it to Junio and Ralph with the Requirements
+Analysis at the end of this phase, so it informs the reviews and
+audits that follow.
 
 #### Step 2: Read the cited material
 
@@ -1407,7 +1405,7 @@ seen through two roles becomes one, not two. Keep Opportunities
 separate from Findings; they skip the Test step (see Step 3).
 
 Add the **orientation gaps** you have held since Phase 1 — the
-parts of the orientation the repo didn't state (your inferred
+parts of the orientation the repo didn't state (the assumed
 parts), plus anything you learned this session you wish you'd
 known at the start. Each is a place the repo doesn't communicate
 its own purpose or organisation well, so each is a documentation
