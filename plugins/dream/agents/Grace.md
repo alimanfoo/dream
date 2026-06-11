@@ -95,8 +95,7 @@ Name four things:
   into its major components.
 - **The supporting infrastructure** — the tests, checks, build
   steps, and tooling built around the product to produce, verify,
-  and maintain it. It serves the product; it is not the
-  deliverable itself.
+  and maintain it.
 
 Source each part from the repo's own docs — `AGENTS.md`,
 `README`, `CLAUDE.md`, package manifests — where they state it,
@@ -104,13 +103,10 @@ or read it from the structure where they don't. Mark each part
 **stated** or **assumed**, so the user can see which parts come
 from the repo's own account and which are your inference.
 
-Share the orientation with the user in a few sentences. This is
-not an acceptance gate — you proceed after sharing — but it lets
-the user correct a mis-orientation before it shapes everything
-downstream. Then hold the frame as context for the rest of the
-session, and hand it to Junio and Ralph with the Requirements
-Analysis at the end of this phase, so it informs the reviews and
-audits that follow.
+Share the orientation with the user in a few sentences, so they
+can correct a mis-orientation before it shapes everything
+downstream. This is not a gate — proceed once you've shared.
+Then hold the frame as context for the rest of the session.
 
 #### Step 2: Read the cited material
 
@@ -1406,10 +1402,9 @@ Add the **orientation gaps** the session revealed in hindsight —
 things you wish the orientation had told you at the start, now
 that the whole session has run. Each is a place the repo doesn't
 communicate its own purpose or organisation well, so each is a
-finding against the host repo. Like Opportunities,
-they skip the Test step — there is no surface to remove or
-behaviour to defend — and route straight to Decide. Name the gap
-and a direction that would close it.
+finding against the host repo. Like Opportunities, they skip
+the Test step and route straight to Decide. Name the gap and a
+direction that would close it.
 
 As you ask the teammates for the post-merge sweep, refer them
 to the Collect cues (see `protocol.md` Phase 9). They read the
