@@ -75,8 +75,7 @@ make any assumptions explicit so the user can correct them,
 and to elicit answers to anything Grace can't call from the
 cited material. It ends at an accepted Requirements Analysis —
 what the system must do, for whom, and what it is deliberately
-not for. The phase opens by orienting to the repo as a whole,
-before the session input. Follow the steps below in sequence.
+not for. Follow the steps below in sequence.
 
 #### Step 1: Orient to the repo
 
