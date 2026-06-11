@@ -1092,13 +1092,26 @@ style. Written contribution rules (`CONTRIBUTING.md`, a PR
 template, a commit message convention) are real and should be
 followed; the existing PR log is not a style reference.
 
-**Don't duplicate the diff.** File paths, renames, exact
-textual edits, method signatures, line-level changes — all
-visible in the diff. The body is for **intent and context**:
-why the change is happening, what issue it addresses, decisions
-that aren't obvious from reading the code. Drop any sentence in
-the body that's information a reviewer would get from `git
-diff`.
+**Put the accepted requirements analysis in the body.** Lead
+with one or two plain sentences of context — what the change is
+and which issue it addresses — then the final accepted
+requirements analysis in the shape the Session Type selected:
+consumers, use cases, and non-goals for an enhancement; expected
+and observed behaviour and affected consumers for a bug fix;
+preserved behaviour and improvement goals for maintenance. Carry
+it near-verbatim from the accepted artifact. This is the most
+careful account of why the change exists, and it would otherwise
+be discarded when the session ends.
+
+**Don't narrate the diff.** File paths, renames, exact textual
+edits, method signatures, line-level changes are all visible in
+the diff. The body is for intent, carried by the requirements
+analysis — not a retelling of the change.
+
+**Keep the description at final accepted state.** If an artifact
+is revised after the PR opens — through a Challenge, say — edit
+the description so it shows the final accepted requirements, not
+the state at PR-open.
 
 **Close the issues the PR addresses.** GitHub auto-closes an
 issue on merge only when the PR body has a closing keyword for
@@ -1208,21 +1221,23 @@ by agent name, which is internal protocol detail.
 
 #### Step 3: Triage each finding
 
-Read Ada's cold-read reconstruction first, against the intent you
-hold. It is what she read the change to do, from the diff alone,
-and where she had to chase context. Each divergence or flagged
-hunt is a reviewability finding: a place the code failed to
-explain itself to a reader with no context. This is worth real
-attention: Ada stands in for the human reviewer, who also comes
-to the change cold, so where her read diverged theirs will too.
-As agents write more of the code, that review is where the
-human's scarce attention is spent — code that explains itself
+Read Ada's cold-read reconstruction first, then the divergences
+she reports against the stated intent. She built the
+reconstruction from the diff alone, then opened the PR
+description and compared it to the stated intent herself — so
+each divergence is a reviewability finding: a place the code
+failed to explain itself to a reader with no context. This is
+worth real attention: Ada stands in for the human reviewer, who
+also comes to the change cold, so where her read diverged theirs
+will too. As agents write more of the code, that review is where
+the human's scarce attention is spent — code that explains itself
 there keeps the review cheap.
 
-Triage these the same as any finding — accept one as a follow-on
-that makes the code carry its own intent, or reject it where Ada
-simply misread code that is already clear. A reconstruction that
-matched the intent with no hunt needs no action.
+Triage each divergence the same as any finding — accept one as a
+follow-on that makes the code carry its own intent, or reject it
+where Ada simply misread code that is already clear. A
+reconstruction that matched the intent with no divergence needs
+no action.
 
 Decide each finding from both reviews on its merits; a reviewer
 raising it is not itself a reason to accept it. Each finding
@@ -1644,6 +1659,11 @@ that owns it and follow the protocol as normal from there. The
 artifact is revised and re-accepted through that phase's usual
 flow, and the work downstream reshapes to match — keep what
 still stands, redo what the revision touches.
+
+When the revised artifact is the Requirements Analysis and the
+PR is already open, the downstream reshape includes editing the
+PR description to the new accepted state — see "Keep the
+description at final accepted state" under "Opening the PR".
 
 ### What a Challenge is not
 
