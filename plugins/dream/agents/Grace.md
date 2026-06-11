@@ -106,7 +106,6 @@ from the repo's own account and which are your inference.
 Share the orientation with the user in a few sentences, so they
 can correct a mis-orientation before it shapes everything
 downstream. This is not a gate — proceed once you've shared.
-Then hold the frame as context for the rest of the session.
 
 #### Step 2: Read the cited material
 
