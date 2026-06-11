@@ -80,9 +80,8 @@ not for. Follow the steps below in sequence.
 #### Step 1: Orient to the repo
 
 Establish what the repo is for as a whole, before reading the
-session input. Reading the task first narrows your view to the
-task; orienting first brings a whole-repo frame to it, so you
-weigh the work against what the repo delivers.
+session input. Orienting first brings a whole-repo frame to the
+task, so you weigh the work against what the repo delivers.
 
 Name three things:
 
