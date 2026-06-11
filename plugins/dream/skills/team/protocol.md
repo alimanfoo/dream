@@ -140,12 +140,11 @@ Grace opens the phase by orienting to the repo as a whole,
 before the session input — what the repo is for, its product,
 the product's architecture, and the supporting infrastructure
 around it, with each part marked stated (from the repo's docs)
-or assumed (read from its structure). Orienting first brings a whole-repo frame to the
-task, so the work is judged against what the repo delivers. The
-frame is shared with the user
-but not gated; Grace holds it and hands it to the team, and
-assumed parts become orientation gaps for Phase 9 Collect. Full
-detail in `Grace.md`.
+or assumed (read from its structure). Orienting first brings a
+whole-repo frame to the task, so the work is judged against what
+the repo delivers. The frame is shared with the user but not
+gated; Grace holds it and hands it to the team. Full detail in
+`Grace.md`.
 
 Grace then reads the cited material, reads the code with a
 consumer lens (who uses these surfaces and what they do
@@ -438,10 +437,10 @@ Ada's review, and a post-merge sweep of all three teammates.
 Ancillary Findings are concerns the session noticed but left
 out of scope; Opportunities are worthwhile follow-up work the
 session's own work suggests. Grace also contributes the
-orientation gaps she has held since Phase 1 — the parts of the
-orientation the repo didn't state, plus what she learned in the
-session she wishes she'd known at the start — as documentation
-findings against the host repo.
+orientation gaps the session revealed in hindsight — things she
+wishes the orientation had told her at the start, seen now that
+the whole session has run — as documentation findings against
+the host repo.
 Findings are tested (defend behaviour, removal question);
 Opportunities skip those defect tests. Grace decides each (drop /
 reinforce / re-frame / file fresh) with user acceptance before

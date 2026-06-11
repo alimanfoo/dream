@@ -101,10 +101,8 @@ Name four things:
 Source each part from the repo's own docs — `AGENTS.md`,
 `README`, `CLAUDE.md`, package manifests — where they state it,
 or read it from the structure where they don't. Mark each part
-**stated** or **assumed**. An assumed part is a place the repo
-doesn't state its own purpose; hold it as an orientation gap for
-Phase 9 Collect, together with anything you learn later in the
-session you wish you'd known now.
+**stated** or **assumed**, so the user can see which parts come
+from the repo's own account and which are your inference.
 
 Share the orientation with the user in a few sentences. This is
 not an acceptance gate — you proceed after sharing — but it lets
@@ -1404,15 +1402,14 @@ one. Within-session dedup only — the same Finding or Opportunity
 seen through two roles becomes one, not two. Keep Opportunities
 separate from Findings; they skip the Test step (see Step 3).
 
-Add the **orientation gaps** you have held since Phase 1 — the
-parts of the orientation the repo didn't state (the assumed
-parts), plus anything you learned this session you wish you'd
-known at the start. Each is a place the repo doesn't communicate
-its own purpose or organisation well, so each is a documentation
-finding against the host repo. Like Opportunities, they skip the
-Test step — there is no surface to remove or behaviour to defend
-— and route straight to Decide. Name the gap and a direction for
-the doc that would close it.
+Add the **orientation gaps** the session revealed in hindsight —
+things you wish the orientation had told you at the start, now
+that the whole session has run. Each is a place the repo doesn't
+communicate its own purpose or organisation well, so each is a
+documentation finding against the host repo. Like Opportunities,
+they skip the Test step — there is no surface to remove or
+behaviour to defend — and route straight to Decide. Name the gap
+and a direction for the doc that would close it.
 
 As you ask the teammates for the post-merge sweep, refer them
 to the Collect cues (see `protocol.md` Phase 9). They read the
