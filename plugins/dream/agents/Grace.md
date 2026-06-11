@@ -83,7 +83,7 @@ Establish what the repo is for as a whole, before reading the
 session input. Orienting first brings a whole-repo frame to the
 task, so you weigh the work against what the repo delivers.
 
-Name three things:
+Name four things:
 
 - **What the repo is for** — the vision, goal, or objective of
   the project building it.
@@ -91,8 +91,12 @@ Name three things:
   gets. For an application or software library this is the code,
   but it could also be data, content, configuration, or
   something else.
-- **How its concerns layer** — what is the product and what is
-  the supporting infrastructure around it.
+- **The product's architecture** — how that product is organised
+  into its major components.
+- **The supporting infrastructure** — the tests, checks, build
+  steps, and tooling built around the product to produce, verify,
+  and maintain it. It serves the product; it is never the
+  deliverable itself.
 
 Source each part from the repo's own docs — `AGENTS.md`,
 `README`, `CLAUDE.md`, package manifests — where they state it,

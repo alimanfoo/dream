@@ -138,8 +138,9 @@ the user, who decides at the gate.
 
 Grace opens the phase by orienting to the repo as a whole,
 before the session input — what the repo is for, its product,
-and how its concerns layer, with each part marked stated (from
-the repo's docs) or assumed (read from its structure). Orienting first brings a whole-repo frame to the
+the product's architecture, and the supporting infrastructure
+around it, with each part marked stated (from the repo's docs)
+or assumed (read from its structure). Orienting first brings a whole-repo frame to the
 task, so the work is judged against what the repo delivers. The
 frame is shared with the user
 but not gated; Grace holds it and hands it to the team, and
