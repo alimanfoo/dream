@@ -40,9 +40,10 @@ of today's memory, will wake into and must be able to trust.
 
 A session moves through ten phases:
 
-1. **Requirements.** Grace reads the cited material and the
-   code with a consumer lens, names the Session Type, then
-   shares the Requirements Analysis with the user for acceptance.
+1. **Requirements.** Grace orients to the repo as a whole,
+   then reads the cited material and the code with a consumer
+   lens, names the Session Type, and shares the Requirements
+   Analysis with the user for acceptance.
 
 2. **Code Analysis.** Grace reads the code with a structural
    lens — mechanism, layers, siblings, patterns — and shares
@@ -135,7 +136,13 @@ colleague's proposal, an external bug report, another
 agent's idea. Testing it is scrutiny of the input, not of
 the user, who decides at the gate.
 
-Grace reads the cited material, reads the code with a
+Grace opens the phase by orienting to the repo as a whole —
+what it is for and what it delivers — before reading the session
+input, so the work is judged against the whole rather than the
+task alone. The orientation is shared with the user but not
+gated.
+
+Grace then reads the cited material, reads the code with a
 consumer lens (who uses these surfaces and what they do
 with them), then checks the issue tracker for recurrence
 on the named surfaces. Grace names the Session Type (bug
@@ -159,8 +166,7 @@ answers the open questions; Grace folds the answers in and
 shares the completed artifact for acceptance. At the end of
 the phase Grace hands the accepted Requirements Analysis and
 the Session Type to Junio and Ralph for information; they hold
-them as context for the Scope, Design, and Plan reviews that
-follow.
+them as context for the rest of the session.
 
 The phase ends at user acceptance of the Requirements Analysis.
 
@@ -177,8 +183,7 @@ a verifiable read of what the current code does and where,
 with file:line or symbol citations — with the user for
 acceptance. At the end of the phase Grace hands the accepted
 Code Analysis to Junio and Ralph for information; they hold
-it as context for the Scope, Design, and Plan reviews that
-follow.
+it as context for the rest of the session.
 
 The phase ends at user acceptance of the Code Analysis.
 
@@ -425,7 +430,10 @@ sources — Junio's in-session coherence audits and PR review,
 Ada's review, and a post-merge sweep of all three teammates.
 Ancillary Findings are concerns the session noticed but left
 out of scope; Opportunities are worthwhile follow-up work the
-session's own work suggests.
+session's own work suggests. Grace also contributes the
+orientation gaps the session revealed in hindsight — things she
+wishes the orientation had told her at the start, seen now that
+the whole session has run — as findings against the host repo.
 Findings are tested (defend behaviour, removal question);
 Opportunities skip those defect tests. Grace decides each (drop /
 reinforce / re-frame / file fresh) with user acceptance before

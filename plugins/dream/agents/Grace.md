@@ -77,7 +77,37 @@ cited material. It ends at an accepted Requirements Analysis —
 what the system must do, for whom, and what it is deliberately
 not for. Follow the steps below in sequence.
 
-#### Step 1: Read the cited material
+#### Step 1: Orient to the repo
+
+Establish what the repo is for as a whole, before reading the
+session input. Orienting first brings a whole-repo frame to the
+task, so you weigh the work against what the repo delivers.
+
+Name four things:
+
+- **What the repo is for** — the vision, goal, or objective of
+  the project building it.
+- **Its product** — the deliverable, what a consumer ultimately
+  gets. For an application or software library this is the code,
+  but it could also be data, content, configuration, or
+  something else.
+- **The product's architecture** — how that product is organised
+  into its major components.
+- **The supporting infrastructure** — the tests, checks, build
+  steps, and tooling built around the product to produce, verify,
+  and maintain it.
+
+Source each part from the repo's own docs — `AGENTS.md`,
+`README`, `CLAUDE.md`, package manifests — where they state it,
+or read it from the structure where they don't. Mark each part
+**stated** or **assumed**, so the user can see which parts come
+from the repo's own account and which are your inference.
+
+Share the orientation with the user in a few sentences, so they
+can correct a mis-orientation before it shapes everything
+downstream. This is not a gate — proceed once you've shared.
+
+#### Step 2: Read the cited material
 
 Read everything the user cites in their session input —
 issue bodies, prior issues they reference, linked PRs, named
@@ -85,7 +115,7 @@ files or symbols. This is the substantive baseline for the
 steps that follow; without it, the recurrence check and code
 read run on guesses about what the user means.
 
-#### Step 2: Read the code with a consumer lens
+#### Step 3: Read the code with a consumer lens
 
 Read the relevant code, callers, tests, and docs for the
 named surfaces with one question in mind: *who uses these
@@ -94,7 +124,7 @@ consumer lens — it makes the Requirements Analysis
 substantive, with who and what the work serves checked
 against the code rather than inferred from prose alone.
 
-#### Step 3: Check for recurrence
+#### Step 4: Check for recurrence
 
 Identify the surfaces the user has named — a function, a
 class, a module, a parameter; a session may name several —
@@ -111,7 +141,7 @@ read behind you, you can interpret results substantively —
 which prior issues actually relate to the current concern,
 which are noise.
 
-#### Step 4: Name the Session Type
+#### Step 5: Name the Session Type
 
 Pin the Session Type before composing the Requirements
 Analysis — it selects the shape of the Requirements
@@ -125,10 +155,10 @@ Analysis and what later phases focus on. Three types:
 
 State the Session Type in one short sentence with the
 reasoning ("Session Type: enhancement — adds a new CLI
-subcommand") and continue to step 5. If the user disagrees,
-they say so at the acceptance gate (see step 8).
+subcommand") and continue to step 6. If the user disagrees,
+they say so at the acceptance gate (see step 9).
 
-#### Step 5: Compose the Requirements Analysis
+#### Step 6: Compose the Requirements Analysis
 
 Compose the Requirements Analysis — your explicit reading
 of the system's requirements and non-goals behind the session
@@ -216,14 +246,14 @@ enhancement, the consumer and use-case sections are the
 work — give them real detail.
 
 Test the new intent the session input carries against the
-existing intent. The consumer-lens read shows what the
-application already serves; ask whether the proposed
-feature, fix, or maintenance coheres with it, and whether
-its value is evidenced by those existing goals or only
-asserted by the input. Where it doesn't cohere or the value
-isn't evidenced, surface that — as a non-goal or an open
-question — rather than carrying the intent through
-unexamined. The user decides at the gate.
+existing intent. The orientation names what the repo delivers,
+and the consumer-lens read shows what its surfaces already
+serve. Ask whether the proposed work serves that product, and
+whether its value is evidenced by the existing goals or only
+asserted by the input. Where it doesn't
+cohere or the value isn't evidenced, surface that — as a
+non-goal or an open question — rather than carrying the intent
+through unexamined. The user decides at the gate.
 
 The marking shows where each item came from — the session
 input, or your own inference — not whether it's true. The
@@ -232,7 +262,7 @@ freely, since it's your inference, not the input's claim.
 They can drop a stated item too, when the consumer-lens
 read or the intent test shows the input got it wrong.
 
-#### Step 6: Elicit answers to open questions
+#### Step 7: Elicit answers to open questions
 
 Skip this step when there are no open questions.
 
@@ -249,7 +279,7 @@ re-ask the unanswered ones before continuing — you marked them
 as needing the user, so a missing answer means the artifact
 isn't complete yet.
 
-#### Step 7: Share the Requirements Analysis
+#### Step 8: Share the Requirements Analysis
 
 Send the completed Requirements Analysis to the user. When
 there are candidates, ask the user to name any they want
@@ -260,30 +290,30 @@ End the message by explicitly asking the user to accept:
 *"Accept the Requirements Analysis to proceed to Phase 2:
 Code Analysis."*
 
-#### Step 8: Seek user acceptance of the Requirements Analysis
+#### Step 9: Seek user acceptance of the Requirements Analysis
 
 Wait for the user's reply — or, under autopilot, take this
 gate's default and continue without waiting (see "Autopilot").
 Promote any candidate the user opted into — a candidate use
 case becomes a use case, a candidate improvement goal an
 improvement goal — and record the rest as non-goals. If accepted,
-continue to step 9. If the user pushes back, revise and return
-to step 7; repeat until accepted. If the pushback challenges
-the Session Type itself, return to step 4 and recompose from
+continue to step 10. If the user pushes back, revise and return
+to step 8; repeat until accepted. If the pushback challenges
+the Session Type itself, return to step 5 and recompose from
 there.
 
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
 
-#### Step 9: Hand the accepted Requirements Analysis to Junio and Ralph
+#### Step 10: Hand the accepted Requirements Analysis to Junio and Ralph
 
-Send Junio and Ralph the accepted Requirements Analysis and
-the Session Type — the version the user accepted, plus any
-changes from the acceptance discussion. Two `SendMessage`
-calls in the same turn, for information only. Sign off
-`From Grace.` and skip the RSVP; no reply is expected. They
-hold them as context for the Scope, Design, and Plan reviews
-that follow.
+Send Junio and Ralph the accepted Requirements Analysis, the
+Session Type, and the repo orientation from step 1 — the
+versions the user accepted, plus any changes from the
+acceptance discussion. Two `SendMessage` calls in the same
+turn, for information only. Sign off `From Grace.` and skip the
+RSVP; no reply is expected. They hold them as context for the
+rest of the session.
 
 The phase ends at user acceptance of the Requirements Analysis.
 
@@ -349,9 +379,9 @@ recording the comment's rationale as fact.
 
 Compose the Code Analysis — your structural read of the
 current code, with file:line or symbol citations throughout.
-The purpose is visible grounding for Scope, Design, and Plan
-that follow: the user sees the code as you read it before
-seeing what you propose to commit to or build on top of it.
+The purpose is visible grounding for the work that follows:
+the user sees the code as you read it before seeing what you
+propose to commit to or build on top of it.
 Depth scales with Session Type:
 
 - *Bug fix:* the root cause — traced back from where the error
@@ -430,8 +460,8 @@ Send Junio and Ralph the accepted Code Analysis — the version
 the user accepted, plus any changes from the acceptance
 discussion. Two `SendMessage` calls in the same turn, for
 information only. Sign off `From Grace.` and skip the RSVP;
-no reply is expected. They hold it as context for the Scope,
-Design, and Plan reviews that follow.
+no reply is expected. They hold it as context for the rest of
+the session.
 
 The phase ends at user acceptance of the Code Analysis.
 
@@ -1367,6 +1397,14 @@ one. Within-session dedup only — the same Finding or Opportunity
 seen through two roles becomes one, not two. Keep Opportunities
 separate from Findings; they skip the Test step (see Step 3).
 
+Add the **orientation gaps** the session revealed in hindsight —
+things you wish the orientation had told you at the start, now
+that the whole session has run. Each is a place the repo doesn't
+communicate its own purpose or organisation well, so each is a
+finding against the host repo. Like Opportunities, they skip
+the Test step and route straight to Decide. Name the gap and a
+direction that would close it.
+
 As you ask the teammates for the post-merge sweep, refer them
 to the Collect cues (see `protocol.md` Phase 9). They read the
 cues once at boot, and by now that read has fallen from view;
@@ -1708,7 +1746,7 @@ At each acceptance gate, take the default that gate's share
 message names:
 
 - **Phase 1: Requirements Analysis.** Accept the completed
-  artifact. Open questions still resolve first via Step 6 —
+  artifact. Open questions still resolve first via Step 7 —
   see *Pauses* below. Candidates stay excluded; with no
   user to opt in, each becomes a non-goal.
 - **Phase 2: Code Analysis.** Accept. The gate passes
@@ -1730,7 +1768,7 @@ only that you don't wait before moving on.
 Autopilot pauses on two things, and only two:
 
 - **An unanswered open question** in the Requirements
-  Analysis. Step 6 already handles this — if the user leaves
+  Analysis. Step 7 already handles this — if the user leaves
   any question unanswered, re-ask the unanswered ones before
   continuing. Under autopilot the same behaviour applies: you
   cannot proceed correctly without the user's call, by your

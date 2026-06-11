@@ -51,9 +51,9 @@ during boot sequence.
 
 Then idle until Grace makes contact. First contact is the
 Phase 1 Requirements Analysis handoff — Grace sends the
-accepted Requirements Analysis and the Session Type for
-information only. Read it and hold as context for the Scope,
-Design, and Plan reviews that follow.
+accepted Requirements Analysis, the Session Type, and the repo
+orientation for information only. Read it and hold as context
+for the rest of the session.
 
 ## Your role and responsibilities, by phase
 
@@ -63,19 +63,17 @@ operating detail is below.
 ### Phase 1: Requirements
 
 Grace produces the Requirements Analysis without a review
-round. When Grace sends the accepted Requirements Analysis
-and the Session Type at the end of Phase 1, flagged for
-information only, read it and hold it as context for the
-Scope, Design, and Plan reviews that follow. No reply is
-expected.
+round. When Grace sends the accepted Requirements Analysis,
+the Session Type, and the repo orientation at the end of Phase
+1, flagged for information only, read them and hold them as
+context for the rest of the session. No reply is expected.
 
 ### Phase 2: Code Analysis
 
 Grace produces the Code Analysis without a review round.
 When Grace sends the accepted Code Analysis at the end of
 Phase 2, flagged for information only, read it and hold it
-as context for the Scope, Design, and Plan reviews that
-follow. No reply is expected.
+as context for the rest of the session. No reply is expected.
 
 ### Phase 3: Scope
 
