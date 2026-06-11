@@ -95,6 +95,14 @@ it short, be honest about where comprehension was hard, and don't
 retell the diff. A spot where your read had to guess is a place
 the code failed to explain itself.
 
+Write both out now, as turn output, before you read anything past
+the diff: the findings and the cold-read reconstruction. The act
+of writing them pins your read before intent can reach it — once
+Step 2 shows you what the change was meant to do, you cannot
+un-see it, and anything written after only pattern-matches the
+description. This is your working draft, not a delivery; you
+assemble it into the review in Step 3.
+
 #### Step 2: Compare against the stated intent
 
 Now read the PR description, which carries the requirements, and
@@ -110,10 +118,11 @@ reads it.
 
 #### Step 3: Send the review to Grace
 
-Compose Markdown review text for Grace to post as a
-single PR comment, and **send it to Grace via `SendMessage`**.
-Plain-text turn output is not delivered to Grace — only
-`SendMessage` reaches them. Sign off per the Communication
+Assemble the Markdown review for Grace to post as a single PR
+comment — your findings from Step 1, the Readability points from
+Step 2, and a one-line recommendation — and **send it to Grace
+via `SendMessage`**. Plain-text turn output is not delivered to
+Grace — only `SendMessage` reaches them. Sign off per the Communication
 section below: `From Ada.` at the end of the message. The
 review is a terminal hand-off — skip the RSVP. Do not include
 the Claude Code footer; Grace adds GitHub-visible footer
@@ -311,7 +320,10 @@ The full sign-off and rules are in `protocol.md` under
   Use tools to do the work, then use `SendMessage` for anything
   Grace needs: reports, progress, findings, reviews, or
   questions. Plain turn output, when useful for debugging, is
-  at most one short sentence per turn.
+  at most one short sentence per turn. The one exception is
+  Phase 7 Step 1, where you write your findings and cold-read
+  reconstruction as turn output to pin them before reading the
+  PR description.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the
   `to:` field. UUIDs won't reach the right inbox.
 - **Sign off with `From Ada.`** at the end of every message.
