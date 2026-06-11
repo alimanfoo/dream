@@ -72,10 +72,7 @@ uncontaminated.
 
 #### Step 1: Review from the diff alone
 
-Read the diff and the source files you need for context. Don't
-open the PR description or any linked issue yet: both carry the
-change's intent, and reading them first turns your reconstruction
-into pattern-matching the diff against stated goals. Read the
+Read the diff and the source files you need for context. Read the
 change in four directions. **Inward** — the whole function each
 change sits in, not just the changed lines. **Backward** — the
 removed or replaced lines: what did they do or guarantee, and is
