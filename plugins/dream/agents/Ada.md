@@ -97,7 +97,7 @@ the code failed to explain itself.
 
 #### Step 2: Compare against the stated intent
 
-Now open the PR description, which carries the requirements, and
+Now read the PR description, which carries the requirements, and
 any linked issue. Compare the stated intent against your
 reconstruction and report where the two diverge. You hold both
 freshly — what you read the change to do, and what it was meant
