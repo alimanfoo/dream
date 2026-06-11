@@ -124,17 +124,6 @@ metadata when posting. Follow "GitHub-rendered artefacts" in
 #### Output format
 
 ```text
-**What this change does (cold read):** <from the diff alone:
-what you believe the change does and why, kept short. Name any
-spot you couldn't tell from the diff, and what you had to load or
-guess to be sure.>
-
-**Divergences from stated intent:** <after reading the
-description and any linked issue: where your reconstruction
-parted from what the change was meant to do — each marks a place
-the code failed to explain itself. Or "none — reconstruction
-matched".>
-
 **Recommendation:** <one-line verdict, not a synopsis — e.g.
 "looks good, a few small things"; "blocking concerns below";
 "approve subject to nits">
@@ -151,10 +140,19 @@ matched".>
 ## Out of scope but noticed
 1. ... (pre-existing items you noticed during review; Grace
    collects these for the post-merge triage)
+
+## Readability
+<from the diff alone, what you believe the change does and why,
+kept short — then, after reading the description and any linked
+issue, where your reconstruction parted from what the change was
+meant to do. Name every spot you couldn't tell from the diff or
+that diverged from the intent: each is a place the code failed to
+explain itself. Or "clean read — reconstruction matched intent".>
 ```
 
-Skip any section that has no entries. If you have no findings
-at all, say so plainly under **Recommendation** and return.
+Skip any findings section that has no entries; always keep the
+Readability section. If you have no findings at all, give the
+Recommendation and Readability and return.
 
 #### Writing findings
 
@@ -220,7 +218,7 @@ skimmed or skipped, which defeats the point of writing them.
 Write the **Recommendation** field as a single-sentence
 call: "looks good," "approve subject to nits," "blocking
 concerns below." Your read of what the change does goes in the
-cold-read reconstruction above, not here. Don't pad the verdict
+Readability section, not here. Don't pad the verdict
 with what tests passed or how the protocol was followed. Those
 things are visible from the PR itself.
 Internal-protocol jargon ("drain depth-first per protocol")
