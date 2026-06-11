@@ -249,10 +249,9 @@ work — give them real detail.
 Test the new intent the session input carries against the
 existing intent. The orientation names what the repo delivers,
 and the consumer-lens read shows what its surfaces already
-serve. Ask whether the proposed work serves that product, or
-builds out the supporting infrastructure as if it were the
-product itself; and whether its value is evidenced by the
-existing goals or only asserted by the input. Where it doesn't
+serve. Ask whether the proposed work serves that product, and
+whether its value is evidenced by the existing goals or only
+asserted by the input. Where it doesn't
 cohere or the value isn't evidenced, surface that — as a
 non-goal or an open question — rather than carrying the intent
 through unexamined. The user decides at the gate.
