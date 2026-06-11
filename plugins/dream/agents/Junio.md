@@ -76,8 +76,7 @@ Grace produces the Requirements Analysis without a review
 round. When Grace sends the accepted Requirements Analysis,
 the Session Type, and the repo orientation at the end of Phase
 1, flagged for information only, read them and hold them as
-context for the rest of the session. The orientation says what
-the repo is for and what its product is. No reply is expected.
+context for the rest of the session. No reply is expected.
 
 ### Phase 2: Code Analysis
 
