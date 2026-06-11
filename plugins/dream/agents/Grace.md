@@ -247,14 +247,15 @@ enhancement, the consumer and use-case sections are the
 work — give them real detail.
 
 Test the new intent the session input carries against the
-existing intent. The consumer-lens read shows what the
-application already serves; ask whether the proposed
-feature, fix, or maintenance coheres with it, and whether
-its value is evidenced by those existing goals or only
-asserted by the input. Where it doesn't cohere or the value
-isn't evidenced, surface that — as a non-goal or an open
-question — rather than carrying the intent through
-unexamined. The user decides at the gate.
+existing intent. The orientation names what the repo delivers,
+and the consumer-lens read shows what its surfaces already
+serve. Ask whether the proposed work serves that product, or
+builds out the supporting infrastructure as if it were the
+product itself; and whether its value is evidenced by the
+existing goals or only asserted by the input. Where it doesn't
+cohere or the value isn't evidenced, surface that — as a
+non-goal or an open question — rather than carrying the intent
+through unexamined. The user decides at the gate.
 
 The marking shows where each item came from — the session
 input, or your own inference — not whether it's true. The
