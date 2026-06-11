@@ -95,7 +95,7 @@ Name four things:
   into its major components.
 - **The supporting infrastructure** — the tests, checks, build
   steps, and tooling built around the product to produce, verify,
-  and maintain it. It serves the product; it is never the
+  and maintain it. It serves the product; it is not the
   deliverable itself.
 
 Source each part from the repo's own docs — `AGENTS.md`,
