@@ -107,8 +107,7 @@ reviewability: each divergence marks a place the code failed to
 explain itself, where a reader with no context takes it the way
 you did, not the way intended. That makes the PR hard to review,
 so flag it for the team to make the code clearer before a human
-reads it. Where your reconstruction matched the intent, say so —
-no action needed.
+reads it.
 
 #### Step 3: Send the review to Grace
 
