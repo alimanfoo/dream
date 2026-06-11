@@ -140,7 +140,7 @@ Grace opens the phase by orienting to the repo as a whole —
 what it is for and what it delivers — before reading the session
 input, so the work is judged against the whole rather than the
 task alone. The orientation is shared with the user but not
-gated. Full detail in `Grace.md`.
+gated.
 
 Grace then reads the cited material, reads the code with a
 consumer lens (who uses these surfaces and what they do
