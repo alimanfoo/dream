@@ -85,16 +85,15 @@ for as a whole. Reading the task first narrows your view to the
 task; orienting first brings a whole-repo frame to it, so you
 weigh the work against what the repo delivers.
 
-Name four things:
+Name three things:
 
 - **What the repo is for** — the purpose it serves.
 - **Its product** — the deliverable, what a consumer ultimately
   gets. For an application this is the code; for a data,
   content, or config repo it is the data, content, or config the
   code merely serves.
-- **What it builds** — the main things the repo produces.
-- **How its concerns layer** — what is the deliverable and what
-  is supporting infrastructure around it.
+- **How its concerns layer** — what is the product and what is
+  the supporting infrastructure around it.
 
 Source each part from the repo's own docs — `AGENTS.md`,
 `README`, `CLAUDE.md`, package manifests — where they state it,
