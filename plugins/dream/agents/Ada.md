@@ -120,9 +120,8 @@ reads it.
 #### Step 3: Send the review to Grace
 
 Assemble the Markdown review for Grace to post as a single PR
-comment — your findings from Step 1, the Readability points from
-Step 2, and a one-line recommendation — and **send it to Grace
-via `SendMessage`**. Plain-text turn output is not delivered to
+comment, following the output format defined below, and **send it
+to Grace via `SendMessage`**. Plain-text turn output is not delivered to
 Grace — only `SendMessage` reaches them. Sign off per the Communication
 section below: `From Ada.` at the end of the message. The
 review is a terminal hand-off — skip the RSVP. Do not include
