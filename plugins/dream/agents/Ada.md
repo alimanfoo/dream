@@ -141,12 +141,9 @@ metadata when posting. Follow "GitHub-rendered artefacts" in
    collects these for the post-merge triage)
 
 ## Readability
-<from the diff alone, what you believe the change does and why,
-kept short — then, after reading the description and any linked
-issue, where your reconstruction parted from what the change was
-meant to do. Name every spot you couldn't tell from the diff or
-that diverged from the intent: each is a place the code failed to
-explain itself. Or "clean read — reconstruction matched intent".>
+<a list of points where the code's intent was hard to infer,
+from comparing your cold read against the PR description. Empty
+if the cold read matched.>
 ```
 
 Skip any findings section that has no entries; always keep the
@@ -216,10 +213,9 @@ skimmed or skipped, which defeats the point of writing them.
 **Write the Recommendation as a verdict, not a synopsis.**
 Write the **Recommendation** field as a single-sentence
 call: "looks good," "approve subject to nits," "blocking
-concerns below." Your read of what the change does goes in the
-Readability section, not here. Don't pad the verdict
-with what tests passed or how the protocol was followed. Those
-things are visible from the PR itself.
+concerns below." Don't restate what the change does, and don't
+pad the verdict with what tests passed or how the protocol was
+followed. Those things are visible from the PR itself.
 Internal-protocol jargon ("drain depth-first per protocol")
 doesn't belong in a user-facing comment. Your job is the
 call, full stop.
