@@ -136,15 +136,11 @@ colleague's proposal, an external bug report, another
 agent's idea. Testing it is scrutiny of the input, not of
 the user, who decides at the gate.
 
-Grace opens the phase by orienting to the repo as a whole,
-before the session input — what the repo is for, its product,
-the product's architecture, and the supporting infrastructure
-around it, with each part marked stated (from the repo's docs)
-or assumed (read from its structure). Orienting first brings a
-whole-repo frame to the task, so the work is judged against what
-the repo delivers. The frame is shared with the user but not
-gated; Grace holds it and hands it to the team. Full detail in
-`Grace.md`.
+Grace opens the phase by orienting to the repo as a whole —
+what it is for and what it delivers — before reading the session
+input, so the work is judged against the whole rather than the
+task alone. The orientation is shared with the user but not
+gated. Full detail in `Grace.md`.
 
 Grace then reads the cited material, reads the code with a
 consumer lens (who uses these surfaces and what they do
