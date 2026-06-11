@@ -83,18 +83,17 @@ they do or guarantee, and is it still handled? **Outward** — the
 callers and callees of changed symbols. **Lateral** — parallel
 sites, sibling files or parallel functions, that mirror the
 change. These say where to look, not what to find; judge what
-matters yourself.
+matters yourself. This pass is your code review proper:
+correctness, coherence, and anything a careful reviewer would
+flag, formed from the diff before intent can colour it.
 
-This pass is your code review proper: correctness, coherence, and
-anything a careful reviewer would flag, formed from the diff
-before intent can colour it. Alongside the findings, write the
-cold-read reconstruction from the diff alone: what you believe
-the change does and why, naming every spot where the diff didn't
-let you tell, where you had to load context or guess. It is a
-measurement, not a summary: keep it short, be honest about where
-comprehension was hard, and don't retell the diff. A spot where
-your read had to guess is a place the code failed to explain
-itself.
+Alongside the findings, write the cold-read reconstruction from
+the diff alone: what you believe the change does and why, naming
+every spot where the diff didn't let you tell, where you had to
+load context or guess. It is a measurement, not a summary: keep
+it short, be honest about where comprehension was hard, and don't
+retell the diff. A spot where your read had to guess is a place
+the code failed to explain itself.
 
 #### Step 2: Compare against the stated intent
 
