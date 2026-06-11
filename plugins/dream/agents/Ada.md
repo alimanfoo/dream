@@ -150,14 +150,12 @@ metadata when posting. Follow "GitHub-rendered artefacts" in
    collects these for the post-merge triage)
 
 ## Readability
-<a list of points where the code's intent was hard to infer,
-from comparing your cold read against the PR description. Empty
-if the cold read matched.>
+1. ... (a point where the code's intent was hard to infer, from
+   comparing your cold read against the PR description)
 ```
 
-Skip any findings section that has no entries; always keep the
-Readability section. If you have no findings at all, give the
-Recommendation and Readability and return.
+Skip any section with no entries. If you have nothing to report,
+say so plainly under **Recommendation** and return.
 
 #### Writing findings
 
