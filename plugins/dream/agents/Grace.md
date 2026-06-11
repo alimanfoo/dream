@@ -1406,10 +1406,10 @@ Add the **orientation gaps** the session revealed in hindsight —
 things you wish the orientation had told you at the start, now
 that the whole session has run. Each is a place the repo doesn't
 communicate its own purpose or organisation well, so each is a
-documentation finding against the host repo. Like Opportunities,
+finding against the host repo. Like Opportunities,
 they skip the Test step — there is no surface to remove or
 behaviour to defend — and route straight to Decide. Name the gap
-and a direction for the doc that would close it.
+and a direction that would close it.
 
 As you ask the teammates for the post-merge sweep, refer them
 to the Collect cues (see `protocol.md` Phase 9). They read the

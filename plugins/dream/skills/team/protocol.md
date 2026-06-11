@@ -439,8 +439,7 @@ out of scope; Opportunities are worthwhile follow-up work the
 session's own work suggests. Grace also contributes the
 orientation gaps the session revealed in hindsight — things she
 wishes the orientation had told her at the start, seen now that
-the whole session has run — as documentation findings against
-the host repo.
+the whole session has run — as findings against the host repo.
 Findings are tested (defend behaviour, removal question);
 Opportunities skip those defect tests. Grace decides each (drop /
 reinforce / re-frame / file fresh) with user acceptance before
