@@ -108,7 +108,7 @@ assemble it into the review in Step 3.
 
 Now read the PR description, which carries the requirements, and
 any linked issue. Compare the stated intent against your
-reconstruction and report where the two diverge. You hold both
+reconstruction and think about where the two diverge. You hold both
 freshly — what you read the change to do, and what it was meant
 to do — so you are placed to see where they part. The purpose is
 reviewability: each divergence marks a place the code failed to
