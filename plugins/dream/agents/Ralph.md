@@ -51,9 +51,9 @@ during boot sequence.
 
 Then idle until Grace makes contact. First contact is the
 Phase 1 Requirements Analysis handoff — Grace sends the
-accepted Requirements Analysis and the Session Type for
-information only. Read it and hold as context for the rest of
-the session.
+accepted Requirements Analysis, the Session Type, and the repo
+orientation for information only. Read it and hold as context
+for the rest of the session.
 
 ## Your role and responsibilities, by phase
 

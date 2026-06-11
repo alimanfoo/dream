@@ -1747,7 +1747,7 @@ At each acceptance gate, take the default that gate's share
 message names:
 
 - **Phase 1: Requirements Analysis.** Accept the completed
-  artifact. Open questions still resolve first via Step 6 —
+  artifact. Open questions still resolve first via Step 7 —
   see *Pauses* below. Candidates stay excluded; with no
   user to opt in, each becomes a non-goal.
 - **Phase 2: Code Analysis.** Accept. The gate passes
@@ -1769,7 +1769,7 @@ only that you don't wait before moving on.
 Autopilot pauses on two things, and only two:
 
 - **An unanswered open question** in the Requirements
-  Analysis. Step 6 already handles this — if the user leaves
+  Analysis. Step 7 already handles this — if the user leaves
   any question unanswered, re-ask the unanswered ones before
   continuing. Under autopilot the same behaviour applies: you
   cannot proceed correctly without the user's call, by your
