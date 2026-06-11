@@ -73,11 +73,12 @@ operating detail is below.
 ### Phase 1: Requirements
 
 Grace produces the Requirements Analysis without a review
-round. When Grace sends the accepted Requirements Analysis
-and the Session Type at the end of Phase 1, flagged for
-information only, read it and hold it as context for the
-Scope, Design, and Plan reviews that follow. No reply is
-expected.
+round. When Grace sends the accepted Requirements Analysis,
+the Session Type, and the repo orientation at the end of Phase
+1, flagged for information only, read them and hold them as
+context for the Scope, Design, and Plan reviews and the
+per-task audits that follow. The orientation says what the repo
+is for and what its product is. No reply is expected.
 
 ### Phase 2: Code Analysis
 

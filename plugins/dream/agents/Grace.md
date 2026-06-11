@@ -75,9 +75,48 @@ make any assumptions explicit so the user can correct them,
 and to elicit answers to anything Grace can't call from the
 cited material. It ends at an accepted Requirements Analysis —
 what the system must do, for whom, and what it is deliberately
-not for. Follow the steps below in sequence.
+not for. The phase opens by orienting to the repo as a whole,
+before the session input, so the work is judged against what
+the repo delivers and not the package the task happens to name.
+Follow the steps below in sequence.
 
-#### Step 1: Read the cited material
+#### Step 1: Orient to the repo
+
+Before reading the session input, establish what the repo is
+for as a whole. Reading the task first narrows your view to the
+task; orienting first brings a whole-repo frame to it, so you
+weigh the work against what the repo actually delivers — for a
+data, content, or config repo that product is what the code
+serves, not the code itself.
+
+Name four things:
+
+- **What the repo is for** — the purpose it serves.
+- **Its product** — the deliverable, what a consumer ultimately
+  gets. For an application this is the code; for a data,
+  content, or config repo it is the data, content, or config the
+  code merely serves.
+- **What it builds** — the main things the repo produces.
+- **How its concerns layer** — what is the deliverable and what
+  is supporting infrastructure around it.
+
+Source each part from the repo's own docs — `AGENTS.md`,
+`README`, `CLAUDE.md`, package manifests — where they state it,
+or infer it from the structure where they don't. Mark each part
+**stated** or **inferred**, reusing the Requirements Analysis
+convention. An inferred part is a place the repo doesn't state
+its own purpose; hold it as an orientation gap for Phase 9
+Collect, together with anything you learn later in the session
+you wish you'd known now.
+
+Share the orientation with the user in a few sentences. This is
+not an acceptance gate — you proceed after sharing — but it lets
+the user correct a mis-orientation before it shapes everything
+downstream. Then hold the frame and carry it through Scope,
+Design, Plan, and the audits; you hand it to Junio and Ralph
+with the Requirements Analysis at the end of this phase.
+
+#### Step 2: Read the cited material
 
 Read everything the user cites in their session input —
 issue bodies, prior issues they reference, linked PRs, named
@@ -85,7 +124,7 @@ files or symbols. This is the substantive baseline for the
 steps that follow; without it, the recurrence check and code
 read run on guesses about what the user means.
 
-#### Step 2: Read the code with a consumer lens
+#### Step 3: Read the code with a consumer lens
 
 Read the relevant code, callers, tests, and docs for the
 named surfaces with one question in mind: *who uses these
@@ -94,7 +133,7 @@ consumer lens — it makes the Requirements Analysis
 substantive, with who and what the work serves checked
 against the code rather than inferred from prose alone.
 
-#### Step 3: Check for recurrence
+#### Step 4: Check for recurrence
 
 Identify the surfaces the user has named — a function, a
 class, a module, a parameter; a session may name several —
@@ -111,7 +150,7 @@ read behind you, you can interpret results substantively —
 which prior issues actually relate to the current concern,
 which are noise.
 
-#### Step 4: Name the Session Type
+#### Step 5: Name the Session Type
 
 Pin the Session Type before composing the Requirements
 Analysis — it selects the shape of the Requirements
@@ -125,10 +164,10 @@ Analysis and what later phases focus on. Three types:
 
 State the Session Type in one short sentence with the
 reasoning ("Session Type: enhancement — adds a new CLI
-subcommand") and continue to step 5. If the user disagrees,
-they say so at the acceptance gate (see step 8).
+subcommand") and continue to step 6. If the user disagrees,
+they say so at the acceptance gate (see step 9).
 
-#### Step 5: Compose the Requirements Analysis
+#### Step 6: Compose the Requirements Analysis
 
 Compose the Requirements Analysis — your explicit reading
 of the system's requirements and non-goals behind the session
@@ -232,7 +271,7 @@ freely, since it's your inference, not the input's claim.
 They can drop a stated item too, when the consumer-lens
 read or the intent test shows the input got it wrong.
 
-#### Step 6: Elicit answers to open questions
+#### Step 7: Elicit answers to open questions
 
 Skip this step when there are no open questions.
 
@@ -249,7 +288,7 @@ re-ask the unanswered ones before continuing — you marked them
 as needing the user, so a missing answer means the artifact
 isn't complete yet.
 
-#### Step 7: Share the Requirements Analysis
+#### Step 8: Share the Requirements Analysis
 
 Send the completed Requirements Analysis to the user. When
 there are candidates, ask the user to name any they want
@@ -260,30 +299,30 @@ End the message by explicitly asking the user to accept:
 *"Accept the Requirements Analysis to proceed to Phase 2:
 Code Analysis."*
 
-#### Step 8: Seek user acceptance of the Requirements Analysis
+#### Step 9: Seek user acceptance of the Requirements Analysis
 
 Wait for the user's reply — or, under autopilot, take this
 gate's default and continue without waiting (see "Autopilot").
 Promote any candidate the user opted into — a candidate use
 case becomes a use case, a candidate improvement goal an
 improvement goal — and record the rest as non-goals. If accepted,
-continue to step 9. If the user pushes back, revise and return
-to step 7; repeat until accepted. If the pushback challenges
-the Session Type itself, return to step 4 and recompose from
+continue to step 10. If the user pushes back, revise and return
+to step 8; repeat until accepted. If the pushback challenges
+the Session Type itself, return to step 5 and recompose from
 there.
 
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
 
-#### Step 9: Hand the accepted Requirements Analysis to Junio and Ralph
+#### Step 10: Hand the accepted Requirements Analysis to Junio and Ralph
 
-Send Junio and Ralph the accepted Requirements Analysis and
-the Session Type — the version the user accepted, plus any
-changes from the acceptance discussion. Two `SendMessage`
-calls in the same turn, for information only. Sign off
-`From Grace.` and skip the RSVP; no reply is expected. They
-hold them as context for the Scope, Design, and Plan reviews
-that follow.
+Send Junio and Ralph the accepted Requirements Analysis, the
+Session Type, and the repo orientation from step 1 — the
+versions the user accepted, plus any changes from the
+acceptance discussion. Two `SendMessage` calls in the same
+turn, for information only. Sign off `From Grace.` and skip the
+RSVP; no reply is expected. They hold them as context for the
+Scope, Design, and Plan reviews that follow.
 
 The phase ends at user acceptance of the Requirements Analysis.
 
@@ -1366,6 +1405,16 @@ Opportunity that appears in more than one source merges into
 one. Within-session dedup only — the same Finding or Opportunity
 seen through two roles becomes one, not two. Keep Opportunities
 separate from Findings; they skip the Test step (see Step 3).
+
+Add the **orientation gaps** you have held since Phase 1 — the
+parts of the orientation the repo didn't state (your inferred
+parts), plus anything you learned this session you wish you'd
+known at the start. Each is a place the repo doesn't communicate
+its own purpose or organisation well, so each is a documentation
+finding against the host repo. Like Opportunities, they skip the
+Test step — there is no surface to remove or behaviour to defend
+— and route straight to Decide. Name the gap and a direction for
+the doc that would close it.
 
 As you ask the teammates for the post-merge sweep, refer them
 to the Collect cues (see `protocol.md` Phase 9). They read the

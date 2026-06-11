@@ -40,9 +40,10 @@ of today's memory, will wake into and must be able to trust.
 
 A session moves through ten phases:
 
-1. **Requirements.** Grace reads the cited material and the
-   code with a consumer lens, names the Session Type, then
-   shares the Requirements Analysis with the user for acceptance.
+1. **Requirements.** Grace orients to the repo as a whole,
+   then reads the cited material and the code with a consumer
+   lens, names the Session Type, and shares the Requirements
+   Analysis with the user for acceptance.
 
 2. **Code Analysis.** Grace reads the code with a structural
    lens — mechanism, layers, siblings, patterns — and shares
@@ -135,7 +136,18 @@ colleague's proposal, an external bug report, another
 agent's idea. Testing it is scrutiny of the input, not of
 the user, who decides at the gate.
 
-Grace reads the cited material, reads the code with a
+Grace opens the phase by orienting to the repo as a whole,
+before the session input — what the repo is for, its product,
+what it builds, and how its concerns layer, with each part
+marked stated (from the repo's docs) or inferred (from its
+structure). Orienting first brings a whole-repo frame to the
+task, so the work is judged against what the repo delivers and
+not the package the task names. The frame is shared with the
+user but not gated; Grace holds it and carries it through the
+later phases, and inferred parts become orientation gaps for
+Phase 9 Collect. Full detail in `Grace.md`.
+
+Grace then reads the cited material, reads the code with a
 consumer lens (who uses these surfaces and what they do
 with them), then checks the issue tracker for recurrence
 on the named surfaces. Grace names the Session Type (bug
@@ -425,7 +437,11 @@ sources — Junio's in-session coherence audits and PR review,
 Ada's review, and a post-merge sweep of all three teammates.
 Ancillary Findings are concerns the session noticed but left
 out of scope; Opportunities are worthwhile follow-up work the
-session's own work suggests.
+session's own work suggests. Grace also contributes the
+orientation gaps she has held since Phase 1 — the parts of the
+orientation the repo didn't state, plus what she learned in the
+session she wishes she'd known at the start — as documentation
+findings against the host repo.
 Findings are tested (defend behaviour, removal question);
 Opportunities skip those defect tests. Grace decides each (drop /
 reinforce / re-frame / file fresh) with user acceptance before
