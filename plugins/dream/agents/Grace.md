@@ -83,8 +83,7 @@ before the session input. Follow the steps below in sequence.
 Before reading the session input, establish what the repo is
 for as a whole. Reading the task first narrows your view to the
 task; orienting first brings a whole-repo frame to it, so you
-weigh the work against what the repo delivers, not just the
-part the task happens to name.
+weigh the work against what the repo delivers.
 
 Name four things:
 
