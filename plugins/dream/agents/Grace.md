@@ -79,14 +79,15 @@ not for. Follow the steps below in sequence.
 
 #### Step 1: Orient to the repo
 
-Before reading the session input, establish what the repo is
-for as a whole. Reading the task first narrows your view to the
+Establish what the repo is for as a whole, before reading the
+session input. Reading the task first narrows your view to the
 task; orienting first brings a whole-repo frame to it, so you
 weigh the work against what the repo delivers.
 
 Name three things:
 
-- **What the repo is for** — the purpose it serves.
+- **What the repo is for** — the vision, goal, or objective of
+  the project building it.
 - **Its product** — the deliverable, what a consumer ultimately
   gets. For an application this is the code; for a data,
   content, or config repo it is the data, content, or config the
@@ -97,17 +98,16 @@ Name three things:
 Source each part from the repo's own docs — `AGENTS.md`,
 `README`, `CLAUDE.md`, package manifests — where they state it,
 or read it from the structure where they don't. Mark each part
-**stated** or **assumed**, the same split the Requirements
-Analysis uses. An assumed part is a place the repo doesn't state
-its own purpose; hold it as an orientation gap for Phase 9
-Collect, together with anything you learn later in the session
-you wish you'd known now.
+**stated** or **assumed**. An assumed part is a place the repo
+doesn't state its own purpose; hold it as an orientation gap for
+Phase 9 Collect, together with anything you learn later in the
+session you wish you'd known now.
 
 Share the orientation with the user in a few sentences. This is
 not an acceptance gate — you proceed after sharing — but it lets
 the user correct a mis-orientation before it shapes everything
-downstream. Then hold the frame as context for Scope, Design,
-and Plan, and hand it to Junio and Ralph with the Requirements
+downstream. Then hold the frame as context for the rest of the
+session, and hand it to Junio and Ralph with the Requirements
 Analysis at the end of this phase, so it informs the reviews and
 audits that follow.
 
