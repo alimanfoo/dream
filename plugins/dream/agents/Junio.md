@@ -84,8 +84,7 @@ the repo is for and what its product is. No reply is expected.
 Grace produces the Code Analysis without a review round.
 When Grace sends the accepted Code Analysis at the end of
 Phase 2, flagged for information only, read it and hold it
-as context for the Scope, Design, and Plan reviews that
-follow. No reply is expected.
+as context for the rest of the session. No reply is expected.
 
 ### Phase 3: Scope
 

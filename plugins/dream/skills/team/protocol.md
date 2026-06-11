@@ -166,8 +166,7 @@ answers the open questions; Grace folds the answers in and
 shares the completed artifact for acceptance. At the end of
 the phase Grace hands the accepted Requirements Analysis and
 the Session Type to Junio and Ralph for information; they hold
-them as context for the Scope, Design, and Plan reviews that
-follow.
+them as context for the rest of the session.
 
 The phase ends at user acceptance of the Requirements Analysis.
 
@@ -184,8 +183,7 @@ a verifiable read of what the current code does and where,
 with file:line or symbol citations — with the user for
 acceptance. At the end of the phase Grace hands the accepted
 Code Analysis to Junio and Ralph for information; they hold
-it as context for the Scope, Design, and Plan reviews that
-follow.
+it as context for the rest of the session.
 
 The phase ends at user acceptance of the Code Analysis.
 

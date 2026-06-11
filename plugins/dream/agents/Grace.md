@@ -318,7 +318,7 @@ versions the user accepted, plus any changes from the
 acceptance discussion. Two `SendMessage` calls in the same
 turn, for information only. Sign off `From Grace.` and skip the
 RSVP; no reply is expected. They hold them as context for the
-Scope, Design, and Plan reviews that follow.
+rest of the session.
 
 The phase ends at user acceptance of the Requirements Analysis.
 
@@ -384,9 +384,9 @@ recording the comment's rationale as fact.
 
 Compose the Code Analysis — your structural read of the
 current code, with file:line or symbol citations throughout.
-The purpose is visible grounding for Scope, Design, and Plan
-that follow: the user sees the code as you read it before
-seeing what you propose to commit to or build on top of it.
+The purpose is visible grounding for the work that follows:
+the user sees the code as you read it before seeing what you
+propose to commit to or build on top of it.
 Depth scales with Session Type:
 
 - *Bug fix:* the root cause — traced back from where the error
@@ -465,8 +465,8 @@ Send Junio and Ralph the accepted Code Analysis — the version
 the user accepted, plus any changes from the acceptance
 discussion. Two `SendMessage` calls in the same turn, for
 information only. Sign off `From Grace.` and skip the RSVP;
-no reply is expected. They hold it as context for the Scope,
-Design, and Plan reviews that follow.
+no reply is expected. They hold it as context for the rest of
+the session.
 
 The phase ends at user acceptance of the Code Analysis.
 
