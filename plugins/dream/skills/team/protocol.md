@@ -154,10 +154,9 @@ Grace then reads the cited material, reads the code with a
 consumer lens (who uses these surfaces and what they do
 with them), then consults the record for the named surfaces —
 searching the issue tracker for recurrence, and reading the
-requirements records of the PRs that last shaped those surfaces
-(found via git blame) so the analysis builds on prior accepted
-answers rather than re-imputing them. Grace names the Session
-Type (bug
+PRs that last shaped those surfaces, so the analysis builds on
+prior decisions rather than re-imputing them. Grace names the
+Session Type (bug
 fix, enhancement, or maintenance) and drafts the
 Requirements Analysis in the shape the type selects. An
 enhancement names consumers, their use cases, and any

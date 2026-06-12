@@ -153,8 +153,7 @@ against the code rather than inferred from prose alone.
 Consult the record for the surfaces the user has named — a
 function, a class, a module, a parameter; a session may name
 several — two ways: search the issue tracker for recurrence,
-and read the requirements records of the PRs that last shaped
-each surface.
+and read the PRs that last shaped each surface.
 
 **Recurrence.** Search the issue tracker for each surface:
 
@@ -164,12 +163,11 @@ gh issue list --state all --search '<surface>'
 
 If the search returns other issues on any of these surfaces
 (open or closed), or if the issue body cites prior closed
-issues, note what the prior context shows. With the code read
-behind you, you can interpret results substantively — which
-prior issues actually relate to the current concern, which are
-noise.
+issues, note what the prior context shows. Judge which prior
+issues actually relate to the current concern and read those
+too.
 
-**Prior requirements.** For each surface, `git blame` the
+**Prior PRs.** For each surface, `git blame` the
 relevant lines (or `git log` to follow their history) to find
 the PRs that last shaped them, then read each PR's description
 for the requirements record it carries:
@@ -180,15 +178,11 @@ gh pr view <N> --json body
 
 The link from line to PR is structural — git maintains it for
 free, so you reach the exact prior decisions without guessing
-search terms. A requirements record holds the consumers, use
-cases, and non-goals a prior session accepted for that surface.
-Carry those accepted answers into the Requirements Analysis
-rather than re-imputing them from the code — non-goals
-especially, which the code can't show at all. A retrieved
-record is cited material: an item drawn from it is stated,
-referenced to its PR. Many lines trace to PRs with no
-requirements record yet; that is expected as records
-accumulate, so retrieve where one exists and move on.
+search terms. Prior PRs may tell you more about the consumers,
+use cases, and non-goals for that surface. Carry that
+information into the Requirements Analysis. A retrieved record
+is cited material: an item drawn from it is stated, referenced
+to its PR.
 
 #### Step 5: Name the Session Type
 
