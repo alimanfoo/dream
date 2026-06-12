@@ -160,8 +160,8 @@ enhancement names consumers, their use cases, and any
 constraints the work must hold. A bug fix names the
 expected behaviour with its source, the observed behaviour
 as a claim for Phase 2 to verify, and the consumers
-affected. Maintenance names the behaviour to preserve and
-the improvement goals, each stated as a checkable property
+affected. Maintenance names the improvement goals and the
+behaviour to preserve, each stated as a checkable property
 of the code. Every shape marks each item stated or
 assumed, names any system non-goals, and carries any open
 questions Grace can't call from the cited material.

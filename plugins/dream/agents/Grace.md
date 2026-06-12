@@ -219,13 +219,13 @@ For a **bug fix**:
 
 For **maintenance**:
 
-- **Preserved behaviour** — the contract that must not
-  change, and the consumers who rely on it.
 - **Improvement goals** — what "better" means here, each
   stated as a checkable property of the code: "the
   valid-cases enumeration has one home", "no caller
   mentions the old name". A goal you can't state checkably
   is an open question, not a goal.
+- **Preserved behaviour** — the contract that must not
+  change, and the consumers who rely on it.
 
 Every shape also carries:
 
@@ -1151,7 +1151,7 @@ requirements analysis in the shape the Session Type selected:
 consumers, use cases, and any system non-goals for an
 enhancement; expected and observed behaviour and affected
 consumers for a bug fix;
-preserved behaviour and improvement goals for maintenance. Carry
+improvement goals and preserved behaviour for maintenance. Carry
 it near-verbatim from the accepted artifact. This is the most
 careful account of why the change exists, and it would otherwise
 be discarded when the session ends.
