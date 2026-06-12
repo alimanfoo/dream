@@ -217,11 +217,10 @@ Every shape also carries:
   you can point to what in the read suggests it; each cites
   that evidence, and a candidate use case also names the
   consumer it would serve. The user opts in to any they
-  want at the gate; the ones the user picks are promoted,
-  and the rest are dropped — declining a candidate is not a
-  statement that the system should never do it. A bug fix
-  carries no candidates — a related defect the read suggests
-  is an Ancillary Finding, not a requirement.
+  want at the gate. A candidate the user picks is promoted;
+  one the user explicitly drops is removed; one the user
+  neither picks nor drops is deferred to Collect (see
+  Phase 9).
 - **System non-goals** (when any are stated or strongly
   implied) — what the product is deliberately not built for,
   given what it is for: a consumer it will never serve, a
@@ -284,7 +283,9 @@ isn't complete yet.
 
 Send the completed Requirements Analysis to the user. When
 there are candidates, ask the user to name any they want
-included — by number — and note that the rest are dropped.
+included — by number. Note that any they don't name are
+carried forward as Opportunities to Collect (see Phase 9), and
+that they can ask to drop any outright.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Requirements Analysis to proceed to Phase 2:
@@ -296,7 +297,8 @@ Wait for the user's reply — or, under autopilot, take this
 gate's default and continue without waiting (see "Autopilot").
 Promote any candidate the user opted into — a candidate use
 case becomes a use case, a candidate improvement goal an
-improvement goal — and drop the rest. If accepted,
+improvement goal. Remove any the user explicitly dropped, and
+defer the rest to Collect (see Phase 9). If accepted,
 continue to step 10. If the user pushes back, revise and return
 to step 8; repeat until accepted. If the pushback challenges
 the Session Type itself, return to step 5 and recompose from
@@ -1406,6 +1408,14 @@ finding against the host repo. Like Opportunities, they skip
 the Test step and route straight to Decide. Name the gap and a
 direction that would close it.
 
+Add the **deferred candidates** from Phase 1 as Opportunities.
+These are candidate use cases or improvement goals the user
+neither promoted nor declined at the Requirements gate (see
+Phase 1 Step 6). Like other Opportunities, they skip the Test
+step and route straight to Decide, filed as follow-up work or
+dropped. Each carries the evidence you cited in Phase 1, so it
+is ready to file as is.
+
 As you ask the teammates for the post-merge sweep, refer them
 to the Collect cues (see `protocol.md` Phase 9). They read the
 cues once at boot, and by now that read has fallen from view;
@@ -1749,7 +1759,7 @@ message names:
 - **Phase 1: Requirements Analysis.** Accept the completed
   artifact. Open questions still resolve first via Step 7 —
   see *Pauses* below. Candidates stay excluded; with no
-  user to opt in, each is dropped.
+  user to opt in, each is deferred to Collect (see Phase 9).
 - **Phase 2: Code Analysis.** Accept. The gate passes
   without intervention.
 - **Phase 3: Session Scope.** Take the Coherent Scope. Don't
