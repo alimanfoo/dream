@@ -148,14 +148,15 @@ templates.
 Renaming or renumbering a phase, step, or concept ripples past
 the file you edit. Step headings carry the phase in the number —
 `Step 4.5` is phase 4, step 5 — and within-file references to a
-step are Markdown anchor links. So renumbering a step, or
-rewording its heading, changes its anchor and breaks every
-within-file link still pointing at the old one — and
+step or a named section are Markdown anchor links. So renumbering
+a step, or rewording any heading, changes its anchor and breaks
+every within-file link still pointing at the old one — and
 markdownlint's MD051 (run in pre-commit and CI) fails until they
-are fixed. That check covers within-file step links only; prose
-labels, cross-file references, and the protocol summary are
-plain text, so still grep every agent file and the protocol for
-the old name. `Junio.md` and `Ralph.md` run parallel for shared
+are fixed. That check covers within-file links only; cross-file
+references (`see "X" in protocol.md`), references to bold inline
+labels rather than headings, and the protocol summary are plain
+prose, so still grep every agent file and the protocol for the
+old name. `Junio.md` and `Ralph.md` run parallel for shared
 mechanics, so the same instruction often lives in both; edit
 them in lockstep.
 
