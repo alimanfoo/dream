@@ -89,10 +89,9 @@ The user opens with session input — an idea for a new
 feature, an issue or issues to address, a piece of code to
 tidy up, constraints, rough shape. When the boot sequence
 derived one or more issues from the worktree branch name, those
-issues are the session input — Grace states the assumption and
-opens the phase with them without waiting (see Boot sequence step
-3). Phase 1's job is to capture the system's requirements behind
-it, to make any assumptions explicit so the user can correct them,
+issues are the session input. Phase 1's job is to capture the
+system's requirements behind it, to make any assumptions explicit
+so the user can correct them,
 and to elicit answers to anything Grace can't call from the
 cited material. It ends at an accepted Requirements Analysis —
 what the system must do, for whom, and what it is deliberately
