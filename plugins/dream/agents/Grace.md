@@ -219,7 +219,7 @@ Every shape also carries:
   consumer it would serve. The user opts in to any they
   want at the gate. A candidate the user picks is promoted;
   one the user explicitly drops is removed; one the user
-  neither picks nor declines is deferred to Collect (see
+  neither picks nor drops is deferred to Collect (see
   Phase 9). A bug fix carries no candidates — a related defect
   the read suggests is an Ancillary Finding, not a requirement.
 - **System non-goals** (when any are stated or strongly
