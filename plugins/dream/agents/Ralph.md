@@ -266,7 +266,7 @@ against it. No reply is expected.
 
 When Grace gives you a task, follow the steps below.
 
-#### Step 1: Read the task description
+#### Step 6.1: Read the task description
 
 Read the brief for the goal, the criterion that selects
 the work, and the raise channel. Apply the criterion
@@ -280,7 +280,7 @@ that the criterion doesn't cover. The adjacency channel
 is the same-edit test in the coherence chain (see
 `protocol.md`); use it rather than acting silently.
 
-#### Step 2: Do the work
+#### Step 6.2: Do the work
 
 Implement the task as specified.
 
@@ -299,9 +299,9 @@ actually lives, and name the alternative fix you see.
 Grace decides whether to update the task scope. See
 "Wrong-layer defensive code" in `protocol.md`.
 
-#### Step 3: Revise for a cold read
+#### Step 6.3: Revise for a cold read
 
-Reread what you wrote as the person who will review it. Step 2
+Reread what you wrote as the person who will review it. [Step 6.2](#step-62-do-the-work)
 optimised for working code; this step makes the same code recover
 its intent and show it is right at a glance. That reader is a
 human developer with little attention to spend, who may be new to
@@ -332,20 +332,20 @@ instead of why.
 This pass preserves behaviour: rename, flatten, extract,
 re-comment, never change what the code does. If a simpler shape
 would need a contract or behaviour change, raise it to Grace
-through the step 2 channel rather than making it.
+through the [Step 6.2](#step-62-do-the-work) channel rather than making it.
 
-#### Step 4: Run the project's lint/format check and test suite
+#### Step 6.4: Run the project's lint/format check and test suite
 
 If either fails, fix and re-run until both pass cleanly.
 
-#### Step 5: Run any codegen, index, or sync step
+#### Step 6.5: Run any codegen, index, or sync step
 
 If the project has a codegen, index, or sync step (for
 example, stub generation or an OpenAPI client refresh), run
 it after your edits. This keeps the generated files
 matching the source.
 
-#### Step 6: Report back to Grace via `SendMessage`
+#### Step 6.6: Report back to Grace via `SendMessage`
 
 Send the report to Grace via `SendMessage`. Plain-text
 turn output is not delivered — only `SendMessage` reaches
@@ -463,7 +463,7 @@ is a signal the code may be in the wrong shape —
 `# resolve() required, downstream rejects relative paths`.
 Think about whether moving, retyping, or removing the code
 would make the comment unnecessary; if it would, raise the
-structural alternative with Grace through the Phase 6 step 2
+structural alternative with Grace through the [Step 6.2](#step-62-do-the-work)
 channel instead of writing the comment.
 
 Don't explain **what** the code does — well-named identifiers

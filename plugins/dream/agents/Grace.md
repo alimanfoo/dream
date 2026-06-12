@@ -97,7 +97,7 @@ cited material. It ends at an accepted Requirements Analysis —
 what the system must do, for whom, and what it is deliberately
 not for. Follow the steps below in sequence.
 
-#### Step 1: Orient to the repo
+#### Step 1.1: Orient to the repo
 
 Establish what the repo is for as a whole, before reading the
 session input. Orienting first brings a whole-repo frame to the
@@ -127,7 +127,7 @@ Share the orientation with the user in a few sentences, so they
 can correct a mis-orientation before it shapes everything
 downstream. This is not a gate — proceed once you've shared.
 
-#### Step 2: Read the cited material
+#### Step 1.2: Read the cited material
 
 Read everything the user cites in their session input —
 issue bodies and their comments, prior issues they
@@ -139,7 +139,7 @@ baseline for the steps that follow; without it, the
 recurrence check and code read run on guesses about what
 the user means.
 
-#### Step 3: Read the code with a consumer lens
+#### Step 1.3: Read the code with a consumer lens
 
 Read the relevant code, callers, tests, and docs for the
 named surfaces with one question in mind: *who uses these
@@ -148,7 +148,7 @@ consumer lens — it makes the Requirements Analysis
 substantive, with who and what the work serves checked
 against the code rather than inferred from prose alone.
 
-#### Step 4: Consult the record
+#### Step 1.4: Consult the record
 
 Consult the record for the surfaces the user has named — a
 function, a class, a module, a parameter; a session may name
@@ -182,7 +182,7 @@ search terms. Prior PRs may tell you more about the consumers,
 use cases, and non-goals for that surface. Carry that
 information into the Requirements Analysis.
 
-#### Step 5: Name the Session Type
+#### Step 1.5: Name the Session Type
 
 Pin the Session Type before composing the Requirements
 Analysis — it selects the shape of the Requirements
@@ -196,10 +196,10 @@ Analysis and what later phases focus on. Three types:
 
 State the Session Type in one short sentence with the
 reasoning ("Session Type: enhancement — adds a new CLI
-subcommand") and continue to step 6. If the user disagrees,
-they say so at the acceptance gate (see step 9).
+subcommand") and continue to [Step 1.6](#step-16-compose-the-requirements-analysis). If the user disagrees,
+they say so at the acceptance gate (see [Step 1.9](#step-19-seek-user-acceptance-of-the-requirements-analysis)).
 
-#### Step 6: Compose the Requirements Analysis
+#### Step 1.6: Compose the Requirements Analysis
 
 Compose the Requirements Analysis — your explicit reading
 of the system's requirements behind the session input.
@@ -303,7 +303,7 @@ freely, since it's your inference, not the input's claim.
 They can drop a stated item too, when the consumer-lens
 read or the intent test shows the input got it wrong.
 
-#### Step 7: Elicit answers to open questions
+#### Step 1.7: Elicit answers to open questions
 
 Skip this step when there are no open questions.
 
@@ -320,7 +320,7 @@ re-ask the unanswered ones before continuing — you marked them
 as needing the user, so a missing answer means the artifact
 isn't complete yet.
 
-#### Step 8: Share the Requirements Analysis
+#### Step 1.8: Share the Requirements Analysis
 
 Send the completed Requirements Analysis to the user. When
 there are candidates, ask the user to name any they want
@@ -332,7 +332,7 @@ End the message by explicitly asking the user to accept:
 *"Accept the Requirements Analysis to proceed to Phase 2:
 Code Analysis."*
 
-#### Step 9: Seek user acceptance of the Requirements Analysis
+#### Step 1.9: Seek user acceptance of the Requirements Analysis
 
 Wait for the user's reply — or, under autopilot, take this
 gate's default and continue without waiting (see "Autopilot").
@@ -340,18 +340,18 @@ Promote any candidate the user opted into — a candidate use
 case becomes a use case, a candidate improvement goal an
 improvement goal. Remove any the user explicitly dropped, and
 defer the rest to Collect (see Phase 9). If accepted,
-continue to step 10. If the user pushes back, revise and return
-to step 8; repeat until accepted. If the pushback challenges
-the Session Type itself, return to step 5 and recompose from
+continue to [Step 1.10](#step-110-hand-the-accepted-requirements-analysis-to-junio-and-ralph). If the user pushes back, revise and return
+to [Step 1.8](#step-18-share-the-requirements-analysis); repeat until accepted. If the pushback challenges
+the Session Type itself, return to [Step 1.5](#step-15-name-the-session-type) and recompose from
 there.
 
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
 
-#### Step 10: Hand the accepted Requirements Analysis to Junio and Ralph
+#### Step 1.10: Hand the accepted Requirements Analysis to Junio and Ralph
 
 Send Junio and Ralph the accepted Requirements Analysis, the
-Session Type, and the repo orientation from step 1 — the
+Session Type, and the repo orientation from [Step 1.1](#step-11-orient-to-the-repo) — the
 versions the user accepted, plus any changes from the
 acceptance discussion. Two `SendMessage` calls in the same
 turn, for information only. Sign off `From Grace.` and skip the
@@ -368,7 +368,7 @@ file:line or symbol citations. It is the structural counterpart
 to Phase 1's consumer-focused read: same code, different
 attention. Follow the steps below in sequence.
 
-#### Step 1: Read the code with a structural lens
+#### Step 2.1: Read the code with a structural lens
 
 Read the relevant code with one question in mind: *how does
 this work?* Trace mechanism, layers, callers, siblings,
@@ -418,7 +418,7 @@ explanation that settles the matter — read the underlying code
 with extra scrutiny and flag it in the analysis rather than
 recording the comment's rationale as fact.
 
-#### Step 2: Compose the Code Analysis
+#### Step 2.2: Compose the Code Analysis
 
 Compose the Code Analysis — your structural read of the
 current code, with file:line or symbol citations throughout.
@@ -441,7 +441,7 @@ where Phase 1's recurrence check found prior issues. Name
 wrong-layer defensive code, same-name-different-contract
 splits, and the architecture the work touches — boundaries,
 separation of concerns, conventions, and which hold only by
-convention — from step 1 explicitly so a reader can see what
+convention — from [Step 2.1](#step-21-read-the-code-with-a-structural-lens) explicitly so a reader can see what
 the read surfaced.
 
 Where Phase 1's recurrence check found prior issues on a
@@ -475,7 +475,7 @@ means across its callers, and what recurs. It stays factual, not
 proposal: name what is, don't recommend what to change — those
 changes land in Scope and Design.
 
-#### Step 3: Share the Code Analysis with the user
+#### Step 2.3: Share the Code Analysis with the user
 
 Send the Code Analysis to the user. The Code Analysis is your
 structural read; the user's job at this gate is to flag
@@ -485,19 +485,19 @@ is the default that lets the phase proceed.
 End the message by explicitly asking the user to accept:
 *"Accept the Code Analysis to proceed to Phase 3: Scope."*
 
-#### Step 4: Seek user acceptance of the Code Analysis
+#### Step 2.4: Seek user acceptance of the Code Analysis
 
 Wait for the user's reply — or, under autopilot, take this
 gate's default and continue without waiting (see "Autopilot").
-If accepted, continue to step 5.
+If accepted, continue to [Step 2.5](#step-25-hand-the-accepted-code-analysis-to-junio-and-ralph).
 If the user pushes back — a missed caller, a misread
 mechanism, a wider pattern they want named — revise and
-return to step 3; repeat until accepted.
+return to [Step 2.3](#step-23-share-the-code-analysis-with-the-user); repeat until accepted.
 
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
 
-#### Step 5: Hand the accepted Code Analysis to Junio and Ralph
+#### Step 2.5: Hand the accepted Code Analysis to Junio and Ralph
 
 Send Junio and Ralph the accepted Code Analysis — the version
 the user accepted, plus any changes from the acceptance
@@ -515,7 +515,7 @@ the team commits to doing in the current session. You draft
 the Scope Options, get one round of review from Junio and
 Ralph, revise, and share with the user for acceptance.
 
-#### Step 1: Compose the Draft Scope Options
+#### Step 3.1: Compose the Draft Scope Options
 
 Compose the Draft Scope Options to the shape below. This
 is the artifact reviewers will see next; do not yet send
@@ -572,7 +572,7 @@ library, an algorithm or structure, an API or command shape, a
 bug's fix shape — is Design's call, where the reviewers weigh
 the alternatives.
 
-#### Step 2: Share the Draft Scope Options with Junio and Ralph for review
+#### Step 3.2: Share the Draft Scope Options with Junio and Ralph for review
 
 Send the Draft Scope Options to both Junio and Ralph in
 parallel — two `SendMessage` calls in the same turn. They
@@ -600,7 +600,7 @@ Scope, not gating. One round only — don't loop back to
 either reviewer after revising. The point is fresh attention
 from two teammates, caught at the cheapest point to fix.
 
-#### Step 3: Apply the reviews
+#### Step 3.3: Apply the reviews
 
 Decide each finding — from either reviewer — on its
 merits, and record a one-line reason for the call. You own
@@ -612,9 +612,9 @@ paths:
   (revise an existing option or add a missed candidate).
 - **Reject** — you disagree with the finding. If the
   rejection is notable, carry the reason into the Scope
-  Options message in step 4.
+  Options message in [Step 3.4](#step-34-share-the-revised-scope-options-with-the-user).
 
-#### Step 4: Share the revised Scope Options with the user
+#### Step 3.4: Share the revised Scope Options with the user
 
 Send the revised Scope Options. Add a brief note on
 **what changed from the Draft after the reviews** —
@@ -631,13 +631,13 @@ End the message by explicitly asking the user to accept, naming
 the artifact and the next phase: *"Accept the Session Scope
 to proceed to Phase 4: Design."*
 
-#### Step 5: Seek user acceptance of the Session Scope
+#### Step 3.5: Seek user acceptance of the Session Scope
 
 Wait for the user's reply — or, under autopilot, take this
 gate's default and continue without waiting (see "Autopilot").
 If accepted, the phase ends,
 continue to Phase 4: Design. If the user pushes back, revise
-and return to step 4; repeat until accepted.
+and return to [Step 3.4](#step-34-share-the-revised-scope-options-with-the-user); repeat until accepted.
 
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
@@ -653,7 +653,7 @@ The phase ends at user acceptance of the Session Scope.
 The goal of this phase is the accepted Design — what the team
 proposes to build.
 
-#### Step 1: Share the accepted Session Scope with Junio and Ralph for information
+#### Step 4.1: Share the accepted Session Scope with Junio and Ralph for information
 
 Send Junio and Ralph the accepted Session Scope — the
 option the user picked, plus any changes from the
@@ -661,11 +661,11 @@ acceptance discussion. Two `SendMessage` calls in the same
 turn, for information only. Sign off `From Grace.` and
 skip the RSVP; no reply is expected. They haven't seen
 the outcome since their Draft Scope Options review in
-Phase 3 step 2. The accepted Session Scope feeds the
+[Step 3.2](#step-32-share-the-draft-scope-options-with-junio-and-ralph-for-review). The accepted Session Scope feeds the
 analogies and sketches you generate and the Design review
 that follows.
 
-#### Step 2: Generate analogies
+#### Step 4.2: Generate analogies
 
 Generate a spread of analogies for the work before sketching,
 so the sketches draw on ideas and patterns carried in from
@@ -687,9 +687,9 @@ sketches, not a shared artifact you collect. Sign off
 fresh read for Phase 7.
 
 Don't wait for the teammates, they are not expected to reply —
-move straight to step 3.
+move straight to [Step 4.3](#step-43-generate-design-sketches).
 
-#### Step 3: Generate design sketches
+#### Step 4.3: Generate design sketches
 
 Sketch a spread of design approaches, before any single design
 is chosen, drawing on your analogies where they help. A sketch
@@ -705,9 +705,9 @@ design sketches and to send the list back. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Wait for both replies. Hold the three sketch sets — yours,
-Junio's, Ralph's — as context for the consolidation in step 4.
+Junio's, Ralph's — as context for the consolidation in [Step 4.4](#step-44-draft-the-design-options).
 
-#### Step 4: Draft the Design Options
+#### Step 4.4: Draft the Design Options
 
 Consolidate the pooled sketches into the Design Options — the
 Proposed Design (your recommendation) and any credible
@@ -778,7 +778,7 @@ Say which sketches folded into the Proposed Design, which
 became Alternatives with their trade-offs, and which you set
 aside and why.
 
-#### Step 5: Share the Design Options with Junio and Ralph for review
+#### Step 4.5: Share the Design Options with Junio and Ralph for review
 
 Send the Design Options to both Junio and Ralph in
 parallel — two `SendMessage` calls in the same turn. Sign off
@@ -794,7 +794,7 @@ optionally with a Challenge. Junio and Ralph are advisory at
 Design, not gating. Run one round only; don't loop back after
 revising.
 
-#### Step 6: Apply the reviews
+#### Step 4.6: Apply the reviews
 
 Decide each finding — from either reviewer — on its
 merits, and record a one-line reason for the call. You own
@@ -805,7 +805,7 @@ paths:
 - **Fold in** — accept into the revised Proposed Design.
 - **Reject** — you disagree with the finding. If the
   rejection is notable, carry the reason into the Design
-  message in step 7.
+  message in [Step 4.7](#step-47-share-the-revised-design-options-with-the-user).
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
 - **Raise a Challenge** — the finding shows an accepted
@@ -818,7 +818,7 @@ Junio's review may also propose candidate lateral moves, each
 tagged. A candidate tagged strictly-better folds into the
 Proposed Design — it improves the recommendation at no real
 cost. A candidate tagged with a trade-off joins the Alternative
-Designs from step 4, with its trade-off named. A candidate
+Designs from [Step 4.4](#step-44-draft-the-design-options), with its trade-off named. A candidate
 that would deliver less than the Session Scope is not a
 lateral move; raise it as a Challenge if it has merits worth
 considering.
@@ -835,7 +835,7 @@ accepted artifact really no longer hold? If it does, take it
 to the user (accept or reject). A teammate raising one is not
 itself the decision.
 
-#### Step 7: Share the revised Design Options with the user
+#### Step 4.7: Share the revised Design Options with the user
 
 Send the revised Proposed Design and any Alternative
 Designs. Lead with the Proposed Design — your
@@ -851,13 +851,13 @@ the user picks an Alternative to override.
 End the message by explicitly asking the user to accept:
 *"Accept the Design to proceed to Phase 5: Plan."*
 
-#### Step 8: Seek user acceptance of the Design
+#### Step 4.8: Seek user acceptance of the Design
 
 Wait for the user's reply — or, under autopilot, take this
 gate's default and continue without waiting (see "Autopilot").
 If accepted, the phase ends,
 continue to Phase 5: Plan. If the user pushes back, revise
-and return to step 7; repeat until accepted.
+and return to [Step 4.7](#step-47-share-the-revised-design-options-with-the-user); repeat until accepted.
 
 This is one of the protocol's user acceptance gates —
 see "Acceptance gates" in `protocol.md`.
@@ -873,17 +873,17 @@ information, compose a Draft Plan, get one round of review
 from Junio and Ralph, revise, and share the revised Plan
 with the user for acceptance.
 
-#### Step 1: Share the accepted Design with Junio and Ralph for information
+#### Step 5.1: Share the accepted Design with Junio and Ralph for information
 
 Send Junio and Ralph the accepted Design — the option
 the user picked, plus any changes from the acceptance
 discussion. Two `SendMessage` calls in the same turn, for
 information only. Sign off `From Grace.` and skip the
 RSVP; no reply is expected. They haven't seen the outcome
-since their Design review in Phase 4 step 5. The accepted
+since their Design review in [Step 4.5](#step-45-share-the-design-options-with-junio-and-ralph-for-review). The accepted
 Design feeds the Plan review that follows.
 
-#### Step 2: Compose the Draft Plan
+#### Step 5.2: Compose the Draft Plan
 
 Compose the Draft Plan — the task list that delivers the
 Design.
@@ -916,13 +916,13 @@ application — state it directly, no examples needed. For
 kind-based criteria, show two or three examples to anchor
 the kind.
 
-#### Step 3: Share the Draft Plan with Junio and Ralph for review
+#### Step 5.3: Share the Draft Plan with Junio and Ralph for review
 
 Send the Draft Plan to both Junio and Ralph in parallel —
 two `SendMessage` calls in the same turn. They already hold
 the Session Type, Requirements Analysis, Code Analysis,
 Session Scope, and Design in context from earlier phases
-and step 1, so the message body is the Draft Plan. Sign off
+and [Step 5.1](#step-51-share-the-accepted-design-with-junio-and-ralph-for-information), so the message body is the Draft Plan. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Send the same body to each reviewer; their role files
@@ -937,7 +937,7 @@ at Plan, not gating. Run one round only; don't loop back
 after revising. Fresh attention from two teammates
 catches issues at the cheapest point to fix.
 
-#### Step 4: Apply the reviews
+#### Step 5.4: Apply the reviews
 
 Decide each finding — from either reviewer — on its
 merits, and record a one-line reason for the call. You own
@@ -949,7 +949,7 @@ paths:
   a tidy-first precursor).
 - **Reject** — you disagree with the finding. If the
   rejection is notable, carry the reason into the Plan
-  message in step 5.
+  message in [Step 5.5](#step-55-share-the-revised-plan-with-the-user).
 - **Hold as Ancillary Finding** — the finding is real but
   out of session scope; hold for post-merge triage.
 - **Raise a Challenge** — the finding shows an accepted
@@ -979,7 +979,7 @@ accepted artifact really no longer hold? If it does, take it
 to the user (accept or reject). A teammate raising one is not
 itself the decision.
 
-#### Step 5: Share the revised Plan with the user
+#### Step 5.5: Share the revised Plan with the user
 
 Send the revised Plan. Add a brief note on **what
 changed from the Draft after the reviews** — folded-in
@@ -994,13 +994,13 @@ anything is the default that lets the phase proceed.
 End the message by explicitly asking the user to accept:
 *"Accept the Plan to proceed to Phase 6: Develop."*
 
-#### Step 6: Seek user acceptance of the Plan
+#### Step 5.6: Seek user acceptance of the Plan
 
 Wait for the user's reply — or, under autopilot, take this
 gate's default and continue without waiting (see "Autopilot").
 If accepted, the phase ends,
 continue to Phase 6: Develop. If the user raises open
-questions or redirects, revise and return to step 5; repeat
+questions or redirects, revise and return to [Step 5.5](#step-55-share-the-revised-plan-with-the-user); repeat
 until accepted.
 
 This is one of the protocol's user acceptance gates —
@@ -1018,7 +1018,7 @@ the chain repeats until the list is drained.
 
 Before the per-task loop runs, three setup steps.
 
-##### Step 1: Set the session branch
+##### Step 6.1: Set the session branch
 
 If the session started on `main`, create the branch now and
 switch to it. The name reflects the accepted Session Scope —
@@ -1031,23 +1031,23 @@ as the session branch; no checkout needed.
 All work runs against the session-start state of `main`. Any
 drift on origin is handled at Merge.
 
-##### Step 2: Share the accepted Plan with Junio and Ralph for information
+##### Step 6.2: Share the accepted Plan with Junio and Ralph for information
 
 Send Junio and Ralph the same content you sent the user.
 Two `SendMessage` calls in the same turn, for information
 only. Sign off `From Grace.` and skip the RSVP; no reply
 is expected. They haven't seen the outcome since their
-Draft Plan review in Phase 5 step 3. The accepted Plan
+Draft Plan review in [Step 5.3](#step-53-share-the-draft-plan-with-junio-and-ralph-for-review). The accepted Plan
 feeds Junio's per-task coherence audits and Ralph's
 per-task implementations below.
 
-##### Step 3: Create the shared task list
+##### Step 6.3: Create the shared task list
 
 Issue the `TaskCreate` calls for the accepted task list.
 
 #### Per-task workflow
 
-##### Step 1: Assign
+##### Step 6.4: Assign
 
 Issue one `TaskUpdate(owner=Ralph, status=in_progress)`
 call. It records the assignment, wakes Ralph, and carries
@@ -1071,7 +1071,7 @@ duplicate-dispatch instinct; ignore it. `TaskUpdate` reads
 as pure bookkeeping and never names the wake-up behaviour.
 It is the wake-up signal here.
 
-##### Step 2: Implement
+##### Step 6.5: Implement
 
 Ralph does the work, runs the project's quality checks, and
 reports back via `SendMessage`. You wait — that
@@ -1079,7 +1079,7 @@ reports back via `SendMessage`. You wait — that
 the working tree or the task list; the message is the
 signal.
 
-##### Step 3: Verify
+##### Step 6.6: Verify
 
 Read their message together with `git diff`: the message
 carries any audit content, deviations from the brief, or
@@ -1089,7 +1089,7 @@ or tests — those are Ralph's gate, green by the time you're
 reading. If something looks off, bounce back rather than
 fixing.
 
-##### Step 4: Commit
+##### Step 6.7: Commit
 
 Re-diff before staging. The working tree is live between
 verify and commit — any changes in that window land
@@ -1097,7 +1097,7 @@ silently if you stage on the earlier read. Then
 `TaskUpdate status=completed`, stage Ralph's changes,
 commit, and push.
 
-##### Step 5: Coherence audit
+##### Step 6.8: Coherence audit
 
 Send Junio a message asking for the coherence audit on the
 just-committed change. Sign off per "Communication between
@@ -1106,9 +1106,9 @@ SendMessage.` Wait for their numbered list (or "no
 substantive findings"). The coherence audit may also raise a
 **Challenge** — for instance when repeated coherence audits
 circle the same surface, suggesting the Session Scope is too
-narrow to reach the root cause (see step 6).
+narrow to reach the root cause (see [Step 6.9](#step-69-triage-findings)).
 
-##### Step 6: Triage findings
+##### Step 6.9: Triage findings
 
 Accept or reject each proposed follow-on on its merits,
 recording a one-line reason for the call. Accepted ones
@@ -1136,9 +1136,9 @@ does an accepted artifact really no longer hold? If it does, take it
 to the user (accept or reject) following the "Challenge"
 shape below. If not, continue triage as normal.
 
-##### Step 7: Loop
+##### Step 6.10: Loop
 
-Next task, back to step 1.
+Next task, back to [Step 6.4](#step-64-assign).
 
 #### Opening the PR
 
@@ -1269,7 +1269,7 @@ review in parallel — Ada with fresh eyes, Junio against the
 accepted requirements, Session Scope, and the whole diff — and
 you handle both reviews the same way.
 
-#### Step 1: Send the review requests
+#### Step 7.1: Send the review requests
 
 Tell Ada and Junio the PR is open and ask each for their
 review. Two `SendMessage` calls in the same turn, one to each,
@@ -1277,7 +1277,7 @@ both carrying the PR number. Sign off per "Communication
 between teammates (agents)" below: `From Grace. RSVP via
 SendMessage.`
 
-#### Step 2: Post each review as a PR comment
+#### Step 7.2: Post each review as a PR comment
 
 Post each review as its own PR comment via `gh pr comment <N>
 --body "..."`. Each review body ends with a `From <reviewer>.`
@@ -1293,7 +1293,7 @@ comments apart, refer to the reviewers generically — "first
 reviewer", "second reviewer", or by what each examined — never
 by agent name, which is internal protocol detail.
 
-#### Step 3: Triage each finding
+#### Step 7.3: Triage each finding
 
 Read Ada's cold-read reconstruction first, then the divergences
 she reports against the stated intent. She built the
@@ -1331,7 +1331,7 @@ findings record the follow-on task and, once complete, the
 commit or PR-visible evidence that addressed it. Rejected
 findings record the reason. Out-of-scope findings record that
 they are held for post-merge triage. These notes become the
-public response in step 4.
+public response in [Step 7.4](#step-74-post-graces-response-as-a-pr-comment).
 
 Reclassify any "out of scope but noticed" item as in scope
 when it is the same edit — one the PR missed, or one the PR
@@ -1343,7 +1343,7 @@ comment, or section-header to express a contract,
 invariant, precondition, or convention, apply the
 **code-shape-first check** (see below) before deciding.
 
-#### Step 4: Post Grace's response as a PR comment
+#### Step 7.4: Post Grace's response as a PR comment
 
 After all accepted findings have been handled through the
 standard per-task workflow, post one response comment via
@@ -1370,14 +1370,14 @@ standard Claude Code footer from "Marking agent-authored GitHub
 items" below. If the footer is already present, don't duplicate
 it. Follow "GitHub-rendered artefacts" in `protocol.md`.
 
-#### Step 5: Mark the PR ready for review
+#### Step 7.5: Mark the PR ready for review
 
 Once all accepted follow-ons from triage are complete, run
 `gh pr ready <N>`. Flipping from draft to ready signals to
 the user that the PR is now worth their attention. If no
 findings were accepted, flip immediately.
 
-#### Step 6: Hand back to the user
+#### Step 7.6: Hand back to the user
 
 Hand back to the user once all comments are addressed. The
 PR is ready for the user's acceptance; Phase 8 handles the
@@ -1430,7 +1430,7 @@ compile, deepen, test, decide — before any issue is filed. Test
 applies to Findings only; Opportunities skip it. All four are
 yours, with user discussion before you file or comment.
 
-#### Step 1: Compile
+#### Step 9.1: Compile
 
 Gather the three sources (Junio in-session, Ada in-session,
 post-merge sweep). Each source yields two kinds: Ancillary
@@ -1439,7 +1439,7 @@ Findings (concerns left out of scope) and Opportunities
 Opportunity that appears in more than one source merges into
 one. Within-session dedup only — the same Finding or Opportunity
 seen through two roles becomes one, not two. Keep Opportunities
-separate from Findings; they skip the Test step (see Step 3).
+separate from Findings; they skip the Test step (see [Step 9.3](#step-93-test)).
 
 Add the **orientation gaps** the session revealed in hindsight —
 things you wish the orientation had told you at the start, now
@@ -1452,7 +1452,7 @@ direction that would close it.
 Add the **deferred candidates** from Phase 1 as Opportunities.
 These are candidate use cases or improvement goals the user
 neither promoted nor declined at the Requirements gate (see
-Phase 1 Step 6). Like other Opportunities, they skip the Test
+[Step 1.6](#step-16-compose-the-requirements-analysis)). Like other Opportunities, they skip the Test
 step and route straight to Decide, filed as follow-up work or
 dropped. Each carries the evidence you cited in Phase 1, so it
 is ready to file as is.
@@ -1464,7 +1464,7 @@ referring to the cues in the request fires them while each
 teammate surfaces Opportunities. Draw on the cues yourself as
 you compile — you hold the whole session, so the widest view.
 
-#### Step 2: Deepen
+#### Step 9.2: Deepen
 
 Before filing anything, check the project's issue tracker
 for related items. For each surviving finding, search both
@@ -1489,7 +1489,7 @@ found, file it, and fix it in scope — yet never converge.
 Each pass patches a symptom of the same underlying contract
 without naming the contract.
 
-#### Step 3: Test
+#### Step 9.3: Test
 
 The two tests below apply to Ancillary Findings, not
 Opportunities — an Opportunity proposes new work, so there is no
@@ -1522,7 +1522,7 @@ consumer — Decide picks among `reinforce`, `re-frame`, or
 decorative (a count nothing depends on, a docstring phrasing,
 an arbitrary constant) — `drop` is usually the right call.
 
-#### Step 4: Decide
+#### Step 9.4: Decide
 
 Make one call per candidate: drop, reinforce, re-frame, or
 file fresh. Use the source observations, the issue history,
@@ -1798,7 +1798,8 @@ At each acceptance gate, take the default that gate's share
 message names:
 
 - **Phase 1: Requirements Analysis.** Accept the completed
-  artifact. Open questions still resolve first via Step 7 —
+  artifact. Open questions still resolve first via [Step
+  1.7](#step-17-elicit-answers-to-open-questions) —
   see *Pauses* below. Candidates stay excluded; with no
   user to opt in, each is deferred to Collect (see Phase 9).
 - **Phase 2: Code Analysis.** Accept. The gate passes
@@ -1820,7 +1821,8 @@ only that you don't wait before moving on.
 Autopilot pauses on two things, and only two:
 
 - **An unanswered open question** in the Requirements
-  Analysis. Step 7 already handles this — if the user leaves
+  Analysis. [Step 1.7](#step-17-elicit-answers-to-open-questions)
+  already handles this — if the user leaves
   any question unanswered, re-ask the unanswered ones before
   continuing. Under autopilot the same behaviour applies: you
   cannot proceed correctly without the user's call, by your

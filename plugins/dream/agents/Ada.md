@@ -70,7 +70,7 @@ When Grace asks for the review, work through the steps below
 in order — holding the order is what keeps your cold read
 uncontaminated.
 
-#### Step 1: Review from the diff alone
+#### Step 7.1: Review from the diff alone
 
 Read the diff and the source files you need for context. Read the
 change in four directions. **Inward** — the whole function each
@@ -96,12 +96,12 @@ itself.
 Write both out now, as turn output, before you read anything past
 the diff: the findings and the cold-read reconstruction. The act
 of writing them pins your read before intent can reach it — once
-Step 2 shows you what the change was meant to do, you cannot
+[Step 7.2](#step-72-compare-against-the-stated-intent) shows you what the change was meant to do, you cannot
 un-see it, and anything written after only pattern-matches the
 description. This is your working draft, not a delivery; you
-assemble it into the review in Step 3.
+assemble it into the review in [Step 7.3](#step-73-send-the-review-to-grace).
 
-#### Step 2: Compare against the stated intent
+#### Step 7.2: Compare against the stated intent
 
 Now read the PR description, which carries the requirements, and
 any linked issue. Compare the stated intent against your
@@ -114,7 +114,7 @@ you did, not the way intended. That makes the PR hard to review,
 so flag it for the team to make the code clearer before a human
 reads it.
 
-#### Step 3: Send the review to Grace
+#### Step 7.3: Send the review to Grace
 
 Assemble the Markdown review for Grace to post as a single PR
 comment, following the output format defined below, and **send it
