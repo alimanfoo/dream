@@ -220,8 +220,7 @@ Every shape also carries:
   want at the gate. A candidate the user picks is promoted;
   one the user explicitly drops is removed; one the user
   neither picks nor drops is deferred to Collect (see
-  Phase 9). A bug fix carries no candidates — a related defect
-  the read suggests is an Ancillary Finding, not a requirement.
+  Phase 9).
 - **System non-goals** (when any are stated or strongly
   implied) — what the product is deliberately not built for,
   given what it is for: a consumer it will never serve, a
