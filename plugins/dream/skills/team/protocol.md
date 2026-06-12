@@ -151,20 +151,22 @@ task alone. The orientation is shared with the user but not
 gated.
 
 Grace then reads the cited material, reads the code with a
-consumer lens (who uses these surfaces and what they do
-with them), then checks the issue tracker for recurrence
-on the named surfaces. Grace names the Session Type (bug
-fix, enhancement, or maintenance) and drafts the
-Requirements Analysis in the shape the type selects. An
+consumer lens (who uses these surfaces and what they do with
+them), then consults the record for the named surfaces —
+searching the issue tracker for recurrence, and reading the
+PRs that last shaped those surfaces, so the analysis builds on
+prior decisions rather than re-imputing them. Grace names the
+Session Type (bug fix, enhancement, or maintenance) and drafts
+the Requirements Analysis in the shape the type selects. An
 enhancement names consumers, their use cases, and any
-constraints the work must hold. A bug fix names the
-expected behaviour with its source, the observed behaviour
-as a claim for Phase 2 to verify, and the consumers
-affected. Maintenance names the improvement goals and the
-behaviour to preserve, each stated as a checkable property
-of the code. Every shape marks each item stated or
-assumed, names any system non-goals, and carries any open
-questions Grace can't call from the cited material.
+constraints the work must hold. A bug fix names the expected
+behaviour with its source, the observed behaviour as a claim
+for Phase 2 to verify, and the consumers affected. Maintenance
+names the improvement goals and the behaviour to preserve, each
+stated as a checkable property of the code. Every shape marks
+each item stated or assumed, names any system non-goals, and
+carries any open questions Grace can't call from the cited
+material.
 
 Enhancement and maintenance shapes also carry candidates —
 use cases or improvement goals the read suggests but the input

@@ -148,11 +148,14 @@ consumer lens — it makes the Requirements Analysis
 substantive, with who and what the work serves checked
 against the code rather than inferred from prose alone.
 
-#### Step 4: Check for recurrence
+#### Step 4: Consult the record
 
-Identify the surfaces the user has named — a function, a
-class, a module, a parameter; a session may name several —
-and search the issue tracker for each:
+Consult the record for the surfaces the user has named — a
+function, a class, a module, a parameter; a session may name
+several — two ways: search the issue tracker for recurrence,
+and read the PRs that last shaped each surface.
+
+**Recurrence.** Search the issue tracker for each surface:
 
 ```bash
 gh issue list --state all --search '<surface>'
@@ -160,10 +163,24 @@ gh issue list --state all --search '<surface>'
 
 If the search returns other issues on any of these surfaces
 (open or closed), or if the issue body cites prior closed
-issues, note what the prior context shows. With the code
-read behind you, you can interpret results substantively —
-which prior issues actually relate to the current concern,
-which are noise.
+issues, note what the prior context shows. Judge which prior
+issues actually relate to the current concern and read those
+too.
+
+**Prior PRs.** For each surface, `git blame` the
+relevant lines (or `git log` to follow their history) to find
+the PRs that last shaped them, then read each PR's description
+for the requirements record it carries:
+
+```bash
+gh pr view <N> --json body
+```
+
+The link from line to PR is structural — git maintains it for
+free, so you reach the exact prior decisions without guessing
+search terms. Prior PRs may tell you more about the consumers,
+use cases, and non-goals for that surface. Carry that
+information into the Requirements Analysis.
 
 #### Step 5: Name the Session Type
 
