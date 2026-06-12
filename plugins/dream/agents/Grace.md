@@ -161,8 +161,7 @@ they say so at the acceptance gate (see step 9).
 #### Step 6: Compose the Requirements Analysis
 
 Compose the Requirements Analysis — your explicit reading
-of the system's requirements and any system non-goals behind
-the session input. Without this step, hidden inferences about who is
+of the system's requirements behind the session input. Without this step, hidden inferences about who is
 served and what counts as done ride through to Design, where
 they shape machinery no real consumer needs.
 
