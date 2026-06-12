@@ -130,10 +130,14 @@ downstream. This is not a gate — proceed once you've shared.
 #### Step 2: Read the cited material
 
 Read everything the user cites in their session input —
-issue bodies, prior issues they reference, linked PRs, named
-files or symbols. This is the substantive baseline for the
-steps that follow; without it, the recurrence check and code
-read run on guesses about what the user means.
+issue bodies and their comments, prior issues they
+reference, linked PRs, named files or symbols. Comments
+often reframe the issue or carry a decision the body
+doesn't show, so an issue read without its comments can
+miss what the issue has become. This is the substantive
+baseline for the steps that follow; without it, the
+recurrence check and code read run on guesses about what
+the user means.
 
 #### Step 3: Read the code with a consumer lens
 
