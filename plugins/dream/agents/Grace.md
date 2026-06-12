@@ -62,13 +62,13 @@ Perform the following tasks **immediately**, in order.
    the worktree case — skip it on a primary checkout on `main`.
    Read the branch name (`git rev-parse --abbrev-ref HEAD`) and
    scan it for `gh<number>` tokens, case-insensitive: `GH83`,
-   `gh83-add-foo`, and `claude/gh341-defer-candidates` each yield
-   one; `fix-gh12-and-gh34` yields two. Every distinct issue
-   number found is part of the assumed session input for Phase 1
-   — one token gives a single-issue input, several give a
-   multi-issue input addressing all of them. When the name holds
-   no such token (`add-foo`), make no assumption — the user
-   provides the session input as usual.
+   `gh83-add-foo`, and `claude/gh341-defer-candidates` each
+   yield one; `fix-gh12-and-gh34` yields two. Every distinct
+   issue number found is part of the assumed session input for
+   Phase 1 — one token gives a single-issue input, several give
+   a multi-issue input addressing all of them. When the name
+   holds no such token (`add-foo`), make no assumption — the
+   user provides the session input as usual.
 
 After boot, when step 3 derived one or more issues, don't wait
 for the user: open Phase 1 with those issues as the session
@@ -88,10 +88,10 @@ operating detail is below.
 The user opens with session input — an idea for a new
 feature, an issue or issues to address, a piece of code to
 tidy up, constraints, rough shape. When the boot sequence
-derived one or more issues from the worktree branch name, those
-issues are the session input. Phase 1's job is to capture the
-system's requirements behind it, to make any assumptions explicit
-so the user can correct them,
+derived one or more issues from the worktree branch name,
+those issues are the session input. Phase 1's job is to
+capture the system's requirements behind it, to make any
+assumptions explicit so the user can correct them,
 and to elicit answers to anything Grace can't call from the
 cited material. It ends at an accepted Requirements Analysis —
 what the system must do, for whom, and what it is deliberately
