@@ -505,7 +505,7 @@ time:
    Design."*
 3. Grace waits for the user's reply before doing anything
    else — or, under autopilot, takes this gate's default and
-   continues without waiting (see "Autopilot").
+   continues without waiting (see [Autopilot](#autopilot)).
 
 These gates run on every session by default and take
 precedence over general autonomy defaults — boot-time
@@ -705,7 +705,7 @@ the wrong error shape, a new function ships with no docstring —
 fixing the one site is not enough. The next session adds the
 next site and breaks it again. At a single site you would carry
 a rule in a type or structure rather than guard it with a check
-(see "Code-shape ladder"), but no single type can hold a rule
+(see [Code-shape ladder](#code-shape-ladder)), but no single type can hold a rule
 spread across independent sites. The fix that holds is a check:
 a lint rule, a pre-commit hook, or a CI assertion that fails the
 moment any site breaks the rule.
