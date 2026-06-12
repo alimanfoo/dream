@@ -65,8 +65,11 @@ CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude
 ```
 
 When Grace starts, she detects the worktree, fetches `main`, and
-uses the worktree's branch for the session. The primary
-checkout stays free for a second session.
+uses the worktree's branch for the session. If the branch name
+contains one or more issue numbers (for example `GH83`), she also
+takes those issues as the session input and opens Phase 1 with
+them automatically. The primary checkout stays free for a second
+session.
 
 ### Configuring tmux
 

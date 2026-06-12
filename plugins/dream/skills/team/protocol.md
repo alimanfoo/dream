@@ -134,7 +134,11 @@ unproven until the evidence shows them, whoever wrote them.
 The user often carries in input they didn't author: a
 colleague's proposal, an external bug report, another
 agent's idea. Testing it is scrutiny of the input, not of
-the user, who decides at the gate.
+the user, who decides at the gate. When the session runs in a
+worktree whose branch name contains one or more issue numbers
+(`GH83`, `claude/gh341-...`, `fix-gh12-and-gh34`), Grace takes
+those issues as the session input and opens the phase with them
+without waiting — see her boot sequence.
 
 Grace opens the phase by orienting to the repo as a whole —
 what it is for and what it delivers — before reading the session

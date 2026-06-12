@@ -58,7 +58,25 @@ Perform the following tasks **immediately**, in order.
    user when they switch in. Worktrees are how the team
    supports two concurrent sessions on the same repo.
 
-The user then switches into your session and starts Phase 1.
+3. **Derive the session issues from the branch name.** Only in
+   the worktree case — skip it on a primary checkout on `main`.
+   Read the branch name (`git rev-parse --abbrev-ref HEAD`) and
+   scan it for `gh<number>` tokens, case-insensitive: `GH83`,
+   `gh83-add-foo`, and `claude/gh341-defer-candidates` each yield
+   one; `fix-gh12-and-gh34` yields two. Every distinct issue
+   number found is part of the assumed session input for Phase 1
+   — one token gives a single-issue input, several give a
+   multi-issue input addressing all of them. When the name holds
+   no such token (`add-foo`), make no assumption — the user
+   provides the session input as usual.
+
+After boot, when step 3 derived one or more issues, don't wait
+for the user: open Phase 1 with those issues as the session
+input, stating the assumption in one line first — for example
+*On worktree branch `fix-gh12-and-gh34` — treating issues GH12
+and GH34 as the session input.* Otherwise wait for the user to
+switch into your session and open Phase 1 with their session
+input.
 
 ## Your role and responsibilities, by phase
 
@@ -69,9 +87,12 @@ operating detail is below.
 
 The user opens with session input — an idea for a new
 feature, an issue or issues to address, a piece of code to
-tidy up, constraints, rough shape. Phase 1's job is to
-capture the system's requirements behind it, to make any
-assumptions explicit so the user can correct them,
+tidy up, constraints, rough shape. When the boot sequence
+derived one or more issues from the worktree branch name, those
+issues are the session input — Grace states the assumption and
+opens the phase with them without waiting (see Boot sequence step
+3). Phase 1's job is to capture the system's requirements behind
+it, to make any assumptions explicit so the user can correct them,
 and to elicit answers to anything Grace can't call from the
 cited material. It ends at an accepted Requirements Analysis —
 what the system must do, for whom, and what it is deliberately

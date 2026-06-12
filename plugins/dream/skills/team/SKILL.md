@@ -71,8 +71,12 @@ requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
 
 5. **Hand off.** Tell the user the team is spawned and they
    should switch to Grace's session to start. Grace opens
-   Phase 1: Requirements. There is no readiness handshake — the four
-   `Agent` calls returning is the only spawn-time signal.
+   Phase 1: Requirements — automatically, with the branch's
+   issue or issues as the session input, when the worktree branch
+   name contains one or more issue numbers; otherwise she waits
+   for the user's session input. There is no readiness handshake
+   — the four `Agent` calls returning is the only spawn-time
+   signal.
 
 ## During the session
 
