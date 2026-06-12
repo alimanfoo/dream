@@ -436,7 +436,7 @@ orientation gaps the session revealed in hindsight — things she
 wishes the orientation had told her at the start, seen now that
 the whole session has run — as findings against the host repo.
 She also carries the candidates deferred from Phase 1, those the
-user neither promoted nor declined, for filing as follow-up work.
+user neither promoted nor declined, as further Opportunities.
 Findings are tested (defend behaviour, removal question);
 Opportunities skip those defect tests. Grace decides each (drop /
 reinforce / re-frame / file fresh) with user acceptance before
@@ -560,8 +560,8 @@ reinforce, re-frame, file fresh — but the rule is the same: no
 observation stays "interesting prose." Each is named, each gets
 an outcome, each outcome is checkable.
 
-Some outcomes defer the call to Phase 9 Collect: an ancillary
-finding, and a candidate the user leaves unaddressed at the
+Some outcomes defer the call to Phase 9 Collect: an Ancillary
+Finding, and a candidate the user leaves unaddressed at the
 Requirements gate. Each defer has a named destination and a
 reason that matches the receiving phase's job. There is no
 open-ended deferral — "we'll come back to this" is not an
