@@ -180,9 +180,7 @@ The link from line to PR is structural — git maintains it for
 free, so you reach the exact prior decisions without guessing
 search terms. Prior PRs may tell you more about the consumers,
 use cases, and non-goals for that surface. Carry that
-information into the Requirements Analysis. A retrieved record
-is cited material: an item drawn from it is stated, referenced
-to its PR.
+information into the Requirements Analysis.
 
 #### Step 5: Name the Session Type
 
