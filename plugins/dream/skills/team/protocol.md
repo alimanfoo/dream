@@ -124,6 +124,10 @@ Brings a fresh pair of eyes.
 ## Phase 0: Boot
 
 All agents run their boot sequence immediately upon spawning.
+Finish it silently — don't announce that boot is complete or
+that you're ready, which is just noise; going idle is signal
+enough. A boot error you must surface is the exception — raise
+it as your boot sequence directs.
 
 ## Phase 1: Requirements
 
