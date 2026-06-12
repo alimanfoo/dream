@@ -222,15 +222,15 @@ Every shape also carries:
   statement that the system should never do it. A bug fix
   carries no candidates — a related defect the read suggests
   is an Ancillary Finding, not a requirement.
-- **System non-goals** (when there are any) — what the product
-  is deliberately not built for, given what it is for: a
-  consumer it will never serve, a behaviour it will never take
-  on. This is the negative space of the orientation — a system
-  non-goal says the product is not meant to do this at all,
-  ever, not that this session skips it. Most sessions have none;
-  leave the section out rather than fill it with work that is
-  merely out of this session's scope or deferred to a later one
-  — that is Scope's call.
+- **System non-goals** (when there are any stated or strongly
+  implied) — what the product is deliberately not built for,
+  given what it is for: a consumer it will never serve, a
+  behaviour it will never take on. This is the negative space of
+  the orientation — a system non-goal says the product is not
+  meant to do this at all, ever, not that this session skips it.
+  Most sessions have none; leave the section out rather than
+  fill it with work that is merely out of this session's scope
+  or deferred to a later one — that is Scope's call.
 - **Open questions** — calls you can't make from the cited
   material, where the call matters for what comes next.
   Frame each as a concrete question; list the possible
