@@ -70,8 +70,8 @@ operating detail is below.
 The user opens with session input — an idea for a new
 feature, an issue or issues to address, a piece of code to
 tidy up, constraints, rough shape. Phase 1's job is to
-capture the system's requirements and non-goals behind it, to
-make any assumptions explicit so the user can correct them,
+capture the system's requirements behind it, to make any
+assumptions explicit so the user can correct them,
 and to elicit answers to anything Grace can't call from the
 cited material. It ends at an accepted Requirements Analysis —
 what the system must do, for whom, and what it is deliberately
@@ -161,10 +161,10 @@ they say so at the acceptance gate (see step 9).
 #### Step 6: Compose the Requirements Analysis
 
 Compose the Requirements Analysis — your explicit reading
-of the system's requirements and non-goals behind the session
-input. Without this step, hidden inferences about who is
-served and what counts as done ride through to Design, where
-they shape machinery no real consumer needs.
+of the system's requirements behind the session input.
+Without this step, hidden inferences about who is served
+and what counts as done ride through to Design, where they
+shape machinery no real consumer needs.
 
 Choose the shape based on the Session Type.
 
@@ -218,17 +218,18 @@ Every shape also carries:
   that evidence, and a candidate use case also names the
   consumer it would serve. The user opts in to any they
   want at the gate; the ones the user picks are promoted,
-  and the rest become non-goals. A bug fix carries no
-  candidates — a related defect the read suggests is an
-  Ancillary Finding, not a requirement.
-- **Non-goals** — what the system is deliberately not for:
-  consumers it doesn't serve, use cases it won't support. A
-  non-goal records intent, not this session's scope — it says
-  the system is not meant to do this at all, not merely that
-  this session won't build it. Whether to defer an accepted
-  requirement to a later session is Scope's call, not a non-goal.
-  Naming the boundaries of intent closes off speculative
-  surfaces before they shape Design or Plan.
+  and the rest are dropped — declining a candidate is not a
+  statement that the system should never do it. A bug fix
+  carries no candidates — a related defect the read suggests
+  is an Ancillary Finding, not a requirement.
+- **System non-goals** (when any are stated or strongly
+  implied) — what the product is deliberately not built for,
+  given what it is for: a consumer it will never serve, a
+  behaviour it will never take on. This records intent, not
+  scope: the product is never meant to do this, not that this
+  session skips it. Most sessions have none — leave the section
+  out rather than fill it with work that is merely out of scope
+  or deferred, which is Scope's call.
 - **Open questions** — calls you can't make from the cited
   material, where the call matters for what comes next.
   Frame each as a concrete question; list the possible
@@ -251,9 +252,9 @@ and the consumer-lens read shows what its surfaces already
 serve. Ask whether the proposed work serves that product, and
 whether its value is evidenced by the existing goals or only
 asserted by the input. Where it doesn't
-cohere or the value isn't evidenced, surface that — as a
-non-goal or an open question — rather than carrying the intent
-through unexamined. The user decides at the gate.
+cohere or the value isn't evidenced, surface that — as an open
+question — rather than carrying the intent through unexamined.
+The user decides at the gate.
 
 The marking shows where each item came from — the session
 input, or your own inference — not whether it's true. The
@@ -283,8 +284,7 @@ isn't complete yet.
 
 Send the completed Requirements Analysis to the user. When
 there are candidates, ask the user to name any they want
-included — by number — and note that the rest become
-non-goals.
+included — by number — and note that the rest are dropped.
 
 End the message by explicitly asking the user to accept:
 *"Accept the Requirements Analysis to proceed to Phase 2:
@@ -296,7 +296,7 @@ Wait for the user's reply — or, under autopilot, take this
 gate's default and continue without waiting (see "Autopilot").
 Promote any candidate the user opted into — a candidate use
 case becomes a use case, a candidate improvement goal an
-improvement goal — and record the rest as non-goals. If accepted,
+improvement goal — and drop the rest. If accepted,
 continue to step 10. If the user pushes back, revise and return
 to step 8; repeat until accepted. If the pushback challenges
 the Session Type itself, return to step 5 and recompose from
@@ -1126,8 +1126,9 @@ followed; the existing PR log is not a style reference.
 with one or two plain sentences of context — what the change is
 and which issue it addresses — then the final accepted
 requirements analysis in the shape the Session Type selected:
-consumers, use cases, and non-goals for an enhancement; expected
-and observed behaviour and affected consumers for a bug fix;
+consumers, use cases, and any system non-goals for an
+enhancement; expected and observed behaviour and affected
+consumers for a bug fix;
 preserved behaviour and improvement goals for maintenance. Carry
 it near-verbatim from the accepted artifact. This is the most
 careful account of why the change exists, and it would otherwise
@@ -1748,7 +1749,7 @@ message names:
 - **Phase 1: Requirements Analysis.** Accept the completed
   artifact. Open questions still resolve first via Step 7 —
   see *Pauses* below. Candidates stay excluded; with no
-  user to opt in, each becomes a non-goal.
+  user to opt in, each is dropped.
 - **Phase 2: Code Analysis.** Accept. The gate passes
   without intervention.
 - **Phase 3: Session Scope.** Take the Coherent Scope. Don't

@@ -155,13 +155,13 @@ as a claim for Phase 2 to verify, and the consumers
 affected. Maintenance names the behaviour to preserve and
 the improvement goals, each stated as a checkable property
 of the code. Every shape marks each item stated or
-assumed, names non-goals, and carries any open questions
-Grace can't call from the cited material.
+assumed, names any system non-goals, and carries any open
+questions Grace can't call from the cited material.
 
 Enhancement and maintenance shapes also carry candidates —
 use cases or improvement goals the read suggests but the input
 didn't name; excluded by default, the user opts in to any at
-the acceptance gate, and the rest become non-goals. The user
+the acceptance gate, and the rest are dropped. The user
 answers the open questions; Grace folds the answers in and
 shares the completed artifact for acceptance. At the end of
 the phase Grace hands the accepted Requirements Analysis and
