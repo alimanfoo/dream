@@ -253,9 +253,9 @@ and the consumer-lens read shows what its surfaces already
 serve. Ask whether the proposed work serves that product, and
 whether its value is evidenced by the existing goals or only
 asserted by the input. Where it doesn't
-cohere or the value isn't evidenced, surface that — as a system
-non-goal or an open question — rather than carrying the intent
-through unexamined. The user decides at the gate.
+cohere or the value isn't evidenced, surface that — as an open
+question — rather than carrying the intent through unexamined.
+The user decides at the gate.
 
 The marking shows where each item came from — the session
 input, or your own inference — not whether it's true. The
