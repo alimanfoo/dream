@@ -161,7 +161,7 @@ questions Grace can't call from the cited material.
 Enhancement and maintenance shapes also carry candidates —
 use cases or improvement goals the read suggests but the input
 didn't name; excluded by default, the user opts in to any at
-the acceptance gate. A candidate the user declines is dropped;
+the acceptance gate. A candidate the user drops is removed;
 one the user leaves unaddressed defers to Collect. The user
 answers the open questions; Grace folds the answers in and
 shares the completed artifact for acceptance. At the end of
