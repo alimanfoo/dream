@@ -325,7 +325,7 @@ isn't complete yet.
 Send the completed Requirements Analysis to the user. When
 there are candidates, ask the user to name any they want
 included — by number. Note that any they don't name are
-carried forward as Opportunities to Collect (see Phase 9), and
+carried forward as Opportunities to Collect (see [Phase 9](#phase-9-collect)), and
 that they can ask to drop any outright.
 
 End the message by explicitly asking the user to accept:
@@ -335,11 +335,11 @@ Code Analysis."*
 #### Step 1.9: Seek user acceptance of the Requirements Analysis
 
 Wait for the user's reply — or, under autopilot, take this
-gate's default and continue without waiting (see "Autopilot").
+gate's default and continue without waiting (see [Autopilot](#autopilot)).
 Promote any candidate the user opted into — a candidate use
 case becomes a use case, a candidate improvement goal an
 improvement goal. Remove any the user explicitly dropped, and
-defer the rest to Collect (see Phase 9). If accepted,
+defer the rest to Collect (see [Phase 9](#phase-9-collect)). If accepted,
 continue to [Step 1.10](#step-110-hand-the-accepted-requirements-analysis-to-junio-and-ralph). If the user pushes back, revise and return
 to [Step 1.8](#step-18-share-the-requirements-analysis); repeat until accepted. If the pushback challenges
 the Session Type itself, return to [Step 1.5](#step-15-name-the-session-type) and recompose from
@@ -488,7 +488,7 @@ End the message by explicitly asking the user to accept:
 #### Step 2.4: Seek user acceptance of the Code Analysis
 
 Wait for the user's reply — or, under autopilot, take this
-gate's default and continue without waiting (see "Autopilot").
+gate's default and continue without waiting (see [Autopilot](#autopilot)).
 If accepted, continue to [Step 2.5](#step-25-hand-the-accepted-code-analysis-to-junio-and-ralph).
 If the user pushes back — a missed caller, a misread
 mechanism, a wider pattern they want named — revise and
@@ -634,7 +634,7 @@ to proceed to Phase 4: Design."*
 #### Step 3.5: Seek user acceptance of the Session Scope
 
 Wait for the user's reply — or, under autopilot, take this
-gate's default and continue without waiting (see "Autopilot").
+gate's default and continue without waiting (see [Autopilot](#autopilot)).
 If accepted, the phase ends,
 continue to Phase 4: Design. If the user pushes back, revise
 and return to [Step 3.4](#step-34-share-the-revised-scope-options-with-the-user); repeat until accepted.
@@ -754,7 +754,7 @@ contract" — but the signature doesn't enforce it, so the
 docstring has to. The Plan follows the Design, not the
 session input.
 
-Apply the **code-shape-first check** (see below) to any
+Apply the **[code-shape-first check](#code-shape-first-check)** to any
 docstring, comment, or section-header carrying a contract,
 invariant, precondition, or convention. Run it on your
 own output as well as the user's. You might default to a
@@ -823,7 +823,7 @@ that would deliver less than the Session Scope is not a
 lateral move; raise it as a Challenge if it has merits worth
 considering.
 
-Apply the **code-shape-first check** (see below) before
+Apply the **[code-shape-first check](#code-shape-first-check)** before
 deciding any finding that proposes a docstring, comment,
 or section-header to express a contract, invariant,
 precondition, or convention. If Ralph's review already
@@ -854,7 +854,7 @@ End the message by explicitly asking the user to accept:
 #### Step 4.8: Seek user acceptance of the Design
 
 Wait for the user's reply — or, under autopilot, take this
-gate's default and continue without waiting (see "Autopilot").
+gate's default and continue without waiting (see [Autopilot](#autopilot)).
 If accepted, the phase ends,
 continue to Phase 5: Plan. If the user pushes back, revise
 and return to [Step 4.7](#step-47-share-the-revised-design-options-with-the-user); repeat until accepted.
@@ -957,7 +957,7 @@ paths:
   an earlier artifact got something wrong. Take it to the
   user, who accepts (revise) or rejects (with direction).
 
-Apply the **code-shape-first check** (see below) before
+Apply the **[code-shape-first check](#code-shape-first-check)** before
 deciding any finding that proposes a docstring, comment,
 or section-header to express a contract, invariant,
 precondition, or convention.
@@ -965,7 +965,7 @@ precondition, or convention.
 When the reply includes a tidy-first finding you fold in,
 insert the tidy as a precursor task before the task it
 supports. The tidy runs through the standard Refactor brief
-(see "Refactor" under Behaviour-preserving task briefs).
+(see [Refactor](#refactor) under Behaviour-preserving task briefs).
 
 When the reply includes a generalisation candidate, treat it
 as a proposed Plan change, not a mandate. Fold it in only
@@ -997,7 +997,7 @@ End the message by explicitly asking the user to accept:
 #### Step 5.6: Seek user acceptance of the Plan
 
 Wait for the user's reply — or, under autopilot, take this
-gate's default and continue without waiting (see "Autopilot").
+gate's default and continue without waiting (see [Autopilot](#autopilot)).
 If accepted, the phase ends,
 continue to Phase 6: Develop. If the user raises open
 questions or redirects, revise and return to [Step 5.5](#step-55-share-the-revised-plan-with-the-user); repeat
@@ -1129,7 +1129,7 @@ completes the current change; it is not scope creep.
 When a finding proposes adding or expanding a docstring,
 comment, or section-header to express a contract,
 invariant, precondition, or convention, apply the
-**code-shape-first check** (see below) before deciding.
+**[code-shape-first check](#code-shape-first-check)** before deciding.
 
 When the coherence audit raises a **Challenge**, assess it:
 does an accepted artifact really no longer hold? If it does, take it
@@ -1148,7 +1148,7 @@ branch (`gh pr create --draft`). The PR stays in draft until
 Phase 7 — the draft state signals to the user that the PR is
 not yet worth their attention. Label the PR with the Session
 Type's category (`gh pr create --label <name>`), skipping the
-label when the repo has no clean match — see "GitHub labels"
+label when the repo has no clean match — see [GitHub labels](#github-labels)
 in Common rules below. Title and body markers follow
 "Marking agent-authored GitHub items" in Common rules below.
 Follow "GitHub-rendered artefacts" in `protocol.md`.
@@ -1341,7 +1341,7 @@ concerns, not incomplete instances of the agreed change.
 When a finding proposes adding or expanding a docstring,
 comment, or section-header to express a contract,
 invariant, precondition, or convention, apply the
-**code-shape-first check** (see below) before deciding.
+**[code-shape-first check](#code-shape-first-check)** before deciding.
 
 #### Step 7.4: Post Grace's response as a PR comment
 
@@ -1681,7 +1681,7 @@ The user accepts each draft before it's filed; for an upstream
 draft, what the user accepts is the wording as it will be
 filed (already stripped if the host repo isn't public). Once
 the user accepts, you or the user files. Apply a category label to each
-new issue — see "GitHub labels" in Common rules. After
+new issue — see [GitHub labels](#github-labels) in Common rules. After
 the retrospective, or if the user declines it, tell the user
 the session work is done and that they can return to the main
 session to wind the team down. Then wait for any further
@@ -1800,8 +1800,8 @@ message names:
 - **Phase 1: Requirements Analysis.** Accept the completed
   artifact. Open questions still resolve first via [Step
   1.7](#step-17-elicit-answers-to-open-questions) —
-  see *Pauses* below. Candidates stay excluded; with no
-  user to opt in, each is deferred to Collect (see Phase 9).
+  see [Pauses](#pauses) below. Candidates stay excluded; with no
+  user to opt in, each is deferred to Collect (see [Phase 9](#phase-9-collect)).
 - **Phase 2: Code Analysis.** Accept. The gate passes
   without intervention.
 - **Phase 3: Session Scope.** Take the Coherent Scope. Don't
