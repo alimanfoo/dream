@@ -272,8 +272,21 @@ structure is still missing, and so where the next work is.
 
 ## Writing agent prompts
 
-The dream-team agents are LLMs. Writing well for them turns on two things: the
-shape of an instruction, and the properties of the agent as a reader.
+The dream-team agents are LLMs. Writing well for them turns on three things:
+what each agent needs to know, the shape of an instruction, and the properties
+of the agent as a reader.
+
+### Tell each agent only what it needs
+
+Tell each agent only what it needs to do its job, and cut the rest. The agent
+reads every line as potentially actionable, so non-essential background — how a
+mechanism it isn't part of works, why a past decision was made, what another
+role does downstream — isn't harmless: it dilutes the instructions that matter
+and tempts the agent to act on the aside. When you catch yourself adding
+context, ask whether this reader uses it to do their job; if not, cut it. This
+is the per-reader companion to the locality principle (see Development notes):
+locality decides which file an instruction lives in; this decides whether a
+given reader needs it at all.
 
 ### Instruction paragraphs
 
@@ -374,6 +387,49 @@ writing for an LLM agent is in "Writing agent prompts".
 - **Consistent voice within a list.** A "you never" bullet list shouldn't slip
   into "you do this instead" mid-bullet. Pick the voice and stay in it;
   cross-references can carry the positive alternative.
+
+## Reviewing changes with subagents
+
+A change to this repo is prose — the protocol and the agent prompts — and there
+is no test suite, so review is reading. Spawning several subagents in parallel,
+each with one narrow lens, reads it more thoroughly than a single pass. These
+are suggestions, not a fixed procedure. A few things make it work:
+
+- **One narrow lens per agent.** A lens is a single question — "does the new
+  flow break under failure?" — not "review this." Tell each agent to surface
+  real findings with concrete rewrites, and to say so plainly when prose is
+  already tight rather than manufacture nitpicks.
+- **Anchor the lens to this file's rules.** Point each agent at the relevant
+  part of these notes — the instruction-paragraph template, the design
+  principles, the dream itself — not generic review standards. A lens grounded
+  in the repo's own bar catches what a generic one misses.
+- **Run them in parallel.** Independent agents don't anchor on each other, so
+  they surface different things.
+- **Sort the findings; don't just apply them.** Each is one of three: a
+  coherence defect to fix now, an intent decision that belongs to the user, or a
+  follow-up issue. Judge each on its merits — a subagent raising it is not a
+  reason to accept it.
+
+Two ways to divide the work, for two different jobs:
+
+- **Divergent lenses** — a different question per agent, to find problems you
+  don't yet know are there. A non-exhaustive set that has paid off: cross-file
+  coherence and reference integrity (do protocol.md and the agent files still
+  agree, and do the anchor links resolve); lifecycle and edge cases (walk the
+  changed flow end to end); agent-prompt efficacy and register (will an agent
+  act on the instruction; is GitHub-visible text in public register); whether it
+  serves the dream (is a stored thing ever read, or write-only; does the change
+  add a human coherence-touch); adversarial robustness (failures, concurrency,
+  GitHub state the protocol doesn't control); security and privacy (what the
+  change newly exposes); simplicity and readability (against the
+  instruction-paragraph template).
+- **One lens, partitioned by file or section** — to apply a single standard you
+  already trust, thoroughly. Divide along the existing structure (the per-phase
+  steps versus the common rules) so the partitions don't overlap, and give the
+  largest file more than one agent.
+
+Reach for divergent lenses when hunting for the unknown; reach for the
+partitioned single lens when applying a standard you already hold.
 
 ## Linting
 
