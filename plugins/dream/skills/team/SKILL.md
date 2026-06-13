@@ -18,6 +18,13 @@ session and shut the team down when the user is done.
 The experimental agent teams feature spawns the team; it requires
 `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
 
+The session writes to GitHub through Grace: she opens the PR at the start and
+posts each accepted artifact as the session runs (`gh pr create`,
+`gh pr comment`, and others). Claude Code's auto-mode classifier may prompt you
+to approve these writes. To skip the prompts, allowlist `gh pr create` and
+`gh pr comment` in `~/.claude/settings.json` or the host project's
+`.claude/settings.json` — this pre-approves them for the session.
+
 ## Spawning the team
 
 1. **Welcome the user.** Before any tool calls, print this banner verbatim as

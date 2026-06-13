@@ -38,7 +38,9 @@ A session moves through ten phases:
 
 1. **Requirements.** Grace orients to the repo as a whole, then reads the cited
    material and the code with a consumer lens, names the Session Type, and
-   shares the Requirements Analysis with the user for acceptance.
+   shares the Requirements Analysis with the user for acceptance. On acceptance
+   she opens the session branch and a draft PR carrying the accepted
+   requirements as its description — see [The session PR](#the-session-pr).
 
 2. **Code Analysis.** Grace reads the code with a structural lens — mechanism,
    layers, siblings, patterns — and shares the Code Analysis with the user for
@@ -58,8 +60,8 @@ A session moves through ten phases:
    Ralph, revises, and shares the revised Plan with the user for acceptance.
 
 6. **Develop.** The main implementation loop — one task at a time, coherence
-   restored before moving on. Opens with branch creation; closes with the draft
-   PR.
+   restored before moving on. Opens with the task list; closes by finalizing the
+   PR description.
 
 7. **Review.** The PR is reviewed.
 
@@ -156,6 +158,11 @@ artifact for acceptance. At the end of the phase Grace hands the accepted
 Requirements Analysis and the Session Type to Junio and Ralph for information;
 they hold them as context for the rest of the session.
 
+On acceptance Grace opens the session: she creates the session branch with an
+empty bootstrap commit and opens a draft PR whose description is the accepted
+Requirements Analysis. The PR carries the session's deliberation record from
+here on — see [The session PR](#the-session-pr).
+
 The phase ends at user acceptance of the Requirements Analysis.
 
 ## Phase 2: Code Analysis
@@ -168,7 +175,9 @@ enforces. The same code as Phase 1, with different attention. Grace then shares
 the Code Analysis — a verifiable read of what the current code does and where,
 with file:line or symbol citations — with the user for acceptance. At the end of
 the phase Grace hands the accepted Code Analysis to Junio and Ralph for
-information; they hold it as context for the rest of the session.
+information; they hold it as context for the rest of the session. On acceptance
+Grace also posts the accepted Code Analysis to the PR as a comment — see
+[The session PR](#the-session-pr).
 
 The phase ends at user acceptance of the Code Analysis.
 
@@ -194,7 +203,9 @@ advisory, not gating — and revises. Junio reads from the maintainer's view;
 Ralph reads from the engineering-pattern view. Grace decides each finding on its
 merits, recording a one-line reason: folded into the revised Scope Options or
 rejected. Grace then shares the revised Scope Options with the user, with a
-brief note on what changed from the Draft after the reviews.
+brief note on what changed from the Draft after the reviews. On acceptance Grace
+posts the accepted Session Scope to the PR as a comment — see
+[The session PR](#the-session-pr).
 
 The phase ends at user acceptance of the Session Scope.
 
@@ -221,7 +232,9 @@ Grace shares the Design Options with Junio and Ralph for one round of review —
 advisory, not gating. Junio reads from the maintainer's view. Ralph reads from
 the engineering-pattern view. Grace decides each finding on its merits. Grace
 then shares the Design Options — the Proposed Design and any Alternative Designs
-— with the user, with a brief note on what changed after the reviews.
+— with the user, with a brief note on what changed after the reviews. On
+acceptance Grace posts the accepted Design to the PR as a comment — see
+[The session PR](#the-session-pr).
 
 The phase ends at user acceptance of the Design.
 
@@ -234,7 +247,8 @@ the maintainer's view; Ralph reads from the implementer's view. Grace decides
 each finding on its merits, recording a one-line reason: folded into the revised
 Plan, rejected, held as an Ancillary Finding, or raised as a Challenge. Grace
 then shares the revised Plan with the user, with a brief note on what changed
-from the Draft after the reviews.
+from the Draft after the reviews. On acceptance Grace posts the accepted Plan to
+the PR as a comment — see [The session PR](#the-session-pr).
 
 The phase ends at user acceptance of the Plan.
 
@@ -243,10 +257,10 @@ Phase 7 (Review). The user can redirect at any point.
 
 ## Phase 6: Develop
 
-Phase opens with three setup steps: Grace sets the session branch (creates it
-off `main`, or uses the worktree's branch when the session started in one — see
-`Grace.md`), shares the accepted Plan with Junio and Ralph for information, and
-creates the shared task list.
+Phase opens with two setup steps: Grace shares the accepted Plan with Junio and
+Ralph for information, and creates the shared task list. The session branch
+already exists — Grace created it at requirements acceptance (Phase 1), or
+adopted the worktree's branch there.
 
 The main implementation loop. For each task, Grace assigns to Ralph; Ralph
 implements and reports back; Grace verifies the diff, commits and pushes; Junio
@@ -335,8 +349,10 @@ If a follow-on later spawns its own follow-on, the grandchild also inserts next
 — the chain drains depth-first. The original queue resumes only after the parent
 task's coherence chain is fully drained.
 
-The phase ends when the task list is drained and Grace opens a draft PR for the
-session branch.
+The phase ends when the task list is drained and Grace finalizes the PR —
+editing the description to the final accepted requirements and appending the
+dream metadata line. The PR opened back in Phase 1 and stays in draft until
+Phase 7.
 
 ## Phase 7: Review
 
@@ -482,6 +498,32 @@ Wanting to redesign on reflection is not a Challenge. Overturning an accepted
 decision goes through a Challenge, openly — not slipped through as a fresh
 observation. Grace can raise one in any phase once an artifact has been
 accepted. Full mechanism in `Grace.md`.
+
+When an accepted Challenge revises an artifact already posted to the PR, Grace
+posts the revision as a new superseding comment, not an edit — see
+[The session PR](#the-session-pr).
+
+## The session PR
+
+Grace opens the session PR at requirements acceptance (end of Phase 1). She
+creates the session branch with an empty bootstrap commit, then opens a draft PR
+whose description is the accepted Requirements Analysis. As each later artifact
+is accepted, she posts it as a PR comment — the Code Analysis (Phase 2), the
+Session Scope (Phase 3), the Design (Phase 4), and the Plan (Phase 5). The
+thread becomes the record of what the session considered.
+
+The description is canonical; the thread is history. Grace edits the description
+to the final accepted requirements at the end of Develop, and the PR stays in
+draft until Phase 7. When a Challenge revises an artifact already posted, she
+posts the revision as a new comment opening with an explicit supersession marker
+— "Supersedes the Session Scope above" — so a reader can tell which version
+stands, rather than editing the earlier comment.
+
+A session that stops before merge still leaves a record. When the user halts at
+a gate or ends the session early, Grace posts a final comment naming where the
+work reached and why it stopped, then closes the draft PR. The closed, unmerged
+PR documents what was considered and why it went no further, including any
+non-goals. Full mechanics in `Grace.md`.
 
 ## No orphaned observations
 
@@ -657,16 +699,17 @@ These apply across every phase.
 #### Branch
 
 One session branch off `main` as of session start, one PR opened on it. Grace
-either creates the branch at the start of Phase 6 (Develop) once the Plan is
-accepted, or uses the worktree's branch when the user launched Claude Code
-inside a worktree. The branch name reflects the accepted Session Scope. All
-planning and development run against the session-start state of `main`; any
-drift on origin is handled at Merge.
+either creates the branch or uses the worktree's branch when the user launched
+Claude Code inside a worktree. The branch name reflects the session input — an
+issue number, or a short slug. All planning and development run against the
+session-start state of `main`; any drift on origin is handled at Merge.
 
 #### Commits
 
 One commit per task — task ↔ commit. Grace is the committer. Grace never pushes
-to `main` unless the user explicitly asks.
+to `main` unless the user explicitly asks. The session also opens with an empty
+bootstrap commit — not a task — created at branch setup so the draft PR has a
+commit to anchor to.
 
 #### Quality gates
 

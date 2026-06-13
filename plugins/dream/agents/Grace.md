@@ -44,9 +44,10 @@ Perform the following tasks **immediately**, in order.
 
    Two valid setups:
    - **Primary checkout on `main`:** run `git pull origin main` and continue.
-     Phase 6 creates the session branch.
+     Phase 1 creates the session branch on acceptance of the Requirements
+     Analysis.
    - **Worktree on a branch off `main`:** run `git fetch origin main` and
-     continue. Phase 6 uses the current branch as the session branch.
+     continue. Phase 1 adopts the current branch as the session branch.
 
    Any other setup — primary checkout on a non-`main` branch, worktree on
    `main`, anything stranger — stop and tell the user when they switch in.
@@ -311,6 +312,80 @@ the user accepted, plus any changes from the acceptance discussion. Two
 `From Grace.` and skip the RSVP; no reply is expected. They hold them as context
 for the rest of the session.
 
+#### Step 1.11: Set the session branch and bootstrap commit
+
+Set the session branch now that the Requirements Analysis is accepted, so the PR
+has somewhere to live.
+
+If the session started on `main`, create the branch and switch to it. The name
+reflects the session input — `GH123` for an issue, a short slug like `add-foo`
+for an unscoped task. When the input names no issue and suggests no obvious
+slug, take a couple of words from the Session Type and the main surface it
+touches.
+
+If the session started on a non-`main` branch, the boot guard already confirmed
+it as a worktree branch off `main`. Adopt it as the session branch; no checkout
+needed.
+
+Then create an empty bootstrap commit (`git commit --allow-empty`) so the draft
+PR has a commit to anchor to. Give it a short subject naming the session — the
+issue ref or slug — and the `Co-Authored-By` trailer only (see
+[Branch and commit operations](#branch-and-commit-operations)). Push the branch.
+
+All work runs against the session-start state of `main`. Any drift on origin is
+handled at Merge.
+
+#### Step 1.12: Open the draft PR
+
+Open a draft PR for the session branch (`gh pr create --draft`), with the
+accepted Requirements Analysis as its description. The PR carries the session's
+deliberation record from here on — each later accepted artifact posts as a
+comment (see [The session PR](../skills/team/protocol.md#the-session-pr)). It
+stays in draft until Phase 7 — the draft state signals that the PR isn't yet
+worth the user's attention.
+
+Set up the PR:
+
+- Label it with the Session Type's category (`gh pr create --label <name>`),
+  skipping the label when the repo has no clean match — see
+  [GitHub labels](#github-labels) below.
+- Mark the title and body per
+  [Marking agent-authored GitHub items](#marking-agent-authored-github-items)
+  below, and follow
+  [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
+- Follow the body rules below, together with any contribution rules the repo has
+  (a `CONTRIBUTING.md`, a PR template).
+
+**Don't sample existing PRs for style.** The instinct to read recent PRs to
+"match the house style" lands on whatever noise was in the three PRs the agent
+happened to open. Most repos have varied styles across contributors, and the
+sample isn't a style. Written contribution rules (`CONTRIBUTING.md`, a PR
+template, a commit message convention) are real and should be followed; the
+existing PR log is not a style reference.
+
+**Put the accepted requirements analysis in the body.** Lead with one or two
+plain sentences of context — what the change is and which issue it addresses —
+then the final accepted requirements analysis in the shape the Session Type
+selected. Carry it near-verbatim from the accepted artifact. This is the most
+careful account of why the change exists, and it would otherwise be discarded
+when the session ends.
+
+**The body is the requirements analysis and nothing else.** No Test plan
+section, no summary of the change, no narration of the diff — file paths,
+renames, and line-level changes are all visible in the diff, and the
+requirements analysis carries the intent. The one thing added later is the dream
+metadata line, appended when you finalize the PR (see
+[Finalize the PR](#finalize-the-pr)).
+
+**Close the issues the PR addresses.** GitHub auto-closes an issue on merge only
+when the PR body has a closing keyword for it: `Closes #N`, `Fixes #N`,
+`Resolves #N`. The keyword is per-issue — a single keyword followed by a
+comma-separated list of numbers closes only the first number. Repeat the keyword
+for each issue, or put each on its own line. Without this, the PR merges and the
+issues the PR addressed sit open as triage debt. After opening, check:
+`gh pr view <N> --json closingIssuesReferences` should list every issue the PR
+fixed.
+
 The phase ends at user acceptance of the Requirements Analysis.
 
 ### Phase 2: Code Analysis
@@ -437,6 +512,12 @@ plus any changes from the acceptance discussion. Two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP; no
 reply is expected. They hold it as context for the rest of the session.
 
+#### Step 2.6: Post the accepted Code Analysis to the PR
+
+Post the accepted Code Analysis to the PR as a comment — see
+[Posting an accepted artifact to the PR](#posting-an-accepted-artifact-to-the-pr)
+below.
+
 The phase ends at user acceptance of the Code Analysis.
 
 ### Phase 3: Scope
@@ -554,6 +635,12 @@ This is one of the protocol's user acceptance gates — see
 
 Even after acceptance, the Session Scope is not set in stone. It can be revised
 at any point through a Challenge (see below).
+
+#### Step 3.6: Post the accepted Session Scope to the PR
+
+Post the accepted Session Scope to the PR as a comment — see
+[Posting an accepted artifact to the PR](#posting-an-accepted-artifact-to-the-pr)
+below.
 
 The phase ends at user acceptance of the Session Scope.
 
@@ -734,6 +821,12 @@ until accepted.
 This is one of the protocol's user acceptance gates — see
 [Acceptance gates](../skills/team/protocol.md#acceptance-gates).
 
+#### Step 4.9: Post the accepted Design to the PR
+
+Post the accepted Design to the PR as a comment — see
+[Posting an accepted artifact to the PR](#posting-an-accepted-artifact-to-the-pr)
+below.
+
 The phase ends at user acceptance of the Design.
 
 ### Phase 5: Plan
@@ -858,32 +951,26 @@ accepted.
 This is one of the protocol's user acceptance gates — see
 [Acceptance gates](../skills/team/protocol.md#acceptance-gates).
 
+#### Step 5.7: Post the accepted Plan to the PR
+
+Post the accepted Plan to the PR as a comment — see
+[Posting an accepted artifact to the PR](#posting-an-accepted-artifact-to-the-pr)
+below.
+
 The phase ends at user acceptance of the Plan.
 
 ### Phase 6: Develop
 
-The main implementation loop. After three setup steps, you pick the first task,
+The main implementation loop. After two setup steps, you pick the first task,
 Ralph does the work, Junio audits, and the chain repeats until the list is
-drained.
+drained. The session branch and draft PR already exist — you created them at
+requirements acceptance (Phase 1).
 
 #### Opening sequence
 
-Before the per-task loop runs, three setup steps.
+Before the per-task loop runs, two setup steps.
 
-##### Step 6.1: Set the session branch
-
-If the session started on `main`, create the branch now and switch to it. The
-name reflects the accepted Session Scope — `GH123` for an issue, `add-foo` for
-an unscoped task.
-
-If the session started on a non-`main` branch, the boot guard already confirmed
-it as a worktree branch off `main`. Adopt it as the session branch; no checkout
-needed.
-
-All work runs against the session-start state of `main`. Any drift on origin is
-handled at Merge.
-
-##### Step 6.2: Share the accepted Plan with Junio and Ralph for information
+##### Step 6.1: Share the accepted Plan with Junio and Ralph for information
 
 Send Junio and Ralph the same content you sent the user. Two `SendMessage` calls
 in the same turn, for information only. Sign off `From Grace.` and skip the
@@ -893,13 +980,13 @@ review in
 accepted Plan feeds Junio's per-task coherence audits and Ralph's per-task
 implementations below.
 
-##### Step 6.3: Create the shared task list
+##### Step 6.2: Create the shared task list
 
 Issue the `TaskCreate` calls for the accepted task list.
 
 #### Per-task workflow
 
-##### Step 6.4: Assign
+##### Step 6.3: Assign
 
 Issue one `TaskUpdate(owner=Ralph, status=in_progress)` call. It records the
 assignment, wakes Ralph, and carries the task description as the brief. Don't
@@ -920,13 +1007,13 @@ source of the duplicate-dispatch instinct; ignore it. `TaskUpdate` reads as pure
 bookkeeping and never names the wake-up behaviour. It is the wake-up signal
 here.
 
-##### Step 6.5: Implement
+##### Step 6.4: Implement
 
 Ralph does the work, runs the project's quality checks, and reports back via
 `SendMessage`. You wait — that `SendMessage` is the only completion channel.
 Don't poll the working tree or the task list; the message is the signal.
 
-##### Step 6.6: Verify
+##### Step 6.5: Verify
 
 Read their message together with `git diff`: the message carries any audit
 content, deviations from the brief, or things they noticed; the diff carries the
@@ -934,13 +1021,13 @@ change. Where useful, exercise the feature end-to-end. Don't re-run lint or
 tests — those are Ralph's gate, green by the time you're reading. If something
 looks off, bounce back rather than fixing.
 
-##### Step 6.7: Commit
+##### Step 6.6: Commit
 
 Re-diff before staging. The working tree is live between verify and commit — any
 changes in that window land silently if you stage on the earlier read. Then
 `TaskUpdate status=completed`, stage Ralph's changes, commit, and push.
 
-##### Step 6.8: Coherence audit
+##### Step 6.7: Coherence audit
 
 Send Junio a message asking for the coherence audit on the just-committed
 change. Sign off per "Communication between teammates (agents)" below:
@@ -948,9 +1035,9 @@ change. Sign off per "Communication between teammates (agents)" below:
 substantive findings"). The coherence audit may also raise a **Challenge** — for
 instance when repeated coherence audits circle the same surface, suggesting the
 Session Scope is too narrow to reach the root cause (see
-[Step 6.9](#step-69-triage-findings)).
+[Step 6.8](#step-68-triage-findings)).
 
-##### Step 6.9: Triage findings
+##### Step 6.8: Triage findings
 
 Accept or reject each proposed follow-on on its merits, recording a one-line
 reason for the call. Accepted ones become new tasks, **inserted as the next
@@ -973,95 +1060,22 @@ artifact really no longer hold? If it does, take it to the user (accept or
 reject) following the "Challenge" shape below. If not, continue triage as
 normal.
 
-##### Step 6.10: Loop
+##### Step 6.9: Loop
 
-Next task, back to [Step 6.4](#step-64-assign).
+Next task, back to [Step 6.3](#step-63-assign).
 
-#### Opening the PR
+#### Finalize the PR
 
 At the end of Develop, after all in-session tasks are complete and the branch
-has been pushed, open a draft PR for the session branch
-(`gh pr create --draft`). The PR stays in draft until Phase 7 — the draft state
-signals to the user that the PR is not yet worth their attention. Label the PR
-with the Session Type's category (`gh pr create --label <name>`), skipping the
-label when the repo has no clean match — see [GitHub labels](#github-labels) in
-Common rules below. Title and body markers follow "Marking agent-authored GitHub
-items" in Common rules below. Follow
-[GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
-The body follows the rules below — these are the standard for PR content, voice,
-and structure. Follow them together with any contribution rules the repo has (a
-`CONTRIBUTING.md`, a PR template).
+has been pushed, finalize the PR you opened back in Phase 1 (see
+[Step 1.12](#step-112-open-the-draft-pr)). The label, the closing keywords, and
+the body's requirements analysis were all set at PR-open. Finalizing means two
+things: bring the description to its final accepted state, and append the dream
+metadata line.
 
-**Don't sample existing PRs for style.** The instinct to read recent PRs to
-"match the house style" lands on whatever noise was in the three PRs the agent
-happened to open. Most repos have varied styles across contributors, and the
-sample isn't a style. Written contribution rules (`CONTRIBUTING.md`, a PR
-template, a commit message convention) are real and should be followed; the
-existing PR log is not a style reference.
-
-**Put the accepted requirements analysis in the body.** Lead with one or two
-plain sentences of context — what the change is and which issue it addresses —
-then the final accepted requirements analysis in the shape the Session Type
-selected: consumers, use cases, and any system non-goals for an enhancement;
-expected and observed behaviour and affected consumers for a bug fix;
-improvement goals and preserved behaviour for maintenance. Carry it
-near-verbatim from the accepted artifact. This is the most careful account of
-why the change exists, and it would otherwise be discarded when the session
-ends.
-
-**Don't narrate the diff.** File paths, renames, exact textual edits, method
-signatures, line-level changes are all visible in the diff. The body is for
-intent, carried by the requirements analysis — not a retelling of the change.
-
-**Keep the description at final accepted state.** If an artifact is revised
-after the PR opens — through a Challenge, say — edit the description so it shows
-the final accepted requirements, not the state at PR-open.
-
-**Close the issues the PR addresses.** GitHub auto-closes an issue on merge only
-when the PR body has a closing keyword for it: `Closes #N`, `Fixes #N`,
-`Resolves #N`. The keyword is per-issue — a single keyword followed by a
-comma-separated list of numbers closes only the first number. Repeat the keyword
-for each issue, or put each on its own line. Without this, the PR merges and the
-issues the PR addressed sit open as triage debt. After opening, check:
-`gh pr view <N> --json closingIssuesReferences` should list every issue the PR
-fixed.
-
-**Plain English, written for a junior developer joining the team.** Lead with
-the _why_, then the _what_. Assume the reader wasn't in the session.
-
-The PR describes the **code change**, not the **process that produced it**. If a
-sentence references the dream team protocol, a role on it, or the way it
-organises work, that sentence doesn't belong here. Internal-protocol vocabulary
-should never appear in the description:
-
-- _the protocol_
-- _Grace_ / _Ralph_ / _Junio_ / _Ada_ as role names
-- phase names as labels (_Requirements_, _Code Analysis_, _Scope_, _Design_,
-  _Plan_, _Develop_, _Review_, _Merge_, _Collect_, _Reflect_)
-- _task_ as the unit of dream-team work
-- _post-merge sweep_
-- _coherence chain_
-- _depth-first drain_
-- _follow-on_
-- _missed instance_
-- _consequential adjacency_
-- _Ancillary Finding_
-- _Challenge_ as the dream-team mechanism
-
-Agent-coined terms-of-art ("the latent test injection seam") are out for the
-same reason: the reader hasn't been in the session. If a concept needs a name,
-use the one a colleague would already know. If a sentence stacks three clauses
-of qualification, split it or cut it.
-
-**Test plan only when a human still has work to do.** By the time a dream-team
-PR opens, three gates have already run: Ralph's lint + test pass (pre-report),
-the commit hook (pre-commit), and CI (pre-merge). Include the Test plan section
-only when a human genuinely needs to verify something CI doesn't cover — visual
-checks on a UI change, manual reproduction of a hard-to-test bug, smoke tests
-against staging, or end-to-end exercises the suite cannot run. If there are no
-such steps, skip the section entirely. Doubt → skip. Don't pad the slot with
-CI-covered items, and don't rename it "Verification" — that's the same noise
-under a different name.
+**Final accepted state.** If the requirements were revised after the PR opened —
+through a Challenge, say — edit the description so it shows the final accepted
+requirements, not the state at PR-open.
 
 **Append a dream metadata line to the PR body, after the Claude Code footer:**
 
@@ -1082,15 +1096,15 @@ mid-session).
 
 ### Phase 7: Review
 
-When the PR is open, follow the steps below. Ada and Junio review in parallel —
-Ada with fresh eyes, Junio against the accepted requirements, Session Scope, and
-the whole diff — and you handle both reviews the same way.
+When development is complete, follow the steps below. Ada and Junio review in
+parallel — Ada with fresh eyes, Junio against the accepted requirements, Session
+Scope, and the whole diff — and you handle both reviews the same way.
 
 #### Step 7.1: Send the review requests
 
-Tell Ada and Junio the PR is open and ask each for their review. Two
-`SendMessage` calls in the same turn, one to each, both carrying the PR number.
-Sign off per "Communication between teammates (agents)" below:
+Tell Ada and Junio that development is complete and ask each for their review.
+Two `SendMessage` calls in the same turn, one to each, both carrying the PR
+number. Sign off per "Communication between teammates (agents)" below:
 `From Grace. RSVP via SendMessage.`
 
 #### Step 7.2: Post each review as a PR comment
@@ -1192,6 +1206,11 @@ Phase 8 describes. Only a user-directed change reopens Develop, and you handle
 it as an explicit reopening — create a task, Ralph implements, you commit, Junio
 audits, the same as any Phase 6 task. Absent that direction, the default is
 freeze.
+
+The freeze stops new code, not updates to the PR's record. If a Challenge is
+accepted at Phase 7 or later, still post its superseding comment and edit the PR
+description — that records the decision, it isn't development. Any code the
+Challenge needs goes through the user-directed reopening above.
 
 ### Phase 8: Merge
 
@@ -1500,10 +1519,15 @@ follow the protocol as normal from there. The artifact is revised and
 re-accepted through that phase's usual flow, and the work downstream reshapes to
 match — keep what still stands, redo what the revision touches.
 
-When the revised artifact is the Requirements Analysis and the PR is already
-open, the downstream reshape includes editing the PR description to the new
-accepted state — see "Keep the description at final accepted state" under
-"Opening the PR".
+The downstream reshape includes the PR, which has been open since Phase 1. When
+the revised artifact is the Requirements Analysis, edit the PR description to
+the new accepted state — see "Final accepted state" under "Finalize the PR".
+When it is an artifact already posted as a comment — the Code Analysis, Session
+Scope, Design, or Plan — post the revised artifact as a new comment, not an edit
+of the earlier one. Open it with an explicit supersession marker ("Supersedes
+the Session Scope above"). This keeps the thread's history so a reader can tell
+which version stands (see
+[The session PR](../skills/team/protocol.md#the-session-pr)).
 
 ### What a Challenge is not
 
@@ -1585,7 +1609,8 @@ resume waiting at the next acceptance gate.
 
 ### PR metadata
 
-When you append the dream metadata line at PR creation, set `autopilot:<value>`:
+When you append the dream metadata line while finalizing the PR (end of
+Develop), set `autopilot:<value>`:
 
 - `no` — autopilot was not used during the session.
 - `from-<phase>` — autopilot was engaged from that point. Use `from-input` when
@@ -1594,6 +1619,25 @@ When you append the dream metadata line at PR creation, set `autopilot:<value>`:
 
 If autopilot was turned off and on again during the session, record the earliest
 engagement.
+
+## Stopping a session early
+
+Leave a record on the PR when a session stops before merge, rather than
+abandoning it silently. The user may decline the work at a gate, redirect
+elsewhere, or end the session — and because the PR has been open since Phase 1,
+it already holds whatever artifacts the session reached. Post a final comment
+naming where the work reached, the last accepted artifact, and why it stopped,
+then close the draft PR with `gh pr close <N>`.
+
+Recognise the intent the way you recognise autopilot engagement; the phrasing
+varies ("let's not do this", "stop here", "park this one"). A stop is the user
+ending the session, not pushing back at a gate — pushback loops through revision
+as usual (see the acceptance gate steps). When you're unsure which one it is,
+ask the user whether to close the PR before you do it.
+
+Name the reason for stopping concretely. The closing comment is the only durable
+trace of a declined session, so a reader should see what was considered and why
+it went no further.
 
 ## Behaviour-preserving task briefs
 
@@ -1682,8 +1726,13 @@ You never:
 ### Branch and commit operations
 
 - One commit per task — task ↔ commit. You are the committer.
-- Commit message style: short subject. Every commit ends with a blank line then
-  three trailers:
+  - Exception: the empty bootstrap commit at branch setup (see
+    [Step 1.11](#step-111-set-the-session-branch-and-bootstrap-commit)). It is
+    not a task, so it carries the `Co-Authored-By` trailer only — no
+    `Dream-origin` or `Dream-bounces`. It is pre-task, so if a commit hook
+    rejects it, you resolve it yourself rather than bouncing to Ralph.
+- Commit message style: short subject. Every task commit ends with a blank line
+  then three trailers:
 
   ```text
   Co-Authored-By: Claude <claude@anthropic.com>
@@ -1750,6 +1799,36 @@ triage; it's signal that helps reviewers weigh the artifact appropriately.
   repo aren't a style precedent; treat them as you would any other contributor's
   work.
 
+### Posting an accepted artifact to the PR
+
+Post each accepted artifact — the Code Analysis, Session Scope, Design, and Plan
+— to the PR as a comment (`gh pr comment <N> --body "..."`) once its gate
+passes, so the session's deliberation persists past the session (see
+[The session PR](../skills/team/protocol.md#the-session-pr)). Post the accepted
+artifact itself, not the share-message wrapper: drop the "what changed after the
+reviews" note, which is for the user in chat, not the public record. Write it in
+public register: the artifact's own plain name is the heading (`Code Analysis`,
+`Session Scope`), and role names and protocol-process vocabulary stay out.
+Append the Claude Code footer from "Marking agent-authored GitHub items" above.
+Follow
+[GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
+
+### GitHub-write failures and blocks
+
+When a `gh pr comment` or `gh pr create` write fails or is blocked, tell the
+user what failed and why, fix it or get approval, then retry the same call until
+it lands. Don't advance the phase as if the write succeeded — the PR and its
+artifact comments are the session's deliberation record, so a dropped write
+silently loses what the phase produced. Two things cause this: Claude Code's
+auto-mode classifier can deny the call, reading the verbatim relay of a
+teammate's content as an unauthorised external write; or the call fails outright
+(network error, expired token, a PR that was never created).
+
+Allowlisting `gh pr create` and `gh pr comment` (see the team skill's setup
+note) removes the classifier prompts, at the cost of pre-approving every such
+write for the session. It's the user's opt-in; the per-call recovery above is
+the default.
+
 ### GitHub labels
 
 Label both the session PR and any issues you file with a category label, so
@@ -1768,8 +1847,8 @@ Two things get labelled, from different sources:
 
 - **The PR** carries the **Session Type's** category — a bug-fix session maps to
   `bug`, an enhancement to `enhancement`, maintenance to `maintenance`. Apply at
-  PR creation with `gh pr create --label <name>` (see "Opening the PR" in Phase
-  6).
+  PR creation with `gh pr create --label <name>` (see
+  [Step 1.12](#step-112-open-the-draft-pr) in Phase 1).
 - **Each new issue** carries the **finding's** type, not the Session Type — one
   session can file findings across all three. Apply with
   `gh issue create --label <name>`.
