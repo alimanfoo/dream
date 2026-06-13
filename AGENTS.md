@@ -102,7 +102,8 @@ This repo has two layers, easy to confuse:
   `/dream:team`.
 - **This file (AGENTS.md)** — meta-documentation for the coding assistant
   helping the dream plugin developer. One layer up; describes how to develop the
-  plugin.
+  plugin. (`CLAUDE.md` is a symlink to it — edit `AGENTS.md` directly; some
+  editors refuse to write through a symlink.)
 
 Two ways they get crossed:
 
@@ -470,6 +471,15 @@ installs it via `npm`.
 There is no release process. The plugin is installed directly from this GitHub
 repo's main branch.
 
-When opening a PR, include a version bump. Micro version bump for bug fixes.
-Minor version bump for all other changes while on the 0.x series. This ensures
-that all changes that get merged to main will include a version bump.
+When opening a PR, include a version bump in
+`plugins/dream/.claude-plugin/plugin.json`, so every change merged to main is
+versioned. Which part to bump:
+
+- **Major** — a structural or breaking change to the protocol: a phase reshaped,
+  steps renumbered, or anything that changes how a session runs or breaks an
+  expectation a running team relies on.
+- **Minor** — an additive, non-breaking change.
+- **Micro** — a bug fix.
+
+A change that touches only this developer meta-doc (`AGENTS.md`) needs no bump —
+it isn't part of the installed plugin.
