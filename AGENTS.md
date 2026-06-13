@@ -147,18 +147,20 @@ templates.
 
 Renaming or renumbering a phase, step, or concept ripples past
 the file you edit. Step headings carry the phase in the number —
-`Step 4.5` is phase 4, step 5 — and within-file references to a
-step or a named section are Markdown anchor links. So renumbering
-a step, or rewording any heading, changes its anchor and breaks
-every within-file link still pointing at the old one — and
-markdownlint's MD051 (run in pre-commit and CI) fails until they
-are fixed. That check covers within-file links only; cross-file
-references (`see "X" in protocol.md`), references to bold inline
-labels rather than headings, and the protocol summary are plain
-prose, so still grep every agent file and the protocol for the
-old name. `Junio.md` and `Ralph.md` run parallel for shared
-mechanics, so the same instruction often lives in both; edit
-them in lockstep.
+`Step 4.5` is phase 4, step 5 — and references to a step or a
+named section, within a file or across files, are Markdown anchor
+links. So renumbering a step, or rewording any heading, changes
+its anchor and breaks every link still pointing at the old one —
+and the link checks (markdownlint's MD051 for within-file links,
+`remark-validate-links` for cross-file links, both run in
+pre-commit and CI) fail until they are fixed. A link can only
+target a heading, so a sub-point referenced by name needs to be a
+heading, not a bold inline label. The checks cover links to a
+named section; whole-file mentions that name no section, and the
+protocol summary, stay plain prose, so still grep every agent
+file and the protocol for the old name. `Junio.md` and `Ralph.md`
+run parallel for shared mechanics, so the same instruction often
+lives in both; edit them in lockstep.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test suite. When changing behavior, validate by reading the affected skill/agent prompts together and checking that lifecycle, role boundaries, and tool permissions remain consistent. Run the pre-commit hooks to check formatting; see the Linting section.
 
@@ -443,7 +445,7 @@ for an LLM agent is in "Writing agent prompts".
 
 ## Linting
 
-The repo uses [`pre-commit`](https://pre-commit.com/) for lightweight checks: trailing whitespace, end-of-file newlines, JSON syntax, Markdown style (`markdownlint-cli2` — see `.markdownlint.json` for tuned rules), invisible characters (non-breaking spaces, zero-width marks, bidi controls — see `scripts/check_invisible_chars.py`), `claude plugin validate` on the plugin and marketplace manifests, and YAML frontmatter validation on skill and agent files.
+The repo uses [`pre-commit`](https://pre-commit.com/) for lightweight checks: trailing whitespace, end-of-file newlines, JSON syntax, Markdown style (`markdownlint-cli2` — see `.markdownlint.json` for tuned rules), Markdown link validation (`remark-validate-links` — checks within-file and cross-file anchor links resolve to real headings), invisible characters (non-breaking spaces, zero-width marks, bidi controls — see `scripts/check_invisible_chars.py`), `claude plugin validate` on the plugin and marketplace manifests, and YAML frontmatter validation on skill and agent files.
 
 Set up locally:
 

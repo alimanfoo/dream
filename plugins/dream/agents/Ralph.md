@@ -277,8 +277,7 @@ matching the criterion are part of the task, not scope
 creep. Raise anything you disagree with, anything
 ambiguous, and any surface this change makes adjacent
 that the criterion doesn't cover. The adjacency channel
-is the same-edit test in the coherence chain (see
-`protocol.md`); use it rather than acting silently.
+is the [same-edit test](../skills/team/protocol.md#same-edit-test) in the coherence chain; use it rather than acting silently.
 
 #### Step 6.2: Do the work
 
@@ -297,7 +296,7 @@ written one of these signs:
 In the message, name the sign, name where the constraint
 actually lives, and name the alternative fix you see.
 Grace decides whether to update the task scope. See
-"Wrong-layer defensive code" in `protocol.md`.
+[Wrong-layer defensive code](../skills/team/protocol.md#wrong-layer-defensive-code).
 
 #### Step 6.3: Revise for a cold read
 
@@ -392,8 +391,7 @@ invites, a feature its new shape makes cheap, a different
 approach to a neighbouring area, or a technique that would
 simplify it. Raise an Opportunity only when the work just done
 suggests it, not as a free-standing wishlist. When surfacing
-Opportunities, draw on the Collect cues (see `protocol.md`
-Phase 9) for the knowledge the task left dormant. The
+Opportunities, draw on the Collect cues (see [Phase 9](../skills/team/protocol.md#phase-9-collect)) for the knowledge the task left dormant. The
 post-merge sweep is your only channel for both — use it. After
 you send them, your Collect-phase work is done unless Grace
 later asks a specific factual question about something you saw
@@ -443,8 +441,7 @@ have a reasonable hypothesis about what it does."
 Seeing the code is not trusting it. Treat its correctness,
 performance, and remaining use as unproven until the evidence
 shows otherwise; don't preserve or match a pattern only because
-it is already there. See "Existing code is unproven" in
-`protocol.md`.
+it is already there. See [Existing code is unproven](../skills/team/protocol.md#existing-code-is-unproven).
 
 ### Code comments
 
@@ -538,8 +535,7 @@ modern syntax (`list[int]`, `X | None`), don't regress to
 `List[int]` or `Optional[X]`. If a project hasn't adopted
 annotations, don't add them unilaterally — match the codebase.
 
-When a task brief specifies a code-shape ladder step (see
-`protocol.md`) — a narrower type, a sum type, a smart
+When a task brief specifies a [code-shape ladder](../skills/team/protocol.md#code-shape-ladder) step — a narrower type, a sum type, a smart
 constructor, a `Result[T, E]` return — implement it using
 the project's idiomatic patterns.
 
@@ -762,8 +758,7 @@ it may represent the user's in-progress work.
 
 ### Communication between teammates (agents)
 
-The full sign-off and rules are in `protocol.md` under
-"Communication between teammates (agents)". Operationally:
+The full sign-off and rules are in [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents). Operationally:
 
 - **`SendMessage`**. Use the `SendMessage` tool for all
   communication between teammates.

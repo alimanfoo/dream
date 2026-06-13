@@ -346,7 +346,7 @@ the Session Type itself, return to [Step 1.5](#step-15-name-the-session-type) an
 there.
 
 This is one of the protocol's user acceptance gates —
-see "Acceptance gates" in `protocol.md`.
+see [Acceptance gates](../skills/team/protocol.md#acceptance-gates).
 
 #### Step 1.10: Hand the accepted Requirements Analysis to Junio and Ralph
 
@@ -408,8 +408,7 @@ the session's surfaces touch, not a tour of the whole codebase.
 
 Trace each constraint the surface defends against back to the
 function that imposes it. Name any defensive code that sits at
-a different layer — see "Wrong-layer defensive code" in
-`protocol.md`.
+a different layer — see [Wrong-layer defensive code](../skills/team/protocol.md#wrong-layer-defensive-code).
 
 Treat a comment that justifies non-obvious code as a candidate
 smell, not description. A comment explaining why code exists by
@@ -454,7 +453,7 @@ and each drift looks like a fresh, separate bug. So name the one
 place the fact belongs (or note it has no single home yet) and
 the copies that derive or drift from it. A run of fixes
 tightening on one surface is usually this drift, not a run of
-unrelated defects (see "One fact, one home" in `protocol.md`).
+unrelated defects (see [One fact, one home](../skills/team/protocol.md#one-fact-one-home)).
 
 Some recurring surfaces are not one fact copied to several
 places but one rule that many hand-written sites must each
@@ -462,8 +461,7 @@ follow, with no single home — every endpoint building its own
 error response, every public function carrying its own
 docstring. Record the rule and that nothing checks it, citing
 the sites seen breaking it. Naming it is factual; whether to
-enforce it with a check is Scope's call (see "One rule, one
-check" in `protocol.md`).
+enforce it with a check is Scope's call (see [One rule, one check](../skills/team/protocol.md#one-rule-one-check)).
 
 The Code Analysis is a read, not a transcription. Tell the
 reader something they couldn't get line by line. Root cause
@@ -495,7 +493,7 @@ mechanism, a wider pattern they want named — revise and
 return to [Step 2.3](#step-23-share-the-code-analysis-with-the-user); repeat until accepted.
 
 This is one of the protocol's user acceptance gates —
-see "Acceptance gates" in `protocol.md`.
+see [Acceptance gates](../skills/team/protocol.md#acceptance-gates).
 
 #### Step 2.5: Hand the accepted Code Analysis to Junio and Ralph
 
@@ -548,15 +546,13 @@ inconsistency unresolved? If so, it is too narrow — widen it
 to reach the cause, not just the surface the input named.
 When the Code Analysis traced a recurring surface to one fact
 written in two places, single-sourcing it is the root-cause fix
-— Coherent work, not a Maximal add-on (see "One fact, one home"
-in `protocol.md`). A script or test that re-syncs the two
+— Coherent work, not a Maximal add-on (see [One fact, one home](../skills/team/protocol.md#one-fact-one-home)). A script or test that re-syncs the two
 copies is not the fix — it keeps both copies, so the drift
 returns the next time the code changes. When the recurring
 surface is one rule many sites must each follow, with no single
 home to single-source, a check that enforces the rule is the
 root-cause fix instead — Coherent work when the rule is real
-and the drift is observed, not a Maximal add-on (see "One rule,
-one check" in `protocol.md`).
+and the drift is observed, not a Maximal add-on (see [One rule, one check](../skills/team/protocol.md#one-rule-one-check)).
 
 Ask the removal question too: could dropping or narrowing
 something — a feature, a branch, a layer, a hand-maintained
@@ -640,7 +636,7 @@ continue to Phase 4: Design. If the user pushes back, revise
 and return to [Step 3.4](#step-34-share-the-revised-scope-options-with-the-user); repeat until accepted.
 
 This is one of the protocol's user acceptance gates —
-see "Acceptance gates" in `protocol.md`.
+see [Acceptance gates](../skills/team/protocol.md#acceptance-gates).
 
 Even after acceptance, the Session Scope is not set in
 stone. It can be revised at any point through a Challenge
@@ -860,7 +856,7 @@ continue to Phase 5: Plan. If the user pushes back, revise
 and return to [Step 4.7](#step-47-share-the-revised-design-options-with-the-user); repeat until accepted.
 
 This is one of the protocol's user acceptance gates —
-see "Acceptance gates" in `protocol.md`.
+see [Acceptance gates](../skills/team/protocol.md#acceptance-gates).
 
 The phase ends at user acceptance of the Design.
 
@@ -1004,7 +1000,7 @@ questions or redirects, revise and return to [Step 5.5](#step-55-share-the-revis
 until accepted.
 
 This is one of the protocol's user acceptance gates —
-see "Acceptance gates" in `protocol.md`.
+see [Acceptance gates](../skills/team/protocol.md#acceptance-gates).
 
 The phase ends at user acceptance of the Plan.
 
@@ -1061,8 +1057,7 @@ illustrate the criterion; they are scaffold, not the
 work. Ralph applies the criterion fresh and raises
 anything he disagrees with, anything ambiguous, or any
 surface this change makes adjacent that the criterion
-doesn't cover — see the same-edit test in the coherence
-chain.
+doesn't cover — see the [same-edit test](../skills/team/protocol.md#same-edit-test) in the coherence chain.
 
 The tool descriptions mislead. `SendMessage`'s
 own example shows `{"to": "researcher", "summary": "assign
@@ -1151,7 +1146,7 @@ Type's category (`gh pr create --label <name>`), skipping the
 label when the repo has no clean match — see [GitHub labels](#github-labels)
 in Common rules below. Title and body markers follow
 "Marking agent-authored GitHub items" in Common rules below.
-Follow "GitHub-rendered artefacts" in `protocol.md`.
+Follow [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 The body follows the rules below — these are the standard for
 PR content, voice, and structure. Follow them together with any
 contribution rules the repo has (a `CONTRIBUTING.md`, a PR
@@ -1368,7 +1363,7 @@ Do not repost the review text, quote internal teammate
 messages, or use dream-team protocol vocabulary. Append the
 standard Claude Code footer from "Marking agent-authored GitHub
 items" below. If the footer is already present, don't duplicate
-it. Follow "GitHub-rendered artefacts" in `protocol.md`.
+it. Follow [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
 #### Step 7.5: Mark the PR ready for review
 
@@ -1384,7 +1379,7 @@ PR is ready for the user's acceptance; Phase 8 handles the
 merge itself.
 
 Marking the PR ready hands off the branch, and from here it is
-frozen (see "Phase 8: Merge" in `protocol.md`). In Merge,
+frozen (see [Phase 8: Merge](../skills/team/protocol.md#phase-8-merge)). In Merge,
 Collect, and Reflect a finding that would once have become a
 follow-on task becomes an issue instead; you fold no new
 development into the PR. Resolving merge conflicts is the
@@ -1458,7 +1453,7 @@ dropped. Each carries the evidence you cited in Phase 1, so it
 is ready to file as is.
 
 As you ask the teammates for the post-merge sweep, refer them
-to the Collect cues (see `protocol.md` Phase 9). They read the
+to the Collect cues (see [Phase 9](../skills/team/protocol.md#phase-9-collect)). They read the
 cues once at boot, and by now that read has fallen from view;
 referring to the cues in the request fires them while each
 teammate surfaces Opportunities. Draw on the cues yourself as
@@ -1555,17 +1550,15 @@ GitHub-visible text.
   contract) and list the prior issues with `#N` references.
   Where the recurrence is drift between copies of one fact,
   name the home and the copies and frame the issue around
-  single-sourcing them (see "One fact, one home" in
-  `protocol.md`). Where it is one rule many sites must each
+  single-sourcing them (see [One fact, one home](../skills/team/protocol.md#one-fact-one-home)). Where it is one rule many sites must each
   follow, with no single home, frame the issue around adding a
-  check to enforce it (see "One rule, one check" in
-  `protocol.md`). Open the issue body with a reference to the
+  check to enforce it (see [One rule, one check](../skills/team/protocol.md#one-rule-one-check)). Open the issue body with a reference to the
   session PR: "Noticed during #N, ..." The recurrence pattern
   itself is the behaviour gap — issues landing on the same
   surface is evidence of an unresolved contract. Substance already
   decided at Plan would be a Challenge to a settled
   decision, raised in-session, not a fresh observation here
-  — see "Challenge" in `protocol.md`.
+  — see [Challenge](../skills/team/protocol.md#challenge).
 - **File fresh** — no related issue on the surface, and the
   finding clears the bar. Open a standalone issue. Open the
   issue body with a reference to the session PR:
@@ -1603,8 +1596,7 @@ direction. Issues point to a concern that can be resolved;
 they don't spell out the fix. The title states the concern
 as a complete thought ("status-verb keys can drift from
 helper returns"), not a stacked-qualifier noun phrase ("an
-unenforced string protocol"). Follow "GitHub-rendered
-artefacts" in `protocol.md`.
+unenforced string protocol"). Follow [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
 ### Phase 10: Reflect
 
@@ -1648,7 +1640,7 @@ candidate finding, draft an issue describing the context the
 problem arose in, the nature of the problem, and the team's
 hypotheses about why it happened. Suggestions for resolution
 are welcome in the draft but optional. Follow
-"GitHub-rendered artefacts" in `protocol.md`.
+[GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
 An issue is filed in one of two places:
 
@@ -1689,7 +1681,7 @@ instructions.
 
 ## Code-shape-first check
 
-Apply the code-shape ladder (see `protocol.md`) whenever a
+Apply the [code-shape ladder](../skills/team/protocol.md#code-shape-ladder) whenever a
 proposal would express a contract, invariant, precondition,
 or convention through prose or a runtime check. The
 proposal might come from your own design, the user, or a
@@ -2158,8 +2150,7 @@ answer, not headers and sections.
 
 ### Communication between teammates (agents)
 
-The full sign-off and rules are in `protocol.md` under
-"Communication between teammates (agents)". Operationally:
+The full sign-off and rules are in [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents). Operationally:
 
 - **`SendMessage`**. Use the `SendMessage` tool for all
   communication between teammates.

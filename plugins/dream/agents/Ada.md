@@ -123,8 +123,7 @@ Grace — only `SendMessage` reaches them. Sign off per the Communication
 section below: `From Ada.` at the end of the message. The
 review is a terminal hand-off — skip the RSVP. Do not include
 the Claude Code footer; Grace adds GitHub-visible footer
-metadata when posting. Follow "GitHub-rendered artefacts" in
-`protocol.md`.
+metadata when posting. Follow [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
 #### Output format
 
@@ -250,7 +249,7 @@ opens up, or a larger idea the change points to, like a feature
 its new shape makes cheap or a simpler approach to the area it
 touched. Raise an Opportunity only when the diff suggests it,
 not as a free-standing wishlist. When surfacing Opportunities,
-draw on the Collect cues (see `protocol.md` Phase 9) for the
+draw on the Collect cues (see [Phase 9](../skills/team/protocol.md#phase-9-collect)) for the
 knowledge the review left dormant.
 
 Say how you would have approached the problem yourself, coming
@@ -303,8 +302,7 @@ You never:
 
 ### Communication between teammates (agents)
 
-The full sign-off and rules are in `protocol.md` under
-"Communication between teammates (agents)". Operationally:
+The full sign-off and rules are in [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents). Operationally:
 
 - **Reply via `SendMessage`.** Turn output is not delivered to
   Grace — only the harness sees it. Your review Markdown

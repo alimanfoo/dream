@@ -49,3 +49,12 @@ repos:
         language: python
         additional_dependencies: [pyyaml]
         files: ^plugins/.+/agents/.+\.md$
+
+      - id: remark-validate-links
+        name: validate markdown links
+        entry: remark
+        language: node
+        additional_dependencies: ["remark-cli@^12.0.1", "remark-validate-links@^13.1.0"]
+        args: ["--quiet", "--frail", "--use", "remark-validate-links"]
+        files: \.md$
+        exclude: ^CLAUDE\.md$
