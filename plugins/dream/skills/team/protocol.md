@@ -309,17 +309,23 @@ itself proposed. This catches incoherence that completed tasks
 introduce — particularly important for structural changes
 (renames, moves, refactors).
 
-**Scope discipline keeps the chain bounded.** Junio's
+#### Scope discipline keeps the chain bounded
+
+Junio's
 job is restoring coherence relative to the original scope, not
 finding anything else wrong with the codebase. A finding only
 counts as a follow-on if it follows from the change just
 committed; anything else is an Ancillary Finding for
 post-merge triage.
 
-**The chain ends** when either Junio reports "no substantive
+#### When the chain ends
+
+The chain ends when either Junio reports "no substantive
 findings" or Grace rejects all proposed follow-ons.
 
-**Same-edit test.** Treat a surface the session itself has
+#### Same-edit test
+
+Treat a surface the session itself has
 made relevant as in scope, not as an adjacent concern.
 Examples: a promoted sibling whose underscore prefix is now a
 fossil, a removed flag's orphan branch, a renamed concept's
@@ -333,13 +339,13 @@ call toward in-scope.
 Missed instances of the brief's criterion don't need a
 separate test. Ralph applies the criterion fresh — the
 criterion's wording sets the scope, so sibling sites
-matching the criterion are part of the work. See Phase 5
-in `Grace.md` for the brief shape and Phase 6 in
-`Ralph.md` for how Ralph reads it. Junio still catches
+matching the criterion are part of the work. See [Phase 5](../../agents/Grace.md#phase-5-plan) for the brief shape and [Phase 6](../../agents/Ralph.md#phase-6-develop) for how Ralph reads it. Junio still catches
 missed instances during audit when Ralph's application of
 the criterion left some out.
 
-**Defend behaviour, not surface.** For any proposed machinery
+#### Defend behaviour, not surface
+
+For any proposed machinery
 — a test, a glossary, a regen step, a cross-reference rule, a
 backlog issue — ask: *What specific behaviour does this
 defend? Who is the real consumer?* If the only answer is
@@ -348,7 +354,9 @@ phrasing, an arbitrary constant), frame the finding as a
 simplification candidate. Junio applies the test at audit;
 Grace applies it at triage.
 
-**Strip the compensation.** Some diffs include scaffolding
+#### Strip the compensation
+
+Some diffs include scaffolding
 that does work the underlying code should be doing — a comment
 asserting a property the code doesn't show, a mock insulating
 the change from its dependency, an exception handler hiding a
@@ -357,7 +365,9 @@ system. Junio's test: mentally remove the scaffolding and read
 the diff again. If the change no longer holds, the in-scope
 finding is the underlying gap, not the scaffolding.
 
-**Challenge.** When a coherence audit surfaces something new that
+#### Audit-raised Challenge
+
+When a coherence audit surfaces something new that
 breaks an accepted artifact, Junio raises a Challenge to
 Grace — for instance, repeated coherence audits circling the same
 surface for different stated reasons, which points at the

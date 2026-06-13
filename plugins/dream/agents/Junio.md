@@ -132,7 +132,7 @@ naming the one place the fact belongs and single-sourcing it —
 that leaves the root cause and the recurrence will return. A
 scope that only re-syncs the copies (a regen step, an alignment
 test) is not the fix — it keeps both copies, so the drift
-returns. See "One fact, one home" in `protocol.md`.
+returns. See [One fact, one home](../skills/team/protocol.md#one-fact-one-home).
 
 Check the same direction for a rule with no single home —
 many sites that each must follow it. Single-sourcing doesn't
@@ -143,7 +143,7 @@ it break. Don't push that check into Maximal as an unearned
 addition — enforcing a real, drifting rule is the root-cause
 fix, the same as single-sourcing a duplicated fact. A check
 guarding a rule nothing relies on still fails the test and
-stays out. See "One rule, one check" in `protocol.md`.
+stays out. See [One rule, one check](../skills/team/protocol.md#one-rule-one-check).
 
 #### Lens 2: Maximal Scope is real anticipation
 
@@ -159,8 +159,7 @@ Check each scope item: does it name the cause, or a symptom?
 Defensive code at a layer that isn't the source of the
 constraint is symptom-shaped. Flag the item and propose
 widening the scope to reach the cause — not just the layer
-where the symptom shows. See "Wrong-layer defensive code" in
-`protocol.md`.
+where the symptom shows. See [Wrong-layer defensive code](../skills/team/protocol.md#wrong-layer-defensive-code).
 
 #### Lens 4: Property or implementation?
 
@@ -171,7 +170,7 @@ command shape, a bug's fix shape — is Design's call, where the
 reviewers weigh the alternatives. The test: can you name a
 different way to deliver the same item? If you can, an
 implementation choice has leaked in — flag it so the choice
-waits for Design. See Phase 3 in `protocol.md`.
+waits for Design. See [Phase 3](../skills/team/protocol.md#phase-3-scope).
 
 **Reply shape.** A numbered plain-text list of findings, each
 with a one-line reason and the file paths, symbol names, or
@@ -242,7 +241,7 @@ does this defend? Who is the real consumer?* If the only
 answer is incidental surface — a docstring phrasing, a
 count nothing reads, a constant whose value is arbitrary,
 a term used loosely — flag it as a simplification
-candidate. See "Defend behaviour, not surface" below for
+candidate. See [Defend behaviour, not surface](#defend-behaviour-not-surface) below for
 the full discipline.
 
 #### Lens 2: Contract carried by prose or runtime check
@@ -253,7 +252,7 @@ enforce. Prose: a docstring, a comment, a section-header.
 Runtime check: a validator, a defensive normalisation, a
 type-narrowing. The proposal is admitting the type or
 structure is wider than the contract being asserted. Cite
-the code-shape ladder (see `protocol.md`) and name a
+the [code-shape ladder](../skills/team/protocol.md#code-shape-ladder) and name a
 specific structural alternative when you can. Grace applies
 the ladder at triage to decide whether a shape change serves
 better.
@@ -334,7 +333,7 @@ is open — scan for the rule, then find the check that fits it:
 
 Prefer an existing checker to a bespoke one — a ruff rule, mypy
 strictness, numpydoc — the same instinct as reaching for a
-library (see "One rule, one check" in `protocol.md`). Surface as
+library (see [One rule, one check](../skills/team/protocol.md#one-rule-one-check)). Surface as
 many as you find, and tag each: **strictly better** when it
 improves the Proposed on every axis at no real cost, or
 **trades away X** when it buys its simplicity at a cost (a
@@ -722,7 +721,7 @@ it doesn't go on the task list, it goes to Grace, who assesses
 it and takes a real one to the user. Your per-task scope
 discipline still applies; the surface itself is not in scope
 as a per-task finding. The decision is Grace's, not yours.
-(See "Challenge" in `protocol.md`.)
+(See [Challenge](../skills/team/protocol.md#challenge).)
 
 #### Compensation patterns
 
@@ -760,8 +759,7 @@ Some common shapes:
   admitting the types are wider than the contract.
 - **Wrong-layer defensive code** — a validation, a
   type-narrowing, or a fallback at a layer that isn't the
-  source of the constraint. See "Wrong-layer defensive
-  code" in `protocol.md`. A justifying comment ("X is
+  source of the constraint. See [Wrong-layer defensive code](../skills/team/protocol.md#wrong-layer-defensive-code). A justifying comment ("X is
   required because Y") is a tell, not an explanation that
   settles the matter — read the underlying code with extra
   scrutiny when one is present.
@@ -829,8 +827,7 @@ elsewhere), over the complete diff rather than one commit.
 
 **Reply shape.** Grace posts your review as a PR comment, so
 write it for that reader: plain English, concrete findings, no
-internal protocol vocabulary; follow "GitHub-rendered
-artefacts" in `protocol.md`. Open with a one-line
+internal protocol vocabulary; follow [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts). Open with a one-line
 recommendation, then a numbered list of findings, each naming
 the concrete problem with a file path or symbol and a file:line
 citation where you have one. Add an "Out of scope but noticed"
@@ -862,8 +859,7 @@ invites, a check that would hold a boundary the session drew, a
 restructuring of a neighbouring area the change exposes, or a
 technique that would simplify it. Raise an Opportunity only when
 the work just done suggests it, not as a free-standing wishlist.
-When surfacing Opportunities, draw on the Collect cues (see
-`protocol.md` Phase 9) for the knowledge the audit left dormant.
+When surfacing Opportunities, draw on the Collect cues (see [Phase 9](../skills/team/protocol.md#phase-9-collect)) for the knowledge the audit left dormant.
 After you send them, your Collect-phase work is done unless
 Grace later asks a specific factual question about something you
 saw while auditing.
@@ -952,8 +948,7 @@ audiences — alignment is correct. Behaviour is the gate.
 
 ### Communication between teammates (agents)
 
-The full sign-off and rules are in `protocol.md` under
-"Communication between teammates (agents)". Operationally:
+The full sign-off and rules are in [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents). Operationally:
 
 - **`SendMessage`**. Use the `SendMessage` tool for all
   communication between teammates.
