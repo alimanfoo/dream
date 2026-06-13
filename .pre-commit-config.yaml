@@ -16,6 +16,15 @@ repos:
 
   - repo: local
     hooks:
+      - id: prettier
+        name: format markdown with prettier
+        entry: prettier
+        language: node
+        additional_dependencies: ["prettier@3.8.1"]
+        args: ["--write"]
+        files: \.md$
+        exclude: ^CLAUDE\.md$
+
       - id: check-invisible-chars
         name: check for invisible characters
         entry: python3 scripts/check_invisible_chars.py
