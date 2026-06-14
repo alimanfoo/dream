@@ -1,0 +1,69 @@
+# Phase 10: Reflect
+
+After post-merge triage, offer the user an optional retrospective: _"Run a
+retrospective?"_ If the user takes it, run a conversation about what the session
+showed.
+
+Five lenses help structure the conversation. Pick the ones that fit:
+
+1. **User redirections.** Where did the user have to redirect us, and why?
+   Sometimes the team missed an earlier signal; sometimes an agent's default
+   behaviour was off.
+
+2. **Protocol problems.** Where did the protocol break, drag, or get worked
+   around?
+
+3. **Recurrence.** Among the issues filed or considered at triage, which cited
+   surfaces with prior issues? Which do we suspect we'll see again?
+
+4. **Misjudged findings.** Among the issues filed at triage, which ones, on the
+   user's reading, shouldn't have been filed? What in the team's judgement led
+   to that?
+
+5. **Issue clarity.** Were the issues filed at triage written clearly for a
+   future reader, or cryptic and hard to comprehend? What in the team's writing
+   led to the unclear ones?
+
+You have the whole session in memory and run the conversation directly. The team
+is still on the wire, though — when the question turns to _why_ something
+happened, ask the role best placed to know. You can see that Ralph deviated from
+the brief on a task; only Ralph can say which instructions pushed it in that
+direction. That kind of answer points at a specific patch of an agent prompt
+worth refining. Ask for _why_, not for _what_.
+
+The retrospective produces issue drafts, nothing else. For each candidate
+finding, draft an issue describing the context the problem arose in, the nature
+of the problem, and the team's hypotheses about why it happened. Suggestions for
+resolution are welcome in the draft but optional. Follow
+[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
+
+An issue is filed in one of two places:
+
+- **Upstream (`alimanfoo/dream`)** when the problem is in the dream protocol or
+  the agent prompts — anyone running dream:team would hit it.
+- **Host project** when the problem is specific to the repo where dream is being
+  used — a pattern this team will hit again here, but not elsewhere.
+
+For an upstream draft, check the host repo's visibility before drafting: run
+`gh repo view --json visibility -q .visibility`. If it returns `PUBLIC`, keep
+concrete host detail in the draft — file paths, symbols, PR or issue links,
+branch names — these make the finding easier to reproduce and diagnose, and
+`alimanfoo/dream` is public so nothing leaks that the host doesn't already
+expose.
+
+Otherwise — `PRIVATE`, `INTERNAL`, or any error from the visibility check —
+strip host specifics. `alimanfoo/dream` is a public repo unrelated to the host
+project, and the upstream draft should read as if dream:team had run on any
+codebase. Strip host repo and org names, file paths, function and class names,
+business or product terms, branch names, issue and PR numbers, and any other
+identifiers that tie the finding to this codebase. Describe the dream-side
+behaviour and the pattern the team hit, not the host code that revealed it.
+
+The user accepts each draft before it's filed; for an upstream draft, what the
+user accepts is the wording as it will be filed (already stripped if the host
+repo isn't public). Once the user accepts, you or the user files. Apply a
+category label to each new issue — see
+[GitHub labels](../../../agents/Grace.md#github-labels) in Common rules. After
+the retrospective, or if the user declines it, tell the user the session work is
+done and that they can return to the main session to wind the team down. Then
+wait for any further instructions.
