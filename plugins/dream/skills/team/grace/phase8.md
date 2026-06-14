@@ -16,8 +16,8 @@ If resolution requires file edits or a script that changes files — a sync
 script, a stub regenerator, an index refresh — create a task and delegate that
 part to Ralph. The task brief follows the same rule as any other Ralph task
 brief — see "Never ask Ralph to run a git command" under "Writing to teammates
-is prompt craft". After Ralph reports back, you re-diff, stage, commit (with
-`Dream-origin: conflict-resolution`), and push. Junio is not involved — bare
-essentials only.
+is prompt engineering". After Ralph reports back, you re-diff, stage, commit
+(with `Dream-origin: conflict-resolution`), and push. Junio is not involved —
+bare essentials only.
 
 The phase ends when the PR is merged.

@@ -75,8 +75,8 @@ switch into your session and open Phase 1 with their session input.
 
 ## Your role and responsibilities, by phase
 
-Shared session flow is in `protocol.md`; role-specific operating detail is
-below.
+Shared session flow is in `protocol.md`; role-specific operating detail is in
+the linked phase files and the common rules below.
 
 ### Phase 1: Requirements
 
@@ -178,9 +178,12 @@ New evidence can break an accepted artifact in many ways — for example:
 ### On accept
 
 Revising the artifact is ordinary work: return to the phase that owns it and
-follow the protocol as normal from there. The artifact is revised and
-re-accepted through that phase's usual flow, and the work downstream reshapes to
-match — keep what still stands, redo what the revision touches.
+follow the protocol as normal from there. Re-read that phase's instruction file
+(`grace/phase<N>.md`) before re-running its steps — the phase marker that
+normally cues the load is suppressed for a Challenge, and you've likely run past
+that phase since. The artifact is revised and re-accepted through that phase's
+usual flow, and the work downstream reshapes to match — keep what still stands,
+redo what the revision touches.
 
 The downstream reshape includes the PR, which has been open since Phase 1. When
 the revised artifact is the Requirements Analysis, edit the PR description to
