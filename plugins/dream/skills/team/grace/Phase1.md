@@ -274,10 +274,10 @@ Set up the PR:
 
 - Label it with the Session Type's category (`gh pr create --label <name>`),
   skipping the label when the repo has no clean match — see
-  [GitHub labels](../../../agents/Grace.md#github-labels) below.
+  [GitHub labels](../../../agents/Grace.md#github-labels).
 - Mark the title and body per
-  [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items)
-  below, and follow
+  [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items),
+  and follow
   [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
 - Follow the body rules below, together with any contribution rules the repo has
   (a `CONTRIBUTING.md`, a PR template).

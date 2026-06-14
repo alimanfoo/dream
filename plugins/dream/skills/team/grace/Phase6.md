@@ -68,7 +68,7 @@ changes in that window land silently if you stage on the earlier read. Then
 ### Step 6.7: Coherence audit
 
 Send Junio a message asking for the coherence audit on the just-committed
-change. Sign off per "Communication between teammates (agents)" below:
+change. Sign off per "Communication between teammates (agents)":
 `From Grace. RSVP via SendMessage.` Wait for their numbered list (or "no
 substantive findings"). The coherence audit may also raise a **Challenge** — for
 instance when repeated coherence audits circle the same surface, suggesting the
@@ -97,8 +97,7 @@ before deciding.
 
 When the coherence audit raises a **Challenge**, assess it: does an accepted
 artifact really no longer hold? If it does, take it to the user (accept or
-reject) following the "Challenge" shape below. If not, continue triage as
-normal.
+reject) following the "Challenge" shape. If not, continue triage as normal.
 
 ### Step 6.9: Loop
 

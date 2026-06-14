@@ -182,7 +182,6 @@ This is one of the protocol's user acceptance gates — see
 ## Step 4.9: Post the accepted Design to the PR
 
 Post the accepted Design to the PR as a comment — see
-[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)
-below.
+[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
 
 The phase ends at user acceptance of the Design.

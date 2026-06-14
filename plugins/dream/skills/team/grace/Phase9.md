@@ -143,8 +143,7 @@ or a comment, never a fix. This holds even when merge was deferred and the PR is
 still open: a miss this sweep surfaces becomes an issue, not a follow-on on the
 open branch. Only a user-directed change reopens Develop.
 
-Apply a category label to each new issue — see "GitHub labels" in Common rules
-below.
+Apply a category label to each new issue — see "GitHub labels" in Common rules.
 
 **Issue shape.** When filing, write in plain English for a junior developer,
 don't duplicate what's visible in the source, and keep it tight. Don't sample

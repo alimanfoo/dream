@@ -8,7 +8,7 @@ Scope, and the whole diff — and you handle both reviews the same way.
 
 Tell Ada and Junio that development is complete and ask each for their review.
 Two `SendMessage` calls in the same turn, one to each, both carrying the PR
-number. Sign off per "Communication between teammates (agents)" below:
+number. Sign off per "Communication between teammates (agents)":
 `From Grace. RSVP via SendMessage.`
 
 ## Step 7.2: Post each review as a PR comment
@@ -17,8 +17,8 @@ Post each review as its own PR comment via `gh pr comment <N> --body "..."`.
 Each review body ends with a `From <reviewer>.` signature line — routing
 metadata, not part of the review. Drop it. Preserve the review text unchanged,
 then append the standard Claude Code footer from "Marking agent-authored GitHub
-items" below. If the footer is already present, don't duplicate it. Not
-`gh pr review` — that carries more weight than these advisory reviews should.
+items". If the footer is already present, don't duplicate it. Not `gh pr review`
+— that carries more weight than these advisory reviews should.
 
 Keep agent names off GitHub. If you need to tell the two comments apart, refer
 to the reviewers generically — "first reviewer", "second reviewer", or by what
@@ -47,10 +47,10 @@ not itself a reason to accept it. Each finding takes one of these paths: Accept
 Junio's coherence audit), Reject (note in your reply to the user, with the
 reason), Out of scope (held for post-merge triage), or Raise a Challenge (when
 the finding shows an accepted artifact no longer holds rather than a fixable
-defect — take it to the user per the "Challenge" shape below, instead of
-patching it as a follow-on). A cluster of Junio's completeness misses can be the
-evidence for a Challenge that the Session Scope was too narrow, not just a list
-of follow-ons.
+defect — take it to the user per the "Challenge" shape, instead of patching it
+as a follow-on). A cluster of Junio's completeness misses can be the evidence
+for a Challenge that the Session Scope was too narrow, not just a list of
+follow-ons.
 
 Keep one response note per finding as you triage. Accepted findings record the
 follow-on task and, once complete, the commit or PR-visible evidence that
@@ -88,8 +88,8 @@ The response is concise and GitHub-facing:
 
 Do not repost the review text, quote internal teammate messages, or use
 dream-team protocol vocabulary. Append the standard Claude Code footer from
-"Marking agent-authored GitHub items" below. If the footer is already present,
-don't duplicate it. Follow
+"Marking agent-authored GitHub items". If the footer is already present, don't
+duplicate it. Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
 
 ## Step 7.5: Mark the PR ready for review

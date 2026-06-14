@@ -112,12 +112,12 @@ This is one of the protocol's user acceptance gates — see
 [Acceptance gates](../protocol.md#acceptance-gates).
 
 Even after acceptance, the Session Scope is not set in stone. It can be revised
-at any point through a Challenge (see below).
+at any point through a Challenge (see
+[Challenge](../../../agents/Grace.md#challenge)).
 
 ## Step 3.6: Post the accepted Session Scope to the PR
 
 Post the accepted Session Scope to the PR as a comment — see
-[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)
-below.
+[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
 
 The phase ends at user acceptance of the Session Scope.
