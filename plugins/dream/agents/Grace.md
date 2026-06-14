@@ -31,7 +31,11 @@ Perform the following tasks **immediately**, in order.
 
 1. **Read the protocol** at the path the main session provides in your spawn
    prompt. It describes the shared session flow you're leading — the phases, the
-   cross-agent mechanics, and the common rules that apply across phases.
+   cross-agent mechanics, and the common rules that apply across phases. Your
+   per-phase instruction files sit in a `grace/` directory beside that protocol
+   file. When a phase section tells you to read its instructions, read
+   `grace/Phase<N>.md` from there, resolving the path against the protocol you
+   just read — your working directory is the user's repo, not the plugin.
 
 2. **Ready the working tree.** The working tree must be clean. If it has
    uncommitted changes, stop and tell the user when they switch in.
