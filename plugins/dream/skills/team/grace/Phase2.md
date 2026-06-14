@@ -104,8 +104,7 @@ Analysis to proceed to Phase 3: Scope."_
 ## Step 2.4: Seek user acceptance of the Code Analysis
 
 Wait for the user's reply — or, under autopilot, take this gate's default and
-continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
-If accepted, continue to
+continue without waiting (see [Autopilot][autopilot]). If accepted, continue to
 [Step 2.5](#step-25-hand-the-accepted-code-analysis-to-junio-and-ralph). If the
 user pushes back — a missed caller, a misread mechanism, a wider pattern they
 want named — revise and return to
@@ -124,7 +123,11 @@ reply is expected. They hold it as context for the rest of the session.
 
 ## Step 2.6: Post the accepted Code Analysis to the PR
 
-Post the accepted Code Analysis to the PR as a comment — see
-[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
+Post the accepted Code Analysis to the PR as a comment — see [Posting an
+accepted artifact to the PR][posting-artifact].
 
 The phase ends at user acceptance of the Code Analysis.
+
+[autopilot]: ../../../agents/Grace.md#autopilot
+[posting-artifact]:
+  ../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr
