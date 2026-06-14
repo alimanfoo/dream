@@ -543,8 +543,10 @@ phase marker as the first visible output for that phase:
    .  *  .  Phase N: Name  .  *  .
 ```
 
-Print it once per phase. Do not print markers for Phase 0: Boot, acceptance
-gates, a Challenge, or individual tasks.
+Print it once per phase. Printing the marker is your cue to load the phase: read
+that phase's instruction file (`grace/Phase<N>.md`, per your boot sequence)
+right after, before doing any of the phase's work. Do not print markers for
+Phase 0: Boot, acceptance gates, a Challenge, or individual tasks.
 
 In user-facing output, include only information the user needs for the next
 decision, current status, or final hand-off. Don't repeat context, tool results,
