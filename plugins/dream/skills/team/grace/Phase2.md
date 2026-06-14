@@ -38,7 +38,7 @@ the whole codebase.
 
 Trace each constraint the surface defends against back to the function that
 imposes it. Name any defensive code that sits at a different layer — see
-[Wrong-layer defensive code][].
+[Wrong-layer defensive code](../protocol.md#wrong-layer-defensive-code).
 
 Treat a comment that justifies non-obvious code as a candidate smell, not
 description. A comment explaining why code exists by citing another function,
@@ -75,14 +75,14 @@ two places, the copies drift apart as the code changes, and each drift looks
 like a fresh, separate bug. So name the one place the fact belongs (or note it
 has no single home yet) and the copies that derive or drift from it. A run of
 fixes tightening on one surface is usually this drift, not a run of unrelated
-defects (see [One fact, one home][]).
+defects (see [One fact, one home](../protocol.md#one-fact-one-home)).
 
 Some recurring surfaces are not one fact copied to several places but one rule
 that many hand-written sites must each follow, with no single home — every
 endpoint building its own error response, every public function carrying its own
 docstring. Record the rule and that nothing checks it, citing the sites seen
 breaking it. Naming it is factual; whether to enforce it with a check is Scope's
-call (see [One rule, one check][]).
+call (see [One rule, one check](../protocol.md#one-rule-one-check)).
 
 The Code Analysis is a read, not a transcription. Tell the reader something they
 couldn't get line by line. Root cause analysis is the clearest case: for a
@@ -104,14 +104,16 @@ Analysis to proceed to Phase 3: Scope."_
 ## Step 2.4: Seek user acceptance of the Code Analysis
 
 Wait for the user's reply — or, under autopilot, take this gate's default and
-continue without waiting (see [Autopilot][]). If accepted, continue to
+continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
+If accepted, continue to
 [Step 2.5](#step-25-hand-the-accepted-code-analysis-to-junio-and-ralph). If the
 user pushes back — a missed caller, a misread mechanism, a wider pattern they
 want named — revise and return to
 [Step 2.3](#step-23-share-the-code-analysis-with-the-user); repeat until
 accepted.
 
-This is one of the protocol's user acceptance gates — see [Acceptance gates][].
+This is one of the protocol's user acceptance gates — see
+[Acceptance gates](../protocol.md#acceptance-gates).
 
 ## Step 2.5: Hand the accepted Code Analysis to Junio and Ralph
 
@@ -122,15 +124,7 @@ reply is expected. They hold it as context for the rest of the session.
 
 ## Step 2.6: Post the accepted Code Analysis to the PR
 
-Post the accepted Code Analysis to the PR as a comment — see [Posting an
-accepted artifact to the PR][].
+Post the accepted Code Analysis to the PR as a comment — see
+[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
 
 The phase ends at user acceptance of the Code Analysis.
-
-[wrong-layer defensive code]: ../protocol.md#wrong-layer-defensive-code
-[one fact, one home]: ../protocol.md#one-fact-one-home
-[one rule, one check]: ../protocol.md#one-rule-one-check
-[autopilot]: ../../../agents/Grace.md#autopilot
-[acceptance gates]: ../protocol.md#acceptance-gates
-[posting an accepted artifact to the pr]:
-  ../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr
