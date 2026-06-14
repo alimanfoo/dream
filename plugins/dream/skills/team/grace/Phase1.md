@@ -301,7 +301,7 @@ section, no summary of the change, no narration of the diff — file paths,
 renames, and line-level changes are all visible in the diff, and the
 requirements analysis carries the intent. The one thing added later is the dream
 metadata line, appended when you finalize the PR (see
-[Finalize the PR](../../../agents/Grace.md#finalize-the-pr)).
+[Finalize the PR](Phase6.md#finalize-the-pr)).
 
 **Close the issues the PR addresses.** GitHub auto-closes an issue on merge only
 when the PR body has a closing keyword for it: `Closes #N`, `Fixes #N`,
