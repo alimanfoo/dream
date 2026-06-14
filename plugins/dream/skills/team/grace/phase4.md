@@ -9,7 +9,7 @@ plus any changes from the acceptance discussion. Two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP; no
 reply is expected. They haven't seen the outcome since their Draft Scope Options
 review in
-[Step 3.2](Phase3.md#step-32-share-the-draft-scope-options-with-junio-and-ralph-for-review).
+[Step 3.2](phase3.md#step-32-share-the-draft-scope-options-with-junio-and-ralph-for-review).
 The accepted Session Scope feeds the analogies and sketches you generate and the
 Design review that follows.
 

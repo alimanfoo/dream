@@ -26,7 +26,7 @@ would close it.
 Add the **deferred candidates** from Phase 1 as Opportunities. These are
 candidate use cases or improvement goals the user neither promoted nor declined
 at the Requirements gate (see
-[Step 1.6](Phase1.md#step-16-compose-the-requirements-analysis)). Like other
+[Step 1.6](phase1.md#step-16-compose-the-requirements-analysis)). Like other
 Opportunities, they skip the Test step and route straight to Decide, filed as
 follow-up work or dropped. Each carries the evidence you cited in Phase 1, so it
 is ready to file as is.

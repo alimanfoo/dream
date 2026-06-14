@@ -34,7 +34,7 @@ Perform the following tasks **immediately**, in order.
    cross-agent mechanics, and the common rules that apply across phases. Your
    per-phase instruction files sit in a `grace/` directory beside that protocol
    file. When a phase section tells you to read its instructions, read
-   `grace/Phase<N>.md` from there, resolving the path against the protocol you
+   `grace/phase<N>.md` from there, resolving the path against the protocol you
    just read — your working directory is the user's repo, not the plugin.
 
 2. **Ready the working tree.** The working tree must be clean. If it has
@@ -80,52 +80,52 @@ below.
 
 ### Phase 1: Requirements
 
-Read [your Phase 1 instructions](../skills/team/grace/Phase1.md) in full and
+Read [your Phase 1 instructions](../skills/team/grace/phase1.md) in full and
 follow them. They carry every step of this phase.
 
 ### Phase 2: Code Analysis
 
-Read [your Phase 2 instructions](../skills/team/grace/Phase2.md) in full and
+Read [your Phase 2 instructions](../skills/team/grace/phase2.md) in full and
 follow them. They carry every step of this phase.
 
 ### Phase 3: Scope
 
-Read [your Phase 3 instructions](../skills/team/grace/Phase3.md) in full and
+Read [your Phase 3 instructions](../skills/team/grace/phase3.md) in full and
 follow them. They carry every step of this phase.
 
 ### Phase 4: Design
 
-Read [your Phase 4 instructions](../skills/team/grace/Phase4.md) in full and
+Read [your Phase 4 instructions](../skills/team/grace/phase4.md) in full and
 follow them. They carry every step of this phase.
 
 ### Phase 5: Plan
 
-Read [your Phase 5 instructions](../skills/team/grace/Phase5.md) in full and
+Read [your Phase 5 instructions](../skills/team/grace/phase5.md) in full and
 follow them. They carry every step of this phase.
 
 ### Phase 6: Develop
 
-Read [your Phase 6 instructions](../skills/team/grace/Phase6.md) in full and
+Read [your Phase 6 instructions](../skills/team/grace/phase6.md) in full and
 follow them. They carry every step of this phase.
 
 ### Phase 7: Review
 
-Read [your Phase 7 instructions](../skills/team/grace/Phase7.md) in full and
+Read [your Phase 7 instructions](../skills/team/grace/phase7.md) in full and
 follow them. They carry every step of this phase.
 
 ### Phase 8: Merge
 
-Read [your Phase 8 instructions](../skills/team/grace/Phase8.md) in full and
+Read [your Phase 8 instructions](../skills/team/grace/phase8.md) in full and
 follow them. They carry every step of this phase.
 
 ### Phase 9: Collect
 
-Read [your Phase 9 instructions](../skills/team/grace/Phase9.md) in full and
+Read [your Phase 9 instructions](../skills/team/grace/phase9.md) in full and
 follow them. They carry every step of this phase.
 
 ### Phase 10: Reflect
 
-Read [your Phase 10 instructions](../skills/team/grace/Phase10.md) in full and
+Read [your Phase 10 instructions](../skills/team/grace/phase10.md) in full and
 follow them. They carry every step of this phase.
 
 ## Code-shape-first check
@@ -230,7 +230,7 @@ At each acceptance gate, take the default that gate's share message names:
 
 - **Phase 1: Requirements Analysis.** Accept the completed artifact. Open
   questions still resolve first via
-  [Step 1.7](../skills/team/grace/Phase1.md#step-17-elicit-answers-to-open-questions)
+  [Step 1.7](../skills/team/grace/phase1.md#step-17-elicit-answers-to-open-questions)
   — see [Pauses](#pauses) below. Candidates stay excluded; with no user to opt
   in, each is deferred to Collect (see [Phase 9](#phase-9-collect)).
 - **Phase 2: Code Analysis.** Accept. The gate passes without intervention.
@@ -249,7 +249,7 @@ moving on.
 Autopilot pauses on two things, and only two:
 
 - **An unanswered open question** in the Requirements Analysis.
-  [Step 1.7](../skills/team/grace/Phase1.md#step-17-elicit-answers-to-open-questions)
+  [Step 1.7](../skills/team/grace/phase1.md#step-17-elicit-answers-to-open-questions)
   already handles this — if the user leaves any question unanswered, re-ask the
   unanswered ones before continuing. Under autopilot the same behaviour applies:
   you cannot proceed correctly without the user's call, by your own marking.
@@ -390,7 +390,7 @@ You never:
 
 - One commit per task — task ↔ commit. You are the committer.
   - Exception: the empty bootstrap commit at branch setup (see
-    [Step 1.11](../skills/team/grace/Phase1.md#step-111-set-the-session-branch-and-bootstrap-commit)).
+    [Step 1.11](../skills/team/grace/phase1.md#step-111-set-the-session-branch-and-bootstrap-commit)).
     It is not a task, so it carries the `Co-Authored-By` trailer only — no
     `Dream-origin` or `Dream-bounces`. It is pre-task, so if a commit hook
     rejects it, you resolve it yourself rather than bouncing to Ralph.
@@ -511,7 +511,7 @@ Two things get labelled, from different sources:
 - **The PR** carries the **Session Type's** category — a bug-fix session maps to
   `bug`, an enhancement to `enhancement`, maintenance to `maintenance`. Apply at
   PR creation with `gh pr create --label <name>` (see
-  [Step 1.12](../skills/team/grace/Phase1.md#step-112-open-the-draft-pr) in
+  [Step 1.12](../skills/team/grace/phase1.md#step-112-open-the-draft-pr) in
   Phase 1).
 - **Each new issue** carries the **finding's** type, not the Session Type — one
   session can file findings across all three. Apply with
@@ -544,7 +544,7 @@ phase marker as the first visible output for that phase:
 ```
 
 Print it once per phase. Printing the marker is your cue to load the phase: read
-that phase's instruction file (`grace/Phase<N>.md`, per your boot sequence)
+that phase's instruction file (`grace/phase<N>.md`, per your boot sequence)
 right after, before doing any of the phase's work. Do not print markers for
 Phase 0: Boot, acceptance gates, a Challenge, or individual tasks.
 

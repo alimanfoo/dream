@@ -15,7 +15,7 @@ Send Junio and Ralph the same content you sent the user. Two `SendMessage` calls
 in the same turn, for information only. Sign off `From Grace.` and skip the
 RSVP; no reply is expected. They haven't seen the outcome since their Draft Plan
 review in
-[Step 5.3](Phase5.md#step-53-share-the-draft-plan-with-junio-and-ralph-for-review).
+[Step 5.3](phase5.md#step-53-share-the-draft-plan-with-junio-and-ralph-for-review).
 The accepted Plan feeds Junio's per-task coherence audits and Ralph's per-task
 implementations below.
 
@@ -107,7 +107,7 @@ Next task, back to [Step 6.3](#step-63-assign).
 
 At the end of Develop, after all in-session tasks are complete and the branch
 has been pushed, finalize the PR you opened back in Phase 1 (see
-[Step 1.12](Phase1.md#step-112-open-the-draft-pr)). The label, the closing
+[Step 1.12](phase1.md#step-112-open-the-draft-pr)). The label, the closing
 keywords, and the body's requirements analysis were all set at PR-open.
 Finalizing means two things: bring the description to its final accepted state,
 and append the dream metadata line.

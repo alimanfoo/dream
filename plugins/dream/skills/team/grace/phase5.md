@@ -11,7 +11,7 @@ Send Junio and Ralph the accepted Design — the option the user picked, plus an
 changes from the acceptance discussion. Two `SendMessage` calls in the same
 turn, for information only. Sign off `From Grace.` and skip the RSVP; no reply
 is expected. They haven't seen the outcome since their Design review in
-[Step 4.5](Phase4.md#step-45-share-the-design-options-with-junio-and-ralph-for-review).
+[Step 4.5](phase4.md#step-45-share-the-design-options-with-junio-and-ralph-for-review).
 The accepted Design feeds the Plan review that follows.
 
 ## Step 5.2: Compose the Draft Plan
