@@ -25,16 +25,14 @@ this plugin exists to move toward it, which makes it the axiom every design
 decision answers to: does this make agent-led coding more sustainable on its
 own, or does it lean on the human to hold something together?
 
-This is not a distant ambition. Generating code is becoming table stakes, not an
-advantage. What stays scarce is accepting that code indefinitely without the
-codebase rotting, because generation speed and coherence pull against each
-other: the faster agents write, the faster duplication and drift pile up, faster
-than any human can review. So the durable edge is not a better generator but a
-protocol that makes coherence keep pace with generation — a layer a stronger
-base model does not hand you for free. A smarter model writes a better single
-change; it does not, on its own, single-source a duplicated fact, add a missing
-check, or refuse a scope that patches a symptom. Those are disciplines the
-protocol imposes, not capabilities the model arrives with.
+This is not a distant ambition. Generating code is becoming table stakes; what
+stays scarce is accepting it indefinitely without the codebase rotting, because
+speed and coherence pull against each other — the faster agents write, the
+faster duplication and drift pile up, faster than any human can review. So the
+durable edge is not a better generator but a protocol that makes coherence keep
+pace with generation — a layer a stronger base model does not hand you for free,
+because a smarter model writes a better single change but does not, on its own,
+impose the disciplines that keep a codebase whole.
 
 The line between what to automate and what to keep human is drawn by kind, not
 degree. Coherence has a ground truth — code either fits or it does not — so it
@@ -169,10 +167,9 @@ smallest change?" but "what leaves the codebase most coherent?" — and the hone
 answer is usually the larger one.
 
 **Sort every human touch: coherence or intent.** When the human steps in, name
-which it is — _The dream_ draws the line. A coherence touch is a defect to
-design out; an intent touch is the system working, and stays. The test for any
-change: does it remove a coherence touch, or does it lean on the human to hold
-something together?
+which it is — _The dream_ draws the line. The test for any change: does it
+remove a coherence touch, or does it lean on the human to hold something
+together?
 
 **Judge every input on its merits, not its source.** The team's default pull is
 to defer — to accept a teammate's finding because it was raised, to trust
@@ -206,13 +203,12 @@ carrying both.
 Coding agents carry inherent traits that work against the dream. Naming them is
 useful, because most of the plugin's machinery exists to answer one or more:
 
-- **Perimeter fixation** — fixes the named site, not the cause, and resists
-  working past a tight, mostly self-imposed boundary.
+- **Perimeter fixation** — fixes the named site, not the cause; resists working
+  past a self-imposed boundary.
 - **Shallow code reading** — guesses names and greps for them instead of
   tracing, and misses what the guess didn't name.
 - **Over-engineering** — adds abstraction the need doesn't earn, with no felt
-  bound on complexity: no alarm that says step back, this is getting too
-  complex, where a human would stop.
+  bound on complexity.
 - **Add over remove** — reaches for a new line, never a deletion.
 - **Sycophancy** — defers to whoever spoke, rather than the evidence.
 - **Literal-mindedness** — follows the instance, misses the general rule.
@@ -224,32 +220,26 @@ useful, because most of the plugin's machinery exists to answer one or more:
 Three things about how the plugin answers these matter more than the list
 itself.
 
-**The answer is structural, not exhortative.** The plugin almost never tells an
-agent to be less sycophantic or to read code better — an instruction to hold a
-different disposition produces no tokens and changes nothing (see "Writing agent
-prompts"). Instead it assigns a role whose job is the missing disposition (Ada's
-fresh read, Junio's audit), a gate that forces the act (Requirements open
-questions answered before any building), or an artifact that carries a decision
-past the session that made it. The trait doesn't change; the structure around it
-does.
+**The answer is structural, not exhortative.** Telling an agent to be less
+sycophantic produces no tokens and changes nothing (see "Writing agent
+prompts"). Instead the plugin assigns a role whose job is the missing
+disposition (Ada's fresh read, Junio's audit), a gate that forces the act, or an
+artifact that carries a decision past the session that made it. The trait
+doesn't change; the structure around it does.
 
-**Two traits are exploited, not fought.** Literal-mindedness is turned into a
-lever: name a thing so its plain sense pulls the right way (see "Writing agent
-prompts"), and the agent's obedience to the name does the work. Over-eagerness
-is the engine behind active memory — an agent that will dutifully attempt
-whatever sits in front of it is exactly what a failing check needs, because the
-red check becomes a task the next session picks up and fixes without being
-asked.
+**Two traits are exploited, not fought.** Literal-mindedness becomes a lever
+when a name's plain sense pulls the right way (see "Writing agent prompts"), and
+the agent's obedience to the name does the work. Over-eagerness is the engine
+behind active memory: an agent that dutifully attempts whatever sits in front of
+it picks up a failing check as a task and fixes it unasked.
 
 **Some traits still resist structure — the open frontier.** Reactivity is the
-hardest: you cannot gate on the absence of a suggestion, because nothing is
-there to point at, so the failure is silent. Sycophancy keeps re-emerging for
-the same reason. The user catching these at a gate today is the current state,
-not the design's resting place — every such catch is a coherence touch the dream
-means to drive toward zero (see _The dream_). The win condition is finding the
-structure that fires on a silent failure — the way the failing check turned
-over-eagerness from liability to mechanism. These traits are where that
-structure is still missing, and so where the next work is.
+hardest: you cannot gate on the absence of a suggestion, so the failure is
+silent, and sycophancy re-emerges for the same reason. The user catching these
+at a gate today is a coherence touch the dream means to drive toward zero (see
+_The dream_); finding the structure that fires on a silent failure — the way the
+failing check turned over-eagerness from liability to mechanism — is where the
+next work is.
 
 ## Writing agent prompts
 
@@ -394,12 +384,9 @@ Two ways to divide the work, for two different jobs:
   coherence and reference integrity (do protocol.md and the agent files still
   agree, and do the anchor links resolve); lifecycle and edge cases (walk the
   changed flow end to end); agent-prompt efficacy and register (will an agent
-  act on the instruction; is GitHub-visible text in public register); whether it
-  serves the dream (is a stored thing ever read, or write-only; does the change
-  add a human coherence-touch); adversarial robustness (failures, concurrency,
-  GitHub state the protocol doesn't control); security and privacy (what the
-  change newly exposes); simplicity and readability (against the
-  instruction-paragraph template).
+  act on the instruction; is GitHub-visible text in public register); and
+  whether it serves the dream (is a stored thing ever read, or write-only; does
+  the change add a human coherence-touch).
 - **One lens, partitioned by file or section** — to apply a single standard you
   already trust, thoroughly. Divide along the existing structure (the per-phase
   steps versus the common rules) so the partitions don't overlap, and give the
