@@ -186,28 +186,35 @@ The phase ends at user acceptance of the Code Analysis.
 With the Code Analysis accepted, Grace drafts the Scope Options — the Coherent
 Scope (always), the Minimal Scope (when narrower than Coherent), and the Maximal
 Scope (when a wider alternative is real). Coherent Scope additions cite the Code
-Analysis findings they rest on. What the Coherent Scope must reach depends on
-the Session Type: an enhancement builds the feature in rather than bolting it
-on; maintenance fixes every instance of the inconsistency, not just the surface
-the input named; a bug fix fixes the mechanism behind the defect, not the
-symptom site alone. If the work stops short of that, the Coherent Scope is too
-narrow. Prefer removal where it serves, too: dropping or narrowing can resolve
-the concern, or ease maintenance, better than adding. A recurring surface whose
-root cause is a duplicated fact is Coherent work, not optional anticipation —
+Analysis findings they rest on.
+
+What the Coherent Scope must reach depends on the Session Type: an enhancement
+builds the feature in rather than bolting it on; maintenance fixes every
+instance of the inconsistency, not just the surface the input named; a bug fix
+fixes the mechanism behind the defect, not the symptom site alone. If the work
+stops short of that, the Coherent Scope is too narrow.
+
+Prefer removal where it serves, too: dropping or narrowing can resolve the
+concern, or ease maintenance, better than adding. A recurring surface whose root
+cause is a duplicated fact is Coherent work, not optional anticipation —
 single-sourcing it reaches the cause (see "One fact, one home"). When the
 recurring rule has no single home to move it to — many sites that must each
 follow it — a check that enforces it is the Coherent fix instead (see "One rule,
-one check"). A scope item names the property or outcome the work must achieve,
-not how the work achieves it. Choosing the how — a tool or library, an algorithm
-or structure, an API or command shape, a bug's fix shape — is Design's call,
-where the reviewers weigh the alternatives. Grace shares the Draft Scope Options
-with Junio and Ralph for one round of review — advisory, not gating — and
-revises. Junio reads from the maintainer's view; Ralph reads from the
-engineering-pattern view. Grace decides each finding on its merits, recording a
-one-line reason: folded into the revised Scope Options or rejected. Grace then
-shares the revised Scope Options with the user, with a brief note on what
-changed from the Draft after the reviews. On acceptance Grace posts the accepted
-Session Scope to the PR as a comment — see [The session PR](#the-session-pr).
+one check").
+
+A scope item names the property or outcome the work must achieve, not how the
+work achieves it. Choosing the how — a tool or library, an algorithm or
+structure, an API or command shape, a bug's fix shape — is Design's call, where
+the reviewers weigh the alternatives.
+
+Grace shares the Draft Scope Options with Junio and Ralph for one round of
+review — advisory, not gating — and revises. Junio reads from the maintainer's
+view; Ralph reads from the engineering-pattern view. Grace decides each finding
+on its merits, recording a one-line reason: folded into the revised Scope
+Options or rejected. Grace then shares the revised Scope Options with the user,
+with a brief note on what changed from the Draft after the reviews. On
+acceptance Grace posts the accepted Session Scope to the PR as a comment — see
+[The session PR](#the-session-pr).
 
 The phase ends at user acceptance of the Session Scope.
 
