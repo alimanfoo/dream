@@ -5,62 +5,46 @@ helping the user to develop the dream plugin.
 
 ## The dream
 
-The plugin is named for its purpose. The dream is **autonomous coherent
-coding**: software that agents carry end to end, indefinitely, without the
-codebase deteriorating and without the human stepping in to keep it healthy.
+The dream is **autonomous coherent coding**: agents carry software end to end,
+indefinitely, without the codebase deteriorating and without the human stepping
+in to keep it healthy.
 
-**Autonomous** means agent-first. The agents write all the code; the human
-brings the value judgements — what to build, which trade-off to accept, what
-"good" means here — and as little else as possible. A change that needs the
-human to catch a mistake, carry a decision between sessions, or clean up
-afterwards is a failure of autonomy, however small.
+**Autonomous** means agent-first. Agents write all the code; the human supplies
+the value judgements — what to build, which trade-off to accept, what "good"
+means here — and little else. A change that needs the human to catch a mistake,
+carry a decision between sessions, or clean up afterwards is an autonomy
+failure.
 
-**Coherent** means everything fits, and stays fitting — self-maintaining and
-self-healing. Each session leaves the codebase whole, so the next builds on
-solid ground instead of repairing the last one's wake. No drift, no rot, no
-periodic human rescue. Coding that can run this way forever is the target.
+**Coherent** means everything fits and stays fitting. Each session leaves the
+codebase whole, so the next builds on solid ground; no drift, no rot, no
+periodic human rescue.
 
-Naming the dream is not claiming it — it is not reached yet. But every part of
-this plugin exists to move toward it, which makes it the axiom every design
-decision answers to: does this make agent-led coding more sustainable on its
-own, or does it lean on the human to hold something together?
+The dream is the axiom every design decision answers to: does this make
+agent-led coding more sustainable on its own, or does it lean on the human to
+hold something together? A stronger base model does not settle this. It writes a
+better single change but does not, on its own, single-source a duplicated fact,
+add a missing check, or refuse a scope that patches a symptom — those
+disciplines come from the protocol, not the model.
 
-This is not a distant ambition. Generating code is becoming table stakes; what
-stays scarce is accepting it indefinitely without the codebase rotting, because
-speed and coherence pull against each other — the faster agents write, the
-faster duplication and drift pile up, faster than any human can review. So the
-durable edge is not a better generator but a protocol that makes coherence keep
-pace with generation — a layer a stronger base model does not hand you for free,
-because a smarter model writes a better single change but does not, on its own,
-impose the disciplines that keep a codebase whole.
+Coherence and intent split by kind, and the split runs through the whole design.
+Coherence has a ground truth — code either fits or it does not — so agents own
+it completely. Intent is value judgement, so it stays with the human. This gives
+a test for every human touch. A coherence touch — the human spotting a
+duplicated fact, catching drift, cleaning up after the team — is a defect the
+protocol should have caught; design it out. An intent touch — choosing scope,
+accepting a trade-off at a gate — is the system working; keep it. Drive
+coherence touches toward zero; hold intent touches in place. The acceptance
+gates are the channel intent comes through: make them cheap, never remove them.
 
-The line between what to automate and what to keep human is drawn by kind, not
-degree. Coherence has a ground truth — code either fits or it does not — so it
-can be delegated completely. Intent does not: those value judgements stay with
-the human permanently. These are different axes, not two ends of one slider,
-which is why the dream pushes both to the extreme at once — the human needed as
-rarely as possible for coherence, kept firmly in place for intent. This gives a
-test for every human touch. A coherence touch — spotting a duplicated fact,
-catching drift, cleaning up after the team — is a defect the protocol should
-have caught, and work to design out. An intent touch — choosing scope, accepting
-a trade-off at a gate — is the system working, and removing it is itself the
-failure. Drive the first toward zero; hold the second in place. The acceptance
-gates are not incomplete automation waiting to be removed — they are the channel
-intent comes through, to be made cheap but never closed.
-
-Sustaining coherence over a long horizon is, at bottom, a memory problem. What
-rots a codebase is not any single bad change but the slow loss of the decisions
-that kept it coherent. Human teams hold those in people's heads; an agent team
-has no heads — each session is a fresh mind with no memory of the last. So its
-coherence-decisions can only live in the environment the sessions share: the
-structure of the code, the checks that run, the issues on the tracker. A
-decision recorded only as prose — a note a future session must read,
-re-understand, and choose to honour — decays under re-interpretation, which is
-why a surface keeps recurring even after an issue was filed for it. The
-mechanisms that matter most write a decision into a form the next session cannot
-drift from: a fact given one home, an invariant made a check. The team's deepest
-job is not writing today's code well — the acceptance gates already secure that
-— but curating the environment a future amnesiac version of itself will inherit.
+Sustaining coherence over a long horizon is a memory problem. Each session is a
+fresh mind with no memory of the last, so coherence-decisions can only live in
+the environment the sessions share: the structure of the code, the checks that
+run, the issues on the tracker. A decision recorded only as prose — which a
+future session must re-read and choose to honour — decays under
+re-interpretation, so a surface keeps recurring even after an issue was filed
+for it. The mechanisms that matter most write a decision into a form the next
+session cannot drift from: a fact given one home, an invariant made a check.
+Curating that environment matters more than writing today's code well.
 
 ## Introduction and orientation
 
@@ -133,38 +117,33 @@ the Linting section.
 
 ## Design principles
 
-These principles all descend from the dream. Some are subgoals that serve it;
-some are disciplines that keep the pursuit honest.
+These principles all descend from the dream.
 
 **The burden of proof is on the addition.** New machinery — a mechanism, a
-concept, a special case — carries a permanent autonomy tax: the team has to
-carry it, apply it correctly, and reconcile it with everything else. Before
-adding, test three things in order. Can the apparent need be met by removing
-something already there? Can it be met by widening an existing rule until the
-special case disappears? Only if both fail is adding the right answer — and it
-still has to prove it earns its keep against the tax it imposes.
+concept, a special case — carries a permanent cost: the team must carry it,
+apply it correctly, and reconcile it with everything else. Before adding, try in
+order: can the need be met by removing something already there? By widening an
+existing rule until the special case disappears? Only if both fail is adding
+right, and it must still earn its keep against that cost.
 
-**Coherent is the baseline, not the ceiling — and the ceiling is higher, not
-lower.** A codebase that merely fits together is the floor. The aim above it is
-the productive generalisation — a design that names a real concept, a domain
-idea or a technical pattern, collapses duplication, reaches the root cause, and
-reveals intent, so the code comes out simpler: less to maintain, less for a
-future session to carry. The result is simpler to live with, but reaching it is
-deeper and usually _more_ work than the change the input named. Default coding
-agents rarely reach it; they follow instructions literally, add rather than
-restructure, and leave the generalisation unseen. The plugin's job is to set the
-conditions that let the team find it.
+**Coherent is the baseline, not the ceiling.** A codebase that merely fits is
+the floor. Aim higher: the productive generalisation — naming a real concept (a
+domain idea or a technical pattern), collapsing duplication, reaching the root
+cause, revealing intent — so the code comes out simpler: less to maintain, less
+for a future session to carry. Reaching it is usually _more_ work than the
+change as literally named, and default agents miss it: they follow instructions
+literally, add rather than restructure, and leave the generalisation unseen. The
+plugin's job is to set the conditions that let the team find it.
 
 The disciplines — burden of proof on the addition, the bar against
-over-engineering — guard that ambition; they do not cap it. They keep effort
-from leaking into _unearned_ complexity (speculative abstraction, gold-plating,
-machinery for a future that may not come) so it lands where it compounds. Read
-alone they look like a mandate to do the minimum, and that reading inverts the
-dream: doing the minimum — the named site and no further — is the agents'
-_default_, the perimeter fixation and literal-mindedness the dream exists to
+over-engineering — guard this ambition; they do not cap it. They forbid
+_unearned_ complexity (speculative abstraction, gold-plating, machinery for a
+future that may not come), not the deeper work that lands in coherence. Read as
+a mandate to do the minimum, they invert the dream: the minimum is the agents'
+default, the perimeter fixation and literal-mindedness the dream exists to
 correct (see "What the design is answering"). The question is never "what is the
-smallest change?" but "what leaves the codebase most coherent?" — and the honest
-answer is usually the larger one.
+smallest change?" but "what leaves the codebase most coherent?" — usually the
+larger one.
 
 **Sort every human touch: coherence or intent.** When the human steps in, name
 which it is — _The dream_ draws the line. The test for any change: does it
@@ -190,13 +169,11 @@ Analysis is about user intent. Code Analysis is about code patterns. Scope is
 the work commitment. Design is the proposal. Code-pattern findings don't belong
 in the Requirements Analysis, and vice versa.
 
-**Adding a concept reframes the existing ones.** When you introduce a named
-mechanism to a system that already has named mechanisms, the existing ones'
-roles shift. Some become special cases of the new one; some become redundant;
-some become stale. List every existing concept the new one touches and ask of
-each: is it still doing the same job? Has its role narrowed? Is it now
-incidental? Adding-while-pruning is the rhythm; adding alone leaves the system
-carrying both.
+**Adding a concept reframes the existing ones.** Introducing a named mechanism
+to a system that already has named mechanisms shifts the existing ones' roles.
+List every existing concept the new one touches and ask of each: is it still
+doing the same job? Has its role narrowed? Is it now incidental? Add while
+pruning; adding alone leaves the system carrying both.
 
 ## What the design is answering
 
@@ -217,8 +194,7 @@ useful, because most of the plugin's machinery exists to answer one or more:
 - **Over-eagerness** — attempts an underspecified ask rather than question it.
 - **Reactivity** — answers what's asked, volunteers nothing.
 
-Three things about how the plugin answers these matter more than the list
-itself.
+Three notes on how the plugin answers these:
 
 **The answer is structural, not exhortative.** Telling an agent to be less
 sycophantic produces no tokens and changes nothing (see "Writing agent
