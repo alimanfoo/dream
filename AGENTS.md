@@ -422,3 +422,9 @@ versioned. Which part to bump:
 
 A change that touches only this developer meta-doc (`AGENTS.md`) needs no bump —
 it isn't part of the installed plugin.
+
+Keep the PR description current as the work evolves. Review-driven follow-up can
+change a PR's scope after it opens, and a description that still describes only
+the first commit misleads the reviewer reading it and leaves an inaccurate
+record once merged. Update the body when a later commit materially changes what
+the PR does.
