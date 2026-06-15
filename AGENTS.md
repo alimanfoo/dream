@@ -383,9 +383,10 @@ invisible characters (non-breaking spaces, zero-width marks, bidi controls — s
 `scripts/check_invisible_chars.py`), `claude plugin validate` on the plugin and
 marketplace manifests, and YAML frontmatter validation on skill and agent files.
 
-Set up locally:
+At the start of each session, pull the latest `main` and install the hooks:
 
 ```bash
+git pull origin main
 uvx pre-commit install
 ```
 
@@ -423,8 +424,9 @@ versioned. Which part to bump:
 A change that touches only this developer meta-doc (`AGENTS.md`) needs no bump —
 it isn't part of the installed plugin.
 
-Keep the PR description current as the work evolves. Review-driven follow-up can
-change a PR's scope after it opens, and a description that still describes only
-the first commit misleads the reviewer reading it and leaves an inaccurate
-record once merged. Update the body when a later commit materially changes what
-the PR does.
+Keep the PR description short and current: say what the PR does and why, and
+leave line-by-line detail to the diff. A description that restates the diff
+drifts as review-driven follow-up changes the PR's scope, misleading the
+reviewer who reads it and leaving an inaccurate record once merged. Less
+restatement means less to keep in sync — but still update the body when a later
+commit materially changes what the PR does.
