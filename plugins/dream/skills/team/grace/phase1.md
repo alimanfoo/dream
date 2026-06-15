@@ -89,9 +89,9 @@ information into the Requirements Analysis.
 Pin the Session Type before composing the Requirements Analysis — it selects the
 shape of the Requirements Analysis and what later phases focus on. Three types:
 
-- **Bug fix.** Incorrect behaviour to repair.
 - **Enhancement.** New feature or capability that doesn't currently exist.
 - **Maintenance.** Coherence, naming, structure; behaviour already correct.
+- **Bug fix.** Incorrect behaviour to repair.
 
 State the Session Type in one short sentence with the reasoning ("Session Type:
 enhancement — adds a new CLI subcommand") and continue to
@@ -121,6 +121,15 @@ For an **enhancement**:
 - **Constraints** — qualities the work must hold, when the input or the read
   names any: performance, compatibility, API stability, security.
 
+For **maintenance**:
+
+- **Improvement goals** — what "better" means here, each stated as a checkable
+  property of the code: "the valid-cases enumeration has one home", "no caller
+  mentions the old name". A goal you can't state checkably is an open question,
+  not a goal.
+- **Preserved behaviour** — the contract that must not change, and the consumers
+  who rely on it.
+
 For a **bug fix**:
 
 - **Expected behaviour** — what should happen, citing where the expectation
@@ -131,15 +140,6 @@ For a **bug fix**:
   Phase 2 to verify.
 - **Affected consumers** — who hits the defect and what it costs them. One or
   two sentences.
-
-For **maintenance**:
-
-- **Improvement goals** — what "better" means here, each stated as a checkable
-  property of the code: "the valid-cases enumeration has one home", "no caller
-  mentions the old name". A goal you can't state checkably is an open question,
-  not a goal.
-- **Preserved behaviour** — the contract that must not change, and the consumers
-  who rely on it.
 
 Every shape also carries:
 
@@ -167,7 +167,7 @@ Every shape also carries:
 Mark every item in every shape as **stated** (named in the cited material) or
 **assumed** (your inference).
 
-Keep bug-fix and maintenance shapes short — one or two sentences per section is
+Keep maintenance and bug-fix shapes short — one or two sentences per section is
 usually enough. For an enhancement, the consumer and use-case sections are the
 work — give them real detail.
 

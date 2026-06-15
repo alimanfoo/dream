@@ -25,17 +25,26 @@ with its presence condition:
   investigation surfaced about now. Not everything imaginable — the widest
   sensible anticipation, not speculation.
 
-Test the Coherent Scope before sharing: would finishing it leave the root cause,
-an unmet requirement, or a broader inconsistency unresolved? If so, it is too
-narrow — widen it to reach the cause, not just the surface the input named. When
-the Code Analysis traced a recurring surface to one fact written in two places,
-single-sourcing it is the root-cause fix — Coherent work, not a Maximal add-on
-(see [One fact, one home](../protocol.md#one-fact-one-home)). A script or test
-that re-syncs the two copies is not the fix — it keeps both copies, so the drift
-returns the next time the code changes. When the recurring surface is one rule
-many sites must each follow, with no single home to single-source, a check that
-enforces the rule is the root-cause fix instead — Coherent work when the rule is
-real and the drift is observed, not a Maximal add-on (see
+Test the Coherent Scope before sharing: would finishing it stop at the minimal
+default, short of coherence? What coherence means depends on the Session Type:
+
+- _Enhancement:_ the feature is built in, not bolted on — no loose ends where it
+  meets the existing code, no convention it touches left broken. It fits, not
+  just works.
+- _Maintenance:_ every instance of the inconsistency is fixed, not just the
+  surface the input named.
+- _Bug fix:_ the mechanism behind the defect is fixed, not the symptom site
+  alone.
+
+If the Coherent Scope would leave any of these undone, it is too narrow — widen
+it. When the Code Analysis traced a recurring surface to one fact written in two
+places, single-sourcing it is the root-cause fix — Coherent work, not a Maximal
+add-on (see [One fact, one home](../protocol.md#one-fact-one-home)). A script or
+test that re-syncs the two copies is not the fix — it keeps both copies, so the
+drift returns the next time the code changes. When the recurring surface is one
+rule many sites must each follow, with no single home to single-source, a check
+that enforces the rule is the root-cause fix instead — Coherent work when the
+rule is real and the drift is observed, not a Maximal add-on (see
 [One rule, one check](../protocol.md#one-rule-one-check)).
 
 Ask the removal question too: could dropping or narrowing something — a feature,

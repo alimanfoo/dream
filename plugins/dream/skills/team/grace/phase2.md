@@ -53,12 +53,12 @@ file:line or symbol citations throughout. The purpose is visible grounding for
 the work that follows: the user sees the code as you read it before seeing what
 you propose to commit to or build on top of it. Depth scales with Session Type:
 
-- _Bug fix:_ the root cause — traced back from where the error surfaces to the
-  mechanism that produces it, not the symptom site alone.
 - _Enhancement:_ the integration surface — where the enhancement would land,
   what it touches, what adjacent behaviour it might affect.
 - _Maintenance:_ the inconsistency pattern across the named surface, with
   specific instances.
+- _Bug fix:_ the root cause — traced back from where the error surfaces to the
+  mechanism that produces it, not the symptom site alone.
 
 Show the recurrence pattern in enough detail for surfaces where Phase 1's
 recurrence check found prior issues. Name wrong-layer defensive code,
