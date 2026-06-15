@@ -5,93 +5,59 @@ helping the user to develop the dream plugin.
 
 ## The dream
 
-The plugin is named for its purpose. The dream is **autonomous coherent
-coding**: software that agents carry end to end, indefinitely, without the
-codebase deteriorating and without the human stepping in to keep it healthy.
-Take both words at full strength.
+The dream is **autonomous coherent coding**: agents carry software end to end,
+indefinitely, without the codebase deteriorating and without the human stepping
+in to keep it healthy.
 
-**Autonomous** means agent-first. The agents write all the code. The human
-brings the value judgements — what to build, which trade-off to accept, what
-"good" means here — and as little else as possible. A change that needs the
-human to catch a mistake, carry a decision from one session to the next, or
-clean up afterwards is a failure of autonomy, however small.
+**Autonomous** means agent-first. Agents write all the code; the human supplies
+the value judgements — what to build, which trade-off to accept, what "good"
+means here — and little else. A change that needs the human to catch a mistake,
+carry a decision between sessions, or clean up afterwards is an autonomy
+failure.
 
-**Coherent** means everything fits, and stays fitting — self-maintaining and
-self-healing. Each session leaves the codebase whole, so the next one builds on
-solid ground instead of first repairing the last one's wake. Nothing is left to
-tidy up after the fact; there is no drift, no rot, no periodic human rescue.
-Coding that can run this way forever is the target.
+**Coherent** means everything fits and stays fitting. Each session leaves the
+codebase whole, so the next builds on solid ground; no drift, no rot, no
+periodic human rescue.
 
-That is the dream: to unlock the full potential of autonomous software
-development. Naming it is not claiming it — it is not reached yet. But every
-part of this plugin exists to move toward it, and that makes it the axiom every
-design decision answers to. When a choice is unclear, this settles it: does it
-make agent-led coding more sustainable on its own, or does it lean on the human
-to hold something together? The design principles below all descend from this.
+The dream is the axiom every design decision answers to: does this make
+agent-led coding more sustainable on its own, or does it lean on the human to
+hold something together? A stronger base model does not settle this. It writes a
+better single change but does not, on its own, single-source a duplicated fact,
+add a missing check, or refuse a scope that patches a symptom — those
+disciplines come from the protocol, not the model.
 
-This is not a distant ambition. The capability to generate code is becoming
-common — table stakes, not an advantage. What stays scarce is the ability to
-keep accepting that code indefinitely without the codebase rotting, because
-generation speed and coherence pull against each other: the faster agents write,
-the faster duplication and drift pile up, faster than any human can review. So
-the durable edge is not a better generator but a protocol that makes coherence
-keep pace with generation — and that is a layer a stronger base model does not
-hand you for free. A smarter model writes a better single change; it does not,
-on its own, single-source a duplicated fact, add a missing check, or refuse a
-scope that patches a symptom. Those are disciplines the protocol imposes, not
-capabilities the model arrives with.
+Coherence and intent split by kind, and the split runs through the whole design.
+Coherence has a ground truth — code either fits or it does not — so agents own
+it completely. Intent is value judgement, so it stays with the human. This gives
+a test for every human touch. A coherence touch — the human spotting a
+duplicated fact, catching drift, cleaning up after the team — is a defect the
+protocol should have caught; design it out. An intent touch — choosing scope,
+accepting a trade-off at a gate — is the system working; keep it. Drive
+coherence touches toward zero; hold intent touches in place. The acceptance
+gates are the channel intent comes through: make them cheap, never remove them.
 
-The line between what to automate and what to keep human is drawn by kind, not
-degree. Coherence has a ground truth — code either fits or it does not, drifts
-or it does not — so it can be delegated completely. Intent does not: what to
-build, which trade-off to accept, what "good" means here are value judgements,
-not facts, so they stay with the human permanently. These are different axes,
-not two ends of one slider, which is why the dream pushes both to the extreme at
-once — the human needed as rarely as possible for coherence, and kept firmly in
-place for intent. This gives a test for every human touch in a session. A
-coherence touch — the human spotting a duplicated fact, catching drift, cleaning
-up after the team — is a defect: the protocol should have caught it, and it is
-work to design out. An intent touch — choosing the scope, accepting a trade-off
-at a gate — is the system working as intended, and trying to remove it is itself
-the failure. Same intervention, opposite verdicts. Drive the first kind toward
-zero; hold the second in place. The acceptance gates are not incomplete
-automation waiting to be removed — they are the channel intent comes through, to
-be made cheap but never closed.
-
-Sustaining coherence over a long horizon is, at bottom, a memory problem. What
-rots a codebase is not any single bad change but the slow loss of the decisions
-that kept it coherent. Human teams hold those decisions in people's heads; an
-agent team has no heads — each session is a fresh mind with no memory of the
-last. So the only place its coherence-decisions can live is the environment the
-sessions share: the structure of the code, the checks that run, the issues on
-the tracker. A decision recorded only as prose — a note a future session must
-read, re-understand, and choose to honour — decays under re-interpretation,
-which is why a surface keeps recurring even after an issue was filed and fixed
-for it. The mechanisms that matter most are the ones that write a decision into
-a form the next session cannot drift from: a fact given one home, an invariant
-made a check. The team's deepest job is not writing today's code well — the
-acceptance gates already secure that — but curating the environment a future
-amnesiac version of itself will inherit.
+Sustaining coherence over a long horizon is a memory problem. Each session is a
+fresh mind with no memory of the last, so coherence-decisions can only live in
+the environment the sessions share: the structure of the code, the checks that
+run, the issues on the tracker. A decision recorded only as prose — which a
+future session must re-read and choose to honour — decays under
+re-interpretation, so a surface keeps recurring even after an issue was filed
+for it. The mechanisms that matter most write a decision into a form the next
+session cannot drift from: a fact given one home, an invariant made a check.
+Curating that environment matters more than writing today's code well.
 
 ## Introduction and orientation
 
-The dream plugin launches a multi-agent team for software development.
-
-The plugin is defined within the `plugins/dream` folder.
-
-The entry point to launching the plugin is the
+The dream plugin launches a multi-agent team for software development, defined
+within the `plugins/dream` folder. The entry point is the
 `plugins/dream/skills/team/SKILL.md` skill, which the user invokes via the
-`/dream:team` command.
+`/dream:team` command. The skill spawns the agent team; each agent is defined by
+a system prompt in `plugins/dream/agents`. The agents operate by a common
+protocol: the shared session flow — phases, roles, and cross-agent mechanics —
+is in `plugins/dream/skills/team/protocol.md`, and role-specific operating
+detail lives in the agent files.
 
-The dream:team skill then spawns the agent team. Each agent is defined via a
-system prompt within the `plugins/dream/agents` folder.
-
-The agents then operate according to a common protocol. The shared session flow
-— phases, roles, and cross-agent mechanics — is defined in
-`plugins/dream/skills/team/protocol.md`. Role-specific operating detail lives in
-the agent files under `plugins/dream/agents/`.
-
-**Read all of the plugin files, in full, before doing amything else.**
+**Read all of the plugin files, in full, before doing anything else.**
 
 ## Two layers
 
@@ -119,9 +85,8 @@ Two ways they get crossed:
 ## Development notes
 
 `protocol.md` is the source of truth for shared session flow and cross-agent
-mechanics. Role-specific detail goes in the relevant agent file. Keep
-protocol.md and agent files consistent with each other — neither should invent
-behaviour the other contradicts.
+mechanics; role-specific detail goes in the relevant agent file. Keep them
+consistent — neither should invent behaviour the other contradicts.
 
 That split follows a general locality principle: **information belongs where it
 is acted on, not where it is named.** Each file carries what its readers need to
@@ -132,67 +97,58 @@ runs it. `Grace.md`'s Challenge and Autopilot sections are the templates.
 
 Renaming or renumbering a phase, step, or concept ripples past the file you
 edit. Step headings carry the phase in the number — `Step 4.5` is phase 4, step
-5 — and references to a step or a named section, within a file or across files,
-are Markdown anchor links. So renumbering a step, or rewording any heading,
-changes its anchor and breaks every link still pointing at the old one — and the
-link checks (markdownlint's MD051 for within-file links, `remark-validate-links`
-for cross-file links, both run in pre-commit and CI) fail until they are fixed.
-A link can only target a heading, so a sub-point referenced by name needs to be
-a heading, not a bold inline label. The checks cover links to a named section;
-whole-file mentions that name no section, and the protocol summary, stay plain
-prose, so still grep every agent file and the protocol for the old name.
-`Junio.md` and `Ralph.md` run parallel for shared mechanics, so the same
-instruction often lives in both; edit them in lockstep.
+5 — and references to a step or named section, within or across files, are
+Markdown anchor links. So renumbering a step, or rewording any heading, changes
+its anchor and breaks every link still pointing at the old one; the link checks
+(markdownlint's MD051 for within-file links, `remark-validate-links` for
+cross-file links, both in pre-commit and CI) fail until they are fixed. A link
+can only target a heading, so a sub-point referenced by name needs to be a
+heading, not a bold inline label. The checks cover links to a named section;
+whole-file mentions and the protocol summary stay plain prose, so also grep
+every agent file and the protocol for the old name. `Junio.md` and `Ralph.md`
+run parallel for shared mechanics, so the same instruction often lives in both;
+edit them in lockstep.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 suite. When changing behavior, validate by reading the affected skill/agent
 prompts together and checking that lifecycle, role boundaries, and tool
-permissions remain consistent. Run the pre-commit hooks to check formatting; see
+permissions stay consistent. Run the pre-commit hooks to check formatting; see
 the Linting section.
 
 ## Design principles
 
-These principles all descend from the dream. Some are subgoals that serve it;
-some are disciplines that keep the pursuit honest.
+These principles all descend from the dream.
 
 **The burden of proof is on the addition.** New machinery — a mechanism, a
-concept, a special case — carries a permanent autonomy tax: the team has to
-carry it, apply it correctly, and reconcile it with everything else. Complexity
-is anti-autonomy. Before adding, test three things in order. Can the apparent
-need be met by removing something already there? Can it be met by widening an
-existing rule until the special case disappears? Only if both fail is adding the
-right answer — and the addition still has to prove it earns its keep against the
-tax it imposes.
+concept, a special case — carries a permanent cost: the team must carry it,
+apply it correctly, and reconcile it with everything else. Before adding, try in
+order: can the need be met by removing something already there? By widening an
+existing rule until the special case disappears? Only if both fail is adding
+right, and it must still earn its keep against that cost.
 
-**Coherent is the baseline, not the ceiling — and the ceiling is higher, not
-lower.** A codebase that merely fits together is the floor. The aim above it is
-the productive generalisation — a design that names a real concept, a domain
-idea or a technical pattern, collapses duplication, reaches the root cause, and
-reveals intent, so the code comes out simpler: less to maintain, less for a
-future session to carry. The result is simpler to live with, but reaching it is
-deeper and usually _more_ work than the change the input named — the opposite of
-doing the least. Default coding agents rarely reach it; they follow instructions
+**Coherent is the baseline, not the ceiling.** A codebase that merely fits is
+the floor. Aim higher: the productive generalisation — naming a real concept (a
+domain idea or a technical pattern), collapsing duplication, reaching the root
+cause, revealing intent — so the code comes out simpler: less to maintain, less
+for a future session to carry. Reaching it is usually _more_ work than the
+change as literally named, and default agents miss it: they follow instructions
 literally, add rather than restructure, and leave the generalisation unseen. The
 plugin's job is to set the conditions that let the team find it.
 
 The disciplines — burden of proof on the addition, the bar against
-over-engineering — guard that ambition; they do not cap it. They keep effort
-from leaking into _unearned_ complexity (speculative abstraction, gold-plating,
-machinery for a future that may not come) so it lands where it compounds. Read
-alone they look like a mandate to do the minimum, and that reading inverts the
-dream: doing the minimum — the named site and no further — is the agents'
-_default_, the perimeter fixation and literal-mindedness the dream exists to
+over-engineering — guard this ambition; they do not cap it. They forbid
+_unearned_ complexity (speculative abstraction, gold-plating, machinery for a
+future that may not come), not the deeper work that lands in coherence. Read as
+a mandate to do the minimum, they invert the dream: the minimum is the agents'
+default, the perimeter fixation and literal-mindedness the dream exists to
 correct (see "What the design is answering"). The question is never "what is the
-smallest change?" but "what leaves the codebase most coherent?" — and the honest
-answer is usually the larger one.
+smallest change?" but "what leaves the codebase most coherent?" — usually the
+larger one.
 
 **Sort every human touch: coherence or intent.** When the human steps in, name
-which it is — _The dream_ draws the line. A coherence touch — drift, a
-duplicated fact, cleanup left behind — is a defect to design out. An intent
-touch — choosing scope, accepting a trade-off at a gate — is the system working,
-and stays. Drive coherence touches toward zero; hold intent touches in place.
-The test for any change: does it remove a coherence touch, or does it lean on
-the human to hold something together?
+which it is — _The dream_ draws the line. The test for any change: does it
+remove a coherence touch, or does it lean on the human to hold something
+together?
 
 **Judge every input on its merits, not its source.** The team's default pull is
 to defer — to accept a teammate's finding because it was raised, to trust
@@ -213,26 +169,23 @@ Analysis is about user intent. Code Analysis is about code patterns. Scope is
 the work commitment. Design is the proposal. Code-pattern findings don't belong
 in the Requirements Analysis, and vice versa.
 
-**Adding a concept reframes the existing ones.** When you introduce a named
-mechanism to a system that already has named mechanisms, the existing ones'
-roles shift. Some become special cases of the new one; some become redundant;
-some become stale. List every existing concept the new one touches and ask of
-each: is it still doing the same job? Has its role narrowed? Is it now
-incidental? Adding-while-pruning is the rhythm; adding alone leaves the system
-carrying both.
+**Adding a concept reframes the existing ones.** Introducing a named mechanism
+to a system that already has named mechanisms shifts the existing ones' roles.
+List every existing concept the new one touches and ask of each: is it still
+doing the same job? Has its role narrowed? Is it now incidental? Add while
+pruning; adding alone leaves the system carrying both.
 
 ## What the design is answering
 
 Coding agents carry inherent traits that work against the dream. Naming them is
 useful, because most of the plugin's machinery exists to answer one or more:
 
-- **Perimeter fixation** — fixes the named site, not the cause, and resists
-  working past a tight, mostly self-imposed boundary.
+- **Perimeter fixation** — fixes the named site, not the cause; resists working
+  past a self-imposed boundary.
 - **Shallow code reading** — guesses names and greps for them instead of
   tracing, and misses what the guess didn't name.
 - **Over-engineering** — adds abstraction the need doesn't earn, with no felt
-  bound on complexity: no alarm that says step back, this is getting too
-  complex, where a human would stop.
+  bound on complexity.
 - **Add over remove** — reaches for a new line, never a deletion.
 - **Sycophancy** — defers to whoever spoke, rather than the evidence.
 - **Literal-mindedness** — follows the instance, misses the general rule.
@@ -241,35 +194,28 @@ useful, because most of the plugin's machinery exists to answer one or more:
 - **Over-eagerness** — attempts an underspecified ask rather than question it.
 - **Reactivity** — answers what's asked, volunteers nothing.
 
-Three things about how the plugin answers these matter more than the list
-itself.
+Three notes on how the plugin answers these:
 
-**The answer is structural, not exhortative.** The plugin almost never tells an
-agent to be less sycophantic or to read code better — an instruction to hold a
-different disposition produces no tokens and changes nothing (see "Writing agent
-prompts"). Instead it assigns a role whose job is the missing disposition (Ada's
-fresh read, Junio's audit), a gate that forces the act (Requirements open
-questions answered before any building), or an artifact that carries a decision
-past the session that made it. The trait doesn't change; the structure around it
-does. This is why the plugin works where a list of good intentions wouldn't.
+**The answer is structural, not exhortative.** Telling an agent to be less
+sycophantic produces no tokens and changes nothing (see "Writing agent
+prompts"). Instead the plugin assigns a role whose job is the missing
+disposition (Ada's fresh read, Junio's audit), a gate that forces the act, or an
+artifact that carries a decision past the session that made it. The trait
+doesn't change; the structure around it does.
 
-**Two traits are exploited, not fought.** Literal-mindedness is turned into a
-lever: name a thing so its plain sense pulls the right way (see "Writing agent
-prompts"), and the agent's obedience to the name does the work. Over-eagerness
-is the engine behind active memory — an agent that will dutifully attempt
-whatever sits in front of it is exactly what a failing check needs, because the
-red check becomes a task the next session picks up and fixes without being
-asked. A liability aimed at the right target becomes a mechanism.
+**Two traits are exploited, not fought.** Literal-mindedness becomes a lever
+when a name's plain sense pulls the right way (see "Writing agent prompts"), and
+the agent's obedience to the name does the work. Over-eagerness is the engine
+behind active memory: an agent that dutifully attempts whatever sits in front of
+it picks up a failing check as a task and fixes it unasked.
 
 **Some traits still resist structure — the open frontier.** Reactivity is the
-hardest: you cannot gate on the absence of a suggestion, because nothing is
-there to point at, so the failure is silent. Sycophancy keeps re-emerging for
-the same reason. The user catching these at a gate today is the current state,
-not the design's resting place — every such catch is a coherence touch the dream
-means to drive toward zero (see _The dream_). The win condition is finding the
-structure that fires on a silent failure — the way the failing check turned
-over-eagerness from liability to mechanism. These traits are where that
-structure is still missing, and so where the next work is.
+hardest: you cannot gate on the absence of a suggestion, so the failure is
+silent, and sycophancy re-emerges for the same reason. The user catching these
+at a gate today is a coherence touch the dream means to drive toward zero (see
+_The dream_); finding the structure that fires on a silent failure — the way the
+failing check turned over-eagerness from liability to mechanism — is where the
+next work is.
 
 ## Writing agent prompts
 
@@ -282,12 +228,11 @@ of the agent as a reader.
 Tell each agent only what it needs to do its job, and cut the rest. The agent
 reads every line as potentially actionable, so non-essential background — how a
 mechanism it isn't part of works, why a past decision was made, what another
-role does downstream — isn't harmless: it dilutes the instructions that matter
-and tempts the agent to act on the aside. When you catch yourself adding
-context, ask whether this reader uses it to do their job; if not, cut it. This
-is the per-reader companion to the locality principle (see Development notes):
-locality decides which file an instruction lives in; this decides whether a
-given reader needs it at all.
+role does downstream — dilutes the instructions that matter and tempts the agent
+to act on the aside. When you catch yourself adding context, ask whether this
+reader uses it to do their job; if not, cut it. This is the per-reader companion
+to the locality principle (see Development notes): locality decides which file
+an instruction lives in; this decides whether a given reader needs it at all.
 
 ### Instruction paragraphs
 
@@ -325,8 +270,7 @@ Four properties of that reader change how you write for it:
   output, in a `SendMessage` to another agent, or in an artifact. Tests framed
   as hypothetical dispositions — _would you be willing to X, could you Y, should
   you Z, is this the kind of thing that A_ — read as text and pass without
-  firing. Rewrite each as an act: _write X, check Y, name Z_. The act is the
-  token; the test becomes real.
+  firing. Rewrite each as an act: _write X, check Y, name Z_.
 - **Agents reason forward from context** — they're next-token machines, with no
   premonition about what they're about to write. So "before reaching for X, do
   Y" doesn't work; the agent doesn't know they're about to reach for X. Checks
@@ -336,22 +280,20 @@ Four properties of that reader change how you write for it:
   everyday sense of the words you name things with: slots, moves, roles, phases.
   The name is a stronger instruction than the prose beneath it, so the body
   won't rescue a name that pulls the wrong way. Treat naming as a design
-  decision: when you introduce or rename a concept, weigh the word's plain pull
-  against the behaviour you want, and pick a different word when they conflict.
-  A name whose plain sense already points at the behaviour needs no help from
-  the prose. The same trap fires in reverse with words you reach for in passing:
-  the writer draws from general English by reflex, while the reader reads each
-  word against the local glossary first. _Commit, accept, hold, ready, honestly_
-  get read in their plugin sense before their English one. Before reaching for a
-  word in prose, scan whether it already carries weight in the protocol. If it
-  does, pick a different word — even a slightly less elegant one is safer than a
-  collision.
+  decision: weigh the word's plain pull against the behaviour you want, and pick
+  a different word when they conflict. A name whose plain sense already points
+  at the behaviour needs no help from the prose. The same trap fires in reverse
+  with words you reach for in passing: the writer draws from general English by
+  reflex, while the reader reads each word against the local glossary first.
+  _Commit, accept, hold, ready, honestly_ get read in their plugin sense before
+  their English one. Before reaching for a word in prose, scan whether it
+  already carries weight in the protocol; if it does, pick a different word.
 - **Agents have a soft per-turn output budget** — quality falls off as a single
   turn's output grows. Two rich generative acts crammed into one turn compete
-  for that budget, and both come out thinner. When a step needs an agent to
-  produce more than one substantial output — say a wide spread of analogies and
-  then a spread of design sketches — give each its own turn or message rather
-  than asking for both at once.
+  for that budget, and both come out thinner. When a step needs more than one
+  substantial output — say a spread of analogies and then a spread of design
+  sketches — give each its own turn or message rather than asking for both at
+  once.
 
 ## Writing prose
 
@@ -418,12 +360,9 @@ Two ways to divide the work, for two different jobs:
   coherence and reference integrity (do protocol.md and the agent files still
   agree, and do the anchor links resolve); lifecycle and edge cases (walk the
   changed flow end to end); agent-prompt efficacy and register (will an agent
-  act on the instruction; is GitHub-visible text in public register); whether it
-  serves the dream (is a stored thing ever read, or write-only; does the change
-  add a human coherence-touch); adversarial robustness (failures, concurrency,
-  GitHub state the protocol doesn't control); security and privacy (what the
-  change newly exposes); simplicity and readability (against the
-  instruction-paragraph template).
+  act on the instruction; is GitHub-visible text in public register); and
+  whether it serves the dream (is a stored thing ever read, or write-only; does
+  the change add a human coherence-touch).
 - **One lens, partitioned by file or section** — to apply a single standard you
   already trust, thoroughly. Divide along the existing structure (the per-phase
   steps versus the common rules) so the partitions don't overlap, and give the
