@@ -1,31 +1,21 @@
 # Phase 6: Develop
 
-The main implementation loop. After two setup steps, you pick the first task,
+The main implementation loop. After one setup step, you pick the first task,
 Ralph does the work, Junio audits, and the chain repeats until the list is
 drained. The session branch and draft PR already exist — you created them at
 requirements acceptance (Phase 1).
 
 ## Opening sequence
 
-Before the per-task loop runs, two setup steps.
+Before the per-task loop runs, one setup step.
 
-### Step 6.1: Share the accepted Plan with Junio and Ralph for information
-
-Send Junio and Ralph the same content you sent the user. Two `SendMessage` calls
-in the same turn, for information only. Sign off `From Grace.` and skip the
-RSVP; no reply is expected. They haven't seen the outcome since their Draft Plan
-review in
-[Step 5.3](phase5.md#step-53-share-the-draft-plan-with-junio-and-ralph-for-review).
-The accepted Plan feeds Junio's per-task coherence audits and Ralph's per-task
-implementations below.
-
-### Step 6.2: Create the shared task list
+### Step 6.1: Create the shared task list
 
 Issue the `TaskCreate` calls for the accepted task list.
 
 ## Per-task workflow
 
-### Step 6.3: Assign
+### Step 6.2: Assign
 
 Issue one `TaskUpdate(owner=Ralph, status=in_progress)` call. It records the
 assignment, wakes Ralph, and carries the task description as the brief. Don't
@@ -45,13 +35,13 @@ source of the duplicate-dispatch instinct; ignore it. `TaskUpdate` reads as pure
 bookkeeping and never names the wake-up behaviour. It is the wake-up signal
 here.
 
-### Step 6.4: Implement
+### Step 6.3: Implement
 
 Ralph does the work, runs the project's quality checks, and reports back via
 `SendMessage`. You wait — that `SendMessage` is the only completion channel.
 Don't poll the working tree or the task list; the message is the signal.
 
-### Step 6.5: Verify
+### Step 6.4: Verify
 
 Read their message together with `git diff`: the message carries any audit
 content, deviations from the brief, or things they noticed; the diff carries the
@@ -59,13 +49,13 @@ change. Where useful, exercise the feature end-to-end. Don't re-run lint or
 tests — those are Ralph's gate, green by the time you're reading. If something
 looks off, bounce back rather than fixing.
 
-### Step 6.6: Commit
+### Step 6.5: Commit
 
 Re-diff before staging. The working tree is live between verify and commit — any
 changes in that window land silently if you stage on the earlier read. Then
 `TaskUpdate status=completed`, stage Ralph's changes, commit, and push.
 
-### Step 6.7: Coherence audit
+### Step 6.6: Coherence audit
 
 Send Junio a message asking for the coherence audit on the just-committed
 change. Sign off per "Communication between teammates (agents)":
@@ -73,9 +63,9 @@ change. Sign off per "Communication between teammates (agents)":
 substantive findings"). The coherence audit may also raise a **Challenge** — for
 instance when repeated coherence audits circle the same surface, suggesting the
 Session Scope is too narrow to reach the root cause (see
-[Step 6.8](#step-68-triage-findings)).
+[Step 6.7](#step-67-triage-findings)).
 
-### Step 6.8: Triage findings
+### Step 6.7: Triage findings
 
 Accept or reject each proposed follow-on on its merits, recording a one-line
 reason for the call. Accepted ones become new tasks, **inserted as the next
@@ -99,9 +89,9 @@ When the coherence audit raises a **Challenge**, assess it: does an accepted
 artifact really no longer hold? If it does, take it to the user (accept or
 reject) following the "Challenge" shape. If not, continue triage as normal.
 
-### Step 6.9: Loop
+### Step 6.8: Loop
 
-Next task, back to [Step 6.3](#step-63-assign).
+Next task, back to [Step 6.2](#step-62-assign).
 
 ## Finalize the PR
 

@@ -158,7 +158,7 @@ RSVP.
 Don't include "out of scope but noticed" findings at Scope time. Tangential
 observations wait for per-task coherence audits or the post-merge sweep.
 
-Read the accepted Session Scope when Grace sends it at the start of Phase 4,
+Read the accepted Session Scope when Grace sends it at the end of Phase 3,
 flagged for information only. Hold it as context for the Design review that
 follows — it shows which option the user picked and any further changes from the
 acceptance discussion. No reply is expected.
@@ -392,7 +392,7 @@ Don't include "out of scope but noticed" findings at Design time. Pre-existing
 concerns the session makes more visible feed post-merge triage through per-task
 coherence audits, not the Design review.
 
-Read the accepted Design when Grace sends it after the user accepts, flagged for
+Read the accepted Design when Grace sends it at the end of Phase 4, flagged for
 information only. Hold it as context for Phase 5 — it shows which option the
 user picked and any further changes from the acceptance discussion. No reply is
 expected.
@@ -407,7 +407,7 @@ findings to act on.
 Read the Draft Plan — the task list that delivers the Design. The prior layers
 (Session Type, Requirements Analysis, Code Analysis, Session Scope, accepted
 Design) are already in your context from prior phases and the accepted Design
-handoff at the start of Phase 5.
+handoff at the end of Phase 4.
 
 Focus on the task list and its decomposition. Design-shaped concerns — defend
 behaviour, code-shape, generalisation — were the Design review's territory; if a
@@ -467,7 +467,7 @@ makes more visible feed post-merge triage. Focus on the proposal itself; the
 per-task coherence audits will pick up pre-existing concerns as they become
 relevant.
 
-Read the accepted Plan when Grace sends it after the user accepts, flagged for
+Read the accepted Plan when Grace sends it at the end of Phase 5, flagged for
 information only. Hold it as context for Phase 6 — it shows which of your
 findings Grace folded in, and any further changes from the acceptance
 discussion. No reply is expected.

@@ -113,8 +113,9 @@ the next phase: _"Accept the Session Scope to proceed to Phase 4: Design."_
 
 Wait for the user's reply — or, under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
-If accepted, the phase ends, continue to Phase 4: Design. If the user pushes
-back, revise and return to
+If accepted, continue to
+[Step 3.6](#step-36-hand-the-accepted-session-scope-to-junio-and-ralph). If the
+user pushes back, revise and return to
 [Step 3.4](#step-34-share-the-revised-scope-options-with-the-user); repeat until
 accepted.
 
@@ -125,7 +126,18 @@ Even after acceptance, the Session Scope is not set in stone. It can be revised
 at any point through a Challenge (see
 [Challenge](../../../agents/Grace.md#challenge)).
 
-## Step 3.6: Post the accepted Session Scope to the PR
+## Step 3.6: Hand the accepted Session Scope to Junio and Ralph
+
+Send Junio and Ralph the accepted Session Scope — the option the user picked,
+plus any changes from the acceptance discussion. Two `SendMessage` calls in the
+same turn, for information only. Sign off `From Grace.` and skip the RSVP; no
+reply is expected. They haven't seen the outcome since their Draft Scope Options
+review in
+[Step 3.2](#step-32-share-the-draft-scope-options-with-junio-and-ralph-for-review).
+The accepted Session Scope feeds the analogies and sketches you generate in
+Phase 4 and the Design review that follows.
+
+## Step 3.7: Post the accepted Session Scope to the PR
 
 Post the accepted Session Scope to the PR as a comment — see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).

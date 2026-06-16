@@ -212,24 +212,25 @@ review — advisory, not gating — and revises. Junio reads from the maintainer
 view; Ralph reads from the engineering-pattern view. Grace decides each finding
 on its merits, recording a one-line reason: folded into the revised Scope
 Options or rejected. Grace then shares the revised Scope Options with the user,
-with a brief note on what changed from the Draft after the reviews. On
-acceptance Grace posts the accepted Session Scope to the PR as a comment — see
+with a brief note on what changed from the Draft after the reviews. At the end
+of the phase Grace hands the accepted Session Scope to Junio and Ralph for
+information; they hold it as context for the rest of the session. On acceptance
+Grace also posts the accepted Session Scope to the PR as a comment — see
 [The session PR](#the-session-pr).
 
 The phase ends at user acceptance of the Session Scope.
 
 ## Phase 4: Design
 
-Phase opens with Grace sharing the accepted Session Scope with Junio and Ralph
-for information. Then two divergence steps run before any design is chosen.
-First, analogy generation: Grace, Junio, and Ralph each write a spread of
-analogies — what the work resembles, near and far. These seed the design with
-transferable patterns it would otherwise miss; each agent keeps its own as turn
-output, not shared. Second, design sketches: each agent writes a spread of rough
-design approaches — drawing on its analogies where they help — and sends them to
-Grace. Generating the spread independently, before any single design exists,
-keeps the team from anchoring on one approach. Ada stays out of both, holding
-her fresh read for Phase 7.
+Phase opens with two divergence steps before any design is chosen. First,
+analogy generation: Grace, Junio, and Ralph each write a spread of analogies —
+what the work resembles, near and far. These seed the design with transferable
+patterns it would otherwise miss; each agent keeps its own as turn output, not
+shared. Second, design sketches: each agent writes a spread of rough design
+approaches — drawing on its analogies where they help — and sends them to Grace.
+Generating the spread independently, before any single design exists, keeps the
+team from anchoring on one approach. Ada stays out of both, holding her fresh
+read for Phase 7.
 
 Grace then consolidates the pooled sketches into the Design Options — the
 Proposed Design, her recommendation, and any credible Alternative Designs drawn
@@ -241,23 +242,26 @@ Grace shares the Design Options with Junio and Ralph for one round of review —
 advisory, not gating. Junio reads from the maintainer's view. Ralph reads from
 the engineering-pattern view. Grace decides each finding on its merits. Grace
 then shares the Design Options — the Proposed Design and any Alternative Designs
-— with the user, with a brief note on what changed after the reviews. On
-acceptance Grace posts the accepted Design to the PR as a comment — see
+— with the user, with a brief note on what changed after the reviews. At the end
+of the phase Grace hands the accepted Design to Junio and Ralph for information;
+they hold it as context for the rest of the session. On acceptance Grace also
+posts the accepted Design to the PR as a comment — see
 [The session PR](#the-session-pr).
 
 The phase ends at user acceptance of the Design.
 
 ## Phase 5: Plan
 
-Phase opens with Grace sharing the accepted Design with Junio and Ralph for
-information. Grace then composes the Draft Plan, shares it with Junio and Ralph
-for one round of review — advisory, not gating — and revises. Junio reads from
-the maintainer's view; Ralph reads from the implementer's view. Grace decides
-each finding on its merits, recording a one-line reason: folded into the revised
-Plan, rejected, held as an Ancillary Finding, or raised as a Challenge. Grace
-then shares the revised Plan with the user, with a brief note on what changed
-from the Draft after the reviews. On acceptance Grace posts the accepted Plan to
-the PR as a comment — see [The session PR](#the-session-pr).
+Grace composes the Draft Plan, shares it with Junio and Ralph for one round of
+review — advisory, not gating — and revises. Junio reads from the maintainer's
+view; Ralph reads from the implementer's view. Grace decides each finding on its
+merits, recording a one-line reason: folded into the revised Plan, rejected,
+held as an Ancillary Finding, or raised as a Challenge. Grace then shares the
+revised Plan with the user, with a brief note on what changed from the Draft
+after the reviews. At the end of the phase Grace hands the accepted Plan to
+Junio and Ralph for information; they hold it as context for the rest of the
+session. On acceptance Grace also posts the accepted Plan to the PR as a comment
+— see [The session PR](#the-session-pr).
 
 The phase ends at user acceptance of the Plan.
 
@@ -266,10 +270,9 @@ Phase 7 (Review). The user can redirect at any point.
 
 ## Phase 6: Develop
 
-Phase opens with two setup steps: Grace shares the accepted Plan with Junio and
-Ralph for information, and creates the shared task list. The session branch
-already exists — Grace created it at requirements acceptance (Phase 1), or
-adopted the worktree's branch there.
+Phase opens with Grace creating the shared task list. The session branch already
+exists — Grace created it at requirements acceptance (Phase 1), or adopted the
+worktree's branch there.
 
 The main implementation loop. For each task, Grace assigns to Ralph; Ralph
 implements and reports back; Grace verifies the diff, commits and pushes; Junio

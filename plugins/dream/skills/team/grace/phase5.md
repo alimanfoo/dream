@@ -1,20 +1,11 @@
 # Phase 5: Plan
 
 The goal of this phase is the accepted Plan — the task list that delivers the
-Design within the Session Scope. You share the accepted Design with Junio and
-Ralph for information, compose a Draft Plan, get one round of review from Junio
-and Ralph, revise, and share the revised Plan with the user for acceptance.
+Design within the Session Scope. You compose a Draft Plan, get one round of
+review from Junio and Ralph, revise, and share the revised Plan with the user
+for acceptance.
 
-## Step 5.1: Share the accepted Design with Junio and Ralph for information
-
-Send Junio and Ralph the accepted Design — the option the user picked, plus any
-changes from the acceptance discussion. Two `SendMessage` calls in the same
-turn, for information only. Sign off `From Grace.` and skip the RSVP; no reply
-is expected. They haven't seen the outcome since their Design review in
-[Step 4.5](phase4.md#step-45-share-the-design-options-with-junio-and-ralph-for-review).
-The accepted Design feeds the Plan review that follows.
-
-## Step 5.2: Compose the Draft Plan
+## Step 5.1: Compose the Draft Plan
 
 Compose the Draft Plan — the task list that delivers the Design.
 
@@ -40,14 +31,12 @@ itself to the kind within the parser module. "Rename `foo` to `bar` at
 `module.py:42`" has a single application — state it directly, no examples
 needed. For kind-based criteria, show two or three examples to anchor the kind.
 
-## Step 5.3: Share the Draft Plan with Junio and Ralph for review
+## Step 5.2: Share the Draft Plan with Junio and Ralph for review
 
 Send the Draft Plan to both Junio and Ralph in parallel — two `SendMessage`
 calls in the same turn. They already hold the Session Type, Requirements
 Analysis, Code Analysis, Session Scope, and Design in context from earlier
-phases and
-[Step 5.1](#step-51-share-the-accepted-design-with-junio-and-ralph-for-information),
-so the message body is the Draft Plan. Sign off
+phases, so the message body is the Draft Plan. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Send the same body to each reviewer; their role files steer the lens. Junio
@@ -59,7 +48,7 @@ Ralph are advisory at Plan, not gating. Run one round only; don't loop back
 after revising. Fresh attention from two teammates catches issues at the
 cheapest point to fix.
 
-## Step 5.4: Apply the reviews
+## Step 5.3: Apply the reviews
 
 Decide each finding — from either reviewer — on its merits, and record a
 one-line reason for the call. You own the Plan; a teammate raising a finding is
@@ -69,7 +58,7 @@ not itself a reason to fold it in. Each finding takes one of these paths:
   precursor).
 - **Reject** — you disagree with the finding. If the rejection is notable, carry
   the reason into the Plan message in
-  [Step 5.5](#step-55-share-the-revised-plan-with-the-user).
+  [Step 5.4](#step-54-share-the-revised-plan-with-the-user).
 - **Hold as Ancillary Finding** — the finding is real but out of session scope;
   hold for post-merge triage.
 - **Raise a Challenge** — the finding shows an accepted artifact no longer
@@ -95,7 +84,7 @@ When the reply raises a Challenge, assess it: does an accepted artifact really
 no longer hold? If it does, take it to the user (accept or reject). A teammate
 raising one is not itself the decision.
 
-## Step 5.5: Share the revised Plan with the user
+## Step 5.4: Share the revised Plan with the user
 
 Send the revised Plan. Add a brief note on **what changed from the Draft after
 the reviews** — folded-in findings as tasks, notable rejections with the reason.
@@ -109,17 +98,28 @@ proceed.
 End the message by explicitly asking the user to accept: _"Accept the Plan to
 proceed to Phase 6: Develop."_
 
-## Step 5.6: Seek user acceptance of the Plan
+## Step 5.5: Seek user acceptance of the Plan
 
 Wait for the user's reply — or, under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
-If accepted, the phase ends, continue to Phase 6: Develop. If the user raises
-open questions or redirects, revise and return to
-[Step 5.5](#step-55-share-the-revised-plan-with-the-user); repeat until
+If accepted, continue to
+[Step 5.6](#step-56-hand-the-accepted-plan-to-junio-and-ralph). If the user
+raises open questions or redirects, revise and return to
+[Step 5.4](#step-54-share-the-revised-plan-with-the-user); repeat until
 accepted.
 
 This is one of the protocol's user acceptance gates — see
 [Acceptance gates](../protocol.md#acceptance-gates).
+
+## Step 5.6: Hand the accepted Plan to Junio and Ralph
+
+Send Junio and Ralph the same content you sent the user. Two `SendMessage` calls
+in the same turn, for information only. Sign off `From Grace.` and skip the
+RSVP; no reply is expected. They haven't seen the outcome since their Draft Plan
+review in
+[Step 5.2](#step-52-share-the-draft-plan-with-junio-and-ralph-for-review). The
+accepted Plan feeds Junio's per-task coherence audits and Ralph's per-task
+implementations in Phase 6.
 
 ## Step 5.7: Post the accepted Plan to the PR
 
