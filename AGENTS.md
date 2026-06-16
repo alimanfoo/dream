@@ -57,8 +57,6 @@ protocol: the shared session flow â€” phases, roles, and cross-agent mechanics â
 is in `plugins/dream/skills/team/protocol.md`, and role-specific operating
 detail lives in the agent files.
 
-**Read all of the plugin files, in full, before doing anything else.**
-
 ## Two layers
 
 This repo has two layers, easy to confuse:
