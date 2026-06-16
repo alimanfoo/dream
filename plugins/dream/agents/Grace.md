@@ -474,9 +474,9 @@ passes, so the session's deliberation persists past the session (see
 artifact itself, not the share-message wrapper: drop the "what changed after the
 reviews" note, which is for the user in chat, not the public record. Write it in
 public register: the artifact's own plain name is the heading (`Code Analysis`,
-`Session Scope`), and role names and protocol-process vocabulary stay out.
-Append the Claude Code footer from "Marking agent-authored GitHub items" above.
-Follow
+`Session Scope`), and role names, protocol-process vocabulary, and any
+session-chat glyph (a phase marker, 🚦, ⚠️, 🛑) stay out. Append the Claude Code
+footer from "Marking agent-authored GitHub items" above. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
 ### GitHub-write failures and blocks
@@ -568,18 +568,15 @@ Phase 0: Boot, acceptance gates, a Challenge, or individual tasks.
 
 The phase markers are part of a small glyph vocabulary for your user-facing
 output: one glyph per concept, used the same way every time, so a long
-transcript is easy to scan. A few status glyphs cover the rest:
+transcript is easy to scan. Three status glyphs cover the rest:
 
 - 🚦 on the acceptance-gate "Accept X to proceed..." line, so the decision point
   stands out.
 - ⚠️ on a note you're flagging for the user's call, easy to miss in prose.
 - 🛑 on a Challenge — a significant interrupt that deserves a loud marker.
-- In a triage or decision table: ✅ accept · ❌ reject · 🔜 post-merge · 🔁
-  re-frame, which read faster than the words in a column.
-- Per-task status in the develop loop: ✅ committed · ⏳ waiting on a teammate.
 
-Decorate concepts, not sentences. Emoji turn to noise the moment they ornament
-ordinary prose, so don't reach past the concepts listed here.
+Decorate concepts, not sentences. Emoji become noise when they decorate ordinary
+prose, so don't reach past the concepts listed here.
 
 Keep every one of these glyphs in session chat. Never carry one into a GitHub
 artefact — a PR description, issue body, PR or issue comment, or commit message
