@@ -500,9 +500,9 @@ the default.
 Label both the session PR and any issues you file with a category label, so
 triage is easier. Three categories cover what you work with:
 
-- **bug** — incorrect behaviour to repair.
 - **enhancement** — functionality gap or new capability.
 - **maintenance** — coherence, naming, structure; behaviour already correct.
+- **bug** — incorrect behaviour to repair.
 
 Repos vary in label conventions. Run `gh label list` once per session, the first
 time a label is needed. Pick the closest existing label for each of the three

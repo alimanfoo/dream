@@ -415,8 +415,8 @@ nor declined, as further Opportunities. Findings are tested (defend behaviour,
 removal question); Opportunities skip those defect tests. Grace decides each
 (drop / reinforce / re-frame / file fresh) with user acceptance before filing.
 Triage happens once, after merge, never mid-session. Output is filed issues or
-comments on existing issues; new issues carry a category label (bug,
-enhancement, maintenance). Full procedure in `Grace.md`.
+comments on existing issues; new issues carry a category label (enhancement,
+maintenance, bug). Full procedure in `Grace.md`.
 
 When searching for Opportunities, draw on knowledge the immediate task leaves
 dormant. Five cues, each anchored to what the session actually did:

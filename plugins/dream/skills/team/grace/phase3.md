@@ -28,9 +28,10 @@ with its presence condition:
 Test the Coherent Scope before sharing: would finishing it leave the work short
 of coherence? What coherence means depends on the Session Type:
 
-- _Enhancement:_ the feature is built in, not bolted on — no loose ends where it
-  meets the existing code, no convention it touches left broken. It fits, it
-  doesn't just work.
+- _Enhancement:_ the feature meets the existing code cleanly across the
+  integration surface the Code Analysis named — every convention it touches
+  upheld, every adjacent behaviour that read flagged handled, no caller left to
+  special-case it. It fits, it doesn't just work.
 - _Maintenance:_ every instance of the inconsistency is fixed, not just the
   surface the input named.
 - _Bug fix:_ the mechanism behind the defect is fixed, not the symptom site
