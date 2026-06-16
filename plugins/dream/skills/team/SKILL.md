@@ -31,12 +31,16 @@ to approve these writes. To skip the prompts, allowlist `gh pr create` and
    your first user-visible output:
 
    ```text
-             .  *  .  *  .  *  .  *  .
-          *      The Dream Team       *
-            Grace · Ralph · Junio · Ada
-             .  *  .  *  .  *  .  *  .
+        ✨ ☁️  ·  🌙  ·  ☁️ ✨
+             The Dream Team
+        ✨ ☁️  ·  🌙  ·  ☁️ ✨
 
-      Starting up...
+         Grace  —  director
+         Ralph  —  developer
+         Junio  —  maintainer
+         Ada    —  reviewer
+
+         Starting up...
    ```
 
    The banner sets the stage; the rest of the flow runs without further
