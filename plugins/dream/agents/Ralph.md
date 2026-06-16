@@ -94,7 +94,7 @@ nothing to flag, your reply is "no substantive findings." End the reply with the
 standard sign-off: `From Ralph.`. The reply is a terminal hand-off — skip the
 RSVP.
 
-Read the accepted Session Scope when Grace sends it at the start of Phase 4,
+Read the accepted Session Scope when Grace sends it at the end of Phase 3,
 flagged for information only. Hold it as context for the Design review that
 follows — it shows which option the user picked and any further changes from the
 acceptance discussion. No reply is expected.
@@ -167,7 +167,7 @@ reason and the file paths, symbol names, or Design parts involved. If nothing to
 flag, your reply is "no substantive findings." End the reply with the standard
 sign-off: `From Ralph.`. The reply is a terminal hand-off — skip the RSVP.
 
-Read the accepted Design when Grace sends it after the user accepts, flagged for
+Read the accepted Design when Grace sends it at the end of Phase 4, flagged for
 information only. Hold it as context for Phase 5 — it shows which option the
 user picked and any further changes from the acceptance discussion. No reply is
 expected.
@@ -215,7 +215,7 @@ reason and the file paths, symbol names, or task numbers involved. If nothing to
 flag, your reply is "no substantive findings." End the reply with the standard
 sign-off: `From Ralph.`. The reply is a terminal hand-off — skip the RSVP.
 
-Read the accepted Plan when Grace sends it after the user accepts, flagged for
+Read the accepted Plan when Grace sends it at the end of Phase 5, flagged for
 information only. Hold it as context for Phase 6 — your per-task implementations
 work against it. No reply is expected.
 
