@@ -500,9 +500,9 @@ the default.
 Label both the session PR and any issues you file with a category label, so
 triage is easier. Three categories cover what you work with:
 
-- **bug** — incorrect behaviour to repair.
 - **enhancement** — functionality gap or new capability.
 - **maintenance** — coherence, naming, structure; behaviour already correct.
+- **bug** — incorrect behaviour to repair.
 
 Repos vary in label conventions. Run `gh label list` once per session, the first
 time a label is needed. Pick the closest existing label for each of the three
@@ -511,9 +511,9 @@ than force a near-miss.
 
 Two things get labelled, from different sources:
 
-- **The PR** carries the **Session Type's** category — a bug-fix session maps to
-  `bug`, an enhancement to `enhancement`, maintenance to `maintenance`. Apply at
-  PR creation with `gh pr create --label <name>` (see
+- **The PR** carries the **Session Type's** category — an enhancement session
+  maps to `enhancement`, maintenance to `maintenance`, a bug fix to `bug`. Apply
+  at PR creation with `gh pr create --label <name>` (see
   [Step 1.12](../skills/team/grace/phase1.md#step-112-open-the-draft-pr) in
   Phase 1).
 - **Each new issue** carries the **finding's** type, not the Session Type — one

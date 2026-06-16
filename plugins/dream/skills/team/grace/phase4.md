@@ -60,9 +60,6 @@ recommendation and the alternatives together, from the pool.
 done, the approach proposed, and the key design calls that follow from the Code
 Analysis. Depth scales with Session Type:
 
-- _Bug fix:_ the fix approach. When more than one fix shape is plausible
-  (defensive check, structural fix, removal), name the alternatives and why this
-  one. For straightforward bugs this is one or two sentences.
 - _Enhancement:_ the new shape — the **happy-path contract** (what valid inputs
   produce what outputs, where it slots in, how callers interact with it) and the
   **input contract** (what input space is supported, and what happens on inputs
@@ -71,6 +68,9 @@ Analysis. Depth scales with Session Type:
 - _Maintenance:_ the target shape — what the surface looks like when done.
   Specifically: which name, which structure, which abstraction wins, and what
   the migration path looks like.
+- _Bug fix:_ the fix approach. When more than one fix shape is plausible
+  (defensive check, structural fix, removal), name the alternatives and why this
+  one. For straightforward bugs this is one or two sentences.
 
 Check the Proposed Design against common overcomplication defaults: consumers
 the accepted Requirements Analysis doesn't name, surfaces held "for the future"

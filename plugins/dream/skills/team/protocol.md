@@ -139,14 +139,14 @@ Grace then reads the cited material, reads the code with a consumer lens (who
 uses these surfaces and what they do with them), then consults the record for
 the named surfaces — searching the issue tracker for recurrence, and reading the
 PRs that last shaped those surfaces, so the analysis builds on prior decisions
-rather than re-imputing them. Grace names the Session Type (bug fix,
-enhancement, or maintenance) and drafts the Requirements Analysis in the shape
-the type selects. An enhancement names consumers, their use cases, and any
-constraints the work must hold. A bug fix names the expected behaviour with its
-source, the observed behaviour as a claim for Phase 2 to verify, and the
-consumers affected. Maintenance names the improvement goals and the behaviour to
-preserve, each stated as a checkable property of the code. Every shape marks
-each item stated or assumed, names any system non-goals, and carries any open
+rather than re-imputing them. Grace names the Session Type (enhancement,
+maintenance, or bug fix) and drafts the Requirements Analysis in the shape the
+type selects. An enhancement names consumers, their use cases, and any
+constraints the work must hold. Maintenance names the improvement goals and the
+behaviour to preserve, each stated as a checkable property of the code. A bug
+fix names the expected behaviour with its source, the observed behaviour as a
+claim for Phase 2 to verify, and the consumers affected. Every shape marks each
+item stated or assumed, names any system non-goals, and carries any open
 questions Grace can't call from the cited material.
 
 Enhancement and maintenance shapes also carry candidates — use cases or
@@ -186,25 +186,34 @@ The phase ends at user acceptance of the Code Analysis.
 With the Code Analysis accepted, Grace drafts the Scope Options — the Coherent
 Scope (always), the Minimal Scope (when narrower than Coherent), and the Maximal
 Scope (when a wider alternative is real). Coherent Scope additions cite the Code
-Analysis findings they rest on. The Coherent Scope must reach the root cause: if
-finishing it would leave the root cause, an unmet requirement, or a broader
-inconsistency unresolved, it is too narrow. Prefer removal where it serves, too:
-dropping or narrowing can resolve the concern, or ease maintenance, better than
-adding. A recurring surface whose root cause is a duplicated fact is Coherent
-work, not optional anticipation — single-sourcing it reaches the cause (see "One
-fact, one home"). When the recurring rule has no single home to move it to —
-many sites that must each follow it — a check that enforces it is the Coherent
-fix instead (see "One rule, one check"). A scope item names the property or
-outcome the work must achieve, not how the work achieves it. Choosing the how —
-a tool or library, an algorithm or structure, an API or command shape, a bug's
-fix shape — is Design's call, where the reviewers weigh the alternatives. Grace
-shares the Draft Scope Options with Junio and Ralph for one round of review —
-advisory, not gating — and revises. Junio reads from the maintainer's view;
-Ralph reads from the engineering-pattern view. Grace decides each finding on its
-merits, recording a one-line reason: folded into the revised Scope Options or
-rejected. Grace then shares the revised Scope Options with the user, with a
-brief note on what changed from the Draft after the reviews. On acceptance Grace
-posts the accepted Session Scope to the PR as a comment — see
+Analysis findings they rest on.
+
+What the Coherent Scope must reach depends on the Session Type: an enhancement
+builds the feature in rather than bolting it on; maintenance fixes every
+instance of the inconsistency, not just the surface the input named; a bug fix
+fixes the mechanism behind the defect, not the symptom site alone. If the work
+stops short of that, the Coherent Scope is too narrow. A recurring surface whose
+root cause is a duplicated fact is Coherent work, not optional anticipation —
+single-sourcing it reaches the cause (see "One fact, one home"). When the
+recurring rule has no single home to move it to — many sites that must each
+follow it — a check that enforces it is the Coherent fix instead (see "One rule,
+one check").
+
+Prefer removal where it serves: dropping or narrowing can resolve the concern,
+or ease maintenance, better than adding.
+
+A scope item names the property or outcome the work must achieve, not how the
+work achieves it. Choosing the how — a tool or library, an algorithm or
+structure, an API or command shape, a bug's fix shape — is Design's call, where
+the reviewers weigh the alternatives.
+
+Grace shares the Draft Scope Options with Junio and Ralph for one round of
+review — advisory, not gating — and revises. Junio reads from the maintainer's
+view; Ralph reads from the engineering-pattern view. Grace decides each finding
+on its merits, recording a one-line reason: folded into the revised Scope
+Options or rejected. Grace then shares the revised Scope Options with the user,
+with a brief note on what changed from the Draft after the reviews. On
+acceptance Grace posts the accepted Session Scope to the PR as a comment — see
 [The session PR](#the-session-pr).
 
 The phase ends at user acceptance of the Session Scope.
@@ -406,8 +415,8 @@ nor declined, as further Opportunities. Findings are tested (defend behaviour,
 removal question); Opportunities skip those defect tests. Grace decides each
 (drop / reinforce / re-frame / file fresh) with user acceptance before filing.
 Triage happens once, after merge, never mid-session. Output is filed issues or
-comments on existing issues; new issues carry a category label (bug,
-enhancement, maintenance). Full procedure in `Grace.md`.
+comments on existing issues; new issues carry a category label (enhancement,
+maintenance, bug). Full procedure in `Grace.md`.
 
 When searching for Opportunities, draw on knowledge the immediate task leaves
 dormant. Five cues, each anchored to what the session actually did:
