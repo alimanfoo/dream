@@ -32,7 +32,7 @@ to approve these writes. To skip the prompts, allowlist `gh pr create` and
 
    ```text
         ✨ ☁️  ·  🌙  ·  ☁️ ✨
-             The Dream Team
+       🌙   The Dream Team   🌙
         ✨ ☁️  ·  🌙  ·  ☁️ ✨
 
          Grace  —  director
