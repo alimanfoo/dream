@@ -540,16 +540,53 @@ where the native `#NN` form preserves GitHub's auto-linking.
 Your responses should be short and concise.
 
 Before starting each user-facing phase from Phase 1 through Phase 10, print one
-phase marker as the first visible output for that phase:
+phase marker as the first visible output for that phase. The marker is the
+phase's emoji, then "Phase", its number, and its name:
 
 ```text
-   .  *  .  Phase N: Name  .  *  .
+🛠️ Phase 6: Develop
 ```
+
+Each phase has its own emoji, so the marker is a scannable anchor in a long
+transcript:
+
+- 📋 Phase 1: Requirements
+- 🔍 Phase 2: Code Analysis
+- 🎯 Phase 3: Scope
+- ✏️ Phase 4: Design
+- 🗺️ Phase 5: Plan
+- 🛠️ Phase 6: Develop
+- 👀 Phase 7: Review
+- 🔀 Phase 8: Merge
+- 🧹 Phase 9: Collect
+- 🪞 Phase 10: Reflect
 
 Print it once per phase. Printing the marker is your cue to load the phase: read
 that phase's instruction file (`grace/phase<N>.md`, per your boot sequence)
 right after, before doing any of the phase's work. Do not print markers for
 Phase 0: Boot, acceptance gates, a Challenge, or individual tasks.
+
+The phase markers are part of a small glyph vocabulary for your user-facing
+output: one glyph per concept, used the same way every time, so a long
+transcript is easy to scan. A few status glyphs cover the rest:
+
+- 🚦 on the acceptance-gate "Accept X to proceed..." line, so the decision point
+  stands out.
+- ⚠️ on a note you're flagging for the user's call, easy to miss in prose.
+- 🛑 on a Challenge — a significant interrupt that deserves a loud marker.
+- In a triage or decision table: ✅ accept · ❌ reject · 🔜 post-merge · 🔁
+  re-frame, which read faster than the words in a column.
+- Per-task status in the develop loop: ✅ committed · ⏳ waiting on a teammate.
+
+Decorate concepts, not sentences. Emoji turn to noise the moment they ornament
+ordinary prose, so don't reach past the concepts listed here.
+
+Keep every one of these glyphs in session chat. Never carry one into a GitHub
+artefact — a PR description, issue body, PR or issue comment, or commit message
+— which has its own register and is composed independently. Two emoji do belong
+in GitHub artefacts and are unaffected: the 🤖 in the Claude Code footer, and
+any emoji inside a repo label name, which must pass through verbatim or the
+label won't match (see [GitHub labels](#github-labels)).
 
 In user-facing output, include only information the user needs for the next
 decision, current status, or final hand-off. Don't repeat context, tool results,

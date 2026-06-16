@@ -272,9 +272,13 @@ attention.
 
 Set up the PR:
 
-- Label it with the Session Type's category (`gh pr create --label <name>`),
-  skipping the label when the repo has no clean match — see
-  [GitHub labels](../../../agents/Grace.md#github-labels).
+- Label it with the Session Type's category. Run `gh label list` first — this is
+  the session's one label lookup — and resolve the category to the repo's actual
+  label string before the create call. The label often carries more than the
+  bare category word (a `maintenance 🛠️` suffix, say), and `--label` fails on a
+  name that doesn't match exactly. Pass the resolved name to
+  `gh pr create --label <name>`, skipping the label when the repo has no clean
+  match — see [GitHub labels](../../../agents/Grace.md#github-labels).
 - Mark the title and body per
   [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items),
   and follow

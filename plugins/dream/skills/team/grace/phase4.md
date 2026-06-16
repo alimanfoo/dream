@@ -184,4 +184,11 @@ This is one of the protocol's user acceptance gates — see
 Post the accepted Design to the PR as a comment — see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
 
+Post the design the user accepted as the design. When the comment also carries
+the other designs from the spread — the Proposed Design if the user picked an
+Alternative, or the Alternatives if they took the Proposed — put them under an
+"Alternatives considered" heading, so a reader sees which one the session chose.
+A bare "Alternative Designs" heading reads as options still open, not ones
+weighed and set aside.
+
 The phase ends at user acceptance of the Design.
