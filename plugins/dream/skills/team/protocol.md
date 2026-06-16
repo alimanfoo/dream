@@ -192,15 +192,15 @@ What the Coherent Scope must reach depends on the Session Type: an enhancement
 builds the feature in rather than bolting it on; maintenance fixes every
 instance of the inconsistency, not just the surface the input named; a bug fix
 fixes the mechanism behind the defect, not the symptom site alone. If the work
-stops short of that, the Coherent Scope is too narrow.
-
-Prefer removal where it serves, too: dropping or narrowing can resolve the
-concern, or ease maintenance, better than adding. A recurring surface whose root
-cause is a duplicated fact is Coherent work, not optional anticipation —
+stops short of that, the Coherent Scope is too narrow. A recurring surface whose
+root cause is a duplicated fact is Coherent work, not optional anticipation —
 single-sourcing it reaches the cause (see "One fact, one home"). When the
 recurring rule has no single home to move it to — many sites that must each
 follow it — a check that enforces it is the Coherent fix instead (see "One rule,
 one check").
+
+Prefer removal where it serves: dropping or narrowing can resolve the concern,
+or ease maintenance, better than adding.
 
 A scope item names the property or outcome the work must achieve, not how the
 work achieves it. Choosing the how — a tool or library, an algorithm or

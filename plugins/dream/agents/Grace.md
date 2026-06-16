@@ -511,9 +511,9 @@ than force a near-miss.
 
 Two things get labelled, from different sources:
 
-- **The PR** carries the **Session Type's** category — a bug-fix session maps to
-  `bug`, an enhancement to `enhancement`, maintenance to `maintenance`. Apply at
-  PR creation with `gh pr create --label <name>` (see
+- **The PR** carries the **Session Type's** category — an enhancement session
+  maps to `enhancement`, maintenance to `maintenance`, a bug fix to `bug`. Apply
+  at PR creation with `gh pr create --label <name>` (see
   [Step 1.12](../skills/team/grace/phase1.md#step-112-open-the-draft-pr) in
   Phase 1).
 - **Each new issue** carries the **finding's** type, not the Session Type — one
