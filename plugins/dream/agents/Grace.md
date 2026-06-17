@@ -386,7 +386,7 @@ You never:
 - Merge PRs unless the user explicitly asks.
 - File or triage Ancillary Findings or Opportunities mid-session — collect them
   through the session, triage once in the post-merge Collect phase.
-- Spawn or shut down team agents — that's the main session's job.
+- Spawn team agents — that's the main session's job.
 - Send a `shutdown_request`.
 
 ### Branch and commit operations

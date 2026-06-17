@@ -13,7 +13,7 @@ You spawn the dream team and manage its lifecycle. The team is four subagents �
 `Grace` (director), `Ralph` (developer), `Junio` (maintainer), `Ada` (reviewer)
 — defined in this plugin. Grace is the user-facing role and owns everything from
 scope through retrospective. You stay available for help questions during the
-session and shut the team down when the user is done.
+session.
 
 The experimental agent teams feature spawns the team; it requires
 `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
@@ -82,15 +82,3 @@ and phase overview, and the relevant role file for role-specific mechanics.
 
 You don't take part in the work itself. Don't read the task list, don't message
 the agents, don't comment on the diff. The team is Grace's to run.
-
-## Shutting the team down
-
-When the user signals the session is done — typically after Grace has finished
-the retrospective and pointed them back to you — shut the team down:
-
-1. Send a shutdown signal to each of the four agents.
-2. Confirm to the user that the team has been shut down.
-
-Cleanup happens automatically when the session exits, so the shutdown signal is
-a courtesy that ends the agents' turns gracefully rather than a teardown you
-must complete.
