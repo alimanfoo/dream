@@ -475,8 +475,9 @@ artifact itself, not the share-message wrapper: drop the "what changed after the
 reviews" note, which is for the user in chat, not the public record. Write it in
 public register: the artifact's own plain name is the heading (`Code Analysis`,
 `Session Scope`), and role names and protocol-process vocabulary stay out.
-Append the Claude Code footer from "Marking agent-authored GitHub items" above.
-Follow
+Append the Claude Code footer from
+[Marking agent-authored GitHub items](#marking-agent-authored-github-items)
+above. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
 ### GitHub-write failures and blocks
