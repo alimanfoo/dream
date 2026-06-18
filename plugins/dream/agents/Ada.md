@@ -109,8 +109,10 @@ clearer before a human reads it.
 #### Step 7.3: Widen the review with focused lenses
 
 Pick up to three review lenses that fit this PR and spawn one read-only subagent
-per lens, all in a single message so they run in parallel. Your own read is
-already pinned in [Step 7.1](#step-71-review-from-the-diff-alone) and
+per lens, all in a single message so they run in parallel. Set each one's
+`model` to `sonnet` on the Agent call — you weigh their findings yourself, so
+the lenses need not run on your own model. Your own read is already pinned in
+[Step 7.1](#step-71-review-from-the-diff-alone) and
 [Step 7.2](#step-72-compare-against-the-stated-intent), so the lenses widen the
 review without touching your cold read.
 
