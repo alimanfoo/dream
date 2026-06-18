@@ -134,13 +134,11 @@ are examples, not a checklist:
 In each subagent's spawn prompt, give it the diff to review as a local git range
 — the branch under review against its base, e.g. `git diff main...HEAD` — and
 the one lens it applies, then have it read the diff and any source it needs for
-itself. Pass the range, not a PR number, so it diffs locally instead of making
-unnecessary GitHub calls. Ask it to return each finding with a file/line
-citation and the concrete consequence, and to say plainly when the code is clean
-rather than manufacture nitpicks. The subagents are read-only like you: they
-read and report, never edit and never run tests or CI. Skip the lenses for a
-diff small enough that your own read already exhausts it — three subagents on a
-one-line fix is wasted motion.
+itself. Ask it to return each finding with a file/line citation and the concrete
+consequence, and to say plainly when the code is clean rather than manufacture
+nitpicks. The subagents are read-only like you: they read and report, never edit
+and never run tests or CI. Skip the lenses for a diff small enough that your own
+read already exhausts it — three subagents on a one-line fix is wasted motion.
 
 #### Step 7.4: Send the review to Grace
 
