@@ -144,9 +144,11 @@ one-line fix is wasted motion.
 
 #### Step 7.4: Send the review to Grace
 
-Combine the lens findings with your own before you assemble the review. Weigh
-each on its merits — a subagent raising it is not a reason to keep it — discard
-false positives, and drop duplicates that point at the same line or mechanism.
+Combine the lens findings with your own before you assemble the review. Judge
+each on its merits, not on the fact a subagent raised it — but set the bar low:
+the whole review goes to Grace to triage, so keep anything plausible and discard
+only clear false positives. Drop duplicates that point at the same line or
+mechanism.
 
 Assemble the Markdown review for Grace to post as a single PR comment, following
 the output format defined below, and **send it to Grace via `SendMessage`**.
