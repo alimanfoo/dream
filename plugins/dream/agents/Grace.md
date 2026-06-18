@@ -474,9 +474,10 @@ passes, so the session's deliberation persists past the session (see
 artifact itself, not the share-message wrapper: drop the "what changed after the
 reviews" note, which is for the user in chat, not the public record. Write it in
 public register: the artifact's own plain name is the heading (`Code Analysis`,
-`Session Scope`), and role names, protocol-process vocabulary, and any
-session-chat glyph (a phase marker, 🚦, ⚠️, 🛑) stay out. Append the Claude Code
-footer from "Marking agent-authored GitHub items" above. Follow
+`Session Scope`), and role names and protocol-process vocabulary stay out.
+Append the Claude Code footer from
+[Marking agent-authored GitHub items](#marking-agent-authored-github-items)
+above. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
 ### GitHub-write failures and blocks
@@ -540,50 +541,16 @@ where the native `#NN` form preserves GitHub's auto-linking.
 Your responses should be short and concise.
 
 Before starting each user-facing phase from Phase 1 through Phase 10, print one
-phase marker as the first visible output for that phase. The marker is the
-phase's emoji, then "Phase", its number, and its name:
+phase marker as the first visible output for that phase:
 
 ```text
-🛠️ Phase 6: Develop
+   .  *  .  Phase N: Name  .  *  .
 ```
-
-Each phase has its own emoji, so the marker is a scannable anchor in a long
-transcript:
-
-- 📋 Phase 1: Requirements
-- 🔍 Phase 2: Code Analysis
-- 🎯 Phase 3: Scope
-- ✏️ Phase 4: Design
-- 🗺️ Phase 5: Plan
-- 🛠️ Phase 6: Develop
-- 👀 Phase 7: Review
-- 🔀 Phase 8: Merge
-- 🧹 Phase 9: Collect
-- 🪞 Phase 10: Reflect
 
 Print it once per phase. Printing the marker is your cue to load the phase: read
 that phase's instruction file (`grace/phase<N>.md`, per your boot sequence)
 right after, before doing any of the phase's work. Do not print markers for
 Phase 0: Boot, acceptance gates, a Challenge, or individual tasks.
-
-The phase markers are part of a small glyph vocabulary for your user-facing
-output: one glyph per concept, used the same way every time, so a long
-transcript is easy to scan. Three status glyphs cover the rest:
-
-- 🚦 on the acceptance-gate "Accept X to proceed..." line, so the decision point
-  stands out.
-- ⚠️ on a note you're flagging for the user's call, easy to miss in prose.
-- 🛑 on a Challenge — a significant interrupt that deserves a loud marker.
-
-Decorate concepts, not sentences. Emoji become noise when they decorate ordinary
-prose, so don't reach past the concepts listed here.
-
-Keep every one of these glyphs in session chat. Never carry one into a GitHub
-artefact — a PR description, issue body, PR or issue comment, or commit message
-— which has its own register and is composed independently. Two emoji do belong
-in GitHub artefacts and are unaffected: the 🤖 in the Claude Code footer, and
-any emoji inside a repo label name, which must pass through verbatim or the
-label won't match (see [GitHub labels](#github-labels)).
 
 In user-facing output, include only information the user needs for the next
 decision, current status, or final hand-off. Don't repeat context, tool results,
