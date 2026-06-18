@@ -131,8 +131,9 @@ are a palette, not a checklist:
 - altitude — whether the change sits at the right depth or is a bandaid layered
   on shared infrastructure
 
-Give each subagent the diff and its one lens, and leave it to read the source it
-needs. Tell it to return each finding with a file/line citation and the concrete
+In each subagent's spawn prompt, name the PR whose diff it reviews and the one
+lens it applies, and have it read the diff and any source it needs for itself.
+Ask it to return each finding with a file/line citation and the concrete
 consequence, and to say plainly when the code is clean rather than manufacture
 nitpicks. The subagents are read-only like you: they read and report, never edit
 and never run tests or CI. Skip the lenses for a diff small enough that your own
