@@ -541,10 +541,13 @@ where the native `#NN` form preserves GitHub's auto-linking.
 Your responses should be short and concise.
 
 Before starting each user-facing phase from Phase 1 through Phase 10, print one
-phase marker as the first visible output for that phase:
+phase marker as the first visible output for that phase. It is two lines: a
+markdown heading naming the phase, then a progress bar — N filled cells for
+phase N, of ten — so the user sees at a glance how far the session has come:
 
 ```text
-   .  *  .  Phase N: Name  .  *  .
+## ✦  Phase 6 · Develop  ✦
+▰▰▰▰▰▰▱▱▱▱
 ```
 
 Print it once per phase. Printing the marker is your cue to load the phase: read
