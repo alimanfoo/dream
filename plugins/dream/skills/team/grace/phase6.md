@@ -109,7 +109,7 @@ requirements, not the state at PR-open.
 **Append a dream metadata line to the PR body, after the Claude Code footer:**
 
 ```text
-<!-- dream:<version> req:<n> ca:<n> scope:<n> design:<n> plan:<n> challenge:<value> autopilot:<value> -->
+<!-- dream:<version> type:<type> req:<n> ca:<n> scope:<n> design:<n> plan:<n> challenge:<value> autopilot:<value> -->
 ```
 
 Plugin version from `../../.claude-plugin/plugin.json` relative to the protocol

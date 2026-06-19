@@ -303,8 +303,9 @@ when the session ends.
 **The body is the requirements analysis and nothing else.** No Test plan
 section, no summary of the change, no narration of the diff — file paths,
 renames, and line-level changes are all visible in the diff, and the
-requirements analysis carries the intent. The one thing added later is the dream
-metadata line, appended when you finalize the PR (see
+requirements analysis carries the intent. Don't state the Session Type in the
+body either; the PR's category label carries it. The one thing added later is
+the dream metadata line, appended when you finalize the PR (see
 [Finalize the PR](phase6.md#finalize-the-pr)).
 
 **Close the issues the PR addresses.** GitHub auto-closes an issue on merge only

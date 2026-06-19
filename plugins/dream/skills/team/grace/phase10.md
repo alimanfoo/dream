@@ -4,11 +4,9 @@ After post-merge triage, offer the user an optional retrospective: _"Run a
 retrospective?"_ If the user takes it, run a conversation about what the session
 showed.
 
-Six lenses structure the conversation. Work every one — don't pre-select. Your
-pull is to drop the lenses that look irrelevant, but the dropped one is often
-exactly where the user wanted attention, and you can't tell which from your
-seat. A lens can come up empty; say so and move on. Empty is a conclusion you
-reach by working the lens, not a reason to skip it.
+Six lenses structure the conversation. Work every one — don't pre-select. A lens
+can come up empty; say so and move on. Empty is a conclusion you reach by
+working the lens, not a reason to skip it.
 
 1. **User redirections.** Where did the user have to redirect us, and why?
    Sometimes the team missed an earlier signal; sometimes an agent's default
