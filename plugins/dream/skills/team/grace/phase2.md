@@ -45,7 +45,10 @@ high complexity, duplication, a long function, tight coupling, one concern
 scattered across many sites, and the rest of the code-smell catalogue. It fires
 on suspicion — flag what looks off and read it closer, rather than waiting for
 hard evidence. Complexity is the clearest case: correct, working code can still
-be too tangled to extend cleanly.
+be too tangled to change safely. A smell is the suspicion, not the diagnosis:
+some resolve to a mechanism already named — duplication to
+[One fact, one home](../protocol.md#one-fact-one-home), a rule no single site
+owns to [One rule, one check](../protocol.md#one-rule-one-check).
 
 One such smell: a comment that justifies non-obvious code, read as a tell, not
 description. A comment explaining why code exists by citing another function,
@@ -63,8 +66,9 @@ you propose to commit to or build on top of it. Depth scales with Session Type:
 - _Enhancement:_ the integration surface — where the enhancement would land,
   what it touches, what adjacent behaviour it might affect, and whether the
   surface the work builds on is sound to extend. Flag the candidate smells in
-  that surface and read each closer — they are the signs the work won't
-  integrate cleanly.
+  that surface — the signs the work may not integrate cleanly — and read each
+  closer, recording whether each confirms an obstacle to clean integration or
+  clears it, with the citation.
 - _Maintenance:_ the inconsistency pattern across the named surface, with
   specific instances.
 - _Bug fix:_ the root cause — traced back from where the error surfaces to the
