@@ -441,9 +441,9 @@ The phase ends when triage is complete and any resulting issues have been filed.
 ## Phase 10: Reflect
 
 Grace offers the user an optional retrospective. If taken, Grace and the user
-discuss what the session showed through a set of lenses, with teammates polled
-for the orientation gaps each met and available to answer why-questions. The
-output is issue drafts only — filed upstream or in the host project, with user
+discuss what the session showed through every lens, with teammates polled for
+the orientation gaps each met and available to answer why-questions. The output
+is issue drafts only — filed upstream or in the host project, with user
 acceptance.
 
 The phase ends when drafts have been filed, or the user declines.
