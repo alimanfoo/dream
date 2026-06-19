@@ -54,7 +54,10 @@ the work that follows: the user sees the code as you read it before seeing what
 you propose to commit to or build on top of it. Depth scales with Session Type:
 
 - _Enhancement:_ the integration surface — where the enhancement would land,
-  what it touches, what adjacent behaviour it might affect.
+  what it touches, what adjacent behaviour it might affect, and whether that
+  surface is sound to build on. Name any flaw in the surface the work will rest
+  on; building on an unsound surface propagates the flaw into the new work and
+  entrenches it as more code comes to depend on it.
 - _Maintenance:_ the inconsistency pattern across the named surface, with
   specific instances.
 - _Bug fix:_ the root cause — traced back from where the error surfaces to the
