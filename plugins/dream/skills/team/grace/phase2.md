@@ -40,7 +40,13 @@ Trace each constraint the surface defends against back to the function that
 imposes it. Name any defensive code that sits at a different layer — see
 [Wrong-layer defensive code](../protocol.md#wrong-layer-defensive-code).
 
-Treat a comment that justifies non-obvious code as a candidate smell, not
+A candidate smell is a sign the code may resist change, not a proven defect:
+high complexity, duplication, a long function, tight coupling, and the rest of
+the code-smell catalogue. It fires on suspicion — flag what looks off and read
+it closer, rather than waiting for hard evidence. Complexity is the clearest
+case: correct, working code can still be too tangled to extend cleanly.
+
+One such smell: a comment that justifies non-obvious code, read as a tell, not
 description. A comment explaining why code exists by citing another function,
 layer, or invariant is a tell, not an explanation that settles the matter — read
 the underlying code with extra scrutiny and flag it in the analysis rather than
@@ -55,8 +61,9 @@ you propose to commit to or build on top of it. Depth scales with Session Type:
 
 - _Enhancement:_ the integration surface — where the enhancement would land,
   what it touches, what adjacent behaviour it might affect, and whether the
-  surface the work builds on is sound. Name any flaw in it; building on an
-  unsound surface propagates the flaw into the new work.
+  surface the work builds on is sound to extend. Flag the candidate smells in
+  that surface and read each closer — they are the signs the work won't
+  integrate cleanly.
 - _Maintenance:_ the inconsistency pattern across the named surface, with
   specific instances.
 - _Bug fix:_ the root cause — traced back from where the error surfaces to the

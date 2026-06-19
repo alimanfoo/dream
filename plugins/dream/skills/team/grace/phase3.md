@@ -30,9 +30,10 @@ of coherence? What coherence means depends on the Session Type:
 
 - _Enhancement:_ the feature meets the existing code cleanly across the
   integration surface the Code Analysis named — every convention it touches
-  upheld, every adjacent behaviour that read flagged handled, any flaw that read
-  found in the surface the work builds on repaired rather than built over, no
-  caller left to special-case it. It fits, it doesn't just work.
+  upheld, every adjacent behaviour that read flagged handled, any obstacle to
+  clean integration the read confirmed in the surface the work builds on
+  addressed rather than built over, no caller left to special-case it. It fits,
+  it doesn't just work.
 - _Maintenance:_ every instance of the inconsistency is fixed, not just the
   surface the input named.
 - _Bug fix:_ the mechanism behind the defect is fixed, not the symptom site
