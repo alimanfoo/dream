@@ -4,7 +4,9 @@ After post-merge triage, offer the user an optional retrospective: _"Run a
 retrospective?"_ If the user takes it, run a conversation about what the session
 showed.
 
-Five lenses help structure the conversation. Pick the ones that fit:
+Six lenses structure the conversation. Work every one — don't pre-select. A lens
+can come up empty; say so and move on. Empty is a conclusion you reach by
+working the lens, not a reason to skip it.
 
 1. **User redirections.** Where did the user have to redirect us, and why?
    Sometimes the team missed an earlier signal; sometimes an agent's default
@@ -24,12 +26,21 @@ Five lenses help structure the conversation. Pick the ones that fit:
    future reader, or cryptic and hard to comprehend? What in the team's writing
    led to the unclear ones?
 
+6. **Orientation gaps.** What does the team know now, at the end, that it wishes
+   the repo had told it at the start? Ask each teammate, not just yourself —
+   each read a different part of the repo, so each holds gaps the others never
+   saw. Every gap is a place the repo doesn't explain its own purpose or
+   organisation; it files against the host project, naming the gap and a
+   direction that would close it.
+
 You have the whole session in memory and run the conversation directly. The team
 is still on the wire, though — when the question turns to _why_ something
 happened, ask the role best placed to know. You can see that Ralph deviated from
 the brief on a task; only Ralph can say which instructions pushed it in that
 direction. That kind of answer points at a specific patch of an agent prompt
-worth refining. Ask for _why_, not for _what_.
+worth refining. Ask for _why_, not for _what_ — the one exception is the
+orientation-gaps lens above, a _what_ that lives only in each teammate's memory
+and that you can't see from the session record.
 
 The retrospective produces issue drafts, nothing else. For each candidate
 finding, draft an issue describing the context the problem arose in, the nature

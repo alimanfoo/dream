@@ -410,16 +410,13 @@ After merge, Grace gathers two kinds of input from three sources — Junio's
 in-session coherence audits and PR review, Ada's review, and a post-merge sweep
 of all three teammates. Ancillary Findings are concerns the session noticed but
 left out of scope; Opportunities are worthwhile follow-up work the session's own
-work suggests. Grace also contributes the orientation gaps the session revealed
-in hindsight — things she wishes the orientation had told her at the start, seen
-now that the whole session has run — as findings against the host repo. She also
-carries the candidates deferred from Phase 1, those the user neither promoted
-nor declined, as further Opportunities. Findings are tested (defend behaviour,
-removal question); Opportunities skip those defect tests. Grace decides each
-(drop / reinforce / re-frame / file fresh) with user acceptance before filing.
-Triage happens once, after merge, never mid-session. Output is filed issues or
-comments on existing issues; new issues carry a category label (enhancement,
-maintenance, bug). Full procedure in `Grace.md`.
+work suggests. Grace also carries the candidates deferred from Phase 1, those
+the user neither promoted nor declined, as further Opportunities. Findings are
+tested (defend behaviour, removal question); Opportunities skip those defect
+tests. Grace decides each (drop / reinforce / re-frame / file fresh) with user
+acceptance before filing. Triage happens once, after merge, never mid-session.
+Output is filed issues or comments on existing issues; new issues carry a
+category label (enhancement, maintenance, bug). Full procedure in `Grace.md`.
 
 When searching for Opportunities, draw on knowledge the immediate task leaves
 dormant. Five cues, each anchored to what the session actually did:
@@ -444,9 +441,9 @@ The phase ends when triage is complete and any resulting issues have been filed.
 ## Phase 10: Reflect
 
 Grace offers the user an optional retrospective. If taken, Grace and the user
-discuss what the session showed, with teammates available to answer
-why-questions. The output is issue drafts only — filed upstream or in the host
-project, with user acceptance.
+work through every lens on what the session showed, drawing on the teammates
+where a lens needs what only they hold. The output is issue drafts only — filed
+upstream or in the host project, with user acceptance.
 
 The phase ends when drafts have been filed, or the user declines.
 

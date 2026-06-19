@@ -16,13 +16,6 @@ dedup only — the same Finding or Opportunity seen through two roles becomes on
 not two. Keep Opportunities separate from Findings; they skip the Test step (see
 [Step 9.3](#step-93-test)).
 
-Add the **orientation gaps** the session revealed in hindsight — things you wish
-the orientation had told you at the start, now that the whole session has run.
-Each is a place the repo doesn't communicate its own purpose or organisation
-well, so each is a finding against the host repo. Like Opportunities, they skip
-the Test step and route straight to Decide. Name the gap and a direction that
-would close it.
-
 Add the **deferred candidates** from Phase 1 as Opportunities. These are
 candidate use cases or improvement goals the user neither promoted nor declined
 at the Requirements gate (see
@@ -94,8 +87,14 @@ source observations, the issue history, and what the Test step showed; don't
 send candidates back to Ralph or Junio for another round of judgement.
 
 Share the proposed decision table with the user before drafting issue or comment
-text. For each candidate, show the finding, the decision, and the reason. Ask
-the user to accept the decision table or redirect it.
+text. For each candidate, show the finding, the decision, the concrete action it
+maps to with its target, and the reason. The decision word alone doesn't tell
+the user what will happen: `re-frame` and `file fresh` open a new issue,
+`reinforce` and a duplicate `drop` comment on an existing one, and a plain
+`drop` does nothing. Spell out the action and target per row —
+`re-frame → new issue, references #155`, `reinforce → comment on #142` — so each
+row is self-contained and the user can accept it without asking. Ask the user to
+accept the decision table or redirect it.
 
 After the user accepts the decisions, write the exact issue or comment text for
 every item that will be filed or commented. Show that exact text to the user and
