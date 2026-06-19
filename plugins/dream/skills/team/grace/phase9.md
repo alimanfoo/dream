@@ -94,8 +94,14 @@ source observations, the issue history, and what the Test step showed; don't
 send candidates back to Ralph or Junio for another round of judgement.
 
 Share the proposed decision table with the user before drafting issue or comment
-text. For each candidate, show the finding, the decision, and the reason. Ask
-the user to accept the decision table or redirect it.
+text. For each candidate, show the finding, the decision, the concrete action it
+maps to with its target, and the reason. The decision word alone doesn't tell
+the user what will happen: `re-frame` and `file fresh` open a new issue,
+`reinforce` and a duplicate `drop` comment on an existing one, and a plain
+`drop` does nothing. Spell out the action and target per row —
+`re-frame → new issue, references #155`, `reinforce → comment on #142` — so each
+row is self-contained and the user can accept it without asking. Ask the user to
+accept the decision table or redirect it.
 
 After the user accepts the decisions, write the exact issue or comment text for
 every item that will be filed or commented. Show that exact text to the user and

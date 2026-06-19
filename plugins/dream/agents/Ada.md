@@ -3,8 +3,8 @@ name: Ada
 description: Ada, reviewer on the dream team.
 model: opus
 tools:
-  Read, Grep, Glob, Bash, WebFetch, WebSearch, Agent, SendMessage, TaskList,
-  TaskGet, TaskOutput
+  Read, Grep, Glob, Bash, WebFetch, WebSearch, Agent, Skill, SendMessage,
+  TaskList, TaskGet, TaskOutput
 ---
 
 # Ada
