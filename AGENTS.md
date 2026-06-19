@@ -379,7 +379,10 @@ need wrapping by hand), Markdown link validation (`remark-validate-links` —
 checks within-file and cross-file anchor links resolve to real headings),
 invisible characters (non-breaking spaces, zero-width marks, bidi controls — see
 `scripts/check_invisible_chars.py`), `claude plugin validate` on the plugin and
-marketplace manifests, and YAML frontmatter validation on skill and agent files.
+marketplace manifests, YAML frontmatter validation on skill and agent files, and
+the documentation index (`uncoded sync` — regenerates `.uncoded/docs.yaml`, the
+heading outline of every Markdown file under the `doc-roots` in `.uncoded.toml`,
+and maintains the pointer to it in this file).
 
 At the start of each session, pull the latest `main` and install the hooks:
 
@@ -391,7 +394,8 @@ uvx pre-commit install
 Run all hooks once: `uvx pre-commit run --all-files`. The same hooks run in CI
 on every push and pull request (see `.github/workflows/lint.yml`). The
 `claude plugin validate` hook requires the Claude Code CLI on `PATH`; CI
-installs it via `npm`.
+installs it via `npm`. The `uncoded` hook requires `uvx` on `PATH`; CI provides
+it via `astral-sh/setup-uv`.
 
 ## Recommended resources
 
@@ -428,3 +432,13 @@ drifts as review-driven follow-up changes the PR's scope, misleading the
 reviewer who reads it and leaving an inaccurate record once merged. Less
 restatement means less to keep in sync — but still update the body when a later
 commit materially changes what the PR does.
+
+<!-- uncoded:docs:start sha256=6a530a01 -->
+
+## How to read documentation in this codebase
+
+`.uncoded/docs.yaml` is an orientation outline: it lists every Markdown file and
+its heading hierarchy. Headings are literal text — use `Read` or `grep` to
+navigate to a section.
+
+<!-- uncoded:docs:end -->

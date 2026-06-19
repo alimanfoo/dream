@@ -16,6 +16,13 @@ repos:
 
   - repo: local
     hooks:
+      - id: uncoded
+        name: maintain documentation index
+        entry: uvx uncoded@1.2.0 sync
+        language: system
+        pass_filenames: false
+        files: (\.md$|^\.uncoded\.toml$)
+
       - id: prettier
         name: format markdown with prettier
         entry: prettier
