@@ -16,13 +16,6 @@ dedup only — the same Finding or Opportunity seen through two roles becomes on
 not two. Keep Opportunities separate from Findings; they skip the Test step (see
 [Step 9.3](#step-93-test)).
 
-Add the **orientation gaps** the session revealed in hindsight — things you wish
-the orientation had told you at the start, now that the whole session has run.
-Each is a place the repo doesn't communicate its own purpose or organisation
-well, so each is a finding against the host repo. Like Opportunities, they skip
-the Test step and route straight to Decide. Name the gap and a direction that
-would close it.
-
 Add the **deferred candidates** from Phase 1 as Opportunities. These are
 candidate use cases or improvement goals the user neither promoted nor declined
 at the Requirements gate (see
