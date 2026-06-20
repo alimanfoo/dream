@@ -171,11 +171,11 @@ With the Requirements Analysis accepted, Grace reads the code with a structural
 lens. The read produces two things: the structural baseline — how the code is
 built and behaves — and the code smells, where that structure will resist the
 work. Grace then shares the Code Analysis — a verifiable read of what the
-current code does and where, with file:line or symbol citations — with the user
-for acceptance. At the end of the phase Grace hands the accepted Code Analysis
-to Junio and Ralph for information; they hold it as context for the rest of the
-session. On acceptance Grace also posts the accepted Code Analysis to the PR as
-a comment — see [The session PR](#the-session-pr).
+current code does and where — with the user for acceptance. At the end of the
+phase Grace hands the accepted Code Analysis to Junio and Ralph for information;
+they hold it as context for the rest of the session. On acceptance Grace also
+posts the accepted Code Analysis to the PR as a comment — see
+[The session PR](#the-session-pr).
 
 The phase ends at user acceptance of the Code Analysis.
 
