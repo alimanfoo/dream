@@ -168,8 +168,8 @@ The phase ends at user acceptance of the Requirements Analysis.
 ## Phase 2: Code Analysis
 
 With the Requirements Analysis accepted, Grace reads the code with a structural
-lens — mechanism, layers, siblings, callers, patterns, candidate smells. This
-read also names the architecture the work touches: the boundaries, separation of
+lens — mechanism, layers, siblings, callers, patterns, code smells. This read
+also names the architecture the work touches: the boundaries, separation of
 concerns, and conventions the surfaces already follow, and which of them nothing
 enforces. The same code as Phase 1, with different attention. Grace then shares
 the Code Analysis — a verifiable read of what the current code does and where,
@@ -587,14 +587,14 @@ short sentence to a full contract restatement.
 
 ## Wrong-layer defensive code
 
-A common smell: defensive code — a validation, a type check, a fallback — sits
-at a layer that isn't the source of the constraint it defends against. Ask where
-the input first arrives and which operation actually needs the guarantee. Carry
-that guarantee in a type, not a check: construct the type once at the boundary
-where the input arrives, and require it in the signature of the operation that
-needs it (see "Code-shape ladder" above). The boundary builds the guarantee, the
-operation demands it, and no layer in between re-checks. Moving the check
-deeper, rather than typing it, usually just relocates the smell.
+A common code smell: defensive code — a validation, a type check, a fallback —
+sits at a layer that isn't the source of the constraint it defends against. Ask
+where the input first arrives and which operation actually needs the guarantee.
+Carry that guarantee in a type, not a check: construct the type once at the
+boundary where the input arrives, and require it in the signature of the
+operation that needs it (see "Code-shape ladder" above). The boundary builds the
+guarantee, the operation demands it, and no layer in between re-checks. Moving
+the check deeper, rather than typing it, usually just relocates the code smell.
 
 Two signs to look for. A comment explaining the defensive code ("X is required
 because Y") points at a deeper layer and makes the code look intentional. Or the
