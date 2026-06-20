@@ -41,7 +41,7 @@ with the specific instances it must reach.
 ## Step 2.2: Identify and investigate code smells
 
 With the baseline in hand, turn to the code smells — where that structure will
-resist the work. Read each code smell closer as you notice it. A code smell is a
+resist the work. Investigate each code smell as you notice it. A code smell is a
 sign the code may resist change, not a proven defect — high complexity,
 duplication, a long function, tight coupling, one concern scattered across many
 sites, and the rest of the code-smell catalogue. Take complexity: correct,
