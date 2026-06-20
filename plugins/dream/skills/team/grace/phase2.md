@@ -5,15 +5,10 @@ the current code does and where, with file:line or symbol citations. It is the
 structural counterpart to Phase 1's consumer-focused read: same code, different
 attention. Follow the steps below in sequence.
 
-## Step 2.1: Read the code with a structural lens
+## Step 2.1: Read the structural baseline
 
-Read the relevant code with one question in mind: _how does this work?_ This is
-the structural lens — the same code as Phase 1's consumer read, with different
-attention. The structural read comes in two parts that feed the Code Analysis:
-the structural baseline, here, and the code smells, which the next step
-investigates.
-
-The baseline is how the code is built and what it actually does. Trace the
+Read the relevant code with one question in mind: _how does this work?_ The
+baseline is how the code is built and what it actually does. Trace the
 mechanism, the layers, the callers and siblings, the patterns. Name the
 architecture the work touches: which layers or modules the surfaces sit in, the
 boundaries between them, the separation of concerns the code already keeps, and

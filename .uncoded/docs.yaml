@@ -190,7 +190,7 @@ plugins/:
             'Phase 10: Reflect':
           phase2.md:
             'Phase 2: Code Analysis':
-              'Step 2.1: Read the code with a structural lens':
+              'Step 2.1: Read the structural baseline':
               'Step 2.2: Identify and investigate the code smells':
               'Step 2.3: Compose the Code Analysis':
               'Step 2.4: Share the Code Analysis with the user':
