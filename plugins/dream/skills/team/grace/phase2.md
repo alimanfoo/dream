@@ -70,8 +70,7 @@ Some code smells are specific and common in codebases with agent-generated code:
 
 Compose the Code Analysis — the structural read above, the baseline and the code
 smells, written up with file:line or symbol citations throughout. The purpose is
-visible grounding for the work that follows: the user sees the code as you read
-it before seeing what you propose to commit to or build on top of it.
+visible grounding for the work that follows.
 
 The Code Analysis is a read, not a transcription. Tell the reader something they
 couldn't get line by line. Root cause is the clearest case: for a reported bug,
