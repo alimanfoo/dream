@@ -24,6 +24,12 @@ Opportunities, they skip the Test step and route straight to Decide, filed as
 follow-up work or dropped. Each carries the evidence you cited in Phase 1, so it
 is ready to file as is.
 
+Add the **code smells** the Code Analysis named but the Session Scope didn't
+take up, as Ancillary Findings. Unlike the Phase 1 candidates, these are
+Findings, so they go through the Test step — the removal question fits an
+over-built smell especially well. Each carries the citation you made in the Code
+Analysis, so it is ready to file as is.
+
 As you ask the teammates for the post-merge sweep, refer them to the Collect
 cues (see [Phase 9](../protocol.md#phase-9-collect)). They read the cues once at
 boot, and by now that read has fallen from view; referring to the cues in the

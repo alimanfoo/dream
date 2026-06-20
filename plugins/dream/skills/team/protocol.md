@@ -42,9 +42,9 @@ A session moves through ten phases:
    she opens the session branch and a draft PR carrying the accepted
    requirements as its description — see [The session PR](#the-session-pr).
 
-2. **Code Analysis.** Grace reads the code with a structural lens — mechanism,
-   layers, siblings, patterns — and shares the Code Analysis with the user for
-   acceptance.
+2. **Code Analysis.** Grace reads the code with a structural lens — the
+   structural baseline and the code smells — and shares the Code Analysis with
+   the user for acceptance.
 
 3. **Scope.** Grace drafts the Scope Options, gets one round of review from
    Junio and Ralph, revises, and shares the revised Scope Options with the user
@@ -168,15 +168,13 @@ The phase ends at user acceptance of the Requirements Analysis.
 ## Phase 2: Code Analysis
 
 With the Requirements Analysis accepted, Grace reads the code with a structural
-lens — mechanism, layers, siblings, callers, patterns, code smells. This read
-also names the architecture the work touches: the boundaries, separation of
-concerns, and conventions the surfaces already follow, and which of them nothing
-enforces. The same code as Phase 1, with different attention. Grace then shares
-the Code Analysis — a verifiable read of what the current code does and where,
-with file:line or symbol citations — with the user for acceptance. At the end of
-the phase Grace hands the accepted Code Analysis to Junio and Ralph for
-information; they hold it as context for the rest of the session. On acceptance
-Grace also posts the accepted Code Analysis to the PR as a comment — see
+lens. The read produces two things: the structural baseline — how the code is
+built and behaves — and the code smells, where that structure will resist the
+work. Grace then shares the Code Analysis — a verifiable read of what the
+current code does and where — with the user for acceptance. At the end of the
+phase Grace hands the accepted Code Analysis to Junio and Ralph for information;
+they hold it as context for the rest of the session. On acceptance Grace also
+posts the accepted Code Analysis to the PR as a comment — see
 [The session PR](#the-session-pr).
 
 The phase ends at user acceptance of the Code Analysis.
@@ -410,13 +408,15 @@ After merge, Grace gathers two kinds of input from three sources — Junio's
 in-session coherence audits and PR review, Ada's review, and a post-merge sweep
 of all three teammates. Ancillary Findings are concerns the session noticed but
 left out of scope; Opportunities are worthwhile follow-up work the session's own
-work suggests. Grace also carries the candidates deferred from Phase 1, those
-the user neither promoted nor declined, as further Opportunities. Findings are
-tested (defend behaviour, removal question); Opportunities skip those defect
-tests. Grace decides each (drop / reinforce / re-frame / file fresh) with user
-acceptance before filing. Triage happens once, after merge, never mid-session.
-Output is filed issues or comments on existing issues; new issues carry a
-category label (enhancement, maintenance, bug). Full procedure in `Grace.md`.
+work suggests. Grace also carries forward two earlier deferrals: the Phase 1
+candidates the user neither promoted nor declined become further Opportunities,
+and the code smells the Code Analysis named but the Scope left out become
+further Ancillary Findings. Findings are tested (defend behaviour, removal
+question); Opportunities skip those defect tests. Grace decides each (drop /
+reinforce / re-frame / file fresh) with user acceptance before filing. Triage
+happens once, after merge, never mid-session. Output is filed issues or comments
+on existing issues; new issues carry a category label (enhancement, maintenance,
+bug). Full procedure in `Grace.md`.
 
 When searching for Opportunities, draw on knowledge the immediate task leaves
 dormant. Five cues, each anchored to what the session actually did:
