@@ -38,7 +38,7 @@ surface — where the work would land, what it touches, what adjacent behaviour 
 might affect; maintenance reads the full extent of the surface the work touches,
 with the specific instances it must reach.
 
-## Step 2.2: Identify and investigate the code smells
+## Step 2.2: Identify and investigate code smells
 
 With the baseline in hand, turn to the code smells — where that structure will
 resist the work. Read each code smell closer as you notice it. A code smell is a
