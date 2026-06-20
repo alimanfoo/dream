@@ -7,97 +7,84 @@ attention. Follow the steps below in sequence.
 
 ## Step 2.1: Read the code with a structural lens
 
-Read the relevant code with one question in mind: _how does this work?_ Trace
-mechanism, layers, callers, siblings, patterns, and code smells. This is the
-structural lens — distinct from Phase 1's consumer lens. The two reads cover the
-same code with different attention.
+Read the relevant code with one question in mind: _how does this work?_ The read
+produces two things: the structural baseline — how the code is built and what it
+actually does — and the code smells — where that structure will resist the work.
+This is the structural lens, distinct from Phase 1's consumer lens; the two
+reads cover the same code with different attention.
 
-Test the session input's factual claims about the code, whoever made them. A bug
+Trace the baseline first. Follow the mechanism, the layers, the callers and
+siblings, the patterns. Name the architecture the work touches: which layers or
+modules the surfaces sit in, the boundaries between them, the separation of
+concerns the code already keeps, and the conventions the surfaces follow — a
+shared error shape, a naming pattern, a structural rule — and which of these are
+enforced and which hold only by convention, with nothing checking them. This is
+the structural baseline the Design later builds on, and Junio reads it when
+judging whether the Design keeps concerns separate (see his Design
+separation-of-concerns lens). State it factually — name the boundary that
+exists, don't propose one. Keep it to the architecture the session's surfaces
+touch, not a tour of the whole codebase.
+
+Test the session input's factual claims as you go, whoever made them. A bug
 report asserts a defect; confirm the code actually misbehaves rather than taking
 the report at its word, since the reported behaviour may be a misunderstanding
-of what the code is built to do. The Code Analysis records what the read shows —
-the defect located, or the code behaving as designed. The latter means there is
-no bug to fix; surface it at the gate for the user to decide.
+of what the code is built to do. Record what the read shows — the defect
+located, or the code behaving as designed. The latter means there is no bug to
+fix; surface it at the gate for the user to decide.
 
 Read for semantics, not just names, prose, or other surface details. A surface
-can carry the same name but mean different things in different callers. For
-example: a parameter with fallback semantics in one caller, no-anchor semantics
-in another, and required in a third. Note any such split — the Code Analysis
-names it explicitly.
+can carry the same name but mean different things in different callers — a
+parameter with fallback semantics in one caller, no-anchor semantics in another,
+required in a third. Note any such split.
 
-Name the architecture the work touches. Which layers or modules the surfaces sit
-in, the boundaries between them, the separation of concerns the code already
-keeps, and the conventions the surfaces follow — a shared error shape, a naming
-pattern, a structural rule. Note which of these are enforced and which hold only
-by convention, with nothing checking them. This is the structural baseline the
-Design later builds on and Junio reads when judging whether the Design keeps
-concerns separate (see his Design separation-of-concerns lens). State it
-factually — name the boundary that exists, don't propose one; the read stays a
-read. Keep it to the architecture the session's surfaces touch, not a tour of
-the whole codebase.
-
-Trace each constraint the surface defends against back to the function that
-imposes it. Name any defensive code that sits at a different layer — see
-[Wrong-layer defensive code](../protocol.md#wrong-layer-defensive-code).
+How far the baseline reaches scales with the Session Type: a bug fix traces to
+the root cause, back from where the error surfaces to the mechanism that
+produces it, not the symptom site alone; an enhancement reads the integration
+surface — where the work would land, what it touches, what adjacent behaviour it
+might affect; maintenance reads the inconsistency pattern across the named
+surface, with specific instances.
 
 Read each code smell closer as you notice it. A code smell is a sign the code
 may resist change, not a proven defect — high complexity, duplication, a long
 function, tight coupling, one concern scattered across many sites, and the rest
 of the code-smell catalogue. Complexity is the clearest case: correct, working
-code can still be too tangled to change safely.
+code can still be too tangled to change safely. Describe the smell and where it
+lives; whether it matters and how to fix it is Scope's and Design's call, not
+the read's.
 
-One such code smell: a comment that justifies non-obvious code, read as a tell,
-not description. A comment explaining why code exists by citing another
-function, layer, or invariant is a tell, not an explanation that settles the
-matter — read the underlying code with extra scrutiny and flag it in the
-analysis rather than recording the comment's rationale as fact.
+Some code smells are specific and recurring:
+
+- Defensive code at a layer that isn't the source of the constraint it defends
+  against. Trace each constraint back to the function that imposes it — see
+  [Wrong-layer defensive code](../protocol.md#wrong-layer-defensive-code).
+- A comment that justifies non-obvious code, read as a tell, not description. A
+  comment explaining why code exists by citing another function, layer, or
+  invariant is a tell, not an explanation that settles the matter — read the
+  underlying code with extra scrutiny and record what it shows, not the
+  comment's rationale.
+- A fact duplicated across sites, so the copies drift as the code changes and
+  each drift reads as a fresh, separate bug. Where Phase 1's recurrence check or
+  this read shows fixes landing on the same surface, suspect this drift before a
+  run of unrelated defects — the recurrence is the evidence.
+- A rule that many sites must each follow, with no single home and nothing
+  enforcing it — every endpoint building its own error response, every public
+  function carrying its own docstring — cited at the sites seen breaking it.
 
 ## Step 2.2: Compose the Code Analysis
 
-Compose the Code Analysis — your structural read of the current code, with
-file:line or symbol citations throughout. The purpose is visible grounding for
-the work that follows: the user sees the code as you read it before seeing what
-you propose to commit to or build on top of it. Depth scales with Session Type:
-
-- _Enhancement:_ the integration surface — where the enhancement would land,
-  what it touches, what adjacent behaviour it might affect.
-- _Maintenance:_ the inconsistency pattern across the named surface, with
-  specific instances.
-- _Bug fix:_ the root cause — traced back from where the error surfaces to the
-  mechanism that produces it, not the symptom site alone.
-
-Show the recurrence pattern in enough detail for surfaces where Phase 1's
-recurrence check found prior issues. Name wrong-layer defensive code,
-same-name-different-contract splits, the code smells, and the architecture the
-work touches — boundaries, separation of concerns, conventions, and which hold
-only by convention — from
-[Step 2.1](#step-21-read-the-code-with-a-structural-lens) explicitly so a reader
-can see what the read surfaced.
-
-Where Phase 1's recurrence check found prior issues on a surface — or where this
-read shows the same fix shape landing in more than one place — say where the
-underlying fact lives. A fact is one decision the code makes: a set of valid
-cases, a formula, the shape of a response. When the same fact is written out in
-two places, the copies drift apart as the code changes, and each drift looks
-like a fresh, separate bug. So name the one place the fact belongs (or note it
-has no single home yet) and the copies that derive or drift from it. A run of
-fixes tightening on one surface is usually this drift, not a run of unrelated
-defects (see [One fact, one home](../protocol.md#one-fact-one-home)).
-
-Some recurring surfaces are not one fact copied to several places but one rule
-that many hand-written sites must each follow, with no single home — every
-endpoint building its own error response, every public function carrying its own
-docstring. Record the rule and that nothing checks it, citing the sites seen
-breaking it. Naming it is factual; whether to enforce it with a check is Scope's
-call (see [One rule, one check](../protocol.md#one-rule-one-check)).
+Compose the Code Analysis — the structural read above, written up with file:line
+or symbol citations throughout. The purpose is visible grounding for the work
+that follows: the user sees the code as you read it before seeing what you
+propose to commit to or build on top of it.
 
 The Code Analysis is a read, not a transcription. Tell the reader something they
-couldn't get line by line. Root cause analysis is the clearest case: for a
-reported bug, the transcription is the line where the error surfaces; the
-analysis is the mechanism that produces it, often layers away. The same read
-finds what's tangled, what a surface means across its callers, and what recurs.
-It stays factual, not proposal: name what is, don't recommend what to change —
-those changes land in Scope and Design.
+couldn't get line by line. Root cause is the clearest case: for a reported bug,
+the transcription is the line where the error surfaces; the analysis is the
+mechanism that produces it, often layers away.
+
+It stays factual, not proposal: name what is — the baseline and the code smells
+— don't recommend what to change. Whether a smell is worth fixing, and how,
+lands in Scope and Design.
 
 ## Step 2.3: Share the Code Analysis with the user
 
