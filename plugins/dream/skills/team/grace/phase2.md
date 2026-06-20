@@ -60,10 +60,7 @@ the work that follows: the user sees the code as you read it before seeing what
 you propose to commit to or build on top of it. Depth scales with Session Type:
 
 - _Enhancement:_ the integration surface — where the enhancement would land,
-  what it touches, what adjacent behaviour it might affect, and whether the
-  surface the work builds on is sound to extend. Where the closer read confirms
-  a candidate smell in that surface as an obstacle to clean integration, record
-  it with the citation.
+  what it touches, what adjacent behaviour it might affect.
 - _Maintenance:_ the inconsistency pattern across the named surface, with
   specific instances.
 - _Bug fix:_ the root cause — traced back from where the error surfaces to the
@@ -71,10 +68,11 @@ you propose to commit to or build on top of it. Depth scales with Session Type:
 
 Show the recurrence pattern in enough detail for surfaces where Phase 1's
 recurrence check found prior issues. Name wrong-layer defensive code,
-same-name-different-contract splits, and the architecture the work touches —
-boundaries, separation of concerns, conventions, and which hold only by
-convention — from [Step 2.1](#step-21-read-the-code-with-a-structural-lens)
-explicitly so a reader can see what the read surfaced.
+same-name-different-contract splits, the candidate smells, and the architecture
+the work touches — boundaries, separation of concerns, conventions, and which
+hold only by convention — from
+[Step 2.1](#step-21-read-the-code-with-a-structural-lens) explicitly so a reader
+can see what the read surfaced.
 
 Where Phase 1's recurrence check found prior issues on a surface — or where this
 read shows the same fix shape landing in more than one place — say where the
