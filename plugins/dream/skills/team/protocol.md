@@ -408,13 +408,15 @@ After merge, Grace gathers two kinds of input from three sources — Junio's
 in-session coherence audits and PR review, Ada's review, and a post-merge sweep
 of all three teammates. Ancillary Findings are concerns the session noticed but
 left out of scope; Opportunities are worthwhile follow-up work the session's own
-work suggests. Grace also carries the candidates deferred from Phase 1, those
-the user neither promoted nor declined, as further Opportunities. Findings are
-tested (defend behaviour, removal question); Opportunities skip those defect
-tests. Grace decides each (drop / reinforce / re-frame / file fresh) with user
-acceptance before filing. Triage happens once, after merge, never mid-session.
-Output is filed issues or comments on existing issues; new issues carry a
-category label (enhancement, maintenance, bug). Full procedure in `Grace.md`.
+work suggests. Grace also carries forward two earlier deferrals: the Phase 1
+candidates the user neither promoted nor declined become further Opportunities,
+and the code smells the Code Analysis named but the Scope left out become
+further Ancillary Findings. Findings are tested (defend behaviour, removal
+question); Opportunities skip those defect tests. Grace decides each (drop /
+reinforce / re-frame / file fresh) with user acceptance before filing. Triage
+happens once, after merge, never mid-session. Output is filed issues or comments
+on existing issues; new issues carry a category label (enhancement, maintenance,
+bug). Full procedure in `Grace.md`.
 
 When searching for Opportunities, draw on knowledge the immediate task leaves
 dormant. Five cues, each anchored to what the session actually did:
