@@ -31,11 +31,11 @@ can carry the same name but mean different things in different callers — a
 parameter with fallback semantics in one caller, no-anchor semantics in another,
 required in a third. Name any such split explicitly.
 
-How far the baseline reaches scales with the Session Type: a bug fix traces to
+How far the baseline reaches scales with the Session Type. A bug fix traces to
 the root cause, back from where the error surfaces to the mechanism that
-produces it, not the symptom site alone; an enhancement reads the integration
+produces it, not the symptom site alone. An enhancement reads the integration
 surface — where the work would land, what it touches, what adjacent behaviour it
-might affect; maintenance reads the full extent of the surface the work touches,
+might affect. Maintenance reads the full extent of the surface the work touches,
 with the specific instances it must reach.
 
 ## Step 2.2: Identify and investigate code smells
