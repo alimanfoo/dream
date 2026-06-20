@@ -40,12 +40,11 @@ Trace each constraint the surface defends against back to the function that
 imposes it. Name any defensive code that sits at a different layer — see
 [Wrong-layer defensive code](../protocol.md#wrong-layer-defensive-code).
 
-Read candidate smells closer as you notice them, rather than waiting for hard
-evidence. A candidate smell is a sign the code may resist change, not a proven
-defect — high complexity, duplication, a long function, tight coupling, one
-concern scattered across many sites, and the rest of the code-smell catalogue.
-Complexity is the clearest case: correct, working code can still be too tangled
-to change safely.
+Read candidate smells closer as you notice them. A candidate smell is a sign the
+code may resist change, not a proven defect — high complexity, duplication, a
+long function, tight coupling, one concern scattered across many sites, and the
+rest of the code-smell catalogue. Complexity is the clearest case: correct,
+working code can still be too tangled to change safely.
 
 One such smell: a comment that justifies non-obvious code, read as a tell, not
 description. A comment explaining why code exists by citing another function,
