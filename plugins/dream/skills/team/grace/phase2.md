@@ -8,7 +8,7 @@ attention. Follow the steps below in sequence.
 ## Step 2.1: Read the code with a structural lens
 
 Read the relevant code with one question in mind: _how does this work?_ Trace
-mechanism, layers, callers, siblings, patterns, and smells. This is the
+mechanism, layers, callers, siblings, patterns, and code smells. This is the
 structural lens — distinct from Phase 1's consumer lens. The two reads cover the
 same code with different attention.
 
@@ -40,17 +40,17 @@ Trace each constraint the surface defends against back to the function that
 imposes it. Name any defensive code that sits at a different layer — see
 [Wrong-layer defensive code](../protocol.md#wrong-layer-defensive-code).
 
-Read each smell closer as you notice it. A smell is a sign the code may resist
-change, not a proven defect — high complexity, duplication, a long function,
-tight coupling, one concern scattered across many sites, and the rest of the
-code-smell catalogue. Complexity is the clearest case: correct, working code can
-still be too tangled to change safely.
+Read each code smell closer as you notice it. A code smell is a sign the code
+may resist change, not a proven defect — high complexity, duplication, a long
+function, tight coupling, one concern scattered across many sites, and the rest
+of the code-smell catalogue. Complexity is the clearest case: correct, working
+code can still be too tangled to change safely.
 
-One such smell: a comment that justifies non-obvious code, read as a tell, not
-description. A comment explaining why code exists by citing another function,
-layer, or invariant is a tell, not an explanation that settles the matter — read
-the underlying code with extra scrutiny and flag it in the analysis rather than
-recording the comment's rationale as fact.
+One such code smell: a comment that justifies non-obvious code, read as a tell,
+not description. A comment explaining why code exists by citing another
+function, layer, or invariant is a tell, not an explanation that settles the
+matter — read the underlying code with extra scrutiny and flag it in the
+analysis rather than recording the comment's rationale as fact.
 
 ## Step 2.2: Compose the Code Analysis
 
@@ -68,10 +68,11 @@ you propose to commit to or build on top of it. Depth scales with Session Type:
 
 Show the recurrence pattern in enough detail for surfaces where Phase 1's
 recurrence check found prior issues. Name wrong-layer defensive code,
-same-name-different-contract splits, the smells, and the architecture the work
-touches — boundaries, separation of concerns, conventions, and which hold only
-by convention — from [Step 2.1](#step-21-read-the-code-with-a-structural-lens)
-explicitly so a reader can see what the read surfaced.
+same-name-different-contract splits, the code smells, and the architecture the
+work touches — boundaries, separation of concerns, conventions, and which hold
+only by convention — from
+[Step 2.1](#step-21-read-the-code-with-a-structural-lens) explicitly so a reader
+can see what the read surfaced.
 
 Where Phase 1's recurrence check found prior issues on a surface — or where this
 read shows the same fix shape landing in more than one place — say where the
