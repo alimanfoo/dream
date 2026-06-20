@@ -25,10 +25,7 @@ follow-up work or dropped. Each carries the evidence you cited in Phase 1, so it
 is ready to file as is.
 
 Add the **code smells** the Code Analysis named but the Session Scope didn't
-take up, as Ancillary Findings. The Coherent Scope cited the Code Analysis
-finding behind each in-scope addition (see
-[Step 3.1](phase3.md#step-31-compose-the-draft-scope-options)), so the smells it
-didn't cite are the ones left out. Unlike the Phase 1 candidates, these are
+take up, as Ancillary Findings. Unlike the Phase 1 candidates, these are
 Findings, so they go through the Test step — the removal question fits an
 over-built smell especially well. Each carries the citation you made in the Code
 Analysis, so it is ready to file as is.
