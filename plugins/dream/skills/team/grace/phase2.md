@@ -62,10 +62,9 @@ you propose to commit to or build on top of it. Depth scales with Session Type:
 
 - _Enhancement:_ the integration surface — where the enhancement would land,
   what it touches, what adjacent behaviour it might affect, and whether the
-  surface the work builds on is sound to extend. Flag the candidate smells in
-  that surface — the signs the work may not integrate cleanly — and read each
-  closer, recording whether each confirms an obstacle to clean integration or
-  clears it, with the citation.
+  surface the work builds on is sound to extend. Where the closer read confirms
+  a candidate smell in that surface as an obstacle to clean integration, record
+  it with the citation.
 - _Maintenance:_ the inconsistency pattern across the named surface, with
   specific instances.
 - _Bug fix:_ the root cause — traced back from where the error surfaces to the
