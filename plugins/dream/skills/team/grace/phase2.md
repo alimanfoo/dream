@@ -19,11 +19,9 @@ modules the surfaces sit in, the boundaries between them, the separation of
 concerns the code already keeps, and the conventions the surfaces follow — a
 shared error shape, a naming pattern, a structural rule — and which of these are
 enforced and which hold only by convention, with nothing checking them. This is
-the structural baseline the Design later builds on, and Junio reads it when
-judging whether the Design keeps concerns separate (see his Design
-separation-of-concerns lens). State it factually — name the boundary that
-exists, don't propose one. Keep it to the architecture the session's surfaces
-touch, not a tour of the whole codebase.
+the structural baseline the Design later builds on. State it factually — name
+the boundary that exists, don't propose one. Keep it to the architecture the
+session's surfaces touch, not a tour of the whole codebase.
 
 Test the session input's factual claims as you go, whoever made them. A bug
 report asserts a defect; confirm the code actually misbehaves rather than taking
@@ -41,16 +39,15 @@ How far the baseline reaches scales with the Session Type: a bug fix traces to
 the root cause, back from where the error surfaces to the mechanism that
 produces it, not the symptom site alone; an enhancement reads the integration
 surface — where the work would land, what it touches, what adjacent behaviour it
-might affect; maintenance reads the inconsistency pattern across the named
-surface, with specific instances.
+might affect; maintenance reads the full extent of the surface the work touches,
+with the specific instances it must reach.
 
 Read each code smell closer as you notice it. A code smell is a sign the code
 may resist change, not a proven defect — high complexity, duplication, a long
 function, tight coupling, one concern scattered across many sites, and the rest
-of the code-smell catalogue. Complexity is the clearest case: correct, working
-code can still be too tangled to change safely. Describe the smell and where it
-lives; whether it matters and how to fix it is Scope's and Design's call, not
-the read's.
+of the code-smell catalogue. Take complexity: correct, working code can still be
+too tangled to change safely. Describe the smell and where it lives; whether it
+matters and how to fix it is Scope's and Design's call, not the read's.
 
 Some code smells are specific and recurring:
 
