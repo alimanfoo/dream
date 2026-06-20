@@ -13,7 +13,7 @@ actually does — and the code smells — where that structure will resist the w
 This is the structural lens, distinct from Phase 1's consumer lens; the two
 reads cover the same code with different attention.
 
-Trace the baseline first. Follow the mechanism, the layers, the callers and
+Start with the baseline: trace the mechanism, the layers, the callers and
 siblings, the patterns. Name the architecture the work touches: which layers or
 modules the surfaces sit in, the boundaries between them, the separation of
 concerns the code already keeps, and the conventions the surfaces follow — a
@@ -35,7 +35,7 @@ fix; surface it at the gate for the user to decide.
 Read for semantics, not just names, prose, or other surface details. A surface
 can carry the same name but mean different things in different callers — a
 parameter with fallback semantics in one caller, no-anchor semantics in another,
-required in a third. Note any such split.
+required in a third. Name any such split explicitly.
 
 How far the baseline reaches scales with the Session Type: a bug fix traces to
 the root cause, back from where the error surfaces to the mechanism that
