@@ -41,16 +41,18 @@ with the specific instances it must reach.
 
 With the baseline in hand, turn to the code smells — where that structure will
 resist the work. Investigate each code smell as you notice it. A code smell is a
-sign the code may resist change, not a proven defect — high complexity,
-duplication, a long function, tight coupling, one concern scattered across many
-sites, and the rest of the code-smell catalogue. Describe the smell and where it
-lives; whether it matters and how to fix it is Scope's and Design's call, not
-the read's.
+sign the code may resist change, not a proven defect — duplication, a long
+function, tight coupling, one concern scattered across many sites, and the rest
+of the code-smell catalogue. Describe the smell and where it lives; whether it
+matters and how to fix it is Scope's and Design's call, not the read's.
 
 Some code smells are specific and common in codebases with agent-generated code:
 
-- High complexity — correct, working code can still be too tangled to change
-  safely. Don't wave it away because it works.
+- Complexity the need didn't earn. Generated code tends to add rather than
+  integrate, overfit to the case in hand, and over-build — a new path bolted
+  alongside one that could have extended, a special case per instance where one
+  rule would serve, an abstraction or parameter no caller exercises. Trace each
+  piece of structure to the need it serves and name the one that serves none.
 - Defensive code at a layer that isn't the source of the constraint it defends
   against. Trace each constraint back to the function that imposes it — see
   [Wrong-layer defensive code](../protocol.md#wrong-layer-defensive-code).
