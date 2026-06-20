@@ -191,11 +191,12 @@ plugins/:
           phase2.md:
             'Phase 2: Code Analysis':
               'Step 2.1: Read the code with a structural lens':
-              'Step 2.2: Compose the Code Analysis':
-              'Step 2.3: Share the Code Analysis with the user':
-              'Step 2.4: Seek user acceptance of the Code Analysis':
-              'Step 2.5: Hand the accepted Code Analysis to Junio and Ralph':
-              'Step 2.6: Post the accepted Code Analysis to the PR':
+              'Step 2.2: Identify and investigate the code smells':
+              'Step 2.3: Compose the Code Analysis':
+              'Step 2.4: Share the Code Analysis with the user':
+              'Step 2.5: Seek user acceptance of the Code Analysis':
+              'Step 2.6: Hand the accepted Code Analysis to Junio and Ralph':
+              'Step 2.7: Post the accepted Code Analysis to the PR':
           phase3.md:
             'Phase 3: Scope':
               'Step 3.1: Compose the Draft Scope Options':

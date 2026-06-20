@@ -7,21 +7,22 @@ attention. Follow the steps below in sequence.
 
 ## Step 2.1: Read the code with a structural lens
 
-Read the relevant code with one question in mind: _how does this work?_ The read
-produces two things: the structural baseline — how the code is built and what it
-actually does — and the code smells — where that structure will resist the work.
-This is the structural lens, distinct from Phase 1's consumer lens; the two
-reads cover the same code with different attention.
+Read the relevant code with one question in mind: _how does this work?_ This is
+the structural lens — the same code as Phase 1's consumer read, with different
+attention. The structural read comes in two parts that feed the Code Analysis:
+the structural baseline, here, and the code smells, which the next step
+investigates.
 
-Start with the baseline: trace the mechanism, the layers, the callers and
-siblings, the patterns. Name the architecture the work touches: which layers or
-modules the surfaces sit in, the boundaries between them, the separation of
-concerns the code already keeps, and the conventions the surfaces follow — a
-shared error shape, a naming pattern, a structural rule — and which of these are
-enforced and which hold only by convention, with nothing checking them. This is
-the structural baseline the Design later builds on. State it factually — name
-the boundary that exists, don't propose one. Keep it to the architecture the
-session's surfaces touch, not a tour of the whole codebase.
+The baseline is how the code is built and what it actually does. Trace the
+mechanism, the layers, the callers and siblings, the patterns. Name the
+architecture the work touches: which layers or modules the surfaces sit in, the
+boundaries between them, the separation of concerns the code already keeps, and
+the conventions the surfaces follow — a shared error shape, a naming pattern, a
+structural rule — and which of these are enforced and which hold only by
+convention, with nothing checking them. This is the structural baseline the
+Design later builds on. State it factually — name the boundary that exists,
+don't propose one. Keep it to the architecture the session's surfaces touch, not
+a tour of the whole codebase.
 
 Test the session input's factual claims as you go, whoever made them. A bug
 report asserts a defect; confirm the code actually misbehaves rather than taking
@@ -42,12 +43,16 @@ surface — where the work would land, what it touches, what adjacent behaviour 
 might affect; maintenance reads the full extent of the surface the work touches,
 with the specific instances it must reach.
 
-Read each code smell closer as you notice it. A code smell is a sign the code
-may resist change, not a proven defect — high complexity, duplication, a long
-function, tight coupling, one concern scattered across many sites, and the rest
-of the code-smell catalogue. Take complexity: correct, working code can still be
-too tangled to change safely. Describe the smell and where it lives; whether it
-matters and how to fix it is Scope's and Design's call, not the read's.
+## Step 2.2: Identify and investigate the code smells
+
+With the baseline in hand, turn to the code smells — where that structure will
+resist the work. Read each code smell closer as you notice it. A code smell is a
+sign the code may resist change, not a proven defect — high complexity,
+duplication, a long function, tight coupling, one concern scattered across many
+sites, and the rest of the code-smell catalogue. Take complexity: correct,
+working code can still be too tangled to change safely. Describe the smell and
+where it lives; whether it matters and how to fix it is Scope's and Design's
+call, not the read's.
 
 Some code smells are specific and recurring:
 
@@ -67,12 +72,12 @@ Some code smells are specific and recurring:
   enforcing it — every endpoint building its own error response, every public
   function carrying its own docstring — cited at the sites seen breaking it.
 
-## Step 2.2: Compose the Code Analysis
+## Step 2.3: Compose the Code Analysis
 
-Compose the Code Analysis — the structural read above, written up with file:line
-or symbol citations throughout. The purpose is visible grounding for the work
-that follows: the user sees the code as you read it before seeing what you
-propose to commit to or build on top of it.
+Compose the Code Analysis — the structural read above, the baseline and the code
+smells, written up with file:line or symbol citations throughout. The purpose is
+visible grounding for the work that follows: the user sees the code as you read
+it before seeing what you propose to commit to or build on top of it.
 
 The Code Analysis is a read, not a transcription. Tell the reader something they
 couldn't get line by line. Root cause is the clearest case: for a reported bug,
@@ -83,7 +88,7 @@ It stays factual, not proposal: name what is — the baseline and the code smell
 — don't recommend what to change. Whether a smell is worth fixing, and how,
 lands in Scope and Design.
 
-## Step 2.3: Share the Code Analysis with the user
+## Step 2.4: Share the Code Analysis with the user
 
 Send the Code Analysis to the user. The Code Analysis is your structural read;
 the user's job at this gate is to flag anything missing or off — accepting
@@ -92,28 +97,28 @@ without flagging anything is the default that lets the phase proceed.
 End the message by explicitly asking the user to accept: _"Accept the Code
 Analysis to proceed to Phase 3: Scope."_
 
-## Step 2.4: Seek user acceptance of the Code Analysis
+## Step 2.5: Seek user acceptance of the Code Analysis
 
 Wait for the user's reply — or, under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
 If accepted, continue to
-[Step 2.5](#step-25-hand-the-accepted-code-analysis-to-junio-and-ralph). If the
+[Step 2.6](#step-26-hand-the-accepted-code-analysis-to-junio-and-ralph). If the
 user pushes back — a missed caller, a misread mechanism, a wider pattern they
 want named — revise and return to
-[Step 2.3](#step-23-share-the-code-analysis-with-the-user); repeat until
+[Step 2.4](#step-24-share-the-code-analysis-with-the-user); repeat until
 accepted.
 
 This is one of the protocol's user acceptance gates — see
 [Acceptance gates](../protocol.md#acceptance-gates).
 
-## Step 2.5: Hand the accepted Code Analysis to Junio and Ralph
+## Step 2.6: Hand the accepted Code Analysis to Junio and Ralph
 
 Send Junio and Ralph the accepted Code Analysis — the version the user accepted,
 plus any changes from the acceptance discussion. Two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP; no
 reply is expected. They hold it as context for the rest of the session.
 
-## Step 2.6: Post the accepted Code Analysis to the PR
+## Step 2.7: Post the accepted Code Analysis to the PR
 
 Post the accepted Code Analysis to the PR as a comment — see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
