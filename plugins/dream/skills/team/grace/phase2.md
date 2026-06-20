@@ -54,9 +54,8 @@ Some code smells are specific and recurring:
 - Defensive code at a layer that isn't the source of the constraint it defends
   against. Trace each constraint back to the function that imposes it — see
   [Wrong-layer defensive code](../protocol.md#wrong-layer-defensive-code).
-- A comment that justifies non-obvious code, read as a tell, not description. A
-  comment explaining why code exists by citing another function, layer, or
-  invariant is a tell, not an explanation that settles the matter — read the
+- A comment that justifies non-obvious code by citing another function, layer,
+  or invariant is a tell, not an explanation that settles the matter — read the
   underlying code with extra scrutiny and record what it shows, not the
   comment's rationale.
 - A fact duplicated across sites, so the copies drift as the code changes and
