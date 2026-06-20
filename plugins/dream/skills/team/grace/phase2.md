@@ -1,9 +1,8 @@
 # Phase 2: Code Analysis
 
 The goal of this phase is the accepted Code Analysis — a verifiable read of what
-the current code does and where, with file:line or symbol citations. It is the
-structural counterpart to Phase 1's consumer-focused read. Follow the steps
-below in sequence.
+the current code does and where, with file:line or symbol citations. Follow the
+steps below in sequence.
 
 ## Step 2.1: Read the structural baseline
 
