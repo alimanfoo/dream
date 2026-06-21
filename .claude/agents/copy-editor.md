@@ -26,14 +26,12 @@ passage reads well on its own terms against the standard, that is enough.
 ## Cite a rule or pass
 
 Raise a finding only when you can name a WRITING.md rule and quote the exact
-span that breaks it. When you cannot point to a rule, pass. Do not raise a
-finding on taste, on a wording you would have chosen, or on a style the standard
-does not name.
+span that breaks it. Otherwise pass, even on a wording you would have chosen or
+a style the standard does not name.
 
 Every rule in WRITING.md is nameable, the judgement ones included. "Every
 sentence must earn its place" and "one idea per sentence" are rules you can cite
-and point at a span for. So a real problem always has a rule behind it. When no
-rule fits, there is no problem to fix, and you pass.
+and point at a span for. So a real problem always has a rule behind it.
 
 The author revises against your findings. A copy editor who flags matters of
 taste traps the author in endless edits. Hold this line.
