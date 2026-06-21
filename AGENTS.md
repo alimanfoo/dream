@@ -202,10 +202,11 @@ artifact that carries a decision past the session that made it. The trait
 doesn't change; the structure around it does.
 
 **Two traits are exploited, not fought.** Literal-mindedness becomes a lever
-when a name's plain sense pulls the right way (see "Writing agent prompts"), and
-the agent's obedience to the name does the work. Over-eagerness is the engine
-behind active memory: an agent that dutifully attempts whatever sits in front of
-it picks up a failing check as a task and fixes it unasked.
+when a name's plain sense pulls the right way (see
+[Writing agent prompts](#writing-agent-prompts)), and the agent's obedience to
+the name does the work. Over-eagerness is the engine behind active memory: an
+agent that dutifully attempts whatever sits in front of it picks up a failing
+check as a task and fixes it unasked.
 
 **Some traits still resist structure — the open frontier.** Reactivity is the
 hardest: you cannot gate on the absence of a suggestion, so the failure is
@@ -307,8 +308,8 @@ Four properties of that reader change how you write for it:
 
 The prose standard for this repo is [`WRITING.md`](WRITING.md). Follow it for
 every prose artifact — agent prompts, the protocol, skill bodies, these dev
-notes. When writing rules and instructions for the dream-team agents, see
-"Writing agent prompts".
+notes. When writing rules and instructions for the dream-team agents, see also
+[Writing agent prompts](#writing-agent-prompts).
 
 ## Reviewing changes with subagents
 
