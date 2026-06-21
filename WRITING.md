@@ -35,16 +35,14 @@ whether a person or an automated tool.
 
 ## Instruction paragraphs
 
-- Build an instruction in four parts, in this order: the imperative, the why,
-  examples, exceptions.
-- Open with the verb. Say what to do first.
-- Then give the why. Say what the instruction defends, or why a default is
-  risky.
-- Then give one to three examples. They show the rule. They do not bound it.
-- Put exceptions last. An edge case comes after the main rule, never before.
-- A bare imperative is enough when the act is obvious. Skip the other parts.
-- Hold the order. A why before the verb, or an exception before the rule, makes
-  the reader decode before they can act.
+Build an instruction in four parts, in this order: the imperative, the why,
+examples, exceptions. Open with the verb, so the reader sees what to do first.
+Give the why next. Say what the instruction defends, or why a default is risky.
+Then give one to three examples. They show the rule. They do not bound it. Put
+exceptions last. An edge case comes after the main rule, never before. A bare
+imperative is enough when the act is obvious, so skip the parts you do not need.
+But hold the order. A why before the verb, or an exception before the rule,
+makes the reader decode before they can act.
 
 ## Words and marks
 
