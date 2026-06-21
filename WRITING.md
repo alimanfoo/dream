@@ -28,7 +28,7 @@ doubt, make it simpler.
 - Use active voice.
 - Name the actor. Say who or what does the action, not "the trap is" or "there
   is".
-- Say what to do, not what not to do.
+- Lead with what to do. Add what not to do only to support it.
 - Put steps in a vertical list, not a run-on sentence.
 - Keep one voice across a list. Do not switch part way.
 
