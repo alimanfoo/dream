@@ -10,9 +10,7 @@ argument-hint: "[target] [max-iterations]"
 
 # Copy-edit
 
-Bring a passage of repo prose into line with WRITING.md. Run a loop. Each round
-reviews the prose with a fresh reader, then fixes what the review raises. The
-loop ends when the review is clean or you reach the cap.
+Bring a passage of repo prose into line with WRITING.md. Work in rounds.
 
 ## Arguments
 
