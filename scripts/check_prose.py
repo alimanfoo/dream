@@ -4,7 +4,7 @@
 WRITING.md is the repo's writing standard. It bans dashes, semicolons, and
 Latin abbreviations. This check holds the floor for those marks. It does not
 judge whether a sentence earns its place or reads plainly. That judgement is
-the prose-rewriter agent's job. This check only catches the deterministic
+the writing-editor agent's job. This check only catches the deterministic
 tells, so a banned mark cannot slip back in unnoticed.
 
 The check reads the source text, not the rendered output. It skips the parts
