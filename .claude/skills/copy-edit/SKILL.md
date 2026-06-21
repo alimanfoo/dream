@@ -1,31 +1,35 @@
 ---
 name: copy-edit
 description:
-  Align the prose you changed with WRITING.md. Reviews your changed text with a
-  fresh reader and fixes what the review raises, looping until it passes or hits
-  the iteration cap. Run it after you write or edit repo prose.
-argument-hint: "[max-iterations]"
+  Align a passage of repo prose with WRITING.md. Reviews the prose with a fresh
+  reader and fixes what the review raises, looping until it passes or hits the
+  cap. By default it reviews the prose you changed. Name a file or section to
+  review that instead.
+argument-hint: "[target] [max-iterations]"
 ---
 
 # Copy-edit
 
-Bring the prose you changed into line with WRITING.md. Run a loop. Each round
-reviews the changed prose with a fresh reader, then fixes what the review
-raises. The loop ends when the review is clean or you reach the iteration cap.
+Bring a passage of repo prose into line with WRITING.md. Run a loop. Each round
+reviews the prose with a fresh reader, then fixes what the review raises. The
+loop ends when the review is clean or you reach the cap.
 
-## The iteration cap
+## Arguments
 
-The first argument sets the largest number of rounds. Use three when the caller
-gives no number.
+Read the arguments the user gives.
+
+- A number sets the cap on rounds. Without it, use three.
+- Anything else names a target: a file, a section, or a passage to review.
 
 ## Each round
 
-1. Gather the prose you changed. Use `git diff` to find the changed Markdown.
-   Read each changed passage in its current form, with enough surrounding text
-   to judge a paragraph whole. Review prose, not diff markup.
-2. Review it with the `copy-editor` subagent. For a small change, give one
-   subagent the whole of it. For a large change, split it by file or section and
-   launch parallel `copy-editor` subagents, one per part.
+1. Gather the prose to review. With a target, read it. Without one, use
+   `git diff` to find the prose the session changed. Read each passage in its
+   current form, with enough surrounding text to judge a paragraph whole. Review
+   prose, not diff markup.
+2. Review it with the `copy-editor` subagent. For a small passage, give one
+   subagent the whole of it. For a large passage, split it by file or section
+   and launch parallel `copy-editor` subagents, one per part.
 3. When every subagent returns `VERDICT: PASS`, stop. Report success and the
    number of rounds it took.
 4. Otherwise, resolve every issue the review raised. You are the author. Make
@@ -37,7 +41,3 @@ gives no number.
 
 Stop and report the open issues to the user. They can run the skill again to
 continue.
-
-## Scope
-
-Review only the prose the session changed.
