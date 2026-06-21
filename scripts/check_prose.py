@@ -44,6 +44,11 @@ _REF_DEF = re.compile(r"^(\s*\[[^\]]+\]:\s+)(\S+)")
 _HTML_ENTITY = re.compile(r"&#?[0-9a-zA-Z]+;")
 _FENCE = re.compile(r"^\s*(```+|~~~+)")
 
+# WRITING.md is the standard itself. It must name the banned forms to ban them,
+# so it mentions "e.g." and the like on purpose. Exempt the whole file. This is
+# the one home for that decision, so do not also exclude it at the hook level.
+EXEMPT_NAMES = {"WRITING.md"}
+
 
 def _mask(match: re.Match, keep_group: int) -> str:
     """Replace a match with spaces, keeping one group's text in place.
@@ -75,6 +80,8 @@ def mask_non_prose(line: str) -> str:
 
 
 def check_file(path: Path) -> list[str]:
+    if path.name in EXEMPT_NAMES:
+        return []
     try:
         text = path.read_text(encoding="utf-8")
     except (UnicodeDecodeError, OSError):
