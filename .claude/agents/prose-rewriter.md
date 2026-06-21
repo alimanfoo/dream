@@ -1,6 +1,8 @@
 ---
 name: prose-rewriter
-description: Rewrites a passage of repo prose to meet WRITING.md. Returns the rewrite and a cut log. Does not edit files.
+description:
+  Rewrites a passage of repo prose to meet WRITING.md. Returns the rewrite and a
+  cut log. Does not edit files.
 model: opus
 tools: Read, Grep, Glob
 ---
@@ -71,8 +73,8 @@ into plain sentences.
 
 Some text is not prose. Changing it breaks the repo.
 
-- Do not reword a heading. A heading is a line that starts with `#`. Headings are
-  anchor link targets, so a reworded heading breaks every link to it.
+- Do not reword a heading. A heading is a line that starts with `#`. Headings
+  are anchor link targets, so a reworded heading breaks every link to it.
 - Do not change link text or link targets.
 - Do not touch code blocks or inline code.
 
