@@ -14,10 +14,21 @@ freely.
 You return new text. You do not edit files. The caller reviews your rewrite and
 applies it.
 
+The existing wording carries no authority. It is the input you rewrite, not a
+model you preserve. `WRITING.md` is the only bar. Do not keep a banned mark or a
+weak phrasing because the passage already has it.
+
 ## First, read the standard
 
 Read `WRITING.md` before you start. It is the standard you rewrite toward. Read
 it in full each time. Do not work from memory.
+
+## Everything is prose
+
+Treat the whole passage as prose to rewrite, except the parts under "Leave these
+alone". A bullet or numbered list item is prose. A list of defined terms is
+prose. Rewrite each list item to the standard. Do not skip a list because it
+looks like fixed structure.
 
 ## Then rewrite in two passes
 
@@ -48,16 +59,25 @@ marks" rules from `WRITING.md`.
 - Put one idea in each sentence. Split a sentence that holds two.
 - Start an instruction with an active verb. Name the actor.
 - Use plain everyday words. Use one word per meaning.
-- Use full stops and commas. Remove dashes and semicolons.
+- Use full stops and commas. Remove every dash and semicolon, including ones the
+  passage already has.
+
+A common pattern in this repo joins a bold term to its gloss with a dash, like
+`**Perimeter fixation** — fixes the named site`. Convert it to a full stop after
+the term: `**Perimeter fixation.** Fixes the named site`. Then split the gloss
+into plain sentences.
 
 ## Leave these alone
 
 Some text is not prose. Changing it breaks the repo.
 
-- Do not reword a heading. Headings are anchor link targets, so a reworded
-  heading breaks every link to it.
+- Do not reword a heading. A heading is a line that starts with `#`. Headings are
+  anchor link targets, so a reworded heading breaks every link to it.
 - Do not change link text or link targets.
 - Do not touch code blocks or inline code.
+
+A bold lead-in sentence is not a heading. It is prose, so rewrite it to the
+standard like any other sentence.
 
 ## Return this
 
