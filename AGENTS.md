@@ -202,10 +202,11 @@ artifact that carries a decision past the session that made it. The trait
 doesn't change; the structure around it does.
 
 **Two traits are exploited, not fought.** Literal-mindedness becomes a lever
-when a name's plain sense pulls the right way (see "Writing agent prompts"), and
-the agent's obedience to the name does the work. Over-eagerness is the engine
-behind active memory: an agent that dutifully attempts whatever sits in front of
-it picks up a failing check as a task and fixes it unasked.
+when a name's plain sense pulls the right way (see
+[Writing agent prompts](#writing-agent-prompts)), and the agent's obedience to
+the name does the work. Over-eagerness is the engine behind active memory: an
+agent that dutifully attempts whatever sits in front of it picks up a failing
+check as a task and fixes it unasked.
 
 **Some traits still resist structure — the open frontier.** Reactivity is the
 hardest: you cannot gate on the absence of a suggestion, so the failure is
@@ -243,7 +244,7 @@ why, examples, exceptions.
 - **Then the why.** Give the reason the agent weighs while working: why a
   default is risky, what a check defends.
 - **Then examples.** One to three, to anchor a fuzzy criterion. They illustrate;
-  they don't bound it (see "Generalise rules; don't pin them to the incident").
+  they don't bound it.
 - **Then exceptions.** Edge cases come after the main rule, never before it.
 
 The why is the one that motivates the act, not the one that motivates the
@@ -256,6 +257,16 @@ out.
 Not every paragraph needs all four — a bare imperative is enough when the act is
 obvious. But hold the order: an exception before the rule, or a why before the
 verb, forces the reader to decode before they can act.
+
+Beyond the paragraph's shape, two rules govern the instruction's content:
+
+- **Generalise rules; don't pin them to the incident.** A rule that surfaces
+  from one failure mode (verbs at the tail of a numbered step list) should be
+  stated for the general case (git verbs anywhere). Specific examples
+  illustrate; they don't narrow the rule.
+- **Keep rules small.** A single sentence usually does the work of a
+  prescriptive template. Don't add scaffolding (mandatory tails, worked
+  examples, taxonomies) unless the bare rule genuinely leaves a real ambiguity.
 
 ### The agent as a reader
 
@@ -295,39 +306,10 @@ Four properties of that reader change how you write for it:
 
 ## Writing prose
 
-Write plain English in every prose artifact the repo holds — agent prompts, the
-protocol, skill bodies, these dev notes. The reader is the agent who runs the
-protocol or the developer who maintains it; both pay a tax on jargon and
-indirection. These are the clarity rules for any reader; what's specific to
-writing for an LLM agent is in "Writing agent prompts".
-
-- **Don't invent umbrella terms.** If you reach for one ("tree-shaping command")
-  to cover a list you've already named, drop it; the examples do the work. Don't
-  coin new protocol vocabulary unless it names a genuinely distinct concept
-  being introduced for the first time.
-- **Plain verbs, not idioms.** "Lands the commit," "ships the change," "the trap
-  is" read as code-author shorthand. Say "runs git," "creates the commit," "the
-  risk is."
-- **Lead with the actor and the action.** "Ralph reads imperative verbs as
-  instructions" beats "the trap is verbs like…" — the second form makes the
-  reader decode who's trapped before they can act.
-- **Lead with the main point; cut tangential consequence detail.** State the
-  boundary first. Mention the one or two reasons that actually shape decisions,
-  not every downstream effect.
-- **Cut a negative that only restates the positive.** "Qualifies only when X"
-  already carries "if not X, it doesn't" — don't append the inverse. A negative
-  stays when it adds something the positive didn't: a reason, a named failure
-  mode, or an action.
-- **Generalise rules; don't pin them to the incident.** A rule that surfaces
-  from one failure mode (verbs at the tail of a numbered step list) should be
-  stated for the general case (git verbs anywhere). Specific examples
-  illustrate; they don't narrow the rule.
-- **Keep rules small.** A single sentence usually does the work of a
-  prescriptive template. Don't add scaffolding (mandatory tails, worked
-  examples, taxonomies) unless the bare rule genuinely leaves a real ambiguity.
-- **Consistent voice within a list.** A "you never" bullet list shouldn't slip
-  into "you do this instead" mid-bullet. Pick the voice and stay in it;
-  cross-references can carry the positive alternative.
+The prose standard for this repo is [`WRITING.md`](WRITING.md). Follow it for
+every prose artifact — agent prompts, the protocol, skill bodies, these dev
+notes. When writing rules and instructions for the dream-team agents, see also
+[Writing agent prompts](#writing-agent-prompts).
 
 ## Reviewing changes with subagents
 
