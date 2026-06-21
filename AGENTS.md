@@ -295,25 +295,19 @@ Four properties of that reader change how you write for it:
 
 ## Writing prose
 
-Write plain English in every prose artifact the repo holds — agent prompts, the
-protocol, skill bodies, these dev notes. The reader is the agent who runs the
-protocol or the developer who maintains it; both pay a tax on jargon and
-indirection. These are the clarity rules for any reader; what's specific to
-writing for an LLM agent is in "Writing agent prompts".
+The prose standard for this repo is [`WRITING.md`](WRITING.md). Follow it for
+every prose artifact — agent prompts, the protocol, skill bodies, these dev
+notes. The rules below add what is specific to writing rules and instructions
+here, beyond that standard. What's specific to writing for an LLM agent is in
+"Writing agent prompts".
 
 - **Don't invent umbrella terms.** If you reach for one ("tree-shaping command")
   to cover a list you've already named, drop it; the examples do the work. Don't
   coin new protocol vocabulary unless it names a genuinely distinct concept
   being introduced for the first time.
-- **Plain verbs, not idioms.** "Lands the commit," "ships the change," "the trap
-  is" read as code-author shorthand. Say "runs git," "creates the commit," "the
-  risk is."
-- **Lead with the actor and the action.** "Ralph reads imperative verbs as
+- **Name the actor and the action.** "Ralph reads imperative verbs as
   instructions" beats "the trap is verbs like…" — the second form makes the
   reader decode who's trapped before they can act.
-- **Lead with the main point; cut tangential consequence detail.** State the
-  boundary first. Mention the one or two reasons that actually shape decisions,
-  not every downstream effect.
 - **Cut a negative that only restates the positive.** "Qualifies only when X"
   already carries "if not X, it doesn't" — don't append the inverse. A negative
   stays when it adds something the positive didn't: a reason, a named failure
