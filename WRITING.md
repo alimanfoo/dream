@@ -6,11 +6,10 @@ whether a person or an automated tool.
 
 ## The stance
 
-- Write to inform, not to impress.
-- Your readers include people who do not speak English as a first language, and
-  agents that act on every word. Write so neither can misread you.
-- Aim for a reading age of about 11. Age 9 is better.
-- When in doubt, make it simpler.
+Write to inform, not to impress. Your readers include people who do not speak
+English as a first language, and agents that act on every word. Write so neither
+can misread you. Aim for a reading age of about 11. Age 9 is better. When in
+doubt, make it simpler.
 
 ## One idea per paragraph
 
