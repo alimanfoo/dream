@@ -17,7 +17,9 @@ whether a person or an automated tool.
 - Each paragraph carries one idea. Name it in the first sentence.
 - Every sentence must earn its place. Cut any sentence that does not serve the
   paragraph's idea.
-- Say it once. Do not repeat a point, and do not restate it in other words.
+- Say it once. Do not repeat a point, and do not restate it in other words. For
+  example, "this holds only when X" already says "if not X, it does not". Do not
+  add the inverse.
 - If a paragraph holds two ideas, split it.
 - Lead with the main point.
 
