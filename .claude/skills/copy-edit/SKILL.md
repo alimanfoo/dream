@@ -23,9 +23,9 @@ gives no number.
 1. Gather the prose you changed. Use `git diff` to find the changed Markdown.
    Read each changed passage in its current form, with enough surrounding text
    to judge a paragraph whole. Review prose, not diff markup.
-2. Review it with the `writing-judge` subagent. For a small change, give one
+2. Review it with the `copy-editor` subagent. For a small change, give one
    subagent the whole of it. For a large change, split it by file or section and
-   launch parallel `writing-judge` subagents, one per part.
+   launch parallel `copy-editor` subagents, one per part.
 3. When every subagent returns `VERDICT: PASS`, stop. Report success and the
    number of rounds it took.
 4. Otherwise, resolve every issue the review raised. You are the author. Make
