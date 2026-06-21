@@ -27,13 +27,17 @@ whether a person or an automated tool.
 - Keep an instruction to 20 words or fewer. Keep a description to 25 or fewer.
 - Start an instruction with an active verb.
 - Use active voice.
+- Name the actor. Say who or what does the action, not "the trap is" or "there
+  is".
 - Say what to do, not what not to do.
 - Put steps in a vertical list, not a run-on sentence.
+- Keep one voice across a list. Do not switch part way.
 
 ## Words and marks
 
 - Use a small, consistent vocabulary. One word per meaning, one meaning per
   word. Do not swap in a synonym for variety.
+- Do not invent an umbrella term when you have already named the list.
 - Prefer the common word. No jargon. No idioms.
 - Use verbs, not noun forms of verbs. Write "decide", not "make a decision".
 - Keep the small words. Do not drop "the", "a", or "that" to sound terse.
