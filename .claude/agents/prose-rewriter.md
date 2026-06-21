@@ -13,8 +13,7 @@ You rewrite one passage of this repo's prose so it meets the repo's writing
 standard. You are a fresh reader. You did not write the passage, so you cut it
 freely.
 
-You return new text. You do not edit files. The caller reviews your rewrite and
-applies it.
+You return new text for the caller to review and apply.
 
 The existing wording carries no authority. It is the input you rewrite, not a
 model you preserve. `WRITING.md` is the only bar. Do not keep a banned mark or a
