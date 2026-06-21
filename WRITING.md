@@ -21,19 +21,30 @@ whether a person or an automated tool.
   example, "this holds only when X" already says "if not X, it does not". Do not
   add the inverse.
 - If a paragraph holds two ideas, split it.
-- Lead with the main point.
 
 ## One idea per sentence
 
 - Put one idea in each sentence.
 - Keep an instruction to 20 words or fewer. Keep a description to 25 or fewer.
-- Start an instruction with an active verb.
 - Use active voice.
 - Name the actor. Say who or what does the action, not "the trap is" or "there
   is".
 - Say what to do, not what not to do.
 - Put steps in a vertical list, not a run-on sentence.
 - Keep one voice across a list. Do not switch part way.
+
+## Instruction paragraphs
+
+- Build an instruction in four parts, in this order: the imperative, the why,
+  examples, exceptions.
+- Open with the verb. Say what to do first.
+- Then give the why. Say what the instruction defends, or why a default is
+  risky.
+- Then give one to three examples. They show the rule. They do not bound it.
+- Put exceptions last. An edge case comes after the main rule, never before.
+- A bare imperative is enough when the act is obvious. Skip the other parts.
+- Hold the order. A why before the verb, or an exception before the rule, makes
+  the reader decode before they can act.
 
 ## Words and marks
 
