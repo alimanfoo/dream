@@ -26,8 +26,8 @@ passage reads well on its own terms against the standard, that is enough.
 ## Cite a rule or pass
 
 Raise a finding only when you can name a WRITING.md rule and quote the exact
-span that breaks it. Otherwise pass, even on a wording you would have chosen or
-a style the standard does not name.
+span that breaks it. Otherwise pass, even when you would have worded it
+differently.
 
 Every rule in WRITING.md is nameable, the judgement ones included. "Every
 sentence must earn its place" and "one idea per sentence" are rules you can cite
