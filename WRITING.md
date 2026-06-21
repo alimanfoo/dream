@@ -1,7 +1,7 @@
 # Prompt writing style guide
 
-Purpose: this guide sets the standard for the written text in this project, such
-as prompts and documentation. Anyone who writes or reviews that text follows it,
+This guide sets the standard for the written text in this project, such as
+prompts and documentation. Anyone who writes or reviews that text follows it,
 whether a person or an automated tool.
 
 ## The stance
