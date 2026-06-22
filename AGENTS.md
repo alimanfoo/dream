@@ -369,17 +369,6 @@ on every push and pull request (see `.github/workflows/lint.yml`). The
 installs it via `npm`. The `uncoded` hook requires `uvx` on `PATH`. CI provides
 it via `astral-sh/setup-uv`.
 
-## Recommended resources
-
-- [Claude Code Docs > Tools and plugins > Create plugins](https://code.claude.com/docs/en/plugins.md)
-- [Claude Code Docs > Tools and plugins > Extend Claude with skills](https://code.claude.com/docs/en/skills.md)
-- [Claude Code Docs > Agents > Create custom subagents](https://code.claude.com/docs/en/sub-agents.md)
-- [Claude Code Docs > Agents > Run agent teams](https://code.claude.com/docs/en/agent-teams.md).
-  The dream plugin depends on this feature. It is experimental. Read this doc
-  before changing any plugin or team mechanics.
-- [Claude API Docs > Prompt engineering > Prompting best practices](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices.md).
-  Read this before changing any skill, protocol, or agent file.
-
 ## Release protocol
 
 There is no release process. The plugin is installed directly from this GitHub
