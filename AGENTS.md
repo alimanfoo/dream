@@ -99,8 +99,9 @@ links. `remark-validate-links` covers cross-file links. Both run in pre-commit
 and CI. A link can only target a heading, so a sub-point referenced by name
 needs to be a heading, not a bold inline label. The checks cover links to a
 named section. Whole-file mentions and the protocol summary stay plain prose.
-`Junio.md` and `Ralph.md` run parallel for shared mechanics. The same
-instruction often lives in both. Edit them in lockstep.
+Also grep every agent file and the protocol for the old name. `Junio.md` and
+`Ralph.md` run parallel for shared mechanics. The same instruction often lives
+in both. Edit them in lockstep.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 suite. When changing behaviour, read the affected skill and agent prompts
