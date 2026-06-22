@@ -3,7 +3,6 @@ name: copy-editor
 description:
   Copy-edits a passage of repo prose against WRITING.md. Returns cited findings,
   each with a verdict and, where needed, a suggested fix. Does not apply edits.
-model: opus
 tools: Read, Grep, Glob
 ---
 
