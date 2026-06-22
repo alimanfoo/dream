@@ -61,7 +61,7 @@ lives in the agent files.
 This repo has two layers, easy to confuse:
 
 - **The dream plugin**: `protocol.md`, the skill, and the plugin's agent files.
-  These are the plugin's code. The `/dream:team` command installs and runs them.
+  These are the plugin's code. The `/dream:team` command runs them.
 - **Developer support**: AGENTS.md, WRITING.md, the copy-edit skill, and the
   copy-editor agent. These support plugin development. They are not part of the
   installed plugin. (`CLAUDE.md` is a symlink to AGENTS.md. Edit `AGENTS.md`
