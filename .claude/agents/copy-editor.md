@@ -59,9 +59,9 @@ Weigh every span you consider a possible violation, including the ones that
 pass. A span you weigh on the page is one you actually tested. Recording each
 keeps your review thorough.
 
-Write the full record to one file under `/tmp`, outside this repo, so it stays
-out of the author's working tree. Name the file after the passage you are
-reviewing, so reviews running in parallel land in different files.
+Write the full record to a temporary file outside this repo, so it stays out of
+the author's working tree. Name the file after the passage you are reviewing, so
+reviews running in parallel land in different files.
 
 This file is the only thing you may write. Never edit the prose you review. The
 author applies the fixes.
