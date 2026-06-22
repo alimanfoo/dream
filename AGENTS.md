@@ -202,13 +202,15 @@ the name does the work. Over-eagerness is the engine behind active memory: an
 agent that dutifully attempts whatever sits in front of it picks up a failing
 check as a task and fixes it unasked.
 
-**Some traits still resist structure: the open frontier.** Reactivity is the
-hardest. You cannot gate on the absence of a suggestion, so the failure is
-silent. Sycophancy re-emerges for the same reason. The user catching these at a
-gate today is a coherence touch the dream means to drive toward zero (see _The
-dream_). The next work is finding the structure that fires on a silent failure.
-The failing check did this for over-eagerness, turning it from liability to
-mechanism.
+**Some traits still resist structure: the open frontier.** Reactivity looked the
+hardest, but forcing the act answers much of it. The analogy and sketch steps
+make each agent volunteer a spread of options before any design is chosen,
+breadth it would not offer if merely asked. What resists is the silent failure
+you cannot force at a step or gate on afterwards: sycophancy's unspoken
+deference, the suggestion never raised. The user catching these at a gate today
+is a coherence touch the dream means to drive toward zero (see _The dream_). The
+next work is finding the structure that fires on it, the way the failing check
+did for over-eagerness.
 
 ## Writing agent prompts
 
@@ -253,38 +255,41 @@ Two more rules govern the instruction's content:
 
 ### The agent as a reader
 
-Four properties of that reader change how you write for it:
+Four properties of that reader change how you write for it.
 
-- **Agents reason by producing tokens**: thinking tokens, turn output, or tokens
-  written to files or messages. An instruction like "pause and consider X"
-  produces no tokens and has no effect. The agent reads it and moves on. To make
-  a check real, direct the agent to externalise: write the answer in turn
-  output, in a `SendMessage` to another agent, or in an artifact. Tests framed
-  as hypothetical dispositions (_would you be willing to X, could you Y, should
-  you Z, is this the kind of thing that A_) read as text and pass without
-  firing. Rewrite each as an act: _write X, check Y, name Z_.
-- **Agents reason forward from context**: they're next-token machines, with no
-  foresight of what they're about to write. So "before reaching for X, do Y"
-  doesn't work. The agent doesn't know they're about to reach for X. Checks have
-  to fire after the candidate content exists in context. "If you notice you've
-  written X" is what works.
-- **Agents act on a name's face value**: a literal-following model obeys the
-  everyday sense of the words you name things with: slots, moves, roles, phases.
-  The name is a stronger instruction than the prose beneath it, so the body
-  won't rescue a name that pulls the wrong way. Treat naming as a design
-  decision. Weigh the word's plain pull against the behaviour you want. Pick a
-  different word when they conflict. The same trap fires in reverse with words
-  you reach for in passing. The writer draws from general English by reflex. The
-  reader reads each word against the local glossary first. _Commit, accept,
-  hold, ready, honestly_ get read in their plugin sense before their English
-  one. Before reaching for a word in prose, scan whether it already carries
-  weight in the protocol. If it does, pick a different word.
-- **Agents have a soft per-turn output budget**: quality falls off as a single
-  turn's output grows. Two rich generative acts crammed into one turn compete
-  for that budget, and both come out thinner. When a step needs more than one
-  substantial output (say a spread of analogies and then a spread of design
-  sketches), give each its own turn or message rather than asking for both at
-  once.
+**Agents reason by producing tokens**: thinking tokens, turn output, or tokens
+written to files or messages. An instruction like "pause and consider X"
+produces no tokens and has no effect. The agent reads it and moves on. To make a
+check real, direct the agent to externalise: write the answer in turn output, in
+a `SendMessage` to another agent, or in an artifact. Tests framed as
+hypothetical dispositions (_would you be willing to X, could you Y, should you
+Z, is this the kind of thing that A_) read as text and pass without firing.
+Rewrite each as an act: _write X, check Y, name Z_.
+
+**Agents reason forward from context**: they're next-token machines, with no
+foresight of what they're about to write. So "before reaching for X, do Y"
+doesn't work. The agent doesn't know they're about to reach for X. Checks have
+to fire after the candidate content exists in context. "If you notice you've
+written X" is what works.
+
+**Agents act on a name's face value**: a literal-following model obeys the
+everyday sense of the words you name things with: slots, moves, roles, phases.
+The name is a stronger instruction than the prose beneath it, so the body won't
+rescue a name that pulls the wrong way. Treat naming as a design decision. Weigh
+the word's plain pull against the behaviour you want. Pick a different word when
+they conflict. The same trap fires in reverse with words you reach for in
+passing. The writer draws from general English by reflex. The reader reads each
+word against the local glossary first. _Commit, accept, hold, ready, honestly_
+get read in their plugin sense before their English one. Before reaching for a
+word in prose, scan whether it already carries weight in the protocol. If it
+does, pick a different word.
+
+**Agents have a soft per-turn output budget**: quality falls off as a single
+turn's output grows. Two rich generative acts crammed into one turn compete for
+that budget, and both come out thinner. When a step needs more than one
+substantial output (say a spread of analogies and then a spread of design
+sketches), give each its own turn or message rather than asking for both at
+once.
 
 ## Writing prose
 
