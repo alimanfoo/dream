@@ -39,8 +39,7 @@ Build an instruction in four parts, in this order: the imperative, the why,
 examples, exceptions.
 
 - Open with the verb, so the reader sees what to do first.
-- Give the why next. Say what the instruction defends, or why a default is
-  risky.
+- Give the why. Say what the instruction defends, or why a default is risky.
 - Give one to three examples. They show the rule. They do not bound it.
 - Put exceptions last. An edge case comes after the main rule, never before.
 
