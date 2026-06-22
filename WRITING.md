@@ -6,10 +6,11 @@ whether a person or an automated tool.
 
 ## The stance
 
-Write to inform, not to impress. Your readers include people who do not speak
-English as a first language, and agents that act on every word. Write so neither
-can misread you. Aim for a reading age of about 11. Age 9 is better. When in
-doubt, make it simpler.
+- Write to inform, not to impress.
+- Your readers include people who do not speak English as a first language, and
+  agents that act on every word. Write so neither can misread you.
+- Aim for a reading age of about 11. Age 9 is better. When in doubt, make it
+  simpler.
 
 ## One idea per paragraph
 
@@ -35,13 +36,17 @@ doubt, make it simpler.
 ## Instruction paragraphs
 
 Build an instruction in four parts, in this order: the imperative, the why,
-examples, exceptions. Open with the verb, so the reader sees what to do first.
-Give the why next. Say what the instruction defends, or why a default is risky.
-Then give one to three examples. They show the rule. They do not bound it. Put
-exceptions last. An edge case comes after the main rule, never before. A bare
-imperative is enough when the act is obvious, so skip the parts you do not need.
-But hold the order. A why before the verb, or an exception before the rule,
-makes the reader decode before they can act.
+examples, exceptions.
+
+- Open with the verb, so the reader sees what to do first.
+- Give the why next. Say what the instruction defends, or why a default is
+  risky.
+- Give one to three examples. They show the rule. They do not bound it.
+- Put exceptions last. An edge case comes after the main rule, never before.
+
+A bare imperative is enough when the act is obvious, so skip the parts you do
+not need. But hold the order. A why before the verb, or an exception before the
+rule, makes the reader decode before they can act.
 
 ## Words and marks
 
