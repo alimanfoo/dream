@@ -93,21 +93,21 @@ Renaming or renumbering a phase, step, or concept ripples past the file you
 edit. Step headings carry the phase in the number (for example, `Step 4.5` is
 phase 4, step 5). References to a step or named section, within or across files,
 are Markdown anchor links. So renumbering a step, or rewording any heading,
-changes its anchor and breaks every link still pointing at the old one. The link
-checks (markdownlint's MD051 for within-file links, `remark-validate-links` for
-cross-file links, both in pre-commit and CI) fail until they are fixed. A link
-can only target a heading, so a sub-point referenced by name needs to be a
-heading, not a bold inline label. The checks cover links to a named section.
-Whole-file mentions and the protocol summary stay plain prose. Also grep every
-agent file and the protocol for the old name. `Junio.md` and `Ralph.md` run
-parallel for shared mechanics. The same instruction often lives in both. Edit
-them in lockstep.
+changes its anchor and breaks every link still pointing at the old one. These
+link checks fail until you fix them. Markdownlint's MD051 covers within-file
+links. `remark-validate-links` covers cross-file links. Both run in pre-commit
+and CI. A link can only target a heading, so a sub-point referenced by name
+needs to be a heading, not a bold inline label. The checks cover links to a
+named section. Whole-file mentions and the protocol summary stay plain prose.
+Also grep every agent file and the protocol for the old name. `Junio.md` and
+`Ralph.md` run parallel for shared mechanics. The same instruction often lives
+in both. Edit them in lockstep.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
-suite. When changing behavior, validate by reading the affected skill/agent
-prompts together and checking that lifecycle, role boundaries, and tool
-permissions stay consistent. Run the pre-commit hooks to check formatting. See
-the Linting section.
+suite. When changing behaviour, read the affected skill and agent prompts
+together. Check that lifecycle, role boundaries, and tool permissions stay
+consistent. Run the pre-commit hooks to check formatting. See the Linting
+section.
 
 ## Design principles
 
