@@ -28,9 +28,9 @@ Read the arguments the user gives.
 2. Review it with the `copy-editor` subagent. For a small passage, give one
    subagent the whole of it. For a large passage, split it by file or section
    and launch parallel `copy-editor` subagents, one per part.
-3. Resolve every finding marked `CHANGES NEEDED`. You are the author. Make each
-   edit yourself and keep the meaning. When a fix would drop a reason, keep the
+3. Resolve every finding the review returns. You are the author. Make each edit
+   yourself and keep the meaning. When a fix would drop a reason, keep the
    reason and meet the rule another way.
 4. Report the number of findings addressed this round.
-5. If no findings were `CHANGES NEEDED`, or you have reached the cap, stop.
+5. If the review returned no findings, or you have reached the cap, stop.
 6. Otherwise, start the next round.
