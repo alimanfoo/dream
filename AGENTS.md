@@ -9,42 +9,41 @@ The dream is **autonomous coherent coding**: agents carry software end to end,
 indefinitely, without the codebase deteriorating and without the human stepping
 in to keep it healthy.
 
-**Autonomous** means agent-first. Agents write all the code; the human supplies
-the value judgements — what to build, which trade-off to accept, what "good"
-means here — and little else. A change that needs the human to catch a mistake,
-carry a decision between sessions, or clean up afterwards is an autonomy
-failure.
+**Autonomous** means agent-first. Agents write all the code. The human supplies
+the value judgements and little else: what to build, which trade-off to accept,
+what "good" means here. A change that needs the human to catch a mistake, carry
+a decision between sessions, or clean up afterwards is an autonomy failure.
 
 **Coherent** means everything fits and stays fitting. Each session leaves the
-codebase whole, so the next builds on solid ground; no drift, no rot, no
+codebase whole, so the next builds on solid ground. No drift, no rot, no
 periodic human rescue.
 
-The dream is the axiom every design decision answers to: does this make
+The dream is the axiom every design decision answers to. Does this make
 agent-led coding more sustainable on its own, or does it lean on the human to
 hold something together? A stronger base model does not settle this. It writes a
-better single change but does not, on its own, single-source a duplicated fact,
-add a missing check, or refuse a scope that patches a symptom — those
+better single change. But on its own it does not single-source a duplicated
+fact, add a missing check, or refuse a scope that patches a symptom. Those
 disciplines come from the protocol, not the model.
 
 Coherence and intent split by kind, and the split runs through the whole design.
-Coherence has a ground truth — code either fits or it does not — so agents own
-it completely. Intent is value judgement, so it stays with the human. This gives
-a test for every human touch. A coherence touch — the human spotting a
-duplicated fact, catching drift, cleaning up after the team — is a defect the
-protocol should have caught; design it out. An intent touch — choosing scope,
-accepting a trade-off at a gate — is the system working; keep it. Drive
-coherence touches toward zero; hold intent touches in place. The acceptance
+Coherence has a ground truth: code either fits or it does not. So agents own it
+completely. Intent is value judgement, so it stays with the human. This gives a
+test for every human touch. A coherence touch is the human spotting a duplicated
+fact, catching drift, or cleaning up after the team. It is a defect the protocol
+should have caught, so design it out. An intent touch is choosing scope or
+accepting a trade-off at a gate. It is the system working, so keep it. Drive
+coherence touches toward zero. Hold intent touches in place. The acceptance
 gates are the channel intent comes through: make them cheap, never remove them.
 
 Sustaining coherence over a long horizon is a memory problem. Each session is a
-fresh mind with no memory of the last, so coherence-decisions can only live in
+fresh mind with no memory of the last. So coherence-decisions can only live in
 the environment the sessions share: the structure of the code, the checks that
-run, the issues on the tracker. A decision recorded only as prose — which a
-future session must re-read and choose to honour — decays under
-re-interpretation, so a surface keeps recurring even after an issue was filed
-for it. The mechanisms that matter most write a decision into a form the next
-session cannot drift from: a fact given one home, an invariant made a check.
-Curating that environment matters more than writing today's code well.
+run, the issues on the tracker. A decision recorded only as prose decays under
+re-interpretation, because a future session must re-read it and choose to honour
+it. So a surface keeps recurring even after an issue was filed for it. The
+mechanisms that matter most write a decision into a form the next session cannot
+drift from: a fact given one home, an invariant made a check. Curating that
+environment matters more than writing today's code well.
 
 ## Introduction and orientation
 
