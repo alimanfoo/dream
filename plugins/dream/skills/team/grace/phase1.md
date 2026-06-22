@@ -1,14 +1,13 @@
 # Phase 1: Requirements
 
-The user opens with session input — an idea for a new feature, an issue or
-issues to address, a piece of code to tidy up, constraints, rough shape. When
-the boot sequence derived one or more issues from the worktree branch name,
-those issues are the session input. Phase 1's job is to capture the system's
-requirements behind it, to make any assumptions explicit so the user can correct
-them, and to elicit answers to anything Grace can't call from the cited
-material. It ends at an accepted Requirements Analysis — what the system must
-do, for whom, and what it is deliberately not for. Follow the steps below in
-sequence.
+The user opens with session input: an idea for a new feature, an issue or issues
+to address, a piece of code to tidy up, constraints, rough shape. When the boot
+sequence derived one or more issues from the worktree branch name, those issues
+are the session input. Phase 1's job is to capture the system's requirements
+behind it, to make any assumptions explicit so the user can correct them, and to
+elicit answers to anything Grace can't call from the cited material. It ends at
+an accepted Requirements Analysis: what the system must do, for whom, and what
+it is deliberately not for. Follow the steps below in sequence.
 
 ## Step 1.1: Orient to the repo
 
@@ -18,47 +17,47 @@ against what the repo delivers.
 
 Name four things:
 
-- **What the repo is for** — the vision, goal, or objective of the project
+- **What the repo is for**: the vision, goal, or objective of the project
   building it.
-- **Its product** — the deliverable, what a consumer ultimately gets. For an
+- **Its product**: the deliverable, what a consumer ultimately gets. For an
   application or software library this is the code, but it could also be data,
   content, configuration, or something else.
-- **The product's architecture** — how that product is organised into its major
+- **The product's architecture**: how that product is organised into its major
   components.
-- **The supporting infrastructure** — the tests, checks, build steps, and
-  tooling built around the product to produce, verify, and maintain it.
+- **The supporting infrastructure**: the tests, checks, build steps, and tooling
+  built around the product to produce, verify, and maintain it.
 
-Source each part from the repo's own docs — `AGENTS.md`, `README`, `CLAUDE.md`,
-package manifests — where they state it, or read it from the structure where
-they don't. Mark each part **stated** or **assumed**, so the user can see which
-parts come from the repo's own account and which are your inference.
+Source each part from the repo's own docs (`AGENTS.md`, `README`, `CLAUDE.md`,
+package manifests) where they state it, or read it from the structure where they
+don't. Mark each part **stated** or **assumed**, so the user can see which parts
+come from the repo's own account and which are your inference.
 
 Share the orientation with the user in a few sentences, so they can correct a
-mis-orientation before it shapes everything downstream. This is not a gate —
-proceed once you've shared.
+mis-orientation before it shapes everything downstream. This is not a gate.
+Proceed once you've shared.
 
 ## Step 1.2: Read the cited material
 
-Read everything the user cites in their session input — issue bodies and their
+Read everything the user cites in their session input: issue bodies and their
 comments, prior issues they reference, linked PRs, named files or symbols.
 Comments often reframe the issue or carry a decision the body doesn't show, so
 an issue read without its comments can miss what the issue has become. This is
-the substantive baseline for the steps that follow; without it, the recurrence
+the substantive baseline for the steps that follow. Without it, the recurrence
 check and code read run on guesses about what the user means.
 
 ## Step 1.3: Read the code with a consumer lens
 
 Read the relevant code, callers, tests, and docs for the named surfaces with one
 question in mind: _who uses these surfaces and what do they do with them?_ This
-is the consumer lens — it makes the Requirements Analysis substantive, with who
+is the consumer lens. It makes the Requirements Analysis substantive, with who
 and what the work serves checked against the code rather than inferred from
 prose alone.
 
 ## Step 1.4: Consult the record
 
-Consult the record for the surfaces the user has named — a function, a class, a
-module, a parameter; a session may name several — two ways: search the issue
-tracker for recurrence, and read the PRs that last shaped each surface.
+Consult the record for the surfaces the user has named: a function, a class, a
+module, or a parameter. A session may name several. Consult two ways: search the
+issue tracker for recurrence, and read the PRs that last shaped each surface.
 
 **Recurrence.** Search the issue tracker for each surface:
 
@@ -79,29 +78,29 @@ description for the requirements record it carries:
 gh pr view <N> --json body
 ```
 
-The link from line to PR is structural — git maintains it for free, so you reach
+The link from line to PR is structural. Git maintains it for free, so you reach
 the exact prior decisions without guessing search terms. Prior PRs may tell you
 more about the consumers, use cases, and non-goals for that surface. Carry that
 information into the Requirements Analysis.
 
 ## Step 1.5: Name the Session Type
 
-Pin the Session Type before composing the Requirements Analysis — it selects the
+Pin the Session Type before composing the Requirements Analysis. It selects the
 shape of the Requirements Analysis and what later phases focus on. Three types:
 
 - **Enhancement.** New feature or capability that doesn't currently exist.
-- **Maintenance.** Coherence, naming, structure; behaviour already correct.
+- **Maintenance.** Coherence, naming, structure. Behaviour already correct.
 - **Bug fix.** Incorrect behaviour to repair.
 
 State the Session Type in one short sentence with the reasoning ("Session Type:
-enhancement — adds a new CLI subcommand") and continue to
+enhancement, adds a new CLI subcommand") and continue to
 [Step 1.6](#step-16-compose-the-requirements-analysis). If the user disagrees,
 they say so at the acceptance gate (see
 [Step 1.9](#step-19-seek-user-acceptance-of-the-requirements-analysis)).
 
 ## Step 1.6: Compose the Requirements Analysis
 
-Compose the Requirements Analysis — your explicit reading of the system's
+Compose the Requirements Analysis: your explicit reading of the system's
 requirements behind the session input. Without this step, hidden inferences
 about who is served and what counts as done ride through to Design, where they
 shape machinery no real consumer needs.
@@ -110,56 +109,57 @@ Choose the shape based on the Session Type.
 
 For an **enhancement**:
 
-- **Consumers** — who uses what's being built: a person, an agent, or an
+- **Consumers**: who uses what's being built, whether a person, an agent, or an
   external system that interacts with the changed surface. Name each concretely
   ("an agent invoking this in scripts", not "users"). Code inside the repo is
-  never a consumer — caller relationships are Phase 2 content.
-- **Use cases** — what each consumer does with it and what they get, written as
+  never a consumer. Caller relationships are Phase 2 content.
+- **Use cases**: what each consumer does with it and what they get, written as
   that action-outcome pair. "Passes a region string and gets back the bounding
-  coordinates" is a use case; "uses the API" is not. A use case you can't write
+  coordinates" is a use case. "Uses the API" is not. A use case you can't write
   as a pair isn't concrete enough to build from.
-- **Constraints** — qualities the work must hold, when the input or the read
-  names any: performance, compatibility, API stability, security.
+- **Constraints**: qualities the work must hold (performance, compatibility, API
+  stability, security), when the input or the read names any.
 
 For **maintenance**:
 
-- **Improvement goals** — what "better" means here, each stated as a checkable
-  property of the code: "the valid-cases enumeration has one home", "no caller
-  mentions the old name". A goal you can't state checkably is an open question,
-  not a goal.
-- **Preserved behaviour** — the contract that must not change, and the consumers
+- **Improvement goals**: what "better" means here, each stated as a checkable
+  property of the code, such as "the valid-cases enumeration has one home" or
+  "no caller mentions the old name". A goal you can't state checkably is an open
+  question, not a goal.
+- **Preserved behaviour**: the contract that must not change, and the consumers
   who rely on it.
 
 For a **bug fix**:
 
-- **Expected behaviour** — what should happen, citing where the expectation
-  comes from: a docstring, a signature, prior behaviour, or only the report
-  itself. The source matters because Phase 2 tests the claim — an expectation
+- **Expected behaviour**: what should happen, citing where the expectation comes
+  from, such as a docstring, a signature, prior behaviour, or only the report
+  itself. The source matters because Phase 2 tests the claim. An expectation
   backed only by the report is the first thing to check.
-- **Observed behaviour** — what the report says happens, recorded as a claim for
+- **Observed behaviour**: what the report says happens, recorded as a claim for
   Phase 2 to verify.
-- **Affected consumers** — who hits the defect and what it costs them. One or
-  two sentences.
+- **Affected consumers**: who hits the defect and what it costs them. One or two
+  sentences.
 
 Every shape also carries:
 
-- **Candidates** — items of the shape's own kind that the read suggests but the
-  input never named: candidate use cases for an enhancement, candidate
+- **Candidates**: items of the shape's own kind that the read suggests but the
+  input never named, such as candidate use cases for an enhancement or candidate
   improvement goals for maintenance. To notice them, draw on similar or
   analogous situations you know of. A candidate qualifies only when you can
-  point to what in the read suggests it; each cites that evidence, and a
+  point to what in the read suggests it. Each cites that evidence, and a
   candidate use case also names the consumer it would serve. The user opts in to
-  any they want at the gate. A candidate the user picks is promoted; one the
-  user explicitly drops is removed; one the user neither picks nor drops is
-  deferred to Collect (see Phase 9).
-- **System non-goals** (when any are stated or strongly implied) — what the
-  product is deliberately not built for, given what it is for: a consumer it
-  will never serve, a behaviour it will never take on. This records intent, not
-  scope: the product is never meant to do this, not that this session skips it.
-  Most sessions have none — leave the section out rather than fill it with work
-  that is merely out of scope or deferred, which is Scope's call.
-- **Open questions** — calls you can't make from the cited material, where the
-  call matters for what comes next. Frame each as a concrete question; list the
+  any they want at the gate, and
+  [Step 1.9](#step-19-seek-user-acceptance-of-the-requirements-analysis) decides
+  each one from there.
+- **System non-goals** (when any are stated or strongly implied): what the
+  product is deliberately not built for, given what it is for, such as a
+  consumer it will never serve or a behaviour it will never take on. This
+  records intent, not scope: the product is never meant to do this, not that
+  this session skips it. Most sessions have none. Leave the section out rather
+  than fill it with work that is merely out of scope or deferred, which is
+  Scope's call.
+- **Open questions**: calls you can't make from the cited material, where the
+  call matters for what comes next. Frame each as a concrete question. List the
   possible answers you can see and invite a freeform answer too. The test: write
   the `assumed` value you'd record. If you can write one without guessing, mark
   it assumed instead. If you can't, it's a genuine open question.
@@ -167,20 +167,20 @@ Every shape also carries:
 Mark every item in every shape as **stated** (named in the cited material) or
 **assumed** (your inference).
 
-Keep maintenance and bug-fix shapes short — one or two sentences per section is
+Keep maintenance and bug-fix shapes short. One or two sentences per section is
 usually enough. For an enhancement, the consumer and use-case sections are the
-work — give them real detail.
+work. Give them real detail.
 
 Test the new intent the session input carries against the existing intent. The
 orientation names what the repo delivers, and the consumer-lens read shows what
 its surfaces already serve. Ask whether the proposed work serves that product,
 and whether its value is evidenced by the existing goals or only asserted by the
-input. Where it doesn't cohere or the value isn't evidenced, surface that — as
-an open question — rather than carrying the intent through unexamined. The user
-decides at the gate.
+input. Where it doesn't cohere or the value isn't evidenced, surface that as an
+open question. Don't carry the intent through unexamined. The user decides at
+the gate.
 
-The marking shows where each item came from — the session input, or your own
-inference — not whether it's true. The user can edit either kind. They can drop
+The marking shows where each item came from, the session input or your own
+inference, not whether it's true. The user can edit either kind. They can drop
 an assumed item freely, since it's your inference, not the input's claim. They
 can drop a stated item too, when the consumer-lens read or the intent test shows
 the input got it wrong.
@@ -196,15 +196,15 @@ Analysis can be completed.
 
 Wait for the user's reply. Fold their answers into the Requirements Analysis as
 stated items, dropping the matching open questions. If the reply leaves any
-question unanswered, re-ask the unanswered ones before continuing — you marked
+question unanswered, re-ask the unanswered ones before continuing. You marked
 them as needing the user, so a missing answer means the artifact isn't complete
 yet.
 
 ## Step 1.8: Share the Requirements Analysis
 
 Send the completed Requirements Analysis to the user. When there are candidates,
-ask the user to name any they want included — by number. Note that any they
-don't name are carried forward as Opportunities to Collect (see
+ask the user to name any they want included, by number. Note that any they don't
+name are carried forward as Opportunities to Collect (see
 [Phase 9](../../../agents/Grace.md#phase-9-collect)), and that they can ask to
 drop any outright.
 
@@ -213,29 +213,33 @@ Requirements Analysis to proceed to Phase 2: Code Analysis."_
 
 ## Step 1.9: Seek user acceptance of the Requirements Analysis
 
-Wait for the user's reply — or, under autopilot, take this gate's default and
+Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
-Promote any candidate the user opted into — a candidate use case becomes a use
+Promote any candidate the user opted into. A candidate use case becomes a use
 case, a candidate improvement goal an improvement goal. Remove any the user
 explicitly dropped, and defer the rest to Collect (see
 [Phase 9](../../../agents/Grace.md#phase-9-collect)). If accepted, continue to
 [Step 1.10](#step-110-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
 If the user pushes back, revise and return to
-[Step 1.8](#step-18-share-the-requirements-analysis); repeat until accepted. If
+[Step 1.8](#step-18-share-the-requirements-analysis). Repeat until accepted. If
 the pushback challenges the Session Type itself, return to
 [Step 1.5](#step-15-name-the-session-type) and recompose from there.
 
-This is one of the protocol's user acceptance gates — see
-[Acceptance gates](../protocol.md#acceptance-gates).
+This is one of the protocol's user acceptance gates (see
+[Acceptance gates](../protocol.md#acceptance-gates)).
 
 ## Step 1.10: Hand the accepted Requirements Analysis to Junio and Ralph
 
-Send Junio and Ralph the accepted Requirements Analysis, the Session Type, and
-the repo orientation from [Step 1.1](#step-11-orient-to-the-repo) — the versions
-the user accepted, plus any changes from the acceptance discussion. Two
-`SendMessage` calls in the same turn, for information only. Sign off
-`From Grace.` and skip the RSVP; no reply is expected. They hold them as context
-for the rest of the session.
+Send Junio and Ralph the following, in the versions the user accepted plus any
+changes from the acceptance discussion:
+
+- the accepted Requirements Analysis
+- the Session Type
+- the repo orientation from [Step 1.1](#step-11-orient-to-the-repo)
+
+Send them as two `SendMessage` calls in the same turn, for information only.
+Sign off `From Grace.` and skip the RSVP. No reply is needed. They hold them as
+context for the rest of the session.
 
 ## Step 1.11: Set the session branch and bootstrap commit
 
@@ -243,38 +247,38 @@ Set the session branch now that the Requirements Analysis is accepted, so the PR
 has somewhere to live.
 
 If the session started on `main`, create the branch and switch to it. The name
-reflects the session input — `GH123` for an issue, a short slug like `add-foo`
+reflects the session input: `GH123` for an issue, a short slug like `add-foo`
 for an unscoped task. When the input names no issue and suggests no obvious
 slug, take a couple of words from the Session Type and the main surface it
 touches.
 
 If the session started on a non-`main` branch, the boot guard already confirmed
-it as a worktree branch off `main`. Adopt it as the session branch; no checkout
-needed.
+it as a worktree branch off `main`. Adopt it as the session branch. No checkout
+is needed.
 
 Then create an empty bootstrap commit (`git commit --allow-empty`) so the draft
-PR has a commit to anchor to. Give it a short subject naming the session — the
-issue ref or slug — and the `Co-Authored-By` trailer only (see
+PR has a commit to anchor to. Give it a short subject naming the session (the
+issue ref or slug) and the `Co-Authored-By` trailer only (see
 [Branch and commit operations](../../../agents/Grace.md#branch-and-commit-operations)).
 Push the branch.
 
-All work runs against the session-start state of `main`. Any drift on origin is
-handled at Merge.
+All work runs against the session-start state of `main`. Merge handles any drift
+on origin.
 
 ## Step 1.12: Open the draft PR
 
 Open a draft PR for the session branch (`gh pr create --draft`), with the
 accepted Requirements Analysis as its description. The PR carries the session's
-deliberation record from here on — each later accepted artifact posts as a
+deliberation record from here on. Each later accepted artifact posts as a
 comment (see [The session PR](../protocol.md#the-session-pr)). It stays in draft
-until Phase 7 — the draft state signals that the PR isn't yet worth the user's
+until Phase 7. The draft state signals that the PR isn't yet worth the user's
 attention.
 
 Set up the PR:
 
-- Label it with the Session Type's category. This is the session's first label
-  use, so resolve the category to the repo's actual label string here, before
-  the create call. The label often carries more than the bare category word (a
+- Label it with the Session Type's category. Resolve the category to the repo's
+  actual label string before the create call. This is the session's first label
+  use. The label often carries more than the bare category word (a
   `maintenance 🛠️` suffix, say), and `gh pr create --label <name>` fails on a
   name that doesn't match exactly. See
   [GitHub labels](../../../agents/Grace.md#github-labels) for the lookup and how
@@ -288,29 +292,29 @@ Set up the PR:
 
 **Don't sample existing PRs for style.** The instinct to read recent PRs to
 "match the house style" lands on whatever noise was in the three PRs the agent
-happened to open. Most repos have varied styles across contributors, and the
-sample isn't a style. Written contribution rules (`CONTRIBUTING.md`, a PR
-template, a commit message convention) are real and should be followed; the
-existing PR log is not a style reference.
+happened to open. Most repos have varied styles across contributors. Written
+contribution rules (`CONTRIBUTING.md`, a PR template, a commit message
+convention) are real, so follow them. The existing PR log is not a style
+reference.
 
-**Put the accepted requirements analysis in the body.** Lead with one or two
-plain sentences of context — what the change is and which issue it addresses —
-then the final accepted requirements analysis in the shape the Session Type
-selected. Carry it near-verbatim from the accepted artifact. This is the most
-careful account of why the change exists, and it would otherwise be discarded
-when the session ends.
+**Put the accepted Requirements Analysis in the body.** Lead with one or two
+plain sentences of context: what the change is and which issue it addresses.
+Then give the final accepted Requirements Analysis, in the shape the Session
+Type selected. Carry it near-verbatim from the accepted artifact. This is the
+most careful account of why the change exists, and it would otherwise be
+discarded when the session ends.
 
-**The body is the requirements analysis and nothing else.** No Test plan
-section, no summary of the change, no narration of the diff — file paths,
+**The body is the Requirements Analysis and nothing else.** No Test plan
+section, no summary of the change, no narration of the diff. File paths,
 renames, and line-level changes are all visible in the diff, and the
-requirements analysis carries the intent. Don't state the Session Type in the
-body either; the PR's category label carries it. The one thing added later is
+Requirements Analysis carries the intent. Don't state the Session Type in the
+body either. The PR's category label carries it. The one thing added later is
 the dream metadata line, appended when you finalize the PR (see
 [Finalize the PR](phase6.md#finalize-the-pr)).
 
 **Close the issues the PR addresses.** GitHub auto-closes an issue on merge only
 when the PR body has a closing keyword for it: `Closes #N`, `Fixes #N`,
-`Resolves #N`. The keyword is per-issue — a single keyword followed by a
+`Resolves #N`. The keyword is per-issue. A single keyword followed by a
 comma-separated list of numbers closes only the first number. Repeat the keyword
 for each issue, or put each on its own line. Without this, the PR merges and the
 issues the PR addressed sit open as triage debt. After opening, check:

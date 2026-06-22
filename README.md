@@ -1,7 +1,7 @@
 # /dream:team
 
-A multi-agent team for delivering great code, keeping the codebase coherent, and
-doing both with minimal input from you.
+A multi-agent team that delivers great code and keeps the codebase coherent,
+with minimal human input.
 
 Requires Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
@@ -37,15 +37,15 @@ for the full protocol.
 ## Prerequisites
 
 The plugin works best when you have the `gh` command line tool available on your
-system. This allows the team to interact with GitHub, e.g., opening a PR and
-posting issues.
+system. This allows the team to interact with GitHub, for example opening a PR
+and posting issues.
 
 ## Advanced usage
 
 ### Alias claude with experimental agent teams support
 
 For convenience, you might like to add something like the following to your
-shell customisation script (e.g., `~/.zshrc`):
+shell customisation script (for example `~/.zshrc`):
 
 ```zsh
 alias claude-teams="CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --teammate-mode auto"
@@ -55,14 +55,14 @@ This then allows you to run `claude-teams` from the terminal.
 
 ### Models and effort
 
-Each agent runs on a default model — Grace and Ada on Opus, Ralph and Junio on
-Sonnet. To override a model, name it when you invoke the skill, for example
+Each agent runs on a default model. Grace and Ada run on Opus, Ralph and Junio
+on Sonnet. To override a model, name it when you invoke the skill, for example
 `/dream:team with Ralph on opus`. Agents you don't name keep their default.
 
 Effort works differently. The team inherits your main session's effort level
 when it starts, so to run the agents at a higher or lower effort, set it with
 `/effort` before you invoke `/dream:team`. This applies to all four agents
-together — per-agent effort isn't currently supported.
+together. Per-agent effort isn't currently supported.
 
 ### Concurrent sessions
 
@@ -84,11 +84,11 @@ second session.
 ### Configuring tmux
 
 The plugin supports a richer set of features for monitoring the different agents
-in the team when launched under tmux. For example, tmux allows you to see the
-agents output in multiple panes in your terminal.
+in the team when you launch Claude Code under tmux. For example, tmux allows you
+to see the agents' output in multiple panes in your terminal.
 
-Once you have installed tmux, it's worth a little customisation. E.g., try the
-following in your `~/.tmux.conf` file:
+Once you have installed tmux, it's worth a little customisation. For example,
+try the following in your `~/.tmux.conf` file:
 
 ```text
 set -wg pane-border-indicators both
@@ -99,29 +99,30 @@ set-option -g focus-events on
 
 ### Launching Claude under tmux
 
-To launch Claude Code under tmux, first run tmux, then run Claude Code, e.g.:
+To launch Claude Code under tmux, first run tmux, then run Claude Code, for
+example:
 
 ```zsh
 tmux
 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude --teammate-mode auto
 ```
 
-Then run `/dream:team` from the main session, you should see multiple agent
+Then run `/dream:team` from the main session. You should see multiple agent
 panes appear.
 
 ### Using tmux – useful shortcuts
 
-tmux has many commands which can be run via a sequence of shortcut keys. Here
-are some useful ones:
+tmux has many commands you can run with a sequence of shortcut keys. Here are
+some useful ones:
 
-- `ctrl+b <space>` – change pane layout
-- `ctrl+b <left cursor>` – switch focus to the pane to the left
-- `ctrl+b <right cursor>` – switch focus to the pane to the right
-- `ctrl+b z` – zoom in to the focused pane only (press again to return to
+- `ctrl+b <space>`: change pane layout
+- `ctrl+b <left cursor>`: switch focus to the pane to the left
+- `ctrl+b <right cursor>`: switch focus to the pane to the right
+- `ctrl+b z`: zoom in to the focused pane only (press again to return to
   multiple panes)
-- `ctrl+b [` – enter scroll mode, which allows you scroll back within a pane
+- `ctrl+b [`: enter scroll mode, which allows you to scroll back within a pane
   (use `<escape>` to exit scroll mode)
-- `ctrl+b :` – enter configuration mode (e.g., then type
+- `ctrl+b :`: enter configuration mode (for example, then type
   `select-pane -P 'fg=cyan' <enter>` to change text colour in the currently
   focused pane)
 
@@ -131,16 +132,16 @@ If you are feeling brave, at any point after you have provided the session input
 you can switch on autopilot mode by saying:
 
 ```text
-Autopilot on, proceed autonomously through to PR ready for user review.
+Autopilot on, proceed autonomously through to PR ready for human review.
 ```
 
-...to Grace. This _should_ mean that Grace directs the team autonomously all the
+...to Grace. This should mean that Grace directs the team autonomously all the
 way through to PR ready for human review, without needing any further input.
 
-There are exceptions though when Grace will still stop and ask for input, e.g.,
-if there are open questions arising from the requirements analysis, or if
-something unexpected turns up during development. If Grace does stop, she might
-need a reminder to re-engage autopilot after that to resume full autonomy.
+Grace will still stop to ask for input in some cases. One is open questions
+arising from the requirements analysis. Another is something unexpected turning
+up during development. If Grace does stop, she might need a reminder to
+re-engage autopilot after that to resume full autonomy.
 
 ## Troubleshooting
 
@@ -149,9 +150,9 @@ need a reminder to re-engage autopilot after that to resume full autonomy.
 If you have it on your plan, switch to `auto` permissions mode before launching
 the team. This should handle most permissions automatically.
 
-You may still hit some occasional permissions blocks, e.g., when posting to
+You may still hit occasional permissions blocks, for example when posting to
 GitHub.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).
