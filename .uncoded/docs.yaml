@@ -308,6 +308,24 @@ plugins/:
                 SendMessage:
                 Signature:
                 Non-user-facing agents:
+.claude/:
+  agents/:
+    copy-editor.md:
+      Copy editor:
+        First, read the standard:
+        Judge only what you are given:
+        Cite a rule or pass:
+        Suggest the fix, guard the meaning:
+        Find every violation in one pass:
+        Leave these alone:
+        Record every finding in a file:
+        Return only what needs changing:
+  skills/:
+    copy-edit/:
+      SKILL.md:
+        Copy-edit:
+          Arguments:
+          Each round:
 README.md:
   /dream:team:
     Installation:
@@ -324,3 +342,10 @@ README.md:
     Troubleshooting:
       Permissions:
     License:
+WRITING.md:
+  Prompt writing style guide:
+    The stance:
+    One idea per paragraph:
+    One idea per sentence:
+    Instruction paragraphs:
+    Words and marks:
