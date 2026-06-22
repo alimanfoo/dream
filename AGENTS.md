@@ -60,12 +60,12 @@ lives in the agent files.
 
 This repo has two layers, easy to confuse:
 
-- **The dream plugin**: `protocol.md`, the skill, and the agent files. These are
-  the plugin's code. The `/dream:team` command installs and runs them.
-- **This file (AGENTS.md)**: meta-documentation for the coding assistant helping
-  the dream plugin developer. It sits one layer up. It describes how to develop
-  the plugin. (`CLAUDE.md` is a symlink to it. Edit `AGENTS.md` directly. Some
-  editors refuse to write through a symlink.)
+- **The dream plugin**: `protocol.md`, the skill, and the plugin's agent files.
+  These are the plugin's code. The `/dream:team` command installs and runs them.
+- **Developer support**: AGENTS.md, WRITING.md, the copy-edit skill, and the
+  copy-editor agent. These support plugin development. They are not part of the
+  installed plugin. (`CLAUDE.md` is a symlink to AGENTS.md. Edit `AGENTS.md`
+  directly. Some editors refuse to write through a symlink.)
 
 Two ways they get crossed:
 
