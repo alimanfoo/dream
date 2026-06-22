@@ -10,9 +10,7 @@ argument-hint: "[target] [max-iterations]"
 
 # Copy-edit
 
-Bring a passage of repo prose into line with WRITING.md. Run a loop. Each round
-reviews the prose with a fresh reader, then fixes what the review raises. The
-loop ends when the review is clean or you reach the cap.
+Bring a passage of repo prose into line with WRITING.md. Work in rounds.
 
 ## Arguments
 
@@ -30,11 +28,11 @@ Read the arguments the user gives.
 2. Review it with the `copy-editor` subagent. For a small passage, give one
    subagent the whole of it. For a large passage, split it by file or section
    and launch parallel `copy-editor` subagents, one per part.
-3. When every subagent returns `VERDICT: PASS`, stop. Report success and the
-   number of rounds it took.
-4. Otherwise, resolve every issue the review raised. You are the author. Make
-   each edit yourself and keep the meaning. When a fix would drop a reason, keep
-   the reason and meet the rule another way.
+3. When no finding from any subagent is marked `CHANGES NEEDED`, stop. Report
+   success and the number of rounds it took.
+4. Otherwise, resolve every finding marked `CHANGES NEEDED`. You are the author.
+   Make each edit yourself and keep the meaning. When a fix would drop a reason,
+   keep the reason and meet the rule another way.
 5. Start the next round, up to the cap.
 
 ## When you reach the cap

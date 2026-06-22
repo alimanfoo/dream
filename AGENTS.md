@@ -235,17 +235,9 @@ an instruction lives in; this decides whether a given reader needs it at all.
 
 ### Instruction paragraphs
 
-Build an instruction paragraph in four parts, in this order: the imperative, the
-why, examples, exceptions.
-
-- **Imperative first.** Open with what to do. "Check each scope item for X"
-  beats "For each scope item, check whether X" — the qualifier shouldn't bury
-  the verb.
-- **Then the why.** Give the reason the agent weighs while working: why a
-  default is risky, what a check defends.
-- **Then examples.** One to three, to anchor a fuzzy criterion. They illustrate;
-  they don't bound it.
-- **Then exceptions.** Edge cases come after the main rule, never before it.
+WRITING.md sets the shape of an instruction paragraph: the imperative first,
+then the why, then examples, then exceptions. An agent instruction adds rules of
+its own to that shape.
 
 The why is the one that motivates the act, not the one that motivates the
 design. The reason the protocol or the prompt is _built_ this way — design
@@ -254,11 +246,7 @@ description and commit message, not the instruction. A new mechanism tempts you
 to motivate it inline; write the instruction, then move the design-motivation
 out.
 
-Not every paragraph needs all four — a bare imperative is enough when the act is
-obvious. But hold the order: an exception before the rule, or a why before the
-verb, forces the reader to decode before they can act.
-
-Beyond the paragraph's shape, two rules govern the instruction's content:
+Two more rules govern the instruction's content:
 
 - **Generalise rules; don't pin them to the incident.** A rule that surfaces
   from one failure mode (verbs at the tail of a numbered step list) should be
