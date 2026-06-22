@@ -223,9 +223,9 @@ the instructions that matter and tempts the agent to act on the aside. Examples:
 how a mechanism it isn't part of works, why a past decision was made, what
 another role does downstream. When you catch yourself adding context, ask
 whether this reader uses it to do their job. If not, cut it. This is the
-per-reader companion to the locality principle (see Development notes): locality
-decides which file an instruction lives in, and this decides whether a given
-reader needs it at all.
+per-reader companion to the locality principle (see Development notes). Locality
+decides which file an instruction lives in. This decides whether a given reader
+needs it at all.
 
 ### Instruction paragraphs
 
@@ -271,8 +271,8 @@ Four properties of that reader change how you write for it:
   everyday sense of the words you name things with: slots, moves, roles, phases.
   The name is a stronger instruction than the prose beneath it, so the body
   won't rescue a name that pulls the wrong way. Treat naming as a design
-  decision: weigh the word's plain pull against the behaviour you want, and pick
-  a different word when they conflict. The same trap fires in reverse with words
+  decision. Weigh the word's plain pull against the behaviour you want. Pick a
+  different word when they conflict. The same trap fires in reverse with words
   you reach for in passing. The writer draws from general English by reflex. The
   reader reads each word against the local glossary first. _Commit, accept,
   hold, ready, honestly_ get read in their plugin sense before their English
@@ -294,8 +294,8 @@ notes. When writing rules and instructions for the dream-team agents, see also
 
 ## Reviewing changes with subagents
 
-A change to this repo is prose (the protocol and the agent prompts), and there
-is no test suite, so review is reading. Spawning several subagents in parallel,
+A change to this repo is prose: the protocol and the agent prompts. The repo has
+no test suite, so review is reading. Spawning several subagents in parallel,
 each with one narrow lens, reads it more thoroughly than a single pass. These
 are suggestions, not a fixed procedure. A few things make it work:
 
@@ -383,9 +383,9 @@ When opening a PR, include a version bump in
 `plugins/dream/.claude-plugin/plugin.json`, so every change merged to main is
 versioned. Which part to bump:
 
-- **Major**: a structural or breaking change to the protocol, such as a phase
-  reshaped, steps renumbered, or anything that changes how a session runs or
-  breaks an expectation a running team relies on.
+- **Major**: a structural or breaking change to the protocol, one that changes
+  how a session runs or breaks an expectation a running team relies on.
+  Examples: a phase reshaped, steps renumbered.
 - **Minor**: an additive, non-breaking change.
 - **Micro**: a bug fix.
 
