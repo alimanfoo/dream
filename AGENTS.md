@@ -47,14 +47,14 @@ environment matters more than writing today's code well.
 
 ## Introduction and orientation
 
-The dream plugin launches a multi-agent team for software development, defined
-within the `plugins/dream` folder. The entry point is the
+The dream plugin lives in the `plugins/dream` folder. It launches a multi-agent
+team for software development. The entry point is the
 `plugins/dream/skills/team/SKILL.md` skill, which the user invokes via the
-`/dream:team` command. The skill spawns the agent team; each agent is defined by
-a system prompt in `plugins/dream/agents`. The agents operate by a common
-protocol: the shared session flow — phases, roles, and cross-agent mechanics —
-is in `plugins/dream/skills/team/protocol.md`, and role-specific operating
-detail lives in the agent files.
+`/dream:team` command. The skill spawns the agent team. A system prompt in
+`plugins/dream/agents` defines each agent. The agents operate by a common
+protocol. The shared session flow (phases, roles, and cross-agent mechanics)
+lives in `plugins/dream/skills/team/protocol.md`. Role-specific operating detail
+lives in the agent files.
 
 ## Two layers
 
