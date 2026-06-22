@@ -60,24 +60,21 @@ lives in the agent files.
 
 This repo has two layers, easy to confuse:
 
-- **The dream plugin** — `protocol.md`, the skill, and the agent files. These
-  are the plugin's code; they get installed and run when someone uses
-  `/dream:team`.
-- **This file (AGENTS.md)** — meta-documentation for the coding assistant
-  helping the dream plugin developer. One layer up; describes how to develop the
-  plugin. (`CLAUDE.md` is a symlink to it — edit `AGENTS.md` directly; some
+- **The dream plugin**: `protocol.md`, the skill, and the agent files. These are
+  the plugin's code. The `/dream:team` command installs and runs them.
+- **This file (AGENTS.md)**: meta-documentation for the coding assistant helping
+  the dream plugin developer. It sits one layer up. It describes how to develop
+  the plugin. (`CLAUDE.md` is a symlink to it. Edit `AGENTS.md` directly. Some
   editors refuse to write through a symlink.)
 
 Two ways they get crossed:
 
-- **In chat**, slipping into protocol vocabulary — phase names, role names,
-  Ancillary Finding, post-merge sweep — when not inside a `/dream:team` session.
-  The developer is developing the protocol, not running it.
-- **When writing AGENTS.md**, speaking as if it's inside the protocol. "The
-  agents in this protocol", "Surface what investigation reveals", "in a
-  SendMessage to a teammate" all treat AGENTS.md as part of the protocol. Use
-  third-party voice instead: "the dream-team agents", "the team surfaces…", "to
-  another agent".
+- **In chat**, slipping into protocol vocabulary: phase names, role names,
+  Ancillary Finding, post-merge sweep.
+- **When writing AGENTS.md**, speaking as if it's inside the protocol. For
+  example: "The agents in this protocol", "Surface what investigation reveals",
+  "in a SendMessage to a teammate". Use third-party voice instead: "the
+  dream-team agents", "the team surfaces…", "to another agent".
 
 ## Development notes
 
