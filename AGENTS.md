@@ -194,8 +194,9 @@ disposition (Ada's fresh read, Junio's audit), a gate that forces the act, or an
 artifact that carries a decision past the session that made it. The trait
 doesn't change. The structure around it does.
 
-**Two traits are exploited, not fought.** Literal-mindedness becomes a lever
-when a name's plain sense pulls the right way (see
+**Exploit agent traits rather than fight them.** Literal-mindedness and
+over-eagerness are two examples, not the only ones. Literal-mindedness becomes a
+lever when a name's plain sense pulls the right way (see
 [Writing agent prompts](#writing-agent-prompts)), and the agent's obedience to
 the name does the work. Over-eagerness is the engine behind active memory: an
 agent that dutifully attempts whatever sits in front of it picks up a failing
