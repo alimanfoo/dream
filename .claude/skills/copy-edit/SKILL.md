@@ -31,6 +31,6 @@ Read the arguments the user gives.
 3. Resolve every finding marked `CHANGES NEEDED`. You are the author. Make each
    edit yourself and keep the meaning. When a fix would drop a reason, keep the
    reason and meet the rule another way.
-4. If no findings were `CHANGES NEEDED`, or you have reached the cap, stop.
-   Report the total number of findings addressed across all rounds.
-5. Otherwise, start the next round.
+4. Report the number of findings addressed this round.
+5. If no findings were `CHANGES NEEDED`, or you have reached the cap, stop.
+6. Otherwise, start the next round.
