@@ -1,8 +1,9 @@
 # Phase 7: Review
 
 When development is complete, follow the steps below. Ada and Junio review in
-parallel — Ada with fresh eyes, Junio against the accepted requirements, Session
-Scope, and the whole diff — and you handle both reviews the same way.
+parallel. Ada reads with fresh eyes. Junio reviews against the accepted
+requirements, Session Scope, and the whole diff. You handle both reviews the
+same way.
 
 ## Step 7.1: Send the review requests
 
@@ -14,43 +15,46 @@ number. Sign off per "Communication between teammates (agents)":
 ## Step 7.2: Post each review as a PR comment
 
 Post each review as its own PR comment via `gh pr comment <N> --body "..."`.
-Each review body ends with a `From <reviewer>.` signature line — routing
+Each review body ends with a `From <reviewer>.` signature line. This is routing
 metadata, not part of the review. Drop it. Preserve the review text unchanged,
 then append the standard Claude Code footer from "Marking agent-authored GitHub
-items". If the footer is already present, don't duplicate it. Not `gh pr review`
-— that carries more weight than these advisory reviews should.
+items". If the footer is already present, don't duplicate it. Do not use
+`gh pr review`. It carries more weight than these advisory reviews should.
 
 Keep agent names off GitHub. If you need to tell the two comments apart, refer
-to the reviewers generically — "first reviewer", "second reviewer", or by what
-each examined — never by agent name, which is internal protocol detail.
+to the reviewers generically: "first reviewer", "second reviewer", or by what
+each examined. Never use an agent name, which is internal protocol detail.
 
 ## Step 7.3: Triage each finding
 
 Read Ada's cold-read reconstruction first, then the divergences she reports
 against the stated intent. She built the reconstruction from the diff alone,
-then opened the PR description and compared it to the stated intent herself — so
+then opened the PR description and compared it to the stated intent herself. So
 each divergence is a reviewability finding: a place the code failed to explain
-itself to a reader with no context. This is worth real attention: Ada stands in
-for the human reviewer, who also comes to the change cold, so where her read
-diverged theirs will too. As agents write more of the code, that review is where
-the human's scarce attention is spent — code that explains itself there keeps
+itself to a reader with no context. This deserves real attention. Ada stands in
+for the human reviewer, who also comes to the change cold. Where her read
+diverged, the human's will too. As agents write more of the code, the human
+spends scarce attention on that review. Code that explains itself there keeps
 the review cheap.
 
-Triage each divergence the same as any finding — accept one as a follow-on that
-makes the code carry its own intent, or reject it where Ada simply misread code
+Triage each divergence the same as any finding. Accept one as a follow-on that
+makes the code carry its own intent. Reject it where Ada simply misread code
 that is already clear. A reconstruction that matched the intent with no
 divergence needs no action.
 
-Decide each finding from both reviews on its merits; a reviewer raising it is
-not itself a reason to accept it. Each finding takes one of these paths: Accept
-(becomes a follow-on task, handled by the standard per-task workflow including
-Junio's coherence audit), Reject (note in your reply to the user, with the
-reason), Out of scope (held for post-merge triage), or Raise a Challenge (when
-the finding shows an accepted artifact no longer holds rather than a fixable
-defect — take it to the user per the "Challenge" shape, instead of patching it
-as a follow-on). A cluster of Junio's completeness misses can be the evidence
-for a Challenge that the Session Scope was too narrow, not just a list of
-follow-ons.
+Decide each finding from both reviews on its merits. A reviewer raising it is
+not itself a reason to accept it. Each finding takes one of these paths:
+
+- Accept: make it a follow-on task, handled by the standard per-task workflow
+  including Junio's coherence audit.
+- Reject: note it in your reply to the user, with the reason.
+- Out of scope: hold it for post-merge triage.
+- Raise a Challenge: take it to the user per the "Challenge" shape. Use this
+  when the finding shows an accepted artifact no longer holds, not a fixable
+  defect.
+
+A cluster of Junio's completeness misses can be the evidence for a Challenge
+that the Session Scope was too narrow, not just a list of follow-ons.
 
 Keep one response note per finding as you triage. Accepted findings record the
 follow-on task and, once complete, the commit or PR-visible evidence that
@@ -59,7 +63,7 @@ that they are held for post-merge triage. These notes become the public response
 in [Step 7.4](#step-74-post-graces-response-as-a-pr-comment).
 
 Reclassify any "out of scope but noticed" item as in scope when it is the same
-edit — one the PR missed, or one the PR has now made adjacent. The review bucket
+edit: one the PR missed, or one the PR has now made adjacent. The review bucket
 is for broader concerns, not incomplete instances of the agreed change.
 
 When a finding proposes adding or expanding a docstring, comment, or
@@ -101,18 +105,18 @@ attention. If no findings were accepted, flip immediately.
 ## Step 7.6: Hand back to the user
 
 Hand back to the user once all comments are addressed. The PR is ready for the
-user's acceptance; Phase 8 handles the merge itself.
+user's acceptance. Phase 8 handles the merge itself.
 
 Marking the PR ready hands off the branch, and from here it is frozen (see
 [Phase 8: Merge](../protocol.md#phase-8-merge)). In Merge, Collect, and Reflect
-a finding that would once have become a follow-on task becomes an issue instead;
-you fold no new development into the PR. Resolving merge conflicts is the
-exception — that is the merge itself, delegated to Ralph as Phase 8 describes.
-Only a user-directed change reopens Develop, and you handle it as an explicit
-reopening — create a task, Ralph implements, you commit, Junio audits, the same
-as any Phase 6 task. Absent that direction, the default is freeze.
+a finding that would once have become a follow-on task becomes an issue instead.
+You fold no new development into the PR. Resolving merge conflicts is the
+exception. That is the merge itself, delegated to Ralph as Phase 8 describes.
+Only a user-directed change reopens Develop. You handle it as an explicit
+reopening, the same as any Phase 6 task: create a task, Ralph implements, you
+commit, Junio audits. Absent that direction, the default is freeze.
 
 The freeze stops new code, not updates to the PR's record. If a Challenge is
 accepted at Phase 7 or later, still post its superseding comment and edit the PR
-description — that records the decision, it isn't development. Any code the
-Challenge needs goes through the user-directed reopening above.
+description. That records the decision, not development. Any code the Challenge
+needs goes through the user-directed reopening above.
