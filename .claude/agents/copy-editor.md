@@ -3,7 +3,6 @@ name: copy-editor
 description:
   Copy-edits a passage of repo prose against WRITING.md. Returns cited findings,
   each with a verdict and, where needed, a suggested fix. Does not apply edits.
-model: opus
 tools: Read, Grep, Glob
 ---
 
@@ -53,7 +52,10 @@ together, so one you miss forces another round.
 - Leave headings and links unchanged. They carry anchors the author cannot
   change freely.
 
-## Return this
+## Return only findings
+
+Do not quote or reproduce the passage. The author can read it. Go straight to
+the findings.
 
 List a finding for each span you weighed as a possible violation. Give no
 overall verdict. Give each finding these parts:
