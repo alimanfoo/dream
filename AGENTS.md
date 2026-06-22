@@ -79,34 +79,34 @@ Two ways they get crossed:
 ## Development notes
 
 `protocol.md` is the source of truth for shared session flow and cross-agent
-mechanics; role-specific detail goes in the relevant agent file. Keep them
-consistent — neither should invent behaviour the other contradicts.
+mechanics. Role-specific detail goes in the relevant agent file. Keep them
+consistent. Neither should invent behaviour the other contradicts.
 
 That split follows a general locality principle: **information belongs where it
 is acted on, not where it is named.** Each file carries what its readers need to
-do their job, not what its writers found interesting to elaborate. The protocol
-introduces; the actor acts. When a new mechanism gets sketched in protocol.md
-first, the operational detail still needs to move to the agent file of whoever
-runs it. `Grace.md`'s Challenge and Autopilot sections are the templates.
+do their job, not what its writers found interesting to elaborate. When someone
+sketches a new mechanism in protocol.md first, move the operational detail to
+the agent file of whoever runs it. `Grace.md`'s Challenge and Autopilot sections
+are the templates.
 
 Renaming or renumbering a phase, step, or concept ripples past the file you
-edit. Step headings carry the phase in the number — `Step 4.5` is phase 4, step
-5 — and references to a step or named section, within or across files, are
-Markdown anchor links. So renumbering a step, or rewording any heading, changes
-its anchor and breaks every link still pointing at the old one; the link checks
-(markdownlint's MD051 for within-file links, `remark-validate-links` for
+edit. Step headings carry the phase in the number (for example, `Step 4.5` is
+phase 4, step 5). References to a step or named section, within or across files,
+are Markdown anchor links. So renumbering a step, or rewording any heading,
+changes its anchor and breaks every link still pointing at the old one. The link
+checks (markdownlint's MD051 for within-file links, `remark-validate-links` for
 cross-file links, both in pre-commit and CI) fail until they are fixed. A link
 can only target a heading, so a sub-point referenced by name needs to be a
-heading, not a bold inline label. The checks cover links to a named section;
-whole-file mentions and the protocol summary stay plain prose, so also grep
-every agent file and the protocol for the old name. `Junio.md` and `Ralph.md`
-run parallel for shared mechanics, so the same instruction often lives in both;
-edit them in lockstep.
+heading, not a bold inline label. The checks cover links to a named section.
+Whole-file mentions and the protocol summary stay plain prose. Also grep every
+agent file and the protocol for the old name. `Junio.md` and `Ralph.md` run
+parallel for shared mechanics. The same instruction often lives in both. Edit
+them in lockstep.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 suite. When changing behavior, validate by reading the affected skill/agent
 prompts together and checking that lifecycle, role boundaries, and tool
-permissions stay consistent. Run the pre-commit hooks to check formatting; see
+permissions stay consistent. Run the pre-commit hooks to check formatting. See
 the Linting section.
 
 ## Design principles
