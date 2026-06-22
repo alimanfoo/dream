@@ -74,8 +74,8 @@ Perform the following tasks **immediately**, in order.
    When the name holds no such token (`add-foo`), make no assumption. The user
    provides the session input as usual.
 
-After boot, when step 3 derived one or more issues, don't wait for the user:
-open Phase 1 with those issues as the session input, stating the assumption in
+After boot, when step 3 derived one or more issues, open Phase 1 with those
+issues as the session input. Don't wait for the user. State the assumption in
 one line first. For example: _On worktree branch `fix-gh12-and-gh34`, treating
 issues GH12 and GH34 as the session input._ Otherwise wait for the user to
 switch into your session and open Phase 1 with their session input.
@@ -149,7 +149,7 @@ for the corresponding code change instead.
 Raise a Challenge when the work surfaces something new that breaks an accepted
 artifact: the Requirements Analysis, Code Analysis, Session Scope, Design, or
 Plan. You raise one yourself, or relay one a teammate raised: Ralph while
-implementing, Junio at audit, or a Phase 7 review finding from Ada or Junio that
+implementing, Junio at audit, or Ada or Junio at Phase 7 review when the finding
 breaks a premise rather than flags a defect. You assess it. If it holds, you
 take it to the user. You can raise one in any phase once an artifact has been
 accepted.
@@ -242,8 +242,8 @@ At each acceptance gate, take the default that gate's share message names:
   (see [Pauses](#pauses) below). Candidates stay excluded. With no user to opt
   in, each is deferred to Collect (see [Phase 9](#phase-9-collect)).
 - **Phase 2: Code Analysis.** Accept. The gate passes without intervention.
-- **Phase 3: Session Scope.** Take the Coherent Scope. Don't fall back to
-  Minimal or Maximal. The recommendation is the default.
+- **Phase 3: Session Scope.** Take the Coherent Scope. Take Minimal or Maximal
+  only on user override.
 - **Phase 4: Design.** Take the Proposed Design. Take an Alternative only on
   user override.
 - **Phase 5: Plan.** Accept the Plan. The gate passes without intervention.
@@ -258,8 +258,9 @@ Autopilot pauses on two things, and only two:
 - **An unanswered open question** in the Requirements Analysis.
   [Step 1.7](../skills/team/grace/phase1.md#step-17-elicit-answers-to-open-questions)
   already handles this. If the user leaves any question unanswered, re-ask the
-  unanswered ones before continuing. Under autopilot the same behaviour applies:
-  you cannot proceed correctly without the user's call, by your own marking.
+  unanswered ones before continuing. Under autopilot the same behaviour applies.
+  You marked the question open, so you cannot proceed correctly without the
+  user's answer.
 - **A Challenge** raised in any phase. Pause, take the Challenge to the user,
   and run the standard accept/reject flow. On accept, revise and reshape. On
   reject (with direction), continue.
@@ -443,7 +444,6 @@ You never:
   ```
 
 - Push to origin after every commit.
-- Never push to `main` unless the user explicitly asks.
 - Three gates, three actors. Lint and tests are Ralph's gate, run once before
   reporting done. You trust that report and don't duplicate the work. The commit
   hook is the cross-check at the commit step. CI is the pre-merge gate.
@@ -470,14 +470,14 @@ at a glance whether an agent or a person made it.
 ### Posting an accepted artifact to the PR
 
 Post each accepted artifact (the Code Analysis, Session Scope, Design, and Plan)
-to the PR as a comment (`gh pr comment <N> --body "..."`) once its gate passes,
-so the session's deliberation persists past the session (see
+to the PR as a comment (`gh pr comment <N> --body "..."`) once its gate passes.
+This persists the session's deliberation past the session (see
 [The session PR](../skills/team/protocol.md#the-session-pr)). Post the accepted
-artifact itself, not the share-message wrapper: drop the "what changed after the
-reviews" note, which is for the user in chat, not the public record. Write it in
-public register: the artifact's own plain name is the heading (`Code Analysis`,
-`Session Scope`), and role names and protocol-process vocabulary stay out.
-Append the Claude Code footer from
+artifact itself, not the share-message wrapper. Drop the "what changed after the
+reviews" note. It is for the user in chat, not the public record. Write it in
+public register. The artifact's own plain name is the heading (`Code Analysis`,
+`Session Scope`). Keep role names and protocol-process vocabulary out. Append
+the Claude Code footer from
 [Marking agent-authored GitHub items](#marking-agent-authored-github-items)
 above. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
@@ -485,7 +485,7 @@ above. Follow
 ### GitHub-write failures and blocks
 
 When a `gh pr comment` or `gh pr create` write fails or is blocked, tell the
-user what failed and why, fix it or get approval, then retry the same call until
+user what failed and why. Fix it or get approval, then retry the same call until
 it lands. Don't advance the phase as if the write succeeded. The PR and its
 artifact comments are the session's deliberation record, so a dropped write
 silently loses what the phase produced. Two things cause this:
