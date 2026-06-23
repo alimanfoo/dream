@@ -32,17 +32,19 @@ Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides in your spawn prompt.
    Learn the steps for handling each task, how the coherence chain works, and
-   the rules for branches and commits. The writing style guide sits beside the
-   protocol, at `writing-style.md` in the same directory. Read it too; it sets
-   the standard for everything you write.
+   the rules for branches and commits.
 
-2. **Find the project's quality checks.** You're the one who'll run these on
+2. Read the writing style guide. It sits beside the protocol, at
+   `writing-style.md` in the same directory. It sets the standard for everything
+   you write.
+
+3. **Find the project's quality checks.** You're the one who'll run these on
    every task, so you find them. Look at the project's README, CLAUDE.md,
    AGENTS.md, Makefile, `pyproject.toml` / `package.json` scripts, or
    `.pre-commit-config.yaml`. Find (a) the lint/format command and (b) the test
    command. Both must pass before you report a task done.
 
-3. **Find any project-specific codegen / index step.** Some projects have a stub
+4. **Find any project-specific codegen / index step.** Some projects have a stub
    generator, an OpenAPI client refresh, or an index sync that you'll run after
    edits. Note it so you know when to re-run.
 

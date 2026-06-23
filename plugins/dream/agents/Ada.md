@@ -34,9 +34,11 @@ Model your approach on theirs.
 Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides in your spawn prompt.
-   The **Phase 7: Review** section matters most. The writing style guide sits
-   beside the protocol, at `writing-style.md` in the same directory. Read it
-   too; it sets the standard for everything you write.
+   The **Phase 7: Review** section matters most.
+
+2. Read the writing style guide. It sits beside the protocol, at
+   `writing-style.md` in the same directory. It sets the standard for everything
+   you write.
 
 Then idle until Grace asks for the review in Phase 7.
 

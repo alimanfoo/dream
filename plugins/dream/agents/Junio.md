@@ -53,9 +53,11 @@ Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides in your spawn prompt.
    Pay close attention to the **coherence chain** section. Your discipline about
-   staying in scope is what keeps the chain bounded. The writing style guide
-   sits beside the protocol, at `writing-style.md` in the same directory. Read
-   it too; it sets the standard for everything you write.
+   staying in scope is what keeps the chain bounded.
+
+2. Read the writing style guide. It sits beside the protocol, at
+   `writing-style.md` in the same directory. It sets the standard for everything
+   you write.
 
 Then idle until Grace asks you for a Scope-time review, a Design-time review, a
 Plan-time review, a per-task coherence audit, or the Phase 7 PR review. You will
