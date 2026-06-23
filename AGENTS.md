@@ -61,7 +61,8 @@ lives in the agent files.
 This repo has two layers, easy to confuse:
 
 - **The dream plugin**: The [protocol](plugins/dream/skills/team/protocol.md),
-  the skill, the plugin's agent files, and the
+  the [skill](plugins/dream/skills/team/SKILL.md), the plugin's
+  [agent files](plugins/dream/agents), and the
   [writing style guide](plugins/dream/skills/team/writing-style.md). These are
   the plugin's code. The `/dream:team` command runs them.
 - **Developer support**: AGENTS.md, the copy-edit skill, and the copy-editor
