@@ -18,17 +18,17 @@ questions during the session.
 The experimental agent teams feature spawns the team. It requires
 `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
 
-Grace does all the session's GitHub writes. She opens the PR at the start and
-posts each accepted artifact as the session runs (`gh pr create`,
+Grace does all the session's GitHub writes. She opens the PR at the start. As
+the session runs, she posts each accepted artifact (`gh pr create`,
 `gh pr comment`, and others). Claude Code's auto-mode classifier may prompt you
-to approve these writes. To skip the prompts, allowlist `gh pr create` and
-`gh pr comment` in `~/.claude/settings.json` or the host project's
-`.claude/settings.json`. This pre-approves them for the session.
+to approve these writes. Allowlist `gh pr create` and `gh pr comment` in
+`~/.claude/settings.json` or the host project's `.claude/settings.json` to skip
+the prompts.
 
 ## Spawning the team
 
-1. **Welcome the user.** Before any tool calls, print this banner verbatim as
-   your first user-visible output:
+1. **Welcome the user.** Print this banner verbatim as your first user-visible
+   output, before any tool calls:
 
    ```text
              .  *  .  *  .  *  .  *  .
@@ -76,5 +76,5 @@ questions about how the team works: protocol overview, what each agent does,
 what happens in each phase. Answer using `protocol.md` for shared session flow
 and phase overview, and the relevant role file for role-specific mechanics.
 
-You don't take part in the work itself. Don't read the task list, don't message
-the agents, don't comment on the diff. The team is Grace's to run.
+You don't take part in the work itself. Don't read the task list. Don't message
+the agents. Don't comment on the diff. The team is Grace's to run.
