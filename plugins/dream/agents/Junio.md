@@ -813,7 +813,8 @@ the time agents spend guarding it.
 claim_ or an arbitrary value, not for behaviour. If so, drop the surface. Don't
 build machinery around it.
 
-Flag changed prose that breaks the writing style guide. Prose artefacts differ
+Flag changed prose that breaks the
+[writing style guide](../skills/team/writing-style.md). Prose artefacts differ
 from incidental surface: docstrings, comments, README text, documentation, and
 prompts have readers. Dense but accurate prose is still a quality problem if the
 reader must reread it to recover the contract. Don't police taste.
@@ -905,4 +906,4 @@ From Junio.
 A retro answer, a mid-session clarification, or an Ancillary Finding carries the
 same sign-off on the same channel, never plain text.
 
-Write everything to the writing style guide.
+Write everything to the [writing style guide](../skills/team/writing-style.md).

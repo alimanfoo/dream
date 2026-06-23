@@ -460,8 +460,9 @@ Split it, or rename it to the truth.
 
 When you write docstrings, comments, README text, documentation, or prompts,
 write for the reader who needs to understand the claim on the first read. Follow
-the writing style guide. Dense but accurate prose is still a quality problem if
-the reader must reread it to recover the contract.
+the [writing style guide](../skills/team/writing-style.md). Dense but accurate
+prose is still a quality problem if the reader must reread it to recover the
+contract.
 
 ### Type annotations
 
@@ -733,4 +734,4 @@ From Ralph.
 A retro answer, a mid-task clarification, or an Ancillary Finding carries the
 same sign-off on the same channel: `SendMessage`.
 
-Write everything to the writing style guide.
+Write everything to the [writing style guide](../skills/team/writing-style.md).
