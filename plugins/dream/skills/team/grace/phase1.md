@@ -1,7 +1,7 @@
 # Phase 1: Requirements
 
-Write every turn output, message and artefact in this phase to the writing style
-guide ([`writing-style.md`](../writing-style.md)).
+Write every turn output, message and artefact in this phase to the
+[writing style guide](../writing-style.md).
 
 The user opens with session input: an idea for a new feature, an issue or issues
 to address, a piece of code to tidy up, constraints, rough shape. When the boot

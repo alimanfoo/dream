@@ -1,7 +1,7 @@
 # Phase 10: Reflect
 
-Write every turn output, message and artefact in this phase to the writing style
-guide ([`writing-style.md`](../writing-style.md)).
+Write every turn output, message and artefact in this phase to the
+[writing style guide](../writing-style.md).
 
 After post-merge triage, offer the user an optional retrospective: _"Run a
 retrospective?"_ If the user takes it, run a conversation about what the session
