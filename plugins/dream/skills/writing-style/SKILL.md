@@ -1,20 +1,19 @@
 ---
 name: writing-style
 description:
-  Write prose to this project's writing style guide. Use when you are about to
-  write or revise prose, such as prompts, documentation, messages, or GitHub
-  artefacts, and you want it to follow the house style. To fix prose already
-  written, use the copy-edit skill instead.
+  Write prose to the dream plugin's writing style guide. Use when you are about
+  to write or revise prose, such as prompts, documentation, messages, or GitHub
+  artefacts. To fix prose already written, use the copy-edit skill instead.
 ---
 
 # Writing style
 
-Adopt this project's writing style guide for the prose you write.
+Adopt the dream plugin's writing style guide.
 
 ## Read the guide first
 
 Read the [writing style guide](../../writing-style.md) before you write. It sets
-the standard for everything you write here.
+the standard for everything you write.
 
 ## Follow it as you write
 
