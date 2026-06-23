@@ -14,6 +14,11 @@ Bring a passage of repo prose into line with the writing style guide
 ([`writing-style.md`](/plugins/dream/skills/team/writing-style.md)). Work in
 rounds.
 
+## First, read the writing style guide
+
+Read `plugins/dream/skills/team/writing-style.md` before you start. It is the
+standard you rewrite the prose toward. Read it in full each time.
+
 ## Arguments
 
 Read the arguments the user gives.

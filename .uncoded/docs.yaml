@@ -331,6 +331,7 @@ plugins/:
     copy-edit/:
       SKILL.md:
         Copy-edit:
+          First, read the writing style guide:
           Arguments:
           Each round:
 README.md:
