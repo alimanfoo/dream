@@ -1,5 +1,8 @@
 # Phase 6: Develop
 
+Write every message and artefact in this phase to the writing guide
+([`writing-style.md`](../writing-style.md)).
+
 The main implementation loop. After one setup step, you pick the first task,
 Ralph does the work, Junio audits, and the chain repeats until the list is
 drained. The session branch and draft PR already exist. You created them at

@@ -1,5 +1,8 @@
 # Phase 8: Merge
 
+Write every message and artefact in this phase to the writing guide
+([`writing-style.md`](../writing-style.md)).
+
 The goal is a clean merge. If nothing is in the way (green CI, no conflicts),
 the user merges and the phase ends.
 

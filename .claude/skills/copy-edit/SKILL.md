@@ -1,16 +1,17 @@
 ---
 name: copy-edit
 description:
-  Align a passage of repo prose with WRITING.md. Reviews the prose with a fresh
-  reader and fixes what the review raises, looping until it passes or hits the
-  cap. By default it reviews the prose you changed. Name a file or section to
-  review that instead.
+  Align a passage of repo prose with the writing guide (writing-style.md).
+  Reviews the prose with a fresh reader and fixes what the review raises,
+  looping until it passes or hits the cap. By default it reviews the prose you
+  changed. Name a file or section to review that instead.
 argument-hint: "[target] [max-iterations]"
 ---
 
 # Copy-edit
 
-Bring a passage of repo prose into line with WRITING.md. Work in rounds.
+Bring a passage of repo prose into line with the writing guide
+(`writing-style.md`). Work in rounds.
 
 ## Arguments
 

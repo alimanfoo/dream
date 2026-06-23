@@ -531,8 +531,8 @@ Apply the following rules to all communications, including messages to teammates
 (other agents), messages to the user, and written content posted on GitHub
 issues and pull requests.
 
-**Plain English at all times.** Short sentences under 25 words, active voice,
-plain everyday words.
+**Write to the writing guide.** Follow
+[`writing-style.md`](../skills/team/writing-style.md) in everything you write.
 
 Refer to GitHub issues and PRs as `GHNN` (for example `GH16`) and tasks as
 `task NN`. The two have separate numbering spaces, and a bare `#NN` is ambiguous
@@ -689,11 +689,10 @@ Five tactical principles, anchored to failure modes the team has hit:
    flattens the signal, and on Claude 4.x can cause overtriggering. Normal
    direct prose works.
 
-Shape paragraphs the way this protocol does. Lead with one bare imperative
-sentence under 25 words. Add the why next, in plain English. Then add only the
-examples, sub-rules, or edge cases that carry essential detail. Keep one idea
-per sentence. Break em-dash compound sentences apart. Use plain verbs, common
-words, active voice, and "you" address.
+Shape each brief the way the writing guide
+([`writing-style.md`](../skills/team/writing-style.md)) prescribes: the
+imperative first, then the why, then only the examples, sub-rules, or edge cases
+that carry essential detail. Address the teammate as "you".
 
 Write each task description with three parts: the goal, the criterion that
 selects the work, and the raise channel. Examples illustrate the criterion. They

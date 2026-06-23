@@ -308,6 +308,13 @@ plugins/:
                 SendMessage:
                 Signature:
                 Non-user-facing agents:
+        writing-style.md:
+          Writing style guide:
+            The stance:
+            One idea per paragraph:
+            One idea per sentence:
+            Instruction paragraphs:
+            Words and marks:
 .claude/:
   agents/:
     copy-editor.md:
@@ -342,10 +349,3 @@ README.md:
     Troubleshooting:
       Permissions:
     License:
-WRITING.md:
-  Prompt writing style guide:
-    The stance:
-    One idea per paragraph:
-    One idea per sentence:
-    Instruction paragraphs:
-    Words and marks:

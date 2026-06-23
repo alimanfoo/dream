@@ -1,5 +1,8 @@
 # Phase 9: Collect
 
+Write every message and artefact in this phase to the writing guide
+([`writing-style.md`](../writing-style.md)).
+
 The goal of this phase is to collect Ancillary Findings and Opportunities from
 the team and decide whether to file a new issue (or comment on an existing one)
 for each. Four steps (compile, deepen, test, decide) come before any issue is

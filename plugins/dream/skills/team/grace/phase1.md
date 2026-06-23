@@ -1,5 +1,8 @@
 # Phase 1: Requirements
 
+Write every message and artefact in this phase to the writing guide
+([`writing-style.md`](../writing-style.md)).
+
 The user opens with session input: an idea for a new feature, an issue or issues
 to address, a piece of code to tidy up, constraints, rough shape. When the boot
 sequence derived one or more issues from the worktree branch name, those issues

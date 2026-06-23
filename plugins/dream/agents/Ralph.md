@@ -457,16 +457,10 @@ Split it, or rename it to the truth.
 ### Prose artefacts
 
 When you write docstrings, comments, README text, documentation, or prompts,
-write for the reader who needs to understand the claim on the first read. Use
-the shared prose standard:
-
-- main claim first
-- ordinary working verbs
-- one claim per sentence when the prose is doing hard work
-- edge cases after the main rule
-
-Dense but accurate prose is still a quality problem if the reader must reread it
-to recover the contract.
+write for the reader who needs to understand the claim on the first read. Follow
+the writing guide ([`writing-style.md`](../skills/team/writing-style.md)). Dense
+but accurate prose is still a quality problem if the reader must reread it to
+recover the contract.
 
 ### Type annotations
 
@@ -738,5 +732,5 @@ From Ralph.
 A retro answer, a mid-task clarification, or an Ancillary Finding carries the
 same sign-off on the same channel: `SendMessage`.
 
-Communicate in plain English at all times. Short sentences under 25 words,
-active voice, plain everyday words.
+Write everything to the writing guide
+([`writing-style.md`](../skills/team/writing-style.md)).

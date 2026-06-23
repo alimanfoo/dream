@@ -1,5 +1,8 @@
 # Phase 3: Scope
 
+Write every message and artefact in this phase to the writing guide
+([`writing-style.md`](../writing-style.md)).
+
 The goal of this phase is the accepted Session Scope: what the team commits to
 doing in the current session. You draft the Scope Options, get one round of
 review from Junio and Ralph, revise, and share with the user for acceptance.

@@ -60,12 +60,18 @@ lives in the agent files.
 
 This repo has two layers, easy to confuse:
 
-- **The dream plugin**: `protocol.md`, the skill, and the plugin's agent files.
-  These are the plugin's code. The `/dream:team` command runs them.
-- **Developer support**: AGENTS.md, WRITING.md, the copy-edit skill, and the
-  copy-editor agent. These support plugin development. They are not part of the
-  installed plugin. (`CLAUDE.md` is a symlink to AGENTS.md. Edit `AGENTS.md`
-  directly. Some editors refuse to write through a symlink.)
+- **The dream plugin**: `protocol.md`, the skill, the plugin's agent files, and
+  the writing style guide (`writing-style.md`). These are the plugin's code. The
+  `/dream:team` command runs them.
+- **Developer support**: AGENTS.md, the copy-edit skill, and the copy-editor
+  agent. These support plugin development. They are not part of the installed
+  plugin. (`CLAUDE.md` is a symlink to AGENTS.md. Edit `AGENTS.md` directly.
+  Some editors refuse to write through a symlink.)
+
+The writing style guide sits in the plugin because the dream-team agents read it
+at runtime, when no repo-root file is in reach. The copy-edit skill and
+copy-editor agent are developer support, but they follow the same guide. So the
+prose standard has one home that both layers share.
 
 Two ways they get crossed:
 
@@ -232,9 +238,9 @@ needs it at all.
 
 ### Instruction paragraphs
 
-WRITING.md sets the shape of an instruction paragraph: the imperative first,
-then the why, then examples, then exceptions. An agent instruction adds rules of
-its own to that shape.
+The writing guide (`writing-style.md`) sets the shape of an instruction
+paragraph: the imperative first, then the why, then examples, then exceptions.
+An agent instruction adds rules of its own to that shape.
 
 The why is the one that motivates the act, not the one that motivates the
 design. The reason the protocol or the prompt is _built_ this way (design
@@ -293,8 +299,9 @@ once.
 
 ## Writing prose
 
-The prose standard for this repo is [`WRITING.md`](WRITING.md). Follow it for
-every prose artifact: agent prompts, the protocol, skill bodies, these dev
+The prose standard for this repo is the writing guide
+([`writing-style.md`](plugins/dream/skills/team/writing-style.md)). Follow it
+for every prose artifact: agent prompts, the protocol, skill bodies, these dev
 notes. When writing rules and instructions for the dream-team agents, see also
 [Writing agent prompts](#writing-agent-prompts).
 
