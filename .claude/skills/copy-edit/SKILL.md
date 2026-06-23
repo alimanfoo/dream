@@ -17,7 +17,7 @@ rounds.
 ## First, read the writing style guide
 
 Read `plugins/dream/skills/team/writing-style.md` before you start. It is the
-standard you rewrite the prose toward. Read it in full each time.
+standard you rewrite the prose toward.
 
 ## Arguments
 
