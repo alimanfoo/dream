@@ -690,9 +690,8 @@ Five tactical principles, anchored to failure modes the team has hit:
    direct prose works.
 
 Shape each brief the way the writing guide
-([`writing-style.md`](../skills/team/writing-style.md)) prescribes: the
-imperative first, then the why, then only the examples, sub-rules, or edge cases
-that carry essential detail. Address the teammate as "you".
+([`writing-style.md`](../skills/team/writing-style.md)) prescribes. Address the
+teammate as "you".
 
 Write each task description with three parts: the goal, the criterion that
 selects the work, and the raise channel. Examples illustrate the criterion. They
