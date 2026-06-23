@@ -18,8 +18,8 @@ the standard for everything you write.
 ## Follow it as you write
 
 Write to the guide from here on. Apply it as you draft, and again as you revise.
-It covers prompts, documentation, the messages you send, and the artefacts you
-write for GitHub.
+It covers prompts, documentation, the messages you send, the artefacts you write
+for GitHub, and what you write to the user.
 
 ## For prose already written, use copy-edit
 
