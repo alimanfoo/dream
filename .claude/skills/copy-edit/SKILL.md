@@ -11,8 +11,8 @@ argument-hint: "[target] [max-iterations]"
 # Copy-edit
 
 Bring a passage of repo prose into line with the writing style guide
-([`writing-style.md`](../../../plugins/dream/skills/team/writing-style.md)).
-Work in rounds.
+([`writing-style.md`](/plugins/dream/skills/team/writing-style.md)). Work in
+rounds.
 
 ## Arguments
 
