@@ -1,10 +1,10 @@
 ---
 name: copy-edit
 description:
-  Align a passage of prose with the writing style guide. Reviews the prose with
-  a fresh reader and fixes what the review raises, looping until it passes or
-  hits the cap. By default it reviews the prose you changed. Name a file or
-  section to review that instead.
+  Bring a passage of prose into line with the writing style guide. Reviews the
+  prose with a fresh reader, then fixes what the review raises. Loops until the
+  prose passes or it hits the cap. By default it reviews the prose you changed.
+  Name a file or section to review that instead.
 argument-hint: "[target] [max-iterations]"
 ---
 

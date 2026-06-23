@@ -10,23 +10,30 @@ person or an automated tool.
 - Write to inform, not to impress.
 - Your readers include people who do not speak English as a first language, and
   agents that act on every word. Write so neither can misread you.
-- Aim for a reading age of about 11. Age 9 is better. When in doubt, make it
-  simpler.
+- Aim for a reading age of about 11. Age 9 is better. Make it simpler when in
+  doubt.
 
 ## One idea per paragraph
 
 - Each paragraph carries one idea. Name it in the first sentence.
 - Every sentence must earn its place. Cut any sentence that does not serve the
   paragraph's idea.
-- Say it once. Do not repeat a point. For example, "this holds only when X"
-  already says "if not X, it does not". Do not add the inverse.
+- Say it once. For example, "this holds only when X" already says "if not X, it
+  does not". Do not add the inverse.
 - If a paragraph holds two ideas, split it.
 
 ## One idea per sentence
 
 - Put one idea in each sentence.
 - Keep an instruction to 20 words or fewer. Keep a description to 25 or fewer.
-- Use active voice.
+  For example:
+  - "If the request times out, log the error and retry once. A single retry
+    usually clears a brief network glitch.", not "If the request times out, log
+    the error and retry once, because a single retry usually clears a brief
+    network glitch."
+- Use active voice. For example:
+  - "The parser reads the file before validation.", not "The file is read by the
+    parser before validation."
 - Name the actor. Say who or what does the action, not "the trap is" or "there
   is".
 - Lead with what to do. Add what not to do only to support it.
@@ -38,10 +45,15 @@ person or an automated tool.
 Build an instruction in four parts, in this order: the imperative, the why,
 examples, exceptions.
 
-- Open with the verb, so the reader sees what to do first.
+- Open with the verb, so the reader sees what to do first. For example:
+  - "Pull the latest main before you branch, to avoid a conflict.", not "To
+    avoid a conflict, pull the latest main before you branch."
 - Give the why. Say what the instruction defends, or why a default is risky.
 - Give one to three examples. They show the rule. They do not bound it.
-- Put exceptions last. An edge case comes after the main rule, never before.
+- Put exceptions last. An edge case comes after the main rule, never before. For
+  example:
+  - "Save on exit. If the file is read-only, skip it.", not "Unless the file is
+    read-only, save on exit."
 
 A bare imperative is enough when the act is obvious. Skip the parts you do not
 need. But hold the order. A why before the verb, or an exception before the
@@ -67,12 +79,15 @@ rule, makes the reader decode before they can act.
   drop a dash, split the aside into its own sentence. For example:
   - "The script handled country and region. Now it handles country only.", not
     "The script — which handled country and region — handles country only."
-- Skip the flourish. No three-part lists for effect. No neat opposites. No
-  clever closing line.
+- Skip the flourish. No filler opener. No three-part lists for effect. No neat
+  opposites. No clever closing line. For example:
+  - "The cache is the bottleneck.", not "Here's my honest take: the cache is the
+    bottleneck."
 
 ## Text for GitHub
 
 Write each paragraph on a single line when GitHub renders it: pull request and
 issue descriptions, and comments. GitHub reflows each paragraph to the reader's
-window, so a hard-wrapped paragraph shows as stair-step lines. Newlines inside
-fenced code blocks and between table rows are structural. Leave those alone.
+window, so a hard-wrapped paragraph breaks into short, uneven lines. Newlines
+inside fenced code blocks and between table rows are structural. Leave those
+alone.

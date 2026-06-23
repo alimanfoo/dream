@@ -15,11 +15,15 @@ Adopt the dream plugin's writing style guide.
 Read the [writing style guide](../../writing-style.md) before you write. It sets
 the standard for everything you write.
 
+## Reply with a brief confirmation
+
+Confirm that the guide is loaded, then stop. Do not summarise it or restate its
+rules. The guide is in your context now, so repeating it wastes the user's
+attention.
+
 ## Follow it as you write
 
 Write to the guide from here on. Apply it as you draft, and again as you revise.
-It covers prompts, documentation, the messages you send, the artefacts you write
-for GitHub, and what you write to the user.
 
 ## For prose already written, use copy-edit
 
