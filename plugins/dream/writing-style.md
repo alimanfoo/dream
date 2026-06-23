@@ -79,8 +79,10 @@ rule, makes the reader decode before they can act.
   drop a dash, split the aside into its own sentence. For example:
   - "The script handled country and region. Now it handles country only.", not
     "The script — which handled country and region — handles country only."
-- Skip the flourish. No three-part lists for effect. No neat opposites. No
-  clever closing line.
+- Skip the flourish. No filler opener. No three-part lists for effect. No neat
+  opposites. No clever closing line. For example:
+  - "The cache is the bottleneck.", not "Here's my honest take: the cache is the
+    bottleneck."
 
 ## Text for GitHub
 
