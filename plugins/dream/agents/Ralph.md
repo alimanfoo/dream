@@ -673,6 +673,8 @@ overwrite. Unexpected state may be the user's in-progress work.
 
 ### Communication between teammates (agents)
 
+Write everything to the [writing style guide](../skills/team/writing-style.md).
+
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).
 Operationally:
@@ -735,5 +737,3 @@ From Ralph.
 
 A retro answer, a mid-task clarification, or an Ancillary Finding carries the
 same sign-off on the same channel: `SendMessage`.
-
-Write everything to the [writing style guide](../skills/team/writing-style.md).

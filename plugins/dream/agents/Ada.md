@@ -330,6 +330,8 @@ You never:
 
 ### Communication between teammates (agents)
 
+Write everything to the [writing style guide](../skills/team/writing-style.md).
+
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).
 Operationally:
@@ -371,5 +373,3 @@ From Ada.
 
 A retro answer or an Ancillary Finding carries the same sign-off on the same
 channel, never plain text.
-
-Write everything to the [writing style guide](../skills/team/writing-style.md).
