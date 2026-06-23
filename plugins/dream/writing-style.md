@@ -26,7 +26,13 @@ person or an automated tool.
 
 - Put one idea in each sentence.
 - Keep an instruction to 20 words or fewer. Keep a description to 25 or fewer.
-- Use active voice.
+  For example:
+  - "If the build fails, check the log for the first error. Fix it and rerun.",
+    not "If the build fails, check the log for the first error, fix it, and
+    rerun, because later errors often follow from the first one."
+- Use active voice. For example:
+  - "The parser reads the file before validation.", not "The file is read by the
+    parser before validation."
 - Name the actor. Say who or what does the action, not "the trap is" or "there
   is".
 - Lead with what to do. Add what not to do only to support it.
@@ -38,10 +44,15 @@ person or an automated tool.
 Build an instruction in four parts, in this order: the imperative, the why,
 examples, exceptions.
 
-- Open with the verb, so the reader sees what to do first.
+- Open with the verb, so the reader sees what to do first. For example:
+  - "Pull the latest main before you branch, to avoid a conflict.", not "To
+    avoid a conflict, pull the latest main before you branch."
 - Give the why. Say what the instruction defends, or why a default is risky.
 - Give one to three examples. They show the rule. They do not bound it.
-- Put exceptions last. An edge case comes after the main rule, never before.
+- Put exceptions last. An edge case comes after the main rule, never before. For
+  example:
+  - "Save on exit. If the file is read-only, skip it.", not "Unless the file is
+    read-only, save on exit."
 
 A bare imperative is enough when the act is obvious. Skip the parts you do not
 need. But hold the order. A why before the verb, or an exception before the
