@@ -16,7 +16,7 @@ applies them.
 ## First, read the writing style guide
 
 Read `plugins/dream/skills/team/writing-style.md` before you start. It is the
-standard you copy-edit against. Read it in full each time.
+standard you copy-edit against.
 
 ## Judge only what you are given
 
