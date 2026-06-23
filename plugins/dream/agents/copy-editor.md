@@ -63,8 +63,7 @@ Write the full record to a temporary file outside this repo. Keep it out of the
 author's working tree. Name the file after the passage you are reviewing, so
 reviews running in parallel land in different files.
 
-This file is the only thing you may write. Never edit the prose you review. The
-author applies the fixes.
+This file is the only thing you may write. Never edit the prose you review.
 
 Give each finding in the file these parts:
 
