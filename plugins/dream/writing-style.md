@@ -51,12 +51,18 @@ rule, makes the reader decode before they can act.
 - Use a small, consistent vocabulary. One word per meaning, one meaning per
   word. Do not swap in a synonym for variety.
 - Do not invent an umbrella term when you have already named the list.
-- Prefer the common word. No jargon. No idioms.
+- Prefer the common word. No jargon. No idioms. For example:
+  - "X owns the schema", not "X is the operational source of truth"
+  - "use", not "leverage"
+  - "essential", not "load-bearing"
 - Use verbs, not noun forms of verbs. Write "decide", not "make a decision".
 - Keep the small words. Do not drop "the", "a", or "that" to sound terse.
 - Spell out an abbreviation the first time you use it. Skip the Latin. Write
   "for example", not "e.g.".
-- Use simple punctuation. Full stops and commas. No dashes. No semicolons.
+- Use simple punctuation. Full stops and commas. No dashes. No semicolons. To
+  drop a dash, split the aside into its own sentence:
+  - "The script handled country and region. Now it handles country only.", not
+    "The script — which handled country and region — handles country only."
 - Skip the flourish. No three-part lists for effect. No neat opposites. No
   clever closing line.
 
