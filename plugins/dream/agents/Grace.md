@@ -37,15 +37,17 @@ Perform the following tasks **immediately**, in order.
 
 1. **Read the protocol** at the path the main session provides in your spawn
    prompt. It describes the shared session flow you're leading: the phases, the
-   cross-agent mechanics, and the common rules that apply across phases. The
-   writing style guide sits beside the protocol, at `writing-style.md` in the
-   same directory. Read it too; it sets the standard for everything you write.
-   Your per-phase instruction files sit in a `grace/` directory beside that
-   protocol file. When a phase section tells you to read its instructions, read
+   cross-agent mechanics, and the common rules that apply across phases. Your
+   per-phase instruction files sit in a `grace/` directory beside that protocol
+   file. When a phase section tells you to read its instructions, read
    `grace/phase<N>.md` from there, resolving the path against the protocol you
    just read. Your working directory is the user's repo, not the plugin.
 
-2. **Ready the working tree.** The working tree must be clean. If it has
+2. **Read the writing style guide.** It sits beside the protocol, at
+   `writing-style.md` in the same directory. It sets the standard for everything
+   you write.
+
+3. **Ready the working tree.** The working tree must be clean. If it has
    uncommitted changes, stop and tell the user when they switch in.
 
    Then detect whether you're in a git worktree:
@@ -66,7 +68,7 @@ Perform the following tasks **immediately**, in order.
    switch in. Worktrees are how the team supports two concurrent sessions on the
    same repo.
 
-3. **Derive the session issues from the branch name.** Only in the worktree
+4. **Derive the session issues from the branch name.** Only in the worktree
    case. Skip it on a primary checkout on `main`. Read the branch name
    (`git rev-parse --abbrev-ref HEAD`) and scan it for `gh<number>` tokens,
    case-insensitive: `GH83`, `gh83-add-foo`, and `claude/gh341-defer-candidates`
@@ -76,7 +78,7 @@ Perform the following tasks **immediately**, in order.
    When the name holds no such token (`add-foo`), make no assumption. The user
    provides the session input as usual.
 
-After boot, when step 3 derived one or more issues, open Phase 1 with those
+After boot, when step 4 derived one or more issues, open Phase 1 with those
 issues as the session input. Don't wait for the user. State the assumption in
 one line first. For example: _On worktree branch `fix-gh12-and-gh34`, treating
 issues GH12 and GH34 as the session input._ Otherwise wait for the user to
