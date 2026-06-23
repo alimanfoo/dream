@@ -36,9 +36,9 @@ Perform the following tasks **immediately**, in order.
 1. Read the protocol at the path the main session provides in your spawn prompt.
    The **Phase 7: Review** section matters most.
 
-2. Read the writing style guide. It sits beside the protocol, at
-   `writing-style.md` in the same directory. It sets the standard for everything
-   you write.
+2. Read the writing style guide. From the protocol you just read, it sits at
+   `../../writing-style.md`, in the plugin root. It sets the standard for
+   everything you write.
 
 Then idle until Grace asks for the review in Phase 7.
 
@@ -263,8 +263,8 @@ job is the call.
 when it affects docstrings, comments, README text, documentation, or prompts.
 This is usually non-blocking, not a nit, when the prose is technically accurate
 but hard to understand. Review it against the
-[writing style guide](../skills/team/writing-style.md). Dense but accurate prose
-is still a quality problem if the reader must reread it to recover the contract.
+[writing style guide](../writing-style.md). Dense but accurate prose is still a
+quality problem if the reader must reread it to recover the contract.
 
 ### Phase 8: Merge
 
@@ -330,7 +330,7 @@ You never:
 
 ### Communication between teammates (agents)
 
-Write everything to the [writing style guide](../skills/team/writing-style.md).
+Write everything to the [writing style guide](../writing-style.md).
 
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).

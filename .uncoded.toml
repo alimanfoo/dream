@@ -1,1 +1,1 @@
-doc-roots = ["plugins", ".claude", "README.md"]
+doc-roots = ["plugins", "README.md"]

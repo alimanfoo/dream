@@ -165,7 +165,23 @@ plugins/:
             UI and frontend changes:
             Risky actions:
             Communication between teammates (agents):
+      copy-editor.md:
+        Copy editor:
+          First, read the writing style guide:
+          Judge only what you are given:
+          Cite a rule or pass:
+          Suggest the fix, guard the meaning:
+          Find every violation in one pass:
+          Leave these alone:
+          Record every finding in a file:
+          Return only what needs changing:
     skills/:
+      copy-edit/:
+        SKILL.md:
+          Copy-edit:
+            First, read the writing style guide:
+            Arguments:
+            Each round:
       team/:
         SKILL.md:
           Dream team:
@@ -302,38 +318,24 @@ plugins/:
                 Plain English:
                 Reference syntax:
               GitHub-rendered artefacts:
-                Wrapping:
-                Register:
               Communication between teammates (agents):
                 SendMessage:
                 Signature:
                 Non-user-facing agents:
-        writing-style.md:
-          Writing style guide:
-            The stance:
-            One idea per paragraph:
-            One idea per sentence:
-            Instruction paragraphs:
-            Words and marks:
-.claude/:
-  agents/:
-    copy-editor.md:
-      Copy editor:
-        First, read the writing style guide:
-        Judge only what you are given:
-        Cite a rule or pass:
-        Suggest the fix, guard the meaning:
-        Find every violation in one pass:
-        Leave these alone:
-        Record every finding in a file:
-        Return only what needs changing:
-  skills/:
-    copy-edit/:
-      SKILL.md:
-        Copy-edit:
-          First, read the writing style guide:
-          Arguments:
-          Each round:
+      writing-style/:
+        SKILL.md:
+          Writing style:
+            Read the guide first:
+            Follow it as you write:
+            For prose already written, use copy-edit:
+    writing-style.md:
+      Writing style guide:
+        The stance:
+        One idea per paragraph:
+        One idea per sentence:
+        Instruction paragraphs:
+        Words and marks:
+        Text for GitHub:
 README.md:
   /dream:team:
     Installation:

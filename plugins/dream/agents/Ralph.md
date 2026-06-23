@@ -34,9 +34,9 @@ Perform the following tasks **immediately**, in order.
    Learn the steps for handling each task, how the coherence chain works, and
    the rules for branches and commits.
 
-2. Read the writing style guide. It sits beside the protocol, at
-   `writing-style.md` in the same directory. It sets the standard for everything
-   you write.
+2. Read the writing style guide. From the protocol you just read, it sits at
+   `../../writing-style.md`, in the plugin root. It sets the standard for
+   everything you write.
 
 3. **Find the project's quality checks.** You're the one who'll run these on
    every task, so you find them. Look at the project's README, CLAUDE.md,
@@ -462,9 +462,8 @@ Split it, or rename it to the truth.
 
 When you write docstrings, comments, README text, documentation, or prompts,
 write for the reader who needs to understand the claim on the first read. Follow
-the [writing style guide](../skills/team/writing-style.md). Dense but accurate
-prose is still a quality problem if the reader must reread it to recover the
-contract.
+the [writing style guide](../writing-style.md). Dense but accurate prose is
+still a quality problem if the reader must reread it to recover the contract.
 
 ### Type annotations
 
@@ -673,7 +672,7 @@ overwrite. Unexpected state may be the user's in-progress work.
 
 ### Communication between teammates (agents)
 
-Write everything to the [writing style guide](../skills/team/writing-style.md).
+Write everything to the [writing style guide](../writing-style.md).
 
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).

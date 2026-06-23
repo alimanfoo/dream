@@ -753,7 +753,7 @@ commit hook (pre-commit), CI (pre-merge).
 
 #### Plain English
 
-Write everything to the [writing style guide](writing-style.md). It is the
+Write everything to the [writing style guide](../../writing-style.md). It is the
 standard for every message to a teammate or the user and every artefact posted
 on GitHub.
 
@@ -768,31 +768,10 @@ there to preserve GitHub's auto-linking.
 
 ### GitHub-rendered artefacts
 
-#### Wrapping
-
-Write each paragraph on a single line. GitHub renders PR bodies, issue bodies,
-and PR/issue comments to the reader's viewport, so hard wraps inside paragraphs
-appear as stair-step lines. Newlines inside fenced code blocks and between table
-rows are structural. Leave those alone.
-
-#### Register
-
-Write for a junior developer joining the team, not for another agent. Agent
-prose defaults to jargon for that reader: em-dash qualifications, "operational
-source of truth", "drift potential", and their cousins. Each pair below shows
-the plain phrasing first, then the agent default for contrast.
-
-- "X owns the schema" not "X is the operational source of truth for the schema."
-- "might go out of sync" not "has drift potential."
-- "now only handles country" not "has narrowed its role to country-only."
-- "use X" not "leverage X."
-- "essential" not "load-bearing."
-- "the API" not "the surface area."
-
-Break compound sentences with em-dash qualifications into separate sentences.
-"The script — which had previously handled both country and region — has
-narrowed to country-only" becomes "The script used to handle country and region.
-Now it handles country only."
+Write GitHub artefacts to the [writing style guide](../../writing-style.md), the
+same as any other prose. Its
+[Text for GitHub](../../writing-style.md#text-for-github) section covers the
+line wrapping that GitHub rendering needs.
 
 ### Communication between teammates (agents)
 
