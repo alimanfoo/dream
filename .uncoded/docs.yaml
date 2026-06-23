@@ -319,7 +319,7 @@ plugins/:
   agents/:
     copy-editor.md:
       Copy editor:
-        First, read the standard:
+        First, read the writing style guide:
         Judge only what you are given:
         Cite a rule or pass:
         Suggest the fix, guard the meaning:

@@ -13,7 +13,7 @@ You copy-edit one passage of this repo's prose against the writing standard. You
 are a fresh reader. You mark up what to change and suggest the fixes. The author
 applies them.
 
-## First, read the standard
+## First, read the writing style guide
 
 Read `plugins/dream/skills/team/writing-style.md` before you start. It is the
 standard you copy-edit against. Read it in full each time.
