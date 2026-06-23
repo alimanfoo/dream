@@ -480,8 +480,10 @@ This persists the session's deliberation past the session (see
 artifact itself, not the share-message wrapper. Drop the "what changed after the
 reviews" note. It is for the user in chat, not the public record. Write it in
 public register. The artifact's own plain name is the heading (`Code Analysis`,
-`Session Scope`). Keep role names and protocol-process vocabulary out. Append
-the Claude Code footer from
+`Design`, `Plan`). The Session Scope is the exception. It posts under the
+heading `Scope`, dropping `Session`, which names the working session the PR
+reader doesn't share. Keep role names and protocol-process vocabulary out.
+Append the Claude Code footer from
 [Marking agent-authored GitHub items](#marking-agent-authored-github-items)
 above. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).

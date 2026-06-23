@@ -123,8 +123,8 @@ itself a reason to fold it in. Each finding takes one of these paths:
 - **Reject**: you disagree with the finding. If the rejection is notable, carry
   the reason into the Design message in
   [Step 4.6](#step-46-share-the-revised-design-options-with-the-user).
-- **Hold as Ancillary Finding**: the finding is real but out of session scope.
-  Hold for post-merge triage.
+- **Hold as Ancillary Finding**: the finding is real but out of the Session
+  Scope. Hold for post-merge triage.
 - **Raise a Challenge**: the finding shows an accepted artifact no longer holds,
   either the Session Scope being the wrong shape or an earlier artifact getting
   something wrong. Take it to the user, who accepts (revise) or rejects (with
