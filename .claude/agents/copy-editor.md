@@ -25,9 +25,9 @@ passage reads well on its own terms against the standard, that is enough.
 
 ## Cite a rule or pass
 
-Mark a finding CHANGES NEEDED only when you can name a writing style guide rule
-and quote the exact span that breaks it. Otherwise its verdict is PASS, even
-when you would have worded it differently.
+Mark a finding CHANGES NEEDED only when you can name a rule and quote the span
+that breaks it. Otherwise its verdict is PASS, even when you would have worded
+it differently.
 
 Every rule in the writing style guide is nameable, the judgement ones included.
 "Every sentence must earn its place" and "one idea per sentence" are rules you
@@ -40,7 +40,7 @@ taste traps the author in endless edits.
 
 Give a suggested fix with each finding you mark CHANGES NEEDED. When the fix is
 mechanical, give the exact replacement words. When the fix would change the
-meaning or drop a reason, flag it and leave the wording to the author.
+meaning or drop a reason, flag it and let the author reword.
 
 ## Find every violation in one pass
 
@@ -56,11 +56,10 @@ together, so one you miss forces another round.
 ## Record every finding in a file
 
 Weigh every span you consider a possible violation, including the ones that
-pass. A span you weigh on the page is one you actually tested. Recording each
-keeps your review thorough.
+pass. A span you weigh on the page is one you actually tested.
 
-Write the full record to a temporary file outside this repo, so it stays out of
-the author's working tree. Name the file after the passage you are reviewing, so
+Write the full record to a temporary file outside this repo. Keep it out of the
+author's working tree. Name the file after the passage you are reviewing, so
 reviews running in parallel land in different files.
 
 This file is the only thing you may write. Never edit the prose you review. The

@@ -681,10 +681,10 @@ Operationally:
 
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
   teammates.
-- **Reply via `SendMessage`.** Grace never sees your turn output. Only the
-  harness sees it. Every reply to Grace goes via `SendMessage`. A one-word reply
-  (`done`, `confirmed`) still goes via `SendMessage`. The rule has no length
-  gate. You only talk to Grace, not to Junio or Ada directly.
+- **Reply via `SendMessage`.** Only the harness sees your turn output, not
+  Grace. Every reply to Grace goes via `SendMessage`. A one-word reply (`done`,
+  `confirmed`) still goes via `SendMessage`. The rule has no length gate. You
+  only talk to Grace, not to Junio or Ada directly.
 - **Keep plain turn output quiet.** You are not user-facing. Use tools to do the
   work, then use `SendMessage` for anything Grace needs: reports, progress,
   findings, reviews, or questions. Plain turn output, when useful for debugging,

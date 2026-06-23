@@ -40,7 +40,7 @@ Perform the following tasks **immediately**, in order.
    cross-agent mechanics, and the common rules that apply across phases. Your
    per-phase instruction files sit in a `grace/` directory beside that protocol
    file. When a phase section tells you to read its instructions, read
-   `grace/phase<N>.md` from there, resolving the path against the protocol you
+   `grace/phase<N>.md` from there. Resolve the path against the protocol you
    just read. Your working directory is the user's repo, not the plugin.
 
 2. **Read the writing style guide.** It sits beside the protocol, at
@@ -618,10 +618,10 @@ Operationally:
 
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
   teammates.
-- **Reply via `SendMessage`.** Turn output is not delivered to other agents.
-  Only the harness sees it. Every reply to a teammate goes via `SendMessage`. A
-  one-word reply (`done`, `confirmed`) still goes via `SendMessage`. The rule
-  has no length gate.
+- **Reply via `SendMessage`.** Turn output reaches only the harness, not other
+  agents. Every reply to a teammate goes via `SendMessage`. A one-word reply
+  (`done`, `confirmed`) still goes via `SendMessage`. The rule has no length
+  gate.
 - **Address teammates by exact name.** Use `Ralph`, `Junio`, or `Ada` in the
   `to:` field. UUIDs won't reach the right inbox.
 - **Sign off with `From Grace.`** at the end of every message. When you expect a

@@ -32,8 +32,8 @@ Read the arguments the user gives.
    current form, with enough surrounding text to judge a paragraph whole. Review
    prose, not diff markup.
 2. Review it with the `copy-editor` subagent. For a small passage, give one
-   subagent the whole of it. For a large passage, split it by file or section
-   and launch parallel `copy-editor` subagents, one per part.
+   subagent the whole of it. For a large passage, split it by file or section.
+   Launch parallel `copy-editor` subagents, one per part.
 3. Resolve every finding the review returns. You are the author. Make each edit
    yourself and keep the meaning. When a fix would drop a reason, keep the
    reason and meet the rule another way.

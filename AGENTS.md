@@ -15,8 +15,8 @@ what "good" means here. A change that needs the human to catch a mistake, carry
 a decision between sessions, or clean up afterwards is an autonomy failure.
 
 **Coherent** means everything fits and stays fitting. Each session leaves the
-codebase whole, so the next builds on solid ground. No drift, no rot, no
-periodic human rescue.
+codebase whole, so the next builds on solid ground. The codebase does not drift,
+rot, or need periodic human rescue.
 
 The dream is the axiom every design decision answers to. Does this make
 agent-led coding more sustainable on its own, or does it lean on the human to
@@ -31,9 +31,9 @@ completely. Intent is value judgement, so it stays with the human. This gives a
 test for every human touch. A coherence touch is the human spotting a duplicated
 fact, catching drift, or cleaning up after the team. It is a defect the protocol
 should have caught, so design it out. An intent touch is choosing scope or
-accepting a trade-off at a gate. It is the system working, so keep it. Drive
-coherence touches toward zero. Hold intent touches in place. The acceptance
-gates are the channel intent comes through: make them cheap, never remove them.
+accepting a trade-off at a gate. It is the system working, so keep it. Reduce
+coherence touches to zero. Keep intent touches. The acceptance gates are the
+channel intent comes through: make them cheap, never remove them.
 
 Sustaining coherence over a long horizon is a memory problem. Each session is a
 fresh mind with no memory of the last. So coherence-decisions can only live in
@@ -201,8 +201,8 @@ Three notes on how the plugin answers these:
 sycophantic produces no tokens and changes nothing (see "Writing agent
 prompts"). Instead the plugin assigns a role whose job is the missing
 disposition (Ada's fresh read, Junio's audit), a gate that forces the act, or an
-artifact that carries a decision past the session that made it. The trait
-doesn't change. The structure around it does.
+artifact that carries a decision past the session that made it. The plugin
+changes the structure around the trait, not the trait itself.
 
 **Exploit agent traits rather than fight them.** Literal-mindedness and
 over-eagerness are two examples, not the only ones. Literal-mindedness becomes a
@@ -349,8 +349,8 @@ Two ways to divide the work, for two different jobs:
   steps versus the common rules) so the partitions don't overlap, and give the
   largest file more than one agent.
 
-Reach for divergent lenses when hunting for the unknown. Reach for the
-partitioned single lens when applying a standard you already hold.
+Use divergent lenses when you do not yet know what problems exist. Use the
+partitioned single lens when you have a standard to apply.
 
 ## Linting
 
@@ -412,7 +412,7 @@ a later commit materially changes what the PR does.
 ## How to read documentation in this codebase
 
 `.uncoded/docs.yaml` is an orientation outline: it lists every Markdown file and
-its heading hierarchy. Headings are literal text — use `Read` or `grep` to
+its heading hierarchy. Headings are literal text. Use `Read` or `grep` to
 navigate to a section.
 
 <!-- uncoded:docs:end -->
