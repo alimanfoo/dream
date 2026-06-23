@@ -768,13 +768,6 @@ there to preserve GitHub's auto-linking.
 
 ### GitHub-rendered artefacts
 
-#### Wrapping
-
-Write each paragraph on a single line. GitHub renders PR bodies, issue bodies,
-and PR/issue comments to the reader's viewport, so hard wraps inside paragraphs
-appear as stair-step lines. Newlines inside fenced code blocks and between table
-rows are structural. Leave those alone.
-
 #### Register
 
 Write for a junior developer joining the team, not for another agent. Agent

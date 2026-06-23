@@ -59,3 +59,10 @@ rule, makes the reader decode before they can act.
 - Use simple punctuation. Full stops and commas. No dashes. No semicolons.
 - Skip the flourish. No three-part lists for effect. No neat opposites. No
   clever closing line.
+
+## Text for GitHub
+
+Write each paragraph on a single line when GitHub renders it: pull request and
+issue descriptions, and comments. GitHub reflows each paragraph to the reader's
+window, so a hard-wrapped paragraph shows as stair-step lines. Newlines inside
+fenced code blocks and between table rows are structural. Leave those alone.

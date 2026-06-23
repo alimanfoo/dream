@@ -318,7 +318,6 @@ plugins/:
                 Plain English:
                 Reference syntax:
               GitHub-rendered artefacts:
-                Wrapping:
                 Register:
               Communication between teammates (agents):
                 SendMessage:
@@ -337,6 +336,7 @@ plugins/:
         One idea per sentence:
         Instruction paragraphs:
         Words and marks:
+        Text for GitHub:
 README.md:
   /dream:team:
     Installation:
