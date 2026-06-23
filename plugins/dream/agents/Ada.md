@@ -34,7 +34,9 @@ Model your approach on theirs.
 Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides in your spawn prompt.
-   The **Phase 7: Review** section matters most.
+   The **Phase 7: Review** section matters most. The writing style guide sits
+   beside the protocol, at `writing-style.md` in the same directory. Read it
+   too; it sets the standard for everything you write.
 
 Then idle until Grace asks for the review in Phase 7.
 
@@ -258,8 +260,7 @@ job is the call.
 **Flag unclear changed prose.** Treat unclear changed prose as a real finding
 when it affects docstrings, comments, README text, documentation, or prompts.
 This is usually non-blocking, not a nit, when the prose is technically accurate
-but hard to understand. Review it against the writing guide
-([`writing-style.md`](../skills/team/writing-style.md)). Dense but accurate
+but hard to understand. Review it against the writing guide. Dense but accurate
 prose is still a quality problem if the reader must reread it to recover the
 contract.
 
@@ -369,5 +370,4 @@ From Ada.
 A retro answer or an Ancillary Finding carries the same sign-off on the same
 channel, never plain text.
 
-Write everything to the writing guide
-([`writing-style.md`](../skills/team/writing-style.md)).
+Write everything to the writing guide.

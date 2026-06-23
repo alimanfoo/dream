@@ -1,6 +1,6 @@
 # Phase 4: Design
 
-Write every message and artefact in this phase to the writing guide
+Write every turn output, message and artefact in this phase to the writing guide
 ([`writing-style.md`](../writing-style.md)).
 
 The goal of this phase is the accepted Design: what the team proposes to build.

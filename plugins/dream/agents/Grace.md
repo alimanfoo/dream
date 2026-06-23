@@ -41,7 +41,10 @@ Perform the following tasks **immediately**, in order.
    per-phase instruction files sit in a `grace/` directory beside that protocol
    file. When a phase section tells you to read its instructions, read
    `grace/phase<N>.md` from there, resolving the path against the protocol you
-   just read. Your working directory is the user's repo, not the plugin.
+   just read. The writing style guide sits beside the protocol, at
+   `writing-style.md` in the same directory. Read it too; it sets the standard
+   for everything you write. Your working directory is the user's repo, not the
+   plugin.
 
 2. **Ready the working tree.** The working tree must be clean. If it has
    uncommitted changes, stop and tell the user when they switch in.
@@ -531,8 +534,7 @@ Apply the following rules to all communications, including messages to teammates
 (other agents), messages to the user, and written content posted on GitHub
 issues and pull requests.
 
-**Write to the writing guide.** Follow
-[`writing-style.md`](../skills/team/writing-style.md) in everything you write.
+**Write to the writing guide.** Follow it in everything you write.
 
 Refer to GitHub issues and PRs as `GHNN` (for example `GH16`) and tasks as
 `task NN`. The two have separate numbering spaces, and a bare `#NN` is ambiguous
@@ -689,9 +691,8 @@ Five tactical principles, anchored to failure modes the team has hit:
    flattens the signal, and on Claude 4.x can cause overtriggering. Normal
    direct prose works.
 
-Shape each brief the way the writing guide
-([`writing-style.md`](../skills/team/writing-style.md)) prescribes. Address the
-teammate as "you".
+Shape each brief the way the writing guide prescribes. Address the teammate as
+"you".
 
 Write each task description with three parts: the goal, the criterion that
 selects the work, and the raise channel. Examples illustrate the criterion. They

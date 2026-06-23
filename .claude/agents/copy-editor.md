@@ -1,9 +1,9 @@
 ---
 name: copy-editor
 description:
-  Copy-edits a passage of repo prose against the writing guide
-  (writing-style.md). Returns the findings that need changing, each with a cited
-  rule and a suggested fix. Does not edit the prose.
+  Copy-edits a passage of repo prose against the writing guide. Returns the
+  findings that need changing, each with a cited rule and a suggested fix. Does
+  not edit the prose.
 tools: Read, Grep, Glob, Write
 ---
 

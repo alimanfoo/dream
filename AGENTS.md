@@ -238,9 +238,11 @@ needs it at all.
 
 ### Instruction paragraphs
 
-The writing guide (`writing-style.md`) sets the shape of an instruction
-paragraph: the imperative first, then the why, then examples, then exceptions.
-An agent instruction adds rules of its own to that shape.
+The writing guide
+([`writing-style.md`](plugins/dream/skills/team/writing-style.md)) sets the
+shape of an instruction paragraph: the imperative first, then the why, then
+examples, then exceptions. An agent instruction adds rules of its own to that
+shape.
 
 The why is the one that motivates the act, not the one that motivates the
 design. The reason the protocol or the prompt is _built_ this way (design

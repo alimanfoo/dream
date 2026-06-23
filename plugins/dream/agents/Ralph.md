@@ -32,7 +32,9 @@ Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides in your spawn prompt.
    Learn the steps for handling each task, how the coherence chain works, and
-   the rules for branches and commits.
+   the rules for branches and commits. The writing style guide sits beside the
+   protocol, at `writing-style.md` in the same directory. Read it too; it sets
+   the standard for everything you write.
 
 2. **Find the project's quality checks.** You're the one who'll run these on
    every task, so you find them. Look at the project's README, CLAUDE.md,
@@ -458,9 +460,8 @@ Split it, or rename it to the truth.
 
 When you write docstrings, comments, README text, documentation, or prompts,
 write for the reader who needs to understand the claim on the first read. Follow
-the writing guide ([`writing-style.md`](../skills/team/writing-style.md)). Dense
-but accurate prose is still a quality problem if the reader must reread it to
-recover the contract.
+the writing guide. Dense but accurate prose is still a quality problem if the
+reader must reread it to recover the contract.
 
 ### Type annotations
 
@@ -732,5 +733,4 @@ From Ralph.
 A retro answer, a mid-task clarification, or an Ancillary Finding carries the
 same sign-off on the same channel: `SendMessage`.
 
-Write everything to the writing guide
-([`writing-style.md`](../skills/team/writing-style.md)).
+Write everything to the writing guide.

@@ -1,6 +1,6 @@
 # Phase 2: Code Analysis
 
-Write every message and artefact in this phase to the writing guide
+Write every turn output, message and artefact in this phase to the writing guide
 ([`writing-style.md`](../writing-style.md)).
 
 The goal of this phase is the accepted Code Analysis: a verifiable read of what
