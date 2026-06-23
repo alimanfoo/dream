@@ -10,8 +10,7 @@ argument-hint: "[target] [max-iterations]"
 
 # Copy-edit
 
-Bring a passage of repo prose into line with the writing style guide
-([`writing-style.md`](/plugins/dream/skills/team/writing-style.md)). Work in
+Bring a passage of repo prose into line with the writing style guide. Work in
 rounds.
 
 ## First, read the writing style guide
