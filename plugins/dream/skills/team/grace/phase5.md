@@ -1,7 +1,7 @@
 # Phase 5: Plan
 
-Write every turn output, message and artefact in this phase to the writing guide
-([`writing-style.md`](../writing-style.md)).
+Write every turn output, message and artefact in this phase to the writing style
+guide ([`writing-style.md`](../writing-style.md)).
 
 The goal of this phase is the accepted Plan, the task list that delivers the
 Design within the Session Scope. You compose a Draft Plan, get one round of

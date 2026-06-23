@@ -238,7 +238,7 @@ needs it at all.
 
 ### Instruction paragraphs
 
-The writing guide
+The writing style guide
 ([`writing-style.md`](plugins/dream/skills/team/writing-style.md)) sets the
 shape of an instruction paragraph: the imperative first, then the why, then
 examples, then exceptions. An agent instruction adds rules of its own to that
@@ -301,7 +301,7 @@ once.
 
 ## Writing prose
 
-The prose standard for this repo is the writing guide
+The prose standard for this repo is the writing style guide
 ([`writing-style.md`](plugins/dream/skills/team/writing-style.md)). Follow it
 for every prose artifact: agent prompts, the protocol, skill bodies, these dev
 notes. When writing rules and instructions for the dream-team agents, see also

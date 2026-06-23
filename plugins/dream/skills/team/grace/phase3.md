@@ -1,7 +1,7 @@
 # Phase 3: Scope
 
-Write every turn output, message and artefact in this phase to the writing guide
-([`writing-style.md`](../writing-style.md)).
+Write every turn output, message and artefact in this phase to the writing style
+guide ([`writing-style.md`](../writing-style.md)).
 
 The goal of this phase is the accepted Session Scope: what the team commits to
 doing in the current session. You draft the Scope Options, get one round of

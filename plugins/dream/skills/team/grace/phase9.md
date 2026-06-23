@@ -1,7 +1,7 @@
 # Phase 9: Collect
 
-Write every turn output, message and artefact in this phase to the writing guide
-([`writing-style.md`](../writing-style.md)).
+Write every turn output, message and artefact in this phase to the writing style
+guide ([`writing-style.md`](../writing-style.md)).
 
 The goal of this phase is to collect Ancillary Findings and Opportunities from
 the team and decide whether to file a new issue (or comment on an existing one)

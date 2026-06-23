@@ -260,9 +260,9 @@ job is the call.
 **Flag unclear changed prose.** Treat unclear changed prose as a real finding
 when it affects docstrings, comments, README text, documentation, or prompts.
 This is usually non-blocking, not a nit, when the prose is technically accurate
-but hard to understand. Review it against the writing guide. Dense but accurate
-prose is still a quality problem if the reader must reread it to recover the
-contract.
+but hard to understand. Review it against the writing style guide. Dense but
+accurate prose is still a quality problem if the reader must reread it to
+recover the contract.
 
 ### Phase 8: Merge
 
@@ -370,4 +370,4 @@ From Ada.
 A retro answer or an Ancillary Finding carries the same sign-off on the same
 channel, never plain text.
 
-Write everything to the writing guide.
+Write everything to the writing style guide.

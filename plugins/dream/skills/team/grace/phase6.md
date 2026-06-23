@@ -1,7 +1,7 @@
 # Phase 6: Develop
 
-Write every turn output, message and artefact in this phase to the writing guide
-([`writing-style.md`](../writing-style.md)).
+Write every turn output, message and artefact in this phase to the writing style
+guide ([`writing-style.md`](../writing-style.md)).
 
 The main implementation loop. After one setup step, you pick the first task,
 Ralph does the work, Junio audits, and the chain repeats until the list is
