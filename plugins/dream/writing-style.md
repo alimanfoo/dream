@@ -1,9 +1,8 @@
 # Writing style guide
 
-This guide sets the standard for written text in this project. It covers
-prompts, documentation, the messages the team sends, and the artefacts it writes
-for GitHub. Anyone who writes or reviews that text follows it, whether a person
-or an automated tool.
+This guide sets the standard for written text. It covers prompts, documentation,
+the messages between agents, and the artefacts they write for GitHub. Anyone who
+writes or reviews that text follows it, whether a person or an automated tool.
 
 ## The stance
 

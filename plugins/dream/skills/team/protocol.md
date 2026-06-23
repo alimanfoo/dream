@@ -753,7 +753,7 @@ commit hook (pre-commit), CI (pre-merge).
 
 #### Plain English
 
-Write everything to the [writing style guide](writing-style.md). It is the
+Write everything to the [writing style guide](../../writing-style.md). It is the
 standard for every message to a teammate or the user and every artefact posted
 on GitHub.
 
