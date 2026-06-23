@@ -10,16 +10,16 @@ person or an automated tool.
 - Write to inform, not to impress.
 - Your readers include people who do not speak English as a first language, and
   agents that act on every word. Write so neither can misread you.
-- Aim for a reading age of about 11. Age 9 is better. When in doubt, make it
-  simpler.
+- Aim for a reading age of about 11. Age 9 is better. Make it simpler when in
+  doubt.
 
 ## One idea per paragraph
 
 - Each paragraph carries one idea. Name it in the first sentence.
 - Every sentence must earn its place. Cut any sentence that does not serve the
   paragraph's idea.
-- Say it once. Do not repeat a point. For example, "this holds only when X"
-  already says "if not X, it does not". Do not add the inverse.
+- Say it once. For example, "this holds only when X" already says "if not X, it
+  does not". Do not add the inverse.
 - If a paragraph holds two ideas, split it.
 
 ## One idea per sentence
@@ -27,9 +27,10 @@ person or an automated tool.
 - Put one idea in each sentence.
 - Keep an instruction to 20 words or fewer. Keep a description to 25 or fewer.
   For example:
-  - "If the build fails, check the log for the first error. Fix it and rerun.",
-    not "If the build fails, check the log for the first error, fix it, and
-    rerun, because later errors often follow from the first one."
+  - "If the request times out, log the error and retry once. A single retry
+    usually clears a brief network glitch.", not "If the request times out, log
+    the error and retry once, because a single retry usually clears a brief
+    network glitch."
 - Use active voice. For example:
   - "The parser reads the file before validation.", not "The file is read by the
     parser before validation."
@@ -85,5 +86,6 @@ rule, makes the reader decode before they can act.
 
 Write each paragraph on a single line when GitHub renders it: pull request and
 issue descriptions, and comments. GitHub reflows each paragraph to the reader's
-window, so a hard-wrapped paragraph shows as stair-step lines. Newlines inside
-fenced code blocks and between table rows are structural. Leave those alone.
+window, so a hard-wrapped paragraph breaks into short, uneven lines. Newlines
+inside fenced code blocks and between table rows are structural. Leave those
+alone.
