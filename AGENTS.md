@@ -65,10 +65,12 @@ This repo has two layers, easy to confuse:
   [agent files](plugins/dream/agents), and the
   [writing style guide](plugins/dream/skills/team/writing-style.md). These are
   the plugin's code. The `/dream:team` command runs them.
-- **Developer support**: AGENTS.md, the copy-edit skill, and the copy-editor
-  agent. These support plugin development. They are not part of the installed
-  plugin. (`CLAUDE.md` is a symlink to AGENTS.md. Edit `AGENTS.md` directly.
-  Some editors refuse to write through a symlink.)
+- **Developer support**: AGENTS.md, the
+  [copy-edit skill](.claude/skills/copy-edit/SKILL.md), and the
+  [copy-editor agent](.claude/agents/copy-editor.md). These support plugin
+  development. They are not part of the installed plugin. (`CLAUDE.md` is a
+  symlink to AGENTS.md. Edit `AGENTS.md` directly. Some editors refuse to write
+  through a symlink.)
 
 The writing style guide sits in the plugin because the dream-team agents read it
 at runtime, when no repo-root file is in reach. The copy-edit skill and
