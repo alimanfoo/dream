@@ -1,8 +1,9 @@
-# Prompt writing style guide
+# Writing style guide
 
-This guide sets the standard for the written text in this project, such as
-prompts and documentation. Anyone who writes or reviews that text follows it,
-whether a person or an automated tool.
+This guide sets the standard for written text in this project. It covers
+prompts, documentation, the messages the team sends, and the artefacts it writes
+for GitHub. Anyone who writes or reviews that text follows it, whether a person
+or an automated tool.
 
 ## The stance
 
@@ -17,9 +18,8 @@ whether a person or an automated tool.
 - Each paragraph carries one idea. Name it in the first sentence.
 - Every sentence must earn its place. Cut any sentence that does not serve the
   paragraph's idea.
-- Say it once. Do not repeat a point, and do not restate it in other words. For
-  example, "this holds only when X" already says "if not X, it does not". Do not
-  add the inverse.
+- Say it once. Do not repeat a point. For example, "this holds only when X"
+  already says "if not X, it does not". Do not add the inverse.
 - If a paragraph holds two ideas, split it.
 
 ## One idea per sentence
@@ -43,8 +43,8 @@ examples, exceptions.
 - Give one to three examples. They show the rule. They do not bound it.
 - Put exceptions last. An edge case comes after the main rule, never before.
 
-A bare imperative is enough when the act is obvious, so skip the parts you do
-not need. But hold the order. A why before the verb, or an exception before the
+A bare imperative is enough when the act is obvious. Skip the parts you do not
+need. But hold the order. A why before the verb, or an exception before the
 rule, makes the reader decode before they can act.
 
 ## Words and marks

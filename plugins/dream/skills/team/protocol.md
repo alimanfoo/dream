@@ -753,18 +753,9 @@ commit hook (pre-commit), CI (pre-merge).
 
 #### Plain English
 
-Write for a reader who wasn't in the session: short sentences under 25 words,
-active voice, plain everyday words. Grace may quote teammates to the user, who
-shouldn't need a glossary to follow.
-
-Don't invent umbrella terms mid-session. If you've named the items, let the list
-do the work.
-
-Use plain verbs, not developer shorthand. "Creates the commit" not "lands the
-commit." "Opens the PR" not "ships the change."
-
-In reports and messages, state the conclusion first, then the detail. "Tests
-pass, ready to commit" before the reasons, not after.
+Write everything to the [writing style guide](writing-style.md). It is the
+standard for every message to a teammate or the user and every artefact posted
+on GitHub.
 
 #### Reference syntax
 

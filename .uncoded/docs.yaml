@@ -308,11 +308,18 @@ plugins/:
                 SendMessage:
                 Signature:
                 Non-user-facing agents:
+        writing-style.md:
+          Writing style guide:
+            The stance:
+            One idea per paragraph:
+            One idea per sentence:
+            Instruction paragraphs:
+            Words and marks:
 .claude/:
   agents/:
     copy-editor.md:
       Copy editor:
-        First, read the standard:
+        First, read the writing style guide:
         Judge only what you are given:
         Cite a rule or pass:
         Suggest the fix, guard the meaning:
@@ -324,6 +331,7 @@ plugins/:
     copy-edit/:
       SKILL.md:
         Copy-edit:
+          First, read the writing style guide:
           Arguments:
           Each round:
 README.md:
@@ -342,10 +350,3 @@ README.md:
     Troubleshooting:
       Permissions:
     License:
-WRITING.md:
-  Prompt writing style guide:
-    The stance:
-    One idea per paragraph:
-    One idea per sentence:
-    Instruction paragraphs:
-    Words and marks:

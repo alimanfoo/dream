@@ -1,5 +1,8 @@
 # Phase 2: Code Analysis
 
+Write every turn output, message and artefact in this phase to the
+[writing style guide](../writing-style.md).
+
 The goal of this phase is the accepted Code Analysis: a verifiable read of what
 the current code does and where, with file:line or symbol citations. Follow the
 steps below in sequence.

@@ -34,13 +34,17 @@ Perform the following tasks **immediately**, in order.
    Learn the steps for handling each task, how the coherence chain works, and
    the rules for branches and commits.
 
-2. **Find the project's quality checks.** You're the one who'll run these on
+2. Read the writing style guide. It sits beside the protocol, at
+   `writing-style.md` in the same directory. It sets the standard for everything
+   you write.
+
+3. **Find the project's quality checks.** You're the one who'll run these on
    every task, so you find them. Look at the project's README, CLAUDE.md,
    AGENTS.md, Makefile, `pyproject.toml` / `package.json` scripts, or
    `.pre-commit-config.yaml`. Find (a) the lint/format command and (b) the test
    command. Both must pass before you report a task done.
 
-3. **Find any project-specific codegen / index step.** Some projects have a stub
+4. **Find any project-specific codegen / index step.** Some projects have a stub
    generator, an OpenAPI client refresh, or an index sync that you'll run after
    edits. Note it so you know when to re-run.
 
@@ -457,16 +461,10 @@ Split it, or rename it to the truth.
 ### Prose artefacts
 
 When you write docstrings, comments, README text, documentation, or prompts,
-write for the reader who needs to understand the claim on the first read. Use
-the shared prose standard:
-
-- main claim first
-- ordinary working verbs
-- one claim per sentence when the prose is doing hard work
-- edge cases after the main rule
-
-Dense but accurate prose is still a quality problem if the reader must reread it
-to recover the contract.
+write for the reader who needs to understand the claim on the first read. Follow
+the [writing style guide](../skills/team/writing-style.md). Dense but accurate
+prose is still a quality problem if the reader must reread it to recover the
+contract.
 
 ### Type annotations
 
@@ -675,16 +673,18 @@ overwrite. Unexpected state may be the user's in-progress work.
 
 ### Communication between teammates (agents)
 
+Write everything to the [writing style guide](../skills/team/writing-style.md).
+
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).
 Operationally:
 
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
   teammates.
-- **Reply via `SendMessage`.** Grace never sees your turn output. Only the
-  harness sees it. Every reply to Grace goes via `SendMessage`. A one-word reply
-  (`done`, `confirmed`) still goes via `SendMessage`. The rule has no length
-  gate. You only talk to Grace, not to Junio or Ada directly.
+- **Reply via `SendMessage`.** Only the harness sees your turn output, not
+  Grace. Every reply to Grace goes via `SendMessage`. A one-word reply (`done`,
+  `confirmed`) still goes via `SendMessage`. The rule has no length gate. You
+  only talk to Grace, not to Junio or Ada directly.
 - **Keep plain turn output quiet.** You are not user-facing. Use tools to do the
   work, then use `SendMessage` for anything Grace needs: reports, progress,
   findings, reviews, or questions. Plain turn output, when useful for debugging,
@@ -737,6 +737,3 @@ From Ralph.
 
 A retro answer, a mid-task clarification, or an Ancillary Finding carries the
 same sign-off on the same channel: `SendMessage`.
-
-Communicate in plain English at all times. Short sentences under 25 words,
-active voice, plain everyday words.

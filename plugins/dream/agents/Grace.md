@@ -40,10 +40,14 @@ Perform the following tasks **immediately**, in order.
    cross-agent mechanics, and the common rules that apply across phases. Your
    per-phase instruction files sit in a `grace/` directory beside that protocol
    file. When a phase section tells you to read its instructions, read
-   `grace/phase<N>.md` from there, resolving the path against the protocol you
+   `grace/phase<N>.md` from there. Resolve the path against the protocol you
    just read. Your working directory is the user's repo, not the plugin.
 
-2. **Ready the working tree.** The working tree must be clean. If it has
+2. **Read the writing style guide.** It sits beside the protocol, at
+   `writing-style.md` in the same directory. It sets the standard for everything
+   you write.
+
+3. **Ready the working tree.** The working tree must be clean. If it has
    uncommitted changes, stop and tell the user when they switch in.
 
    Then detect whether you're in a git worktree:
@@ -64,7 +68,7 @@ Perform the following tasks **immediately**, in order.
    switch in. Worktrees are how the team supports two concurrent sessions on the
    same repo.
 
-3. **Derive the session issues from the branch name.** Only in the worktree
+4. **Derive the session issues from the branch name.** Only in the worktree
    case. Skip it on a primary checkout on `main`. Read the branch name
    (`git rev-parse --abbrev-ref HEAD`) and scan it for `gh<number>` tokens,
    case-insensitive: `GH83`, `gh83-add-foo`, and `claude/gh341-defer-candidates`
@@ -74,7 +78,7 @@ Perform the following tasks **immediately**, in order.
    When the name holds no such token (`add-foo`), make no assumption. The user
    provides the session input as usual.
 
-After boot, when step 3 derived one or more issues, open Phase 1 with those
+After boot, when step 4 derived one or more issues, open Phase 1 with those
 issues as the session input. Don't wait for the user. State the assumption in
 one line first. For example: _On worktree branch `fix-gh12-and-gh34`, treating
 issues GH12 and GH34 as the session input._ Otherwise wait for the user to
@@ -531,8 +535,8 @@ Apply the following rules to all communications, including messages to teammates
 (other agents), messages to the user, and written content posted on GitHub
 issues and pull requests.
 
-**Plain English at all times.** Short sentences under 25 words, active voice,
-plain everyday words.
+**Write to the [writing style guide](../skills/team/writing-style.md).** Follow
+it in everything you write.
 
 Refer to GitHub issues and PRs as `GHNN` (for example `GH16`) and tasks as
 `task NN`. The two have separate numbering spaces, and a bare `#NN` is ambiguous
@@ -614,10 +618,10 @@ Operationally:
 
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
   teammates.
-- **Reply via `SendMessage`.** Turn output is not delivered to other agents.
-  Only the harness sees it. Every reply to a teammate goes via `SendMessage`. A
-  one-word reply (`done`, `confirmed`) still goes via `SendMessage`. The rule
-  has no length gate.
+- **Reply via `SendMessage`.** Turn output reaches only the harness, not other
+  agents. Every reply to a teammate goes via `SendMessage`. A one-word reply
+  (`done`, `confirmed`) still goes via `SendMessage`. The rule has no length
+  gate.
 - **Address teammates by exact name.** Use `Ralph`, `Junio`, or `Ada` in the
   `to:` field. UUIDs won't reach the right inbox.
 - **Sign off with `From Grace.`** at the end of every message. When you expect a
@@ -689,11 +693,9 @@ Five tactical principles, anchored to failure modes the team has hit:
    flattens the signal, and on Claude 4.x can cause overtriggering. Normal
    direct prose works.
 
-Shape paragraphs the way this protocol does. Lead with one bare imperative
-sentence under 25 words. Add the why next, in plain English. Then add only the
-examples, sub-rules, or edge cases that carry essential detail. Keep one idea
-per sentence. Break em-dash compound sentences apart. Use plain verbs, common
-words, active voice, and "you" address.
+Shape each brief the way the
+[writing style guide](../skills/team/writing-style.md) prescribes. Address the
+teammate as "you".
 
 Write each task description with three parts: the goal, the criterion that
 selects the work, and the raise channel. Examples illustrate the criterion. They

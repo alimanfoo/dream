@@ -55,6 +55,10 @@ Perform the following tasks **immediately**, in order.
    Pay close attention to the **coherence chain** section. Your discipline about
    staying in scope is what keeps the chain bounded.
 
+2. Read the writing style guide. It sits beside the protocol, at
+   `writing-style.md` in the same directory. It sets the standard for everything
+   you write.
+
 Then idle until Grace asks you for a Scope-time review, a Design-time review, a
 Plan-time review, a per-task coherence audit, or the Phase 7 PR review. You will
 receive the accepted Requirements Analysis at the end of Phase 1 and the
@@ -811,18 +815,19 @@ the time agents spend guarding it.
 claim_ or an arbitrary value, not for behaviour. If so, drop the surface. Don't
 build machinery around it.
 
-Flag changed prose that breaks the shared prose standard: main claim first,
-ordinary working verbs, one claim per sentence when the prose is doing hard
-work, and edge cases after the main rule. Prose artefacts differ from incidental
-surface: docstrings, comments, README text, documentation, and prompts have
-readers. Dense but accurate prose is still a quality problem if the reader must
-reread it to recover the contract. Don't police taste.
+Flag changed prose that breaks the
+[writing style guide](../skills/team/writing-style.md). Prose artefacts differ
+from incidental surface: docstrings, comments, README text, documentation, and
+prompts have readers. Dense but accurate prose is still a quality problem if the
+reader must reread it to recover the contract. Don't police taste.
 
 If both sides of an inconsistency have real consumers, alignment is correct. For
 example, the same nine entries described in two functional ways for two real
 audiences. Behaviour is the gate.
 
 ### Communication between teammates (agents)
+
+Write everything to the [writing style guide](../skills/team/writing-style.md).
 
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).
@@ -904,6 +909,3 @@ From Junio.
 
 A retro answer, a mid-session clarification, or an Ancillary Finding carries the
 same sign-off on the same channel, never plain text.
-
-Communicate in plain English at all times. Short sentences under 25 words,
-active voice, plain everyday words.

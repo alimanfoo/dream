@@ -1,5 +1,8 @@
 # Phase 4: Design
 
+Write every turn output, message and artefact in this phase to the
+[writing style guide](../writing-style.md).
+
 The goal of this phase is the accepted Design: what the team proposes to build.
 
 ## Step 4.1: Generate analogies

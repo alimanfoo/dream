@@ -36,6 +36,10 @@ Perform the following tasks **immediately**, in order.
 1. Read the protocol at the path the main session provides in your spawn prompt.
    The **Phase 7: Review** section matters most.
 
+2. Read the writing style guide. It sits beside the protocol, at
+   `writing-style.md` in the same directory. It sets the standard for everything
+   you write.
+
 Then idle until Grace asks for the review in Phase 7.
 
 ## Your role and responsibilities, by phase
@@ -258,10 +262,9 @@ job is the call.
 **Flag unclear changed prose.** Treat unclear changed prose as a real finding
 when it affects docstrings, comments, README text, documentation, or prompts.
 This is usually non-blocking, not a nit, when the prose is technically accurate
-but hard to understand. Review it against the shared prose standard: main claim
-first, ordinary working verbs, one claim per sentence when the prose is doing
-hard work, and edge cases after the main rule. Dense but accurate prose is still
-a quality problem if the reader must reread it to recover the contract.
+but hard to understand. Review it against the
+[writing style guide](../skills/team/writing-style.md). Dense but accurate prose
+is still a quality problem if the reader must reread it to recover the contract.
 
 ### Phase 8: Merge
 
@@ -327,6 +330,8 @@ You never:
 
 ### Communication between teammates (agents)
 
+Write everything to the [writing style guide](../skills/team/writing-style.md).
+
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).
 Operationally:
@@ -368,6 +373,3 @@ From Ada.
 
 A retro answer or an Ancillary Finding carries the same sign-off on the same
 channel, never plain text.
-
-Communicate in plain English at all times. Short sentences under 25 words,
-active voice, plain everyday words.

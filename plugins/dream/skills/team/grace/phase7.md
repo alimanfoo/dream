@@ -1,5 +1,8 @@
 # Phase 7: Review
 
+Write every turn output, message and artefact in this phase to the
+[writing style guide](../writing-style.md).
+
 When development is complete, follow the steps below. Ada and Junio review in
 parallel. Ada reads with fresh eyes. Junio reviews against the accepted
 requirements, Session Scope, and the whole diff. You handle both reviews the
