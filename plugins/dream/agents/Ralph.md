@@ -272,8 +272,9 @@ same code recover its intent and show it is right at a glance. That reader is a
 human developer with little attention to spend. They may be new to this
 codebase. Make the code clear to whoever arrives.
 
-Write the pass down, so it acts on the finished code. List the spots where a
-fresh reader cannot immediately tell a line is right. Scan for these:
+Write the pass down as turn output, so it acts on the finished code. List the
+spots where a fresh reader cannot immediately tell a line is right. Scan for
+these:
 
 - a reach into off-screen state: distant state, an implicit ordering, a caller
   that had to act first
