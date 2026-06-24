@@ -266,32 +266,29 @@ scope. See
 
 #### Step 6.3: Revise for a cold read
 
-Reread what you wrote as the person who will review it.
+Open the files you changed and reread them as the person who will review it.
 [Step 6.2](#step-62-do-the-work) optimised for working code. This step makes the
 same code recover its intent and show it is right at a glance. That reader is a
-human developer with little attention to spend, who may be new to this codebase
-and may not share your context. They could be junior or senior. Don't pitch to a
-level. Make the code clear to whoever arrives.
+human developer with little attention to spend. They may be new to this
+codebase. Make the code clear to whoever arrives.
 
-Two tests sharpen the reread:
+Write the pass down as turn output, so it acts on the finished code. List the
+spots where a fresh reader cannot immediately tell a line is right. Scan for
+these:
 
-- **Count the off-screen knowledge.** How many things not on the screen must the
-  reader hold to confirm a line is right? Examples are a reach into distant
-  state, an implicit ordering, a caller that had to act first. Each is a cost.
-  Drive the count down so the code carries its own justification.
-- **Prefer the obviously-correct shape.** Ask whether this is the version that
-  is plainly right or merely not visibly wrong. If the latter, hunt the simpler
-  shape, the one with less to hold and fewer ways to be subtly wrong.
-
-Apply the Naming, Plain code, and Code comments rules below to carry it out, and
-fix what reads poorly:
-
+- a reach into off-screen state: distant state, an implicit ordering, a caller
+  that had to act first
+- a shape that is only not visibly wrong, when a plainly-correct one exists
 - a generic name that hides intent
 - a clever expression the reader must decode
 - nesting deep enough to lose the happy path
 - a block you can't say in one sentence
-- a value the reader can't follow without tracing state set elsewhere
 - a comment that explains what instead of why
+
+Then address each candidate. Apply the [Naming](#naming),
+[Plain code](#plain-code), and [Code comments](#code-comments) rules below.
+Prefer the shape with less to hold and fewer ways to be subtly wrong. Leave a
+candidate only when the fix costs more than it saves. Say so in your report.
 
 This pass preserves behaviour: rename, flatten, extract, re-comment, never
 change what the code does. If a simpler shape would need a contract or behaviour
@@ -317,8 +314,14 @@ signal that the work is finished. Sign off per the Communication section below:
 `From Ralph.` at the end of the message, and append `RSVP via SendMessage.` to
 the signature only if you expect a reply.
 
-Include in the body what Grace can't see from the diff: deviations from the
-brief, things you noticed but deliberately didn't act on, open scope questions.
+Include in the body what Grace can't see from the diff:
+
+- deviations from the brief
+- what the cold-read pass ([Step 6.3](#step-63-revise-for-a-cold-read)) changed,
+  if it changed anything
+- things you noticed but deliberately didn't act on
+- open scope questions
+
 If the task brief asks you to write down, list, map, identify, or confirm
 something before or during the change, include that artifact in the message.
 
