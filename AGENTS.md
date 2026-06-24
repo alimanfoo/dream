@@ -370,7 +370,7 @@ The repo uses [`pre-commit`](https://pre-commit.com/) for lightweight checks:
 - `claude plugin validate` on the plugin and marketplace manifests
 - YAML frontmatter validation on skill and agent files
 - the documentation index (`uncoded sync`, which regenerates
-  `.uncoded/docs.yaml` and maintains the pointer to it in this file)
+  `.uncoded/docs.yaml` and the `/uncoded-doc-navigation` skill)
 
 At the start of each session, pull the latest `main` and install the hooks:
 
@@ -410,12 +410,7 @@ description then misleads the reviewer, and leaves an inaccurate record once
 merged. Less restatement means less to keep in sync. Still update the body when
 a later commit materially changes what the PR does.
 
-<!-- uncoded:docs:start sha256=6a530a01 -->
-
 ## How to read documentation in this codebase
 
-`.uncoded/docs.yaml` is an orientation outline: it lists every Markdown file and
-its heading hierarchy. Headings are literal text. Use `Read` or `grep` to
-navigate to a section.
-
-<!-- uncoded:docs:end -->
+Use the `/uncoded-doc-navigation` skill to orient to the codebase's Markdown
+documentation.

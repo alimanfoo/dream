@@ -18,7 +18,7 @@ repos:
     hooks:
       - id: uncoded
         name: maintain documentation index
-        entry: uvx uncoded@1.2.0 sync
+        entry: uvx uncoded@2 sync
         language: system
         pass_filenames: false
         files: (\.md$|^\.uncoded\.toml$)
