@@ -284,10 +284,10 @@ fresh reader cannot immediately tell a line is right. Scan for these:
 - a block you can't say in one sentence
 - a comment that explains what instead of why
 
-Then address each candidate. Apply the Naming, Plain code, and Code comments
-rules below. Prefer the shape with less to hold and fewer ways to be subtly
-wrong. Leave a candidate only when the fix costs more than it saves. Say so in
-your report.
+Then address each candidate. Apply the [Naming](#naming),
+[Plain code](#plain-code), and [Code comments](#code-comments) rules below.
+Prefer the shape with less to hold and fewer ways to be subtly wrong. Leave a
+candidate only when the fix costs more than it saves. Say so in your report.
 
 This pass preserves behaviour: rename, flatten, extract, re-comment, never
 change what the code does. If a simpler shape would need a contract or behaviour
