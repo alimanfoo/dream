@@ -412,5 +412,5 @@ a later commit materially changes what the PR does.
 
 ## How to read documentation in this codebase
 
-Use the `/uncoded-doc-navigation` skill to orient to the codebase's Markdown
-documentation.
+Load the `uncoded-doc-navigation` skill before searching, reading or editing any
+documentation in this codebase.
