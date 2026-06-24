@@ -15,6 +15,10 @@ every git operation: `git fetch`, `git merge` or `git rebase`, conflict marker
 resolution, the follow-up `git add`, `git commit`, and `git push`. Ralph never
 touches git in Phase 8, the same as in Phase 6.
 
+Run `git rev-parse --verify MERGE_HEAD` to detect whether a merge is in
+progress. Do not test for `.git/MERGE_HEAD` as a file path. In a worktree,
+`.git` is a file, not a directory. The test always reports no merge.
+
 If resolution requires file edits or a script that changes files (a sync script,
 a stub regenerator, an index refresh), create a task and delegate that part to
 Ralph. The task brief follows the same rule as any other Ralph task brief. See
