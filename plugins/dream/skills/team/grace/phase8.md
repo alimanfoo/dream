@@ -15,10 +15,9 @@ every git operation: `git fetch`, `git merge` or `git rebase`, conflict marker
 resolution, the follow-up `git add`, `git commit`, and `git push`. Ralph never
 touches git in Phase 8, the same as in Phase 6.
 
-To detect whether a merge is in progress, run
-`git rev-parse --verify MERGE_HEAD` (exit 0 if mid-merge, non-zero if not). Do
-not test for `.git/MERGE_HEAD` as a file path: in a worktree, `.git` is a file
-pointing at the real git directory, so the file test always fails.
+Run `git rev-parse --verify MERGE_HEAD` to detect whether a merge is in
+progress. Do not test for `.git/MERGE_HEAD` as a file path. In a worktree,
+`.git` is a file, not a directory. The test always reports no merge.
 
 If resolution requires file edits or a script that changes files (a sync script,
 a stub regenerator, an index refresh), create a task and delegate that part to
