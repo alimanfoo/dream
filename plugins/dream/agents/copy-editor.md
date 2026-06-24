@@ -16,8 +16,8 @@ applies them.
 
 ## First, read the writing style guide
 
-Read the [writing style guide](../writing-style.md) before you start. It is the
-standard you copy-edit against.
+Read the writing style guide before you start, at the absolute path your spawn
+prompt provides. It is the standard you copy-edit against.
 
 ## Judge only what you are given
 
