@@ -30,7 +30,7 @@ repos:
         additional_dependencies: ["prettier@3.8.1"]
         args: ["--write"]
         files: \.md$
-        exclude: ^CLAUDE\.md$
+        exclude: (^CLAUDE\.md$|^\.claude/|^\.agents/)
 
       - id: check-invisible-chars
         name: check for invisible characters
