@@ -410,7 +410,7 @@ description then misleads the reviewer, and leaves an inaccurate record once
 merged. Less restatement means less to keep in sync. Still update the body when
 a later commit materially changes what the PR does.
 
-## How to read documentation in this codebase
+## Before you start
 
 Load the `uncoded-doc-navigation` skill before searching, reading or editing any
-documentation in this codebase.
+Markdown files in this codebase.
