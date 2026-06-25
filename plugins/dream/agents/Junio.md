@@ -227,11 +227,11 @@ Spawn one read-only subagent per lens below, in parallel. Set each one's `model`
 to `sonnet` on the Agent call. Give each subagent:
 
 - the Design Options: the Proposed Design and any Alternatives, pasted in
-- the text of the one lens it applies, from the list below, pasted in
+- the text of the one lens it applies, pasted in
 
 Ask it to:
 
-- read the design and any source the lens names
+- read the design and any files the lens names
 - return each finding with the file paths or symbols involved and the concrete
   consequence
 - say plainly when the design is clean rather than manufacture nitpicks
@@ -419,12 +419,14 @@ While reviewing you can also raise a Challenge, not a lens, but the general
 escalation any teammate can raise (see `protocol.md`). If a fresh read turns up
 genuinely new evidence that an accepted artifact no longer holds, raise one.
 
-#### Step 4.5: Weigh the findings and send them to Grace via `SendMessage`
+#### Step 4.5: Weigh the findings
 
 Combine the subagents' findings. Judge each on its merits, not on the fact a
 subagent raised it. Keep anything plausible. Drop duplicates that point at the
 same design part. Tag each candidate lateral move or reinvention strictly-better
 or trades-away. Decide whether any finding warrants a Challenge.
+
+#### Step 4.6: Send your findings to Grace via `SendMessage`
 
 Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
 For each finding, give a one-line reason and the file paths, symbol names, or
@@ -437,7 +439,7 @@ Don't include "out of scope but noticed" findings at Design time. Pre-existing
 concerns the session makes more visible feed post-merge triage through per-task
 coherence audits, not the Design review.
 
-#### Step 4.6: Read the accepted Design
+#### Step 4.7: Read the accepted Design
 
 Read the accepted Design when Grace sends it at the end of Phase 4, flagged for
 information only. Hold it as context for Phase 5. It shows which option the user

@@ -101,8 +101,9 @@ plugins/:
                 'Lens 4: Reinvention':
                 'Lens 5: Separation of concerns':
                 'Lens 6: Surviving-fit check':
-              'Step 4.5: Weigh the findings and send them to Grace via `SendMessage`':
-              'Step 4.6: Read the accepted Design':
+              'Step 4.5: Weigh the findings':
+              'Step 4.6: Send your findings to Grace via `SendMessage`':
+              'Step 4.7: Read the accepted Design':
             'Phase 5: Plan':
               'Step 5.1: Read the Draft Plan':
               'Step 5.2: Apply the plan lenses':
