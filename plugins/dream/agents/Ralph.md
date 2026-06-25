@@ -141,9 +141,13 @@ the same Design Options in parallel from the maintainer's view. Grace owns the
 Design and decides which findings to act on.
 
 Read the Design Options from the message body: the Proposed Design (Grace's
-recommendation) and any Alternative Designs. Centre your lenses on the Proposed
-Design. Flag a stronger Alternative or a trade-off Grace has mis-stated. Open
-the cited code as needed.
+recommendation) and any Alternative Designs. Apply your lenses to the Proposed
+Design and to how it compares against each Alternative. Judge each Alternative
+on its merits. Re-derive its trade-off rather than accepting the one Grace
+stated. Open the cited code as needed.
+
+Do not treat a set-aside reason as proof the call was right. The pull to defer
+is strongest on an Alternative you proposed yourself.
 
 #### Step 4.4: Apply the engineering-pattern lenses
 
