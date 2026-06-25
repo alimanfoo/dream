@@ -710,7 +710,7 @@ When the rule is real, whether drifting or freshly established, enforcing it
 with a check is Coherent work, not an optional extra. Without it the rule is
 free to break unnoticed.
 
-Two cautions:
+Three cautions:
 
 - **Reach for an existing tool first.** An off-the-shelf checker (a ruff rule, a
   mypy setting, numpydoc) is cheaper and steadier than one you write yourself.
@@ -720,6 +720,14 @@ Two cautions:
   false failure as a work item and keeps trying to fix what isn't broken,
   session after session. Make it as reliable as the rule it guards, or leave it
   out.
+- **A check grounds out in the product.** Aim a coverage gate or a test at the
+  product the repo delivers, not at the tooling and checks built around it. A
+  test on a checker only proves the checker. A coverage gate that measures the
+  checker scripts makes the tooling earn tests to keep the build green. Scope a
+  coverage gate to product code. Give a custom checker a one-time confirmation
+  that it catches the bad case and passes the good. Don't add a standing test
+  suite. Standard lint and formatting are the exception. They run on all code,
+  tooling included, at no extra upkeep.
 
 ## Common rules
 
