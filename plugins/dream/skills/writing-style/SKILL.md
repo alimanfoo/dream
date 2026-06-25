@@ -27,5 +27,5 @@ Write to the guide from here on. Apply it as you draft, and again as you revise.
 
 ## For prose already written, use copy-edit
 
-This skill shapes new prose. To bring prose that already exists into line with
-the guide, use the copy-edit skill instead.
+This skill shapes new prose. Use the copy-edit skill to bring existing prose
+into line with the guide.

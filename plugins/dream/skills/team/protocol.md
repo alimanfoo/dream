@@ -63,10 +63,10 @@ A session moves through ten phases:
    restored before moving on. Opens with the task list. Closes by finalising the
    PR description.
 
-7. **Review.** The PR is reviewed.
+7. **Review.** Ada and Junio review the PR.
 
-8. **Merge.** The user merges the PR, or merge is deferred to a human. Any
-   conflicts are resolved first.
+8. **Merge.** The user merges the PR, or merge is deferred to a human. Grace
+   resolves any conflicts first.
 
 9. **Collect.** Ancillary Findings noticed during the session are gathered,
    deduplicated, checked against issue history, and decided.
@@ -139,15 +139,15 @@ with the user but not gated.
 Grace then reads the cited material, then reads the code with a consumer lens
 (who uses these surfaces and what they do with them). She then consults the
 record for the named surfaces. She searches the issue tracker for recurrence and
-reads the PRs that last shaped those surfaces, so the analysis builds on prior
-decisions rather than guessing at them again. Grace names the Session Type
-(enhancement, maintenance, or bug fix) and drafts the Requirements Analysis in
-the shape the type selects. An enhancement names consumers, their use cases, and
-any constraints the work must hold. Maintenance names the improvement goals and
-the behaviour to preserve, each stated as a checkable property of the code. A
-bug fix names the expected behaviour with its source, the observed behaviour as
-a claim for Phase 2 to verify, and the consumers affected. Every shape marks
-each item stated or assumed, names any system non-goals, and carries any open
+reads the PRs that last shaped those surfaces. This builds on prior decisions
+rather than guessing at them again. Grace names the Session Type (enhancement,
+maintenance, or bug fix) and drafts the Requirements Analysis in the shape the
+type selects. An enhancement names consumers, their use cases, and any
+constraints the work must hold. Maintenance names the improvement goals and the
+behaviour to preserve, each stated as a checkable property of the code. A bug
+fix names the expected behaviour with its source, the observed behaviour as a
+claim for Phase 2 to verify, and the consumers affected. Every shape marks each
+item stated or assumed, names any system non-goals, and carries any open
 questions Grace can't call from the cited material.
 
 Enhancement and maintenance shapes also carry candidates: use cases or
@@ -160,7 +160,7 @@ accepted Requirements Analysis and the Session Type to Junio and Ralph for
 information. They hold them as context for the rest of the session.
 
 On acceptance Grace opens the session: she creates the session branch with an
-empty bootstrap commit and opens a draft PR whose description is the accepted
+empty bootstrap commit and opens a draft PR. The PR description is the accepted
 Requirements Analysis. The PR carries the session's deliberation record from
 here on (see [The session PR](#the-session-pr)).
 
@@ -182,10 +182,13 @@ The phase ends at user acceptance of the Code Analysis.
 
 ## Phase 3: Scope
 
-With the Code Analysis accepted, Grace drafts the Scope Options: the Coherent
-Scope (always), the Minimal Scope (when narrower than Coherent), and the Maximal
-Scope (when a wider alternative is real). Coherent Scope additions cite the Code
-Analysis findings they rest on.
+With the Code Analysis accepted, Grace drafts the Scope Options:
+
+- the Coherent Scope (always),
+- the Minimal Scope (when narrower than Coherent),
+- the Maximal Scope (when a wider alternative is real).
+
+Coherent Scope additions cite the Code Analysis findings they rest on.
 
 What the Coherent Scope must reach depends on the Session Type:
 
@@ -257,18 +260,18 @@ The phase ends at user acceptance of the Design.
 Grace composes the Draft Plan, shares it with Junio and Ralph for one round of
 review, advisory not gating, and revises. Junio reads from the maintainer's
 view. Ralph reads from the implementer's view. Grace decides each finding on its
-merits, recording a one-line reason: folded into the revised Plan, rejected,
-held as an Ancillary Finding, or raised as a Challenge. Grace then shares the
-revised Plan with the user, with a brief note on what changed from the Draft
-after the reviews. At the end of the phase Grace hands the accepted Plan to
-Junio and Ralph for information. They hold it as context for the rest of the
-session. On acceptance Grace also posts the accepted Plan to the PR as a comment
-(see [The session PR](#the-session-pr)).
+merits. She records a one-line reason for each: folded into the revised Plan,
+rejected, held as an Ancillary Finding, or raised as a Challenge. Grace then
+shares the revised Plan with the user, with a brief note on what changed from
+the Draft after the reviews. At the end of the phase Grace hands the accepted
+Plan to Junio and Ralph for information. They hold it as context for the rest of
+the session. On acceptance Grace also posts the accepted Plan to the PR as a
+comment (see [The session PR](#the-session-pr)).
 
 The phase ends at user acceptance of the Plan.
 
-The task list isn't fixed: more tasks can be added during Phase 6 (Develop) and
-Phase 7 (Review). The user can redirect at any point.
+The task list isn't fixed: Grace or the user can add tasks during Phase 6
+(Develop) and Phase 7 (Review). The user can redirect at any point.
 
 ## Phase 6: Develop
 
@@ -329,19 +332,24 @@ criterion left some out.
 
 For any proposed machinery (a test, a glossary, a regen step, a cross-reference
 rule, a backlog issue), ask: _What specific behaviour does this defend? Who is
-the real consumer?_ If the only answer is incidental surface (a count nothing
-depends on, a docstring phrasing, an arbitrary constant), frame the finding as a
-simplification candidate. Junio applies the test at audit. Grace applies it at
-triage.
+the real consumer?_ If the only answer is incidental surface, frame the finding
+as a simplification candidate. Incidental surface includes a count nothing
+depends on, a docstring phrasing, or an arbitrary constant. Junio applies the
+test at audit. Grace applies it at triage.
 
 #### Strip the compensation
 
 Some diffs include scaffolding that does work the underlying code should be
-doing: a comment asserting a property the code doesn't show, a mock insulating
-the change from its dependency, an exception handler hiding a fixable error, a
-runtime validator substituting for the type system. Junio's test: mentally
-remove the scaffolding and read the diff again. If the change no longer holds,
-the in-scope finding is the underlying gap, not the scaffolding.
+doing:
+
+- a comment asserting a property the code doesn't show,
+- a mock insulating the change from its dependency,
+- an exception handler hiding a fixable error,
+- a runtime validator substituting for the type system.
+
+Junio's test: mentally remove the scaffolding and read the diff again. If the
+change no longer holds, the in-scope finding is the underlying gap, not the
+scaffolding.
 
 #### Audit-raised Challenge
 
@@ -371,7 +379,8 @@ task's coherence chain is fully drained.
 
 The phase ends when the task list is drained. Grace then finalises the PR. She
 edits the description to the final accepted requirements and appends the dream
-metadata line. The PR opened back in Phase 1 and stays in draft until Phase 7.
+metadata line. Grace opened the PR in Phase 1, and it stays in draft until
+Phase 7.
 
 ## Phase 7: Review
 
@@ -379,7 +388,7 @@ Two reviewers read the session's PR in parallel and each returns a Markdown
 review to Grace. Ada reads with fresh eyes, judging the PR on its own terms.
 Hers is a standard code review: correctness, coherence, anything a careful
 reviewer would flag. Junio reads against the accepted requirements and Session
-Scope, and assesses completeness (did we deliver the agreed scope?) and
+Scope. She assesses completeness (did we deliver the agreed scope?) and
 coherence (anything still needed to reach a maintainable state?).
 
 Grace handles both reviews the same way:
@@ -406,11 +415,11 @@ choose to merge later, or release timing may sit outside the session. The
 session can end with the PR marked ready and merge left to a human. This is a
 supported outcome, not a deviation.
 
-The PR is frozen at the Phase 7 handoff. Once Grace marks the PR ready and hands
-back, Merge, Collect, and Reflect do no new development. Their outputs are the
-merge action, issues, comments, and issue drafts. A finding that would once have
-become a follow-on task becomes an issue instead. Resolving merge conflicts is
-part of the merge action, not new development: Grace still resolves conflicts
+Grace freezes the PR at the Phase 7 handoff. Once Grace marks the PR ready and
+hands back, Merge, Collect, and Reflect do no new development. Their outputs are
+the merge action, issues, comments, and issue drafts. A finding that would once
+have become a follow-on task becomes an issue instead. Resolving merge conflicts
+is part of the merge action, not new development: Grace still resolves conflicts
 and may delegate the edits to Ralph (see below). This holds especially when
 merge is deferred, since the still-open PR is what tempts the team to fold a
 later finding back in.
@@ -419,18 +428,22 @@ The phase ends when the PR is merged, or when merge is deferred to a human.
 
 ## Phase 9: Collect
 
-After merge, Grace gathers two kinds of input from three sources: Junio's
-in-session coherence audits and PR review, Ada's review, and a post-merge sweep
-of all three teammates. Ancillary Findings are concerns the session noticed but
-left out of scope. Opportunities are worthwhile follow-up work the session's own
-work suggests.
+After merge, Grace gathers two kinds of input from these sources:
+
+- Ralph's in-session observations (things he noticed but didn't act on),
+- Junio's in-session coherence audits and PR review,
+- Ada's review,
+- a post-merge sweep of all three teammates.
+
+Ancillary Findings are concerns the session noticed but left out of scope.
+Opportunities are worthwhile follow-up work the session's own work suggests.
 
 Grace also carries forward two earlier deferrals. The Phase 1 candidates the
 user neither promoted nor declined become further Opportunities. The code smells
 the Code Analysis named but the Scope left out become further Ancillary
 Findings.
 
-Findings are tested (defend behaviour, removal question). Opportunities skip
+Grace tests findings (defend behaviour, removal question). Opportunities skip
 those defect tests. Grace decides each (drop / reinforce / re-frame / file
 fresh) with user acceptance before filing. Triage happens once, after merge,
 never mid-session.
@@ -461,7 +474,7 @@ The phase ends when triage is complete and any resulting issues have been filed.
 ## Phase 10: Reflect
 
 Grace offers the user an optional retrospective. If taken, Grace and the user
-work through every lens on what the session showed, drawing on the teammates
+work through every lens on what the session showed. They draw on the teammates
 where a lens needs what only they hold. The output is issue drafts only, filed
 upstream or in the host project, with user acceptance.
 
@@ -484,7 +497,7 @@ shape every time:
    [Autopilot](#autopilot)).
 
 These gates run on every session by default and take precedence over general
-autonomy defaults, such as boot-time `<system-reminder>` content, harness
+autonomy defaults. Examples: boot-time `<system-reminder>` content, harness
 directives to "continue without checking," and similar. A user can explicitly
 override a specific gate in the gate reply (for example, "accept everything,
 just proceed"), but absent an explicit override, the default is to fire. They
@@ -508,12 +521,12 @@ waiting for the user's acceptance. She still produces every artifact, runs every
 Junio/Ralph review, and shares each artifact with the user as it lands.
 Autopilot removes the _wait for acceptance_, not the quality machinery.
 
-Autopilot pauses on an unanswered open question (Grace cannot proceed correctly
-without the user's call, by her own marking) or a Challenge (the safety valve,
-since a pre-acceptance was a bet on the premises as they stood). It disengages
-when Grace marks the PR ready (end of Phase 7). Merge, Collect, and Reflect
-happen with the user back in the loop. The user can also turn autopilot off at
-any time. Full mechanism in `Grace.md`.
+Autopilot pauses on an unanswered open question, where Grace cannot proceed
+correctly without the user's call, by her own marking. It also pauses on a
+Challenge, the safety valve, since a pre-acceptance was a bet on the premises as
+they stood. It disengages when Grace marks the PR ready (end of Phase 7). Merge,
+Collect, and Reflect happen with the user back in the loop. The user can also
+turn autopilot off at any time. Full mechanism in `Grace.md`.
 
 ## Challenge
 
@@ -522,8 +535,8 @@ something new that breaks it. The artifact may be the Requirements Analysis,
 Code Analysis, Session Scope, Design, or Plan. Grace raises one herself, or
 relays one a teammate raised: Ralph while implementing, Junio at audit, or a
 Phase 7 review finding from Ada or Junio. She assesses it. If it holds, she
-takes it to the user, who accepts or rejects it. On accept, the artifact is
-revised and the downstream work reshaped. Where a teammate was blocked waiting
+takes it to the user, who accepts or rejects it. On accept, Grace revises the
+artifact and reshapes the downstream work. Where a teammate was blocked waiting
 on the answer, a reject must say how to proceed, not just "no".
 
 A Challenge is admissible only on new evidence the earlier phase didn't have.
@@ -554,9 +567,9 @@ above", so a reader can tell which version stands.
 
 A session that stops before merge still leaves a record. When the user halts at
 a gate or ends the session early, Grace posts a final comment naming where the
-work reached and why it stopped, then closes the draft PR. The closed, unmerged
-PR documents what was considered and why it went no further, including any
-non-goals. Full mechanics in `Grace.md`.
+work reached and why it stopped. She then closes the draft PR. The closed,
+unmerged PR documents what was considered and why it went no further, including
+any non-goals. Full mechanics in `Grace.md`.
 
 ## No orphaned observations
 
@@ -741,7 +754,7 @@ One session branch off `main` as of session start, one PR opened on it. Grace
 either creates the branch or uses the worktree's branch when the user launched
 Claude Code inside a worktree. The branch name reflects the session input: an
 issue number, or a short slug. All planning and development run against the
-session-start state of `main`. Any drift on origin is handled at Merge.
+session-start state of `main`. Grace handles any drift on origin at Merge.
 
 #### Commits
 
@@ -811,5 +824,5 @@ as a final ack, a `done` report, or an audit hand-off, where no reply is wanted.
 Ralph, Junio, and Ada are not user-facing. They use tools to do the work, then
 use `SendMessage` for anything Grace needs: reports, progress, findings,
 reviews, or questions. Plain turn output, when useful for local status or
-debugging, is at most one short sentence per turn. Auto-generated idle
-notifications are not acted on unless they affect pending work.
+debugging, is at most one short sentence per turn. They ignore auto-generated
+idle notifications unless those affect pending work.

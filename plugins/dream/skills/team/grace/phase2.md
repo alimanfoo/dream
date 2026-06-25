@@ -3,9 +3,9 @@
 Write every turn output, message and artefact in this phase to the
 [writing style guide](../../../writing-style.md).
 
-The goal of this phase is the accepted Code Analysis: a verifiable read of what
-the current code does and where, with file:line or symbol citations. Follow the
-steps below in sequence.
+The goal of this phase is the accepted Code Analysis. It is a verifiable read of
+what the current code does and where, with file:line or symbol citations. Follow
+the steps below in sequence.
 
 ## Step 2.1: Read the structural baseline
 
@@ -27,15 +27,15 @@ session's surfaces touch, not a tour of the whole codebase.
 
 Test the session input's factual claims as you go, whoever made them. A bug
 report asserts a defect. Confirm the code actually misbehaves rather than taking
-the report at its word, since the reported behaviour may be a misunderstanding
-of what the code is built to do. Record what the read shows: the defect located,
-or the code behaving as designed. The latter means no bug to fix. Surface it at
-the gate for the user to decide.
+the report at its word. The reported behaviour may be a misunderstanding of what
+the code is built to do. Record what the read shows: the defect located, or the
+code behaving as designed. The latter means no bug to fix. Surface it at the
+gate for the user to decide.
 
 Read for semantics, not just names, prose, or other surface details. A surface
-can carry the same name but mean different things in different callers: a
-parameter with fallback semantics in one caller, no-anchor semantics in another,
-required in a third. Name any such split explicitly.
+can carry the same name but mean different things in different callers. For
+example, a parameter with fallback semantics in one caller, no-anchor semantics
+in another, required in a third. Name any such split explicitly.
 
 How far the baseline reaches scales with the Session Type. A bug fix traces to
 the root cause, back from where the error surfaces to the mechanism that
@@ -48,18 +48,19 @@ with the specific instances it must reach.
 
 With the baseline in hand, turn to the code smells: where that structure will
 resist the work. Investigate each code smell as you notice it. A code smell is a
-sign the code may resist change, not a proven defect: duplication, a long
-function, tight coupling, one concern scattered across many sites, and the rest
-of the code-smell catalogue. Describe the smell and where it lives. Whether it
-matters and how to fix it is Scope's and Design's call, not the read's.
+sign the code may resist change, not a proven defect. Examples: duplication, a
+long function, tight coupling, one concern scattered across many sites, and the
+rest of the code-smell catalogue. Describe the smell and where it lives. Whether
+it matters and how to fix it is Scope's and Design's call, not the read's.
 
 Some code smells are specific and common in codebases with agent-generated code:
 
 - Complexity the need didn't earn. Generated code tends to add rather than
-  integrate, overfit to the case in hand, and over-build: a new path bolted
-  alongside one that could have extended, a special case per instance where one
-  rule would serve, an abstraction or parameter no caller exercises. Trace each
-  piece of structure to the need it serves and name the one that serves none.
+  integrate, overfit to the case in hand, and over-build. Examples: a new path
+  bolted alongside one that could have extended, a special case per instance
+  where one rule would serve, an abstraction or parameter no caller exercises.
+  Trace each piece of structure to the need it serves and name the one that
+  serves none.
 - Defensive code at a layer that isn't the source of the constraint it defends
   against. Trace each constraint back to the function that imposes it. See
   [Wrong-layer defensive code](../protocol.md#wrong-layer-defensive-code).
@@ -72,8 +73,9 @@ Some code smells are specific and common in codebases with agent-generated code:
   this read shows fixes landing on the same surface, suspect this drift before a
   run of unrelated defects. The recurrence is the evidence.
 - A rule that many sites must each follow, with no single home and nothing
-  enforcing it, such as every endpoint building its own error response or every
-  public function carrying its own docstring. Cite the sites seen breaking it.
+  enforcing it. For example, every endpoint building its own error response, or
+  every public function carrying its own docstring. Cite the sites seen breaking
+  it.
 
 ## Step 2.3: Compose the Code Analysis
 

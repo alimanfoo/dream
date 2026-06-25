@@ -19,12 +19,12 @@ each with its presence condition:
   Code Analysis finding behind each addition so the user can trace each one back
   to the structural read they already accepted.
 - **Minimal Scope** (when narrower than Coherent): strictly what the
-  requirements call for, with the coherence gaps named. Gives the user a way to
-  decline the coherence work explicitly (time pressure, scope discipline, the
+  requirements call for, with the coherence gaps named. It gives the user a way
+  to decline the coherence work explicitly (time pressure, scope discipline, the
   rest handled separately).
 - **Maximal Scope** (when anticipated further work is real): beyond the Coherent
-  Scope, rolls in work that will naturally lead on from the current concern.
-  Anticipates what comes next, not just what the investigation surfaced about
+  Scope, rolls in work that will naturally lead on from the current concern. It
+  anticipates what comes next, not just what the investigation surfaced about
   now. The widest sensible anticipation, not speculation.
 
 Test the Coherent Scope before sharing: would finishing it leave the work short
@@ -41,46 +41,36 @@ of coherence? What coherence means depends on the Session Type:
 
 If the Coherent Scope would leave any of these undone, it is too narrow. Widen
 it. When the Code Analysis traced a recurring surface to one fact written in two
-places, single-sourcing it is the root-cause fix: Coherent work, not a Maximal
-add-on (see [One fact, one home](../protocol.md#one-fact-one-home)). A script or
-test that re-syncs the two copies is not the fix. It keeps both copies, so the
-drift returns the next time the code changes. When the recurring surface is one
-rule many sites must each follow, with no single home to single-source, a check
-that enforces the rule is the root-cause fix instead: Coherent work when the
-rule is real and the drift is observed, not a Maximal add-on (see
-[One rule, one check](../protocol.md#one-rule-one-check)).
+places, single-sourcing it is the root-cause fix. That is Coherent work, not a
+Maximal add-on (see [One fact, one home](../protocol.md#one-fact-one-home)). A
+script or test that re-syncs the two copies is not the fix. It keeps both
+copies, so the drift returns the next time the code changes. When the recurring
+surface is one rule many sites must each follow, with no single home to
+single-source, a check that enforces the rule is the root-cause fix instead.
+That is Coherent work when the rule is real and the drift is observed, not a
+Maximal add-on (see [One rule, one check](../protocol.md#one-rule-one-check)).
 
-Ask the removal question too. Could dropping or narrowing something (a feature,
-a branch, a layer, a hand-maintained count) resolve the concern, or leave the
-code simpler to maintain instead of adding? Agents default to adding and to
-keeping what's there. The classic case is a count in prose that has to change
-whenever the things it counts do. Remove the count.
+Ask the removal question too. Could dropping or narrowing something resolve the
+concern, or leave the code simpler to maintain instead of adding? Examples: a
+feature, a branch, a layer, a hand-maintained count. Agents default to adding
+and to keeping what's there. The classic case is a count in prose that has to
+change whenever the things it counts do. Remove the count.
 
 State each scope item as the property or outcome the work must achieve, not how
-it achieves it. Choosing the how (a tool or library, an algorithm or structure,
-an API or command shape, a bug's fix shape) is Design's call, where the
-reviewers weigh the alternatives.
+it achieves it. Choosing the how is Design's call, where the reviewers weigh the
+alternatives. The how includes the tool or library, the algorithm or structure,
+the API or command shape, and a bug's fix shape.
 
 ## Step 3.2: Share the Draft Scope Options with Junio and Ralph for review
 
 Send the Draft Scope Options to both Junio and Ralph in parallel: two
-`SendMessage` calls in the same turn. They already hold the Session Type and
-accepted Requirements Analysis from the Phase 1 handoff and the accepted Code
-Analysis from the Phase 2 handoff, so the body for each carries the Draft Scope
-Options. Sign off `From Grace. RSVP via SendMessage.`
+`SendMessage` calls in the same turn. Sign off
+`From Grace. RSVP via SendMessage.`
 
-Junio reads from the maintainer's view. First, whether the Coherent Scope is
-truly coherent: does it miss any work needed to reach coherence? Then whether
-each addition there earns its place by code or recurrence evidence. Then whether
-the Maximal Scope is real anticipation.
-
-Ralph reads from the engineering-pattern view: whether the Coherent Scope is
-right-sized for the accepted Requirements Analysis, and whether the Maximal
-Scope avoids hypothetical future-proofing.
-
-Send the same body to each. Their role files steer the lens. Each replies with a
-numbered list of findings (or "no substantive findings"). Junio and Ralph are
-advisory at Scope, not gating. One round only. Don't loop back to either
+Junio reads from the maintainer's view. Ralph reads from the engineering-pattern
+view. Send the same body to each. Their role files steer the lens. Each replies
+with a numbered list of findings (or "no substantive findings"). Junio and Ralph
+are advisory at Scope, not gating. One round only. Don't loop back to either
 reviewer after revising. The point is fresh attention from two teammates, caught
 at the cheapest point to fix.
 

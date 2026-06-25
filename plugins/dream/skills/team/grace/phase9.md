@@ -4,19 +4,19 @@ Write every turn output, message and artefact in this phase to the
 [writing style guide](../../../writing-style.md).
 
 The goal of this phase is to collect Ancillary Findings and Opportunities from
-the team and decide whether to file a new issue (or comment on an existing one)
-for each. Four steps (compile, deepen, test, decide) come before any issue is
-filed. Test applies to Findings only. Opportunities skip it. All four are yours,
-with user discussion before you file or comment.
+the team. For each, decide whether to file a new issue or comment on an existing
+one. Four steps (compile, deepen, test, decide) come before any issue is filed.
+Test applies to Findings only. Opportunities skip it. All four are yours, with
+user discussion before you file or comment.
 
 ## Step 9.1: Compile
 
-Gather the three sources (Junio in-session, Ada in-session, post-merge sweep).
-Each source yields two kinds: Ancillary Findings (concerns left out of scope)
-and Opportunities (worthwhile follow-up work the session suggests). A Finding or
-Opportunity that appears in more than one source merges into one. Do this only
-within a session, not across sessions. Keep Opportunities separate from
-Findings. They skip the Test step (see [Step 9.3](#step-93-test)).
+Gather the sources (Ralph in-session, Junio in-session, Ada in-session,
+post-merge sweep). Each source yields two kinds: Ancillary Findings (concerns
+left out of scope) and Opportunities (worthwhile follow-up work the session
+suggests). Merge a Finding or Opportunity that appears in more than one source
+into one. Do this only within a session, not across sessions. Keep Opportunities
+separate from Findings. They skip the Test step (see [Step 9.3](#step-93-test)).
 
 Add the **deferred candidates** from Phase 1 as Opportunities. These are
 candidate use cases or improvement goals the user neither promoted nor declined
@@ -98,11 +98,15 @@ send candidates back to Ralph or Junio for another round of judgement.
 Share the proposed decision table with the user before drafting issue or comment
 text. For each candidate, show the finding, the decision, the concrete action it
 maps to with its target, and the reason. The decision word alone doesn't tell
-the user what will happen: `re-frame` and `file fresh` open a new issue,
-`reinforce` and a duplicate `drop` comment on an existing one, and a plain
-`drop` does nothing. Spell out the action and target per row
-(`re-frame → new issue, references #155`, `reinforce → comment on #142`), so
-each row is self-contained and the user can accept it without asking. Ask the
+the user what will happen:
+
+- `re-frame` and `file fresh` open a new issue
+- `reinforce` and a duplicate `drop` comment on an existing one
+- a plain `drop` does nothing
+
+Spell out the action and target per row
+(`re-frame → new issue, references #155`, `reinforce → comment on #142`). Each
+row is then self-contained and the user can accept it without asking. Ask the
 user to accept the decision table or redirect it.
 
 After the user accepts the decisions, write the exact issue or comment text for
@@ -121,7 +125,7 @@ GitHub-visible text.
   one issue at the **contract level**: name the surface (the function, the
   parameter, the contract) and list the prior issues with `#N` references. Where
   the recurrence is drift between copies of one fact, name the home and the
-  copies and frame the issue around single-sourcing them (see
+  copies. Frame the issue around single-sourcing them (see
   [One fact, one home](../protocol.md#one-fact-one-home)). Where it is one rule
   many sites must each follow, with no single home, frame the issue around
   adding a check to enforce it (see
@@ -148,7 +152,7 @@ is the place to reach for the strong idea, not the safe one.
 
 You don't implement anything in any phase. What enters the backlog is an issue
 or a comment, never a fix. This holds even when merge was deferred and the PR is
-still open: a miss this sweep surfaces becomes an issue, not a follow-on on the
+still open. A miss this sweep surfaces becomes an issue, not a follow-on on the
 open branch. Only a user-directed change reopens Develop.
 
 Apply a category label to each new issue. See "GitHub labels" in Common rules.

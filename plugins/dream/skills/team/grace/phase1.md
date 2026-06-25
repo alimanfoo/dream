@@ -6,11 +6,11 @@ Write every turn output, message and artefact in this phase to the
 The user opens with session input: an idea for a new feature, an issue or issues
 to address, a piece of code to tidy up, constraints, rough shape. When the boot
 sequence derived one or more issues from the worktree branch name, those issues
-are the session input. Phase 1's job is to capture the system's requirements
-behind it, to make any assumptions explicit so the user can correct them, and to
-elicit answers to anything Grace can't call from the cited material. It ends at
-an accepted Requirements Analysis: what the system must do, for whom, and what
-it is deliberately not for. Follow the steps below in sequence.
+are the session input. Phase 1 captures the system's requirements behind it. It
+makes any assumptions explicit so the user can correct them. And it elicits
+answers to anything Grace can't call from the cited material. It ends at an
+accepted Requirements Analysis: what the system must do, for whom, and what it
+is deliberately not for. Follow the steps below in sequence.
 
 ## Step 1.1: Orient to the repo
 
@@ -43,17 +43,17 @@ Proceed once you've shared.
 
 Read everything the user cites in their session input: issue bodies and their
 comments, prior issues they reference, linked PRs, named files or symbols.
-Comments often reframe the issue or carry a decision the body doesn't show, so
-an issue read without its comments can miss what the issue has become. This is
-the substantive baseline for the steps that follow. Without it, the recurrence
-check and code read run on guesses about what the user means.
+Comments often reframe the issue or carry a decision the body doesn't show. An
+issue read without its comments can miss what the issue has become. This is the
+substantive baseline for the steps that follow. Without it, the recurrence check
+and code read run on guesses about what the user means.
 
 ## Step 1.3: Read the code with a consumer lens
 
-Read the relevant code, callers, tests, and docs for the named surfaces with one
-question in mind: _who uses these surfaces and what do they do with them?_ This
-is the consumer lens. It makes the Requirements Analysis substantive, with who
-and what the work serves checked against the code rather than inferred from
+Read the relevant code, callers, tests, and docs for the named surfaces. Hold
+one question in mind: _who uses these surfaces and what do they do with them?_
+This is the consumer lens. It makes the Requirements Analysis substantive, with
+who and what the work serves checked against the code rather than inferred from
 prose alone.
 
 ## Step 1.4: Consult the record
@@ -105,7 +105,7 @@ they say so at the acceptance gate (see
 
 Compose the Requirements Analysis: your explicit reading of the system's
 requirements behind the session input. Without this step, hidden inferences
-about who is served and what counts as done ride through to Design, where they
+about who is served and what counts as done ride through to Design. There they
 shape machinery no real consumer needs.
 
 Choose the shape based on the Session Type.
@@ -194,8 +194,8 @@ Skip this step when there are no open questions.
 
 When there are, send the open questions to the user as a numbered list. For
 each, give the possible answers you can see and invite a freeform answer too.
-End the message by asking the user to answer the questions so the Requirements
-Analysis can be completed.
+End the message by asking the user to answer the questions so Grace can complete
+the Requirements Analysis.
 
 Wait for the user's reply. Fold their answers into the Requirements Analysis as
 stated items, dropping the matching open questions. If the reply leaves any
@@ -208,7 +208,7 @@ yet.
 Send the completed Requirements Analysis to the user. When there are candidates,
 ask the user to name any they want included, by number. Note that any they don't
 name are carried forward as Opportunities to Collect (see
-[Phase 9](../../../agents/Grace.md#phase-9-collect)), and that they can ask to
+[Phase 9](../../../agents/Grace.md#phase-9-collect)). Tell them they can ask to
 drop any outright.
 
 End the message by explicitly asking the user to accept: _"Accept the
