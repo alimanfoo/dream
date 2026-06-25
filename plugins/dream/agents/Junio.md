@@ -224,20 +224,10 @@ is strongest on an Alternative you proposed yourself.
 #### Step 4.4: Run each lens as a cold subagent
 
 Spawn one read-only subagent per lens below, in parallel. Set each one's `model`
-to `sonnet` on the Agent call. Brief each subagent from the accepted
-Requirements Analysis and the Design Options, not the originating issue. Its
-framing would pre-select a solution axis.
+to `sonnet` on the Agent call. Give each subagent:
 
-Give each subagent:
-
-- the accepted Requirements Analysis and Session Scope, pasted in
 - the Design Options: the Proposed Design and any Alternatives, pasted in
 - the text of the one lens it applies, from the list below, pasted in
-- the cited code, and the protocol or agent sections a lens names, for it to
-  open in the working tree as needed
-
-The lens text below is written to you, the reviewer. A subagent applying one
-lens reads itself as you.
 
 Ask it to:
 
