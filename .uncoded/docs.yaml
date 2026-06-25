@@ -82,23 +82,31 @@ plugins/:
             'Phase 1: Requirements':
             'Phase 2: Code Analysis':
             'Phase 3: Scope':
-              'Lens 1: Coherent Scope is truly coherent':
-              'Lens 2: Maximal Scope is real anticipation':
-              'Lens 3: Symptom or cause?':
-              'Lens 4: Property or implementation?':
+              'Step 3.1: Read the Draft Scope Options':
+              'Step 3.2: Apply the maintainer lenses':
+                'Lens 1: Coherent Scope is truly coherent':
+                'Lens 2: Maximal Scope is real anticipation':
+                'Lens 3: Symptom or cause?':
+                'Lens 4: Property or implementation?':
+              'Step 3.3: Send your findings to Grace via `SendMessage`':
             'Phase 4: Design':
-              Generate analogies:
-              Generate design sketches:
-              Design review:
-              'Lens 1: Defend behaviour, not surface':
-              'Lens 2: Contract carried by prose or runtime check':
-              'Lens 3: Lateral moves':
-              'Lens 4: Reinvention':
-              'Lens 5: Separation of concerns':
-              'Lens 6: Surviving-fit check':
+              'Step 4.1: Generate analogies':
+              'Step 4.2: Generate design sketches':
+              'Step 4.3: Read the Design Options':
+              'Step 4.4: Apply the maintainer lenses':
+                'Lens 1: Defend behaviour, not surface':
+                'Lens 2: Contract carried by prose or runtime check':
+                'Lens 3: Lateral moves':
+                'Lens 4: Reinvention':
+                'Lens 5: Separation of concerns':
+                'Lens 6: Surviving-fit check':
+              'Step 4.5: Send your findings to Grace via `SendMessage`':
             'Phase 5: Plan':
-              'Lens 1: Defend completeness':
-              'Lens 2: Tidy first?':
+              'Step 5.1: Read the Draft Plan':
+              'Step 5.2: Apply the plan lenses':
+                'Lens 1: Defend completeness':
+                'Lens 2: Tidy first?':
+              'Step 5.3: Send your findings to Grace via `SendMessage`':
             'Phase 6: Develop':
               Read beyond the diff:
               Read what the change removed:
@@ -108,8 +116,11 @@ plugins/:
               Challenge:
               Compensation patterns:
             'Phase 7: Review':
-              'Lens 1: Completeness against requirements and scope':
-              'Lens 2: Coherence across the whole diff':
+              'Step 7.1: Read the whole diff':
+              'Step 7.2: Apply the review lenses':
+                'Lens 1: Completeness against requirements and scope':
+                'Lens 2: Coherence across the whole diff':
+              'Step 7.3: Send your review to Grace via `SendMessage`':
             'Phase 8: Merge':
             'Phase 9: Collect':
             'Phase 10: Reflect':
@@ -124,17 +135,24 @@ plugins/:
             'Phase 1: Requirements':
             'Phase 2: Code Analysis':
             'Phase 3: Scope':
-              'Lens: Scope and abstraction':
+              'Step 3.1: Read the Draft Scope Options':
+              'Step 3.2: Apply the scope-and-abstraction lens':
+              'Step 3.3: Send your findings to Grace via `SendMessage`':
             'Phase 4: Design':
-              Generate analogies:
-              Generate design sketches:
-              Design review:
-              'Lens 1: Naming':
-              'Lens 2: Scope and abstraction':
-              'Lens 3: Plain code':
+              'Step 4.1: Generate analogies':
+              'Step 4.2: Generate design sketches':
+              'Step 4.3: Read the Design Options':
+              'Step 4.4: Apply the engineering-pattern lenses':
+                'Lens 1: Naming':
+                'Lens 2: Scope and abstraction':
+                'Lens 3: Plain code':
+              'Step 4.5: Send your findings to Grace via `SendMessage`':
             'Phase 5: Plan':
-              'Lens 1: Task implementability':
-              'Lens 2: Tidy first?':
+              'Step 5.1: Read the Draft Plan':
+              'Step 5.2: Apply the implementer''s-view lenses':
+                'Lens 1: Task implementability':
+                'Lens 2: Tidy first?':
+              'Step 5.3: Send your findings to Grace via `SendMessage`':
             'Phase 6: Develop':
               'Step 6.1: Read the task description':
               'Step 6.2: Do the work':
