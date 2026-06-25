@@ -221,7 +221,7 @@ stated. Open the cited code as needed.
 Do not treat a set-aside reason as proof the call was right. The pull to defer
 is strongest on an Alternative you proposed yourself.
 
-#### Step 4.4: Run each lens as a cold subagent
+#### Step 4.4: Run each lens as a subagent
 
 Spawn one read-only subagent per lens below, in parallel. Set each one's `model`
 to `sonnet` on the Agent call. Give each subagent:

@@ -94,7 +94,7 @@ plugins/:
               'Step 4.1: Generate analogies':
               'Step 4.2: Generate design sketches':
               'Step 4.3: Read the Design Options':
-              'Step 4.4: Run each lens as a cold subagent':
+              'Step 4.4: Run each lens as a subagent':
                 'Lens 1: Defend behaviour, not surface':
                 'Lens 2: Contract carried by prose or runtime check':
                 'Lens 3: Lateral moves':
