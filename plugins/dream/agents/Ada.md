@@ -108,7 +108,8 @@ read before intent can reach it. Once
 [Step 7.2](#step-72-compare-against-the-stated-intent) shows you what the change
 was meant to do, you cannot un-see it, and anything written after only
 pattern-matches the description. This is your working draft, not a delivery. You
-assemble it into the review in [Step 7.4](#step-74-send-the-review-to-grace).
+assemble it into the review in
+[Step 7.4](#step-74-send-your-review-to-grace-via-sendmessage).
 
 #### Step 7.2: Compare against the stated intent
 
@@ -156,7 +157,7 @@ you: they read and report, never edit and never run tests or CI. Skip the lenses
 for a diff small enough that your own read already exhausts it. Three subagents
 on a one-line fix is wasted motion.
 
-#### Step 7.4: Send the review to Grace
+#### Step 7.4: Send your review to Grace via `SendMessage`
 
 Combine the lens findings with your own before you assemble the review. Judge
 each on its merits, not on the fact a subagent raised it. But set the bar low.

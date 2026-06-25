@@ -24,7 +24,7 @@ plugins/:
               'Step 7.1: Review from the diff alone':
               'Step 7.2: Compare against the stated intent':
               'Step 7.3: Widen the review with focused lenses':
-              'Step 7.4: Send the review to Grace':
+              'Step 7.4: Send your review to Grace via `SendMessage`':
               Output format:
               Writing findings:
             'Phase 8: Merge':
