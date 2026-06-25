@@ -67,7 +67,8 @@ rule, makes the reader decode before they can act.
   word. Do not swap in a synonym for variety.
 - Do not invent an umbrella term when you have already named the list.
 - Do not state a count of items you then list. The count and the list drift
-  apart when either changes. Write "the sources:", not "the three sources:".
+  apart when either changes. For example: write "the sources", not "the three
+  sources".
 - Prefer the common word. No jargon. No idioms. For example:
   - "X owns the schema", not "X is the operational source of truth"
   - "might go out of sync", not "has drift potential"
