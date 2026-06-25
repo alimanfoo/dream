@@ -41,9 +41,8 @@ For kind-based criteria, show two or three examples to anchor the kind.
 ## Step 5.2: Share the Draft Plan with Junio and Ralph for review
 
 Send the Draft Plan to both Junio and Ralph in parallel: two `SendMessage` calls
-in the same turn. They already hold the Session Type, Requirements Analysis,
-Code Analysis, Session Scope, and Design in context from earlier phases, so the
-message body is the Draft Plan. Sign off `From Grace. RSVP via SendMessage.`
+in the same turn. They already hold all earlier phase context. Send the Draft
+Plan as the message body. Sign off `From Grace. RSVP via SendMessage.`
 
 Send the same body to each reviewer. Their role files steer the lens. Junio
 reads from the maintainer's view: defend completeness across tasks and
@@ -67,8 +66,8 @@ itself a reason to fold it in. Each finding takes one of these paths:
   [Step 5.4](#step-54-share-the-revised-plan-with-the-user).
 - **Hold as Ancillary Finding**: the finding is real but out of the Session
   Scope. Hold for post-merge triage.
-- **Raise a Challenge**: the finding shows an accepted artifact no longer holds,
-  either the Design being the wrong shape or an earlier artifact getting
+- **Raise a Challenge**: the finding shows an accepted artifact no longer holds.
+  It may be that the Design is the wrong shape, or that an earlier artifact has
   something wrong. Take it to the user, who accepts (revise) or rejects (with
   direction).
 
@@ -83,9 +82,13 @@ Refactor brief (see [Refactor](../../../agents/Grace.md#refactor) under
 Behaviour-preserving task briefs).
 
 When the reply includes a generalisation candidate, treat it as a proposed Plan
-change, not a mandate. Fold it in only when it would make the Plan smaller,
-replace special-case tasks with a bounded criterion, or simplify the code shape
-for the current scope. If it only adds machinery or future-proofing, reject.
+change, not a mandate. Fold it in only when it meets one of these conditions:
+
+- It makes the Plan smaller.
+- It replaces special-case tasks with a bounded criterion.
+- It simplifies the code shape for the current scope.
+
+If it only adds machinery or future-proofing, reject.
 
 When the reply raises a Challenge, assess it before acting: does an accepted
 artifact really no longer hold?

@@ -19,12 +19,17 @@ Run `git rev-parse --verify MERGE_HEAD` to detect whether a merge is in
 progress. Do not test for `.git/MERGE_HEAD` as a file path. In a worktree,
 `.git` is a file, not a directory. The test always reports no merge.
 
-If resolution requires file edits or a script that changes files (a sync script,
-a stub regenerator, an index refresh), create a task and delegate that part to
+Resolution may require file edits or a script that changes files (a sync script,
+a stub regenerator, an index refresh). Create a task and delegate that part to
 Ralph. The task brief follows the same rule as any other Ralph task brief. See
 "Never ask Ralph to run a git command" under "Writing to teammates is prompt
-engineering". After Ralph reports back, you re-diff, stage, commit (with
-`Dream-origin: conflict-resolution`), and push. Junio is not involved. Do only
-what the conflict resolution needs.
+engineering". After Ralph reports back, you:
+
+- re-diff
+- stage
+- commit (with `Dream-origin: conflict-resolution`)
+- push
+
+Junio is not involved. Do only what the conflict resolution needs.
 
 The phase ends when the PR is merged.

@@ -56,8 +56,8 @@ not itself a reason to accept it. Each finding takes one of these paths:
   when the finding shows an accepted artifact no longer holds, not a fixable
   defect.
 
-A cluster of Junio's completeness misses can be the evidence for a Challenge
-that the Session Scope was too narrow, not just a list of follow-ons.
+A cluster of Junio's completeness misses can be the evidence for a Challenge. It
+can show the Session Scope was too narrow, not just a list of follow-ons.
 
 Keep one response note per finding as you triage. Accepted findings record the
 follow-on task and, once complete, the commit or PR-visible evidence that
@@ -69,9 +69,9 @@ Reclassify any "out of scope but noticed" item as in scope when it is the same
 edit: one the PR missed, or one the PR has now made adjacent. The review bucket
 is for broader concerns, not incomplete instances of the agreed change.
 
-When a finding proposes adding or expanding a docstring, comment, or
-section-header to express a contract, invariant, precondition, or convention,
-apply the
+A finding may propose adding or expanding a docstring, comment, or
+section-header to express a contract, invariant, precondition, or convention.
+Apply the
 **[code-shape-first check](../../../agents/Grace.md#code-shape-first-check)**
 before deciding.
 
@@ -116,8 +116,14 @@ a finding that would once have become a follow-on task becomes an issue instead.
 You fold no new development into the PR. Resolving merge conflicts is the
 exception. That is the merge itself, delegated to Ralph as Phase 8 describes.
 Only a user-directed change reopens Develop. You handle it as an explicit
-reopening, the same as any Phase 6 task: create a task, Ralph implements, you
-commit, Junio audits. Absent that direction, the default is freeze.
+reopening, the same as any Phase 6 task:
+
+- create a task
+- Ralph implements
+- you commit
+- Junio audits
+
+Absent that direction, the default is freeze.
 
 The freeze stops new code, not updates to the PR's record. If a Challenge is
 accepted at Phase 7 or later, still post its superseding comment and edit the PR

@@ -3,10 +3,10 @@
 Write every turn output, message and artefact in this phase to the
 [writing style guide](../../../writing-style.md).
 
-The main implementation loop. After one setup step, you pick the first task,
-Ralph does the work, Junio audits, and the chain repeats until the list is
-drained. The session branch and draft PR already exist. You created them at
-requirements acceptance (Phase 1).
+This is the main implementation loop. You pick the first task, Ralph does the
+work, and Junio audits. The chain repeats until the list is drained. The session
+branch and draft PR already exist. You created them at requirements acceptance
+(Phase 1).
 
 ## Opening sequence
 
@@ -55,18 +55,22 @@ looks off, bounce back rather than fixing.
 ### Step 6.5: Commit
 
 Re-diff before staging. The working tree is live between verify and commit. Any
-changes in that window land silently if you stage on the earlier read. Then
-`TaskUpdate status=completed`, stage Ralph's changes, commit, and push.
+changes in that window land silently if you stage on the earlier read. Then:
+
+- `TaskUpdate status=completed`
+- Stage Ralph's changes.
+- Commit.
+- Push.
 
 ### Step 6.6: Coherence audit
 
 Send Junio a message asking for the coherence audit on the just-committed
 change. Sign off per "Communication between teammates (agents)":
 `From Grace. RSVP via SendMessage.` Wait for their numbered list (or "no
-substantive findings"). The coherence audit may also raise a **Challenge**, for
-example when repeated coherence audits circle the same surface, suggesting the
-Session Scope is too narrow to reach the root cause (see
-[Step 6.7](#step-67-triage-findings)).
+substantive findings"). The coherence audit may also raise a **Challenge** (see
+[Step 6.7](#step-67-triage-findings)). For example, repeated coherence audits
+circling the same surface suggest the Session Scope is too narrow to reach the
+root cause.
 
 ### Step 6.7: Triage findings
 
@@ -97,16 +101,16 @@ Next task, back to [Step 6.2](#step-62-assign).
 
 ## Finalize the PR
 
-At the end of Develop, after all in-session tasks are complete and the branch
-has been pushed, finalize the PR you opened back in Phase 1 (see
-[Step 1.12](phase1.md#step-112-open-the-draft-pr)). The label, the closing
-keywords, and the body's requirements analysis were all set at PR-open.
-Finalizing means two things: bring the description to its final accepted state,
-and append the dream metadata line.
+At the end of Develop, finalize the PR you opened back in Phase 1 (see
+[Step 1.12](phase1.md#step-112-open-the-draft-pr)). All in-session tasks must be
+complete and the branch pushed before you do. The label, the closing keywords,
+and the body's requirements analysis were all set at PR-open. Finalizing means
+two things: bring the description to its final accepted state, and append the
+dream metadata line.
 
 **Final accepted state.** If the requirements were revised after the PR opened
-(through a Challenge, say), edit the description so it shows the final accepted
-requirements, not the state at PR-open.
+(through a Challenge, say), edit the description to show the final accepted
+requirements. Do not leave the state from PR-open.
 
 **Append a dream metadata line to the PR body, after the Claude Code footer:**
 
@@ -115,10 +119,15 @@ requirements, not the state at PR-open.
 ```
 
 Plugin version from `../../.claude-plugin/plugin.json` relative to the protocol
-file. Gate counts are revision rounds per acceptance gate: `req` is Requirements
-Analysis (closing Phase 1), `ca` is Code Analysis (closing Phase 2), `scope` is
-Session Scope (closing Phase 3), `design` is Phase 4, `plan` is Phase 5. A
-revision round is one iteration where the user pushed back before accepting.
+file. Gate counts are revision rounds per acceptance gate:
+
+- `req`: Requirements Analysis (closing Phase 1)
+- `ca`: Code Analysis (closing Phase 2)
+- `scope`: Session Scope (closing Phase 3)
+- `design`: Phase 4
+- `plan`: Phase 5
+
+A revision round is one iteration where the user pushed back before accepting.
 Challenge value: `no`, or `at-<phase>` for the phase where an accepted Challenge
 overturned an artifact (for example `at-scope` or `at-develop`). Autopilot
 value: `no`, or `from-<phase>` for the phase where autopilot first engaged (for

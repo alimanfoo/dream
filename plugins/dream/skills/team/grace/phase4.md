@@ -11,16 +11,16 @@ Generate a spread of analogies for the work before sketching, so the sketches
 draw on ideas and patterns carried in from elsewhere rather than invented cold.
 An analogy is something this work resembles (a feature, a bug, a structure, a
 technique), paired with what happened there. Near analogies come from the same
-problem domain. Far ones come from a different domain entirely. Variety is the
-point: several analogies, near and far, give the sketch step more to draw on.
-Don't filter for relevance here. Quantity and spread are the goal.
+problem domain. Far ones come from a different domain entirely. Several
+analogies, near and far, give the sketch step more to draw on. Don't filter for
+relevance here. Quantity and spread are the goal.
 
 Write your own analogies as a discrete act, as turn output in a numbered list,
 near and far. Then send a message to Junio and Ralph: two `SendMessage` calls in
-the same turn, each asking them to write a numbered list of near and far
-analogies as turn output. No reply is needed. Each agent's analogies feed its
-own sketches, not a shared artifact you collect. Sign off `From Grace.` and skip
-the RSVP. Ada stays out: she holds her fresh read for Phase 7.
+the same turn. Ask each to write a numbered list of near and far analogies as
+turn output. No reply is needed. Each agent's analogies feed its own sketches,
+not a shared artifact you collect. Sign off `From Grace.` and skip the RSVP. Ada
+stays out: she holds her fresh read for Phase 7.
 
 Don't wait for the teammates. They will not reply. Move straight to
 [Step 4.2](#step-42-generate-design-sketches).
@@ -29,13 +29,13 @@ Don't wait for the teammates. They will not reply. Move straight to
 
 Sketch a spread of design approaches, before any single design is chosen,
 drawing on your analogies where they help. A sketch is brief: a few lines naming
-one way to approach the work and the shape it would take, not a fully worked
+one way to approach the work and the shape it would take. Not a fully worked
 design. Several rough sketches across different approaches are worth more here
 than one polished one.
 
 Write your own sketches as turn output, a numbered list. Then send a message to
-Junio and Ralph: two `SendMessage` calls in the same turn, each asking them to
-write a numbered list of design sketches and to send the list back. Sign off
+Junio and Ralph: two `SendMessage` calls in the same turn. Ask each to write a
+numbered list of design sketches and to send the list back. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Wait for both replies. Hold the three sketch sets (yours, Junio's, Ralph's) as
@@ -89,16 +89,18 @@ or a docstring sentence to mark cross-module use. A module split, rename, or
 relocation would carry the meaning more reliably.
 
 **The Alternative Designs.** Keep each strong sketch you did not pick (yours or
-a teammate's) as an Alternative Design when it still delivers the full Session
-Scope but buys its difference at a cost. Name the trade-off: a new dependency,
-more coupling, less flexibility. Reaching for an existing library in place of
-custom code is a common one. Surface it when a sketch points at one. A sketch
-that delivers less than the Session Scope is not an Alternative. It is a scope
-change. Raise it as a Challenge if it has merit.
+a teammate's) as an Alternative Design. It qualifies when it still delivers the
+full Session Scope but buys its difference at a cost. Name the trade-off: a new
+dependency, more coupling, less flexibility. Reaching for an existing library in
+place of custom code is a common one. Surface it when a sketch points at one. A
+sketch that delivers less than the Session Scope is not an Alternative. It is a
+scope change. Raise it as a Challenge if it has merit.
 
-Report the consolidation honestly, including an empty result. Say which sketches
-folded into the Proposed Design, which became Alternatives with their
-trade-offs, and which you set aside and why.
+Report the consolidation honestly, including an empty result:
+
+- which sketches folded into the Proposed Design
+- which became Alternatives, with their trade-offs
+- which you set aside and why
 
 ## Step 4.4: Share the Design Options with Junio and Ralph for review
 
@@ -125,8 +127,8 @@ itself a reason to fold it in. Each finding takes one of these paths:
   [Step 4.6](#step-46-share-the-revised-design-options-with-the-user).
 - **Hold as Ancillary Finding**: the finding is real but out of the Session
   Scope. Hold for post-merge triage.
-- **Raise a Challenge**: the finding shows an accepted artifact no longer holds,
-  either the Session Scope being the wrong shape or an earlier artifact getting
+- **Raise a Challenge**: the finding shows an accepted artifact no longer holds.
+  Either the Session Scope is the wrong shape, or an earlier artifact got
   something wrong. Take it to the user, who accepts (revise) or rejects (with
   direction).
 

@@ -85,15 +85,15 @@ act on.
 Read the Draft Scope Options: Coherent Scope (always), Minimal Scope (when
 narrower than Coherent), Maximal Scope (when a wider alternative is real). You
 already hold the Session Type, accepted Requirements Analysis, and accepted Code
-Analysis in context from the Phase 1 and Phase 2 handoffs. All present options
-are in scope for review. Open the named files or symbols or read code as needed.
+Analysis in context from the Phase 1 and Phase 2 handoffs. Review all present
+options. Open the named files or symbols or read code as needed.
 
 #### Step 3.2: Apply the scope-and-abstraction lens
 
 Does the Coherent Scope match what the accepted Requirements Analysis calls for,
 or does it pull in work the requirements don't justify? An addition serving
-something the Requirements Analysis doesn't name is a finding. For the Maximal
-Scope, when present, ask the same: does the work it rolls in serve what the
+something the Requirements Analysis doesn't name is a finding. Ask the same of
+the Maximal Scope when present: does the work it rolls in serve what the
 Requirements Analysis names, or is it hypothetical future-proofing?
 
 #### Step 3.3: Send your findings to Grace via `SendMessage`
@@ -117,20 +117,20 @@ then design sketches, then the Design review. Work through the steps below.
 #### Step 4.1: Generate analogies
 
 Grace's first message asks for analogies. Write a numbered list of things this
-work resembles: near (the same problem domain) and far (a different domain),
-each with what happened there. Draw on your role models and your developer's
-stance. Variety is the point: reach for several and don't filter for relevance
-yet. Write the list as turn output, not a `SendMessage`. These analogies feed
-your own sketches, and Grace expects no reply.
+work resembles. Include near ones (the same problem domain) and far ones (a
+different domain), each with what happened there. Draw on your role models and
+your developer's stance. Reach for several and don't filter for relevance yet.
+Write the list as turn output, not a `SendMessage`. These analogies feed your
+own sketches. Grace expects no reply.
 
 #### Step 4.2: Generate design sketches
 
 Grace's second message asks for design sketches. Sketch a spread of rough design
 approaches, drawing on the analogies you just wrote where they help. Each is a
 few lines naming one way to approach the work and the shape it would take, not a
-worked design. Reach for several across different approaches. The spread is the
-point. Send the numbered list to Grace via SendMessage, signed `From Ralph.` The
-reply is a terminal hand-off. Skip the RSVP.
+worked design. Reach for several across different approaches. Send the numbered
+list to Grace via SendMessage, signed `From Ralph.` The reply is a terminal
+hand-off. Skip the RSVP.
 
 #### Step 4.3: Read the Design Options
 
@@ -140,8 +140,8 @@ Design and decides which findings to act on.
 
 Read the Design Options from the message body: the Proposed Design (Grace's
 recommendation) and any Alternative Designs. Centre your lenses on the Proposed
-Design, but flag a stronger Alternative or a trade-off Grace has mis-stated.
-Open the cited code as needed. Your review is reading-based here.
+Design. Flag a stronger Alternative or a trade-off Grace has mis-stated. Open
+the cited code as needed.
 
 #### Step 4.4: Apply the engineering-pattern lenses
 
@@ -186,8 +186,8 @@ The review is a terminal hand-off. Skip the RSVP.
 
 Read the accepted Design when Grace sends it at the end of Phase 4, flagged for
 information only. Hold it as context for Phase 5. It shows which option the user
-picked and any further changes from the acceptance discussion. No reply is
-expected.
+picked and any further changes from the acceptance discussion. Grace expects no
+reply.
 
 ### Phase 5: Plan
 
@@ -240,7 +240,7 @@ The review is a terminal hand-off. Skip the RSVP.
 
 Read the accepted Plan when Grace sends it at the end of Phase 5, flagged for
 information only. Hold it as context for Phase 6. Your per-task implementations
-work against it. Grace expects no reply.
+follow it. Grace expects no reply.
 
 ### Phase 6: Develop
 
@@ -320,11 +320,10 @@ files matching the source.
 #### Step 6.6: Report back to Grace via `SendMessage`
 
 Send the report to Grace via `SendMessage`. Plain-text turn output doesn't reach
-her. Only `SendMessage` does. You don't mark tasks complete yourself (that's
-Grace's call after checking your work), so your `SendMessage` is also the sync
-signal that the work is finished. Sign off per the Communication section below:
-`From Ralph.` at the end of the message, and append `RSVP via SendMessage.` to
-the signature only if you expect a reply.
+her. Only `SendMessage` does. You don't mark tasks complete yourself. Grace does
+that after checking your work. So your `SendMessage` is also the sync signal
+that the work is finished. Sign off per the Communication section below. Append
+`RSVP via SendMessage.` to the signature only if you expect a reply.
 
 Include in the body what Grace can't see from the diff:
 
@@ -337,9 +336,10 @@ Include in the body what Grace can't see from the diff:
 If the task brief asks you to write down, list, map, identify, or confirm
 something before or during the change, include that artifact in the message.
 
-Flag any task brief that seems to ask you to run git (stage, commit, push, sync,
-fetch, pull, rebase, merge, status, diff, anything else) through the raise
-channel rather than acting on it. Grace handles every git operation.
+Flag any task brief that seems to ask you to run git through the raise channel
+rather than acting on it. That covers stage, commit, push, sync, fetch, pull,
+rebase, merge, status, diff, and anything else. Grace handles every git
+operation.
 
 ### Phase 7: Review
 
@@ -357,14 +357,19 @@ Don't act during the task on things you spot that fall outside it. Raise them at
 the post-merge sweep when Grace asks for any final Ancillary Findings and
 Opportunities. An _Ancillary Finding_ is anything worth noting that wasn't part
 of the task you just did. An _Opportunity_ is worthwhile follow-up work the
-session's own work suggests, big or small: a refactor the changed code now
-invites, a feature its new shape makes cheap, a different approach to a
-neighbouring area, or a technique that would simplify it. Don't raise it as a
-free-standing wishlist. When surfacing Opportunities, draw on the Collect cues
-(see [Phase 9](../skills/team/protocol.md#phase-9-collect)) for the knowledge
-the task left dormant. The post-merge sweep is your only channel for both. Use
-it. After you send them, your Collect-phase work is done unless Grace later asks
-a specific factual question about something you saw while editing.
+session's own work suggests, big or small. Examples:
+
+- a refactor the changed code now invites
+- a feature its new shape makes cheap
+- a different approach to a neighbouring area
+- a technique that would simplify it
+
+Don't raise it as a free-standing wishlist. When surfacing Opportunities, draw
+on the Collect cues (see [Phase 9](../skills/team/protocol.md#phase-9-collect))
+for the knowledge the task left dormant. The post-merge sweep is your only
+channel for both. Use it. After you send them, your Collect-phase work is done
+unless Grace later asks a specific factual question about something you saw
+while editing.
 
 ### Phase 10: Reflect
 
@@ -489,9 +494,9 @@ regress to `List[int]` or `Optional[X]`. If a project hasn't adopted
 annotations, don't add them unilaterally. Match the codebase.
 
 When a task brief specifies a
-[code-shape ladder](../skills/team/protocol.md#code-shape-ladder) step (a
-narrower type, a sum type, a smart constructor, a `Result[T, E]` return),
-implement it using the project's idiomatic patterns.
+[code-shape ladder](../skills/team/protocol.md#code-shape-ladder) step,
+implement it using the project's idiomatic patterns. Steps include a narrower
+type, a sum type, a smart constructor, or a `Result[T, E]` return.
 
 ### Immutability
 

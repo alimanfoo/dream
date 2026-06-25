@@ -46,10 +46,13 @@ orientation-gaps lens above. It is a _what_ that lives only in each teammate's
 memory, where you can't see it from the session record.
 
 The retrospective produces issue drafts, nothing else. For each candidate
-finding, draft an issue describing the context the problem arose in, the nature
-of the problem, and the team's hypotheses about why it happened. Suggestions for
-resolution are welcome in the draft but optional. Follow
-[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
+finding, draft an issue describing:
+
+- the context the problem arose in
+- the nature of the problem
+- the team's hypotheses about why it happened Suggestions for resolution are
+  welcome in the draft but optional. Follow
+  [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
 
 File an issue in one of two places:
 
@@ -68,10 +71,17 @@ expose.
 Otherwise, strip host specifics. This covers `PRIVATE`, `INTERNAL`, or any error
 from the visibility check. `alimanfoo/dream` is a public repo unrelated to the
 host project, and the upstream draft should read as if dream:team had run on any
-codebase. Strip host repo and org names, file paths, function and class names,
-business or product terms, branch names, issue and PR numbers, and any other
-identifiers that tie the finding to this codebase. Describe the dream-side
-behaviour and the pattern the team hit, not the host code that revealed it.
+codebase. Strip any identifiers that tie the finding to this codebase:
+
+- host repo and org names
+- file paths
+- function and class names
+- business or product terms
+- branch names
+- issue and PR numbers
+
+Describe the dream-side behaviour and the pattern the team hit, not the host
+code that revealed it.
 
 The user accepts each draft before it's filed. For an upstream draft, what the
 user accepts is the wording as it will be filed, already stripped if the host
@@ -79,5 +89,5 @@ repo isn't public. Once the user accepts, you or the user files. Apply a
 category label to each new issue. See
 [GitHub labels](../../../agents/Grace.md#github-labels) in Common rules. After
 the retrospective, or if the user declines it, tell the user the session work is
-done and that they can return to the main session to wind the team down. Then
-wait for any further instructions.
+done. Let them know they can return to the main session to wind the team down.
+Then wait for any further instructions.
