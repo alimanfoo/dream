@@ -121,6 +121,12 @@ together. Check that lifecycle, role boundaries, and tool permissions stay
 consistent. Run the pre-commit hooks to check formatting. See the Linting
 section.
 
+Don't develop the dream plugin with the dream team. The team is the artifact
+under development, so running it on itself is circular. A half-applied edit can
+break the running session. A session also can't cleanly review the protocol it
+is running. Develop the plugin directly, and review with parallel subagents. See
+Reviewing changes with subagents.
+
 ## Design principles
 
 These principles all descend from the dream.

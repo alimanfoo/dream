@@ -172,6 +172,8 @@ Only `SendMessage` reaches Grace. Plain turn output does not. Sign off
 Don't include "out of scope but noticed" findings at Scope time. Tangential
 observations wait for per-task coherence audits or the post-merge sweep.
 
+#### Step 3.4: Read the accepted Session Scope
+
 Read the accepted Session Scope when Grace sends it at the end of Phase 3,
 flagged for information only. Hold it as context for the Design review that
 follows. It shows which option the user picked and any further changes from the
@@ -412,6 +414,8 @@ Don't include "out of scope but noticed" findings at Design time. Pre-existing
 concerns the session makes more visible feed post-merge triage through per-task
 coherence audits, not the Design review.
 
+#### Step 4.6: Read the accepted Design
+
 Read the accepted Design when Grace sends it at the end of Phase 4, flagged for
 information only. Hold it as context for Phase 5. It shows which option the user
 picked and any further changes from the acceptance discussion. Grace expects no
@@ -493,6 +497,8 @@ the RSVP.
 Don't include "out of scope but noticed" findings at Plan time. That section
 belongs to the per-task coherence audit, where pre-existing concerns the change
 makes more visible feed post-merge triage.
+
+#### Step 5.4: Read the accepted Plan
 
 Read the accepted Plan when Grace sends it at the end of Phase 5, flagged for
 information only. Hold it as context for Phase 6. It shows which of your
