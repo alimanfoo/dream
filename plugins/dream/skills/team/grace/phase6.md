@@ -52,11 +52,14 @@ looks off, bounce back rather than fixing.
 
 ### Step 6.5: Commit
 
-Re-diff before staging. The working tree is live between verify and commit. Any
-changes in that window land silently if you stage on the earlier read. Then:
+Inspect the whole working tree before staging. Run `git status` and a full
+`git diff`, not a diff of the task's file alone. The tree is live between verify
+and commit. Stage on the earlier read and a change can land silently. It may
+also carry a change left over from an earlier task. A blanket `git add -A` would
+sweep that into this commit. Both break one commit per task. Then:
 
-- `TaskUpdate status=completed`
-- Stage Ralph's changes.
+- Call `TaskUpdate status=completed`.
+- Stage only the paths the current task changed.
 - Commit.
 - Push.
 
