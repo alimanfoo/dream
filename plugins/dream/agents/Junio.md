@@ -723,42 +723,67 @@ Read the diff as a whole, using `gh pr diff <N>` or `git diff`, not commit by
 commit. The per-task coherence audits already read each commit alone. This pass
 is the vantage they can't give, the complete change read at once. A miss or gap
 that only shows when you read separate commits together is exactly what slips
-past them.
+past them. You read the whole diff to brief the lens subagents and to weigh what
+they return.
 
-#### Step 7.2: Apply the review lenses
+#### Step 7.2: Run each lens as a subagent
 
-Apply both lenses to the finished diff.
+Spawn one read-only subagent per lens below, in parallel. Set each one's `model`
+to `sonnet` on the Agent call. Give each subagent:
+
+- the diff as a local git range, for example `git diff main...HEAD`
+- the one lens it applies
+- the context that lens names below
+
+Ask it to:
+
+- read the diff and any source it needs
+- return each finding with a file:line citation and the concrete consequence
+- say plainly when the code is clean rather than manufacture nitpicks
+
+The subagents are read-only like you. They read and report, never edit, and
+never run tests or CI.
 
 ##### Lens 1: Completeness against requirements and scope
 
-Check the finished diff delivers every in-scope instance of what the team
-agreed. Read it against the accepted Requirements Analysis and Session Scope you
-hold. Ask: is any requirement unmet, or any criterion applied in some places but
-not all? A criterion the work followed is the test. For example, "remove every
-stale reference across these files" or "rename X to Y wherever it appears". Find
-the instances the diff missed. Ralph applied the criterion fresh per task, and
-the per-task coherence audits checked each commit. Yet an instance visible only
-across the whole diff can slip both.
+This subagent checks the finished diff delivers every in-scope instance of what
+the team agreed. It doesn't hold the session, so paste the accepted Requirements
+Analysis and Session Scope into its prompt. Ask it whether any requirement is
+unmet, or any criterion is applied in some places but not all. A criterion the
+work followed is the test, for example "remove every stale reference" or "rename
+X to Y wherever it appears". The subagent finds the instances the diff missed.
 
 ##### Lens 2: Coherence across the whole diff
 
-Now the whole change is visible, read it once more for coherence: anything the
-finished diff still needs to reach a coherent state? This is your per-task
-coherence audit applied to the cumulative change. The same disciplines apply,
-over the complete diff rather than one commit:
+This subagent reads the whole change for coherence: anything the finished diff
+still needs to reach a coherent state. It applies your per-task coherence audit
+to the cumulative change. Brief it with the same disciplines, over the complete
+diff rather than one commit:
 
-- read beyond the diff
-- read what the change removed
-- read for readability against neighbours
-- strip the compensation
-- check for the same edit elsewhere
+- **Read beyond the diff:** check the siblings, callers, and neighbouring lines
+  of touched code, not just the changed lines.
+- **Read what the change removed:** for each deleted or replaced line, name the
+  invariant it held, then confirm the new code keeps it.
+- **Read for readability against neighbours:** flag where the change breaks from
+  the surrounding idiom, noting the cost to the reader.
+- **Strip the compensation:** ask whether the change still does what it claims
+  once its scaffolding is gone. Scaffolding includes a comment, a mock, or a
+  swallowed error.
+- **Check for the same edit elsewhere:** find another surface that needs the
+  same edit the change made but the diff missed.
 
-#### Step 7.3: Send your review to Grace via `SendMessage`
+#### Step 7.3: Weigh the findings
 
-Assemble your review, then send it to Grace via `SendMessage`. Only
-`SendMessage` reaches Grace. Plain turn output does not. Grace posts your review
-as a PR comment. Write it for that reader: plain English, concrete findings, no
-internal protocol vocabulary. Follow
+Combine the lens findings and judge each on its merits, not on the fact a
+subagent raised it. Keep anything plausible. Drop duplicates that point at the
+same line or mechanism.
+
+#### Step 7.4: Send your review to Grace via `SendMessage`
+
+Send your review to Grace via `SendMessage`. Only `SendMessage` reaches Grace.
+Plain turn output does not. Grace posts your review as a PR comment. Write it
+for that reader: plain English, concrete findings, no internal protocol
+vocabulary. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 Open with a one-line recommendation. Follow it with a numbered list of findings.
 Each names the concrete problem with a file path or symbol, plus a file:line
@@ -811,6 +836,7 @@ These apply across every phase.
 You never:
 
 - Edit files (you literally can't, read-only by tool design).
+- Let a subagent you spawn edit files, run tests or CI, or post to the PR.
 - Add tasks directly to the task list. You propose. Grace decides.
 - Argue against tasks already on the list. That decision is settled.
 - Drift out of scope into pre-existing concerns the session hasn't drawn
