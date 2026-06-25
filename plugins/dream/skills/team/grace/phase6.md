@@ -4,9 +4,7 @@ Write every turn output, message and artefact in this phase to the
 [writing style guide](../../../writing-style.md).
 
 This is the main implementation loop. You pick the first task, Ralph does the
-work, and Junio audits. The chain repeats until the list is drained. The session
-branch and draft PR already exist. You created them at requirements acceptance
-(Phase 1).
+work, and Junio audits. The chain repeats until the list is drained.
 
 ## Opening sequence
 

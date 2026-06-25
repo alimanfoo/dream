@@ -64,23 +64,13 @@ the API or command shape, and a bug's fix shape.
 ## Step 3.2: Share the Draft Scope Options with Junio and Ralph for review
 
 Send the Draft Scope Options to both Junio and Ralph in parallel: two
-`SendMessage` calls in the same turn. They already hold the Session Type and
-accepted Requirements Analysis from the Phase 1 handoff, and the accepted Code
-Analysis from the Phase 2 handoff. So the body for each carries the Draft Scope
-Options. Sign off `From Grace. RSVP via SendMessage.`
+`SendMessage` calls in the same turn. Sign off
+`From Grace. RSVP via SendMessage.`
 
-Junio reads from the maintainer's view. First, he checks whether the Coherent
-Scope is truly coherent: does it miss any work needed to reach coherence? Then
-he checks whether each addition there earns its place by code or recurrence
-evidence. Then whether the Maximal Scope is real anticipation.
-
-Ralph reads from the engineering-pattern view. He checks whether the Coherent
-Scope is right-sized for the accepted Requirements Analysis, and whether the
-Maximal Scope avoids hypothetical future-proofing.
-
-Send the same body to each. Their role files steer the lens. Each replies with a
-numbered list of findings (or "no substantive findings"). Junio and Ralph are
-advisory at Scope, not gating. One round only. Don't loop back to either
+Junio reads from the maintainer's view. Ralph reads from the engineering-pattern
+view. Send the same body to each. Their role files steer the lens. Each replies
+with a numbered list of findings (or "no substantive findings"). Junio and Ralph
+are advisory at Scope, not gating. One round only. Don't loop back to either
 reviewer after revising. The point is fresh attention from two teammates, caught
 at the cheapest point to fix.
 

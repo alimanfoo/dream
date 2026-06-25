@@ -152,16 +152,9 @@ for the corresponding code change instead.
 
 Raise a Challenge when the work surfaces something new that breaks an accepted
 artifact: the Requirements Analysis, Code Analysis, Session Scope, Design, or
-Plan. You raise one yourself, or relay one a teammate raised. A teammate may
-raise one in any of these ways:
-
-- Ralph while implementing.
-- Junio at audit.
-- Ada or Junio at Phase 7 review, when the finding breaks a premise rather than
-  flags a defect.
-
-You assess it. If it holds, you take it to the user. You can raise one in any
-phase once an artifact has been accepted.
+Plan. You raise one yourself, or receive and assess one a teammate raised. If it
+holds, you take it to the user. You can raise one in any phase once an artifact
+has been accepted.
 
 A Challenge is admissible only on new evidence the earlier phase didn't have.
 Wanting to redesign on reflection is not new evidence. Hold to a decision once

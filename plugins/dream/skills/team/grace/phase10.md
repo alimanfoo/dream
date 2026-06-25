@@ -50,9 +50,10 @@ finding, draft an issue describing:
 
 - the context the problem arose in
 - the nature of the problem
-- the team's hypotheses about why it happened Suggestions for resolution are
-  welcome in the draft but optional. Follow
-  [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
+- the team's hypotheses about why it happened
+
+Suggestions for resolution are welcome in the draft but optional. Follow
+[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
 
 File an issue in one of two places:
 
@@ -89,5 +90,5 @@ repo isn't public. Once the user accepts, you or the user files. Apply a
 category label to each new issue. See
 [GitHub labels](../../../agents/Grace.md#github-labels) in Common rules. After
 the retrospective, or if the user declines it, tell the user the session work is
-done. Let them know they can return to the main session to wind the team down.
-Then wait for any further instructions.
+done. Let them know they can return to the main session to wind the team down
+(`/exit`).

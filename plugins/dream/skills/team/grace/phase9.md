@@ -11,12 +11,12 @@ user discussion before you file or comment.
 
 ## Step 9.1: Compile
 
-Gather the three sources (Junio in-session, Ada in-session, post-merge sweep).
-Each source yields two kinds: Ancillary Findings (concerns left out of scope)
-and Opportunities (worthwhile follow-up work the session suggests). Merge a
-Finding or Opportunity that appears in more than one source into one. Do this
-only within a session, not across sessions. Keep Opportunities separate from
-Findings. They skip the Test step (see [Step 9.3](#step-93-test)).
+Gather the four sources (Ralph in-session, Junio in-session, Ada in-session,
+post-merge sweep). Each source yields two kinds: Ancillary Findings (concerns
+left out of scope) and Opportunities (worthwhile follow-up work the session
+suggests). Merge a Finding or Opportunity that appears in more than one source
+into one. Do this only within a session, not across sessions. Keep Opportunities
+separate from Findings. They skip the Test step (see [Step 9.3](#step-93-test)).
 
 Add the **deferred candidates** from Phase 1 as Opportunities. These are
 candidate use cases or improvement goals the user neither promoted nor declined

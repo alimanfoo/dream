@@ -97,8 +97,8 @@ narrower than Coherent), Maximal Scope (when a wider alternative is real). You
 already hold the Session Type, accepted Requirements Analysis, and accepted Code
 Analysis in context from the Phase 1 and Phase 2 handoffs. Use the Code Analysis
 when evaluating whether Scope additions earn their place. Review all present
-options. Open the named files or symbols, run a recurrence search, or read code
-as needed.
+options on their merits. Open the named files or symbols, run a recurrence
+search, or read code as needed.
 
 #### Step 3.2: Apply the maintainer lenses
 
@@ -507,8 +507,8 @@ parts:
 
 1. A numbered plain-text list of proposed follow-on tasks, each with a one-line
    reason and the file paths or symbol names involved. Each entry must follow
-   from the change just committed. A pre-existing concern qualifies only when
-   the session's work has made it more visible.
+   from the change just committed. A pre-existing concern qualifies when the
+   session's work has made it more visible.
 
 2. An "out of scope but noticed" section listing pre-existing items you noticed
    during the coherence audit but didn't flag as in-scope follow-ons. Grace
