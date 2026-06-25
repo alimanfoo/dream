@@ -160,10 +160,10 @@ existing issues for style. Order the issue body in two parts:
 - the concern, in one sentence
 - the cause, with a file/symbol citation
 
-Issues point to a concern that can be resolved. They don't spell out the fix: a
-stated direction pre-selects the fix axis and narrows the next session's design
-space before it starts. The next session derives the fix from the concern and
-cause through the phases. The title states the concern as a complete thought
-("status-verb keys can drift from helper returns"), not a stacked-qualifier noun
-phrase ("an unenforced string protocol"). Follow
+Issues point to a concern that can be resolved. They don't spell out the fix. A
+stated direction picks one approach to the fix, narrowing the design space
+before the next session starts. The next session derives the fix from the
+concern and cause through the phases. The title states the concern as a complete
+thought ("status-verb keys can drift from helper returns"), not a
+stacked-qualifier noun phrase ("an unenforced string protocol"). Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
