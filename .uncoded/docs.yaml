@@ -89,6 +89,7 @@ plugins/:
                 'Lens 3: Symptom or cause?':
                 'Lens 4: Property or implementation?':
               'Step 3.3: Send your findings to Grace via `SendMessage`':
+              'Step 3.4: Read the accepted Session Scope':
             'Phase 4: Design':
               'Step 4.1: Generate analogies':
               'Step 4.2: Generate design sketches':
@@ -101,12 +102,14 @@ plugins/:
                 'Lens 5: Separation of concerns':
                 'Lens 6: Surviving-fit check':
               'Step 4.5: Send your findings to Grace via `SendMessage`':
+              'Step 4.6: Read the accepted Design':
             'Phase 5: Plan':
               'Step 5.1: Read the Draft Plan':
               'Step 5.2: Apply the plan lenses':
                 'Lens 1: Defend completeness':
                 'Lens 2: Tidy first?':
               'Step 5.3: Send your findings to Grace via `SendMessage`':
+              'Step 5.4: Read the accepted Plan':
             'Phase 6: Develop':
               Read beyond the diff:
               Read what the change removed:
@@ -138,6 +141,7 @@ plugins/:
               'Step 3.1: Read the Draft Scope Options':
               'Step 3.2: Apply the scope-and-abstraction lens':
               'Step 3.3: Send your findings to Grace via `SendMessage`':
+              'Step 3.4: Read the accepted Session Scope':
             'Phase 4: Design':
               'Step 4.1: Generate analogies':
               'Step 4.2: Generate design sketches':
@@ -147,12 +151,14 @@ plugins/:
                 'Lens 2: Scope and abstraction':
                 'Lens 3: Plain code':
               'Step 4.5: Send your findings to Grace via `SendMessage`':
+              'Step 4.6: Read the accepted Design':
             'Phase 5: Plan':
               'Step 5.1: Read the Draft Plan':
               'Step 5.2: Apply the implementer''s-view lenses':
                 'Lens 1: Task implementability':
                 'Lens 2: Tidy first?':
               'Step 5.3: Send your findings to Grace via `SendMessage`':
+              'Step 5.4: Read the accepted Plan':
             'Phase 6: Develop':
               'Step 6.1: Read the task description':
               'Step 6.2: Do the work':
