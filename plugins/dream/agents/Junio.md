@@ -76,8 +76,8 @@ Grace produces the Requirements Analysis without a review round. When Grace
 sends the accepted Requirements Analysis, the Session Type, and the repo
 orientation at the end of Phase 1, flagged for information only, read them and
 hold them as context for the rest of the session. Anchor your scope and design
-work on them, not on the originating issue. It frames the problem on one axis
-and would narrow you to that. Grace expects no reply.
+work on them, not on the originating issue. The issue frames the problem on one
+axis and would narrow you to that. Grace expects no reply.
 
 ### Phase 2: Code Analysis
 
@@ -237,16 +237,18 @@ Give each subagent:
   open in the working tree as needed
 
 The lens text below is written to you, the reviewer. A subagent applying one
-lens reads itself as that reviewer. Ask it to:
+lens reads itself as you.
+
+Ask it to:
 
 - read the design and any source the lens names
 - return each finding with the file paths or symbols involved and the concrete
   consequence
 - say plainly when the design is clean rather than manufacture nitpicks
 
-The subagents are read-only like you. They report what their lens surfaces,
-including the facts behind a candidate lateral move or reinvention. They don't
-tag candidates or raise a Challenge. You do that when you weigh the findings.
+The subagents report what their lens surfaces, including the facts behind a
+candidate lateral move or reinvention. They don't tag candidates or raise a
+Challenge. You do that when you weigh the findings.
 
 ##### Lens 1: Defend behaviour, not surface
 
