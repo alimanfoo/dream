@@ -94,15 +94,16 @@ plugins/:
               'Step 4.1: Generate analogies':
               'Step 4.2: Generate design sketches':
               'Step 4.3: Read the Design Options':
-              'Step 4.4: Apply the maintainer lenses':
+              'Step 4.4: Run each lens as a subagent':
                 'Lens 1: Defend behaviour, not surface':
                 'Lens 2: Contract carried by prose or runtime check':
                 'Lens 3: Lateral moves':
                 'Lens 4: Reinvention':
                 'Lens 5: Separation of concerns':
                 'Lens 6: Surviving-fit check':
-              'Step 4.5: Send your findings to Grace via `SendMessage`':
-              'Step 4.6: Read the accepted Design':
+              'Step 4.5: Weigh the findings':
+              'Step 4.6: Send your findings to Grace via `SendMessage`':
+              'Step 4.7: Read the accepted Design':
             'Phase 5: Plan':
               'Step 5.1: Read the Draft Plan':
               'Step 5.2: Apply the plan lenses':
@@ -121,7 +122,7 @@ plugins/:
             'Phase 7: Review':
               'Step 7.1: Read the whole diff':
               'Step 7.2: Run each lens as a subagent':
-                'Lens 1: Completeness against requirements and scope':
+                'Lens 1: Completeness against requirements':
                 'Lens 2: Coherence across the whole diff':
               'Step 7.3: Weigh the findings':
               'Step 7.4: Send your review to Grace via `SendMessage`':
