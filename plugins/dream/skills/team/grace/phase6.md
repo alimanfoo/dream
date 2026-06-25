@@ -53,10 +53,8 @@ looks off, bounce back rather than fixing.
 ### Step 6.5: Commit
 
 Inspect the whole working tree before staging. Run `git status` and a full
-`git diff`, not a diff of the task's file alone. The tree is live between verify
-and commit. Stage on the earlier read and a change can land silently. It may
-also carry a change left over from an earlier task. A blanket `git add -A` would
-sweep that into this commit. Both break one commit per task. Then:
+`git diff`, not a diff of the task's files alone. Ensure one commit per task
+with no changed files missed. Then:
 
 - Call `TaskUpdate status=completed`.
 - Stage only the paths the current task changed.
