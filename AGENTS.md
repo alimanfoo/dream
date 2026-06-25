@@ -122,10 +122,9 @@ consistent. Run the pre-commit hooks to check formatting. See the Linting
 section.
 
 Develop the dream plugin directly, not with the dream team. The team is the
-artefact under development, so running it on itself is circular. A half-applied
-edit can break the running session. A session also can't cleanly review the
-protocol it is running. Review changes with parallel subagents. See Reviewing
-changes with subagents.
+artefact under development, so running it on itself is circular. A session can't
+cleanly review the protocol it is running. See
+[Reviewing changes with subagents](#reviewing-changes-with-subagents).
 
 ## Design principles
 
