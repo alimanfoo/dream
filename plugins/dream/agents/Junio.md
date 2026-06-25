@@ -281,10 +281,10 @@ the check that fits it:
 - **A just-fixed bug**: turned into a rule that forbids its shape, so the same
   defect cannot return.
 - **Test coverage of the change**: new or changed product code must carry its
-  own tests, held by a diff-coverage gate scoped to the product — not the
-  tooling and checks around it (see
-  [One rule, one check](../skills/team/protocol.md#one-rule-one-check)) — so
-  every change brings its tests instead of a later session backfilling them.
+  own tests. Scope the diff-coverage gate to the product, not the tooling and
+  checks around it (see
+  [One rule, one check](../skills/team/protocol.md#one-rule-one-check)). That
+  way every change brings its tests instead of a later session backfilling them.
   Gate the diff, not a blunt global percentage, which an agent can lift with
   tests that run code without asserting on it. Mutation testing guards that the
   tests would actually catch a break.
