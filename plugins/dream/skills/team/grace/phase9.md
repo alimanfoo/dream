@@ -155,14 +155,15 @@ Apply a category label to each new issue. See "GitHub labels" in Common rules.
 
 **Issue shape.** When filing, write in plain English for a junior developer.
 Don't duplicate what's visible in the source. Keep it tight. Don't sample
-existing issues for style. Order the issue body in three parts:
+existing issues for style. Order the issue body in two parts:
 
 - the concern, in one sentence
 - the cause, with a file/symbol citation
-- a suggested direction
 
-Issues point to a concern that can be resolved. They don't spell out the fix.
-The title states the concern as a complete thought ("status-verb keys can drift
-from helper returns"), not a stacked-qualifier noun phrase ("an unenforced
-string protocol"). Follow
+Issues point to a concern that can be resolved. They don't spell out the fix: a
+stated direction pre-selects the fix axis and narrows the next session's design
+space before it starts. The next session derives the fix from the concern and
+cause through the phases. The title states the concern as a complete thought
+("status-verb keys can drift from helper returns"), not a stacked-qualifier noun
+phrase ("an unenforced string protocol"). Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
