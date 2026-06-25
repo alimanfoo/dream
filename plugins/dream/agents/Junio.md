@@ -212,9 +212,10 @@ Read the Design Options from the message body: the Proposed Design (Grace's
 recommendation) and any Alternative Designs. Apply your lenses to the Proposed
 Design and to how it compares against each Alternative. Judge each Alternative
 on its merits. Re-derive its trade-off rather than accepting the one Grace
-stated. A set-aside reason records a past call, not proof it was right. The pull
-to defer is strongest on an Alternative you proposed yourself. Open the cited
-code as needed.
+stated. Open the cited code as needed.
+
+Do not treat a set-aside reason as proof the call was right. The pull to defer
+is strongest on an Alternative you proposed yourself.
 
 #### Step 4.4: Apply the maintainer lenses
 
