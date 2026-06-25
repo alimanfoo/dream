@@ -123,7 +123,8 @@ plugins/:
               'Step 7.2: Run each lens as a subagent':
                 'Lens 1: Completeness against requirements and scope':
                 'Lens 2: Coherence across the whole diff':
-              'Step 7.3: Weigh the findings and send your review to Grace via `SendMessage`':
+              'Step 7.3: Weigh the findings':
+              'Step 7.4: Send your review to Grace via `SendMessage`':
             'Phase 8: Merge':
             'Phase 9: Collect':
             'Phase 10: Reflect':

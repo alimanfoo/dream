@@ -717,11 +717,6 @@ scope, and judges it on its own terms. You hold the accepted requirements,
 Session Scope, and the whole session, so you read the finished change against
 what the team agreed.
 
-Spawn a subagent for each lens and weigh what they return. Don't run the lenses
-yourself. One reader applying both lenses over a whole diff skims it and reports
-clean. A subagent that applies one narrow lens, and looks for what breaks it,
-reads far harder. Your lenses are fixed, below, one per subagent.
-
 #### Step 7.1: Read the whole diff
 
 Read the diff as a whole, using `gh pr diff <N>` or `git diff`, not commit by
@@ -729,14 +724,16 @@ commit. The per-task coherence audits already read each commit alone. This pass
 is the vantage they can't give, the complete change read at once. A miss or gap
 that only shows when you read separate commits together is exactly what slips
 past them. You read the whole diff to brief the lens subagents and to weigh what
-they return.
+they return. You don't run the lenses yourself. One reader applying both lenses
+over a whole diff skims it and reports clean. A subagent that applies one narrow
+lens, and looks for what breaks it, reads far harder.
 
 #### Step 7.2: Run each lens as a subagent
 
 Spawn one read-only subagent per lens below, both in a single message so they
 run in parallel. Set each one's `model` to `sonnet` on the Agent call. You weigh
-their findings yourself, so the lenses need not run on a larger model. `sonnet`
-keeps them cheap. Give each subagent:
+their findings yourself, so the lenses need not run on a larger model. Give each
+subagent:
 
 - the diff as a local git range, for example `git diff main...HEAD`
 - the one lens it applies
@@ -759,9 +756,6 @@ Analysis and Session Scope into its prompt. Ask it whether any requirement is
 unmet, or any criterion is applied in some places but not all. A criterion the
 work followed is the test, for example "remove every stale reference" or "rename
 X to Y wherever it appears". The subagent finds the instances the diff missed.
-Ralph applied the criterion fresh per task, and the per-task coherence audits
-checked each commit. Yet an instance visible only across the whole diff can slip
-both.
 
 ##### Lens 2: Coherence across the whole diff
 
@@ -782,15 +776,17 @@ diff rather than one commit:
 - **Check for the same edit elsewhere:** find another surface that needs the
   same edit the change made but the diff missed.
 
-#### Step 7.3: Weigh the findings and send your review to Grace via `SendMessage`
+#### Step 7.3: Weigh the findings
 
 Combine the lens findings and judge each on its merits, not on the fact a
 subagent raised it. Keep anything plausible. Drop duplicates that point at the
 same line or mechanism.
 
-Then send your review to Grace via `SendMessage`. Only `SendMessage` reaches
-Grace. Plain turn output does not. Grace posts your review as a PR comment.
-Write it for that reader: plain English, concrete findings, no internal protocol
+#### Step 7.4: Send your review to Grace via `SendMessage`
+
+Send your review to Grace via `SendMessage`. Only `SendMessage` reaches Grace.
+Plain turn output does not. Grace posts your review as a PR comment. Write it
+for that reader: plain English, concrete findings, no internal protocol
 vocabulary. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 Open with a one-line recommendation. Follow it with a numbered list of findings.
@@ -844,8 +840,7 @@ These apply across every phase.
 You never:
 
 - Edit files (you literally can't, read-only by tool design).
-- Let a review lens subagent you spawn edit files, run tests or CI, or post to
-  the PR.
+- Let a subagent you spawn edit files, run tests or CI, or post to the PR.
 - Add tasks directly to the task list. You propose. Grace decides.
 - Argue against tasks already on the list. That decision is settled.
 - Drift out of scope into pre-existing concerns the session hasn't drawn
