@@ -98,11 +98,11 @@ Requirements Analysis names, or is it hypothetical future-proofing?
 
 #### Step 3.3: Send your findings to Grace via `SendMessage`
 
-Send your findings to Grace via `SendMessage`: a numbered plain-text list, each
-finding with a one-line reason and the file paths, symbol names, or Scope Option
-parts involved. If nothing to flag, send "no substantive findings." Only
-`SendMessage` reaches Grace; plain turn output does not. Sign off `From Ralph.`.
-The review is a terminal hand-off, so skip the RSVP.
+Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
+For each finding, give a one-line reason and the file paths, symbol names, or
+Scope Option parts involved. If nothing to flag, send "no substantive findings."
+Only `SendMessage` reaches Grace. Plain turn output does not. Sign off
+`From Ralph.`. The review is a terminal hand-off. Skip the RSVP.
 
 Read the accepted Session Scope when Grace sends it at the end of Phase 3,
 flagged for information only. Hold it as context for the Design review that
@@ -178,11 +178,11 @@ per future reader to win ten seconds for the writer.
 
 #### Step 4.5: Send your findings to Grace via `SendMessage`
 
-Send your findings to Grace via `SendMessage`: a numbered plain-text list, each
-finding with a one-line reason and the file paths, symbol names, or Design parts
-involved. If nothing to flag, send "no substantive findings." Only `SendMessage`
-reaches Grace; plain turn output does not. Sign off `From Ralph.`. The review is
-a terminal hand-off, so skip the RSVP.
+Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
+For each finding, give a one-line reason and the file paths, symbol names, or
+Design parts involved. If nothing to flag, send "no substantive findings." Only
+`SendMessage` reaches Grace. Plain turn output does not. Sign off `From Ralph.`.
+The review is a terminal hand-off. Skip the RSVP.
 
 Read the accepted Design when Grace sends it at the end of Phase 4, flagged for
 information only. Hold it as context for Phase 5. It shows which option the user
@@ -232,11 +232,11 @@ because different angles often reveal different precursors.
 
 #### Step 5.3: Send your findings to Grace via `SendMessage`
 
-Send your findings to Grace via `SendMessage`: a numbered plain-text list, each
-finding with a one-line reason and the file paths, symbol names, or task numbers
-involved. If nothing to flag, send "no substantive findings." Only `SendMessage`
-reaches Grace; plain turn output does not. Sign off `From Ralph.`. The review is
-a terminal hand-off, so skip the RSVP.
+Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
+For each finding, give a one-line reason and the file paths, symbol names, or
+task numbers involved. If nothing to flag, send "no substantive findings." Only
+`SendMessage` reaches Grace. Plain turn output does not. Sign off `From Ralph.`.
+The review is a terminal hand-off. Skip the RSVP.
 
 Read the accepted Plan when Grace sends it at the end of Phase 5, flagged for
 information only. Hold it as context for Phase 6. Your per-task implementations

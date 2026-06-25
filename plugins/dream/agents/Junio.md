@@ -163,11 +163,11 @@ in. Flag it so the choice waits for Design. See
 
 #### Step 3.3: Send your findings to Grace via `SendMessage`
 
-Send your findings to Grace via `SendMessage`: a numbered plain-text list, each
-finding with a one-line reason and the file paths, symbol names, or Scope Option
-parts involved. If nothing to flag, send "no substantive findings." Only
-`SendMessage` reaches Grace; plain turn output does not. Sign off `From Junio.`.
-The review is a terminal hand-off, so skip the RSVP.
+Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
+For each finding, give a one-line reason and the file paths, symbol names, or
+Scope Option parts involved. If nothing to flag, send "no substantive findings."
+Only `SendMessage` reaches Grace. Plain turn output does not. Sign off
+`From Junio.`. The review is a terminal hand-off. Skip the RSVP.
 
 Don't include "out of scope but noticed" findings at Scope time. Tangential
 observations wait for per-task coherence audits or the post-merge sweep.
@@ -400,12 +400,12 @@ genuinely new evidence that an accepted artifact no longer holds, raise one.
 
 #### Step 4.5: Send your findings to Grace via `SendMessage`
 
-Send your findings to Grace via `SendMessage`: a numbered plain-text list, each
-finding with a one-line reason and the file paths, symbol names, or Design parts
-involved, optionally followed by a Challenge. If nothing to flag, send "no
-substantive findings." Only `SendMessage` reaches Grace; plain turn output does
-not. Sign off `From Junio.`. The review is a terminal hand-off, so skip the
-RSVP.
+Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
+For each finding, give a one-line reason and the file paths, symbol names, or
+Design parts involved, optionally followed by a Challenge. If nothing to flag,
+send "no substantive findings." Only `SendMessage` reaches Grace. Plain turn
+output does not. Sign off `From Junio.`. The review is a terminal hand-off. Skip
+the RSVP.
 
 Don't include "out of scope but noticed" findings at Design time. Pre-existing
 concerns the session makes more visible feed post-merge triage through per-task
@@ -482,12 +482,12 @@ genuinely new evidence that an accepted artifact no longer holds, raise one.
 
 #### Step 5.3: Send your findings to Grace via `SendMessage`
 
-Send your findings to Grace via `SendMessage`: a numbered plain-text list, each
-finding with a one-line reason and the file paths, symbol names, or task numbers
-involved, optionally followed by a Challenge. If nothing to flag, send "no
-substantive findings." Only `SendMessage` reaches Grace; plain turn output does
-not. Sign off `From Junio.`. The review is a terminal hand-off, so skip the
-RSVP.
+Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
+For each finding, give a one-line reason and the file paths, symbol names, or
+task numbers involved, optionally followed by a Challenge. If nothing to flag,
+send "no substantive findings." Only `SendMessage` reaches Grace. Plain turn
+output does not. Sign off `From Junio.`. The review is a terminal hand-off. Skip
+the RSVP.
 
 Don't include "out of scope but noticed" findings at Plan time. That section
 belongs to the per-task coherence audit, where pre-existing concerns the change
@@ -740,7 +740,7 @@ complete diff rather than one commit.
 #### Step 7.3: Send your review to Grace via `SendMessage`
 
 Assemble your review, then send it to Grace via `SendMessage`. Only
-`SendMessage` reaches Grace; plain turn output does not. Grace posts your review
+`SendMessage` reaches Grace. Plain turn output does not. Grace posts your review
 as a PR comment, so write it for that reader: plain English, concrete findings,
 no internal protocol vocabulary. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
@@ -749,7 +749,7 @@ naming the concrete problem with a file path or symbol and a file:line citation
 where you have one. Add an "Out of scope but noticed" section for pre-existing
 items, which Grace collects for the post-merge triage. If you have no findings,
 say so plainly under the recommendation. Sign off `From Junio.`. The review is a
-terminal hand-off, so skip the RSVP.
+terminal hand-off. Skip the RSVP.
 
 You don't raise a Challenge yourself here. Grace decides at triage whether a
 finding is a follow-on or a Challenge, the same as she does for Ada's findings.
