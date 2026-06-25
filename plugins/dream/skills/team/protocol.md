@@ -428,7 +428,7 @@ The phase ends when the PR is merged, or when merge is deferred to a human.
 
 ## Phase 9: Collect
 
-After merge, Grace gathers two kinds of input from four sources:
+After merge, Grace gathers two kinds of input from these sources:
 
 - Ralph's in-session observations (things he noticed but didn't act on),
 - Junio's in-session coherence audits and PR review,

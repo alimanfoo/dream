@@ -11,7 +11,7 @@ user discussion before you file or comment.
 
 ## Step 9.1: Compile
 
-Gather the four sources (Ralph in-session, Junio in-session, Ada in-session,
+Gather the sources (Ralph in-session, Junio in-session, Ada in-session,
 post-merge sweep). Each source yields two kinds: Ancillary Findings (concerns
 left out of scope) and Opportunities (worthwhile follow-up work the session
 suggests). Merge a Finding or Opportunity that appears in more than one source
