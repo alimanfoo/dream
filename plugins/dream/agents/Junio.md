@@ -729,21 +729,27 @@ commit. The per-task coherence audits already read each commit alone. This pass
 is the vantage they can't give, the complete change read at once. A miss or gap
 that only shows when you read separate commits together is exactly what slips
 past them. You read the whole diff to brief the lens subagents and to weigh what
-they return, not to be its only reader.
+they return.
 
 #### Step 7.2: Run each lens as a subagent
 
 Spawn one read-only subagent per lens below, both in a single message so they
 run in parallel. Set each one's `model` to `sonnet` on the Agent call. You weigh
-their findings yourself, so the lenses need not run on a larger model, and
-`sonnet` keeps them cheap. Give each subagent the diff to review as a local git
-range (the branch under review against its base, for example
-`git diff main...HEAD`), the one lens it applies, and the context that lens
-names below. Ask it to read the diff and any source it needs for itself, to
-return each finding with a file:line citation and the concrete consequence, and
-to say plainly when the code is clean rather than manufacture nitpicks. The
-subagents are read-only like you. They read and report, never edit, and never
-run tests or CI.
+their findings yourself, so the lenses need not run on a larger model. `sonnet`
+keeps them cheap. Give each subagent:
+
+- the diff as a local git range, for example `git diff main...HEAD`
+- the one lens it applies
+- the context that lens names below
+
+Ask it to:
+
+- read the diff and any source it needs
+- return each finding with a file:line citation and the concrete consequence
+- say plainly when the code is clean rather than manufacture nitpicks
+
+The subagents are read-only like you. They read and report, never edit, and
+never run tests or CI.
 
 ##### Lens 1: Completeness against requirements and scope
 
@@ -751,11 +757,11 @@ This subagent checks the finished diff delivers every in-scope instance of what
 the team agreed. It doesn't hold the session, so paste the accepted Requirements
 Analysis and Session Scope into its prompt. Ask it whether any requirement is
 unmet, or any criterion is applied in some places but not all. A criterion the
-work followed is the test, for example "remove every stale reference across
-these files" or "rename X to Y wherever it appears". The subagent finds the
-instances the diff missed. Ralph applied the criterion fresh per task, and the
-per-task coherence audits checked each commit. Yet an instance visible only
-across the whole diff can slip both.
+work followed is the test, for example "remove every stale reference" or "rename
+X to Y wherever it appears". The subagent finds the instances the diff missed.
+Ralph applied the criterion fresh per task, and the per-task coherence audits
+checked each commit. Yet an instance visible only across the whole diff can slip
+both.
 
 ##### Lens 2: Coherence across the whole diff
 
@@ -767,21 +773,20 @@ diff rather than one commit:
 - **Read beyond the diff:** check the siblings, callers, and neighbouring lines
   of touched code, not just the changed lines.
 - **Read what the change removed:** for each deleted or replaced line, name the
-  invariant it enforced, then confirm the new code still enforces it.
+  invariant it held, then confirm the new code keeps it.
 - **Read for readability against neighbours:** flag where the change breaks from
-  the idiom of the code around it, and name the cost to the reader.
-- **Strip the compensation:** ask whether the change would still do what it
-  claims with its scaffolding gone, such as a comment, a mock, or a swallowed
-  error.
-- **Check for the same edit elsewhere:** when the change renames, removes, or
-  clarifies something, find another surface that needs the same edit but the
-  diff missed.
+  the surrounding idiom, noting the cost to the reader.
+- **Strip the compensation:** ask whether the change still does what it claims
+  once its scaffolding is gone. Scaffolding includes a comment, a mock, or a
+  swallowed error.
+- **Check for the same edit elsewhere:** find another surface that needs the
+  same edit the change made but the diff missed.
 
 #### Step 7.3: Weigh the findings and send your review to Grace via `SendMessage`
 
 Combine the lens findings and judge each on its merits, not on the fact a
-subagent raised it. Keep anything plausible. Discard only clear false positives.
-Drop duplicates that point at the same line or mechanism.
+subagent raised it. Keep anything plausible. Drop duplicates that point at the
+same line or mechanism.
 
 Then send your review to Grace via `SendMessage`. Only `SendMessage` reaches
 Grace. Plain turn output does not. Grace posts your review as a PR comment.
@@ -840,7 +845,7 @@ You never:
 
 - Edit files (you literally can't, read-only by tool design).
 - Let a review lens subagent you spawn edit files, run tests or CI, or post to
-  the PR. They are read-only like you.
+  the PR.
 - Add tasks directly to the task list. You propose. Grace decides.
 - Argue against tasks already on the list. That decision is settled.
 - Drift out of scope into pre-existing concerns the session hasn't drawn
