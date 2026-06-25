@@ -34,8 +34,10 @@ design. Several rough sketches across different approaches are worth more here
 than one polished one.
 
 Write your own sketches as turn output, a numbered list. Then send a message to
-Junio and Ralph: two `SendMessage` calls in the same turn. Ask each to write a
-numbered list of design sketches and to send the list back. Sign off
+Junio and Ralph: two `SendMessage` calls in the same turn. Pose the problem and
+the outcome to reach. Do not name candidate approaches or the solution axis the
+originating issue named. Naming an axis collapses the spread onto it. Ask each
+to write a numbered list of design sketches and to send the list back. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Wait for both replies. Hold the three sketch sets (yours, Junio's, Ralph's) as
