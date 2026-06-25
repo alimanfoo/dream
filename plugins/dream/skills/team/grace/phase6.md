@@ -57,7 +57,7 @@ Inspect the whole working tree before staging. Run `git status` and a full
 with no changed files missed. Then:
 
 - Call `TaskUpdate status=completed`.
-- Stage only the paths the current task changed.
+- Stage all paths the current task changed.
 - Commit.
 - Push.
 
