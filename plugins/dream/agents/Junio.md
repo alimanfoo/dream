@@ -724,16 +724,12 @@ commit. The per-task coherence audits already read each commit alone. This pass
 is the vantage they can't give, the complete change read at once. A miss or gap
 that only shows when you read separate commits together is exactly what slips
 past them. You read the whole diff to brief the lens subagents and to weigh what
-they return. You don't run the lenses yourself. One reader applying both lenses
-over a whole diff skims it and reports clean. A subagent that applies one narrow
-lens, and looks for what breaks it, reads far harder.
+they return.
 
 #### Step 7.2: Run each lens as a subagent
 
-Spawn one read-only subagent per lens below, both in a single message so they
-run in parallel. Set each one's `model` to `sonnet` on the Agent call. You weigh
-their findings yourself, so the lenses need not run on a larger model. Give each
-subagent:
+Spawn one read-only subagent per lens below, in parallel. Set each one's `model`
+to `sonnet` on the Agent call. Give each subagent:
 
 - the diff as a local git range, for example `git diff main...HEAD`
 - the one lens it applies
