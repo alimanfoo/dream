@@ -39,6 +39,8 @@ person or an automated tool.
 - Lead with what to do. Add what not to do only to support it.
 - Put steps in a vertical list, not a run-on sentence.
 - Keep one voice across a list. Do not switch part way.
+- Leave a blank line before and after a list. Without it, markdown formatters
+  absorb any text that follows directly into the last bullet.
 
 ## Instruction paragraphs
 
