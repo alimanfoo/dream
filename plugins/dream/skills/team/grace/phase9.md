@@ -161,7 +161,7 @@ existing issues for style. Order the issue body in two parts:
 - the cause, with a file/symbol citation
 
 Issues point to a concern that can be resolved. They don't spell out the fix. A
-stated direction picks one approach to the fix, narrowing the design space
+stated direction picks one approach to the fix. It narrows the design space
 before the next session starts. The next session derives the fix from the
 concern and cause through the phases. The title states the concern as a complete
 thought ("status-verb keys can drift from helper returns"), not a
