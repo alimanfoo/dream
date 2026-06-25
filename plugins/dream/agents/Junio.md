@@ -226,8 +226,8 @@ is strongest on an Alternative you proposed yourself.
 Spawn one read-only subagent per lens below, in parallel. Set each one's `model`
 to `sonnet` on the Agent call. Give each subagent:
 
-- the Design Options: the Proposed Design and any Alternatives, pasted in
-- the text of the one lens it applies, pasted in
+- the Design Options: the Proposed Design and any Alternatives
+- the text of the one lens it applies
 
 Ask it to:
 
