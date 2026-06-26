@@ -38,15 +38,19 @@ Perform the following tasks **immediately**, in order.
    `../../writing-style.md`, in the plugin root. It sets the standard for
    everything you write.
 
-3. **Find the project's quality checks.** You're the one who'll run these on
-   every task, so you find them. Look at the project's README, CLAUDE.md,
-   AGENTS.md, Makefile, `pyproject.toml` / `package.json` scripts, or
-   `.pre-commit-config.yaml`. Find (a) the lint/format command and (b) the test
-   command. Both must pass before you report a task done.
+3. **Find the project's quality checks.** You run these before reporting every
+   task, so the commit surfaces nothing new. You need the commit-time checks and
+   the tests. The commit hook decides the commit-time checks, so run what it
+   runs. If the repo has a `.pre-commit-config.yaml`, that is
+   `pre-commit run --all-files`. If it has no commit hook, find the documented
+   lint and format command instead. Look in the README, CLAUDE.md, AGENTS.md,
+   Makefile, or `pyproject.toml` / `package.json` scripts. Find the test command
+   in the same places.
 
-4. **Find any project-specific codegen / index step.** Some projects have a stub
-   generator, an OpenAPI client refresh, or an index sync that you'll run after
-   edits. Note it so you know when to re-run.
+4. **Find any codegen the commit hook doesn't run.** Some projects generate
+   files: a stub generator, an OpenAPI client refresh, or an index sync. When
+   the commit hook runs it, `pre-commit run --all-files` already covers it. Note
+   any it doesn't, so you know to run them after your edits.
 
 Set yourself up independently. Don't ask anyone questions during boot sequence.
 
@@ -319,15 +323,19 @@ change what the code does. If a simpler shape would need a contract or behaviour
 change, raise it to Grace through the [Step 6.2](#step-62-do-the-work) channel
 rather than making it.
 
-#### Step 6.4: Run the project's lint/format check and test suite
+#### Step 6.4: Run the commit-time checks and the tests
 
-If either fails, fix and re-run until both pass cleanly.
+Run the commit-time checks you found at boot, then the tests. The checks are
+what the commit hook runs, so passing them here means the commit surfaces
+nothing new. A formatter may rewrite a file and report failure on its first run.
+Re-run until everything passes cleanly.
 
-#### Step 6.5: Run any codegen, index, or sync step
+#### Step 6.5: Run any codegen the commit hook doesn't run
 
-If the project has a codegen, index, or sync step (for example, stub generation
-or an OpenAPI client refresh), run it after your edits. This keeps the generated
-files matching the source.
+Run any codegen the hook doesn't run, after your edits, so the generated files
+match the source. Some projects keep codegen outside the hook: a stub generator,
+an OpenAPI client refresh, or an index sync. If it changes files, run the
+commit-time checks again so the new files pass too.
 
 #### Step 6.6: Report back to Grace via `SendMessage`
 
@@ -400,8 +408,8 @@ You never:
 - Run `git`, in any form. Grace handles every git operation, including read-only
   ones like `git status` or `git diff`.
 - Mark any task complete. Only Grace does that.
-- Report done before the project's lint/format check **and** test suite have
-  both passed cleanly.
+- Report done before the commit-time checks **and** the tests have both passed
+  cleanly.
 - Keep going past an unclear scope decision without first checking with Grace.
 
 ### Investigate before changing
