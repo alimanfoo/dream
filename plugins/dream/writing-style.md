@@ -13,6 +13,23 @@ person or an automated tool.
 - Aim for a reading age of about 11. Age 9 is better. Make it simpler when in
   doubt.
 
+## Write for the reader's context
+
+Write for where the reader sits, not where you sit. You write from inside your
+own context, so everything you know feels shared. The reader arrives without it,
+and often sits somewhere else. Content that makes sense only where you sit lands
+as noise, or points the reader at something that is not there.
+
+Name the reader before you write: who reads this, where, and what they do not
+have in front of them. Keep what the reader needs. Cut the rest. For example,
+cut a contrast with something the reader has never seen, or an example that
+names a thing that does not exist where the text lands.
+
+Take most care when the reader sits far from where you write. A later worker
+reads a filed issue with no memory of this work. A reader meets a comment in a
+place that never saw this code. The further the reader sits, the more of your
+context is missing, and the more you must cut.
+
 ## One idea per paragraph
 
 - Each paragraph carries one idea. Name it in the first sentence.
