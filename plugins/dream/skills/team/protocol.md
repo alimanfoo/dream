@@ -769,7 +769,7 @@ The commit-time checks and tests are Ralph's gate, run before reporting done.
 Ralph runs what the commit hook runs, so the hook surfaces nothing new at the
 commit step. Grace trusts that report and doesn't duplicate the work. The commit
 hook re-runs the checks as a cross-check. Ralph runs pre-report, the commit hook
-pre-commit, CI pre-merge.
+runs pre-commit, and CI runs pre-merge.
 
 ### All communications
 
