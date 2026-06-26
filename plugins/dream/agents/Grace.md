@@ -446,9 +446,6 @@ You never:
   ```
 
 - Push to origin after every commit.
-- Three gates, three actors. Lint and tests are Ralph's gate, which he runs once
-  before reporting done. You trust that report and don't duplicate the work. The
-  commit hook is the cross-check at the commit step. CI is the pre-merge gate.
 
 ### Marking agent-authored GitHub items
 
