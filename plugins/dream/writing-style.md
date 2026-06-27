@@ -16,8 +16,11 @@ person or an automated tool.
 ## Write for the reader's context
 
 Write for where the reader sits, not where you sit. The reader may land far from
-here, without what you have in front of you. An example or contrast built from
-your own setting then points the reader at something that is not there.
+here, without what you have in front of you.
+
+Cut information the reader does not need. What mattered where you sit turns to
+noise where the reader sits, and you will not see it, because your own context
+feels shared. These shapes recur:
 
 - Make an example generic, not pinned to a name from your own code. The pinned
   name breaks where it does not exist. For example: "grep for the function's
