@@ -56,7 +56,7 @@ not need. These shapes recur, and do not bound the rule:
 - Leave a blank line before and after a list. Without it, markdown formatters
   absorb any text that follows directly into the last bullet.
 
-## Leave no room for a second reading
+## One reading per sentence
 
 A reader who can take two meanings from a sentence will pick one, and may pick
 the wrong one. Read each sentence cold and check that only the intended reading
