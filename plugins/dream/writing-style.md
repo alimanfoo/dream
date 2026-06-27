@@ -13,6 +13,20 @@ person or an automated tool.
 - Aim for a reading age of about 11. Age 9 is better. Make it simpler when in
   doubt.
 
+## Write for the reader's context
+
+Model the reader: who they are, why they are reading. Cut what the reader does
+not need. These shapes recur, and do not bound the rule:
+
+- an example pinned to a name from your own code. For example: "grep for the
+  function's name", not "grep -rn 'def parse_header'".
+- a definition by contrast with something the reader may not know. For example:
+  "This runs on every commit.", not "This runs on every commit, unlike the
+  nightly job."
+- the history behind a thing, when the reader needs only the thing. For example:
+  "Set the timeout to 30 seconds.", not "Set the timeout to 30 seconds. We chose
+  30 after load testing."
+
 ## One idea per paragraph
 
 - Each paragraph carries one idea. Name it in the first sentence.

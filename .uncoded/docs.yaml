@@ -358,6 +358,7 @@ plugins/:
     writing-style.md:
       Writing style guide:
         The stance:
+        Write for the reader's context:
         One idea per paragraph:
         One idea per sentence:
         Instruction paragraphs:
