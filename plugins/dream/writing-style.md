@@ -56,6 +56,20 @@ not need. These shapes recur, and do not bound the rule:
 - Leave a blank line before and after a list. Without it, markdown formatters
   absorb any text that follows directly into the last bullet.
 
+## One reading per sentence
+
+A reader who can take a sentence two ways may pick the wrong one. Read each
+sentence in isolation and check whether a second meaning fits.
+
+- Rewrite an ambiguous sentence: one with two plausible readings.
+- Rewrite a near-ambiguous sentence too: one a skim reader could misread.
+- Mark a warning with "don't do Y". A bare imperative for the warning reads as
+  another instruction, contradicting the first. For example:
+  - "Hold the lock until the write completes. Don't release it after the first
+    row, because the next row would see stale data.", not "Hold the lock until
+    the write completes. Release it after the first row, and the next row sees
+    stale data."
+
 ## Instruction paragraphs
 
 Build an instruction in four parts, in this order: the imperative, the why,
