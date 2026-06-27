@@ -146,9 +146,8 @@ are examples, not a checklist:
 - efficiency: redundant work, repeated I/O, blocking added to a hot path
 - altitude: whether the change sits at the right depth or is a bandaid layered
   on shared infrastructure
-- reader's context: on new or changed documentation, or other content read far
-  from where it is written, name the reader, then find what they need that is
-  missing and what is there that only the author's context explains
+- reader's context: in new or changed documentation, what the reader needs but
+  is missing, and what is there but only the author's context explains
 
 In each subagent's spawn prompt, give it two things. First, the diff to review
 as a local git range: the branch under review against its base, for example
