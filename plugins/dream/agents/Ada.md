@@ -147,7 +147,7 @@ are examples, not a checklist:
 - altitude: whether the change sits at the right depth or is a bandaid layered
   on shared infrastructure
 - reader's context: in new or changed documentation, what the reader needs but
-  is missing, and what is there but only the author's context explains
+  is missing, and what is there but they do not need
 
 In each subagent's spawn prompt, give it two things. First, the diff to review
 as a local git range: the branch under review against its base, for example
