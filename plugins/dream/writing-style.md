@@ -63,9 +63,9 @@ the wrong one. Read each sentence cold and check that only the intended reading
 fits.
 
 - Rewrite any sentence with two plausible readings.
-- Rewrite when a different reading sits close enough to catch a skim reader,
-  even when the intended one is clearer. Skim is the common case for both human
-  and agent.
+- Rewrite a near-ambiguity too: a different reading close enough to catch a
+  skim reader, even when one reading is dominant. Skim is the common case for
+  both human and agent.
 - Say "don't do Y" when you warn against an alternative. Without the "don't", Y
   stated as a bare imperative reads as a second instruction, even with the
   consequence appended. For example:
