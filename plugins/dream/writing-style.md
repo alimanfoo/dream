@@ -15,20 +15,17 @@ person or an automated tool.
 
 ## Write for the reader's context
 
-Write for where the reader sits, not where you sit. You write from inside your
-own context, so everything you know feels shared. The reader arrives without it,
-and often sits somewhere else. Content that makes sense only where you sit lands
-as noise, or points the reader at something that is not there.
+Write for where the reader sits, not where you sit. The reader may land far from
+here, without what you have in front of you. An example or contrast built from
+your own setting then points the reader at something that is not there.
 
-Name the reader before you write: who reads this, where, and what they do not
-have in front of them. Keep what the reader needs. Cut the rest. For example,
-cut a contrast with something the reader has never seen, or an example that
-names a thing that does not exist where the text lands.
-
-Take most care when the reader sits far from where you write. A later worker
-reads a filed issue with no memory of this work. A reader meets a comment in a
-place that never saw this code. The further the reader sits, the more of your
-context is missing, and the more you must cut.
+- Make an example generic, not pinned to a name from your own code. The pinned
+  name breaks where it does not exist. For example: "grep for the function's
+  name", not "grep -rn 'def parse_header'".
+- State what a thing is, not what it is not. A definition by contrast leans on
+  the other thing, and a reader who does not know it gets nothing. For example:
+  "This runs on every commit.", not "This runs on every commit, unlike the
+  nightly job."
 
 ## One idea per paragraph
 
