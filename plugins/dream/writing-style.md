@@ -40,9 +40,8 @@ or guess.
 
 ## Reason forward
 
-State evidence before you draw a conclusion. A conclusion stated first anchors
-the reader and the writer: evidence that follows confirms it rather than tests
-it.
+State evidence before you conclude. A conclusion stated first anchors the reader
+and the writer. Evidence that follows confirms it rather than tests it.
 
 - State evidence first, then conclude. For example: "The build takes 12 minutes.
   The cache is cold on every run. Warming the cache should help.", not "Warming
