@@ -23,6 +23,9 @@ does not need. These shapes recur, and do not bound the rule:
 - a definition by contrast with something the reader may not know. For example:
   "This runs on every commit.", not "This runs on every commit, unlike the
   nightly job."
+- the reasoning behind a choice, when the reader needs only the choice. For
+  example: "Set the timeout to 30 seconds.", not "Set the timeout to 30 seconds.
+  We chose 30 after load testing."
 
 ## One idea per paragraph
 
