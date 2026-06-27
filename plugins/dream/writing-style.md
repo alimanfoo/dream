@@ -20,13 +20,12 @@ here, without what you have in front of you.
 
 Cut information the reader does not need. What mattered where you sit turns to
 noise where the reader sits, and you will not see it, because your own context
-feels shared. These shapes recur:
+feels shared. Judge each line by the reader's need, not by whether it is
+accurate or once helped you. These shapes recur, and do not bound the rule:
 
-- Make an example generic, not pinned to a name from your own code. The pinned
-  name breaks where it does not exist. For example: "grep for the function's
-  name", not "grep -rn 'def parse_header'".
-- State what a thing is, not what it is not. A definition by contrast leans on
-  the other thing, and a reader who does not know it gets nothing. For example:
+- an example pinned to a name from your own code. For example: "grep for the
+  function's name", not "grep -rn 'def parse_header'".
+- a definition by contrast with something the reader may not know. For example:
   "This runs on every commit.", not "This runs on every commit, unlike the
   nightly job."
 
