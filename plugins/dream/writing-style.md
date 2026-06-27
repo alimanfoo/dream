@@ -59,7 +59,7 @@ not need. These shapes recur, and do not bound the rule:
 ## One reading per sentence
 
 A reader who can take a sentence two ways may pick the wrong one. Read each
-sentence cold and check whether a second meaning fits.
+sentence in isolation and check whether a second meaning fits.
 
 - Rewrite an ambiguous sentence: one with two plausible readings.
 - Rewrite a near-ambiguous sentence too: one a skim reader could misread.
