@@ -15,8 +15,8 @@ person or an automated tool.
 
 ## Write for the reader's context
 
-Write for where the reader sits, not where you sit. The reader may land far from
-here, without what you have in front of you.
+Write for where the reader sits, not where you sit. Model the reader first: who
+they are, why they are reading, and how much of your context they lack.
 
 Cut information the reader does not need. What mattered where you sit turns to
 noise where the reader sits, and you will not see it, because your own context
