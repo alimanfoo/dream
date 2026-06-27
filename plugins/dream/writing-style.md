@@ -41,7 +41,8 @@ or guess.
 ## Reason forward
 
 State evidence before you draw a conclusion. A conclusion stated first anchors
-the reader: evidence that follows confirms it rather than tests it.
+the reader and the writer: evidence that follows confirms it rather than tests
+it.
 
 - State evidence first, then conclude. For example: "The plan shows a full scan.
   The index is missing.", not "The index is missing. The plan shows a full
