@@ -44,12 +44,13 @@ State evidence before you draw a conclusion. A conclusion stated first anchors
 the reader and the writer: evidence that follows confirms it rather than tests
 it.
 
-- State evidence first, then conclude. For example: "The plan shows a full scan.
-  The index is missing.", not "The index is missing. The plan shows a full
-  scan."
-- State a hypothesis before testing it. For example: "The index might be
-  missing. The plan shows a full scan. It is missing.", not "The index is
-  missing. The plan confirms a full scan."
+- State evidence first, then conclude. For example: "The build takes 12 minutes.
+  The cache is cold on every run. Warming the cache should help.", not "Warming
+  the cache should help. The build takes 12 minutes and the cache is cold."
+- State a hypothesis before testing it. For example: "The request might be
+  timing out. The logs show it drops at 30 seconds. The default timeout is 30
+  seconds.", not "The request is timing out. The logs confirm it drops at 30
+  seconds."
 
 ## One idea per paragraph
 
