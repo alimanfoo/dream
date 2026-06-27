@@ -27,6 +27,30 @@ not need. These shapes recur, and do not bound the rule:
   "Set the timeout to 30 seconds.", not "Set the timeout to 30 seconds. We chose
   30 after load testing."
 
+## Narrative order
+
+Write so the reader can follow top to bottom. Each point should make sense from
+what came before it. A reader who meets an unresolved reference must look ahead
+or guess.
+
+- Introduce a concept or term before you use it.
+- Do not refer forward. Phrases like "as described below" and "see the next
+  section" are forward references.
+- When one point depends on another, put the other first.
+
+## Reason forward
+
+State evidence before you conclude. A conclusion stated first anchors the reader
+and the writer. Evidence that follows confirms it rather than tests it.
+
+- State evidence first, then conclude. For example: "The build takes 12 minutes.
+  The cache is cold on every run. Warming the cache should help.", not "Warming
+  the cache should help. The build takes 12 minutes and the cache is cold."
+- State a hypothesis before testing it. For example: "The request might be
+  timing out. The logs show it drops at 30 seconds. The default timeout is 30
+  seconds.", not "The request is timing out. The logs confirm it drops at 30
+  seconds."
+
 ## One idea per paragraph
 
 - Each paragraph carries one idea. Name it in the first sentence.
