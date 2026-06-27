@@ -15,13 +15,12 @@ person or an automated tool.
 
 ## Write for the reader's context
 
-Write for where the reader sits, not where you sit. Model the reader first: who
-they are, why they are reading, and how much of your context they lack.
+Model the reader first: who they are, why they are reading, and how much of your
+context they lack.
 
-Cut information the reader does not need. What mattered where you sit turns to
-noise where the reader sits, and you will not see it, because your own context
-feels shared. Judge each line by the reader's need, not by whether it is
-accurate or once helped you. These shapes recur, and do not bound the rule:
+Cut what the reader does not need. Judge each line by the reader's need, not by
+whether it is accurate or once helped you. These shapes recur, and do not bound
+the rule:
 
 - an example pinned to a name from your own code. For example: "grep for the
   function's name", not "grep -rn 'def parse_header'".
