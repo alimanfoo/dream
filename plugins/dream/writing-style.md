@@ -56,6 +56,24 @@ not need. These shapes recur, and do not bound the rule:
 - Leave a blank line before and after a list. Without it, markdown formatters
   absorb any text that follows directly into the last bullet.
 
+## Leave no room for a second reading
+
+A reader who can take two meanings from a sentence will pick one, and may pick
+the wrong one. Read each sentence cold and check that only the intended reading
+fits.
+
+- Rewrite any sentence with two plausible readings.
+- Rewrite when a different reading sits close enough to catch a skim reader,
+  even when the intended one is clearer. Skim is the common case for both human
+  and agent.
+- Say "don't do Y" when you warn against an alternative. Without the "don't", Y
+  stated as a bare imperative reads as a second instruction, even with the
+  consequence appended. For example:
+  - "Hold the lock until the write completes. Don't release it after the first
+    row, because the next row would see stale data.", not "Hold the lock until
+    the write completes. Release it after the first row, and the next row sees
+    stale data."
+
 ## Instruction paragraphs
 
 Build an instruction in four parts, in this order: the imperative, the why,
