@@ -15,8 +15,8 @@ person or an automated tool.
 
 ## Write for the reader's context
 
-Model the reader first: who they are, why they are reading. Cut what the reader
-does not need. These shapes recur, and do not bound the rule:
+Model the reader: who they are, why they are reading. Cut what the reader does
+not need. These shapes recur, and do not bound the rule:
 
 - an example pinned to a name from your own code. For example: "grep for the
   function's name", not "grep -rn 'def parse_header'".
