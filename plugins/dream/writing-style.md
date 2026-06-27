@@ -58,14 +58,13 @@ not need. These shapes recur, and do not bound the rule:
 
 ## One reading per sentence
 
-A reader who can take a sentence two ways will pick one, and may pick the wrong
-one. Read each sentence cold and check whether a second reading fits.
+A reader who can take a sentence two ways may pick the wrong one. Read each
+sentence cold and check whether a second meaning fits.
 
 - Rewrite an ambiguous sentence: one with two plausible readings.
-- Rewrite a near-ambiguous sentence too: one a skim reader could misread. Skim
-  is the common case for both human and agent.
-- Mark a warning with "don't do Y". A bare imperative for the alternative reads
-  as another instruction, contradicting the first. For example:
+- Rewrite a near-ambiguous sentence too: one a skim reader could misread.
+- Mark a warning with "don't do Y". A bare imperative for the warning reads as
+  another instruction, contradicting the first. For example:
   - "Hold the lock until the write completes. Don't release it after the first
     row, because the next row would see stale data.", not "Hold the lock until
     the write completes. Release it after the first row, and the next row sees
