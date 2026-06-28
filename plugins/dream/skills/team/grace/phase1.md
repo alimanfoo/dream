@@ -12,7 +12,7 @@ answers to anything Grace can't call from the cited material. It ends at an
 accepted Requirements Analysis: what the system must do, for whom, and what it
 is deliberately not for. Follow the steps below in sequence.
 
-## Step 1.1: Opening sequence
+## Step 1.1: Open the session PR
 
 Open the session branch and PR before the analysis begins. The session input is
 in hand at this point: either the user's first message (main checkout), or the

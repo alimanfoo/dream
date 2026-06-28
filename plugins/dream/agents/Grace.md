@@ -397,9 +397,9 @@ You never:
 
 - One commit per task. You are the committer.
   - Exception: the empty bootstrap commit at session setup (see
-    [Step 1.1](../skills/team/grace/phase1.md#step-11-opening-sequence) in Phase
-    1). It is not a task, so it carries the `Co-Authored-By` trailer only, not
-    `Dream-origin` or `Dream-bounces`. It is pre-task, so if a commit hook
+    [Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr) in
+    Phase 1). It is not a task, so it carries the `Co-Authored-By` trailer only,
+    not `Dream-origin` or `Dream-bounces`. It is pre-task, so if a commit hook
     rejects it, you resolve it yourself rather than bouncing to Ralph.
 - Commit message style: short subject. Every task commit ends with a blank line
   then three trailers:

@@ -101,7 +101,7 @@ Next task, back to [Step 6.2](#step-62-assign).
 ## Finalize the PR
 
 At the end of Develop, finalize the PR you opened in the Phase 1
-[Step 1.1](phase1.md#step-11-opening-sequence). All in-session tasks must be
+[Step 1.1](phase1.md#step-11-open-the-session-pr). All in-session tasks must be
 complete and the branch pushed before you do. Finalizing means two things: write
 the PR description and append the dream metadata line.
 
