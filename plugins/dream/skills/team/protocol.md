@@ -132,6 +132,12 @@ numbers (`GH83`, `claude/gh341-...`, `fix-gh12-and-gh34`). Grace then takes
 those issues as the session input and opens the phase with them without waiting
 (see her boot sequence).
 
+Once the session input is known, Grace opens the session: she creates the
+session branch with an empty bootstrap commit, opens a draft PR, and posts the
+session input as the first comment. On acceptance of the Requirements Analysis
+she posts it as a PR comment. The PR carries the session's deliberation record
+(see [The session PR](#the-session-pr)).
+
 Grace opens the phase by orienting to the repo as a whole, what it is for and
 what it delivers. She does this before reading the session input, so the work is
 judged against the whole rather than the task alone. The orientation is shared
@@ -159,12 +165,6 @@ The user answers the open questions. Grace folds the answers in and shares the
 completed artifact for acceptance. At the end of the phase Grace hands the
 accepted Requirements Analysis and the Session Type to Junio and Ralph for
 information. They hold them as context for the rest of the session.
-
-At the start of Phase 1, once the session input is known, Grace opens the
-session: she creates the session branch with an empty bootstrap commit, opens a
-draft PR, and posts the session input as the first comment. On acceptance she
-posts the Requirements Analysis as a PR comment. The PR carries the session's
-deliberation record from here on (see [The session PR](#the-session-pr)).
 
 The phase ends at user acceptance of the Requirements Analysis.
 
@@ -278,8 +278,8 @@ The task list isn't fixed: Grace or the user can add tasks during Phase 6
 ## Phase 6: Develop
 
 The phase opens with Grace creating the shared task list. The session branch
-already exists. Grace created it at requirements acceptance (Phase 1), or
-adopted the worktree's branch there.
+already exists. Grace created it at the start of Phase 1, or adopted the
+worktree's branch there.
 
 The main implementation loop runs each task through the same chain:
 
@@ -553,21 +553,21 @@ posts the revision as a new superseding comment, not an edit (see
 
 ## The session PR
 
-Grace opens the session PR at the start of Phase 1, once the session input is
-known. She creates the session branch with an empty bootstrap commit, then opens
-a draft PR with a placeholder description, and posts the session input as the
-first comment. As each artifact is accepted, she posts it as a PR comment: the
-Requirements Analysis (Phase 1), the Code Analysis (Phase 2), the Session Scope
-(Phase 3), the Design (Phase 4), and the Plan (Phase 5). The thread becomes the
-record of what the session considered.
+Grace opens the session PR once the session input is known. She creates the
+session branch with an empty bootstrap commit, then opens a draft PR with a
+placeholder description, and posts the session input as the first comment. She
+posts each accepted artifact as a PR comment: the Requirements Analysis (Phase
+1), the Code Analysis (Phase 2), the Session Scope (Phase 3), the Design (Phase
+4), and the Plan (Phase 5). The thread becomes the record of what the session
+considered.
 
 The description is canonical. The thread is history. Grace writes the final
 description at the end of Develop: a bullet list of the issues addressed, a
-brief summary of what was built, and any key design decision. The PR stays in
-draft until Phase 7. When a Challenge revises an artifact, she posts the
-revision as a new comment, not an edit of the earlier one. The comment opens
-with an explicit supersession marker (for example, "Supersedes the Scope
-above"), so a reader can tell which version stands.
+summary of what was built, and any design decision. The PR stays in draft until
+Phase 7. When a Challenge revises an artifact, she posts the revision as a new
+comment, not an edit of the earlier one. The comment opens with an explicit
+supersession marker (for example, "Supersedes the Scope above"), so a reader can
+tell which version is current.
 
 A session that stops before merge still leaves a record. When the user halts at
 a gate or ends the session early, Grace posts a final comment naming where the

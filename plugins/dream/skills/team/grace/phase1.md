@@ -15,36 +15,36 @@ is deliberately not for. Follow the steps below in sequence.
 ## Step 1.1: Open the session PR
 
 Open the session branch and PR before the analysis begins. The session input is
-in hand at this point: either the user's first message (main checkout), or the
-issues derived from the branch name (worktree).
+available: either the user's first message (main checkout), or the issues
+derived from the branch name (worktree).
 
-**Set the session branch.** The name reflects the session input: `GH123` for an
-issue, a short slug like `add-foo` for an unscoped task. When the input names no
-issue and suggests no obvious slug, take a couple of words from the session
-input and the surface it touches. If the session started on `main`, create the
-branch and switch to it. If the session started in a worktree, the branch
+**Set the session branch.** Name it after the session input: `GH123` for an
+issue, a short slug like `add-foo` for an unscoped task. When the input is
+neither an issue reference nor suggests a natural slug, take a few words from
+the input and the surface it touches. If the session started on `main`, create
+the branch and switch to it. If the session started in a worktree, the branch
 already exists.
 
 **Create the bootstrap commit and push.** Create an empty bootstrap commit
 (`git commit --allow-empty`) so the draft PR has a commit to anchor to. Give it
-a short subject naming the session (the issue ref or slug) and the
-`Co-Authored-By` trailer only (see
+a short subject (the issue ref or slug) and the `Co-Authored-By` trailer only
+(see
 [Branch and commit operations](../../../agents/Grace.md#branch-and-commit-operations)).
 Push the branch. All work runs against the session-start state of `main`. Merge
 handles any drift on origin.
 
 **Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
 the title from the session input: for a GitHub issue, fetch the issue title
-(`gh issue view <N> --json title --jq '.title'`); for a free-text session input,
+(`gh issue view <N> --json title --jq '.title'`). For a free-text session input,
 use a short description. Mark the title and body per
-[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items)
-and follow
-[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
+[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
+Follow [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
 
 **Post the session input as the first comment.** Post the session input as a PR
 comment (`gh pr comment <N> --body "..."`). Head it `Session input`. For a
-worktree session with derived issues, name the issues. For a main-checkout
-session, reproduce the user's text verbatim. Append the Claude Code footer from
+worktree session with derived issues, list each issue number and title. For a
+main-checkout session, reproduce the user's text verbatim. Append the Claude
+Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
 
 ## Step 1.2: Orient to the repo
@@ -255,7 +255,7 @@ Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
 Promote any candidate the user opted into. A candidate use case becomes a use
 case, a candidate improvement goal an improvement goal. Remove any the user
-explicitly dropped, and defer the rest to Collect (see
+explicitly dropped. Defer the rest to Collect (see
 [Phase 9](../../../agents/Grace.md#phase-9-collect)).
 
 If accepted, apply the Session Type's category label to the PR via
@@ -281,8 +281,8 @@ changes from the acceptance discussion:
 - the repo orientation from [Step 1.2](#step-12-orient-to-the-repo)
 
 Send them as two `SendMessage` calls in the same turn, for information only.
-Sign off `From Grace.` and skip the RSVP. No reply is needed. They hold them as
-context for the rest of the session.
+Sign off `From Grace.` and skip the RSVP. They hold them as context for the rest
+of the session.
 
 ## Step 1.12: Post the accepted Requirements Analysis to the PR
 

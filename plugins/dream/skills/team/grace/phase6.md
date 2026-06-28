@@ -102,8 +102,8 @@ Next task, back to [Step 6.2](#step-62-assign).
 
 At the end of Develop, finalize the PR you opened in the Phase 1
 [Step 1.1](phase1.md#step-11-open-the-session-pr). All in-session tasks must be
-complete and the branch pushed before you do. Finalizing means two things: write
-the PR description and append the dream metadata line.
+complete and the branch pushed before you do. To finalize: write the PR
+description and append the dream metadata line.
 
 **Write the PR description.** Replace the `WIP` placeholder with a description
 written for a cold reviewer who has not read the thread. Check whether the repo
@@ -112,9 +112,11 @@ Otherwise use this shape:
 
 - Open with a bullet list of issues addressed, one per line. Use `- Closes #N`
   for each issue the PR fully resolves, and `- Related to #N` for any it partly
-  addresses. These closing keywords trigger GitHub auto-close on merge.
+  addresses. `Closes` triggers GitHub auto-close on merge; `Related to` does
+  not.
 - Follow with one to three sentences stating what the PR does and why, in
-  mechanism-neutral terms. This is the summary a cold reviewer reads first.
+  mechanism-neutral terms, so a cold reviewer can orient without reading the
+  thread.
 - Add one optional sentence naming the key design choice if the approach is
   non-obvious, with a pointer to the Design comment for the rationale.
 
@@ -126,8 +128,8 @@ Mark the body per
 and follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts). After
 writing the description, verify that every issue the PR fully resolves is
-recognised: `gh pr view <N> --json closingIssuesReferences` should list each
-one.
+recognised: run `gh pr view <N> --json closingIssuesReferences` to confirm each
+issue appears.
 
 **Append a dream metadata line to the PR body, after the Claude Code footer:**
 

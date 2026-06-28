@@ -102,8 +102,8 @@ duplicate it. Follow
 ## Step 7.5: Update the PR description
 
 If any accepted follow-on task changed what the PR implements, update the PR
-description to reflect the final state of the work. The description states what
-the PR does, so it should match what was actually built.
+description. The description states what the PR does, so it must match what was
+actually built.
 
 ## Step 7.6: Mark the PR ready for review
 
