@@ -32,9 +32,7 @@ Push the branch. All work runs against the session-start state of `main`. Merge
 handles any drift on origin.
 
 **Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
-the title from the session input: for a GitHub issue, fetch the issue title
-(`gh issue view <N> --json title --jq '.title'`). For a free-text session input,
-use a short description. Mark the title and body per
+the title from the session input. Mark the title and body per
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
 Follow [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
 
