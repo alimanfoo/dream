@@ -561,12 +561,11 @@ posts each accepted artifact as a PR comment: the Requirements Analysis (Phase
 4), and the Plan (Phase 5). The thread becomes the record of what the session
 considered.
 
-Grace writes the PR
-description at the end of Develop (Phase 6). The PR stays in draft until
-Phase 7. When a Challenge revises an artifact, she posts the revision as a new
-comment, not an edit of the earlier one. The comment opens with an explicit
-supersession marker (for example, "Supersedes the Scope above"), so a reader can
-tell which version is current.
+Grace writes the PR description at the end of Develop (Phase 6). The PR stays in
+draft until Phase 7. When a Challenge revises an artifact, she posts the
+revision as a new comment, not an edit of the earlier one. The comment opens
+with an explicit supersession marker (for example, "Supersedes the Scope
+above"), so a reader can tell which version is current.
 
 A session that stops before merge still leaves a record. When the user halts at
 a gate or ends the session early, Grace posts a final comment naming where the

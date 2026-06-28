@@ -16,10 +16,10 @@ is deliberately not for. Follow the steps below in sequence.
 
 Open the session branch and PR before the analysis begins.
 
-**Set the session branch.** Name it after the session input. For example, `GH123` for an
-issue, a short slug like `add-foo` for an unscoped task. If the session started on `main`, create
-the branch and switch to it. If the session started in a worktree, the branch
-already exists.
+**Set the session branch.** Name it after the session input. For example,
+`GH123` for an issue, a short slug like `add-foo` for an unscoped task. If the
+session started on `main`, create the branch and switch to it. If the session
+started in a worktree, the branch already exists.
 
 **Create the bootstrap commit and push.** Create an empty bootstrap commit
 (`git commit --allow-empty`) so the draft PR has a commit to anchor to. Give it
