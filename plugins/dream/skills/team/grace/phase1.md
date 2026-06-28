@@ -12,6 +12,41 @@ answers to anything Grace can't call from the cited material. It ends at an
 accepted Requirements Analysis: what the system must do, for whom, and what it
 is deliberately not for. Follow the steps below in sequence.
 
+## Opening sequence
+
+Open the session branch and PR before the analysis begins. The session input is
+in hand at this point: either the user's first message (main checkout), or the
+issues derived from the branch name (worktree).
+
+**Set the session branch.** The name reflects the session input: `GH123` for an
+issue, a short slug like `add-foo` for an unscoped task. When the input names no
+issue and suggests no obvious slug, take a couple of words from the session
+input and the surface it touches. If the session started on `main`, create the
+branch and switch to it. If the session started in a worktree, the branch
+already exists.
+
+**Create the bootstrap commit and push.** Create an empty bootstrap commit
+(`git commit --allow-empty`) so the draft PR has a commit to anchor to. Give it
+a short subject naming the session (the issue ref or slug) and the
+`Co-Authored-By` trailer only (see
+[Branch and commit operations](../../../agents/Grace.md#branch-and-commit-operations)).
+Push the branch. All work runs against the session-start state of `main`. Merge
+handles any drift on origin.
+
+**Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
+the title from the session input: for a GitHub issue, fetch the issue title
+(`gh issue view <N> --json title --jq '.title'`); for a free-text session input,
+use a short description. Mark the title and body per
+[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items)
+and follow
+[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
+
+**Post the session input as the first comment.** Post the session input as a PR
+comment (`gh pr comment <N> --body "..."`). Head it `Session input`. For a
+worktree session with derived issues, name the issues. For a main-checkout
+session, reproduce the user's text verbatim. Append the Claude Code footer from
+[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
+
 ## Step 1.1: Orient to the repo
 
 Establish what the repo is for as a whole, before reading the session input.
@@ -221,7 +256,11 @@ continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
 Promote any candidate the user opted into. A candidate use case becomes a use
 case, a candidate improvement goal an improvement goal. Remove any the user
 explicitly dropped, and defer the rest to Collect (see
-[Phase 9](../../../agents/Grace.md#phase-9-collect)). If accepted, continue to
+[Phase 9](../../../agents/Grace.md#phase-9-collect)). If accepted, apply the
+Session Type's category label to the PR via `gh pr edit --add-label <name>` (see
+[GitHub labels](../../../agents/Grace.md#github-labels)). If the Session Type
+changed during the acceptance discussion, remove any earlier label first. Then
+continue to
 [Step 1.10](#step-110-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
 If the user pushes back, revise and return to
 [Step 1.8](#step-18-share-the-requirements-analysis). Repeat until accepted. If
@@ -244,84 +283,10 @@ Send them as two `SendMessage` calls in the same turn, for information only.
 Sign off `From Grace.` and skip the RSVP. No reply is needed. They hold them as
 context for the rest of the session.
 
-## Step 1.11: Set the session branch and bootstrap commit
+## Step 1.11: Post the accepted Requirements Analysis to the PR
 
-Set the session branch now that the Requirements Analysis is accepted, so the PR
-has somewhere to live.
-
-If the session started on `main`, create the branch and switch to it. The name
-reflects the session input: `GH123` for an issue, a short slug like `add-foo`
-for an unscoped task. When the input names no issue and suggests no obvious
-slug, take a couple of words from the Session Type and the main surface it
-touches.
-
-If the session started on a non-`main` branch, the boot guard already confirmed
-it as a worktree branch off `main`. Adopt it as the session branch. No checkout
-is needed.
-
-Then create an empty bootstrap commit (`git commit --allow-empty`) so the draft
-PR has a commit to anchor to. Give it a short subject naming the session (the
-issue ref or slug) and the `Co-Authored-By` trailer only (see
-[Branch and commit operations](../../../agents/Grace.md#branch-and-commit-operations)).
-Push the branch.
-
-All work runs against the session-start state of `main`. Merge handles any drift
-on origin.
-
-## Step 1.12: Open the draft PR
-
-Open a draft PR for the session branch (`gh pr create --draft`), with the
-accepted Requirements Analysis as its description. The PR carries the session's
-deliberation record from here on. Each later accepted artifact posts as a
-comment (see [The session PR](../protocol.md#the-session-pr)). It stays in draft
-until Phase 7. The draft state signals that the PR isn't yet worth the user's
-attention.
-
-Set up the PR:
-
-- Label it with the Session Type's category. Resolve the category to the repo's
-  actual label string before the create call. This is the session's first label
-  use. The label often carries more than the bare category word (a
-  `maintenance 🛠️` suffix, say), and `gh pr create --label <name>` fails on a
-  name that doesn't match exactly. See
-  [GitHub labels](../../../agents/Grace.md#github-labels) for the lookup and how
-  to pick the closest match or skip.
-- Mark the title and body per
-  [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items),
-  and follow
-  [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
-- Follow the body rules below, together with any contribution rules the repo has
-  (a `CONTRIBUTING.md`, a PR template).
-
-**Don't sample existing PRs for style.** The instinct to read recent PRs to
-"match the house style" lands on whatever noise was in the three PRs the agent
-happened to open. Most repos have varied styles across contributors. Written
-contribution rules (`CONTRIBUTING.md`, a PR template, a commit message
-convention) are real, so follow them. The existing PR log is not a style
-reference.
-
-**Put the accepted Requirements Analysis in the body.** Lead with one or two
-plain sentences of context: what the change is and which issue it addresses.
-Then give the final accepted Requirements Analysis, in the shape the Session
-Type selected. Carry it near-verbatim from the accepted artifact. This is the
-most careful account of why the change exists, and it would otherwise be
-discarded when the session ends.
-
-**The body is the Requirements Analysis and nothing else.** No Test plan
-section, no summary of the change, no narration of the diff. File paths,
-renames, and line-level changes are all visible in the diff, and the
-Requirements Analysis carries the intent. Don't state the Session Type in the
-body either. The PR's category label carries it. The one thing added later is
-the dream metadata line, appended when you finalize the PR (see
-[Finalize the PR](phase6.md#finalize-the-pr)).
-
-**Close the issues the PR addresses.** GitHub auto-closes an issue on merge only
-when the PR body has a closing keyword for it: `Closes #N`, `Fixes #N`,
-`Resolves #N`. The keyword is per-issue. A single keyword followed by a
-comma-separated list of numbers closes only the first number. Repeat the keyword
-for each issue, or put each on its own line. Without this, the PR merges and the
-issues the PR addressed sit open as triage debt. After opening, check:
-`gh pr view <N> --json closingIssuesReferences` should list every issue the PR
-fixed.
+Post the accepted Requirements Analysis as a PR comment. Follow
+[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
+It posts under the heading `Requirements`.
 
 The phase ends at user acceptance of the Requirements Analysis.

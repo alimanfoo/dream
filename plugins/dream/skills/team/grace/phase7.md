@@ -99,13 +99,19 @@ dream-team protocol vocabulary. Append the standard Claude Code footer from
 duplicate it. Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
 
-## Step 7.5: Mark the PR ready for review
+## Step 7.5: Update the PR description
+
+If any accepted follow-on task changed what the PR implements, update the PR
+description to reflect the final state of the work. The description states what
+the PR does, so it should match what was actually built.
+
+## Step 7.6: Mark the PR ready for review
 
 Once all accepted follow-ons from triage are complete, run `gh pr ready <N>`.
 Flipping from draft to ready signals to the user that the PR is now worth their
 attention. If no findings were accepted, flip immediately.
 
-## Step 7.6: Hand back to the user
+## Step 7.7: Hand back to the user
 
 Hand back to the user once all comments are addressed. The PR is ready for the
 user's acceptance. Phase 8 handles the merge itself.

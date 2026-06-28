@@ -100,16 +100,34 @@ Next task, back to [Step 6.2](#step-62-assign).
 
 ## Finalize the PR
 
-At the end of Develop, finalize the PR you opened back in Phase 1 (see
-[Step 1.12](phase1.md#step-112-open-the-draft-pr)). All in-session tasks must be
-complete and the branch pushed before you do. The label, the closing keywords,
-and the body's requirements analysis were all set at PR-open. Finalizing means
-two things: bring the description to its final accepted state, and append the
-dream metadata line.
+At the end of Develop, finalize the PR you opened in the Phase 1
+[Opening sequence](phase1.md#opening-sequence). All in-session tasks must be
+complete and the branch pushed before you do. Finalizing means two things: write
+the PR description and append the dream metadata line.
 
-**Final accepted state.** If the requirements were revised after the PR opened
-(through a Challenge, say), edit the description to show the final accepted
-requirements. Do not leave the state from PR-open.
+**Write the PR description.** Replace the `WIP` placeholder with a description
+written for a cold reviewer who has not read the thread. Check whether the repo
+has contribution rules (`CONTRIBUTING.md`, a PR template) and follow them.
+Otherwise use this shape:
+
+- Open with a bullet list of issues addressed, one per line. Use `- Closes #N`
+  for each issue the PR fully resolves, and `- Related to #N` for any it partly
+  addresses. These closing keywords trigger GitHub auto-close on merge.
+- Follow with one to three sentences stating what the PR does and why, in
+  mechanism-neutral terms. This is the summary a cold reviewer reads first.
+- Add one optional sentence naming the key design choice if the approach is
+  non-obvious, with a pointer to the Design comment for the rationale.
+
+Don't sample existing PRs for style. Written contribution rules are real. The
+existing PR log is not a style reference.
+
+Mark the body per
+[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items)
+and follow
+[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts). After
+writing the description, verify that every issue the PR fully resolves is
+recognised: `gh pr view <N> --json closingIssuesReferences` should list each
+one.
 
 **Append a dream metadata line to the PR body, after the Claude Code footer:**
 

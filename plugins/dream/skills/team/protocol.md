@@ -38,9 +38,10 @@ A session moves through ten phases:
 
 1. **Requirements.** Grace orients to the repo as a whole, then reads the cited
    material and the code with a consumer lens, names the Session Type, and
-   shares the Requirements Analysis with the user for acceptance. On acceptance
-   she opens the session branch and a draft PR carrying the accepted
-   requirements as its description. See [The session PR](#the-session-pr).
+   shares the Requirements Analysis with the user for acceptance. At the start
+   of the phase she opens the session branch and a draft PR. On acceptance she
+   posts the Requirements Analysis as a PR comment. See
+   [The session PR](#the-session-pr).
 
 2. **Code Analysis.** Grace reads the code with a structural lens, the
    structural baseline and the code smells, and shares the Code Analysis with
@@ -159,10 +160,11 @@ completed artifact for acceptance. At the end of the phase Grace hands the
 accepted Requirements Analysis and the Session Type to Junio and Ralph for
 information. They hold them as context for the rest of the session.
 
-On acceptance Grace opens the session: she creates the session branch with an
-empty bootstrap commit and opens a draft PR. The PR description is the accepted
-Requirements Analysis. The PR carries the session's deliberation record from
-here on (see [The session PR](#the-session-pr)).
+At the start of Phase 1, once the session input is known, Grace opens the
+session: she creates the session branch with an empty bootstrap commit, opens a
+draft PR, and posts the session input as the first comment. On acceptance she
+posts the Requirements Analysis as a PR comment. The PR carries the session's
+deliberation record from here on (see [The session PR](#the-session-pr)).
 
 The phase ends at user acceptance of the Requirements Analysis.
 
@@ -551,19 +553,21 @@ posts the revision as a new superseding comment, not an edit (see
 
 ## The session PR
 
-Grace opens the session PR at requirements acceptance (end of Phase 1). She
-creates the session branch with an empty bootstrap commit, then opens a draft PR
-whose description is the accepted Requirements Analysis. As each later artifact
-is accepted, she posts it as a PR comment: the Code Analysis (Phase 2), the
-Session Scope (Phase 3), the Design (Phase 4), and the Plan (Phase 5). The
-thread becomes the record of what the session considered.
+Grace opens the session PR at the start of Phase 1, once the session input is
+known. She creates the session branch with an empty bootstrap commit, then opens
+a draft PR with a placeholder description, and posts the session input as the
+first comment. As each artifact is accepted, she posts it as a PR comment: the
+Requirements Analysis (Phase 1), the Code Analysis (Phase 2), the Session Scope
+(Phase 3), the Design (Phase 4), and the Plan (Phase 5). The thread becomes the
+record of what the session considered.
 
-The description is canonical. The thread is history. Grace edits the description
-to the final accepted requirements at the end of Develop, and the PR stays in
-draft until Phase 7. When a Challenge revises an artifact already posted, she
-posts the revision as a new comment, not an edit of the earlier one. The comment
-opens with an explicit supersession marker, "Supersedes the Session Scope
-above", so a reader can tell which version stands.
+The description is canonical. The thread is history. Grace writes the final
+description at the end of Develop: a bullet list of the issues addressed, a
+brief summary of what was built, and any key design decision. The PR stays in
+draft until Phase 7. When a Challenge revises an artifact, she posts the
+revision as a new comment, not an edit of the earlier one. The comment opens
+with an explicit supersession marker (for example, "Supersedes the Scope
+above"), so a reader can tell which version stands.
 
 A session that stops before merge still leaves a record. When the user halts at
 a gate or ends the session early, Grace posts a final comment naming where the
