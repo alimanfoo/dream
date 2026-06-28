@@ -12,7 +12,7 @@ answers to anything Grace can't call from the cited material. It ends at an
 accepted Requirements Analysis: what the system must do, for whom, and what it
 is deliberately not for. Follow the steps below in sequence.
 
-## Opening sequence
+## Step 1.1: Opening sequence
 
 Open the session branch and PR before the analysis begins. The session input is
 in hand at this point: either the user's first message (main checkout), or the
@@ -47,7 +47,7 @@ worktree session with derived issues, name the issues. For a main-checkout
 session, reproduce the user's text verbatim. Append the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
 
-## Step 1.1: Orient to the repo
+## Step 1.2: Orient to the repo
 
 Establish what the repo is for as a whole, before reading the session input.
 Orienting first brings a whole-repo frame to the task, so you weigh the work
@@ -74,7 +74,7 @@ Share the orientation with the user in a few sentences, so they can correct a
 mis-orientation before it shapes everything downstream. This is not a gate.
 Proceed once you've shared.
 
-## Step 1.2: Read the cited material
+## Step 1.3: Read the cited material
 
 Read everything the user cites in their session input: issue bodies and their
 comments, prior issues they reference, linked PRs, named files or symbols.
@@ -83,7 +83,7 @@ issue read without its comments can miss what the issue has become. This is the
 substantive baseline for the steps that follow. Without it, the recurrence check
 and code read run on guesses about what the user means.
 
-## Step 1.3: Read the code with a consumer lens
+## Step 1.4: Read the code with a consumer lens
 
 Read the relevant code, callers, tests, and docs for the named surfaces. Hold
 one question in mind: _who uses these surfaces and what do they do with them?_
@@ -91,7 +91,7 @@ This is the consumer lens. It makes the Requirements Analysis substantive, with
 who and what the work serves checked against the code rather than inferred from
 prose alone.
 
-## Step 1.4: Consult the record
+## Step 1.5: Consult the record
 
 Consult the record for the surfaces the user has named: a function, a class, a
 module, or a parameter. A session may name several. Consult two ways: search the
@@ -121,7 +121,7 @@ the exact prior decisions without guessing search terms. Prior PRs may tell you
 more about the consumers, use cases, and non-goals for that surface. Carry that
 information into the Requirements Analysis.
 
-## Step 1.5: Name the Session Type
+## Step 1.6: Name the Session Type
 
 Pin the Session Type before composing the Requirements Analysis. It selects the
 shape of the Requirements Analysis and what later phases focus on. Three types:
@@ -132,11 +132,11 @@ shape of the Requirements Analysis and what later phases focus on. Three types:
 
 State the Session Type in one short sentence with the reasoning ("Session Type:
 enhancement, adds a new CLI subcommand") and continue to
-[Step 1.6](#step-16-compose-the-requirements-analysis). If the user disagrees,
+[Step 1.7](#step-17-compose-the-requirements-analysis). If the user disagrees,
 they say so at the acceptance gate (see
-[Step 1.9](#step-19-seek-user-acceptance-of-the-requirements-analysis)).
+[Step 1.10](#step-110-seek-user-acceptance-of-the-requirements-analysis)).
 
-## Step 1.6: Compose the Requirements Analysis
+## Step 1.7: Compose the Requirements Analysis
 
 Compose the Requirements Analysis: your explicit reading of the system's
 requirements behind the session input. Without this step, hidden inferences
@@ -187,8 +187,8 @@ Every shape also carries:
   point to what in the read suggests it. Each cites that evidence, and a
   candidate use case also names the consumer it would serve. The user opts in to
   any they want at the gate, and
-  [Step 1.9](#step-19-seek-user-acceptance-of-the-requirements-analysis) decides
-  each one from there.
+  [Step 1.10](#step-110-seek-user-acceptance-of-the-requirements-analysis)
+  decides each one from there.
 - **System non-goals** (when any are stated or strongly implied): what the
   product is deliberately not built for, given what it is for, such as a
   consumer it will never serve or a behaviour it will never take on. This
@@ -223,7 +223,7 @@ an assumed item freely, since it's your inference, not the input's claim. They
 can drop a stated item too, when the consumer-lens read or the intent test shows
 the input got it wrong.
 
-## Step 1.7: Elicit answers to open questions
+## Step 1.8: Elicit answers to open questions
 
 Skip this step when there are no open questions.
 
@@ -238,7 +238,7 @@ question unanswered, re-ask the unanswered ones before continuing. You marked
 them as needing the user, so a missing answer means the artifact isn't complete
 yet.
 
-## Step 1.8: Share the Requirements Analysis
+## Step 1.9: Share the Requirements Analysis
 
 Send the completed Requirements Analysis to the user. When there are candidates,
 ask the user to name any they want included, by number. Note that any they don't
@@ -249,7 +249,7 @@ drop any outright.
 End the message by explicitly asking the user to accept: _"Accept the
 Requirements Analysis to proceed to Phase 2: Code Analysis."_
 
-## Step 1.9: Seek user acceptance of the Requirements Analysis
+## Step 1.10: Seek user acceptance of the Requirements Analysis
 
 Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
@@ -261,29 +261,29 @@ Session Type's category label to the PR via `gh pr edit --add-label <name>` (see
 [GitHub labels](../../../agents/Grace.md#github-labels)). If the Session Type
 changed during the acceptance discussion, remove any earlier label first. Then
 continue to
-[Step 1.10](#step-110-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+[Step 1.11](#step-111-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
 If the user pushes back, revise and return to
-[Step 1.8](#step-18-share-the-requirements-analysis). Repeat until accepted. If
+[Step 1.9](#step-19-share-the-requirements-analysis). Repeat until accepted. If
 the pushback challenges the Session Type itself, return to
-[Step 1.5](#step-15-name-the-session-type) and recompose from there.
+[Step 1.6](#step-16-name-the-session-type) and recompose from there.
 
 This is one of the protocol's user acceptance gates (see
 [Acceptance gates](../protocol.md#acceptance-gates)).
 
-## Step 1.10: Hand the accepted Requirements Analysis to Junio and Ralph
+## Step 1.11: Hand the accepted Requirements Analysis to Junio and Ralph
 
 Send Junio and Ralph the following, in the versions the user accepted plus any
 changes from the acceptance discussion:
 
 - the accepted Requirements Analysis
 - the Session Type
-- the repo orientation from [Step 1.1](#step-11-orient-to-the-repo)
+- the repo orientation from [Step 1.2](#step-12-orient-to-the-repo)
 
 Send them as two `SendMessage` calls in the same turn, for information only.
 Sign off `From Grace.` and skip the RSVP. No reply is needed. They hold them as
 context for the rest of the session.
 
-## Step 1.11: Post the accepted Requirements Analysis to the PR
+## Step 1.12: Post the accepted Requirements Analysis to the PR
 
 Post the accepted Requirements Analysis as a PR comment. Follow
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).

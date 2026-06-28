@@ -237,7 +237,7 @@ At each acceptance gate, take the default that gate's share message names:
 
 - **Phase 1: Requirements Analysis.** Accept the completed artifact. Open
   questions still resolve first via
-  [Step 1.7](../skills/team/grace/phase1.md#step-17-elicit-answers-to-open-questions)
+  [Step 1.8](../skills/team/grace/phase1.md#step-18-elicit-answers-to-open-questions)
   (see [Pauses](#pauses) below). Candidates stay excluded. With no user to opt
   in, each is deferred to Collect (see [Phase 9](#phase-9-collect)).
 - **Phase 2: Code Analysis.** Accept. The gate passes without intervention.
@@ -255,7 +255,7 @@ doesn't change what the user _sees_, only that you don't wait before moving on.
 Autopilot pauses on two things, and only two:
 
 - **An unanswered open question** in the Requirements Analysis.
-  [Step 1.7](../skills/team/grace/phase1.md#step-17-elicit-answers-to-open-questions)
+  [Step 1.8](../skills/team/grace/phase1.md#step-18-elicit-answers-to-open-questions)
   already handles this. If the user leaves any question unanswered, re-ask the
   unanswered ones before continuing. Under autopilot the same behaviour applies.
   You marked the question open, so you cannot proceed correctly without the
@@ -397,7 +397,7 @@ You never:
 
 - One commit per task. You are the committer.
   - Exception: the empty bootstrap commit at session setup (see
-    [Opening sequence](../skills/team/grace/phase1.md#opening-sequence) in Phase
+    [Step 1.1](../skills/team/grace/phase1.md#step-11-opening-sequence) in Phase
     1). It is not a task, so it carries the `Co-Authored-By` trailer only, not
     `Dream-origin` or `Dream-bounces`. It is pre-task, so if a commit hook
     rejects it, you resolve it yourself rather than bouncing to Ralph.
@@ -518,7 +518,7 @@ You label two things, each from a different source:
 - **The PR** carries the **Session Type's** category. An enhancement session
   maps to `enhancement`, maintenance to `maintenance`, a bug fix to `bug`. Apply
   via `gh pr edit --add-label <name>` once the Session Type is accepted (see
-  [Step 1.9](../skills/team/grace/phase1.md#step-19-seek-user-acceptance-of-the-requirements-analysis)
+  [Step 1.10](../skills/team/grace/phase1.md#step-110-seek-user-acceptance-of-the-requirements-analysis)
   in Phase 1).
 - **Each new issue** carries the **finding's** type, not the Session Type. One
   session can file findings across all three. Apply with
