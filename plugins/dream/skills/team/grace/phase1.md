@@ -256,10 +256,13 @@ continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
 Promote any candidate the user opted into. A candidate use case becomes a use
 case, a candidate improvement goal an improvement goal. Remove any the user
 explicitly dropped, and defer the rest to Collect (see
-[Phase 9](../../../agents/Grace.md#phase-9-collect)). If accepted, apply the
-Session Type's category label to the PR via `gh pr edit --add-label <name>` (see
+[Phase 9](../../../agents/Grace.md#phase-9-collect)).
+
+If accepted, apply the Session Type's category label to the PR via
+`gh pr edit --add-label <name>` (see
 [GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to
 [Step 1.11](#step-111-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+
 If the user pushes back, revise and return to
 [Step 1.9](#step-19-share-the-requirements-analysis). Repeat until accepted. If
 the pushback challenges the Session Type itself, return to
