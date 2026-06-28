@@ -283,6 +283,6 @@ Sign off `From Grace.` and skip the RSVP.
 
 Post the accepted Requirements Analysis as a PR comment. Follow
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
-It posts under the heading `Requirements`.
+Use the heading `Requirements`.
 
 The phase ends at user acceptance of the Requirements Analysis.
