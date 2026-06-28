@@ -561,9 +561,8 @@ posts each accepted artifact as a PR comment: the Requirements Analysis (Phase
 4), and the Plan (Phase 5). The thread becomes the record of what the session
 considered.
 
-The description is canonical. The thread is history. Grace writes the final
-description at the end of Develop: a bullet list of the issues addressed, a
-summary of what was built, and any design decision. The PR stays in draft until
+Grace writes the PR
+description at the end of Develop (Phase 6). The PR stays in draft until
 Phase 7. When a Challenge revises an artifact, she posts the revision as a new
 comment, not an edit of the earlier one. The comment opens with an explicit
 supersession marker (for example, "Supersedes the Scope above"), so a reader can

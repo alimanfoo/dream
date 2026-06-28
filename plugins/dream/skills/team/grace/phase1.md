@@ -16,10 +16,8 @@ is deliberately not for. Follow the steps below in sequence.
 
 Open the session branch and PR before the analysis begins.
 
-**Set the session branch.** Name it after the session input: `GH123` for an
-issue, a short slug like `add-foo` for an unscoped task. When the input is
-neither an issue reference nor suggests a natural slug, take a few words from
-the input and the surface it touches. If the session started on `main`, create
+**Set the session branch.** Name it after the session input. For example, `GH123` for an
+issue, a short slug like `add-foo` for an unscoped task. If the session started on `main`, create
 the branch and switch to it. If the session started in a worktree, the branch
 already exists.
 
@@ -128,9 +126,7 @@ shape of the Requirements Analysis and what later phases focus on. Three types:
 
 State the Session Type in one short sentence with the reasoning ("Session Type:
 enhancement, adds a new CLI subcommand") and continue to
-[Step 1.7](#step-17-compose-the-requirements-analysis). If the user disagrees,
-they say so at the acceptance gate (see
-[Step 1.10](#step-110-seek-user-acceptance-of-the-requirements-analysis)).
+[Step 1.7](#step-17-compose-the-requirements-analysis).
 
 ## Step 1.7: Compose the Requirements Analysis
 
