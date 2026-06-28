@@ -277,8 +277,7 @@ changes from the acceptance discussion:
 - the repo orientation from [Step 1.2](#step-12-orient-to-the-repo)
 
 Send them as two `SendMessage` calls in the same turn, for information only.
-Sign off `From Grace.` and skip the RSVP. They hold them as context for the rest
-of the session.
+Sign off `From Grace.` and skip the RSVP.
 
 ## Step 1.12: Post the accepted Requirements Analysis to the PR
 
