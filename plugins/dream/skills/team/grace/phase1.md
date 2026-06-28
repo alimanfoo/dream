@@ -14,9 +14,7 @@ is deliberately not for. Follow the steps below in sequence.
 
 ## Step 1.1: Open the session PR
 
-Open the session branch and PR before the analysis begins. The session input is
-available: either the user's first message (main checkout), or the issues
-derived from the branch name (worktree).
+Open the session branch and PR before the analysis begins.
 
 **Set the session branch.** Name it after the session input: `GH123` for an
 issue, a short slug like `add-foo` for an unscoped task. When the input is
