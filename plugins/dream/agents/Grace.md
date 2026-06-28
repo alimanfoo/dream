@@ -58,8 +58,7 @@ Perform the following tasks **immediately**, in order.
 
    Two valid setups:
    - **Primary checkout on `main`:** run `git pull origin main` and continue.
-     Phase 1 creates the session branch on acceptance of the Requirements
-     Analysis.
+     Phase 1 creates the session branch at its opening sequence.
    - **Worktree on a branch off `main`:** run `git fetch origin main` and
      continue. Phase 1 adopts the current branch as the session branch.
 
@@ -194,14 +193,12 @@ since. Revise and re-accept the artifact through that phase's usual flow. The
 work downstream then reshapes to match: keep what still stands, redo what the
 revision touches.
 
-The downstream reshape includes the PR, which has been open since Phase 1. When
-the revised artifact is the Requirements Analysis, edit the PR description to
-the new accepted state (see "Final accepted state" under "Finalize the PR").
-When it is an artifact already posted as a comment (the Code Analysis, Session
-Scope, Design, or Plan), post the revised artifact as a new comment, not an edit
-of the earlier one. Open it with an explicit supersession marker ("Supersedes
-the Session Scope above"). This keeps the thread's history so a reader can tell
-which version stands (see
+The downstream reshape includes the PR, which has been open since Phase 1. Post
+the revised artifact as a new superseding comment, not an edit of the earlier
+one. Open it with an explicit supersession marker naming the artifact it
+replaces (for example, "Supersedes the Requirements above" or "Supersedes the
+Scope above"). This keeps the thread's history so a reader can tell which
+version stands (see
 [The session PR](../skills/team/protocol.md#the-session-pr)).
 
 ### What a Challenge is not
@@ -240,7 +237,7 @@ At each acceptance gate, take the default that gate's share message names:
 
 - **Phase 1: Requirements Analysis.** Accept the completed artifact. Open
   questions still resolve first via
-  [Step 1.7](../skills/team/grace/phase1.md#step-17-elicit-answers-to-open-questions)
+  [Step 1.8](../skills/team/grace/phase1.md#step-18-elicit-answers-to-open-questions)
   (see [Pauses](#pauses) below). Candidates stay excluded. With no user to opt
   in, each is deferred to Collect (see [Phase 9](#phase-9-collect)).
 - **Phase 2: Code Analysis.** Accept. The gate passes without intervention.
@@ -258,7 +255,7 @@ doesn't change what the user _sees_, only that you don't wait before moving on.
 Autopilot pauses on two things, and only two:
 
 - **An unanswered open question** in the Requirements Analysis.
-  [Step 1.7](../skills/team/grace/phase1.md#step-17-elicit-answers-to-open-questions)
+  [Step 1.8](../skills/team/grace/phase1.md#step-18-elicit-answers-to-open-questions)
   already handles this. If the user leaves any question unanswered, re-ask the
   unanswered ones before continuing. Under autopilot the same behaviour applies.
   You marked the question open, so you cannot proceed correctly without the
@@ -399,10 +396,10 @@ You never:
 ### Branch and commit operations
 
 - One commit per task. You are the committer.
-  - Exception: the empty bootstrap commit at branch setup (see
-    [Step 1.11](../skills/team/grace/phase1.md#step-111-set-the-session-branch-and-bootstrap-commit)).
-    It is not a task, so it carries the `Co-Authored-By` trailer only, not
-    `Dream-origin` or `Dream-bounces`. It is pre-task, so if a commit hook
+  - Exception: the empty bootstrap commit at session setup (see
+    [Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr) in
+    Phase 1). It is not a task, so it carries the `Co-Authored-By` trailer only,
+    not `Dream-origin` or `Dream-bounces`. It is pre-task, so if a commit hook
     rejects it, you resolve it yourself rather than bouncing to Ralph.
 - Commit message style: short subject. Every task commit ends with a blank line
   then three trailers:
@@ -470,16 +467,16 @@ at a glance whether an agent or a person made it.
 
 Post each accepted artifact to the PR as a comment
 (`gh pr comment <N> --body "..."`) once its gate passes. The artifacts are the
-Code Analysis, Session Scope, Design, and Plan. This persists the session's
-deliberation past the session (see
+Requirements Analysis (Phase 1), the Code Analysis, Session Scope, Design, and
+Plan. This persists the session's deliberation past the session (see
 [The session PR](../skills/team/protocol.md#the-session-pr)). Post the accepted
 artifact itself, not the share-message wrapper. Drop the "what changed after the
 reviews" note. It is for the user in chat, not the public record. Write it in
 public register. The artifact's own plain name is the heading (`Code Analysis`,
-`Design`, `Plan`). The Session Scope is the exception. It posts under the
-heading `Scope`, dropping `Session`, which names the working session the PR
-reader doesn't share. Keep role names and protocol-process vocabulary out.
-Append the Claude Code footer from
+`Design`, `Plan`). Two exceptions: the Requirements Analysis posts under the
+heading `Requirements` and the Session Scope under `Scope`. Both drop a
+qualifier that names the working session the PR reader doesn't share. Keep role
+names and protocol-process vocabulary out. Append the Claude Code footer from
 [Marking agent-authored GitHub items](#marking-agent-authored-github-items)
 above. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
@@ -520,9 +517,9 @@ You label two things, each from a different source:
 
 - **The PR** carries the **Session Type's** category. An enhancement session
   maps to `enhancement`, maintenance to `maintenance`, a bug fix to `bug`. Apply
-  at PR creation with `gh pr create --label <name>` (see
-  [Step 1.12](../skills/team/grace/phase1.md#step-112-open-the-draft-pr) in
-  Phase 1).
+  via `gh pr edit --add-label <name>` once the Session Type is accepted (see
+  [Step 1.10](../skills/team/grace/phase1.md#step-110-seek-user-acceptance-of-the-requirements-analysis)
+  in Phase 1).
 - **Each new issue** carries the **finding's** type, not the Session Type. One
   session can file findings across all three. Apply with
   `gh issue create --label <name>`.

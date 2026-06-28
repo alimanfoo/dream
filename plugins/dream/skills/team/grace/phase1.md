@@ -12,7 +12,36 @@ answers to anything Grace can't call from the cited material. It ends at an
 accepted Requirements Analysis: what the system must do, for whom, and what it
 is deliberately not for. Follow the steps below in sequence.
 
-## Step 1.1: Orient to the repo
+## Step 1.1: Open the session PR
+
+Open the session branch and PR before the analysis begins.
+
+**Set the session branch.** Name it after the session input. For example,
+`GH123` for an issue, a short slug like `add-foo` for an unscoped task. If the
+session started on `main`, create the branch and switch to it. If the session
+started in a worktree, the branch already exists.
+
+**Create the bootstrap commit and push.** Create an empty bootstrap commit
+(`git commit --allow-empty`) so the draft PR has a commit to anchor to. Give it
+a short subject (the issue ref or slug) and the `Co-Authored-By` trailer only
+(see
+[Branch and commit operations](../../../agents/Grace.md#branch-and-commit-operations)).
+Push the branch. All work runs against the session-start state of `main`. Merge
+handles any drift on origin.
+
+**Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
+the title from the session input. Mark the title and body per
+[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
+Follow [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
+
+**Post the session input as the first comment.** Post the session input as a PR
+comment (`gh pr comment <N> --body "..."`). Head it `Session input`. For a
+worktree session with derived issues, list each issue number and title. For a
+main-checkout session, reproduce the user's text verbatim. Append the Claude
+Code footer from
+[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
+
+## Step 1.2: Orient to the repo
 
 Establish what the repo is for as a whole, before reading the session input.
 Orienting first brings a whole-repo frame to the task, so you weigh the work
@@ -39,7 +68,7 @@ Share the orientation with the user in a few sentences, so they can correct a
 mis-orientation before it shapes everything downstream. This is not a gate.
 Proceed once you've shared.
 
-## Step 1.2: Read the cited material
+## Step 1.3: Read the cited material
 
 Read everything the user cites in their session input: issue bodies and their
 comments, prior issues they reference, linked PRs, named files or symbols.
@@ -48,7 +77,7 @@ issue read without its comments can miss what the issue has become. This is the
 substantive baseline for the steps that follow. Without it, the recurrence check
 and code read run on guesses about what the user means.
 
-## Step 1.3: Read the code with a consumer lens
+## Step 1.4: Read the code with a consumer lens
 
 Read the relevant code, callers, tests, and docs for the named surfaces. Hold
 one question in mind: _who uses these surfaces and what do they do with them?_
@@ -56,7 +85,7 @@ This is the consumer lens. It makes the Requirements Analysis substantive, with
 who and what the work serves checked against the code rather than inferred from
 prose alone.
 
-## Step 1.4: Consult the record
+## Step 1.5: Consult the record
 
 Consult the record for the surfaces the user has named: a function, a class, a
 module, or a parameter. A session may name several. Consult two ways: search the
@@ -86,7 +115,7 @@ the exact prior decisions without guessing search terms. Prior PRs may tell you
 more about the consumers, use cases, and non-goals for that surface. Carry that
 information into the Requirements Analysis.
 
-## Step 1.5: Name the Session Type
+## Step 1.6: Name the Session Type
 
 Pin the Session Type before composing the Requirements Analysis. It selects the
 shape of the Requirements Analysis and what later phases focus on. Three types:
@@ -97,11 +126,9 @@ shape of the Requirements Analysis and what later phases focus on. Three types:
 
 State the Session Type in one short sentence with the reasoning ("Session Type:
 enhancement, adds a new CLI subcommand") and continue to
-[Step 1.6](#step-16-compose-the-requirements-analysis). If the user disagrees,
-they say so at the acceptance gate (see
-[Step 1.9](#step-19-seek-user-acceptance-of-the-requirements-analysis)).
+[Step 1.7](#step-17-compose-the-requirements-analysis).
 
-## Step 1.6: Compose the Requirements Analysis
+## Step 1.7: Compose the Requirements Analysis
 
 Compose the Requirements Analysis: your explicit reading of the system's
 requirements behind the session input. Without this step, hidden inferences
@@ -152,8 +179,8 @@ Every shape also carries:
   point to what in the read suggests it. Each cites that evidence, and a
   candidate use case also names the consumer it would serve. The user opts in to
   any they want at the gate, and
-  [Step 1.9](#step-19-seek-user-acceptance-of-the-requirements-analysis) decides
-  each one from there.
+  [Step 1.10](#step-110-seek-user-acceptance-of-the-requirements-analysis)
+  decides each one from there.
 - **System non-goals** (when any are stated or strongly implied): what the
   product is deliberately not built for, given what it is for, such as a
   consumer it will never serve or a behaviour it will never take on. This
@@ -188,7 +215,7 @@ an assumed item freely, since it's your inference, not the input's claim. They
 can drop a stated item too, when the consumer-lens read or the intent test shows
 the input got it wrong.
 
-## Step 1.7: Elicit answers to open questions
+## Step 1.8: Elicit answers to open questions
 
 Skip this step when there are no open questions.
 
@@ -203,7 +230,7 @@ question unanswered, re-ask the unanswered ones before continuing. You marked
 them as needing the user, so a missing answer means the artifact isn't complete
 yet.
 
-## Step 1.8: Share the Requirements Analysis
+## Step 1.9: Share the Requirements Analysis
 
 Send the completed Requirements Analysis to the user. When there are candidates,
 ask the user to name any they want included, by number. Note that any they don't
@@ -214,114 +241,44 @@ drop any outright.
 End the message by explicitly asking the user to accept: _"Accept the
 Requirements Analysis to proceed to Phase 2: Code Analysis."_
 
-## Step 1.9: Seek user acceptance of the Requirements Analysis
+## Step 1.10: Seek user acceptance of the Requirements Analysis
 
 Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
 Promote any candidate the user opted into. A candidate use case becomes a use
 case, a candidate improvement goal an improvement goal. Remove any the user
-explicitly dropped, and defer the rest to Collect (see
-[Phase 9](../../../agents/Grace.md#phase-9-collect)). If accepted, continue to
-[Step 1.10](#step-110-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+explicitly dropped. Defer the rest to Collect (see
+[Phase 9](../../../agents/Grace.md#phase-9-collect)).
+
+If accepted, apply the Session Type's category label to the PR via
+`gh pr edit --add-label <name>` (see
+[GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to
+[Step 1.11](#step-111-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+
 If the user pushes back, revise and return to
-[Step 1.8](#step-18-share-the-requirements-analysis). Repeat until accepted. If
+[Step 1.9](#step-19-share-the-requirements-analysis). Repeat until accepted. If
 the pushback challenges the Session Type itself, return to
-[Step 1.5](#step-15-name-the-session-type) and recompose from there.
+[Step 1.6](#step-16-name-the-session-type) and recompose from there.
 
 This is one of the protocol's user acceptance gates (see
 [Acceptance gates](../protocol.md#acceptance-gates)).
 
-## Step 1.10: Hand the accepted Requirements Analysis to Junio and Ralph
+## Step 1.11: Hand the accepted Requirements Analysis to Junio and Ralph
 
 Send Junio and Ralph the following, in the versions the user accepted plus any
 changes from the acceptance discussion:
 
 - the accepted Requirements Analysis
 - the Session Type
-- the repo orientation from [Step 1.1](#step-11-orient-to-the-repo)
+- the repo orientation from [Step 1.2](#step-12-orient-to-the-repo)
 
 Send them as two `SendMessage` calls in the same turn, for information only.
-Sign off `From Grace.` and skip the RSVP. No reply is needed. They hold them as
-context for the rest of the session.
+Sign off `From Grace.` and skip the RSVP.
 
-## Step 1.11: Set the session branch and bootstrap commit
+## Step 1.12: Post the accepted Requirements Analysis to the PR
 
-Set the session branch now that the Requirements Analysis is accepted, so the PR
-has somewhere to live.
-
-If the session started on `main`, create the branch and switch to it. The name
-reflects the session input: `GH123` for an issue, a short slug like `add-foo`
-for an unscoped task. When the input names no issue and suggests no obvious
-slug, take a couple of words from the Session Type and the main surface it
-touches.
-
-If the session started on a non-`main` branch, the boot guard already confirmed
-it as a worktree branch off `main`. Adopt it as the session branch. No checkout
-is needed.
-
-Then create an empty bootstrap commit (`git commit --allow-empty`) so the draft
-PR has a commit to anchor to. Give it a short subject naming the session (the
-issue ref or slug) and the `Co-Authored-By` trailer only (see
-[Branch and commit operations](../../../agents/Grace.md#branch-and-commit-operations)).
-Push the branch.
-
-All work runs against the session-start state of `main`. Merge handles any drift
-on origin.
-
-## Step 1.12: Open the draft PR
-
-Open a draft PR for the session branch (`gh pr create --draft`), with the
-accepted Requirements Analysis as its description. The PR carries the session's
-deliberation record from here on. Each later accepted artifact posts as a
-comment (see [The session PR](../protocol.md#the-session-pr)). It stays in draft
-until Phase 7. The draft state signals that the PR isn't yet worth the user's
-attention.
-
-Set up the PR:
-
-- Label it with the Session Type's category. Resolve the category to the repo's
-  actual label string before the create call. This is the session's first label
-  use. The label often carries more than the bare category word (a
-  `maintenance 🛠️` suffix, say), and `gh pr create --label <name>` fails on a
-  name that doesn't match exactly. See
-  [GitHub labels](../../../agents/Grace.md#github-labels) for the lookup and how
-  to pick the closest match or skip.
-- Mark the title and body per
-  [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items),
-  and follow
-  [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
-- Follow the body rules below, together with any contribution rules the repo has
-  (a `CONTRIBUTING.md`, a PR template).
-
-**Don't sample existing PRs for style.** The instinct to read recent PRs to
-"match the house style" lands on whatever noise was in the three PRs the agent
-happened to open. Most repos have varied styles across contributors. Written
-contribution rules (`CONTRIBUTING.md`, a PR template, a commit message
-convention) are real, so follow them. The existing PR log is not a style
-reference.
-
-**Put the accepted Requirements Analysis in the body.** Lead with one or two
-plain sentences of context: what the change is and which issue it addresses.
-Then give the final accepted Requirements Analysis, in the shape the Session
-Type selected. Carry it near-verbatim from the accepted artifact. This is the
-most careful account of why the change exists, and it would otherwise be
-discarded when the session ends.
-
-**The body is the Requirements Analysis and nothing else.** No Test plan
-section, no summary of the change, no narration of the diff. File paths,
-renames, and line-level changes are all visible in the diff, and the
-Requirements Analysis carries the intent. Don't state the Session Type in the
-body either. The PR's category label carries it. The one thing added later is
-the dream metadata line, appended when you finalize the PR (see
-[Finalize the PR](phase6.md#finalize-the-pr)).
-
-**Close the issues the PR addresses.** GitHub auto-closes an issue on merge only
-when the PR body has a closing keyword for it: `Closes #N`, `Fixes #N`,
-`Resolves #N`. The keyword is per-issue. A single keyword followed by a
-comma-separated list of numbers closes only the first number. Repeat the keyword
-for each issue, or put each on its own line. Without this, the PR merges and the
-issues the PR addressed sit open as triage debt. After opening, check:
-`gh pr view <N> --json closingIssuesReferences` should list every issue the PR
-fixed.
+Post the accepted Requirements Analysis as a PR comment. Follow
+[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
+Use the heading `Requirements`.
 
 The phase ends at user acceptance of the Requirements Analysis.

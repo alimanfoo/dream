@@ -216,18 +216,18 @@ plugins/:
         grace/:
           phase1.md:
             'Phase 1: Requirements':
-              'Step 1.1: Orient to the repo':
-              'Step 1.2: Read the cited material':
-              'Step 1.3: Read the code with a consumer lens':
-              'Step 1.4: Consult the record':
-              'Step 1.5: Name the Session Type':
-              'Step 1.6: Compose the Requirements Analysis':
-              'Step 1.7: Elicit answers to open questions':
-              'Step 1.8: Share the Requirements Analysis':
-              'Step 1.9: Seek user acceptance of the Requirements Analysis':
-              'Step 1.10: Hand the accepted Requirements Analysis to Junio and Ralph':
-              'Step 1.11: Set the session branch and bootstrap commit':
-              'Step 1.12: Open the draft PR':
+              'Step 1.1: Open the session PR':
+              'Step 1.2: Orient to the repo':
+              'Step 1.3: Read the cited material':
+              'Step 1.4: Read the code with a consumer lens':
+              'Step 1.5: Consult the record':
+              'Step 1.6: Name the Session Type':
+              'Step 1.7: Compose the Requirements Analysis':
+              'Step 1.8: Elicit answers to open questions':
+              'Step 1.9: Share the Requirements Analysis':
+              'Step 1.10: Seek user acceptance of the Requirements Analysis':
+              'Step 1.11: Hand the accepted Requirements Analysis to Junio and Ralph':
+              'Step 1.12: Post the accepted Requirements Analysis to the PR':
           phase10.md:
             'Phase 10: Reflect':
           phase2.md:
@@ -287,8 +287,9 @@ plugins/:
               'Step 7.2: Post each review as a PR comment':
               'Step 7.3: Triage each finding':
               'Step 7.4: Post Grace''s response as a PR comment':
-              'Step 7.5: Mark the PR ready for review':
-              'Step 7.6: Hand back to the user':
+              'Step 7.5: Update the PR description':
+              'Step 7.6: Mark the PR ready for review':
+              'Step 7.7: Hand back to the user':
           phase8.md:
             'Phase 8: Merge':
           phase9.md:
