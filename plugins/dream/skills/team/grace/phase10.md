@@ -33,8 +33,7 @@ working the lens, not a reason to skip it.
    the repo had told it at the start? Ask each teammate, not just yourself. Each
    read a different part of the repo, so each holds gaps the others never saw.
    Every gap is a place the repo doesn't explain its own purpose or
-   organisation. File it against the host project, naming the gap and a
-   direction that would close it.
+   organisation. File each gap as an issue against the host project.
 
 You have the whole session in memory and run the conversation directly. The team
 is still on the wire, though. When the question turns to _why_ something
