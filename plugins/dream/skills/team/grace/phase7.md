@@ -105,6 +105,46 @@ If any accepted follow-on task changed what the PR implements, update the PR
 description. The description states what the PR does, so it must match what was
 actually built.
 
+Then write the dream metadata line. PR ready is the first point where every
+field is final: the gate counts settled in Phases 1 to 5, a Phase 7 Challenge is
+resolved, autopilot has run its course, and the commit counts include any review
+follow-ons from this phase. Append it to the PR body, after the Claude Code
+footer:
+
+```text
+<!-- dream:<version> type:<type> req:<n> ca:<n> scope:<n> design:<n> plan:<n> commits:plan=<n>,junio-audit=<n>,grace-read=<n>,junio-review=<n>,ada-review=<n> challenge:<value> autopilot:<value> -->
+```
+
+Plugin version from `../../.claude-plugin/plugin.json` relative to the protocol
+file. Gate counts are revision rounds per acceptance gate:
+
+- `req`: Requirements Analysis (closing Phase 1)
+- `ca`: Code Analysis (closing Phase 2)
+- `scope`: Session Scope (closing Phase 3)
+- `design`: Phase 4
+- `plan`: Phase 5
+
+A revision round is one iteration where the user pushed back before accepting.
+
+Commit counts are one tally per origin, read off the task list (one commit per
+task). They measure the coherence rework the team's own review caught before
+handing the PR over:
+
+- `plan`: accepted Plan task
+- `junio-audit`: Junio coherence-audit follow-on
+- `grace-read`: your own brief-fidelity correction follow-on
+- `junio-review`: Junio PR-review follow-on
+- `ada-review`: Ada PR-review follow-on
+
+Post-handoff commits are out of the tally: a user-directed change after PR
+ready, and Phase 8 conflict resolution. They are not secondary-review rework.
+
+Challenge value: `no`, or `at-<phase>` for the phase where an accepted Challenge
+overturned an artifact (for example `at-scope` or `at-develop`). Autopilot
+value: `no`, or `from-<phase>` for the phase where autopilot first engaged (for
+example `from-input` when set in the session input, or `from-scope` when set
+mid-session).
+
 ## Step 7.6: Mark the PR ready for review
 
 Once all accepted follow-ons from triage are complete, run `gh pr ready <N>`.
@@ -125,9 +165,9 @@ Only a user-directed change reopens Develop. You handle it as an explicit
 reopening, the same as any Phase 6 task:
 
 - create a task
-- Ralph implements
-- you commit
+- Ralph implements and commits
 - Junio audits
+- you read and triage
 
 Absent that direction, the default is freeze.
 

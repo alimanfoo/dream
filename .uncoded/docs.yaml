@@ -165,15 +165,17 @@ plugins/:
               'Step 6.1: Read the task description':
               'Step 6.2: Do the work':
               'Step 6.3: Revise for a cold read':
-              'Step 6.4: Run the commit-time checks and the tests':
+              'Step 6.4: Run the tests':
               'Step 6.5: Run any codegen the commit hook doesn''t run':
-              'Step 6.6: Report back to Grace via `SendMessage`':
+              'Step 6.6: Commit and push':
+              'Step 6.7: Report back to Grace via `SendMessage`':
             'Phase 7: Review':
             'Phase 8: Merge':
             'Phase 9: Collect':
             'Phase 10: Reflect':
           Common rules:
             Hard rules:
+            Commits:
             Investigate before changing:
             Code comments:
             Naming:
@@ -275,11 +277,9 @@ plugins/:
               Per-task workflow:
                 'Step 6.2: Assign':
                 'Step 6.3: Implement':
-                'Step 6.4: Verify':
-                'Step 6.5: Commit':
-                'Step 6.6: Coherence audit':
-                'Step 6.7: Triage findings':
-                'Step 6.8: Loop':
+                'Step 6.4: Read and request the audit':
+                'Step 6.5: Triage findings':
+                'Step 6.6: Loop':
               Finalize the PR:
           phase7.md:
             'Phase 7: Review':
