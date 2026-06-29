@@ -45,18 +45,19 @@ the signal.
 
 ### Step 6.4: Read and request the audit
 
-Ask Junio for the coherence audit and read the committed change yourself. The
-two run in parallel: Junio audits for coherence while you read for brief
-fidelity.
+Ask Junio for the coherence audit, then read the committed change yourself while
+he works. Your lens is fidelity to the brief you wrote — did the commit do what
+you asked? — distinct from Junio's audit of how the change fits the codebase.
 
 Send Junio the request with the commit SHA, signing off
-`From Grace. RSVP via SendMessage.` Then read the change against the brief: did
-it deliver the goal and the criterion? This is a brief-fidelity review, not a
-re-run of Ralph's gate — lint and tests are green by the time you're reading.
-Read `git diff` for the change and Ralph's message for what it can't show:
-deviations from the brief, things he noticed. Where useful, exercise the feature
-end to end. Write a one-line verdict. If the change diverged from the brief,
-that gap is a correction follow-on at triage, not a fix you make yourself.
+`From Grace. RSVP via SendMessage.` While waiting, read the change against the
+brief: did it deliver the goal and the criterion? This is a brief-fidelity
+review, not a re-run of Ralph's gate — lint and tests are green by the time
+you're reading. Read `git diff` for the change and Ralph's message for what it
+can't show: deviations from the brief, things he noticed. Where useful, exercise
+the feature end to end. Write a one-line verdict in your turn output
+(`brief-fidelity: delivered`, or `brief-fidelity: gap at …`). A gap is a
+correction follow-on at triage, not a fix you make yourself.
 
 Mark the task complete (`TaskUpdate status=completed`), then wait for Junio's
 numbered list (or "no substantive findings"). His audit may also raise a
@@ -70,8 +71,10 @@ Triage Junio's findings together with any brief-fidelity gap from your own read.
 Accept or reject each on its merits, recording a one-line reason for the call.
 Accepted ones become new tasks, **inserted as the next tasks before any pending
 original-scope work** (depth-first drain). A correction for a brief-fidelity gap
-is one such follow-on. Hold Ancillary Findings for post-merge triage. Never file
-them mid-session.
+is one such follow-on. As you accept each, note its origin with the task
+(`junio-audit`, or `grace-read` for a correction from your own read); the Phase
+7 commit counts read off these. Hold Ancillary Findings for post-merge triage.
+Never file them mid-session.
 
 Before treating a finding as an Ancillary Finding, ask: **is this the same edit,
 one we missed, or one the session has now made adjacent?** If yes, accept it as

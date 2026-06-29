@@ -67,7 +67,7 @@ A session moves through ten phases:
 7. **Review.** Ada and Junio review the PR.
 
 8. **Merge.** The user merges the PR, or merge is deferred to a human. Grace
-   resolves any conflicts first.
+   drives any conflict resolution first; Ralph resolves the markers.
 
 9. **Collect.** Ancillary Findings noticed during the session are gathered,
    deduplicated, checked against issue history, and decided.

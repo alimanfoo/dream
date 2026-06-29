@@ -340,8 +340,10 @@ rest; the commit hook checks them when you commit.
 Commit your work, then push. Run `git status` and a full `git diff` first to
 confirm one commit per task with nothing missed. Stage the paths this task
 changed and commit, writing the message per the [Commits](#commits) rule. The
-commit hook runs the commit-time checks on your staged files; if a formatter
-rewrites a file, re-stage and commit again until it passes cleanly. Then push.
+commit hook runs the commit-time checks on your staged files. If it rewrites a
+file or reports a failure, address it — inspect any rewrite, re-stage the
+affected paths, and commit again — and repeat until the hook passes cleanly.
+Then push the branch.
 
 #### Step 6.7: Report back to Grace via `SendMessage`
 

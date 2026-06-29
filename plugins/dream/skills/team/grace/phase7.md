@@ -49,7 +49,8 @@ Decide each finding from both reviews on its merits. A reviewer raising it is
 not itself a reason to accept it. Each finding takes one of these paths:
 
 - Accept: make it a follow-on task, handled by the standard per-task workflow
-  including Junio's coherence audit.
+  including Junio's coherence audit. Note its origin with the task
+  (`junio-review` or `ada-review`) for the commit counts.
 - Reject: note it in your reply to the user, with the reason.
 - Out of scope: hold it for post-merge triage.
 - Raise a Challenge: take it to the user per the "Challenge" shape. Use this
@@ -126,9 +127,10 @@ file. Gate counts are revision rounds per acceptance gate:
 
 A revision round is one iteration where the user pushed back before accepting.
 
-Commit counts are one tally per origin, read off the task list (one commit per
-task). They measure the coherence rework the team's own review caught before
-handing the PR over:
+Commit counts are one tally per origin, read off the origin you recorded with
+each task at triage (one commit per task). `plan` is every accepted Plan task;
+the rest are the follow-ons you labelled. They measure the coherence rework the
+team's own review caught before handing the PR over:
 
 - `plan`: accepted Plan task
 - `junio-audit`: Junio coherence-audit follow-on

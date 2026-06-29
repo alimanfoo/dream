@@ -417,7 +417,7 @@ at a glance whether an agent or a person made it.
 
   > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
 
-- **Commits** carry `Co-Authored-By` and Dream trailers (see "Branch and commit
+- **Commits** carry the `Co-Authored-By` trailer (see "Branch and commit
   operations") but not the Claude Code footer.
 
 - **Titles** (PR titles, commit subjects, issue titles) state the change itself.
