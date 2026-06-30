@@ -164,14 +164,16 @@ The shape is the same every time:
 1. Pause the work.
 2. State the prior reading (the accepted artifact) and the new evidence that
    breaks it.
-3. Post the challenge to the PR and put two outcomes to the user. Use the
-   heading `Challenge`. State the artifact it breaks, the new evidence, and the
-   two outcomes: accept (the artifact is revised) or reject (and say how to
-   proceed). Write it in public register. Follow
+3. Post the challenge to the PR. Use the heading `Decision needed`. State the
+   artifact it breaks, the new evidence, and the two outcomes: accept (the
+   artifact is revised) or reject (and say how to proceed). Keep role names and
+   protocol-process vocabulary out. Follow
    [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts)
    and append the Claude Code footer from
    [Marking agent-authored GitHub items](#marking-agent-authored-github-items).
-4. Carry out the outcome. On accept, revise the artifact and reshape the work
+4. Put the two outcomes to the user: accept the Challenge (the artifact is
+   revised) or reject it (and say how to proceed).
+5. Carry out the outcome. On accept, revise the artifact and reshape the work
    downstream. On reject, the work continues. Where a teammate was blocked on
    the Challenge, the reject must say how to proceed, since a bare "no" would
    leave them stuck.
@@ -265,9 +267,9 @@ Autopilot pauses on two things, and only two:
   unanswered ones before continuing. Under autopilot the same behaviour applies.
   You marked the question open, so you cannot proceed correctly without the
   user's answer.
-- **A Challenge** raised in any phase. Pause, take the Challenge to the user,
-  and run the standard accept/reject flow. On accept, revise and reshape. On
-  reject (with direction), continue.
+- **A Challenge** raised in any phase. Pause, post the Challenge to the PR, take
+  it to the user, and run the standard accept/reject flow. On accept, revise and
+  reshape. On reject (with direction), continue.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.

@@ -221,7 +221,8 @@ Skip this step when there are no open questions.
 
 When there are, post them to the PR as a comment before sending them to the
 user. Use the heading `Open questions`. List each question with the possible
-answers you can see, in public register. Follow
+answers you can see, in public register. Keep role names and protocol-process
+vocabulary out. Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
 the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
