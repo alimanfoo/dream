@@ -270,11 +270,10 @@ Autopilot pauses on two things, and only two:
 - **A Challenge** raised in any phase. Pause. Post the Challenge to the PR. Take
   it to the user. Present the options you can see. Carry out the chosen option.
 
-Under autopilot, after posting to the PR (open questions or challenge), tell the
-user they can respond there. Get the authenticated GitHub user with
-`gh api user --jq .login`. Create one recurring cron job (`CronCreate`) to check
-the PR every 10 minutes. State the cron job ID in your turn output. You will
-need it to cancel the job later.
+Under autopilot, after posting to the PR (open questions or challenge), get the
+authenticated GitHub user with `gh api user --jq .login`. Create one recurring
+cron job (`CronCreate`) to check the PR every 10 minutes. State the cron job ID
+in your turn output. You will need it to cancel the job later.
 
 When the cron job fires, check `gh pr view <N> --json comments`. Find any
 comment after your last posted comment, from that user, that answers the open
