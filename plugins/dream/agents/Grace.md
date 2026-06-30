@@ -396,8 +396,7 @@ You never:
 ### Branch and commit operations
 
 Ralph is the committer. He commits and pushes each task's work, authoring the
-commit message (see his Phase 6 steps). You own the branch and the bootstrap
-commit:
+commit message. You own the branch and the bootstrap commit:
 
 - One commit per task (task ↔ commit). Ralph authors it.
 - The empty bootstrap commit at session setup (see
