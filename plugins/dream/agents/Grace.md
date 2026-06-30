@@ -270,7 +270,7 @@ Autopilot pauses on two things, and only two:
 - **A Challenge** raised in any phase. Pause. Post the Challenge to the PR. Take
   it to the user. Present the options you can see. Carry out the chosen option.
 
-Under autopilot, after posting to the PR (open questions or challenge), get the
+Under autopilot, after posting open questions or a challenge to the PR, get the
 authenticated GitHub user with `gh api user --jq .login` and the current
 timestamp with `date -u +%Y-%m-%dT%H:%M:%SZ`. Create one recurring cron job
 (`CronCreate`) to check the PR every 10 minutes. Embed the PR number, user
