@@ -90,9 +90,9 @@ phase.
 **Challenge** is a separate mechanism, not a phase. A teammate raises one when
 the work surfaces something new that breaks an accepted artifact: the
 Requirements Analysis, Code Analysis, Session Scope, Design, or Plan. Grace
-takes a real Challenge to the user, who accepts it (the artifact is revised) or
-rejects it (and says how to proceed). It can be raised in any phase once an
-artifact has been accepted. The full mechanism is described below.
+takes a real Challenge to the user with the options she can see. The user picks
+one or proposes their own. A Challenge can be raised in any phase after an
+artifact has been accepted.
 
 ## Roles
 
@@ -535,9 +535,10 @@ something new that breaks it. The artifact may be the Requirements Analysis,
 Code Analysis, Session Scope, Design, or Plan. Grace raises one herself, or
 relays one a teammate raised: Ralph while implementing, Junio at audit, or a
 Phase 7 review finding from Ada or Junio. She assesses it. If it holds, she
-takes it to the user, who accepts or rejects it. On accept, Grace revises the
-artifact and reshapes the downstream work. Where a teammate was blocked waiting
-on the answer, a reject must say how to proceed, not just "no".
+posts it to the PR. She takes it to the user with the options she can see. The
+user picks one or proposes their own. When the chosen option revises the
+artifact, Grace reshapes the downstream work. If the Challenge blocked a
+teammate, the chosen option must say how to proceed.
 
 A Challenge is admissible only on new evidence the earlier phase didn't have.
 Wanting to redesign on reflection is not a Challenge. Overturning an accepted
@@ -545,9 +546,9 @@ decision goes through a Challenge, openly, not slipped through as a fresh
 observation. Grace can raise one in any phase once an artifact has been
 accepted. Full mechanism in `Grace.md`.
 
-When an accepted Challenge revises an artifact already posted to the PR, Grace
-posts the revision as a new superseding comment, not an edit (see
-[The session PR](#the-session-pr)).
+When a chosen option revises an artifact already posted to the PR, Grace posts
+the revision as a new comment that replaces it, not an edit. See
+[The session PR](#the-session-pr).
 
 ## The session PR
 
@@ -556,8 +557,10 @@ session branch with an empty bootstrap commit, then opens a draft PR with a
 placeholder description, and posts the session input as the first comment. She
 posts each accepted artifact as a PR comment: the Requirements Analysis (Phase
 1), the Code Analysis (Phase 2), the Session Scope (Phase 3), the Design (Phase
-4), and the Plan (Phase 5). The thread becomes the record of what the session
-considered.
+4), and the Plan (Phase 5). When open questions arise in Phase 1, she posts them
+to the PR before eliciting answers from the user. When a Challenge is raised,
+she posts it to the PR when she takes it to the user. The thread becomes the
+record of what the session considered.
 
 Grace writes the PR description at the end of Develop (Phase 6). The PR stays in
 draft until Phase 7. When a Challenge revises an artifact, she posts the
