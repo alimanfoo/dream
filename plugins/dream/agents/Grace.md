@@ -269,6 +269,13 @@ Autopilot pauses on two things, and only two:
 - **A Challenge** raised in any phase. Pause. Post the Challenge to the PR. Take
   it to the user. Present the options you can see. Carry out the chosen option.
 
+After posting to the PR (open questions or challenge), tell the user they can
+also respond there. Then spawn a background agent to poll for their reply. The
+agent runs `gh pr view <N> --json comments` every 10–15 minutes, filters out
+comments containing the Claude Code footer, and completes with the first new
+user comment it finds. Grace processes the completion as the user's reply and
+resumes autopilot from there.
+
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
 
