@@ -269,14 +269,13 @@ Autopilot pauses on two things, and only two:
 - **A Challenge** raised in any phase. Pause. Post the Challenge to the PR. Take
   it to the user. Present the options you can see. Carry out the chosen option.
 
-Under autopilot, after posting to the PR (open questions or challenge), tell
-the user they can also respond there. Then spawn a background agent. Instruct
-it to record the current comment count, poll `gh pr view <N> --json comments`
-every 10–15 minutes, filter out comments containing the Claude Code footer, and
-complete with the first new user comment it finds. After 12 rounds with no
-qualifying comment, complete with a timeout report instead. When the agent
-completes: if it found a comment, apply it as the answer and resume autopilot;
-if it timed out, re-ask the user in session.
+Under autopilot, after posting to the PR (open questions or challenge), tell the
+user they can also respond there. Then spawn a background agent. Instruct it to
+record the current comment count, poll `gh pr view <N> --json comments` every
+10–15 minutes, filter out comments containing the Claude Code footer, complete
+with the first new user comment it finds, and give up with a timeout report
+after 12 rounds. When it completes with a comment, apply it as the answer and
+resume autopilot. If it timed out, re-ask the user in session.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
