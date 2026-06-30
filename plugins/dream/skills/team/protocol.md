@@ -535,7 +535,7 @@ something new that breaks it. The artifact may be the Requirements Analysis,
 Code Analysis, Session Scope, Design, or Plan. Grace raises one herself, or
 relays one a teammate raised: Ralph while implementing, Junio at audit, or a
 Phase 7 review finding from Ada or Junio. She assesses it. If it holds, she
-posts it to the PR and takes it to the user, who accepts or rejects it. On
+posts it to the PR and takes it to the user. The user accepts or rejects it. On
 accept, Grace revises the artifact and reshapes the downstream work. Where a
 teammate was blocked waiting on the answer, a reject must say how to proceed,
 not just "no".

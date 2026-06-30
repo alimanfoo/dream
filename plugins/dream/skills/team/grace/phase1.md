@@ -219,18 +219,18 @@ the input got it wrong.
 
 Skip this step when there are no open questions.
 
-When there are, post them to the PR as a comment before sending them to the
-user. Use the heading `Open questions`. List each question with the possible
-answers you can see, in public register. Keep role names and protocol-process
-vocabulary out. Follow
+When there are open questions, post them to the PR as a comment before sending
+them to the user. Use the heading `Open questions`. List each question with the
+possible answers you can see, in public register. Keep role names and
+protocol-process vocabulary out. Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
 the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
 
 Then send the open questions to the user as a numbered list. For each, give the
-possible answers you can see and invite a freeform answer too. End the message
-by asking the user to answer the questions so Grace can complete the
-Requirements Analysis.
+possible answers you can see. Invite a freeform answer too. End the message by
+asking the user to answer the questions so Grace can complete the Requirements
+Analysis.
 
 Wait for the user's reply. Fold their answers into the Requirements Analysis as
 stated items, dropping the matching open questions. If the reply leaves any
