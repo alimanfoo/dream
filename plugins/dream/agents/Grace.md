@@ -287,8 +287,8 @@ gh pr view <N> --json comments \
 The pause ends one of two ways. Cancel the cron job (`CronDelete`) in each case,
 then act:
 
-- The result is non-empty. Use the returned comments to resolve the pause. Resume
-  autopilot.
+- The result is non-empty. Use the returned comments to resolve the pause.
+  Resume autopilot.
 - A user reply appears in the session instead. Resume autopilot with that reply
   as the answer.
 
