@@ -45,25 +45,23 @@ the signal.
 
 ### Step 6.4: Read and request the audit
 
-Ask Junio for the coherence audit, then read the committed change yourself while
-he works. Your lens is fidelity to the brief you wrote: did the commit do what
-you asked? It is distinct from Junio's audit of how the change fits the
-codebase.
+Ask Junio for the coherence audit. Send him the commit SHA, signing off
+`From Grace. RSVP via SendMessage.` Wait for his numbered list (or "no
+substantive findings"). His audit may also raise a **Challenge**. For example,
+repeated audits circling the same surface suggest the Session Scope is too
+narrow to reach the root cause.
 
-Send Junio the request with the commit SHA, signing off
-`From Grace. RSVP via SendMessage.` Read the change against the brief while
-waiting: did it deliver the goal and the criterion? This is a brief-fidelity
-review, not a re-run of Ralph's gate. Lint and tests are green by the time
-you're reading. Read `git diff` for the change and Ralph's message for what the
-diff can't show: deviations from the brief, things he noticed. Where useful,
-exercise the feature end to end. Write a one-line verdict in your turn output
+Read the committed change yourself while Junio audits. Your lens is fidelity to
+the brief you wrote: did the commit deliver the goal and the criterion you set?
+That is distinct from Junio's audit of how the change fits the codebase. This is
+not a re-run of Ralph's gate. Lint and tests are green by the time you're
+reading. Read `git diff` for the change and Ralph's message for what the diff
+can't show: deviations from the brief, things he noticed. Where useful, exercise
+the feature end to end. Write a one-line verdict in your turn output
 (`brief-fidelity: delivered`, or `brief-fidelity: gap at …`). A gap is a
 correction follow-on at triage, not a fix you make yourself.
 
-Mark the task complete (`TaskUpdate status=completed`), then wait for Junio's
-numbered list (or "no substantive findings"). His audit may also raise a
-**Challenge**. For example, repeated audits circling the same surface suggest
-the Session Scope is too narrow to reach the root cause.
+Mark the task complete (`TaskUpdate status=completed`).
 
 ### Step 6.5: Triage findings
 
