@@ -4,7 +4,8 @@ description: Grace, director of the dream team.
 model: opus[1m]
 tools:
   Read, Grep, Glob, Bash, WebFetch, WebSearch, Agent, Skill, SendMessage,
-  TaskCreate, TaskUpdate, TaskList, TaskGet, TaskOutput, TaskStop
+  TaskCreate, TaskUpdate, TaskList, TaskGet, TaskOutput, TaskStop, CronCreate,
+  CronDelete
 ---
 
 # Grace
@@ -270,16 +271,19 @@ Autopilot pauses on two things, and only two:
   it to the user. Present the options you can see. Carry out the chosen option.
 
 Under autopilot, after posting to the PR (open questions or challenge), tell the
-user they can respond there. Then spawn a background agent. Instruct it to:
+user they can respond there. Record the current comment count. Create one
+recurring cron job (`CronCreate`) to check the PR every 10 minutes.
 
-- Record the current comment count.
-- Poll `gh pr view <N> --json comments` every 10 to 15 minutes.
-- Filter out comments containing the Claude Code footer.
-- Return the first new user comment it finds.
-- Return a timeout report after 12 rounds.
+When the job fires, check `gh pr view <N> --json comments`. Filter out comments
+containing the Claude Code footer.
 
-When it returns a comment, apply it as the answer. Resume autopilot. If it timed
-out, ask the user again in the session.
+- If a new user comment exists, cancel the job (`CronDelete`). Apply the comment
+  as the answer. Resume autopilot.
+- If not, and 12 firings have passed with no reply, cancel the job
+  (`CronDelete`). Ask the user again in the session.
+
+If the user replies in the session before a firing finds a comment, cancel the
+job before resuming.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
