@@ -473,8 +473,8 @@ description, and it goes stale as the codebase changes.
 
 **Specific to this protocol.** Write comments for a future reader six months
 from now, with no memory of this session. Don't write them for Grace as today's
-reader. Grace reads `git diff` to check your work for fidelity and scope, but
-she isn't the audience for comments. Comments that help her don't help that
+reader. Grace reads `git diff` to check your work against the brief and scope,
+but she isn't the audience for comments. Comments that help her don't help that
 future reader. For example:
 
 - Historical framing (`before the fix...`).

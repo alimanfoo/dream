@@ -132,7 +132,7 @@ rework the team's own review caught before handing the PR over:
 
 - `plan`: accepted Plan task
 - `junio-audit`: Junio coherence-audit follow-on
-- `grace-read`: your own brief-fidelity correction follow-on
+- `grace-read`: your own follow-on from checking the commit against the brief
 - `junio-review`: Junio PR-review follow-on
 - `ada-review`: Ada PR-review follow-on
 

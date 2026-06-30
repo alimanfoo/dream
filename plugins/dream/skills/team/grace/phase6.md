@@ -51,25 +51,25 @@ substantive findings"). His audit may also raise a **Challenge**. For example,
 repeated audits circling the same surface suggest the Session Scope is too
 narrow to reach the root cause.
 
-Read the committed change yourself while Junio audits. Your lens is fidelity to
-the brief you wrote: did the commit deliver the goal and the criterion you set?
-That is distinct from Junio's audit of how the change fits the codebase. This is
-not a re-run of Ralph's gate. Lint and tests are green by the time you're
-reading. Read `git diff` for the change and Ralph's message for what the diff
-can't show: deviations from the brief, things he noticed. Where useful, exercise
-the feature end to end. Write a one-line verdict in your turn output
-(`brief-fidelity: delivered`, or `brief-fidelity: gap at …`). A gap is a
-correction follow-on at triage, not a fix you make yourself.
+Read the committed change yourself while Junio audits. Check it against the
+brief you wrote: did the commit deliver the goal and the criterion you set? That
+is distinct from Junio's audit of how the change fits the codebase. This is not
+a re-run of Ralph's gate. Lint and tests are green by the time you're reading.
+Read `git diff` for the change and Ralph's message for what the diff can't show:
+deviations from the brief, things he noticed. Where useful, exercise the feature
+end to end. Write a one-line verdict in your turn output (`delivered`, or
+`gap at …`). A gap is a correction follow-on at triage, not a fix you make
+yourself.
 
 Mark the task complete (`TaskUpdate status=completed`).
 
 ### Step 6.5: Triage findings
 
-Triage Junio's findings together with any brief-fidelity gap from your own read.
-Accept or reject each on its merits, recording a one-line reason for the call.
-Accepted ones become new tasks, **inserted as the next tasks before any pending
-original-scope work** (depth-first drain). A correction for a brief-fidelity gap
-is one such follow-on. Note the origin with each task as you accept it
+Triage Junio's findings together with any gap from your own read. Accept or
+reject each on its merits, recording a one-line reason for the call. Accepted
+ones become new tasks, **inserted as the next tasks before any pending
+original-scope work** (depth-first drain). A correction for a gap you found is
+one such follow-on. Note the origin with each task as you accept it
 (`junio-audit`, or `grace-read` for a correction from your own read). These feed
 the Phase 7 commit counts. Hold Ancillary Findings for post-merge triage. Never
 file them mid-session.
