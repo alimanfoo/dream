@@ -276,8 +276,8 @@ check the PR every 10 minutes. State the cron job ID in your turn output. You
 will need it to cancel the job later.
 
 When the cron job fires, check `gh pr view <N> --json comments`. Find any
-comment without the Claude Code footer that follows your last posted comment.
-State the firing count out of 12 in your turn output.
+comment after your last posted comment that answers the open question or
+decision. State the firing count out of 12 in your turn output.
 
 The pause ends one of three ways. Cancel the cron job (`CronDelete`) in each
 case, then act:
