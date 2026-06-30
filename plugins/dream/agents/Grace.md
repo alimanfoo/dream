@@ -164,19 +164,18 @@ The shape is the same every time:
 1. Pause the work.
 2. State the prior reading (the accepted artifact) and the new evidence that
    breaks it.
-3. Post the challenge to the PR. Use the heading `Decision needed`. State the
-   artifact it breaks, the new evidence, and the two outcomes: accept or reject.
-   Accept means the artifact is revised. Reject means saying how to proceed.
-   Keep role names and protocol-process vocabulary out. Follow
+3. Post the challenge to the PR. Use the heading `Decision needed`. State what
+   the work surfaced and the options you can see. Keep role names and
+   protocol-process vocabulary out. Follow
    [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts)
    and append the Claude Code footer from
    [Marking agent-authored GitHub items](#marking-agent-authored-github-items).
-4. Put the two outcomes to the user: accept the Challenge (the artifact is
-   revised) or reject it (and say how to proceed).
-5. Carry out the outcome. On accept, revise the artifact and reshape the work
-   downstream. On reject, the work continues. Where a teammate was blocked on
-   the Challenge, the reject must say how to proceed. A bare "no" would leave
-   them stuck.
+4. Present the same to the user: what the work surfaced and the options you can
+   see. The user picks one or proposes their own.
+5. Carry out the chosen option. When it involves revising an accepted artifact,
+   follow [Revising an artifact](#revising-an-artifact). Where a teammate was
+   blocked on the Challenge, the chosen option must say how to proceed. A bare
+   "no" would leave them stuck.
 
 ### Evidence
 
@@ -190,7 +189,7 @@ New evidence can break an accepted artifact in many ways. For example:
 - Repeated coherence audits circle the same surface. The Session Scope turns out
   aimed at a symptom after all.
 
-### On accept
+### Revising an artifact
 
 Revising the artifact is ordinary work: return to the phase that owns it and
 follow the protocol as normal from there. Re-read that phase's instruction file
@@ -268,8 +267,8 @@ Autopilot pauses on two things, and only two:
   You marked the question open, so you cannot proceed correctly without the
   user's answer.
 - **A Challenge** raised in any phase. Pause, post the Challenge to the PR, and
-  take it to the user. Run the standard accept/reject flow. On accept, revise
-  and reshape. On reject (with direction), continue.
+  take it to the user. Present the options you can see. Carry out the chosen
+  option.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
