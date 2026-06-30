@@ -270,8 +270,8 @@ Autopilot pauses on these, and only these:
 - **A Challenge** raised in any phase. Pause. Post the Challenge to the PR and
   present the options you can see. Carry out the chosen option.
 
-After pausing, create a recurring cron job (`CronCreate`) to check the PR for
-replies every 10 minutes. Embed these values in the prompt:
+After pausing, create a recurring cron job (`CronCreate`) to remind you to check
+the PR for replies every 10 minutes. Embed these values in the prompt:
 
 - the PR number
 - the authenticated user login (`gh api user --jq .login`)
