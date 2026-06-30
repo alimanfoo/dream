@@ -273,8 +273,8 @@ Autopilot pauses on two things, and only two:
 After pausing, create a recurring cron job (`CronCreate`) to check the PR for
 replies every 10 minutes. Embed the PR number, the authenticated user login
 (`gh api user --jq .login`), and the current timestamp
-(`date -u +%Y-%m-%dT%H:%M:%SZ`) in the prompt. Note the cron job ID in your
-turn output. You will need it to cancel the job.
+(`date -u +%Y-%m-%dT%H:%M:%SZ`) in the prompt. Note the cron job ID in your turn
+output. You will need it to cancel the job.
 
 When the cron job fires, use the embedded values to run:
 
