@@ -283,12 +283,9 @@ gh pr view <N> --json comments \
   --jq '[.comments[] | select(.author.login == "USER" and .createdAt > "TIMESTAMP")]'
 ```
 
-The pause ends in one of two ways:
-
-- The command returns comments. Cancel the cron job (`CronDelete`). Use the
-  returned comments to resolve the pause. Resume autopilot.
-- The user replies in the session. Cancel the cron job. Resume autopilot with
-  that reply.
+The pause ends when the user provides the information you need, either as GitHub
+comments or as direct replies in the session. Cancel the cron job and resume
+autopilot.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
