@@ -143,7 +143,8 @@ Challenge value: `no`, or `at-<phase>` for the phase where an accepted Challenge
 overturned an artifact. For example: `at-scope` or `at-develop`. Autopilot
 value: `no`, or `from-<phase>` for the phase where autopilot first engaged. For
 example: `from-input` when set in the session input, or `from-scope` when set
-mid-session.
+mid-session. If autopilot was turned off and on again, record the earliest
+engagement.
 
 ## Step 7.6: Mark the PR ready for review
 

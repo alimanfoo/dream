@@ -277,20 +277,6 @@ The user can also turn autopilot off at any time. Acknowledge that the same way
 you acknowledged engagement ("Autopilot off, resuming gates from Phase N") and
 resume waiting at the next acceptance gate.
 
-### PR metadata
-
-Set `autopilot:<value>` when you write the dream metadata line at PR ready
-(Phase 7
-[Step 7.5](../skills/team/grace/phase7.md#step-75-update-the-pr-description)):
-
-- `no`: autopilot was not used during the session.
-- `from-<phase>`: autopilot was engaged from that point. Use `from-input` when
-  set in the session input, or `from-<phase>` for the phase where it was engaged
-  mid-session (for example `from-scope`, `from-design`).
-
-If autopilot was turned off and on again during the session, record the earliest
-engagement.
-
 ## Stopping a session early
 
 Leave a record on the PR when a session stops before merge, rather than
