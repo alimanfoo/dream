@@ -61,8 +61,8 @@ A session moves through ten phases:
    Ralph, revises, and shares the revised Plan with the user for acceptance.
 
 6. **Develop.** The main implementation loop: one task at a time, coherence
-   restored before moving on. Opens with the task list. Closes by finalising the
-   PR description.
+   restored before moving on. Opens with the task list. Closes by writing the PR
+   description.
 
 7. **Review.** Ada and Junio review the PR.
 
@@ -378,9 +378,9 @@ If a follow-on later spawns its own follow-on, the grandchild also inserts next.
 The chain drains depth-first. The original queue resumes only after the parent
 task's coherence chain is fully drained.
 
-The phase ends when the task list drains. Grace then finalises the PR
-description, editing it to the final accepted requirements. She opened the PR in
-Phase 1. It stays in draft until Phase 7.
+The phase ends when the task list drains. Grace then writes the PR description
+to match the final accepted requirements. She opened the PR in Phase 1. It stays
+in draft until Phase 7.
 
 ## Phase 7: Review
 

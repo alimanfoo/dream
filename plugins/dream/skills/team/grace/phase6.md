@@ -94,16 +94,15 @@ reject) following the "Challenge" shape. If not, continue triage as normal.
 
 Next task, back to [Step 6.2](#step-62-assign).
 
-## Finalize the PR
+## Write the PR description
 
-At the end of Develop, finalize the PR description you opened in the Phase 1
+At the end of Develop, write the description for the PR you opened in Phase 1
 [Step 1.1](phase1.md#step-11-open-the-session-pr). Complete all in-session tasks
-and push the branch before finalizing.
+and push the branch first.
 
-**Write the PR description.** Replace the `WIP` placeholder with a description
-written for a cold reviewer who has not read the thread. Check whether the repo
-has contribution rules (`CONTRIBUTING.md`, a PR template) and follow them.
-Otherwise use this shape:
+Replace the `WIP` placeholder with a description written for a cold reviewer who
+has not read the thread. Check whether the repo has contribution rules
+(`CONTRIBUTING.md`, a PR template) and follow them. Otherwise use this shape:
 
 - Open with a bullet list of issues addressed, one per line. Use `- Closes #N`
   for each issue the PR fully resolves, and `- Related to #N` for any it partly
