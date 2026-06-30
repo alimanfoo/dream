@@ -61,13 +61,13 @@ A session moves through ten phases:
    Ralph, revises, and shares the revised Plan with the user for acceptance.
 
 6. **Develop.** The main implementation loop: one task at a time, coherence
-   restored before moving on. Opens with the task list. Closes by finalising the
-   PR description.
+   restored before moving on. Opens with the task list. Closes by writing the PR
+   description.
 
 7. **Review.** Ada and Junio review the PR.
 
 8. **Merge.** The user merges the PR, or merge is deferred to a human. Grace
-   resolves any conflicts first.
+   drives any conflict resolution first. Ralph resolves the markers.
 
 9. **Collect.** Ancillary Findings noticed during the session are gathered,
    deduplicated, checked against issue history, and decided.
@@ -102,7 +102,7 @@ Directs the team.
 
 ### Ralph (developer)
 
-Writes the code.
+Writes the code and commits it.
 
 ### Junio (maintainer)
 
@@ -284,15 +284,14 @@ worktree's branch there.
 The main implementation loop runs each task through the same chain:
 
 1. Grace assigns the task to Ralph.
-2. Ralph implements it and reports back.
-3. Grace verifies the diff, commits, and pushes.
-4. Junio audits the committed change.
-5. Grace triages findings into follow-on tasks or holds them for post-merge
-   triage.
+2. Ralph implements it, commits, and pushes, then reports back.
+3. Junio audits the committed change.
+4. Grace reads the committed change and triages findings into follow-on tasks or
+   holds them for post-merge triage.
 
 The loop repeats, and the chain ends when the task list drains. Full per-task
-detail in `Grace.md` (assign / verify / commit / triage), `Ralph.md`
-(implement), and `Junio.md` (audit).
+detail in `Grace.md` (assign / read / triage), `Ralph.md` (implement and
+commit), and `Junio.md` (audit).
 
 ### Coherence chain
 
@@ -379,10 +378,9 @@ If a follow-on later spawns its own follow-on, the grandchild also inserts next.
 The chain drains depth-first. The original queue resumes only after the parent
 task's coherence chain is fully drained.
 
-The phase ends when the task list is drained. Grace then finalises the PR. She
-edits the description to the final accepted requirements and appends the dream
-metadata line. Grace opened the PR in Phase 1, and it stays in draft until
-Phase 7.
+The phase ends when the task list drains. Grace then writes the PR description
+to match the final accepted requirements. She opened the PR in Phase 1. It stays
+in draft until Phase 7.
 
 ## Phase 7: Review
 
@@ -409,8 +407,8 @@ The phase ends at user acceptance of the PR. The session moves to Merge.
 
 ## Phase 8: Merge
 
-The goal is a clean merge. Grace resolves any conflicts, delegating edits to
-Ralph if needed. The user merges.
+The goal is a clean merge. Grace drives the integration. Ralph resolves any
+conflict markers and commits the resolution. The user merges.
 
 Merge may be deferred. A second human reviewer may be needed, the user may
 choose to merge later, or release timing may sit outside the session. The
@@ -421,8 +419,8 @@ Grace freezes the PR at the Phase 7 handoff. Once Grace marks the PR ready and
 hands back, Merge, Collect, and Reflect do no new development. Their outputs are
 the merge action, issues, comments, and issue drafts. A finding that would once
 have become a follow-on task becomes an issue instead. Resolving merge conflicts
-is part of the merge action, not new development: Grace still resolves conflicts
-and may delegate the edits to Ralph (see below). This holds especially when
+is part of the merge action, not new development. Grace drives the integration
+and Ralph resolves and commits the conflict markers. This holds especially when
 merge is deferred, since the still-open PR is what tempts the team to fold a
 later finding back in.
 
@@ -760,18 +758,18 @@ session-start state of `main`. Grace handles any drift on origin at Merge.
 
 #### Commits
 
-One commit per task (task ↔ commit). Grace is the committer. Grace never pushes
-to `main` unless the user explicitly asks. The session also opens with an empty
-bootstrap commit, not a task, created at branch setup so the draft PR has a
-commit to anchor to.
+One commit per task (task ↔ commit). Ralph is the committer. He commits and
+pushes each task's work. Grace makes only the empty bootstrap commit, not a
+task. It is created at branch setup so the draft PR has a commit to anchor to.
+No one pushes to `main` unless the user explicitly asks.
 
 #### Quality gates
 
-The commit-time checks and tests are Ralph's gate, run before reporting done.
-Ralph runs what the commit hook runs, so the hook surfaces nothing new at the
-commit step. Grace trusts that report and doesn't duplicate the work. The commit
-hook re-runs the checks as a cross-check. Ralph runs pre-report, the commit hook
-runs pre-commit, and CI runs pre-merge.
+Ralph's gate covers the commit-time checks and the tests. The commit hook runs
+the commit-time checks when Ralph commits. He commits in his own loop, so he
+absorbs and re-stages any formatter rewrite himself. Ralph runs the tests
+himself before committing, since the hook rarely runs them. Grace trusts that
+report and doesn't duplicate the work. CI re-runs everything pre-merge.
 
 ### All communications
 

@@ -49,7 +49,8 @@ Decide each finding from both reviews on its merits. A reviewer raising it is
 not itself a reason to accept it. Each finding takes one of these paths:
 
 - Accept: make it a follow-on task, handled by the standard per-task workflow
-  including Junio's coherence audit.
+  including Junio's coherence audit. Note its origin with the task
+  (`junio-review` or `ada-review`) for the commit counts.
 - Reject: note it in your reply to the user, with the reason.
 - Out of scope: hold it for post-merge triage.
 - Raise a Challenge: take it to the user per the "Challenge" shape. Use this
@@ -105,6 +106,46 @@ If any accepted follow-on task changed what the PR implements, update the PR
 description. The description states what the PR does, so it must match what was
 actually built.
 
+Then write the dream metadata line. PR ready is the first point where every
+field is final, including the commit counts, which cover this phase's review
+follow-ons. Append it to the PR body, after the Claude Code footer:
+
+```text
+<!-- dream:<version> type:<type> req:<n> ca:<n> scope:<n> design:<n> plan:<n> commits:plan=<n>,junio-audit=<n>,grace-read=<n>,junio-review=<n>,ada-review=<n> challenge:<value> autopilot:<value> -->
+```
+
+Plugin version from `../../.claude-plugin/plugin.json` relative to the protocol
+file. Gate counts are revision rounds per acceptance gate:
+
+- `req`: Requirements Analysis (closing Phase 1)
+- `ca`: Code Analysis (closing Phase 2)
+- `scope`: Session Scope (closing Phase 3)
+- `design`: Phase 4
+- `plan`: Phase 5
+
+A revision round is one iteration where the user pushed back before accepting.
+
+Commit counts are one tally per origin, taken from the origin you recorded with
+each task at triage. Each task is one commit. `plan` is every accepted Plan
+task. The rest are the follow-ons you labelled. They measure the coherence
+rework the team's own review caught before handing the PR over:
+
+- `plan`: accepted Plan task
+- `junio-audit`: Junio coherence-audit follow-on
+- `grace-read`: your own follow-on from checking the commit against the brief
+- `junio-review`: Junio PR-review follow-on
+- `ada-review`: Ada PR-review follow-on
+
+Post-handoff commits are out of the tally: a user-directed change after PR
+ready, and Phase 8 conflict resolution. They are not secondary-review rework.
+
+Challenge value: `no`, or `at-<phase>` for the phase where an accepted Challenge
+overturned an artifact. For example: `at-scope` or `at-develop`. Autopilot
+value: `no`, or `from-<phase>` for the phase where autopilot first engaged. For
+example: `from-input` when set in the session input, or `from-scope` when set
+mid-session. If autopilot was turned off and on again, record the earliest
+engagement.
+
 ## Step 7.6: Mark the PR ready for review
 
 Once all accepted follow-ons from triage are complete, run `gh pr ready <N>`.
@@ -124,10 +165,10 @@ exception. That is the merge itself, delegated to Ralph as Phase 8 describes.
 Only a user-directed change reopens Develop. You handle it as an explicit
 reopening, the same as any Phase 6 task:
 
-- create a task
-- Ralph implements
-- you commit
+- Grace creates a task
+- Ralph implements and commits
 - Junio audits
+- Grace reads and triages
 
 Absent that direction, the default is freeze.
 

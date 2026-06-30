@@ -38,45 +38,41 @@ here.
 
 ### Step 6.3: Implement
 
-Ralph does the work, runs the project's quality checks, and reports back via
-`SendMessage`. You wait. That `SendMessage` is the only completion channel.
-Don't poll the working tree or the task list. The message is the signal.
+Ralph does the work, runs the tests, commits, and pushes, then reports back via
+`SendMessage` with the commit SHA. You wait. That `SendMessage` is the only
+completion channel. Don't poll the working tree or the task list. The message is
+the signal.
 
-### Step 6.4: Verify
+### Step 6.4: Read and request the audit
 
-Read their message together with `git diff`. The message carries any audit
-content, deviations from the brief, or things they noticed. The diff carries the
-change. Where useful, exercise the feature end to end. Don't re-run lint or
-tests. Those are Ralph's gate, green by the time you're reading. If something
-looks off, bounce back rather than fixing.
+Ask Junio for the coherence audit. Send him the commit SHA, signing off
+`From Grace. RSVP via SendMessage.` Wait for his numbered list (or "no
+substantive findings"). His audit may also raise a **Challenge**. For example,
+repeated audits circling the same surface suggest the Session Scope is too
+narrow to reach the root cause.
 
-### Step 6.5: Commit
+Read the committed change yourself while Junio audits. Check it against the
+brief you wrote: did the commit deliver the goal and the criterion you set? That
+is distinct from Junio's audit of how the change fits the codebase. This is not
+a re-run of Ralph's gate. Lint and tests are green by the time you're reading.
+Read `git diff` for the change and Ralph's message for what the diff can't show:
+deviations from the brief, things he noticed. Where useful, exercise the feature
+end to end. Write a one-line verdict in your turn output (`delivered`, or
+`gap at …`). A gap is a correction follow-on at triage, not a fix you make
+yourself.
 
-Inspect the whole working tree before staging. Run `git status` and a full
-`git diff`, not a diff of the task's files alone. Ensure one commit per task
-with no changed files missed. Then:
+Mark the task complete (`TaskUpdate status=completed`).
 
-- Call `TaskUpdate status=completed`.
-- Stage all paths the current task changed.
-- Commit.
-- Push.
+### Step 6.5: Triage findings
 
-### Step 6.6: Coherence audit
-
-Send Junio a message asking for the coherence audit on the just-committed
-change. Sign off per "Communication between teammates (agents)":
-`From Grace. RSVP via SendMessage.` Wait for their numbered list (or "no
-substantive findings"). The coherence audit may also raise a **Challenge** (see
-[Step 6.7](#step-67-triage-findings)). For example, repeated coherence audits
-circling the same surface suggest the Session Scope is too narrow to reach the
-root cause.
-
-### Step 6.7: Triage findings
-
-Accept or reject each proposed follow-on on its merits, recording a one-line
-reason for the call. Accepted ones become new tasks, **inserted as the next
-tasks before any pending original-scope work** (depth-first drain). Hold
-Ancillary Findings for post-merge triage. Never file them mid-session.
+Triage Junio's findings together with any gap from your own read. Accept or
+reject each on its merits, recording a one-line reason for the call. Accepted
+ones become new tasks, **inserted as the next tasks before any pending
+original-scope work** (depth-first drain). A correction for a gap you found is
+one such follow-on. Note the origin with each task as you accept it
+(`junio-audit`, or `grace-read` for a correction from your own read). These feed
+the Phase 7 commit counts. Hold Ancillary Findings for post-merge triage. Never
+file them mid-session.
 
 Before treating a finding as an Ancillary Finding, ask: **is this the same edit,
 one we missed, or one the session has now made adjacent?** If yes, accept it as
@@ -94,21 +90,23 @@ When the coherence audit raises a **Challenge**, assess whether an accepted
 artifact really no longer holds. If it does, take it to the user (accept or
 reject) following the "Challenge" shape. If not, continue triage as normal.
 
-### Step 6.8: Loop
+### Step 6.6: Loop
 
 Next task, back to [Step 6.2](#step-62-assign).
 
-## Finalize the PR
+## Closing sequence
 
-At the end of Develop, finalize the PR you opened in the Phase 1
-[Step 1.1](phase1.md#step-11-open-the-session-pr). All in-session tasks must be
-complete and the branch pushed before you do. To finalize: write the PR
-description and append the dream metadata line.
+After the per-task loop drains, one closing step.
 
-**Write the PR description.** Replace the `WIP` placeholder with a description
-written for a cold reviewer who has not read the thread. Check whether the repo
-has contribution rules (`CONTRIBUTING.md`, a PR template) and follow them.
-Otherwise use this shape:
+### Step 6.7: Write the PR description
+
+Write the description for the PR you opened in Phase 1
+[Step 1.1](phase1.md#step-11-open-the-session-pr). Complete all in-session tasks
+and push the branch first.
+
+Replace the `WIP` placeholder with a description written for a cold reviewer who
+has not read the thread. Check whether the repo has contribution rules
+(`CONTRIBUTING.md`, a PR template) and follow them. Otherwise use this shape:
 
 - Open with a bullet list of issues addressed, one per line. Use `- Closes #N`
   for each issue the PR fully resolves, and `- Related to #N` for any it partly
@@ -130,25 +128,3 @@ and follow
 writing the description, verify that every issue the PR fully resolves is
 recognised: run `gh pr view <N> --json closingIssuesReferences` to confirm each
 issue appears.
-
-**Append a dream metadata line to the PR body, after the Claude Code footer:**
-
-```text
-<!-- dream:<version> type:<type> req:<n> ca:<n> scope:<n> design:<n> plan:<n> challenge:<value> autopilot:<value> -->
-```
-
-Plugin version from `../../.claude-plugin/plugin.json` relative to the protocol
-file. Gate counts are revision rounds per acceptance gate:
-
-- `req`: Requirements Analysis (closing Phase 1)
-- `ca`: Code Analysis (closing Phase 2)
-- `scope`: Session Scope (closing Phase 3)
-- `design`: Phase 4
-- `plan`: Phase 5
-
-A revision round is one iteration where the user pushed back before accepting.
-Challenge value: `no`, or `at-<phase>` for the phase where an accepted Challenge
-overturned an artifact (for example `at-scope` or `at-develop`). Autopilot
-value: `no`, or `from-<phase>` for the phase where autopilot first engaged (for
-example `from-input` when set in the session input, or `from-scope` when set
-mid-session).

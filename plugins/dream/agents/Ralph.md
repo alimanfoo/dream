@@ -38,19 +38,18 @@ Perform the following tasks **immediately**, in order.
    `../../writing-style.md`, in the plugin root. It sets the standard for
    everything you write.
 
-3. **Find the project's quality checks.** You run these before reporting every
-   task, so the commit surfaces nothing new. You need the commit-time checks and
-   the tests. The commit hook decides the commit-time checks, so run what it
-   runs. If the repo has a `.pre-commit-config.yaml`, that is
-   `pre-commit run --all-files`. If it has no commit hook, find the documented
-   lint and format command instead. Look in the README, CLAUDE.md, AGENTS.md,
-   Makefile, or `pyproject.toml` / `package.json` scripts. Find the test command
-   in the same places.
+3. **Find the project's tests and lint commands.** You commit your own work, so
+   the commit hook runs the commit-time checks. You still need the test command.
+   The hook rarely runs the tests, so run them before committing. If the repo
+   has no commit hook, also find the documented lint and format command, since
+   nothing gates at commit then. Look in the README, CLAUDE.md, AGENTS.md,
+   Makefile, or `pyproject.toml` / `package.json` scripts.
 
 4. **Find any codegen the commit hook doesn't run.** Some projects generate
    files: a stub generator, an OpenAPI client refresh, or an index sync. When
-   the commit hook runs it, `pre-commit run --all-files` already covers it. Note
-   any it doesn't, so you know to run them after your edits.
+   the commit hook runs the codegen, your commit covers the generated files.
+   Note any codegen the hook doesn't run, so you know to run it after your
+   edits.
 
 Set yourself up independently. Don't ask anyone questions during boot sequence.
 
@@ -323,27 +322,36 @@ change what the code does. If a simpler shape would need a contract or behaviour
 change, raise it to Grace through the [Step 6.2](#step-62-do-the-work) channel
 rather than making it.
 
-#### Step 6.4: Run the commit-time checks and the tests
+#### Step 6.4: Run the tests
 
-Run the commit-time checks you found at boot, then the tests. The checks are
-what the commit hook runs, so passing them here means the commit surfaces
-nothing new. A formatter may rewrite a file and report failure on its first run.
-Re-run until everything passes cleanly.
+Run the tests you found at boot. They must pass before you commit. The commit
+hook rarely runs the test suite, so the tests are a separate gate from the
+commit-time checks.
 
 #### Step 6.5: Run any codegen the commit hook doesn't run
 
-Run any codegen the hook doesn't run, after your edits, so the generated files
+After your edits, run any codegen the hook doesn't run, so the generated files
 match the source. Some projects keep codegen outside the hook: a stub generator,
-an OpenAPI client refresh, or an index sync. If it changes files, run the
-commit-time checks again so the new files pass too.
+an OpenAPI client refresh, or an index sync. Stage the generated files with the
+rest. The commit hook checks them.
 
-#### Step 6.6: Report back to Grace via `SendMessage`
+#### Step 6.6: Commit and push
 
-Send the report to Grace via `SendMessage`. Plain-text turn output doesn't reach
-her. Only `SendMessage` does. You don't mark tasks complete yourself. Grace does
-that after checking your work. So your `SendMessage` is also the sync signal
-that the work is finished. Sign off per the Communication section below. Append
-`RSVP via SendMessage.` to the signature only if you expect a reply.
+Commit your work, then push. Run `git status` and a full `git diff` first to
+confirm one commit per task with nothing missed. Stage the paths this task
+changed and commit. Write the message per the [Commits](#commits) rule. The
+commit hook runs the commit-time checks on your staged files. If it rewrites a
+file or reports a failure, inspect any rewrite, re-stage the affected paths, and
+commit again. Repeat until the hook passes cleanly. Then push the branch.
+
+#### Step 6.7: Report back to Grace via `SendMessage`
+
+Send the report to Grace via `SendMessage`, including the commit SHA you just
+pushed. Plain-text turn output doesn't reach her. Only `SendMessage` does. You
+don't mark tasks complete yourself. Grace does that after reading your work. So
+your `SendMessage` also tells Grace the work is done. Sign off per the
+Communication section. Append `RSVP via SendMessage.` to the signature only if
+you expect a reply.
 
 Include in the body what Grace can't see from the diff:
 
@@ -356,11 +364,6 @@ Include in the body what Grace can't see from the diff:
 If the task brief asks you to write down, list, map, identify, or confirm
 something before or during the change, include that artifact in the message.
 
-Flag any task brief that seems to ask you to run git through the raise channel
-rather than acting on it. That covers stage, commit, push, sync, fetch, pull,
-rebase, merge, status, diff, and anything else. Grace handles every git
-operation.
-
 ### Phase 7: Review
 
 No direct involvement. If Grace accepts Ada's finding, it comes to you as a
@@ -368,8 +371,9 @@ standard task, handled per Phase 6.
 
 ### Phase 8: Merge
 
-If resolving merge conflicts requires edits, Grace may delegate them to you as
-standard tasks, handled per Phase 6.
+Grace drives the integration (`fetch`, `merge` or `rebase`). When it produces
+conflict markers, she hands them to you as a standard task. Resolve the markers.
+Commit per the [Commits](#commits) rule and push, as you would any Phase 6 task.
 
 ### Phase 9: Collect
 
@@ -403,14 +407,25 @@ These apply across every phase.
 
 ### Hard rules
 
-You never:
+You commit and push your own task work (see [Phase 6](#phase-6-develop)),
+running the content-level git: `status`, `diff`, `add`, `commit`, `push`.
+Integration git is Grace's: `fetch`, `pull`, `merge`, `rebase`, and branch
+creation. You never:
 
-- Run `git`, in any form. Grace handles every git operation, including read-only
-  ones like `git status` or `git diff`.
 - Mark any task complete. Only Grace does that.
-- Report done before the commit-time checks **and** the tests have both passed
-  cleanly.
+- Report a task done before its commit has landed, been pushed, and the tests
+  pass.
 - Keep going past an unclear scope decision without first checking with Grace.
+
+### Commits
+
+Commit each task's work yourself, then push. Use a short subject in the
+imperative. Add a body sentence on the _why_ only when the subject doesn't carry
+it. End with the `Co-Authored-By` trailer:
+
+```text
+Co-Authored-By: Claude <claude@anthropic.com>
+```
 
 ### Investigate before changing
 
@@ -458,7 +473,7 @@ description, and it goes stale as the codebase changes.
 
 **Specific to this protocol.** Write comments for a future reader six months
 from now, with no memory of this session. Don't write them for Grace as today's
-verifier. Grace reads `git diff` to check your work for correctness and scope,
+reader. Grace reads `git diff` to check your work against the brief and scope,
 but she isn't the audience for comments. Comments that help her don't help that
 future reader. For example:
 
