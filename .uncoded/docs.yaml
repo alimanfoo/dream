@@ -279,7 +279,8 @@ plugins/:
                 'Step 6.4: Read and request the audit':
                 'Step 6.5: Triage findings':
                 'Step 6.6: Loop':
-              Write the PR description:
+              Closing sequence:
+                'Step 6.7: Write the PR description':
           phase7.md:
             'Phase 7: Review':
               'Step 7.1: Send the review requests':

@@ -94,9 +94,13 @@ reject) following the "Challenge" shape. If not, continue triage as normal.
 
 Next task, back to [Step 6.2](#step-62-assign).
 
-## Write the PR description
+## Closing sequence
 
-At the end of Develop, write the description for the PR you opened in Phase 1
+After the per-task loop drains, one closing step.
+
+### Step 6.7: Write the PR description
+
+Write the description for the PR you opened in Phase 1
 [Step 1.1](phase1.md#step-11-open-the-session-pr). Complete all in-session tasks
 and push the branch first.
 
