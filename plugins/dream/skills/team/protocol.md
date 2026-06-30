@@ -91,8 +91,8 @@ phase.
 the work surfaces something new that breaks an accepted artifact: the
 Requirements Analysis, Code Analysis, Session Scope, Design, or Plan. Grace
 takes a real Challenge to the user with the options she can see. The user picks
-one or proposes their own. It can be raised in any phase once an artifact has
-been accepted. The full mechanism is described below.
+one or proposes their own. A Challenge can be raised in any phase after an
+artifact has been accepted.
 
 ## Roles
 
@@ -535,10 +535,10 @@ something new that breaks it. The artifact may be the Requirements Analysis,
 Code Analysis, Session Scope, Design, or Plan. Grace raises one herself, or
 relays one a teammate raised: Ralph while implementing, Junio at audit, or a
 Phase 7 review finding from Ada or Junio. She assesses it. If it holds, she
-posts it to the PR and takes it to the user, presenting the options she can see.
-The user picks one or proposes their own. When the chosen option revises the
-artifact, Grace reshapes the downstream work. Where a teammate was blocked, the
-chosen option must say how to proceed.
+posts it to the PR. She takes it to the user with the options she can see. The
+user picks one or proposes their own. When the chosen option revises the
+artifact, Grace reshapes the downstream work. If the Challenge blocked a
+teammate, the chosen option must say how to proceed.
 
 A Challenge is admissible only on new evidence the earlier phase didn't have.
 Wanting to redesign on reflection is not a Challenge. Overturning an accepted
@@ -547,8 +547,8 @@ observation. Grace can raise one in any phase once an artifact has been
 accepted. Full mechanism in `Grace.md`.
 
 When a chosen option revises an artifact already posted to the PR, Grace posts
-the revision as a new superseding comment, not an edit (see
-[The session PR](#the-session-pr)).
+the revision as a new comment that replaces it, not an edit. See
+[The session PR](#the-session-pr).
 
 ## The session PR
 

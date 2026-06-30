@@ -167,15 +167,15 @@ The shape is the same every time:
 3. Post the challenge to the PR. Use the heading `Decision needed`. State what
    the work surfaced and the options you can see. Keep role names and
    protocol-process vocabulary out. Follow
-   [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts)
-   and append the Claude Code footer from
+   [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
+   Append the Claude Code footer from
    [Marking agent-authored GitHub items](#marking-agent-authored-github-items).
-4. Present the same to the user: what the work surfaced and the options you can
-   see. The user picks one or proposes their own.
+4. Present to the user what the work surfaced and the options you can see. The
+   user picks one or proposes their own.
 5. Carry out the chosen option. When it involves revising an accepted artifact,
-   follow [Revising an artifact](#revising-an-artifact). Where a teammate was
-   blocked on the Challenge, the chosen option must say how to proceed. A bare
-   "no" would leave them stuck.
+   follow [Revising an artifact](#revising-an-artifact). If the Challenge
+   blocked a teammate, the chosen option must say how to proceed. A bare "no"
+   would leave them stuck.
 
 ### Evidence
 
@@ -266,9 +266,8 @@ Autopilot pauses on two things, and only two:
   unanswered ones before continuing. Under autopilot the same behaviour applies.
   You marked the question open, so you cannot proceed correctly without the
   user's answer.
-- **A Challenge** raised in any phase. Pause, post the Challenge to the PR, and
-  take it to the user. Present the options you can see. Carry out the chosen
-  option.
+- **A Challenge** raised in any phase. Pause. Post the Challenge to the PR. Take
+  it to the user. Present the options you can see. Carry out the chosen option.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
