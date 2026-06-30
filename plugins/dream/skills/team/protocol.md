@@ -67,7 +67,7 @@ A session moves through ten phases:
 7. **Review.** Ada and Junio review the PR.
 
 8. **Merge.** The user merges the PR, or merge is deferred to a human. Grace
-   drives any conflict resolution first; Ralph resolves the markers.
+   drives any conflict resolution first. Ralph resolves the markers.
 
 9. **Collect.** Ancillary Findings noticed during the session are gathered,
    deduplicated, checked against issue history, and decided.
@@ -378,10 +378,10 @@ If a follow-on later spawns its own follow-on, the grandchild also inserts next.
 The chain drains depth-first. The original queue resumes only after the parent
 task's coherence chain is fully drained.
 
-The phase ends when the task list is drained. Grace then finalises the PR
-description, editing it to the final accepted requirements. The dream metadata
-line is written later, at PR ready (Phase 7). Grace opened the PR in Phase 1,
-and it stays in draft until Phase 7.
+The phase ends when the task list drains. Grace then finalises the PR
+description, editing it to the final accepted requirements. She writes the dream
+metadata line later, at PR ready (Phase 7). She opened the PR in Phase 1. It
+stays in draft until Phase 7.
 
 ## Phase 7: Review
 
@@ -408,7 +408,7 @@ The phase ends at user acceptance of the PR. The session moves to Merge.
 
 ## Phase 8: Merge
 
-The goal is a clean merge. Grace drives the integration; Ralph resolves any
+The goal is a clean merge. Grace drives the integration. Ralph resolves any
 conflict markers and commits the resolution. The user merges.
 
 Merge may be deferred. A second human reviewer may be needed, the user may
@@ -759,18 +759,18 @@ session-start state of `main`. Grace handles any drift on origin at Merge.
 
 #### Commits
 
-One commit per task (task ↔ commit). Ralph is the committer: he commits and
+One commit per task (task ↔ commit). Ralph is the committer. He commits and
 pushes each task's work. Grace makes only the empty bootstrap commit, not a
 task, created at branch setup so the draft PR has a commit to anchor to. No one
 pushes to `main` unless the user explicitly asks.
 
 #### Quality gates
 
-Ralph's gate has two parts: the commit-time checks and the tests. The commit
-hook runs the commit-time checks when Ralph commits, in his own loop, so a
-formatter rewrite is his to absorb and re-stage. The tests he runs himself
-before committing, since the hook rarely runs them. Grace trusts that report and
-doesn't duplicate the work. CI re-runs everything pre-merge.
+Ralph's gate covers the commit-time checks and the tests. The commit hook runs
+the commit-time checks when Ralph commits, in his own loop. A formatter rewrite
+is then his to absorb and re-stage. The tests he runs himself before committing,
+since the hook rarely runs them. Grace trusts that report and doesn't duplicate
+the work. CI re-runs everything pre-merge.
 
 ### All communications
 

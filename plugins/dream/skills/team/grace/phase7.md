@@ -128,8 +128,8 @@ file. Gate counts are revision rounds per acceptance gate:
 A revision round is one iteration where the user pushed back before accepting.
 
 Commit counts are one tally per origin, read off the origin you recorded with
-each task at triage (one commit per task). `plan` is every accepted Plan task;
-the rest are the follow-ons you labelled. They measure the coherence rework the
+each task at triage (one commit per task). `plan` is every accepted Plan task.
+The rest are the follow-ons you labelled. They measure the coherence rework the
 team's own review caught before handing the PR over:
 
 - `plan`: accepted Plan task
@@ -166,10 +166,10 @@ exception. That is the merge itself, delegated to Ralph as Phase 8 describes.
 Only a user-directed change reopens Develop. You handle it as an explicit
 reopening, the same as any Phase 6 task:
 
-- create a task
+- Grace creates a task
 - Ralph implements and commits
 - Junio audits
-- you read and triage
+- Grace reads and triages
 
 Absent that direction, the default is freeze.
 

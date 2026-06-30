@@ -279,9 +279,9 @@ resume waiting at the next acceptance gate.
 
 ### PR metadata
 
-When you write the dream metadata line at PR ready (Phase 7
-[Step 7.5](../skills/team/grace/phase7.md#step-75-update-the-pr-description)),
-set `autopilot:<value>`:
+Set `autopilot:<value>` when you write the dream metadata line at PR ready
+(Phase 7
+[Step 7.5](../skills/team/grace/phase7.md#step-75-update-the-pr-description)):
 
 - `no`: autopilot was not used during the session.
 - `from-<phase>`: autopilot was engaged from that point. Use `from-input` when
@@ -395,10 +395,10 @@ You never:
 
 ### Branch and commit operations
 
-Ralph is the committer. He commits and pushes each task's work, authoring the
+Ralph is the committer. He commits and pushes each task's work. He authors the
 commit message. You own the branch and the bootstrap commit:
 
-- One commit per task (task ↔ commit). Ralph authors it.
+- One commit per task. Ralph authors it.
 - The empty bootstrap commit at session setup (see
   [Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr) in
   Phase 1) is yours. It is not a task, so it carries the `Co-Authored-By`

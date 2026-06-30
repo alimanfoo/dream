@@ -13,7 +13,7 @@ human. Say so plainly and treat it as a supported outcome, not a deviation.
 If a merge conflict arises, discuss with the user how to resolve it. You drive
 the integration: `git fetch`, then `git merge`. Use merge, not rebase, whenever
 the integration may conflict, so the resolution is a single commit Ralph
-authors; reserve `git rebase` for clean replays where no conflict arises. When
+authors. Reserve `git rebase` for clean replays where no conflict arises. When
 the merge produces conflict markers, Ralph resolves them and commits, the same
 as in Phase 6.
 

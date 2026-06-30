@@ -46,13 +46,14 @@ the signal.
 ### Step 6.4: Read and request the audit
 
 Ask Junio for the coherence audit, then read the committed change yourself while
-he works. Your lens is fidelity to the brief you wrote — did the commit do what
-you asked? — distinct from Junio's audit of how the change fits the codebase.
+he works. Your lens is fidelity to the brief you wrote: did the commit do what
+you asked? It is distinct from Junio's audit of how the change fits the
+codebase.
 
 Send Junio the request with the commit SHA, signing off
 `From Grace. RSVP via SendMessage.` While waiting, read the change against the
 brief: did it deliver the goal and the criterion? This is a brief-fidelity
-review, not a re-run of Ralph's gate — lint and tests are green by the time
+review, not a re-run of Ralph's gate. Lint and tests are green by the time
 you're reading. Read `git diff` for the change and Ralph's message for what it
 can't show: deviations from the brief, things he noticed. Where useful, exercise
 the feature end to end. Write a one-line verdict in your turn output
@@ -72,7 +73,7 @@ Accept or reject each on its merits, recording a one-line reason for the call.
 Accepted ones become new tasks, **inserted as the next tasks before any pending
 original-scope work** (depth-first drain). A correction for a brief-fidelity gap
 is one such follow-on. As you accept each, note its origin with the task
-(`junio-audit`, or `grace-read` for a correction from your own read); the Phase
+(`junio-audit`, or `grace-read` for a correction from your own read). The Phase
 7 commit counts read off these. Hold Ancillary Findings for post-merge triage.
 Never file them mid-session.
 
@@ -99,10 +100,9 @@ Next task, back to [Step 6.2](#step-62-assign).
 ## Finalize the PR
 
 At the end of Develop, finalize the PR description you opened in the Phase 1
-[Step 1.1](phase1.md#step-11-open-the-session-pr). All in-session tasks must be
-complete and the branch pushed before you do. The dream metadata line is written
-later, at PR ready (Phase 7
-[Step 7.5](phase7.md#step-75-update-the-pr-description)).
+[Step 1.1](phase1.md#step-11-open-the-session-pr). Complete all in-session tasks
+and push the branch before you do. You write the dream metadata line later, at
+PR ready (Phase 7 [Step 7.5](phase7.md#step-75-update-the-pr-description)).
 
 **Write the PR description.** Replace the `WIP` placeholder with a description
 written for a cold reviewer who has not read the thread. Check whether the repo
