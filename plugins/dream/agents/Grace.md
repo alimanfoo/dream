@@ -284,16 +284,13 @@ gh pr view <N> --json comments \
   --jq '[.comments[] | select(.author.login == "USER" and .createdAt > "TIMESTAMP")]'
 ```
 
-State the firing count out of 12 in your turn output.
-
-The pause ends one of three ways. Cancel the cron job (`CronDelete`) in each
-case, then act:
+The pause ends one of two ways. Cancel the cron job (`CronDelete`) in each case,
+then act:
 
 - The result is non-empty. Apply the first comment's body as the answer. Resume
   autopilot.
 - A user reply appears in the session instead. Resume autopilot with that reply
   as the answer.
-- The firing count reaches 12 with no reply. Ask the user again in the session.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
