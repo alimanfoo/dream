@@ -164,8 +164,13 @@ The shape is the same every time:
 1. Pause the work.
 2. State the prior reading (the accepted artifact) and the new evidence that
    breaks it.
-3. Put two outcomes to the user: accept the Challenge (the artifact is revised)
-   or reject it (and say how to proceed).
+3. Post the challenge to the PR and put two outcomes to the user. Use the
+   heading `Challenge`. State the artifact it breaks, the new evidence, and the
+   two outcomes: accept (the artifact is revised) or reject (and say how to
+   proceed). Write it in public register. Follow
+   [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts)
+   and append the Claude Code footer from
+   [Marking agent-authored GitHub items](#marking-agent-authored-github-items).
 4. Carry out the outcome. On accept, revise the artifact and reshape the work
    downstream. On reject, the work continues. Where a teammate was blocked on
    the Challenge, the reject must say how to proceed, since a bare "no" would

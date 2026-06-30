@@ -535,9 +535,10 @@ something new that breaks it. The artifact may be the Requirements Analysis,
 Code Analysis, Session Scope, Design, or Plan. Grace raises one herself, or
 relays one a teammate raised: Ralph while implementing, Junio at audit, or a
 Phase 7 review finding from Ada or Junio. She assesses it. If it holds, she
-takes it to the user, who accepts or rejects it. On accept, Grace revises the
-artifact and reshapes the downstream work. Where a teammate was blocked waiting
-on the answer, a reject must say how to proceed, not just "no".
+posts it to the PR and takes it to the user, who accepts or rejects it. On
+accept, Grace revises the artifact and reshapes the downstream work. Where a
+teammate was blocked waiting on the answer, a reject must say how to proceed,
+not just "no".
 
 A Challenge is admissible only on new evidence the earlier phase didn't have.
 Wanting to redesign on reflection is not a Challenge. Overturning an accepted
@@ -556,8 +557,10 @@ session branch with an empty bootstrap commit, then opens a draft PR with a
 placeholder description, and posts the session input as the first comment. She
 posts each accepted artifact as a PR comment: the Requirements Analysis (Phase
 1), the Code Analysis (Phase 2), the Session Scope (Phase 3), the Design (Phase
-4), and the Plan (Phase 5). The thread becomes the record of what the session
-considered.
+4), and the Plan (Phase 5). When open questions arise in Phase 1, she posts them
+to the PR before eliciting answers from the user. When a Challenge is raised,
+she posts it to the PR when she takes it to the user. The thread becomes the
+record of what the session considered.
 
 Grace writes the PR description at the end of Develop (Phase 6). The PR stays in
 draft until Phase 7. When a Challenge revises an artifact, she posts the
