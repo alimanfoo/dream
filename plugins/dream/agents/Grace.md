@@ -271,19 +271,21 @@ Autopilot pauses on two things, and only two:
   it to the user. Present the options you can see. Carry out the chosen option.
 
 Under autopilot, after posting to the PR (open questions or challenge), tell the
-user they can respond there. Record the current comment count. Create one
-recurring cron job (`CronCreate`) to check the PR every 10 minutes.
+user they can respond there. Record the current comment count in your turn
+output. Create one recurring cron job (`CronCreate`) to check the PR every 10
+minutes. State the cron job ID in your turn output, so you can cancel it later.
 
-When the job fires, check `gh pr view <N> --json comments`. Filter out comments
-containing the Claude Code footer.
+When the cron job fires, check `gh pr view <N> --json comments`. Filter out
+comments containing the Claude Code footer. State the firing count out of 12 in
+your turn output.
 
-- If a new user comment exists, cancel the job (`CronDelete`). Apply the comment
-  as the answer. Resume autopilot.
-- If not, and 12 firings have passed with no reply, cancel the job
-  (`CronDelete`). Ask the user again in the session.
+The pause ends one of three ways. Cancel the cron job (`CronDelete`) in each
+case, then act:
 
-If the user replies in the session before a firing finds a comment, cancel the
-job before resuming.
+- A firing finds a new user comment. Apply it as the answer. Resume autopilot.
+- A user reply appears in the session instead. Resume autopilot with that reply
+  as the answer.
+- The firing count reaches 12 with no reply. Ask the user again in the session.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
