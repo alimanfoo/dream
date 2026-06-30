@@ -270,27 +270,25 @@ Autopilot pauses on two things, and only two:
 - **A Challenge** raised in any phase. Pause. Post the Challenge to the PR. Take
   it to the user. Present the options you can see. Carry out the chosen option.
 
-Under autopilot, after posting open questions or a challenge to the PR, get the
-authenticated GitHub user with `gh api user --jq .login` and the current
-timestamp with `date -u +%Y-%m-%dT%H:%M:%SZ`. Create one recurring cron job
-(`CronCreate`) to check the PR every 10 minutes for a comment from the user.
-Embed the PR number, user login, and timestamp in the job's prompt. State the
-cron job ID in your turn output. You will need it to cancel the job later.
+After pausing, create a recurring cron job (`CronCreate`) to check the PR for
+replies every 10 minutes. Embed the PR number, the authenticated user login
+(`gh api user --jq .login`), and the current timestamp
+(`date -u +%Y-%m-%dT%H:%M:%SZ`) in the prompt. Note the cron job ID in your
+turn output. You will need it to cancel the job.
 
-When the cron job fires, use the values from the prompt to run:
+When the cron job fires, use the embedded values to run:
 
 ```bash
 gh pr view <N> --json comments \
   --jq '[.comments[] | select(.author.login == "USER" and .createdAt > "TIMESTAMP")]'
 ```
 
-The pause ends one of two ways. Cancel the cron job (`CronDelete`) in each case,
-then act:
+The pause ends in one of two ways:
 
-- The result is non-empty. Use the returned comments to resolve the pause.
-  Resume autopilot.
-- A user reply appears in the session instead. Resume autopilot with that reply
-  as the answer.
+- The command returns comments. Cancel the cron job (`CronDelete`). Use the
+  returned comments to resolve the pause. Resume autopilot.
+- The user replies in the session. Cancel the cron job. Resume autopilot with
+  that reply.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
