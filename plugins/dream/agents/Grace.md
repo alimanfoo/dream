@@ -265,15 +265,16 @@ Autopilot pauses on two things, and only two:
   [Step 1.8](../skills/team/grace/phase1.md#step-18-elicit-answers-to-open-questions)
   already handles this. If the user leaves any question unanswered, re-ask the
   unanswered ones before continuing. Under autopilot the same behaviour applies.
-  You marked the question open, so you cannot proceed correctly without the
-  user's answer.
+  You marked the question open. You cannot proceed correctly without the user's
+  answer.
 - **A Challenge** raised in any phase. Pause. Post the Challenge to the PR. Take
   it to the user. Present the options you can see. Carry out the chosen option.
 
 Under autopilot, after posting to the PR (open questions or challenge), tell the
 user they can respond there. Record the current comment count in your turn
 output. Create one recurring cron job (`CronCreate`) to check the PR every 10
-minutes. State the cron job ID in your turn output, so you can cancel it later.
+minutes. State the cron job ID in your turn output. You will need it to cancel
+the job later.
 
 When the cron job fires, check `gh pr view <N> --json comments`. Filter out
 comments containing the Claude Code footer. State the firing count out of 12 in
