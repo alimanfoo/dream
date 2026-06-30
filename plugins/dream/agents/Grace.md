@@ -271,18 +271,26 @@ Autopilot pauses on two things, and only two:
   it to the user. Present the options you can see. Carry out the chosen option.
 
 Under autopilot, after posting to the PR (open questions or challenge), get the
-authenticated GitHub user with `gh api user --jq .login`. Create one recurring
-cron job (`CronCreate`) to check the PR every 10 minutes. State the cron job ID
-in your turn output. You will need it to cancel the job later.
+authenticated GitHub user with `gh api user --jq .login` and the current
+timestamp with `date -u +%Y-%m-%dT%H:%M:%SZ`. Create one recurring cron job
+(`CronCreate`) to check the PR every 10 minutes. Embed the PR number, user
+login, and timestamp in the job's prompt. State the cron job ID in your turn
+output. You will need it to cancel the job later.
 
-When the cron job fires, check `gh pr view <N> --json comments`. Find any
-comment after your last posted comment, from that user, that answers the open
-question or decision. State the firing count out of 12 in your turn output.
+When the cron job fires, use the values from the prompt to run:
+
+```bash
+gh pr view <N> --json comments \
+  --jq '[.comments[] | select(.author.login == "USER" and .createdAt > "TIMESTAMP")]'
+```
+
+State the firing count out of 12 in your turn output.
 
 The pause ends one of three ways. Cancel the cron job (`CronDelete`) in each
 case, then act:
 
-- A firing finds a new user comment. Apply it as the answer. Resume autopilot.
+- The result is non-empty. Apply the first comment's body as the answer. Resume
+  autopilot.
 - A user reply appears in the session instead. Resume autopilot with that reply
   as the answer.
 - The firing count reaches 12 with no reply. Ask the user again in the session.
