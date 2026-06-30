@@ -51,20 +51,19 @@ you asked? It is distinct from Junio's audit of how the change fits the
 codebase.
 
 Send Junio the request with the commit SHA, signing off
-`From Grace. RSVP via SendMessage.` While waiting, read the change against the
-brief: did it deliver the goal and the criterion? This is a brief-fidelity
+`From Grace. RSVP via SendMessage.` Read the change against the brief while
+waiting: did it deliver the goal and the criterion? This is a brief-fidelity
 review, not a re-run of Ralph's gate. Lint and tests are green by the time
-you're reading. Read `git diff` for the change and Ralph's message for what it
-can't show: deviations from the brief, things he noticed. Where useful, exercise
-the feature end to end. Write a one-line verdict in your turn output
+you're reading. Read `git diff` for the change and Ralph's message for what the
+diff can't show: deviations from the brief, things he noticed. Where useful,
+exercise the feature end to end. Write a one-line verdict in your turn output
 (`brief-fidelity: delivered`, or `brief-fidelity: gap at …`). A gap is a
 correction follow-on at triage, not a fix you make yourself.
 
 Mark the task complete (`TaskUpdate status=completed`), then wait for Junio's
 numbered list (or "no substantive findings"). His audit may also raise a
-**Challenge** (see [Step 6.5](#step-65-triage-findings)). For example, repeated
-audits circling the same surface suggest the Session Scope is too narrow to
-reach the root cause.
+**Challenge**. For example, repeated audits circling the same surface suggest
+the Session Scope is too narrow to reach the root cause.
 
 ### Step 6.5: Triage findings
 
@@ -72,10 +71,10 @@ Triage Junio's findings together with any brief-fidelity gap from your own read.
 Accept or reject each on its merits, recording a one-line reason for the call.
 Accepted ones become new tasks, **inserted as the next tasks before any pending
 original-scope work** (depth-first drain). A correction for a brief-fidelity gap
-is one such follow-on. As you accept each, note its origin with the task
-(`junio-audit`, or `grace-read` for a correction from your own read). The Phase
-7 commit counts read off these. Hold Ancillary Findings for post-merge triage.
-Never file them mid-session.
+is one such follow-on. Note the origin with each task as you accept it
+(`junio-audit`, or `grace-read` for a correction from your own read). These feed
+the Phase 7 commit counts. Hold Ancillary Findings for post-merge triage. Never
+file them mid-session.
 
 Before treating a finding as an Ancillary Finding, ask: **is this the same edit,
 one we missed, or one the session has now made adjacent?** If yes, accept it as
@@ -101,7 +100,7 @@ Next task, back to [Step 6.2](#step-62-assign).
 
 At the end of Develop, finalize the PR description you opened in the Phase 1
 [Step 1.1](phase1.md#step-11-open-the-session-pr). Complete all in-session tasks
-and push the branch before you do.
+and push the branch before finalizing.
 
 **Write the PR description.** Replace the `WIP` placeholder with a description
 written for a cold reviewer who has not read the thread. Check whether the repo

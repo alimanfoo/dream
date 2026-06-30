@@ -22,9 +22,9 @@ progress. Do not test for `.git/MERGE_HEAD` as a file path. In a worktree,
 `.git` is a file, not a directory. The test always reports no merge.
 
 Delegate the resolution to Ralph as a standard task. It covers resolving the
-conflict markers and running any script that regenerates files (a sync script, a
-stub regenerator, an index refresh). The task brief follows the same rule as any
-other Ralph task brief. Ralph resolves the markers, stages, commits, and pushes.
+conflict markers and running any script that regenerates files: a sync script, a
+stub regenerator, or an index refresh. Write the brief as you would for any
+other Ralph task. Ralph resolves the markers, stages, commits, and pushes.
 
 Junio is not involved. Do only what the conflict resolution needs.
 

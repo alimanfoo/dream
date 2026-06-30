@@ -107,10 +107,8 @@ description. The description states what the PR does, so it must match what was
 actually built.
 
 Then write the dream metadata line. PR ready is the first point where every
-field is final: the gate counts settled in Phases 1 to 5, a Phase 7 Challenge is
-resolved, autopilot has run its course, and the commit counts include any review
-follow-ons from this phase. Append it to the PR body, after the Claude Code
-footer:
+field is final, including the commit counts, which cover this phase's review
+follow-ons. Append it to the PR body, after the Claude Code footer:
 
 ```text
 <!-- dream:<version> type:<type> req:<n> ca:<n> scope:<n> design:<n> plan:<n> commits:plan=<n>,junio-audit=<n>,grace-read=<n>,junio-review=<n>,ada-review=<n> challenge:<value> autopilot:<value> -->
@@ -127,10 +125,10 @@ file. Gate counts are revision rounds per acceptance gate:
 
 A revision round is one iteration where the user pushed back before accepting.
 
-Commit counts are one tally per origin, read off the origin you recorded with
-each task at triage (one commit per task). `plan` is every accepted Plan task.
-The rest are the follow-ons you labelled. They measure the coherence rework the
-team's own review caught before handing the PR over:
+Commit counts are one tally per origin, taken from the origin you recorded with
+each task at triage. Each task is one commit. `plan` is every accepted Plan
+task. The rest are the follow-ons you labelled. They measure the coherence
+rework the team's own review caught before handing the PR over:
 
 - `plan`: accepted Plan task
 - `junio-audit`: Junio coherence-audit follow-on
@@ -142,10 +140,10 @@ Post-handoff commits are out of the tally: a user-directed change after PR
 ready, and Phase 8 conflict resolution. They are not secondary-review rework.
 
 Challenge value: `no`, or `at-<phase>` for the phase where an accepted Challenge
-overturned an artifact (for example `at-scope` or `at-develop`). Autopilot
-value: `no`, or `from-<phase>` for the phase where autopilot first engaged (for
-example `from-input` when set in the session input, or `from-scope` when set
-mid-session).
+overturned an artifact. For example: `at-scope` or `at-develop`. Autopilot
+value: `no`, or `from-<phase>` for the phase where autopilot first engaged. For
+example: `from-input` when set in the session input, or `from-scope` when set
+mid-session.
 
 ## Step 7.6: Mark the PR ready for review
 

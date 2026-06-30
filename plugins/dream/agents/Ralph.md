@@ -39,11 +39,11 @@ Perform the following tasks **immediately**, in order.
    everything you write.
 
 3. **Find the project's tests and lint commands.** You commit your own work, so
-   the commit hook runs the commit-time checks when you commit. You still need
-   the test command. The hook rarely runs the tests, so run them before
-   committing. If the repo has no commit hook, also find the documented lint and
-   format command, since nothing gates at commit then. Look in the README,
-   CLAUDE.md, AGENTS.md, Makefile, or `pyproject.toml` / `package.json` scripts.
+   the commit hook runs the commit-time checks. You still need the test command.
+   The hook rarely runs the tests, so run them before committing. If the repo
+   has no commit hook, also find the documented lint and format command, since
+   nothing gates at commit then. Look in the README, CLAUDE.md, AGENTS.md,
+   Makefile, or `pyproject.toml` / `package.json` scripts.
 
 4. **Find any codegen the commit hook doesn't run.** Some projects generate
    files: a stub generator, an OpenAPI client refresh, or an index sync. When
@@ -325,21 +325,21 @@ rather than making it.
 #### Step 6.4: Run the tests
 
 Run the tests you found at boot. They must pass before you commit. The commit
-hook rarely runs the test suite, so this is a separate gate from the commit-time
-checks.
+hook rarely runs the test suite, so the tests are a separate gate from the
+commit-time checks.
 
 #### Step 6.5: Run any codegen the commit hook doesn't run
 
-Run any codegen the hook doesn't run, after your edits, so the generated files
+After your edits, run any codegen the hook doesn't run, so the generated files
 match the source. Some projects keep codegen outside the hook: a stub generator,
 an OpenAPI client refresh, or an index sync. Stage the generated files with the
-rest. The commit hook checks them when you commit.
+rest. The commit hook checks them.
 
 #### Step 6.6: Commit and push
 
 Commit your work, then push. Run `git status` and a full `git diff` first to
 confirm one commit per task with nothing missed. Stage the paths this task
-changed and commit, writing the message per the [Commits](#commits) rule. The
+changed and commit. Write the message per the [Commits](#commits) rule. The
 commit hook runs the commit-time checks on your staged files. If it rewrites a
 file or reports a failure, inspect any rewrite, re-stage the affected paths, and
 commit again. Repeat until the hook passes cleanly. Then push the branch.
@@ -349,9 +349,9 @@ commit again. Repeat until the hook passes cleanly. Then push the branch.
 Send the report to Grace via `SendMessage`, including the commit SHA you just
 pushed. Plain-text turn output doesn't reach her. Only `SendMessage` does. You
 don't mark tasks complete yourself. Grace does that after reading your work. So
-your `SendMessage` is also the sync signal that the work is finished. Sign off
-per the Communication section. Append `RSVP via SendMessage.` to the signature
-only if you expect a reply.
+your `SendMessage` also tells Grace the work is done. Sign off per the
+Communication section. Append `RSVP via SendMessage.` to the signature only if
+you expect a reply.
 
 Include in the body what Grace can't see from the diff:
 
@@ -372,9 +372,8 @@ standard task, handled per Phase 6.
 ### Phase 8: Merge
 
 Grace drives the integration (`fetch`, `merge` or `rebase`). When it produces
-conflict markers, she delegates the resolution to you as a standard task.
-Resolve the markers, commit per the [Commits](#commits) rule, and push, the same
-as any Phase 6 task.
+conflict markers, she hands them to you as a standard task. Resolve the markers.
+Commit per the [Commits](#commits) rule and push, as you would any Phase 6 task.
 
 ### Phase 9: Collect
 
@@ -420,10 +419,9 @@ creation. You never:
 
 ### Commits
 
-Commit each task's work yourself, then push. Write the message as a working
-developer would. Use a short subject in the imperative, and a body sentence on
-the _why_ only when the subject doesn't carry it. End with the `Co-Authored-By`
-trailer:
+Commit each task's work yourself, then push. Use a short subject in the
+imperative. Add a body sentence on the _why_ only when the subject doesn't carry
+it. End with the `Co-Authored-By` trailer:
 
 ```text
 Co-Authored-By: Claude <claude@anthropic.com>
