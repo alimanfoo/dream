@@ -379,9 +379,8 @@ The chain drains depth-first. The original queue resumes only after the parent
 task's coherence chain is fully drained.
 
 The phase ends when the task list drains. Grace then finalises the PR
-description, editing it to the final accepted requirements. She writes the dream
-metadata line later, at PR ready (Phase 7). She opened the PR in Phase 1. It
-stays in draft until Phase 7.
+description, editing it to the final accepted requirements. She opened the PR in
+Phase 1. It stays in draft until Phase 7.
 
 ## Phase 7: Review
 
@@ -420,10 +419,10 @@ Grace freezes the PR at the Phase 7 handoff. Once Grace marks the PR ready and
 hands back, Merge, Collect, and Reflect do no new development. Their outputs are
 the merge action, issues, comments, and issue drafts. A finding that would once
 have become a follow-on task becomes an issue instead. Resolving merge conflicts
-is part of the merge action, not new development: Grace drives the integration
-and Ralph resolves and commits the conflict markers (see below). This holds
-especially when merge is deferred, since the still-open PR is what tempts the
-team to fold a later finding back in.
+is part of the merge action, not new development. Grace drives the integration
+and Ralph resolves and commits the conflict markers. This holds especially when
+merge is deferred, since the still-open PR is what tempts the team to fold a
+later finding back in.
 
 The phase ends when the PR is merged, or when merge is deferred to a human.
 
@@ -761,16 +760,16 @@ session-start state of `main`. Grace handles any drift on origin at Merge.
 
 One commit per task (task ↔ commit). Ralph is the committer. He commits and
 pushes each task's work. Grace makes only the empty bootstrap commit, not a
-task, created at branch setup so the draft PR has a commit to anchor to. No one
-pushes to `main` unless the user explicitly asks.
+task. It is created at branch setup so the draft PR has a commit to anchor to.
+No one pushes to `main` unless the user explicitly asks.
 
 #### Quality gates
 
 Ralph's gate covers the commit-time checks and the tests. The commit hook runs
-the commit-time checks when Ralph commits, in his own loop. A formatter rewrite
-is then his to absorb and re-stage. The tests he runs himself before committing,
-since the hook rarely runs them. Grace trusts that report and doesn't duplicate
-the work. CI re-runs everything pre-merge.
+the commit-time checks when Ralph commits. He commits in his own loop, so he
+absorbs and re-stages any formatter rewrite himself. Ralph runs the tests
+himself before committing, since the hook rarely runs them. Grace trusts that
+report and doesn't duplicate the work. CI re-runs everything pre-merge.
 
 ### All communications
 

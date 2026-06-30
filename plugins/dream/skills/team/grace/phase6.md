@@ -101,8 +101,7 @@ Next task, back to [Step 6.2](#step-62-assign).
 
 At the end of Develop, finalize the PR description you opened in the Phase 1
 [Step 1.1](phase1.md#step-11-open-the-session-pr). Complete all in-session tasks
-and push the branch before you do. You write the dream metadata line later, at
-PR ready (Phase 7 [Step 7.5](phase7.md#step-75-update-the-pr-description)).
+and push the branch before you do.
 
 **Write the PR description.** Replace the `WIP` placeholder with a description
 written for a cold reviewer who has not read the thread. Check whether the repo

@@ -404,7 +404,6 @@ commit message. You own the branch and the bootstrap commit:
   Phase 1) is yours. It is not a task, so it carries the `Co-Authored-By`
   trailer only. It is pre-task, so if a commit hook rejects it, you resolve it
   yourself.
-- You never push to `main` unless the user explicitly asks.
 
 ### Marking agent-authored GitHub items
 
