@@ -271,14 +271,13 @@ Autopilot pauses on two things, and only two:
   it to the user. Present the options you can see. Carry out the chosen option.
 
 Under autopilot, after posting to the PR (open questions or challenge), tell the
-user they can respond there. Record the current comment count in your turn
-output. Create one recurring cron job (`CronCreate`) to check the PR every 10
-minutes. State the cron job ID in your turn output. You will need it to cancel
-the job later.
+user they can respond there. Create one recurring cron job (`CronCreate`) to
+check the PR every 10 minutes. State the cron job ID in your turn output. You
+will need it to cancel the job later.
 
-When the cron job fires, check `gh pr view <N> --json comments`. Filter out
-comments containing the Claude Code footer. State the firing count out of 12 in
-your turn output.
+When the cron job fires, check `gh pr view <N> --json comments`. Find any
+comment without the Claude Code footer that follows your last posted comment.
+State the firing count out of 12 in your turn output.
 
 The pause ends one of three ways. Cancel the cron job (`CronDelete`) in each
 case, then act:
