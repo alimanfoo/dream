@@ -273,9 +273,9 @@ Autopilot pauses on two things, and only two:
 Under autopilot, after posting open questions or a challenge to the PR, get the
 authenticated GitHub user with `gh api user --jq .login` and the current
 timestamp with `date -u +%Y-%m-%dT%H:%M:%SZ`. Create one recurring cron job
-(`CronCreate`) to check the PR every 10 minutes. Embed the PR number, user
-login, and timestamp in the job's prompt. State the cron job ID in your turn
-output. You will need it to cancel the job later.
+(`CronCreate`) to check the PR every 10 minutes for a comment from the user.
+Embed the PR number, user login, and timestamp in the job's prompt. State the
+cron job ID in your turn output. You will need it to cancel the job later.
 
 When the cron job fires, use the values from the prompt to run:
 
