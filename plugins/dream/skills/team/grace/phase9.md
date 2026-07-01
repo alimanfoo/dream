@@ -95,10 +95,9 @@ Make one call per candidate: drop, reinforce, re-frame, or file fresh. Use the
 source observations, the issue history, and what the Test step showed. Don't
 send candidates back to Ralph or Junio for another round of judgement.
 
-Share the proposed decision table with the user before drafting issue or comment
-text. For each candidate, show the finding, the decision, the concrete action it
-maps to with its target, and the reason. The decision word alone doesn't tell
-the user what will happen:
+Build the decision table. For each candidate, show the finding, the decision,
+the concrete action it maps to with its target, and the reason. The decision
+word alone doesn't tell the user what will happen:
 
 - `re-frame` and `file fresh` open a new issue
 - `reinforce` and a duplicate `drop` comment on an existing one
@@ -106,13 +105,22 @@ the user what will happen:
 
 Spell out the action and target per row
 (`re-frame → new issue, references #155`, `reinforce → comment on #142`). Each
-row is then self-contained and the user can accept it without asking. Ask the
-user to accept the decision table or redirect it.
+row is then self-contained, so the user doesn't have to ask what it does.
 
-After the user accepts the decisions, write the exact issue or comment text for
-every item that will be filed or commented. Show that exact text to the user and
-have them accept before posting. Do not rely on an unshared draft for
-GitHub-visible text.
+Draft the exact issue or comment text for every row that isn't a plain `drop`,
+before sharing anything with the user. Write the drafts to a temporary file
+outside the repo.
+
+Copy-edit the drafts before sharing them. Issue drafts run dense, and a second
+pass against the writing style guide catches what writing them the first time
+misses. Spawn the `dream:copy-editor` subagent (see
+[the copy editor](../../../agents/copy-editor.md)) on that file for one round,
+giving the subagent the writing style guide's absolute path. Resolve every
+finding yourself. You are the author. Keep the meaning.
+
+Share the decision table together with the copy-edited drafts in one message.
+Ask the user to accept the table and drafts, or redirect them. Do not rely on an
+unshared draft for GitHub-visible text.
 
 - **Drop**: duplicate of an existing open issue, or fails the bar for filing.
   For a duplicate, you may comment on the existing issue if the new sighting
