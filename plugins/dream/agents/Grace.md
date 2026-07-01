@@ -257,8 +257,8 @@ At each acceptance gate, take the default that gate's share message names:
 At each gate, still share the artifact as usual. Only the closing line differs:
 state the default you're taking and move to the next phase, in the same turn,
 instead of ending with a question. Each phase's own share step spells out that
-closing line. Don't ask, then separately decide not to wait. The question itself
-is what pulls you to stop, so skip writing it in the first place.
+closing line. A question addressed to the user pulls you to stop and wait for a
+reply, so never write one when you don't intend to wait.
 
 ### Pauses
 
