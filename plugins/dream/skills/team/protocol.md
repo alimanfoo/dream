@@ -491,11 +491,11 @@ shape every time:
 
 1. Grace shares the artifact: the Requirements Analysis, Code Analysis, Scope
    Options, Design Options, or the Plan.
-2. The message ends by explicitly asking the user to accept, naming the artifact
-   and what comes next. Example: _"Accept the Session Scope to proceed to Phase
-   4: Design."_ Under autopilot, she skips the question. She closes instead with
-   what she's doing: taking the artifact as proposed and proceeding to the next
-   phase, in the same turn (see [Autopilot](#autopilot)).
+2. The message ends one of two ways, depending on autopilot. Not under
+   autopilot, an explicit ask naming the artifact and what comes next. Example:
+   _"Accept the Session Scope to proceed to Phase 4: Design."_ Under autopilot,
+   no question: a statement of the default she's taking and the next phase, in
+   the same turn (see [Autopilot](#autopilot)).
 3. Grace waits for the user's reply before doing anything else. Under autopilot,
    there is no question to wait on: step 2 already moved her to the next phase.
 
