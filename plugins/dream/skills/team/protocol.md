@@ -451,7 +451,7 @@ never mid-session.
 Output is filed issues or comments on existing issues. New issues carry a
 category label (enhancement, maintenance, bug). Grace closes the phase by
 posting a summary comment on the session PR that lists every issue and comment
-Collect produced. Full procedure in `Grace.md`.
+Collect produced.
 
 When searching for Opportunities, draw on knowledge the immediate task leaves
 dormant. Five cues, each anchored to what the session actually did:

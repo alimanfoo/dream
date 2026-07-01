@@ -182,8 +182,9 @@ Once every item from the decision table is filed or commented, post one summary
 comment on the session PR: a list of references to every new issue and every
 comment Collect posted. Use `#N` for a new issue. Use the comment's own URL for
 a posted comment, since a bare `#N` would point at the issue, not the comment.
-Skip a plain `drop`, since it produced nothing to link. Skip the summary comment
-entirely if every candidate dropped.
+Capture each comment's URL when you post it in Step 9.4, so it's ready to use
+here. Skip a plain `drop`, since it produced nothing to link. Skip the summary
+comment entirely if every candidate dropped.
 
 Append the Claude Code footer (see
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items)).
