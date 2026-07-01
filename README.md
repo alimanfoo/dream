@@ -143,6 +143,20 @@ arising from the requirements analysis. Another is something unexpected turning
 up during development. If Grace does stop, she might need a reminder to
 re-engage autopilot after that to resume full autonomy.
 
+Autopilot disengages once the PR is marked ready for human review, so the merge,
+collect and reflect stages always wait for you by default. If you also want the
+collect stage to run unattended, filing or commenting on issues without waiting
+for your approval, turn that on separately:
+
+```text
+Auto-collect on.
+```
+
+You can say this alongside the autopilot command above, or on its own later in
+the session. It only covers the collect stage's own approval step. Merging still
+needs you, and the reflect stage is an optional retrospective Grace offers
+rather than something to wait on.
+
 ## Troubleshooting
 
 ### Permissions
