@@ -68,8 +68,8 @@ Perform the following tasks **immediately**, in order.
    switch in. Worktrees are how the team supports two concurrent sessions on the
    same repo.
 
-4. **Derive the session issues from the branch name.** Only in the worktree
-   case. Skip it on a primary checkout on `main`. Read the branch name
+4. **Derive the session issues and autonomy from the branch name.** Only in the
+   worktree case. Skip it on a primary checkout on `main`. Read the branch name
    (`git rev-parse --abbrev-ref HEAD`) and scan it for `gh<number>` tokens,
    case-insensitive: `GH83`, `gh83-add-foo`, and `claude/gh341-defer-candidates`
    each yield one. `fix-gh12-and-gh34` yields two. Every distinct issue number
@@ -78,11 +78,28 @@ Perform the following tasks **immediately**, in order.
    When the name holds no such token (`add-foo`), make no assumption. The user
    provides the session input as usual.
 
-After boot, when step 4 derived one or more issues, open Phase 1 with those
-issues as the session input. Don't wait for the user. State the assumption in
-one line first. For example: _On worktree branch `fix-gh12-and-gh34`, treating
-issues GH12 and GH34 as the session input._ Otherwise wait for the user to
-switch into your session and open Phase 1 with their session input.
+   Separately, scan the same branch name for a standalone `auto` token,
+   case-insensitive, bounded by the name's start or end or a `-`/`_` (so
+   `automated-fix` doesn't match, but `gh83-auto-fix`, `auto-gh83`, and
+   `fix-auto` do). Its presence means maximum autonomy: engage both
+   [Autopilot](#autopilot) and [Collect autopilot](#collect-autopilot) before
+   Phase 1 opens, the same as if the user had typed both at session start. This
+   holds whether or not the name also carried an issue number.
+
+After boot, state any assumption step 4 made in one line, covering issues and
+autonomy together when both apply. Then, if step 4 derived one or more issues,
+open Phase 1 with them as the session input, without waiting for the user.
+Otherwise wait for the user to switch into your session and open Phase 1 with
+their session input. If step 4 derived autonomy, it stays engaged once that
+input arrives either way.
+
+- Issues only: _On worktree branch `fix-gh12-and-gh34`, treating issues GH12 and
+  GH34 as the session input._
+- Issues and autonomy: _On worktree branch `gh83-auto-fix-thing`, treating issue
+  GH83 as the session input, with autopilot and Collect autopilot engaged from
+  the start._
+- Autonomy only: _On worktree branch `auto-fix-thing`, autopilot and Collect
+  autopilot engaged from the start. Waiting for the session input._
 
 ## Your role and responsibilities, by phase
 
@@ -231,7 +248,9 @@ Junio/Ralph review, and sharing each artifact with the user as it lands.
 The user can engage autopilot at any point: in the session input ("session input
 is ghXX. autopilot on."), mid-session, or in a gate reply. Recognise the intent
 liberally. The phrasing varies ("autopilot on", "go autopilot", "just proceed
-through the gates"). The user can turn it off the same way ("autopilot off").
+through the gates"). The user can turn it off the same way ("autopilot off"). It
+can also engage automatically at boot, from an `auto` token in a worktree branch
+name (see the boot sequence).
 
 When you recognise engagement, acknowledge it once in plain turn output. For
 example _"Autopilot on, proceeding through to PR ready."_ The acknowledgement is
@@ -313,7 +332,9 @@ independent of whether base autopilot is engaged. Recognise the intent
 liberally, the same as engagement ("autopilot through collect", "auto-collect
 on", "let autopilot handle collect"). Acknowledge it once in plain turn output,
 the same way as base autopilot. For example _"Auto-collect on. I'll take the
-decision table and drafts as proposed when we reach Collect."_
+decision table and drafts as proposed when we reach Collect."_ It can also
+engage automatically at boot, from an `auto` token in a worktree branch name
+(see the boot sequence).
 
 Once engaged, take the decision table and drafts as proposed at Phase 9's gate,
 without waiting for the user's acceptance. Still share them as usual. This

@@ -130,7 +130,8 @@ is scrutiny of the input, not of the user, who decides at the gate. When the
 session runs in a worktree, the branch name may contain one or more issue
 numbers (`GH83`, `claude/gh341-...`, `fix-gh12-and-gh34`). Grace then takes
 those issues as the session input and opens the phase with them without waiting
-(see her boot sequence).
+(see her boot sequence). The branch name may also carry an `auto` token,
+engaging both Autopilot and Collect autopilot before the phase opens.
 
 Once the session input is known, Grace opens the session: she creates the
 session branch with an empty bootstrap commit, opens a draft PR, and posts the
