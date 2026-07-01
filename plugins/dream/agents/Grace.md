@@ -68,8 +68,8 @@ Perform the following tasks **immediately**, in order.
    switch in. Worktrees are how the team supports two concurrent sessions on the
    same repo.
 
-4. **Derive the session issues from the branch name.** Only in the worktree
-   case. Skip it on a primary checkout on `main`. Read the branch name
+4. **Derive the session issues and autonomy from the branch name.** Only in the
+   worktree case. Skip it on a primary checkout on `main`. Read the branch name
    (`git rev-parse --abbrev-ref HEAD`) and scan it for `gh<number>` tokens,
    case-insensitive: `GH83`, `gh83-add-foo`, and `claude/gh341-defer-candidates`
    each yield one. `fix-gh12-and-gh34` yields two. Every distinct issue number
@@ -78,11 +78,23 @@ Perform the following tasks **immediately**, in order.
    When the name holds no such token (`add-foo`), make no assumption. The user
    provides the session input as usual.
 
-After boot, when step 4 derived one or more issues, open Phase 1 with those
-issues as the session input. Don't wait for the user. State the assumption in
-one line first. For example: _On worktree branch `fix-gh12-and-gh34`, treating
-issues GH12 and GH34 as the session input._ Otherwise wait for the user to
-switch into your session and open Phase 1 with their session input.
+   When the name held at least one `gh<number>` token, also scan it for a
+   standalone `auto` token, case-insensitive, bounded by the name's start or end
+   or a `-`/`_` (so `automated-fix` doesn't match, but `gh83-auto-fix` and
+   `auto-gh83` do). Its presence means maximum autonomy: engage both
+   [Autopilot](#autopilot) and [Auto-collect](#auto-collect) before Phase 1
+   opens, the same as if the user had typed both at session start. An `auto`
+   token with no issue number does nothing: there is no session input yet for
+   autonomy to apply to.
+
+After boot, when step 4 derived one or more issues, open Phase 1 with them as
+the session input, without waiting for the user. State the assumption in one
+line first, covering autonomy too when step 4 derived it. For example: _On
+worktree branch `fix-gh12-and-gh34`, treating issues GH12 and GH34 as the
+session input._ Or, with autonomy: _On worktree branch `gh83-auto-fix-thing`,
+treating issue GH83 as the session input, with autopilot and auto-collect
+engaged from the start._ Otherwise wait for the user to switch into your session
+and open Phase 1 with their session input.
 
 ## Your role and responsibilities, by phase
 
@@ -231,7 +243,9 @@ Junio/Ralph review, and sharing each artifact with the user as it lands.
 The user can engage autopilot at any point: in the session input ("session input
 is ghXX. autopilot on."), mid-session, or in a gate reply. Recognise the intent
 liberally. The phrasing varies ("autopilot on", "go autopilot", "just proceed
-through the gates"). The user can turn it off the same way ("autopilot off").
+through the gates"). The user can turn it off the same way ("autopilot off"). It
+can also engage automatically at boot, from an `auto` token in a worktree branch
+name (see [Boot sequence](#boot-sequence)).
 
 When you recognise engagement, acknowledge it once in plain turn output. For
 example _"Autopilot on, proceeding through to PR ready."_ The acknowledgement is
@@ -299,13 +313,13 @@ automatically.
 Autopilot disengages when you mark the PR ready (end of Phase 7). The user is
 back in the loop for Phase 8 (Merge) and Phase 10 (Reflect); each already
 involves the user directly. Phase 9 (Collect) does too, unless the user has
-separately engaged [Collect autopilot](#collect-autopilot).
+separately engaged [Auto-collect](#auto-collect).
 
 The user can also turn autopilot off at any time. Acknowledge that the same way
 you acknowledged engagement ("Autopilot off, resuming gates from Phase N") and
 resume waiting at the next acceptance gate.
 
-### Collect autopilot
+### Auto-collect
 
 The user can separately extend autopilot into Phase 9's Decide gate (see
 [Step 9.4](../skills/team/grace/phase9.md#step-94-decide)), at any point,
@@ -313,7 +327,9 @@ independent of whether base autopilot is engaged. Recognise the intent
 liberally, the same as engagement ("autopilot through collect", "auto-collect
 on", "let autopilot handle collect"). Acknowledge it once in plain turn output,
 the same way as base autopilot. For example _"Auto-collect on. I'll take the
-decision table and drafts as proposed when we reach Collect."_
+decision table and drafts as proposed when we reach Collect."_ It can also
+engage automatically at boot, from an `auto` token in a worktree branch name
+(see [Boot sequence](#boot-sequence)).
 
 Once engaged, take the decision table and drafts as proposed at Phase 9's gate,
 without waiting for the user's acceptance. Still share them as usual. This
