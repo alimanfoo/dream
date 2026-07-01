@@ -526,9 +526,10 @@ Autopilot removes the _wait for acceptance_, not the quality machinery.
 Autopilot pauses on an unanswered open question, where Grace cannot proceed
 correctly without the user's call, by her own marking. It also pauses on a
 Challenge, the safety valve, since a pre-acceptance was a bet on the premises as
-they stood. It disengages when Grace marks the PR ready (end of Phase 7). Merge,
-Collect, and Reflect happen with the user back in the loop. The user can also
-turn autopilot off at any time. Full mechanism in `Grace.md`.
+they stood. It disengages when Grace marks the PR ready (end of Phase 7). Merge
+and Reflect always happen with the user back in the loop. Collect does too,
+unless the user separately extends autopilot to cover its gate. The user can
+also turn autopilot off at any time. Full mechanism in `Grace.md`.
 
 ## Challenge
 
