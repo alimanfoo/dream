@@ -7,7 +7,8 @@ The goal of this phase is to collect Ancillary Findings and Opportunities from
 the team. For each, decide whether to file a new issue or comment on an existing
 one. Four steps (compile, deepen, test, decide) come before any issue is filed.
 Test applies to Findings only. Opportunities skip it. All four are yours, with
-user discussion before you file or comment.
+user discussion before you file or comment. A fifth step, summarize, closes the
+phase by posting what Collect did back to the session PR.
 
 ## Step 9.1: Compile
 
@@ -124,11 +125,9 @@ unshared draft for GitHub-visible text.
 
 - **Drop**: duplicate of an existing open issue, or fails the bar for filing.
   For a duplicate, you may comment on the existing issue if the new sighting
-  adds evidence (a second occurrence, a different angle). Reference the session
-  PR in any such comment.
+  adds evidence (a second occurrence, a different angle).
 - **Reinforce**: related to an existing open issue but not identical. Comment on
-  the open issue with the new angle rather than opening a new one. Open the
-  comment with a reference to the session PR: "Noticed during #N, ..."
+  the open issue with the new angle rather than opening a new one.
 - **Re-frame**: recurrence on a surface with prior issues, open or closed. File
   one issue at the **contract level**: name the surface (the function, the
   parameter, the contract) and list the prior issues with `#N` references. Where
@@ -137,15 +136,13 @@ unshared draft for GitHub-visible text.
   [One fact, one home](../protocol.md#one-fact-one-home)). Where it is one rule
   many sites must each follow, with no single home, frame the issue around
   adding a check to enforce it (see
-  [One rule, one check](../protocol.md#one-rule-one-check)). Open the issue body
-  with a reference to the session PR: "Noticed during #N, ..." The recurrence
+  [One rule, one check](../protocol.md#one-rule-one-check)). The recurrence
   pattern itself is the behaviour gap. Issues landing on the same surface are
   evidence of an unresolved contract. Substance already decided at Plan would be
   a Challenge to a settled decision, raised in-session, not a fresh observation
   here (see [Challenge](../protocol.md#challenge)).
 - **File fresh**: no related issue on the surface, and the finding clears the
-  bar. Open a standalone issue. Open the issue body with a reference to the
-  session PR: "Noticed during #N, ..."
+  bar. Open a standalone issue.
 
 The bar for filing a **new** issue from a Finding is _a behaviour gap with a
 real consumer_. Findings that clear the bar go to Decide on the merits. Findings
@@ -178,3 +175,17 @@ states the concern as a complete thought ("status-verb keys can drift from
 helper returns"), not a stacked-qualifier noun phrase ("an unenforced string
 protocol"). Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
+
+## Step 9.5: Summarize
+
+Once every item from the decision table is filed or commented, post one summary
+comment on the session PR: a list of references to every new issue and every
+comment Collect posted. Use `#N` for a new issue. Use the comment's own URL for
+a posted comment, since a bare `#N` would point at the issue, not the comment.
+Capture each comment's URL when you post it in Step 9.4, so it's ready to use
+here. Skip a plain `drop`, since it produced nothing to link. Skip the summary
+comment entirely if every candidate dropped.
+
+Append the Claude Code footer (see
+[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items)).
+Follow [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).

@@ -449,7 +449,7 @@ fresh) with user acceptance before filing. Triage happens once, after merge,
 never mid-session.
 
 Output is filed issues or comments on existing issues. New issues carry a
-category label (enhancement, maintenance, bug). Full procedure in `Grace.md`.
+category label (enhancement, maintenance, bug).
 
 When searching for Opportunities, draw on knowledge the immediate task leaves
 dormant. Five cues, each anchored to what the session actually did:
@@ -470,6 +470,8 @@ These widen the net, but the grounding bar still holds. An Opportunity must be
 suggested by the work just done, not a free-standing wishlist.
 
 The phase ends when triage is complete and any resulting issues have been filed.
+Grace closes it by posting a summary comment on the session PR that lists every
+issue and comment Collect produced.
 
 ## Phase 10: Reflect
 
@@ -560,7 +562,9 @@ posts each accepted artifact as a PR comment: the Requirements Analysis (Phase
 4), and the Plan (Phase 5). When open questions arise in Phase 1, she posts them
 to the PR before eliciting answers from the user. When a Challenge is raised,
 she posts it to the PR when she takes it to the user. The thread becomes the
-record of what the session considered.
+record of what the session considered. The record extends past merge: Grace
+closes Phase 9 by posting a summary comment listing every issue and comment
+Collect produced (see [Phase 9](#phase-9-collect)).
 
 Grace writes the PR description at the end of Develop (Phase 6). The PR stays in
 draft until Phase 7. When a Challenge revises an artifact, she posts the

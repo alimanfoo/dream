@@ -298,6 +298,7 @@ plugins/:
               'Step 9.2: Deepen':
               'Step 9.3: Test':
               'Step 9.4: Decide':
+              'Step 9.5: Summarize':
         protocol.md:
           Dream team protocol:
             The dream:
