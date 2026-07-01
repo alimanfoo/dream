@@ -105,7 +105,7 @@ word alone doesn't tell the user what will happen:
 
 Spell out the action and target per row
 (`re-frame → new issue, references #155`, `reinforce → comment on #142`). Each
-row is then self-contained and the user can accept it without asking.
+row is then self-contained, so the user doesn't have to ask what it does.
 
 Draft the exact issue or comment text for every row that isn't a plain `drop`,
 before sharing anything with the user. Drafting now, rather than after a
