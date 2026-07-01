@@ -449,9 +449,7 @@ fresh) with user acceptance before filing. Triage happens once, after merge,
 never mid-session.
 
 Output is filed issues or comments on existing issues. New issues carry a
-category label (enhancement, maintenance, bug). Grace closes the phase by
-posting a summary comment on the session PR that lists every issue and comment
-Collect produced.
+category label (enhancement, maintenance, bug).
 
 When searching for Opportunities, draw on knowledge the immediate task leaves
 dormant. Five cues, each anchored to what the session actually did:
@@ -471,8 +469,9 @@ dormant. Five cues, each anchored to what the session actually did:
 These widen the net, but the grounding bar still holds. An Opportunity must be
 suggested by the work just done, not a free-standing wishlist.
 
-The phase ends when triage is complete, any resulting issues have been filed,
-and the summary comment is posted.
+The phase ends when triage is complete and any resulting issues have been filed.
+Grace closes it by posting a summary comment on the session PR that lists every
+issue and comment Collect produced.
 
 ## Phase 10: Reflect
 
