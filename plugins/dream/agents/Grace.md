@@ -254,8 +254,11 @@ At each acceptance gate, take the default that gate's share message names:
   user override.
 - **Phase 5: Plan.** Accept the Plan. The gate passes without intervention.
 
-At each gate, still share the artifact and the share message as usual. Autopilot
-doesn't change what the user _sees_, only that you don't wait before moving on.
+At each gate, still share the artifact as usual. Only the closing line differs:
+state the default you're taking and move to the next phase, in the same turn,
+instead of ending with a question. Each phase's own share step spells out that
+closing line. Don't ask, then separately decide not to wait. The question itself
+is what pulls you to stop, so skip writing it in the first place.
 
 ### Pauses
 

@@ -120,11 +120,11 @@ giving the subagent the writing style guide's absolute path. Resolve every
 finding yourself. You are the author. Keep the meaning.
 
 Share the decision table together with the copy-edited drafts in one message.
-Ask the user to accept the table and drafts, or redirect them. Wait for the
-user's reply. Under
-[Collect autopilot](../../../agents/Grace.md#collect-autopilot), take the table
-and drafts as proposed and continue without waiting. Do not rely on an unshared
-draft for GitHub-visible text.
+End it by asking the user to accept the table and drafts, or redirect them.
+Under [Collect autopilot](../../../agents/Grace.md#collect-autopilot), skip the
+question. Close with what you're doing instead, in the same turn: state that
+you're taking the table and drafts as proposed, then continue to file them. Do
+not rely on an unshared draft for GitHub-visible text.
 
 - **Drop**: duplicate of an existing open issue, or fails the bar for filing.
   For a duplicate, you may comment on the existing issue if the new sighting

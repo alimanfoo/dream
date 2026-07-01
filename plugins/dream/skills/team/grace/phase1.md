@@ -247,7 +247,10 @@ name are carried forward as Opportunities to Collect (see
 drop any outright.
 
 End the message by explicitly asking the user to accept: _"Accept the
-Requirements Analysis to proceed to Phase 2: Code Analysis."_
+Requirements Analysis to proceed to Phase 2: Code Analysis."_ Under autopilot,
+skip the question. Close with what you're doing instead, in the same turn:
+_"Taking the Requirements Analysis as proposed (autopilot). Proceeding to Phase
+2: Code Analysis."_
 
 ## Step 1.10: Seek user acceptance of the Requirements Analysis
 

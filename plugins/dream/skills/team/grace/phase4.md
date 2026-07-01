@@ -165,7 +165,9 @@ The Proposed Design is the default if the user just accepts. The user picks an
 Alternative to override.
 
 End the message by explicitly asking the user to accept: _"Accept the Design to
-proceed to Phase 5: Plan."_
+proceed to Phase 5: Plan."_ Under autopilot, skip the question. Close with what
+you're doing instead, in the same turn: _"Taking the Design as proposed
+(autopilot). Proceeding to Phase 5: Plan."_
 
 ## Step 4.7: Seek user acceptance of the Design
 

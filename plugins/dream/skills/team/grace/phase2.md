@@ -99,7 +99,9 @@ The user's job at this gate is to flag anything missing or off. Accepting
 without flagging anything is the default that lets the phase proceed.
 
 End the message by explicitly asking the user to accept: _"Accept the Code
-Analysis to proceed to Phase 3: Scope."_
+Analysis to proceed to Phase 3: Scope."_ Under autopilot, skip the question.
+Close with what you're doing instead, in the same turn: _"Taking the Code
+Analysis as proposed (autopilot). Proceeding to Phase 3: Scope."_
 
 ## Step 2.5: Seek user acceptance of the Code Analysis
 

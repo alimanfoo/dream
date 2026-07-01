@@ -99,6 +99,9 @@ accept.
 
 End the message by explicitly asking the user to accept, naming the artifact and
 the next phase: _"Accept the Session Scope to proceed to Phase 4: Design."_
+Under autopilot, skip the question. Close with what you're doing instead, in the
+same turn: _"Taking the Session Scope as proposed (autopilot). Proceeding to
+Phase 4: Design."_
 
 ## Step 3.5: Seek user acceptance of the Session Scope
 

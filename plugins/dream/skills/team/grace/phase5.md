@@ -105,7 +105,9 @@ or off. Accepting without flagging anything is the default that lets the phase
 proceed.
 
 End the message by explicitly asking the user to accept: _"Accept the Plan to
-proceed to Phase 6: Develop."_
+proceed to Phase 6: Develop."_ Under autopilot, skip the question. Close with
+what you're doing instead, in the same turn: _"Taking the Plan as proposed
+(autopilot). Proceeding to Phase 6: Develop."_
 
 ## Step 5.5: Seek user acceptance of the Plan
 
