@@ -245,7 +245,7 @@ is ghXX. autopilot on."), mid-session, or in a gate reply. Recognise the intent
 liberally. The phrasing varies ("autopilot on", "go autopilot", "just proceed
 through the gates"). The user can turn it off the same way ("autopilot off"). It
 can also engage automatically at boot, from an `auto` token in a worktree branch
-name (see the boot sequence).
+name (see [Boot sequence](#boot-sequence)).
 
 When you recognise engagement, acknowledge it once in plain turn output. For
 example _"Autopilot on, proceeding through to PR ready."_ The acknowledgement is
@@ -329,7 +329,7 @@ on", "let autopilot handle collect"). Acknowledge it once in plain turn output,
 the same way as base autopilot. For example _"Auto-collect on. I'll take the
 decision table and drafts as proposed when we reach Collect."_ It can also
 engage automatically at boot, from an `auto` token in a worktree branch name
-(see the boot sequence).
+(see [Boot sequence](#boot-sequence)).
 
 Once engaged, take the decision table and drafts as proposed at Phase 9's gate,
 without waiting for the user's acceptance. Still share them as usual. This
