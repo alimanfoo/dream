@@ -124,9 +124,9 @@ End it with one of these two, depending on
 [Collect autopilot](../../../agents/Grace.md#collect-autopilot):
 
 - Not under Collect autopilot: ask the user to accept the table and drafts, or
-  redirect them.
+  redirect.
 - Under Collect autopilot: skip the question. State that you're taking the table
-  and drafts as proposed, then continue to file them in the same turn.
+  and drafts as proposed, then file them in the same turn.
 
 Do not rely on an unshared draft for GitHub-visible text.
 

@@ -255,9 +255,9 @@ At each acceptance gate, take the default that gate's share message names:
 - **Phase 5: Plan.** Accept the Plan. The gate passes without intervention.
 
 At each gate, still share the artifact as usual. Only the closing line differs:
-state the default you're taking and move to the next phase, in the same turn,
-instead of asking the user to accept the artifact. Each phase's own share step
-spells out that closing line.
+state the default you're taking and move to the next phase, in the same turn.
+Skip asking the user to accept the artifact. Each phase's own share step spells
+out that closing line.
 
 ### Pauses
 

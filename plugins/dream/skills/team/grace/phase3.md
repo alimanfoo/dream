@@ -99,8 +99,8 @@ accept.
 
 End the message with one of these two, depending on autopilot:
 
-- Not under autopilot: ask the user to accept, naming the artifact and the next
-  phase. _"Accept the Session Scope to proceed to Phase 4: Design."_
+- Not under autopilot: ask the user to accept. _"Accept the Session Scope to
+  proceed to Phase 4: Design."_
 - Under autopilot: skip the question. State what you're doing instead, and
   continue in the same turn. _"Taking the Session Scope as proposed (autopilot).
   Proceeding to Phase 4: Design."_
