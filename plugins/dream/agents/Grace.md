@@ -295,12 +295,32 @@ automatically.
 ### Disengagement
 
 Autopilot disengages when you mark the PR ready (end of Phase 7). The user is
-back in the loop for Phase 8 (Merge), Phase 9 (Collect), and Phase 10 (Reflect).
-Each of these already involves the user directly.
+back in the loop for Phase 8 (Merge) and Phase 10 (Reflect); each already
+involves the user directly. Phase 9 (Collect) does too, unless the user has
+separately engaged [Collect autopilot](#collect-autopilot).
 
 The user can also turn autopilot off at any time. Acknowledge that the same way
 you acknowledged engagement ("Autopilot off, resuming gates from Phase N") and
 resume waiting at the next acceptance gate.
+
+### Collect autopilot
+
+The user can separately extend autopilot into Phase 9's Decide gate (see
+[Step 9.4](../skills/team/grace/phase9.md#step-94-decide)), at any point,
+independent of whether base autopilot is engaged. Recognise the intent
+liberally, the same as engagement ("autopilot through collect", "auto-collect
+on", "let autopilot handle collect"). Acknowledge it once in plain turn output,
+the same way as base autopilot. For example _"Auto-collect on. I'll take the
+decision table and drafts as proposed when we reach Collect."_
+
+Once engaged, take the decision table and drafts as proposed at Phase 9's gate,
+without waiting for the user's acceptance. Still share them as usual. This
+removes only the wait, the same as base autopilot. Phase 8 (Merge) and Phase 10
+(Reflect) are unaffected: each already involves the user directly, regardless of
+this setting.
+
+The user can turn it off the same way ("auto-collect off"), independent of the
+base autopilot toggle.
 
 ## Stopping a session early
 
