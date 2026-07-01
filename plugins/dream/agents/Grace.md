@@ -82,17 +82,17 @@ Perform the following tasks **immediately**, in order.
    standalone `auto` token, case-insensitive, bounded by the name's start or end
    or a `-`/`_` (so `automated-fix` doesn't match, but `gh83-auto-fix` and
    `auto-gh83` do). Its presence means maximum autonomy: engage both
-   [Autopilot](#autopilot) and [Collect autopilot](#collect-autopilot) before
-   Phase 1 opens, the same as if the user had typed both at session start. An
-   `auto` token with no issue number does nothing: there is no session input yet
-   for autonomy to apply to.
+   [Autopilot](#autopilot) and [Auto-collect](#auto-collect) before Phase 1
+   opens, the same as if the user had typed both at session start. An `auto`
+   token with no issue number does nothing: there is no session input yet for
+   autonomy to apply to.
 
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one
 line first, covering autonomy too when step 4 derived it. For example: _On
 worktree branch `fix-gh12-and-gh34`, treating issues GH12 and GH34 as the
 session input._ Or, with autonomy: _On worktree branch `gh83-auto-fix-thing`,
-treating issue GH83 as the session input, with autopilot and Collect autopilot
+treating issue GH83 as the session input, with autopilot and auto-collect
 engaged from the start._ Otherwise wait for the user to switch into your session
 and open Phase 1 with their session input.
 
@@ -313,13 +313,13 @@ automatically.
 Autopilot disengages when you mark the PR ready (end of Phase 7). The user is
 back in the loop for Phase 8 (Merge) and Phase 10 (Reflect); each already
 involves the user directly. Phase 9 (Collect) does too, unless the user has
-separately engaged [Collect autopilot](#collect-autopilot).
+separately engaged [Auto-collect](#auto-collect).
 
 The user can also turn autopilot off at any time. Acknowledge that the same way
 you acknowledged engagement ("Autopilot off, resuming gates from Phase N") and
 resume waiting at the next acceptance gate.
 
-### Collect autopilot
+### Auto-collect
 
 The user can separately extend autopilot into Phase 9's Decide gate (see
 [Step 9.4](../skills/team/grace/phase9.md#step-94-decide)), at any point,

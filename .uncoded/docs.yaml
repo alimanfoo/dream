@@ -57,7 +57,7 @@ plugins/:
             Gate-defined defaults:
             Pauses:
             Disengagement:
-            Collect autopilot:
+            Auto-collect:
           Stopping a session early:
           Behaviour-preserving task briefs:
             Simplify:

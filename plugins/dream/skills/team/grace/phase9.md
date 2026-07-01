@@ -121,12 +121,12 @@ finding yourself. You are the author. Keep the meaning.
 
 Share the decision table together with the copy-edited drafts in one message.
 End it with one of these two, depending on
-[Collect autopilot](../../../agents/Grace.md#collect-autopilot):
+[Auto-collect](../../../agents/Grace.md#auto-collect):
 
-- Not under Collect autopilot: ask the user to accept the table and drafts, or
+- Not under auto-collect: ask the user to accept the table and drafts, or
   redirect.
-- Under Collect autopilot: skip the question. State that you're taking the table
-  and drafts as proposed, then file them in the same turn.
+- Under auto-collect: skip the question. State that you're taking the table and
+  drafts as proposed, then file them in the same turn.
 
 Do not rely on an unshared draft for GitHub-visible text.
 
