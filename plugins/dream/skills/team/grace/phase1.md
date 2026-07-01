@@ -246,8 +246,13 @@ name are carried forward as Opportunities to Collect (see
 [Phase 9](../../../agents/Grace.md#phase-9-collect)). Tell them they can ask to
 drop any outright.
 
-End the message by explicitly asking the user to accept: _"Accept the
-Requirements Analysis to proceed to Phase 2: Code Analysis."_
+End the message with one of these two, depending on autopilot:
+
+- Not under autopilot: ask the user to accept. _"Accept the Requirements
+  Analysis to proceed to Phase 2: Code Analysis."_
+- Under autopilot: skip the question. State what you're doing instead, and
+  continue in the same turn. _"Taking the Requirements Analysis as proposed
+  (autopilot). Proceeding to Phase 2: Code Analysis."_
 
 ## Step 1.10: Seek user acceptance of the Requirements Analysis
 
