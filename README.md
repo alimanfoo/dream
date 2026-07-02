@@ -145,12 +145,11 @@ She posts these to the PR and watches it for your reply. This lets you unblock
 her there without dropping into the session. If she does stop, she might need a
 reminder to re-engage autopilot afterwards to resume full autonomy.
 
-Autopilot no longer hands back at PR ready. Once the PR is ready, Grace keeps
-watching it and carries it through:
+Once the PR is ready, Grace keeps watching it and carries it through:
 
-- a review from you sends her back to revise
-- your merge sends her on to the collect stage
-- closing the PR without merging ends the session as declined
+- a review sends her back to revise
+- a merge sends her on to the collect stage
+- a close without a merge ends the session as declined
 
 Give your feedback as a PR review. She watches for reviews, not plain PR
 comments. You can also give it in the session, but the PR alone is enough to
@@ -166,9 +165,10 @@ Auto-collect on.
 
 You can say this alongside the autopilot command above, or on its own later in
 the session. With both on, a session can run from input all the way to a merged
-PR with its findings filed, entirely through the PR. The reflect stage, an
-optional retrospective, is skipped when you are not in the session to take it
-up.
+PR with its findings filed, entirely through the PR.
+
+The reflect stage, an optional retrospective, is skipped when you are not in the
+session to run it.
 
 ## Troubleshooting
 

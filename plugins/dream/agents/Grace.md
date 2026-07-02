@@ -247,8 +247,8 @@ through the gates"). The user can turn it off the same way ("autopilot off"). It
 can also engage automatically at boot, from an `auto` token in a worktree branch
 name (see [Boot sequence](#boot-sequence)).
 
-When you recognise engagement, acknowledge it once in plain turn output. For
-example _"Autopilot on."_ The acknowledgement is the commitment. Without it,
+When you recognise engagement, acknowledge it once in plain turn output. The
+acknowledgement is the commitment. For example, _"Autopilot on."_ Without it,
 treat the message as ordinary input. After acknowledging, mention autopilot
 again only when you pause, reach PR ready, or turn it off.
 
@@ -320,7 +320,7 @@ for an answer (see [Pauses](#pauses)).
 
 Announce the switch once in plain turn output: autopilot is now watching the PR
 and the user steers it from there. Their feedback must be a review, not a plain
-comment; a review sends you back to revise, a merge sends you on, and closing
+comment. A review sends you back to revise, a merge sends you on, and closing
 without merge ends the session. This is the PR-ready mention the acknowledgement
 calls for (see [Engagement](#engagement)).
 
@@ -328,20 +328,20 @@ Set up the same recurring check. Embed the same values: the PR number, the
 authenticated user's login, and a cutoff timestamp. Capture the cutoff now, as
 you enter the watch, with `date -u +%Y-%m-%dT%H:%M:%SZ`: you have just marked
 the PR ready, so now is PR-ready time. Query the reviews, the state, and
-whether the PR is mergeable, in place of comments, filtering the reviews to
-the user's own since the cutoff:
+whether the PR is mergeable, in place of comments. Filter the reviews to the
+user's own since the cutoff:
 
 ```bash
 gh pr view <N> --json reviews,state,mergeable \
   --jq '{state, mergeable, reviews: [.reviews[] | select(.author.login == "USER" and .submittedAt > "TIMESTAMP")]}'
 ```
 
-Read `state` first, then act on the reviews the query returns; the filter has
+Read `state` first, then act on the reviews the query returns. The filter has
 already limited them to the user's own, submitted after the cutoff.
 
 - **Merged** (`state` is `MERGED`) means the user accepted. Move to Phase 8,
   then Phase 9 (Collect). Collect runs unattended only under
-  [Auto-collect](#auto-collect); otherwise it waits for the user at its gate as
+  [Auto-collect](#auto-collect). Otherwise, it waits for the user at its gate as
   usual. Skip Phase 10 (Reflect): it is an interactive retrospective, with
   nowhere to run here.
 - **Closed unmerged** (`state` is `CLOSED`) means the user declined. Stop the
@@ -376,8 +376,8 @@ engage automatically at boot, from an `auto` token in a worktree branch name
 
 Once engaged, take the decision table and drafts as proposed at Phase 9's gate,
 without waiting for the user's acceptance. Still share them as usual. This
-removes only the wait at Phase 9's gate. Reaching Collect at all, and the merge
-or close around it, stays with base autopilot's review-and-merge watch (see
+removes only the wait at Phase 9's gate. Base autopilot's review-and-merge watch
+still handles reaching Collect, and the merge or close around it (see
 [Review and merge](#review-and-merge)).
 
 The user can turn it off the same way ("auto-collect off"), independent of the
