@@ -324,13 +324,12 @@ session.
 Set up the same recurring cron job. Embed the same values: the PR number, the
 authenticated user's login, and a cutoff timestamp. Capture the cutoff now, as
 you enter the watch, with `date -u +%Y-%m-%dT%H:%M:%SZ`. You have just marked
-the PR ready, so now is PR-ready time. Query the reviews, the state, and whether
-the PR is mergeable, in place of comments. Filter the reviews to the user's own
-since the cutoff:
+the PR ready, so now is PR-ready time. Query the reviews and the state, in place
+of comments. Filter the reviews to the user's own since the cutoff:
 
 ```bash
-gh pr view <N> --json reviews,state,mergeable \
-  --jq '{state, mergeable, reviews: [.reviews[] | select(.author.login == "USER" and .submittedAt > "TIMESTAMP")]}'
+gh pr view <N> --json reviews,state \
+  --jq '{state, reviews: [.reviews[] | select(.author.login == "USER" and .submittedAt > "TIMESTAMP")]}'
 ```
 
 Read `state` first. `MERGED` and `CLOSED` are terminal:
@@ -365,12 +364,6 @@ An approving review with nothing to act on needs no change. When you have
 handled the batch and are still watching (you did not merge, defer, or close),
 cancel the cron job. Create a new one with the cutoff set to now, so the handled
 reviews don't resurface.
-
-When the PR is **not mergeable** (`mergeable` is `CONFLICTING`) and no review
-asked you to act, the user cannot merge. Main has moved under the branch. Check
-the PR for a block comment you already posted. If there is none, post one naming
-the block and inviting the user to resolve it themselves or ask you to in a
-review. Then keep watching. Don't resolve it unprompted.
 
 The user can give a review's feedback directly in the session instead. Cancel
 the cron job once the PR is merged or closed, once you defer the merge, or once
