@@ -328,9 +328,9 @@ is the PR-ready mention the acknowledgement calls for (see
 Set up the same recurring check. Embed the same values: the PR number, the
 authenticated user's login, and a cutoff timestamp. Capture the cutoff now, as
 you enter the watch, with `date -u +%Y-%m-%dT%H:%M:%SZ`: you have just marked
-the PR ready, so now is PR-ready time. Query the reviews, the state, and
-whether the PR is mergeable, in place of comments. Filter the reviews to the
-user's own since the cutoff:
+the PR ready, so now is PR-ready time. Query the reviews, the state, and whether
+the PR is mergeable, in place of comments. Filter the reviews to the user's own
+since the cutoff:
 
 ```bash
 gh pr view <N> --json reviews,state,mergeable \
@@ -354,7 +354,8 @@ already limited them to the user's own, submitted after the cutoff.
   Phase 8 takes its deferral path rather than detecting a merge.
 - **Any other new review** is a user-directed change. Triage its feedback the
   same as a Phase 7 review. Run each accepted point through the reopening path
-  (see [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user)).
+  (see
+  [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user)).
   Post a fresh response comment for the rework, and leave the `dream:` metadata
   line as it is. These commits are post-handoff. Then recreate the check with
   the cutoff set to now, so the handled review doesn't resurface. An approving

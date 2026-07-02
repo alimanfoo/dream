@@ -158,8 +158,8 @@ Hand back to the user once all comments are addressed. The PR is ready for the
 user's acceptance. Phase 8 handles the merge itself.
 
 Under autopilot, don't hand back. Enter the review-and-merge watch instead (see
-[Review and merge](../../../agents/Grace.md#review-and-merge)). It carries the PR
-through the user's review, merge, or close.
+[Review and merge](../../../agents/Grace.md#review-and-merge)). It carries the
+PR through the user's review, merge, or close.
 
 Marking the PR ready hands off the branch, and from here it is frozen (see
 [Phase 8: Merge](../protocol.md#phase-8-merge)). In Merge, Collect, and Reflect
