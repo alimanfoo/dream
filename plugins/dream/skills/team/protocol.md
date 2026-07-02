@@ -38,10 +38,11 @@ A session moves through ten phases:
 
 1. **Requirements.** Grace orients to the repo as a whole, then reads the cited
    material and the code with a consumer lens, names the Session Type, and
-   shares the Requirements Analysis with the user for acceptance. At the start
-   of the phase she opens the session branch and a draft PR. On acceptance she
-   posts the Requirements Analysis as a PR comment. See
-   [The session PR](#the-session-pr).
+   drafts the Requirements Analysis. She gets one round of skeptical review from
+   Junio, revises, and shares the Requirements Analysis with the user for
+   acceptance. At the start of the phase she opens the session branch and a
+   draft PR. On acceptance she posts the Requirements Analysis as a PR comment.
+   See [The session PR](#the-session-pr).
 
 2. **Code Analysis.** Grace reads the code with a structural lens, the
    structural baseline and the code smells, and shares the Code Analysis with
@@ -157,6 +158,14 @@ fix names the expected behaviour with its source, the observed behaviour as a
 claim for Phase 2 to verify, and the consumers affected. Every shape marks each
 item stated or assumed, names any system non-goals, and carries any open
 questions Grace can't call from the cited material.
+
+Grace shares the Draft with Junio for one round of review, advisory not gating.
+Junio reads it as a skeptic: does real evidence back each consumer or use case,
+does the work serve what the repo is for, and does it sit coherently with what
+the project already delivers and with the Draft's own other items. Grace decides
+each finding on its merits and revises the Draft, turning any genuine tension
+the review surfaces into an open question rather than folding it silently into a
+plan that already assumes the work goes ahead.
 
 Enhancement and maintenance shapes also carry candidates: use cases or
 improvement goals the read suggests but the input didn't name. Candidates are
