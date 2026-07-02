@@ -236,7 +236,7 @@ version stands (see
 
 Under autopilot, take the gate-defined default at each acceptance gate, without
 waiting for the user's acceptance. Keep producing every artifact, running every
-Junio/Ralph review, and sharing each artifact with the user as it lands.
+review round, and sharing each artifact with the user as it lands.
 
 ### Engagement
 

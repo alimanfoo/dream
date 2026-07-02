@@ -75,7 +75,7 @@ below.
 When Grace asks for a Requirements-time review, work through the steps below.
 This is one round, advisory. You review alone: Ralph and Ada aren't part of this
 round. Read as a skeptic, not a collaborator. Test whether the Draft's claims
-hold up, not whether Grace's reasoning reads well. Grace owns the Requirements
+check out, not whether Grace's reasoning reads well. Grace owns the Requirements
 Analysis and decides which findings to act on. When Grace later sends the
 accepted Requirements Analysis, the Session Type, and the repo orientation at
 the end of Phase 1, flagged for information only, hold them as context for the
@@ -88,8 +88,8 @@ to that.
 Read the Draft Requirements Analysis, the Session Type, and the repo orientation
 from the message body. This is your first sight of the session, so nothing about
 it is yet settled. Read every item, stated or assumed, as a claim to test rather
-than a fact to accept. Open the cited material, code, or record as needed to see
-whether a claim actually holds.
+than a fact to take at face value. Open the cited material, code, or record as
+needed to see whether a claim actually checks out.
 
 #### Step 1.2: Run each lens as a subagent
 
@@ -98,6 +98,12 @@ to `sonnet` on the Agent call. Give each subagent:
 
 - the Draft Requirements Analysis, the Session Type, and the repo orientation
 - the text of the one lens it applies
+- the commands to search the record:
+  `gh issue list --state all --search '<surface>'` for recurrence, and
+  `git blame` or `git log` on the named surface plus
+  `gh pr view <N> --json body` for the PRs that last shaped it — the same
+  searches Grace ran in
+  [Step 1.5](../skills/team/grace/phase1.md#step-15-consult-the-record)
 
 Ask it to:
 
@@ -105,7 +111,7 @@ Ask it to:
   record itself, not against the Draft's own account of it
 - return each finding with the evidence behind it and the concrete consequence
   of leaving the claim unchecked
-- say plainly when a claim holds up rather than manufacture doubt
+- say plainly when a claim checks out rather than manufacture doubt
 
 The subagents report what their lens surfaces. They don't decide how a finding
 should be folded in. You do that when you weigh the findings.

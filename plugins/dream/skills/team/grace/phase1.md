@@ -224,13 +224,15 @@ the Session Type and the repo orientation from
 [Step 1.2](#step-12-orient-to-the-repo). Junio hasn't seen either yet. Sign off
 `From Grace. RSVP via SendMessage.`
 
-Junio reads with a skeptical, code-owner's eye: whether a real consumer or need
+Junio reads from the maintainer's view, testing whether a real consumer or need
 stands behind each claim, whether the work serves what the repo is for, and
 whether it sits coherently with what the project already delivers and with the
 Draft's own other items. Ralph and Ada aren't part of this round. Junio replies
 with a numbered list of findings, or "no substantive findings." This review is
-advisory, not gating, one round only. Don't loop back to Junio after revising.
-The point is a fresh, adversarial read at the cheapest point to catch a
+advisory, not gating, one round per Draft. Don't loop back to Junio over a
+revision to this Draft. Only a full recompose at
+[Step 1.6](#step-16-name-the-session-type) produces a new Draft that returns
+here. The point is a fresh, adversarial read at the cheapest point to catch a
 foundational problem, before the user ever sees the Draft.
 
 ## Step 1.9: Apply the review
@@ -253,9 +255,10 @@ Route each finding by what it settles:
   open. Give the option to stop equal standing with any option that continues
   the work. Name it plainly among the possible answers. Never bury it as an
   aside inside a version of doing the work anyway.
-- **Reject.** You disagree with the finding. If the rejection is notable, carry
-  the reason into the message in
-  [Step 1.11](#step-111-share-the-requirements-analysis).
+- **Reject.** You disagree with the finding. Name it and your reason in the
+  message in [Step 1.11](#step-111-share-the-requirements-analysis) regardless.
+  Every finding at this review tests a foundational premise, so a rejection you
+  keep to yourself is the same deference this review exists to catch.
 
 ## Step 1.10: Elicit answers to open questions
 
@@ -283,11 +286,11 @@ yet.
 ## Step 1.11: Share the Requirements Analysis
 
 Send the completed Requirements Analysis to the user, with a brief note on
-**what changed from the Draft after Junio's review**: folded-in findings,
-notable rejections with the reason. The user learns what the review changed
-without seeing it directly. When there are candidates, ask the user to name any
-they want included, by number. Note that any they don't name are carried forward
-as Opportunities to Collect (see
+**what changed from the Draft after Junio's review**: folded-in findings, and
+any rejections with the reason. The user learns what the review changed without
+seeing it directly. When there are candidates, ask the user to name any they
+want included, by number. Note that any they don't name are carried forward as
+Opportunities to Collect (see
 [Phase 9](../../../agents/Grace.md#phase-9-collect)). Tell them they can ask to
 drop any outright.
 
@@ -316,7 +319,10 @@ If accepted, apply the Session Type's category label to the PR via
 If the user pushes back, revise and return to
 [Step 1.11](#step-111-share-the-requirements-analysis). Repeat until accepted.
 If the pushback challenges the Session Type itself, return to
-[Step 1.6](#step-16-name-the-session-type) and recompose from there.
+[Step 1.6](#step-16-name-the-session-type) and recompose from there. A recompose
+produces a new Draft, so it goes through Junio's review again at
+[Step 1.8](#step-18-share-the-draft-requirements-analysis-with-junio-for-review)
+before you share it.
 
 This is one of the protocol's user acceptance gates (see
 [Acceptance gates](../protocol.md#acceptance-gates)).
