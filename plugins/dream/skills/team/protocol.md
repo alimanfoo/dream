@@ -51,11 +51,11 @@ A session moves through ten phases:
    Junio and Ralph, revises, and shares the revised Scope Options with the user
    for acceptance.
 
-4. **Design.** Grace opens two divergence steps, in which she, Junio, and Ralph
-   each write analogies, then design sketches. She then consolidates the pooled
-   sketches into the Proposed Design and any Alternative Designs, gets one round
-   of review from Junio and Ralph, revises, and shares the Design Options with
-   the user for acceptance.
+4. **Design.** Grace opens two divergence steps: she and Ralph write analogies
+   while Junio surveys existing tools, then all three write design sketches. She
+   then consolidates the pooled sketches into the Proposed Design and any
+   Alternative Designs, gets one round of review from Junio and Ralph, revises,
+   and shares the Design Options with the user for acceptance.
 
 5. **Plan.** Grace drafts the Plan, gets one round of review from Junio and
    Ralph, revises, and shares the revised Plan with the user for acceptance.
@@ -230,15 +230,16 @@ The phase ends at user acceptance of the Session Scope.
 
 ## Phase 4: Design
 
-The phase opens with two divergence steps before any design is chosen. First,
-analogy generation: Grace, Junio, and Ralph each write a spread of analogies,
-what the work resembles, near and far. These seed the design with transferable
-patterns it would otherwise miss. Each agent keeps its own as turn output, not
-shared. Second, design sketches: each agent writes a spread of rough design
-approaches, drawing on its analogies where they help, and sends them to Grace.
-Generating the spread independently, before any single design exists, keeps the
-team from anchoring on one approach. Ada stays out of both, holding her fresh
-read for Phase 7.
+The phase opens with two divergence steps before any design is chosen. First, a
+prior-art round: Grace and Ralph each write a spread of analogies, what the work
+resembles, near and far, while Junio surveys existing tools, internal and
+external, that could meet the need in part or in full. Analogies seed the design
+with transferable patterns. The survey seeds it with reusable building blocks.
+Each agent keeps its own as turn output, not shared. Second, design sketches:
+each agent writes a spread of rough design approaches, drawing on its analogies
+or survey where they help, and sends them to Grace. Generating the spread
+independently, before any single design exists, keeps the team from anchoring on
+one approach. Ada stays out of both, holding her fresh read for Phase 7.
 
 Grace then consolidates the pooled sketches into the Design Options: the
 Proposed Design (her recommendation) and any credible Alternative Designs drawn

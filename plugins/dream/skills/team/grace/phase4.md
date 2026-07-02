@@ -5,7 +5,7 @@ Write every turn output, message and artefact in this phase to the
 
 The goal of this phase is the accepted Design: what the team proposes to build.
 
-## Step 4.1: Generate analogies
+## Step 4.1: Generate analogies and survey existing tools
 
 Generate a spread of analogies for the work before sketching, so the sketches
 draw on ideas and patterns carried in from elsewhere rather than invented cold.
@@ -17,10 +17,12 @@ relevance here. Quantity and spread are the goal.
 
 Write your own analogies as a discrete act, as turn output in a numbered list,
 near and far. Then send a message to Junio and Ralph: two `SendMessage` calls in
-the same turn. Ask each to write a numbered list of near and far analogies as
-turn output. No reply is needed. Each agent's analogies feed its own sketches,
-not a shared artifact you collect. Sign off `From Grace.` and skip the RSVP. Ada
-stays out: she holds her fresh read for Phase 7.
+the same turn. Ask Ralph to write a numbered list of near and far analogies as
+turn output. Ask Junio to survey existing tools instead, internal and external,
+tagged by how fully each addresses the need. No reply is needed from either.
+Each agent's analogies or survey feeds its own sketches, not a shared artifact
+you collect. Sign off `From Grace.` and skip the RSVP. Ada stays out: she holds
+her fresh read for Phase 7.
 
 Don't wait for the teammates. They will not reply. Move straight to
 [Step 4.2](#step-42-generate-design-sketches).

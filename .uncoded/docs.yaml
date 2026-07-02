@@ -91,7 +91,7 @@ plugins/:
               'Step 3.3: Send your findings to Grace via `SendMessage`':
               'Step 3.4: Read the accepted Session Scope':
             'Phase 4: Design':
-              'Step 4.1: Generate analogies':
+              'Step 4.1: Survey existing tools':
               'Step 4.2: Generate design sketches':
               'Step 4.3: Read the Design Options':
               'Step 4.4: Run each lens as a subagent':
@@ -252,7 +252,7 @@ plugins/:
               'Step 3.7: Post the accepted Session Scope to the PR':
           phase4.md:
             'Phase 4: Design':
-              'Step 4.1: Generate analogies':
+              'Step 4.1: Generate analogies and survey existing tools':
               'Step 4.2: Generate design sketches':
               'Step 4.3: Draft the Design Options':
               'Step 4.4: Share the Design Options with Junio and Ralph for review':

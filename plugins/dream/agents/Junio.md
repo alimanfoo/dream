@@ -183,25 +183,37 @@ acceptance discussion. Grace expects no reply.
 
 ### Phase 4: Design
 
-Phase 4 runs in three rounds, each on its own message from Grace: analogies,
-then design sketches, then the Design review. Work through the steps below.
+Phase 4 runs in three rounds, each on its own message from Grace: an
+existing-tools survey, then design sketches, then the Design review. Work
+through the steps below.
 
-#### Step 4.1: Generate analogies
+#### Step 4.1: Survey existing tools
 
-Grace's first message asks for analogies. Write a numbered list of things this
-work resembles. Include near ones (a system or technique from the same problem
-domain) and far ones (a library, a technique, a pattern from another domain),
-each with what happened there. Draw on your role models and your maintainer's
-stance. The prior art and patterns you carry are what this surfaces. Reach for
-several and don't filter for relevance yet. Write the list as turn output, not a
-`SendMessage`. These analogies feed your own sketches. Grace expects no reply.
+Grace's first message asks for this survey. Name every candidate that could
+address the need, in part or in full. Look outside this codebase (a tool,
+library, or platform feature) and inside it (a helper, module, or pattern
+already here). Draw on your role models and your maintainer's stance. The prior
+art you carry is what this surfaces.
+
+Search the web when the problem domain likely has tooling you don't already
+know, or to check whether a tool you do know is still the one to recommend. Your
+knowledge of it may be a year or so out of date.
+
+Tag each candidate **fully addresses** or **partially addresses** the need,
+naming the gap when it's partial. Say why any candidate you don't recommend
+falls short. If nothing applies, say so. An empty result is valid when the
+search was genuine.
+
+Write the survey as turn output, a numbered list, not a `SendMessage`. Grace
+expects no reply. It feeds your own sketches next, and the
+[Reinvention lens](#lens-4-reinvention) you apply at Design review.
 
 #### Step 4.2: Generate design sketches
 
 Grace's second message asks for design sketches. Sketch a spread of rough design
 approaches, each a few lines naming one way to tackle the work and the shape it
-would take, not a worked design. Draw on the analogies you just wrote where they
-help. Reach for several across different approaches. Send the numbered list to
+would take, not a worked design. Draw on the survey you just wrote where it
+helps. Reach for several across different approaches. Send the numbered list to
 Grace via SendMessage, signed `From Junio.` The reply is a terminal hand-off.
 Skip the RSVP.
 
@@ -228,6 +240,10 @@ to `sonnet` on the Agent call. Give each subagent:
 
 - the Design Options: the Proposed Design and any Alternatives
 - the text of the one lens it applies
+
+Also give the Lens 4 (Reinvention) subagent your
+[Step 4.1](#step-41-survey-existing-tools) survey, since it doesn't hold your
+session context.
 
 Ask it to:
 
@@ -338,9 +354,15 @@ Challenge rather than a candidate.
 
 ##### Lens 4: Reinvention
 
-Spot where the Design rebuilds something that already exists, and name what
-already does the job. Two faces, both knowledge a model holds but rarely
-volunteers:
+Start from the survey you wrote in [Step 4.1](#step-41-survey-existing-tools).
+Check whether the drafted Proposed Design and each Alternative adopts each
+candidate, or says why not. Verify any stated reason before you accept it. A
+rejection is a claim, not a settled fact, and once the Design has moved past it,
+the pull is to optimise within that choice rather than recheck it.
+
+Then spot anything the survey missed. The Design's now-concrete shape can
+surface a candidate that wasn't visible while everything was still abstract. Two
+faces, both knowledge a model holds but rarely volunteers:
 
 - **External**: a library, a standard algorithm or technique, or a language or
   platform feature the Design hand-rolls. A Design writing its own argument
