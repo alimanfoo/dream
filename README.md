@@ -148,6 +148,7 @@ reminder to re-engage autopilot afterwards to resume full autonomy.
 Once the PR is ready, Grace keeps watching it and carries it through:
 
 - a review with feedback sends her back to revise
+- a review asking to resolve conflicts has her update the branch so it can merge
 - a review asking to defer the merge sends her to the collect stage, with the PR
   left open for you to merge later
 - a merge sends her on to the collect stage

@@ -350,6 +350,13 @@ already limited them to the user's own, submitted after the cutoff.
   whose body says _"defer merge"_. Proceed as for a merge: through Phase 8 to
   Phase 9 (Collect), skipping Reflect. The PR stays open, and Phase 8 takes its
   deferral path rather than detecting a merge.
+- **A resolve-conflicts review** asks you to make the PR mergeable again.
+  Recognise the intent liberally, as with a defer-merge review, from a body such
+  as _"resolve conflicts"_ or _"update the branch"_. The review is your
+  go-ahead. Fetch and merge main into the branch, and Ralph resolves any markers
+  and commits. The freeze permits this as the merge itself. Push, re-ready the
+  PR, and recreate the check with the cutoff set to now, so the handled review
+  doesn't resurface.
 - **Any other new review** is a user-directed change. Triage its feedback the
   same as a Phase 7 review. Run each accepted point through the reopening path
   (see
@@ -360,8 +367,8 @@ already limited them to the user's own, submitted after the cutoff.
   review with nothing to act on needs no change.
 - **Not mergeable** (`mergeable` is `CONFLICTING`), with no new review to act
   on, means the user cannot merge because main has moved under the branch. Post
-  a comment naming the block once, so the user sees it. Then keep watching.
-  Don't resolve it yourself.
+  a comment naming the block once, inviting the user to resolve it themselves or
+  to ask you to in a review. Then keep watching. Don't resolve it unprompted.
 
 The user can give a review's feedback directly in the session instead. Cancel
 the recurring check once the PR is merged or closed, once you defer the merge,
