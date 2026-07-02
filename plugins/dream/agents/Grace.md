@@ -248,9 +248,9 @@ can also engage automatically at boot, from an `auto` token in a worktree branch
 name (see [Boot sequence](#boot-sequence)).
 
 When you recognise engagement, acknowledge it once in plain turn output. The
-acknowledgement is the commitment. For example, _"Autopilot on."_ Without it,
-treat the message as ordinary input. After acknowledging, mention autopilot
-again only when you pause, reach PR ready, or turn it off.
+acknowledgement is the commitment. For example, _"Autopilot on."_ After
+acknowledging, mention autopilot again only when you pause, reach PR ready, or
+turn it off.
 
 Turning off mirrors engaging. Acknowledge it once (_"Autopilot off."_). Then
 revert to the gated behaviour. Wait at the next acceptance gate, or hand back if
@@ -321,9 +321,7 @@ for an answer (see [Pauses](#pauses)).
 Announce the switch once in plain turn output: autopilot is now watching the PR
 and the user steers it from there. Their feedback must be a review, not a plain
 comment. A review with feedback sends you back to revise. A merge, or a review
-asking to defer it, sends you on. Closing without a merge ends the session. This
-is the PR-ready mention the acknowledgement calls for (see
-[Engagement](#engagement)).
+asking to defer it, sends you on. Closing without a merge ends the session.
 
 Set up the same recurring check. Embed the same values: the PR number, the
 authenticated user's login, and a cutoff timestamp. Capture the cutoff now, as
@@ -349,9 +347,10 @@ already limited them to the user's own, submitted after the cutoff.
   session (see [Stopping a session early](#stopping-a-session-early)). The PR is
   already closed, so post the closing record and end.
 - **A defer-merge review** means the user will merge later by hand. Recognise
-  the intent liberally, as with autopilot engagement. Proceed as for a merge:
-  through Phase 8 to Phase 9 (Collect), skipping Reflect. The PR stays open, and
-  Phase 8 takes its deferral path rather than detecting a merge.
+  the intent liberally, as with autopilot engagement. For example, a review
+  whose body says _"defer merge"_. Proceed as for a merge: through Phase 8 to
+  Phase 9 (Collect), skipping Reflect. The PR stays open, and Phase 8 takes its
+  deferral path rather than detecting a merge.
 - **Any other new review** is a user-directed change. Triage its feedback the
   same as a Phase 7 review. Run each accepted point through the reopening path
   (see
@@ -383,9 +382,7 @@ engage automatically at boot, from an `auto` token in a worktree branch name
 
 Once engaged, take the decision table and drafts as proposed at Phase 9's gate,
 without waiting for the user's acceptance. Still share them as usual. This
-removes only the wait at Phase 9's gate. Base autopilot's review-and-merge watch
-still handles reaching Collect, and the merge or close around it (see
-[Review and merge](#review-and-merge)).
+removes only the wait at Phase 9's gate.
 
 The user can turn it off the same way ("auto-collect off"), independent of the
 base autopilot toggle.
