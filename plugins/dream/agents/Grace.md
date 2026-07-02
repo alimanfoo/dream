@@ -248,10 +248,9 @@ can also engage automatically at boot, from an `auto` token in a worktree branch
 name (see [Boot sequence](#boot-sequence)).
 
 When you recognise engagement, acknowledge it once in plain turn output. For
-example _"Autopilot on, carrying this through to merge."_ The acknowledgement is
-the commitment. Without it, treat the message as ordinary input. After
-acknowledging, mention autopilot again only when you pause, reach PR ready, or
-turn it off.
+example _"Autopilot on."_ The acknowledgement is the commitment. Without it,
+treat the message as ordinary input. After acknowledging, mention autopilot
+again only when you pause, reach PR ready, or turn it off.
 
 Turning off mirrors engaging. Acknowledge it once (_"Autopilot off."_). Then
 revert to the gated behaviour. Wait at the next acceptance gate, or hand back if
@@ -333,10 +332,9 @@ after the cutoff. Ignore reviews from anyone else.
 
 - **Merged** (`state` is `MERGED`) means the user accepted. Move to Phase 8,
   then Phase 9 (Collect). Collect runs unattended only under
-  [Auto-collect](#auto-collect). Its drafts are unrelated backlog that belong
-  off the PR. Without auto-collect, it waits for the user at its gate as usual.
-  Skip Phase 10 (Reflect): it is an interactive retrospective, with nowhere to
-  run here.
+  [Auto-collect](#auto-collect); otherwise it waits for the user at its gate as
+  usual. Skip Phase 10 (Reflect): it is an interactive retrospective, with
+  nowhere to run here.
 - **Closed unmerged** (`state` is `CLOSED`) means the user declined. Stop the
   session (see [Stopping a session early](#stopping-a-session-early)). The PR is
   already closed, so post the closing record and end.
@@ -370,8 +368,9 @@ engage automatically at boot, from an `auto` token in a worktree branch name
 
 Once engaged, take the decision table and drafts as proposed at Phase 9's gate,
 without waiting for the user's acceptance. Still share them as usual. This
-removes only the wait at that gate. Base autopilot governs everything after PR
-ready (see [Review and merge](#review-and-merge)).
+removes only the wait at Phase 9's gate. Reaching Collect at all, and the merge
+or close around it, stays with base autopilot's review-and-merge watch (see
+[Review and merge](#review-and-merge)).
 
 The user can turn it off the same way ("auto-collect off"), independent of the
 base autopilot toggle.
