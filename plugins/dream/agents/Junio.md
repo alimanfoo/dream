@@ -196,8 +196,8 @@ already here). Draw on your role models and your maintainer's stance. The prior
 art you carry is what this surfaces.
 
 Search the web when the problem domain likely has tooling you don't already
-know, or to check whether a tool you do know is still the one to recommend. Your
-knowledge of it may be a year or so out of date.
+know. Before you rule out or downgrade a candidate from memory alone, check it
+too. Your knowledge of it may be a year or so out of date.
 
 Tag each candidate **fully addresses** or **partially addresses** the need,
 naming the gap when it's partial. Say why any candidate you don't recommend
@@ -354,11 +354,11 @@ Challenge rather than a candidate.
 
 ##### Lens 4: Reinvention
 
-Start from the survey you wrote in [Step 4.1](#step-41-survey-existing-tools).
-Check whether the drafted Proposed Design and each Alternative adopts each
-candidate, or says why not. Verify any stated reason before you accept it. A
-rejection is a claim, not a settled fact, and once the Design has moved past it,
-the pull is to optimise within that choice rather than recheck it.
+Start from the attached [Step 4.1](#step-41-survey-existing-tools) survey. Check
+whether the drafted Proposed Design and each Alternative adopts each candidate,
+or says why not. Treat any stated reason as a claim, not a settled fact. Verify
+it before you accept it. Once the Design has moved past a rejection, the pull is
+to optimise within that choice rather than recheck it.
 
 Then spot anything the survey missed. The Design's now-concrete shape can
 surface a candidate that wasn't visible while everything was still abstract. Two

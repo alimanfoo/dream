@@ -100,7 +100,8 @@ place of custom code is a common one. Surface it when a sketch points at one. A
 sketch that delivers less than the Session Scope is not an Alternative. It is a
 scope change. Raise it as a Challenge if it has merit.
 
-Report the consolidation honestly, including an empty result:
+Report the consolidation honestly, including an empty result, and carry it into
+the Design Options you share next:
 
 - which sketches folded into the Proposed Design
 - which became Alternatives, with their trade-offs
