@@ -229,10 +229,8 @@ stands behind each claim, whether the work serves what the repo is for, and
 whether it sits coherently with what the project already delivers and with the
 Draft's own other items. Ralph and Ada aren't part of this round. Junio replies
 with a numbered list of findings, or "no substantive findings." This review is
-advisory, not gating, one round per Draft. Don't loop back to Junio over a
-revision to this Draft. Only a full recompose at
-[Step 1.6](#step-16-name-the-session-type) produces a new Draft that returns
-here. The point is a fresh, adversarial read at the cheapest point to catch a
+advisory, not gating, one round only. Don't loop back to Junio after revising.
+The point is a fresh, adversarial read at the cheapest point to catch a
 foundational problem, before the user ever sees the Draft.
 
 ## Step 1.9: Apply the review
@@ -318,11 +316,6 @@ If accepted, apply the Session Type's category label to the PR via
 
 If the user pushes back, revise and return to
 [Step 1.11](#step-111-share-the-requirements-analysis). Repeat until accepted.
-If the pushback challenges the Session Type itself, return to
-[Step 1.6](#step-16-name-the-session-type) and recompose from there. A recompose
-produces a new Draft, so it goes through Junio's review again at
-[Step 1.8](#step-18-share-the-draft-requirements-analysis-with-junio-for-review)
-before you share it.
 
 This is one of the protocol's user acceptance gates (see
 [Acceptance gates](../protocol.md#acceptance-gates)).
