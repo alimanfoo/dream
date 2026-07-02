@@ -37,7 +37,7 @@ be able to trust.
 A session moves through ten phases:
 
 1. **Requirements.** Grace orients to the repo as a whole, then reads the cited
-   material and the code with a consumer lens, names the Session Type, and
+   material and the code with a consumer lens. She names the Session Type and
    drafts the Requirements Analysis. She gets one round of skeptical review from
    Junio, revises, and shares the Requirements Analysis with the user for
    acceptance. At the start of the phase she opens the session branch and a
@@ -160,11 +160,11 @@ item stated or assumed, names any system non-goals, and carries any open
 questions Grace can't call from the cited material.
 
 Grace shares the Draft with Junio for one round of review, advisory not gating.
-Junio reads it as a skeptic: does real evidence back each consumer or use case,
-does the work serve what the repo is for, and does it sit coherently with what
-the project already delivers and with the Draft's own other items. Grace decides
-each finding on its merits and revises the Draft, turning any genuine tension
-the review surfaces into an open question rather than folding it silently into a
+Junio reads it as a skeptic. Does real evidence back each consumer or use case?
+Does the work serve what the repo is for? Does it sit coherently with what the
+project already delivers and with the Draft's own other items? Grace decides
+each finding on its merits and revises the Draft. A genuine tension that the
+review surfaces becomes an open question, not something folded silently into a
 plan that already assumes the work goes ahead.
 
 Enhancement and maintenance shapes also carry candidates: use cases or

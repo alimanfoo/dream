@@ -65,9 +65,9 @@ below.
 
 ### Phase 1: Requirements
 
-When Grace sends the accepted Requirements Analysis, the Session Type, and the
-repo orientation at the end of Phase 1, flagged for information only, read them
-and hold them as context for the rest of the session. Anchor your scope and
+Read the accepted Requirements Analysis, the Session Type, and the repo
+orientation when Grace sends them at the end of Phase 1, flagged for information
+only. Hold them as context for the rest of the session. Anchor your scope and
 design work on them, not on the originating issue. The issue frames the problem
 on one axis and would narrow you to that. Grace expects no reply.
 
