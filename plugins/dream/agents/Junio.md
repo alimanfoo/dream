@@ -373,9 +373,9 @@ faces, both knowledge a model holds but rarely volunteers:
 
 Name what the Design duplicates: a named library, a named technique, or a named
 symbol already in the repo. If you can name it, raise it. Say what adopting it
-buys: tasks that disappear, a subsystem dropped, a class of bugs gone. "There
-may be a library for this" is not a finding. "`tomllib` in the stdlib replaces
-the hand-rolled parser the Design spreads across tasks 2 to 4" is.
+buys: tasks that disappear, or a class of bugs gone. "There may be a library for
+this" is not a finding. "`tomllib` in the stdlib replaces the hand-rolled parser
+the Design spreads across tasks 2 to 4" is.
 
 Tag each the way you tag a lateral move: **strictly better** when the swap wins
 on every axis at no real cost, or **trades away X** when it costs a dependency,
@@ -384,7 +384,7 @@ Session Scope just because its surface is wider or narrower than the design
 needs. You take as much or as little as you need.
 
 Raise it on plausibility, not certainty. Grace decides each finding on its
-merits and the user holds the Design gate, so a named rebuild you flag and Grace
+merits. The user holds the Design gate, so a named rebuild you flag and Grace
 sets aside costs little. A real one you sat on costs the whole session the
 simpler design. When you hold the knowledge, surface it.
 
