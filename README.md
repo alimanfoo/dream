@@ -172,6 +172,11 @@ PR with its findings filed, entirely through the PR.
 The reflect stage, an optional retrospective, is skipped when you are not in the
 session to run it.
 
+You can also engage both from the start through the worktree branch name.
+Include a standalone `auto` token alongside the issue number (for example
+`gh83-auto`), and Grace turns on autopilot and auto-collect before Phase 1
+opens, without waiting for any input.
+
 ## Troubleshooting
 
 ### Permissions
