@@ -101,7 +101,8 @@ sketch that delivers less than the Session Scope is not an Alternative. It is a
 scope change. Raise it as a Challenge if it has merit.
 
 Report the consolidation honestly, including an empty result, and carry it into
-the Design Options you share next:
+the Design Options you share with Junio and Ralph in
+[Step 4.4](#step-44-share-the-design-options-with-junio-and-ralph-for-review):
 
 - which sketches folded into the Proposed Design
 - which became Alternatives, with their trade-offs

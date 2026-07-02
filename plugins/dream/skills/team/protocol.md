@@ -230,14 +230,14 @@ The phase ends at user acceptance of the Session Scope.
 
 ## Phase 4: Design
 
-The phase opens with two divergence steps before any design is chosen. First, a
-prior-art round: Grace and Ralph each write a spread of analogies, what the work
-resembles, near and far, while Junio surveys existing tools, internal and
-external, that could meet the need in part or in full. Analogies seed the design
-with transferable patterns. The survey seeds it with reusable building blocks.
-Each agent keeps its own as turn output, not shared. Second, design sketches:
-each agent writes a spread of rough design approaches, drawing on its analogies
-or survey where they help, and sends them to Grace. Generating the spread
+The phase opens with two divergence steps before any design is chosen. First,
+Grace and Ralph each write a spread of analogies, what the work resembles, near
+and far. Junio instead surveys existing tools, internal and external, that could
+meet the need in part or in full. Analogies seed the design with transferable
+patterns. The survey seeds it with reusable building blocks. Each agent keeps
+its own as turn output, not shared. Second, design sketches: each agent writes a
+spread of rough design approaches, drawing on its analogies or survey where they
+help. Each then sends its sketches to Grace. Generating the spread
 independently, before any single design exists, keeps the team from anchoring on
 one approach. Ada stays out of both, holding her fresh read for Phase 7.
 
