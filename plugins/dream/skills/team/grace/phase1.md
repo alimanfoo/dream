@@ -8,10 +8,11 @@ to address, a piece of code to tidy up, constraints, rough shape. When the boot
 sequence derived one or more issues from the worktree branch name, those issues
 are the session input. Phase 1 captures the system's requirements behind it. It
 makes any assumptions explicit so the user can correct them. It gets one round
-of skeptical review from Junio before anyone else sees it. And it elicits
-answers to anything Grace can't call from the cited material. It ends at an
-accepted Requirements Analysis: what the system must do, for whom, and what it
-is deliberately not for. Follow the steps below in sequence.
+of skeptical review from Junio before anyone else sees the Draft Requirements
+Analysis. And it elicits answers to anything Grace can't call from the cited
+material. It ends at an accepted Requirements Analysis: what the system must do,
+for whom, and what it is deliberately not for. Follow the steps below in
+sequence.
 
 ## Step 1.1: Open the session PR
 
@@ -132,8 +133,8 @@ enhancement, adds a new CLI subcommand") and continue to
 ## Step 1.7: Compose the Draft Requirements Analysis
 
 Compose the Draft Requirements Analysis: your explicit reading of the system's
-requirements behind the session input. This is the artifact Junio reviews next,
-so compose it in full before sending it anywhere. Without this step, hidden
+requirements behind the session input. This is the artifact Junio reviews next.
+Compose it in full before sending it anywhere. Without this step, hidden
 inferences about who is served and what counts as done ride through to Design.
 There they shape machinery no real consumer needs.
 
@@ -219,19 +220,23 @@ the input got it wrong.
 
 ## Step 1.8: Share the Draft Requirements Analysis with Junio for review
 
-Send the Draft Requirements Analysis to Junio via `SendMessage`, together with
-the Session Type and the repo orientation from
+Send the Draft Requirements Analysis to Junio via `SendMessage`, with the
+Session Type and the repo orientation from
 [Step 1.2](#step-12-orient-to-the-repo). Junio hasn't seen either yet. Sign off
 `From Grace. RSVP via SendMessage.`
 
-Junio reads from the maintainer's view, testing whether a real consumer or need
-stands behind each claim, whether the work serves what the repo is for, and
-whether it sits coherently with what the project already delivers and with the
-Draft's own other items. Ralph and Ada aren't part of this round. Junio replies
-with a numbered list of findings, or "no substantive findings." This review is
-advisory, not gating, one round only. Don't loop back to Junio after revising.
-The point is a fresh, adversarial read at the cheapest point to catch a
-foundational problem, before the user ever sees the Draft.
+Junio reads from the maintainer's view, testing:
+
+- whether a real consumer or need stands behind each claim
+- whether the work serves what the repo is for
+- whether it sits coherently with what the project already delivers and with the
+  Draft's own other items
+
+Ralph and Ada aren't part of this round. Junio replies with a numbered list of
+findings, or "no substantive findings." This review is advisory, not gating, one
+round only. Don't loop back to Junio after revising. The point is a fresh,
+adversarial read at the cheapest point to catch a foundational problem, before
+the user ever sees the Draft.
 
 ## Step 1.9: Apply the review
 
@@ -245,18 +250,19 @@ Route each finding by what it settles:
   said, or confirms or disproves an assumed item. Correct the item, and its
   stated/assumed marking, directly in the Draft.
 - **A genuine open question.** The finding surfaces a real tension nothing
-  settles outright: no consumer the read can find, a fit the orientation doesn't
-  support, a clash with an existing requirement or with another item in the
-  Draft. Add it to the open questions, or sharpen one already there, using the
-  [Step 1.7](#step-17-compose-the-draft-requirements-analysis) test: write the
-  assumed value you'd record, and if you can't write one without guessing, it's
-  open. Give the option to stop equal standing with any option that continues
-  the work. Name it plainly among the possible answers. Never bury it as an
-  aside inside a version of doing the work anyway.
-- **Reject.** You disagree with the finding. Name it and your reason in the
-  message in [Step 1.11](#step-111-share-the-requirements-analysis) regardless.
-  Every finding at this review tests a foundational premise, so a rejection you
-  keep to yourself is the same deference this review exists to catch.
+  settles outright. For example: no consumer the read can find, a fit the
+  orientation doesn't support, or a clash with an existing requirement or
+  another Draft item. Add it to the open questions, or sharpen one already
+  there. Use the [Step 1.7](#step-17-compose-the-draft-requirements-analysis)
+  test: write the assumed value you'd record. If you can't write one without
+  guessing, it's open. Treat the option to stop as equal to any option that
+  continues the work. Name it plainly among the possible answers. Never bury it
+  as an aside inside a version of doing the work anyway.
+- **A finding you reject.** You disagree with the finding. Name it and your
+  reason in the message in
+  [Step 1.11](#step-111-share-the-requirements-analysis) regardless. Every
+  finding at this review tests a foundational premise, so a rejection you keep
+  to yourself is the same deference this review exists to catch.
 
 ## Step 1.10: Elicit answers to open questions
 
@@ -283,9 +289,9 @@ yet.
 
 ## Step 1.11: Share the Requirements Analysis
 
-Send the completed Requirements Analysis to the user, with a brief note on
-**what changed from the Draft after Junio's review**: folded-in findings, and
-any rejections with the reason. The user learns what the review changed without
+Send the completed Requirements Analysis to the user. Add a brief note on **what
+changed from the Draft after Junio's review**: folded-in findings, and any
+rejections with the reason. The user learns what the review changed without
 seeing it directly. When there are candidates, ask the user to name any they
 want included, by number. Note that any they don't name are carried forward as
 Opportunities to Collect (see
