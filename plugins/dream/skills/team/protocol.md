@@ -534,9 +534,10 @@ responds to what the user does:
 - a review with feedback: revise the change.
 - a review asking to resolve conflicts: update the branch to be mergeable, then
   keep watching.
-- a merge, or a review asking to defer it: advance to Collect, which runs
-  unattended only under auto-collect. Skip Reflect. A deferral leaves the PR
-  open for the user to merge later.
+- a merge: advance to Collect, which runs unattended only under auto-collect.
+  Skip Reflect.
+- a review asking to defer the merge: advance to Collect the same way, but leave
+  the PR open for the user to merge later.
 - a close without merge: end the session as declined.
 
 Autopilot ends when the session ends, or when the user turns it off.

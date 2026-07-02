@@ -243,9 +243,8 @@ Junio/Ralph review, and sharing each artifact with the user as it lands.
 The user can engage autopilot at any point: in the session input ("session input
 is ghXX. autopilot on."), mid-session, or in a gate reply. Recognise the intent
 liberally. The phrasing varies ("autopilot on", "go autopilot", "just proceed
-through the gates"). The user can turn it off the same way ("autopilot off"). It
-can also engage automatically at boot, from an `auto` token in a worktree branch
-name (see [Boot sequence](#boot-sequence)).
+through the gates"). It can also engage automatically at boot, from an `auto`
+token in a worktree branch name (see [Boot sequence](#boot-sequence)).
 
 When you recognise engagement, acknowledge it once in plain turn output. The
 acknowledgement is the commitment. For example, _"Autopilot on."_
@@ -313,8 +312,8 @@ automatically.
 ### Review and merge
 
 After you mark the PR ready (end of Phase 7), keep watching it for the user's
-response instead of handing back. Use the same poll-and-resume way a pause waits
-for an answer (see [Pauses](#pauses)).
+response instead of handing back. Use the same poll-and-resume way that a pause
+waits for an answer (see [Pauses](#pauses)).
 
 Announce the switch once in plain turn output: autopilot is now watching the PR
 and the user can steer it from there. Their feedback must be a review, not a
@@ -322,9 +321,9 @@ plain comment. A review with feedback sends you back to revise. A merge, or a
 review asking to defer it, sends you on. Closing without a merge ends the
 session.
 
-Set up the same recurring check. Embed the same values: the PR number, the
+Set up the same recurring cron job. Embed the same values: the PR number, the
 authenticated user's login, and a cutoff timestamp. Capture the cutoff now, as
-you enter the watch, with `date -u +%Y-%m-%dT%H:%M:%SZ`: you have just marked
+you enter the watch, with `date -u +%Y-%m-%dT%H:%M:%SZ`. You have just marked
 the PR ready, so now is PR-ready time. Query the reviews, the state, and whether
 the PR is mergeable, in place of comments. Filter the reviews to the user's own
 since the cutoff:
@@ -334,45 +333,48 @@ gh pr view <N> --json reviews,state,mergeable \
   --jq '{state, mergeable, reviews: [.reviews[] | select(.author.login == "USER" and .submittedAt > "TIMESTAMP")]}'
 ```
 
-Read `state` first, then act on the reviews the query returns. The filter has
-already limited them to the user's own, submitted after the cutoff.
+Read `state` first. `MERGED` and `CLOSED` are terminal:
 
 - **Merged** (`state` is `MERGED`) means the user accepted. Move to Phase 8,
   then Phase 9 (Collect). Collect runs unattended only under
-  [Auto-collect](#auto-collect). Otherwise, it waits for the user at its gate as
-  usual. Skip Phase 10 (Reflect): it is an interactive retrospective, with
+  [Auto-collect](#auto-collect). Otherwise it waits for the user at its gate as
+  usual. Skip Phase 10 (Reflect). It is an interactive retrospective, with
   nowhere to run here.
 - **Closed unmerged** (`state` is `CLOSED`) means the user declined. Stop the
   session (see [Stopping a session early](#stopping-a-session-early)). The PR is
   already closed, so post the closing record and end.
-- **A defer-merge review** means the user will merge later by hand. Recognise
-  the intent liberally, as with autopilot engagement. For example, a review
-  whose body says _"defer merge"_. Proceed as for a merge: through Phase 8 to
-  Phase 9 (Collect), skipping Reflect. The PR stays open, and Phase 8 takes its
-  deferral path rather than detecting a merge.
-- **A resolve-conflicts review** asks you to make the PR mergeable again.
-  Recognise the intent liberally, as with a defer-merge review, from a body such
-  as _"resolve conflicts"_ or _"update the branch"_. The review is your
-  go-ahead. Fetch and merge main into the branch, and Ralph resolves any markers
-  and commits. The freeze permits this as the merge itself. Push, re-ready the
-  PR, and recreate the check with the cutoff set to now, so the handled review
-  doesn't resurface.
-- **Any other new review** is a user-directed change. Triage its feedback the
-  same as a Phase 7 review. Run each accepted point through the reopening path
-  (see
-  [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user)).
-  Post a fresh response comment for the rework, and leave the `dream:` metadata
-  line as it is. These commits are post-handoff. Then recreate the check with
-  the cutoff set to now, so the handled review doesn't resurface. An approving
-  review with nothing to act on needs no change.
-- **Not mergeable** (`mergeable` is `CONFLICTING`), with no new review to act
-  on, means the user cannot merge because main has moved under the branch. Post
-  a comment naming the block once, inviting the user to resolve it themselves or
-  to ask you to in a review. Then keep watching. Don't resolve it unprompted.
+
+Otherwise the PR is still open, so act on the reviews the query returned. A poll
+can return several reviews. One review can carry more than one intent. Act on
+all of them, in this order, and drop nothing:
+
+1. **Feedback** in a review is a user-directed change. Triage it the same as a
+   Phase 7 review. Run each accepted point through the reopening path (see
+   [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user)).
+   Post a fresh response comment for the rework, and leave the `dream:` metadata
+   line as it is. These commits are post-handoff.
+2. **A resolve-conflicts request**, recognised liberally from a body such as
+   _"resolve conflicts"_ or _"update the branch"_, is your go-ahead to make the
+   PR mergeable. Resolve the conflict as Phase 8 describes. It counts as the
+   merge itself, not new development.
+3. **A defer-merge request**, recognised liberally from a body such as _"defer
+   merge"_, is terminal, like a merge. Go through Phase 8's deferral path to
+   Phase 9 (Collect), skipping Reflect, with the PR left open.
+
+An approving review with nothing to act on needs no change. When you have
+handled the batch and are still watching (you did not merge, defer, or close),
+cancel the cron job. Create a new one with the cutoff set to now, so the handled
+reviews don't resurface.
+
+When the PR is **not mergeable** (`mergeable` is `CONFLICTING`) and no review
+asked you to act, the user cannot merge. Main has moved under the branch. Check
+the PR for a block comment you already posted. If there is none, post one naming
+the block and inviting the user to resolve it themselves or ask you to in a
+review. Then keep watching. Don't resolve it unprompted.
 
 The user can give a review's feedback directly in the session instead. Cancel
-the recurring check once the PR is merged or closed, once you defer the merge,
-or once you hand back.
+the cron job once the PR is merged or closed, once you defer the merge, or once
+you hand back.
 
 ### Auto-collect
 
