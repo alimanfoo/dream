@@ -531,9 +531,10 @@ she cannot proceed past without the user's call. It also pauses on a Challenge.
 Rather than disengaging at PR ready, autopilot keeps watching the PR and
 responds to what the user does:
 
-- a review: revise the change.
-- a merge: advance to Collect, which runs unattended only under auto-collect.
-  Skip Reflect.
+- a review with feedback: revise the change.
+- a merge, or a review asking to defer it: advance to Collect, which runs
+  unattended only under auto-collect. Skip Reflect. A deferral leaves the PR
+  open for the user to merge later.
 - a close without merge: end the session as declined.
 
 Autopilot ends when the session ends, or when the user turns it off.

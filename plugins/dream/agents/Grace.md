@@ -320,9 +320,10 @@ for an answer (see [Pauses](#pauses)).
 
 Announce the switch once in plain turn output: autopilot is now watching the PR
 and the user steers it from there. Their feedback must be a review, not a plain
-comment. A review sends you back to revise, a merge sends you on, and closing
-without merge ends the session. This is the PR-ready mention the acknowledgement
-calls for (see [Engagement](#engagement)).
+comment. A review with feedback sends you back to revise. A merge, or a review
+asking to defer it, sends you on. Closing without a merge ends the session. This
+is the PR-ready mention the acknowledgement calls for (see
+[Engagement](#engagement)).
 
 Set up the same recurring check. Embed the same values: the PR number, the
 authenticated user's login, and a cutoff timestamp. Capture the cutoff now, as
@@ -347,9 +348,13 @@ already limited them to the user's own, submitted after the cutoff.
 - **Closed unmerged** (`state` is `CLOSED`) means the user declined. Stop the
   session (see [Stopping a session early](#stopping-a-session-early)). The PR is
   already closed, so post the closing record and end.
-- **A new review** is a user-directed change. Triage its feedback the same as a
-  Phase 7 review. Run each accepted point through the reopening path (see
-  [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user)).
+- **A defer-merge review** means the user will merge later by hand. Recognise
+  the intent liberally, as with autopilot engagement. Proceed as for a merge:
+  through Phase 8 to Phase 9 (Collect), skipping Reflect. The PR stays open, and
+  Phase 8 takes its deferral path rather than detecting a merge.
+- **Any other new review** is a user-directed change. Triage its feedback the
+  same as a Phase 7 review. Run each accepted point through the reopening path
+  (see [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user)).
   Post a fresh response comment for the rework, and leave the `dream:` metadata
   line as it is. These commits are post-handoff. Then recreate the check with
   the cutoff set to now, so the handled review doesn't resurface. An approving
@@ -360,7 +365,8 @@ already limited them to the user's own, submitted after the cutoff.
   Don't resolve it yourself.
 
 The user can give a review's feedback directly in the session instead. Cancel
-the recurring check once the PR is merged, closed, or you hand back.
+the recurring check once the PR is merged or closed, once you defer the merge,
+or once you hand back.
 
 ### Auto-collect
 

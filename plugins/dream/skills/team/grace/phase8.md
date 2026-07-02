@@ -7,7 +7,7 @@ The goal is a clean merge. If nothing is in the way (green CI, no conflicts),
 the user merges and the phase ends.
 
 Under autopilot, move on to Collect. The review-and-merge watch has already
-detected the merge (see
+detected the merge, or a review deferring it (see
 [Review and merge](../../../agents/Grace.md#review-and-merge)).
 
 Merge can be deferred. When a second human reviewer is needed, or the user
