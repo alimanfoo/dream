@@ -132,30 +132,43 @@ If you are feeling brave, at any point after you have provided the session input
 you can switch on autopilot mode by saying:
 
 ```text
-Autopilot on, proceed autonomously through to PR ready for human review.
+Autopilot on.
 ```
 
-...to Grace. This should mean that Grace directs the team autonomously all the
-way through to PR ready for human review, without needing any further input.
+...to Grace. She then directs the team autonomously, taking the default at each
+acceptance gate instead of waiting for your approval. She still produces every
+artifact and runs every review.
 
-Grace will still stop to ask for input in some cases. One is open questions
-arising from the requirements analysis. Another is something unexpected turning
-up during development. If Grace does stop, she might need a reminder to
-re-engage autopilot after that to resume full autonomy.
+Grace will still stop for input in these cases: an open question from the
+requirements analysis, or something unexpected turning up during development.
+She posts these to the PR and watches it for your reply. This lets you unblock
+her there without dropping into the session. If she does stop, she might need a
+reminder to re-engage autopilot afterwards to resume full autonomy.
 
-Autopilot disengages once the PR is marked ready for human review, so the merge,
-collect and reflect stages always wait for you by default. If you also want the
-collect stage to run unattended, filing or commenting on issues without waiting
-for your approval, turn that on separately:
+Autopilot no longer hands back at PR ready. Once the PR is ready, Grace keeps
+watching it and carries it through:
+
+- a review from you sends her back to revise
+- your merge sends her on to the collect stage
+- closing the PR without merging ends the session as declined
+
+Give your feedback as a PR review. She watches for reviews, not plain PR
+comments. You can also give it in the session, but the PR alone is enough to
+steer the whole session.
+
+The collect stage still waits for your approval by default. Turn on auto-collect
+separately to let it run unattended, filing or commenting on issues without
+waiting:
 
 ```text
 Auto-collect on.
 ```
 
 You can say this alongside the autopilot command above, or on its own later in
-the session. It only covers the collect stage's own approval step. Merging still
-needs you, and the reflect stage is an optional retrospective Grace offers
-rather than something to wait on.
+the session. With both on, a session can run from input all the way to a merged
+PR with its findings filed, entirely through the PR. The reflect stage, an
+optional retrospective, is skipped when you are not in the session to take it
+up.
 
 ## Troubleshooting
 

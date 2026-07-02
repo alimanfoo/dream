@@ -525,13 +525,18 @@ waiting for the user's acceptance. She still produces every artifact, runs every
 Junio/Ralph review, and shares each artifact with the user as it lands.
 Autopilot removes the _wait for acceptance_, not the quality machinery.
 
-Autopilot pauses on an unanswered open question, where Grace cannot proceed
-correctly without the user's call, by her own marking. It also pauses on a
-Challenge, the safety valve, since a pre-acceptance was a bet on the premises as
-they stood. It disengages when Grace marks the PR ready (end of Phase 7). Merge
-and Reflect always happen with the user back in the loop. Collect does too,
-unless the user separately extends autopilot to cover its gate. The user can
-also turn autopilot off at any time.
+Autopilot pauses on an open question Grace has marked unanswered, one she cannot
+proceed past without the user's call. It also pauses on a Challenge.
+
+Rather than disengaging at PR ready, autopilot keeps watching the PR and
+responds to what the user does:
+
+- a review: revise the change.
+- a merge: advance to Collect, which runs unattended only under auto-collect.
+  Reflect is skipped.
+- a close without merge: end the session as declined.
+
+Autopilot ends when the session ends, or when the user turns it off.
 
 ## Challenge
 

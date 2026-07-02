@@ -248,9 +248,14 @@ can also engage automatically at boot, from an `auto` token in a worktree branch
 name (see [Boot sequence](#boot-sequence)).
 
 When you recognise engagement, acknowledge it once in plain turn output. For
-example _"Autopilot on, proceeding through to PR ready."_ The acknowledgement is
+example _"Autopilot on, carrying this through to merge."_ The acknowledgement is
 the commitment. Without it, treat the message as ordinary input. After
-acknowledging, mention autopilot again only when pausing or disengaging.
+acknowledging, mention autopilot again only when you pause, reach PR ready, or
+turn it off.
+
+Turning off mirrors engaging. Acknowledge it once (_"Autopilot off."_). Then
+revert to the gated behaviour. Wait at the next acceptance gate, or hand back if
+you already reached PR ready.
 
 ### Gate-defined defaults
 
@@ -308,16 +313,48 @@ replies in the session. Cancel the cron job and resume autopilot.
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
 
-### Disengagement
+### Review and merge
 
-Autopilot disengages when you mark the PR ready (end of Phase 7). The user is
-back in the loop for Phase 8 (Merge) and Phase 10 (Reflect); each already
-involves the user directly. Phase 9 (Collect) does too, unless the user has
-separately engaged [Auto-collect](#auto-collect).
+After you mark the PR ready (end of Phase 7), keep watching it for the user's
+response instead of handing back. Use the same poll-and-resume way a pause waits
+for an answer (see [Pauses](#pauses)).
 
-The user can also turn autopilot off at any time. Acknowledge that the same way
-you acknowledged engagement ("Autopilot off, resuming gates from Phase N") and
-resume waiting at the next acceptance gate.
+Set up the same recurring check. Embed the same values: the PR number, the
+authenticated user's login, and a timestamp. Take the PR-ready time as the
+cutoff. Query the reviews, the state, and whether the PR is mergeable, in place
+of comments:
+
+```bash
+gh pr view <N> --json reviews,state,mergeable
+```
+
+Read `state` first, then act on the authenticated user's own reviews submitted
+after the cutoff. Ignore reviews from anyone else.
+
+- **Merged** (`state` is `MERGED`) means the user accepted. Move to Phase 8,
+  then Phase 9 (Collect). Collect runs unattended only under
+  [Auto-collect](#auto-collect). Its drafts are unrelated backlog that belong
+  off the PR. Without auto-collect, it waits for the user at its gate as usual.
+  Skip Phase 10 (Reflect): it is an interactive retrospective, with nowhere to
+  run here.
+- **Closed unmerged** (`state` is `CLOSED`) means the user declined. Stop the
+  session (see [Stopping a session early](#stopping-a-session-early)). The PR is
+  already closed, so post the closing record and end.
+- **A new review** is a user-directed change. Triage its feedback the same as a
+  Phase 7 review. Run each accepted point through the reopening path (see
+  [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user)).
+  Post a fresh response comment for the rework, and leave the `dream:` metadata
+  line as it is. These commits are post-handoff. Then recreate the check with
+  the cutoff set to now, so the handled review doesn't resurface. An approving
+  review with nothing to act on needs no change.
+- **Not mergeable** (`mergeable` is `CONFLICTING`), with no new review to act
+  on, means the user cannot merge because main has moved under the branch. Post
+  a comment naming the block once, so the user sees it. Then keep watching.
+  Don't resolve it yourself.
+
+The user can give a review's feedback directly in the session instead. The
+recurring check ignores plain PR comments. Cancel the recurring check once the
+PR is merged, closed, or you hand back.
 
 ### Auto-collect
 
@@ -333,9 +370,8 @@ engage automatically at boot, from an `auto` token in a worktree branch name
 
 Once engaged, take the decision table and drafts as proposed at Phase 9's gate,
 without waiting for the user's acceptance. Still share them as usual. This
-removes only the wait, the same as base autopilot. Phase 8 (Merge) and Phase 10
-(Reflect) are unaffected: each already involves the user directly, regardless of
-this setting.
+removes only the wait at that gate. Base autopilot governs everything after PR
+ready (see [Review and merge](#review-and-merge)).
 
 The user can turn it off the same way ("auto-collect off"), independent of the
 base autopilot toggle.
