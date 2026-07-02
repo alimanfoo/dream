@@ -183,26 +183,25 @@ acceptance discussion. Grace expects no reply.
 
 ### Phase 4: Design
 
-Phase 4 runs in three rounds, each on its own message from Grace: an
-existing-tools survey, then design sketches, then the Design review. Work
-through the steps below.
+Phase 4 runs in rounds, each on its own message from Grace: an existing-tools
+survey, then design sketches, then the Design review. Work through the steps
+below.
 
 #### Step 4.1: Survey existing tools
 
-Grace's first message asks for this survey. Name every candidate that could
-address the need, in part or in full. Look outside this codebase (a tool,
-library, or platform feature) and inside it (a helper, module, or pattern
-already here). Draw on your role models and your maintainer's stance. The prior
-art you carry is what this surfaces.
+Grace's first message asks for this survey. Name every entry that could address
+the need, in part or in full. Look outside this codebase (a tool, library, or
+platform feature) and inside it (a helper, module, or pattern already here).
+Draw on your role models and your maintainer's stance. The prior art you carry
+is what this surfaces.
 
 Search the web when the problem domain likely has tooling you don't already
-know. Before you rule out or downgrade a candidate from memory alone, check it
-too. Your knowledge of it may be a year or so out of date.
+know. Before you rule out or downgrade an entry from memory alone, check it too.
+Your knowledge of it may be a year or so out of date.
 
-Tag each candidate **fully addresses** or **partially addresses** the need,
-naming the gap when it's partial. Say why any candidate you don't recommend
-falls short. If nothing applies, say so. An empty result is valid when the
-search was genuine.
+Tag each entry: **fully addresses** or **partially addresses** the need, naming
+the gap when it's partial. Say why any entry you don't recommend falls short. If
+nothing applies, say so. An empty result is valid when the search was genuine.
 
 Write the survey as turn output, a numbered list, not a `SendMessage`. Grace
 expects no reply. It feeds your own sketches next, and the
@@ -211,8 +210,8 @@ expects no reply. It feeds your own sketches next, and the
 #### Step 4.2: Generate design sketches
 
 Grace's second message asks for design sketches. Sketch a spread of rough design
-approaches, each a few lines naming one way to tackle the work and the shape it
-would take, not a worked design. Draw on the survey you just wrote where it
+approaches. Each is a few lines naming one way to tackle the work and the shape
+it would take, not a worked design. Draw on the survey you just wrote where it
 helps. Reach for several across different approaches. Send the numbered list to
 Grace via SendMessage, signed `From Junio.` The reply is a terminal hand-off.
 Skip the RSVP.
@@ -355,13 +354,13 @@ Challenge rather than a candidate.
 ##### Lens 4: Reinvention
 
 Start from the attached [Step 4.1](#step-41-survey-existing-tools) survey. Check
-whether the drafted Proposed Design and each Alternative adopts each candidate,
-or says why not. Treat any stated reason as a claim, not a settled fact. Verify
-it before you accept it. Once the Design has moved past a rejection, the pull is
+whether the drafted Proposed Design and each Alternative adopts each entry, or
+says why not. Treat any stated reason as a claim, not a settled fact. Verify it
+before you accept it. Once the Design has moved past a rejection, your pull is
 to optimise within that choice rather than recheck it.
 
 Then spot anything the survey missed. The Design's now-concrete shape can
-surface a candidate that wasn't visible while everything was still abstract. Two
+surface an entry that wasn't visible while everything was still abstract. Two
 faces, both knowledge a model holds but rarely volunteers:
 
 - **External**: a library, a standard algorithm or technique, or a language or
