@@ -157,13 +157,18 @@ attention. If no findings were accepted, flip immediately.
 Hand back to the user once all comments are addressed. The PR is ready for the
 user's acceptance. Phase 8 handles the merge itself.
 
+Under autopilot, don't hand back. Enter the review-and-merge watch instead (see
+[Review and merge](../../../agents/Grace.md#review-and-merge)). It carries the
+PR through the user's review, merge, or close.
+
 Marking the PR ready hands off the branch, and from here it is frozen (see
 [Phase 8: Merge](../protocol.md#phase-8-merge)). In Merge, Collect, and Reflect
 a finding that would once have become a follow-on task becomes an issue instead.
 You fold no new development into the PR. Resolving merge conflicts is the
 exception. That is the merge itself, delegated to Ralph as Phase 8 describes.
-Only a user-directed change reopens Develop. You handle it as an explicit
-reopening, the same as any Phase 6 task:
+Only a user-directed change reopens Develop. Under autopilot, a review with
+feedback is that change. You handle it as an explicit reopening, the same as any
+Phase 6 task:
 
 - Grace creates a task
 - Ralph implements and commits

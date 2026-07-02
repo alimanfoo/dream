@@ -56,7 +56,7 @@ plugins/:
             Engagement:
             Gate-defined defaults:
             Pauses:
-            Disengagement:
+            Review and merge:
             Auto-collect:
           Stopping a session early:
           Behaviour-preserving task briefs:
