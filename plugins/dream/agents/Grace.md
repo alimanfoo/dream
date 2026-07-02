@@ -248,9 +248,7 @@ can also engage automatically at boot, from an `auto` token in a worktree branch
 name (see [Boot sequence](#boot-sequence)).
 
 When you recognise engagement, acknowledge it once in plain turn output. The
-acknowledgement is the commitment. For example, _"Autopilot on."_ After
-acknowledging, mention autopilot again only when you pause, reach PR ready, or
-turn it off.
+acknowledgement is the commitment. For example, _"Autopilot on."_
 
 Turning off mirrors engaging. Acknowledge it once (_"Autopilot off."_). Then
 revert to the gated behaviour. Wait at the next acceptance gate, or hand back if
@@ -319,9 +317,10 @@ response instead of handing back. Use the same poll-and-resume way a pause waits
 for an answer (see [Pauses](#pauses)).
 
 Announce the switch once in plain turn output: autopilot is now watching the PR
-and the user steers it from there. Their feedback must be a review, not a plain
-comment. A review with feedback sends you back to revise. A merge, or a review
-asking to defer it, sends you on. Closing without a merge ends the session.
+and the user can steer it from there. Their feedback must be a review, not a
+plain comment. A review with feedback sends you back to revise. A merge, or a
+review asking to defer it, sends you on. Closing without a merge ends the
+session.
 
 Set up the same recurring check. Embed the same values: the PR number, the
 authenticated user's login, and a cutoff timestamp. Capture the cutoff now, as
