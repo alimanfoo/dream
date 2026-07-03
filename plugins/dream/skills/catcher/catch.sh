@@ -8,6 +8,11 @@
 # are the only state. So any trigger works. The default is a background loop.
 # For a machine that must survive reboots, drive `catch.sh --once` from cron.
 #
+# One session at a time. Two live background teams share a teammate namespace
+# and evict each other, so the coordinator runs a single dispatched session at
+# a time. A session holds the slot from dispatch until its pull request is
+# merged or closed, so the user's merge paces the next dispatch.
+#
 # Permissions: a dispatched session runs in auto mode and reads the user's and
 # the host repo's .claude/settings.json, the same as an autopilot session
 # launched by hand. Keep the recurring unattended writes (gh pr create, gh pr
@@ -16,7 +21,9 @@
 #
 # Layout: the coordinator assumes the standard worktree layout, where each
 # dispatched worktree is a sibling of the main checkout under a directory
-# dedicated to this repo. It creates them as <container>/GH<n>-auto.
+# dedicated to this repo. It creates them as <container>/GH<n>-<timestamp>-auto.
+# The timestamp makes each attempt unique, so a retry never collides with an
+# earlier attempt's branch or pull request.
 
 set -uo pipefail
 
@@ -67,25 +74,41 @@ repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) || die "
 
 # --- one tick --------------------------------------------------------------
 
-# True when an autonomous session is still developing: a live "-auto" session
-# under this repo whose branch has no ready, merged, or closed pull request. A
-# session past PR ready (open non-draft), merged, or closed does not count, so
-# the next issue can start while earlier PRs wait for the user. A read failure
-# defers, which is the safe direction.
-dev_session_in_flight() {
-  local agents cwd base branch advanced
+# True when a session holds the one-at-a-time slot: a live "-auto" session under
+# this repo whose branch has no merged or closed pull request. A developing
+# session and one awaiting review both hold the slot, because two live teams
+# would corrupt each other. A session whose PR is merged or closed has finished
+# and frees the slot. Each branch is unique per attempt, so its PR state is that
+# session's alone, never an earlier attempt's. A read failure defers, the safe
+# direction, since a wrong "clear" would let a second team corrupt a live one.
+session_in_flight() {
+  local agents cwd base branch finished
   agents=$(claude agents --json 2>/dev/null) || { log "cannot read claude agents; deferring"; return 0; }
   while read -r cwd; do
     [ -n "$cwd" ] || continue
     base=$(basename "$cwd")
     [[ "$base" =~ (^|[-_])[Aa][Uu][Tt][Oo]([-_]|$) ]] || continue
     branch=$base
-    advanced=$(gh pr list --repo "$repo" --head "$branch" --state all --json state,isDraft \
-      --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED" or (.state == "OPEN" and .isDraft == false))] | length' \
+    finished=$(gh pr list --repo "$repo" --head "$branch" --state all --json state \
+      --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED")] | length' \
       2>/dev/null || echo 0)
-    [ "${advanced:-0}" -eq 0 ] && return 0
-  done < <(jq -r --arg c "$container/" '.[] | select(.cwd | startswith($c)) | .cwd' <<<"$agents")
+    if [ "${finished:-0}" -eq 0 ]; then
+      log "deferring: $branch is still in flight; only one session runs at a time"
+      return 0
+    fi
+  done < <(jq -r --arg c "$container/" '.[] | select((.cwd // "") | startswith($c)) | .cwd' <<<"$agents")
   return 1
+}
+
+# True when the issue already has an open pull request from a current or earlier
+# session, so it should not be picked up again. A read failure returns true, so
+# a transient error never re-dispatches an issue that is already under way.
+has_open_pr() {
+  local n=$1 count
+  count=$(gh pr list --repo "$repo" --state open --json headRefName 2>/dev/null \
+    | jq -r --arg n "$n" '[.[] | select(.headRefName | test("^GH" + $n + "(-.*)?-auto$"))] | length' 2>/dev/null)
+  [ -n "$count" ] || return 0
+  [ "$count" -ne 0 ]
 }
 
 # All of an issue's blockers are closed. A read failure treats the issue as
@@ -101,18 +124,20 @@ unblocked() {
 
 # Create the worktree and launch a background session for it. The branch name
 # carries the issue number and the auto token, which Grace's boot reads to take
-# the issue as the session input with autopilot and auto-collect engaged.
+# the issue as the session input with autopilot and auto-collect engaged. The
+# timestamp between them makes the name unique per attempt.
 #
 # The worktree is made with `git worktree add`, not `claude -w`, so it lands at
-# a predictable sibling path with a clean branch name that the cap check and the
-# already-picked-up check both rely on, independent of the CLI's own worktree
-# placement.
+# a predictable sibling path with a branch name the cap and dedup checks rely
+# on, independent of the CLI's own worktree placement.
 dispatch() {
   local n=$1
-  local branch="GH${n}-auto"
-  local wt="$container/GH${n}-auto"
+  local ts
+  ts=$(date -u +%Y%m%d-%H%M%S)
+  local branch="GH${n}-${ts}-auto"
+  local wt="$container/${branch}"
   local err
-  log "dispatching GH${n}"
+  log "dispatching GH${n} as $branch"
   err=$(git -C "$main_root" fetch origin main --quiet 2>&1) \
     || { log "fetch failed for GH${n}: $err"; return 1; }
   err=$(git -C "$main_root" worktree add -b "$branch" "$wt" origin/main 2>&1) \
@@ -131,8 +156,7 @@ dispatch() {
 }
 
 tick() {
-  if dev_session_in_flight; then
-    log "a development session is in flight; deferring"
+  if session_in_flight; then
     return 0
   fi
   local candidates n
@@ -142,8 +166,8 @@ tick() {
     || { log "cannot list issues; will retry next tick"; return 1; }
   while read -r n; do
     [ -n "$n" ] || continue
-    [ -e "$container/GH${n}-auto" ] && continue   # already picked up
-    unblocked "$n" || continue                    # a blocker is still open
+    has_open_pr "$n" && continue   # already picked up
+    unblocked "$n" || continue     # a blocker is still open
     dispatch "$n" && return 0
   done <<<"$candidates"
   log "no eligible issue"

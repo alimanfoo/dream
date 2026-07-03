@@ -85,9 +85,10 @@ Then tell the user:
 
 Answer questions about the coordinator's behaviour from here.
 
-- **One development session at a time.** A session that has reached PR ready and
-  is waiting for review does not block the next, so pull requests can queue for
-  the user while the next issue is worked.
+- **One session at a time.** A session holds the slot from dispatch until its
+  pull request is merged or closed, so your merge frees the coordinator to pick
+  up the next issue. Two live background teams would evict each other, so the
+  coordinator never runs a second one alongside a session still in flight.
 - **Oldest eligible issue first.** To make one issue wait for another, mark it
   blocked by the other in the GitHub issue view. The coordinator skips an issue
   whose blocker is still open, and picks it up once the blocker is closed. Use
