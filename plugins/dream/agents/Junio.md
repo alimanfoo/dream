@@ -361,11 +361,13 @@ Challenge rather than a candidate.
 
 ##### Lens 4: Reinvention
 
+Test the Design for reinvention: does it rebuild something that already exists,
+outside this codebase or in it? Start from the
+[Step 4.1](#step-41-survey-existing-tools) survey.
+
 Raise a finding only when a survey entry is a strong, obvious fit the Design
-rebuilds anyway. Most entries from your
-[Step 4.1](#step-41-survey-existing-tools) survey you already set aside yourself
-while sketching, for good reason. This lens isn't a checklist to reconcile
-against the Design.
+rebuilds anyway. Most entries you already set aside yourself while sketching,
+for good reason. This isn't a checklist to reconcile against the Design.
 
 When the Design gives a reason for skipping an entry, verify it before you
 accept it. A stated rejection is a claim, not a settled fact. Once the Design
