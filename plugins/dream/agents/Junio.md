@@ -98,11 +98,10 @@ to `sonnet` on the Agent call. Give each subagent:
 
 - the Draft Requirements Analysis, the Session Type, and the repo orientation
 - the text of the one lens it applies
-- the commands to search the record:
-  `gh issue list --state all --search '<surface>'` for recurrence, and
-  `git blame` or `git log` on the named surface plus
-  `gh pr view <N> --json body` for the PRs that last shaped it. These are the
-  same searches Grace ran in
+- the commands to search prior PRs on the named surface: `git blame` or
+  `git log` to find the PRs that last shaped it, then
+  `gh pr view <N> --json body` to read the requirements record each one carries.
+  This is the same search Grace ran in
   [Step 1.5](../skills/team/grace/phase1.md#step-15-consult-the-record)
 
 Ask it to:
