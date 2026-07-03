@@ -326,8 +326,8 @@ for the user's move.
 
 Set up the same recurring cron job. Embed the same values: the PR number, the
 authenticated user's login, and a cutoff timestamp. Capture the cutoff now, as
-you enter the watch, with `date -u +%Y-%m-%dT%H:%M:%SZ`. You have just marked
-the PR ready, so now is PR-ready time.
+you enter the watch, with `date -u +%Y-%m-%dT%H:%M:%SZ`. This moment is when the
+PR became ready, so it's the right point to filter from.
 
 Read `state` first. `MERGED` and `CLOSED` are terminal:
 
