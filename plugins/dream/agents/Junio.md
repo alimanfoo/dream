@@ -190,8 +190,16 @@ below.
 #### Step 4.1: Survey existing tools
 
 Grace's first message asks for this survey. Name every entry that could address
-the need, in part or in full. Look outside this codebase (a tool, library, or
-platform feature) and inside it (a helper, module, or pattern already here).
+the need, in part or in full. Two faces, both knowledge a model holds but rarely
+volunteers:
+
+- **External**: a library, a standard algorithm or technique, or a language or
+  platform feature. Common examples: an argument parser, date arithmetic, a
+  state machine, topological sort, retry-with-backoff, or an LRU cache.
+- **Internal**: a helper, module, or pattern already in this tree that does the
+  same job. Shallow reading hides these, so the same fact ends up with a second
+  home.
+
 Draw on your role models and your maintainer's stance. The prior art you carry
 is what this surfaces.
 
@@ -364,17 +372,9 @@ accept it. A stated rejection is a claim, not a settled fact. Once the Design
 has moved past it, your pull is to optimise within that choice rather than
 recheck it.
 
-Then spot anything the survey missed. The Design's now-concrete shape can
-surface an entry that wasn't visible while everything was still abstract. Two
-faces, both knowledge a model holds but rarely volunteers:
-
-- **External**: a library, a standard algorithm or technique, or a language or
-  platform feature the Design hand-rolls. A Design writing its own argument
-  parser, date arithmetic, state machine, topological sort, retry-with-backoff,
-  or LRU cache is the common shape.
-- **Internal**: a helper, module, or pattern already in this tree that does what
-  the Design is about to build again. Shallow reading hides these, so the same
-  fact ends up with a second home.
+Then spot anything the survey missed: the same external or internal shape
+[Step 4.1](#step-41-survey-existing-tools) looks for, visible now the Design is
+concrete.
 
 Name what the Design duplicates: a named library, a named technique, or a named
 symbol already in the repo. If you can name it, raise it. Say what adopting it
