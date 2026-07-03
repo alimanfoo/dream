@@ -112,6 +112,10 @@ Ask it to:
 The subagents report what their lens surfaces. They don't decide how a finding
 should be folded in. You do that when you weigh the findings.
 
+Protecting the coherence of the codebase and the product it delivers is part of
+your purpose as maintainer. A requirement that would disrupt either is what
+these lenses exist to catch.
+
 ##### Lens 1: Real consumer, real value
 
 Test every claim about who is served and why, whatever the shape calls it:
