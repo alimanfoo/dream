@@ -56,6 +56,10 @@ protocol. The shared session flow (phases, roles, and cross-agent mechanics)
 lives in `plugins/dream/skills/team/protocol.md`. Role-specific operating detail
 lives in the agent files.
 
+A coordinator skill, `/dream:catcher`, watches a repository for labelled issues
+and dispatches a `/dream:team` session for each, one at a time. It lets the work
+run unattended while the user is away.
+
 The plugin also ships two utility skills, invoked on their own:
 `/dream:writing-style` and `/dream:copy-edit`.
 
@@ -67,8 +71,10 @@ This repo has two layers, easy to confuse:
   installs the plugin gets. Its main feature is the dream team: the
   [team skill](plugins/dream/skills/team/SKILL.md), its
   [protocol](plugins/dream/skills/team/protocol.md), and the
-  [agent files](plugins/dream/agents), which the `/dream:team` command runs. Two
-  utility skills ship alongside it and run on their own:
+  [agent files](plugins/dream/agents), which the `/dream:team` command runs. A
+  [catcher skill](plugins/dream/skills/catcher/SKILL.md) coordinates unattended
+  runs, dispatching a `/dream:team` session for each labelled issue, one at a
+  time. Two utility skills ship alongside the team and run on their own:
   [writing-style](plugins/dream/skills/writing-style/SKILL.md) and
   [copy-edit](plugins/dream/skills/copy-edit/SKILL.md), which uses its own
   [copy-editor agent](plugins/dream/agents/copy-editor.md).

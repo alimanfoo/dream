@@ -215,6 +215,7 @@ plugins/:
       catcher/:
         SKILL.md:
           Dreamcatcher:
+            Arguments:
             Gather the configuration:
             Preflight:
             Launch:
