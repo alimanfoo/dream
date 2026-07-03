@@ -104,8 +104,8 @@ to `sonnet` on the Agent call. Give each subagent:
 
 Ask it to:
 
-- verify each claim the lens covers against the code, the cited material, or the
-  record itself, not against the Draft's own account of it
+- read the Draft and any code, cited material, or prior-PR results it needs,
+  rather than trust the Draft's own account of what they show
 - return each finding with the evidence behind it and the concrete consequence
   of leaving the claim unchecked
 - say plainly when a claim checks out rather than manufacture doubt
