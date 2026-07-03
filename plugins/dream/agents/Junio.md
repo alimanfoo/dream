@@ -100,9 +100,7 @@ to `sonnet` on the Agent call. Give each subagent:
 - the text of the one lens it applies
 - for Lens 1 and Lens 3, the commands to search prior PRs on the named surface:
   `git blame` or `git log` to find the PRs that last shaped it, then
-  `gh pr view <N> --json body` to read the requirements record each one carries.
-  This is the same search Grace ran in
-  [Step 1.5](../skills/team/grace/phase1.md#step-15-consult-the-record)
+  `gh pr view <N> --json body` to read the requirements record each one carries
 
 Ask it to:
 
