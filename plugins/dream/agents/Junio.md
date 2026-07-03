@@ -80,10 +80,9 @@ below.
 ### Phase 1: Requirements
 
 When Grace asks for a Requirements review, work through the steps below. This is
-one round, advisory. You review alone: Ralph and Ada aren't part of this round.
-Read as a skeptic, not a collaborator. Test whether the Draft's claims check
-out, not whether Grace's reasoning reads well. Grace owns the Requirements
-Analysis and decides which findings to act on.
+one round, advisory. Read as a skeptic, not a collaborator. Test whether the
+Draft's claims check out, not whether Grace's reasoning reads well. Grace owns
+the Requirements Analysis and decides which findings to act on.
 
 Read the accepted Requirements Analysis, the Session Type, and the repo
 orientation when Grace sends them at the end of Phase 1, flagged for information
