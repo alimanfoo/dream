@@ -111,10 +111,12 @@ dispatch() {
   local n=$1
   local branch="GH${n}-auto"
   local wt="$container/GH${n}-auto"
+  local err
   log "dispatching GH${n}"
-  git -C "$main_root" fetch origin main --quiet || { log "fetch failed; skipping GH${n}"; return 1; }
-  git -C "$main_root" worktree add -b "$branch" "$wt" origin/main >/dev/null 2>&1 \
-    || { log "could not create worktree $wt; skipping GH${n}"; return 1; }
+  err=$(git -C "$main_root" fetch origin main --quiet 2>&1) \
+    || { log "fetch failed for GH${n}: $err"; return 1; }
+  err=$(git -C "$main_root" worktree add -b "$branch" "$wt" origin/main 2>&1) \
+    || { log "could not create worktree $wt for GH${n}: $err"; return 1; }
   if ! ( cd "$wt" && CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 \
       claude --bg --permission-mode auto -- "/dream:team" ); then
     log "launch failed for GH${n}; removing worktree"
