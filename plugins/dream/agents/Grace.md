@@ -279,12 +279,13 @@ out that closing line.
 
 Autopilot pauses on these, and only these:
 
-- **An unanswered open question** in the Requirements Analysis.
+- **An unanswered open question**, raised via
   [Step 1.10](../skills/team/grace/phase1.md#step-110-elicit-answers-to-open-questions)
-  already handles this. If the user leaves any question unanswered, re-ask the
-  unanswered ones before continuing. Under autopilot the same behaviour applies.
-  You marked the question open. You cannot proceed correctly without the user's
-  answer.
+  or via a post-handoff reopening (see
+  [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user)). If
+  the user leaves any question unanswered, re-ask the unanswered ones before
+  continuing. Under autopilot the same behaviour applies. You marked the
+  question open. You cannot proceed correctly without the user's answer.
 - **A Challenge** raised in any phase. Pause. Post the Challenge to the PR and
   present the options you can see. Carry out the chosen option.
 
@@ -300,12 +301,15 @@ Note the cron job ID in your turn output. You will need it to cancel the job.
 When the cron job fires, use the embedded values to run:
 
 ```bash
-gh pr view <N> --json comments \
-  --jq '[.comments[] | select(.author.login == "USER" and .createdAt > "TIMESTAMP")]'
+gh pr view <N> --json comments,reviews,state \
+  --jq '{state, comments: [.comments[] | select(.author.login == "USER" and .createdAt > "TIMESTAMP")], reviews: [.reviews[] | select(.author.login == "USER" and .submittedAt > "TIMESTAMP")]}'
 ```
 
-The pause ends when the user answers, either as GitHub comments or as direct
-replies in the session. Cancel the cron job and resume autopilot.
+This one query covers every reply channel: a plain comment and a formal review
+carry equal weight. Don't pick a channel to watch. Read whichever the user used.
+
+The pause ends when the user answers, as a GitHub comment, a GitHub review, or a
+direct reply in the session. Cancel the cron job and resume autopilot.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
@@ -314,21 +318,16 @@ automatically.
 
 After you mark the PR ready (end of Phase 7), keep watching it for the user's
 response instead of handing back. Use the same poll-and-resume way that a pause
-waits for an answer (see [Pauses](#pauses)).
+waits for an answer, including its query (see [Pauses](#pauses)). A comment and
+a review carry equal weight there, so reuse it unchanged.
 
 Announce the switch once in plain turn output: autopilot is now watching the PR
-and the user can steer it from there with a review, not a plain comment.
+for the user's move.
 
 Set up the same recurring cron job. Embed the same values: the PR number, the
 authenticated user's login, and a cutoff timestamp. Capture the cutoff now, as
 you enter the watch, with `date -u +%Y-%m-%dT%H:%M:%SZ`. You have just marked
-the PR ready, so now is PR-ready time. Query the reviews and the state, in place
-of comments. Filter the reviews to the user's own since the cutoff:
-
-```bash
-gh pr view <N> --json reviews,state \
-  --jq '{state, reviews: [.reviews[] | select(.author.login == "USER" and .submittedAt > "TIMESTAMP")]}'
-```
+the PR ready, so now is PR-ready time.
 
 Read `state` first. `MERGED` and `CLOSED` are terminal:
 
@@ -341,12 +340,13 @@ Read `state` first. `MERGED` and `CLOSED` are terminal:
   session (see [Stopping a session early](#stopping-a-session-early)). The PR is
   already closed, so post the closing record and end.
 
-Otherwise the PR is still open, so act on the reviews the query returned. A poll
-can return several reviews. One review can carry more than one intent. Act on
-all of them, in this order, and drop nothing:
+Otherwise the PR is still open, so act on what the query returned: the user's
+comments and reviews since the cutoff, as one combined batch. Either channel
+carries the same intents below. An item can carry more than one. Act on all of
+them, in this order, and drop nothing:
 
-1. **Feedback** in a review is a user-directed change. Triage it the same as a
-   Phase 7 review. Run each accepted point through the reopening path (see
+1. **Feedback** is a user-directed change. Triage it the same as a Phase 7
+   review. Run each accepted point through the reopening path (see
    [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user)). It
    covers open questions and the response comment. These commits are
    post-handoff.
@@ -358,14 +358,14 @@ all of them, in this order, and drop nothing:
    merge"_, is terminal, like a merge. Go through Phase 8's deferral path to
    Phase 9 (Collect), skipping Reflect, with the PR left open.
 
-An approving review with nothing to act on needs no change. When you have
-handled the batch and are still watching (you did not merge, defer, or close),
-cancel the cron job. Create a new one with the cutoff set to now, so the handled
-reviews don't resurface.
+An approving review or a comment with nothing to act on needs no change. When
+you have handled the batch and are still watching (you did not merge, defer, or
+close), cancel the cron job. Create a new one with the cutoff set to now, so the
+handled items don't resurface.
 
-The user can give a review's feedback directly in the session instead. Cancel
-the cron job once the PR is merged or closed, once you defer the merge, or once
-you hand back.
+The user can give feedback directly in the session instead. Cancel the cron job
+once the PR is merged or closed, once you defer the merge, or once you hand
+back.
 
 ### Auto-collect
 
