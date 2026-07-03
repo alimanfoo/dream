@@ -106,8 +106,7 @@ Ask it to:
 
 - read the Draft and any code, cited material, or prior-PR results it needs,
   rather than trust the Draft's own account of what they show
-- return each finding with the evidence behind it and the concrete consequence
-  of leaving the claim unchecked
+- return each finding with the evidence behind it
 - say plainly when a claim checks out rather than manufacture doubt
 
 The subagents report what their lens surfaces. They don't decide how a finding
