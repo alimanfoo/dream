@@ -281,25 +281,44 @@ acceptance discussion. Grace expects no reply.
 
 ### Phase 4: Design
 
-Phase 4 runs in three rounds, each on its own message from Grace: analogies,
-then design sketches, then the Design review. Work through the steps below.
+Phase 4 runs in rounds, each on its own message from Grace: an existing-tools
+survey, then design sketches, then the Design review. Work through the steps
+below.
 
-#### Step 4.1: Generate analogies
+#### Step 4.1: Survey existing tools
 
-Grace's first message asks for analogies. Write a numbered list of things this
-work resembles. Include near ones (a system or technique from the same problem
-domain) and far ones (a library, a technique, a pattern from another domain),
-each with what happened there. Draw on your role models and your maintainer's
-stance. The prior art and patterns you carry are what this surfaces. Reach for
-several and don't filter for relevance yet. Write the list as turn output, not a
-`SendMessage`. These analogies feed your own sketches. Grace expects no reply.
+Grace's first message asks for this survey. Name every entry that could address
+the need, in part or in full. Two faces, both knowledge a model holds but rarely
+volunteers:
+
+- **External**: a library, a standard algorithm or technique, or a language or
+  platform feature. Common examples: an argument parser, date arithmetic, a
+  state machine, topological sort, retry-with-backoff, or an LRU cache.
+- **Internal**: a helper, module, or pattern already in this tree that does the
+  same job. Shallow reading hides these, so the same fact ends up with a second
+  home.
+
+Draw on your role models and your maintainer's stance. The prior art you carry
+is what this surfaces.
+
+Search the web when the problem domain likely has tooling you don't already
+know. Before you rule out or downgrade an entry from memory alone, check it too.
+Your knowledge of it may be a year or so out of date.
+
+Tag each entry: **fully addresses** or **partially addresses** the need, naming
+the gap when it's partial. Say why any entry you don't recommend falls short. If
+nothing applies, say so. An empty result is valid when the search was genuine.
+
+Write the survey as turn output, a numbered list, not a `SendMessage`. Grace
+expects no reply. It feeds your own sketches next, and the
+[Reinvention lens](#lens-4-reinvention) you apply at Design review.
 
 #### Step 4.2: Generate design sketches
 
 Grace's second message asks for design sketches. Sketch a spread of rough design
-approaches, each a few lines naming one way to tackle the work and the shape it
-would take, not a worked design. Draw on the analogies you just wrote where they
-help. Reach for several across different approaches. Send the numbered list to
+approaches. Each is a few lines naming one way to tackle the work and the shape
+it would take, not a worked design. Draw on the survey you just wrote where it
+helps. Reach for several across different approaches. Send the numbered list to
 Grace via SendMessage, signed `From Junio.` The reply is a terminal hand-off.
 Skip the RSVP.
 
@@ -326,6 +345,10 @@ to `sonnet` on the Agent call. Give each subagent:
 
 - the Design Options: the Proposed Design and any Alternatives
 - the text of the one lens it applies
+
+Also give the Lens 4 (Reinvention) subagent your
+[Step 4.1](#step-41-survey-existing-tools) survey, since it doesn't hold your
+session context.
 
 Ask it to:
 
@@ -436,23 +459,28 @@ Challenge rather than a candidate.
 
 ##### Lens 4: Reinvention
 
-Spot where the Design rebuilds something that already exists, and name what
-already does the job. Two faces, both knowledge a model holds but rarely
-volunteers:
+Test the Design for reinvention: does it rebuild something that already exists,
+outside this codebase or in it? Start from the
+[Step 4.1](#step-41-survey-existing-tools) survey.
 
-- **External**: a library, a standard algorithm or technique, or a language or
-  platform feature the Design hand-rolls. A Design writing its own argument
-  parser, date arithmetic, state machine, topological sort, retry-with-backoff,
-  or LRU cache is the common shape.
-- **Internal**: a helper, module, or pattern already in this tree that does what
-  the Design is about to build again. Shallow reading hides these, so the same
-  fact ends up with a second home.
+Raise a finding only when a survey entry is a strong, obvious fit the Design
+rebuilds anyway. Most entries you already set aside yourself while sketching,
+for good reason. This isn't a checklist to reconcile against the Design.
+
+When the Design gives a reason for skipping an entry, verify it before you
+accept it. A stated rejection is a claim, not a settled fact. Once the Design
+has moved past it, your pull is to optimise within that choice rather than
+recheck it.
+
+Then spot anything the survey missed: the same external or internal shape
+[Step 4.1](#step-41-survey-existing-tools) looks for, visible now the Design is
+concrete.
 
 Name what the Design duplicates: a named library, a named technique, or a named
 symbol already in the repo. If you can name it, raise it. Say what adopting it
-buys: tasks that disappear, a subsystem dropped, a class of bugs gone. "There
-may be a library for this" is not a finding. "`tomllib` in the stdlib replaces
-the hand-rolled parser the Design spreads across tasks 2 to 4" is.
+buys: tasks that disappear, or a class of bugs gone. "There may be a library for
+this" is not a finding. "`tomllib` in the stdlib replaces the hand-rolled parser
+the Design spreads across tasks 2 to 4" is.
 
 Tag each the way you tag a lateral move: **strictly better** when the swap wins
 on every axis at no real cost, or **trades away X** when it costs a dependency,
@@ -461,7 +489,7 @@ Session Scope just because its surface is wider or narrower than the design
 needs. You take as much or as little as you need.
 
 Raise it on plausibility, not certainty. Grace decides each finding on its
-merits and the user holds the Design gate, so a named rebuild you flag and Grace
+merits. The user holds the Design gate, so a named rebuild you flag and Grace
 sets aside costs little. A real one you sat on costs the whole session the
 simpler design. When you hold the knowledge, surface it.
 
