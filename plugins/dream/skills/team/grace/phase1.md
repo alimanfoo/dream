@@ -77,6 +77,15 @@ issue read without its comments can miss what the issue has become. This is the
 substantive baseline for the steps that follow. Without it, the recurrence check
 and code read run on guesses about what the user means.
 
+For each cited issue, also check whether it has sub-issues:
+
+```bash
+gh api repos/{owner}/{repo}/issues/<N>/sub_issues
+```
+
+A sub-issue carries part of the same requirement, so read it too. An issue read
+without its sub-issues can look complete when it isn't.
+
 ## Step 1.4: Read the code with a consumer lens
 
 Read the relevant code, callers, tests, and docs for the named surfaces. Hold
