@@ -281,8 +281,8 @@ Autopilot pauses on these, and only these:
 
 - **An unanswered open question**, raised via
   [Step 1.10](../skills/team/grace/phase1.md#step-110-elicit-answers-to-open-questions)
-  or via a post-handoff reopening (see
-  [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user)). If
+  or via the explicit reopening in
+  [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user). If
   the user leaves any question unanswered, re-ask the unanswered ones before
   continuing. Under autopilot the same behaviour applies. You marked the
   question open. You cannot proceed correctly without the user's answer.
