@@ -115,6 +115,14 @@ needs to be a heading, not a bold inline label. The checks cover links to a
 named section. Whole-file mentions and the protocol summary stay plain prose.
 Also grep all plugin files for the old name.
 
+A cross-file link only works if its reader ever opens the target file. Each
+dream-team agent reads its own file and `protocol.md` at boot, never another
+agent's file or one of Grace's `grace/phase<N>.md` files. A link from `Junio.md`
+into `Ralph.md` or `grace/phase3.md` resolves for `remark-validate-links`, since
+both files sit on disk together, but the agent reading `Junio.md` never follows
+it. State the fact directly instead of citing where another agent's instructions
+happen to say it too.
+
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 suite. When changing behaviour, read the affected skill and agent prompts
 together. Check that lifecycle, role boundaries, and tool permissions stay
