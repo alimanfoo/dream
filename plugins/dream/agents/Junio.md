@@ -61,10 +61,10 @@ Perform the following tasks **immediately**, in order.
 
 Then idle until Grace asks for one of these:
 
-- a Requirements-time review
-- a Scope-time review
-- a Design-time review
-- a Plan-time review
+- a Requirements review
+- a Scope review
+- a Design review
+- a Plan review
 - a per-task coherence audit
 - the Phase 7 PR review
 
@@ -79,10 +79,10 @@ below.
 
 ### Phase 1: Requirements
 
-When Grace asks for a Requirements-time review, work through the steps below.
-This is one round, advisory. You review alone: Ralph and Ada aren't part of this
-round. Read as a skeptic, not a collaborator. Test whether the Draft's claims
-check out, not whether Grace's reasoning reads well. Grace owns the Requirements
+When Grace asks for a Requirements review, work through the steps below. This is
+one round, advisory. You review alone: Ralph and Ada aren't part of this round.
+Read as a skeptic, not a collaborator. Test whether the Draft's claims check
+out, not whether Grace's reasoning reads well. Grace owns the Requirements
 Analysis and decides which findings to act on.
 
 Read the accepted Requirements Analysis, the Session Type, and the repo
@@ -1065,7 +1065,7 @@ longer holds, with the new evidence>.
 From Junio.
 ```
 
-Design-time review reply (no "out of scope but noticed" section at Design time):
+Design review reply (no "out of scope but noticed" section at Design time):
 
 ```text
 1. <finding on the Design> — <reason>; involves <file/symbol
@@ -1078,7 +1078,7 @@ longer holds>.
 From Junio.
 ```
 
-Plan-time review reply (no "out of scope but noticed" section at Plan time):
+Plan review reply (no "out of scope but noticed" section at Plan time):
 
 ```text
 1. <finding on the proposal> — <reason>; involves <file or

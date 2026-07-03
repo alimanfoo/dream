@@ -768,7 +768,7 @@ only <foo>?
 From Ralph. RSVP via SendMessage.
 ```
 
-Design-time review reply:
+Design review reply:
 
 ```text
 1. <finding on the Design> — <reason>; involves <file/symbol
@@ -778,7 +778,7 @@ Design-time review reply:
 From Ralph.
 ```
 
-Plan-time review reply:
+Plan review reply:
 
 ```text
 1. <finding on the proposal> — <reason>; involves <file or
