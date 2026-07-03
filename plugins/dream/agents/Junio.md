@@ -113,7 +113,7 @@ Ask it to:
 The subagents report what their lens surfaces. They don't decide how a finding
 should be folded in. You do that when you weigh the findings.
 
-##### Lens 1: Real consumer, real evidence
+##### Lens 1: Real consumer, real value
 
 Test every claim about who is served and why, whatever the shape calls it:
 
