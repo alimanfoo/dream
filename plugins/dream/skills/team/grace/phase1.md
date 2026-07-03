@@ -8,7 +8,7 @@ to address, a piece of code to tidy up, constraints, rough shape. When the boot
 sequence derived one or more issues from the worktree branch name, those issues
 are the session input. Phase 1 captures the system's requirements behind it. It
 makes any assumptions explicit so the user can correct them. It gets one round
-of skeptical review from Junio before anyone else sees the Draft Requirements
+of adversarial review from Junio before anyone else sees the Draft Requirements
 Analysis. And it elicits answers to anything Grace can't call from the cited
 material. It ends at an accepted Requirements Analysis: what the system must do,
 for whom, and what it is deliberately not for. Follow the steps below in
@@ -225,7 +225,7 @@ Session Type and the repo orientation from
 [Step 1.2](#step-12-orient-to-the-repo). Junio hasn't seen either yet. Sign off
 `From Grace. RSVP via SendMessage.`
 
-Junio reads as a skeptic, testing:
+Junio reads as an adversary, testing:
 
 - whether a real consumer or need stands behind each claim
 - whether the work serves what the repo is for

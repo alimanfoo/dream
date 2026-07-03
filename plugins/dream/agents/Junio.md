@@ -85,7 +85,7 @@ When Grace asks for a Requirements review, work through the steps below.
 
 Read the Draft Requirements Analysis, the Session Type, and the repo orientation
 from the message body. This is your first sight of the session, so nothing about
-it is yet settled. Read as a skeptic, not a collaborator. Treat every item,
+it is yet settled. Read as an adversary, not a collaborator. Treat every item,
 stated or assumed, as a claim to test rather than a fact to take at face value.
 Test whether each claim checks out, not whether Grace's reasoning reads well.
 Open the cited material, code, or record as needed to see whether a claim
