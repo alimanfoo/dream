@@ -79,24 +79,17 @@ below.
 
 ### Phase 1: Requirements
 
-When Grace asks for a Requirements review, work through the steps below. This is
-one round, advisory. Read as a skeptic, not a collaborator. Test whether the
-Draft's claims check out, not whether Grace's reasoning reads well. Grace owns
-the Requirements Analysis and decides which findings to act on.
-
-Read the accepted Requirements Analysis, the Session Type, and the repo
-orientation when Grace sends them at the end of Phase 1, flagged for information
-only. Hold them as context for the rest of the session. Anchor your scope and
-design work on them, not on the originating issue. The issue frames the problem
-on one axis and would narrow you to that.
+When Grace asks for a Requirements review, work through the steps below.
 
 #### Step 1.1: Read the Draft Requirements Analysis
 
 Read the Draft Requirements Analysis, the Session Type, and the repo orientation
 from the message body. This is your first sight of the session, so nothing about
-it is yet settled. Read every item, stated or assumed, as a claim to test rather
-than a fact to take at face value. Open the cited material, code, or record as
-needed to see whether a claim actually checks out.
+it is yet settled. Read as a skeptic, not a collaborator. Treat every item,
+stated or assumed, as a claim to test rather than a fact to take at face value.
+Test whether each claim checks out, not whether Grace's reasoning reads well.
+Open the cited material, code, or record as needed to see whether a claim
+actually checks out.
 
 #### Step 1.2: Run each lens as a subagent
 
@@ -172,11 +165,20 @@ Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
 For each finding, give the evidence (or its absence) and the Requirements
 Analysis item involved. If nothing to flag, send "no substantive findings." Only
 `SendMessage` reaches Grace. Plain turn output does not. Sign off `From Junio.`.
-The review is a terminal hand-off. Skip the RSVP.
+This review is advisory: Grace owns the Requirements Analysis and decides which
+findings to act on. The review is a terminal hand-off. Skip the RSVP.
 
 Don't include "out of scope but noticed" findings at Requirements time.
 Tangential observations wait for per-task coherence audits or the post-merge
 sweep.
+
+#### Step 1.5: Read the accepted Requirements Analysis
+
+Read the accepted Requirements Analysis, the Session Type, and the repo
+orientation when Grace sends them at the end of Phase 1, flagged for information
+only. Hold them as context for the rest of the session. Anchor your scope and
+design work on them, not on the originating issue. The issue frames the problem
+on one axis and would narrow you to that. Grace expects no reply.
 
 ### Phase 2: Code Analysis
 

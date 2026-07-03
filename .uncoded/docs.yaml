@@ -87,6 +87,7 @@ plugins/:
                 'Lens 3: Coherent with what exists, coherent with itself':
               'Step 1.3: Weigh the findings':
               'Step 1.4: Send your findings to Grace via `SendMessage`':
+              'Step 1.5: Read the accepted Requirements Analysis':
             'Phase 2: Code Analysis':
             'Phase 3: Scope':
               'Step 3.1: Read the Draft Scope Options':
