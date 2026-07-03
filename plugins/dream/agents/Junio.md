@@ -353,12 +353,16 @@ Challenge rather than a candidate.
 
 ##### Lens 4: Reinvention
 
-Start from the attached [Step 4.1](#step-41-survey-existing-tools) survey. For
-each entry, check whether the drafted Proposed Design or an Alternative adopts
-it. When it doesn't, and the Design gives no reason, that absence is itself
-worth raising. When it does give a reason, treat it as a claim, not a settled
-fact. Verify it before you accept it. Once the Design has moved past a
-rejection, your pull is to optimise within that choice rather than recheck it.
+Raise a finding only when a survey entry is a strong, obvious fit the Design
+rebuilds anyway. Most entries from your
+[Step 4.1](#step-41-survey-existing-tools) survey you already set aside yourself
+while sketching, for good reason. This lens isn't a checklist to reconcile
+against the Design.
+
+When the Design gives a reason for skipping an entry, verify it before you
+accept it. A stated rejection is a claim, not a settled fact. Once the Design
+has moved past it, your pull is to optimise within that choice rather than
+recheck it.
 
 Then spot anything the survey missed. The Design's now-concrete shape can
 surface an entry that wasn't visible while everything was still abstract. Two
