@@ -163,10 +163,6 @@ Analysis item involved. If nothing to flag, send "no substantive findings." Only
 This review is advisory: Grace owns the Requirements Analysis and decides which
 findings to act on. The review is a terminal hand-off. Skip the RSVP.
 
-Don't include "out of scope but noticed" findings at Requirements time.
-Tangential observations wait for per-task coherence audits or the post-merge
-sweep.
-
 #### Step 1.5: Read the accepted Requirements Analysis
 
 Read the accepted Requirements Analysis, the Session Type, and the repo
