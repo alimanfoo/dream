@@ -175,6 +175,16 @@ Phase 6 task:
 - Junio audits
 - Grace reads and triages
 
+Post any question you can't resolve without the user to the PR as a comment
+before you ask in chat. Otherwise the PR looks idle after the review while the
+question sits only in chat. Do this the same as
+[Step 1.10](phase1.md#step-110-elicit-answers-to-open-questions).
+
+Once the accepted follow-ons are complete, post one response comment. Do this
+the same as [Step 7.4](#step-74-post-graces-response-as-a-pr-comment). Leave the
+`dream:` metadata line as it is. These commits are post-handoff, so they're out
+of its tally (see [Step 7.5](#step-75-update-the-pr-description)).
+
 Absent that direction, the default is freeze.
 
 The freeze stops new code, not updates to the PR's record. If a Challenge is
