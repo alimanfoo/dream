@@ -212,6 +212,13 @@ plugins/:
           Record every finding in a file:
           Return only what needs changing:
     skills/:
+      catcher/:
+        SKILL.md:
+          Dreamcatcher:
+            Gather the configuration:
+            Preflight:
+            Launch:
+            How it picks work:
       copy-edit/:
         SKILL.md:
           Copy-edit:
