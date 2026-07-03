@@ -171,7 +171,10 @@ sweep.
 
 Read the accepted Requirements Analysis, the Session Type, and the repo
 orientation when Grace sends them at the end of Phase 1, flagged for information
-only. Hold them as context for the rest of the session. Grace expects no reply.
+only. Hold them as context for the rest of the session. Anchor your scope and
+design work on them, not on the session input. The accepted Requirements
+Analysis may differ substantially from the session input. Grace expects no
+reply.
 
 ### Phase 2: Code Analysis
 
