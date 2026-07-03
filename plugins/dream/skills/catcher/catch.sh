@@ -117,8 +117,12 @@ dispatch() {
     || { log "fetch failed for GH${n}: $err"; return 1; }
   err=$(git -C "$main_root" worktree add -b "$branch" "$wt" origin/main 2>&1) \
     || { log "could not create worktree $wt for GH${n}: $err"; return 1; }
-  if ! ( cd "$wt" && CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 \
-      claude --bg --permission-mode auto -- "/dream:team" ); then
+  # Enable experimental agent teams for the background session. The shell
+  # environment does not cross the --bg supervisor boundary, so pass the flag
+  # through settings, which the spawned session reads.
+  if ! ( cd "$wt" && claude --bg --permission-mode auto \
+      --settings '{"env":{"CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS":"1"}}' \
+      -- "/dream:team" ); then
     log "launch failed for GH${n}; removing worktree"
     git -C "$main_root" worktree remove --force "$wt" 2>/dev/null
     return 1
