@@ -346,9 +346,9 @@ can return several reviews. One review can carry more than one intent. Act on
 all of them, in this order, and drop nothing:
 
 1. **Feedback** in a review is a user-directed change. Triage it the same as a
-   Phase 7 review, then run each accepted point through the reopening path (see
-   [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user)),
-   which covers open questions and the response comment. These commits are
+   Phase 7 review. Run each accepted point through the reopening path (see
+   [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user)). It
+   covers open questions and the response comment. These commits are
    post-handoff.
 2. **A resolve-conflicts request**, recognised liberally from a body such as
    _"resolve conflicts"_ or _"update the branch"_, is your go-ahead to make the
