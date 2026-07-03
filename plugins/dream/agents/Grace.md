@@ -357,6 +357,10 @@ them, in this order, and drop nothing:
 3. **A defer-merge request**, recognised liberally from a body such as _"defer
    merge"_, is terminal, like a merge. Go through Phase 8's deferral path to
    Phase 9 (Collect), skipping Reflect, with the PR left open.
+4. **A question**, recognised liberally as the user asking you something rather
+   than steering the PR, gets a reply. Post the answer as a PR comment
+   (`gh pr comment <N> --body "..."`), from what you already know. If you need
+   more to answer it, ask in the same reply.
 
 An approving review or a comment with nothing to act on needs no change. When
 you have handled the batch and are still watching (you did not merge, defer, or
