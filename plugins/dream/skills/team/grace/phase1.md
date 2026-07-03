@@ -83,8 +83,7 @@ For each cited issue, also check whether it has sub-issues:
 gh api repos/{owner}/{repo}/issues/<N>/sub_issues
 ```
 
-A sub-issue carries part of the same requirement, so read it too. An issue read
-without its sub-issues can look complete when it isn't.
+A sub-issue carries part of the same requirement, so read it too.
 
 ## Step 1.4: Read the code with a consumer lens
 
