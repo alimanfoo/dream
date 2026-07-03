@@ -225,7 +225,7 @@ Session Type and the repo orientation from
 [Step 1.2](#step-12-orient-to-the-repo). Junio hasn't seen either yet. Sign off
 `From Grace. RSVP via SendMessage.`
 
-Junio reads from the maintainer's view, testing:
+Junio reads as a skeptic, testing:
 
 - whether a real consumer or need stands behind each claim
 - whether the work serves what the repo is for

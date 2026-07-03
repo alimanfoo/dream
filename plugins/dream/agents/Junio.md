@@ -130,8 +130,7 @@ actually turned up, not a restatement of the session input's premise dressed up
 as inference. Flag any claim resting on the input's word alone, with nothing in
 the code or the record behind it. See
 [Existing code is unproven](../skills/team/protocol.md#existing-code-is-unproven)
-for the discipline this lens applies one phase earlier, to a claim rather than a
-line of code.
+for the same discipline applied to a claim instead of a line of code.
 
 ##### Lens 2: Serves the project's purpose
 
