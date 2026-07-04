@@ -218,6 +218,19 @@ plugins/:
             First, read the writing style guide:
             Arguments:
             Each round:
+      solo/:
+        SKILL.md:
+          Solo:
+            Set up:
+            Open the pull request:
+            Understand and plan:
+            Check the Plan:
+            Build:
+            Review:
+            Deliver and watch:
+            Collect:
+            Stop and surface:
+            Conventions:
       team/:
         SKILL.md:
           Dream team:
