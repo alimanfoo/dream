@@ -18,6 +18,10 @@
 # This is a granularity choice, letting the user size a session by composing
 # issues, not a technical limit.
 #
+# Each tick also reaps finished sessions: a worktree whose pull request has been
+# merged or closed past a linger period is killed and removed, so tmux sessions
+# do not pile up until tmux refuses to open more.
+#
 # Permissions: a dispatched session runs in auto mode and reads the user's and
 # the host repo's .claude/settings.json, the same as an autopilot session
 # launched by hand. Keep the recurring unattended writes (gh pr create, gh pr
@@ -42,6 +46,7 @@ Usage:
   --label     Issue label that marks work for the team. Required.
   --assignee  Whose issues to pick up. Default: @me.
   --interval  Seconds between ticks in loop mode. Default: 300.
+  --linger    Minutes a finished session lingers before it is reaped. Default: 30.
   --once      Run a single tick and exit, instead of looping.
 EOF
 }
@@ -54,6 +59,7 @@ die() { printf 'dreamcatcher: %s\n' "$*" >&2; exit 2; }
 label=""
 assignee="@me"
 interval=300
+linger=30
 once=0
 
 while [ $# -gt 0 ]; do
@@ -61,6 +67,7 @@ while [ $# -gt 0 ]; do
     --label)    [ $# -ge 2 ] || die "--label requires a value"; label=$2; shift 2;;
     --assignee) [ $# -ge 2 ] || die "--assignee requires a value"; assignee=$2; shift 2;;
     --interval) [ $# -ge 2 ] || die "--interval requires a value"; interval=$2; shift 2;;
+    --linger)   [ $# -ge 2 ] || die "--linger requires a value"; linger=$2; shift 2;;
     --once)     once=1; shift;;
     -h|--help)  usage; exit 0;;
     *)          die "unknown argument: $1";;
@@ -127,6 +134,38 @@ unblocked() {
   [ "${open:-0}" -eq 0 ]
 }
 
+# Reap finished sessions to free tmux's session slots. A worktree whose pull
+# request has been merged or closed for at least the linger period is done (its
+# Collect has run), so kill its tmux session and remove the worktree. This is
+# the exit-and-kill a user does by hand, automated. There is no reliable "team
+# idle" signal (a session's status reads busy even at rest), so the linger
+# period, set above any Collect run, is the guard against reaping mid-Collect.
+epoch_of() {
+  date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$1" +%s 2>/dev/null || date -u -d "$1" +%s 2>/dev/null
+}
+
+reap_finished() {
+  local cutoff wt base branch done_at done_epoch
+  cutoff=$(( $(date -u +%s) - linger * 60 ))
+  while read -r wt; do
+    [ -n "$wt" ] || continue
+    base=$(basename "$wt")
+    [[ "$base" =~ (^|[-_])[Aa][Uu][Tt][Oo]([-_]|$) ]] || continue
+    branch=$base
+    done_at=$(gh pr list --repo "$repo" --head "$branch" --state all --json state,mergedAt,closedAt \
+      --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED") | (.mergedAt // .closedAt)] | map(select(.)) | sort | last // empty' \
+      2>/dev/null)
+    [ -n "$done_at" ] || continue
+    done_epoch=$(epoch_of "$done_at")
+    [ -n "$done_epoch" ] || continue
+    [ "$done_epoch" -le "$cutoff" ] || continue
+    log "reaping $branch (PR finished $done_at, past ${linger}m linger)"
+    tmux kill-session -t "dream-$branch" 2>/dev/null
+    git -C "$main_root" worktree remove --force "$wt" 2>/dev/null \
+      && git -C "$main_root" branch -D "$branch" 2>/dev/null
+  done < <(git -C "$main_root" worktree list --porcelain | awk '/^worktree /{print $2}')
+}
+
 # Mark the worktree as trusted, so the session does not block on the
 # workspace-trust prompt (a background session skips it, but an interactive tmux
 # session hits it on a fresh directory). The flag lives in ~/.claude.json under
@@ -174,6 +213,7 @@ dispatch() {
 }
 
 tick() {
+  reap_finished
   if session_in_flight; then
     return 0
   fi
