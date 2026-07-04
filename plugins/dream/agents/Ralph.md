@@ -324,17 +324,16 @@ rather than making it.
 
 #### Step 6.4: Copy-edit the prose you wrote
 
-Find the prose your task added or changed: markdown docs, docstrings, code
-comments, prompts. Use `git diff` to locate it, and skip this step when the diff
-holds no prose. This step checks your work against the
+Note the prose your task added or changed: markdown docs, docstrings, code
+comments, prompts. You just wrote it, so it's already in your context. Skip this
+step when the task wrote no prose. This step checks your work against the
 [Prose artefacts](#prose-artefacts) rule below.
 
-Spawn the `dream:copy-editor` subagent (see [the copy editor](copy-editor.md))
-via the `Agent` tool, giving it the writing style guide's absolute path and the
-changed file or passage to review. Split by file when several changed, and
-launch them in parallel. Resolve every finding yourself, in place. You are the
-author. When a fix would drop a reason, keep the reason and meet the rule
-another way.
+Spawn one `dream:copy-editor` subagent (see [the copy editor](copy-editor.md))
+via the `Agent` tool, giving it the writing style guide's absolute path and
+every prose site you noted, in one prompt. Resolve every finding yourself, in
+place. You are the author. When a fix would drop a reason, keep the reason and
+meet the rule another way.
 
 #### Step 6.5: Run the tests
 
