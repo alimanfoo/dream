@@ -878,7 +878,9 @@ they return.
 Spawn one read-only subagent per lens below, in parallel. Set each one's `model`
 to `sonnet` on the Agent call. Give each subagent:
 
-- the diff as a local git range, for example `git diff main...HEAD`
+- the diff as a local git range, for example `git diff origin/main...HEAD` (diff
+  against `origin/main`, not local `main`; a worktree session never freshens
+  local `main`, so it can be stale or missing)
 - the one lens it applies
 - the context that lens names below
 
