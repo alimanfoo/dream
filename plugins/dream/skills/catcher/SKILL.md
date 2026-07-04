@@ -44,7 +44,7 @@ The repository is the one in the current working directory.
 Run each check before launching. Stop and tell the user if one fails.
 
 - Run `gh auth status`. It must succeed.
-- Run `command -v git gh jq claude`. All four must be on the PATH.
+- Run `command -v git gh jq claude tmux`. All five must be on the PATH.
 - Run `gh label list` and confirm the label is present. Offer to create it if it
   is missing.
 - Run `git rev-parse --git-common-dir`. It must print `.git`, which means this
@@ -75,8 +75,9 @@ Then tell the user:
 
 - the pid and the log path, so they can follow it with
   `tail -f dreamcatcher.log` and stop it with `kill <pid>`.
-- to see dispatched sessions with `claude agents`, and attach from there to
-  answer a session that is waiting.
+- that each issue runs in its own detached tmux session named
+  `dream-GH<n>-<timestamp>-auto`. Attach with `tmux attach -t <name>`, or list
+  and attach from `claude agents`, to answer a session that is waiting.
 - that the loop stops on reboot, and re-running `/dream:catcher` restarts it.
   For a machine that must survive reboots, drive `catch.sh --once` from cron or
   launchd instead, which runs a single tick per firing.
@@ -86,9 +87,9 @@ Then tell the user:
 Answer questions about the coordinator's behaviour from here.
 
 - **One session at a time.** A session holds the slot from dispatch until its
-  pull request is merged or closed, so your merge frees the coordinator to pick
-  up the next issue. Two live background teams would evict each other, so the
-  coordinator never runs a second one alongside a session still in flight.
+  pull request is merged or closed, so your merge paces the next dispatch. This
+  is a granularity choice, letting you size a session by composing issues into
+  an umbrella, not a technical limit.
 - **Oldest eligible issue first.** To make one issue wait for another, mark it
   blocked by the other in the GitHub issue view. The coordinator skips an issue
   whose blocker is still open, and picks it up once the blocker is closed. Use

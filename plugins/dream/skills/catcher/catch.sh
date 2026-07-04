@@ -8,10 +8,15 @@
 # are the only state. So any trigger works. The default is a background loop.
 # For a machine that must survive reboots, drive `catch.sh --once` from cron.
 #
-# One session at a time. Two live background teams share a teammate namespace
-# and evict each other, so the coordinator runs a single dispatched session at
-# a time. A session holds the slot from dispatch until its pull request is
-# merged or closed, so the user's merge paces the next dispatch.
+# Dispatched sessions run in a detached tmux session, not `claude --bg`. A
+# background session dies when the team goes idle between steps; a tmux session
+# stays alive and drives the work to completion, the same as a session run by
+# hand.
+#
+# One session at a time. The coordinator holds the slot from dispatch until the
+# pull request is merged or closed, so the user's merge paces the next dispatch.
+# This is a granularity choice, letting the user size a session by composing
+# issues, not a technical limit.
 #
 # Permissions: a dispatched session runs in auto mode and reads the user's and
 # the host repo's .claude/settings.json, the same as an autopilot session
@@ -63,7 +68,7 @@ while [ $# -gt 0 ]; do
 done
 
 [ -n "$label" ] || die "--label is required"
-for tool in git gh jq claude; do
+for tool in git gh jq claude tmux; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
 done
 
@@ -122,37 +127,50 @@ unblocked() {
   [ "${open:-0}" -eq 0 ]
 }
 
-# Create the worktree and launch a background session for it. The branch name
-# carries the issue number and the auto token, which Grace's boot reads to take
-# the issue as the session input with autopilot and auto-collect engaged. The
-# timestamp between them makes the name unique per attempt.
+# Mark the worktree as trusted, so the session does not block on the
+# workspace-trust prompt (a background session skips it, but an interactive tmux
+# session hits it on a fresh directory). The flag lives in ~/.claude.json under
+# the worktree's absolute path. The write is atomic.
+trust_worktree() {
+  local dir=$1 cfg="$HOME/.claude.json" tmp
+  [ -f "$cfg" ] || printf '{}\n' >"$cfg"
+  tmp=$(mktemp) || return 1
+  jq --arg d "$dir" '.projects[$d].hasTrustDialogAccepted = true' "$cfg" >"$tmp" 2>/dev/null \
+    && mv "$tmp" "$cfg" || { rm -f "$tmp"; return 1; }
+}
+
+# Create the worktree and launch a session for it in a detached tmux session.
+# The branch name carries the issue number and the auto token, which Grace's
+# boot reads to take the issue as the session input with autopilot and
+# auto-collect engaged. The timestamp between them makes the name unique per
+# attempt, so a retry never collides with an earlier attempt's branch or PR.
 #
-# The worktree is made with `git worktree add`, not `claude -w`, so it lands at
-# a predictable sibling path with a branch name the cap and dedup checks rely
-# on, independent of the CLI's own worktree placement.
+# The worktree is made with `git worktree add`, not `claude -w`, so it lands at a
+# predictable sibling path with a branch name the cap and dedup checks rely on.
+# tmux hosts the session because a `claude --bg` session dies when the team goes
+# idle between steps, while a tmux session stays alive and drives to completion.
+# The team feature is set per session through the experimental env var. Auto mode
+# and the host repo's settings.json handle unattended writes.
 dispatch() {
-  local n=$1
-  local ts
+  local n=$1 ts branch wt session err
   ts=$(date -u +%Y%m%d-%H%M%S)
-  local branch="GH${n}-${ts}-auto"
-  local wt="$container/${branch}"
-  local err
+  branch="GH${n}-${ts}-auto"
+  wt="$container/${branch}"
+  session="dream-${branch}"
   log "dispatching GH${n} as $branch"
   err=$(git -C "$main_root" fetch origin main --quiet 2>&1) \
     || { log "fetch failed for GH${n}: $err"; return 1; }
   err=$(git -C "$main_root" worktree add -b "$branch" "$wt" origin/main 2>&1) \
     || { log "could not create worktree $wt for GH${n}: $err"; return 1; }
-  # Enable experimental agent teams for the background session. The shell
-  # environment does not cross the --bg supervisor boundary, so pass the flag
-  # through settings, which the spawned session reads.
-  if ! ( cd "$wt" && claude --bg --permission-mode auto \
-      --settings '{"env":{"CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS":"1"}}' \
-      -- "/dream:team" ); then
-    log "launch failed for GH${n}; removing worktree"
+  trust_worktree "$wt" \
+    || { log "could not pre-trust $wt; skipping GH${n}"; git -C "$main_root" worktree remove --force "$wt" 2>/dev/null; return 1; }
+  if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" \
+      "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec claude --permission-mode auto --teammate-mode tmux '/dream:team'"; then
+    log "tmux launch failed for GH${n}; removing worktree"
     git -C "$main_root" worktree remove --force "$wt" 2>/dev/null
     return 1
   fi
-  log "dispatched GH${n} into $wt"
+  log "dispatched GH${n} into tmux session $session"
 }
 
 tick() {
