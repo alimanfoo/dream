@@ -173,10 +173,11 @@ plugins/:
               'Step 6.1: Read the task description':
               'Step 6.2: Do the work':
               'Step 6.3: Revise for a cold read':
-              'Step 6.4: Run the tests':
-              'Step 6.5: Run any codegen the commit hook doesn''t run':
-              'Step 6.6: Commit and push':
-              'Step 6.7: Report back to Grace via `SendMessage`':
+              'Step 6.4: Copy-edit the prose you wrote':
+              'Step 6.5: Run the tests':
+              'Step 6.6: Run any codegen the commit hook doesn''t run':
+              'Step 6.7: Commit and push':
+              'Step 6.8: Report back to Grace via `SendMessage`':
             'Phase 7: Review':
             'Phase 8: Merge':
             'Phase 9: Collect':
