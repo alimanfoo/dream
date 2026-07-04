@@ -325,9 +325,8 @@ rather than making it.
 #### Step 6.4: Copy-edit the prose you wrote
 
 Note the prose your task added or changed: markdown docs, docstrings, code
-comments, prompts. You just wrote it, so it's already in your context. Skip this
-step when the task wrote no prose. This step checks your work against the
-[Prose artefacts](#prose-artefacts) rule below.
+comments, prompts. Skip this step when the task wrote no prose. This step checks
+your work against the [Prose artefacts](#prose-artefacts) rule below.
 
 Spawn one `dream:copy-editor` subagent (see [the copy editor](copy-editor.md))
 via the `Agent` tool, giving it the writing style guide's absolute path and
