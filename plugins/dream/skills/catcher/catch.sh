@@ -112,13 +112,16 @@ session_in_flight() {
   return 1
 }
 
-# True when the issue already has an open pull request from a current or earlier
-# session, so it should not be picked up again. A read failure returns true, so
-# a transient error never re-dispatches an issue that is already under way.
-has_open_pr() {
+# True when the issue already has a session in flight or finished: an open pull
+# request (a current or earlier session still going) or a merged one (done, but
+# the issue's closed state may lag in `gh issue list`). A closed-unmerged PR does
+# not count, so an old declined attempt never locks the issue out. A read failure
+# returns true, so a transient error never re-dispatches an issue already under
+# way, and a just-merged issue is never picked up a second time.
+already_handled() {
   local n=$1 count
-  count=$(gh pr list --repo "$repo" --state open --json headRefName 2>/dev/null \
-    | jq -r --arg n "$n" '[.[] | select(.headRefName | test("^GH" + $n + "(-.*)?-auto$"))] | length' 2>/dev/null)
+  count=$(gh pr list --repo "$repo" --state all --json headRefName,state 2>/dev/null \
+    | jq -r --arg n "$n" '[.[] | select(.headRefName | test("^GH" + $n + "(-.*)?-auto$")) | select(.state == "OPEN" or .state == "MERGED")] | length' 2>/dev/null)
   [ -n "$count" ] || return 0
   [ "$count" -ne 0 ]
 }
@@ -224,7 +227,7 @@ tick() {
     || { log "cannot list issues; will retry next tick"; return 1; }
   while read -r n; do
     [ -n "$n" ] || continue
-    has_open_pr "$n" && continue   # already picked up
+    already_handled "$n" && continue   # in flight or already done
     unblocked "$n" || continue     # a blocker is still open
     dispatch "$n" && return 0
   done <<<"$candidates"
