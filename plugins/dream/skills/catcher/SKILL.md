@@ -58,29 +58,30 @@ Run each check before launching. Stop and tell the user if one fails.
 
 ## Launch
 
-Run the script as a detached background process, so it outlives this session:
+Run the loop in its own detached tmux session, so it outlives this session and
+the user can attach to watch it tick, the same way they attach to a dispatched
+session:
 
 ```bash
-nohup bash "<absolute path to catch.sh in this skill's directory>" \
-  --label "<label>" --assignee "<assignee>" --interval <interval> \
-  < /dev/null > dreamcatcher.log 2>&1 &
-disown
-echo "dreamcatcher pid: $!"
+tmux new-session -d -s dreamcatcher -x 220 -y 50 \
+  -c "<the repository's main checkout>" \
+  "bash '<absolute path to catch.sh in this skill's directory>' \
+   --label '<label>' --assignee '<assignee>' --interval <interval> \
+   2>&1 | tee -a dreamcatcher.log"
 ```
-
-Capture and report the printed pid in the same command, because shell state does
-not survive into a later call.
 
 Then tell the user:
 
-- the pid and the log path, so they can follow it with
-  `tail -f dreamcatcher.log` and stop it with `kill <pid>`.
-- that each issue runs in its own detached tmux session named
-  `dream-GH<n>-<timestamp>-auto`. Attach with `tmux attach -t <name>`, or list
-  and attach from `claude agents`, to answer a session that is waiting.
-- that the loop stops on reboot, and re-running `/dream:catcher` restarts it.
-  For a machine that must survive reboots, drive `catch.sh --once` from cron or
-  launchd instead, which runs a single tick per firing.
+- to watch the loop with `tmux attach -t dreamcatcher`, or follow the log with
+  `tail -f dreamcatcher.log`. Detach with `Ctrl+B` then `d`. Stop the loop with
+  `tmux kill-session -t dreamcatcher`.
+- that each issue runs in its own tmux session named
+  `dream-GH<n>-<timestamp>-auto`. `Ctrl+B` then `s` switches between the loop
+  and every dispatched session, so a session waiting for an answer is one
+  keystroke away.
+- that tmux sessions stop on reboot, and re-running `/dream:catcher` restarts
+  the loop. For a machine that must survive reboots, drive `catch.sh --once`
+  from cron or launchd instead, which runs a single tick per firing.
 
 ## How it picks work
 
