@@ -100,13 +100,8 @@ Launch these review subagents in parallel, via the Agent tool, one per lens:
 - `dream:review-requirements-project-purpose`
 - `dream:review-requirements-coherence`
 
-Brief each with:
-
-- the Draft Requirements Analysis, the Session Type, and the repo orientation
-- for the consumer-value and coherence agents, the commands to search prior PRs
-  on the named surface: `git blame` or `git log` to find the PRs that last
-  shaped it, then `gh pr view <N> --json body` to read the requirements record
-  each one carries
+Brief each with the Draft Requirements Analysis, the Session Type, and the repo
+orientation.
 
 The subagents report what their lens surfaces. They don't decide how a finding
 should be folded in. You do that when you weigh the findings.
