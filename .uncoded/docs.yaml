@@ -246,6 +246,14 @@ plugins/:
           The lens:
           Reporting:
     skills/:
+      catcher/:
+        SKILL.md:
+          Dreamcatcher:
+            Arguments:
+            Gather the configuration:
+            Preflight:
+            Launch:
+            How it picks work:
       copy-edit/:
         SKILL.md:
           Copy-edit:
@@ -415,10 +423,10 @@ plugins/:
         Words and marks:
         Text for GitHub:
 README.md:
-  /dream:team:
+  dream:
+    Prerequisites:
     Installation:
     Basic usage:
-    Prerequisites:
     Advanced usage:
       Alias claude with experimental agent teams support:
       Models and effort:
@@ -427,6 +435,7 @@ README.md:
       Launching Claude under tmux:
       "Using tmux \u2013 useful shortcuts":
       Autopilot mode:
+    Unattended runs with /dream:catcher:
     Troubleshooting:
       Permissions:
     License:

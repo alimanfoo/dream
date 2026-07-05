@@ -1,10 +1,20 @@
-# /dream:team
+# dream
 
-A multi-agent team that delivers great code and keeps the codebase coherent,
-with minimal human input.
+A Claude Code plugin for delivering great code and keeping the codebase
+coherent, with minimal human input.
+
+`/dream:team` runs a multi-agent team on a task. `/dream:catcher` runs that team
+unattended across a repository's labelled issues. Utility skills ship alongside:
+`/dream:writing-style` and `/dream:copy-edit`.
+
+## Prerequisites
 
 Requires Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
+
+The plugin works best with the `gh` command line tool available. This lets the
+team interact with GitHub, for example opening a pull request and posting
+issues.
 
 ## Installation
 
@@ -33,12 +43,6 @@ start working.
 See
 [`plugins/dream/skills/team/protocol.md`](plugins/dream/skills/team/protocol.md)
 for the full protocol.
-
-## Prerequisites
-
-The plugin works best when you have the `gh` command line tool available on your
-system. This allows the team to interact with GitHub, for example opening a PR
-and posting issues.
 
 ## Advanced usage
 
@@ -177,6 +181,75 @@ You can also engage both from the start through the worktree branch name.
 Include a standalone `auto` token alongside the issue number (for example
 `gh83-auto`). Grace then turns on autopilot and auto-collect before Phase 1
 opens, without waiting for any input.
+
+## Unattended runs with /dream:catcher
+
+The dreamcatcher watches a repository for labelled issues and dispatches a
+dream-team session for each, one at a time. A backlog clears itself while you
+are away. Each session runs under autopilot and carries its issue to a pull
+request for you to merge. That is the same as an autopilot session you start by
+hand.
+
+The dreamcatcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
+with `gh` signed in.
+
+Label an issue for the team and assign it to yourself. Start Claude Code from
+the main checkout of that repository, not a linked worktree, then run:
+
+```text
+/dream:catcher
+```
+
+It watches the repository you started Claude Code in. By default it picks up
+open issues labelled `dream:team` and assigned to you. Pass a different label as
+an argument, for example `/dream:catcher auto`.
+
+The dreamcatcher runs in its own tmux session. Attach to it with
+`tmux attach -t dreamcatcher`, or follow its log with
+`tail -f dreamcatcher.log`. Each issue it dispatches runs in its own tmux
+session. `Ctrl+B` then `s` switches between the dreamcatcher and every running
+session, so a session waiting for an answer is one keystroke away.
+
+How it picks work:
+
+- **One session at a time.** A session holds the slot from dispatch until its
+  pull request is merged or closed, so your merge paces the next dispatch. Size
+  a session by grouping issues under an umbrella issue.
+- **Oldest eligible issue first.** Mark an issue blocked by another in the
+  GitHub issue view to make it wait for that one. The dreamcatcher skips a
+  blocked issue until its blocker closes, then picks it up.
+- **Finished sessions.** The dreamcatcher removes a session's worktree and tmux
+  session once its pull request is merged or closed, so they do not pile up.
+
+Each session runs unattended, so it needs its writes allowlisted, either in the
+repository's `.claude/settings.json` or your global `~/.claude/settings.json`.
+Add this to one of them:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh pr create:*)",
+      "Bash(gh pr comment:*)",
+      "Bash(gh pr edit:*)",
+      "Bash(gh pr ready:*)",
+      "Bash(gh pr close:*)",
+      "Bash(gh issue create:*)",
+      "Bash(gh issue comment:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
+```
+
+Without it, a session stalls on a permission prompt no one answers. When a
+session hits a question it cannot answer, it posts the question to the pull
+request and waits. You can reply there without dropping into the session.
+
+It stops on reboot, so re-run `/dream:catcher` to restart it. For a machine that
+must survive reboots, drive `catch.sh --once` from cron or launchd. Each firing
+runs a single tick.
 
 ## Troubleshooting
 
