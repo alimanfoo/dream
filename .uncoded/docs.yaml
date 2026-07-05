@@ -81,10 +81,7 @@ plugins/:
           Your role and responsibilities, by phase:
             'Phase 1: Requirements':
               'Step 1.1: Read the Draft Requirements Analysis':
-              'Step 1.2: Run each lens as a subagent':
-                'Lens 1: Real consumer, real value':
-                'Lens 2: Serves the project''s purpose':
-                'Lens 3: Coherent with what exists, coherent with itself':
+              'Step 1.2: Launch the review subagents':
               'Step 1.3: Weigh the findings':
               'Step 1.4: Send your findings to Grace via `SendMessage`':
               'Step 1.5: Read the accepted Requirements Analysis':
@@ -102,13 +99,7 @@ plugins/:
               'Step 4.1: Survey existing tools':
               'Step 4.2: Generate design sketches':
               'Step 4.3: Read the Design Options':
-              'Step 4.4: Run each lens as a subagent':
-                'Lens 1: Defend behaviour, not surface':
-                'Lens 2: Contract carried by prose or runtime check':
-                'Lens 3: Lateral moves':
-                'Lens 4: Reinvention':
-                'Lens 5: Separation of concerns':
-                'Lens 6: Surviving-fit check':
+              'Step 4.4: Launch the review subagents':
               'Step 4.5: Weigh the findings':
               'Step 4.6: Send your findings to Grace via `SendMessage`':
               'Step 4.7: Read the accepted Design':
@@ -129,9 +120,7 @@ plugins/:
               Compensation patterns:
             'Phase 7: Review':
               'Step 7.1: Read the whole diff':
-              'Step 7.2: Run each lens as a subagent':
-                'Lens 1: Completeness against requirements':
-                'Lens 2: Coherence across the whole diff':
+              'Step 7.2: Launch the review subagents':
               'Step 7.3: Weigh the findings':
               'Step 7.4: Send your review to Grace via `SendMessage`':
             'Phase 8: Merge':
@@ -212,6 +201,50 @@ plugins/:
           Leave these alone:
           Record every finding in a file:
           Return only what needs changing:
+      review-design-behaviour.md:
+        Defend behaviour, not surface:
+          The lens:
+          Reporting:
+      review-design-contract-shape.md:
+        Contract carried by prose or runtime check:
+          The lens:
+          Reporting:
+      review-design-lateral-moves.md:
+        Lateral moves:
+          The lens:
+          Reporting:
+      review-design-reinvention.md:
+        Reinvention:
+          The lens:
+          Reporting:
+      review-design-separation.md:
+        Separation of concerns:
+          The lens:
+          Reporting:
+      review-design-surviving-fit.md:
+        Surviving-fit check:
+          The lens:
+          Reporting:
+      review-pr-coherence.md:
+        Coherence across the whole diff:
+          The lens:
+          Reporting:
+      review-pr-completeness.md:
+        Completeness against requirements:
+          The lens:
+          Reporting:
+      review-requirements-coherence.md:
+        Coherent with what exists, coherent with itself:
+          The lens:
+          Reporting:
+      review-requirements-consumer-value.md:
+        Real consumer, real value:
+          The lens:
+          Reporting:
+      review-requirements-project-purpose.md:
+        Serves the project's purpose:
+          The lens:
+          Reporting:
     skills/:
       catcher/:
         SKILL.md:
