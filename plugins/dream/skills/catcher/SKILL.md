@@ -1,11 +1,11 @@
 ---
 name: catcher
 description:
-  Watch a repository for labelled issues and dispatch a dream-team session for
-  each, one at a time, unattended. Each session runs under autopilot and carries
-  its issue to a pull request for the user to merge. Only use when the user
-  explicitly runs /dream:catcher, to avoid accidentally launching unattended
-  sessions.
+  Only use when the user explicitly runs /dream:catcher, never on a general
+  request to watch, monitor, or triage issues, because it launches unattended
+  sessions. It watches a repository for labelled issues and dispatches a
+  dream-team session for each, one at a time. Each session runs under autopilot
+  and carries its issue to a pull request for the user to merge.
 argument-hint: "[label] [assignee] [interval]"
 ---
 
@@ -24,12 +24,15 @@ checks, and launch it.
 ## Arguments
 
 Read the argument the user gives, if any. It can name the label, the assignee,
-and the interval. Take whichever are present.
+and the interval, in any order: a leading `@` marks the assignee, digits mark
+the interval in seconds, and any other word is the label. Take whichever are
+present.
 
 ## Gather the configuration
 
 Every option has a default. Use what the argument named, default the rest, and
-ask only to override a default.
+ask only to override a default. State the label, assignee, and interval you
+resolved before launching, as a plain statement, so a misread surfaces at once.
 
 - **Label.** The label that marks an issue for the team. Defaults to
   `dream:team`, a dedicated label kept apart from labels a human reads. An issue
@@ -45,19 +48,34 @@ The repository is the one in the current working directory.
 Run each check before launching. Stop and tell the user if one fails.
 
 - Run `gh auth status`. It must succeed.
-- Run `command -v git gh jq claude tmux`. They must all be on the PATH.
-- Run `gh label list` and confirm the label is present. Offer to create it if it
-  is missing.
-- Run `git rev-parse --git-common-dir`. It must print `.git`, which means this
-  is the main checkout. Any other path means a linked worktree, and dispatched
-  worktrees would land in the wrong place.
+- Confirm git, gh, jq, claude, and tmux are all on the PATH, checking each with
+  its own `command -v`, since one `command -v` over the whole list passes when
+  any single tool resolves.
+- Confirm the label exists with `gh label list --search "<label>"`, which avoids
+  the 30-label default page. Offer to create it with `gh label create` if it is
+  missing.
+- Confirm this is the main checkout, not a linked worktree, with
+  `test -d "$(git rev-parse --show-toplevel)/.git"`. It must succeed. A linked
+  worktree's `.git` is a file, so dispatched worktrees would land in the wrong
+  place.
 - Confirm the recurring unattended writes are allowlisted in the user's or the
-  host repo's `.claude/settings.json`. Otherwise a dispatched session stalls on
-  a permission prompt no one answers. The writes are `gh pr create`,
-  `gh pr comment`, `gh pr edit`, `gh pr ready`, `gh issue create`,
-  `gh issue comment`, `git commit`, and `git push`, each allowlisted as a
-  `Bash(<write>:*)` rule under `permissions.allow`. If any are missing, offer to
-  add them.
+  host repo's `.claude/settings.json`, each as a `Bash(<write>:*)` rule under
+  `permissions.allow`. Otherwise a dispatched session stalls on a permission
+  prompt no one answers. The writes are:
+  - `gh pr create`
+  - `gh pr comment`
+  - `gh pr edit`
+  - `gh pr ready`
+  - `gh pr close`
+  - `gh issue create`
+  - `gh issue comment`
+  - `git commit`
+  - `git push`
+
+  If any rule is missing, offer to add it. Read the existing file first, or
+  start from `{}` if it is absent. Add only the missing rules to the
+  `permissions.allow` array, and leave every other key untouched. Never
+  regenerate or replace the rest of the file.
 
 ## Launch
 
@@ -75,16 +93,16 @@ tmux new-session -d -s dreamcatcher -x 220 -y 50 \
 
 Then tell the user:
 
-- to watch the loop with `tmux attach -t dreamcatcher`, or follow the log with
-  `tail -f dreamcatcher.log`. Detach with `Ctrl+B` then `d`. Stop the loop with
-  `tmux kill-session -t dreamcatcher`.
+- that they can watch the loop with `tmux attach -t dreamcatcher`, or follow the
+  log with `tail -f dreamcatcher.log`, that `Ctrl+B` then `d` detaches, and that
+  `tmux kill-session -t dreamcatcher` stops the loop.
 - that each issue runs in its own tmux session named
-  `dream-GH<n>-<timestamp>-auto`. `Ctrl+B` then `s` switches between the loop
-  and every dispatched session, so a session waiting for an answer is one
-  keystroke away.
-- that tmux sessions stop on reboot, and re-running `/dream:catcher` restarts
-  the loop. Drive `catch.sh --once` from cron or launchd instead for a machine
-  that must survive reboots, where each firing runs a single tick.
+  `dream-GH<n>-<timestamp>-auto`, and that `Ctrl+B` then `s` switches between
+  the loop and every dispatched session, so a session waiting for an answer is
+  one keystroke away.
+- that tmux sessions stop on reboot, so re-running `/dream:catcher` restarts the
+  loop, and that a machine which must survive reboots should run
+  `catch.sh --once` from cron or launchd, where each firing runs a single tick.
 
 ## How it picks work
 

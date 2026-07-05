@@ -74,16 +74,34 @@ while [ $# -gt 0 ]; do
   esac
 done
 
+# Reject a non-numeric interval or linger at parse time. Left unchecked, a typo
+# like "30m" survives to the arithmetic in clean_up_finished and aborts the whole
+# loop under set -u, silently ending the unattended run.
+[[ "$interval" =~ ^[1-9][0-9]*$ ]] || die "--interval must be a positive whole number of seconds"
+[[ "$linger" =~ ^[1-9][0-9]*$ ]] || die "--linger must be a positive whole number of minutes"
+
 for tool in git gh jq claude tmux; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
 done
 
 # The main checkout, and the directory that holds it and its sibling worktrees.
+# A linked worktree's .git is a file, not a directory, so this also rejects
+# running from one, where the sibling worktrees would land in the wrong place.
 main_root=$(git rev-parse --show-toplevel 2>/dev/null) || die "not in a git repository"
+[ -d "$main_root/.git" ] || die "run this from the main checkout, not a linked worktree"
 container=$(dirname "$main_root")
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) || die "cannot read the GitHub repository"
 
 # --- one tick --------------------------------------------------------------
+
+# A worktree or branch this coordinator created, named GH<n>-<timestamp>-auto.
+# The pattern is anchored to that exact shape, so cleanup never removes a
+# worktree a human happens to name with an "auto" token.
+is_auto_branch() { [[ "$1" =~ ^GH[0-9]+-[0-9]{8}-[0-9]{6}-auto$ ]]; }
+
+# The path of every worktree of this repo, one per line. sed, not awk, keeps a
+# path that contains a space intact.
+worktree_paths() { git -C "$main_root" worktree list --porcelain | sed -n 's/^worktree //p'; }
 
 # True when a session holds the one-at-a-time slot: a live "-auto" session for
 # this repo whose branch has no merged or closed pull request. A developing
@@ -97,7 +115,7 @@ session_in_flight() {
   while read -r wt; do
     [ -n "$wt" ] || continue
     branch=$(basename "$wt")
-    [[ "$branch" =~ (^|[-_])[Aa][Uu][Tt][Oo]([-_]|$) ]] || continue
+    is_auto_branch "$branch" || continue
     tmux has-session -t "dream-$branch" 2>/dev/null || continue
     finished=$(gh pr list --repo "$repo" --head "$branch" --state all --json state \
       --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED")] | length' \
@@ -106,7 +124,7 @@ session_in_flight() {
       log "deferring: $branch is still in flight"
       return 0
     fi
-  done < <(git -C "$main_root" worktree list --porcelain | awk '/^worktree /{print $2}')
+  done < <(worktree_paths)
   return 1
 }
 
@@ -114,12 +132,12 @@ session_in_flight() {
 # open pull request (a current or earlier session still going) or a merged one.
 # The issue's closed state can lag in `gh issue list`, so a merged PR still
 # counts. A closed-unmerged PR does not count, so an old declined attempt never
-# locks the issue out. A read failure
-# returns true, so a transient error never re-dispatches an issue already under
-# way, and a just-merged issue is never picked up a second time.
+# locks the issue out. A read failure returns true, so a transient error never
+# re-dispatches an issue already under way. A just-merged issue is also never
+# picked up twice.
 already_handled() {
   local n=$1 count
-  count=$(gh pr list --repo "$repo" --state all --json headRefName,state 2>/dev/null \
+  count=$(gh pr list --repo "$repo" --state all --limit 500 --json headRefName,state 2>/dev/null \
     | jq -r --arg n "$n" '[.[] | select(.headRefName | test("^GH" + $n + "(-.*)?-auto$")) | select(.state == "OPEN" or .state == "MERGED")] | length' 2>/dev/null)
   [ -n "$count" ] || return 0
   [ "$count" -ne 0 ]
@@ -132,40 +150,12 @@ unblocked() {
   local n=$1 open
   open=$(gh api "repos/$repo/issues/$n/dependencies/blocked_by" \
          --jq '[.[] | select(.state == "open")] | length' 2>/dev/null) \
-    || { log "cannot check blockers for GH${n}; skipping this tick"; return 1; }
+    || { log "cannot check blockers for GH${n}, skipping it this tick"; return 1; }
   [ "${open:-0}" -eq 0 ]
 }
 
-# Clean up finished sessions to free tmux's session slots. A worktree whose pull
-# request has been merged or closed for at least the linger period is done, its
-# Collect run. Kill its tmux session and remove the worktree. This is the
-# exit-and-kill a user does by hand, automated. No reliable "team idle" signal
-# exists, so the linger period, set above any Collect run, is the guard against
-# cleaning up mid-Collect.
 epoch_of() {
   date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$1" +%s 2>/dev/null || date -u -d "$1" +%s 2>/dev/null
-}
-
-clean_up_finished() {
-  local cutoff wt base branch done_at done_epoch
-  cutoff=$(( $(date -u +%s) - linger * 60 ))
-  while read -r wt; do
-    [ -n "$wt" ] || continue
-    base=$(basename "$wt")
-    [[ "$base" =~ (^|[-_])[Aa][Uu][Tt][Oo]([-_]|$) ]] || continue
-    branch=$base
-    done_at=$(gh pr list --repo "$repo" --head "$branch" --state all --json state,mergedAt,closedAt \
-      --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED") | (.mergedAt // .closedAt)] | map(select(.)) | sort | last // empty' \
-      2>/dev/null)
-    [ -n "$done_at" ] || continue
-    done_epoch=$(epoch_of "$done_at")
-    [ -n "$done_epoch" ] || continue
-    [ "$done_epoch" -le "$cutoff" ] || continue
-    log "cleaning up $branch (PR finished $done_at, past ${linger}m linger)"
-    tmux kill-session -t "dream-$branch" 2>/dev/null
-    git -C "$main_root" worktree remove --force "$wt" 2>/dev/null \
-      && git -C "$main_root" branch -D "$branch" 2>/dev/null
-  done < <(git -C "$main_root" worktree list --porcelain | awk '/^worktree /{print $2}')
 }
 
 # Mark the worktree as trusted, so the session does not block on the
@@ -180,18 +170,62 @@ trust_worktree() {
     && mv "$tmp" "$cfg" || { rm -f "$tmp"; return 1; }
 }
 
+# Undo trust_worktree, so a removed worktree leaves no entry behind in
+# ~/.claude.json. The write is atomic.
+untrust_worktree() {
+  local dir=$1 cfg="$HOME/.claude.json" tmp
+  [ -f "$cfg" ] || return 0
+  tmp=$(mktemp) || return 1
+  jq --arg d "$dir" 'del(.projects[$d])' "$cfg" >"$tmp" 2>/dev/null \
+    && mv "$tmp" "$cfg" || { rm -f "$tmp"; return 1; }
+}
+
+# Remove a worktree, its branch, and its trust entry together, leaving nothing
+# behind. Used both to reclaim a finished session and to back out a dispatch
+# that failed after the worktree was created.
+discard_worktree() {
+  git -C "$main_root" worktree remove --force "$1" 2>/dev/null
+  git -C "$main_root" branch -D "$2" 2>/dev/null
+  untrust_worktree "$1"
+}
+
+# Clean up finished sessions to free tmux's session slots. A worktree whose pull
+# request has been merged or closed for at least the linger period is done. Its
+# Collect has already run, so kill its tmux session and remove the worktree. This
+# is the exit-and-kill a user does by hand, automated. No reliable "team idle"
+# signal exists, so the linger period, set above any Collect run, is the guard
+# against cleaning up mid-Collect.
+clean_up_finished() {
+  local cutoff wt branch done_at done_epoch
+  cutoff=$(( $(date -u +%s) - linger * 60 ))
+  while read -r wt; do
+    [ -n "$wt" ] || continue
+    branch=$(basename "$wt")
+    is_auto_branch "$branch" || continue
+    done_at=$(gh pr list --repo "$repo" --head "$branch" --state all --json state,mergedAt,closedAt \
+      --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED") | (.mergedAt // .closedAt)] | map(select(.)) | sort | last // empty' \
+      2>/dev/null)
+    [ -n "$done_at" ] || continue
+    done_epoch=$(epoch_of "$done_at")
+    [ -n "$done_epoch" ] || continue
+    [ "$done_epoch" -le "$cutoff" ] || continue
+    log "cleaning up $branch (PR finished $done_at, past ${linger}m linger)"
+    tmux kill-session -t "dream-$branch" 2>/dev/null
+    discard_worktree "$wt" "$branch"
+  done < <(worktree_paths)
+}
+
 # Create the worktree and launch a session for it in a detached tmux session.
-# The branch name carries the issue number and the auto token, which Grace's
-# boot reads to take the issue as the session input with autopilot and
-# auto-collect engaged. The timestamp between them makes the name unique per
-# attempt, so a retry never collides with an earlier attempt's branch or PR.
+# The branch name carries the issue number and the auto token. Grace's boot reads
+# them to take the issue as the session input, with autopilot and auto-collect
+# engaged. The timestamp between them makes the name unique per attempt, so a
+# retry never collides with an earlier attempt's branch or pull request.
 #
-# The worktree is made with `git worktree add`, not `claude -w`, so it lands at a
-# predictable sibling path with a branch name the cap and dedup checks rely on.
-# tmux hosts the session because a `claude --bg` session dies when the team goes
-# idle between steps, while a tmux session stays alive and drives to completion.
-# The team feature is set per session through the experimental env var. Auto mode
-# and the host repo's settings.json handle unattended writes.
+# `git worktree add` creates the worktree, not `claude -w`. That lands it at a
+# predictable sibling path, with a branch name the cap, cleanup, and dedup checks
+# rely on. tmux hosts the session. The team feature is set per session through
+# the experimental env var. Auto mode and the host repo's settings.json handle
+# unattended writes.
 dispatch() {
   local n=$1 ts branch wt session err
   ts=$(date -u +%Y%m%d-%H%M%S)
@@ -204,11 +238,11 @@ dispatch() {
   err=$(git -C "$main_root" worktree add -b "$branch" "$wt" origin/main 2>&1) \
     || { log "could not create worktree $wt for GH${n}: $err"; return 1; }
   trust_worktree "$wt" \
-    || { log "could not pre-trust $wt; skipping GH${n}"; git -C "$main_root" worktree remove --force "$wt" 2>/dev/null; return 1; }
+    || { log "could not pre-trust $wt, skipping GH${n}"; discard_worktree "$wt" "$branch"; return 1; }
   if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" \
       "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec claude --permission-mode auto --teammate-mode tmux '/dream:team'"; then
-    log "tmux launch failed for GH${n}; removing worktree"
-    git -C "$main_root" worktree remove --force "$wt" 2>/dev/null
+    log "tmux launch failed for GH${n}, discarding worktree"
+    discard_worktree "$wt" "$branch"
     return 1
   fi
   log "dispatched GH${n} into tmux session $session"
