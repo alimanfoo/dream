@@ -178,6 +178,48 @@ Include a standalone `auto` token alongside the issue number (for example
 `gh83-auto`). Grace then turns on autopilot and auto-collect before Phase 1
 opens, without waiting for any input.
 
+## Unattended runs with /dream:catcher
+
+The dreamcatcher watches a repository for labelled issues and dispatches a
+dream-team session for each, one at a time. A backlog clears itself while you
+are away. Each session runs under autopilot and carries its issue through to a
+merged pull request, the same as an autopilot session you start by hand.
+
+Label an issue for the team, then start the watcher:
+
+```text
+/dream:catcher
+```
+
+By default it picks up open issues labelled `dream:team` and assigned to you.
+Pass a different label as an argument, for example `/dream:catcher auto`.
+
+The watcher runs in its own tmux session. Attach to it with
+`tmux attach -t dreamcatcher`, or follow its log with
+`tail -f dreamcatcher.log`. Each issue it dispatches runs in its own tmux
+session. `Ctrl+B` then `s` switches between the watcher and every running
+session, so a session waiting for an answer is one keystroke away.
+
+How it picks work:
+
+- **One session at a time.** A session holds the slot from dispatch until its
+  pull request is merged or closed, so your merge paces the next dispatch. Size
+  a session by grouping issues under an umbrella issue.
+- **Oldest eligible issue first.** Mark an issue blocked by another in the
+  GitHub issue view to make it wait for that one. The watcher skips a blocked
+  issue until its blocker closes, then picks it up.
+
+Each session runs unattended. Allowlist the writes it makes (such as
+`gh pr create`, `git commit`, and `git push`) in your `.claude/settings.json`.
+Otherwise a session stalls on a prompt no one answers. When a session hits a
+question it cannot answer, it posts the question to the pull request and waits.
+You can reply there without dropping into the session.
+
+Running the watcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH.
+It stops on reboot. Re-run `/dream:catcher` to restart it. Drive
+`catch.sh --once` from cron or launchd for a machine that must survive reboots,
+where each firing runs a single tick.
+
 ## Troubleshooting
 
 ### Permissions

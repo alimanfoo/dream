@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 #
-# Dreamcatcher: hand labelled issues to dream-team sessions, one at a time.
+# Dreamcatcher: dispatch labelled issues to dream-team sessions, one at a time.
 #
-# Each tick is stateless. It reads live truth from `claude agents` and `gh`,
-# then dispatches at most one session. Nothing is stored between ticks: the
-# worktrees on disk, the sessions in `claude agents`, and the issues on GitHub
-# are the only state. So any trigger works. The default is a background loop.
-# For a machine that must survive reboots, drive `catch.sh --once` from cron.
+# Each tick is stateless. It reads live truth from git, tmux, and `gh`, then
+# dispatches at most one session. Nothing is stored between ticks: the worktrees
+# on disk, the tmux sessions, and the issues and pull requests on GitHub are the
+# only state. So any trigger works. The default is a background loop. Drive
+# `catch.sh --once` from cron for a machine that must survive reboots.
 #
 # Dispatched sessions run in a detached tmux session, not `claude --bg`. A
-# background session dies when the team goes idle between steps; a tmux session
+# background session dies when the team goes idle between steps. A tmux session
 # stays alive and drives the work to completion, the same as a session run by
 # hand.
 #
@@ -18,14 +18,14 @@
 # This is a granularity choice, letting the user size a session by composing
 # issues, not a technical limit.
 #
-# Each tick also reaps finished sessions: a worktree whose pull request has been
-# merged or closed past a linger period is killed and removed, so tmux sessions
-# do not pile up until tmux refuses to open more.
+# Each tick also cleans up finished sessions. A worktree whose pull request was
+# merged or closed past a linger period is killed and removed. That keeps tmux
+# sessions from piling up until tmux refuses to open more.
 #
 # Permissions: a dispatched session runs in auto mode and reads the user's and
 # the host repo's .claude/settings.json, the same as an autopilot session
-# launched by hand. Keep the recurring unattended writes (gh pr create, gh pr
-# comment, git commit, git push, and so on) allowlisted there, in that one home.
+# launched by hand. Keep the recurring unattended writes (gh pr create, git
+# commit, git push, and so on) allowlisted there, in that one home.
 # Auto mode handles the rest and notifies on anything it blocks.
 #
 # Layout: the coordinator assumes the standard worktree layout, where each
@@ -38,15 +38,15 @@ set -uo pipefail
 
 usage() {
   cat <<'EOF'
-Dreamcatcher: hand labelled issues to dream-team sessions, one at a time.
+Dreamcatcher: dispatch labelled issues to dream-team sessions, one at a time.
 
 Usage:
-  catch.sh --label <label> [--assignee <who>] [--interval <seconds>] [--once]
+  catch.sh [--label <label>] [--assignee <who>] [--interval <seconds>] [--once]
 
-  --label     Issue label that marks work for the team. Required.
+  --label     Issue label that marks work for the team. Default: dream:team.
   --assignee  Whose issues to pick up. Default: @me.
   --interval  Seconds between ticks in loop mode. Default: 300.
-  --linger    Minutes a finished session lingers before it is reaped. Default: 30.
+  --linger    Minutes a finished session lingers before it is cleaned up. Default: 30.
   --once      Run a single tick and exit, instead of looping.
 EOF
 }
@@ -56,7 +56,7 @@ die() { printf 'dreamcatcher: %s\n' "$*" >&2; exit 2; }
 
 # --- configuration ---------------------------------------------------------
 
-label=""
+label="dream:team"
 assignee="@me"
 interval=300
 linger=30
@@ -74,7 +74,6 @@ while [ $# -gt 0 ]; do
   esac
 done
 
-[ -n "$label" ] || die "--label is required"
 for tool in git gh jq claude tmux; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
 done
@@ -86,21 +85,20 @@ repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) || die "
 
 # --- one tick --------------------------------------------------------------
 
-# True when a session holds the one-at-a-time slot: a live "-auto" session under
+# True when a session holds the one-at-a-time slot: a live "-auto" session for
 # this repo whose branch has no merged or closed pull request. A developing
 # session and one awaiting review both hold the slot, because two live teams
-# would corrupt each other. A session whose PR is merged or closed has finished
-# and frees the slot. Each branch is unique per attempt, so its PR state is that
-# session's alone, never an earlier attempt's. A read failure defers, the safe
-# direction, since a wrong "clear" would let a second team corrupt a live one.
+# would corrupt each other. A session whose pull request is merged or closed has
+# finished and frees the slot. A crashed session frees it too, its tmux session
+# gone, so it never wedges the slot. Each branch is unique per attempt, so its
+# pull request state is that session's alone, never an earlier attempt's.
 session_in_flight() {
-  local agents cwd base branch finished
-  agents=$(claude agents --json 2>/dev/null) || { log "cannot read claude agents; deferring"; return 0; }
-  while read -r cwd; do
-    [ -n "$cwd" ] || continue
-    base=$(basename "$cwd")
-    [[ "$base" =~ (^|[-_])[Aa][Uu][Tt][Oo]([-_]|$) ]] || continue
-    branch=$base
+  local wt branch finished
+  while read -r wt; do
+    [ -n "$wt" ] || continue
+    branch=$(basename "$wt")
+    [[ "$branch" =~ (^|[-_])[Aa][Uu][Tt][Oo]([-_]|$) ]] || continue
+    tmux has-session -t "dream-$branch" 2>/dev/null || continue
     finished=$(gh pr list --repo "$repo" --head "$branch" --state all --json state \
       --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED")] | length' \
       2>/dev/null || echo 0)
@@ -108,14 +106,15 @@ session_in_flight() {
       log "deferring: $branch is still in flight; only one session runs at a time"
       return 0
     fi
-  done < <(jq -r --arg c "$container/" '.[] | select((.cwd // "") | startswith($c)) | .cwd' <<<"$agents")
+  done < <(git -C "$main_root" worktree list --porcelain | awk '/^worktree /{print $2}')
   return 1
 }
 
-# True when the issue already has a session in flight or finished: an open pull
-# request (a current or earlier session still going) or a merged one (done, but
-# the issue's closed state may lag in `gh issue list`). A closed-unmerged PR does
-# not count, so an old declined attempt never locks the issue out. A read failure
+# True when the issue already has a session in flight or finished. That is an
+# open pull request (a current or earlier session still going) or a merged one.
+# The issue's closed state can lag in `gh issue list`, so a merged PR still
+# counts. A closed-unmerged PR does not count, so an old declined attempt never
+# locks the issue out. A read failure
 # returns true, so a transient error never re-dispatches an issue already under
 # way, and a just-merged issue is never picked up a second time.
 already_handled() {
@@ -137,17 +136,17 @@ unblocked() {
   [ "${open:-0}" -eq 0 ]
 }
 
-# Reap finished sessions to free tmux's session slots. A worktree whose pull
-# request has been merged or closed for at least the linger period is done (its
-# Collect has run), so kill its tmux session and remove the worktree. This is
-# the exit-and-kill a user does by hand, automated. There is no reliable "team
-# idle" signal (a session's status reads busy even at rest), so the linger
-# period, set above any Collect run, is the guard against reaping mid-Collect.
+# Clean up finished sessions to free tmux's session slots. A worktree whose pull
+# request has been merged or closed for at least the linger period is done, its
+# Collect run. Kill its tmux session and remove the worktree. This is the
+# exit-and-kill a user does by hand, automated. No reliable "team idle" signal
+# exists, so the linger period, set above any Collect run, is the guard against
+# cleaning up mid-Collect.
 epoch_of() {
   date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$1" +%s 2>/dev/null || date -u -d "$1" +%s 2>/dev/null
 }
 
-reap_finished() {
+clean_up_finished() {
   local cutoff wt base branch done_at done_epoch
   cutoff=$(( $(date -u +%s) - linger * 60 ))
   while read -r wt; do
@@ -162,7 +161,7 @@ reap_finished() {
     done_epoch=$(epoch_of "$done_at")
     [ -n "$done_epoch" ] || continue
     [ "$done_epoch" -le "$cutoff" ] || continue
-    log "reaping $branch (PR finished $done_at, past ${linger}m linger)"
+    log "cleaning up $branch (PR finished $done_at, past ${linger}m linger)"
     tmux kill-session -t "dream-$branch" 2>/dev/null
     git -C "$main_root" worktree remove --force "$wt" 2>/dev/null \
       && git -C "$main_root" branch -D "$branch" 2>/dev/null
@@ -170,9 +169,9 @@ reap_finished() {
 }
 
 # Mark the worktree as trusted, so the session does not block on the
-# workspace-trust prompt (a background session skips it, but an interactive tmux
-# session hits it on a fresh directory). The flag lives in ~/.claude.json under
-# the worktree's absolute path. The write is atomic.
+# workspace-trust prompt. A background session skips that prompt, but an
+# interactive tmux session hits it on a fresh directory. The flag lives in
+# ~/.claude.json under the worktree's absolute path. The write is atomic.
 trust_worktree() {
   local dir=$1 cfg="$HOME/.claude.json" tmp
   [ -f "$cfg" ] || printf '{}\n' >"$cfg"
@@ -216,7 +215,7 @@ dispatch() {
 }
 
 tick() {
-  reap_finished
+  clean_up_finished
   if session_in_flight; then
     return 0
   fi

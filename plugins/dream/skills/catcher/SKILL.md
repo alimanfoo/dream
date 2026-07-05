@@ -1,19 +1,19 @@
 ---
 name: catcher
 description:
-  Watch a repository for labelled issues and hand each to a dream-team session,
-  one at a time, unattended. Each session runs under autopilot and carries
-  itself to a merged pull request. Use when the user runs /dream:catcher or asks
-  to pick up issues automatically while away.
+  Watch a repository for labelled issues and dispatch a dream-team session for
+  each, one at a time, unattended. Each session runs under autopilot and carries
+  itself to a merged pull request. Only use when the user explicitly runs
+  /dream:catcher, to avoid accidentally launching unattended sessions.
 argument-hint: "[label]"
 ---
 
 # Dreamcatcher
 
-Watch a repository for issues marked for the team, and hand each to a fresh
-dream-team session. The sessions already do the work. This is the coordinator
-around them: it notices a labelled issue and starts a session for it, one at a
-time, so the work continues while the user is away.
+Watch a repository for issues marked for the team, and dispatch a fresh
+dream-team session for each. The sessions already do the work. This is the
+coordinator around them. It notices a labelled issue and dispatches a session
+for it, one at a time. The work continues while the user is away.
 
 The coordinator is a shell script, `catch.sh`, in this skill's directory. It
 runs a tick on a loop and reads live state each time, so nothing is stored
@@ -23,16 +23,16 @@ checks, and launch it.
 ## Arguments
 
 Read the argument the user gives, if any. A word given this way is the label.
-Use it directly and skip asking for the label below.
+Use it directly and skip asking for the label.
 
 ## Gather the configuration
 
-Ask the user for what the argument did not supply. Launch with what they give
-plus the defaults.
+Every option has a default. Launch with the defaults, taking the label from the
+argument if the user gave one, and ask only to override a default.
 
-- **Label.** The label that marks an issue for the team. Required, no default.
-  Suggest a dedicated label, such as `auto`, kept apart from labels a human
-  reads. An issue needs this label and the right assignee to be picked up.
+- **Label.** The label that marks an issue for the team. Defaults to
+  `dream:team`, a dedicated label kept apart from labels a human reads. An issue
+  needs this label and the right assignee to be picked up.
 - **Assignee.** Whose issues to pick up. Defaults to `@me`, gh's alias for the
   authenticated user.
 - **Interval.** Seconds between ticks. Defaults to 300.
@@ -44,22 +44,22 @@ The repository is the one in the current working directory.
 Run each check before launching. Stop and tell the user if one fails.
 
 - Run `gh auth status`. It must succeed.
-- Run `command -v git gh jq claude tmux`. All five must be on the PATH.
+- Run `command -v git gh jq claude tmux`. They must all be on the PATH.
 - Run `gh label list` and confirm the label is present. Offer to create it if it
   is missing.
 - Run `git rev-parse --git-common-dir`. It must print `.git`, which means this
   is the main checkout. Any other path means a linked worktree, and dispatched
   worktrees would land in the wrong place.
 - Confirm the recurring unattended writes are allowlisted in the user's or the
-  host repo's `.claude/settings.json`, so a dispatched session does not stall on
+  host repo's `.claude/settings.json`. Otherwise a dispatched session stalls on
   a permission prompt no one answers. The writes are `gh pr create`,
   `gh pr comment`, `gh pr edit`, `gh pr ready`, `gh issue create`,
   `gh issue comment`, `git commit`, and `git push`.
 
 ## Launch
 
-Run the loop in its own detached tmux session, so it outlives this session and
-the user can attach to watch it tick, the same way they attach to a dispatched
+Run the loop in its own detached tmux session, so it outlives this session. The
+user can then attach to watch it tick, the same way they attach to a dispatched
 session:
 
 ```bash
@@ -80,8 +80,8 @@ Then tell the user:
   and every dispatched session, so a session waiting for an answer is one
   keystroke away.
 - that tmux sessions stop on reboot, and re-running `/dream:catcher` restarts
-  the loop. For a machine that must survive reboots, drive `catch.sh --once`
-  from cron or launchd instead, which runs a single tick per firing.
+  the loop. Drive `catch.sh --once` from cron or launchd instead for a machine
+  that must survive reboots, where each firing runs a single tick.
 
 ## How it picks work
 
@@ -91,8 +91,8 @@ Answer questions about the coordinator's behaviour from here.
   pull request is merged or closed, so your merge paces the next dispatch. This
   is a granularity choice, letting you size a session by composing issues into
   an umbrella, not a technical limit.
-- **Oldest eligible issue first.** To make one issue wait for another, mark it
-  blocked by the other in the GitHub issue view. The coordinator skips an issue
+- **Oldest eligible issue first.** Mark an issue blocked by another in the
+  GitHub issue view to make it wait for that one. The coordinator skips an issue
   whose blocker is still open, and picks it up once the blocker is closed. Use
   this when one issue depends on another, or when one tidies an area the other
   would otherwise have to work through.
