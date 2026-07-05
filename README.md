@@ -190,14 +190,16 @@ are away. Each session runs under autopilot and carries its issue to a pull
 request for you to merge. That is the same as an autopilot session you start by
 hand.
 
-Label an issue for the team, then start the dreamcatcher:
+Label an issue for the team and assign it to yourself. Start Claude Code from
+the main checkout of that repository, not a linked worktree, then run:
 
 ```text
 /dream:catcher
 ```
 
-By default it picks up open issues labelled `dream:team` and assigned to you.
-Pass a different label as an argument, for example `/dream:catcher auto`.
+It watches the repository you started Claude Code in. By default it picks up
+open issues labelled `dream:team` and assigned to you. Pass a different label as
+an argument, for example `/dream:catcher auto`.
 
 The dreamcatcher runs in its own tmux session. Attach to it with
 `tmux attach -t dreamcatcher`, or follow its log with
