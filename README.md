@@ -7,8 +7,14 @@ coherent, with minimal human input.
 unattended across a repository's labelled issues. Utility skills ship alongside:
 `/dream:writing-style` and `/dream:copy-edit`.
 
+## Prerequisites
+
 Requires Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
+
+The plugin works best with the `gh` command line tool available. This lets the
+team interact with GitHub, for example opening a pull request and posting
+issues.
 
 ## Installation
 
@@ -37,12 +43,6 @@ start working.
 See
 [`plugins/dream/skills/team/protocol.md`](plugins/dream/skills/team/protocol.md)
 for the full protocol.
-
-## Prerequisites
-
-The plugin works best when you have the `gh` command line tool available on your
-system. This allows the team to interact with GitHub, for example opening a PR
-and posting issues.
 
 ## Advanced usage
 

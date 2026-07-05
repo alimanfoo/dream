@@ -391,9 +391,9 @@ plugins/:
         Text for GitHub:
 README.md:
   dream:
+    Prerequisites:
     Installation:
     Basic usage:
-    Prerequisites:
     Advanced usage:
       Alias claude with experimental agent teams support:
       Models and effort:
