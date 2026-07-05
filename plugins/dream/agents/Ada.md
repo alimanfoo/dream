@@ -151,13 +151,15 @@ are examples, not a checklist:
 
 In each subagent's spawn prompt, give it two things. First, the diff to review
 as a local git range: the branch under review against its base, for example
-`git diff main...HEAD`. Second, the one lens it applies. Then have it read the
-diff and any source it needs for itself. Ask it to return each finding with a
-file/line citation and the concrete consequence. Ask it to say plainly when the
-code is clean rather than manufacture nitpicks. The subagents are read-only like
-you: they read and report, never edit and never run tests or CI. Skip the lenses
-for a diff small enough that your own read already exhausts it. Three subagents
-on a one-line fix is wasted motion.
+`git diff origin/main...HEAD`. Diff against `origin/main`, not local `main`; a
+worktree session never freshens local `main`, so it can be stale or missing.
+Second, the one lens it applies. Then have it read the diff and any source it
+needs for itself. Ask it to return each finding with a file/line citation and
+the concrete consequence. Ask it to say plainly when the code is clean rather
+than manufacture nitpicks. The subagents are read-only like you: they read and
+report, never edit and never run tests or CI. Skip the lenses for a diff small
+enough that your own read already exhausts it. Three subagents on a one-line fix
+is wasted motion.
 
 #### Step 7.4: Send your review to Grace via `SendMessage`
 

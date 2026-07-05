@@ -322,20 +322,32 @@ change what the code does. If a simpler shape would need a contract or behaviour
 change, raise it to Grace through the [Step 6.2](#step-62-do-the-work) channel
 rather than making it.
 
-#### Step 6.4: Run the tests
+#### Step 6.4: Copy-edit the prose you wrote
+
+Note the prose your task added or changed: markdown docs, docstrings, code
+comments, prompts. Skip this step when the task wrote no prose. This step checks
+your work against the [Prose artefacts](#prose-artefacts) rule below.
+
+Spawn one `dream:copy-editor` subagent (see [the copy editor](copy-editor.md))
+via the `Agent` tool, giving it the writing style guide's absolute path and
+every prose site you noted, in one prompt. Resolve every finding yourself, in
+place. You are the author. When a fix would drop a reason, keep the reason and
+meet the rule another way.
+
+#### Step 6.5: Run the tests
 
 Run the tests you found at boot. They must pass before you commit. The commit
 hook rarely runs the test suite, so the tests are a separate gate from the
 commit-time checks.
 
-#### Step 6.5: Run any codegen the commit hook doesn't run
+#### Step 6.6: Run any codegen the commit hook doesn't run
 
 After your edits, run any codegen the hook doesn't run, so the generated files
 match the source. Some projects keep codegen outside the hook: a stub generator,
 an OpenAPI client refresh, or an index sync. Stage the generated files with the
 rest. The commit hook checks them.
 
-#### Step 6.6: Commit and push
+#### Step 6.7: Commit and push
 
 Commit your work, then push. Run `git status` and a full `git diff` first to
 confirm one commit per task with nothing missed. Stage the paths this task
@@ -344,7 +356,7 @@ commit hook runs the commit-time checks on your staged files. If it rewrites a
 file or reports a failure, inspect any rewrite, re-stage the affected paths, and
 commit again. Repeat until the hook passes cleanly. Then push the branch.
 
-#### Step 6.7: Report back to Grace via `SendMessage`
+#### Step 6.8: Report back to Grace via `SendMessage`
 
 Send the report to Grace via `SendMessage`, including the commit SHA you just
 pushed. Plain-text turn output doesn't reach her. Only `SendMessage` does. You
@@ -358,6 +370,8 @@ Include in the body what Grace can't see from the diff:
 - deviations from the brief
 - what the cold-read pass ([Step 6.3](#step-63-revise-for-a-cold-read)) changed,
   if it changed anything
+- what the copy-edit pass ([Step 6.4](#step-64-copy-edit-the-prose-you-wrote))
+  changed, if it changed anything
 - things you noticed but deliberately didn't act on
 - open scope questions
 

@@ -293,16 +293,17 @@ After pausing, create a recurring cron job (`CronCreate`) to remind you to check
 the PR for replies every 10 minutes. Embed these values in the prompt:
 
 - the PR number
-- the authenticated user login (`gh api user --jq .login`)
 - the current timestamp (`date -u +%Y-%m-%dT%H:%M:%SZ`)
 
 Note the cron job ID in your turn output. You will need it to cancel the job.
 
-When the cron job fires, use the embedded values to run:
+When the cron job fires, resolve the authenticated user's login fresh, then use
+it with the embedded values to run:
 
 ```bash
+ME=$(gh api user --jq .login)
 gh pr view <N> --json comments,reviews,state \
-  --jq '{state, comments: [.comments[] | select(.author.login == "USER" and .createdAt > "TIMESTAMP")], reviews: [.reviews[] | select(.author.login == "USER" and .submittedAt > "TIMESTAMP")]}'
+  --jq "{state, comments: [.comments[] | select(.author.login == \"$ME\" and .createdAt > \"TIMESTAMP\")], reviews: [.reviews[] | select(.author.login == \"$ME\" and .submittedAt > \"TIMESTAMP\")]}"
 ```
 
 This one query covers every reply channel: a plain comment and a formal review
@@ -324,10 +325,10 @@ a review carry equal weight there, so reuse it unchanged.
 Announce the switch once in plain turn output: autopilot is now watching the PR
 for the user's move.
 
-Set up the same recurring cron job. Embed the same values: the PR number, the
-authenticated user's login, and a cutoff timestamp. Capture the cutoff now, as
-you enter the watch, with `date -u +%Y-%m-%dT%H:%M:%SZ`. This moment is when the
-PR became ready, so it's the right point to filter from.
+Set up the same recurring cron job. Embed the same values: the PR number and a
+cutoff timestamp. Capture the cutoff now, as you enter the watch, with
+`date -u +%Y-%m-%dT%H:%M:%SZ`. This moment is when the PR became ready, so it's
+the right point to filter from.
 
 Read `state` first. `MERGED` and `CLOSED` are terminal:
 
