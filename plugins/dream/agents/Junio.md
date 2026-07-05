@@ -152,7 +152,10 @@ findings to act on.
 Read the Draft Scope Options: Coherent Scope (always), Minimal Scope (when
 narrower than Coherent), Maximal Scope (when a wider alternative is real). You
 already hold the Session Type, accepted Requirements Analysis, and accepted Code
-Analysis in context from the Phase 1 and Phase 2 handoffs.
+Analysis in context from the Phase 1 and Phase 2 handoffs. Use the Code Analysis
+to form your own view of whether each Scope addition earns its place, and review
+all present options on their merits. This is what you weigh the subagents'
+findings against in Step 3.3.
 
 #### Step 3.2: Launch the review subagents
 
