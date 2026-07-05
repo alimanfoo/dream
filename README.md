@@ -190,6 +190,9 @@ are away. Each session runs under autopilot and carries its issue to a pull
 request for you to merge. That is the same as an autopilot session you start by
 hand.
 
+The dreamcatcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
+with `gh` signed in.
+
 Label an issue for the team and assign it to yourself. Start Claude Code from
 the main checkout of that repository, not a linked worktree, then run:
 
@@ -218,8 +221,9 @@ How it picks work:
 - **Finished sessions.** The dreamcatcher removes a session's worktree and tmux
   session once its pull request is merged or closed, so they do not pile up.
 
-Each session runs unattended, so it needs its writes allowlisted in your
-`.claude/settings.json`. Add this:
+Each session runs unattended, so it needs its writes allowlisted, either in the
+repository's `.claude/settings.json` or your global `~/.claude/settings.json`.
+Add this to one of them:
 
 ```json
 {
@@ -242,9 +246,6 @@ Each session runs unattended, so it needs its writes allowlisted in your
 Without it, a session stalls on a permission prompt no one answers. When a
 session hits a question it cannot answer, it posts the question to the pull
 request and waits. You can reply there without dropping into the session.
-
-Running the dreamcatcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your
-PATH.
 
 It stops on reboot, so re-run `/dream:catcher` to restart it. For a machine that
 must survive reboots, drive `catch.sh --once` from cron or launchd. Each firing
