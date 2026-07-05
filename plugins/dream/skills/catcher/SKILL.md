@@ -55,7 +55,8 @@ Run each check before launching. Stop and tell the user if one fails.
   host repo's `.claude/settings.json`. Otherwise a dispatched session stalls on
   a permission prompt no one answers. The writes are `gh pr create`,
   `gh pr comment`, `gh pr edit`, `gh pr ready`, `gh issue create`,
-  `gh issue comment`, `git commit`, and `git push`. If any are missing, offer to
+  `gh issue comment`, `git commit`, and `git push`, each allowlisted as a
+  `Bash(<write>:*)` rule under `permissions.allow`. If any are missing, offer to
   add them.
 
 ## Launch
