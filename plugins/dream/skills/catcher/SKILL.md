@@ -3,9 +3,10 @@ name: catcher
 description:
   Watch a repository for labelled issues and dispatch a dream-team session for
   each, one at a time, unattended. Each session runs under autopilot and carries
-  itself to a merged pull request. Only use when the user explicitly runs
-  /dream:catcher, to avoid accidentally launching unattended sessions.
-argument-hint: "[label]"
+  its issue to a pull request for the user to merge. Only use when the user
+  explicitly runs /dream:catcher, to avoid accidentally launching unattended
+  sessions.
+argument-hint: "[label] [assignee] [interval]"
 ---
 
 # Dreamcatcher
@@ -22,13 +23,13 @@ checks, and launch it.
 
 ## Arguments
 
-Read the argument the user gives, if any. A word given this way is the label.
-Use it directly and skip asking for the label.
+Read the argument the user gives, if any. It can name the label, the assignee,
+and the interval. Take whichever are present.
 
 ## Gather the configuration
 
-Every option has a default. Launch with the defaults, taking the label from the
-argument if the user gave one, and ask only to override a default.
+Every option has a default. Use what the argument named, default the rest, and
+ask only to override a default.
 
 - **Label.** The label that marks an issue for the team. Defaults to
   `dream:team`, a dedicated label kept apart from labels a human reads. An issue
@@ -54,7 +55,8 @@ Run each check before launching. Stop and tell the user if one fails.
   host repo's `.claude/settings.json`. Otherwise a dispatched session stalls on
   a permission prompt no one answers. The writes are `gh pr create`,
   `gh pr comment`, `gh pr edit`, `gh pr ready`, `gh issue create`,
-  `gh issue comment`, `git commit`, and `git push`.
+  `gh issue comment`, `git commit`, and `git push`. If any are missing, offer to
+  add them.
 
 ## Launch
 

@@ -103,7 +103,7 @@ session_in_flight() {
       --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED")] | length' \
       2>/dev/null || echo 0)
     if [ "${finished:-0}" -eq 0 ]; then
-      log "deferring: $branch is still in flight; only one session runs at a time"
+      log "deferring: $branch is still in flight"
       return 0
     fi
   done < <(git -C "$main_root" worktree list --porcelain | awk '/^worktree /{print $2}')

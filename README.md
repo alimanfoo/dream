@@ -182,8 +182,8 @@ opens, without waiting for any input.
 
 The dreamcatcher watches a repository for labelled issues and dispatches a
 dream-team session for each, one at a time. A backlog clears itself while you
-are away. Each session runs under autopilot and carries its issue through to a
-merged pull request, the same as an autopilot session you start by hand.
+are away. Each session runs under autopilot and carries its issue to a pull
+request for you to merge, the same as an autopilot session you start by hand.
 
 Label an issue for the team, then start the watcher:
 
@@ -209,11 +209,29 @@ How it picks work:
   GitHub issue view to make it wait for that one. The watcher skips a blocked
   issue until its blocker closes, then picks it up.
 
-Each session runs unattended. Allowlist the writes it makes (such as
-`gh pr create`, `git commit`, and `git push`) in your `.claude/settings.json`.
-Otherwise a session stalls on a prompt no one answers. When a session hits a
-question it cannot answer, it posts the question to the pull request and waits.
-You can reply there without dropping into the session.
+Each session runs unattended, so it needs its writes allowlisted in your
+`.claude/settings.json`. Add this:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh pr create:*)",
+      "Bash(gh pr comment:*)",
+      "Bash(gh pr edit:*)",
+      "Bash(gh pr ready:*)",
+      "Bash(gh issue create:*)",
+      "Bash(gh issue comment:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
+```
+
+Without it, a session stalls on a permission prompt no one answers. When a
+session hits a question it cannot answer, it posts the question to the pull
+request and waits. You can reply there without dropping into the session.
 
 Running the watcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH.
 It stops on reboot. Re-run `/dream:catcher` to restart it. Drive
