@@ -92,71 +92,34 @@ Test whether each claim checks out, not whether Grace's reasoning reads well.
 Open the cited material, code, or record as needed to see whether a claim
 actually checks out.
 
-#### Step 1.2: Run each lens as a subagent
+#### Step 1.2: Launch the lens-agents
 
-Spawn one read-only subagent per lens below, in parallel. Set each one's `model`
-to `sonnet` on the Agent call. Give each subagent:
+Launch these lens-agents in parallel, via the Agent tool, one per lens:
+
+- `dream:review-requirements-consumer-value`
+- `dream:review-requirements-project-purpose`
+- `dream:review-requirements-coherence`
+
+Each is read-only, holds its own lens, and returns its findings as its final
+message. Brief each with:
 
 - the Draft Requirements Analysis, the Session Type, and the repo orientation
-- the text of the one lens it applies
-- for Lens 1 and Lens 3, the commands to search prior PRs on the named surface:
-  `git blame` or `git log` to find the PRs that last shaped it, then
-  `gh pr view <N> --json body` to read the requirements record each one carries
+- for the consumer-value and coherence agents, the commands to search prior PRs
+  on the named surface: `git blame` or `git log` to find the PRs that last
+  shaped it, then `gh pr view <N> --json body` to read the requirements record
+  each one carries
 
-Ask it to:
-
-- read the Draft and any code, cited material, or prior-PR results it needs,
-  rather than trust the Draft's own account of what they show
-- return each finding with the evidence behind it
-- say plainly when a claim checks out rather than manufacture doubt
-
-The subagents report what their lens surfaces. They don't decide how a finding
+The lens-agents report what their lens surfaces. They don't decide how a finding
 should be folded in. You do that when you weigh the findings.
 
 Protecting the coherence of the codebase and the product it delivers is part of
 your purpose as maintainer. A requirement that would disrupt either is what
 these lenses exist to catch.
 
-##### Lens 1: Real consumer, real value
-
-Test every claim about who is served and why, whatever the shape calls it:
-
-- consumers and use cases for an enhancement
-- improvement goals and preserved behaviour for maintenance
-- expected behaviour, observed behaviour, and affected consumers for a bug fix
-
-A claim marked `stated` should trace to something concrete in the cited
-material: a named caller, a comment describing a real need, a documented
-workflow. A claim marked `assumed` should trace to something the investigation
-actually turned up, not a restatement of the session input's premise dressed up
-as inference. Flag any claim resting on the input's word alone, with nothing in
-the code or the record behind it. See
-[Existing code is unproven](../skills/team/protocol.md#existing-code-is-unproven)
-for the same discipline applied to a claim instead of a line of code.
-
-##### Lens 2: Serves the project's purpose
-
-Weigh the work against the orientation: what the repo is for, its product, its
-architecture. Does the requirement serve that product, or does it pull the
-project toward something the orientation gives no reason to think it should do?
-A real consumer doesn't settle this on its own. A request can be genuine and
-still sit outside what the project is for. Flag it when only the session input
-asserts the value, with no evidence in the orientation or the product.
-
-##### Lens 3: Coherent with what exists, coherent with itself
-
-Test the Draft against the record: does any item conflict with a preserved
-behaviour, an existing consumer's need, or a constraint an earlier PR settled?
-Then test the Draft against itself: do any two of its own items pull in
-different directions? For example, a use case might undercut a stated
-constraint, or an improvement goal might break a behaviour the Draft elsewhere
-promises to preserve. Name the specific two items in tension, not a general
-sense that something doesn't fit.
-
 #### Step 1.3: Weigh the findings
 
-Combine the subagents' findings. Judge each on its merits, not on the fact a
-subagent raised it. Keep anything plausible. Drop duplicates that point at the
+Combine the lens-agents' findings. Judge each on its merits, not on the fact a
+lens-agent raised it. Keep anything plausible. Drop duplicates that point at the
 same claim.
 
 #### Step 1.4: Send your findings to Grace via `SendMessage`
@@ -311,7 +274,7 @@ nothing applies, say so. An empty result is valid when the search was genuine.
 
 Write the survey as turn output, a numbered list, not a `SendMessage`. Grace
 expects no reply. It feeds your own sketches next, and the
-[Reinvention lens](#lens-4-reinvention) you apply at Design review.
+`dream:review-design-reinvention` lens-agent you launch at Design review.
 
 #### Step 4.2: Generate design sketches
 
@@ -338,208 +301,26 @@ stated. Open the cited code as needed.
 Do not treat a set-aside reason as proof the call was right. The pull to defer
 is strongest on an Alternative you proposed yourself.
 
-#### Step 4.4: Run each lens as a subagent
+#### Step 4.4: Launch the lens-agents
 
-Spawn one read-only subagent per lens below, in parallel. Set each one's `model`
-to `sonnet` on the Agent call. Give each subagent:
+Launch these lens-agents in parallel, via the Agent tool, one per lens:
 
-- the Design Options: the Proposed Design and any Alternatives
-- the text of the one lens it applies
+- `dream:review-design-behaviour`
+- `dream:review-design-contract-shape`
+- `dream:review-design-lateral-moves`
+- `dream:review-design-reinvention`
+- `dream:review-design-separation`
+- `dream:review-design-surviving-fit`
 
-Also give the Lens 4 (Reinvention) subagent your
+Each is read-only, holds its own lens, and returns its findings as its final
+message. Brief each with the Design Options: the Proposed Design and any
+Alternatives. Also give `dream:review-design-reinvention` your
 [Step 4.1](#step-41-survey-existing-tools) survey, since it doesn't hold your
 session context.
 
-Ask it to:
-
-- read the design and any files the lens names
-- return each finding with the file paths or symbols involved and the concrete
-  consequence
-- say plainly when the design is clean rather than manufacture nitpicks
-
-The subagents report what their lens surfaces, including the facts behind a
+The lens-agents report what their lens surfaces, including the facts behind a
 candidate lateral move or reinvention. They don't tag candidates or raise a
 Challenge. You do that when you weigh the findings.
-
-##### Lens 1: Defend behaviour, not surface
-
-Ask of each part of the Design: _What specific behaviour does this defend? Who
-is the real consumer?_ If the only answer is incidental surface, flag it as a
-simplification candidate. Incidental surface is a docstring phrasing, a count
-nothing reads, a constant whose value is arbitrary, or a term used loosely. See
-[Defend behaviour, not surface](#defend-behaviour-not-surface) below for the
-full discipline.
-
-##### Lens 2: Contract carried by prose or runtime check
-
-Flag prose or a runtime check carrying a contract that the function's signature,
-types, or call structure should enforce. Prose: a docstring, a comment, a
-section-header. Runtime check: a validator, a defensive normalisation, a
-type-narrowing. The proposal is admitting the type or structure is wider than
-the contract being asserted. Cite the
-[code-shape ladder](../skills/team/protocol.md#code-shape-ladder) and name a
-specific structural alternative when you can. Grace applies the ladder at triage
-to decide whether a shape change serves better.
-
-##### Lens 3: Lateral moves
-
-Propose candidate lateral moves: different designs, at the same scope, that
-remove duplication and reveal intent, or reduce complexity, and that become
-visible only now the design is concrete. The sketch step already searched the
-space of wholly different approaches. This lens works on the realised proposal,
-where it catches duplication the fixed shape exposes. Look for repeated
-structure the Proposed handles case by case: a branch per variant, a parallel
-path per input kind, or the same steps written more than once. Name the single
-rule that would unify it. The rule earns its place only when it names a real
-concept that changes as one unit: a domain idea, a behaviour, or a technical
-pattern. That correspondence is what reveals intent and makes the deduplication
-trustworthy. Sites that merely coincide today and would later diverge are not
-real duplication. Merging them couples code that should stay free to change
-apart, so leave them.
-
-A check is itself a lateral move, and the one agents miss most. Instead of
-solving the immediate problem in code, it enforces the rule the problem is an
-instance of, so the environment holds the rule and no later session has to
-remember it. Propose one whenever the Design establishes or leans on a rule that
-spans many sites, above all a boundary or convention the Design introduces. Such
-a rule otherwise lives only in prose and erodes the first session that doesn't
-know it. The rule must be one the team's own work is already drawing. Name what
-the Design implies, not architecture invented for its own sake. The test is the
-same as for a surface the session has made adjacent: the work created the
-relevance. These kinds recur, but the list is open. Scan for the rule, then find
-the check that fits it:
-
-- **A boundary**: a layer that must not import another, or a module's public
-  surface, held by an import or dependency rule (import-linter,
-  dependency-cruiser).
-- **A budget**: a query count per request, a latency or bundle-size ceiling,
-  pinned by an assertion in a test, so a regression fails loudly instead of
-  merging.
-- **A ratchet**: a debt count (type suppressions, skipped tests, untyped
-  modules) allowed only to fall, so no session quietly adds to it.
-- **A surface that must stay in sync**: a generated client, a public API, a
-  schema, held by a drift check or snapshot that fails when it changes without
-  its source.
-- **A just-fixed bug**: turned into a rule that forbids its shape, so the same
-  defect cannot return.
-- **Test coverage of the change**: new or changed product code must carry its
-  own tests. Scope the diff-coverage gate to the product, not the tooling and
-  checks around it (see
-  [One rule, one check](../skills/team/protocol.md#one-rule-one-check)). That
-  way every change brings its tests instead of a later session backfilling them.
-  Gate the diff, not a blunt global percentage, which an agent can lift with
-  tests that run code without asserting on it. Mutation testing guards that the
-  tests would actually catch a break.
-- **A seam**: code that must reach the world through an injected abstraction,
-  not `datetime.now()`, `os.environ`, or `random` directly, held by a grep or
-  lint rule, so the test seam stays intact.
-- **A house convention**: booleans named as predicates, private helpers
-  keyword-only, no `print` in library code, encoded as a small lint rule, so a
-  convention stated in prose becomes one the environment enforces.
-- **A completeness rule**: every command has a `--help` test, every registered
-  type appears in the registry, every feature flag has an owner, held by a check
-  that fails on the half-wired addition.
-- **Determinism**: a build or transform that must produce identical output
-  twice, pinned by a check that runs it twice and compares, surfacing hidden
-  ordering or clock dependence.
-- **Documentation that must match code**: a `--help` block quoted in the README,
-  an example that must run, held by a doctest or a check that compares the two,
-  so the doc can't drift from behaviour.
-
-Prefer an existing checker to a bespoke one, such as a ruff rule, mypy
-strictness, or numpydoc. This is the same instinct as reaching for a library
-(see [One rule, one check](../skills/team/protocol.md#one-rule-one-check)).
-Surface as many as you find, and tag each: **strictly better** when it improves
-the Proposed on every axis at no real cost, or **trades away X** when it buys
-its simplicity at a cost (a dependency, more coupling, less flexibility). Say
-nothing about a move that would only add machinery, future-proof for
-hypothetical cases, or abstract a single case. A move that delivers less than
-the Session Scope is not a lateral move. If it has merit, raise it as a
-Challenge rather than a candidate.
-
-##### Lens 4: Reinvention
-
-Test the Design for reinvention: does it rebuild something that already exists,
-outside this codebase or in it? Start from the
-[Step 4.1](#step-41-survey-existing-tools) survey.
-
-Raise a finding only when a survey entry is a strong, obvious fit the Design
-rebuilds anyway. Most entries you already set aside yourself while sketching,
-for good reason. This isn't a checklist to reconcile against the Design.
-
-When the Design gives a reason for skipping an entry, verify it before you
-accept it. A stated rejection is a claim, not a settled fact. Once the Design
-has moved past it, your pull is to optimise within that choice rather than
-recheck it.
-
-Then spot anything the survey missed: the same external or internal shape
-[Step 4.1](#step-41-survey-existing-tools) looks for, visible now the Design is
-concrete.
-
-Name what the Design duplicates: a named library, a named technique, or a named
-symbol already in the repo. If you can name it, raise it. Say what adopting it
-buys: tasks that disappear, or a class of bugs gone. "There may be a library for
-this" is not a finding. "`tomllib` in the stdlib replaces the hand-rolled parser
-the Design spreads across tasks 2 to 4" is.
-
-Tag each the way you tag a lateral move: **strictly better** when the swap wins
-on every axis at no real cost, or **trades away X** when it costs a dependency,
-some control, or flexibility. Adopting an existing thing doesn't change the
-Session Scope just because its surface is wider or narrower than the design
-needs. You take as much or as little as you need.
-
-Raise it on plausibility, not certainty. Grace decides each finding on its
-merits. The user holds the Design gate, so a named rebuild you flag and Grace
-sets aside costs little. A real one you sat on costs the whole session the
-simpler design. When you hold the knowledge, surface it.
-
-##### Lens 5: Separation of concerns
-
-Read the architecture: both the structure the Design draws and the structure it
-sits in. Does each piece do one job, and do the pieces stay separate where they
-change for separate reasons? Look for a module or function handed two unrelated
-jobs, a layer reaching across a boundary it shouldn't, or two concerns tangled
-into one unit that later sessions will have to pull apart. This is the
-design-time companion to the per-task coherence audit's structural checks: catch
-the tangle in the proposal, before it lands.
-
-Route each finding by where it sits:
-
-- _In what the Design draws._ A tangle the proposal itself creates is a normal
-  Design finding. Flag it so the seam comes out clean before the change lands.
-- _In the structure the Design sits on._ A pre-existing tangle the work exposes
-  or builds on can be the real root cause. If the Session Scope can't reach a
-  clean result without addressing it, raise a **Challenge** that the scope is
-  too narrow. If it's genuinely separate, hold it as an Ancillary Finding for
-  post-merge triage. Don't fold a pre-existing redesign into the Design
-  silently.
-
-A clean boundary, whether the Design draws it or the review names it, is often
-one worth holding with a check. The recognition here feeds the boundary kind in
-Lens 3.
-
-##### Lens 6: Surviving-fit check
-
-Check that every existing name, location, and convention the change touches
-still fits its contract after the Design's changes land. When a Design widens a
-function's scope, lifts shared code across modules, or shifts the contract of an
-existing surface, names and locations chosen for the original narrower context
-can quietly become misfit. Two shapes commonly drift:
-
-- _Name no longer fits contract._ The Design extends a function's scope or
-  shifts what it raises, but an existing name was chosen for the original
-  narrower context: an exception, parameter, or symbol whose name still reads as
-  the old, narrower role.
-- _Location no longer fits ownership._ Shared machinery lives where the first
-  consumer put it, but the Design introduces a second consumer reaching across
-  module boundaries: a helper private to one module that another module now
-  imports.
-
-Flag any existing surface the Design's changes leave mis-fit so the Design can
-rename, relocate, or otherwise restore fit before the change lands. The parallel
-surviving-purpose check (in the Proposed Design construction in `Grace.md`) is
-the same discipline applied to _purpose_. This lens is its companion applied to
-_fit_.
 
 While reviewing you can also raise a Challenge, not a lens, but the general
 escalation any teammate can raise (see `protocol.md`). If a fresh read turns up
@@ -547,8 +328,8 @@ genuinely new evidence that an accepted artifact no longer holds, raise one.
 
 #### Step 4.5: Weigh the findings
 
-Combine the subagents' findings. Judge each on its merits, not on the fact a
-subagent raised it. Keep anything plausible. Drop duplicates that point at the
+Combine the lens-agents' findings. Judge each on its merits, not on the fact a
+lens-agent raised it. Keep anything plausible. Drop duplicates that point at the
 same design part. Tag each candidate lateral move or reinvention strictly-better
 or trades-away. Decide whether any finding warrants a Challenge.
 
@@ -870,58 +651,29 @@ Read the diff as a whole, using `gh pr diff <N>` or `git diff`, not commit by
 commit. The per-task coherence audits already read each commit alone. This pass
 is the vantage they can't give, the complete change read at once. A miss or gap
 that only shows when you read separate commits together is exactly what slips
-past them. You read the whole diff to brief the lens subagents and to weigh what
+past them. You read the whole diff to brief the lens-agents and to weigh what
 they return.
 
-#### Step 7.2: Run each lens as a subagent
+#### Step 7.2: Launch the lens-agents
 
-Spawn one read-only subagent per lens below, in parallel. Set each one's `model`
-to `sonnet` on the Agent call. Give each subagent:
+Launch these lens-agents in parallel, via the Agent tool, one per lens:
+
+- `dream:review-pr-completeness`
+- `dream:review-pr-coherence`
+
+Each is read-only, holds its own lens, and returns its findings as its final
+message. Brief each with:
 
 - the diff as a local git range, for example `git diff origin/main...HEAD` (diff
   against `origin/main`, not local `main`; a worktree session never freshens
   local `main`, so it can be stale or missing)
-- the one lens it applies
-- the context that lens names below
-
-Ask it to:
-
-- read the diff and any source it needs
-- return each finding with a file:line citation and the concrete consequence
-- say plainly when the code is clean rather than manufacture nitpicks
-
-The subagents are read-only like you. They read and report, never edit, and
-never run tests or CI.
-
-##### Lens 1: Completeness against requirements
-
-This subagent checks the finished diff meets every requirement the team agreed.
-Paste the accepted Requirements Analysis into its prompt, since it doesn't hold
-the session context. Ask it whether any requirement is unmet.
-
-##### Lens 2: Coherence across the whole diff
-
-This subagent reads the whole change for coherence: anything the finished diff
-still needs to reach a coherent state. It applies your per-task coherence audit
-to the cumulative change. Brief it with the same disciplines, over the complete
-diff rather than one commit:
-
-- **Read beyond the diff:** check the siblings, callers, and neighbouring lines
-  of touched code, not just the changed lines.
-- **Read what the change removed:** for each deleted or replaced line, name the
-  invariant it held, then confirm the new code keeps it.
-- **Read for readability against neighbours:** flag where the change breaks from
-  the surrounding idiom, noting the cost to the reader.
-- **Strip the compensation:** ask whether the change still does what it claims
-  once its scaffolding is gone. Scaffolding includes a comment, a mock, or a
-  swallowed error.
-- **Check for the same edit elsewhere:** find another surface that needs the
-  same edit the change made but the diff missed.
+- for `dream:review-pr-completeness`, the accepted Requirements Analysis, since
+  it doesn't hold the session context
 
 #### Step 7.3: Weigh the findings
 
 Combine the lens findings and judge each on its merits, not on the fact a
-subagent raised it. Keep anything plausible. Drop duplicates that point at the
+lens-agent raised it. Keep anything plausible. Drop duplicates that point at the
 same line or mechanism.
 
 #### Step 7.4: Send your review to Grace via `SendMessage`
