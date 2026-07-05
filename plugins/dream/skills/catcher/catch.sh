@@ -18,13 +18,13 @@
 # This is a granularity choice, letting the user size a session by composing
 # issues, not a technical limit.
 #
-# Each tick also cleans up finished sessions. A worktree whose pull request was
-# merged or closed past a linger period is killed and removed. That keeps tmux
+# Each tick also cleans up finished sessions. It kills and removes a worktree
+# whose pull request was merged or closed past a linger period. That keeps tmux
 # sessions from piling up until tmux refuses to open more.
 #
 # Permissions: a dispatched session runs in auto mode and reads the user's and
-# the host repo's .claude/settings.json, the same as an autopilot session
-# launched by hand. Keep the recurring unattended writes (gh pr create, git
+# the host repo's .claude/settings.json, the same as an autopilot session run by
+# hand. Keep the recurring unattended writes (gh pr create, git
 # commit, git push, and so on) allowlisted there, in that one home.
 # Auto mode handles the rest and notifies on anything it blocks.
 #
@@ -47,7 +47,7 @@ Usage:
   --assignee  Whose issues to pick up. Default: @me.
   --interval  Seconds between ticks in loop mode. Default: 300.
   --linger    Minutes a finished session lingers before it is cleaned up. Default: 30.
-  --once      Run a single tick and exit, instead of looping.
+  --once      A single tick, then exit, instead of looping.
 EOF
 }
 
@@ -105,8 +105,8 @@ worktree_paths() { git -C "$main_root" worktree list --porcelain | sed -n 's/^wo
 
 # True when a session holds the one-at-a-time slot: a live "-auto" session for
 # this repo whose branch has no merged or closed pull request. A developing
-# session and one awaiting review both hold the slot, because two live teams
-# would corrupt each other. A session whose pull request is merged or closed has
+# session and one awaiting review both hold the slot. Two live teams would
+# corrupt each other. A session whose pull request is merged or closed has
 # finished and frees the slot. A crashed session frees it too, its tmux session
 # gone, so it never wedges the slot. Each branch is unique per attempt, so its
 # pull request state is that session's alone, never an earlier attempt's.
@@ -130,11 +130,11 @@ session_in_flight() {
 
 # True when the issue already has a session in flight or finished. That is an
 # open pull request (a current or earlier session still going) or a merged one.
-# The issue's closed state can lag in `gh issue list`, so a merged PR still
-# counts. A closed-unmerged PR does not count, so an old declined attempt never
-# locks the issue out. A read failure returns true, so a transient error never
-# re-dispatches an issue already under way. A just-merged issue is also never
-# picked up twice.
+# The issue's closed state can lag in `gh issue list`, so a merged pull request
+# still counts. A closed-unmerged pull request does not count, so an old
+# declined attempt never locks the issue out. A read failure returns true, so a
+# transient error never re-dispatches an issue already under way. A just-merged
+# issue is also never picked up twice.
 already_handled() {
   local n=$1 count
   count=$(gh pr list --repo "$repo" --state all --limit 500 --json headRefName,state 2>/dev/null \
@@ -144,7 +144,7 @@ already_handled() {
 }
 
 # All of an issue's blockers are closed. A read failure treats the issue as
-# still blocked and skips it, so a transient API error never mis-dispatches a
+# still blocked and skips it. So a transient API error never mis-dispatches a
 # dependent issue ahead of its blocker.
 unblocked() {
   local n=$1 open
@@ -180,9 +180,8 @@ untrust_worktree() {
     && mv "$tmp" "$cfg" || { rm -f "$tmp"; return 1; }
 }
 
-# Remove a worktree, its branch, and its trust entry together, leaving nothing
-# behind. Used both to reclaim a finished session and to back out a dispatch
-# that failed after the worktree was created.
+# Remove a worktree, its branch, and its trust entry together, so nothing is
+# left behind. This backs out a failed dispatch and reclaims a finished session.
 discard_worktree() {
   git -C "$main_root" worktree remove --force "$1" 2>/dev/null
   git -C "$main_root" branch -D "$2" 2>/dev/null
@@ -192,9 +191,9 @@ discard_worktree() {
 # Clean up finished sessions to free tmux's session slots. A worktree whose pull
 # request has been merged or closed for at least the linger period is done. Its
 # Collect has already run, so kill its tmux session and remove the worktree. This
-# is the exit-and-kill a user does by hand, automated. No reliable "team idle"
-# signal exists, so the linger period, set above any Collect run, is the guard
-# against cleaning up mid-Collect.
+# automates the cleanup a user would otherwise do by hand. No reliable "team
+# idle" signal exists, so the linger period, set above any Collect run, is the
+# guard against cleaning up mid-Collect.
 clean_up_finished() {
   local cutoff wt branch done_at done_epoch
   cutoff=$(( $(date -u +%s) - linger * 60 ))
@@ -216,10 +215,11 @@ clean_up_finished() {
 }
 
 # Create the worktree and launch a session for it in a detached tmux session.
-# The branch name carries the issue number and the auto token. Grace's boot reads
-# them to take the issue as the session input, with autopilot and auto-collect
-# engaged. The timestamp between them makes the name unique per attempt, so a
-# retry never collides with an earlier attempt's branch or pull request.
+# The branch name carries the issue number and the auto token. A dispatched
+# session reads them at boot to take the issue as its input, with autopilot and
+# auto-collect engaged. The timestamp between them makes the name unique per
+# attempt, so a retry never collides with an earlier attempt's branch or pull
+# request.
 #
 # `git worktree add` creates the worktree, not `claude -w`. That lands it at a
 # predictable sibling path, with a branch name the cap, cleanup, and dedup checks

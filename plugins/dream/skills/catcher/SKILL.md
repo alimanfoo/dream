@@ -2,10 +2,10 @@
 name: catcher
 description:
   Only use when the user explicitly runs /dream:catcher, never on a general
-  request to watch, monitor, or triage issues, because it launches unattended
-  sessions. It watches a repository for labelled issues and dispatches a
-  dream-team session for each, one at a time. Each session runs under autopilot
-  and carries its issue to a pull request for the user to merge.
+  request to watch, monitor, or triage issues. It launches unattended sessions.
+  It watches a repository for labelled issues and dispatches a dream-team
+  session for each, one at a time. Each session runs under autopilot and carries
+  its issue to a pull request for the user to merge.
 argument-hint: "[label] [assignee] [interval]"
 ---
 
@@ -24,9 +24,13 @@ checks, and launch it.
 ## Arguments
 
 Read the argument the user gives, if any. It can name the label, the assignee,
-and the interval, in any order: a leading `@` marks the assignee, digits mark
-the interval in seconds, and any other word is the label. Take whichever are
-present.
+and the interval, in any order:
+
+- a leading `@` marks the assignee
+- digits mark the interval in seconds
+- any other word is the label
+
+Take whichever are present.
 
 ## Gather the configuration
 
@@ -48,9 +52,9 @@ The repository is the one in the current working directory.
 Run each check before launching. Stop and tell the user if one fails.
 
 - Run `gh auth status`. It must succeed.
-- Confirm git, gh, jq, claude, and tmux are all on the PATH, checking each with
-  its own `command -v`, since one `command -v` over the whole list passes when
-  any single tool resolves.
+- Confirm git, gh, jq, claude, and tmux are each on the PATH, with a separate
+  `command -v` for each. One `command -v` over the whole list passes when any
+  single tool resolves.
 - Confirm the label exists with `gh label list --search "<label>"`, which avoids
   the 30-label default page. Offer to create it with `gh label create` if it is
   missing.
@@ -59,7 +63,7 @@ Run each check before launching. Stop and tell the user if one fails.
   worktree's `.git` is a file, so dispatched worktrees would land in the wrong
   place.
 - Confirm the recurring unattended writes are allowlisted in the user's or the
-  host repo's `.claude/settings.json`, each as a `Bash(<write>:*)` rule under
+  host repo's `.claude/settings.json`. Each is a `Bash(<write>:*)` rule under
   `permissions.allow`. Otherwise a dispatched session stalls on a permission
   prompt no one answers. The writes are:
   - `gh pr create`
@@ -101,7 +105,7 @@ Then tell the user:
   the loop and every dispatched session, so a session waiting for an answer is
   one keystroke away.
 - that tmux sessions stop on reboot, so re-running `/dream:catcher` restarts the
-  loop, and that a machine which must survive reboots should run
+  loop, and that a machine that must survive reboots should run
   `catch.sh --once` from cron or launchd, where each firing runs a single tick.
 
 ## How it picks work
@@ -116,7 +120,7 @@ Answer questions about the coordinator's behaviour from here.
   GitHub issue view to make it wait for that one. The coordinator skips an issue
   whose blocker is still open, and picks it up once the blocker is closed. Use
   this when one issue depends on another, or when one tidies an area the other
-  would otherwise have to work through.
+  would otherwise work through.
 - **Permissions.** A session runs in auto mode and reads
   `.claude/settings.json`, the same as an autopilot session started by hand. A
   command that is neither allowlisted there nor cleared by auto mode blocks and

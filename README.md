@@ -4,8 +4,8 @@ A Claude Code plugin for delivering great code and keeping the codebase
 coherent, with minimal human input.
 
 `/dream:team` runs a multi-agent team on a task. `/dream:catcher` runs that team
-unattended across a repository's labelled issues. Two utility skills ship
-alongside: `/dream:writing-style` and `/dream:copy-edit`.
+unattended across a repository's labelled issues. Utility skills ship alongside:
+`/dream:writing-style` and `/dream:copy-edit`.
 
 Requires Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
@@ -187,7 +187,8 @@ opens, without waiting for any input.
 The dreamcatcher watches a repository for labelled issues and dispatches a
 dream-team session for each, one at a time. A backlog clears itself while you
 are away. Each session runs under autopilot and carries its issue to a pull
-request for you to merge, the same as an autopilot session you start by hand.
+request for you to merge. That is the same as an autopilot session you start by
+hand.
 
 Label an issue for the team, then start the dreamcatcher:
 
@@ -212,9 +213,8 @@ How it picks work:
 - **Oldest eligible issue first.** Mark an issue blocked by another in the
   GitHub issue view to make it wait for that one. The dreamcatcher skips a
   blocked issue until its blocker closes, then picks it up.
-- **Finished sessions are cleaned up.** Once a session's pull request is merged
-  or closed, the dreamcatcher removes its worktree and tmux session after a
-  short linger, so they do not pile up.
+- **Finished sessions.** The dreamcatcher removes a session's worktree and tmux
+  session once its pull request is merged or closed, so they do not pile up.
 
 Each session runs unattended, so it needs its writes allowlisted in your
 `.claude/settings.json`. Add this:
@@ -242,9 +242,11 @@ session hits a question it cannot answer, it posts the question to the pull
 request and waits. You can reply there without dropping into the session.
 
 Running the dreamcatcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your
-PATH. It stops on reboot. Re-run `/dream:catcher` to restart it. Drive
-`catch.sh --once` from cron or launchd for a machine that must survive reboots,
-where each firing runs a single tick.
+PATH.
+
+It stops on reboot, so re-run `/dream:catcher` to restart it. For a machine that
+must survive reboots, drive `catch.sh --once` from cron or launchd. Each firing
+runs a single tick.
 
 ## Troubleshooting
 
