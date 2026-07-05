@@ -76,9 +76,10 @@ strictness, or numpydoc, the same instinct as reaching for a library.
 
 Say nothing about a move that would only add machinery, future-proof for
 hypothetical cases, or abstract a single case. A move that delivers less than
-the Session Scope is not a lateral move; leave it. For each candidate you do
-surface, note what it would trade away, if anything, so the maintainer can weigh
-it.
+the Design proposes is not a lateral move in its own right, but if it has real
+merit, surface it flagged as delivering less, so the maintainer can weigh a
+Challenge. For each candidate you surface, note what it would trade away, if
+anything, so the maintainer can weigh it.
 
 ## Reporting
 

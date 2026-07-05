@@ -25,7 +25,10 @@ types, or call structure should enforce.
 Either way the proposal is admitting the type or structure is wider than the
 contract it asserts. Prefer enforcing the contract in the shape itself — the
 signature, the types, the call structure — over stating it in prose or checking
-it at runtime. Name a specific structural alternative when you can.
+it at runtime. Name a specific structural alternative when you can. Some
+contracts are relational invariants no type or structure can encode; there,
+prose is the right home, so raise a finding only when you can name the
+alternative that would carry the contract better.
 
 ## Reporting
 

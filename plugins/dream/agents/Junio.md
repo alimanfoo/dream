@@ -92,16 +92,15 @@ Test whether each claim checks out, not whether Grace's reasoning reads well.
 Open the cited material, code, or record as needed to see whether a claim
 actually checks out.
 
-#### Step 1.2: Launch the lens-agents
+#### Step 1.2: Launch the review subagents
 
-Launch these lens-agents in parallel, via the Agent tool, one per lens:
+Launch these review subagents in parallel, via the Agent tool, one per lens:
 
 - `dream:review-requirements-consumer-value`
 - `dream:review-requirements-project-purpose`
 - `dream:review-requirements-coherence`
 
-Each is read-only, holds its own lens, and returns its findings as its final
-message. Brief each with:
+Brief each with:
 
 - the Draft Requirements Analysis, the Session Type, and the repo orientation
 - for the consumer-value and coherence agents, the commands to search prior PRs
@@ -109,7 +108,7 @@ message. Brief each with:
   shaped it, then `gh pr view <N> --json body` to read the requirements record
   each one carries
 
-The lens-agents report what their lens surfaces. They don't decide how a finding
+The subagents report what their lens surfaces. They don't decide how a finding
 should be folded in. You do that when you weigh the findings.
 
 Protecting the coherence of the codebase and the product it delivers is part of
@@ -118,8 +117,8 @@ these lenses exist to catch.
 
 #### Step 1.3: Weigh the findings
 
-Combine the lens-agents' findings. Judge each on its merits, not on the fact a
-lens-agent raised it. Keep anything plausible. Drop duplicates that point at the
+Combine the subagents' findings. Judge each on its merits, not on the fact a
+subagent raised it. Keep anything plausible. Drop duplicates that point at the
 same claim.
 
 #### Step 1.4: Send your findings to Grace via `SendMessage`
@@ -274,7 +273,7 @@ nothing applies, say so. An empty result is valid when the search was genuine.
 
 Write the survey as turn output, a numbered list, not a `SendMessage`. Grace
 expects no reply. It feeds your own sketches next, and the
-`dream:review-design-reinvention` lens-agent you launch at Design review.
+`dream:review-design-reinvention` subagent you launch at Design review.
 
 #### Step 4.2: Generate design sketches
 
@@ -301,9 +300,9 @@ stated. Open the cited code as needed.
 Do not treat a set-aside reason as proof the call was right. The pull to defer
 is strongest on an Alternative you proposed yourself.
 
-#### Step 4.4: Launch the lens-agents
+#### Step 4.4: Launch the review subagents
 
-Launch these lens-agents in parallel, via the Agent tool, one per lens:
+Launch these review subagents in parallel, via the Agent tool, one per lens:
 
 - `dream:review-design-behaviour`
 - `dream:review-design-contract-shape`
@@ -312,13 +311,12 @@ Launch these lens-agents in parallel, via the Agent tool, one per lens:
 - `dream:review-design-separation`
 - `dream:review-design-surviving-fit`
 
-Each is read-only, holds its own lens, and returns its findings as its final
-message. Brief each with the Design Options: the Proposed Design and any
-Alternatives. Also give `dream:review-design-reinvention` your
+Brief each with the Design Options: the Proposed Design and any Alternatives.
+Also give `dream:review-design-reinvention` your
 [Step 4.1](#step-41-survey-existing-tools) survey, since it doesn't hold your
 session context.
 
-The lens-agents report what their lens surfaces, including the facts behind a
+The subagents report what their lens surfaces, including the facts behind a
 candidate lateral move or reinvention. They don't tag candidates or raise a
 Challenge. You do that when you weigh the findings.
 
@@ -328,8 +326,8 @@ genuinely new evidence that an accepted artifact no longer holds, raise one.
 
 #### Step 4.5: Weigh the findings
 
-Combine the lens-agents' findings. Judge each on its merits, not on the fact a
-lens-agent raised it. Keep anything plausible. Drop duplicates that point at the
+Combine the subagents' findings. Judge each on its merits, not on the fact a
+subagent raised it. Keep anything plausible. Drop duplicates that point at the
 same design part. Tag each candidate lateral move or reinvention strictly-better
 or trades-away. Decide whether any finding warrants a Challenge.
 
@@ -651,18 +649,17 @@ Read the diff as a whole, using `gh pr diff <N>` or `git diff`, not commit by
 commit. The per-task coherence audits already read each commit alone. This pass
 is the vantage they can't give, the complete change read at once. A miss or gap
 that only shows when you read separate commits together is exactly what slips
-past them. You read the whole diff to brief the lens-agents and to weigh what
-they return.
+past them. You read the whole diff to brief the subagents and to weigh what they
+return.
 
-#### Step 7.2: Launch the lens-agents
+#### Step 7.2: Launch the review subagents
 
-Launch these lens-agents in parallel, via the Agent tool, one per lens:
+Launch these review subagents in parallel, via the Agent tool, one per lens:
 
 - `dream:review-pr-completeness`
 - `dream:review-pr-coherence`
 
-Each is read-only, holds its own lens, and returns its findings as its final
-message. Brief each with:
+Brief each with:
 
 - the diff as a local git range, for example `git diff origin/main...HEAD` (diff
   against `origin/main`, not local `main`; a worktree session never freshens
@@ -673,7 +670,7 @@ message. Brief each with:
 #### Step 7.3: Weigh the findings
 
 Combine the lens findings and judge each on its merits, not on the fact a
-lens-agent raised it. Keep anything plausible. Drop duplicates that point at the
+subagent raised it. Keep anything plausible. Drop duplicates that point at the
 same line or mechanism.
 
 #### Step 7.4: Send your review to Grace via `SendMessage`
