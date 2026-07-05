@@ -152,73 +152,31 @@ findings to act on.
 Read the Draft Scope Options: Coherent Scope (always), Minimal Scope (when
 narrower than Coherent), Maximal Scope (when a wider alternative is real). You
 already hold the Session Type, accepted Requirements Analysis, and accepted Code
-Analysis in context from the Phase 1 and Phase 2 handoffs. Use the Code Analysis
-when evaluating whether Scope additions earn their place. Review all present
-options on their merits. Open the named files or symbols, run a recurrence
-search, or read code as needed.
+Analysis in context from the Phase 1 and Phase 2 handoffs.
 
-#### Step 3.2: Apply the maintainer lenses
+#### Step 3.2: Launch the review subagents
 
-Apply these lenses to the Scope Options.
+Launch these review subagents in parallel, via the Agent tool, one per lens:
 
-##### Lens 1: Coherent Scope is truly coherent
+- `dream:review-scope-coherent`
+- `dream:review-scope-anticipation`
+- `dream:review-scope-root-cause`
+- `dream:review-scope-property`
 
-Check that the Coherent Scope names everything needed to leave behaviour and
-code in a coherent state. Read the named surfaces, their siblings, callers, and
-related tests or docs. Flag any gap where the Coherent Scope's additions would
-leave behaviour or code in an inconsistent state, so Grace can consider folding
-it in. Such a gap might be a sibling surface with the same contract, a caller
-left out of sync, or a test or doc documenting the old shape.
+Brief each with the Draft Scope Options, the Session Type, the accepted
+Requirements Analysis, and the accepted Code Analysis, since none of them hold
+your session context.
 
-Then look at the additions the Coherent Scope already names. Does each one earn
-its place? For each addition beyond what the requirements call for, ask: _Does
-code or recurrence evidence justify this as coherence work, or is it "while
-we're here" scope creep dressed as coherence?_ An addition that isn't earned
-belongs in Maximal, not Coherent.
+The subagents report what their lens surfaces. They don't decide how a finding
+should be folded in. You do that when you weigh the findings.
 
-Check the other direction too, where the Code Analysis traced a recurring
-surface to one fact written in two places. The Coherent Scope is too narrow if
-it patches the copies without naming the one place the fact belongs and
-single-sourcing it. That leaves the root cause in place. A scope that only
-re-syncs the copies (a regen step, an alignment test) is not the fix. It keeps
-both copies, so the drift returns. See
-[One fact, one home](../skills/team/protocol.md#one-fact-one-home).
+#### Step 3.3: Weigh the findings
 
-Check the same direction for a rule with no single home: many sites that each
-must follow it. Single-sourcing doesn't apply, so the earned coherence fix is a
-check that enforces the rule. Flag the Coherent Scope as too narrow if it
-patches the sites without one, when the rule is real and you have seen it break.
-Don't push that check into Maximal as an unearned addition. Enforcing a real,
-drifting rule is the root-cause fix, the same as single-sourcing a duplicated
-fact. A check guarding a rule nothing relies on still fails the test and stays
-out. See [One rule, one check](../skills/team/protocol.md#one-rule-one-check).
+Combine the subagents' findings. Judge each on its merits, not on the fact a
+subagent raised it. Keep anything plausible. Drop duplicates that point at the
+same Scope Option part.
 
-##### Lens 2: Maximal Scope is real anticipation
-
-Test the Maximal Scope, when present: does the work it rolls in genuinely lead
-on from the current concern, or is it speculation about what someone might want
-later? An inflated Maximal makes the user's choice noisier. A real Maximal makes
-it sharper.
-
-##### Lens 3: Symptom or cause?
-
-Check each scope item: does it name the cause, or a symptom? Defensive code at a
-layer that isn't the source of the constraint is symptom-shaped. Flag the item
-and propose widening the scope to reach the cause, not just the layer where the
-symptom shows. See
-[Wrong-layer defensive code](../skills/team/protocol.md#wrong-layer-defensive-code).
-
-##### Lens 4: Property or implementation?
-
-Does any scope item fix how the work is done rather than what it must achieve? A
-scope item states the property or outcome. Choosing the how is Design's call,
-where the reviewers weigh the alternatives: a tool, an algorithm or structure,
-an API or command shape, a bug's fix shape. The test: can you name a different
-way to deliver the same item? If you can, an implementation choice has leaked
-in. Flag it so the choice waits for Design. See
-[Phase 3](../skills/team/protocol.md#phase-3-scope).
-
-#### Step 3.3: Send your findings to Grace via `SendMessage`
+#### Step 3.4: Send your findings to Grace via `SendMessage`
 
 Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
 For each finding, give a one-line reason and the file paths, symbol names, or
@@ -229,7 +187,7 @@ Only `SendMessage` reaches Grace. Plain turn output does not. Sign off
 Don't include "out of scope but noticed" findings at Scope time. Tangential
 observations wait for per-task coherence audits or the post-merge sweep.
 
-#### Step 3.4: Read the accepted Session Scope
+#### Step 3.5: Read the accepted Session Scope
 
 Read the accepted Session Scope when Grace sends it at the end of Phase 3,
 flagged for information only. Hold it as context for the Design review that
