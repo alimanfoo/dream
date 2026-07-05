@@ -1,7 +1,11 @@
-# /dream:team
+# dream
 
-A multi-agent team that delivers great code and keeps the codebase coherent,
-with minimal human input.
+A Claude Code plugin for delivering great code and keeping the codebase
+coherent, with minimal human input.
+
+`/dream:team` runs a multi-agent team on a task. `/dream:catcher` runs that team
+unattended across a repository's labelled issues. Two utility skills ship
+alongside: `/dream:writing-style` and `/dream:copy-edit`.
 
 Requires Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
