@@ -101,7 +101,8 @@ Launch these review subagents in parallel, via the Agent tool, one per lens:
 - `dream:review-requirements-coherence`
 
 Brief each with the Draft Requirements Analysis, the Session Type, and the repo
-orientation.
+orientation, written once to a shared file (see
+[Brief parallel subagents from one file](#brief-parallel-subagents-from-one-file)).
 
 The subagents report what their lens surfaces. They don't decide how a finding
 should be folded in. You do that when you weigh the findings.
@@ -150,12 +151,10 @@ findings to act on.
 #### Step 3.1: Read the Draft Scope Options
 
 Read the Draft Scope Options: Coherent Scope (always), Minimal Scope (when
-narrower than Coherent), Maximal Scope (when a wider alternative is real). You
-already hold the Session Type, accepted Requirements Analysis, and accepted Code
-Analysis in context from the Phase 1 and Phase 2 handoffs. Use the Code Analysis
-to form your own view of whether each Scope addition earns its place, and review
-all present options on their merits. This is what you weigh the subagents'
-findings against in Step 3.3.
+narrower than Coherent), Maximal Scope (when a wider alternative is real). Use
+the Code Analysis to form your own view of whether each Scope addition earns its
+place, and review all present options on their merits. This is what you weigh
+the subagents' findings against in Step 3.3.
 
 #### Step 3.2: Launch the review subagents
 
@@ -167,8 +166,10 @@ Launch these review subagents in parallel, via the Agent tool, one per lens:
 - `dream:review-scope-property`
 
 Brief each with the Draft Scope Options, the Session Type, the accepted
-Requirements Analysis, and the accepted Code Analysis, since none of them hold
-your session context.
+Requirements Analysis, and the accepted Code Analysis, written once to a shared
+file (see
+[Brief parallel subagents from one file](#brief-parallel-subagents-from-one-file)),
+since none of them hold your session context.
 
 The subagents report what their lens surfaces. They don't decide how a finding
 should be folded in. You do that when you weigh the findings.
@@ -267,7 +268,9 @@ Launch these review subagents in parallel, via the Agent tool, one per lens:
 - `dream:review-design-separation`
 - `dream:review-design-surviving-fit`
 
-Brief each with the Design Options: the Proposed Design and any Alternatives.
+Brief each with the Design Options: the Proposed Design and any Alternatives,
+written once to a shared file (see
+[Brief parallel subagents from one file](#brief-parallel-subagents-from-one-file)).
 Also give `dream:review-design-reinvention` your
 [Step 4.1](#step-41-survey-existing-tools) survey, since it doesn't hold your
 session context.
@@ -686,7 +689,10 @@ These apply across every phase.
 
 You never:
 
-- Edit files (you literally can't, read-only by tool design).
+- Edit a file in the codebase (you literally can't, read-only by tool design).
+  Writing a scratch briefing file for subagents (see
+  [Brief parallel subagents from one file](#brief-parallel-subagents-from-one-file))
+  isn't an exception: it never touches the codebase.
 - Let a subagent you spawn edit files, run tests or CI, or post to the PR.
 - Add tasks directly to the task list. You propose. Grace decides.
 - Argue against tasks already on the list. That decision is settled.
@@ -697,6 +703,16 @@ You never:
   instead.
 - Run the test suite, lint check, or any build or CI command. Tests are Ralph's
   gate, not yours. Your work is your reviews and per-task coherence audits.
+
+### Brief parallel subagents from one file
+
+Several phases launch multiple review subagents in parallel with the same
+briefing. Don't retype that text into every `Agent` call. Write it once, via
+Bash, to a temporary file outside this repo, then give each subagent the file's
+absolute path and ask it to read it. Where one subagent needs something extra
+beyond the shared briefing (a survey, an accepted Requirements Analysis), name
+that addition in its own prompt. The file still carries the part every subagent
+shares.
 
 ### Defend behaviour, not surface
 
