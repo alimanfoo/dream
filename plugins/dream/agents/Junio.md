@@ -161,8 +161,9 @@ Launch these review subagents in parallel, via the Agent tool, one per lens:
 
 Brief each with the file path from Step 3.1 (see
 [Relay a shared briefing file to subagents](#relay-a-shared-briefing-file-to-subagents)),
-plus the Session Type, the accepted Requirements Analysis, and the accepted Code
-Analysis.
+the Session Type, and the file paths you already hold for the accepted
+Requirements Analysis (from Step 1.5) and the accepted Code Analysis (from the
+Phase 2 handoff).
 
 #### Step 3.3: Weigh the findings
 

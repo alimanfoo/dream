@@ -603,8 +603,8 @@ any non-goals. Full mechanics in `Grace.md`.
 ## Sharing an artifact
 
 Grace's `SendMessage` handoffs don't paste an artifact's text. Once its gate
-passes, she writes it once, to a temporary file outside the repo, and gives the
-path instead: to Junio and Ralph for information, and to the PR comment. Team
+passes, she writes it once, to a temporary file outside the repo: the PR comment
+is posted from that file, and teammates get its path instead of the text. Team
 mates read the file at the path given, rather than expecting the text inline.
 Full mechanics in `Grace.md`.
 
