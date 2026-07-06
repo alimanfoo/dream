@@ -604,9 +604,9 @@ any non-goals. Full mechanics in `Grace.md`.
 
 Grace's `SendMessage` handoffs don't paste an artifact's text. Once its gate
 passes, she writes it once, to a temporary file outside the repo, and gives the
-path instead: to Junio and Ralph for information, and to the PR comment. Read
-the file at the path she gives you, rather than expecting the text inline. Full
-mechanics in `Grace.md`.
+path instead: to Junio and Ralph for information, and to the PR comment. Team
+mates read the file at the path given, rather than expecting the text inline.
+Full mechanics in `Grace.md`.
 
 ## No orphaned observations
 
