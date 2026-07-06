@@ -88,10 +88,8 @@ act on.
 
 Read the Draft Scope Options, at the file path Grace's message gives you:
 Coherent Scope (always), Minimal Scope (when narrower than Coherent), Maximal
-Scope (when a wider alternative is real). You already hold the Session Type,
-accepted Requirements Analysis, and accepted Code Analysis in context from the
-Phase 1 and Phase 2 handoffs. Review all present options on their merits. Open
-the named files or symbols or read code as needed.
+Scope (when a wider alternative is real). Review all present options on their
+merits. Open the named files or symbols or read code as needed.
 
 #### Step 3.2: Apply the scope-and-abstraction lens
 
