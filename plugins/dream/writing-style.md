@@ -148,8 +148,3 @@ issue descriptions, and comments. GitHub reflows each paragraph to the reader's
 window, so a hard-wrapped paragraph breaks into short, uneven lines. Newlines
 inside fenced code blocks and between table rows are structural. Leave those
 alone.
-
-Give a named heading (`Requirements`, `Session input`, `Decision needed`, and
-the like) as a markdown level-2 heading (`## Requirements`), never bare or
-bolded text. A reader scanning the PR sees every posted artefact's heading at
-the same, consistent weight.
