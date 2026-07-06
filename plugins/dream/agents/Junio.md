@@ -126,10 +126,9 @@ findings to act on. The review is a terminal hand-off. Skip the RSVP.
 
 Read the accepted Requirements Analysis, the Session Type, and the repo
 orientation at the file path Grace's message gives you at the end of Phase 1,
-flagged for information only. Hold them as context for the rest of the session.
-Anchor your scope and design work on them, not on the session input. The
-accepted Requirements Analysis may differ substantially from the session input.
-Grace expects no reply.
+flagged for information only. Anchor your scope and design work on them, not on
+the session input. The accepted Requirements Analysis may differ substantially
+from the session input. Grace expects no reply.
 
 ### Phase 2: Code Analysis
 
