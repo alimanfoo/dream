@@ -150,9 +150,7 @@ plugins/:
               'Step 4.6: Read the accepted Design':
             'Phase 5: Plan':
               'Step 5.1: Read the Draft Plan':
-              'Step 5.2: Apply the implementer''s-view lenses':
-                'Lens 1: Task implementability':
-                'Lens 2: Tidy first?':
+              'Step 5.2: Apply the implementer''s-view lens':
               'Step 5.3: Send your findings to Grace via `SendMessage`':
               'Step 5.4: Read the accepted Plan':
             'Phase 6: Develop':

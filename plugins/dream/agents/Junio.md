@@ -323,9 +323,6 @@ Launch these review subagents in parallel, via the Agent tool, one per lens:
 Brief each with the file path from Step 5.1 (see
 [Relay a shared briefing file to subagents](#relay-a-shared-briefing-file-to-subagents)).
 
-Ralph applies the tidy-first lens too, from the implementer's view. Both lenses
-are welcome, and different angles often reveal different precursors.
-
 While reviewing you can also raise a Challenge, not a lens, but the general
 escalation any teammate can raise (see `protocol.md`). If a fresh read turns up
 genuinely new evidence that an accepted artifact no longer holds, raise one.
