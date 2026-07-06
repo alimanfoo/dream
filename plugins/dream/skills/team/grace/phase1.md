@@ -7,12 +7,13 @@ The user opens with session input: an idea for a new feature, an issue or issues
 to address, a piece of code to tidy up, constraints, rough shape. When the boot
 sequence derived one or more issues from the worktree branch name, those issues
 are the session input. Phase 1 captures the system's requirements behind it. It
-makes any assumptions explicit so the user can correct them. It gets one round
-of adversarial review from Junio before anyone else sees the Draft Requirements
-Analysis. And it elicits answers to anything Grace can't call from the cited
-material. It ends at an accepted Requirements Analysis: what the system must do,
-for whom, and what it is deliberately not for. Follow the steps below in
-sequence.
+makes any assumptions explicit so the user can correct them. It checks the
+session input against the current code, so stale details don't ride downstream.
+It gets one round of adversarial review from Junio before anyone else sees the
+Draft Requirements Analysis. And it elicits answers to anything Grace can't call
+from the cited material. It ends at an accepted Requirements Analysis: what the
+system must do, for whom, and what it is deliberately not for. Follow the steps
+below in sequence.
 
 ## Step 1.1: Open the session PR
 
@@ -126,7 +127,47 @@ the exact prior decisions without guessing search terms. Prior PRs may tell you
 more about the consumers, use cases, and non-goals for that surface. Carry that
 information into the Requirements Analysis.
 
-## Step 1.6: Name the Session Type
+## Step 1.6: Check the session input against the current code
+
+Check the session input against what the reads have shown. The input often cites
+issues, and an issue may have been filed a while ago. The code moves in between:
+a symbol it names may be renamed, a file may have moved, or part of the ask may
+already be done. Its claims about the code are unproven until you check them,
+the same as its claims about value. Stale details left unchecked ride through
+every downstream phase.
+
+You already hold both sides.
+[Step 1.4](#step-14-read-the-code-with-a-consumer-lens) read the current code
+for the named surfaces, and [Step 1.5](#step-15-consult-the-record) read the PRs
+that last shaped them. Hold the input against what those reads showed and name
+each discrepancy. Reach for git history only to fill a real gap the reads left,
+such as a surface the input names that is no longer there: trace where it went.
+Judge when a lookup earns its cost.
+
+Route each discrepancy:
+
+- **A drifted detail**, such as a renamed symbol or a moved file. Correct it.
+  Carry the correction into the Draft Requirements Analysis you compose in
+  [Step 1.8](#step-18-compose-the-draft-requirements-analysis), marked as a
+  stated item.
+- **A superseded ask**, part or all of the work already done. Carry it into the
+  Draft as an open question, with stopping among the answers you list. The user
+  decides it at the acceptance gate.
+
+When anything has drifted, post an `Input freshness` comment to the PR before
+composing the Draft. Open it by pointing back to the session input above. For
+each discrepancy, give what the input stated and what the code now shows. Any
+change from what the input stated earns a line. Keep the comment to the facts:
+the decision a superseded ask forces goes in the open questions, not here. Skip
+the comment when nothing has drifted. Write it in public register, the same as
+the open questions, following
+[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and
+appending the Claude Code footer from
+[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
+
+If nothing has drifted, say so in one line and continue.
+
+## Step 1.7: Name the Session Type
 
 Pin the Session Type before composing the Requirements Analysis. It selects the
 shape of the Requirements Analysis and what later phases focus on. Three types:
@@ -137,9 +178,9 @@ shape of the Requirements Analysis and what later phases focus on. Three types:
 
 State the Session Type in one short sentence with the reasoning ("Session Type:
 enhancement, adds a new CLI subcommand") and continue to
-[Step 1.7](#step-17-compose-the-draft-requirements-analysis).
+[Step 1.8](#step-18-compose-the-draft-requirements-analysis).
 
-## Step 1.7: Compose the Draft Requirements Analysis
+## Step 1.8: Compose the Draft Requirements Analysis
 
 Compose the Draft Requirements Analysis: your explicit reading of the system's
 requirements behind the session input. This is the artifact Junio reviews next.
@@ -191,7 +232,7 @@ Every shape also carries:
   point to what in the read suggests it. Each cites that evidence, and a
   candidate use case also names the consumer it would serve. The user opts in to
   any they want at the gate, and
-  [Step 1.12](#step-112-seek-user-acceptance-of-the-requirements-analysis)
+  [Step 1.13](#step-113-seek-user-acceptance-of-the-requirements-analysis)
   decides each one from there.
 - **System non-goals** (when any are stated or strongly implied): what the
   product is deliberately not built for, given what it is for, such as a
@@ -227,7 +268,7 @@ an assumed item freely, since it's your inference, not the input's claim. They
 can drop a stated item too, when the consumer-lens read or the intent test shows
 the input got it wrong.
 
-## Step 1.8: Share the Draft Requirements Analysis with Junio for review
+## Step 1.9: Share the Draft Requirements Analysis with Junio for review
 
 Write the Draft Requirements Analysis, the Session Type, and the repo
 orientation from [Step 1.2](#step-12-orient-to-the-repo) to a temporary file
@@ -248,7 +289,7 @@ round only. Don't loop back to Junio after revising. The point is a fresh,
 adversarial read at the cheapest point to catch a foundational problem, before
 the user ever sees the Draft.
 
-## Step 1.9: Apply the review
+## Step 1.10: Apply the review
 
 Decide each of Junio's findings on its merits, and record a one-line reason for
 the call. You own the Requirements Analysis. Junio raising a finding is not
@@ -263,18 +304,18 @@ Route each finding by what it settles:
   settles outright. For example: no consumer the read can find, a fit the
   orientation doesn't support, or a clash with an existing requirement or
   another Draft item. Add it to the open questions, or sharpen one already
-  there. Use the [Step 1.7](#step-17-compose-the-draft-requirements-analysis)
+  there. Use the [Step 1.8](#step-18-compose-the-draft-requirements-analysis)
   test: write the assumed value you'd record. If you can't write one without
   guessing, it's open. Treat the option to stop as equal to any option that
   continues the work. Name it plainly among the possible answers. Never bury it
   as an aside inside a version of doing the work anyway.
 - **A finding you reject.** You disagree with the finding. Name it and your
   reason in the message in
-  [Step 1.11](#step-111-share-the-requirements-analysis) regardless. Every
+  [Step 1.12](#step-112-share-the-requirements-analysis) regardless. Every
   finding at this review tests a foundational premise, so a rejection you keep
   to yourself is the same deference this review exists to catch.
 
-## Step 1.10: Elicit answers to open questions
+## Step 1.11: Elicit answers to open questions
 
 Skip this step when there are no open questions.
 
@@ -297,7 +338,7 @@ question unanswered, re-ask the unanswered ones before continuing. You marked
 them as needing the user, so a missing answer means the artifact isn't complete
 yet.
 
-## Step 1.11: Share the Requirements Analysis
+## Step 1.12: Share the Requirements Analysis
 
 Send the completed Requirements Analysis to the user. Add a brief note on **what
 changed from the Draft after Junio's review**: folded-in findings, and any
@@ -316,7 +357,7 @@ End the message with one of these two, depending on autopilot:
   continue in the same turn. _"Taking the Requirements Analysis as proposed
   (autopilot). Proceeding to Phase 2: Code Analysis."_
 
-## Step 1.12: Seek user acceptance of the Requirements Analysis
+## Step 1.13: Seek user acceptance of the Requirements Analysis
 
 Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
@@ -328,15 +369,15 @@ explicitly dropped. Defer the rest to Collect (see
 If accepted, apply the Session Type's category label to the PR via
 `gh pr edit --add-label <name>` (see
 [GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to
-[Step 1.13](#step-113-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+[Step 1.14](#step-114-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
 
 If the user pushes back, revise and return to
-[Step 1.11](#step-111-share-the-requirements-analysis). Repeat until accepted.
+[Step 1.12](#step-112-share-the-requirements-analysis). Repeat until accepted.
 
 This is one of the protocol's user acceptance gates (see
 [Acceptance gates](../protocol.md#acceptance-gates)).
 
-## Step 1.13: Hand the accepted Requirements Analysis to Junio and Ralph
+## Step 1.14: Hand the accepted Requirements Analysis to Junio and Ralph
 
 Write the following, in the versions the user accepted plus any changes from the
 acceptance discussion, to a temporary file outside this repo, via Bash:
@@ -348,10 +389,10 @@ acceptance discussion, to a temporary file outside this repo, via Bash:
 Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP.
 
-## Step 1.14: Post the accepted Requirements Analysis to the PR
+## Step 1.15: Post the accepted Requirements Analysis to the PR
 
 Post the accepted Requirements Analysis to the PR from the file written in
-[Step 1.13](#step-113-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+[Step 1.14](#step-114-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
 Follow
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
 Use the heading `Requirements`.
