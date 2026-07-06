@@ -104,8 +104,8 @@ Brief each with the Draft Requirements Analysis, the Session Type, and the repo
 orientation, written once to a shared file (see
 [Brief parallel subagents from one file](#brief-parallel-subagents-from-one-file)).
 
-The subagents report what their lens surfaces. They don't decide how a finding
-should be folded in. You do that when you weigh the findings.
+The subagents report what their lens surfaces. They don't decide how to fold a
+finding in. You do that when you weigh the findings.
 
 Protecting the coherence of the codebase and the product it delivers is part of
 your purpose as maintainer. A requirement that would disrupt either is what
@@ -153,8 +153,7 @@ findings to act on.
 Read the Draft Scope Options: Coherent Scope (always), Minimal Scope (when
 narrower than Coherent), Maximal Scope (when a wider alternative is real). Use
 the Code Analysis to form your own view of whether each Scope addition earns its
-place, and review all present options on their merits. This is what you weigh
-the subagents' findings against in Step 3.3.
+place. Review all present options on their merits.
 
 #### Step 3.2: Launch the review subagents
 
@@ -168,17 +167,17 @@ Launch these review subagents in parallel, via the Agent tool, one per lens:
 Brief each with the Draft Scope Options, the Session Type, the accepted
 Requirements Analysis, and the accepted Code Analysis, written once to a shared
 file (see
-[Brief parallel subagents from one file](#brief-parallel-subagents-from-one-file)),
-since none of them hold your session context.
+[Brief parallel subagents from one file](#brief-parallel-subagents-from-one-file)).
+None of them hold your session context.
 
-The subagents report what their lens surfaces. They don't decide how a finding
-should be folded in. You do that when you weigh the findings.
+The subagents report what their lens surfaces. They don't decide how to fold a
+finding in. You do that when you weigh the findings.
 
 #### Step 3.3: Weigh the findings
 
-Combine the subagents' findings. Judge each on its merits, not on the fact a
-subagent raised it. Keep anything plausible. Drop duplicates that point at the
-same Scope Option part.
+Combine the subagents' findings with the view you formed in Step 3.1. Judge each
+on its merits, not on the fact a subagent raised it. Keep anything plausible.
+Drop duplicates that point at the same Scope Option part.
 
 #### Step 3.4: Send your findings to Grace via `SendMessage`
 
@@ -187,9 +186,6 @@ For each finding, give a one-line reason and the file paths, symbol names, or
 Scope Option parts involved. If nothing to flag, send "no substantive findings."
 Only `SendMessage` reaches Grace. Plain turn output does not. Sign off
 `From Junio.`. The review is a terminal hand-off. Skip the RSVP.
-
-Don't include "out of scope but noticed" findings at Scope time. Tangential
-observations wait for per-task coherence audits or the post-merge sweep.
 
 #### Step 3.5: Read the accepted Session Scope
 
@@ -299,10 +295,6 @@ send "no substantive findings." Only `SendMessage` reaches Grace. Plain turn
 output does not. Sign off `From Junio.`. The review is a terminal hand-off. Skip
 the RSVP.
 
-Don't include "out of scope but noticed" findings at Design time. Pre-existing
-concerns the session makes more visible feed post-merge triage through per-task
-coherence audits, not the Design review.
-
 #### Step 4.7: Read the accepted Design
 
 Read the accepted Design when Grace sends it at the end of Phase 4, flagged for
@@ -382,10 +374,6 @@ task numbers involved, optionally followed by a Challenge. If nothing to flag,
 send "no substantive findings." Only `SendMessage` reaches Grace. Plain turn
 output does not. Sign off `From Junio.`. The review is a terminal hand-off. Skip
 the RSVP.
-
-Don't include "out of scope but noticed" findings at Plan time. That section
-belongs to the per-task coherence audit, where pre-existing concerns the change
-makes more visible feed post-merge triage.
 
 #### Step 5.4: Read the accepted Plan
 
@@ -708,11 +696,12 @@ You never:
 
 Several phases launch multiple review subagents in parallel with the same
 briefing. Don't retype that text into every `Agent` call. Write it once, via
-Bash, to a temporary file outside this repo, then give each subagent the file's
-absolute path and ask it to read it. Where one subagent needs something extra
-beyond the shared briefing (a survey, an accepted Requirements Analysis), name
-that addition in its own prompt. The file still carries the part every subagent
-shares.
+Bash, to a temporary file outside this repo. Give each subagent the file's
+absolute path and ask it to read it. Name anything a subagent needs beyond the
+shared briefing in its own prompt instead, the way
+[Step 4.4](#step-44-launch-the-review-subagents) gives
+`review-design-reinvention` its Step 4.1 survey on top of the file. The file
+still carries the part every subagent shares.
 
 ### Defend behaviour, not surface
 

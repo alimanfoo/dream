@@ -25,10 +25,10 @@ same contract, a caller left out of sync, or a test or doc documenting the old
 shape.
 
 Then look at the additions the Coherent Scope already names. Does each one earn
-its place? For each addition beyond what the requirements call for, ask: does
-code or recurrence evidence justify this as coherence work, or is it "while
-we're here" scope creep dressed as coherence? An addition that isn't earned
-belongs in Maximal, not Coherent.
+its place? For each addition beyond what the requirements call for, ask whether
+code or recurrence evidence justifies it as coherence work. If not, it's "while
+we're here" scope creep dressed as coherence, and belongs in Maximal, not
+Coherent.
 
 Check the other direction too, where a recurring surface traces to one fact
 written in two places. The Coherent Scope is too narrow if it patches the copies
@@ -38,12 +38,12 @@ step, an alignment test) is not the fix: it keeps both copies, so the drift
 returns.
 
 Check the same direction for a rule with no single home: many sites that each
-must follow it, so there's nothing to single-source. Flag the Coherent Scope as
-too narrow if it patches the sites without a check that enforces the rule, when
-the rule is real and you have seen it break. Don't push that check into Maximal
-as an unearned addition: enforcing a real, drifting rule is the root-cause fix,
-the same as single-sourcing a duplicated fact. A check guarding a rule nothing
-relies on still fails the test and stays out.
+must follow it, so no single site can hold the rule. Flag the Coherent Scope as
+too narrow if it patches the sites without a check that enforces the rule. Flag
+it only when the rule is real and you have seen it break. Don't push that check
+into Maximal as an unearned addition. Enforcing a real, drifting rule is the
+root-cause fix, the same as single-sourcing a duplicated fact. A check guarding
+a rule nothing relies on still fails the test and stays out.
 
 ## Reporting
 
