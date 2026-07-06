@@ -336,19 +336,21 @@ This is one of the protocol's user acceptance gates (see
 
 ## Step 1.13: Hand the accepted Requirements Analysis to Junio and Ralph
 
-Send Junio and Ralph the following, in the versions the user accepted plus any
-changes from the acceptance discussion:
+Write the following, in the versions the user accepted plus any changes from the
+acceptance discussion, to a temporary file outside this repo, via Bash:
 
 - the accepted Requirements Analysis
 - the Session Type
 - the repo orientation from [Step 1.2](#step-12-orient-to-the-repo)
 
-Send them as two `SendMessage` calls in the same turn, for information only.
-Sign off `From Grace.` and skip the RSVP.
+Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
+same turn, for information only. Sign off `From Grace.` and skip the RSVP.
 
 ## Step 1.14: Post the accepted Requirements Analysis to the PR
 
-Post the accepted Requirements Analysis as a PR comment. Follow
+Post the accepted Requirements Analysis to the PR from the file written in
+[Step 1.13](#step-113-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+Follow
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
 Use the heading `Requirements`.
 

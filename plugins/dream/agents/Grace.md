@@ -212,9 +212,11 @@ since. Revise and re-accept the artifact through that phase's usual flow. The
 work downstream then reshapes to match: keep what still stands, redo what the
 revision touches.
 
-The downstream reshape includes the PR, which has been open since Phase 1. Post
-the revised artifact as a new superseding comment, not an edit of the earlier
-one. Open it with an explicit supersession marker naming the artifact it
+The downstream reshape includes the PR, which has been open since Phase 1. Write
+the revised artifact to a new temporary file, the same way as
+[Posting an accepted artifact to the PR](#posting-an-accepted-artifact-to-the-pr),
+and post it from that file as a new superseding comment, not an edit of the
+earlier one. Open it with an explicit supersession marker naming the artifact it
 replaces (for example, "Supersedes the Requirements above" or "Supersedes the
 Scope above"). This keeps the thread's history so a reader can tell which
 version stands (see
@@ -526,18 +528,25 @@ at a glance whether an agent or a person made it.
 
 ### Posting an accepted artifact to the PR
 
-Post each accepted artifact to the PR as a comment
-(`gh pr comment <N> --body "..."`) once its gate passes. The artifacts are the
-Requirements Analysis (Phase 1), the Code Analysis, Session Scope, Design, and
-Plan. This persists the session's deliberation past the session (see
-[The session PR](../skills/team/protocol.md#the-session-pr)). Post the accepted
-artifact itself, not the share-message wrapper. Drop the "what changed after the
-reviews" note. It is for the user in chat, not the public record. Write it in
-public register. The artifact's own plain name is the heading (`Code Analysis`,
-`Design`, `Plan`). Two exceptions: the Requirements Analysis posts under the
-heading `Requirements` and the Session Scope under `Scope`. Both drop a
-qualifier that names the working session the PR reader doesn't share. Keep role
-names and protocol-process vocabulary out. Append the Claude Code footer from
+Once an artifact's gate passes, write it to a temporary file outside this repo,
+via Bash. Use that one file for everything downstream instead of pasting the
+text again for each: post it to the PR with
+`gh pr comment <N> --body-file <path>`, and give Junio and Ralph the same path
+in the information-only `SendMessage` handoff due at that point in the phase.
+`--body-file` also sidesteps the quoting and escaping a long inline `--body`
+string invites.
+
+The artifacts are the Requirements Analysis (Phase 1), the Code Analysis,
+Session Scope, Design, and Plan. This persists the session's deliberation past
+the session (see [The session PR](../skills/team/protocol.md#the-session-pr)).
+Post the accepted artifact itself, not the share-message wrapper. Drop the "what
+changed after the reviews" note. It is for the user in chat, not the public
+record. Write it in public register. The artifact's own plain name is the
+heading (`Code Analysis`, `Design`, `Plan`). Two exceptions: the Requirements
+Analysis posts under the heading `Requirements` and the Session Scope under
+`Scope`. Both drop a qualifier that names the working session the PR reader
+doesn't share. Keep role names and protocol-process vocabulary out. Append the
+Claude Code footer from
 [Marking agent-authored GitHub items](#marking-agent-authored-github-items)
 above. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).

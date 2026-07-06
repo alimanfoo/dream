@@ -125,7 +125,7 @@ plugins/:
             'Phase 10: Reflect':
           Common rules:
             Hard rules:
-            Brief parallel subagents from one file:
+            Relay a shared briefing file to subagents:
             Defend behaviour, not surface:
             Communication between teammates (agents):
       Ralph.md:
@@ -398,6 +398,7 @@ plugins/:
             Autopilot:
             Challenge:
             The session PR:
+            Sharing an artifact:
             No orphaned observations:
             Existing code is unproven:
             Code-shape ladder:

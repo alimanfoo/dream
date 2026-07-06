@@ -110,10 +110,11 @@ the Design Options you share with Junio and Ralph in
 
 ## Step 4.4: Share the Design Options with Junio and Ralph for review
 
-Send the Design Options to both Junio and Ralph in parallel: two `SendMessage`
-calls in the same turn. Sign off `From Grace. RSVP via SendMessage.`
+Write the Design Options to a temporary file outside this repo, via Bash. Send
+both Junio and Ralph the file's absolute path: two `SendMessage` calls in the
+same turn. Sign off `From Grace. RSVP via SendMessage.`
 
-Send the same body to each reviewer. Their role files steer the lens. Junio
+Send the same path to each reviewer. Their role files steer the lens. Junio
 reads from the maintainer's view (defend behaviour, code-shape, surviving-fit)
 and proposes candidate lateral moves. Ralph reads from the engineering-pattern
 view: naming, scope and abstraction, plain code. Each replies with a numbered
@@ -191,16 +192,21 @@ This is one of the protocol's user acceptance gates (see
 
 ## Step 4.8: Hand the accepted Design to Junio and Ralph
 
-Send Junio and Ralph the accepted Design: the option the user picked, plus any
-changes from the acceptance discussion. Two `SendMessage` calls in the same
-turn, for information only. Sign off `From Grace.` and skip the RSVP. No reply
-is needed. They haven't seen the outcome since their Design review in
+Write the following to a temporary file outside this repo, via Bash: the
+accepted Design (the option the user picked, plus any changes from the
+acceptance discussion) and every other design from the spread, for the
+"Alternatives considered" heading in
+[Step 4.9](#step-49-post-the-accepted-design-to-the-pr). Send Junio and Ralph
+the file's absolute path: two `SendMessage` calls in the same turn, for
+information only. Sign off `From Grace.` and skip the RSVP. No reply is needed.
+They haven't seen the outcome since their Design review in
 [Step 4.4](#step-44-share-the-design-options-with-junio-and-ralph-for-review).
 The accepted Design feeds the Plan review that follows.
 
 ## Step 4.9: Post the accepted Design to the PR
 
-Post the accepted Design to the PR as a comment (see
+Post the accepted Design to the PR from the file written in
+[Step 4.8](#step-48-hand-the-accepted-design-to-junio-and-ralph) (see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
 
 Make the body the design the user accepted. Put every other design from the

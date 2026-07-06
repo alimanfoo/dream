@@ -127,7 +127,8 @@ This is one of the protocol's user acceptance gates (see
 
 ## Step 5.6: Hand the accepted Plan to Junio and Ralph
 
-Send Junio and Ralph the same content you sent the user. Two `SendMessage` calls
+Write the same content you sent the user to a temporary file outside this repo,
+via Bash. Send Junio and Ralph the file's absolute path: two `SendMessage` calls
 in the same turn, for information only. Sign off `From Grace.` and skip the
 RSVP. No reply is needed. They haven't seen the outcome since their Draft Plan
 review in
@@ -137,7 +138,8 @@ implementations in Phase 6.
 
 ## Step 5.7: Post the accepted Plan to the PR
 
-Post the accepted Plan to the PR as a comment (see
+Post the accepted Plan to the PR from the file written in
+[Step 5.6](#step-56-hand-the-accepted-plan-to-junio-and-ralph) (see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
 
 The phase ends at user acceptance of the Plan.

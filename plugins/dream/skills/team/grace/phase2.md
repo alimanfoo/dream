@@ -122,14 +122,16 @@ This is one of the protocol's user acceptance gates (see
 
 ## Step 2.6: Hand the accepted Code Analysis to Junio and Ralph
 
-Send Junio and Ralph the accepted Code Analysis, the version the user accepted
-plus any changes from the acceptance discussion. Two `SendMessage` calls in the
+Write the accepted Code Analysis, the version the user accepted plus any changes
+from the acceptance discussion, to a temporary file outside this repo, via Bash.
+Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP. No
 reply is needed. They hold it as context for the rest of the session.
 
 ## Step 2.7: Post the accepted Code Analysis to the PR
 
-Post the accepted Code Analysis to the PR as a comment (see
+Post the accepted Code Analysis to the PR from the file written in
+[Step 2.6](#step-26-hand-the-accepted-code-analysis-to-junio-and-ralph) (see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
 
 The phase ends at user acceptance of the Code Analysis.
