@@ -289,7 +289,9 @@ the RSVP.
 
 Read the accepted Design at the file path Grace's message gives you at the end
 of Phase 4, flagged for information only. It shows which option the user picked
-and any further changes from the acceptance discussion. Grace expects no reply.
+and any further changes from the acceptance discussion. The file also carries
+every other design from the spread, closed out as Alternatives considered for
+the PR post, not open for further debate. Grace expects no reply.
 
 ### Phase 5: Plan
 
