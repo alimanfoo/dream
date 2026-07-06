@@ -300,9 +300,7 @@ The main implementation loop runs each task through the same chain:
 4. Grace reads the committed change and triages findings into follow-on tasks or
    holds them for post-merge triage.
 
-The loop repeats, and the chain ends when the task list drains. Full per-task
-detail in `Grace.md` (assign / read / triage), `Ralph.md` (implement and
-commit), and `Junio.md` (audit).
+The loop repeats, and the chain ends when the task list drains.
 
 ### Coherence chain
 
@@ -334,11 +332,8 @@ triage. An in-session antecedent flips a borderline call toward in-scope.
 
 Missed instances of the brief's criterion don't need a separate test. Ralph
 applies the criterion fresh. The criterion's wording sets the scope, so sibling
-sites matching the criterion are part of the work. See
-[Phase 5](../../agents/Grace.md#phase-5-plan) for the brief shape and
-[Phase 6](../../agents/Ralph.md#phase-6-develop) for how Ralph reads it. Junio
-still catches missed instances during audit when Ralph's application of the
-criterion left some out.
+sites matching the criterion are part of the work. Junio still catches missed
+instances during audit when Ralph's application of the criterion left some out.
 
 #### Defend behaviour, not surface
 
@@ -370,8 +365,6 @@ Junio raises a Challenge to Grace. For instance, repeated coherence audits may
 circle the same surface for different stated reasons. That points at the Session
 Scope being too narrow to reach the root cause. Grace assesses it and, if it
 holds, takes it to the user. See "Challenge" below.
-
-Full audit-lens detail (examples, patterns, edge cases) is in `Junio.md`.
 
 ### Task ordering
 
@@ -410,9 +403,6 @@ Grace handles both reviews the same way:
 3. She completes accepted follow-ons.
 4. She posts one response comment.
 5. She marks the PR ready and hands back to the user.
-
-Full Phase 7 procedure in `Grace.md`. The review shapes in `Ada.md` and
-`Junio.md`.
 
 The phase ends at user acceptance of the PR. The session moves to Merge.
 
@@ -568,7 +558,7 @@ A Challenge is admissible only on new evidence the earlier phase didn't have.
 Wanting to redesign on reflection is not a Challenge. Overturning an accepted
 decision goes through a Challenge, openly, not slipped through as a fresh
 observation. Grace can raise one in any phase once an artifact has been
-accepted. Full mechanism in `Grace.md`.
+accepted.
 
 When a chosen option revises an artifact already posted to the PR, Grace posts
 the revision as a new comment that replaces it, not an edit. See
@@ -598,7 +588,7 @@ A session that stops before merge still leaves a record. When the user halts at
 a gate or ends the session early, Grace posts a final comment naming where the
 work reached and why it stopped. She then closes the draft PR. The closed,
 unmerged PR documents what was considered and why it went no further, including
-any non-goals. Full mechanics in `Grace.md`.
+any non-goals.
 
 ## Sharing an artifact
 
@@ -606,7 +596,6 @@ Grace's `SendMessage` handoffs don't paste an artifact's text. Once its gate
 passes, she writes it once, to a temporary file outside the repo: the PR comment
 is posted from that file, and teammates get its path instead of the text. Team
 mates read the file at the path given, rather than expecting the text inline.
-Full mechanics in `Grace.md`.
 
 ## No orphaned observations
 
