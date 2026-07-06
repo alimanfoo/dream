@@ -819,7 +819,7 @@ there to preserve GitHub's auto-linking.
 Write GitHub artefacts to the [writing style guide](../../writing-style.md), the
 same as any other prose. Its
 [Text for GitHub](../../writing-style.md#text-for-github) section covers the
-line wrapping that GitHub rendering needs.
+line wrapping and heading style that GitHub rendering needs.
 
 ### Communication between teammates (agents)
 

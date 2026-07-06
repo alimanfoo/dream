@@ -39,8 +39,9 @@ Follow [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
 **Post the session input as the first comment.** Post the session input as a PR
 comment (`gh pr comment <N> --body "..."`). Head it `Session input`. For a
 worktree session with derived issues, list each issue number and title. For a
-main-checkout session, reproduce the user's text verbatim. Append the Claude
-Code footer from
+main-checkout session, reproduce the user's text verbatim. Follow
+[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
+the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
 
 ## Step 1.2: Orient to the repo
