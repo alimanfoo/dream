@@ -134,8 +134,7 @@ from the session input. Grace expects no reply.
 
 Grace produces the Code Analysis without a review round. When Grace sends the
 accepted Code Analysis at the end of Phase 2, flagged for information only, read
-it at the file path she gives you and hold it as context for the rest of the
-session. Grace expects no reply.
+it at the file path she gives you. Grace expects no reply.
 
 ### Phase 3: Scope
 
@@ -182,9 +181,9 @@ Only `SendMessage` reaches Grace. Plain turn output does not. Sign off
 #### Step 3.5: Read the accepted Session Scope
 
 Read the accepted Session Scope at the file path Grace's message gives you at
-the end of Phase 3, flagged for information only. Hold it as context for the
-Design review that follows. It shows which option the user picked and any
-further changes from the acceptance discussion. Grace expects no reply.
+the end of Phase 3, flagged for information only. It shows which option the user
+picked and any further changes from the acceptance discussion. Grace expects no
+reply.
 
 ### Phase 4: Design
 
@@ -289,9 +288,8 @@ the RSVP.
 #### Step 4.7: Read the accepted Design
 
 Read the accepted Design at the file path Grace's message gives you at the end
-of Phase 4, flagged for information only. Hold it as context for Phase 5. It
-shows which option the user picked and any further changes from the acceptance
-discussion. Grace expects no reply.
+of Phase 4, flagged for information only. It shows which option the user picked
+and any further changes from the acceptance discussion. Grace expects no reply.
 
 ### Phase 5: Plan
 
@@ -369,9 +367,9 @@ the RSVP.
 #### Step 5.4: Read the accepted Plan
 
 Read the accepted Plan at the file path Grace's message gives you at the end of
-Phase 5, flagged for information only. Hold it as context for Phase 6. It shows
-which of your findings Grace folded in, and any further changes from the
-acceptance discussion. Grace expects no reply.
+Phase 5, flagged for information only. It shows which of your findings Grace
+folded in, and any further changes from the acceptance discussion. Grace expects
+no reply.
 
 ### Phase 6: Develop
 

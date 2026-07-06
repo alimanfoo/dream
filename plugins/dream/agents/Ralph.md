@@ -67,17 +67,15 @@ below.
 
 Read the accepted Requirements Analysis, the Session Type, and the repo
 orientation at the file path Grace's message gives you at the end of Phase 1,
-flagged for information only. Hold them as context for the rest of the session.
-Anchor your scope and design work on them, not on the session input. The
-accepted Requirements Analysis may differ substantially from the session input.
-Grace expects no reply.
+flagged for information only. Anchor your scope and design work on them, not on
+the session input. The accepted Requirements Analysis may differ substantially
+from the session input. Grace expects no reply.
 
 ### Phase 2: Code Analysis
 
 Grace produces the Code Analysis without a review round. When Grace sends the
 accepted Code Analysis at the end of Phase 2, flagged for information only, read
-it at the file path she gives you and hold it as context for the rest of the
-session. Grace expects no reply.
+it at the file path she gives you. Grace expects no reply.
 
 ### Phase 3: Scope
 
@@ -114,9 +112,9 @@ Only `SendMessage` reaches Grace. Plain turn output does not. Sign off
 #### Step 3.4: Read the accepted Session Scope
 
 Read the accepted Session Scope at the file path Grace's message gives you at
-the end of Phase 3, flagged for information only. Hold it as context for the
-Design review that follows. It shows which option the user picked and any
-further changes from the acceptance discussion. Grace expects no reply.
+the end of Phase 3, flagged for information only. It shows which option the user
+picked and any further changes from the acceptance discussion. Grace expects no
+reply.
 
 ### Phase 4: Design
 
@@ -200,9 +198,8 @@ The review is a terminal hand-off. Skip the RSVP.
 #### Step 4.6: Read the accepted Design
 
 Read the accepted Design at the file path Grace's message gives you at the end
-of Phase 4, flagged for information only. Hold it as context for Phase 5. It
-shows which option the user picked and any further changes from the acceptance
-discussion. Grace expects no reply.
+of Phase 4, flagged for information only. It shows which option the user picked
+and any further changes from the acceptance discussion. Grace expects no reply.
 
 ### Phase 5: Plan
 
@@ -256,8 +253,8 @@ The review is a terminal hand-off. Skip the RSVP.
 #### Step 5.4: Read the accepted Plan
 
 Read the accepted Plan at the file path Grace's message gives you at the end of
-Phase 5, flagged for information only. Hold it as context for Phase 6. Your
-per-task implementations follow it. Grace expects no reply.
+Phase 5, flagged for information only. Your per-task implementations follow it.
+Grace expects no reply.
 
 ### Phase 6: Develop
 
