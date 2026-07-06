@@ -104,9 +104,6 @@ Brief each with the Draft Requirements Analysis, the Session Type, and the repo
 orientation, written once to a shared file (see
 [Brief parallel subagents from one file](#brief-parallel-subagents-from-one-file)).
 
-The subagents report what their lens surfaces. They don't decide how to fold a
-finding in. You do that when you weigh the findings.
-
 Protecting the coherence of the codebase and the product it delivers is part of
 your purpose as maintainer. A requirement that would disrupt either is what
 these lenses exist to catch.
@@ -169,9 +166,6 @@ Requirements Analysis, and the accepted Code Analysis, written once to a shared
 file (see
 [Brief parallel subagents from one file](#brief-parallel-subagents-from-one-file)).
 None of them hold your session context.
-
-The subagents report what their lens surfaces. They don't decide how to fold a
-finding in. You do that when you weigh the findings.
 
 #### Step 3.3: Weigh the findings
 
