@@ -165,7 +165,6 @@ Brief each with the Draft Scope Options, the Session Type, the accepted
 Requirements Analysis, and the accepted Code Analysis, written once to a shared
 file (see
 [Brief parallel subagents from one file](#brief-parallel-subagents-from-one-file)).
-None of them hold your session context.
 
 #### Step 3.3: Weigh the findings
 
