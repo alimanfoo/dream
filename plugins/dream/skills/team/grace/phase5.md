@@ -40,11 +40,12 @@ For kind-based criteria, show two or three examples to anchor the kind.
 
 ## Step 5.2: Share the Draft Plan with Junio and Ralph for review
 
-Send the Draft Plan to both Junio and Ralph in parallel: two `SendMessage` calls
-in the same turn. They already hold all earlier phase context. Send the Draft
-Plan as the message body. Sign off `From Grace. RSVP via SendMessage.`
+Write the Draft Plan to a temporary file outside this repo, via Bash. Send both
+Junio and Ralph the file's absolute path: two `SendMessage` calls in the same
+turn. They already hold all earlier phase context. Sign off
+`From Grace. RSVP via SendMessage.`
 
-Send the same body to each reviewer. Their role files steer the lens. Junio
+Send the same path to each reviewer. Their role files steer the lens. Junio
 reads from the maintainer's view: defend completeness across tasks and
 tidy-first precursors. Ralph reads from the implementer's view: task
 implementability and tidy-first. Each replies with a numbered list of findings
@@ -127,7 +128,8 @@ This is one of the protocol's user acceptance gates (see
 
 ## Step 5.6: Hand the accepted Plan to Junio and Ralph
 
-Send Junio and Ralph the same content you sent the user. Two `SendMessage` calls
+Write the same content you sent the user to a temporary file outside this repo,
+via Bash. Send Junio and Ralph the file's absolute path: two `SendMessage` calls
 in the same turn, for information only. Sign off `From Grace.` and skip the
 RSVP. No reply is needed. They haven't seen the outcome since their Draft Plan
 review in
@@ -137,7 +139,8 @@ implementations in Phase 6.
 
 ## Step 5.7: Post the accepted Plan to the PR
 
-Post the accepted Plan to the PR as a comment (see
+Post the accepted Plan to the PR from the file written in
+[Step 5.6](#step-56-hand-the-accepted-plan-to-junio-and-ralph) (see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
 
 The phase ends at user acceptance of the Plan.

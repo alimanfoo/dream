@@ -88,13 +88,10 @@ plugins/:
             'Phase 2: Code Analysis':
             'Phase 3: Scope':
               'Step 3.1: Read the Draft Scope Options':
-              'Step 3.2: Apply the maintainer lenses':
-                'Lens 1: Coherent Scope is truly coherent':
-                'Lens 2: Maximal Scope is real anticipation':
-                'Lens 3: Symptom or cause?':
-                'Lens 4: Property or implementation?':
-              'Step 3.3: Send your findings to Grace via `SendMessage`':
-              'Step 3.4: Read the accepted Session Scope':
+              'Step 3.2: Launch the review subagents':
+              'Step 3.3: Weigh the findings':
+              'Step 3.4: Send your findings to Grace via `SendMessage`':
+              'Step 3.5: Read the accepted Session Scope':
             'Phase 4: Design':
               'Step 4.1: Survey existing tools':
               'Step 4.2: Generate design sketches':
@@ -128,6 +125,7 @@ plugins/:
             'Phase 10: Reflect':
           Common rules:
             Hard rules:
+            Relay a shared briefing file to subagents:
             Defend behaviour, not surface:
             Communication between teammates (agents):
       Ralph.md:
@@ -243,6 +241,22 @@ plugins/:
           Reporting:
       review-requirements-project-purpose.md:
         Serves the project's purpose:
+          The lens:
+          Reporting:
+      review-scope-anticipation.md:
+        Maximal Scope is real anticipation:
+          The lens:
+          Reporting:
+      review-scope-coherent.md:
+        Coherent Scope is truly coherent:
+          The lens:
+          Reporting:
+      review-scope-property.md:
+        Property or implementation?:
+          The lens:
+          Reporting:
+      review-scope-root-cause.md:
+        Symptom or cause?:
           The lens:
           Reporting:
     skills/:
@@ -384,6 +398,7 @@ plugins/:
             Autopilot:
             Challenge:
             The session PR:
+            Sharing an artifact:
             No orphaned observations:
             Existing code is unproven:
             Code-shape ladder:

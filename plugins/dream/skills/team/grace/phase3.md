@@ -63,12 +63,12 @@ the API or command shape, and a bug's fix shape.
 
 ## Step 3.2: Share the Draft Scope Options with Junio and Ralph for review
 
-Send the Draft Scope Options to both Junio and Ralph in parallel: two
-`SendMessage` calls in the same turn. Sign off
-`From Grace. RSVP via SendMessage.`
+Write the Draft Scope Options to a temporary file outside this repo, via Bash.
+Send both Junio and Ralph the file's absolute path: two `SendMessage` calls in
+the same turn. Sign off `From Grace. RSVP via SendMessage.`
 
 Junio reads from the maintainer's view. Ralph reads from the engineering-pattern
-view. Send the same body to each. Their role files steer the lens. Each replies
+view. Send the same path to each. Their role files steer the lens. Each replies
 with a numbered list of findings (or "no substantive findings"). Junio and Ralph
 are advisory at Scope, not gating. One round only. Don't loop back to either
 reviewer after revising. The point is fresh attention from two teammates, caught
@@ -123,8 +123,9 @@ point through a Challenge (see [Challenge](../../../agents/Grace.md#challenge)).
 
 ## Step 3.6: Hand the accepted Session Scope to Junio and Ralph
 
-Send Junio and Ralph the accepted Session Scope: the option the user picked,
-plus any changes from the acceptance discussion. Two `SendMessage` calls in the
+Write the accepted Session Scope, the option the user picked plus any changes
+from the acceptance discussion, to a temporary file outside this repo, via Bash.
+Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP. No
 reply is needed. They haven't seen the outcome since their Draft Scope Options
 review in
@@ -134,7 +135,8 @@ Phase 4 and the Design review that follows.
 
 ## Step 3.7: Post the accepted Session Scope to the PR
 
-Post the accepted Session Scope to the PR as a comment (see
+Post the accepted Session Scope to the PR from the file written in
+[Step 3.6](#step-36-hand-the-accepted-session-scope-to-junio-and-ralph) (see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
 
 The phase ends at user acceptance of the Session Scope.

@@ -228,9 +228,10 @@ the input got it wrong.
 
 ## Step 1.8: Share the Draft Requirements Analysis with Junio for review
 
-Send the Draft Requirements Analysis to Junio via `SendMessage`, with the
-Session Type and the repo orientation from
-[Step 1.2](#step-12-orient-to-the-repo). Junio hasn't seen either yet. Sign off
+Write the Draft Requirements Analysis, the Session Type, and the repo
+orientation from [Step 1.2](#step-12-orient-to-the-repo) to a temporary file
+outside this repo, via Bash. Send Junio the file's absolute path via
+`SendMessage`. Junio hasn't seen any of it yet. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Junio reads as an adversary, testing:
@@ -336,19 +337,21 @@ This is one of the protocol's user acceptance gates (see
 
 ## Step 1.13: Hand the accepted Requirements Analysis to Junio and Ralph
 
-Send Junio and Ralph the following, in the versions the user accepted plus any
-changes from the acceptance discussion:
+Write the following, in the versions the user accepted plus any changes from the
+acceptance discussion, to a temporary file outside this repo, via Bash:
 
 - the accepted Requirements Analysis
 - the Session Type
 - the repo orientation from [Step 1.2](#step-12-orient-to-the-repo)
 
-Send them as two `SendMessage` calls in the same turn, for information only.
-Sign off `From Grace.` and skip the RSVP.
+Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
+same turn, for information only. Sign off `From Grace.` and skip the RSVP.
 
 ## Step 1.14: Post the accepted Requirements Analysis to the PR
 
-Post the accepted Requirements Analysis as a PR comment. Follow
+Post the accepted Requirements Analysis to the PR from the file written in
+[Step 1.13](#step-113-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+Follow
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
 Use the heading `Requirements`.
 

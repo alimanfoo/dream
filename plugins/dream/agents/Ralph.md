@@ -66,17 +66,16 @@ below.
 ### Phase 1: Requirements
 
 Read the accepted Requirements Analysis, the Session Type, and the repo
-orientation when Grace sends them at the end of Phase 1, flagged for information
-only. Hold them as context for the rest of the session. Anchor your scope and
-design work on them, not on the session input. The accepted Requirements
-Analysis may differ substantially from the session input. Grace expects no
-reply.
+orientation at the file path Grace's message gives you at the end of Phase 1,
+flagged for information only. Anchor your scope and design work on them, not on
+the session input. The accepted Requirements Analysis may differ substantially
+from the session input. Grace expects no reply.
 
 ### Phase 2: Code Analysis
 
 Grace produces the Code Analysis without a review round. When Grace sends the
 accepted Code Analysis at the end of Phase 2, flagged for information only, read
-it and hold it as context for the rest of the session. Grace expects no reply.
+it at the file path she gives you. Grace expects no reply.
 
 ### Phase 3: Scope
 
@@ -87,11 +86,10 @@ act on.
 
 #### Step 3.1: Read the Draft Scope Options
 
-Read the Draft Scope Options: Coherent Scope (always), Minimal Scope (when
-narrower than Coherent), Maximal Scope (when a wider alternative is real). You
-already hold the Session Type, accepted Requirements Analysis, and accepted Code
-Analysis in context from the Phase 1 and Phase 2 handoffs. Review all present
-options on their merits. Open the named files or symbols or read code as needed.
+Read the Draft Scope Options, at the file path Grace's message gives you:
+Coherent Scope (always), Minimal Scope (when narrower than Coherent), Maximal
+Scope (when a wider alternative is real). Review all present options on their
+merits. Open the named files or symbols or read code as needed.
 
 #### Step 3.2: Apply the scope-and-abstraction lens
 
@@ -111,10 +109,10 @@ Only `SendMessage` reaches Grace. Plain turn output does not. Sign off
 
 #### Step 3.4: Read the accepted Session Scope
 
-Read the accepted Session Scope when Grace sends it at the end of Phase 3,
-flagged for information only. Hold it as context for the Design review that
-follows. It shows which option the user picked and any further changes from the
-acceptance discussion. Grace expects no reply.
+Read the accepted Session Scope at the file path Grace's message gives you at
+the end of Phase 3, flagged for information only. It shows which option the user
+picked and any further changes from the acceptance discussion. Grace expects no
+reply.
 
 ### Phase 4: Design
 
@@ -145,11 +143,11 @@ When Grace asks for a Design review, this is one round, advisory. Junio reviews
 the same Design Options in parallel from the maintainer's view. Grace owns the
 Design and decides which findings to act on.
 
-Read the Design Options from the message body: the Proposed Design (Grace's
-recommendation) and any Alternative Designs. Apply your lenses to the Proposed
-Design and to how it compares against each Alternative. Judge each Alternative
-on its merits. Re-derive its trade-off rather than accepting the one Grace
-stated. Open the cited code as needed.
+Read the Design Options at the file path Grace's message gives you: the Proposed
+Design (Grace's recommendation) and any Alternative Designs. Apply your lenses
+to the Proposed Design and to how it compares against each Alternative. Judge
+each Alternative on its merits. Re-derive its trade-off rather than accepting
+the one Grace stated. Open the cited code as needed.
 
 Do not treat a set-aside reason as proof the call was right. The pull to defer
 is strongest on an Alternative you proposed yourself.
@@ -197,10 +195,11 @@ The review is a terminal hand-off. Skip the RSVP.
 
 #### Step 4.6: Read the accepted Design
 
-Read the accepted Design when Grace sends it at the end of Phase 4, flagged for
-information only. Hold it as context for Phase 5. It shows which option the user
-picked and any further changes from the acceptance discussion. Grace expects no
-reply.
+Read the accepted Design at the file path Grace's message gives you at the end
+of Phase 4, flagged for information only. It shows which option the user picked
+and any further changes from the acceptance discussion. The file also carries
+every other design from the spread, closed out as Alternatives considered for
+the PR post, not open for further debate. Grace expects no reply.
 
 ### Phase 5: Plan
 
@@ -210,8 +209,9 @@ maintainer's view. Grace owns the Plan and decides which findings to act on.
 
 #### Step 5.1: Read the Draft Plan
 
-Read each task brief as the eventual implementer. That's your **implementer's
-view** lens at Plan, since you'll be the one executing the tasks.
+Read the Draft Plan at the file path Grace's message gives you. Read each task
+brief as the eventual implementer. That's your **implementer's view** lens at
+Plan, since you'll be the one executing the tasks.
 
 #### Step 5.2: Apply the implementer's-view lenses
 
@@ -253,9 +253,9 @@ The review is a terminal hand-off. Skip the RSVP.
 
 #### Step 5.4: Read the accepted Plan
 
-Read the accepted Plan when Grace sends it at the end of Phase 5, flagged for
-information only. Hold it as context for Phase 6. Your per-task implementations
-follow it. Grace expects no reply.
+Read the accepted Plan at the file path Grace's message gives you at the end of
+Phase 5, flagged for information only. Your per-task implementations follow it.
+Grace expects no reply.
 
 ### Phase 6: Develop
 

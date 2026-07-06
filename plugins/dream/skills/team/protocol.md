@@ -600,6 +600,14 @@ work reached and why it stopped. She then closes the draft PR. The closed,
 unmerged PR documents what was considered and why it went no further, including
 any non-goals. Full mechanics in `Grace.md`.
 
+## Sharing an artifact
+
+Grace's `SendMessage` handoffs don't paste an artifact's text. Once its gate
+passes, she writes it once, to a temporary file outside the repo: the PR comment
+is posted from that file, and teammates get its path instead of the text. Team
+mates read the file at the path given, rather than expecting the text inline.
+Full mechanics in `Grace.md`.
+
 ## No orphaned observations
 
 Every observation Grace records gets a named outcome at the next decision
