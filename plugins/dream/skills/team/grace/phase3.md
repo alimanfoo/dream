@@ -68,7 +68,7 @@ Send both Junio and Ralph the file's absolute path: two `SendMessage` calls in
 the same turn. Sign off `From Grace. RSVP via SendMessage.`
 
 Junio reads from the maintainer's view. Ralph reads from the engineering-pattern
-view. Send the same body to each. Their role files steer the lens. Each replies
+view. Send the same path to each. Their role files steer the lens. Each replies
 with a numbered list of findings (or "no substantive findings"). Junio and Ralph
 are advisory at Scope, not gating. One round only. Don't loop back to either
 reviewer after revising. The point is fresh attention from two teammates, caught

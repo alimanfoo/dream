@@ -228,9 +228,10 @@ the input got it wrong.
 
 ## Step 1.8: Share the Draft Requirements Analysis with Junio for review
 
-Send the Draft Requirements Analysis to Junio via `SendMessage`, with the
-Session Type and the repo orientation from
-[Step 1.2](#step-12-orient-to-the-repo). Junio hasn't seen either yet. Sign off
+Write the Draft Requirements Analysis, the Session Type, and the repo
+orientation from [Step 1.2](#step-12-orient-to-the-repo) to a temporary file
+outside this repo, via Bash. Send Junio the file's absolute path via
+`SendMessage`. Junio hasn't seen any of it yet. Sign off
 `From Grace. RSVP via SendMessage.`
 
 Junio reads as an adversary, testing:
