@@ -209,8 +209,9 @@ maintainer's view. Grace owns the Plan and decides which findings to act on.
 
 #### Step 5.1: Read the Draft Plan
 
-Read each task brief as the eventual implementer. That's your **implementer's
-view** lens at Plan, since you'll be the one executing the tasks.
+Read the Draft Plan at the file path Grace's message gives you. Read each task
+brief as the eventual implementer. That's your **implementer's view** lens at
+Plan, since you'll be the one executing the tasks.
 
 #### Step 5.2: Apply the implementer's-view lenses
 

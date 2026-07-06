@@ -302,10 +302,10 @@ implementer's view. Grace owns the Plan and decides which findings to act on.
 
 #### Step 5.1: Read the Draft Plan
 
-Read the Draft Plan, the task list that delivers the Design. The prior layers
-(Session Type, Requirements Analysis, Code Analysis, Session Scope, accepted
-Design) are already in your context from prior phases and the accepted Design
-handoff at the end of Phase 4.
+Read the Draft Plan, the task list that delivers the Design, at the file path
+Grace's message gives you. The prior layers (Session Type, Requirements
+Analysis, Code Analysis, Session Scope, accepted Design) are already in your
+context from prior phases and the accepted Design handoff at the end of Phase 4.
 
 Focus on the task list and its decomposition. Design-shaped concerns (defend
 behaviour, code-shape, generalisation) were the Design review's territory. If a

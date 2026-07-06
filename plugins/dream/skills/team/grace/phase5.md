@@ -40,11 +40,12 @@ For kind-based criteria, show two or three examples to anchor the kind.
 
 ## Step 5.2: Share the Draft Plan with Junio and Ralph for review
 
-Send the Draft Plan to both Junio and Ralph in parallel: two `SendMessage` calls
-in the same turn. They already hold all earlier phase context. Send the Draft
-Plan as the message body. Sign off `From Grace. RSVP via SendMessage.`
+Write the Draft Plan to a temporary file outside this repo, via Bash. Send both
+Junio and Ralph the file's absolute path: two `SendMessage` calls in the same
+turn. They already hold all earlier phase context. Sign off
+`From Grace. RSVP via SendMessage.`
 
-Send the same body to each reviewer. Their role files steer the lens. Junio
+Send the same path to each reviewer. Their role files steer the lens. Junio
 reads from the maintainer's view: defend completeness across tasks and
 tidy-first precursors. Ralph reads from the implementer's view: task
 implementability and tidy-first. Each replies with a numbered list of findings
