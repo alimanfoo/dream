@@ -1,0 +1,5 @@
+{
+  "permissions": {
+    "allow": ["mcp__Claude_Code_Remote__send_later"]
+  }
+}
