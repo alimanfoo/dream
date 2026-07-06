@@ -821,6 +821,11 @@ same as any other prose. Its
 [Text for GitHub](../../writing-style.md#text-for-github) section covers the
 line wrapping that GitHub rendering needs.
 
+Give a named heading (`Requirements`, `Session input`, `Decision needed`, and
+the like) as a markdown level-2 heading (`## Requirements`), never bare or
+bolded text. A reader scanning the PR sees every posted artefact's heading at
+the same, consistent weight.
+
 ### Communication between teammates (agents)
 
 #### SendMessage
