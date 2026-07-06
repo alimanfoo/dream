@@ -213,35 +213,13 @@ Read the Draft Plan at the file path Grace's message gives you. Read each task
 brief as the eventual implementer. That's your **implementer's view** lens at
 Plan, since you'll be the one executing the tasks.
 
-#### Step 5.2: Apply the implementer's-view lenses
-
-Apply two lenses to the Plan.
-
-##### Lens 1: Task implementability
+#### Step 5.2: Apply the implementer's-view lens
 
 Ask of each task: _Is this a clean single-commit unit? Does the brief name a
 criterion you can apply?_ A criterion-led brief leaves the instances for you to
 find. That's the design, not a gap. The coherence chain catches misses. Flag any
 task that bundles independent moves into one commit, or any brief that buries
 the criterion under an enumerated list.
-
-##### Lens 2: Tidy first?
-
-Would any planned task go more cleanly if a small precursor cleanup made it
-easier or safer to implement? Examples from the implementer's view: rename a
-confusing parameter before threading new args, extract a helper before adding a
-sibling case, or split a tangled function before adding a branch. A precursor
-qualifies only when all three hold:
-
-- **Tied to a named task.** Cite which planned task the tidy supports.
-- **Behaviour-preserving.** Pure restructure: extract, inline, rename, move,
-  split. No contract change.
-- **Materially easier or safer.** The named task would be more error-prone, more
-  complex, or touch more places without this precursor. Aesthetic improvements
-  alone don't pass.
-
-Junio applies the same lens from the maintainer's view. Both lenses are welcome,
-because different angles often reveal different precursors.
 
 #### Step 5.3: Send your findings to Grace via `SendMessage`
 

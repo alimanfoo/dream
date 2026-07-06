@@ -310,55 +310,31 @@ context from prior phases and the accepted Design handoff at the end of Phase 4.
 Focus on the task list and its decomposition. Design-shaped concerns (defend
 behaviour, code-shape, generalisation) were the Design review's territory. If a
 task introduces a new contract via prose or a runtime check that the Design
-didn't carry, you can still flag it. But the lenses below are the Plan review's
-discipline.
+didn't carry, you can still flag it. But the subagent lenses in Step 5.2 are the
+Plan review's discipline.
 
-#### Step 5.2: Apply the plan lenses
+#### Step 5.2: Launch the review subagents
 
-Apply these lenses to the Plan.
+Launch these review subagents in parallel, via the Agent tool, one per lens:
 
-##### Lens 1: Defend completeness
+- `dream:review-plan-completeness`
+- `dream:review-plan-tidy-first`
 
-Check that the plan covers all surfaces of the same edit, not just some. Two
-shapes: missed instances on pre-existing surfaces (a sibling file, a parallel
-function, a test name carrying a phrase a task removes from prose) and
-consequential adjacencies the plan itself will create (an earlier task promotes
-a symbol, leaving its underscore prefix a fossil no later task touches). Ask the
-dispatching question: _is this the same edit: one missed, or one the plan will
-make adjacent?_ Finding the rest of the same edit is convergence, not scope
-creep.
-
-##### Lens 2: Tidy first?
-
-Ask of each task: would it go more cleanly if a small precursor cleanup made the
-change easy first? Examples:
-
-- extract a helper before adding a sibling case
-- rename a confusing parameter before threading new args
-- split a tangled function before adding a branch
-- promote a private symbol from `_name` → `name` before importing it from
-  another module
-
-A precursor qualifies only when all three hold:
-
-- **Tied to a named task.** Cite which planned task the tidy supports.
-  Free-floating cleanups don't qualify.
-- **Behaviour-preserving.** Pure restructure: extract, inline, rename, move,
-  split. No contract change.
-- **Materially easier or safer.** The named task would be more error-prone, more
-  complex, or touch more places without this precursor. Aesthetic improvements
-  alone don't pass.
-
-The "?" is deliberate. The lens looks for cases where tidying first genuinely
-lowers the cost of the planned work, not for every cleanup the codebase could
-absorb. Ralph applies the same lens from the implementer's view. Both lenses are
-welcome, and different angles often reveal different precursors.
+Brief each with the file path from Step 5.1 (see
+[Relay a shared briefing file to subagents](#relay-a-shared-briefing-file-to-subagents)).
 
 While reviewing you can also raise a Challenge, not a lens, but the general
 escalation any teammate can raise (see `protocol.md`). If a fresh read turns up
 genuinely new evidence that an accepted artifact no longer holds, raise one.
 
-#### Step 5.3: Send your findings to Grace via `SendMessage`
+#### Step 5.3: Weigh the findings
+
+Combine the subagents' findings with the view you formed reading the Draft Plan.
+Judge each on its merits, not on the fact a subagent raised it. Keep anything
+plausible. Drop duplicates that point at the same task. Decide whether any
+finding warrants a Challenge.
+
+#### Step 5.4: Send your findings to Grace via `SendMessage`
 
 Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
 For each finding, give a one-line reason and the file paths, symbol names, or
@@ -367,7 +343,7 @@ send "no substantive findings." Only `SendMessage` reaches Grace. Plain turn
 output does not. Sign off `From Junio.`. The review is a terminal hand-off. Skip
 the RSVP.
 
-#### Step 5.4: Read the accepted Plan
+#### Step 5.5: Read the accepted Plan
 
 Read the accepted Plan at the file path Grace's message gives you at the end of
 Phase 5, flagged for information only. It shows which of your findings Grace
