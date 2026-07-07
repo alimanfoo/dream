@@ -131,7 +131,7 @@ information into the Requirements Analysis.
 
 Check the session input against what the reads have shown. The input may cite an
 issue filed a while ago, or name code directly. Either way the code moves in
-between: a symbol it names may be renamed, a file may have moved, or part of the
+between. A symbol it names may be renamed, a file may have moved, or part of the
 ask may already be done. These claims about the code are unproven until you
 check them. Stale details left unchecked ride through every downstream phase.
 
@@ -139,15 +139,16 @@ You have both sides already.
 [Step 1.4](#step-14-read-the-code-with-a-consumer-lens) read the current code
 for the named surfaces, and [Step 1.5](#step-15-consult-the-record) read the PRs
 that last shaped them. Compare the input against what those reads showed. Name
-each discrepancy. Reach for git history only to fill a real gap the reads left,
-such as a surface the input names that is no longer there. Trace where it went.
+each discrepancy. Reach for git history only to fill a real gap the reads left.
+For example, a surface the input names that is no longer there. Trace where it
+went.
 
 Route each discrepancy:
 
 - **A drifted detail**, such as a renamed symbol or a moved file. Correct it.
   Carry the correction into the Draft Requirements Analysis you compose in
-  [Step 1.8](#step-18-compose-the-draft-requirements-analysis), marked as a
-  stated item.
+  [Step 1.8](#step-18-compose-the-draft-requirements-analysis), as a stated
+  item.
 - **A superseded ask**, part or all of the work already done. Carry it into the
   Draft as an open question, offering to drop the superseded part from scope.
   When dropping it leaves nothing else to build, name stopping the session (see
