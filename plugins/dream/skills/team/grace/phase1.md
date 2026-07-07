@@ -153,11 +153,10 @@ Route each discrepancy:
 - **A superseded ask**, part of the work already done and cleanly separable.
   Draft only the remaining work. Don't raise a question to drop what's done. The
   Requirements cover what's left.
-- **A reframed ask**, where later work changed what the input means, so you
-  can't cleanly cut the done part out. Carry it into the Draft as an open
-  question. The input needs rethinking with the user before the work makes
-  sense. When nothing is left to build at all, raise that as an open question
-  too.
+- **A reframed ask**, where later work changed what the input means. You can't
+  cleanly cut the done part out. Carry it into the Draft as an open question.
+  The input needs rethinking with the user before the work makes sense. When
+  nothing is left to build at all, raise that as an open question too.
 
 When anything has drifted, post an `Input freshness` comment to the PR. For each
 discrepancy, give what the input stated and what the code now shows. Any change

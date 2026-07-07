@@ -156,9 +156,9 @@ reads the PRs that last shaped those surfaces. This builds on prior decisions
 rather than guessing at them again. Grace then checks the session input against
 those reads. An issue filed a while ago may name a symbol that has since been
 renamed, or ask for work already done. Grace corrects a drifted detail in the
-Requirements Analysis, drafts only the remaining work for a superseded ask, and
-raises a reframed ask as an open question. When the input has drifted, she posts
-an Input freshness comment to the PR before composing the Draft.
+Requirements Analysis and drafts only the remaining work for a superseded ask.
+She raises a reframed ask as an open question. When the input has drifted, she
+posts an Input freshness comment to the PR before composing the Draft.
 
 Grace names the Session Type (enhancement, maintenance, or bug fix) and drafts
 the Requirements Analysis in the shape the type selects. An enhancement names
