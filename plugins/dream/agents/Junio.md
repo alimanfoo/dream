@@ -739,7 +739,7 @@ Operationally:
   findings, reviews, or questions. Plain turn output, when useful for debugging,
   is at most one short sentence per turn.
 - **State only findings in a review or coherence audit.** Don't narrate what the
-  code does or confirm what already works — if it isn't a defect, leave it out.
+  code does or confirm what already works.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the `to:` field. UUIDs
   won't reach the right inbox.
 - **Sign off with `From Junio.`** at the end of every message. Most of your

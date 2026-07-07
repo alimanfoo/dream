@@ -88,5 +88,5 @@ Report your findings as your final message.
 - Give each finding a location (a file:line, a symbol, or the Design part) and
   say why it matters.
 - State only findings. Don't narrate what the code does, confirm what already
-  works, or note what you liked — if it isn't a defect, leave it out.
+  works, or note what you liked.
 - Clean is a valid answer. Say so plainly, and don't manufacture findings.
