@@ -230,6 +230,10 @@ naming with `baz`'s `_sync_` prefix, so consider keeping it consistent" is a
 finding. Don't quote the diff on both sides of the change. Cite the line and
 describe the concern.
 
+**State only findings.** Don't narrate what the code does, confirm what already
+works, or note what you liked. A line that isn't a defect isn't a finding —
+leave it out.
+
 **You judge the PR on its merits. Grace judges scope.** Say what you see, even
 if it might be out of scope. You haven't seen the Session Scope. A correctness
 or coherence problem in the PR is a normal **Blocking** or **Non-blocking**
