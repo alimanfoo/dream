@@ -2,9 +2,10 @@
 name: copy-edit
 description:
   Bring a passage of prose into line with the writing style guide. Reviews the
-  prose with a fresh reader, then fixes what the review raises. Loops until the
-  prose passes or it hits the cap. By default it reviews the prose you changed.
-  Name a file or section to review that instead.
+  prose with a fresh reader, then fixes what the review raises, in one round by
+  default. Pass a number to loop until the prose passes or hits that cap. By
+  default it reviews the prose you changed. Name a file or section to review
+  that instead.
 argument-hint: "[target] [max-iterations]"
 ---
 
@@ -21,7 +22,7 @@ the standard you rewrite the prose toward.
 
 Read the arguments the user gives.
 
-- A number sets the cap on rounds. Without it, use three.
+- A number sets the cap on rounds. Without it, use one.
 - Anything else names a target: a file, a section, or a passage to review.
 
 ## Each round
