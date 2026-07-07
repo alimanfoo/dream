@@ -37,12 +37,13 @@ be able to trust.
 A session moves through ten phases:
 
 1. **Requirements.** Grace orients to the repo as a whole, then reads the cited
-   material and the code with a consumer lens. She names the Session Type and
-   drafts the Requirements Analysis. She gets one round of adversarial review
-   from Junio, revises, and shares the Requirements Analysis with the user for
-   acceptance. At the start of the phase she opens the session branch and a
-   draft PR. On acceptance she posts the Requirements Analysis as a PR comment.
-   See [The session PR](#the-session-pr).
+   material and the code with a consumer lens, and checks the session input
+   against the current code. She names the Session Type and drafts the
+   Requirements Analysis. She gets one round of adversarial review from Junio,
+   revises, and shares the Requirements Analysis with the user for acceptance.
+   At the start of the phase she opens the session branch and a draft PR. On
+   acceptance she posts the Requirements Analysis as a PR comment. See
+   [The session PR](#the-session-pr).
 
 2. **Code Analysis.** Grace reads the code with a structural lens, the
    structural baseline and the code smells, and shares the Code Analysis with
@@ -126,13 +127,16 @@ The user opens with session input. The session input is a seed, not a contract.
 Its claims are unproven until the evidence shows them, whoever wrote them. A
 claim may be that this is a bug, that this feature is worth building, or that
 this code needs work. The user often carries in input they didn't author: a
-colleague's proposal, an external bug report, another agent's idea. Testing it
-is scrutiny of the input, not of the user, who decides at the gate. When the
-session runs in a worktree, the branch name may contain one or more issue
-numbers (`GH83`, `claude/gh341-...`, `fix-gh12-and-gh34`). Grace then takes
-those issues as the session input and opens the phase with them without waiting.
-The branch name may also carry an `auto` token, engaging both Autopilot and
-auto-collect before the phase opens.
+colleague's proposal, an external bug report, another agent's idea. The input
+may also make claims about code which are no longer true, because the code has
+changed since the issue was filed. Testing it is scrutiny of the input, not of
+the user, who decides at the gate.
+
+When the session runs in a worktree, the branch name may contain one or more
+issue numbers (`GH83`, `claude/gh341-...`, `fix-gh12-and-gh34`). Grace then
+takes those issues as the session input and opens the phase with them without
+waiting. The branch name may also carry an `auto` token, engaging both Autopilot
+and auto-collect before the phase opens.
 
 Once the session input is known, Grace opens the session: she creates the
 session branch with an empty bootstrap commit, opens a draft PR, and posts the
@@ -149,15 +153,22 @@ Grace then reads the cited material, then reads the code with a consumer lens
 (who uses these surfaces and what they do with them). She then consults the
 record for the named surfaces. She searches the issue tracker for recurrence and
 reads the PRs that last shaped those surfaces. This builds on prior decisions
-rather than guessing at them again. Grace names the Session Type (enhancement,
-maintenance, or bug fix) and drafts the Requirements Analysis in the shape the
-type selects. An enhancement names consumers, their use cases, and any
-constraints the work must hold. Maintenance names the improvement goals and the
-behaviour to preserve, each stated as a checkable property of the code. A bug
-fix names the expected behaviour with its source, the observed behaviour as a
-claim for Phase 2 to verify, and the consumers affected. Every shape marks each
-item stated or assumed, names any system non-goals, and carries any open
-questions Grace can't call from the cited material.
+rather than guessing at them again. Grace then checks the session input against
+those reads. An issue filed a while ago may name a symbol that has since been
+renamed, or ask for work already done. Grace corrects a drifted detail in the
+Requirements Analysis and drafts only the remaining work for a superseded ask.
+She raises a reframed ask as an open question. When the input has drifted, she
+posts an Input freshness comment to the PR before composing the Draft.
+
+Grace names the Session Type (enhancement, maintenance, or bug fix) and drafts
+the Requirements Analysis in the shape the type selects. An enhancement names
+consumers, their use cases, and any constraints the work must hold. Maintenance
+names the improvement goals and the behaviour to preserve, each stated as a
+checkable property of the code. A bug fix names the expected behaviour with its
+source, the observed behaviour as a claim for Phase 2 to verify, and the
+consumers affected. Every shape marks each item stated or assumed, names any
+system non-goals, and carries any open questions Grace can't call from the cited
+material.
 
 Grace shares the Draft with Junio for one round of review, advisory not gating.
 Junio reads it as an adversary. Does real evidence back each consumer or use
@@ -571,12 +582,14 @@ session branch with an empty bootstrap commit, then opens a draft PR with a
 placeholder description, and posts the session input as the first comment. She
 posts each accepted artifact as a PR comment: the Requirements Analysis (Phase
 1), the Code Analysis (Phase 2), the Session Scope (Phase 3), the Design (Phase
-4), and the Plan (Phase 5). When open questions arise in Phase 1, she posts them
-to the PR before eliciting answers from the user. When a Challenge is raised,
-she posts it to the PR when she takes it to the user. The thread becomes the
-record of what the session considered. The record extends past merge: Grace
-closes Phase 9 by posting a summary comment listing every issue and comment
-Collect produced (see [Phase 9](#phase-9-collect)).
+4), and the Plan (Phase 5). When the session input has drifted from the current
+code, she posts an Input freshness comment in Phase 1 before composing the
+Requirements Analysis. When open questions arise in Phase 1, she posts them to
+the PR before eliciting answers from the user. When a Challenge is raised, she
+posts it to the PR when she takes it to the user. The thread becomes the record
+of what the session considered. The record extends past merge: Grace closes
+Phase 9 by posting a summary comment listing every issue and comment Collect
+produced (see [Phase 9](#phase-9-collect)).
 
 Grace writes the PR description at the end of Develop (Phase 6). The PR stays in
 draft until Phase 7. When a Challenge revises an artifact, she posts the
