@@ -321,18 +321,20 @@ Route each finding by what it settles:
 
 Skip this step when there are no open questions.
 
-When there are open questions, post them to the PR as a comment before sending
-them to the user. Use the heading `Open questions`. List each question with the
-possible answers you can see, in public register. Keep role names and
-protocol-process vocabulary out. Follow
+When there are open questions, write them to a temporary file outside the repo.
+Use the heading `Open questions`. List each question with the possible answers
+you can see, in public register. Keep role names and protocol-process vocabulary
+out. Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
 the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
 
-Then send the open questions to the user as a numbered list. For each, give the
-possible answers you can see. Invite a freeform answer too. End the message by
-asking the user to answer the questions so Grace can complete the Requirements
-Analysis.
+Run the `dream:copy-edit` skill over that file so the questions read clearly,
+then post it to the PR as a comment.
+
+Send the user the same copy-edited questions and answers as a numbered list.
+Invite a freeform answer too. End the message by asking the user to answer the
+questions so Grace can complete the Requirements Analysis.
 
 Wait for the user's reply. Fold their answers into the Requirements Analysis as
 stated items, dropping the matching open questions. If the reply leaves any
