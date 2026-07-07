@@ -37,4 +37,6 @@ once, applying each discipline below:
 Report your findings as your final message.
 
 - Give each finding a location (a file:line or a symbol) and say why it matters.
+- State only findings. Don't narrate what the code does, confirm what already
+  works, or note what you liked.
 - Clean is a valid answer. Say so plainly, and don't manufacture findings.
