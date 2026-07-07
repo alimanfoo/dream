@@ -159,11 +159,10 @@ Route each discrepancy:
   nothing is left to build at all, raise that as an open question too.
 
 When anything has drifted, post an `Input freshness` comment to the PR. For each
-discrepancy, give what the input stated and what the code now shows. Any change
-from what the input stated earns a line. Keep the comment to the facts: the
-decision a reframed ask forces goes in the open questions, not here. Skip the
-comment when nothing has drifted. Write it in public register: keep role names
-and protocol-process vocabulary out. Follow
+discrepancy, give what the input stated and what the code now shows. Keep the
+comment to the facts: the decision a reframed ask forces goes in the open
+questions, not here. Skip the comment when nothing has drifted. Write it in
+public register: keep role names and protocol-process vocabulary out. Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
 the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
