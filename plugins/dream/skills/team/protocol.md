@@ -125,15 +125,16 @@ exception. Raise it as your boot sequence directs.
 
 The user opens with session input. The session input is a seed, not a contract.
 Its claims are unproven until the evidence shows them, whoever wrote them. A
-claim may be that this is a bug, that this feature is worth building, or that
-this code needs work. The user often carries in input they didn't author: a
-colleague's proposal, an external bug report, another agent's idea. Testing it
-is scrutiny of the input, not of the user, who decides at the gate. When the
-session runs in a worktree, the branch name may contain one or more issue
-numbers (`GH83`, `claude/gh341-...`, `fix-gh12-and-gh34`). Grace then takes
-those issues as the session input and opens the phase with them without waiting.
-The branch name may also carry an `auto` token, engaging both Autopilot and
-auto-collect before the phase opens.
+claim may be that this is a bug, that this feature is worth building, that this
+code needs work, or that the code still matches what the input describes. The
+user often carries in input they didn't author: a colleague's proposal, an
+external bug report, another agent's idea. Testing it is scrutiny of the input,
+not of the user, who decides at the gate. When the session runs in a worktree,
+the branch name may contain one or more issue numbers (`GH83`,
+`claude/gh341-...`, `fix-gh12-and-gh34`). Grace then takes those issues as the
+session input and opens the phase with them without waiting. The branch name may
+also carry an `auto` token, engaging both Autopilot and auto-collect before the
+phase opens.
 
 Once the session input is known, Grace opens the session: she creates the
 session branch with an empty bootstrap commit, opens a draft PR, and posts the

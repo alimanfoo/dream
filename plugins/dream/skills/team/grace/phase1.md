@@ -129,20 +129,18 @@ information into the Requirements Analysis.
 
 ## Step 1.6: Check the session input against the current code
 
-Check the session input against what the reads have shown. The input often cites
-issues, and an issue may have been filed a while ago. The code moves in between:
-a symbol it names may be renamed, a file may have moved, or part of the ask may
-already be done. Its claims about the code are unproven until you check them,
-the same as its claims about value. Stale details left unchecked ride through
-every downstream phase.
+Check the session input against what the reads have shown. The input may cite an
+issue filed a while ago, or name code directly. Either way the code moves in
+between: a symbol it names may be renamed, a file may have moved, or part of the
+ask may already be done. These claims about the code are unproven until you
+check them. Stale details left unchecked ride through every downstream phase.
 
-You already hold both sides.
+You have both sides already.
 [Step 1.4](#step-14-read-the-code-with-a-consumer-lens) read the current code
 for the named surfaces, and [Step 1.5](#step-15-consult-the-record) read the PRs
-that last shaped them. Hold the input against what those reads showed and name
+that last shaped them. Compare the input against what those reads showed. Name
 each discrepancy. Reach for git history only to fill a real gap the reads left,
-such as a surface the input names that is no longer there: trace where it went.
-Judge when a lookup earns its cost.
+such as a surface the input names that is no longer there. Trace where it went.
 
 Route each discrepancy:
 
@@ -151,21 +149,23 @@ Route each discrepancy:
   [Step 1.8](#step-18-compose-the-draft-requirements-analysis), marked as a
   stated item.
 - **A superseded ask**, part or all of the work already done. Carry it into the
-  Draft as an open question, with stopping among the answers you list. The user
-  decides it at the acceptance gate.
+  Draft as an open question, offering to drop the superseded part from scope.
+  When dropping it leaves nothing else to build, name stopping the session (see
+  [Stopping a session early](../../../agents/Grace.md#stopping-a-session-early))
+  among the answers. The user decides at the acceptance gate.
 
 When anything has drifted, post an `Input freshness` comment to the PR before
 composing the Draft. Open it by pointing back to the session input above. For
 each discrepancy, give what the input stated and what the code now shows. Any
 change from what the input stated earns a line. Keep the comment to the facts:
 the decision a superseded ask forces goes in the open questions, not here. Skip
-the comment when nothing has drifted. Write it in public register, the same as
-the open questions, following
-[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and
-appending the Claude Code footer from
+the comment when nothing has drifted. Write it in public register: keep role
+names and protocol-process vocabulary out. Follow
+[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
+the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
 
-If nothing has drifted, say so in one line and continue.
+If nothing has drifted, say so in one line of turn output and continue.
 
 ## Step 1.7: Name the Session Type
 
