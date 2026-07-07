@@ -306,11 +306,7 @@ Note the prose your task added or changed: markdown docs, docstrings, code
 comments, prompts. Skip this step when the task wrote no prose. This step checks
 your work against the [Prose artefacts](#prose-artefacts) rule below.
 
-Spawn one `dream:copy-editor` subagent (see [the copy editor](copy-editor.md))
-via the `Agent` tool, giving it the writing style guide's absolute path and
-every prose site you noted, in one prompt. Resolve every finding yourself, in
-place. You are the author. When a fix would drop a reason, keep the reason and
-meet the rule another way.
+Run the `dream:copy-edit` skill over the prose you noted.
 
 #### Step 6.5: Run the tests
 

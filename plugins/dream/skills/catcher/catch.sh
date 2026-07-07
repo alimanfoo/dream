@@ -166,6 +166,7 @@ trust_worktree() {
   local dir=$1 cfg="$HOME/.claude.json" tmp
   [ -f "$cfg" ] || printf '{}\n' >"$cfg"
   tmp=$(mktemp) || return 1
+  # shellcheck disable=SC2015  # the fallback is correct cleanup whether jq or mv fails
   jq --arg d "$dir" '.projects[$d].hasTrustDialogAccepted = true' "$cfg" >"$tmp" 2>/dev/null \
     && mv "$tmp" "$cfg" || { rm -f "$tmp"; return 1; }
 }
@@ -176,6 +177,7 @@ untrust_worktree() {
   local dir=$1 cfg="$HOME/.claude.json" tmp
   [ -f "$cfg" ] || return 0
   tmp=$(mktemp) || return 1
+  # shellcheck disable=SC2015  # the fallback is correct cleanup whether jq or mv fails
   jq --arg d "$dir" 'del(.projects[$d])' "$cfg" >"$tmp" 2>/dev/null \
     && mv "$tmp" "$cfg" || { rm -f "$tmp"; return 1; }
 }
