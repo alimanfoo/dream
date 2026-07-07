@@ -133,7 +133,8 @@ Check the session input against what the reads have shown. The input may cite an
 issue filed a while ago, or name code directly. Either way the code moves in
 between. A symbol it names may be renamed, a file may have moved, or part of the
 ask may already be done. These claims about the code are unproven until you
-check them. Stale details left unchecked ride through every downstream phase.
+check them. Otherwise, stale details left unchecked would ride through every
+downstream phase.
 
 You have both sides already.
 [Step 1.4](#step-14-read-the-code-with-a-consumer-lens) read the current code
@@ -149,19 +150,21 @@ Route each discrepancy:
   Carry the correction into the Draft Requirements Analysis you compose in
   [Step 1.8](#step-18-compose-the-draft-requirements-analysis), as a stated
   item.
-- **A superseded ask**, part or all of the work already done. Carry it into the
-  Draft as an open question, offering to drop the superseded part from scope.
-  When dropping it leaves nothing else to build, name stopping the session (see
-  [Stopping a session early](../../../agents/Grace.md#stopping-a-session-early))
-  among the answers. The user decides at the acceptance gate.
+- **A superseded ask**, part of the work already done and cleanly separable.
+  Draft only the remaining work. Don't raise a question to drop what's done. The
+  Requirements cover what's left.
+- **A reframed ask**, where later work changed what the input means, so you
+  can't cleanly cut the done part out. Carry it into the Draft as an open
+  question. The input needs rethinking with the user before the work makes
+  sense. When nothing is left to build at all, raise that as an open question
+  too.
 
-When anything has drifted, post an `Input freshness` comment to the PR before
-composing the Draft. Open it by pointing back to the session input above. For
-each discrepancy, give what the input stated and what the code now shows. Any
-change from what the input stated earns a line. Keep the comment to the facts:
-the decision a superseded ask forces goes in the open questions, not here. Skip
-the comment when nothing has drifted. Write it in public register: keep role
-names and protocol-process vocabulary out. Follow
+When anything has drifted, post an `Input freshness` comment to the PR. For each
+discrepancy, give what the input stated and what the code now shows. Any change
+from what the input stated earns a line. Keep the comment to the facts: the
+decision a reframed ask forces goes in the open questions, not here. Skip the
+comment when nothing has drifted. Write it in public register: keep role names
+and protocol-process vocabulary out. Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
 the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).

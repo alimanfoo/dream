@@ -126,15 +126,17 @@ exception. Raise it as your boot sequence directs.
 The user opens with session input. The session input is a seed, not a contract.
 Its claims are unproven until the evidence shows them, whoever wrote them. A
 claim may be that this is a bug, that this feature is worth building, or that
-this code needs work. It may also be that the code still matches what the input
-describes. The user often carries in input they didn't author: a colleague's
-proposal, an external bug report, another agent's idea. Testing it is scrutiny
-of the input, not of the user, who decides at the gate. When the session runs in
-a worktree, the branch name may contain one or more issue numbers (`GH83`,
-`claude/gh341-...`, `fix-gh12-and-gh34`). Grace then takes those issues as the
-session input and opens the phase with them without waiting. The branch name may
-also carry an `auto` token, engaging both Autopilot and auto-collect before the
-phase opens.
+this code needs work. The user often carries in input they didn't author: a
+colleague's proposal, an external bug report, another agent's idea. The input
+may also make claims about code which are no longer true, because the code has
+changed since the issue was filed. Testing it is scrutiny of the input, not of
+the user, who decides at the gate.
+
+When the session runs in a worktree, the branch name may contain one or more
+issue numbers (`GH83`, `claude/gh341-...`, `fix-gh12-and-gh34`). Grace then
+takes those issues as the session input and opens the phase with them without
+waiting. The branch name may also carry an `auto` token, engaging both Autopilot
+and auto-collect before the phase opens.
 
 Once the session input is known, Grace opens the session: she creates the
 session branch with an empty bootstrap commit, opens a draft PR, and posts the
@@ -154,17 +156,19 @@ reads the PRs that last shaped those surfaces. This builds on prior decisions
 rather than guessing at them again. Grace then checks the session input against
 those reads. An issue filed a while ago may name a symbol that has since been
 renamed, or ask for work already done. Grace corrects a drifted detail in the
-Requirements Analysis and raises a superseded ask as an open question. When the
-input has drifted, she posts an Input freshness comment to the PR before
-composing the Draft. Grace names the Session Type (enhancement, maintenance, or
-bug fix) and drafts the Requirements Analysis in the shape the type selects. An
-enhancement names consumers, their use cases, and any constraints the work must
-hold. Maintenance names the improvement goals and the behaviour to preserve,
-each stated as a checkable property of the code. A bug fix names the expected
-behaviour with its source, the observed behaviour as a claim for Phase 2 to
-verify, and the consumers affected. Every shape marks each item stated or
-assumed, names any system non-goals, and carries any open questions Grace can't
-call from the cited material.
+Requirements Analysis, drafts only the remaining work for a superseded ask, and
+raises a reframed ask as an open question. When the input has drifted, she posts
+an Input freshness comment to the PR before composing the Draft.
+
+Grace names the Session Type (enhancement, maintenance, or bug fix) and drafts
+the Requirements Analysis in the shape the type selects. An enhancement names
+consumers, their use cases, and any constraints the work must hold. Maintenance
+names the improvement goals and the behaviour to preserve, each stated as a
+checkable property of the code. A bug fix names the expected behaviour with its
+source, the observed behaviour as a claim for Phase 2 to verify, and the
+consumers affected. Every shape marks each item stated or assumed, names any
+system non-goals, and carries any open questions Grace can't call from the cited
+material.
 
 Grace shares the Draft with Junio for one round of review, advisory not gating.
 Junio reads it as an adversary. Does real evidence back each consumer or use
