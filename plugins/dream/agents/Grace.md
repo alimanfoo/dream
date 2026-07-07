@@ -299,14 +299,20 @@ the PR for replies every 10 minutes. Embed these values in the prompt:
 
 Note the cron job ID in your turn output. You will need it to cancel the job.
 
-When the cron job fires, resolve the authenticated user's login fresh, then use
-it with the embedded values to run:
+When the cron job fires, resolve the authenticated login fresh, then use it with
+the embedded values to run:
 
 ```bash
-ME=$(gh api user --jq .login)
+SHARED_LOGIN=$(gh api user --jq .login)
 gh pr view <N> --json comments,reviews,state \
-  --jq "{state, comments: [.comments[] | select(.author.login == \"$ME\" and .createdAt > \"TIMESTAMP\")], reviews: [.reviews[] | select(.author.login == \"$ME\" and .submittedAt > \"TIMESTAMP\")]}"
+  --jq "{state, comments: [.comments[] | select(.author.login == \"$SHARED_LOGIN\" and .createdAt > \"TIMESTAMP\")], reviews: [.reviews[] | select(.author.login == \"$SHARED_LOGIN\" and .submittedAt > \"TIMESTAMP\")]}"
 ```
+
+Match this login. Don't exclude it. You and the user post through the same
+GitHub account, so the login on the user's reply is the same login on your own
+earlier posts. Only the cutoff timestamp tells them apart, since you post
+nothing while you wait. Matching still does useful work: it drops a comment from
+any other account, which isn't the reply you're waiting for.
 
 This one query covers every reply channel: a plain comment and a formal review
 carry equal weight. Don't pick a channel to watch. Read whichever the user used.
