@@ -22,11 +22,12 @@
 # whose pull request was merged or closed past a linger period. That keeps tmux
 # sessions from piling up until tmux refuses to open more.
 #
-# Permissions: a dispatched session runs in auto mode and reads the user's and
-# the host repo's .claude/settings.json, the same as an autopilot session run by
-# hand. Keep the recurring unattended writes (gh pr create, git
-# commit, git push, and so on) allowlisted there, in that one home.
-# Auto mode handles the rest and notifies on anything it blocks.
+# Permissions: a dispatched session runs in auto mode. dispatch passes the
+# recurring unattended writes (gh pr create, gh issue create, git push, and so
+# on) as narrow --allowedTools rules. Auto mode resolves these before its
+# classifier runs. The classifier would otherwise stall an unattended session on
+# a write it can't attribute to the user. Auto mode handles the rest and notifies
+# on anything it blocks.
 #
 # Layout: the coordinator assumes the standard worktree layout, where each
 # dispatched worktree is a sibling of the main checkout under a directory
@@ -226,10 +227,10 @@ clean_up_finished() {
 # `git worktree add` creates the worktree, not `claude -w`. That lands it at a
 # predictable sibling path, with a branch name the cap, cleanup, and dedup checks
 # rely on. tmux hosts the session. The team feature is set per session through
-# the experimental env var. Auto mode and the host repo's settings.json handle
-# unattended writes.
+# the experimental env var. Auto mode plus the narrow allow rules passed at
+# launch handle unattended writes.
 dispatch() {
-  local n=$1 ts branch wt session err
+  local n=$1 ts branch wt session err writes
   ts=$(date -u +%Y%m%d-%H%M%S)
   branch="GH${n}-${ts}-auto"
   wt="$container/${branch}"
@@ -241,8 +242,11 @@ dispatch() {
     || { log "could not create worktree $wt for GH${n}: $err"; return 1; }
   trust_worktree "$wt" \
     || { log "could not pre-trust $wt, skipping GH${n}"; discard_worktree "$wt" "$branch"; return 1; }
+  # The writes a session makes unattended, as narrow per-command allow rules.
+  # Auto mode drops a broad Bash allow, so only narrow rules serve here.
+  writes="Bash(gh pr create:*) Bash(gh pr comment:*) Bash(gh pr edit:*) Bash(gh pr ready:*) Bash(gh pr close:*) Bash(gh issue create:*) Bash(gh issue comment:*) Bash(git commit:*) Bash(git push:*)"
   if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" \
-      "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec claude --permission-mode auto --teammate-mode tmux '/dream:team'"; then
+      "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec claude --permission-mode auto --allowedTools '$writes' --teammate-mode tmux '/dream:team'"; then
     log "tmux launch failed for GH${n}, discarding worktree"
     discard_worktree "$wt" "$branch"
     return 1

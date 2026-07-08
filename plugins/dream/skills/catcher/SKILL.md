@@ -62,24 +62,9 @@ Run each check before launching. Stop and tell the user if one fails.
   `test -d "$(git rev-parse --show-toplevel)/.git"`. It must succeed. A linked
   worktree's `.git` is a file, so dispatched worktrees would land in the wrong
   place.
-- Confirm the recurring unattended writes are allowlisted in the user's or the
-  host repo's `.claude/settings.json`. Each is a `Bash(<write>:*)` rule under
-  `permissions.allow`. Otherwise a dispatched session stalls on a permission
-  prompt no one answers. The writes are:
-  - `gh pr create`
-  - `gh pr comment`
-  - `gh pr edit`
-  - `gh pr ready`
-  - `gh pr close`
-  - `gh issue create`
-  - `gh issue comment`
-  - `git commit`
-  - `git push`
 
-  If any rule is missing, offer to add it. Read the existing file first, or
-  start from `{}` if it is absent. Add only the missing rules to the
-  `permissions.allow` array, and leave every other key untouched. Never
-  regenerate or replace the rest of the file.
+No permission setup is needed here. The coordinator grants each dispatched
+session its writes at launch.
 
 ## Launch
 
@@ -121,7 +106,9 @@ Answer questions about the coordinator's behaviour from here.
   whose blocker is still open, and picks it up once the blocker is closed. Use
   this when one issue depends on another, or when one tidies an area the other
   would otherwise work through.
-- **Permissions.** A session runs in auto mode and reads
-  `.claude/settings.json`, the same as an autopilot session started by hand. A
-  command that is neither allowlisted there nor cleared by auto mode blocks and
-  notifies instead of running unattended.
+- **Permissions.** A dispatched session runs in auto mode, with the recurring
+  unattended writes passed as narrow allow rules at launch. Auto mode resolves
+  these before its classifier runs. A broad `Bash` allow can't serve here: auto
+  mode drops broad allow rules and keeps only narrow ones. Auto mode blocks any
+  other command it does not clear, and notifies instead of running it
+  unattended.
