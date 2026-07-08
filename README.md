@@ -221,31 +221,11 @@ How it picks work:
 - **Finished sessions.** The dreamcatcher removes a session's worktree and tmux
   session once its pull request is merged or closed, so they do not pile up.
 
-Each session runs unattended, so it needs its writes allowlisted, either in the
-repository's `.claude/settings.json` or your global `~/.claude/settings.json`.
-Add this to one of them:
-
-```json
-{
-  "permissions": {
-    "allow": [
-      "Bash(gh pr create:*)",
-      "Bash(gh pr comment:*)",
-      "Bash(gh pr edit:*)",
-      "Bash(gh pr ready:*)",
-      "Bash(gh pr close:*)",
-      "Bash(gh issue create:*)",
-      "Bash(gh issue comment:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)"
-    ]
-  }
-}
-```
-
-Without it, a session stalls on a permission prompt no one answers. When a
-session hits a question it cannot answer, it posts the question to the pull
-request and waits. You can reply there without dropping into the session.
+Each session runs unattended. The dreamcatcher passes the permissions a session
+needs to interact with GitHub (creating the pull request, posting comments,
+committing, pushing) to it as allow rules at launch. When a session hits a
+question it cannot answer, it posts the question to the pull request and waits.
+You can reply there without dropping into the session.
 
 It stops on reboot, so re-run `/dream:catcher` to restart it. For a machine that
 must survive reboots, drive `catch.sh --once` from cron or launchd. Each firing
