@@ -73,13 +73,14 @@ No involvement in this phase.
 
 ### Phase 7: Review
 
-When Grace asks for the review, work through the steps below in order. Holding
-the order keeps your cold read uncontaminated.
+When Grace asks for the review, work through the steps below in order, so your
+own read lands before the lenses widen it.
 
 #### Step 7.1: Review from the diff alone
 
 Read the diff and the source files you need for context, not the PR description
-or comment thread. Read the change in four directions.
+or comment thread. The requirements sit with Grace and Junio. Your job is the
+cold read. Read the change in four directions.
 
 - **Inward:** the whole function each change sits in, not just the changed
   lines.
@@ -92,45 +93,24 @@ or comment thread. Read the change in four directions.
 These say where to look, not what to find. Judge what matters yourself.
 
 Draft your code review findings from that read: correctness, coherence, and
-anything a careful reviewer would flag. Form them from the diff, before intent
-can colour it.
+anything a careful reviewer would flag. A spot where you had to load context or
+guess to follow the code is itself a finding, even when the code is correct.
+Name the spot and the concrete cost to the next reader. You are the cold reader,
+so where you had to work to follow it, the human reviewer will too.
 
-Also write the cold-read reconstruction from the diff alone: what you believe
-the change does and why. Name every spot where the diff didn't let you tell,
-where you had to load context or guess. It is a measurement, not a summary. Keep
-it short, be honest about where you struggled to follow it, and don't retell the
-diff. A spot where your read had to guess is a place the code failed to explain
-itself.
+Write the findings out now, as turn output. This is your working draft, not a
+delivery. You assemble it into the review in
+[Step 7.3](#step-73-send-your-review-to-grace-via-sendmessage).
 
-Write both out now, as turn output, before you read anything past the diff: the
-findings and the cold-read reconstruction. The act of writing them pins your
-read before intent can reach it. Once
-[Step 7.2](#step-72-compare-against-the-stated-intent) shows you what the change
-was meant to do, you cannot un-see it, and anything written after only
-pattern-matches the description. This is your working draft, not a delivery. You
-assemble it into the review in
-[Step 7.4](#step-74-send-your-review-to-grace-via-sendmessage).
+#### Step 7.2: Widen the review with focused lenses
 
-#### Step 7.2: Compare against the stated intent
-
-Now read the PR description, which carries the requirements, and any linked
-issue. Compare it against your reconstruction and think about where the two
-diverge. You hold both freshly, what you read the change to do and what it was
-meant to do, so you can see where they part. The purpose is reviewability. Each
-divergence marks a place the code failed to explain itself: a reader with no
-context takes it the way you did, not the way intended. That makes the PR hard
-to review, so flag it for the team to make the code clearer before a human reads
-it.
-
-#### Step 7.3: Widen the review with focused lenses
-
-Pick up to three review lenses that fit this PR. Spawn one read-only subagent
-per lens, all in a single message so they run in parallel. Set each one's
-`model` to `sonnet` on the Agent call. You weigh their findings yourself, so the
-lenses need not run on your own model. Your own read is already pinned in
-[Step 7.1](#step-71-review-from-the-diff-alone) and
-[Step 7.2](#step-72-compare-against-the-stated-intent), so the lenses widen the
-review without touching your cold read.
+Pick up to five review lenses that fit this PR, depending on the scale and
+nature of the diff. Spawn one read-only subagent per lens, all in a single
+message so they run in parallel. Set each one's `model` to `sonnet` on the Agent
+call. You weigh their findings yourself, so the lenses need not run on your own
+model. Your own read is already pinned in
+[Step 7.1](#step-71-review-from-the-diff-alone), so the lenses widen the review
+without touching your cold read.
 
 A lens is one narrow question chosen for what this diff actually does, not a
 generic "review this." Match the lens to the change. Concurrent code invites a
@@ -161,7 +141,7 @@ report, never edit and never run tests or CI. Skip the lenses for a diff small
 enough that your own read already exhausts it. Three subagents on a one-line fix
 is wasted motion.
 
-#### Step 7.4: Send your review to Grace via `SendMessage`
+#### Step 7.3: Send your review to Grace via `SendMessage`
 
 Combine the lens findings with your own before you assemble the review. Judge
 each on its merits, not on the fact a subagent raised it. But set the bar low.
@@ -196,10 +176,6 @@ Grace adds GitHub-visible footer metadata when posting. Follow
 ## Out of scope but noticed
 1. ... (pre-existing items you noticed during review; Grace
    collects these for the post-merge triage)
-
-## Readability
-1. ... (a point where the code's intent was hard to infer, from
-   comparing your cold read against the PR description)
 ```
 
 Skip any section with no entries. If you have nothing to report, say so plainly
@@ -267,12 +243,12 @@ followed. Those things are visible from the PR itself. Internal-protocol jargon
 ("drain depth-first per protocol") doesn't belong in a user-facing comment. Your
 job is the call.
 
-**Flag unclear changed prose.** Treat unclear changed prose as a real finding
-when it affects docstrings, comments, README text, documentation, or prompts.
-This is usually non-blocking, not a nit, when the prose is technically accurate
-but hard to understand. Review it against the
-[writing style guide](../writing-style.md). Dense but accurate prose is still a
-quality problem if the reader must reread it to recover the contract.
+**Flag unclear changed code and prose.** Treat code you could not easily
+understand as a real finding, even when it is correct. Treat unclear changed
+prose the same when it affects docstrings, comments, README text, documentation,
+or prompts. Both are usually non-blocking, not a nit, when the code or prose is
+technically accurate but hard to understand. Review changed prose against the
+[writing style guide](../writing-style.md).
 
 ### Phase 8: Merge
 

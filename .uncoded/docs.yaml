@@ -22,9 +22,8 @@ plugins/:
             'Phase 6: Develop':
             'Phase 7: Review':
               'Step 7.1: Review from the diff alone':
-              'Step 7.2: Compare against the stated intent':
-              'Step 7.3: Widen the review with focused lenses':
-              'Step 7.4: Send your review to Grace via `SendMessage`':
+              'Step 7.2: Widen the review with focused lenses':
+              'Step 7.3: Send your review to Grace via `SendMessage`':
               Output format:
               Writing findings:
             'Phase 8: Merge':
@@ -352,15 +351,13 @@ plugins/:
                 'Step 6.4: Read and request the audit':
                 'Step 6.5: Triage findings':
                 'Step 6.6: Loop':
-              Closing sequence:
-                'Step 6.7: Write the PR description':
           phase7.md:
             'Phase 7: Review':
               'Step 7.1: Send the review requests':
               'Step 7.2: Post each review as a PR comment':
               'Step 7.3: Triage each finding':
               'Step 7.4: Post Grace''s response as a PR comment':
-              'Step 7.5: Update the PR description':
+              'Step 7.5: Write the PR description':
               'Step 7.6: Mark the PR ready for review':
               'Step 7.7: Hand back to the user':
           phase8.md:

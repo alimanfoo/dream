@@ -94,37 +94,6 @@ reject) following the "Challenge" shape. If not, continue triage as normal.
 
 Next task, back to [Step 6.2](#step-62-assign).
 
-## Closing sequence
-
-After the per-task loop drains, one closing step.
-
-### Step 6.7: Write the PR description
-
-Write the description for the PR you opened in Phase 1
-[Step 1.1](phase1.md#step-11-open-the-session-pr). Complete all in-session tasks
-and push the branch first.
-
-Replace the `WIP` placeholder with a description written for a cold reviewer who
-has not read the thread. Check whether the repo has contribution rules
-(`CONTRIBUTING.md`, a PR template) and follow them. Otherwise use this shape:
-
-- Open with a bullet list of issues addressed, one per line. Use `- Closes #N`
-  for each issue the PR fully resolves, and `- Related to #N` for any it partly
-  addresses. `Closes` triggers GitHub auto-close on merge; `Related to` does
-  not.
-- Follow with one to three sentences stating what the PR does and why, in
-  mechanism-neutral terms, so a cold reviewer can orient without reading the
-  thread.
-- Add one optional sentence naming the key design choice if the approach is
-  non-obvious, with a pointer to the Design comment for the rationale.
-
-Don't sample existing PRs for style. Written contribution rules are real. The
-existing PR log is not a style reference.
-
-Mark the body per
-[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items)
-and follow
-[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts). After
-writing the description, verify that every issue the PR fully resolves is
-recognised: run `gh pr view <N> --json closingIssuesReferences` to confirm each
-issue appears.
+The phase ends when the task list drains. Grace writes the PR description later,
+at PR ready ([Step 7.5](phase7.md#step-75-write-the-pr-description)), once every
+review follow-on is final.
