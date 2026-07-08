@@ -30,21 +30,6 @@ each examined. Never use an agent name, which is internal protocol detail.
 
 ## Step 7.3: Triage each finding
 
-Read Ada's cold-read reconstruction first, then the divergences she reports
-against the stated intent. She built the reconstruction from the diff alone,
-then opened the PR description and compared it to the stated intent herself. So
-each divergence is a reviewability finding: a place the code failed to explain
-itself to a reader with no context. This deserves real attention. Ada stands in
-for the human reviewer, who also comes to the change cold. Where her read
-diverged, the human's will too. As agents write more of the code, the human
-spends scarce attention on that review. Code that explains itself there keeps
-the review cheap.
-
-Triage each divergence the same as any finding. Accept one as a follow-on that
-makes the code carry its own intent. Reject it where Ada simply misread code
-that is already clear. A reconstruction that matched the intent with no
-divergence needs no action.
-
 Decide each finding from both reviews on its merits. A reviewer raising it is
 not itself a reason to accept it. Each finding takes one of these paths:
 
@@ -100,11 +85,39 @@ dream-team protocol vocabulary. Append the standard Claude Code footer from
 duplicate it. Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
 
-## Step 7.5: Update the PR description
+## Step 7.5: Write the PR description
 
-If any accepted follow-on task changed what the PR implements, update the PR
-description. The description states what the PR does, so it must match what was
-actually built.
+Every follow-on is complete, so the PR's content is final. Write the description
+for the PR you opened in Phase 1
+[Step 1.1](phase1.md#step-11-open-the-session-pr), replacing the `WIP`
+placeholder. Written here, at PR ready, it needs no earlier draft to keep in
+sync: no in-session step reads it, so it is written once, when what the PR does
+is settled.
+
+Write it for a cold reviewer who has not read the thread. Check whether the repo
+has contribution rules (`CONTRIBUTING.md`, a PR template) and follow them.
+Otherwise use this shape:
+
+- Open with a bullet list of issues addressed, one per line. Use `- Closes #N`
+  for each issue the PR fully resolves, and `- Related to #N` for any it partly
+  addresses. `Closes` triggers GitHub auto-close on merge; `Related to` does
+  not.
+- Follow with one to three sentences stating what the PR does and why, in
+  mechanism-neutral terms, so a cold reviewer can orient without reading the
+  thread.
+- Add one optional sentence naming the key design choice if the approach is
+  non-obvious, with a pointer to the Design comment for the rationale.
+
+Don't sample existing PRs for style. Written contribution rules are real. The
+existing PR log is not a style reference.
+
+Mark the body per
+[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items)
+and follow
+[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts). After
+writing the description, verify that every issue the PR fully resolves is
+recognised: run `gh pr view <N> --json closingIssuesReferences` to confirm each
+issue appears.
 
 Then write the dream metadata line. PR ready is the first point where every
 field is final, including the commit counts, which cover this phase's review
@@ -183,7 +196,7 @@ question sits only in chat. Do this the same as
 Once the accepted follow-ons are complete, post one response comment. Do this
 the same as [Step 7.4](#step-74-post-graces-response-as-a-pr-comment). Leave the
 `dream:` metadata line as it is. These commits are post-handoff, so they're out
-of its tally (see [Step 7.5](#step-75-update-the-pr-description)).
+of its tally (see [Step 7.5](#step-75-write-the-pr-description)).
 
 Absent that direction, the default is freeze.
 

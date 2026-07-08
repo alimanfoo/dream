@@ -63,10 +63,10 @@ A session moves through ten phases:
    Ralph, revises, and shares the revised Plan with the user for acceptance.
 
 6. **Develop.** The main implementation loop: one task at a time, coherence
-   restored before moving on. Opens with the task list. Closes by writing the PR
-   description.
+   restored before moving on. Opens with the task list, ends when it drains.
 
-7. **Review.** Ada and Junio review the PR.
+7. **Review.** Ada and Junio review the PR. Grace writes the PR description once
+   the review follow-ons are final.
 
 8. **Merge.** The user merges the PR, or merge is deferred to a human. Grace
    drives any conflict resolution first. Ralph resolves the markers.
@@ -393,9 +393,8 @@ If a follow-on later spawns its own follow-on, the grandchild also inserts next.
 The chain drains depth-first. The original queue resumes only after the parent
 task's coherence chain is fully drained.
 
-The phase ends when the task list drains. Grace then writes the PR description
-to match the final accepted requirements. She opened the PR in Phase 1. It stays
-in draft until Phase 7.
+The phase ends when the task list drains. Grace opened the PR in Phase 1; it
+stays in draft, with a placeholder description, until Phase 7.
 
 ## Phase 7: Review
 
@@ -413,7 +412,8 @@ Grace handles both reviews the same way:
    post-merge / raise a Challenge.
 3. She completes accepted follow-ons.
 4. She posts one response comment.
-5. She marks the PR ready and hands back to the user.
+5. She writes the PR description, marks the PR ready, and hands back to the
+   user.
 
 The phase ends at user acceptance of the PR. The session moves to Merge.
 
@@ -591,11 +591,12 @@ of what the session considered. The record extends past merge: Grace closes
 Phase 9 by posting a summary comment listing every issue and comment Collect
 produced (see [Phase 9](#phase-9-collect)).
 
-Grace writes the PR description at the end of Develop (Phase 6). The PR stays in
-draft until Phase 7. When a Challenge revises an artifact, she posts the
-revision as a new comment, not an edit of the earlier one. The comment opens
-with an explicit supersession marker (for example, "Supersedes the Scope
-above"), so a reader can tell which version is current.
+Grace writes the PR description at PR ready in Phase 7, once every review
+follow-on is final, so it is written once rather than drafted early and kept in
+sync. The PR stays in draft until then. When a Challenge revises an artifact,
+she posts the revision as a new comment, not an edit of the earlier one. The
+comment opens with an explicit supersession marker (for example, "Supersedes the
+Scope above"), so a reader can tell which version is current.
 
 A session that stops before merge still leaves a record. When the user halts at
 a gate or ends the session early, Grace posts a final comment naming where the
