@@ -223,10 +223,9 @@ How it picks work:
 
 Each session runs unattended. The dreamcatcher passes the writes a session makes
 (creating the pull request, posting comments, committing, pushing) to it as
-allow rules at launch. Those writes never stall on a permission prompt no one
-answers. When a session hits a question it cannot answer, it posts the question
-to the pull request and waits. You can reply there without dropping into the
-session.
+allow rules at launch. When a session hits a question it cannot answer, it posts
+the question to the pull request and waits. You can reply there without dropping
+into the session.
 
 It stops on reboot, so re-run `/dream:catcher` to restart it. For a machine that
 must survive reboots, drive `catch.sh --once` from cron or launchd. Each firing
