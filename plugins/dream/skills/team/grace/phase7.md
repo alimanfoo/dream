@@ -87,12 +87,9 @@ duplicate it. Follow
 
 ## Step 7.5: Write the PR description
 
-Every follow-on is complete, so the PR's content is final. Write the description
-for the PR you opened in Phase 1
+Write the description for the PR you opened in Phase 1
 [Step 1.1](phase1.md#step-11-open-the-session-pr), replacing the `WIP`
-placeholder. Written here, at PR ready, it needs no earlier draft to keep in
-sync: no in-session step reads it, so it is written once, when what the PR does
-is settled.
+placeholder. Every follow-on is complete, so the PR's content is final.
 
 Write it for a cold reviewer who has not read the thread. Check whether the repo
 has contribution rules (`CONTRIBUTING.md`, a PR template) and follow them.

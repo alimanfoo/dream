@@ -393,7 +393,7 @@ If a follow-on later spawns its own follow-on, the grandchild also inserts next.
 The chain drains depth-first. The original queue resumes only after the parent
 task's coherence chain is fully drained.
 
-The phase ends when the task list drains. Grace opened the PR in Phase 1; it
+The phase ends when the task list drains. Grace opened the PR in Phase 1. It
 stays in draft, with a placeholder description, until Phase 7.
 
 ## Phase 7: Review
@@ -592,11 +592,10 @@ Phase 9 by posting a summary comment listing every issue and comment Collect
 produced (see [Phase 9](#phase-9-collect)).
 
 Grace writes the PR description at PR ready in Phase 7, once every review
-follow-on is final, so it is written once rather than drafted early and kept in
-sync. The PR stays in draft until then. When a Challenge revises an artifact,
-she posts the revision as a new comment, not an edit of the earlier one. The
-comment opens with an explicit supersession marker (for example, "Supersedes the
-Scope above"), so a reader can tell which version is current.
+follow-on is final. The PR stays in draft until then. When a Challenge revises
+an artifact, she posts the revision as a new comment, not an edit of the earlier
+one. The comment opens with an explicit supersession marker (for example,
+"Supersedes the Scope above"), so a reader can tell which version is current.
 
 A session that stops before merge still leaves a record. When the user halts at
 a gate or ends the session early, Grace posts a final comment naming where the

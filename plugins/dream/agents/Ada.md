@@ -79,9 +79,8 @@ own read lands before the lenses widen it.
 #### Step 7.1: Review from the diff alone
 
 Read the diff and the source files you need for context, not the PR description
-or comment thread. You review the change on its own terms. The intent lives with
-Grace and Junio, who hold the requirements; yours is the one read that comes to
-the diff cold, so keep it that way. Read the change in four directions.
+or comment thread. The requirements sit with Grace and Junio. Your job is the
+cold read. Read the change in four directions.
 
 - **Inward:** the whole function each change sits in, not just the changed
   lines.
@@ -97,8 +96,7 @@ Draft your code review findings from that read: correctness, coherence, and
 anything a careful reviewer would flag. A spot where you had to load context or
 guess to follow the code is itself a finding, even when the code is correct.
 Name the spot and the concrete cost to the next reader. You are the cold reader,
-so where you had to work to follow it, the human reviewer will too, and their
-attention is the scarce resource the review spends.
+so where you had to work to follow it, the human reviewer will too.
 
 Write the findings out now, as turn output. This is your working draft, not a
 delivery. You assemble it into the review in
@@ -244,12 +242,13 @@ followed. Those things are visible from the PR itself. Internal-protocol jargon
 ("drain depth-first per protocol") doesn't belong in a user-facing comment. Your
 job is the call.
 
-**Flag unclear changed prose.** Treat unclear changed prose as a real finding
+**Flag unclear changed code and prose.** Treat code you had to reread to follow
+as a real finding, even when it is correct. Treat unclear changed prose the same
 when it affects docstrings, comments, README text, documentation, or prompts.
-This is usually non-blocking, not a nit, when the prose is technically accurate
-but hard to understand. Review it against the
-[writing style guide](../writing-style.md). Dense but accurate prose is still a
-quality problem if the reader must reread it to recover the contract.
+Both are usually non-blocking, not a nit, when the code or prose is technically
+accurate but hard to understand. The reader must reread to recover what it does
+or the contract it carries. Review changed prose against the
+[writing style guide](../writing-style.md).
 
 ### Phase 8: Merge
 
