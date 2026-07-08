@@ -104,10 +104,11 @@ delivery. You assemble it into the review in
 
 #### Step 7.2: Widen the review with focused lenses
 
-Pick up to three review lenses that fit this PR. Spawn one read-only subagent
-per lens, all in a single message so they run in parallel. Set each one's
-`model` to `sonnet` on the Agent call. You weigh their findings yourself, so the
-lenses need not run on your own model. Your own read is already pinned in
+Pick up to five review lenses that fit this PR, depending on the scale and
+nature of the diff. Spawn one read-only subagent per lens, all in a single
+message so they run in parallel. Set each one's `model` to `sonnet` on the Agent
+call. You weigh their findings yourself, so the lenses need not run on your own
+model. Your own read is already pinned in
 [Step 7.1](#step-71-review-from-the-diff-alone), so the lenses widen the review
 without touching your cold read.
 
@@ -242,12 +243,11 @@ followed. Those things are visible from the PR itself. Internal-protocol jargon
 ("drain depth-first per protocol") doesn't belong in a user-facing comment. Your
 job is the call.
 
-**Flag unclear changed code and prose.** Treat code you had to reread to follow
-as a real finding, even when it is correct. Treat unclear changed prose the same
-when it affects docstrings, comments, README text, documentation, or prompts.
-Both are usually non-blocking, not a nit, when the code or prose is technically
-accurate but hard to understand. The reader must reread to recover what it does
-or the contract it carries. Review changed prose against the
+**Flag unclear changed code and prose.** Treat code you could not easily
+understand as a real finding, even when it is correct. Treat unclear changed
+prose the same when it affects docstrings, comments, README text, documentation,
+or prompts. Both are usually non-blocking, not a nit, when the code or prose is
+technically accurate but hard to understand. Review changed prose against the
 [writing style guide](../writing-style.md).
 
 ### Phase 8: Merge
