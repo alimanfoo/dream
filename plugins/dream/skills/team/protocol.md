@@ -222,10 +222,10 @@ What the Coherent Scope must reach depends on the Session Type:
 
 If the work stops short of that, the Coherent Scope is too narrow. A recurring
 surface whose root cause is a duplicated fact is Coherent work, not optional
-anticipation. Single-sourcing it reaches the cause (see "One fact, one home").
-When the recurring rule has no single home to move it to (many sites that must
-each follow it), a check that enforces it is the Coherent fix instead (see "One
-rule, one check").
+anticipation. Single-sourcing it reaches the cause (see
+[One fact, one home](#one-fact-one-home)). When the recurring rule has no single
+home to move it to (many sites that must each follow it), addressing it as a
+[cross-site rule](#cross-site-rules) reaches the cause.
 
 Prefer removal where it serves: dropping or narrowing can resolve the concern,
 or ease maintenance, better than adding.
@@ -668,9 +668,9 @@ type check, or fallback guards a constraint whose source is elsewhere. Ask where
 the input first arrives and which operation actually needs the guarantee. Carry
 that guarantee in a type, not a check. Construct the type once at the boundary
 where the input arrives. Require it in the signature of the operation that needs
-it (see "Code-shape ladder" above). The boundary builds the guarantee and the
-operation demands it, so no layer in between re-checks. Moving the check deeper,
-rather than typing it, usually just relocates the code smell.
+it (see [Code-shape ladder](#code-shape-ladder) above). The boundary builds the
+guarantee and the operation demands it, so no layer in between re-checks. Moving
+the check deeper, rather than typing it, usually just relocates the code smell.
 
 Two signs to look for. A comment explaining the defensive code ("X is required
 because Y") points at a deeper layer and makes the code look intentional. Or the
@@ -697,8 +697,8 @@ the code. Single-sourcing is usually removal of a copy, not new machinery. When
 a duplicated fact is the root cause of a recurring surface, single-sourcing it
 is Coherent work, not optional anticipation. Finishing without it leaves the
 root cause unresolved. When a recurring rule has no single home to derive from,
-where many sites each restate it, there is nothing to single-source. Enforce it
-with a check instead (see "One rule, one check").
+where many sites each restate it, there is nothing to single-source. It is a
+[cross-site rule](#cross-site-rules) instead.
 
 Two traps:
 
@@ -712,55 +712,51 @@ Two traps:
   free to change apart. Ask: if this fact changed, would every copy have to
   change too? A no means they are different facts. Leave them apart.
 
-## One rule, one check
+## Cross-site rules
 
 Some rules have to hold in many places at once: every API endpoint returns
-errors in the same shape, every public function in a module has a docstring, no
-query in a hot path runs more than once per row. No single line owns the rule.
-Each place follows it on its own.
+errors in the same shape, every public function has a docstring, no query in a
+hot path runs more than once per row. No single line owns the rule.
 
-This is what sets it apart from a duplicated fact. A duplicated fact lives in
-one place and is copied to others, so you can delete the copies and derive them
-from the one home (see "One fact, one home"). A rule that twenty endpoints each
-write by hand has no one home to move it to. Single-source a fact where you can.
-Where you can't, a check is what's left.
+This sets it apart from a duplicated fact and a single-site contract. A
+duplicated fact lives in one home you derive the copies from (see
+[One fact, one home](#one-fact-one-home)). A single-site contract sits in one
+place, where the code's shape can carry it (see
+[Code-shape ladder](#code-shape-ladder)). A rule spread across independent sites
+has neither: no home to single-source, no single type to hold it.
 
-So the rule keeps getting broken: a new endpoint returns the wrong error shape,
-a new function ships with no docstring. Fixing the one site is not enough. The
-next session adds the next site and breaks it again. At a single site you would
-carry a rule in a type or structure rather than guard it with a check (see
-[Code-shape ladder](#code-shape-ladder)). But no single type can hold a rule
-spread across independent sites. The fix that holds is a check: a lint rule, a
-pre-commit hook, or a CI assertion that fails the moment any site breaks the
-rule.
+Default to documenting the rule. State it in one line in the repo's
+agent-instructions file (`AGENTS.md` or `CLAUDE.md`), at the root or nearest
+subdirectory. The next session reads that file before touching the code the rule
+governs. A comment at any one site is read by no one who needs the rule first.
+This is cheap, reversible memory: no machinery to carry, and nothing to fire
+when a harmless edit trips it. But a document decays. A later session has to
+find the line and choose to honour it, and a new site may ignore it.
 
-Why a check, and not an issue that says "keep the error shapes consistent"?
-Because every session starts fresh, with no memory of the last. An issue is a
-note someone has to find, read, and act on, and a new session usually won't. A
-check needs no memory. It runs on its own and fails the moment a later change
-breaks the rule. That failure becomes a task the next agent picks up. It reads
-the failure and repairs the drift in its normal loop, with no human to notice it
-or assign it. So the rule holds without anyone remembering it was decided.
+Promote it to a check once it earns one, on two conditions. First, it guards a
+real rule that real code relies on, not a count nothing reads or a docstring's
+exact wording. Second, the rule drifts: either you have watched it break across
+sessions, or its first violation would itself do real damage. Damage means a
+forced migration, a breached security boundary, or a reopened shipped decision,
+where waiting for the break is too late. When both hold, enforce the rule with a
+check that fails the moment any site breaks it: an import rule for a layer
+boundary, a snapshot for a surface that drifts out of sync, a lint rule for a
+house convention. Prefer a pre-commit hook, so the agent sees the failure fast
+where it works. A CI assertion is the fallback for what can only run there. A
+rule the Design has merely drawn, real but never yet broken, meets the first
+test and not the second. Document it and wait. You lose little, and you avoid
+pinning a check to a rule you have only imagined, the one likeliest to fire when
+nothing is wrong.
 
-This is also how the team does architecture. No one hands down the boundaries
-and conventions that hold the code together. The team draws them as it works,
-and a check is how each one lasts. Another team would write the decision in a
-doc and trust people to honour it. Here the doc decays, so the check enforces
-the decision itself. So the trigger is not only a rule you have watched break.
-It is a decision you are making now that a future session must keep.
-
-Not every rule is worth a check. Apply the same test you would use to throw out
-a pointless one: does it guard a real rule that real code relies on? The
-evidence is either that you have watched the rule break across sessions, or that
-you are deliberately establishing it now. A boundary or convention the Design
-introduces is real by construction, and a check is how it survives to the next
-session. A check guarding a count nothing reads, or a docstring's exact wording,
-is noise. It fails on harmless edits, and the next session burns time and
-attention fixing code that was never broken. A check guarding a real rule pays
-for itself: it removes work a human would otherwise redo by hand every session.
-When the rule is real, whether drifting or freshly established, enforcing it
-with a check is Coherent work, not an optional extra. Without it the rule is
-free to break unnoticed.
+Once a check enforces a rule, the check is its definitive home. The code passes
+or it does not, with no second opinion. The agent-instructions file then drops
+to a pointer: the rule in a line, and where it is enforced. It never keeps a
+second copy. When a documented rule is promoted to a check, its full statement
+shrinks to that pointer in the same move, so the fact keeps one home (see
+[One fact, one home](#one-fact-one-home)). A check that already exists
+undocumented is the same case backwards. Add a pointer to it in the relevant
+agent-instructions file. Don't restate it, or the two copies drift and no reader
+can tell which one governs.
 
 Three cautions:
 
