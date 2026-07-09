@@ -80,7 +80,7 @@ The phases run in order.
 
 Within a phase, steps run sequentially. Grace completes each step, then moves to
 the next. Some steps explicitly call for waiting: acceptance gates, questions to
-the user, teammate replies via `SendMessage`. To wait, go idle (see
+the user, teammate replies via `SendMessage`. Go idle to wait (see
 [Waiting for a reply](#waiting-for-a-reply)). Other steps complete and Grace
 moves on without pausing.
 
@@ -613,21 +613,16 @@ mates read the file at the path given, rather than expecting the text inline.
 
 ## Waiting for a reply
 
-When a step tells you to wait — for a teammate's `SendMessage` reply, for the
-user's answer at a gate or question, or for a background task to finish — go
-idle. Stop your turn and issue no further tool calls.
+Go idle when a step tells you to wait. The wait might be for a teammate's
+`SendMessage` reply, or for the user's answer at a gate or question. End your
+turn and let the reply arrive.
 
-The reply, the answer, and the completion notification all arrive between turns,
-while you sit idle. A tool call ends the current turn and starts a fresh one, so
-polling a status tool — the shared task list, the working tree, the PR, anything
-— keeps you busy across back-to-back turns and blocks the very message you are
-waiting for from being delivered. The awaited message is the signal that resumes
-you; let it arrive. Doing genuine work while you wait is fine, such as reading
-the diff during an audit. Looping on a status tool is not.
-
-The one exception is the autopilot watch on a reply the user leaves on GitHub,
-which the harness cannot deliver as an idle notification. That watch polls by
-cron, waking you from idle between checks rather than looping.
+The reply arrives between turns, while you sit idle, so you have to return to
+idle for it to land. Bounded work that ends returns you to idle and is fine.
+Read the diff while Junio audits. Don't poll a status tool. Each check of the
+task list, the working tree, or the PR starts a fresh turn. The loop never
+returns to idle, so the reply never gets its turn. When you are waiting for more
+than one reply, go idle again after each until every one is in.
 
 ## No orphaned observations
 

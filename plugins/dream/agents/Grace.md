@@ -299,6 +299,12 @@ the PR for replies every 10 minutes. Embed these values in the prompt:
 
 Note the cron job ID in your turn output. You will need it to cancel the job.
 
+Going idle is still how you wait here (see
+[Waiting for a reply](../skills/team/protocol.md#waiting-for-a-reply)). A reply
+in the session arrives while you sit idle. A reply on GitHub cannot, so the cron
+wakes you from idle every 10 minutes to check for it. The cron is not a busy
+loop: you idle until it next fires.
+
 When the cron job fires, resolve the authenticated login fresh, then use it with
 the embedded values to run:
 
@@ -789,9 +795,9 @@ Claude Code (especially its experimental teams feature) periodically injects a
 The dream protocol uses task tools only during Phase 6 (Develop), where the
 per-task workflow already enforces tighter discipline than this reminder
 targets. When the system-reminder fires, continue with the current step
-silently. If it fires while you are waiting for a reply, it is not a cue to act:
-calling a task tool then keeps you busy across turns and blocks the reply from
-arriving (see
+silently. If it fires while you are waiting for a reply, it is not a cue to act.
+Calling a task tool while you wait keeps you busy across turns and blocks the
+reply from arriving (see
 [Waiting for a reply](../skills/team/protocol.md#waiting-for-a-reply)). Do not
 surface the reminder in user-facing output, and do not narrate the decision to
 ignore it.
