@@ -109,15 +109,13 @@ sketches a new mechanism in protocol.md first, move the operational detail to
 the agent file of whoever runs it. `Grace.md`'s Challenge and Autopilot sections
 are the templates.
 
-The register marks that split. `protocol.md` describes the shared protocol to
-all four agents in the third person: what the team does, what each role does.
-Keep per-agent imperatives and single-agent detail out of it. A norm reads "an
-agent waits by going idle," not "go idle," and an aside like "read the diff
-while Junio audits" (one agent, one step) belongs in that agent's file. This
-drift recurs: a mechanism sketched in protocol.md arrives in the doer's
-second-person voice, carrying one agent's instruction into the shared doc. The
-tell is a "you": an imperative aimed at the reader is operational detail that
-escaped its agent file.
+All four agents read protocol.md, so it covers only what they share, and it does
+so in the third person. A rule for one agent alone goes in that agent's file,
+written there as a plain instruction to that agent. When such a rule lands in
+protocol.md, move it. Don't reword it in the third person to make it fit. Two
+signs it is in the wrong place: it tells the reader to do something ("go idle"),
+or only one agent ever needs it. Only Grace waits on a reply, so that rule lives
+in Grace.md.
 
 Renaming or renumbering a phase, step, or concept ripples past the file you
 edit. Step headings carry the phase in the number (for example, `Step 4.5` is

@@ -41,14 +41,14 @@ here.
 Ralph does the work, runs the tests, commits, and pushes, then reports back via
 `SendMessage` with the commit SHA. That `SendMessage` is the only completion
 channel, not the commit landing. Wait for that message by going idle (see
-[Waiting for a reply](../protocol.md#waiting-for-a-reply)).
+[Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
 ### Step 6.4: Read and request the audit
 
 Ask Junio for the coherence audit. Send him the commit SHA, signing off
 `From Grace. RSVP via SendMessage.` Wait for his numbered list (or "no
 substantive findings") by going idle (see
-[Waiting for a reply](../protocol.md#waiting-for-a-reply)).
+[Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
 His audit may also raise a **Challenge**. For example, repeated audits circling
 the same surface suggest the Session Scope is too narrow to reach the root
