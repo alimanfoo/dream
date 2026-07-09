@@ -80,7 +80,8 @@ The phases run in order.
 
 Within a phase, steps run sequentially. Grace completes each step, then moves to
 the next. Some steps explicitly call for waiting: acceptance gates, questions to
-the user, teammate replies via `SendMessage`. Other steps complete and Grace
+the user, teammate replies via `SendMessage`. To wait, go idle (see
+[Waiting for a reply](#waiting-for-a-reply)). Other steps complete and Grace
 moves on without pausing.
 
 **User acceptance gates run by default:** the Requirements Analysis (closing
@@ -609,6 +610,24 @@ Grace's `SendMessage` handoffs don't paste an artifact's text. Once its gate
 passes, she writes it once, to a temporary file outside the repo: the PR comment
 is posted from that file, and teammates get its path instead of the text. Team
 mates read the file at the path given, rather than expecting the text inline.
+
+## Waiting for a reply
+
+When a step tells you to wait — for a teammate's `SendMessage` reply, for the
+user's answer at a gate or question, or for a background task to finish — go
+idle. Stop your turn and issue no further tool calls.
+
+The reply, the answer, and the completion notification all arrive between turns,
+while you sit idle. A tool call ends the current turn and starts a fresh one, so
+polling a status tool — the shared task list, the working tree, the PR, anything
+— keeps you busy across back-to-back turns and blocks the very message you are
+waiting for from being delivered. The awaited message is the signal that resumes
+you; let it arrive. Doing genuine work while you wait is fine, such as reading
+the diff during an audit. Looping on a status tool is not.
+
+The one exception is the autopilot watch on a reply the user leaves on GitHub,
+which the harness cannot deliver as an idle notification. That watch polls by
+cron, waking you from idle between checks rather than looping.
 
 ## No orphaned observations
 

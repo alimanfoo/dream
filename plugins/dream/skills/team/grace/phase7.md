@@ -13,7 +13,9 @@ same way.
 Tell Ada and Junio that development is complete and ask each for their review.
 Two `SendMessage` calls in the same turn, one to each, both carrying the PR
 number. Sign off per "Communication between teammates (agents)":
-`From Grace. RSVP via SendMessage.`
+`From Grace. RSVP via SendMessage.` Their reviews arrive while you are idle, so
+wait for them by going idle rather than polling (see
+[Waiting for a reply](../protocol.md#waiting-for-a-reply)).
 
 ## Step 7.2: Post each review as a PR comment
 
