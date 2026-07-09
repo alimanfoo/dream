@@ -222,10 +222,10 @@ What the Coherent Scope must reach depends on the Session Type:
 
 If the work stops short of that, the Coherent Scope is too narrow. A recurring
 surface whose root cause is a duplicated fact is Coherent work, not optional
-anticipation. Single-sourcing it reaches the cause (see "One fact, one home").
-When the recurring rule has no single home to move it to (many sites that must
-each follow it), a check that enforces it is the Coherent fix instead (see "One
-rule, one check").
+anticipation. Single-sourcing it reaches the cause (see
+[One fact, one home](#one-fact-one-home)). When the recurring rule has no single
+home to move it to (many sites that must each follow it), a check that enforces
+it is the Coherent fix instead (see [One rule, one check](#one-rule-one-check)).
 
 Prefer removal where it serves: dropping or narrowing can resolve the concern,
 or ease maintenance, better than adding.
@@ -668,9 +668,9 @@ type check, or fallback guards a constraint whose source is elsewhere. Ask where
 the input first arrives and which operation actually needs the guarantee. Carry
 that guarantee in a type, not a check. Construct the type once at the boundary
 where the input arrives. Require it in the signature of the operation that needs
-it (see "Code-shape ladder" above). The boundary builds the guarantee and the
-operation demands it, so no layer in between re-checks. Moving the check deeper,
-rather than typing it, usually just relocates the code smell.
+it (see [Code-shape ladder](#code-shape-ladder) above). The boundary builds the
+guarantee and the operation demands it, so no layer in between re-checks. Moving
+the check deeper, rather than typing it, usually just relocates the code smell.
 
 Two signs to look for. A comment explaining the defensive code ("X is required
 because Y") points at a deeper layer and makes the code look intentional. Or the
@@ -698,7 +698,7 @@ a duplicated fact is the root cause of a recurring surface, single-sourcing it
 is Coherent work, not optional anticipation. Finishing without it leaves the
 root cause unresolved. When a recurring rule has no single home to derive from,
 where many sites each restate it, there is nothing to single-source. Enforce it
-with a check instead (see "One rule, one check").
+with a check instead (see [One rule, one check](#one-rule-one-check)).
 
 Two traps:
 
@@ -721,9 +721,9 @@ Each place follows it on its own.
 
 This is what sets it apart from a duplicated fact. A duplicated fact lives in
 one place and is copied to others, so you can delete the copies and derive them
-from the one home (see "One fact, one home"). A rule that twenty endpoints each
-write by hand has no one home to move it to. Single-source a fact where you can.
-Where you can't, a check is what's left.
+from the one home (see [One fact, one home](#one-fact-one-home)). A rule that
+twenty endpoints each write by hand has no one home to move it to. Single-source
+a fact where you can. Where you can't, a check is what's left.
 
 So the rule keeps getting broken: a new endpoint returns the wrong error shape,
 a new function ships with no docstring. Fixing the one site is not enough. The
