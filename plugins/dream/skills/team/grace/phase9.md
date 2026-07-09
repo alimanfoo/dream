@@ -139,11 +139,7 @@ Do not rely on an unshared draft for GitHub-visible text.
   copies. Frame the issue around single-sourcing them (see
   [One fact, one home](../protocol.md#one-fact-one-home)). Where it is one rule
   many sites must each follow, with no single home, frame the issue as a
-  [cross-site rule](../protocol.md#cross-site-rules). The recurrence pattern
-  itself is the behaviour gap. Issues landing on the same surface are evidence
-  of an unresolved contract. Substance already decided at Plan would be a
-  Challenge to a settled decision, raised in-session, not a fresh observation
-  here (see [Challenge](../protocol.md#challenge)).
+  [cross-site rule](../protocol.md#cross-site-rules).
 - **File fresh**: no related issue on the surface, and the finding clears the
   bar. Open a standalone issue.
 
