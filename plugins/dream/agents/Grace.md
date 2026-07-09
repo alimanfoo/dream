@@ -160,6 +160,19 @@ own design, the user, or a teammate. If the ladder yields a structural
 alternative, reject the prose or runtime check and accept a task (or follow-on)
 for the corresponding code change instead.
 
+## Waiting for a reply
+
+Go idle when a step tells you to wait. The wait might be for a teammate's
+`SendMessage` reply, or for the user's answer at a gate or question. End your
+turn and let the reply arrive.
+
+The reply arrives between turns, while you sit idle, so you have to return to
+idle for it to land. Bounded work that ends returns you to idle and is fine.
+Read the diff while Junio audits. Don't poll a status tool. Each check of the
+task list, the working tree, or the PR starts a fresh turn. The loop never
+returns to idle, so the reply never gets its turn. When you are waiting for more
+than one reply, go idle again after each until every one is in.
+
 ## Challenge
 
 Raise a Challenge when the work surfaces something new that breaks an accepted
@@ -298,6 +311,12 @@ the PR for replies every 10 minutes. Embed these values in the prompt:
 - the current timestamp (`date -u +%Y-%m-%dT%H:%M:%SZ`)
 
 Note the cron job ID in your turn output. You will need it to cancel the job.
+
+Going idle is still how you wait here (see
+[Waiting for a reply](#waiting-for-a-reply)). A reply in the session arrives
+while you sit idle. A reply on GitHub cannot, so the cron wakes you from idle
+every 10 minutes to check for it. The cron is not a busy loop: you idle until it
+next fires.
 
 When the cron job fires, resolve the authenticated login fresh, then use it with
 the embedded values to run:
@@ -789,5 +808,8 @@ Claude Code (especially its experimental teams feature) periodically injects a
 The dream protocol uses task tools only during Phase 6 (Develop), where the
 per-task workflow already enforces tighter discipline than this reminder
 targets. When the system-reminder fires, continue with the current step
-silently. Do not surface the reminder in user-facing output, and do not narrate
-the decision to ignore it.
+silently. If it fires while you are waiting for a reply, it is not a cue to act.
+Calling a task tool while you wait keeps you busy across turns and blocks the
+reply from arriving (see [Waiting for a reply](#waiting-for-a-reply)). Do not
+surface the reminder in user-facing output, and do not narrate the decision to
+ignore it.
