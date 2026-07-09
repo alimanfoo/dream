@@ -35,13 +35,16 @@ should stay free to change apart, so leave them.
 A check is itself a lateral move, and the one most often missed. Instead of
 solving the immediate problem in code, it enforces the rule the problem is an
 instance of, so the environment holds the rule and no later session has to
-remember it. Surface one whenever the Design establishes or leans on a rule that
-spans many sites, above all a boundary or convention the Design introduces. Such
-a rule otherwise lives only in prose and erodes the first session that doesn't
-know it. The rule must be one the Design's own work is already drawing. Name
-what the Design implies, not architecture invented for its own sake. These kinds
-recur, but the list is open. Scan for the rule, then find the check that fits
-it:
+remember it. Surface one only for a cross-site rule the Design's own work is
+already drawing that has also earned enforcement: either the team has watched it
+drift across sessions, or its first violation would itself do real damage (a
+migration forced, a security boundary breached, a shipped decision reopened). A
+rule the Design has merely drawn, real but never yet broken, does not qualify:
+it defaults to a line in the repo's agent-instructions file, and surfacing a
+check for it is the over-eager move this lens should resist. Name what the
+Design implies, not architecture invented for its own sake. When a rule does
+clear that bar, these are the shapes a fitting check takes, and the list is
+open:
 
 - **A boundary**: a layer that must not import another, or a module's public
   surface, held by an import or dependency rule (import-linter,

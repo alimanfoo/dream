@@ -754,10 +754,11 @@ it guards a real rule that real code relies on, not a count nothing reads or a
 docstring's exact wording, which only fail on harmless edits and send the next
 session to fix what was never broken. Second, the rule actually drifts. The
 evidence for that is either that you have watched it break across sessions, or
-that a single violation would be costly to unwind, such as a layering boundary
-or a security seam, so waiting for the first break waits too long. A check that
-clears both pays for itself: it removes work a human would otherwise redo by
-hand every session.
+that the first violation would itself do real damage — forcing a migration,
+breaching a security boundary, or reopening a decision other work has since
+built on — so waiting for it to break waits too long. That the Design merely
+drew the rule is not such a cost. A check that clears both pays for itself: it
+removes work a human would otherwise redo by hand every session.
 
 A rule the Design has merely drawn, real but never yet broken, clears the first
 test and not the second. State it where the next session reads it before
