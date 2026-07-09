@@ -760,12 +760,15 @@ clears both pays for itself: it removes work a human would otherwise redo by
 hand every session.
 
 A rule the Design has merely drawn, real but never yet broken, clears the first
-test and not the second. State it, in the code's shape where you can and in one
-line of prose where you can't, and let the first observed drift call for the
-check. The team's own loop surfaces that drift: a later change breaks the rule,
-an audit or a failing check catches it, and the repair carries the check with
-it. You lose little by waiting, and you avoid pinning a check to a rule you have
-only imagined, the one likeliest to fire when nothing is wrong.
+test and not the second. State it where the next session reads it before
+touching the code it governs: one line in the repo's agent-instructions file
+(`AGENTS.md` or `CLAUDE.md`) at the root or nearest subdirectory. A
+cross-cutting rule has no home at any single site, so a comment left at one is
+read by no one who needs it first. Then let the first observed drift call for
+the check. The team's own loop surfaces that drift: a later change breaks the
+rule, an audit or a failing check catches it, and the repair carries the check
+with it. You lose little by waiting, and you avoid pinning a check to a rule you
+have only imagined, the one likeliest to fire when nothing is wrong.
 
 Three cautions:
 
