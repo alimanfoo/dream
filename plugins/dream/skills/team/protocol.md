@@ -743,7 +743,7 @@ the failure and repairs the drift in its normal loop, with no human to notice it
 or assign it. So the rule holds without anyone remembering it was decided.
 
 This is also how the team does architecture. No one hands down the boundaries
-and conventions that hold the code together; the team draws them as it works.
+and conventions that hold the code together. The team draws them as it works.
 Another team would write such a decision in a doc and trust people to honour it.
 Here the doc decays, so where a boundary has to hold, a check is what makes it
 last.
@@ -751,14 +751,14 @@ last.
 A check is machinery the team then carries for good, so it earns its place
 against that upkeep the same as any addition. Two things it has to clear. First,
 it guards a real rule that real code relies on, not a count nothing reads or a
-docstring's exact wording, which only fail on harmless edits and send the next
+docstring's exact wording. Those only fail on harmless edits and send the next
 session to fix what was never broken. Second, the rule actually drifts. The
-evidence for that is either that you have watched it break across sessions, or
-that the first violation would itself do real damage — forcing a migration,
-breaching a security boundary, or reopening a decision other work has since
-built on — so waiting for it to break waits too long. That the Design merely
-drew the rule is not such a cost. A check that clears both pays for itself: it
-removes work a human would otherwise redo by hand every session.
+evidence is either that you have watched it break across sessions, or that the
+first violation would itself do real damage. Damage means a forced migration, a
+breached security boundary, or a reopened shipped decision. Where the first
+break would do that, waiting for it is too late. That the Design merely drew the
+rule is not such a cost. A check that clears both pays for itself: it removes
+work a human would otherwise redo by hand every session.
 
 A rule the Design has merely drawn, real but never yet broken, clears the first
 test and not the second. State it where the next session reads it before
@@ -768,20 +768,19 @@ cross-cutting rule has no home at any single site, so a comment left at one is
 read by no one who needs it first. Then let the first observed drift call for
 the check. The team's own loop surfaces that drift without a check to catch it:
 a later change breaks the rule, and a coherence audit or review flags the
-inconsistency. The repair that follows is where the check finally gets added,
-now with the observed drift to justify it. You lose little by waiting, and you
-avoid pinning a check to a rule you have only imagined, the one likeliest to
-fire when nothing is wrong.
+inconsistency. The repair that follows adds the check, now justified by the
+observed drift. You lose little by waiting, and you avoid pinning a check to a
+rule you have only imagined, the one likeliest to fire when nothing is wrong.
 
 Once a check enforces a rule, the check is its definitive home: the code passes
 or it does not, with no second opinion. The agent-instructions file then carries
 at most a pointer, the rule in a line and where it is enforced, never a second
 copy of the rule. This is where a deferred rule's prose goes when drift promotes
 it: the entry that stated the rule in full shrinks to a pointer in the same
-move, so the fact keeps one home (see [One fact, one home](#one-fact-one-home)).
-A check that already exists undocumented is the same case read backwards: point
-to it, don't restate it, or the two copies drift and no reader can tell which
-one governs.
+move. The fact then keeps one home (see
+[One fact, one home](#one-fact-one-home)). A check that already exists
+undocumented is the same case read backwards: point to it, don't restate it, or
+the two copies drift and no reader can tell which one governs.
 
 Three cautions:
 
