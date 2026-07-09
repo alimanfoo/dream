@@ -483,7 +483,8 @@ surfacing, and the chain never converges. The Challenge is that the Session
 Scope should single-source the fact, not patch another case. When the circling
 surface is one rule many sites must each follow, with no single home, the
 Challenge is different. The Session Scope should add a check that enforces the
-rule, not patch the next site to break it (see "One rule, one check").
+rule, not patch the next site to break it (see
+[Cross-site rules](../skills/team/protocol.md#cross-site-rules)).
 
 A rename or refactor chain that naturally cites the same surface across
 coherence audits is the chain working correctly, not a Challenge. The trigger is

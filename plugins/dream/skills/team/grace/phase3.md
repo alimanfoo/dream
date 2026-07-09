@@ -48,7 +48,7 @@ copies, so the drift returns the next time the code changes. When the recurring
 surface is one rule many sites must each follow, with no single home to
 single-source, a check that enforces the rule is the root-cause fix instead.
 That is Coherent work when the rule is real and the drift is observed, not a
-Maximal add-on (see [One rule, one check](../protocol.md#one-rule-one-check)).
+Maximal add-on (see [Cross-site rules](../protocol.md#cross-site-rules)).
 
 Ask the removal question too. Could dropping or narrowing something resolve the
 concern, or leave the code simpler to maintain instead of adding? Examples: a

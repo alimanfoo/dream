@@ -225,7 +225,7 @@ surface whose root cause is a duplicated fact is Coherent work, not optional
 anticipation. Single-sourcing it reaches the cause (see
 [One fact, one home](#one-fact-one-home)). When the recurring rule has no single
 home to move it to (many sites that must each follow it), a check that enforces
-it is the Coherent fix instead (see [One rule, one check](#one-rule-one-check)).
+it is the Coherent fix instead (see [Cross-site rules](#cross-site-rules)).
 
 Prefer removal where it serves: dropping or narrowing can resolve the concern,
 or ease maintenance, better than adding.
@@ -698,7 +698,7 @@ a duplicated fact is the root cause of a recurring surface, single-sourcing it
 is Coherent work, not optional anticipation. Finishing without it leaves the
 root cause unresolved. When a recurring rule has no single home to derive from,
 where many sites each restate it, there is nothing to single-source. Enforce it
-with a check instead (see [One rule, one check](#one-rule-one-check)).
+with a check instead (see [Cross-site rules](#cross-site-rules)).
 
 Two traps:
 
@@ -712,7 +712,7 @@ Two traps:
   free to change apart. Ask: if this fact changed, would every copy have to
   change too? A no means they are different facts. Leave them apart.
 
-## One rule, one check
+## Cross-site rules
 
 Some rules have to hold in many places at once: every API endpoint returns
 errors in the same shape, every public function has a docstring, no query in a
