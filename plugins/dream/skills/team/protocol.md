@@ -743,24 +743,29 @@ the failure and repairs the drift in its normal loop, with no human to notice it
 or assign it. So the rule holds without anyone remembering it was decided.
 
 This is also how the team does architecture. No one hands down the boundaries
-and conventions that hold the code together. The team draws them as it works,
-and a check is how each one lasts. Another team would write the decision in a
-doc and trust people to honour it. Here the doc decays, so the check enforces
-the decision itself. So the trigger is not only a rule you have watched break.
-It is a decision you are making now that a future session must keep.
+and conventions that hold the code together; the team draws them as it works.
+Another team would write such a decision in a doc and trust people to honour it.
+Here the doc decays, so where a boundary has to hold, a check is what makes it
+last.
 
-Not every rule is worth a check. Apply the same test you would use to throw out
-a pointless one: does it guard a real rule that real code relies on? The
-evidence is either that you have watched the rule break across sessions, or that
-you are deliberately establishing it now. A boundary or convention the Design
-introduces is real by construction, and a check is how it survives to the next
-session. A check guarding a count nothing reads, or a docstring's exact wording,
-is noise. It fails on harmless edits, and the next session burns time and
-attention fixing code that was never broken. A check guarding a real rule pays
-for itself: it removes work a human would otherwise redo by hand every session.
-When the rule is real, whether drifting or freshly established, enforcing it
-with a check is Coherent work, not an optional extra. Without it the rule is
-free to break unnoticed.
+A check is machinery the team then carries for good, so it earns its place
+against that upkeep the same as any addition. Two things it has to clear. First,
+it guards a real rule that real code relies on, not a count nothing reads or a
+docstring's exact wording, which only fail on harmless edits and send the next
+session to fix what was never broken. Second, the rule actually drifts. The
+evidence for that is either that you have watched it break across sessions, or
+that a single violation would be costly to unwind, such as a layering boundary
+or a security seam, so waiting for the first break waits too long. A check that
+clears both pays for itself: it removes work a human would otherwise redo by
+hand every session.
+
+A rule the Design has merely drawn, real but never yet broken, clears the first
+test and not the second. State it, in the code's shape where you can and in one
+line of prose where you can't, and let the first observed drift call for the
+check. The team's own loop surfaces that drift: a later change breaks the rule,
+an audit or a failing check catches it, and the repair carries the check with
+it. You lose little by waiting, and you avoid pinning a check to a rule you have
+only imagined, the one likeliest to fire when nothing is wrong.
 
 Three cautions:
 
