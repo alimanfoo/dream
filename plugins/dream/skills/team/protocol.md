@@ -225,7 +225,7 @@ surface whose root cause is a duplicated fact is Coherent work, not optional
 anticipation. Single-sourcing it reaches the cause (see
 [One fact, one home](#one-fact-one-home)). When the recurring rule has no single
 home to move it to (many sites that must each follow it), addressing it as a
-cross-site rule reaches the cause (see [Cross-site rules](#cross-site-rules)).
+[cross-site rule](#cross-site-rules) reaches the cause.
 
 Prefer removal where it serves: dropping or narrowing can resolve the concern,
 or ease maintenance, better than adding.
@@ -698,7 +698,7 @@ a duplicated fact is the root cause of a recurring surface, single-sourcing it
 is Coherent work, not optional anticipation. Finishing without it leaves the
 root cause unresolved. When a recurring rule has no single home to derive from,
 where many sites each restate it, there is nothing to single-source. It is a
-cross-site rule instead (see [Cross-site rules](#cross-site-rules)).
+[cross-site rule](#cross-site-rules) instead.
 
 Two traps:
 
