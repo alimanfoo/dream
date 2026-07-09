@@ -715,73 +715,51 @@ Two traps:
 ## One rule, one check
 
 Some rules have to hold in many places at once: every API endpoint returns
-errors in the same shape, every public function in a module has a docstring, no
-query in a hot path runs more than once per row. No single line owns the rule.
-Each place follows it on its own.
+errors in the same shape, every public function has a docstring, no query in a
+hot path runs more than once per row. No single line owns the rule. Each site
+follows it on its own.
 
-This is what sets it apart from a duplicated fact. A duplicated fact lives in
-one place and is copied to others, so you can delete the copies and derive them
-from the one home (see [One fact, one home](#one-fact-one-home)). A rule that
-twenty endpoints each write by hand has no one home to move it to. Single-source
-a fact where you can. Where you can't, a check is what's left.
+This sets it apart from a duplicated fact and a single-site contract. A
+duplicated fact lives in one home you derive the copies from (see
+[One fact, one home](#one-fact-one-home)). A single-site contract sits in one
+place, where the code's shape can carry it (see
+[Code-shape ladder](#code-shape-ladder)). A rule spread across independent sites
+has neither: no home to single-source, no single type to hold it.
 
-So the rule keeps getting broken: a new endpoint returns the wrong error shape,
-a new function ships with no docstring. Fixing the one site is not enough. The
-next session adds the next site and breaks it again. At a single site you would
-carry a rule in a type or structure rather than guard it with a check (see
-[Code-shape ladder](#code-shape-ladder)). But no single type can hold a rule
-spread across independent sites. The fix that holds is a check: a lint rule, a
-pre-commit hook, or a CI assertion that fails the moment any site breaks the
-rule.
-
-Why a check, and not an issue that says "keep the error shapes consistent"?
-Because every session starts fresh, with no memory of the last. An issue is a
-note someone has to find, read, and act on, and a new session usually won't. A
-check needs no memory. It runs on its own and fails the moment a later change
-breaks the rule. That failure becomes a task the next agent picks up. It reads
-the failure and repairs the drift in its normal loop, with no human to notice it
-or assign it. So the rule holds without anyone remembering it was decided.
-
-This is also how the team does architecture. No one hands down the boundaries
-and conventions that hold the code together. The team draws them as it works.
-Another team would write such a decision in a doc and trust people to honour it.
-Here the doc decays, so where a boundary has to hold, a check is what makes it
-last.
-
-A check is machinery the team then carries for good, so it earns its place
-against that upkeep the same as any addition. Two things it has to clear. First,
-it guards a real rule that real code relies on, not a count nothing reads or a
-docstring's exact wording. Those only fail on harmless edits and send the next
-session to fix what was never broken. Second, the rule actually drifts. The
-evidence is either that you have watched it break across sessions, or that the
-first violation would itself do real damage. Damage means a forced migration, a
-breached security boundary, or a reopened shipped decision. Where the first
-break would do that, waiting for it is too late. That the Design merely drew the
-rule is not such a cost. A check that clears both pays for itself: it removes
-work a human would otherwise redo by hand every session.
-
-A rule the Design has merely drawn, real but never yet broken, clears the first
-test and not the second. State it where the next session reads it before
-touching the code it governs. Put it in one line in the repo's
+Default to documenting the rule. State it in one line in the repo's
 agent-instructions file (`AGENTS.md` or `CLAUDE.md`), at the root or nearest
-subdirectory. A rule spread across many sites has no single home, so a comment
-left at one is read by no one who needs it first. Then let the first observed
-drift call for the check. The team's own loop surfaces that drift without a
-check to catch it. A later change breaks the rule, and a coherence audit or
-review flags the inconsistency. The repair that follows adds the check, now
-justified by the observed drift. You lose little by waiting. You avoid pinning a
-check to a rule you have only imagined, the one likeliest to fire when nothing
-is wrong.
+subdirectory. The next session reads that file before touching the code the rule
+governs. A comment at any one site is read by no one who needs the rule first.
+This is cheap, reversible memory: no machinery to carry, and nothing to fire
+when a harmless edit trips it.
 
-Once a check enforces a rule, the check is its definitive home: the code passes
-or it does not, with no second opinion. The agent-instructions file then carries
-at most a pointer: the rule in a line, and where it is enforced. The pointer is
-never a second copy of the rule. This is where a deferred rule's prose goes when
-drift promotes it. The entry that stated the rule in full shrinks to a pointer
-in the same move. The fact then keeps one home (see
+Promote it to a check once it earns one, on two conditions. First, it guards a
+real rule that real code relies on, not a count nothing reads or a docstring's
+exact wording. Those fail only on harmless edits. Second, the rule drifts:
+either you have watched it break across sessions, or its first violation would
+itself do real damage. Damage means a forced migration, a breached security
+boundary, or a reopened shipped decision, where waiting for the break is too
+late. When both hold, enforce the rule with a check: a lint rule, a pre-commit
+hook, or a CI assertion that fails the moment any site breaks it. A rule the
+Design has merely drawn, real but never yet broken, meets the first test and not
+the second. Document it and wait. You lose little, and you avoid pinning a check
+to a rule you have only imagined, the one likeliest to fire when nothing is
+wrong.
+
+Promotion matters because a document decays. A later session has to find the
+line and choose to honour it. A check needs no memory. It fails on the next
+change that breaks the rule. That failure becomes a task the next agent picks up
+in its normal loop, with no human to notice it or assign it. So the rule holds
+without anyone remembering it was decided.
+
+Once a check enforces a rule, the check is its definitive home. The code passes
+or it does not, with no second opinion. The agent-instructions file then drops
+to a pointer: the rule in a line, and where it is enforced. It never keeps a
+second copy. When drift promotes a documented rule, its full statement shrinks
+to that pointer in the same move, so the fact keeps one home (see
 [One fact, one home](#one-fact-one-home)). A check that already exists
-undocumented is the same case read backwards. Point to it. Don't restate it, or
-the two copies drift and no reader can tell which one governs.
+undocumented is the same case backwards. Point to it. Don't restate it, or the
+two copies drift and no reader can tell which one governs.
 
 Three cautions:
 
