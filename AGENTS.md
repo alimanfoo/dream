@@ -114,8 +114,7 @@ so in the third person. A rule for one agent alone goes in that agent's file,
 written there as a plain instruction to that agent. When such a rule lands in
 protocol.md, move it. Don't reword it in the third person to make it fit. Two
 signs it is in the wrong place: it tells the reader to do something ("go idle"),
-or only one agent ever needs it. Only Grace waits on a reply, so that rule lives
-in Grace.md.
+or only one agent ever needs it.
 
 Renaming or renumbering a phase, step, or concept ripples past the file you
 edit. Step headings carry the phase in the number (for example, `Step 4.5` is
