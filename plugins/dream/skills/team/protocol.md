@@ -765,10 +765,12 @@ touching the code it governs: one line in the repo's agent-instructions file
 (`AGENTS.md` or `CLAUDE.md`) at the root or nearest subdirectory. A
 cross-cutting rule has no home at any single site, so a comment left at one is
 read by no one who needs it first. Then let the first observed drift call for
-the check. The team's own loop surfaces that drift: a later change breaks the
-rule, an audit or a failing check catches it, and the repair carries the check
-with it. You lose little by waiting, and you avoid pinning a check to a rule you
-have only imagined, the one likeliest to fire when nothing is wrong.
+the check. The team's own loop surfaces that drift without a check to catch it:
+a later change breaks the rule, and a coherence audit or review flags the
+inconsistency. The repair that follows is where the check finally gets added,
+now with the observed drift to justify it. You lose little by waiting, and you
+avoid pinning a check to a rule you have only imagined, the one likeliest to
+fire when nothing is wrong.
 
 Once a check enforces a rule, the check is its definitive home: the code passes
 or it does not, with no second opinion. The agent-instructions file then carries
