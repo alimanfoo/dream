@@ -80,9 +80,9 @@ The phases run in order.
 
 Within a phase, steps run sequentially. Grace completes each step, then moves to
 the next. Some steps explicitly call for waiting: acceptance gates, questions to
-the user, teammate replies via `SendMessage`. Go idle to wait (see
-[Waiting for a reply](#waiting-for-a-reply)). Other steps complete and Grace
-moves on without pausing.
+the user, teammate replies via `SendMessage`. An agent waits for these by going
+idle (see [Waiting for a reply](#waiting-for-a-reply)). Other steps complete and
+Grace moves on without pausing.
 
 **User acceptance gates run by default:** the Requirements Analysis (closing
 Phase 1), the Code Analysis (closing Phase 2), the Session Scope (closing Phase
@@ -613,16 +613,14 @@ mates read the file at the path given, rather than expecting the text inline.
 
 ## Waiting for a reply
 
-Go idle when a step tells you to wait. The wait might be for a teammate's
-`SendMessage` reply, or for the user's answer at a gate or question. End your
-turn and let the reply arrive.
+A wait is for a teammate's `SendMessage` reply, or for the user's answer at a
+gate or question. The reply arrives between turns, while the waiting agent sits
+idle. So the agent waits by going idle, and the reply resumes it.
 
-The reply arrives between turns, while you sit idle, so you have to return to
-idle for it to land. Bounded work that ends returns you to idle and is fine.
-Read the diff while Junio audits. Don't poll a status tool. Each check of the
-task list, the working tree, or the PR starts a fresh turn. The loop never
-returns to idle, so the reply never gets its turn. When you are waiting for more
-than one reply, go idle again after each until every one is in.
+A poll of a status tool blocks that reply. Each poll of the task list, the
+working tree, or the PR starts a fresh turn. A poll loop never returns to idle,
+so the reply never lands. Bounded work that ends is different: it returns the
+agent to idle, so it leaves the reply free to arrive.
 
 ## No orphaned observations
 
