@@ -770,6 +770,16 @@ rule, an audit or a failing check catches it, and the repair carries the check
 with it. You lose little by waiting, and you avoid pinning a check to a rule you
 have only imagined, the one likeliest to fire when nothing is wrong.
 
+Once a check enforces a rule, the check is its definitive home: the code passes
+or it does not, with no second opinion. The agent-instructions file then carries
+at most a pointer, the rule in a line and where it is enforced, never a second
+copy of the rule. This is where a deferred rule's prose goes when drift promotes
+it: the entry that stated the rule in full shrinks to a pointer in the same
+move, so the fact keeps one home (see [One fact, one home](#one-fact-one-home)).
+A check that already exists undocumented is the same case read backwards: point
+to it, don't restate it, or the two copies drift and no reader can tell which
+one governs.
+
 Three cautions:
 
 - **Reach for an existing tool first.** An off-the-shelf checker (a ruff rule, a
