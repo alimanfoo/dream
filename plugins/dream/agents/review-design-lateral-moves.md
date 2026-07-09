@@ -2,8 +2,7 @@
 name: review-design-lateral-moves
 description:
   Reviews a Design for lateral moves, the same-scope alternatives that remove
-  duplication or reveal intent, including a check. Read-only. Returns its
-  findings.
+  duplication or reveal intent. Read-only. Returns its findings.
 model: sonnet
 tools: Read, Grep, Glob
 ---
@@ -31,33 +30,6 @@ behaviour, or a technical pattern. That correspondence is what reveals intent
 and makes the deduplication trustworthy. Sites that merely coincide today and
 would later diverge are not real duplication. Merging them couples code that
 should stay free to change apart, so leave them.
-
-A check is itself a lateral move, and the one most often missed. Instead of
-solving the immediate problem in code, it enforces the rule the problem is an
-instance of. The environment then holds the rule, so no later session has to
-remember it. Surface one only for a cross-site rule the Design's own work is
-already drawing, one that has also earned enforcement. The evidence: either the
-team has watched it drift across sessions, or its first violation would itself
-do real damage. Damage means a forced migration, a breached security boundary,
-or a reopened shipped decision. A rule the Design has merely drawn, real but
-never yet broken, does not qualify. It defaults to a line in the repo's
-agent-instructions file. Surfacing a check for it is the over-eager move this
-lens should resist. Name what the Design implies, not architecture invented for
-its own sake. When a rule does clear that bar, these are some shapes a fitting
-check takes:
-
-- **A boundary**: a layer that must not import another, held by an import or
-  dependency rule (import-linter, dependency-cruiser).
-- **A surface that must stay in sync**: a generated client, a public API, a
-  schema, held by a drift check or snapshot that fails when it changes without
-  its source.
-- **A just-fixed bug**: turned into a rule that forbids its shape, so the same
-  defect cannot return.
-- **A house convention**: no `print` in library code, or booleans named as
-  predicates, encoded as a small lint rule.
-
-Prefer an existing checker to a bespoke one, such as a ruff rule, mypy
-strictness, or import-linter, the same instinct as reaching for a library.
 
 Say nothing about a move that would only add machinery, future-proof for
 hypothetical cases, or abstract a single case. A move that delivers less than

@@ -224,8 +224,8 @@ If the work stops short of that, the Coherent Scope is too narrow. A recurring
 surface whose root cause is a duplicated fact is Coherent work, not optional
 anticipation. Single-sourcing it reaches the cause (see
 [One fact, one home](#one-fact-one-home)). When the recurring rule has no single
-home to move it to (many sites that must each follow it), a check that enforces
-it is the Coherent fix instead (see [Cross-site rules](#cross-site-rules)).
+home to move it to (many sites that must each follow it), addressing it as a
+cross-site rule reaches the cause (see [Cross-site rules](#cross-site-rules)).
 
 Prefer removal where it serves: dropping or narrowing can resolve the concern,
 or ease maintenance, better than adding.
@@ -697,8 +697,8 @@ the code. Single-sourcing is usually removal of a copy, not new machinery. When
 a duplicated fact is the root cause of a recurring surface, single-sourcing it
 is Coherent work, not optional anticipation. Finishing without it leaves the
 root cause unresolved. When a recurring rule has no single home to derive from,
-where many sites each restate it, there is nothing to single-source. Enforce it
-with a check instead (see [Cross-site rules](#cross-site-rules)).
+where many sites each restate it, there is nothing to single-source. It is a
+cross-site rule instead (see [Cross-site rules](#cross-site-rules)).
 
 Two traps:
 
@@ -716,8 +716,7 @@ Two traps:
 
 Some rules have to hold in many places at once: every API endpoint returns
 errors in the same shape, every public function has a docstring, no query in a
-hot path runs more than once per row. No single line owns the rule. Each site
-follows it on its own.
+hot path runs more than once per row. No single line owns the rule.
 
 This sets it apart from a duplicated fact and a single-site contract. A
 duplicated fact lives in one home you derive the copies from (see
@@ -731,35 +730,33 @@ agent-instructions file (`AGENTS.md` or `CLAUDE.md`), at the root or nearest
 subdirectory. The next session reads that file before touching the code the rule
 governs. A comment at any one site is read by no one who needs the rule first.
 This is cheap, reversible memory: no machinery to carry, and nothing to fire
-when a harmless edit trips it.
+when a harmless edit trips it. But a document decays. A later session has to
+find the line and choose to honour it, and a new site may ignore it.
 
 Promote it to a check once it earns one, on two conditions. First, it guards a
 real rule that real code relies on, not a count nothing reads or a docstring's
-exact wording. Those fail only on harmless edits. Second, the rule drifts:
-either you have watched it break across sessions, or its first violation would
-itself do real damage. Damage means a forced migration, a breached security
-boundary, or a reopened shipped decision, where waiting for the break is too
-late. When both hold, enforce the rule with a check: a lint rule, a pre-commit
-hook, or a CI assertion that fails the moment any site breaks it. A rule the
-Design has merely drawn, real but never yet broken, meets the first test and not
-the second. Document it and wait. You lose little, and you avoid pinning a check
-to a rule you have only imagined, the one likeliest to fire when nothing is
-wrong.
-
-Promotion matters because a document decays. A later session has to find the
-line and choose to honour it. A check needs no memory. It fails on the next
-change that breaks the rule. That failure becomes a task the next agent picks up
-in its normal loop, with no human to notice it or assign it. So the rule holds
-without anyone remembering it was decided.
+exact wording. Second, the rule drifts: either you have watched it break across
+sessions, or its first violation would itself do real damage. Damage means a
+forced migration, a breached security boundary, or a reopened shipped decision,
+where waiting for the break is too late. When both hold, enforce the rule with a
+check that fails the moment any site breaks it: an import rule for a layer
+boundary, a snapshot for a surface that drifts out of sync, a lint rule for a
+house convention. Prefer a pre-commit hook, so the agent sees the failure fast
+where it works. A CI assertion is the fallback for what can only run there. A
+rule the Design has merely drawn, real but never yet broken, meets the first
+test and not the second. Document it and wait. You lose little, and you avoid
+pinning a check to a rule you have only imagined, the one likeliest to fire when
+nothing is wrong.
 
 Once a check enforces a rule, the check is its definitive home. The code passes
 or it does not, with no second opinion. The agent-instructions file then drops
 to a pointer: the rule in a line, and where it is enforced. It never keeps a
-second copy. When drift promotes a documented rule, its full statement shrinks
-to that pointer in the same move, so the fact keeps one home (see
+second copy. When a documented rule is promoted to a check, its full statement
+shrinks to that pointer in the same move, so the fact keeps one home (see
 [One fact, one home](#one-fact-one-home)). A check that already exists
-undocumented is the same case backwards. Point to it. Don't restate it, or the
-two copies drift and no reader can tell which one governs.
+undocumented is the same case backwards. Add a pointer to it in the relevant
+agent-instructions file. Don't restate it, or the two copies drift and no reader
+can tell which one governs.
 
 Three cautions:
 

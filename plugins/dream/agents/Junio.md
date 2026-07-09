@@ -482,7 +482,7 @@ each fix patches one case of a fact that has no single home. The next case keeps
 surfacing, and the chain never converges. The Challenge is that the Session
 Scope should single-source the fact, not patch another case. When the circling
 surface is one rule many sites must each follow, with no single home, the
-Challenge is different. The Session Scope should add a check that enforces the
+Challenge is different. The Session Scope should address it as a cross-site
 rule, not patch the next site to break it (see
 [Cross-site rules](../skills/team/protocol.md#cross-site-rules)).
 
