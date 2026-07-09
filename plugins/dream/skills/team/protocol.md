@@ -762,24 +762,25 @@ work a human would otherwise redo by hand every session.
 
 A rule the Design has merely drawn, real but never yet broken, clears the first
 test and not the second. State it where the next session reads it before
-touching the code it governs: one line in the repo's agent-instructions file
-(`AGENTS.md` or `CLAUDE.md`) at the root or nearest subdirectory. A
-cross-cutting rule has no home at any single site, so a comment left at one is
-read by no one who needs it first. Then let the first observed drift call for
-the check. The team's own loop surfaces that drift without a check to catch it:
-a later change breaks the rule, and a coherence audit or review flags the
-inconsistency. The repair that follows adds the check, now justified by the
-observed drift. You lose little by waiting, and you avoid pinning a check to a
-rule you have only imagined, the one likeliest to fire when nothing is wrong.
+touching the code it governs. Put it in one line in the repo's
+agent-instructions file (`AGENTS.md` or `CLAUDE.md`), at the root or nearest
+subdirectory. A rule spread across many sites has no single home, so a comment
+left at one is read by no one who needs it first. Then let the first observed
+drift call for the check. The team's own loop surfaces that drift without a
+check to catch it. A later change breaks the rule, and a coherence audit or
+review flags the inconsistency. The repair that follows adds the check, now
+justified by the observed drift. You lose little by waiting. You avoid pinning a
+check to a rule you have only imagined, the one likeliest to fire when nothing
+is wrong.
 
 Once a check enforces a rule, the check is its definitive home: the code passes
 or it does not, with no second opinion. The agent-instructions file then carries
-at most a pointer, the rule in a line and where it is enforced, never a second
-copy of the rule. This is where a deferred rule's prose goes when drift promotes
-it: the entry that stated the rule in full shrinks to a pointer in the same
-move. The fact then keeps one home (see
+at most a pointer: the rule in a line, and where it is enforced. The pointer is
+never a second copy of the rule. This is where a deferred rule's prose goes when
+drift promotes it. The entry that stated the rule in full shrinks to a pointer
+in the same move. The fact then keeps one home (see
 [One fact, one home](#one-fact-one-home)). A check that already exists
-undocumented is the same case read backwards: point to it, don't restate it, or
+undocumented is the same case read backwards. Point to it. Don't restate it, or
 the two copies drift and no reader can tell which one governs.
 
 Three cautions:
