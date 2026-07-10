@@ -279,6 +279,20 @@ plugins/:
             First, read the writing style guide:
             Arguments:
             Each round:
+      less/:
+        SKILL.md:
+          Dream Less:
+            Communication style:
+            Orient to the repo:
+            Check the working tree:
+            Obtain session input:
+            Read the cited material:
+            Read the code:
+            Check the session input against the current code:
+            Name the Session Type:
+            Open the session PR:
+            Plan the work:
+            Implement the work:
       team/:
         SKILL.md:
           Dream team:
