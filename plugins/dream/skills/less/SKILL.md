@@ -137,6 +137,19 @@ Post the returned review as a PR comment. Head it `Code review`. State which
 points were addressed and which were not. If any points were not addressed,
 explain why in one sentence.
 
+## Simplify
+
+Run the `/simplify` skill on the changes. Commit and push the fixes it makes.
+
+Post a summary of what it changed as a PR comment. Head it `Simplify`.
+
+## Copy-edit
+
+Run the `dream:copy-edit` skill over the prose you changed. Commit and push the
+fixes it makes.
+
+Post a summary of what it changed as a PR comment. Head it `Copy-edit`.
+
 ## Mark the PR ready for review
 
 Mark the PR ready for review.

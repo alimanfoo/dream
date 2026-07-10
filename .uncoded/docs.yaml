@@ -295,6 +295,8 @@ plugins/:
             Plan:
             Implement:
             Review:
+            Simplify:
+            Copy-edit:
             Mark the PR ready for review:
       team/:
         SKILL.md:
