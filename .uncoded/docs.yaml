@@ -282,6 +282,7 @@ plugins/:
       less/:
         SKILL.md:
           Dream Less:
+            Autonomy:
             Communication style:
             Orient to the repo:
             Check the working tree:
@@ -291,8 +292,10 @@ plugins/:
             Check the session input against the current code:
             Name the Session Type:
             Open the session PR:
-            Plan the work:
-            Implement the work:
+            Plan:
+            Implement:
+            Review:
+            Mark the PR ready for review:
       team/:
         SKILL.md:
           Dream team:
