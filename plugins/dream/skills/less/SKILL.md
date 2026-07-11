@@ -13,8 +13,8 @@ order.
 ## Autonomy
 
 Work autonomously to the end and do not ask the user for help. If you need to
-make a decision, make it and explain it in your PR. If you need to make a
-choice, choose the simplest option.
+decide something, choose the simplest option and explain your reasoning in the
+PR.
 
 ## Coherence
 
@@ -23,17 +23,18 @@ the codebase coherent can call for touching code the plan didn't name.
 
 - **Root cause.** Scope the fix to the mechanism behind the ask, not only the
   symptom site the input named. An enhancement builds the feature in rather than
-  bolting it on. A bug fix repairs the mechanism, not the symptom alone.
+  adding it as a separate piece. A bug fix repairs the mechanism, not the
+  symptom alone.
 - **Same edit.** Fix a sibling surface your own change makes relevant, such as a
   matching case the new code leaves uncovered.
 - **Every instance.** Fix every site that matches the task's own criterion, not
   only the site first named.
-- **One fact, one home.** Don't add a second copy of something the code already
-  states elsewhere. Make copies derive from one place instead.
+- **One fact, one home.** Make copies derive from one place instead of adding a
+  second copy of something the code already states elsewhere.
 - **Prefer removal.** Dropping or narrowing existing code can solve the task
   better than adding beside it.
 - **Fix the gap, not the compensation.** A comment, a defensive check, or a
-  fallback that papers over a gap is a sign to fix the gap itself.
+  fallback that hides a gap is a sign to fix the gap itself.
 - **Existing code isn't automatically right.** Being in the tree already isn't
   evidence it's correct or still needed. Judge it the way you'd judge code
   you're about to write.
@@ -55,19 +56,23 @@ End every PR body and comment with the Claude Code footer:
 
 > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
-This lets a reader tell at a glance which items are agent-authored.
+This lets a reader tell quickly which items are agent-authored.
 
 ## Orient to the repo
 
 Establish what the repo is for as a whole. Read the repo's own docs
-(`AGENTS.md`, `README`, `CLAUDE.md`) and explore its structure. Determine the
-deliverable, what a consumer ultimately gets. For an application or software
-library this is the code, but it could also be data, content, configuration, or
-something else. Find out how that product is organised into its major
-components. Determine the tests, checks, build steps, and tooling built around
-the product to produce, verify, and maintain it.
+(`AGENTS.md`, `README`, `CLAUDE.md`) and explore its structure.
 
-Confirm the repo purpose in a single sentence to the user.
+Determine the deliverable, what a consumer ultimately gets. For an application
+or software library this is the code, but it could also be data, content,
+configuration, or something else.
+
+Find out how that product is organised into its major components.
+
+Determine the tests, checks, build steps, and tooling built around the product
+to produce, verify, and maintain it.
+
+Confirm the repo purpose in one sentence to the user.
 
 ## Check the working tree
 
@@ -90,13 +95,18 @@ session input.
 
 When the name holds no such token, ask the user to provide the session input.
 
-Confirm the session input in a single sentence to the user.
+Confirm the session input in one sentence to the user.
 
 ## Read the cited material
 
-Read everything the user cites in their session input: issue bodies and their
-comments, prior issues they reference, linked PRs, named files or symbols. For
-each cited issue, also check whether it has sub-issues:
+Read everything the user cites in their session input:
+
+- issue bodies and their comments
+- prior issues they reference
+- linked PRs
+- named files or symbols
+
+For each cited issue, also check whether it has sub-issues:
 
 ```bash
 gh api repos/{owner}/{repo}/issues/<N>/sub_issues
@@ -212,16 +222,15 @@ stopped, and end the session.
 
 Otherwise, act on every comment and review since the cutoff, oldest first:
 
-- **Feedback.** A requested change. Implement it, commit, push, and reply on the
-  PR.
+- **A requested change.** Implement it, commit, push, and reply on the PR.
 - **A resolve-conflicts request.** Run [Merge](#merge), then keep watching.
 - **A defer-merge request.** Cancel the cron job and continue to Collect,
   leaving the PR open.
 - **A question.** Answer it as a PR comment.
 
 An approving review, or a comment with nothing to act on, needs no reply. After
-handling a batch, cancel and recreate the cron job with the cutoff reset to now,
-so handled items don't resurface.
+handling a batch, cancel and recreate the cron job with the cutoff reset to now.
+This keeps handled items from resurfacing.
 
 ## Merge
 
