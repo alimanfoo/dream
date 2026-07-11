@@ -36,6 +36,25 @@ End every PR body and comment with the Claude Code footer:
 
 This lets a reader tell at a glance which items are agent-authored.
 
+## Coherence
+
+Hold coherence as the goal, not just literal compliance with the plan. Leaving
+the codebase coherent can call for touching code the plan didn't name.
+
+- **Same edit.** Fix a sibling surface your own change makes relevant, such as a
+  matching case the new code leaves uncovered.
+- **Every instance.** Fix every site that matches the task's own criterion, not
+  only the site first named.
+- **One fact, one home.** Don't add a second copy of something the code already
+  states elsewhere. Make copies derive from one place instead.
+- **Prefer removal.** Dropping or narrowing existing code can solve the task
+  better than adding beside it.
+- **Fix the gap, not the compensation.** A comment, a defensive check, or a
+  fallback that papers over a gap is a sign to fix the gap itself.
+- **Existing code isn't automatically right.** Being in the tree already isn't
+  evidence it's correct or still needed. Judge it the way you'd judge code
+  you're about to write.
+
 ## Orient to the repo
 
 Establish what the repo is for as a whole. Read the repo's own docs
