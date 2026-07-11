@@ -13,7 +13,7 @@ order.
 ## Autonomy
 
 Work autonomously to the end and do not ask the user for help. If you need to
-decide something, choose the simplest option and explain your reasoning in the
+decide something, choose the coherent option and explain your reasoning in the
 PR.
 
 Stop and ask first for anything hard to reverse: force-pushing, deleting a
