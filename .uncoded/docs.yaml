@@ -299,6 +299,7 @@ plugins/:
             Review:
             Simplify:
             Copy-edit:
+            Collect:
             Mark the PR ready for review:
       team/:
         SKILL.md:

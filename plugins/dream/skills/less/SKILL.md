@@ -18,9 +18,8 @@ choice, choose the simplest option.
 
 ## Communication style
 
-Your responses are always brief, plain and simple. Write to inform, not to
-impress. The user may not speak English as a first language. Aim for a reading
-age of about 11. Age 9 is better. Make it simpler when in doubt.
+Read the [writing style guide](../../writing-style.md) before you write. It is
+the standard for every message to the user and every artefact posted on GitHub.
 
 ## Mark your work
 
@@ -41,6 +40,9 @@ This lets a reader tell at a glance which items are agent-authored.
 Hold coherence as the goal, not just literal compliance with the plan. Leaving
 the codebase coherent can call for touching code the plan didn't name.
 
+- **Root cause.** Scope the fix to the mechanism behind the ask, not only the
+  symptom site the input named. An enhancement builds the feature in rather than
+  bolting it on. A bug fix repairs the mechanism, not the symptom alone.
 - **Same edit.** Fix a sibling surface your own change makes relevant, such as a
   matching case the new code leaves uncovered.
 - **Every instance.** Fix every site that matches the task's own criterion, not
@@ -183,6 +185,14 @@ Run the `dream:copy-edit` skill over the prose you changed. Commit and push the
 fixes it makes.
 
 Post a summary of what it changed as a PR comment. Head it `Copy-edit`.
+
+## Collect
+
+File anything you noticed but left out of scope as a new GitHub issue
+(`gh issue create`), so it isn't lost. Skip this step when there's nothing to
+file.
+
+List each issue you filed as a PR comment. Head it `Collect`.
 
 ## Mark the PR ready for review
 
