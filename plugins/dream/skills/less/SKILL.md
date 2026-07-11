@@ -190,6 +190,39 @@ Post a summary of what it changed as a PR comment. Head it `Copy-edit`.
 
 Mark the PR ready for review.
 
+## Watch for review
+
+Keep watching the PR instead of ending here. Capture the cutoff now:
+`date -u +%Y-%m-%dT%H:%M:%SZ`. Create a recurring cron job (`CronCreate`) that
+runs every 10 minutes:
+
+```bash
+SHARED_LOGIN=$(gh api user --jq .login)
+gh pr view <N> --json comments,reviews,state \
+  --jq "{state, comments: [.comments[] | select(.author.login == \"$SHARED_LOGIN\" and .createdAt > \"<CUTOFF>\")], reviews: [.reviews[] | select(.author.login == \"$SHARED_LOGIN\" and .submittedAt > \"<CUTOFF>\")]}"
+```
+
+Match your own login, not the user's. You and the user post through the same
+account, so only the cutoff timestamp tells your posts from their reply. Idle
+between firings.
+
+When `state` is `MERGED`, cancel the cron job and continue to Collect. When
+`state` is `CLOSED`, cancel the cron job, post a comment naming where the work
+stopped, and end the session.
+
+Otherwise, act on every comment and review since the cutoff, oldest first:
+
+- **Feedback.** A requested change. Implement it, commit, push, and reply on the
+  PR.
+- **A resolve-conflicts request.** Run [Merge](#merge), then keep watching.
+- **A defer-merge request.** Cancel the cron job and continue to Collect,
+  leaving the PR open.
+- **A question.** Answer it as a PR comment.
+
+An approving review, or a comment with nothing to act on, needs no reply. After
+handling a batch, cancel and recreate the cron job with the cutoff reset to now,
+so handled items don't resurface.
+
 ## Merge
 
 Bring the branch up to date with `main` (`git fetch origin main`, then merge or

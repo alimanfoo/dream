@@ -300,6 +300,7 @@ plugins/:
             Simplify:
             Copy-edit:
             Mark the PR ready for review:
+            Watch for review:
             Merge:
             Collect:
       team/:
