@@ -181,10 +181,8 @@ Post the returned plan as a PR comment. Head it `Plan`.
 
 ## Implement
 
-Implement the plan.
-
-Run the tests you found before committing. Commit each step with a short
-subject. Push the branch.
+Implement the plan, one step at a time. For each step: run the tests you found,
+commit with a short subject, and push.
 
 ## Review
 
