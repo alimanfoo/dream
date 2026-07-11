@@ -70,12 +70,12 @@ configuration, or something else.
 
 Find out how that product is organised into its major components.
 
-Determine the tests, checks, build steps, and tooling built around the product
-to produce, verify, and maintain it.
-
 Confirm the repo purpose in one sentence to the user.
 
 ## Find the tests and checks
+
+Determine the tests, checks, build steps, and tooling built around the product
+to produce, verify, and maintain it.
 
 Find the project's test command. Look in the README, `AGENTS.md`, `CLAUDE.md`, a
 Makefile, or `pyproject.toml`/`package.json` scripts. Run it yourself before
