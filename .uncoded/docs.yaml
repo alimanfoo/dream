@@ -299,9 +299,9 @@ plugins/:
             Review:
             Simplify:
             Copy-edit:
+            Mark the PR ready for review:
             Merge:
             Collect:
-            Mark the PR ready for review:
       team/:
         SKILL.md:
           Dream team:

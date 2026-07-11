@@ -186,6 +186,10 @@ fixes it makes.
 
 Post a summary of what it changed as a PR comment. Head it `Copy-edit`.
 
+## Mark the PR ready for review
+
+Mark the PR ready for review.
+
 ## Merge
 
 Bring the branch up to date with `main` (`git fetch origin main`, then merge or
@@ -199,7 +203,3 @@ File anything you noticed but left out of scope as a new GitHub issue
 file.
 
 List each issue you filed as a PR comment. Head it `Collect`.
-
-## Mark the PR ready for review
-
-Mark the PR ready for review.
