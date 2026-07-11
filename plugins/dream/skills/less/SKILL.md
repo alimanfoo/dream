@@ -186,6 +186,12 @@ fixes it makes.
 
 Post a summary of what it changed as a PR comment. Head it `Copy-edit`.
 
+## Merge
+
+Bring the branch up to date with `main` (`git fetch origin main`, then merge or
+rebase). Resolve any conflicts yourself and commit the resolution. Push the
+branch.
+
 ## Collect
 
 File anything you noticed but left out of scope as a new GitHub issue
