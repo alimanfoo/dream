@@ -229,7 +229,8 @@ comment naming where the work stopped, and end the session.
 Otherwise, act on every comment and review since the cutoff, oldest first:
 
 - **A requested change.** Implement it, commit, push, and reply on the PR.
-- **A resolve-conflicts request.** Run [Merge](#merge), then keep watching.
+- **A resolve-conflicts request.** Continue to [Merge](#merge), then keep
+  watching.
 - **A defer-merge request.** Cancel the cron job and continue to
   [Collect](#collect), leaving the PR open.
 - **A question.** Answer it as a PR comment.
