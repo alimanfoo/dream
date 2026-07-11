@@ -251,4 +251,7 @@ File anything you noticed but left out of scope as a new GitHub issue
 (`gh issue create`), so it isn't lost. Skip this step when there's nothing to
 file.
 
+File every bug. Cap maintenance issues at two, picking the ones that affect the
+most code and cut the most maintenance burden.
+
 List each issue you filed as a PR comment. Head it `Collect`.
