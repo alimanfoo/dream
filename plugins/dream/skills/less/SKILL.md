@@ -16,6 +16,9 @@ Work autonomously to the end and do not ask the user for help. If you need to
 decide something, choose the simplest option and explain your reasoning in the
 PR.
 
+Stop and ask first for anything hard to reverse: force-pushing, deleting a
+branch, rewriting history, or a destructive change outside this repo.
+
 ## Coherence
 
 Hold coherence as the goal, not just literal compliance with the plan. Leaving
@@ -38,6 +41,12 @@ the codebase coherent can call for touching code the plan didn't name.
 - **Existing code isn't automatically right.** Being in the tree already isn't
   evidence it's correct or still needed. Judge it the way you'd judge code
   you're about to write.
+
+## Don't over-build
+
+Add nothing the task doesn't need. Coherence can call for touching code outside
+the plan. It never calls for a speculative abstraction, a premature
+generalisation, or a half-finished extra feature the task didn't ask for.
 
 ## Communication style
 
