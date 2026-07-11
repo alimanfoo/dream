@@ -190,7 +190,7 @@ Post a summary of what it changed as a PR comment. Head it `Copy-edit`.
 
 Bring the branch up to date with `main` (`git fetch origin main`, then merge or
 rebase). Resolve any conflicts yourself and commit the resolution. Push the
-branch.
+branch. Don't merge the PR itself. That's the user's call.
 
 ## Collect
 
