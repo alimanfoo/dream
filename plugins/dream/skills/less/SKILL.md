@@ -222,16 +222,16 @@ Match your own login, not the user's. You and the user post through the same
 account, so only the cutoff timestamp tells your posts from their reply. Idle
 between firings.
 
-When `state` is `MERGED`, cancel the cron job and continue to Collect. When
-`state` is `CLOSED`, cancel the cron job, post a comment naming where the work
-stopped, and end the session.
+When `state` is `MERGED`, cancel the cron job and continue to
+[Collect](#collect). When `state` is `CLOSED`, cancel the cron job, post a
+comment naming where the work stopped, and end the session.
 
 Otherwise, act on every comment and review since the cutoff, oldest first:
 
 - **A requested change.** Implement it, commit, push, and reply on the PR.
 - **A resolve-conflicts request.** Run [Merge](#merge), then keep watching.
-- **A defer-merge request.** Cancel the cron job and continue to Collect,
-  leaving the PR open.
+- **A defer-merge request.** Cancel the cron job and continue to
+  [Collect](#collect), leaving the PR open.
 - **A question.** Answer it as a PR comment.
 
 An approving review, or a comment with nothing to act on, needs no reply. After
