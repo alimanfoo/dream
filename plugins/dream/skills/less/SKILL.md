@@ -70,7 +70,7 @@ configuration, or something else.
 
 Find out how that product is organised into its major components.
 
-Confirm the repo purpose in one sentence to the user.
+Confirm the repo purpose and product in one sentence to the user.
 
 ## Find the tests and checks
 
