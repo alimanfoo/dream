@@ -204,8 +204,6 @@ Post a summary of what it changed as a PR comment. Head it `Simplify`.
 Run the `dream:copy-edit` skill over the prose you changed. Commit and push the
 fixes it makes.
 
-Post a summary of what it changed as a PR comment. Head it `Copy-edit`.
-
 ## Mark the PR ready for review
 
 Mark the PR ready for review.
