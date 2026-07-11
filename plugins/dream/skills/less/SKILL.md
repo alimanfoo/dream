@@ -32,6 +32,10 @@ the codebase coherent can call for touching code the plan didn't name.
   matching case the new code leaves uncovered.
 - **Every instance.** Fix every site that matches the task's own criterion, not
   only the site first named.
+- **Read beyond the diff.** Check the siblings, peer files, and callers around a
+  change, not only the touched lines. A diff undersells what's relevant.
+- **Read what you removed.** Confirm any invariant a deleted or replaced line
+  enforced is still enforced somewhere, not just gone.
 - **One fact, one home.** Make copies derive from one place instead of adding a
   second copy of something the code already states elsewhere.
 - **Prefer removal.** Dropping or narrowing existing code can solve the task
@@ -47,6 +51,10 @@ the codebase coherent can call for touching code the plan didn't name.
 Add nothing the task doesn't need. Coherence can call for touching code outside
 the plan. It never calls for a speculative abstraction, a premature
 generalisation, or a half-finished extra feature the task didn't ask for.
+
+Before adding a test, check, or doc, ask what behaviour it defends and who the
+consumer is. Drop it if the answer is only decorative surface: an arbitrary
+constant, a docstring phrasing, a count nothing depends on.
 
 ## Communication style
 
