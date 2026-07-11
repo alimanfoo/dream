@@ -197,8 +197,6 @@ explain why in one sentence.
 
 Run the `/simplify` skill on the changes. Commit and push the fixes it makes.
 
-Post a summary of what it changed as a PR comment. Head it `Simplify`.
-
 ## Copy-edit
 
 Run the `dream:copy-edit` skill over the prose you changed. Commit and push the
