@@ -75,6 +75,16 @@ to produce, verify, and maintain it.
 
 Confirm the repo purpose in one sentence to the user.
 
+## Find the tests and checks
+
+Find the project's test command. Look in the README, `AGENTS.md`, `CLAUDE.md`, a
+Makefile, or `pyproject.toml`/`package.json` scripts. Run it yourself before
+every commit. A commit hook rarely runs the test suite.
+
+Find any codegen a commit hook doesn't run, such as a stub generator, an OpenAPI
+client refresh, or an index sync. Run it after an edit that needs it, so the
+generated files match the source before you commit.
+
 ## Check the working tree
 
 Check the working tree. Stop and tell the user if it has uncommitted changes.
@@ -173,7 +183,8 @@ Post the returned plan as a PR comment. Head it `Plan`.
 
 Implement the plan.
 
-Commit each step with a short subject. Push the branch.
+Run the tests you found before committing. Commit each step with a short
+subject. Push the branch.
 
 ## Review
 
