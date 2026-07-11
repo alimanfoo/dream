@@ -16,25 +16,6 @@ Work autonomously to the end and do not ask the user for help. If you need to
 make a decision, make it and explain it in your PR. If you need to make a
 choice, choose the simplest option.
 
-## Communication style
-
-Read the [writing style guide](../../writing-style.md) before you write. It is
-the standard for every message to the user and every artefact posted on GitHub.
-
-## Mark your work
-
-End every commit with the `Co-Authored-By` trailer:
-
-```text
-Co-Authored-By: Claude <claude@anthropic.com>
-```
-
-End every PR body and comment with the Claude Code footer:
-
-> 🤖 Generated with [Claude Code](https://claude.com/claude-code)
-
-This lets a reader tell at a glance which items are agent-authored.
-
 ## Coherence
 
 Hold coherence as the goal, not just literal compliance with the plan. Leaving
@@ -56,6 +37,25 @@ the codebase coherent can call for touching code the plan didn't name.
 - **Existing code isn't automatically right.** Being in the tree already isn't
   evidence it's correct or still needed. Judge it the way you'd judge code
   you're about to write.
+
+## Communication style
+
+Read the [writing style guide](../../writing-style.md) before you write. It is
+the standard for every message to the user and every artefact posted on GitHub.
+
+## Mark your work
+
+End every commit with the `Co-Authored-By` trailer:
+
+```text
+Co-Authored-By: Claude <claude@anthropic.com>
+```
+
+End every PR body and comment with the Claude Code footer:
+
+> 🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+This lets a reader tell at a glance which items are agent-authored.
 
 ## Orient to the repo
 
