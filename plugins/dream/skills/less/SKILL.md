@@ -1,7 +1,8 @@
 ---
 name: less
 description:
-  A minimal autonomous developer skill for implementing smaller tasks.
+  A minimal autonomous developer skill for implementing smaller tasks. Use only
+  when the user explicitly runs /dream:less.
 ---
 
 # Dream Less
@@ -20,6 +21,20 @@ choice, choose the simplest option.
 Your responses are always brief, plain and simple. Write to inform, not to
 impress. The user may not speak English as a first language. Aim for a reading
 age of about 11. Age 9 is better. Make it simpler when in doubt.
+
+## Mark your work
+
+End every commit with the `Co-Authored-By` trailer:
+
+```text
+Co-Authored-By: Claude <claude@anthropic.com>
+```
+
+End every PR body and comment with the Claude Code footer:
+
+> 🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+This lets a reader tell at a glance which items are agent-authored.
 
 ## Orient to the repo
 
