@@ -108,6 +108,22 @@ Spell out the action and target per row
 (`re-frame → new issue, references #155`, `reinforce → comment on #142`). Each
 row is then self-contained, so the user doesn't have to ask what it does.
 
+Under auto-collect, cap the table once it's built, before drafting anything.
+With no user at the gate to redirect a candidate, an unattended sweep would
+otherwise file every row the table already decided to open. Rank the rows you
+decided were `file fresh` or `re-frame` within each category:
+
+- **Bug:** how directly the behaviour gap hits a real consumer.
+- **Maintenance:** how much drift or duplication the surface causes.
+- **Enhancement:** how strong the expected value is.
+
+Keep the top three bugs, the top two maintenance items, and the top one
+enhancement. Re-decide the rest as `drop` in the table, with the reason
+`capped by auto-collect`. This is the cap standing in for the user's redirect:
+it happens once, on the table, then drafting and sharing continue as usual. Not
+under auto-collect, skip it: the user's acceptance at the gate already bounds
+volume.
+
 Draft the exact issue or comment text for every row that isn't a plain `drop`,
 before sharing anything with the user. Write the drafts to a temporary file
 outside the repo.
@@ -127,9 +143,10 @@ End it with one of these two, depending on
 
 Do not rely on an unshared draft for GitHub-visible text.
 
-- **Drop**: duplicate of an existing open issue, or fails the bar for filing.
-  For a duplicate, you may comment on the existing issue if the new sighting
-  adds evidence (a second occurrence, a different angle).
+- **Drop**: duplicate of an existing open issue, fails the bar for filing, or
+  cut by the auto-collect cap above. For a duplicate, you may comment on the
+  existing issue if the new sighting adds evidence (a second occurrence, a
+  different angle).
 - **Reinforce**: related to an existing open issue but not identical. Comment on
   the open issue with the new angle rather than opening a new one.
 - **Re-frame**: recurrence on a surface with prior issues, open or closed. File
