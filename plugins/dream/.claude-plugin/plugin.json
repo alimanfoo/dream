@@ -1,7 +1,7 @@
 {
   "name": "dream",
   "description": "Tools for delivering great code, keeping the codebase coherent, and doing both with minimal user input.",
-  "version": "8.3.0",
+  "version": "8.3.1",
   "author": {
     "name": "Alistair Miles"
   }

@@ -220,14 +220,16 @@ Write the survey as turn output, a numbered list, not a `SendMessage`. Grace
 expects no reply. It feeds your own sketches next, and the
 `dream:review-design-reinvention` subagent you launch at Design review.
 
-#### Step 4.2: Generate design sketches
+#### Step 4.2: Send your design sketches to Grace via `SendMessage`
 
-Grace's second message asks for design sketches. Sketch a spread of rough design
-approaches. Each is a few lines naming one way to tackle the work and the shape
-it would take, not a worked design. Draw on the survey you just wrote where it
-helps. Reach for several across different approaches. Send the numbered list to
-Grace via SendMessage, signed `From Junio.` The reply is a terminal hand-off.
-Skip the RSVP.
+Grace's second message asks for design sketches. Send them to Grace as a
+numbered list via `SendMessage`. Only `SendMessage` reaches Grace. Plain turn
+output does not. Sign off `From Junio.`. The reply is a terminal hand-off. Skip
+the RSVP.
+
+Each sketch is a few lines naming one way to tackle the work and the shape it
+would take, not a worked design. Reach for a spread across different approaches,
+drawing on the survey you just wrote where it helps.
 
 #### Step 4.3: Read the Design Options
 
