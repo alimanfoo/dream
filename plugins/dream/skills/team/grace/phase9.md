@@ -96,6 +96,20 @@ Make one call per candidate: drop, reinforce, re-frame, or file fresh. Use the
 source observations, the issue history, and what the Test step showed. Don't
 send candidates back to Ralph or Junio for another round of judgement.
 
+Under auto-collect, cap what reaches the table before you build it. With no user
+at the gate to decline a candidate, an unattended sweep would otherwise file
+everything that clears the bar. Rank the candidates decided `file fresh` or
+`re-frame` within each category, using the bar each already cleared:
+
+- **Bug:** how directly the behaviour gap hits a real consumer.
+- **Maintenance:** how much drift or duplication the surface causes.
+- **Enhancement:** how strong the value hypothesis is.
+
+Keep the top three bugs, the top two maintenance items, and the top one
+enhancement. Re-decide the rest as `drop`, with the reason
+`capped by auto-collect`. Not under auto-collect, the user's acceptance at the
+gate already bounds volume, so no cap applies.
+
 Build the decision table. For each candidate, show the finding, the decision,
 the concrete action it maps to with its target, and the reason. The decision
 word alone doesn't tell the user what will happen:
@@ -127,9 +141,10 @@ End it with one of these two, depending on
 
 Do not rely on an unshared draft for GitHub-visible text.
 
-- **Drop**: duplicate of an existing open issue, or fails the bar for filing.
-  For a duplicate, you may comment on the existing issue if the new sighting
-  adds evidence (a second occurrence, a different angle).
+- **Drop**: duplicate of an existing open issue, fails the bar for filing, or
+  cut by the auto-collect cap above. For a duplicate, you may comment on the
+  existing issue if the new sighting adds evidence (a second occurrence, a
+  different angle).
 - **Reinforce**: related to an existing open issue but not identical. Comment on
   the open issue with the new angle rather than opening a new one.
 - **Re-frame**: recurrence on a surface with prior issues, open or closed. File
