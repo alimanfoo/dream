@@ -96,20 +96,6 @@ Make one call per candidate: drop, reinforce, re-frame, or file fresh. Use the
 source observations, the issue history, and what the Test step showed. Don't
 send candidates back to Ralph or Junio for another round of judgement.
 
-Under auto-collect, cap what reaches the table before you build it. With no user
-at the gate to decline a candidate, an unattended sweep would otherwise file
-everything that clears the bar. Rank the candidates decided `file fresh` or
-`re-frame` within each category, using the bar each already cleared:
-
-- **Bug:** how directly the behaviour gap hits a real consumer.
-- **Maintenance:** how much drift or duplication the surface causes.
-- **Enhancement:** how strong the value hypothesis is.
-
-Keep the top three bugs, the top two maintenance items, and the top one
-enhancement. Re-decide the rest as `drop`, with the reason
-`capped by auto-collect`. Not under auto-collect, the user's acceptance at the
-gate already bounds volume, so no cap applies.
-
 Build the decision table. For each candidate, show the finding, the decision,
 the concrete action it maps to with its target, and the reason. The decision
 word alone doesn't tell the user what will happen:
@@ -121,6 +107,23 @@ word alone doesn't tell the user what will happen:
 Spell out the action and target per row
 (`re-frame → new issue, references #155`, `reinforce → comment on #142`). Each
 row is then self-contained, so the user doesn't have to ask what it does.
+
+Under auto-collect, cap the table once it's built, before drafting anything.
+With no user at the gate to redirect a candidate, an unattended sweep would
+otherwise file every row the table already decided to open. Rank the rows
+decided `file fresh` or `re-frame` within each category, using the bar each
+already cleared:
+
+- **Bug:** how directly the behaviour gap hits a real consumer.
+- **Maintenance:** how much drift or duplication the surface causes.
+- **Enhancement:** how strong the value hypothesis is.
+
+Keep the top three bugs, the top two maintenance items, and the top one
+enhancement. Re-decide the rest as `drop` in the table, with the reason
+`capped by auto-collect`. This is the cap standing in for the user's redirect:
+it happens once, on the table, then drafting and sharing continue as usual. Not
+under auto-collect, skip it: the user's acceptance at the gate already bounds
+volume.
 
 Draft the exact issue or comment text for every row that isn't a plain `drop`,
 before sharing anything with the user. Write the drafts to a temporary file
