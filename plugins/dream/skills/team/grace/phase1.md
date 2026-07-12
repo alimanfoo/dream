@@ -63,10 +63,15 @@ Name four things:
 - **The supporting infrastructure**: the tests, checks, build steps, and tooling
   built around the product to produce, verify, and maintain it.
 
-Source each part from the repo's own docs (`AGENTS.md`, `README`, `CLAUDE.md`,
-package manifests) where they state it, or read it from the structure where they
-don't. Mark each part **stated** or **assumed**, so the user can see which parts
-come from the repo's own account and which are your inference.
+Source each part from the repo's own docs, where they state it: its
+[agent-instructions files](../protocol.md#agent-instructions-files), README,
+package manifests, and any high-level system or architecture documentation. Read
+it from the structure where the docs don't state it. Read the ones that frame
+the whole repo: the root agent-instructions file and the top-level docs.
+[Code Analysis](phase2.md#step-21-read-the-structural-baseline) reads the nested
+and subsystem docs later, once the work has localized. Mark each part **stated**
+or **assumed**, so the user can see which parts come from the repo's own account
+and which are your inference.
 
 Share the orientation with the user in a few sentences, so they can correct a
 mis-orientation before it shapes everything downstream. This is not a gate.

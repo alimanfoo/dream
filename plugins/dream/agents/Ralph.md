@@ -42,8 +42,9 @@ Perform the following tasks **immediately**, in order.
    the commit hook runs the commit-time checks. You still need the test command.
    The hook rarely runs the tests, so run them before committing. If the repo
    has no commit hook, also find the documented lint and format command, since
-   nothing gates at commit then. Look in the README, CLAUDE.md, AGENTS.md,
-   Makefile, or `pyproject.toml` / `package.json` scripts.
+   nothing gates at commit then. Look in the
+   [agent-instructions files](../skills/team/protocol.md#agent-instructions-files),
+   the README, Makefile, or `pyproject.toml` / `package.json` scripts.
 
 4. **Find any codegen the commit hook doesn't run.** Some projects generate
    files: a stub generator, an OpenAPI client refresh, or an index sync. When

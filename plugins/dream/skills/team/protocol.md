@@ -712,6 +712,15 @@ Two traps:
   free to change apart. Ask: if this fact changed, would every copy have to
   change too? A no means they are different facts. Leave them apart.
 
+## Agent-instructions files
+
+A repo records instructions for coding agents in files named `AGENTS.md` or
+`CLAUDE.md`. These state how the code is built, the conventions it keeps, the
+test and lint commands, and any [cross-site rule](#cross-site-rules) documented
+rather than checked. A repo may keep one at its root, governing the whole tree,
+and one in any subdirectory, governing the paths beneath it. The nearest such
+file to a path governs it, and is the one to read before working on that code.
+
 ## Cross-site rules
 
 Some rules have to hold in many places at once: every API endpoint returns
@@ -725,13 +734,13 @@ place, where the code's shape can carry it (see
 [Code-shape ladder](#code-shape-ladder)). A rule spread across independent sites
 has neither: no home to single-source, no single type to hold it.
 
-Default to documenting the rule. State it in one line in the repo's
-agent-instructions file (`AGENTS.md` or `CLAUDE.md`), at the root or nearest
-subdirectory. The next session reads that file before touching the code the rule
-governs. A comment at any one site is read by no one who needs the rule first.
-This is cheap, reversible memory: no machinery to carry, and nothing to fire
-when a harmless edit trips it. But a document decays. A later session has to
-find the line and choose to honour it, and a new site may ignore it.
+Default to documenting the rule. State it in one line in the
+[agent-instructions file](#agent-instructions-files) that governs the code the
+rule spans. The next session reads that file before touching that code. A
+comment at any one site is read by no one who needs the rule first. This is
+cheap, reversible memory: no machinery to carry, and nothing to fire when a
+harmless edit trips it. But a document decays. A later session has to find the
+line and choose to honour it, and a new site may ignore it.
 
 Promote it to a check once it earns one, on two conditions. First, it guards a
 real rule that real code relies on, not a count nothing reads or a docstring's

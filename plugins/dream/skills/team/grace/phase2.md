@@ -9,6 +9,13 @@ the steps below in sequence.
 
 ## Step 2.1: Read the structural baseline
 
+Start with the documentation governing the paths the work touches. This means
+the [agent-instructions files](../protocol.md#agent-instructions-files) nearest
+those paths, and any system or technical documentation for the subsystem. They
+carry how the code is meant to work and the conventions it keeps, including any
+[cross-site rule](../protocol.md#cross-site-rules) held by documentation rather
+than a check. Read them before tracing the code, and cite them in the baseline.
+
 Read the relevant code with one question in mind: _how does this work?_ The
 baseline is how the code is built and what it actually does. Trace the
 mechanism, the layers, the callers and siblings, the patterns. Name the
@@ -20,10 +27,11 @@ architecture the work touches:
 - the conventions the surfaces follow, such as a shared error shape, a naming
   pattern, or a structural rule
 
-For each, say whether a check enforces it or it holds only by convention. This
-is the structural baseline the Design later builds on. State it factually. Name
-the boundary that exists, don't propose one. Keep it to the architecture the
-session's surfaces touch, not a tour of the whole codebase.
+For each, say how it holds: a check enforces it, documentation records it, or it
+holds only by unwritten convention. This is the structural baseline the Design
+later builds on. State it factually. Name the boundary that exists, don't
+propose one. Keep it to the architecture the session's surfaces touch, not a
+tour of the whole codebase.
 
 Test the session input's factual claims as you go, whoever made them. A bug
 report asserts a defect. Confirm the code actually misbehaves rather than taking
