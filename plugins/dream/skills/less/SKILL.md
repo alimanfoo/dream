@@ -20,8 +20,9 @@ deleting a branch, rewriting history, or a destructive change outside this repo.
 
 ## Coherence
 
-Hold coherence as the goal, not just literal compliance with the plan. Leaving
-the codebase coherent can call for touching code the plan didn't name.
+Hold coherence of the whole codebase as the goal, not just literal compliance
+with the plan. Any work you do must reach a coherent endpoint, even when that
+means touching code the plan didn't name.
 
 - **Root cause.** Scope the fix to the mechanism behind the ask, not only the
   symptom site the input named. An enhancement builds the feature in rather than
