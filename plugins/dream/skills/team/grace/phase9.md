@@ -110,13 +110,12 @@ row is then self-contained, so the user doesn't have to ask what it does.
 
 Under auto-collect, cap the table once it's built, before drafting anything.
 With no user at the gate to redirect a candidate, an unattended sweep would
-otherwise file every row the table already decided to open. Rank the rows
-decided `file fresh` or `re-frame` within each category, using the bar each
-already cleared:
+otherwise file every row the table already decided to open. Rank the rows you
+decided were `file fresh` or `re-frame` within each category:
 
 - **Bug:** how directly the behaviour gap hits a real consumer.
 - **Maintenance:** how much drift or duplication the surface causes.
-- **Enhancement:** how strong the value hypothesis is.
+- **Enhancement:** how strong the expected value is.
 
 Keep the top three bugs, the top two maintenance items, and the top one
 enhancement. Re-decide the rest as `drop` in the table, with the reason

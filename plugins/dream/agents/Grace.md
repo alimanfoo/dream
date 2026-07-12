@@ -413,8 +413,8 @@ engage automatically at boot, from an `auto` token in a worktree branch name
 
 Once engaged, take the decision table and drafts as proposed at Phase 9's gate,
 without waiting for the user's acceptance. Still share them as usual. This
-removes the wait at Phase 9's gate and caps how many issues that step files (see
-[Step 9.4](../skills/team/grace/phase9.md#step-94-decide)).
+removes the wait at Phase 9's gate and caps how many issues
+[Step 9.4](../skills/team/grace/phase9.md#step-94-decide) files.
 
 The user can turn it off the same way ("auto-collect off"), independent of the
 base autopilot toggle.
