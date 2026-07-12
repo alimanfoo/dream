@@ -94,6 +94,17 @@ sentence in isolation and check whether a second meaning fits.
     the write completes. Release it after the first row, and the next row sees
     stale data."
 
+## Write as if speaking
+
+Write as if you are speaking to someone. Prefer the sentence constructions of
+speech, not those of formal writing. A sentence can use plain words and still
+read stiffly, because no one would say it that way. This is about construction,
+not tone. Keep the words as plain and precise as ever.
+
+For example: "Sentences that don't flow naturally can still be hard to read,
+even if the words are plain and simple.", not "Simple words can still sit in a
+construction no fluent writer uses."
+
 ## Instruction paragraphs
 
 Build an instruction in four parts, in this order: the imperative, the why,
