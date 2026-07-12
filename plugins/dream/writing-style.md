@@ -63,12 +63,13 @@ and the writer. Evidence that follows confirms it rather than tests it.
 ## One idea per sentence
 
 - Put one idea in each sentence.
-- Keep an instruction to 20 words or fewer. Keep a description to 25 or fewer.
-  For example:
-  - "If the request times out, log the error and retry once. A single retry
-    usually clears a brief network glitch.", not "If the request times out, log
-    the error and retry once, because a single retry usually clears a brief
-    network glitch."
+- Keep an instruction to about 25 words, a description to about 30. A longer
+  sentence is fine when it holds one idea and reads smoothly. Split it when it
+  holds two. For example:
+  - "Warm the cache on startup. The first request is then as fast as the rest.",
+    not "Warm the cache on startup so the first request is as fast as the rest,
+    because otherwise it pays the full cost of filling the cache while every
+    later request reads from it."
 - Use active voice. For example:
   - "The parser reads the file before validation.", not "The file is read by the
     parser before validation."
