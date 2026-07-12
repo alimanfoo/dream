@@ -714,7 +714,7 @@ Two traps:
 
 ## Agent-instructions files
 
-A repo records instructions for coding agents in files named `AGENTS.md` or
+A repo records instructions for coding agents in files such as `AGENTS.md` or
 `CLAUDE.md`. These state how the code is built, the conventions it keeps, the
 test and lint commands, and any [cross-site rule](#cross-site-rules) documented
 rather than checked. A repo may keep one at its root, governing the whole tree,

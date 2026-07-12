@@ -9,12 +9,12 @@ the steps below in sequence.
 
 ## Step 2.1: Read the structural baseline
 
-Start with the documentation governing the paths the work touches. This means
-the [agent-instructions files](../protocol.md#agent-instructions-files) nearest
+Read the documentation governing the paths the work touches. This means the
+[agent-instructions files](../protocol.md#agent-instructions-files) nearest
 those paths, and any system or technical documentation for the subsystem. They
-carry how the code is meant to work and the conventions it keeps, including any
-[cross-site rule](../protocol.md#cross-site-rules) held by documentation rather
-than a check. Read them before tracing the code, and cite them in the baseline.
+describe how the code is meant to work and the conventions it keeps, including
+any [cross-site rules](../protocol.md#cross-site-rules) held by documentation.
+Read them before tracing the code, and cite them in the baseline.
 
 Read the relevant code with one question in mind: _how does this work?_ The
 baseline is how the code is built and what it actually does. Trace the
