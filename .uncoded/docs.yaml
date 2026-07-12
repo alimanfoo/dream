@@ -301,6 +301,7 @@ plugins/:
             Review:
             Simplify:
             Copy-edit:
+            Write the PR description:
             Mark the PR ready for review:
             Watch for review:
             Merge:

@@ -215,6 +215,17 @@ Run the `/simplify` skill on the changes. Commit and push the fixes it makes.
 Run the `dream:copy-edit` skill over the prose you changed. Commit and push the
 fixes it makes.
 
+## Write the PR description
+
+Replace the `WIP` placeholder with the real description, now that the work is
+final. Check the repo for contribution rules (`CONTRIBUTING.md`, a PR template)
+and follow them. Otherwise:
+
+- Open with a bullet list of issues addressed: `Closes #N` for each one the PR
+  fully resolves, `Related to #N` for any it partly addresses.
+- Follow with one to three sentences on what the PR does and why, for a reader
+  who hasn't seen the session.
+
 ## Mark the PR ready for review
 
 Mark the PR ready for review.
