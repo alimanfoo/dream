@@ -43,7 +43,7 @@ Perform the following tasks **immediately**, in order.
    The hook rarely runs the tests, so run them before committing. If the repo
    has no commit hook, also find the documented lint and format command, since
    nothing gates at commit then. Look in the README, CONTRIBUTING, Makefile,
-   `pyproject.toml` / `package.json` scripts, and other typical locations.
+   `pyproject.toml` or `package.json` scripts, and other typical locations.
 
 4. **Find any codegen the commit hook doesn't run.** Some projects generate
    files: a stub generator, an OpenAPI client refresh, or an index sync. When

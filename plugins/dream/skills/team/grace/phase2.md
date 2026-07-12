@@ -9,7 +9,7 @@ the steps below in sequence.
 
 ## Step 2.1: Read the structural baseline
 
-Read the documentation governing the paths the work touches. This means the
+Read the documentation governing the paths that the work touches. This means the
 [agent-instructions files](../protocol.md#agent-instructions-files) nearest
 those paths, and any system or technical documentation for the subsystem. They
 describe how the code is meant to work and the conventions it keeps, including
@@ -27,11 +27,11 @@ architecture the work touches:
 - the conventions the surfaces follow, such as a shared error shape, a naming
   pattern, or a structural rule
 
-For each, say how it holds: a check enforces it, documentation records it, or it
-holds only by unwritten convention. This is the structural baseline the Design
-later builds on. State it factually. Name the boundary that exists, don't
-propose one. Keep it to the architecture the session's surfaces touch, not a
-tour of the whole codebase.
+For each, say how it holds: a check enforces it, documentation records it, or
+custom alone holds it. This is the structural baseline the Design later builds
+on. State it factually. Name the boundary that exists, don't propose one. Keep
+it to the architecture the session's surfaces touch, not a tour of the whole
+codebase.
 
 Test the session input's factual claims as you go, whoever made them. A bug
 report asserts a defect. Confirm the code actually misbehaves rather than taking

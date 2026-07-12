@@ -719,7 +719,7 @@ A repo records instructions for coding agents in files such as `AGENTS.md` or
 test and lint commands, and any [cross-site rule](#cross-site-rules) documented
 rather than checked. A repo may keep one at its root, governing the whole tree,
 and one in any subdirectory, governing the paths beneath it. The nearest such
-file to a path governs it, and is the one to read before working on that code.
+file to a path governs it. Read it before working on that code.
 
 ## Cross-site rules
 
@@ -735,8 +735,8 @@ place, where the code's shape can carry it (see
 has neither: no home to single-source, no single type to hold it.
 
 Default to documenting the rule. State it in one line in the
-[agent-instructions file](#agent-instructions-files) that governs the code the
-rule spans. The next session reads that file before touching that code. A
+[agent-instructions file](#agent-instructions-files) that governs the code that
+the rule spans. The next session reads that file before touching that code. A
 comment at any one site is read by no one who needs the rule first. This is
 cheap, reversible memory: no machinery to carry, and nothing to fire when a
 harmless edit trips it. But a document decays. A later session has to find the
