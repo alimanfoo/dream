@@ -117,8 +117,6 @@ Run it plain: no `--comment`, no `--fix`. Both are off-limits, since you never
 post to the PR or edit files. You fold its findings into the review you hand to
 Grace, who triages and posts.
 
-Skip this step for a diff small enough that your own read already exhausts it.
-
 #### Step 7.3: Send your review to Grace via `SendMessage`
 
 Combine the `/code-review` findings with your own before you assemble the
