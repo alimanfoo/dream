@@ -76,24 +76,26 @@ Once you merge, it files anything it left out of scope as new issues.
 ## Unattended runs with /dream:catcher
 
 The dreamcatcher watches a repository for labelled issues and dispatches a
-dream-team session for each, one at a time. A backlog clears itself while you
-are away. Each session runs under autopilot and carries its issue to a pull
-request for you to merge. That is the same as an autopilot session you start by
-hand.
+session for each, one at a time — the dream team or the solo skill, chosen by
+the issue's label. A backlog clears itself while you are away. Each session runs
+unattended and carries its issue to a pull request for you to merge. That is the
+same as a session you start by hand.
 
 The dreamcatcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
 with `gh` signed in.
 
-Label an issue for the team and assign it to yourself. Start Claude Code from
-the main checkout of that repository, not a linked worktree, then run:
+Label an issue for the team (`dream:team`) or the solo skill (`dream:solo`) and
+assign it to yourself. Start Claude Code from the main checkout of that
+repository, not a linked worktree, then run:
 
 ```text
 /dream:catcher
 ```
 
 It watches the repository you started Claude Code in. By default it picks up
-open issues labelled `dream:team` and assigned to you. Pass a different label as
-an argument, for example `/dream:catcher auto`.
+open issues labelled `dream:team` or `dream:solo` and assigned to you,
+dispatching the matching skill. Override a label with a flag, for example
+`/dream:catcher --team-label auto`.
 
 The dreamcatcher runs in its own tmux session. Attach to it with
 `tmux attach -t dreamcatcher`, or follow its log with
@@ -103,6 +105,9 @@ session, so a session waiting for an answer is one keystroke away.
 
 How it picks work:
 
+- **Skill by label.** The `dream:team` label dispatches a team session, the
+  `dream:solo` label a solo session, for smaller tasks that need no team. An
+  issue carrying both goes to the team.
 - **One session at a time.** A session holds the slot from dispatch until its
   pull request is merged or closed, so your merge paces the next dispatch. Size
   a session by grouping issues under an umbrella issue.
