@@ -104,11 +104,14 @@ delivery. You assemble it into the review in
 
 #### Step 7.2: Widen the review with `/code-review`
 
-Run the `/code-review` skill at `high` depth to widen your read. It reviews the
-diff for correctness, reuse, simplification, and efficiency at broader coverage
-than a single pass, and returns its findings for you to weigh. Your own read is
-already pinned in [Step 7.1](#step-71-review-from-the-diff-alone), so this
-widens the review without disturbing your cold read.
+Run the `/code-review` skill at `high` depth to widen your read, pointing it at
+`git diff origin/main...HEAD`, the branch under review against its base. Diff
+against `origin/main`, not local `main`; a worktree session never freshens local
+`main`, so it can be stale or missing. It reviews the diff for correctness,
+reuse, simplification, and efficiency at broader coverage than a single pass,
+and returns its findings for you to weigh. Your own read is already pinned in
+[Step 7.1](#step-71-review-from-the-diff-alone), so this widens the review
+without disturbing your cold read.
 
 Run it plain: no `--comment`, no `--fix`. Both are off-limits, since you never
 post to the PR or edit files. You fold its findings into the review you hand to
