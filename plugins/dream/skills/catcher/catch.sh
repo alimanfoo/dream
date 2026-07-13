@@ -46,11 +46,14 @@ usage() {
 Dreamcatcher: dispatch labelled issues to dream sessions, one at a time.
 
 Usage:
-  catch.sh [--team-label <label>] [--solo-label <label>] [--assignee <who>]
-           [--interval <seconds>] [--once]
+  catch.sh [--team-label <label>] [--solo-label <label>]
+           [--solo-model <model>] [--solo-effort <effort>]
+           [--assignee <who>] [--interval <seconds>] [--once]
 
   --team-label  Issue label that dispatches a /dream:team session. Default: dream:team.
   --solo-label  Issue label that dispatches a /dream:solo session. Default: dream:solo.
+  --solo-model  Model a /dream:solo session runs under. Default: opus[1m].
+  --solo-effort Reasoning effort a /dream:solo session runs under. Default: high.
   --assignee    Whose issues to pick up. Default: @me.
   --interval    Seconds between ticks in loop mode. Default: 300.
   --linger      Minutes a finished session lingers before it is cleaned up. Default: 30.
@@ -65,6 +68,8 @@ die() { printf 'dreamcatcher: %s\n' "$*" >&2; exit 2; }
 
 team_label="dream:team"
 solo_label="dream:solo"
+solo_model="opus[1m]"
+solo_effort="high"
 assignee="@me"
 interval=300
 linger=30
@@ -74,6 +79,8 @@ while [ $# -gt 0 ]; do
   case "$1" in
     --team-label) [ $# -ge 2 ] || die "--team-label requires a value"; team_label=$2; shift 2;;
     --solo-label) [ $# -ge 2 ] || die "--solo-label requires a value"; solo_label=$2; shift 2;;
+    --solo-model) [ $# -ge 2 ] || die "--solo-model requires a value"; solo_model=$2; shift 2;;
+    --solo-effort) [ $# -ge 2 ] || die "--solo-effort requires a value"; solo_effort=$2; shift 2;;
     --assignee) [ $# -ge 2 ] || die "--assignee requires a value"; assignee=$2; shift 2;;
     --interval) [ $# -ge 2 ] || die "--interval requires a value"; interval=$2; shift 2;;
     --linger)   [ $# -ge 2 ] || die "--linger requires a value"; linger=$2; shift 2;;
@@ -237,10 +244,10 @@ clean_up_finished() {
 # predictable sibling path, with a branch name the cap, cleanup, and dedup checks
 # rely on. tmux hosts the session. The launch differs by skill: a team session
 # runs under the experimental teams feature in teammate tmux mode, a solo session
-# under neither. A solo session also pins its model and effort, because its
-# single agent would otherwise take the launcher's defaults, where the team's
-# agents carry their own. Both run in auto mode, and the narrow allow rules
-# passed at launch handle unattended writes.
+# under neither. A solo session also sets its model and effort, the --solo-model
+# and --solo-effort values, because its single agent would otherwise take the
+# launcher's defaults, where the team's agents carry their own. Both run in auto
+# mode, and the narrow allow rules passed at launch handle unattended writes.
 dispatch() {
   local n=$1 skill=$2 ts branch wt session err writes run
   ts=$(date -u +%Y%m%d-%H%M%S)
@@ -260,7 +267,7 @@ dispatch() {
   run="claude --permission-mode auto --allowedTools '$writes'"
   case "$skill" in
     team) run="CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec $run --teammate-mode tmux '/dream:team'";;
-    solo) run="exec $run --model 'opus[1m]' --effort high '/dream:solo'";;
+    solo) run="exec $run --model '$solo_model' --effort '$solo_effort' '/dream:solo'";;
     *)    log "unknown skill '$skill' for GH${n}, discarding worktree"; discard_worktree "$wt" "$branch"; return 1;;
   esac
   if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" "$run"; then

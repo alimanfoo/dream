@@ -8,8 +8,8 @@ description:
   Each session runs unattended and carries its issue to a pull request for the
   user to merge.
 argument-hint:
-  "[--team-label <label>] [--solo-label <label>] [--assignee <user>] [--interval
-  <seconds>]"
+  "[--team-label <label>] [--solo-label <label>] [--solo-model <model>]
+  [--solo-effort <effort>] [--assignee <user>] [--interval <seconds>]"
 ---
 
 # Dreamcatcher
@@ -28,8 +28,8 @@ checks, and launch it.
 ## Arguments
 
 The user may pass any option below as a `--flag value` pair, in any order:
-`--team-label`, `--solo-label`, `--assignee`, and `--interval`. Take whichever
-are present.
+`--team-label`, `--solo-label`, `--solo-model`, `--solo-effort`, `--assignee`,
+and `--interval`. Take whichever are present.
 
 ## Gather the configuration
 
@@ -42,6 +42,11 @@ resolved before launching, as a plain statement, so a misread surfaces at once.
 - **Solo label.** The label that dispatches a `/dream:solo` session. Defaults to
   `dream:solo`, likewise dedicated. An issue needs one of the two labels and the
   right assignee to be picked up. One carrying both goes to the team.
+- **Solo model.** The model a `/dream:solo` session runs under. Defaults to
+  `opus[1m]`. A solo session's single agent takes this, where the team's agents
+  carry their own model, so this governs solo dispatches alone.
+- **Solo effort.** The reasoning effort a `/dream:solo` session runs under.
+  Defaults to `high`, and governs solo dispatches alone for the same reason.
 - **Assignee.** Whose issues to pick up. Defaults to `@me`, gh's alias for the
   authenticated user.
 - **Interval.** Seconds between ticks. Defaults to 300.
@@ -78,6 +83,7 @@ tmux new-session -d -s dreamcatcher -x 220 -y 50 \
   -c "<the repository's main checkout>" \
   "bash '<absolute path to catch.sh in this skill's directory>' \
    --team-label '<team label>' --solo-label '<solo label>' \
+   --solo-model '<solo model>' --solo-effort '<solo effort>' \
    --assignee '<assignee>' --interval <interval> \
    2>&1 | tee -a dreamcatcher.log"
 ```
