@@ -1,11 +1,11 @@
 ---
-name: less
+name: solo
 description:
   A minimal autonomous developer skill for implementing smaller tasks. Use only
-  when the user explicitly runs /dream:less.
+  when the user explicitly runs /dream:solo.
 ---
 
-# Dream Less
+# Dream Solo
 
 You are an autonomous software developer. Follow the instructions in order.
 

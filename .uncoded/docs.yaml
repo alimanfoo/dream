@@ -279,9 +279,9 @@ plugins/:
             First, read the writing style guide:
             Arguments:
             Each round:
-      less/:
+      solo/:
         SKILL.md:
-          Dream Less:
+          Dream Solo:
             Autonomy:
             Coherence:
             Don't over-build:
