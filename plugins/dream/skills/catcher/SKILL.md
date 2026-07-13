@@ -3,18 +3,20 @@ name: catcher
 description:
   Only use when the user explicitly runs /dream:catcher, never on a general
   request to watch, monitor, or triage issues. It launches unattended sessions.
-  It watches a repository for labelled issues and dispatches a dream-team
-  session for each, one at a time. Each session runs under autopilot and carries
-  its issue to a pull request for the user to merge.
+  It watches a repository for labelled issues and dispatches a session for each,
+  one at a time — the dream team or the solo skill, chosen by the issue's label.
+  Each session runs unattended and carries its issue to a pull request for the
+  user to merge.
 argument-hint: "[label] [assignee] [interval]"
 ---
 
 # Dreamcatcher
 
-Watch a repository for issues marked for the team, and dispatch a fresh
-dream-team session for each. The sessions already do the work. This is the
-coordinator around them. It notices a labelled issue and dispatches a session
-for it, one at a time. The work continues while the user is away.
+Watch a repository for issues marked for the dream team or the solo skill, and
+dispatch a fresh session for each, chosen by the issue's label. The sessions
+already do the work. This is the coordinator around them. It notices a labelled
+issue and dispatches a session for it, one at a time. The work continues while
+the user is away.
 
 The coordinator is a shell script, `catch.sh`, in this skill's directory. It
 runs a tick on a loop and reads live state each time, so nothing is stored
@@ -23,24 +25,27 @@ checks, and launch it.
 
 ## Arguments
 
-Read the argument the user gives, if any. It can name the label, the assignee,
-and the interval, in any order:
+Read the argument the user gives, if any. It can name the team label, the
+assignee, and the interval, in any order:
 
 - a leading `@` marks the assignee
 - digits mark the interval in seconds
-- any other word is the label
+- any other word is the team label
 
-Take whichever are present.
+Take whichever are present. The solo label defaults; the gather step covers
+overriding it.
 
 ## Gather the configuration
 
 Every option has a default. Use what the argument named, default the rest, and
-ask only to override a default. State the label, assignee, and interval you
+ask only to override a default. State the labels, assignee, and interval you
 resolved before launching, as a plain statement, so a misread surfaces at once.
 
-- **Label.** The label that marks an issue for the team. Defaults to
-  `dream:team`, a dedicated label kept apart from labels a human reads. An issue
-  needs this label and the right assignee to be picked up.
+- **Team label.** The label that dispatches a `/dream:team` session. Defaults to
+  `dream:team`, a dedicated label kept apart from labels a human reads.
+- **Solo label.** The label that dispatches a `/dream:solo` session. Defaults to
+  `dream:solo`, likewise dedicated. An issue needs one of the two labels and the
+  right assignee to be picked up. One carrying both goes to the team.
 - **Assignee.** Whose issues to pick up. Defaults to `@me`, gh's alias for the
   authenticated user.
 - **Interval.** Seconds between ticks. Defaults to 300.
@@ -55,9 +60,9 @@ Run each check before launching. Stop and tell the user if one fails.
 - Confirm git, gh, jq, claude, and tmux are each on the PATH, with a separate
   `command -v` for each. One `command -v` over the whole list passes when any
   single tool resolves.
-- Confirm the label exists with `gh label list --search "<label>"`, which avoids
-  the 30-label default page. Offer to create it with `gh label create` if it is
-  missing.
+- Confirm each label exists with `gh label list --search "<label>"`, which
+  avoids the 30-label default page. Offer to create either with
+  `gh label create` if it is missing.
 - Confirm this is the main checkout, not a linked worktree, with
   `test -d "$(git rev-parse --show-toplevel)/.git"`. It must succeed. A linked
   worktree's `.git` is a file, so dispatched worktrees would land in the wrong
@@ -76,7 +81,8 @@ session:
 tmux new-session -d -s dreamcatcher -x 220 -y 50 \
   -c "<the repository's main checkout>" \
   "bash '<absolute path to catch.sh in this skill's directory>' \
-   --label '<label>' --assignee '<assignee>' --interval <interval> \
+   --team-label '<team label>' --solo-label '<solo label>' \
+   --assignee '<assignee>' --interval <interval> \
    2>&1 | tee -a dreamcatcher.log"
 ```
 
@@ -97,6 +103,11 @@ Then tell the user:
 
 Answer questions about the coordinator's behaviour from here.
 
+- **Skill by label.** The team label dispatches a `/dream:team` session, the
+  solo label a `/dream:solo` session. `/dream:solo` needs no agent teams
+  feature, so a solo dispatch launches without one. An issue carrying both
+  labels goes to the team. The one-at-a-time slot, worktree setup, and
+  unattended permissions are the same either way.
 - **One session at a time.** A session holds the slot from dispatch until its
   pull request is merged or closed, so your merge paces the next dispatch. This
   is a granularity choice, letting you size a session by composing issues into

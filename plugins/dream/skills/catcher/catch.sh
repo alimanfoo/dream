@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 #
-# Dreamcatcher: dispatch labelled issues to dream-team sessions, one at a time.
+# Dreamcatcher: dispatch labelled issues to dream sessions, one at a time.
+#
+# The issue's label selects the skill: the team label dispatches a /dream:team
+# session, the solo label a /dream:solo session. An issue carrying both goes to
+# the team. Everything below the choice of skill is shared.
 #
 # Each tick is stateless. It reads live truth from git, tmux, and `gh`, then
 # dispatches at most one session. Nothing is stored between ticks: the worktrees
@@ -39,16 +43,18 @@ set -uo pipefail
 
 usage() {
   cat <<'EOF'
-Dreamcatcher: dispatch labelled issues to dream-team sessions, one at a time.
+Dreamcatcher: dispatch labelled issues to dream sessions, one at a time.
 
 Usage:
-  catch.sh [--label <label>] [--assignee <who>] [--interval <seconds>] [--once]
+  catch.sh [--team-label <label>] [--solo-label <label>] [--assignee <who>]
+           [--interval <seconds>] [--once]
 
-  --label     Issue label that marks work for the team. Default: dream:team.
-  --assignee  Whose issues to pick up. Default: @me.
-  --interval  Seconds between ticks in loop mode. Default: 300.
-  --linger    Minutes a finished session lingers before it is cleaned up. Default: 30.
-  --once      A single tick, then exit, instead of looping.
+  --team-label  Issue label that dispatches a /dream:team session. Default: dream:team.
+  --solo-label  Issue label that dispatches a /dream:solo session. Default: dream:solo.
+  --assignee    Whose issues to pick up. Default: @me.
+  --interval    Seconds between ticks in loop mode. Default: 300.
+  --linger      Minutes a finished session lingers before it is cleaned up. Default: 30.
+  --once        A single tick, then exit, instead of looping.
 EOF
 }
 
@@ -57,7 +63,8 @@ die() { printf 'dreamcatcher: %s\n' "$*" >&2; exit 2; }
 
 # --- configuration ---------------------------------------------------------
 
-label="dream:team"
+team_label="dream:team"
+solo_label="dream:solo"
 assignee="@me"
 interval=300
 linger=30
@@ -65,7 +72,8 @@ once=0
 
 while [ $# -gt 0 ]; do
   case "$1" in
-    --label)    [ $# -ge 2 ] || die "--label requires a value"; label=$2; shift 2;;
+    --team-label) [ $# -ge 2 ] || die "--team-label requires a value"; team_label=$2; shift 2;;
+    --solo-label) [ $# -ge 2 ] || die "--solo-label requires a value"; solo_label=$2; shift 2;;
     --assignee) [ $# -ge 2 ] || die "--assignee requires a value"; assignee=$2; shift 2;;
     --interval) [ $# -ge 2 ] || die "--interval requires a value"; interval=$2; shift 2;;
     --linger)   [ $# -ge 2 ] || die "--linger requires a value"; linger=$2; shift 2;;
@@ -219,23 +227,25 @@ clean_up_finished() {
 
 # Create the worktree and launch a session for it in a detached tmux session.
 # The branch name carries the issue number and the auto token. A dispatched
-# session reads them at boot to take the issue as its input, with autopilot and
-# auto-collect engaged. The timestamp between them makes the name unique per
-# attempt, so a retry never collides with an earlier attempt's branch or pull
-# request.
+# session reads the issue number at boot to take the issue as its input. A team
+# session also reads the auto token to engage autopilot and auto-collect; a solo
+# session runs autonomously already. The timestamp between them makes the name
+# unique per attempt, so a retry never collides with an earlier attempt's branch
+# or pull request.
 #
 # `git worktree add` creates the worktree, not `claude -w`. That lands it at a
 # predictable sibling path, with a branch name the cap, cleanup, and dedup checks
-# rely on. tmux hosts the session. The team feature is set per session through
-# the experimental env var. Auto mode plus the narrow allow rules passed at
+# rely on. tmux hosts the session. The launch differs by skill: a team session
+# runs under the experimental teams feature in teammate tmux mode, a solo session
+# under neither. Both run in auto mode, and the narrow allow rules passed at
 # launch handle unattended writes.
 dispatch() {
-  local n=$1 ts branch wt session err writes
+  local n=$1 skill=$2 ts branch wt session err writes run
   ts=$(date -u +%Y%m%d-%H%M%S)
   branch="GH${n}-${ts}-auto"
   wt="$container/${branch}"
   session="dream-${branch}"
-  log "dispatching GH${n} as $branch"
+  log "dispatching GH${n} ($skill) as $branch"
   err=$(git -C "$main_root" fetch origin main --quiet 2>&1) \
     || { log "fetch failed for GH${n}: $err"; return 1; }
   err=$(git -C "$main_root" worktree add -b "$branch" "$wt" origin/main 2>&1) \
@@ -245,13 +255,28 @@ dispatch() {
   # The writes a session makes unattended, as narrow per-command allow rules.
   # Auto mode drops a broad Bash allow, so only narrow rules serve here.
   writes="Bash(gh pr create:*) Bash(gh pr comment:*) Bash(gh pr edit:*) Bash(gh pr ready:*) Bash(gh pr close:*) Bash(gh issue create:*) Bash(gh issue comment:*) Bash(git commit:*) Bash(git push:*)"
-  if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" \
-      "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec claude --permission-mode auto --allowedTools '$writes' --teammate-mode tmux '/dream:team'"; then
+  run="claude --permission-mode auto --allowedTools '$writes'"
+  case "$skill" in
+    team) run="CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec $run --teammate-mode tmux '/dream:team'";;
+    solo) run="exec $run '/dream:solo'";;
+    *)    log "unknown skill '$skill' for GH${n}, discarding worktree"; discard_worktree "$wt" "$branch"; return 1;;
+  esac
+  if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" "$run"; then
     log "tmux launch failed for GH${n}, discarding worktree"
     discard_worktree "$wt" "$branch"
     return 1
   fi
-  log "dispatched GH${n} into tmux session $session"
+  log "dispatched GH${n} ($skill) into tmux session $session"
+}
+
+# Open issues carrying a label, one per line as createdAt<TAB>number<TAB>skill.
+# The skill is the one the label dispatches, so a caller can order across labels
+# by the timestamp and still know which skill each issue selected.
+list_labelled() {
+  local lbl=$1 skill=$2
+  gh issue list --repo "$repo" --assignee "$assignee" --label "$lbl" \
+    --state open --limit 500 --json number,createdAt \
+    --jq ".[] | [.createdAt, (.number | tostring), \"$skill\"] | @tsv" 2>/dev/null
 }
 
 tick() {
@@ -259,23 +284,29 @@ tick() {
   if session_in_flight; then
     return 0
   fi
-  local candidates n
-  candidates=$(gh issue list --repo "$repo" --assignee "$assignee" --label "$label" \
-    --state open --limit 500 --json number,createdAt \
-    --jq 'sort_by(.createdAt) | .[].number' 2>/dev/null) \
+  local team_list solo_list candidates n skill
+  team_list=$(list_labelled "$team_label" team) \
     || { log "cannot list issues; will retry next tick"; return 1; }
-  while read -r n; do
+  solo_list=$(list_labelled "$solo_label" solo) \
+    || { log "cannot list issues; will retry next tick"; return 1; }
+  # Oldest eligible issue first across both labels. A stable sort on the
+  # timestamp alone keeps the team line ahead of the solo line for an issue that
+  # carries both labels, since the team list is fed first, so such an issue
+  # dispatches to the team. The timestamp has served its purpose once sorted, so
+  # drop it and keep the issue number and skill.
+  candidates=$(printf '%s\n%s\n' "$team_list" "$solo_list" | sort -s -t$'\t' -k1,1 | cut -f2-)
+  while IFS=$'\t' read -r n skill; do
     [ -n "$n" ] || continue
     already_handled "$n" && continue   # in flight or already done
     unblocked "$n" || continue     # a blocker is still open
-    dispatch "$n" && return 0
+    dispatch "$n" "$skill" && return 0
   done <<<"$candidates"
   log "no eligible issue"
 }
 
 # --- run -------------------------------------------------------------------
 
-log "dreamcatcher watching $repo for label '$label', assignee '$assignee'"
+log "dreamcatcher watching $repo for labels '$team_label' (team) and '$solo_label' (solo), assignee '$assignee'"
 if [ "$once" -eq 1 ]; then
   tick
 else
