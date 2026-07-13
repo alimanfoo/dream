@@ -25,7 +25,7 @@ issues.
 /plugin install dream@dream
 ```
 
-## Basic usage
+## Coherent development with /dream:team
 
 Start Claude Code:
 
@@ -46,7 +46,83 @@ See
 [`plugins/dream/skills/team/protocol.md`](plugins/dream/skills/team/protocol.md)
 for the full protocol.
 
-## Advanced usage
+## Smaller tasks with /dream:solo
+
+`/dream:solo` is a single-agent alternative to the team, for smaller,
+well-specified tasks. It needs no agent teams feature. One agent carries the
+work from an issue to a pull request marked ready for your review, hands-off,
+and files any follow-ups it noticed once you merge.
+
+Use it when a task doesn't need the full team, but you want more than a single
+one-shot attempt. The agent runs the work itself and brings in fresh subagents
+to plan and review.
+
+Start Claude Code and invoke the skill:
+
+```text
+/dream:solo
+```
+
+Like the team, it takes the task from the branch name. If the name contains one
+or more issue numbers (for example `GH83`), it works on those. Otherwise it asks
+you for the task.
+
+It then runs on its own, with no acceptance gates. It opens a draft pull
+request, plans and implements the work, reviews and tidies it, and marks the
+pull request ready. It then keeps watching the pull request for your review, the
+same way an autopilot team session does, and carries out what the review asks.
+Once you merge, it files anything it left out of scope as new issues.
+
+## Unattended runs with /dream:catcher
+
+The dreamcatcher watches a repository for labelled issues and dispatches a
+dream-team session for each, one at a time. A backlog clears itself while you
+are away. Each session runs under autopilot and carries its issue to a pull
+request for you to merge. That is the same as an autopilot session you start by
+hand.
+
+The dreamcatcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
+with `gh` signed in.
+
+Label an issue for the team and assign it to yourself. Start Claude Code from
+the main checkout of that repository, not a linked worktree, then run:
+
+```text
+/dream:catcher
+```
+
+It watches the repository you started Claude Code in. By default it picks up
+open issues labelled `dream:team` and assigned to you. Pass a different label as
+an argument, for example `/dream:catcher auto`.
+
+The dreamcatcher runs in its own tmux session. Attach to it with
+`tmux attach -t dreamcatcher`, or follow its log with
+`tail -f dreamcatcher.log`. Each issue it dispatches runs in its own tmux
+session. `Ctrl+B` then `s` switches between the dreamcatcher and every running
+session, so a session waiting for an answer is one keystroke away.
+
+How it picks work:
+
+- **One session at a time.** A session holds the slot from dispatch until its
+  pull request is merged or closed, so your merge paces the next dispatch. Size
+  a session by grouping issues under an umbrella issue.
+- **Oldest eligible issue first.** Mark an issue blocked by another in the
+  GitHub issue view to make it wait for that one. The dreamcatcher skips a
+  blocked issue until its blocker closes, then picks it up.
+- **Finished sessions.** The dreamcatcher removes a session's worktree and tmux
+  session once its pull request is merged or closed, so they do not pile up.
+
+Each session runs unattended. The dreamcatcher passes the permissions a session
+needs to interact with GitHub (creating the pull request, posting comments,
+committing, pushing) to it as allow rules at launch. When a session hits a
+question it cannot answer, it posts the question to the pull request and waits.
+You can reply there without dropping into the session.
+
+It stops on reboot, so re-run `/dream:catcher` to restart it. For a machine that
+must survive reboots, drive `catch.sh --once` from cron or launchd. Each firing
+runs a single tick.
+
+## /dream:team advanced usage
 
 ### Alias claude with experimental agent teams support
 
@@ -183,82 +259,6 @@ You can also engage both from the start through the worktree branch name.
 Include a standalone `auto` token alongside the issue number (for example
 `gh83-auto`). Grace then turns on autopilot and auto-collect before Phase 1
 opens, without waiting for any input.
-
-## Smaller tasks with /dream:solo
-
-`/dream:solo` is a single-agent alternative to the team, for smaller,
-well-specified tasks. It needs no agent teams feature. One agent carries the
-work from an issue to a pull request marked ready for your review, hands-off,
-and files any follow-ups it noticed once you merge.
-
-Use it when a task doesn't need the full team, but you want more than a single
-one-shot attempt. The agent runs the work itself and brings in fresh subagents
-to plan and review.
-
-Start Claude Code and invoke the skill:
-
-```text
-/dream:solo
-```
-
-Like the team, it takes the task from the branch name. If the name contains one
-or more issue numbers (for example `GH83`), it works on those. Otherwise it asks
-you for the task.
-
-It then runs on its own, with no acceptance gates. It opens a draft pull
-request, plans and implements the work, reviews and tidies it, and marks the
-pull request ready. It then keeps watching the pull request for your review, the
-same way an autopilot team session does, and carries out what the review asks.
-Once you merge, it files anything it left out of scope as new issues.
-
-## Unattended runs with /dream:catcher
-
-The dreamcatcher watches a repository for labelled issues and dispatches a
-dream-team session for each, one at a time. A backlog clears itself while you
-are away. Each session runs under autopilot and carries its issue to a pull
-request for you to merge. That is the same as an autopilot session you start by
-hand.
-
-The dreamcatcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
-with `gh` signed in.
-
-Label an issue for the team and assign it to yourself. Start Claude Code from
-the main checkout of that repository, not a linked worktree, then run:
-
-```text
-/dream:catcher
-```
-
-It watches the repository you started Claude Code in. By default it picks up
-open issues labelled `dream:team` and assigned to you. Pass a different label as
-an argument, for example `/dream:catcher auto`.
-
-The dreamcatcher runs in its own tmux session. Attach to it with
-`tmux attach -t dreamcatcher`, or follow its log with
-`tail -f dreamcatcher.log`. Each issue it dispatches runs in its own tmux
-session. `Ctrl+B` then `s` switches between the dreamcatcher and every running
-session, so a session waiting for an answer is one keystroke away.
-
-How it picks work:
-
-- **One session at a time.** A session holds the slot from dispatch until its
-  pull request is merged or closed, so your merge paces the next dispatch. Size
-  a session by grouping issues under an umbrella issue.
-- **Oldest eligible issue first.** Mark an issue blocked by another in the
-  GitHub issue view to make it wait for that one. The dreamcatcher skips a
-  blocked issue until its blocker closes, then picks it up.
-- **Finished sessions.** The dreamcatcher removes a session's worktree and tmux
-  session once its pull request is merged or closed, so they do not pile up.
-
-Each session runs unattended. The dreamcatcher passes the permissions a session
-needs to interact with GitHub (creating the pull request, posting comments,
-committing, pushing) to it as allow rules at launch. When a session hits a
-question it cannot answer, it posts the question to the pull request and waits.
-You can reply there without dropping into the session.
-
-It stops on reboot, so re-run `/dream:catcher` to restart it. For a machine that
-must survive reboots, drive `catch.sh --once` from cron or launchd. Each firing
-runs a single tick.
 
 ## Troubleshooting
 
