@@ -143,8 +143,6 @@ rule, makes the reader decode before they can act.
   stays. For example:
   - "the paths the work will change", not "the paths the work touches"
   - "before working on that code", not "before touching that code"
-  - "a changed line and an unchanged sibling", not "a touched line and an
-    untouched sibling"
 - Use verbs, not noun forms of verbs. Write "decide", not "make a decision".
 - Keep the small words. Do not drop "the", "a", or "that" to sound terse.
 - Spell out an abbreviation the first time you use it. Skip the Latin. Write
