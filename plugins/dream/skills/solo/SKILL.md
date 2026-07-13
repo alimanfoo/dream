@@ -194,6 +194,11 @@ the title from the session input.
 comment (`gh pr comment <N> --body "..."`). Head it `Session input`. List each
 issue number. Briefly summarise any additional input from the user.
 
+**Label the PR.** Apply the Session Type's category label with
+`gh pr edit --add-label`: `enhancement`, `maintenance`, or `bug`. Run
+`gh label list` once to find the repo's closest label for each category, and
+apply none when there's no clean match.
+
 ## Plan
 
 Run a Plan subagent. Give it the session input, the code you read, and the
@@ -296,9 +301,10 @@ File every bug.
 Cap maintenance issues at two, picking the ones that affect the most code and
 cut the most maintenance burden.
 
-Label each issue with its category: `enhancement`, `maintenance`, or `bug`. Run
-`gh label list` once to find the repo's closest label for each, and apply none
-when there's no clean match.
+Label each issue with its own category, picking the repo's label the same way
+you did for the PR (see [Open the session PR](#open-the-session-pr)). An issue's
+category is the finding's, not the session's, so one session can file across all
+three.
 
 List each issue you filed as a PR comment. Head it `Collect`.
 
