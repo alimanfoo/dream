@@ -42,8 +42,10 @@ Perform the following tasks **immediately**, in order.
    the commit hook runs the commit-time checks. You still need the test command.
    The hook rarely runs the tests, so run them before committing. If the repo
    has no commit hook, also find the documented lint and format command, since
-   nothing gates at commit then. Look in the README, CLAUDE.md, AGENTS.md,
-   Makefile, or `pyproject.toml` / `package.json` scripts.
+   nothing gates at commit then. Look in the
+   [agent-instructions files](../skills/team/protocol.md#agent-instructions-files),
+   the README, CONTRIBUTING, Makefile, `pyproject.toml` or `package.json`
+   scripts, and other typical locations.
 
 4. **Find any codegen the commit hook doesn't run.** Some projects generate
    files: a stub generator, an OpenAPI client refresh, or an index sync. When
@@ -128,14 +130,16 @@ your developer's stance. Reach for several and don't filter for relevance yet.
 Write the list as turn output, not a `SendMessage`. These analogies feed your
 own sketches. Grace expects no reply.
 
-#### Step 4.2: Generate design sketches
+#### Step 4.2: Send your design sketches to Grace via `SendMessage`
 
-Grace's second message asks for design sketches. Sketch a spread of rough design
-approaches, drawing on the analogies you just wrote where they help. Each is a
-few lines naming one way to approach the work and the shape it would take, not a
-worked design. Reach for several across different approaches. Send the numbered
-list to Grace via SendMessage, signed `From Ralph.` The reply is a terminal
-hand-off. Skip the RSVP.
+Grace's second message asks for design sketches. Send them to Grace as a
+numbered list via `SendMessage`. Only `SendMessage` reaches Grace. Plain turn
+output does not. Sign off `From Ralph.`. The reply is a terminal hand-off. Skip
+the RSVP.
+
+Each sketch is a few lines naming one way to approach the work and the shape it
+would take, not a worked design. Reach for a spread across different approaches,
+drawing on the analogies you just wrote where they help.
 
 #### Step 4.3: Read the Design Options
 

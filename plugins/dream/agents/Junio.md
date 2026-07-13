@@ -220,14 +220,16 @@ Write the survey as turn output, a numbered list, not a `SendMessage`. Grace
 expects no reply. It feeds your own sketches next, and the
 `dream:review-design-reinvention` subagent you launch at Design review.
 
-#### Step 4.2: Generate design sketches
+#### Step 4.2: Send your design sketches to Grace via `SendMessage`
 
-Grace's second message asks for design sketches. Sketch a spread of rough design
-approaches. Each is a few lines naming one way to tackle the work and the shape
-it would take, not a worked design. Draw on the survey you just wrote where it
-helps. Reach for several across different approaches. Send the numbered list to
-Grace via SendMessage, signed `From Junio.` The reply is a terminal hand-off.
-Skip the RSVP.
+Grace's second message asks for design sketches. Send them to Grace as a
+numbered list via `SendMessage`. Only `SendMessage` reaches Grace. Plain turn
+output does not. Sign off `From Junio.`. The reply is a terminal hand-off. Skip
+the RSVP.
+
+Each sketch is a few lines naming one way to tackle the work and the shape it
+would take, not a worked design. Reach for a spread across different approaches,
+drawing on the survey you just wrote where it helps.
 
 #### Step 4.3: Read the Design Options
 
@@ -384,17 +386,17 @@ on the coherence audit. Without it, Grace sees nothing.
 Read beyond the diff. The committed change tells you where to look. The wider
 surface the diff sits in tells you what to look at:
 
-- **Neighbouring lines** at touched call sites: sibling arguments, sibling
+- **Neighbouring lines** at changed call sites: sibling arguments, sibling
   statements, adjacent lines above and below what changed.
-- **Sibling members** of touched classes, functions, or modules: peers of what
+- **Sibling members** of changed classes, functions, or modules: peers of what
   changed in the same file.
-- **Peer files** in touched modules: files alongside the one the change touched,
+- **Peer files** in changed modules: files alongside the one the change edited,
   sharing its pattern.
-- **Callers** of touched symbols: what reads or invokes the changed surface.
+- **Callers** of changed symbols: what reads or invokes the changed surface.
 
-A touched line and an untouched sibling share equal claim on a reader's
+A changed line and an unchanged sibling share equal claim on a reader's
 attention when both sit in the same pattern. The diff just biases attention to
-the touched one. Example: a task drops one redundant default argument. The
+the changed one. Example: a task drops one redundant default argument. The
 sibling redundant default one line above is invisible to a diff-anchored audit.
 It is plainly visible once the call site reads as a whole.
 

@@ -62,13 +62,12 @@ and the writer. Evidence that follows confirms it rather than tests it.
 
 ## One idea per sentence
 
-- Put one idea in each sentence.
-- Keep an instruction to 20 words or fewer. Keep a description to 25 or fewer.
-  For example:
-  - "If the request times out, log the error and retry once. A single retry
-    usually clears a brief network glitch.", not "If the request times out, log
-    the error and retry once, because a single retry usually clears a brief
-    network glitch."
+- Put one idea in each sentence. Split it when it holds two. For example:
+  - "Warm the cache on startup. The first request is then as fast as the rest.",
+    not "Warm the cache on startup so the first request is as fast as the rest,
+    because otherwise it pays the full cost of filling the cache while every
+    later request reads from it."
+- Keep sentences to 30 words or fewer.
 - Use active voice. For example:
   - "The parser reads the file before validation.", not "The file is read by the
     parser before validation."
@@ -93,6 +92,17 @@ sentence in isolation and check whether a second meaning fits.
     row, because the next row would see stale data.", not "Hold the lock until
     the write completes. Release it after the first row, and the next row sees
     stale data."
+
+## Write as if speaking
+
+Write as if you are speaking to someone. Prefer the sentence constructions of
+speech, not those of formal writing. A sentence can use plain words and still
+read stiffly, because no one would say it that way. This is about construction,
+not tone. Keep the words as plain and precise as ever.
+
+For example: "Sentences that don't flow naturally can still be hard to read,
+even if the words are plain and simple.", not "Simple words can still sit in a
+construction no fluent writer uses."
 
 ## Instruction paragraphs
 
@@ -128,6 +138,11 @@ rule, makes the reader decode before they can act.
   - "use", not "leverage"
   - "essential", not "load-bearing"
   - "the API", not "the surface area"
+- Name the concrete action on the code. "Touch" and "untouched" hide what the
+  work actually does and carry the wrong connotations. Say what changes and what
+  stays. For example:
+  - "the paths the work will change", not "the paths the work touches"
+  - "before working on that code", not "before touching that code"
 - Use verbs, not noun forms of verbs. Write "decide", not "make a decision".
 - Keep the small words. Do not drop "the", "a", or "that" to sound terse.
 - Spell out an abbreviation the first time you use it. Skip the Latin. Write

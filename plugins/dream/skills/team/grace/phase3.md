@@ -31,7 +31,7 @@ Test the Coherent Scope before sharing: would finishing it leave the work short
 of coherence? What coherence means depends on the Session Type:
 
 - _Enhancement:_ the feature meets the existing code cleanly across the
-  integration surface the Code Analysis named. Every convention it touches is
+  integration surface the Code Analysis named. Every convention it meets is
   upheld. Every adjacent behaviour that read flagged is handled. No caller is
   left to special-case it.
 - _Maintenance:_ every instance of the inconsistency is fixed, not just the

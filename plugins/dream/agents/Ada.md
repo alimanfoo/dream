@@ -110,7 +110,7 @@ message so they run in parallel. Set each one's `model` to `sonnet` on the Agent
 call. You weigh their findings yourself, so the lenses need not run on your own
 model. Your own read is already pinned in
 [Step 7.1](#step-71-review-from-the-diff-alone), so the lenses widen the review
-without touching your cold read.
+without disturbing your cold read.
 
 A lens is one narrow question chosen for what this diff actually does, not a
 generic "review this." Match the lens to the change. Concurrent code invites a
@@ -218,7 +218,7 @@ finding. A pre-existing concern, not part of what the PR changed, goes under
 Raise "the same edit elsewhere" as a normal finding. If the PR removes, renames,
 or clarifies something, and another surface carries the same edit, it belongs in
 Blocking, Non-blocking, or Nits by severity. That other surface may be
-pre-existing and untouched, or made adjacent by what the PR did. For example, an
+pre-existing and unchanged, or made adjacent by what the PR did. For example, an
 earlier commit promoted a symbol and left its underscore prefix a fossil. Use
 the dispatching question: **is this the same edit: one the PR missed, or one the
 PR has now made adjacent?** If yes, file it as a normal finding, not in "Out of
@@ -262,7 +262,7 @@ Findings are observations from your review that haven't already been raised.
 Opportunities are worthwhile follow-up work the diff suggests, big or small. For
 example: a refactor it now invites, a simplification it opens up, or a larger
 idea the change points to. That larger idea might be a feature its new shape
-makes cheap, or a simpler approach to the area it touched. Raise an Opportunity
+makes cheap, or a simpler approach to the area it changed. Raise an Opportunity
 only when the diff suggests it, not as a free-standing wishlist. When surfacing
 Opportunities, draw on the Collect cues (see
 [Phase 9](../skills/team/protocol.md#phase-9-collect)) for the knowledge the
