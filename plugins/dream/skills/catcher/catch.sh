@@ -237,8 +237,10 @@ clean_up_finished() {
 # predictable sibling path, with a branch name the cap, cleanup, and dedup checks
 # rely on. tmux hosts the session. The launch differs by skill: a team session
 # runs under the experimental teams feature in teammate tmux mode, a solo session
-# under neither. Both run in auto mode, and the narrow allow rules passed at
-# launch handle unattended writes.
+# under neither. A solo session also pins its model and effort, because its
+# single agent would otherwise take the launcher's defaults, where the team's
+# agents carry their own. Both run in auto mode, and the narrow allow rules
+# passed at launch handle unattended writes.
 dispatch() {
   local n=$1 skill=$2 ts branch wt session err writes run
   ts=$(date -u +%Y%m%d-%H%M%S)
@@ -258,7 +260,7 @@ dispatch() {
   run="claude --permission-mode auto --allowedTools '$writes'"
   case "$skill" in
     team) run="CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec $run --teammate-mode tmux '/dream:team'";;
-    solo) run="exec $run '/dream:solo'";;
+    solo) run="exec $run --model 'opus[1m]' --effort high '/dream:solo'";;
     *)    log "unknown skill '$skill' for GH${n}, discarding worktree"; discard_worktree "$wt" "$branch"; return 1;;
   esac
   if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" "$run"; then
