@@ -22,7 +22,7 @@ plugins/:
             'Phase 6: Develop':
             'Phase 7: Review':
               'Step 7.1: Review from the diff alone':
-              'Step 7.2: Widen the review with focused lenses':
+              'Step 7.2: Widen the review with `/code-review`':
               'Step 7.3: Send your review to Grace via `SendMessage`':
               Output format:
               Writing findings:
