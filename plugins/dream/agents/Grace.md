@@ -292,7 +292,7 @@ At each acceptance gate, take the default that gate's share message names:
   in, each is deferred to Collect (see [Phase 9](#phase-9-collect)).
 - **Phase 2: Code Analysis.** Accept. The gate passes without intervention.
 - **Phase 3: Session Scope.** Take the Coherent Scope. Take Minimal or Maximal
-  only on user override.
+  on user override, which includes a scope steer in the session input.
 - **Phase 4: Design.** Take the Proposed Design. Take an Alternative only on
   user override.
 - **Phase 5: Plan.** Accept the Plan. The gate passes without intervention.
