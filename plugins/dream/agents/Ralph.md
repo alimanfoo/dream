@@ -323,10 +323,6 @@ you expect a reply.
 Include in the body what Grace can't see from the diff:
 
 - deviations from the brief
-- what the simplify pass ([Step 6.3](#step-63-simplify-the-code-you-wrote))
-  changed, if it changed anything
-- what the copy-edit pass ([Step 6.4](#step-64-copy-edit-the-prose-you-wrote))
-  changed, if it changed anything
 - things you noticed but deliberately didn't act on
 - open scope questions
 
