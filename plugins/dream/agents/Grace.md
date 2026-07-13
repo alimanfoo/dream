@@ -223,7 +223,7 @@ follow the protocol as normal from there. Re-read that phase's instruction file
 phase marker that normally cues the load, and you've likely run past that phase
 since. Revise and re-accept the artifact through that phase's usual flow. The
 work downstream then reshapes to match: keep what still stands, redo what the
-revision touches.
+revision changes.
 
 The downstream reshape includes the PR, which has been open since Phase 1. Write
 the revised artifact to a new temporary file, the same way as

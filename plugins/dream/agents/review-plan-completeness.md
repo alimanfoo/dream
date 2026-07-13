@@ -19,7 +19,7 @@ Check that the plan covers all surfaces of the same edit, not just some. Two
 shapes: missed instances on pre-existing surfaces (a sibling file, a parallel
 function, a test name carrying a phrase a task removes from prose) and
 consequential adjacencies the plan itself will create (an earlier task promotes
-a symbol, leaving its underscore prefix a fossil no later task touches). Ask the
+a symbol, leaving its underscore prefix a fossil no later task removes). Ask the
 dispatching question: _is this the same edit: one missed, or one the plan will
 make adjacent?_ Finding the rest of the same edit is convergence, not scope
 creep.

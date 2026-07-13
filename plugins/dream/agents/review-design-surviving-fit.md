@@ -16,7 +16,7 @@ return.
 
 ## The lens
 
-Check that every existing name, location, and convention the change touches
+Check that every existing name, location, and convention the change reaches
 still fits its contract after the Design's changes land. When a Design widens a
 function's scope, lifts shared code across modules, or shifts the contract of an
 existing surface, names and locations chosen for the original narrower context
