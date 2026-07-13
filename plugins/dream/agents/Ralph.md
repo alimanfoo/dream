@@ -273,36 +273,13 @@ name the alternative fix you see. Grace decides whether to update the task
 scope. See
 [Wrong-layer defensive code](../skills/team/protocol.md#wrong-layer-defensive-code).
 
-#### Step 6.3: Revise for a cold read
+#### Step 6.3: Simplify the code you wrote
 
-Open the files you changed and reread them as the person who will review it.
-[Step 6.2](#step-62-do-the-work) optimised for working code. This step makes the
-same code recover its intent and show it is right at a glance. That reader is a
-human developer with little attention to spend. They may be new to this
-codebase. Make the code clear to whoever arrives.
-
-Write the pass down as turn output, so it acts on the finished code. List the
-spots where a fresh reader cannot immediately tell a line is right. Scan for
-these:
-
-- a reach into off-screen state: distant state, an implicit ordering, a caller
-  that had to act first
-- a shape that is only not visibly wrong, when a plainly-correct one exists
-- a generic name that hides intent
-- a clever expression the reader must decode
-- nesting deep enough to lose the happy path
-- a block you can't say in one sentence
-- a comment that explains what instead of why
-
-Then address each candidate. Apply the [Naming](#naming),
-[Plain code](#plain-code), and [Code comments](#code-comments) rules below.
-Prefer the shape with less to hold and fewer ways to be subtly wrong. Leave a
-candidate only when the fix costs more than it saves. Say so in your report.
-
-This pass preserves behaviour: rename, flatten, extract, re-comment, never
-change what the code does. If a simpler shape would need a contract or behaviour
-change, raise it to Grace through the [Step 6.2](#step-62-do-the-work) channel
-rather than making it.
+Run the `/simplify` skill on the uncommitted changes. It reviews the diff for
+reuse, simplification, efficiency, and clarity, and applies its fixes directly
+to the working tree, so the code recovers its intent before anyone else reads
+it. The fixes land in this task's commit at
+[Step 6.7](#step-67-commit-and-push).
 
 #### Step 6.4: Copy-edit the prose you wrote
 
@@ -346,8 +323,8 @@ you expect a reply.
 Include in the body what Grace can't see from the diff:
 
 - deviations from the brief
-- what the cold-read pass ([Step 6.3](#step-63-revise-for-a-cold-read)) changed,
-  if it changed anything
+- what the simplify pass ([Step 6.3](#step-63-simplify-the-code-you-wrote))
+  changed, if it changed anything
 - what the copy-edit pass ([Step 6.4](#step-64-copy-edit-the-prose-you-wrote))
   changed, if it changed anything
 - things you noticed but deliberately didn't act on
