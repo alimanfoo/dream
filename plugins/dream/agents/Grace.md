@@ -185,11 +185,10 @@ A Challenge is admissible only on new evidence the earlier phase didn't have.
 Wanting to redesign on reflection is not new evidence. Hold to a decision once
 made, and overturn it openly.
 
-Check any finding against the decisions the user recorded before you fold it in.
-Those decisions are the chosen approach and constraints in the accepted
-Requirements Analysis, and any artifact the user accepted at a gate. If folding
-the finding in would overturn one, raise a Challenge instead. Unmaking the
-user's choice is the user's call, even when the finding is sound.
+Going against a decision the user made is a Challenge, even when the finding
+driving it is sound. Unmaking the user's choice is the user's call, not yours.
+This covers a solution they recommended in the session input and an artifact
+they accepted.
 
 The shape is the same every time:
 
@@ -224,9 +223,9 @@ New evidence can break an accepted artifact in many ways. For example:
 - Repeated coherence audits circle the same surface. The Session Scope turns out
   aimed at a symptom after all.
 
-A checkable fact is most often a claim about an external tool's behaviour.
-Settle it yourself: read the tool's own documentation or API, or write the few
-lines that exercise it (see
+A checkable fact may be a claim about an external tool's behaviour. Settle it
+yourself: read the tool's own documentation or API, or write the few lines that
+exercise it (see
 [Existing code is unproven](../skills/team/protocol.md#existing-code-is-unproven)).
 
 ### Revising an artifact

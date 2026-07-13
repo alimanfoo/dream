@@ -69,6 +69,12 @@ Analysis. Depth scales with Session Type:
   (defensive check, structural fix, removal), name the alternatives and why this
   one. For straightforward bugs this is one or two sentences.
 
+When the session input recommends a specific library, framework, or technique,
+take it in the Proposed Design. It is the user's recommendation about the how,
+so going against it is a Challenge, not a call you fold into the Design. This
+holds even when the case against it is sound. Raise the Challenge so the user
+decides.
+
 Check the Proposed Design against common overcomplication defaults:
 
 - consumers the accepted Requirements Analysis doesn't name
@@ -136,8 +142,9 @@ itself a reason to fold it in. Each finding takes one of these paths:
   Scope. Hold for post-merge triage.
 - **Raise a Challenge**: the finding shows an accepted artifact no longer holds.
   Either the Session Scope is the wrong shape, or an earlier artifact got
-  something wrong. Take it to the user, who accepts (revise) or rejects (with
-  direction).
+  something wrong. Folding in a finding that moves the Proposed Design against
+  an approach the user recommended is also a Challenge. Take it to the user, who
+  accepts (revise) or rejects (with direction).
 
 Junio's review may also propose candidate lateral moves, each tagged. A
 candidate tagged strictly-better folds into the Proposed Design. It improves the
