@@ -3,14 +3,16 @@
 A Claude Code plugin for delivering great code and keeping the codebase
 coherent, with minimal human input.
 
-`/dream:team` runs a multi-agent team on a task. `/dream:catcher` runs that team
-unattended across a repository's labelled issues. Utility skills ship alongside:
-`/dream:writing-style` and `/dream:copy-edit`.
+`/dream:team` runs a multi-agent team on a task. `/dream:solo` runs a single
+agent on a smaller task, with no teams feature needed. `/dream:catcher` runs the
+team unattended across a repository's labelled issues. Utility skills ship
+alongside: `/dream:writing-style` and `/dream:copy-edit`.
 
 ## Prerequisites
 
-Requires Claude Code's
+`/dream:team`, and `/dream:catcher` which runs it, require Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
+`/dream:solo` and the utility skills do not.
 
 The plugin works best with the `gh` command line tool available. This lets the
 team interact with GitHub, for example opening a pull request and posting
@@ -181,6 +183,33 @@ You can also engage both from the start through the worktree branch name.
 Include a standalone `auto` token alongside the issue number (for example
 `gh83-auto`). Grace then turns on autopilot and auto-collect before Phase 1
 opens, without waiting for any input.
+
+## Smaller tasks with /dream:solo
+
+`/dream:solo` is a single-agent alternative to the team, for smaller,
+well-specified tasks. It needs no agent teams feature. One agent carries the
+work from an issue to a pull request marked ready for your review, hands-off,
+and files any follow-ups it noticed once you merge.
+
+Use it when a task doesn't need the full team, but you want more than a single
+one-shot attempt. The agent runs the work itself and brings in fresh subagents
+to plan and review.
+
+Start Claude Code and invoke the skill:
+
+```text
+/dream:solo
+```
+
+Like the team, it takes the task from the branch name. If the name contains one
+or more issue numbers (for example `GH83`), it works on those. Otherwise it asks
+you for the task.
+
+It then runs on its own, with no acceptance gates. It opens a draft pull
+request, plans and implements the work, reviews and tidies it, and marks the
+pull request ready. It then keeps watching the pull request for your review, the
+same way an autopilot team session does, and carries out what the review asks.
+Once you merge, it files anything it left out of scope as new issues.
 
 ## Unattended runs with /dream:catcher
 
