@@ -156,7 +156,7 @@ plugins/:
             'Phase 6: Develop':
               'Step 6.1: Read the task description':
               'Step 6.2: Do the work':
-              'Step 6.3: Revise for a cold read':
+              'Step 6.3: Simplify the code you wrote':
               'Step 6.4: Copy-edit the prose you wrote':
               'Step 6.5: Run the tests':
               'Step 6.6: Run any codegen the commit hook doesn''t run':
@@ -474,8 +474,10 @@ README.md:
   dream:
     Prerequisites:
     Installation:
-    Basic usage:
-    Advanced usage:
+    Coherent development with /dream:team:
+    Smaller tasks with /dream:solo:
+    Unattended runs with /dream:catcher:
+    /dream:team advanced usage:
       Alias claude with experimental agent teams support:
       Models and effort:
       Concurrent sessions:
@@ -483,8 +485,6 @@ README.md:
       Launching Claude under tmux:
       "Using tmux \u2013 useful shortcuts":
       Autopilot mode:
-    Smaller tasks with /dream:solo:
-    Unattended runs with /dream:catcher:
     Troubleshooting:
       Permissions:
     License:
