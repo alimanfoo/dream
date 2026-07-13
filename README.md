@@ -94,8 +94,8 @@ repository, not a linked worktree, then run:
 
 It watches the repository you started Claude Code in. By default it picks up
 open issues labelled `dream:team` or `dream:solo` and assigned to you,
-dispatching the matching skill. Pass a different team label as an argument, for
-example `/dream:catcher auto`.
+dispatching the matching skill. Override a label with a flag, for example
+`/dream:catcher --team-label auto`.
 
 The dreamcatcher runs in its own tmux session. Attach to it with
 `tmux attach -t dreamcatcher`, or follow its log with
