@@ -227,6 +227,12 @@ For a **bug fix**:
 
 Every shape also carries:
 
+- **Chosen approach**: a solution the user named as the way to do the work, such
+  as a specific library, framework, or technique to use, when the input names
+  one. Not a tool the input only mentions in passing. Record it, and the
+  alternative they rejected and their reason when they give them. It is a
+  decision the user made, so a later phase overturning it is a Challenge, not a
+  quiet fold-in.
 - **Candidates**: items of the shape's own kind that the read suggests but the
   input never named, such as candidate use cases for an enhancement or candidate
   improvement goals for maintenance. To notice them, draw on similar or

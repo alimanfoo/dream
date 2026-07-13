@@ -185,20 +185,30 @@ A Challenge is admissible only on new evidence the earlier phase didn't have.
 Wanting to redesign on reflection is not new evidence. Hold to a decision once
 made, and overturn it openly.
 
+Folding a finding in can overturn a decision the user made. That is a Challenge,
+not a fold-in, even when the finding is sound: unmaking the user's choice is the
+user's call. Before folding a finding in, check it against the decisions the
+user recorded, the chosen approach and constraints in the accepted Requirements
+Analysis and any artifact they accepted at a gate. If folding it in would
+overturn one, stop and raise a Challenge instead.
+
 The shape is the same every time:
 
 1. Pause the work.
 2. State the prior reading (the accepted artifact) and the new evidence that
    breaks it.
-3. Post the challenge to the PR. Use the heading `Decision needed`. State what
+3. If the new evidence is a checkable fact, check it now, before going further.
+   If the check fails, the Challenge does not stand. Drop it, record why, and
+   continue the work. See [Evidence](#evidence) for how.
+4. Post the challenge to the PR. Use the heading `Decision needed`. State what
    the work surfaced and the options you can see. Keep role names and
    protocol-process vocabulary out. Follow
    [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
    Append the Claude Code footer from
    [Marking agent-authored GitHub items](#marking-agent-authored-github-items).
-4. Present to the user what the work surfaced and the options you can see. The
+5. Present to the user what the work surfaced and the options you can see. The
    user picks one or proposes their own.
-5. Carry out the chosen option. When it involves revising an accepted artifact,
+6. Carry out the chosen option. When it involves revising an accepted artifact,
    follow [Revising an artifact](#revising-an-artifact). If the Challenge
    blocked a teammate, the chosen option must say how to proceed. A bare "no"
    would leave them stuck.
@@ -214,6 +224,11 @@ New evidence can break an accepted artifact in many ways. For example:
   task proves impossible as written.
 - Repeated coherence audits circle the same surface. The Session Scope turns out
   aimed at a symptom after all.
+
+When the new evidence is a checkable fact, most often a claim about an external
+tool's behaviour, settle it yourself: read the tool's own documentation or API,
+or write the few lines that exercise it (see
+[Existing code is unproven](../skills/team/protocol.md#existing-code-is-unproven)).
 
 ### Revising an artifact
 
@@ -301,8 +316,11 @@ Autopilot pauses on these, and only these:
   the user leaves any question unanswered, re-ask the unanswered ones before
   continuing. Under autopilot the same behaviour applies. You marked the
   question open. You cannot proceed correctly without the user's answer.
-- **A Challenge** raised in any phase. Pause. Post the Challenge to the PR and
-  present the options you can see. Carry out the chosen option.
+- **A Challenge** raised in any phase, once it stands (see
+  [Challenge](#challenge)). A Challenge on a checkable fact stands only after
+  the fact checks out, so a false finding is dropped without a pause. Pause.
+  Post the Challenge to the PR and present the options you can see. Carry out
+  the chosen option.
 
 After pausing, create a recurring cron job (`CronCreate`) to remind you to check
 the PR for replies every 10 minutes. Embed these values in the prompt:

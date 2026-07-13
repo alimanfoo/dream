@@ -571,6 +571,16 @@ decision goes through a Challenge, openly, not slipped through as a fresh
 observation. Grace can raise one in any phase once an artifact has been
 accepted.
 
+Overturning a decision the user made is a Challenge, not a finding folded into
+the work. The decision may be a solution they chose, or an artifact they
+accepted. This holds even when the finding driving it is sound. Unmaking the
+user's choice is the user's call, so it waits for the user rather than riding a
+gate default. Under autopilot this is why the pause fires.
+
+A Challenge discards a settled decision, the heaviest reliance there is, so when
+one turns on a checkable fact, check the fact before the Challenge stands (see
+[Existing code is unproven](#existing-code-is-unproven)).
+
 When a chosen option revises an artifact already posted to the PR, Grace posts
 the revision as a new comment that replaces it, not an edit. See
 [The session PR](#the-session-pr).
@@ -635,6 +645,13 @@ function's behaviour, trace it rather than infer it from the name. Before
 relying on it being fast, find the benchmark. "It looks optimised" is not
 evidence. Where no decision rests on a property, leave it. The rule asks for
 proof where reliance is real, not a blanket audit.
+
+This reaches past existing code, to any claim a decision rests on, whoever made
+it. A finding in a review is unproven the same way. When one turns on a
+checkable fact, most often about an external tool, and acting on it would change
+a decision, check the fact first. A citation and a confident tone are not a
+check. The heavier the decision resting on the claim, the firmer the check it
+earns.
 
 Unproven is not wrong. The stance is dispassionate, not hostile: missing
 evidence is a reason to check, not a licence to rewrite working code. The
