@@ -138,6 +138,11 @@ rule, makes the reader decode before they can act.
   - "use", not "leverage"
   - "essential", not "load-bearing"
   - "the API", not "the surface area"
+- Name the concrete action on the code. "Touch" and "untouched" hide what the
+  work actually does and carry the wrong connotations. Say what changes and what
+  stays. For example:
+  - "the paths the work will change", not "the paths the work touches"
+  - "before working on that code", not "before touching that code"
 - Use verbs, not noun forms of verbs. Write "decide", not "make a decision".
 - Keep the small words. Do not drop "the", "a", or "that" to sound terse.
 - Spell out an abbreviation the first time you use it. Skip the Latin. Write

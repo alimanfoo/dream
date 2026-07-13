@@ -20,7 +20,7 @@ Your briefing carries the diff as a local git range. Read the complete change at
 once, applying each discipline below:
 
 - **Read beyond the diff:** check the siblings, callers, and neighbouring lines
-  of touched code, not just the changed lines.
+  of the change, not just the changed lines.
 - **Read what the change removed:** for each deleted or replaced line, name the
   invariant it held, then confirm the new code keeps it somewhere.
 - **Read for readability against neighbours:** flag where the change breaks from

@@ -31,7 +31,7 @@ A precursor qualifies only when all three hold:
 - **Behaviour-preserving.** Pure restructure: extract, inline, rename, move,
   split. No contract change.
 - **Materially easier or safer.** The named task would be more error-prone, more
-  complex, or touch more places without this precursor. Aesthetic improvements
+  complex, or change more places without this precursor. Aesthetic improvements
   alone don't pass.
 
 The "?" is deliberate. The lens looks for cases where tidying first genuinely
