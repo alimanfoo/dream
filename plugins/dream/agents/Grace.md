@@ -185,20 +185,27 @@ A Challenge is admissible only on new evidence the earlier phase didn't have.
 Wanting to redesign on reflection is not new evidence. Hold to a decision once
 made, and overturn it openly.
 
+Going against what the user steered is a Challenge, even when your case against
+it is sound. The call is theirs to change, not yours. This covers the scope or
+design they steered in the session input, and any artifact they accepted.
+
 The shape is the same every time:
 
 1. Pause the work.
 2. State the prior reading (the accepted artifact) and the new evidence that
    breaks it.
-3. Post the challenge to the PR. Use the heading `Decision needed`. State what
+3. If the new evidence is a checkable fact, check it now, before going further.
+   If the check fails, the Challenge does not hold. Drop it, record why, and
+   continue the work. See [Evidence](#evidence) for how.
+4. Post the challenge to the PR. Use the heading `Decision needed`. State what
    the work surfaced and the options you can see. Keep role names and
    protocol-process vocabulary out. Follow
    [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
    Append the Claude Code footer from
    [Marking agent-authored GitHub items](#marking-agent-authored-github-items).
-4. Present to the user what the work surfaced and the options you can see. The
+5. Present to the user what the work surfaced and the options you can see. The
    user picks one or proposes their own.
-5. Carry out the chosen option. When it involves revising an accepted artifact,
+6. Carry out the chosen option. When it involves revising an accepted artifact,
    follow [Revising an artifact](#revising-an-artifact). If the Challenge
    blocked a teammate, the chosen option must say how to proceed. A bare "no"
    would leave them stuck.
@@ -214,6 +221,11 @@ New evidence can break an accepted artifact in many ways. For example:
   task proves impossible as written.
 - Repeated coherence audits circle the same surface. The Session Scope turns out
   aimed at a symptom after all.
+
+A checkable fact may be a claim about an external tool's behaviour. Settle it
+yourself: read the tool's own documentation or API, or write the few lines that
+exercise it (see
+[Existing code is unproven](../skills/team/protocol.md#existing-code-is-unproven)).
 
 ### Revising an artifact
 
@@ -279,8 +291,9 @@ At each acceptance gate, take the default that gate's share message names:
   (see [Pauses](#pauses) below). Candidates stay excluded. With no user to opt
   in, each is deferred to Collect (see [Phase 9](#phase-9-collect)).
 - **Phase 2: Code Analysis.** Accept. The gate passes without intervention.
-- **Phase 3: Session Scope.** Take the Coherent Scope. Take Minimal or Maximal
-  only on user override.
+- **Phase 3: Session Scope.** Take the Coherent Scope, with any modifications
+  the input steer names. A blanket steer to stay narrow or wide takes Minimal or
+  Maximal instead.
 - **Phase 4: Design.** Take the Proposed Design. Take an Alternative only on
   user override.
 - **Phase 5: Plan.** Accept the Plan. The gate passes without intervention.
@@ -301,8 +314,10 @@ Autopilot pauses on these, and only these:
   the user leaves any question unanswered, re-ask the unanswered ones before
   continuing. Under autopilot the same behaviour applies. You marked the
   question open. You cannot proceed correctly without the user's answer.
-- **A Challenge** raised in any phase. Pause. Post the Challenge to the PR and
-  present the options you can see. Carry out the chosen option.
+- **A Challenge** raised in any phase, once it holds (see
+  [Challenge](#challenge)). A Challenge on a checkable fact holds only after the
+  fact checks out. Pause. Post the Challenge to the PR and present the options
+  you can see. Carry out the chosen option.
 
 After pausing, create a recurring cron job (`CronCreate`) to remind you to check
 the PR for replies every 10 minutes. Embed these values in the prompt:

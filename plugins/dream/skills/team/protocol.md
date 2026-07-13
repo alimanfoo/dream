@@ -132,6 +132,12 @@ may also make claims about code which are no longer true, because the code has
 changed since the issue was filed. Testing it is scrutiny of the input, not of
 the user, who decides at the gate.
 
+The seed may steer scope and design, not only requirements: what to leave out,
+which library or approach to use. The Scope and Design phases source that steer
+and weigh it, each taking what bears on it. They consider it, they don't obey
+it. Under autopilot, with no user at the gate, this steer stands in for the
+guidance the user would give.
+
 When the session runs in a worktree, the branch name may contain one or more
 issue numbers (`GH83`, `claude/gh341-...`, `fix-gh12-and-gh34`). Grace then
 takes those issues as the session input and opens the phase with them without
@@ -635,6 +641,11 @@ function's behaviour, trace it rather than infer it from the name. Before
 relying on it being fast, find the benchmark. "It looks optimised" is not
 evidence. Where no decision rests on a property, leave it. The rule asks for
 proof where reliance is real, not a blanket audit.
+
+This reaches past existing code, to any claim a decision rests on, whoever made
+it. A finding in a review is unproven the same way. It may rest on a checkable
+fact about an external tool. Check that fact first, when acting on it would
+change a decision. A citation and a confident tone are not a check.
 
 Unproven is not wrong. The stance is dispassionate, not hostile: missing
 evidence is a reason to check, not a licence to rewrite working code. The

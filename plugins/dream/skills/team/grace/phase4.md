@@ -69,6 +69,14 @@ Analysis. Depth scales with Session Type:
   (defensive check, structural fix, removal), name the alternatives and why this
   one. For straightforward bugs this is one or two sentences.
 
+The session input may steer the design: a library, framework, or approach to
+use. Source that steer and weigh it with the sketches, on its merits. It is the
+user's steer on the how, not a fixed requirement. Take it in the Proposed Design
+unless you have reason to set it aside. Setting it aside is a Challenge, so the
+user makes that call (see [Challenge](../../../agents/Grace.md#challenge)).
+Where the code-shape-first check replaces a prose mechanism the input named,
+that is a coherence call, not setting the steer aside.
+
 Check the Proposed Design against common overcomplication defaults:
 
 - consumers the accepted Requirements Analysis doesn't name
@@ -136,8 +144,9 @@ itself a reason to fold it in. Each finding takes one of these paths:
   Scope. Hold for post-merge triage.
 - **Raise a Challenge**: the finding shows an accepted artifact no longer holds.
   Either the Session Scope is the wrong shape, or an earlier artifact got
-  something wrong. Take it to the user, who accepts (revise) or rejects (with
-  direction).
+  something wrong. Folding in a finding that moves the Proposed Design against
+  what the user steered is also a Challenge. Take it to the user, who accepts
+  (revise) or rejects (with direction).
 
 Junio's review may also propose candidate lateral moves, each tagged. A
 candidate tagged strictly-better folds into the Proposed Design. It improves the
