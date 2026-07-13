@@ -84,14 +84,14 @@ This lets a reader tell quickly which items are agent-authored.
 
 ## Orient to the repo
 
-Establish what the repo is for as a whole. Read the repo's own docs
+Determine what the repo is for as a whole. Read the repo's own docs
 (`AGENTS.md`, `README`, `CLAUDE.md`) and explore its structure.
 
 Determine the deliverable, what a consumer ultimately gets. For an application
 or software library this is the code, but it could also be data, content,
 configuration, or something else.
 
-Find out how that product is organised into its major components.
+Determine how that product is organised into its major components.
 
 State the repo purpose and product in one sentence.
 
