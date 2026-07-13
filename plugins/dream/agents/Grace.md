@@ -185,10 +185,9 @@ A Challenge is admissible only on new evidence the earlier phase didn't have.
 Wanting to redesign on reflection is not new evidence. Hold to a decision once
 made, and overturn it openly.
 
-Going against a decision the user made is a Challenge, even when the finding
-driving it is sound. Unmaking the user's choice is the user's call, not yours.
-This covers a solution they recommended in the session input and an artifact
-they accepted.
+Going against what the user steered is a Challenge, even when your case against
+it is sound. The call is theirs to change, not yours. This covers the scope or
+design they steered in the session input, and any artifact they accepted.
 
 The shape is the same every time:
 

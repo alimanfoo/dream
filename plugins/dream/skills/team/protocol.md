@@ -132,6 +132,12 @@ may also make claims about code which are no longer true, because the code has
 changed since the issue was filed. Testing it is scrutiny of the input, not of
 the user, who decides at the gate.
 
+The seed may steer scope and design, not only requirements: what to leave out,
+which library or approach to use. The Scope and Design phases source that steer
+and weigh it, each taking what bears on it. They consider it, they don't obey
+it. Under autopilot, with no user at the gate, this steer stands in for the
+guidance the user would give.
+
 When the session runs in a worktree, the branch name may contain one or more
 issue numbers (`GH83`, `claude/gh341-...`, `fix-gh12-and-gh34`). Grace then
 takes those issues as the session input and opens the phase with them without

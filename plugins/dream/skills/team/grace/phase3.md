@@ -60,6 +60,13 @@ it achieves it. Choosing the how is Design's call, where the reviewers weigh the
 alternatives. The how includes the tool or library, the algorithm or structure,
 the API or command shape, and a bug's fix shape.
 
+The session input may steer the scope, what to leave out or how far to go.
+Source that steer and weigh it on its merits. Let it shape which option you
+recommend. A steer to stay narrow points to the Minimal Scope, with its
+coherence gaps named. Weigh it, don't obey it. Recommending against a clear
+steer is a Challenge, so the user makes that call (see
+[Challenge](../../../agents/Grace.md#challenge)).
+
 ## Step 3.2: Share the Draft Scope Options with Junio and Ralph for review
 
 Write the Draft Scope Options to a temporary file outside this repo, via Bash.

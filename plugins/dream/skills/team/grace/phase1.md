@@ -190,6 +190,9 @@ Compose it in full before sending it anywhere. Without this step, hidden
 inferences about who is served and what counts as done ride through to Design.
 There they shape machinery no real consumer needs.
 
+A scope or design steer in the input is not a requirement. Leave it for the
+Scope and Design phases, which source it there.
+
 Choose the shape based on the Session Type.
 
 For an **enhancement**:
