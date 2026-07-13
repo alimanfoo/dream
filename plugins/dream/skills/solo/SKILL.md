@@ -22,7 +22,7 @@ deleting a branch, rewriting history, or a destructive change outside this repo.
 
 Hold coherence of the whole codebase as the goal, not just literal compliance
 with the plan. Any work you do must reach a coherent endpoint, even when that
-means touching code the plan didn't name.
+means changing code the plan didn't name.
 
 Reaching that endpoint is the floor, not the ceiling. Your reflex will be the
 smallest local fix. Reach past it to the change that leaves the whole simpler:
@@ -54,7 +54,7 @@ is usually the larger change, and usually the right one.
 
 ## Don't over-build
 
-Add nothing the task doesn't need. Coherence can call for touching code outside
+Add nothing the task doesn't need. Coherence can call for changing code outside
 the plan. It never calls for a speculative abstraction, a premature
 generalisation, or a half-finished extra feature the task didn't ask for.
 
