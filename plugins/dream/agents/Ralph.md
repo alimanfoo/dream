@@ -278,8 +278,7 @@ scope. See
 Run the `/simplify` skill on the uncommitted changes. It reviews the diff for
 reuse, simplification, efficiency, and clarity, and applies its fixes directly
 to the working tree, so the code recovers its intent before anyone else reads
-it. The fixes land in this task's commit at
-[Step 6.7](#step-67-commit-and-push).
+it.
 
 #### Step 6.4: Copy-edit the prose you wrote
 
