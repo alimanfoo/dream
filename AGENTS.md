@@ -56,6 +56,13 @@ protocol. The shared session flow (phases, roles, and cross-agent mechanics)
 lives in `plugins/dream/skills/team/protocol.md`. Role-specific operating detail
 lives in the agent files.
 
+A lighter skill, `/dream:solo`, does similar work with a single agent instead of
+a team. It carries one or more issues to a pull request on its own, spawning
+subagents only to plan and review, and needs no agent teams feature. It doesn't
+read `protocol.md`. It restates the coherence disciplines in a single voice for
+one agent, so a change to those disciplines in the protocol may need the same
+change in `/dream:solo`.
+
 A coordinator skill, `/dream:catcher`, watches a repository for labelled issues
 and dispatches a `/dream:team` session for each, one at a time. It lets the work
 run unattended while the user is away.
@@ -74,7 +81,9 @@ This repo has two layers, easy to confuse:
   [agent files](plugins/dream/agents), which the `/dream:team` command runs. A
   [catcher skill](plugins/dream/skills/catcher/SKILL.md) coordinates unattended
   runs, dispatching a `/dream:team` session for each labelled issue, one at a
-  time. Two utility skills ship alongside the team and run on their own:
+  time. A [solo skill](plugins/dream/skills/solo/SKILL.md) runs a single-agent
+  version, `/dream:solo`, for smaller tasks with no team. Two utility skills
+  ship alongside the team and run on their own:
   [writing-style](plugins/dream/skills/writing-style/SKILL.md) and
   [copy-edit](plugins/dream/skills/copy-edit/SKILL.md), which uses its own
   [copy-editor agent](plugins/dream/agents/copy-editor.md).

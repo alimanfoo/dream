@@ -279,6 +279,33 @@ plugins/:
             First, read the writing style guide:
             Arguments:
             Each round:
+      solo/:
+        SKILL.md:
+          Dream Solo:
+            Autonomy:
+            Coherence:
+            Don't over-build:
+            Communication style:
+            Mark your work:
+            Orient to the repo:
+            Find the tests and checks:
+            Check the working tree:
+            Obtain session input:
+            Read the cited material:
+            Read the code:
+            Check the session input against the current code:
+            Name the Session Type:
+            Open the session PR:
+            Plan:
+            Implement:
+            Simplify:
+            Copy-edit:
+            Review:
+            Write the PR description:
+            Mark the PR ready for review:
+            Watch for user review:
+            Merge:
+            Collect:
       team/:
         SKILL.md:
           Dream team:
@@ -456,6 +483,7 @@ README.md:
       Launching Claude under tmux:
       "Using tmux \u2013 useful shortcuts":
       Autopilot mode:
+    Smaller tasks with /dream:solo:
     Unattended runs with /dream:catcher:
     Troubleshooting:
       Permissions:
