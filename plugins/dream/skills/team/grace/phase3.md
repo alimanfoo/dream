@@ -61,15 +61,15 @@ alternatives. The how includes the tool or library, the algorithm or structure,
 the API or command shape, and a bug's fix shape.
 
 The session input may steer the scope: work to include, work to leave out, or
-how far to go. Source the steer and weigh it on its merits, not as an order.
-Going against a clear steer is a Challenge, so the user makes that call (see
-[Challenge](../../../agents/Grace.md#challenge)).
+how far to go. Build the three options as normal, because a steer is not a
+fourth option. It customizes the scope you recommend and commit to. The baseline
+is Coherent, and the steer adds or removes work from there. A blanket steer to
+stay narrow or wide takes Minimal or Maximal as the baseline instead. Name any
+coherence gap a removal leaves, the way the Minimal Scope does.
 
-A specific steer shapes what the options hold, not just which one the user
-picks. Work the user names to include becomes a scope item, Coherent if
-coherence needs it or Maximal if it is anticipated follow-on. Work the user
-names to leave out is carved out, with any coherence gap it leaves named. A
-blanket steer to stay narrow points to the Minimal Scope.
+Source the steer and weigh it on its merits, not as an order. Going against a
+clear steer is a Challenge, so the user makes that call (see
+[Challenge](../../../agents/Grace.md#challenge)).
 
 ## Step 3.2: Share the Draft Scope Options with Junio and Ralph for review
 
@@ -102,10 +102,10 @@ Send the revised Scope Options. Add a brief note on **what changed from the
 Draft after the reviews**: folded-in findings, notable rejections with the
 reason. The user learns what the reviews changed without seeing them directly.
 
-Frame the choice plainly. Coherent is the recommendation: the default if the
-user just accepts. The user picks Minimal or Maximal to override. When only the
-Coherent Scope applies, the message carries that alone and asks the user to
-accept.
+Frame the choice plainly. The recommendation is the Coherent Scope, with any
+modifications the input steer names. It is the default if the user just accepts.
+The user picks Minimal or Maximal to override. When only the Coherent Scope
+applies, the message carries that alone and asks the user to accept.
 
 End the message with one of these two, depending on autopilot:
 
@@ -133,12 +133,12 @@ point through a Challenge (see [Challenge](../../../agents/Grace.md#challenge)).
 
 ## Step 3.6: Hand the accepted Session Scope to Junio and Ralph
 
-Write the accepted Session Scope, the option the user picked plus any changes
-from the acceptance discussion, to a temporary file outside this repo, via Bash.
-Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
-same turn, for information only. Sign off `From Grace.` and skip the RSVP. No
-reply is needed. They haven't seen the outcome since their Draft Scope Options
-review in
+Write the accepted Session Scope, the base option plus any modifications from
+the input steer or the acceptance discussion, to a temporary file outside this
+repo, via Bash. Send Junio and Ralph the file's absolute path: two `SendMessage`
+calls in the same turn, for information only. Sign off `From Grace.` and skip
+the RSVP. No reply is needed. They haven't seen the outcome since their Draft
+Scope Options review in
 [Step 3.2](#step-32-share-the-draft-scope-options-with-junio-and-ralph-for-review).
 The accepted Session Scope feeds the analogies and sketches you generate in
 Phase 4 and the Design review that follows.
