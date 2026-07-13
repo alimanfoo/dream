@@ -474,7 +474,7 @@ dormant. Five cues, each anchored to what the session actually did:
 - **Premortem:** a year on, what will we wish we'd done sooner? What is most
   likely to bite?
 - **Best-in-class:** how do the strongest projects in this space handle what the
-  session just touched?
+  session just worked on?
 - **Negative space:** what is conspicuously absent? What did the session not do
   that a careful reviewer would expect?
 
@@ -683,7 +683,7 @@ A fact is one decision the code makes: the set of valid cases, the shape of an
 API response, a formula, a naming convention. Each fact belongs in one place.
 Everything else derives from it. A fact kept in two places drifts the moment
 either side changes, and each drift reads as a fresh, local bug. Duplication
-doesn't cost once. It taxes every session that touches the fact.
+doesn't cost once. It taxes every session that works with the fact.
 
 A surface that keeps coming back is itself evidence. When the recurrence check,
 an audit, or the issue history shows fixes landing on the same surface across
@@ -736,7 +736,7 @@ has neither: no home to single-source, no single type to hold it.
 
 Default to documenting the rule. State it in one line in the
 [agent-instructions file](#agent-instructions-files) that governs the code that
-the rule spans. The next session reads that file before touching that code. A
+the rule spans. The next session reads that file before working on that code. A
 comment at any one site is read by no one who needs the rule first. This is
 cheap, reversible memory: no machinery to carry, and nothing to fire when a
 harmless edit trips it. But a document decays. A later session has to find the

@@ -9,7 +9,7 @@ the steps below in sequence.
 
 ## Step 2.1: Read the structural baseline
 
-Read the documentation governing the paths that the work touches. This means the
+Read the documentation governing the paths the work will change. This means the
 [agent-instructions files](../protocol.md#agent-instructions-files) nearest
 those paths, and any system or technical documentation for the subsystem. They
 describe how the code is meant to work and the conventions it keeps, including
@@ -19,7 +19,7 @@ Read them before tracing the code, and cite them in the baseline.
 Read the relevant code with one question in mind: _how does this work?_ The
 baseline is how the code is built and what it actually does. Trace the
 mechanism, the layers, the callers and siblings, the patterns. Name the
-architecture the work touches:
+architecture the work reaches:
 
 - which layers or modules the surfaces sit in
 - the boundaries between them
@@ -30,7 +30,7 @@ architecture the work touches:
 For each, say how it holds: a check enforces it, documentation records it, or
 custom alone holds it. This is the structural baseline the Design later builds
 on. State it factually. Name the boundary that exists, don't propose one. Keep
-it to the architecture the session's surfaces touch, not a tour of the whole
+it to the architecture the session's surfaces sit in, not a tour of the whole
 codebase.
 
 Test the session input's factual claims as you go, whoever made them. A bug
@@ -48,8 +48,8 @@ in another, required in a third. Name any such split explicitly.
 How far the baseline reaches scales with the Session Type. A bug fix traces to
 the root cause, back from where the error surfaces to the mechanism that
 produces it, not the symptom site alone. An enhancement reads the integration
-surface: where the work would land, what it touches, what adjacent behaviour it
-might affect. Maintenance reads the full extent of the surface the work touches,
+surface: where the work would land, what it changes, what adjacent behaviour it
+might affect. Maintenance reads the full extent of the surface the work changes,
 with the specific instances it must reach.
 
 ## Step 2.2: Identify and investigate code smells
