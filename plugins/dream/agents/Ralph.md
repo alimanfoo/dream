@@ -128,14 +128,16 @@ your developer's stance. Reach for several and don't filter for relevance yet.
 Write the list as turn output, not a `SendMessage`. These analogies feed your
 own sketches. Grace expects no reply.
 
-#### Step 4.2: Generate design sketches
+#### Step 4.2: Send your design sketches to Grace via `SendMessage`
 
-Grace's second message asks for design sketches. Sketch a spread of rough design
-approaches, drawing on the analogies you just wrote where they help. Each is a
-few lines naming one way to approach the work and the shape it would take, not a
-worked design. Reach for several across different approaches. Send the numbered
-list to Grace via SendMessage, signed `From Ralph.` The reply is a terminal
-hand-off. Skip the RSVP.
+Grace's second message asks for design sketches. Send them to Grace as a
+numbered list via `SendMessage`. Only `SendMessage` reaches Grace. Plain turn
+output does not. Sign off `From Ralph.`. The reply is a terminal hand-off. Skip
+the RSVP.
+
+Each sketch is a few lines naming one way to approach the work and the shape it
+would take, not a worked design. Reach for a spread across different approaches,
+drawing on the analogies you just wrote where they help.
 
 #### Step 4.3: Read the Design Options
 

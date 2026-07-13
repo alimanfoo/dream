@@ -94,7 +94,7 @@ plugins/:
               'Step 3.5: Read the accepted Session Scope':
             'Phase 4: Design':
               'Step 4.1: Survey existing tools':
-              'Step 4.2: Generate design sketches':
+              'Step 4.2: Send your design sketches to Grace via `SendMessage`':
               'Step 4.3: Read the Design Options':
               'Step 4.4: Launch the review subagents':
               'Step 4.5: Weigh the findings':
@@ -140,7 +140,7 @@ plugins/:
               'Step 3.4: Read the accepted Session Scope':
             'Phase 4: Design':
               'Step 4.1: Generate analogies':
-              'Step 4.2: Generate design sketches':
+              'Step 4.2: Send your design sketches to Grace via `SendMessage`':
               'Step 4.3: Read the Design Options':
               'Step 4.4: Apply the engineering-pattern lenses':
                 'Lens 1: Naming':
@@ -439,6 +439,7 @@ plugins/:
         One idea per paragraph:
         One idea per sentence:
         One reading per sentence:
+        Write as if speaking:
         Instruction paragraphs:
         Words and marks:
         Text for GitHub:
