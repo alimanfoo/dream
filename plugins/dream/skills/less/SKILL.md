@@ -24,23 +24,33 @@ Hold coherence of the whole codebase as the goal, not just literal compliance
 with the plan. Any work you do must reach a coherent endpoint, even when that
 means touching code the plan didn't name.
 
+Reaching that endpoint is the floor, not the ceiling. Your reflex will be the
+smallest local fix. Reach past it to the change that leaves the whole simpler:
+the root cause reached, the duplication collapsed, the intent made plain. That
+is usually the larger change, and usually the right one.
+
 - **Root cause.** Scope the fix to the mechanism behind the ask, not only the
   symptom site the input named. An enhancement builds the feature in rather than
   adding it as a separate piece. A bug fix repairs the mechanism, not the
   symptom alone.
 - **Same edit.** Fix a sibling site your own change makes relevant, such as a
-  matching case the new code leaves uncovered.
+  parallel case your change leaves inconsistent.
 - **Every instance.** Fix every site that matches the task's own criterion, not
   only the site first named.
 - **One fact, one home.** Make copies derive from one place instead of adding a
-  second copy of something the code already states elsewhere.
+  second copy of something the code already states elsewhere. Only merge copies
+  that must always change together. Things that only look alike today are
+  different facts. Leave them apart.
 - **Prefer removal.** Prefer dropping or narrowing existing code over adding
   beside it, when it solves the task as well.
-- **Fix the gap, not the compensation.** Fix the gap itself. Don't leave a
-  comment, a defensive check, or a fallback that only hides it.
-- **Existing code isn't automatically right.** Being in the tree already isn't
-  evidence it's correct or still needed. Judge it the way you'd judge code
-  you're about to write.
+- **Fix the gap, not the compensation.** After a change, reread your diff and
+  mentally remove any comment, mock, handler, or fallback you added. If the
+  change no longer holds without it, fix the gap underneath instead of leaving
+  the scaffolding that hides it.
+- **Existing code isn't automatically right.** Don't take code as correct or
+  still needed just because it's already in the tree. Judge it the way you'd
+  judge code you're about to write. But unproven isn't wrong: missing evidence
+  is a reason to check, not a licence to rewrite code that works.
 
 ## Don't over-build
 
@@ -48,9 +58,9 @@ Add nothing the task doesn't need. Coherence can call for touching code outside
 the plan. It never calls for a speculative abstraction, a premature
 generalisation, or a half-finished extra feature the task didn't ask for.
 
-Before adding a test, check, or doc, ask what behaviour it defends and who the
-consumer is. Drop it if the answer is only cosmetic: an arbitrary constant, a
-docstring phrasing, a count nothing depends on.
+If you notice you've added a test, check, or doc, ask what behaviour it defends
+and who the consumer is. Drop it if the answer is only cosmetic: an arbitrary
+constant, a docstring phrasing, a count nothing depends on.
 
 ## Communication style
 
@@ -83,7 +93,7 @@ configuration, or something else.
 
 Find out how that product is organised into its major components.
 
-Confirm the repo purpose and product in one sentence to the user.
+State the repo purpose and product in one sentence.
 
 ## Find the tests and checks
 
@@ -95,8 +105,8 @@ Makefile, or `pyproject.toml`/`package.json` scripts. Run it yourself before
 every commit. A commit hook rarely runs the test suite.
 
 Find any codegen a commit hook doesn't run. Examples: a stub generator, an
-OpenAPI client refresh, an index sync. Run it after an edit that needs it, so
-the generated files match the source before you commit.
+OpenAPI client refresh, an index sync. Run it after an edit that needs it. This
+makes the generated files match the source before you commit.
 
 ## Check the working tree
 
@@ -106,11 +116,9 @@ Read the branch name (`git rev-parse --abbrev-ref HEAD`).
 
 If the branch is `main`, pull the latest changes.
 
-Confirm the branch name to the user.
+State the branch name.
 
 ## Obtain session input
-
-Read the branch name (`git rev-parse --abbrev-ref HEAD`).
 
 Scan the branch name for `gh<number>` tokens, case-insensitive: `GH83`,
 `gh83-add-foo`, and `claude/gh341-defer-candidates` each yield one.
@@ -119,7 +127,7 @@ session input.
 
 When the name holds no such token, ask the user to provide the session input.
 
-Confirm the session input in one sentence to the user.
+State the session input in one sentence.
 
 ## Read the cited material
 
@@ -136,7 +144,7 @@ For each cited issue, also check whether it has sub-issues:
 gh api repos/{owner}/{repo}/issues/<N>/sub_issues
 ```
 
-A sub-issue carries part of the same input, so read it too.
+A sub-issue carries part of the same input. Read it too.
 
 ## Read the code
 
@@ -144,11 +152,10 @@ Read the relevant code, callers, tests, and docs for the named surfaces.
 
 ## Check the session input against the current code
 
-Compare the session input against your code read. The input may cite an issue
+Compare the session input against the code you read. The input may cite an issue
 filed a while ago, or name code directly. Either way, the code may have changed
 since. A symbol it names may be renamed, a file may have moved, or part of the
-ask may already be done. These claims about the code are unproven until you
-check them.
+ask may already be done.
 
 Reach for git history only to fill a real gap the reads left. For example, a
 surface the input names that is no longer there. Trace where it went.
@@ -177,8 +184,8 @@ issue, a short slug like `add-foo` for an unscoped task. If the session started
 on another branch, adopt that as the session branch.
 
 **Create the bootstrap commit and push.** Create an empty bootstrap commit
-(`git commit --allow-empty`) so the draft PR has a commit to anchor to. Give it
-a short subject (the issue ref or slug). Push the branch.
+(`git commit --allow-empty`). This gives the draft PR a commit to anchor to.
+Give it a short subject (the issue ref or slug). Push the branch.
 
 **Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
 the title from the session input.
@@ -189,14 +196,18 @@ issue number. Briefly summarise any additional input from the user.
 
 ## Plan
 
-Run a Plan subagent.
+Run a Plan subagent. Give it the session input, the code you read, and the
+Session Type, and ask for a step-by-step plan.
 
 Post the returned plan as a PR comment. Head it `Plan`.
 
 ## Implement
 
-Implement the plan, one step at a time. For each step: run the tests you found,
-commit with a short subject, and push.
+Implement the plan, one step at a time. For each step:
+
+- Run the tests you found.
+- Commit with a short subject.
+- Push.
 
 ## Review
 
@@ -222,10 +233,10 @@ Replace the `WIP` placeholder with the real description, now that the work is
 final. Check the repo for contribution rules (`CONTRIBUTING.md`, a PR template)
 and follow them. Otherwise:
 
-- Open with a bullet list of issues addressed: `Closes #N` for each one the PR
-  fully resolves, `Related to #N` for any it partly addresses.
+- Open with a bullet list of issues addressed. Use `Closes #N` for each one the
+  PR fully resolves, and `Related to #N` for any it partly addresses.
 - Follow with one to three sentences on what the PR does and why, for a reader
-  who hasn't seen the session.
+  new to the session.
 
 ## Mark the PR ready for review
 
@@ -244,25 +255,29 @@ gh pr view <N> --json comments,reviews,state \
 ```
 
 Match your own login, not the user's. You and the user post through the same
-account, so only the cutoff timestamp tells your posts from their reply. Idle
-between firings.
+account, so only the cutoff timestamp tells your posts from their reply.
+
+Then idle. You idle until the cron next fires, so this is not a busy loop. Each
+firing wakes you to run the query and handle what it returns.
 
 When `state` is `MERGED`, cancel the cron job and continue to
-[Collect](#collect). When `state` is `CLOSED`, cancel the cron job, post a
-comment naming where the work stopped, and end the session.
+[Collect](#collect). When `state` is `CLOSED`, cancel the cron job. Post a
+comment naming where the work stopped, then end the session.
 
-Otherwise, act on every comment and review since the cutoff, oldest first:
+Otherwise, act on everything the query returned as one batch, oldest first. An
+item can carry more than one of these:
 
-- **A requested change.** Implement it, commit, push, and reply on the PR.
-- **A resolve-conflicts request.** Continue to [Merge](#merge), then keep
-  watching.
+- **A requested change.** Implement it. Commit and push. Reply on the PR.
+- **A resolve-conflicts request.** Update the branch as [Merge](#merge)
+  describes, as part of handling the batch.
 - **A defer-merge request.** Cancel the cron job and continue to
-  [Collect](#collect), leaving the PR open.
+  [Collect](#collect), leaving the PR open. This is terminal, like a merge.
 - **A question.** Answer it as a PR comment.
 
-An approving review, or a comment with nothing to act on, needs no reply. After
-handling a batch, cancel and recreate the cron job with the cutoff reset to now.
-This keeps handled items from resurfacing.
+An approving review, or a comment with nothing to act on, needs no reply. Once
+you've handled the whole batch and are still watching, cancel and recreate the
+cron job with the cutoff reset to now. This keeps handled items from
+resurfacing.
 
 ## Merge
 
@@ -273,10 +288,14 @@ branch. Don't merge the PR itself. That's the user's call.
 ## Collect
 
 File anything you noticed but left out of scope as a new GitHub issue
-(`gh issue create`), so it isn't lost. Skip this step when there's nothing to
-file.
+(`gh issue create`). This keeps it from being lost. Skip this step when there's
+nothing to file.
 
-File every bug. Cap maintenance issues at two, picking the ones that affect the
-most code and cut the most maintenance burden.
+File every bug.
+
+Cap maintenance issues at two, picking the ones that affect the most code and
+cut the most maintenance burden.
 
 List each issue you filed as a PR comment. Head it `Collect`.
+
+Then end the session.
