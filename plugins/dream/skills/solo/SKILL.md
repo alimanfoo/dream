@@ -32,15 +32,15 @@ is usually the larger change, and usually the right one.
 - **Root cause.** Scope the fix to the mechanism behind the ask, not only the
   symptom site the input named. An enhancement builds the feature in rather than
   adding it as a separate piece. A bug fix repairs the mechanism, not the
-  symptom alone.
+  symptom alone. Maintenance fixes the cause of the inconsistency, not one
+  instance of it.
 - **Same edit.** Fix a sibling site your own change makes relevant, such as a
   parallel case your change leaves inconsistent.
 - **Every instance.** Fix every site that matches the task's own criterion, not
   only the site first named.
 - **One fact, one home.** Make copies derive from one place instead of adding a
   second copy of something the code already states elsewhere. Only merge copies
-  that must always change together. Things that only look alike today are
-  different facts. Leave them apart.
+  that must always change together.
 - **Prefer removal.** Prefer dropping or narrowing existing code over adding
   beside it, when it solves the task as well.
 - **Fix the gap, not the compensation.** After a change, reread your diff and
@@ -209,15 +209,6 @@ Implement the plan, one step at a time. For each step:
 - Commit with a short subject.
 - Push.
 
-## Review
-
-Run the `/code-review` skill with `medium` depth and `--fix` option. Commit and
-push the fixes.
-
-Post the returned review as a PR comment. Head it `Code review`. State which
-points were addressed and which were not. If any points were not addressed,
-explain why in one sentence.
-
 ## Simplify
 
 Run the `/simplify` skill on the changes. Commit and push the fixes it makes.
@@ -226,6 +217,15 @@ Run the `/simplify` skill on the changes. Commit and push the fixes it makes.
 
 Run the `dream:copy-edit` skill over the prose you changed. Commit and push the
 fixes it makes.
+
+## Review
+
+Run the `/code-review` skill with `medium` depth and `--fix` option. Commit and
+push the fixes.
+
+Post the returned review as a PR comment. Head it `Code review`. State which
+points were addressed and which were not. If any points were not addressed,
+explain why in one sentence.
 
 ## Write the PR description
 
@@ -242,7 +242,7 @@ and follow them. Otherwise:
 
 Mark the PR ready for review.
 
-## Watch for review
+## Watch for user review
 
 Keep watching the PR instead of ending here. Capture the cutoff now:
 `date -u +%Y-%m-%dT%H:%M:%SZ`. Create a recurring cron job (`CronCreate`) that
@@ -295,6 +295,10 @@ File every bug.
 
 Cap maintenance issues at two, picking the ones that affect the most code and
 cut the most maintenance burden.
+
+Label each issue with its category: `enhancement`, `maintenance`, or `bug`. Run
+`gh label list` once to find the repo's closest label for each, and apply none
+when there's no clean match.
 
 List each issue you filed as a PR comment. Head it `Collect`.
 
