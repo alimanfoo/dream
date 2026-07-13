@@ -7,7 +7,7 @@ description:
   one at a time — the dream team or the solo skill, chosen by the issue's label.
   Each session runs unattended and carries its issue to a pull request for the
   user to merge.
-argument-hint: "[label] [assignee] [interval]"
+argument-hint: "[team-label] [solo-label] [assignee] [interval]"
 ---
 
 # Dreamcatcher
@@ -25,15 +25,14 @@ checks, and launch it.
 
 ## Arguments
 
-Read the argument the user gives, if any. It can name the team label, the
-assignee, and the interval, in any order:
+Read the argument the user gives, if any. It can name the team label, the solo
+label, the assignee, and the interval:
 
 - a leading `@` marks the assignee
 - digits mark the interval in seconds
-- any other word is the team label
+- a bare word is a label: the first is the team label, the second the solo label
 
-Take whichever are present. The solo label defaults; the gather step covers
-overriding it.
+Take whichever are present.
 
 ## Gather the configuration
 
