@@ -106,8 +106,8 @@ not "The file is read by the parser before validation."
 
 ## One reading per sentence
 
-A reader who can take a sentence two ways may pick the wrong one. Read each
-sentence in isolation and check whether a second meaning fits.
+Be precise. A reader who can take a sentence two ways may pick the wrong one.
+Read each sentence in isolation and check whether a second meaning fits.
 
 - Rewrite an ambiguous sentence: one with two plausible readings.
 - Rewrite a near-ambiguous sentence too: one a skim reader could misread.
