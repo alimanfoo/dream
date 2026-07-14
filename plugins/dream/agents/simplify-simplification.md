@@ -15,7 +15,7 @@ the code around it. The author weighs what you return and applies the fixes.
 
 ## The lens
 
-Read the changed code for complexity it adds without need:
+Read the changed code for complexity it adds without need. For example:
 
 - state that is redundant or derivable from what is already there
 - copy-pasted blocks that vary only slightly

@@ -16,11 +16,11 @@ return and applies the fixes.
 
 ## The lens
 
-Ask whether the codebase already provides each piece of new logic the diff adds:
-a shared helper, a utility module, a pattern a neighbouring file already
-follows. Grep the shared and utility modules and the files adjacent to the
-change. Flag new code that duplicates a capability already there, and name the
-existing helper or pattern to call instead.
+Ask whether the codebase already provides each piece of new logic the diff adds.
+For example: a shared helper, a utility module, a pattern a neighbouring file
+already follows. Search the shared and utility modules and the files adjacent to
+the change. Flag new code that duplicates a capability already there, and name
+the existing helper or pattern to call instead.
 
 ## Reporting
 

@@ -15,7 +15,7 @@ code around it. The author weighs what you return and applies the fixes.
 
 ## The lens
 
-Read the changed code for wasted work it adds:
+Read the changed code for wasted work it adds. For example:
 
 - redundant computation or repeated I/O
 - independent operations run in sequence that could run together
