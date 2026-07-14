@@ -27,16 +27,21 @@ not need. These shapes recur, and do not bound the rule:
   "Set the timeout to 30 seconds.", not "Set the timeout to 30 seconds. We chose
   30 after load testing."
 
-## Narrative order
+## Strict narrative order
 
 Write so the reader can follow top to bottom. Each point should make sense from
-what came before it. A reader who meets an unresolved reference must look ahead
-or guess.
+what came before it. Otherwise, a reader who meets a forward reference must look
+ahead or guess.
 
 - Introduce a concept or term before you use it.
 - Do not refer forward. Phrases like "as described below" and "see the next
   section" are forward references.
 - When one point depends on another, put the other first.
+
+When giving instructions to be followed in sequence, write them in order. For
+example: "Knead the dough, then put it in the oven.", not "Put the dough in the
+oven, but make sure you knead it first." Sometimes instructions may be separated
+by other content, but still must follow strict narrative order.
 
 ## Reason forward
 
