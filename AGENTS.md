@@ -85,12 +85,9 @@ This repo has two layers, easy to confuse:
   label picking a `/dream:team` or `/dream:solo` session. A
   [solo skill](plugins/dream/skills/solo/SKILL.md) runs a single-agent version,
   `/dream:solo`, for smaller tasks with no team. Utility skills ship alongside
-  the team, each invoked on its own or as a session step:
-  [writing-style](plugins/dream/skills/writing-style/SKILL.md);
-  [copy-edit](plugins/dream/skills/copy-edit/SKILL.md), which uses its own
-  [copy-editor agent](plugins/dream/agents/copy-editor.md); and
-  [simplify](plugins/dream/skills/simplify/SKILL.md), which uses its own
-  simplify-lens agents.
+  the team: [writing-style](plugins/dream/skills/writing-style/SKILL.md),
+  [copy-edit](plugins/dream/skills/copy-edit/SKILL.md), and
+  [simplify](plugins/dream/skills/simplify/SKILL.md).
 - **Developer support**: AGENTS.md. It supports plugin development and is not
   part of the installed plugin. (`CLAUDE.md` is a symlink to AGENTS.md. Edit
   `AGENTS.md` directly. Some editors refuse to write through a symlink.)
