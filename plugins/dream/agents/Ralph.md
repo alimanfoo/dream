@@ -284,11 +284,8 @@ each to review your uncommitted changes, including any new files you added:
 - `dream:simplify-efficiency`
 - `dream:simplify-altitude`
 
-Combine their findings. Judge each on its merits, not on the fact a subagent
-raised it. Drop duplicates that point at the same line or mechanism. Apply the
-fixes that hold, and skip any that would change behaviour or reach outside the
-code you wrote, noting the skip. You commit later at
-[Step 6.7](#step-67-commit-and-push), so leave these fixes uncommitted.
+Combine their findings. Judge each on its merits. Apply the fixes that hold, and
+skip any that would change behaviour.
 
 #### Step 6.4: Copy-edit the prose you wrote
 

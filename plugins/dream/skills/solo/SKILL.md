@@ -226,10 +226,8 @@ briefing each to review the branch's changes against the base
 - `dream:simplify-efficiency`
 - `dream:simplify-altitude`
 
-Combine their findings. Judge each on its merits, not on the fact a subagent
-raised it. Drop duplicates that point at the same line or mechanism. Apply the
-fixes that hold, and skip any that would change behaviour, noting the skip.
-Commit and push the fixes.
+Combine their findings. Judge each on its merits. Apply the fixes that hold, and
+skip any that would change behaviour. Commit and push the fixes.
 
 ## Copy-edit
 
