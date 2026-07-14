@@ -189,7 +189,7 @@ Phase 6 task:
 Post any question you can't resolve without the user to the PR as a comment
 before you ask in chat. Otherwise the PR looks idle after the review while the
 question sits only in chat. Do this the same as
-[Step 1.11](phase1.md#step-111-elicit-answers-to-open-questions).
+[Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions).
 
 Once the accepted follow-ons are complete, post one response comment. Do this
 the same as [Step 7.4](#step-74-post-graces-response-as-a-pr-comment). Leave the

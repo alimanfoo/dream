@@ -9,9 +9,9 @@ sequence derived one or more issues from the worktree branch name, those issues
 are the session input. Phase 1 captures the system's requirements behind it. It
 makes any assumptions explicit so the user can correct them. It checks the
 session input against the current code, so stale details don't ride downstream.
-It gets one round of adversarial review from Junio before anyone else sees the
-Draft Requirements Analysis. And it elicits answers to anything Grace can't call
-from the cited material. It ends at an accepted Requirements Analysis: what the
+It gets one round of adversarial review before anyone else sees the Draft
+Requirements Analysis. And it elicits answers to the open questions the cited
+material can't settle. It ends at an accepted Requirements Analysis: what the
 system must do, for whom, and what it is deliberately not for. Follow the steps
 below in sequence.
 
@@ -45,285 +45,29 @@ main-checkout session, reproduce the user's text verbatim. Follow
 the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
 
-## Step 1.2: Orient to the repo
+## Step 1.2: Produce the Draft Requirements Analysis
 
-Establish what the repo is for as a whole, before reading the session input.
-Orienting first brings a whole-repo frame to the task, so you weigh the work
-against what the repo delivers.
+Run the `dream:requirements-analysis` skill, giving it the session input. The
+skill carries the analysis end to end. It orients to the repo, reads the cited
+material and the code with a consumer lens, consults the record, checks the
+input against the current code, names the Session Type, and composes the Draft.
+It then reviews the Draft adversarially and copy-edits it, so what it returns is
+already reviewed and readable. Take the skill through to its returned Draft
+without your own review or copy-edit on top.
 
-Name four things:
+The skill returns the Draft Requirements Analysis. By Session Type it names the
+consumers and their use cases, or the improvement goals and preserved behaviour,
+or the expected and observed behaviour and affected consumers. It also carries
+any constraints, candidates, system non-goals, and open questions, with each
+item marked stated or assumed. Any input drift is folded in as corrections and
+notes, so the drift is recorded in the Draft itself rather than a separate
+comment. The skill also states the Session Type and the repo orientation in turn
+output.
 
-- **What the repo is for**: the vision, goal, or objective of the project
-  building it.
-- **Its product**: the deliverable, what a consumer ultimately gets. For an
-  application or software library this is the code, but it could also be data,
-  content, configuration, or something else.
-- **The product's architecture**: how that product is organised into its major
-  components.
-- **The supporting infrastructure**: the tests, checks, build steps, and tooling
-  built around the product to produce, verify, and maintain it.
+Hold the returned Draft, the Session Type, and the repo orientation as your
+working artifacts for the steps below. Don't share the Draft with the user yet.
 
-Source each part from the repo's own docs where they state it, or from the
-structure where they don't. The docs are its
-[agent-instructions files](../protocol.md#agent-instructions-files), README,
-package manifests, and any high-level system or architecture documentation. Read
-the ones that frame the whole repo: the root agent-instructions file and the
-top-level docs. Mark each part **stated** or **assumed**, so the user can see
-which parts come from the repo's own account and which are your inference.
-
-Share the orientation with the user in a few sentences, so they can correct a
-mis-orientation before it shapes everything downstream. This is not a gate.
-Proceed once you've shared.
-
-## Step 1.3: Read the cited material
-
-Read everything the user cites in their session input: issue bodies and their
-comments, prior issues they reference, linked PRs, named files or symbols.
-Comments often reframe the issue or carry a decision the body doesn't show. An
-issue read without its comments can miss what the issue has become. This is the
-substantive baseline for the steps that follow. Without it, the recurrence check
-and code read run on guesses about what the user means.
-
-For each cited issue, also check whether it has sub-issues:
-
-```bash
-gh api repos/{owner}/{repo}/issues/<N>/sub_issues
-```
-
-A sub-issue carries part of the same requirement, so read it too.
-
-## Step 1.4: Read the code with a consumer lens
-
-Read the relevant code, callers, tests, and docs for the named surfaces. Hold
-one question in mind: _who uses these surfaces and what do they do with them?_
-This is the consumer lens. It makes the Requirements Analysis substantive, with
-who and what the work serves checked against the code rather than inferred from
-prose alone.
-
-## Step 1.5: Consult the record
-
-Consult the record for the surfaces the user has named: a function, a class, a
-module, or a parameter. A session may name several. Consult two ways: search the
-issue tracker for recurrence, and read the PRs that last shaped each surface.
-
-**Recurrence.** Search the issue tracker for each surface:
-
-```bash
-gh issue list --state all --search '<surface>'
-```
-
-If the search returns other issues on any of these surfaces (open or closed), or
-if the issue body cites prior closed issues, note what the prior context shows.
-Judge which prior issues actually relate to the current concern and read those
-too.
-
-**Prior PRs.** For each surface, `git blame` the relevant lines (or `git log` to
-follow their history) to find the PRs that last shaped them, then read each PR's
-description for the requirements record it carries:
-
-```bash
-gh pr view <N> --json body
-```
-
-The link from line to PR is structural. Git maintains it for free, so you reach
-the exact prior decisions without guessing search terms. Prior PRs may tell you
-more about the consumers, use cases, and non-goals for that surface. Carry that
-information into the Requirements Analysis.
-
-## Step 1.6: Check the session input against the current code
-
-Check the session input against what the reads have shown. The input may cite an
-issue filed a while ago, or name code directly. Either way the code moves in
-between. A symbol it names may be renamed, a file may have moved, or part of the
-ask may already be done. These claims about the code are unproven until you
-check them. Otherwise, stale details left unchecked would ride through every
-downstream phase.
-
-You have both sides already.
-[Step 1.4](#step-14-read-the-code-with-a-consumer-lens) read the current code
-for the named surfaces, and [Step 1.5](#step-15-consult-the-record) read the PRs
-that last shaped them. Compare the input against what those reads showed. Name
-each discrepancy. Reach for git history only to fill a real gap the reads left.
-For example, a surface the input names that is no longer there. Trace where it
-went.
-
-Route each discrepancy:
-
-- **A drifted detail**, such as a renamed symbol or a moved file. Correct it.
-  Carry the correction into the Draft Requirements Analysis you compose in
-  [Step 1.8](#step-18-compose-the-draft-requirements-analysis), as a stated
-  item.
-- **A superseded ask**, part of the work already done and cleanly separable.
-  Draft only the remaining work. Don't raise a question to drop what's done. The
-  Requirements cover what's left.
-- **A reframed ask**, where later work changed what the input means. You can't
-  cleanly cut the done part out. Carry it into the Draft as an open question.
-  The input needs rethinking with the user before the work makes sense. When
-  nothing is left to build at all, raise that as an open question too.
-
-When anything has drifted, post an `Input freshness` comment to the PR. For each
-discrepancy, give what the input stated and what the code now shows. Keep the
-comment to the facts: the decision a reframed ask forces goes in the open
-questions, not here. Skip the comment when nothing has drifted. Write it in
-public register: keep role names and protocol-process vocabulary out. Follow
-[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
-the Claude Code footer from
-[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
-
-If nothing has drifted, say so in one line of turn output and continue.
-
-## Step 1.7: Name the Session Type
-
-Pin the Session Type before composing the Requirements Analysis. It selects the
-shape of the Requirements Analysis and what later phases focus on. Three types:
-
-- **Enhancement.** New feature or capability that doesn't currently exist.
-- **Maintenance.** Coherence, naming, structure. Behaviour already correct.
-- **Bug fix.** Incorrect behaviour to repair.
-
-State the Session Type in one short sentence with the reasoning ("Session Type:
-enhancement, adds a new CLI subcommand") and continue to
-[Step 1.8](#step-18-compose-the-draft-requirements-analysis).
-
-## Step 1.8: Compose the Draft Requirements Analysis
-
-Compose the Draft Requirements Analysis: your explicit reading of the system's
-requirements behind the session input. This is the artifact Junio reviews next.
-Compose it in full before sending it anywhere. Without this step, hidden
-inferences about who is served and what counts as done ride through to Design.
-There they shape machinery no real consumer needs.
-
-A scope or design steer in the input is not a requirement. Leave it for the
-Scope and Design phases, which source it there.
-
-Choose the shape based on the Session Type.
-
-For an **enhancement**:
-
-- **Consumers**: who uses what's being built, whether a person, an agent, or an
-  external system that interacts with the changed surface. Name each concretely
-  ("an agent invoking this in scripts", not "users"). Code inside the repo is
-  never a consumer. Caller relationships are Phase 2 content.
-- **Use cases**: what each consumer does with it and what they get, written as
-  that action-outcome pair. "Passes a region string and gets back the bounding
-  coordinates" is a use case. "Uses the API" is not. A use case you can't write
-  as a pair isn't concrete enough to build from.
-- **Constraints**: qualities the work must hold (performance, compatibility, API
-  stability, security), when the input or the read names any.
-
-For **maintenance**:
-
-- **Improvement goals**: what "better" means here, each stated as a checkable
-  property of the code, such as "the valid-cases enumeration has one home" or
-  "no caller mentions the old name". A goal you can't state checkably is an open
-  question, not a goal.
-- **Preserved behaviour**: the contract that must not change, and the consumers
-  who rely on it.
-
-For a **bug fix**:
-
-- **Expected behaviour**: what should happen, citing where the expectation comes
-  from, such as a docstring, a signature, prior behaviour, or only the report
-  itself. The source matters because Phase 2 tests the claim. An expectation
-  backed only by the report is the first thing to check.
-- **Observed behaviour**: what the report says happens, recorded as a claim for
-  Phase 2 to verify.
-- **Affected consumers**: who hits the defect and what it costs them. One or two
-  sentences.
-
-Every shape also carries:
-
-- **Candidates**: items of the shape's own kind that the read suggests but the
-  input never named, such as candidate use cases for an enhancement or candidate
-  improvement goals for maintenance. To notice them, draw on similar or
-  analogous situations you know of. A candidate qualifies only when you can
-  point to what in the read suggests it. Each cites that evidence, and a
-  candidate use case also names the consumer it would serve. The user opts in to
-  any they want at the gate, and
-  [Step 1.13](#step-113-seek-user-acceptance-of-the-requirements-analysis)
-  decides each one from there.
-- **System non-goals** (when any are stated or strongly implied): what the
-  product is deliberately not built for, given what it is for, such as a
-  consumer it will never serve or a behaviour it will never take on. This
-  records intent, not scope: the product is never meant to do this, not that
-  this session skips it. Most sessions have none. Leave the section out rather
-  than fill it with work that is merely out of scope or deferred, which is
-  Scope's call.
-- **Open questions**: calls you can't make from the cited material, where the
-  call matters for what comes next. Frame each as a concrete question. List the
-  possible answers you can see and invite a freeform answer too. The test: write
-  the `assumed` value you'd record. If you can write one without guessing, mark
-  it assumed instead. If you can't, it's a genuine open question.
-
-Mark every item in every shape as **stated** (named in the cited material) or
-**assumed** (your inference).
-
-Keep maintenance and bug-fix shapes short. One or two sentences per section is
-usually enough. For an enhancement, the consumer and use-case sections are the
-work. Give them real detail.
-
-Test the new intent the session input carries against the existing intent. The
-orientation names what the repo delivers, and the consumer-lens read shows what
-its surfaces already serve. Ask whether the proposed work serves that product,
-and whether its value is evidenced by the existing goals or only asserted by the
-input. Where it doesn't cohere or the value isn't evidenced, surface that as an
-open question. Don't carry the intent through unexamined. The user decides at
-the gate.
-
-The marking shows where each item came from, the session input or your own
-inference, not whether it's true. The user can edit either kind. They can drop
-an assumed item freely, since it's your inference, not the input's claim. They
-can drop a stated item too, when the consumer-lens read or the intent test shows
-the input got it wrong.
-
-## Step 1.9: Share the Draft Requirements Analysis with Junio for review
-
-Write the Draft Requirements Analysis, the Session Type, and the repo
-orientation from [Step 1.2](#step-12-orient-to-the-repo) to a temporary file
-outside this repo, via Bash. Send Junio the file's absolute path via
-`SendMessage`. Junio hasn't seen any of it yet. Sign off
-`From Grace. RSVP via SendMessage.`
-
-Junio reads as an adversary, testing:
-
-- whether a real consumer or need stands behind each claim
-- whether the work serves what the repo is for
-- whether it sits coherently with what the project already delivers and with the
-  Draft's own other items
-
-Ralph and Ada aren't part of this round. Junio replies with a numbered list of
-findings, or "no substantive findings." This review is advisory, not gating, one
-round only. Don't loop back to Junio after revising. The point is a fresh,
-adversarial read at the cheapest point to catch a foundational problem, before
-the user ever sees the Draft.
-
-## Step 1.10: Apply the review
-
-Decide each of Junio's findings on its merits, and record a one-line reason for
-the call. You own the Requirements Analysis. Junio raising a finding is not
-itself a reason to fold it in.
-
-Route each finding by what it settles:
-
-- **A fact you can pin down.** The finding shows a stated item wasn't actually
-  said, or confirms or disproves an assumed item. Correct the item, and its
-  stated/assumed marking, directly in the Draft.
-- **A genuine open question.** The finding surfaces a real tension nothing
-  settles outright. For example: no consumer the read can find, a fit the
-  orientation doesn't support, or a clash with an existing requirement or
-  another Draft item. Add it to the open questions, or sharpen one already
-  there. Use the [Step 1.8](#step-18-compose-the-draft-requirements-analysis)
-  test: write the assumed value you'd record. If you can't write one without
-  guessing, it's open. Treat the option to stop as equal to any option that
-  continues the work. Name it plainly among the possible answers. Never bury it
-  as an aside inside a version of doing the work anyway.
-- **A finding you reject.** You disagree with the finding. Name it and your
-  reason in the message in
-  [Step 1.12](#step-112-share-the-requirements-analysis) regardless. Every
-  finding at this review tests a foundational premise, so a rejection you keep
-  to yourself is the same deference this review exists to catch.
-
-## Step 1.11: Elicit answers to open questions
+## Step 1.3: Elicit answers to open questions
 
 Skip this step when there are no open questions.
 
@@ -334,13 +78,12 @@ out. Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
 the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
+The skill has already copy-edited the Draft, so the questions read clearly. Post
+the file to the PR as a comment.
 
-Run the `dream:copy-edit` skill over that file so the questions read clearly,
-then post it to the PR as a comment.
-
-Send the user the same copy-edited questions and answers as a numbered list.
-Invite a freeform answer too. End the message by asking the user to answer the
-questions so Grace can complete the Requirements Analysis.
+Send the user the same questions and answers as a numbered list. Invite a
+freeform answer too. End the message by asking the user to answer the questions
+so Grace can complete the Requirements Analysis.
 
 Wait for the user's reply. Fold their answers into the Requirements Analysis as
 stated items, dropping the matching open questions. If the reply leaves any
@@ -348,14 +91,11 @@ question unanswered, re-ask the unanswered ones before continuing. You marked
 them as needing the user, so a missing answer means the artifact isn't complete
 yet.
 
-## Step 1.12: Share the Requirements Analysis
+## Step 1.4: Share the Requirements Analysis
 
-Send the completed Requirements Analysis to the user. Add a brief note on **what
-changed from the Draft after Junio's review**: folded-in findings, and any
-rejections with the reason. The user learns what the review changed without
-seeing it directly. When there are candidates, ask the user to name any they
-want included, by number. Note that any they don't name are carried forward as
-Opportunities to Collect (see
+Send the completed Requirements Analysis to the user. When there are candidates,
+ask the user to name any they want included, by number. Note that any they don't
+name are carried forward as Opportunities to Collect (see
 [Phase 9](../../../agents/Grace.md#phase-9-collect)). Tell them they can ask to
 drop any outright.
 
@@ -367,7 +107,7 @@ End the message with one of these two, depending on autopilot:
   continue in the same turn. _"Taking the Requirements Analysis as proposed
   (autopilot). Proceeding to Phase 2: Code Analysis."_
 
-## Step 1.13: Seek user acceptance of the Requirements Analysis
+## Step 1.5: Seek user acceptance of the Requirements Analysis
 
 Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
@@ -379,30 +119,31 @@ explicitly dropped. Defer the rest to Collect (see
 If accepted, apply the Session Type's category label to the PR via
 `gh pr edit --add-label <name>` (see
 [GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to
-[Step 1.14](#step-114-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+[Step 1.6](#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
 
 If the user pushes back, revise and return to
-[Step 1.12](#step-112-share-the-requirements-analysis). Repeat until accepted.
+[Step 1.4](#step-14-share-the-requirements-analysis). Repeat until accepted.
 
 This is one of the protocol's user acceptance gates (see
 [Acceptance gates](../protocol.md#acceptance-gates)).
 
-## Step 1.14: Hand the accepted Requirements Analysis to Junio and Ralph
+## Step 1.6: Hand the accepted Requirements Analysis to Junio and Ralph
 
 Write the following, in the versions the user accepted plus any changes from the
 acceptance discussion, to a temporary file outside this repo, via Bash:
 
 - the accepted Requirements Analysis
 - the Session Type
-- the repo orientation from [Step 1.2](#step-12-orient-to-the-repo)
+- the repo orientation from
+  [Step 1.2](#step-12-produce-the-draft-requirements-analysis)
 
 Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP.
 
-## Step 1.15: Post the accepted Requirements Analysis to the PR
+## Step 1.7: Post the accepted Requirements Analysis to the PR
 
 Post the accepted Requirements Analysis to the PR from the file written in
-[Step 1.14](#step-114-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+[Step 1.6](#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
 Follow
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
 Use the heading `Requirements`.

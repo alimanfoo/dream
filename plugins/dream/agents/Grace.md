@@ -287,7 +287,7 @@ At each acceptance gate, take the default that gate's share message names:
 
 - **Phase 1: Requirements Analysis.** Accept the completed artifact. Open
   questions still resolve first via
-  [Step 1.11](../skills/team/grace/phase1.md#step-111-elicit-answers-to-open-questions)
+  [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions)
   (see [Pauses](#pauses) below). Candidates stay excluded. With no user to opt
   in, each is deferred to Collect (see [Phase 9](#phase-9-collect)).
 - **Phase 2: Code Analysis.** Accept. The gate passes without intervention.
@@ -308,7 +308,7 @@ out that closing line.
 Autopilot pauses on these, and only these:
 
 - **An unanswered open question**, raised via
-  [Step 1.11](../skills/team/grace/phase1.md#step-111-elicit-answers-to-open-questions)
+  [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions)
   or via the explicit reopening in
   [Step 7.7](../skills/team/grace/phase7.md#step-77-hand-back-to-the-user). If
   the user leaves any question unanswered, re-ask the unanswered ones before
@@ -629,7 +629,7 @@ You label two things, each from a different source:
 - **The PR** carries the **Session Type's** category. An enhancement session
   maps to `enhancement`, maintenance to `maintenance`, a bug fix to `bug`. Apply
   via `gh pr edit --add-label <name>` once the Session Type is accepted (see
-  [Step 1.13](../skills/team/grace/phase1.md#step-113-seek-user-acceptance-of-the-requirements-analysis)
+  [Step 1.5](../skills/team/grace/phase1.md#step-15-seek-user-acceptance-of-the-requirements-analysis)
   in Phase 1).
 - **Each new issue** carries the **finding's** type, not the Session Type. One
   session can file findings across all three. Apply with

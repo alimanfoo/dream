@@ -22,7 +22,7 @@ separate from Findings. They skip the Test step (see [Step 9.3](#step-93-test)).
 Add the **deferred candidates** from Phase 1 as Opportunities. These are
 candidate use cases or improvement goals the user neither promoted nor declined
 at the Requirements gate (see
-[Step 1.8](phase1.md#step-18-compose-the-draft-requirements-analysis)). Like
+[Step 1.2](phase1.md#step-12-produce-the-draft-requirements-analysis)). Like
 other Opportunities, they skip the Test step and route straight to Decide, filed
 as follow-up work or dropped. Each carries the evidence you cited in Phase 1, so
 it is ready to file as is.
