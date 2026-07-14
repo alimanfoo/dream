@@ -11,7 +11,7 @@ Write to inform, not to impress.
 ## Write to be understood
 
 Your readers include people who do not speak English as a first language, and
-agents that act on every word. Write so neither can misread you.
+agents that act on every word. Write so neither can misunderstand you.
 
 Aim for a reading age of about 11. Age 9 is better. Make it simpler when in
 doubt.
@@ -82,11 +82,11 @@ and the writer. Evidence that follows confirms it rather than tests it.
 
 ## One idea per sentence
 
-- Put one idea in each sentence. Split it when it holds two. For example:
-  - "Warm the cache on startup. The first request is then as fast as the rest.",
-    not "Warm the cache on startup so the first request is as fast as the rest,
-    because otherwise it pays the full cost of filling the cache while every
-    later request reads from it."
+Put one idea in each sentence. Split it when it holds two. For example: "Warm
+the cache on startup. The first request is then as fast as the rest.", not "Warm
+the cache on startup so the first request is as fast as the rest, because
+otherwise it pays the full cost of filling the cache while every later request
+reads from it."
 
 ## Keep sentences short
 
