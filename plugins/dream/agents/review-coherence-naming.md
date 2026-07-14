@@ -1,5 +1,5 @@
 ---
-name: review-coherence-names
+name: review-coherence-naming
 description:
   Reviews a change for a name that misleads about what the code does, or departs
   from how the surrounding code names the same concept. Read-only. Returns its

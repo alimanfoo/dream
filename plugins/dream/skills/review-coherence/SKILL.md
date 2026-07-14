@@ -28,7 +28,7 @@ briefing each to review the target:
 - `dream:review-coherence-separation`
 - `dream:review-coherence-in-shape`
 - `dream:review-coherence-scaffolding`
-- `dream:review-coherence-names`
+- `dream:review-coherence-naming`
 
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
