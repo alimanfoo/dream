@@ -217,9 +217,9 @@ Implement the plan, one step at a time. For each step:
 ## Simplify
 
 Run a simplify pass over the branch's changes, so the code is easier to read.
-Write the branch diff against the base (`git diff main...HEAD`) to a file
-outside the working tree. Launch these review subagents in parallel, via the
-Agent tool, one per lens, briefing each with that file's path:
+Launch these review subagents in parallel, via the Agent tool, one per lens,
+briefing each to review the branch's changes against the base
+(`git diff main...HEAD`):
 
 - `dream:simplify-reuse`
 - `dream:simplify-simplification`

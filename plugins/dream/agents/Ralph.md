@@ -275,11 +275,9 @@ scope. See
 
 #### Step 6.3: Simplify the code you wrote
 
-Run a simplify pass over the code you wrote, so it is easier to read. Write your
-uncommitted changes, including new files, to a file outside the working tree:
-`git add -A -N` so new files show in the diff, `git diff HEAD` into the file,
-then `git reset -q` to unstage. Launch these review subagents in parallel, via
-the Agent tool, one per lens, briefing each with that file's path:
+Run a simplify pass over the code you wrote, so it is easier to read. Launch
+these review subagents in parallel, via the Agent tool, one per lens, briefing
+each to review your uncommitted changes, including any new files you added:
 
 - `dream:simplify-reuse`
 - `dream:simplify-simplification`
