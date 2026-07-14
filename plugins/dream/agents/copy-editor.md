@@ -54,7 +54,7 @@ together, so one you miss forces another round.
 - Leave headings and links unchanged. They carry anchors the author cannot
   change freely.
 
-## Record every finding in a file
+## Record every finding in a temporary file
 
 Weigh every span you consider a possible violation, including the ones that
 pass. A span you weigh on the page is one you actually tested.

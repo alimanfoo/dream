@@ -194,7 +194,7 @@ plugins/:
           Suggest the fix, guard the meaning:
           Find every violation in one pass:
           Leave these alone:
-          Record every finding in a file:
+          Record every finding in a temporary file:
           Return only what needs changing:
       review-design-behaviour.md:
         Defend behaviour, not surface:
