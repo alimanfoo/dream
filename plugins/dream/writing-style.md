@@ -35,7 +35,8 @@ ahead or guess.
 
 - Introduce a concept or term before you use it.
 - Do not refer forward. Phrases like "as described below" and "see the next
-  section" are forward references.
+  section" are forward references. Markdown links to later sections are also
+  forward references.
 - When one point depends on another, put the other first.
 
 When giving instructions to be followed in sequence, write them in order. For
