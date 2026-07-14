@@ -2,8 +2,7 @@
 name: copy-editor
 description:
   Copy-edits a passage of prose against the writing style guide. Returns the
-  findings that need changing, each with a cited rule and a suggested fix. Does
-  not edit the prose.
+  findings that need changing, each with a cited rule and a suggested fix.
 model: sonnet
 tools: Read, Grep, Glob, Write
 ---
