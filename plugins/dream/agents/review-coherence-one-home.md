@@ -1,8 +1,8 @@
 ---
 name: review-coherence-one-home
 description:
-  Reviews a change for a fact it copies that already has a home, one that will
-  drift.
+  Reviews a change for a fact it copies that already has a home elsewhere. The
+  copy will drift.
 model: sonnet
 tools: Read, Grep, Glob, Bash
 ---
@@ -24,7 +24,7 @@ either side changes.
 Read the change for a fact it states that already lives somewhere else.
 Single-sourcing is usually removal of the copy, not new machinery.
 
-Two traps to avoid:
+Traps to avoid:
 
 - **Cheaper re-sync is not a home.** A script that regenerates a copy, or a test
   asserting copy A equals copy B, keeps two homes and only lowers the cost of

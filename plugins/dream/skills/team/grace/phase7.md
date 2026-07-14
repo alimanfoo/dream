@@ -43,8 +43,8 @@ not itself a reason to accept it. Each finding takes one of these paths:
   defect.
 
 A cluster of Junio's coherence findings circling one surface can be the evidence
-for a Challenge. It can show the Session Scope was too narrow to reach the root
-cause, not just a list of follow-ons.
+for a Challenge. Read it as a sign the Session Scope was too narrow to reach the
+root cause, not as a list of separate follow-ons.
 
 Keep one response note per finding as you triage. Accepted findings record the
 follow-on task and, once complete, the commit or PR-visible evidence that

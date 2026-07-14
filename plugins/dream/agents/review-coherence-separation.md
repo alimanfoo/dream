@@ -19,8 +19,8 @@ acts on what you return.
 Coherence at the largest scale is the boundaries that keep the whole from
 tangling. Read the change for where it blurs one:
 
-- **Tangled concerns.** A unit doing two jobs that change for different reasons,
-  so a change to one drags a reader through the other.
+- **Tangled concerns.** A unit doing two jobs that change for different reasons.
+  A change to one then drags a reader through the other.
 - **A crossed boundary.** A module reaching into another's internals, a
   lower-layer module importing from a higher one, or a shared utility depending
   on a specific domain.

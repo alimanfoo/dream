@@ -18,7 +18,7 @@ review weighs and acts on what you return.
 
 Run one test on the machinery the change adds: what would happen if you removed
 it? Machinery means a comment, a mock, an exception handler, a validator, a
-test, or a fallback. Two outcomes:
+test, or a fallback. The outcomes:
 
 - **The change still holds.** The machinery defended only surface, not
   behaviour. A test pinning `len(X) == 9` that no caller relies on, a comment
@@ -29,8 +29,8 @@ test, or a fallback. Two outcomes:
   underneath, not the scaffolding.
 
 Some tells: a comment justifying defensive code, a mock of the very dependency
-the change wires through, a `try`/`except` around a fixable error, a docstring
-stating a contract the signature doesn't enforce.
+the change wires through, or a `try`/`except` around a fixable error. Another is
+a docstring stating a contract the signature doesn't enforce.
 
 ## Reporting
 

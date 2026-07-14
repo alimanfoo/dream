@@ -18,8 +18,8 @@ review weighs and acts on what you return.
 
 Read each change for the depth it fixes at. A special case bolted onto shared
 infrastructure, a guard at one call site, or a branch handling one input shape
-is a sign the fix sits at the symptom, not the cause. Ask whether generalising
-the underlying mechanism would remove the special case altogether.
+is a sign. Each patches where the symptom shows, not the cause. Ask whether
+generalising the underlying mechanism would remove the special case altogether.
 
 For an enhancement, ask whether the feature is built into the mechanism or added
 beside it. For a bug fix, ask whether the change repairs the mechanism or masks

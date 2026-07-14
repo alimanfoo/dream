@@ -29,12 +29,12 @@ smallest local fix. Reach past it to the change that leaves the whole simpler:
 the root cause reached, the duplication collapsed, the intent made plain. That
 is usually the larger change, and usually the right one.
 
-The coherence review below checks the finished change against the coherence
+The coherence review checks the finished change against the coherence
 disciplines and returns what it finds, for you to act on. Two disciplines shape
 work before the review can see it, so hold them from the start:
 
-**Resolve the root cause.** Scope the fix to the mechanism behind the ask, not
-only the symptom site the input named. An enhancement builds the feature in
+**Resolve the root cause.** Scope the fix to the mechanism behind the request,
+not only the symptom site the input named. An enhancement builds the feature in
 rather than adding it as a separate piece. A bug fix repairs the mechanism, not
 the symptom alone. Maintenance fixes the cause of the inconsistency, not one
 instance of it. This shapes the plan, before any code exists.
@@ -224,8 +224,8 @@ explain why in one sentence.
 ## Coherence review
 
 Run the `dream:review-coherence` skill over the branch's changes against the
-base (`main...HEAD`). It returns findings across the coherence lenses; it does
-not apply them. Weigh each on its merits and apply the ones that hold, reaching
+base (`main...HEAD`). It returns findings across the coherence lenses. It does
+not apply them. Weigh each on its merits and apply the ones that stand up. Reach
 for the coherent fix even when it is larger than the site the finding names.
 Commit and push the fixes.
 

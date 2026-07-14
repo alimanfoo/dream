@@ -15,8 +15,7 @@ removed. You report. Whoever runs the review weighs and acts on what you return.
 
 ## The lens
 
-Read every name the change introduces or touches, and ask two questions in
-order.
+Read every name the change adds or alters, then ask, in order:
 
 **Does the name tell the truth about what the code does?** Compare each name
 against its signature, its docstring, and its body. A `validate_*` that returns
@@ -25,9 +24,9 @@ docstring describing an operation different from what the name advertises. A
 comment or docstring that warns the name is wrong ("this does not actually X
 despite the name") rather than fixing it.
 
-**Does the name match how the nearby code names the same concept?** A fresh term
-for a concept a neighbour already names, a qualifier fossil (`_v2`, `_new`,
-`_legacy`) left from an iteration, or a name colliding with an existing one that
+**Does the name match how the surrounding code names the same concept?** A fresh
+term for a concept a neighbour already names. A qualifier fossil (`_v2`, `_new`,
+`_legacy`) left from an iteration. A name colliding with an existing one that
 means something else.
 
 ## Reporting

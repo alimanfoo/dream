@@ -31,7 +31,7 @@ briefing each to review the target:
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
 
-Combine their findings into one list, dropping duplicates. Mark which are
-defects, where the code fails to fit and needs fixing now, and which are
-opportunities, where the code fits but a generalisation would leave it simpler,
-easier to maintain, or able to shed code, so the caller can tell the two apart.
+Combine their findings into one list, dropping duplicates. Mark each as a defect
+or an opportunity, so the caller can tell them apart. A defect is where the code
+fails to fit and needs fixing now. An opportunity is where the code fits, but a
+generalisation would leave it simpler, easier to maintain, or able to shed code.

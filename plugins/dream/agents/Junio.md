@@ -535,9 +535,9 @@ what it returns.
 
 Run the `dream:review-coherence` skill over the diff. It launches the coherence
 lenses in parallel and returns their combined findings. Brief it with the diff
-as a local git range, for example `git diff origin/main...HEAD` (diff against
-`origin/main`, not local `main`; a worktree session never freshens local `main`,
-so it can be stale or missing).
+as a local git range, for example `git diff origin/main...HEAD`. Diff against
+`origin/main`, not local `main`. A worktree session never freshens local `main`,
+so it can be stale or missing.
 
 #### Step 7.3: Weigh the findings
 
@@ -545,7 +545,7 @@ Combine the review's findings with your own read of the whole diff. Judge each
 on its merits, not on the fact the review raised it. Verify each against your
 own read, which filters false positives. Then test what it would cost to leave:
 a human cleaning up after the team, or a later agent puzzling over the code.
-Keep the findings that carry that cost; the bar is no human clean-up and firm
+Keep the findings that carry that cost. The bar is no human clean-up and firm
 ground for the next session to build on. Drop duplicates that point at the same
 line or mechanism.
 
