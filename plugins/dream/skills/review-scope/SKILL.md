@@ -1,18 +1,18 @@
 ---
 name: review-scope
-description: Review Draft Scope Options and return the combined findings.
+description: Review draft scope options and return the combined findings.
 argument-hint: "<artifact>"
 ---
 
 # Review scope
 
-Review Draft Scope Options across their lenses and return the combined findings.
-It returns findings; it doesn't change the artifact.
+Review draft scope options across different lenses and return the combined
+findings.
 
 ## Arguments
 
-Read the argument the user gives. It names the artifact to review: the Draft
-Scope Options, as an absolute path.
+Read the argument the user gives. It names the artifact to review: the draft
+scope options, as an absolute path.
 
 ## Review
 
@@ -23,10 +23,10 @@ Launch these review subagents in parallel, via the Agent tool, one per lens:
 - `dream:review-scope-root-cause`
 - `dream:review-scope-property`
 
-Brief each with the Draft Scope Options under review, the Session Type, and the
-accepted Requirements Analysis and Code Analysis, which the lenses need as
-context. Give each artifact as an absolute path, not the content retyped. A
-subagent can't resolve a path relative to its own prompt file.
+Brief each with the draft scope options under review and any other background
+material the lenses need as context. Pass each as an absolute path. A subagent
+can't resolve a path relative to its own prompt file. Don't retype the content
+into the prompt.
 
 Combine their findings into one list, dropping duplicates that point at the same
-Scope Option part.
+scope option part.

@@ -147,10 +147,10 @@ Scope addition earns its place. Review all present options on their merits.
 #### Step 3.2: Run the scope review
 
 Run the `dream:review-scope` skill over the Draft Scope Options, at the file
-path from Step 3.1. Give it also the Session Type and the file paths you already
-hold for the accepted Requirements Analysis (from Step 1.5) and the accepted
-Code Analysis (from the Phase 2 handoff), which its lenses need as context. It
-launches the review lenses and returns their combined findings.
+path from Step 3.1. Give it also the Session Type, the accepted Requirements
+Analysis (from Step 1.5), and the accepted Code Analysis (from the Phase 2
+handoff). Its lenses need these as context. It launches the review lenses and
+returns their combined findings.
 
 #### Step 3.3: Weigh the findings
 
@@ -240,19 +240,15 @@ from Step 4.3. Give it also your [Step 4.1](#step-41-survey-existing-tools)
 survey, which the reinvention lens needs and doesn't otherwise hold. It launches
 the review lenses and returns their combined findings.
 
-The lenses report what they surface, including the facts behind a candidate
-lateral move or reinvention. They don't tag candidates or raise a Challenge. You
-do that when you weigh the findings.
-
 While reviewing you can also raise a Challenge, not a lens, but the general
 escalation any teammate can raise (see `protocol.md`). If a fresh read turns up
 genuinely new evidence that an accepted artifact no longer holds, raise one.
 
 #### Step 4.5: Weigh the findings
 
-Judge each returned finding on its merits, not on the fact a lens raised it.
-Keep anything plausible. Tag each candidate lateral move or reinvention
-strictly-better or trades-away. Decide whether any finding warrants a Challenge.
+Judge each returned finding on its merits. Keep anything plausible. Tag each
+candidate lateral move or reinvention as strictly-better or trades-away. Decide
+whether any finding warrants a Challenge.
 
 #### Step 4.6: Send your findings to Grace via `SendMessage`
 
@@ -302,8 +298,8 @@ genuinely new evidence that an accepted artifact no longer holds, raise one.
 #### Step 5.3: Weigh the findings
 
 Combine the returned findings with the view you formed reading the Draft Plan.
-Judge each on its merits, not on the fact a lens raised it. Keep anything
-plausible. Decide whether any finding warrants a Challenge.
+Judge each on its merits. Keep anything plausible. Decide whether any finding
+warrants a Challenge.
 
 #### Step 5.4: Send your findings to Grace via `SendMessage`
 

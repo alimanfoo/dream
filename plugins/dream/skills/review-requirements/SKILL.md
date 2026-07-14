@@ -1,19 +1,19 @@
 ---
 name: review-requirements
 description:
-  Review a Draft Requirements Analysis and return the combined findings.
+  Review a draft requirements analysis and return the combined findings.
 argument-hint: "<artifact>"
 ---
 
 # Review requirements
 
-Review a Draft Requirements Analysis across its lenses and return the combined
-findings. It returns findings; it doesn't change the artifact.
+Review a draft requirements analysis across different lenses and return the
+combined findings.
 
 ## Arguments
 
-Read the argument the user gives. It names the artifact to review: the Draft
-Requirements Analysis, as an absolute path.
+Read the argument the user gives. It names the artifact to review: the draft
+requirements analysis, as an absolute path.
 
 ## Review
 
@@ -23,9 +23,8 @@ Launch these review subagents in parallel, via the Agent tool, one per lens:
 - `dream:review-requirements-project-purpose`
 - `dream:review-requirements-coherence`
 
-Brief each with the artifact's absolute path. Give the path in the prompt, not
-the content retyped. A subagent can't resolve a path relative to its own prompt
-file.
+Brief each with the artifact's absolute path. A subagent can't resolve a path
+relative to its own prompt file. Don't retype the content into the prompt.
 
 Combine their findings into one list, dropping duplicates that point at the same
 claim.
