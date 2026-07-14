@@ -22,8 +22,8 @@ spawn prompt provides. It is the standard you copy-edit against.
 Find and read in full the text to be copy-edited as directed in your spawn
 prompt.
 
-Work only from what you are given. When the passage reads well on its own terms
-against the standard, that is enough.
+When the passage reads well on its own terms against the standard, that is
+enough.
 
 ## Cite a rule or pass
 
