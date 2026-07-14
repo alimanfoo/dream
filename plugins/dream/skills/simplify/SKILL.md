@@ -1,9 +1,9 @@
 ---
 name: simplify
 description:
-  Review changed code for reuse, simplification, efficiency, and altitude, then
-  apply the fixes. Reviews the uncommitted changes by default. Name a git range
-  or path to review that instead.
+  Review changed code and apply the fixes, so it reads more clearly. Reviews the
+  uncommitted changes by default. Name a git range or path to review that
+  instead.
 argument-hint: "[target]"
 ---
 

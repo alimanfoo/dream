@@ -92,16 +92,11 @@ than a fact to take at face value. Test whether each claim checks out, not
 whether Grace's reasoning reads well. Open the cited material, code, or record
 as needed to see whether a claim actually checks out.
 
-#### Step 1.2: Launch the review subagents
+#### Step 1.2: Run the requirements review
 
-Launch these review subagents in parallel, via the Agent tool, one per lens:
-
-- `dream:review-requirements-consumer-value`
-- `dream:review-requirements-project-purpose`
-- `dream:review-requirements-coherence`
-
-Brief each with the file path from Step 1.1 (see
-[Relay a shared briefing file to subagents](#relay-a-shared-briefing-file-to-subagents)).
+Run the `dream:review-requirements` skill over the Draft Requirements Analysis,
+at the file path from Step 1.1. It launches the review lenses and returns their
+combined findings.
 
 Protecting the coherence of the codebase and the product it delivers is part of
 your purpose as maintainer. A requirement that would disrupt either is what
@@ -109,9 +104,8 @@ these lenses exist to catch.
 
 #### Step 1.3: Weigh the findings
 
-Combine the subagents' findings. Judge each on its merits, not on the fact a
-subagent raised it. Keep anything plausible. Drop duplicates that point at the
-same claim.
+Judge each returned finding on its merits, not on the fact a lens raised it.
+Keep anything plausible.
 
 #### Step 1.4: Send your findings to Grace via `SendMessage`
 
@@ -150,26 +144,18 @@ Coherent Scope (always), Minimal Scope (when narrower than Coherent), Maximal
 Scope (when a wider alternative is real). Form your own view of whether each
 Scope addition earns its place. Review all present options on their merits.
 
-#### Step 3.2: Launch the review subagents
+#### Step 3.2: Run the scope review
 
-Launch these review subagents in parallel, via the Agent tool, one per lens:
-
-- `dream:review-scope-coherent`
-- `dream:review-scope-anticipation`
-- `dream:review-scope-root-cause`
-- `dream:review-scope-property`
-
-Brief each with the file path from Step 3.1 (see
-[Relay a shared briefing file to subagents](#relay-a-shared-briefing-file-to-subagents)),
-the Session Type, and the file paths you already hold for the accepted
-Requirements Analysis (from Step 1.5) and the accepted Code Analysis (from the
-Phase 2 handoff).
+Run the `dream:review-scope` skill over the Draft Scope Options, at the file
+path from Step 3.1. Give it also the Session Type and the file paths you already
+hold for the accepted Requirements Analysis (from Step 1.5) and the accepted
+Code Analysis (from the Phase 2 handoff), which its lenses need as context. It
+launches the review lenses and returns their combined findings.
 
 #### Step 3.3: Weigh the findings
 
-Combine the subagents' findings with the view you formed in Step 3.1. Judge each
-on its merits. Keep anything plausible. Drop duplicates that point at the same
-Scope Option part.
+Combine the returned findings with the view you formed in Step 3.1. Judge each
+on its merits. Keep anything plausible.
 
 #### Step 3.4: Send your findings to Grace via `SendMessage`
 
@@ -247,26 +233,16 @@ the one Grace stated. Open the cited code as needed.
 Do not treat a set-aside reason as proof the call was right. The pull to defer
 is strongest on an Alternative you proposed yourself.
 
-#### Step 4.4: Launch the review subagents
+#### Step 4.4: Run the design review
 
-Launch these review subagents in parallel, via the Agent tool, one per lens:
+Run the `dream:review-design` skill over the Design Options, at the file path
+from Step 4.3. Give it also your [Step 4.1](#step-41-survey-existing-tools)
+survey, which the reinvention lens needs and doesn't otherwise hold. It launches
+the review lenses and returns their combined findings.
 
-- `dream:review-design-behaviour`
-- `dream:review-design-contract-shape`
-- `dream:review-design-lateral-moves`
-- `dream:review-design-reinvention`
-- `dream:review-design-separation`
-- `dream:review-design-surviving-fit`
-
-Brief each with the file path from Step 4.3 (see
-[Relay a shared briefing file to subagents](#relay-a-shared-briefing-file-to-subagents)).
-Also give `dream:review-design-reinvention` your
-[Step 4.1](#step-41-survey-existing-tools) survey, since it doesn't hold your
-session context.
-
-The subagents report what their lens surfaces, including the facts behind a
-candidate lateral move or reinvention. They don't tag candidates or raise a
-Challenge. You do that when you weigh the findings.
+The lenses report what they surface, including the facts behind a candidate
+lateral move or reinvention. They don't tag candidates or raise a Challenge. You
+do that when you weigh the findings.
 
 While reviewing you can also raise a Challenge, not a lens, but the general
 escalation any teammate can raise (see `protocol.md`). If a fresh read turns up
@@ -274,10 +250,9 @@ genuinely new evidence that an accepted artifact no longer holds, raise one.
 
 #### Step 4.5: Weigh the findings
 
-Combine the subagents' findings. Judge each on its merits, not on the fact a
-subagent raised it. Keep anything plausible. Drop duplicates that point at the
-same design part. Tag each candidate lateral move or reinvention strictly-better
-or trades-away. Decide whether any finding warrants a Challenge.
+Judge each returned finding on its merits, not on the fact a lens raised it.
+Keep anything plausible. Tag each candidate lateral move or reinvention
+strictly-better or trades-away. Decide whether any finding warrants a Challenge.
 
 #### Step 4.6: Send your findings to Grace via `SendMessage`
 
@@ -315,15 +290,10 @@ task introduces a new contract via prose or a runtime check that the Design
 didn't carry, you can still flag it. But the subagent lenses in Step 5.2 are the
 Plan review's discipline.
 
-#### Step 5.2: Launch the review subagents
+#### Step 5.2: Run the plan review
 
-Launch these review subagents in parallel, via the Agent tool, one per lens:
-
-- `dream:review-plan-completeness`
-- `dream:review-plan-tidy-first`
-
-Brief each with the file path from Step 5.1 (see
-[Relay a shared briefing file to subagents](#relay-a-shared-briefing-file-to-subagents)).
+Run the `dream:review-plan` skill over the Draft Plan, at the file path from
+Step 5.1. It launches the review lenses and returns their combined findings.
 
 While reviewing you can also raise a Challenge, not a lens, but the general
 escalation any teammate can raise (see `protocol.md`). If a fresh read turns up
@@ -331,10 +301,9 @@ genuinely new evidence that an accepted artifact no longer holds, raise one.
 
 #### Step 5.3: Weigh the findings
 
-Combine the subagents' findings with the view you formed reading the Draft Plan.
-Judge each on its merits, not on the fact a subagent raised it. Keep anything
-plausible. Drop duplicates that point at the same task. Decide whether any
-finding warrants a Challenge.
+Combine the returned findings with the view you formed reading the Draft Plan.
+Judge each on its merits, not on the fact a lens raised it. Keep anything
+plausible. Decide whether any finding warrants a Challenge.
 
 #### Step 5.4: Send your findings to Grace via `SendMessage`
 
@@ -659,17 +628,6 @@ You never:
   instead.
 - Run the test suite, lint check, or any build or CI command. Tests are Ralph's
   gate, not yours. Your work is your reviews and per-task coherence audits.
-
-### Relay a shared briefing file to subagents
-
-Several phases give you the artifact under review as a file path, not inline
-text (see
-[Sharing an artifact](../skills/team/protocol.md#sharing-an-artifact)). When you
-launch review subagents for that phase, give each one that same path instead of
-retyping the content into every `Agent` call. Name anything a subagent needs
-beyond the shared file in its own prompt instead, the way
-[Step 4.4](#step-44-launch-the-review-subagents) gives
-`review-design-reinvention` its Step 4.1 survey on top of the file.
 
 ### Defend behaviour, not surface
 

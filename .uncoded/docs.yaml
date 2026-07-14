@@ -81,14 +81,14 @@ plugins/:
           Your role and responsibilities, by phase:
             'Phase 1: Requirements':
               'Step 1.1: Read the Draft Requirements Analysis':
-              'Step 1.2: Launch the review subagents':
+              'Step 1.2: Run the requirements review':
               'Step 1.3: Weigh the findings':
               'Step 1.4: Send your findings to Grace via `SendMessage`':
               'Step 1.5: Read the accepted Requirements Analysis':
             'Phase 2: Code Analysis':
             'Phase 3: Scope':
               'Step 3.1: Read the Draft Scope Options':
-              'Step 3.2: Launch the review subagents':
+              'Step 3.2: Run the scope review':
               'Step 3.3: Weigh the findings':
               'Step 3.4: Send your findings to Grace via `SendMessage`':
               'Step 3.5: Read the accepted Session Scope':
@@ -96,13 +96,13 @@ plugins/:
               'Step 4.1: Survey existing tools':
               'Step 4.2: Send your design sketches to Grace via `SendMessage`':
               'Step 4.3: Read the Design Options':
-              'Step 4.4: Launch the review subagents':
+              'Step 4.4: Run the design review':
               'Step 4.5: Weigh the findings':
               'Step 4.6: Send your findings to Grace via `SendMessage`':
               'Step 4.7: Read the accepted Design':
             'Phase 5: Plan':
               'Step 5.1: Read the Draft Plan':
-              'Step 5.2: Launch the review subagents':
+              'Step 5.2: Run the plan review':
               'Step 5.3: Weigh the findings':
               'Step 5.4: Send your findings to Grace via `SendMessage`':
               'Step 5.5: Read the accepted Plan':
@@ -124,7 +124,6 @@ plugins/:
             'Phase 10: Reflect':
           Common rules:
             Hard rules:
-            Relay a shared briefing file to subagents:
             Defend behaviour, not surface:
             Communication between teammates (agents):
       Ralph.md:
@@ -295,6 +294,26 @@ plugins/:
             First, read the writing style guide:
             Arguments:
             Each round:
+      review-design/:
+        SKILL.md:
+          Review design:
+            Arguments:
+            Review:
+      review-plan/:
+        SKILL.md:
+          Review plan:
+            Arguments:
+            Review:
+      review-requirements/:
+        SKILL.md:
+          Review requirements:
+            Arguments:
+            Review:
+      review-scope/:
+        SKILL.md:
+          Review scope:
+            Arguments:
+            Review:
       simplify/:
         SKILL.md:
           Simplify:
