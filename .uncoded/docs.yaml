@@ -264,6 +264,22 @@ plugins/:
         Symptom or cause?:
           The lens:
           Reporting:
+      simplify-altitude.md:
+        Altitude:
+          The lens:
+          Reporting:
+      simplify-efficiency.md:
+        Efficiency:
+          The lens:
+          Reporting:
+      simplify-reuse.md:
+        Reuse:
+          The lens:
+          Reporting:
+      simplify-simplification.md:
+        Simplification:
+          The lens:
+          Reporting:
     skills/:
       catcher/:
         SKILL.md:

@@ -275,9 +275,22 @@ scope. See
 
 #### Step 6.3: Simplify the code you wrote
 
-Run the `/simplify` skill on the uncommitted changes. It reviews the diff for
-reuse, simplification, efficiency, and clarity, and applies its fixes directly
-to the working tree, so the code is easier to read.
+Run a simplify pass over the code you wrote, so it is easier to read. Write your
+uncommitted changes, including new files, to a file outside the working tree:
+`git add -A -N` so new files show in the diff, `git diff HEAD` into the file,
+then `git reset -q` to unstage. Launch these review subagents in parallel, via
+the Agent tool, one per lens, briefing each with that file's path:
+
+- `dream:simplify-reuse`
+- `dream:simplify-simplification`
+- `dream:simplify-efficiency`
+- `dream:simplify-altitude`
+
+Combine their findings. Judge each on its merits, not on the fact a subagent
+raised it. Drop duplicates that point at the same line or mechanism. Apply the
+fixes that hold, and skip any that would change behaviour or reach outside the
+code you wrote, noting the skip. You commit later at
+[Step 6.7](#step-67-commit-and-push), so leave these fixes uncommitted.
 
 #### Step 6.4: Copy-edit the prose you wrote
 
