@@ -104,8 +104,7 @@ these lenses exist to catch.
 
 #### Step 1.3: Weigh the findings
 
-Judge each returned finding on its merits, not on the fact a lens raised it.
-Keep anything plausible.
+Judge each returned finding on its merits. Keep anything plausible.
 
 #### Step 1.4: Send your findings to Grace via `SendMessage`
 
