@@ -44,8 +44,8 @@ not need. These shapes recur, and do not bound the rule:
 ## Strict narrative order
 
 Write so the reader can follow top to bottom. Each point should make sense from
-what came before it. Otherwise, a reader who meets a forward reference must look
-ahead or guess.
+what came before it. Otherwise, a reader who meets something referenced before
+it is explained must look ahead or guess.
 
 - Introduce a concept or term before you use it.
 - Do not refer forward. Phrases like "as described below" and "see the next
@@ -53,10 +53,10 @@ ahead or guess.
   forward references.
 - When one point depends on another, put the other first.
 
-When giving instructions to be followed in sequence, write them in order. For
+When the reader must follow instructions in sequence, write them in order. For
 example: "Knead the dough, then put it in the oven.", not "Put the dough in the
-oven, but make sure you knead it first." Sometimes instructions may be separated
-by other content, but still must follow strict narrative order.
+oven, but make sure you knead it first." Other content may come between
+instructions, but they must still follow strict narrative order.
 
 ## Reason forward
 
@@ -120,8 +120,8 @@ Read each sentence in isolation and check whether a second meaning fits.
 
 ## Giving instructions
 
-Build an instruction in four parts, in this order: the imperative, the why,
-examples, exceptions.
+Build an instruction in parts, in this order: the imperative, the why, examples,
+exceptions.
 
 - Open with the verb, so the reader sees what to do first. For example:
   - "Pull the latest main before you branch, to avoid a conflict.", not "To
@@ -134,8 +134,10 @@ examples, exceptions.
     read-only, save on exit."
 
 A bare imperative is enough when the act is obvious. Skip the parts you do not
-need. But hold the order. A why before the verb, or an exception before the
-rule, makes the reader decode before they can act.
+need.
+
+Hold the order even so. A why before the verb, or an exception before the rule,
+makes the reader decode before they can act.
 
 Name the actor. Say who or what does the action, not "the trap is" or "there
 is".
@@ -164,8 +166,8 @@ Lead with what to do. Add what not to do only to support it.
   - "before working on that code", not "before touching that code"
 - Use verbs, not noun forms of verbs. Write "decide", not "make a decision".
 - Keep the small words. Do not drop "the", "a", or "that" to sound terse.
-- Spell out an abbreviation the first time you use it. Skip the Latin. Write
-  "for example", not "e.g.".
+- Spell out an abbreviation the first time you use it.
+- Skip the Latin. Write "for example", not "e.g.".
 - Use simple punctuation. Full stops and commas. No dashes. No semicolons. To
   drop a dash, split the aside into its own sentence. For example:
   - "The script handled country and region. Now it handles country only.", not
