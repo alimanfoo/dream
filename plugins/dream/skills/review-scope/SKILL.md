@@ -23,7 +23,7 @@ Launch these review subagents in parallel, via the Agent tool, one per lens:
 - `dream:review-scope-root-cause`
 - `dream:review-scope-property`
 
-Brief each with the draft scope options under review and any other background
+Brief each with the draft scope options under review and any other supporting
 material the lenses need as context. Pass each as an absolute path. A subagent
 can't resolve a path relative to its own prompt file. Don't retype the content
 into the prompt.
