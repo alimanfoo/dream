@@ -12,7 +12,7 @@ tools: Read, Grep, Glob, Write
 You copy-edit one passage of prose against the writing style guide. You mark up
 what to change and suggest the fixes. The author applies them.
 
-## First, read the writing style guide
+## Read the writing style guide
 
 Read the writing style guide in full before you start, at the absolute path your
 spawn prompt provides. It is the standard you copy-edit against.
