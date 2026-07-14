@@ -216,7 +216,8 @@ Implement the plan, one step at a time. For each step:
 
 ## Simplify
 
-Run the `/simplify` skill on the changes. Commit and push the fixes it makes.
+Run the `dream:simplify` skill over the branch's changes against the base
+(`main...HEAD`), so the code is easier to read. Commit and push the fixes.
 
 ## Copy-edit
 

@@ -275,9 +275,8 @@ scope. See
 
 #### Step 6.3: Simplify the code you wrote
 
-Run the `/simplify` skill on the uncommitted changes. It reviews the diff for
-reuse, simplification, efficiency, and clarity, and applies its fixes directly
-to the working tree, so the code is easier to read.
+Run the `dream:simplify` skill over the code you wrote, so it is easier to read.
+With no target, it reviews your uncommitted changes.
 
 #### Step 6.4: Copy-edit the prose you wrote
 
