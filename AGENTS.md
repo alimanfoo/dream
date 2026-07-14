@@ -68,8 +68,8 @@ and dispatches a session for each, one at a time. The issue's label picks the
 skill: a `/dream:team` session or a lighter `/dream:solo` one. It lets the work
 run unattended while the user is away.
 
-The plugin also ships two utility skills, invoked on their own:
-`/dream:writing-style` and `/dream:copy-edit`.
+The plugin also ships utility skills, invoked on their own or as a step in a
+session: `/dream:writing-style`, `/dream:copy-edit`, and `/dream:simplify`.
 
 ## Two layers
 
@@ -84,11 +84,13 @@ This repo has two layers, easy to confuse:
   runs, dispatching a session for each labelled issue, one at a time, with the
   label picking a `/dream:team` or `/dream:solo` session. A
   [solo skill](plugins/dream/skills/solo/SKILL.md) runs a single-agent version,
-  `/dream:solo`, for smaller tasks with no team. Two utility skills ship
-  alongside the team and run on their own:
-  [writing-style](plugins/dream/skills/writing-style/SKILL.md) and
+  `/dream:solo`, for smaller tasks with no team. Utility skills ship alongside
+  the team, each invoked on its own or as a session step:
+  [writing-style](plugins/dream/skills/writing-style/SKILL.md);
   [copy-edit](plugins/dream/skills/copy-edit/SKILL.md), which uses its own
-  [copy-editor agent](plugins/dream/agents/copy-editor.md).
+  [copy-editor agent](plugins/dream/agents/copy-editor.md); and
+  [simplify](plugins/dream/skills/simplify/SKILL.md), which uses its own
+  simplify-lens agents.
 - **Developer support**: AGENTS.md. It supports plugin development and is not
   part of the installed plugin. (`CLAUDE.md` is a symlink to AGENTS.md. Edit
   `AGENTS.md` directly. Some editors refuse to write through a symlink.)

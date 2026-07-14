@@ -216,18 +216,8 @@ Implement the plan, one step at a time. For each step:
 
 ## Simplify
 
-Run a simplify pass over the branch's changes, so the code is easier to read.
-Launch these review subagents in parallel, via the Agent tool, one per lens,
-briefing each to review the branch's changes against the base
-(`git diff main...HEAD`):
-
-- `dream:simplify-reuse`
-- `dream:simplify-simplification`
-- `dream:simplify-efficiency`
-- `dream:simplify-altitude`
-
-Combine their findings. Judge each on its merits. Apply the fixes that hold, and
-skip any that would change behaviour. Commit and push the fixes.
+Run the `dream:simplify` skill over the branch's changes against the base
+(`main...HEAD`), so the code is easier to read. Commit and push the fixes.
 
 ## Copy-edit
 

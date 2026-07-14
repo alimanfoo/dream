@@ -275,17 +275,8 @@ scope. See
 
 #### Step 6.3: Simplify the code you wrote
 
-Run a simplify pass over the code you wrote, so it is easier to read. Launch
-these review subagents in parallel, via the Agent tool, one per lens, briefing
-each to review your uncommitted changes, including any new files you added:
-
-- `dream:simplify-reuse`
-- `dream:simplify-simplification`
-- `dream:simplify-efficiency`
-- `dream:simplify-altitude`
-
-Combine their findings. Judge each on its merits. Apply the fixes that hold, and
-skip any that would change behaviour.
+Run the `dream:simplify` skill over the code you wrote, so it is easier to read.
+With no target, it reviews your uncommitted changes.
 
 #### Step 6.4: Copy-edit the prose you wrote
 

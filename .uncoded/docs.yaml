@@ -295,6 +295,11 @@ plugins/:
             First, read the writing style guide:
             Arguments:
             Each round:
+      simplify/:
+        SKILL.md:
+          Simplify:
+            Arguments:
+            Review and apply:
       solo/:
         SKILL.md:
           Dream Solo:
