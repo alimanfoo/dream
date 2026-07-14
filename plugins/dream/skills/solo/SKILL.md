@@ -33,16 +33,16 @@ The coherence review below checks the finished change against the coherence
 disciplines and returns what it finds, for you to act on. Two disciplines shape
 work before the review can see it, so hold them from the start:
 
-- **Root cause.** Scope the fix to the mechanism behind the ask, not only the
-  symptom site the input named. An enhancement builds the feature in rather than
-  adding it as a separate piece. A bug fix repairs the mechanism, not the
-  symptom alone. Maintenance fixes the cause of the inconsistency, not one
-  instance of it. This shapes the plan, before any code exists.
-- **Existing code isn't automatically right.** Don't take code as correct or
-  still needed just because it's already in the tree. Judge it the way you'd
-  judge code you're about to write. But unproven isn't wrong: missing evidence
-  is a reason to check, not a licence to rewrite code that works. This shapes
-  how you read as you investigate.
+**Resolve the root cause.** Scope the fix to the mechanism behind the ask, not
+only the symptom site the input named. An enhancement builds the feature in
+rather than adding it as a separate piece. A bug fix repairs the mechanism, not
+the symptom alone. Maintenance fixes the cause of the inconsistency, not one
+instance of it. This shapes the plan, before any code exists.
+
+**Existing code isn't automatically right.** Don't take code as correct or still
+needed just because it's already in the tree. Judge it the way you'd judge code
+you're about to write. But unproven isn't wrong: missing evidence is a reason to
+check, not a licence to rewrite code that works.
 
 ## Don't over-build
 
@@ -221,7 +221,7 @@ Post the returned review as a PR comment. Head it `Code review`. State which
 points were addressed and which were not. If any points were not addressed,
 explain why in one sentence.
 
-## Review coherence
+## Coherence review
 
 Run the `dream:review-coherence` skill over the branch's changes against the
 base (`main...HEAD`). It returns findings across the coherence lenses; it does

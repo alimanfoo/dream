@@ -518,12 +518,9 @@ implements it.
 
 ### Phase 7: Review
 
-When Grace asks for the PR review, work through the steps below. You review in
-parallel with Ada, and Grace handles both reviews the same way. Your vantages
-differ and should not blur. Ada comes to the diff fresh, never having seen the
-scope, and judges it on its own terms. You hold the accepted Session Scope and
-the whole session, so you read the finished change for coherence: does it fit,
-and does it leave the codebase whole?
+When Grace asks for the PR review, work through the steps below. You read the
+finished change for coherence: does it fit, and does it leave the codebase
+whole?
 
 #### Step 7.1: Read the whole diff
 
@@ -545,8 +542,12 @@ so it can be stale or missing).
 #### Step 7.3: Weigh the findings
 
 Combine the review's findings with your own read of the whole diff. Judge each
-on its merits, not on the fact the review raised it. Keep anything plausible.
-Drop duplicates that point at the same line or mechanism.
+on its merits, not on the fact the review raised it. Verify each against your
+own read, which filters false positives. Then test what it would cost to leave:
+a human cleaning up after the team, or a later agent puzzling over the code.
+Keep the findings that carry that cost; the bar is no human clean-up and firm
+ground for the next session to build on. Drop duplicates that point at the same
+line or mechanism.
 
 #### Step 7.4: Send your review to Grace via `SendMessage`
 
@@ -563,11 +564,10 @@ no findings, say so plainly under the recommendation. Sign off `From Junio.`.
 The review is a terminal hand-off. Skip the RSVP.
 
 You don't raise a Challenge yourself here. Grace decides at triage whether a
-finding is a follow-on or a Challenge, the same as she does for Ada's findings.
-Coherence findings that circle one surface, a fact patched in several places,
-are the evidence the Session Scope was drawn too narrow to reach the root cause.
-They are still just findings here. State them concretely and leave the
-escalation to her.
+finding is a follow-on or a Challenge. Coherence findings that circle one
+surface, a fact patched in several places, are evidence the Session Scope was
+too narrow to reach the root cause. They are still just findings here. State
+them concretely and leave the escalation to her.
 
 ### Phase 8: Merge
 

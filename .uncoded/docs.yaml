@@ -366,7 +366,7 @@ plugins/:
             Simplify:
             Copy-edit:
             Review:
-            Review coherence:
+            Coherence review:
             Write the PR description:
             Mark the PR ready for review:
             Watch for user review:
