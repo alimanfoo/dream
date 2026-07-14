@@ -2,16 +2,30 @@
 
 This guide sets the standard for written text. It covers prompts, documentation,
 the messages between agents, the artefacts they write for GitHub, and what they
-write to the user. Anyone who writes or reviews that text follows it, whether a
-person or an automated tool.
+write to the user.
 
-## The stance
+## Write to inform
 
-- Write to inform, not to impress.
-- Your readers include people who do not speak English as a first language, and
-  agents that act on every word. Write so neither can misread you.
-- Aim for a reading age of about 11. Age 9 is better. Make it simpler when in
-  doubt.
+Write to inform, not to impress.
+
+## Write to be understood
+
+Your readers include people who do not speak English as a first language, and
+agents that act on every word. Write so neither can misread you.
+
+Aim for a reading age of about 11. Age 9 is better. Make it simpler when in
+doubt.
+
+## Write as if speaking
+
+Write as if you are speaking to someone. Prefer the sentence constructions of
+speech, not those of formal writing. A sentence can use plain words and still
+read stiffly, because no one would say it that way. This is about construction,
+not tone. Keep the words as plain and precise as ever.
+
+For example: "Sentences that don't flow naturally can still be hard to read,
+even if the words are plain and simple.", not "Simple words can still sit in a
+construction no fluent writer uses."
 
 ## Write for the reader's context
 
@@ -73,13 +87,18 @@ and the writer. Evidence that follows confirms it rather than tests it.
     not "Warm the cache on startup so the first request is as fast as the rest,
     because otherwise it pays the full cost of filling the cache while every
     later request reads from it."
-- Keep sentences to 30 words or fewer.
-- Use active voice. For example:
-  - "The parser reads the file before validation.", not "The file is read by the
-    parser before validation."
-- Name the actor. Say who or what does the action, not "the trap is" or "there
-  is".
-- Lead with what to do. Add what not to do only to support it.
+
+## Keep sentences short
+
+Keep sentences to 30 words or fewer.
+
+## Use active voice
+
+Use active voice. For example: "The parser reads the file before validation.",
+not "The file is read by the parser before validation."
+
+## Writing lists
+
 - Put steps in a vertical list, not a run-on sentence.
 - Keep one voice across a list. Do not switch part way.
 - Leave a blank line before and after a list. Without it, markdown formatters
@@ -99,18 +118,7 @@ sentence in isolation and check whether a second meaning fits.
     the write completes. Release it after the first row, and the next row sees
     stale data."
 
-## Write as if speaking
-
-Write as if you are speaking to someone. Prefer the sentence constructions of
-speech, not those of formal writing. A sentence can use plain words and still
-read stiffly, because no one would say it that way. This is about construction,
-not tone. Keep the words as plain and precise as ever.
-
-For example: "Sentences that don't flow naturally can still be hard to read,
-even if the words are plain and simple.", not "Simple words can still sit in a
-construction no fluent writer uses."
-
-## Instruction paragraphs
+## Giving instructions
 
 Build an instruction in four parts, in this order: the imperative, the why,
 examples, exceptions.
@@ -128,6 +136,11 @@ examples, exceptions.
 A bare imperative is enough when the act is obvious. Skip the parts you do not
 need. But hold the order. A why before the verb, or an exception before the
 rule, makes the reader decode before they can act.
+
+Name the actor. Say who or what does the action, not "the trap is" or "there
+is".
+
+Lead with what to do. Add what not to do only to support it.
 
 ## Words and marks
 
