@@ -234,14 +234,20 @@ explain why in one sentence.
 
 ## Write the PR description
 
-Replace the `WIP` placeholder with the real description, now that the work is
-final. Check the repo for contribution rules (`CONTRIBUTING.md`, a PR template)
-and follow them. Otherwise:
+Draft the description, now that the work is final. Check the repo for
+contribution rules (`CONTRIBUTING.md`, a PR template) and follow them.
+Otherwise:
 
 - Open with a bullet list of issues addressed. Use `Closes #N` for each one the
   PR fully resolves, and `Related to #N` for any it partly addresses.
 - Follow with one to three sentences on what the PR does and why, for a reader
   new to the session.
+
+Run the `dream:copy-edit` skill over the draft before you set it. The reviewer
+reads the description, so it needs to be as readable as the rest of the prose.
+Pass the draft as the passage to review, since it isn't a committed file yet.
+
+Replace the `WIP` placeholder with the copy-edited description.
 
 ## Mark the PR ready for review
 
