@@ -407,9 +407,9 @@ stays in draft, with a placeholder description, until Phase 7.
 Two reviewers read the session's PR in parallel and each returns a Markdown
 review to Grace. Ada reads with fresh eyes, judging the PR on its own terms.
 Hers is a standard code review: correctness, coherence, anything a careful
-reviewer would flag. Junio reads against the accepted requirements and Session
-Scope. She assesses completeness (did we deliver the agreed scope?) and
-coherence (anything still needed to reach a maintainable state?).
+reviewer would flag. Junio reads for coherence, holding the accepted Session
+Scope and the whole session: does the finished change fit, and does it leave the
+codebase whole?
 
 Grace handles both reviews the same way:
 

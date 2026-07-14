@@ -29,38 +29,26 @@ smallest local fix. Reach past it to the change that leaves the whole simpler:
 the root cause reached, the duplication collapsed, the intent made plain. That
 is usually the larger change, and usually the right one.
 
+The coherence review below checks the finished change against the coherence
+disciplines and returns what it finds, for you to act on. Two disciplines shape
+work before the review can see it, so hold them from the start:
+
 - **Root cause.** Scope the fix to the mechanism behind the ask, not only the
   symptom site the input named. An enhancement builds the feature in rather than
   adding it as a separate piece. A bug fix repairs the mechanism, not the
   symptom alone. Maintenance fixes the cause of the inconsistency, not one
-  instance of it.
-- **Same edit.** Fix a sibling site your own change makes relevant, such as a
-  parallel case your change leaves inconsistent.
-- **Every instance.** Fix every site that matches the task's own criterion, not
-  only the site first named.
-- **One fact, one home.** Make copies derive from one place instead of adding a
-  second copy of something the code already states elsewhere. Only merge copies
-  that must always change together.
-- **Prefer removal.** Prefer dropping or narrowing existing code over adding
-  beside it, when it solves the task as well.
-- **Fix the gap, not the compensation.** After a change, reread your diff and
-  mentally remove any comment, mock, handler, or fallback you added. If the
-  change no longer holds without it, fix the gap underneath instead of leaving
-  the scaffolding that hides it.
+  instance of it. This shapes the plan, before any code exists.
 - **Existing code isn't automatically right.** Don't take code as correct or
   still needed just because it's already in the tree. Judge it the way you'd
   judge code you're about to write. But unproven isn't wrong: missing evidence
-  is a reason to check, not a licence to rewrite code that works.
+  is a reason to check, not a licence to rewrite code that works. This shapes
+  how you read as you investigate.
 
 ## Don't over-build
 
 Add nothing the task doesn't need. Coherence can call for changing code outside
 the plan. It never calls for a speculative abstraction, a premature
 generalisation, or a half-finished extra feature the task didn't ask for.
-
-If you notice you've added a test, check, or doc, ask what behaviour it defends
-and who the consumer is. Drop it if the answer is only cosmetic: an arbitrary
-constant, a docstring phrasing, a count nothing depends on.
 
 ## Communication style
 
@@ -232,6 +220,18 @@ push the fixes.
 Post the returned review as a PR comment. Head it `Code review`. State which
 points were addressed and which were not. If any points were not addressed,
 explain why in one sentence.
+
+## Review coherence
+
+Run the `dream:review-coherence` skill over the branch's changes against the
+base (`main...HEAD`). It returns findings across the coherence lenses; it does
+not apply them. Weigh each on its merits and apply the ones that hold, reaching
+for the coherent fix even when it is larger than the site the finding names.
+Commit and push the fixes.
+
+Post the findings and how you acted on them as a PR comment. Head it
+`Coherence review`. For any finding you didn't act on, give the reason in one
+sentence.
 
 ## Write the PR description
 
