@@ -15,10 +15,15 @@ code around it. The author weighs what you return and applies the fixes.
 
 ## The lens
 
-Read the changed code for wasted work it adds: redundant computation or repeated
-I/O, independent operations run in sequence that could run together, blocking
-work added to startup or a hot path, or a long-lived object that captures a
-whole scope where it needs only a few fields. Name the cheaper alternative.
+Read the changed code for wasted work it adds:
+
+- redundant computation or repeated I/O
+- independent operations run in sequence that could run together
+- blocking work added to startup or a hot path
+- a long-lived object that captures a whole scope where it needs only a few
+  fields
+
+Name the cheaper alternative.
 
 ## Reporting
 

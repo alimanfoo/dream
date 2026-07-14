@@ -10,8 +10,8 @@ argument-hint: "[target]"
 # Simplify
 
 Review changed code for reuse, simplification, efficiency, and altitude, then
-apply the fixes, so the code reads more clearly. It improves how the code reads;
-it does not hunt for correctness bugs.
+apply the fixes, so the code reads more clearly. It does not hunt for
+correctness bugs.
 
 ## Arguments
 
@@ -28,5 +28,5 @@ briefing each to review the target:
 - `dream:simplify-efficiency`
 - `dream:simplify-altitude`
 
-Combine their findings. Judge each on its merits. Apply the fixes that hold, and
-skip any that would change behaviour.
+Combine their findings. Judge each on its merits. Apply the fixes that hold.
+Skip any that would change behaviour.

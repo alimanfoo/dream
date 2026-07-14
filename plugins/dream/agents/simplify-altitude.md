@@ -17,7 +17,7 @@ and the code around it. The author weighs what you return and applies the fixes.
 
 Read each change for whether it sits at the right depth. A special case layered
 on shared infrastructure, or a bandaid at the call site, is a sign the fix is
-too shallow: it patches where the symptom shows rather than where the cause
+too shallow. It patches where the symptom shows rather than where the cause
 lives. Ask whether generalising the underlying mechanism would remove the
 special case altogether. Flag a change that patches a symptom where a deeper fix
 would serve, and name the deeper form.

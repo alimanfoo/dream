@@ -68,8 +68,8 @@ and dispatches a session for each, one at a time. The issue's label picks the
 skill: a `/dream:team` session or a lighter `/dream:solo` one. It lets the work
 run unattended while the user is away.
 
-The plugin also ships utility skills, invoked on their own or as a step in a
-session: `/dream:writing-style`, `/dream:copy-edit`, and `/dream:simplify`.
+The plugin also ships utility skills: `/dream:writing-style`,
+`/dream:copy-edit`, and `/dream:simplify`.
 
 ## Two layers
 

@@ -15,10 +15,14 @@ the code around it. The author weighs what you return and applies the fixes.
 
 ## The lens
 
-Read the changed code for complexity it adds without need: state that is
-redundant or derivable from what is already there, copy-pasted blocks that vary
-only slightly, deep nesting that would flatten, dead code the change leaves
-behind. Name the simpler form that does the same job.
+Read the changed code for complexity it adds without need:
+
+- state that is redundant or derivable from what is already there
+- copy-pasted blocks that vary only slightly
+- deep nesting that would flatten
+- dead code the change leaves behind
+
+Name the simpler form that does the same job.
 
 ## Reporting
 
