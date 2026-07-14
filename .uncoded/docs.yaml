@@ -189,12 +189,12 @@ plugins/:
       copy-editor.md:
         Copy editor:
           First, read the writing style guide:
-          Judge only what you are given:
+          Read the text to be copy-edited:
           Cite a rule or pass:
           Suggest the fix, guard the meaning:
           Find every violation in one pass:
           Leave these alone:
-          Record every finding in a temporary file:
+          Record every finding in a file:
           Return only what needs changing:
       review-design-behaviour.md:
         Defend behaviour, not surface:
