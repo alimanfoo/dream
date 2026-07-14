@@ -459,15 +459,19 @@ plugins/:
             For prose already written, use copy-edit:
     writing-style.md:
       Writing style guide:
-        The stance:
+        Write to inform:
+        Write to be understood:
+        Write as if speaking:
         Write for the reader's context:
-        Narrative order:
+        Strict narrative order:
         Reason forward:
         One idea per paragraph:
         One idea per sentence:
+        Keep sentences short:
+        Use active voice:
+        Writing lists:
         One reading per sentence:
-        Write as if speaking:
-        Instruction paragraphs:
+        Giving instructions:
         Words and marks:
         Text for GitHub:
 README.md:
