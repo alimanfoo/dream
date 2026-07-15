@@ -12,17 +12,18 @@ argument-hint: "<issue | file or symbol | text>"
 Produce a Requirements Analysis: your explicit reading of what the system must
 do behind the input, for whom, and what it is deliberately not for. The result
 is a draft, ending with the open questions the input can't settle on its own.
-Follow the instructions in order.
 
 Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for the analysis and every message you write.
+
+Follow the steps in order.
 
 ## Arguments
 
 Read the argument the user gives. It names the input to analyse: an issue
 reference, a file or symbol, or a free-text description of the task. Read
-whatever it points to as the input for the steps below. When no argument is
-given, ask what to analyse.
+whatever it points to. That is your input. When no argument is given, derive the
+input from your context. If you cannot identify it, ask the user.
 
 ## Orient to the repo
 
@@ -99,7 +100,8 @@ If nothing has drifted, say so in one sentence and continue.
 
 Pin the type before composing, since it sets the shape of the analysis:
 
-- **Enhancement.** New feature or capability that doesn't currently exist.
+- **Enhancement.** New feature or functionality that doesn't currently exist, a
+  change in behaviour.
 - **Maintenance.** Coherence, naming, structure. Behaviour already correct.
 - **Bug fix.** Incorrect behaviour to repair.
 
@@ -123,8 +125,7 @@ For an **enhancement**:
   action-outcome pair. "Passes a region string and gets back the bounding
   coordinates" is a use case. "Uses the API" is not.
 - **Constraints**: qualities the work must hold, such as performance,
-  compatibility, API stability, or security, when the input or the read names
-  any.
+  compatibility, or security, when the input or the read names any.
 
 For **maintenance**:
 
@@ -137,7 +138,7 @@ For **maintenance**:
 For a **bug fix**:
 
 - **Expected behaviour**: what should happen, and where the expectation comes
-  from, such as a docstring, a signature, prior behaviour, or only the report.
+  from, such as a docstring, prior behaviour, or only the report.
 - **Observed behaviour**: what the report says happens.
 - **Affected consumers**: who hits the defect and what it costs them.
 
@@ -161,13 +162,6 @@ Every shape also carries, when they apply:
 Mark every item **stated** (named in the cited material) or **assumed** (your
 inference).
 
-Test the task's intent against the repo's. The orientation names what the repo
-delivers, and the consumer-lens read shows what its surfaces already serve.
-Write one sentence stating whether the work serves that product, and whether its
-value is evidenced by the existing goals or only asserted by the input. Where it
-doesn't cohere, or the value is only asserted, raise it as an open question
-rather than carrying it through unexamined.
-
 Keep maintenance and bug-fix shapes short, a sentence or two per section. For an
 enhancement, the consumers and use cases are the work. Give them real detail.
 
@@ -177,24 +171,27 @@ Get an adversarial read before you finish. Write the draft to a temporary file
 outside the repo, then run the `dream:review-requirements` skill over it, giving
 the file's absolute path. It runs the review and returns the combined findings.
 
-Judge each finding on its merits. A finding being raised is not itself a reason
-to fold it in. Write your disposition on each in turn output, one of:
+Judge each finding on its merits, and verify it by comparing with your own read.
+A finding being raised is not itself a reason to fold it in. Write your
+disposition on each in turn output, one of:
 
 - **A fact you can pin down.** The finding shows a stated item wasn't said, or
   confirms or disproves an assumed one. Correct the item, and its stated/assumed
-  mark, in the draft.
+  mark, in the file.
 - **A genuine open question.** The finding surfaces a real tension nothing
-  settles. Add it to the open questions, or sharpen one already there.
-- **A finding you reject.** Name it and your reason. A rejection you keep to
-  yourself is the deference this review exists to catch.
+  settles. Add it to the open questions in the file, or sharpen one already
+  there.
+- **A finding you reject.** You judge that it doesn't hold. Name it and your
+  reason. A rejection you keep to yourself is the deference this review exists
+  to catch.
 
 ## Copy-edit the draft
 
-Run the `dream:copy-edit` skill over the completed draft, passing it as the
-passage to review since it isn't a committed file. The requirements analysis is
-what the reader studies most closely, so its readability matters most.
+Run the `dream:copy-edit` skill over the draft file, giving its absolute path.
+The requirements analysis is what the reader studies most closely, so its
+readability matters most.
 
 ## The result
 
-Return the completed draft. It ends with its open questions, which remain to be
-answered before the work is built.
+Return the completed draft from the file. It ends with its open questions, which
+remain to be answered before the work is built.

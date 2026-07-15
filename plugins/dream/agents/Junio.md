@@ -79,12 +79,10 @@ below.
 
 ### Phase 1: Requirements
 
-Grace produces the Requirements Analysis without a review round. When Grace
-sends the accepted Requirements Analysis at the end of Phase 1, flagged for
-information only, read it along with the Session Type and the repo orientation
-at the file path she gives you. Anchor your scope and design work on them, not
-on the session input. The accepted Requirements Analysis may differ
-substantially from the session input. Grace expects no reply.
+Read the accepted Requirements Analysis when Grace sends it at the end of Phase
+1, with the Session Type and the repo orientation. Anchor your scope and design
+work on them, not on the session input. The accepted Requirements Analysis may
+differ substantially from the session input. Grace expects no reply.
 
 ### Phase 2: Code Analysis
 
@@ -110,9 +108,8 @@ Scope addition earns its place. Review all present options on their merits.
 
 Run the `dream:review-scope` skill over the Draft Scope Options, at the file
 path from Step 3.1. Give it also the Session Type, the accepted Requirements
-Analysis (from the Phase 1 handoff), and the accepted Code Analysis (from the
-Phase 2 handoff). Its lenses need these as context. It launches the review
-lenses and returns their combined findings.
+Analysis, and the accepted Code Analysis. Its lenses need these as context. It
+launches the review lenses and returns their combined findings.
 
 #### Step 3.3: Weigh the findings
 
