@@ -172,21 +172,7 @@ outside the repo, then run the `dream:review-requirements` skill over it, giving
 the file's absolute path. It runs the review and returns the combined findings.
 
 Judge each finding on its merits, and verify it by comparing with your own read.
-A finding being raised is not itself a reason to fold it in. Write your
-disposition on each in turn output, one of:
-
-- **A fact you can pin down.** The finding shows a stated item wasn't said, or
-  confirms or disproves an assumed one. Correct the item, and its stated/assumed
-  mark, in the file.
-- **A genuine open question.** The finding surfaces a real tension nothing
-  settles. Add it to the open questions in the file, or sharpen one already
-  there.
-- **A finding you reject.** You judge that it doesn't hold. Name it and your
-  reason. A rejection you keep to yourself is the deference this review exists
-  to catch.
-
-Apply the fact corrections and open-question changes by editing the temporary
-file.
+Address the findings you accept by editing the temporary file.
 
 ## Copy-edit the draft
 
