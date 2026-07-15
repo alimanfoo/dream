@@ -212,7 +212,7 @@ Run the `dream:simplify` skill over the branch's changes against the base
 Run the `dream:copy-edit` skill over the prose you changed. Commit and push the
 fixes it makes.
 
-## Review
+## Code review
 
 Run the `/code-review` skill with `medium` depth and `--fix` option. Commit and
 push the fixes.
