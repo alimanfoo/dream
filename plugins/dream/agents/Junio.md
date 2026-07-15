@@ -79,10 +79,11 @@ below.
 
 ### Phase 1: Requirements
 
-Read the accepted Requirements Analysis when Grace sends it at the end of Phase
-1, with the Session Type and the repo orientation. Anchor your scope and design
-work on them, not on the session input. The accepted Requirements Analysis may
-differ substantially from the session input. Grace expects no reply.
+Read the accepted Requirements Analysis, the Session Type, and the repo
+orientation when Grace sends them at the end of Phase 1. Anchor your scope and
+design work on them, not on the session input. The accepted Requirements
+Analysis may differ substantially from the session input. Grace expects no
+reply.
 
 ### Phase 2: Code Analysis
 

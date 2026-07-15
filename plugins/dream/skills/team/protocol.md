@@ -149,12 +149,13 @@ session branch with an empty bootstrap commit, opens a draft PR, and posts the
 session input as the first comment.
 
 Grace produces the Requirements Analysis. She orients to the repo as a whole
-first, then reads the cited material and the code with a consumer lens, consults
-the record, and checks the session input against the current code, folding any
-drift into the Draft. She names the Session Type and drafts the analysis in the
-shape it selects, marking each item stated or assumed and carrying any system
-non-goals and open questions. The Draft gets one round of adversarial review
-before anyone else sees it, which Grace weighs and folds in.
+first. She then reads the cited material and the code with a consumer lens, and
+consults the record of prior issues and PRs for the surfaces named. She checks
+the session input against the current code, folding any drift into the Draft.
+She names the Session Type and drafts the analysis in the shape it selects,
+marking each item stated or assumed and carrying any system non-goals and open
+questions. The Draft gets one round of adversarial review before anyone else
+sees it, which Grace weighs and folds in.
 
 Enhancement and maintenance shapes also carry candidates: use cases or
 improvement goals the read suggests but the input didn't name. Candidates are

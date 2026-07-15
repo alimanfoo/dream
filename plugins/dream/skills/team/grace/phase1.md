@@ -55,14 +55,18 @@ composes the Draft. It then reviews the Draft adversarially and copy-edits it,
 so what it returns is already reviewed and readable. Take the skill through to
 its returned Draft without your own review or copy-edit on top.
 
-The skill returns the Draft Requirements Analysis. By Session Type it names the
-consumers and their use cases, or the improvement goals and preserved behaviour,
-or the expected and observed behaviour and affected consumers. It also carries
-any constraints, candidates, system non-goals, and open questions, with each
-item marked stated or assumed. The skill folds any input drift into corrections
-and notes, recording the drift in the Draft itself rather than a separate
-comment. The skill also states the Session Type and the repo orientation in turn
-output.
+The skill returns the Draft Requirements Analysis. By Session Type, it names one
+of:
+
+- the consumers and their use cases
+- the improvement goals and the preserved behaviour
+- the expected behaviour, the observed behaviour, and the affected consumers
+
+It also carries any constraints, candidates, system non-goals, and open
+questions, with each item marked stated or assumed. The skill folds any input
+drift into corrections and notes, recording the drift in the Draft itself rather
+than a separate comment. The skill also states the Session Type and the repo
+orientation in turn output.
 
 Hold the returned Draft, the Session Type, and the repo orientation as your
 working artifacts for the steps below. Don't share the Draft with the user yet.

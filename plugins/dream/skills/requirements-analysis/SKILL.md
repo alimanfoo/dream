@@ -58,8 +58,8 @@ A sub-issue carries part of the same requirement. Read it too.
 
 Read the relevant code, callers, tests, and docs for the named surfaces, holding
 one question in mind: _who uses these surfaces, and what do they do with them?_
-This checks who and what the work serves against the code, rather than inferring
-it from the input's prose alone.
+This checks, against the code, who the work serves and what they get, rather
+than inferring it from the input's prose alone.
 
 ## Consult the record
 
