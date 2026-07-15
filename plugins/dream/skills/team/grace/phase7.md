@@ -4,9 +4,8 @@ Write every turn output, message and artefact in this phase to the
 [writing style guide](../../../writing-style.md).
 
 When development is complete, follow the steps below. Ada and Junio review in
-parallel. Ada reads with fresh eyes. Junio reviews against the accepted
-requirements, Session Scope, and the whole diff. You handle both reviews the
-same way.
+parallel. Ada reads with fresh eyes. Junio reviews the whole diff for coherence.
+You handle both reviews the same way.
 
 ## Step 7.1: Send the review requests
 
@@ -43,8 +42,9 @@ not itself a reason to accept it. Each finding takes one of these paths:
   when the finding shows an accepted artifact no longer holds, not a fixable
   defect.
 
-A cluster of Junio's completeness misses can be the evidence for a Challenge. It
-can show the Session Scope was too narrow, not just a list of follow-ons.
+A cluster of Junio's coherence findings circling one surface can be the evidence
+for a Challenge. Read it as a sign the Session Scope was too narrow to reach the
+root cause, not as a list of separate follow-ons.
 
 Keep one response note per finding as you triage. Accepted findings record the
 follow-on task and, once complete, the commit or PR-visible evidence that
