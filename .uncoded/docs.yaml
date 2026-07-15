@@ -111,7 +111,7 @@ plugins/:
               Compensation patterns:
             'Phase 7: Review':
               'Step 7.1: Read the whole diff':
-              'Step 7.2: Launch the review subagents':
+              'Step 7.2: Run the coherence review':
               'Step 7.3: Weigh the findings':
               'Step 7.4: Send your review to Grace via `SendMessage`':
             'Phase 8: Merge':
@@ -190,6 +190,34 @@ plugins/:
           Leave these alone:
           Record every finding in a file:
           Return only what needs changing:
+      review-coherence-in-shape.md:
+        Carried in shape, not prose:
+          The lens:
+          Reporting:
+      review-coherence-naming.md:
+        Names that tell the truth:
+          The lens:
+          Reporting:
+      review-coherence-one-home.md:
+        One fact, one home:
+          The lens:
+          Reporting:
+      review-coherence-root-cause.md:
+        Root cause:
+          The lens:
+          Reporting:
+      review-coherence-same-edit.md:
+        Same edit, every instance:
+          The lens:
+          Reporting:
+      review-coherence-scaffolding.md:
+        Compensation and unearned scaffolding:
+          The lens:
+          Reporting:
+      review-coherence-separation.md:
+        Separation and boundaries:
+          The lens:
+          Reporting:
       review-design-behaviour.md:
         Defend behaviour, not surface:
           The lens:
@@ -220,14 +248,6 @@ plugins/:
           Reporting:
       review-plan-tidy-first.md:
         Tidy first?:
-          The lens:
-          Reporting:
-      review-pr-coherence.md:
-        Coherence across the whole diff:
-          The lens:
-          Reporting:
-      review-pr-completeness.md:
-        Completeness against requirements:
           The lens:
           Reporting:
       review-requirements-coherence.md:
@@ -303,6 +323,11 @@ plugins/:
             Review the draft:
             Copy-edit the draft:
             The result:
+      review-coherence/:
+        SKILL.md:
+          Review coherence:
+            Arguments:
+            Review:
       review-design/:
         SKILL.md:
           Review design:
@@ -349,7 +374,8 @@ plugins/:
             Implement:
             Simplify:
             Copy-edit:
-            Review:
+            Coherence review:
+            Code review:
             Write the PR description:
             Mark the PR ready for review:
             Watch for user review:

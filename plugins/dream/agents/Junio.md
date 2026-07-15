@@ -479,12 +479,9 @@ implements it.
 
 ### Phase 7: Review
 
-When Grace asks for the PR review, work through the steps below. You review in
-parallel with Ada, and Grace handles both reviews the same way. Your vantages
-differ and should not blur. Ada comes to the diff fresh, never having seen the
-scope, and judges it on its own terms. You hold the accepted requirements,
-Session Scope, and the whole session, so you read the finished change against
-what the team agreed.
+When Grace asks for the PR review, work through the steps below. You read the
+finished change for coherence: does it fit, and does it leave the codebase
+whole?
 
 #### Step 7.1: Read the whole diff
 
@@ -492,29 +489,26 @@ Read the diff as a whole, using `gh pr diff <N>` or `git diff`, not commit by
 commit. The per-task coherence audits already read each commit alone. This pass
 is the vantage they can't give, the complete change read at once. A miss or gap
 that only shows when you read separate commits together is exactly what slips
-past them. You read the whole diff to brief the subagents and to weigh what they
-return.
+past them. You read the whole diff to brief the coherence review and to weigh
+what it returns.
 
-#### Step 7.2: Launch the review subagents
+#### Step 7.2: Run the coherence review
 
-Launch these review subagents in parallel, via the Agent tool, one per lens:
-
-- `dream:review-pr-completeness`
-- `dream:review-pr-coherence`
-
-Brief each with:
-
-- the diff as a local git range, for example `git diff origin/main...HEAD` (diff
-  against `origin/main`, not local `main`; a worktree session never freshens
-  local `main`, so it can be stale or missing)
-- for `dream:review-pr-completeness`, the accepted Requirements Analysis, since
-  it doesn't hold the session context
+Run the `dream:review-coherence` skill over the diff. It launches the coherence
+lenses in parallel and returns their combined findings. Brief it with the diff
+as a local git range, for example `git diff origin/main...HEAD`. Diff against
+`origin/main`, not local `main`. A worktree session never freshens local `main`,
+so it can be stale or missing.
 
 #### Step 7.3: Weigh the findings
 
-Combine the lens findings and judge each on its merits, not on the fact a
-subagent raised it. Keep anything plausible. Drop duplicates that point at the
-same line or mechanism.
+Combine the review's findings with your own read of the whole diff. Judge each
+on its merits, not on the fact the review raised it. Verify each against your
+own read, which filters false positives. Then test what it would cost to leave:
+a human cleaning up after the team, or a later agent puzzling over the code.
+Keep the findings that carry that cost. The bar is no human clean-up and firm
+ground for the next session to build on. Drop duplicates that point at the same
+line or mechanism.
 
 #### Step 7.4: Send your review to Grace via `SendMessage`
 
@@ -531,10 +525,10 @@ no findings, say so plainly under the recommendation. Sign off `From Junio.`.
 The review is a terminal hand-off. Skip the RSVP.
 
 You don't raise a Challenge yourself here. Grace decides at triage whether a
-finding is a follow-on or a Challenge, the same as she does for Ada's findings.
-A completeness miss that looks like the Session Scope was drawn too narrow is
-still just a finding. State the missed sites concretely and leave the escalation
-to her.
+finding is a follow-on or a Challenge. Coherence findings that circle one
+surface, a fact patched in several places, are evidence the Session Scope was
+too narrow to reach the root cause. They are still just findings here. State
+them concretely and leave the escalation to her.
 
 ### Phase 8: Merge
 
