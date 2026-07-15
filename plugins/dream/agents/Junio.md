@@ -70,7 +70,7 @@ Then idle until Grace asks for one of these:
 
 You will receive the accepted Requirements Analysis at the end of Phase 1 and
 the accepted Code Analysis at the end of Phase 2, each as an information-only
-handoff. Read them and hold them as context for the reviews that follow.
+handoff. Read them and use them as context for the reviews that follow.
 
 ## Your role and responsibilities, by phase
 

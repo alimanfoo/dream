@@ -11,7 +11,7 @@ argument-hint: "<issue | file or symbol | text>"
 
 Produce a Requirements Analysis: your explicit reading of what the system must
 do behind the input, for whom, and what it is deliberately not for. The result
-is a draft, ending with the open questions the input can't settle on its own.
+is a draft, ending with the open questions for the user to resolve.
 
 Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for the analysis and every message you write.
@@ -36,8 +36,8 @@ against what the repo delivers. Read the repo's own docs (`AGENTS.md`, `README`,
   or something else.
 
 State the repo purpose and product in one or two sentences. Mark each part
-**stated** (the docs say it) or **assumed** (your inference from the structure),
-so a reader can see which is which.
+**stated** (the docs say it) or **assumed** (your inference), so a reader can
+see which is which.
 
 ## Read the cited material
 
@@ -155,9 +155,9 @@ Every shape also carries, when they apply:
   section out rather than fill it with merely out-of-scope work.
 - **Open questions**: calls you can't make from the cited material, where the
   call matters for what comes next. Frame each concretely and list the answers
-  you can see. The test: write the `assumed` value you'd record. If you can
-  write one without guessing, mark it assumed instead. If you can't, it's a
-  genuine open question.
+  you can see, with your recommendation. The test: write the `assumed` value
+  you'd record. If you can write one without guessing, mark it assumed instead.
+  If you can't, it's a genuine open question.
 
 Mark every item **stated** (named in the cited material) or **assumed** (your
 inference).
@@ -184,6 +184,9 @@ disposition on each in turn output, one of:
 - **A finding you reject.** You judge that it doesn't hold. Name it and your
   reason. A rejection you keep to yourself is the deference this review exists
   to catch.
+
+Apply the fact corrections and open-question changes by editing the temporary
+file.
 
 ## Copy-edit the draft
 
