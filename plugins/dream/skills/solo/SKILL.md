@@ -212,15 +212,6 @@ Run the `dream:simplify` skill over the branch's changes against the base
 Run the `dream:copy-edit` skill over the prose you changed. Commit and push the
 fixes it makes.
 
-## Code review
-
-Run the `/code-review` skill with `medium` depth and `--fix` option. Commit and
-push the fixes.
-
-Post the returned review as a PR comment. Head it `Code review`. State which
-points were addressed and which were not. If any points were not addressed,
-explain why in one sentence.
-
 ## Coherence review
 
 Run the `dream:review-coherence` skill over the branch's changes against the
@@ -232,6 +223,15 @@ Commit and push the fixes.
 Post the findings and how you acted on them as a PR comment. Head it
 `Coherence review`. For any finding you didn't act on, give the reason in one
 sentence.
+
+## Code review
+
+Run the `/code-review` skill with `medium` depth and `--fix` option. Commit and
+push the fixes.
+
+Post the returned review as a PR comment. Head it `Code review`. State which
+points were addressed and which were not. If any points were not addressed,
+explain why in one sentence.
 
 ## Write the PR description
 
