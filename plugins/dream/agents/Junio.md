@@ -62,16 +62,15 @@ Perform the following tasks **immediately**, in order.
 
 Then idle until Grace asks for one of these:
 
-- a Requirements review
 - a Scope review
 - a Design review
 - a Plan review
 - a per-task coherence audit
 - the Phase 7 PR review
 
-You will receive the accepted Code Analysis at the end of Phase 2 as an
-information-only handoff. Read it and hold it as context for the reviews that
-follow.
+You will receive the accepted Requirements Analysis at the end of Phase 1 and
+the accepted Code Analysis at the end of Phase 2, each as an information-only
+handoff. Read them and use them as context for the reviews that follow.
 
 ## Your role and responsibilities, by phase
 
@@ -80,48 +79,11 @@ below.
 
 ### Phase 1: Requirements
 
-When Grace asks for a Requirements review, work through the steps below.
-
-#### Step 1.1: Read the Draft Requirements Analysis
-
-Read the Draft Requirements Analysis, the Session Type, and the repo orientation
-at the file path Grace's message gives you. This is your first sight of the
-session, so nothing about it is yet settled. Read as an adversary, not a
-collaborator. Treat every item, stated or assumed, as a claim to test rather
-than a fact to take at face value. Test whether each claim checks out, not
-whether Grace's reasoning reads well. Open the cited material, code, or record
-as needed to see whether a claim actually checks out.
-
-#### Step 1.2: Run the requirements review
-
-Run the `dream:review-requirements` skill over the Draft Requirements Analysis,
-at the file path from Step 1.1. It launches the review lenses and returns their
-combined findings.
-
-Protecting the coherence of the codebase and the product it delivers is part of
-your purpose as maintainer. A requirement that would disrupt either is what
-these lenses exist to catch.
-
-#### Step 1.3: Weigh the findings
-
-Judge each returned finding on its merits. Keep anything plausible.
-
-#### Step 1.4: Send your findings to Grace via `SendMessage`
-
-Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
-For each finding, give the evidence (or its absence) and the Requirements
-Analysis item involved. If nothing to flag, send "no substantive findings." Only
-`SendMessage` reaches Grace. Plain turn output does not. Sign off `From Junio.`.
-This review is advisory: Grace owns the Requirements Analysis and decides which
-findings to act on. The review is a terminal hand-off. Skip the RSVP.
-
-#### Step 1.5: Read the accepted Requirements Analysis
-
 Read the accepted Requirements Analysis, the Session Type, and the repo
-orientation at the file path Grace's message gives you at the end of Phase 1,
-flagged for information only. Anchor your scope and design work on them, not on
-the session input. The accepted Requirements Analysis may differ substantially
-from the session input. Grace expects no reply.
+orientation when Grace sends them at the end of Phase 1. Anchor your scope and
+design work on them, not on the session input. The accepted Requirements
+Analysis may differ substantially from the session input. Grace expects no
+reply.
 
 ### Phase 2: Code Analysis
 
@@ -147,9 +109,8 @@ Scope addition earns its place. Review all present options on their merits.
 
 Run the `dream:review-scope` skill over the Draft Scope Options, at the file
 path from Step 3.1. Give it also the Session Type, the accepted Requirements
-Analysis (from Step 1.5), and the accepted Code Analysis (from the Phase 2
-handoff). Its lenses need these as context. It launches the review lenses and
-returns their combined findings.
+Analysis, and the accepted Code Analysis. Its lenses need these as context. It
+launches the review lenses and returns their combined findings.
 
 #### Step 3.3: Weigh the findings
 

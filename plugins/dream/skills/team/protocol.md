@@ -39,10 +39,10 @@ A session moves through ten phases:
 1. **Requirements.** Grace orients to the repo as a whole, then reads the cited
    material and the code with a consumer lens, and checks the session input
    against the current code. She names the Session Type and drafts the
-   Requirements Analysis. She gets one round of adversarial review from Junio,
-   revises, and shares the Requirements Analysis with the user for acceptance.
-   At the start of the phase she opens the session branch and a draft PR. On
-   acceptance she posts the Requirements Analysis as a PR comment. See
+   Requirements Analysis. She gets one round of adversarial review, revises, and
+   shares the Requirements Analysis with the user for acceptance. At the start
+   of the phase she opens the session branch and a draft PR. On acceptance she
+   posts the Requirements Analysis as a PR comment. See
    [The session PR](#the-session-pr).
 
 2. **Code Analysis.** Grace reads the code with a structural lens, the
@@ -146,43 +146,16 @@ and auto-collect before the phase opens.
 
 Once the session input is known, Grace opens the session: she creates the
 session branch with an empty bootstrap commit, opens a draft PR, and posts the
-session input as the first comment. On acceptance of the Requirements Analysis
-she posts it as a PR comment. The PR carries the session's deliberation record
-(see [The session PR](#the-session-pr)).
+session input as the first comment.
 
-Grace opens the phase by orienting to the repo as a whole, what it is for and
-what it delivers. She does this before reading the session input, so the work is
-judged against the whole rather than the task alone. The orientation is shared
-with the user but not gated.
-
-Grace then reads the cited material, then reads the code with a consumer lens
-(who uses these surfaces and what they do with them). She then consults the
-record for the named surfaces. She searches the issue tracker for recurrence and
-reads the PRs that last shaped those surfaces. This builds on prior decisions
-rather than guessing at them again. Grace then checks the session input against
-those reads. An issue filed a while ago may name a symbol that has since been
-renamed, or ask for work already done. Grace corrects a drifted detail in the
-Requirements Analysis and drafts only the remaining work for a superseded ask.
-She raises a reframed ask as an open question. When the input has drifted, she
-posts an Input freshness comment to the PR before composing the Draft.
-
-Grace names the Session Type (enhancement, maintenance, or bug fix) and drafts
-the Requirements Analysis in the shape the type selects. An enhancement names
-consumers, their use cases, and any constraints the work must hold. Maintenance
-names the improvement goals and the behaviour to preserve, each stated as a
-checkable property of the code. A bug fix names the expected behaviour with its
-source, the observed behaviour as a claim for Phase 2 to verify, and the
-consumers affected. Every shape marks each item stated or assumed, names any
-system non-goals, and carries any open questions Grace can't call from the cited
-material.
-
-Grace shares the Draft with Junio for one round of review, advisory not gating.
-Junio reads it as an adversary. Does real evidence back each consumer or use
-case? Does the work serve what the repo is for? Does it sit coherently with what
-the project already delivers and with the Draft's own other items? Grace decides
-each finding on its merits and revises the Draft. A genuine tension that the
-review surfaces becomes an open question, not something folded silently into a
-plan that already assumes the work goes ahead.
+Grace produces the Requirements Analysis. She orients to the repo as a whole
+first. She then reads the cited material and the code with a consumer lens, and
+consults the record of prior issues and PRs for the surfaces named. She checks
+the session input against the current code, folding any drift into the Draft.
+She names the Session Type and drafts the analysis in the shape it selects,
+marking each item stated or assumed and carrying any system non-goals and open
+questions. The Draft gets one round of adversarial review before anyone else
+sees it, which Grace weighs and folds in.
 
 Enhancement and maintenance shapes also carry candidates: use cases or
 improvement goals the read suggests but the input didn't name. Candidates are
@@ -587,14 +560,12 @@ session branch with an empty bootstrap commit, then opens a draft PR with a
 placeholder description, and posts the session input as the first comment. She
 posts each accepted artifact as a PR comment: the Requirements Analysis (Phase
 1), the Code Analysis (Phase 2), the Session Scope (Phase 3), the Design (Phase
-4), and the Plan (Phase 5). When the session input has drifted from the current
-code, she posts an Input freshness comment in Phase 1 before composing the
-Requirements Analysis. When open questions arise in Phase 1, she posts them to
-the PR before eliciting answers from the user. When a Challenge is raised, she
-posts it to the PR when she takes it to the user. The thread becomes the record
-of what the session considered. The record extends past merge: Grace closes
-Phase 9 by posting a summary comment listing every issue and comment Collect
-produced (see [Phase 9](#phase-9-collect)).
+4), and the Plan (Phase 5). When open questions arise in Phase 1, she posts them
+to the PR before eliciting answers from the user. When a Challenge is raised,
+she posts it to the PR when she takes it to the user. The thread becomes the
+record of what the session considered. The record extends past merge: Grace
+closes Phase 9 by posting a summary comment listing every issue and comment
+Collect produced (see [Phase 9](#phase-9-collect)).
 
 Grace writes the PR description at PR ready in Phase 7, once every review
 follow-on is final. The PR stays in draft until then. When a Challenge revises
