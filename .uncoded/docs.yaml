@@ -307,7 +307,7 @@ plugins/:
         SKILL.md:
           Code analysis:
             Arguments:
-            Read the structural baseline:
+            Read how the code works:
             Identify and investigate code smells:
             Compose the Code Analysis:
             Copy-edit the draft:

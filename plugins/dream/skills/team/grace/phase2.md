@@ -13,8 +13,8 @@ Run the `dream:code-analysis` skill, giving it the file from
 [Step 1.6](phase1.md#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph)
 containing the accepted Requirements Analysis.
 
-The skill returns the Code Analysis: the structural baseline and the code
-smells, with file:line or symbol citations throughout.
+The skill returns the Code Analysis: how the code works and its code smells,
+with file:line or symbol citations throughout.
 
 Hold the returned Code Analysis as your working artifact for the steps below.
 

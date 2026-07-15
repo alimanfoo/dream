@@ -22,18 +22,17 @@ The argument gives the requirements or other scope for the code analysis. When
 no argument is given, derive the requirements from your context. If you cannot
 identify them, ask the user.
 
-## Read the structural baseline
+## Read how the code works
 
 Read the documentation governing the paths the work will change: the nearest
 agent-instructions file (such as `AGENTS.md` or `CLAUDE.md`) to those paths, and
 any system or technical documentation for the subsystem. They describe how the
 code is meant to work and the conventions it keeps. Read them before tracing the
-code, and cite them in the baseline.
+code, and cite them in the read.
 
-Read the relevant code with one question in mind: _how does this work?_ The
-baseline is how the code is built and what it actually does. Trace the
-mechanism, the layers, the callers and siblings, the patterns. Name the
-architecture the work reaches:
+Read the relevant code with one question in mind: _how does this work?_ Capture
+how it is built and what it actually does. Trace the mechanism, the layers, the
+callers and siblings, the patterns. Name the architecture the work reaches:
 
 - which layers or modules the surfaces sit in
 - the boundaries between them
@@ -42,9 +41,9 @@ architecture the work reaches:
   pattern, or a structural rule
 
 For each, say how it holds: types, checks, documentation, or unstated
-convention. This is the structural baseline later work builds on. State it
-factually. Name the boundary that exists, don't propose one. Keep it to the
-architecture the input's surfaces sit in, not a tour of the whole codebase.
+convention. This is what later work builds on. State it factually. Name the
+boundary that exists, don't propose one. Keep it to the architecture the input's
+surfaces sit in, not a tour of the whole codebase.
 
 Test the input's factual claims as you go, whoever made them. A bug fix names
 expected and observed behaviour as a claim to verify, not a settled fact.
@@ -67,12 +66,12 @@ work changes, with the specific instances it must reach.
 
 ## Identify and investigate code smells
 
-With the baseline in hand, turn to the code smells: where that structure will
-resist the work. Investigate each code smell as you notice it. A code smell is a
-sign the code may resist change, not a proven defect. Examples: duplication, a
-long function, tight coupling, one concern scattered across many sites, and the
-rest of the code-smell catalogue. Describe the smell and where it lives. Whether
-it matters and how to fix it is a call for whoever scopes and designs the work
+With that in hand, turn to the code smells: where that structure will resist the
+work. Investigate each code smell as you notice it. A code smell is a sign the
+code may resist change, not a proven defect. Examples: duplication, a long
+function, tight coupling, one concern scattered across many sites, and the rest
+of the code-smell catalogue. Describe the smell and where it lives. Whether it
+matters and how to fix it is a call for whoever scopes and designs the work
 next, not this read.
 
 Some code smells are specific and common in codebases with agent-generated code:
@@ -100,16 +99,16 @@ Some code smells are specific and common in codebases with agent-generated code:
 
 ## Compose the Code Analysis
 
-Compose the Code Analysis from the baseline and the code smells above, written
-up with file:line or symbol citations throughout. Write it to a temporary file
-outside the repo. The purpose is visible grounding for the work that follows.
+Compose the Code Analysis from both sections above, written up with file:line or
+symbol citations throughout. Write it to a temporary file outside the repo. The
+purpose is visible grounding for the work that follows.
 
 The Code Analysis is a read, not a transcription. Tell the reader something they
 couldn't get line by line. For example, for a reported bug, the transcription is
 the line where the error surfaces. The analysis is the mechanism that produces
 it, often layers away.
 
-It stays factual, not a proposal. Name what is, the baseline and the code
+It stays factual, not a proposal. Name what is: how the code works, and its code
 smells. Don't recommend what to change. Whether a smell is worth fixing, and
 how, is a call for whoever scopes and designs the work next.
 
