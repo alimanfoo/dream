@@ -78,8 +78,7 @@ out. Follow
 [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
 the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
-The skill has already copy-edited the Draft, so the questions read clearly. Post
-the file to the PR as a comment.
+Post the file to the PR as a comment.
 
 Send the user the same questions and answers as a numbered list. Invite a
 freeform answer too. End the message by asking the user to answer the questions
