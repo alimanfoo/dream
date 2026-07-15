@@ -47,13 +47,7 @@ the Claude Code footer from
 
 ## Step 1.2: Produce the Draft Requirements Analysis
 
-Run the `dream:requirements-analysis` skill, giving it the session input. The
-skill carries the analysis end to end. It orients to the repo, then reads the
-cited material and the code with a consumer lens. It consults the record and
-checks the input against the current code. It names the Session Type and
-composes the Draft. It then reviews the Draft adversarially and copy-edits it,
-so what it returns is already reviewed and readable. Take the skill through to
-its returned Draft without your own review or copy-edit on top.
+Run the `dream:requirements-analysis` skill, giving it the session input.
 
 The skill returns the Draft Requirements Analysis. By Session Type, it names one
 of:

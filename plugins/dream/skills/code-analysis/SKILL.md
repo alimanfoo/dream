@@ -1,11 +1,11 @@
 ---
 name: code-analysis
 description:
-  Read the code with a structural lens and return a Code Analysis, the
+  Read the code with a structural lens and return a Code Analysis. It names the
   structural baseline and the code smells, with file:line or symbol citations
-  throughout. Give it the accepted Requirements Analysis and Session Type from a
-  team session, or point it at an issue, a file or symbol, or a description to
-  analyse on its own.
+  throughout. Give it the accepted Requirements Analysis and the Session Type
+  from a team session. Standalone, point it at an issue, a file or symbol, or a
+  description.
 argument-hint:
   "<Requirements Analysis + Session Type | issue | file or symbol | text>"
 ---
@@ -24,22 +24,14 @@ Follow the steps in order.
 
 ## Arguments
 
-Read the argument the user gives. Tell the two cases apart by what it contains.
-A file that reads as a completed analysis (naming consumers and use cases, or
-improvement goals, or expected and observed behaviour) with a stated Session
-Type is the team-session case: it also holds repo orientation for other readers,
-which you don't need. Read the Requirements Analysis and Session Type from it;
-they name the surfaces the input will change and set how far the baseline
-reaches, below.
+The argument gives the requirements that the analysis starts from. From a team
+session, it is a file holding the accepted Requirements Analysis and the Session
+Type. Take both as given. Standalone, it points at what to analyse directly: an
+issue, a file or symbol, or a description. Read it, then name the Session Type
+yourself: enhancement, maintenance, or bug fix.
 
-Anything else is standalone input to analyse directly: an issue reference, a
-file or symbol, or a free-text description, the same as
-`dream:requirements-analysis` takes. Read whatever it points to, then name the
-Session Type yourself: enhancement, maintenance, or bug fix, stated in one
-sentence with the reasoning, the same as `dream:requirements-analysis` does.
-
-When no argument is given, derive the input from your context. If you cannot
-identify it, ask the user.
+When no argument is given, derive the requirements from your context. If you
+cannot identify them, ask the user.
 
 ## Read the structural baseline
 
@@ -60,10 +52,10 @@ architecture the work reaches:
 - the conventions the surfaces follow, such as a shared error shape, a naming
   pattern, or a structural rule
 
-For each, say how it holds: a check enforces it, documentation records it, or
-custom alone holds it. This is the structural baseline later work builds on.
-State it factually. Name the boundary that exists, don't propose one. Keep it to
-the architecture the input's surfaces sit in, not a tour of the whole codebase.
+For each, say how it holds: types, checks, documentation, or unstated
+convention. This is the structural baseline later work builds on. State it
+factually. Name the boundary that exists, don't propose one. Keep it to the
+architecture the input's surfaces sit in, not a tour of the whole codebase.
 
 Test the input's factual claims as you go, whoever made them. A bug fix names
 expected and observed behaviour as a claim to verify, not a settled fact.

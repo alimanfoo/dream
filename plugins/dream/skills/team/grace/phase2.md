@@ -10,17 +10,11 @@ the steps below in sequence.
 ## Step 2.1: Produce the Code Analysis
 
 Run the `dream:code-analysis` skill, giving it the file from
-[Step 1.6](phase1.md#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph):
-the accepted Requirements Analysis, the Session Type, and the repo orientation.
-The skill carries the analysis end to end. It reads the documentation and code
-governing the paths the work will change to build the structural baseline, then
-investigates the code smells that baseline reveals. It composes the Code
-Analysis from both and copy-edits it, so what it returns is already readable.
-Take the skill through to its returned Code Analysis without your own review or
-copy-edit on top.
+[Step 1.6](phase1.md#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph)
+containing the accepted Requirements Analysis.
 
 The skill returns the Code Analysis: the structural baseline and the code
-smells, with file:line or symbol citations throughout, factual rather than a
+smells, with file:line or symbol citations throughout. It is factual, not a
 proposal.
 
 Hold the returned Code Analysis as your working artifact for the steps below.
