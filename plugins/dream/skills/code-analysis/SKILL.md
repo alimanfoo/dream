@@ -1,21 +1,15 @@
 ---
 name: code-analysis
 description:
-  Read the code with a structural lens and return a Code Analysis. It names the
-  structural baseline and the code smells, with file:line or symbol citations
-  throughout. Give it the accepted Requirements Analysis and the Session Type
-  from a team session. Standalone, point it at an issue, a file or symbol, or a
-  description.
-argument-hint:
-  "<Requirements Analysis + Session Type | issue | file or symbol | text>"
+  Read and analyse code to understand how it works and how it's organised.
+argument-hint: "<requirements | issue | file or symbol | text>"
 ---
 
 # Code analysis
 
 Produce a Code Analysis: a verifiable read of what the current code does and
 where, with file:line or symbol citations throughout. It stays factual, not a
-proposal. It names what is, the baseline and the code smells, not what to
-change.
+proposal.
 
 Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for the analysis and every message you write.
@@ -24,14 +18,9 @@ Follow the steps in order.
 
 ## Arguments
 
-The argument gives the requirements that the analysis starts from. From a team
-session, it is a file holding the accepted Requirements Analysis and the Session
-Type. Take both as given. Standalone, it points at what to analyse directly: an
-issue, a file or symbol, or a description. Read it, then name the Session Type
-yourself: enhancement, maintenance, or bug fix.
-
-When no argument is given, derive the requirements from your context. If you
-cannot identify them, ask the user.
+The argument gives the requirements or other scope for the code analysis. When
+no argument is given, derive the requirements from your context. If you cannot
+identify them, ask the user.
 
 ## Read the structural baseline
 
@@ -70,12 +59,11 @@ can carry the same name but mean different things in different callers. For
 example, a parameter with fallback semantics in one caller, no-anchor semantics
 in another, required in a third. Name any such split explicitly.
 
-How far the baseline reaches scales with the Session Type. A bug fix traces to
-the root cause, back from where the error surfaces to the mechanism that
-produces it, not the symptom site alone. An enhancement reads the integration
-surface: where the work would land, what it changes, what adjacent behaviour it
-might affect. Maintenance reads the full extent of the surface the work changes,
-with the specific instances it must reach.
+A bug fix traces to the root cause, back from where the error surfaces to the
+mechanism that produces it, not the symptom site alone. An enhancement reads the
+integration surface: where the work would land, what it changes, what adjacent
+behaviour it might affect. Maintenance reads the full extent of the surface the
+work changes, with the specific instances it must reach.
 
 ## Identify and investigate code smells
 
@@ -117,9 +105,9 @@ up with file:line or symbol citations throughout. Write it to a temporary file
 outside the repo. The purpose is visible grounding for the work that follows.
 
 The Code Analysis is a read, not a transcription. Tell the reader something they
-couldn't get line by line. Root cause is the clearest case: for a reported bug,
-the transcription is the line where the error surfaces. The analysis is the
-mechanism that produces it, often layers away.
+couldn't get line by line. For example, for a reported bug, the transcription is
+the line where the error surfaces. The analysis is the mechanism that produces
+it, often layers away.
 
 It stays factual, not a proposal. Name what is, the baseline and the code
 smells. Don't recommend what to change. Whether a smell is worth fixing, and

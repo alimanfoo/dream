@@ -14,8 +14,7 @@ Run the `dream:code-analysis` skill, giving it the file from
 containing the accepted Requirements Analysis.
 
 The skill returns the Code Analysis: the structural baseline and the code
-smells, with file:line or symbol citations throughout. It is factual, not a
-proposal.
+smells, with file:line or symbol citations throughout.
 
 Hold the returned Code Analysis as your working artifact for the steps below.
 
