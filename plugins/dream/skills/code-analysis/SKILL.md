@@ -18,27 +18,27 @@ Follow the steps in order.
 
 ## Arguments
 
-The argument gives the requirements or other focus for the code analysis. When
-no argument is given, derive the focus from your context. If you cannot identify
+The argument gives the requirements or other focus for the code analysis.
+Without an argument, derive the focus from your context. If you cannot identify
 a focus, ask the user.
 
 ## Read the documentation
 
-Read the documentation governing the paths the work will change: the nearest
-agent-instructions file (such as `AGENTS.md` or `CLAUDE.md`) to those paths, and
-any system or technical documentation for the subsystem. They describe how the
-code is meant to work and the conventions it keeps. Read them before tracing the
-code, and cite them in the read.
+Read the documentation governing the paths the work will change. This includes
+the nearest agent-instructions file (such as `AGENTS.md` or `CLAUDE.md`) to
+those paths, and any system or technical documentation for the subsystem. They
+describe how the code is meant to work and the conventions it keeps. Read them
+before tracing the code, and cite them in the read.
 
 ## Read the code
 
-Read the code for two things: how it works and how it's organised. How you read
-depends on the focus. If the focus is a bug fix, trace to the root cause, back
-from where the error surfaces to the mechanism that produces it, not the symptom
-site alone. An enhancement reads the integration surface: where the new feature
-would land, what it changes, what adjacent behaviour it might affect.
-Maintenance reads the full extent of the surface the work changes, with the
-specific instances it must reach.
+Read the code for how it works and how it's organised. How you read depends on
+the focus. If the focus is a bug fix, trace to the root cause, back from where
+the error surfaces to the mechanism that produces it, not the symptom site
+alone. An enhancement reads the integration surface: where the new feature would
+land, what it changes, what adjacent behaviour it might affect. Maintenance
+reads the full extent of the surface the work changes, with the specific
+instances it must reach.
 
 ### How it works
 
@@ -96,9 +96,9 @@ Some code smells are specific and common in codebases with agent-generated code:
   or invariant is a tell, not an explanation that settles the matter. Read the
   underlying code with extra scrutiny and record what it shows, not the
   comment's rationale.
-- A fact duplicated across sites, so the copies drift as the code changes and
-  each drift reads as a fresh, separate bug. Where prior issues or this read
-  show fixes landing on the same surface, suspect this drift before a run of
+- A fact duplicated across sites. The copies drift as the code changes. Each
+  drift reads as a fresh, separate bug. Where prior issues or this read show
+  fixes landing on the same surface, suspect this drift before a run of
   unrelated defects.
 - A rule that many sites must each follow, with no single home and nothing
   enforcing it. For example, every endpoint building its own error response, or

@@ -37,7 +37,7 @@ be able to trust.
 A session moves through ten phases:
 
 1. **Requirements.** Grace orients to the repo as a whole, then reads the cited
-   material and the code for the requirements it already satisfies, and checks
+   material and the code for the requirements it already satisfies. She checks
    the session input against the current code. She names the Session Type and
    drafts the Requirements Analysis. She gets one round of adversarial review,
    revises, and shares the Requirements Analysis with the user for acceptance.
@@ -170,14 +170,14 @@ The phase ends at user acceptance of the Requirements Analysis.
 
 ## Phase 2: Code Analysis
 
-With the Requirements Analysis accepted, Grace reads the code. The read produces
-three things: how the code works, how it's organised, and the code smells, where
-the code will resist the work. The Code Analysis is a verifiable read of what
-the current code does and where. Grace then shares it with the user for
-acceptance. At the end of the phase Grace hands the accepted Code Analysis to
-Junio and Ralph for information. They hold it as context for the rest of the
-session. On acceptance Grace also posts the accepted Code Analysis to the PR as
-a comment (see [The session PR](#the-session-pr)).
+With the Requirements Analysis accepted, Grace reads the code for how it works,
+how it's organised, and its code smells, where the code will resist the work.
+The Code Analysis is a verifiable read of what the current code does and where.
+Grace then shares it with the user for acceptance. At the end of the phase Grace
+hands the accepted Code Analysis to Junio and Ralph for information. They hold
+it as context for the rest of the session. On acceptance Grace also posts the
+accepted Code Analysis to the PR as a comment (see
+[The session PR](#the-session-pr)).
 
 The phase ends at user acceptance of the Code Analysis.
 
