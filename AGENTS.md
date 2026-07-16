@@ -116,12 +116,11 @@ sketches a new mechanism in protocol.md first, move the operational detail to
 the agent file of whoever runs it. `Grace.md`'s Challenge and Autopilot sections
 are the templates.
 
-The README lists the utility skills a user can run on their own. These take
-ordinary input: an issue, a file, code, or a git range. That list is their one
-home, so add a new skill of this kind there. The `review-design`, `review-plan`,
-`review-requirements`, and `review-scope` skills are different. Each takes a
-draft artifact produced during a session, so it runs as a review step over that
-draft, not on ordinary input the user supplies.
+The README lists the utility skills a user can run on their own. That list is
+their one home, so add a new skill of this kind there. Don't add the
+`review-design`, `review-plan`, `review-requirements`, or `review-scope` skills.
+Each reviews a draft artifact produced during a session, so it runs as a review
+step over that draft, not on its own.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
