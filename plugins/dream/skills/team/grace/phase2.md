@@ -9,9 +9,8 @@ the steps below in sequence.
 
 ## Step 2.1: Produce the Code Analysis
 
-Run the `dream:code-analysis` skill, giving it the file from
-[Step 1.6](phase1.md#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph)
-containing the accepted Requirements Analysis.
+Run the `dream:code-analysis` skill focused on the accepted Requirements
+Analysis.
 
 The skill returns the Code Analysis: how the code works, how it's organised, and
 its code smells, with file:line or symbol citations throughout.
