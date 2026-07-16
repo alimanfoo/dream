@@ -316,6 +316,11 @@ plugins/:
             Compose the Code Analysis:
             Copy-edit the draft:
             The result:
+      coherence-review/:
+        SKILL.md:
+          Coherence review:
+            Arguments:
+            Review:
       copy-edit/:
         SKILL.md:
           Copy-edit:
@@ -336,11 +341,6 @@ plugins/:
             Review the draft:
             Copy-edit the draft:
             The result:
-      review-coherence/:
-        SKILL.md:
-          Review coherence:
-            Arguments:
-            Review:
       simplify/:
         SKILL.md:
           Simplify:

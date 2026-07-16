@@ -122,8 +122,7 @@ Analysis. The lenses need them as context.
 #### Step 3.3: Weigh the findings
 
 Combine the subagents' findings with the view you formed in Step 3.1. Judge each
-on its merits. Keep anything plausible. Drop duplicates that point at the same
-Scope Option part.
+on its merits. Keep anything plausible. Drop duplicates.
 
 #### Step 3.4: Send your findings to Grace via `SendMessage`
 
@@ -225,9 +224,8 @@ genuinely new evidence that an accepted artifact no longer holds, raise one.
 #### Step 4.5: Weigh the findings
 
 Combine the subagents' findings. Judge each on its merits. Keep anything
-plausible. Drop duplicates that point at the same design part. Tag each
-candidate lateral move or reinvention as strictly-better or trades-away. Decide
-whether any finding warrants a Challenge.
+plausible. Drop duplicates. Tag each candidate lateral move or reinvention as
+strictly-better or trades-away. Decide whether any finding warrants a Challenge.
 
 #### Step 4.6: Send your findings to Grace via `SendMessage`
 
@@ -282,8 +280,8 @@ genuinely new evidence that an accepted artifact no longer holds, raise one.
 #### Step 5.3: Weigh the findings
 
 Combine the subagents' findings with the view you formed reading the Draft Plan.
-Judge each on its merits. Keep anything plausible. Drop duplicates that point at
-the same task. Decide whether any finding warrants a Challenge.
+Judge each on its merits. Keep anything plausible. Drop duplicates. Decide
+whether any finding warrants a Challenge.
 
 #### Step 5.4: Send your findings to Grace via `SendMessage`
 
@@ -518,7 +516,7 @@ what it returns.
 
 #### Step 7.2: Run the coherence review
 
-Run the `dream:review-coherence` skill over the diff. It launches the coherence
+Run the `dream:coherence-review` skill over the diff. It launches the coherence
 lenses in parallel and returns their combined findings. Brief it with the diff
 as a local git range, for example `git diff origin/main...HEAD`. Diff against
 `origin/main`, not local `main`. A worktree session never freshens local `main`,

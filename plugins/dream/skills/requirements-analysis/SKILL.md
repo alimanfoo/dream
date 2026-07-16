@@ -177,7 +177,7 @@ tool, one per lens:
 
 Brief each with the file's absolute path. A subagent can't resolve a path
 relative to its own prompt file. Don't retype the draft into the prompt. Combine
-their findings into one list, dropping duplicates that point at the same claim.
+their findings into one list, dropping duplicates.
 
 Judge each finding on its merits, and verify it by comparing with your own read.
 Address the findings you accept by editing the temporary file.

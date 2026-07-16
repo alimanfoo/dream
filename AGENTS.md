@@ -117,7 +117,7 @@ the agent file of whoever runs it. `Grace.md`'s Challenge and Autopilot sections
 are the templates.
 
 The README lists the utility skills a user can run on their own. That list is
-their one home, so add a new skill of this kind there. `review-coherence` is one
+their one home, so add a new skill of this kind there. `coherence-review` is one
 such skill. The requirements, scope, design, and plan review lenses are not
 standalone skills. The `requirements-analysis` skill launches the requirements
 lenses inline as review subagents, and Junio launches the scope, design, and
