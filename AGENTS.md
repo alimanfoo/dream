@@ -68,7 +68,7 @@ and dispatches a session for each, one at a time. The issue's label picks the
 skill: a `/dream:team` session or a lighter `/dream:solo` one. It lets the work
 run unattended while the user is away.
 
-The plugin also ships utility skills.
+The plugin also ships utility skills the user can run on their own.
 
 ## Two layers
 
@@ -84,18 +84,7 @@ This repo has two layers, easy to confuse:
   label picking a `/dream:team` or `/dream:solo` session. A
   [solo skill](plugins/dream/skills/solo/SKILL.md) runs a single-agent version,
   `/dream:solo`, for smaller tasks with no team. Utility skills ship alongside
-  the team. These are the skills the user invokes directly, on ordinary inputs
-  like prose, code, or an issue:
-  [writing-style](plugins/dream/skills/writing-style/SKILL.md),
-  [copy-edit](plugins/dream/skills/copy-edit/SKILL.md),
-  [code-analysis](plugins/dream/skills/code-analysis/SKILL.md),
-  [requirements-analysis](plugins/dream/skills/requirements-analysis/SKILL.md),
-  [simplify](plugins/dream/skills/simplify/SKILL.md), and
-  [review-coherence](plugins/dream/skills/review-coherence/SKILL.md). The
-  `review-design`, `review-plan`, `review-requirements`, and `review-scope`
-  skills review a team session's draft artifacts instead, so they stay with the
-  team flow rather than joining this list. The README names this same set for
-  users. Keep the two in sync.
+  the team.
 - **Developer support**: AGENTS.md. It supports plugin development and is not
   part of the installed plugin. (`CLAUDE.md` is a symlink to AGENTS.md. Edit
   `AGENTS.md` directly. Some editors refuse to write through a symlink.)
@@ -126,6 +115,13 @@ do their job, not what its writers found interesting to elaborate. When someone
 sketches a new mechanism in protocol.md first, move the operational detail to
 the agent file of whoever runs it. `Grace.md`'s Challenge and Autopilot sections
 are the templates.
+
+The README lists the utility skills a user can run on their own. These take
+ordinary input: an issue, a file, code, or a git range. That list is their one
+home, so add a new skill of this kind there. The `review-design`, `review-plan`,
+`review-requirements`, and `review-scope` skills are different. Each takes a
+draft artifact produced during a session, so it runs as a review step over that
+draft, not on ordinary input the user supplies.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
