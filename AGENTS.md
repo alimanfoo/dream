@@ -68,8 +68,7 @@ and dispatches a session for each, one at a time. The issue's label picks the
 skill: a `/dream:team` session or a lighter `/dream:solo` one. It lets the work
 run unattended while the user is away.
 
-The plugin also ships utility skills the user can invoke on their own, listed
-under [Two layers](#two-layers).
+The plugin also ships utility skills, listed under [Two layers](#two-layers).
 
 ## Two layers
 
@@ -84,18 +83,19 @@ This repo has two layers, easy to confuse:
   runs, dispatching a session for each labelled issue, one at a time, with the
   label picking a `/dream:team` or `/dream:solo` session. A
   [solo skill](plugins/dream/skills/solo/SKILL.md) runs a single-agent version,
-  `/dream:solo`, for smaller tasks with no team. Utility skills the user can
-  invoke on their own ship alongside the team:
+  `/dream:solo`, for smaller tasks with no team. Utility skills — the ones the
+  user invokes directly, on ordinary inputs like prose, code, or an issue — ship
+  alongside the team:
   [writing-style](plugins/dream/skills/writing-style/SKILL.md),
   [copy-edit](plugins/dream/skills/copy-edit/SKILL.md),
   [code-analysis](plugins/dream/skills/code-analysis/SKILL.md),
   [requirements-analysis](plugins/dream/skills/requirements-analysis/SKILL.md),
   [simplify](plugins/dream/skills/simplify/SKILL.md), and
-  [review-coherence](plugins/dream/skills/review-coherence/SKILL.md). These are
-  the standalone skills that take ordinary inputs: prose, code, or an issue. The
+  [review-coherence](plugins/dream/skills/review-coherence/SKILL.md). The
   `review-design`, `review-plan`, `review-requirements`, and `review-scope`
   skills review a team session's draft artifacts instead, so they stay with the
-  team flow rather than joining this list.
+  team flow rather than joining this list. The README names this same set for
+  users; keep the two in step.
 - **Developer support**: AGENTS.md. It supports plugin development and is not
   part of the installed plugin. (`CLAUDE.md` is a symlink to AGENTS.md. Edit
   `AGENTS.md` directly. Some editors refuse to write through a symlink.)
