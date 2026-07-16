@@ -45,9 +45,9 @@ A session moves through ten phases:
    posts the Requirements Analysis as a PR comment. See
    [The session PR](#the-session-pr).
 
-2. **Code Analysis.** Grace reads the code with a structural lens, how the code
-   works and its code smells, and shares the Code Analysis with the user for
-   acceptance.
+2. **Code Analysis.** Grace reads the code with a structural lens: how it works,
+   how it's organised, and its code smells. She shares the Code Analysis with
+   the user for acceptance.
 
 3. **Scope.** Grace drafts the Scope Options, gets one round of review from
    Junio and Ralph, revises, and shares the revised Scope Options with the user
@@ -171,13 +171,13 @@ The phase ends at user acceptance of the Requirements Analysis.
 ## Phase 2: Code Analysis
 
 With the Requirements Analysis accepted, Grace reads the code with a structural
-lens. The read produces two things. The first is how the code works. The second
-is the code smells, where that structure will resist the work. The Code Analysis
-is a verifiable read of what the current code does and where. Grace then shares
-it with the user for acceptance. At the end of the phase Grace hands the
-accepted Code Analysis to Junio and Ralph for information. They hold it as
-context for the rest of the session. On acceptance Grace also posts the accepted
-Code Analysis to the PR as a comment (see [The session PR](#the-session-pr)).
+lens. The read produces three things: how the code works, how it's organised,
+and the code smells, where the code will resist the work. The Code Analysis is a
+verifiable read of what the current code does and where. Grace then shares it
+with the user for acceptance. At the end of the phase Grace hands the accepted
+Code Analysis to Junio and Ralph for information. They hold it as context for
+the rest of the session. On acceptance Grace also posts the accepted Code
+Analysis to the PR as a comment (see [The session PR](#the-session-pr)).
 
 The phase ends at user acceptance of the Code Analysis.
 

@@ -22,7 +22,15 @@ The argument gives the requirements or other focus for the code analysis. When
 no argument is given, derive the focus from your context. If you cannot identify
 a focus, ask the user.
 
-## Read how the code works
+## Read the code
+
+Read the code for two things: how it works and how it's organised. How far you
+read depends on the focus. If the focus is a bug fix, trace to the root cause,
+back from where the error surfaces to the mechanism that produces it, not the
+symptom site alone. An enhancement reads the integration surface: where the new
+feature would land, what it changes, what adjacent behaviour it might affect.
+Maintenance reads the full extent of the surface the work changes, with the
+specific instances it must reach.
 
 Read the documentation governing the paths the work will change: the nearest
 agent-instructions file (such as `AGENTS.md` or `CLAUDE.md`) to those paths, and
@@ -30,9 +38,25 @@ any system or technical documentation for the subsystem. They describe how the
 code is meant to work and the conventions it keeps. Read them before tracing the
 code, and cite them in the read.
 
+### How it works
+
 Read the relevant code with one question in mind: _how does this work?_ Capture
-how it is built and what it actually does. Trace the mechanism, the layers, the
-callers and siblings, the patterns.
+what it actually does: the mechanism, the flow, the callers and siblings.
+
+Read for semantics, not just names, prose, or other surface details. A surface
+can carry the same name but mean different things in different callers. For
+example, a parameter with fallback semantics in one caller, no-anchor semantics
+in another, required in a third. Name any such split explicitly.
+
+Test the focus's factual claims as you go, whoever made them. A bug fix names
+expected and observed behaviour as a claim to verify, not a settled fact.
+Confirm the code actually misbehaves rather than taking the claim at its word.
+The reported behaviour may be a misunderstanding of what the code is built to
+do. Record what the read shows: the defect located, or the code behaving as
+designed. The latter means no bug to fix. Surface it plainly in the analysis for
+the reader to decide.
+
+### How it's organised
 
 Describe the architecture the work reaches:
 
@@ -44,28 +68,8 @@ Describe the architecture the work reaches:
 
 For each, say how it holds: types, checks, documentation, or unstated
 convention. This is what later work builds on. State it factually. Name the
-boundary that exists, don't propose one. Keep it to the architecture the
-target's surfaces sit in, not a tour of the whole codebase.
-
-Test the input's factual claims as you go, whoever made them. A bug fix names
-expected and observed behaviour as a claim to verify, not a settled fact.
-Confirm the code actually misbehaves rather than taking the claim at its word.
-The reported behaviour may be a misunderstanding of what the code is built to
-do. Record what the read shows: the defect located, or the code behaving as
-designed. The latter means no bug to fix. Surface it plainly in the analysis for
-the reader to decide.
-
-Read for semantics, not just names, prose, or other surface details. A surface
-can carry the same name but mean different things in different callers. For
-example, a parameter with fallback semantics in one caller, no-anchor semantics
-in another, required in a third. Name any such split explicitly.
-
-If the focus is a bug fix, trace to the root cause, back from where the error
-surfaces to the mechanism that produces it, not the symptom site alone. An
-enhancement reads the integration surface: where the new feature would land,
-what it changes, what adjacent behaviour it might affect. Maintenance reads the
-full extent of the surface the work changes, with the specific instances it must
-reach.
+boundary that exists, don't propose one. Keep it to the architecture the focus's
+surfaces sit in, not a tour of the whole codebase.
 
 ## Identify and investigate code smells
 
@@ -102,7 +106,7 @@ Some code smells are specific and common in codebases with agent-generated code:
 
 ## Compose the Code Analysis
 
-Compose the Code Analysis from both sections above, written up with file:line or
+Compose the Code Analysis from the sections above, written up with file:line or
 symbol citations throughout. Write it to a temporary file outside the repo. The
 purpose is visible grounding for the work that follows.
 
