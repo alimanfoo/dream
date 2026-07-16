@@ -303,6 +303,18 @@ plugins/:
             Preflight:
             Launch:
             How it picks work:
+      code-analysis/:
+        SKILL.md:
+          Code analysis:
+            Arguments:
+            Read the documentation:
+            Read the code:
+              How it works:
+              How it's organised:
+            Identify and investigate code smells:
+            Compose the Code Analysis:
+            Copy-edit the draft:
+            The result:
       copy-edit/:
         SKILL.md:
           Copy-edit:
@@ -315,7 +327,7 @@ plugins/:
             Arguments:
             Orient to the repo:
             Read the cited material:
-            Read the code with a consumer lens:
+            Read the code for the requirements it already satisfies:
             Consult the record:
             Check the input against the current code:
             Name the Session Type:
@@ -400,13 +412,11 @@ plugins/:
             'Phase 10: Reflect':
           phase2.md:
             'Phase 2: Code Analysis':
-              'Step 2.1: Read the structural baseline':
-              'Step 2.2: Identify and investigate code smells':
-              'Step 2.3: Compose the Code Analysis':
-              'Step 2.4: Share the Code Analysis with the user':
-              'Step 2.5: Seek user acceptance of the Code Analysis':
-              'Step 2.6: Hand the accepted Code Analysis to Junio and Ralph':
-              'Step 2.7: Post the accepted Code Analysis to the PR':
+              'Step 2.1: Produce the Code Analysis':
+              'Step 2.2: Share the Code Analysis with the user':
+              'Step 2.3: Seek user acceptance of the Code Analysis':
+              'Step 2.4: Hand the accepted Code Analysis to Junio and Ralph':
+              'Step 2.5: Post the accepted Code Analysis to the PR':
           phase3.md:
             'Phase 3: Scope':
               'Step 3.1: Compose the Draft Scope Options':

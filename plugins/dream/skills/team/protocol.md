@@ -36,43 +36,29 @@ be able to trust.
 
 A session moves through ten phases:
 
-1. **Requirements.** Grace orients to the repo as a whole, then reads the cited
-   material and the code with a consumer lens, and checks the session input
-   against the current code. She names the Session Type and drafts the
-   Requirements Analysis. She gets one round of adversarial review, revises, and
-   shares the Requirements Analysis with the user for acceptance. At the start
-   of the phase she opens the session branch and a draft PR. On acceptance she
-   posts the Requirements Analysis as a PR comment. See
-   [The session PR](#the-session-pr).
-
-2. **Code Analysis.** Grace reads the code with a structural lens, the
-   structural baseline and the code smells, and shares the Code Analysis with
+1. **Requirements.** Grace produces the Requirements Analysis and shares it with
    the user for acceptance.
 
-3. **Scope.** Grace drafts the Scope Options, gets one round of review from
-   Junio and Ralph, revises, and shares the revised Scope Options with the user
+2. **Code Analysis.** Grace produces the Code Analysis and shares it with the
+   user for acceptance.
+
+3. **Scope.** Grace produces the Scope Options and shares them with the user for
+   acceptance.
+
+4. **Design.** Grace produces the Design Options and shares them with the user
    for acceptance.
 
-4. **Design.** Grace opens two divergence steps: she and Ralph write analogies
-   while Junio surveys existing tools, then all three write design sketches. She
-   then consolidates the pooled sketches into the Proposed Design and any
-   Alternative Designs, gets one round of review from Junio and Ralph, revises,
-   and shares the Design Options with the user for acceptance.
-
-5. **Plan.** Grace drafts the Plan, gets one round of review from Junio and
-   Ralph, revises, and shares the revised Plan with the user for acceptance.
+5. **Plan.** Grace produces the Plan and shares it with the user for acceptance.
 
 6. **Develop.** The main implementation loop: one task at a time, coherence
-   restored before moving on. Opens with the task list, ends when it drains.
+   restored before moving on.
 
-7. **Review.** Ada and Junio review the PR. Grace writes the PR description once
-   the review follow-ons are final.
+7. **Review.** Ada and Junio review the PR, and Grace writes the PR description.
 
-8. **Merge.** The user merges the PR, or merge is deferred to a human. Grace
-   drives any conflict resolution first. Ralph resolves the markers.
+8. **Merge.** The user merges the PR, or merge is deferred to a human.
 
-9. **Collect.** Ancillary Findings noticed during the session are gathered,
-   deduplicated, checked against issue history, and decided.
+9. **Collect.** Ancillary Findings from the session are gathered, checked
+   against issue history, and decided.
 
 10. **Reflect.** Optional retrospective on how the session went.
 
@@ -149,13 +135,13 @@ session branch with an empty bootstrap commit, opens a draft PR, and posts the
 session input as the first comment.
 
 Grace produces the Requirements Analysis. She orients to the repo as a whole
-first. She then reads the cited material and the code with a consumer lens, and
-consults the record of prior issues and PRs for the surfaces named. She checks
-the session input against the current code, folding any drift into the Draft.
-She names the Session Type and drafts the analysis in the shape it selects,
-marking each item stated or assumed and carrying any system non-goals and open
-questions. The Draft gets one round of adversarial review before anyone else
-sees it, which Grace weighs and folds in.
+first. She then reads the cited material and the code for the requirements it
+already satisfies, and consults the record of prior issues and PRs for the
+surfaces named. She checks the session input against the current code, folding
+any drift into the Draft. She names the Session Type and drafts the analysis in
+the shape it selects, marking each item stated or assumed and carrying any
+system non-goals and open questions. The Draft gets one round of adversarial
+review before anyone else sees it, which Grace weighs and folds in.
 
 Enhancement and maintenance shapes also carry candidates: use cases or
 improvement goals the read suggests but the input didn't name. Candidates are
@@ -164,21 +150,19 @@ the user drops is removed. One the user leaves unaddressed defers to Collect.
 The user answers the open questions. Grace folds the answers in and shares the
 completed artifact for acceptance. At the end of the phase Grace hands the
 accepted Requirements Analysis and the Session Type to Junio and Ralph for
-information. They hold them as context for the rest of the session.
+information.
 
 The phase ends at user acceptance of the Requirements Analysis.
 
 ## Phase 2: Code Analysis
 
-With the Requirements Analysis accepted, Grace reads the code with a structural
-lens. The read produces two things. The first is the structural baseline: how
-the code is built and behaves. The second is the code smells, where that
-structure will resist the work. The Code Analysis is a verifiable read of what
-the current code does and where. Grace then shares it with the user for
-acceptance. At the end of the phase Grace hands the accepted Code Analysis to
-Junio and Ralph for information. They hold it as context for the rest of the
-session. On acceptance Grace also posts the accepted Code Analysis to the PR as
-a comment (see [The session PR](#the-session-pr)).
+With the Requirements Analysis accepted, Grace reads the code for how it works,
+how it's organised, and its code smells, where the code will resist the work.
+The Code Analysis is a verifiable read of what the current code does and where.
+Grace then shares it with the user for acceptance. At the end of the phase Grace
+hands the accepted Code Analysis to Junio and Ralph for information. On
+acceptance Grace also posts the accepted Code Analysis to the PR as a comment
+(see [The session PR](#the-session-pr)).
 
 The phase ends at user acceptance of the Code Analysis.
 
@@ -221,9 +205,8 @@ on its merits, recording a one-line reason: folded into the revised Scope
 Options or rejected. Grace then shares the revised Scope Options with the user,
 with a brief note on what changed from the Draft after the reviews. At the end
 of the phase Grace hands the accepted Session Scope to Junio and Ralph for
-information. They hold it as context for the rest of the session. On acceptance
-Grace also posts the accepted Session Scope to the PR as a comment (see
-[The session PR](#the-session-pr)).
+information. On acceptance Grace also posts the accepted Session Scope to the PR
+as a comment (see [The session PR](#the-session-pr)).
 
 The phase ends at user acceptance of the Session Scope.
 
@@ -252,8 +235,7 @@ the engineering-pattern view. Grace decides each finding on its merits. Grace
 then shares the Design Options (the Proposed Design and any Alternative Designs)
 with the user, with a brief note on what changed after the reviews. At the end
 of the phase Grace hands the accepted Design to Junio and Ralph for information.
-They hold it as context for the rest of the session. On acceptance Grace also
-posts the accepted Design to the PR as a comment (see
+On acceptance Grace also posts the accepted Design to the PR as a comment (see
 [The session PR](#the-session-pr)).
 
 The phase ends at user acceptance of the Design.

@@ -54,12 +54,12 @@ gh api repos/{owner}/{repo}/issues/<N>/sub_issues
 
 A sub-issue carries part of the same requirement. Read it too.
 
-## Read the code with a consumer lens
+## Read the code for the requirements it already satisfies
 
 Read the relevant code, callers, tests, and docs for the named surfaces, holding
 one question in mind: _who uses these surfaces, and what do they do with them?_
-This checks, against the code, who the work serves and what they get, rather
-than inferring it from the input's prose alone.
+This grounds the analysis in the requirements the code already satisfies, taken
+from the code rather than the input's prose alone.
 
 ## Consult the record
 
