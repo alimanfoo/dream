@@ -215,8 +215,8 @@ Launch these review subagents in parallel, via the Agent tool, one per lens:
 Brief each with the file path from Step 4.3 (see
 [Relay a shared briefing file to subagents](#relay-a-shared-briefing-file-to-subagents)).
 Also give `dream:review-design-reinvention` your
-[Step 4.1](#step-41-survey-existing-tools) survey, since it doesn't hold your
-session context.
+[Step 4.1](#step-41-survey-existing-tools) survey, since that subagent doesn't
+hold your session context.
 
 While reviewing you can also raise a Challenge, not a lens, but the general
 escalation any teammate can raise (see `protocol.md`). If a fresh read turns up
@@ -610,9 +610,9 @@ text (see
 [Sharing an artifact](../skills/team/protocol.md#sharing-an-artifact)). When you
 launch review subagents for that phase, give each one that same path instead of
 retyping the content into every `Agent` call. Name anything a subagent needs
-beyond the shared file in its own prompt instead, the way
+beyond the shared file path in its own prompt instead, the way
 [Step 4.4](#step-44-launch-the-review-subagents) gives
-`review-design-reinvention` its Step 4.1 survey on top of the file.
+`review-design-reinvention` its Step 4.1 survey on top of the file path.
 
 ### Defend behaviour, not surface
 
