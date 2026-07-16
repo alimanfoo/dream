@@ -168,8 +168,16 @@ enhancement, the consumers and use cases are the work. Give them real detail.
 ## Review the draft
 
 Get an adversarial read before you finish. Write the draft to a temporary file
-outside the repo, then run the `dream:review-requirements` skill over it, giving
-the file's absolute path. It runs the review and returns the combined findings.
+outside the repo. Then launch these review subagents in parallel, via the Agent
+tool, one per lens:
+
+- `dream:review-requirements-consumer-value`
+- `dream:review-requirements-project-purpose`
+- `dream:review-requirements-coherence`
+
+Brief each with the file's absolute path. A subagent can't resolve a path
+relative to its own prompt file. Don't retype the draft into the prompt. Combine
+their findings into one list, dropping duplicates that point at the same claim.
 
 Judge each finding on its merits, and verify it by comparing with your own read.
 Address the findings you accept by editing the temporary file.
