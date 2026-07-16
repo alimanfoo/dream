@@ -14,10 +14,9 @@ reviewers will see next. Do not yet send it to the user. Three named options,
 each with its presence condition:
 
 - **Coherent Scope** (always): the work needed to meet the accepted Requirements
-  Analysis, plus the additions the accepted Code Analysis showed are needed to
-  leave the behaviour and the surrounding code in a coherent state. Cite the
-  Code Analysis finding behind each addition so the user can trace each one back
-  to the Code Analysis they already accepted.
+  Analysis, plus the additions needed to leave the behaviour and the surrounding
+  code in a coherent state. Cite the Code Analysis finding behind each addition
+  so the user can see the supporting evidence.
 - **Minimal Scope** (when narrower than Coherent): strictly what the
   requirements call for, with the coherence gaps named. It gives the user a way
   to decline the coherence work explicitly (time pressure, scope discipline, the

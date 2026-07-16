@@ -49,9 +49,10 @@ This is one of the protocol's user acceptance gates (see
 
 Write the accepted Code Analysis, the version the user accepted plus any changes
 from the acceptance discussion, to a temporary file outside this repo, via Bash.
+
 Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP. No
-reply is needed. They hold it as context for the rest of the session.
+reply is needed.
 
 ## Step 2.5: Post the accepted Code Analysis to the PR
 
