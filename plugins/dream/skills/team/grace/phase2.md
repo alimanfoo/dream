@@ -20,7 +20,7 @@ Hold the returned Code Analysis as your working artifact for the steps below.
 
 ## Step 2.2: Share the Code Analysis with the user
 
-Send the Code Analysis to the user. The Code Analysis is your structural read.
+Send the Code Analysis to the user. The Code Analysis is your read of the code.
 The user's job at this gate is to flag anything missing or off. Accepting
 without flagging anything is the default that lets the phase proceed.
 

@@ -307,6 +307,7 @@ plugins/:
         SKILL.md:
           Code analysis:
             Arguments:
+            Read the documentation:
             Read the code:
               How it works:
               How it's organised:

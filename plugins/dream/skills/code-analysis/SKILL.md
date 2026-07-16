@@ -22,21 +22,23 @@ The argument gives the requirements or other focus for the code analysis. When
 no argument is given, derive the focus from your context. If you cannot identify
 a focus, ask the user.
 
-## Read the code
-
-Read the code for two things: how it works and how it's organised. How far you
-read depends on the focus. If the focus is a bug fix, trace to the root cause,
-back from where the error surfaces to the mechanism that produces it, not the
-symptom site alone. An enhancement reads the integration surface: where the new
-feature would land, what it changes, what adjacent behaviour it might affect.
-Maintenance reads the full extent of the surface the work changes, with the
-specific instances it must reach.
+## Read the documentation
 
 Read the documentation governing the paths the work will change: the nearest
 agent-instructions file (such as `AGENTS.md` or `CLAUDE.md`) to those paths, and
 any system or technical documentation for the subsystem. They describe how the
 code is meant to work and the conventions it keeps. Read them before tracing the
 code, and cite them in the read.
+
+## Read the code
+
+Read the code for two things: how it works and how it's organised. How you read
+depends on the focus. If the focus is a bug fix, trace to the root cause, back
+from where the error surfaces to the mechanism that produces it, not the symptom
+site alone. An enhancement reads the integration surface: where the new feature
+would land, what it changes, what adjacent behaviour it might affect.
+Maintenance reads the full extent of the surface the work changes, with the
+specific instances it must reach.
 
 ### How it works
 
@@ -48,13 +50,12 @@ can carry the same name but mean different things in different callers. For
 example, a parameter with fallback semantics in one caller, no-anchor semantics
 in another, required in a third. Name any such split explicitly.
 
-Test the focus's factual claims as you go, whoever made them. A bug fix names
-expected and observed behaviour as a claim to verify, not a settled fact.
-Confirm the code actually misbehaves rather than taking the claim at its word.
-The reported behaviour may be a misunderstanding of what the code is built to
-do. Record what the read shows: the defect located, or the code behaving as
-designed. The latter means no bug to fix. Surface it plainly in the analysis for
-the reader to decide.
+Test any factual claims as you go, whoever made them. A bug fix names expected
+and observed behaviour as a claim to verify, not a settled fact. Confirm the
+code actually misbehaves rather than taking the claim at its word. Record what
+the read shows: the defect located, or the code behaving as designed. The latter
+means no bug to fix. Surface it plainly in the analysis for the reader to
+decide.
 
 ### How it's organised
 
@@ -68,18 +69,18 @@ Describe the architecture the work reaches:
 
 For each, say how it holds: types, checks, documentation, or unstated
 convention. This is what later work builds on. State it factually. Name the
-boundary that exists, don't propose one. Keep it to the architecture the focus's
-surfaces sit in, not a tour of the whole codebase.
+boundary that exists, don't propose one. Keep it relevant to the focus, not a
+tour of the whole codebase.
 
 ## Identify and investigate code smells
 
-With that in hand, turn to the code smells: where that structure will resist the
-work. Investigate each code smell as you notice it. A code smell is a sign the
-code may resist change, not a proven defect. Examples: duplication, a long
-function, tight coupling, one concern scattered across many sites, and the rest
-of the code-smell catalogue. Describe the smell and where it lives. Whether it
-matters and how to fix it is a call for whoever scopes and designs the work
-next, not this read.
+Identify code smells: where that structure will resist the work. Investigate
+each code smell as you notice it. A code smell is a sign the code may resist
+change, not a proven defect. Examples: duplication, a long function, tight
+coupling, one concern scattered across many sites, and the rest of the
+code-smell catalogue. Describe the smell and where it lives. Whether it matters
+and how to fix it is a call for whoever scopes and designs the work next, not
+this read.
 
 Some code smells are specific and common in codebases with agent-generated code:
 

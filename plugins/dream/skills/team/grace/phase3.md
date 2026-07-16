@@ -17,7 +17,7 @@ each with its presence condition:
   Analysis, plus the additions the accepted Code Analysis showed are needed to
   leave the behaviour and the surrounding code in a coherent state. Cite the
   Code Analysis finding behind each addition so the user can trace each one back
-  to the structural read they already accepted.
+  to the read they already accepted.
 - **Minimal Scope** (when narrower than Coherent): strictly what the
   requirements call for, with the coherence gaps named. It gives the user a way
   to decline the coherence work explicitly (time pressure, scope discipline, the
