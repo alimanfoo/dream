@@ -5,8 +5,10 @@ coherent, with minimal human input.
 
 `/dream:team` runs a multi-agent team on a task. `/dream:solo` runs a single
 agent on a smaller task, with no teams feature needed. `/dream:catcher` runs the
-team unattended across a repository's labelled issues. Utility skills ship
-alongside: `/dream:writing-style` and `/dream:copy-edit`.
+team unattended across a repository's labelled issues. Utility skills you can
+run on their own ship alongside: `/dream:writing-style`, `/dream:copy-edit`,
+`/dream:code-analysis`, `/dream:requirements-analysis`, `/dream:simplify`, and
+`/dream:review-coherence`.
 
 ## Prerequisites
 
