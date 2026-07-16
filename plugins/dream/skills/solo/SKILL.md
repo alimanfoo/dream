@@ -210,7 +210,7 @@ fixes it makes.
 
 ## Coherence review
 
-Run the `dream:review-coherence` skill over the branch's changes against the
+Run the `dream:coherence-review` skill over the branch's changes against the
 base (`main...HEAD`). It returns findings across the coherence lenses. It does
 not apply them. Weigh each on its merits and apply the ones that stand up. Reach
 for the coherent fix even when it is larger than the site the finding names.

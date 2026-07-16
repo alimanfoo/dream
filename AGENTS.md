@@ -117,10 +117,12 @@ the agent file of whoever runs it. `Grace.md`'s Challenge and Autopilot sections
 are the templates.
 
 The README lists the utility skills a user can run on their own. That list is
-their one home, so add a new skill of this kind there. Don't add the
-`review-design`, `review-plan`, `review-requirements`, or `review-scope` skills.
-Each reviews a draft artifact produced during a session, so it runs as a review
-step over that draft, not on its own.
+their one home, so add a new skill of this kind there. `coherence-review` is one
+such skill. The requirements, scope, design, and plan review lenses are not
+standalone skills. The `requirements-analysis` skill launches the requirements
+lenses inline as review subagents, and Junio launches the scope, design, and
+plan lenses. So they run only as a review step within a session. Don't wrap them
+in a standalone skill. No standalone caller would justify wrapping them in one.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
