@@ -21,7 +21,7 @@ learned one part can predict another. The defect is two models for one concept,
 each internally consistent and complete. No name lies and no fact repeats. Yet a
 reader who learned one part guesses the other wrong.
 
-Take the concept the change touches, then ask, in order:
+Take the concept the change models, then ask, in order:
 
 **How does the surrounding system already model this concept?** Name the
 established treatment: the representation it gives a domain value, or the way it
