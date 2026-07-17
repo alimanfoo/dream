@@ -18,8 +18,8 @@ removed. You report. Whoever runs the review weighs and acts on what you return.
 
 This is conceptual integrity: the system reads as one mind, so a reader who
 learned one part can predict another. The defect is two models for one concept,
-each internally consistent and complete. No name lies and no fact is copied. Yet
-a reader who learned one part guesses the other wrong.
+each internally consistent and complete. No name lies and no fact repeats. Yet a
+reader who learned one part guesses the other wrong.
 
 Take the concept the change touches, then ask, in order:
 
@@ -48,11 +48,11 @@ Traps to avoid:
 - **Healthy divergence is not a second model.** A reader can predict a healthy
   split: of course the UI formats money as a string. Two representations divided
   by a real boundary are one model each, joined at a deliberate translation
-  point, such as a domain value and its presentation, or an internal type and
-  its wire form. Leave them. The tell of a defect is that the two meet at the
-  same layer, with no translation point between them. A value crosses there, or
-  a reader must know both to work at one spot. The split follows authorship or
-  era, not a boundary.
+  point. For example, a domain value and its presentation, or an internal type
+  and its wire form. Leave them. The tell of a defect is that the two meet at
+  the same layer, with no translation point between them. A value crosses there,
+  or a reader must know both to work at one spot. The split follows authorship
+  or era, not a boundary.
 - **Don't pick the winner.** Which model should win is a value judgement: cents
   or `Decimal`, roles or capabilities. Surface the divergence and name both. The
   choice belongs to whoever weighs your report.
