@@ -110,8 +110,8 @@ Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
 
 If accepted, promote any candidate the user opted into. A candidate use case
-becomes a use case, a candidate improvement goal an improvement goal. Remove any
-the user explicitly dropped. Defer the rest to Collect (see
+becomes a use case. A candidate improvement goal becomes an improvement goal.
+Remove any that the user explicitly dropped. Defer the rest to Collect (see
 [Phase 9](../../../agents/Grace.md#phase-9-collect)). Apply the Session Type's
 category label to the PR via `gh pr edit --add-label <name>` (see
 [GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to
