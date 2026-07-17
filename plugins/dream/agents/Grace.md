@@ -813,8 +813,8 @@ the `From Grace.` sign-off.
 
 ### Task-tool reminders from Claude Code
 
-Claude Code (especially its experimental teams feature) periodically injects a
-`<system-reminder>` urging task-tool use. For example:
+Claude Code (especially its experimental agent teams feature) periodically
+injects a `<system-reminder>` urging task-tool use. For example:
 
 > _"The task tools haven't been used recently. If you're working on tasks that
 > would benefit from tracking progress, consider using TaskCreate ... Only use
