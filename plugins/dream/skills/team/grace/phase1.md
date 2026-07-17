@@ -92,8 +92,8 @@ yet.
 
 Send the completed Requirements Analysis to the user. When there are candidates,
 ask the user to name any they want included, by number. Note that any they don't
-name are carried forward as Opportunities to Collect (see
-[Phase 9](../../../agents/Grace.md#phase-9-collect)). Tell them they can ask to
+name are carried forward as Opportunities to
+[Collect](../../../agents/Grace.md#phase-9-collect). Tell them they can ask to
 drop any outright.
 
 End the message with one of these two, depending on autopilot:
@@ -108,13 +108,11 @@ End the message with one of these two, depending on autopilot:
 
 Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
-Promote any candidate the user opted into. A candidate use case becomes a use
-case, a candidate improvement goal an improvement goal. Remove any the user
-explicitly dropped. Defer the rest to Collect (see
-[Phase 9](../../../agents/Grace.md#phase-9-collect)).
 
-If accepted, apply the Session Type's category label to the PR via
-`gh pr edit --add-label <name>` (see
+If accepted, promote any candidate the user opted into. Remove any that the user
+explicitly dropped. Defer the rest to
+[Collect](../../../agents/Grace.md#phase-9-collect). Apply the Session Type's
+category label to the PR via `gh pr edit --add-label <name>` (see
 [GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to
 [Step 1.6](#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
 
