@@ -60,13 +60,23 @@ A lighter skill, `/dream:solo`, does similar work with a single agent instead of
 a team. It carries one or more issues to a pull request on its own, spawning
 subagents only to plan and review, and needs no agent teams feature. It doesn't
 read `protocol.md`. It restates the coherence disciplines in a single voice for
-one agent, so a change to those disciplines in the protocol may need the same
-change in `/dream:solo`.
+one agent.
+
+An even lighter skill, `/dream:less`, carries a very small change from issue to
+pull request, trimming the process to match: it plans inline, skips the tidy and
+coherence passes, runs a lighter code review, and files no follow-ups. Like
+`/dream:solo` it doesn't read `protocol.md` and restates the coherence
+disciplines in a single voice for one agent, but tuned to small changes — where
+`/dream:solo` tells the agent to reach past the smallest fix for the larger
+change, `/dream:less` tells it to keep the change small. So the disciplines live
+in `protocol.md`, `/dream:solo`, and `/dream:less`, each in its own voice, and a
+change to them may need echoing across all three, not as a mechanical copy since
+each voice is deliberately different.
 
 A coordinator skill, `/dream:catcher`, watches a repository for labelled issues
 and dispatches a session for each, one at a time. The issue's label picks the
-skill: a `/dream:team` session or a lighter `/dream:solo` one. It lets the work
-run unattended while the user is away.
+skill: a `/dream:team` session, a lighter `/dream:solo` one, or the lightest
+`/dream:less` one. It lets the work run unattended while the user is away.
 
 The plugin also ships utility skills the user can run on their own.
 
@@ -81,9 +91,11 @@ This repo has two layers, easy to confuse:
   [agent files](plugins/dream/agents), which the `/dream:team` command runs. A
   [catcher skill](plugins/dream/skills/catcher/SKILL.md) coordinates unattended
   runs, dispatching a session for each labelled issue, one at a time, with the
-  label picking a `/dream:team` or `/dream:solo` session. A
+  label picking a `/dream:team`, `/dream:solo`, or `/dream:less` session. A
   [solo skill](plugins/dream/skills/solo/SKILL.md) runs a single-agent version,
-  `/dream:solo`, for smaller tasks with no team. Utility skills ship alongside
+  `/dream:solo`, for smaller tasks with no team, and a
+  [less skill](plugins/dream/skills/less/SKILL.md) a cut-back single-agent
+  version, `/dream:less`, for very small changes. Utility skills ship alongside
   the team.
 - **Developer support**: AGENTS.md. It supports plugin development and is not
   part of the installed plugin. (`CLAUDE.md` is a symlink to AGENTS.md. Edit
