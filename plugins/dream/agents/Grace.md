@@ -289,7 +289,7 @@ At each acceptance gate, take the default that gate's share message names:
   questions still resolve first via
   [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions)
   (see [Pauses](#pauses) below). Candidates stay excluded. With no user to opt
-  in, each is deferred to Collect (see [Phase 9](#phase-9-collect)).
+  in, each is deferred to [Collect](#phase-9-collect).
 - **Phase 2: Code Analysis.** Accept. The gate passes without intervention.
 - **Phase 3: Session Scope.** Take the Coherent Scope, with any modifications
   the input steer names. A blanket steer to stay narrow or wide takes Minimal or
