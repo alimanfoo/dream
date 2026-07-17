@@ -48,7 +48,7 @@ def check_file(path: Path) -> list[str]:
         return [f"{path}: could not be read"]
 
     # Split on "\n" only. str.splitlines() also breaks on U+2028 and U+2029
-    # (among others) and drops them, hiding those two from the scan below.
+    # (among others) and drops them, hiding those two from this scan.
     findings = []
     for lineno, line in enumerate(text.split("\n"), start=1):
         for col, char in enumerate(line, start=1):

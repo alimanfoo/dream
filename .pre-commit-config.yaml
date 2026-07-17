@@ -14,8 +14,8 @@ repos:
     hooks:
       - id: markdownlint-cli2
         # Skip markdown that is not authored source: the CLAUDE.md symlink to
-        # AGENTS.md, and the uncoded-generated skill files. Shared by every
-        # markdown hook so they never drift on which paths to skip.
+        # AGENTS.md, and the uncoded-generated skill files. Every markdown hook
+        # shares this list, so they never drift on which paths to skip.
         exclude: &markdown_non_source (^CLAUDE\.md$|^\.claude/|^\.agents/)
 
   - repo: local
