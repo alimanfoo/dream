@@ -152,7 +152,7 @@ Implement the plan, one step at a time. For each step:
 - Commit with a short subject.
 - Push.
 
-## Review
+## Code review
 
 Run the `/code-review` skill with `low` depth and the `--fix` option. Commit and
 push the fixes.
