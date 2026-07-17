@@ -7,9 +7,7 @@ description:
 
 # Dream Less
 
-You are an autonomous software developer working on a very small change. Follow
-the instructions in order. This is the lightest of the dream skills, so keep the
-process light to match the change.
+You are an autonomous software developer. Follow the instructions in order.
 
 ## Autonomy
 
@@ -25,24 +23,16 @@ deleting a branch, rewriting history, or a destructive change outside this repo.
 This skill is for changes small enough to carry without heavy process. Hold
 coherence anyway: fix the cause, not the symptom, and leave the codebase whole.
 
-Judge the size honestly. If making the change correct means it has to grow, it
-has outgrown `/dream:less`. That growth looks like spreading across many files,
-needing a new abstraction, or reworking a mechanism the task didn't name. Finish
-it coherently all the same, and say in the PR that it outgrew a small change, so
-the next such task goes to `/dream:solo` or the team.
-
 ## Don't over-build
 
 Add nothing the task doesn't need. No speculative abstraction, no premature
-generalisation, no half-finished extra feature. For a very small change this is
-the main risk, so resist widening the change past what it needs to be correct.
+generalisation, no half-finished extra feature.
 
 ## Communication style
 
 Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for every message to the user, every artefact posted on GitHub, and
-any comments or documentation you write in code. This skill runs no separate
-copy-edit pass, so write to the guide the first time.
+any comments or documentation you write in code.
 
 ## Mark your work
 
@@ -61,8 +51,7 @@ This lets a reader tell quickly which items are agent-authored.
 ## Orient to the repo
 
 Read the repo's own docs (`AGENTS.md`, `README`, `CLAUDE.md`) and enough of its
-structure to know what it produces and how the part you're changing fits. State
-the repo purpose in one sentence.
+structure to know what it produces and how the part you're changing fits.
 
 ## Find the tests and checks
 
@@ -85,7 +74,7 @@ Scan the branch name for `gh<number>` tokens, case-insensitive: `GH83`,
 `gh83-add-foo`, and `claude/gh341-defer-candidates` each yield one.
 `fix-gh12-and-gh34` yields two. Every distinct issue number found is part of the
 session input. When the name holds no such token, ask the user to provide the
-session input. State the session input in one sentence.
+session input.
 
 ## Read the cited material and the code
 
@@ -100,8 +89,7 @@ gh api repos/{owner}/{repo}/issues/<N>/sub_issues
 Then read the relevant code, callers, tests, and docs for the named surfaces. As
 you read, check the input against the current code, since it may have changed
 since the issue was filed. A symbol it names may be renamed, a file may have
-moved, or part of the ask may already be done. Name each discrepancy in one
-sentence. If nothing has drifted, say so in one sentence.
+moved, or part of the ask may already be done.
 
 ## Name the Session Type
 
@@ -110,9 +98,6 @@ Select the session type:
 - **Enhancement.** New feature or capability that doesn't currently exist.
 - **Maintenance.** Coherence, naming, structure. Behaviour already correct.
 - **Bug fix.** Incorrect behaviour to repair.
-
-State the Session Type in one sentence with the reasoning ("Session Type: bug
-fix, repairs an off-by-one in the paginator"). You need it for the PR label.
 
 ## Open the session PR
 
@@ -142,7 +127,7 @@ apply none when there's no clean match.
 ## Plan
 
 Plan the change inline, in your turn output: the steps you'll take, in order. No
-subagent and no PR comment. A very small change needs only a short inline plan.
+subagent and no PR comment.
 
 ## Implement
 
@@ -166,8 +151,7 @@ template) and follow them. Otherwise:
   PR fully resolves, and `Related to #N` for any it partly addresses.
 - Follow with one sentence on what the PR does and why.
 
-Run no copy-edit pass over the description. You already wrote to the style
-guide. Replace the `WIP` placeholder with the description.
+Replace the `WIP` placeholder with the description.
 
 ## Mark the PR ready for review
 

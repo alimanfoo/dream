@@ -93,24 +93,21 @@ Start Claude Code and invoke the skill:
 /dream:less
 ```
 
-Reach for it when a change is small and self-contained. If the work turns out to
-need more, the agent still finishes it coherently and says so in the pull
-request. You can then send the next such task to `/dream:solo` or the team.
+Reach for it when a change is small and self-contained.
 
 ## Unattended runs with /dream:catcher
 
 The dreamcatcher watches a repository for labelled issues and dispatches a
-session for each, one at a time. It runs the dream team, the solo skill, or the
-less skill, chosen by the issue's label. A backlog clears itself while you are
-away. Each session runs unattended and carries its issue to a pull request for
-you to merge. That is the same as a session you start by hand.
+session for each, one at a time. It runs the dream:team, the dream:solo skill,
+or the dream:less skill, chosen by the issue's label. A backlog clears itself
+while you are away. Each session runs unattended and carries its issue to a pull
+request for you to merge. That is the same as a session you start by hand.
 
 The dreamcatcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
 with `gh` signed in.
 
-Label an issue for the team (`dream:team`), the solo skill (`dream:solo`), or
-the less skill (`dream:less`) and assign it to yourself. Start Claude Code from
-the main checkout of that repository, not a linked worktree, then run:
+Start Claude Code from the main checkout of that repository, not a linked
+worktree, then run:
 
 ```text
 /dream:catcher

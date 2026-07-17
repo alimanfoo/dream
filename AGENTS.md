@@ -63,14 +63,7 @@ read `protocol.md`. It restates the coherence disciplines in a single voice for
 one agent.
 
 An even lighter skill, `/dream:less`, carries a very small change from issue to
-pull request, with a process cut back to match. Like `/dream:solo` it doesn't
-read `protocol.md` and restates the coherence disciplines in a single voice for
-one agent, but tuned to small changes. `/dream:solo` tells the agent to reach
-past the smallest fix for the larger change. `/dream:less` tells it to keep the
-change small instead. So the disciplines live in `protocol.md`, `/dream:solo`,
-and `/dream:less`, each in its own voice. A change to them may need echoing
-across all of them, but not as a mechanical copy, since each voice is
-deliberately different.
+pull request, with a process cut back to match.
 
 A coordinator skill, `/dream:catcher`, watches a repository for labelled issues
 and dispatches a session for each, one at a time. The issue's label picks the

@@ -4,9 +4,9 @@ description:
   Only use when the user explicitly runs /dream:catcher, never on a general
   request to watch, monitor, or triage issues. It launches unattended sessions.
   It watches a repository for labelled issues and dispatches a session for each,
-  one at a time. The issue's label picks which skill runs, the dream team, the
-  solo skill, or the lighter less skill. Each session runs unattended and
-  carries its issue to a pull request for the user to merge.
+  one at a time. The issue's label picks which skill runs, the dream:team, the
+  dream:solo skill, or the lighter dream:less skill. Each session runs
+  unattended and carries its issue to a pull request for the user to merge.
 argument-hint:
   "[--team-label <label>] [--solo-label <label>] [--less-label <label>]
   [--solo-model <model>] [--solo-effort <effort>] [--less-model <model>]
@@ -15,11 +15,11 @@ argument-hint:
 
 # Dreamcatcher
 
-Watch a repository for issues marked for the dream team, the solo skill, or the
-less skill, and dispatch a fresh session for each, chosen by the issue's label.
-The sessions already do the work. This is the coordinator around them. It
-notices a labelled issue and dispatches a session for it, one at a time. The
-work continues while the user is away.
+Watch a repository for issues marked for the dream:team, the dream:solo skill,
+or the dream:less skill, and dispatch a fresh session for each, chosen by the
+issue's label. The sessions already do the work. This is the coordinator around
+them. It notices a labelled issue and dispatches a session for it, one at a
+time. The work continues while the user is away.
 
 The coordinator is a shell script, `catch.sh`, in this skill's directory. It
 runs a tick on a loop and reads live state each time, so nothing is stored
