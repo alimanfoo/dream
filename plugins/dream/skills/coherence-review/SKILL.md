@@ -23,6 +23,7 @@ briefing each to review the target:
 - `dream:review-coherence-root-cause`
 - `dream:review-coherence-same-edit`
 - `dream:review-coherence-one-home`
+- `dream:review-coherence-one-model`
 - `dream:review-coherence-separation`
 - `dream:review-coherence-in-shape`
 - `dream:review-coherence-scaffolding`
