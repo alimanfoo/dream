@@ -40,10 +40,14 @@ DISALLOWED = {
 def check_file(path: Path) -> list[str]:
     try:
         text = path.read_text(encoding="utf-8")
-    except UnicodeDecodeError:
+    except UnicodeDecodeError as err:
         # A file we cannot decode is the likeliest place for a stray byte to
-        # hide, so flag it rather than report it clean.
-        return [f"{path}: not valid UTF-8, cannot scan for invisible characters"]
+        # hide, so flag it rather than report it clean. Point at the offending
+        # byte, since line and column mean nothing in a file we could not read.
+        return [
+            f"{path}: not valid UTF-8 at byte {err.start}, "
+            "cannot scan for invisible characters"
+        ]
     except OSError:
         return [f"{path}: could not be read"]
 
