@@ -40,12 +40,21 @@ DISALLOWED = {
 def check_file(path: Path) -> list[str]:
     try:
         text = path.read_text(encoding="utf-8")
-    except (UnicodeDecodeError, OSError):
-        # Binary or unreadable: not our concern.
-        return []
+    except UnicodeDecodeError as err:
+        # A file we cannot decode is the likeliest place for a stray byte to
+        # hide, so flag it rather than report it clean. Point at the offending
+        # byte, since line and column mean nothing in a file we could not read.
+        return [
+            f"{path}: not valid UTF-8 at byte {err.start}, "
+            "cannot scan for invisible characters"
+        ]
+    except OSError:
+        return [f"{path}: could not be read"]
 
+    # Split on "\n" only. str.splitlines() also breaks on U+2028 and U+2029
+    # (among others) and drops them, hiding those two from this scan.
     findings = []
-    for lineno, line in enumerate(text.splitlines(), start=1):
+    for lineno, line in enumerate(text.split("\n"), start=1):
         for col, char in enumerate(line, start=1):
             name = DISALLOWED.get(ord(char))
             if name:

@@ -13,6 +13,11 @@ repos:
     rev: v0.18.1
     hooks:
       - id: markdownlint-cli2
+        # Skip markdown that is not authored source: the CLAUDE.md symlink to
+        # AGENTS.md, and the uncoded-generated skill files. The markdown lint,
+        # format, and link-check hooks share this list, so they never drift on
+        # which paths to skip.
+        exclude: &markdown_non_source (^CLAUDE\.md$|^\.claude/|^\.agents/)
 
   - repo: local
     hooks:
@@ -30,7 +35,7 @@ repos:
         additional_dependencies: ["prettier@3.8.1"]
         args: ["--write"]
         files: \.md$
-        exclude: (^CLAUDE\.md$|^\.claude/|^\.agents/)
+        exclude: *markdown_non_source
 
       - id: check-invisible-chars
         name: check for invisible characters
@@ -79,4 +84,4 @@ repos:
         additional_dependencies: ["remark-cli@^12.0.1", "remark-validate-links@^13.1.0"]
         args: ["--quiet", "--frail", "--use", "remark-validate-links"]
         files: \.md$
-        exclude: ^CLAUDE\.md$
+        exclude: *markdown_non_source
