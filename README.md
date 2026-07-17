@@ -4,8 +4,8 @@ A Claude Code plugin for delivering great code and keeping the codebase
 coherent, with minimal human input.
 
 `/dream:team` runs a multi-agent team on a task. `/dream:solo` runs a single
-agent on a smaller task, and `/dream:less` a cut-back single agent on a very
-small one, both with no agent teams feature needed. `/dream:catcher` runs any of
+agent on a smaller task. `/dream:less` runs a cut-back single agent on a very
+small one. Neither needs the agent teams feature. `/dream:catcher` runs any of
 them unattended across a repository's labelled issues. Utility skills you can
 run on their own ship alongside: `/dream:writing-style`, `/dream:copy-edit`,
 `/dream:code-analysis`, `/dream:requirements-analysis`, `/dream:simplify`, and
@@ -80,12 +80,12 @@ Once you merge, it files anything it left out of scope as new issues.
 ## Even smaller tasks with /dream:less
 
 `/dream:less` is a cut-back version of `/dream:solo`, for a very small change
-you want carried from issue to pull request fast. It runs the same way — one
-agent, no acceptance gates, watching the pull request for your review — but
-trims the process to match the size of the work: it plans inline instead of with
-a subagent, skips the separate tidy and coherence passes, runs a lighter code
-review, writes a minimal pull request description, and files no follow-ups once
-you merge.
+you want carried from issue to pull request fast. It runs the same way as
+`/dream:solo`: one agent, no acceptance gates, watching the pull request for
+your review. But it trims the process to match the size of the work. It plans
+inline instead of with a subagent, and skips the separate tidy and coherence
+passes. It runs a lighter code review, writes a minimal pull request
+description, and files no follow-ups once you merge.
 
 Start Claude Code and invoke the skill:
 
@@ -95,15 +95,15 @@ Start Claude Code and invoke the skill:
 
 Reach for it when a change is small and self-contained. If the work turns out to
 need more, the agent still finishes it coherently and says so in the pull
-request, so you can send the next such task to `/dream:solo` or the team.
+request. You can then send the next such task to `/dream:solo` or the team.
 
 ## Unattended runs with /dream:catcher
 
 The dreamcatcher watches a repository for labelled issues and dispatches a
-session for each, one at a time — the dream team, the solo skill, or the less
-skill, chosen by the issue's label. A backlog clears itself while you are away.
-Each session runs unattended and carries its issue to a pull request for you to
-merge. That is the same as a session you start by hand.
+session for each, one at a time. It runs the dream team, the solo skill, or the
+less skill, chosen by the issue's label. A backlog clears itself while you are
+away. Each session runs unattended and carries its issue to a pull request for
+you to merge. That is the same as a session you start by hand.
 
 The dreamcatcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
 with `gh` signed in.
@@ -129,10 +129,11 @@ session, so a session waiting for an answer is one keystroke away.
 
 How it picks work:
 
-- **Skill by label.** The `dream:team` label dispatches a team session, the
-  `dream:solo` label a solo session for smaller tasks that need no team, and the
-  `dream:less` label a less session for very small ones. An issue carrying more
-  than one goes to the heaviest: team over solo over less.
+- **Skill by label.** The `dream:team` label dispatches a team session. The
+  `dream:solo` label dispatches a solo session, for smaller tasks that need no
+  team. The `dream:less` label dispatches a less session, for very small ones.
+  An issue carrying more than one goes to the heaviest: team over solo over
+  less.
 - **One session at a time.** A session holds the slot from dispatch until its
   pull request is merged or closed, so your merge paces the next dispatch. Size
   a session by grouping issues under an umbrella issue.

@@ -4,9 +4,9 @@ description:
   Only use when the user explicitly runs /dream:catcher, never on a general
   request to watch, monitor, or triage issues. It launches unattended sessions.
   It watches a repository for labelled issues and dispatches a session for each,
-  one at a time — the dream team, the solo skill, or the lighter less skill,
-  chosen by the issue's label. Each session runs unattended and carries its
-  issue to a pull request for the user to merge.
+  one at a time. The issue's label picks which skill runs, the dream team, the
+  solo skill, or the lighter less skill. Each session runs unattended and
+  carries its issue to a pull request for the user to merge.
 argument-hint:
   "[--team-label <label>] [--solo-label <label>] [--less-label <label>]
   [--solo-model <model>] [--solo-effort <effort>] [--less-model <model>]
@@ -45,9 +45,7 @@ resolved before launching, as a plain statement, so a misread surfaces at once.
   `dream:solo`, likewise dedicated.
 - **Less label.** The label that dispatches a `/dream:less` session, the
   lightest skill, for very small changes. Defaults to `dream:less`, likewise
-  dedicated. An issue needs one of the three labels and the right assignee to be
-  picked up. One carrying more than one goes to the heaviest: team over solo
-  over less.
+  dedicated.
 - **Solo model.** The model a `/dream:solo` session runs under. Defaults to
   `opus[1m]`. A solo session's single agent takes this, where the team's agents
   carry their own model, so this governs solo dispatches alone.
@@ -120,11 +118,12 @@ Then tell the user:
 Answer questions about the coordinator's behaviour from here.
 
 - **Skill by label.** The team label dispatches a `/dream:team` session, the
-  solo label a `/dream:solo` session, the less label a `/dream:less` session.
+  solo label a `/dream:solo` session, the less label a `/dream:less` session. An
+  issue needs one of the three labels and the right assignee to be picked up.
+  One carrying more than one goes to the heaviest: team over solo over less.
   Neither `/dream:solo` nor `/dream:less` needs the agent teams feature, so
-  those dispatches launch without one. An issue carrying more than one label
-  goes to the heaviest: team over solo over less. The one-at-a-time slot,
-  worktree setup, and unattended permissions are the same for all three.
+  those dispatches launch without one. The one-at-a-time slot, worktree setup,
+  and unattended permissions are the same for all three.
 - **One session at a time.** A session holds the slot from dispatch until its
   pull request is merged or closed, so your merge paces the next dispatch. This
   is a granularity choice, letting you size a session by composing issues into

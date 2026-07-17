@@ -24,14 +24,12 @@ deleting a branch, rewriting history, or a destructive change outside this repo.
 
 This skill is for changes small enough to carry without heavy process. Hold
 coherence anyway: fix the cause, not the symptom, and leave the codebase whole.
-Keep the change small and self-contained. Don't reach for a wider refactor or a
-new abstraction, which a very small change rarely earns.
 
-Judge the size honestly. If making the change correct means it has to grow —
-spreading across many files, needing a new abstraction, or reworking a mechanism
-the task didn't name — then it has outgrown `/dream:less`. Finish it coherently
-all the same, and say in the PR that it outgrew a small change, so the next such
-task goes to `/dream:solo` or the team.
+Judge the size honestly. If making the change correct means it has to grow, it
+has outgrown `/dream:less`. That growth looks like spreading across many files,
+needing a new abstraction, or reworking a mechanism the task didn't name. Finish
+it coherently all the same, and say in the PR that it outgrew a small change, so
+the next such task goes to `/dream:solo` or the team.
 
 ## Don't over-build
 
@@ -70,9 +68,9 @@ the repo purpose in one sentence.
 
 Find the project's test command. Look in the README, `AGENTS.md`, `CLAUDE.md`, a
 Makefile, or `pyproject.toml`/`package.json` scripts. Run it yourself before
-every commit, because a commit hook rarely runs the test suite. Run any codegen
-a commit hook doesn't run after an edit that needs it, so the generated files
-match the source before you commit.
+every commit, because a commit hook rarely runs the test suite. Find any codegen
+a commit hook doesn't run. Run it after an edit that needs it, so the generated
+files match the source before you commit.
 
 ## Check the working tree
 
@@ -101,7 +99,7 @@ gh api repos/{owner}/{repo}/issues/<N>/sub_issues
 
 Then read the relevant code, callers, tests, and docs for the named surfaces. As
 you read, check the input against the current code, since it may have changed
-since the issue was filed: a symbol it names may be renamed, a file may have
+since the issue was filed. A symbol it names may be renamed, a file may have
 moved, or part of the ask may already be done. Name each discrepancy in one
 sentence. If nothing has drifted, say so in one sentence.
 
@@ -169,7 +167,7 @@ template) and follow them. Otherwise:
 - Follow with one sentence on what the PR does and why.
 
 Run no copy-edit pass over the description. You already wrote to the style
-guide. Replace the `WIP` placeholder with it.
+guide. Replace the `WIP` placeholder with the description.
 
 ## Mark the PR ready for review
 
