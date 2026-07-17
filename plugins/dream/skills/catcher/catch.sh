@@ -3,8 +3,9 @@
 # Dreamcatcher: dispatch labelled issues to dream sessions, one at a time.
 #
 # The issue's label selects the skill: the team label dispatches a /dream:team
-# session, the solo label a /dream:solo session. An issue carrying both goes to
-# the team. Everything below the choice of skill is shared.
+# session, the solo label a /dream:solo session, the less label a /dream:less
+# session. An issue carrying more than one goes to the heaviest: team over solo
+# over less. Everything below the choice of skill is shared.
 #
 # Each tick is stateless. It reads live truth from git, tmux, and `gh`, then
 # dispatches at most one session. Nothing is stored between ticks: the worktrees
@@ -46,14 +47,18 @@ usage() {
 Dreamcatcher: dispatch labelled issues to dream sessions, one at a time.
 
 Usage:
-  catch.sh [--team-label <label>] [--solo-label <label>]
+  catch.sh [--team-label <label>] [--solo-label <label>] [--less-label <label>]
            [--solo-model <model>] [--solo-effort <effort>]
+           [--less-model <model>] [--less-effort <effort>]
            [--assignee <who>] [--interval <seconds>] [--once]
 
   --team-label  Issue label that dispatches a /dream:team session. Default: dream:team.
   --solo-label  Issue label that dispatches a /dream:solo session. Default: dream:solo.
+  --less-label  Issue label that dispatches a /dream:less session. Default: dream:less.
   --solo-model  Model a /dream:solo session runs under. Default: opus[1m].
   --solo-effort Reasoning effort a /dream:solo session runs under. Default: high.
+  --less-model  Model a /dream:less session runs under. Default: sonnet.
+  --less-effort Reasoning effort a /dream:less session runs under. Default: medium.
   --assignee    Whose issues to pick up. Default: @me.
   --interval    Seconds between ticks in loop mode. Default: 300.
   --linger      Minutes a finished session lingers before it is cleaned up. Default: 30.
@@ -68,8 +73,11 @@ die() { printf 'dreamcatcher: %s\n' "$*" >&2; exit 2; }
 
 team_label="dream:team"
 solo_label="dream:solo"
+less_label="dream:less"
 solo_model="opus[1m]"
 solo_effort="high"
+less_model="sonnet"
+less_effort="medium"
 assignee="@me"
 interval=300
 linger=30
@@ -79,8 +87,11 @@ while [ $# -gt 0 ]; do
   case "$1" in
     --team-label) [ $# -ge 2 ] || die "--team-label requires a value"; team_label=$2; shift 2;;
     --solo-label) [ $# -ge 2 ] || die "--solo-label requires a value"; solo_label=$2; shift 2;;
+    --less-label) [ $# -ge 2 ] || die "--less-label requires a value"; less_label=$2; shift 2;;
     --solo-model) [ $# -ge 2 ] || die "--solo-model requires a value"; solo_model=$2; shift 2;;
     --solo-effort) [ $# -ge 2 ] || die "--solo-effort requires a value"; solo_effort=$2; shift 2;;
+    --less-model) [ $# -ge 2 ] || die "--less-model requires a value"; less_model=$2; shift 2;;
+    --less-effort) [ $# -ge 2 ] || die "--less-effort requires a value"; less_effort=$2; shift 2;;
     --assignee) [ $# -ge 2 ] || die "--assignee requires a value"; assignee=$2; shift 2;;
     --interval) [ $# -ge 2 ] || die "--interval requires a value"; interval=$2; shift 2;;
     --linger)   [ $# -ge 2 ] || die "--linger requires a value"; linger=$2; shift 2;;
@@ -236,19 +247,19 @@ clean_up_finished() {
 # The branch name carries the issue number and the auto token. A dispatched
 # session reads the issue number at boot to take the issue as its input. A team
 # session also reads the auto token to engage autopilot and auto-collect; a solo
-# session runs autonomously already. The timestamp between them makes the name
-# unique per attempt, so a retry never collides with an earlier attempt's branch
-# or pull request.
+# or less session runs autonomously already. The timestamp between them makes the
+# name unique per attempt, so a retry never collides with an earlier attempt's
+# branch or pull request.
 #
 # `git worktree add` creates the worktree, not `claude -w`. That lands it at a
 # predictable sibling path, with a branch name the cap, cleanup, and dedup checks
 # rely on. tmux hosts the session. The launch differs by skill: a team session
-# runs under the experimental agent teams feature in teammate tmux mode, a
-# solo session under neither. A solo session also sets its model and effort,
-# the --solo-model and --solo-effort values, because its single agent would
-# otherwise take the launcher's defaults, where the team's agents carry their
-# own. Both run in auto mode, and the narrow allow rules passed at launch handle
-# unattended writes.
+# runs under the experimental agent teams feature in teammate tmux mode, a solo
+# or less session under neither. A solo or less session also sets its model and
+# effort, the --solo-model/--solo-effort or --less-model/--less-effort values,
+# because its single agent would otherwise take the launcher's defaults, where
+# the team's agents carry their own. All run in auto mode, and the narrow allow
+# rules passed at launch handle unattended writes.
 dispatch() {
   local n=$1 skill=$2 ts branch wt session err writes run
   ts=$(date -u +%Y%m%d-%H%M%S)
@@ -269,6 +280,7 @@ dispatch() {
   case "$skill" in
     team) run="CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec $run --teammate-mode tmux '/dream:team'";;
     solo) run="exec $run --model '$solo_model' --effort '$solo_effort' '/dream:solo'";;
+    less) run="exec $run --model '$less_model' --effort '$less_effort' '/dream:less'";;
     *)    log "unknown skill '$skill' for GH${n}, discarding worktree"; discard_worktree "$wt" "$branch"; return 1;;
   esac
   if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" "$run"; then
@@ -294,17 +306,19 @@ tick() {
   if session_in_flight; then
     return 0
   fi
-  local team_list solo_list candidates n skill
+  local team_list solo_list less_list candidates n skill
   team_list=$(list_labelled "$team_label" team) \
     || { log "cannot list issues; will retry next tick"; return 1; }
   solo_list=$(list_labelled "$solo_label" solo) \
     || { log "cannot list issues; will retry next tick"; return 1; }
-  # Oldest eligible issue first across both labels. A stable sort on the
-  # timestamp alone keeps the team line ahead of the solo line for an issue that
-  # carries both labels, since the team list is fed first, so such an issue
-  # dispatches to the team. The timestamp has served its purpose once sorted, so
-  # drop it and keep the issue number and skill.
-  candidates=$(printf '%s\n%s\n' "$team_list" "$solo_list" | sort -s -t$'\t' -k1,1 | cut -f2-)
+  less_list=$(list_labelled "$less_label" less) \
+    || { log "cannot list issues; will retry next tick"; return 1; }
+  # Oldest eligible issue first across all three labels. A stable sort on the
+  # timestamp alone keeps the lists in fed order for an issue that carries more
+  # than one label: team first, then solo, then less. Such an issue dispatches to
+  # the heaviest of its labels, since that line is fed first. The timestamp has
+  # served its purpose once sorted, so drop it and keep the issue number and skill.
+  candidates=$(printf '%s\n%s\n%s\n' "$team_list" "$solo_list" "$less_list" | sort -s -t$'\t' -k1,1 | cut -f2-)
   while IFS=$'\t' read -r n skill; do
     [ -n "$n" ] || continue
     already_handled "$n" && continue   # in flight or already done
@@ -316,7 +330,7 @@ tick() {
 
 # --- run -------------------------------------------------------------------
 
-log "dreamcatcher watching $repo for labels '$team_label' (team) and '$solo_label' (solo), assignee '$assignee'"
+log "dreamcatcher watching $repo for labels '$team_label' (team), '$solo_label' (solo), and '$less_label' (less), assignee '$assignee'"
 if [ "$once" -eq 1 ]; then
   tick
 else
