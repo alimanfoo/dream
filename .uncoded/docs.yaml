@@ -331,6 +331,28 @@ plugins/:
             First, read the writing style guide:
             Arguments:
             Each round:
+      less/:
+        SKILL.md:
+          Dream Less:
+            Autonomy:
+            Coherence:
+            Don't over-build:
+            Communication style:
+            Mark your work:
+            Orient to the repo:
+            Find the tests and checks:
+            Check the working tree:
+            Obtain session input:
+            Read the cited material and the code:
+            Name the Session Type:
+            Open the session PR:
+            Plan:
+            Implement:
+            Review:
+            Write the PR description:
+            Mark the PR ready for review:
+            Watch for user review:
+            Merge:
       requirements-analysis/:
         SKILL.md:
           Requirements analysis:
