@@ -86,15 +86,12 @@ scales with session type:
   (defensive check, structural fix, removal), name the alternatives and why this
   one. For straightforward bugs this is one or two sentences.
 
-Reach the coherent resolution, not just the site the input named. The design is
-where the coherent scope is settled, so it must reach the root cause and every
-instance the resolution needs. An enhancement meets the existing code cleanly
-across the whole integration surface. Maintenance resolves every instance of the
-inconsistency. A bug fix repairs the mechanism, not the symptom. Where the code
-analysis traced a recurring surface to one fact written in two places,
-single-source it rather than patching the copies. Where the recurrence is one
-rule that many sites must each follow, enforce the rule rather than patching the
-next site.
+Reach the coherent resolution, not just the site the input named. The design
+settles it, so it must reach the root cause and every instance the resolution
+needs. Where the code analysis traced a recurring surface to one fact written in
+two places, single-source it rather than patching the copies, which only lets
+the drift return. The `dream:review-design-coherent-reach` review below checks
+the design reaches far enough for its Session Type.
 
 The input may steer the design: a library, framework, or approach to use. Source
 that steer and weigh it with the sketches, on its merits. It is the user's steer

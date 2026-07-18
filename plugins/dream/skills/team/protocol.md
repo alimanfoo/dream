@@ -168,11 +168,11 @@ With the Code Analysis accepted, Grace produces the Design Options: the Proposed
 Design (her recommendation) and any credible Alternative Designs. She reaches
 them through a spread of analogies, an existing-tools survey, and design
 sketches, then an adversarial review, so the recommendation is weighed against
-alternatives before it is chosen. The Design settles the coherent scope: it
-reaches the root cause and every instance the coherent resolution needs, not
-just the surface the input named. Each Alternative still delivers the full
-requirements, with its trade-off named. There may be several, one, or none. An
-empty set is a valid outcome when the search was genuine.
+alternatives before it is chosen. The Design reaches the coherent resolution:
+the root cause and every instance it needs, not just the surface the input
+named. Each Alternative still delivers the full requirements, with its trade-off
+named. There may be several, one, or none. An empty set is a valid outcome when
+the search was genuine.
 
 Grace then shares the Design Options with the user for acceptance. At the end of
 the phase Grace hands the accepted Design to Junio and Ralph for information. On
