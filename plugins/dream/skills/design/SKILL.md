@@ -123,9 +123,9 @@ express a contract". But the signature doesn't enforce it, so the docstring has
 to. The design follows the code, not the input's literal wording.
 
 Carry a contract, invariant, precondition, or convention in the shape of the
-code, not in a docstring, comment, or section-header. A narrower type, a split
-function, or a separate module holds it more reliably than prose a reader can
-skip. Reach for the prose only when no shape carries the meaning.
+code, not in a docstring, comment, or section-header. A type or a module
+boundary holds it more reliably than prose a reader can skip. Reach for prose
+only when no shape carries the meaning.
 
 **The Alternative Designs.** Keep each strong sketch you did not pick as an
 Alternative Design. It qualifies when it still delivers the full session scope
