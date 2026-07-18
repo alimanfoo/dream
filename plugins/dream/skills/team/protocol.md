@@ -212,30 +212,17 @@ The phase ends at user acceptance of the Session Scope.
 
 ## Phase 4: Design
 
-The phase opens with two divergence steps before any design is chosen. First,
-Grace and Ralph each write a spread of analogies, what the work resembles, near
-and far. Junio instead surveys existing tools, internal and external, that could
-meet the need in part or in full. Analogies seed the design with transferable
-patterns. The survey seeds it with reusable building blocks. Each agent keeps
-its own as turn output, not shared. Second, design sketches: each agent writes a
-spread of rough design approaches, drawing on its analogies or survey where they
-help. Each then sends its sketches to Grace. Generating the spread
-independently, before any single design exists, keeps the team from anchoring on
-one approach. Ada stays out of both, holding her fresh read for Phase 7.
+With the Session Scope accepted, Grace produces the Design Options: the Proposed
+Design (her recommendation) and any credible Alternative Designs. She reaches
+them through a spread of analogies, an existing-tools survey, and design
+sketches, then an adversarial review, so the recommendation is chosen against
+alternatives rather than settled cold. Each Alternative still delivers the full
+Session Scope, with its trade-off named. There may be several, one, or none. An
+empty set is a valid outcome when the search was genuine.
 
-Grace then consolidates the pooled sketches into the Design Options: the
-Proposed Design (her recommendation) and any credible Alternative Designs drawn
-from the spread. Each still delivers the full Session Scope, with its trade-off
-named. There may be several, one, or none. An empty set is a valid outcome when
-the search was genuine.
-
-Grace shares the Design Options with Junio and Ralph for one round of review,
-advisory not gating. Junio reads from the maintainer's view. Ralph reads from
-the engineering-pattern view. Grace decides each finding on its merits. Grace
-then shares the Design Options (the Proposed Design and any Alternative Designs)
-with the user, with a brief note on what changed after the reviews. At the end
-of the phase Grace hands the accepted Design to Junio and Ralph for information.
-On acceptance Grace also posts the accepted Design to the PR as a comment (see
+Grace then shares the Design Options with the user for acceptance. At the end of
+the phase Grace hands the accepted Design to Junio and Ralph for information. On
+acceptance Grace also posts the accepted Design to the PR as a comment (see
 [The session PR](#the-session-pr)).
 
 The phase ends at user acceptance of the Design.

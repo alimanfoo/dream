@@ -4,179 +4,28 @@ Write every turn output, message and artefact in this phase to the
 [writing style guide](../../../writing-style.md).
 
 The goal of this phase is the accepted Design: what the team proposes to build.
+Follow the steps below in sequence.
 
-## Step 4.1: Generate analogies and survey existing tools
+## Step 4.1: Produce the Design Options
 
-Generate a spread of analogies for the work before sketching, so the sketches
-draw on ideas and patterns carried in from elsewhere rather than invented cold.
-An analogy is something this work resembles (a feature, a bug, a structure, a
-technique), paired with what happened there. Near analogies come from the same
-problem domain. Far ones come from a different domain entirely. Several
-analogies, near and far, give the sketch step more to draw on. Don't filter for
-relevance here. Quantity and spread are the goal.
+Run the `dream:design` skill, focused on the accepted Requirements Analysis,
+Code Analysis, and Session Scope.
 
-Write your own analogies as a discrete act, as turn output in a numbered list,
-near and far. Then send a message to Junio and Ralph: two `SendMessage` calls in
-the same turn. Ask Ralph to write a numbered list of near and far analogies as
-turn output. Ask Junio to survey existing tools instead, internal and external,
-tagged by how fully each addresses the need. No reply is needed from either.
-Each agent's analogies or survey feeds its own sketches, not a shared artifact
-you collect. Sign off `From Grace.` and skip the RSVP. Ada stays out: she holds
-her fresh read for Phase 7.
+The skill returns the Design Options: the Proposed Design (its recommendation)
+and any Alternative Designs, each with its trade-off named. It may also flag a
+finding that points beyond the Design, at a scope change or an earlier artifact
+that no longer holds.
 
-Don't wait for the teammates. They will not reply. Move straight to
-[Step 4.2](#step-42-generate-design-sketches).
+Hold the returned Design Options as your working artifact for the steps below.
+If the skill flagged a finding that breaks an accepted artifact, assess it as a
+[Challenge](../../../agents/Grace.md#challenge) before continuing.
 
-## Step 4.2: Generate design sketches
+## Step 4.2: Share the Design Options with the user
 
-Sketch a spread of design approaches, before any single design is chosen,
-drawing on your analogies where they help. A sketch is brief: a few lines naming
-one way to approach the work and the shape it would take. Not a fully worked
-design. Several rough sketches across different approaches are worth more here
-than one polished one.
-
-Write your own sketches as turn output, a numbered list. Then send a message to
-Junio and Ralph: two `SendMessage` calls in the same turn. Pose the problem and
-the outcome to reach. Do not name candidate approaches or the solution axis the
-originating issue named. Naming an axis collapses the spread onto it. Ask each
-to write a numbered list of design sketches and to send the list back. Sign off
-`From Grace. RSVP via SendMessage.`
-
-Wait for both replies. Hold the three sketch sets (yours, Junio's, Ralph's) as
-context for the consolidation in [Step 4.3](#step-43-draft-the-design-options).
-
-## Step 4.3: Draft the Design Options
-
-Consolidate the pooled sketches into the Design Options in one act. The Design
-Options are the Proposed Design (your recommendation) and any credible
-Alternative Designs. This is the artifact reviewers will see next. Do not yet
-send it to the user. Choose the recommendation and the alternatives together,
-from the pool.
-
-**The Proposed Design.** Name what the code will look like when the work is
-done, the approach proposed, and the key design calls that follow from the Code
-Analysis. Depth scales with Session Type:
-
-- _Enhancement:_ the **happy-path contract** (what valid inputs produce what
-  outputs, where it slots in, how callers interact with it) and the **input
-  contract** (what input space is supported, and what happens on inputs outside
-  it: error, fallback, or rejection). For example, for integer parsing,
-  non-numeric input might raise, return None, or return 0. Also the key
-  integration calls.
-- _Maintenance:_ the target shape, the surface when the work is done: which
-  name, which structure, which abstraction wins, and the migration path.
-- _Bug fix:_ the fix approach. When more than one fix shape is plausible
-  (defensive check, structural fix, removal), name the alternatives and why this
-  one. For straightforward bugs this is one or two sentences.
-
-The session input may steer the design: a library, framework, or approach to
-use. Source that steer and weigh it with the sketches, on its merits. It is the
-user's steer on the how, not a fixed requirement. Take it in the Proposed Design
-unless you have reason to set it aside. Setting it aside is a Challenge, so the
-user makes that call (see [Challenge](../../../agents/Grace.md#challenge)).
-Where the code-shape-first check replaces a prose mechanism the input named,
-that is a coherence call, not setting the steer aside.
-
-Check the Proposed Design against common overcomplication defaults:
-
-- consumers the accepted Requirements Analysis doesn't name
-- surfaces held "for the future" or "for downstream" with no current consumer
-- failure modes from over-flexible interfaces
-- abstraction held "for symmetry" with only one real branch
-
-Remove any code the change leaves purposeless. When a function the Design
-modifies has no remaining purpose after the change, the same Design removes it.
-
-Reshape the Proposed Design around the real structural fix, even when the user
-asked for a docstring or comment change. Example: "expand the docstring to
-express a contract". But the signature doesn't enforce it, so the docstring has
-to. The Plan follows the Design, not the session input.
-
-Apply the
-**[code-shape-first check](../../../agents/Grace.md#code-shape-first-check)** to
-any docstring, comment, or section-header carrying a contract, invariant,
-precondition, or convention. Run it on your own output as well as the user's.
-You might default to a section-header comment to mark a public-helper grouping,
-or a docstring sentence to mark cross-module use. A module split, rename, or
-relocation would carry the meaning more reliably.
-
-**The Alternative Designs.** Keep each strong sketch you did not pick (yours or
-a teammate's) as an Alternative Design. It qualifies when it still delivers the
-full Session Scope but buys its difference at a cost. Name the trade-off: a new
-dependency, more coupling, less flexibility. Reaching for an existing library in
-place of custom code is a common one. Surface it when a sketch points at one. A
-sketch that delivers less than the Session Scope is not an Alternative. It is a
-scope change. Raise it as a Challenge if it has merit.
-
-Report the consolidation honestly, including an empty result, and carry it into
-the Design Options you share with Junio and Ralph in
-[Step 4.4](#step-44-share-the-design-options-with-junio-and-ralph-for-review):
-
-- which sketches folded into the Proposed Design
-- which became Alternatives, with their trade-offs
-- which you set aside and why
-
-## Step 4.4: Share the Design Options with Junio and Ralph for review
-
-Write the Design Options to a temporary file outside this repo, via Bash. Send
-both Junio and Ralph the file's absolute path: two `SendMessage` calls in the
-same turn. Sign off `From Grace. RSVP via SendMessage.`
-
-Send the same path to each reviewer. Their role files steer the lens. Junio
-reads from the maintainer's view (defend behaviour, code-shape, surviving-fit)
-and proposes candidate lateral moves. Ralph reads from the engineering-pattern
-view: naming, scope and abstraction, plain code. Each replies with a numbered
-list of findings (or "no substantive findings"), optionally with a Challenge.
-Junio and Ralph are advisory at Design, not gating. Run one round only. Don't
-loop back after revising.
-
-## Step 4.5: Apply the reviews
-
-Decide each finding, from either reviewer, on its merits, and record a one-line
-reason for the call. You own the Design. A teammate raising a finding is not
-itself a reason to fold it in. Each finding takes one of these paths:
-
-- **Fold in**: accept into the revised Proposed Design.
-- **Reject**: you disagree with the finding. If the rejection is notable, carry
-  the reason into the Design message in
-  [Step 4.6](#step-46-share-the-revised-design-options-with-the-user).
-- **Hold as Ancillary Finding**: the finding is real but out of the Session
-  Scope. Hold for post-merge triage.
-- **Raise a Challenge**: the finding shows an accepted artifact no longer holds.
-  Either the Session Scope is the wrong shape, or an earlier artifact got
-  something wrong. Folding in a finding that moves the Proposed Design against
-  what the user steered is also a Challenge. Take it to the user, who accepts
-  (revise) or rejects (with direction).
-
-Junio's review may also propose candidate lateral moves, each tagged. A
-candidate tagged strictly-better folds into the Proposed Design. It improves the
-recommendation at no real cost. A candidate tagged with a trade-off joins the
-Alternative Designs from [Step 4.3](#step-43-draft-the-design-options), with its
-trade-off named. A candidate that would deliver less than the Session Scope is
-not a lateral move. Raise it as a Challenge if it has merits worth considering.
-
-Apply the
-**[code-shape-first check](../../../agents/Grace.md#code-shape-first-check)**
-before deciding any finding that proposes a docstring, comment, or
-section-header to express a contract, invariant, precondition, or convention. If
-Ralph's review already proposes a structural alternative, the check largely
-reduces to accepting it.
-
-When the reply raises a Challenge, assess it before acting: does an accepted
-artifact really no longer hold?
-
-## Step 4.6: Share the revised Design Options with the user
-
-Send the revised Proposed Design and any Alternative Designs. Lead with the
+Send the Proposed Design and any Alternative Designs to the user. Lead with the
 Proposed Design, your recommendation. Then give each Alternative with the
-trade-off it carries. Add a brief note on **what changed after the reviews**:
-
-- what folded into the Proposed Design
-- notable rejections, with the reason
-- what the sketches yielded as Alternatives, including an empty result
-
-The Proposed Design is the default if the user just accepts. The user picks an
-Alternative to override.
+trade-off it carries. The Proposed Design is the default if the user just
+accepts. The user picks an Alternative to override.
 
 End the message with one of these two, depending on autopilot:
 
@@ -186,36 +35,34 @@ End the message with one of these two, depending on autopilot:
   continue in the same turn. _"Taking the Design as proposed (autopilot).
   Proceeding to Phase 5: Plan."_
 
-## Step 4.7: Seek user acceptance of the Design
+## Step 4.3: Seek user acceptance of the Design
 
 Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
 If accepted, continue to
-[Step 4.8](#step-48-hand-the-accepted-design-to-junio-and-ralph). If the user
+[Step 4.4](#step-44-hand-the-accepted-design-to-junio-and-ralph). If the user
 pushes back, revise and return to
-[Step 4.6](#step-46-share-the-revised-design-options-with-the-user). Repeat
-until accepted.
+[Step 4.2](#step-42-share-the-design-options-with-the-user). Repeat until
+accepted.
 
 This is one of the protocol's user acceptance gates (see
 [Acceptance gates](../protocol.md#acceptance-gates)).
 
-## Step 4.8: Hand the accepted Design to Junio and Ralph
+## Step 4.4: Hand the accepted Design to Junio and Ralph
 
 Write the following to a temporary file outside this repo, via Bash: the
 accepted Design (the option the user picked, plus any changes from the
 acceptance discussion) and every other design from the spread, for the
 "Alternatives considered" heading in
-[Step 4.9](#step-49-post-the-accepted-design-to-the-pr). Send Junio and Ralph
+[Step 4.5](#step-45-post-the-accepted-design-to-the-pr). Send Junio and Ralph
 the file's absolute path: two `SendMessage` calls in the same turn, for
 information only. Sign off `From Grace.` and skip the RSVP. No reply is needed.
-They haven't seen the outcome since their Design review in
-[Step 4.4](#step-44-share-the-design-options-with-junio-and-ralph-for-review).
 The accepted Design feeds the Plan review that follows.
 
-## Step 4.9: Post the accepted Design to the PR
+## Step 4.5: Post the accepted Design to the PR
 
 Post the accepted Design to the PR from the file written in
-[Step 4.8](#step-48-hand-the-accepted-design-to-junio-and-ralph) (see
+[Step 4.4](#step-44-hand-the-accepted-design-to-junio-and-ralph) (see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
 
 Make the body the design the user accepted. Put every other design from the

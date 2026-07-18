@@ -139,8 +139,7 @@ calls in the same turn, for information only. Sign off `From Grace.` and skip
 the RSVP. No reply is needed. They haven't seen the outcome since their Draft
 Scope Options review in
 [Step 3.2](#step-32-share-the-draft-scope-options-with-junio-and-ralph-for-review).
-The accepted Session Scope feeds the analogies and sketches you generate in
-Phase 4 and the Design review that follows.
+The accepted Session Scope feeds the Design you produce in Phase 4.
 
 ## Step 3.7: Post the accepted Session Scope to the PR
 

@@ -8,8 +8,8 @@ agent on a smaller task. `/dream:less` runs a cut-back single agent on a very
 small one. Neither needs the agent teams feature. `/dream:catcher` runs any of
 them unattended across a repository's labelled issues. Utility skills you can
 run on their own ship alongside: `/dream:writing-style`, `/dream:copy-edit`,
-`/dream:code-analysis`, `/dream:requirements-analysis`, `/dream:simplify`, and
-`/dream:coherence-review`.
+`/dream:code-analysis`, `/dream:requirements-analysis`, `/dream:design`,
+`/dream:simplify`, and `/dream:coherence-review`.
 
 ## Prerequisites
 

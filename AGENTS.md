@@ -123,10 +123,11 @@ are the templates.
 The README lists the utility skills a user can run on their own. That list is
 their one home, so add a new skill of this kind there. `coherence-review` is one
 such skill. The requirements, scope, design, and plan review lenses are not
-standalone skills. The `requirements-analysis` skill launches the requirements
-lenses inline as review subagents, and Junio launches the scope, design, and
-plan lenses. So they run only as a review step within a session. Don't wrap them
-in a standalone skill. No standalone caller would justify wrapping them in one.
+standalone skills. The `requirements-analysis` and `design` skills launch the
+requirements and design lenses inline as review subagents, and Junio launches
+the scope and plan lenses. So they run only as a review step within a session.
+Don't wrap them in a standalone skill. No standalone caller would justify
+wrapping them in one.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
@@ -262,14 +263,14 @@ agent that dutifully attempts whatever sits in front of it picks up a failing
 check as a task and fixes it unasked.
 
 **Some traits still resist structure: the open frontier.** Reactivity looked the
-hardest, but forcing the act answers much of it. The analogy and sketch steps
-make each agent volunteer a spread of options before any design is chosen,
-breadth it would not offer if merely asked. What resists is the silent failure
-you cannot force at a step or gate on afterwards: sycophancy's unspoken
-deference, the suggestion never raised. The user catching these at a gate today
-is a coherence touch the dream means to drive toward zero (see _The dream_). The
-next work is finding the structure that fires on it, the way the failing check
-did for over-eagerness.
+hardest, but forcing the act answers much of it. The design skill's analogy and
+sketch steps make the agent running it volunteer a spread of options before any
+design is chosen, breadth it would not offer if merely asked. What resists is
+the silent failure you cannot force at a step or gate on afterwards:
+sycophancy's unspoken deference, the suggestion never raised. The user catching
+these at a gate today is a coherence touch the dream means to drive toward zero
+(see _The dream_). The next work is finding the structure that fires on it, the
+way the failing check did for over-eagerness.
 
 ## Writing agent prompts
 
