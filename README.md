@@ -13,8 +13,8 @@ run on their own ship alongside: `/dream:writing-style`, `/dream:copy-edit`,
 
 ## Prerequisites
 
-`/dream:team`, and `/dream:catcher` when it dispatches a team session, require
-Claude Code's
+`/dream:team`, and `/dream:catcher` when it dispatches a `/dream:team` session,
+require Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
 `/dream:solo`, `/dream:less`, and the utility skills do not.
 
@@ -37,7 +37,7 @@ Start Claude Code:
 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude
 ```
 
-Then invoke the `dream:team` skill:
+Then invoke the `/dream:team` skill:
 
 ```text
 /dream:team
@@ -98,10 +98,11 @@ Reach for it when a change is small and self-contained.
 ## Unattended runs with /dream:catcher
 
 The dreamcatcher watches a repository for labelled issues and dispatches a
-session for each, one at a time. It runs the dream:team, the dream:solo skill,
-or the dream:less skill, chosen by the issue's label. A backlog clears itself
-while you are away. Each session runs unattended and carries its issue to a pull
-request for you to merge. That is the same as a session you start by hand.
+session for each, one at a time. It runs the `/dream:team`, the `/dream:solo`
+skill, or the `/dream:less` skill, chosen by the issue's label. A backlog clears
+itself while you are away. Each session runs unattended and carries its issue to
+a pull request for you to merge. That is the same as a session you start by
+hand.
 
 The dreamcatcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
 with `gh` signed in.
@@ -114,7 +115,7 @@ worktree, then run:
 ```
 
 It watches the repository you started Claude Code in. By default it picks up
-open issues labelled `dream:team`, `dream:solo`, or `dream:less` and assigned to
+open issues labelled "dream:team", "dream:solo", or "dream:less" and assigned to
 you, dispatching the matching skill. Override a label with a flag, for example
 `/dream:catcher --team-label auto`.
 
@@ -126,11 +127,11 @@ session, so a session waiting for an answer is one keystroke away.
 
 How it picks work:
 
-- **Skill by label.** The `dream:team` label dispatches a team session. The
-  `dream:solo` label dispatches a solo session, for smaller tasks that need no
-  team. The `dream:less` label dispatches a less session, for very small ones.
-  An issue carrying more than one goes to the heaviest: team over solo over
-  less.
+- **Skill by label.** The "dream:team" label dispatches a `/dream:team` session.
+  The "dream:solo" label dispatches a `/dream:solo` session, for smaller tasks
+  that need no team. The "dream:less" label dispatches a `/dream:less` session,
+  for very small ones. An issue carrying more than one goes to the heaviest:
+  `/dream:team` over `/dream:solo` over `/dream:less`.
 - **One session at a time.** A session holds the slot from dispatch until its
   pull request is merged or closed, so your merge paces the next dispatch. Size
   a session by grouping issues under an umbrella issue.

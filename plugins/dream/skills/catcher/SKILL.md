@@ -4,8 +4,8 @@ description:
   Only use when the user explicitly runs /dream:catcher, never on a general
   request to watch, monitor, or triage issues. It launches unattended sessions.
   It watches a repository for labelled issues and dispatches a session for each,
-  one at a time. The issue's label picks which skill runs, the dream:team, the
-  dream:solo skill, or the lighter dream:less skill. Each session runs
+  one at a time. The issue's label picks which skill runs, the /dream:team, the
+  /dream:solo skill, or the lighter /dream:less skill. Each session runs
   unattended and carries its issue to a pull request for the user to merge.
 argument-hint:
   "[--team-label <label>] [--solo-label <label>] [--less-label <label>]
@@ -15,11 +15,11 @@ argument-hint:
 
 # Dreamcatcher
 
-Watch a repository for issues marked for the dream:team, the dream:solo skill,
-or the dream:less skill, and dispatch a fresh session for each, chosen by the
-issue's label. The sessions already do the work. This is the coordinator around
-them. It notices a labelled issue and dispatches a session for it, one at a
-time. The work continues while the user is away.
+Watch a repository for issues marked for the `/dream:team`, the `/dream:solo`
+skill, or the `/dream:less` skill, and dispatch a fresh session for each, chosen
+by the issue's label. The sessions already do the work. This is the coordinator
+around them. It notices a labelled issue and dispatches a session for it, one at
+a time. The work continues while the user is away.
 
 The coordinator is a shell script, `catch.sh`, in this skill's directory. It
 runs a tick on a loop and reads live state each time, so nothing is stored
@@ -40,23 +40,26 @@ ask only to override a default. State the labels, assignee, and interval you
 resolved before launching, as a plain statement, so a misread surfaces at once.
 
 - **Team label.** The label that dispatches a `/dream:team` session. Defaults to
-  `dream:team`, a dedicated label kept apart from labels a human reads.
+  "dream:team", a dedicated label kept apart from labels a human reads.
 - **Solo label.** The label that dispatches a `/dream:solo` session. Defaults to
-  `dream:solo`, likewise dedicated.
+  "dream:solo", likewise dedicated.
 - **Less label.** The label that dispatches a `/dream:less` session, the
-  lightest skill, for very small changes. Defaults to `dream:less`, likewise
+  lightest skill, for very small changes. Defaults to "dream:less", likewise
   dedicated.
 - **Solo model.** The model a `/dream:solo` session runs under. Defaults to
-  `opus[1m]`. A solo session's single agent takes this, where the team's agents
-  carry their own model, so this governs solo dispatches alone.
+  `opus[1m]`. A `/dream:solo` session's single agent takes this, where the
+  team's agents carry their own model, so this governs `/dream:solo` dispatches
+  alone.
 - **Solo effort.** The reasoning effort a `/dream:solo` session runs under.
-  Defaults to `high`, and governs solo dispatches alone for the same reason.
+  Defaults to `high`, and governs `/dream:solo` dispatches alone for the same
+  reason.
 - **Less model.** The model a `/dream:less` session runs under. Defaults to
   `sonnet`, since a very small change needs neither Opus nor its large-context
-  variant. Governs less dispatches alone, for the same reason as the solo model.
+  variant. Governs `/dream:less` dispatches alone, for the same reason as the
+  `/dream:solo` model.
 - **Less effort.** The reasoning effort a `/dream:less` session runs under.
-  Defaults to `medium`, lighter than solo's to match the lighter work, and
-  governs less dispatches alone.
+  Defaults to `medium`, lighter than `/dream:solo`'s to match the lighter work,
+  and governs `/dream:less` dispatches alone.
 - **Assignee.** Whose issues to pick up. Defaults to `@me`, gh's alias for the
   authenticated user.
 - **Interval.** Seconds between ticks. Defaults to 300.
@@ -117,13 +120,14 @@ Then tell the user:
 
 Answer questions about the coordinator's behaviour from here.
 
-- **Skill by label.** The team label dispatches a `/dream:team` session, the
-  solo label a `/dream:solo` session, the less label a `/dream:less` session. An
-  issue needs one of the three labels and the right assignee to be picked up.
-  One carrying more than one goes to the heaviest: team over solo over less.
-  Neither `/dream:solo` nor `/dream:less` needs the agent teams feature, so
-  those dispatches launch without one. The one-at-a-time slot, worktree setup,
-  and unattended permissions are the same for all three.
+- **Skill by label.** The "dream:team" label dispatches a `/dream:team` session,
+  the "dream:solo" label a `/dream:solo` session, the "dream:less" label a
+  `/dream:less` session. An issue needs one of the three labels and the right
+  assignee to be picked up. One carrying more than one goes to the heaviest:
+  `/dream:team` over `/dream:solo` over `/dream:less`. Neither `/dream:solo` nor
+  `/dream:less` needs the agent teams feature, so those dispatches launch
+  without one. The one-at-a-time slot, worktree setup, and unattended
+  permissions are the same for all three.
 - **One session at a time.** A session holds the slot from dispatch until its
   pull request is merged or closed, so your merge paces the next dispatch. This
   is a granularity choice, letting you size a session by composing issues into
