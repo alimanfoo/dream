@@ -5,7 +5,7 @@ description:
   alternatives. Assumes the requirements, code analysis, and scope are in
   context. Runs a spread of analogies, an existing-tools survey, and design
   sketches, then reviews and refines the result.
-argument-hint: "<requirements and code analysis | focus | text>"
+argument-hint: "<requirements, code analysis, and scope | text>"
 ---
 
 # Design
@@ -166,9 +166,10 @@ findings you accept by editing the temporary file. A candidate lateral move that
 is strictly better folds into the Proposed Design. One that buys its difference
 at a cost joins the Alternative Designs, with its trade-off named.
 
-A finding may point beyond the Design, at a scope change or an earlier read that
-no longer holds. Don't swallow it. Flag it prominently in the result, for the
-user to decide.
+A finding may reach beyond the Design. It may point at a scope change or an
+earlier read that no longer holds, or it may be real but outside the current
+scope. Don't swallow either. Name it in the result, kept separate from the
+Design, so it is carried forward rather than lost.
 
 ## Copy-edit the draft
 
@@ -179,5 +180,5 @@ readability matters.
 ## The result
 
 Return the completed Design Options from the file: the Proposed Design, any
-Alternative Designs with their trade-offs, and anything you flagged for the user
-to decide.
+Alternative Designs with their trade-offs, and any finding that reached beyond
+the Design, kept separate so it is carried forward.
