@@ -63,7 +63,7 @@ and the shape it would take. Not a fully worked design.
 
 Write the sketches as turn output, a numbered list.
 
-## Draft the Design Options
+## Draft the design options
 
 Consolidate the sketches into the design options: the proposed design (your
 recommendation) and any credible alternative designs.
