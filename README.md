@@ -4,17 +4,19 @@ A Claude Code plugin for delivering great code and keeping the codebase
 coherent, with minimal human input.
 
 `/dream:team` runs a multi-agent team on a task. `/dream:solo` runs a single
-agent on a smaller task, with no agent teams feature needed. `/dream:catcher`
-runs the team unattended across a repository's labelled issues. Utility skills
-you can run on their own ship alongside: `/dream:writing-style`,
-`/dream:copy-edit`, `/dream:code-analysis`, `/dream:requirements-analysis`,
-`/dream:simplify`, and `/dream:coherence-review`.
+agent on a smaller task. `/dream:less` runs a cut-back single agent on a very
+small one. Neither needs the agent teams feature. `/dream:catcher` runs any of
+them unattended across a repository's labelled issues. Utility skills you can
+run on their own ship alongside: `/dream:writing-style`, `/dream:copy-edit`,
+`/dream:code-analysis`, `/dream:requirements-analysis`, `/dream:simplify`, and
+`/dream:coherence-review`.
 
 ## Prerequisites
 
-`/dream:team`, and `/dream:catcher` which runs it, require Claude Code's
+`/dream:team`, and `/dream:catcher` when it dispatches a `/dream:team` session,
+require Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
-`/dream:solo` and the utility skills do not.
+`/dream:solo`, `/dream:less`, and the utility skills do not.
 
 The plugin works best with the `gh` command line tool available. This lets the
 team interact with GitHub, for example opening a pull request and posting
@@ -35,7 +37,7 @@ Start Claude Code:
 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude
 ```
 
-Then invoke the `dream:team` skill:
+Then invoke the `/dream:team` skill:
 
 ```text
 /dream:team
@@ -75,28 +77,46 @@ pull request ready. It then keeps watching the pull request for your review, the
 same way an autopilot team session does, and carries out what the review asks.
 Once you merge, it files anything it left out of scope as new issues.
 
+## Even smaller tasks with /dream:less
+
+`/dream:less` is a cut-back version of `/dream:solo`, for a very small change
+you want carried from issue to pull request fast. It runs the same way as
+`/dream:solo`: one agent, no acceptance gates, watching the pull request for
+your review. But it trims the process to match the size of the work. It plans
+inline instead of with a subagent, and skips the separate simplify, copy-edit,
+and coherence-review passes. It runs a lighter code review, writes a minimal
+pull request description, and files no follow-ups once you merge.
+
+Start Claude Code and invoke the skill:
+
+```text
+/dream:less
+```
+
+Reach for it when a change is small and self-contained.
+
 ## Unattended runs with /dream:catcher
 
 The dreamcatcher watches a repository for labelled issues and dispatches a
-session for each, one at a time — the dream team or the solo skill, chosen by
-the issue's label. A backlog clears itself while you are away. Each session runs
-unattended and carries its issue to a pull request for you to merge. That is the
-same as a session you start by hand.
+session for each, one at a time. It runs the `/dream:team`, the `/dream:solo`
+skill, or the `/dream:less` skill, chosen by the issue's label. A backlog clears
+itself while you are away. Each session runs unattended and carries its issue to
+a pull request for you to merge. That is the same as a session you start by
+hand.
 
 The dreamcatcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
 with `gh` signed in.
 
-Label an issue for the team (`dream:team`) or the solo skill (`dream:solo`) and
-assign it to yourself. Start Claude Code from the main checkout of that
-repository, not a linked worktree, then run:
+Start Claude Code from the main checkout of that repository, not a linked
+worktree, then run:
 
 ```text
 /dream:catcher
 ```
 
 It watches the repository you started Claude Code in. By default it picks up
-open issues labelled `dream:team` or `dream:solo` and assigned to you,
-dispatching the matching skill. Override a label with a flag, for example
+open issues labelled "dream:team", "dream:solo", or "dream:less" and assigned to
+you, dispatching the matching skill. Override a label with a flag, for example
 `/dream:catcher --team-label auto`.
 
 The dreamcatcher runs in its own tmux session. Attach to it with
@@ -107,9 +127,11 @@ session, so a session waiting for an answer is one keystroke away.
 
 How it picks work:
 
-- **Skill by label.** The `dream:team` label dispatches a team session, the
-  `dream:solo` label a solo session, for smaller tasks that need no team. An
-  issue carrying both goes to the team.
+- **Skill by label.** The "dream:team" label dispatches a `/dream:team` session.
+  The "dream:solo" label dispatches a `/dream:solo` session, for smaller tasks
+  that need no team. The "dream:less" label dispatches a `/dream:less` session,
+  for very small ones. An issue carrying more than one goes to the heaviest:
+  `/dream:team` over `/dream:solo` over `/dream:less`.
 - **One session at a time.** A session holds the slot from dispatch until its
   pull request is merged or closed, so your merge paces the next dispatch. Size
   a session by grouping issues under an umbrella issue.

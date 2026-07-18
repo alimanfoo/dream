@@ -331,6 +331,28 @@ plugins/:
             First, read the writing style guide:
             Arguments:
             Each round:
+      less/:
+        SKILL.md:
+          Dream Less:
+            Autonomy:
+            Coherence:
+            Don't over-build:
+            Communication style:
+            Mark your work:
+            Orient to the repo:
+            Find the tests and checks:
+            Check the working tree:
+            Obtain session input:
+            Read the cited material and the code:
+            Name the Session Type:
+            Open the session PR:
+            Plan:
+            Implement:
+            Code review:
+            Write the PR description:
+            Mark the PR ready for review:
+            Watch for user review:
+            Merge:
       requirements-analysis/:
         SKILL.md:
           Requirements analysis:
@@ -542,6 +564,7 @@ README.md:
     Installation:
     Coherent development with /dream:team:
     Smaller tasks with /dream:solo:
+    Even smaller tasks with /dream:less:
     Unattended runs with /dream:catcher:
     /dream:team advanced usage:
       Alias claude with experimental agent teams support:
