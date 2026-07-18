@@ -211,6 +211,10 @@ plugins/:
         Defend behaviour, not surface:
           The lens:
           Reporting:
+      review-design-coherent-reach.md:
+        Does the design reach the coherent resolution?:
+          The lens:
+          Reporting:
       review-design-contract-shape.md:
         Contract carried by prose or runtime check:
           The lens:
@@ -322,7 +326,7 @@ plugins/:
             Generate analogies:
             Survey existing tools:
             Generate design sketches:
-            Draft the Design Options:
+            Draft the design options:
               The Proposed Design:
               The Alternative Designs:
             Review the draft:
