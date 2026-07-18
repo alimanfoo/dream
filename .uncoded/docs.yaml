@@ -214,6 +214,10 @@ plugins/:
         Reinvention:
           The lens:
           Reporting:
+      review-design-root-cause.md:
+        Symptom or cause?:
+          The lens:
+          Reporting:
       review-design-separation.md:
         Separation of concerns:
           The lens:

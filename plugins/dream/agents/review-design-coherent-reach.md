@@ -1,10 +1,8 @@
 ---
 name: review-design-coherent-reach
 description:
-  Reviews a Design for whether it reaches the coherent resolution. Flags a gap
-  that leaves behaviour or code inconsistent, a symptom-level fix where the
-  mechanism would remove the special case, or a recurring fact patched instead
-  of single-sourced.
+  Reviews a Design for whether it reaches the coherent resolution, or stops
+  short and leaves a gap that keeps behaviour or code inconsistent.
 model: sonnet
 tools: Read, Grep, Glob
 ---
@@ -19,10 +17,8 @@ report. The maintainer weighs what you return.
 
 Check that the Design reaches far enough to leave behaviour and code in a
 coherent state, given the Session Type. Read the named surfaces, their siblings,
-callers, and related tests or docs. Two tells:
-
-**Too narrow.** The Design stops short of the coherent resolution. What that
-takes depends on the Session Type:
+callers, and related tests or docs. What reaching far enough takes depends on
+the Session Type:
 
 - _Enhancement:_ the feature meets the existing code cleanly across the
   integration surface the Code Analysis named, upholds every convention it
@@ -43,12 +39,6 @@ drift returns. Where the recurring surface is one rule many sites must each
 follow, with no single home, flag the Design as too narrow if it patches the
 sites without a check that enforces the rule, and only when the rule is real and
 you have seen it break.
-
-**Symptom, not cause.** A part of the Design places a fix where the constraint
-shows rather than where it originates. Defensive code at a layer that isn't the
-source of the constraint is symptom-shaped: a validation, a type-narrowing, or a
-fallback placed where the input arrives rather than where the constraint
-originates. Flag it and propose reaching the cause.
 
 ## Reporting
 

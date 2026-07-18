@@ -87,24 +87,14 @@ scales with session type:
   one. For straightforward bugs this is one or two sentences.
 
 Reach the coherent resolution, not just the site the input named. The design is
-where the coherent scope is settled, so it must reach far enough to leave
-behaviour and code coherent. What that takes depends on the Session Type:
-
-- _Enhancement:_ the feature meets the existing code cleanly across the
-  integration surface the code analysis named, upholds every convention it
-  meets, handles every adjacent behaviour the read flagged, and leaves no caller
-  special-casing it.
-- _Maintenance:_ every instance of the inconsistency is resolved, not just the
-  surface the input named.
-- _Bug fix:_ the mechanism behind the defect is repaired, not the symptom site
-  alone.
-
-When the code analysis traced a recurring surface to one fact written in two
-places, single-source it: give the fact one home the copies derive from. That is
-the root-cause fix, not a script or test that re-syncs the two copies, which
-keeps both and lets the drift return. When the recurring surface is instead one
-rule that many sites must each follow, with no single home, reach the cause by
-enforcing the rule with a check, not by patching the next site to break it.
+where the coherent scope is settled, so it must reach the root cause and every
+instance the resolution needs: an enhancement meets the existing code cleanly
+across the whole integration surface, maintenance resolves every instance of the
+inconsistency, and a bug fix repairs the mechanism, not the symptom. Where the
+code analysis traced a recurring surface to one fact written in two places,
+single-source it rather than patching the copies; where the recurrence is one
+rule that many sites must each follow, enforce the rule rather than patching the
+next site.
 
 The input may steer the design: a library, framework, or approach to use. Source
 that steer and weigh it with the sketches, on its merits. It is the user's steer
@@ -159,6 +149,7 @@ parallel, via the Agent tool, one per lens:
 - `dream:review-design-contract-shape`
 - `dream:review-design-lateral-moves`
 - `dream:review-design-reinvention`
+- `dream:review-design-root-cause`
 - `dream:review-design-separation`
 - `dream:review-design-surviving-fit`
 
@@ -167,8 +158,8 @@ path relative to its own prompt file. Don't retype the draft into the prompt.
 Also give `dream:review-design-reinvention` the existing-tools survey you wrote,
 since that subagent doesn't hold your context. Give
 `dream:review-design-coherent-reach` the session type and the code analysis, so
-it can judge whether the design reaches every instance and the root cause.
-Combine their findings into one list, dropping duplicates.
+it can judge whether the design reaches every instance the coherent resolution
+needs. Combine their findings into one list, dropping duplicates.
 
 Judge each finding on its merits, and verify it against your own read. Address
 the findings you accept by editing the temporary file. A candidate lateral move
