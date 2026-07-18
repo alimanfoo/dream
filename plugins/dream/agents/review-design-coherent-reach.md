@@ -21,7 +21,7 @@ callers, and related tests or docs. What reaching far enough takes depends on
 the Session Type:
 
 - _Enhancement:_ the feature meets the existing code cleanly across the
-  integration surface the Code Analysis named, upholds every convention it
+  integration surface the Code Analysis named. It upholds every convention it
   meets, handles every adjacent behaviour the read flagged, and leaves no caller
   special-casing it.
 - _Maintenance:_ every instance of the inconsistency is resolved, not just the
@@ -29,16 +29,16 @@ the Session Type:
 - _Bug fix:_ the mechanism behind the defect is fixed, not the symptom site
   alone.
 
-Flag a gap that would leave behaviour or code inconsistent: a sibling surface
-with the same contract, a caller left out of sync, or a test or doc documenting
-the old shape. Flag it too where a recurring surface traces to one fact written
-in two places and the Design patches the copies without naming the one home the
-fact belongs in and single-sourcing it. A Design that only re-syncs the copies
-(a regen step, an alignment test) is not the fix: it keeps both copies, so the
-drift returns. Where the recurring surface is one rule many sites must each
-follow, with no single home, flag the Design as too narrow if it patches the
-sites without a check that enforces the rule, and only when the rule is real and
-you have seen it break.
+Flag a gap that would leave behaviour or code inconsistent. Examples: a sibling
+surface with the same contract, a caller left out of sync, or a test or doc
+documenting the old shape. Flag it too where a recurring surface traces to one
+fact written in two places. The Design is too narrow if it patches the copies
+without naming the one home the fact belongs in and single-sourcing it. A Design
+that only re-syncs the copies (a regen step, an alignment test) is not the fix:
+it keeps both copies, so the drift returns. Where the recurring surface is one
+rule many sites must each follow, with no single home, flag the Design as too
+narrow if it patches the sites without a check that enforces the rule. Flag it
+only when the rule is real and you have seen it break.
 
 ## Reporting
 

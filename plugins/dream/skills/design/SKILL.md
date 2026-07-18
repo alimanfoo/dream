@@ -88,11 +88,11 @@ scales with session type:
 
 Reach the coherent resolution, not just the site the input named. The design is
 where the coherent scope is settled, so it must reach the root cause and every
-instance the resolution needs: an enhancement meets the existing code cleanly
-across the whole integration surface, maintenance resolves every instance of the
-inconsistency, and a bug fix repairs the mechanism, not the symptom. Where the
-code analysis traced a recurring surface to one fact written in two places,
-single-source it rather than patching the copies; where the recurrence is one
+instance the resolution needs. An enhancement meets the existing code cleanly
+across the whole integration surface. Maintenance resolves every instance of the
+inconsistency. A bug fix repairs the mechanism, not the symptom. Where the code
+analysis traced a recurring surface to one fact written in two places,
+single-source it rather than patching the copies. Where the recurrence is one
 rule that many sites must each follow, enforce the rule rather than patching the
 next site.
 
