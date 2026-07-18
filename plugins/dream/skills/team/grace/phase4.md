@@ -50,14 +50,16 @@ This is one of the protocol's user acceptance gates (see
 
 ## Step 4.4: Hand the accepted Design to Junio and Ralph
 
-Write the following to a temporary file outside this repo, via Bash: the
-accepted Design (the option the user picked, plus any changes from the
-acceptance discussion) and every other design from the spread, for the
-"Alternatives considered" heading in
-[Step 4.5](#step-45-post-the-accepted-design-to-the-pr). Send Junio and Ralph
-the file's absolute path: two `SendMessage` calls in the same turn, for
-information only. Sign off `From Grace.` and skip the RSVP. No reply is needed.
-The accepted Design feeds the Plan review that follows.
+Write the following to a temporary file outside this repo, via Bash:
+
+- the accepted Design (the option the user picked, plus any changes from the
+  acceptance discussion)
+- every other design from the spread, for the "Alternatives considered" heading
+  in [Step 4.5](#step-45-post-the-accepted-design-to-the-pr)
+
+Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
+same turn, for information only. Sign off `From Grace.` and skip the RSVP. No
+reply is needed. The accepted Design feeds the Plan review that follows.
 
 ## Step 4.5: Post the accepted Design to the PR
 

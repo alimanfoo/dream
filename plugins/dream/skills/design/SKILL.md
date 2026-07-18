@@ -26,10 +26,10 @@ The argument gives the focus for the design: the accepted requirements, code
 analysis, and session scope the design must serve. Without an argument, derive
 the focus from your context. If you cannot identify a focus, ask the user.
 
-The design rests on three prior reads, assumed already in context: what the work
-must achieve (the requirements), how the current code works and is organised
-(the code analysis), and the work committed to (the scope). Name the Session
-Type from them, since it sets the depth of the design below.
+The design rests on prior reads, assumed already in context: what the work must
+achieve (the requirements), how the current code works and is organised (the
+code analysis), and the work committed to (the scope). Name the Session Type
+from them, since it sets the depth of the design.
 
 ## Generate analogies
 
@@ -47,8 +47,8 @@ Write the analogies as turn output, a numbered list, near and far.
 
 Survey the existing tools that could meet the need, so the sketches reach for a
 building block already to hand before inventing one. Name every entry that could
-address the need, in part or in full. Two faces, both knowledge you hold but
-rarely volunteer:
+address the need, in part or in full. Both are knowledge you hold but rarely
+volunteer:
 
 - **External**: a library, a standard algorithm or technique, or a language or
   platform feature. Common examples: an argument parser, date arithmetic, a
@@ -58,15 +58,14 @@ rarely volunteer:
   home.
 
 Search the web when the problem domain likely has tooling you don't already
-know. Before you rule out or downgrade an entry from memory alone, check it too.
-Your knowledge of it may be a year or so out of date.
+know. Check an entry on the web too before ruling it out or downgrading it from
+memory alone. Your knowledge of it may be a year or so out of date.
 
 Tag each entry: **fully addresses** or **partially addresses** the need, naming
 the gap when it's partial. Say why any entry you don't recommend falls short. If
 nothing applies, say so. An empty result is valid when the search was genuine.
 
-Write the survey as turn output, a numbered list. It feeds your sketches next,
-and the `dream:review-design-reinvention` subagent you brief at the review step.
+Write the survey as turn output, a numbered list. It feeds your sketches next.
 
 ## Generate design sketches
 
@@ -89,7 +88,7 @@ done, the approach proposed, and the key design calls that follow from the code
 analysis. Depth scales with Session Type:
 
 - _Enhancement:_ the **happy-path contract** (what valid inputs produce what
-  outputs, where it slots in, how callers interact with it) and the **input
+  outputs, where it slots in, how callers interact with it). Then the **input
   contract** (what input space is supported, and what happens on inputs outside
   it: error, fallback, or rejection). For example, for integer parsing,
   non-numeric input might raise, return None, or return 0. Also the key
@@ -131,8 +130,8 @@ only when no shape carries the meaning.
 Alternative Design. It qualifies when it still delivers the full session scope
 but buys its difference at a cost. Name the trade-off: a new dependency, more
 coupling, less flexibility. Reaching for an existing library in place of custom
-code is a common one. Surface it when a sketch points at one. A sketch that
-delivers less than the session scope is not an Alternative. It is a scope
+code is a common trade-off. Surface it when a sketch points that way. A sketch
+that delivers less than the session scope is not an Alternative. It is a scope
 change. Flag it prominently in the result if it has merit, rather than folding
 it in.
 

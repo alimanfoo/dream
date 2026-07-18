@@ -215,8 +215,8 @@ The phase ends at user acceptance of the Session Scope.
 With the Session Scope accepted, Grace produces the Design Options: the Proposed
 Design (her recommendation) and any credible Alternative Designs. She reaches
 them through a spread of analogies, an existing-tools survey, and design
-sketches, then an adversarial review, so the recommendation is chosen against
-alternatives rather than settled cold. Each Alternative still delivers the full
+sketches, then an adversarial review, so the recommendation is weighed against
+alternatives before it is chosen. Each Alternative still delivers the full
 Session Scope, with its trade-off named. There may be several, one, or none. An
 empty set is a valid outcome when the search was genuine.
 

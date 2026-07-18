@@ -67,10 +67,13 @@ Then idle until Grace asks for one of these:
 - a per-task coherence audit
 - the Phase 7 PR review
 
-You will receive the accepted Requirements Analysis at the end of Phase 1, the
-accepted Code Analysis at the end of Phase 2, and the accepted Design at the end
-of Phase 4, each as an information-only handoff. Read them and use them as
-context for the reviews that follow.
+You will receive these as information-only handoffs:
+
+- the accepted Requirements Analysis at the end of Phase 1
+- the accepted Code Analysis at the end of Phase 2
+- the accepted Design at the end of Phase 4
+
+Read them and use them as context for the reviews that follow.
 
 ## Your role and responsibilities, by phase
 
@@ -512,10 +515,10 @@ text (see
 [Sharing an artifact](../skills/team/protocol.md#sharing-an-artifact)). When you
 launch review subagents for that phase, give each one that same path instead of
 retyping the content into every `Agent` call. Name anything a subagent needs
-beyond the shared file path in its own prompt instead, the way
-[Step 3.2](#step-32-launch-the-review-subagents) gives the scope lenses the
-Session Type and the accepted Requirements and Code Analyses on top of the file
-path.
+beyond the shared file path in its own prompt instead.
+[Step 3.2](#step-32-launch-the-review-subagents) does this for the scope lenses:
+it names the Session Type and the accepted Requirements and Code Analyses on top
+of the file path.
 
 ### Defend behaviour, not surface
 
