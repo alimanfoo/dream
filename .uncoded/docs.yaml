@@ -16,19 +16,18 @@ plugins/:
           Your role and responsibilities, by phase:
             'Phase 1: Requirements':
             'Phase 2: Code Analysis':
-            'Phase 3: Scope':
-            'Phase 4: Design':
-            'Phase 5: Plan':
-            'Phase 6: Develop':
-            'Phase 7: Review':
-              'Step 7.1: Review from the diff alone':
-              'Step 7.2: Widen the review with `/code-review`':
-              'Step 7.3: Send your review to Grace via `SendMessage`':
+            'Phase 3: Design':
+            'Phase 4: Plan':
+            'Phase 5: Develop':
+            'Phase 6: Review':
+              'Step 6.1: Review from the diff alone':
+              'Step 6.2: Widen the review with `/code-review`':
+              'Step 6.3: Send your review to Grace via `SendMessage`':
               Output format:
               Writing findings:
-            'Phase 8: Merge':
-            'Phase 9: Collect':
-            'Phase 10: Reflect':
+            'Phase 7: Merge':
+            'Phase 8: Collect':
+            'Phase 9: Reflect':
           Common rules:
             Hard rules:
             Communication between teammates (agents):
@@ -38,14 +37,13 @@ plugins/:
           Your role and responsibilities, by phase:
             'Phase 1: Requirements':
             'Phase 2: Code Analysis':
-            'Phase 3: Scope':
-            'Phase 4: Design':
-            'Phase 5: Plan':
-            'Phase 6: Develop':
-            'Phase 7: Review':
-            'Phase 8: Merge':
-            'Phase 9: Collect':
-            'Phase 10: Reflect':
+            'Phase 3: Design':
+            'Phase 4: Plan':
+            'Phase 5: Develop':
+            'Phase 6: Review':
+            'Phase 7: Merge':
+            'Phase 8: Collect':
+            'Phase 9: Reflect':
           Code-shape-first check:
           Waiting for a reply:
           Challenge:
@@ -81,20 +79,14 @@ plugins/:
           Your role and responsibilities, by phase:
             'Phase 1: Requirements':
             'Phase 2: Code Analysis':
-            'Phase 3: Scope':
-              'Step 3.1: Read the Draft Scope Options':
-              'Step 3.2: Launch the review subagents':
-              'Step 3.3: Weigh the findings':
-              'Step 3.4: Send your findings to Grace via `SendMessage`':
-              'Step 3.5: Read the accepted Session Scope':
-            'Phase 4: Design':
-            'Phase 5: Plan':
-              'Step 5.1: Read the Draft Plan':
-              'Step 5.2: Launch the review subagents':
-              'Step 5.3: Weigh the findings':
-              'Step 5.4: Send your findings to Grace via `SendMessage`':
-              'Step 5.5: Read the accepted Plan':
-            'Phase 6: Develop':
+            'Phase 3: Design':
+            'Phase 4: Plan':
+              'Step 4.1: Read the Draft Plan':
+              'Step 4.2: Launch the review subagents':
+              'Step 4.3: Weigh the findings':
+              'Step 4.4: Send your findings to Grace via `SendMessage`':
+              'Step 4.5: Read the accepted Plan':
+            'Phase 5: Develop':
               Read beyond the diff:
               Read what the change removed:
               Read for readability against neighbours:
@@ -102,14 +94,14 @@ plugins/:
               The same edit elsewhere:
               Challenge:
               Compensation patterns:
-            'Phase 7: Review':
-              'Step 7.1: Read the whole diff':
-              'Step 7.2: Run the coherence review':
-              'Step 7.3: Weigh the findings':
-              'Step 7.4: Send your review to Grace via `SendMessage`':
-            'Phase 8: Merge':
-            'Phase 9: Collect':
-            'Phase 10: Reflect':
+            'Phase 6: Review':
+              'Step 6.1: Read the whole diff':
+              'Step 6.2: Run the coherence review':
+              'Step 6.3: Weigh the findings':
+              'Step 6.4: Send your review to Grace via `SendMessage`':
+            'Phase 7: Merge':
+            'Phase 8: Collect':
+            'Phase 9: Reflect':
           Common rules:
             Hard rules:
             Relay a shared briefing file to subagents:
@@ -121,30 +113,25 @@ plugins/:
           Your role and responsibilities, by phase:
             'Phase 1: Requirements':
             'Phase 2: Code Analysis':
-            'Phase 3: Scope':
-              'Step 3.1: Read the Draft Scope Options':
-              'Step 3.2: Apply the scope-and-abstraction lens':
-              'Step 3.3: Send your findings to Grace via `SendMessage`':
-              'Step 3.4: Read the accepted Session Scope':
-            'Phase 4: Design':
-            'Phase 5: Plan':
-              'Step 5.1: Read the Draft Plan':
-              'Step 5.2: Apply the implementer''s-view lens':
-              'Step 5.3: Send your findings to Grace via `SendMessage`':
-              'Step 5.4: Read the accepted Plan':
-            'Phase 6: Develop':
-              'Step 6.1: Read the task description':
-              'Step 6.2: Do the work':
-              'Step 6.3: Simplify the code you wrote':
-              'Step 6.4: Copy-edit the prose you wrote':
-              'Step 6.5: Run the tests':
-              'Step 6.6: Run any codegen the commit hook doesn''t run':
-              'Step 6.7: Commit and push':
-              'Step 6.8: Report back to Grace via `SendMessage`':
-            'Phase 7: Review':
-            'Phase 8: Merge':
-            'Phase 9: Collect':
-            'Phase 10: Reflect':
+            'Phase 3: Design':
+            'Phase 4: Plan':
+              'Step 4.1: Read the Draft Plan':
+              'Step 4.2: Apply the implementer''s-view lens':
+              'Step 4.3: Send your findings to Grace via `SendMessage`':
+              'Step 4.4: Read the accepted Plan':
+            'Phase 5: Develop':
+              'Step 5.1: Read the task description':
+              'Step 5.2: Do the work':
+              'Step 5.3: Simplify the code you wrote':
+              'Step 5.4: Copy-edit the prose you wrote':
+              'Step 5.5: Run the tests':
+              'Step 5.6: Run any codegen the commit hook doesn''t run':
+              'Step 5.7: Commit and push':
+              'Step 5.8: Report back to Grace via `SendMessage`':
+            'Phase 6: Review':
+            'Phase 7: Merge':
+            'Phase 8: Collect':
+            'Phase 9: Reflect':
           Common rules:
             Hard rules:
             Commits:
@@ -253,22 +240,6 @@ plugins/:
           Reporting:
       review-requirements-project-purpose.md:
         Serves the project's purpose:
-          The lens:
-          Reporting:
-      review-scope-anticipation.md:
-        Maximal Scope is real anticipation:
-          The lens:
-          Reporting:
-      review-scope-coherent.md:
-        Coherent Scope is truly coherent:
-          The lens:
-          Reporting:
-      review-scope-property.md:
-        Property or implementation?:
-          The lens:
-          Reporting:
-      review-scope-root-cause.md:
-        Symptom or cause?:
           The lens:
           Reporting:
       simplify-altitude.md:
@@ -416,8 +387,6 @@ plugins/:
               'Step 1.5: Seek user acceptance of the Requirements Analysis':
               'Step 1.6: Hand the accepted Requirements Analysis to Junio and Ralph':
               'Step 1.7: Post the accepted Requirements Analysis to the PR':
-          phase10.md:
-            'Phase 10: Reflect':
           phase2.md:
             'Phase 2: Code Analysis':
               'Step 2.1: Produce the Code Analysis':
@@ -426,58 +395,51 @@ plugins/:
               'Step 2.4: Hand the accepted Code Analysis to Junio and Ralph':
               'Step 2.5: Post the accepted Code Analysis to the PR':
           phase3.md:
-            'Phase 3: Scope':
-              'Step 3.1: Compose the Draft Scope Options':
-              'Step 3.2: Share the Draft Scope Options with Junio and Ralph for review':
-              'Step 3.3: Apply the reviews':
-              'Step 3.4: Share the revised Scope Options with the user':
-              'Step 3.5: Seek user acceptance of the Session Scope':
-              'Step 3.6: Hand the accepted Session Scope to Junio and Ralph':
-              'Step 3.7: Post the accepted Session Scope to the PR':
+            'Phase 3: Design':
+              'Step 3.1: Produce the Design Options':
+              'Step 3.2: Share the Design Options with the user':
+              'Step 3.3: Seek user acceptance of the Design':
+              'Step 3.4: Hand the accepted Design to Junio and Ralph':
+              'Step 3.5: Post the accepted Design to the PR':
           phase4.md:
-            'Phase 4: Design':
-              'Step 4.1: Produce the Design Options':
-              'Step 4.2: Share the Design Options with the user':
-              'Step 4.3: Seek user acceptance of the Design':
-              'Step 4.4: Hand the accepted Design to Junio and Ralph':
-              'Step 4.5: Post the accepted Design to the PR':
+            'Phase 4: Plan':
+              'Step 4.1: Compose the Draft Plan':
+              'Step 4.2: Share the Draft Plan with Junio and Ralph for review':
+              'Step 4.3: Apply the reviews':
+              'Step 4.4: Share the revised Plan with the user':
+              'Step 4.5: Seek user acceptance of the Plan':
+              'Step 4.6: Hand the accepted Plan to Junio and Ralph':
+              'Step 4.7: Post the accepted Plan to the PR':
           phase5.md:
-            'Phase 5: Plan':
-              'Step 5.1: Compose the Draft Plan':
-              'Step 5.2: Share the Draft Plan with Junio and Ralph for review':
-              'Step 5.3: Apply the reviews':
-              'Step 5.4: Share the revised Plan with the user':
-              'Step 5.5: Seek user acceptance of the Plan':
-              'Step 5.6: Hand the accepted Plan to Junio and Ralph':
-              'Step 5.7: Post the accepted Plan to the PR':
-          phase6.md:
-            'Phase 6: Develop':
+            'Phase 5: Develop':
               Opening sequence:
-                'Step 6.1: Create the shared task list':
+                'Step 5.1: Create the shared task list':
               Per-task workflow:
-                'Step 6.2: Assign':
-                'Step 6.3: Implement':
-                'Step 6.4: Read and request the audit':
-                'Step 6.5: Triage findings':
-                'Step 6.6: Loop':
+                'Step 5.2: Assign':
+                'Step 5.3: Implement':
+                'Step 5.4: Read and request the audit':
+                'Step 5.5: Triage findings':
+                'Step 5.6: Loop':
+          phase6.md:
+            'Phase 6: Review':
+              'Step 6.1: Send the review requests':
+              'Step 6.2: Post each review as a PR comment':
+              'Step 6.3: Triage each finding':
+              'Step 6.4: Post Grace''s response as a PR comment':
+              'Step 6.5: Write the PR description':
+              'Step 6.6: Mark the PR ready for review':
+              'Step 6.7: Hand back to the user':
           phase7.md:
-            'Phase 7: Review':
-              'Step 7.1: Send the review requests':
-              'Step 7.2: Post each review as a PR comment':
-              'Step 7.3: Triage each finding':
-              'Step 7.4: Post Grace''s response as a PR comment':
-              'Step 7.5: Write the PR description':
-              'Step 7.6: Mark the PR ready for review':
-              'Step 7.7: Hand back to the user':
+            'Phase 7: Merge':
           phase8.md:
-            'Phase 8: Merge':
+            'Phase 8: Collect':
+              'Step 8.1: Compile':
+              'Step 8.2: Deepen':
+              'Step 8.3: Test':
+              'Step 8.4: Decide':
+              'Step 8.5: Summarize':
           phase9.md:
-            'Phase 9: Collect':
-              'Step 9.1: Compile':
-              'Step 9.2: Deepen':
-              'Step 9.3: Test':
-              'Step 9.4: Decide':
-              'Step 9.5: Summarize':
+            'Phase 9: Reflect':
         protocol.md:
           Dream team protocol:
             The dream:
@@ -490,10 +452,9 @@ plugins/:
             'Phase 0: Boot':
             'Phase 1: Requirements':
             'Phase 2: Code Analysis':
-            'Phase 3: Scope':
-            'Phase 4: Design':
-            'Phase 5: Plan':
-            'Phase 6: Develop':
+            'Phase 3: Design':
+            'Phase 4: Plan':
+            'Phase 5: Develop':
               Coherence chain:
                 Scope discipline keeps the chain bounded:
                 When the chain ends:
@@ -502,10 +463,10 @@ plugins/:
                 Strip the compensation:
                 Audit-raised Challenge:
               Task ordering:
-            'Phase 7: Review':
-            'Phase 8: Merge':
-            'Phase 9: Collect':
-            'Phase 10: Reflect':
+            'Phase 6: Review':
+            'Phase 7: Merge':
+            'Phase 8: Collect':
+            'Phase 9: Reflect':
             Acceptance gates:
             Autopilot:
             Challenge:

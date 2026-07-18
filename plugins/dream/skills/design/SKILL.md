@@ -3,7 +3,7 @@ name: design
 description:
   Produce design options for a task, a recommended design plus any credible
   alternatives.
-argument-hint: "<requirements, code analysis, and scope | text>"
+argument-hint: "<requirements and code analysis | text>"
 ---
 
 # Design
@@ -18,9 +18,9 @@ Follow the steps in order.
 
 ## Arguments
 
-The argument gives the focus for the design: the accepted requirements, code
-analysis, and session scope the design must serve. Without an argument, derive
-the focus from your context. If you cannot identify a focus, ask the user.
+The argument gives the focus for the design: the accepted requirements and code
+analysis the design must serve. Without an argument, derive the focus from your
+context. If you cannot identify a focus, ask the user.
 
 ## Generate analogies
 
@@ -139,12 +139,13 @@ only when no shape carries the meaning.
 ### The Alternative Designs
 
 Keep each strong sketch you did not pick as an alternative design. It qualifies
-when it still delivers the full session scope but buys its difference at a cost.
-Name the trade-off: a new dependency, more coupling, less flexibility.
+when it still delivers the full requirements and reaches the same coherent
+resolution, but buys its difference at a cost. Name the trade-off: a new
+dependency, more coupling, less flexibility.
 
-A sketch that delivers less than the session scope is not an alternative. It is
-a scope change. Flag it prominently in the result if it has merit, rather than
-folding it in.
+A sketch that delivers less than the requirements, or stops short of the
+coherent resolution, is not an alternative. It is a change to the requirements.
+Flag it prominently in the result if it has merit, rather than folding it in.
 
 Write the design options to a temporary file outside the repo.
 

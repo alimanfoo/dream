@@ -26,10 +26,10 @@ without flagging anything is the default that lets the phase proceed.
 End the message with one of these two, depending on autopilot:
 
 - Not under autopilot: ask the user to accept. _"Accept the Code Analysis to
-  proceed to Phase 3: Scope."_
+  proceed to Phase 3: Design."_
 - Under autopilot: skip the question. State what you're doing instead, and
   continue in the same turn. _"Taking the Code Analysis as proposed (autopilot).
-  Proceeding to Phase 3: Scope."_
+  Proceeding to Phase 3: Design."_
 
 ## Step 2.3: Seek user acceptance of the Code Analysis
 

@@ -1,70 +1,145 @@
-# Phase 4: Design
+# Phase 4: Plan
 
 Write every turn output, message and artefact in this phase to the
 [writing style guide](../../../writing-style.md).
 
-The goal of this phase is the accepted Design: what the team proposes to build.
-Follow the steps below in sequence.
+The goal of this phase is the accepted Plan, the task list that delivers the
+Design. You compose a Draft Plan, get one round of review from Junio and Ralph,
+revise, and share the revised Plan with the user for acceptance.
 
-## Step 4.1: Produce the Design Options
+## Step 4.1: Compose the Draft Plan
 
-Run the `dream:design` skill, focused on the accepted Requirements Analysis,
-Code Analysis, and Session Scope.
+Compose the Draft Plan, the task list that delivers the Design.
 
-The skill returns the Design Options: the Proposed Design (its recommendation)
-and any Alternative Designs, each with its trade-off named.
+Apply these rules. Derive tasks from the Design and the Code Analysis. The tasks
+are the work that delivers the Design. Don't translate the session input
+directly into tasks. The Design has already reshaped it where needed.
 
-## Step 4.2: Share the Design Options with the user
+Each task should be a manageable unit of work for Ralph, one commit per task.
+Test each task by its one-line headline. If the headline needs an "and," the
+task is two ideas, so split it. One idea per task keeps each commit clean and
+the per-task coherence audit focused on a single change. Split tasks that grow
+beyond manageable. Fold fragments into a related task.
 
-Send the Proposed Design and any Alternative Designs to the user. Lead with the
-Proposed Design, your recommendation. Then give each Alternative with the
-trade-off it carries. The Proposed Design is the default if the user just
-accepts. The user picks an Alternative to override.
+Build each brief in this order:
+
+- Lead with the goal.
+- Name the **criterion** that selects the work.
+- Offer concrete examples as scaffold.
+
+The criterion is what makes a site count. Examples illustrate, they don't bound.
+Ralph applies the criterion fresh and finds the instances himself.
+
+Write the criterion so its wording sets its own scope. "Every occurrence of
+`foo`" spans wherever the literal appears, tree-wide unless the criterion's
+wording bounds it. "Every docstring of kind X in the parser module" bounds
+itself to the kind within the parser module. "Rename `foo` to `bar` at
+`module.py:42`" has a single application. State it directly, no examples needed.
+For kind-based criteria, show two or three examples to anchor the kind.
+
+## Step 4.2: Share the Draft Plan with Junio and Ralph for review
+
+Write the Draft Plan to a temporary file outside this repo, via Bash. Send both
+Junio and Ralph the file's absolute path: two `SendMessage` calls in the same
+turn. They already hold all earlier phase context. Sign off
+`From Grace. RSVP via SendMessage.`
+
+Send the same path to each reviewer. Their role files steer the lens. Junio
+reads from the maintainer's view: defend completeness across tasks and
+tidy-first precursors. Ralph reads from the implementer's view: task
+implementability and tidy-first. Each replies with a numbered list of findings
+(or "no substantive findings"), optionally with a Challenge. Junio and Ralph are
+advisory at Plan, not gating. Run one round only. Don't loop back after
+revising. Fresh attention from two teammates catches issues at the cheapest
+point to fix.
+
+## Step 4.3: Apply the reviews
+
+Decide each finding, from either reviewer, on its merits, and record a one-line
+reason for the call. You own the Plan. A teammate raising a finding is not
+itself a reason to fold it in. Each finding takes one of these paths:
+
+- **Fold in**: accept into the revised Plan as a task (or a tidy-first
+  precursor).
+- **Reject**: you disagree with the finding. If the rejection is notable, carry
+  the reason into the Plan message in
+  [Step 4.4](#step-44-share-the-revised-plan-with-the-user).
+- **Hold as Ancillary Finding**: the finding is real but out of scope. Hold for
+  post-merge triage.
+- **Raise a Challenge**: the finding shows an accepted artifact no longer holds.
+  It may be that the Design is the wrong shape, or that an earlier artifact has
+  something wrong. Take it to the user, who accepts (revise) or rejects (with
+  direction).
+
+Apply the
+**[code-shape-first check](../../../agents/Grace.md#code-shape-first-check)**
+before deciding any finding that proposes a docstring, comment, or
+section-header to express a contract, invariant, precondition, or convention.
+
+When the reply includes a tidy-first finding you fold in, insert the tidy as a
+precursor task before the task it supports. The tidy runs through the standard
+Refactor brief (see [Refactor](../../../agents/Grace.md#refactor) under
+Behaviour-preserving task briefs).
+
+When the reply includes a generalisation candidate, treat it as a proposed Plan
+change, not a mandate. Fold it in only when it meets one of these conditions:
+
+- It makes the Plan smaller.
+- It replaces special-case tasks with a bounded criterion.
+- It simplifies the code shape for the current scope.
+
+If it only adds machinery or future-proofing, reject.
+
+When the reply raises a Challenge, assess it before acting: does an accepted
+artifact really no longer hold?
+
+## Step 4.4: Share the revised Plan with the user
+
+Send the revised Plan. Add a brief note on **what changed from the Draft after
+the reviews**: folded-in findings as tasks, notable rejections with the reason.
+The user learns what the reviews changed without seeing them directly. Include
+any out-of-scope decisions.
+
+The Plan is your draft. The user's job at this gate is to flag anything missing
+or off. Accepting without flagging anything is the default that lets the phase
+proceed.
 
 End the message with one of these two, depending on autopilot:
 
-- Not under autopilot: ask the user to accept. _"Accept the Design to proceed to
-  Phase 5: Plan."_
+- Not under autopilot: ask the user to accept. _"Accept the Plan to proceed to
+  Phase 5: Develop."_
 - Under autopilot: skip the question. State what you're doing instead, and
-  continue in the same turn. _"Taking the Design as proposed (autopilot).
-  Proceeding to Phase 5: Plan."_
+  continue in the same turn. _"Taking the Plan as proposed (autopilot).
+  Proceeding to Phase 5: Develop."_
 
-## Step 4.3: Seek user acceptance of the Design
+## Step 4.5: Seek user acceptance of the Plan
 
 Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
 If accepted, continue to
-[Step 4.4](#step-44-hand-the-accepted-design-to-junio-and-ralph). If the user
-pushes back, revise and return to
-[Step 4.2](#step-42-share-the-design-options-with-the-user). Repeat until
+[Step 4.6](#step-46-hand-the-accepted-plan-to-junio-and-ralph). If the user
+raises open questions or redirects, revise and return to
+[Step 4.4](#step-44-share-the-revised-plan-with-the-user). Repeat until
 accepted.
 
 This is one of the protocol's user acceptance gates (see
 [Acceptance gates](../protocol.md#acceptance-gates)).
 
-## Step 4.4: Hand the accepted Design to Junio and Ralph
+## Step 4.6: Hand the accepted Plan to Junio and Ralph
 
-Write the following to a temporary file outside this repo, via Bash:
+Write the same content you sent the user to a temporary file outside this repo,
+via Bash. Send Junio and Ralph the file's absolute path: two `SendMessage` calls
+in the same turn, for information only. Sign off `From Grace.` and skip the
+RSVP. No reply is needed. They haven't seen the outcome since their Draft Plan
+review in
+[Step 4.2](#step-42-share-the-draft-plan-with-junio-and-ralph-for-review). The
+accepted Plan feeds Junio's per-task coherence audits and Ralph's per-task
+implementations in Phase 5.
 
-- the accepted Design (the option the user picked, plus any changes from the
-  acceptance discussion)
-- every other design from the spread, for the "Alternatives considered" heading
-  in [Step 4.5](#step-45-post-the-accepted-design-to-the-pr)
+## Step 4.7: Post the accepted Plan to the PR
 
-Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
-same turn, for information only. Sign off `From Grace.` and skip the RSVP. No
-reply is needed. The accepted Design feeds the Plan review that follows.
-
-## Step 4.5: Post the accepted Design to the PR
-
-Post the accepted Design to the PR from the file written in
-[Step 4.4](#step-44-hand-the-accepted-design-to-junio-and-ralph) (see
+Post the accepted Plan to the PR from the file written in
+[Step 4.6](#step-46-hand-the-accepted-plan-to-junio-and-ralph) (see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
 
-Make the body the design the user accepted. Put every other design from the
-spread under an "Alternatives considered" heading: the designs weighed and not
-chosen. The heading shows a reader which one the session decided on. A bare
-"Alternative Designs" heading reads as options still open. When the spread held
-no other design, omit the heading.
-
-The phase ends at user acceptance of the Design.
+The phase ends at user acceptance of the Plan.

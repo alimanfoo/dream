@@ -1,150 +1,70 @@
-# Phase 3: Scope
+# Phase 3: Design
 
 Write every turn output, message and artefact in this phase to the
 [writing style guide](../../../writing-style.md).
 
-The goal of this phase is the accepted Session Scope: what the team commits to
-doing in the current session. You draft the Scope Options, get one round of
-review from Junio and Ralph, revise, and share with the user for acceptance.
+The goal of this phase is the accepted Design: what the team proposes to build.
+Follow the steps below in sequence.
 
-## Step 3.1: Compose the Draft Scope Options
+## Step 3.1: Produce the Design Options
 
-Compose the Draft Scope Options to the shape below. This is the artifact
-reviewers will see next. Do not yet send it to the user. Three named options,
-each with its presence condition:
+Run the `dream:design` skill, focused on the accepted Requirements Analysis and
+Code Analysis.
 
-- **Coherent Scope** (always): the work needed to meet the accepted Requirements
-  Analysis, plus the additions needed to leave the behaviour and the surrounding
-  code in a coherent state. Cite the Code Analysis finding behind each addition
-  so the user can see the supporting evidence.
-- **Minimal Scope** (when narrower than Coherent): strictly what the
-  requirements call for, with the coherence gaps named. It gives the user a way
-  to decline the coherence work explicitly (time pressure, scope discipline, the
-  rest handled separately).
-- **Maximal Scope** (when anticipated further work is real): beyond the Coherent
-  Scope, rolls in work that will naturally lead on from the current concern. It
-  anticipates what comes next, not just what the investigation surfaced about
-  now. The widest sensible anticipation, not speculation.
+The skill returns the Design Options: the Proposed Design (its recommendation)
+and any Alternative Designs, each with its trade-off named.
 
-Test the Coherent Scope before sharing: would finishing it leave the work short
-of coherence? What coherence means depends on the Session Type:
+## Step 3.2: Share the Design Options with the user
 
-- _Enhancement:_ the feature meets the existing code cleanly across the
-  integration surface the Code Analysis named. Every convention it meets is
-  upheld. Every adjacent behaviour that read flagged is handled. No caller is
-  left to special-case it.
-- _Maintenance:_ every instance of the inconsistency is fixed, not just the
-  surface the input named.
-- _Bug fix:_ the mechanism behind the defect is fixed, not the symptom site
-  alone.
-
-If the Coherent Scope would leave any of these undone, it is too narrow. Widen
-it. When the Code Analysis traced a recurring surface to one fact written in two
-places, single-sourcing it is the root-cause fix. That is Coherent work, not a
-Maximal add-on (see [One fact, one home](../protocol.md#one-fact-one-home)). A
-script or test that re-syncs the two copies is not the fix. It keeps both
-copies, so the drift returns the next time the code changes. When the recurring
-surface is one rule many sites must each follow, with no single home to
-single-source, it is a [cross-site rule](../protocol.md#cross-site-rules).
-Addressing it at its root is Coherent work, not a Maximal add-on.
-
-Ask the removal question too. Could dropping or narrowing something resolve the
-concern, or leave the code simpler to maintain instead of adding? Examples: a
-feature, a branch, a layer, a hand-maintained count. Agents default to adding
-and to keeping what's there. The classic case is a count in prose that has to
-change whenever the things it counts do. Remove the count.
-
-State each scope item as the property or outcome the work must achieve, not how
-it achieves it. Choosing the how is Design's call, where the reviewers weigh the
-alternatives. The how includes the tool or library, the algorithm or structure,
-the API or command shape, and a bug's fix shape.
-
-The session input may steer the scope: work to include, work to leave out, or
-how far to go. Build the three options as normal, because a steer is not a
-fourth option. It customizes the scope you recommend and commit to. The baseline
-is Coherent, and the steer adds or removes work from there. A blanket steer to
-stay narrow or wide takes Minimal or Maximal as the baseline instead. Name any
-coherence gap a removal leaves, the way the Minimal Scope does.
-
-Source the steer and weigh it on its merits, not as an order. Going against a
-clear steer is a Challenge, so the user makes that call (see
-[Challenge](../../../agents/Grace.md#challenge)).
-
-## Step 3.2: Share the Draft Scope Options with Junio and Ralph for review
-
-Write the Draft Scope Options to a temporary file outside this repo, via Bash.
-Send both Junio and Ralph the file's absolute path: two `SendMessage` calls in
-the same turn. Sign off `From Grace. RSVP via SendMessage.`
-
-Junio reads from the maintainer's view. Ralph reads from the engineering-pattern
-view. Send the same path to each. Their role files steer the lens. Each replies
-with a numbered list of findings (or "no substantive findings"). Junio and Ralph
-are advisory at Scope, not gating. One round only. Don't loop back to either
-reviewer after revising. The point is fresh attention from two teammates, caught
-at the cheapest point to fix.
-
-## Step 3.3: Apply the reviews
-
-Decide each finding, from either reviewer, on its merits, and record a one-line
-reason for the call. You own the Scope Options. A teammate raising a finding is
-not itself a reason to fold it in. Each finding takes one of these paths:
-
-- **Fold in**: accept into the revised Scope Options (revise an existing option
-  or add a missed candidate).
-- **Reject**: you disagree with the finding. If the rejection is notable, carry
-  the reason into the Scope Options message in
-  [Step 3.4](#step-34-share-the-revised-scope-options-with-the-user).
-
-## Step 3.4: Share the revised Scope Options with the user
-
-Send the revised Scope Options. Add a brief note on **what changed from the
-Draft after the reviews**: folded-in findings, notable rejections with the
-reason. The user learns what the reviews changed without seeing them directly.
-
-Frame the choice plainly. The recommendation is the Coherent Scope, with any
-modifications the input steer names. It is the default if the user just accepts.
-The user picks Minimal or Maximal to override. When only the Coherent Scope
-applies, the message carries that alone and asks the user to accept.
+Send the Proposed Design and any Alternative Designs to the user. Lead with the
+Proposed Design, your recommendation. Then give each Alternative with the
+trade-off it carries. The Proposed Design is the default if the user just
+accepts. The user picks an Alternative to override.
 
 End the message with one of these two, depending on autopilot:
 
-- Not under autopilot: ask the user to accept. _"Accept the Session Scope to
-  proceed to Phase 4: Design."_
+- Not under autopilot: ask the user to accept. _"Accept the Design to proceed to
+  Phase 4: Plan."_
 - Under autopilot: skip the question. State what you're doing instead, and
-  continue in the same turn. _"Taking the Session Scope as proposed (autopilot).
-  Proceeding to Phase 4: Design."_
+  continue in the same turn. _"Taking the Design as proposed (autopilot).
+  Proceeding to Phase 4: Plan."_
 
-## Step 3.5: Seek user acceptance of the Session Scope
+## Step 3.3: Seek user acceptance of the Design
 
 Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
 If accepted, continue to
-[Step 3.6](#step-36-hand-the-accepted-session-scope-to-junio-and-ralph). If the
-user pushes back, revise and return to
-[Step 3.4](#step-34-share-the-revised-scope-options-with-the-user). Repeat until
+[Step 3.4](#step-34-hand-the-accepted-design-to-junio-and-ralph). If the user
+pushes back, revise and return to
+[Step 3.2](#step-32-share-the-design-options-with-the-user). Repeat until
 accepted.
 
 This is one of the protocol's user acceptance gates (see
 [Acceptance gates](../protocol.md#acceptance-gates)).
 
-Even after acceptance, the Session Scope is not final. It can be revised at any
-point through a Challenge (see [Challenge](../../../agents/Grace.md#challenge)).
+## Step 3.4: Hand the accepted Design to Junio and Ralph
 
-## Step 3.6: Hand the accepted Session Scope to Junio and Ralph
+Write the following to a temporary file outside this repo, via Bash:
 
-Write the accepted Session Scope, the base option plus any modifications from
-the input steer or the acceptance discussion, to a temporary file outside this
-repo, via Bash. Send Junio and Ralph the file's absolute path: two `SendMessage`
-calls in the same turn, for information only. Sign off `From Grace.` and skip
-the RSVP. No reply is needed. They haven't seen the outcome since their Draft
-Scope Options review in
-[Step 3.2](#step-32-share-the-draft-scope-options-with-junio-and-ralph-for-review).
-The accepted Session Scope feeds the Design you produce in Phase 4.
+- the accepted Design (the option the user picked, plus any changes from the
+  acceptance discussion)
+- every other design from the spread, for the "Alternatives considered" heading
+  in [Step 3.5](#step-35-post-the-accepted-design-to-the-pr)
 
-## Step 3.7: Post the accepted Session Scope to the PR
+Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
+same turn, for information only. Sign off `From Grace.` and skip the RSVP. No
+reply is needed. The accepted Design feeds the Plan review that follows.
 
-Post the accepted Session Scope to the PR from the file written in
-[Step 3.6](#step-36-hand-the-accepted-session-scope-to-junio-and-ralph) (see
+## Step 3.5: Post the accepted Design to the PR
+
+Post the accepted Design to the PR from the file written in
+[Step 3.4](#step-34-hand-the-accepted-design-to-junio-and-ralph) (see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
 
-The phase ends at user acceptance of the Session Scope.
+Make the body the design the user accepted. Put every other design from the
+spread under an "Alternatives considered" heading: the designs weighed and not
+chosen. The heading shows a reader which one the session decided on. A bare
+"Alternative Designs" heading reads as options still open. When the spread held
+no other design, omit the heading.
+
+The phase ends at user acceptance of the Design.
