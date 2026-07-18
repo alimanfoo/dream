@@ -2,7 +2,7 @@
 name: less
 description:
   The lightest autonomous developer skill, for very small changes. Use only when
-  the user explicitly runs `/dream:less`.
+  the user explicitly runs /dream:less.
 ---
 
 # Dream Less

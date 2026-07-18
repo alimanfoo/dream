@@ -1,11 +1,11 @@
 ---
 name: catcher
 description:
-  Only use when the user explicitly runs `/dream:catcher`, never on a general
+  Only use when the user explicitly runs /dream:catcher, never on a general
   request to watch, monitor, or triage issues. It launches unattended sessions.
   It watches a repository for labelled issues and dispatches a session for each,
-  one at a time. The issue's label picks which skill runs, the `/dream:team`,
-  the `/dream:solo` skill, or the lighter `/dream:less` skill. Each session runs
+  one at a time. The issue's label picks which skill runs, the /dream:team, the
+  /dream:solo skill, or the lighter /dream:less skill. Each session runs
   unattended and carries its issue to a pull request for the user to merge.
 argument-hint:
   "[--team-label <label>] [--solo-label <label>] [--less-label <label>]
