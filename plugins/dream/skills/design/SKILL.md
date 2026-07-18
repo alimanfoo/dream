@@ -47,8 +47,8 @@ Write the analogies as turn output, a numbered list, near and far.
 
 Survey the existing tools that could meet the need, so the sketches reach for a
 building block already to hand before inventing one. Name every entry that could
-address the need, in part or in full. Both are knowledge you hold but rarely
-volunteer:
+address the need, in part or in full, external or internal. Both are knowledge
+you hold but rarely volunteer:
 
 - **External**: a library, a standard algorithm or technique, or a language or
   platform feature. Common examples: an argument parser, date arithmetic, a
@@ -69,11 +69,11 @@ Write the survey as turn output, a numbered list. It feeds your sketches next.
 
 ## Generate design sketches
 
-Sketch a spread of design approaches, before any single design is chosen,
-drawing on your analogies and survey where they help. A sketch is brief: a few
-lines naming one way to approach the work and the shape it would take. Not a
-fully worked design. Several rough sketches across different approaches are
-worth more here than one polished one.
+Sketch a spread of design approaches, before choosing a single design, drawing
+on your analogies and survey where they help. A sketch is brief: a few lines
+naming one way to approach the work and the shape it would take. Not a fully
+worked design. Several rough sketches across different approaches are worth more
+here than one polished one.
 
 Write the sketches as turn output, a numbered list.
 
@@ -102,9 +102,9 @@ analysis. Depth scales with Session Type:
 The input may steer the design: a library, framework, or approach to use. Source
 that steer and weigh it with the sketches, on its merits. It is the user's steer
 on the how, not a fixed requirement. Take it in the Proposed Design unless you
-have reason to set it aside. Setting it aside is the user's call, so don't
-override it silently: recommend the alternative and flag the steer prominently
-in the result, for the user to decide.
+have reason to set it aside. Setting it aside is the user's call. Don't override
+it silently. Recommend the alternative and flag the steer prominently in the
+result.
 
 Check the Proposed Design against common overcomplication defaults:
 
@@ -117,9 +117,10 @@ Remove any code the change leaves purposeless. When a function the Design
 modifies has no remaining purpose after the change, the same Design removes it.
 
 Reshape the Proposed Design around the real structural fix, even when the input
-asked for a docstring or comment change. Example: "expand the docstring to
-express a contract". But the signature doesn't enforce it, so the docstring has
-to. The design follows the code, not the input's literal wording.
+asked for a docstring or comment change. Take an input that asks to "expand the
+docstring to express a contract". The contract belongs in a signature that
+enforces it, not a docstring a caller can ignore. The design follows the code,
+not the input's literal wording.
 
 Carry a contract, invariant, precondition, or convention in the shape of the
 code, not in a docstring, comment, or section-header. A type or a module
@@ -168,8 +169,8 @@ at a cost joins the Alternative Designs, with its trade-off named.
 
 A finding may reach beyond the Design. It may point at a scope change or an
 earlier read that no longer holds, or it may be real but outside the current
-scope. Don't swallow either. Name it in the result, kept separate from the
-Design, so it is carried forward rather than lost.
+scope. Don't swallow it. Name it in the result, kept separate from the Design,
+so it is carried forward rather than lost.
 
 ## Copy-edit the draft
 
@@ -181,4 +182,4 @@ readability matters.
 
 Return the completed Design Options from the file: the Proposed Design, any
 Alternative Designs with their trade-offs, and any finding that reached beyond
-the Design, kept separate so it is carried forward.
+the Design. Keep that finding separate, so it is carried forward.

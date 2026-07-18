@@ -126,8 +126,6 @@ such skill. The requirements, scope, design, and plan review lenses are not
 standalone skills. The `requirements-analysis` and `design` skills launch the
 requirements and design lenses inline as review subagents, and Junio launches
 the scope and plan lenses. So they run only as a review step within a session.
-Don't wrap them in a standalone skill. No standalone caller would justify
-wrapping them in one.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
@@ -245,7 +243,7 @@ useful, because most of the plugin's machinery exists to answer one or more:
 - **Over-eagerness**: attempts an underspecified ask rather than question it.
 - **Reactivity**: answers what's asked, volunteers nothing.
 
-Three notes on how the plugin answers these:
+Two notes on how the plugin answers these:
 
 **The answer is structural, not exhortative.** Telling an agent to be less
 sycophantic produces no tokens and changes nothing (see "Writing agent
@@ -261,16 +259,6 @@ lever when a name's plain sense pulls the right way (see
 the name does the work. Over-eagerness is the engine behind active memory: an
 agent that dutifully attempts whatever sits in front of it picks up a failing
 check as a task and fixes it unasked.
-
-**Some traits still resist structure: the open frontier.** Reactivity looked the
-hardest, but forcing the act answers much of it. The design skill's analogy and
-sketch steps make the agent running it volunteer a spread of options before any
-design is chosen, breadth it would not offer if merely asked. What resists is
-the silent failure you cannot force at a step or gate on afterwards:
-sycophancy's unspoken deference, the suggestion never raised. The user catching
-these at a gate today is a coherence touch the dream means to drive toward zero
-(see _The dream_). The next work is finding the structure that fires on it, the
-way the failing check did for over-eagerness.
 
 ## Writing agent prompts
 
