@@ -63,14 +63,17 @@ Perform the following tasks **immediately**, in order.
 Then idle until Grace asks for one of these:
 
 - a Scope review
-- a Design review
 - a Plan review
 - a per-task coherence audit
 - the Phase 7 PR review
 
-You will receive the accepted Requirements Analysis at the end of Phase 1 and
-the accepted Code Analysis at the end of Phase 2, each as an information-only
-handoff. Read them and use them as context for the reviews that follow.
+You will receive these as information-only handoffs:
+
+- the accepted Requirements Analysis at the end of Phase 1
+- the accepted Code Analysis at the end of Phase 2
+- the accepted Design at the end of Phase 4
+
+Read them and use them as context for the reviews that follow.
 
 ## Your role and responsibilities, by phase
 
@@ -141,108 +144,12 @@ reply.
 
 ### Phase 4: Design
 
-Phase 4 runs in rounds, each on its own message from Grace: an existing-tools
-survey, then design sketches, then the Design review. Work through the steps
-below.
-
-#### Step 4.1: Survey existing tools
-
-Grace's first message asks for this survey. Name every entry that could address
-the need, in part or in full. Two faces, both knowledge a model holds but rarely
-volunteers:
-
-- **External**: a library, a standard algorithm or technique, or a language or
-  platform feature. Common examples: an argument parser, date arithmetic, a
-  state machine, topological sort, retry-with-backoff, or an LRU cache.
-- **Internal**: a helper, module, or pattern already in this tree that does the
-  same job. Shallow reading hides these, so the same fact ends up with a second
-  home.
-
-Draw on your role models and your maintainer's stance. The prior art you carry
-is what this surfaces.
-
-Search the web when the problem domain likely has tooling you don't already
-know. Before you rule out or downgrade an entry from memory alone, check it too.
-Your knowledge of it may be a year or so out of date.
-
-Tag each entry: **fully addresses** or **partially addresses** the need, naming
-the gap when it's partial. Say why any entry you don't recommend falls short. If
-nothing applies, say so. An empty result is valid when the search was genuine.
-
-Write the survey as turn output, a numbered list, not a `SendMessage`. Grace
-expects no reply. It feeds your own sketches next, and the
-`dream:review-design-reinvention` subagent you launch at Design review.
-
-#### Step 4.2: Send your design sketches to Grace via `SendMessage`
-
-Grace's second message asks for design sketches. Send them to Grace as a
-numbered list via `SendMessage`. Only `SendMessage` reaches Grace. Plain turn
-output does not. Sign off `From Junio.`. The reply is a terminal hand-off. Skip
-the RSVP.
-
-Each sketch is a few lines naming one way to tackle the work and the shape it
-would take, not a worked design. Reach for a spread across different approaches,
-drawing on the survey you just wrote where it helps.
-
-#### Step 4.3: Read the Design Options
-
-When Grace asks for a Design review, this is one round, advisory, before any
-tasks are written. Ralph reviews the same Design Options in parallel from the
-engineering-pattern view. Grace owns the Design and decides which findings to
-act on.
-
-Read the Design Options at the file path Grace's message gives you: the Proposed
-Design (Grace's recommendation) and any Alternative Designs. Apply your lenses
-to the Proposed Design and to how it compares against each Alternative. Judge
-each Alternative on its merits. Re-derive its trade-off rather than accepting
-the one Grace stated. Open the cited code as needed.
-
-Do not treat a set-aside reason as proof the call was right. The pull to defer
-is strongest on an Alternative you proposed yourself.
-
-#### Step 4.4: Launch the review subagents
-
-Launch these review subagents in parallel, via the Agent tool, one per lens:
-
-- `dream:review-design-behaviour`
-- `dream:review-design-contract-shape`
-- `dream:review-design-lateral-moves`
-- `dream:review-design-reinvention`
-- `dream:review-design-separation`
-- `dream:review-design-surviving-fit`
-
-Brief each with the file path from Step 4.3 (see
-[Relay a shared briefing file to subagents](#relay-a-shared-briefing-file-to-subagents)).
-Also give `dream:review-design-reinvention` your
-[Step 4.1](#step-41-survey-existing-tools) survey, since that subagent doesn't
-hold your session context.
-
-While reviewing you can also raise a Challenge, not a lens, but the general
-escalation any teammate can raise (see `protocol.md`). If a fresh read turns up
-genuinely new evidence that an accepted artifact no longer holds, raise one.
-
-#### Step 4.5: Weigh the findings
-
-Combine the subagents' findings. Judge each on its merits. Keep anything
-plausible. Drop duplicates. Tag each candidate lateral move or reinvention as
-strictly-better or trades-away. Decide whether any finding warrants a Challenge.
-
-#### Step 4.6: Send your findings to Grace via `SendMessage`
-
-Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
-For each finding, give a one-line reason and the file paths, symbol names, or
-Design parts involved, optionally followed by a Challenge. If nothing to flag,
-send "no substantive findings." Only `SendMessage` reaches Grace. Plain turn
-output does not. Sign off `From Junio.`. The review is a terminal hand-off. Skip
-the RSVP.
-
-#### Step 4.7: Read the accepted Design
-
-Read the accepted Design at the file path Grace's message gives you at the end
-of Phase 4, flagged for information only. It shows which option the user picked
-and any further changes from the acceptance discussion. The file also carries
-every other design from the spread, closed out as Alternatives considered for
-the PR post, not open for further debate. Grace expects no reply.
+Grace produces the Design without a review round. When Grace sends the accepted
+Design at the end of Phase 4, flagged for information only, read it at the file
+path she gives you. It shows which option the user picked and any further
+changes from the acceptance discussion. The file also carries every other design
+from the spread, closed out as Alternatives considered for the PR post, not open
+for further debate. Grace expects no reply.
 
 ### Phase 5: Plan
 
@@ -258,10 +165,10 @@ Analysis, Code Analysis, Session Scope, accepted Design) are already in your
 context from prior phases and the accepted Design handoff at the end of Phase 4.
 
 Focus on the task list and its decomposition. Design-shaped concerns (defend
-behaviour, code-shape, generalisation) were the Design review's territory. If a
-task introduces a new contract via prose or a runtime check that the Design
-didn't carry, you can still flag it. But the subagent lenses in Step 5.2 are the
-Plan review's discipline.
+behaviour, code-shape, generalisation) were settled in the Design. If a task
+introduces a new contract via prose or a runtime check that the Design didn't
+carry, you can still flag it. But the subagent lenses in Step 5.2 are the Plan
+review's discipline.
 
 #### Step 5.2: Launch the review subagents
 
@@ -608,9 +515,10 @@ text (see
 [Sharing an artifact](../skills/team/protocol.md#sharing-an-artifact)). When you
 launch review subagents for that phase, give each one that same path instead of
 retyping the content into every `Agent` call. Name anything a subagent needs
-beyond the shared file path in its own prompt instead, the way
-[Step 4.4](#step-44-launch-the-review-subagents) gives
-`review-design-reinvention` its Step 4.1 survey on top of the file path.
+beyond the shared file path in its own prompt instead.
+[Step 3.2](#step-32-launch-the-review-subagents) does this for the scope lenses:
+it names the Session Type and the accepted Requirements and Code Analyses on top
+of the file path.
 
 ### Defend behaviour, not surface
 
@@ -710,19 +618,6 @@ Out of scope but noticed:
 
 Challenge: <one-line claim that an accepted artifact no
 longer holds, with the new evidence>.
-
-From Junio.
-```
-
-Design review reply (no "out of scope but noticed" section at Design time):
-
-```text
-1. <finding on the Design> — <reason>; involves <file/symbol
-   or Design part>.
-2. ...
-
-Challenge: <one-line claim that a prior accepted artifact no
-longer holds>.
 
 From Junio.
 ```

@@ -88,13 +88,6 @@ plugins/:
               'Step 3.4: Send your findings to Grace via `SendMessage`':
               'Step 3.5: Read the accepted Session Scope':
             'Phase 4: Design':
-              'Step 4.1: Survey existing tools':
-              'Step 4.2: Send your design sketches to Grace via `SendMessage`':
-              'Step 4.3: Read the Design Options':
-              'Step 4.4: Launch the review subagents':
-              'Step 4.5: Weigh the findings':
-              'Step 4.6: Send your findings to Grace via `SendMessage`':
-              'Step 4.7: Read the accepted Design':
             'Phase 5: Plan':
               'Step 5.1: Read the Draft Plan':
               'Step 5.2: Launch the review subagents':
@@ -134,15 +127,6 @@ plugins/:
               'Step 3.3: Send your findings to Grace via `SendMessage`':
               'Step 3.4: Read the accepted Session Scope':
             'Phase 4: Design':
-              'Step 4.1: Generate analogies':
-              'Step 4.2: Send your design sketches to Grace via `SendMessage`':
-              'Step 4.3: Read the Design Options':
-              'Step 4.4: Apply the engineering-pattern lenses':
-                'Lens 1: Naming':
-                'Lens 2: Scope and abstraction':
-                'Lens 3: Plain code':
-              'Step 4.5: Send your findings to Grace via `SendMessage`':
-              'Step 4.6: Read the accepted Design':
             'Phase 5: Plan':
               'Step 5.1: Read the Draft Plan':
               'Step 5.2: Apply the implementer''s-view lens':
@@ -331,6 +315,19 @@ plugins/:
             First, read the writing style guide:
             Arguments:
             Each round:
+      design/:
+        SKILL.md:
+          Design:
+            Arguments:
+            Generate analogies:
+            Survey existing tools:
+            Generate design sketches:
+            Draft the Design Options:
+              The Proposed Design:
+              The Alternative Designs:
+            Review the draft:
+            Copy-edit the draft:
+            The result:
       less/:
         SKILL.md:
           Dream Less:
@@ -435,15 +432,11 @@ plugins/:
               'Step 3.7: Post the accepted Session Scope to the PR':
           phase4.md:
             'Phase 4: Design':
-              'Step 4.1: Generate analogies and survey existing tools':
-              'Step 4.2: Generate design sketches':
-              'Step 4.3: Draft the Design Options':
-              'Step 4.4: Share the Design Options with Junio and Ralph for review':
-              'Step 4.5: Apply the reviews':
-              'Step 4.6: Share the revised Design Options with the user':
-              'Step 4.7: Seek user acceptance of the Design':
-              'Step 4.8: Hand the accepted Design to Junio and Ralph':
-              'Step 4.9: Post the accepted Design to the PR':
+              'Step 4.1: Produce the Design Options':
+              'Step 4.2: Share the Design Options with the user':
+              'Step 4.3: Seek user acceptance of the Design':
+              'Step 4.4: Hand the accepted Design to Junio and Ralph':
+              'Step 4.5: Post the accepted Design to the PR':
           phase5.md:
             'Phase 5: Plan':
               'Step 5.1: Compose the Draft Plan':
