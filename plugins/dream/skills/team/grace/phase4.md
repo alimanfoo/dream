@@ -14,8 +14,6 @@ Code Analysis, and Session Scope.
 The skill returns the Design Options: the Proposed Design (its recommendation)
 and any Alternative Designs, each with its trade-off named.
 
-Hold the returned Design Options as your working artifact for the steps below.
-
 ## Step 4.2: Share the Design Options with the user
 
 Send the Proposed Design and any Alternative Designs to the user. Lead with the

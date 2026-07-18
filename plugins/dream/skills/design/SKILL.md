@@ -2,9 +2,7 @@
 name: design
 description:
   Produce design options for a task, a recommended design plus any credible
-  alternatives. Assumes the requirements, code analysis, and scope are in
-  context. Runs a spread of analogies, an existing-tools survey, and design
-  sketches, then reviews and refines the result.
+  alternatives.
 argument-hint: "<requirements, code analysis, and scope | text>"
 ---
 
@@ -70,9 +68,11 @@ Write the sketches as turn output, a numbered list.
 Consolidate the sketches into the design options: the proposed design (your
 recommendation) and any credible alternative designs.
 
-**The Proposed Design.** Describe what the code will look like when the work is
-done, the approach proposed, and the key design calls that follow from the code
-analysis. Depth scales with session type:
+### The Proposed Design
+
+Describe what the code will look like when the work is done, the approach
+proposed, and the key design calls that follow from the code analysis. Depth
+scales with session type:
 
 - _Enhancement:_ the **happy-path contract** (what valid inputs produce what
   outputs, where it slots in, how callers interact with it). Then the **input
@@ -116,10 +116,11 @@ code, not in a docstring, comment, or section-header. A type or a module
 boundary holds it more reliably than prose a reader can skip. Reach for prose
 only when no shape carries the meaning.
 
-**The Alternative Designs.** Keep each strong sketch you did not pick as an
-alternative design. It qualifies when it still delivers the full session scope
-but buys its difference at a cost. Name the trade-off: a new dependency, more
-coupling, less flexibility.
+### The Alternative Designs
+
+Keep each strong sketch you did not pick as an alternative design. It qualifies
+when it still delivers the full session scope but buys its difference at a cost.
+Name the trade-off: a new dependency, more coupling, less flexibility.
 
 A sketch that delivers less than the session scope is not an alternative. It is
 a scope change. Flag it prominently in the result if it has merit, rather than
