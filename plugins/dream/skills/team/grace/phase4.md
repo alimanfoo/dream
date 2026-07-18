@@ -12,16 +12,9 @@ Run the `dream:design` skill, focused on the accepted Requirements Analysis,
 Code Analysis, and Session Scope.
 
 The skill returns the Design Options: the Proposed Design (its recommendation)
-and any Alternative Designs, each with its trade-off named. It may also surface
-a finding that reaches beyond the Design: one that breaks an accepted artifact,
-or one that is real but outside the Session Scope.
+and any Alternative Designs, each with its trade-off named.
 
 Hold the returned Design Options as your working artifact for the steps below.
-Give each beyond-the-Design finding an outcome before continuing: assess one
-that breaks an accepted artifact (a scope change, or an earlier artifact that no
-longer holds) as a [Challenge](../../../agents/Grace.md#challenge); hold one
-that is real but outside the Session Scope as an Ancillary Finding for
-[Collect](../../../agents/Grace.md#phase-9-collect).
 
 ## Step 4.2: Share the Design Options with the user
 

@@ -243,7 +243,7 @@ useful, because most of the plugin's machinery exists to answer one or more:
 - **Over-eagerness**: attempts an underspecified ask rather than question it.
 - **Reactivity**: answers what's asked, volunteers nothing.
 
-Two notes on how the plugin answers these:
+Notes on how the plugin answers these:
 
 **The answer is structural, not exhortative.** Telling an agent to be less
 sycophantic produces no tokens and changes nothing (see "Writing agent
