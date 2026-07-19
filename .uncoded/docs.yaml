@@ -333,6 +333,14 @@ plugins/:
             Mark the PR ready for review:
             Watch for user review:
             Merge:
+      plan/:
+        SKILL.md:
+          Plan:
+            Arguments:
+            Compose the draft plan:
+            Review the draft:
+            Copy-edit the draft:
+            The result:
       requirements-analysis/:
         SKILL.md:
           Requirements analysis:
