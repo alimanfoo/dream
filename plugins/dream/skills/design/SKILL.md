@@ -35,8 +35,8 @@ Write the analogies as turn output, a numbered list, near and far.
 
 ## Survey existing tools
 
-Survey the existing tools that could meet the need, so the sketches reach for a
-building block already to hand before inventing one. Name every entry that could
+Survey the existing tools that could meet the need, so the sketches reach for an
+existing building block before inventing one. Name every entry that could
 address the need, in part or in full, external or internal.
 
 - **External**: a library, a standard algorithm or technique, or a language or
@@ -82,23 +82,23 @@ scales with session type:
   integration calls.
 - _Maintenance:_ the target shape, the surface when the work is done: which
   name, which structure, which abstraction wins, and the migration path.
-- _Bug fix:_ the fix approach. When more than one fix shape is plausible
-  (defensive check, structural fix, removal), name the alternatives and why this
-  one. For straightforward bugs this is one or two sentences.
+- _Bug fix:_ the fix approach. For straightforward bugs, one or two sentences.
+  When more than one fix shape is plausible (defensive check, structural fix,
+  removal), name the alternatives and why this one.
 
 Reach the coherent resolution, not just the site the input named. The design
 settles it, so it must reach the root cause and every instance the resolution
-needs. Where the code analysis traced a recurring surface to one fact written in
-two places, single-source it rather than patching the copies, which only lets
-the drift return. The `dream:review-design-coherent-reach` review below checks
-the design reaches far enough for its Session Type.
+needs. A coherent resolution leaves no follow-on maintenance work for a later
+session. Where the code analysis traced a recurring surface to one fact written
+in two places, single-source it rather than patching the copies, which only lets
+the drift return.
 
 The input may steer the design: a library, framework, or approach to use. Source
 that steer and weigh it with the sketches, on its merits. It is the user's steer
 on the how, not a fixed requirement. Take it in the proposed design unless you
-have reason to set it aside. Setting it aside is the user's call. Don't override
-it silently. Recommend the alternative and flag the steer prominently in the
-result.
+have reason to set it aside. The user decides whether to set it aside. Recommend
+the alternative and flag the steer prominently in the result. Don't override it
+silently.
 
 Prefer re-use of an existing library over custom code, but weigh the trade-offs.
 
@@ -127,7 +127,7 @@ only when no shape carries the meaning.
 
 Keep each strong sketch you did not pick as an alternative design. It qualifies
 when it still delivers the full requirements and reaches the same coherent
-resolution, but buys its difference at a cost. Name the trade-off: a new
+resolution, but its difference costs something. Name the trade-off: a new
 dependency, more coupling, less flexibility.
 
 A sketch that delivers less than the requirements, or stops short of the
@@ -160,8 +160,8 @@ needs. Combine their findings into one list, dropping duplicates.
 
 Judge each finding on its merits, and verify it against your own read. Address
 the findings you accept by editing the temporary file. A candidate lateral move
-that is strictly better folds into the proposed design. One that buys its
-difference at a cost joins the alternative designs, with its trade-off named.
+that is strictly better folds into the proposed design. One whose difference
+costs something joins the alternative designs, with its trade-off named.
 
 ## Copy-edit the draft
 

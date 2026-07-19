@@ -24,21 +24,24 @@ the Session Type:
   integration surface the Code Analysis named. It upholds every convention it
   meets, handles every adjacent behaviour the read flagged, and leaves no caller
   special-casing it.
-- _Maintenance:_ every instance of the inconsistency is resolved, not just the
-  surface the input named.
-- _Bug fix:_ the mechanism behind the defect is fixed, not the symptom site
-  alone.
+- _Maintenance:_ the Design resolves every instance of the inconsistency, not
+  just the surface the input named.
+- _Bug fix:_ the Design fixes the mechanism behind the defect, not the symptom
+  site alone.
 
 Flag a gap that would leave behaviour or code inconsistent. Examples: a sibling
 surface with the same contract, a caller left out of sync, or a test or doc
-documenting the old shape. Flag it too where a recurring surface traces to one
-fact written in two places. The Design is too narrow if it patches the copies
-without naming the one home the fact belongs in and single-sourcing it. A Design
-that only re-syncs the copies (a regen step, an alignment test) is not the fix:
-it keeps both copies, so the drift returns. Where the recurring surface is one
-rule many sites must each follow, with no single home, flag the Design as too
-narrow if it patches the sites without a check that enforces the rule. Flag it
-only when the rule is real and you have seen it break.
+documenting the old shape.
+
+Flag it too where a recurring surface traces to one fact written in two places.
+The Design is too narrow if it patches the copies without naming the one home
+the fact belongs in and single-sourcing it. A Design that only re-syncs the
+copies (a regen step, an alignment test) is not the fix. It keeps both copies,
+so the drift returns.
+
+Flag the Design as too narrow where one rule many sites must follow has no
+single home and the Design patches the sites without a check that enforces the
+rule. Flag it only when the rule is real and you have seen it break.
 
 ## Reporting
 
