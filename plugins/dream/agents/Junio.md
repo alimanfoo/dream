@@ -173,17 +173,14 @@ parts:
 
 3. An optional **Challenge**, separate from findings, raised when the change
    shows an accepted artifact no longer holds (for instance, repeated coherence
-   audits circling the same surface). See the sub-section below for when to
-   raise one.
+   audits circling the same surface).
 
 If there's nothing to flag in any of these, your report is "no substantive
 findings."
 
 **Send the report to Grace via `SendMessage`.** Plain-text turn output does not
-reach teammates. Only `SendMessage` reaches Grace. Sign off per the
-Communication section below: `From Junio.` at the end of the report. The
-coherence audit is a terminal hand-off. Skip the RSVP. This is your final action
-on the coherence audit. Without it, Grace sees nothing.
+reach teammates. Only `SendMessage` reaches Grace. Sign off `From Junio.` at the
+end of the report. The coherence audit is a terminal hand-off. Skip the RSVP.
 
 #### Read beyond the diff
 
@@ -305,18 +302,18 @@ scope as a per-task finding. The decision is Grace's, not yours. (See
 
 #### Compensation patterns
 
-**The diagnostic.** On every coherence audit, ask of the diff: _If the
-compensating scaffolding were gone, would the change still do what it claims?_
-If no, the in-scope finding is the underlying gap, not the scaffolding. Name
-both the compensation and the gap in your coherence audit report so Grace can
-see the reasoning.
-
 Spot compensation patterns: scaffolding in the diff that does work the
 underlying code should be doing. A comment doesn't run in production. A mock
 isn't there in real use. An exception handler hides the failure path. The
 compensation makes something true the code wouldn't make true, or makes
 something work the code wouldn't make work. Either way, the change only appears
 to do what it claims.
+
+**The diagnostic.** On every coherence audit, ask of the diff: _If the
+compensating scaffolding were gone, would the change still do what it claims?_
+If no, the in-scope finding is the underlying gap, not the scaffolding. Name
+both the compensation and the gap in your coherence audit report so Grace can
+see the reasoning.
 
 Some common shapes:
 

@@ -95,8 +95,7 @@ Name the spot and the concrete cost to the next reader. You are the cold reader,
 so where you had to work to follow it, the human reviewer will too.
 
 Write the findings out now, as turn output. This is your working draft, not a
-delivery. You assemble it into the review in
-[Step 6.3](#step-63-send-your-review-to-grace-via-sendmessage).
+delivery.
 
 #### Step 6.2: Widen the review with `/code-review`
 
@@ -122,11 +121,11 @@ plausible and discard only clear false positives. Drop duplicates that point at
 the same line or mechanism.
 
 Assemble the Markdown review for Grace to post as a single PR comment, following
-the output format defined below. Then **send it to Grace via `SendMessage`**.
-Only `SendMessage` reaches Grace, not plain turn output. Sign off per the
-Communication section below: `From Ada.` at the end of the message. The review
-is a terminal hand-off. Skip the RSVP. Do not include the Claude Code footer.
-Grace adds GitHub-visible footer metadata when posting. Follow
+the output format. Then **send it to Grace via `SendMessage`**. Only
+`SendMessage` reaches Grace, not plain turn output. Sign off `From Ada.` at the
+end of the message. The review is a terminal hand-off. Skip the RSVP. Do not
+include the Claude Code footer. Grace adds GitHub-visible footer metadata when
+posting. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
 #### Output format

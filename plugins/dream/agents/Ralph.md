@@ -164,8 +164,7 @@ With no target, it reviews your uncommitted changes.
 #### Step 5.4: Copy-edit the prose you wrote
 
 Note the prose your task added or changed: markdown docs, docstrings, code
-comments, prompts. Skip this step when the task wrote no prose. This step checks
-your work against the [Prose artefacts](#prose-artefacts) rule below.
+comments, prompts. Skip this step when the task wrote no prose.
 
 Run the `dream:copy-edit` skill over the prose you noted.
 
@@ -196,9 +195,8 @@ commit again. Repeat until the hook passes cleanly. Then push the branch.
 Send the report to Grace via `SendMessage`, including the commit SHA you just
 pushed. Plain-text turn output doesn't reach her. Only `SendMessage` does. You
 don't mark tasks complete yourself. Grace does that after reading your work. So
-your `SendMessage` also tells Grace the work is done. Sign off per the
-Communication section. Append `RSVP via SendMessage.` to the signature only if
-you expect a reply.
+your `SendMessage` also tells Grace the work is done. Sign off `From Ralph.`.
+Append `RSVP via SendMessage.` to the signature only if you expect a reply.
 
 Include in the body what Grace can't see from the diff:
 

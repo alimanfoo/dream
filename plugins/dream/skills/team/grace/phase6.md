@@ -11,8 +11,8 @@ You handle both reviews the same way.
 
 Tell Ada and Junio that development is complete and ask each for their review.
 Two `SendMessage` calls in the same turn, one to each, both carrying the PR
-number. Sign off per "Communication between teammates (agents)":
-`From Grace. RSVP via SendMessage.` Wait for both reviews by going idle (see
+number. Sign off `From Grace. RSVP via SendMessage.` Wait for both reviews by
+going idle (see
 [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
 ## Step 6.2: Post each review as a PR comment
@@ -49,8 +49,8 @@ cause, not as a list of separate follow-ons.
 Keep one response note per finding as you triage. Accepted findings record the
 follow-on task and, once complete, the commit or PR-visible evidence that
 addressed it. Rejected findings record the reason. Out-of-scope findings record
-that they are held for post-merge triage. These notes become the public response
-in [Step 6.4](#step-64-post-graces-response-as-a-pr-comment).
+that they are held for post-merge triage. These notes are the raw material for
+the response comment you post after triage.
 
 Reclassify any "out of scope but noticed" item as in scope when it is the same
 edit: one the PR missed, or one the PR has now made adjacent. The review bucket

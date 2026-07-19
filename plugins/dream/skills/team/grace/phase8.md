@@ -12,12 +12,18 @@ phase by posting what Collect did back to the session PR.
 
 ## Step 8.1: Compile
 
-Gather the sources (Ralph in-session, Junio in-session, Ada in-session,
+Ask the teammates for the post-merge sweep, referring them to the Collect cues
+(see [Phase 8](../protocol.md#phase-8-collect)). They read the cues once at
+boot, and by now that read has fallen from view. Referring to the cues in the
+request fires them while each teammate surfaces Opportunities.
+
+Gather the sources (Ralph in-session, Junio in-session, Ada in-session, and the
 post-merge sweep). Each source yields two kinds: Ancillary Findings (concerns
 left out of scope) and Opportunities (worthwhile follow-up work the session
 suggests). Merge a Finding or Opportunity that appears in more than one source
 into one. Do this only within a session, not across sessions. Keep Opportunities
-separate from Findings. They skip the Test step (see [Step 8.3](#step-83-test)).
+separate from Findings. They skip the Test step. Draw on the cues yourself as
+you compile. You hold the whole session, so you have the widest view.
 
 Add the **deferred candidates** from Phase 1 as Opportunities. These are
 candidate use cases or improvement goals the user neither promoted nor declined
@@ -32,13 +38,6 @@ as Ancillary Findings. Unlike the Phase 1 candidates, these are Findings, so
 they go through the Test step. The removal question fits an over-built smell
 especially well. Each carries the citation you made in the Code Analysis, so it
 is ready to file as is.
-
-As you ask the teammates for the post-merge sweep, refer them to the Collect
-cues (see [Phase 8](../protocol.md#phase-8-collect)). They read the cues once at
-boot, and by now that read has fallen from view. Referring to the cues in the
-request fires them while each teammate surfaces Opportunities. Draw on the cues
-yourself as you compile. You hold the whole session, so you have the widest
-view.
 
 ## Step 8.2: Deepen
 
@@ -96,6 +95,34 @@ Make one call per candidate: drop, reinforce, re-frame, or file fresh. Use the
 source observations, the issue history, and what the Test step showed. Don't
 send candidates back to Ralph or Junio for another round of judgement.
 
+The bar for filing a **new** issue from a Finding is _a behaviour gap with a
+real consumer_. Findings that clear the bar go to Decide on the merits. Findings
+the Test step marked as simplification candidates go to `file fresh`, regardless
+of how defend-behaviour answered. Findings that clear neither default to `drop`.
+
+An Opportunity clears the bar when it names worthwhile follow-up work the
+session suggested, with a plausible consumer or value. Say what you see as a
+hypothesis with its evidence: the value you'd expect, the consumer it serves,
+the idea the work opened up. The user judges it, so this is the place to reach
+for the strong idea, not the safe one.
+
+- **Drop**: duplicate of an existing open issue, fails the bar for filing, or
+  cut by the auto-collect cap. For a duplicate, you may comment on the existing
+  issue if the new sighting adds evidence (a second occurrence, a different
+  angle).
+- **Reinforce**: related to an existing open issue but not identical. Comment on
+  the open issue with the new angle rather than opening a new one.
+- **Re-frame**: recurrence on a surface with prior issues, open or closed. File
+  one issue at the **contract level**: name the surface (the function, the
+  parameter, the contract) and list the prior issues with `#N` references. Where
+  the recurrence is drift between copies of one fact, name the home and the
+  copies. Frame the issue around single-sourcing them (see
+  [One fact, one home](../protocol.md#one-fact-one-home)). Where it is one rule
+  many sites must each follow, with no single home, frame the issue as a
+  [cross-site rule](../protocol.md#cross-site-rules).
+- **File fresh**: no related issue on the surface, and the finding clears the
+  bar. Open a standalone issue.
+
 Build the decision table. For each candidate, show the finding, the decision,
 the concrete action it maps to with its target, and the reason. The decision
 word alone doesn't tell the user what will happen:
@@ -142,34 +169,6 @@ End it with one of these two, depending on
   drafts as proposed, then file them in the same turn.
 
 Do not rely on an unshared draft for GitHub-visible text.
-
-- **Drop**: duplicate of an existing open issue, fails the bar for filing, or
-  cut by the auto-collect cap above. For a duplicate, you may comment on the
-  existing issue if the new sighting adds evidence (a second occurrence, a
-  different angle).
-- **Reinforce**: related to an existing open issue but not identical. Comment on
-  the open issue with the new angle rather than opening a new one.
-- **Re-frame**: recurrence on a surface with prior issues, open or closed. File
-  one issue at the **contract level**: name the surface (the function, the
-  parameter, the contract) and list the prior issues with `#N` references. Where
-  the recurrence is drift between copies of one fact, name the home and the
-  copies. Frame the issue around single-sourcing them (see
-  [One fact, one home](../protocol.md#one-fact-one-home)). Where it is one rule
-  many sites must each follow, with no single home, frame the issue as a
-  [cross-site rule](../protocol.md#cross-site-rules).
-- **File fresh**: no related issue on the surface, and the finding clears the
-  bar. Open a standalone issue.
-
-The bar for filing a **new** issue from a Finding is _a behaviour gap with a
-real consumer_. Findings that clear the bar go to Decide on the merits. Findings
-the Test step marked as simplification candidates go to `file fresh`, regardless
-of how defend-behaviour answered. Findings that clear neither default to `drop`.
-
-An Opportunity clears the bar when it names worthwhile follow-up work the
-session suggested, with a plausible consumer or value. Say what you see as a
-hypothesis with its evidence: the value you'd expect, the consumer it serves,
-the idea the work opened up. The user judges it at the decision table, so this
-is the place to reach for the strong idea, not the safe one.
 
 You don't implement anything in any phase. What enters the backlog is an issue
 or a comment, never a fix. This holds even when merge was deferred and the PR is

@@ -61,9 +61,8 @@ itself a reason to fold it in. Each finding takes one of these paths:
 
 - **Fold in**: accept into the revised Plan as a task (or a tidy-first
   precursor).
-- **Reject**: you disagree with the finding. If the rejection is notable, carry
-  the reason into the Plan message in
-  [Step 4.4](#step-44-share-the-revised-plan-with-the-user).
+- **Reject**: you disagree with the finding. Carry the reason into the note when
+  you share the revised Plan, if the rejection is notable.
 - **Hold as Ancillary Finding**: the finding is real but out of scope. Hold for
   post-merge triage.
 - **Raise a Challenge**: the finding shows an accepted artifact no longer holds.
