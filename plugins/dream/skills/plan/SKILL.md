@@ -9,8 +9,8 @@ argument-hint: "<design and code analysis | text>"
 # Plan
 
 Produce a plan: the task list that delivers the design. Each task is a
-manageable single-commit unit, selected by a criterion the implementer applies
-fresh.
+manageable single-commit unit. A criterion selects its work, and the implementer
+applies that criterion fresh.
 
 Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for the plan and every message you write.
@@ -20,8 +20,8 @@ Follow the steps in order.
 ## Arguments
 
 The argument gives the focus for the plan: the accepted design and code analysis
-the plan must deliver. Without an argument, derive the focus from your context.
-If you cannot identify a focus, ask the user.
+the plan must serve. Without an argument, derive the focus from your context. If
+you cannot identify a focus, ask the user.
 
 ## Compose the draft plan
 
@@ -43,7 +43,7 @@ Build each brief in this order:
 - Name the **criterion** that selects the work.
 - Offer concrete examples as scaffold.
 
-The criterion is what makes a site count. Examples illustrate, they don't bound.
+The criterion is what makes a site count. Examples illustrate. They don't bound.
 The implementer applies the criterion fresh and finds the instances themselves.
 
 Write the criterion so its wording sets its own scope. "Every occurrence of

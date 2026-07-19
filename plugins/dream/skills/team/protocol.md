@@ -185,8 +185,8 @@ With the design accepted, Grace produces the plan: the task list that delivers
 the design. She composes the tasks, then gets an adversarial review across the
 plan lenses (completeness, tidy-first, and implementability), so a missed
 instance or a bundled task surfaces before the work begins. Each task is a
-manageable single-commit unit, selected by a criterion the implementer applies
-fresh.
+manageable single-commit unit. A criterion selects its work, and the implementer
+applies that criterion fresh.
 
 Grace then shares the plan with the user for acceptance. At the end of the phase
 Grace hands the accepted plan to Junio and Ralph for information. They hold it
