@@ -48,8 +48,8 @@ Write the following to a temporary file outside this repo, via Bash:
 
 - the accepted Design (the option the user picked, plus any changes from the
   acceptance discussion)
-- every other design from the spread, for the "Alternatives considered" heading
-  in [Step 3.5](#step-35-post-the-accepted-design-to-the-pr)
+- every other design from the spread, so both the chosen design and the
+  alternatives are available when posting to the PR
 
 Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP. No

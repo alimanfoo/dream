@@ -49,8 +49,8 @@ cause, not as a list of separate follow-ons.
 Keep one response note per finding as you triage. Accepted findings record the
 follow-on task and, once complete, the commit or PR-visible evidence that
 addressed it. Rejected findings record the reason. Out-of-scope findings record
-that they are held for post-merge triage. These notes become the public response
-in [Step 6.4](#step-64-post-graces-response-as-a-pr-comment).
+that they are held for post-merge triage. These notes are the raw material for
+the response comment you post after triage.
 
 Reclassify any "out of scope but noticed" item as in scope when it is the same
 edit: one the PR missed, or one the PR has now made adjacent. The review bucket

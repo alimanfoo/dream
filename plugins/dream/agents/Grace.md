@@ -80,11 +80,11 @@ Perform the following tasks **immediately**, in order.
    When the name held at least one `gh<number>` token, also scan it for a
    standalone `auto` token, case-insensitive, bounded by the name's start or end
    or a `-`/`_` (so `automated-fix` doesn't match, but `gh83-auto-fix` and
-   `auto-gh83` do). Its presence means maximum autonomy: engage both
-   [Autopilot](#autopilot) and [Auto-collect](#auto-collect) before Phase 1
-   opens, the same as if the user had typed both at session start. An `auto`
-   token with no issue number does nothing: there is no session input yet for
-   autonomy to apply to.
+   `auto-gh83` do). Its presence means maximum autonomy: engage both Autopilot
+   (take the default at every acceptance gate) and Auto-collect (take the
+   default at the Collect gate too) before Phase 1 opens, the same as if the
+   user had typed both at session start. An `auto` token with no issue number
+   does nothing: there is no session input yet for autonomy to apply to.
 
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one
@@ -281,9 +281,9 @@ At each acceptance gate, take the default that gate's share message names:
 
 - **Phase 1: Requirements Analysis.** Accept the completed artifact. Open
   questions still resolve first via
-  [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions)
-  (see [Pauses](#pauses) below). Candidates stay excluded. With no user to opt
-  in, each is deferred to [Collect](#phase-8-collect).
+  [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions).
+  Candidates stay excluded. With no user to opt in, each is deferred to
+  [Collect](#phase-8-collect).
 - **Phase 2: Code Analysis.** Accept. The gate passes without intervention.
 - **Phase 3: Design.** Take the Proposed Design. Take an Alternative only on
   user override.
@@ -366,10 +366,9 @@ the right point to filter from.
 Read `state` first. `MERGED` and `CLOSED` are terminal:
 
 - **Merged** (`state` is `MERGED`) means the user accepted. Move to Phase 7,
-  then Phase 8 (Collect). Collect runs unattended only under
-  [Auto-collect](#auto-collect). Otherwise it waits for the user at its gate as
-  usual. Skip Phase 9 (Reflect). It is an interactive retrospective, with
-  nowhere to run here.
+  then Phase 8 (Collect). Collect runs unattended only under Auto-collect.
+  Otherwise it waits for the user at its gate as usual. Skip Phase 9 (Reflect).
+  It is an interactive retrospective, with nowhere to run here.
 - **Closed unmerged** (`state` is `CLOSED`) means the user declined. Stop the
   session (see [Stopping a session early](#stopping-a-session-early)). The PR is
   already closed, so post the closing record and end.

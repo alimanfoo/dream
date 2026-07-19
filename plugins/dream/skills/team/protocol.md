@@ -68,8 +68,8 @@ moves on without pausing.
 
 **User acceptance gates run by default:** the Requirements Analysis (closing
 Phase 1), the Code Analysis (closing Phase 2), the Design (closing Phase 3), and
-the Plan (closing Phase 4). See "Acceptance gates" below. The "Common rules" at
-the end apply across every phase.
+the Plan (closing Phase 4). The "Common rules" at the end apply across every
+phase.
 
 **Challenge** is a separate mechanism, not a phase. A teammate raises one when
 the work surfaces something new that breaks an accepted artifact: the
@@ -157,8 +157,7 @@ how it's organised, and its code smells, where the code will resist the work.
 The Code Analysis is a verifiable read of what the current code does and where.
 Grace then shares it with the user for acceptance. At the end of the phase Grace
 hands the accepted Code Analysis to Junio and Ralph for information. On
-acceptance Grace also posts the accepted Code Analysis to the PR as a comment
-(see [The session PR](#the-session-pr)).
+acceptance Grace also posts the accepted Code Analysis to the PR as a comment.
 
 The phase ends at user acceptance of the Code Analysis.
 
@@ -176,8 +175,7 @@ the search was genuine.
 
 Grace then shares the Design Options with the user for acceptance. At the end of
 the phase Grace hands the accepted Design to Junio and Ralph for information. On
-acceptance Grace also posts the accepted Design to the PR as a comment (see
-[The session PR](#the-session-pr)).
+acceptance Grace also posts the accepted Design to the PR as a comment.
 
 The phase ends at user acceptance of the Design.
 
@@ -192,7 +190,7 @@ shares the revised Plan with the user, with a brief note on what changed from
 the Draft after the reviews. At the end of the phase Grace hands the accepted
 Plan to Junio and Ralph for information. They hold it as context for the rest of
 the session. On acceptance Grace also posts the accepted Plan to the PR as a
-comment (see [The session PR](#the-session-pr)).
+comment.
 
 The phase ends at user acceptance of the Plan.
 
@@ -407,7 +405,7 @@ Requirements Analysis (Phase 1), the Code Analysis (Phase 2), the Design (Phase
    autopilot, Grace asks explicitly, naming the artifact and what comes next.
    Example: _"Accept the Design to proceed to Phase 4: Plan."_ Under autopilot,
    she skips the question. She states the default she's taking and the next
-   phase, in the same turn (see [Autopilot](#autopilot)).
+   phase, in the same turn.
 3. Grace waits for the user's reply before doing anything else. Under autopilot,
    she has no question to wait on: step 2 already moved her to the next phase.
 
@@ -471,8 +469,7 @@ observation. Grace can raise one in any phase once an artifact has been
 accepted.
 
 When a chosen option revises an artifact already posted to the PR, Grace posts
-the revision as a new comment that replaces it, not an edit. See
-[The session PR](#the-session-pr).
+the revision as a new comment that replaces it, not an edit.
 
 ## The session PR
 
@@ -600,7 +597,7 @@ a duplicated fact is the root cause of a recurring surface, single-sourcing it
 is Coherent work, not optional anticipation. Finishing without it leaves the
 root cause unresolved. When a recurring rule has no single home to derive from,
 where many sites each restate it, there is nothing to single-source. It is a
-[cross-site rule](#cross-site-rules) instead.
+cross-site rule instead.
 
 Two traps:
 
@@ -618,10 +615,10 @@ Two traps:
 
 A repo records instructions for coding agents in files such as `AGENTS.md` or
 `CLAUDE.md`. These state how the code is built, the conventions it keeps, the
-test and lint commands, and any [cross-site rule](#cross-site-rules) documented
-rather than checked. A repo may keep one at its root, governing the whole tree,
-and one in any subdirectory, governing the paths beneath it. The nearest such
-file to a path governs it. Read it before working on that code.
+test and lint commands, and any cross-site rule documented rather than checked.
+A repo may keep one at its root, governing the whole tree, and one in any
+subdirectory, governing the paths beneath it. The nearest such file to a path
+governs it. Read it before working on that code.
 
 ## Cross-site rules
 

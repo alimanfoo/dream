@@ -196,9 +196,8 @@ commit again. Repeat until the hook passes cleanly. Then push the branch.
 Send the report to Grace via `SendMessage`, including the commit SHA you just
 pushed. Plain-text turn output doesn't reach her. Only `SendMessage` does. You
 don't mark tasks complete yourself. Grace does that after reading your work. So
-your `SendMessage` also tells Grace the work is done. Sign off per the
-Communication section. Append `RSVP via SendMessage.` to the signature only if
-you expect a reply.
+your `SendMessage` also tells Grace the work is done. Sign off `From Ralph.`.
+Append `RSVP via SendMessage.` to the signature only if you expect a reply.
 
 Include in the body what Grace can't see from the diff:
 
