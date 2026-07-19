@@ -69,9 +69,9 @@ below.
 
 Read the accepted Requirements Analysis, the Session Type, and the repo
 orientation at the file path Grace's message gives you at the end of Phase 1,
-flagged for information only. Anchor your design work on them, not on the
-session input. The accepted Requirements Analysis may differ substantially from
-the session input. Grace expects no reply.
+flagged for information only. Anchor your work on them, not on the session
+input. The accepted Requirements Analysis may differ substantially from the
+session input. Grace expects no reply.
 
 ### Phase 2: Code Analysis
 
