@@ -211,7 +211,7 @@ input on its merits. The user opens with session input that seeds the
 requirements analysis. Later phases build a more systematic picture from that
 seed and may revise it. The team surfaces what investigation reveals, even when
 it widens beyond the literal ask. The user can decline the wider scope by
-pushing back at the Design gate.
+pushing back at the design gate.
 
 **Each phase artifact has its own purpose. Don't mix concerns.** Requirements
 analysis is about user intent. Code analysis is about code patterns. Design is

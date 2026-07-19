@@ -29,8 +29,9 @@ started in a worktree, the branch already exists.
 a short subject (the issue ref or slug) and the `Co-Authored-By` trailer only
 (see
 [Branch and commit operations](../../../agents/Grace.md#branch-and-commit-operations)).
-Push the branch. All work runs against the session-start state of `main`. Merge
-handles any drift on origin.
+Push the branch. All work runs against the session-start state of `main`. The
+[merge phase](../../../agents/Grace.md#phase-7-merge) handles any drift on
+origin.
 
 **Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
 the title from the session input. Mark the title and body per
@@ -92,9 +93,9 @@ yet.
 
 Send the completed requirements analysis to the user. When there are candidates,
 ask the user to name any they want included, by number. Note that any they don't
-name are carried forward as opportunities to
-[Collect](../../../agents/Grace.md#phase-8-collect). Tell them they can ask to
-drop any outright.
+name are carried forward as opportunities to the
+[collect phase](../../../agents/Grace.md#phase-8-collect). Tell them they can
+ask to drop any outright.
 
 End the message with one of these two, depending on autopilot:
 
@@ -110,9 +111,9 @@ Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [autopilot](../../../agents/Grace.md#autopilot)).
 
 If accepted, promote any candidate the user opted into. Remove any that the user
-explicitly dropped. Defer the rest to
-[Collect](../../../agents/Grace.md#phase-8-collect). Apply the session type's
-category label to the PR via `gh pr edit --add-label <name>` (see
+explicitly dropped. Defer the rest to the
+[collect phase](../../../agents/Grace.md#phase-8-collect). Apply the session
+type's category label to the PR via `gh pr edit --add-label <name>` (see
 [GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to
 [Step 1.6](#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
 

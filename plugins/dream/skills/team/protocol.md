@@ -115,10 +115,10 @@ changed since the issue was filed. Testing it is scrutiny of the input, not of
 the user, who decides at the gate.
 
 The seed may steer the design, not only requirements: what to leave out, which
-library or approach to use. The Design phase sources that steer and weighs it,
-taking what bears on it. It considers the steer, it doesn't obey it. Under
-autopilot, with no user at the gate, this steer stands in for the guidance the
-user would give.
+library or approach to use. The [design phase](#phase-3-design) sources that
+steer and weighs it, taking what bears on it. It considers the steer, it doesn't
+obey it. Under autopilot, with no user at the gate, this steer stands in for the
+guidance the user would give.
 
 When the session runs in a worktree, the branch name may contain one or more
 issue numbers (`GH83`, `claude/gh341-...`, `fix-gh12-and-gh34`). Grace then
@@ -142,11 +142,11 @@ review before anyone else sees it, which Grace weighs and folds in.
 Enhancement and maintenance shapes also carry candidates: use cases or
 improvement goals the read suggests but the input didn't name. Candidates are
 excluded by default. The user opts in to any at the acceptance gate. A candidate
-the user drops is removed. One the user leaves unaddressed defers to Collect.
-The user answers the open questions. Grace folds the answers in and shares the
-completed artifact for acceptance. At the end of the phase Grace hands the
-accepted requirements analysis and the session type to Junio and Ralph for
-information.
+the user drops is removed. One the user leaves unaddressed defers to the
+[collect phase](#phase-8-collect). The user answers the open questions. Grace
+folds the answers in and shares the completed artifact for acceptance. At the
+end of the phase Grace hands the accepted requirements analysis and the session
+type to Junio and Ralph for information.
 
 The phase ends at user acceptance of the requirements analysis.
 
@@ -194,8 +194,9 @@ comment.
 
 The phase ends at user acceptance of the plan.
 
-The task list isn't fixed: Grace or the user can add tasks during Phase 5
-(Develop) and Phase 6 (Review). The user can redirect at any point.
+The task list isn't fixed: Grace or the user can add tasks during the
+[develop phase](#phase-5-develop) and the [review phase](#phase-6-review). The
+user can redirect at any point.
 
 ## Phase 5: Develop
 
@@ -314,24 +315,26 @@ Grace handles both reviews the same way:
 5. She writes the PR description, marks the PR ready, and hands back to the
    user.
 
-The phase ends at user acceptance of the PR. The session moves to Merge.
+The phase ends at user acceptance of the PR. The session moves to the
+[merge phase](#phase-7-merge).
 
 ## Phase 7: Merge
 
 The goal is a clean merge. Grace drives the integration. Ralph resolves any
 conflict markers and commits the resolution. The user merges.
 
-Merge may be deferred. A second human reviewer may be needed, the user may
+The merge may be deferred. A second human reviewer may be needed, the user may
 choose to merge later, or release timing may sit outside the session. The
 session can end with the PR marked ready and merge left to a human. This is a
 supported outcome, not a deviation.
 
 Grace freezes the PR at the Phase 6 handoff. Once Grace marks the PR ready and
-hands back, Merge, Collect, and Reflect do no new development. Their outputs are
-the merge action, issues, comments, and issue drafts. A finding that would once
-have become a follow-on task becomes an issue instead. Resolving merge conflicts
-is part of the merge action, not new development. Grace drives the integration
-and Ralph resolves and commits the conflict markers. This holds especially when
+hands back, the [merge](#phase-7-merge), [collect](#phase-8-collect), and
+[reflect](#phase-9-reflect) phases do no new development. Their outputs are the
+merge action, issues, comments, and issue drafts. A finding that would once have
+become a follow-on task becomes an issue instead. Resolving merge conflicts is
+part of the merge action, not new development. Grace drives the integration and
+Ralph resolves and commits the conflict markers. This holds especially when
 merge is deferred, since the still-open PR is what tempts the team to fold a
 later finding back in.
 
@@ -382,7 +385,7 @@ suggested by the work just done, not a free-standing wishlist.
 
 The phase ends when triage is complete and any resulting issues have been filed.
 Grace closes it by posting a summary comment on the session PR that lists every
-issue and comment Collect produced.
+issue and comment the [collect phase](#phase-8-collect) produced.
 
 ## Phase 9: Reflect
 
@@ -442,10 +445,12 @@ responds to what the user does:
 - a review with feedback: revise the change.
 - a review asking to resolve conflicts: update the branch to be mergeable, then
   keep watching.
-- a merge: advance to Collect, which runs unattended only under auto-collect.
-  Skip Reflect.
-- a review asking to defer the merge: advance to Collect the same way, but leave
-  the PR open for the user to merge later.
+- a merge: advance to the [collect phase](#phase-8-collect), which runs
+  unattended only under auto-collect. Skip the
+  [reflect phase](#phase-9-reflect).
+- a review asking to defer the merge: advance to the
+  [collect phase](#phase-8-collect) the same way, but leave the PR open for the
+  user to merge later.
 - a close without merge: end the session as declined.
 
 Autopilot ends when the session ends, or when the user turns it off.
@@ -482,8 +487,8 @@ When open questions arise in Phase 1, she posts them to the PR before eliciting
 answers from the user. When a challenge is raised, she posts it to the PR when
 she takes it to the user. The thread becomes the record of what the session
 considered. The record extends past merge: Grace closes Phase 8 by posting a
-summary comment listing every issue and comment Collect produced (see
-[Phase 8](#phase-8-collect)).
+summary comment listing every issue and comment the
+[collect phase](#phase-8-collect) produced.
 
 Grace writes the PR description at PR ready in Phase 6, once every review
 follow-on is final. The PR stays in draft until then. When a challenge revises
@@ -512,10 +517,11 @@ ancillary, drop, reinforce, re-frame, file fresh. But the rule is the same. No
 observation stays "interesting prose." Each is named, each gets an outcome, each
 outcome is checkable.
 
-Some outcomes defer the call to Phase 8 Collect: an ancillary finding, and a
-candidate the user leaves unaddressed at the Requirements gate. Each defer has a
-named destination and a reason that matches the receiving phase's job.
-Open-ended deferral is not an outcome. "We'll come back to this" does not count.
+Some outcomes defer the call to the [collect phase](#phase-8-collect): an
+ancillary finding, and a candidate the user leaves unaddressed at the
+requirements gate. Each defer has a named destination and a reason that matches
+the receiving phase's job. Open-ended deferral is not an outcome. "We'll come
+back to this" does not count.
 
 ## Existing code is unproven
 
@@ -697,7 +703,8 @@ One session branch off `main` as of session start, one PR opened on it. Grace
 either creates the branch or uses the worktree's branch when the user launched
 Claude Code inside a worktree. The branch name reflects the session input: an
 issue number, or a short slug. All planning and development run against the
-session-start state of `main`. Grace handles any drift on origin at Merge.
+session-start state of `main`. Grace handles any drift on origin at the
+[merge phase](#phase-7-merge).
 
 #### Commits
 
@@ -730,6 +737,14 @@ spaces, and a bare `#NN` is ambiguous when both can appear in the same
 conversation. GitHub artefacts themselves are the exception: PR descriptions,
 issue bodies, PR/issue comments, and commit messages. Use the native `#NN` form
 there to preserve GitHub's auto-linking.
+
+#### Phase references
+
+Refer to a phase in prose by its lowercase name and the word "phase", linked to
+its section. A bare phase name reads as a verb otherwise (for example "defers to
+collect"). Write "the [design phase](#phase-3-design)", not "Design" or "the
+Design phase". The phase headings, the phase list, and the "Phase N: name"
+labels keep their capitals as structural titles.
 
 ### GitHub-rendered artefacts
 

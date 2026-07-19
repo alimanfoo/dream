@@ -423,11 +423,11 @@ own work suggests, big or small. For example:
 - a technique that would simplify it
 
 Raise an opportunity only when the work just done suggests it, not as a
-free-standing wishlist. When surfacing opportunities, draw on the Collect cues
-(see [Phase 8](../skills/team/protocol.md#phase-8-collect)) for the knowledge
-the audit left dormant. After you send them, your Collect-phase work is done.
-Answer if Grace later asks a specific factual question about something you saw
-while auditing.
+free-standing wishlist. When surfacing opportunities, draw on the collect cues
+(see the [collect phase](../skills/team/protocol.md#phase-8-collect)) for the
+knowledge the audit left dormant. After you send them, your collect-phase work
+is done. Answer if Grace later asks a specific factual question about something
+you saw while auditing.
 
 ### Phase 9: Reflect
 

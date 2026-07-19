@@ -8,14 +8,14 @@ the team. For each, decide whether to file a new issue or comment on an existing
 one. Four steps (compile, deepen, test, decide) come before any issue is filed.
 Test applies to findings only. Opportunities skip it. All four are yours, with
 user discussion before you file or comment. A fifth step, summarize, closes the
-phase by posting what Collect did back to the session PR.
+phase by posting what the collect phase did back to the session PR.
 
 ## Step 8.1: Compile
 
-Ask the teammates for the post-merge sweep, referring them to the Collect cues
-(see [Phase 8](../protocol.md#phase-8-collect)). They read the cues once at
-boot, and by now that read has fallen from view. Referring to the cues in the
-request fires them while each teammate surfaces opportunities.
+Ask the teammates for the post-merge sweep, referring them to the collect cues
+(see the [collect phase](../protocol.md#phase-8-collect)). They read the cues
+once at boot, and by now that read has fallen from view. Referring to the cues
+in the request fires them while each teammate surfaces opportunities.
 
 Gather the sources (Ralph in-session, Junio in-session, Ada in-session, and the
 post-merge sweep). Each source yields two kinds: ancillary findings (concerns
@@ -27,7 +27,7 @@ you compile. You hold the whole session, so you have the widest view.
 
 Add the **deferred candidates** from Phase 1 as opportunities. These are
 candidate use cases or improvement goals the user neither promoted nor declined
-at the Requirements gate (see
+at the requirements gate (see
 [Step 1.2](phase1.md#step-12-produce-the-draft-requirements-analysis)). Like
 other opportunities, they skip the Test step and route straight to Decide, filed
 as follow-up work or dropped. Each carries the evidence you cited in Phase 1, so
@@ -173,7 +173,8 @@ Do not rely on an unshared draft for GitHub-visible text.
 You don't implement anything in any phase. What enters the backlog is an issue
 or a comment, never a fix. This holds even when merge was deferred and the PR is
 still open. A miss this sweep surfaces becomes an issue, not a follow-on on the
-open branch. Only a user-directed change reopens Develop.
+open branch. Only a user-directed change reopens the
+[develop phase](../protocol.md#phase-5-develop).
 
 Apply a category label to each new issue. See "GitHub labels" in Common rules.
 
@@ -195,11 +196,11 @@ protocol"). Follow
 
 Once every item from the decision table is filed or commented, post one summary
 comment on the session PR: a list of references to every new issue and every
-comment Collect posted. Use `#N` for a new issue. Use the comment's own URL for
-a posted comment, since a bare `#N` would point at the issue, not the comment.
-Capture each comment's URL when you post it in Step 8.4, so it's ready to use
-here. Skip a plain `drop`, since it produced nothing to link. Skip the summary
-comment entirely if every candidate dropped.
+comment the collect phase posted. Use `#N` for a new issue. Use the comment's
+own URL for a posted comment, since a bare `#N` would point at the issue, not
+the comment. Capture each comment's URL when you post it in Step 8.4, so it's
+ready to use here. Skip a plain `drop`, since it produced nothing to link. Skip
+the summary comment entirely if every candidate dropped.
 
 Append the Claude Code footer (see
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items)).

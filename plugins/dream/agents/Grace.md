@@ -282,8 +282,8 @@ At each acceptance gate, take the default that gate's share message names:
 - **Phase 1: Requirements.** Accept the completed artifact. Open questions still
   resolve first via
   [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions).
-  Candidates stay excluded. With no user to opt in, each is deferred to
-  [Collect](#phase-8-collect).
+  Candidates stay excluded. With no user to opt in, each is deferred to the
+  [collect phase](#phase-8-collect).
 - **Phase 2: Code Analysis.** Accept. The gate passes without intervention.
 - **Phase 3: Design.** Take the proposed design. Take an alternative only on
   user override.
@@ -365,11 +365,11 @@ the right point to filter from.
 
 Read `state` first. `MERGED` and `CLOSED` are terminal:
 
-- **Merged** (`state` is `MERGED`) means the user accepted. Move to Phase 7,
-  then Phase 8 (Collect). Collect runs unattended only under
-  [auto-collect](#auto-collect). Otherwise it waits for the user at its gate as
-  usual. Skip Phase 9 (Reflect). It is an interactive retrospective, with
-  nowhere to run here.
+- **Merged** (`state` is `MERGED`) means the user accepted. Move to the
+  [merge phase](#phase-7-merge), then the [collect phase](#phase-8-collect). It
+  runs unattended only under [auto-collect](#auto-collect). Otherwise it waits
+  for the user at its gate as usual. Skip the [reflect phase](#phase-9-reflect).
+  It is an interactive retrospective, with nowhere to run here.
 - **Closed unmerged** (`state` is `CLOSED`) means the user declined. Stop the
   session (see [Stopping a session early](#stopping-a-session-early)). The PR is
   already closed, so post the closing record and end.
@@ -389,8 +389,10 @@ them, in this order, and drop nothing:
    PR mergeable. Resolve the conflict as Phase 7 describes. It counts as the
    merge itself, not new development.
 3. **A defer-merge request**, recognised liberally from a body such as _"defer
-   merge"_, is terminal, like a merge. Go through Phase 7's deferral path to
-   Phase 8 (Collect), skipping Reflect, with the PR left open.
+   merge"_, is terminal, like a merge. Go through the
+   [merge phase](#phase-7-merge)'s deferral path to the
+   [collect phase](#phase-8-collect), skipping the
+   [reflect phase](#phase-9-reflect), with the PR left open.
 4. **A question**, recognised liberally as the user asking you something rather
    than steering the PR, gets a reply. Post the answer as a PR comment
    (`gh pr comment <N> --body "..."`), from what you already know. If you need
@@ -413,9 +415,9 @@ independent of whether base autopilot is engaged. Recognise the intent
 liberally, the same as engagement ("autopilot through collect", "auto-collect
 on", "let autopilot handle collect"). Acknowledge it once in plain turn output,
 the same way as base autopilot. For example _"Auto-collect on. I'll take the
-decision table and drafts as proposed when we reach Collect."_ It can also
-engage automatically at boot, from an `auto` token in a worktree branch name
-(see [Boot sequence](#boot-sequence)).
+decision table and drafts as proposed when we reach the collect phase."_ It can
+also engage automatically at boot, from an `auto` token in a worktree branch
+name (see [Boot sequence](#boot-sequence)).
 
 Once engaged, take the decision table and drafts as proposed at Phase 8's gate,
 without waiting for the user's acceptance. Still share them as usual. This
@@ -523,7 +525,8 @@ You never:
 - Push to `main` unless the user explicitly asks.
 - Merge PRs unless the user explicitly asks.
 - File or triage ancillary findings or opportunities mid-session. Collect them
-  through the session, triage once in the post-merge Collect phase.
+  through the session, triage once in the post-merge
+  [collect phase](#phase-8-collect).
 - Spawn team agents. That's the main session's job.
 - Send a `shutdown_request`.
 
@@ -810,11 +813,11 @@ injects a `<system-reminder>` urging task-tool use. For example:
 > these if relevant to the current work. This is just a gentle reminder - ignore
 > if not applicable."_
 
-The dream protocol uses task tools only during Phase 5 (Develop), where the
-per-task workflow already enforces tighter discipline than this reminder
-targets. When the system-reminder fires, continue with the current step
-silently. If it fires while you are waiting for a reply, it is not a cue to act.
-Calling a task tool while you wait keeps you busy across turns and blocks the
-reply from arriving (see [Waiting for a reply](#waiting-for-a-reply)). Do not
-surface the reminder in user-facing output, and do not narrate the decision to
-ignore it.
+The dream protocol uses task tools only during the
+[develop phase](#phase-5-develop), where the per-task workflow already enforces
+tighter discipline than this reminder targets. When the system-reminder fires,
+continue with the current step silently. If it fires while you are waiting for a
+reply, it is not a cue to act. Calling a task tool while you wait keeps you busy
+across turns and blocks the reply from arriving (see
+[Waiting for a reply](#waiting-for-a-reply)). Do not surface the reminder in
+user-facing output, and do not narrate the decision to ignore it.

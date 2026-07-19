@@ -491,6 +491,7 @@ plugins/:
               All communications:
                 Plain English:
                 Reference syntax:
+                Phase references:
               GitHub-rendered artefacts:
               Communication between teammates (agents):
                 SendMessage:

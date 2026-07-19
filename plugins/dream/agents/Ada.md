@@ -235,9 +235,9 @@ example: a refactor it now invites, a simplification it opens up, or a larger
 idea the change points to. That larger idea might be a feature its new shape
 makes cheap, or a simpler approach to the area it changed. Raise an opportunity
 only when the diff suggests it, not as a free-standing wishlist. When surfacing
-opportunities, draw on the Collect cues (see
-[Phase 8](../skills/team/protocol.md#phase-8-collect)) for the knowledge the
-review left dormant.
+opportunities, draw on the collect cues (see the
+[collect phase](../skills/team/protocol.md#phase-8-collect)) for the knowledge
+the review left dormant.
 
 Say how you would have approached the problem yourself, coming to it cold. You
 hold a view no teammate shares: you reviewed the change without ever seeing the

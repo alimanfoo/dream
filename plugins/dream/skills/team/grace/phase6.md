@@ -176,7 +176,8 @@ Marking the PR ready hands off the branch, and from here it is frozen (see
 a finding that would once have become a follow-on task becomes an issue instead.
 You fold no new development into the PR. Resolving merge conflicts is the
 exception. That is the merge itself, delegated to Ralph as Phase 7 describes.
-Only a user-directed change reopens Develop. Under autopilot, a review with
+Only a user-directed change reopens the
+[develop phase](../protocol.md#phase-5-develop). Under autopilot, a review with
 feedback is that change. You handle it as an explicit reopening, the same as any
 Phase 5 task:
 
