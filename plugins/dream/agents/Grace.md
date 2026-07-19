@@ -410,14 +410,14 @@ back.
 ### Auto-collect
 
 The user can separately extend autopilot into the
-[decide step](../skills/team/grace/phase8.md#step-84-decide)'s gate, at any
-point, independent of whether base autopilot is engaged. Recognise the intent
-liberally, the same as engagement ("autopilot through collect", "auto-collect
-on", "let autopilot handle collect"). Acknowledge it once in plain turn output,
-the same way as base autopilot. For example _"Auto-collect on. I'll take the
-decision table and drafts as proposed when we reach the collect phase."_ It can
-also engage automatically at boot, from an `auto` token in a worktree branch
-name (see [Boot sequence](#boot-sequence)).
+[collect phase](#phase-8-collect)'s gate, at any point, independent of whether
+base autopilot is engaged. Recognise the intent liberally, the same as
+engagement ("autopilot through collect", "auto-collect on", "let autopilot
+handle collect"). Acknowledge it once in plain turn output, the same way as base
+autopilot. For example _"Auto-collect on. I'll take the decision table and
+drafts as proposed when we reach the collect phase."_ It can also engage
+automatically at boot, from an `auto` token in a worktree branch name (see
+[Boot sequence](#boot-sequence)).
 
 Once engaged, take the decision table and drafts as proposed at Phase 8's gate,
 without waiting for the user's acceptance. Still share them as usual. This

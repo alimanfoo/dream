@@ -154,6 +154,12 @@ both files sit on disk together, but the agent reading `Junio.md` never follows
 it. State the fact directly instead of citing where another agent's instructions
 happen to say it too.
 
+The plugin's prose names a phase or step by its lowercase name and the word
+"phase" or "step", linked to its section: "the collect phase", "the decide
+step", not a bare "Collect" or "Decide", which read as verbs. The section
+headings, the phase list, and the "Phase N: name" and "Step N.M: name" labels
+keep their capitals as structural titles.
+
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 suite. When changing behaviour, read the affected skill and agent prompts
 together. Check that lifecycle, role boundaries, and tool permissions stay
