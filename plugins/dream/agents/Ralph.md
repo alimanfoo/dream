@@ -165,7 +165,7 @@ With no target, it reviews your uncommitted changes.
 
 Note the prose your task added or changed: markdown docs, docstrings, code
 comments, prompts. Skip this step when the task wrote no prose. This step checks
-your work against the [Prose artefacts](#prose-artefacts) rule below.
+the prose you wrote against the writing style guide.
 
 Run the `dream:copy-edit` skill over the prose you noted.
 
