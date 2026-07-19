@@ -164,8 +164,7 @@ With no target, it reviews your uncommitted changes.
 #### Step 5.4: Copy-edit the prose you wrote
 
 Note the prose your task added or changed: markdown docs, docstrings, code
-comments, prompts. Skip this step when the task wrote no prose. This step checks
-the prose you wrote against the writing style guide.
+comments, prompts. Skip this step when the task wrote no prose.
 
 Run the `dream:copy-edit` skill over the prose you noted.
 

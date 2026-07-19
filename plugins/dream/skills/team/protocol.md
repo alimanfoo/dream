@@ -68,8 +68,8 @@ moves on without pausing.
 
 **User acceptance gates run by default:** the Requirements Analysis (closing
 Phase 1), the Code Analysis (closing Phase 2), the Design (closing Phase 3), and
-the Plan (closing Phase 4). The "Common rules" at the end apply across every
-phase.
+the Plan (closing Phase 4). The [Common rules](#common-rules) at the end apply
+across every phase.
 
 **Challenge** is a separate mechanism, not a phase. A teammate raises one when
 the work surfaces something new that breaks an accepted artifact: the
@@ -597,7 +597,7 @@ a duplicated fact is the root cause of a recurring surface, single-sourcing it
 is Coherent work, not optional anticipation. Finishing without it leaves the
 root cause unresolved. When a recurring rule has no single home to derive from,
 where many sites each restate it, there is nothing to single-source. It is a
-cross-site rule instead.
+[cross-site rule](#cross-site-rules) instead.
 
 Two traps:
 
@@ -615,10 +615,10 @@ Two traps:
 
 A repo records instructions for coding agents in files such as `AGENTS.md` or
 `CLAUDE.md`. These state how the code is built, the conventions it keeps, the
-test and lint commands, and any cross-site rule documented rather than checked.
-A repo may keep one at its root, governing the whole tree, and one in any
-subdirectory, governing the paths beneath it. The nearest such file to a path
-governs it. Read it before working on that code.
+test and lint commands, and any [cross-site rule](#cross-site-rules) documented
+rather than checked. A repo may keep one at its root, governing the whole tree,
+and one in any subdirectory, governing the paths beneath it. The nearest such
+file to a path governs it. Read it before working on that code.
 
 ## Cross-site rules
 
