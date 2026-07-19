@@ -275,7 +275,7 @@ When a coherence audit surfaces something new that breaks an accepted artifact,
 Junio raises a Challenge to Grace. For instance, repeated coherence audits may
 circle the same surface for different stated reasons. That points at the Design
 being too narrow to reach the root cause. Grace assesses it and, if it holds,
-takes it to the user. See "Challenge" below.
+takes it to the user.
 
 ### Task ordering
 

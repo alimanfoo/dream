@@ -181,8 +181,6 @@ findings."
 **Send the report to Grace via `SendMessage`.** Plain-text turn output does not
 reach teammates. Only `SendMessage` reaches Grace. Sign off `From Junio.` at the
 end of the report. The coherence audit is a terminal hand-off. Skip the RSVP.
-This is your final action on the coherence audit. Without it, Grace sees
-nothing.
 
 #### Read beyond the diff
 

@@ -95,6 +95,17 @@ Make one call per candidate: drop, reinforce, re-frame, or file fresh. Use the
 source observations, the issue history, and what the Test step showed. Don't
 send candidates back to Ralph or Junio for another round of judgement.
 
+The bar for filing a **new** issue from a Finding is _a behaviour gap with a
+real consumer_. Findings that clear the bar go to Decide on the merits. Findings
+the Test step marked as simplification candidates go to `file fresh`, regardless
+of how defend-behaviour answered. Findings that clear neither default to `drop`.
+
+An Opportunity clears the bar when it names worthwhile follow-up work the
+session suggested, with a plausible consumer or value. Say what you see as a
+hypothesis with its evidence: the value you'd expect, the consumer it serves,
+the idea the work opened up. The user judges it, so this is the place to reach
+for the strong idea, not the safe one.
+
 - **Drop**: duplicate of an existing open issue, or fails the bar for filing.
   For a duplicate, you may comment on the existing issue if the new sighting
   adds evidence (a second occurrence, a different angle).
@@ -110,17 +121,6 @@ send candidates back to Ralph or Junio for another round of judgement.
   [cross-site rule](../protocol.md#cross-site-rules).
 - **File fresh**: no related issue on the surface, and the finding clears the
   bar. Open a standalone issue.
-
-The bar for filing a **new** issue from a Finding is _a behaviour gap with a
-real consumer_. Findings that clear the bar go to Decide on the merits. Findings
-the Test step marked as simplification candidates go to `file fresh`, regardless
-of how defend-behaviour answered. Findings that clear neither default to `drop`.
-
-An Opportunity clears the bar when it names worthwhile follow-up work the
-session suggested, with a plausible consumer or value. Say what you see as a
-hypothesis with its evidence: the value you'd expect, the consumer it serves,
-the idea the work opened up. The user judges it, so this is the place to reach
-for the strong idea, not the safe one.
 
 Build the decision table. For each candidate, show the finding, the decision,
 the concrete action it maps to with its target, and the reason. The decision
