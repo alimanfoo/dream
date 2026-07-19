@@ -101,7 +101,7 @@ has one home, shared by all of them.
 Two ways they get crossed:
 
 - **In chat**, slipping into protocol vocabulary: phase names, role names,
-  Ancillary Finding, post-merge sweep.
+  ancillary finding, post-merge sweep.
 - **When writing AGENTS.md**, speaking as if it's inside the protocol. For
   example: "The agents in this protocol", "Surface what investigation reveals",
   "in a SendMessage to a teammate". Use third-party voice instead: "the
@@ -117,7 +117,7 @@ That split follows a general locality principle: **information belongs where it
 is acted on, not where it is named.** Each file carries what its readers need to
 do their job, not what its writers found interesting to elaborate. When someone
 sketches a new mechanism in protocol.md first, move the operational detail to
-the agent file of whoever runs it. `Grace.md`'s Challenge and Autopilot sections
+the agent file of whoever runs it. `Grace.md`'s challenge and autopilot sections
 are the templates.
 
 The README lists the utility skills a user can run on their own. That list is
@@ -208,15 +208,15 @@ caught itself. Weigh each input on the evidence, whoever supplied it.
 
 **The session input is a seed, not a contract.** This is one instance of judging
 input on its merits. The user opens with session input that seeds the
-Requirements Analysis. Later phases build a more systematic picture from that
+requirements analysis. Later phases build a more systematic picture from that
 seed and may revise it. The team surfaces what investigation reveals, even when
 it widens beyond the literal ask. The user can decline the wider scope by
 pushing back at the Design gate.
 
 **Each phase artifact has its own purpose. Don't mix concerns.** Requirements
-Analysis is about user intent. Code Analysis is about code patterns. Design is
+analysis is about user intent. Code analysis is about code patterns. Design is
 the proposal and the work it commits to. Code-pattern findings don't belong in
-the Requirements Analysis, and vice versa.
+the requirements analysis, and vice versa.
 
 **Adding a concept reframes the existing ones.** Introducing a named mechanism
 to a system that already has named mechanisms shifts the existing ones' roles.

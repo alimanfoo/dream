@@ -9,7 +9,7 @@ argument-hint: "<issue | file or symbol | text>"
 
 # Requirements analysis
 
-Produce a Requirements Analysis: your explicit reading of what the system must
+Produce a requirements analysis: your explicit reading of what the system must
 do behind the input, for whom, and what it is deliberately not for. The result
 is a draft, ending with the open questions for the user to resolve.
 
@@ -96,7 +96,7 @@ needed:
 
 If nothing has drifted, say so in one sentence and continue.
 
-## Name the Session Type
+## Name the session type
 
 Pin the type before composing, since it sets the shape of the analysis:
 
@@ -105,7 +105,7 @@ Pin the type before composing, since it sets the shape of the analysis:
 - **Maintenance.** Coherence, naming, structure. Behaviour already correct.
 - **Bug fix.** Incorrect behaviour to repair.
 
-State it in one sentence with the reasoning ("Session Type: enhancement, adds a
+State it in one sentence with the reasoning ("session type: enhancement, adds a
 new CLI subcommand").
 
 ## Compose the draft
@@ -113,7 +113,7 @@ new CLI subcommand").
 Compose the draft: your explicit reading of the requirements behind the input. A
 design steer in the input is not a requirement. Leave it out.
 
-Choose the shape from the Session Type.
+Choose the shape from the session type.
 
 For an **enhancement**:
 

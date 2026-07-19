@@ -3,17 +3,17 @@
 Write every turn output, message and artefact in this phase to the
 [writing style guide](../../../writing-style.md).
 
-The goal of this phase is the accepted Plan, the task list that delivers the
-Design. You compose a Draft Plan, get one round of review from Junio and Ralph,
-revise, and share the revised Plan with the user for acceptance.
+The goal of this phase is the accepted plan, the task list that delivers the
+design. You compose a draft plan, get one round of review from Junio and Ralph,
+revise, and share the revised plan with the user for acceptance.
 
-## Step 4.1: Compose the Draft Plan
+## Step 4.1: Compose the draft plan
 
-Compose the Draft Plan, the task list that delivers the Design.
+Compose the draft plan, the task list that delivers the design.
 
-Apply these rules. Derive tasks from the Design and the Code Analysis. The tasks
-are the work that delivers the Design. Don't translate the session input
-directly into tasks. The Design has already reshaped it where needed.
+Apply these rules. Derive tasks from the design and the code analysis. The tasks
+are the work that delivers the design. Don't translate the session input
+directly into tasks. The design has already reshaped it where needed.
 
 Each task should be a manageable unit of work for Ralph, one commit per task.
 Test each task by its one-line headline. If the headline needs an "and," the
@@ -37,9 +37,9 @@ itself to the kind within the parser module. "Rename `foo` to `bar` at
 `module.py:42`" has a single application. State it directly, no examples needed.
 For kind-based criteria, show two or three examples to anchor the kind.
 
-## Step 4.2: Share the Draft Plan with Junio and Ralph for review
+## Step 4.2: Share the draft plan with Junio and Ralph for review
 
-Write the Draft Plan to a temporary file outside this repo, via Bash. Send both
+Write the draft plan to a temporary file outside this repo, via Bash. Send both
 Junio and Ralph the file's absolute path: two `SendMessage` calls in the same
 turn. They already hold all earlier phase context. Sign off
 `From Grace. RSVP via SendMessage.`
@@ -48,25 +48,25 @@ Send the same path to each reviewer. Their role files steer the lens. Junio
 reads from the maintainer's view: defend completeness across tasks and
 tidy-first precursors. Ralph reads from the implementer's view: task
 implementability and tidy-first. Each replies with a numbered list of findings
-(or "no substantive findings"), optionally with a Challenge. Junio and Ralph are
-advisory at Plan, not gating. Run one round only. Don't loop back after
+(or "no substantive findings"), optionally with a challenge. Junio and Ralph are
+advisory at plan, not gating. Run one round only. Don't loop back after
 revising. Fresh attention from two teammates catches issues at the cheapest
 point to fix.
 
 ## Step 4.3: Apply the reviews
 
 Decide each finding, from either reviewer, on its merits, and record a one-line
-reason for the call. You own the Plan. A teammate raising a finding is not
+reason for the call. You own the plan. A teammate raising a finding is not
 itself a reason to fold it in. Each finding takes one of these paths:
 
-- **Fold in**: accept into the revised Plan as a task (or a tidy-first
+- **Fold in**: accept into the revised plan as a task (or a tidy-first
   precursor).
 - **Reject**: you disagree with the finding. Carry the reason into the note when
-  you share the revised Plan, if the rejection is notable.
-- **Hold as Ancillary Finding**: the finding is real but out of scope. Hold for
+  you share the revised plan, if the rejection is notable.
+- **Hold as ancillary finding**: the finding is real but out of scope. Hold for
   post-merge triage.
-- **Raise a Challenge**: the finding shows an accepted artifact no longer holds.
-  It may be that the Design is the wrong shape, or that an earlier artifact has
+- **Raise a challenge**: the finding shows an accepted artifact no longer holds.
+  It may be that the design is the wrong shape, or that an earlier artifact has
   something wrong. Take it to the user, who accepts (revise) or rejects (with
   direction).
 
@@ -80,41 +80,41 @@ precursor task before the task it supports. The tidy runs through the standard
 Refactor brief (see [Refactor](../../../agents/Grace.md#refactor) under
 Behaviour-preserving task briefs).
 
-When the reply includes a generalisation candidate, treat it as a proposed Plan
+When the reply includes a generalisation candidate, treat it as a proposed plan
 change, not a mandate. Fold it in only when it meets one of these conditions:
 
-- It makes the Plan smaller.
+- It makes the plan smaller.
 - It replaces special-case tasks with a bounded criterion.
 - It simplifies the code shape for the current scope.
 
 If it only adds machinery or future-proofing, reject.
 
-When the reply raises a Challenge, assess it before acting: does an accepted
+When the reply raises a challenge, assess it before acting: does an accepted
 artifact really no longer hold?
 
-## Step 4.4: Share the revised Plan with the user
+## Step 4.4: Share the revised plan with the user
 
-Send the revised Plan. Add a brief note on **what changed from the Draft after
+Send the revised plan. Add a brief note on **what changed from the draft after
 the reviews**: folded-in findings as tasks, notable rejections with the reason.
 The user learns what the reviews changed without seeing them directly. Include
 any out-of-scope decisions.
 
-The Plan is your draft. The user's job at this gate is to flag anything missing
+The plan is your draft. The user's job at this gate is to flag anything missing
 or off. Accepting without flagging anything is the default that lets the phase
 proceed.
 
 End the message with one of these two, depending on autopilot:
 
-- Not under autopilot: ask the user to accept. _"Accept the Plan to proceed to
+- Not under autopilot: ask the user to accept. _"Accept the plan to proceed to
   Phase 5: Develop."_
 - Under autopilot: skip the question. State what you're doing instead, and
-  continue in the same turn. _"Taking the Plan as proposed (autopilot).
+  continue in the same turn. _"Taking the plan as proposed (autopilot).
   Proceeding to Phase 5: Develop."_
 
-## Step 4.5: Seek user acceptance of the Plan
+## Step 4.5: Seek user acceptance of the plan
 
 Wait for the user's reply. Under autopilot, take this gate's default and
-continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
+continue without waiting (see [autopilot](../../../agents/Grace.md#autopilot)).
 If accepted, continue to
 [Step 4.6](#step-46-hand-the-accepted-plan-to-junio-and-ralph). If the user
 raises open questions or redirects, revise and return to
@@ -124,21 +124,21 @@ accepted.
 This is one of the protocol's user acceptance gates (see
 [Acceptance gates](../protocol.md#acceptance-gates)).
 
-## Step 4.6: Hand the accepted Plan to Junio and Ralph
+## Step 4.6: Hand the accepted plan to Junio and Ralph
 
 Write the same content you sent the user to a temporary file outside this repo,
 via Bash. Send Junio and Ralph the file's absolute path: two `SendMessage` calls
 in the same turn, for information only. Sign off `From Grace.` and skip the
-RSVP. No reply is needed. They haven't seen the outcome since their Draft Plan
+RSVP. No reply is needed. They haven't seen the outcome since their draft plan
 review in
 [Step 4.2](#step-42-share-the-draft-plan-with-junio-and-ralph-for-review). The
-accepted Plan feeds Junio's per-task coherence audits and Ralph's per-task
+accepted plan feeds Junio's per-task coherence audits and Ralph's per-task
 implementations in Phase 5.
 
-## Step 4.7: Post the accepted Plan to the PR
+## Step 4.7: Post the accepted plan to the PR
 
-Post the accepted Plan to the PR from the file written in
+Post the accepted plan to the PR from the file written in
 [Step 4.6](#step-46-hand-the-accepted-plan-to-junio-and-ralph) (see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
 
-The phase ends at user acceptance of the Plan.
+The phase ends at user acceptance of the plan.

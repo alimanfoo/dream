@@ -3,10 +3,10 @@
 Write every turn output, message and artefact in this phase to the
 [writing style guide](../../../writing-style.md).
 
-The goal of this phase is to collect Ancillary Findings and Opportunities from
+The goal of this phase is to collect ancillary findings and opportunities from
 the team. For each, decide whether to file a new issue or comment on an existing
 one. Four steps (compile, deepen, test, decide) come before any issue is filed.
-Test applies to Findings only. Opportunities skip it. All four are yours, with
+Test applies to findings only. Opportunities skip it. All four are yours, with
 user discussion before you file or comment. A fifth step, summarize, closes the
 phase by posting what Collect did back to the session PR.
 
@@ -15,28 +15,28 @@ phase by posting what Collect did back to the session PR.
 Ask the teammates for the post-merge sweep, referring them to the Collect cues
 (see [Phase 8](../protocol.md#phase-8-collect)). They read the cues once at
 boot, and by now that read has fallen from view. Referring to the cues in the
-request fires them while each teammate surfaces Opportunities.
+request fires them while each teammate surfaces opportunities.
 
 Gather the sources (Ralph in-session, Junio in-session, Ada in-session, and the
-post-merge sweep). Each source yields two kinds: Ancillary Findings (concerns
-left out of scope) and Opportunities (worthwhile follow-up work the session
-suggests). Merge a Finding or Opportunity that appears in more than one source
-into one. Do this only within a session, not across sessions. Keep Opportunities
-separate from Findings. They skip the Test step. Draw on the cues yourself as
+post-merge sweep). Each source yields two kinds: ancillary findings (concerns
+left out of scope) and opportunities (worthwhile follow-up work the session
+suggests). Merge a finding or opportunity that appears in more than one source
+into one. Do this only within a session, not across sessions. Keep opportunities
+separate from findings. They skip the Test step. Draw on the cues yourself as
 you compile. You hold the whole session, so you have the widest view.
 
-Add the **deferred candidates** from Phase 1 as Opportunities. These are
+Add the **deferred candidates** from Phase 1 as opportunities. These are
 candidate use cases or improvement goals the user neither promoted nor declined
 at the Requirements gate (see
 [Step 1.2](phase1.md#step-12-produce-the-draft-requirements-analysis)). Like
-other Opportunities, they skip the Test step and route straight to Decide, filed
+other opportunities, they skip the Test step and route straight to Decide, filed
 as follow-up work or dropped. Each carries the evidence you cited in Phase 1, so
 it is ready to file as is.
 
-Add the **code smells** the Code Analysis named but the Design didn't take up,
-as Ancillary Findings. Unlike the Phase 1 candidates, these are Findings, so
+Add the **code smells** the code analysis named but the design didn't take up,
+as ancillary findings. Unlike the Phase 1 candidates, these are findings, so
 they go through the Test step. The removal question fits an over-built smell
-especially well. Each carries the citation you made in the Code Analysis, so it
+especially well. Each carries the citation you made in the code analysis, so it
 is ready to file as is.
 
 ## Step 8.2: Deepen
@@ -63,9 +63,9 @@ contract.
 
 ## Step 8.3: Test
 
-The two tests below apply to Ancillary Findings, not Opportunities. An
+The two tests below apply to ancillary findings, not opportunities. An
 Opportunity proposes new work, with no surface to remove or behaviour to defend.
-Route each Opportunity straight to Decide. For Findings, apply them in order,
+Route each opportunity straight to Decide. For findings, apply them in order,
 starting with removal.
 
 **The removal question**:
@@ -95,12 +95,12 @@ Make one call per candidate: drop, reinforce, re-frame, or file fresh. Use the
 source observations, the issue history, and what the Test step showed. Don't
 send candidates back to Ralph or Junio for another round of judgement.
 
-The bar for filing a **new** issue from a Finding is _a behaviour gap with a
+The bar for filing a **new** issue from a finding is _a behaviour gap with a
 real consumer_. Findings that clear the bar go to Decide on the merits. Findings
 the Test step marked as simplification candidates go to `file fresh`, regardless
 of how defend-behaviour answered. Findings that clear neither default to `drop`.
 
-An Opportunity clears the bar when it names worthwhile follow-up work the
+An opportunity clears the bar when it names worthwhile follow-up work the
 session suggested, with a plausible consumer or value. Say what you see as a
 hypothesis with its evidence: the value you'd expect, the consumer it serves,
 the idea the work opened up. The user judges it, so this is the place to reach
@@ -161,7 +161,7 @@ catches what writing them the first time misses.
 
 Share the decision table together with the copy-edited drafts in one message.
 End it with one of these two, depending on
-[Auto-collect](../../../agents/Grace.md#auto-collect):
+[auto-collect](../../../agents/Grace.md#auto-collect):
 
 - Not under auto-collect: ask the user to accept the table and drafts, or
   redirect.

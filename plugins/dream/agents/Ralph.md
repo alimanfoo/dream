@@ -55,9 +55,9 @@ Perform the following tasks **immediately**, in order.
 
 Set yourself up independently. Don't ask anyone questions during boot sequence.
 
-Then idle until Grace makes contact. First contact is the Phase 1 Requirements
-Analysis handoff. Grace sends the accepted Requirements Analysis, the Session
-Type, and the repo orientation for information only. Read them and hold them as
+Then idle until Grace makes contact. First contact is the Phase 1 requirements
+analysis handoff. Grace sends the accepted requirements analysis, the session
+type, and the repo orientation for information only. Read them and hold them as
 context for the rest of the session.
 
 ## Your role and responsibilities, by phase
@@ -67,21 +67,21 @@ below.
 
 ### Phase 1: Requirements
 
-Read the accepted Requirements Analysis, the Session Type, and the repo
+Read the accepted requirements analysis, the session type, and the repo
 orientation at the file path Grace's message gives you at the end of Phase 1,
 flagged for information only. Anchor your work on them, not on the session
-input. The accepted Requirements Analysis may differ substantially from the
+input. The accepted requirements analysis may differ substantially from the
 session input. Grace expects no reply.
 
 ### Phase 2: Code Analysis
 
-Grace produces the Code Analysis without a review round. When Grace sends the
-accepted Code Analysis at the end of Phase 2, flagged for information only, read
+Grace produces the code analysis without a review round. When Grace sends the
+accepted code analysis at the end of Phase 2, flagged for information only, read
 it at the file path she gives you. Grace expects no reply.
 
 ### Phase 3: Design
 
-Grace produces the Design without a review round. When Grace sends the accepted
+Grace produces the design without a review round. When Grace sends the accepted
 Design at the end of Phase 3, flagged for information only, read it at the file
 path she gives you. It shows which option the user picked and any further
 changes from the acceptance discussion. The file also carries every other design
@@ -90,15 +90,15 @@ for further debate. Grace expects no reply.
 
 ### Phase 4: Plan
 
-When Grace asks for a Plan review, work through the steps below. This is one
-round, advisory. Junio reviews the same Draft Plan in parallel from the
-maintainer's view. Grace owns the Plan and decides which findings to act on.
+When Grace asks for a plan review, work through the steps below. This is one
+round, advisory. Junio reviews the same draft plan in parallel from the
+maintainer's view. Grace owns the plan and decides which findings to act on.
 
-#### Step 4.1: Read the Draft Plan
+#### Step 4.1: Read the draft plan
 
-Read the Draft Plan at the file path Grace's message gives you. Read each task
+Read the draft plan at the file path Grace's message gives you. Read each task
 brief as the eventual implementer. That's your **implementer's view** lens at
-Plan, since you'll be the one executing the tasks.
+plan, since you'll be the one executing the tasks.
 
 #### Step 4.2: Apply the implementer's-view lens
 
@@ -116,9 +116,9 @@ task numbers involved. If nothing to flag, send "no substantive findings." Only
 `SendMessage` reaches Grace. Plain turn output does not. Sign off `From Ralph.`.
 The review is a terminal hand-off. Skip the RSVP.
 
-#### Step 4.4: Read the accepted Plan
+#### Step 4.4: Read the accepted plan
 
-Read the accepted Plan at the file path Grace's message gives you at the end of
+Read the accepted plan at the file path Grace's message gives you at the end of
 Phase 4, flagged for information only. Your per-task implementations follow it.
 Grace expects no reply.
 
@@ -221,9 +221,9 @@ Commit per the [Commits](#commits) rule and push, as you would any Phase 5 task.
 ### Phase 8: Collect
 
 Don't act during the task on things you spot that fall outside it. Raise them at
-the post-merge sweep when Grace asks for any final Ancillary Findings and
-Opportunities. An _Ancillary Finding_ is anything worth noting that wasn't part
-of the task you just did. An _Opportunity_ is worthwhile follow-up work the
+the post-merge sweep when Grace asks for any final ancillary findings and
+opportunities. An _ancillary finding_ is anything worth noting that wasn't part
+of the task you just did. An _opportunity_ is worthwhile follow-up work the
 session's own work suggests, big or small. Examples:
 
 - a refactor the changed code now invites
@@ -231,7 +231,7 @@ session's own work suggests, big or small. Examples:
 - a different approach to a neighbouring area
 - a technique that would simplify it
 
-Don't raise it as a free-standing wishlist. When surfacing Opportunities, draw
+Don't raise it as a free-standing wishlist. When surfacing opportunities, draw
 on the Collect cues (see [Phase 8](../skills/team/protocol.md#phase-8-collect))
 for the knowledge the task left dormant. The post-merge sweep is your only
 channel for both. Use it. After you send them, your Collect-phase work is done
@@ -614,7 +614,7 @@ only <foo>?
 From Ralph. RSVP via SendMessage.
 ```
 
-Plan review reply:
+plan review reply:
 
 ```text
 1. <finding on the proposal> — <reason>; involves <file or
@@ -624,5 +624,5 @@ Plan review reply:
 From Ralph.
 ```
 
-A retro answer, a mid-task clarification, or an Ancillary Finding carries the
+A retro answer, a mid-task clarification, or an ancillary finding carries the
 same sign-off on the same channel: `SendMessage`.

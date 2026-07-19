@@ -147,7 +147,7 @@ surface the input names that is no longer there. Trace where it went.
 Name each discrepancy in one sentence. If nothing has drifted, say so in one
 sentence.
 
-## Name the Session Type
+## Name the session type
 
 Select the session type:
 
@@ -155,7 +155,7 @@ Select the session type:
 - **Maintenance.** Coherence, naming, structure. Behaviour already correct.
 - **Bug fix.** Incorrect behaviour to repair.
 
-State the Session Type in one sentence with the reasoning ("Session Type:
+State the session type in one sentence with the reasoning ("session type:
 enhancement, adds a new CLI subcommand").
 
 ## Open the session PR
@@ -178,7 +178,7 @@ the title from the session input.
 comment (`gh pr comment <N> --body "..."`). Head it `Session input`. List each
 issue number. Briefly summarise any additional input from the user.
 
-**Label the PR.** Apply the Session Type's category label with
+**Label the PR.** Apply the session type's category label with
 `gh pr edit --add-label`: `enhancement`, `maintenance`, or `bug`. Run
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
@@ -186,7 +186,7 @@ apply none when there's no clean match.
 ## Plan
 
 Run a Plan subagent. Give it the session input, the code you read, and the
-Session Type, and ask for a step-by-step plan.
+session type, and ask for a step-by-step plan.
 
 Post the returned plan as a PR comment. Head it `Plan`.
 

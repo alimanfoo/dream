@@ -159,6 +159,15 @@ Lead with what to do. Add what not to do only to support it.
   - "use", not "leverage"
   - "essential", not "load-bearing"
   - "the API", not "the surface area"
+- Write coined domain and process terms as ordinary lowercase nouns, in a
+  heading as much as in a sentence. Reserve capitals for genuine proper names:
+  people, products, tools, and literal identifiers. A fixed, named set of stages
+  keeps its members capitalised as labels, even where the same word is also an
+  ordinary noun. For example:
+  - "share the design options", not "share the Design Options"
+  - "name the session type", not "name the Session Type"
+  - keep the proper names: "Grace", "Claude Code", "`/dream:team`"
+  - a stage label stays capitalised: "the Design phase", not "the design phase"
 - Name the concrete action on the code. "Touch" and "untouched" hide what the
   work actually does and carry the wrong connotations. Say what changes and what
   stays. For example:

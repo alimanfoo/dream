@@ -7,7 +7,7 @@ argument-hint: "<requirements | issue | file | symbol | text>"
 
 # Code analysis
 
-Produce a Code Analysis: a verifiable read of what the current code does and
+Produce a code analysis: a verifiable read of what the current code does and
 where, with file:line or symbol citations throughout. It stays factual, not a
 proposal.
 
@@ -104,13 +104,13 @@ Some code smells are specific and common in codebases with agent-generated code:
   every public function carrying its own docstring. Cite the sites seen breaking
   it.
 
-## Compose the Code Analysis
+## Compose the code analysis
 
-Compose the Code Analysis from the sections above, written up with file:line or
+Compose the code analysis from the sections above, written up with file:line or
 symbol citations throughout. Write it to a temporary file outside the repo. The
 purpose is visible grounding for the work that follows.
 
-The Code Analysis is a read, not a transcription. Tell the reader something they
+The code analysis is a read, not a transcription. Tell the reader something they
 couldn't get line by line. For example, for a reported bug, the transcription is
 the line where the error surfaces. The analysis is the mechanism that produces
 it, often layers away.
@@ -125,4 +125,4 @@ Run the `/dream:copy-edit` skill over the draft file, giving its absolute path.
 
 ## The result
 
-Return the completed Code Analysis from the file.
+Return the completed code analysis from the file.

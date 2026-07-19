@@ -9,9 +9,9 @@ sequence derived one or more issues from the worktree branch name, those issues
 are the session input. Phase 1 captures the system's requirements behind it. It
 makes any assumptions explicit so the user can correct them. It checks the
 session input against the current code, so stale details don't ride downstream.
-It gets one round of adversarial review before anyone else sees the Draft
-Requirements Analysis. And it elicits answers to the open questions the cited
-material can't settle. It ends at an accepted Requirements Analysis: what the
+It gets one round of adversarial review before anyone else sees the draft
+requirements analysis. And it elicits answers to the open questions the cited
+material can't settle. It ends at an accepted requirements analysis: what the
 system must do, for whom, and what it is deliberately not for. Follow the steps
 below in sequence.
 
@@ -45,11 +45,11 @@ main-checkout session, reproduce the user's text verbatim. Follow
 the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
 
-## Step 1.2: Produce the Draft Requirements Analysis
+## Step 1.2: Produce the draft requirements analysis
 
 Run the `/dream:requirements-analysis` skill, giving it the session input.
 
-The skill returns the Draft Requirements Analysis. By Session Type, it names one
+The skill returns the draft requirements analysis. By session type, it names one
 of:
 
 - the consumers and their use cases
@@ -58,12 +58,12 @@ of:
 
 It also carries any constraints, candidates, system non-goals, and open
 questions, with each item marked stated or assumed. The skill folds any input
-drift into corrections and notes, recording the drift in the Draft itself rather
-than a separate comment. The skill also states the Session Type and the repo
+drift into corrections and notes, recording the drift in the draft itself rather
+than a separate comment. The skill also states the session type and the repo
 orientation in turn output.
 
-Hold the returned Draft, the Session Type, and the repo orientation as your
-working artifacts for the steps below. Don't share the Draft with the user yet.
+Hold the returned draft, the session type, and the repo orientation as your
+working artifacts for the steps below. Don't share the draft with the user yet.
 
 ## Step 1.3: Elicit answers to open questions
 
@@ -80,38 +80,38 @@ Post the file to the PR as a comment.
 
 Send the user the same questions and answers as a numbered list. Invite a
 freeform answer too. End the message by asking the user to answer the questions
-so Grace can complete the Requirements Analysis.
+so Grace can complete the requirements analysis.
 
-Wait for the user's reply. Fold their answers into the Requirements Analysis as
+Wait for the user's reply. Fold their answers into the requirements analysis as
 stated items, dropping the matching open questions. If the reply leaves any
 question unanswered, re-ask the unanswered ones before continuing. You marked
 them as needing the user, so a missing answer means the artifact isn't complete
 yet.
 
-## Step 1.4: Share the Requirements Analysis
+## Step 1.4: Share the requirements analysis
 
-Send the completed Requirements Analysis to the user. When there are candidates,
+Send the completed requirements analysis to the user. When there are candidates,
 ask the user to name any they want included, by number. Note that any they don't
-name are carried forward as Opportunities to
+name are carried forward as opportunities to
 [Collect](../../../agents/Grace.md#phase-8-collect). Tell them they can ask to
 drop any outright.
 
 End the message with one of these two, depending on autopilot:
 
-- Not under autopilot: ask the user to accept. _"Accept the Requirements
-  Analysis to proceed to Phase 2: Code Analysis."_
+- Not under autopilot: ask the user to accept. _"Accept the requirements
+  analysis to proceed to Phase 2: Code Analysis."_
 - Under autopilot: skip the question. State what you're doing instead, and
-  continue in the same turn. _"Taking the Requirements Analysis as proposed
+  continue in the same turn. _"Taking the requirements analysis as proposed
   (autopilot). Proceeding to Phase 2: Code Analysis."_
 
-## Step 1.5: Seek user acceptance of the Requirements Analysis
+## Step 1.5: Seek user acceptance of the requirements analysis
 
 Wait for the user's reply. Under autopilot, take this gate's default and
-continue without waiting (see [Autopilot](../../../agents/Grace.md#autopilot)).
+continue without waiting (see [autopilot](../../../agents/Grace.md#autopilot)).
 
 If accepted, promote any candidate the user opted into. Remove any that the user
 explicitly dropped. Defer the rest to
-[Collect](../../../agents/Grace.md#phase-8-collect). Apply the Session Type's
+[Collect](../../../agents/Grace.md#phase-8-collect). Apply the session type's
 category label to the PR via `gh pr edit --add-label <name>` (see
 [GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to
 [Step 1.6](#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
@@ -122,25 +122,25 @@ If the user pushes back, revise and return to
 This is one of the protocol's user acceptance gates (see
 [Acceptance gates](../protocol.md#acceptance-gates)).
 
-## Step 1.6: Hand the accepted Requirements Analysis to Junio and Ralph
+## Step 1.6: Hand the accepted requirements analysis to Junio and Ralph
 
 Write the following, in the versions the user accepted plus any changes from the
 acceptance discussion, to a temporary file outside this repo, via Bash:
 
-- the accepted Requirements Analysis
-- the Session Type
+- the accepted requirements analysis
+- the session type
 - the repo orientation from
   [Step 1.2](#step-12-produce-the-draft-requirements-analysis)
 
 Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP.
 
-## Step 1.7: Post the accepted Requirements Analysis to the PR
+## Step 1.7: Post the accepted requirements analysis to the PR
 
-Post the accepted Requirements Analysis to the PR from the file written in
+Post the accepted requirements analysis to the PR from the file written in
 [Step 1.6](#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
 Follow
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
 Use the heading `Requirements`.
 
-The phase ends at user acceptance of the Requirements Analysis.
+The phase ends at user acceptance of the requirements analysis.
