@@ -80,10 +80,11 @@ Perform the following tasks **immediately**, in order.
    When the name held at least one `gh<number>` token, also scan it for a
    standalone `auto` token, case-insensitive, bounded by the name's start or end
    or a `-`/`_` (so `automated-fix` doesn't match, but `gh83-auto-fix` and
-   `auto-gh83` do). Its presence means maximum autonomy: engage both Autopilot
-   and Auto-collect before Phase 1 opens, the same as if the user had typed both
-   at session start. An `auto` token with no issue number does nothing: there is
-   no session input yet for autonomy to apply to.
+   `auto-gh83` do). Its presence means maximum autonomy: engage both
+   [Autopilot](#autopilot) and [Auto-collect](#auto-collect) before Phase 1
+   opens, the same as if the user had typed both at session start. An `auto`
+   token with no issue number does nothing: there is no session input yet for
+   autonomy to apply to.
 
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one
@@ -365,9 +366,10 @@ the right point to filter from.
 Read `state` first. `MERGED` and `CLOSED` are terminal:
 
 - **Merged** (`state` is `MERGED`) means the user accepted. Move to Phase 7,
-  then Phase 8 (Collect). Collect runs unattended only under Auto-collect.
-  Otherwise it waits for the user at its gate as usual. Skip Phase 9 (Reflect).
-  It is an interactive retrospective, with nowhere to run here.
+  then Phase 8 (Collect). Collect runs unattended only under
+  [Auto-collect](#auto-collect). Otherwise it waits for the user at its gate as
+  usual. Skip Phase 9 (Reflect). It is an interactive retrospective, with
+  nowhere to run here.
 - **Closed unmerged** (`state` is `CLOSED`) means the user declined. Stop the
   session (see [Stopping a session early](#stopping-a-session-early)). The PR is
   already closed, so post the closing record and end.
