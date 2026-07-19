@@ -183,10 +183,8 @@ The phase ends at user acceptance of the design.
 
 With the design accepted, Grace produces the plan: the task list that delivers
 the design. She composes the tasks, then gets an adversarial review across the
-plan lenses (completeness, tidy-first, and implementability), so a missed
-instance or a bundled task surfaces before the work begins. Each task is a
-manageable single-commit unit. A criterion selects its work, and the implementer
-applies that criterion fresh.
+plan lenses, so a missed instance or a bundled task surfaces before the work
+begins.
 
 Grace then shares the plan with the user for acceptance. At the end of the phase
 Grace hands the accepted plan to Junio and Ralph for information. They hold it
@@ -433,9 +431,9 @@ so the names match:
 
 **Autopilot** is a standing override the user can engage at any point: under
 autopilot, Grace takes the gate-defined default at each acceptance gate, without
-waiting for the user's acceptance. She still produces every artifact, runs every
-Junio/Ralph review, and shares each artifact with the user as it lands.
-Autopilot removes the _wait for acceptance_, not the quality machinery.
+waiting for the user's acceptance. She still produces every artifact and shares
+it with the user as it lands. Autopilot removes the _wait for acceptance_, not
+the quality machinery.
 
 Autopilot pauses on an open question that Grace has marked unanswered, one that
 she cannot proceed past without the user's call. It also pauses on a challenge.

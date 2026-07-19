@@ -90,11 +90,10 @@ for further debate. Grace expects no reply.
 
 ### Phase 4: Plan
 
-Grace produces the plan without a review round from you. When Grace sends the
-accepted plan at the end of Phase 4, flagged for information only, read it at
-the file path she gives you. It is the task list that delivers the design, in
-the order the tasks run. Your per-task implementations follow it. Grace expects
-no reply.
+Grace produces the plan without a review round. When Grace sends the accepted
+plan at the end of Phase 4, flagged for information only, read it at the file
+path she gives you. It is the task list that delivers the design, in the order
+the tasks run. Your per-task implementations follow it. Grace expects no reply.
 
 ### Phase 5: Develop
 

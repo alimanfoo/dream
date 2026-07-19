@@ -10,8 +10,7 @@ design. Follow the steps below in sequence.
 
 Run the `/dream:plan` skill, focused on the accepted design and code analysis.
 
-The skill returns the plan: the task list that delivers the design, each task a
-manageable single-commit unit selected by a criterion.
+The skill returns the plan: the task list that delivers the design.
 
 ## Step 4.2: Share the plan with the user
 
