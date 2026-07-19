@@ -106,9 +106,10 @@ hypothesis with its evidence: the value you'd expect, the consumer it serves,
 the idea the work opened up. The user judges it, so this is the place to reach
 for the strong idea, not the safe one.
 
-- **Drop**: duplicate of an existing open issue, or fails the bar for filing.
-  For a duplicate, you may comment on the existing issue if the new sighting
-  adds evidence (a second occurrence, a different angle).
+- **Drop**: duplicate of an existing open issue, fails the bar for filing, or
+  cut by the auto-collect cap. For a duplicate, you may comment on the existing
+  issue if the new sighting adds evidence (a second occurrence, a different
+  angle).
 - **Reinforce**: related to an existing open issue but not identical. Comment on
   the open issue with the new angle rather than opening a new one.
 - **Re-frame**: recurrence on a surface with prior issues, open or closed. File
