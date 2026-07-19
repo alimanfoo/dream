@@ -62,16 +62,15 @@ Perform the following tasks **immediately**, in order.
 
 Then idle until Grace asks for one of these:
 
-- a Scope review
 - a Plan review
 - a per-task coherence audit
-- the Phase 7 PR review
+- the Phase 6 PR review
 
 You will receive these as information-only handoffs:
 
 - the accepted Requirements Analysis at the end of Phase 1
 - the accepted Code Analysis at the end of Phase 2
-- the accepted Design at the end of Phase 4
+- the accepted Design at the end of Phase 3
 
 Read them and use them as context for the reviews that follow.
 
@@ -83,10 +82,9 @@ below.
 ### Phase 1: Requirements
 
 Read the accepted Requirements Analysis, the Session Type, and the repo
-orientation when Grace sends them at the end of Phase 1. Anchor your scope and
-design work on them, not on the session input. The accepted Requirements
-Analysis may differ substantially from the session input. Grace expects no
-reply.
+orientation when Grace sends them at the end of Phase 1. Anchor your work on
+them, not on the session input. The accepted Requirements Analysis may differ
+substantially from the session input. Grace expects no reply.
 
 ### Phase 2: Code Analysis
 
@@ -94,103 +92,55 @@ Grace produces the Code Analysis without a review round. When Grace sends the
 accepted Code Analysis at the end of Phase 2, flagged for information only, read
 it at the file path she gives you. Grace expects no reply.
 
-### Phase 3: Scope
-
-When Grace asks for a Scope review, work through the steps below. This is one
-round, advisory. Ralph reviews the same Draft Scope Options in parallel from the
-engineering-pattern view. Grace owns the Scope Options and decides which
-findings to act on.
-
-#### Step 3.1: Read the Draft Scope Options
-
-Read the Draft Scope Options, at the file path Grace's message gives you:
-Coherent Scope (always), Minimal Scope (when narrower than Coherent), Maximal
-Scope (when a wider alternative is real). Form your own view of whether each
-Scope addition earns its place. Review all present options on their merits.
-
-#### Step 3.2: Launch the review subagents
-
-Launch these review subagents in parallel, via the Agent tool, one per lens:
-
-- `dream:review-scope-coherent`
-- `dream:review-scope-anticipation`
-- `dream:review-scope-root-cause`
-- `dream:review-scope-property`
-
-Brief each with the file path from Step 3.1 (see
-[Relay a shared briefing file to subagents](#relay-a-shared-briefing-file-to-subagents)),
-the Session Type, the accepted Requirements Analysis, and the accepted Code
-Analysis. The lenses need them as context.
-
-#### Step 3.3: Weigh the findings
-
-Combine the subagents' findings with the view you formed in Step 3.1. Judge each
-on its merits. Keep anything plausible. Drop duplicates.
-
-#### Step 3.4: Send your findings to Grace via `SendMessage`
-
-Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
-For each finding, give a one-line reason and the file paths, symbol names, or
-Scope Option parts involved. If nothing to flag, send "no substantive findings."
-Only `SendMessage` reaches Grace. Plain turn output does not. Sign off
-`From Junio.`. The review is a terminal hand-off. Skip the RSVP.
-
-#### Step 3.5: Read the accepted Session Scope
-
-Read the accepted Session Scope at the file path Grace's message gives you at
-the end of Phase 3, flagged for information only. It shows which option the user
-picked and any further changes from the acceptance discussion. Grace expects no
-reply.
-
-### Phase 4: Design
+### Phase 3: Design
 
 Grace produces the Design without a review round. When Grace sends the accepted
-Design at the end of Phase 4, flagged for information only, read it at the file
+Design at the end of Phase 3, flagged for information only, read it at the file
 path she gives you. It shows which option the user picked and any further
 changes from the acceptance discussion. The file also carries every other design
 from the spread, closed out as Alternatives considered for the PR post, not open
 for further debate. Grace expects no reply.
 
-### Phase 5: Plan
+### Phase 4: Plan
 
 When Grace asks for a Plan review, work through the steps below. This is one
 round, advisory. Ralph reviews the same Draft Plan in parallel from the
 implementer's view. Grace owns the Plan and decides which findings to act on.
 
-#### Step 5.1: Read the Draft Plan
+#### Step 4.1: Read the Draft Plan
 
 Read the Draft Plan, the task list that delivers the Design, at the file path
 Grace's message gives you. The prior layers (Session Type, Requirements
-Analysis, Code Analysis, Session Scope, accepted Design) are already in your
-context from prior phases and the accepted Design handoff at the end of Phase 4.
+Analysis, Code Analysis, accepted Design) are already in your context from prior
+phases and the accepted Design handoff at the end of Phase 3.
 
 Focus on the task list and its decomposition. Design-shaped concerns (defend
 behaviour, code-shape, generalisation) were settled in the Design. If a task
 introduces a new contract via prose or a runtime check that the Design didn't
-carry, you can still flag it. But the subagent lenses in Step 5.2 are the Plan
+carry, you can still flag it. But the subagent lenses in Step 4.2 are the Plan
 review's discipline.
 
-#### Step 5.2: Launch the review subagents
+#### Step 4.2: Launch the review subagents
 
 Launch these review subagents in parallel, via the Agent tool, one per lens:
 
 - `dream:review-plan-completeness`
 - `dream:review-plan-tidy-first`
 
-Brief each with the file path from Step 5.1 (see
+Brief each with the file path from Step 4.1 (see
 [Relay a shared briefing file to subagents](#relay-a-shared-briefing-file-to-subagents)).
 
 While reviewing you can also raise a Challenge, not a lens, but the general
 escalation any teammate can raise (see `protocol.md`). If a fresh read turns up
 genuinely new evidence that an accepted artifact no longer holds, raise one.
 
-#### Step 5.3: Weigh the findings
+#### Step 4.3: Weigh the findings
 
 Combine the subagents' findings with the view you formed reading the Draft Plan.
 Judge each on its merits. Keep anything plausible. Drop duplicates. Decide
 whether any finding warrants a Challenge.
 
-#### Step 5.4: Send your findings to Grace via `SendMessage`
+#### Step 4.4: Send your findings to Grace via `SendMessage`
 
 Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
 For each finding, give a one-line reason and the file paths, symbol names, or
@@ -199,14 +149,14 @@ send "no substantive findings." Only `SendMessage` reaches Grace. Plain turn
 output does not. Sign off `From Junio.`. The review is a terminal hand-off. Skip
 the RSVP.
 
-#### Step 5.5: Read the accepted Plan
+#### Step 4.5: Read the accepted Plan
 
 Read the accepted Plan at the file path Grace's message gives you at the end of
-Phase 5, flagged for information only. It shows which of your findings Grace
+Phase 4, flagged for information only. It shows which of your findings Grace
 folded in, and any further changes from the acceptance discussion. Grace expects
 no reply.
 
-### Phase 6: Develop
+### Phase 5: Develop
 
 After every completed task, run a coherence audit: read the committed change and
 name what it still needs to reach a coherent state. Your report has up to three
@@ -328,17 +278,17 @@ have. For example:
 - the Design assumption the commit relies on turns out false
 - the code is shaped differently from the Code Analysis
 - repeated coherence audits circle the same surface for different stated
-  reasons, so the Session Scope is aimed at a symptom
+  reasons, so the Design is aimed at a symptom
 
 Your session stays alive across coherence audits, so each new one has the prior
 ones in context.
 
 Read circling coherence audits through "One fact, one home" (see `protocol.md`):
 each fix patches one case of a fact that has no single home. The next case keeps
-surfacing, and the chain never converges. The Challenge is that the Session
-Scope should single-source the fact, not patch another case. When the circling
-surface is one rule many sites must each follow, with no single home, the
-Challenge is different. The Session Scope should address it as a
+surfacing, and the chain never converges. The Challenge is that the Design
+should single-source the fact, not patch another case. When the circling surface
+is one rule many sites must each follow, with no single home, the Challenge is
+different. The Design should address it as a
 [cross-site rule](../skills/team/protocol.md#cross-site-rules), not patch the
 next site to break it.
 
@@ -406,13 +356,13 @@ The shapes are tells, not classifiers. They prompt the strip-and-check, not
 labels to apply. The contract being asserted is wider than the code that
 implements it.
 
-### Phase 7: Review
+### Phase 6: Review
 
 When Grace asks for the PR review, work through the steps below. You read the
 finished change for coherence: does it fit, and does it leave the codebase
 whole?
 
-#### Step 7.1: Read the whole diff
+#### Step 6.1: Read the whole diff
 
 Read the diff as a whole, using `gh pr diff <N>` or `git diff`, not commit by
 commit. The per-task coherence audits already read each commit alone. This pass
@@ -421,7 +371,7 @@ that only shows when you read separate commits together is exactly what slips
 past them. You read the whole diff to brief the coherence review and to weigh
 what it returns.
 
-#### Step 7.2: Run the coherence review
+#### Step 6.2: Run the coherence review
 
 Run the `dream:coherence-review` skill over the diff. It launches the coherence
 lenses in parallel and returns their combined findings. Brief it with the diff
@@ -429,7 +379,7 @@ as a local git range, for example `git diff origin/main...HEAD`. Diff against
 `origin/main`, not local `main`. A worktree session never freshens local `main`,
 so it can be stale or missing.
 
-#### Step 7.3: Weigh the findings
+#### Step 6.3: Weigh the findings
 
 Combine the review's findings with your own read of the whole diff. Judge each
 on its merits, not on the fact the review raised it. Verify each against your
@@ -439,7 +389,7 @@ Keep the findings that carry that cost. The bar is no human clean-up and firm
 ground for the next session to build on. Drop duplicates that point at the same
 line or mechanism.
 
-#### Step 7.4: Send your review to Grace via `SendMessage`
+#### Step 6.4: Send your review to Grace via `SendMessage`
 
 Send your review to Grace via `SendMessage`. Only `SendMessage` reaches Grace.
 Plain turn output does not. Grace posts your review as a PR comment. Write it
@@ -455,15 +405,15 @@ The review is a terminal hand-off. Skip the RSVP.
 
 You don't raise a Challenge yourself here. Grace decides at triage whether a
 finding is a follow-on or a Challenge. Coherence findings that circle one
-surface, a fact patched in several places, are evidence the Session Scope was
-too narrow to reach the root cause. They are still just findings here. State
-them concretely and leave the escalation to her.
+surface, a fact patched in several places, are evidence the Design was too
+narrow to reach the root cause. They are still just findings here. State them
+concretely and leave the escalation to her.
 
-### Phase 8: Merge
+### Phase 7: Merge
 
 No involvement.
 
-### Phase 9: Collect
+### Phase 8: Collect
 
 Contribute final Ancillary Findings and Opportunities to the post-merge sweep.
 Ancillary Findings are things you noticed during the session that fell outside
@@ -477,12 +427,12 @@ own work suggests, big or small. For example:
 
 Raise an Opportunity only when the work just done suggests it, not as a
 free-standing wishlist. When surfacing Opportunities, draw on the Collect cues
-(see [Phase 9](../skills/team/protocol.md#phase-9-collect)) for the knowledge
+(see [Phase 8](../skills/team/protocol.md#phase-8-collect)) for the knowledge
 the audit left dormant. After you send them, your Collect-phase work is done.
 Answer if Grace later asks a specific factual question about something you saw
 while auditing.
 
-### Phase 10: Reflect
+### Phase 9: Reflect
 
 Grace may ask you for _why_ context on something during the session. Answer
 based on what you actually saw and decided at the time. The retrospective
@@ -516,9 +466,7 @@ text (see
 launch review subagents for that phase, give each one that same path instead of
 retyping the content into every `Agent` call. Name anything a subagent needs
 beyond the shared file path in its own prompt instead.
-[Step 3.2](#step-32-launch-the-review-subagents) does this for the scope lenses:
-it names the Session Type and the accepted Requirements and Code Analyses on top
-of the file path.
+[Step 4.2](#step-42-launch-the-review-subagents) does this for the plan lenses.
 
 ### Defend behaviour, not surface
 

@@ -111,7 +111,7 @@ new CLI subcommand").
 ## Compose the draft
 
 Compose the draft: your explicit reading of the requirements behind the input. A
-scope or design steer in the input is not a requirement. Leave it out.
+design steer in the input is not a requirement. Leave it out.
 
 Choose the shape from the Session Type.
 

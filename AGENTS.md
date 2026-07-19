@@ -122,10 +122,10 @@ are the templates.
 
 The README lists the utility skills a user can run on their own. That list is
 their one home, so add a new skill of this kind there. `coherence-review` is one
-such skill. The requirements, scope, design, and plan review lenses are not
-standalone skills. The `requirements-analysis` and `design` skills launch the
-requirements and design lenses inline as review subagents, and Junio launches
-the scope and plan lenses. So they run only as a review step within a session.
+such skill. The requirements, design, and plan review lenses are not standalone
+skills. The `requirements-analysis` and `design` skills launch the requirements
+and design lenses inline as review subagents, and Junio launches the plan
+lenses. So they run only as a review step within a session.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
@@ -210,13 +210,13 @@ caught itself. Weigh each input on the evidence, whoever supplied it.
 input on its merits. The user opens with session input that seeds the
 Requirements Analysis. Later phases build a more systematic picture from that
 seed and may revise it. The team surfaces what investigation reveals, even when
-it widens beyond the literal ask. The user can decline the wider scope
-explicitly via the Minimal Scope option.
+it widens beyond the literal ask. The user can decline the wider scope by
+pushing back at the Design gate.
 
 **Each phase artifact has its own purpose. Don't mix concerns.** Requirements
-Analysis is about user intent. Code Analysis is about code patterns. Scope is
-the work commitment. Design is the proposal. Code-pattern findings don't belong
-in the Requirements Analysis, and vice versa.
+Analysis is about user intent. Code Analysis is about code patterns. Design is
+the proposal and the work it commits to. Code-pattern findings don't belong in
+the Requirements Analysis, and vice versa.
 
 **Adding a concept reframes the existing ones.** Introducing a named mechanism
 to a system that already has named mechanisms shifts the existing ones' roles.

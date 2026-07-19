@@ -79,8 +79,7 @@ each code smell as you notice it. A code smell is a sign the code may resist
 change, not a proven defect. Examples: duplication, a long function, tight
 coupling, one concern scattered across many sites, and the rest of the
 code-smell catalogue. Describe the smell and where it lives. Whether it matters
-and how to fix it is a call for whoever scopes and designs the work next, not
-this read.
+and how to fix it is a call for whoever designs the work next, not this read.
 
 Some code smells are specific and common in codebases with agent-generated code:
 
@@ -118,8 +117,7 @@ it, often layers away.
 
 It stays factual, not a proposal. Name what is: how the code works, how it's
 organised, and its code smells. Don't recommend what to change. Whether a smell
-is worth fixing, and how, is a call for whoever scopes and designs the work
-next.
+is worth fixing, and how, is a call for whoever designs the work next.
 
 ## Copy-edit the draft
 
