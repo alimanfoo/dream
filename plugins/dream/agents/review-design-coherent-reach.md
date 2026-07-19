@@ -41,7 +41,7 @@ so the drift returns.
 
 Flag the Design as too narrow where one rule many sites must follow has no
 single home and the Design patches the sites without a check that enforces the
-rule. Flag it only when the rule is real and you have seen it break.
+rule.
 
 ## Reporting
 

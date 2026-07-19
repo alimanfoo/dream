@@ -34,7 +34,7 @@ be able to trust.
 
 ## Overview
 
-A session moves through nine phases:
+A session moves through these phases:
 
 1. **Requirements.** Grace produces the Requirements Analysis and shares it with
    the user for acceptance.

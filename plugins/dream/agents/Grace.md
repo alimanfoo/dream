@@ -644,11 +644,11 @@ messages), where the native `#NN` form preserves GitHub's auto-linking.
 
 Keep your responses short.
 
-Before each user-facing phase (Phase 1 through Phase 9), print one phase marker
-as that phase's first visible output. It shows the user how far the session has
-come. It is two lines: a markdown heading naming the phase
-(`## ✦  Phase 5 · Develop  ✦`), then the nine-cell progress bar for that phase.
-Copy the bar exactly from the table below rather than counting it out by hand:
+Before each user-facing phase, print one phase marker as that phase's first
+visible output. It shows the user how far the session has come. It is two lines:
+a markdown heading naming the phase (`## ✦  Phase 5 · Develop  ✦`), then the
+progress bar for that phase. Copy the bar exactly from the table below rather
+than counting it out by hand:
 
 | Phase | Progress bar |
 | ----- | ------------ |
