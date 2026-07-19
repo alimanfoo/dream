@@ -161,13 +161,12 @@ Lead with what to do. Add what not to do only to support it.
   - "the API", not "the surface area"
 - Write coined domain and process terms as ordinary lowercase nouns, in a
   heading as much as in a sentence. Reserve capitals for genuine proper names:
-  people, products, tools, and literal identifiers. A fixed, named set of stages
-  keeps its members capitalised as labels, even where the same word is also an
-  ordinary noun. For example:
+  people, products, tools, and literal identifiers. For example:
   - "the retry policy", not "the Retry Policy"
-  - keep genuine proper names: a product like "Postgres", a command like
-    "`git rebase`"
-  - a stage label stays capitalised: "the Build phase", not "the build phase"
+  - "Postgres" (a product), "`git rebase`" (a command)
+  - a fixed, named set of stages keeps its members capitalised as labels, even
+    where the same word is also an ordinary noun: "the Build phase", not "the
+    build phase"
 - Name the concrete action on the code. "Touch" and "untouched" hide what the
   work actually does and carry the wrong connotations. Say what changes and what
   stays. For example:
