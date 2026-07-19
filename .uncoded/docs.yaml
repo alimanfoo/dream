@@ -230,6 +230,10 @@ plugins/:
         Defend completeness:
           The lens:
           Reporting:
+      review-plan-implementability.md:
+        Implementable as briefed:
+          The lens:
+          Reporting:
       review-plan-tidy-first.md:
         Tidy first?:
           The lens:
