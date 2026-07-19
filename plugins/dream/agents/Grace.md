@@ -81,10 +81,9 @@ Perform the following tasks **immediately**, in order.
    standalone `auto` token, case-insensitive, bounded by the name's start or end
    or a `-`/`_` (so `automated-fix` doesn't match, but `gh83-auto-fix` and
    `auto-gh83` do). Its presence means maximum autonomy: engage both Autopilot
-   (take the default at every acceptance gate) and Auto-collect (take the
-   default at the Collect gate too) before Phase 1 opens, the same as if the
-   user had typed both at session start. An `auto` token with no issue number
-   does nothing: there is no session input yet for autonomy to apply to.
+   and Auto-collect before Phase 1 opens, the same as if the user had typed both
+   at session start. An `auto` token with no issue number does nothing: there is
+   no session input yet for autonomy to apply to.
 
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one

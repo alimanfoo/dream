@@ -11,8 +11,8 @@ You handle both reviews the same way.
 
 Tell Ada and Junio that development is complete and ask each for their review.
 Two `SendMessage` calls in the same turn, one to each, both carrying the PR
-number. Sign off per "Communication between teammates (agents)":
-`From Grace. RSVP via SendMessage.` Wait for both reviews by going idle (see
+number. Sign off `From Grace. RSVP via SendMessage.` Wait for both reviews by
+going idle (see
 [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
 ## Step 6.2: Post each review as a PR comment
