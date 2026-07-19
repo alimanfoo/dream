@@ -159,6 +159,11 @@ Lead with what to do. Add what not to do only to support it.
   - "use", not "leverage"
   - "essential", not "load-bearing"
   - "the API", not "the surface area"
+- Write coined domain and process terms as ordinary lowercase nouns, in a
+  heading as much as in a sentence. Reserve capitals for genuine proper names:
+  people, products, tools, and literal identifiers. For example:
+  - "the retry policy", not "the Retry Policy"
+  - "Postgres" (a product), "`git rebase`" (a command)
 - Name the concrete action on the code. "Touch" and "untouched" hide what the
   work actually does and carry the wrong connotations. Say what changes and what
   stays. For example:

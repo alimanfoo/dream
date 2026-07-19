@@ -91,7 +91,7 @@ you read, check the input against the current code, since it may have changed
 since the issue was filed. A symbol it names may be renamed, a file may have
 moved, or part of the ask may already be done.
 
-## Name the Session Type
+## Name the session type
 
 Select the session type:
 
@@ -119,7 +119,7 @@ the title from the session input.
 comment (`gh pr comment <N> --body "..."`). Head it `Session input` and list
 each issue number.
 
-**Label the PR.** Apply the Session Type's category label with
+**Label the PR.** Apply the session type's category label with
 `gh pr edit --add-label`: `enhancement`, `maintenance`, or `bug`. Run
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
@@ -183,7 +183,7 @@ Otherwise, act on everything the query returned as one batch, oldest first. An
 item can carry more than one of these:
 
 - **A requested change.** Implement it. Commit and push. Reply on the PR.
-- **A resolve-conflicts request.** Update the branch as [Merge](#merge)
+- **A resolve-conflicts request.** Update the branch as the [merge step](#merge)
   describes, as part of handling the batch.
 - **A defer-merge request.** Cancel the cron job and end the session, leaving
   the PR open for the user to merge later.

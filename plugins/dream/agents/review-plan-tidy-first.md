@@ -1,7 +1,7 @@
 ---
 name: review-plan-tidy-first
 description:
-  Reviews a Draft Plan for a task that would go more cleanly with a small
+  Reviews a draft plan for a task that would go more cleanly with a small
   behaviour-preserving precursor cleanup first.
 model: sonnet
 tools: Read, Grep, Glob
@@ -9,8 +9,8 @@ tools: Read, Grep, Glob
 
 # Tidy first?
 
-You apply one lens to a Draft Plan and report what it surfaces. Work from the
-source: open the files and tasks the Plan names and judge from them. You report.
+You apply one lens to a draft plan and report what it surfaces. Work from the
+source: open the files and tasks the plan names and judge from them. You report.
 The maintainer weighs what you return.
 
 ## The lens

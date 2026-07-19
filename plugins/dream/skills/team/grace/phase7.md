@@ -6,11 +6,12 @@ Write every turn output, message and artefact in this phase to the
 The goal is a clean merge. If nothing is in the way (green CI, no conflicts),
 the user merges and the phase ends.
 
-Under autopilot, move on to Collect. The review-and-merge watch has already
-detected the merge, or a review deferring it (see
+Under autopilot, move on to the
+[collect phase](../../../agents/Grace.md#phase-8-collect). The review-and-merge
+watch has already detected the merge, or a review deferring it (see
 [Review and merge](../../../agents/Grace.md#review-and-merge)).
 
-Merge can be deferred. When a second human reviewer is needed, or the user
+The merge can be deferred. When a second human reviewer is needed, or the user
 chooses to merge later, the session ends with the PR ready and merge left to a
 human. Say so plainly and treat it as a supported outcome, not a deviation.
 

@@ -38,12 +38,12 @@ not itself a reason to accept it. Each finding takes one of these paths:
   (`junio-review` or `ada-review`) for the commit counts.
 - Reject: note it in your reply to the user, with the reason.
 - Out of scope: hold it for post-merge triage.
-- Raise a Challenge: take it to the user per the "Challenge" shape. Use this
+- Raise a challenge: take it to the user per the "challenge" shape. Use this
   when the finding shows an accepted artifact no longer holds, not a fixable
   defect.
 
 A cluster of Junio's coherence findings circling one surface can be the evidence
-for a Challenge. Read it as a sign the Design was too narrow to reach the root
+for a challenge. Read it as a sign the design was too narrow to reach the root
 cause, not as a list of separate follow-ons.
 
 Keep one response note per finding as you triage. Accepted findings record the
@@ -104,7 +104,7 @@ Otherwise use this shape:
   mechanism-neutral terms, so a cold reviewer can orient without reading the
   thread.
 - Add one optional sentence naming the key design choice if the approach is
-  non-obvious, with a pointer to the Design comment for the rationale.
+  non-obvious, with a pointer to the design comment for the rationale.
 
 Don't sample existing PRs for style. Written contribution rules are real. The
 existing PR log is not a style reference.
@@ -128,19 +128,19 @@ follow-ons. Append it to the PR body, after the Claude Code footer:
 Plugin version from `../../.claude-plugin/plugin.json` relative to the protocol
 file. Gate counts are revision rounds per acceptance gate:
 
-- `req`: Requirements Analysis (closing Phase 1)
-- `ca`: Code Analysis (closing Phase 2)
+- `req`: requirements analysis (closing Phase 1)
+- `ca`: code analysis (closing Phase 2)
 - `design`: Phase 3
 - `plan`: Phase 4
 
 A revision round is one iteration where the user pushed back before accepting.
 
 Commit counts are one tally per origin, taken from the origin you recorded with
-each task at triage. Each task is one commit. `plan` is every accepted Plan
+each task at triage. Each task is one commit. `plan` is every accepted plan
 task. The rest are the follow-ons you labelled. They measure the coherence
 rework the team's own review caught before handing the PR over:
 
-- `plan`: accepted Plan task
+- `plan`: accepted plan task
 - `junio-audit`: Junio coherence-audit follow-on
 - `grace-read`: your own follow-on from checking the commit against the brief
 - `junio-review`: Junio PR-review follow-on
@@ -149,7 +149,7 @@ rework the team's own review caught before handing the PR over:
 Post-handoff commits are out of the tally: a user-directed change after PR
 ready, and Phase 7 conflict resolution. They are not secondary-review rework.
 
-Challenge value: `no`, or `at-<phase>` for the phase where an accepted Challenge
+Challenge value: `no`, or `at-<phase>` for the phase where an accepted challenge
 overturned an artifact. For example: `at-design` or `at-develop`. Autopilot
 value: `no`, or `from-<phase>` for the phase where autopilot first engaged. For
 example: `from-input` when set in the session input, or `from-design` when set
@@ -176,7 +176,8 @@ Marking the PR ready hands off the branch, and from here it is frozen (see
 a finding that would once have become a follow-on task becomes an issue instead.
 You fold no new development into the PR. Resolving merge conflicts is the
 exception. That is the merge itself, delegated to Ralph as Phase 7 describes.
-Only a user-directed change reopens Develop. Under autopilot, a review with
+Only a user-directed change reopens the
+[develop phase](../protocol.md#phase-5-develop). Under autopilot, a review with
 feedback is that change. You handle it as an explicit reopening, the same as any
 Phase 5 task:
 
@@ -197,7 +198,7 @@ of its tally (see [Step 6.5](#step-65-write-the-pr-description)).
 
 Absent that direction, the default is freeze.
 
-The freeze stops new code, not updates to the PR's record. If a Challenge is
+The freeze stops new code, not updates to the PR's record. If a challenge is
 accepted at Phase 6 or later, still post its superseding comment and edit the PR
-description. That records the decision, not development. Any code the Challenge
+description. That records the decision, not development. Any code the challenge
 needs goes through the user-directed reopening above.

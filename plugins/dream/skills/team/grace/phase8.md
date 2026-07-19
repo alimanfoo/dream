@@ -3,41 +3,43 @@
 Write every turn output, message and artefact in this phase to the
 [writing style guide](../../../writing-style.md).
 
-The goal of this phase is to collect Ancillary Findings and Opportunities from
+The goal of this phase is to collect ancillary findings and opportunities from
 the team. For each, decide whether to file a new issue or comment on an existing
 one. Four steps (compile, deepen, test, decide) come before any issue is filed.
-Test applies to Findings only. Opportunities skip it. All four are yours, with
-user discussion before you file or comment. A fifth step, summarize, closes the
-phase by posting what Collect did back to the session PR.
+The [test step](#step-83-test) applies to findings only. Opportunities skip it.
+All four are yours, with user discussion before you file or comment. A fifth
+step, summarize, closes the phase by posting what the collect phase did back to
+the session PR.
 
 ## Step 8.1: Compile
 
-Ask the teammates for the post-merge sweep, referring them to the Collect cues
-(see [Phase 8](../protocol.md#phase-8-collect)). They read the cues once at
-boot, and by now that read has fallen from view. Referring to the cues in the
-request fires them while each teammate surfaces Opportunities.
+Ask the teammates for the post-merge sweep, referring them to the collect cues
+(see the [collect phase](../protocol.md#phase-8-collect)). They read the cues
+once at boot, and by now that read has fallen from view. Referring to the cues
+in the request fires them while each teammate surfaces opportunities.
 
 Gather the sources (Ralph in-session, Junio in-session, Ada in-session, and the
-post-merge sweep). Each source yields two kinds: Ancillary Findings (concerns
-left out of scope) and Opportunities (worthwhile follow-up work the session
-suggests). Merge a Finding or Opportunity that appears in more than one source
-into one. Do this only within a session, not across sessions. Keep Opportunities
-separate from Findings. They skip the Test step. Draw on the cues yourself as
-you compile. You hold the whole session, so you have the widest view.
+post-merge sweep). Each source yields two kinds: ancillary findings (concerns
+left out of scope) and opportunities (worthwhile follow-up work the session
+suggests). Merge a finding or opportunity that appears in more than one source
+into one. Do this only within a session, not across sessions. Keep opportunities
+separate from findings. They skip the [test step](#step-83-test). Draw on the
+cues yourself as you compile. You hold the whole session, so you have the widest
+view.
 
-Add the **deferred candidates** from Phase 1 as Opportunities. These are
+Add the **deferred candidates** from Phase 1 as opportunities. These are
 candidate use cases or improvement goals the user neither promoted nor declined
-at the Requirements gate (see
+at the requirements gate (see
 [Step 1.2](phase1.md#step-12-produce-the-draft-requirements-analysis)). Like
-other Opportunities, they skip the Test step and route straight to Decide, filed
-as follow-up work or dropped. Each carries the evidence you cited in Phase 1, so
-it is ready to file as is.
+other opportunities, they skip the [test step](#step-83-test) and route straight
+to the [decide step](#step-84-decide), filed as follow-up work or dropped. Each
+carries the evidence you cited in Phase 1, so it is ready to file as is.
 
-Add the **code smells** the Code Analysis named but the Design didn't take up,
-as Ancillary Findings. Unlike the Phase 1 candidates, these are Findings, so
-they go through the Test step. The removal question fits an over-built smell
-especially well. Each carries the citation you made in the Code Analysis, so it
-is ready to file as is.
+Add the **code smells** the code analysis named but the design didn't take up,
+as ancillary findings. Unlike the Phase 1 candidates, these are findings, so
+they go through the [test step](#step-83-test). The removal question fits an
+over-built smell especially well. Each carries the citation you made in the code
+analysis, so it is ready to file as is.
 
 ## Step 8.2: Deepen
 
@@ -63,10 +65,10 @@ contract.
 
 ## Step 8.3: Test
 
-The two tests below apply to Ancillary Findings, not Opportunities. An
-Opportunity proposes new work, with no surface to remove or behaviour to defend.
-Route each Opportunity straight to Decide. For Findings, apply them in order,
-starting with removal.
+The two tests below apply to ancillary findings, not opportunities. An
+opportunity proposes new work, with no surface to remove or behaviour to defend.
+Route each opportunity straight to the [decide step](#step-84-decide). For
+findings, apply them in order, starting with removal.
 
 **The removal question**:
 
@@ -84,23 +86,26 @@ A `no` says removal doesn't help. Continue to defend-behaviour.
 
 > _Does the surface defend real behaviour with a real consumer?_
 
-A `yes` means the surface is doing real work for a real consumer. Decide picks
-among `reinforce`, `re-frame`, or `file fresh` on the merits. A `no` means the
-surface is decorative (a count nothing depends on, a docstring phrasing, an
-arbitrary constant). `drop` is usually the right call.
+A `yes` means the surface is doing real work for a real consumer. The
+[decide step](#step-84-decide) picks among `reinforce`, `re-frame`, or
+`file fresh` on the merits. A `no` means the surface is decorative (a count
+nothing depends on, a docstring phrasing, an arbitrary constant). `drop` is
+usually the right call.
 
 ## Step 8.4: Decide
 
 Make one call per candidate: drop, reinforce, re-frame, or file fresh. Use the
-source observations, the issue history, and what the Test step showed. Don't
-send candidates back to Ralph or Junio for another round of judgement.
+source observations, the issue history, and what the [test step](#step-83-test)
+showed. Don't send candidates back to Ralph or Junio for another round of
+judgement.
 
-The bar for filing a **new** issue from a Finding is _a behaviour gap with a
-real consumer_. Findings that clear the bar go to Decide on the merits. Findings
-the Test step marked as simplification candidates go to `file fresh`, regardless
-of how defend-behaviour answered. Findings that clear neither default to `drop`.
+The bar for filing a **new** issue from a finding is _a behaviour gap with a
+real consumer_. Findings that clear the bar are decided on the merits. Findings
+the [test step](#step-83-test) marked as simplification candidates go to
+`file fresh`, regardless of how defend-behaviour answered. Findings that clear
+neither default to `drop`.
 
-An Opportunity clears the bar when it names worthwhile follow-up work the
+An opportunity clears the bar when it names worthwhile follow-up work the
 session suggested, with a plausible consumer or value. Say what you see as a
 hypothesis with its evidence: the value you'd expect, the consumer it serves,
 the idea the work opened up. The user judges it, so this is the place to reach
@@ -161,7 +166,7 @@ catches what writing them the first time misses.
 
 Share the decision table together with the copy-edited drafts in one message.
 End it with one of these two, depending on
-[Auto-collect](../../../agents/Grace.md#auto-collect):
+[auto-collect](../../../agents/Grace.md#auto-collect):
 
 - Not under auto-collect: ask the user to accept the table and drafts, or
   redirect.
@@ -173,7 +178,8 @@ Do not rely on an unshared draft for GitHub-visible text.
 You don't implement anything in any phase. What enters the backlog is an issue
 or a comment, never a fix. This holds even when merge was deferred and the PR is
 still open. A miss this sweep surfaces becomes an issue, not a follow-on on the
-open branch. Only a user-directed change reopens Develop.
+open branch. Only a user-directed change reopens the
+[develop phase](../protocol.md#phase-5-develop).
 
 Apply a category label to each new issue. See "GitHub labels" in Common rules.
 
@@ -195,11 +201,11 @@ protocol"). Follow
 
 Once every item from the decision table is filed or commented, post one summary
 comment on the session PR: a list of references to every new issue and every
-comment Collect posted. Use `#N` for a new issue. Use the comment's own URL for
-a posted comment, since a bare `#N` would point at the issue, not the comment.
-Capture each comment's URL when you post it in Step 8.4, so it's ready to use
-here. Skip a plain `drop`, since it produced nothing to link. Skip the summary
-comment entirely if every candidate dropped.
+comment the collect phase posted. Use `#N` for a new issue. Use the comment's
+own URL for a posted comment, since a bare `#N` would point at the issue, not
+the comment. Capture each comment's URL when you post it in Step 8.4, so it's
+ready to use here. Skip a plain `drop`, since it produced nothing to link. Skip
+the summary comment entirely if every candidate dropped.
 
 Append the Claude Code footer (see
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items)).

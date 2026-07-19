@@ -50,8 +50,8 @@ Ask Junio for the coherence audit. Send him the commit SHA, signing off
 substantive findings") by going idle (see
 [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
-His audit may also raise a **Challenge**. For example, repeated audits circling
-the same surface suggest the Design is too narrow to reach the root cause.
+His audit may also raise a **challenge**. For example, repeated audits circling
+the same surface suggest the design is too narrow to reach the root cause.
 
 Read the committed change yourself while Junio audits. Check it against the
 brief you wrote: did the commit deliver the goal and the criterion you set? That
@@ -73,10 +73,10 @@ ones become new tasks, **inserted as the next tasks before any pending
 original-scope work** (depth-first drain). A correction for a gap you found is
 one such follow-on. Note the origin with each task as you accept it
 (`junio-audit`, or `grace-read` for a correction from your own read). These feed
-the Phase 6 commit counts. Hold Ancillary Findings for post-merge triage. Never
+the Phase 6 commit counts. Hold ancillary findings for post-merge triage. Never
 file them mid-session.
 
-Before treating a finding as an Ancillary Finding, ask: **is this the same edit,
+Before treating a finding as an ancillary finding, ask: **is this the same edit,
 one we missed, or one the session has now made adjacent?** If yes, accept it as
 an in-scope follow-on even when the original task did not list that surface. An
 in-session antecedent flips a borderline call toward in-scope. The session
@@ -88,9 +88,9 @@ apply the
 **[code-shape-first check](../../../agents/Grace.md#code-shape-first-check)**
 before deciding.
 
-When the coherence audit raises a **Challenge**, assess whether an accepted
+When the coherence audit raises a **challenge**, assess whether an accepted
 artifact really no longer holds. If it does, take it to the user (accept or
-reject) following the "Challenge" shape. If not, continue triage as normal.
+reject) following the "challenge" shape. If not, continue triage as normal.
 
 ### Step 5.6: Loop
 

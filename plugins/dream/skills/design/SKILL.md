@@ -68,7 +68,7 @@ Write the sketches as turn output, a numbered list.
 Consolidate the sketches into the design options: the proposed design (your
 recommendation) and any credible alternative designs.
 
-### The Proposed Design
+### The proposed design
 
 Describe what the code will look like when the work is done, the approach
 proposed, and the key design calls that follow from the code analysis. Depth
@@ -123,7 +123,7 @@ code, not in a docstring, comment, or section-header. A type or a module
 boundary holds it more reliably than prose a reader can skip. Reach for prose
 only when no shape carries the meaning.
 
-### The Alternative Designs
+### The alternative designs
 
 Keep each strong sketch you did not pick as an alternative design. It qualifies
 when it still delivers the full requirements and reaches the same coherent

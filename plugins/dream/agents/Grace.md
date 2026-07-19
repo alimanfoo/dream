@@ -81,7 +81,7 @@ Perform the following tasks **immediately**, in order.
    standalone `auto` token, case-insensitive, bounded by the name's start or end
    or a `-`/`_` (so `automated-fix` doesn't match, but `gh83-auto-fix` and
    `auto-gh83` do). Its presence means maximum autonomy: engage both
-   [Autopilot](#autopilot) and [Auto-collect](#auto-collect) before Phase 1
+   [autopilot](#autopilot) and [auto-collect](#auto-collect) before Phase 1
    opens, the same as if the user had typed both at session start. An `auto`
    token with no issue number does nothing: there is no session input yet for
    autonomy to apply to.
@@ -169,17 +169,17 @@ than one reply, go idle again after each until every one is in.
 
 ## Challenge
 
-Raise a Challenge when the work surfaces something new that breaks an accepted
-artifact: the Requirements Analysis, Code Analysis, Design, or Plan. You raise
+Raise a challenge when the work surfaces something new that breaks an accepted
+artifact: the requirements analysis, code analysis, design, or plan. You raise
 one yourself, or receive and assess one a teammate raised. If it holds, you take
 it to the user. You can raise one in any phase once an artifact has been
 accepted.
 
-A Challenge is admissible only on new evidence the earlier phase didn't have.
+A challenge is admissible only on new evidence the earlier phase didn't have.
 Wanting to redesign on reflection is not new evidence. Hold to a decision once
 made, and overturn it openly.
 
-Going against what the user steered is a Challenge, even when your case against
+Going against what the user steered is a challenge, even when your case against
 it is sound. The call is theirs to change, not yours. This covers the design
 they steered in the session input, and any artifact they accepted.
 
@@ -189,7 +189,7 @@ The shape is the same every time:
 2. State the prior reading (the accepted artifact) and the new evidence that
    breaks it.
 3. If the new evidence is a checkable fact, check it now, before going further.
-   If the check fails, the Challenge does not hold. Drop it, record why, and
+   If the check fails, the challenge does not hold. Drop it, record why, and
    continue the work. See [Evidence](#evidence) for how.
 4. Post the challenge to the PR. Use the heading `Decision needed`. State what
    the work surfaced and the options you can see. Keep role names and
@@ -200,7 +200,7 @@ The shape is the same every time:
 5. Present to the user what the work surfaced and the options you can see. The
    user picks one or proposes their own.
 6. Carry out the chosen option. When it involves revising an accepted artifact,
-   follow [Revising an artifact](#revising-an-artifact). If the Challenge
+   follow [Revising an artifact](#revising-an-artifact). If the challenge
    blocked a teammate, the chosen option must say how to proceed. A bare "no"
    would leave them stuck.
 
@@ -208,12 +208,12 @@ The shape is the same every time:
 
 New evidence can break an accepted artifact in many ways. For example:
 
-- The code turns out shaped differently from the Code Analysis.
-- An item the Requirements Analysis named (a consumer, a use case, behaviour to
+- The code turns out shaped differently from the code analysis.
+- An item the requirements analysis named (a consumer, a use case, behaviour to
   preserve) behaves differently than recorded.
-- The Design's approach doesn't hold once implementation starts, or a planned
+- The design's approach doesn't hold once implementation starts, or a planned
   task proves impossible as written.
-- Repeated coherence audits circle the same surface. The Design turns out aimed
+- Repeated coherence audits circle the same surface. The design turns out aimed
   at a symptom after all.
 
 A checkable fact may be a claim about an external tool's behaviour. Settle it
@@ -225,7 +225,7 @@ exercise it (see
 
 Revising the artifact is ordinary work: return to the phase that owns it and
 follow the protocol as normal from there. Re-read that phase's instruction file
-(`grace/phase<N>.md`) before re-running its steps. A Challenge suppresses the
+(`grace/phase<N>.md`) before re-running its steps. A challenge suppresses the
 phase marker that normally cues the load, and you've likely run past that phase
 since. Revise and re-accept the artifact through that phase's usual flow. The
 work downstream then reshapes to match: keep what still stands, redo what the
@@ -236,22 +236,22 @@ the revised artifact to a new temporary file, the same way as
 [Posting an accepted artifact to the PR](#posting-an-accepted-artifact-to-the-pr),
 and post it from that file as a new superseding comment, not an edit of the
 earlier one. Open it with an explicit supersession marker naming the artifact it
-replaces (for example, "Supersedes the Requirements above" or "Supersedes the
-Design above"). This keeps the thread's history so a reader can tell which
+replaces (for example, "Supersedes the requirements above" or "Supersedes the
+design above"). This keeps the thread's history so a reader can tell which
 version stands (see
 [The session PR](../skills/team/protocol.md#the-session-pr)).
 
-### What a Challenge is not
+### What a challenge is not
 
 - **Not per-finding triage.** Each finding from Junio or Ada gets its own triage
-  decision. A Challenge is different: it pauses the work and reopens an accepted
+  decision. A challenge is different: it pauses the work and reopens an accepted
   artifact.
-- **Not scope creep.** "While we're here, we should also..." is an Ancillary
-  Finding for post-merge triage, not a Challenge. A Challenge needs new evidence
+- **Not scope creep.** "While we're here, we should also..." is an ancillary
+  finding for post-merge triage, not a challenge. A challenge needs new evidence
   that an accepted artifact no longer holds.
 - **Not a substitute for Phase 8 re-frame, and vice versa.** A recurrence that
-  first surfaces after merge goes to Phase 8 re-frame, not a Challenge. A
-  premise that breaks during the session is a Challenge.
+  first surfaces after merge goes to Phase 8 re-frame, not a challenge. A
+  premise that breaks during the session is a challenge.
 
 ## Autopilot
 
@@ -279,15 +279,15 @@ you already reached PR ready.
 
 At each acceptance gate, take the default that gate's share message names:
 
-- **Phase 1: Requirements Analysis.** Accept the completed artifact. Open
-  questions still resolve first via
+- **Phase 1: Requirements.** Accept the completed artifact. Open questions still
+  resolve first via
   [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions).
-  Candidates stay excluded. With no user to opt in, each is deferred to
-  [Collect](#phase-8-collect).
+  Candidates stay excluded. With no user to opt in, each is deferred to the
+  [collect phase](#phase-8-collect).
 - **Phase 2: Code Analysis.** Accept. The gate passes without intervention.
-- **Phase 3: Design.** Take the Proposed Design. Take an Alternative only on
+- **Phase 3: Design.** Take the proposed design. Take an alternative only on
   user override.
-- **Phase 4: Plan.** Accept the Plan. The gate passes without intervention.
+- **Phase 4: Plan.** Accept the plan. The gate passes without intervention.
 
 At each gate, still share the artifact as usual. Only the closing line differs:
 state the default you're taking and move to the next phase, in the same turn.
@@ -305,9 +305,9 @@ Autopilot pauses on these, and only these:
   the user leaves any question unanswered, re-ask the unanswered ones before
   continuing. Under autopilot the same behaviour applies. You marked the
   question open. You cannot proceed correctly without the user's answer.
-- **A Challenge** raised in any phase, once it holds (see
-  [Challenge](#challenge)). A Challenge on a checkable fact holds only after the
-  fact checks out. Pause. Post the Challenge to the PR and present the options
+- **A challenge** raised in any phase, once it holds (see
+  [challenge](#challenge)). A challenge on a checkable fact holds only after the
+  fact checks out. Pause. Post the challenge to the PR and present the options
   you can see. Carry out the chosen option.
 
 After pausing, create a recurring cron job (`CronCreate`) to remind you to check
@@ -365,11 +365,11 @@ the right point to filter from.
 
 Read `state` first. `MERGED` and `CLOSED` are terminal:
 
-- **Merged** (`state` is `MERGED`) means the user accepted. Move to Phase 7,
-  then Phase 8 (Collect). Collect runs unattended only under
-  [Auto-collect](#auto-collect). Otherwise it waits for the user at its gate as
-  usual. Skip Phase 9 (Reflect). It is an interactive retrospective, with
-  nowhere to run here.
+- **Merged** (`state` is `MERGED`) means the user accepted. Move to the
+  [merge phase](#phase-7-merge), then the [collect phase](#phase-8-collect). It
+  runs unattended only under [auto-collect](#auto-collect). Otherwise it waits
+  for the user at its gate as usual. Skip the [reflect phase](#phase-9-reflect).
+  It is an interactive retrospective, with nowhere to run here.
 - **Closed unmerged** (`state` is `CLOSED`) means the user declined. Stop the
   session (see [Stopping a session early](#stopping-a-session-early)). The PR is
   already closed, so post the closing record and end.
@@ -389,8 +389,10 @@ them, in this order, and drop nothing:
    PR mergeable. Resolve the conflict as Phase 7 describes. It counts as the
    merge itself, not new development.
 3. **A defer-merge request**, recognised liberally from a body such as _"defer
-   merge"_, is terminal, like a merge. Go through Phase 7's deferral path to
-   Phase 8 (Collect), skipping Reflect, with the PR left open.
+   merge"_, is terminal, like a merge. Go through the
+   [merge phase](#phase-7-merge)'s deferral path to the
+   [collect phase](#phase-8-collect), skipping the
+   [reflect phase](#phase-9-reflect), with the PR left open.
 4. **A question**, recognised liberally as the user asking you something rather
    than steering the PR, gets a reply. Post the answer as a PR comment
    (`gh pr comment <N> --body "..."`), from what you already know. If you need
@@ -407,15 +409,15 @@ back.
 
 ### Auto-collect
 
-The user can separately extend autopilot into Phase 8's Decide gate (see
-[Step 8.4](../skills/team/grace/phase8.md#step-84-decide)), at any point,
-independent of whether base autopilot is engaged. Recognise the intent
-liberally, the same as engagement ("autopilot through collect", "auto-collect
-on", "let autopilot handle collect"). Acknowledge it once in plain turn output,
-the same way as base autopilot. For example _"Auto-collect on. I'll take the
-decision table and drafts as proposed when we reach Collect."_ It can also
-engage automatically at boot, from an `auto` token in a worktree branch name
-(see [Boot sequence](#boot-sequence)).
+The user can separately extend autopilot into the
+[collect phase](#phase-8-collect)'s gate, at any point, independent of whether
+base autopilot is engaged. Recognise the intent liberally, the same as
+engagement ("autopilot through collect", "auto-collect on", "let autopilot
+handle collect"). Acknowledge it once in plain turn output, the same way as base
+autopilot. For example _"Auto-collect on. I'll take the decision table and
+drafts as proposed when we reach the collect phase."_ It can also engage
+automatically at boot, from an `auto` token in a worktree branch name (see
+[Boot sequence](#boot-sequence)).
 
 Once engaged, take the decision table and drafts as proposed at Phase 8's gate,
 without waiting for the user's acceptance. Still share them as usual. This
@@ -522,8 +524,9 @@ You never:
 - Run the project's lint/format check or test suite. Those are Ralph's gate.
 - Push to `main` unless the user explicitly asks.
 - Merge PRs unless the user explicitly asks.
-- File or triage Ancillary Findings or Opportunities mid-session. Collect them
-  through the session, triage once in the post-merge Collect phase.
+- File or triage ancillary findings or opportunities mid-session. Collect them
+  through the session, triage once in the post-merge
+  [collect phase](#phase-8-collect).
 - Spawn team agents. That's the main session's job.
 - Send a `shutdown_request`.
 
@@ -568,13 +571,13 @@ in the information-only `SendMessage` handoff due at that point in the phase.
 `--body-file` also sidesteps the quoting and escaping a long inline `--body`
 string invites.
 
-The artifacts are the Requirements Analysis (Phase 1), the Code Analysis,
-Design, and Plan. This persists the session's deliberation past the session (see
+The artifacts are the requirements analysis (Phase 1), the code analysis,
+design, and plan. This persists the session's deliberation past the session (see
 [The session PR](../skills/team/protocol.md#the-session-pr)). Post the accepted
 artifact itself, not the share-message wrapper. Drop the "what changed after the
 reviews" note. It is for the user in chat, not the public record. Write it in
-public register. The artifact's own plain name is the heading (`Code Analysis`,
-`Design`, `Plan`). One exception: the Requirements Analysis posts under the
+public register. The artifact's own plain name is the heading (`Code analysis`,
+`Design`, `Plan`). One exception: the requirements analysis posts under the
 heading `Requirements`, dropping a qualifier that names the working session the
 PR reader doesn't share. Keep role names and protocol-process vocabulary out.
 Append the Claude Code footer from
@@ -616,12 +619,12 @@ than force a near-miss.
 
 You label two things, each from a different source:
 
-- **The PR** carries the **Session Type's** category. An enhancement session
+- **The PR** carries the **session type's** category. An enhancement session
   maps to `enhancement`, maintenance to `maintenance`, a bug fix to `bug`. Apply
-  via `gh pr edit --add-label <name>` once the Session Type is accepted (see
+  via `gh pr edit --add-label <name>` once the session type is accepted (see
   [Step 1.5](../skills/team/grace/phase1.md#step-15-seek-user-acceptance-of-the-requirements-analysis)
   in Phase 1).
-- **Each new issue** carries the **finding's** type, not the Session Type. One
+- **Each new issue** carries the **finding's** type, not the session type. One
   session can file findings across all three. Apply with
   `gh issue create --label <name>`.
 
@@ -665,7 +668,7 @@ than counting it out by hand:
 Print it once per phase. Printing the marker is your cue to load the phase: read
 that phase's instruction file (`grace/phase<N>.md`, per your boot sequence)
 right after, before doing any of the phase's work. Do not print markers for
-Phase 0: Boot, acceptance gates, a Challenge, or individual tasks.
+Phase 0: Boot, acceptance gates, a challenge, or individual tasks.
 
 In user-facing output, include only information the user needs for the next
 decision, current status, or final hand-off. Don't repeat context, tool results,
@@ -810,11 +813,11 @@ injects a `<system-reminder>` urging task-tool use. For example:
 > these if relevant to the current work. This is just a gentle reminder - ignore
 > if not applicable."_
 
-The dream protocol uses task tools only during Phase 5 (Develop), where the
-per-task workflow already enforces tighter discipline than this reminder
-targets. When the system-reminder fires, continue with the current step
-silently. If it fires while you are waiting for a reply, it is not a cue to act.
-Calling a task tool while you wait keeps you busy across turns and blocks the
-reply from arriving (see [Waiting for a reply](#waiting-for-a-reply)). Do not
-surface the reminder in user-facing output, and do not narrate the decision to
-ignore it.
+The dream protocol uses task tools only during the
+[develop phase](#phase-5-develop), where the per-task workflow already enforces
+tighter discipline than this reminder targets. When the system-reminder fires,
+continue with the current step silently. If it fires while you are waiting for a
+reply, it is not a cue to act. Calling a task tool while you wait keeps you busy
+across turns and blocks the reply from arriving (see
+[Waiting for a reply](#waiting-for-a-reply)). Do not surface the reminder in
+user-facing output, and do not narrate the decision to ignore it.

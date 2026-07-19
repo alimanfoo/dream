@@ -147,7 +147,7 @@ surface the input names that is no longer there. Trace where it went.
 Name each discrepancy in one sentence. If nothing has drifted, say so in one
 sentence.
 
-## Name the Session Type
+## Name the session type
 
 Select the session type:
 
@@ -155,7 +155,7 @@ Select the session type:
 - **Maintenance.** Coherence, naming, structure. Behaviour already correct.
 - **Bug fix.** Incorrect behaviour to repair.
 
-State the Session Type in one sentence with the reasoning ("Session Type:
+State the session type in one sentence with the reasoning ("session type:
 enhancement, adds a new CLI subcommand").
 
 ## Open the session PR
@@ -178,7 +178,7 @@ the title from the session input.
 comment (`gh pr comment <N> --body "..."`). Head it `Session input`. List each
 issue number. Briefly summarise any additional input from the user.
 
-**Label the PR.** Apply the Session Type's category label with
+**Label the PR.** Apply the session type's category label with
 `gh pr edit --add-label`: `enhancement`, `maintenance`, or `bug`. Run
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
@@ -186,7 +186,7 @@ apply none when there's no clean match.
 ## Plan
 
 Run a Plan subagent. Give it the session input, the code you read, and the
-Session Type, and ask for a step-by-step plan.
+session type, and ask for a step-by-step plan.
 
 Post the returned plan as a PR comment. Head it `Plan`.
 
@@ -268,18 +268,18 @@ account, so only the cutoff timestamp tells your posts from their reply.
 Then idle. You idle until the cron next fires, so this is not a busy loop. Each
 firing wakes you to run the query and handle what it returns.
 
-When `state` is `MERGED`, cancel the cron job and continue to
-[Collect](#collect). When `state` is `CLOSED`, cancel the cron job. Post a
+When `state` is `MERGED`, cancel the cron job and continue to the
+[collect step](#collect). When `state` is `CLOSED`, cancel the cron job. Post a
 comment naming where the work stopped, then end the session.
 
 Otherwise, act on everything the query returned as one batch, oldest first. An
 item can carry more than one of these:
 
 - **A requested change.** Implement it. Commit and push. Reply on the PR.
-- **A resolve-conflicts request.** Update the branch as [Merge](#merge)
+- **A resolve-conflicts request.** Update the branch as the [merge step](#merge)
   describes, as part of handling the batch.
-- **A defer-merge request.** Cancel the cron job and continue to
-  [Collect](#collect), leaving the PR open. This is terminal, like a merge.
+- **A defer-merge request.** Cancel the cron job and continue to the
+  [collect step](#collect), leaving the PR open. This is terminal, like a merge.
 - **A question.** Answer it as a PR comment.
 
 An approving review, or a comment with nothing to act on, needs no reply. Once
