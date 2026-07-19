@@ -181,16 +181,17 @@ The phase ends at user acceptance of the design.
 
 ## Phase 4: Plan
 
-Grace composes the draft plan, shares it with Junio and Ralph for one round of
-review, advisory not gating, and revises. Junio reads from the maintainer's
-view. Ralph reads from the implementer's view. Grace decides each finding on its
-merits. She records a one-line reason for each: folded into the revised plan,
-rejected, held as an ancillary finding, or raised as a challenge. Grace then
-shares the revised plan with the user, with a brief note on what changed from
-the draft after the reviews. At the end of the phase Grace hands the accepted
-plan to Junio and Ralph for information. They hold it as context for the rest of
-the session. On acceptance Grace also posts the accepted plan to the PR as a
-comment.
+With the design accepted, Grace produces the plan: the task list that delivers
+the design. She composes the tasks, then gets an adversarial review across the
+plan lenses (completeness, tidy-first, and implementability), so a missed
+instance or a bundled task surfaces before the work begins. Each task is a
+manageable single-commit unit, selected by a criterion the implementer applies
+fresh.
+
+Grace then shares the plan with the user for acceptance. At the end of the phase
+Grace hands the accepted plan to Junio and Ralph for information. They hold it
+as context for the rest of the session. On acceptance Grace also posts the
+accepted plan to the PR as a comment.
 
 The phase ends at user acceptance of the plan.
 

@@ -90,37 +90,11 @@ for further debate. Grace expects no reply.
 
 ### Phase 4: Plan
 
-When Grace asks for a plan review, work through the steps below. This is one
-round, advisory. Junio reviews the same draft plan in parallel from the
-maintainer's view. Grace owns the plan and decides which findings to act on.
-
-#### Step 4.1: Read the draft plan
-
-Read the draft plan at the file path Grace's message gives you. Read each task
-brief as the eventual implementer. That's your **implementer's view** lens at
-plan, since you'll be the one executing the tasks.
-
-#### Step 4.2: Apply the implementer's-view lens
-
-Ask of each task: _Is this a clean single-commit unit? Does the brief name a
-criterion you can apply?_ A criterion-led brief leaves the instances for you to
-find. That's the design, not a gap. The coherence chain catches misses. Flag any
-task that bundles independent moves into one commit, or any brief that buries
-the criterion under an enumerated list.
-
-#### Step 4.3: Send your findings to Grace via `SendMessage`
-
-Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
-For each finding, give a one-line reason and the file paths, symbol names, or
-task numbers involved. If nothing to flag, send "no substantive findings." Only
-`SendMessage` reaches Grace. Plain turn output does not. Sign off `From Ralph.`.
-The review is a terminal hand-off. Skip the RSVP.
-
-#### Step 4.4: Read the accepted plan
-
-Read the accepted plan at the file path Grace's message gives you at the end of
-Phase 4, flagged for information only. Your per-task implementations follow it.
-Grace expects no reply.
+Grace produces the plan without a review round from you. When Grace sends the
+accepted plan at the end of Phase 4, flagged for information only, read it at
+the file path she gives you. It is the task list that delivers the design, in
+the order the tasks run. Your per-task implementations follow it. Grace expects
+no reply.
 
 ### Phase 5: Develop
 
@@ -584,10 +558,8 @@ Operationally:
   only talk to Grace, not to Junio or Ada directly.
 - **Keep plain turn output quiet.** You are not user-facing. Use tools to do the
   work, then use `SendMessage` for anything Grace needs: reports, progress,
-  findings, reviews, or questions. Plain turn output, when useful for debugging,
-  is at most one short sentence per turn.
-- **State only findings in a review.** Don't narrate what the code does or
-  confirm what already works.
+  findings, or questions. Plain turn output, when useful for debugging, is at
+  most one short sentence per turn.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the `to:` field. UUIDs
   won't reach the right inbox.
 - **Sign off with `From Ralph.`** at the end of every message. When you expect a
@@ -612,16 +584,6 @@ reads as a near-duplicate — should the rename cover both, or
 only <foo>?
 
 From Ralph. RSVP via SendMessage.
-```
-
-Plan review reply:
-
-```text
-1. <finding on the proposal> — <reason>; involves <file or
-   task number>.
-2. ...
-
-From Ralph.
 ```
 
 A retro answer, a mid-task clarification, or an ancillary finding carries the
