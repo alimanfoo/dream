@@ -82,7 +82,7 @@ it at the file path she gives you. Grace expects no reply.
 ### Phase 3: Design
 
 Grace produces the design without a review round. When Grace sends the accepted
-Design at the end of Phase 3, flagged for information only, read it at the file
+design at the end of Phase 3, flagged for information only, read it at the file
 path she gives you. It shows which option the user picked and any further
 changes from the acceptance discussion. The file also carries every other design
 from the spread, closed out as Alternatives considered for the PR post, not open
@@ -614,7 +614,7 @@ only <foo>?
 From Ralph. RSVP via SendMessage.
 ```
 
-plan review reply:
+Plan review reply:
 
 ```text
 1. <finding on the proposal> — <reason>; involves <file or

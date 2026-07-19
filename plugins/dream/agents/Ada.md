@@ -229,13 +229,13 @@ No involvement in this phase.
 
 Pass any final ancillary findings and opportunities from your review to the
 post-merge sweep when Grace asks for them after the PR merges. Ancillary
-Findings are observations from your review that haven't already been raised.
+findings are observations from your review that haven't already been raised.
 Opportunities are worthwhile follow-up work the diff suggests, big or small. For
 example: a refactor it now invites, a simplification it opens up, or a larger
 idea the change points to. That larger idea might be a feature its new shape
 makes cheap, or a simpler approach to the area it changed. Raise an opportunity
 only when the diff suggests it, not as a free-standing wishlist. When surfacing
-Opportunities, draw on the Collect cues (see
+opportunities, draw on the Collect cues (see
 [Phase 8](../skills/team/protocol.md#phase-8-collect)) for the knowledge the
 review left dormant.
 

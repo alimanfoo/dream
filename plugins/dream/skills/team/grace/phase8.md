@@ -64,7 +64,7 @@ contract.
 ## Step 8.3: Test
 
 The two tests below apply to ancillary findings, not opportunities. An
-Opportunity proposes new work, with no surface to remove or behaviour to defend.
+opportunity proposes new work, with no surface to remove or behaviour to defend.
 Route each opportunity straight to Decide. For findings, apply them in order,
 starting with removal.
 

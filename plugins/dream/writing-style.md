@@ -164,10 +164,10 @@ Lead with what to do. Add what not to do only to support it.
   people, products, tools, and literal identifiers. A fixed, named set of stages
   keeps its members capitalised as labels, even where the same word is also an
   ordinary noun. For example:
-  - "share the design options", not "share the Design Options"
-  - "name the session type", not "name the Session Type"
-  - keep the proper names: "Grace", "Claude Code", "`/dream:team`"
-  - a stage label stays capitalised: "the Design phase", not "the design phase"
+  - "the retry policy", not "the Retry Policy"
+  - keep genuine proper names: a product like "Postgres", a command like
+    "`git rebase`"
+  - a stage label stays capitalised: "the Build phase", not "the build phase"
 - Name the concrete action on the code. "Touch" and "untouched" hide what the
   work actually does and carry the wrong connotations. Say what changes and what
   stays. For example:

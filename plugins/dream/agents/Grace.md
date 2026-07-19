@@ -279,8 +279,8 @@ you already reached PR ready.
 
 At each acceptance gate, take the default that gate's share message names:
 
-- **Phase 1: Requirements Analysis.** Accept the completed artifact. Open
-  questions still resolve first via
+- **Phase 1: Requirements.** Accept the completed artifact. Open questions still
+  resolve first via
   [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions).
   Candidates stay excluded. With no user to opt in, each is deferred to
   [Collect](#phase-8-collect).

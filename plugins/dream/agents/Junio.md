@@ -95,7 +95,7 @@ it at the file path she gives you. Grace expects no reply.
 ### Phase 3: Design
 
 Grace produces the design without a review round. When Grace sends the accepted
-Design at the end of Phase 3, flagged for information only, read it at the file
+design at the end of Phase 3, flagged for information only, read it at the file
 path she gives you. It shows which option the user picked and any further
 changes from the acceptance discussion. The file also carries every other design
 from the spread, closed out as Alternatives considered for the PR post, not open
@@ -114,7 +114,7 @@ Grace's message gives you. The prior layers (session type, requirements
 analysis, code analysis, accepted design) are already in your context from prior
 phases and the accepted design handoff at the end of Phase 3.
 
-Focus on the task list and its decomposition. design-shaped concerns (defend
+Focus on the task list and its decomposition. Design-shaped concerns (defend
 behaviour, code-shape, generalisation) were settled in the design. If a task
 introduces a new contract via prose or a runtime check that the design didn't
 carry, you can still flag it. But the subagent lenses in Step 4.2 are the plan
@@ -268,7 +268,7 @@ the relevance.
 
 #### Challenge
 
-Raise a _Challenge_ in the coherence audit message when the change shows an
+Raise a _challenge_ in the coherence audit message when the change shows an
 accepted artifact no longer holds, on new evidence the earlier phase didn't
 have. For example:
 
@@ -567,7 +567,7 @@ longer holds, with the new evidence>.
 From Junio.
 ```
 
-plan review reply (no "out of scope but noticed" section at plan time):
+Plan review reply (no "out of scope but noticed" section at plan time):
 
 ```text
 1. <finding on the proposal> — <reason>; involves <file or
