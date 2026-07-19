@@ -200,17 +200,17 @@ Implement the plan, one step at a time. For each step:
 
 ## Simplify
 
-Run the `dream:simplify` skill over the branch's changes against the base
+Run the `/dream:simplify` skill over the branch's changes against the base
 (`main...HEAD`), so the code is easier to read. Commit and push the fixes.
 
 ## Copy-edit
 
-Run the `dream:copy-edit` skill over the prose you changed. Commit and push the
+Run the `/dream:copy-edit` skill over the prose you changed. Commit and push the
 fixes it makes.
 
 ## Coherence review
 
-Run the `dream:coherence-review` skill over the branch's changes against the
+Run the `/dream:coherence-review` skill over the branch's changes against the
 base (`main...HEAD`). It returns findings across the coherence lenses. It does
 not apply them. Weigh each on its merits and apply the ones that stand up. Reach
 for the coherent fix even when it is larger than the site the finding names.
@@ -240,7 +240,7 @@ Otherwise:
 - Follow with one to three sentences on what the PR does and why, for a reader
   new to the session.
 
-Run the `dream:copy-edit` skill over the draft before you set it. The reviewer
+Run the `/dream:copy-edit` skill over the draft before you set it. The reviewer
 reads the description, so it needs to be as readable as the rest of the prose.
 Pass the draft as the passage to review, since it isn't a committed file yet.
 

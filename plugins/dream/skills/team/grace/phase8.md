@@ -155,9 +155,9 @@ Draft the exact issue or comment text for every row that isn't a plain `drop`,
 before sharing anything with the user. Write the drafts to a temporary file
 outside the repo.
 
-Before sharing the drafts, run the `dream:copy-edit` skill over that file. Issue
-drafts run dense, and a second pass against the writing style guide catches what
-writing them the first time misses.
+Before sharing the drafts, run the `/dream:copy-edit` skill over that file.
+Issue drafts run dense, and a second pass against the writing style guide
+catches what writing them the first time misses.
 
 Share the decision table together with the copy-edited drafts in one message.
 End it with one of these two, depending on

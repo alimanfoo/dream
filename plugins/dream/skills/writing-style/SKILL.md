@@ -3,7 +3,8 @@ name: writing-style
 description:
   Write prose to the dream plugin's writing style guide. Use when you are about
   to write or revise prose, such as prompts, documentation, messages, or GitHub
-  artefacts. To fix prose already written, use the copy-edit skill instead.
+  artefacts. To fix prose already written, use the /dream:copy-edit skill
+  instead.
 ---
 
 # Writing style
@@ -25,7 +26,7 @@ attention.
 
 Write to the guide from here on. Apply it as you draft, and again as you revise.
 
-## For prose already written, use copy-edit
+## For prose already written, use /dream:copy-edit
 
-This skill shapes new prose. Use the copy-edit skill to bring existing prose
-into line with the guide.
+This skill shapes new prose. Use the `/dream:copy-edit` skill to bring existing
+prose into line with the guide.

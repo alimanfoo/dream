@@ -165,7 +165,7 @@ costs something joins the alternative designs, with its trade-off named.
 
 ## Copy-edit the draft
 
-Run the `dream:copy-edit` skill over the draft file, giving its absolute path.
+Run the `/dream:copy-edit` skill over the draft file, giving its absolute path.
 
 ## The result
 

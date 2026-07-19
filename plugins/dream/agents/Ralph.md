@@ -158,15 +158,15 @@ scope. See
 
 #### Step 5.3: Simplify the code you wrote
 
-Run the `dream:simplify` skill over the code you wrote, so it is easier to read.
-With no target, it reviews your uncommitted changes.
+Run the `/dream:simplify` skill over the code you wrote, so it is easier to
+read. With no target, it reviews your uncommitted changes.
 
 #### Step 5.4: Copy-edit the prose you wrote
 
 Note the prose your task added or changed: markdown docs, docstrings, code
 comments, prompts. Skip this step when the task wrote no prose.
 
-Run the `dream:copy-edit` skill over the prose you noted.
+Run the `/dream:copy-edit` skill over the prose you noted.
 
 #### Step 5.5: Run the tests
 
