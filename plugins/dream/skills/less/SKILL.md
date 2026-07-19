@@ -183,7 +183,7 @@ Otherwise, act on everything the query returned as one batch, oldest first. An
 item can carry more than one of these:
 
 - **A requested change.** Implement it. Commit and push. Reply on the PR.
-- **A resolve-conflicts request.** Update the branch as [Merge](#merge)
+- **A resolve-conflicts request.** Update the branch as the [merge step](#merge)
   describes, as part of handling the batch.
 - **A defer-merge request.** Cancel the cron job and end the session, leaving
   the PR open for the user to merge later.

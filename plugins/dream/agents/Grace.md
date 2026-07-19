@@ -409,9 +409,9 @@ back.
 
 ### Auto-collect
 
-The user can separately extend autopilot into Phase 8's Decide gate (see
-[Step 8.4](../skills/team/grace/phase8.md#step-84-decide)), at any point,
-independent of whether base autopilot is engaged. Recognise the intent
+The user can separately extend autopilot into the
+[decide step](../skills/team/grace/phase8.md#step-84-decide)'s gate, at any
+point, independent of whether base autopilot is engaged. Recognise the intent
 liberally, the same as engagement ("autopilot through collect", "auto-collect
 on", "let autopilot handle collect"). Acknowledge it once in plain turn output,
 the same way as base autopilot. For example _"Auto-collect on. I'll take the

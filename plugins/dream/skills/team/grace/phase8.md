@@ -6,9 +6,10 @@ Write every turn output, message and artefact in this phase to the
 The goal of this phase is to collect ancillary findings and opportunities from
 the team. For each, decide whether to file a new issue or comment on an existing
 one. Four steps (compile, deepen, test, decide) come before any issue is filed.
-Test applies to findings only. Opportunities skip it. All four are yours, with
-user discussion before you file or comment. A fifth step, summarize, closes the
-phase by posting what the collect phase did back to the session PR.
+The [test step](#step-83-test) applies to findings only. Opportunities skip it.
+All four are yours, with user discussion before you file or comment. A fifth
+step, summarize, closes the phase by posting what the collect phase did back to
+the session PR.
 
 ## Step 8.1: Compile
 
@@ -22,22 +23,23 @@ post-merge sweep). Each source yields two kinds: ancillary findings (concerns
 left out of scope) and opportunities (worthwhile follow-up work the session
 suggests). Merge a finding or opportunity that appears in more than one source
 into one. Do this only within a session, not across sessions. Keep opportunities
-separate from findings. They skip the Test step. Draw on the cues yourself as
-you compile. You hold the whole session, so you have the widest view.
+separate from findings. They skip the [test step](#step-83-test). Draw on the
+cues yourself as you compile. You hold the whole session, so you have the widest
+view.
 
 Add the **deferred candidates** from Phase 1 as opportunities. These are
 candidate use cases or improvement goals the user neither promoted nor declined
 at the requirements gate (see
 [Step 1.2](phase1.md#step-12-produce-the-draft-requirements-analysis)). Like
-other opportunities, they skip the Test step and route straight to Decide, filed
-as follow-up work or dropped. Each carries the evidence you cited in Phase 1, so
-it is ready to file as is.
+other opportunities, they skip the [test step](#step-83-test) and route straight
+to the [decide step](#step-84-decide), filed as follow-up work or dropped. Each
+carries the evidence you cited in Phase 1, so it is ready to file as is.
 
 Add the **code smells** the code analysis named but the design didn't take up,
 as ancillary findings. Unlike the Phase 1 candidates, these are findings, so
-they go through the Test step. The removal question fits an over-built smell
-especially well. Each carries the citation you made in the code analysis, so it
-is ready to file as is.
+they go through the [test step](#step-83-test). The removal question fits an
+over-built smell especially well. Each carries the citation you made in the code
+analysis, so it is ready to file as is.
 
 ## Step 8.2: Deepen
 
@@ -65,8 +67,8 @@ contract.
 
 The two tests below apply to ancillary findings, not opportunities. An
 opportunity proposes new work, with no surface to remove or behaviour to defend.
-Route each opportunity straight to Decide. For findings, apply them in order,
-starting with removal.
+Route each opportunity straight to the [decide step](#step-84-decide). For
+findings, apply them in order, starting with removal.
 
 **The removal question**:
 
@@ -84,21 +86,24 @@ A `no` says removal doesn't help. Continue to defend-behaviour.
 
 > _Does the surface defend real behaviour with a real consumer?_
 
-A `yes` means the surface is doing real work for a real consumer. Decide picks
-among `reinforce`, `re-frame`, or `file fresh` on the merits. A `no` means the
-surface is decorative (a count nothing depends on, a docstring phrasing, an
-arbitrary constant). `drop` is usually the right call.
+A `yes` means the surface is doing real work for a real consumer. The
+[decide step](#step-84-decide) picks among `reinforce`, `re-frame`, or
+`file fresh` on the merits. A `no` means the surface is decorative (a count
+nothing depends on, a docstring phrasing, an arbitrary constant). `drop` is
+usually the right call.
 
 ## Step 8.4: Decide
 
 Make one call per candidate: drop, reinforce, re-frame, or file fresh. Use the
-source observations, the issue history, and what the Test step showed. Don't
-send candidates back to Ralph or Junio for another round of judgement.
+source observations, the issue history, and what the [test step](#step-83-test)
+showed. Don't send candidates back to Ralph or Junio for another round of
+judgement.
 
 The bar for filing a **new** issue from a finding is _a behaviour gap with a
-real consumer_. Findings that clear the bar go to Decide on the merits. Findings
-the Test step marked as simplification candidates go to `file fresh`, regardless
-of how defend-behaviour answered. Findings that clear neither default to `drop`.
+real consumer_. Findings that clear the bar are decided on the merits. Findings
+the [test step](#step-83-test) marked as simplification candidates go to
+`file fresh`, regardless of how defend-behaviour answered. Findings that clear
+neither default to `drop`.
 
 An opportunity clears the bar when it names worthwhile follow-up work the
 session suggested, with a plausible consumer or value. Say what you see as a

@@ -268,18 +268,18 @@ account, so only the cutoff timestamp tells your posts from their reply.
 Then idle. You idle until the cron next fires, so this is not a busy loop. Each
 firing wakes you to run the query and handle what it returns.
 
-When `state` is `MERGED`, cancel the cron job and continue to
-[Collect](#collect). When `state` is `CLOSED`, cancel the cron job. Post a
+When `state` is `MERGED`, cancel the cron job and continue to the
+[collect step](#collect). When `state` is `CLOSED`, cancel the cron job. Post a
 comment naming where the work stopped, then end the session.
 
 Otherwise, act on everything the query returned as one batch, oldest first. An
 item can carry more than one of these:
 
 - **A requested change.** Implement it. Commit and push. Reply on the PR.
-- **A resolve-conflicts request.** Update the branch as [Merge](#merge)
+- **A resolve-conflicts request.** Update the branch as the [merge step](#merge)
   describes, as part of handling the batch.
-- **A defer-merge request.** Cancel the cron job and continue to
-  [Collect](#collect), leaving the PR open. This is terminal, like a merge.
+- **A defer-merge request.** Cancel the cron job and continue to the
+  [collect step](#collect), leaving the PR open. This is terminal, like a merge.
 - **A question.** Answer it as a PR comment.
 
 An approving review, or a comment with nothing to act on, needs no reply. Once

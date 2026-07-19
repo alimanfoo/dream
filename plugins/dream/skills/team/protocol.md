@@ -738,13 +738,14 @@ conversation. GitHub artefacts themselves are the exception: PR descriptions,
 issue bodies, PR/issue comments, and commit messages. Use the native `#NN` form
 there to preserve GitHub's auto-linking.
 
-#### Phase references
+#### Phase and step references
 
-Refer to a phase in prose by its lowercase name and the word "phase", linked to
-its section. A bare phase name reads as a verb otherwise (for example "defers to
-collect"). Write "the [design phase](#phase-3-design)", not "Design" or "the
-Design phase". The phase headings, the phase list, and the "Phase N: name"
-labels keep their capitals as structural titles.
+Refer to a phase or step in prose by its lowercase name and the word "phase" or
+"step", linked to its section. A bare stage name reads as a verb otherwise (for
+example "defers to collect" or "route it to decide"). Write "the
+[design phase](#phase-3-design)", not "Design" or "the Design phase". The
+headings, the phase list, and the "Phase N: name" and "Step N.M: name" labels
+keep their capitals as structural titles.
 
 ### GitHub-rendered artefacts
 
