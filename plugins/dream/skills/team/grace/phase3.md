@@ -53,7 +53,7 @@ Write the following to a temporary file outside this repo, via Bash:
 
 Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP. No
-reply is needed. The accepted design feeds the plan review that follows.
+reply is needed.
 
 ## Step 3.5: Post the accepted design to the PR
 
