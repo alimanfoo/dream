@@ -184,7 +184,7 @@ Address the findings you accept by editing the temporary file.
 
 ## Copy-edit the draft
 
-Run the `dream:copy-edit` skill over the draft file, giving its absolute path.
+Run the `/dream:copy-edit` skill over the draft file, giving its absolute path.
 The requirements analysis is what the reader studies most closely, so its
 readability matters most.
 

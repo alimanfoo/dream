@@ -47,7 +47,7 @@ the Claude Code footer from
 
 ## Step 1.2: Produce the Draft Requirements Analysis
 
-Run the `dream:requirements-analysis` skill, giving it the session input.
+Run the `/dream:requirements-analysis` skill, giving it the session input.
 
 The skill returns the Draft Requirements Analysis. By Session Type, it names one
 of:

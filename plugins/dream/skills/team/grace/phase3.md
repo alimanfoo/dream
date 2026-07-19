@@ -8,7 +8,7 @@ Follow the steps below in sequence.
 
 ## Step 3.1: Produce the Design Options
 
-Run the `dream:design` skill, focused on the accepted Requirements Analysis and
+Run the `/dream:design` skill, focused on the accepted Requirements Analysis and
 Code Analysis.
 
 The skill returns the Design Options: the Proposed Design (its recommendation)

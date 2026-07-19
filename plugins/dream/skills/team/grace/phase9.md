@@ -56,7 +56,7 @@ Follow [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
 File an issue in one of two places:
 
 - **Upstream (`alimanfoo/dream`)** when the problem is in the dream protocol or
-  the agent prompts. Anyone running dream:team would hit it.
+  the agent prompts. Anyone running `/dream:team` would hit it.
 - **Host project** when the problem is specific to the repo where dream is being
   used. The team will hit this pattern again here, but not elsewhere.
 
@@ -69,8 +69,8 @@ expose.
 
 Otherwise, strip host specifics. This covers `PRIVATE`, `INTERNAL`, or any error
 from the visibility check. `alimanfoo/dream` is a public repo unrelated to the
-host project, and the upstream draft should read as if dream:team had run on any
-codebase. Strip any identifiers that tie the finding to this codebase:
+host project, and the upstream draft should read as if `/dream:team` had run on
+any codebase. Strip any identifiers that tie the finding to this codebase:
 
 - host repo and org names
 - file paths

@@ -370,7 +370,7 @@ what it returns.
 
 #### Step 6.2: Run the coherence review
 
-Run the `dream:coherence-review` skill over the diff. It launches the coherence
+Run the `/dream:coherence-review` skill over the diff. It launches the coherence
 lenses in parallel and returns their combined findings. Brief it with the diff
 as a local git range, for example `git diff origin/main...HEAD`. Diff against
 `origin/main`, not local `main`. A worktree session never freshens local `main`,

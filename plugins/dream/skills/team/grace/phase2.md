@@ -9,7 +9,7 @@ the steps below in sequence.
 
 ## Step 2.1: Produce the Code Analysis
 
-Run the `dream:code-analysis` skill focused on the accepted Requirements
+Run the `/dream:code-analysis` skill focused on the accepted Requirements
 Analysis.
 
 The skill returns the Code Analysis: how the code works, how it's organised, and
