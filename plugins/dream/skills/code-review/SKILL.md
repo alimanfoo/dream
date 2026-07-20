@@ -9,7 +9,7 @@ argument-hint: "[target]"
 # Code review
 
 Review changed code through a cold read plus review lenses chosen to fit the
-diff, and return the combined findings. It reports; it does not apply fixes.
+diff, and return the combined findings. It reports. It does not apply fixes.
 
 ## Arguments
 
@@ -20,8 +20,8 @@ Read the argument the user gives. It names what to review: a git range like
 ## Cold read
 
 Read the diff and the source files you need for context. Review from the diff
-itself, not from any surrounding description. Read the change in four
-directions.
+itself, not from any surrounding description. Read the change in these
+directions:
 
 - **Inward:** the whole function each change sits in, not just the changed
   lines.
@@ -54,19 +54,19 @@ Choose from these or invent your own. They are examples, not a checklist:
 - reuse and simplification: code that re-implements what the codebase already
   has, or that a simpler form would replace
 - efficiency: redundant work, repeated I/O, blocking added to a hot path
-- altitude: whether the change sits at the right depth, or is a bandaid layered
-  on shared infrastructure
+- altitude: whether the change sits at the right depth, or is a quick fix
+  layered on shared infrastructure
 - reader's context: in new or changed prose, what the reader needs but is
   missing, and what is there but they do not need
 
 Spawn one read-only subagent per lens, via the Agent tool, all in a single
 message so they run in parallel. Set each one's `model` to `sonnet`. Give each
-subagent two things: the target as a git range like `main...HEAD` or an absolute
-path, and the one lens it applies. A subagent can't resolve a path relative to
-its own prompt file. Tell it to read the diff and any source it needs, return
-each finding with a file/line citation and the concrete consequence, and say
-plainly when the code is clean rather than manufacture nits. The subagents are
-read-only: they read and report, never edit and never run tests or CI.
+subagent the target, as a git range like `main...HEAD` or an absolute path, and
+the one lens it applies. A subagent can't resolve a path relative to its own
+prompt file. Tell it to read the diff and any source it needs. Have it return
+each finding with a file/line citation and the concrete consequence. Tell it to
+say plainly when the code is clean, rather than manufacture nits. The subagents
+are read-only: they read and report, never edit and never run tests or CI.
 
 Skip the lenses for a diff small enough that your cold read already exhausts it.
 Three subagents on a one-line fix is wasted motion.
@@ -100,9 +100,10 @@ Skip any section with no entries. If you have nothing to report, say so under
 
 Each finding follows these rules:
 
-- **Name the concrete consequence.** Give each finding a specific consequence —
-  a wrong output, a crash, a reader misled, a sibling left inconsistent — not a
-  vague worry. If you cannot say what goes wrong, it is not a finding.
+- **Name the concrete consequence.** Give each finding a specific consequence,
+  not a vague worry. For example: a wrong output, a crash, a reader misled, a
+  sibling left inconsistent. If you cannot say what goes wrong, it is not a
+  finding.
 - **Don't duplicate the diff.** State what's wrong and why, with a citation.
   Don't quote the change back.
 - **State only findings.** Don't narrate what the code does or confirm what
