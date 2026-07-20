@@ -59,14 +59,11 @@ Choose from these or invent your own. They are examples, not a checklist:
 - reader's context: in new or changed prose, what the reader needs but is
   missing, and what is there but they do not need
 
-Spawn one read-only subagent per lens, via the Agent tool, all in a single
-message so they run in parallel. Set each one's `model` to `sonnet`. Give each
-subagent the target, as a git range like `main...HEAD` or an absolute path, and
-the one lens it applies. A subagent can't resolve a path relative to its own
-prompt file. Tell it to read the diff and any source it needs. Have it return
-each finding with a file/line citation and the concrete consequence. Tell it to
-say plainly when the code is clean, rather than manufacture nits. The subagents
-are read-only: they read and report, never edit and never run tests or CI.
+Spawn the `dream:code-review-lens` subagent once per lens, via the Agent tool,
+all in a single message so they run in parallel. Give each the target, as a git
+range like `main...HEAD` or an absolute path, and the one lens it applies. A
+subagent can't resolve a path relative to its own prompt file. The subagent is
+read-only by tool design: it reads and reports, and cannot edit files.
 
 Skip the lenses for a diff small enough that your cold read already exhausts it.
 Three subagents on a one-line fix is wasted motion.

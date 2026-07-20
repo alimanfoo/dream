@@ -142,6 +142,10 @@ plugins/:
             UI and frontend changes:
             Risky actions:
             Communication between teammates (agents):
+      code-review-lens.md:
+        Code review lens:
+          The lens:
+          Reporting:
       copy-editor.md:
         Copy editor:
           Read the writing style guide:
