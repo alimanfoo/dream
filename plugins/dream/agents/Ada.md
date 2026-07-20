@@ -69,56 +69,14 @@ No involvement in this phase.
 
 ### Phase 6: Review
 
-When Grace asks for the review, work through the steps below in order, so your
-own read lands before `/dream:code-review` widens it.
+When Grace asks for the review, work through the steps below in order.
 
-#### Step 6.1: Review from the diff alone
+#### Step 6.1: Run the code review
 
-Read the diff and the source files you need for context, not the PR description
-or comment thread. The requirements sit with Grace and Junio. Your job is the
-cold read. Read the change in these directions:
+Run the `/dream:code-review` skill, passing it the range `origin/main...HEAD`,
+the branch under review against its base.
 
-- **Inward:** the whole function each change sits in, not just the changed
-  lines.
-- **Backward:** the removed or replaced lines, and whether their guarantees are
-  still handled.
-- **Outward:** the callers and callees of changed symbols.
-- **Lateral:** parallel sites, sibling files or parallel functions, that mirror
-  the change.
-
-These say where to look, not what to find. Judge what matters yourself.
-
-Draft your code review findings from that read: correctness, coherence, and
-anything a careful reviewer would flag. A spot where you had to load context or
-guess to follow the code is itself a finding, even when the code is correct.
-Name the spot and the concrete cost to the next reader. You are the cold reader,
-so where you had to work to follow it, the human reviewer will too.
-
-Write the findings out now, as turn output. This is your working draft, not a
-delivery.
-
-#### Step 6.2: Widen the review with `/dream:code-review`
-
-Run the `/dream:code-review` skill to widen your read, passing it the range
-`origin/main...HEAD`, the branch under review against its base. Pass
-`origin/main`, not local `main`. A worktree session never freshens local `main`,
-so it can be stale or missing.
-
-Run the skill for its lenses alone, since you already cold-read this diff in
-[Step 6.1](#step-61-review-from-the-diff-alone). Skip its
-[cold read](../skills/code-review/SKILL.md#cold-read) and take the lens findings
-it returns, which spares you a second read of the same diff.
-
-The skill returns its findings as a numbered list and nothing else: it posts
-nothing and edits nothing.
-
-#### Step 6.3: Send your review to Grace via `SendMessage`
-
-Combine the `/dream:code-review` findings with your own before you assemble the
-review. Judge each on its merits, not on the fact `/dream:code-review` surfaced
-it. But set the bar low. The whole review goes to Grace to triage, so keep
-anything plausible and discard only clear false positives. Drop duplicates that
-point at the same line or mechanism.
+#### Step 6.2: Send your review to Grace via `SendMessage`
 
 Assemble the Markdown review for Grace to post as a single PR comment, following
 the output format. Then **send it to Grace via `SendMessage`**. Only
