@@ -222,12 +222,15 @@ sentence.
 
 ## Code review
 
-Run the `/code-review` skill with `medium` depth and `--fix` option. Commit and
+Run the `/dream:code-review` skill over the branch's changes against the base
+(`main...HEAD`). It returns findings across the review lenses. It does not apply
+them. Weigh each on its merits and apply the ones that stand up. Reach for the
+coherent fix even when it is larger than the site the finding names. Commit and
 push the fixes.
 
-Post the returned review as a PR comment. Head it `Code review`. State which
-points were addressed and which were not. If any points were not addressed,
-explain why in one sentence.
+Post the findings and how you acted on them as a PR comment. Head it
+`Code review`. For any finding you didn't act on, give the reason in one
+sentence.
 
 ## Write the PR description
 

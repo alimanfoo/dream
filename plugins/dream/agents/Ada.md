@@ -70,7 +70,7 @@ No involvement in this phase.
 ### Phase 6: Review
 
 When Grace asks for the review, work through the steps below in order, so your
-own read lands before `/code-review` widens it.
+own read lands before `/dream:code-review` widens it.
 
 #### Step 6.1: Review from the diff alone
 
@@ -97,28 +97,28 @@ so where you had to work to follow it, the human reviewer will too.
 Write the findings out now, as turn output. This is your working draft, not a
 delivery.
 
-#### Step 6.2: Widen the review with `/code-review`
+#### Step 6.2: Widen the review with `/dream:code-review`
 
-Run the `/code-review` skill at `high` depth to widen your read, pointing it at
-`git diff origin/main...HEAD`, the branch under review against its base. Diff
-against `origin/main`, not local `main`; a worktree session never freshens local
-`main`, so it can be stale or missing. It reviews the diff for correctness,
-reuse, simplification, and efficiency at broader coverage than a single pass,
-and returns its findings for you to weigh. Your own read is already pinned in
+Run the `/dream:code-review` skill to widen your read, passing it the range
+`origin/main...HEAD`, the branch under review against its base. Pass
+`origin/main`, not local `main`; a worktree session never freshens local `main`,
+so it can be stale or missing. It picks review lenses to fit the diff and
+returns its findings for you to weigh, at broader coverage than a single pass.
+Your own read is already pinned in
 [Step 6.1](#step-61-review-from-the-diff-alone), so this widens the review
 without disturbing your cold read.
 
-Run it plain: no `--comment`, no `--fix`. Both are off-limits, since you never
-post to the PR or edit files. You fold its findings into the review you hand to
-Grace, who triages and posts.
+The skill only returns findings: it posts nothing and edits nothing, matching
+your read-only stance. You fold its findings into the review you hand to Grace,
+who triages and posts.
 
 #### Step 6.3: Send your review to Grace via `SendMessage`
 
-Combine the `/code-review` findings with your own before you assemble the
-review. Judge each on its merits, not on the fact `/code-review` surfaced it.
-But set the bar low. The whole review goes to Grace to triage, so keep anything
-plausible and discard only clear false positives. Drop duplicates that point at
-the same line or mechanism.
+Combine the `/dream:code-review` findings with your own before you assemble the
+review. Judge each on its merits, not on the fact `/dream:code-review` surfaced
+it. But set the bar low. The whole review goes to Grace to triage, so keep
+anything plausible and discard only clear false positives. Drop duplicates that
+point at the same line or mechanism.
 
 Assemble the Markdown review for Grace to post as a single PR comment, following
 the output format. Then **send it to Grace via `SendMessage`**. Only

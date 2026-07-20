@@ -139,8 +139,10 @@ Implement the plan, one step at a time. For each step:
 
 ## Code review
 
-Run the `/code-review` skill with `low` depth and the `--fix` option. Commit and
-push the fixes.
+Run the `/dream:code-review` skill inline over the branch's changes against the
+base (`main...HEAD inline`), so it reviews without spawning subagents. It
+returns findings; it does not apply them. Weigh each on its merits, apply the
+ones that stand up, then commit and push.
 
 ## Write the PR description
 
