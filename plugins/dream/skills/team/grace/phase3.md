@@ -62,9 +62,7 @@ Post the accepted design to the PR from the file written in
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
 
 Make the body the design the user accepted. Put every alternative design under
-an "Alternatives considered" heading: the designs weighed and not chosen. The
-heading shows a reader which one the session decided on. A bare "Alternative
-designs" heading reads as options still open. When there was no alternative
-design, omit the heading.
+an "Alternatives considered" heading: the designs weighed and not chosen. When
+there was no alternative design, omit the heading.
 
 The phase ends at user acceptance of the design.
