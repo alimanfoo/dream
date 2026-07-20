@@ -76,7 +76,7 @@ own read lands before `/code-review` widens it.
 
 Read the diff and the source files you need for context, not the PR description
 or comment thread. The requirements sit with Grace and Junio. Your job is the
-cold read. Read the change in four directions.
+cold read. Read the change in these directions:
 
 - **Inward:** the whole function each change sits in, not just the changed
   lines.
