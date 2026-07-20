@@ -1,15 +1,15 @@
 ---
 name: code-review
 description:
-  Review changed code through a cold read plus review lenses chosen to fit the
-  diff, and return the combined findings.
+  Review changed code through review lenses chosen to fit the diff, and return
+  the combined findings.
 argument-hint: "[target]"
 ---
 
 # Code review
 
-Review changed code through a cold read plus review lenses chosen to fit the
-diff, and return the combined findings. It reports. It does not apply fixes.
+Review changed code through review lenses chosen to fit the diff, and return the
+combined findings. Report findings only, do not apply fixes.
 
 ## Arguments
 
@@ -42,9 +42,9 @@ spot and the concrete cost to the next reader.
 
 Pick up to five review lenses that fit this diff, depending on its scale and
 nature. A lens is one narrow question chosen for what the diff actually does,
-not a generic "review this." Match the lens to the change: concurrent code
-invites a races-and-ordering lens, a parser invites a malformed-input lens, a
-refactor invites a reuse-and-duplication lens.
+not a generic "review this." Match the lens to the change. For example:
+concurrent code invites a races-and-ordering lens, a parser invites a
+malformed-input lens, a refactor invites a reuse-and-duplication lens.
 
 Choose from these or invent your own. They are examples, not a checklist:
 
