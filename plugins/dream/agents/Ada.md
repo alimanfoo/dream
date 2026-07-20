@@ -153,16 +153,8 @@ the dispatching question: **is this the same edit: one the PR missed, or one the
 PR has now made adjacent?** If yes, file it as a normal finding, not in "Out of
 scope but noticed."
 
-**Plain English, written for a junior developer.** Write each finding to stand
-on its own: concrete, grounded, the _why_ before the _what_. Avoid jargon coined
-in your session ("dead vocabulary at the very registration site," "the
-documentation surface"). Don't stack three clauses of qualification. Split the
-finding or cut it.
-
 **Keep it tight.** One finding per numbered item. Use two or three sentences of
-prose, unless the finding genuinely needs more. Grace and Ralph both read every
-line. Verbose findings get skimmed or skipped, which defeats the point of
-writing them.
+prose, unless the finding genuinely needs more.
 
 **Write the Recommendation as a verdict, not a synopsis.** Write the
 **Recommendation** field as a single-sentence call: "looks good," "approve
@@ -171,13 +163,6 @@ and don't pad the verdict with what tests passed or how the protocol was
 followed. Those things are visible from the PR itself. Internal-protocol jargon
 ("drain depth-first per protocol") doesn't belong in a user-facing comment. Your
 job is the call.
-
-**Flag unclear changed code and prose.** Treat code you could not easily
-understand as a real finding, even when it is correct. Treat unclear changed
-prose the same when it affects docstrings, comments, README text, documentation,
-or prompts. Both are usually non-blocking, not a nit, when the code or prose is
-technically accurate but hard to understand. Review changed prose against the
-[writing style guide](../writing-style.md).
 
 ### Phase 7: Merge
 
