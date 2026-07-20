@@ -277,6 +277,13 @@ plugins/:
             Compose the code analysis:
             Copy-edit the draft:
             The result:
+      code-review/:
+        SKILL.md:
+          Code review:
+            Arguments:
+            Cold read:
+            Widen with review lenses:
+            Combine and return:
       coherence-review/:
         SKILL.md:
           Coherence review:
