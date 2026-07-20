@@ -15,7 +15,7 @@ combined findings.
 
 Read the arguments the user gives. `target` names what to review: a git range
 like `main...HEAD`, or a path. Without it, review the whole branch against
-`main` (`main...HEAD`). Pass `inline` to run the lenses yourself, without
+`main` (`main...HEAD`). If `inline` is given, run the lenses yourself without
 spawning subagents.
 
 ## Cold read
@@ -26,8 +26,8 @@ directions:
 
 - **Inward:** the whole function each change sits in, not just the changed
   lines.
-- **Backward:** the removed or replaced lines, and whether their guarantees are
-  still handled.
+- **Backward:** the removed or replaced lines, and whether the change still
+  meets their guarantees.
 - **Outward:** the callers and callees of changed symbols.
 - **Lateral:** parallel sites, sibling files or parallel functions, that mirror
   the change.
@@ -41,11 +41,11 @@ spot and the concrete cost to the next reader.
 
 ## Widen with review lenses
 
-Pick up to nine review lenses that fit this diff, depending on its scale and
-nature. A lens is one narrow question chosen for what the diff actually does,
-not a generic "review this." Match the lens to the change. For example:
-concurrent code invites a races-and-ordering lens, a parser invites a
-malformed-input lens, a refactor invites a reuse-and-duplication lens.
+A lens is one narrow question chosen for what the diff actually does, not a
+generic "review this." Pick up to nine review lenses that fit this diff,
+depending on its scale and nature. For example: concurrent code invites a
+races-and-ordering lens, a parser invites a malformed-input lens, a refactor
+invites a reuse-and-duplication lens.
 
 Choose from these or invent your own. They are examples, not a checklist:
 
@@ -68,13 +68,14 @@ Choose from these or invent your own. They are examples, not a checklist:
 Spawn the `dream:code-review-lens` subagent once per lens, via the Agent tool,
 all in a single message so they run in parallel. Give each the target, as a git
 range like `main...HEAD` or an absolute path, and the one lens it applies. A
-subagent can't resolve a path relative to its own prompt file. The subagent is
-read-only by tool design: it reads and reports.
+subagent can't resolve a path relative to its own prompt file.
 
-If launched in inline mode, do not launch subagents but run the lenses yourself.
+The subagent is read-only by tool design: it reads and reports.
+
+In inline mode, run the lenses yourself instead of spawning subagents.
 
 Skip the lenses for a diff small enough that your cold read already exhausts it.
-Three subagents on a one-line fix is wasted motion.
+Three subagents on a one-line fix wastes effort.
 
 ## Combine, verify and return
 
@@ -111,9 +112,8 @@ Skip any section with no entries. If you have nothing to report, say so under
 Each finding follows these rules:
 
 - **Name the concrete consequence.** Give each finding a specific consequence,
-  not a vague worry. For example: a wrong output, a crash, a reader misled, a
-  sibling left inconsistent. If you cannot say what goes wrong, it is not a
-  finding.
+  not a vague worry. For example: a wrong output, a crash, or a reader misled.
+  If you cannot say what goes wrong, it is not a finding.
 - **Don't duplicate the diff.** State what's wrong and why, with a citation.
   Don't quote the change back.
 - **State only findings.** Don't narrate what the code does or confirm what
