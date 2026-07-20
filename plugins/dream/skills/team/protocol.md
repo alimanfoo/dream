@@ -181,16 +181,15 @@ The phase ends at user acceptance of the design.
 
 ## Phase 4: Plan
 
-Grace composes the draft plan, shares it with Junio and Ralph for one round of
-review, advisory not gating, and revises. Junio reads from the maintainer's
-view. Ralph reads from the implementer's view. Grace decides each finding on its
-merits. She records a one-line reason for each: folded into the revised plan,
-rejected, held as an ancillary finding, or raised as a challenge. Grace then
-shares the revised plan with the user, with a brief note on what changed from
-the draft after the reviews. At the end of the phase Grace hands the accepted
-plan to Junio and Ralph for information. They hold it as context for the rest of
-the session. On acceptance Grace also posts the accepted plan to the PR as a
-comment.
+With the design accepted, Grace produces the plan: the task list that delivers
+the design. She composes the tasks, then gets an adversarial review across the
+plan lenses, so a missed instance or a bundled task surfaces before the work
+begins.
+
+Grace then shares the plan with the user for acceptance. At the end of the phase
+Grace hands the accepted plan to Junio and Ralph for information. They hold it
+as context for the rest of the session. On acceptance Grace also posts the
+accepted plan to the PR as a comment.
 
 The phase ends at user acceptance of the plan.
 
@@ -432,9 +431,9 @@ so the names match:
 
 **Autopilot** is a standing override the user can engage at any point: under
 autopilot, Grace takes the gate-defined default at each acceptance gate, without
-waiting for the user's acceptance. She still produces every artifact, runs every
-Junio/Ralph review, and shares each artifact with the user as it lands.
-Autopilot removes the _wait for acceptance_, not the quality machinery.
+waiting for the user's acceptance. She still produces every artifact and shares
+it with the user as it lands. Autopilot removes the _wait for acceptance_, not
+the quality machinery.
 
 Autopilot pauses on an open question that Grace has marked unanswered, one that
 she cannot proceed past without the user's call. It also pauses on a challenge.

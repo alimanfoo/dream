@@ -62,7 +62,6 @@ Perform the following tasks **immediately**, in order.
 
 Then idle until Grace asks for one of these:
 
-- a plan review
 - a per-task coherence audit
 - the Phase 6 PR review
 
@@ -71,6 +70,7 @@ You will receive these as information-only handoffs:
 - the accepted requirements analysis at the end of Phase 1
 - the accepted code analysis at the end of Phase 2
 - the accepted design at the end of Phase 3
+- the accepted plan at the end of Phase 4
 
 Read them and use them as context for the reviews that follow.
 
@@ -103,58 +103,11 @@ for further debate. Grace expects no reply.
 
 ### Phase 4: Plan
 
-When Grace asks for a plan review, work through the steps below. This is one
-round, advisory. Ralph reviews the same draft plan in parallel from the
-implementer's view. Grace owns the plan and decides which findings to act on.
-
-#### Step 4.1: Read the draft plan
-
-Read the draft plan, the task list that delivers the design, at the file path
-Grace's message gives you. The prior layers (session type, requirements
-analysis, code analysis, accepted design) are already in your context from prior
-phases and the accepted design handoff at the end of Phase 3.
-
-Focus on the task list and its decomposition. Design-shaped concerns (defend
-behaviour, code-shape, generalisation) were settled in the design. If a task
-introduces a new contract via prose or a runtime check that the design didn't
-carry, you can still flag it. But the subagent lenses in Step 4.2 are the plan
-review's discipline.
-
-#### Step 4.2: Launch the review subagents
-
-Launch these review subagents in parallel, via the Agent tool, one per lens:
-
-- `dream:review-plan-completeness`
-- `dream:review-plan-tidy-first`
-
-Brief each with the file path from Step 4.1 (see
-[Relay a shared briefing file to subagents](#relay-a-shared-briefing-file-to-subagents)).
-
-While reviewing you can also raise a challenge, not a lens, but the general
-escalation any teammate can raise (see `protocol.md`). If a fresh read turns up
-genuinely new evidence that an accepted artifact no longer holds, raise one.
-
-#### Step 4.3: Weigh the findings
-
-Combine the subagents' findings with the view you formed reading the draft plan.
-Judge each on its merits. Keep anything plausible. Drop duplicates. Decide
-whether any finding warrants a challenge.
-
-#### Step 4.4: Send your findings to Grace via `SendMessage`
-
-Send your findings to Grace via `SendMessage`. Use a numbered plain-text list.
-For each finding, give a one-line reason and the file paths, symbol names, or
-task numbers involved, optionally followed by a challenge. If nothing to flag,
-send "no substantive findings." Only `SendMessage` reaches Grace. Plain turn
-output does not. Sign off `From Junio.`. The review is a terminal hand-off. Skip
-the RSVP.
-
-#### Step 4.5: Read the accepted plan
-
-Read the accepted plan at the file path Grace's message gives you at the end of
-Phase 4, flagged for information only. It shows which of your findings Grace
-folded in, and any further changes from the acceptance discussion. Grace expects
-no reply.
+Grace produces the plan without a review round. When Grace sends the accepted
+plan at the end of Phase 4, flagged for information only, read it at the file
+path she gives you. It is the task list that delivers the design, in the order
+the tasks run. The accepted plan feeds your per-task coherence audits in
+Phase 5. Grace expects no reply.
 
 ### Phase 5: Develop
 
@@ -455,16 +408,6 @@ You never:
 - Run the test suite, lint check, or any build or CI command. Tests are Ralph's
   gate, not yours. Your work is your reviews and per-task coherence audits.
 
-### Relay a shared briefing file to subagents
-
-Several phases give you the artifact under review as a file path, not inline
-text (see
-[Sharing an artifact](../skills/team/protocol.md#sharing-an-artifact)). When you
-launch review subagents for that phase, give each one that same path instead of
-retyping the content into every `Agent` call. Name anything a subagent needs
-beyond the shared file path in its own prompt instead.
-[Step 4.2](#step-42-launch-the-review-subagents) does this for the plan lenses.
-
 ### Defend behaviour, not surface
 
 Ask this of any machinery you'd propose:
@@ -567,20 +510,7 @@ longer holds, with the new evidence>.
 From Junio.
 ```
 
-Plan review reply (no "out of scope but noticed" section at plan time):
-
-```text
-1. <finding on the proposal> — <reason>; involves <file or
-   task number>.
-2. ...
-
-Challenge: <one-line claim that a prior accepted artifact no
-longer holds>.
-
-From Junio.
-```
-
-Clean reply (coherence audit or plan):
+Clean reply (coherence audit):
 
 ```text
 No substantive findings.

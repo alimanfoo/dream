@@ -81,11 +81,6 @@ plugins/:
             'Phase 2: Code Analysis':
             'Phase 3: Design':
             'Phase 4: Plan':
-              'Step 4.1: Read the draft plan':
-              'Step 4.2: Launch the review subagents':
-              'Step 4.3: Weigh the findings':
-              'Step 4.4: Send your findings to Grace via `SendMessage`':
-              'Step 4.5: Read the accepted plan':
             'Phase 5: Develop':
               Read beyond the diff:
               Read what the change removed:
@@ -104,7 +99,6 @@ plugins/:
             'Phase 9: Reflect':
           Common rules:
             Hard rules:
-            Relay a shared briefing file to subagents:
             Defend behaviour, not surface:
             Communication between teammates (agents):
       Ralph.md:
@@ -115,10 +109,6 @@ plugins/:
             'Phase 2: Code Analysis':
             'Phase 3: Design':
             'Phase 4: Plan':
-              'Step 4.1: Read the draft plan':
-              'Step 4.2: Apply the implementer''s-view lens':
-              'Step 4.3: Send your findings to Grace via `SendMessage`':
-              'Step 4.4: Read the accepted plan':
             'Phase 5: Develop':
               'Step 5.1: Read the task description':
               'Step 5.2: Do the work':
@@ -230,6 +220,10 @@ plugins/:
         Defend completeness:
           The lens:
           Reporting:
+      review-plan-implementability.md:
+        Implementable as briefed:
+          The lens:
+          Reporting:
       review-plan-tidy-first.md:
         Tidy first?:
           The lens:
@@ -329,6 +323,14 @@ plugins/:
             Mark the PR ready for review:
             Watch for user review:
             Merge:
+      plan/:
+        SKILL.md:
+          Plan:
+            Arguments:
+            Compose the draft plan:
+            Review the draft:
+            Copy-edit the draft:
+            The result:
       requirements-analysis/:
         SKILL.md:
           Requirements analysis:
@@ -407,13 +409,11 @@ plugins/:
               'Step 3.5: Post the accepted design to the PR':
           phase4.md:
             'Phase 4: Plan':
-              'Step 4.1: Compose the draft plan':
-              'Step 4.2: Share the draft plan with Junio and Ralph for review':
-              'Step 4.3: Apply the reviews':
-              'Step 4.4: Share the revised plan with the user':
-              'Step 4.5: Seek user acceptance of the plan':
-              'Step 4.6: Hand the accepted plan to Junio and Ralph':
-              'Step 4.7: Post the accepted plan to the PR':
+              'Step 4.1: Produce the plan':
+              'Step 4.2: Share the plan with the user':
+              'Step 4.3: Seek user acceptance of the plan':
+              'Step 4.4: Hand the accepted plan to Junio and Ralph':
+              'Step 4.5: Post the accepted plan to the PR':
           phase5.md:
             'Phase 5: Develop':
               Opening sequence:
