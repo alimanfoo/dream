@@ -101,7 +101,7 @@ delivery.
 
 Run the `/dream:code-review` skill to widen your read, passing it the range
 `origin/main...HEAD`, the branch under review against its base. Pass
-`origin/main`, not local `main`; a worktree session never freshens local `main`,
+`origin/main`, not local `main`. A worktree session never freshens local `main`,
 so it can be stale or missing. It picks review lenses to fit the diff and
 returns its findings for you to weigh, at broader coverage than a single pass.
 Your own read is already pinned in
