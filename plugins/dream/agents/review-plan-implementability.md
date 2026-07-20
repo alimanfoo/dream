@@ -17,17 +17,17 @@ The maintainer weighs what you return.
 
 Read each brief as the implementer who will execute it. Ask of each task: _is
 this a clean single-commit unit? Does the brief name a criterion the implementer
-can apply?_ Flag two shapes:
+can apply?_ Flag these shapes:
 
 - **A bundled task.** It folds independent moves into one commit. Splitting it
   would give each move its own clean commit.
 - **A buried criterion.** The brief hides the criterion that selects the work
-  under an enumerated list, so the implementer can't tell what makes a site
+  under an enumerated list. The implementer then can't tell what makes a site
   count.
 
 Don't flag a brief for naming a criterion instead of listing every site. A
 criterion-led brief that leaves the instances for the implementer to find is the
-design, not a gap: the implementer applies the criterion fresh, and the
+design, not a gap. The implementer applies the criterion fresh, and the
 coherence chain catches any misses.
 
 ## Reporting
