@@ -86,28 +86,9 @@ mechanism.
 Verify each finding that you intend to return against your own reading of the
 code.
 
-Return the combined and verified findings as turn output, in the format below.
-Report only: apply no fixes.
-
-```text
-**Recommendation:** <one-line verdict — e.g. "looks good, a few
-small things"; "blocking concerns below"; "approve subject to nits">
-
-## Blocking
-1. ... (concrete finding with file/line citation)
-
-## Non-blocking
-1. ...
-
-## Nits
-1. ...
-
-## Out of scope but noticed
-1. ... (pre-existing items, not part of what the diff changed)
-```
-
-Skip any section with no entries. If you have nothing to report, say so under
-**Recommendation** and return.
+Return the combined and verified findings as turn output: a numbered list, most
+important first. Report only: apply no fixes. If you have nothing to report, say
+so and return.
 
 Each finding follows these rules:
 

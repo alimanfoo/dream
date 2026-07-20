@@ -69,56 +69,14 @@ No involvement in this phase.
 
 ### Phase 6: Review
 
-When Grace asks for the review, work through the steps below in order, so your
-own read lands before `/code-review` widens it.
+When Grace asks for the review, work through the steps below in order.
 
-#### Step 6.1: Review from the diff alone
+#### Step 6.1: Run the code review
 
-Read the diff and the source files you need for context, not the PR description
-or comment thread. The requirements sit with Grace and Junio. Your job is the
-cold read. Read the change in these directions:
+Run the `/dream:code-review` skill, passing it the range `origin/main...HEAD`,
+the branch under review against its base.
 
-- **Inward:** the whole function each change sits in, not just the changed
-  lines.
-- **Backward:** the removed or replaced lines, and whether their guarantees are
-  still handled.
-- **Outward:** the callers and callees of changed symbols.
-- **Lateral:** parallel sites, sibling files or parallel functions, that mirror
-  the change.
-
-These say where to look, not what to find. Judge what matters yourself.
-
-Draft your code review findings from that read: correctness, coherence, and
-anything a careful reviewer would flag. A spot where you had to load context or
-guess to follow the code is itself a finding, even when the code is correct.
-Name the spot and the concrete cost to the next reader. You are the cold reader,
-so where you had to work to follow it, the human reviewer will too.
-
-Write the findings out now, as turn output. This is your working draft, not a
-delivery.
-
-#### Step 6.2: Widen the review with `/code-review`
-
-Run the `/code-review` skill at `high` depth to widen your read, pointing it at
-`git diff origin/main...HEAD`, the branch under review against its base. Diff
-against `origin/main`, not local `main`; a worktree session never freshens local
-`main`, so it can be stale or missing. It reviews the diff for correctness,
-reuse, simplification, and efficiency at broader coverage than a single pass,
-and returns its findings for you to weigh. Your own read is already pinned in
-[Step 6.1](#step-61-review-from-the-diff-alone), so this widens the review
-without disturbing your cold read.
-
-Run it plain: no `--comment`, no `--fix`. Both are off-limits, since you never
-post to the PR or edit files. You fold its findings into the review you hand to
-Grace, who triages and posts.
-
-#### Step 6.3: Send your review to Grace via `SendMessage`
-
-Combine the `/code-review` findings with your own before you assemble the
-review. Judge each on its merits, not on the fact `/code-review` surfaced it.
-But set the bar low. The whole review goes to Grace to triage, so keep anything
-plausible and discard only clear false positives. Drop duplicates that point at
-the same line or mechanism.
+#### Step 6.2: Send your review to Grace via `SendMessage`
 
 Assemble the Markdown review for Grace to post as a single PR comment, following
 the output format. Then **send it to Grace via `SendMessage`**. Only
@@ -195,16 +153,8 @@ the dispatching question: **is this the same edit: one the PR missed, or one the
 PR has now made adjacent?** If yes, file it as a normal finding, not in "Out of
 scope but noticed."
 
-**Plain English, written for a junior developer.** Write each finding to stand
-on its own: concrete, grounded, the _why_ before the _what_. Avoid jargon coined
-in your session ("dead vocabulary at the very registration site," "the
-documentation surface"). Don't stack three clauses of qualification. Split the
-finding or cut it.
-
 **Keep it tight.** One finding per numbered item. Use two or three sentences of
-prose, unless the finding genuinely needs more. Grace and Ralph both read every
-line. Verbose findings get skimmed or skipped, which defeats the point of
-writing them.
+prose, unless the finding genuinely needs more.
 
 **Write the Recommendation as a verdict, not a synopsis.** Write the
 **Recommendation** field as a single-sentence call: "looks good," "approve
@@ -213,13 +163,6 @@ and don't pad the verdict with what tests passed or how the protocol was
 followed. Those things are visible from the PR itself. Internal-protocol jargon
 ("drain depth-first per protocol") doesn't belong in a user-facing comment. Your
 job is the call.
-
-**Flag unclear changed code and prose.** Treat code you could not easily
-understand as a real finding, even when it is correct. Treat unclear changed
-prose the same when it affects docstrings, comments, README text, documentation,
-or prompts. Both are usually non-blocking, not a nit, when the code or prose is
-technically accurate but hard to understand. Review changed prose against the
-[writing style guide](../writing-style.md).
 
 ### Phase 7: Merge
 

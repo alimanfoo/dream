@@ -20,9 +20,8 @@ plugins/:
             'Phase 4: Plan':
             'Phase 5: Develop':
             'Phase 6: Review':
-              'Step 6.1: Review from the diff alone':
-              'Step 6.2: Widen the review with `/code-review`':
-              'Step 6.3: Send your review to Grace via `SendMessage`':
+              'Step 6.1: Run the code review':
+              'Step 6.2: Send your review to Grace via `SendMessage`':
               Output format:
               Writing findings:
             'Phase 7: Merge':
