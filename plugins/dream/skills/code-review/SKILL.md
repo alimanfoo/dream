@@ -3,7 +3,7 @@ name: code-review
 description:
   Review changed code through review lenses chosen to fit the diff, and return
   the combined findings.
-argument-hint: "[target]"
+argument-hint: "[target] [inline]"
 ---
 
 # Code review
@@ -13,9 +13,10 @@ combined findings.
 
 ## Arguments
 
-Read the argument the user gives. It names what to review: a git range like
-`main...HEAD`, or a path. Without one, review the whole branch against `main`
-(`main...HEAD`).
+Read the arguments the user gives. `target` names what to review: a git range
+like `main...HEAD`, or a path. Without it, review the whole branch against
+`main` (`main...HEAD`). Pass `inline` to run the lenses yourself, without
+spawning subagents.
 
 ## Cold read
 
@@ -40,7 +41,7 @@ spot and the concrete cost to the next reader.
 
 ## Widen with review lenses
 
-Pick up to eight review lenses that fit this diff, depending on its scale and
+Pick up to nine review lenses that fit this diff, depending on its scale and
 nature. A lens is one narrow question chosen for what the diff actually does,
 not a generic "review this." Match the lens to the change. For example:
 concurrent code invites a races-and-ordering lens, a parser invites a
@@ -48,12 +49,16 @@ malformed-input lens, a refactor invites a reuse-and-duplication lens.
 
 Choose from these or invent your own. They are examples, not a checklist:
 
+- correctness bugs: inverted/wrong condition, off-by-one, null/undefined deref
+  where adjacent lines show the value can be absent, removed guard, falsy-zero
+  check, missing await, wrong-variable copy-paste, error swallowed in a catch
+  that should propagate
 - concurrency and ordering: races, deadlocks, lost updates on the changed paths
 - failure paths: errors, timeouts, partial writes, what is left half-done
 - input validation and security: untrusted input, injection, missing checks
+- efficiency: redundant work, repeated I/O, blocking added to a hot path
 - reuse and simplification: code that re-implements what the codebase already
   has, or that a simpler form would replace
-- efficiency: redundant work, repeated I/O, blocking added to a hot path
 - altitude: whether the change sits at the right depth, or is a quick fix
   layered on shared infrastructure
 - reader's context: in new or changed prose, what the reader needs but is
@@ -65,6 +70,8 @@ all in a single message so they run in parallel. Give each the target, as a git
 range like `main...HEAD` or an absolute path, and the one lens it applies. A
 subagent can't resolve a path relative to its own prompt file. The subagent is
 read-only by tool design: it reads and reports.
+
+If launched in inline mode, do not launch subagents but run the lenses yourself.
 
 Skip the lenses for a diff small enough that your cold read already exhausts it.
 Three subagents on a one-line fix is wasted motion.
