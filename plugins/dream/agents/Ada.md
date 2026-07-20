@@ -102,14 +102,15 @@ delivery.
 Run the `/dream:code-review` skill to widen your read, passing it the range
 `origin/main...HEAD`, the branch under review against its base. Pass
 `origin/main`, not local `main`. A worktree session never freshens local `main`,
-so it can be stale or missing. It picks review lenses to fit the diff and
-returns its findings for you to weigh, at broader coverage than a single pass.
-Your own read is already pinned in
-[Step 6.1](#step-61-review-from-the-diff-alone), so this widens the review
-without disturbing your cold read.
+so it can be stale or missing.
 
-The skill only returns findings: it posts nothing and edits nothing. You fold
-its findings into the review you hand to Grace, who triages and posts.
+Run the skill for its lenses alone, since you already cold-read this diff in
+[Step 6.1](#step-61-review-from-the-diff-alone). Skip its
+[cold read](../skills/code-review/SKILL.md#cold-read) and take the lens findings
+it returns, which spares you a second read of the same diff.
+
+The skill returns its findings as a numbered list and nothing else: it posts
+nothing and edits nothing.
 
 #### Step 6.3: Send your review to Grace via `SendMessage`
 

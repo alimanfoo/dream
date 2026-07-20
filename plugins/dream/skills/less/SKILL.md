@@ -140,9 +140,9 @@ Implement the plan, one step at a time. For each step:
 ## Code review
 
 Run the `/dream:code-review` skill in `inline` mode over the branch's changes
-against the base (`main...HEAD`), so it reviews without spawning subagents. It
-returns findings. It does not apply them. Weigh each on its merits and apply the
-ones that stand up. Commit and push the fixes.
+against the base (`origin/main...HEAD`), so it reviews without spawning
+subagents. It returns findings. It does not apply them. Weigh each on its merits
+and apply the ones that stand up. Commit and push the fixes.
 
 ## Write the PR description
 

@@ -201,7 +201,8 @@ Implement the plan, one step at a time. For each step:
 ## Simplify
 
 Run the `/dream:simplify` skill over the branch's changes against the base
-(`main...HEAD`), so the code is easier to read. Commit and push the fixes.
+(`origin/main...HEAD`), so the code is easier to read. Commit and push the
+fixes.
 
 ## Copy-edit
 
@@ -211,10 +212,10 @@ fixes it makes.
 ## Coherence review
 
 Run the `/dream:coherence-review` skill over the branch's changes against the
-base (`main...HEAD`). It returns findings across the coherence lenses. It does
-not apply them. Weigh each on its merits and apply the ones that stand up. Reach
-for the coherent fix even when it is larger than the site the finding names.
-Commit and push the fixes.
+base (`origin/main...HEAD`). It returns findings across the coherence lenses. It
+does not apply them. Weigh each on its merits and apply the ones that stand up.
+Reach for the coherent fix even when it is larger than the site the finding
+names. Commit and push the fixes.
 
 Post the findings and how you acted on them as a PR comment. Head it
 `Coherence review`. For any finding you didn't act on, give the reason in one
@@ -223,10 +224,10 @@ sentence.
 ## Code review
 
 Run the `/dream:code-review` skill over the branch's changes against the base
-(`main...HEAD`). It returns findings across the review lenses. It does not apply
-them. Weigh each on its merits and apply the ones that stand up. Reach for the
-coherent fix even when it is larger than the site the finding names. Commit and
-push the fixes.
+(`origin/main...HEAD`). It returns findings across the review lenses. It does
+not apply them. Weigh each on its merits and apply the ones that stand up. Reach
+for the coherent fix even when it is larger than the site the finding names.
+Commit and push the fixes.
 
 Post the findings and how you acted on them as a PR comment. Head it
 `Code review`. For any finding you didn't act on, give the reason in one
