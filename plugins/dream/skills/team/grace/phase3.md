@@ -48,8 +48,8 @@ Write the following to a temporary file outside this repo, via Bash:
 
 - the accepted design (the option the user picked, plus any changes from the
   acceptance discussion)
-- every other design from the spread, so both the chosen design and the
-  alternatives are available when posting to the PR
+- every alternative design, so both the chosen design and the alternatives are
+  available when posting to the PR
 
 Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP. No
@@ -61,10 +61,8 @@ Post the accepted design to the PR from the file written in
 [Step 3.4](#step-34-hand-the-accepted-design-to-junio-and-ralph) (see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
 
-Make the body the design the user accepted. Put every other design from the
-spread under an "Alternatives considered" heading: the designs weighed and not
-chosen. The heading shows a reader which one the session decided on. A bare
-"Alternative designs" heading reads as options still open. When the spread held
-no other design, omit the heading.
+Make the body the design the user accepted. Put every alternative design under
+an "Alternatives considered" heading: the designs weighed and not chosen. When
+there was no alternative design, omit the heading.
 
 The phase ends at user acceptance of the design.

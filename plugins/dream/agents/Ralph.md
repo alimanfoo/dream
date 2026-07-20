@@ -84,9 +84,9 @@ it at the file path she gives you. Grace expects no reply.
 Grace produces the design without a review round. When Grace sends the accepted
 design at the end of Phase 3, flagged for information only, read it at the file
 path she gives you. It shows which option the user picked and any further
-changes from the acceptance discussion. The file also carries every other design
-from the spread, closed out as Alternatives considered for the PR post, not open
-for further debate. Grace expects no reply.
+changes from the acceptance discussion. The file also carries every alternative
+design, closed out as alternatives considered for the PR post, not open for
+further debate. Grace expects no reply.
 
 ### Phase 4: Plan
 
