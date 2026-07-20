@@ -9,7 +9,7 @@ argument-hint: "[target]"
 # Code review
 
 Review changed code through review lenses chosen to fit the diff, and return the
-combined findings. Report findings only, do not apply fixes.
+combined findings.
 
 ## Arguments
 
@@ -40,7 +40,7 @@ spot and the concrete cost to the next reader.
 
 ## Widen with review lenses
 
-Pick up to five review lenses that fit this diff, depending on its scale and
+Pick up to eight review lenses that fit this diff, depending on its scale and
 nature. A lens is one narrow question chosen for what the diff actually does,
 not a generic "review this." Match the lens to the change. For example:
 concurrent code invites a races-and-ordering lens, a parser invites a
@@ -58,6 +58,7 @@ Choose from these or invent your own. They are examples, not a checklist:
   layered on shared infrastructure
 - reader's context: in new or changed prose, what the reader needs but is
   missing, and what is there but they do not need
+- alignment: compliance with agent instructions (AGENTS.md or CLAUDE.md)
 
 Spawn the `dream:code-review-lens` subagent once per lens, via the Agent tool,
 all in a single message so they run in parallel. Give each the target, as a git
@@ -68,11 +69,16 @@ read-only by tool design: it reads and reports.
 Skip the lenses for a diff small enough that your cold read already exhausts it.
 Three subagents on a one-line fix is wasted motion.
 
-## Combine and return
+## Combine, verify and return
 
 Combine the lens findings with your own. Judge each on its merits, not on the
 fact a subagent raised it. Drop duplicates that point at the same line or
-mechanism. Return the combined findings as turn output, in the format below.
+mechanism.
+
+Verify each finding that you intend to return against your own reading of the
+code.
+
+Return the combined and verified findings as turn output, in the format below.
 Report only: apply no fixes.
 
 ```text

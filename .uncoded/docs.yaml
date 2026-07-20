@@ -287,7 +287,7 @@ plugins/:
             Arguments:
             Cold read:
             Widen with review lenses:
-            Combine and return:
+            Combine, verify and return:
       coherence-review/:
         SKILL.md:
           Coherence review:
