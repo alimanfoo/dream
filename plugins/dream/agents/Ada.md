@@ -108,9 +108,8 @@ Your own read is already pinned in
 [Step 6.1](#step-61-review-from-the-diff-alone), so this widens the review
 without disturbing your cold read.
 
-The skill only returns findings: it posts nothing and edits nothing, matching
-your read-only stance. You fold its findings into the review you hand to Grace,
-who triages and posts.
+The skill only returns findings: it posts nothing and edits nothing. You fold
+its findings into the review you hand to Grace, who triages and posts.
 
 #### Step 6.3: Send your review to Grace via `SendMessage`
 
