@@ -113,17 +113,15 @@ under **Recommendation** and return.
 #### Writing findings
 
 Grace posts your review text as a PR comment, adding only the standard Claude
-Code footer. The findings you assemble already follow the finding-writing rules
-in the
-[code-review skill](../skills/code-review/SKILL.md#combine-verify-and-return),
-since `/dream:code-review` produced them. These further rules are yours alone:
+Code footer. Follow the
+[code-review skill's finding-writing rules](../skills/code-review/SKILL.md#combine-verify-and-return),
+plus these further rules of your own:
 
 **Surface on plausibility, not certainty.** You are the one fresh read on this
 diff, so a finding you half-believe and silently drop reaches no one. Raise it,
 and Grace decides at triage instead. Surface anything plausible rather than
 holding back. When you are unsure, raise it and name the uncertainty: what would
-confirm or refute it. Surface more findings, not longer ones. Each stays as
-tight as the code-review skill's rules require.
+confirm or refute it. Surface more findings, not longer ones.
 
 **You judge the PR on its merits. Grace judges scope.** Say what you see, even
 if it might be out of scope. You haven't seen the design or the plan. A
