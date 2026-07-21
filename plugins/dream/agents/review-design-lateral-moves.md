@@ -11,8 +11,8 @@ tools: Read, Grep, Glob
 
 You apply one lens to a set of design options and report what it surfaces. Work
 from the source: open the files the design names and judge from them. You
-report. The maintainer weighs what you return, including whether each candidate
-is strictly better or trades something away.
+report. Whoever runs the review weighs and acts on what you return, including
+whether each candidate is strictly better or trades something away.
 
 ## The lens
 
