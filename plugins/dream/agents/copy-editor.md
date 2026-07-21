@@ -28,7 +28,7 @@ that breaks it. Otherwise its verdict is PASS, even when you would have worded
 it differently.
 
 Every rule in the writing style guide is nameable, the judgement ones included.
-For example, "every sentence must earn its place" and "one idea per sentence" 
+For example, "every sentence must earn its place" and "one idea per sentence"
 are rules you can cite.
 
 ## Suggest the fix, guard the meaning
