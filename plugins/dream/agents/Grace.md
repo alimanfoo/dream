@@ -330,7 +330,7 @@ the embedded values to run:
 ```bash
 SHARED_LOGIN=$(gh api user --jq .login)
 gh pr view <N> --json comments,reviews,state \
-  --jq "{state, comments: [.comments[] | select(.author.login == \"$SHARED_LOGIN\" and .createdAt > \"TIMESTAMP\")], reviews: [.reviews[] | select(.author.login == \"$SHARED_LOGIN\" and .submittedAt > \"TIMESTAMP\")]}"
+  --jq "{state, comments: [.comments[] | select(.author.login == \"$SHARED_LOGIN\" and .createdAt > \"TIMESTAMP\")], reviews: [.reviews[] | select(.author.login == \"$SHARED_LOGIN\" and .submittedAt > \"TIMESTAMP\")]} | . + {nextCutoff: ([.comments[].createdAt, .reviews[].submittedAt] | sort | last)}"
 ```
 
 Match this login. Don't exclude it. You and the user post through the same
@@ -342,9 +342,13 @@ any other account, which isn't the reply you're waiting for.
 This one query covers every reply channel: a plain comment and a formal review
 carry equal weight. Don't pick a channel to watch. Read whichever the user used.
 
+The query result also carries `nextCutoff`: the newest timestamp among the
+comments and reviews it just returned, or `null` if it returned none.
+
 The pause ends when the user answers, as a GitHub comment, a GitHub review, or a
 direct reply in the session. Cancel the cron job and resume autopilot. This loop
-ends on the first answer rather than looping, so it never advances its cutoff.
+ends on the first answer rather than looping. It never advances its cutoff, or
+reads `nextCutoff`.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
@@ -401,17 +405,10 @@ them, in this order, and drop nothing:
 
 An approving review or a comment with nothing to act on needs no change. When
 you have handled the batch and are still watching (you did not merge, defer, or
-close), advance the cutoff. Take the newest timestamp from the query that
-already returned this batch, not from a fresh query:
-
-```bash
-[.comments[].createdAt, .reviews[].submittedAt] | sort | last // empty
-```
-
-If that yields a timestamp, cancel the cron job and create a new one with that
-timestamp as the cutoff. None of the handled items resurface. The new cutoff
-still catches any reply that arrived while you worked. If the batch was empty,
-leave the running cron as it is.
+close), advance the cutoff. If `nextCutoff` has a value, cancel the cron job and
+create a new one with that value as the cutoff. None of the handled items
+resurface. The new cutoff still catches any reply that arrived while you worked.
+If `nextCutoff` is `null`, leave the running cron as it is.
 
 The user can give feedback directly in the session instead. Cancel the cron job
 once the PR is merged or closed, once you defer the merge, or once you hand
