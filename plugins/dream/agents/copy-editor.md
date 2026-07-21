@@ -1,7 +1,6 @@
 ---
 name: copy-editor
-description:
-  Copy-edits prose against the writing style guide.
+description: Copy-edits prose against the writing style guide.
 model: sonnet
 tools: Read, Grep, Glob, Write
 ---
