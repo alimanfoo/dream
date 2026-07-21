@@ -33,11 +33,13 @@
 # The footer string is therefore essential: a change to it would break the
 # filter, and the caller's own comments would read back as the user's input.
 #
-# The filter reads authorship from the footer alone, not the GitHub account. A
-# comment from a third party, such as a bot or another collaborator, carries no
-# footer, so it reads as the user's and reaches the caller. This is rare on a
-# session's own pull request, and a comment with nothing to act on needs no
-# action anyway.
+# The filter reads authorship from the footer alone, not the GitHub account, so
+# it can misread in two rare ways. A comment from a third party, such as a bot
+# or another collaborator, carries no footer, so it reads as the user's and
+# reaches the caller; a comment with nothing to act on needs no action anyway.
+# And a user comment that quotes an earlier caller comment, footer and all,
+# reads as the caller's own and is dropped, until a later comment carries the
+# watermark past it. Both are uncommon on a session's own pull request.
 #
 # Timestamps are ISO-8601 with a trailing Z, which sort correctly as strings, so
 # the cutoff comparison needs no date arithmetic.
@@ -63,11 +65,14 @@ footer="claude.com/claude-code"
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
 
-# The watermark file, keyed by repository and pull request. The slash in the
-# repository name becomes a dash, so the key is a single path segment.
-dir="$HOME/.dream/watcher"
+# The watermark file, keyed by repository and pull request. The repository name
+# stays a real path segment (owner/name), rather than being flattened, so two
+# repositories never collide: acme-corp/api and acme/corp-api are distinct
+# paths, not one shared key. A nameWithOwner holds exactly one slash and neither
+# half can be "..", so the path never escapes the directory.
+dir="$HOME/.dream/watcher/$repo"
 mkdir -p "$dir" || die "cannot create the watermark directory $dir"
-watermark_file="$dir/${repo//\//-}-pr${pr}"
+watermark_file="$dir/pr${pr}"
 
 cutoff=$(cat "$watermark_file" 2>/dev/null)
 
@@ -89,7 +94,10 @@ result=$(printf '%s' "$raw" | jq --arg cutoff "$cutoff" --arg footer "$footer" '
 ') || die "cannot parse the pull request activity"
 
 newest=$(printf '%s' "$result" | jq -r '.newest // empty')
-[ -n "$newest" ] && printf '%s' "$newest" > "$watermark_file"
+if [ -n "$newest" ]; then
+  printf '%s' "$newest" > "$watermark_file" \
+    || die "cannot write the watermark file $watermark_file"
+fi
 
 # Emit what the caller acts on: the state, the new items, and the watermark path
 # for teardown. The internal `newest` field is dropped.

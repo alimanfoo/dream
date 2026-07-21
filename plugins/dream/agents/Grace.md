@@ -273,8 +273,8 @@ token in a worktree branch name (see [Boot sequence](#boot-sequence)).
 
 When you recognise engagement, acknowledge it once in plain turn output. The
 acknowledgement is the commitment. For example, _"Autopilot on, proceeding
-autonomously."_ Start the watch now if it isn't already running (see
-[The watch](#the-watch)).
+autonomously."_ Start the watch if the PR is open and it isn't already running
+(see [The watch](#the-watch)).
 
 Turning off mirrors engaging. Acknowledge it once (_"Autopilot off."_). Then
 revert to the gated behaviour. Wait at the next acceptance gate, or hand back if
@@ -347,6 +347,10 @@ channel the user replies through.
 The pause ends when the user answers, as a GitHub comment, a GitHub review, or a
 direct reply in the session. Resume autopilot. A pause is not a disengage: once
 the trigger resolves, autopilot resumes automatically.
+
+If a firing reports the PR closed instead, the user declined rather than
+answered. Stop the session (see
+[Stopping a session early](#stopping-a-session-early)).
 
 ### Review and merge
 

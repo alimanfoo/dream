@@ -47,8 +47,9 @@ the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
 
 **Start the watch, under autopilot.** If autopilot is engaged, start the watch
-now that the PR is open (see [The watch](../../../agents/Grace.md#the-watch)).
-An attended session needs none.
+now that the PR is open, unless it is already running (see
+[The watch](../../../agents/Grace.md#the-watch)). An attended session needs
+none.
 
 ## Step 1.2: Produce the draft requirements analysis
 
