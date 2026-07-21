@@ -129,15 +129,6 @@ correctness or coherence problem in the PR is a normal **Blocking** or
 **Non-blocking** finding. A pre-existing concern, not part of what the PR
 changed, goes under **Out of scope but noticed**.
 
-Raise "the same edit elsewhere" as a normal finding. If the PR removes, renames,
-or clarifies something, and another surface carries the same edit, it belongs in
-Blocking, Non-blocking, or Nits by severity. That other surface may be
-pre-existing and unchanged, or made adjacent by what the PR did. For example, an
-earlier commit promoted a symbol and left its underscore prefix a fossil. Use
-the dispatching question: **is this the same edit: one the PR missed, or one the
-PR has now made adjacent?** If yes, file it as a normal finding, not in "Out of
-scope but noticed."
-
 **Write the Recommendation as a verdict, not a synopsis.** Write the
 **Recommendation** field as a single-sentence call: "looks good," "approve
 subject to nits," "blocking concerns below." Don't restate what the change does,

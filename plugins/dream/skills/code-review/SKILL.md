@@ -100,3 +100,10 @@ Each finding follows these rules:
 - **State only findings.** Don't narrate what the code does or confirm what
   works.
 - **Keep it tight.** One finding per numbered item, two or three sentences each.
+- **Raise "the same edit elsewhere" as a normal finding.** If the PR removes,
+  renames, or clarifies something, and another surface carries the same edit, it
+  is a valid finding. That other surface may be pre-existing and unchanged, or
+  made adjacent by what the PR did. For example, an earlier commit promoted a
+  symbol and left its underscore prefix a fossil. Use the dispatching question:
+  is this the same edit: one the PR missed, or one the PR has now made adjacent?
+  If yes, file it as a normal finding, not out of scope.
