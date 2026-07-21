@@ -132,6 +132,15 @@ the title from the session input.
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
 
+**Start the watch.** Invoke the `/dream:watcher <N>` skill to watch the PR for
+the user's replies from here on. It surfaces the user's comments and reviews as
+they arrive, so an answer to a question you raise mid-session reaches you the
+same way as a review after the PR is ready. Handle what it surfaces as
+[Handle the user's replies](#handle-the-users-replies) describes. Every comment
+you post already carries the Claude Code footer (see
+[Mark your work](#mark-your-work)), which is how the watch tells your comments
+from the user's.
+
 ## Implement
 
 Open the draft PR before you change any code, if it isn't already open
@@ -166,47 +175,36 @@ Replace the `WIP` placeholder with the description.
 
 Mark the PR ready for review.
 
-## Watch for user review
+## Handle the user's replies
 
-Keep watching the PR instead of ending here. Capture the cutoff now:
-`date -u +%Y-%m-%dT%H:%M:%SZ`. Create a recurring cron job (`CronCreate`) that
-runs every 10 minutes:
+The watch you started when the PR opened surfaces the user's comments and
+reviews as they land. Act on each as it arrives, whether it answers a question
+you raised mid-session or reviews the PR once it is ready.
 
-```bash
-SHARED_LOGIN=$(gh api user --jq .login)
-gh pr view <N> --json comments,reviews,state \
-  --jq "{state, comments: [.comments[] | select(.author.login == \"$SHARED_LOGIN\" and .createdAt > \"<CUTOFF>\")], reviews: [.reviews[] | select(.author.login == \"$SHARED_LOGIN\" and .submittedAt > \"<CUTOFF>\")]} | . + {nextCutoff: ([.comments[].createdAt, .reviews[].submittedAt] | sort | last)}"
-```
+Read the PR `state` the watch reports first. When `state` is `MERGED`, tear the
+watch down and end the session. When `state` is `CLOSED`, tear the watch down,
+post a comment naming where the work stopped, then end the session.
 
-Match your own login, not the user's. You and the user post through the same
-account, so only the cutoff timestamp tells your posts from their reply.
-
-The query result also carries `nextCutoff`: the newest timestamp among the
-comments and reviews it just returned, or `null` if it returned none.
-
-Then idle. You idle until the cron next fires, so this is not a busy loop. Each
-firing wakes you to run the query and handle what it returns.
-
-When `state` is `MERGED`, cancel the cron job and end the session. When `state`
-is `CLOSED`, cancel the cron job, post a comment naming where the work stopped,
-then end the session.
-
-Otherwise, act on everything the query returned as one batch, oldest first. An
-item can carry more than one of these:
+Otherwise, act on the items the watch surfaced, oldest first. An item can carry
+more than one of these:
 
 - **A requested change.** Implement it. Commit and push. Reply on the PR.
 - **A resolve-conflicts request.** Update the branch as the [merge step](#merge)
-  describes, as part of handling the batch.
-- **A defer-merge request.** Cancel the cron job and end the session, leaving
+  describes.
+- **A defer-merge request.** Tear the watch down and end the session, leaving
   the PR open for the user to merge later.
 - **A question.** Answer it as a PR comment.
+- **An answer to a question you raised.** Fold it into the work in hand and
+  carry on.
 
-An approving review, or a comment with nothing to act on, needs no reply. Once
-you've handled the whole batch and are still watching, advance the cutoff. If
-`nextCutoff` has a value, cancel and recreate the cron job with that value as
-the cutoff. None of the handled items resurface. The new cutoff still catches
-any reply that arrived while you worked. If `nextCutoff` is `null`, leave the
-running cron as it is.
+An approving review, or a comment with nothing to act on, needs no reply.
+
+Once the PR is ready and you have nothing left to do, go idle and let the watch
+wake you when the user replies. Idling is not ending: the watch is your only
+signal that the user has moved.
+
+Tear the watch down as the `/dream:watcher` skill describes, at any terminal
+outcome: a merge, a close, or a deferred merge.
 
 ## Merge
 
