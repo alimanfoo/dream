@@ -151,7 +151,6 @@ plugins/:
           Read the text to be copy-edited:
           Cite a rule or pass:
           Suggest the fix, guard the meaning:
-          Find every violation in one pass:
           Leave these alone:
           Record every finding in a file:
           Return only what needs changing:
