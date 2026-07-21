@@ -505,6 +505,14 @@ plugins/:
                 SendMessage:
                 Signature:
                 Non-user-facing agents:
+      watcher/:
+        SKILL.md:
+          Watcher:
+            The footer precondition:
+            Set up the watch:
+            On each firing:
+            Teardown:
+            Limits:
       writing-style/:
         SKILL.md:
           Writing style:
