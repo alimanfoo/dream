@@ -384,7 +384,7 @@ plugins/:
             Code review:
             Write the PR description:
             Mark the PR ready for review:
-            Watch for user review:
+            Handle the user's replies:
             Merge:
             Collect:
       team/:
