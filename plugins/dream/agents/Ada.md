@@ -89,10 +89,6 @@ posting. Follow
 #### Output format
 
 ```text
-**Recommendation:** <one-line verdict, not a synopsis — e.g.
-"looks good, a few small things"; "blocking concerns below";
-"approve subject to nits">
-
 ## Blocking
 1. ... (concrete finding with file/line citation)
 
@@ -107,13 +103,9 @@ posting. Follow
    collects these for the post-merge triage)
 ```
 
-Skip any section with no entries. If you have nothing to report, say so plainly
-under **Recommendation** and return.
+Skip any section with no entries. If you have nothing to report, say so plainly.
 
 #### Writing findings
-
-Grace posts your review text as a PR comment, adding only the standard Claude
-Code footer.
 
 **Surface on plausibility, not certainty.** You are the one fresh read on this
 diff, so a finding you half-believe and silently drop reaches no one. Raise it,
@@ -126,14 +118,6 @@ if it might be out of scope. You haven't seen the design or the plan. A
 correctness or coherence problem in the PR is a normal **Blocking** or
 **Non-blocking** finding. A pre-existing concern, not part of what the PR
 changed, goes under **Out of scope but noticed**.
-
-**Write the Recommendation as a verdict, not a synopsis.** Write the
-**Recommendation** field as a single-sentence call: "looks good," "approve
-subject to nits," "blocking concerns below." Don't restate what the change does,
-and don't pad the verdict with what tests passed or how the protocol was
-followed. Those things are visible from the PR itself. Internal-protocol jargon
-("drain depth-first per protocol") doesn't belong in a user-facing comment. Your
-job is the call.
 
 ### Phase 7: Merge
 
@@ -227,8 +211,6 @@ Operationally:
 Examples (sign-off only, content is yours):
 
 ```text
-**Recommendation:** approve subject to nits.
-
 ## Non-blocking
 1. ...
 
