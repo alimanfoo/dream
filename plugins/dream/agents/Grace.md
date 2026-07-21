@@ -167,6 +167,10 @@ task list, the working tree, or the PR starts a fresh turn. The loop never
 returns to idle, so the reply never gets its turn. When you are waiting for more
 than one reply, go idle again after each until every one is in.
 
+The autopilot watch is not this loop. It is an external cron that wakes you, not
+a status tool you spin, and each firing is bounded work that returns you to idle
+(see [The watch](#the-watch)).
+
 ## Challenge
 
 Raise a challenge when the work surfaces something new that breaks an accepted
@@ -269,11 +273,13 @@ token in a worktree branch name (see [Boot sequence](#boot-sequence)).
 
 When you recognise engagement, acknowledge it once in plain turn output. The
 acknowledgement is the commitment. For example, _"Autopilot on, proceeding
-autonomously."_
+autonomously."_ If the PR is already open, start the watch now (see
+[The watch](#the-watch)); otherwise it starts when the PR opens.
 
 Turning off mirrors engaging. Acknowledge it once (_"Autopilot off."_). Then
 revert to the gated behaviour. Wait at the next acceptance gate, or hand back if
-you already reached PR ready.
+you already reached PR ready. Tear the watch down as well (see
+[The watch](#the-watch)): an attended session needs none.
 
 ### Gate-defined defaults
 
@@ -294,6 +300,30 @@ state the default you're taking and move to the next phase, in the same turn.
 Skip asking the user to accept the artifact. Each phase's own share step spells
 out that closing line.
 
+### The watch
+
+Under autopilot, watch the session PR for the user's replies, so a pause can
+resume and a ready PR can move without you polling. This one watch covers every
+wait under autopilot: an answer to a paused question or challenge, and the
+user's response once the PR is ready.
+
+Start it once, as soon as autopilot is engaged and the PR is open. When
+autopilot is engaged as
+[Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr) opens the
+PR, start it there. When you engage autopilot later, with the PR already open,
+start it then. Invoke the `/dream:watcher <N>` skill and note its cron job ID.
+The recorded ID is how you know the watch is already running, so you never start
+a second.
+
+Each firing surfaces the user's new comments and reviews since the last. Read
+them in the state you are in: as the answer to what you are paused on (see
+[Pauses](#pauses)), or as the user's move on a ready PR (see
+[Review and merge](#review-and-merge)).
+
+Tear the watch down as the `/dream:watcher` skill describes, whenever it is no
+longer needed: the PR merged or closed, a merge you deferred, or autopilot
+turned off.
+
 ### Pauses
 
 Autopilot pauses on these, and only these:
@@ -310,65 +340,25 @@ Autopilot pauses on these, and only these:
   fact checks out. Pause. Post the challenge to the PR and present the options
   you can see. Carry out the chosen option.
 
-After pausing, create a recurring cron job (`CronCreate`) to remind you to check
-the PR for replies every 10 minutes. Embed these values in the prompt:
-
-- the PR number
-- the current timestamp (`date -u +%Y-%m-%dT%H:%M:%SZ`)
-
-Note the cron job ID in your turn output. You will need it to cancel the job.
-
-Going idle is still how you wait here (see
-[Waiting for a reply](#waiting-for-a-reply)). A reply in the session arrives
-while you sit idle. A reply on GitHub cannot, so the cron wakes you from idle
-every 10 minutes to check for it. The cron is not a busy loop: you idle until it
-next fires.
-
-When the cron job fires, resolve the authenticated login fresh, then use it with
-the embedded values to run:
-
-```bash
-SHARED_LOGIN=$(gh api user --jq .login)
-gh pr view <N> --json comments,reviews,state \
-  --jq "{state, comments: [.comments[] | select(.author.login == \"$SHARED_LOGIN\" and .createdAt > \"TIMESTAMP\")], reviews: [.reviews[] | select(.author.login == \"$SHARED_LOGIN\" and .submittedAt > \"TIMESTAMP\")]} | . + {nextCutoff: ([.comments[].createdAt, .reviews[].submittedAt] | sort | last)}"
-```
-
-Match this login. Don't exclude it. You and the user post through the same
-GitHub account, so the login on the user's reply is the same login on your own
-earlier posts. Only the cutoff timestamp tells them apart, since you post
-nothing while you wait. Matching still does useful work: it drops a comment from
-any other account, which isn't the reply you're waiting for.
-
-This one query covers every reply channel: a plain comment and a formal review
-carry equal weight. Don't pick a channel to watch. Read whichever the user used.
-
-The query result also carries `nextCutoff`: the newest timestamp among the
-comments and reviews it just returned, or `null` if it returned none.
+After pausing, go idle (see [Waiting for a reply](#waiting-for-a-reply)). You
+set nothing up to wait: the watch (see [The watch](#the-watch)) has been running
+since the PR opened, and it surfaces the user's answer when it lands, whichever
+channel the user replies through.
 
 The pause ends when the user answers, as a GitHub comment, a GitHub review, or a
-direct reply in the session. Cancel the cron job and resume autopilot. This loop
-keeps the cutoff it started with. It never cancels the cron job and creates a
-new one with a different cutoff. It never reads `nextCutoff`.
-
-A pause is not a disengage. Once the trigger resolves, autopilot resumes
-automatically.
+direct reply in the session. Resume autopilot. A pause is not a disengage: once
+the trigger resolves, autopilot resumes automatically.
 
 ### Review and merge
 
 After you mark the PR ready (end of Phase 6), keep watching it for the user's
-response instead of handing back. Use the same poll-and-resume way that a pause
-waits for an answer, including its query (see [Pauses](#pauses)). A comment and
-a review carry equal weight there, so reuse it unchanged.
+response instead of handing back. The watch (see [The watch](#the-watch)) has
+been running since the PR opened, so nothing new is set up here. Announce the
+switch once in plain turn output: autopilot is now watching the PR for the
+user's move.
 
-Announce the switch once in plain turn output: autopilot is now watching the PR
-for the user's move.
-
-Set up the same recurring cron job. Embed the same values: the PR number and a
-cutoff timestamp. Capture the cutoff now, as you enter the watch, with
-`date -u +%Y-%m-%dT%H:%M:%SZ`. This moment is when the PR became ready, so it's
-the right point to filter from.
-
-Read `state` first. `MERGED` and `CLOSED` are terminal:
+Read `state` first. `MERGED` and `CLOSED` are terminal, so tear the watch down
+(see [The watch](#the-watch)) as you handle either:
 
 - **Merged** (`state` is `MERGED`) means the user accepted. Move to the
   [merge phase](#phase-7-merge), then the [collect phase](#phase-8-collect). It
@@ -379,10 +369,10 @@ Read `state` first. `MERGED` and `CLOSED` are terminal:
   session (see [Stopping a session early](#stopping-a-session-early)). The PR is
   already closed, so post the closing record and end.
 
-Otherwise the PR is still open, so act on what the query returned: the user's
-comments and reviews since the cutoff, as one combined batch. Either channel
-carries the same intents below. An item can carry more than one. Act on all of
-them, in this order, and drop nothing:
+Otherwise the PR is still open, so act on what the watch surfaced: the user's
+new comments and reviews, as one combined batch. Either channel carries the same
+intents below. An item can carry more than one. Act on all of them, in this
+order, and drop nothing:
 
 1. **Feedback** is a user-directed change. Triage it the same as a Phase 6
    review. Run each accepted point through the reopening path (see
@@ -394,7 +384,7 @@ them, in this order, and drop nothing:
    PR mergeable. Resolve the conflict as Phase 7 describes. It counts as the
    merge itself, not new development.
 3. **A defer-merge request**, recognised liberally from a body such as _"defer
-   merge"_, is terminal, like a merge. Go through the
+   merge"_, is terminal, like a merge. Tear the watch down, then go through the
    [merge phase](#phase-7-merge)'s deferral path to the
    [collect phase](#phase-8-collect), skipping the
    [reflect phase](#phase-9-reflect), with the PR left open.
@@ -403,16 +393,12 @@ them, in this order, and drop nothing:
    (`gh pr comment <N> --body "..."`), from what you already know. If you need
    more to answer it, ask in the same reply.
 
-An approving review or a comment with nothing to act on needs no change. When
-you have handled the batch and are still watching (you did not merge, defer, or
-close), advance the cutoff. If `nextCutoff` has a value, cancel the cron job and
-create a new one with that value as the cutoff. None of the handled items
-resurface. The new cutoff still catches any reply that arrived while you worked.
-If `nextCutoff` is `null`, leave the running cron as it is.
+An approving review or a comment with nothing to act on needs no change. After
+handling a batch and still watching (you did not merge, defer, or close), go
+idle again and let the watch surface the next reply.
 
-The user can give feedback directly in the session instead. Cancel the cron job
-once the PR is merged or closed, once you defer the merge, or once you hand
-back.
+The user can also give feedback directly in the session. Either way, the watch
+runs on until a terminal outcome tears it down (see [The watch](#the-watch)).
 
 ### Auto-collect
 

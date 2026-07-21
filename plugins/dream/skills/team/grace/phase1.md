@@ -46,6 +46,10 @@ main-checkout session, reproduce the user's text verbatim. Follow
 the Claude Code footer from
 [Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
 
+**Start the watch, under autopilot.** If autopilot is engaged, start the watch
+now that the PR is open (see [The watch](../../../agents/Grace.md#the-watch)).
+An attended session needs none.
+
 ## Step 1.2: Produce the draft requirements analysis
 
 Run the `/dream:requirements-analysis` skill, giving it the session input.
