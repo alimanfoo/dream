@@ -38,10 +38,10 @@ Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for every message to the user, every artefact posted on GitHub, and
 any comments or documentation you write in code.
 
-## Session output
+## Turn output
 
-Keep your session output brief, usually one sentence per turn. Put anything the
-user needs to see on the PR.
+Keep your turn output brief, usually one sentence per turn, unless a step asks
+you to write more.
 
 ## Mark your work
 
