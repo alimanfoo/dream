@@ -23,6 +23,13 @@
 # dispatch. Sessions awaiting review pile up alongside the one still
 # developing.
 #
+# Each session is its own process, in its own worktree, on its own branch. Git
+# worktrees support concurrent commit and push against one shared object
+# store. The one collision on record was agent-identity eviction between two
+# in-process `claude --bg` teams, retired when tmux hosting replaced it
+# (commit 0e88d7d). So the slot paces dispatch. It does not guard against
+# corruption.
+#
 # Each tick also cleans up finished sessions. It kills and removes a worktree
 # whose pull request was merged or closed past a linger period. That keeps tmux
 # sessions from piling up until tmux refuses to open more.
@@ -130,9 +137,9 @@ is_auto_branch() { [[ "$1" =~ ^GH[0-9]+-[0-9]{8}-[0-9]{6}-auto$ ]]; }
 # path that contains a space intact.
 worktree_paths() { git -C "$main_root" worktree list --porcelain | sed -n 's/^worktree //p'; }
 
-# True when a session still holds the develop slot: a live "-auto" session for
-# this repo whose branch has no pull request that is merged, closed, or ready
-# for review. isDraft is the signal every dispatched session type emits at the
+# True when a session still holds the slot: a live "-auto" session for this
+# repo whose branch has no pull request that is merged, closed, or ready for
+# review. isDraft is the signal every dispatched session type emits at the
 # same point, team, solo, and less alike, so this reads uniformly across all
 # three. A crashed session's tmux session is gone too, so it never wedges the
 # slot. Each branch is unique per attempt, so its pull request state is that
