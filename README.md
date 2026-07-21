@@ -98,7 +98,7 @@ Reach for it when a change is small and self-contained.
 
 ## Unattended runs with /dream:catcher
 
-The `/dream:catcher` watches a repository for labelled issues and dispatches a
+`/dream:catcher` watches a repository for labelled issues and dispatches a
 session for each. It runs the `/dream:team`, the `/dream:solo` skill, or the
 `/dream:less` skill, chosen by the issue's label.
 
@@ -107,7 +107,7 @@ The issue backlog then clears itself while you are away. Each session runs
 unattended and carries its issue to a pull request for you to merge. That is the
 same as a session you start by hand.
 
-The `/dream:catcher` needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
+`/dream:catcher` needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
 with `gh` signed in.
 
 Start Claude Code from the main checkout of that repository, not a linked
@@ -122,7 +122,7 @@ open issues labelled "dream:team", "dream:solo", or "dream:less" and assigned to
 you, dispatching the matching skill. Override a label with a flag, for example
 `/dream:catcher --team-label auto`.
 
-The `/dream:catcher` runs in its own tmux session. Attach to it with
+`/dream:catcher` runs in its own tmux session. Attach to it with
 `tmux attach -t dreamcatcher`, or follow its log with
 `tail -f dreamcatcher.log`. Each issue it dispatches runs in its own tmux
 session. `Ctrl+B` then `s` switches between the `/dream:catcher` and every
@@ -140,15 +140,15 @@ How it picks work:
   dispatch. Sessions awaiting review pile up alongside the one still developing.
   Size a session by grouping issues under an umbrella issue.
 - **Oldest eligible issue first.** Mark an issue blocked by another in the
-  GitHub issue view to make it wait for that one. The `/dream:catcher` skips a
+  GitHub issue view to make it wait for that one. `/dream:catcher` skips a
   blocked issue until its blocker closes, then picks it up.
 - **Finished sessions.** A session's worktree and tmux session persist until its
   own pull request is merged or closed. Several sessions pile up while awaiting
-  your review. The `/dream:catcher` reclaims each a short while after its pull
+  your review. `/dream:catcher` reclaims each a short while after its pull
   request is merged or closed.
 
 Each session runs unattended. It needs permissions to interact with GitHub:
-creating the pull request, posting comments, committing, and pushing. The
+creating the pull request, posting comments, committing, and pushing.
 `/dream:catcher` passes these to it as allow rules at launch. When a session
 hits a question it cannot answer, it posts the question to the pull request and
 waits. You can reply there without dropping into the session.
