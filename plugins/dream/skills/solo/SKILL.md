@@ -183,10 +183,10 @@ apply none when there's no clean match.
 
 **Start the watch.** Invoke the `/dream:watcher <N>` skill to watch the PR for
 the user's replies from here on. It surfaces the user's comments and reviews as
-they arrive, so an answer to a question you raise mid-session reaches you the
-same way as a review after the PR is ready. Handle what it surfaces as
+they arrive. An answer to a question that you raise mid-session then reaches you
+the same way as a review does once the PR is ready. Handle what it surfaces as
 [Handle the user's replies](#handle-the-users-replies) describes. Every comment
-you post already carries the Claude Code footer (see
+that you post already carries the Claude Code footer (see
 [Mark your work](#mark-your-work)), which is how the watch tells your comments
 from the user's.
 
@@ -264,34 +264,34 @@ Mark the PR ready for review.
 ## Handle the user's replies
 
 The watch you started when the PR opened surfaces the user's comments and
-reviews as they land. Act on each as it arrives, whether it answers a question
-you raised mid-session or reviews the PR once it is ready.
+reviews as they arrive. Act on each, whether it answers a question that you
+raised mid-session or reviews the PR once it is ready.
 
-Read the PR `state` the watch reports first. When `state` is `MERGED`, tear the
-watch down and continue to the [collect step](#collect). When `state` is
+Read the PR `state` that the watch reports first. When `state` is `MERGED`, tear
+the watch down and continue to the [collect step](#collect). When `state` is
 `CLOSED`, tear the watch down, post a comment naming where the work stopped,
 then end the session.
 
-Otherwise, act on the items the watch surfaced, oldest first. An item can carry
-more than one of these:
+Otherwise, act on the items that the watch surfaced, oldest first. An item can
+carry more than one of these:
 
 - **A requested change.** Implement it. Commit and push. Reply on the PR.
 - **A resolve-conflicts request.** Update the branch as the [merge step](#merge)
   describes.
 - **A defer-merge request.** Tear the watch down and continue to the
-  [collect step](#collect), leaving the PR open. This is terminal, like a merge.
+  [collect step](#collect), leaving the PR open for the user to merge later.
 - **A question.** Answer it as a PR comment.
-- **An answer to a question you raised.** Fold it into the work in hand and
+- **An answer to a question that you raised.** Fold it into the work in hand and
   carry on.
 
 An approving review, or a comment with nothing to act on, needs no reply.
 
 Once the PR is ready and you have nothing left to do, go idle and let the watch
 wake you when the user replies. Idling is not ending: the watch is your only
-signal that the user has moved.
+signal that the user has replied.
 
-Tear the watch down as the `/dream:watcher` skill describes, at any terminal
-outcome: a merge, a close, or a deferred merge.
+Tear the watch down as the `/dream:watcher` skill describes, at a merge, a
+close, or a deferred merge.
 
 ## Merge
 

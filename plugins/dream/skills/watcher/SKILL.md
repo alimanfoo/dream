@@ -12,8 +12,9 @@ argument-hint: "<pr>"
 
 Watch a pull request for the user's replies, so the session can carry on and act
 on each one as it lands. This is how a session waits for the user on GitHub
-rather than in the session itself: an autonomous session with no one watching
-the chat, or any interactive session where the user answers on the pull request.
+rather than in the session itself. It covers an autonomous session with no one
+watching the chat, and any interactive session where the user answers on the
+pull request.
 
 The watch is one recurring background check for the whole session. It starts
 when you invoke this skill and runs until the pull request merges or closes, or
@@ -26,15 +27,15 @@ the recurring check and tells you how to act on each result.
 
 ## The footer precondition
 
-Mark every comment you post to the watched pull request with the Claude Code
-footer:
+Mark every comment that you post to the watched pull request with the Claude
+Code footer:
 
 > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
 The watch tells your own comments from the user's by that footer, and drops any
 comment that carries it. Without it, your own posts read back as the user's
 input, and the watch surfaces them to you as replies to act on. A comment is the
-only channel this applies to. You post no reviews, so the watch takes every
+only channel that this applies to. You post no reviews, so the watch takes every
 review as the user's.
 
 ## Set up the watch
@@ -65,7 +66,7 @@ You do not poll it.
 
 The cron prompt runs `watch.sh` and hands you the result. The script returns the
 pull request `state`, the user's new `comments` and `reviews`, and the
-`watermarkFile` path teardown needs.
+`watermarkFile` path that teardown needs.
 
 The first firing returns everything on the pull request so far. Each later
 firing returns only what is new since the one before. A reply that arrives while
@@ -79,15 +80,17 @@ rules just reports each item to the user.
 
 ## Teardown
 
-Cancel the watch when it is done: delete the cron job (`CronDelete`) by the ID
-you recorded at setup, and delete the watermark file (`rm -f` the
-`watermarkFile` path the script reports). Run teardown at any terminal outcome:
-the pull request merged or closed, a merge you deferred, or the session
-otherwise done watching.
+Tear the watch down at any terminal outcome: the pull request merged or closed,
+a merge that you deferred, or the session done watching for another reason. To
+tear it down:
+
+- Delete the cron job (`CronDelete`) by the ID that you recorded at setup.
+- Delete the watermark file: `rm -f` the `watermarkFile` path that the script
+  reports.
 
 ## Limits
 
 - A recurring cron job expires after seven days. A watch on a slow reviewer
   could outlive it and stop. Most reviews land sooner.
-- A 10-minute cron can fire up to five minutes late. This is immaterial for a
-  periodic check.
+- A 10-minute cron can fire up to five minutes late. This makes no real
+  difference for a periodic check.

@@ -168,7 +168,7 @@ returns to idle, so the reply never gets its turn. When you are waiting for more
 than one reply, go idle again after each until every one is in.
 
 The autopilot watch is not this loop. It is an external cron that wakes you, not
-a status tool you spin, and each firing is bounded work that returns you to idle
+a status tool you poll. Each firing is bounded work that returns you to idle
 (see [The watch](#the-watch)).
 
 ## Challenge
@@ -273,8 +273,8 @@ token in a worktree branch name (see [Boot sequence](#boot-sequence)).
 
 When you recognise engagement, acknowledge it once in plain turn output. The
 acknowledgement is the commitment. For example, _"Autopilot on, proceeding
-autonomously."_ If the PR is already open, start the watch now (see
-[The watch](#the-watch)); otherwise it starts when the PR opens.
+autonomously."_ Start the watch now if it isn't already running (see
+[The watch](#the-watch)).
 
 Turning off mirrors engaging. Acknowledge it once (_"Autopilot off."_). Then
 revert to the gated behaviour. Wait at the next acceptance gate, or hand back if
@@ -308,12 +308,11 @@ wait under autopilot: an answer to a paused question or challenge, and the
 user's response once the PR is ready.
 
 Start it once, as soon as autopilot is engaged and the PR is open. When
-autopilot is engaged as
-[Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr) opens the
-PR, start it there. When you engage autopilot later, with the PR already open,
-start it then. Invoke the `/dream:watcher <N>` skill and note its cron job ID.
-The recorded ID is how you know the watch is already running, so you never start
-a second.
+autopilot is engaged before the PR opens, start the watch once
+[Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr) opens it.
+When you engage autopilot later, with the PR already open, start it then. Invoke
+the `/dream:watcher <N>` skill and note its cron job ID. The recorded ID is how
+you know the watch is already running, so you never start a second.
 
 Each firing surfaces the user's new comments and reviews since the last. Read
 them in the state you are in: as the answer to what you are paused on (see
@@ -341,8 +340,8 @@ Autopilot pauses on these, and only these:
   you can see. Carry out the chosen option.
 
 After pausing, go idle (see [Waiting for a reply](#waiting-for-a-reply)). You
-set nothing up to wait: the watch (see [The watch](#the-watch)) has been running
-since the PR opened, and it surfaces the user's answer when it lands, whichever
+set nothing up to wait. The watch (see [The watch](#the-watch)) has been running
+since the PR opened. It surfaces the user's answer when it lands, whichever
 channel the user replies through.
 
 The pause ends when the user answers, as a GitHub comment, a GitHub review, or a

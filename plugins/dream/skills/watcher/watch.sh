@@ -4,13 +4,13 @@
 #
 # One query, one command, no subcommand. Given a pull request number, it returns
 # the pull request state and the user's comments and reviews newer than a
-# per-pull-request watermark, then advances the watermark to the newest item it
-# returned. The caller runs it on a recurring cron to watch a pull request for
-# the user's replies while the session works elsewhere.
+# per-pull-request watermark. It then advances the watermark to the newest item
+# it returned. The caller runs it on a recurring cron to watch a pull request
+# for the user's replies while the session works elsewhere.
 #
 # The watermark is the newest item seen, never the wall clock. So a reply that
-# lands while the caller is busy handling an earlier batch stays above the
-# watermark and surfaces on the next run, rather than falling into the gap
+# lands while the caller is busy handling an earlier batch still stays above the
+# watermark. It surfaces on the next run, instead of falling into the gap
 # between one run and the next.
 #
 # With no watermark yet, an absent watermark reads as the beginning of time, so
@@ -30,7 +30,7 @@
 #   marks its own comments with that footer, so any comment whose body contains
 #   the footer string is the caller's own and is dropped.
 #
-# The footer string is therefore load-bearing: a change to it would break the
+# The footer string is therefore essential: a change to it would break the
 # filter, and the caller's own comments would read back as the user's input.
 #
 # Timestamps are ISO-8601 with a trailing Z, which sort correctly as strings, so
