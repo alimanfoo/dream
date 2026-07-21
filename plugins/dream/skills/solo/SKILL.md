@@ -56,6 +56,12 @@ Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for every message to the user, every artefact posted on GitHub, and
 any comments or documentation you write in code.
 
+## Session output
+
+The user follows the PR, not this session, so keep what you write to the session
+brief, usually one sentence per turn. Put anything the user needs to see on the
+PR: the description, a plan or review comment, or a question.
+
 ## Mark your work
 
 End every commit with the `Co-Authored-By` trailer:
