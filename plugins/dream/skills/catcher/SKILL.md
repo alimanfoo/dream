@@ -60,9 +60,8 @@ resolved before launching, as a plain statement, so a misread surfaces at once.
   `/dream:solo` model.
 - **Less effort.** The reasoning effort a `/dream:less` session runs under.
   Defaults to `high`, so the lighter model has the reasoning headroom to do the
-  work well. The lightness lives in the model, not the effort. Governs
-  `/dream:less` dispatches alone, for the same reason as the `/dream:solo`
-  model.
+  work well. Governs `/dream:less` dispatches alone, for the same reason as the
+  `/dream:solo` model.
 - **Assignee.** Whose issues to pick up. Defaults to `@me`, gh's alias for the
   authenticated user.
 - **Interval.** Seconds between ticks. Defaults to 300.
