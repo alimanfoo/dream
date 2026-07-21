@@ -23,12 +23,9 @@
 # dispatch. Sessions awaiting review pile up alongside the one still
 # developing.
 #
-# Each session is its own process, in its own worktree, on its own branch. Git
-# worktrees support concurrent commit and push against one shared object
-# store. The one collision on record was agent-identity eviction between two
-# in-process `claude --bg` teams, retired when tmux hosting replaced it
-# (commit 0e88d7d). So the slot paces dispatch. It does not guard against
-# corruption.
+# Each session is its own process, in its own worktree, on its own branch, so
+# concurrent sessions are isolated. The slot paces dispatch. It is not a
+# corruption guard.
 #
 # Each tick also cleans up finished sessions. It kills and removes a worktree
 # whose pull request was merged or closed past a linger period. That keeps tmux
