@@ -347,8 +347,8 @@ comments and reviews it just returned, or `null` if it returned none.
 
 The pause ends when the user answers, as a GitHub comment, a GitHub review, or a
 direct reply in the session. Cancel the cron job and resume autopilot. This loop
-ends on the first answer rather than looping. It never advances its cutoff, or
-reads `nextCutoff`.
+keeps the cutoff it started with. It never cancels the cron job and creates a
+new one with a different cutoff. It never reads `nextCutoff`.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
