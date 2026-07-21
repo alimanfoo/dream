@@ -1,12 +1,10 @@
 ---
 name: catcher
 description:
-  Only use when the user explicitly runs /dream:catcher, never on a general
-  request to watch, monitor, or triage issues. It launches unattended sessions.
-  It watches a repository for labelled issues and dispatches a session for each,
-  one at a time. The issue's label picks which skill runs, the /dream:team, the
-  /dream:solo skill, or the lighter /dream:less skill. Each session runs
-  unattended and carries its issue to a pull request for the user to merge.
+  Watch a repository for labelled issues and dispatch an autonomous coding
+  session for each. Each session runs unattended and carries its issue to a pull
+  request for the user to review and merge. Only use when the user explicitly
+  runs /dream:catcher.
 argument-hint:
   "[--team-label <label>] [--solo-label <label>] [--less-label <label>]
   [--solo-model <model>] [--solo-effort <effort>] [--less-model <model>]
@@ -18,8 +16,11 @@ argument-hint:
 Watch a repository for issues marked for the `/dream:team`, the `/dream:solo`
 skill, or the `/dream:less` skill, and dispatch a fresh session for each, chosen
 by the issue's label. The sessions already do the work. This is the coordinator
-around them. It notices a labelled issue and dispatches a session for it, one at
-a time. The work continues while the user is away.
+around them. It notices a labelled issue and dispatches a session for it.
+
+A session holds the slot from dispatch until its pull request is ready for
+review, then frees it for the next dispatch. Sessions awaiting review pile up
+alongside the one still developing, while the user is away.
 
 The coordinator is a shell script, `catch.sh`, in this skill's directory. It
 runs a tick on a loop and reads live state each time, so nothing is stored
@@ -125,12 +126,11 @@ Answer questions about the coordinator's behaviour from here.
   assignee to be picked up. One carrying more than one goes to the heaviest:
   `/dream:team` over `/dream:solo` over `/dream:less`. Neither `/dream:solo` nor
   `/dream:less` needs the agent teams feature, so those dispatches launch
-  without one. The one-at-a-time slot, worktree setup, and unattended
-  permissions are the same for all three.
-- **One session at a time.** A session holds the slot from dispatch until its
-  pull request is merged or closed, so your merge paces the next dispatch. This
-  is a granularity choice, letting you size a session by composing issues into
-  an umbrella, not a technical limit.
+  without one. The slot, worktree setup, and unattended permissions are the same
+  for all three.
+- **One session develops at a time.** A session holds the slot from dispatch
+  until its pull request is ready for review, then frees it for the next
+  dispatch. Sessions awaiting review pile up alongside the one still developing.
 - **Oldest eligible issue first.** Mark an issue blocked by another in the
   GitHub issue view to make it wait for that one. The coordinator skips an issue
   whose blocker is still open, and picks it up once the blocker is closed. Use

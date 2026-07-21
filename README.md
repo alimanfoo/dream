@@ -98,14 +98,16 @@ Reach for it when a change is small and self-contained.
 
 ## Unattended runs with /dream:catcher
 
-The dreamcatcher watches a repository for labelled issues and dispatches a
-session for each, one at a time. It runs the `/dream:team`, the `/dream:solo`
-skill, or the `/dream:less` skill, chosen by the issue's label. A backlog clears
-itself while you are away. Each session runs unattended and carries its issue to
-a pull request for you to merge. That is the same as a session you start by
-hand.
+`/dream:catcher` watches a repository for labelled issues and dispatches a
+session for each. It runs the `/dream:team`, the `/dream:solo` skill, or the
+`/dream:less` skill, chosen by the issue's label.
 
-The dreamcatcher needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
+One session develops at a time. Sessions awaiting review pile up alongside it.
+The issue backlog then clears itself while you are away. Each session runs
+unattended and carries its issue to a pull request for you to merge. That is the
+same as a session you start by hand.
+
+`/dream:catcher` needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
 with `gh` signed in.
 
 Start Claude Code from the main checkout of that repository, not a linked
@@ -120,10 +122,10 @@ open issues labelled "dream:team", "dream:solo", or "dream:less" and assigned to
 you, dispatching the matching skill. Override a label with a flag, for example
 `/dream:catcher --team-label auto`.
 
-The dreamcatcher runs in its own tmux session. Attach to it with
+`/dream:catcher` runs in its own tmux session. Attach to it with
 `tmux attach -t dreamcatcher`, or follow its log with
 `tail -f dreamcatcher.log`. Each issue it dispatches runs in its own tmux
-session. `Ctrl+B` then `s` switches between the dreamcatcher and every running
+session. `Ctrl+B` then `s` switches between `/dream:catcher` and every running
 session, so a session waiting for an answer is one keystroke away.
 
 How it picks work:
@@ -133,20 +135,23 @@ How it picks work:
   that need no team. The "dream:less" label dispatches a `/dream:less` session,
   for very small ones. An issue carrying more than one goes to the heaviest:
   `/dream:team` over `/dream:solo` over `/dream:less`.
-- **One session at a time.** A session holds the slot from dispatch until its
-  pull request is merged or closed, so your merge paces the next dispatch. Size
-  a session by grouping issues under an umbrella issue.
+- **One session develops at a time.** A session holds the slot from dispatch
+  until its pull request is ready for review, then frees it for the next
+  dispatch. Sessions awaiting review pile up alongside the one still developing.
+  Size a session by grouping issues under an umbrella issue.
 - **Oldest eligible issue first.** Mark an issue blocked by another in the
-  GitHub issue view to make it wait for that one. The dreamcatcher skips a
+  GitHub issue view to make it wait for that one. `/dream:catcher` skips a
   blocked issue until its blocker closes, then picks it up.
-- **Finished sessions.** The dreamcatcher removes a session's worktree and tmux
-  session once its pull request is merged or closed, so they do not pile up.
+- **Finished sessions.** A session's worktree and tmux session persist until its
+  own pull request is merged or closed. Several sessions pile up while awaiting
+  your review. `/dream:catcher` reclaims each a short while after its pull
+  request is merged or closed.
 
-Each session runs unattended. The dreamcatcher passes the permissions a session
-needs to interact with GitHub (creating the pull request, posting comments,
-committing, pushing) to it as allow rules at launch. When a session hits a
-question it cannot answer, it posts the question to the pull request and waits.
-You can reply there without dropping into the session.
+Each session runs unattended. It needs permissions to interact with GitHub:
+creating the pull request, posting comments, committing, and pushing.
+`/dream:catcher` passes these to it as allow rules at launch. When a session
+hits a question it cannot answer, it posts the question to the pull request and
+waits. You can reply there without dropping into the session.
 
 It stops on reboot, so re-run `/dream:catcher` to restart it. For a machine that
 must survive reboots, drive `catch.sh --once` from cron or launchd. Each firing

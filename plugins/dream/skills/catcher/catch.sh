@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Dreamcatcher: dispatch labelled issues to dream sessions, one at a time.
+# Dreamcatcher: dispatch labelled issues to dream sessions.
 #
 # The issue's label selects the skill: the team label dispatches a /dream:team
 # session, the solo label a /dream:solo session, the less label a /dream:less
@@ -18,10 +18,14 @@
 # stays alive and drives the work to completion, the same as a session run by
 # hand.
 #
-# One session at a time. The coordinator holds the slot from dispatch until the
-# pull request is merged or closed, so the user's merge paces the next dispatch.
-# This is a granularity choice, letting the user size a session by composing
-# issues, not a technical limit.
+# One session develops at a time. The coordinator holds the slot from dispatch
+# until the pull request is ready for review, then frees it for the next
+# dispatch. Sessions awaiting review pile up alongside the one still
+# developing.
+#
+# Each session is its own process, in its own worktree, on its own branch, so
+# concurrent sessions are isolated. The slot paces dispatch. It is not a
+# corruption guard.
 #
 # Each tick also cleans up finished sessions. It kills and removes a worktree
 # whose pull request was merged or closed past a linger period. That keeps tmux
@@ -44,7 +48,7 @@ set -uo pipefail
 
 usage() {
   cat <<'EOF'
-Dreamcatcher: dispatch labelled issues to dream sessions, one at a time.
+Dreamcatcher: dispatch labelled issues to dream sessions.
 
 Usage:
   catch.sh [--team-label <label>] [--solo-label <label>] [--less-label <label>]
@@ -130,38 +134,37 @@ is_auto_branch() { [[ "$1" =~ ^GH[0-9]+-[0-9]{8}-[0-9]{6}-auto$ ]]; }
 # path that contains a space intact.
 worktree_paths() { git -C "$main_root" worktree list --porcelain | sed -n 's/^worktree //p'; }
 
-# True when a session holds the one-at-a-time slot: a live "-auto" session for
-# this repo whose branch has no merged or closed pull request. A developing
-# session and one awaiting review both hold the slot. Two live teams would
-# corrupt each other. A session whose pull request is merged or closed has
-# finished and frees the slot. A crashed session frees it too, its tmux session
-# gone, so it never wedges the slot. Each branch is unique per attempt, so its
-# pull request state is that session's alone, never an earlier attempt's.
-session_in_flight() {
-  local wt branch finished
+# True when a session still holds the slot: a live "-auto" session for this
+# repo whose branch has no pull request that is merged, closed, or ready for
+# review. isDraft is the signal every dispatched session type emits at the
+# same point, team, solo, and less alike, so this reads uniformly across all
+# three. A crashed session's tmux session is gone too, so it never wedges the
+# slot. Each branch is unique per attempt, so its pull request state is that
+# session's alone, never an earlier attempt's.
+session_developing() {
+  local wt branch reached_review
   while read -r wt; do
     [ -n "$wt" ] || continue
     branch=$(basename "$wt")
     is_auto_branch "$branch" || continue
     tmux has-session -t "dream-$branch" 2>/dev/null || continue
-    finished=$(gh pr list --repo "$repo" --head "$branch" --state all --json state \
-      --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED")] | length' \
+    reached_review=$(gh pr list --repo "$repo" --head "$branch" --state all --json state,isDraft \
+      --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED" or (.state == "OPEN" and .isDraft == false))] | length' \
       2>/dev/null || echo 0)
-    if [ "${finished:-0}" -eq 0 ]; then
-      log "deferring: $branch is still in flight"
+    if [ "${reached_review:-0}" -eq 0 ]; then
+      log "deferring: $branch is still developing"
       return 0
     fi
   done < <(worktree_paths)
   return 1
 }
 
-# True when the issue already has a session in flight or finished. That is an
-# open pull request (a current or earlier session still going) or a merged one.
-# The issue's closed state can lag in `gh issue list`, so a merged pull request
-# still counts. A closed-unmerged pull request does not count, so an old
-# declined attempt never locks the issue out. A read failure returns true, so a
-# transient error never re-dispatches an issue already under way. A just-merged
-# issue is also never picked up twice.
+# True when the issue already has an open or merged pull request: a current or
+# earlier session still going, or one already merged. The issue's closed state
+# can lag in `gh issue list`, so a merged pull request still counts. A
+# closed-unmerged pull request does not count, so an old declined attempt never
+# locks the issue out. A read failure returns true, so a transient error never
+# re-dispatches an issue already under way.
 already_handled() {
   local n=$1 count
   count=$(gh pr list --repo "$repo" --state all --limit 500 --json headRefName,state 2>/dev/null \
@@ -303,7 +306,7 @@ list_labelled() {
 
 tick() {
   clean_up_finished
-  if session_in_flight; then
+  if session_developing; then
     return 0
   fi
   local team_list solo_list less_list candidates n skill
@@ -321,7 +324,7 @@ tick() {
   candidates=$(printf '%s\n%s\n%s\n' "$team_list" "$solo_list" "$less_list" | sort -s -t$'\t' -k1,1 | cut -f2-)
   while IFS=$'\t' read -r n skill; do
     [ -n "$n" ] || continue
-    already_handled "$n" && continue   # in flight or already done
+    already_handled "$n" && continue   # already has an open or merged pull request
     unblocked "$n" || continue     # a blocker is still open
     dispatch "$n" "$skill" && return 0
   done <<<"$candidates"
