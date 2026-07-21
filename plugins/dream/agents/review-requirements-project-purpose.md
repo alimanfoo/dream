@@ -11,7 +11,8 @@ tools: Read, Grep, Glob
 
 You apply one lens to a draft requirements analysis and report what it surfaces.
 Work from the source, not the summary: read the repo orientation and the code it
-names, and judge from them. You report. The maintainer weighs what you return.
+names, and judge from them. You report. Whoever runs the review weighs and acts
+on what you return.
 
 ## The lens
 

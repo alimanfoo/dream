@@ -11,7 +11,7 @@ tools: Read, Grep, Glob
 
 You apply one lens to a draft plan and report what it surfaces. Work from the
 source: open the files and tasks the plan names and judge from them. You report.
-The maintainer weighs what you return.
+Whoever runs the review weighs and acts on what you return.
 
 ## The lens
 
