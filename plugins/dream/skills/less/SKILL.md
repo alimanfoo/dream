@@ -196,9 +196,17 @@ item can carry more than one of these:
 - **A question.** Answer it as a PR comment.
 
 An approving review, or a comment with nothing to act on, needs no reply. Once
-you've handled the whole batch and are still watching, cancel and recreate the
-cron job with the cutoff reset to now. This keeps handled items from
-resurfacing.
+you've handled the whole batch and are still watching, advance the cutoff. Take
+the newest timestamp among the items in the batch you just handled:
+
+```bash
+[.comments[].createdAt, .reviews[].submittedAt] | sort | last // empty
+```
+
+If that yields a timestamp, cancel and recreate the cron job with that timestamp
+as the cutoff. None of the handled items resurface. The new cutoff still catches
+any reply that arrived while you worked. If the batch was empty, leave the
+running cron as it is.
 
 ## Merge
 

@@ -343,7 +343,8 @@ This one query covers every reply channel: a plain comment and a formal review
 carry equal weight. Don't pick a channel to watch. Read whichever the user used.
 
 The pause ends when the user answers, as a GitHub comment, a GitHub review, or a
-direct reply in the session. Cancel the cron job and resume autopilot.
+direct reply in the session. Cancel the cron job and resume autopilot. This loop
+ends on the first answer rather than looping, so it never advances its cutoff.
 
 A pause is not a disengage. Once the trigger resolves, autopilot resumes
 automatically.
@@ -400,8 +401,17 @@ them, in this order, and drop nothing:
 
 An approving review or a comment with nothing to act on needs no change. When
 you have handled the batch and are still watching (you did not merge, defer, or
-close), cancel the cron job. Create a new one with the cutoff set to now, so the
-handled items don't resurface.
+close), advance the cutoff. Take the newest timestamp among the items in the
+batch you just handled:
+
+```bash
+[.comments[].createdAt, .reviews[].submittedAt] | sort | last // empty
+```
+
+If that yields a timestamp, cancel the cron job and create a new one with that
+timestamp as the cutoff. None of the handled items resurface. The new cutoff
+still catches any reply that arrived while you worked. If the batch was empty,
+leave the running cron as it is.
 
 The user can give feedback directly in the session instead. Cancel the cron job
 once the PR is merged or closed, once you defer the merge, or once you hand
