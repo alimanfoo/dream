@@ -125,8 +125,8 @@ you, dispatching the matching skill. Override a label with a flag, for example
 `/dream:catcher` runs in its own tmux session. Attach to it with
 `tmux attach -t dreamcatcher`, or follow its log with
 `tail -f dreamcatcher.log`. Each issue it dispatches runs in its own tmux
-session. `Ctrl+B` then `s` switches between the `/dream:catcher` and every
-running session, so a session waiting for an answer is one keystroke away.
+session. `Ctrl+B` then `s` switches between `/dream:catcher` and every running
+session, so a session waiting for an answer is one keystroke away.
 
 How it picks work:
 
