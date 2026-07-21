@@ -426,7 +426,8 @@ abandoning it silently. The user may decline the work at a gate, redirect
 elsewhere, or end the session. Because the PR has been open since Phase 1, it
 already holds whatever artifacts the session reached. Post a final comment
 naming where the work reached, the last accepted artifact, and why it stopped.
-Then close the draft PR with `gh pr close <N>`.
+Then close the draft PR with `gh pr close <N>`. If the watch is running, tear it
+down (see [The watch](#the-watch)).
 
 Recognise the intent the way you recognise autopilot engagement. The phrasing
 varies ("let's not do this", "stop here", "park this one"). A stop is the user

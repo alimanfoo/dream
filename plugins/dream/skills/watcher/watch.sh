@@ -33,6 +33,12 @@
 # The footer string is therefore essential: a change to it would break the
 # filter, and the caller's own comments would read back as the user's input.
 #
+# The filter reads authorship from the footer alone, not the GitHub account. A
+# comment from a third party, such as a bot or another collaborator, carries no
+# footer, so it reads as the user's and reaches the caller. This is rare on a
+# session's own pull request, and a comment with nothing to act on needs no
+# action anyway.
+#
 # Timestamps are ISO-8601 with a trailing Z, which sort correctly as strings, so
 # the cutoff comparison needs no date arithmetic.
 
@@ -48,7 +54,10 @@ for tool in gh jq; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
 done
 
-# The footer string that marks a comment as the caller's own.
+# The footer string that marks a comment as the caller's own. It must match the
+# Claude Code footer the plugin appends to comments, set in the agents' and
+# skills' "mark your work" rules. A change there has to change here too, or the
+# filter breaks.
 footer="claude.com/claude-code"
 
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
@@ -58,9 +67,9 @@ repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
 # repository name becomes a dash, so the key is a single path segment.
 dir="$HOME/.dream/watcher"
 mkdir -p "$dir" || die "cannot create the watermark directory $dir"
-watermark="$dir/${repo//\//-}-pr${pr}"
+watermark_file="$dir/${repo//\//-}-pr${pr}"
 
-cutoff=$(cat "$watermark" 2>/dev/null)
+cutoff=$(cat "$watermark_file" 2>/dev/null)
 
 raw=$(gh pr view "$pr" --repo "$repo" --json state,comments,reviews 2>/dev/null) \
   || die "cannot read pull request #$pr in $repo"
@@ -80,9 +89,9 @@ result=$(printf '%s' "$raw" | jq --arg cutoff "$cutoff" --arg footer "$footer" '
 ') || die "cannot parse the pull request activity"
 
 newest=$(printf '%s' "$result" | jq -r '.newest // empty')
-[ -n "$newest" ] && printf '%s' "$newest" > "$watermark"
+[ -n "$newest" ] && printf '%s' "$newest" > "$watermark_file"
 
 # Emit what the caller acts on: the state, the new items, and the watermark path
 # for teardown. The internal `newest` field is dropped.
-printf '%s' "$result" | jq --arg watermark "$watermark" \
-  '{state, comments, reviews, watermarkFile: $watermark}'
+printf '%s' "$result" | jq --arg watermark_file "$watermark_file" \
+  '{state, comments, reviews, watermarkFile: $watermark_file}'

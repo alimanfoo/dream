@@ -49,11 +49,10 @@ Watch check for pull request #<N>. Run:
 
   bash <absolute path>/watch.sh <N>
 
-Read the JSON result. If `state` is `MERGED` or `CLOSED`, the watch is done:
-hand the terminal state to the session, which tears the watch down and finishes
-per its own rules. Otherwise, hand the `comments` and `reviews` to the session
-to act on per its own rules. When both are empty, nothing is new, so return to
-idle.
+Hand the whole JSON result to the session. If `state` is `MERGED` or `CLOSED`,
+the watch is done: the session tears it down and finishes per its own rules.
+Otherwise the session acts on `comments` and `reviews` per its own rules. When
+both are empty, nothing is new, so return to idle.
 ```
 
 Note the cron job ID in your turn output. Teardown needs it, and nothing else
