@@ -153,7 +153,7 @@ ask may already be done.
 Reach for git history only to fill a real gap the reads left. For example, a
 surface the input names that is no longer there. Trace where it went.
 
-Name each discrepancy. If nothing has drifted, say so.
+Name each discrepancy in one sentence. If nothing has drifted, say so.
 
 ## Name the session type
 
