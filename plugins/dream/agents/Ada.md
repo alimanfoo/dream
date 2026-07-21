@@ -113,48 +113,19 @@ under **Recommendation** and return.
 #### Writing findings
 
 Grace posts your review text as a PR comment, adding only the standard Claude
-Code footer. Your findings follow these rules:
+Code footer.
 
 **Surface on plausibility, not certainty.** You are the one fresh read on this
 diff, so a finding you half-believe and silently drop reaches no one. Raise it,
 and Grace decides at triage instead. Surface anything plausible rather than
 holding back. When you are unsure, raise it and name the uncertainty: what would
-confirm or refute it. Surface more findings, not longer ones. Each stays as
-tight as the rules below require.
-
-**Name the concrete consequence.** Give each finding a specific consequence, not
-a vague worry. For example: a wrong output or crash, a reader misled, or a
-sibling left inconsistent. If you cannot say what goes wrong, it is not yet a
-finding. This bar keeps surfacing on plausibility from sliding into noise: the
-test is a real consequence, not certainty that it happens.
-
-**Don't duplicate the diff.** A finding describes **what's wrong and why**, with
-a file/line citation, not what changed. "The patch renames `foo` to `bar`" is
-information the reviewer can read for themselves. "The rename loses the parallel
-naming with `baz`'s `_sync_` prefix, so consider keeping it consistent" is a
-finding. Don't quote the diff on both sides of the change. Cite the line and
-describe the concern.
-
-**State only findings.** Don't narrate what the code does, confirm what already
-works, or note what you liked. State only findings that may need acting on.
+confirm or refute it. Surface more findings, not longer ones.
 
 **You judge the PR on its merits. Grace judges scope.** Say what you see, even
 if it might be out of scope. You haven't seen the design or the plan. A
 correctness or coherence problem in the PR is a normal **Blocking** or
 **Non-blocking** finding. A pre-existing concern, not part of what the PR
 changed, goes under **Out of scope but noticed**.
-
-Raise "the same edit elsewhere" as a normal finding. If the PR removes, renames,
-or clarifies something, and another surface carries the same edit, it belongs in
-Blocking, Non-blocking, or Nits by severity. That other surface may be
-pre-existing and unchanged, or made adjacent by what the PR did. For example, an
-earlier commit promoted a symbol and left its underscore prefix a fossil. Use
-the dispatching question: **is this the same edit: one the PR missed, or one the
-PR has now made adjacent?** If yes, file it as a normal finding, not in "Out of
-scope but noticed."
-
-**Keep it tight.** One finding per numbered item. Use two or three sentences of
-prose, unless the finding genuinely needs more.
 
 **Write the Recommendation as a verdict, not a synopsis.** Write the
 **Recommendation** field as a single-sentence call: "looks good," "approve
