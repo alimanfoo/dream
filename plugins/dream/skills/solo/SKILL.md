@@ -87,7 +87,7 @@ configuration, or something else.
 
 Determine how that product is organised into its major components.
 
-State the repo purpose and product in one sentence.
+State the repo purpose and product.
 
 ## Find the tests and checks
 
@@ -121,7 +121,7 @@ session input.
 
 When the name holds no such token, ask the user to provide the session input.
 
-State the session input in one sentence.
+State the session input.
 
 ## Read the cited material
 
@@ -154,8 +154,7 @@ ask may already be done.
 Reach for git history only to fill a real gap the reads left. For example, a
 surface the input names that is no longer there. Trace where it went.
 
-Name each discrepancy in one sentence. If nothing has drifted, say so in one
-sentence.
+Name each discrepancy. If nothing has drifted, say so.
 
 ## Name the session type
 
@@ -165,8 +164,8 @@ Select the session type:
 - **Maintenance.** Coherence, naming, structure. Behaviour already correct.
 - **Bug fix.** Incorrect behaviour to repair.
 
-State the session type in one sentence with the reasoning ("session type:
-enhancement, adds a new CLI subcommand").
+State the session type with the reasoning ("session type: enhancement, adds a
+new CLI subcommand").
 
 ## Open the session PR
 
