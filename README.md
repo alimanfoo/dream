@@ -83,10 +83,10 @@ Once you merge, it files anything it left out of scope as new issues.
 `/dream:less` is a cut-back version of `/dream:solo`, for a very small change
 you want carried from issue to pull request fast. It runs the same way as
 `/dream:solo`: one agent, no acceptance gates, watching the pull request for
-your review. But it trims the process to match the size of the work. It plans
-inline instead of with a subagent, and skips the separate simplify, copy-edit,
-and coherence-review passes. It runs a lighter code review, writes a minimal
-pull request description, and files no follow-ups once you merge.
+your review. But it trims the process to match the size of the work. It skips
+planning and the separate simplify, copy-edit, and coherence-review passes. It
+runs a lighter code review, writes a minimal pull request description, and files
+no follow-ups once you merge.
 
 Start Claude Code and invoke the skill:
 
