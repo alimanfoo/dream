@@ -66,8 +66,9 @@ An even lighter skill, `/dream:less`, carries a very small change from issue to
 pull request, with a process cut back to match.
 
 A coordinator skill, `/dream:catcher`, watches a repository for labelled issues
-and dispatches a session for each, one at a time. The issue's label picks the
-skill: a `/dream:team` session, a lighter `/dream:solo` one, or the lightest
+and dispatches a session for each. One session develops at a time. Sessions
+awaiting review pile up alongside it. The issue's label picks the skill: a
+`/dream:team` session, a lighter `/dream:solo` one, or the lightest
 `/dream:less` one. It lets the work run unattended while the user is away.
 
 The plugin also ships utility skills the user can run on their own.
@@ -82,10 +83,11 @@ This repo has two layers, easy to confuse:
   [protocol](plugins/dream/skills/team/protocol.md), and the
   [agent files](plugins/dream/agents). A
   [/dream:catcher skill](plugins/dream/skills/catcher/SKILL.md) coordinates
-  unattended runs, dispatching a session for each labelled issue, one at a time,
-  with the label picking a `/dream:team`, `/dream:solo`, or `/dream:less`
-  session. A [/dream:solo skill](plugins/dream/skills/solo/SKILL.md) runs a
-  single-agent version, for smaller tasks with no team. A
+  unattended runs, dispatching a session for each labelled issue, with the label
+  picking a `/dream:team`, `/dream:solo`, or `/dream:less` session. One session
+  develops at a time. Sessions awaiting review pile up alongside it. A
+  [/dream:solo skill](plugins/dream/skills/solo/SKILL.md) runs a single-agent
+  version, for smaller tasks with no team. A
   [/dream:less skill](plugins/dream/skills/less/SKILL.md) runs a cut-back
   single-agent version, for very small changes. Utility skills ship alongside
   the team.

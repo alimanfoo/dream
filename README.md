@@ -99,8 +99,9 @@ Reach for it when a change is small and self-contained.
 ## Unattended runs with /dream:catcher
 
 The dreamcatcher watches a repository for labelled issues and dispatches a
-session for each, one at a time. It runs the `/dream:team`, the `/dream:solo`
-skill, or the `/dream:less` skill, chosen by the issue's label. A backlog clears
+session for each. It runs the `/dream:team`, the `/dream:solo` skill, or the
+`/dream:less` skill, chosen by the issue's label. One session develops at a
+time. Sessions awaiting review pile up alongside it. A backlog then clears
 itself while you are away. Each session runs unattended and carries its issue to
 a pull request for you to merge. That is the same as a session you start by
 hand.
@@ -133,14 +134,17 @@ How it picks work:
   that need no team. The "dream:less" label dispatches a `/dream:less` session,
   for very small ones. An issue carrying more than one goes to the heaviest:
   `/dream:team` over `/dream:solo` over `/dream:less`.
-- **One session at a time.** A session holds the slot from dispatch until its
-  pull request is merged or closed, so your merge paces the next dispatch. Size
-  a session by grouping issues under an umbrella issue.
+- **One session develops at a time.** A session holds the slot from dispatch
+  until its pull request is ready for review, then frees it for the next
+  dispatch. Sessions awaiting review pile up alongside the one still developing.
+  Size a session by grouping issues under an umbrella issue.
 - **Oldest eligible issue first.** Mark an issue blocked by another in the
   GitHub issue view to make it wait for that one. The dreamcatcher skips a
   blocked issue until its blocker closes, then picks it up.
-- **Finished sessions.** The dreamcatcher removes a session's worktree and tmux
-  session once its pull request is merged or closed, so they do not pile up.
+- **Finished sessions.** A session's worktree and tmux session persist until its
+  own pull request is merged or closed. Several accumulate while awaiting your
+  review. The dreamcatcher reclaims each a short while after its pull request is
+  merged or closed.
 
 Each session runs unattended. The dreamcatcher passes the permissions a session
 needs to interact with GitHub (creating the pull request, posting comments,
