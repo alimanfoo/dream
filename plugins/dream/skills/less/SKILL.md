@@ -36,7 +36,9 @@ generalisation, no half-finished extra feature.
 
 Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for every message to the user, every artefact posted on GitHub, and
-any comments or documentation you write in code.
+any comments or documentation you write in code. Its
+[Text for GitHub](../../writing-style.md#text-for-github) section covers the
+line wrapping that GitHub rendering needs.
 
 ## Turn output
 
@@ -125,23 +127,18 @@ the draft PR has a commit to anchor to. Push the branch.
 **Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
 the title from the session input.
 
-**Post the session input as the first comment.** Post the session input as a PR
-comment (`gh pr comment <N> --body "..."`). Head it `Session input` and list
-each issue number.
-
 **Label the PR.** Apply the session type's category label with
 `gh pr edit --add-label`: `enhancement`, `maintenance`, or `bug`. Run
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
 
-## Plan
-
-Plan the change inline, in your turn output: the steps you'll take, in order. No
-subagent and no PR comment.
-
 ## Implement
 
-Implement the plan, one step at a time. For each step:
+Open the draft PR before you change any code. It is where you reach the user
+once work starts, so it has to exist first. If it isn't open yet, open it now
+([Open the session PR](#open-the-session-pr)).
+
+Implement the change, one step at a time. For each step:
 
 - Run the tests you found.
 - Commit with a short subject.
