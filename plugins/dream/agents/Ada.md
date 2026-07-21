@@ -113,9 +113,7 @@ under **Recommendation** and return.
 #### Writing findings
 
 Grace posts your review text as a PR comment, adding only the standard Claude
-Code footer. Follow the
-[code-review skill's finding-writing rules](../skills/code-review/SKILL.md#combine-verify-and-return),
-plus these further rules of your own:
+Code footer.
 
 **Surface on plausibility, not certainty.** You are the one fresh read on this
 diff, so a finding you half-believe and silently drop reaches no one. Raise it,
