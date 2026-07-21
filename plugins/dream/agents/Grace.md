@@ -401,8 +401,8 @@ them, in this order, and drop nothing:
 
 An approving review or a comment with nothing to act on needs no change. When
 you have handled the batch and are still watching (you did not merge, defer, or
-close), advance the cutoff. Take the newest timestamp among the items in the
-batch you just handled:
+close), advance the cutoff. Take the newest timestamp from the query that
+already returned this batch, not from a fresh query:
 
 ```bash
 [.comments[].createdAt, .reviews[].submittedAt] | sort | last // empty

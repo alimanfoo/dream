@@ -292,7 +292,8 @@ item can carry more than one of these:
 
 An approving review, or a comment with nothing to act on, needs no reply. Once
 you've handled the whole batch and are still watching, advance the cutoff. Take
-the newest timestamp among the items in the batch you just handled:
+the newest timestamp from the query that already returned this batch, not from a
+fresh query:
 
 ```bash
 [.comments[].createdAt, .reviews[].submittedAt] | sort | last // empty
