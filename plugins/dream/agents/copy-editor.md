@@ -60,8 +60,8 @@ Give each finding in the file these parts:
 - Rule: the writing style guide rule you tested, quoted or in a few words.
 - Why: one line on how the span meets or breaks the rule.
 - Verdict: `PASS` or `CHANGES NEEDED`.
-- Fix: the suggested replacement, or a note that the wording is the
-  author's. Give this only when the verdict is `CHANGES NEEDED`.
+- Fix: the suggested replacement, or a note that the wording is the author's.
+  Give this only when the verdict is `CHANGES NEEDED`.
 
 ## Return only what needs changing
 
