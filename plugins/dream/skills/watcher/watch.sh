@@ -60,7 +60,7 @@ dir="$HOME/.dream/watcher"
 mkdir -p "$dir" || die "cannot create the watermark directory $dir"
 watermark="$dir/${repo//\//-}-pr${pr}"
 
-cutoff=$(cat "$watermark" 2>/dev/null || true)
+cutoff=$(cat "$watermark" 2>/dev/null)
 
 raw=$(gh pr view "$pr" --repo "$repo" --json state,comments,reviews 2>/dev/null) \
   || die "cannot read pull request #$pr in $repo"
