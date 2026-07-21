@@ -41,27 +41,19 @@ ask only to override a default. State the labels, assignee, and interval you
 resolved before launching, as a plain statement, so a misread surfaces at once.
 
 - **Team label.** The label that dispatches a `/dream:team` session. Defaults to
-  "dream:team", a dedicated label kept apart from labels a human reads.
+  "dream:team".
 - **Solo label.** The label that dispatches a `/dream:solo` session. Defaults to
-  "dream:solo", likewise dedicated.
-- **Less label.** The label that dispatches a `/dream:less` session, the
-  lightest skill, for very small changes. Defaults to "dream:less", likewise
-  dedicated.
+  "dream:solo".
+- **Less label.** The label that dispatches a `/dream:less` session. Defaults to
+  "dream:less".
 - **Solo model.** The model a `/dream:solo` session runs under. Defaults to
-  `opus[1m]`. A `/dream:solo` session's single agent takes this, where the
-  team's agents carry their own model, so this governs `/dream:solo` dispatches
-  alone.
+  `opus[1m]`.
 - **Solo effort.** The reasoning effort a `/dream:solo` session runs under.
-  Defaults to `high`, and governs `/dream:solo` dispatches alone for the same
-  reason.
+  Defaults to `high`.
 - **Less model.** The model a `/dream:less` session runs under. Defaults to
-  `sonnet`, since a very small change needs neither Opus nor its large-context
-  variant. Governs `/dream:less` dispatches alone, for the same reason as the
-  `/dream:solo` model.
+  `sonnet`.
 - **Less effort.** The reasoning effort a `/dream:less` session runs under.
-  Defaults to `high`, so the lighter model has the reasoning headroom to do the
-  work well. Governs `/dream:less` dispatches alone, for the same reason as the
-  `/dream:solo` model.
+  Defaults to `high`.
 - **Assignee.** Whose issues to pick up. Defaults to `@me`, gh's alias for the
   authenticated user.
 - **Interval.** Seconds between ticks. Defaults to 300.
