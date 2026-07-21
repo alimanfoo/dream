@@ -62,7 +62,7 @@ Usage:
   --solo-model  Model a /dream:solo session runs under. Default: opus[1m].
   --solo-effort Reasoning effort a /dream:solo session runs under. Default: high.
   --less-model  Model a /dream:less session runs under. Default: sonnet.
-  --less-effort Reasoning effort a /dream:less session runs under. Default: medium.
+  --less-effort Reasoning effort a /dream:less session runs under. Default: high.
   --assignee    Whose issues to pick up. Default: @me.
   --interval    Seconds between ticks in loop mode. Default: 300.
   --linger      Minutes a finished session lingers before it is cleaned up. Default: 30.
@@ -81,7 +81,7 @@ less_label="dream:less"
 solo_model="opus[1m]"
 solo_effort="high"
 less_model="sonnet"
-less_effort="medium"
+less_effort="high"
 assignee="@me"
 interval=300
 linger=30
