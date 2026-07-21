@@ -41,7 +41,8 @@ any comments or documentation you write in code.
 ## Turn output
 
 Keep your turn output brief, usually one sentence per turn, unless a step asks
-you to write more.
+you to write more. The user interacts via GitHub, so turn output is wasted
+tokens.
 
 ## Mark your work
 
@@ -75,7 +76,7 @@ files match the source before you commit.
 Check the working tree. Stop and tell the user if it has uncommitted changes.
 
 Read the branch name (`git rev-parse --abbrev-ref HEAD`). If the branch is
-`main`, pull the latest changes. State the branch name.
+`main`, pull the latest changes.
 
 ## Obtain session input
 

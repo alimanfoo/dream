@@ -59,7 +59,8 @@ any comments or documentation you write in code.
 ## Turn output
 
 Keep your turn output brief, usually one sentence per turn, unless a step asks
-you to write more.
+you to write more. The user interacts via GitHub, so turn output is wasted
+tokens.
 
 ## Mark your work
 
@@ -86,8 +87,6 @@ configuration, or something else.
 
 Determine how that product is organised into its major components.
 
-State the repo purpose and product.
-
 ## Find the tests and checks
 
 Determine the tests, checks, build steps, and tooling built around the product
@@ -109,8 +108,6 @@ Read the branch name (`git rev-parse --abbrev-ref HEAD`).
 
 If the branch is `main`, pull the latest changes.
 
-State the branch name.
-
 ## Obtain session input
 
 Scan the branch name for `gh<number>` tokens, case-insensitive: `GH83`,
@@ -119,8 +116,6 @@ Scan the branch name for `gh<number>` tokens, case-insensitive: `GH83`,
 session input.
 
 When the name holds no such token, ask the user to provide the session input.
-
-State the session input.
 
 ## Read the cited material
 
@@ -153,8 +148,6 @@ ask may already be done.
 Reach for git history only to fill a real gap the reads left. For example, a
 surface the input names that is no longer there. Trace where it went.
 
-Name each discrepancy in one sentence. If nothing has drifted, say so.
-
 ## Name the session type
 
 Select the session type:
@@ -162,9 +155,6 @@ Select the session type:
 - **Enhancement.** New feature or capability that doesn't currently exist.
 - **Maintenance.** Coherence, naming, structure. Behaviour already correct.
 - **Bug fix.** Incorrect behaviour to repair.
-
-State the session type with the reasoning ("session type: enhancement, adds a
-new CLI subcommand").
 
 ## Open the session PR
 
