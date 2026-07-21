@@ -267,11 +267,14 @@ runs every 10 minutes:
 ```bash
 SHARED_LOGIN=$(gh api user --jq .login)
 gh pr view <N> --json comments,reviews,state \
-  --jq "{state, comments: [.comments[] | select(.author.login == \"$SHARED_LOGIN\" and .createdAt > \"<CUTOFF>\")], reviews: [.reviews[] | select(.author.login == \"$SHARED_LOGIN\" and .submittedAt > \"<CUTOFF>\")]}"
+  --jq "{state, comments: [.comments[] | select(.author.login == \"$SHARED_LOGIN\" and .createdAt > \"<CUTOFF>\")], reviews: [.reviews[] | select(.author.login == \"$SHARED_LOGIN\" and .submittedAt > \"<CUTOFF>\")]} | . + {nextCutoff: ([.comments[].createdAt, .reviews[].submittedAt] | sort | last)}"
 ```
 
 Match your own login, not the user's. You and the user post through the same
 account, so only the cutoff timestamp tells your posts from their reply.
+
+The query result also carries `nextCutoff`: the newest timestamp among the
+comments and reviews it just returned, or `null` if it returned none.
 
 Then idle. You idle until the cron next fires, so this is not a busy loop. Each
 firing wakes you to run the query and handle what it returns.
@@ -291,9 +294,11 @@ item can carry more than one of these:
 - **A question.** Answer it as a PR comment.
 
 An approving review, or a comment with nothing to act on, needs no reply. Once
-you've handled the whole batch and are still watching, cancel and recreate the
-cron job with the cutoff reset to now. This keeps handled items from
-resurfacing.
+you've handled the whole batch and are still watching, advance the cutoff. If
+`nextCutoff` has a value, cancel and recreate the cron job with that value as
+the cutoff. None of the handled items resurface. The new cutoff still catches
+any reply that arrived while you worked. If `nextCutoff` is `null`, leave the
+running cron as it is.
 
 ## Merge
 
