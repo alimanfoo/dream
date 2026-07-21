@@ -134,9 +134,9 @@ apply none when there's no clean match.
 
 ## Implement
 
-The draft PR must be open before you change any code. It is your only channel to
-reach the user once work starts. If it isn't open yet, open it now
-([Open the session PR](#open-the-session-pr)).
+Open the draft PR before you change any code, if it isn't already open
+([Open the session PR](#open-the-session-pr)). It is your only channel to reach
+the user once work starts.
 
 Implement the change in small steps, each its own commit. For each step:
 
