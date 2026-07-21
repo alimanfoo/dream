@@ -58,9 +58,8 @@ any comments or documentation you write in code.
 
 ## Session output
 
-The user follows the PR, not this session, so keep what you write to the session
-brief, usually one sentence per turn. Put anything the user needs to see on the
-PR: the description, a plan or review comment, or a question.
+Keep what you write to the session brief, usually one sentence per turn. Put
+anything the user needs to see on the PR.
 
 ## Mark your work
 
