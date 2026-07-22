@@ -22,10 +22,11 @@
 # until the pull request is ready for review, then frees it for the next
 # dispatch. Sessions awaiting review pile up alongside the one still developing.
 #
-# The pile has a ceiling: --max-sessions bounds the concurrent live sessions, so
-# a burst of labelled issues cannot dispatch until tmux refuses to open more.
-# Once the count reaches the cap, dispatch defers. Each tick still reclaims
-# finished sessions before the check, so a capped loop drains as the user merges.
+# The pile has a cap. --max-sessions bounds how many live sessions run at once.
+# Without it, a burst of labelled issues could dispatch sessions until tmux
+# refuses to open more. Once the count reaches the cap, dispatch defers. Each
+# tick reclaims finished sessions before that check. So a capped loop drains as
+# the user merges.
 #
 # Each session is its own process, in its own worktree, on its own branch, so
 # concurrent sessions are isolated. The slot paces dispatch. It is not a
@@ -115,8 +116,8 @@ done
 
 # Reject a non-numeric interval, linger, or max-sessions at parse time. Left
 # unchecked, a typo like "30m" survives to the arithmetic in clean_up_finished or
-# the cap comparison in tick and aborts the whole loop under set -u, silently
-# ending the unattended run.
+# the cap comparison in tick. It then aborts the whole loop under set -u. That
+# silently ends the unattended run.
 [[ "$interval" =~ ^[1-9][0-9]*$ ]] || die "--interval must be a positive whole number of seconds"
 [[ "$linger" =~ ^[1-9][0-9]*$ ]] || die "--linger must be a positive whole number of minutes"
 [[ "$max_sessions" =~ ^[1-9][0-9]*$ ]] || die "--max-sessions must be a positive whole number of sessions"
@@ -146,7 +147,7 @@ worktree_paths() { git -C "$main_root" worktree list --porcelain | sed -n 's/^wo
 
 # The branch of every live dispatched session, one per line: an "-auto" worktree
 # for this repo whose tmux session is still running. A crashed session's tmux
-# session is gone, so it drops out here, which is why it never wedges the slot or
+# session is gone. It drops out here. That is why it never wedges the slot or
 # fills the cap. The slot gate and the cap gate both count off this one
 # definition of a live session.
 live_sessions() {
@@ -329,11 +330,10 @@ tick() {
   if session_developing; then
     return 0
   fi
-  # The slot gate above found nothing developing, so every live session here is
-  # awaiting review. Cap that pile: dispatching one more would bring the total to
-  # max_sessions, so defer once the count reaches it. clean_up_finished runs
-  # first, so a capped loop still reclaims finished worktrees and drains as the
-  # user merges.
+  # The slot gate above found nothing developing. Every live session here is
+  # awaiting review. Dispatching one more would bring the total to max_sessions.
+  # So defer once the count reaches it. clean_up_finished runs first. So even at
+  # the cap, the loop still reclaims finished worktrees as the user merges.
   local live
   live=$(live_sessions | wc -l)
   if [ "$live" -ge "$max_sessions" ]; then

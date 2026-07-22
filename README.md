@@ -103,8 +103,7 @@ session for each. It runs the `/dream:team`, the `/dream:solo` skill, or the
 `/dream:less` skill, chosen by the issue's label.
 
 One session develops at a time. Sessions awaiting review pile up alongside it,
-up to a ceiling on how many run at once, so a burst of labelled issues cannot
-exhaust your machine's tmux sessions. The issue backlog then clears itself while
+up to a cap on how many run at once. The issue backlog then clears itself while
 you are away. Each session runs unattended and carries its issue to a pull
 request for you to merge. That is the same as a session you start by hand.
 
@@ -139,8 +138,8 @@ How it picks work:
 - **One session develops at a time.** A session holds the slot from dispatch
   until its pull request is ready for review, then frees it for the next
   dispatch. Sessions awaiting review pile up alongside the one still developing,
-  up to a ceiling of 10 live sessions at once. Once the pile reaches it,
-  dispatch pauses until a finished session is reclaimed. Size a session by
+  up to a cap of 10 live sessions at once. Once the pile reaches it, dispatch
+  pauses until `/dream:catcher` reclaims a finished session. Size a session by
   grouping issues under an umbrella issue.
 - **Oldest eligible issue first.** Mark an issue blocked by another in the
   GitHub issue view to make it wait for that one. `/dream:catcher` skips a
