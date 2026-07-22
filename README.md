@@ -102,10 +102,10 @@ Reach for it when a change is small and self-contained.
 session for each. It runs the `/dream:team`, the `/dream:solo` skill, or the
 `/dream:less` skill, chosen by the issue's label.
 
-One session develops at a time. Sessions awaiting review pile up alongside it.
-The issue backlog then clears itself while you are away. Each session runs
-unattended and carries its issue to a pull request for you to merge. That is the
-same as a session you start by hand.
+One session develops at a time. Sessions awaiting review pile up alongside it,
+up to a cap on how many run at once. The issue backlog then clears itself while
+you are away. Each session runs unattended and carries its issue to a pull
+request for you to merge. That is the same as a session you start by hand.
 
 `/dream:catcher` needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
 with `gh` signed in.
@@ -137,8 +137,10 @@ How it picks work:
   `/dream:solo` over `/dream:less`.
 - **One session develops at a time.** A session holds the slot from dispatch
   until its pull request is ready for review, then frees it for the next
-  dispatch. Sessions awaiting review pile up alongside the one still developing.
-  Size a session by grouping issues under an umbrella issue.
+  dispatch. Sessions awaiting review pile up alongside the one still developing,
+  up to a cap on how many run at once. Once the pile reaches it, dispatch defers
+  until `/dream:catcher` reclaims a finished session. Size a session by grouping
+  issues under an umbrella issue.
 - **Oldest eligible issue first.** Mark an issue blocked by another in the
   GitHub issue view to make it wait for that one. `/dream:catcher` skips a
   blocked issue until its blocker closes, then picks it up.

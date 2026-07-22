@@ -20,8 +20,13 @@
 #
 # One session develops at a time. The coordinator holds the slot from dispatch
 # until the pull request is ready for review, then frees it for the next
-# dispatch. Sessions awaiting review pile up alongside the one still
-# developing.
+# dispatch. Sessions awaiting review pile up alongside the one still developing.
+#
+# The number of live sessions has a cap. --max-sessions bounds how many run at
+# once. Without it, a burst of labelled issues could dispatch sessions until tmux
+# refuses to open more. Once the count reaches the cap, dispatch defers. Each
+# tick reclaims finished sessions before that check. So a capped loop drains as
+# the user merges.
 #
 # Each session is its own process, in its own worktree, on its own branch, so
 # concurrent sessions are isolated. The slot paces dispatch. It is not a
@@ -54,7 +59,8 @@ Usage:
   catch.sh [--team-label <label>] [--solo-label <label>] [--less-label <label>]
            [--solo-model <model>] [--solo-effort <effort>]
            [--less-model <model>] [--less-effort <effort>]
-           [--assignee <who>] [--interval <seconds>] [--once]
+           [--assignee <who>] [--interval <seconds>] [--linger <minutes>]
+           [--max-sessions <n>] [--once]
 
   --team-label  Issue label that dispatches a /dream:team session. Default: $default_team_label.
   --solo-label  Issue label that dispatches a /dream:solo session. Default: $default_solo_label.
@@ -66,12 +72,18 @@ Usage:
   --assignee    Whose issues to pick up. Default: $default_assignee.
   --interval    Seconds between ticks in loop mode. Default: $default_interval.
   --linger      Minutes a finished session lingers before it is cleaned up. Default: $default_linger.
+  --max-sessions  Most concurrent live sessions to run. Default: $default_max_sessions.
   --once        A single tick, then exit, instead of looping.
 EOF
 }
 
 log() { printf '%s  %s\n' "$(date -u +%FT%TZ)" "$*"; }
 die() { printf 'dreamcatcher: %s\n' "$*" >&2; exit 2; }
+
+# Die unless the value is a positive whole number. One home for the check every
+# numeric flag shares, so a new flag or a change to what counts as valid lands
+# in one place.
+require_positive_int() { [[ "$2" =~ ^[1-9][0-9]*$ ]] || die "--$1 must be a positive whole number of $3"; }
 
 # --- configuration ---------------------------------------------------------
 
@@ -88,6 +100,7 @@ default_less_effort="high"
 default_assignee="@me"
 default_interval=300
 default_linger=30
+default_max_sessions=10
 
 team_label=$default_team_label
 solo_label=$default_solo_label
@@ -99,6 +112,7 @@ less_effort=$default_less_effort
 assignee=$default_assignee
 interval=$default_interval
 linger=$default_linger
+max_sessions=$default_max_sessions
 once=0
 
 while [ $# -gt 0 ]; do
@@ -113,17 +127,21 @@ while [ $# -gt 0 ]; do
     --assignee) [ $# -ge 2 ] || die "--assignee requires a value"; assignee=$2; shift 2;;
     --interval) [ $# -ge 2 ] || die "--interval requires a value"; interval=$2; shift 2;;
     --linger)   [ $# -ge 2 ] || die "--linger requires a value"; linger=$2; shift 2;;
+    --max-sessions) [ $# -ge 2 ] || die "--max-sessions requires a value"; max_sessions=$2; shift 2;;
     --once)     once=1; shift;;
     -h|--help)  usage; exit 0;;
     *)          die "unknown argument: $1";;
   esac
 done
 
-# Reject a non-numeric interval or linger at parse time. Left unchecked, a typo
-# like "30m" survives to the arithmetic in clean_up_finished and aborts the whole
-# loop under set -u, silently ending the unattended run.
-[[ "$interval" =~ ^[1-9][0-9]*$ ]] || die "--interval must be a positive whole number of seconds"
-[[ "$linger" =~ ^[1-9][0-9]*$ ]] || die "--linger must be a positive whole number of minutes"
+# Reject a non-numeric interval, linger, or max-sessions at parse time. A bad
+# value would otherwise fail only where it is used, with a message that hides the
+# cause. In clean_up_finished's arithmetic it aborts the whole loop under set -u.
+# In tick's cap comparison it makes the test fail open, so dispatch runs with no
+# cap. Dying here names the flag instead.
+require_positive_int interval "$interval" seconds
+require_positive_int linger "$linger" minutes
+require_positive_int max-sessions "$max_sessions" sessions
 
 for tool in git gh jq claude tmux; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
@@ -148,20 +166,30 @@ is_auto_branch() { [[ "$1" =~ ^GH[0-9]+-[0-9]{8}-[0-9]{6}-auto$ ]]; }
 # path that contains a space intact.
 worktree_paths() { git -C "$main_root" worktree list --porcelain | sed -n 's/^worktree //p'; }
 
-# True when a session still holds the slot: a live "-auto" session for this
-# repo whose branch has no pull request that is merged, closed, or ready for
-# review. isDraft is the signal every dispatched session type emits at the
-# same point, team, solo, and less alike, so this reads uniformly across all
-# three. A crashed session's tmux session is gone too, so it never wedges the
-# slot. Each branch is unique per attempt, so its pull request state is that
-# session's alone, never an earlier attempt's.
-session_developing() {
-  local wt branch reached_review
+# The branch of every live dispatched session, one per line: an "-auto" worktree
+# for this repo whose tmux session is still running. A crashed session's tmux
+# session is gone. It drops out here. That is why it never wedges the slot or
+# fills the cap. The slot gate and the cap gate both count off this one
+# definition of a live session.
+live_sessions() {
+  local wt branch
   while read -r wt; do
     [ -n "$wt" ] || continue
     branch=$(basename "$wt")
     is_auto_branch "$branch" || continue
     tmux has-session -t "dream-$branch" 2>/dev/null || continue
+    printf '%s\n' "$branch"
+  done < <(worktree_paths)
+}
+
+# True when a live session still holds the slot: its branch has no pull request
+# that is merged, closed, or ready for review. isDraft is the signal every
+# dispatched session type emits at the same point, team, solo, and less alike, so
+# this reads uniformly across all three. Each branch is unique per attempt, so
+# its pull request state is that session's alone, never an earlier attempt's.
+session_developing() {
+  local branch reached_review
+  while read -r branch; do
     reached_review=$(gh pr list --repo "$repo" --head "$branch" --state all --json state,isDraft \
       --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED" or (.state == "OPEN" and .isDraft == false))] | length' \
       2>/dev/null || echo 0)
@@ -169,7 +197,23 @@ session_developing() {
       log "deferring: $branch is still developing"
       return 0
     fi
-  done < <(worktree_paths)
+  done < <(live_sessions)
+  return 1
+}
+
+# True when the live sessions fill the cap. tick calls this after
+# session_developing, so every session counted here is awaiting review.
+# Deferring once the count reaches max_sessions makes it a hard ceiling.
+# Dispatching at the cap would push the total past it. clean_up_finished runs
+# earlier each tick, so even at the cap the loop reclaims finished worktrees as
+# the user merges.
+at_session_cap() {
+  local live
+  live=$(live_sessions | wc -l)
+  if [ "$live" -ge "$max_sessions" ]; then
+    log "deferring: $live live sessions at the cap of $max_sessions"
+    return 0
+  fi
   return 1
 }
 
@@ -321,6 +365,9 @@ list_labelled() {
 tick() {
   clean_up_finished
   if session_developing; then
+    return 0
+  fi
+  if at_session_cap; then
     return 0
   fi
   local team_list solo_list less_list candidates n skill

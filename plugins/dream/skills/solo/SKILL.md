@@ -54,7 +54,9 @@ generalisation, or a half-finished extra feature the task didn't ask for.
 
 Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for every message to the user, every artefact posted on GitHub, and
-any comments or documentation you write in code.
+any comments or documentation you write in code. Its
+[Text for GitHub](../../writing-style.md#text-for-github) section covers the
+line wrapping that GitHub rendering needs.
 
 ## Turn output
 
@@ -189,6 +191,10 @@ session type, and ask for a step-by-step plan.
 Post the returned plan as a PR comment. Head it `Plan`.
 
 ## Implement
+
+Open the draft PR before you change any code, if it isn't already open
+([Open the session PR](#open-the-session-pr)). It is your only channel to reach
+the user once work starts.
 
 Implement the plan, one step at a time. For each step:
 
