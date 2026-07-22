@@ -38,6 +38,10 @@ Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for every message to the user, every artefact posted on GitHub, and
 any comments or documentation you write in code.
 
+When you post a comment to GitHub, write each paragraph on a single line, since
+GitHub reflows it (see
+[Text for GitHub](../../writing-style.md#text-for-github)).
+
 ## Turn output
 
 Keep your turn output brief, usually one sentence per turn, unless a step asks
