@@ -87,6 +87,14 @@ interval=300
 linger=30
 once=0
 
+# Resolve --help before the loop below mutates a default, so usage() always
+# reports the true defaults, whatever else the command line carries. usage()
+# interpolates the same variables, so it reads them here while they still hold
+# their defaults.
+for arg in "$@"; do
+  case "$arg" in -h|--help) usage; exit 0;; esac
+done
+
 while [ $# -gt 0 ]; do
   case "$1" in
     --team-label) [ $# -ge 2 ] || die "--team-label requires a value"; team_label=$2; shift 2;;
@@ -100,7 +108,6 @@ while [ $# -gt 0 ]; do
     --interval) [ $# -ge 2 ] || die "--interval requires a value"; interval=$2; shift 2;;
     --linger)   [ $# -ge 2 ] || die "--linger requires a value"; linger=$2; shift 2;;
     --once)     once=1; shift;;
-    -h|--help)  usage; exit 0;;
     *)          die "unknown argument: $1";;
   esac
 done
