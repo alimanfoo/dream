@@ -162,6 +162,20 @@ step", not a bare "Collect" or "Decide", which read as verbs. The section
 headings, the phase list, and the "Phase N: name" and "Step N.M: name" labels
 keep their capitals as structural titles.
 
+The plugin's prose references a skill, an agent, or an issue label one way
+throughout:
+
+- Write a skill invocation as `/dream:foo`, a leading slash in backticks. Drop
+  the backticks in a frontmatter `description:` field, a markdown heading, or a
+  fenced command block.
+- Write a subagent-type identifier as `dream:foo`, since it is not a slash
+  command.
+- Write an issue label as "dream:foo".
+- `catch.sh` keeps its own shell register, where backticks and quotes would
+  misread.
+- Keep a skill reference (`/dream:team`) distinct from the multi-agent team
+  concept, "the dream team", which stays plain prose.
+
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 suite. When changing behaviour, read the affected skill and agent prompts
 together. Check that lifecycle, role boundaries, and tool permissions stay
