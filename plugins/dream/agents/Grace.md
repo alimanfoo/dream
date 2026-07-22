@@ -316,8 +316,8 @@ recorded ID is how you know the watch is already running, so you never start a
 second.
 
 Each firing surfaces the user's new comments and reviews since the last. Read
-them in the state you are in: as the answer to what you are
-[paused on](#pauses), or as the user's move on a ready PR that
+them and treat them as normal user input. For example, as the answer to what you
+are [paused on](#pauses), or as the user's move on a ready PR that
 [review and merge](#review-and-merge) handles.
 
 Tear the watch down as the `/dream:watcher` skill describes, whenever it is no

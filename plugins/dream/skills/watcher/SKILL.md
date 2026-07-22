@@ -8,11 +8,8 @@ argument-hint: "<pr> [interval]"
 
 # Watcher
 
-Watch a pull request for the user's replies, so the session can carry on and act
-on each one as it lands. This is how a session waits for the user on GitHub
-rather than in the session itself. It covers an autonomous session with no one
-watching the chat, and any interactive session where the user answers on the
-pull request.
+Watch a pull request for the user's replies. This is how a session receives
+input from the user via GitHub rather than in the session itself.
 
 The watch is one recurring background check for the whole session. It starts
 when you invoke this skill and runs until the pull request merges or closes, or
@@ -71,10 +68,8 @@ firing returns only what is new since the one before. A reply that arrives while
 you are still handling an earlier batch surfaces on the next firing, never
 dropped.
 
-This skill surfaces the raw items. It does not classify them. What a comment or
-review means, and what to do about it, depends on the session that started the
-watch, so classification stays with you. By default, treat each user comment or
-review as normal turn input and act accordingly.
+By default, treat each user comment or review as normal turn input and act
+accordingly.
 
 ## Teardown
 
