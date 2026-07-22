@@ -52,6 +52,7 @@ plugins/:
           Autopilot:
             Engagement:
             Gate-defined defaults:
+            The watch:
             Pauses:
             Review and merge:
             Auto-collect:
@@ -329,7 +330,7 @@ plugins/:
             Code review:
             Write the PR description:
             Mark the PR ready for review:
-            Watch for user review:
+            Handle the user's replies:
             Merge:
       plan/:
         SKILL.md:
@@ -384,7 +385,7 @@ plugins/:
             Code review:
             Write the PR description:
             Mark the PR ready for review:
-            Watch for user review:
+            Handle the user's replies:
             Merge:
             Collect:
       team/:
@@ -505,6 +506,14 @@ plugins/:
                 SendMessage:
                 Signature:
                 Non-user-facing agents:
+      watcher/:
+        SKILL.md:
+          Watcher:
+            The footer precondition:
+            Set up the watch:
+            On each firing:
+            Teardown:
+            Limits:
       writing-style/:
         SKILL.md:
           Writing style:

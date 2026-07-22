@@ -167,9 +167,9 @@ attention. If no findings were accepted, flip immediately.
 Hand back to the user once all comments are addressed. The PR is ready for the
 user's acceptance. Phase 7 handles the merge itself.
 
-Under autopilot, don't hand back. Enter the review-and-merge watch instead (see
-[Review and merge](../../../agents/Grace.md#review-and-merge)). It carries the
-PR through the user's review, merge, or close.
+Under autopilot, don't hand back. The watch has been running since the PR
+opened, and now carries the PR through the user's review, merge, or close (see
+[Review and merge](../../../agents/Grace.md#review-and-merge)).
 
 Marking the PR ready hands off the branch, and from here it is frozen (see
 [Phase 7: Merge](../protocol.md#phase-7-merge)). In Merge, Collect, and Reflect
