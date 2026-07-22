@@ -56,16 +56,16 @@ Usage:
            [--less-model <model>] [--less-effort <effort>]
            [--assignee <who>] [--interval <seconds>] [--once]
 
-  --team-label  Issue label that dispatches a /dream:team session. Default: $team_label.
-  --solo-label  Issue label that dispatches a /dream:solo session. Default: $solo_label.
-  --less-label  Issue label that dispatches a /dream:less session. Default: $less_label.
-  --solo-model  Model a /dream:solo session runs under. Default: $solo_model.
-  --solo-effort Reasoning effort a /dream:solo session runs under. Default: $solo_effort.
-  --less-model  Model a /dream:less session runs under. Default: $less_model.
-  --less-effort Reasoning effort a /dream:less session runs under. Default: $less_effort.
-  --assignee    Whose issues to pick up. Default: $assignee.
-  --interval    Seconds between ticks in loop mode. Default: $interval.
-  --linger      Minutes a finished session lingers before it is cleaned up. Default: $linger.
+  --team-label  Issue label that dispatches a /dream:team session. Default: $default_team_label.
+  --solo-label  Issue label that dispatches a /dream:solo session. Default: $default_solo_label.
+  --less-label  Issue label that dispatches a /dream:less session. Default: $default_less_label.
+  --solo-model  Model a /dream:solo session runs under. Default: $default_solo_model.
+  --solo-effort Reasoning effort a /dream:solo session runs under. Default: $default_solo_effort.
+  --less-model  Model a /dream:less session runs under. Default: $default_less_model.
+  --less-effort Reasoning effort a /dream:less session runs under. Default: $default_less_effort.
+  --assignee    Whose issues to pick up. Default: $default_assignee.
+  --interval    Seconds between ticks in loop mode. Default: $default_interval.
+  --linger      Minutes a finished session lingers before it is cleaned up. Default: $default_linger.
   --once        A single tick, then exit, instead of looping.
 EOF
 }
@@ -75,24 +75,31 @@ die() { printf 'dreamcatcher: %s\n' "$*" >&2; exit 2; }
 
 # --- configuration ---------------------------------------------------------
 
-team_label="dream:team"
-solo_label="dream:solo"
-less_label="dream:less"
-solo_model="opus[1m]"
-solo_effort="high"
-less_model="sonnet"
-less_effort="high"
-assignee="@me"
-interval=300
-linger=30
-once=0
+# The defaults have their own home, which usage() reads, so --help always shows
+# the true defaults whatever the parsing loop sets. Each working variable seeds
+# from its default, then a flag may override it.
+default_team_label="dream:team"
+default_solo_label="dream:solo"
+default_less_label="dream:less"
+default_solo_model="opus[1m]"
+default_solo_effort="high"
+default_less_model="sonnet"
+default_less_effort="high"
+default_assignee="@me"
+default_interval=300
+default_linger=30
 
-# Resolve --help before the parsing loop runs. The loop mutates the config
-# variables that usage() interpolates. Running usage() first keeps the true
-# defaults in the help text, whatever else the command line carries.
-for arg in "$@"; do
-  case "$arg" in -h|--help) usage; exit 0;; esac
-done
+team_label=$default_team_label
+solo_label=$default_solo_label
+less_label=$default_less_label
+solo_model=$default_solo_model
+solo_effort=$default_solo_effort
+less_model=$default_less_model
+less_effort=$default_less_effort
+assignee=$default_assignee
+interval=$default_interval
+linger=$default_linger
+once=0
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -107,6 +114,7 @@ while [ $# -gt 0 ]; do
     --interval) [ $# -ge 2 ] || die "--interval requires a value"; interval=$2; shift 2;;
     --linger)   [ $# -ge 2 ] || die "--linger requires a value"; linger=$2; shift 2;;
     --once)     once=1; shift;;
+    -h|--help)  usage; exit 0;;
     *)          die "unknown argument: $1";;
   esac
 done
