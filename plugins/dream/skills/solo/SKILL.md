@@ -192,6 +192,10 @@ Post the returned plan as a PR comment. Head it `Plan`.
 
 ## Implement
 
+Open the draft PR before you change any code, if it isn't already open
+([Open the session PR](#open-the-session-pr)). It is your only channel to reach
+the user once work starts.
+
 Implement the plan, one step at a time. For each step:
 
 - Run the tests you found.
