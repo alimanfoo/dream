@@ -52,7 +52,7 @@
 set -uo pipefail
 
 usage() {
-  cat <<'EOF'
+  cat <<EOF
 Dreamcatcher: dispatch labelled issues to dream sessions.
 
 Usage:
@@ -62,17 +62,17 @@ Usage:
            [--assignee <who>] [--interval <seconds>] [--linger <minutes>]
            [--max-sessions <n>] [--once]
 
-  --team-label  Issue label that dispatches a /dream:team session. Default: dream:team.
-  --solo-label  Issue label that dispatches a /dream:solo session. Default: dream:solo.
-  --less-label  Issue label that dispatches a /dream:less session. Default: dream:less.
-  --solo-model  Model a /dream:solo session runs under. Default: opus[1m].
-  --solo-effort Reasoning effort a /dream:solo session runs under. Default: high.
-  --less-model  Model a /dream:less session runs under. Default: sonnet.
-  --less-effort Reasoning effort a /dream:less session runs under. Default: high.
-  --assignee    Whose issues to pick up. Default: @me.
-  --interval    Seconds between ticks in loop mode. Default: 300.
-  --linger      Minutes a finished session lingers before it is cleaned up. Default: 30.
-  --max-sessions  Most concurrent live sessions to run. Default: 10.
+  --team-label  Issue label that dispatches a /dream:team session. Default: $default_team_label.
+  --solo-label  Issue label that dispatches a /dream:solo session. Default: $default_solo_label.
+  --less-label  Issue label that dispatches a /dream:less session. Default: $default_less_label.
+  --solo-model  Model a /dream:solo session runs under. Default: $default_solo_model.
+  --solo-effort Reasoning effort a /dream:solo session runs under. Default: $default_solo_effort.
+  --less-model  Model a /dream:less session runs under. Default: $default_less_model.
+  --less-effort Reasoning effort a /dream:less session runs under. Default: $default_less_effort.
+  --assignee    Whose issues to pick up. Default: $default_assignee.
+  --interval    Seconds between ticks in loop mode. Default: $default_interval.
+  --linger      Minutes a finished session lingers before it is cleaned up. Default: $default_linger.
+  --max-sessions  Most concurrent live sessions to run. Default: $default_max_sessions.
   --once        A single tick, then exit, instead of looping.
 EOF
 }
@@ -87,17 +87,32 @@ require_positive_int() { [[ "$2" =~ ^[1-9][0-9]*$ ]] || die "--$1 must be a posi
 
 # --- configuration ---------------------------------------------------------
 
-team_label="dream:team"
-solo_label="dream:solo"
-less_label="dream:less"
-solo_model="opus[1m]"
-solo_effort="high"
-less_model="sonnet"
-less_effort="high"
-assignee="@me"
-interval=300
-linger=30
-max_sessions=10
+# The defaults have their own home, which usage() reads, so --help always shows
+# the true defaults whatever the parsing loop sets. Each working variable seeds
+# from its default, then a flag may override it.
+default_team_label="dream:team"
+default_solo_label="dream:solo"
+default_less_label="dream:less"
+default_solo_model="opus[1m]"
+default_solo_effort="high"
+default_less_model="sonnet"
+default_less_effort="high"
+default_assignee="@me"
+default_interval=300
+default_linger=30
+default_max_sessions=10
+
+team_label=$default_team_label
+solo_label=$default_solo_label
+less_label=$default_less_label
+solo_model=$default_solo_model
+solo_effort=$default_solo_effort
+less_model=$default_less_model
+less_effort=$default_less_effort
+assignee=$default_assignee
+interval=$default_interval
+linger=$default_linger
+max_sessions=$default_max_sessions
 once=0
 
 while [ $# -gt 0 ]; do

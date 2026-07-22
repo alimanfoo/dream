@@ -130,11 +130,11 @@ session, so a session waiting for an answer is one keystroke away.
 
 How it picks work:
 
-- **Skill by label.** The "dream:team" label dispatches a `/dream:team` session.
-  The "dream:solo" label dispatches a `/dream:solo` session, for smaller tasks
-  that need no team. The "dream:less" label dispatches a `/dream:less` session,
-  for very small ones. An issue carrying more than one goes to the heaviest:
-  `/dream:team` over `/dream:solo` over `/dream:less`.
+- **Skill by label.** The team label dispatches a `/dream:team` session. The
+  solo label dispatches a `/dream:solo` session, for smaller tasks that need no
+  team. The less label dispatches a `/dream:less` session, for very small ones.
+  An issue carrying more than one goes to the heaviest: `/dream:team` over
+  `/dream:solo` over `/dream:less`.
 - **One session develops at a time.** A session holds the slot from dispatch
   until its pull request is ready for review, then frees it for the next
   dispatch. Sessions awaiting review pile up alongside the one still developing,
