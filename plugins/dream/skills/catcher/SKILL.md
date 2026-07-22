@@ -8,7 +8,8 @@ description:
 argument-hint:
   "[--team-label <label>] [--solo-label <label>] [--less-label <label>]
   [--solo-model <model>] [--solo-effort <effort>] [--less-model <model>]
-  [--less-effort <effort>] [--assignee <user>] [--interval <seconds>]"
+  [--less-effort <effort>] [--assignee <user>] [--interval <seconds>] [--linger
+  <minutes>] [--max-sessions <n>]"
 ---
 
 # Dreamcatcher
@@ -33,8 +34,8 @@ checks, and launch it.
 
 The user may pass any option below as a `--flag value` pair, in any order:
 `--team-label`, `--solo-label`, `--less-label`, `--solo-model`, `--solo-effort`,
-`--less-model`, `--less-effort`, `--assignee`, and `--interval`. Take whichever
-are present.
+`--less-model`, `--less-effort`, `--assignee`, `--interval`, `--linger`, and
+`--max-sessions`. Take whichever are present.
 
 ## Gather the configuration
 
@@ -52,6 +53,8 @@ misread surfaces at once.
 - **Less effort.** The reasoning effort a `/dream:less` session runs under.
 - **Assignee.** Whose issues to pick up.
 - **Interval.** Seconds between ticks.
+- **Linger.** Minutes a finished session lingers before it is cleaned up.
+- **Max sessions.** Most concurrent live sessions to run.
 
 The repository is the one in the current working directory.
 
