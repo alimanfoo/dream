@@ -38,7 +38,7 @@ Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for every message to the user, every artefact posted on GitHub, and
 any comments or documentation you write in code.
 
-When you post a comment to GitHub, write each paragraph on a single line, since
+Write each paragraph on a single line in a PR description or comment, since
 GitHub reflows it (see
 [Text for GitHub](../../writing-style.md#text-for-github)).
 
@@ -165,9 +165,6 @@ template) and follow them. Otherwise:
 - Open with a bullet list of issues addressed. Use `Closes #N` for each one the
   PR fully resolves, and `Related to #N` for any it partly addresses.
 - Follow with one sentence on what the PR does and why.
-
-Write each paragraph on a single line, since GitHub reflows it (see
-[Text for GitHub](../../writing-style.md#text-for-github)).
 
 Replace the `WIP` placeholder with the description.
 
