@@ -105,8 +105,6 @@ Then tell the user:
 - that each issue runs in its own tmux session named
   `dream-GH<n>-<timestamp>-auto`, and that `Ctrl+B` then `s` switches between
   the loop and every dispatched session, so any of them is one keystroke away.
-  Each session also carries its branch name as its Claude Code display name, so
-  it reads the same in the terminal title and the `/resume` picker.
 - that tmux sessions stop on reboot, so re-running `/dream:catcher` restarts the
   loop, and that a machine that must survive reboots should run
   `catch.sh --once` from cron or launchd, where each firing runs a single tick.
