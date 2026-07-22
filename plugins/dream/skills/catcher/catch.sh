@@ -22,8 +22,8 @@
 # until the pull request is ready for review, then frees it for the next
 # dispatch. Sessions awaiting review pile up alongside the one still developing.
 #
-# The pile has a cap. --max-sessions bounds how many live sessions run at once.
-# Without it, a burst of labelled issues could dispatch sessions until tmux
+# The number of live sessions has a cap. --max-sessions bounds how many run at
+# once. Without it, a burst of labelled issues could dispatch sessions until tmux
 # refuses to open more. Once the count reaches the cap, dispatch defers. Each
 # tick reclaims finished sessions before that check. So a capped loop drains as
 # the user merges.
@@ -80,6 +80,11 @@ EOF
 log() { printf '%s  %s\n' "$(date -u +%FT%TZ)" "$*"; }
 die() { printf 'dreamcatcher: %s\n' "$*" >&2; exit 2; }
 
+# Die unless the value is a positive whole number. One home for the check every
+# numeric flag shares, so a new flag or a change to what counts as valid lands
+# in one place.
+require_positive_int() { [[ "$2" =~ ^[1-9][0-9]*$ ]] || die "--$1 must be a positive whole number of $3"; }
+
 # --- configuration ---------------------------------------------------------
 
 team_label="dream:team"
@@ -114,13 +119,14 @@ while [ $# -gt 0 ]; do
   esac
 done
 
-# Reject a non-numeric interval, linger, or max-sessions at parse time. Left
-# unchecked, a typo like "30m" survives to the arithmetic in clean_up_finished or
-# the cap comparison in tick. It then aborts the whole loop under set -u. That
-# silently ends the unattended run.
-[[ "$interval" =~ ^[1-9][0-9]*$ ]] || die "--interval must be a positive whole number of seconds"
-[[ "$linger" =~ ^[1-9][0-9]*$ ]] || die "--linger must be a positive whole number of minutes"
-[[ "$max_sessions" =~ ^[1-9][0-9]*$ ]] || die "--max-sessions must be a positive whole number of sessions"
+# Reject a non-numeric interval, linger, or max-sessions at parse time. A bad
+# value would otherwise fail only where it is used, with a message that hides the
+# cause. In clean_up_finished's arithmetic it aborts the whole loop under set -u.
+# In tick's cap comparison it makes the test fail open, so dispatch runs with no
+# cap. Dying here names the flag instead.
+require_positive_int interval "$interval" seconds
+require_positive_int linger "$linger" minutes
+require_positive_int max-sessions "$max_sessions" sessions
 
 for tool in git gh jq claude tmux; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
@@ -177,6 +183,22 @@ session_developing() {
       return 0
     fi
   done < <(live_sessions)
+  return 1
+}
+
+# True when the live sessions fill the cap. tick calls this after
+# session_developing, so every session counted here is awaiting review.
+# Deferring once the count reaches max_sessions makes it a hard ceiling.
+# Dispatching at the cap would push the total past it. clean_up_finished runs
+# earlier each tick, so even at the cap the loop reclaims finished worktrees as
+# the user merges.
+at_session_cap() {
+  local live
+  live=$(live_sessions | wc -l)
+  if [ "$live" -ge "$max_sessions" ]; then
+    log "deferring: $live live sessions at the cap of $max_sessions"
+    return 0
+  fi
   return 1
 }
 
@@ -330,14 +352,7 @@ tick() {
   if session_developing; then
     return 0
   fi
-  # The slot gate above found nothing developing. Every live session here is
-  # awaiting review. Dispatching one more would bring the total to max_sessions.
-  # So defer once the count reaches it. clean_up_finished runs first. So even at
-  # the cap, the loop still reclaims finished worktrees as the user merges.
-  local live
-  live=$(live_sessions | wc -l)
-  if [ "$live" -ge "$max_sessions" ]; then
-    log "deferring: $live live sessions at the cap of $max_sessions"
+  if at_session_cap; then
     return 0
   fi
   local team_list solo_list less_list candidates n skill

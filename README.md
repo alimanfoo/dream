@@ -138,9 +138,9 @@ How it picks work:
 - **One session develops at a time.** A session holds the slot from dispatch
   until its pull request is ready for review, then frees it for the next
   dispatch. Sessions awaiting review pile up alongside the one still developing,
-  up to a cap of 10 live sessions at once. Once the pile reaches it, dispatch
-  pauses until `/dream:catcher` reclaims a finished session. Size a session by
-  grouping issues under an umbrella issue.
+  up to a cap on how many run at once. Once the pile reaches it, dispatch pauses
+  until `/dream:catcher` reclaims a finished session. Size a session by grouping
+  issues under an umbrella issue.
 - **Oldest eligible issue first.** Mark an issue blocked by another in the
   GitHub issue view to make it wait for that one. `/dream:catcher` skips a
   blocked issue until its blocker closes, then picks it up.
