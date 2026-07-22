@@ -305,7 +305,9 @@ clean_up_finished() {
 # effort, the --solo-model/--solo-effort or --less-model/--less-effort values,
 # because its single agent would otherwise take the launcher's defaults, where
 # the team's agents carry their own. All run in auto mode, and the narrow allow
-# rules passed at launch handle unattended writes.
+# rules passed at launch handle unattended writes. Every session also carries
+# its branch name as its display name, so it reads the same in the prompt box,
+# the terminal title, and the /resume picker.
 dispatch() {
   local n=$1 skill=$2 ts branch wt session err writes run
   ts=$(date -u +%Y%m%d-%H%M%S)
@@ -322,7 +324,7 @@ dispatch() {
   # The writes a session makes unattended, as narrow per-command allow rules.
   # Auto mode drops a broad Bash allow, so only narrow rules serve here.
   writes="Bash(gh pr create:*) Bash(gh pr comment:*) Bash(gh pr edit:*) Bash(gh pr ready:*) Bash(gh pr close:*) Bash(gh issue create:*) Bash(gh issue comment:*) Bash(git commit:*) Bash(git push:*)"
-  run="claude --permission-mode auto --allowedTools '$writes'"
+  run="claude --permission-mode auto --allowedTools '$writes' --name '$branch'"
   case "$skill" in
     team) run="CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec $run --teammate-mode tmux '/dream:team'";;
     solo) run="exec $run --model '$solo_model' --effort '$solo_effort' '/dream:solo'";;
