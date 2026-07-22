@@ -6,7 +6,7 @@ description:
 argument-hint: "[target]"
 ---
 
-# Ousterhout review
+# Code review: Ousterhout lenses
 
 Review changed code through lenses from Ousterhout's "A Philosophy of Software
 Design", and return the combined findings.
@@ -62,5 +62,8 @@ target as a git range like `main...HEAD`, or as an absolute path. A subagent
 can't resolve a path relative to its own prompt file.
 
 Combine their findings into one list, dropping duplicates. Mark each as a defect
-or an opportunity, so the caller can tell them apart. A shallow module is rarely
-a defect. More often it is an opportunity to simplify, hiding more behind less.
+or an opportunity, so the caller can tell them apart. A defect is where the code
+fails to fit and needs fixing now. An opportunity is where the code fits, but a
+generalisation would leave it simpler, easier to maintain, or able to shed code.
+A shallow module is rarely a defect. More often it is an opportunity to
+simplify, hiding more behind less.

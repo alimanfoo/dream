@@ -288,7 +288,7 @@ plugins/:
             Combine, verify and return:
       code-review-ousterhout/:
         SKILL.md:
-          Ousterhout review:
+          'Code review: Ousterhout lenses':
             Arguments:
             The lenses:
               Module depth:
