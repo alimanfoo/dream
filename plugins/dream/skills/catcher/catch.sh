@@ -47,7 +47,7 @@
 set -uo pipefail
 
 usage() {
-  cat <<'EOF'
+  cat <<EOF
 Dreamcatcher: dispatch labelled issues to dream sessions.
 
 Usage:
@@ -56,16 +56,16 @@ Usage:
            [--less-model <model>] [--less-effort <effort>]
            [--assignee <who>] [--interval <seconds>] [--once]
 
-  --team-label  Issue label that dispatches a /dream:team session. Default: dream:team.
-  --solo-label  Issue label that dispatches a /dream:solo session. Default: dream:solo.
-  --less-label  Issue label that dispatches a /dream:less session. Default: dream:less.
-  --solo-model  Model a /dream:solo session runs under. Default: opus[1m].
-  --solo-effort Reasoning effort a /dream:solo session runs under. Default: high.
-  --less-model  Model a /dream:less session runs under. Default: sonnet.
-  --less-effort Reasoning effort a /dream:less session runs under. Default: high.
-  --assignee    Whose issues to pick up. Default: @me.
-  --interval    Seconds between ticks in loop mode. Default: 300.
-  --linger      Minutes a finished session lingers before it is cleaned up. Default: 30.
+  --team-label  Issue label that dispatches a /dream:team session. Default: $team_label.
+  --solo-label  Issue label that dispatches a /dream:solo session. Default: $solo_label.
+  --less-label  Issue label that dispatches a /dream:less session. Default: $less_label.
+  --solo-model  Model a /dream:solo session runs under. Default: $solo_model.
+  --solo-effort Reasoning effort a /dream:solo session runs under. Default: $solo_effort.
+  --less-model  Model a /dream:less session runs under. Default: $less_model.
+  --less-effort Reasoning effort a /dream:less session runs under. Default: $less_effort.
+  --assignee    Whose issues to pick up. Default: $assignee.
+  --interval    Seconds between ticks in loop mode. Default: $interval.
+  --linger      Minutes a finished session lingers before it is cleaned up. Default: $linger.
   --once        A single tick, then exit, instead of looping.
 EOF
 }
