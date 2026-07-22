@@ -36,9 +36,7 @@ generalisation, no half-finished extra feature.
 
 Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for every message to the user, every artefact posted on GitHub, and
-any comments or documentation you write in code. Its
-[Text for GitHub](../../writing-style.md#text-for-github) section covers the
-line wrapping that GitHub rendering needs.
+any comments or documentation you write in code.
 
 ## Turn output
 
