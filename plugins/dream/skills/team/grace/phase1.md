@@ -114,8 +114,8 @@ End the message with one of these two, depending on autopilot:
 Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [autopilot](../../../agents/Grace.md#autopilot)).
 
-If accepted, promote any candidate the user opted into. Remove any that the user
-explicitly dropped. Defer the rest to the
+If the user accepts, promote any candidate they opted into. Remove any that the
+user explicitly dropped. Defer the rest to the
 [collect phase](../../../agents/Grace.md#phase-8-collect). Apply the session
 type's category label to the PR via `gh pr edit --add-label <name>` (see
 [GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to

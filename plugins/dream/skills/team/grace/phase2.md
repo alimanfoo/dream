@@ -35,7 +35,7 @@ End the message with one of these two, depending on autopilot:
 
 Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [autopilot](../../../agents/Grace.md#autopilot)).
-If accepted, continue to
+If the user accepts, continue to
 [Step 2.4](#step-24-hand-the-accepted-code-analysis-to-junio-and-ralph). If the
 user pushes back (a missed caller, a misread mechanism, a wider pattern they
 want named), revise and return to
