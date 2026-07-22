@@ -164,6 +164,9 @@ template) and follow them. Otherwise:
   PR fully resolves, and `Related to #N` for any it partly addresses.
 - Follow with one sentence on what the PR does and why.
 
+Write each paragraph on a single line, since GitHub reflows it (see
+[Text for GitHub](../../writing-style.md#text-for-github)).
+
 Replace the `WIP` placeholder with the description.
 
 ## Mark the PR ready for review
