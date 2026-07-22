@@ -263,8 +263,8 @@ clean_up_finished() {
 # because its single agent would otherwise take the launcher's defaults, where
 # the team's agents carry their own. All run in auto mode, and the narrow allow
 # rules passed at launch handle unattended writes. Every session also carries
-# its branch name as its display name, so it reads the same in the tmux session
-# list, the prompt box, and the /resume picker.
+# its branch name as its display name, so it reads the same in the prompt box,
+# the terminal title, and the /resume picker.
 dispatch() {
   local n=$1 skill=$2 ts branch wt session err writes run
   ts=$(date -u +%Y%m%d-%H%M%S)
