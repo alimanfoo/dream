@@ -132,12 +132,12 @@ the title from the session input.
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
 
-**Start the watch.** Invoke the `/dream:watcher <N>` skill to watch the PR for
-the user's replies from here on. It surfaces the user's comments and reviews as
-they arrive. An answer to a question that you raise mid-session then reaches you
-the same way as a review does once the PR is ready. Handle what it surfaces as
-[Handle the user's replies](#handle-the-users-replies) describes. Every comment
-that you post already carries the Claude Code footer (see
+**Start the watch.** Invoke the `/dream:watcher <pr>` skill on the PR number to
+watch it for the user's replies from here on. It surfaces the user's comments
+and reviews as they arrive. An answer to a question that you raise mid-session
+then reaches you the same way as a review does once the PR is ready. Handle what
+it surfaces as [Handle the user's replies](#handle-the-users-replies) describes.
+Every comment that you post already carries the Claude Code footer (see
 [Mark your work](#mark-your-work)), which is how the watch tells your comments
 from the user's.
 

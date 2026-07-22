@@ -23,23 +23,25 @@
 # never collide. The script emits its path as `watermarkFile`, so the caller can
 # delete it at teardown without re-deriving the key.
 #
-# The "user only" filter is mechanical, not a login match:
+# The "user only" filter is mechanical. The session and the user post through
+# the same GitHub account, so the filter keeps both halves:
 #
-# - Reviews are all the user's. The caller posts none, so every review is taken.
-# - Comments are the user's when they lack the Claude Code footer. The caller
-#   marks its own comments with that footer, so any comment whose body contains
-#   the footer string is the caller's own and is dropped.
+# - Reviews from that account are the user's. The caller posts none, so every
+#   review from the account is the user's.
+# - Comments from that account are the user's when they lack the Claude Code
+#   footer. The caller marks its own comments with that footer, so a comment
+#   from the account carrying the footer is the caller's own and is dropped.
+#
+# Matching the account also drops anything from another account, a bot or
+# another collaborator, which isn't the user's reply.
 #
 # The footer string is therefore essential: a change to it would break the
 # filter, and the caller's own comments would read back as the user's input.
 #
-# The filter reads authorship from the footer alone, not the GitHub account, so
-# it can misread in two rare ways. A comment from a third party, such as a bot
-# or another collaborator, carries no footer, so it reads as the user's and
-# reaches the caller; a comment with nothing to act on needs no action anyway.
-# And a user comment that quotes an earlier caller comment, footer and all,
-# reads as the caller's own and is dropped, until a later comment carries the
-# watermark past it. Both are uncommon on a session's own pull request.
+# One rare misread remains: a user comment that quotes an earlier caller
+# comment, footer and all, reads as the caller's own and is dropped, until a
+# later comment carries the watermark past it. Uncommon on a session's own pull
+# request.
 #
 # Timestamps are ISO-8601 with a trailing Z, which sort correctly as strings, so
 # the cutoff comparison needs no date arithmetic.
@@ -65,6 +67,11 @@ footer="claude.com/claude-code"
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
 
+# The account the session posts through, which is also the user's. The filter
+# matches it to drop activity from any other account.
+me=$(gh api user --jq .login 2>/dev/null) \
+  || die "cannot read the authenticated GitHub account"
+
 # The watermark file, keyed by repository and pull request. The repository name
 # stays a real path segment (owner/name), rather than being flattened, so two
 # repositories never collide: acme-corp/api and acme/corp-api are distinct
@@ -82,9 +89,9 @@ raw=$(gh pr view "$pr" --repo "$repo" --json state,comments,reviews 2>/dev/null)
 # Select the user's new items and record the newest timestamp among them, so the
 # watermark can advance to it. `max` over an empty array is null, which leaves
 # the watermark unchanged.
-result=$(printf '%s' "$raw" | jq --arg cutoff "$cutoff" --arg footer "$footer" '
-  (.comments | map(select((.body | contains($footer) | not) and .createdAt > $cutoff))) as $comments
-  | (.reviews | map(select(.submittedAt > $cutoff))) as $reviews
+result=$(printf '%s' "$raw" | jq --arg cutoff "$cutoff" --arg footer "$footer" --arg me "$me" '
+  (.comments | map(select(.author.login == $me and (.body | contains($footer) | not) and .createdAt > $cutoff))) as $comments
+  | (.reviews | map(select(.author.login == $me and .submittedAt > $cutoff))) as $reviews
   | {
       state: .state,
       comments: $comments,

@@ -2,10 +2,8 @@
 name: watcher
 description:
   Watch a pull request for the user's comments and reviews, and surface each new
-  one to the session. Runs a recurring background check so the session can wait
-  for the user's reply on GitHub while it works elsewhere. Use when a session
-  needs to act on what the user posts to a pull request.
-argument-hint: "<pr>"
+  one to the session. Use only when explicitly invoked.
+argument-hint: "<pr> [interval]"
 ---
 
 # Watcher
@@ -40,14 +38,15 @@ review as the user's.
 
 ## Set up the watch
 
-Create a recurring cron job (`CronCreate`) that fires every 10 minutes. Give it
-this prompt, with the pull request number and the absolute path to `watch.sh` in
-this skill's directory filled in:
+Create a recurring cron job (`CronCreate`) that fires every `interval` minutes,
+the argument, defaulting to 10 when the caller gives none. Give it this prompt,
+with the pull request number and the absolute path to `watch.sh` in this skill's
+directory filled in:
 
 ```text
-Watch check for pull request #<N>. Run:
+Watch check for pull request #<pr>. Run:
 
-  bash <absolute path>/watch.sh <N>
+  bash <absolute path>/watch.sh <pr>
 
 Read the whole JSON result. If `state` is `MERGED` or `CLOSED`, the watch is
 done: tear it down and finish per your session's rules. Otherwise act on
@@ -74,8 +73,8 @@ dropped.
 
 This skill surfaces the raw items. It does not classify them. What a comment or
 review means, and what to do about it, depends on the session that started the
-watch, so classification stays with you. A standalone watch with no further
-rules just reports each item to the user.
+watch, so classification stays with you. By default, treat each user comment or
+review as normal turn input and act accordingly.
 
 ## Teardown
 

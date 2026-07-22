@@ -167,9 +167,9 @@ task list, the working tree, or the PR starts a fresh turn. The loop never
 returns to idle, so the reply never gets its turn. When you are waiting for more
 than one reply, go idle again after each until every one is in.
 
-The autopilot watch is not this loop. It is an external cron that wakes you, not
-a status tool you poll. Each firing is bounded work that returns you to idle
-(see [The watch](#the-watch)).
+The [autopilot watch](#the-watch) is not this loop. It is an external cron that
+wakes you, not a status tool you poll. Each firing is bounded work that returns
+you to idle.
 
 ## Challenge
 
@@ -273,13 +273,13 @@ token in a worktree branch name (see [Boot sequence](#boot-sequence)).
 
 When you recognise engagement, acknowledge it once in plain turn output. The
 acknowledgement is the commitment. For example, _"Autopilot on, proceeding
-autonomously."_ Start the watch if the PR is open and it isn't already running
-(see [The watch](#the-watch)).
+autonomously."_ Start [the watch](#the-watch) if the PR is open and it isn't
+already running.
 
 Turning off mirrors engaging. Acknowledge it once (_"Autopilot off."_). Then
 revert to the gated behaviour. Wait at the next acceptance gate, or hand back if
-you already reached PR ready. Tear the watch down as well (see
-[The watch](#the-watch)): an attended session needs none.
+you already reached PR ready. Tear [the watch](#the-watch) down as well: an
+attended session needs none.
 
 ### Gate-defined defaults
 
@@ -311,13 +311,14 @@ Start it once, as soon as autopilot is engaged and the PR is open. When
 autopilot is engaged before the PR opens, start the watch once
 [Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr) opens it.
 When you engage autopilot later, with the PR already open, start it then. Invoke
-the `/dream:watcher <N>` skill and note its cron job ID. The recorded ID is how
-you know the watch is already running, so you never start a second.
+the `/dream:watcher <pr>` skill on the PR number and note its cron job ID. The
+recorded ID is how you know the watch is already running, so you never start a
+second.
 
 Each firing surfaces the user's new comments and reviews since the last. Read
-them in the state you are in: as the answer to what you are paused on (see
-[Pauses](#pauses)), or as the user's move on a ready PR (see
-[Review and merge](#review-and-merge)).
+them in the state you are in: as the answer to what you are
+[paused on](#pauses), or as the user's move on a ready PR that
+[review and merge](#review-and-merge) handles.
 
 Tear the watch down as the `/dream:watcher` skill describes, whenever it is no
 longer needed: the PR merged or closed, a merge you deferred, or autopilot
@@ -339,29 +340,27 @@ Autopilot pauses on these, and only these:
   fact checks out. Pause. Post the challenge to the PR and present the options
   you can see. Carry out the chosen option.
 
-After pausing, go idle (see [Waiting for a reply](#waiting-for-a-reply)). You
-set nothing up to wait. The watch (see [The watch](#the-watch)) has been running
-since the PR opened. It surfaces the user's answer when it lands, whichever
-channel the user replies through.
+After pausing, go idle (see [Waiting for a reply](#waiting-for-a-reply)). Set up
+nothing new. [The watch](#the-watch) has been running since the PR opened. It
+surfaces the user's answer when it lands, whichever channel the user replies
+through.
 
 The pause ends when the user answers, as a GitHub comment, a GitHub review, or a
 direct reply in the session. Resume autopilot. A pause is not a disengage: once
 the trigger resolves, autopilot resumes automatically.
 
 If a firing reports the PR closed instead, the user declined rather than
-answered. Stop the session (see
-[Stopping a session early](#stopping-a-session-early)).
+answered. [Stop the session](#stopping-a-session-early).
 
 ### Review and merge
 
 After you mark the PR ready (end of Phase 6), keep watching it for the user's
-response instead of handing back. The watch (see [The watch](#the-watch)) has
-been running since the PR opened, so nothing new is set up here. Announce the
-switch once in plain turn output: autopilot is now watching the PR for the
-user's move.
+response instead of handing back. [The watch](#the-watch) has been running since
+the PR opened, so nothing new is set up here. Announce the switch once in plain
+turn output: autopilot is now watching the PR for the user's move.
 
-Read `state` first. `MERGED` and `CLOSED` are terminal, so tear the watch down
-(see [The watch](#the-watch)) as you handle either:
+Read `state` first. `MERGED` and `CLOSED` are terminal, so tear
+[the watch](#the-watch) down as you handle either:
 
 - **Merged** (`state` is `MERGED`) means the user accepted. Move to the
   [merge phase](#phase-7-merge), then the [collect phase](#phase-8-collect). It
@@ -400,8 +399,8 @@ An approving review or a comment with nothing to act on needs no change. After
 handling a batch and still watching (you did not merge, defer, or close), go
 idle again and let the watch surface the next reply.
 
-The user can also give feedback directly in the session. Either way, the watch
-runs on until a terminal outcome tears it down (see [The watch](#the-watch)).
+The user can also give feedback directly in the session. Either way,
+[the watch](#the-watch) runs on until a terminal outcome tears it down.
 
 ### Auto-collect
 
@@ -430,8 +429,8 @@ abandoning it silently. The user may decline the work at a gate, redirect
 elsewhere, or end the session. Because the PR has been open since Phase 1, it
 already holds whatever artifacts the session reached. Post a final comment
 naming where the work reached, the last accepted artifact, and why it stopped.
-Then close the draft PR with `gh pr close <N>`. If the watch is running, tear it
-down (see [The watch](#the-watch)).
+Then close the draft PR with `gh pr close <N>`. If [the watch](#the-watch) is
+running, tear it down.
 
 Recognise the intent the way you recognise autopilot engagement. The phrasing
 varies ("let's not do this", "stop here", "park this one"). A stop is the user
