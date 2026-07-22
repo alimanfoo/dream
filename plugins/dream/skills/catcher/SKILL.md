@@ -36,27 +36,20 @@ are present.
 
 ## Gather the configuration
 
-Every option has a default. Use what the argument named, default the rest, and
-ask only to override a default. State the labels, assignee, and interval you
-resolved before launching, as a plain statement, so a misread surfaces at once.
+Every option has a default. Run `catch.sh --help` to see them. Use what the
+argument named and let the script default the rest. Ask the user only whether to
+override a default. State the options you resolved before launching, so a
+misread surfaces at once.
 
-- **Team label.** The label that dispatches a `/dream:team` session. Defaults to
-  "dream:team".
-- **Solo label.** The label that dispatches a `/dream:solo` session. Defaults to
-  "dream:solo".
-- **Less label.** The label that dispatches a `/dream:less` session. Defaults to
-  "dream:less".
-- **Solo model.** The model a `/dream:solo` session runs under. Defaults to
-  `opus[1m]`.
+- **Team label.** The label that dispatches a `/dream:team` session.
+- **Solo label.** The label that dispatches a `/dream:solo` session.
+- **Less label.** The label that dispatches a `/dream:less` session.
+- **Solo model.** The model a `/dream:solo` session runs under.
 - **Solo effort.** The reasoning effort a `/dream:solo` session runs under.
-  Defaults to `high`.
-- **Less model.** The model a `/dream:less` session runs under. Defaults to
-  `sonnet`.
+- **Less model.** The model a `/dream:less` session runs under.
 - **Less effort.** The reasoning effort a `/dream:less` session runs under.
-  Defaults to `high`.
-- **Assignee.** Whose issues to pick up. Defaults to `@me`, gh's alias for the
-  authenticated user.
-- **Interval.** Seconds between ticks. Defaults to 300.
+- **Assignee.** Whose issues to pick up.
+- **Interval.** Seconds between ticks.
 
 The repository is the one in the current working directory.
 
@@ -81,19 +74,16 @@ session its writes at launch.
 
 ## Launch
 
-Run the loop in its own detached tmux session, so it outlives this session. The
-user can then attach to watch it tick, the same way they attach to a dispatched
-session:
+Run the loop in its own detached tmux session, so it outlives this session. Pass
+only the flags the user overrode. The script applies its own default for every
+option left out. The user can then attach to watch it tick, the same way they
+attach to a dispatched session:
 
 ```bash
 tmux new-session -d -s dreamcatcher -x 220 -y 50 \
   -c "<the repository's main checkout>" \
   "bash '<absolute path to catch.sh in this skill's directory>' \
-   --team-label '<team label>' --solo-label '<solo label>' \
-   --less-label '<less label>' \
-   --solo-model '<solo model>' --solo-effort '<solo effort>' \
-   --less-model '<less model>' --less-effort '<less effort>' \
-   --assignee '<assignee>' --interval <interval> \
+   <the flags the user overrode, and no others> \
    2>&1 | tee -a dreamcatcher.log"
 ```
 
