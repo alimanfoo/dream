@@ -20,8 +20,12 @@
 #
 # One session develops at a time. The coordinator holds the slot from dispatch
 # until the pull request is ready for review, then frees it for the next
-# dispatch. Sessions awaiting review pile up alongside the one still
-# developing.
+# dispatch. Sessions awaiting review pile up alongside the one still developing.
+#
+# The pile has a ceiling: --max-sessions bounds the concurrent live sessions, so
+# a burst of labelled issues cannot dispatch until tmux refuses to open more.
+# Once the count reaches the cap, dispatch defers. Each tick still reclaims
+# finished sessions before the check, so a capped loop drains as the user merges.
 #
 # Each session is its own process, in its own worktree, on its own branch, so
 # concurrent sessions are isolated. The slot paces dispatch. It is not a
@@ -54,7 +58,8 @@ Usage:
   catch.sh [--team-label <label>] [--solo-label <label>] [--less-label <label>]
            [--solo-model <model>] [--solo-effort <effort>]
            [--less-model <model>] [--less-effort <effort>]
-           [--assignee <who>] [--interval <seconds>] [--once]
+           [--assignee <who>] [--interval <seconds>] [--linger <minutes>]
+           [--max-sessions <n>] [--once]
 
   --team-label  Issue label that dispatches a /dream:team session. Default: dream:team.
   --solo-label  Issue label that dispatches a /dream:solo session. Default: dream:solo.
@@ -66,6 +71,7 @@ Usage:
   --assignee    Whose issues to pick up. Default: @me.
   --interval    Seconds between ticks in loop mode. Default: 300.
   --linger      Minutes a finished session lingers before it is cleaned up. Default: 30.
+  --max-sessions  Most concurrent live sessions to run. Default: 10.
   --once        A single tick, then exit, instead of looping.
 EOF
 }
@@ -85,6 +91,7 @@ less_effort="high"
 assignee="@me"
 interval=300
 linger=30
+max_sessions=10
 once=0
 
 while [ $# -gt 0 ]; do
@@ -99,17 +106,20 @@ while [ $# -gt 0 ]; do
     --assignee) [ $# -ge 2 ] || die "--assignee requires a value"; assignee=$2; shift 2;;
     --interval) [ $# -ge 2 ] || die "--interval requires a value"; interval=$2; shift 2;;
     --linger)   [ $# -ge 2 ] || die "--linger requires a value"; linger=$2; shift 2;;
+    --max-sessions) [ $# -ge 2 ] || die "--max-sessions requires a value"; max_sessions=$2; shift 2;;
     --once)     once=1; shift;;
     -h|--help)  usage; exit 0;;
     *)          die "unknown argument: $1";;
   esac
 done
 
-# Reject a non-numeric interval or linger at parse time. Left unchecked, a typo
-# like "30m" survives to the arithmetic in clean_up_finished and aborts the whole
-# loop under set -u, silently ending the unattended run.
+# Reject a non-numeric interval, linger, or max-sessions at parse time. Left
+# unchecked, a typo like "30m" survives to the arithmetic in clean_up_finished or
+# the cap comparison in tick and aborts the whole loop under set -u, silently
+# ending the unattended run.
 [[ "$interval" =~ ^[1-9][0-9]*$ ]] || die "--interval must be a positive whole number of seconds"
 [[ "$linger" =~ ^[1-9][0-9]*$ ]] || die "--linger must be a positive whole number of minutes"
+[[ "$max_sessions" =~ ^[1-9][0-9]*$ ]] || die "--max-sessions must be a positive whole number of sessions"
 
 for tool in git gh jq claude tmux; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
@@ -317,6 +327,17 @@ list_labelled() {
 tick() {
   clean_up_finished
   if session_developing; then
+    return 0
+  fi
+  # The slot gate above found nothing developing, so every live session here is
+  # awaiting review. Cap that pile: dispatching one more would bring the total to
+  # max_sessions, so defer once the count reaches it. clean_up_finished runs
+  # first, so a capped loop still reclaims finished worktrees and drains as the
+  # user merges. The count comes from wc, so strip its padding for the compare.
+  local live
+  live=$(( $(live_sessions | wc -l) ))
+  if [ "$live" -ge "$max_sessions" ]; then
+    log "deferring: $live live sessions at the cap of $max_sessions"
     return 0
   fi
   local team_list solo_list less_list candidates n skill
