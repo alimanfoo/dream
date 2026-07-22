@@ -20,7 +20,9 @@ around them. It notices a labelled issue and dispatches a session for it.
 
 A session holds the slot from dispatch until its pull request is ready for
 review, then frees it for the next dispatch. Sessions awaiting review pile up
-alongside the one still developing, while the user is away.
+alongside the one still developing, while the user is away, up to a ceiling of
+`--max-sessions` live sessions at once, so a burst of labelled issues cannot
+exhaust the machine's tmux sessions.
 
 The coordinator is a shell script, `catch.sh`, in this skill's directory. It
 runs a tick on a loop and reads live state each time, so nothing is stored
@@ -123,7 +125,10 @@ Answer questions about the coordinator's behaviour from here.
   for all three.
 - **One session develops at a time.** A session holds the slot from dispatch
   until its pull request is ready for review, then frees it for the next
-  dispatch. Sessions awaiting review pile up alongside the one still developing.
+  dispatch. Sessions awaiting review pile up alongside the one still developing,
+  up to `--max-sessions` live sessions at once (default 10). Once the pile
+  reaches that cap, dispatch defers until a finished session is reclaimed, so
+  the run cannot exhaust the machine's tmux sessions.
 - **Oldest eligible issue first.** Mark an issue blocked by another in the
   GitHub issue view to make it wait for that one. The coordinator skips an issue
   whose blocker is still open, and picks it up once the blocker is closed. Use
