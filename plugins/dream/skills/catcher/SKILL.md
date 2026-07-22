@@ -37,7 +37,7 @@ are present.
 ## Gather the configuration
 
 Every option has a default. Run `catch.sh --help` to see them. Use what the
-argument named and let the script default the rest. Ask the user only whether to
+argument named. Let the script default the rest. Ask the user only whether to
 override a default. State the options you resolved before launching, so a
 misread surfaces at once.
 
@@ -105,11 +105,11 @@ Answer questions about the coordinator's behaviour from here.
 
 - **Skill by label.** The team label dispatches a `/dream:team` session, the
   solo label a `/dream:solo` session, the less label a `/dream:less` session. An
-  issue needs one of the three labels and the right assignee to be picked up.
-  One carrying more than one goes to the heaviest: `/dream:team` over
-  `/dream:solo` over `/dream:less`. Neither `/dream:solo` nor `/dream:less`
-  needs the agent teams feature, so those dispatches launch without one. The
-  slot, worktree setup, and unattended permissions are the same for all three.
+  issue needs one of the labels and the right assignee to be picked up. One
+  carrying more than one goes to the heaviest: `/dream:team` over `/dream:solo`
+  over `/dream:less`. Neither `/dream:solo` nor `/dream:less` needs the agent
+  teams feature, so those dispatches launch without one. The slot, worktree
+  setup, and unattended permissions are the same for all three.
 - **One session develops at a time.** A session holds the slot from dispatch
   until its pull request is ready for review, then frees it for the next
   dispatch. Sessions awaiting review pile up alongside the one still developing.

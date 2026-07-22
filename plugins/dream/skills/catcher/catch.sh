@@ -87,10 +87,9 @@ interval=300
 linger=30
 once=0
 
-# Resolve --help before the loop below mutates a default, so usage() always
-# reports the true defaults, whatever else the command line carries. usage()
-# interpolates the same variables, so it reads them here while they still hold
-# their defaults.
+# Resolve --help before the parsing loop runs. The loop mutates the config
+# variables that usage() interpolates. Running usage() first keeps the true
+# defaults in the help text, whatever else the command line carries.
 for arg in "$@"; do
   case "$arg" in -h|--help) usage; exit 0;; esac
 done
