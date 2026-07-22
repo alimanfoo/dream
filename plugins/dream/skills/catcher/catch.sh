@@ -333,9 +333,9 @@ tick() {
   # awaiting review. Cap that pile: dispatching one more would bring the total to
   # max_sessions, so defer once the count reaches it. clean_up_finished runs
   # first, so a capped loop still reclaims finished worktrees and drains as the
-  # user merges. The count comes from wc, so strip its padding for the compare.
+  # user merges.
   local live
-  live=$(( $(live_sessions | wc -l) ))
+  live=$(live_sessions | wc -l)
   if [ "$live" -ge "$max_sessions" ]; then
     log "deferring: $live live sessions at the cap of $max_sessions"
     return 0
