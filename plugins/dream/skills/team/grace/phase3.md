@@ -33,7 +33,7 @@ End the message with one of these two, depending on autopilot:
 
 Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [autopilot](../../../agents/Grace.md#autopilot)).
-If accepted, continue to
+If the user accepts, continue to
 [Step 3.4](#step-34-hand-the-accepted-design-to-junio-and-ralph). If the user
 pushes back, revise and return to
 [Step 3.2](#step-32-share-the-design-options-with-the-user). Repeat until

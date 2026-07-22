@@ -30,7 +30,7 @@ End the message with one of these two, depending on autopilot:
 
 Wait for the user's reply. Under autopilot, take this gate's default and
 continue without waiting (see [autopilot](../../../agents/Grace.md#autopilot)).
-If accepted, continue to
+If the user accepts, continue to
 [Step 4.4](#step-44-hand-the-accepted-plan-to-junio-and-ralph). If the user
 raises open questions or redirects, revise and return to
 [Step 4.2](#step-42-share-the-plan-with-the-user). Repeat until accepted.
