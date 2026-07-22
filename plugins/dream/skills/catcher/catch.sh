@@ -134,20 +134,30 @@ is_auto_branch() { [[ "$1" =~ ^GH[0-9]+-[0-9]{8}-[0-9]{6}-auto$ ]]; }
 # path that contains a space intact.
 worktree_paths() { git -C "$main_root" worktree list --porcelain | sed -n 's/^worktree //p'; }
 
-# True when a session still holds the slot: a live "-auto" session for this
-# repo whose branch has no pull request that is merged, closed, or ready for
-# review. isDraft is the signal every dispatched session type emits at the
-# same point, team, solo, and less alike, so this reads uniformly across all
-# three. A crashed session's tmux session is gone too, so it never wedges the
-# slot. Each branch is unique per attempt, so its pull request state is that
-# session's alone, never an earlier attempt's.
-session_developing() {
-  local wt branch reached_review
+# The branch of every live dispatched session, one per line: an "-auto" worktree
+# for this repo whose tmux session is still running. A crashed session's tmux
+# session is gone, so it drops out here, which is why it never wedges the slot or
+# fills the cap. The slot gate and the cap gate both count off this one
+# definition of a live session.
+live_sessions() {
+  local wt branch
   while read -r wt; do
     [ -n "$wt" ] || continue
     branch=$(basename "$wt")
     is_auto_branch "$branch" || continue
     tmux has-session -t "dream-$branch" 2>/dev/null || continue
+    printf '%s\n' "$branch"
+  done < <(worktree_paths)
+}
+
+# True when a live session still holds the slot: its branch has no pull request
+# that is merged, closed, or ready for review. isDraft is the signal every
+# dispatched session type emits at the same point, team, solo, and less alike, so
+# this reads uniformly across all three. Each branch is unique per attempt, so
+# its pull request state is that session's alone, never an earlier attempt's.
+session_developing() {
+  local branch reached_review
+  while read -r branch; do
     reached_review=$(gh pr list --repo "$repo" --head "$branch" --state all --json state,isDraft \
       --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED" or (.state == "OPEN" and .isDraft == false))] | length' \
       2>/dev/null || echo 0)
@@ -155,7 +165,7 @@ session_developing() {
       log "deferring: $branch is still developing"
       return 0
     fi
-  done < <(worktree_paths)
+  done < <(live_sessions)
   return 1
 }
 
