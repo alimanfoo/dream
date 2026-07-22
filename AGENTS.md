@@ -163,15 +163,14 @@ headings, the phase list, and the "Phase N: name" and "Step N.M: name" labels
 keep their capitals as structural titles.
 
 The plugin's prose references its own skills and labels one way throughout.
-Write a skill invocation as `/dream:foo`, a leading slash in backticks, and
-write the label of the same name in double quotes instead, "dream:foo". A
-frontmatter `description:` field, a markdown heading, and a fenced command block
-keep the bare form, since each already reads as code or a title. A subagent-type
+Write a skill invocation as `/dream:foo`, a leading slash in backticks. Write
+the label of the same name in double quotes instead, "dream:foo". A frontmatter
+`description:` field, a markdown heading, and a fenced command block keep the
+bare form, since each already reads as code or a title. A subagent-type
 identifier launched via the Agent tool stays bare too, `dream:foo`, since it is
-not a slash command, and `catch.sh` keeps its own shell register, where
-backticks and quotes would misread. Keep a skill reference (`/dream:team`)
-distinct from the multi-agent team concept, "the dream team", which stays plain
-prose.
+not a slash command. `catch.sh` keeps its own shell register, where backticks
+and quotes would misread. Keep a skill reference (`/dream:team`) distinct from
+the multi-agent team concept, "the dream team", which stays plain prose.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 suite. When changing behaviour, read the affected skill and agent prompts
