@@ -51,13 +51,9 @@ it is already running.
 
 ## Step 1.2: Produce the draft requirements analysis
 
-Run the `/dream:requirements-analysis` skill, giving it the session input.
-
-The skill returns the draft requirements analysis, and states the session type
-and the repo orientation in turn output.
-
-Hold the returned draft, the session type, and the repo orientation as your
-working artifacts for the steps below. Don't share the draft with the user yet.
+Run the `/dream:requirements-analysis` skill, giving it the session input. The
+skill generates the draft requirements analysis and names the session type.
+Don't share the draft with the user yet.
 
 ## Step 1.3: Elicit answers to open questions
 
@@ -123,8 +119,7 @@ acceptance discussion, to a temporary file outside this repo, via Bash:
 
 - the accepted requirements analysis
 - the session type
-- the repo orientation from
-  [Step 1.2](#step-12-produce-the-draft-requirements-analysis)
+- the repo orientation the `/dream:requirements-analysis` skill produced
 
 Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.` and skip the RSVP.
