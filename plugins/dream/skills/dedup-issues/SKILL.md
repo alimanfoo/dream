@@ -81,13 +81,18 @@ close as a duplicate, which issue to close, and a one-line reason.
 
 ## Print the report
 
-Gather the relationships every subagent returned into one Markdown report, and
-print it. Give each relationship one line: the issue to close, the issue it
+Gather the relationships every subagent returned into one Markdown report.
+
+Drop any relationship whose issue to close is already closed. You can only close
+an open issue. The scan JSON's `state` field says which issues are open. An open
+target that duplicates an earlier closed issue still yields a close line,
+because the open target is the one to close.
+
+Give each surviving relationship one line: the issue to close, the issue it
 closes against, and the reason the subagent gave. Refer to each issue as
 `#<number>`, the form GitHub turns into a link.
 
-Print a line saying the run found none, when there were no targets or no
-subagent found a duplicate.
+Print a line saying the run found none, when no relationship survives to print.
 
 ## Advance the watermark
 
