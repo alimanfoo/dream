@@ -23,8 +23,7 @@ Read the argument the user gives. It names the label to process. Without one,
 use "validate".
 
 Quote the label in every command, since it can hold spaces or an emoji. This
-repo's label is "validate 🔍", for example, which the user passes as the
-argument.
+repo's label is "validate 🔍", for example. The user passes it as the argument.
 
 ## List the labelled issues
 
@@ -48,10 +47,12 @@ Once the subagents return, handle each issue in turn:
 
 1. Copy-edit the drafted comment. Run the `/dream:copy-edit` skill over it,
    passing the comment as the passage to review, since it is not a file.
-2. Post it: `gh issue comment <N> --body "<comment>"`. End the comment with the
-   Claude Code footer, so a reader can tell it is agent-authored:
+2. End the comment with the Claude Code footer, so a reader can tell it is
+   agent-authored:
 
    > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+   Then post it: `gh issue comment <N> --body "<comment>"`.
 
 3. Remove the label, but only after the post succeeds:
    `gh issue edit <N> --remove-label "<label>"`. A failed post then leaves the
