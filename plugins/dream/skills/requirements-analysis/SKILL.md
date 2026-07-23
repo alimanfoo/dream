@@ -2,15 +2,14 @@
 name: requirements-analysis
 description:
   Analyse the requirements behind a task and return a draft. It states who the
-  task serves, what it must do, and the open questions it raises. Point it at an
-  issue, a file or symbol, or a description.
+  task serves, what it must do, and the open questions it raises.
 argument-hint: "<issue | file or symbol | text>"
 ---
 
 # Requirements analysis
 
 Produce a requirements analysis: your explicit reading of what the system must
-do behind the input and for whom. The result is a draft, ending with the open
+do behind the input and for whom. The result is a draft, ending with any open
 questions for the user to resolve.
 
 Read the [writing style guide](../../writing-style.md) before you write. It is

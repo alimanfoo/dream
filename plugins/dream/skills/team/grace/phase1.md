@@ -53,17 +53,8 @@ it is already running.
 
 Run the `/dream:requirements-analysis` skill, giving it the session input.
 
-The skill returns the draft requirements analysis. By session type, it names one
-of:
-
-- the consumers and their use cases
-- the improvement goals and the preserved behaviour
-- the expected behaviour, the observed behaviour, and the affected consumers
-
-It also carries any constraints, candidates, and open questions, with each item
-marked stated or assumed. The skill folds any input drift into corrections and
-notes, recording the drift in the draft itself rather than a separate comment.
-The skill also states the session type and the repo orientation in turn output.
+The skill returns the draft requirements analysis, and states the session type
+and the repo orientation in turn output.
 
 Hold the returned draft, the session type, and the repo orientation as your
 working artifacts for the steps below. Don't share the draft with the user yet.
