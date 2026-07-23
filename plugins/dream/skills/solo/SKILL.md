@@ -177,8 +177,10 @@ Give it a short subject (the issue ref or slug). Push the branch.
 the title from the session input.
 
 **Post the session input as the first comment.** Post the session input as a PR
-comment (`gh pr comment <N> --body "..."`). Head it `Session input`. List each
-issue number. Briefly summarise any additional input from the user.
+comment (`gh pr comment <N> --body "..."`). Head it `Session input`. When the
+input is nothing but issue references, give them as a bullet list, one bare `#N`
+per line. The linked issue already carries its own body and comments. Repeating
+them here adds nothing. Otherwise, reproduce the user's input verbatim.
 
 **Label the PR.** Apply the session type's category label with
 `gh pr edit --add-label`: `enhancement`, `maintenance`, or `bug`. Run
