@@ -258,6 +258,19 @@ plugins/:
         Simplification:
           The lens:
           Reporting:
+    coherent-coding.md:
+      Coherent coding guide:
+        Coherence is the floor, not the ceiling:
+        Resolve the root cause:
+        Existing code is unproven:
+        One fact, one home:
+        Code-shape ladder:
+        Wrong-layer defensive code:
+        Cross-site rules:
+        Same edit, every instance:
+        Defend behaviour, not surface:
+        Strip the compensation:
+        Don't over-build:
     skills/:
       catcher/:
         SKILL.md:
@@ -300,6 +313,13 @@ plugins/:
           Coherence review:
             Arguments:
             Review:
+      coherent-coding/:
+        SKILL.md:
+          Coherent coding:
+            Read the guide first:
+            Reply with a brief confirmation:
+            Follow it as you work:
+            For code already written, use /dream:coherence-review:
       copy-edit/:
         SKILL.md:
           Copy-edit:
