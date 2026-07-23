@@ -109,6 +109,15 @@ raw=$(gh issue list --repo "$repo" --state all --limit "$issue_limit" \
   --json number,title,state,body 2>/dev/null) \
   || die "cannot read the issues in $repo"
 
+# A returned count at the ceiling means gh may have truncated the list, dropping
+# issues from the scan with no other signal. Stop rather than dedup a partial
+# tracker.
+count=$(printf '%s' "$raw" | jq 'length') \
+  || die "cannot count the issues in the snapshot"
+if [ "$count" -eq "$issue_limit" ]; then
+  die "raise issue_limit in dedup.sh. The tracker returned $issue_limit issues, the current ceiling. gh may have truncated the list."
+fi
+
 # Write each issue's body to its own file. Each issue arrives as one compact JSON
 # object per line, so a body's own newlines never split a record.
 while IFS= read -r issue; do
