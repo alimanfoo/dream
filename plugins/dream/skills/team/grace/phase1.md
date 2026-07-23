@@ -12,8 +12,7 @@ session input against the current code, so stale details don't ride downstream.
 It gets one round of adversarial review before anyone else sees the draft
 requirements analysis. And it elicits answers to the open questions the cited
 material can't settle. It ends at an accepted requirements analysis: what the
-system must do, for whom, and what it is deliberately not for. Follow the steps
-below in sequence.
+system must do, and for whom. Follow the steps below in sequence.
 
 ## Step 1.1: Open the session PR
 
@@ -61,11 +60,10 @@ of:
 - the improvement goals and the preserved behaviour
 - the expected behaviour, the observed behaviour, and the affected consumers
 
-It also carries any constraints, candidates, system non-goals, and open
-questions, with each item marked stated or assumed. The skill folds any input
-drift into corrections and notes, recording the drift in the draft itself rather
-than a separate comment. The skill also states the session type and the repo
-orientation in turn output.
+It also carries any constraints, candidates, and open questions, with each item
+marked stated or assumed. The skill folds any input drift into corrections and
+notes, recording the drift in the draft itself rather than a separate comment.
+The skill also states the session type and the repo orientation in turn output.
 
 Hold the returned draft, the session type, and the repo orientation as your
 working artifacts for the steps below. Don't share the draft with the user yet.

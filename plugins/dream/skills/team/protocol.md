@@ -135,9 +135,9 @@ first. She then reads the cited material and the code for the requirements it
 already satisfies, and consults the record of prior issues and PRs for the
 surfaces named. She checks the session input against the current code, folding
 any drift into the draft. She names the session type and drafts the analysis in
-the shape it selects, marking each item stated or assumed and carrying any
-system non-goals and open questions. The draft gets one round of adversarial
-review before anyone else sees it, which Grace weighs and folds in.
+the shape it selects, marking each item stated or assumed and carrying any open
+questions. The draft gets one round of adversarial review before anyone else
+sees it, which Grace weighs and folds in.
 
 Enhancement and maintenance shapes also carry candidates: use cases or
 improvement goals the read suggests but the input didn't name. Candidates are
@@ -498,8 +498,7 @@ one. The comment opens with an explicit supersession marker (for example,
 A session that stops before merge still leaves a record. When the user halts at
 a gate or ends the session early, Grace posts a final comment naming where the
 work reached and why it stopped. She then closes the draft PR. The closed,
-unmerged PR documents what was considered and why it went no further, including
-any non-goals.
+unmerged PR documents what was considered and why it went no further.
 
 ## Sharing an artifact
 
