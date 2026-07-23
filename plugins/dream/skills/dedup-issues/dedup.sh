@@ -10,12 +10,12 @@
 # existed at the last run, or zero when there is none. It makes one `gh issue
 # list` call, up to a fixed ceiling. A tracker at that ceiling may have lost
 # issues to truncation, so the scan fails instead of deduping a partial list. It
-# writes each issue's body to its own file. It prints a JSON
-# object: the repo name, the watermark, the watermark-file path, highWater (the
-# highest issue number it saw), and the issue list. Each issue carries its number,
-# title, state, and the path to its body file. The skill body reads that path and
-# hands it to a subagent, so the bodies stay out of the session's own context. The
-# skill body passes highWater back to `--advance`.
+# writes each issue's body to its own file. It prints a JSON object: the repo
+# name, the watermark, highWater (the highest issue number it saw), and the issue
+# list. Each issue carries its number, title, state, and the path to its body
+# file. The skill body reads that path and hands it to a subagent, so the bodies
+# stay out of the session's own context. The skill body passes highWater back to
+# `--advance`.
 #
 # The `--advance` mode writes the watermark. It takes the paired scan's highWater
 # as an argument and writes it, so the watermark moves only as far as that scan
@@ -139,12 +139,10 @@ done < <(printf '%s' "$raw" | jq -c '.[]')
 printf '%s' "$raw" | jq \
   --arg repo "$repo" \
   --argjson watermark "$watermark" \
-  --arg watermark_file "$watermark_file" \
   --arg bodies_dir "$bodies_dir" '
   {
     repo: $repo,
     watermark: $watermark,
-    watermarkFile: $watermark_file,
     highWater: (map(.number) | max),
     issues: [.[] | {
       number: .number,
