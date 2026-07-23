@@ -122,14 +122,24 @@ if [ "$count" -eq "$issue_limit" ]; then
   die "raise issue_limit in dedup.sh. The tracker returned $issue_limit issues, the current ceiling. gh may have truncated the list."
 fi
 
-# Write each issue's body to its own file. Each issue arrives as one compact JSON
-# object per line, so a body's own newlines never split a record.
-while IFS= read -r issue; do
-  number=$(printf '%s' "$issue" | jq -r '.number') \
-    || die "cannot read an issue number from the list"
-  printf '%s' "$issue" | jq -r '.body // ""' > "$bodies_dir/${number}.md" \
-    || die "cannot write the body file for issue $number"
-done < <(printf '%s' "$raw" | jq -c '.[]')
+# Enumerate the issues as one compact JSON object per line. Materialise this
+# before the loop, so a failure to enumerate dies here rather than feeding the
+# loop an early end and leaving bodies unwritten. A process substitution would
+# hide that failure, since pipefail does not reach into it.
+issue_lines=$(printf '%s' "$raw" | jq -c '.[]') \
+  || die "cannot enumerate the issues in the snapshot"
+
+# Write each issue's body to its own file. Each issue is one compact JSON object,
+# so a body's own newlines never split a record. An empty tracker enumerates to
+# nothing, so the loop is skipped.
+if [ -n "$issue_lines" ]; then
+  while IFS= read -r issue; do
+    number=$(printf '%s' "$issue" | jq -r '.number') \
+      || die "cannot read an issue number from the list"
+    printf '%s' "$issue" | jq -r '.body // ""' > "$bodies_dir/${number}.md" \
+      || die "cannot write the body file for issue $number"
+  done <<< "$issue_lines"
+fi
 
 # Emit the report. Each issue carries a bodyFile path. The scan sorts issues by
 # number, so the skill body reads earlier issues before later ones. This JSON is
