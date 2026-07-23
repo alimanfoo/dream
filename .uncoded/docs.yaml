@@ -311,6 +311,15 @@ plugins/:
             First, read the writing style guide:
             Arguments:
             Each round:
+      dedup-issues/:
+        SKILL.md:
+          Dedup issues:
+            Arguments:
+            Scan the tracker:
+            Screen each target by title:
+            Confirm each target with a subagent:
+            Print the report:
+            Advance the watermark:
       design/:
         SKILL.md:
           Design:
