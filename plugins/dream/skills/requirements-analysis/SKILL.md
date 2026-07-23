@@ -10,7 +10,7 @@ argument-hint: "<issue | file or symbol | text>"
 # Requirements analysis
 
 Produce a requirements analysis: your explicit reading of what the system must
-do behind the input, and for whom. The result is a draft, ending with the open
+do behind the input and for whom. The result is a draft, ending with the open
 questions for the user to resolve.
 
 Read the [writing style guide](../../writing-style.md) before you write. It is
