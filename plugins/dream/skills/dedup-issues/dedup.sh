@@ -8,7 +8,9 @@
 #
 # The default mode scans. It reads the watermark, the highest issue number that
 # existed at the last run, or zero when there is none. It makes one `gh issue
-# list` call. It writes each issue's body to its own file. It prints a JSON
+# list` call, up to a fixed ceiling. A tracker at that ceiling may have lost
+# issues to truncation, so the scan fails instead of deduping a partial list. It
+# writes each issue's body to its own file. It prints a JSON
 # object: the repo name, the watermark, the watermark-file path, highWater (the
 # highest issue number it saw), and the issue list. Each issue carries its number,
 # title, state, and the path to its body file. The skill body reads that path and
