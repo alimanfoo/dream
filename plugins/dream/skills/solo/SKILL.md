@@ -178,10 +178,9 @@ the title from the session input.
 
 **Post the session input as the first comment.** Post the session input as a PR
 comment (`gh pr comment <N> --body "..."`). Head it `Session input`. When the
-input is one or more issues, give a bullet list of their bare references (`#N`),
-one per line. The linked issue already carries its own body and comments.
-Repeating them here adds nothing. When the input is free text, reproduce the
-user's text verbatim.
+input is nothing but issue references, give them as a bullet list, one bare `#N`
+per line. The linked issue already carries its own body and comments. Repeating
+them here adds nothing. Otherwise, reproduce the user's input verbatim.
 
 **Label the PR.** Apply the session type's category label with
 `gh pr edit --add-label`: `enhancement`, `maintenance`, or `bug`. Run
