@@ -49,6 +49,8 @@ while [ $# -gt 0 ]; do
   case "$1" in
     --advance) mode=advance ;;
     --full) full=true ;;
+    # An empty value, which an empty tracker's highWater produces, is a no-op.
+    "") ;;
     [0-9]*) advance_value=$1 ;;
     *) die "unknown argument '$1'" ;;
   esac
