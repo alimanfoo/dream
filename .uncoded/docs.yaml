@@ -154,6 +154,11 @@ plugins/:
           Leave these alone:
           Record every finding in a file:
           Return only what needs changing:
+      dedup-issue-check.md:
+        Duplicate issue check:
+          What counts as a duplicate:
+          Which issue to close:
+          Reporting:
       review-coherence-in-shape.md:
         Carried in shape, not prose:
           The lens:
