@@ -4,9 +4,9 @@ This guide sets the standard for the code you design and write. It covers how
 you scope a change, where a fact lives, how a contract is carried, and how much
 to build.
 
-Coherence has a ground truth: code either fits or it does not. So it is yours to
-hold completely. Leave each change so the codebase fits together as a whole, and
-the next session builds on solid ground.
+Coherence and maintenance of the codebase are your responsibility. Leave each
+change so the codebase fits together as a whole, and the next session builds on
+solid ground.
 
 ## Coherence is the floor, not the ceiling
 

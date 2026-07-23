@@ -1,9 +1,8 @@
 ---
 name: coherent-coding
 description:
-  Design and write code to the dream plugin's coherent coding guide. Use when
-  you are about to design or implement a change. To review code already written,
-  use the /dream:coherence-review skill instead.
+  Design and write code which is coherent and easy to maintain. Use only when
+  explicitly invoked.
 ---
 
 # Coherent coding
@@ -13,14 +12,12 @@ Adopt the dream plugin's coherent coding guide.
 ## Read the guide first
 
 Read the [coherent coding guide](../../coherent-coding.md) before you design or
-write. It sets the standard for how you scope a change, where a fact lives, how
-a contract is carried, and how much to build.
+write.
 
 ## Reply with a brief confirmation
 
 Confirm that the guide is loaded, then stop. Do not summarise it or restate its
-rules. The guide is in your context now, so repeating it wastes the user's
-attention.
+rules.
 
 ## Follow it as you work
 
