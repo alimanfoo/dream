@@ -9,15 +9,19 @@
 # The default mode scans. It reads the watermark, the highest issue number that
 # existed at the last run, or zero when there is none. It makes one `gh issue
 # list` call. It writes each issue's body to its own file. It prints a JSON
-# object: the repo name, the watermark, the watermark-file path, and the issue
-# list. Each issue carries its number, title, state, and the path to its body
-# file. The skill body reads that path and hands it to a subagent, so the bodies
-# stay out of the session's own context.
+# object: the repo name, the watermark, the watermark-file path, highWater (the
+# highest issue number it saw), and the issue list. Each issue carries its number,
+# title, state, and the path to its body file. The skill body reads that path and
+# hands it to a subagent, so the bodies stay out of the session's own context. The
+# skill body passes highWater back to `--advance`.
 #
-# The `--advance` mode writes the watermark. It re-reads the highest issue number
-# in the repo and saves it, so the next run reads only issues added since. It
-# runs after the report is printed, so an interrupted run repeats rather than
-# skips. On an empty tracker it leaves the watermark unchanged.
+# The `--advance` mode writes the watermark. It takes the paired scan's highWater
+# as an argument and writes it, so the watermark moves only as far as that scan
+# read. An issue filed between the scan and the advance keeps a higher number. So
+# it stays a target next run, rather than a run marking it checked without
+# examining it. The advance runs after the scan prints the report, so an
+# interrupted run repeats rather than skips. An omitted or empty value means the
+# scan saw no issues, so the watermark stays unchanged.
 #
 # The `--full` flag makes the scan report the watermark as zero, so the run
 # rechecks every open issue against all earlier ones.
@@ -36,10 +40,14 @@ die() { printf 'dream:dedup-issues: %s\n' "$*" >&2; exit 2; }
 
 mode=scan
 full=false
+# The highWater --advance writes, taken from the paired scan. Empty means the scan
+# saw no issues, so leave the watermark unchanged.
+advance_value=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --advance) mode=advance ;;
     --full) full=true ;;
+    [0-9]*) advance_value=$1 ;;
     *) die "unknown argument '$1'" ;;
   esac
   shift
@@ -66,15 +74,13 @@ watermark_file="$dir/watermark"
 issue_limit=10000
 
 if [ "$mode" = advance ]; then
-  # The most recently created issue has the highest number, across open and
-  # closed alike, so one integer records how far a run has read.
-  highest=$(gh issue list --repo "$repo" --state all --limit "$issue_limit" \
-    --json number --jq 'map(.number) | max // empty' 2>/dev/null) \
-    || die "cannot read the issues in $repo"
-  # An empty tracker leaves the watermark untouched, so a later run still treats
-  # every issue as new.
-  if [ -n "$highest" ]; then
-    printf '%s\n' "$highest" > "$watermark_file" \
+  # Write the paired scan's highWater, passed as an argument, so the watermark
+  # moves only as far as that scan read. An empty value means the scan saw no
+  # issues, so leave the watermark unchanged.
+  if [ -n "$advance_value" ]; then
+    [[ "$advance_value" =~ ^[0-9]+$ ]] \
+      || die "the --advance value must be a non-negative integer, got '$advance_value'"
+    printf '%s\n' "$advance_value" > "$watermark_file" \
       || die "cannot write the watermark file $watermark_file"
   fi
   exit 0
@@ -112,10 +118,11 @@ while IFS= read -r issue; do
     || die "cannot write the body file for issue $number"
 done < <(printf '%s' "$raw" | jq -c '.[]')
 
-# Emit the issue list with a bodyFile path per issue. Sort it by number, so the
-# skill body reads earlier issues before later ones. This JSON is the one place
-# that names each body file, so the skill body reads the same path this scan
-# wrote.
+# Emit the report. Each issue carries a bodyFile path. The scan sorts issues by
+# number, so the skill body reads earlier issues before later ones. This JSON is
+# the one home for each bodyFile path and for highWater, the snapshot's highest
+# issue number. The skill body reads the paths this scan wrote, and passes
+# highWater to --advance.
 printf '%s' "$raw" | jq \
   --arg repo "$repo" \
   --argjson watermark "$watermark" \
@@ -125,6 +132,7 @@ printf '%s' "$raw" | jq \
     repo: $repo,
     watermark: $watermark,
     watermarkFile: $watermark_file,
+    highWater: (map(.number) | max),
     issues: [.[] | {
       number: .number,
       title: .title,
