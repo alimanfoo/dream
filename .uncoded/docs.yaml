@@ -154,6 +154,12 @@ plugins/:
           Leave these alone:
           Record every finding in a file:
           Return only what needs changing:
+      issue-validator.md:
+        Issue validator:
+          Orient:
+          Evaluate:
+          Draft the comment:
+          Report:
       review-coherence-in-shape.md:
         Carried in shape, not prose:
           The lens:
@@ -258,12 +264,6 @@ plugins/:
         Simplification:
           The lens:
           Reporting:
-      validate-issue.md:
-        Validate issue:
-          Orient:
-          Evaluate:
-          Draft the comment:
-          Report:
     skills/:
       catcher/:
         SKILL.md:

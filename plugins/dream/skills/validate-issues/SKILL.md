@@ -30,16 +30,19 @@ repo's label is "validate 🔍", for example. The user passes it as the argument
 List the open issues carrying the label:
 
 ```bash
-gh issue list --state open --label "<label>" --json number,title
+gh issue list --state open --label "<label>" --limit 500 --json number,title
 ```
+
+The `--limit 500` overrides the default of 30, so a large backlog isn't silently
+truncated.
 
 When none carry it, tell the user so and stop.
 
 ## Evaluate each issue
 
-Launch one `dream:validate-issue` subagent per issue, via the Agent tool, all in
-a single message so they run in parallel. Give each the issue number. Each reads
-the issue itself and returns a recommendation and a drafted comment.
+Launch one `dream:issue-validator` subagent per issue, via the Agent tool, all
+in a single message so they run in parallel. Give each the issue number. Each
+reads the issue itself and returns a recommendation and a drafted comment.
 
 ## Post and mark each issue
 
@@ -52,11 +55,14 @@ Once the subagents return, handle each issue in turn:
 
    > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
-   Then post it: `gh issue comment <N> --body "<comment>"`.
+3. Write the comment to a temporary file and post it, then remove the label. A
+   `--body-file` sidesteps the quoting a long inline body invites. Chain the two
+   commands so the label comes off only when the post succeeds, leaving it in
+   place otherwise, so the issue is picked up again next time:
 
-3. Remove the label, but only after the post succeeds:
-   `gh issue edit <N> --remove-label "<label>"`. A failed post then leaves the
-   label in place, so the issue is picked up again next time.
+   ```bash
+   gh issue comment <N> --body-file <path> && gh issue edit <N> --remove-label "<label>"
+   ```
 
 Removing the label marks the issue validated, whichever way the recommendation
 went.
