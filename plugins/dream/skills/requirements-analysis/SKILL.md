@@ -2,16 +2,15 @@
 name: requirements-analysis
 description:
   Analyse the requirements behind a task and return a draft. It states who the
-  task serves, what it must do, what it is deliberately not for, and the open
-  questions it raises. Point it at an issue, a file or symbol, or a description.
+  task serves, what it must do, and the open questions it raises.
 argument-hint: "<issue | file or symbol | text>"
 ---
 
 # Requirements analysis
 
 Produce a requirements analysis: your explicit reading of what the system must
-do behind the input, for whom, and what it is deliberately not for. The result
-is a draft, ending with the open questions for the user to resolve.
+do behind the input and for whom. The result is a draft, ending with any open
+questions for the user to resolve.
 
 Read the [writing style guide](../../writing-style.md) before you write. It is
 the standard for the analysis and every message you write.
@@ -71,8 +70,8 @@ Consult the record for each surface the input names:
   that relate.
 - **Prior PRs.** `git blame` or `git log` the relevant lines to find the PRs
   that last shaped them, then read each PR's description
-  (`gh pr view <N> --json body`). It may record the consumers, use cases, and
-  non-goals for that surface. Carry that into the analysis.
+  (`gh pr view <N> --json body`). It may record the consumers and use cases for
+  that surface. Carry that into the analysis.
 
 ## Check the input against the current code
 
@@ -149,10 +148,6 @@ Every shape also carries, when they apply:
   goal. Each cites what in the read suggests it, and a candidate use case names
   the consumer it would serve. These are for the reader to consider, not
   commitments.
-- **System non-goals**: what the product is deliberately not built for, given
-  what it is for, such as a consumer it will never serve or a behaviour it will
-  never take on. This records intent, not scope. Most tasks have none. Leave the
-  section out rather than fill it with merely out-of-scope work.
 - **Open questions**: calls you can't make from the cited material, where the
   call matters for what comes next. Frame each concretely and list the answers
   you can see, with your recommendation. The test: write the `assumed` value
