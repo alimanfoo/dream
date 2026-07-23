@@ -258,6 +258,12 @@ plugins/:
         Simplification:
           The lens:
           Reporting:
+      validate-issue.md:
+        Validate issue:
+          Orient:
+          Evaluate:
+          Draft the comment:
+          Report:
     skills/:
       catcher/:
         SKILL.md:
@@ -515,6 +521,13 @@ plugins/:
                 SendMessage:
                 Signature:
                 Non-user-facing agents:
+      validate-issues/:
+        SKILL.md:
+          Validate issues:
+            Arguments:
+            List the labelled issues:
+            Evaluate each issue:
+            Post and mark each issue:
       watcher/:
         SKILL.md:
           Watcher:
