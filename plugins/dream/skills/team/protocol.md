@@ -2,7 +2,7 @@
 
 How an agent team works on a codebase.
 
-## The dream
+## Goal
 
 The dream is software that agents carry end to end, for as long as it lives,
 without the codebase rotting and without a human stepping in to keep it healthy.
