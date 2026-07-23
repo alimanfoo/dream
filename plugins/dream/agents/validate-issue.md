@@ -3,7 +3,7 @@ name: validate-issue
 description:
   Evaluates one issue for whether it is worth implementing, and reports a
   recommendation with a drafted comment.
-model: opus
+model: sonnet
 tools: Read, Grep, Glob, Bash
 ---
 
