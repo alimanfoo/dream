@@ -40,25 +40,32 @@ When none carry it, tell the user so and stop.
 
 ## Evaluate each issue
 
-Launch one `dream:issue-validator` subagent per issue, via the Agent tool, all
-in a single message so they run in parallel. Give each the issue number. Each
-reads the issue itself and returns a recommendation and a drafted comment.
+Launch one `dream:issue-validator` subagent per issue, via the Agent tool. Give
+each the issue number. It reads the issue itself and returns the comment to
+post.
+
+Launch them in parallel, several in one message so they run at once. Cap each
+batch at about ten. A label can sit on a large backlog, and firing one subagent
+per issue all at once would strain the API and thin each subagent's output.
 
 ## Post and mark each issue
 
-Once the subagents return, handle each issue in turn:
+Once a batch returns, handle each issue in it. Skip any whose subagent returned
+without a usable comment. Leave that issue's label in place and tell the user,
+so nothing half-formed is posted. For each of the rest:
 
-1. Copy-edit the drafted comment. Run the `/dream:copy-edit` skill over it,
-   passing the comment as the passage to review, since it is not a file.
-2. End the comment with the Claude Code footer, so a reader can tell it is
+1. Write the comment to a temporary file.
+2. Copy-edit it. Run the `/dream:copy-edit` skill over the file, giving its
+   absolute path.
+3. End the file with the Claude Code footer, so a reader can tell the comment is
    agent-authored:
 
    > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
-3. Write the comment to a temporary file and post it, then remove the label. A
-   `--body-file` sidesteps the quoting a long inline body invites. Chain the two
-   commands so the label comes off only when the post succeeds, leaving it in
-   place otherwise, so the issue is picked up again next time:
+4. Post the comment and remove the label. Post from the file, so the prose needs
+   no shell quoting. Chain the two commands so the label comes off only when the
+   post succeeds, leaving it in place otherwise, so the issue is picked up again
+   next time:
 
    ```bash
    gh issue comment <N> --body-file <path> && gh issue edit <N> --remove-label "<label>"

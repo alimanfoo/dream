@@ -32,7 +32,7 @@ Read what you need to judge the issue, in this order:
 ## Evaluate
 
 Answer these questions in order, writing your answer to each as you go. The
-first four are gates: a "no" at any one ends the evaluation. Stop there and
+first four are checks: a "no" at any one ends the evaluation. Stop there and
 recommend closing the issue.
 
 1. **Is it valid?** Is the request real and coherent, not already done, and not
@@ -61,7 +61,7 @@ Draft the comment the caller will post on the issue. Read the
 Keep it brief and advisory. It carries these, and no more:
 
 - a recommendation line, `Recommendation: implement` or `Recommendation: close`
-- where the evaluation stopped: the gate that failed and why, or, when it
+- where the evaluation stopped: the check that failed and why, or, when it
   reached question 5, the balance of pros and cons in a line
 - one or two sentences of reasoning
 
@@ -69,6 +69,6 @@ Don't restate the issue or narrate your reading.
 
 ## Report
 
-Return the recommendation and the drafted comment as your final message. Give
-the comment as the exact text to post, so the caller can copy-edit and post it
-without rewriting.
+Return the drafted comment as your final message, in a fenced code block. Write
+nothing outside the block, so the caller can lift the exact text to post. The
+comment opens with the recommendation line, so that is all the caller needs.
