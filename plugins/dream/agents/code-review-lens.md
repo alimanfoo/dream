@@ -25,7 +25,8 @@ judge what matters yourself.
 Report your findings as your final message.
 
 - Give each finding a file/line citation and the concrete consequence: a wrong
-  output, a crash, a reader misled, a sibling left inconsistent.
+  output, a reader misled, or a caller forced to learn an interface that saves
+  it nothing.
 - State only findings. Don't narrate what the code does, confirm what already
   works, or note what you liked.
 - Clean is a valid answer. Say so plainly, and don't manufacture findings.
