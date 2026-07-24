@@ -16,9 +16,6 @@ Your reflex will be the smallest local fix. Reach past it to the change that
 leaves the whole most coherent. That is usually the larger change, and usually
 the right one.
 
-Reach only there. Spend the effort where it compounds. Never spend it on
-complexity the need has not earned.
-
 ## Resolve the root cause
 
 Scope the fix to the mechanism behind the request, not the symptom site the
