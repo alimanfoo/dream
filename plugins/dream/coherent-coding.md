@@ -2,6 +2,8 @@
 
 This guide sets the standard for the code you design and write.
 
+## Golden rule
+
 Coherence and maintenance of the codebase are your responsibility. Do not leave
 any maintenance work or technical debt for future sessions to address.
 

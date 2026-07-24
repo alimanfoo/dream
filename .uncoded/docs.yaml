@@ -260,6 +260,7 @@ plugins/:
           Reporting:
     coherent-coding.md:
       Coherent coding guide:
+        Golden rule:
         Coherence is the floor, not the ceiling:
         Resolve the root cause:
         Existing code is unproven:
