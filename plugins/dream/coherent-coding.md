@@ -9,8 +9,8 @@ any maintenance work or technical debt for future sessions to address.
 
 Make the code fit, then reach past fitting. Making it fit is the baseline. Above
 it is the work that leaves the code simpler than you found it: reach the root
-cause, find the generalisation that simplifies the code and models the domain
-better, make the intent plain.
+cause, search for the generalisation that removes duplication, hides complexity
+and models the domain better, make the intent plain.
 
 Your reflex will be the smallest local fix. Reach past it to the change that
 leaves the whole most coherent. That is usually the larger change, and usually
