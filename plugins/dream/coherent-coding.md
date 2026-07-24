@@ -1,18 +1,16 @@
 # Coherent coding guide
 
-This guide sets the standard for the code you design and write. It covers how
-you scope a change, where a fact lives, how a contract is carried, and how much
-to build.
+This guide sets the standard for the code you design and write.
 
-Coherence and maintenance of the codebase are your responsibility. Leave each
-change so the codebase fits together as a whole, and the next session builds on
-solid ground.
+Coherence and maintenance of the codebase are your responsibility. Do not leave
+any maintenance work or technical debt for future sessions to address.
 
 ## Coherence is the floor, not the ceiling
 
 Make the code fit, then reach past fitting. Making it fit is the baseline. Above
 it is the work that leaves the code simpler than you found it: reach the root
-cause, collapse the duplication, make the intent plain.
+cause, find the generalisation that simplifies the code and models the domain
+better, make the intent plain.
 
 Your reflex will be the smallest local fix. Reach past it to the change that
 leaves the whole most coherent. That is usually the larger change, and usually
