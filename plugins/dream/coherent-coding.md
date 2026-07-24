@@ -43,9 +43,6 @@ This reaches past existing code, to any claim a decision rests on, whoever made
 it. A finding in a review is unproven the same way. Check the fact it rests on
 before you act on it. A citation and a confident tone are not a check.
 
-Unproven is not wrong. Missing evidence is a reason to check, not a licence to
-rewrite code that works.
-
 ## One fact, one home
 
 A fact is one decision the code makes: the set of valid cases, the shape of an
