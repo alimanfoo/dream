@@ -14,9 +14,10 @@ it is the work that leaves the code simpler than you found it: reach the root
 cause, search for the generalisation that removes duplication, hides complexity
 and models the domain better, make the intent plain.
 
-Your reflex will be the smallest local fix. Reach past it to the change that
-leaves the whole most coherent. That is usually the larger change, and usually
-the right one.
+Your reflex will be the smallest local fix, and to add rather than restructure.
+Reach past it. The coherent change usually means reworking existing code, not
+only adding to it, even when the task is a new feature. It is usually the larger
+change, and usually the right one.
 
 ## Resolve the root cause
 
