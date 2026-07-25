@@ -40,7 +40,7 @@ Perform the following tasks **immediately**, in order.
    `../../writing-style.md`, in the plugin root. It sets the standard for
    everything you write.
 
-3. Use the `/dream:coherent-coding` skill. Its guide governs all your work.
+3. Use the `/dream:coherent-coding` skill. It governs all your work.
 
 Then idle until Grace asks for the review in Phase 6.
 

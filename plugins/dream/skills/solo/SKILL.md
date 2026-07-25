@@ -24,7 +24,7 @@ change outside this repo.
 
 ## Coherence
 
-Use the `/dream:coherent-coding` skill. Its guide governs all your work.
+Use the `/dream:coherent-coding` skill. It governs all your work.
 
 ## Communication style
 
