@@ -229,9 +229,26 @@ Three cautions:
 
 ## Names that tell the truth
 
-Name each thing for what it is or does. A reader trusts a name and builds on it
-without reading the body, so a name that misleads costs more than no name at
-all.
+Make naming the first place you spend effort, not the last. Identifiers carry
+the meaning that comments would otherwise. Name each thing for what it is or
+does. A reader trusts a name and builds on it without reading the body, so a
+name that misleads costs more than no name at all.
+
+- **Length matches scope.** A loop index across three lines can be `i`. A value
+  that crosses ten lines earns a domain word. The bigger the scope, the longer
+  the name earns its keep.
+- **Use domain words, not filler.** Prefer `merge_orders` over `process_data`,
+  `pending_payment` over `pending_item`. Generic verbs (`handle`, `process`,
+  `manage`) and generic nouns (`data`, `info`, `item`) push the meaning into the
+  reader's head.
+- **Booleans read as predicates.** `is_active`, `has_pending`, `should_retry`,
+  not `active`, `pending_flag`, `retry_status`. `if order.is_paid:` reads as
+  English.
+- **No abbreviations, no type prefixes.** `users` not `usrs`, `customer_email`
+  not `strCustomerEmail`. The type annotation already says the type.
+- **Describe purpose, not implementation.** `unique_users` beats `user_set`,
+  `next_attempt` beats `retry_count_plus_one`. The reader cares what the value
+  means, not how it is stored.
 
 Keep the name true as the code changes. When a function's behaviour shifts, a
 variable's type narrows, or a concept is renamed, the old name becomes a lie the
@@ -240,6 +257,9 @@ next reader believes. Rename at the same time, everywhere the name appears.
 Use the same word for the same idea across the codebase, and a different word
 for a different idea. A synonym reached for out of variety reads as a new
 concept that is not there.
+
+If a function does more than its name says, the function is wrong, not the name.
+Split it, or rename it to the truth.
 
 ## Defend behaviour, not surface
 
@@ -253,15 +273,34 @@ an arbitrary constant.
 
 ## Strip the compensation
 
-Watch for scaffolding that does work the underlying code should be doing:
+Watch for scaffolding that does work the underlying code should be doing. The
+scaffolding makes something look true that the code doesn't make true, so the
+change only appears to do what it claims. Common shapes:
 
-- a comment asserting a property the code does not show,
-- a mock insulating the change from its dependency,
-- an exception handler hiding a fixable error,
-- a runtime validator substituting for the type system.
+- **Comment as promise.** A comment asserting a property the code doesn't show
+  (`# always holds`, `# this is dead`), with nothing in the change to back it.
+- **Mock as insulation.** A test mocks the very dependency the change wires
+  through, so the seam appears to work without threading all the way down.
+- **Handler as concealment.** An exception handler swallows an error whose cause
+  the change could have fixed.
+- **Validator as type-substitute.** A runtime check rejects inputs the types
+  upstream should have made impossible (see
+  [Code-shape ladder](#code-shape-ladder)).
+- **Docstring as contract.** Prose stating an invariant, precondition, or
+  cross-call rule the signature and types don't enforce: `must be …`,
+  `callers must …`, `valid only when …`, `if X then Y`.
+- **Flag as opt-out.** A flag lets callers skip a path that otherwise
+  misbehaves, treating a bug as a setting.
+- **Normalisation before assertion.** A normalisation step before a test
+  assertion that should have held without it, papering over the inconsistency it
+  claims to test.
+- **Retry around root cause.** A retry loop wraps an operation whose flakiness
+  is fixable, promoting the bug to a pattern.
 
-Mentally remove the scaffolding and read the change again. If it no longer
-holds, the real gap is in the underlying code, not the scaffolding. Fix the gap.
+The test: mentally remove the scaffolding and read the change again. If it no
+longer holds, the real gap is in the underlying code, not the scaffolding. Fix
+the gap. These shapes are tells, not labels. Each says the contract being
+asserted is wider than the code that implements it.
 
 ## Adding a concept reframes the others
 
