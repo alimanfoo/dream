@@ -190,6 +190,16 @@ Watch for scaffolding that does work the underlying code should be doing:
 Mentally remove the scaffolding and read the change again. If it no longer
 holds, the real gap is in the underlying code, not the scaffolding. Fix the gap.
 
+## Adding a concept reframes the others
+
+Adding a new concept or feature to a system shifts what the existing ones do. A
+new type, module, or mechanism can narrow an old one's role, or make it
+redundant.
+
+When you add a concept, list every existing concept it touches. Ask of each: is
+it still doing the same job? Has its role narrowed? Is it now incidental? Prune
+as you add. Adding alone leaves the system carrying both.
+
 ## Don't over-build
 
 Add nothing the change does not need. Coherence can call for changing code
