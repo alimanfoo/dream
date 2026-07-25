@@ -14,10 +14,23 @@ it is the work that leaves the code simpler than you found it. Reach the root
 cause. Search for the generalisation that removes duplication, hides complexity,
 and models the domain better. Make the intent plain.
 
-Your reflex will be the smallest local fix, and to add rather than restructure.
-Reach past it. The coherent change usually means reworking existing code, not
-only adding to it, even when the task is a new feature. It is usually the larger
-change, and usually the right one.
+## Tidy first
+
+Expect to change existing code whenever you add new code. Your reflex will be
+the smallest local fix, to add rather than restructure. Reach past it. The
+coherent change usually means reworking existing code, not only adding to it,
+even when the task is a new feature. It is usually the larger change, and
+usually the right one.
+
+Minimising the change to existing code backfires. New code forced to fit around
+structures that no longer suit it comes out more complex, and leaves more work
+for the next session. The smaller diff costs more later.
+
+So tidy first where you can. Make a behaviour-preserving change that makes the
+new code easy to add, then add it: extract a helper before adding a sibling
+case, rename a confusing parameter before threading new arguments, split a
+tangled function before adding a branch. And tidy as you work, whenever the
+shape resists the change.
 
 ## Resolve the root cause
 
