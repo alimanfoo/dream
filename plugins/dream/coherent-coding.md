@@ -168,16 +168,6 @@ Ask of a borderline surface: has this change made it adjacent? An antecedent in
 the change flips the call toward in-scope. Search the siblings, callers, and
 peer files, not just the changed lines. Grep for the pattern the change edited.
 
-## Defend behaviour, not surface
-
-Before adding machinery, ask what behaviour it defends. Machinery means a test,
-a glossary, a regen step, a cross-reference rule, a backlog issue.
-
-Ask two questions: what specific behaviour does this defend, and who is the real
-consumer? If the only answer is incidental surface, the machinery earns nothing.
-Incidental surface includes a count nothing depends on, a docstring phrasing, or
-an arbitrary constant.
-
 ## Strip the compensation
 
 Watch for scaffolding that does work the underlying code should be doing:
@@ -189,6 +179,16 @@ Watch for scaffolding that does work the underlying code should be doing:
 
 Mentally remove the scaffolding and read the change again. If it no longer
 holds, the real gap is in the underlying code, not the scaffolding. Fix the gap.
+
+## Defend behaviour, not surface
+
+Before adding machinery, ask what behaviour it defends. Machinery means a test,
+a glossary, a regen step, a cross-reference rule, a backlog issue.
+
+Ask two questions: what specific behaviour does this defend, and who is the real
+consumer? If the only answer is incidental surface, the machinery earns nothing.
+Incidental surface includes a count nothing depends on, a docstring phrasing, or
+an arbitrary constant.
 
 ## Adding a concept reframes the others
 
