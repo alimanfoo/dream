@@ -43,6 +43,22 @@ change fixes the cause of the inconsistency, not one instance of it.
 
 This shapes the change before any code exists.
 
+## Same edit, every instance
+
+When you make a change, look for every other surface that needs the same edit.
+
+- **A missed instance.** A surface the change's own rule covers but the diff did
+  not reach. A sibling file with the same misnamed constant, a test still
+  carrying a phrase the change removed, a registration file missing the new
+  entry.
+- **A surface the change made adjacent.** The change itself turned it
+  inconsistent. A promoted helper whose underscore prefix is now a fossil, a
+  removed flag's orphaned branch, a renamed concept's parallel function.
+
+Ask of a borderline surface: has this change made it adjacent? An antecedent in
+the change flips the call toward in-scope. Search the siblings, callers, and
+peer files, not just the changed lines. Grep for the pattern the change edited.
+
 ## Existing code is unproven
 
 Treat every property of existing code as unproven until you have seen the
@@ -87,6 +103,36 @@ Two traps:
   alike today are not one fact. Ask: if this fact changed, would every copy have
   to change too? A no means they are different facts. Leave them apart.
 
+## One concept, one model
+
+Give each concept one representation, and use it everywhere. When the same idea
+is modelled two ways, every boundary between them has to convert, and the two
+models drift as the concept grows.
+
+This differs from a duplicated fact. A duplicated fact is one value copied. Two
+models are two shapes for one idea: a status held as a string here and an enum
+there, an entity as a dict in one layer and a class in another, a set of states
+spelled out twice with different members.
+
+Pick the model that best fits the concept. Convert at the edge, once, where
+outside data comes in. Inside that edge, one model. Two models of one thing is a
+sign the concept has not been named.
+
+## Separation and boundaries
+
+Keep concerns that change for different reasons in different places. A unit
+should do one job, so a change to one concern touches one place, not many.
+
+A boundary is where two concerns meet through a narrow interface. Draw it where
+the coupling is thinnest, where the two sides share a small, stable contract and
+little else. Code on either side of a good boundary changes without disturbing
+the other.
+
+Two signs a boundary is wrong. One change forces edits in several units that
+seemed unrelated, so a concern is smeared across them. Or one unit folds in
+decisions that change on different schedules, so every reason to change reaches
+into it. Move the code until each concern sits on one side.
+
 ## Code-shape ladder
 
 Carry a contract in code shape, not in prose or a runtime check. Apply this
@@ -127,6 +173,22 @@ because Y") points at a deeper layer and makes the code look intentional. Or the
 same check is scattered across several internal functions, with no single parser
 at the boundary.
 
+## Define errors out of existence
+
+Before handling an error, ask whether you can redefine the operation so the
+error cannot arise. A small change to an interface's semantics often removes a
+whole class of exceptions. A delete that treats a missing item as already gone
+needs no not-found error. A lookup that returns an empty list needs no empty
+case at the call site. A substring that clamps an out-of-range index to the
+string's bounds cannot raise an out-of-range error.
+
+Each error you design away is a branch every caller no longer writes, tests, or
+gets wrong. The complexity moves from the many callers into the one
+implementation, which is the cheaper place for it.
+
+Prefer this to a handler. But don't swallow a real failure to do it: an error
+that signals a genuine bug should still surface loudly.
+
 ## Cross-site rules
 
 Some rules have to hold in many places at once: every API endpoint returns
@@ -165,21 +227,29 @@ Three cautions:
 - A check grounds out in the product. Aim a coverage gate or a test at the
   product the repo delivers, not at the tooling built around it.
 
-## Same edit, every instance
+## Names that tell the truth
 
-When you make a change, look for every other surface that needs the same edit.
+Name each thing for what it is or does. A reader trusts a name and builds on it
+without reading the body, so a name that misleads costs more than no name at
+all.
 
-- **A missed instance.** A surface the change's own rule covers but the diff did
-  not reach. A sibling file with the same misnamed constant, a test still
-  carrying a phrase the change removed, a registration file missing the new
-  entry.
-- **A surface the change made adjacent.** The change itself turned it
-  inconsistent. A promoted helper whose underscore prefix is now a fossil, a
-  removed flag's orphaned branch, a renamed concept's parallel function.
+Keep the name true as the code changes. When a function's behaviour shifts, a
+variable's type narrows, or a concept is renamed, the old name becomes a lie the
+next reader believes. Rename at the same time, everywhere the name appears.
 
-Ask of a borderline surface: has this change made it adjacent? An antecedent in
-the change flips the call toward in-scope. Search the siblings, callers, and
-peer files, not just the changed lines. Grep for the pattern the change edited.
+Use the same word for the same idea across the codebase, and a different word
+for a different idea. A synonym reached for out of variety reads as a new
+concept that is not there.
+
+## Defend behaviour, not surface
+
+Before adding machinery, ask what behaviour it defends. Machinery means a test,
+a glossary, a regen step, a cross-reference rule, a backlog issue.
+
+Ask two questions: what specific behaviour does this defend, and who is the real
+consumer? If the only answer is incidental surface, the machinery earns nothing.
+Incidental surface includes a count nothing depends on, a docstring phrasing, or
+an arbitrary constant.
 
 ## Strip the compensation
 
@@ -192,16 +262,6 @@ Watch for scaffolding that does work the underlying code should be doing:
 
 Mentally remove the scaffolding and read the change again. If it no longer
 holds, the real gap is in the underlying code, not the scaffolding. Fix the gap.
-
-## Defend behaviour, not surface
-
-Before adding machinery, ask what behaviour it defends. Machinery means a test,
-a glossary, a regen step, a cross-reference rule, a backlog issue.
-
-Ask two questions: what specific behaviour does this defend, and who is the real
-consumer? If the only answer is incidental surface, the machinery earns nothing.
-Incidental surface includes a count nothing depends on, a docstring phrasing, or
-an arbitrary constant.
 
 ## Adding a concept reframes the others
 

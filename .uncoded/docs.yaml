@@ -264,14 +264,18 @@ plugins/:
         Coherence is the floor, not the ceiling:
         Tidy first:
         Resolve the root cause:
+        Same edit, every instance:
         Existing code is unproven:
         One fact, one home:
+        One concept, one model:
+        Separation and boundaries:
         Code-shape ladder:
         Wrong-layer defensive code:
+        Define errors out of existence:
         Cross-site rules:
-        Same edit, every instance:
-        Strip the compensation:
+        Names that tell the truth:
         Defend behaviour, not surface:
+        Strip the compensation:
         Adding a concept reframes the others:
         The burden of proof is on the addition:
     skills/:
