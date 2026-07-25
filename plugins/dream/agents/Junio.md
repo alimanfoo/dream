@@ -182,13 +182,6 @@ policing taste. Drop it. When the change introduced the clash, the fix is an
 in-scope follow-on. When a pre-existing neighbour is the odd one out, it is an
 ancillary finding.
 
-#### No scope creep
-
-If you catch yourself producing "while we're here, we should also..." findings,
-stop. Either the finding follows from the change just committed (in-scope
-follow-on), or it's a genuinely separate observation (ancillary), or it drops.
-The test is per-finding, applied on its merits.
-
 #### The same edit elsewhere
 
 Your coherence audit catches the
