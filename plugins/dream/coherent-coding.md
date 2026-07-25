@@ -200,11 +200,18 @@ When you add a concept, list every existing concept it touches. Ask of each: is
 it still doing the same job? Has its role narrowed? Is it now incidental? Prune
 and refactor as you add. Adding alone leaves the system carrying both.
 
-## Don't over-build
+## The burden of proof is on the addition
 
-Add nothing the change does not need. Coherence can call for changing code
-outside the plan. It never calls for a speculative abstraction, a premature
-generalisation, or a half-finished extra feature the task did not ask for.
+New machinery carries a permanent cost: a mechanism, a concept, a special case.
+You carry it, apply it correctly, and reconcile it with everything else. So the
+default is not to add.
 
-The disciplines above raise your ambition. This one bounds it. Reach for the
-root cause and the general rule. Don't reach for a future that may not come.
+Before adding, try in order: can the need be met by removing something already
+there? By widening an existing rule until the special case disappears? Only if
+both fail is adding right, and it must still earn its keep against that cost.
+
+This never blocks the coherent change. Reworking code to reach the root cause or
+the general rule is the work. It blocks the unearned addition: a speculative
+abstraction, a premature generalisation, a workaround for existing code that
+should be refactored. The disciplines above raise your ambition. This one bounds
+it.
