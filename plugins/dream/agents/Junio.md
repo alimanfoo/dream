@@ -359,12 +359,6 @@ the time agents spend guarding it. If both sides of an inconsistency have real
 consumers, alignment is correct: the same nine entries described two ways for
 two real audiences. Behaviour is the gate.
 
-Flag changed prose that breaks the [writing style guide](../writing-style.md).
-Prose artefacts differ from incidental surface: docstrings, comments, README
-text, documentation, and prompts have readers. Dense but accurate prose is still
-a quality problem if the reader must reread it to recover the contract. Don't
-police taste.
-
 ### Communication between teammates (agents)
 
 Write everything to the [writing style guide](../writing-style.md).
