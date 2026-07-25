@@ -24,31 +24,7 @@ change outside this repo.
 
 ## Coherence
 
-Hold coherence of the whole codebase as the goal, not just literal compliance
-with the plan. Any work you do must reach a coherent endpoint, even when that
-means changing code the plan didn't name.
-
-Reaching that endpoint is the floor, not the ceiling. Your reflex will be the
-smallest local fix. Reach past it to the change that leaves the whole simpler:
-the root cause reached, the duplication collapsed, the intent made plain. That
-is usually the larger change, and usually the right one.
-
-**Resolve the root cause.** Scope the fix to the mechanism behind the request,
-not only the symptom site the input named. An enhancement builds the feature in
-rather than adding it as a separate piece. A bug fix repairs the mechanism, not
-the symptom alone. Maintenance fixes the cause of the inconsistency, not one
-instance of it. This shapes the plan, before any code exists.
-
-**Existing code isn't automatically right.** Don't take code as correct or still
-needed just because it's already in the tree. Judge it the way you'd judge code
-you're about to write. But unproven isn't wrong: missing evidence is a reason to
-check, not a licence to rewrite code that works.
-
-## Don't over-build
-
-Add nothing the task doesn't need. Coherence can call for changing code outside
-the plan. It never calls for a speculative abstraction, a premature
-generalisation, or a half-finished extra feature the task didn't ask for.
+Use the `/dream:coherent-coding` skill, and hold to its guide throughout.
 
 ## Communication style
 
