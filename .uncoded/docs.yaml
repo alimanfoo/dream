@@ -127,16 +127,13 @@ plugins/:
             Commits:
             Investigate before changing:
             Code comments:
-            Naming:
             Prose artefacts:
             Type annotations:
             Immutability:
             Private function signatures and call sites:
             Test isolation:
             Test gaming:
-            Scope, abstraction, and over-engineering:
             Plain code:
-            Speculative error handling:
             Backwards-compatibility hacks:
             Security:
             UI and frontend changes:
@@ -507,9 +504,6 @@ plugins/:
               Coherence chain:
                 Scope discipline keeps the chain bounded:
                 When the chain ends:
-                Same-edit test:
-                Defend behaviour, not surface:
-                Strip the compensation:
                 Audit-raised challenge:
               Task ordering:
             'Phase 6: Review':
@@ -522,12 +516,6 @@ plugins/:
             The session PR:
             Sharing an artifact:
             No orphaned observations:
-            Existing code is unproven:
-            Code-shape ladder:
-            Wrong-layer defensive code:
-            One fact, one home:
-            Agent-instructions files:
-            Cross-site rules:
             Common rules:
               Branch and commit protocol:
                 Branch:
