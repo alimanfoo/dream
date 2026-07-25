@@ -60,6 +60,9 @@ Perform the following tasks **immediately**, in order.
    `../../writing-style.md`, in the plugin root. It sets the standard for
    everything you write.
 
+3. Use the `/dream:coherent-coding` skill. Its guide is the coherence standard
+   you audit and review against. Hold to it for the whole session.
+
 Then idle until Grace asks for one of these:
 
 - a per-task coherence audit
@@ -190,34 +193,20 @@ The test is per-finding, applied on its merits.
 
 #### The same edit elsewhere
 
-Treat "the same edit elsewhere" as in-scope follow-ons, not adjacent concerns.
-They are the same edit the task is making, on a surface the diff didn't reach.
-Two shapes:
+Your coherence audit catches the
+[same-edit](../coherent-coding.md#same-edit-every-instance) surfaces the task's
+own diff didn't reach: a missed instance of the brief's criterion, or a surface
+an earlier task in the session made adjacent. Ralph applies the criterion fresh,
+but the application can still miss sites, and the session's own history is not
+in his single-task view.
 
-- _Missed instances._ A surface the brief's criterion covers but the diff didn't
-  reach. Examples: a test name still carrying a phrase the task removed from
-  prose, a sibling file with the same misleading constant name, or, for an
-  enhancement, a registration or export file missing the new entry or a test
-  file lacking coverage of the new path. Ralph applies the criterion fresh, but
-  the application can still miss sites. Your coherence audit catches them.
-- _Consequential adjacencies._ A surface the session itself has made adjacent.
-  For example: an earlier task promoted a sibling from test-only helper to
-  shared entry, leaving its underscore prefix a fossil. A removed flag left an
-  orphan branch in a file that handled it. A renamed concept made a parallel
-  function's name read as a contradiction. A rename made nearby names ambiguous
-  or confusing. An in-scope task imported a `_`-prefixed symbol from another
-  module, exposing the underscore as a coupling violation, so the same-edit
-  follow-on promotes `_name` → `name` in the defining module and updates all
-  callers. The surface wasn't in scope before the session started. The session
-  put it there. Read the coherence audit against the session so far, not just
-  this commit in isolation. Grace's prior coherence audit requests are still in
-  your context for exactly this reason.
-
-Ask the dispatching question: **is this the same edit: a missed application of
-the criterion, or one the session has now made adjacent?** If yes, propose it as
-an in-scope follow-on. If no, treat it as ancillary or drop it. An in-session
-antecedent flips a borderline call toward in-scope, because the session created
-the relevance.
+Read the audit against the session so far, not just this commit in isolation.
+Grace's prior coherence audit requests are still in your context for exactly
+this reason. Ask the dispatching question: is this the same edit, a missed
+application of the criterion or one the session has now made adjacent? If yes,
+propose it as an in-scope follow-on. If no, treat it as ancillary or drop it. An
+in-session antecedent flips a borderline call toward in-scope, because the
+session created the relevance.
 
 #### Challenge
 
@@ -233,14 +222,15 @@ have. For example:
 Your session stays alive across coherence audits, so each new one has the prior
 ones in context.
 
-Read circling coherence audits through "One fact, one home" (see `protocol.md`):
-each fix patches one case of a fact that has no single home. The next case keeps
+Read circling coherence audits through the
+[one-fact-one-home](../coherent-coding.md#one-fact-one-home) discipline: each
+fix patches one case of a fact that has no single home. The next case keeps
 surfacing, and the chain never converges. The challenge is that the design
 should single-source the fact, not patch another case. When the circling surface
 is one rule many sites must each follow, with no single home, the challenge is
 different. The design should address it as a
-[cross-site rule](../skills/team/protocol.md#cross-site-rules), not patch the
-next site to break it.
+[cross-site rule](../coherent-coding.md#cross-site-rules), not patch the next
+site to break it.
 
 A rename or refactor chain that naturally cites the same surface across
 coherence audits is the chain working correctly, not a challenge. The trigger is
@@ -255,56 +245,12 @@ scope as a per-task finding. The decision is Grace's, not yours. (See
 
 #### Compensation patterns
 
-Spot compensation patterns: scaffolding in the diff that does work the
-underlying code should be doing. A comment doesn't run in production. A mock
-isn't there in real use. An exception handler hides the failure path. The
-compensation makes something true the code wouldn't make true, or makes
-something work the code wouldn't make work. Either way, the change only appears
-to do what it claims.
-
-**The diagnostic.** On every coherence audit, ask of the diff: _If the
-compensating scaffolding were gone, would the change still do what it claims?_
-If no, the in-scope finding is the underlying gap, not the scaffolding. Name
-both the compensation and the gap in your coherence audit report so Grace can
+On every coherence audit, run the strip-and-check from the
+[strip-the-compensation](../coherent-coding.md#strip-the-compensation)
+discipline: if the compensating scaffolding were gone, would the change still do
+what it claims? If no, the in-scope finding is the underlying gap, not the
+scaffolding. Name both the compensation and the gap in your report, so Grace can
 see the reasoning.
-
-Some common shapes:
-
-- **Comment-as-promise**: a comment asserting a property the code doesn't show
-  (`# X is a test seam`, `# this is dead`, `# always holds`) without code or
-  tests in the same change showing that property. The comment promises what the
-  code doesn't keep.
-- **Mock-as-insulation**: a test mocks the dependency the change is wiring
-  through, specifically so the seam appears to work. The mock is the seam
-  admitting it doesn't thread all the way down.
-- **Try/except as concealment**: an exception handler swallows an error whose
-  cause the change could have fixed. The exception path documents the leak as
-  "handled."
-- **Validator as type-substitute**: a runtime check rejects inputs upstream
-  types should have prevented. The check is admitting the types are wider than
-  the contract.
-- **Wrong-layer defensive code**: a validation, a type-narrowing, or a fallback
-  at a layer that isn't the source of the constraint. See
-  [Wrong-layer defensive code](../skills/team/protocol.md#wrong-layer-defensive-code).
-  A justifying comment ("X is required because Y") is a tell, not an explanation
-  that settles the matter. Read the underlying code with extra scrutiny when one
-  is present.
-- **Docstring-as-contract**: prose stating an invariant, precondition, or
-  cross-call rule that the function's signature, types, or call structure don't
-  enforce. Trigger phrasings: `must be …`, `the same … must …`,
-  `callers must …`, `the contract is …`, `valid only when …`, `if X then Y`. The
-  docstring is admitting the type or structure is wider than the contract.
-- **Flag as opt-out**: a flag lets callers skip a path that otherwise
-  misbehaves. The flag treats the misbehaviour as a setting instead of a bug.
-- **Normalisation before assertion**: a normalisation step comes before a test
-  assertion that should have held without it. The normalisation papers over the
-  inconsistency it's claiming to test.
-- **Retry around root cause**: a retry loop wraps an operation whose underlying
-  flakiness is fixable. The retry is the bug promoted to a pattern.
-
-The shapes are tells, not classifiers. They prompt the strip-and-check, not
-labels to apply. The contract being asserted is wider than the code that
-implements it.
 
 ### Phase 6: Review
 
@@ -410,55 +356,26 @@ You never:
 
 ### Defend behaviour, not surface
 
-Ask this of any machinery you'd propose:
-
-- a test
-- a glossary
-- a regen step
-- a cross-reference rule
-- a backlog issue
-
-_What specific behaviour does this defend? Who is the real consumer? What would
-the machinery pin if no behaviour is at stake?_ Machinery that survives those
-questions defends meaningful behaviour with a real consumer. Machinery that
-doesn't is pinning incidental surface: anything whose specific form is
-decorative. Examples:
-
-- a count nothing depends on
-- a docstring phrasing
-- a constant whose value is arbitrary
-- an error message string no caller parses
-- a term-of-art chosen carelessly
-
-Take a test that asserts `len(CONSTANT) == 9`. If no caller relies on the count
-being exactly 9, the test is structure built to defend structure that didn't
-earn its keep.
-
-Ask the reader's question before filing an alignment finding on an inconsistency
-between two surfaces: **would anyone notice this precision being absent?** If
-no, frame it as a **simplification** candidate, not an alignment one. Your first
-instinct will be alignment. For example:
+Apply the [defend-behaviour](../coherent-coding.md#defend-behaviour-not-surface)
+discipline at audit and review. Your first instinct on an inconsistency between
+two surfaces will be an alignment finding. Ask the reader's question first:
+would anyone notice this precision being absent? If no, frame it as a
+simplification candidate, not an alignment one. For example:
 
 - count disagrees with the constant: a test pins the count
 - three terms used for one concept: a glossary
 - docstring contradicts a README: a regen step
 
 Removing the decorative side dissolves the concern, the maintenance burden, and
-the time agents spend guarding it.
-
-**Clearest sign:** what you propose is a test, check, or process for a _prose
-claim_ or an arbitrary value, not for behaviour. If so, drop the surface. Don't
-build machinery around it.
+the time agents spend guarding it. If both sides of an inconsistency have real
+consumers, alignment is correct: the same nine entries described two ways for
+two real audiences. Behaviour is the gate.
 
 Flag changed prose that breaks the [writing style guide](../writing-style.md).
 Prose artefacts differ from incidental surface: docstrings, comments, README
 text, documentation, and prompts have readers. Dense but accurate prose is still
 a quality problem if the reader must reread it to recover the contract. Don't
 police taste.
-
-If both sides of an inconsistency have real consumers, alignment is correct. For
-example, the same nine entries described in two functional ways for two real
-audiences. Behaviour is the gate.
 
 ### Communication between teammates (agents)
 

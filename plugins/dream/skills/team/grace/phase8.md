@@ -123,9 +123,9 @@ for the strong idea, not the safe one.
   parameter, the contract) and list the prior issues with `#N` references. Where
   the recurrence is drift between copies of one fact, name the home and the
   copies. Frame the issue around single-sourcing them (see
-  [One fact, one home](../protocol.md#one-fact-one-home)). Where it is one rule
-  many sites must each follow, with no single home, frame the issue as a
-  [cross-site rule](../protocol.md#cross-site-rules).
+  [One fact, one home](../../../coherent-coding.md#one-fact-one-home)). Where it
+  is one rule many sites must each follow, with no single home, frame the issue
+  as a [cross-site rule](../../../coherent-coding.md#cross-site-rules).
 - **File fresh**: no related issue on the surface, and the finding clears the
   bar. Open a standalone issue.
 

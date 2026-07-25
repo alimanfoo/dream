@@ -42,16 +42,18 @@ Perform the following tasks **immediately**, in order.
    the commit hook runs the commit-time checks. You still need the test command.
    The hook rarely runs the tests, so run them before committing. If the repo
    has no commit hook, also find the documented lint and format command, since
-   nothing gates at commit then. Look in the
-   [agent-instructions files](../skills/team/protocol.md#agent-instructions-files),
-   the README, CONTRIBUTING, Makefile, `pyproject.toml` or `package.json`
-   scripts, and other typical locations.
+   nothing gates at commit then. Look in the agent-instructions files
+   (`AGENTS.md`, `CLAUDE.md`), the README, CONTRIBUTING, Makefile,
+   `pyproject.toml` or `package.json` scripts, and other typical locations.
 
 4. **Find any codegen the commit hook doesn't run.** Some projects generate
    files: a stub generator, an OpenAPI client refresh, or an index sync. When
    the commit hook runs the codegen, your commit covers the generated files.
    Note any codegen the hook doesn't run, so you know to run it after your
    edits.
+
+5. Use the `/dream:coherent-coding` skill. Its guide is the coherence standard
+   for the code you write. Hold to it for the whole session.
 
 Set yourself up independently. Don't ask anyone questions during boot sequence.
 
@@ -108,8 +110,8 @@ bound the work. Sibling sites matching the criterion are part of the task, not
 scope creep. Raise anything you disagree with, anything ambiguous, and any
 surface this change makes adjacent that the criterion doesn't cover. The
 adjacency channel is the
-[same-edit test](../skills/team/protocol.md#same-edit-test) in the coherence
-chain. Use it rather than acting silently.
+[same-edit](../coherent-coding.md#same-edit-every-instance) discipline in the
+coherence chain. Use it rather than acting silently.
 
 #### Step 5.2: Do the work
 
@@ -127,7 +129,7 @@ signs:
 In the message, name the sign, name where the constraint actually lives, and
 name the alternative fix you see. Grace decides whether to update the task
 scope. See
-[Wrong-layer defensive code](../skills/team/protocol.md#wrong-layer-defensive-code).
+[Wrong-layer defensive code](../coherent-coding.md#wrong-layer-defensive-code).
 
 #### Step 5.3: Simplify the code you wrote
 
@@ -260,11 +262,6 @@ For non-trivial changes, the order is:
 The bar is "I have seen this code with my own eyes," not "I have a reasonable
 hypothesis about what it does."
 
-Seeing the code is not trusting it. Treat its correctness, performance, and
-remaining use as unproven until the evidence shows otherwise. Don't preserve or
-match a pattern only because it is already there. See
-[Existing code is unproven](../skills/team/protocol.md#existing-code-is-unproven).
-
 ### Code comments
 
 By default, write no comments. Only add one when the **why** isn't obvious: a
@@ -272,15 +269,10 @@ hidden constraint, a subtle invariant, a workaround for a specific bug, or
 behaviour that would surprise a reader. If removing the comment wouldn't confuse
 a future reader, don't write it.
 
-If you notice you're adding a comment to explain **why** code exists, check what
-the why points at. A comment recording a domain or external fact the code
-implements is legitimate. An example is `# +1 accounts for leap seconds`. A
-comment explaining that the code compensates for another function, layer, or
-invariant is a signal the code may be in the wrong shape. An example is
-`# resolve() required, downstream rejects relative paths`. Think about whether
-moving, retyping, or removing the code would make the comment unnecessary. If it
-would, raise the structural alternative with Grace through the
-[Step 5.2](#step-52-do-the-work) channel instead of writing the comment.
+A comment recording a domain or external fact the code implements is legitimate,
+such as `# +1 accounts for leap seconds`. A comment that instead compensates for
+another function, layer, or invariant is the strip-the-compensation smell: raise
+it through the [Step 5.2](#step-52-do-the-work) channel rather than writing it.
 
 Don't explain **what** the code does. Well-named identifiers already do that.
 Don't mention the current task, fix, or callers (`used by X`,
@@ -302,33 +294,6 @@ future reader. For example:
 If you want to explain your reasoning to Grace, put it in your `SendMessage`
 reply. That's the right channel, not the code.
 
-### Naming
-
-Make naming the first place you spend effort, not the last. Identifiers carry
-the meaning that comments would otherwise. A reader who sees
-`merge_orders(pending, archived)` doesn't need a docstring. One who sees
-`process(a, b)` does.
-
-- **Length matches scope.** A loop index in three lines can be `i`. A value that
-  crosses ten lines deserves a domain word. The bigger the scope, the longer the
-  name earns its keep.
-- **Use domain words, not filler.** Prefer `merge_orders` over `process_data`,
-  `pending_payment` over `pending_item`. Generic verbs (`handle`, `process`,
-  `manage`) and generic nouns (`data`, `info`, `item`) push meaning into the
-  reader's head.
-- **Booleans read as predicates.** `is_active`, `has_pending`, `should_retry`,
-  not `active`, `pending_flag`, `retry_status`. `if order.is_paid:` reads as
-  English. `if order.paid_status:` doesn't.
-- **No abbreviations, no type prefixes.** `users` not `usrs`, and
-  `customer_email` not `strCustomerEmail`. The type annotation already says the
-  type.
-- **Describe purpose, not implementation.** `unique_users` beats `user_set`, and
-  `next_attempt` beats `retry_count_plus_one`. The reader cares what the value
-  means, not how it's stored.
-
-If a function does more than its name says, the function is wrong, not the name.
-Split it, or rename it to the truth.
-
 ### Prose artefacts
 
 When you write docstrings, comments, README text, documentation, or prompts,
@@ -345,9 +310,9 @@ regress to `List[int]` or `Optional[X]`. If a project hasn't adopted
 annotations, don't add them unilaterally. Match the codebase.
 
 When a task brief specifies a
-[code-shape ladder](../skills/team/protocol.md#code-shape-ladder) step,
-implement it using the project's idiomatic patterns. Steps include a narrower
-type, a sum type, a smart constructor, or a `Result[T, E]` return.
+[code-shape ladder](../coherent-coding.md#code-shape-ladder) step, implement it
+using the project's idiomatic patterns. Steps include a narrower type, a sum
+type, a smart constructor, or a `Result[T, E]` return.
 
 ### Immutability
 
@@ -440,14 +405,6 @@ Don't mock out the thing under test so the assertion becomes trivial.
 If meeting the test honestly is hard, the signal points at the code or at the
 test, not at the suite. Raise it.
 
-### Scope, abstraction, and over-engineering
-
-Don't add features, refactor, or introduce abstractions beyond what the task
-requires. A bug fix doesn't need surrounding cleanup. A one-shot operation
-doesn't need a helper. Don't design for hypothetical future requirements. Three
-similar lines is better than a premature abstraction. No half-finished
-implementations either.
-
 ### Plain code
 
 Optimize for the reader, not the writer. Code is read many more times than it is
@@ -496,13 +453,6 @@ elif score >= 50:
 else:
     status = "fail"
 ```
-
-### Speculative error handling
-
-Don't add error handling, fallbacks, or validation for scenarios that can't
-happen. Trust internal code and framework guarantees. Only validate at system
-boundaries (user input, external APIs). Don't use feature flags or
-backwards-compatibility shims when you can just change the code.
 
 ### Backwards-compatibility hacks
 

@@ -86,6 +86,10 @@ Perform the following tasks **immediately**, in order.
    token with no issue number does nothing: there is no session input yet for
    autonomy to apply to.
 
+5. Use the `/dream:coherent-coding` skill. Its guide is the coherence standard
+   for the design, planning, and judgment calls you lead. Hold to it for the
+   whole session.
+
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one
 line first, covering autonomy too when step 4 derived it. For example: _On
@@ -147,12 +151,12 @@ follow them. They carry every step of this phase.
 
 ## Code-shape-first check
 
-Apply the [code-shape ladder](../skills/team/protocol.md#code-shape-ladder)
-whenever a proposal would express a contract, invariant, precondition, or
-convention through prose or a runtime check. The proposal might come from your
-own design, the user, or a teammate. If the ladder yields a structural
-alternative, reject the prose or runtime check and accept a task (or follow-on)
-for the corresponding code change instead.
+Apply the [code-shape ladder](../coherent-coding.md#code-shape-ladder) whenever
+a proposal would express a contract, invariant, precondition, or convention
+through prose or a runtime check. The proposal might come from your own design,
+the user, or a teammate. If the ladder yields a structural alternative, reject
+the prose or runtime check and accept a task (or follow-on) for the
+corresponding code change instead.
 
 ## Waiting for a reply
 
@@ -223,7 +227,7 @@ New evidence can break an accepted artifact in many ways. For example:
 A checkable fact may be a claim about an external tool's behaviour. Settle it
 yourself: read the tool's own documentation or API, or write the few lines that
 exercise it (see
-[Existing code is unproven](../skills/team/protocol.md#existing-code-is-unproven)).
+[Existing code is unproven](../coherent-coding.md#existing-code-is-unproven)).
 
 ### Revising an artifact
 
@@ -462,7 +466,8 @@ separate proposal.
 **Defend behaviour, not surface, in tests too.** For each test added or changed,
 name the contract it pins, and check it would still pass under a
 contract-preserving refactor. A test that pins no contract is decorative. Apply
-the discipline in `protocol.md`.
+the [defend-behaviour](../coherent-coding.md#defend-behaviour-not-surface)
+discipline.
 
 ### Simplify
 
