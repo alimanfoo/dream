@@ -10,9 +10,9 @@ any maintenance work or technical debt for future sessions to address.
 ## Coherence is the floor, not the ceiling
 
 Make the code fit, then reach past fitting. Making it fit is the baseline. Above
-it is the work that leaves the code simpler than you found it: reach the root
-cause, search for the generalisation that removes duplication, hides complexity
-and models the domain better, make the intent plain.
+it is the work that leaves the code simpler than you found it. Reach the root
+cause. Search for the generalisation that removes duplication, hides complexity,
+and models the domain better. Make the intent plain.
 
 Your reflex will be the smallest local fix, and to add rather than restructure.
 Reach past it. The coherent change usually means reworking existing code, not
