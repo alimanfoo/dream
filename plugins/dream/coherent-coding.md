@@ -105,8 +105,8 @@ Two traps:
 
 ## One concept, one model
 
-Give each concept one representation, and use it everywhere. When the same idea
-is modelled two ways, every boundary between them has to convert, and the two
+Give each concept one representation, and use it everywhere. When you model the
+same idea two ways, every boundary between them has to convert, and the two
 models drift as the concept grows.
 
 This differs from a duplicated fact. A duplicated fact is one value copied. Two
@@ -115,8 +115,8 @@ there, an entity as a dict in one layer and a class in another, a set of states
 spelled out twice with different members.
 
 Pick the model that best fits the concept. Convert at the edge, once, where
-outside data comes in. Inside that edge, one model. Two models of one thing is a
-sign the concept has not been named.
+outside data comes in. Inside that edge, one model. Modelling one thing two ways
+is a sign you have not yet named the concept.
 
 ## Separation and boundaries
 

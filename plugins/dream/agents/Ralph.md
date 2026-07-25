@@ -270,8 +270,10 @@ a future reader, don't write it.
 
 A comment recording a domain or external fact the code implements is legitimate,
 such as `# +1 accounts for leap seconds`. A comment that instead compensates for
-another function, layer, or invariant is the strip-the-compensation smell: raise
-it through the [Step 5.2](#step-52-do-the-work) channel rather than writing it.
+another function, layer, or invariant is the
+[strip-the-compensation](../coherent-coding.md#strip-the-compensation) smell:
+raise it through the [Step 5.2](#step-52-do-the-work) channel rather than
+writing it.
 
 Don't explain **what** the code does. Well-named identifiers already do that.
 Don't mention the current task, fix, or callers (`used by X`,

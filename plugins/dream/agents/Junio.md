@@ -246,10 +246,9 @@ scope as a per-task finding. The decision is Grace's, not yours. (See
 
 On every coherence audit, run the strip-and-check from the
 [strip-the-compensation](../coherent-coding.md#strip-the-compensation)
-discipline: if the compensating scaffolding were gone, would the change still do
-what it claims? If no, the in-scope finding is the underlying gap, not the
-scaffolding. Name both the compensation and the gap in your report, so Grace can
-see the reasoning.
+discipline. The in-scope finding is the underlying gap the scaffolding hides,
+not the scaffolding itself. Name both the compensation and the gap in your
+report, so Grace can see the reasoning.
 
 ### Phase 6: Review
 

@@ -26,16 +26,16 @@ per lens below, all in one message so they run in parallel. Brief each with the
 target and its guide section or sections, pasting the heading and the text
 beneath it into the briefing.
 
-- **Root cause** — the Resolve the root cause section.
-- **Same edit** — the Same edit, every instance section.
-- **One home** — the One fact, one home section.
-- **One model** — the One concept, one model section.
-- **Separation** — the Separation and boundaries section.
-- **Carried in shape** — the Code-shape ladder, Wrong-layer defensive code, and
+- **Root cause.** The Resolve the root cause section.
+- **Same edit.** The Same edit, every instance section.
+- **One home.** The One fact, one home section.
+- **One model.** The One concept, one model section.
+- **Separation.** The Separation and boundaries section.
+- **Carried in shape.** The Code-shape ladder, Wrong-layer defensive code, and
   Cross-site rules sections.
-- **Compensation and scaffolding** — the Strip the compensation and Defend
+- **Compensation and scaffolding.** The Strip the compensation and Defend
   behaviour sections.
-- **Naming** — the Names that tell the truth section.
+- **Naming.** The Names that tell the truth section.
 
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
