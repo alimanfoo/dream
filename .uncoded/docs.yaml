@@ -151,38 +151,6 @@ plugins/:
           Leave these alone:
           Record every finding in a file:
           Return only what needs changing:
-      review-coherence-in-shape.md:
-        Carried in shape, not prose:
-          The lens:
-          Reporting:
-      review-coherence-naming.md:
-        Names that tell the truth:
-          The lens:
-          Reporting:
-      review-coherence-one-home.md:
-        One fact, one home:
-          The lens:
-          Reporting:
-      review-coherence-one-model.md:
-        One concept, one model:
-          The lens:
-          Reporting:
-      review-coherence-root-cause.md:
-        Root cause:
-          The lens:
-          Reporting:
-      review-coherence-same-edit.md:
-        Same edit, every instance:
-          The lens:
-          Reporting:
-      review-coherence-scaffolding.md:
-        Compensation and unearned scaffolding:
-          The lens:
-          Reporting:
-      review-coherence-separation.md:
-        Separation and boundaries:
-          The lens:
-          Reporting:
       review-design-behaviour.md:
         Defend behaviour, not surface:
           The lens:

@@ -17,17 +17,25 @@ Read the argument the user gives. It names what to review: a git range like
 
 ## Review
 
-Launch these review subagents in parallel, via the Agent tool, one per lens,
-briefing each to review the target:
+Read the [coherent coding guide](../../coherent-coding.md). It is the home of
+the disciplines this review checks. The lens subagents can't read it themselves,
+so paste each lens the guide text it needs.
 
-- `dream:review-coherence-root-cause`
-- `dream:review-coherence-same-edit`
-- `dream:review-coherence-one-home`
-- `dream:review-coherence-one-model`
-- `dream:review-coherence-separation`
-- `dream:review-coherence-in-shape`
-- `dream:review-coherence-scaffolding`
-- `dream:review-coherence-naming`
+Launch the generic `dream:code-review-lens` subagent via the Agent tool, once
+per lens below, all in one message so they run in parallel. Brief each with the
+target and its guide section or sections, pasting the heading and the text
+beneath it into the briefing.
+
+- **Root cause** — the Resolve the root cause section.
+- **Same edit** — the Same edit, every instance section.
+- **One home** — the One fact, one home section.
+- **One model** — the One concept, one model section.
+- **Separation** — the Separation and boundaries section.
+- **Carried in shape** — the Code-shape ladder, Wrong-layer defensive code, and
+  Cross-site rules sections.
+- **Compensation and scaffolding** — the Strip the compensation and Defend
+  behaviour sections.
+- **Naming** — the Names that tell the truth section.
 
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
