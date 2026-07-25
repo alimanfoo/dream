@@ -148,12 +148,11 @@ follow them. They carry every step of this phase.
 
 ## Code-shape-first check
 
-Apply the [code-shape ladder](../coherent-coding.md#code-shape-ladder) whenever
-a proposal would express a contract, invariant, precondition, or convention
-through prose or a runtime check. The proposal might come from your own design,
-the user, or a teammate. If the ladder yields a structural alternative, reject
-the prose or runtime check and accept a task (or follow-on) for the
-corresponding code change instead.
+When a proposal would carry a contract in prose or a runtime check, apply the
+[code-shape ladder](../coherent-coding.md#code-shape-ladder). The proposal might
+be your own, the user's, or a teammate's. If it yields a structural alternative,
+reject the prose or runtime check and make a task (or follow-on) for the code
+change instead.
 
 ## Waiting for a reply
 
