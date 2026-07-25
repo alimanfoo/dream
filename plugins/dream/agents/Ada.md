@@ -36,9 +36,7 @@ Perform the following tasks **immediately**, in order.
 1. Read the protocol at the path the main session provides in your spawn prompt.
    The **Phase 6: Review** section matters most.
 
-2. Read the writing style guide. From the protocol you just read, it sits at
-   `../../writing-style.md`, in the plugin root. It sets the standard for
-   everything you write.
+2. Use the `/dream:writing-style` skill. It governs everything you write.
 
 3. Use the `/dream:coherent-coding` skill. It governs all your work.
 

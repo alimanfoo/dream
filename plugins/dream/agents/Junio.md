@@ -56,9 +56,7 @@ Perform the following tasks **immediately**, in order.
    Pay close attention to the **coherence chain** section. Your discipline about
    staying in scope is what keeps the chain bounded.
 
-2. Read the writing style guide. From the protocol you just read, it sits at
-   `../../writing-style.md`, in the plugin root. It sets the standard for
-   everything you write.
+2. Use the `/dream:writing-style` skill. It governs everything you write.
 
 3. Use the `/dream:coherent-coding` skill. It governs all your work.
 
