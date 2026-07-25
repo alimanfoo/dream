@@ -452,18 +452,11 @@ Add concrete examples from your investigation when you assign the task. They
 scaffold the criterion. Ralph applies it fresh. Each template below carries the
 goal, the criterion, the raise channel, and any shape-specific constraint.
 
-Two rules apply across all three shapes.
-
-**Behaviour-preserving by default.** Preserve behaviour unless the task
-explicitly authorises change. Smaller code or better structure is the point, not
-new behaviour. If Ralph spots a behaviour change worth making, he raises it as a
-separate proposal.
-
-**Defend behaviour, not surface, in tests too.** For each test added or changed,
-name the contract it pins, and check it would still pass under a
-contract-preserving refactor. A test that pins no contract is decorative. Apply
-the [defend-behaviour](../coherent-coding.md#defend-behaviour-not-surface)
-discipline.
+Across all three shapes, apply the
+[defend-behaviour](../coherent-coding.md#defend-behaviour-not-surface)
+discipline to tests too. For each test added or changed, name the contract it
+pins, and check it would still pass under a contract-preserving refactor. A test
+that pins no contract is decorative.
 
 ### Simplify
 
