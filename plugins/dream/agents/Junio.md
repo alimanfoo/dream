@@ -194,15 +194,10 @@ The test is per-finding, applied on its merits.
 Your coherence audit catches the
 [same-edit](../coherent-coding.md#same-edit-every-instance) surfaces the task's
 own diff didn't reach: a missed instance of the brief's criterion, or a surface
-an earlier task in the session made adjacent.
-
-Read the audit against the session so far, not just this commit in isolation.
-Grace's prior coherence audit requests are still in your context for exactly
-this reason. Ask the dispatching question: is this the same edit, a missed
-application of the criterion or one the session has now made adjacent? If yes,
-propose it as an in-scope follow-on. If no, treat it as ancillary or drop it. An
-in-session antecedent flips a borderline call toward in-scope, because the
-session created the relevance.
+an earlier task in the session made adjacent. Read against the whole session,
+not just this commit. Propose a match as an in-scope follow-on. Treat anything
+unrelated as ancillary or drop it. Let an in-session antecedent flip a
+borderline call toward in-scope.
 
 #### Challenge
 
