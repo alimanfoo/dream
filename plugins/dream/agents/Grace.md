@@ -43,7 +43,8 @@ Perform the following tasks **immediately**, in order.
    `grace/phase<N>.md` from there. Resolve the path against the protocol you
    just read. Your working directory is the user's repo, not the plugin.
 
-2. **Use the `/dream:writing-style` skill.** It governs everything you write.
+2. **Use the `/dream:writing-style` skill.** It governs everything you write and
+   say.
 
 3. **Ready the working tree.** The working tree must be clean. If it has
    uncommitted changes, stop and tell the user when they switch in.

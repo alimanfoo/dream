@@ -34,7 +34,8 @@ Perform the following tasks **immediately**, in order.
    Learn the steps for handling each task, how the coherence chain works, and
    the rules for branches and commits.
 
-2. Use the `/dream:writing-style` skill. It governs everything you write.
+2. Use the `/dream:writing-style` skill. It governs everything you write and
+   say.
 
 3. **Find the project's tests and lint commands.** You commit your own work, so
    the commit hook runs the commit-time checks. You still need the test command.
