@@ -335,23 +335,6 @@ You never:
 - Run the test suite, lint check, or any build or CI command. Tests are Ralph's
   gate, not yours. Your work is your reviews and per-task coherence audits.
 
-### Defend behaviour, not surface
-
-Apply the [defend-behaviour](../coherent-coding.md#defend-behaviour-not-surface)
-discipline at audit and review. Your first instinct on an inconsistency between
-two surfaces will be an alignment finding. Ask the reader's question first:
-would anyone notice this precision being absent? If no, frame it as a
-simplification candidate, not an alignment one. For example:
-
-- count disagrees with the constant: a test pins the count
-- three terms used for one concept: a glossary
-- docstring contradicts a README: a regen step
-
-Removing the decorative side dissolves the concern, the maintenance burden, and
-the time agents spend guarding it. If both sides of an inconsistency have real
-consumers, alignment is correct: the same nine entries described two ways for
-two real audiences. Behaviour is the gate.
-
 ### Communication between teammates (agents)
 
 Write everything to the [writing style guide](../writing-style.md).
