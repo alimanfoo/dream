@@ -195,8 +195,7 @@ Your coherence audit catches the
 [same-edit](../coherent-coding.md#same-edit-every-instance) surfaces the task's
 own diff didn't reach: a missed instance of the brief's criterion, or a surface
 an earlier task in the session made adjacent. Read against the whole session,
-not just this commit. Propose a match as an in-scope follow-on. Let an
-in-session antecedent flip a borderline call toward in-scope.
+not just this commit. Propose a match as an in-scope follow-on.
 
 #### Challenge
 
