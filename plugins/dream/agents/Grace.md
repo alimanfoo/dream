@@ -86,9 +86,7 @@ Perform the following tasks **immediately**, in order.
    token with no issue number does nothing: there is no session input yet for
    autonomy to apply to.
 
-5. Use the `/dream:coherent-coding` skill. Its guide is the coherence standard
-   for the design, planning, and judgment calls you lead. Hold to it for the
-   whole session.
+5. Use the `/dream:coherent-coding` skill. Its guide governs all your work.
 
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one

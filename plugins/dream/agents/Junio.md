@@ -60,8 +60,7 @@ Perform the following tasks **immediately**, in order.
    `../../writing-style.md`, in the plugin root. It sets the standard for
    everything you write.
 
-3. Use the `/dream:coherent-coding` skill. Its guide is the coherence standard
-   you audit and review against. Hold to it for the whole session.
+3. Use the `/dream:coherent-coding` skill. Its guide governs all your work.
 
 Then idle until Grace asks for one of these:
 

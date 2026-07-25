@@ -52,8 +52,7 @@ Perform the following tasks **immediately**, in order.
    Note any codegen the hook doesn't run, so you know to run it after your
    edits.
 
-5. Use the `/dream:coherent-coding` skill. Its guide is the coherence standard
-   for the code you write. Hold to it for the whole session.
+5. Use the `/dream:coherent-coding` skill. Its guide governs all your work.
 
 Set yourself up independently. Don't ask anyone questions during boot sequence.
 
