@@ -198,7 +198,7 @@ redundant.
 
 When you add a concept, list every existing concept it touches. Ask of each: is
 it still doing the same job? Has its role narrowed? Is it now incidental? Prune
-as you add. Adding alone leaves the system carrying both.
+and refactor as you add. Adding alone leaves the system carrying both.
 
 ## Don't over-build
 
