@@ -194,9 +194,7 @@ The test is per-finding, applied on its merits.
 Your coherence audit catches the
 [same-edit](../coherent-coding.md#same-edit-every-instance) surfaces the task's
 own diff didn't reach: a missed instance of the brief's criterion, or a surface
-an earlier task in the session made adjacent. Ralph applies the criterion fresh,
-but the application can still miss sites, and the session's own history is not
-in his single-task view.
+an earlier task in the session made adjacent.
 
 Read the audit against the session so far, not just this commit in isolation.
 Grace's prior coherence audit requests are still in your context for exactly
