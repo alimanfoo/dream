@@ -95,10 +95,11 @@ This repo has two layers, easy to confuse:
   part of the installed plugin. (`CLAUDE.md` is a symlink to AGENTS.md. Edit
   `AGENTS.md` directly. Some editors refuse to write through a symlink.)
 
-The [writing style guide](plugins/dream/writing-style.md) sits at the plugin
-root, not inside any one skill, because the whole plugin writes to it: the team
-agents at runtime, and the utility skills when invoked. So the prose standard
-has one home, shared by all of them.
+Two guides sit at the plugin root, not inside any one skill: the
+[writing style guide](plugins/dream/writing-style.md) and the
+[coherent coding guide](plugins/dream/coherent-coding.md). The whole plugin
+works to them, the team agents at runtime and the utility skills when invoked.
+So each standard has one home, shared by all of them.
 
 Two ways they get crossed:
 
@@ -184,33 +185,19 @@ section.
 
 ## Design principles
 
-These principles all descend from the dream.
+These principles all descend from the dream. They are what it implies for
+building the plugin. The general design and implementation disciplines live in
+the [coherent coding guide](plugins/dream/coherent-coding.md), which governs
+work here like any other codebase. The machinery it weighs is the protocol's
+own, a mechanism or a role or a phase, and the team pays the cost of each every
+session.
 
-**The burden of proof is on the addition.** New machinery (a mechanism, a
-concept, a special case) carries a permanent cost: the team must carry it, apply
-it correctly, and reconcile it with everything else. Before adding, try in
-order: can the need be met by removing something already there? By widening an
-existing rule until the special case disappears? Only if both fail is adding
-right, and it must still earn its keep against that cost.
-
-**Coherent is the baseline, not the ceiling.** A codebase that merely fits is
-the floor. Aim higher, at the productive generalisation. Name a real concept (a
-domain idea or a technical pattern), collapse duplication, reach the root cause,
-reveal intent. The code then comes out simpler: less to maintain, less for a
-future session to carry. Reaching it is usually _more_ work than the change as
-literally named, and default agents miss it: they follow instructions literally,
-add rather than restructure, and leave the generalisation unseen. The plugin's
-job is to set the conditions that let the team find it.
-
-The disciplines (burden of proof on the addition, the bar against
-over-engineering) guard this ambition. They do not cap it. They forbid
-_unearned_ complexity (speculative abstraction, gold-plating, machinery for a
-future that may not come), not the deeper work that lands in coherence. Read as
-a mandate to do the minimum, they invert the dream. The minimum is already the
-agents' default. It is the perimeter fixation and literal-mindedness the dream
-exists to correct (see "What the design is answering"). The question is never
-"what is the smallest change?" but "what leaves the codebase most coherent?".
-The answer is usually the larger one.
+**Reaching past coherence is the plugin's job.** The guide sets the ambition:
+make the code fit, then reach for the generalisation. Agents do not reach it on
+their own, and telling them to aim higher does not get them there (see
+[What the design is answering](#what-the-design-is-answering)). So the plugin
+has to make the deeper read happen structurally. Otherwise the team delivers the
+coherent minimum and stops.
 
 **Sort every human touch: coherence or intent.** When the human steps in, name
 which it is. _The dream_ draws the line. The test for any change: does it remove
@@ -234,12 +221,6 @@ pushing back at the design gate.
 analysis is about user intent. Code analysis is about code patterns. Design is
 the proposal and the work it commits to. Code-pattern findings don't belong in
 the requirements analysis, and vice versa.
-
-**Adding a concept reframes the existing ones.** Introducing a named mechanism
-to a system that already has named mechanisms shifts the existing ones' roles.
-List every existing concept the new one touches and ask of each: is it still
-doing the same job? Has its role narrowed? Is it now incidental? Add while
-pruning. Adding alone leaves the system carrying both.
 
 ## What the design is answering
 
