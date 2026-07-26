@@ -83,8 +83,9 @@ plugins/:
             'Phase 4: Plan':
             'Phase 5: Develop':
               'Step 5.1: Read the committed change':
-              'Step 5.2: Sort what you found':
-              'Step 5.3: Send the coherence audit to Grace via `SendMessage`':
+              'Step 5.2: Identify coherence gaps':
+              'Step 5.3: Sort what you found':
+              'Step 5.4: Send the coherence audit to Grace via `SendMessage`':
               Coherence audit format:
               Challenge:
             'Phase 6: Review':

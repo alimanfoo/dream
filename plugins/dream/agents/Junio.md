@@ -133,7 +133,13 @@ behaviour or invariant it enforced, then confirm the new code still enforces it
 somewhere. A removed invariant that nothing else enforces is an in-scope
 follow-on.
 
-#### Step 5.2: Sort what you found
+#### Step 5.2: Identify coherence gaps
+
+Name what the commit still needs to reach a coherent end state. Does it create
+maintenance work, or leave work undone? Decide what that end state is against
+the [coherent coding guide](../coherent-coding.md).
+
+#### Step 5.3: Sort what you found
 
 Sort each thing you found into one of three:
 
@@ -154,7 +160,7 @@ Where a finding is
 file the gap rather than the scaffolding, and name both so Grace can see the
 reasoning.
 
-#### Step 5.3: Send the coherence audit to Grace via `SendMessage`
+#### Step 5.4: Send the coherence audit to Grace via `SendMessage`
 
 Send the report to Grace via `SendMessage`. Plain-text turn output does not
 reach teammates. Only `SendMessage` reaches Grace. Sign off `From Junio.` at the
