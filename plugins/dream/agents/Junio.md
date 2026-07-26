@@ -129,9 +129,8 @@ Read the committed change through these lenses:
 - **Callers** of changed symbols: what reads or invokes the changed surface.
 
 **Read what the change removed.** For each removed or replaced line, check the
-behaviour or invariant it enforced, then confirm the new code still enforces it
-somewhere. A removed invariant that nothing else enforces is an in-scope
-follow-on.
+behaviour or invariant it enforced, then check if the new code still enforces it
+somewhere.
 
 #### Step 5.2: Identify coherence gaps
 
