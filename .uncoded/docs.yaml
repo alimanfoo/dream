@@ -85,7 +85,7 @@ plugins/:
               'Step 5.1: Read the committed change':
               'Step 5.2: Sort what you found':
               'Step 5.3: Send the coherence audit to Grace via `SendMessage`':
-              Output format:
+              Coherence audit format:
               Read beyond the diff:
               Read what the change removed:
               Read for readability against neighbours:
@@ -97,6 +97,7 @@ plugins/:
               'Step 6.2: Run the coherence review':
               'Step 6.3: Weigh the findings':
               'Step 6.4: Send your review to Grace via `SendMessage`':
+              Review format:
             'Phase 7: Merge':
             'Phase 8: Collect':
             'Phase 9: Reflect':
