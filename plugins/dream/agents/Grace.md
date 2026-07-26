@@ -452,12 +452,6 @@ Add concrete examples from your investigation when you assign the task. They
 scaffold the criterion. Ralph applies it fresh. Each template below carries the
 goal, the criterion, the raise channel, and any shape-specific constraint.
 
-Across all three shapes, apply the
-[defend-behaviour](../coherent-coding.md#defend-behaviour-not-surface)
-discipline to tests too. For each test added or changed, name the contract it
-pins, and check it would still pass under a contract-preserving refactor. A test
-that pins no contract is decorative.
-
 ### Simplify
 
 - **Goal.** Trim within the named feature. The feature stays. Its implementation
