@@ -140,24 +140,18 @@ the [coherent coding guide](../coherent-coding.md).
 
 #### Step 5.3: Sort what you found
 
-Sort each thing you found into one of three:
+Sort each gap into one of these:
 
 - **An in-scope follow-on task**, when it follows from the change just
   committed. A pre-existing concern qualifies when the session's work has made
   it more visible. So does a
   [same-edit](../coherent-coding.md#same-edit-every-instance) surface the task's
-  own diff didn't reach, read against the whole session rather than this commit
-  alone.
+  own diff didn't reach.
 - **An ancillary finding**, when it is pre-existing and the session's work
   hasn't made it more visible. Grace collects these for the post-merge triage.
 - **A challenge**, when the change shows an accepted artifact no longer holds.
   See [challenge](#challenge) for the trigger and what separates it from a
   finding.
-
-Where a finding is
-[scaffolding compensating for a gap](../coherent-coding.md#strip-the-compensation),
-file the gap rather than the scaffolding, and name both so Grace can see the
-reasoning.
 
 #### Step 5.4: Send the coherence audit to Grace via `SendMessage`
 
@@ -168,6 +162,7 @@ end of the report. The coherence audit is a terminal hand-off. Skip the RSVP.
 #### Coherence audit format
 
 ```text
+Findings:
 1. <finding (missed instance)> — <reason>; involves
    <file/symbol>.
 2. <finding (consequential adjacency)> — <reason: an earlier
@@ -269,11 +264,11 @@ English, concrete findings, no internal protocol vocabulary. Follow
 ```text
 <one-line recommendation>
 
-## Findings
+Findings:
 1. ... (concrete problem, naming a file path or symbol, with a
    file:line citation where you have one)
 
-## Out of scope but noticed
+Out of scope but noticed:
 1. ... (pre-existing items; Grace collects these for the
    post-merge triage)
 ```
