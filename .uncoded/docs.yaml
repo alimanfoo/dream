@@ -82,12 +82,16 @@ plugins/:
             'Phase 3: Design':
             'Phase 4: Plan':
             'Phase 5: Develop':
+              'Step 5.1: Read the committed change':
+              'Step 5.2: Sort what you found':
+              'Step 5.3: Send the coherence audit to Grace via `SendMessage`':
+              Output format:
               Read beyond the diff:
               Read what the change removed:
               Read for readability against neighbours:
               The same edit elsewhere:
-              Challenge:
               Compensation patterns:
+              Challenge:
             'Phase 6: Review':
               'Step 6.1: Read the whole diff':
               'Step 6.2: Run the coherence review':

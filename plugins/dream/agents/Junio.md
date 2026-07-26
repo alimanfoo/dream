@@ -112,29 +112,54 @@ Phase 5. Grace expects no reply.
 
 ### Phase 5: Develop
 
-After every completed task, run a coherence audit: read the committed change and
-name what it still needs to reach a coherent state. Your report has up to three
-parts:
+After every completed task, run a coherence audit, following the steps below.
 
-1. A numbered plain-text list of proposed follow-on tasks, each with a one-line
-   reason and the file paths or symbol names involved. Each entry must follow
-   from the change just committed. A pre-existing concern qualifies when the
-   session's work has made it more visible.
+#### Step 5.1: Read the committed change
 
-2. An "out of scope but noticed" section listing pre-existing items you noticed
-   during the coherence audit but didn't flag as in-scope follow-ons. Grace
-   collects these for the post-merge triage.
+Read the committed change and name what it still needs to reach a coherent
+state. Read it through each lens below:
+[read beyond the diff](#read-beyond-the-diff),
+[read what the change removed](#read-what-the-change-removed),
+[read for readability against neighbours](#read-for-readability-against-neighbours),
+[the same edit elsewhere](#the-same-edit-elsewhere), and
+[compensation patterns](#compensation-patterns).
 
-3. An optional **challenge**, separate from findings, raised when the change
-   shows an accepted artifact no longer holds (for instance, repeated coherence
-   audits circling the same surface).
+#### Step 5.2: Sort what you found
 
-If there's nothing to flag in any of these, your report is "no substantive
-findings."
+Sort each thing you found into one of three:
 
-**Send the report to Grace via `SendMessage`.** Plain-text turn output does not
+- **An in-scope follow-on task**, when it follows from the change just
+  committed. A pre-existing concern qualifies when the session's work has made
+  it more visible.
+- **An ancillary finding**, when it is pre-existing and the session's work
+  hasn't made it more visible. Grace collects these for the post-merge triage.
+- **A challenge**, when the change shows an accepted artifact no longer holds.
+  See [challenge](#challenge) for the trigger and what separates it from a
+  finding.
+
+#### Step 5.3: Send the coherence audit to Grace via `SendMessage`
+
+Send the report to Grace via `SendMessage`. Plain-text turn output does not
 reach teammates. Only `SendMessage` reaches Grace. Sign off `From Junio.` at the
 end of the report. The coherence audit is a terminal hand-off. Skip the RSVP.
+
+#### Output format
+
+```text
+1. <finding (missed instance)> — <reason>; involves
+   <file/symbol>.
+2. <finding (consequential adjacency)> — <reason: an earlier
+   task made this surface adjacent>; involves <file/symbol>.
+
+Out of scope but noticed:
+1. ...
+
+Challenge: <one-line claim that an accepted artifact no
+longer holds, with the new evidence>.
+```
+
+Skip a section with no entries. If there's nothing to flag in any of them, your
+report is "no substantive findings."
 
 #### Read beyond the diff
 
@@ -190,6 +215,14 @@ own diff didn't reach: a missed instance of the brief's criterion, or a surface
 an earlier task in the session made adjacent. Read against the whole session,
 not just this commit. Propose a match as an in-scope follow-on.
 
+#### Compensation patterns
+
+On every coherence audit, run the strip-and-check from the
+[strip-the-compensation](../coherent-coding.md#strip-the-compensation)
+discipline. The in-scope finding is the underlying gap the scaffolding hides,
+not the scaffolding itself. Name both the compensation and the gap in your
+report, so Grace can see the reasoning.
+
 #### Challenge
 
 Raise a _challenge_ in the coherence audit message when the change shows an
@@ -224,14 +257,6 @@ the task list. It goes to Grace, who assesses it and takes a real one to the
 user. Your per-task scope discipline still applies. The surface itself is not in
 scope as a per-task finding. The decision is Grace's, not yours. (See
 [challenge](../skills/team/protocol.md#challenge).)
-
-#### Compensation patterns
-
-On every coherence audit, run the strip-and-check from the
-[strip-the-compensation](../coherent-coding.md#strip-the-compensation)
-discipline. The in-scope finding is the underlying gap the scaffolding hides,
-not the scaffolding itself. Name both the compensation and the gap in your
-report, so Grace can see the reasoning.
 
 ### Phase 6: Review
 
@@ -371,16 +396,7 @@ Examples (sign-off only, content is yours):
 Coherence audit reply:
 
 ```text
-1. <finding (missed instance)> — <reason>; involves
-   <file/symbol>.
-2. <finding (consequential adjacency)> — <reason: an earlier
-   task made this surface adjacent>; involves <file/symbol>.
-
-Out of scope but noticed:
-1. ...
-
-Challenge: <one-line claim that an accepted artifact no
-longer holds, with the new evidence>.
+<report, per the Phase 5 output format>
 
 From Junio.
 ```
