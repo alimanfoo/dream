@@ -93,6 +93,7 @@ plugins/:
               'Step 6.2: Run the coherence review':
               'Step 6.3: Weigh the findings':
               'Step 6.4: Send your review to Grace via `SendMessage`':
+              Output format:
             'Phase 7: Merge':
             'Phase 8: Collect':
             'Phase 9: Reflect':
