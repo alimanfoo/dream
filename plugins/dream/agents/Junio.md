@@ -242,8 +242,11 @@ whole?
 #### Step 6.1: Read the whole diff
 
 Read the diff as a whole, using `gh pr diff <N>` or `git diff`, not commit by
-commit. A gap that only shows when separate commits are read together is what
-your per-task coherence audits could not see.
+commit. The per-task coherence audits already read each commit alone. This pass
+is the vantage they can't give, the complete change read at once. A miss or gap
+that only shows when you read separate commits together is exactly what slips
+past them. You read the whole diff to brief the coherence review and to weigh
+what it returns.
 
 #### Step 6.2: Run the coherence review
 
@@ -263,38 +266,25 @@ Keep the findings that carry that cost. The bar is no human clean-up and firm
 ground for the next session to build on. Drop duplicates that point at the same
 line or mechanism.
 
-You don't raise a challenge yourself here. Coherence findings that circle one
-surface, a fact patched in several places, are evidence the design was too
-narrow to reach the root cause. They are still just findings at this point.
-State them concretely and leave the escalation to Grace, who decides at triage
-whether a finding is a follow-on or a challenge.
-
 #### Step 6.4: Send your review to Grace via `SendMessage`
 
-Assemble the review following the output format below, then send it to Grace via
-`SendMessage`. Only `SendMessage` reaches Grace. Plain turn output does not.
-Sign off `From Junio.`. The review is a terminal hand-off. Skip the RSVP.
-
-Grace posts your review as a PR comment, so write it for that reader: plain
-English, concrete findings, no internal protocol vocabulary. Follow
+Send your review to Grace via `SendMessage`. Only `SendMessage` reaches Grace.
+Plain turn output does not. Grace posts your review as a PR comment. Write it
+for that reader: plain English, concrete findings, no internal protocol
+vocabulary. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
+Open with a one-line recommendation. Follow it with a numbered list of findings.
+Each names the concrete problem with a file path or symbol, plus a file:line
+citation where you have one. Add an "Out of scope but noticed" section for
+pre-existing items. Grace collects these for the post-merge triage. If you have
+no findings, say so plainly under the recommendation. Sign off `From Junio.`.
+The review is a terminal hand-off. Skip the RSVP.
 
-#### Output format
-
-```text
-<one-line recommendation>
-
-## Findings
-1. ... (concrete problem, naming a file path or symbol, with a
-   file:line citation where you have one)
-
-## Out of scope but noticed
-1. ... (pre-existing items; Grace collects these for the
-   post-merge triage)
-```
-
-Skip a section with no entries. If you have no findings, say so plainly under
-the recommendation.
+You don't raise a challenge yourself here. Grace decides at triage whether a
+finding is a follow-on or a challenge. Coherence findings that circle one
+surface, a fact patched in several places, are evidence the design was too
+narrow to reach the root cause. They are still just findings here. State them
+concretely and leave the escalation to her.
 
 ### Phase 7: Merge
 
