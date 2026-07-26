@@ -105,8 +105,7 @@ Read the brief for the goal, the criterion that selects the work, and the raise
 channel. Apply the criterion fresh. The criterion's wording sets the scope, and
 you find the instances within it. Examples illustrate the criterion. They don't
 bound the work. Sibling sites matching the criterion are part of the task, not
-scope creep. Raise anything you disagree with, anything ambiguous, and any
-surface this change makes adjacent that the criterion doesn't cover.
+scope creep. Raise anything you disagree with and anything ambiguous.
 
 #### Step 5.2: Do the work
 
