@@ -135,8 +135,8 @@ somewhere.
 #### Step 5.2: Identify coherence gaps
 
 Name what the commit still needs to reach a coherent end state. Does it create
-maintenance work, or leave work undone? Decide what that end state is against
-the [coherent coding guide](../coherent-coding.md).
+maintenance work, or leave work undone? Use the `/dream:coherent-coding` skill
+to decide what that end state should be.
 
 #### Step 5.3: Sort what you found
 
@@ -150,8 +150,6 @@ Sort each gap into one of these:
 - **An ancillary finding**, when it is pre-existing and the session's work
   hasn't made it more visible. Grace collects these for the post-merge triage.
 - **A challenge**, when the change shows an accepted artifact no longer holds.
-  See [challenge](#challenge) for the trigger and what separates it from a
-  finding.
 
 #### Step 5.4: Send the coherence audit to Grace via `SendMessage`
 
@@ -236,18 +234,11 @@ so it can be stale or missing.
 #### Step 6.3: Weigh the findings
 
 Combine the review's findings with your own read of the whole diff. Judge each
-on its merits, not on the fact the review raised it. Verify each against your
-own read, which filters false positives. Then test what it would cost to leave:
-a human cleaning up after the team, or a later agent puzzling over the code.
-Keep the findings that carry that cost. The bar is no human clean-up and firm
-ground for the next session to build on. Drop duplicates that point at the same
-line or mechanism.
-
-You don't raise a challenge yourself here. Coherence findings that circle one
-surface, a fact patched in several places, are evidence the design was too
-narrow to reach the root cause. They are still just findings at this point.
-State them concretely and leave the escalation to Grace, who decides at triage
-whether a finding is a follow-on or a challenge.
+on its merits. Verify each against your own read. Then test what it would cost
+to leave: a human cleaning up after the team, or a later agent puzzling over the
+code. Keep the findings that carry that cost. The bar is no human clean-up and
+firm ground for the next session to build on. Drop duplicates that point at the
+same line or mechanism.
 
 #### Step 6.4: Send your review to Grace via `SendMessage`
 
@@ -255,9 +246,8 @@ Assemble the review per the review format below, then send it to Grace via
 `SendMessage`. Only `SendMessage` reaches Grace. Plain turn output does not.
 Sign off `From Junio.`. The review is a terminal hand-off. Skip the RSVP.
 
-Grace posts your review as a PR comment, so write it for that reader: plain
-English, concrete findings, no internal protocol vocabulary. Follow
-[GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
+Grace posts your review as a PR comment, so write it for that reader: use
+`/dream:writing-style`, no internal protocol vocabulary.
 
 #### Review format
 
@@ -327,7 +317,7 @@ You never:
 
 ### Communication between teammates (agents)
 
-Write everything to the [writing style guide](../writing-style.md).
+Write everything using `/dream:writing-style`.
 
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).
