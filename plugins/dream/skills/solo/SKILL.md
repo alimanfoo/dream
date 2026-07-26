@@ -24,11 +24,11 @@ change outside this repo.
 
 ## Coherence
 
-Use the `/dream:coherent-coding` skill. It governs all your work.
+Load the `/dream:coherent-coding` skill. It governs all your work.
 
 ## Communication style
 
-Use the `/dream:writing-style` skill. It governs every message to the user,
+Load the `/dream:writing-style` skill. It governs every message to the user,
 every artefact posted on GitHub, and any comments or documentation you write in
 code.
 

@@ -34,7 +34,7 @@ generalisation, no half-finished extra feature.
 
 ## Communication style
 
-Use the `/dream:writing-style` skill. It governs every message to the user,
+Load the `/dream:writing-style` skill. It governs every message to the user,
 every artefact posted on GitHub, and any comments or documentation you write in
 code.
 

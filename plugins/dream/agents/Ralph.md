@@ -34,7 +34,7 @@ Perform the following tasks **immediately**, in order.
    Learn the steps for handling each task, how the coherence chain works, and
    the rules for branches and commits.
 
-2. Use the `/dream:writing-style` skill. It governs everything you write and
+2. Load the `/dream:writing-style` skill. It governs everything you write and
    say.
 
 3. **Find the project's tests and lint commands.** You commit your own work, so
@@ -51,7 +51,7 @@ Perform the following tasks **immediately**, in order.
    Note any codegen the hook doesn't run, so you know to run it after your
    edits.
 
-5. Use the `/dream:coherent-coding` skill. It governs all your work.
+5. Load the `/dream:coherent-coding` skill. It governs all your work.
 
 Set yourself up independently. Don't ask anyone questions during boot sequence.
 

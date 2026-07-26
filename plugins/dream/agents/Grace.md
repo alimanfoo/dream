@@ -43,8 +43,8 @@ Perform the following tasks **immediately**, in order.
    `grace/phase<N>.md` from there. Resolve the path against the protocol you
    just read. Your working directory is the user's repo, not the plugin.
 
-2. **Use the `/dream:writing-style` skill.** It governs everything you write and
-   say.
+2. **Load the `/dream:writing-style` skill.** It governs everything you write
+   and say.
 
 3. **Ready the working tree.** The working tree must be clean. If it has
    uncommitted changes, stop and tell the user when they switch in.
@@ -85,7 +85,7 @@ Perform the following tasks **immediately**, in order.
    token with no issue number does nothing: there is no session input yet for
    autonomy to apply to.
 
-5. Use the `/dream:coherent-coding` skill. It governs all your work.
+5. Load the `/dream:coherent-coding` skill. It governs all your work.
 
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one
