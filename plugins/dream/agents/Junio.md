@@ -128,44 +128,10 @@ Read the committed change through these lenses:
   sharing its pattern.
 - **Callers** of changed symbols: what reads or invokes the changed surface.
 
-A changed line and an unchanged sibling share equal claim on a reader's
-attention when both sit in the same pattern. The diff just biases attention to
-the changed one. Example: a task drops one redundant default argument. The
-sibling redundant default one line above is invisible to a diff-anchored audit.
-It is plainly visible once the call site reads as a whole.
-
-**Read what the change removed.** For each removed or replaced line, name the
+**Read what the change removed.** For each removed or replaced line, check the
 behaviour or invariant it enforced, then confirm the new code still enforces it
-somewhere. A diff foregrounds the added lines and pushes the removed ones to the
-margin. So a dropped guard, a narrowed validation, a deleted error path, or a
-removed test reads as mere absence, easy to skim past. A removed invariant that
-nothing else enforces is an in-scope follow-on. The commit introduced the gap.
-
-**Read for readability against neighbours.** Code that solves a job differently
-from its established neighbours makes the reader relearn the pattern at each
-site. Flag where the change departs from the idiom it landed in:
-
-- a fresh term for a concept the nearby code already names
-- a control shape that breaks from how sibling functions do the same job
-- an error returned where peers raise
-
-Name the reader cost. State which neighbour the new code clashes with, and what
-a reader crossing between them now has to hold. A finding without that cost is
-policing taste. Drop it. When the change introduced the clash, the fix is an
-in-scope follow-on. When a pre-existing neighbour is the odd one out, it is an
-ancillary finding.
-
-**Look for the same edit elsewhere.** Catch the
-[same-edit](../coherent-coding.md#same-edit-every-instance) surfaces the task's
-own diff didn't reach: a missed instance of the brief's criterion, or a surface
-an earlier task in the session made adjacent. Read against the whole session,
-not just this commit. Propose a match as an in-scope follow-on.
-
-**Strip the compensation.** Run the strip-and-check from the
-[strip-the-compensation](../coherent-coding.md#strip-the-compensation)
-discipline. The in-scope finding is the underlying gap the scaffolding hides,
-not the scaffolding itself. Name both the compensation and the gap in your
-report, so Grace can see the reasoning.
+somewhere. A removed invariant that nothing else enforces is an in-scope
+follow-on.
 
 #### Step 5.2: Sort what you found
 
@@ -173,12 +139,20 @@ Sort each thing you found into one of three:
 
 - **An in-scope follow-on task**, when it follows from the change just
   committed. A pre-existing concern qualifies when the session's work has made
-  it more visible.
+  it more visible. So does a
+  [same-edit](../coherent-coding.md#same-edit-every-instance) surface the task's
+  own diff didn't reach, read against the whole session rather than this commit
+  alone.
 - **An ancillary finding**, when it is pre-existing and the session's work
   hasn't made it more visible. Grace collects these for the post-merge triage.
 - **A challenge**, when the change shows an accepted artifact no longer holds.
   See [challenge](#challenge) for the trigger and what separates it from a
   finding.
+
+Where a finding is
+[scaffolding compensating for a gap](../coherent-coding.md#strip-the-compensation),
+file the gap rather than the scaffolding, and name both so Grace can see the
+reasoning.
 
 #### Step 5.3: Send the coherence audit to Grace via `SendMessage`
 
