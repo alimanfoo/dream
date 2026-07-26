@@ -53,8 +53,7 @@ has to remember it?
 Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides in your spawn prompt.
-   Pay close attention to the **coherence chain** section. Your discipline about
-   staying in scope is what keeps the chain bounded.
+   Pay close attention to the **coherence chain** section.
 
 2. Load the `/dream:writing-style` skill. It governs everything you write and
    say.
