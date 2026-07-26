@@ -118,8 +118,7 @@ After every completed task, run a coherence audit, following the steps below.
 
 Read the committed change through these lenses:
 
-**Read beyond the diff.** The committed change tells you where to look. The
-wider surface the diff sits in tells you what to look at:
+**Read beyond the diff:**
 
 - **Neighbouring lines** at changed call sites: sibling arguments, sibling
   statements, adjacent lines above and below what changed.
@@ -135,19 +134,16 @@ the changed one. Example: a task drops one redundant default argument. The
 sibling redundant default one line above is invisible to a diff-anchored audit.
 It is plainly visible once the call site reads as a whole.
 
-**Read what the change removed.** Read the lines the diff deletes or replaces,
-not just the ones it adds. For each removed or replaced line, name the behaviour
-or invariant it enforced, then confirm the new code still enforces it somewhere.
-A diff foregrounds the added lines and pushes the removed ones to the margin. So
-a dropped guard, a narrowed validation, a deleted error path, or a removed test
-reads as mere absence, easy to skim past. A removed invariant that nothing else
-enforces is an in-scope follow-on. The commit introduced the gap.
+**Read what the change removed.** For each removed or replaced line, name the
+behaviour or invariant it enforced, then confirm the new code still enforces it
+somewhere. A diff foregrounds the added lines and pushes the removed ones to the
+margin. So a dropped guard, a narrowed validation, a deleted error path, or a
+removed test reads as mere absence, easy to skim past. A removed invariant that
+nothing else enforces is an in-scope follow-on. The commit introduced the gap.
 
-**Read for readability against neighbours.** Read the committed code beside the
-code it now sits among, the way a reader moving between them must. Coherence
-includes reading coherence. Code that solves a job differently from its
-established neighbours makes the reader relearn the pattern at each site. Flag
-where the change departs from the idiom it landed in:
+**Read for readability against neighbours.** Code that solves a job differently
+from its established neighbours makes the reader relearn the pattern at each
+site. Flag where the change departs from the idiom it landed in:
 
 - a fresh term for a concept the nearby code already names
 - a control shape that breaks from how sibling functions do the same job
