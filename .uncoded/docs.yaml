@@ -86,11 +86,6 @@ plugins/:
               'Step 5.2: Sort what you found':
               'Step 5.3: Send the coherence audit to Grace via `SendMessage`':
               Coherence audit format:
-              Read beyond the diff:
-              Read what the change removed:
-              Read for readability against neighbours:
-              The same edit elsewhere:
-              Compensation patterns:
               Challenge:
             'Phase 6: Review':
               'Step 6.1: Read the whole diff':

@@ -117,12 +117,60 @@ After every completed task, run a coherence audit, following the steps below.
 #### Step 5.1: Read the committed change
 
 Read the committed change and name what it still needs to reach a coherent
-state. Read it through each lens below:
-[read beyond the diff](#read-beyond-the-diff),
-[read what the change removed](#read-what-the-change-removed),
-[read for readability against neighbours](#read-for-readability-against-neighbours),
-[the same edit elsewhere](#the-same-edit-elsewhere), and
-[compensation patterns](#compensation-patterns).
+state. Read it through each of these lenses.
+
+**Read beyond the diff.** The committed change tells you where to look. The
+wider surface the diff sits in tells you what to look at:
+
+- **Neighbouring lines** at changed call sites: sibling arguments, sibling
+  statements, adjacent lines above and below what changed.
+- **Sibling members** of changed classes, functions, or modules: peers of what
+  changed in the same file.
+- **Peer files** in changed modules: files alongside the one the change edited,
+  sharing its pattern.
+- **Callers** of changed symbols: what reads or invokes the changed surface.
+
+A changed line and an unchanged sibling share equal claim on a reader's
+attention when both sit in the same pattern. The diff just biases attention to
+the changed one. Example: a task drops one redundant default argument. The
+sibling redundant default one line above is invisible to a diff-anchored audit.
+It is plainly visible once the call site reads as a whole.
+
+**Read what the change removed.** Read the lines the diff deletes or replaces,
+not just the ones it adds. For each removed or replaced line, name the behaviour
+or invariant it enforced, then confirm the new code still enforces it somewhere.
+A diff foregrounds the added lines and pushes the removed ones to the margin. So
+a dropped guard, a narrowed validation, a deleted error path, or a removed test
+reads as mere absence, easy to skim past. A removed invariant that nothing else
+enforces is an in-scope follow-on. The commit introduced the gap.
+
+**Read for readability against neighbours.** Read the committed code beside the
+code it now sits among, the way a reader moving between them must. Coherence
+includes reading coherence. Code that solves a job differently from its
+established neighbours makes the reader relearn the pattern at each site. Flag
+where the change departs from the idiom it landed in:
+
+- a fresh term for a concept the nearby code already names
+- a control shape that breaks from how sibling functions do the same job
+- an error returned where peers raise
+
+Name the reader cost. State which neighbour the new code clashes with, and what
+a reader crossing between them now has to hold. A finding without that cost is
+policing taste. Drop it. When the change introduced the clash, the fix is an
+in-scope follow-on. When a pre-existing neighbour is the odd one out, it is an
+ancillary finding.
+
+**Look for the same edit elsewhere.** Catch the
+[same-edit](../coherent-coding.md#same-edit-every-instance) surfaces the task's
+own diff didn't reach: a missed instance of the brief's criterion, or a surface
+an earlier task in the session made adjacent. Read against the whole session,
+not just this commit. Propose a match as an in-scope follow-on.
+
+**Strip the compensation.** Run the strip-and-check from the
+[strip-the-compensation](../coherent-coding.md#strip-the-compensation)
+discipline. The in-scope finding is the underlying gap the scaffolding hides,
+not the scaffolding itself. Name both the compensation and the gap in your
+report, so Grace can see the reasoning.
 
 #### Step 5.2: Sort what you found
 
@@ -160,68 +208,6 @@ longer holds, with the new evidence>.
 
 Skip a section with no entries. If there's nothing to flag in any of them, your
 report is "no substantive findings."
-
-#### Read beyond the diff
-
-Read beyond the diff. The committed change tells you where to look. The wider
-surface the diff sits in tells you what to look at:
-
-- **Neighbouring lines** at changed call sites: sibling arguments, sibling
-  statements, adjacent lines above and below what changed.
-- **Sibling members** of changed classes, functions, or modules: peers of what
-  changed in the same file.
-- **Peer files** in changed modules: files alongside the one the change edited,
-  sharing its pattern.
-- **Callers** of changed symbols: what reads or invokes the changed surface.
-
-A changed line and an unchanged sibling share equal claim on a reader's
-attention when both sit in the same pattern. The diff just biases attention to
-the changed one. Example: a task drops one redundant default argument. The
-sibling redundant default one line above is invisible to a diff-anchored audit.
-It is plainly visible once the call site reads as a whole.
-
-#### Read what the change removed
-
-Read the lines the diff deletes or replaces, not just the ones it adds. For each
-removed or replaced line, name the behaviour or invariant it enforced, then
-confirm the new code still enforces it somewhere. A diff foregrounds the added
-lines and pushes the removed ones to the margin. So a dropped guard, a narrowed
-validation, a deleted error path, or a removed test reads as mere absence, easy
-to skim past. A removed invariant that nothing else enforces is an in-scope
-follow-on. The commit introduced the gap.
-
-#### Read for readability against neighbours
-
-Read the committed code beside the code it now sits among, the way a reader
-moving between them must. Coherence includes reading coherence. Code that solves
-a job differently from its established neighbours makes the reader relearn the
-pattern at each site. Flag where the change departs from the idiom it landed in:
-
-- a fresh term for a concept the nearby code already names
-- a control shape that breaks from how sibling functions do the same job
-- an error returned where peers raise
-
-Name the reader cost. State which neighbour the new code clashes with, and what
-a reader crossing between them now has to hold. A finding without that cost is
-policing taste. Drop it. When the change introduced the clash, the fix is an
-in-scope follow-on. When a pre-existing neighbour is the odd one out, it is an
-ancillary finding.
-
-#### The same edit elsewhere
-
-Your coherence audit catches the
-[same-edit](../coherent-coding.md#same-edit-every-instance) surfaces the task's
-own diff didn't reach: a missed instance of the brief's criterion, or a surface
-an earlier task in the session made adjacent. Read against the whole session,
-not just this commit. Propose a match as an in-scope follow-on.
-
-#### Compensation patterns
-
-On every coherence audit, run the strip-and-check from the
-[strip-the-compensation](../coherent-coding.md#strip-the-compensation)
-discipline. The in-scope finding is the underlying gap the scaffolding hides,
-not the scaffolding itself. Name both the compensation and the gap in your
-report, so Grace can see the reasoning.
 
 #### Challenge
 
