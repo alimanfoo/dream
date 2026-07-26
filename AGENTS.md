@@ -192,13 +192,6 @@ work here like any other codebase. The machinery it weighs is the protocol's
 own, a mechanism or a role or a phase, and the team pays the cost of each every
 session.
 
-**Reaching past coherence is the plugin's job.** The guide sets the ambition:
-make the code fit, then reach for the generalisation. Agents do not reach it on
-their own, and telling them to aim higher does not get them there (see
-[What the design is answering](#what-the-design-is-answering)). So the plugin
-has to make the deeper read happen structurally. Otherwise the team delivers the
-coherent minimum and stops.
-
 **Sort every human touch: coherence or intent.** When the human steps in, name
 which it is. _The dream_ draws the line. The test for any change: does it remove
 a coherence touch, or does it lean on the human to hold something together?
