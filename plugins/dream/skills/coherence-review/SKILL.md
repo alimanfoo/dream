@@ -26,16 +26,31 @@ per lens below, all in one message so they run in parallel. Brief each with the
 target and its guide section or sections, pasting the heading and the text
 beneath it into the briefing.
 
-- **Root cause.** The Resolve the root cause section.
-- **Same edit.** The Same edit, every instance section.
-- **One home.** The One fact, one home section.
-- **One model.** The One concept, one model section.
-- **Separation.** The Separation and boundaries section.
-- **Carried in shape.** The Code-shape ladder, Wrong-layer defensive code, and
-  Cross-site rules sections.
-- **Compensation and scaffolding.** The Strip the compensation and Defend
-  behaviour sections.
-- **Naming.** The Names that tell the truth section.
+- **Root cause.** The
+  [Resolve the root cause](../../coherent-coding.md#resolve-the-root-cause)
+  section.
+- **Same edit.** The
+  [Same edit, every instance](../../coherent-coding.md#same-edit-every-instance)
+  section.
+- **One home.** The
+  [One fact, one home](../../coherent-coding.md#one-fact-one-home) section.
+- **One model.** The
+  [One concept, one model](../../coherent-coding.md#one-concept-one-model)
+  section.
+- **Separation.** The
+  [Separation and boundaries](../../coherent-coding.md#separation-and-boundaries)
+  section.
+- **Carried in shape.** The
+  [Code-shape ladder](../../coherent-coding.md#code-shape-ladder),
+  [Wrong-layer defensive code](../../coherent-coding.md#wrong-layer-defensive-code),
+  and [Cross-site rules](../../coherent-coding.md#cross-site-rules) sections.
+- **Compensation and scaffolding.** The
+  [Strip the compensation](../../coherent-coding.md#strip-the-compensation) and
+  [Defend behaviour, not surface](../../coherent-coding.md#defend-behaviour-not-surface)
+  sections.
+- **Naming.** The
+  [Names that tell the truth](../../coherent-coding.md#names-that-tell-the-truth)
+  section.
 
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
