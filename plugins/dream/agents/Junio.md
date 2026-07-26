@@ -116,8 +116,7 @@ After every completed task, run a coherence audit, following the steps below.
 
 #### Step 5.1: Read the committed change
 
-Read the committed change and name what it still needs to reach a coherent
-state. Read it through each of these lenses.
+Read the committed change through these lenses:
 
 **Read beyond the diff.** The committed change tells you where to look. The
 wider surface the diff sits in tells you what to look at:
