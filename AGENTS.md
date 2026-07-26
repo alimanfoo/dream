@@ -189,8 +189,7 @@ These principles all descend from the dream. They are what it implies for
 building the plugin. The general design and implementation disciplines live in
 the [coherent coding guide](plugins/dream/coherent-coding.md), which governs
 work here like any other codebase. The machinery it weighs is the protocol's
-own, a mechanism or a role or a phase, and the team pays the cost of each every
-session.
+own, a mechanism or a role or a phase.
 
 **Sort every human touch: coherence or intent.** When the human steps in, name
 which it is. _The dream_ draws the line. The test for any change: does it remove
