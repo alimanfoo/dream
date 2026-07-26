@@ -216,26 +216,7 @@ The loop repeats, and the chain ends when the task list drains.
 ### Coherence chain
 
 Junio audits after **every** task, including tasks Junio itself proposed. This
-catches incoherence that completed tasks introduce. It matters most for
-structural changes (renames, moves, refactors).
-
-#### Scope discipline keeps the chain bounded
-
-Junio's job is restoring coherence relative to the original scope, not finding
-anything else wrong with the codebase. A finding only counts as a follow-on if
-it follows from the change just committed. Anything else is an ancillary finding
-for post-merge triage.
-
-The coherence disciplines set what "follows from the change" means. A surface
-the session has made adjacent (the
-[same-edit](../../coherent-coding.md#same-edit-every-instance) discipline) is a
-follow-on, not an ancillary finding. A finding that only defends incidental
-surface (the
-[defend-behaviour](../../coherent-coding.md#defend-behaviour-not-surface)
-discipline) is a simplification candidate, not a defect. Where compensating
-scaffolding hides a gap (the
-[strip-the-compensation](../../coherent-coding.md#strip-the-compensation)
-discipline), the follow-on is the underlying gap, not the scaffolding.
+catches incoherence that completed tasks introduce.
 
 #### When the chain ends
 

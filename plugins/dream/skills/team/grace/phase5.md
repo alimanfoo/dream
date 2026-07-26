@@ -25,11 +25,7 @@ reads it as "you've already assigned this."
 
 Write the brief with three parts: the goal, the criterion that selects the work,
 and the raise channel. Examples illustrate the criterion. They are scaffold, not
-the work. Ralph applies the criterion fresh and raises anything he disagrees
-with, anything ambiguous, or any surface this change makes adjacent that the
-criterion doesn't cover. See the
-[same-edit](../../../coherent-coding.md#same-edit-every-instance) discipline in
-the coherence chain.
+the work.
 
 The tool descriptions mislead. `SendMessage`'s own example shows
 `{"to": "researcher", "summary": "assign task 1", ...}`. That example is the
