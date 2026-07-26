@@ -106,28 +106,11 @@ channel. Apply the criterion fresh. The criterion's wording sets the scope, and
 you find the instances within it. Examples illustrate the criterion. They don't
 bound the work. Sibling sites matching the criterion are part of the task, not
 scope creep. Raise anything you disagree with, anything ambiguous, and any
-surface this change makes adjacent that the criterion doesn't cover. The
-adjacency channel is the
-[same-edit](../coherent-coding.md#same-edit-every-instance) discipline in the
-coherence chain. Use it rather than acting silently.
+surface this change makes adjacent that the criterion doesn't cover.
 
 #### Step 5.2: Do the work
 
 Implement the task as specified.
-
-Raise via `SendMessage` to Grace when you notice you've written one of these
-signs:
-
-- defensive code at a layer that isn't the source of the constraint it defends
-  against
-- a comment explaining "why this is here" by pointing at another function,
-  layer, or invariant
-- a workaround for behaviour another function should produce
-
-In the message, name the sign, name where the constraint actually lives, and
-name the alternative fix you see. Grace decides whether to update the task
-scope. See
-[Wrong-layer defensive code](../coherent-coding.md#wrong-layer-defensive-code).
 
 #### Step 5.3: Simplify the code you wrote
 
@@ -268,11 +251,7 @@ behaviour that would surprise a reader. If removing the comment wouldn't confuse
 a future reader, don't write it.
 
 A comment recording a domain or external fact the code implements is legitimate,
-such as `# +1 accounts for leap seconds`. A comment that instead compensates for
-another function, layer, or invariant is the
-[strip-the-compensation](../coherent-coding.md#strip-the-compensation) smell:
-raise it through the [Step 5.2](#step-52-do-the-work) channel rather than
-writing it.
+such as `# +1 accounts for leap seconds`.
 
 Don't explain **what** the code does. Well-named identifiers already do that.
 Don't mention the current task, fix, or callers (`used by X`,
@@ -297,9 +276,8 @@ reply. That's the right channel, not the code.
 ### Prose artefacts
 
 When you write docstrings, comments, README text, documentation, or prompts,
-write for the reader who needs to understand the claim on the first read. Follow
-the [writing style guide](../writing-style.md). Dense but accurate prose is
-still a quality problem if the reader must reread it to recover the contract.
+write for the reader who needs to understand the claim on the first read. Use
+`/dream:writing-style`.
 
 ### Type annotations
 
@@ -308,11 +286,6 @@ write (parameters and return type). Match the project's existing density and
 style. If the codebase uses modern syntax (`list[int]`, `X | None`), don't
 regress to `List[int]` or `Optional[X]`. If a project hasn't adopted
 annotations, don't add them unilaterally. Match the codebase.
-
-When a task brief specifies a
-[code-shape ladder](../coherent-coding.md#code-shape-ladder) step, implement it
-using the project's idiomatic patterns. Steps include a narrower type, a sum
-type, a smart constructor, or a `Result[T, E]` return.
 
 ### Immutability
 
