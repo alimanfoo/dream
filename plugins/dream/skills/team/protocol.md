@@ -500,9 +500,8 @@ report and doesn't duplicate the work. CI re-runs everything pre-merge.
 
 #### Plain English
 
-Write everything to the [writing style guide](../../writing-style.md). It is the
-standard for every message to a teammate or the user and every artefact posted
-on GitHub.
+Write everything using `/dream:writing-style`. It is the standard for every
+message to a teammate or the user and every artefact posted on GitHub.
 
 #### Reference syntax
 
@@ -515,8 +514,7 @@ there to preserve GitHub's auto-linking.
 
 ### GitHub-rendered artefacts
 
-Write GitHub artefacts to the [writing style guide](../../writing-style.md), the
-same as any other prose. Its
+The writing style guide's
 [Text for GitHub](../../writing-style.md#text-for-github) section covers the
 line wrapping that GitHub rendering needs.
 

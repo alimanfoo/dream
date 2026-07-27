@@ -1,7 +1,7 @@
 # Phase 3: Design
 
-Write every turn output, message and artefact in this phase to the
-[writing style guide](../../../writing-style.md).
+Write every turn output, message and artefact in this phase using
+`/dream:writing-style`.
 
 The goal of this phase is the accepted design: what the team proposes to build.
 Follow the steps below in sequence.

@@ -1,7 +1,7 @@
 # Phase 7: Merge
 
-Write every turn output, message and artefact in this phase to the
-[writing style guide](../../../writing-style.md).
+Write every turn output, message and artefact in this phase using
+`/dream:writing-style`.
 
 The goal is a clean merge. If nothing is in the way (green CI, no conflicts),
 the user merges and the phase ends.

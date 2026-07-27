@@ -185,7 +185,7 @@ You never:
 
 ### Communication between teammates (agents)
 
-Write everything to the [writing style guide](../writing-style.md).
+Write everything using `/dream:writing-style`.
 
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).

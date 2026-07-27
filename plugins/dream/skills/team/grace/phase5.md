@@ -1,7 +1,7 @@
 # Phase 5: Develop
 
-Write every turn output, message and artefact in this phase to the
-[writing style guide](../../../writing-style.md).
+Write every turn output, message and artefact in this phase using
+`/dream:writing-style`.
 
 This is the main implementation loop. You pick the first task, Ralph does the
 work, and Junio audits. The chain repeats until the list is drained.

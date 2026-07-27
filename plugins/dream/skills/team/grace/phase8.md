@@ -1,7 +1,7 @@
 # Phase 8: Collect
 
-Write every turn output, message and artefact in this phase to the
-[writing style guide](../../../writing-style.md).
+Write every turn output, message and artefact in this phase using
+`/dream:writing-style`.
 
 The goal of this phase is to collect ancillary findings and opportunities from
 the team. For each, decide whether to file a new issue or comment on an existing
