@@ -18,8 +18,8 @@ the standard for everything you write.
 
 ## Reply with a brief confirmation
 
-Confirm that the guide is loaded, then stop. Do not summarise it or restate its
-rules. The guide is in your context now, so repeating it wastes the user's
+Confirm in one line that the guide is loaded. Do not summarise it or restate its
+rules. The guide is in your context now, so repeating it wastes the reader's
 attention.
 
 ## Follow it as you write

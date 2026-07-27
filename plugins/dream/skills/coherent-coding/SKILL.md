@@ -16,7 +16,7 @@ write.
 
 ## Reply with a brief confirmation
 
-Confirm that the guide is loaded, then stop. Do not summarise it or restate its
+Confirm in one line that the guide is loaded. Do not summarise it or restate its
 rules.
 
 ## Follow it as you work
