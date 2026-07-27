@@ -9,11 +9,10 @@ any maintenance work or technical debt for future sessions to address.
 
 ## Coherence is the floor, not the ceiling
 
-Make the code fit, then reach past fitting. Making it fit is the baseline. Above
-it is the work that leaves the code simpler than you found it. Reach the root
-cause. Search for the generalisation that removes duplication,
-[hides complexity](#deep-modules), and models the domain better. Make the intent
-plain.
+Make the code fit, then reach past fitting. Above that baseline is the work that
+leaves the code simpler than you found it. Reach the root cause. Search for the
+generalisation that removes duplication, hides complexity, and models the domain
+better. Make the intent plain.
 
 ## Tidy first
 
