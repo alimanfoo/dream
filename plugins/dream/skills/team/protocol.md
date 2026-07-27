@@ -226,10 +226,8 @@ rejects all proposed follow-ons.
 #### Audit-raised challenge
 
 When a coherence audit surfaces something new that breaks an accepted artifact,
-Junio raises a challenge to Grace. For instance, repeated coherence audits may
-circle the same surface for different stated reasons. That points at the design
-being too narrow to reach the root cause. Grace assesses it and, if it holds,
-takes it to the user.
+Junio raises a challenge to Grace. Grace assesses it and, if it holds, takes it
+to the user.
 
 ### Task ordering
 
