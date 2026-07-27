@@ -11,8 +11,9 @@ any maintenance work or technical debt for future sessions to address.
 
 Make the code fit, then reach past fitting. Making it fit is the baseline. Above
 it is the work that leaves the code simpler than you found it. Reach the root
-cause. Search for the generalisation that removes duplication, hides complexity,
-and models the domain better. Make the intent plain.
+cause. Search for the generalisation that removes duplication,
+[hides complexity](#deep-modules), and models the domain better. Make the intent
+plain.
 
 ## Tidy first
 
@@ -132,6 +133,34 @@ Two signs a boundary is wrong. One change forces edits in several units that
 seemed unrelated, so a concern is smeared across them. Or one unit folds in
 decisions that change on different schedules, so every reason to change reaches
 into it. Move the code until each concern sits on one side.
+
+## Deep modules
+
+Make each unit deep: a simple interface over a substantial implementation. A
+unit earns its place when the caller learns a little and gets a lot. A shallow
+one, whose interface costs about as much as it saves, has not earned it.
+
+Callers outnumber implementers, so complexity is cheaper inside a unit than
+spread across its call sites. Absorb it rather than pushing it out through
+configuration, special-case parameters, or edge cases every caller has to know.
+
+Four shapes to watch for:
+
+- A wrapper or method that hides almost nothing behind its signature.
+- A pass-through layer that forwards its arguments to the next layer without
+  adding abstraction.
+- Two adjacent layers that look almost identical, so one is not earning its
+  keep.
+- A flag or parameter handing the caller a decision the implementation could
+  make.
+
+This differs from separation and boundaries, which decides where to draw the
+line. A boundary can sit at the thinnest coupling and still leave a unit that
+hides nothing.
+
+A shallow unit is rarely a defect. It works; it just charges every caller a
+little, forever. So the fix is usually to remove the layer, not to add one
+around it.
 
 ## Define errors out of existence
 

@@ -40,6 +40,8 @@ beneath it into the briefing.
 - **Separation.** The
   [Separation and boundaries](../../coherent-coding.md#separation-and-boundaries)
   section.
+- **Deep modules.** The [Deep modules](../../coherent-coding.md#deep-modules)
+  section.
 - **Defensive code.** The
   [Define errors out of existence](../../coherent-coding.md#define-errors-out-of-existence),
   [Code-shape ladder](../../coherent-coding.md#code-shape-ladder), and
