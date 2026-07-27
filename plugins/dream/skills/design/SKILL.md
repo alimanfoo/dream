@@ -11,8 +11,7 @@ argument-hint: "<requirements and code analysis | text>"
 Produce design options: the proposed design, your recommendation for what the
 code will look like when the work is done, and any credible alternative designs.
 
-Read the [writing style guide](../../writing-style.md) before you write. It is
-the standard for the design options and every message you write.
+Load the `/dream:writing-style` skill before you write.
 
 Follow the steps in order.
 

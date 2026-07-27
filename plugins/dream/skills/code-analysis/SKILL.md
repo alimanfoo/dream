@@ -11,8 +11,7 @@ Produce a code analysis: a verifiable read of what the current code does and
 where, with file:line or symbol citations throughout. It stays factual, not a
 proposal.
 
-Read the [writing style guide](../../writing-style.md) before you write. It is
-the standard for the analysis and every message you write.
+Load the `/dream:writing-style` skill before you write.
 
 Follow the steps in order.
 
