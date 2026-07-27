@@ -82,24 +82,23 @@ plugins/:
             'Phase 3: Design':
             'Phase 4: Plan':
             'Phase 5: Develop':
-              Read beyond the diff:
-              Read what the change removed:
-              Read for readability against neighbours:
-              No scope creep:
-              The same edit elsewhere:
+              'Step 5.1: Read the committed change':
+              'Step 5.2: Identify coherence gaps':
+              'Step 5.3: Sort what you found':
+              'Step 5.4: Send the coherence audit to Grace via `SendMessage`':
+              Coherence audit format:
               Challenge:
-              Compensation patterns:
             'Phase 6: Review':
               'Step 6.1: Read the whole diff':
               'Step 6.2: Run the coherence review':
               'Step 6.3: Weigh the findings':
               'Step 6.4: Send your review to Grace via `SendMessage`':
+              Review format:
             'Phase 7: Merge':
             'Phase 8: Collect':
             'Phase 9: Reflect':
           Common rules:
             Hard rules:
-            Defend behaviour, not surface:
             Communication between teammates (agents):
       Ralph.md:
         Ralph:
@@ -127,16 +126,13 @@ plugins/:
             Commits:
             Investigate before changing:
             Code comments:
-            Naming:
             Prose artefacts:
             Type annotations:
             Immutability:
             Private function signatures and call sites:
             Test isolation:
             Test gaming:
-            Scope, abstraction, and over-engineering:
             Plain code:
-            Speculative error handling:
             Backwards-compatibility hacks:
             Security:
             UI and frontend changes:
@@ -154,38 +150,6 @@ plugins/:
           Leave these alone:
           Record every finding in a file:
           Return only what needs changing:
-      review-coherence-in-shape.md:
-        Carried in shape, not prose:
-          The lens:
-          Reporting:
-      review-coherence-naming.md:
-        Names that tell the truth:
-          The lens:
-          Reporting:
-      review-coherence-one-home.md:
-        One fact, one home:
-          The lens:
-          Reporting:
-      review-coherence-one-model.md:
-        One concept, one model:
-          The lens:
-          Reporting:
-      review-coherence-root-cause.md:
-        Root cause:
-          The lens:
-          Reporting:
-      review-coherence-same-edit.md:
-        Same edit, every instance:
-          The lens:
-          Reporting:
-      review-coherence-scaffolding.md:
-        Compensation and unearned scaffolding:
-          The lens:
-          Reporting:
-      review-coherence-separation.md:
-        Separation and boundaries:
-          The lens:
-          Reporting:
       review-design-behaviour.md:
         Defend behaviour, not surface:
           The lens:
@@ -258,6 +222,26 @@ plugins/:
         Simplification:
           The lens:
           Reporting:
+    coherent-coding.md:
+      Coherent coding guide:
+        Golden rule:
+        Tidy first:
+        Resolve the root cause:
+        Same edit, every instance:
+        Existing code is unproven:
+        One fact, one home:
+        One concept, one model:
+        Separation and boundaries:
+        Deep modules:
+        Define errors out of existence:
+        Code-shape ladder:
+        Wrong-layer defensive code:
+        Cross-site rules:
+        Names that tell the truth:
+        Defend behaviour, not surface:
+        Strip the compensation:
+        Adding a concept reframes the others:
+        The burden of proof is on the addition:
     skills/:
       catcher/:
         SKILL.md:
@@ -300,6 +284,13 @@ plugins/:
           Coherence review:
             Arguments:
             Review:
+      coherent-coding/:
+        SKILL.md:
+          Coherent coding:
+            Read the guide first:
+            Reply with a brief confirmation:
+            Follow it as you work:
+            For code already written, use /dream:coherence-review:
       copy-edit/:
         SKILL.md:
           Copy-edit:
@@ -373,7 +364,6 @@ plugins/:
           Dream Solo:
             Autonomy:
             Coherence:
-            Don't over-build:
             Communication style:
             Turn output:
             Mark your work:
@@ -479,11 +469,7 @@ plugins/:
             'Phase 4: Plan':
             'Phase 5: Develop':
               Coherence chain:
-                Scope discipline keeps the chain bounded:
                 When the chain ends:
-                Same-edit test:
-                Defend behaviour, not surface:
-                Strip the compensation:
                 Audit-raised challenge:
               Task ordering:
             'Phase 6: Review':
@@ -496,12 +482,6 @@ plugins/:
             The session PR:
             Sharing an artifact:
             No orphaned observations:
-            Existing code is unproven:
-            Code-shape ladder:
-            Wrong-layer defensive code:
-            One fact, one home:
-            Agent-instructions files:
-            Cross-site rules:
             Common rules:
               Branch and commit protocol:
                 Branch:

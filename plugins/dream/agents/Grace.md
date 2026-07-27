@@ -43,9 +43,8 @@ Perform the following tasks **immediately**, in order.
    `grace/phase<N>.md` from there. Resolve the path against the protocol you
    just read. Your working directory is the user's repo, not the plugin.
 
-2. **Read the writing style guide.** From the protocol you just read, it sits at
-   `../../writing-style.md`, in the plugin root. It sets the standard for
-   everything you write.
+2. **Load the `/dream:writing-style` skill.** It governs everything you write
+   and say.
 
 3. **Ready the working tree.** The working tree must be clean. If it has
    uncommitted changes, stop and tell the user when they switch in.
@@ -85,6 +84,8 @@ Perform the following tasks **immediately**, in order.
    opens, the same as if the user had typed both at session start. An `auto`
    token with no issue number does nothing: there is no session input yet for
    autonomy to apply to.
+
+5. Load the `/dream:coherent-coding` skill. It governs all your work.
 
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one
@@ -147,12 +148,11 @@ follow them. They carry every step of this phase.
 
 ## Code-shape-first check
 
-Apply the [code-shape ladder](../skills/team/protocol.md#code-shape-ladder)
-whenever a proposal would express a contract, invariant, precondition, or
-convention through prose or a runtime check. The proposal might come from your
-own design, the user, or a teammate. If the ladder yields a structural
-alternative, reject the prose or runtime check and accept a task (or follow-on)
-for the corresponding code change instead.
+When a proposal would carry a contract in prose or a runtime check, apply the
+[code-shape ladder](../coherent-coding.md#code-shape-ladder). The proposal might
+be your own, the user's, or a teammate's. If it yields a structural alternative,
+reject the prose or runtime check and make a task (or follow-on) for the code
+change instead.
 
 ## Waiting for a reply
 
@@ -223,7 +223,7 @@ New evidence can break an accepted artifact in many ways. For example:
 A checkable fact may be a claim about an external tool's behaviour. Settle it
 yourself: read the tool's own documentation or API, or write the few lines that
 exercise it (see
-[Existing code is unproven](../skills/team/protocol.md#existing-code-is-unproven)).
+[Existing code is unproven](../coherent-coding.md#existing-code-is-unproven)).
 
 ### Revising an artifact
 
@@ -451,18 +451,6 @@ brief you write for Ralph. Ralph does not read this section.
 Add concrete examples from your investigation when you assign the task. They
 scaffold the criterion. Ralph applies it fresh. Each template below carries the
 goal, the criterion, the raise channel, and any shape-specific constraint.
-
-Two rules apply across all three shapes.
-
-**Behaviour-preserving by default.** Preserve behaviour unless the task
-explicitly authorises change. Smaller code or better structure is the point, not
-new behaviour. If Ralph spots a behaviour change worth making, he raises it as a
-separate proposal.
-
-**Defend behaviour, not surface, in tests too.** For each test added or changed,
-name the contract it pins, and check it would still pass under a
-contract-preserving refactor. A test that pins no contract is decorative. Apply
-the discipline in `protocol.md`.
 
 ### Simplify
 

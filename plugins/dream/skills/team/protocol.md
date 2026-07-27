@@ -17,13 +17,6 @@ drop, or clean up behind you, the system has failed, however small the touch.
 Leave each session whole, so the next builds on solid ground instead of
 repairing your wake.
 
-Coherence is the floor, not the ceiling. Above it is the work that leaves the
-code simpler than you found it: reach the root cause, collapse the duplication,
-make the intent plain. Your reflex will be the smallest local fix. Reach past it
-to the change that leaves the whole most coherent, which is usually the larger
-one. And reach only there: spend the effort where it compounds, never on
-complexity the need has not earned.
-
 You work without memory. You will not remember this session, and the next team
 will not either. Each wakes a fresh mind. A decision meant to last cannot live
 in your head, or in prose a later session must find and choose to honour. It
@@ -216,66 +209,18 @@ The loop repeats, and the chain ends when the task list drains.
 ### Coherence chain
 
 Junio audits after **every** task, including tasks Junio itself proposed. This
-catches incoherence that completed tasks introduce. It matters most for
-structural changes (renames, moves, refactors).
-
-#### Scope discipline keeps the chain bounded
-
-Junio's job is restoring coherence relative to the original scope, not finding
-anything else wrong with the codebase. A finding only counts as a follow-on if
-it follows from the change just committed. Anything else is an ancillary finding
-for post-merge triage.
+catches incoherence that completed tasks introduce.
 
 #### When the chain ends
 
 The chain ends when either Junio reports "no substantive findings" or Grace
 rejects all proposed follow-ons.
 
-#### Same-edit test
-
-Treat a surface the session itself has made relevant as in scope, not as an
-adjacent concern. Examples: a promoted sibling whose underscore prefix is now a
-fossil, a removed flag's orphan branch, a renamed concept's parallel function.
-The session created the relevance, which is signal, not noise. All three roles
-apply the dispatching question: _has the session made this surface adjacent?_
-Ralph asks while implementing, Junio asks during audit, Grace asks during
-triage. An in-session antecedent flips a borderline call toward in-scope.
-
-Missed instances of the brief's criterion don't need a separate test. Ralph
-applies the criterion fresh. The criterion's wording sets the scope, so sibling
-sites matching the criterion are part of the work. Junio still catches missed
-instances during audit when Ralph's application of the criterion left some out.
-
-#### Defend behaviour, not surface
-
-For any proposed machinery (a test, a glossary, a regen step, a cross-reference
-rule, a backlog issue), ask: _What specific behaviour does this defend? Who is
-the real consumer?_ If the only answer is incidental surface, frame the finding
-as a simplification candidate. Incidental surface includes a count nothing
-depends on, a docstring phrasing, or an arbitrary constant. Junio applies the
-test at audit. Grace applies it at triage.
-
-#### Strip the compensation
-
-Some diffs include scaffolding that does work the underlying code should be
-doing:
-
-- a comment asserting a property the code doesn't show,
-- a mock insulating the change from its dependency,
-- an exception handler hiding a fixable error,
-- a runtime validator substituting for the type system.
-
-Junio's test: mentally remove the scaffolding and read the diff again. If the
-change no longer holds, the in-scope finding is the underlying gap, not the
-scaffolding.
-
 #### Audit-raised challenge
 
 When a coherence audit surfaces something new that breaks an accepted artifact,
-Junio raises a challenge to Grace. For instance, repeated coherence audits may
-circle the same surface for different stated reasons. That points at the design
-being too narrow to reach the root cause. Grace assesses it and, if it holds,
-takes it to the user.
+Junio raises a challenge to Grace. Grace assesses it and, if it holds, takes it
+to the user.
 
 ### Task ordering
 
@@ -520,174 +465,6 @@ ancillary finding, and a candidate the user leaves unaddressed at the
 requirements gate. Each defer has a named destination and a reason that matches
 the receiving phase's job. Open-ended deferral is not an outcome. "We'll come
 back to this" does not count.
-
-## Existing code is unproven
-
-Treat every property of existing code (that it is correct, that it performs,
-that it still has a consumer) as unproven until you have seen the evidence. Code
-in the tree records a past decision. It is not proof the decision was right. The
-burden of proof is on the code, not on the reader who doubts it.
-
-Demand evidence in proportion to what you rely on. Before building on a
-function's behaviour, trace it rather than infer it from the name. Before
-relying on it being fast, find the benchmark. "It looks optimised" is not
-evidence. Where no decision rests on a property, leave it. The rule asks for
-proof where reliance is real, not a blanket audit.
-
-This reaches past existing code, to any claim a decision rests on, whoever made
-it. A finding in a review is unproven the same way. It may rest on a checkable
-fact about an external tool. Check that fact first, when acting on it would
-change a decision. A citation and a confident tone are not a check.
-
-Unproven is not wrong. The stance is dispassionate, not hostile: missing
-evidence is a reason to check, not a licence to rewrite working code. The
-behaviour-preserving and over-engineering rules in the agent files still hold.
-
-## Code-shape ladder
-
-Carry contracts in code shape, not prose or runtime checks. The ladder, in order
-of preference:
-
-1. **Type.** A narrower input type, a newtype wrapper, a `Result[T, E]` return.
-2. **Structure.** A sum type instead of "if mode is X then Y must…", a split
-   function instead of "callers must call A before B", or a separate module
-   instead of a section-header comment.
-3. **Smart constructor.** Validate at the boundary so internal callers can
-   assume validity.
-4. **Assert + property-based test.** A relational invariant types genuinely
-   can't encode. Use a single-line `assert` at function entry plus a
-   property-based test pinning it.
-
-Apply this ladder whenever a contract, invariant, precondition, or cross-call
-rule would otherwise be carried by prose or a runtime check. Prose: a docstring,
-a comment, a section-header. Runtime check: a validator, a defensive
-normalisation, a type-narrowing. If 1-4 all say no, accept prose. Prefer one
-short sentence to a full contract restatement.
-
-## Wrong-layer defensive code
-
-A common code smell: defensive code sits at the wrong layer. The validation,
-type check, or fallback guards a constraint whose source is elsewhere. Ask where
-the input first arrives and which operation actually needs the guarantee. Carry
-that guarantee in a type, not a check. Construct the type once at the boundary
-where the input arrives. Require it in the signature of the operation that needs
-it (see [Code-shape ladder](#code-shape-ladder) above). The boundary builds the
-guarantee and the operation demands it, so no layer in between re-checks. Moving
-the check deeper, rather than typing it, usually just relocates the code smell.
-
-Two signs to look for. A comment explaining the defensive code ("X is required
-because Y") points at a deeper layer and makes the code look intentional. Or the
-same check is scattered across several internal functions, with no single parser
-at the boundary.
-
-## One fact, one home
-
-A fact is one decision the code makes: the set of valid cases, the shape of an
-API response, a formula, a naming convention. Each fact belongs in one place.
-Everything else derives from it. A fact kept in two places drifts the moment
-either side changes, and each drift reads as a fresh, local bug. Duplication
-doesn't cost once. It taxes every session that works with the fact.
-
-A surface that keeps coming back is itself evidence. When the recurrence check,
-an audit, or the issue history shows fixes landing on the same surface across
-sessions, suspect a duplicated fact before a run of unrelated defects. Each fix
-patches one case of an enumeration the code already holds, and there is always
-one more case, so the chain never converges.
-
-Find the home and make the copies derive from it: make the enumeration a sum
-type the test iterates, generate the client from the spec, derive the doc from
-the code. Single-sourcing is usually removal of a copy, not new machinery. When
-a duplicated fact is the root cause of a recurring surface, single-sourcing it
-is coherent work, not optional anticipation. Finishing without it leaves the
-root cause unresolved. When a recurring rule has no single home to derive from,
-where many sites each restate it, there is nothing to single-source. It is a
-[cross-site rule](#cross-site-rules) instead.
-
-Two traps:
-
-- **Cheaper re-sync is not a home.** A script that regenerates a checked-in
-  copy, a pass that re-aligns two surfaces, a test asserting copy A equals copy
-  B. Each keeps two homes and only lowers the cost of one reconciliation. The
-  copies still drift. The test: can the two copies still drift? If yes, the fact
-  still has two homes.
-- **Only unify facts that must always change together.** Two things that merely
-  look alike today are not one fact. Merging them couples code that should stay
-  free to change apart. Ask: if this fact changed, would every copy have to
-  change too? A no means they are different facts. Leave them apart.
-
-## Agent-instructions files
-
-A repo records instructions for coding agents in files such as `AGENTS.md` or
-`CLAUDE.md`. These state how the code is built, the conventions it keeps, the
-test and lint commands, and any [cross-site rule](#cross-site-rules) documented
-rather than checked. A repo may keep one at its root, governing the whole tree,
-and one in any subdirectory, governing the paths beneath it. The nearest such
-file to a path governs it. Read it before working on that code.
-
-## Cross-site rules
-
-Some rules have to hold in many places at once: every API endpoint returns
-errors in the same shape, every public function has a docstring, no query in a
-hot path runs more than once per row. No single line owns the rule.
-
-This sets it apart from a duplicated fact and a single-site contract. A
-duplicated fact lives in one home you derive the copies from (see
-[One fact, one home](#one-fact-one-home)). A single-site contract sits in one
-place, where the code's shape can carry it (see
-[Code-shape ladder](#code-shape-ladder)). A rule spread across independent sites
-has neither: no home to single-source, no single type to hold it.
-
-Default to documenting the rule. State it in one line in the
-[agent-instructions file](#agent-instructions-files) that governs the code that
-the rule spans. The next session reads that file before working on that code. A
-comment at any one site is read by no one who needs the rule first. This is
-cheap, reversible memory: no machinery to carry, and nothing to fire when a
-harmless edit trips it. But a document decays. A later session has to find the
-line and choose to honour it, and a new site may ignore it.
-
-Promote it to a check once it earns one, on two conditions. First, it guards a
-real rule that real code relies on, not a count nothing reads or a docstring's
-exact wording. Second, the rule drifts: either you have watched it break across
-sessions, or its first violation would itself do real damage. Damage means a
-forced migration, a breached security boundary, or a reopened shipped decision,
-where waiting for the break is too late. When both hold, enforce the rule with a
-check that fails the moment any site breaks it: an import rule for a layer
-boundary, a snapshot for a surface that drifts out of sync, a lint rule for a
-house convention. Prefer a pre-commit hook, so the agent sees the failure fast
-where it works. A CI assertion is the fallback for what can only run there. A
-rule the design has merely drawn, real but never yet broken, meets the first
-test and not the second. Document it and wait. You lose little, and you avoid
-pinning a check to a rule you have only imagined, the one likeliest to fire when
-nothing is wrong.
-
-Once a check enforces a rule, the check is its definitive home. The code passes
-or it does not, with no second opinion. The agent-instructions file then drops
-to a pointer: the rule in a line, and where it is enforced. It never keeps a
-second copy. When a documented rule is promoted to a check, its full statement
-shrinks to that pointer in the same move, so the fact keeps one home (see
-[One fact, one home](#one-fact-one-home)). A check that already exists
-undocumented is the same case backwards. Add a pointer to it in the relevant
-agent-instructions file. Don't restate it, or the two copies drift and no reader
-can tell which one governs.
-
-Three cautions:
-
-- **Reach for an existing tool first.** An off-the-shelf checker (a ruff rule, a
-  mypy setting, numpydoc) is cheaper and steadier than one you write yourself.
-  Build a custom check only when nothing existing fits.
-- **A flaky check is worse than none.** A flaky check guards a real rule but
-  fires when nothing is wrong. An agent team won't switch it off. It reads each
-  false failure as a work item and keeps trying to fix what isn't broken,
-  session after session. Make it as reliable as the rule it guards, or leave it
-  out.
-- **A check grounds out in the product.** Aim a coverage gate or a test at the
-  product the repo delivers, not at the tooling and checks built around it. A
-  test on a checker only proves the checker. A coverage gate that measures the
-  checker scripts makes the tooling earn tests to keep the build green. Scope a
-  coverage gate to product code. Give a custom checker a one-time confirmation
-  that it catches the bad case and passes the good. Don't add a standing test
-  suite. Standard lint and formatting are the exception. They run on all code,
-  tooling included, at no extra upkeep.
 
 ## Common rules
 

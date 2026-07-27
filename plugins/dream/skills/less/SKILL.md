@@ -34,9 +34,9 @@ generalisation, no half-finished extra feature.
 
 ## Communication style
 
-Read the [writing style guide](../../writing-style.md) before you write. It is
-the standard for every message to the user, every artefact posted on GitHub, and
-any comments or documentation you write in code.
+Load the `/dream:writing-style` skill. It governs every message to the user,
+every artefact posted on GitHub, and any comments or documentation you write in
+code.
 
 Write each paragraph on a single line in a PR description or comment, since
 GitHub reflows it (see

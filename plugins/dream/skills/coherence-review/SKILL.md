@@ -17,17 +17,45 @@ Read the argument the user gives. It names what to review: a git range like
 
 ## Review
 
-Launch these review subagents in parallel, via the Agent tool, one per lens,
-briefing each to review the target:
+Read the [coherent coding guide](../../coherent-coding.md). It is the home of
+the disciplines this review checks. The lens subagents can't read it themselves,
+so paste each lens the guide text it needs.
 
-- `dream:review-coherence-root-cause`
-- `dream:review-coherence-same-edit`
-- `dream:review-coherence-one-home`
-- `dream:review-coherence-one-model`
-- `dream:review-coherence-separation`
-- `dream:review-coherence-in-shape`
-- `dream:review-coherence-scaffolding`
-- `dream:review-coherence-naming`
+Launch the generic `dream:code-review-lens` subagent via the Agent tool, once
+per lens below, all in one message so they run in parallel. Brief each with the
+target and its guide section or sections, pasting the heading and the text
+beneath it into the briefing.
+
+- **Root cause.** The
+  [Resolve the root cause](../../coherent-coding.md#resolve-the-root-cause)
+  section.
+- **Same edit.** The
+  [Same edit, every instance](../../coherent-coding.md#same-edit-every-instance)
+  section.
+- **One home.** The
+  [One fact, one home](../../coherent-coding.md#one-fact-one-home) section.
+- **One model.** The
+  [One concept, one model](../../coherent-coding.md#one-concept-one-model)
+  section.
+- **Separation.** The
+  [Separation and boundaries](../../coherent-coding.md#separation-and-boundaries)
+  section.
+- **Deep modules.** The [Deep modules](../../coherent-coding.md#deep-modules)
+  section.
+- **Defensive code.** The
+  [Define errors out of existence](../../coherent-coding.md#define-errors-out-of-existence),
+  [Code-shape ladder](../../coherent-coding.md#code-shape-ladder), and
+  [Wrong-layer defensive code](../../coherent-coding.md#wrong-layer-defensive-code)
+  sections.
+- **Cross-site rules.** The
+  [Cross-site rules](../../coherent-coding.md#cross-site-rules) section.
+- **Compensation and scaffolding.** The
+  [Strip the compensation](../../coherent-coding.md#strip-the-compensation) and
+  [Defend behaviour, not surface](../../coherent-coding.md#defend-behaviour-not-surface)
+  sections.
+- **Naming.** The
+  [Names that tell the truth](../../coherent-coding.md#names-that-tell-the-truth)
+  section.
 
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
