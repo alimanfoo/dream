@@ -133,6 +133,22 @@ seemed unrelated, so a concern is smeared across them. Or one unit folds in
 decisions that change on different schedules, so every reason to change reaches
 into it. Move the code until each concern sits on one side.
 
+## Define errors out of existence
+
+Before handling an error, ask whether you can redefine the operation so the
+error cannot arise. A small change to an interface's semantics often removes a
+whole class of exceptions. A delete that treats a missing item as already gone
+needs no not-found error. A lookup that returns an empty list needs no empty
+case at the call site. A substring that clamps an out-of-range index to the
+string's bounds cannot raise an out-of-range error.
+
+Each error you design away is a branch every caller no longer writes, tests, or
+gets wrong. The complexity moves from the many callers into the one
+implementation, which is the cheaper place for it.
+
+Prefer this to a handler. But don't swallow a real failure to do it: an error
+that signals a genuine bug should still surface loudly.
+
 ## Code-shape ladder
 
 Carry a contract in code shape, not in prose or a runtime check. Apply this
@@ -172,22 +188,6 @@ Two signs to look for. A comment explaining the defensive code ("X is required
 because Y") points at a deeper layer and makes the code look intentional. Or the
 same check is scattered across several internal functions, with no single parser
 at the boundary.
-
-## Define errors out of existence
-
-Before handling an error, ask whether you can redefine the operation so the
-error cannot arise. A small change to an interface's semantics often removes a
-whole class of exceptions. A delete that treats a missing item as already gone
-needs no not-found error. A lookup that returns an empty list needs no empty
-case at the call site. A substring that clamps an out-of-range index to the
-string's bounds cannot raise an out-of-range error.
-
-Each error you design away is a branch every caller no longer writes, tests, or
-gets wrong. The complexity moves from the many callers into the one
-implementation, which is the cheaper place for it.
-
-Prefer this to a handler. But don't swallow a real failure to do it: an error
-that signals a genuine bug should still surface loudly.
 
 ## Cross-site rules
 
