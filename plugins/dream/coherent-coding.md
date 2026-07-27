@@ -31,7 +31,7 @@ So tidy first where you can. Make a behaviour-preserving change that makes the
 new code easy to add, then add it: extract a helper before adding a sibling
 case, rename a confusing parameter before threading new arguments, split a
 tangled function before adding a branch. And tidy as you work, whenever the
-shape resists the change.
+shape resists the change. Kent Beck's _Tidy First?_ is the long form.
 
 ## Resolve the root cause
 
@@ -80,7 +80,8 @@ before you act on it. A citation and a confident tone are not a check.
 
 A fact is one decision the code makes: the set of valid cases, the shape of an
 API response, a formula, a naming convention. Each fact belongs in one place.
-Everything else derives from it.
+Everything else derives from it. This is DRY, also called single source of
+truth.
 
 A fact kept in two places drifts the moment either side changes, and each drift
 reads as a fresh, local bug. Duplication does not cost once. It taxes every
@@ -122,7 +123,8 @@ is a sign you have not yet named the concept.
 ## Separation and boundaries
 
 Keep concerns that change for different reasons in different places. A unit
-should do one job, so a change to one concern touches one place, not many.
+should do one job, so a change to one concern touches one place, not many. This
+is separation of concerns.
 
 A boundary is where two concerns meet through a narrow interface. Draw it where
 the coupling is thinnest, where the two sides share a small, stable contract and
@@ -138,7 +140,8 @@ into it. Move the code until each concern sits on one side.
 
 Make each unit deep: a simple interface over a substantial implementation. A
 unit earns its place when the caller learns a little and gets a lot. A shallow
-one, whose interface costs about as much as it saves, has not earned it.
+one, whose interface costs about as much as it saves, has not earned it. The
+term is Ousterhout's, from _A Philosophy of Software Design_.
 
 Callers outnumber implementers, so complexity is cheaper inside a unit than
 spread across its call sites. Absorb it rather than pushing it out through
@@ -176,7 +179,8 @@ gets wrong. The complexity moves from the many callers into the one
 implementation, which is the cheaper place for it.
 
 Prefer this to a handler. But don't swallow a real failure to do it: an error
-that signals a genuine bug should still surface loudly.
+that signals a genuine bug should still surface loudly. The term is
+Ousterhout's.
 
 ## Code-shape ladder
 
@@ -198,6 +202,9 @@ The ladder, in order of preference:
 
 If all four say no, accept prose. Prefer one short sentence to a full contract
 restatement.
+
+The first rungs restate two established rules: make illegal states
+unrepresentable, and parse, don't validate.
 
 ## Wrong-layer defensive code
 
@@ -261,7 +268,8 @@ Three cautions:
 Make naming the first place you spend effort, not the last. Identifiers carry
 the meaning that comments would otherwise. Name each thing for what it is or
 does. A reader trusts a name and builds on it without reading the body, so a
-name that misleads costs more than no name at all.
+name that misleads costs more than no name at all. These are intention-revealing
+names.
 
 - **Length matches scope.** A loop index across three lines can be `i`. A value
   that crosses ten lines earns a domain word. The bigger the scope, the longer
@@ -298,7 +306,8 @@ a glossary, a regen step, a cross-reference rule, a backlog issue.
 Ask two questions: what specific behaviour does this defend, and who is the real
 consumer? If the only answer is incidental surface, the machinery earns nothing.
 Incidental surface includes a count nothing depends on, a docstring phrasing, or
-an arbitrary constant.
+an arbitrary constant. For tests this is the familiar rule to test behaviour,
+not implementation.
 
 ## Strip the compensation
 
@@ -345,7 +354,7 @@ and refactor as you add. Adding alone leaves the system carrying both.
 
 New machinery carries a permanent cost: a mechanism, a concept, a special case.
 You carry it, apply it correctly, and reconcile it with everything else. So the
-default is not to add.
+default is not to add. YAGNI is the same instinct, narrowed to features.
 
 Before adding, try in order: can the need be met by removing something already
 there? By widening an existing rule until the special case disappears? Only if
