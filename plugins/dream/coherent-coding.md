@@ -7,13 +7,6 @@ This guide sets the standard for the code you design and write.
 Coherence and maintenance of the codebase are your responsibility. Do not leave
 any maintenance work or technical debt for future sessions to address.
 
-## Coherence is the floor, not the ceiling
-
-Make the code fit, then reach past fitting. Above that baseline is the work that
-leaves the code simpler than you found it. Reach the root cause. Search for the
-generalisation that removes duplication, hides complexity, and models the domain
-better. Make the intent plain.
-
 ## Tidy first
 
 Expect to change existing code whenever you add new code. Your reflex will be
