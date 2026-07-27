@@ -40,10 +40,13 @@ beneath it into the briefing.
 - **Separation.** The
   [Separation and boundaries](../../coherent-coding.md#separation-and-boundaries)
   section.
-- **Carried in shape.** The
-  [Code-shape ladder](../../coherent-coding.md#code-shape-ladder),
-  [Wrong-layer defensive code](../../coherent-coding.md#wrong-layer-defensive-code),
-  and [Cross-site rules](../../coherent-coding.md#cross-site-rules) sections.
+- **Defensive code.** The
+  [Define errors out of existence](../../coherent-coding.md#define-errors-out-of-existence),
+  [Code-shape ladder](../../coherent-coding.md#code-shape-ladder), and
+  [Wrong-layer defensive code](../../coherent-coding.md#wrong-layer-defensive-code)
+  sections.
+- **Cross-site rules.** The
+  [Cross-site rules](../../coherent-coding.md#cross-site-rules) section.
 - **Compensation and scaffolding.** The
   [Strip the compensation](../../coherent-coding.md#strip-the-compensation) and
   [Defend behaviour, not surface](../../coherent-coding.md#defend-behaviour-not-surface)
