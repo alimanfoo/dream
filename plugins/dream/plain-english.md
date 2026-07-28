@@ -140,40 +140,63 @@ is".
 
 Lead with what to do. Add what not to do only to support it.
 
-## Words and marks
+## Use a small vocabulary
 
-- Use a small, consistent vocabulary. One word per meaning, one meaning per
-  word. Do not swap in a synonym for variety.
-- Do not invent an umbrella term when you have already named the list.
-- Do not state a count of items you then list. The count and the list drift
-  apart when either changes. For example: write "the sources", not "the three
-  sources".
-- Prefer the common word. No jargon. No idioms. For example:
-  - "X owns the schema", not "X is the operational source of truth"
-  - "might go out of sync", not "has drift potential"
-  - "now only handles country", not "has narrowed its role to country-only"
-  - "use", not "leverage"
-  - "essential", not "load-bearing"
-  - "the API", not "the surface area"
-- Write coined domain and process terms as ordinary lowercase nouns, in a
-  heading as much as in a sentence. Reserve capitals for genuine proper names:
-  people, products, tools, and literal identifiers. For example:
-  - "the retry policy", not "the Retry Policy"
-- Name the concrete action on the code. "Touch" and "untouched" hide what the
-  work actually does and carry the wrong connotations. Say what changes and what
-  stays. For example:
-  - "the paths the work will change", not "the paths the work touches"
-  - "before working on that code", not "before touching that code"
-- Use verbs, not noun forms of verbs. Write "decide", not "make a decision".
-- Keep the small words. Do not drop "the", "a", or "that" to sound terse.
-- Spell out an abbreviation the first time you use it.
-- Skip the Latin. Write "for example", not "e.g.".
-- Use simple punctuation. Full stops and commas. No dashes. No semicolons. To
-  drop a dash, split the aside into its own sentence.
-- Skip the flourish. No filler opener. No three-part lists for effect. No neat
-  opposites. No clever closing line. For example:
-  - "The cache is the bottleneck.", not "Here's my honest take: the cache is the
-    bottleneck."
+Use a small, consistent vocabulary. One word per meaning, one meaning per word.
+Do not swap in a synonym for variety.
+
+## Name the list, not an umbrella term
+
+Do not invent an umbrella term when you have already named the list.
+
+## Leave the count out of a list
+
+Do not state a count of items you then list. The count and the list drift apart
+when either changes. For example: write "the sources", not "the three sources".
+
+## Prefer the common word
+
+Prefer the common word. No jargon. No idioms. For example:
+
+- "X owns the schema", not "X is the operational source of truth"
+- "might go out of sync", not "has drift potential"
+- "now only handles country", not "has narrowed its role to country-only"
+- "use", not "leverage"
+- "essential", not "load-bearing"
+- "the API", not "the surface area"
+
+## Name the concrete action on the code
+
+Name the concrete action on the code. "Touch" and "untouched" hide what the work
+actually does and carry the wrong connotations. Say what changes and what stays.
+For example:
+
+- "the paths the work will change", not "the paths the work touches"
+- "before working on that code", not "before touching that code"
+
+## Use verbs, not noun forms
+
+Use verbs, not noun forms of verbs. Write "decide", not "make a decision".
+
+## Keep the small words
+
+Keep the small words. Do not drop "the", "a", or "that" to sound terse.
+
+## Spell out an abbreviation
+
+Spell out an abbreviation the first time you use it.
+
+## Skip the Latin
+
+Skip the Latin. Write "for example", not "e.g.".
+
+## Skip the flourish
+
+Skip the flourish. No filler opener. No three-part lists for effect. No neat
+opposites. No clever closing line. For example:
+
+- "The cache is the bottleneck.", not "Here's my honest take: the cache is the
+  bottleneck."
 
 ## Text for GitHub
 

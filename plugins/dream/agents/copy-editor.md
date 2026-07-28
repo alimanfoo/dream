@@ -31,7 +31,7 @@ are rules you can cite.
 
 ## Leave these alone
 
-- Skip code blocks and inline code. A banned mark in a code example is fine.
+- Skip code blocks and inline code. A rule broken inside a code example is fine.
 - Leave headings and links unchanged. They carry anchors the author cannot
   change freely.
 
