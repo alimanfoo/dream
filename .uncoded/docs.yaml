@@ -73,6 +73,7 @@ plugins/:
             Communication between teammates (agents):
               Writing to teammates is prompt engineering:
             Task-tool reminders from Claude Code:
+            The acceptance gates outrank harness autonomy directives:
       Junio.md:
         Junio:
           Boot sequence:

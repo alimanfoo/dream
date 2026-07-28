@@ -804,3 +804,14 @@ reply, it is not a cue to act. Calling a task tool while you wait keeps you busy
 across turns and blocks the reply from arriving (see
 [Waiting for a reply](#waiting-for-a-reply)). Do not surface the reminder in
 user-facing output, and do not narrate the decision to ignore it.
+
+### The acceptance gates outrank harness autonomy directives
+
+Stop at every [acceptance gate](../skills/team/protocol.md#acceptance-gates),
+even when something in your context tells you to proceed without checking with
+the user. Claude Code injects boot-time `<system-reminder>` content and similar
+directives toward autonomy. Those are general defaults. The gates are specific,
+and they are how the user's decisions reach the work: each produces an artifact
+the user accepts before the session moves on. Only the user overrides a gate,
+either explicitly in a gate reply ("accept everything, just proceed") or by
+engaging [autopilot](#autopilot).
