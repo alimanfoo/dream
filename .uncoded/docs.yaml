@@ -315,7 +315,6 @@ plugins/:
             Read the guide first:
             Reply with a brief confirmation:
             Follow it as you work:
-            For code already written, use /dream:coherence-review:
       copy-edit/:
         SKILL.md:
           Copy-edit:
@@ -363,7 +362,6 @@ plugins/:
             Read the guide first:
             Reply with a brief confirmation:
             Follow it as you write:
-            For prose already written, use /dream:copy-edit:
       plan/:
         SKILL.md:
           Plan:

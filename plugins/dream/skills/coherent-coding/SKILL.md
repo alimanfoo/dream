@@ -23,8 +23,3 @@ rules.
 
 Design and implement to the guide from here on. Apply it as you scope the
 change, again as you write, and again as you read back what you wrote.
-
-## For code already written, use /dream:coherence-review
-
-This skill shapes new work. Use the `/dream:coherence-review` skill to check
-code already written against the coherence lenses.
