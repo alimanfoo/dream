@@ -96,7 +96,7 @@ This repo has two layers, easy to confuse:
   `AGENTS.md` directly. Some editors refuse to write through a symlink.)
 
 Two guides sit at the plugin root, not inside any one skill: the
-[writing style guide](plugins/dream/writing-style.md) and the
+[Plain English guide](plugins/dream/plain-english.md) and the
 [coherent coding guide](plugins/dream/coherent-coding.md). The whole plugin
 works to them, the team agents at runtime and the utility skills when invoked.
 So each standard has one home, shared by all of them.
@@ -270,7 +270,7 @@ needs it at all.
 
 ### Instruction paragraphs
 
-The writing style guide ([`writing-style.md`](plugins/dream/writing-style.md))
+The Plain English guide ([`plain-english.md`](plugins/dream/plain-english.md))
 sets the shape of an instruction paragraph: the imperative first, then the why,
 then examples, then exceptions. An agent instruction adds rules of its own to
 that shape.
@@ -332,8 +332,8 @@ once.
 
 ## Writing prose
 
-The prose standard for this repo is the writing style guide
-([`writing-style.md`](plugins/dream/writing-style.md)). Follow it for every
+The prose standard for this repo is the Plain English guide
+([`plain-english.md`](plugins/dream/plain-english.md)). Follow it for every
 prose artifact: agent prompts, the protocol, skill bodies, these dev notes. When
 writing rules and instructions for the dream-team agents, see also
 [Writing agent prompts](#writing-agent-prompts).

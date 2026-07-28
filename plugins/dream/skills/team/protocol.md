@@ -498,12 +498,6 @@ report and doesn't duplicate the work. CI re-runs everything pre-merge.
 
 ### All communications
 
-#### Plain English
-
-Write everything to the [writing style guide](../../writing-style.md). It is the
-standard for every message to a teammate or the user and every artefact posted
-on GitHub.
-
 #### Reference syntax
 
 Refer to GitHub issues and PRs as `GHNN` (for example `GH16`) and tasks as
@@ -515,9 +509,8 @@ there to preserve GitHub's auto-linking.
 
 ### GitHub-rendered artefacts
 
-Write GitHub artefacts to the [writing style guide](../../writing-style.md), the
-same as any other prose. Its
-[Text for GitHub](../../writing-style.md#text-for-github) section covers the
+The Plain English guide's
+[Text for GitHub](../../plain-english.md#text-for-github) section covers the
 line wrapping that GitHub rendering needs.
 
 Give a named heading (`Requirements`, `Session input`, `Decision needed`, and
@@ -532,14 +525,14 @@ the same, consistent weight.
 Use the `SendMessage` tool for all communication between teammates. The tool
 accepts JSON-typed control messages (`shutdown_request`,
 `plan_approval_response`, and so on) for system-level signals. Teammate
-communication is not one of those. Send a plain-text string. Address teammates
-by exact role name (`Grace`, `Ralph`, `Junio`, or `Ada`) in the `to:` field.
-UUIDs won't reach the right inbox. Set the `summary` field (5 to 10 words) when
-sending a string message. That's the UI preview the tool expects.
+communication is not one of those. Send a string. Address teammates by exact
+role name (`Grace`, `Ralph`, `Junio`, or `Ada`) in the `to:` field. UUIDs won't
+reach the right inbox. Set the `summary` field (5 to 10 words) when sending a
+string message. That's the UI preview the tool expects.
 
-Send every reply to a teammate via `SendMessage`. Plain turn output is not
-delivered to other agents. Only the harness sees it. Even a one-word reply
-(`done`, `confirmed`) goes via `SendMessage`. The rule has no length gate.
+Send every reply to a teammate via `SendMessage`. Turn output is not delivered
+to other agents. Only the harness sees it. Even a one-word reply (`done`,
+`confirmed`) goes via `SendMessage`. The rule has no length gate.
 
 #### Signature
 
@@ -554,6 +547,6 @@ as a final ack, a `done` report, or an audit hand-off, where no reply is wanted.
 
 Ralph, Junio, and Ada are not user-facing. They use tools to do the work, then
 use `SendMessage` for anything Grace needs: reports, progress, findings,
-reviews, or questions. Plain turn output, when useful for local status or
-debugging, is at most one short sentence per turn. They ignore auto-generated
-idle notifications unless those affect pending work.
+reviews, or questions. Turn output, when useful for local status or debugging,
+is at most one short sentence per turn. They ignore auto-generated idle
+notifications unless those affect pending work.

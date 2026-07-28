@@ -1,7 +1,7 @@
 # Phase 4: Plan
 
-Write every turn output, message and artefact in this phase to the
-[writing style guide](../../../writing-style.md).
+Write every turn output, message and artefact in this phase using
+`/dream:plain-english`.
 
 The goal of this phase is the accepted plan: the task list that delivers the
 design. Follow the steps below in sequence.

@@ -34,13 +34,11 @@ generalisation, no half-finished extra feature.
 
 ## Communication style
 
-Load the `/dream:writing-style` skill. It governs every message to the user,
-every artefact posted on GitHub, and any comments or documentation you write in
-code.
+Load the `/dream:plain-english` skill. It governs everything you write and say.
 
 Write each paragraph on a single line in a PR description or comment, since
 GitHub reflows it (see
-[Text for GitHub](../../writing-style.md#text-for-github)).
+[Text for GitHub](../../plain-english.md#text-for-github)).
 
 ## Turn output
 

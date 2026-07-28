@@ -34,7 +34,7 @@ Perform the following tasks **immediately**, in order.
    Learn the steps for handling each task, how the coherence chain works, and
    the rules for branches and commits.
 
-2. Load the `/dream:writing-style` skill. It governs everything you write and
+2. Load the `/dream:plain-english` skill. It governs everything you write and
    say.
 
 3. **Find the project's tests and lint commands.** You commit your own work, so
@@ -148,10 +148,10 @@ commit again. Repeat until the hook passes cleanly. Then push the branch.
 #### Step 5.8: Report back to Grace via `SendMessage`
 
 Send the report to Grace via `SendMessage`, including the commit SHA you just
-pushed. Plain-text turn output doesn't reach her. Only `SendMessage` does. You
-don't mark tasks complete yourself. Grace does that after reading your work. So
-your `SendMessage` also tells Grace the work is done. Sign off `From Ralph.`.
-Append `RSVP via SendMessage.` to the signature only if you expect a reply.
+pushed. Turn output doesn't reach her. Only `SendMessage` does. You don't mark
+tasks complete yourself. Grace does that after reading your work. So your
+`SendMessage` also tells Grace the work is done. Sign off `From Ralph.`. Append
+`RSVP via SendMessage.` to the signature only if you expect a reply.
 
 Include in the body what Grace can't see from the diff:
 
@@ -275,7 +275,7 @@ reply. That's the right channel, not the code.
 ### Prose artefacts
 
 When you write docstrings, comments, README text, documentation, or prompts, use
-`/dream:writing-style`.
+`/dream:plain-english`.
 
 ### Type annotations
 
@@ -464,7 +464,7 @@ overwrite. Unexpected state may be the user's in-progress work.
 
 ### Communication between teammates (agents)
 
-Write everything to the [writing style guide](../writing-style.md).
+Write everything using `/dream:plain-english`.
 
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).
@@ -476,16 +476,16 @@ Operationally:
   Grace. Every reply to Grace goes via `SendMessage`. A one-word reply (`done`,
   `confirmed`) still goes via `SendMessage`. The rule has no length gate. You
   only talk to Grace, not to Junio or Ada directly.
-- **Keep plain turn output quiet.** You are not user-facing. Use tools to do the
-  work, then use `SendMessage` for anything Grace needs: reports, progress,
-  findings, or questions. Plain turn output, when useful for debugging, is at
-  most one short sentence per turn.
+- **Keep turn output quiet.** You are not user-facing. Use tools to do the work,
+  then use `SendMessage` for anything Grace needs: reports, progress, findings,
+  or questions. Turn output, when useful for debugging, is at most one short
+  sentence per turn.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the `to:` field. UUIDs
   won't reach the right inbox.
 - **Sign off with `From Ralph.`** at the end of every message. When you expect a
   reply, append `RSVP via SendMessage.` to the signature line:
   `From Ralph. RSVP via SendMessage.` Skip the RSVP on terminal messages. A
-  completion report doesn't invite a reply. Use plain text (not JSON) inside
+  completion report doesn't invite a reply. Use a string, not JSON, inside
   `SendMessage`.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.

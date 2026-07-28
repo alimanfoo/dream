@@ -144,7 +144,7 @@ plugins/:
           Reporting:
       copy-editor.md:
         Copy editor:
-          Read the writing style guide:
+          Read the Plain English guide:
           Read the text to be copy-edited:
           Cite a rule or pass:
           Leave these alone:
@@ -242,6 +242,31 @@ plugins/:
         Strip the compensation:
         Adding a concept reframes the others:
         The burden of proof is on the addition:
+    plain-english.md:
+      Plain English guide:
+        Write to inform:
+        Write to be understood:
+        Write as if speaking:
+        Write for the reader's context:
+        Strict narrative order:
+        Reason forward:
+        One idea per paragraph:
+        One idea per sentence:
+        Use active voice:
+        Writing lists:
+        One reading per sentence:
+        Giving instructions:
+        Use a small vocabulary:
+        Name the list, not an umbrella term:
+        Leave the count out of a list:
+        Prefer the common word:
+        Name the concrete action on the code:
+        Use verbs, not noun forms:
+        Keep the small words:
+        Spell out an abbreviation:
+        Skip the Latin:
+        Skip the flourish:
+        Text for GitHub:
     skills/:
       catcher/:
         SKILL.md:
@@ -290,11 +315,10 @@ plugins/:
             Read the guide first:
             Reply with a brief confirmation:
             Follow it as you work:
-            For code already written, use /dream:coherence-review:
       copy-edit/:
         SKILL.md:
           Copy-edit:
-            First, read the writing style guide:
+            First, read the Plain English guide:
             Arguments:
             Each round:
       design/:
@@ -332,6 +356,12 @@ plugins/:
             Mark the PR ready for review:
             Handle the user's replies:
             Merge:
+      plain-english/:
+        SKILL.md:
+          Plain English:
+            Read the guide first:
+            Reply with a brief confirmation:
+            Follow it as you write:
       plan/:
         SKILL.md:
           Plan:
@@ -488,7 +518,6 @@ plugins/:
                 Commits:
                 Quality gates:
               All communications:
-                Plain English:
                 Reference syntax:
               GitHub-rendered artefacts:
               Communication between teammates (agents):
@@ -503,30 +532,6 @@ plugins/:
             On each firing:
             Teardown:
             Limits:
-      writing-style/:
-        SKILL.md:
-          Writing style:
-            Read the guide first:
-            Reply with a brief confirmation:
-            Follow it as you write:
-            For prose already written, use /dream:copy-edit:
-    writing-style.md:
-      Writing style guide:
-        Write to inform:
-        Write to be understood:
-        Write as if speaking:
-        Write for the reader's context:
-        Strict narrative order:
-        Reason forward:
-        One idea per paragraph:
-        One idea per sentence:
-        Keep sentences short:
-        Use active voice:
-        Writing lists:
-        One reading per sentence:
-        Giving instructions:
-        Words and marks:
-        Text for GitHub:
 README.md:
   dream:
     Prerequisites:

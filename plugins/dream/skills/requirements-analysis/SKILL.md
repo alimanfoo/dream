@@ -12,8 +12,7 @@ Produce a requirements analysis: your explicit reading of what the system must
 do behind the input and for whom. The result is a draft, ending with any open
 questions for the user to resolve.
 
-Read the [writing style guide](../../writing-style.md) before you write. It is
-the standard for the analysis and every message you write.
+Load the `/dream:plain-english` skill before you write.
 
 Follow the steps in order.
 

@@ -12,8 +12,7 @@ Produce a plan: the task list that delivers the design. Each task is a
 manageable single-commit unit. A criterion selects its work, and the implementer
 applies that criterion fresh.
 
-Read the [writing style guide](../../writing-style.md) before you write. It is
-the standard for the plan and every message you write.
+Load the `/dream:plain-english` skill before you write.
 
 Follow the steps in order.
 
