@@ -1,10 +1,6 @@
 ---
 name: plain-english
-description:
-  Write prose to the dream plugin's Plain English guide. Use when you are about
-  to write or revise prose, such as prompts, documentation, messages, or GitHub
-  artefacts. To fix prose already written, use the /dream:copy-edit skill
-  instead.
+description: Write prose to the dream plugin's Plain English guide.
 ---
 
 # Plain English
@@ -14,7 +10,7 @@ Adopt the dream plugin's Plain English guide.
 ## Read the guide first
 
 Read the [Plain English guide](../../plain-english.md) before you write. It sets
-the standard for everything you write.
+the standard for everything you write and say.
 
 ## Reply with a brief confirmation
 

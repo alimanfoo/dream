@@ -498,11 +498,6 @@ report and doesn't duplicate the work. CI re-runs everything pre-merge.
 
 ### All communications
 
-#### Plain English
-
-Write everything using `/dream:plain-english`. It is the standard for every
-message to a teammate or the user and every artefact posted on GitHub.
-
 #### Reference syntax
 
 Refer to GitHub issues and PRs as `GHNN` (for example `GH16`) and tasks as

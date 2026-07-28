@@ -1,11 +1,6 @@
 ---
 name: copy-edit
-description:
-  Bring a passage of prose into line with the Plain English guide. Reviews the
-  prose with a fresh reader, then fixes what the review raises, in one round by
-  default. Pass a number to loop until the prose passes or hits that cap. By
-  default it reviews the prose you changed. Name a file or section to review
-  that instead.
+description: Bring a passage of prose into line with the Plain English guide.
 argument-hint: "[target] [max-iterations]"
 ---
 

@@ -159,7 +159,6 @@ Lead with what to do. Add what not to do only to support it.
   heading as much as in a sentence. Reserve capitals for genuine proper names:
   people, products, tools, and literal identifiers. For example:
   - "the retry policy", not "the Retry Policy"
-  - "Postgres" (a product), "`git rebase`" (a command)
 - Name the concrete action on the code. "Touch" and "untouched" hide what the
   work actually does and carry the wrong connotations. Say what changes and what
   stays. For example:
@@ -170,9 +169,7 @@ Lead with what to do. Add what not to do only to support it.
 - Spell out an abbreviation the first time you use it.
 - Skip the Latin. Write "for example", not "e.g.".
 - Use simple punctuation. Full stops and commas. No dashes. No semicolons. To
-  drop a dash, split the aside into its own sentence. For example:
-  - "The script handled country and region. Now it handles country only.", not
-    "The script — which handled country and region — handles country only."
+  drop a dash, split the aside into its own sentence.
 - Skip the flourish. No filler opener. No three-part lists for effect. No neat
   opposites. No clever closing line. For example:
   - "The cache is the bottleneck.", not "Here's my honest take: the cache is the
