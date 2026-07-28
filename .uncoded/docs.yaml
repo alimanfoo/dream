@@ -125,10 +125,8 @@ plugins/:
           Common rules:
             Hard rules:
             Commits:
-            Investigate before changing:
             Code comments:
             Prose artefacts:
-            Test gaming:
             Backwards-compatibility hacks:
             Security:
             UI and frontend changes:

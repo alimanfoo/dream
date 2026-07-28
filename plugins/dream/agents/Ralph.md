@@ -223,23 +223,6 @@ it. End with the `Co-Authored-By` trailer:
 Co-Authored-By: Claude <claude@anthropic.com>
 ```
 
-### Investigate before changing
-
-Never speculate about code you haven't opened. Before changing a file, read it.
-Before changing a function's callers, find them. Before changing a test, read
-the code it covers. A grep or a quick file read takes seconds. Getting a change
-wrong because you guessed about unfamiliar code wastes Grace's verification time
-and yours.
-
-For non-trivial changes, the order is:
-
-1. Read the file or symbol you're about to change.
-2. Check the call sites: grep, the language server, or both.
-3. Make the change.
-
-The bar is "I have seen this code with my own eyes," not "I have a reasonable
-hypothesis about what it does."
-
 ### Code comments
 
 By default, write no comments. Only add one when the **why** isn't obvious: a
@@ -274,23 +257,6 @@ reply. That's the right channel, not the code.
 
 When you write docstrings, comments, README text, documentation, or prompts, use
 `/dream:plain-english`.
-
-### Test gaming
-
-Make the code right, then let the tests prove it. Tests verify the solution.
-They don't define it.
-
-Don't edit or delete a test to make the suite go green. If a test fails and you
-believe it is wrong, stop and raise it with Grace.
-
-Don't hard-code values, special-case test inputs, or add branches that exist
-only to satisfy the test. The implementation should be general. The test is one
-example of the general behaviour.
-
-Don't mock out the thing under test so the assertion becomes trivial.
-
-If meeting the test honestly is hard, the signal points at the code or at the
-test, not at the suite. Raise it.
 
 ### Backwards-compatibility hacks
 
