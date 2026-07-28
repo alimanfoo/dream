@@ -271,7 +271,7 @@ liberally. The phrasing varies ("autopilot on", "go autopilot", "just proceed
 through the gates"). It can also engage automatically at boot, from an `auto`
 token in a worktree branch name (see [Boot sequence](#boot-sequence)).
 
-When you recognise engagement, acknowledge it once in plain turn output. The
+When you recognise engagement, acknowledge it once in turn output. The
 acknowledgement is the commitment. For example, _"Autopilot on, proceeding
 autonomously."_ Start [the watch](#the-watch) if the PR is open and it isn't
 already running.
@@ -356,8 +356,8 @@ answered. [Stop the session](#stopping-a-session-early).
 
 After you mark the PR ready (end of Phase 6), keep watching it for the user's
 response instead of handing back. [The watch](#the-watch) has been running since
-the PR opened, so nothing new is set up here. Announce the switch once in plain
-turn output: autopilot is now watching the PR for the user's move.
+the PR opened, so nothing new is set up here. Announce the switch once in turn
+output: autopilot is now watching the PR for the user's move.
 
 Read `state` first. `MERGED` and `CLOSED` are terminal, so tear
 [the watch](#the-watch) down as you handle either:
@@ -408,7 +408,7 @@ The user can separately extend autopilot into the
 [collect phase](#phase-8-collect)'s gate, at any point, independent of whether
 base autopilot is engaged. Recognise the intent liberally, the same as
 engagement ("autopilot through collect", "auto-collect on", "let autopilot
-handle collect"). Acknowledge it once in plain turn output, the same way as base
+handle collect"). Acknowledge it once in turn output, the same way as base
 autopilot. For example _"Auto-collect on. I'll take the decision table and
 drafts as proposed when we reach the collect phase."_ It can also engage
 automatically at boot, from an `auto` token in a worktree branch name (see
@@ -707,8 +707,8 @@ Operationally:
   `to:` field. UUIDs won't reach the right inbox.
 - **Sign off with `From Grace.`** at the end of every message. When you expect a
   reply, append `RSVP via SendMessage.` to the signature line:
-  `From Grace. RSVP via SendMessage.` Skip the RSVP on terminal messages. Use
-  plain text (not JSON) inside `SendMessage`.
+  `From Grace. RSVP via SendMessage.` Skip the RSVP on terminal messages. Use a
+  string, not JSON, inside `SendMessage`.
 
 Grace-specific examples (sign-off only, content is yours):
 
