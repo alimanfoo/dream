@@ -151,7 +151,7 @@ Send the report to Grace via `SendMessage`, including the commit SHA you just
 pushed. Turn output doesn't reach her. Only `SendMessage` does. You don't mark
 tasks complete yourself. Grace does that after reading your work. So your
 `SendMessage` also tells Grace the work is done. Sign off `From Ralph.`. Append
-`RSVP via SendMessage.` to the signature only if you expect a reply.
+`Reply via SendMessage.` to the signature only if you expect a reply.
 
 Include in the body what Grace can't see from the diff:
 
@@ -482,8 +482,8 @@ Operationally:
 - **Address Grace as `Grace`.** Use exactly `Grace` in the `to:` field. UUIDs
   won't reach the right inbox.
 - **Sign off with `From Ralph.`** at the end of every message. When you expect a
-  reply, append `RSVP via SendMessage.` to the signature line:
-  `From Ralph. RSVP via SendMessage.` Skip the RSVP on terminal messages. A
+  reply, append `Reply via SendMessage.` to the signature line:
+  `From Ralph. Reply via SendMessage.` Leave it off terminal messages. A
   completion report doesn't invite a reply. Use a string, not JSON, inside
   `SendMessage`.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
@@ -502,7 +502,7 @@ The brief says to rename <foo> but <bar> in the same module
 reads as a near-duplicate — should the rename cover both, or
 only <foo>?
 
-From Ralph. RSVP via SendMessage.
+From Ralph. Reply via SendMessage.
 ```
 
 A retro answer, a mid-task clarification, or an ancillary finding carries the

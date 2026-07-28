@@ -82,9 +82,9 @@ the branch under review against its base.
 Assemble the Markdown review for Grace to post as a single PR comment, following
 the output format. Then **send it to Grace via `SendMessage`**. Only
 `SendMessage` reaches Grace, not turn output. Sign off `From Ada.` at the end of
-the message. The review is a terminal hand-off. Skip the RSVP. Do not include
-the Claude Code footer. Grace adds GitHub-visible footer metadata when posting.
-Follow
+the message. The review is a terminal hand-off, so ask for no reply. Do not
+include the Claude Code footer. Grace adds GitHub-visible footer metadata when
+posting. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
 #### Output format
@@ -203,8 +203,8 @@ Operationally:
   won't reach the right inbox.
 - **Sign off with `From Ada.`** at the end of every message. Most of your
   messages are terminal hand-offs. The review delivery is for Grace to post and
-  triage, not to reply to. Skip the RSVP. Add `RSVP via SendMessage.` to the
-  signature only on the rare occasion you genuinely want a reply yourself.
+  triage, not to reply to. Add `Reply via SendMessage.` to the signature only on
+  the rare occasion you genuinely want a reply yourself.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
 

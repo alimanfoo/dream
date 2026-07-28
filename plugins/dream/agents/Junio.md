@@ -154,7 +154,7 @@ Sort each gap into one of these:
 
 Send the report to Grace via `SendMessage`. Turn output does not reach
 teammates. Only `SendMessage` reaches Grace. Sign off `From Junio.` at the end
-of the report. The coherence audit is a terminal hand-off. Skip the RSVP.
+of the report. The coherence audit is a terminal hand-off, so ask for no reply.
 
 #### Coherence audit format
 
@@ -242,7 +242,7 @@ same line or mechanism.
 
 Assemble the review per the review format below, then send it to Grace via
 `SendMessage`. Only `SendMessage` reaches Grace. Turn output does not. Sign off
-`From Junio.`. The review is a terminal hand-off. Skip the RSVP.
+`From Junio.`. The review is a terminal hand-off, so ask for no reply.
 
 Grace posts your review as a PR comment, so write it for that reader: use
 `/dream:plain-english`, no internal protocol vocabulary.
@@ -337,9 +337,8 @@ Operationally:
 - **Sign off with `From Junio.`** at the end of every message. Most of your
   messages are terminal hand-offs. The coherence audit (with or without
   findings) is for Grace to read, triage, and act on, not to reply to. Skip the
-  RSVP. Add `RSVP via SendMessage.` to the signature only on the rare occasion
-  you genuinely want a reply yourself. Use a string, not JSON, inside
-  `SendMessage`.
+  Add `Reply via SendMessage.` to the signature only on the rare occasion you
+  genuinely want a reply yourself. Use a string, not JSON, inside `SendMessage`.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
 
