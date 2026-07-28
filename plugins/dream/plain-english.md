@@ -88,10 +88,6 @@ the cache on startup so the first request is as fast as the rest, because
 otherwise it pays the full cost of filling the cache while every later request
 reads from it."
 
-## Keep sentences short
-
-Keep sentences to 30 words or fewer.
-
 ## Use active voice
 
 Use active voice. For example: "The parser reads the file before validation.",
