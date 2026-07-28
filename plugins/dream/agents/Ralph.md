@@ -186,12 +186,11 @@ session's own work suggests, big or small. Examples:
 - a different approach to a neighbouring area
 - a technique that would simplify it
 
-Don't raise it as a free-standing wishlist. When surfacing opportunities, draw
-on the collect cues (see the
-[collect phase](../skills/team/protocol.md#phase-8-collect)) for the knowledge
-the task left dormant. The post-merge sweep is your only channel for both. Use
-it. After you send them, your collect-phase work is done unless Grace later asks
-a specific factual question about something you saw while editing.
+Don't raise it as a free-standing wishlist. Grace's sweep request carries a set
+of cues. Work each one for the knowledge the task left dormant. The post-merge
+sweep is your only channel for both. Use it. After you send them, your
+collect-phase work is done unless Grace later asks a specific factual question
+about something you saw while editing.
 
 ### Phase 9: Reflect
 

@@ -13,10 +13,24 @@ the session PR.
 
 ## Step 8.1: Compile
 
-Ask the teammates for the post-merge sweep, referring them to the collect cues
-(see the [collect phase](../protocol.md#phase-8-collect)). They read the cues
-once at boot, and by now that read has fallen from view. Referring to the cues
-in the request fires them while each teammate surfaces opportunities.
+Ask the teammates for the post-merge sweep. State these five cues in the request
+itself, so each teammate has them in view while searching. Each reaches
+knowledge the immediate task leaves dormant:
+
+- **Analogy:** what does this session remind you of? Where have you seen this
+  pattern before, and what worked or failed there?
+- **Expert lens:** what would a specialist flag that a generalist pass skips: a
+  security engineer, an SRE, someone who has maintained this kind of system for
+  years?
+- **Premortem:** a year on, what will we wish we'd done sooner? What is most
+  likely to bite?
+- **Best-in-class:** how do the strongest projects in this space handle what the
+  session just worked on?
+- **Negative space:** what is conspicuously absent? What did the session not do
+  that a careful reviewer would expect?
+
+The cues widen the net, but an opportunity must still be suggested by the work
+just done, not a free-standing wishlist.
 
 Gather the sources (Ralph in-session, Junio in-session, Ada in-session, and the
 post-merge sweep). Each source yields two kinds: ancillary findings (concerns
@@ -179,8 +193,7 @@ Do not rely on an unshared draft for GitHub-visible text.
 You don't implement anything in any phase. What enters the backlog is an issue
 or a comment, never a fix. This holds even when merge was deferred and the PR is
 still open. A miss this sweep surfaces becomes an issue, not a follow-on on the
-open branch. Only a user-directed change reopens the
-[develop phase](../protocol.md#phase-5-develop).
+open branch. Only a user-directed change reopens the [develop phase](phase5.md).
 
 Apply a category label to each new issue. See "GitHub labels" in Common rules.
 

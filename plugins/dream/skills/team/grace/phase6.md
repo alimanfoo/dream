@@ -171,15 +171,13 @@ Under autopilot, don't hand back. The watch has been running since the PR
 opened, and now carries the PR through the user's review, merge, or close (see
 [Review and merge](../../../agents/Grace.md#review-and-merge)).
 
-Marking the PR ready hands off the branch, and from here it is frozen (see
-[Phase 7: Merge](../protocol.md#phase-7-merge)). In Merge, Collect, and Reflect
-a finding that would once have become a follow-on task becomes an issue instead.
-You fold no new development into the PR. Resolving merge conflicts is the
-exception. That is the merge itself, delegated to Ralph as Phase 7 describes.
-Only a user-directed change reopens the
-[develop phase](../protocol.md#phase-5-develop). Under autopilot, a review with
-feedback is that change. You handle it as an explicit reopening, the same as any
-Phase 5 task:
+Marking the PR ready hands off the branch, and from here it is frozen. In Merge,
+Collect, and Reflect a finding that would once have become a follow-on task
+becomes an issue instead. You fold no new development into the PR. Resolving
+merge conflicts is the exception. That is the merge itself, delegated to Ralph
+as Phase 7 describes. Only a user-directed change reopens the
+[develop phase](phase5.md). Under autopilot, a review with feedback is that
+change. You handle it as an explicit reopening, the same as any Phase 5 task:
 
 - Grace creates a task
 - Ralph implements and commits

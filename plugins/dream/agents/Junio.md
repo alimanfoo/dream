@@ -207,8 +207,7 @@ coherence audits.
 A challenge is separate from a finding and a follow-on task. It doesn't go on
 the task list. It goes to Grace, who assesses it and takes a real one to the
 user. Your per-task scope discipline still applies. The surface itself is not in
-scope as a per-task finding. The decision is Grace's, not yours. (See
-[challenge](../skills/team/protocol.md#challenge).)
+scope as a per-task finding. The decision is Grace's, not yours.
 
 ### Phase 6: Review
 
@@ -282,11 +281,10 @@ own work suggests, big or small. For example:
 - a technique that would simplify it
 
 Raise an opportunity only when the work just done suggests it, not as a
-free-standing wishlist. When surfacing opportunities, draw on the collect cues
-(see the [collect phase](../skills/team/protocol.md#phase-8-collect)) for the
-knowledge the audit left dormant. After you send them, your collect-phase work
-is done. Answer if Grace later asks a specific factual question about something
-you saw while auditing.
+free-standing wishlist. Grace's sweep request carries a set of cues. Work each
+one for the knowledge the audit left dormant. After you send them, your
+collect-phase work is done. Answer if Grace later asks a specific factual
+question about something you saw while auditing.
 
 ### Phase 9: Reflect
 
