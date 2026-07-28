@@ -128,12 +128,7 @@ plugins/:
             Investigate before changing:
             Code comments:
             Prose artefacts:
-            Type annotations:
-            Immutability:
-            Private function signatures and call sites:
-            Test isolation:
             Test gaming:
-            Plain code:
             Backwards-compatibility hacks:
             Security:
             UI and frontend changes:
