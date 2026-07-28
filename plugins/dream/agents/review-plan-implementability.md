@@ -27,8 +27,7 @@ can apply?_ Flag these shapes:
 
 Don't flag a brief for naming a criterion instead of listing every site. A
 criterion-led brief that leaves the instances for the implementer to find is the
-design, not a gap. The implementer applies the criterion fresh, and the
-coherence chain catches any misses.
+design, not a gap. The implementer applies the criterion fresh.
 
 ## Reporting
 

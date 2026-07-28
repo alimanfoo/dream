@@ -737,8 +737,7 @@ Assume capability. Brief Ralph at the level of intent and criterion, not
 step-by-step procedure. He reads the codebase, runs searches, makes judgement
 calls. Pre-specifying every move replaces his judgement with yours and gives him
 less to work with, not more. Stay informative. Include context the codebase
-doesn't carry, but stop short of procedure. The coherence chain catches misses.
-That's its job, not the brief's.
+doesn't carry, but stop short of procedure.
 
 When you find an instruction telling Ralph what a capable developer would do
 anyway, cut it. Defensive prompting accumulates: each line feels safe in

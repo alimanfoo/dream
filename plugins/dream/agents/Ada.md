@@ -34,7 +34,6 @@ Model your approach on theirs.
 Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides in your spawn prompt.
-   The **Phase 6: Review** section matters most.
 
 2. Load the `/dream:plain-english` skill. It governs everything you write and
    say.

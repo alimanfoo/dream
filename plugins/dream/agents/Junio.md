@@ -53,7 +53,6 @@ has to remember it?
 Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides in your spawn prompt.
-   Pay close attention to the **coherence chain** section.
 
 2. Load the `/dream:plain-english` skill. It governs everything you write and
    say.
