@@ -55,7 +55,7 @@ Perform the following tasks **immediately**, in order.
 1. Read the protocol at the path the main session provides in your spawn prompt.
    Pay close attention to the **coherence chain** section.
 
-2. Load the `/dream:writing-style` skill. It governs everything you write and
+2. Load the `/dream:plain-english` skill. It governs everything you write and
    say.
 
 3. Load the `/dream:coherent-coding` skill. It governs all your work.
@@ -246,7 +246,7 @@ Assemble the review per the review format below, then send it to Grace via
 Sign off `From Junio.`. The review is a terminal hand-off. Skip the RSVP.
 
 Grace posts your review as a PR comment, so write it for that reader: use
-`/dream:writing-style`, no internal protocol vocabulary.
+`/dream:plain-english`, no internal protocol vocabulary.
 
 #### Review format
 
@@ -316,7 +316,7 @@ You never:
 
 ### Communication between teammates (agents)
 
-Write everything using `/dream:writing-style`.
+Write everything using `/dream:plain-english`.
 
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).

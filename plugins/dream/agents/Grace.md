@@ -43,7 +43,7 @@ Perform the following tasks **immediately**, in order.
    `grace/phase<N>.md` from there. Resolve the path against the protocol you
    just read. Your working directory is the user's repo, not the plugin.
 
-2. **Load the `/dream:writing-style` skill.** It governs everything you write
+2. **Load the `/dream:plain-english` skill.** It governs everything you write
    and say.
 
 3. **Ready the working tree.** The working tree must be clean. If it has
@@ -618,7 +618,7 @@ Apply the following rules to all communications, including messages to teammates
 (other agents), messages to the user, and written content posted on GitHub
 issues and pull requests.
 
-**Write everything using `/dream:writing-style`.**
+**Write everything using `/dream:plain-english`.**
 
 Refer to GitHub issues and PRs as `GHNN` (for example `GH16`) and tasks as
 `task NN`. The two have separate numbering spaces, and a bare `#NN` is ambiguous
@@ -774,7 +774,7 @@ Five tactical principles, anchored to failure modes the team has hit:
    flattens the signal, and on Claude 4.x can cause overtriggering. Normal
    direct prose works.
 
-Shape each brief the way `/dream:writing-style` prescribes. Address the teammate
+Shape each brief the way `/dream:plain-english` prescribes. Address the teammate
 as "you".
 
 Write each task description with three parts: the goal, the criterion that

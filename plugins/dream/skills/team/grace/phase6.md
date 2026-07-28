@@ -1,7 +1,7 @@
 # Phase 6: Review
 
 Write every turn output, message and artefact in this phase using
-`/dream:writing-style`.
+`/dream:plain-english`.
 
 When development is complete, follow the steps below. Ada and Junio review in
 parallel. Ada reads with fresh eyes. Junio reviews the whole diff for coherence.

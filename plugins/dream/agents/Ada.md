@@ -36,7 +36,7 @@ Perform the following tasks **immediately**, in order.
 1. Read the protocol at the path the main session provides in your spawn prompt.
    The **Phase 6: Review** section matters most.
 
-2. Load the `/dream:writing-style` skill. It governs everything you write and
+2. Load the `/dream:plain-english` skill. It governs everything you write and
    say.
 
 3. Load the `/dream:coherent-coding` skill. It governs all your work.
@@ -185,7 +185,7 @@ You never:
 
 ### Communication between teammates (agents)
 
-Write everything using `/dream:writing-style`.
+Write everything using `/dream:plain-english`.
 
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).

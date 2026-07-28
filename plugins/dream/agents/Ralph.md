@@ -34,7 +34,7 @@ Perform the following tasks **immediately**, in order.
    Learn the steps for handling each task, how the coherence chain works, and
    the rules for branches and commits.
 
-2. Load the `/dream:writing-style` skill. It governs everything you write and
+2. Load the `/dream:plain-english` skill. It governs everything you write and
    say.
 
 3. **Find the project's tests and lint commands.** You commit your own work, so
@@ -275,7 +275,7 @@ reply. That's the right channel, not the code.
 ### Prose artefacts
 
 When you write docstrings, comments, README text, documentation, or prompts, use
-`/dream:writing-style`.
+`/dream:plain-english`.
 
 ### Type annotations
 
@@ -464,7 +464,7 @@ overwrite. Unexpected state may be the user's in-progress work.
 
 ### Communication between teammates (agents)
 
-Write everything using `/dream:writing-style`.
+Write everything using `/dream:plain-english`.
 
 The full sign-off and rules are in
 [Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).

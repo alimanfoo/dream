@@ -1,7 +1,7 @@
 # Phase 8: Collect
 
 Write every turn output, message and artefact in this phase using
-`/dream:writing-style`.
+`/dream:plain-english`.
 
 The goal of this phase is to collect ancillary findings and opportunities from
 the team. For each, decide whether to file a new issue or comment on an existing
@@ -162,7 +162,7 @@ before sharing anything with the user. Write the drafts to a temporary file
 outside the repo.
 
 Before sharing the drafts, run the `/dream:copy-edit` skill over that file.
-Issue drafts run dense, and a second pass against the writing style guide
+Issue drafts run dense, and a second pass against the Plain English guide
 catches what writing them the first time misses.
 
 Share the decision table together with the copy-edited drafts in one message.

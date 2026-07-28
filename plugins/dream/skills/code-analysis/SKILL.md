@@ -11,7 +11,7 @@ Produce a code analysis: a verifiable read of what the current code does and
 where, with file:line or symbol citations throughout. It stays factual, not a
 proposal.
 
-Load the `/dream:writing-style` skill before you write.
+Load the `/dream:plain-english` skill before you write.
 
 Follow the steps in order.
 

@@ -1,19 +1,19 @@
 ---
-name: writing-style
+name: plain-english
 description:
-  Write prose to the dream plugin's writing style guide. Use when you are about
+  Write prose to the dream plugin's Plain English guide. Use when you are about
   to write or revise prose, such as prompts, documentation, messages, or GitHub
   artefacts. To fix prose already written, use the /dream:copy-edit skill
   instead.
 ---
 
-# Writing style
+# Plain English
 
-Adopt the dream plugin's writing style guide.
+Adopt the dream plugin's Plain English guide.
 
 ## Read the guide first
 
-Read the [writing style guide](../../writing-style.md) before you write. It sets
+Read the [Plain English guide](../../plain-english.md) before you write. It sets
 the standard for everything you write.
 
 ## Reply with a brief confirmation

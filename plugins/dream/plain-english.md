@@ -1,4 +1,4 @@
-# Writing style guide
+# Plain English guide
 
 This guide sets the standard for written text. It covers prompts, documentation,
 the messages between agents, the artefacts they write for GitHub, and what they

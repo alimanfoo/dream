@@ -1,7 +1,7 @@
 # Phase 2: Code Analysis
 
 Write every turn output, message and artefact in this phase using
-`/dream:writing-style`.
+`/dream:plain-english`.
 
 The goal of this phase is the accepted code analysis. It is a verifiable read of
 what the current code does and where, with file:line or symbol citations. Follow

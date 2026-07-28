@@ -500,7 +500,7 @@ report and doesn't duplicate the work. CI re-runs everything pre-merge.
 
 #### Plain English
 
-Write everything using `/dream:writing-style`. It is the standard for every
+Write everything using `/dream:plain-english`. It is the standard for every
 message to a teammate or the user and every artefact posted on GitHub.
 
 #### Reference syntax
@@ -514,8 +514,8 @@ there to preserve GitHub's auto-linking.
 
 ### GitHub-rendered artefacts
 
-The writing style guide's
-[Text for GitHub](../../writing-style.md#text-for-github) section covers the
+The Plain English guide's
+[Text for GitHub](../../plain-english.md#text-for-github) section covers the
 line wrapping that GitHub rendering needs.
 
 Give a named heading (`Requirements`, `Session input`, `Decision needed`, and

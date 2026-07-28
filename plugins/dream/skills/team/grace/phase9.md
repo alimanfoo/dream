@@ -1,7 +1,7 @@
 # Phase 9: Reflect
 
 Write every turn output, message and artefact in this phase using
-`/dream:writing-style`.
+`/dream:plain-english`.
 
 After post-merge triage, offer the user an optional retrospective: _"Run a
 retrospective?"_ If the user takes it, run a conversation about what the session

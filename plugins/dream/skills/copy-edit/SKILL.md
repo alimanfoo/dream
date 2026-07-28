@@ -1,7 +1,7 @@
 ---
 name: copy-edit
 description:
-  Bring a passage of prose into line with the writing style guide. Reviews the
+  Bring a passage of prose into line with the Plain English guide. Reviews the
   prose with a fresh reader, then fixes what the review raises, in one round by
   default. Pass a number to loop until the prose passes or hits that cap. By
   default it reviews the prose you changed. Name a file or section to review
@@ -11,11 +11,11 @@ argument-hint: "[target] [max-iterations]"
 
 # Copy-edit
 
-Bring a passage of prose into line with the writing style guide. Work in rounds.
+Bring a passage of prose into line with the Plain English guide. Work in rounds.
 
-## First, read the writing style guide
+## First, read the Plain English guide
 
-Read the [writing style guide](../../writing-style.md) before you start. It is
+Read the [Plain English guide](../../plain-english.md) before you start. It is
 the standard you rewrite the prose toward.
 
 ## Arguments
@@ -31,10 +31,10 @@ Read the arguments the user gives.
    `git diff` to find the prose the session changed. Read each passage in its
    current form, with enough surrounding text to judge a paragraph whole. Review
    prose, not diff markup.
-2. Review it with the `dream:copy-editor` subagent. Give each subagent the
-   writing style guide's absolute path in its prompt. A subagent can't resolve a
-   path relative to its own prompt file. For a small passage, give one subagent
-   the whole of it. For a large passage, split it by file or section. Launch
+2. Review it with the `dream:copy-editor` subagent. Give each subagent the Plain
+   English guide's absolute path in its prompt. A subagent can't resolve a path
+   relative to its own prompt file. For a small passage, give one subagent the
+   whole of it. For a large passage, split it by file or section. Launch
    parallel `dream:copy-editor` subagents, one per part.
 3. Resolve every finding the review returns. You are the author. Make each edit
    yourself and keep the meaning. When a fix would drop a reason, keep the
