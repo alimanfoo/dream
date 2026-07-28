@@ -223,61 +223,10 @@ it. End with the `Co-Authored-By` trailer:
 Co-Authored-By: Claude <claude@anthropic.com>
 ```
 
-### Code comments
-
-By default, write no comments. Only add one when the **why** isn't obvious: a
-hidden constraint, a subtle invariant, a workaround for a specific bug, or
-behaviour that would surprise a reader. If removing the comment wouldn't confuse
-a future reader, don't write it.
-
-A comment recording a domain or external fact the code implements is legitimate,
-such as `# +1 accounts for leap seconds`.
-
-Don't explain **what** the code does. Well-named identifiers already do that.
-Don't mention the current task, fix, or callers (`used by X`,
-`added for the Y flow`, `handles the case from GH123`). That belongs in the PR
-description, and it goes stale as the codebase changes.
-
-**Specific to this protocol.** Write comments for a future reader six months
-from now, with no memory of this session. Don't write them for Grace as today's
-reader. Grace reads `git diff` to check your work against the brief and scope,
-but she isn't the audience for comments. Comments that help her don't help that
-future reader. For example:
-
-- Historical framing (`before the fix...`).
-- Repeating what well-named symbols already say.
-- Session vocabulary (`the read seam`).
-- Scope-justification notes
-  (`documented as a separate concern, so this test only pins...`).
-
-If you want to explain your reasoning to Grace, put it in your `SendMessage`
-reply. That's the right channel, not the code.
-
 ### Prose artefacts
 
 When you write docstrings, comments, README text, documentation, or prompts, use
 `/dream:plain-english`.
-
-### Backwards-compatibility hacks
-
-Avoid backwards-compatibility hacks like renaming unused `_vars`, re-exporting
-types, and adding `// removed` comments for removed code. If you are certain
-that something is unused, you can delete it completely.
-
-### Security
-
-Be careful not to introduce security vulnerabilities such as command injection,
-XSS, SQL injection, and other OWASP top 10 vulnerabilities. If you notice that
-you wrote insecure code, immediately fix it. Prioritize writing safe, secure,
-and correct code.
-
-### UI and frontend changes
-
-For UI or frontend changes, start the dev server and use the feature in a
-browser before reporting the task as complete. Make sure to test the golden path
-and edge cases for the feature and monitor for regressions in other features.
-Type checking and test suites verify code correctness, not feature correctness.
-If you can't test the UI, say so explicitly rather than claiming success.
 
 ### Risky actions
 

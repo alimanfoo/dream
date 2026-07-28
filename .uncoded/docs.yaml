@@ -125,11 +125,7 @@ plugins/:
           Common rules:
             Hard rules:
             Commits:
-            Code comments:
             Prose artefacts:
-            Backwards-compatibility hacks:
-            Security:
-            UI and frontend changes:
             Risky actions:
             Communication between teammates (agents):
       code-review-lens.md:
