@@ -108,12 +108,11 @@ plugins/:
             'Phase 5: Develop':
               'Step 5.1: Read the task description':
               'Step 5.2: Do the work':
-              'Step 5.3: Simplify the code you wrote':
-              'Step 5.4: Copy-edit the prose you wrote':
-              'Step 5.5: Run the tests':
-              'Step 5.6: Run any codegen the commit hook doesn''t run':
-              'Step 5.7: Commit and push':
-              'Step 5.8: Report back to Grace via `SendMessage`':
+              'Step 5.3: Copy-edit the prose you wrote':
+              'Step 5.4: Run the tests':
+              'Step 5.5: Run any codegen the commit hook doesn''t run':
+              'Step 5.6: Commit and push':
+              'Step 5.7: Report back to Grace via `SendMessage`':
             'Phase 6: Review':
             'Phase 7: Merge':
             'Phase 8: Collect':
