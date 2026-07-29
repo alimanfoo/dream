@@ -216,15 +216,6 @@ plugins/:
             Cold read:
             Widen with review lenses:
             Combine, verify and return:
-      code-review-ousterhout/:
-        SKILL.md:
-          'Code review: Ousterhout lenses':
-            Arguments:
-            The lenses:
-              Module depth:
-              Temporal decomposition:
-              Define errors out of existence:
-            Review:
       coherence-review/:
         SKILL.md:
           Coherence review:
