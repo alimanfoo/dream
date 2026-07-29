@@ -116,8 +116,8 @@ It stays factual, not a proposal. Name what is: how the code works, how it's
 organised, and its code smells. Don't recommend what to change. Whether a smell
 is worth fixing, and how, is a call for whoever designs the work next.
 
-Load the `/dream:plain-english` skill, then write the analysis to a temporary
-file outside the repo.
+Write the analysis to a temporary file outside the repo, using
+`/dream:plain-english`.
 
 ## The result
 
