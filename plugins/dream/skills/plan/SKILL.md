@@ -12,7 +12,7 @@ Produce a plan: the task list that delivers the design. Each task is a
 manageable single-commit unit. A criterion selects its work, and the implementer
 applies that criterion fresh.
 
-Load the `/dream:plain-english` skill before you write.
+Write every turn output and artefact in this skill using `/dream:plain-english`.
 
 Follow the steps in order.
 
@@ -56,32 +56,6 @@ Prefer one task with a bounded criterion to a run of special-case tasks that
 each name a single site. The criterion collapses them into one clean change.
 
 Write the draft plan to a temporary file outside the repo.
-
-## Review the draft
-
-Get an adversarial read before you finish. Launch these review subagents in
-parallel, via the Agent tool, one per lens:
-
-- `dream:review-plan-completeness`
-- `dream:review-plan-tidy-first`
-- `dream:review-plan-implementability`
-
-Brief each with the temporary file's absolute path. A subagent can't resolve a
-path relative to its own prompt file. Don't retype the draft into the prompt.
-Combine their findings into one list, dropping duplicates.
-
-Judge each finding on its merits, and verify it against your own read. Address
-the findings you accept by editing the temporary file:
-
-- A completeness finding adds the missed task.
-- A tidy-first finding folds in a behaviour-preserving precursor task before the
-  task it supports.
-- An implementability finding splits a bundled task, or rewrites a brief to
-  surface the criterion it buried.
-
-## Copy-edit the draft
-
-Run the `/dream:copy-edit` skill over the draft file, giving its absolute path.
 
 ## The result
 

@@ -11,7 +11,7 @@ Produce a code analysis: a verifiable read of what the current code does and
 where, with file:line or symbol citations throughout. It stays factual, not a
 proposal.
 
-Load the `/dream:plain-english` skill before you write.
+Write every turn output and artefact in this skill using `/dream:plain-english`.
 
 Follow the steps in order.
 
@@ -106,8 +106,8 @@ Some code smells are specific and common in codebases with agent-generated code:
 ## Compose the code analysis
 
 Compose the code analysis from the sections above, written up with file:line or
-symbol citations throughout. Write it to a temporary file outside the repo. The
-purpose is visible grounding for the work that follows.
+symbol citations throughout. The purpose is visible grounding for the work that
+follows.
 
 The code analysis is a read, not a transcription. Tell the reader something they
 couldn't get line by line. For example, for a reported bug, the transcription is
@@ -118,9 +118,7 @@ It stays factual, not a proposal. Name what is: how the code works, how it's
 organised, and its code smells. Don't recommend what to change. Whether a smell
 is worth fixing, and how, is a call for whoever designs the work next.
 
-## Copy-edit the draft
-
-Run the `/dream:copy-edit` skill over the draft file, giving its absolute path.
+Write the analysis to a temporary file outside the repo.
 
 ## The result
 

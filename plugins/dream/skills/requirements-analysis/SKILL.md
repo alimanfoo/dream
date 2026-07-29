@@ -12,7 +12,7 @@ Produce a requirements analysis: your explicit reading of what the system must
 do behind the input and for whom. The result is a draft, ending with any open
 questions for the user to resolve.
 
-Load the `/dream:plain-english` skill before you write.
+Write every turn output and artefact in this skill using `/dream:plain-english`.
 
 Follow the steps in order.
 
@@ -159,28 +159,7 @@ inference).
 Keep maintenance and bug-fix shapes short, a sentence or two per section. For an
 enhancement, the consumers and use cases are the work. Give them real detail.
 
-## Review the draft
-
-Get an adversarial read before you finish. Write the draft to a temporary file
-outside the repo. Then launch these review subagents in parallel, via the Agent
-tool, one per lens:
-
-- `dream:review-requirements-consumer-value`
-- `dream:review-requirements-project-purpose`
-- `dream:review-requirements-coherence`
-
-Brief each with the file's absolute path. A subagent can't resolve a path
-relative to its own prompt file. Don't retype the draft into the prompt. Combine
-their findings into one list, dropping duplicates.
-
-Judge each finding on its merits, and verify it by comparing with your own read.
-Address the findings you accept by editing the temporary file.
-
-## Copy-edit the draft
-
-Run the `/dream:copy-edit` skill over the draft file, giving its absolute path.
-The requirements analysis is what the reader studies most closely, so its
-readability matters most.
+Write the draft to a temporary file outside the repo.
 
 ## The result
 

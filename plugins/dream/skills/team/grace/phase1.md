@@ -9,10 +9,9 @@ sequence derived one or more issues from the worktree branch name, those issues
 are the session input. Phase 1 captures the system's requirements behind it. It
 makes any assumptions explicit so the user can correct them. It checks the
 session input against the current code, so stale details don't ride downstream.
-It gets one round of adversarial review before anyone else sees the draft
-requirements analysis. And it elicits answers to the open questions the cited
-material can't settle. It ends at an accepted requirements analysis: what the
-system must do and for whom. Follow the steps below in sequence.
+And it elicits answers to the open questions the cited material can't settle. It
+ends at an accepted requirements analysis: what the system must do and for whom.
+Follow the steps below in sequence.
 
 ## Step 1.1: Open the session PR
 

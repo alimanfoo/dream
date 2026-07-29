@@ -57,8 +57,9 @@ Choose from these or invent your own. They are examples, not a checklist:
 - failure paths: errors, timeouts, partial writes, what is left half-done
 - input validation and security: untrusted input, injection, missing checks
 - efficiency: redundant work, repeated I/O, blocking added to a hot path
-- reuse and simplification: code that re-implements what the codebase already
-  has, or that a simpler form would replace
+- reuse and simplification: code that re-implements what the codebase, a
+  library, or a language feature already provides, or that a simpler form would
+  replace
 - altitude: whether the change sits at the right depth, or is a quick fix
   layered on shared infrastructure
 - reader's context: in new or changed prose, what the reader needs but is

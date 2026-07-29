@@ -11,7 +11,7 @@ argument-hint: "<requirements and code analysis | text>"
 Produce design options: the proposed design, your recommendation for what the
 code will look like when the work is done, and any credible alternative designs.
 
-Load the `/dream:plain-english` skill before you write.
+Write every turn output and artefact in this skill using `/dream:plain-english`.
 
 Follow the steps in order.
 
@@ -134,37 +134,6 @@ coherent resolution, is not an alternative. It is a change to the requirements.
 Flag it prominently in the result if it has merit, rather than folding it in.
 
 Write the design options to a temporary file outside the repo.
-
-## Review the draft
-
-Get an adversarial read before you finish. Launch these review subagents in
-parallel, via the Agent tool, one per lens:
-
-- `dream:review-design-behaviour`
-- `dream:review-design-coherent-reach`
-- `dream:review-design-contract-shape`
-- `dream:review-design-lateral-moves`
-- `dream:review-design-reinvention`
-- `dream:review-design-root-cause`
-- `dream:review-design-separation`
-- `dream:review-design-surviving-fit`
-
-Brief each with the temporary file's absolute path. A subagent can't resolve a
-path relative to its own prompt file. Don't retype the draft into the prompt.
-Also give `dream:review-design-reinvention` the existing-tools survey you wrote,
-since that subagent doesn't hold your context. Give
-`dream:review-design-coherent-reach` the session type and the code analysis, so
-it can judge whether the design reaches every instance the coherent resolution
-needs. Combine their findings into one list, dropping duplicates.
-
-Judge each finding on its merits, and verify it against your own read. Address
-the findings you accept by editing the temporary file. A candidate lateral move
-that is strictly better folds into the proposed design. One whose difference
-costs something joins the alternative designs, with its trade-off named.
-
-## Copy-edit the draft
-
-Run the `/dream:copy-edit` skill over the draft file, giving its absolute path.
 
 ## The result
 

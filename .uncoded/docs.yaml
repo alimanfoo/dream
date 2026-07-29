@@ -74,10 +74,7 @@ plugins/:
         Junio:
           Boot sequence:
           Your role and responsibilities, by phase:
-            'Phase 1: Requirements':
-            'Phase 2: Code Analysis':
-            'Phase 3: Design':
-            'Phase 4: Plan':
+            'Phases 1 to 4: Requirements, Code Analysis, Design, Plan':
             'Phase 5: Develop':
               'Step 5.1: Read the committed change':
               'Step 5.2: Identify coherence gaps':
@@ -101,10 +98,7 @@ plugins/:
         Ralph:
           Boot sequence:
           Your role and responsibilities, by phase:
-            'Phase 1: Requirements':
-            'Phase 2: Code Analysis':
-            'Phase 3: Design':
-            'Phase 4: Plan':
+            'Phases 1 to 4: Requirements, Code Analysis, Design, Plan':
             'Phase 5: Develop':
               'Step 5.1: Read the task description':
               'Step 5.2: Do the work':
@@ -134,78 +128,6 @@ plugins/:
           Leave these alone:
           Record every finding in a file:
           Return only what needs changing:
-      review-design-behaviour.md:
-        Defend behaviour, not surface:
-          The lens:
-          Reporting:
-      review-design-coherent-reach.md:
-        Does the design reach the coherent resolution?:
-          The lens:
-          Reporting:
-      review-design-contract-shape.md:
-        Contract carried by prose or runtime check:
-          The lens:
-          Reporting:
-      review-design-lateral-moves.md:
-        Lateral moves:
-          The lens:
-          Reporting:
-      review-design-reinvention.md:
-        Reinvention:
-          The lens:
-          Reporting:
-      review-design-root-cause.md:
-        Symptom or cause?:
-          The lens:
-          Reporting:
-      review-design-separation.md:
-        Separation of concerns:
-          The lens:
-          Reporting:
-      review-design-surviving-fit.md:
-        Surviving-fit check:
-          The lens:
-          Reporting:
-      review-plan-completeness.md:
-        Defend completeness:
-          The lens:
-          Reporting:
-      review-plan-implementability.md:
-        Implementable as briefed:
-          The lens:
-          Reporting:
-      review-plan-tidy-first.md:
-        Tidy first?:
-          The lens:
-          Reporting:
-      review-requirements-coherence.md:
-        Coherent with what exists, coherent with itself:
-          The lens:
-          Reporting:
-      review-requirements-consumer-value.md:
-        Real consumer, real value:
-          The lens:
-          Reporting:
-      review-requirements-project-purpose.md:
-        Serves the project's purpose:
-          The lens:
-          Reporting:
-      simplify-altitude.md:
-        Altitude:
-          The lens:
-          Reporting:
-      simplify-efficiency.md:
-        Efficiency:
-          The lens:
-          Reporting:
-      simplify-reuse.md:
-        Reuse:
-          The lens:
-          Reporting:
-      simplify-simplification.md:
-        Simplification:
-          The lens:
-          Reporting:
     coherent-coding.md:
       Coherent coding guide:
         Golden rule:
@@ -270,7 +192,6 @@ plugins/:
               How it's organised:
             Identify and investigate code smells:
             Compose the code analysis:
-            Copy-edit the draft:
             The result:
       code-review/:
         SKILL.md:
@@ -279,15 +200,6 @@ plugins/:
             Cold read:
             Widen with review lenses:
             Combine, verify and return:
-      code-review-ousterhout/:
-        SKILL.md:
-          'Code review: Ousterhout lenses':
-            Arguments:
-            The lenses:
-              Module depth:
-              Temporal decomposition:
-              Define errors out of existence:
-            Review:
       coherence-review/:
         SKILL.md:
           Coherence review:
@@ -315,8 +227,6 @@ plugins/:
             Draft the design options:
               The proposed design:
               The alternative designs:
-            Review the draft:
-            Copy-edit the draft:
             The result:
       less/:
         SKILL.md:
@@ -351,8 +261,6 @@ plugins/:
           Plan:
             Arguments:
             Compose the draft plan:
-            Review the draft:
-            Copy-edit the draft:
             The result:
       requirements-analysis/:
         SKILL.md:
@@ -365,14 +273,7 @@ plugins/:
             Check the input against the current code:
             Name the session type:
             Compose the draft:
-            Review the draft:
-            Copy-edit the draft:
             The result:
-      simplify/:
-        SKILL.md:
-          Simplify:
-            Arguments:
-            Review and apply:
       solo/:
         SKILL.md:
           Dream Solo:
@@ -392,7 +293,6 @@ plugins/:
             Open the session PR:
             Plan:
             Implement:
-            Simplify:
             Copy-edit:
             Coherence review:
             Code review:
