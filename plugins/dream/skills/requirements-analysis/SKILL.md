@@ -158,8 +158,7 @@ Keep maintenance and bug-fix shapes short, a sentence or two per section. For an
 enhancement, the consumers and use cases are the work. Give them real detail.
 
 Load the `/dream:plain-english` skill, then write the draft to a temporary file
-outside the repo. The analysis is what the reader studies most closely, so it is
-worth writing well the first time.
+outside the repo.
 
 ## The result
 
