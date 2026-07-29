@@ -105,7 +105,7 @@ Implement the task as specified.
 Note the prose your task added or changed: markdown docs, docstrings, code
 comments, prompts. Skip this step when the task wrote no prose.
 
-Run the `/dream:copy-edit` skill over the prose you noted, one subagent only.
+Run the `/dream:copy-edit` skill over the prose you noted.
 
 #### Step 5.4: Run the tests
 
