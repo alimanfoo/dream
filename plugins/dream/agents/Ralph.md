@@ -196,11 +196,6 @@ it. End with the `Co-Authored-By` trailer:
 Co-Authored-By: Claude <claude@anthropic.com>
 ```
 
-### Prose artefacts
-
-When you write docstrings, comments, README text, documentation, or prompts, use
-`/dream:plain-english`.
-
 ### Risky actions
 
 Carefully consider the reversibility and blast radius of actions. Generally you

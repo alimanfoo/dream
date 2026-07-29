@@ -120,7 +120,6 @@ plugins/:
           Common rules:
             Hard rules:
             Commits:
-            Prose artefacts:
             Risky actions:
             Communication between teammates (agents):
       code-review-lens.md:
