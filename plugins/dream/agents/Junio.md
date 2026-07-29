@@ -281,9 +281,7 @@ own work suggests, big or small. For example:
 
 Raise an opportunity only when the work just done suggests it, not as a
 free-standing wishlist. Grace's sweep request carries a set of cues. Work each
-one for the knowledge the audit left dormant. After you send them, your
-collect-phase work is done. Answer if Grace later asks a specific factual
-question about something you saw while auditing.
+one for the knowledge the audit left dormant.
 
 ### Phase 9: Reflect
 
