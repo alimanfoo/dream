@@ -12,8 +12,6 @@ Produce a plan: the task list that delivers the design. Each task is a
 manageable single-commit unit. A criterion selects its work, and the implementer
 applies that criterion fresh.
 
-Load the `/dream:plain-english` skill before you write.
-
 Follow the steps in order.
 
 ## Arguments
@@ -55,7 +53,8 @@ For kind-based criteria, show two or three examples to anchor the kind.
 Prefer one task with a bounded criterion to a run of special-case tasks that
 each name a single site. The criterion collapses them into one clean change.
 
-Write the draft plan to a temporary file outside the repo.
+Write the draft plan to a temporary file outside the repo, using
+`/dream:plain-english`.
 
 ## Review the draft
 
@@ -78,10 +77,6 @@ the findings you accept by editing the temporary file:
   task it supports.
 - An implementability finding splits a bundled task, or rewrites a brief to
   surface the criterion it buried.
-
-## Copy-edit the draft
-
-Run the `/dream:copy-edit` skill over the draft file, giving its absolute path.
 
 ## The result
 
