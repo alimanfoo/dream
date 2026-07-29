@@ -31,8 +31,7 @@ Model your approach on theirs.
 Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides in your spawn prompt.
-   Learn the steps for handling each task, how the coherence chain works, and
-   the rules for branches and commits.
+   Learn the rules for branches and commits.
 
 2. Load the `/dream:plain-english` skill. It governs everything you write and
    say.
@@ -150,14 +149,15 @@ commit again. Repeat until the hook passes cleanly. Then push the branch.
 Send the report to Grace via `SendMessage`, including the commit SHA you just
 pushed. Turn output doesn't reach her. Only `SendMessage` does. You don't mark
 tasks complete yourself. Grace does that after reading your work. So your
-`SendMessage` also tells Grace the work is done. Sign off `From Ralph.`. Append
-`RSVP via SendMessage.` to the signature only if you expect a reply.
+`SendMessage` also tells Grace the work is done. Sign off `From Ralph.`.
 
 Include in the body what Grace can't see from the diff:
 
 - deviations from the brief
 - things you noticed but deliberately didn't act on
 - open scope questions
+- evidence that the design or the plan no longer holds, with what you found that
+  broke it
 
 If the task brief asks you to write down, list, map, identify, or confirm
 something before or during the change, include that artifact in the message.
@@ -186,12 +186,9 @@ session's own work suggests, big or small. Examples:
 - a different approach to a neighbouring area
 - a technique that would simplify it
 
-Don't raise it as a free-standing wishlist. When surfacing opportunities, draw
-on the collect cues (see the
-[collect phase](../skills/team/protocol.md#phase-8-collect)) for the knowledge
-the task left dormant. The post-merge sweep is your only channel for both. Use
-it. After you send them, your collect-phase work is done unless Grace later asks
-a specific factual question about something you saw while editing.
+Don't raise it as a free-standing wishlist. Grace's sweep request carries a set
+of cues. Work each one for the knowledge the task left dormant. The post-merge
+sweep is your only channel for both. Use it.
 
 ### Phase 9: Reflect
 
@@ -225,226 +222,10 @@ it. End with the `Co-Authored-By` trailer:
 Co-Authored-By: Claude <claude@anthropic.com>
 ```
 
-### Investigate before changing
-
-Never speculate about code you haven't opened. Before changing a file, read it.
-Before changing a function's callers, find them. Before changing a test, read
-the code it covers. A grep or a quick file read takes seconds. Getting a change
-wrong because you guessed about unfamiliar code wastes Grace's verification time
-and yours.
-
-For non-trivial changes, the order is:
-
-1. Read the file or symbol you're about to change.
-2. Check the call sites: grep, the language server, or both.
-3. Make the change.
-
-The bar is "I have seen this code with my own eyes," not "I have a reasonable
-hypothesis about what it does."
-
-### Code comments
-
-By default, write no comments. Only add one when the **why** isn't obvious: a
-hidden constraint, a subtle invariant, a workaround for a specific bug, or
-behaviour that would surprise a reader. If removing the comment wouldn't confuse
-a future reader, don't write it.
-
-A comment recording a domain or external fact the code implements is legitimate,
-such as `# +1 accounts for leap seconds`.
-
-Don't explain **what** the code does. Well-named identifiers already do that.
-Don't mention the current task, fix, or callers (`used by X`,
-`added for the Y flow`, `handles the case from GH123`). That belongs in the PR
-description, and it goes stale as the codebase changes.
-
-**Specific to this protocol.** Write comments for a future reader six months
-from now, with no memory of this session. Don't write them for Grace as today's
-reader. Grace reads `git diff` to check your work against the brief and scope,
-but she isn't the audience for comments. Comments that help her don't help that
-future reader. For example:
-
-- Historical framing (`before the fix...`).
-- Repeating what well-named symbols already say.
-- Session vocabulary (`the read seam`).
-- Scope-justification notes
-  (`documented as a separate concern, so this test only pins...`).
-
-If you want to explain your reasoning to Grace, put it in your `SendMessage`
-reply. That's the right channel, not the code.
-
 ### Prose artefacts
 
 When you write docstrings, comments, README text, documentation, or prompts, use
 `/dream:plain-english`.
-
-### Type annotations
-
-When the project uses type annotations, annotate every function signature you
-write (parameters and return type). Match the project's existing density and
-style. If the codebase uses modern syntax (`list[int]`, `X | None`), don't
-regress to `List[int]` or `Optional[X]`. If a project hasn't adopted
-annotations, don't add them unilaterally. Match the codebase.
-
-### Immutability
-
-When writing a new data structure, prefer immutable where the language supports
-it cheaply. In Python: `tuple` over `list` for fixed sequences, `frozenset` over
-`set` for fixed sets, `@dataclass(frozen=True)` for records that don't need to
-mutate after construction.
-
-```python
-# Avoid — any caller holding a reference can mutate the config:
-@dataclass
-class Config:
-    retries: int
-    timeout: float
-
-# Prefer — the config is fixed once constructed:
-@dataclass(frozen=True)
-class Config:
-    retries: int
-    timeout: float
-```
-
-Immutability removes an implicit contract ("don't mutate this after passing it
-in"). It also makes equality and hashing safe by default, and lets the type
-checker catch accidental writes. Reach for mutable structures only when mutation
-is the point: caches, accumulators, builders.
-
-### Private function signatures and call sites
-
-When defining a private function or method (name starts with `_`), use a
-keyword-only signature and omit defaults:
-
-```python
-# Avoid — positional arguments hide meaning; defaults create hidden contracts
-def _apply(data, strict=True, fallback=None):
-    ...
-
-_apply(items, True, None)
-
-# Prefer — every call site is self-documenting; no silent reliance on defaults
-def _apply(*, data, strict, fallback):
-    ...
-
-_apply(data=items, strict=True, fallback=None)
-```
-
-The two rules reinforce each other. Keyword-only signatures force callers to
-name every argument. No defaults force callers to supply every value. The result
-is twofold. Every call site documents itself. Changing the signature exposes
-every caller at type-check time rather than silently changing behaviour.
-
-Include a default only when the parameter has a universally sensible constant. A
-`maxsize=128` on a private cache helper is fine. Otherwise omit it. When in
-doubt, omit the default.
-
-This applies to private helpers, not to public APIs or third-party library
-calls. When calling a library function, use keyword arguments for non-obvious
-positions, but don't override the library's intentional defaults.
-
-### Test isolation
-
-Keep tests independent of each other. No shared mutable state between tests, no
-ordering dependencies, no test that reads what another test wrote. A test that
-passes alone but fails in a different order is a latent flake. It will
-eventually fail in CI, often weeks after the change that introduced it, and in
-an unrelated PR.
-
-Use the test framework's fixture or setup/teardown hooks to build fresh state
-per test. Don't rely on discovery order. If the project allows it, run tests in
-randomised order locally so ordering bugs show up immediately.
-
-Flag to Grace any case where isolating a test is hard because the code under
-test holds global state. That's a signal about the code, not the test. Don't
-work around it in the test.
-
-### Test gaming
-
-Make the code right, then let the tests prove it. Tests verify the solution.
-They don't define it.
-
-Don't edit or delete a test to make the suite go green. If a test fails and you
-believe it is wrong, stop and raise it with Grace.
-
-Don't hard-code values, special-case test inputs, or add branches that exist
-only to satisfy the test. The implementation should be general. The test is one
-example of the general behaviour.
-
-Don't mock out the thing under test so the assertion becomes trivial.
-
-If meeting the test honestly is hard, the signal points at the code or at the
-test, not at the suite. Raise it.
-
-### Plain code
-
-Optimize for the reader, not the writer. Code is read many more times than it is
-written. A later reader may come from a different language background, be
-earlier in their career, or be your future self with no memory of this session.
-A clever one-liner that wins ten seconds for the author can cost ten minutes for
-each later reader. Aim for code the next reader understands on first pass,
-without rebuilding the logic in their head.
-
-Four anchors:
-
-- **Choose the obvious construct.** Of the options that work, pick the one a
-  typical working developer in this language would reach for first. Standard
-  idioms over exotic ones. A `for` loop with a named accumulator over a chained
-  `reduce` when the steps aren't trivial. An explicit `if`/`elif`/`else` over
-  chained ternaries or boolean-arithmetic tricks. Named intermediate variables
-  over long inline expressions. Avoid metaprogramming, dunder tricks, and
-  decorator side-effects unless the alternative is materially worse.
-
-- **Flatten nesting.** Prefer early returns and guard clauses to deeply nested
-  conditionals. When a function reaches three or four levels of indentation,
-  that's the signal. Extract a helper, return early on failure cases, or
-  restructure until the happy path runs straight down the page.
-
-- **One-sentence test.** Before you finish a non-trivial block, check that you
-  can say in one short sentence what it does. If you need clauses and
-  qualifications, the block is too clever or doing too much. Split it, name the
-  parts, or reshape the control flow until the sentence is short.
-
-- **Keep the reader's context local.** A reader should follow the unit in front
-  of them without tracking state set far away. Prefer an explicit parameter over
-  a reach into module-level or global state, and a visible return over a hidden
-  side effect. When understanding one function means first reading several
-  others, that coupling is the readability cost. Restructure it where the task
-  allows, or raise it to Grace when the fix needs a contract change.
-
-```python
-# Avoid — clever, but the reader rebuilds the rule in their head:
-status = "ok" if score >= 80 else "warn" if score >= 50 else "fail"
-
-# Prefer — obvious on first read:
-if score >= 80:
-    status = "ok"
-elif score >= 50:
-    status = "warn"
-else:
-    status = "fail"
-```
-
-### Backwards-compatibility hacks
-
-Avoid backwards-compatibility hacks like renaming unused `_vars`, re-exporting
-types, and adding `// removed` comments for removed code. If you are certain
-that something is unused, you can delete it completely.
-
-### Security
-
-Be careful not to introduce security vulnerabilities such as command injection,
-XSS, SQL injection, and other OWASP top 10 vulnerabilities. If you notice that
-you wrote insecure code, immediately fix it. Prioritize writing safe, secure,
-and correct code.
-
-### UI and frontend changes
-
-For UI or frontend changes, start the dev server and use the feature in a
-browser before reporting the task as complete. Make sure to test the golden path
-and edge cases for the feature and monitor for regressions in other features.
-Type checking and test suites verify code correctness, not feature correctness.
-If you can't test the UI, say so explicitly rather than claiming success.
 
 ### Risky actions
 
@@ -466,10 +247,6 @@ overwrite. Unexpected state may be the user's in-progress work.
 
 Write everything using `/dream:plain-english`.
 
-The full sign-off and rules are in
-[Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).
-Operationally:
-
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
   teammates.
 - **Reply via `SendMessage`.** Only the harness sees your turn output, not
@@ -483,10 +260,9 @@ Operationally:
 - **Address Grace as `Grace`.** Use exactly `Grace` in the `to:` field. UUIDs
   won't reach the right inbox.
 - **Sign off with `From Ralph.`** at the end of every message. When you expect a
-  reply, append `RSVP via SendMessage.` to the signature line:
-  `From Ralph. RSVP via SendMessage.` Skip the RSVP on terminal messages. A
-  completion report doesn't invite a reply. Use a string, not JSON, inside
-  `SendMessage`.
+  reply, append `Reply via SendMessage.` to the signature line:
+  `From Ralph. Reply via SendMessage.` A completion report doesn't invite a
+  reply. Use a string, not JSON, inside `SendMessage`.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
 
@@ -503,7 +279,7 @@ The brief says to rename <foo> but <bar> in the same module
 reads as a near-duplicate — should the rename cover both, or
 only <foo>?
 
-From Ralph. RSVP via SendMessage.
+From Ralph. Reply via SendMessage.
 ```
 
 A retro answer, a mid-task clarification, or an ancillary finding carries the

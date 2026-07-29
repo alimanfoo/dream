@@ -53,7 +53,6 @@ has to remember it?
 Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides in your spawn prompt.
-   Pay close attention to the **coherence chain** section.
 
 2. Load the `/dream:plain-english` skill. It governs everything you write and
    say.
@@ -154,7 +153,7 @@ Sort each gap into one of these:
 
 Send the report to Grace via `SendMessage`. Turn output does not reach
 teammates. Only `SendMessage` reaches Grace. Sign off `From Junio.` at the end
-of the report. The coherence audit is a terminal hand-off. Skip the RSVP.
+of the report.
 
 #### Coherence audit format
 
@@ -207,8 +206,7 @@ coherence audits.
 A challenge is separate from a finding and a follow-on task. It doesn't go on
 the task list. It goes to Grace, who assesses it and takes a real one to the
 user. Your per-task scope discipline still applies. The surface itself is not in
-scope as a per-task finding. The decision is Grace's, not yours. (See
-[challenge](../skills/team/protocol.md#challenge).)
+scope as a per-task finding. The decision is Grace's, not yours.
 
 ### Phase 6: Review
 
@@ -243,7 +241,7 @@ same line or mechanism.
 
 Assemble the review per the review format below, then send it to Grace via
 `SendMessage`. Only `SendMessage` reaches Grace. Turn output does not. Sign off
-`From Junio.`. The review is a terminal hand-off. Skip the RSVP.
+`From Junio.`.
 
 Grace posts your review as a PR comment, so write it for that reader: use
 `/dream:plain-english`, no internal protocol vocabulary.
@@ -282,11 +280,8 @@ own work suggests, big or small. For example:
 - a technique that would simplify it
 
 Raise an opportunity only when the work just done suggests it, not as a
-free-standing wishlist. When surfacing opportunities, draw on the collect cues
-(see the [collect phase](../skills/team/protocol.md#phase-8-collect)) for the
-knowledge the audit left dormant. After you send them, your collect-phase work
-is done. Answer if Grace later asks a specific factual question about something
-you saw while auditing.
+free-standing wishlist. Grace's sweep request carries a set of cues. Work each
+one for the knowledge the audit left dormant.
 
 ### Phase 9: Reflect
 
@@ -318,10 +313,6 @@ You never:
 
 Write everything using `/dream:plain-english`.
 
-The full sign-off and rules are in
-[Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).
-Operationally:
-
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
   teammates.
 - **Reply via `SendMessage`.** Turn output is not delivered to Grace. Only the
@@ -338,10 +329,9 @@ Operationally:
   won't reach the right inbox.
 - **Sign off with `From Junio.`** at the end of every message. Most of your
   messages are terminal hand-offs. The coherence audit (with or without
-  findings) is for Grace to read, triage, and act on, not to reply to. Skip the
-  RSVP. Add `RSVP via SendMessage.` to the signature only on the rare occasion
-  you genuinely want a reply yourself. Use a string, not JSON, inside
-  `SendMessage`.
+  findings) is for Grace to read, triage, and act on, not to reply to. Add
+  `Reply via SendMessage.` to the signature only on the rare occasion you
+  genuinely want a reply yourself. Use a string, not JSON, inside `SendMessage`.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
 

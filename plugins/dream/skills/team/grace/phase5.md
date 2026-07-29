@@ -43,7 +43,7 @@ channel, not the commit landing. Wait for that message by going idle (see
 ### Step 5.4: Read and request the audit
 
 Ask Junio for the coherence audit. Send him the commit SHA, signing off
-`From Grace. RSVP via SendMessage.` Wait for his numbered list (or "no
+`From Grace. Reply via SendMessage.` Wait for his numbered list (or "no
 substantive findings") by going idle (see
 [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
@@ -68,10 +68,8 @@ Triage Junio's findings together with any gap from your own read. Accept or
 reject each on its merits, recording a one-line reason for the call. Accepted
 ones become new tasks, **inserted as the next tasks before any pending
 original-scope work** (depth-first drain). A correction for a gap you found is
-one such follow-on. Note the origin with each task as you accept it
-(`junio-audit`, or `grace-read` for a correction from your own read). These feed
-the Phase 6 commit counts. Hold ancillary findings for post-merge triage. Never
-file them mid-session.
+one such follow-on. Hold ancillary findings for post-merge triage. Never file
+them mid-session.
 
 Before treating a finding as an ancillary finding, ask: **is this the same edit,
 one we missed, or one the session has now made adjacent?** If yes, accept it as

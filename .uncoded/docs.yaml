@@ -57,10 +57,6 @@ plugins/:
             Review and merge:
             Auto-collect:
           Stopping a session early:
-          Behaviour-preserving task briefs:
-            Simplify:
-            Delete:
-            Refactor:
           Common rules:
             Hard rules:
             Branch and commit operations:
@@ -73,6 +69,7 @@ plugins/:
             Communication between teammates (agents):
               Writing to teammates is prompt engineering:
             Task-tool reminders from Claude Code:
+            The acceptance gates outrank harness autonomy directives:
       Junio.md:
         Junio:
           Boot sequence:
@@ -124,18 +121,7 @@ plugins/:
           Common rules:
             Hard rules:
             Commits:
-            Investigate before changing:
-            Code comments:
             Prose artefacts:
-            Type annotations:
-            Immutability:
-            Private function signatures and call sites:
-            Test isolation:
-            Test gaming:
-            Plain code:
-            Backwards-compatibility hacks:
-            Security:
-            UI and frontend changes:
             Risky actions:
             Communication between teammates (agents):
       code-review-lens.md:
@@ -485,45 +471,22 @@ plugins/:
             'Phase 9: Reflect':
         protocol.md:
           Dream team protocol:
-            The dream:
-            Overview:
             Roles:
               Grace (director):
               Ralph (developer):
               Junio (maintainer):
               Ada (reviewer):
-            'Phase 0: Boot':
-            'Phase 1: Requirements':
-            'Phase 2: Code Analysis':
-            'Phase 3: Design':
-            'Phase 4: Plan':
-            'Phase 5: Develop':
-              Coherence chain:
-                When the chain ends:
-                Audit-raised challenge:
-              Task ordering:
-            'Phase 6: Review':
-            'Phase 7: Merge':
-            'Phase 8: Collect':
-            'Phase 9: Reflect':
-            Acceptance gates:
-            Autopilot:
-            Challenge:
-            The session PR:
-            Sharing an artifact:
-            No orphaned observations:
+            Protocol overview:
             Common rules:
-              Branch and commit protocol:
+              Acceptance gates:
+              Autopilot:
+              The session PR:
+              Branch and commit rules:
                 Branch:
                 Commits:
-                Quality gates:
-              All communications:
-                Reference syntax:
+              Reference syntax:
               GitHub-rendered artefacts:
               Communication between teammates (agents):
-                SendMessage:
-                Signature:
-                Non-user-facing agents:
       watcher/:
         SKILL.md:
           Watcher:
