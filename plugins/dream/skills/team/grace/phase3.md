@@ -9,7 +9,9 @@ Follow the steps below in sequence.
 ## Step 3.1: Produce the design options
 
 Run the `/dream:design` skill, focused on the accepted requirements analysis and
-code analysis.
+code analysis. Give it the session input too, so it sources any design steer the
+input carries. The requirements analysis leaves that steer out, so this is its
+only route into the design.
 
 The skill returns the design options: the proposed design (its recommendation)
 and any alternative designs, each with its trade-off named.
