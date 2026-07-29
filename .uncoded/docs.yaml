@@ -128,22 +128,6 @@ plugins/:
           Leave these alone:
           Record every finding in a file:
           Return only what needs changing:
-      simplify-altitude.md:
-        Altitude:
-          The lens:
-          Reporting:
-      simplify-efficiency.md:
-        Efficiency:
-          The lens:
-          Reporting:
-      simplify-reuse.md:
-        Reuse:
-          The lens:
-          Reporting:
-      simplify-simplification.md:
-        Simplification:
-          The lens:
-          Reporting:
     coherent-coding.md:
       Coherent coding guide:
         Golden rule:
@@ -290,11 +274,6 @@ plugins/:
             Name the session type:
             Compose the draft:
             The result:
-      simplify/:
-        SKILL.md:
-          Simplify:
-            Arguments:
-            Review and apply:
       solo/:
         SKILL.md:
           Dream Solo:
@@ -314,7 +293,6 @@ plugins/:
             Open the session PR:
             Plan:
             Implement:
-            Simplify:
             Copy-edit:
             Coherence review:
             Code review:

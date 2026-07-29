@@ -184,12 +184,6 @@ Implement the plan, one step at a time. For each step:
 - Commit with a short subject.
 - Push.
 
-## Simplify
-
-Run the `/dream:simplify` skill over the branch's changes against the base
-(`origin/main...HEAD`), so the code is easier to read. Commit and push the
-fixes.
-
 ## Copy-edit
 
 Run the `/dream:copy-edit` skill over the prose you changed. Commit and push the
