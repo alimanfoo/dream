@@ -693,10 +693,6 @@ and sections.
 
 ### Communication between teammates (agents)
 
-The full sign-off and rules are in
-[Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).
-Operationally:
-
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
   teammates.
 - **Reply via `SendMessage`.** Turn output reaches only the harness, not other
@@ -709,6 +705,8 @@ Operationally:
   reply, append `Reply via SendMessage.` to the signature line:
   `From Grace. Reply via SendMessage.` Leave it off terminal messages. Use a
   string, not JSON, inside `SendMessage`.
+- **Set the `summary` field** (5 to 10 words) when sending a string message.
+  That's the UI preview the tool expects.
 
 Grace-specific examples (sign-off only, content is yours):
 

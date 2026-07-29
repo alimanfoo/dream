@@ -491,9 +491,6 @@ plugins/:
               Reference syntax:
               GitHub-rendered artefacts:
               Communication between teammates (agents):
-                SendMessage:
-                Signature:
-                Non-user-facing agents:
       watcher/:
         SKILL.md:
           Watcher:

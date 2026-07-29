@@ -248,10 +248,6 @@ overwrite. Unexpected state may be the user's in-progress work.
 
 Write everything using `/dream:plain-english`.
 
-The full sign-off and rules are in
-[Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).
-Operationally:
-
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
   teammates.
 - **Reply via `SendMessage`.** Only the harness sees your turn output, not

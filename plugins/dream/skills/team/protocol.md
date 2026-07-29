@@ -134,30 +134,4 @@ bolded text.
 
 ### Communication between teammates (agents)
 
-#### SendMessage
-
-Use the `SendMessage` tool for all communication between teammates. The tool
-accepts JSON-typed control messages (`shutdown_request`,
-`plan_approval_response`, and so on) for system-level signals. Teammate
-communication is not one of those. Send a string. Address teammates by exact
-role name (`Grace`, `Ralph`, `Junio`, or `Ada`) in the `to:` field. UUIDs won't
-reach the right inbox. Set the `summary` field (5 to 10 words) when sending a
-string message. That's the UI preview the tool expects.
-
-Send every reply to a teammate via `SendMessage`. Turn output is not delivered
-to other agents. Only the harness sees it. Even a one-word reply (`done`,
-`confirmed`) goes via `SendMessage`. The rule has no length gate.
-
-#### Signature
-
-Sign every outbound `SendMessage` body with `From <your-name>.`, using your
-agent name. The signature tells the recipient that the message is teammate
-traffic, not user input. Take care to use your own agent name. Append
-`Reply via SendMessage.` to the signature line when you want a reply.
-
-#### Non-user-facing agents
-
-Ralph, Junio, and Ada are not user-facing. They use tools to do the work, then
-use `SendMessage` for anything Grace needs: reports, progress, findings,
-reviews, or questions. Turn output, when useful for local status or debugging,
-is at most one short sentence per turn.
+Each agent's own file carries the rules and the sign-off it uses.

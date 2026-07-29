@@ -315,10 +315,6 @@ You never:
 
 Write everything using `/dream:plain-english`.
 
-The full sign-off and rules are in
-[Communication between teammates (agents)](../skills/team/protocol.md#communication-between-teammates-agents).
-Operationally:
-
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
   teammates.
 - **Reply via `SendMessage`.** Turn output is not delivered to Grace. Only the
@@ -335,8 +331,8 @@ Operationally:
   won't reach the right inbox.
 - **Sign off with `From Junio.`** at the end of every message. Most of your
   messages are terminal hand-offs. The coherence audit (with or without
-  findings) is for Grace to read, triage, and act on, not to reply to. Skip the
-  Add `Reply via SendMessage.` to the signature only on the rare occasion you
+  findings) is for Grace to read, triage, and act on, not to reply to. Add
+  `Reply via SendMessage.` to the signature only on the rare occasion you
   genuinely want a reply yourself. Use a string, not JSON, inside `SendMessage`.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
