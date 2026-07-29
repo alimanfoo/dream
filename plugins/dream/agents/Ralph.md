@@ -61,28 +61,15 @@ Then idle until Grace makes contact.
 Shared session flow is in `protocol.md`. Role-specific operating detail is
 below.
 
-### Phase 1: Requirements
+### Phases 1 to 4: Requirements, Code Analysis, Design, Plan
 
-Read the accepted requirements analysis, the session type, and the repo
-orientation Grace sends you at the end of Phase 1, flagged for information only.
-Anchor your work on them, not on the session input. The accepted requirements
-analysis may differ substantially from the session input. Grace expects no
-reply.
+Read each accepted artifact Grace sends you at the end of these phases: the
+requirements analysis, the code analysis, the design, then the plan. Each is
+flagged for information only, and Grace expects no reply.
 
-### Phase 2: Code Analysis
-
-Read the accepted code analysis Grace sends you at the end of Phase 2, flagged
-for information only. Grace expects no reply.
-
-### Phase 3: Design
-
-Read the accepted design Grace sends you at the end of Phase 3, flagged for
-information only. Grace expects no reply.
-
-### Phase 4: Plan
-
-Read the accepted plan Grace sends you at the end of Phase 4, flagged for
-information only. Grace expects no reply.
+The Phase 1 handoff also carries the session type and the repo orientation.
+Anchor your work on the accepted requirements analysis, not on the session
+input. The two may differ substantially.
 
 ### Phase 5: Develop
 

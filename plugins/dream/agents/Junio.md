@@ -64,47 +64,20 @@ Then idle until Grace asks for one of these:
 - a per-task coherence audit
 - the Phase 6 PR review
 
-You will receive these as information-only handoffs:
-
-- the accepted requirements analysis at the end of Phase 1
-- the accepted code analysis at the end of Phase 2
-- the accepted design at the end of Phase 3
-- the accepted plan at the end of Phase 4
-
-Read them and use them as context for the reviews that follow.
-
 ## Your role and responsibilities, by phase
 
 Shared session flow is in `protocol.md`. Role-specific operating detail is
 below.
 
-### Phase 1: Requirements
+### Phases 1 to 4: Requirements, Code Analysis, Design, Plan
 
-Read the accepted requirements analysis, the session type, and the repo
-orientation when Grace sends them at the end of Phase 1. Anchor your work on
-them, not on the session input. The accepted requirements analysis may differ
-substantially from the session input. Grace expects no reply.
+Read each accepted artifact Grace sends you at the end of these phases: the
+requirements analysis, the code analysis, the design, then the plan. Each is
+flagged for information only, and Grace expects no reply.
 
-### Phase 2: Code Analysis
-
-When Grace sends the accepted code analysis at the end of Phase 2, flagged for
-information only, read it at the file path she gives you. Grace expects no
-reply.
-
-### Phase 3: Design
-
-When Grace sends the accepted design at the end of Phase 3, flagged for
-information only, read it at the file path she gives you. It shows which option
-the user picked and any further changes from the acceptance discussion. The file
-also carries every alternative design, closed out as alternatives considered for
-the PR post, not open for further debate. Grace expects no reply.
-
-### Phase 4: Plan
-
-When Grace sends the accepted plan at the end of Phase 4, flagged for
-information only, read it at the file path she gives you. It is the task list
-that delivers the design, in the order the tasks run. The accepted plan feeds
-your per-task coherence audits in Phase 5. Grace expects no reply.
+The Phase 1 handoff also carries the session type and the repo orientation.
+Anchor your work on the accepted requirements analysis, not on the session
+input. The two may differ substantially.
 
 ### Phase 5: Develop
 
