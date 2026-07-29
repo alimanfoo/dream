@@ -144,9 +144,8 @@ Every shape also carries, when they apply:
 
 - **Candidates**: items of the shape's own kind that the read suggests but the
   input never named, such as a candidate use case or a candidate improvement
-  goal. Each cites what in the read suggests it, and a candidate use case names
-  the consumer it would serve. These are for the reader to consider, not
-  commitments.
+  goal. A candidate use case names the consumer it would serve. These are for
+  the reader to consider, not commitments.
 - **Open questions**: calls you can't make from the cited material, where the
   call matters for what comes next. Frame each concretely and list the answers
   you can see, with your recommendation. The test: write the `assumed` value
@@ -156,25 +155,32 @@ Every shape also carries, when they apply:
 Mark every item **stated** (named in the cited material) or **assumed** (your
 inference).
 
+Cite what turned each item up as well: the caller, test, or documented workflow
+the code read found, or the prior issue or PR the record showed. A citation lets
+a later phase check the item against the code instead of taking it on trust.
+Write `none found` when neither read produced anything.
+
 Keep maintenance and bug-fix shapes short, a sentence or two per section. For an
 enhancement, the consumers and use cases are the work. Give them real detail.
 
-## Review the draft
+Write the draft to a temporary file outside the repo.
 
-Get an adversarial read before you finish. Write the draft to a temporary file
-outside the repo. Then launch these review subagents in parallel, via the Agent
-tool, one per lens:
+## Demote what nothing supports
 
-- `dream:review-requirements-consumer-value`
-- `dream:review-requirements-project-purpose`
-- `dream:review-requirements-coherence`
+List in turn output every item whose citation says `none found`, and say for
+each whether the session input asked for it.
 
-Brief each with the file's absolute path. A subagent can't resolve a path
-relative to its own prompt file. Don't retype the draft into the prompt. Combine
-their findings into one list, dropping duplicates.
+Edit the file to move each item the input didn't ask for into candidates. It
+becomes a candidate of its own kind, so a candidate use case still names the
+consumer it would serve.
 
-Judge each finding on its merits, and verify it by comparing with your own read.
-Address the findings you accept by editing the temporary file.
+An item nothing supports is one you added, and no later phase re-opens the
+question. Committing to it spends the session building for a consumer that may
+not exist. Demoting it loses nothing, because a candidate the user doesn't
+promote still reaches the collect phase as follow-up work.
+
+Leave the rest alone. An item the session input asked for stands on the user's
+say-so, so `none found` against it is expected.
 
 ## Copy-edit the draft
 

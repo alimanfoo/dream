@@ -178,18 +178,6 @@ plugins/:
         Tidy first?:
           The lens:
           Reporting:
-      review-requirements-coherence.md:
-        Coherent with what exists, coherent with itself:
-          The lens:
-          Reporting:
-      review-requirements-consumer-value.md:
-        Real consumer, real value:
-          The lens:
-          Reporting:
-      review-requirements-project-purpose.md:
-        Serves the project's purpose:
-          The lens:
-          Reporting:
       simplify-altitude.md:
         Altitude:
           The lens:
@@ -365,7 +353,7 @@ plugins/:
             Check the input against the current code:
             Name the session type:
             Compose the draft:
-            Review the draft:
+            Demote what nothing supports:
             Copy-edit the draft:
             The result:
       simplify/:
