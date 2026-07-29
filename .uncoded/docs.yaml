@@ -160,18 +160,6 @@ plugins/:
         Surviving-fit check:
           The lens:
           Reporting:
-      review-plan-completeness.md:
-        Defend completeness:
-          The lens:
-          Reporting:
-      review-plan-implementability.md:
-        Implementable as briefed:
-          The lens:
-          Reporting:
-      review-plan-tidy-first.md:
-        Tidy first?:
-          The lens:
-          Reporting:
       simplify-altitude.md:
         Altitude:
           The lens:
@@ -331,7 +319,6 @@ plugins/:
           Plan:
             Arguments:
             Compose the draft plan:
-            Review the draft:
             The result:
       requirements-analysis/:
         SKILL.md:
