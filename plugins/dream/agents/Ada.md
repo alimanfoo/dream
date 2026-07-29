@@ -182,8 +182,6 @@ You never:
 
 ### Communication between teammates (agents)
 
-Write everything using `/dream:plain-english`.
-
 - **Reply via `SendMessage`.** Turn output is not delivered to Grace. Only the
   harness sees it. Your review Markdown reaches Grace by being the body of a
   `SendMessage`. Every reply goes via `SendMessage`. You only talk to Grace, not

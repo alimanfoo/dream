@@ -243,8 +243,8 @@ Assemble the review per the review format below, then send it to Grace via
 `SendMessage`. Only `SendMessage` reaches Grace. Turn output does not. Sign off
 `From Junio.`.
 
-Grace posts your review as a PR comment, so write it for that reader: use
-`/dream:plain-english`, no internal protocol vocabulary.
+Grace posts your review as a PR comment, so write it for that reader: no
+internal protocol vocabulary.
 
 #### Review format
 
@@ -310,8 +310,6 @@ You never:
   gate, not yours. Your work is your reviews and per-task coherence audits.
 
 ### Communication between teammates (agents)
-
-Write everything using `/dream:plain-english`.
 
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
   teammates.

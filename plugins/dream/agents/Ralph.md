@@ -141,9 +141,6 @@ Include in the body only what Grace can't see from the diff:
 - evidence that the design or the plan no longer holds, with what you found that
   broke it
 
-If the task brief asks you to write down, list, map, identify, or confirm
-something before or during the change, include that artifact in the message.
-
 ### Phase 6: Review
 
 No direct involvement. If Grace accepts Ada's finding, it comes to you as a
