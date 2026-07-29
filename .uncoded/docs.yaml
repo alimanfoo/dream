@@ -222,8 +222,8 @@ plugins/:
         Simplification:
           The lens:
           Reporting:
-      stranger.md:
-        Stranger:
+      stranger-designer.md:
+        Stranger designer:
           Reporting:
     coherent-coding.md:
       Coherent coding guide:
@@ -424,7 +424,7 @@ plugins/:
         SKILL.md:
           Stranger:
             Arguments:
-            Name the solution and its boundary:
+            Name the solution and the problem:
             Compose the brief:
             Scrub the brief:
             Spawn the stranger:
