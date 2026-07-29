@@ -11,6 +11,8 @@ Produce a code analysis: a verifiable read of what the current code does and
 where, with file:line or symbol citations throughout. It stays factual, not a
 proposal.
 
+Write every turn output and artefact in this skill using `/dream:plain-english`.
+
 Follow the steps in order.
 
 ## Arguments
@@ -116,8 +118,7 @@ It stays factual, not a proposal. Name what is: how the code works, how it's
 organised, and its code smells. Don't recommend what to change. Whether a smell
 is worth fixing, and how, is a call for whoever designs the work next.
 
-Write the analysis to a temporary file outside the repo, using
-`/dream:plain-english`.
+Write the analysis to a temporary file outside the repo.
 
 ## The result
 

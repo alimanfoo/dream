@@ -12,6 +12,8 @@ Produce a requirements analysis: your explicit reading of what the system must
 do behind the input and for whom. The result is a draft, ending with any open
 questions for the user to resolve.
 
+Write every turn output and artefact in this skill using `/dream:plain-english`.
+
 Follow the steps in order.
 
 ## Arguments
@@ -157,8 +159,7 @@ inference).
 Keep maintenance and bug-fix shapes short, a sentence or two per section. For an
 enhancement, the consumers and use cases are the work. Give them real detail.
 
-Write the draft to a temporary file outside the repo, using
-`/dream:plain-english`.
+Write the draft to a temporary file outside the repo.
 
 ## The result
 

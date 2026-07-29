@@ -12,6 +12,8 @@ Produce a plan: the task list that delivers the design. Each task is a
 manageable single-commit unit. A criterion selects its work, and the implementer
 applies that criterion fresh.
 
+Write every turn output and artefact in this skill using `/dream:plain-english`.
+
 Follow the steps in order.
 
 ## Arguments
@@ -53,8 +55,7 @@ For kind-based criteria, show two or three examples to anchor the kind.
 Prefer one task with a bounded criterion to a run of special-case tasks that
 each name a single site. The criterion collapses them into one clean change.
 
-Write the draft plan to a temporary file outside the repo, using
-`/dream:plain-english`.
+Write the draft plan to a temporary file outside the repo.
 
 ## The result
 

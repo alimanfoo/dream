@@ -11,6 +11,8 @@ argument-hint: "<requirements and code analysis | text>"
 Produce design options: the proposed design, your recommendation for what the
 code will look like when the work is done, and any credible alternative designs.
 
+Write every turn output and artefact in this skill using `/dream:plain-english`.
+
 Follow the steps in order.
 
 ## Arguments
@@ -131,8 +133,7 @@ A sketch that delivers less than the requirements, or stops short of the
 coherent resolution, is not an alternative. It is a change to the requirements.
 Flag it prominently in the result if it has merit, rather than folding it in.
 
-Write the design options to a temporary file outside the repo, using
-`/dream:plain-english`.
+Write the design options to a temporary file outside the repo.
 
 ## The result
 
