@@ -153,8 +153,7 @@ Sort each gap into one of these:
 
 Send the report to Grace via `SendMessage`. Turn output does not reach
 teammates. Only `SendMessage` reaches Grace. Sign off `From Junio.` at the end
-of the report. The coherence audit is a terminal hand-off. Don't add
-`Reply via SendMessage.`
+of the report.
 
 #### Coherence audit format
 
@@ -242,8 +241,7 @@ same line or mechanism.
 
 Assemble the review per the review format below, then send it to Grace via
 `SendMessage`. Only `SendMessage` reaches Grace. Turn output does not. Sign off
-`From Junio.`. The review is a terminal hand-off. Don't add
-`Reply via SendMessage.`
+`From Junio.`.
 
 Grace posts your review as a PR comment, so write it for that reader: use
 `/dream:plain-english`, no internal protocol vocabulary.

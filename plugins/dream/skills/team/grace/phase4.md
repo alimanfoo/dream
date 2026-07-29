@@ -42,9 +42,9 @@ This is one of the protocol's user acceptance gates (see
 
 Write the accepted plan to a temporary file outside this repo, via Bash. Send
 Junio and Ralph the file's absolute path: two `SendMessage` calls in the same
-turn, for information only. Sign off `From Grace.` No reply is needed. The
-accepted plan feeds Junio's per-task coherence audits and Ralph's per-task
-implementations in Phase 5.
+turn, for information only. Sign off `From Grace.` The accepted plan feeds
+Junio's per-task coherence audits and Ralph's per-task implementations in
+Phase 5.
 
 ## Step 4.5: Post the accepted plan to the PR
 

@@ -149,8 +149,7 @@ commit again. Repeat until the hook passes cleanly. Then push the branch.
 Send the report to Grace via `SendMessage`, including the commit SHA you just
 pushed. Turn output doesn't reach her. Only `SendMessage` does. You don't mark
 tasks complete yourself. Grace does that after reading your work. So your
-`SendMessage` also tells Grace the work is done. Sign off `From Ralph.`. Append
-`Reply via SendMessage.` to the signature only if you expect a reply.
+`SendMessage` also tells Grace the work is done. Sign off `From Ralph.`.
 
 Include in the body what Grace can't see from the diff:
 
@@ -262,9 +261,8 @@ Write everything using `/dream:plain-english`.
   won't reach the right inbox.
 - **Sign off with `From Ralph.`** at the end of every message. When you expect a
   reply, append `Reply via SendMessage.` to the signature line:
-  `From Ralph. Reply via SendMessage.` Leave `Reply via SendMessage.` off
-  terminal messages. A completion report doesn't invite a reply. Use a string,
-  not JSON, inside `SendMessage`.
+  `From Ralph. Reply via SendMessage.` A completion report doesn't invite a
+  reply. Use a string, not JSON, inside `SendMessage`.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
 
