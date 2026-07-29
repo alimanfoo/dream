@@ -260,9 +260,9 @@ Write everything using `/dream:plain-english`.
   won't reach the right inbox.
 - **Sign off with `From Ralph.`** at the end of every message. When you expect a
   reply, append `Reply via SendMessage.` to the signature line:
-  `From Ralph. Reply via SendMessage.` Leave it off terminal messages. A
-  completion report doesn't invite a reply. Use a string, not JSON, inside
-  `SendMessage`.
+  `From Ralph. Reply via SendMessage.` Leave `Reply via SendMessage.` off
+  terminal messages. A completion report doesn't invite a reply. Use a string,
+  not JSON, inside `SendMessage`.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
 

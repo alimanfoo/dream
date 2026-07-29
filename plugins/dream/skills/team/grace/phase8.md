@@ -13,7 +13,7 @@ the session PR.
 
 ## Step 8.1: Compile
 
-Ask the teammates for the post-merge sweep. State these five cues in the request
+Ask the teammates for the post-merge sweep. State the cues in the request
 itself, so each teammate has them in view while searching. Each reaches
 knowledge the immediate task leaves dormant:
 
@@ -29,8 +29,8 @@ knowledge the immediate task leaves dormant:
 - **Negative space:** what is conspicuously absent? What did the session not do
   that a careful reviewer would expect?
 
-The cues widen the net, but an opportunity must still be suggested by the work
-just done, not a free-standing wishlist.
+An opportunity must still be suggested by the work just done, not a
+free-standing wishlist.
 
 Gather the sources (Ralph in-session, Junio in-session, Ada in-session, and the
 post-merge sweep). Each source yields two kinds: ancillary findings (concerns
