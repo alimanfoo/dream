@@ -11,7 +11,7 @@ run on their own ship alongside: `/dream:plain-english`,
 `/dream:coherent-coding`, `/dream:copy-edit`, `/dream:code-analysis`,
 `/dream:requirements-analysis`, `/dream:design`, `/dream:plan`,
 `/dream:simplify`, `/dream:coherence-review`, `/dream:code-review`,
-`/dream:code-review-ousterhout`, and `/dream:watcher`.
+`/dream:code-review-ousterhout`, `/dream:stranger`, and `/dream:watcher`.
 
 ## Prerequisites
 

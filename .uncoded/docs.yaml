@@ -222,6 +222,9 @@ plugins/:
         Simplification:
           The lens:
           Reporting:
+      stranger.md:
+        Stranger:
+          Reporting:
     coherent-coding.md:
       Coherent coding guide:
         Golden rule:
@@ -417,6 +420,16 @@ plugins/:
             Handle the user's replies:
             Merge:
             Collect:
+      stranger/:
+        SKILL.md:
+          Stranger:
+            Arguments:
+            Name the solution and its boundary:
+            Compose the brief:
+            Scrub the brief:
+            Spawn the stranger:
+            Read the solution:
+            Compare and report:
       team/:
         SKILL.md:
           Dream team:
