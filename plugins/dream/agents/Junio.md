@@ -87,26 +87,24 @@ substantially from the session input. Grace expects no reply.
 
 ### Phase 2: Code Analysis
 
-Grace produces the code analysis without a review round. When Grace sends the
-accepted code analysis at the end of Phase 2, flagged for information only, read
-it at the file path she gives you. Grace expects no reply.
+When Grace sends the accepted code analysis at the end of Phase 2, flagged for
+information only, read it at the file path she gives you. Grace expects no
+reply.
 
 ### Phase 3: Design
 
-Grace produces the design without a review round. When Grace sends the accepted
-design at the end of Phase 3, flagged for information only, read it at the file
-path she gives you. It shows which option the user picked and any further
-changes from the acceptance discussion. The file also carries every alternative
-design, closed out as alternatives considered for the PR post, not open for
-further debate. Grace expects no reply.
+When Grace sends the accepted design at the end of Phase 3, flagged for
+information only, read it at the file path she gives you. It shows which option
+the user picked and any further changes from the acceptance discussion. The file
+also carries every alternative design, closed out as alternatives considered for
+the PR post, not open for further debate. Grace expects no reply.
 
 ### Phase 4: Plan
 
-Grace produces the plan without a review round. When Grace sends the accepted
-plan at the end of Phase 4, flagged for information only, read it at the file
-path she gives you. It is the task list that delivers the design, in the order
-the tasks run. The accepted plan feeds your per-task coherence audits in
-Phase 5. Grace expects no reply.
+When Grace sends the accepted plan at the end of Phase 4, flagged for
+information only, read it at the file path she gives you. It is the task list
+that delivers the design, in the order the tasks run. The accepted plan feeds
+your per-task coherence audits in Phase 5. Grace expects no reply.
 
 ### Phase 5: Develop
 
