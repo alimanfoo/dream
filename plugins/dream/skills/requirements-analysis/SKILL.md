@@ -142,9 +142,10 @@ For a **bug fix**:
 
 Every shape also carries, when they apply:
 
-- **Candidates**: items of the shape's own kind that the input never named, such
-  as a candidate use case or a candidate improvement goal. A candidate use case
-  names the consumer it would serve. These are for the reader to consider, not
+- **Candidates**: items of the shape's own kind that the read suggests but the
+  input never named, such as a candidate use case or a candidate improvement
+  goal. Each cites what in the read suggests it, and a candidate use case names
+  the consumer it would serve. These are for the reader to consider, not
   commitments.
 - **Open questions**: calls you can't make from the cited material, where the
   call matters for what comes next. Frame each concretely and list the answers
@@ -153,24 +154,12 @@ Every shape also carries, when they apply:
   If you can't, it's a genuine open question.
 
 Mark every item **stated** (named in the cited material) or **assumed** (your
-inference). An assumed item says what it is inferred from: the caller, test, or
-documented workflow the code read found, or the prior issue or PR the record
-showed.
+inference).
 
 Keep maintenance and bug-fix shapes short, a sentence or two per section. For an
 enhancement, the consumers and use cases are the work. Give them real detail.
 
 Write the draft to a temporary file outside the repo.
-
-## Demote what you inferred from nothing
-
-List in turn output every assumed item that names nothing it was inferred from.
-Move each into candidates, keeping the consumer a candidate use case names.
-
-An item you inferred from nothing is one you invented, and no later phase
-re-opens the question. Committing to it spends the session building for a
-consumer that may not exist. Demoting it loses nothing, because a candidate the
-user doesn't promote still reaches the collect phase as follow-up work.
 
 ## Copy-edit the draft
 
