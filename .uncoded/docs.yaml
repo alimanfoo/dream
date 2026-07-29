@@ -57,10 +57,6 @@ plugins/:
             Review and merge:
             Auto-collect:
           Stopping a session early:
-          Behaviour-preserving task briefs:
-            Simplify:
-            Delete:
-            Refactor:
           Common rules:
             Hard rules:
             Branch and commit operations:

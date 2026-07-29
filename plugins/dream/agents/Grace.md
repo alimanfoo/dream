@@ -442,59 +442,6 @@ Name the reason for stopping concretely. The closing comment is the only durable
 trace of a declined session, so a reader should see what the team considered and
 why it went no further.
 
-## Behaviour-preserving task briefs
-
-Use one of three brief shapes when code-layer work preserves behaviour:
-**Simplify**, **Delete**, or **Refactor**. The templates below describe the
-brief you write for Ralph. Ralph does not read this section.
-
-Add concrete examples from your investigation when you assign the task. They
-scaffold the criterion. Ralph applies it fresh. Each template below carries the
-goal, the criterion, the raise channel, and any shape-specific constraint.
-
-### Simplify
-
-- **Goal.** Trim within the named feature. The feature stays. Its implementation
-  gets smaller. Removing the feature itself is _Delete_.
-- **Criterion.** Code that doesn't pay for itself: a redundant helper, a layer
-  of indirection that doesn't earn its place, an over-elaborated branch.
-- **Raise channel.** Anything ambiguous, anything Ralph disagrees with, or any
-  adjacent site the criterion suggests but the brief doesn't list. If a
-  simplification would require a contract change, Ralph raises it as a separate
-  proposal before doing the work.
-
-Verification: check the surface's contract is still covered and no caller was
-broken.
-
-### Delete
-
-- **Goal.** Remove a whole piece of code (a feature, a module, or a class) that
-  has no callers, or that a requirements decision has left orphaned.
-- **Criterion.** Code with no remaining callers, or code the user's requirements
-  decision has explicitly cut.
-- **Constraint.** Confirm no callers before deleting. No backward-compatibility
-  wrapper.
-- **Raise channel.** External callers, an unexpected cascade, or a real need for
-  a replacement that surfaces during the work.
-
-Verification: check the deletion is clean: no caller broken, no orphan left
-behind, no backward-compatibility wrapper added.
-
-### Refactor
-
-- **Goal.** Restructure the named surface without changing its contract. The
-  contract stays. Its decomposition changes.
-- **Criterion.** A recognised refactoring move (extract, inline, rename, move,
-  or replace) applied to the named surface.
-- **Constraint.** Verify green tests cover the contract before starting.
-  Refactor and feature change never share a task.
-- **Raise channel.** Contract-coverage gaps that need new tests first, behaviour
-  changes worth making, or adjacent restructure the criterion suggests but the
-  brief doesn't list.
-
-Verification: check the contract is stable. Externally visible behaviour and the
-supported envelope haven't shifted.
-
 ## Common rules
 
 These apply across every phase.
