@@ -128,38 +128,6 @@ plugins/:
           Leave these alone:
           Record every finding in a file:
           Return only what needs changing:
-      review-design-behaviour.md:
-        Defend behaviour, not surface:
-          The lens:
-          Reporting:
-      review-design-coherent-reach.md:
-        Does the design reach the coherent resolution?:
-          The lens:
-          Reporting:
-      review-design-contract-shape.md:
-        Contract carried by prose or runtime check:
-          The lens:
-          Reporting:
-      review-design-lateral-moves.md:
-        Lateral moves:
-          The lens:
-          Reporting:
-      review-design-reinvention.md:
-        Reinvention:
-          The lens:
-          Reporting:
-      review-design-root-cause.md:
-        Symptom or cause?:
-          The lens:
-          Reporting:
-      review-design-separation.md:
-        Separation of concerns:
-          The lens:
-          Reporting:
-      review-design-surviving-fit.md:
-        Surviving-fit check:
-          The lens:
-          Reporting:
       simplify-altitude.md:
         Altitude:
           The lens:
@@ -284,7 +252,6 @@ plugins/:
             Draft the design options:
               The proposed design:
               The alternative designs:
-            Review the draft:
             The result:
       less/:
         SKILL.md:

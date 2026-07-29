@@ -134,33 +134,6 @@ Flag it prominently in the result if it has merit, rather than folding it in.
 Write the design options to a temporary file outside the repo, using
 `/dream:plain-english`.
 
-## Review the draft
-
-Get an adversarial read before you finish. Launch these review subagents in
-parallel, via the Agent tool, one per lens:
-
-- `dream:review-design-behaviour`
-- `dream:review-design-coherent-reach`
-- `dream:review-design-contract-shape`
-- `dream:review-design-lateral-moves`
-- `dream:review-design-reinvention`
-- `dream:review-design-root-cause`
-- `dream:review-design-separation`
-- `dream:review-design-surviving-fit`
-
-Brief each with the temporary file's absolute path. A subagent can't resolve a
-path relative to its own prompt file. Don't retype the draft into the prompt.
-Also give `dream:review-design-reinvention` the existing-tools survey you wrote,
-since that subagent doesn't hold your context. Give
-`dream:review-design-coherent-reach` the session type and the code analysis, so
-it can judge whether the design reaches every instance the coherent resolution
-needs. Combine their findings into one list, dropping duplicates.
-
-Judge each finding on its merits, and verify it against your own read. Address
-the findings you accept by editing the temporary file. A candidate lateral move
-that is strictly better folds into the proposed design. One whose difference
-costs something joins the alternative designs, with its trade-off named.
-
 ## The result
 
 Return the completed design options from the file: the proposed design and any
