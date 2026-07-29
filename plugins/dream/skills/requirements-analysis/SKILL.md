@@ -12,8 +12,6 @@ Produce a requirements analysis: your explicit reading of what the system must
 do behind the input and for whom. The result is a draft, ending with any open
 questions for the user to resolve.
 
-Load the `/dream:plain-english` skill before you write.
-
 Follow the steps in order.
 
 ## Arguments
@@ -159,13 +157,9 @@ inference).
 Keep maintenance and bug-fix shapes short, a sentence or two per section. For an
 enhancement, the consumers and use cases are the work. Give them real detail.
 
-Write the draft to a temporary file outside the repo.
-
-## Copy-edit the draft
-
-Run the `/dream:copy-edit` skill over the draft file, giving its absolute path.
-The requirements analysis is what the reader studies most closely, so its
-readability matters most.
+Load the `/dream:plain-english` skill, then write the draft to a temporary file
+outside the repo. The analysis is what the reader studies most closely, so it is
+worth writing well the first time.
 
 ## The result
 
