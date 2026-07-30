@@ -30,6 +30,7 @@ plugins/:
           Common rules:
             Hard rules:
             Communication between teammates (agents):
+            Turn output budget:
       Grace.md:
         Grace:
           Boot sequence:
@@ -94,6 +95,7 @@ plugins/:
           Common rules:
             Hard rules:
             Communication between teammates (agents):
+            Turn output budget:
       Ralph.md:
         Ralph:
           Boot sequence:
@@ -116,6 +118,7 @@ plugins/:
             Commits:
             Risky actions:
             Communication between teammates (agents):
+            Turn output budget:
       code-review-lens.md:
         Code review lens:
           The lens:
