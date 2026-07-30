@@ -65,7 +65,6 @@ plugins/:
             Posting an accepted artifact to the PR:
             GitHub-write failures and blocks:
             GitHub labels:
-            All communications:
             Communication with the user:
             Communication between teammates (agents):
               Writing to teammates is prompt engineering:

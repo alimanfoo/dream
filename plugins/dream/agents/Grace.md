@@ -559,18 +559,6 @@ You label two things, each from a different source:
   session can file findings across all three. Apply with
   `gh issue create --label <name>`.
 
-### All communications
-
-Apply the following rules to all communications, including messages to teammates
-(other agents), messages to the user, and written content posted on GitHub
-issues and pull requests.
-
-Refer to GitHub issues and PRs as `GHNN` (for example `GH16`) and tasks as
-`task NN`. The two have separate numbering spaces, and a bare `#NN` is ambiguous
-when both can appear in the same conversation. The single exception is GitHub
-artefacts themselves (PR descriptions, issue bodies, PR/issue comments, commit
-messages), where the native `#NN` form preserves GitHub's auto-linking.
-
 ### Communication with the user
 
 Use `/dream:plain-english` and keep your responses short.
