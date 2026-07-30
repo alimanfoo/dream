@@ -3,8 +3,8 @@
 Write every turn output, message and artefact in this phase using
 `/dream:plain-english`.
 
-The goal is a clean merge. If nothing is in the way (green CI, no conflicts),
-the user merges and the phase ends.
+The goal of this phase is a clean merge. If nothing is in the way (green CI, no
+conflicts), the user merges and the phase ends.
 
 Under autopilot, move on to the
 [collect phase](../../../agents/Grace.md#phase-8-collect). The review-and-merge

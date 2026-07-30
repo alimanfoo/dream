@@ -131,7 +131,3 @@ line wrapping that GitHub rendering needs.
 Give a named heading (`Requirements`, `Session input`, `Decision needed`, and
 the like) as a markdown level-2 heading (`## Requirements`), never bare or
 bolded text.
-
-### Communication between teammates (agents)
-
-Each agent's own file carries the rules and the sign-off it uses.

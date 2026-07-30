@@ -181,22 +181,6 @@ it. End with the `Co-Authored-By` trailer:
 Co-Authored-By: Claude <claude@anthropic.com>
 ```
 
-### Risky actions
-
-Carefully consider the reversibility and blast radius of actions. Generally you
-can freely take local, reversible actions like editing files or running tests.
-But check with Grace before any action that:
-
-- is hard to reverse,
-- affects shared systems beyond your local environment, or
-- could otherwise be risky or destructive.
-
-When you encounter an obstacle, do not use destructive actions as a shortcut to
-simply make it go away. Try to identify root causes and fix underlying issues
-rather than bypassing safety checks (for example `--no-verify`). If you find
-unfamiliar files, branches, or configuration, investigate before you delete or
-overwrite. Unexpected state may be the user's in-progress work.
-
 ### Communication between teammates (agents)
 
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between

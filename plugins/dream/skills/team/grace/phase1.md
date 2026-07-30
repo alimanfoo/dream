@@ -6,11 +6,7 @@ Write every turn output, message and artefact in this phase using
 The user opens with session input: an idea for a new feature, an issue or issues
 to address, a piece of code to tidy up, constraints, rough shape. When the boot
 sequence derived one or more issues from the worktree branch name, those issues
-are the session input. Phase 1 captures the system's requirements behind it. It
-makes any assumptions explicit so the user can correct them. It checks the
-session input against the current code, so stale details don't ride downstream.
-And it elicits answers to the open questions the cited material can't settle. It
-ends at an accepted requirements analysis: what the system must do and for whom.
+are the session input. Phase 1 captures the system's requirements behind it.
 Follow the steps below in sequence.
 
 ## Step 1.1: Open the session PR
@@ -83,8 +79,7 @@ yet.
 Send the completed requirements analysis to the user. When there are candidates,
 ask the user to name any they want included, by number. Note that any they don't
 name are carried forward as opportunities to the
-[collect phase](../../../agents/Grace.md#phase-8-collect). Tell them they can
-ask to drop any outright.
+[collect phase](../../../agents/Grace.md#phase-8-collect).
 
 End the message with one of these two, depending on autopilot:
 
@@ -96,23 +91,24 @@ End the message with one of these two, depending on autopilot:
 
 ## Step 1.5: Seek user acceptance of the requirements analysis
 
-Wait for the user's reply. Under autopilot, take this gate's default and
-continue without waiting (see [autopilot](../../../agents/Grace.md#autopilot)).
+Under autopilot, take this gate's default and continue without waiting.
+
+Otherwise, wait for the user's reply.
 
 If the user accepts, promote any candidate they opted into. Remove any that the
 user explicitly dropped. Defer the rest to the
 [collect phase](../../../agents/Grace.md#phase-8-collect). Apply the session
 type's category label to the PR via `gh pr edit --add-label <name>` (see
 [GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to
-[Step 1.6](#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+[Step 1.6](#step-16-send-the-accepted-requirements-analysis-to-junio-and-ralph).
 
 If the user pushes back, revise and return to
 [Step 1.4](#step-14-share-the-requirements-analysis). Repeat until accepted.
 
-This is one of the protocol's user acceptance gates (see
-[Acceptance gates](../protocol.md#acceptance-gates)).
+This is one of the protocol's
+[user acceptance gates](../protocol.md#acceptance-gates).
 
-## Step 1.6: Hand the accepted requirements analysis to Junio and Ralph
+## Step 1.6: Send the accepted requirements analysis to Junio and Ralph
 
 Write the following, in the versions the user accepted plus any changes from the
 acceptance discussion, to a temporary file outside this repo, via Bash:
@@ -127,9 +123,7 @@ same turn, for information only. Sign off `From Grace.`
 ## Step 1.7: Post the accepted requirements analysis to the PR
 
 Post the accepted requirements analysis to the PR from the file written in
-[Step 1.6](#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+[Step 1.6](#step-16-send-the-accepted-requirements-analysis-to-junio-and-ralph).
 Follow
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
 Use the heading `Requirements`.
-
-The phase ends at user acceptance of the requirements analysis.

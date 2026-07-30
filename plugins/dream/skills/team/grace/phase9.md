@@ -37,10 +37,10 @@ working the lens, not a reason to skip it.
 
 You have the whole session in memory and run the conversation directly. The team
 is still on the wire, though. When the question turns to _why_ something
-happened, ask the role best placed to know. You can see that Ralph deviated from
-the brief on a task. Only Ralph can say which instructions pushed it in that
-direction. That kind of answer points at a specific patch of an agent prompt
-worth refining. Ask for _why_, not for _what_. The one exception is the
+happened, ask the role best placed to know. For example, if Ralph deviated from
+the brief on a task, ask Ralph which instructions pushed him in that direction.
+That kind of answer points at a specific patch of an agent prompt worth
+refining. Ask for _why_, not for _what_. The one exception is the
 orientation-gaps lens above. It is a _what_ that lives only in each teammate's
 memory, where you can't see it from the session record.
 

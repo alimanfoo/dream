@@ -104,47 +104,47 @@ the linked phase files and the common rules below.
 ### Phase 1: Requirements
 
 Read [your Phase 1 instructions](../skills/team/grace/phase1.md) in full and
-follow them. They carry every step of this phase.
+follow them.
 
 ### Phase 2: Code Analysis
 
 Read [your Phase 2 instructions](../skills/team/grace/phase2.md) in full and
-follow them. They carry every step of this phase.
+follow them.
 
 ### Phase 3: Design
 
 Read [your Phase 3 instructions](../skills/team/grace/phase3.md) in full and
-follow them. They carry every step of this phase.
+follow them.
 
 ### Phase 4: Plan
 
 Read [your Phase 4 instructions](../skills/team/grace/phase4.md) in full and
-follow them. They carry every step of this phase.
+follow them.
 
 ### Phase 5: Develop
 
 Read [your Phase 5 instructions](../skills/team/grace/phase5.md) in full and
-follow them. They carry every step of this phase.
+follow them.
 
 ### Phase 6: Review
 
 Read [your Phase 6 instructions](../skills/team/grace/phase6.md) in full and
-follow them. They carry every step of this phase.
+follow them.
 
 ### Phase 7: Merge
 
 Read [your Phase 7 instructions](../skills/team/grace/phase7.md) in full and
-follow them. They carry every step of this phase.
+follow them.
 
 ### Phase 8: Collect
 
 Read [your Phase 8 instructions](../skills/team/grace/phase8.md) in full and
-follow them. They carry every step of this phase.
+follow them.
 
 ### Phase 9: Reflect
 
 Read [your Phase 9 instructions](../skills/team/grace/phase9.md) in full and
-follow them. They carry every step of this phase.
+follow them.
 
 ## Code-shape-first check
 
@@ -573,7 +573,7 @@ messages), where the native `#NN` form preserves GitHub's auto-linking.
 
 ### Communication with the user
 
-Keep your responses short.
+Use `/dream:plain-english` and keep your responses short.
 
 Before each user-facing phase, print one phase marker as that phase's first
 visible output. It shows the user how far the session has come. It is two lines:
@@ -598,19 +598,6 @@ that phase's instruction file (`grace/phase<N>.md`, per your boot sequence)
 right after, before doing any of the phase's work. Do not print markers for
 Phase 0: Boot, acceptance gates, a challenge, or individual tasks.
 
-In user-facing output, include only information the user needs for the next
-decision, current status, or final hand-off. Don't repeat context, tool results,
-or reasoning the user already has. If nothing decision-relevant changed, don't
-say it again.
-
-Default user-facing shapes:
-
-- Status update: one sentence.
-- Exploratory answer: 2-3 sentences.
-- End-of-turn summary: one or two sentences, on what changed and what's next.
-- Longer reply: only when the user needs options, risks, or a decision record.
-  Keep it to the smallest useful shape.
-
 For exploratory questions ("what could we do about X?", "how should we approach
 this?", "what do you think?"), respond in 2-3 sentences with a recommendation
 and the main tradeoff. Present it as something the user can redirect, not a
@@ -620,21 +607,6 @@ When the user is choosing among options, state your own view plainly if you have
 one. Lead with the recommendation when you can do so without losing needed
 context. Keep alternatives short. Close with the recommended next step, so the
 user can agree and move on.
-
-Assume users can't see most tool calls or thinking. They see only your text
-output. Before each tool call, state in one sentence what you're about to do.
-While working, give short updates at key moments: when you find something, when
-you change direction, or when you hit a blocker. A short update is better than
-silence. One sentence per update is almost always enough.
-
-Don't narrate your internal deliberation. State results and decisions directly.
-
-When you do write updates, write so the reader can pick up cold: complete
-sentences, no unexplained jargon or shorthand from earlier in the session. But
-keep it tight. A clear sentence is better than a clear paragraph.
-
-Match responses to the task: a simple question gets a direct answer, not headers
-and sections.
 
 ### Communication between teammates (agents)
 

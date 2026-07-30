@@ -4,8 +4,7 @@ Write every turn output, message and artefact in this phase using
 `/dream:plain-english`.
 
 When development is complete, follow the steps below. Ada and Junio review in
-parallel. Ada reads with fresh eyes. Junio reviews the whole diff for coherence.
-You handle both reviews the same way.
+parallel. You handle both reviews the same way.
 
 ## Step 6.1: Send the review requests
 
@@ -30,20 +29,15 @@ each examined. Never use an agent name, which is internal protocol detail.
 
 ## Step 6.3: Triage each finding
 
-Decide each finding from both reviews on its merits. A reviewer raising it is
-not itself a reason to accept it. Each finding takes one of these paths:
+Decide each finding from both reviews on its merits, following
+`/dream:coherent-coding` principles. Each finding takes one of these paths:
 
 - Accept: make it a follow-on task, handled by the standard per-task workflow
   including Junio's coherence audit.
 - Reject: note it in your reply to the user, with the reason.
 - Out of scope: hold it for post-merge triage.
 - Raise a challenge: take it to the user per the "challenge" shape. Use this
-  when the finding shows an accepted artifact no longer holds, not a fixable
-  defect.
-
-A cluster of Junio's coherence findings circling one surface can be the evidence
-for a challenge. Read it as a sign the design was too narrow to reach the root
-cause, not as a list of separate follow-ons.
+  when the finding shows an accepted artifact no longer holds.
 
 Keep one response note per finding as you triage. Accepted findings record the
 follow-on task and, once complete, the commit or PR-visible evidence that
@@ -52,20 +46,13 @@ that they are held for post-merge triage. These notes are the raw material for
 the response comment you post after triage.
 
 Reclassify any "out of scope but noticed" item as in scope when it is the same
-edit: one the PR missed, or one the PR has now made adjacent. The review bucket
-is for broader concerns, not incomplete instances of the agreed change.
+edit: one the PR missed, or one the PR has now made adjacent.
 
-A finding may propose adding or expanding a docstring, comment, or
-section-header to express a contract, invariant, precondition, or convention.
-Apply the
-**[code-shape-first check](../../../agents/Grace.md#code-shape-first-check)**
-before deciding.
-
-## Step 6.4: Post Grace's response as a PR comment
+## Step 6.4: Post your response to reviews as a PR comment
 
 After all accepted findings have been handled through the standard per-task
 workflow, post one response comment via `gh pr comment <N> --body "..."`. This
-is Grace's public answer to both reviews. It records how they were acted on so a
+is your public answer to both reviews. It records how they were acted on so a
 reader does not have to reconstruct the outcome from commits, task messages, or
 the user's chat.
 
@@ -89,7 +76,7 @@ duplicate it. Follow
 
 Write the description for the PR you opened in Phase 1
 [Step 1.1](phase1.md#step-11-open-the-session-pr), replacing the `WIP`
-placeholder. Every follow-on is complete, so the PR's content is final.
+placeholder.
 
 Write it for a cold reviewer who has not read the thread. Check whether the repo
 has contribution rules (`CONTRIBUTING.md`, a PR template) and follow them.
@@ -124,20 +111,16 @@ attention. If no findings were accepted, flip immediately.
 
 ## Step 6.7: Hand back to the user
 
-Hand back to the user once all comments are addressed. The PR is ready for the
-user's acceptance. Phase 7 handles the merge itself.
+Hand back to the user once all agent reviewer comments are addressed. The PR is
+ready for the user's review. Phase 7 handles the merge itself.
 
 Under autopilot, don't hand back. The watch has been running since the PR
 opened, and now carries the PR through the user's review, merge, or close (see
 [Review and merge](../../../agents/Grace.md#review-and-merge)).
 
-Marking the PR ready hands off the branch, and from here it is frozen. In Merge,
-Collect, and Reflect a finding that would once have become a follow-on task
-becomes an issue instead. You fold no new development into the PR. Resolving
-merge conflicts is the exception. That is the merge itself, delegated to Ralph
-as Phase 7 describes. Only a user-directed change reopens the
-[develop phase](phase5.md). Under autopilot, a review with feedback is that
-change. You handle it as an explicit reopening, the same as any Phase 5 task:
+A user-directed change reopens the [develop phase](phase5.md). Under autopilot,
+a review with feedback is that change. You handle it as an explicit reopening,
+the same as any Phase 5 task:
 
 - Grace creates a task
 - Ralph implements and commits
@@ -150,11 +133,9 @@ question sits only in chat. Do this the same as
 [Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions).
 
 Once the accepted follow-ons are complete, post one response comment. Do this
-the same as [Step 6.4](#step-64-post-graces-response-as-a-pr-comment).
+the same as [Step 6.4](#step-64-post-your-response-to-reviews-as-a-pr-comment).
 
-Absent that direction, the default is freeze.
-
-The freeze stops new code, not updates to the PR's record. If a challenge is
-accepted at Phase 6 or later, still post its superseding comment and edit the PR
-description. That records the decision, not development. Any code the challenge
-needs goes through the user-directed reopening above.
+From here the branch is frozen. In Merge, Collect, and Reflect a finding that
+would once have become a follow-on task becomes an issue instead. You fold no
+new development into the PR. Resolving merge conflicts is the exception. That is
+the merge itself, delegated to Ralph as Phase 7 describes.

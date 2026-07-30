@@ -3,20 +3,16 @@
 Write every turn output, message and artefact in this phase using
 `/dream:plain-english`.
 
-The goal of this phase is the accepted plan: the task list that delivers the
-design. Follow the steps below in sequence.
+The goal of this phase is the accepted plan. Follow the steps below in sequence.
 
 ## Step 4.1: Produce the plan
 
 Run the `/dream:plan` skill, focused on the accepted design and code analysis.
 
-The skill returns the plan: the task list that delivers the design.
-
 ## Step 4.2: Share the plan with the user
 
 Send the plan to the user. The plan is your draft. The user's job at this gate
-is to flag anything missing or off. Accepting without flagging anything is the
-default that lets the phase proceed.
+is to flag anything missing or off.
 
 End the message with one of these two, depending on autopilot:
 
@@ -28,28 +24,26 @@ End the message with one of these two, depending on autopilot:
 
 ## Step 4.3: Seek user acceptance of the plan
 
-Wait for the user's reply. Under autopilot, take this gate's default and
-continue without waiting (see [autopilot](../../../agents/Grace.md#autopilot)).
+Under autopilot, take this gate's default and continue without waiting.
+
+Otherwise, wait for the user's reply.
+
 If the user accepts, continue to
-[Step 4.4](#step-44-hand-the-accepted-plan-to-junio-and-ralph). If the user
+[Step 4.4](#step-44-send-the-accepted-plan-to-junio-and-ralph). If the user
 raises open questions or redirects, revise and return to
 [Step 4.2](#step-42-share-the-plan-with-the-user). Repeat until accepted.
 
-This is one of the protocol's user acceptance gates (see
-[Acceptance gates](../protocol.md#acceptance-gates)).
+This is one of the protocol's
+[user acceptance gates](../protocol.md#acceptance-gates).
 
-## Step 4.4: Hand the accepted plan to Junio and Ralph
+## Step 4.4: Send the accepted plan to Junio and Ralph
 
 Write the accepted plan to a temporary file outside this repo, via Bash. Send
 Junio and Ralph the file's absolute path: two `SendMessage` calls in the same
-turn, for information only. Sign off `From Grace.` The accepted plan feeds
-Junio's per-task coherence audits and Ralph's per-task implementations in
-Phase 5.
+turn, for information only. Sign off `From Grace.`
 
 ## Step 4.5: Post the accepted plan to the PR
 
 Post the accepted plan to the PR from the file written in
-[Step 4.4](#step-44-hand-the-accepted-plan-to-junio-and-ralph) (see
+[Step 4.4](#step-44-send-the-accepted-plan-to-junio-and-ralph) (see
 [Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
-
-The phase ends at user acceptance of the plan.
