@@ -18,10 +18,10 @@ going idle (see
 
 Post each review as its own PR comment via `gh pr comment <N> --body "..."`.
 Each review body ends with a `From <reviewer>.` signature line. This is routing
-metadata, not part of the review. Drop it. Preserve the review text unchanged,
-then append the standard Claude Code footer from "Marking agent-authored GitHub
-items". If the footer is already present, don't duplicate it. Do not use
-`gh pr review`. It carries more weight than these advisory reviews should.
+metadata, not part of the review. Drop it. Preserve the review text unchanged
+and post it per [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
+Do not use `gh pr review`. It carries more weight than these advisory reviews
+should.
 
 Keep agent names off GitHub. If you need to tell the two comments apart, refer
 to the reviewers generically: "first reviewer", "second reviewer", or by what
@@ -66,11 +66,8 @@ The response is concise and GitHub-facing:
 - **Out of scope** items say they are held for post-merge triage.
 - If neither review raised findings, say no response work was needed.
 
-Do not repost the review text, quote internal teammate messages, or use
-dream-team protocol vocabulary. Append the standard Claude Code footer from
-"Marking agent-authored GitHub items". If the footer is already present, don't
-duplicate it. Follow
-[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
+Do not repost the review text or quote internal teammate messages. Post it per
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
 ## Step 6.5: Write the PR description
 
@@ -95,11 +92,8 @@ Otherwise use this shape:
 Don't sample existing PRs for style. Written contribution rules are real. The
 existing PR log is not a style reference.
 
-Mark the body per
-[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items)
-and follow
-[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts). After
-writing the description, verify that every issue the PR fully resolves is
+Write it per [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
+After writing the description, verify that every issue the PR fully resolves is
 recognised: run `gh pr view <N> --json closingIssuesReferences` to confirm each
 issue appears.
 

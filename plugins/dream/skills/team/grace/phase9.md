@@ -51,9 +51,9 @@ finding, draft an issue describing:
 - the nature of the problem
 - the team's hypotheses about why it happened
 
-Follow [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
-
-File an issue in one of two places:
+File each issue per
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github), in one of two
+places:
 
 - **Upstream (`alimanfoo/dream`)** when the problem is in the dream protocol or
   the agent prompts. Anyone running `/dream:team` would hit it.

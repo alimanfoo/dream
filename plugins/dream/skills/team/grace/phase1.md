@@ -28,18 +28,15 @@ Push the branch. All work runs against the session-start state of `main`. The
 origin.
 
 **Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
-the title from the session input. Mark the title and body per
-[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
-Follow [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
+the title from the session input, and write both per
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
 **Post the session input as the first comment.** Post the session input as a PR
 comment (`gh pr comment <N> --body "..."`). Head it `Session input`. When the
 input is nothing but issue references, give them as a bullet list, one bare `#N`
 per line. The linked issue already carries its own body and comments. Repeating
-them here adds nothing. Otherwise, reproduce the user's input verbatim. Follow
-[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
-the Claude Code footer from
-[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
+them here adds nothing. Otherwise, reproduce the user's input verbatim. Post it
+per [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
 **Start the watch, under autopilot.** If autopilot is engaged, start
 [the watch](../../../agents/Grace.md#the-watch) now that the PR is open, unless
@@ -57,12 +54,8 @@ Skip this step when there are no open questions.
 
 When there are open questions, write them to a temporary file outside the repo.
 Use the heading `Open questions`. List each question with the possible answers
-you can see, in public register. Keep role names and protocol-process vocabulary
-out. Follow
-[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
-the Claude Code footer from
-[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
-Post the file to the PR as a comment.
+you can see. Post the file to the PR as a comment, per
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
 Send the user the same questions and answers as a numbered list. Invite a
 freeform answer too. End the message by asking the user to answer the questions
@@ -124,6 +117,5 @@ same turn, for information only. Sign off `From Grace.`
 
 Post the accepted requirements analysis to the PR from the file written in
 [Step 1.6](#step-16-send-the-accepted-requirements-analysis-to-junio-and-ralph).
-Follow
-[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
-Use the heading `Requirements`.
+Follow [Writing to GitHub](../../../agents/Grace.md#writing-to-github). Use the
+heading `Requirements`.

@@ -195,12 +195,9 @@ The shape is the same every time:
 3. If the new evidence is a checkable fact, check it now, before going further.
    If the check fails, the challenge does not hold. Drop it, record why, and
    continue the work. See [Evidence](#evidence) for how.
-4. Post the challenge to the PR. Use the heading `Decision needed`. State what
-   the work surfaced and the options you can see. Keep role names and
-   protocol-process vocabulary out. Follow
-   [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
-   Append the Claude Code footer from
-   [Marking agent-authored GitHub items](#marking-agent-authored-github-items).
+4. Post the challenge to the PR per [Writing to GitHub](#writing-to-github),
+   under the heading `Decision needed`. State what the work surfaced and the
+   options you can see.
 5. Present to the user what the work surfaced and the options you can see. The
    user picks one or proposes their own.
 6. Carry out the chosen option. When it involves revising an accepted artifact,
@@ -236,13 +233,12 @@ work downstream then reshapes to match: keep what still stands, redo what the
 revision changes.
 
 The downstream reshape includes the PR, which has been open since Phase 1. Write
-the revised artifact to a new temporary file, the same way as
-[Posting an accepted artifact to the PR](#posting-an-accepted-artifact-to-the-pr),
-and post it from that file as a new superseding comment, not an edit of the
-earlier one. Open it with an explicit supersession marker naming the artifact it
-replaces (for example, "Supersedes the requirements above" or "Supersedes the
-design above"). This keeps the thread's history so a reader can tell which
-version stands (see
+the revised artifact to a new temporary file, per
+[Writing to GitHub](#writing-to-github), and post it from that file as a new
+superseding comment, not an edit of the earlier one. Open it with an explicit
+supersession marker naming the artifact it replaces (for example, "Supersedes
+the requirements above" or "Supersedes the design above"). This keeps the
+thread's history so a reader can tell which version stands (see
 [The session PR](../skills/team/protocol.md#the-session-pr)).
 
 ### What a challenge is not
@@ -492,29 +488,33 @@ at a glance whether an agent or a person made it.
   the host repo aren't a style precedent. Treat them as you would any other
   contributor's work.
 
-### Posting an accepted artifact to the PR
+### Writing to GitHub
 
-Once an artifact's gate passes, write it to a temporary file outside this repo,
-via Bash. Use that one file for everything downstream instead of pasting the
-text again for each: post it to the PR with
-`gh pr comment <N> --body-file <path>`, and give Junio and Ralph the same path
-in the information-only `SendMessage` handoff due at that point in the phase.
-`--body-file` also sidesteps the quoting and escaping a long inline `--body`
-string invites.
+Every write you make to GitHub, whether a PR description, an issue body, or a
+comment on either, takes the same shape:
 
-The artifacts are the requirements analysis (Phase 1), the code analysis,
-design, and plan. This persists the session's deliberation past the session (see
-[The session PR](../skills/team/protocol.md#the-session-pr)). Post the accepted
-artifact itself, not the share-message wrapper. Drop the "what changed after the
-reviews" note. It is for the user in chat, not the public record. Write it in
-public register. The artifact's own plain name is the heading (`Code analysis`,
-`Design`, `Plan`). One exception: the requirements analysis posts under the
-heading `Requirements`, dropping a qualifier that names the working session the
-PR reader doesn't share. Keep role names and protocol-process vocabulary out.
-Append the Claude Code footer from
-[Marking agent-authored GitHub items](#marking-agent-authored-github-items)
-above. Follow
-[GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
+- Write the body to a temporary file outside this repo, via Bash, and post it
+  with `--body-file <path>`. That sidesteps the quoting and escaping a long
+  inline `--body` string invites, and one file serves every downstream use
+  instead of pasting the text again for each.
+- Write in public register. Keep role names and protocol-process vocabulary out,
+  and assume the reader didn't share the session.
+- Mark it per
+  [Marking agent-authored GitHub items](#marking-agent-authored-github-items).
+  When you are relaying a body someone else wrote and it already carries the
+  footer, leave it be rather than stamping a second one.
+- Follow
+  [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
+
+An accepted artifact, meaning the requirements analysis, code analysis, design,
+or plan, posts as the artifact itself rather than the share-message wrapper,
+under its own plain name as the heading (`Code analysis`, `Design`, `Plan`). The
+requirements analysis is the exception: it posts under `Requirements`, dropping
+a qualifier that names the working session the PR reader doesn't share. Drop the
+"what changed after the reviews" note, which is for the user in chat, not the
+public record. Give Junio and Ralph the same file path in the information-only
+`SendMessage` handoff due at that point in the phase (see
+[The session PR](../skills/team/protocol.md#the-session-pr)).
 
 ### GitHub-write failures and blocks
 

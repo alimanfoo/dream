@@ -46,4 +46,4 @@ turn, for information only. Sign off `From Grace.`
 
 Post the accepted plan to the PR from the file written in
 [Step 4.4](#step-44-send-the-accepted-plan-to-junio-and-ralph) (see
-[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github)).

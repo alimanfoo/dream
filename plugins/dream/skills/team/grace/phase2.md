@@ -51,4 +51,4 @@ same turn, for information only. Sign off `From Grace.`
 
 Post the accepted code analysis to the PR from the file written in
 [Step 2.4](#step-24-send-the-accepted-code-analysis-to-junio-and-ralph) (see
-[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github)).

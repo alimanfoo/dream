@@ -61,7 +61,7 @@ same turn, for information only. Sign off `From Grace.`
 
 Post the accepted design to the PR from the file written in
 [Step 3.4](#step-34-send-the-accepted-design-to-junio-and-ralph) (see
-[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github)).
 
 Make the body the design the user accepted. Put every alternative design under
 an "Alternatives considered" heading: the designs weighed and not chosen. When

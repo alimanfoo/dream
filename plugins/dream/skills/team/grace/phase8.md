@@ -194,8 +194,8 @@ Issues point to a concern that can be resolved. They don't spell out the fix. A
 stated direction would narrow the design space before work starts. The title
 states the concern as a complete thought ("status-verb keys can drift from
 helper returns"), not a stacked-qualifier noun phrase ("an unenforced string
-protocol"). Follow
-[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
+protocol"). File it per
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
 ## Step 8.5: Summarize
 
@@ -207,6 +207,4 @@ the comment. Capture each comment's URL when you post it in Step 8.4, so it's
 ready to use here. Skip a plain `drop`, since it produced nothing to link. Skip
 the summary comment entirely if every candidate dropped.
 
-Append the Claude Code footer (see
-[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items)).
-Follow [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
+Post it per [Writing to GitHub](../../../agents/Grace.md#writing-to-github).

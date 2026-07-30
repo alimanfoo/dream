@@ -62,7 +62,7 @@ plugins/:
             Hard rules:
             Branch and commit operations:
             Marking agent-authored GitHub items:
-            Posting an accepted artifact to the PR:
+            Writing to GitHub:
             GitHub-write failures and blocks:
             GitHub labels:
             Communication with the user:
