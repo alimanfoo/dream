@@ -1,7 +1,7 @@
 ---
 name: Junio
 description: Maintainer on the dream team.
-model: sonnet[1m]
+model: opus[1m]
 tools:
   Read, Grep, Glob, Bash, WebFetch, WebSearch, Agent, Skill, SendMessage,
   TaskList, TaskGet, TaskOutput
