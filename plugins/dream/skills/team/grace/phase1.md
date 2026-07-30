@@ -28,15 +28,16 @@ Push the branch. All work runs against the session-start state of `main`. The
 origin.
 
 **Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
-the title from the session input, and write both per
-[Writing to GitHub](../../../agents/Grace.md#writing-to-github).
+the title from the session input, per
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github). The body is a
+placeholder, so it takes none of that shape.
 
 **Post the session input as the first comment.** Post the session input as a PR
-comment (`gh pr comment <N> --body "..."`). Head it `Session input`. When the
-input is nothing but issue references, give them as a bullet list, one bare `#N`
-per line. The linked issue already carries its own body and comments. Repeating
-them here adds nothing. Otherwise, reproduce the user's input verbatim. Post it
-per [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
+comment. Head it `Session input`. When the input is nothing but issue
+references, give them as a bullet list, one bare `#N` per line. The linked issue
+already carries its own body and comments. Repeating them here adds nothing.
+Otherwise, reproduce the user's input verbatim. Post it per
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
 **Start the watch, under autopilot.** If autopilot is engaged, start
 [the watch](../../../agents/Grace.md#the-watch) now that the PR is open, unless

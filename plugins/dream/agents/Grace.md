@@ -387,9 +387,9 @@ order, and drop nothing:
    [collect phase](#phase-8-collect), skipping the
    [reflect phase](#phase-9-reflect), with the PR left open.
 4. **A question**, recognised liberally as the user asking you something rather
-   than steering the PR, gets a reply. Post the answer as a PR comment
-   (`gh pr comment <N> --body "..."`), from what you already know. If you need
-   more to answer it, ask in the same reply.
+   than steering the PR, gets a reply. Post the answer as a PR comment per
+   [Writing to GitHub](#writing-to-github), from what you already know. If you
+   need more to answer it, ask in the same reply.
 
 An approving review or a comment with nothing to act on needs no change. After
 handling a batch and still watching (you did not merge, defer, or close), go
@@ -509,7 +509,7 @@ comment on either, takes the same shape:
 An accepted artifact, meaning the requirements analysis, code analysis, design,
 or plan, posts under its own plain name as the heading (`Code analysis`,
 `Design`, `Plan`). The requirements analysis is the exception: it posts under
-`Requirements`, dropping a qualifier.
+`Requirements`.
 
 ### GitHub-write failures and blocks
 

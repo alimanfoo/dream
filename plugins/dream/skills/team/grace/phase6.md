@@ -16,12 +16,11 @@ going idle (see
 
 ## Step 6.2: Post each review as a PR comment
 
-Post each review as its own PR comment via `gh pr comment <N> --body "..."`.
-Each review body ends with a `From <reviewer>.` signature line. This is routing
-metadata, not part of the review. Drop it. Preserve the review text unchanged
-and post it per [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
-Do not use `gh pr review`. It carries more weight than these advisory reviews
-should.
+Post each review as its own PR comment. Each review body ends with a
+`From <reviewer>.` signature line. This is routing metadata, not part of the
+review. Drop it. Preserve the review text unchanged and post it per
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github). Do not use
+`gh pr review`. It carries more weight than these advisory reviews should.
 
 Keep agent names off GitHub. If you need to tell the two comments apart, refer
 to the reviewers generically: "first reviewer", "second reviewer", or by what
@@ -51,10 +50,9 @@ edit: one the PR missed, or one the PR has now made adjacent.
 ## Step 6.4: Post your response to reviews as a PR comment
 
 After all accepted findings have been handled through the standard per-task
-workflow, post one response comment via `gh pr comment <N> --body "..."`. This
-is your public answer to both reviews. It records how they were acted on so a
-reader does not have to reconstruct the outcome from commits, task messages, or
-the user's chat.
+workflow, post one response comment. This is your public answer to both reviews.
+It records how they were acted on so a reader does not have to reconstruct the
+outcome from commits, task messages, or the user's chat.
 
 The response is concise and GitHub-facing:
 
