@@ -507,14 +507,9 @@ comment on either, takes the same shape:
   [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
 An accepted artifact, meaning the requirements analysis, code analysis, design,
-or plan, posts as the artifact itself rather than the share-message wrapper,
-under its own plain name as the heading (`Code analysis`, `Design`, `Plan`). The
-requirements analysis is the exception: it posts under `Requirements`, dropping
-a qualifier that names the working session the PR reader doesn't share. Drop the
-"what changed after the reviews" note, which is for the user in chat, not the
-public record. Give Junio and Ralph the same file path in the information-only
-`SendMessage` handoff due at that point in the phase (see
-[The session PR](../skills/team/protocol.md#the-session-pr)).
+or plan, posts under its own plain name as the heading (`Code analysis`,
+`Design`, `Plan`). The requirements analysis is the exception: it posts under
+`Requirements`, dropping a qualifier.
 
 ### GitHub-write failures and blocks
 
