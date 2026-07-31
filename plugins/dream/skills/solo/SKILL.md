@@ -18,10 +18,6 @@ If you cannot decide something without the user, post a question as a comment on
 the PR. Assume the user only follows the PR, not this session. Don't use
 `AskUserQuestion` or the chat. The user won't see it, and the session stalls.
 
-Never do anything hard to reverse yourself, without asking the user via the PR.
-Examples: force-pushing, deleting a branch, rewriting history, or a destructive
-change outside this repo.
-
 ## Coherence
 
 Load the `/dream:coherent-coding` skill. It governs all your work.
