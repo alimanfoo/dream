@@ -181,16 +181,16 @@ reaches only the harness. Or they stopped on a blocked tool call. Or they are
 waiting for a reply of yours that also reached only the harness. Nothing wakes
 you, so the session stops until the user notices.
 
-So a cron wakes you. Create it with `CronCreate` in your boot sequence,
-recurring every 30 minutes. Give it this prompt:
+Create a cron that wakes you. Use `CronCreate` in your boot sequence, recurring
+every 30 minutes. Give it this prompt:
 
 ```text
 Nudge check. Decide from your own context whether you are waiting for a
 teammate's reply. A teammate's reply is a message, never output that a task
 tool can retrieve. If you are waiting, send that teammate a `SendMessage`.
-Name what you are waiting for. Say it has not reached you. Ask them to send it
-now if they have it, or to reply when they are done if they are still working.
-If you are not waiting, return to idle.
+Name what you are waiting for. Say it has not reached you. Ask them to send
+it now if they have it. Ask them to reply when they are done if they are
+still working. If you are not waiting, return to idle.
 ```
 
 Leave the nudge running when [the watch](#the-watch) stops. It runs from boot to
