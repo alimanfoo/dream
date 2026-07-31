@@ -28,6 +28,12 @@
 # The record is advisory. The optional `since` argument replaces it, which
 # covers a maintainer on a second machine and a deliberate re-check.
 #
+# A run started at `since` has checked nothing between the record and there, so
+# the record must not advance past those issues: they would never be targets
+# again, and nothing would ever report it. `mark-checked` therefore takes the
+# number the run started above and advances the record only from that value, so
+# the rule holds whatever the caller passes.
+#
 # Reading an issue body is the caller's expensive act, so `scan` hands it every
 # open issue's title, and the issues above the number it starts after as the
 # targets to check. Titles are cheap. The caller reads only the bodies its
@@ -64,7 +70,7 @@ dream:dedup-issues: bookkeeping for a duplicate-issue scan.
 
 Usage:
   dedup.sh scan [--limit <n>] [<since>]
-  dedup.sh mark-checked <number>
+  dedup.sh mark-checked [--from <n>] <number>
   dedup.sh discard-bodies
   dedup.sh --help
 
@@ -81,6 +87,12 @@ Usage:
   <since>         Issue number to use in place of the record, so the targets are
                   the issues numbered above it.
   mark-checked    Record <number> as the highest issue checked.
+  --from          The number the run started above, as scan reported it in
+                  startAfter. Leave it off when scan reported none. The record
+                  advances only when this matches what the record already says,
+                  so a run that started somewhere else cannot claim the issues
+                  in between. Such a run leaves the record alone and says so, at
+                  status 0, because that is the right outcome and not a failure.
   discard-bodies  Remove the body files a scan wrote, which nothing reads once
                   the run that fetched them is over. Not an error when they are
                   already gone.
@@ -107,6 +119,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/../../repo-state.sh" \
 limit=$default_limit
 since=""
 number=""
+started_after=""
 
 [ $# -ge 1 ] || { usage >&2; exit 2; }
 subcommand=$1
@@ -129,9 +142,18 @@ case "$subcommand" in
     [ -z "$since" ] || require_positive_int since "$since"
     ;;
   mark-checked)
-    [ $# -eq 1 ] || die "mark-checked takes one issue number"
-    number=$1
+    while [ $# -gt 0 ]; do
+      case "$1" in
+        --from) [ $# -ge 2 ] || die "--from requires a value"; started_after=$2; shift 2;;
+        -*)     die "unknown argument: $1";;
+        *)      [ -z "$number" ] || die "mark-checked takes one issue number"; number=$1; shift;;
+      esac
+    done
+    [ -n "$number" ] || die "mark-checked takes one issue number"
     require_positive_int "the issue number" "$number"
+    if [ -n "$started_after" ]; then
+      require_positive_int --from "$started_after"
+    fi
     ;;
   discard-bodies)
     [ $# -eq 0 ] || die "discard-bodies takes no arguments"
@@ -159,7 +181,23 @@ bodies_dir="$skill_state_dir/bodies"
 run_scan=false
 case "$subcommand" in
   mark-checked)
-    printf '%s' "$number" > "$record_file" || die "cannot write the record file $record_file"
+    # The record advances only from the value the run started at, so no caller
+    # can move it past issues nothing checked. A run that continued from the
+    # record passes the record's own value and advances it. A run started
+    # somewhere else, which is what `since` does, leaves the record alone.
+    #
+    # An absent record and an omitted `--from` are both the empty string, so the
+    # one comparison also covers a first run, and covers a caller claiming a
+    # record that is not there.
+    recorded=$(cat "$record_file" 2>/dev/null)
+    if [ "$recorded" = "$started_after" ]; then
+      printf '%s' "$number" > "$record_file" || die "cannot write the record file $record_file"
+    else
+      # Not a failure: leaving the record alone is the right outcome, and the
+      # caller has nothing to put right. Saying so keeps it from passing unseen.
+      printf 'dream:dedup-issues: the record stays at %s, because this run started above %s rather than continuing from the record\n' \
+        "${recorded:-nothing}" "${started_after:-nothing}" >&2
+    fi
     ;;
   discard-bodies)
     # rm -rf succeeds on a path that is not there, so a run that scanned
