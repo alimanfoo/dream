@@ -36,10 +36,10 @@ run that found nothing new to check and stopped.
   tracker, and nothing reads them once the run is over. It is not an error when
   there are none, so this act carries no condition.
 - Run `dedup.sh mark-checked --from <startAfter> <highest number in targets>`.
-  Pass `startAfter` as the scan gave it, and leave `--from` off when the scan
-  gave none. Run it whatever the user decided about closing, because the issues
-  were checked either way. With no targets you have no number to pass, so skip
-  it.
+  Pass `startAfter` as the scan gave it. When it is null, which is what a first
+  run reports, leave `--from` off rather than passing the word null. Run it
+  whatever the user decided about closing, because the issues were checked
+  either way. With no targets you have no number to pass, so skip it.
 
 Don't run `mark-checked` at all unless two things hold: the last line you wrote
 as the batches returned accounts for every number in `targets`, and the list on
@@ -64,7 +64,8 @@ Run `dedup.sh scan`, passing the `since` argument when the user gave one.
 record. It is what the user needs when the record falls short: a maintainer on a
 second machine, a deliberate re-check, or a reopened issue. An issue closed
 during one run and reopened later sits below the record, so it never becomes a
-target again. `since` is the only way to have it checked.
+target again. An issue edited after it was checked sits below it in the same
+way. `since` is the only way to have either looked at again.
 
 Tell the user what `since` costs them when they pass it. The record can end up
 older than the work just done, and the next run without `since` then re-checks
@@ -74,6 +75,9 @@ Tell the user where this run starts, from `startAfter`. Give it as the number
 the run starts above, not as what has been checked. `since` replaces the record,
 so a run started at 700 on a tracker whose record is 300 has checked nothing
 between the two.
+
+When `startAfter` is null there is no record yet, so tell the user the run
+checks every open issue. Don't repeat the word null to them.
 
 When `targets` is empty, nothing is new. Say so, launch nothing, and end the run
 per [How every run ends](#how-every-run-ends).
@@ -135,8 +139,12 @@ Then pick the issue the group keeps:
 
 ## Put the groups to the user
 
-Name the repository, from `repo`, so the user can see which tracker they are
-about to change. Then give each group:
+When nothing survived verification there is no group to put. Tell the user that
+nothing duplicated, and end the run without waiting. They have nothing to
+confirm.
+
+With groups to put, name the repository, from `repo`, so the user can see which
+tracker they are about to change. Then give each group:
 
 - the issue it keeps, by number and title
 - each duplicate, by number and title
