@@ -87,6 +87,9 @@ Perform the following tasks **immediately**, in order.
 
 5. Load the `/dream:coherent-coding` skill. It governs all your work.
 
+6. **Start [the nudge](#the-nudge).** It is what recovers the session when a
+   teammate's reply never arrives.
+
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one
 line first, covering autonomy too when step 4 derived it. For example: _On
@@ -167,9 +170,31 @@ task list, the working tree, or the PR starts a fresh turn. The loop never
 returns to idle, so the reply never gets its turn. When you are waiting for more
 than one reply, go idle again after each until every one is in.
 
-The [autopilot watch](#the-watch) is not this loop. It is an external cron that
-wakes you, not a status tool you poll. Each firing is bounded work that returns
-you to idle.
+The [autopilot watch](#the-watch) and [the nudge](#the-nudge) are not this loop.
+They are external crons that wake you, not status tools you poll. Each firing is
+bounded work that returns you to idle.
+
+### The nudge
+
+A reply sometimes never arrives. The teammate answered in turn output, which
+reaches only the harness. Or they stopped on a blocked tool call. Or they are
+waiting on a reply of yours that went the same way. Nothing wakes you, so the
+session stops until the user notices.
+
+So a cron wakes you. Create it in your boot sequence (`CronCreate`), recurring
+every 20 minutes, with this prompt:
+
+```text
+Nudge check. If you are waiting for a teammate's reply, send that teammate a
+`SendMessage`: name what you are waiting for, say it has not reached you, and
+ask them to send it via `SendMessage` if they have it, or to reply when they
+are done if they are still working. Judge from your own context. A teammate's
+reply is a message, never output a task tool can retrieve. Otherwise return to
+idle.
+```
+
+The nudge runs from boot to the end of the session, so leave it running when
+[the watch](#the-watch) stops.
 
 ## Challenge
 
