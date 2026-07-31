@@ -416,6 +416,7 @@ README.md:
     Smaller tasks with /dream:solo:
     Even smaller tasks with /dream:less:
     Unattended runs with /dream:catcher:
+    Finding duplicate issues with /dream:dedup-issues:
     /dream:team advanced usage:
       Alias claude with experimental agent teams support:
       Models and effort:

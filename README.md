@@ -10,7 +10,8 @@ them unattended across a repository's labelled issues. Utility skills you can
 run on their own ship alongside: `/dream:plain-english`,
 `/dream:coherent-coding`, `/dream:copy-edit`, `/dream:code-analysis`,
 `/dream:requirements-analysis`, `/dream:design`, `/dream:plan`,
-`/dream:coherence-review`, `/dream:code-review`, and `/dream:watcher`.
+`/dream:coherence-review`, `/dream:code-review`, `/dream:watcher`, and
+`/dream:dedup-issues`.
 
 ## Prerequisites
 
@@ -158,6 +159,21 @@ waits. You can reply there without dropping into the session.
 It stops on reboot, so re-run `/dream:catcher` to restart it. For a machine that
 must survive reboots, drive `catch.sh --once` from cron or launchd. Each firing
 runs a single tick.
+
+## Finding duplicate issues with /dream:dedup-issues
+
+Run `/dream:dedup-issues` in a checkout of the repository you want scanned. It
+reads the open issues, works out which of them duplicate which, and reports them
+as groups: the issue it suggests keeping, the ones it would close, and a line of
+reasoning for each.
+
+It closes only the groups you confirm, and nothing else. It posts no comments.
+GitHub records each closure as a duplicate of the issue kept, so the link stays
+visible on the tracker.
+
+A duplicate here includes one issue being wider than another, not only two
+issues asking for the same thing. A later run checks the issues filed since the
+last one, so running it again over an unchanged tracker does close to no work.
 
 ## /dream:team advanced usage
 
