@@ -29,9 +29,9 @@
 # covers a maintainer on a second machine and a deliberate re-check.
 #
 # Reading an issue body is the caller's expensive act, so `scan` hands it every
-# open issue's title, the path to every body, and the issues above the number it
-# starts after as the targets to check. Titles are cheap. The caller reads only
-# the bodies its judgement needs.
+# open issue's title, and the issues above the number it starts after as the
+# targets to check. Titles are cheap. The caller reads only the bodies its
+# judgement needs.
 #
 # Fetching the bodies costs nothing extra, because they come back in the same
 # `gh` call as the titles. The script writes each to its own file, so the caller
@@ -40,10 +40,14 @@
 # what this run fetched, and no stale file from an earlier run can be read by
 # mistake.
 #
+# A body's only reader is a check on a target, so a scan with no targets writes
+# no bodies at all. A run over an unchanged tracker then costs one `gh` call and
+# leaves nothing behind, which is the path a repeat run takes.
+#
 # The bodies are one run's working copy of the tracker, not a store. Nothing
-# reads them once the run that fetched them is over, so the caller ends the run
-# with `discard-bodies` and the issue text does not outlive it. The record, one
-# number, is the only thing a run leaves behind.
+# reads them once the run that fetched them is over, so a run that wrote any
+# ends with `discard-bodies` and the issue text does not outlive it. The record,
+# one number, is the only thing a run leaves behind.
 
 set -uo pipefail
 
@@ -63,12 +67,14 @@ Usage:
   dedup.sh discard-bodies
   dedup.sh --help
 
-  scan            Fetch the open issues, write each body to a file, and print
-                  what a scan needs, as one JSON object: repo, startAfter (the
-                  number the scan starts above, from the record or from
-                  <since>), issues (every open issue as number, title and
-                  bodyFile, in ascending order), and targets (the issue numbers
-                  above startAfter).
+  scan            Fetch the open issues and print what a scan needs, as one JSON
+                  object: repo, startAfter (the number the scan starts above,
+                  from the record or from <since>), issues (every open issue as
+                  number and title, in ascending order), and targets (the issue
+                  numbers above startAfter). With at least one target it also
+                  writes every body to a file and gives each issue a bodyFile
+                  path. With none it writes no body and leaves bodyFile out,
+                  since a body's only reader is a check on a target.
   --limit         Most open issues to scan. A tracker holding more than this is
                   an error, not a partial scan. Default: $default_limit.
   <since>         Issue number to use in place of the record, so the targets are
@@ -182,12 +188,6 @@ count=$(printf '%s' "$raw" | jq 'length') || die "cannot count the open issues"
 [ "$count" -le "$limit" ] \
   || die "$repo has more than $limit open issues; raise --limit rather than scan part of the tracker"
 
-# Start the bodies directory empty, so it ends the run holding this scan's
-# bodies and nothing else. Clearing after the fetch leaves the last run's bodies
-# in place when the fetch fails, rather than emptying the directory for nothing.
-rm -rf "$bodies_dir" || die "cannot clear the bodies directory $bodies_dir"
-mkdir -p "$bodies_dir" || die "cannot create the bodies directory $bodies_dir"
-
 # One compact JSON object per issue, in ascending number order, each carrying
 # the path its body belongs at. This expression is the one home for that path:
 # the loop below writes to the path it finds here, and the output repeats it, so
@@ -206,9 +206,26 @@ issues=$(printf '%s' "$raw" | jq -c --arg bodies_dir "$bodies_dir" '
   | sort_by(.number)[]
 ') || die "cannot read the open issues in $repo"
 
-# An empty tracker builds no lines at all, so skip the loop rather than feed it
-# one empty line.
-if [ -n "$issues" ]; then
+# The targets, worked out once here and printed further down, so the rule that
+# an issue above startAfter is a target has one home. With no record and no
+# `since`, startAfter is null, which sorts below every number, so the same
+# comparison makes every open issue a target on the first run. An empty tracker
+# slurps to an empty array, the same as a tracker with nothing new.
+targets=$(printf '%s' "$issues" | jq -s -c --argjson start_after "${start_after:-null}" \
+  '[.[] | select(.number > $start_after) | .number]') \
+  || die "cannot work out which issues to check"
+
+# Start with no bodies, so the directory reflects this scan whether it writes
+# any or not. Clearing after the fetch leaves the last run's bodies in place
+# when the fetch fails, rather than emptying the directory for nothing.
+rm -rf "$bodies_dir" || die "cannot clear the bodies directory $bodies_dir"
+
+# A body's only reader is a check on a target, so with no targets the scan
+# writes none, and a run over an unchanged tracker leaves nothing behind.
+# `jq -c` prints an empty array as exactly this, so the test is on the whole
+# value.
+if [ "$targets" != "[]" ]; then
+  mkdir -p "$bodies_dir" || die "cannot create the bodies directory $bodies_dir"
   while IFS= read -r issue; do
     body_file=$(printf '%s' "$issue" | jq -r '.bodyFile') \
       || die "cannot read a body file path from the issue list"
@@ -217,17 +234,18 @@ if [ -n "$issues" ]; then
   done <<< "$issues"
 fi
 
-# The bodies are on disk, so the output can name them. With no record and no
-# `since`, startAfter is null, which sorts below every number, so the one
-# comparison makes every open issue a target on the first run.
+# Each issue carries a bodyFile only when the bodies were written. A path naming
+# a file that is not there would read as usable and fail at the point of use,
+# where a missing field says plainly that this scan wrote no bodies.
 printf '%s' "$issues" | jq -s \
   --arg repo "$repo" \
-  --argjson start_after "${start_after:-null}" '
-  map({number, title, bodyFile}) as $issues
+  --argjson start_after "${start_after:-null}" \
+  --argjson targets "$targets" '
+  ($targets | length > 0) as $wrote_bodies
   | {
       repo: $repo,
       startAfter: $start_after,
-      issues: $issues,
-      targets: [$issues[] | select(.number > $start_after) | .number],
+      issues: map(if $wrote_bodies then {number, title, bodyFile} else {number, title} end),
+      targets: $targets,
     }
 ' || die "cannot build the scan output"
