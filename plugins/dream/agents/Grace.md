@@ -590,33 +590,32 @@ user can agree and move on.
 ### Communication between teammates (agents)
 
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
-  teammates.
+  teammates. Pass a string, not JSON.
 - **Reply via `SendMessage`.** Turn output reaches only the harness, not other
   agents. Every reply to a teammate goes via `SendMessage`. A one-word reply
   (`done`, `confirmed`) still goes via `SendMessage`. The rule has no length
   gate.
 - **Address teammates by exact name.** Use `Ralph`, `Junio`, or `Ada` in the
   `to:` field. UUIDs won't reach the right inbox.
-- **Sign off with `From Grace.`** at the end of every message. When you expect a
-  reply, append `Reply via SendMessage.` to the signature line:
-  `From Grace. Reply via SendMessage.` Use a string, not JSON, inside
-  `SendMessage`.
+- **Ask for a reply explicitly.** When you expect one, close the message with
+  `Reply via SendMessage.` on its own line. A message sent for information only
+  closes without the line.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
 
-Grace-specific examples (sign-off only, content is yours):
+Grace-specific examples (closing line only, content is yours):
 
 ```text
 Task 3 committed at <sha>. Please run the coherence audit.
 
-From Grace. Reply via SendMessage.
+Reply via SendMessage.
 ```
 
 ```text
 PR open for the session branch. Please review and send back
 the Markdown.
 
-From Grace. Reply via SendMessage.
+Reply via SendMessage.
 ```
 
 #### Writing to teammates is prompt engineering
@@ -649,8 +648,7 @@ Write each task description with the goal and the criterion that selects the
 work. Examples illustrate the criterion. They are scaffold, not the work.
 
 The task description travels with the `TaskUpdate` assignment, so no separate
-dispatch message is needed. Task descriptions are not `SendMessage` bodies and
-don't take the `From Grace.` sign-off.
+dispatch message is needed.
 
 ### Task-tool reminders from Claude Code
 

@@ -80,9 +80,8 @@ the branch under review against its base.
 
 Assemble the Markdown review for Grace to post as a single PR comment, following
 the output format. Then **send it to Grace via `SendMessage`**. Only
-`SendMessage` reaches Grace, not turn output. Sign off `From Ada.` at the end of
-the message. Do not include the Claude Code footer. Grace adds GitHub-visible
-footer metadata when posting. Follow
+`SendMessage` reaches Grace, not turn output. Do not include the Claude Code
+footer. Grace adds GitHub-visible footer metadata when posting. Follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
 #### Output format
@@ -184,33 +183,15 @@ You never:
 - **Reply via `SendMessage`.** Turn output is not delivered to Grace. Only the
   harness sees it. Your review Markdown reaches Grace by being the body of a
   `SendMessage`. Every reply goes via `SendMessage`. You only talk to Grace.
+  Pass a string, not JSON.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the `to:` field. UUIDs
   won't reach the right inbox.
-- **Sign off with `From Ada.`** at the end of every message. Most of your
-  messages are terminal hand-offs. The review delivery is for Grace to post and
-  triage, not to reply to. Add `Reply via SendMessage.` to the signature only on
-  the rare occasion you genuinely want a reply yourself. Use a string, not JSON,
-  inside `SendMessage`.
+- **Ask for a reply explicitly.** Most of your messages are terminal hand-offs.
+  The review delivery is for Grace to post and triage, not to reply to. Close a
+  message with `Reply via SendMessage.` only on the rare occasion you genuinely
+  want a reply yourself.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
-
-Examples (sign-off only, content is yours):
-
-```text
-## Non-blocking
-1. ...
-
-From Ada.
-```
-
-```text
-Yes, confirmed.
-
-From Ada.
-```
-
-A retro answer or an ancillary finding carries the same sign-off on the same
-channel, never in turn output.
 
 ### Keep turn output quiet
 

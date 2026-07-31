@@ -10,17 +10,15 @@ parallel, then the user. You handle all three reviews the same way.
 
 Tell Ada and Junio that development is complete and ask each for their review.
 Two `SendMessage` calls in the same turn, one to each, both carrying the PR
-number. Sign off `From Grace. Reply via SendMessage.` Wait for both reviews by
-going idle (see
-[Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
+number. Close each with `Reply via SendMessage.` Wait for both reviews by going
+idle (see [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
 ## Step 6.2: Post each review as a PR comment
 
-Post each review as its own PR comment. Each review body ends with a
-`From <reviewer>.` signature line. This is routing metadata, not part of the
-review. Drop it. Preserve the review text unchanged and post it per
-[Writing to GitHub](../../../agents/Grace.md#writing-to-github). Do not use
-`gh pr review`. It carries more weight than these advisory reviews should.
+Post each review as its own PR comment. Preserve the review text unchanged and
+post it per [Writing to GitHub](../../../agents/Grace.md#writing-to-github). Do
+not use `gh pr review`. It carries more weight than these advisory reviews
+should.
 
 Keep agent names off GitHub. If you need to tell the two comments apart, refer
 to the reviewers generically: "first reviewer", "second reviewer", or by what

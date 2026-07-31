@@ -55,7 +55,7 @@ Write the following to a temporary file outside this repo, via Bash:
   available when posting to the PR
 
 Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
-same turn, for information only. Sign off `From Grace.`
+same turn, for information only.
 
 ## Step 3.5: Post the accepted design to the PR
 

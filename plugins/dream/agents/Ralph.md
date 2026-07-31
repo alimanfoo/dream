@@ -113,7 +113,7 @@ commit again. Repeat until the hook passes cleanly. Then push the branch.
 Send the report to Grace via `SendMessage`, including the commit SHA you just
 pushed. Turn output doesn't reach her. Only `SendMessage` does. You don't mark
 tasks complete yourself. Grace does that after reading your work. So your
-`SendMessage` also tells Grace the work is done. Sign off `From Ralph.`.
+`SendMessage` also tells Grace the work is done.
 
 Include in the body only what Grace can't see from the diff:
 
@@ -181,34 +181,27 @@ Co-Authored-By: Claude <claude@anthropic.com>
 ### Communication between teammates (agents)
 
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
-  teammates.
+  teammates. Pass a string, not JSON.
 - **Reply via `SendMessage`.** Only the harness sees your turn output, not
   Grace. Every reply to Grace goes via `SendMessage`. A one-word reply (`done`,
   `confirmed`) still goes via `SendMessage`. The rule has no length gate. You
   only talk to Grace.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the `to:` field. UUIDs
   won't reach the right inbox.
-- **Sign off with `From Ralph.`** at the end of every message. When you expect a
-  reply, append `Reply via SendMessage.` to the signature line:
-  `From Ralph. Reply via SendMessage.` A completion report doesn't invite a
-  reply. Use a string, not JSON, inside `SendMessage`.
+- **Ask for a reply explicitly.** When you expect one, close the message with
+  `Reply via SendMessage.` on its own line. A completion report doesn't invite a
+  reply, so it closes without the line.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
 
-Examples (sign-off only, content is yours):
-
-```text
-Task 1 done.
-
-From Ralph.
-```
+Example (closing line only, content is yours):
 
 ```text
 The brief says to rename <foo> but <bar> in the same module
 reads as a near-duplicate — should the rename cover both, or
 only <foo>?
 
-From Ralph. Reply via SendMessage.
+Reply via SendMessage.
 ```
 
 ### Keep turn output quiet
