@@ -75,3 +75,6 @@ Mark each surviving finding as a defect or an opportunity, so the caller can
 tell them apart. A defect is where the code fails to fit and needs fixing now.
 An opportunity is where the code fits, but a generalisation would leave it
 simpler, easier to maintain, or able to shed code.
+
+Return the surviving findings as turn output. Report only: apply no fixes. If
+you have nothing to report, say so and return.
