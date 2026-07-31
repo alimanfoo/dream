@@ -55,9 +55,7 @@ Mark a span `CONFIRMED` when the rule's own words bear the case out. Mark it
 `REFUTED` when they don't, even when you would have worded the span differently.
 
 Write `No candidates` under a rule you have no finding for, and move to the next
-rule. Don't reach for it to duck a judgement. The judgement rules yield findings
-like any other, so "every sentence must earn its place" is as citable as "skip
-the Latin".
+rule.
 
 ## Return only confirmed findings
 
