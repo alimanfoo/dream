@@ -81,8 +81,8 @@ repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
 me=$(gh api user --jq .login 2>/dev/null) \
   || die "cannot read the authenticated GitHub account"
 
-dir=$(make_skill_state_dir watcher "$repo") || exit 2
-watermark_file="$dir/pr${pr}"
+make_skill_state_dir watcher "$repo"
+watermark_file="$skill_state_dir/pr${pr}"
 
 cutoff=$(cat "$watermark_file" 2>/dev/null)
 

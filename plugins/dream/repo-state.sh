@@ -33,13 +33,18 @@ require_repo_name() {
     || die "gh reported the repository as '$1', which is not the owner/name a path can be built from"
 }
 
-# Print the directory the named skill keeps this repository's state in, having
-# checked the name and made the directory. So a caller cannot hold a path here
-# that skipped the check, and cannot find the directory missing when it writes.
+# Set `skill_state_dir` to the directory the named skill keeps this repository's
+# state in, having checked the name and made the directory. So a caller cannot
+# hold a state path that skipped the check, and cannot find the directory
+# missing when it writes.
 #
-# Call it as `dir=$(make_skill_state_dir <skill> <repo>) || exit 2`. A failure
-# dies inside the command substitution, which ends the subshell and not the
-# script, so the status is what stops the caller. The message is already out.
+# It sets a variable rather than printing one, so a failure here ends the
+# calling script. Reading a printed path through a command substitution would
+# put `die`'s exit in a subshell, and the caller would carry on with an empty
+# path.
+#
+# The variable has the one name, rather than one the caller passes in, so
+# nothing has to be read back through the name of a name.
 #
 # The state sits under $HOME, so it survives between runs in separate processes
 # and is never committed to the repository being worked on. The repository name
@@ -48,7 +53,6 @@ require_repo_name() {
 # shared key.
 make_skill_state_dir() {
   require_repo_name "$2"
-  local dir="$HOME/.dream/$1/$2"
-  mkdir -p "$dir" || die "cannot create the state directory $dir"
-  printf '%s' "$dir"
+  skill_state_dir="$HOME/.dream/$1/$2"
+  mkdir -p "$skill_state_dir" || die "cannot create the state directory $skill_state_dir"
 }

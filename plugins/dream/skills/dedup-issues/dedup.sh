@@ -126,9 +126,9 @@ done
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
 
-state_dir=$(make_skill_state_dir dedup-issues "$repo") || exit 2
-record_file="$state_dir/record"
-bodies_dir="$state_dir/bodies"
+make_skill_state_dir dedup-issues "$repo"
+record_file="$skill_state_dir/record"
+bodies_dir="$skill_state_dir/bodies"
 
 if [ "$subcommand" = mark-checked ]; then
   printf '%s' "$number" > "$record_file" || die "cannot write the record file $record_file"
