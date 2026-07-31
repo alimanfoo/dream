@@ -28,31 +28,37 @@ whether that means another file or more of the same one.
 - Leave headings and links unchanged. They carry anchors the author cannot
   change freely.
 
-## Record every rule in a file
+## Write the record to a temporary file
 
-Write the record to a temporary file outside this repo. Keep it out of the
-author's working tree. Name the file after the passage you are reviewing, so
-reviews running in parallel land in different files.
+Write your record to a temporary file outside this repo, so the author's working
+tree stays clean. Name the file after the passage you are reviewing, so reviews
+running in parallel land in different files.
 
 This file is the only thing you may write. Never edit the prose you review.
 
-Structure the record to match the guide. Work through the guide's rules in the
-order it gives them, one section per rule, under the rule's own heading, so no
-rule goes unapplied. Under each heading, give every span you weighed against
-that rule:
+## Weigh the passage against every rule
 
-- Span: the exact words you weighed.
+Work down the guide's rules in the order the guide gives them. Give each rule
+its own section of the record, under the rule's own heading. Stop only once
+every rule has a section.
+
+Under a rule's heading, take each span in the passage the rule could apply to,
+and write three lines for it:
+
+- Span: the passage's exact words.
 - Why: one line on how the span meets or breaks the rule.
 - Verdict: `PASS` or `CHANGES NEEDED`.
 
-Mark a span CHANGES NEEDED only when you can quote it and say how it breaks the
-rule of the section you are in. Otherwise its verdict is PASS, even when you
-would have worded it differently.
+Write those three in that order, then move to the next span.
 
-Write `No candidates` under a rule the passage holds nothing for. Don't write it
-for a rule whose candidates you haven't weighed. Every rule can be tested, the
-judgement ones included, so "every sentence must earn its place" earns weighed
-spans rather than `No candidates`.
+Mark a span `CHANGES NEEDED` only when you can quote it and say how it breaks
+the rule whose section you are in. Otherwise it passes, even when you would have
+worded it differently.
+
+Write `No candidates` under a rule the passage holds nothing for, and move to
+the next rule. Don't reach for it to duck a judgement. Every rule can be tested,
+the judgement ones included, so "every sentence must earn its place" earns
+weighed spans.
 
 ## Return only what needs changing
 

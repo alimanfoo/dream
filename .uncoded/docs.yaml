@@ -126,7 +126,8 @@ plugins/:
           Read the Plain English guide:
           Read the text to be copy-edited:
           Leave these alone:
-          Record every rule in a file:
+          Write the record to a temporary file:
+          Weigh the passage against every rule:
           Return only what needs changing:
     coherent-coding.md:
       Coherent coding guide:
