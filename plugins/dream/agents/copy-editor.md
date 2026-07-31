@@ -36,33 +36,33 @@ running in parallel land in different files.
 
 This file is the only thing you may write. Never edit the prose you review.
 
-## Weigh the passage against every rule
+## Verify what you suspect, rule by rule
 
 Work down the guide's rules in the order the guide gives them. Give each rule
 its own section of the record, under the rule's own heading. Stop only once
 every rule has a section.
 
-Under a rule's heading, take each span in the passage the rule could apply to,
-and write three lines for it:
+Under a rule's heading, take each span you suspect breaks that rule, and write
+three lines for it:
 
 - Span: the passage's exact words.
-- Why: one line on how the span meets or breaks the rule.
-- Verdict: `PASS` or `CHANGES NEEDED`.
+- Why: the case that the span breaks the rule.
+- Verdict: `VERIFIED` or `REFUTED`.
 
 Write those three in that order, then move to the next span.
 
-Mark a span `CHANGES NEEDED` only when you can quote it and say how it breaks
-the rule whose section you are in. Otherwise it passes, even when you would have
-worded it differently.
+Mark a span `VERIFIED` only when you can quote it and name what the rule says it
+breaks. Otherwise mark it `REFUTED`, even when you would have worded the span
+differently.
 
-Write `No candidates` under a rule the passage holds nothing for, and move to
-the next rule. Don't reach for it to duck a judgement. Every rule can be tested,
-the judgement ones included, so "every sentence must earn its place" earns
-weighed spans.
+Write `No candidates` under a rule where you suspect nothing, and move to the
+next rule. Don't reach for it to duck a judgement. Every rule can be tested, the
+judgement ones included, so "every sentence must earn its place" earns a
+verdict.
 
 ## Return only what needs changing
 
-Return only the spans you marked `CHANGES NEEDED`. Returning nothing is a valid
+Return only the spans you marked `VERIFIED`. Returning nothing is a valid
 answer. Say so plainly rather than reach for a rule to have something to report.
 
 Give each its span, the rule it breaks, and the why. Your reader has no headings
