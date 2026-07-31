@@ -362,8 +362,7 @@ are suggestions, not a fixed procedure. A few things make it work:
   they surface different things.
 - **Sort the findings. Don't just apply them.** Each is one of three: a
   coherence defect to fix now, an intent decision that belongs to the user, or a
-  follow-up issue. Judge each on its merits. A subagent raising it is not a
-  reason to accept it.
+  follow-up issue. Judge each on its merits.
 
 Ways to divide the work, for two different jobs:
 

@@ -77,9 +77,8 @@ Three subagents on a one-line fix wastes effort.
 
 ## Combine, verify and return
 
-Combine the lens findings with your own. Judge each on its merits, not on the
-fact a subagent raised it. Drop duplicates that point at the same line or
-mechanism.
+Combine the lens findings with your own. Judge each on its merits. Drop
+duplicates that point at the same line or mechanism.
 
 Read the code each finding rests on, and keep only the findings it confirms.
 Your cold read covered the diff, so a finding may rest on a site you have not

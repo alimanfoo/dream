@@ -62,7 +62,7 @@ a path relative to its own prompt file.
 ## Combine, verify and return
 
 Combine their findings into one list, dropping duplicates. Judge each on its
-merits, not on the fact a subagent raised it.
+merits.
 
 Read the code each finding cites, and keep only the findings it confirms. A lens
 reports what its one question surfaced, so a false positive reaches you looking
