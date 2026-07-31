@@ -12,8 +12,7 @@ handle all three reviews the same way.
 Ask Ralph to run the `/dream:copy-edit` skill over the whole branch, and to
 commit and push what it changes. One `SendMessage`, closed with
 `Reply via SendMessage.` Wait for his report by going idle (see
-[Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)). Ada and
-Junio then read final prose.
+[Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
 Triage nothing from this. Ralph is the author, so he resolves the findings
 himself.
