@@ -4,6 +4,7 @@ description:
   Reviews a diff through a single review lens named in its briefing, and reports
   the findings.
 model: sonnet
+effort: medium
 tools: Read, Grep, Glob, Bash
 ---
 
