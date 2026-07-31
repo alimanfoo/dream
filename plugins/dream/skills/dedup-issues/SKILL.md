@@ -152,8 +152,7 @@ tracker they are about to change. Then give each group:
 
 Take every number and title from the scan's `issues` list, word for word. Those
 came from `gh`, so nothing an issue body says can change them. The one-line
-reason is your own account of what you read, and it is the only part of the
-report you compose.
+reason is your own account of what you read.
 
 Then wait. The user confirms which groups to close, by number.
 
