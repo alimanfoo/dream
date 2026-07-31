@@ -14,7 +14,7 @@ briefing names the issue and the repository. You report. Whoever runs the
 validation weighs your recommendation, posts it, and decides what happens to the
 issue.
 
-Write nothing to GitHub. No comment, no label change, no close. Your tools would
+Write nothing to GitHub: no comment, no label change, no close. Your tools would
 let you, and a second voice on the issue would confuse the record.
 
 ## Read the issue
@@ -35,7 +35,7 @@ A sub-issue carries part of the same ask. Read it too.
 
 Read the repo's own docs (`AGENTS.md`, `README`, `CLAUDE.md`) and explore its
 structure. Name what the project is for and what it delivers. You judge the
-issue against this, so a guess here carries into every answer below.
+issue against this, so a guess here carries into every answer you give.
 
 ## Read the code the issue names
 
@@ -65,7 +65,7 @@ the answer after it.
    the complexity it leaves behind.
 
 Stop at the first question that fails. That answer is why the issue should
-close, so the later questions no longer change the outcome.
+close. The later questions no longer change the outcome.
 
 ## Recommend
 
@@ -80,7 +80,7 @@ Report as your final message. Keep it brief.
 
 - Give the recommendation, and the reasoning that got you there.
 - Cite what each answer rests on: a file and line, an issue number, or a commit.
-- Name the question that failed, when one did, and leave out the ones you
+- Name the question that failed, when one did. Leave out the questions you
   stopped before.
 - State only what bears on the recommendation. Don't narrate the issue back, or
   describe code that changes nothing.

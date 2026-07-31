@@ -25,11 +25,12 @@ one, use "validate".
 
 ## Resolve the label
 
-Run `gh label list --search "<name>"` and take the label whose name is the one
-you were given, or the one it decorates. A label often carries an emoji, and the
-issue filter matches the whole name, so the bare name returns an empty list
-rather than an error. Stop and tell the user when the search finds nothing, or
-more than one candidate. Use the resolved name from here on.
+Run `gh label list --search "<name>"`. Take the label whose name is the one you
+were given, or that name with an emoji added. Repos often decorate a label that
+way. The issue filter matches the whole name. So the bare name matches no issue,
+and `gh` returns an empty list rather than an error. Stop and tell the user when
+the search finds nothing, or more than one candidate. Use the resolved name from
+here on.
 
 ## List the issues
 
@@ -58,7 +59,7 @@ before you act on it. A subagent reports what its own read surfaced, so a
 recommendation built on a misread reaches you looking like any other one. This
 matters most for a close, which drops work the user thought was wanted.
 
-Correct any recommendation the evidence doesn't hold up, and make the call
+Correct any recommendation the evidence doesn't hold up. Decide that one
 yourself.
 
 ## Draft the comments
