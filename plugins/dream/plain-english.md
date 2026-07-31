@@ -43,20 +43,18 @@ not need. These shapes recur, and do not bound the rule:
 
 ## Strict narrative order
 
-Write so the reader can follow top to bottom. Each point should make sense from
-what came before it. Otherwise, a reader who meets something referenced before
-it is explained must look ahead or guess.
+Write instructions in the order the reader must follow them. For example: "Knead
+the dough, then put it in the oven.", not "Put the dough in the oven, but make
+sure you knead it first." Other content may come between instructions, but they
+must still follow strict narrative order.
 
-- Introduce a concept or term before you use it.
+The same holds beyond instructions. A reader who meets a point before the one it
+rests on must look ahead or guess.
+
+- When one point depends on another, put the other first.
 - Do not refer forward. Phrases like "as described below" and "see the next
   section" are forward references. Markdown links to later sections are also
   forward references.
-- When one point depends on another, put the other first.
-
-When the reader must follow instructions in sequence, write them in order. For
-example: "Knead the dough, then put it in the oven.", not "Put the dough in the
-oven, but make sure you knead it first." Other content may come between
-instructions, but they must still follow strict narrative order.
 
 ## Reason forward
 
@@ -96,7 +94,6 @@ not "The file is read by the parser before validation."
 ## Writing lists
 
 - Put steps in a vertical list, not a run-on sentence.
-- Keep one voice across a list. Do not switch part way.
 - Leave a blank line before and after a list. Without it, markdown formatters
   absorb any text that follows directly into the last bullet.
 
@@ -142,12 +139,8 @@ Lead with what to do. Add what not to do only to support it.
 
 ## Use a small vocabulary
 
-Use a small, consistent vocabulary. One word per meaning, one meaning per word.
-Do not swap in a synonym for variety.
-
-## Name the list, not an umbrella term
-
-Do not invent an umbrella term when you have already named the list.
+Use a small, consistent vocabulary. One word per meaning, one meaning per word,
+within each piece of text you write. Do not swap in a synonym for variety.
 
 ## Leave the count out of a list
 
@@ -156,7 +149,8 @@ when either changes. For example: write "the sources", not "the three sources".
 
 ## Prefer the common word
 
-Prefer the common word. No jargon. No idioms. For example:
+Prefer the common word. No jargon. No idioms. Don't invent a term when plain
+words already say it. For example:
 
 - "X owns the schema", not "X is the operational source of truth"
 - "might go out of sync", not "has drift potential"
@@ -165,26 +159,9 @@ Prefer the common word. No jargon. No idioms. For example:
 - "essential", not "load-bearing"
 - "the API", not "the surface area"
 
-## Name the concrete action on the code
-
-Name the concrete action on the code. "Touch" and "untouched" hide what the work
-actually does and carry the wrong connotations. Say what changes and what stays.
-For example:
-
-- "the paths the work will change", not "the paths the work touches"
-- "before working on that code", not "before touching that code"
-
 ## Use verbs, not noun forms
 
 Use verbs, not noun forms of verbs. Write "decide", not "make a decision".
-
-## Keep the small words
-
-Keep the small words. Do not drop "the", "a", or "that" to sound terse.
-
-## Spell out an abbreviation
-
-Spell out an abbreviation the first time you use it.
 
 ## Skip the Latin
 

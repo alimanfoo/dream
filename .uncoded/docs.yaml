@@ -125,10 +125,10 @@ plugins/:
         Copy editor:
           Read the Plain English guide:
           Read the text to be copy-edited:
-          Cite a rule or pass:
           Leave these alone:
-          Record every finding in a file:
-          Return only what needs changing:
+          Write the record to a temporary file:
+          Write your findings, rule by rule:
+          Return only confirmed findings:
     coherent-coding.md:
       Coherent coding guide:
         Golden rule:
@@ -164,13 +164,9 @@ plugins/:
         One reading per sentence:
         Giving instructions:
         Use a small vocabulary:
-        Name the list, not an umbrella term:
         Leave the count out of a list:
         Prefer the common word:
-        Name the concrete action on the code:
         Use verbs, not noun forms:
-        Keep the small words:
-        Spell out an abbreviation:
         Skip the Latin:
         Skip the flourish:
         Text for GitHub:
