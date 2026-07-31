@@ -125,10 +125,9 @@ are the templates.
 
 The README lists the utility skills a user can run on their own. That list is
 their one home, so add a new skill of this kind there. `coherence-review` is one
-such skill. The requirements, design, and plan review lenses are not standalone
-skills. The `requirements-analysis`, `design`, and `plan` skills launch the
-requirements, design, and plan lenses inline as review subagents. So they run
-only as a review step within a session.
+such skill. A review lens is not a skill. `code-review` and `coherence-review`
+launch their lenses as review subagents, so a lens runs only as a step within a
+skill.
 
 A skill that fans review lenses out to subagents must check and verify their
 findings against the code before it returns them. `code-review` and
