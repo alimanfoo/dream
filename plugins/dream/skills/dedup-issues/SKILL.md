@@ -64,8 +64,8 @@ Run `dedup.sh scan`, passing the `since` argument when the user gave one.
 record. It is what the user needs when the record falls short: a maintainer on a
 second machine, a deliberate re-check, or a reopened issue. An issue closed
 during one run and reopened later sits below the record, so it never becomes a
-target again. An issue edited after it was checked sits below it in the same
-way. `since` is the only way to have either looked at again.
+target again. An issue edited after it was checked sits below the record in the
+same way. `since` is the only way to have either looked at again.
 
 Tell the user what `since` costs them when they pass it. The record can end up
 older than the work just done, and the next run without `since` then re-checks
@@ -77,7 +77,7 @@ so a run started at 700 on a tracker whose record is 300 has checked nothing
 between the two.
 
 When `startAfter` is null there is no record yet, so tell the user the run
-checks every open issue. Don't repeat the word null to them.
+checks every open issue.
 
 When `targets` is empty, nothing is new. Say so, launch nothing, and end the run
 per [How every run ends](#how-every-run-ends).
