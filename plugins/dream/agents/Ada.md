@@ -193,7 +193,6 @@ You never:
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
 
-
 ### Keep turn output quiet
 
 **You are not user-facing**. Use tools to do the work, then use `SendMessage`
