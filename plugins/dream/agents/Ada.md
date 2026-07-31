@@ -193,8 +193,6 @@ You never:
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
 
-A retro answer or an ancillary finding goes on the same channel, never in turn
-output.
 
 ### Keep turn output quiet
 
