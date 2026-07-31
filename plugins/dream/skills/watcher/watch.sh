@@ -18,11 +18,14 @@
 # separate baseline or init step.
 #
 # The watermark file sits in this skill's state directory, which repo-state.sh
-# chooses, so it survives the days a slow reviewer may take, across many cron
-# firings in separate processes. It is keyed by pull request, so two worktree
-# sessions on the same repository never collide. The script emits its path as
-# `watermarkFile`, so the caller can delete it at teardown without re-deriving
-# the key.
+# chooses. Each firing is a separate process, so the file is what carries the
+# watch's place from one firing to the next, however many days a review takes.
+#
+# It is keyed by pull request, so two worktree sessions on the same repository
+# never collide.
+#
+# The script emits its path as `watermarkFile`, so the caller can delete it at
+# teardown without re-deriving the key.
 #
 # The "user only" filter is mechanical. The session and the user post through
 # the same GitHub account, so the filter keeps both halves:
@@ -51,8 +54,8 @@ set -uo pipefail
 
 die() { printf 'dream:watcher: %s\n' "$*" >&2; exit 2; }
 
-# The state directory rules this skill shares with the other skills that keep
-# per-repository state, found from this script's own location so the working
+# repo-state.sh holds the rules this skill shares with the others keeping state
+# for one repository. Find it from this script's own location, so the working
 # directory does not matter.
 # shellcheck source-path=SCRIPTDIR
 # shellcheck source=../../repo-state.sh

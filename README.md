@@ -5,13 +5,13 @@ coherent, with minimal human input.
 
 `/dream:team` runs a multi-agent team on a task. `/dream:solo` runs a single
 agent on a smaller task. `/dream:less` runs a cut-back single agent on a very
-small one. Neither needs the agent teams feature. `/dream:catcher` runs any of
-them unattended across a repository's labelled issues. Utility skills you can
-run on their own ship alongside: `/dream:plain-english`,
-`/dream:coherent-coding`, `/dream:copy-edit`, `/dream:code-analysis`,
-`/dream:requirements-analysis`, `/dream:design`, `/dream:plan`,
-`/dream:coherence-review`, `/dream:code-review`, `/dream:watcher`, and
-`/dream:dedup-issues`.
+small one. `/dream:solo` and `/dream:less` need no agent teams feature.
+`/dream:catcher` runs any of them unattended across a repository's labelled
+issues. Utility skills you can run on their own ship alongside:
+`/dream:plain-english`, `/dream:coherent-coding`, `/dream:copy-edit`,
+`/dream:code-analysis`, `/dream:requirements-analysis`, `/dream:design`,
+`/dream:plan`, `/dream:coherence-review`, `/dream:code-review`,
+`/dream:watcher`, and `/dream:dedup-issues`.
 
 ## Prerequisites
 
@@ -163,17 +163,22 @@ runs a single tick.
 ## Finding duplicate issues with /dream:dedup-issues
 
 Run `/dream:dedup-issues` in a checkout of the repository you want scanned. It
-reads the open issues, works out which of them duplicate which, and reports them
-as groups: the issue it suggests keeping, the ones it would close, and a line of
-reasoning for each.
+then:
+
+- reads the open issues
+- works out which of them duplicate which
+- reports them as groups, each naming the issue it suggests keeping, the ones it
+  would close, and a line of reasoning for each
 
 It closes only the groups you confirm, and nothing else. It posts no comments.
 GitHub records each closure as a duplicate of the issue kept, so the link stays
 visible on the tracker.
 
 A duplicate here includes one issue being wider than another, not only two
-issues asking for the same thing. A later run checks the issues filed since the
-last one, so running it again over an unchanged tracker does close to no work.
+issues asking for the same thing.
+
+A later run checks the issues filed since the last one, so running it again over
+an unchanged tracker does close to no work.
 
 ## /dream:team advanced usage
 

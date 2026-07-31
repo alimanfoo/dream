@@ -2,17 +2,17 @@
 #
 # Where a dream skill keeps state for one repository.
 #
-# Two skill scripts keep per-repository state: `watch.sh` a watermark per pull
-# request, and `dedup.sh` a record and a directory of issue bodies. They agree
-# on where that state goes and on what a repository name may look like before it
-# becomes part of the path, so those two facts live here rather than in each
-# script. A third script that keeps per-repository state sources this too.
+# The skill scripts that keep state for one repository hold this between them:
+# `watch.sh` a watermark per pull request, and `dedup.sh` a record and a
+# directory of issue bodies. They agree on where that state goes, and on what a
+# repository name may look like before it becomes part of the path, so those two
+# facts live here rather than in each script. Any further script that keeps such
+# state sources this too.
 #
 # Nothing else the scripts repeat belongs here. Their `die` prefix, their tool
-# preflight and their repository-resolution message are each their own, and
-# that message has already drifted between them, which is what being each
-# script's own looks like. Gathering those here would tie together things meant
-# to differ.
+# preflight and their repository-resolution message are each their own, and that
+# message has already drifted between them. Gathering those here would tie
+# together things meant to differ.
 #
 # Failures report through `die`, so the message carries the calling skill's own
 # prefix. That is why this file has to be sourced after `die` is defined, and
@@ -47,10 +47,11 @@ require_repo_name() {
 # nothing has to be read back through the name of a name.
 #
 # The state sits under $HOME, so it survives between runs in separate processes
-# and is never committed to the repository being worked on. The repository name
-# stays two real path segments, rather than being flattened, so two repositories
-# never collide: acme-corp/api and acme/corp-api are distinct paths, not one
-# shared key.
+# and is never committed to the repository being worked on.
+#
+# The repository name stays two real path segments, rather than being flattened,
+# so two repositories never collide: acme-corp/api and acme/corp-api are
+# distinct paths, not one shared key.
 set_skill_state_dir() {
   require_repo_name "$2"
   skill_state_dir="$HOME/.dream/$1/$2"

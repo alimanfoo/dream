@@ -17,20 +17,20 @@ a file holding its body. You report. Whoever runs the scan weighs and acts on
 what you return.
 
 Consider only the issues numbered below your target, which are the ones filed
-before it. Something else checks the issues above it, so each pair gets looked
-at once.
+before it. Something else checks the issues above it, so only one check looks at
+each pair.
 
 ## What counts as a duplicate
 
 Two issues are duplicates when doing one leaves nothing worth doing in the
-other. That happens two ways, and they are different findings:
+other. That happens in these ways, and your verdict differs by which:
 
 - One is wider than the other, so doing the wider one delivers the narrower one
   too.
 - Neither is wider. Each asks for the same thing, whatever words it uses.
 
-Which of the two it is decides which issue gets closed. So your verdict says
-which, and it never carries a direction the pair does not have.
+Which of them it is decides which issue gets closed. So say which. Never carry a
+direction the pair does not have.
 
 ## Shortlist from the titles
 

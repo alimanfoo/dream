@@ -2,28 +2,29 @@
 #
 # dream:dedup-issues: the bookkeeping for a duplicate-issue scan.
 #
-# Three subcommands. `scan` fetches the open issues and prints the facts a scan
+# The subcommands. `scan` fetches the open issues and prints the facts a scan
 # needs, as one JSON object. `mark-checked` records how far the scan got.
-# `discard-bodies` throws away the issue text the scan fetched. Whether two
-# issues are duplicates is a reading of their meaning, so the caller decides
-# that. This script fetches the bodies and never judges them.
+# `discard-bodies` throws away the issue text the scan fetched.
+#
+# Deciding whether two issues are duplicates means reading what they mean, so
+# the caller does that. This script fetches the bodies and never judges them.
 #
 # Issue numbers only ever increase, so "every open issue up to N has been
 # checked against the issues below it" is a single number. That number is the
 # whole record, so a second run over an unchanged tracker has nothing to check.
 #
-# One case that invariant does not cover: an issue closed during one run and
-# reopened later sits below the record, so it never becomes a target again, and
-# every comparison it takes part in is against a higher-numbered issue. `since`
-# is how a maintainer re-checks it.
+# One case that does not cover: an issue closed during one run and reopened
+# later sits below the record. It never becomes a target again, and every
+# comparison it takes part in is against a higher-numbered issue. `since` is how
+# a maintainer re-checks it.
 #
 # The number sits in a named file in this skill's state directory, which
-# repo-state.sh chooses, so the bodies directory beside it is a separate thing
-# and neither can be read as the other.
+# repo-state.sh chooses. The bodies directory sits beside it under its own name,
+# so neither can be read as the other.
 #
 # A missing file reads as no record, and the run then checks every open issue.
-# So there is no setup step, and a lost record costs a full re-scan rather than
-# a wrong answer.
+# So there is no setup step. A lost record costs a full re-scan rather than a
+# wrong answer.
 #
 # The record is advisory. The optional `since` argument replaces it, which
 # covers a maintainer on a second machine and a deliberate re-check.
@@ -40,11 +41,14 @@
 # judgement needs.
 #
 # Fetching the bodies costs nothing extra, because they come back in the same
-# `gh` call as the titles. The script writes each to its own file, so the caller
-# can hand a path to an agent that holds no tool for reaching the tracker.
-# `scan` empties the bodies directory before it writes any, so it holds exactly
-# what this run fetched, and no stale file from an earlier run can be read by
-# mistake.
+# `gh` call as the titles.
+#
+# The script writes each body to its own file, so the caller can hand a path to
+# an agent that holds no tool for reaching the tracker.
+#
+# `scan` empties the bodies directory before it writes any. So the directory
+# holds exactly what this run fetched, and no stale file from an earlier run can
+# be read by mistake.
 #
 # A body's only reader is a check on a target, so a scan with no targets writes
 # no bodies at all. A run over an unchanged tracker then costs one `gh` call and
@@ -75,13 +79,19 @@ Usage:
   dedup.sh --help
 
   scan            Fetch the open issues and print what a scan needs, as one JSON
-                  object: repo, startAfter (the number the scan starts above,
-                  from the record or from <since>), issues (every open issue as
-                  number and title, in ascending order), and targets (the issue
-                  numbers above startAfter). With at least one target it also
-                  writes every body to a file and gives each issue a bodyFile
-                  path. With none it writes no body and leaves bodyFile out,
-                  since a body's only reader is a check on a target.
+                  object with these fields:
+
+                    repo        the repository, as owner/name
+                    startAfter  the number the scan starts above, from the
+                                record or from <since>
+                    issues      every open issue as number and title, in
+                                ascending order
+                    targets     the issue numbers above startAfter
+
+                  With at least one target it also writes every body to a file
+                  and gives each issue a bodyFile path. With none it writes no
+                  body and leaves bodyFile out, since a body's only reader is a
+                  check on a target.
   --limit         Most open issues to scan. A tracker holding more than this is
                   an error, not a partial scan. Default: $default_limit.
   <since>         Issue number to use in place of the record, so the targets are
@@ -105,8 +115,8 @@ die() { printf 'dream:dedup-issues: %s\n' "$*" >&2; exit 2; }
 # that start at one.
 require_positive_int() { [[ "$2" =~ ^[1-9][0-9]*$ ]] || die "$1 must be a positive whole number, got '$2'"; }
 
-# The state directory rules this skill shares with the other skills that keep
-# per-repository state, found from this script's own location so the working
+# repo-state.sh holds the rules this skill shares with the others keeping state
+# for one repository. Find it from this script's own location, so the working
 # directory does not matter.
 # shellcheck source-path=SCRIPTDIR
 # shellcheck source=../../repo-state.sh
@@ -197,9 +207,9 @@ case "$subcommand" in
       # `die` uses, and a caller meeting this there would read it as a failure.
       #
       # It names no value from the record. A caller told that value knows the
-      # one `--from` that would let the write through, and passing it would move
-      # the record past issues nothing checked, which is what this refusal
-      # exists to stop. A person can read the file.
+      # one `--from` that would let the write through. Passing it would move the
+      # record past issues nothing checked, which is what this refusal exists to
+      # stop. A person who needs the value can read the file.
       printf 'dream:dedup-issues: nothing to do. This run did not continue from the record, so the record is unchanged. A run started with a since value ends this way.\n'
     fi
     ;;
@@ -228,15 +238,15 @@ start_after=$(cat "$record_file" 2>/dev/null)
 if [ -n "$since" ]; then
   start_after=$since
 elif [ -n "$start_after" ]; then
-  # mark-checked is the only writer, so a value that is not a number means the
-  # file was edited by hand. Name the file now, rather than failing later with a
-  # jq parse error that hides where the bad value came from.
+  # mark-checked is the only writer, so a value that is not a number means
+  # someone edited the file by hand. Name the file now, rather than failing with
+  # later a jq parse error that hides where the bad value came from.
   require_positive_int "the record in $record_file" "$start_after"
 fi
 
-# From here the value is JSON, a number or null, and both jq calls below take
-# this one value, so the boundary the targets are worked out from is the one the
-# scan reports. With no record and no `since` it is null, which sorts below
+# From here the value is JSON, a number or null, and both jq calls take this one
+# value, so the boundary the targets are worked out from is the one the scan
+# reports. With no record and no `since` it is null, which sorts below
 # every number, so the one comparison makes every open issue a target on a first
 # run.
 [ -n "$start_after" ] || start_after=null
@@ -253,7 +263,7 @@ count=$(printf '%s' "$raw" | jq 'length') || die "cannot count the open issues"
 
 # One compact JSON object per issue, in ascending number order, each carrying
 # the path its body belongs at. This expression is the one home for that path:
-# the loop below writes to the path it finds here, and the output repeats it, so
+# the loop writes to the path it finds here, and the output repeats it, so
 # nothing derives the path from a naming scheme of its own.
 #
 # The lines are built before the loop reads them, so a failure to build them
@@ -269,9 +279,9 @@ issues=$(printf '%s' "$raw" | jq -c --arg bodies_dir "$bodies_dir" '
   | sort_by(.number)[]
 ') || die "cannot read the open issues in $repo"
 
-# The targets, worked out once here and printed further down, so the rule that
-# an issue above startAfter is a target has one home. An empty tracker slurps to
-# an empty array, the same as a tracker with nothing new.
+# Work out the targets once here, so the rule that an issue above startAfter is
+# a target has one home. The output prints them as they stand. An empty tracker
+# slurps to an empty array, the same as a tracker with nothing new.
 targets=$(printf '%s' "$issues" | jq -s -c --argjson start_after "$start_after" \
   '[.[] | select(.number > $start_after) | .number]') \
   || die "cannot work out which issues to check"
@@ -281,9 +291,9 @@ targets=$(printf '%s' "$issues" | jq -s -c --argjson start_after "$start_after" 
 # when the fetch fails, rather than emptying the directory for nothing.
 rm -rf "$bodies_dir" || die "cannot clear the bodies directory $bodies_dir"
 
-# Whether this scan has bodies on disk, decided once. The writing below and the
-# output after it both follow this one value, so neither can come to disagree
-# about whether a bodyFile names a file that is there.
+# Whether this scan has bodies on disk, decided once. The writing and the output
+# both follow this one value, so neither can come to disagree about whether a
+# bodyFile names a file that is there.
 #
 # `jq -c` prints an empty array as exactly `[]`, so the test is on the whole
 # value.
@@ -303,9 +313,9 @@ if $wrote_bodies; then
   done <<< "$issues"
 fi
 
-# Each issue carries a bodyFile only when the bodies were written. A path naming
-# a file that is not there would read as usable and fail at the point of use,
-# where a missing field says plainly that this scan wrote no bodies.
+# Each issue carries a bodyFile only when this scan wrote the bodies. A path
+# naming a file that is not there would read as usable and fail at the point of
+# use, where a missing field says plainly that this scan wrote none.
 printf '%s' "$issues" | jq -s \
   --arg repo "$repo" \
   --argjson start_after "$start_after" \

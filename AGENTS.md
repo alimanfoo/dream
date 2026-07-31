@@ -103,9 +103,10 @@ So each standard has one home, shared by all of them.
 
 A shared shell file sits there too, for the same reason:
 [`repo-state.sh`](plugins/dream/repo-state.sh). A skill script that keeps state
-for one repository sources it, for where that state goes and for the check on
-the repository name the path is built from. `watch.sh` and `dedup.sh` both do. A
-further such script sources it rather than working either out again.
+for one repository sources it. It gives that script where the state goes, and
+the check it runs on the repository name before building a path from it.
+`watch.sh` and `dedup.sh` both source it, and any further script that keeps such
+state sources it too, rather than working those two things out again.
 
 Ways they get crossed:
 
@@ -402,8 +403,9 @@ The repo uses [`pre-commit`](https://pre-commit.com/) for lightweight checks:
   and cross-file anchor links resolve to real headings)
 - invisible characters such as non-breaking spaces, zero-width marks, and bidi
   controls (`scripts/check_invisible_chars.py`)
-- shell scripts (`shellcheck`, run with `-x` so a script is checked together
-  with the file it sources, whether or not the commit touches both)
+- shell scripts (`shellcheck`, run with `-x` so it follows a `source` directive
+  and checks a script together with the file it sources, whether or not the
+  commit touches both)
 - `claude plugin validate` on the plugin and marketplace manifests
 - YAML frontmatter validation on skill and agent files
 - the documentation index (`uncoded sync`, which regenerates
@@ -417,11 +419,14 @@ uvx pre-commit install
 ```
 
 Run all hooks once: `uvx pre-commit run --all-files`. The same hooks run in CI
-on every push and pull request (see `.github/workflows/lint.yml`). The
-`claude plugin validate` hook requires the Claude Code CLI on `PATH`. CI
-installs it via `npm`. The `uncoded` hook requires `uvx` on `PATH`. CI provides
-it via `astral-sh/setup-uv`. The `shellcheck` hook requires `shellcheck` on
-`PATH`. CI installs it via `apt`.
+on every push and pull request (see `.github/workflows/lint.yml`).
+
+These hooks need a tool on `PATH`, and CI supplies each:
+
+- `claude plugin validate` needs the Claude Code CLI, which CI installs via
+  `npm`.
+- `uncoded` needs `uvx`, which CI provides via `astral-sh/setup-uv`.
+- `shellcheck` needs `shellcheck`, which CI installs via `apt`.
 
 ## Release protocol
 
