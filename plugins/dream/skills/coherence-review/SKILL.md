@@ -62,7 +62,16 @@ a path relative to its own prompt file.
 
 ## Combine, verify and return
 
-Combine their findings into one list, dropping duplicates. Mark each as a defect
-or an opportunity, so the caller can tell them apart. A defect is where the code
-fails to fit and needs fixing now. An opportunity is where the code fits, but a
-generalisation would leave it simpler, easier to maintain, or able to shed code.
+Combine their findings into one list, dropping duplicates. Judge each on its
+merits, not on the fact a subagent raised it.
+
+Read the code each finding cites, and drop the findings that don't hold up. A
+lens reports what its one question surfaced, so a false positive reaches you
+looking like any other finding. Read every site a finding rests on, not only the
+one it cites: a missed instance of an edit claims its sibling sites, and a fact
+with two homes claims both.
+
+Mark each surviving finding as a defect or an opportunity, so the caller can
+tell them apart. A defect is where the code fails to fit and needs fixing now.
+An opportunity is where the code fits, but a generalisation would leave it
+simpler, easier to maintain, or able to shed code.
