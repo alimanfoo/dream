@@ -9,10 +9,12 @@
 # facts live here rather than in each script. Any further script that keeps such
 # state sources this too.
 #
-# Nothing else the scripts repeat belongs here. Their `die` prefix, their tool
-# preflight and their repository-resolution message are each their own, and that
-# message has already drifted between them. Gathering those here would tie
-# together things meant to differ.
+# Nothing else the plugin's shell scripts repeat belongs here. Their `die`
+# prefix, their tool preflight and their repository-resolution message are each
+# the script's own. `catch.sh` shows what that looks like: a prefix of its own,
+# five tools in its preflight rather than two, and a shorter resolution message.
+# It keeps no state for a repository, so it sources nothing from here. Gathering
+# those pieces here would tie together things meant to differ.
 #
 # Failures report through `die`, so the message carries the calling skill's own
 # prefix. That is why this file has to be sourced after `die` is defined, and
