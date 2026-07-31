@@ -1,13 +1,15 @@
 ---
 name: coherence-review
 description:
-  Review changed code across coherence lenses and return the combined findings.
+  Review changed code across coherence lenses and return the findings that hold
+  up against the code.
 argument-hint: "[target]"
 ---
 
 # Coherence review
 
-Review changed code across coherence lenses and return the combined findings.
+Review changed code across coherence lenses and return the findings that hold up
+against the code.
 
 ## Arguments
 

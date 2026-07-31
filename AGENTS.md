@@ -130,6 +130,12 @@ skills. The `requirements-analysis`, `design`, and `plan` skills launch the
 requirements, design, and plan lenses inline as review subagents. So they run
 only as a review step within a session.
 
+A skill that fans review lenses out to subagents must check their findings
+against the code before it returns them, and say so where it states what it
+returns. A lens reports what its one question surfaced, so a false positive
+comes back looking like any other finding. `code-review` and `coherence-review`
+both carry this step. Write it into a third such skill from the start.
+
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
 written there as a plain instruction to that agent. When such a rule lands in

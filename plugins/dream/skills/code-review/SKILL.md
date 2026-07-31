@@ -84,12 +84,14 @@ Combine the lens findings with your own. Judge each on its merits, not on the
 fact a subagent raised it. Drop duplicates that point at the same line or
 mechanism.
 
-Verify each finding that you intend to return against your own reading of the
-code.
+Check each finding against your cold read, and drop the ones that don't hold up.
+Then read any site a finding rests on that your cold read didn't reach. A
+same-edit finding rests on the sibling site it names, so read that site too
+before you return the finding.
 
-Return the combined and verified findings as turn output: a numbered list, most
-important first. Report only: apply no fixes. If you have nothing to report, say
-so and return.
+Return the surviving findings as turn output: a numbered list, most important
+first. Report only: apply no fixes. If you have nothing to report, say so and
+return.
 
 Each finding follows these rules:
 
