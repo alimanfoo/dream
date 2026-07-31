@@ -67,9 +67,11 @@ merits, not on the fact a subagent raised it.
 
 Read the code each finding cites, and drop the findings that don't hold up. A
 lens reports what its one question surfaced, so a false positive reaches you
-looking like any other finding. Read every site a finding rests on, not only the
-one it cites: a missed instance of an edit claims its sibling sites, and a fact
-with two homes claims both.
+looking like any other finding.
+
+A finding often rests on more than the site it cites, so read those other sites
+too. A missed instance of an edit rests on its sibling sites. A fact with two
+homes rests on both.
 
 Mark each surviving finding as a defect or an opportunity, so the caller can
 tell them apart. A defect is where the code fails to fit and needs fixing now.
