@@ -47,7 +47,9 @@ require_repo_name() {
 #
 # The variable has the one name, rather than one the caller passes in. A
 # caller's own name would arrive here as a string, and reading the value back
-# would mean expanding a variable whose name is itself held in a variable.
+# would mean expanding a variable whose name is itself held in a variable. And
+# because shellcheck cannot follow an assignment made that way, the pre-commit
+# hook fails every call site with SC2154 on the attempt.
 #
 # The state sits under $HOME, so it survives between runs in separate processes
 # and is never committed to the repository being worked on.
