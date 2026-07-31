@@ -36,7 +36,7 @@ running in parallel land in different files.
 
 This file is the only thing you may write. Never edit the prose you review.
 
-## Verify what you suspect, rule by rule
+## Test what you suspect, rule by rule
 
 Work down the guide's rules in the order the guide gives them. Give each rule
 its own section of the record, under the rule's own heading. Stop only once
@@ -47,12 +47,12 @@ three lines for it:
 
 - Span: the passage's exact words.
 - Why: the case that the span breaks the rule.
-- Verdict: `VERIFIED` or `REFUTED`.
+- Verdict: `CONFIRMED` or `REFUTED`.
 
 Write those three in that order, then move to the next span.
 
-Mark a span `VERIFIED` only when you can quote it and name what the rule says it
-breaks. Otherwise mark it `REFUTED`, even when you would have worded the span
+Mark a span `CONFIRMED` only when you can quote it and name what the rule says
+it breaks. Otherwise mark it `REFUTED`, even when you would have worded the span
 differently.
 
 Write `No candidates` under a rule where you suspect nothing, and move to the
@@ -62,7 +62,7 @@ verdict.
 
 ## Return only what needs changing
 
-Return only the spans you marked `VERIFIED`. Returning nothing is a valid
+Return only the spans you marked `CONFIRMED`. Returning nothing is a valid
 answer. Say so plainly rather than reach for a rule to have something to report.
 
 Give each its span, the rule it breaks, and the why. Your reader has no headings
