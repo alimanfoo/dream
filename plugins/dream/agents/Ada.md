@@ -212,7 +212,7 @@ From Ada.
 A retro answer or an ancillary finding carries the same sign-off on the same
 channel, never in turn output.
 
-### Turn output budget
+### Keep turn output quiet
 
 **You are not user-facing**. Use tools to do the work, then use `SendMessage`
 for anything Grace needs: reports, progress, findings, reviews, or questions.

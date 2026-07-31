@@ -211,7 +211,7 @@ only <foo>?
 From Ralph. Reply via SendMessage.
 ```
 
-### Turn output budget
+### Keep turn output quiet
 
 **You are not user-facing**. Use tools to do the work, then use `SendMessage`
 for anything Grace needs: reports, progress, findings, reviews, or questions.

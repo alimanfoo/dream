@@ -30,7 +30,7 @@ plugins/:
           Common rules:
             Hard rules:
             Communication between teammates (agents):
-            Turn output budget:
+            Keep turn output quiet:
       Grace.md:
         Grace:
           Boot sequence:
@@ -94,7 +94,7 @@ plugins/:
           Common rules:
             Hard rules:
             Communication between teammates (agents):
-            Turn output budget:
+            Keep turn output quiet:
       Ralph.md:
         Ralph:
           Boot sequence:
@@ -116,7 +116,7 @@ plugins/:
             Hard rules:
             Commits:
             Communication between teammates (agents):
-            Turn output budget:
+            Keep turn output quiet:
       code-review-lens.md:
         Code review lens:
           The lens:
