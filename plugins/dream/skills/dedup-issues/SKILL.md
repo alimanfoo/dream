@@ -39,6 +39,17 @@ run that found nothing new to check and stopped.
   were checked either way. With no targets there is no number to pass, so skip
   it.
 
+Don't run `mark-checked` at all when any target's check did not come back. A
+subagent failing is an ordinary event, and the highest number in `targets` would
+then record targets nothing checked, putting them out of reach for good. Leaving
+the record alone means the next run picks them up, which costs reading rather
+than correctness.
+
+The rest of the run stands. Report the groups you found and close what the user
+confirms, because a confirmed duplicate is confirmed whatever else failed. Tell
+the user a check did not come back and the run wants repeating, since running it
+again is their call.
+
 ## Scan the tracker
 
 Run `dedup.sh scan`, passing the `since` argument when the user gave one.
