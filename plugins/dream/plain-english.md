@@ -144,10 +144,6 @@ Lead with what to do. Add what not to do only to support it.
 Use a small, consistent vocabulary. One word per meaning, one meaning per word,
 within each piece of text you write. Do not swap in a synonym for variety.
 
-## Name the list, not an umbrella term
-
-Do not invent an umbrella term when you have already named the list.
-
 ## Leave the count out of a list
 
 Do not state a count of items you then list. The count and the list drift apart
@@ -155,7 +151,8 @@ when either changes. For example: write "the sources", not "the three sources".
 
 ## Prefer the common word
 
-Prefer the common word. No jargon. No idioms. For example:
+Prefer the common word. No jargon. No idioms. Don't invent a term when plain
+words already say it. For example:
 
 - "X owns the schema", not "X is the operational source of truth"
 - "might go out of sync", not "has drift potential"
