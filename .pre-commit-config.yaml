@@ -45,7 +45,10 @@ repos:
 
       - id: shellcheck
         name: shellcheck
-        entry: shellcheck
+        # -x follows a `source` directive into the file it names, so a script
+        # that sources repo-state.sh is checked the same whether the commit
+        # touches both files or only one.
+        entry: shellcheck -x
         language: system
         types: [shell]
 

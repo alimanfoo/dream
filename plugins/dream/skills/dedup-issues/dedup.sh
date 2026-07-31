@@ -28,15 +28,16 @@
 # covers a maintainer on a second machine and a deliberate re-check.
 #
 # Reading an issue body is the caller's expensive act, so `scan` hands it every
-# open issue's title, the path to every body, and the numbers above the record
-# as the targets to check. Titles are cheap. The caller reads only the bodies
-# its judgement needs.
+# open issue's title, the path to every body, and the issues above the number it
+# starts after as the targets to check. Titles are cheap. The caller reads only
+# the bodies its judgement needs.
 #
 # Fetching the bodies costs nothing extra, because they come back in the same
 # `gh` call as the titles. The script writes each to its own file, so the caller
 # can hand a path to an agent that holds no tool for reaching the tracker.
-# `scan` clears the bodies directory first, so it holds exactly what this run
-# fetched, and no stale file from an earlier run can be read by mistake.
+# `scan` empties the bodies directory before it writes any, so it holds exactly
+# what this run fetched, and no stale file from an earlier run can be read by
+# mistake.
 
 set -uo pipefail
 
@@ -56,10 +57,10 @@ Usage:
   dedup.sh --help
 
   scan          Fetch the open issues, write each body to a file, and print what
-                a scan needs, as one JSON object: repo, the record as
-                checkedThrough, issues (every open issue as number, title and
-                bodyFile, in ascending order), and targets (the issue numbers
-                above the record).
+                a scan needs, as one JSON object: repo, startAfter (the number
+                the scan starts above, from the record or from <since>), issues
+                (every open issue as number, title and bodyFile, in ascending
+                order), and targets (the issue numbers above startAfter).
   --limit       Most open issues to scan. A tracker holding more than this is an
                 error, not a partial scan. Default: $default_limit.
   <since>       Issue number to use in place of the record, so the targets are
@@ -137,14 +138,17 @@ fi
 
 # --- scan ------------------------------------------------------------------
 
-checked=$(cat "$record_file" 2>/dev/null)
+# The number the scan starts above. It comes from the record, or from `since`
+# when the caller gave one, and the two are the same kind of number, so nothing
+# downstream has to know which it was.
+start_after=$(cat "$record_file" 2>/dev/null)
 if [ -n "$since" ]; then
-  checked=$since
-elif [ -n "$checked" ]; then
+  start_after=$since
+elif [ -n "$start_after" ]; then
   # mark-checked is the only writer, so a value that is not a number means the
   # file was edited by hand. Name the file now, rather than failing later with a
   # jq parse error that hides where the bad value came from.
-  require_positive_int "the record in $record_file" "$checked"
+  require_positive_int "the record in $record_file" "$start_after"
 fi
 
 # Ask for one more issue than the limit allows, so a tracker holding more than
@@ -192,17 +196,17 @@ if [ -n "$issues" ]; then
   done <<< "$issues"
 fi
 
-# The bodies are on disk, so the output can name them. With no record,
-# checkedThrough is null, which sorts below every number, so the one comparison
-# makes every open issue a target on the first run.
+# The bodies are on disk, so the output can name them. With no record and no
+# `since`, startAfter is null, which sorts below every number, so the one
+# comparison makes every open issue a target on the first run.
 printf '%s' "$issues" | jq -s \
   --arg repo "$repo" \
-  --argjson checked_through "${checked:-null}" '
+  --argjson start_after "${start_after:-null}" '
   map({number, title, bodyFile}) as $issues
   | {
       repo: $repo,
-      checkedThrough: $checked_through,
+      startAfter: $start_after,
       issues: $issues,
-      targets: [$issues[] | select(.number > $checked_through) | .number],
+      targets: [$issues[] | select(.number > $start_after) | .number],
     }
 ' || die "cannot build the scan output"
