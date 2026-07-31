@@ -82,24 +82,17 @@ creep. Raise anything you disagree with and anything ambiguous.
 
 Implement the task as specified.
 
-#### Step 5.3: Copy-edit the prose you wrote
-
-Note the prose your task added or changed: markdown docs, docstrings, code
-comments, prompts. Skip this step when the task wrote no prose.
-
-Run the `/dream:copy-edit` skill over the prose you noted.
-
-#### Step 5.4: Run the tests
+#### Step 5.3: Run the tests
 
 Run the tests you found at boot. They must pass before you commit. The commit
 hook rarely runs the test suite, so the tests are a separate gate from the
 commit-time checks.
 
-#### Step 5.5: Run any codegen the commit hook doesn't run
+#### Step 5.4: Run any codegen the commit hook doesn't run
 
 Run any codegen the hook doesn't run, so the generated files match the source.
 
-#### Step 5.6: Commit and push
+#### Step 5.5: Commit and push
 
 Commit your work, then push. Run `git status` and a full `git diff` first to
 confirm one commit per task with nothing missed. Stage the paths this task
@@ -108,7 +101,7 @@ commit hook runs the commit-time checks on your staged files. If it rewrites a
 file or reports a failure, inspect any rewrite, re-stage the affected paths, and
 commit again. Repeat until the hook passes cleanly. Then push the branch.
 
-#### Step 5.7: Report back to Grace via `SendMessage`
+#### Step 5.6: Report back to Grace via `SendMessage`
 
 Send the report to Grace via `SendMessage`, including the commit SHA you just
 pushed. Turn output doesn't reach her. Only `SendMessage` does. You don't mark
@@ -125,8 +118,13 @@ Include in the body only what Grace can't see from the diff:
 
 ### Phase 6: Review
 
-No direct involvement. If Grace accepts a reviewer's finding, it comes to you as
-a standard task, handled per Phase 5.
+When Grace asks, copy-edit the branch's prose. Run the `/dream:copy-edit` skill
+with no target, so it reviews the whole branch against its base. Then commit and
+push per the [Commits](#commits) rule, and report back to Grace via
+`SendMessage`. Say plainly when the skill found nothing to change.
+
+Otherwise no direct involvement. If Grace accepts a reviewer's finding, it comes
+to you as a standard task, handled per Phase 5.
 
 ### Phase 7: Merge
 

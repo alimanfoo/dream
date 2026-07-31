@@ -3,17 +3,29 @@
 Write every turn output, message and artefact in this phase using
 `/dream:plain-english`.
 
-When development is complete, follow the steps below. Ada and Junio review in
-parallel, then the user. You handle all three reviews the same way.
+When development is complete, follow the steps below. Ralph copy-edits the
+branch's prose first. Then Ada and Junio review in parallel, then the user. You
+handle all three reviews the same way.
 
-## Step 6.1: Send the review requests
+## Step 6.1: Ask Ralph to copy-edit the branch's prose
+
+Ask Ralph to run the `/dream:copy-edit` skill over the whole branch, and to
+commit and push what it changes. One `SendMessage`, closed with
+`Reply via SendMessage.` Wait for his report by going idle (see
+[Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)). Ada and
+Junio then read final prose.
+
+Triage nothing from this. Ralph is the author, so he resolves the findings
+himself.
+
+## Step 6.2: Send the review requests
 
 Tell Ada and Junio that development is complete and ask each for their review.
 Two `SendMessage` calls in the same turn, one to each, both carrying the PR
 number. Close each with `Reply via SendMessage.` Wait for both reviews by going
 idle (see [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
-## Step 6.2: Post each review as a PR comment
+## Step 6.3: Post each review as a PR comment
 
 Post each review as its own PR comment. Preserve the review text unchanged and
 post it per [Writing to GitHub](../../../agents/Grace.md#writing-to-github). Do
@@ -24,7 +36,7 @@ Keep agent names off GitHub. If you need to tell the two comments apart, refer
 to the reviewers generically: "first reviewer", "second reviewer", or by what
 each examined. Never use an agent name, which is internal protocol detail.
 
-## Step 6.3: Triage each finding
+## Step 6.4: Triage each finding
 
 Decide each finding from both reviews on its merits, weighed against the
 `/dream:coherent-coding` principles. Each finding takes one of these paths:
@@ -49,7 +61,7 @@ If a finding proposes a docstring, comment, or section-header to express a
 contract, invariant, precondition, or convention, apply the
 [code-shape-first check](../../../agents/Grace.md#code-shape-first-check) to it.
 
-## Step 6.4: Post your response to reviews as a PR comment
+## Step 6.5: Post your response to reviews as a PR comment
 
 After all accepted findings have been handled through the standard per-task
 workflow, post one response comment. This is your public answer to both reviews.
@@ -69,7 +81,7 @@ The response is concise and GitHub-facing:
 Do not repost the review text or quote internal teammate messages. Post it per
 [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
-## Step 6.5: Write the PR description
+## Step 6.6: Write the PR description
 
 Write the description for the PR you opened in Phase 1
 [Step 1.1](phase1.md#step-11-open-the-session-pr), replacing the `WIP`
@@ -97,13 +109,13 @@ After writing the description, verify that every issue the PR fully resolves is
 recognised: run `gh pr view <N> --json closingIssuesReferences` to confirm each
 issue appears.
 
-## Step 6.6: Mark the PR ready for review
+## Step 6.7: Mark the PR ready for review
 
 Once all accepted follow-ons from triage are complete, run `gh pr ready <N>`.
 Flipping from draft to ready signals to the user that the PR is now worth their
 attention. If no findings were accepted, flip immediately.
 
-## Step 6.7: Hand back to the user
+## Step 6.8: Hand back to the user
 
 Hand back to the user once you have addressed every comment from Ada and Junio.
 The PR is ready for the user's review, the last of the three.
@@ -118,7 +130,7 @@ resolve without the user to the PR as a comment before you ask in chat, so the
 PR doesn't look idle while the question sits only in chat. Do this the same as
 [Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions). Then post one
 response comment, the same as
-[Step 6.4](#step-64-post-your-response-to-reviews-as-a-pr-comment).
+[Step 6.5](#step-65-post-your-response-to-reviews-as-a-pr-comment).
 
 The branch freezes once every review is addressed, the user's included. From
 then on you fold no new development into the PR, and a finding becomes an issue
