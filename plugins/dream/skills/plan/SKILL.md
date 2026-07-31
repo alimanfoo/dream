@@ -26,9 +26,8 @@ you cannot identify a focus, ask the user.
 
 Compose the draft plan, the task list that delivers the design.
 
-Derive tasks from the design and the code analysis. The tasks are the work that
-delivers the design. Don't translate the session input directly into tasks. The
-design has already reshaped it where needed.
+Derive tasks from the design and the code analysis. Don't translate the session
+input directly into tasks. The design has already reshaped it where needed.
 
 Each task should be a manageable unit of work for the implementer, one commit
 per task.
@@ -71,9 +70,9 @@ A precursor qualifies only when all of these hold:
   cleanup doesn't qualify.
 - **Behaviour-preserving.** Pure restructure: extract, inline, rename, move,
   split. No contract change.
-- **Materially easier or safer.** Without it, the named task would be more
-  error-prone, more complex, or reach more places. An improvement to looks alone
-  doesn't pass.
+- **Clearly easier or safer.** Without it, the named task would be more
+  error-prone, more complex, or reach more places. A cleanup that only makes the
+  code look nicer doesn't pass.
 
 Name in turn output each task that needs a precursor, and the precursor it
 needs. Then revise the file, adding each precursor as its own task ahead of the
@@ -84,8 +83,7 @@ to have something to report.
 
 Read the draft back from the file. Test each task by its one-line headline. If
 the headline needs an "and", the task is two ideas, so split it. One idea per
-task keeps each commit clean and its review focused on a single change. Split
-tasks that grow beyond manageable.
+task keeps each commit clean and its review focused on a single change.
 
 Name in turn output each task that holds more than one idea. Then revise the
 file, splitting each one. When every task holds one idea, say so plainly.
@@ -93,9 +91,9 @@ file, splitting each one. When every task holds one idea, say so plainly.
 ## Check each task can be committed
 
 Read the draft back from the file. Read each task as the implementer, and ask
-whether the tests and checks pass once that task alone is done. The implementer
-commits one task at a time, so a task that leaves them failing has nothing it
-can commit. Shapes to watch for:
+whether the tests and checks pass once they have done that task and nothing
+else. The implementer commits one task at a time. A task that leaves a check
+failing has nothing it can commit. Shapes to watch for:
 
 - a task that changes a caller before the task that changes the callee
 - a task that removes a symbol later tasks still use

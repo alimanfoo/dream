@@ -123,11 +123,13 @@ sketches a new mechanism in protocol.md first, move the operational detail to
 the agent file of whoever runs it. `Grace.md`'s challenge and autopilot sections
 are the templates.
 
-The README lists the utility skills a user can run on their own. That list is
-their one home, so add a new skill of this kind there. `coherence-review` is one
-such skill. A review lens is not a skill. `code-review` and `coherence-review`
-launch their lenses as review subagents, so a lens runs only as a step within a
-skill.
+The README lists the utility skills a user can run on their own. Add a new skill
+of this kind there, since that list is their one home. `coherence-review` is one
+such skill.
+
+`code-review` and `coherence-review` launch their review lenses as subagents, so
+a lens only ever runs as a step within a skill. A lens is not a skill of its
+own, and doesn't go in the README list.
 
 A skill that fans review lenses out to subagents must check and verify their
 findings against the code before it returns them. `code-review` and
