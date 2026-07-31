@@ -391,6 +391,16 @@ plugins/:
                 Commits:
               Reference syntax:
               GitHub-rendered artefacts:
+      validate-issues/:
+        SKILL.md:
+          Validate issues:
+            Arguments:
+            Resolve the label:
+            List the issues:
+            Validate each issue:
+            Verify each recommendation:
+            Draft the comments:
+            Post the recommendations:
       watcher/:
         SKILL.md:
           Watcher:
