@@ -27,8 +27,10 @@ Read the arguments the user gives.
 1. Gather the prose to review. With a git range, run `git diff` over the range
    to find the prose it changed: Markdown, docstrings, comments, prompts. Skip
    any file the range changed without touching prose. Any other target is itself
-   the prose. Read each passage in its current form, with enough surrounding
-   text to judge a paragraph whole. Review prose, not diff markup.
+   the prose. Read each passage in its current form, and widen it until every
+   paragraph it holds is whole. The subagent judges only what you hand it, so a
+   passage cut mid-paragraph is one it cannot judge. Review prose, not diff
+   markup.
 2. Review it with the `dream:copy-editor` subagent. Give each subagent the Plain
    English guide's absolute path in its prompt. A subagent can't resolve a path
    relative to its own prompt file. Locate each passage exactly: give its
