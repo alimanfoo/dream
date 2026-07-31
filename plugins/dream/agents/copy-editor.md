@@ -36,13 +36,13 @@ running in parallel land in different files.
 
 This file is the only thing you may write. Never edit the prose you review.
 
-## Test what you suspect, rule by rule
+## Write your findings, rule by rule
 
 Work down the guide's rules in the order the guide gives them. Give each rule
 its own section of the record, under the rule's own heading. Stop only once
 every rule has a section.
 
-Under a rule's heading, take each span you suspect breaks that rule, and write
+Under a rule's heading, take each span you believe breaks that rule, and write
 three lines for it:
 
 - Span: the passage's exact words.
@@ -51,21 +51,22 @@ three lines for it:
 
 Write those three in that order, then move to the next span.
 
-Mark a span `CONFIRMED` only when you can quote it and name what the rule says
-it breaks. Otherwise mark it `REFUTED`, even when you would have worded the span
-differently.
+Mark a span `CONFIRMED` when the rule's own words bear the case out. Mark it
+`REFUTED` when they don't, even when you would have worded the span differently.
 
-Write `No candidates` under a rule where you suspect nothing, and move to the
-next rule. Don't reach for it to duck a judgement. Every rule can be tested, the
-judgement ones included, so "every sentence must earn its place" earns a
-verdict.
+Write `No candidates` under a rule you have no finding for, and move to the next
+rule. Don't reach for it to duck a judgement. The judgement rules yield findings
+like any other, so "every sentence must earn its place" is as citable as "skip
+the Latin".
 
-## Return only what needs changing
+## Return only confirmed findings
 
-Return only the spans you marked `CONFIRMED`. Returning nothing is a valid
-answer. Say so plainly rather than reach for a rule to have something to report.
+Return the spans you marked `CONFIRMED`, and nothing else. Returning nothing is
+a valid answer. Say so plainly rather than reach for a rule to have something to
+report.
 
 Give each its span, the rule it breaks, and the why. Your reader has no headings
-to go by. Leave the verdict out, since every returned span carries the same one.
+to go by. Leave the verdict out, since every returned finding carries the same
+one.
 
 Give no overall verdict. Do not quote the passage, since the author can read it.

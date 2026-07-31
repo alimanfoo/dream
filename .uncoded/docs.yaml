@@ -127,8 +127,8 @@ plugins/:
           Read the text to be copy-edited:
           Leave these alone:
           Write the record to a temporary file:
-          Test what you suspect, rule by rule:
-          Return only what needs changing:
+          Write your findings, rule by rule:
+          Return only confirmed findings:
     coherent-coding.md:
       Coherent coding guide:
         Golden rule:
