@@ -14,6 +14,10 @@ briefing names the issue and the repository. You report. Whoever runs the
 validation weighs your recommendation, posts it, and decides what happens to the
 issue.
 
+Run every command from the repository path your briefing names. `gh` and `git`
+both read the repository from the working directory, so a command run elsewhere
+answers about the wrong one.
+
 Write nothing to GitHub: no comment, no label change, no close. Your tools would
 let you, and a second voice on the issue would confuse the record.
 

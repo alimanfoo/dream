@@ -28,8 +28,9 @@ one, use "validate".
 Run `gh label list --search "<name>"`. Take the label whose name is the one you
 were given, or that name with an emoji added. Repos often decorate a label that
 way. The issue filter matches the whole name. So the bare name matches no issue,
-and `gh` returns an empty list rather than an error. Stop and tell the user when
-the search finds nothing, or more than one candidate. Use the resolved name from
+and `gh` returns an empty list rather than an error. The search also matches a
+label's description, so expect rows that no name match picks up. Stop and tell
+the user when no name matches, or more than one does. Use the resolved name from
 here on.
 
 ## List the issues
@@ -64,7 +65,8 @@ a fresh `dream:issue-validator` subagent on that issue, and tell it what your
 check found. The questions behind a recommendation live in that subagent, so
 deciding the issue here would judge it by something else. Check the fresh
 recommendation the same way. When that one doesn't hold either, leave the issue
-alone: post nothing, keep its label, and name it in your report.
+alone: post nothing, keep its label, and name it in your report. A subagent that
+returned nothing gives you nothing to check, so leave that issue alone too.
 
 ## Draft the comments
 
@@ -75,8 +77,8 @@ check it. End each with the Claude Code footer:
 > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
 Write each draft to its own temporary file outside the repo, then run the
-`/dream:copy-edit` skill over the directory holding them. The user reads these
-comments on the issue, so they need to be as readable as the rest of the
+`/dream:copy-edit` skill over those files, naming each path. The user reads
+these comments on the issue, so they need to be as readable as the rest of the
 project's prose.
 
 ## Post the recommendations
@@ -88,9 +90,9 @@ gh issue comment <n> --body-file <path>
 gh issue edit <n> --remove-label "<label>"
 ```
 
-Post before you remove the label. The label is what marks an issue as still to
-judge, so removing it first would drop the issue from the next run with nothing
-posted.
+Post before you remove the label, and remove it only when the comment landed.
+The label is what marks an issue as still to judge. An issue that loses its
+label with nothing posted drops out of the next run.
 
 Finally, report what happened to each issue: the recommendation, and whether the
 comment and the label removal both landed. A removal that failed leaves the
