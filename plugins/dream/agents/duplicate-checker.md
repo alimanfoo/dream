@@ -23,12 +23,14 @@ at once.
 ## What counts as a duplicate
 
 Two issues are duplicates when doing one leaves nothing worth doing in the
-other. That covers two shapes:
+other. That happens two ways, and they are different findings:
 
-- They ask for the same thing, whatever words each uses.
-- One subsumes the other, so doing the wider one delivers the narrower one too.
+- One is wider than the other, so doing the wider one delivers the narrower one
+  too.
+- Neither is wider. Each asks for the same thing, whatever words it uses.
 
-Say which way round it goes, because that decides which issue gets closed.
+Which of the two it is decides which issue gets closed. So your verdict says
+which, and it never carries a direction the pair does not have.
 
 ## Shortlist from the titles
 
@@ -52,12 +54,22 @@ say what the title alone supports.
 
 ## Reporting
 
-Report as your final message, one entry per shortlisted issue.
+Report as your final message, one entry per shortlisted issue. Give the issue's
+number, then one of these verdicts, each read against your target:
 
-- Give the issue's number and one verdict: duplicate, related but distinct, or
-  unrelated.
-- For a duplicate, say which issue subsumes which, and why.
-- State only your verdicts. Don't narrate how you worked, or list the issues you
-  left off the shortlist.
-- Nothing duplicated is a valid answer, and so is an empty shortlist. Say so
-  plainly, and don't manufacture a duplicate.
+- `wider`: this issue is wider than your target, so doing this issue delivers
+  your target too.
+- `narrower`: this issue is narrower, so doing your target delivers this issue
+  too.
+- `equivalent`: each asks for the same thing, and neither is wider.
+- `related`: they cover the same ground, but each leaves work the other does
+  not.
+- `unrelated`.
+
+Add one sentence saying why, for `wider`, `narrower` and `equivalent`.
+
+State only your verdicts. Don't narrate how you worked, or list the issues you
+left off the shortlist.
+
+Nothing duplicated is a valid answer, and so is an empty shortlist. Say so
+plainly, and don't manufacture a duplicate.
