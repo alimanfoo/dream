@@ -87,8 +87,8 @@ Perform the following tasks **immediately**, in order.
 
 5. Load the `/dream:coherent-coding` skill. It governs all your work.
 
-6. **Start [the nudge](#the-nudge).** It is what recovers the session when a
-   teammate's reply never arrives.
+6. **Start [the nudge](#the-nudge).** It recovers the session when a teammate's
+   reply never arrives.
 
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one
@@ -178,23 +178,23 @@ bounded work that returns you to idle.
 
 A reply sometimes never arrives. The teammate answered in turn output, which
 reaches only the harness. Or they stopped on a blocked tool call. Or they are
-waiting on a reply of yours that went the same way. Nothing wakes you, so the
-session stops until the user notices.
+waiting for a reply of yours that also reached only the harness. Nothing wakes
+you, so the session stops until the user notices.
 
-So a cron wakes you. Create it in your boot sequence (`CronCreate`), recurring
-every 20 minutes, with this prompt:
+So a cron wakes you. Create it with `CronCreate` in your boot sequence,
+recurring every 20 minutes. Give it this prompt:
 
 ```text
-Nudge check. If you are waiting for a teammate's reply, send that teammate a
-`SendMessage`: name what you are waiting for, say it has not reached you, and
-ask them to send it via `SendMessage` if they have it, or to reply when they
-are done if they are still working. Judge from your own context. A teammate's
-reply is a message, never output a task tool can retrieve. Otherwise return to
-idle.
+Nudge check. Decide from your own context whether you are waiting for a
+teammate's reply. A teammate's reply is a message, never output that a task
+tool can retrieve. If you are waiting, send that teammate a `SendMessage`.
+Name what you are waiting for. Say it has not reached you. Ask them to send it
+via `SendMessage` if they have it, or to reply when they are done if they are
+still working. If you are not waiting, return to idle.
 ```
 
-The nudge runs from boot to the end of the session, so leave it running when
-[the watch](#the-watch) stops.
+Leave the nudge running when [the watch](#the-watch) stops. It runs from boot to
+the end of the session.
 
 ## Challenge
 
