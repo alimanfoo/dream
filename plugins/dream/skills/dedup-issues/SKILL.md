@@ -40,8 +40,8 @@ run that found nothing new to check and stopped.
   it.
 
 Don't run `mark-checked` at all unless two things hold: the last line you wrote
-as the batches returned accounts for every number in `targets`, and it lists no
-unchecked target. The count is what tells a clean run from one that has lost its
+as the batches returned accounts for every number in `targets`, and the list on
+it is empty. The count is what tells a clean run from one that has lost its
 lines, since both leave that list empty.
 
 A subagent failing is an ordinary event, and the highest number in `targets`
