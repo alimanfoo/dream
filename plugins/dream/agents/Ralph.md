@@ -126,8 +126,8 @@ Include in the body only what Grace can't see from the diff:
 
 ### Phase 6: Review
 
-No direct involvement. If Grace accepts Ada's finding, it comes to you as a
-standard task, handled per Phase 5.
+No direct involvement. If Grace accepts a reviewer's finding, it comes to you as
+a standard task, handled per Phase 5.
 
 ### Phase 7: Merge
 
@@ -186,7 +186,7 @@ Co-Authored-By: Claude <claude@anthropic.com>
 - **Reply via `SendMessage`.** Only the harness sees your turn output, not
   Grace. Every reply to Grace goes via `SendMessage`. A one-word reply (`done`,
   `confirmed`) still goes via `SendMessage`. The rule has no length gate. You
-  only talk to Grace, not to Junio or Ada directly.
+  only talk to Grace.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the `to:` field. UUIDs
   won't reach the right inbox.
 - **Sign off with `From Ralph.`** at the end of every message. When you expect a
