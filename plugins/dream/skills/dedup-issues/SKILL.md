@@ -18,26 +18,27 @@ and reopening it does not undo that. So you find, check and group, the user
 picks, and you close only what they picked.
 
 The bookkeeping is a shell script, `dedup.sh`, in this skill's directory. It
-reads the tracker, writes each open issue's body to a file, and remembers how
-far a run got. Fill in its absolute path and run it as
-`bash <absolute path>/dedup.sh <subcommand>`. Run `dedup.sh --help` for what
-each subcommand prints and what its defaults are.
+reads the tracker and remembers how far a run got. Fill in its absolute path and
+run it as `bash <absolute path>/dedup.sh <subcommand>`. Run `dedup.sh --help`
+for what each subcommand prints and what its defaults are.
 
 The repository is the one in the current working directory.
 
 ## How every run ends
 
-Two acts end a run, and they run on every path: the run that closed issues, the
-run where the user declined every group, the run that found no duplicates, and
-the run that found nothing new to check and stopped.
+Every run ends here, whatever it found: the run that closed issues, the run
+where the user declined every group, the run that found no duplicates, and the
+run that found nothing new to check and stopped.
 
 - Run `dedup.sh discard-bodies`. The bodies are this run's working copy of the
   tracker, and nothing reads them once the run is over. It is not an error when
   there are none, so this act carries no condition.
 - Run `dedup.sh mark-checked` with the highest number in `targets`, so the next
-  run starts above it. The record moves whatever the user decided about closing,
-  because the issues were checked either way. With no targets there is nothing
-  to move.
+  run starts above it. Only a run the user gave no `since` does this. A `since`
+  run is a re-check rather than a continuation, so its coverage need not join up
+  with what the record already claims. Whether the user closed anything makes no
+  difference, because the issues were checked either way. With no targets there
+  is nothing to move.
 
 ## Scan the tracker
 
@@ -48,6 +49,12 @@ record. It is what the user needs when the record falls short: a maintainer on a
 second machine, a deliberate re-check, or a reopened issue. An issue closed
 during one run and reopened later sits below the record, so it never becomes a
 target again, and `since` is the only way to have it checked.
+
+A `since` run leaves the record where it was. So the record ends up older than
+the work just done, and the next run without `since` re-checks some issues. That
+costs reading, never a wrong answer. Moving the record instead would claim
+coverage of every issue below `since` that nothing checked, and those issues
+could never be targets again.
 
 Tell the user where this run starts, from `startAfter`. Give it as the number
 the run starts above, not as what has been checked. `since` replaces the record,
