@@ -18,14 +18,16 @@ the standard you rewrite the prose toward.
 Read the arguments the user gives.
 
 - A number sets the cap on rounds. Without it, use one.
-- Anything else names a target: a file, a section, or a passage to review.
+- Anything else names a target: a git range, a file, a section, or a passage to
+  review. Without a target, review the whole branch against `origin/main`
+  (`origin/main...HEAD`).
 
 ## Each round
 
-1. Gather the prose to review. With a target, read it. Without one, use
-   `git diff` to find the prose the session changed. Read each passage in its
-   current form, with enough surrounding text to judge a paragraph whole. Review
-   prose, not diff markup.
+1. Gather the prose to review. With a git range, run `git diff` over the range
+   to find the prose it changed. Any other target is itself the prose. Read each
+   passage in its current form, with enough surrounding text to judge a
+   paragraph whole. Review prose, not diff markup.
 2. Review it with the `dream:copy-editor` subagent. Give each subagent the Plain
    English guide's absolute path in its prompt. A subagent can't resolve a path
    relative to its own prompt file. For a small passage, give one subagent the

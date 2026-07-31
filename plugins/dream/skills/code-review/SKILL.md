@@ -13,9 +13,9 @@ combined findings.
 
 ## Arguments
 
-Read the arguments the user gives. `target` names what to review: a git range
-like `main...HEAD`, or a path. Without it, review the whole branch against
-`main` (`main...HEAD`). If `inline` is given, run the lenses yourself without
+Read the arguments the user gives. `target` names what to review: a git range,
+or a path. Without it, review the whole branch against `origin/main`
+(`origin/main...HEAD`). If `inline` is given, run the lenses yourself without
 spawning subagents.
 
 ## Cold read
@@ -68,8 +68,8 @@ Choose from these or invent your own. They are examples, not a checklist:
 
 Spawn the `dream:code-review-lens` subagent once per lens, via the Agent tool,
 all in a single message so they run in parallel. Give each the target, as a git
-range like `main...HEAD` or an absolute path, and the one lens it applies. A
-subagent can't resolve a path relative to its own prompt file.
+range like `origin/main...HEAD` or an absolute path, and the one lens it
+applies. A subagent can't resolve a path relative to its own prompt file.
 
 The subagent is read-only by tool design: it reads and reports.
 
