@@ -126,7 +126,7 @@ done
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
 
-make_skill_state_dir dedup-issues "$repo"
+set_skill_state_dir dedup-issues "$repo"
 record_file="$skill_state_dir/record"
 bodies_dir="$skill_state_dir/bodies"
 

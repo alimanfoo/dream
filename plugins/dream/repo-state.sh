@@ -51,7 +51,7 @@ require_repo_name() {
 # stays two real path segments, rather than being flattened, so two repositories
 # never collide: acme-corp/api and acme/corp-api are distinct paths, not one
 # shared key.
-make_skill_state_dir() {
+set_skill_state_dir() {
   require_repo_name "$2"
   skill_state_dir="$HOME/.dream/$1/$2"
   mkdir -p "$skill_state_dir" || die "cannot create the state directory $skill_state_dir"
