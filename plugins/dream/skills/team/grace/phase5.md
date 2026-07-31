@@ -41,9 +41,9 @@ channel, not the commit landing. Wait for that message by going idle (see
 
 ### Step 5.4: Read and request the audit
 
-Ask Junio for the coherence audit. Send him the commit SHA, signing off
-`From Grace. Reply via SendMessage.` Wait for his numbered list (or "no
-substantive findings") by going idle (see
+Ask Junio for the coherence audit. Send him the commit SHA, closing with
+`Reply via SendMessage.` Wait for his numbered list (or "no substantive
+findings") by going idle (see
 [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
 Read the committed change yourself while Junio audits. Check it against the

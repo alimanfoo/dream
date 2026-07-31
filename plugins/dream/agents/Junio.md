@@ -100,8 +100,7 @@ Sort each gap into one of these:
 #### Step 5.4: Send the coherence audit to Grace via `SendMessage`
 
 Send the report to Grace via `SendMessage`. Turn output does not reach
-teammates. Only `SendMessage` reaches Grace. Sign off `From Junio.` at the end
-of the report.
+teammates. Only `SendMessage` reaches Grace.
 
 #### Coherence audit format
 
@@ -163,8 +162,7 @@ same line or mechanism.
 #### Step 6.4: Send your review to Grace via `SendMessage`
 
 Assemble the review per the review format below, then send it to Grace via
-`SendMessage`. Only `SendMessage` reaches Grace. Turn output does not. Sign off
-`From Junio.`.
+`SendMessage`. Only `SendMessage` reaches Grace. Turn output does not.
 
 Grace posts your review as a PR comment, so write it for that reader: no
 internal protocol vocabulary.
@@ -233,40 +231,21 @@ You never:
 ### Communication between teammates (agents)
 
 - **`SendMessage`**. Use the `SendMessage` tool for all communication between
-  teammates.
+  teammates. Pass a string, not JSON.
 - **Reply via `SendMessage`.** Turn output is not delivered to Grace. Only the
   harness sees it. Every reply to Grace goes via `SendMessage`. A one-word reply
   (`done`, `confirmed`) still goes via `SendMessage`. The rule has no length
   gate. You only talk to Grace.
 - **Address Grace as `Grace`.** Use exactly `Grace` in the `to:` field. UUIDs
   won't reach the right inbox.
-- **Sign off with `From Junio.`** at the end of every message. Most of your
-  messages are terminal hand-offs. The coherence audit (with or without
-  findings) is for Grace to read, triage, and act on, not to reply to. Add
-  `Reply via SendMessage.` to the signature only on the rare occasion you
-  genuinely want a reply yourself. Use a string, not JSON, inside `SendMessage`.
+- **Ask for a reply explicitly.** Most of your messages are terminal hand-offs.
+  The coherence audit (with or without findings) is for Grace to read, triage,
+  and act on, not to reply to. Close a message with `Reply via SendMessage.`
+  only on the rare occasion you genuinely want a reply yourself.
 - **Set the `summary` field** (5 to 10 words) when sending a string message.
   That's the UI preview the tool expects.
 - **State only findings in a review or coherence audit.** Don't narrate what the
   code does or confirm what already works.
-
-Examples (sign-off only, content is yours):
-
-Coherence audit reply:
-
-```text
-<report, per the coherence audit format>
-
-From Junio.
-```
-
-Clean reply (coherence audit):
-
-```text
-No substantive findings.
-
-From Junio.
-```
 
 ### Keep turn output quiet
 
