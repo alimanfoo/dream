@@ -1,13 +1,12 @@
 ---
 name: coherence-review
-description:
-  Review changed code across coherence lenses and return the combined findings.
+description: Review changed code for coherence and maintainability.
 argument-hint: "[target]"
 ---
 
 # Coherence review
 
-Review changed code across coherence lenses and return the combined findings.
+Review changed code for coherence and maintainability.
 
 ## Arguments
 
@@ -15,7 +14,7 @@ Read the argument the user gives. It names what to review: a git range, or a
 path. Without one, review the whole branch against `origin/main`
 (`origin/main...HEAD`).
 
-## Review
+## Launch the lenses
 
 Read the [coherent coding guide](../../coherent-coding.md). It is the home of
 the disciplines this review checks. The lens subagents can't read it themselves,
@@ -60,7 +59,23 @@ beneath it into the briefing.
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
 
-Combine their findings into one list, dropping duplicates. Mark each as a defect
-or an opportunity, so the caller can tell them apart. A defect is where the code
-fails to fit and needs fixing now. An opportunity is where the code fits, but a
-generalisation would leave it simpler, easier to maintain, or able to shed code.
+## Combine, verify and return
+
+Combine their findings into one list, dropping duplicates. Judge each on its
+merits.
+
+Read the code each finding cites, and keep only the findings it confirms. A lens
+reports what its one question surfaced, so a false positive reaches you looking
+like any other finding.
+
+A finding often rests on more than the site it cites, so read those other sites
+too. A missed instance of an edit rests on its sibling sites. A fact with two
+homes rests on both.
+
+Mark each verified finding as a defect or an opportunity, so the caller can tell
+them apart. A defect is where the code fails to fit and needs fixing now. An
+opportunity is where the code fits, but a generalisation would leave it simpler,
+easier to maintain, or able to shed code.
+
+Return the verified findings as turn output. Report only: apply no fixes. If you
+have nothing to report, say so and return.

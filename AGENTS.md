@@ -130,6 +130,11 @@ skills. The `requirements-analysis`, `design`, and `plan` skills launch the
 requirements, design, and plan lenses inline as review subagents. So they run
 only as a review step within a session.
 
+A skill that fans review lenses out to subagents must check and verify their
+findings against the code before it returns them. `code-review` and
+`coherence-review` both carry this step. Write it into a third such skill from
+the start.
+
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
 written there as a plain instruction to that agent. When such a rule lands in
@@ -357,8 +362,7 @@ are suggestions, not a fixed procedure. A few things make it work:
   they surface different things.
 - **Sort the findings. Don't just apply them.** Each is one of three: a
   coherence defect to fix now, an intent decision that belongs to the user, or a
-  follow-up issue. Judge each on its merits. A subagent raising it is not a
-  reason to accept it.
+  follow-up issue. Judge each on its merits.
 
 Ways to divide the work, for two different jobs:
 
