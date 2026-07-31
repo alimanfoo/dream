@@ -179,6 +179,13 @@ elif [ -n "$start_after" ]; then
   require_positive_int "the record in $record_file" "$start_after"
 fi
 
+# From here the value is JSON, a number or null, and both jq calls below take
+# this one value, so the boundary the targets are worked out from is the one the
+# scan reports. With no record and no `since` it is null, which sorts below
+# every number, so the one comparison makes every open issue a target on a first
+# run.
+[ -n "$start_after" ] || start_after=null
+
 # Ask for one more issue than the limit allows, so a tracker holding more than
 # the limit is visible here. A partial list would otherwise read as the whole
 # tracker, and every duplicate it cut off would go unreported.
@@ -208,11 +215,9 @@ issues=$(printf '%s' "$raw" | jq -c --arg bodies_dir "$bodies_dir" '
 ') || die "cannot read the open issues in $repo"
 
 # The targets, worked out once here and printed further down, so the rule that
-# an issue above startAfter is a target has one home. With no record and no
-# `since`, startAfter is null, which sorts below every number, so the same
-# comparison makes every open issue a target on the first run. An empty tracker
-# slurps to an empty array, the same as a tracker with nothing new.
-targets=$(printf '%s' "$issues" | jq -s -c --argjson start_after "${start_after:-null}" \
+# an issue above startAfter is a target has one home. An empty tracker slurps to
+# an empty array, the same as a tracker with nothing new.
+targets=$(printf '%s' "$issues" | jq -s -c --argjson start_after "$start_after" \
   '[.[] | select(.number > $start_after) | .number]') \
   || die "cannot work out which issues to check"
 
@@ -221,11 +226,9 @@ targets=$(printf '%s' "$issues" | jq -s -c --argjson start_after "${start_after:
 # when the fetch fails, rather than emptying the directory for nothing.
 rm -rf "$bodies_dir" || die "cannot clear the bodies directory $bodies_dir"
 
-# Whether this scan has bodies on disk, decided once. A body's only reader is a
-# check on a target, so with no targets the scan writes none and a run over an
-# unchanged tracker leaves nothing behind. The writing below and the output
-# after it both follow this one value, so neither can come to disagree about
-# whether a bodyFile names a file that is there.
+# Whether this scan has bodies on disk, decided once. The writing below and the
+# output after it both follow this one value, so neither can come to disagree
+# about whether a bodyFile names a file that is there.
 #
 # `jq -c` prints an empty array as exactly `[]`, so the test is on the whole
 # value.
@@ -250,7 +253,7 @@ fi
 # where a missing field says plainly that this scan wrote no bodies.
 printf '%s' "$issues" | jq -s \
   --arg repo "$repo" \
-  --argjson start_after "${start_after:-null}" \
+  --argjson start_after "$start_after" \
   --argjson targets "$targets" \
   --argjson wrote_bodies "$wrote_bodies" '
   {
