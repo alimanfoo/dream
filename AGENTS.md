@@ -127,10 +127,12 @@ The README lists the utility skills a user can run on their own. That list is
 their one home, so add a new skill of this kind there. `coherence-review` is one
 such skill.
 
-A skill that fans work out to subagents must verify what they return against the
-code. It acts only on what the code confirms. `code-review`, `coherence-review`,
-and `validate-issues` all carry this step. Write it into a new skill of this
-kind from the start.
+When a subagent reports a finding or a recommendation for a skill to act on,
+that skill checks it itself first, against the source the subagent read. It acts
+only on what the check confirms. A subagent's finding arrives looking like any
+other, so nothing else catches a wrong one. Write this step into a new skill of
+this kind from the start. Don't list the skills that carry it; the list goes
+stale.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,

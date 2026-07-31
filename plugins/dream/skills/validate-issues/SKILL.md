@@ -52,15 +52,19 @@ Launch the `dream:issue-validator` subagent, once per issue, all in one message
 so they run in parallel. Give each the issue number and the absolute path to the
 repository. A subagent can't resolve a path relative to its own prompt file.
 
-## Verify each recommendation
+## Check the evidence
 
-Read the code, issues, and history each recommendation rests on, and confirm it
-before you act on it. A subagent reports what its own read surfaced, so a
+Read the code, issues, and history each recommendation cites, and confirm the
+evidence holds. A subagent reports what its own read surfaced, so a
 recommendation built on a misread reaches you looking like any other one. This
 matters most for a close, which drops work the user thought was wanted.
 
-Correct any recommendation the evidence doesn't hold up. Decide that one
-yourself.
+Where the evidence doesn't hold, the recommendation has nothing under it. Launch
+a fresh `dream:issue-validator` subagent on that issue, and tell it what your
+check found. The questions behind a recommendation live in that subagent, so
+deciding the issue here would judge it by something else. Check the fresh
+recommendation the same way. When that one doesn't hold either, leave the issue
+alone: post nothing, keep its label, and name it in your report.
 
 ## Draft the comments
 
