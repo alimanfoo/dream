@@ -50,6 +50,12 @@ set -uo pipefail
 
 die() { printf 'dream:watcher: %s\n' "$*" >&2; exit 2; }
 
+# Die unless the value is a repository name of the shape `gh` returns: an owner
+# of letters, digits and hyphens, then a name that may also hold a dot or an
+# underscore, and no second slash. Both halves become path segments of the
+# watermark file's path, so a value of another shape must not reach it.
+require_repo_name() { [[ "$1" =~ ^[A-Za-z0-9-]+/[A-Za-z0-9._-]+$ && "$1" != */. && "$1" != */.. ]] || die "the repository name must be owner/name, got '$1'"; }
+
 [ $# -eq 1 ] || die "usage: watch.sh <pr>"
 pr=$1
 [[ "$pr" =~ ^[1-9][0-9]*$ ]] || die "pull request must be a positive whole number, got '$pr'"
@@ -66,6 +72,7 @@ footer="claude.com/claude-code"
 
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
+require_repo_name "$repo"
 
 # The account the session posts through, which is also the user's. The filter
 # matches it to drop activity from any other account.
@@ -75,8 +82,7 @@ me=$(gh api user --jq .login 2>/dev/null) \
 # The watermark file, keyed by repository and pull request. The repository name
 # stays a real path segment (owner/name), rather than being flattened, so two
 # repositories never collide: acme-corp/api and acme/corp-api are distinct
-# paths, not one shared key. A nameWithOwner holds exactly one slash and neither
-# half can be "..", so the path never escapes the directory.
+# paths, not one shared key.
 dir="$HOME/.dream/watcher/$repo"
 mkdir -p "$dir" || die "cannot create the watermark directory $dir"
 watermark_file="$dir/pr${pr}"

@@ -78,6 +78,13 @@ die() { printf 'dream:dedup-issues: %s\n' "$*" >&2; exit 2; }
 # that start at one.
 require_positive_int() { [[ "$2" =~ ^[1-9][0-9]*$ ]] || die "$1 must be a positive whole number, got '$2'"; }
 
+# Die unless the value is a repository name of the shape `gh` returns: an owner
+# of letters, digits and hyphens, then a name that may also hold a dot or an
+# underscore, and no second slash. Both halves become path segments of the state
+# directory, and the scan deletes the bodies directory it builds there, so a
+# value of another shape must not reach either path.
+require_repo_name() { [[ "$1" =~ ^[A-Za-z0-9-]+/[A-Za-z0-9._-]+$ && "$1" != */. && "$1" != */.. ]] || die "the repository name must be owner/name, got '$1'"; }
+
 # --- arguments -------------------------------------------------------------
 
 limit=$default_limit
@@ -120,6 +127,7 @@ done
 
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
+require_repo_name "$repo"
 
 state_dir="$HOME/.dream/dedup-issues/$repo"
 record_file="$state_dir/record"
