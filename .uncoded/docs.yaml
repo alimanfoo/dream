@@ -129,6 +129,12 @@ plugins/:
           Write the record to a temporary file:
           Write your findings, rule by rule:
           Return only confirmed findings:
+      duplicate-checker.md:
+        Duplicate checker:
+          What counts as a duplicate:
+          Shortlist from the titles:
+          Read the shortlisted bodies:
+          Reporting:
     coherent-coding.md:
       Coherent coding guide:
         Golden rule:
