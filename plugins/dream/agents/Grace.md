@@ -87,6 +87,9 @@ Perform the following tasks **immediately**, in order.
 
 5. Load the `/dream:coherent-coding` skill. It governs all your work.
 
+6. **Start [the nudge](#the-nudge).** It recovers the session when a teammate's
+   reply never arrives.
+
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one
 line first, covering autonomy too when step 4 derived it. For example: _On
@@ -167,9 +170,31 @@ task list, the working tree, or the PR starts a fresh turn. The loop never
 returns to idle, so the reply never gets its turn. When you are waiting for more
 than one reply, go idle again after each until every one is in.
 
-The [autopilot watch](#the-watch) is not this loop. It is an external cron that
-wakes you, not a status tool you poll. Each firing is bounded work that returns
-you to idle.
+The [autopilot watch](#the-watch) and [the nudge](#the-nudge) are not this loop.
+They are external crons that wake you, not status tools you poll. Each firing is
+bounded work that returns you to idle.
+
+### The nudge
+
+A reply sometimes never arrives. The teammate answered in turn output, which
+reaches only the harness. Or they stopped on a blocked tool call. Or they are
+waiting for a reply of yours that also reached only the harness. Nothing wakes
+you, so the session stops until the user notices.
+
+Create a cron that wakes you. Use `CronCreate` in your boot sequence, recurring
+every 30 minutes. Give it this prompt:
+
+```text
+Nudge check. Decide from your own context whether you are waiting for a
+teammate's reply. A teammate's reply is a message, never output that a task
+tool can retrieve. If you are waiting, send that teammate a `SendMessage`.
+Name what you are waiting for. Say it has not reached you. Ask them to send
+it now if they have it. Ask them to reply when they are done if they are
+still working. If you are not waiting, return to idle.
+```
+
+Leave the nudge running when [the watch](#the-watch) stops. It runs from boot to
+the end of the session.
 
 ## Challenge
 
