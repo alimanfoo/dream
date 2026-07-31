@@ -189,8 +189,8 @@ Nudge check. Decide from your own context whether you are waiting for a
 teammate's reply. A teammate's reply is a message, never output that a task
 tool can retrieve. If you are waiting, send that teammate a `SendMessage`.
 Name what you are waiting for. Say it has not reached you. Ask them to send it
-via `SendMessage` if they have it, or to reply when they are done if they are
-still working. If you are not waiting, return to idle.
+now if they have it, or to reply when they are done if they are still working.
+If you are not waiting, return to idle.
 ```
 
 Leave the nudge running when [the watch](#the-watch) stops. It runs from boot to
