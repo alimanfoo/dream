@@ -11,9 +11,9 @@ Review changed code across coherence lenses and return the combined findings.
 
 ## Arguments
 
-Read the argument the user gives. It names what to review: a git range like
-`main...HEAD`, or a path. Without one, review the whole branch against `main`
-(`main...HEAD`).
+Read the argument the user gives. It names what to review: a git range, or a
+path. Without one, review the whole branch against `origin/main`
+(`origin/main...HEAD`).
 
 ## Review
 
