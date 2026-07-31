@@ -59,7 +59,9 @@ Give each finding in the file these parts:
 
 ## Return only what needs changing
 
-Return only the findings you marked `CHANGES NEEDED`.
+Return only the findings you marked `CHANGES NEEDED`. Returning nothing is a
+valid answer. Say so plainly rather than reach for a rule to have something to
+report.
 
 List each in the same form, without the verdict line. Every returned finding is
 `CHANGES NEEDED`, so the line adds nothing.
