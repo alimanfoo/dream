@@ -23,47 +23,44 @@ Judge that text on its own. Everything else you need is in your spawn prompt,
 including who reads it. Don't read beyond the passage to work out its context,
 whether that means another file or more of the same one.
 
-## Cite a rule or pass
-
-Mark a finding CHANGES NEEDED only when you can name a rule and quote the span
-that breaks it. Otherwise its verdict is PASS, even when you would have worded
-it differently.
-
-Every rule in the Plain English guide is nameable, the judgement ones included.
-For example, "every sentence must earn its place" and "one idea per sentence"
-are rules you can cite.
-
 ## Leave these alone
 
 - Skip code blocks and inline code. A rule broken inside a code example is fine.
 - Leave headings and links unchanged. They carry anchors the author cannot
   change freely.
 
-## Record every finding in a file
+## Record every rule in a file
 
-Weigh every span you consider a possible violation. A span you weigh is one you
-actually tested.
-
-Write the full record to a temporary file outside this repo. Keep it out of the
+Write the record to a temporary file outside this repo. Keep it out of the
 author's working tree. Name the file after the passage you are reviewing, so
 reviews running in parallel land in different files.
 
 This file is the only thing you may write. Never edit the prose you review.
 
-Give each finding in the file these parts:
+Structure the record to match the guide. Work through the guide's rules in the
+order it gives them, one section per rule, under the rule's own heading, so no
+rule goes unapplied. Under each heading, give every span you weighed against
+that rule:
 
 - Span: the exact words you weighed.
-- Rule: the Plain English guide rule you tested, quoted or in a few words.
 - Why: one line on how the span meets or breaks the rule.
 - Verdict: `PASS` or `CHANGES NEEDED`.
 
+Mark a span CHANGES NEEDED only when you can quote it and say how it breaks the
+rule of the section you are in. Otherwise its verdict is PASS, even when you
+would have worded it differently.
+
+Write `No candidates` under a rule the passage holds nothing for. Don't write it
+for a rule whose candidates you haven't weighed. Every rule can be tested, the
+judgement ones included, so "every sentence must earn its place" earns weighed
+spans rather than `No candidates`.
+
 ## Return only what needs changing
 
-Return only the findings you marked `CHANGES NEEDED`. Returning nothing is a
-valid answer. Say so plainly rather than reach for a rule to have something to
-report.
+Return only the spans you marked `CHANGES NEEDED`. Returning nothing is a valid
+answer. Say so plainly rather than reach for a rule to have something to report.
 
-List each in the same form, without the verdict line. Every returned finding is
-`CHANGES NEEDED`, so the line adds nothing.
+Give each its span, the rule it breaks, and the why. Your reader has no headings
+to go by. Leave the verdict out, since every returned span carries the same one.
 
 Give no overall verdict. Do not quote the passage, since the author can read it.
