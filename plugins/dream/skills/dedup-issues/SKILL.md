@@ -39,12 +39,12 @@ run that found nothing new to check and stopped.
   were checked either way. With no targets there is no number to pass, so skip
   it.
 
-Don't run `mark-checked` at all when any target came back with no verdicts you
-can read. A check that says plainly that nothing duplicated is a result, so it
-does not hold the record back. A subagent failing is an ordinary event, and the
-highest number in `targets` would then record targets nothing checked, putting
-them out of reach for good. Leaving the record alone means the next run picks
-them up, which costs reading rather than correctness.
+Don't run `mark-checked` at all when any target did not come back with verdicts
+you can read. A check that says plainly that nothing duplicated is a result, so
+it does not hold the record back. A subagent failing is an ordinary event, and
+the highest number in `targets` would then record targets nothing checked,
+putting them out of reach for good. Leaving the record alone means the next run
+picks them up, which costs reading rather than correctness.
 
 The rest of the run stands. Report the groups you found and close what the user
 confirms, because a confirmed duplicate is confirmed whatever else failed. Tell
@@ -81,6 +81,10 @@ batches until the targets are done.
 
 Give each briefing its own target number and the whole `issues` list from the
 scan, each issue with its number, its title and its `bodyFile` path.
+
+As each batch returns, write in your turn output which of its targets came back
+with verdicts you can read. The end of the run needs that list, and it has to
+last through every later batch and through the wait for the user.
 
 ## Read the verdicts against the right issue
 
