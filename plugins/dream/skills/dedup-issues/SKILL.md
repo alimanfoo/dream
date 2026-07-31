@@ -33,13 +33,11 @@ run that found nothing new to check and stopped.
 - Run `dedup.sh discard-bodies`. The bodies are this run's working copy of the
   tracker, and nothing reads them once the run is over. It is not an error when
   there are none, so this act carries no condition.
-- Run `dedup.sh mark-checked --from <startAfter> <highest number in targets>`,
-  so the next run starts above it. Pass `startAfter` as the scan gave it, and
-  leave `--from` off when the scan gave none. The script advances the record
-  only from where the record already stood, so a run that started anywhere else
-  leaves it alone and says so, which is the right outcome and not a failure. Run
-  this whatever the user decided about closing, because the issues were checked
-  either way. With no targets there is nothing to move.
+- Run `dedup.sh mark-checked --from <startAfter> <highest number in targets>`.
+  Pass `startAfter` as the scan gave it, and leave `--from` off when the scan
+  gave none. Run it whatever the user decided about closing, because the issues
+  were checked either way. With no targets there is no number to pass, so skip
+  it.
 
 ## Scan the tracker
 
@@ -51,12 +49,9 @@ second machine, a deliberate re-check, or a reopened issue. An issue closed
 during one run and reopened later sits below the record, so it never becomes a
 target again, and `since` is the only way to have it checked.
 
-`dedup.sh mark-checked` advances the record only from where the record already
-stood, and enforces that rather than trusting this file. So a `since` run
-starting anywhere else leaves the record as it was, the record ends up older
-than the work just done, and the next run without `since` re-checks some issues.
-Tell the user that when they pass `since`. It costs reading, never a wrong
-answer.
+After a `since` run the record can end up older than the work just done, and the
+next run without `since` then re-checks some issues. Tell the user that when
+they pass `since`. It costs reading, never a wrong answer.
 
 Tell the user where this run starts, from `startAfter`. Give it as the number
 the run starts above, not as what has been checked. `since` replaces the record,
