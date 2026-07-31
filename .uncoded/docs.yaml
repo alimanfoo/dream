@@ -259,6 +259,7 @@ plugins/:
           Plan:
             Arguments:
             Compose the draft plan:
+            Check each task is manageable:
             The result:
       requirements-analysis/:
         SKILL.md:

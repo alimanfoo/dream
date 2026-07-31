@@ -31,10 +31,7 @@ delivers the design. Don't translate the session input directly into tasks. The
 design has already reshaped it where needed.
 
 Each task should be a manageable unit of work for the implementer, one commit
-per task. Test each task by its one-line headline. If the headline needs an
-"and," the task is two ideas, so split it. One idea per task keeps each commit
-clean and its review focused on a single change. Split tasks that grow beyond
-manageable. Fold fragments into a related task.
+per task.
 
 Build each brief in this order:
 
@@ -56,6 +53,16 @@ Prefer one task with a bounded criterion to a run of special-case tasks that
 each name a single site. The criterion collapses them into one clean change.
 
 Write the draft plan to a temporary file outside the repo.
+
+## Check each task is manageable
+
+Read the draft back from the file. Test each task by its one-line headline. If
+the headline needs an "and", the task is two ideas, so split it. One idea per
+task keeps each commit clean and its review focused on a single change. Split
+tasks that grow beyond manageable.
+
+Name in turn output each task that holds more than one idea. Then revise the
+file, splitting each one. When every task holds one idea, say so plainly.
 
 ## The result
 
