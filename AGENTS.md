@@ -95,11 +95,17 @@ This repo has two layers, easy to confuse:
   part of the installed plugin. (`CLAUDE.md` is a symlink to AGENTS.md. Edit
   `AGENTS.md` directly. Some editors refuse to write through a symlink.)
 
-Two guides sit at the plugin root, not inside any one skill: the
+The guides sit at the plugin root, not inside any one skill: the
 [Plain English guide](plugins/dream/plain-english.md) and the
 [coherent coding guide](plugins/dream/coherent-coding.md). The whole plugin
 works to them, the team agents at runtime and the utility skills when invoked.
 So each standard has one home, shared by all of them.
+
+A shared shell file sits there too, for the same reason:
+[`repo-state.sh`](plugins/dream/repo-state.sh). A skill script that keeps state
+for one repository sources it, for where that state goes and for the check on
+the repository name the path is built from. `watch.sh` and `dedup.sh` both do. A
+further such script sources it rather than working either out again.
 
 Ways they get crossed:
 
@@ -177,16 +183,17 @@ throughout:
 - Write a subagent-type identifier as `dream:foo`, since it is not a slash
   command.
 - Write an issue label as "dream:foo".
-- `catch.sh` keeps its own shell register, where backticks and quotes would
-  misread.
+- The plugin's shell scripts keep their own register, where backticks and quotes
+  would misread.
 - Keep a skill reference (`/dream:team`) distinct from the multi-agent team
   concept, "the dream team", which stays plain prose.
 
-This repo is mostly plugin metadata, skills, and agent prompts. There is no test
-suite. When changing behaviour, read the affected skill and agent prompts
-together. Check that lifecycle, role boundaries, and tool permissions stay
-consistent. Run the pre-commit hooks to check formatting. See the Linting
-section.
+This repo is mostly plugin metadata, skills, agent prompts, and a few shell
+scripts. There is no test suite. When changing behaviour, read the affected
+skill and agent prompts together, and read a script alongside the SKILL.md that
+runs it. Check that lifecycle, role boundaries, and tool permissions stay
+consistent. A script has no test either, so exercise a change to one by running
+it. Run the pre-commit hooks to check formatting. See the Linting section.
 
 ## Design principles
 
@@ -395,6 +402,8 @@ The repo uses [`pre-commit`](https://pre-commit.com/) for lightweight checks:
   and cross-file anchor links resolve to real headings)
 - invisible characters such as non-breaking spaces, zero-width marks, and bidi
   controls (`scripts/check_invisible_chars.py`)
+- shell scripts (`shellcheck`, run with `-x` so a script is checked together
+  with the file it sources, whether or not the commit touches both)
 - `claude plugin validate` on the plugin and marketplace manifests
 - YAML frontmatter validation on skill and agent files
 - the documentation index (`uncoded sync`, which regenerates
@@ -411,7 +420,8 @@ Run all hooks once: `uvx pre-commit run --all-files`. The same hooks run in CI
 on every push and pull request (see `.github/workflows/lint.yml`). The
 `claude plugin validate` hook requires the Claude Code CLI on `PATH`. CI
 installs it via `npm`. The `uncoded` hook requires `uvx` on `PATH`. CI provides
-it via `astral-sh/setup-uv`.
+it via `astral-sh/setup-uv`. The `shellcheck` hook requires `shellcheck` on
+`PATH`. CI installs it via `apt`.
 
 ## Release protocol
 
