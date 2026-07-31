@@ -152,9 +152,11 @@ set_skill_state_dir dedup-issues "$repo"
 record_file="$skill_state_dir/record"
 bodies_dir="$skill_state_dir/bodies"
 
-# What each subcommand does, in one place. No arm ends in an exit of its own,
-# because the line below the case stops everything but `scan`. So a subcommand
-# added here cannot run the scan as well by forgetting to stop.
+# What each subcommand does, in one place. Every subcommand has an arm, and the
+# one that goes on to the scan says so here. So a subcommand added to the
+# argument check and forgotten here dies, rather than exiting as though it had
+# worked.
+run_scan=false
 case "$subcommand" in
   mark-checked)
     printf '%s' "$number" > "$record_file" || die "cannot write the record file $record_file"
@@ -165,9 +167,15 @@ case "$subcommand" in
     # caller to check.
     rm -rf "$bodies_dir" || die "cannot remove the bodies directory $bodies_dir"
     ;;
+  scan)
+    run_scan=true
+    ;;
+  *)
+    die "no handler for '$subcommand'"
+    ;;
 esac
 
-[ "$subcommand" = scan ] || exit 0
+$run_scan || exit 0
 
 # --- scan ------------------------------------------------------------------
 
