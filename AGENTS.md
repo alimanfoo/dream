@@ -311,6 +311,13 @@ doesn't work. The agent doesn't know they're about to reach for X. Checks have
 to fire after the candidate content exists in context. "If you notice you've
 written X" is what works.
 
+This also fixes the order of a written judgement: the evidence first, the
+verdict last. The verdict is what the evidence produces, so an agent cannot
+shorten, route or skip an entry by a verdict it has not yet emitted. Asking it
+to do so moves the judgement back into thinking tokens, where nothing holds it.
+The copy-editor's record is the worked example, each entry running span, rule,
+why, verdict.
+
 **Agents act on a name's face value**: a literal-following model obeys the
 everyday sense of the words you name things with: slots, moves, roles, phases.
 The name is a stronger instruction than the prose beneath it, so the body won't
