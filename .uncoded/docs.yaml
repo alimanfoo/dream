@@ -221,6 +221,17 @@ plugins/:
             First, read the Plain English guide:
             Arguments:
             Each round:
+      dedup-issues/:
+        SKILL.md:
+          Dedup issues:
+            How every run ends:
+            Scan the tracker:
+            Check each target:
+            Read the verdicts against the right issue:
+            Verify every duplicate before you act on it:
+            Group, and choose which issue each group keeps:
+            Put the groups to the user:
+            Close what the user confirmed:
       design/:
         SKILL.md:
           Design:
