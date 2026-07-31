@@ -40,7 +40,7 @@ This is one of the protocol's
 
 Write the accepted plan to a temporary file outside this repo, via Bash. Send
 Junio and Ralph the file's absolute path: two `SendMessage` calls in the same
-turn, for information only. Sign off `From Grace.`
+turn, for information only.
 
 ## Step 4.5: Post the accepted plan to the PR
 
