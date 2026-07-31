@@ -12,7 +12,7 @@ Before the per-task loop runs, one setup step.
 
 ### Step 5.1: Create the shared task list
 
-Issue the `TaskCreate` calls to create a task list from the accepted plan.
+Create the task list from the accepted plan, one `TaskCreate` call per task.
 
 ## Per-task workflow
 
@@ -23,9 +23,8 @@ assignment, wakes Ralph, and carries the task description as the brief. Don't
 add a `SendMessage`. A second call lands as a duplicate dispatch, and Ralph
 reads it as "you've already assigned this."
 
-Write the brief with three parts: the goal, the criterion that selects the work,
-and the raise channel. Examples illustrate the criterion. They are scaffold, not
-the work.
+Write the brief with the goal and the criterion that selects the work. Examples
+illustrate the criterion. They are scaffold, not the work.
 
 The tool descriptions mislead. `SendMessage`'s own example shows
 `{"to": "researcher", "summary": "assign task 1", ...}`. That example is the
@@ -61,8 +60,8 @@ Mark the task complete (`TaskUpdate status=completed`).
 ### Step 5.5: Triage findings
 
 Triage Junio's findings together with any gap from your own read. Accept or
-reject each on its merits, following `/dream:coherent-coding`
-principles,recording a one-line reason for the call. Accepted ones become new
+reject each on its merits, weighed against the `/dream:coherent-coding`
+principles, recording a one-line reason for the call. Accepted ones become new
 tasks, **inserted as the next tasks before any pending original-scope work**
 (depth-first drain). A correction for a gap you found is one such follow-on.
 Hold ancillary findings for post-merge triage. Never file them mid-session.
@@ -72,6 +71,10 @@ one we missed, or one the session has now made adjacent?** If yes, accept it as
 an in-scope follow-on even when the original task did not list that surface. An
 in-session antecedent flips a borderline call toward in-scope. The session
 created the relevance.
+
+If a finding proposes a docstring, comment, or section-header to express a
+contract, invariant, precondition, or convention, apply the
+[code-shape-first check](../../../agents/Grace.md#code-shape-first-check) to it.
 
 When the coherence audit raises a **challenge**, assess whether an accepted
 artifact really no longer holds. If it does, take it to the user (accept or

@@ -55,7 +55,7 @@ Perform the following tasks **immediately**, in order.
    [ "$(git rev-parse --git-common-dir)" != "$(git rev-parse --git-dir)" ]
    ```
 
-   Two valid setups:
+   Valid setups:
    - **Primary checkout on `main`:** run `git pull origin main` and continue.
      Phase 1 creates the session branch at its opening sequence.
    - **Worktree on a branch off `main`:** run `git fetch origin main` and
@@ -326,7 +326,7 @@ Autopilot pauses on these, and only these:
 
 - **An unanswered open question**, raised via
   [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions)
-  or via the explicit reopening in
+  or while addressing the user's review in
   [Step 6.7](../skills/team/grace/phase6.md#step-67-hand-back-to-the-user). If
   the user leaves any question unanswered, re-ask the unanswered ones before
   continuing. Under autopilot the same behaviour applies. You marked the
@@ -372,11 +372,10 @@ new comments and reviews, as one combined batch. Either channel carries the same
 intents below. An item can carry more than one. Act on all of them, in this
 order, and drop nothing:
 
-1. **Feedback** is a user-directed change. Triage it the same as a Phase 6
-   review. Run each accepted point through the reopening path (see
-   [Step 6.7](../skills/team/grace/phase6.md#step-67-hand-back-to-the-user)). It
-   covers open questions and the response comment. These commits are
-   post-handoff.
+1. **Feedback** is the user's review. Triage it and make a task for each
+   accepted point, as in
+   [Step 6.7](../skills/team/grace/phase6.md#step-67-hand-back-to-the-user),
+   which also covers open questions and the response comment.
 2. **A resolve-conflicts request**, recognised liberally from a body such as
    _"resolve conflicts"_ or _"update the branch"_, is your go-ahead to make the
    PR mergeable. Resolve the conflict as Phase 7 describes. It counts as the
@@ -491,25 +490,22 @@ at a glance whether an agent or a person made it.
 ### Writing to GitHub
 
 Every write you make to GitHub, whether a PR description, an issue body, or a
-comment on either, takes the same shape:
+comment on either, follows the same rules:
 
 - Write the body to a temporary file outside this repo, via Bash, and post it
-  with `--body-file <path>`. That sidesteps the quoting and escaping a long
-  inline `--body` string invites, and one file serves every downstream use
-  instead of pasting the text again for each.
-- Write in public register. Keep role names and protocol-process vocabulary out,
-  and assume the reader didn't share the session.
+  with `--body-file <path>`. That avoids the quoting and escaping that a long
+  inline `--body` string invites.
+- Write in public register. Keep role names and protocol-process vocabulary out.
+  Assume the reader was not in the session.
 - Mark it per
   [Marking agent-authored GitHub items](#marking-agent-authored-github-items).
-  When you are relaying a body someone else wrote and it already carries the
-  footer, leave it be rather than stamping a second one.
+  When you relay a body someone else wrote and it already carries the footer,
+  leave it. Don't add a second one.
 - Follow
   [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
-An accepted artifact, meaning the requirements analysis, code analysis, design,
-or plan, posts under its own plain name as the heading (`Code analysis`,
-`Design`, `Plan`). The requirements analysis is the exception: it posts under
-`Requirements`.
+Head each accepted artifact with its own plain name: `Code analysis`, `Design`,
+`Plan`. The requirements analysis is the exception. Head it `Requirements`.
 
 ### GitHub-write failures and blocks
 
@@ -517,7 +513,7 @@ When a `gh pr comment` or `gh pr create` write fails or is blocked, tell the
 user what failed and why. Fix it or get approval, then retry the same call until
 it lands. Don't advance the phase as if the write succeeded. The PR and its
 artifact comments are the session's deliberation record, so a dropped write
-silently loses what the phase produced. Two things cause this:
+silently loses what the phase produced. What causes it:
 
 - Claude Code's auto-mode classifier can deny the call, reading the verbatim
   relay of a teammate's content as an unauthorised external write.
@@ -532,7 +528,7 @@ the default.
 ### GitHub labels
 
 Label both the session PR and any issues you file with a category label, so
-triage is easier. Three categories cover what you work with:
+triage is easier. These categories cover what you work with:
 
 - **enhancement**: functionality gap or new capability.
 - **maintenance**: coherence, naming, structure. Behaviour already correct.
@@ -543,7 +539,7 @@ time a label is needed. Pick the closest existing label for each of the three
 categories. When no clean match exists for a category, apply no label rather
 than force a near-miss.
 
-You label two things, each from a different source:
+You label these, each from a different source:
 
 - **The PR** carries the **session type's** category. An enhancement session
   maps to `enhancement`, maintenance to `maintenance`, a bug fix to `bug`. Apply
@@ -556,7 +552,7 @@ You label two things, each from a different source:
 
 ### Communication with the user
 
-Use `/dream:plain-english` and keep your responses short.
+Use `/dream:plain-english`. Keep your responses short.
 
 Before each user-facing phase, print one phase marker as that phase's first
 visible output. It shows the user how far the session has come. It is two lines:
@@ -634,9 +630,9 @@ calls. Pre-specifying every move replaces his judgement with yours and gives him
 less to work with, not more. Stay informative. Include context the codebase
 doesn't carry, but stop short of procedure.
 
-Four tactical principles, anchored to failure modes the team has hit:
+Tactical principles, anchored to failure modes the team has hit:
 
-1. **Say what to do, not what to avoid.** Frame instructions positively.
+1. **Say what to do, not what to avoid.**
 
 2. **Goal first, qualifiers after.** Open the message with the thing you want
    done, then the constraints and context.
@@ -645,13 +641,12 @@ Four tactical principles, anchored to failure modes the team has hit:
    examples from your survey carry more weight than five lines of prose
    definition.
 
-4. **Don't over-prompt.** Claude teammates read instructions literally and act
-   on them. Skip "CRITICAL:", "you MUST", "ABSOLUTELY ALWAYS". Aggressive
+4. **Don't over-prompt.** Skip "CRITICAL:", "you MUST", "ABSOLUTELY ALWAYS".
+   Claude teammates read instructions literally and act on them, so aggressive
    emphasis on every clause flattens the signal. Normal imperative prose works.
 
-Write each task description with three parts: the goal, the criterion that
-selects the work, and the raise channel. Examples illustrate the criterion. They
-are scaffold, not the work.
+Write each task description with the goal and the criterion that selects the
+work. Examples illustrate the criterion. They are scaffold, not the work.
 
 The task description travels with the `TaskUpdate` assignment, so no separate
 dispatch message is needed. Task descriptions are not `SendMessage` bodies and

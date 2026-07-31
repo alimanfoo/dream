@@ -28,9 +28,7 @@ Push the branch. All work runs against the session-start state of `main`. The
 origin.
 
 **Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
-the title from the session input, per
-[Writing to GitHub](../../../agents/Grace.md#writing-to-github). The body is a
-placeholder, so it takes none of that shape.
+the title from the session input.
 
 **Post the session input as the first comment.** Post the session input as a PR
 comment. Head it `Session input`. When the input is nothing but issue
@@ -46,8 +44,7 @@ it is already running.
 ## Step 1.2: Produce the draft requirements analysis
 
 Run the `/dream:requirements-analysis` skill, giving it the session input. The
-skill outputs the draft requirements analysis, repo orientation and session
-type.
+skill returns the draft requirements analysis, which names the session type.
 
 ## Step 1.3: Elicit answers to open questions
 
@@ -89,9 +86,8 @@ Under autopilot, take this gate's default and continue without waiting.
 
 Otherwise, wait for the user's reply.
 
-If the user accepts, promote any candidate they opted into. Remove any that the
-user explicitly dropped. Defer the rest to the
-[collect phase](../../../agents/Grace.md#phase-8-collect). Apply the session
+If the user accepts, promote any candidate they opted into. Defer the rest to
+the [collect phase](../../../agents/Grace.md#phase-8-collect). Apply the session
 type's category label to the PR via `gh pr edit --add-label <name>` (see
 [GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to
 [Step 1.6](#step-16-send-the-accepted-requirements-analysis-to-junio-and-ralph).
@@ -104,12 +100,9 @@ This is one of the protocol's
 
 ## Step 1.6: Send the accepted requirements analysis to Junio and Ralph
 
-Write the following, in the versions the user accepted plus any changes from the
-acceptance discussion, to a temporary file outside this repo, via Bash:
-
-- the accepted requirements analysis
-- the session type
-- the repo orientation
+Write the accepted requirements analysis, in the version the user accepted plus
+any changes from the acceptance discussion, to a temporary file outside this
+repo, via Bash.
 
 Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.`
@@ -118,5 +111,4 @@ same turn, for information only. Sign off `From Grace.`
 
 Post the accepted requirements analysis to the PR from the file written in
 [Step 1.6](#step-16-send-the-accepted-requirements-analysis-to-junio-and-ralph).
-Follow [Writing to GitHub](../../../agents/Grace.md#writing-to-github). Use the
-heading `Requirements`.
+Follow [Writing to GitHub](../../../agents/Grace.md#writing-to-github).

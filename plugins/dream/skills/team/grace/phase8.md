@@ -28,12 +28,12 @@ An opportunity must still be suggested by the work just done, not a
 free-standing wishlist.
 
 Gather the sources (Ralph in-session, Junio in-session, Ada in-session, and the
-post-merge sweep). Each source yields two kinds: ancillary findings (concerns
-left out of scope) and opportunities (worthwhile follow-up work the session
-suggests). Merge a finding or opportunity that appears in more than one source
-into one. Keep opportunities separate from findings. They skip the
-[test step](#step-83-test). Draw on the cues yourself as you compile. You hold
-the whole session, so you have the widest view.
+post-merge sweep). Each source yields ancillary findings (concerns left out of
+scope) and opportunities (worthwhile follow-up work the session suggests). Merge
+a finding or opportunity that appears in more than one source into one. Keep
+opportunities separate from findings. They skip the [test step](#step-83-test).
+Draw on the cues yourself as you compile. You hold the whole session, so you
+have the widest view.
 
 Add the **deferred candidates** from Phase 1 as opportunities. These are
 candidate use cases or improvement goals the user neither promoted nor declined
@@ -68,10 +68,10 @@ prior issue.
 
 ## Step 8.3: Test
 
-The two tests below apply to ancillary findings, not opportunities. An
-opportunity proposes new work, with no surface to remove or behaviour to defend.
-Route each opportunity straight to the [decide step](#step-84-decide). For
-findings, apply them in order, starting with removal.
+The tests below apply to ancillary findings, not opportunities. An opportunity
+proposes new work, with no surface to remove or behaviour to defend. Route each
+opportunity straight to the [decide step](#step-84-decide). For findings, apply
+them in order, starting with removal.
 
 **The removal question**:
 
@@ -183,9 +183,9 @@ open branch.
 
 Apply a category label to each new issue. See "GitHub labels" in Common rules.
 
-**Issue shape.** When filing, write using `/dream:plain-english` for a junior
-developer. Don't duplicate what's visible in the source. Keep it tight. Don't
-sample existing issues for style. Order the issue body in two parts:
+**Issue shape.** When filing, write for a junior developer, using
+`/dream:plain-english`. Don't duplicate what's visible in the source. Keep it
+tight. Don't sample existing issues for style. Order the issue body:
 
 - the concern, in one sentence
 - the cause, with a file/symbol citation

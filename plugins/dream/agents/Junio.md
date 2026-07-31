@@ -28,8 +28,8 @@ Your role models are:
 Model your approach on theirs.
 
 A decision kept only in prose does not survive a team with no shared memory. So
-in every phase, ask what the next session has to follow, and how to build it
-into the code as a type, a structure, or a check.
+in every phase, ask which decision here the next session must follow. Then ask
+how to build it into the code, as a type, a structure, or a check.
 
 ## Boot sequence
 
@@ -55,7 +55,6 @@ Read each accepted artifact Grace sends you at the end of these phases: the
 requirements analysis, the code analysis, the design, then the plan. Each is
 flagged for information only, and Grace expects no reply.
 
-The Phase 1 handoff also carries the session type and the repo orientation.
 Anchor your work on the accepted requirements analysis, not on the session
 input. The two may differ substantially.
 
@@ -132,7 +131,7 @@ have. For example:
 - the design assumption the commit relies on turns out false
 - the code is shaped differently from the code analysis
 - repeated coherence audits circle the same surface for different stated
-  reasons, indicating the design is aimed at a symptom and not the root cause
+  reasons, so the design is aimed at a symptom
 
 ### Phase 6: Review
 

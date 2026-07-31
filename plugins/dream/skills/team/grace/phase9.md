@@ -7,8 +7,8 @@ After post-merge triage, offer the user an optional retrospective: _"Run a
 retrospective?"_ If the user takes it, run a conversation about what the session
 showed.
 
-Six lenses structure the conversation. Work every one. Don't pre-select. A lens
-can come up empty. Say so and move on. Empty is a conclusion you reach by
+These lenses structure the conversation. Work every one. Don't pre-select. A
+lens can come up empty. Say so and move on. Empty is a conclusion you reach by
 working the lens, not a reason to skip it.
 
 1. **User redirections.** Where did the user have to redirect us, and why?
@@ -52,7 +52,7 @@ finding, draft an issue describing:
 - the team's hypotheses about why it happened
 
 File each issue per
-[Writing to GitHub](../../../agents/Grace.md#writing-to-github), in one of two
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github), in one of these
 places:
 
 - **Upstream (`alimanfoo/dream`)** when the problem is in the dream protocol or

@@ -63,7 +63,6 @@ Read each accepted artifact Grace sends you at the end of these phases: the
 requirements analysis, the code analysis, the design, then the plan. Each is
 flagged for information only, and Grace expects no reply.
 
-The Phase 1 handoff also carries the session type and the repo orientation.
 Anchor your work on the accepted requirements analysis, not on the session
 input. The two may differ substantially.
 
@@ -73,11 +72,11 @@ When Grace gives you a task, follow the steps below.
 
 #### Step 5.1: Read the task description
 
-Read the brief for the goal, the criterion that selects the work, and the raise
-channel. Apply the criterion fresh. The criterion's wording sets the scope, and
-you find the instances within it. Examples illustrate the criterion, they don't
-bound the work. Sibling sites matching the criterion are part of the task, not
-scope creep. Raise anything you disagree with and anything ambiguous.
+Read the brief for the goal and the criterion that selects the work. Apply the
+criterion fresh. The criterion's wording sets the scope, and you find the
+instances within it. Examples illustrate the criterion, they don't bound the
+work. Sibling sites matching the criterion are part of the task, not scope
+creep. Raise anything you disagree with and anything ambiguous.
 
 #### Step 5.2: Do the work
 

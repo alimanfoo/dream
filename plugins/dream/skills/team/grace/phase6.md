@@ -4,7 +4,7 @@ Write every turn output, message and artefact in this phase using
 `/dream:plain-english`.
 
 When development is complete, follow the steps below. Ada and Junio review in
-parallel. You handle both reviews the same way.
+parallel, then the user. You handle all three reviews the same way.
 
 ## Step 6.1: Send the review requests
 
@@ -28,7 +28,7 @@ each examined. Never use an agent name, which is internal protocol detail.
 
 ## Step 6.3: Triage each finding
 
-Decide each finding from both reviews on its merits, following
+Decide each finding from both reviews on its merits, weighed against the
 `/dream:coherent-coding` principles. Each finding takes one of these paths:
 
 - Accept: make it a follow-on task, handled by the standard per-task workflow
@@ -46,6 +46,10 @@ the response comment you post after triage.
 
 Reclassify any "out of scope but noticed" item as in scope when it is the same
 edit: one the PR missed, or one the PR has now made adjacent.
+
+If a finding proposes a docstring, comment, or section-header to express a
+contract, invariant, precondition, or convention, apply the
+[code-shape-first check](../../../agents/Grace.md#code-shape-first-check) to it.
 
 ## Step 6.4: Post your response to reviews as a PR comment
 
@@ -103,31 +107,22 @@ attention. If no findings were accepted, flip immediately.
 
 ## Step 6.7: Hand back to the user
 
-Hand back to the user once all agent reviewer comments are addressed. The PR is
-ready for the user's review. Phase 7 handles the merge itself.
+Hand back to the user once you have addressed every comment from Ada and Junio.
+The PR is ready for the user's review, the last of the three.
 
 Under autopilot, don't hand back. The watch has been running since the PR
 opened, and now carries the PR through the user's review, merge, or close (see
 [Review and merge](../../../agents/Grace.md#review-and-merge)).
 
-A user-directed change reopens the [develop phase](phase5.md). Under autopilot,
-a review with feedback is that change. You handle it as an explicit reopening,
-the same as any Phase 5 task:
+Address the user's comments the way you addressed Ada's and Junio's. Triage
+each, and make a task for each one you accept. Post any question you can't
+resolve without the user to the PR as a comment before you ask in chat, so the
+PR doesn't look idle while the question sits only in chat. Do this the same as
+[Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions). Then post one
+response comment, the same as
+[Step 6.4](#step-64-post-your-response-to-reviews-as-a-pr-comment).
 
-- Grace creates a task
-- Ralph implements and commits
-- Junio audits
-- Grace reads and triages
-
-Post any question you can't resolve without the user to the PR as a comment
-before you ask in chat. Otherwise the PR looks idle after the review while the
-question sits only in chat. Do this the same as
-[Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions).
-
-Once the accepted follow-ons are complete, post one response comment. Do this
-the same as [Step 6.4](#step-64-post-your-response-to-reviews-as-a-pr-comment).
-
-From here the branch is frozen. In Merge, Collect, and Reflect a finding that
-would once have become a follow-on task becomes an issue instead. You fold no
-new development into the PR. Resolving merge conflicts is the exception. That is
-the merge itself, delegated to Ralph as Phase 7 describes.
+The branch freezes once every review is addressed, the user's included. From
+then on you fold no new development into the PR, and a finding becomes an issue
+rather than a follow-on task. Resolving a merge conflict is the merge itself,
+not new development.
