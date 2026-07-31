@@ -29,12 +29,6 @@
 # The record is advisory. The optional `since` argument replaces it, which
 # covers a maintainer on a second machine and a deliberate re-check.
 #
-# A run started at `since` has checked nothing between the record and there, so
-# the record must not advance past those issues: they would never be targets
-# again, and nothing would ever report it. `mark-checked` therefore takes the
-# number the run started above and advances the record only from that value, so
-# the rule holds whatever the caller passes.
-#
 # Reading an issue body is the caller's expensive act, so `scan` hands it every
 # open issue's title, and the issues above the number it starts after as the
 # targets to check. Titles are cheap. The caller reads only the bodies its
@@ -191,8 +185,9 @@ run_scan=false
 case "$subcommand" in
   mark-checked)
     # The record advances only from the value the run started at, so no caller
-    # can move it past issues nothing checked. A run that continued from the
-    # record passes the record's own value and advances it. A run started
+    # can move it past issues nothing checked. Those issues would never be
+    # targets again, and nothing would ever report it. A run that continued from
+    # the record passes the record's own value and advances it. A run started
     # somewhere else, which is what `since` does, leaves the record alone.
     #
     # An absent record and an omitted `--from` are both the empty string, so the
