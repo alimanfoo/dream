@@ -182,7 +182,7 @@ waiting for a reply of yours that also reached only the harness. Nothing wakes
 you, so the session stops until the user notices.
 
 So a cron wakes you. Create it with `CronCreate` in your boot sequence,
-recurring every 20 minutes. Give it this prompt:
+recurring every 30 minutes. Give it this prompt:
 
 ```text
 Nudge check. Decide from your own context whether you are waiting for a
