@@ -130,7 +130,8 @@ positive arrives looking like any other finding.
 
 ## Group, and choose which issue each group keeps
 
-Two pairs can share an issue, so merge any that do into one group.
+Merge any pairs or groups that share an issue, and keep merging until none share
+one.
 
 Then choose the issue the group keeps:
 

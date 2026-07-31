@@ -141,7 +141,8 @@ A subagent's finding can be wrong, and nothing else catches some kinds of wrong
 finding. When a finding asserts something about a source the skill has not read,
 acting on it reveals nothing. So the skill must read that source and check the
 finding itself, before it returns the finding or acts on it. `code-review` is
-the model to copy, and a new skill like it carries the step from the start.
+the model to copy, and a new skill whose findings work that way carries the step
+from the start.
 
 Applying a finding sometimes means reading the source anyway, as a proposed
 rewrite of prose the skill is holding does. A wrong one shows up as the skill
