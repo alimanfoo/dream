@@ -90,6 +90,24 @@ tasks that grow beyond manageable.
 Name in turn output each task that holds more than one idea. Then revise the
 file, splitting each one. When every task holds one idea, say so plainly.
 
+## Check each task can be committed
+
+Read the draft back from the file. Read each task as the implementer, and ask
+whether the tests and checks pass once that task alone is done. The implementer
+commits one task at a time, so a task that leaves them failing has nothing it
+can commit. Shapes to watch for:
+
+- a task that changes a caller before the task that changes the callee
+- a task that removes a symbol later tasks still use
+- a fragment of a change, too small to stand on its own
+
+Merge each failing task into the task that completes it. Rewrite the merged
+task's headline so it still names one change. If no such headline fits, the
+merge was wrong, and the task boundary is the real problem.
+
+Name in turn output each task that can't be committed on its own. Then revise
+the file. When every task can, say so plainly.
+
 ## The result
 
 Return the completed plan from the file: the task list that delivers the design.
