@@ -53,6 +53,11 @@
 # `discard-bodies` and the issue text does not outlive it. Removing bodies that
 # are not there succeeds, so that rule carries no condition and a caller cannot
 # get it wrong. The record, one number, is the only thing a run leaves behind.
+#
+# A run assumes it is the only one for this repository. The state is keyed by
+# the repository alone, and both `scan` and `discard-bodies` clear the whole
+# bodies directory, so a second run at the same time would pull those files out
+# from under the first run's readers. A user invokes this skill, one at a time.
 
 set -uo pipefail
 
@@ -234,8 +239,8 @@ if [ -n "$since" ]; then
   start_after=$since
 elif [ -n "$start_after" ]; then
   # mark-checked is the only writer, so a value that is not a number means
-  # someone edited the file by hand. Name the file now, rather than failing with
-  # later a jq parse error that hides where the bad value came from.
+  # someone edited the file by hand. Name the file now, rather than failing
+  # later with a jq parse error that hides where the bad value came from.
   require_positive_int "the record in $record_file" "$start_after"
 fi
 

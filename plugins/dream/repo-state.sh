@@ -45,8 +45,9 @@ require_repo_name() {
 # put `die`'s exit in a subshell, and the caller would carry on with an empty
 # path.
 #
-# The variable has the one name, rather than one the caller passes in, so
-# nothing has to be read back through the name of a name.
+# The variable has the one name, rather than one the caller passes in. A
+# caller's own name would arrive here as a string, and reading the value back
+# would mean expanding a variable whose name is itself held in a variable.
 #
 # The state sits under $HOME, so it survives between runs in separate processes
 # and is never committed to the repository being worked on.
