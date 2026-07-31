@@ -54,6 +54,32 @@ each name a single site. The criterion collapses them into one clean change.
 
 Write the draft plan to a temporary file outside the repo.
 
+## Check the tidying comes first
+
+Read the draft back from the file. Ask of each task: would it go more cleanly if
+a small precursor cleanup made the change easy first? New code forced to fit
+around a shape that no longer suits it comes out more complex (see
+[Tidy first](../../coherent-coding.md#tidy-first)). Examples:
+
+- extract a helper before adding a sibling case
+- rename a confusing parameter before threading new arguments
+- split a tangled function before adding a branch
+
+A precursor qualifies only when all of these hold:
+
+- **Tied to a named task.** Say which planned task it supports. A free-floating
+  cleanup doesn't qualify.
+- **Behaviour-preserving.** Pure restructure: extract, inline, rename, move,
+  split. No contract change.
+- **Materially easier or safer.** Without it, the named task would be more
+  error-prone, more complex, or reach more places. An improvement to looks alone
+  doesn't pass.
+
+Name in turn output each task that needs a precursor, and the precursor it
+needs. Then revise the file, adding each precursor as its own task ahead of the
+task it supports. When no task needs one, say so plainly. Don't invent a cleanup
+to have something to report.
+
 ## Check each task is manageable
 
 Read the draft back from the file. Test each task by its one-line headline. If
