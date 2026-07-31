@@ -42,8 +42,7 @@ run that found nothing new to check and stopped.
 Don't run `mark-checked` at all unless two things hold: your last line accounts
 for every number in `targets`, and the list on it is empty. The count is what
 tells a clean run from one that has lost its lines, since both leave the list
-empty. A check that says plainly that nothing duplicated is a result, so it does
-not hold the record back.
+empty.
 
 A subagent failing is an ordinary event, and the highest number in `targets`
 would then record targets nothing checked, putting them out of reach for good.
@@ -88,10 +87,11 @@ scan, each issue with its number, its title and its `bodyFile` path.
 
 As each batch returns, write in your turn output how many targets you have
 accounted for so far, and the running list of those that did not come back with
-verdicts you can read. Carry both forward into each new line, so the last one
-holds the whole answer. The list is usually empty. The end of the run reads both
-as they stand, and they have to last through every later batch and through the
-wait for the user.
+verdicts you can read. A check that says plainly that nothing duplicated is a
+result, so its target does not go on that list. Carry both forward into each new
+line, so the last one holds the whole answer. The list is usually empty. The end
+of the run reads both as they stand, and they have to last through every later
+batch and through the wait for the user.
 
 ## Read the verdicts against the right issue
 
