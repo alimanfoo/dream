@@ -16,12 +16,9 @@
 # every comparison it takes part in is against a higher-numbered issue. `since`
 # is how a maintainer re-checks it.
 #
-# The record lives under $HOME, so it survives between runs in separate
-# processes and is never committed to the repository being scanned. Its path
-# keeps the repository name as a real path segment (owner/name), rather than
-# flattening it, so two repositories never collide. The number then sits in a
-# named file inside that directory, so anything else keeping state per
-# repository does not collide with it either.
+# The number sits in a named file in this skill's state directory, which
+# repo-state.sh chooses, so the bodies directory beside it is a separate thing
+# and neither can be read as the other.
 #
 # A missing file reads as no record, and the run then checks every open issue.
 # So there is no setup step, and a lost record costs a full re-scan rather than
@@ -78,12 +75,13 @@ die() { printf 'dream:dedup-issues: %s\n' "$*" >&2; exit 2; }
 # that start at one.
 require_positive_int() { [[ "$2" =~ ^[1-9][0-9]*$ ]] || die "$1 must be a positive whole number, got '$2'"; }
 
-# Die unless the value is a repository name of the shape `gh` returns: an owner
-# of letters, digits and hyphens, then a name that may also hold a dot or an
-# underscore, and no second slash. Both halves become path segments of the state
-# directory, and the scan deletes the bodies directory it builds there, so a
-# value of another shape must not reach either path.
-require_repo_name() { [[ "$1" =~ ^[A-Za-z0-9-]+/[A-Za-z0-9._-]+$ && "$1" != */. && "$1" != */.. ]] || die "the repository name must be owner/name, got '$1'"; }
+# The state directory rules this skill shares with the other skills that keep
+# per-repository state, found from this script's own location so the working
+# directory does not matter.
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=../../repo-state.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../../repo-state.sh" \
+  || die "cannot load the shared repo-state.sh beside the plugin's guides"
 
 # --- arguments -------------------------------------------------------------
 
@@ -127,14 +125,12 @@ done
 
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
-require_repo_name "$repo"
 
-state_dir="$HOME/.dream/dedup-issues/$repo"
+state_dir=$(make_skill_state_dir dedup-issues "$repo") || exit 2
 record_file="$state_dir/record"
 bodies_dir="$state_dir/bodies"
 
 if [ "$subcommand" = mark-checked ]; then
-  mkdir -p "$state_dir" || die "cannot create the state directory $state_dir"
   printf '%s' "$number" > "$record_file" || die "cannot write the record file $record_file"
   exit 0
 fi

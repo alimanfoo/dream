@@ -17,11 +17,12 @@
 # the first run returns every item on the pull request so far. There is no
 # separate baseline or init step.
 #
-# The watermark file lives under $HOME so it survives the days a slow reviewer
-# may take, across many cron firings in separate processes. It is keyed by the
-# repository and pull request, so two worktree sessions on the same repository
-# never collide. The script emits its path as `watermarkFile`, so the caller can
-# delete it at teardown without re-deriving the key.
+# The watermark file sits in this skill's state directory, which repo-state.sh
+# chooses, so it survives the days a slow reviewer may take, across many cron
+# firings in separate processes. It is keyed by pull request, so two worktree
+# sessions on the same repository never collide. The script emits its path as
+# `watermarkFile`, so the caller can delete it at teardown without re-deriving
+# the key.
 #
 # The "user only" filter is mechanical. The session and the user post through
 # the same GitHub account, so the filter keeps both halves:
@@ -50,11 +51,13 @@ set -uo pipefail
 
 die() { printf 'dream:watcher: %s\n' "$*" >&2; exit 2; }
 
-# Die unless the value is a repository name of the shape `gh` returns: an owner
-# of letters, digits and hyphens, then a name that may also hold a dot or an
-# underscore, and no second slash. Both halves become path segments of the
-# watermark file's path, so a value of another shape must not reach it.
-require_repo_name() { [[ "$1" =~ ^[A-Za-z0-9-]+/[A-Za-z0-9._-]+$ && "$1" != */. && "$1" != */.. ]] || die "the repository name must be owner/name, got '$1'"; }
+# The state directory rules this skill shares with the other skills that keep
+# per-repository state, found from this script's own location so the working
+# directory does not matter.
+# shellcheck source-path=SCRIPTDIR
+# shellcheck source=../../repo-state.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../../repo-state.sh" \
+  || die "cannot load the shared repo-state.sh beside the plugin's guides"
 
 [ $# -eq 1 ] || die "usage: watch.sh <pr>"
 pr=$1
@@ -72,19 +75,13 @@ footer="claude.com/claude-code"
 
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
-require_repo_name "$repo"
 
 # The account the session posts through, which is also the user's. The filter
 # matches it to drop activity from any other account.
 me=$(gh api user --jq .login 2>/dev/null) \
   || die "cannot read the authenticated GitHub account"
 
-# The watermark file, keyed by repository and pull request. The repository name
-# stays a real path segment (owner/name), rather than being flattened, so two
-# repositories never collide: acme-corp/api and acme/corp-api are distinct
-# paths, not one shared key.
-dir="$HOME/.dream/watcher/$repo"
-mkdir -p "$dir" || die "cannot create the watermark directory $dir"
+dir=$(make_skill_state_dir watcher "$repo") || exit 2
 watermark_file="$dir/pr${pr}"
 
 cutoff=$(cat "$watermark_file" 2>/dev/null)
