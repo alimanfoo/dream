@@ -91,8 +91,7 @@ Usage:
                   startAfter. Leave it off when scan reported none. The record
                   advances only when this matches what the record already says,
                   so a run that started somewhere else cannot claim the issues
-                  in between. Such a run leaves the record alone and says so, at
-                  status 0, because that is the right outcome and not a failure.
+                  in between.
   discard-bodies  Remove the body files a scan wrote, which nothing reads once
                   the run that fetched them is over. Not an error when they are
                   already gone.
@@ -193,10 +192,15 @@ case "$subcommand" in
     if [ "$recorded" = "$started_after" ]; then
       printf '%s' "$number" > "$record_file" || die "cannot write the record file $record_file"
     else
-      # Not a failure: leaving the record alone is the right outcome, and the
-      # caller has nothing to put right. Saying so keeps it from passing unseen.
-      printf 'dream:dedup-issues: the record stays at %s, because this run started above %s rather than continuing from the record\n' \
-        "${recorded:-nothing}" "${started_after:-nothing}" >&2
+      # The ordinary outcome for a run started with `since`, so it goes to
+      # stdout and the status stays 0. stderr and a non-zero status are what
+      # `die` uses, and a caller meeting this there would read it as a failure.
+      #
+      # It names no value from the record. A caller told that value knows the
+      # one `--from` that would let the write through, and passing it would move
+      # the record past issues nothing checked, which is what this refusal
+      # exists to stop. A person can read the file.
+      printf 'dream:dedup-issues: nothing to do. This run did not continue from the record, so the record is unchanged. A run started with a since value ends this way.\n'
     fi
     ;;
   discard-bodies)
