@@ -19,8 +19,7 @@ spawn prompt provides. It is the standard you copy-edit against.
 
 Read in full the text to be copy-edited as directed in your spawn prompt.
 
-Judge that text on its own. Everything else you need is in your spawn prompt,
-including who reads it. Don't read beyond the passage to work out its context,
+Judge that text on its own. Don't read beyond the passage to work out its context,
 whether that means another file or more of the same one.
 
 ## Leave these alone
