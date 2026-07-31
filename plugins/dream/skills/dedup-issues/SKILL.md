@@ -82,9 +82,11 @@ batches until the targets are done.
 Give each briefing its own target number and the whole `issues` list from the
 scan, each issue with its number, its title and its `bodyFile` path.
 
-As each batch returns, write in your turn output which of its targets came back
-with verdicts you can read. The end of the run needs that list, and it has to
-last through every later batch and through the wait for the user.
+As each batch returns, write in your turn output the running list of targets
+that did not come back with verdicts you can read. Carry the earlier batches'
+entries into each new line, so the last one holds the whole list. It is usually
+empty. The end of the run reads it as it stands, and it has to last through
+every later batch and through the wait for the user.
 
 ## Read the verdicts against the right issue
 
