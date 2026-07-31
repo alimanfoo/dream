@@ -101,7 +101,7 @@ Two guides sit at the plugin root, not inside any one skill: the
 works to them, the team agents at runtime and the utility skills when invoked.
 So each standard has one home, shared by all of them.
 
-Two ways they get crossed:
+Ways they get crossed:
 
 - **In chat**, slipping into protocol vocabulary: phase names, role names,
   ancillary finding, post-merge sweep.
@@ -252,9 +252,9 @@ check as a task and fixes it unasked.
 
 ## Writing agent prompts
 
-The dream-team agents are LLMs. Writing well for them depends on three things:
-what each agent needs to know, the shape of an instruction, and the properties
-of the agent as a reader.
+The dream-team agents are LLMs. Writing well for them depends on what each agent
+needs to know, the shape of an instruction, and the properties of the agent as a
+reader.
 
 ### Tell each agent only what it needs
 
@@ -360,7 +360,7 @@ are suggestions, not a fixed procedure. A few things make it work:
   follow-up issue. Judge each on its merits. A subagent raising it is not a
   reason to accept it.
 
-Two ways to divide the work, for two different jobs:
+Ways to divide the work, for two different jobs:
 
 - **Divergent lenses**: a different question per agent, to find problems you
   don't yet know are there. A non-exhaustive set that has paid off:

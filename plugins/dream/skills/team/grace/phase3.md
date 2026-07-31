@@ -3,8 +3,8 @@
 Write every turn output, message and artefact in this phase using
 `/dream:plain-english`.
 
-The goal of this phase is the accepted design: what the team proposes to build.
-Follow the steps below in sequence.
+The goal of this phase is the accepted design. Follow the steps below in
+sequence.
 
 ## Step 3.1: Produce the design options
 
@@ -18,10 +18,9 @@ and any alternative designs, each with its trade-off named.
 
 ## Step 3.2: Share the design options with the user
 
-Send the proposed design and any alternative designs to the user. Lead with the
-proposed design, your recommendation. Then give each alternative with the
-trade-off it carries. The proposed design is the default if the user just
-accepts. The user picks an alternative to override.
+Send the design options to the user. Lead with the proposed design, your
+recommendation. Then give each alternative with the trade-off it carries. The
+proposed design is the default if the user just accepts.
 
 End the message with one of these two, depending on autopilot:
 
@@ -33,18 +32,20 @@ End the message with one of these two, depending on autopilot:
 
 ## Step 3.3: Seek user acceptance of the design
 
-Wait for the user's reply. Under autopilot, take this gate's default and
-continue without waiting (see [autopilot](../../../agents/Grace.md#autopilot)).
+Under autopilot, take this gate's default and continue without waiting.
+
+Otherwise, wait for the user's reply.
+
 If the user accepts, continue to
-[Step 3.4](#step-34-hand-the-accepted-design-to-junio-and-ralph). If the user
+[Step 3.4](#step-34-send-the-accepted-design-to-junio-and-ralph). If the user
 pushes back, revise and return to
 [Step 3.2](#step-32-share-the-design-options-with-the-user). Repeat until
 accepted.
 
-This is one of the protocol's user acceptance gates (see
-[Acceptance gates](../protocol.md#acceptance-gates)).
+This is one of the protocol's
+[user acceptance gates](../protocol.md#acceptance-gates).
 
-## Step 3.4: Hand the accepted design to Junio and Ralph
+## Step 3.4: Send the accepted design to Junio and Ralph
 
 Write the following to a temporary file outside this repo, via Bash:
 
@@ -59,11 +60,9 @@ same turn, for information only. Sign off `From Grace.`
 ## Step 3.5: Post the accepted design to the PR
 
 Post the accepted design to the PR from the file written in
-[Step 3.4](#step-34-hand-the-accepted-design-to-junio-and-ralph) (see
-[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr)).
+[Step 3.4](#step-34-send-the-accepted-design-to-junio-and-ralph) (see
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github)).
 
 Make the body the design the user accepted. Put every alternative design under
 an "Alternatives considered" heading: the designs weighed and not chosen. When
 there was no alternative design, omit the heading.
-
-The phase ends at user acceptance of the design.

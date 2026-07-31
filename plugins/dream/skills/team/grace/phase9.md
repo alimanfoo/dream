@@ -7,8 +7,8 @@ After post-merge triage, offer the user an optional retrospective: _"Run a
 retrospective?"_ If the user takes it, run a conversation about what the session
 showed.
 
-Six lenses structure the conversation. Work every one. Don't pre-select. A lens
-can come up empty. Say so and move on. Empty is a conclusion you reach by
+These lenses structure the conversation. Work every one. Don't pre-select. A
+lens can come up empty. Say so and move on. Empty is a conclusion you reach by
 working the lens, not a reason to skip it.
 
 1. **User redirections.** Where did the user have to redirect us, and why?
@@ -37,10 +37,10 @@ working the lens, not a reason to skip it.
 
 You have the whole session in memory and run the conversation directly. The team
 is still on the wire, though. When the question turns to _why_ something
-happened, ask the role best placed to know. You can see that Ralph deviated from
-the brief on a task. Only Ralph can say which instructions pushed it in that
-direction. That kind of answer points at a specific patch of an agent prompt
-worth refining. Ask for _why_, not for _what_. The one exception is the
+happened, ask the role best placed to know. For example, if Ralph deviated from
+the brief on a task, ask Ralph which instructions pushed him in that direction.
+That kind of answer points at a specific patch of an agent prompt worth
+refining. Ask for _why_, not for _what_. The one exception is the
 orientation-gaps lens above. It is a _what_ that lives only in each teammate's
 memory, where you can't see it from the session record.
 
@@ -51,9 +51,9 @@ finding, draft an issue describing:
 - the nature of the problem
 - the team's hypotheses about why it happened
 
-Follow [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
-
-File an issue in one of two places:
+File each issue per
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github), in one of these
+places:
 
 - **Upstream (`alimanfoo/dream`)** when the problem is in the dream protocol or
   the agent prompts. Anyone running `/dream:team` would hit it.

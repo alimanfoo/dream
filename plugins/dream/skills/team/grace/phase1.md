@@ -6,11 +6,7 @@ Write every turn output, message and artefact in this phase using
 The user opens with session input: an idea for a new feature, an issue or issues
 to address, a piece of code to tidy up, constraints, rough shape. When the boot
 sequence derived one or more issues from the worktree branch name, those issues
-are the session input. Phase 1 captures the system's requirements behind it. It
-makes any assumptions explicit so the user can correct them. It checks the
-session input against the current code, so stale details don't ride downstream.
-And it elicits answers to the open questions the cited material can't settle. It
-ends at an accepted requirements analysis: what the system must do and for whom.
+are the session input. Phase 1 captures the system's requirements behind it.
 Follow the steps below in sequence.
 
 ## Step 1.1: Open the session PR
@@ -32,18 +28,14 @@ Push the branch. All work runs against the session-start state of `main`. The
 origin.
 
 **Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
-the title from the session input. Mark the title and body per
-[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
-Follow [GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts).
+the title from the session input.
 
 **Post the session input as the first comment.** Post the session input as a PR
-comment (`gh pr comment <N> --body "..."`). Head it `Session input`. When the
-input is nothing but issue references, give them as a bullet list, one bare `#N`
-per line. The linked issue already carries its own body and comments. Repeating
-them here adds nothing. Otherwise, reproduce the user's input verbatim. Follow
-[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
-the Claude Code footer from
-[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
+comment. Head it `Session input`. When the input is nothing but issue
+references, give them as a bullet list, one bare `#N` per line. The linked issue
+already carries its own body and comments. Repeating them here adds nothing.
+Otherwise, reproduce the user's input verbatim. Post it per
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
 **Start the watch, under autopilot.** If autopilot is engaged, start
 [the watch](../../../agents/Grace.md#the-watch) now that the PR is open, unless
@@ -52,8 +44,7 @@ it is already running.
 ## Step 1.2: Produce the draft requirements analysis
 
 Run the `/dream:requirements-analysis` skill, giving it the session input. The
-skill outputs the draft requirements analysis, repo orientation and session
-type.
+skill returns the draft requirements analysis, which names the session type.
 
 ## Step 1.3: Elicit answers to open questions
 
@@ -61,12 +52,8 @@ Skip this step when there are no open questions.
 
 When there are open questions, write them to a temporary file outside the repo.
 Use the heading `Open questions`. List each question with the possible answers
-you can see, in public register. Keep role names and protocol-process vocabulary
-out. Follow
-[GitHub-rendered artefacts](../protocol.md#github-rendered-artefacts) and append
-the Claude Code footer from
-[Marking agent-authored GitHub items](../../../agents/Grace.md#marking-agent-authored-github-items).
-Post the file to the PR as a comment.
+you can see. Post the file to the PR as a comment, per
+[Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
 Send the user the same questions and answers as a numbered list. Invite a
 freeform answer too. End the message by asking the user to answer the questions
@@ -83,8 +70,7 @@ yet.
 Send the completed requirements analysis to the user. When there are candidates,
 ask the user to name any they want included, by number. Note that any they don't
 name are carried forward as opportunities to the
-[collect phase](../../../agents/Grace.md#phase-8-collect). Tell them they can
-ask to drop any outright.
+[collect phase](../../../agents/Grace.md#phase-8-collect).
 
 End the message with one of these two, depending on autopilot:
 
@@ -96,30 +82,27 @@ End the message with one of these two, depending on autopilot:
 
 ## Step 1.5: Seek user acceptance of the requirements analysis
 
-Wait for the user's reply. Under autopilot, take this gate's default and
-continue without waiting (see [autopilot](../../../agents/Grace.md#autopilot)).
+Under autopilot, take this gate's default and continue without waiting.
 
-If the user accepts, promote any candidate they opted into. Remove any that the
-user explicitly dropped. Defer the rest to the
-[collect phase](../../../agents/Grace.md#phase-8-collect). Apply the session
+Otherwise, wait for the user's reply.
+
+If the user accepts, promote any candidate they opted into. Defer the rest to
+the [collect phase](../../../agents/Grace.md#phase-8-collect). Apply the session
 type's category label to the PR via `gh pr edit --add-label <name>` (see
 [GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to
-[Step 1.6](#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
+[Step 1.6](#step-16-send-the-accepted-requirements-analysis-to-junio-and-ralph).
 
 If the user pushes back, revise and return to
 [Step 1.4](#step-14-share-the-requirements-analysis). Repeat until accepted.
 
-This is one of the protocol's user acceptance gates (see
-[Acceptance gates](../protocol.md#acceptance-gates)).
+This is one of the protocol's
+[user acceptance gates](../protocol.md#acceptance-gates).
 
-## Step 1.6: Hand the accepted requirements analysis to Junio and Ralph
+## Step 1.6: Send the accepted requirements analysis to Junio and Ralph
 
-Write the following, in the versions the user accepted plus any changes from the
-acceptance discussion, to a temporary file outside this repo, via Bash:
-
-- the accepted requirements analysis
-- the session type
-- the repo orientation
+Write the accepted requirements analysis, in the version the user accepted plus
+any changes from the acceptance discussion, to a temporary file outside this
+repo, via Bash.
 
 Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
 same turn, for information only. Sign off `From Grace.`
@@ -127,9 +110,5 @@ same turn, for information only. Sign off `From Grace.`
 ## Step 1.7: Post the accepted requirements analysis to the PR
 
 Post the accepted requirements analysis to the PR from the file written in
-[Step 1.6](#step-16-hand-the-accepted-requirements-analysis-to-junio-and-ralph).
-Follow
-[Posting an accepted artifact to the PR](../../../agents/Grace.md#posting-an-accepted-artifact-to-the-pr).
-Use the heading `Requirements`.
-
-The phase ends at user acceptance of the requirements analysis.
+[Step 1.6](#step-16-send-the-accepted-requirements-analysis-to-junio-and-ralph).
+Follow [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
