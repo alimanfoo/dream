@@ -177,8 +177,18 @@ visible on the tracker.
 A duplicate here includes one issue being wider than another, not only two
 issues asking for the same thing.
 
-A later run checks the issues filed since the last one, so running it again over
+A later run checks the issues filed after the last one, so running it again over
 an unchanged tracker does close to no work.
+
+To go back over issues the skill has already been past, pass the number to start
+above:
+
+```text
+/dream:dedup-issues 700
+```
+
+That is how you re-check an issue a later run would otherwise skip, such as one
+that was closed and then reopened.
 
 ## /dream:team advanced usage
 
