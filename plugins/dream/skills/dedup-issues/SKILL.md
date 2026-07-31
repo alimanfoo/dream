@@ -80,9 +80,9 @@ per [How every run ends](#how-every-run-ends).
 
 ## Check each target
 
-Launch one `dream:duplicate-checker` for each number in `targets`, all in one
-message so they run together. Keep each batch to about ten, and run further
-batches until the targets are done.
+Launch one `dream:duplicate-checker` for each number in `targets`, in batches of
+about ten. Launch each batch in a single message, which is what makes its checks
+run together, and run further batches until the targets are done.
 
 Give each briefing its own target number and the whole `issues` list from the
 scan, each issue with its number, its title and its `bodyFile` path.
