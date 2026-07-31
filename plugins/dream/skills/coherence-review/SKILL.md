@@ -1,15 +1,12 @@
 ---
 name: coherence-review
-description:
-  Review changed code across coherence lenses and return the findings that hold
-  up against the code.
+description: Review changed code for coherence and maintainability.
 argument-hint: "[target]"
 ---
 
 # Coherence review
 
-Review changed code across coherence lenses and return the findings that hold up
-against the code.
+Review changed code for coherence and maintainability.
 
 ## Arguments
 
@@ -67,7 +64,7 @@ a path relative to its own prompt file.
 Combine their findings into one list, dropping duplicates. Judge each on its
 merits, not on the fact a subagent raised it.
 
-Read the code each finding cites, and drop the findings the code refutes. A lens
+Read the code each finding cites, and keep only the findings it confirms. A lens
 reports what its one question surfaced, so a false positive reaches you looking
 like any other finding.
 
@@ -75,13 +72,10 @@ A finding often rests on more than the site it cites, so read those other sites
 too. A missed instance of an edit rests on its sibling sites. A fact with two
 homes rests on both.
 
-Keep a finding you can neither confirm nor refute, and name what would settle
-it. Dropping it loses the only read that found it.
+Mark each verified finding as a defect or an opportunity, so the caller can tell
+them apart. A defect is where the code fails to fit and needs fixing now. An
+opportunity is where the code fits, but a generalisation would leave it simpler,
+easier to maintain, or able to shed code.
 
-Mark each surviving finding as a defect or an opportunity, so the caller can
-tell them apart. A defect is where the code fails to fit and needs fixing now.
-An opportunity is where the code fits, but a generalisation would leave it
-simpler, easier to maintain, or able to shed code.
-
-Return the surviving findings as turn output. Report only: apply no fixes. If
-you have nothing to report, say so and return.
+Return the verified findings as turn output. Report only: apply no fixes. If you
+have nothing to report, say so and return.

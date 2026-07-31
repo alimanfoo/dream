@@ -144,18 +144,15 @@ Read the diff as a whole, using `gh pr diff <N>` or `git diff`.
 
 #### Step 6.2: Run the coherence review
 
-Run the `/dream:coherence-review` skill over the diff. It launches the coherence
-lenses in parallel, then takes you through checking each finding against the
-code. So the findings it returns have already held up once. Brief it with the
-diff as a local git range, for example `git diff origin/main...HEAD`. Diff
-against `origin/main`, not local `main`. A worktree session never freshens local
-`main`, so it can be stale or missing.
+Run the `/dream:coherence-review` skill over the diff. Brief it with the diff as
+a local git range, for example `git diff origin/main...HEAD`. Diff against
+`origin/main`, not local `main`. A worktree session never freshens local `main`,
+so it can be stale or missing.
 
 #### Step 6.3: Weigh the findings
 
 Add the findings from your own read of the whole diff. Drop any of yours that
-points at the same line or mechanism as one the review already made. Check each
-of the rest against the code, the way the review had you check its findings.
+points at the same line or mechanism as one the review already made.
 
 Then test what each finding would cost to leave: a human cleaning up after the
 team, or a later agent puzzling over the code. Keep the findings that carry that
