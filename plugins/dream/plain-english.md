@@ -43,20 +43,18 @@ not need. These shapes recur, and do not bound the rule:
 
 ## Strict narrative order
 
-Write so the reader can follow top to bottom. Each point should make sense from
-what came before it. Otherwise, a reader who meets something referenced before
-it is explained must look ahead or guess.
+Write instructions in the order the reader must follow them. For example: "Knead
+the dough, then put it in the oven.", not "Put the dough in the oven, but make
+sure you knead it first." Other content may come between instructions, but they
+must still follow strict narrative order.
 
-- Introduce a concept or term before you use it.
+The same holds beyond instructions. A reader who meets a point before the one it
+rests on must look ahead or guess.
+
+- When one point depends on another, put the other first.
 - Do not refer forward. Phrases like "as described below" and "see the next
   section" are forward references. Markdown links to later sections are also
   forward references.
-- When one point depends on another, put the other first.
-
-When the reader must follow instructions in sequence, write them in order. For
-example: "Knead the dough, then put it in the oven.", not "Put the dough in the
-oven, but make sure you knead it first." Other content may come between
-instructions, but they must still follow strict narrative order.
 
 ## Reason forward
 
