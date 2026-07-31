@@ -1,7 +1,7 @@
 ---
 name: copy-editor
 description: Copy-edits prose against the Plain English guide.
-model: haiku
+model: sonnet
 tools: Read, Write
 ---
 
