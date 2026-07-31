@@ -152,17 +152,22 @@ set_skill_state_dir dedup-issues "$repo"
 record_file="$skill_state_dir/record"
 bodies_dir="$skill_state_dir/bodies"
 
-if [ "$subcommand" = mark-checked ]; then
-  printf '%s' "$number" > "$record_file" || die "cannot write the record file $record_file"
-  exit 0
-fi
+# What each subcommand does, in one place. No arm ends in an exit of its own,
+# because the line below the case stops everything but `scan`. So a subcommand
+# added here cannot run the scan as well by forgetting to stop.
+case "$subcommand" in
+  mark-checked)
+    printf '%s' "$number" > "$record_file" || die "cannot write the record file $record_file"
+    ;;
+  discard-bodies)
+    # rm -rf succeeds on a path that is not there, so a run that scanned
+    # nothing, and a second discard, both end quietly with nothing for the
+    # caller to check.
+    rm -rf "$bodies_dir" || die "cannot remove the bodies directory $bodies_dir"
+    ;;
+esac
 
-if [ "$subcommand" = discard-bodies ]; then
-  # rm -rf succeeds on a path that is not there, so a run that scanned nothing,
-  # and a second discard, both end quietly with nothing for the caller to check.
-  rm -rf "$bodies_dir" || die "cannot remove the bodies directory $bodies_dir"
-  exit 0
-fi
+[ "$subcommand" = scan ] || exit 0
 
 # --- scan ------------------------------------------------------------------
 
