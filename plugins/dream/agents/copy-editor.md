@@ -2,7 +2,7 @@
 name: copy-editor
 description: Copy-edits prose against the Plain English guide.
 model: sonnet
-tools: Read, Grep, Glob, Write
+tools: Read, Write
 ---
 
 # Copy editor
@@ -18,6 +18,10 @@ spawn prompt provides. It is the standard you copy-edit against.
 ## Read the text to be copy-edited
 
 Read in full the text to be copy-edited as directed in your spawn prompt.
+
+Judge that text on its own. Everything else you need is in your spawn prompt,
+including who reads it. Don't read further files to work out the passage's
+context.
 
 ## Cite a rule or pass
 

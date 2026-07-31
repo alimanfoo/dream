@@ -142,8 +142,8 @@ Lead with what to do. Add what not to do only to support it.
 
 ## Use a small vocabulary
 
-Use a small, consistent vocabulary. One word per meaning, one meaning per word.
-Do not swap in a synonym for variety.
+Use a small, consistent vocabulary. One word per meaning, one meaning per word,
+within each piece of text you write. Do not swap in a synonym for variety.
 
 ## Name the list, not an umbrella term
 
@@ -181,10 +181,6 @@ Use verbs, not noun forms of verbs. Write "decide", not "make a decision".
 ## Keep the small words
 
 Keep the small words. Do not drop "the", "a", or "that" to sound terse.
-
-## Spell out an abbreviation
-
-Spell out an abbreviation the first time you use it.
 
 ## Skip the Latin
 
