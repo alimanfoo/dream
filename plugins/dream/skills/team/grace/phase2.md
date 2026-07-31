@@ -45,7 +45,7 @@ Write the accepted code analysis, the version the user accepted plus any changes
 from the acceptance discussion, to a temporary file outside this repo, via Bash.
 
 Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
-same turn, for information only. Sign off `From Grace.`
+same turn, for information only.
 
 ## Step 2.5: Post the accepted code analysis to the PR
 
