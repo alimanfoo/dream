@@ -36,25 +36,25 @@ run that found nothing new to check and stopped.
   tracker, and nothing reads them once the run is over. It is not an error when
   there are none, so this act carries no condition.
 - Run `dedup.sh mark-checked --from <startAfter> <highest number in targets>`.
-  Pass `startAfter` as the scan gave it. When it is null, which is what a first
-  run reports, leave `--from` off rather than passing the word null. Run it
-  whatever the user decided about closing, because the issues were checked
-  either way. With no targets you have no number to pass, so skip it.
+  Pass `startAfter` as the scan gave it. A first run reports it as null. When it
+  is null, leave `--from` off rather than passing the word null. Run it whatever
+  the user decided about closing, because the issues were checked either way.
+  With no targets you have no number to pass, so skip it.
 
 Don't run `mark-checked` at all unless two things hold: the last line you wrote
 as the batches returned accounts for every number in `targets`, and the list on
-it is empty. The count is what tells a clean run from one that has lost its
-lines, since both leave that list empty.
+it is empty. A clean run and one that has lost its lines both leave that list
+empty, so the count is what tells them apart.
 
 A subagent failing is an ordinary event. The highest number in `targets` would
-then record targets nothing checked, putting them out of reach for good. Leaving
-the record alone means the next run picks them up, which costs reading rather
-than correctness.
+then record targets that nothing checked, so they could never be targets again.
+Leaving the record alone means the next run picks them up, which costs reading
+rather than correctness.
 
 The rest of the run stands. Report the groups you found and close what the user
 confirms, because a confirmed duplicate is confirmed whatever else failed. Tell
-the user which targets went unchecked and that the run wants repeating, since
-running it again is their call.
+the user which targets went unchecked, and that the run needs repeating, since
+running it again is their decision.
 
 ## Scan the tracker
 
@@ -65,7 +65,7 @@ record. It is what the user needs when the record falls short: a maintainer on a
 second machine, a deliberate re-check, or a reopened issue. An issue closed
 during one run and reopened later sits below the record, so it never becomes a
 target again. An issue edited after it was checked sits below the record in the
-same way. `since` is the only way to have either looked at again.
+same way. `since` is the only way to check either one again.
 
 Tell the user what `since` costs them when they pass it. The record can end up
 older than the work just done, and the next run without `since` then re-checks
@@ -76,8 +76,8 @@ the run starts above, not as what has been checked. `since` replaces the record,
 so a run started at 700 on a tracker whose record is 300 has checked nothing
 between the two.
 
-When `startAfter` is null there is no record yet, so tell the user the run
-checks every open issue.
+A null `startAfter` means there is no record yet. Tell the user the run checks
+every open issue.
 
 When `targets` is empty, nothing is new. Say so, launch nothing, and end the run
 per [How every run ends](#how-every-run-ends).
@@ -86,7 +86,7 @@ per [How every run ends](#how-every-run-ends).
 
 Launch one `dream:duplicate-checker` for each number in `targets`, in batches of
 about ten. Launch each batch in a single message, which is what makes its checks
-run together, and run further batches until the targets are done.
+run together. Keep launching batches until the targets are done.
 
 Give each briefing its own target number and the whole `issues` list from the
 scan, each issue with its number, its title and its `bodyFile` path.
@@ -130,16 +130,16 @@ positive arrives looking like any other finding.
 
 ## Group, and choose which issue each group keeps
 
-Duplicate links chain, so merge pairs that share an issue into one group.
+Two pairs can share an issue, so merge any that do into one group.
 
-Then pick the issue the group keeps:
+Then choose the issue the group keeps:
 
 - Keep the wider issue, where one is wider than the rest.
 - Keep the earliest, where they are equivalent.
 
 ## Put the groups to the user
 
-When nothing survived verification there is no group to put. Tell the user that
+When nothing survived verification you have no group to put. Tell the user that
 nothing duplicated, and end the run without waiting. They have nothing to
 confirm.
 
@@ -151,8 +151,9 @@ tracker they are about to change. Then give each group:
 - one line per duplicate saying why it is one
 
 Take every number and title from the scan's `issues` list, word for word. Those
-came from `gh`, so nothing an issue body says can change them. The one-line
-reason is your own account of what you read.
+came from `gh`, so nothing an issue body says can change them.
+
+The one-line reason is your own account of what you read.
 
 Then wait. The user confirms which groups to close, by number.
 
@@ -164,7 +165,9 @@ For each duplicate in a group the user confirmed:
 gh issue close <duplicate> --duplicate-of <keep>
 ```
 
-Post no comment, because GitHub records the link itself. Close nothing in a
-group the user did not confirm, and nothing your own reading did not confirm.
+Post no comment, because GitHub records the link itself.
+
+Close nothing in a group the user did not confirm, and nothing your own reading
+did not confirm.
 
 Then end the run per [How every run ends](#how-every-run-ends).

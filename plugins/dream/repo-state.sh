@@ -27,32 +27,32 @@ declare -F die >/dev/null \
 # of letters, digits and hyphens, then a name that may also hold a dot or an
 # underscore, and no second slash.
 #
-# The name half admits dots, so `owner/.` and `owner/..` satisfy the pattern.
-# The two tests after it are what reject those, because a relative path element
-# is the one shape that must never become part of a state directory.
+# The name half admits dots, so `owner/.` and `owner/..` satisfy the pattern. A
+# relative path element is the one shape that must never become part of a state
+# directory, so the two tests after the pattern reject those.
 require_repo_name() {
   [[ "$1" =~ ^[A-Za-z0-9-]+/[A-Za-z0-9._-]+$ && "$1" != */. && "$1" != */.. ]] \
     || die "gh reported the repository as '$1', which is not the owner/name a path can be built from"
 }
 
 # Set `skill_state_dir` to the directory the named skill keeps this repository's
-# state in, having checked the name and made the directory. So a caller cannot
-# hold a state path that skipped the check, and cannot find the directory
+# state in, having checked the name and made the directory. So no caller holds
+# a state directory that skipped the check. Nor does one find the directory
 # missing when it writes.
 #
 # It sets a variable rather than printing one, so a failure here ends the
 # calling script. Reading a printed path through a command substitution would
-# put `die`'s exit in a subshell, and the caller would carry on with an empty
+# put `die`'s exit in a subshell. The caller would then carry on with an empty
 # path.
 #
 # The variable has the one name, rather than one the caller passes in. A
-# caller's own name would arrive here as a string, and reading the value back
-# would mean expanding a variable whose name is itself held in a variable. And
+# caller's own name would arrive here as a string. Reading the value back would
+# then mean expanding a variable whose name is itself held in a variable. And
 # because shellcheck cannot follow an assignment made that way, the pre-commit
-# hook fails every call site with SC2154 on the attempt.
+# hook fails every call site with SC2154 when it tries.
 #
-# The state sits under $HOME, so it survives between runs in separate processes
-# and is never committed to the repository being worked on.
+# The state sits under $HOME, so it survives between runs in separate processes.
+# That also keeps it out of the repository being worked on.
 #
 # The repository name stays two real path segments, rather than being flattened,
 # so two repositories never collide: acme-corp/api and acme/corp-api are

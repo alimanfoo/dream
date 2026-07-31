@@ -170,18 +170,18 @@ then:
 - reports them as groups, each naming the issue it suggests keeping, the ones it
   would close, and a line of reasoning for each
 
-It closes only the groups you confirm, and nothing else. It posts no comments.
-GitHub records each closure as a duplicate of the issue kept, so the link stays
-visible on the tracker.
-
 A duplicate here includes one issue being wider than another, not only two
 issues asking for the same thing.
+
+It closes only the groups you confirm, and it posts no comments.
+
+GitHub records each closure as a duplicate of the issue kept, so the link stays
+visible on the tracker.
 
 A later run checks the issues filed after the last one, so running it again over
 an unchanged tracker does close to no work.
 
-To go back over issues the skill has already been past, pass the number to start
-above:
+Pass an issue number to check the issues above that one instead:
 
 ```text
 /dream:dedup-issues 700

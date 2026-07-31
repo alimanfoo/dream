@@ -137,13 +137,15 @@ skills. The `requirements-analysis`, `design`, and `plan` skills launch the
 requirements, design, and plan lenses inline as review subagents. So they run
 only as a review step within a session.
 
-A skill that fans work out to subagents must check their findings itself,
-against the source the subagent read, before it returns them or acts on them.
-That holds where acting on a finding would not show up a wrong one, because the
-finding asserts something about a source the caller has not read. Where applying
-a finding means reading the thing it is about, a wrong one surfaces as it is
-applied and the step earns nothing. `code-review` is the model to copy. A new
-skill of the first kind carries the step from the start.
+A subagent's finding can be wrong, and nothing else catches some kinds of wrong
+finding. When a finding asserts something about a source the skill has not read,
+acting on it reveals nothing. So the skill must read that source and check the
+finding itself, before it returns the finding or acts on it. `code-review` is
+the model to copy, and a new skill like it carries the step from the start.
+
+Applying a finding sometimes means reading the source anyway, as a proposed
+rewrite of prose the skill is holding does. A wrong one shows up as the skill
+applies it, so a separate check earns nothing.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,

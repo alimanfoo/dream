@@ -4,14 +4,15 @@
 #
 # The subcommands. `scan` fetches the open issues and prints the facts a scan
 # needs, as one JSON object. `mark-checked` records how far the scan got.
-# `discard-bodies` throws away the issue text the scan fetched.
+# `discard-bodies` throws away the bodies the scan fetched.
 #
 # Deciding whether two issues are duplicates means reading what they mean, so
 # the caller does that. This script fetches the bodies and never judges them.
 #
-# Issue numbers only ever increase, so "every open issue up to N has been
-# checked against the issues below it" is a single number. That number is the
-# whole record, so a second run over an unchanged tracker has nothing to check.
+# Issue numbers only ever increase, so one number records the whole of "every
+# open issue up to N has been checked against the issues below it". That number
+# is the whole record, so a second run over an unchanged tracker has nothing to
+# check.
 #
 # One case that does not cover: an issue closed during one run and reopened
 # later sits below the record. It never becomes a target again, and every
@@ -23,26 +24,26 @@
 # so neither can be read as the other.
 #
 # A missing file reads as no record, and the run then checks every open issue.
-# So there is no setup step. A lost record costs a full re-scan rather than a
-# wrong answer.
+# So a first run needs no setup. A lost record costs a full re-scan rather than
+# a wrong answer.
 #
 # The record is advisory. The optional `since` argument replaces it, which
 # covers a maintainer on a second machine and a deliberate re-check.
 #
 # Reading an issue body is the caller's expensive act, so `scan` hands it every
-# open issue's title, and the issues above the number it starts after as the
-# targets to check. Titles are cheap. The caller reads only the bodies its
-# judgement needs.
+# open issue's title, and the targets, which are the issues above the number it
+# starts after. Titles are cheap. The caller reads only the bodies its judgement
+# needs.
 #
-# Fetching the bodies costs nothing extra, because they come back in the same
-# `gh` call as the titles.
+# The bodies come back in the same `gh` call as the titles, so fetching them
+# costs nothing extra.
 #
 # The script writes each body to its own file, so the caller can hand a path to
 # an agent that holds no tool for reaching the tracker.
 #
 # `scan` empties the bodies directory before it writes any. So the directory
-# holds exactly what this run fetched, and no stale file from an earlier run can
-# be read by mistake.
+# holds exactly what this run fetched, and nothing can read a stale file from an
+# earlier run.
 #
 # A body's only reader is a check on a target, so a scan with no targets writes
 # no bodies at all. A run over an unchanged tracker then costs one `gh` call and
@@ -50,13 +51,13 @@
 #
 # The bodies are one run's working copy of the tracker, not a store. Nothing
 # reads them once the run that fetched them is over, so every run ends with
-# `discard-bodies` and the issue text does not outlive it. Removing bodies that
-# are not there succeeds, so that rule carries no condition and a caller cannot
-# get it wrong. The record, one number, is the only thing a run leaves behind.
+# `discard-bodies`. Removing bodies that are not there succeeds, so that rule
+# carries no condition. The record, one number, is the only thing a run leaves
+# behind.
 #
 # A run assumes it is the only one for this repository. The state is keyed by
 # the repository alone, and both `scan` and `discard-bodies` clear the whole
-# bodies directory, so a second run at the same time would pull those files out
+# bodies directory. So a second run at the same time would pull those files out
 # from under the first run's readers. A user invokes this skill, one at a time.
 
 set -uo pipefail
@@ -191,9 +192,9 @@ case "$subcommand" in
   mark-checked)
     # The record advances only from the value the run started at, so no caller
     # can move it past issues nothing checked. Those issues would never be
-    # targets again, and nothing would ever report it. A run that continued from
-    # the record passes the record's own value and advances it. A run started
-    # somewhere else, which is what `since` does, leaves the record alone.
+    # targets again, and no run would ever say so. A run that continued from the
+    # record passes the record's own value, and a run started with `since` does
+    # not.
     #
     # An absent record and an omitted `--from` are both the empty string, so the
     # one comparison also covers a first run, and covers a caller claiming a
