@@ -2,10 +2,11 @@
 #
 # dream:dedup-issues: the bookkeeping for a duplicate-issue scan.
 #
-# Two subcommands. `scan` fetches the open issues and prints the facts a scan
+# Three subcommands. `scan` fetches the open issues and prints the facts a scan
 # needs, as one JSON object. `mark-checked` records how far the scan got.
-# Whether two issues are duplicates is a reading of their meaning, so the caller
-# decides that. This script fetches the bodies and never judges them.
+# `discard-bodies` throws away the issue text the scan fetched. Whether two
+# issues are duplicates is a reading of their meaning, so the caller decides
+# that. This script fetches the bodies and never judges them.
 #
 # Issue numbers only ever increase, so "every open issue up to N has been
 # checked against the issues below it" is a single number. That number is the
@@ -38,6 +39,11 @@
 # `scan` empties the bodies directory before it writes any, so it holds exactly
 # what this run fetched, and no stale file from an earlier run can be read by
 # mistake.
+#
+# The bodies are one run's working copy of the tracker, not a store. Nothing
+# reads them once the run that fetched them is over, so the caller ends the run
+# with `discard-bodies` and the issue text does not outlive it. The record, one
+# number, is the only thing a run leaves behind.
 
 set -uo pipefail
 
@@ -54,18 +60,23 @@ dream:dedup-issues: bookkeeping for a duplicate-issue scan.
 Usage:
   dedup.sh scan [--limit <n>] [<since>]
   dedup.sh mark-checked <number>
+  dedup.sh discard-bodies
   dedup.sh --help
 
-  scan          Fetch the open issues, write each body to a file, and print what
-                a scan needs, as one JSON object: repo, startAfter (the number
-                the scan starts above, from the record or from <since>), issues
-                (every open issue as number, title and bodyFile, in ascending
-                order), and targets (the issue numbers above startAfter).
-  --limit       Most open issues to scan. A tracker holding more than this is an
-                error, not a partial scan. Default: $default_limit.
-  <since>       Issue number to use in place of the record, so the targets are
-                the issues numbered above it.
-  mark-checked  Record <number> as the highest issue checked.
+  scan            Fetch the open issues, write each body to a file, and print
+                  what a scan needs, as one JSON object: repo, startAfter (the
+                  number the scan starts above, from the record or from
+                  <since>), issues (every open issue as number, title and
+                  bodyFile, in ascending order), and targets (the issue numbers
+                  above startAfter).
+  --limit         Most open issues to scan. A tracker holding more than this is
+                  an error, not a partial scan. Default: $default_limit.
+  <since>         Issue number to use in place of the record, so the targets are
+                  the issues numbered above it.
+  mark-checked    Record <number> as the highest issue checked.
+  discard-bodies  Remove the body files a scan wrote, which nothing reads once
+                  the run that fetched them is over. Not an error when they are
+                  already gone.
 EOF
 }
 
@@ -115,6 +126,9 @@ case "$subcommand" in
     number=$1
     require_positive_int "the issue number" "$number"
     ;;
+  discard-bodies)
+    [ $# -eq 0 ] || die "discard-bodies takes no arguments"
+    ;;
   *)
     die "unknown command: '$subcommand'"
     ;;
@@ -133,6 +147,13 @@ bodies_dir="$skill_state_dir/bodies"
 
 if [ "$subcommand" = mark-checked ]; then
   printf '%s' "$number" > "$record_file" || die "cannot write the record file $record_file"
+  exit 0
+fi
+
+if [ "$subcommand" = discard-bodies ]; then
+  # rm -rf succeeds on a path that is not there, so a run that scanned nothing,
+  # and a second discard, both end quietly with nothing for the caller to check.
+  rm -rf "$bodies_dir" || die "cannot remove the bodies directory $bodies_dir"
   exit 0
 fi
 
