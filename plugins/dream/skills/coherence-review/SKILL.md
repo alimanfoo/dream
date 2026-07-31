@@ -15,7 +15,7 @@ Read the argument the user gives. It names what to review: a git range, or a
 path. Without one, review the whole branch against `origin/main`
 (`origin/main...HEAD`).
 
-## Review
+## Launch the lenses
 
 Read the [coherent coding guide](../../coherent-coding.md). It is the home of
 the disciplines this review checks. The lens subagents can't read it themselves,
@@ -59,6 +59,8 @@ beneath it into the briefing.
 
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
+
+## Combine, verify and return
 
 Combine their findings into one list, dropping duplicates. Mark each as a defect
 or an opportunity, so the caller can tell them apart. A defect is where the code

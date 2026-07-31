@@ -201,7 +201,8 @@ plugins/:
         SKILL.md:
           Coherence review:
             Arguments:
-            Review:
+            Launch the lenses:
+            Combine, verify and return:
       coherent-coding/:
         SKILL.md:
           Coherent coding:
