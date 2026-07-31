@@ -153,9 +153,9 @@ against `origin/main`, not local `main`. A worktree session never freshens local
 
 #### Step 6.3: Weigh the findings
 
-Add the findings from your own read of the whole diff, dropping any that
-duplicate one the review already made. Check each of your own against the code,
-the way the review had you check its findings.
+Add the findings from your own read of the whole diff. Drop any of yours that
+points at the same line or mechanism as one the review already made. Check each
+of the rest against the code, the way the review had you check its findings.
 
 Then test what each finding would cost to leave: a human cleaning up after the
 team, or a later agent puzzling over the code. Keep the findings that carry that

@@ -2,14 +2,14 @@
 name: code-review
 description:
   Review changed code through review lenses chosen to fit the diff, and return
-  the combined findings.
+  the findings that hold up against the code.
 argument-hint: "[target] [inline]"
 ---
 
 # Code review
 
 Review changed code through review lenses chosen to fit the diff, and return the
-combined findings.
+findings that hold up against the code.
 
 ## Arguments
 
@@ -84,10 +84,13 @@ Combine the lens findings with your own. Judge each on its merits, not on the
 fact a subagent raised it. Drop duplicates that point at the same line or
 mechanism.
 
-Check each finding against your cold read, and drop the ones that don't hold up.
-Then read any site a finding rests on that your cold read didn't reach. A
-same-edit finding rests on the sibling site it names, so read that site too
-before you return the finding.
+Read the code each finding rests on, and drop the findings the code refutes.
+Your cold read covered the diff, so a finding may rest on a site you have not
+opened yet. A missed instance of an edit rests on its sibling sites. A fact with
+two homes rests on both.
+
+Keep a finding you can neither confirm nor refute, and name what would settle
+it. Dropping it loses the only read that found it.
 
 Return the surviving findings as turn output: a numbered list, most important
 first. Report only: apply no fixes. If you have nothing to report, say so and

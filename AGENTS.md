@@ -133,8 +133,10 @@ only as a review step within a session.
 A skill that fans review lenses out to subagents must check their findings
 against the code before it returns them, and say so where it states what it
 returns. A lens reports what its one question surfaced, so a false positive
-comes back looking like any other finding. `code-review` and `coherence-review`
-both carry this step. Write it into a third such skill from the start.
+comes back looking like any other finding. The check reads every site a finding
+rests on, not only the one it cites, and keeps a finding it can neither confirm
+nor refute. `code-review` and `coherence-review` both carry this step. Write it
+into a third such skill from the start.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
