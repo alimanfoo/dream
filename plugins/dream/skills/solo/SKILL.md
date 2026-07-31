@@ -182,8 +182,8 @@ Implement the plan, one step at a time. For each step:
 
 ## Copy-edit
 
-Run the `/dream:copy-edit` skill over the prose you changed. Commit and push the
-fixes it makes.
+Run the `/dream:copy-edit` skill over the branch's changes against the base
+(`origin/main...HEAD`). Commit and push the fixes it makes.
 
 ## Coherence review
 

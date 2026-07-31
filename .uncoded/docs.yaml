@@ -104,11 +104,10 @@ plugins/:
             'Phase 5: Develop':
               'Step 5.1: Read the task description':
               'Step 5.2: Do the work':
-              'Step 5.3: Copy-edit the prose you wrote':
-              'Step 5.4: Run the tests':
-              'Step 5.5: Run any codegen the commit hook doesn''t run':
-              'Step 5.6: Commit and push':
-              'Step 5.7: Report back to Grace via `SendMessage`':
+              'Step 5.3: Run the tests':
+              'Step 5.4: Run any codegen the commit hook doesn''t run':
+              'Step 5.5: Commit and push':
+              'Step 5.6: Report back to Grace via `SendMessage`':
             'Phase 6: Review':
             'Phase 7: Merge':
             'Phase 8: Collect':
@@ -347,13 +346,14 @@ plugins/:
                 'Step 5.6: Loop':
           phase6.md:
             'Phase 6: Review':
-              'Step 6.1: Send the review requests':
-              'Step 6.2: Post each review as a PR comment':
-              'Step 6.3: Triage each finding':
-              'Step 6.4: Post your response to reviews as a PR comment':
-              'Step 6.5: Write the PR description':
-              'Step 6.6: Mark the PR ready for review':
-              'Step 6.7: Hand back to the user':
+              'Step 6.1: Ask Ralph to copy-edit the branch''s prose':
+              'Step 6.2: Send the review requests':
+              'Step 6.3: Post each review as a PR comment':
+              'Step 6.4: Triage each finding':
+              'Step 6.5: Post your response to reviews as a PR comment':
+              'Step 6.6: Write the PR description':
+              'Step 6.7: Mark the PR ready for review':
+              'Step 6.8: Hand back to the user':
           phase7.md:
             'Phase 7: Merge':
           phase8.md:
