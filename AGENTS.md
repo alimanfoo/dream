@@ -138,10 +138,12 @@ requirements, design, and plan lenses inline as review subagents. So they run
 only as a review step within a session.
 
 A skill that fans work out to subagents must check their findings itself,
-against the source the subagent read, before it returns them or acts on them. A
-subagent's finding arrives looking like any other, so nothing else catches a
-wrong one. `code-review` is the model to copy. A new skill of this kind carries
-the step from the start.
+against the source the subagent read, before it returns them or acts on them.
+That holds where acting on a finding would not show up a wrong one, because the
+finding asserts something about a source the caller has not read. Where applying
+a finding means reading the thing it is about, a wrong one surfaces as it is
+applied and the step earns nothing. `code-review` is the model to copy. A new
+skill of the first kind carries the step from the start.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
