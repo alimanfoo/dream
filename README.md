@@ -174,9 +174,9 @@ This then allows you to run `claude-teams` from the terminal.
 
 ### Models and effort
 
-Each agent runs on a default model. Grace and Ada run on Opus, Ralph and Junio
-on Sonnet. To override a model, name it when you invoke the skill, for example
-`/dream:team with Ralph on opus`. Agents you don't name keep their default.
+Each agent runs on Opus by default. To override a model, name it when you invoke
+the skill, for example `/dream:team with Junio on sonnet`. Agents you don't name
+keep their default.
 
 Effort works differently. The team inherits your main session's effort level
 when it starts, so to run the agents at a higher or lower effort, set it with

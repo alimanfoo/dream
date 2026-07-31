@@ -59,10 +59,10 @@ the prompts.
 
    **Model overrides.** If the user's invocation names a model for an agent,
    pass that model in the agent's `Agent` call, overriding the definition's
-   default. For example, `/dream:team with Ralph on opus` puts Ralph on opus.
-   Agents the invocation doesn't name keep their own model. Effort can't be set
-   per agent this way. The team inherits the main session's effort. If the user
-   wants a different level, tell them to set `/effort` before invoking.
+   default. For example, `/dream:team with Junio on sonnet` puts Junio on
+   sonnet. Agents the invocation doesn't name keep their own model. Effort can't
+   be set per agent this way. The team inherits the main session's effort. If
+   the user wants a different level, tell them to set `/effort` before invoking.
 
 3. **Hand off.** Tell the user the team is spawned and they should switch to
    Grace's session to start. Grace opens Phase 1: Requirements. The team uses no
