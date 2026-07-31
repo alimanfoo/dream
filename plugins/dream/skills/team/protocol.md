@@ -40,7 +40,8 @@ A session moves through these phases:
 5. **Develop.** The main loop: one task at a time, Ralph implements, Junio
    audits each commit.
 
-6. **Review.** Ada and Junio review the PR.
+6. **Review.** Ralph copy-edits the branch's prose, then Ada and Junio review
+   the PR.
 
 7. **Merge.** The user merges the PR, or merge is deferred to a human.
 
