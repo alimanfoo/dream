@@ -45,9 +45,10 @@
 # leaves nothing behind, which is the path a repeat run takes.
 #
 # The bodies are one run's working copy of the tracker, not a store. Nothing
-# reads them once the run that fetched them is over, so a run that wrote any
-# ends with `discard-bodies` and the issue text does not outlive it. The record,
-# one number, is the only thing a run leaves behind.
+# reads them once the run that fetched them is over, so every run ends with
+# `discard-bodies` and the issue text does not outlive it. Removing bodies that
+# are not there succeeds, so that rule carries no condition and a caller cannot
+# get it wrong. The record, one number, is the only thing a run leaves behind.
 
 set -uo pipefail
 
@@ -220,11 +221,21 @@ targets=$(printf '%s' "$issues" | jq -s -c --argjson start_after "${start_after:
 # when the fetch fails, rather than emptying the directory for nothing.
 rm -rf "$bodies_dir" || die "cannot clear the bodies directory $bodies_dir"
 
-# A body's only reader is a check on a target, so with no targets the scan
-# writes none, and a run over an unchanged tracker leaves nothing behind.
-# `jq -c` prints an empty array as exactly this, so the test is on the whole
+# Whether this scan has bodies on disk, decided once. A body's only reader is a
+# check on a target, so with no targets the scan writes none and a run over an
+# unchanged tracker leaves nothing behind. The writing below and the output
+# after it both follow this one value, so neither can come to disagree about
+# whether a bodyFile names a file that is there.
+#
+# `jq -c` prints an empty array as exactly `[]`, so the test is on the whole
 # value.
-if [ "$targets" != "[]" ]; then
+if [ "$targets" = "[]" ]; then
+  wrote_bodies=false
+else
+  wrote_bodies=true
+fi
+
+if $wrote_bodies; then
   mkdir -p "$bodies_dir" || die "cannot create the bodies directory $bodies_dir"
   while IFS= read -r issue; do
     body_file=$(printf '%s' "$issue" | jq -r '.bodyFile') \
@@ -240,12 +251,12 @@ fi
 printf '%s' "$issues" | jq -s \
   --arg repo "$repo" \
   --argjson start_after "${start_after:-null}" \
-  --argjson targets "$targets" '
-  ($targets | length > 0) as $wrote_bodies
-  | {
-      repo: $repo,
-      startAfter: $start_after,
-      issues: map(if $wrote_bodies then {number, title, bodyFile} else {number, title} end),
-      targets: $targets,
-    }
+  --argjson targets "$targets" \
+  --argjson wrote_bodies "$wrote_bodies" '
+  {
+    repo: $repo,
+    startAfter: $start_after,
+    issues: map(if $wrote_bodies then {number, title, bodyFile} else {number, title} end),
+    targets: $targets,
+  }
 ' || die "cannot build the scan output"
