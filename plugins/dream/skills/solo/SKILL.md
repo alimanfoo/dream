@@ -188,13 +188,18 @@ Run the `/dream:copy-edit` skill over the branch's changes against the base
 ## Coherence review
 
 Run the `/dream:coherence-review` skill over the branch's changes against the
-base (`origin/main...HEAD`). It returns findings across the coherence lenses. It
-does not apply them. Weigh each on its merits and apply the ones that stand up.
-Reach for the coherent fix even when it is larger than the site the finding
-names. Commit and push the fixes.
+base (`origin/main...HEAD`). It returns findings across the coherence lenses,
+each marked a defect or an opportunity. It does not apply them.
+
+Weigh each defect on its merits and apply the ones that stand up. Reach for the
+coherent fix even when it is larger than the site the finding names. Commit and
+push the fixes.
+
+Carry each opportunity to the [collect step](#collect) to file. The code already
+fits, so building it now is work the change doesn't need.
 
 Post the findings and how you acted on them as a PR comment. Head it
-`Coherence review`. For any finding you didn't act on, give the reason in one
+`Coherence review`. For any defect you didn't act on, give the reason in one
 sentence.
 
 ## Code review
@@ -271,8 +276,9 @@ branch. Don't merge the PR itself. That's the user's call.
 ## Collect
 
 File anything you noticed but left out of scope as a new GitHub issue
-(`gh issue create`). This keeps it from being lost. Skip this step when there's
-nothing to file.
+(`gh issue create`), along with each opportunity the
+[coherence review](#coherence-review) raised. This keeps them from being lost.
+Skip this step when there's nothing to file.
 
 File every bug.
 
