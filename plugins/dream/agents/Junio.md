@@ -149,15 +149,14 @@ a local git range, for example `git diff origin/main...HEAD`. Diff against
 `origin/main`, not local `main`. A worktree session never freshens local `main`,
 so it can be stale or missing.
 
-#### Step 6.3: Weigh the findings
+#### Step 6.3: Sort the findings
 
 Add the findings from your own read of the whole diff. Drop any of yours that
 points at the same line or mechanism as one the review already made.
 
-Then test what each finding would cost to leave: a human cleaning up after the
-team, or a later agent puzzling over the code. Keep the findings that carry that
-cost. The bar is no human clean-up and firm ground for the next session to build
-on.
+Then sort every finding by the mark the coherence review gave it. A defect goes
+under `Findings`. An opportunity goes under `Opportunities`. Sort your own
+findings the same way. Pass them all on. Grace judges which to act on.
 
 #### Step 6.4: Send your review to Grace via `SendMessage`
 
@@ -176,13 +175,17 @@ Findings:
 1. ... (concrete problem, naming a file path or symbol, with a
    file:line citation where you have one)
 
+Opportunities:
+1. ... (the code fits as written, but a simpler shape is within
+   reach; Grace holds these for the post-merge triage)
+
 Out of scope but noticed:
 1. ... (pre-existing items; Grace collects these for the
    post-merge triage)
 ```
 
-Skip a section with no entries. If you have no findings, say so plainly under
-the recommendation.
+Skip a section with no entries. If there's nothing to flag in any of them, say
+so plainly under the recommendation.
 
 ### Phase 7: Merge
 
