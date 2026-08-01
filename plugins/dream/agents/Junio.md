@@ -176,8 +176,8 @@ Findings:
    file:line citation where you have one)
 
 Opportunities:
-1. ... (the code fits as written, but a simpler shape is within
-   reach; Grace holds these for the post-merge triage)
+1. ... (the code fits as written, but a simpler shape would
+   work; Grace collects these for the post-merge triage)
 
 Out of scope but noticed:
 1. ... (pre-existing items; Grace collects these for the

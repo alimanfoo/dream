@@ -44,9 +44,9 @@ Decide each finding from both reviews on its merits, weighed against the
   including Junio's coherence audit.
 - Reject: note it in your reply to the user, with the reason.
 - Out of scope: hold it for post-merge triage.
-- Hold as an opportunity: the code fits as it stands, and the finding names
-  follow-up work worth doing anyway. Hold it for post-merge triage as an
-  opportunity, not as an out-of-scope item. The
+- Opportunity: hold it for post-merge triage, marked as an opportunity rather
+  than out of scope. Use this when the code fits as it stands and the finding
+  names follow-up work worth doing anyway. The
   [collect phase](phase8.md#step-83-test) tests the two differently.
 - Raise a challenge: take it to the user per the "challenge" shape. Use this
   when the finding shows an accepted artifact no longer holds.
