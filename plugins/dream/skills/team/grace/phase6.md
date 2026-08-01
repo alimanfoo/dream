@@ -46,9 +46,9 @@ Decide each finding from both reviews on its merits, weighed against the
 - Out of scope: hold it for post-merge triage.
 - Opportunity: hold it for post-merge triage, marked as an opportunity rather
   than out of scope. Use this when the code fits as it stands, and a simpler
-  shape would leave it easier to maintain. An opportunity skips the collect
-  phase's [test step](phase8.md#step-83-test), which an out-of-scope finding
-  goes through.
+  shape would leave it easier to maintain. An opportunity skips the
+  [test step](phase8.md#step-83-test), which an out-of-scope finding goes
+  through.
 - Raise a challenge: take it to the user per the "challenge" shape. Use this
   when the finding shows an accepted artifact no longer holds.
 
@@ -56,8 +56,9 @@ Keep one response note per finding as you triage. Accepted findings record the
 follow-on task and, once complete, the commit or PR-visible evidence that
 addressed it. Rejected findings record the reason. Out-of-scope findings record
 that they are held for post-merge triage. Opportunities record the same, marked
-as an opportunity, since the collect phase treats the two apart. These notes are
-the raw material for the response comment you post after triage.
+as an opportunity, since the
+[collect phase](../../../agents/Grace.md#phase-8-collect) treats the two apart.
+These notes are the raw material for the response comment you post after triage.
 
 Reclassify any "out of scope but noticed" item as in scope when it is the same
 edit: one the PR missed, or one the PR has now made adjacent.

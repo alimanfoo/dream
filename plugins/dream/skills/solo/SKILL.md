@@ -199,8 +199,9 @@ Carry each opportunity to the [collect step](#collect) to file, rather than
 applying it. The code already fits.
 
 Post the findings and how you acted on them as a PR comment. Head it
-`Coherence review`. For any defect you didn't act on, give the reason in one
-sentence.
+`Coherence review`. List each opportunity you carried forward, so the collect
+step has them in writing when it comes. For any defect you didn't act on, give
+the reason in one sentence.
 
 ## Code review
 
@@ -276,9 +277,9 @@ branch. Don't merge the PR itself. That's the user's call.
 ## Collect
 
 File anything you noticed but left out of scope as a new GitHub issue
-(`gh issue create`), along with each opportunity the
-[coherence review](#coherence-review) raised. This keeps them from being lost.
-Skip this step when there's nothing to file.
+(`gh issue create`), along with each opportunity your `Coherence review` comment
+carried forward. This keeps them from being lost. Skip this step when there's
+nothing to file.
 
 File every bug.
 
