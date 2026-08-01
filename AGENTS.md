@@ -127,6 +127,13 @@ The README lists the utility skills a user can run on their own. That list is
 their one home, so add a new skill of this kind there. `coherence-review` is one
 such skill.
 
+Each autonomous developer skill (`/dream:team`, `/dream:solo`, `/dream:less`)
+opens by printing a banner that names the skill and the plugin version, so a
+user reporting a problem can say which version produced it. The skill reads the
+version from the plugin manifest at run time. Never write the number into skill
+prose, where a release bump would leave it stale. Give a fourth such skill a
+banner too.
+
 A skill that fans review lenses out to subagents must check and verify their
 findings against the code before it returns them. `code-review` and
 `coherence-review` both carry this step. Write it into a third such skill from
