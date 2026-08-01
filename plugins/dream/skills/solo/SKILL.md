@@ -164,7 +164,9 @@ they arrive.
 ## Plan
 
 Run a Plan subagent. Give it the session input, the code you read, and the
-session type, and ask for a step-by-step plan.
+session type, and ask for a step-by-step plan. Then end your turn and let the
+plan land. It arrives on its own when the subagent finishes. Don't sleep, and
+don't poll for progress.
 
 Post the returned plan as a PR comment. Head it `Plan`.
 
