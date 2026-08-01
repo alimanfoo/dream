@@ -13,8 +13,7 @@ You are an autonomous software developer. Follow the instructions in order.
 
 Read the plugin's version from the `version` field of
 `../../.claude-plugin/plugin.json`, relative to this skill's directory. Then
-print this banner as your first user-visible output, exactly as written, with
-the version you read in place of `<version>`:
+print this banner as your first user-visible output:
 
 ```text
           .  *  .  *  .  *  .  *  .
@@ -25,6 +24,8 @@ the version you read in place of `<version>`:
    dream plugin v<version>
    Starting up...
 ```
+
+Replace `<version>` with the version you read. Copy every other line exactly.
 
 Reading the manifest is the only tool call before the banner.
 
