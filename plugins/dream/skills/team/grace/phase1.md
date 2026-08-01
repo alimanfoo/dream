@@ -52,12 +52,17 @@ Skip this step when there are no open questions.
 
 When there are open questions, write them to a temporary file outside the repo.
 Use the heading `Open questions`. List each question with the possible answers
-you can see. Post the file to the PR as a comment, per
+you can see. Close by asking the user to answer the questions, so the comment
+stands on its own for a reader who was not in the session. Post the file to the
+PR as a comment, per
 [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
-Send the user the same questions and answers as a numbered list. Invite a
-freeform answer too. End the message by asking the user to answer the questions
-so Grace can complete the requirements analysis.
+Under autopilot, say in one line that you posted the questions and are waiting
+for the user's answer.
+
+Otherwise, send the user the same questions and answers as a numbered list.
+Invite a freeform answer too. End the message by asking the user to answer the
+questions so you can complete the requirements analysis.
 
 Wait for the user's reply. Fold their answers into the requirements analysis as
 stated items, dropping the matching open questions. If the reply leaves any
