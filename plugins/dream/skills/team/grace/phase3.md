@@ -20,7 +20,6 @@ and any alternative designs, each with its trade-off named.
 
 Under autopilot, keep this step to one line, then continue in the same turn:
 _"Taking the design as proposed (autopilot). Proceeding to Phase 4: Plan."_
-Don't reproduce the design options in turn output.
 
 Otherwise, send the design options to the user. Lead with the proposed design,
 your recommendation. Then give each alternative with the trade-off it carries.

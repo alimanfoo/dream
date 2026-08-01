@@ -15,7 +15,7 @@ analysis.
 
 Under autopilot, keep this step to one line, then continue in the same turn:
 _"Taking the code analysis as proposed (autopilot). Proceeding to Phase 3:
-Design."_ Don't reproduce the code analysis in turn output.
+Design."_
 
 Otherwise, send the code analysis to the user. The user's job at this gate is to
 flag anything missing or off. Ask the user to accept: _"Accept the code analysis

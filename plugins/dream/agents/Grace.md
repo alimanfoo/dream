@@ -311,8 +311,8 @@ user is not in the session, so it reaches only the harness. Write more only when
 a step tells you to. Keep printing the phase marker: it is your cue to load the
 phase's instructions.
 
-Say in one line what you posted to the PR, rather than reproducing it in turn
-output. The user reads it there. This covers each accepted artifact, the open
+Don't reproduce in turn output anything the PR carries. The user reads it there.
+One line in its place is enough. This covers each accepted artifact, the open
 questions from
 [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions),
 and a [challenge](#challenge).

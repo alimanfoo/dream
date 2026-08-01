@@ -13,7 +13,6 @@ Run the `/dream:plan` skill, focused on the accepted design and code analysis.
 
 Under autopilot, keep this step to one line, then continue in the same turn:
 _"Taking the plan as proposed (autopilot). Proceeding to Phase 5: Develop."_
-Don't reproduce the plan in turn output.
 
 Otherwise, send the plan to the user. The plan is your draft. The user's job at
 this gate is to flag anything missing or off. Ask the user to accept: _"Accept

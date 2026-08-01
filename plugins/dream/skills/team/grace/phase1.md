@@ -73,7 +73,7 @@ yet.
 
 Under autopilot, keep this step to one line, then continue in the same turn:
 _"Taking the requirements analysis as proposed (autopilot). Proceeding to Phase
-2: Code Analysis."_ Don't reproduce the requirements analysis in turn output.
+2: Code Analysis."_
 
 Otherwise, send the completed requirements analysis to the user. When there are
 candidates, ask the user to name any they want included, by number. Any they
