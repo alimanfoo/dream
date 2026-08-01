@@ -174,7 +174,7 @@ End it with one of these two, depending on
 - Under auto-collect: skip the question. State that you're taking the table and
   drafts as proposed, then file them in the same turn.
 
-Under autopilot as well as auto-collect, leave the drafts out of the message and
+Under both autopilot and auto-collect, leave the drafts out of the message and
 file them from the file. Nobody is in the session to read them, and the issues
 and comments you file carry their text. Keep the decision table in the message.
 You work from it to cap and to draft, and no PR comment carries it.

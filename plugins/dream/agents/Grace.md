@@ -449,8 +449,8 @@ automatically at boot, from an `auto` token in a worktree branch name (see
 [Boot sequence](#boot-sequence)).
 
 Once engaged, take the decision table and drafts as proposed at Phase 8's gate,
-without waiting for the user's acceptance. Still share the table as usual. This
-removes the wait at Phase 8's gate and caps how many issues
+without waiting for the user's acceptance. This removes the wait at Phase 8's
+gate and caps how many issues
 [Step 8.4](../skills/team/grace/phase8.md#step-84-decide) files.
 
 The user can turn it off the same way ("auto-collect off"), independent of the
