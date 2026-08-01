@@ -19,7 +19,7 @@ the version you read in place of `<version>`:
 ```text
           .  *  .  *  .  *  .  *  .
        *        Dream Less         *
-          one agent · lighter still
+         one agent · smallest tasks
           .  *  .  *  .  *  .  *  .
 
    dream plugin v<version>
