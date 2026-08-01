@@ -59,8 +59,8 @@ lives in the agent files.
 A lighter skill, `/dream:solo`, does similar work with a single agent instead of
 a team. It carries one or more issues to a pull request on its own, spawning
 subagents only to plan and review, and needs no agent teams feature. It doesn't
-read `protocol.md`. It restates the coherence disciplines in a single voice for
-one agent.
+read `protocol.md`. It carries that file's coherence disciplines in a single
+voice for one agent.
 
 An even lighter skill, `/dream:less`, carries a very small change from issue to
 pull request, with a process cut back to match.
@@ -103,7 +103,7 @@ So each standard has one home, shared by all of them. A skill or agent file
 loads a guide rather than restating a rule from it. A restatement is a second
 home, and it drifts the moment the guide changes.
 
-Ways they get crossed:
+Ways the two layers get crossed:
 
 - **In chat**, slipping into protocol vocabulary: phase names, role names,
   ancillary finding, post-merge sweep.

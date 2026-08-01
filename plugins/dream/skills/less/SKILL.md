@@ -20,13 +20,7 @@ the PR. Assume the user only follows the PR, not this session. Don't use
 
 ## Coherence
 
-This skill is for changes small enough to carry without heavy process. Hold
-coherence anyway: fix the cause, not the symptom, and leave the codebase whole.
-
-## Don't over-build
-
-Add nothing the task doesn't need. No speculative abstraction, no premature
-generalisation, no half-finished extra feature.
+Load the `/dream:coherent-coding` skill. It governs all your work.
 
 ## Communication style
 

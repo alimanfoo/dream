@@ -97,6 +97,9 @@ silently.
 
 Prefer re-use of an existing library over custom code, but weigh the trade-offs.
 
+Serve only the consumers the requirements name. A consumer you invent widens the
+design with no one to serve.
+
 Reshape the proposed design around the real structural fix, even when the input
 asked for a docstring or comment change. The design follows the code, not the
 input's literal wording.
@@ -116,12 +119,12 @@ Write the design options to a temporary file outside the repo.
 
 ## Revise the design against the coherent coding guide
 
-Read the draft design back against the coherent coding guide. Take every section
-the draft makes a call on, and cover the proposed design and every alternative.
-The design settles how far the work reaches, so a gap you leave here becomes
-maintenance work for a later session.
+Read the [coherent coding guide](../../coherent-coding.md) again, then read the
+draft design back against it. Take every section the draft makes a call on, and
+cover the proposed design and every alternative. The design settles how far the
+work reaches.
 
-Revise the file wherever a section shows a gap.
+Revise the file wherever a guide section shows a gap.
 
 Then name in turn output each section that showed a gap, and what you changed in
 the design. Say so when no section showed one.
