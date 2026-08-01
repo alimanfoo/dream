@@ -67,18 +67,16 @@ yet.
 
 ## Step 1.4: Share the requirements analysis
 
-Send the completed requirements analysis to the user. When there are candidates,
-ask the user to name any they want included, by number. Note that any they don't
-name are carried forward as opportunities to the
-[collect phase](../../../agents/Grace.md#phase-8-collect).
+Under autopilot, keep this step to one line, then continue in the same turn:
+_"Taking the requirements analysis as proposed (autopilot). Proceeding to Phase
+2: Code Analysis."_ Don't reproduce the requirements analysis in turn output.
 
-End the message with one of these two, depending on autopilot:
-
-- Not under autopilot: ask the user to accept. _"Accept the requirements
-  analysis to proceed to Phase 2: Code Analysis."_
-- Under autopilot: skip the question. State what you're doing instead, and
-  continue in the same turn. _"Taking the requirements analysis as proposed
-  (autopilot). Proceeding to Phase 2: Code Analysis."_
+Otherwise, send the completed requirements analysis to the user. When there are
+candidates, ask the user to name any they want included, by number. Note that
+any they don't name are carried forward as opportunities to the
+[collect phase](../../../agents/Grace.md#phase-8-collect). Ask the user to
+accept: _"Accept the requirements analysis to proceed to Phase 2: Code
+Analysis."_
 
 ## Step 1.5: Seek user acceptance of the requirements analysis
 
