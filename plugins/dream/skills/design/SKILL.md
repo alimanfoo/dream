@@ -124,7 +124,7 @@ later session.
 Revise the file wherever a section shows a gap.
 
 Then name in turn output each section that showed a gap, and what you changed in
-the design. Leave out the sections the draft already met.
+the design.
 
 ## The result
 

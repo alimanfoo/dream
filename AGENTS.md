@@ -124,7 +124,7 @@ the agent file of whoever runs it. `Grace.md`'s challenge and autopilot sections
 are the templates.
 
 The README lists the utility skills a user can run on their own. That list is
-their one home, so add a new skill of this kind there. `coherence-review` is one
+their one home. Add a new skill of this kind there. `coherence-review` is one
 such skill.
 
 A skill that fans review lenses out to subagents must check and verify their
