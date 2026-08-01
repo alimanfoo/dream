@@ -44,14 +44,18 @@ Decide each finding from both reviews on its merits, weighed against the
   including Junio's coherence audit.
 - Reject: note it in your reply to the user, with the reason.
 - Out of scope: hold it for post-merge triage.
+- Hold as an opportunity: the code fits as it stands, and the finding names
+  follow-up work worth doing anyway. Hold it for post-merge triage as an
+  opportunity, not as an out-of-scope item. The
+  [collect phase](phase8.md#step-83-test) tests the two differently.
 - Raise a challenge: take it to the user per the "challenge" shape. Use this
   when the finding shows an accepted artifact no longer holds.
 
 Keep one response note per finding as you triage. Accepted findings record the
 follow-on task and, once complete, the commit or PR-visible evidence that
-addressed it. Rejected findings record the reason. Out-of-scope findings record
-that they are held for post-merge triage. These notes are the raw material for
-the response comment you post after triage.
+addressed it. Rejected findings record the reason. Out-of-scope findings and
+opportunities record that they are held for post-merge triage. These notes are
+the raw material for the response comment you post after triage.
 
 Reclassify any "out of scope but noticed" item as in scope when it is the same
 edit: one the PR missed, or one the PR has now made adjacent.
@@ -75,6 +79,7 @@ The response is concise and GitHub-facing:
   PR-visible evidence when useful.
 - **Rejected** items give the reason.
 - **Out of scope** items say they are held for post-merge triage.
+- **Opportunities** say they are held for post-merge triage.
 - If neither review raised findings, say no response work was needed.
 
 Do not repost the review text or quote internal teammate messages. Post it per
