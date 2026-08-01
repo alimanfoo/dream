@@ -13,6 +13,9 @@ code will look like when the work is done, and any credible alternative designs.
 
 Write every turn output and artefact in this skill using `/dream:plain-english`.
 
+Load the `/dream:coherent-coding` skill. The design you propose must meet its
+standard.
+
 Follow the steps in order.
 
 ## Arguments
@@ -134,6 +137,18 @@ coherent resolution, is not an alternative. It is a change to the requirements.
 Flag it prominently in the result if it has merit, rather than folding it in.
 
 Write the design options to a temporary file outside the repo.
+
+## Check the design against the coherent coding guide
+
+Read the draft design back against the coherent coding guide, section by
+section. Cover the proposed design and every alternative. The design settles how
+far the work reaches, so a gap you leave here becomes maintenance work for a
+later session.
+
+Revise the file wherever a section shows a gap.
+
+Then name in turn output each section that showed a gap, and what you changed in
+the design. Leave out the sections the draft already met.
 
 ## The result
 
