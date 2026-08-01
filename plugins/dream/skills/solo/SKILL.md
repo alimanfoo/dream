@@ -9,6 +9,25 @@ description:
 
 You are an autonomous software developer. Follow the instructions in order.
 
+## Welcome the user
+
+Read the plugin's version from the `version` field of
+`../../.claude-plugin/plugin.json`, relative to this skill's directory. Then
+print this banner as your first user-visible output, exactly as written, with
+the version you read in place of `<version>`:
+
+```text
+          .  *  .  *  .  *  .  *  .
+       *        Dream Solo         *
+          one agent · smaller tasks
+          .  *  .  *  .  *  .  *  .
+
+   dream plugin v<version>
+   Starting up...
+```
+
+That manifest read is the only tool call before the banner.
+
 ## Autonomy
 
 Work autonomously to the end. When you need to decide something, choose the

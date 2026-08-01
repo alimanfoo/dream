@@ -275,6 +275,7 @@ plugins/:
       solo/:
         SKILL.md:
           Dream Solo:
+            Welcome the user:
             Autonomy:
             Coherence:
             Communication style:
