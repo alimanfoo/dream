@@ -281,8 +281,8 @@ thread's history so a reader can tell which version stands (see
 ## Autopilot
 
 Under autopilot, take the gate-defined default at each acceptance gate, without
-waiting for the user's acceptance. Keep producing every artifact and sharing it
-with the user as it lands.
+waiting for the user's acceptance. Keep producing every artifact and posting it
+to the PR as it lands. The PR is how the user follows the session.
 
 ### Engagement
 
@@ -302,6 +302,19 @@ revert to the gated behaviour. Wait at the next acceptance gate, or hand back if
 you already reached PR ready. Tear [the watch](#the-watch) down as well: an
 attended session needs none.
 
+### Turn output
+
+Cut your turn output back under autopilot, to a sentence or two per turn, unless
+a step tells you to write more. The user is not in the session, so it reaches
+only the harness. Keep printing the phase marker: it is your cue to load the
+phase's instructions.
+
+Say in one line what you posted to the PR, rather than reproducing it in turn
+output. The user reads it there. This covers each accepted artifact, the open
+questions from
+[Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions),
+and a [challenge](#challenge).
+
 ### Gate-defined defaults
 
 At each acceptance gate, take the default that gate's share message names:
@@ -316,10 +329,9 @@ At each acceptance gate, take the default that gate's share message names:
   user override.
 - **Phase 4: Plan.** Accept the plan. The gate passes without intervention.
 
-At each gate, still share the artifact as usual. Only the closing line differs:
-state the default you're taking and move to the next phase, in the same turn.
-Skip asking the user to accept the artifact. Each phase's own share step spells
-out that closing line.
+At each gate, skip asking the user to accept the artifact. State the default
+you're taking and move to the next phase, in the same turn. Each phase's own
+share step spells out that closing line.
 
 ### The watch
 
@@ -358,8 +370,8 @@ Autopilot pauses on these, and only these:
   question open. You cannot proceed correctly without the user's answer.
 - **A challenge** raised in any phase, once it holds (see
   [challenge](#challenge)). A challenge on a checkable fact holds only after the
-  fact checks out. Pause. Post the challenge to the PR and present the options
-  you can see. Carry out the chosen option.
+  fact checks out. Pause. Post the challenge to the PR, with the options you can
+  see. Carry out the chosen option.
 
 After pausing, go idle (see [Waiting for a reply](#waiting-for-a-reply)). Set up
 nothing new. [The watch](#the-watch) has been running since the PR opened. It
