@@ -54,36 +54,38 @@ Write the draft plan to a temporary file outside the repo.
 
 ## Check each task for a tidying precursor
 
-Read the draft back from the file. Ask of each task: would it go more cleanly if
-a small cleanup came first? See
+Read the draft back from the file. Take each task in turn. Name the code it
+lands in, and say whether that shape resists the change. See
 [Tidy first](../../coherent-coding.md#tidy-first) for what tidying means, why it
 pays, and what it looks like.
 
-A precursor qualifies only when all of these hold:
+A shape that resists earns a precursor task only when all of these hold:
 
 - **Tied to a named task.** Say which planned task it supports. A free-floating
   cleanup doesn't qualify.
 - **Behaviour-preserving.** Pure restructure: extract, inline, rename, move,
-  split. No contract change.
+  split. Nothing a caller relies on changes.
 - **Clearly easier or safer.** Without it, the named task would be more
   error-prone, more complex, or reach more places. A cleanup that only makes the
   code look nicer doesn't pass.
 
-Name in turn output each task that needs a precursor, and the precursor it
-needs. Then revise the file, adding each precursor as its own task ahead of the
-task it supports. When no task needs one, say so plainly. Don't invent a cleanup
-to have something to report.
+Then revise the file, adding each precursor that qualifies as its own task ahead
+of the task it supports. Don't invent a cleanup to have something to report.
 
 ## Check each task is one idea
 
 Read the draft back from the file. Test each task by its one-line headline. If
-the headline needs an "and", the task is two ideas, so split it. If the task is
-only part of one idea, merge it into the task that completes it. One idea per
-task keeps each commit clean and its review focused on a single change.
+the headline needs an "and", the task is two ideas, so split it. A broad
+headline can hide two ideas behind one phrase, so weigh the work behind it too:
+more than one commit's worth means more than one idea. If a task leaves a change
+half-done, it is less than one idea, so merge it into the task that completes
+it.
 
-Name in turn output each task that holds more or less than one idea. Then revise
-the file, splitting or merging each one. When every task holds exactly one idea,
-say so plainly.
+One idea per task keeps each commit clean and its review focused on a single
+change. A tidying precursor is a whole change, so leave it as its own task.
+
+Name in turn output each task that isn't one idea. Then revise the file,
+splitting or merging each one. When every task is one idea, say so plainly.
 
 ## Check each task can be committed
 
@@ -96,13 +98,13 @@ watch for:
 - a task that changes a caller before the task that changes the callee
 - a task that removes a symbol a later task still uses
 
-Reorder the tasks so no task depends on work a later task does. When two tasks
-depend on each other, reordering can't help. Merge them, and rewrite the
-headline so it still names one idea. When no headline fits, the split ran along
-the wrong line, so split the pair a different way.
+Name in turn output each task that depends on later work. When none does, say so
+plainly.
 
-Name in turn output each task that can't be committed on its own. Then revise
-the file. When every task can, say so plainly.
+Then revise the file. Reorder the tasks so no task depends on work a later task
+does. When two tasks depend on each other, reordering can't help. Merge them,
+and rewrite the headline so it still names one idea. When no headline fits, the
+split ran along the wrong line, so split the pair a different way.
 
 ## The result
 
