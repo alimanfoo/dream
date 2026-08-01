@@ -42,7 +42,7 @@ the prompts.
       Starting up...
    ```
 
-   That manifest read is the only tool call before the banner, and the banner is
+   Reading the manifest is the only tool call before the banner. The banner is
    the only output before the team is ready. The rest of the flow runs without
    further commentary.
 

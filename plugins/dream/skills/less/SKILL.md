@@ -26,7 +26,7 @@ the version you read in place of `<version>`:
    Starting up...
 ```
 
-That manifest read is the only tool call before the banner.
+Reading the manifest is the only tool call before the banner.
 
 ## Autonomy
 
