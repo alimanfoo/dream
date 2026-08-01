@@ -281,8 +281,10 @@ thread's history so a reader can tell which version stands (see
 ## Autopilot
 
 Under autopilot, take the gate-defined default at each acceptance gate, without
-waiting for the user's acceptance. Keep producing every artifact and posting it
-to the PR as it lands. The PR is how the user follows the session.
+waiting for the user's acceptance.
+
+Keep producing every artifact and posting it to the PR as it lands. The PR is
+how the user follows the session.
 
 ### Engagement
 
@@ -304,9 +306,9 @@ attended session needs none.
 
 ### Turn output
 
-Cut your turn output back under autopilot, to a sentence or two per turn, unless
-a step tells you to write more. The user is not in the session, so it reaches
-only the harness. Keep printing the phase marker: it is your cue to load the
+Cut your turn output back under autopilot, to a sentence or two per turn. The
+user is not in the session, so it reaches only the harness. Write more only when
+a step tells you to. Keep printing the phase marker: it is your cue to load the
 phase's instructions.
 
 Say in one line what you posted to the PR, rather than reproducing it in turn
@@ -329,9 +331,9 @@ At each acceptance gate, take the default that gate's share message names:
   user override.
 - **Phase 4: Plan.** Accept the plan. The gate passes without intervention.
 
-At each gate, skip asking the user to accept the artifact. State the default
-you're taking and move to the next phase, in the same turn. Each phase's own
-share step spells out that closing line.
+Skip asking the user to accept the artifact. State the default you're taking and
+move to the next phase, in the same turn. Each phase's own share step spells out
+that closing line.
 
 ### The watch
 
