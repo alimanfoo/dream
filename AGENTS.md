@@ -99,7 +99,9 @@ Two guides sit at the plugin root, not inside any one skill: the
 [Plain English guide](plugins/dream/plain-english.md) and the
 [coherent coding guide](plugins/dream/coherent-coding.md). The whole plugin
 works to them, the team agents at runtime and the utility skills when invoked.
-So each standard has one home, shared by all of them.
+So each standard has one home, shared by all of them. A skill or agent file
+loads a guide rather than restating a rule from it. A restatement is a second
+home, and it drifts the moment the guide changes.
 
 Ways they get crossed:
 
@@ -139,17 +141,18 @@ protocol.md, move it. Don't reword it in the third person to make it fit. Two
 signs it is in the wrong place: it tells the reader to do something ("go idle"),
 or only one agent ever needs it.
 
-Renaming or renumbering a phase, step, or concept ripples past the file you
-edit. Step headings carry the phase in the number (for example, `Step 4.5` is
-phase 4, step 5). References to a step or named section, within or across files,
-are Markdown anchor links. So renumbering a step, or rewording any heading,
-changes its anchor and breaks every link still pointing at the old one. These
-link checks fail until you fix them. Markdownlint's MD051 covers within-file
-links. `remark-validate-links` covers cross-file links. Both run in pre-commit
-and CI. A link can only target a heading, so a sub-point referenced by name
-needs to be a heading, not a bold inline label. The checks cover links to a
-named section. Whole-file mentions and the protocol summary stay plain prose.
-Also grep all plugin files for the old name.
+Renaming, renumbering, or removing a phase, step, or concept ripples past the
+file you edit. Step headings carry the phase in the number (for example,
+`Step 4.5` is phase 4, step 5). References to a step or named section, within or
+across files, are Markdown anchor links. So renumbering a step, or rewording any
+heading, changes its anchor and breaks every link still pointing at the old one.
+These link checks fail until you fix them. Markdownlint's MD051 covers
+within-file links. `remark-validate-links` covers cross-file links. Both run in
+pre-commit and CI. A link can only target a heading, so a sub-point referenced
+by name needs to be a heading, not a bold inline label. The checks cover links
+to a named section. Whole-file mentions and the protocol summary stay plain
+prose. Also grep all plugin files, and AGENTS.md, for the old name. AGENTS.md
+describes the plugin's mechanisms in prose, so removing one leaves it wrong.
 
 A cross-file link only works if its reader ever opens the target file. Each
 dream-team agent reads its own file and `protocol.md` at boot, never another

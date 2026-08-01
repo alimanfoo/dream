@@ -114,17 +114,17 @@ Flag it prominently in the result if it has merit, rather than folding it in.
 
 Write the design options to a temporary file outside the repo.
 
-## Check the design against the coherent coding guide
+## Revise the design against the coherent coding guide
 
-Read the draft design back against the coherent coding guide, section by
-section. Cover the proposed design and every alternative. The design settles how
-far the work reaches, so a gap you leave here becomes maintenance work for a
-later session.
+Read the draft design back against the coherent coding guide. Take every section
+the draft makes a call on, and cover the proposed design and every alternative.
+The design settles how far the work reaches, so a gap you leave here becomes
+maintenance work for a later session.
 
 Revise the file wherever a section shows a gap.
 
 Then name in turn output each section that showed a gap, and what you changed in
-the design.
+the design. Say so when no section showed one.
 
 ## The result
 
