@@ -68,15 +68,16 @@ all in a single message so they run in parallel. Give each the target, as a git
 range like `origin/main...HEAD` or an absolute path, and the one lens it
 applies. A subagent can't resolve a path relative to its own prompt file.
 
-Then go idle and let their findings land. They arrive on their own when each
-subagent finishes. Don't sleep. Don't poll for progress.
-
 The subagent is read-only by tool design: it reads and reports.
 
 In inline mode, run the lenses yourself instead of spawning subagents.
 
 Skip the lenses for a diff small enough that your cold read already exhausts it.
 Three subagents on a one-line fix wastes effort.
+
+Once the subagents are running, go idle: end your turn and let their findings
+land. They arrive on their own when each subagent finishes. Don't sleep. Don't
+poll for progress. Don't write that you are waiting.
 
 ## Combine, verify and return
 

@@ -164,9 +164,10 @@ they arrive.
 ## Plan
 
 Run a Plan subagent. Give it the session input, the code you read, and the
-session type, and ask for a step-by-step plan. Then go idle and let the plan
-land. It arrives on its own when the subagent finishes. Don't sleep. Don't poll
-for progress.
+session type, and ask for a step-by-step plan. Once it is running, go idle: end
+your turn and let the plan land. It arrives on its own when the subagent
+finishes. Don't sleep. Don't poll for progress. Don't write that you are
+waiting.
 
 Post the returned plan as a PR comment. Head it `Plan`.
 
