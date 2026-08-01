@@ -42,7 +42,7 @@ Read the arguments the user gives.
    whole of it. For a large passage, split it by file or section. Launch
    parallel `dream:copy-editor` subagents, one per part. Then end your turn and
    let their findings land. They arrive on their own when each subagent
-   finishes. Don't sleep, and don't poll for progress.
+   finishes. Don't sleep. Don't poll for progress.
 3. Resolve every finding the review returns. You are the author. Make each edit
    yourself and keep the meaning. When a fix would drop a reason, keep the
    reason and meet the rule another way.
