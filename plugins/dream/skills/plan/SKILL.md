@@ -1,16 +1,16 @@
 ---
 name: plan
 description:
-  Produce a plan for a task, the task list that delivers the design, each task a
-  clean single-commit unit selected by a criterion.
+  Produce a plan for a task, the task list that delivers the design, each task
+  one idea and one commit, its work selected by a criterion.
 argument-hint: "<design and code analysis | text>"
 ---
 
 # Plan
 
-Produce a plan: the task list that delivers the design. Each task is a
-manageable single-commit unit. A criterion selects its work, and the implementer
-applies that criterion fresh.
+Produce a plan: the task list that delivers the design. Each task is one idea
+and one commit. A criterion selects its work, and the implementer applies that
+criterion fresh.
 
 Write every turn output and artefact in this skill using `/dream:plain-english`.
 
@@ -29,8 +29,7 @@ Compose the draft plan, the task list that delivers the design.
 Derive tasks from the design and the code analysis. Don't translate the session
 input directly into tasks. The design has already reshaped it where needed.
 
-Each task should be a manageable unit of work for the implementer, one commit
-per task.
+Each task should be one idea and one commit.
 
 Build each brief in this order:
 
@@ -53,16 +52,12 @@ each name a single site. The criterion collapses them into one clean change.
 
 Write the draft plan to a temporary file outside the repo.
 
-## Check the tidying comes first
+## Check each task for a tidying precursor
 
 Read the draft back from the file. Ask of each task: would it go more cleanly if
-a small precursor cleanup made the change easy first? New code forced to fit
-around a shape that no longer suits it comes out more complex (see
-[Tidy first](../../coherent-coding.md#tidy-first)). Examples:
-
-- extract a helper before adding a sibling case
-- rename a confusing parameter before threading new arguments
-- split a tangled function before adding a branch
+a small cleanup came first? See
+[Tidy first](../../coherent-coding.md#tidy-first) for what tidying means, why it
+pays, and what it looks like.
 
 A precursor qualifies only when all of these hold:
 
@@ -79,29 +74,32 @@ needs. Then revise the file, adding each precursor as its own task ahead of the
 task it supports. When no task needs one, say so plainly. Don't invent a cleanup
 to have something to report.
 
-## Check each task is manageable
+## Check each task is one idea
 
 Read the draft back from the file. Test each task by its one-line headline. If
-the headline needs an "and", the task is two ideas, so split it. One idea per
+the headline needs an "and", the task is two ideas, so split it. If the task is
+only part of one idea, merge it into the task that completes it. One idea per
 task keeps each commit clean and its review focused on a single change.
 
-Name in turn output each task that holds more than one idea. Then revise the
-file, splitting each one. When every task holds one idea, say so plainly.
+Name in turn output each task that holds more or less than one idea. Then revise
+the file, splitting or merging each one. When every task holds exactly one idea,
+say so plainly.
 
 ## Check each task can be committed
 
-Read the draft back from the file. Read each task as the implementer, and ask
-whether the tests and checks pass once they have done that task and nothing
-else. The implementer commits one task at a time. A task that leaves a check
-failing has nothing it can commit. Shapes to watch for:
+Read the draft back from the file. Read the tasks in order, and ask of each:
+does it depend on work a later task does? The implementer commits one task at a
+time, and the tests and checks must pass at each commit. A task that depends on
+later work leaves a check failing, so there is nothing to commit. Shapes to
+watch for:
 
 - a task that changes a caller before the task that changes the callee
-- a task that removes a symbol later tasks still use
-- a fragment of a change, too small to stand on its own
+- a task that removes a symbol a later task still uses
 
-Merge each failing task into the task that completes it. Rewrite the merged
-task's headline so it still names one change. If no such headline fits, the
-merge was wrong, and the task boundary is the real problem.
+Reorder the tasks so no task depends on work a later task does. When two tasks
+depend on each other, reordering can't help. Merge them, and rewrite the
+headline so it still names one idea. When no headline fits, the split ran along
+the wrong line, so split the pair a different way.
 
 Name in turn output each task that can't be committed on its own. Then revise
 the file. When every task can, say so plainly.

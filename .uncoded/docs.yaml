@@ -259,8 +259,8 @@ plugins/:
           Plan:
             Arguments:
             Compose the draft plan:
-            Check the tidying comes first:
-            Check each task is manageable:
+            Check each task for a tidying precursor:
+            Check each task is one idea:
             Check each task can be committed:
             The result:
       requirements-analysis/:
