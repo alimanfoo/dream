@@ -7,9 +7,9 @@ argument-hint: "<design and code analysis | text>"
 
 # Plan
 
-Produce a plan: the task list that delivers the design. Each task is one idea
-and one commit. A criterion selects its work, and the implementer applies that
-criterion fresh.
+Produce a plan: the task list that delivers the given design. Each task is one
+idea and one commit. A criterion selects its work, and the implementer applies
+that criterion fresh.
 
 Write every turn output and artefact in this skill using `/dream:plain-english`.
 
@@ -26,7 +26,7 @@ you cannot identify a focus, ask the user.
 Compose the draft plan, the task list that delivers the design.
 
 Derive tasks from the design and the code analysis. Don't translate the session
-input directly into tasks. The design has already reshaped it where needed.
+input directly into tasks. The design may have already reshaped it where needed.
 
 Each task should be one idea and one commit.
 
