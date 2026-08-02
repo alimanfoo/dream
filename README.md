@@ -256,8 +256,9 @@ Autopilot on.
 
 ...to Grace. She then directs the team autonomously, taking the default at each
 acceptance gate instead of waiting for your approval. She still produces every
-artifact and runs every review. Each artifact lands on the pull request, so that
-is where you follow the session. She keeps the session itself quiet.
+artifact and runs every review. Each artifact is posted as a comment on the pull
+request, so you can follow the session there. She keeps the session itself
+quiet.
 
 Grace will still stop for input in these cases: an open question from the
 requirements analysis, or something unexpected turning up during development.

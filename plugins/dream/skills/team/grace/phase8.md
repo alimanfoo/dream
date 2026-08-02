@@ -174,13 +174,11 @@ End it with one of these two, depending on
 - Under auto-collect: skip the question. State that you're taking the table and
   drafts as proposed, then file them in the same turn.
 
-Under both autopilot and auto-collect, leave the drafts out of the message and
-file them from the file. Nobody is in the session to read them, and the issues
-and comments you file carry their text. Keep the decision table in the message.
-You work from it to cap and to draft, and no PR comment carries it.
+When autopilot is engaged as well, share the table alone: you work from it, and
+no PR comment carries it. Leave the drafts out. Nobody is in the session to read
+them, and the issues and comments you file carry their text.
 
-File only text the copy-edited file holds, so nothing GitHub-visible is composed
-at filing time.
+Never file text the copy-edited file doesn't hold.
 
 You don't implement anything in any phase. What enters the backlog is an issue
 or a comment, never a fix. This holds even when merge was deferred and the PR is
