@@ -59,6 +59,10 @@ beneath it into the briefing.
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
 
+Once the subagents are running, go idle: end your turn and let their findings
+land. They arrive on their own when each subagent finishes. Don't sleep. Don't
+poll for progress. Don't write that you are waiting.
+
 ## Combine, verify and return
 
 Combine their findings into one list, dropping duplicates. Judge each on its
