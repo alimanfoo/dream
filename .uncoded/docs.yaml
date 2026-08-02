@@ -278,9 +278,9 @@ plugins/:
             Name the session type:
             Compose the draft:
             The result:
-      solo/:
+      smith/:
         SKILL.md:
-          Dream Solo:
+          Dream Smith:
             Print the banner:
             Autonomy:
             Coherence:
@@ -403,7 +403,7 @@ README.md:
     Prerequisites:
     Installation:
     Coherent development with /dream:team:
-    Smaller tasks with /dream:solo:
+    Smaller tasks with /dream:smith:
     Even smaller tasks with /dream:less:
     Unattended runs with /dream:catcher:
     /dream:team advanced usage:
