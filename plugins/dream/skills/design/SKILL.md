@@ -13,8 +13,8 @@ code will look like when the work is done, and any credible alternative designs.
 
 Write every turn output and artefact in this skill using `/dream:plain-english`.
 
-Load the `/dream:coherent-coding` skill. The design you propose must meet its
-standard.
+Load the `/dream:coherent-coding` skill. It provides guiding principles for the
+design you propose.
 
 Follow the steps in order.
 
@@ -119,15 +119,15 @@ Write the design options to a temporary file outside the repo.
 
 ## Revise the design against the coherent coding guide
 
-Read the [coherent coding guide](../../coherent-coding.md) again. Then take it
-one section at a time, and find where the draft design falls short. Do this for
-the proposed design and for each alternative design. A gap you leave here
-becomes a gap in the code.
+Take the [coherent coding guide](../../coherent-coding.md) one section at a
+time, and consider whether the draft design could be improved. Do this for the
+proposed design and for each alternative design. A gap you leave here becomes a
+gap in the code.
 
-Revise the file to close each gap you found.
+Revise the file to implement each improvement you found.
 
-Then write in your turn output which sections showed a gap, and what you changed
-in the design. Say so if none did. Say so when no section showed one.
+Then write in your turn output which sections changed in the design. Say so if
+none did.
 
 ## The result
 
