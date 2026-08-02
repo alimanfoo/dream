@@ -226,6 +226,7 @@ plugins/:
             Draft the design options:
               The proposed design:
               The alternative designs:
+            Revise the design against the coherent coding guide:
             The result:
       less/:
         SKILL.md:
