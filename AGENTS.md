@@ -127,10 +127,6 @@ The README lists the utility skills a user can run on their own. Add a new skill
 of this kind there, since that list is their one home. `coherence-review` is one
 such skill.
 
-`code-review` and `coherence-review` launch their review lenses as subagents, so
-a lens only ever runs as a step within a skill. A lens is not a skill of its
-own, and doesn't go in the README list.
-
 A skill that fans review lenses out to subagents must check and verify their
 findings against the code before it returns them. `code-review` and
 `coherence-review` both carry this step. Write it into a third such skill from

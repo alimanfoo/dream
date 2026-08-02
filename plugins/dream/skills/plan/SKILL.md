@@ -1,8 +1,7 @@
 ---
 name: plan
 description:
-  Produce a plan for a task, the task list that delivers the design, each task
-  one idea and one commit, its work selected by a criterion.
+  Produce an implementation plan, a task list that delivers the given design.
 argument-hint: "<design and code analysis | text>"
 ---
 
