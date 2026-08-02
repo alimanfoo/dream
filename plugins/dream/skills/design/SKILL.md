@@ -13,6 +13,9 @@ code will look like when the work is done, and any credible alternative designs.
 
 Write every turn output and artefact in this skill using `/dream:plain-english`.
 
+Load the `/dream:coherent-coding` skill. It provides guiding principles for the
+design you propose.
+
 Follow the steps in order.
 
 ## Arguments
@@ -85,13 +88,6 @@ scales with session type:
   When more than one fix shape is plausible (defensive check, structural fix,
   removal), name the alternatives and why this one.
 
-Reach the coherent resolution, not just the site the input named. The design
-settles it, so it must reach the root cause and every instance the resolution
-needs. A coherent resolution leaves no follow-on maintenance work for a later
-session. Where the code analysis traced a recurring surface to one fact written
-in two places, single-source it rather than patching the copies, which only lets
-the drift return.
-
 The input may steer the design: a library, framework, or approach to use. Source
 that steer and weigh it with the sketches, on its merits. It is the user's steer
 on the how, not a fixed requirement. Take it in the proposed design unless you
@@ -101,26 +97,12 @@ silently.
 
 Prefer re-use of an existing library over custom code, but weigh the trade-offs.
 
-Check the proposed design against common overcomplication defaults:
-
-- consumers the requirements don't name
-- surfaces held "for the future" or "for downstream" with no current consumer
-- failure modes from over-flexible interfaces
-- abstraction held "for symmetry" with only one real branch
-
-Remove any code the change leaves purposeless. When a function the design
-modifies has no remaining purpose after the change, the same design removes it.
+Serve only the consumers the requirements name. A consumer you invent widens the
+design with no one to serve.
 
 Reshape the proposed design around the real structural fix, even when the input
-asked for a docstring or comment change. Take an input that asks to "expand the
-docstring to express a contract". The contract belongs in a signature that
-enforces it, not a docstring a caller can ignore. The design follows the code,
-not the input's literal wording.
-
-Carry a contract, invariant, precondition, or convention in the shape of the
-code, not in a docstring, comment, or section-header. A type or a module
-boundary holds it more reliably than prose a reader can skip. Reach for prose
-only when no shape carries the meaning.
+asked for a docstring or comment change. The design follows the code, not the
+input's literal wording.
 
 ### The alternative designs
 
@@ -134,6 +116,18 @@ coherent resolution, is not an alternative. It is a change to the requirements.
 Flag it prominently in the result if it has merit, rather than folding it in.
 
 Write the design options to a temporary file outside the repo.
+
+## Revise the design against the coherent coding guide
+
+Take the [coherent coding guide](../../coherent-coding.md) one section at a
+time, and consider whether the draft design could be improved. Do this for the
+proposed design and for each alternative design. A gap you leave here becomes a
+gap in the code.
+
+Revise the file to implement each improvement you found.
+
+Then write in your turn output which sections changed in the design. Say so if
+none did.
 
 ## The result
 

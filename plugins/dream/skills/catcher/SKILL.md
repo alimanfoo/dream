@@ -7,9 +7,9 @@ description:
   runs /dream:catcher.
 argument-hint:
   "[--team-label <label>] [--solo-label <label>] [--less-label <label>]
-  [--solo-model <model>] [--solo-effort <effort>] [--less-model <model>]
-  [--less-effort <effort>] [--assignee <user>] [--interval <seconds>] [--linger
-  <minutes>] [--max-sessions <n>]"
+  [--team-effort <effort>] [--solo-model <model>] [--solo-effort <effort>]
+  [--less-model <model>] [--less-effort <effort>] [--assignee <user>]
+  [--interval <seconds>] [--linger <minutes>] [--max-sessions <n>]"
 ---
 
 # Dreamcatcher
@@ -33,9 +33,9 @@ checks, and launch it.
 ## Arguments
 
 The user may pass any option below as a `--flag value` pair, in any order:
-`--team-label`, `--solo-label`, `--less-label`, `--solo-model`, `--solo-effort`,
-`--less-model`, `--less-effort`, `--assignee`, `--interval`, `--linger`, and
-`--max-sessions`. Take whichever are present.
+`--team-label`, `--solo-label`, `--less-label`, `--team-effort`, `--solo-model`,
+`--solo-effort`, `--less-model`, `--less-effort`, `--assignee`, `--interval`,
+`--linger`, and `--max-sessions`. Take whichever are present.
 
 ## Gather the configuration
 
@@ -47,6 +47,9 @@ misread surfaces at once.
 - **Team label.** The label that dispatches a `/dream:team` session.
 - **Solo label.** The label that dispatches a `/dream:solo` session.
 - **Less label.** The label that dispatches a `/dream:less` session.
+- **Team effort.** The reasoning effort a `/dream:team` session runs under. A
+  model override makes no sense here, since each of its agents carries its own
+  model.
 - **Solo model.** The model a `/dream:solo` session runs under.
 - **Solo effort.** The reasoning effort a `/dream:solo` session runs under.
 - **Less model.** The model a `/dream:less` session runs under.

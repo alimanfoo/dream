@@ -58,9 +58,7 @@ lives in the agent files.
 
 A lighter skill, `/dream:solo`, does similar work with a single agent instead of
 a team. It carries one or more issues to a pull request on its own, spawning
-subagents only to plan and review, and needs no agent teams feature. It doesn't
-read `protocol.md`. It restates the coherence disciplines in a single voice for
-one agent.
+subagents only to plan and review, and needs no agent teams feature.
 
 An even lighter skill, `/dream:less`, carries a very small change from issue to
 pull request, with a process cut back to match.
@@ -99,9 +97,10 @@ Two guides sit at the plugin root, not inside any one skill: the
 [Plain English guide](plugins/dream/plain-english.md) and the
 [coherent coding guide](plugins/dream/coherent-coding.md). The whole plugin
 works to them, the team agents at runtime and the utility skills when invoked.
-So each standard has one home, shared by all of them.
+So each standard has one home, shared by all of them. A skill or agent file
+loads a guide rather than restating a rule from it.
 
-Ways they get crossed:
+Ways the two layers get crossed:
 
 - **In chat**, slipping into protocol vocabulary: phase names, role names,
   ancillary finding, post-merge sweep.
@@ -124,7 +123,7 @@ the agent file of whoever runs it. `Grace.md`'s challenge and autopilot sections
 are the templates.
 
 The README lists the utility skills a user can run on their own. That list is
-their one home, so add a new skill of this kind there. `coherence-review` is one
+their one home. Add a new skill of this kind there. `coherence-review` is one
 such skill.
 
 When a subagent reports a finding or a recommendation for a skill to act on,
@@ -134,6 +133,11 @@ other, so nothing else catches a wrong one. Write this step into a new skill of
 this kind from the start. Don't list the skills that carry it; the list goes
 stale.
 
+A skill that spawns subagents must also tell the agent to go idle while they
+run, rather than sleep, poll, or narrate the wait. `code-review`,
+`coherence-review`, `copy-edit`, and `solo` each carry that line at the spawn
+site. Give a new one the same line.
+
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
 written there as a plain instruction to that agent. When such a rule lands in
@@ -141,17 +145,17 @@ protocol.md, move it. Don't reword it in the third person to make it fit. Two
 signs it is in the wrong place: it tells the reader to do something ("go idle"),
 or only one agent ever needs it.
 
-Renaming or renumbering a phase, step, or concept ripples past the file you
-edit. Step headings carry the phase in the number (for example, `Step 4.5` is
-phase 4, step 5). References to a step or named section, within or across files,
-are Markdown anchor links. So renumbering a step, or rewording any heading,
-changes its anchor and breaks every link still pointing at the old one. These
-link checks fail until you fix them. Markdownlint's MD051 covers within-file
-links. `remark-validate-links` covers cross-file links. Both run in pre-commit
-and CI. A link can only target a heading, so a sub-point referenced by name
-needs to be a heading, not a bold inline label. The checks cover links to a
-named section. Whole-file mentions and the protocol summary stay plain prose.
-Also grep all plugin files for the old name.
+Renaming, renumbering, or removing a phase, step, or concept ripples past the
+file you edit. Step headings carry the phase in the number (for example,
+`Step 4.5` is phase 4, step 5). References to a step or named section, within or
+across files, are Markdown anchor links. So renumbering a step, or rewording any
+heading, changes its anchor and breaks every link still pointing at the old one.
+These link checks fail until you fix them. Markdownlint's MD051 covers
+within-file links. `remark-validate-links` covers cross-file links. Both run in
+pre-commit and CI. A link can only target a heading, so a sub-point referenced
+by name needs to be a heading, not a bold inline label. The checks cover links
+to a named section. Whole-file mentions and the protocol summary stay plain
+prose. Also grep all plugin files, and AGENTS.md, for the old name.
 
 A cross-file link only works if its reader ever opens the target file. Each
 dream-team agent reads its own file and `protocol.md` at boot, never another

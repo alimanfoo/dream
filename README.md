@@ -257,7 +257,9 @@ Autopilot on.
 
 ...to Grace. She then directs the team autonomously, taking the default at each
 acceptance gate instead of waiting for your approval. She still produces every
-artifact and runs every review.
+artifact and runs every review. Each artifact is posted as a comment on the pull
+request, so you can follow the session there. She keeps the session itself
+quiet.
 
 Grace will still stop for input in these cases: an open question from the
 requirements analysis, or something unexpected turning up during development.
@@ -299,6 +301,9 @@ Include a standalone `auto` token alongside the issue number (for example
 opens, without waiting for any input.
 
 ## Troubleshooting
+
+A `/dream:team`, `/dream:solo`, or `/dream:less` session prints the plugin
+version as it starts. Quote that version when you report a problem.
 
 ### Permissions
 
