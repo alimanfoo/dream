@@ -16,16 +16,11 @@ Read the plugin's version from the `version` field of
 print this banner as your first user-visible output:
 
 ```text
-          .  *  .  *  .  *  .  *  .
-       *        /dream:solo         *
-        .     dream v<version>      *
-          .  *  .  *  .  *  .  *  .
-
-   Starting up...
+# /dream:solo · dream v<version>
+Booting...
 ```
 
-Replace `<version>` with the version you read. Copy every other line exactly.
-Keep the closing `*` in the column shown, by adjusting the spaces before it.
+Replace `<version>` with the version you read.
 
 Reading the manifest is the only tool call before the banner.
 

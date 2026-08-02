@@ -32,16 +32,11 @@ the prompts.
    print this banner as your first user-visible output:
 
    ```text
-             .  *  .  *  .  *  .  *  .
-          *        /dream:team         *
-           .     dream v<version>      *
-             .  *  .  *  .  *  .  *  .
-
-      Starting up...
+   # /dream:team · dream v<version>
+   Booting...
    ```
 
-   Replace `<version>` with the version you read. Copy every other line exactly.
-   Keep the closing `*` in the column shown, by adjusting the spaces before it.
+   Replace `<version>` with the version you read.
 
    Reading the manifest is the only tool call before the banner. The rest of the
    boot sequence runs without further commentary.
