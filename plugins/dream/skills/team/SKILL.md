@@ -38,8 +38,7 @@ the prompts.
 
    Replace `<version>` with the version you read.
 
-   Reading the manifest is the only tool call before the banner. The rest of the
-   boot sequence runs without further commentary.
+   The rest of the boot sequence runs without further commentary.
 
 2. **Spawn all four agents in parallel** via the `Agent` tool. For each, set
    `subagent_type` to `dream:<Name>` (for example `dream:Grace`) and `name` to

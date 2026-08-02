@@ -22,8 +22,6 @@ Booting...
 
 Replace `<version>` with the version you read.
 
-Reading the manifest is the only tool call before the banner.
-
 ## Autonomy
 
 Work autonomously to the end. When you need to decide something, choose the
