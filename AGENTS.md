@@ -135,10 +135,6 @@ findings against the code before it returns them. `code-review` and
 `coherence-review` both carry this step. Write it into a third such skill from
 the start.
 
-Such a skill returns a plain list of findings. Classifying them costs the lenses
-nothing but gives each caller a distinction to carry, and a caller with nowhere
-to put a class drops it. Let the caller judge each finding instead.
-
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
 written there as a plain instruction to that agent. When such a rule lands in
