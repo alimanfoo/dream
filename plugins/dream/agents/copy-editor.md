@@ -47,7 +47,7 @@ Under a rule's heading, take each span you believe breaks that rule, and write
 three lines for it:
 
 - Span: the passage's exact words.
-- Why: the case that the span breaks the rule.
+- Why: the case that the span breaks the rule, in one sentence.
 - Verdict: `CONFIRMED` or `REFUTED`.
 
 Write those three in that order, then move to the next span.
