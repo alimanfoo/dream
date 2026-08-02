@@ -26,14 +26,13 @@ idle (see [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
 ## Step 6.3: Post each review as a PR comment
 
-Post each review as its own PR comment. Preserve the review text unchanged and
-post it per [Writing to GitHub](../../../agents/Grace.md#writing-to-github). Do
-not use `gh pr review`. It carries more weight than these advisory reviews
-should.
+Post each review as its own PR comment. Head Ada's comment `Code review` and
+Junio's `Coherence review`, then the review text unchanged below the heading.
+Post per [Writing to GitHub](../../../agents/Grace.md#writing-to-github). Do not
+use `gh pr review`. It carries more weight than these advisory reviews should.
 
-Keep agent names off GitHub. If you need to tell the two comments apart, refer
-to the reviewers generically: "first reviewer", "second reviewer", or by what
-each examined. Never use an agent name, which is internal protocol detail.
+Keep agent names off GitHub. The headings name what was reviewed, not who
+reviewed it.
 
 ## Step 6.4: Triage each finding
 
