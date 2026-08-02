@@ -13,16 +13,13 @@ analysis.
 
 ## Step 2.2: Share the code analysis with the user
 
-Send the code analysis to the user. The user's job at this gate is to flag
-anything missing or off.
+Under autopilot, keep this step to one line, then continue in the same turn:
+_"Taking the code analysis as proposed (autopilot). Proceeding to Phase 3:
+Design."_
 
-End the message with one of these two, depending on autopilot:
-
-- Not under autopilot: ask the user to accept. _"Accept the code analysis to
-  proceed to Phase 3: Design."_
-- Under autopilot: skip the question. State what you're doing instead, and
-  continue in the same turn. _"Taking the code analysis as proposed (autopilot).
-  Proceeding to Phase 3: Design."_
+Otherwise, send the code analysis to the user. The user's job at this gate is to
+flag anything missing or off. Ask the user to accept: _"Accept the code analysis
+to proceed to Phase 3: Design."_
 
 ## Step 2.3: Seek user acceptance of the code analysis
 

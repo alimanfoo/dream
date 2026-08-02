@@ -53,6 +53,7 @@ plugins/:
             What a challenge is not:
           Autopilot:
             Engagement:
+            Turn output:
             Gate-defined defaults:
             The watch:
             Pauses:
@@ -86,7 +87,7 @@ plugins/:
             'Phase 6: Review':
               'Step 6.1: Read the whole diff':
               'Step 6.2: Run the coherence review':
-              'Step 6.3: Weigh the findings':
+              'Step 6.3: Combine the findings':
               'Step 6.4: Send your review to Grace via `SendMessage`':
               Review format:
             'Phase 7: Merge':
@@ -230,6 +231,7 @@ plugins/:
       less/:
         SKILL.md:
           Dream Less:
+            Print the banner:
             Autonomy:
             Coherence:
             Don't over-build:
@@ -276,6 +278,7 @@ plugins/:
       solo/:
         SKILL.md:
           Dream Solo:
+            Print the banner:
             Autonomy:
             Coherence:
             Communication style:
