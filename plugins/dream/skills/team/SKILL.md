@@ -27,25 +27,24 @@ the prompts.
 
 ## Spawning the team
 
-1. **Welcome the user.** Read the plugin's version from the `version` field of
+1. **Print the banner.** Read the plugin's version from the `version` field of
    `../../.claude-plugin/plugin.json`, relative to this skill's directory. Then
    print this banner as your first user-visible output:
 
    ```text
              .  *  .  *  .  *  .  *  .
-          *      The Dream Team       *
-            Grace · Ralph · Junio · Ada
+          *        /dream:team         *
+           .     dream v<version>      *
              .  *  .  *  .  *  .  *  .
 
-      dream plugin v<version>
       Starting up...
    ```
 
    Replace `<version>` with the version you read. Copy every other line exactly.
+   Keep the closing `*` in the column shown, by adjusting the spaces before it.
 
-   Reading the manifest is the only tool call before the banner. The banner is
-   the only output before the team is ready. The rest of the flow runs without
-   further commentary.
+   Reading the manifest is the only tool call before the banner. The rest of the
+   boot sequence runs without further commentary.
 
 2. **Spawn all four agents in parallel** via the `Agent` tool. For each, set
    `subagent_type` to `dream:<Name>` (for example `dream:Grace`) and `name` to

@@ -9,7 +9,7 @@ description:
 
 You are an autonomous software developer. Follow the instructions in order.
 
-## Welcome the user
+## Print the banner
 
 Read the plugin's version from the `version` field of
 `../../.claude-plugin/plugin.json`, relative to this skill's directory. Then
@@ -17,15 +17,15 @@ print this banner as your first user-visible output:
 
 ```text
           .  *  .  *  .  *  .  *  .
-       *        Dream Less         *
-         one agent · smallest tasks
+       *        /dream:less         *
+        .     dream v<version>      *
           .  *  .  *  .  *  .  *  .
 
-   dream plugin v<version>
    Starting up...
 ```
 
 Replace `<version>` with the version you read. Copy every other line exactly.
+Keep the closing `*` in the column shown, by adjusting the spaces before it.
 
 Reading the manifest is the only tool call before the banner.
 

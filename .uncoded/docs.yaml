@@ -229,7 +229,7 @@ plugins/:
       less/:
         SKILL.md:
           Dream Less:
-            Welcome the user:
+            Print the banner:
             Autonomy:
             Coherence:
             Don't over-build:
@@ -276,7 +276,7 @@ plugins/:
       solo/:
         SKILL.md:
           Dream Solo:
-            Welcome the user:
+            Print the banner:
             Autonomy:
             Coherence:
             Communication style:
