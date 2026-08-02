@@ -58,9 +58,7 @@ lives in the agent files.
 
 A lighter skill, `/dream:solo`, does similar work with a single agent instead of
 a team. It carries one or more issues to a pull request on its own, spawning
-subagents only to plan and review, and needs no agent teams feature. It doesn't
-read `protocol.md`. It carries that file's coherence disciplines in a single
-voice for one agent.
+subagents only to plan and review, and needs no agent teams feature.
 
 An even lighter skill, `/dream:less`, carries a very small change from issue to
 pull request, with a process cut back to match.
@@ -100,8 +98,7 @@ Two guides sit at the plugin root, not inside any one skill: the
 [coherent coding guide](plugins/dream/coherent-coding.md). The whole plugin
 works to them, the team agents at runtime and the utility skills when invoked.
 So each standard has one home, shared by all of them. A skill or agent file
-loads a guide rather than restating a rule from it. A restatement is a second
-home, and it drifts the moment the guide changes.
+loads a guide rather than restating a rule from it.
 
 Ways the two layers get crossed:
 
@@ -151,8 +148,7 @@ within-file links. `remark-validate-links` covers cross-file links. Both run in
 pre-commit and CI. A link can only target a heading, so a sub-point referenced
 by name needs to be a heading, not a bold inline label. The checks cover links
 to a named section. Whole-file mentions and the protocol summary stay plain
-prose. Also grep all plugin files, and AGENTS.md, for the old name. AGENTS.md
-describes the plugin's mechanisms in prose, so removing one leaves it wrong.
+prose. Also grep all plugin files, and AGENTS.md, for the old name.
 
 A cross-file link only works if its reader ever opens the target file. Each
 dream-team agent reads its own file and `protocol.md` at boot, never another

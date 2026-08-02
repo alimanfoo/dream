@@ -119,15 +119,15 @@ Write the design options to a temporary file outside the repo.
 
 ## Revise the design against the coherent coding guide
 
-Read the [coherent coding guide](../../coherent-coding.md) again, then read the
-draft design back against it. Take every section the draft makes a call on, and
-cover the proposed design and every alternative. The design settles how far the
-work reaches.
+Read the [coherent coding guide](../../coherent-coding.md) again. Then take it
+one section at a time, and find where the draft design falls short. Do this for
+the proposed design and for each alternative design. A gap you leave here
+becomes a gap in the code.
 
-Revise the file wherever a guide section shows a gap.
+Revise the file to close each gap you found.
 
-Then name in turn output each section that showed a gap, and what you changed in
-the design. Say so when no section showed one.
+Then write in your turn output which sections showed a gap, and what you changed
+in the design. Say so if none did. Say so when no section showed one.
 
 ## The result
 
