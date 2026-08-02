@@ -52,12 +52,16 @@ Skip this step when there are no open questions.
 
 When there are open questions, write them to a temporary file outside the repo.
 Use the heading `Open questions`. List each question with the possible answers
-you can see. Post the file to the PR as a comment, per
-[Writing to GitHub](../../../agents/Grace.md#writing-to-github).
+you can see. Close by asking the user to answer them, so the file stands on its
+own for a reader who was not in the session. Post the file to the PR as a
+comment, per [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
-Send the user the same questions and answers as a numbered list. Invite a
-freeform answer too. End the message by asking the user to answer the questions
-so Grace can complete the requirements analysis.
+Under autopilot, say in one line that you posted the questions and are waiting
+for the user's answer.
+
+Otherwise, send the user the same questions and answers as a numbered list.
+Invite a freeform answer too. End the message by asking the user to answer the
+questions so you can complete the requirements analysis.
 
 Wait for the user's reply. Fold their answers into the requirements analysis as
 stated items, dropping the matching open questions. If the reply leaves any
@@ -67,18 +71,16 @@ yet.
 
 ## Step 1.4: Share the requirements analysis
 
-Send the completed requirements analysis to the user. When there are candidates,
-ask the user to name any they want included, by number. Note that any they don't
-name are carried forward as opportunities to the
-[collect phase](../../../agents/Grace.md#phase-8-collect).
+Under autopilot, keep this step to one line, then continue in the same turn:
+_"Taking the requirements analysis as proposed (autopilot). Proceeding to Phase
+2: Code Analysis."_
 
-End the message with one of these two, depending on autopilot:
-
-- Not under autopilot: ask the user to accept. _"Accept the requirements
-  analysis to proceed to Phase 2: Code Analysis."_
-- Under autopilot: skip the question. State what you're doing instead, and
-  continue in the same turn. _"Taking the requirements analysis as proposed
-  (autopilot). Proceeding to Phase 2: Code Analysis."_
+Otherwise, send the completed requirements analysis to the user. When there are
+candidates, ask the user to name any they want included, by number. Any they
+don't name carry forward as opportunities to the
+[collect phase](../../../agents/Grace.md#phase-8-collect). Ask the user to
+accept: _"Accept the requirements analysis to proceed to Phase 2: Code
+Analysis."_
 
 ## Step 1.5: Seek user acceptance of the requirements analysis
 
