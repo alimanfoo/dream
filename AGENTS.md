@@ -135,10 +135,9 @@ findings against the code before it returns them. `code-review` and
 `coherence-review` both carry this step. Write it into a third such skill from
 the start.
 
-Every caller of such a skill acts on every mark it returns. `coherence-review`
-marks each finding a defect or an opportunity, and both its callers once dropped
-the mark. So a mark with no route at any caller is a mark to remove from the
-skill.
+Such a skill returns a plain list of findings. Classifying them costs the lenses
+nothing but gives each caller a distinction to carry, and a caller with nowhere
+to put a class drops it. Let the caller judge each finding instead.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
