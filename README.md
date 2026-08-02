@@ -301,6 +301,9 @@ opens, without waiting for any input.
 
 ## Troubleshooting
 
+A `/dream:team`, `/dream:solo`, or `/dream:less` session prints the plugin
+version as it starts. Quote that version when you report a problem.
+
 ### Permissions
 
 If you have it on your plan, switch to `auto` permissions mode before launching
