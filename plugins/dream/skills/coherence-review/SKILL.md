@@ -72,10 +72,5 @@ A finding often rests on more than the site it cites, so read those other sites
 too. A missed instance of an edit rests on its sibling sites. A fact with two
 homes rests on both.
 
-Mark each verified finding as a defect or an opportunity, so the caller can tell
-them apart. A defect is where the code fails to fit and needs fixing now. An
-opportunity is where the code fits, but a generalisation would leave it simpler,
-easier to maintain, or able to shed code.
-
-Return the verified findings as turn output. Report only: apply no fixes. If you
-have nothing to report, say so and return.
+Return the verified findings as turn output, a numbered list. Report only: apply
+no fixes. If you have nothing to report, say so and return.
