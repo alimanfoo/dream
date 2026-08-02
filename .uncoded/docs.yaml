@@ -262,6 +262,9 @@ plugins/:
           Plan:
             Arguments:
             Compose the draft plan:
+            Check each task for a tidying precursor:
+            Check each task is one idea:
+            Check each task can be committed:
             The result:
       requirements-analysis/:
         SKILL.md:
