@@ -57,6 +57,7 @@ Dreamcatcher: dispatch labelled issues to dream sessions.
 
 Usage:
   catch.sh [--team-label <label>] [--solo-label <label>] [--less-label <label>]
+           [--team-effort <effort>]
            [--solo-model <model>] [--solo-effort <effort>]
            [--less-model <model>] [--less-effort <effort>]
            [--assignee <who>] [--interval <seconds>] [--linger <minutes>]
@@ -65,6 +66,7 @@ Usage:
   --team-label  Issue label that dispatches a /dream:team session. Default: $default_team_label.
   --solo-label  Issue label that dispatches a /dream:solo session. Default: $default_solo_label.
   --less-label  Issue label that dispatches a /dream:less session. Default: $default_less_label.
+  --team-effort Reasoning effort a /dream:team session runs under. Default: $default_team_effort.
   --solo-model  Model a /dream:solo session runs under. Default: $default_solo_model.
   --solo-effort Reasoning effort a /dream:solo session runs under. Default: $default_solo_effort.
   --less-model  Model a /dream:less session runs under. Default: $default_less_model.
@@ -93,6 +95,7 @@ require_positive_int() { [[ "$2" =~ ^[1-9][0-9]*$ ]] || die "--$1 must be a posi
 default_team_label="dream:team"
 default_solo_label="dream:solo"
 default_less_label="dream:less"
+default_team_effort="high"
 default_solo_model="opus[1m]"
 default_solo_effort="high"
 default_less_model="sonnet"
@@ -105,6 +108,7 @@ default_max_sessions=10
 team_label=$default_team_label
 solo_label=$default_solo_label
 less_label=$default_less_label
+team_effort=$default_team_effort
 solo_model=$default_solo_model
 solo_effort=$default_solo_effort
 less_model=$default_less_model
@@ -120,6 +124,7 @@ while [ $# -gt 0 ]; do
     --team-label) [ $# -ge 2 ] || die "--team-label requires a value"; team_label=$2; shift 2;;
     --solo-label) [ $# -ge 2 ] || die "--solo-label requires a value"; solo_label=$2; shift 2;;
     --less-label) [ $# -ge 2 ] || die "--less-label requires a value"; less_label=$2; shift 2;;
+    --team-effort) [ $# -ge 2 ] || die "--team-effort requires a value"; team_effort=$2; shift 2;;
     --solo-model) [ $# -ge 2 ] || die "--solo-model requires a value"; solo_model=$2; shift 2;;
     --solo-effort) [ $# -ge 2 ] || die "--solo-effort requires a value"; solo_effort=$2; shift 2;;
     --less-model) [ $# -ge 2 ] || die "--less-model requires a value"; less_model=$2; shift 2;;
@@ -316,13 +321,15 @@ clean_up_finished() {
 # predictable sibling path, with a branch name the cap, cleanup, and dedup checks
 # rely on. tmux hosts the session. The launch differs by skill: a team session
 # runs under the experimental agent teams feature in teammate tmux mode, a solo
-# or less session under neither. A solo or less session also sets its model and
-# effort, the --solo-model/--solo-effort or --less-model/--less-effort values,
-# because its single agent would otherwise take the launcher's defaults, where
-# the team's agents carry their own. All run in auto mode, and the narrow allow
-# rules passed at launch handle unattended writes. Every session also carries
-# its branch name as its display name, so it reads the same in the prompt box,
-# the terminal title, and the /resume picker.
+# or less session under neither. A team session sets --team-effort as the whole
+# session's effort, which the team inherits; a model override makes no sense
+# there, since each agent carries its own model. A solo or less session instead
+# sets its model and effort, the --solo-model/--solo-effort or
+# --less-model/--less-effort values, because its single agent would otherwise
+# take the launcher's defaults, where the team's agents carry their own. All run
+# in auto mode, and the narrow allow rules passed at launch handle unattended
+# writes. Every session also carries its branch name as its display name, so it
+# reads the same in the prompt box, the terminal title, and the /resume picker.
 dispatch() {
   local n=$1 skill=$2 ts branch wt session err writes run
   ts=$(date -u +%Y%m%d-%H%M%S)
@@ -341,7 +348,7 @@ dispatch() {
   writes="Bash(gh pr create:*) Bash(gh pr comment:*) Bash(gh pr edit:*) Bash(gh pr ready:*) Bash(gh pr close:*) Bash(gh issue create:*) Bash(gh issue comment:*) Bash(git commit:*) Bash(git push:*)"
   run="claude --permission-mode auto --allowedTools '$writes' --name '$branch'"
   case "$skill" in
-    team) run="CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec $run --teammate-mode tmux '/dream:team'";;
+    team) run="CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec $run --effort '$team_effort' --teammate-mode tmux '/dream:team'";;
     solo) run="exec $run --model '$solo_model' --effort '$solo_effort' '/dream:solo'";;
     less) run="exec $run --model '$less_model' --effort '$less_effort' '/dream:less'";;
     *)    log "unknown skill '$skill' for GH${n}, discarding worktree"; discard_worktree "$wt" "$branch"; return 1;;

@@ -149,15 +149,12 @@ a local git range, for example `git diff origin/main...HEAD`. Diff against
 `origin/main`, not local `main`. A worktree session never freshens local `main`,
 so it can be stale or missing.
 
-#### Step 6.3: Weigh the findings
+#### Step 6.3: Combine the findings
 
 Add the findings from your own read of the whole diff. Drop any of yours that
 points at the same line or mechanism as one the review already made.
 
-Then test what each finding would cost to leave: a human cleaning up after the
-team, or a later agent puzzling over the code. Keep the findings that carry that
-cost. The bar is no human clean-up and firm ground for the next session to build
-on.
+Pass on everything that survives. Grace judges which to act on.
 
 #### Step 6.4: Send your review to Grace via `SendMessage`
 
