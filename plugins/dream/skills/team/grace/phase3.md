@@ -18,17 +18,13 @@ and any alternative designs, each with its trade-off named.
 
 ## Step 3.2: Share the design options with the user
 
-Send the design options to the user. Lead with the proposed design, your
-recommendation. Then give each alternative with the trade-off it carries. The
-proposed design is the default if the user just accepts.
+Under autopilot, keep this step to one line, then continue in the same turn:
+_"Taking the design as proposed (autopilot). Proceeding to Phase 4: Plan."_
 
-End the message with one of these two, depending on autopilot:
-
-- Not under autopilot: ask the user to accept. _"Accept the design to proceed to
-  Phase 4: Plan."_
-- Under autopilot: skip the question. State what you're doing instead, and
-  continue in the same turn. _"Taking the design as proposed (autopilot).
-  Proceeding to Phase 4: Plan."_
+Otherwise, send the design options to the user. Lead with the proposed design,
+your recommendation. Then give each alternative with the trade-off it carries.
+The proposed design is the default if the user just accepts. Ask the user to
+accept: _"Accept the design to proceed to Phase 4: Plan."_
 
 ## Step 3.3: Seek user acceptance of the design
 

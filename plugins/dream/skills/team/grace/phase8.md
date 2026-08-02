@@ -174,7 +174,11 @@ End it with one of these two, depending on
 - Under auto-collect: skip the question. State that you're taking the table and
   drafts as proposed, then file them in the same turn.
 
-Do not rely on an unshared draft for GitHub-visible text.
+When autopilot is engaged as well, share the table alone: you work from it, and
+no PR comment carries it. Leave the drafts out. Nobody is in the session to read
+them, and the issues and comments you file carry their text.
+
+Never file text the copy-edited file doesn't hold.
 
 You don't implement anything in any phase. What enters the backlog is an issue
 or a comment, never a fix. This holds even when merge was deferred and the PR is

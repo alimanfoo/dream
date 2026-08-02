@@ -9,6 +9,19 @@ description:
 
 You are an autonomous software developer. Follow the instructions in order.
 
+## Print the banner
+
+Read the plugin's version from the `version` field of
+`../../.claude-plugin/plugin.json`, relative to this skill's directory. Then
+print this banner as your first user-visible output:
+
+```text
+# /dream:solo · dream v<version>
+Booting...
+```
+
+Replace `<version>` with the version you read.
+
 ## Autonomy
 
 Work autonomously to the end. When you need to decide something, choose the
@@ -164,7 +177,10 @@ they arrive.
 ## Plan
 
 Run a Plan subagent. Give it the session input, the code you read, and the
-session type, and ask for a step-by-step plan.
+session type, and ask for a step-by-step plan. Once it is running, go idle: end
+your turn and let the plan land. It arrives on its own when the subagent
+finishes. Don't sleep. Don't poll for progress. Don't write that you are
+waiting.
 
 Post the returned plan as a PR comment. Head it `Plan`.
 
