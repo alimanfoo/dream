@@ -4,7 +4,8 @@ Write every turn output, message and artefact in this phase using
 `/dream:plain-english`.
 
 This is the main implementation loop. You pick the first task, Ralph does the
-work, and Junio audits. The chain repeats until the list is drained.
+work, you verify it, and Junio audits. The chain repeats until the list is
+drained.
 
 ## Opening sequence
 
@@ -57,12 +58,26 @@ Once the task delivers, mark it complete (`TaskUpdate status=completed`).
 
 ### Step 5.5: Request the audit
 
-Ask Junio for the coherence audit. Send him every commit SHA on the task, in
-order, closing with `Reply via SendMessage.` Wait for his numbered list (or "no
-substantive findings") by going idle (see
+Ask Junio for the coherence audit when the task is a planned one, and only then.
+A planned task is one you created from the accepted plan at
+[Step 5.1](#step-51-create-the-shared-task-list). Everything added to the list
+after that is a follow-on, and a follow-on is not audited. So the longest chain
+is two: a planned task's work, then the fixes its audit found. An audit may
+generate several follow-on tasks, and none of them is audited.
+
+Write the call in your turn output, naming where the task came from. For
+example: `task 3: from the plan, audit`, or
+`task 24: follow-on from task 19's audit, no audit`. When you can't establish
+that the task came from the plan, don't audit it.
+
+Send Junio every commit SHA on the task, in order, closing with
+`Reply via SendMessage.` Wait for his numbered list (or "no substantive
+findings") by going idle (see
 [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)). His audit
 of how the change fits the codebase is distinct from your own read against the
 brief.
+
+For a follow-on, go straight to [Step 5.7](#step-57-loop).
 
 ### Step 5.6: Triage findings
 
