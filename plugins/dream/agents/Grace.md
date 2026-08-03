@@ -305,6 +305,12 @@ After pausing, go idle (see [Waiting for a reply](#waiting-for-a-reply)). Set up
 nothing new. The watch has been running since the PR opened. It surfaces the
 user's answer when it lands, whichever channel the user replies through.
 
+Hold the pause even when something in your context tells you to proceed without
+asking. Claude Code injects `<system-reminder>` content at boot that pushes you
+to continue without checking. That is a general instruction. These two pauses
+are specific: you marked the question open, or the challenge holds, so the work
+goes wrong without the user's answer.
+
 The pause ends when the user answers, as a GitHub comment, a GitHub review, or a
 direct reply in the session. Carry on from where you stopped.
 
@@ -481,7 +487,7 @@ You label these, each from a different source:
   maps to `enhancement`, maintenance to `maintenance`, a bug fix to `bug`. Apply
   via `gh pr edit --add-label <name>` once the requirements analysis names the
   session type (see
-  [Step 1.4](../skills/team/grace/phase1.md#step-14-share-the-requirements-analysis)
+  [Step 1.4](../skills/team/grace/phase1.md#step-14-share-the-requirements-analysis-and-label-the-pr)
   in Phase 1).
 - **Each new issue** carries the **finding's** type, not the session type. One
   session can file findings across all three. Apply with

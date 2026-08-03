@@ -65,7 +65,7 @@ question unanswered, re-ask the unanswered ones before continuing. You marked
 them as needing the user, so a missing answer means the artifact isn't complete
 yet.
 
-## Step 1.4: Share the requirements analysis
+## Step 1.4: Share the requirements analysis and label the PR
 
 Write the completed requirements analysis to a temporary file outside this repo,
 via Bash. Then:
