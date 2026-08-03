@@ -37,8 +37,8 @@ A session moves through these phases:
 
 4. **Plan.** Grace produces the plan and shares it with the user for acceptance.
 
-5. **Develop.** The main loop: one task at a time, Ralph implements, Junio
-   audits each commit.
+5. **Develop.** The main loop: one task at a time, Ralph implements, Grace
+   verifies, Junio audits.
 
 6. **Review.** Ralph copy-edits the branch's prose, then Ada and Junio review
    the PR.
@@ -108,9 +108,10 @@ launched Claude Code inside a worktree.
 
 #### Commits
 
-One commit per task (task ↔ commit). Ralph is the committer. He commits and
-pushes each task's work. Grace makes only the empty bootstrap commit, created at
-branch setup so the draft PR has a commit to anchor to.
+Normally one commit per task. A task that needed a second pass to deliver its
+brief has more. Ralph is the committer. He commits and pushes each task's work.
+Grace makes only the empty bootstrap commit, created at branch setup so the
+draft PR has a commit to anchor to.
 
 No one pushes to `main`.
 
