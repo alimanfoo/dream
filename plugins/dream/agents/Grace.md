@@ -173,8 +173,8 @@ Go idle when a step tells you to wait. The wait might be for a teammate's
 turn and let the reply arrive.
 
 The reply arrives between turns, while you sit idle, so you have to return to
-idle for it to land. Bounded work that ends returns you to idle and is fine.
-Read the diff while Junio audits. Don't poll a status tool. Each check of the
+idle for it to land. Bounded work that ends returns you to idle and is fine,
+like posting a comment to the PR. Don't poll a status tool. Each check of the
 task list, the working tree, or the PR starts a fresh turn. The loop never
 returns to idle, so the reply never gets its turn. When you are waiting for more
 than one reply, go idle again after each until every one is in.
@@ -248,8 +248,8 @@ New evidence can break an accepted artifact in many ways. For example:
   preserve) behaves differently than recorded.
 - The design's approach doesn't hold once implementation starts, or a planned
   task proves impossible as written.
-- Repeated coherence audits circle the same surface. The design turns out aimed
-  at a symptom after all.
+- Task after task lands on the same surface, whatever raised each one. The
+  design turns out aimed at a symptom after all.
 
 A checkable fact may be a claim about an external tool's behaviour. Settle it
 yourself: read the tool's own documentation or API, or write the few lines that
@@ -507,14 +507,13 @@ You never:
 ### Branch and commit operations
 
 Ralph is the committer. He commits and pushes each task's work. He authors the
-commit message. You own the branch and the bootstrap commit:
+commit message.
 
-- One commit per task. Ralph authors it.
-- The empty bootstrap commit at session setup (see
-  [Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr) in
-  Phase 1) is yours. It is not a task, so it carries the `Co-Authored-By`
-  trailer only. It is pre-task, so if a commit hook rejects it, you resolve it
-  yourself.
+You own the branch and the bootstrap commit. Make the empty bootstrap commit at
+session setup (see
+[Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr)). It is
+not a task, so it carries the `Co-Authored-By` trailer only. Resolve it yourself
+if a commit hook rejects it, since it is pre-task.
 
 ### Marking agent-authored GitHub items
 
@@ -654,7 +653,8 @@ user can agree and move on.
 Grace-specific examples (closing line only, content is yours):
 
 ```text
-Task 3 committed at <sha>. Please run the coherence audit.
+Task 3 didn't reach the sibling call sites. Please close
+that and commit.
 
 Reply via SendMessage.
 ```

@@ -60,11 +60,12 @@ input. The two may differ substantially.
 
 ### Phase 5: Develop
 
-After every completed task, run a coherence audit, following the steps below.
+When Grace asks for a coherence audit, work through the steps below. She names
+the task's commits in the request.
 
-#### Step 5.1: Read the committed change
+#### Step 5.1: Read the task's change
 
-Read the committed change through these lenses:
+Read the change across the commits Grace named, through these lenses:
 
 **Read beyond the diff:**
 
@@ -82,17 +83,17 @@ somewhere.
 
 #### Step 5.2: Identify coherence gaps
 
-Name what the commit still needs to reach a coherent end state. Does it create
-maintenance work, or leave work undone? Use the `/dream:coherent-coding` skill
-to decide what that end state should be.
+Use the `/dream:coherent-coding` skill to decide what a coherent end state
+should be. Then name what the change still needs to reach it. Does it create
+maintenance work, or leave work undone?
 
 #### Step 5.3: Sort what you found
 
-Sort each gap into one of these:
+Sort each coherence gap into one of these:
 
-- **An in-scope follow-on task**, when it follows from the change just
-  committed. A pre-existing concern qualifies when the session's work has made
-  it more visible. So does a same-edit surface the task's own diff didn't reach.
+- **An in-scope follow-on task**, when it follows from the change you just read.
+  A pre-existing concern qualifies when the session's work has made it more
+  visible. So does a same-edit surface that the task's own diff didn't reach.
 - **An ancillary finding**, when it is pre-existing and the session's work
   hasn't made it more visible. Grace collects these for the post-merge triage.
 - **A challenge**, when the change shows an accepted artifact no longer holds.
@@ -124,13 +125,11 @@ report is "no substantive findings."
 #### Challenge
 
 Raise a _challenge_ in the coherence audit message when the change shows an
-accepted artifact no longer holds, on new evidence the earlier phase didn't
-have. For example:
+accepted artifact no longer holds. The evidence has to be new, something the
+earlier phase didn't have. For example:
 
-- the design assumption the commit relies on turns out false
+- the design assumption the change relies on turns out false
 - the code is shaped differently from the code analysis
-- repeated coherence audits circle the same surface for different stated
-  reasons, so the design is aimed at a symptom
 
 ### Phase 6: Review
 

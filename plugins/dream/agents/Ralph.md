@@ -95,18 +95,20 @@ Run any codegen the hook doesn't run, so the generated files match the source.
 #### Step 5.5: Commit and push
 
 Commit your work, then push. Run `git status` and a full `git diff` first to
-confirm one commit per task with nothing missed. Stage the paths this task
-changed and commit. Write the message per the [Commits](#commits) rule. The
-commit hook runs the commit-time checks on your staged files. If it rewrites a
-file or reports a failure, inspect any rewrite, re-stage the affected paths, and
-commit again. Repeat until the hook passes cleanly. Then push the branch.
+confirm the commit covers this task's work with nothing missed. Stage the paths
+this task changed and commit. Write the message per the [Commits](#commits)
+rule. The commit hook runs the commit-time checks on your staged files. If it
+rewrites a file or reports a failure, inspect any rewrite, re-stage the affected
+paths, and commit again. Repeat until the hook passes cleanly. Then push the
+branch.
 
 #### Step 5.6: Report back to Grace via `SendMessage`
 
-Send the report to Grace via `SendMessage`, including the commit SHA you just
-pushed. Turn output doesn't reach her. Only `SendMessage` does. You don't mark
-tasks complete yourself. Grace does that after reading your work. So your
-`SendMessage` also tells Grace the work is done.
+Send the report to Grace via `SendMessage`, including every commit SHA you have
+pushed for this task, in order. Turn output doesn't reach her. Only
+`SendMessage` does. You don't mark tasks complete yourself. Grace does that
+after reading your work. So your `SendMessage` also tells Grace the work is
+done.
 
 Include in the body only what Grace can't see from the diff:
 
@@ -115,6 +117,15 @@ Include in the body only what Grace can't see from the diff:
 - open scope questions
 - evidence that the design or the plan no longer holds, with what you found that
   broke it
+
+#### Step 5.7: Close any gap Grace reports
+
+Grace reads your commit against the brief she wrote. When she reports something
+it missed, the task is still yours. Make the missing change, then work through
+[Step 5.3](#step-53-run-the-tests) to
+[Step 5.6](#step-56-report-back-to-grace-via-sendmessage) again. Commit it as a
+second commit on the task. Don't amend the commit you pushed, because that needs
+a force-push.
 
 ### Phase 6: Review
 
