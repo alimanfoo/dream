@@ -30,10 +30,11 @@ Coherence has a ground truth: code either fits or it does not. So agents own it
 completely. Intent is value judgement, so it stays with the human. This gives a
 test for every human touch. A coherence touch is the human spotting a duplicated
 fact, catching drift, or cleaning up after the team. It is a defect the protocol
-should have caught, so design it out. An intent touch is choosing scope or
-accepting a trade-off at a gate. It is the system working, so keep it. Reduce
-coherence touches to zero. Keep intent touches. The acceptance gates are the
-channel intent comes through: make them cheap, never remove them.
+should have caught, so design it out. An intent touch is choosing scope or a
+trade-off in the issue that seeds a session, or in the review of its pull
+request. It is the system working, so keep it. Reduce coherence touches to zero.
+Keep intent touches. The issue that seeds a session and the review that closes
+it are the channel intent comes through: keep them cheap, never remove them.
 
 Sustaining coherence over a long horizon is a memory problem. Each session is a
 fresh mind with no memory of the last. So coherence-decisions can only live in
@@ -119,8 +120,8 @@ That split follows a general locality principle: **information belongs where it
 is acted on, not where it is named.** Each file carries what its readers need to
 do their job, not what its writers found interesting to elaborate. When someone
 sketches a new mechanism in protocol.md first, move the operational detail to
-the agent file of whoever runs it. `Grace.md`'s challenge and autopilot sections
-are the templates.
+the agent file of whoever runs it. `Grace.md`'s challenge and watch sections are
+the templates.
 
 The README lists the utility skills a user can run on their own. That list is
 their one home. Add a new skill of this kind there. `coherence-review` is one
@@ -213,7 +214,7 @@ input on its merits. The user opens with session input that seeds the
 requirements analysis. Later phases build a more systematic picture from that
 seed and may revise it. The team surfaces what investigation reveals, even when
 it widens beyond the literal ask. The user can decline the wider scope by
-pushing back at the design gate.
+pushing back in their review of the pull request.
 
 **Each phase artifact has its own purpose. Don't mix concerns.** Requirements
 analysis is about user intent. Code analysis is about code patterns. Design is
