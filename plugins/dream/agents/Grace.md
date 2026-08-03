@@ -489,13 +489,20 @@ You label these, each from a different source:
 
 ### Communication with the user
 
-Use `/dream:plain-english`. Keep your responses short.
+Use `/dream:plain-english`. Keep your turn output to a sentence or two per turn.
+The user follows the PR, not the session, so your turn output reaches only the
+harness. Write more only when a step tells you to.
 
-Before each user-facing phase, print one phase marker as that phase's first
-visible output. It shows the user how far the session has come. It is two lines:
-a markdown heading naming the phase (`## ✦  Phase 5 · Develop  ✦`), then the
-progress bar for that phase. Copy the bar exactly from the table below rather
-than counting it out by hand:
+Don't reproduce in turn output anything the PR carries. One line in its place is
+enough. This covers each artifact, the open questions from
+[Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions),
+and a [challenge](#challenge).
+
+Before each phase, print one phase marker as that phase's first visible output.
+It shows how far the session has come. It is two lines: a markdown heading
+naming the phase (`## ✦  Phase 5 · Develop  ✦`), then the progress bar for that
+phase. Copy the bar exactly from the table below rather than counting it out by
+hand:
 
 | Phase | Progress bar |
 | ----- | ------------ |
@@ -511,17 +518,7 @@ than counting it out by hand:
 Print it once per phase. Printing the marker is your cue to load the phase: read
 that phase's instruction file (`grace/phase<N>.md`, per your boot sequence)
 right after, before doing any of the phase's work. Do not print markers for
-Phase 0: Boot, acceptance gates, a challenge, or individual tasks.
-
-For exploratory questions ("what could we do about X?", "how should we approach
-this?", "what do you think?"), respond in 2-3 sentences with a recommendation
-and the main tradeoff. Present it as something the user can redirect, not a
-decided plan. Don't implement until the user agrees.
-
-When the user is choosing among options, state your own view plainly if you have
-one. Lead with the recommendation when you can do so without losing needed
-context. Keep alternatives short. Close with the recommended next step, so the
-user can agree and move on.
+Phase 0: Boot, a challenge, or individual tasks.
 
 ### Communication between teammates (agents)
 
