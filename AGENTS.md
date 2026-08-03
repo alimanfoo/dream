@@ -56,8 +56,8 @@ protocol. The shared session flow (phases, roles, and cross-agent mechanics)
 lives in `plugins/dream/skills/team/protocol.md`. Role-specific operating detail
 lives in the agent files.
 
-A lighter skill, `/dream:solo`, does similar work with a single agent instead of
-a team. It carries one or more issues to a pull request on its own, spawning
+A lighter skill, `/dream:smith`, does similar work with a single agent instead
+of a team. It carries one or more issues to a pull request on its own, spawning
 subagents only to plan and review, and needs no agent teams feature.
 
 An even lighter skill, `/dream:less`, carries a very small change from issue to
@@ -66,7 +66,7 @@ pull request, with a process cut back to match.
 A coordinator skill, `/dream:catcher`, watches a repository for labelled issues
 and dispatches a session for each. One session develops at a time. Sessions
 awaiting review pile up alongside it. The issue's label picks the skill: a
-`/dream:team` session, a lighter `/dream:solo` one, or the lightest
+`/dream:team` session, a lighter `/dream:smith` one, or the lightest
 `/dream:less` one. It lets the work run unattended while the user is away.
 
 The plugin also ships utility skills the user can run on their own.
@@ -82,9 +82,9 @@ This repo has two layers, easy to confuse:
   [agent files](plugins/dream/agents). A
   [/dream:catcher skill](plugins/dream/skills/catcher/SKILL.md) coordinates
   unattended runs, dispatching a session for each labelled issue, with the label
-  picking a `/dream:team`, `/dream:solo`, or `/dream:less` session. One session
+  picking a `/dream:team`, `/dream:smith`, or `/dream:less` session. One session
   develops at a time. Sessions awaiting review pile up alongside it. A
-  [/dream:solo skill](plugins/dream/skills/solo/SKILL.md) runs a single-agent
+  [/dream:smith skill](plugins/dream/skills/smith/SKILL.md) runs a single-agent
   version, for smaller tasks with no team. A
   [/dream:less skill](plugins/dream/skills/less/SKILL.md) runs a cut-back
   single-agent version, for very small changes. Utility skills ship alongside
@@ -133,7 +133,7 @@ the start.
 
 A skill that spawns subagents must also tell the agent to go idle while they
 run, rather than sleep, poll, or narrate the wait. `code-review`,
-`coherence-review`, `copy-edit`, and `solo` each carry that line at the spawn
+`coherence-review`, `copy-edit`, and `smith` each carry that line at the spawn
 site. Give a new one the same line.
 
 All four agents read protocol.md, so it covers only what they share, and it does

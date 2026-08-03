@@ -3,7 +3,7 @@
 A Claude Code plugin for delivering great code and keeping the codebase
 coherent, with minimal human input.
 
-`/dream:team` runs a multi-agent team on a task. `/dream:solo` runs a single
+`/dream:team` runs a multi-agent team on a task. `/dream:smith` runs a single
 agent on a smaller task. `/dream:less` runs a cut-back single agent on a very
 small one. Neither needs the agent teams feature. `/dream:catcher` runs any of
 them unattended across a repository's labelled issues. Utility skills you can
@@ -17,7 +17,7 @@ run on their own ship alongside: `/dream:plain-english`,
 `/dream:team`, and `/dream:catcher` when it dispatches a `/dream:team` session,
 require Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
-`/dream:solo`, `/dream:less`, and the utility skills do not.
+`/dream:smith`, `/dream:less`, and the utility skills do not.
 
 The plugin works best with the `gh` command line tool available. This lets the
 team interact with GitHub, for example opening a pull request and posting
@@ -51,9 +51,9 @@ See
 [`plugins/dream/skills/team/protocol.md`](plugins/dream/skills/team/protocol.md)
 for the full protocol.
 
-## Smaller tasks with /dream:solo
+## Smaller tasks with /dream:smith
 
-`/dream:solo` is a single-agent alternative to the team, for smaller,
+`/dream:smith` is a single-agent alternative to the team, for smaller,
 well-specified tasks. It needs no agent teams feature. One agent carries the
 work from an issue to a pull request marked ready for your review, hands-off,
 and files any follow-ups it noticed once you merge.
@@ -65,7 +65,7 @@ to plan and review.
 Start Claude Code and invoke the skill:
 
 ```text
-/dream:solo
+/dream:smith
 ```
 
 Like the team, it takes the task from the branch name. If the name contains one
@@ -80,9 +80,9 @@ Once you merge, it files anything it left out of scope as new issues.
 
 ## Even smaller tasks with /dream:less
 
-`/dream:less` is a cut-back version of `/dream:solo`, for a very small change
+`/dream:less` is a cut-back version of `/dream:smith`, for a very small change
 you want carried from issue to pull request fast. It runs the same way as
-`/dream:solo`: one agent, no acceptance gates, watching the pull request for
+`/dream:smith`: one agent, no acceptance gates, watching the pull request for
 your review. But it trims the process to match the size of the work. It skips
 planning and the separate copy-edit and coherence-review passes. It runs a
 lighter code review, writes a minimal pull request description, and files no
@@ -99,7 +99,7 @@ Reach for it when a change is small and self-contained.
 ## Unattended runs with /dream:catcher
 
 `/dream:catcher` watches a repository for labelled issues and dispatches a
-session for each. It runs the `/dream:team`, the `/dream:solo` skill, or the
+session for each. It runs the `/dream:team`, the `/dream:smith` skill, or the
 `/dream:less` skill, chosen by the issue's label.
 
 One session develops at a time. Sessions awaiting review pile up alongside it,
@@ -118,9 +118,9 @@ worktree, then run:
 ```
 
 It watches the repository you started Claude Code in. By default it picks up
-open issues labelled "dream:team", "dream:solo", or "dream:less" and assigned to
-you, dispatching the matching skill. Override a label with a flag, for example
-`/dream:catcher --team-label auto`.
+open issues labelled "dream:team", "dream:smith", or "dream:less" and assigned
+to you, dispatching the matching skill. Override a label with a flag, for
+example `/dream:catcher --team-label auto`.
 
 `/dream:catcher` runs in its own tmux session. Attach to it with
 `tmux attach -t dreamcatcher`, or follow its log with
@@ -131,10 +131,10 @@ session, so a session waiting for an answer is one keystroke away.
 How it picks work:
 
 - **Skill by label.** The team label dispatches a `/dream:team` session. The
-  solo label dispatches a `/dream:solo` session, for smaller tasks that need no
-  team. The less label dispatches a `/dream:less` session, for very small ones.
-  An issue carrying more than one goes to the heaviest: `/dream:team` over
-  `/dream:solo` over `/dream:less`.
+  smith label dispatches a `/dream:smith` session, for smaller tasks that need
+  no team. The less label dispatches a `/dream:less` session, for very small
+  ones. An issue carrying more than one goes to the heaviest: `/dream:team` over
+  `/dream:smith` over `/dream:less`.
 - **One session develops at a time.** A session holds the slot from dispatch
   until its pull request is ready for review, then frees it for the next
   dispatch. Sessions awaiting review pile up alongside the one still developing,
@@ -301,7 +301,7 @@ opens, without waiting for any input.
 
 ## Troubleshooting
 
-A `/dream:team`, `/dream:solo`, or `/dream:less` session prints the plugin
+A `/dream:team`, `/dream:smith`, or `/dream:less` session prints the plugin
 version as it starts. Quote that version when you report a problem.
 
 ### Permissions

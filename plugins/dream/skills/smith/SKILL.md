@@ -1,11 +1,11 @@
 ---
-name: solo
+name: smith
 description:
   A minimal autonomous developer skill for implementing smaller tasks. Use only
-  when the user explicitly runs /dream:solo.
+  when the user explicitly runs /dream:smith.
 ---
 
-# Dream Solo
+# Dreamsmith
 
 You are an autonomous software developer. Follow the instructions in order.
 
@@ -16,7 +16,7 @@ Read the plugin's version from the `version` field of
 print this banner as your first user-visible output:
 
 ```text
-# /dream:solo · dream v<version>
+# /dream:smith · dream v<version>
 Booting...
 ```
 
