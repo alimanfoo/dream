@@ -41,6 +41,8 @@ Choose from these or invent your own. They are examples, not a checklist:
 - reuse and simplification: code that re-implements what the codebase, a
   library, or a language feature already provides, or that a simpler form would
   replace
+- the same edit elsewhere: another surface the change's own rule covers, either
+  missed or newly made adjacent
 - altitude: whether the change sits at the right depth, or is a quick fix
   layered on shared infrastructure
 - reader's context: in new or changed prose, what the reader needs but is
@@ -80,21 +82,3 @@ with two homes rests on both.
 Return the verified findings as turn output: a numbered list, most important
 first. Report only: apply no fixes. If you have nothing to report, say so and
 return.
-
-Each finding follows these rules:
-
-- **Name the concrete consequence.** Give each finding a specific consequence,
-  not a vague worry. For example: a wrong output, a crash, or a reader misled.
-  If you cannot say what goes wrong, it is not a finding.
-- **Don't duplicate the diff.** State what's wrong and why, with a citation.
-  Don't quote the change back.
-- **State only findings.** Don't narrate what the code does or confirm what
-  works.
-- **Keep it tight.** One finding per numbered item, two or three sentences each.
-- **Raise "the same edit elsewhere" as a normal finding.** If the PR removes,
-  renames, or clarifies something, and another surface carries the same edit, it
-  is a valid finding. That other surface may be pre-existing and unchanged, or
-  made adjacent by what the PR did. For example, an earlier commit promoted a
-  symbol and left its underscore prefix a fossil. Ask: is this the same edit,
-  one the PR missed, or one the PR has now made adjacent? If yes, raise it as a
-  normal finding.

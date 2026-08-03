@@ -42,7 +42,9 @@ Report your findings as your final message.
 
 - Give each finding a file/line citation and the concrete consequence: a wrong
   output, a reader misled, or a caller forced to learn an interface that saves
-  it nothing.
+  it nothing. If you cannot say what goes wrong, it is not a finding.
+- Say what's wrong and why. Don't quote the change back.
 - State only findings. Don't narrate what the code does, confirm what already
   works, or note what you liked.
+- Keep each finding to two or three sentences.
 - Clean is a valid answer. Say so plainly, and don't manufacture findings.
