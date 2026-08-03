@@ -165,10 +165,11 @@ turn and let the reply arrive.
 
 The reply arrives between turns, while you sit idle, so you have to return to
 idle for it to land. Bounded work that ends returns you to idle and is fine.
-Read the diff while Junio audits. Don't poll a status tool. Each check of the
-task list, the working tree, or the PR starts a fresh turn. The loop never
-returns to idle, so the reply never gets its turn. When you are waiting for more
-than one reply, go idle again after each until every one is in.
+Post the first review to the PR while the second is still out. Don't poll a
+status tool. Each check of the task list, the working tree, or the PR starts a
+fresh turn. The loop never returns to idle, so the reply never gets its turn.
+When you are waiting for more than one reply, go idle again after each until
+every one is in.
 
 The [autopilot watch](#the-watch) and [the nudge](#the-nudge) are not this loop.
 They are external crons that wake you, not status tools you poll. Each firing is
