@@ -43,7 +43,8 @@ generalisation, no half-finished extra feature.
 
 ## Communication style
 
-Load the `/dream:plain-english` skill. It governs everything you write and say.
+Write in plain English: write to inform, not to impress, and put one idea in
+each sentence.
 
 Write each paragraph on a single line in a PR description or comment, since
 GitHub reflows it (see
