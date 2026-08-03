@@ -15,28 +15,12 @@ or a path. Without it, review the whole branch against `origin/main`
 (`origin/main...HEAD`). If `inline` is given, run the lenses yourself without
 spawning subagents.
 
-## Cold read
+## Read the diff
 
-Read the diff and the source files you need for context. Review from the diff
-itself, not from any surrounding description. Read the change in these
-directions:
+Read the diff and the source files you need for context. This read picks the
+lenses, and it gives you the context to verify what they return.
 
-- **Inward:** the whole function each change sits in, not just the changed
-  lines.
-- **Backward:** the removed or replaced lines, and whether the change still
-  meets their guarantees.
-- **Outward:** the callers and callees of changed symbols.
-- **Lateral:** parallel sites, sibling files or parallel functions, that mirror
-  the change.
-
-These say where to look, not what to find. Judge what matters yourself.
-
-Draft your findings from that read: correctness, coherence, and anything a
-careful reviewer would flag. A spot where you had to load context or guess to
-follow the code is itself a finding, even when the code is correct. Name the
-spot and the concrete cost to the next reader.
-
-## Widen with review lenses
+## Launch the lenses
 
 A lens is one narrow question chosen for what the diff actually does, not a
 generic "review this." Pick up to nine review lenses that fit this diff,
@@ -72,22 +56,24 @@ The subagent is read-only by tool design: it reads and reports.
 
 In inline mode, run the lenses yourself instead of spawning subagents.
 
-Skip the lenses for a diff small enough that your cold read already exhausts it.
-Three subagents on a one-line fix wastes effort.
-
 Once the subagents are running, go idle: end your turn and let their findings
 land. They arrive on their own when each subagent finishes. Don't sleep. Don't
 poll for progress. Don't write that you are waiting.
 
-## Combine, verify and return
+## Verify the findings
 
-Combine the lens findings with your own. Judge each on its merits. Drop
-duplicates that point at the same line or mechanism.
+Combine their findings into one list, dropping duplicates that point at the same
+line or mechanism. Judge each on its merits.
 
-Read the code each finding rests on, and keep only the findings it confirms.
-Your cold read covered the diff, so a finding may rest on a site you have not
-opened yet. A missed instance of an edit rests on its sibling sites. A fact with
-two homes rests on both.
+Read the code each finding cites, and keep only the findings it confirms. A lens
+reports what its one question surfaced, so a false positive reaches you looking
+like any other finding.
+
+A finding often rests on more than the site it cites, so read those other sites
+too. A missed instance of an edit rests on its sibling sites. A fact with two
+homes rests on both.
+
+## Rank and return
 
 Return the verified findings as turn output: a numbered list, most important
 first. Report only: apply no fixes. If you have nothing to report, say so and
@@ -109,4 +95,4 @@ Each finding follows these rules:
   made adjacent by what the PR did. For example, an earlier commit promoted a
   symbol and left its underscore prefix a fossil. Use the dispatching question:
   is this the same edit: one the PR missed, or one the PR has now made adjacent?
-  If yes, file it as a normal finding, not out of scope.
+  If yes, raise it as a normal finding.
