@@ -39,8 +39,7 @@ reviewed it.
 Decide each finding from both reviews on its merits, weighed against the
 `/dream:coherent-coding` principles. Each finding takes one of these paths:
 
-- Accept: make it a follow-on task, handled by the standard per-task workflow
-  including Junio's coherence audit.
+- Accept: make it a follow-on task, handled by the standard per-task workflow.
 - Reject: note it in your reply to the user, with the reason.
 - Out of scope: hold it for post-merge triage.
 - Raise a challenge: take it to the user per the "challenge" shape. Use this
