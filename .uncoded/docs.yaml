@@ -20,10 +20,6 @@ plugins/:
             'Phase 4: Plan':
             'Phase 5: Develop':
             'Phase 6: Review':
-              'Step 6.1: Run the code review':
-              'Step 6.2: Send your review to Grace via `SendMessage`':
-              Output format:
-              Writing findings:
             'Phase 7: Merge':
             'Phase 8: Collect':
             'Phase 9: Reflect':
