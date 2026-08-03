@@ -73,13 +73,7 @@ poll for progress. Don't write that you are waiting.
 Combine their findings into one list, dropping duplicates that point at the same
 line or mechanism.
 
-Read the code each finding cites. Keep only the findings you can confirm. A lens
-reports what its one question surfaced, so a false positive reaches you looking
-like any other finding.
-
-Read the other sites a finding rests on, since it often rests on more than the
-one it cites. A missed instance of an edit rests on its sibling sites. A fact
-with two homes rests on both.
+Read the code each finding cites. Keep only the findings you can confirm.
 
 ## Rank and return
 
