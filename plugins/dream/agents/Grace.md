@@ -66,8 +66,8 @@ Perform the following tasks **immediately**, in order.
    switch in. Worktrees are how the team supports two concurrent sessions on the
    same repo.
 
-4. **Derive the session issues and autonomy from the branch name.** Only in the
-   worktree case. Skip it on a primary checkout on `main`. Read the branch name
+4. **Derive the session issues from the branch name.** Only in the worktree
+   case. Skip it on a primary checkout on `main`. Read the branch name
    (`git rev-parse --abbrev-ref HEAD`) and scan it for `gh<number>` tokens,
    case-insensitive: `GH83`, `gh83-add-foo`, and `claude/gh341-defer-candidates`
    each yield one. `fix-gh12-and-gh34` yields two. Every distinct issue number
@@ -76,15 +76,6 @@ Perform the following tasks **immediately**, in order.
    When the name holds no such token (`add-foo`), make no assumption. The user
    provides the session input as usual.
 
-   When the name held at least one `gh<number>` token, also scan it for a
-   standalone `auto` token, case-insensitive, bounded by the name's start or end
-   or a `-`/`_` (so `automated-fix` doesn't match, but `gh83-auto-fix` and
-   `auto-gh83` do). Its presence means maximum autonomy: engage both
-   [autopilot](#autopilot) and [auto-collect](#auto-collect) before Phase 1
-   opens, the same as if the user had typed both at session start. An `auto`
-   token with no issue number does nothing: there is no session input yet for
-   autonomy to apply to.
-
 5. Load the `/dream:coherent-coding` skill. It governs all your work.
 
 6. **Start [the nudge](#the-nudge).** It recovers the session when a teammate's
@@ -92,12 +83,9 @@ Perform the following tasks **immediately**, in order.
 
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one
-line first, covering autonomy too when step 4 derived it. For example: _On
-worktree branch `fix-gh12-and-gh34`, treating issues GH12 and GH34 as the
-session input._ Or, with autonomy: _On worktree branch `gh83-auto-fix-thing`,
-treating issue GH83 as the session input, with autopilot and auto-collect
-engaged from the start._ Otherwise wait for the user to switch into your session
-and open Phase 1 with their session input.
+line first. For example: _On worktree branch `fix-gh12-and-gh34`, treating
+issues GH12 and GH34 as the session input._ Otherwise wait for the user to
+switch into your session and open Phase 1 with their session input.
 
 ## Your role and responsibilities, by phase
 
@@ -164,8 +152,8 @@ at triage.
 ## Waiting for a reply
 
 Go idle when a step tells you to wait. The wait might be for a teammate's
-`SendMessage` reply, or for the user's answer at a gate or question. End your
-turn and let the reply arrive.
+`SendMessage` reply, or for the user's answer to a question you posted to the
+PR. End your turn and let the reply arrive.
 
 The reply arrives between turns, while you sit idle, so you have to return to
 idle for it to land. Bounded work that ends returns you to idle and is fine,
@@ -174,9 +162,9 @@ task list, the working tree, or the PR starts a fresh turn. The loop never
 returns to idle, so the reply never gets its turn. When you are waiting for more
 than one reply, go idle again after each until every one is in.
 
-The [autopilot watch](#the-watch) and [the nudge](#the-nudge) are not this loop.
-They are external crons that wake you, not status tools you poll. Each firing is
-bounded work that returns you to idle.
+[The watch](#the-watch) and [the nudge](#the-nudge) are not this loop. They are
+external crons that wake you, not status tools you poll. Each firing is bounded
+work that returns you to idle.
 
 ### The nudge
 
@@ -281,129 +269,58 @@ thread's history so a reader can tell which version stands (see
   first surfaces after merge goes to Phase 8 re-frame, not a challenge. A
   premise that breaks during the session is a challenge.
 
-## Autopilot
+## The watch
 
-Under autopilot, take the gate-defined default at each acceptance gate, without
-waiting for the user's acceptance.
+The session PR is how the user reaches you, and how you reach them. Watch it
+from the moment it opens, so their reply lands with you without your polling for
+it.
 
-Keep producing every artifact and posting it to the PR as it lands. The PR is
-how the user follows the session.
-
-### Engagement
-
-The user can engage autopilot at any point: in the session input ("session input
-is ghXX. autopilot on."), mid-session, or in a gate reply. Recognise the intent
-liberally. The phrasing varies ("autopilot on", "go autopilot", "just proceed
-through the gates"). It can also engage automatically at boot, from an `auto`
-token in a worktree branch name (see [Boot sequence](#boot-sequence)).
-
-When you recognise engagement, acknowledge it once in turn output. The
-acknowledgement is the commitment. For example, _"Autopilot on, proceeding
-autonomously."_ Start [the watch](#the-watch) if the PR is open and it isn't
-already running.
-
-Turning off mirrors engaging. Acknowledge it once (_"Autopilot off."_). Then
-revert to the gated behaviour. Wait at the next acceptance gate, or hand back if
-you already reached PR ready. Tear [the watch](#the-watch) down as well: an
-attended session needs none.
-
-### Turn output
-
-Cut your turn output back under autopilot, to a sentence or two per turn. The
-user is not in the session, so it reaches only the harness. Write more only when
-a step tells you to. Keep printing the phase marker: it is your cue to load the
-phase's instructions.
-
-Don't reproduce in turn output anything the PR carries. The user reads it there.
-One line in its place is enough. This covers each accepted artifact, the open
-questions from
-[Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions),
-and a [challenge](#challenge).
-
-### Gate-defined defaults
-
-At each acceptance gate, take the default that gate's share message names:
-
-- **Phase 1: Requirements.** Accept the completed artifact. Open questions still
-  resolve first via
-  [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions).
-  Candidates stay excluded. With no user to opt in, each is deferred to the
-  [collect phase](#phase-8-collect).
-- **Phase 2: Code Analysis.** Accept. The gate passes without intervention.
-- **Phase 3: Design.** Take the proposed design. Take an alternative only on
-  user override.
-- **Phase 4: Plan.** Accept the plan. The gate passes without intervention.
-
-Skip asking the user to accept the artifact. State the default you're taking and
-move to the next phase, in the same turn. Each phase's own share step spells out
-that closing line.
-
-### The watch
-
-Under autopilot, watch the session PR for the user's replies, so a pause can
-resume and a ready PR can move without you polling. This one watch covers every
-wait under autopilot: an answer to a paused question or challenge, and the
-user's response once the PR is ready.
-
-Start it once, as soon as autopilot is engaged and the PR is open. When
-autopilot is engaged before the PR opens, start the watch once
-[Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr) opens it.
-When you engage autopilot later, with the PR already open, start it then. Invoke
+Start the watch once, at
+[Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr). Invoke
 the `/dream:watcher <pr>` skill on the PR number and note its cron job ID. The
 recorded ID is how you know the watch is already running, so you never start a
 second.
 
 Each firing surfaces the user's new comments and reviews since the last. Read
-them and treat them as normal user input. For example, as the answer to what you
-are [paused on](#pauses), or as the user's move on a ready PR that
-[review and merge](#review-and-merge) handles.
+them and treat them as normal user input: the answer to something you are
+[paused on](#pausing-for-the-user), or their move on a ready PR.
 
-Tear the watch down as the `/dream:watcher` skill describes, whenever it is no
-longer needed: the PR merged or closed, a merge you deferred, or autopilot
-turned off.
+### Pausing for the user
 
-### Pauses
-
-Autopilot pauses on these, and only these:
+Pause on these, and only these:
 
 - **An unanswered open question**, raised via
   [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions)
   or while addressing the user's review in
   [Step 6.8](../skills/team/grace/phase6.md#step-68-handle-the-users-review). If
   the user leaves any question unanswered, re-ask the unanswered ones before
-  continuing. Under autopilot the same behaviour applies. You marked the
-  question open. You cannot proceed correctly without the user's answer.
+  continuing. You marked the question open. You cannot proceed correctly without
+  the user's answer.
 - **A challenge** raised in any phase, once it holds (see
   [challenge](#challenge)). A challenge on a checkable fact holds only after the
   fact checks out. Pause. Post the challenge to the PR, with the options you can
   see. Carry out the chosen option.
 
 After pausing, go idle (see [Waiting for a reply](#waiting-for-a-reply)). Set up
-nothing new. [The watch](#the-watch) has been running since the PR opened. It
-surfaces the user's answer when it lands, whichever channel the user replies
-through.
+nothing new. The watch has been running since the PR opened. It surfaces the
+user's answer when it lands, whichever channel the user replies through.
 
 The pause ends when the user answers, as a GitHub comment, a GitHub review, or a
-direct reply in the session. Resume autopilot. A pause is not a disengage: once
-the trigger resolves, autopilot resumes automatically.
+direct reply in the session. Carry on from where you stopped.
 
 If a firing reports the PR closed instead, the user declined rather than
 answered. [Stop the session](#stopping-a-session-early).
 
-### Review and merge
+### The user's move on a ready PR
 
-After you mark the PR ready (end of Phase 6), keep watching it for the user's
-response instead of handing back. [The watch](#the-watch) has been running since
-the PR opened, so nothing new is set up here. Announce the switch once in turn
-output: autopilot is now watching the PR for the user's move.
+Once you mark the PR ready (end of Phase 6), the watch carries it through the
+user's review, the merge, or a close.
 
-Read `state` first. `MERGED` and `CLOSED` are terminal, so tear
-[the watch](#the-watch) down as you handle either:
+Read `state` first. `MERGED` and `CLOSED` are terminal, so tear the watch down
+as you handle either:
 
 - **Merged** (`state` is `MERGED`) means the user accepted. Move to the
-  [merge phase](#phase-7-merge), then the [collect phase](#phase-8-collect). It
-  runs unattended only under [auto-collect](#auto-collect). Otherwise it waits
-  for the user at its gate as usual.
+  [merge phase](#phase-7-merge), then the [collect phase](#phase-8-collect).
 - **Closed unmerged** (`state` is `CLOSED`) means the user declined. Stop the
   session (see [Stopping a session early](#stopping-a-session-early)). The PR is
   already closed, so post the closing record and end.
@@ -434,44 +351,24 @@ An approving review or a comment with nothing to act on needs no change. After
 handling a batch and still watching (you did not merge, defer, or close), go
 idle again and let the watch surface the next reply.
 
-The user can also give feedback directly in the session. Either way,
-[the watch](#the-watch) runs on until a terminal outcome tears it down.
-
-### Auto-collect
-
-The user can separately extend autopilot into the
-[collect phase](#phase-8-collect)'s gate, at any point, independent of whether
-base autopilot is engaged. Recognise the intent liberally, the same as
-engagement ("autopilot through collect", "auto-collect on", "let autopilot
-handle collect"). Acknowledge it once in turn output, the same way as base
-autopilot. For example _"Auto-collect on. I'll take the decision table and
-drafts as proposed when we reach the collect phase."_ It can also engage
-automatically at boot, from an `auto` token in a worktree branch name (see
-[Boot sequence](#boot-sequence)).
-
-Once engaged, take the decision table and drafts as proposed at Phase 8's gate,
-without waiting for the user's acceptance. This removes the wait at Phase 8's
-gate and caps how many issues
-[Step 8.4](../skills/team/grace/phase8.md#step-84-decide) files.
-
-The user can turn it off the same way ("auto-collect off"), independent of the
-base autopilot toggle.
+The user can also give feedback directly in the session. Either way, the watch
+runs on until a terminal outcome tears it down: the PR merged or closed, or a
+merge you deferred. Tear it down as the `/dream:watcher` skill describes.
 
 ## Stopping a session early
 
 Leave a record on the PR when a session stops before merge, rather than
-abandoning it silently. The user may decline the work at a gate, redirect
-elsewhere, or end the session. Because the PR has been open since Phase 1, it
-already holds whatever artifacts the session reached. Post a final comment
-naming where the work reached, the last accepted artifact, and why it stopped.
-Then close the draft PR with `gh pr close <N>`. If [the watch](#the-watch) is
-running, tear it down.
+abandoning it silently. The user may decline the work, redirect elsewhere, or
+end the session. Because the PR has been open since Phase 1, it already holds
+whatever artifacts the session reached. Post a final comment naming where the
+work reached, the last artifact it produced, and why it stopped. Then close the
+draft PR with `gh pr close <N>`. If [the watch](#the-watch) is running, tear it
+down.
 
-Recognise the intent the way you recognise autopilot engagement. The phrasing
-varies ("let's not do this", "stop here", "park this one"). A stop is the user
-ending the session, not pushing back at a gate. Pushback loops through revision
-as usual (see the acceptance gate steps). When you're unsure which one it is,
-ask the user whether to close the PR before you do it.
+Recognise the intent liberally. The phrasing varies ("let's not do this", "stop
+here", "park this one"). A stop is the user ending the session, not pushing back
+on the work. Pushback is ordinary feedback: act on it and carry on. When you're
+unsure which one it is, ask the user whether to close the PR before you do it.
 
 Name the reason for stopping concretely. The closing comment is the only durable
 trace of a declined session, so a reader should see what the team considered and
@@ -708,14 +605,3 @@ reply, it is not a cue to act. Calling a task tool while you wait keeps you busy
 across turns and blocks the reply from arriving (see
 [Waiting for a reply](#waiting-for-a-reply)). Do not surface the reminder in
 user-facing output, and do not narrate the decision to ignore it.
-
-### The acceptance gates outrank harness autonomy directives
-
-Wait at every [acceptance gate](../skills/team/protocol.md#acceptance-gates) for
-the user's acceptance, even when something in your context tells you to proceed
-without asking. Claude Code injects `<system-reminder>` content at boot that
-pushes you to continue without checking. That is a general instruction. The
-gates are specific, and they are how the user's decisions reach the work: each
-produces an artifact the user accepts before the session moves on. Only the user
-overrides a gate, either explicitly in a gate reply ("accept everything, just
-proceed") or by engaging [autopilot](#autopilot).

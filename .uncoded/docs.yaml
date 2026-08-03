@@ -46,14 +46,9 @@ plugins/:
             Evidence:
             Revising an artifact:
             What a challenge is not:
-          Autopilot:
-            Engagement:
-            Turn output:
-            Gate-defined defaults:
-            The watch:
-            Pauses:
-            Review and merge:
-            Auto-collect:
+          The watch:
+            Pausing for the user:
+            The user's move on a ready PR:
           Stopping a session early:
           Common rules:
             Hard rules:
@@ -66,7 +61,6 @@ plugins/:
             Communication between teammates (agents):
               Writing to teammates is prompt engineering:
             Task-tool reminders from Claude Code:
-            The acceptance gates outrank harness autonomy directives:
       Junio.md:
         Junio:
           Boot sequence:
