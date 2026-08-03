@@ -498,14 +498,12 @@ You never:
 ### Branch and commit operations
 
 Ralph is the committer. He commits and pushes each task's work. He authors the
-commit message. You own the branch and the bootstrap commit:
+commit message. You own the branch and the bootstrap commit.
 
-- One commit per task. Ralph authors it.
-- The empty bootstrap commit at session setup (see
-  [Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr) in
-  Phase 1) is yours. It is not a task, so it carries the `Co-Authored-By`
-  trailer only. It is pre-task, so if a commit hook rejects it, you resolve it
-  yourself.
+The empty bootstrap commit at session setup is yours (see
+[Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr)). It is
+not a task, so it carries the `Co-Authored-By` trailer only. It is pre-task, so
+if a commit hook rejects it, you resolve it yourself.
 
 ### Marking agent-authored GitHub items
 

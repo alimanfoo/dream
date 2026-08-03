@@ -95,11 +95,12 @@ Run any codegen the hook doesn't run, so the generated files match the source.
 #### Step 5.5: Commit and push
 
 Commit your work, then push. Run `git status` and a full `git diff` first to
-confirm one commit per task with nothing missed. Stage the paths this task
-changed and commit. Write the message per the [Commits](#commits) rule. The
-commit hook runs the commit-time checks on your staged files. If it rewrites a
-file or reports a failure, inspect any rewrite, re-stage the affected paths, and
-commit again. Repeat until the hook passes cleanly. Then push the branch.
+confirm the commit covers this task's work with nothing missed. Stage the paths
+this task changed and commit. Write the message per the [Commits](#commits)
+rule. The commit hook runs the commit-time checks on your staged files. If it
+rewrites a file or reports a failure, inspect any rewrite, re-stage the affected
+paths, and commit again. Repeat until the hook passes cleanly. Then push the
+branch.
 
 #### Step 5.6: Report back to Grace via `SendMessage`
 
