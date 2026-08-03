@@ -83,9 +83,9 @@ somewhere.
 
 #### Step 5.2: Identify coherence gaps
 
-Name what the change still needs to reach a coherent end state. Does it create
-maintenance work, or leave work undone? Use the `/dream:coherent-coding` skill
-to decide what that end state should be.
+Use the `/dream:coherent-coding` skill to decide what a coherent end state
+should be. Then name what the change still needs to reach it. Does it create
+maintenance work, or leave work undone?
 
 #### Step 5.3: Sort what you found
 
@@ -93,7 +93,7 @@ Sort each gap into one of these:
 
 - **An in-scope follow-on task**, when it follows from the change you just read.
   A pre-existing concern qualifies when the session's work has made it more
-  visible. So does a same-edit surface the task's own diff didn't reach.
+  visible. So does a same-edit surface that the task's own diff didn't reach.
 - **An ancillary finding**, when it is pre-existing and the session's work
   hasn't made it more visible. Grace collects these for the post-merge triage.
 - **A challenge**, when the change shows an accepted artifact no longer holds.
@@ -125,8 +125,8 @@ report is "no substantive findings."
 #### Challenge
 
 Raise a _challenge_ in the coherence audit message when the change shows an
-accepted artifact no longer holds, on new evidence the earlier phase didn't
-have. For example:
+accepted artifact no longer holds. The evidence has to be new, something the
+earlier phase didn't have. For example:
 
 - the design assumption the change relies on turns out false
 - the code is shaped differently from the code analysis

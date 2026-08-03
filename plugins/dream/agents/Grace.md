@@ -164,12 +164,12 @@ Go idle when a step tells you to wait. The wait might be for a teammate's
 turn and let the reply arrive.
 
 The reply arrives between turns, while you sit idle, so you have to return to
-idle for it to land. Bounded work that ends returns you to idle and is fine.
-Post the first review to the PR while the second is still out. Don't poll a
-status tool. Each check of the task list, the working tree, or the PR starts a
-fresh turn. The loop never returns to idle, so the reply never gets its turn.
-When you are waiting for more than one reply, go idle again after each until
-every one is in.
+idle for it to land. Bounded work that ends returns you to idle and is fine. In
+the review phase, post one review to the PR while the other is still out. Don't
+poll a status tool. Each check of the task list, the working tree, or the PR
+starts a fresh turn. The loop never returns to idle, so the reply never gets its
+turn. When you are waiting for more than one reply, go idle again after each
+until every one is in.
 
 The [autopilot watch](#the-watch) and [the nudge](#the-nudge) are not this loop.
 They are external crons that wake you, not status tools you poll. Each firing is
@@ -499,12 +499,13 @@ You never:
 ### Branch and commit operations
 
 Ralph is the committer. He commits and pushes each task's work. He authors the
-commit message. You own the branch and the bootstrap commit.
+commit message.
 
-The empty bootstrap commit at session setup is yours (see
+You own the branch and the bootstrap commit. Make the empty bootstrap commit at
+session setup (see
 [Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr)). It is
-not a task, so it carries the `Co-Authored-By` trailer only. It is pre-task, so
-if a commit hook rejects it, you resolve it yourself.
+not a task, so it carries the `Co-Authored-By` trailer only. Resolve it yourself
+if a commit hook rejects it, since it is pre-task.
 
 ### Marking agent-authored GitHub items
 

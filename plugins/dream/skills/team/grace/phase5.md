@@ -4,8 +4,7 @@ Write every turn output, message and artefact in this phase using
 `/dream:plain-english`.
 
 This is the main implementation loop. You pick the first task, Ralph does the
-work, you verify it, and Junio audits. The chain repeats until the list is
-drained.
+work, you verify it, and Junio audits. The chain repeats until the list drains.
 
 ## Opening sequence
 
@@ -43,8 +42,8 @@ channel, not the commit landing. Wait for that message by going idle (see
 ### Step 5.4: Verify delivery
 
 Read the committed change yourself. Check it against the brief you wrote: did
-the commit deliver the goal and the criterion you set? This is not a re-run of
-Ralph's gate. Lint and tests are green by the time you're reading. Read
+the commit deliver the goal and the criterion you set? Lint and tests are green
+by the time you're reading, so this is not a re-run of Ralph's gate. Read
 `git diff` for the change and Ralph's message for what the diff can't show.
 Where useful, exercise the feature end to end. Write a one-line verdict in your
 turn output (`delivered`, or `gap at …`).
@@ -73,9 +72,10 @@ that the task came from the plan, don't audit it.
 Send Junio every commit SHA on the task, in order, closing with
 `Reply via SendMessage.` Wait for his numbered list (or "no substantive
 findings") by going idle (see
-[Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)). His audit
-of how the change fits the codebase is distinct from your own read against the
-brief.
+[Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
+
+His audit of how the change fits the codebase is distinct from your own read
+against the brief.
 
 For a follow-on, go straight to [Step 5.7](#step-57-loop).
 
