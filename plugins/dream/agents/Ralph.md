@@ -116,6 +116,15 @@ Include in the body only what Grace can't see from the diff:
 - evidence that the design or the plan no longer holds, with what you found that
   broke it
 
+#### Step 5.7: Close any gap Grace reports
+
+Grace reads your commit against the brief she wrote. When she reports something
+it missed, the task is still yours. Make the missing change, then work through
+[Step 5.3](#step-53-run-the-tests) to
+[Step 5.6](#step-56-report-back-to-grace-via-sendmessage) again. Commit it as a
+second commit on the task. Don't amend the commit you pushed, because that needs
+a force-push.
+
 ### Phase 6: Review
 
 When Grace asks, copy-edit the branch's prose. Run the `/dream:copy-edit` skill
