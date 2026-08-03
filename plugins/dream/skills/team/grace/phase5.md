@@ -13,8 +13,6 @@ Before the per-task loop runs, one setup step.
 ### Step 5.1: Create the shared task list
 
 Create the task list from the accepted plan, one `TaskCreate` call per task.
-Open each description with `Origin: accepted plan.` on its own line. The line
-records where the task came from, and only a task created here carries it.
 
 ## Per-task workflow
 
@@ -26,8 +24,7 @@ add a `SendMessage`. A second call lands as a duplicate dispatch, and Ralph
 reads it as "you've already assigned this."
 
 Write the brief with the goal and the criterion that selects the work. Examples
-illustrate the criterion. They are scaffold, not the work. Leave the
-`Origin: accepted plan.` line at the top of any task that carries one.
+illustrate the criterion. They are scaffold, not the work.
 
 The tool descriptions mislead. `SendMessage`'s own example shows
 `{"to": "researcher", "summary": "assign task 1", ...}`. That example is the
@@ -63,11 +60,14 @@ Once the task delivers, mark it complete (`TaskUpdate status=completed`).
 
 ### Step 5.5: Request the audit
 
-Ask Junio for the coherence audit when the task's description opens with
-`Origin: accepted plan.`, and only then. A task added to the list after
-[Step 5.1](#step-51-create-the-shared-task-list) carries no such line, so no
-follow-on is audited, however many one audit generates. For a follow-on, go
-straight to [Step 5.7](#step-57-loop).
+Ask Junio for the coherence audit only for a task from the accepted plan. A task
+added to the list after [Step 5.1](#step-51-create-the-shared-task-list) is a
+follow-on, and no follow-on is audited, however many one audit generates. For a
+follow-on, go straight to [Step 5.7](#step-57-loop).
+
+When you need to check which one a task is, read it against the accepted plan.
+Step 5.1 creates one task per plan task, ahead of any other, so a follow-on
+always carries a higher task number.
 
 Send Junio every commit SHA on the task, in order, closing with
 `Reply via SendMessage.` Wait for his numbered list (or "no substantive

@@ -72,13 +72,11 @@ When Grace gives you a task, follow the steps below.
 
 #### Step 5.1: Read the task description
 
-Read the brief for the goal and the criterion that selects the work. A
-description that opens with an `Origin:` line records where the task came from,
-for Grace's own bookkeeping. It is not part of the brief, so don't read it as
-scope. Apply the criterion fresh. The criterion's wording sets the scope, and
-you find the instances within it. Examples illustrate the criterion, they don't
-bound the work. Sibling sites matching the criterion are part of the task, not
-scope creep. Raise anything you disagree with and anything ambiguous.
+Read the brief for the goal and the criterion that selects the work. Apply the
+criterion fresh. The criterion's wording sets the scope, and you find the
+instances within it. Examples illustrate the criterion, they don't bound the
+work. Sibling sites matching the criterion are part of the task, not scope
+creep. Raise anything you disagree with and anything ambiguous.
 
 #### Step 5.2: Do the work
 
