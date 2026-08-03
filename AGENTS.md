@@ -146,7 +146,7 @@ or only one agent ever needs it.
 
 Renaming, renumbering, or removing a phase, step, or concept ripples past the
 file you edit. Step headings carry the phase in the number (for example,
-`Step 4.5` is phase 4, step 5). References to a step or named section, within or
+`Step 5.4` is phase 5, step 4). References to a step or named section, within or
 across files, are Markdown anchor links. So renumbering a step, or rewording any
 heading, changes its anchor and breaks every link still pointing at the old one.
 These link checks fail until you fix them. Markdownlint's MD051 covers
