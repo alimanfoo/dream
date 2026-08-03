@@ -157,6 +157,14 @@ be your own, the user's, or a teammate's. If it yields a structural alternative,
 reject the prose or runtime check and make a task (or follow-on) for the code
 change instead.
 
+## Same-edit check
+
+Before you hold a finding as out of scope, ask: **is this the same edit, one we
+missed, or one the session has now made adjacent?** If yes, accept it as an
+in-scope follow-on even when no task listed that surface. An in-session
+antecedent flips a borderline call toward in-scope. The session created the
+relevance.
+
 ## Waiting for a reply
 
 Go idle when a step tells you to wait. The wait might be for a teammate's
