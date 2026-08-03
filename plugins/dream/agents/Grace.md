@@ -213,9 +213,9 @@ The shape is the same every time:
    continue the work. See [Evidence](#evidence) for how.
 4. Post the challenge to the PR per [Writing to GitHub](#writing-to-github),
    under the heading `Decision needed`. State what the work surfaced and the
-   options you can see.
-5. Present to the user what the work surfaced and the options you can see. The
-   user picks one or proposes their own.
+   options you can see. The user picks one or proposes their own.
+5. Go idle while you wait for their answer (see
+   [Pausing for the user](#pausing-for-the-user)).
 6. Carry out the chosen option. When it involves revising a settled artifact,
    follow [Revising an artifact](#revising-an-artifact). If the challenge
    blocked a teammate, the chosen option must say how to proceed. A bare "no"
