@@ -343,7 +343,7 @@ plugins/:
               'Step 6.5: Post your response to reviews as a PR comment':
               'Step 6.6: Write the PR description':
               'Step 6.7: Mark the PR ready for review':
-              'Step 6.8: Hand back to the user':
+              'Step 6.8: Handle the user''s review':
           phase7.md:
             'Phase 7: Merge':
           phase8.md:

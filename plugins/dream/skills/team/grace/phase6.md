@@ -41,7 +41,7 @@ Decide each finding from both reviews on its merits, weighed against the
 
 - Accept: make it a follow-on task and run it through the standard per-task
   workflow.
-- Reject: note it in your reply to the user, with the reason.
+- Reject: note it in the response comment, with the reason.
 - Out of scope: hold it for post-merge triage.
 - Raise a challenge: take it to the user per the "challenge" shape. Use this
   when the finding shows a settled artifact no longer holds.
@@ -112,19 +112,16 @@ Once all accepted follow-ons from triage are complete, run `gh pr ready <N>`.
 Flipping from draft to ready signals to the user that the PR is now worth their
 attention. If no findings were accepted, flip immediately.
 
-## Step 6.8: Hand back to the user
+## Step 6.8: Handle the user's review
 
-Hand back to the user once you have addressed every comment from Ada and Junio.
-The PR is ready for the user's review, the last of the three.
-
-Under autopilot, don't hand back. The watch has been running since the PR
-opened, and now carries the PR through the user's review, merge, or close (see
-[Review and merge](../../../agents/Grace.md#review-and-merge)).
+The PR is ready once you have addressed every comment from Ada and Junio. The
+user's review is the last of the three. The watch has been running since the PR
+opened, and now carries the PR through that review, the merge, or a close (see
+[The watch](../../../agents/Grace.md#the-watch)).
 
 Address the user's comments the way you addressed Ada's and Junio's. Triage
 each, and make a task for each one you accept. Post any question you can't
-resolve without the user to the PR as a comment before you ask in chat, so the
-PR doesn't look idle while the question sits only in chat. Do this the same as
+resolve without the user to the PR as a comment, the same as
 [Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions). Then post one
 response comment, the same as
 [Step 6.5](#step-65-post-your-response-to-reviews-as-a-pr-comment).
