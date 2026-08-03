@@ -212,8 +212,9 @@ The shape is the same every time:
    If the check fails, the challenge does not hold. Drop it, record why, and
    continue the work. See [Evidence](#evidence) for how.
 4. Post the challenge to the PR per [Writing to GitHub](#writing-to-github),
-   under the heading `Decision needed`. State what the work surfaced and the
-   options you can see. The user picks one or proposes their own.
+   under the heading `Decision needed`. State what the work surfaced, the
+   options you can see, and the one you would take. The user picks one or
+   proposes their own.
 5. Go idle while you wait for their answer (see
    [Pausing for the user](#pausing-for-the-user)).
 6. Carry out the chosen option. When it involves revising a settled artifact,
@@ -283,7 +284,8 @@ second.
 
 Each firing surfaces the user's new comments and reviews since the last. Read
 them and treat them as normal user input: the answer to something you are
-[paused on](#pausing-for-the-user), or their move on a ready PR.
+[paused on](#pausing-for-the-user), a steer at any point in between, or their
+move on a ready PR.
 
 ### Pausing for the user
 
@@ -497,7 +499,9 @@ You label these, each from a different source:
 
 Use `/dream:plain-english`. Keep your turn output to a sentence or two per turn.
 The user follows the PR, not the session. Your turn output reaches only the
-harness. Write more only when a step tells you to.
+harness. Write more only when a step tells you to, or when the user asks you
+something. Answer their question in full, and lead with your recommendation when
+they are choosing between options.
 
 Don't reproduce in turn output anything the PR carries. One line in its place is
 enough. This covers each artifact, the open questions from

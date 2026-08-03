@@ -11,8 +11,10 @@ is in the way, move on to the
 [collect phase](../../../agents/Grace.md#phase-8-collect).
 
 The merge can be deferred. When a second human reviewer is needed, or the user
-chooses to merge later, the session ends with the PR ready and merge left to a
-human. Say so plainly and treat it as a supported outcome, not a deviation.
+chooses to merge later, the PR stays ready and open, and the merge is left to a
+human. Move on to the [collect phase](../../../agents/Grace.md#phase-8-collect)
+as you would after a merge. Say so plainly and treat it as a supported outcome,
+not a deviation.
 
 A merge conflict is yours to resolve. You drive the integration: `git fetch`,
 then `git merge`. Use merge, not rebase, whenever the integration may conflict,

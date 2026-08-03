@@ -115,8 +115,12 @@ attention. If no findings were accepted, flip immediately.
 ## Step 6.8: Handle the user's review
 
 The PR is ready once you have addressed every comment from Ada and Junio. The
-user's review is the last of the three. The watch has been running since the PR
-opened, and now carries the PR through that review, the merge, or a close (see
+user's review is the last of the three.
+
+Go idle (see
+[Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)). The watch
+has been running since the PR opened. It brings the user's review back when it
+lands, and carries the PR on through the merge or a close (see
 [The watch](../../../agents/Grace.md#the-watch)).
 
 Address the user's comments the way you addressed Ada's and Junio's. Triage

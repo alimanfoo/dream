@@ -4,7 +4,8 @@ Write every turn output, message and artefact in this phase using
 `/dream:plain-english`.
 
 The goal of this phase is to collect ancillary findings and opportunities from
-the team. Follow the steps below in sequence.
+the team. Every issue you file here is about the host repo, the codebase the
+session worked on. Follow the steps below in sequence.
 
 ## Step 8.1: Compile
 
@@ -191,5 +192,8 @@ own URL for a posted comment, since a bare `#N` would point at the issue, not
 the comment. Capture each comment's URL when you post it in Step 8.4, so it's
 ready to use here. Skip a plain `drop`, since it produced nothing to link. Skip
 the summary comment entirely if every candidate dropped.
+
+The session's work ends here. Tell the user so in one line, and that they can
+wind the team down from the main session (`/exit`).
 
 Post it per [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
