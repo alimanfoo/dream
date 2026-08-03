@@ -89,7 +89,7 @@ maintenance work, or leave work undone?
 
 #### Step 5.3: Sort what you found
 
-Sort each gap into one of these:
+Sort each coherence gap into one of these:
 
 - **An in-scope follow-on task**, when it follows from the change you just read.
   A pre-existing concern qualifies when the session's work has made it more

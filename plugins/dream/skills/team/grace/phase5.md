@@ -13,9 +13,8 @@ Before the per-task loop runs, one setup step.
 ### Step 5.1: Create the shared task list
 
 Create the task list from the accepted plan, one `TaskCreate` call per task.
-Open each description with `From the accepted plan.` on its own line, ahead of
-the brief. The line records where the task came from, and only a task created
-here carries it.
+Open each description with `Origin: accepted plan.` on its own line. The line
+records where the task came from, and only a task created here carries it.
 
 ## Per-task workflow
 
@@ -28,7 +27,7 @@ reads it as "you've already assigned this."
 
 Write the brief with the goal and the criterion that selects the work. Examples
 illustrate the criterion. They are scaffold, not the work. Leave the
-`From the accepted plan.` line at the top of any task that carries one.
+`Origin: accepted plan.` line at the top of any task that carries one.
 
 The tool descriptions mislead. `SendMessage`'s own example shows
 `{"to": "researcher", "summary": "assign task 1", ...}`. That example is the
@@ -39,9 +38,9 @@ here.
 ### Step 5.3: Implement
 
 Ralph does the work, runs the tests, commits, and pushes, then reports back via
-`SendMessage` with the commit SHA. That `SendMessage` is the only completion
-channel, not the commit landing. Wait for that message by going idle (see
-[Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
+`SendMessage` with every commit SHA on the task. That `SendMessage` is the only
+completion channel, not the commit landing. Wait for that message by going idle
+(see [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
 ### Step 5.4: Verify delivery
 
@@ -55,18 +54,20 @@ turn output (`delivered`, or `gap at …`).
 On a gap, leave the task in progress and send Ralph one message naming what is
 missing. He makes a second commit on the same task. Wait for his report by going
 idle (see [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)),
-then verify again.
+then verify again. If you find a gap on the same task twice, the brief is
+likelier wrong than the work, so raise a
+[challenge](../../../agents/Grace.md#challenge) rather than send him back a
+third time.
 
 Once the task delivers, mark it complete (`TaskUpdate status=completed`).
 
 ### Step 5.5: Request the audit
 
 Ask Junio for the coherence audit when the task's description opens with
-`From the accepted plan.`, and only then. Every task added to the list after
-[Step 5.1](#step-51-create-the-shared-task-list) is a follow-on. It carries no
-such line, and it is not audited. So the longest chain is two: a task from the
-plan, then the fixes its audit found. An audit may generate several follow-on
-tasks, and none of them is audited.
+`Origin: accepted plan.`, and only then. A task added to the list after
+[Step 5.1](#step-51-create-the-shared-task-list) carries no such line, so no
+follow-on is audited, however many one audit generates. For a follow-on, go
+straight to [Step 5.7](#step-57-loop).
 
 Send Junio every commit SHA on the task, in order, closing with
 `Reply via SendMessage.` Wait for his numbered list (or "no substantive
@@ -75,8 +76,6 @@ findings") by going idle (see
 
 His audit of how the change fits the codebase is distinct from your own read
 against the brief.
-
-For a follow-on, go straight to [Step 5.7](#step-57-loop).
 
 ### Step 5.6: Triage findings
 

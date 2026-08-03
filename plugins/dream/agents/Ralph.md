@@ -72,11 +72,13 @@ When Grace gives you a task, follow the steps below.
 
 #### Step 5.1: Read the task description
 
-Read the brief for the goal and the criterion that selects the work. Apply the
-criterion fresh. The criterion's wording sets the scope, and you find the
-instances within it. Examples illustrate the criterion, they don't bound the
-work. Sibling sites matching the criterion are part of the task, not scope
-creep. Raise anything you disagree with and anything ambiguous.
+Read the brief for the goal and the criterion that selects the work. A
+description that opens with an `Origin:` line records where the task came from,
+for Grace's own bookkeeping. It is not part of the brief, so don't read it as
+scope. Apply the criterion fresh. The criterion's wording sets the scope, and
+you find the instances within it. Examples illustrate the criterion, they don't
+bound the work. Sibling sites matching the criterion are part of the task, not
+scope creep. Raise anything you disagree with and anything ambiguous.
 
 #### Step 5.2: Do the work
 
@@ -104,10 +106,11 @@ branch.
 
 #### Step 5.6: Report back to Grace via `SendMessage`
 
-Send the report to Grace via `SendMessage`, including the commit SHA you just
-pushed. Turn output doesn't reach her. Only `SendMessage` does. You don't mark
-tasks complete yourself. Grace does that after reading your work. So your
-`SendMessage` also tells Grace the work is done.
+Send the report to Grace via `SendMessage`, including every commit SHA you have
+pushed for this task, in order. Turn output doesn't reach her. Only
+`SendMessage` does. You don't mark tasks complete yourself. Grace does that
+after reading your work. So your `SendMessage` also tells Grace the work is
+done.
 
 Include in the body only what Grace can't see from the diff:
 
