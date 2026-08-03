@@ -190,7 +190,7 @@ plugins/:
             Arguments:
             Read the diff:
             Launch the lenses:
-            Verify the findings:
+            Combine and verify:
             Rank and return:
       coherence-review/:
         SKILL.md:
@@ -198,7 +198,7 @@ plugins/:
             Arguments:
             Read the diff:
             Launch the lenses:
-            Verify the findings:
+            Combine and verify:
             Rank and return:
       coherent-coding/:
         SKILL.md:

@@ -141,7 +141,7 @@ worktree session never freshens local `main`, so it can be stale or missing.
 Then send what it returns to Grace via `SendMessage`, including when it returns
 no findings. Grace waits for your review before she can carry on, so a clean
 review still has to reach her. Only `SendMessage` reaches Grace. Turn output
-does not. Add no findings of your own, and drop none. Grace posts it as a PR
+does not. Add nothing to it, and drop nothing from it. Grace posts it as a PR
 comment, so keep internal protocol vocabulary out of it.
 
 ### Phase 7: Merge

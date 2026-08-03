@@ -75,7 +75,7 @@ the range `origin/main...HEAD`, the branch under review against its base.
 Then **send what it returns to Grace via `SendMessage`**, including when it
 returns no findings. Grace waits for your review before she can carry on, so a
 clean review still has to reach her. Only `SendMessage` reaches Grace, not turn
-output. Add no findings of your own, and drop none. Grace posts it as a PR
+output. Add nothing to it, and drop nothing from it. Grace posts it as a PR
 comment, so follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 Do not include the Claude Code footer. Grace adds GitHub-visible footer metadata

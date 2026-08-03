@@ -54,13 +54,15 @@ applies. A subagent can't resolve a path relative to its own prompt file.
 
 The subagent is read-only by tool design: it reads and reports.
 
-In inline mode, run the lenses yourself instead of spawning subagents.
+In inline mode, run the lenses yourself instead of spawning subagents. Read
+[the lens subagent's instructions](../../agents/code-review-lens.md) first and
+work to them, since you are the one applying each lens.
 
 Once the subagents are running, go idle: end your turn and let their findings
 land. They arrive on their own when each subagent finishes. Don't sleep. Don't
 poll for progress. Don't write that you are waiting.
 
-## Verify the findings
+## Combine and verify
 
 Combine their findings into one list, dropping duplicates that point at the same
 line or mechanism. Judge each on its merits.

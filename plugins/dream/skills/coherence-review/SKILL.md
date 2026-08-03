@@ -68,7 +68,7 @@ Once the subagents are running, go idle: end your turn and let their findings
 land. They arrive on their own when each subagent finishes. Don't sleep. Don't
 poll for progress. Don't write that you are waiting.
 
-## Verify the findings
+## Combine and verify
 
 Combine their findings into one list, dropping duplicates that point at the same
 line or mechanism. Judge each on its merits.
