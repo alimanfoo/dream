@@ -52,9 +52,6 @@ addressed it. Rejected findings record the reason. Out-of-scope findings record
 that they are held for post-merge triage. These notes are the raw material for
 the response comment you post after triage.
 
-Reclassify any "out of scope but noticed" item as in scope when it is the same
-edit: one the PR missed, or one the PR has now made adjacent.
-
 If a finding proposes a docstring, comment, or section-header to express a
 contract, invariant, precondition, or convention, apply the
 [code-shape-first check](../../../agents/Grace.md#code-shape-first-check) to it.
@@ -68,8 +65,7 @@ outcome from commits, task messages, or the user's chat.
 
 The response is concise and GitHub-facing:
 
-- One item per finding, using each review's section labels or short finding
-  names.
+- One item per finding, using a short name for it.
 - **Accepted** items say they were addressed, with the follow-up commit or
   PR-visible evidence when useful.
 - **Rejected** items give the reason.
