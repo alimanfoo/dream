@@ -42,8 +42,8 @@ A session moves through these phases:
 
 7. **Merge.** The user merges the PR, or merge is deferred to a human.
 
-8. **Collect.** Ancillary findings from the session are gathered, checked
-   against issue history, and decided.
+8. **Collect.** Grace gathers the session's ancillary findings, checks them
+   against issue history, and decides each one.
 
 The phases run in order. Within a phase, steps run sequentially.
 
@@ -58,8 +58,8 @@ The session runs on its own from boot to the end. Grace produces each artifact,
 posts it to the PR as it lands, and moves to the next phase without waiting for
 the user.
 
-She pauses in two cases: an open question she marked unanswered, and a challenge
-that holds. She posts each to the PR and waits for the user's answer there.
+She pauses on an open question she marked unanswered, and on a challenge that
+holds. She posts each to the PR and waits for the user's answer there.
 
 Intent reaches the work through the issue that seeds the session and the user's
 review of the PR.

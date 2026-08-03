@@ -67,14 +67,13 @@ Perform the following tasks **immediately**, in order.
    same repo.
 
 4. **Derive the session issues from the branch name.** Only in the worktree
-   case. Skip it on a primary checkout on `main`. Read the branch name
-   (`git rev-parse --abbrev-ref HEAD`) and scan it for `gh<number>` tokens,
-   case-insensitive: `GH83`, `gh83-add-foo`, and `claude/gh341-defer-candidates`
-   each yield one. `fix-gh12-and-gh34` yields two. Every distinct issue number
-   found is part of the assumed session input for Phase 1. One token gives a
-   single-issue input. Several give a multi-issue input addressing all of them.
-   When the name holds no such token (`add-foo`), make no assumption. The user
-   provides the session input as usual.
+   case. Read the branch name (`git rev-parse --abbrev-ref HEAD`) and scan it
+   for `gh<number>` tokens, case-insensitive: `GH83`, `gh83-add-foo`, and
+   `claude/gh341-defer-candidates` each yield one. `fix-gh12-and-gh34` yields
+   two. Every distinct issue number found is part of the assumed session input
+   for Phase 1. One token gives a single-issue input. Several give a multi-issue
+   input addressing all of them. When the name holds no such token (`add-foo`),
+   make no assumption. The user provides the session input as usual.
 
 5. Load the `/dream:coherent-coding` skill. It governs all your work.
 
@@ -83,9 +82,10 @@ Perform the following tasks **immediately**, in order.
 
 After boot, when step 4 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one
-line first. For example: _On worktree branch `fix-gh12-and-gh34`, treating
-issues GH12 and GH34 as the session input._ Otherwise wait for the user to
-switch into your session and open Phase 1 with their session input.
+line as you open the phase. For example: _On worktree branch
+`fix-gh12-and-gh34`, treating issues GH12 and GH34 as the session input._
+Otherwise wait for the user to switch into your session and open Phase 1 with
+their session input.
 
 ## Your role and responsibilities, by phase
 
@@ -316,16 +316,16 @@ answered. [Stop the session](#stopping-a-session-early).
 Once you mark the PR ready (end of Phase 6), the watch carries it through the
 user's review, the merge, or a close.
 
-Read `state` first. `MERGED` and `CLOSED` are terminal, so tear the watch down
-as you handle either:
+Read `state` first. Tear the watch down as you handle either `MERGED` or
+`CLOSED`. Both are final.
 
 - **Merged** (`state` is `MERGED`) means the user accepted. Move to the
   [merge phase](#phase-7-merge), then the [collect phase](#phase-8-collect).
 - **Closed unmerged** (`state` is `CLOSED`) means the user declined. Stop the
-  session (see [Stopping a session early](#stopping-a-session-early)). The PR is
-  already closed, so post the closing record and end.
+  session (see [Stopping a session early](#stopping-a-session-early)). Post the
+  closing record and end, since the PR is already closed.
 
-Otherwise the PR is still open, so act on what the watch surfaced: the user's
+Any other `state` leaves the PR open. Act on what the watch surfaced: the user's
 new comments and reviews, as one combined batch. Either channel carries the same
 intents below. An item can carry more than one. Act on all of them, in this
 order, and drop nothing:
@@ -334,16 +334,16 @@ order, and drop nothing:
    accepted point, as in
    [Step 6.8](../skills/team/grace/phase6.md#step-68-handle-the-users-review),
    which also covers open questions and the response comment.
-2. **A resolve-conflicts request**, recognised liberally from a body such as
-   _"resolve conflicts"_ or _"update the branch"_, is your go-ahead to make the
-   PR mergeable. Resolve the conflict as Phase 7 describes. It counts as the
+2. **A resolve-conflicts request** means you can make the PR mergeable.
+   Recognise it liberally from a body such as _"resolve conflicts"_ or _"update
+   the branch"_. Resolve the conflict as Phase 7 describes. It counts as the
    merge itself, not new development.
-3. **A defer-merge request**, recognised liberally from a body such as _"defer
-   merge"_, is terminal, like a merge. Tear the watch down, then go through the
+3. **A defer-merge request** is final, like a merge. Recognise it liberally from
+   a body such as _"defer merge"_. Tear the watch down, then go through the
    [merge phase](#phase-7-merge)'s deferral path to the
    [collect phase](#phase-8-collect), with the PR left open.
-4. **A question**, recognised liberally as the user asking you something rather
-   than steering the PR, gets a reply. Post the answer as a PR comment per
+4. **A question** gets a reply. Recognise it liberally as the user asking you
+   something rather than steering the PR. Post the answer as a PR comment per
    [Writing to GitHub](#writing-to-github), from what you already know. If you
    need more to answer it, ask in the same reply.
 
@@ -352,8 +352,8 @@ handling a batch and still watching (you did not merge, defer, or close), go
 idle again and let the watch surface the next reply.
 
 The user can also give feedback directly in the session. Either way, the watch
-runs on until a terminal outcome tears it down: the PR merged or closed, or a
-merge you deferred. Tear it down as the `/dream:watcher` skill describes.
+runs on until you tear it down, as the `/dream:watcher` skill describes: the PR
+merged or closed, or a merge you deferred.
 
 ## Stopping a session early
 
@@ -490,7 +490,7 @@ You label these, each from a different source:
 ### Communication with the user
 
 Use `/dream:plain-english`. Keep your turn output to a sentence or two per turn.
-The user follows the PR, not the session, so your turn output reaches only the
+The user follows the PR, not the session. Your turn output reaches only the
 harness. Write more only when a step tells you to.
 
 Don't reproduce in turn output anything the PR carries. One line in its place is

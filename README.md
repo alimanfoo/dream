@@ -46,20 +46,21 @@ Then invoke the `/dream:team` skill:
 
 Team members then start in separate sessions. Switch to the `@Grace` session and
 give her the task. Like the single-agent skills, she also takes it from the
-branch name: if the name of a worktree branch contains one or more issue numbers
-(for example `GH83`), those issues are the task, and she starts without waiting
+branch name. If the name of a worktree branch contains one or more issue numbers
+(for example `GH83`), those issues are the task. She then starts without waiting
 for you.
 
 The team then runs on its own, with no approval steps. Grace opens a draft pull
 request and posts each artifact there as it lands: the requirements analysis,
-the code analysis, the design, and the plan. The team develops and reviews the
-work, then Grace marks the pull request ready and watches it for your review.
-Once you merge, she files anything the session left out of scope as new issues.
+the code analysis, the design, and the plan. The team develops the work and
+reviews it. Grace then marks the pull request ready and watches it for your
+review. Once you merge, she files anything the session left out of scope as new
+issues.
 
-Grace stops for you in two cases: an open question from the requirements
-analysis, and something unexpected turning up later that breaks one of those
-artifacts. She posts each to the pull request and waits for your reply there, so
-you can unblock her without dropping into the session.
+Grace stops for you on an open question from the requirements analysis, and on
+something unexpected turning up later that breaks one of those artifacts. She
+posts each to the pull request and waits for your reply there, so you can
+unblock her without dropping into the session.
 
 The pull request is enough to steer the whole session. A comment or review of
 yours can send her back to revise, ask her to update the branch so it can merge,
