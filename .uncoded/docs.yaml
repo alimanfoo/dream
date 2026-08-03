@@ -350,9 +350,10 @@ plugins/:
               Per-task workflow:
                 'Step 5.2: Assign':
                 'Step 5.3: Implement':
-                'Step 5.4: Read and request the audit':
-                'Step 5.5: Triage findings':
-                'Step 5.6: Loop':
+                'Step 5.4: Verify delivery':
+                'Step 5.5: Request the audit':
+                'Step 5.6: Triage findings':
+                'Step 5.7: Loop':
           phase6.md:
             'Phase 6: Review':
               'Step 6.1: Ask Ralph to copy-edit the branch''s prose':
