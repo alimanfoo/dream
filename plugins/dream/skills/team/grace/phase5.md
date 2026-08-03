@@ -13,6 +13,9 @@ Before the per-task loop runs, one setup step.
 ### Step 5.1: Create the shared task list
 
 Create the task list from the accepted plan, one `TaskCreate` call per task.
+Open each description with `From the accepted plan.` on its own line, ahead of
+the brief. The line records where the task came from, and only a task created
+here carries it.
 
 ## Per-task workflow
 
@@ -24,7 +27,8 @@ add a `SendMessage`. A second call lands as a duplicate dispatch, and Ralph
 reads it as "you've already assigned this."
 
 Write the brief with the goal and the criterion that selects the work. Examples
-illustrate the criterion. They are scaffold, not the work.
+illustrate the criterion. They are scaffold, not the work. Leave the
+`From the accepted plan.` line at the top of any task that carries one.
 
 The tool descriptions mislead. `SendMessage`'s own example shows
 `{"to": "researcher", "summary": "assign task 1", ...}`. That example is the
@@ -57,17 +61,12 @@ Once the task delivers, mark it complete (`TaskUpdate status=completed`).
 
 ### Step 5.5: Request the audit
 
-Ask Junio for the coherence audit when the task is a planned one, and only then.
-A planned task is one you created from the accepted plan at
-[Step 5.1](#step-51-create-the-shared-task-list). Everything added to the list
-after that is a follow-on, and a follow-on is not audited. So the longest chain
-is two: a planned task's work, then the fixes its audit found. An audit may
-generate several follow-on tasks, and none of them is audited.
-
-Write the call in your turn output, naming where the task came from. For
-example: `task 3: from the plan, audit`, or
-`task 24: follow-on from task 19's audit, no audit`. When you can't establish
-that the task came from the plan, don't audit it.
+Ask Junio for the coherence audit when the task's description opens with
+`From the accepted plan.`, and only then. Every task added to the list after
+[Step 5.1](#step-51-create-the-shared-task-list) is a follow-on. It carries no
+such line, and it is not audited. So the longest chain is two: a task from the
+plan, then the fixes its audit found. An audit may generate several follow-on
+tasks, and none of them is audited.
 
 Send Junio every commit SHA on the task, in order, closing with
 `Reply via SendMessage.` Wait for his numbered list (or "no substantive
@@ -84,7 +83,7 @@ For a follow-on, go straight to [Step 5.7](#step-57-loop).
 Triage Junio's findings. Accept or reject each on its merits, weighed against
 the `/dream:coherent-coding` principles, recording a one-line reason for the
 call. Accepted ones become new tasks, **inserted as the next tasks before any
-pending original-scope work**. Hold ancillary findings for post-merge triage.
+pending task from the plan**. Hold ancillary findings for post-merge triage.
 Never file them mid-session.
 
 Before treating a finding as an ancillary finding, ask: **is this the same edit,

@@ -164,12 +164,11 @@ Go idle when a step tells you to wait. The wait might be for a teammate's
 turn and let the reply arrive.
 
 The reply arrives between turns, while you sit idle, so you have to return to
-idle for it to land. Bounded work that ends returns you to idle and is fine. In
-the review phase, post one review to the PR while the other is still out. Don't
-poll a status tool. Each check of the task list, the working tree, or the PR
-starts a fresh turn. The loop never returns to idle, so the reply never gets its
-turn. When you are waiting for more than one reply, go idle again after each
-until every one is in.
+idle for it to land. Bounded work that ends returns you to idle and is fine,
+like posting a comment to the PR. Don't poll a status tool. Each check of the
+task list, the working tree, or the PR starts a fresh turn. The loop never
+returns to idle, so the reply never gets its turn. When you are waiting for more
+than one reply, go idle again after each until every one is in.
 
 The [autopilot watch](#the-watch) and [the nudge](#the-nudge) are not this loop.
 They are external crons that wake you, not status tools you poll. Each firing is
@@ -645,7 +644,8 @@ user can agree and move on.
 Grace-specific examples (closing line only, content is yours):
 
 ```text
-Task 3 committed at <sha>. Please run the coherence audit.
+Task 3 didn't reach the sibling call sites. Please close
+that and commit.
 
 Reply via SendMessage.
 ```
