@@ -134,52 +134,15 @@ have. For example:
 
 ### Phase 6: Review
 
-When Grace asks for the PR review, work through the steps below. You read the
-finished change for coherence: does it fit, and does it leave the codebase
-whole?
+When Grace asks for the PR review, run the `/dream:coherence-review` skill over
+the range `origin/main...HEAD`. Diff against `origin/main`, not local `main`. A
+worktree session never freshens local `main`, so it can be stale or missing.
 
-#### Step 6.1: Read the whole diff
-
-Read the diff as a whole, using `gh pr diff <N>` or `git diff`.
-
-#### Step 6.2: Run the coherence review
-
-Run the `/dream:coherence-review` skill over the diff. Brief it with the diff as
-a local git range, for example `git diff origin/main...HEAD`. Diff against
-`origin/main`, not local `main`. A worktree session never freshens local `main`,
-so it can be stale or missing.
-
-#### Step 6.3: Combine the findings
-
-Add the findings from your own read of the whole diff. Drop any of yours that
-points at the same line or mechanism as one the review already made.
-
-Pass on everything that survives. Grace judges which to act on.
-
-#### Step 6.4: Send your review to Grace via `SendMessage`
-
-Assemble the review per the review format below, then send it to Grace via
-`SendMessage`. Only `SendMessage` reaches Grace. Turn output does not.
-
-Grace posts your review as a PR comment, so write it for that reader: no
-internal protocol vocabulary.
-
-#### Review format
-
-```text
-<one-line recommendation>
-
-Findings:
-1. ... (concrete problem, naming a file path or symbol, with a
-   file:line citation where you have one)
-
-Out of scope but noticed:
-1. ... (pre-existing items; Grace collects these for the
-   post-merge triage)
-```
-
-Skip a section with no entries. If you have no findings, say so plainly under
-the recommendation.
+Then send what it returns to Grace via `SendMessage`, including when it returns
+no findings. Grace waits for your review before she can carry on, so a clean
+review still has to reach her. Only `SendMessage` reaches Grace. Turn output
+does not. Add no findings of your own, and drop none. Grace posts it as a PR
+comment, so keep internal protocol vocabulary out of it.
 
 ### Phase 7: Merge
 

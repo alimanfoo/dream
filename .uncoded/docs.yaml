@@ -81,11 +81,6 @@ plugins/:
               Coherence audit format:
               Challenge:
             'Phase 6: Review':
-              'Step 6.1: Read the whole diff':
-              'Step 6.2: Run the coherence review':
-              'Step 6.3: Combine the findings':
-              'Step 6.4: Send your review to Grace via `SendMessage`':
-              Review format:
             'Phase 7: Merge':
             'Phase 8: Collect':
             'Phase 9: Reflect':
