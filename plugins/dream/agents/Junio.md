@@ -128,10 +128,8 @@ Raise a _challenge_ in the coherence audit message when the change shows an
 accepted artifact no longer holds, on new evidence the earlier phase didn't
 have. For example:
 
-- the design assumption the commit relies on turns out false
+- the design assumption the change relies on turns out false
 - the code is shaped differently from the code analysis
-- repeated coherence audits circle the same surface for different stated
-  reasons, so the design is aimed at a symptom
 
 ### Phase 6: Review
 
