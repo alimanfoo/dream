@@ -311,15 +311,14 @@ clean_up_finished() {
 
 # Create the worktree and launch a session for it in a detached tmux session.
 # The branch name carries the issue number and the auto token. A dispatched
-# session reads the issue number at boot to take the issue as its input. A team
-# session also reads the auto token to engage autopilot and auto-collect; a smith
-# or less session runs autonomously already. The timestamp between them makes the
+# session reads the issue number at boot to take the issue as its input. The auto
+# token marks the branch as this script's. The timestamp between them makes the
 # name unique per attempt, so a retry never collides with an earlier attempt's
 # branch or pull request.
 #
 # `git worktree add` creates the worktree, not `claude -w`. That lands it at a
 # predictable sibling path, with a branch name the cap, cleanup, and dedup checks
-# rely on. tmux hosts the session. The launch differs by skill: a team session
+# match on. tmux hosts the session. The launch differs by skill: a team session
 # runs under the experimental agent teams feature in teammate tmux mode, a smith
 # or less session under neither. A team session sets --team-effort as the whole
 # session's effort, which the team inherits; a model override makes no sense
