@@ -582,8 +582,9 @@ You label these, each from a different source:
 
 - **The PR** carries the **session type's** category. An enhancement session
   maps to `enhancement`, maintenance to `maintenance`, a bug fix to `bug`. Apply
-  via `gh pr edit --add-label <name>` once the session type is accepted (see
-  [Step 1.5](../skills/team/grace/phase1.md#step-15-seek-user-acceptance-of-the-requirements-analysis)
+  via `gh pr edit --add-label <name>` once the requirements analysis names the
+  session type (see
+  [Step 1.4](../skills/team/grace/phase1.md#step-14-share-the-requirements-analysis)
   in Phase 1).
 - **Each new issue** carries the **finding's** type, not the session type. One
   session can file findings across all three. Apply with

@@ -36,13 +36,12 @@ Draw on the cues yourself as you compile. You hold the whole session, so you
 have the widest view.
 
 Add the **deferred candidates** from Phase 1 as opportunities. These are
-candidate use cases or improvement goals the user neither promoted nor declined
-at the requirements gate (see
-[Step 1.5](phase1.md#step-15-seek-user-acceptance-of-the-requirements-analysis)).
-Like other opportunities, they skip the [test step](#step-83-test) and route
-straight to the [decide step](#step-84-decide), filed as follow-up work or
-dropped. Each carries the evidence you cited in Phase 1, so it is ready to file
-as is.
+candidate use cases or improvement goals the requirements analysis named and the
+session did not take up (see
+[Step 1.4](phase1.md#step-14-share-the-requirements-analysis)). Like other
+opportunities, they skip the [test step](#step-83-test) and route straight to
+the [decide step](#step-84-decide), filed as follow-up work or dropped. Each
+carries the evidence you cited in Phase 1, so it is ready to file as is.
 
 Add the **code smells** the code analysis named but the design didn't take up,
 as ancillary findings. Unlike the Phase 1 candidates, these are findings, so

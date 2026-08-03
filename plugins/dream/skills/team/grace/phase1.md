@@ -37,9 +37,9 @@ already carries its own body and comments. Repeating them here adds nothing.
 Otherwise, reproduce the user's input verbatim. Post it per
 [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
-**Start the watch, under autopilot.** If autopilot is engaged, start
-[the watch](../../../agents/Grace.md#the-watch) now that the PR is open, unless
-it is already running.
+**Start the watch.** Invoke the `/dream:watcher <pr>` skill on the PR number.
+The PR is how the user reaches you for the rest of the session (see
+[The watch](../../../agents/Grace.md#the-watch)).
 
 ## Step 1.2: Produce the draft requirements analysis
 
@@ -55,62 +55,30 @@ Use the heading `Open questions`. List each question with the possible answers
 you can see. Close by asking the user to answer them, so the file stands on its
 own for a reader who was not in the session. Post the file to the PR as a
 comment, per [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
+Say in one line that you posted the questions and are waiting for the answer.
 
-Under autopilot, say in one line that you posted the questions and are waiting
-for the user's answer.
-
-Otherwise, send the user the same questions and answers as a numbered list.
-Invite a freeform answer too. End the message by asking the user to answer the
-questions so you can complete the requirements analysis.
-
-Wait for the user's reply. Fold their answers into the requirements analysis as
-stated items, dropping the matching open questions. If the reply leaves any
+Then go idle (see
+[Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)). The watch
+brings the user's answer back. Fold their answers into the requirements analysis
+as stated items, dropping the matching open questions. If the reply leaves any
 question unanswered, re-ask the unanswered ones before continuing. You marked
 them as needing the user, so a missing answer means the artifact isn't complete
 yet.
 
 ## Step 1.4: Share the requirements analysis
 
-Under autopilot, keep this step to one line, then continue in the same turn:
-_"Taking the requirements analysis as proposed (autopilot). Proceeding to Phase
-2: Code Analysis."_
+Write the completed requirements analysis to a temporary file outside this repo,
+via Bash. Then:
 
-Otherwise, send the completed requirements analysis to the user. When there are
-candidates, ask the user to name any they want included, by number. Any they
-don't name carry forward as opportunities to the
-[collect phase](../../../agents/Grace.md#phase-8-collect). Ask the user to
-accept: _"Accept the requirements analysis to proceed to Phase 2: Code
-Analysis."_
+- **Send it to Junio and Ralph.** Give them the file's absolute path: two
+  `SendMessage` calls in the same turn, for information only.
+- **Post it to the PR** from that same file, per
+  [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
+- **Label the PR.** Apply the session type's category label via
+  `gh pr edit --add-label <name>` (see
+  [GitHub labels](../../../agents/Grace.md#github-labels)). The requirements
+  analysis names the session type, so this is the first point you know it.
 
-## Step 1.5: Seek user acceptance of the requirements analysis
-
-Under autopilot, take this gate's default and continue without waiting.
-
-Otherwise, wait for the user's reply.
-
-If the user accepts, promote any candidate they opted into. Defer the rest to
-the [collect phase](../../../agents/Grace.md#phase-8-collect). Apply the session
-type's category label to the PR via `gh pr edit --add-label <name>` (see
-[GitHub labels](../../../agents/Grace.md#github-labels)). Then continue to
-[Step 1.6](#step-16-send-the-accepted-requirements-analysis-to-junio-and-ralph).
-
-If the user pushes back, revise and return to
-[Step 1.4](#step-14-share-the-requirements-analysis). Repeat until accepted.
-
-This is one of the protocol's
-[user acceptance gates](../protocol.md#acceptance-gates).
-
-## Step 1.6: Send the accepted requirements analysis to Junio and Ralph
-
-Write the accepted requirements analysis, in the version the user accepted plus
-any changes from the acceptance discussion, to a temporary file outside this
-repo, via Bash.
-
-Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
-same turn, for information only.
-
-## Step 1.7: Post the accepted requirements analysis to the PR
-
-Post the accepted requirements analysis to the PR from the file written in
-[Step 1.6](#step-16-send-the-accepted-requirements-analysis-to-junio-and-ralph).
-Follow [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
+Any candidates the analysis named stay out of the session's scope. Each carries
+forward to the [collect phase](../../../agents/Grace.md#phase-8-collect) as an
+opportunity, with the evidence the analysis cited.
