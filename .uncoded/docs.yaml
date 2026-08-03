@@ -78,7 +78,7 @@ plugins/:
           Your role and responsibilities, by phase:
             'Phases 1 to 4: Requirements, Code Analysis, Design, Plan':
             'Phase 5: Develop':
-              'Step 5.1: Read the committed change':
+              'Step 5.1: Read the task''s change':
               'Step 5.2: Identify coherence gaps':
               'Step 5.3: Sort what you found':
               'Step 5.4: Send the coherence audit to Grace via `SendMessage`':
