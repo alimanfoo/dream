@@ -66,7 +66,7 @@ tasks, **inserted as the next tasks before any pending original-scope work**
 (depth-first drain). A correction for a gap you found is one such follow-on.
 Hold ancillary findings for post-merge triage. Never file them mid-session.
 
-Before treating a finding as an ancillary finding, apply the
+For each finding you have set aside as an ancillary finding, apply the
 [same-edit check](../../../agents/Grace.md#same-edit-check).
 
 If a finding proposes a docstring, comment, or section-header to express a

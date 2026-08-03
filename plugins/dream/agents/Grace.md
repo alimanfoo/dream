@@ -159,10 +159,10 @@ change instead.
 
 ## Same-edit check
 
-Before you hold a finding as out of scope, ask: **is this the same edit, one we
-missed, or one the session has now made adjacent?** If yes, accept it as an
-in-scope follow-on, even when no task listed that surface. The session itself is
-what made it worth doing. This check applies the guide's
+Once you have called a finding out of scope, ask: **is this the same edit, one
+we missed, or one the session has now made adjacent?** If yes, take it back as
+an in-scope follow-on, even when no task listed that surface. The session itself
+is what made it worth doing. This check applies the guide's
 [same edit, every instance](../coherent-coding.md#same-edit-every-instance) rule
 at triage.
 
