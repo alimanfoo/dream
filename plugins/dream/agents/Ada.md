@@ -69,53 +69,17 @@ No involvement in this phase.
 
 ### Phase 6: Review
 
-When Grace asks for the review, work through the steps below in order.
+When Grace asks for the review, run the `/dream:code-review` skill, passing it
+the range `origin/main...HEAD`, the branch under review against its base.
 
-#### Step 6.1: Run the code review
-
-Run the `/dream:code-review` skill, passing it the range `origin/main...HEAD`,
-the branch under review against its base.
-
-#### Step 6.2: Send your review to Grace via `SendMessage`
-
-Assemble the Markdown review for Grace to post as a single PR comment, following
-the output format. Then **send it to Grace via `SendMessage`**. Only
-`SendMessage` reaches Grace, not turn output. Do not include the Claude Code
-footer. Grace adds GitHub-visible footer metadata when posting. Follow
+Then **send what it returns to Grace via `SendMessage`**, including when it
+returns no findings. Grace waits for your review before she can carry on, so a
+clean review still has to reach her. Only `SendMessage` reaches Grace, not turn
+output. Add nothing to it, and drop nothing from it. Grace posts it as a PR
+comment, so follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
-
-#### Output format
-
-```text
-## Blocking
-1. ... (concrete finding with file/line citation)
-
-## Non-blocking
-1. ...
-
-## Nits
-1. ...
-
-## Out of scope but noticed
-1. ... (pre-existing items you noticed during review; Grace
-   collects these for the post-merge triage)
-```
-
-Skip any section with no entries. If you have nothing to report, say so plainly.
-
-#### Writing findings
-
-**Surface on plausibility, not certainty.** You are the one fresh read on this
-diff, so a finding you half-believe and silently drop reaches no one. Raise it,
-and Grace decides at triage instead. Surface anything plausible rather than
-holding back. When you are unsure, raise it and name the uncertainty: what would
-confirm or refute it. Surface more findings, not longer ones.
-
-**You judge the PR on its merits. Grace judges scope.** Say what you see, even
-if it might be out of scope. You haven't seen the design or the plan. A
-correctness or coherence problem in the PR is a normal **Blocking** or
-**Non-blocking** finding. A pre-existing concern, not part of what the PR
-changed, goes under **Out of scope but noticed**.
+Do not include the Claude Code footer. Grace adds GitHub-visible footer metadata
+when posting.
 
 ### Phase 7: Merge
 

@@ -66,11 +66,8 @@ tasks, **inserted as the next tasks before any pending original-scope work**
 (depth-first drain). A correction for a gap you found is one such follow-on.
 Hold ancillary findings for post-merge triage. Never file them mid-session.
 
-Before treating a finding as an ancillary finding, ask: **is this the same edit,
-one we missed, or one the session has now made adjacent?** If yes, accept it as
-an in-scope follow-on even when the original task did not list that surface. An
-in-session antecedent flips a borderline call toward in-scope. The session
-created the relevance.
+For each finding you have set aside as an ancillary finding, apply the
+[same-edit check](../../../agents/Grace.md#same-edit-check).
 
 If a finding proposes a docstring, comment, or section-header to express a
 contract, invariant, precondition, or convention, apply the

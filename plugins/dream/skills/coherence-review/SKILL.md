@@ -14,6 +14,11 @@ Read the argument the user gives. It names what to review: a git range, or a
 path. Without one, review the whole branch against `origin/main`
 (`origin/main...HEAD`).
 
+## Read the diff
+
+Read the diff and the source files you need for context. This read gives you the
+context to verify what the lenses return.
+
 ## Launch the lenses
 
 Read the [coherent coding guide](../../coherent-coding.md). It is the home of
@@ -63,18 +68,15 @@ Once the subagents are running, go idle: end your turn and let their findings
 land. They arrive on their own when each subagent finishes. Don't sleep. Don't
 poll for progress. Don't write that you are waiting.
 
-## Combine, verify and return
+## Combine and verify
 
-Combine their findings into one list, dropping duplicates. Judge each on its
-merits.
+Combine their findings into one list, dropping duplicates that point at the same
+line or mechanism.
 
-Read the code each finding cites, and keep only the findings it confirms. A lens
-reports what its one question surfaced, so a false positive reaches you looking
-like any other finding.
+Read the code each finding cites. Keep only the findings you can confirm.
 
-A finding often rests on more than the site it cites, so read those other sites
-too. A missed instance of an edit rests on its sibling sites. A fact with two
-homes rests on both.
+## Rank and return
 
-Return the verified findings as turn output, a numbered list. Report only: apply
-no fixes. If you have nothing to report, say so and return.
+Return the verified findings as turn output: a numbered list, most important
+first. Report only: apply no fixes. If you have nothing to report, say so and
+return.

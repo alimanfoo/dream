@@ -15,32 +15,16 @@ or a path. Without it, review the whole branch against `origin/main`
 (`origin/main...HEAD`). If `inline` is given, run the lenses yourself without
 spawning subagents.
 
-## Cold read
+## Read the diff
 
-Read the diff and the source files you need for context. Review from the diff
-itself, not from any surrounding description. Read the change in these
-directions:
+Read the diff and the source files you need for context. This read picks the
+lenses, and it gives you the context to verify what they return.
 
-- **Inward:** the whole function each change sits in, not just the changed
-  lines.
-- **Backward:** the removed or replaced lines, and whether the change still
-  meets their guarantees.
-- **Outward:** the callers and callees of changed symbols.
-- **Lateral:** parallel sites, sibling files or parallel functions, that mirror
-  the change.
+## Launch the lenses
 
-These say where to look, not what to find. Judge what matters yourself.
-
-Draft your findings from that read: correctness, coherence, and anything a
-careful reviewer would flag. A spot where you had to load context or guess to
-follow the code is itself a finding, even when the code is correct. Name the
-spot and the concrete cost to the next reader.
-
-## Widen with review lenses
-
-A lens is one narrow question chosen for what the diff actually does, not a
-generic "review this." Pick up to nine review lenses that fit this diff,
-depending on its scale and nature. For example: concurrent code invites a
+Pick up to nine review lenses that fit this diff, depending on its scale and
+nature. A lens is one narrow question chosen for what the diff actually does,
+not a generic "review this." For example: concurrent code invites a
 races-and-ordering lens, a parser invites a malformed-input lens, a refactor
 invites a reuse-and-duplication lens.
 
@@ -70,43 +54,23 @@ applies. A subagent can't resolve a path relative to its own prompt file.
 
 The subagent is read-only by tool design: it reads and reports.
 
-In inline mode, run the lenses yourself instead of spawning subagents.
-
-Skip the lenses for a diff small enough that your cold read already exhausts it.
-Three subagents on a one-line fix wastes effort.
+In inline mode, run the lenses yourself instead of spawning subagents. Read
+[the lens subagent's instructions](../../agents/code-review-lens.md) first and
+work to them, since you are the one applying each lens.
 
 Once the subagents are running, go idle: end your turn and let their findings
 land. They arrive on their own when each subagent finishes. Don't sleep. Don't
 poll for progress. Don't write that you are waiting.
 
-## Combine, verify and return
+## Combine and verify
 
-Combine the lens findings with your own. Judge each on its merits. Drop
-duplicates that point at the same line or mechanism.
+Combine their findings into one list, dropping duplicates that point at the same
+line or mechanism.
 
-Read the code each finding rests on, and keep only the findings it confirms.
-Your cold read covered the diff, so a finding may rest on a site you have not
-opened yet. A missed instance of an edit rests on its sibling sites. A fact with
-two homes rests on both.
+Read the code each finding cites. Keep only the findings you can confirm.
+
+## Rank and return
 
 Return the verified findings as turn output: a numbered list, most important
 first. Report only: apply no fixes. If you have nothing to report, say so and
 return.
-
-Each finding follows these rules:
-
-- **Name the concrete consequence.** Give each finding a specific consequence,
-  not a vague worry. For example: a wrong output, a crash, or a reader misled.
-  If you cannot say what goes wrong, it is not a finding.
-- **Don't duplicate the diff.** State what's wrong and why, with a citation.
-  Don't quote the change back.
-- **State only findings.** Don't narrate what the code does or confirm what
-  works.
-- **Keep it tight.** One finding per numbered item, two or three sentences each.
-- **Raise "the same edit elsewhere" as a normal finding.** If the PR removes,
-  renames, or clarifies something, and another surface carries the same edit, it
-  is a valid finding. That other surface may be pre-existing and unchanged, or
-  made adjacent by what the PR did. For example, an earlier commit promoted a
-  symbol and left its underscore prefix a fossil. Use the dispatching question:
-  is this the same edit: one the PR missed, or one the PR has now made adjacent?
-  If yes, file it as a normal finding, not out of scope.

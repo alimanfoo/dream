@@ -20,10 +20,6 @@ plugins/:
             'Phase 4: Plan':
             'Phase 5: Develop':
             'Phase 6: Review':
-              'Step 6.1: Run the code review':
-              'Step 6.2: Send your review to Grace via `SendMessage`':
-              Output format:
-              Writing findings:
             'Phase 7: Merge':
             'Phase 8: Collect':
             'Phase 9: Reflect':
@@ -45,6 +41,7 @@ plugins/:
             'Phase 8: Collect':
             'Phase 9: Reflect':
           Code-shape-first check:
+          Same-edit check:
           Waiting for a reply:
             The nudge:
           Challenge:
@@ -85,11 +82,6 @@ plugins/:
               Coherence audit format:
               Challenge:
             'Phase 6: Review':
-              'Step 6.1: Read the whole diff':
-              'Step 6.2: Run the coherence review':
-              'Step 6.3: Combine the findings':
-              'Step 6.4: Send your review to Grace via `SendMessage`':
-              Review format:
             'Phase 7: Merge':
             'Phase 8: Collect':
             'Phase 9: Reflect':
@@ -121,6 +113,7 @@ plugins/:
       code-review-lens.md:
         Code review lens:
           The lens:
+          Read the change:
           Reporting:
       copy-editor.md:
         Copy editor:
@@ -195,15 +188,18 @@ plugins/:
         SKILL.md:
           Code review:
             Arguments:
-            Cold read:
-            Widen with review lenses:
-            Combine, verify and return:
+            Read the diff:
+            Launch the lenses:
+            Combine and verify:
+            Rank and return:
       coherence-review/:
         SKILL.md:
           Coherence review:
             Arguments:
+            Read the diff:
             Launch the lenses:
-            Combine, verify and return:
+            Combine and verify:
+            Rank and return:
       coherent-coding/:
         SKILL.md:
           Coherent coding:

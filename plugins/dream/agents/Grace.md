@@ -157,6 +157,15 @@ be your own, the user's, or a teammate's. If it yields a structural alternative,
 reject the prose or runtime check and make a task (or follow-on) for the code
 change instead.
 
+## Same-edit check
+
+Once you have called a finding out of scope, ask: **is this the same edit, one
+we missed, or one the session has now made adjacent?** If yes, take it back as
+an in-scope follow-on, even when no task listed that surface. The session itself
+is what made it worth doing. This check applies the guide's
+[same edit, every instance](../coherent-coding.md#same-edit-every-instance) rule
+at triage.
+
 ## Waiting for a reply
 
 Go idle when a step tells you to wait. The wait might be for a teammate's
