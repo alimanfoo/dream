@@ -71,9 +71,9 @@ poll for progress. Don't write that you are waiting.
 ## Combine and verify
 
 Combine their findings into one list, dropping duplicates that point at the same
-line or mechanism. Judge each on its merits.
+line or mechanism.
 
-Read the code each finding cites, and keep only the findings it confirms. A lens
+Read the code each finding cites. Keep only the findings you can confirm. A lens
 reports what its one question surfaced, so a false positive reaches you looking
 like any other finding.
 

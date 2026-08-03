@@ -41,8 +41,6 @@ Choose from these or invent your own. They are examples, not a checklist:
 - reuse and simplification: code that re-implements what the codebase, a
   library, or a language feature already provides, or that a simpler form would
   replace
-- the same edit elsewhere: another surface the change's own rule covers, either
-  missed or newly made adjacent
 - altitude: whether the change sits at the right depth, or is a quick fix
   layered on shared infrastructure
 - reader's context: in new or changed prose, what the reader needs but is
@@ -67,9 +65,9 @@ poll for progress. Don't write that you are waiting.
 ## Combine and verify
 
 Combine their findings into one list, dropping duplicates that point at the same
-line or mechanism. Judge each on its merits.
+line or mechanism.
 
-Read the code each finding cites, and keep only the findings it confirms. A lens
+Read the code each finding cites. Keep only the findings you can confirm. A lens
 reports what its one question surfaced, so a false positive reaches you looking
 like any other finding.
 
