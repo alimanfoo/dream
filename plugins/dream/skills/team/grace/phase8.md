@@ -112,9 +112,8 @@ the idea the work opened up. The user judges it, so this is the place to reach
 for the strong idea, not the safe one.
 
 - **Drop**: duplicate of an existing open issue, fails the bar for filing, or
-  cut by the auto-collect cap. For a duplicate, you may comment on the existing
-  issue if the new sighting adds evidence (a second occurrence, a different
-  angle).
+  cut by the cap. For a duplicate, you may comment on the existing issue if the
+  new sighting adds evidence (a second occurrence, a different angle).
 - **Reinforce**: related to an existing open issue but not identical. Comment on
   the open issue with the new angle rather than opening a new one.
 - **Re-frame**: recurrence on a surface with prior issues, open or closed. File
@@ -128,9 +127,9 @@ for the strong idea, not the safe one.
 - **File fresh**: no related issue on the surface, and the finding clears the
   bar. Open a standalone issue.
 
-Build the decision table. For each candidate, show the finding, the decision,
-the concrete action it maps to with its target, and the reason. The decision
-word alone doesn't tell the user what will happen:
+Build the decision table in your turn output. For each candidate, show the
+finding, the decision, the concrete action it maps to with its target, and the
+reason. The decision word alone doesn't say what will happen:
 
 - `re-frame` and `file fresh` open a new issue
 - `reinforce` and a duplicate `drop` comment on an existing one
@@ -138,12 +137,11 @@ word alone doesn't tell the user what will happen:
 
 Spell out the action and target per row
 (`re-frame → new issue, references #155`, `reinforce → comment on #142`). Each
-row is then self-contained, so the user doesn't have to ask what it does.
+row is then self-contained, so you work from the table alone.
 
-Under auto-collect, cap the table once it's built, before drafting anything.
-With no user at the gate to redirect a candidate, an unattended sweep would
-otherwise file every row the table already decided to open. Rank the rows you
-decided were `file fresh` or `re-frame` within each category:
+Cap the table once it's built, before drafting anything. Nobody redirects a
+candidate, so an uncapped sweep would file every row the table decided to open.
+Rank the rows you decided were `file fresh` or `re-frame` within each category:
 
 - **Bug:** how directly the behaviour gap hits a real consumer.
 - **Maintenance:** how much drift or duplication the surface causes.
@@ -151,33 +149,16 @@ decided were `file fresh` or `re-frame` within each category:
 
 Keep the top three bugs, the top two maintenance items, and the top one
 enhancement. Re-decide the rest as `drop` in the table, with the reason
-`capped by auto-collect`. This is the cap standing in for the user's redirect:
-it happens once, on the table, then drafting and sharing continue as usual. Not
-under auto-collect, skip it: the user's acceptance at the gate already bounds
-volume.
+`capped`. Cap once, on the table, then carry on.
 
-Draft the exact issue or comment text for every row that isn't a plain `drop`,
-before sharing anything with the user. Write the drafts to a temporary file
-outside the repo.
+Draft the exact issue or comment text for every row that isn't a plain `drop`.
+Write the drafts to a temporary file outside the repo.
 
-Before sharing the drafts, run the `/dream:copy-edit` skill over that file.
-Issue drafts run dense, and a second pass against the Plain English guide
-catches what writing them the first time misses.
+Then run the `/dream:copy-edit` skill over that file. Issue drafts run dense,
+and a second pass against the Plain English guide catches what writing them the
+first time misses.
 
-Share the decision table together with the copy-edited drafts in one message.
-End it with one of these two, depending on
-[auto-collect](../../../agents/Grace.md#auto-collect):
-
-- Not under auto-collect: ask the user to accept the table and drafts, or
-  redirect.
-- Under auto-collect: skip the question. State that you're taking the table and
-  drafts as proposed, then file them in the same turn.
-
-When autopilot is engaged as well, share the table alone: you work from it, and
-no PR comment carries it. Leave the drafts out. Nobody is in the session to read
-them, and the issues and comments you file carry their text.
-
-Never file text the copy-edited file doesn't hold.
+File the drafts. Never file text the copy-edited file doesn't hold.
 
 You don't implement anything in any phase. What enters the backlog is an issue
 or a comment, never a fix. This holds even when merge was deferred and the PR is
