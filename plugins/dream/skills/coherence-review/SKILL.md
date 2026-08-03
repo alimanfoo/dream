@@ -77,9 +77,9 @@ Read the code each finding cites, and keep only the findings it confirms. A lens
 reports what its one question surfaced, so a false positive reaches you looking
 like any other finding.
 
-A finding often rests on more than the site it cites, so read those other sites
-too. A missed instance of an edit rests on its sibling sites. A fact with two
-homes rests on both.
+Read the other sites a finding rests on, since it often rests on more than the
+one it cites. A missed instance of an edit rests on its sibling sites. A fact
+with two homes rests on both.
 
 ## Rank and return
 

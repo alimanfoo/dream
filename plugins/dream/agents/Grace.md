@@ -161,9 +161,8 @@ change instead.
 
 Before you hold a finding as out of scope, ask: **is this the same edit, one we
 missed, or one the session has now made adjacent?** If yes, accept it as an
-in-scope follow-on even when no task listed that surface. An in-session
-antecedent flips a borderline call toward in-scope. The session created the
-relevance.
+in-scope follow-on, even when no task listed that surface. The session itself is
+what made it worth doing.
 
 ## Waiting for a reply
 

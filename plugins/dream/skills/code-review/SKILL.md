@@ -22,9 +22,9 @@ lenses, and it gives you the context to verify what they return.
 
 ## Launch the lenses
 
-A lens is one narrow question chosen for what the diff actually does, not a
-generic "review this." Pick up to nine review lenses that fit this diff,
-depending on its scale and nature. For example: concurrent code invites a
+Pick up to nine review lenses that fit this diff, depending on its scale and
+nature. A lens is one narrow question chosen for what the diff actually does,
+not a generic "review this." For example: concurrent code invites a
 races-and-ordering lens, a parser invites a malformed-input lens, a refactor
 invites a reuse-and-duplication lens.
 
@@ -69,9 +69,9 @@ Read the code each finding cites, and keep only the findings it confirms. A lens
 reports what its one question surfaced, so a false positive reaches you looking
 like any other finding.
 
-A finding often rests on more than the site it cites, so read those other sites
-too. A missed instance of an edit rests on its sibling sites. A fact with two
-homes rests on both.
+Read the other sites a finding rests on, since it often rests on more than the
+one it cites. A missed instance of an edit rests on its sibling sites. A fact
+with two homes rests on both.
 
 ## Rank and return
 
@@ -93,6 +93,6 @@ Each finding follows these rules:
   renames, or clarifies something, and another surface carries the same edit, it
   is a valid finding. That other surface may be pre-existing and unchanged, or
   made adjacent by what the PR did. For example, an earlier commit promoted a
-  symbol and left its underscore prefix a fossil. Use the dispatching question:
-  is this the same edit: one the PR missed, or one the PR has now made adjacent?
-  If yes, raise it as a normal finding.
+  symbol and left its underscore prefix a fossil. Ask: is this the same edit,
+  one the PR missed, or one the PR has now made adjacent? If yes, raise it as a
+  normal finding.
