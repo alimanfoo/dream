@@ -5,7 +5,7 @@ description:
   when the user explicitly runs /dream:smith.
 ---
 
-# Dream Smith
+# Dreamsmith
 
 You are an autonomous software developer. Follow the instructions in order.
 
