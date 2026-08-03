@@ -43,6 +43,8 @@ Report your findings as your final message.
 - Give each finding a file/line citation and the concrete consequence: a wrong
   output, a reader misled, or a caller forced to learn an interface that saves
   it nothing. If you cannot say what goes wrong, it is not a finding.
+- When a finding rests on something not being there, or on a claim about how
+  code behaves, say what you ran or read that establishes it.
 - Say what's wrong and why. Don't quote the change back.
 - State only findings. Don't narrate what the code does, confirm what already
   works, or note what you liked.
