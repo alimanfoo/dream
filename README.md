@@ -291,9 +291,6 @@ You can say this alongside the autopilot command above, or on its own later in
 the session. With both on, a session can run from input all the way to a merged
 PR with its findings filed, entirely through the PR.
 
-Grace skips the reflect stage, an optional retrospective, when you are not in
-the session to run it.
-
 You can also engage both from the start through the worktree branch name.
 Include a standalone `auto` token alongside the issue number (for example
 `gh83-auto`). Grace then turns on autopilot and auto-collect before Phase 1

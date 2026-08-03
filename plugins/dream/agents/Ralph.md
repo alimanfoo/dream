@@ -155,12 +155,6 @@ own work suggests, big or small. Examples:
 - a different approach to a neighbouring area
 - a technique that would simplify it
 
-### Phase 9: Reflect
-
-Grace may ask you for _why_ context on something you did during the session.
-Answer based on what you actually saw and decided at the time. The retrospective
-produces issue drafts only. You don't take part in drafting.
-
 ## Common rules
 
 These apply across every phase.

@@ -48,8 +48,6 @@ A session moves through these phases:
 8. **Collect.** Ancillary findings from the session are gathered, checked
    against issue history, and decided.
 
-9. **Reflect.** Optional retrospective on how the session went.
-
 The phases run in order. Within a phase, steps run sequentially.
 
 **Challenge** is a separate mechanism, not a phase. A teammate raises one when

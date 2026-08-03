@@ -144,11 +144,6 @@ follow them.
 Read [your Phase 8 instructions](../skills/team/grace/phase8.md) in full and
 follow them.
 
-### Phase 9: Reflect
-
-Read [your Phase 9 instructions](../skills/team/grace/phase9.md) in full and
-follow them.
-
 ## Code-shape-first check
 
 When a proposal would carry a contract in prose or a runtime check, apply the
@@ -409,8 +404,7 @@ Read `state` first. `MERGED` and `CLOSED` are terminal, so tear
 - **Merged** (`state` is `MERGED`) means the user accepted. Move to the
   [merge phase](#phase-7-merge), then the [collect phase](#phase-8-collect). It
   runs unattended only under [auto-collect](#auto-collect). Otherwise it waits
-  for the user at its gate as usual. Skip the [reflect phase](#phase-9-reflect).
-  It is an interactive retrospective, with nowhere to run here.
+  for the user at its gate as usual.
 - **Closed unmerged** (`state` is `CLOSED`) means the user declined. Stop the
   session (see [Stopping a session early](#stopping-a-session-early)). The PR is
   already closed, so post the closing record and end.
@@ -431,8 +425,7 @@ order, and drop nothing:
 3. **A defer-merge request**, recognised liberally from a body such as _"defer
    merge"_, is terminal, like a merge. Tear the watch down, then go through the
    [merge phase](#phase-7-merge)'s deferral path to the
-   [collect phase](#phase-8-collect), skipping the
-   [reflect phase](#phase-9-reflect), with the PR left open.
+   [collect phase](#phase-8-collect), with the PR left open.
 4. **A question**, recognised liberally as the user asking you something rather
    than steering the PR, gets a reply. Post the answer as a PR comment per
    [Writing to GitHub](#writing-to-github), from what you already know. If you
@@ -609,15 +602,14 @@ than counting it out by hand:
 
 | Phase | Progress bar |
 | ----- | ------------ |
-| 1     | `▰▱▱▱▱▱▱▱▱`  |
-| 2     | `▰▰▱▱▱▱▱▱▱`  |
-| 3     | `▰▰▰▱▱▱▱▱▱`  |
-| 4     | `▰▰▰▰▱▱▱▱▱`  |
-| 5     | `▰▰▰▰▰▱▱▱▱`  |
-| 6     | `▰▰▰▰▰▰▱▱▱`  |
-| 7     | `▰▰▰▰▰▰▰▱▱`  |
-| 8     | `▰▰▰▰▰▰▰▰▱`  |
-| 9     | `▰▰▰▰▰▰▰▰▰`  |
+| 1     | `▰▱▱▱▱▱▱▱`   |
+| 2     | `▰▰▱▱▱▱▱▱`   |
+| 3     | `▰▰▰▱▱▱▱▱`   |
+| 4     | `▰▰▰▰▱▱▱▱`   |
+| 5     | `▰▰▰▰▰▱▱▱`   |
+| 6     | `▰▰▰▰▰▰▱▱`   |
+| 7     | `▰▰▰▰▰▰▰▱`   |
+| 8     | `▰▰▰▰▰▰▰▰`   |
 
 Print it once per phase. Printing the marker is your cue to load the phase: read
 that phase's instruction file (`grace/phase<N>.md`, per your boot sequence)

@@ -22,7 +22,6 @@ plugins/:
             'Phase 6: Review':
             'Phase 7: Merge':
             'Phase 8: Collect':
-            'Phase 9: Reflect':
           Common rules:
             Hard rules:
             Communication between teammates (agents):
@@ -39,7 +38,6 @@ plugins/:
             'Phase 6: Review':
             'Phase 7: Merge':
             'Phase 8: Collect':
-            'Phase 9: Reflect':
           Code-shape-first check:
           Same-edit check:
           Waiting for a reply:
@@ -84,7 +82,6 @@ plugins/:
             'Phase 6: Review':
             'Phase 7: Merge':
             'Phase 8: Collect':
-            'Phase 9: Reflect':
           Common rules:
             Hard rules:
             Communication between teammates (agents):
@@ -105,7 +102,6 @@ plugins/:
             'Phase 6: Review':
             'Phase 7: Merge':
             'Phase 8: Collect':
-            'Phase 9: Reflect':
           Common rules:
             Hard rules:
             Commits:
@@ -369,8 +365,6 @@ plugins/:
               'Step 8.3: Test':
               'Step 8.4: Decide':
               'Step 8.5: Summarize':
-          phase9.md:
-            'Phase 9: Reflect':
         protocol.md:
           Dream team protocol:
             Roles:

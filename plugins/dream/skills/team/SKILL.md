@@ -12,7 +12,7 @@ description:
 You spawn the dream team and manage its lifecycle. The team is four subagents
 defined in this plugin: `Grace` (director), `Ralph` (developer), `Junio`
 (maintainer), and `Ada` (reviewer). Grace is the user-facing role and owns
-everything from requirements through retrospective. You stay available for help
+everything from requirements to the collect phase. You stay available for help
 questions during the session.
 
 The experimental agent teams feature spawns the team. It requires

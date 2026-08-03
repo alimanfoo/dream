@@ -163,12 +163,6 @@ Raise an opportunity only when the work just done suggests it, not as a
 free-standing wishlist. Grace's sweep request carries a set of cues. Work each
 one for the knowledge the audit left dormant.
 
-### Phase 9: Reflect
-
-Grace may ask you for _why_ context on something during the session. Answer
-based on what you actually saw and decided at the time. The retrospective
-produces issue drafts only. You don't take part in drafting.
-
 ## Common rules
 
 These apply across every phase.
