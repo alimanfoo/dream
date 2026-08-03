@@ -239,8 +239,8 @@ New evidence can break an accepted artifact in many ways. For example:
   preserve) behaves differently than recorded.
 - The design's approach doesn't hold once implementation starts, or a planned
   task proves impossible as written.
-- Repeated coherence audits circle the same surface. The design turns out aimed
-  at a symptom after all.
+- Task after task lands on the same surface, whatever raised each one. The
+  design turns out aimed at a symptom after all.
 
 A checkable fact may be a claim about an external tool's behaviour. Settle it
 yourself: read the tool's own documentation or API, or write the few lines that
