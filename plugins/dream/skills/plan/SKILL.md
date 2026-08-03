@@ -17,9 +17,9 @@ Follow the steps in order.
 
 ## Arguments
 
-The argument gives the focus for the plan: the accepted design and code analysis
-the plan must serve. Without an argument, derive the focus from your context. If
-you cannot identify a focus, ask the user.
+The argument gives the focus for the plan: the design and code analysis the plan
+must serve. Without an argument, derive the focus from your context. If you
+cannot identify a focus, ask the user.
 
 ## Compose the draft plan
 

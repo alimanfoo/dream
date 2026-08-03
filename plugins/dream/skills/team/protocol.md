@@ -51,7 +51,7 @@ A session moves through these phases:
 The phases run in order. Within a phase, steps run sequentially.
 
 **Challenge** is a separate mechanism, not a phase. A teammate raises one when
-the work surfaces something new that breaks an accepted artifact.
+the work surfaces something new that breaks a settled artifact.
 
 ## Common rules
 

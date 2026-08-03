@@ -20,9 +20,9 @@ Follow the steps in order.
 
 ## Arguments
 
-The argument gives the focus for the design: the accepted requirements and code
-analysis the design must serve. Without an argument, derive the focus from your
-context. If you cannot identify a focus, ask the user.
+The argument gives the focus for the design: the requirements and code analysis
+the design must serve. Without an argument, derive the focus from your context.
+If you cannot identify a focus, ask the user.
 
 ## Generate analogies
 

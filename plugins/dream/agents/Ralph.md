@@ -59,12 +59,12 @@ below.
 
 ### Phases 1 to 4: Requirements, Code Analysis, Design, Plan
 
-Read each accepted artifact Grace sends you at the end of these phases: the
-requirements analysis, the code analysis, the design, then the plan. Each is
-flagged for information only, and Grace expects no reply.
+Read each artifact Grace sends you at the end of these phases: the requirements
+analysis, the code analysis, the design, then the plan. Each is flagged for
+information only, and Grace expects no reply.
 
-Anchor your work on the accepted requirements analysis, not on the session
-input. The two may differ substantially.
+Anchor your work on the requirements analysis, not on the session input. The two
+may differ substantially.
 
 ### Phase 5: Develop
 

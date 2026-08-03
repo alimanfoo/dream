@@ -44,7 +44,7 @@ Decide each finding from both reviews on its merits, weighed against the
 - Reject: note it in your reply to the user, with the reason.
 - Out of scope: hold it for post-merge triage.
 - Raise a challenge: take it to the user per the "challenge" shape. Use this
-  when the finding shows an accepted artifact no longer holds.
+  when the finding shows a settled artifact no longer holds.
 
 For each finding you called out of scope, apply the
 [same-edit check](../../../agents/Grace.md#same-edit-check).

@@ -202,11 +202,10 @@ the end of the session.
 
 ## Challenge
 
-Raise a challenge when the work surfaces something new that breaks an accepted
+Raise a challenge when the work surfaces something new that breaks a settled
 artifact: the requirements analysis, code analysis, design, or plan. You raise
 one yourself, or receive and assess one a teammate raised. If it holds, you take
-it to the user. You can raise one in any phase once an artifact has been
-accepted.
+it to the user. You can raise one in any phase once an artifact is settled.
 
 A challenge is admissible only on new evidence the earlier phase didn't have.
 Wanting to redesign on reflection is not new evidence. Hold to a decision once
@@ -214,12 +213,12 @@ made, and overturn it openly.
 
 Going against what the user steered is a challenge, even when your case against
 it is sound. The call is theirs to change, not yours. This covers the design
-they steered in the session input, and any artifact they accepted.
+they steered in the session input, and any steer they gave in a reply on the PR.
 
 The shape is the same every time:
 
 1. Pause the work.
-2. State the prior reading (the accepted artifact) and the new evidence that
+2. State the prior reading (the settled artifact) and the new evidence that
    breaks it.
 3. If the new evidence is a checkable fact, check it now, before going further.
    If the check fails, the challenge does not hold. Drop it, record why, and
@@ -229,14 +228,14 @@ The shape is the same every time:
    options you can see.
 5. Present to the user what the work surfaced and the options you can see. The
    user picks one or proposes their own.
-6. Carry out the chosen option. When it involves revising an accepted artifact,
+6. Carry out the chosen option. When it involves revising a settled artifact,
    follow [Revising an artifact](#revising-an-artifact). If the challenge
    blocked a teammate, the chosen option must say how to proceed. A bare "no"
    would leave them stuck.
 
 ### Evidence
 
-New evidence can break an accepted artifact in many ways. For example:
+New evidence can break a settled artifact in many ways. For example:
 
 - The code turns out shaped differently from the code analysis.
 - An item the requirements analysis named (a consumer, a use case, behaviour to
@@ -257,7 +256,7 @@ Revising the artifact is ordinary work: return to the phase that owns it and
 follow the protocol as normal from there. Re-read that phase's instruction file
 (`grace/phase<N>.md`) before re-running its steps. A challenge suppresses the
 phase marker that normally cues the load, and you've likely run past that phase
-since. Revise and re-accept the artifact through that phase's usual flow. The
+since. Revise and re-settle the artifact through that phase's usual flow. The
 work downstream then reshapes to match: keep what still stands, redo what the
 revision changes.
 
@@ -273,11 +272,11 @@ thread's history so a reader can tell which version stands (see
 ### What a challenge is not
 
 - **Not per-finding triage.** Each finding from Junio or Ada gets its own triage
-  decision. A challenge is different: it pauses the work and reopens an accepted
+  decision. A challenge is different: it pauses the work and reopens a settled
   artifact.
 - **Not scope creep.** "While we're here, we should also..." is an ancillary
   finding for post-merge triage, not a challenge. A challenge needs new evidence
-  that an accepted artifact no longer holds.
+  that a settled artifact no longer holds.
 - **Not a substitute for Phase 8 re-frame, and vice versa.** A recurrence that
   first surfaces after merge goes to Phase 8 re-frame, not a challenge. A
   premise that breaks during the session is a challenge.
@@ -544,8 +543,8 @@ comment on either, follows the same rules:
 - Follow
   [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 
-Head each accepted artifact with its own plain name: `Code analysis`, `Design`,
-`Plan`. The requirements analysis is the exception. Head it `Requirements`.
+Head each artifact with its own plain name: `Code analysis`, `Design`, `Plan`.
+The requirements analysis is the exception. Head it `Requirements`.
 
 ### GitHub-write failures and blocks
 
