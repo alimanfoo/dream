@@ -44,9 +44,13 @@ Read the arguments the user gives.
    running, go idle: end your turn and let their findings land. They arrive on
    their own when each subagent finishes. Don't sleep. Don't poll for progress.
    Don't write that you are waiting.
-3. Resolve every finding the review returns. You are the author. Make each edit
-   yourself and keep the meaning. When a fix would drop a reason, keep the
+3. Findings land one subagent at a time, so go idle again after each until every
+   subagent you launched is in. Then combine the findings into one list. Drop
+   duplicates and resolve inconsistencies. Write the combined list in your turn
+   output.
+4. Resolve every finding on the combined list. You are the author. Make each
+   edit yourself and keep the meaning. When a fix would drop a reason, keep the
    reason and meet the rule another way.
-4. Report the number of findings addressed this round.
-5. If the review returned no findings, or you have reached the cap, stop.
-6. Otherwise, start the next round.
+5. Report the number of findings resolved this round.
+6. If you made no edits this round, or you have reached the cap, stop.
+7. Otherwise, start the next round.

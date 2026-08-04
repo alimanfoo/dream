@@ -51,12 +51,12 @@ below.
 
 ### Phases 1 to 4: Requirements, Code Analysis, Design, Plan
 
-Read each accepted artifact Grace sends you at the end of these phases: the
-requirements analysis, the code analysis, the design, then the plan. Each is
-flagged for information only, and Grace expects no reply.
+Read each artifact Grace sends you at the end of these phases: the requirements
+analysis, the code analysis, the design, then the plan. Each is flagged for
+information only, and Grace expects no reply.
 
-Anchor your work on the accepted requirements analysis, not on the session
-input. The two may differ substantially.
+Anchor your work on the requirements analysis, not on the session input. The two
+may differ substantially.
 
 ### Phase 5: Develop
 
@@ -96,7 +96,7 @@ Sort each coherence gap into one of these:
   visible. So does a same-edit surface that the task's own diff didn't reach.
 - **An ancillary finding**, when it is pre-existing and the session's work
   hasn't made it more visible. Grace collects these for the post-merge triage.
-- **A challenge**, when the change shows an accepted artifact no longer holds.
+- **A challenge**, when the change shows a settled artifact no longer holds.
 
 #### Step 5.4: Send the coherence audit to Grace via `SendMessage`
 
@@ -115,7 +115,7 @@ Findings:
 Out of scope but noticed:
 1. ...
 
-Challenge: <one-line claim that an accepted artifact no
+Challenge: <one-line claim that a settled artifact no
 longer holds, with the new evidence>.
 ```
 
@@ -124,8 +124,8 @@ report is "no substantive findings."
 
 #### Challenge
 
-Raise a _challenge_ in the coherence audit message when the change shows an
-accepted artifact no longer holds. The evidence has to be new, something the
+Raise a _challenge_ in the coherence audit message when the change shows a
+settled artifact no longer holds. The evidence has to be new, something the
 earlier phase didn't have. For example:
 
 - the design assumption the change relies on turns out false
@@ -162,12 +162,6 @@ own work suggests, big or small. For example:
 Raise an opportunity only when the work just done suggests it, not as a
 free-standing wishlist. Grace's sweep request carries a set of cues. Work each
 one for the knowledge the audit left dormant.
-
-### Phase 9: Reflect
-
-Grace may ask you for _why_ context on something during the session. Answer
-based on what you actually saw and decided at the time. The retrospective
-produces issue drafts only. You don't take part in drafting.
 
 ## Common rules
 

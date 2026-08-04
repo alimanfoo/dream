@@ -44,8 +44,30 @@ Then invoke the `/dream:team` skill:
 /dream:team
 ```
 
-Team members then start in separate sessions. Switch to the `@Grace` session to
-start working.
+Team members then start in separate sessions. Switch to the `@Grace` session and
+give her the task. Like the single-agent skills, she also takes it from the
+branch name. If the name of a worktree branch contains one or more issue numbers
+(for example `GH83`), those issues are the task. She then starts without waiting
+for you.
+
+The team then runs on its own, with no approval steps. Grace opens a draft pull
+request and posts each artifact there as it lands: the requirements analysis,
+the code analysis, the design, and the plan. The team develops the work and
+reviews it. Grace then marks the pull request ready and watches it for your
+review. Once you merge, she files anything the session left out of scope as new
+issues.
+
+Grace stops for you on an open question from the requirements analysis, and on
+something unexpected turning up later that breaks one of those artifacts. She
+posts each to the pull request and waits for your reply there, so you can
+unblock her without dropping into the session.
+
+The pull request is enough to steer the whole session. Anything you write there
+reaches her: a review, a plain comment, or a note on a line of the diff. It can
+send her back to revise, ask her to update the branch so it can merge, ask her
+to defer the merge and leave the pull request open, or ask her a question.
+Merging sends her on to file the follow-ups. Closing without a merge ends the
+session as declined. You can also steer her in the session itself.
 
 See
 [`plugins/dream/skills/team/protocol.md`](plugins/dream/skills/team/protocol.md)
@@ -72,18 +94,18 @@ Like the team, it takes the task from the branch name. If the name contains one
 or more issue numbers (for example `GH83`), it works on those. Otherwise it asks
 you for the task.
 
-It then runs on its own, with no acceptance gates. It opens a draft pull
-request, plans and implements the work, reviews and tidies it, and marks the
-pull request ready. It then keeps watching the pull request for your review, the
-same way an autopilot team session does, and carries out what the review asks.
-Once you merge, it files anything it left out of scope as new issues.
+It then runs on its own, with no approval steps. It opens a draft pull request,
+plans and implements the work, reviews and tidies it, and marks the pull request
+ready. It then keeps watching the pull request for your review, the same way a
+team session does, and carries out what the review asks. Once you merge, it
+files anything it left out of scope as new issues.
 
 ## Even smaller tasks with /dream:less
 
 `/dream:less` is a cut-back version of `/dream:smith`, for a very small change
 you want carried from issue to pull request fast. It runs the same way as
-`/dream:smith`: one agent, no acceptance gates, watching the pull request for
-your review. But it trims the process to match the size of the work. It skips
+`/dream:smith`: one agent, no approval steps, watching the pull request for your
+review. But it trims the process to match the size of the work. It skips
 planning and the separate copy-edit and coherence-review passes. It runs a
 lighter code review, writes a minimal pull request description, and files no
 follow-ups once you merge.
@@ -244,60 +266,6 @@ some useful ones:
 - `ctrl+b :`: enter configuration mode (for example, then type
   `select-pane -P 'fg=cyan' <enter>` to change text colour in the currently
   focused pane)
-
-### Autopilot mode
-
-If you are feeling brave, at any point after you have provided the session input
-you can switch on autopilot mode by saying:
-
-```text
-Autopilot on.
-```
-
-...to Grace. She then directs the team autonomously, taking the default at each
-acceptance gate instead of waiting for your approval. She still produces every
-artifact and runs every review. Each artifact is posted as a comment on the pull
-request, so you can follow the session there. She keeps the session itself
-quiet.
-
-Grace will still stop for input in these cases: an open question from the
-requirements analysis, or something unexpected turning up during development.
-She posts these to the PR and watches it for your reply. This lets you unblock
-her there without dropping into the session. If she does stop, she might need a
-reminder to re-engage autopilot afterwards to resume full autonomy.
-
-Once the PR is ready, Grace keeps watching it and carries it through:
-
-- feedback sends her back to revise
-- a request to resolve conflicts has her update the branch so it can merge
-- a request to defer the merge sends her to the collect stage, leaving the PR
-  open for you to merge later
-- a merge sends her on to the collect stage
-- a close without a merge ends the session as declined
-
-Give your feedback on the PR, however suits you: a review, a plain comment, or a
-note on a line of the diff all reach her. You can also give it in the session,
-but the PR alone is enough to steer the whole session.
-
-The collect stage still waits for your approval by default. Turn on auto-collect
-separately to let it run unattended, filing or commenting on issues without
-waiting:
-
-```text
-Auto-collect on.
-```
-
-You can say this alongside the autopilot command above, or on its own later in
-the session. With both on, a session can run from input all the way to a merged
-PR with its findings filed, entirely through the PR.
-
-Grace skips the reflect stage, an optional retrospective, when you are not in
-the session to run it.
-
-You can also engage both from the start through the worktree branch name.
-Include a standalone `auto` token alongside the issue number (for example
-`gh83-auto`). Grace then turns on autopilot and auto-collect before Phase 1
-opens, without waiting for any input.
 
 ## Troubleshooting
 
