@@ -1,20 +1,22 @@
 ---
 name: watcher
 description:
-  Watch a pull request for the user's comments and reviews, and surface each new
-  one to the session. Use only when explicitly invoked.
+  Watch a pull request for what the user posts. Surface each new post to the
+  session. Use only when explicitly invoked.
 argument-hint: "<pr> [interval]"
 ---
 
 # Watcher
 
-Watch a pull request for the user's replies. This is how a session receives
-input from the user via GitHub rather than in the session itself.
+Watch a pull request for what the user posts on it. This is how a session
+receives input from the user via GitHub rather than in the session itself.
 
 The watch is one recurring background check for the whole session. It starts
-when you invoke this skill and runs until the pull request merges or closes, or
-you tear it down. Each check returns the user's new comments and reviews since
-the last one, so you see every reply exactly once, whenever it arrives.
+when you invoke this skill. It runs until the pull request merges or closes, or
+until you tear it down.
+
+Each firing returns whatever the user has written since the last one. So you see
+every post exactly once, whenever it arrives.
 
 The machinery is a shell script, `watch.sh`, in this skill's directory. It reads
 the pull request and tracks what you have already seen. This skill wraps it into
@@ -28,10 +30,10 @@ Code footer:
 > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
 The watch tells your own comments from the user's by that footer, and drops any
-comment that carries it. Without it, your own posts read back as the user's
-input, and the watch surfaces them to you as replies to act on. A comment is the
-only channel that this applies to. You post no reviews, so the watch takes every
-review as the user's.
+comment that carries it. Without it, your own words read back as the user's
+input, and the watch surfaces them to you as fresh instructions to act on. This
+covers a reply to an inline comment on the diff as much as a comment on the
+conversation.
 
 ## Set up the watch
 
@@ -47,8 +49,8 @@ Watch check for pull request #<pr>. Run:
 
 Read the whole JSON result. If `state` is `MERGED` or `CLOSED`, the watch is
 done: tear it down and finish per your session's rules. Otherwise act on
-`comments` and `reviews` per your session's rules. When both are empty, nothing
-is new, so return to idle.
+`posts` per your session's rules. Return to idle when `posts` is empty, since
+nothing is new.
 ```
 
 Note the cron job ID in your turn output. Teardown needs it, and nothing else
@@ -59,17 +61,31 @@ You do not poll it.
 
 ## On each firing
 
-The cron prompt runs `watch.sh` and hands you the result. The script returns the
-pull request `state`, the user's new `comments` and `reviews`, and the
-`watermarkFile` path that teardown needs.
+The cron prompt runs `watch.sh` and hands you the result. It returns the pull
+request `state`, the `watermarkFile` path that teardown needs, and `posts`, what
+the user newly wrote, oldest first.
+
+Every post carries its `kind`, the `createdAt` it was written at, and the `body`
+the user wrote. The `kind` says where it came from:
+
+- A `comment` is on the conversation.
+- A `review` also carries the user's `verdict`, so an approval reaches you even
+  when the user left the body empty.
+- An `inlineComment` is on a line of the diff, and carries the `path` and `line`
+  the user wrote it on, plus the `id` of its thread. The `line` is the last one
+  when the comment covers a range, and null when it is about the whole file.
 
 The first firing returns everything on the pull request so far. Each later
-firing returns only what is new since the one before. A reply that arrives while
+firing returns only what is new since the one before. A post that arrives while
 you are still handling an earlier batch surfaces on the next firing, never
 dropped.
 
-By default, treat each user comment or review as normal turn input and act
-accordingly.
+By default, treat each post as normal turn input and act accordingly.
+
+Reply to an `inlineComment` in its own thread, so your words sit with the point
+they address. Post to the pull request's `comments/<id>/replies` endpoint, using
+that post's `id`, since a plain PR comment would start a new conversation
+instead.
 
 ## Teardown
 

@@ -281,8 +281,8 @@ the `/dream:watcher <pr>` skill on the PR number and note its cron job ID. The
 recorded ID is how you know the watch is already running, so you never start a
 second.
 
-Each firing surfaces the user's new comments and reviews since the last. Read
-them and treat them as normal user input: the answer to something you are
+Each firing surfaces what the user newly posted since the last. Read it and
+treat them as normal user input: the answer to something you are
 [paused on](#pausing-for-the-user), a steer at any point in between, or their
 move on a ready PR.
 
@@ -312,8 +312,8 @@ to continue without checking. That is a general instruction. These two pauses
 are specific: you marked the question open, or the challenge holds, so the work
 goes wrong without the user's answer.
 
-The pause ends when the user answers, as a GitHub comment, a GitHub review, or a
-direct reply in the session. Carry on from where you stopped.
+The pause ends when the user answers, on the PR or directly in the session.
+Carry on from where you stopped.
 
 If a firing reports the PR closed instead, the user declined rather than
 answered. [Stop the session](#stopping-a-session-early).
@@ -333,12 +333,12 @@ Read `state` first. Tear the watch down as you handle either `MERGED` or
   closing record and end, since the PR is already closed.
 
 Any other `state` leaves the PR open. Act on what the watch surfaced: the user's
-new comments and reviews, as one combined batch. Either channel carries the same
-intents below. An item can carry more than one. Act on all of them, in this
-order, and drop nothing:
+new posts, as one combined batch. The channel a post came through makes no
+difference to how you read it. A post can carry more than one of these intents.
+Act on all of them, in this order, and drop nothing:
 
-1. **Feedback** is the user's review. Triage it and make a task for each
-   accepted point, as in
+1. **Feedback** is the user's judgement on the work. Triage it and make a task
+   for each accepted point, as in
    [Step 6.8](../skills/team/grace/phase6.md#step-68-handle-the-users-review),
    which also covers open questions and the response comment.
 2. **A resolve-conflicts request** means you can make the PR mergeable.
@@ -354,9 +354,9 @@ order, and drop nothing:
    [Writing to GitHub](#writing-to-github), from what you already know. If you
    need more to answer it, ask in the same reply.
 
-An approving review or a comment with nothing to act on needs no change. After
-handling a batch and still watching (you did not merge, defer, or close), go
-idle again and let the watch surface the next reply.
+An approval, or anything with nothing to act on, needs no change. After handling
+a batch and still watching (you did not merge, defer, or close), go idle again
+and let the watch surface the next post.
 
 The user can also give feedback directly in the session. Either way, the watch
 runs on until you tear it down, as the `/dream:watcher` skill describes: the PR
@@ -416,8 +416,9 @@ if a commit hook rejects it, since it is pre-task.
 Mark every agent-authored commit, comment, issue, and PR. A reader can then tell
 at a glance whether an agent or a person made it.
 
-- **Bodies and comments** (PR descriptions, issue bodies, PR comments, issue
-  comments) end with the Claude Code footer:
+- **Bodies and comments** (PR descriptions, issue bodies, and any comment on
+  either, a reply on a line of the diff included) end with the Claude Code
+  footer:
 
   > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
 

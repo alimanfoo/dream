@@ -57,7 +57,8 @@ End every commit with the `Co-Authored-By` trailer:
 Co-Authored-By: Claude <claude@anthropic.com>
 ```
 
-End every PR body and comment with the Claude Code footer:
+End every PR body and comment with the Claude Code footer, a reply on a line of
+the diff included:
 
 > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
@@ -171,8 +172,7 @@ them here adds nothing. Otherwise, reproduce the user's input verbatim.
 apply none when there's no clean match.
 
 **Start the watch.** Invoke the `/dream:watcher <pr>` skill on the PR number to
-watch it for the user's replies. It surfaces the user's comments and reviews as
-they arrive.
+watch it for what the user posts. It surfaces each new post as it arrives.
 
 ## Plan
 
@@ -246,18 +246,18 @@ Replace the `WIP` placeholder with the copy-edited description.
 
 Mark the PR ready for review.
 
-## Handle the user's replies
+## Handle what the user posts
 
-The watch you started when the PR opened surfaces the user's comments and
-reviews as they arrive. Act on each, whether it answers a question that you
-raised mid-session or reviews the PR once it is ready.
+The watch you started when the PR opened surfaces the user's posts as they
+arrive. Act on each, whether it answers a question that you raised mid-session
+or reviews the PR once it is ready.
 
-Read the PR `state` that the watch reports first. When `state` is `MERGED`, tear
-the watch down and continue to the [collect step](#collect). When `state` is
-`CLOSED`, tear the watch down, post a comment naming where the work stopped,
-then end the session.
+Read the PR `state` that the watch reports, before you act on anything else.
+When `state` is `MERGED`, tear the watch down and continue to the
+[collect step](#collect). When `state` is `CLOSED`, tear the watch down, post a
+comment naming where the work stopped, then end the session.
 
-Otherwise, act on the items that the watch surfaced, oldest first. An item can
+Otherwise, act on the posts that the watch surfaced, oldest first. A post can
 carry more than one of these:
 
 - **A requested change.** Implement it. Commit and push. Reply on the PR.
@@ -269,7 +269,7 @@ carry more than one of these:
 - **An answer to a question that you raised.** Fold it into the work in hand and
   carry on.
 
-An approving review, or a comment with nothing to act on, needs no reply.
+An approval, or anything with nothing to act on, needs no reply.
 
 Once the PR is ready and you have nothing left to do, go idle and let the watch
 wake you when the user replies. Idling is not ending: the watch is your only

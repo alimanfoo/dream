@@ -236,7 +236,7 @@ plugins/:
             Code review:
             Write the PR description:
             Mark the PR ready for review:
-            Handle the user's replies:
+            Handle what the user posts:
             Merge:
       plain-english/:
         SKILL.md:
@@ -290,7 +290,7 @@ plugins/:
             Code review:
             Write the PR description:
             Mark the PR ready for review:
-            Handle the user's replies:
+            Handle what the user posts:
             Merge:
             Collect:
       team/:

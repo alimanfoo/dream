@@ -62,11 +62,12 @@ something unexpected turning up later that breaks one of those artifacts. She
 posts each to the pull request and waits for your reply there, so you can
 unblock her without dropping into the session.
 
-The pull request is enough to steer the whole session. A comment or review of
-yours can send her back to revise, ask her to update the branch so it can merge,
-ask her to defer the merge and leave the pull request open, or ask her a
-question. Merging sends her on to file the follow-ups. Closing without a merge
-ends the session as declined. You can also steer her in the session itself.
+The pull request is enough to steer the whole session. Anything you write there
+reaches her: a review, a plain comment, or a note on a line of the diff. It can
+send her back to revise, ask her to update the branch so it can merge, ask her
+to defer the merge and leave the pull request open, or ask her a question.
+Merging sends her on to file the follow-ups. Closing without a merge ends the
+session as declined. You can also steer her in the session itself.
 
 See
 [`plugins/dream/skills/team/protocol.md`](plugins/dream/skills/team/protocol.md)
