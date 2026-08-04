@@ -54,7 +54,7 @@ Read the arguments the user gives.
 4. Resolve every finding on the combined list. You are the author. Make each
    edit yourself and keep the meaning. When a fix would drop a reason, keep the
    reason and meet the rule another way.
-5. Report the number of findings addressed this round. Name each finding you set
+5. Report the number of findings resolved this round. Name each finding you set
    aside when you combined them, and give the reason in one sentence.
 6. If you made no edits this round, or you have reached the cap, stop.
 7. Otherwise, start the next round.
