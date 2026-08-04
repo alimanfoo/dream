@@ -116,12 +116,6 @@ Surface it as an opportunity, stated as a hypothesis with what would confirm it.
 If the approach looks sound as built, say so. A clean read is a real result, not
 a cue to invent a doubt.
 
-### Phase 9: Reflect
-
-Grace may ask you for _why_ context on something in your review. Answer based on
-what you actually saw and decided at the time. The retrospective produces issue
-drafts only. You don't take part in drafting.
-
 ## Common rules
 
 These apply across every phase.
