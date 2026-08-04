@@ -400,7 +400,7 @@ plugins/:
           Validate issues:
             Arguments:
             Find the labelled issues:
-            Validate each issue:
+            Investigate each issue:
             Verify each recommendation:
             Draft a comment for each issue:
             Copy-edit the drafts:

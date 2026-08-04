@@ -39,13 +39,11 @@ gh issue list --label "<resolved label>" --state open --limit 100
 
 Tell the user and stop if no issue carries it.
 
-## Validate each issue
+## Investigate each issue
 
 Spawn the `dream:issue-validator` subagent once per issue, via the Agent tool,
 all in a single message so they run in parallel. Give each one the number of the
 issue it investigates.
-
-The subagent is read-only by tool design: it reads and reports.
 
 Once the subagents are running, go idle: end your turn and let their findings
 land. They arrive on their own when each subagent finishes. Don't sleep. Don't

@@ -30,6 +30,15 @@ gh api repos/{owner}/{repo}/issues/<number>/sub_issues
 Then read whatever the issue cites: another issue, a pull request, a file, a
 symbol.
 
+Search the tracker for other issues on the same surface:
+
+```bash
+gh issue list --state all --search "<surface>"
+```
+
+One of them may already cover this issue, or record a decision the project
+already made about it.
+
 ## Read what the project is for
 
 Read the project's own docs: the README, `AGENTS.md`, `CLAUDE.md`. They tell you
@@ -46,7 +55,7 @@ then your answer, before you start the next check. Stop at the first check you
 answer "no", and say which check stopped you. You cannot answer a check you
 never reached.
 
-1. **Valid.** Check the issue against the code as it stands today. Does the
+1. **Real.** Check the issue against the code as it stands today. Does the
    problem it describes still happen, or the gap it names still stand open? An
    issue filed a while back may already be fixed, or may name a surface that has
    since moved.
