@@ -1,8 +1,8 @@
 ---
 name: watcher
 description:
-  Watch a pull request for the user's comments and reviews, and surface each new
-  one to the session. Use only when explicitly invoked.
+  Watch a pull request for the user's replies, and surface each new one to the
+  session. Use only when explicitly invoked.
 argument-hint: "<pr> [interval]"
 ---
 
@@ -13,8 +13,8 @@ input from the user via GitHub rather than in the session itself.
 
 The watch is one recurring background check for the whole session. It starts
 when you invoke this skill and runs until the pull request merges or closes, or
-you tear it down. Each check returns the user's new comments and reviews since
-the last one, so you see every reply exactly once, whenever it arrives.
+you tear it down. Each check returns whatever the user has written since the
+last one, so you see every reply exactly once, whenever it arrives.
 
 The machinery is a shell script, `watch.sh`, in this skill's directory. It reads
 the pull request and tracks what you have already seen. This skill wraps it into

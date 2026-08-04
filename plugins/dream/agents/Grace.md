@@ -359,9 +359,9 @@ the `/dream:watcher <pr>` skill on the PR number and note its cron job ID. The
 recorded ID is how you know the watch is already running, so you never start a
 second.
 
-Each firing surfaces the user's new comments and reviews since the last. Read
-them and treat them as normal user input. For example, as the answer to what you
-are [paused on](#pauses), or as the user's move on a ready PR that
+Each firing surfaces the user's new replies since the last. Read them and treat
+them as normal user input. For example, as the answer to what you are
+[paused on](#pauses), or as the user's move on a ready PR that
 [review and merge](#review-and-merge) handles.
 
 Tear the watch down as the `/dream:watcher` skill describes, whenever it is no
@@ -389,9 +389,9 @@ nothing new. [The watch](#the-watch) has been running since the PR opened. It
 surfaces the user's answer when it lands, whichever channel the user replies
 through.
 
-The pause ends when the user answers, as a GitHub comment, a GitHub review, or a
-direct reply in the session. Resume autopilot. A pause is not a disengage: once
-the trigger resolves, autopilot resumes automatically.
+The pause ends when the user answers, on the PR or directly in the session.
+Resume autopilot. A pause is not a disengage: once the trigger resolves,
+autopilot resumes automatically.
 
 If a firing reports the PR closed instead, the user declined rather than
 answered. [Stop the session](#stopping-a-session-early).
@@ -416,9 +416,9 @@ Read `state` first. `MERGED` and `CLOSED` are terminal, so tear
   already closed, so post the closing record and end.
 
 Otherwise the PR is still open, so act on what the watch surfaced: the user's
-new comments and reviews, as one combined batch. Either channel carries the same
-intents below. An item can carry more than one. Act on all of them, in this
-order, and drop nothing:
+new replies, as one combined batch. Every channel carries the same intents
+below. An item can carry more than one. Act on all of them, in this order, and
+drop nothing:
 
 1. **Feedback** is the user's review. Triage it and make a task for each
    accepted point, as in

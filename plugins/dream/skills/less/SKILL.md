@@ -142,8 +142,7 @@ the title from the session input.
 apply none when there's no clean match.
 
 **Start the watch.** Invoke the `/dream:watcher <pr>` skill on the PR number to
-watch it for the user's replies. It surfaces the user's comments and reviews as
-they arrive.
+watch it for the user's replies. It surfaces each one as it arrives.
 
 ## Implement
 
@@ -181,9 +180,9 @@ Mark the PR ready for review.
 
 ## Handle the user's replies
 
-The watch you started when the PR opened surfaces the user's comments and
-reviews as they arrive. Act on each, whether it answers a question that you
-raised mid-session or reviews the PR once it is ready.
+The watch you started when the PR opened surfaces the user's replies as they
+arrive. Act on each, whether it answers a question that you raised mid-session
+or reviews the PR once it is ready.
 
 Read the PR `state` that the watch reports first. When `state` is `MERGED`, tear
 the watch down and end the session. When `state` is `CLOSED`, tear the watch
