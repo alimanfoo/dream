@@ -144,7 +144,7 @@ the title from the session input.
 apply none when there's no clean match.
 
 **Start the watch.** Invoke the `/dream:watcher <pr>` skill on the PR number to
-watch it for the user's replies. It surfaces each one as it arrives.
+watch it for what the user posts. It surfaces each new post as it arrives.
 
 ## Implement
 
@@ -180,9 +180,9 @@ Replace the `WIP` placeholder with the description.
 
 Mark the PR ready for review.
 
-## Handle the user's replies
+## Handle what the user posts
 
-The watch you started when the PR opened surfaces the user's replies as they
+The watch you started when the PR opened surfaces the user's posts as they
 arrive. Act on each, whether it answers a question that you raised mid-session
 or reviews the PR once it is ready.
 
@@ -191,7 +191,7 @@ When `state` is `MERGED`, tear the watch down and end the session. When `state`
 is `CLOSED`, tear the watch down, post a comment naming where the work stopped,
 then end the session.
 
-Otherwise, act on the items that the watch surfaced, oldest first. An item can
+Otherwise, act on the posts that the watch surfaced, oldest first. A post can
 carry more than one of these:
 
 - **A requested change.** Implement it. Commit and push. Reply on the PR.

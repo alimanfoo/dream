@@ -281,8 +281,8 @@ the `/dream:watcher <pr>` skill on the PR number and note its cron job ID. The
 recorded ID is how you know the watch is already running, so you never start a
 second.
 
-Each firing surfaces the user's new replies since the last. Read them and treat
-them as normal user input: the answer to something you are
+Each firing surfaces what the user newly posted since the last. Read it and
+treat them as normal user input: the answer to something you are
 [paused on](#pausing-for-the-user), a steer at any point in between, or their
 move on a ready PR.
 
@@ -333,8 +333,8 @@ Read `state` first. Tear the watch down as you handle either `MERGED` or
   closing record and end, since the PR is already closed.
 
 Any other `state` leaves the PR open. Act on what the watch surfaced: the user's
-new replies, as one combined batch. The channel a reply came through makes no
-difference to how you read it. An item can carry more than one of these intents.
+new posts, as one combined batch. The channel a post came through makes no
+difference to how you read it. A post can carry more than one of these intents.
 Act on all of them, in this order, and drop nothing:
 
 1. **Feedback** is the user's judgement on the work. Triage it and make a task
@@ -356,7 +356,7 @@ Act on all of them, in this order, and drop nothing:
 
 An approval, or anything with nothing to act on, needs no change. After handling
 a batch and still watching (you did not merge, defer, or close), go idle again
-and let the watch surface the next reply.
+and let the watch surface the next post.
 
 The user can also give feedback directly in the session. Either way, the watch
 runs on until you tear it down, as the `/dream:watcher` skill describes: the PR

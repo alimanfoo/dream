@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 #
-# dream:watcher: return the user's new activity on a pull request.
+# dream:watcher: return what the user newly posted on a pull request.
 #
 # One query, one command, no subcommand. Given a pull request number, it returns
 # the pull request state and everything the user wrote on it newer than a
-# per-pull-request watermark. It then advances the watermark to the newest item
+# per-pull-request watermark. It then advances the watermark to the newest post
 # it returned. The caller runs it on a recurring cron to watch a pull request
-# for the user's replies while the session works elsewhere.
+# while the session works elsewhere.
 #
-# The watermark is the newest item seen, never the wall clock. So a reply that
+# The watermark is the newest post seen, never the wall clock. So a post that
 # lands while the caller is busy handling an earlier batch still stays above the
 # watermark. It surfaces on the next run, instead of falling into the gap
 # between one run and the next.
 #
 # With no watermark yet, an absent watermark reads as the beginning of time, so
-# the first run returns every item on the pull request so far. There is no
+# the first run returns every post on the pull request so far. There is no
 # separate baseline or init step.
 #
 # The watermark file lives under $HOME so it survives the days a slow reviewer
@@ -27,23 +27,23 @@
 # the review bodies, both from `gh pr view`, and the inline comments on the
 # diff, which `gh pr view` does not carry and a second call fetches.
 #
-# They come back as one list, `replies`, oldest first. Each reply names its
-# `kind`, so the caller reads the user's words in the order they were written,
-# and still knows how to answer each one.
+# They come back as one list, `posts`, oldest first. Each post names its `kind`,
+# so the caller reads the user's words in the order they were written, and still
+# knows how to answer each one.
 #
-# One rule picks the user's replies out of the three sources. The session and
-# the user post through the same account, so the rule reads the body: a reply
-# is the user's when it comes from that account and its body lacks the Claude
-# Code footer. The caller marks everything it posts with that footer, so its own
-# replies drop out.
+# One rule picks the user's posts out of the three sources. The session and the
+# user write through the same account, so the rule reads the body: a post is the
+# user's when it comes from that account and its body lacks the Claude Code
+# footer. The caller marks everything it writes with that footer, so its own
+# posts drop out.
 #
 # Matching the account also drops anything from another account, a bot or
-# another collaborator, which isn't the user's reply.
+# another collaborator, which the user did not write.
 #
 # So a change to the footer string would break the filter, and the caller's own
 # comments would read back as the user's input.
 #
-# A second rule drops any reply the user said nothing in. GitHub wraps a single
+# A second rule drops any post the user said nothing in. GitHub wraps a single
 # inline comment in a review of its own, with an empty body, whenever anyone
 # comments on one line. That includes the caller replying to the user, whose
 # reply would otherwise come back as the user's. The wrapper says nothing, so it
@@ -51,11 +51,6 @@
 # the user approved or requested changes on says something in its verdict, so it
 # stays even with an empty body. Any other bodiless review, such as one GitHub
 # dismissed when a later commit landed, says nothing and goes.
-#
-# One rare misread remains: anything the user writes that carries the footer
-# string itself reads as the caller's own and is dropped. Quoting an earlier
-# caller reply does it, and so does linking to Claude Code. Uncommon on a
-# session's own pull request.
 #
 # Timestamps are ISO-8601 with a trailing Z, which sort correctly as strings, so
 # the cutoff comparison needs no date arithmetic.
@@ -105,17 +100,18 @@ raw=$(gh pr view "$pr" --repo "$repo" --json state,comments,reviews 2>/dev/null)
 inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate --slurp 2>/dev/null) \
   || die "cannot read the inline comments on pull request #$pr in $repo"
 
-# Select the user's new replies and record the newest timestamp among them, so
-# the watermark can advance to it. `max` over an empty array is null, which
-# leaves the watermark unchanged.
+# Select the user's new posts and record the newest timestamp among them, so the
+# watermark can advance to it. `max` over an empty array is null, which leaves
+# the watermark unchanged.
 #
 # Both documents go in on stdin, the pull request first and the inline comment
 # pages second, so neither has to fit in an argument.
 #
-# Each source names its author, its timestamp, and its body differently, and the
-# REST API returns far more than the caller acts on. So each projection converts
-# its source into the one reply shape, and keeps only the fields the caller acts
-# on.
+# Each source names its fields differently. `gh pr view` calls the author
+# `author` and the REST API calls it `user`, and each of the three names its
+# timestamp its own way. The REST API also returns far more than the caller acts
+# on. So each projection converts its source into the one post shape, and keeps
+# only the fields the caller acts on.
 #
 # An inline comment's `line` is null once later commits have moved the line the
 # user wrote it on. So the projection falls back to `original_line`, the line as
@@ -145,11 +141,11 @@ result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
           path, line: (.line // .original_line), id})
     ]
   | map(select(says_something))
-  | sort_by(.createdAt) as $replies
+  | sort_by(.createdAt) as $posts
   | {
       state: $pr.state,
-      replies: $replies,
-      newest: ($replies | map(.createdAt) | max),
+      posts: $posts,
+      newest: ($posts | map(.createdAt) | max),
     }
 ') || die "cannot parse the pull request activity"
 
@@ -159,7 +155,7 @@ if [ -n "$newest" ]; then
     || die "cannot write the watermark file $watermark_file"
 fi
 
-# Emit what the caller acts on: the state, the new replies, and the watermark
-# path for teardown. This drops the internal `newest` field.
+# Emit what the caller acts on: the state, the new posts, and the watermark path
+# for teardown. This drops the internal `newest` field.
 printf '%s' "$result" | jq --arg watermark_file "$watermark_file" \
-  '{state, replies, watermarkFile: $watermark_file}'
+  '{state, posts, watermarkFile: $watermark_file}'
