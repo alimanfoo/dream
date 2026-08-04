@@ -49,8 +49,8 @@ Watch check for pull request #<pr>. Run:
 
 Read the whole JSON result. If `state` is `MERGED` or `CLOSED`, the watch is
 done: tear it down and finish per your session's rules. Otherwise act on
-`replies` per your session's rules. Return to idle when `replies` is empty, since
-nothing is new.
+`replies` per your session's rules. Return to idle when `replies` is empty,
+since nothing is new.
 ```
 
 Note the cron job ID in your turn output. Teardown needs it, and nothing else
@@ -71,9 +71,9 @@ Every reply carries its `kind`, the `createdAt` it was written at, and the
 - A `comment` is on the conversation.
 - A `review` also carries the user's `verdict`, so an approval reaches you even
   when the user left the body empty.
-- An `inlineComment` is on a line of the diff. It carries the `path` and `line`
-  the user wrote it on, which later commits may since have moved, and the `id`
-  of its thread.
+- An `inlineComment` is on a line of the diff, and carries the `path` and `line`
+  the user wrote it on, plus the `id` of its thread. The `line` is the last one
+  when the comment covers a range, and null when it is about the whole file.
 
 The first firing returns everything on the pull request so far. Each later
 firing returns only what is new since the one before. A reply that arrives while
@@ -82,8 +82,10 @@ dropped.
 
 By default, treat each reply as normal turn input and act accordingly.
 
-Reply to an `inlineComment` in its own thread, by its `id`, so your words sit
-with the point they address.
+Reply to an `inlineComment` in its own thread, so your words sit with the point
+they address. Post to the pull request's `comments/<id>/replies` endpoint, using
+the reply's `id`, since a plain PR comment would start a new conversation
+instead.
 
 ## Teardown
 

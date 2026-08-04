@@ -19,23 +19,23 @@
 #
 # The watermark file lives under $HOME so it survives the days a slow reviewer
 # may take, across many cron firings in separate processes. The key is the
-# repository and pull request, so two worktree sessions on the
-# same repository never collide. The script emits its path as `watermarkFile`, so
-# the caller can delete it at teardown without re-deriving the key.
+# repository and pull request, so two worktree sessions on the same repository
+# never collide. The script emits its path as `watermarkFile`, so the caller can
+# delete it at teardown without re-deriving the key.
 #
-# The script reads every place the user writes: the conversation comments and the
-# review bodies, both from `gh pr view`, and the inline comments on the diff,
-# which `gh pr view` does not carry and a second call fetches.
+# The script reads every place the user writes: the conversation comments and
+# the review bodies, both from `gh pr view`, and the inline comments on the
+# diff, which `gh pr view` does not carry and a second call fetches.
 #
 # They come back as one list, `replies`, oldest first. Each reply names its
-# `kind`, so the caller reads the user's words in the order they were written and
-# still knows how to answer each one.
+# `kind`, so the caller reads the user's words in the order they were written,
+# and still knows how to answer each one.
 #
-# One rule picks the user's replies out of the three sources. The session and the
-# user post through the same GitHub account, so the rule reads the body: a reply
+# One rule picks the user's replies out of the three sources. The session and
+# the user post through the same account, so the rule reads the body: a reply
 # is the user's when it comes from that account and its body lacks the Claude
 # Code footer. The caller marks everything it posts with that footer, so its own
-# items drop out.
+# replies drop out.
 #
 # Matching the account also drops anything from another account, a bot or
 # another collaborator, which isn't the user's reply.
@@ -43,18 +43,19 @@
 # So a change to the footer string would break the filter, and the caller's own
 # comments would read back as the user's input.
 #
-# A second rule drops anything the user said nothing in. GitHub wraps a single
-# inline comment in a review of its own, with an empty body and a COMMENTED
-# state, whenever anyone comments on one line. That includes the caller replying
-# to the user, whose reply would otherwise come back as the user's. The wrapper
-# says nothing, so it goes, while the inline comments it wrapped come through on
-# their own. A review the user approved or requested changes on says something in
-# its verdict, so it stays even with an empty body.
+# A second rule drops any reply the user said nothing in. GitHub wraps a single
+# inline comment in a review of its own, with an empty body, whenever anyone
+# comments on one line. That includes the caller replying to the user, whose
+# reply would otherwise come back as the user's. The wrapper says nothing, so it
+# goes, while the inline comments it wrapped come through on their own. A review
+# the user approved or requested changes on says something in its verdict, so it
+# stays even with an empty body. Any other bodiless review, such as one GitHub
+# dismissed when a later commit landed, says nothing and goes.
 #
-# One rare misread remains: a user comment that quotes an earlier caller
-# comment, footer and all, reads as the caller's own and is dropped, until a
-# later comment carries the watermark past it. Uncommon on a session's own pull
-# request.
+# One rare misread remains: anything the user writes that carries the footer
+# string itself reads as the caller's own and is dropped. Quoting an earlier
+# caller reply does it, and so does linking to Claude Code. Uncommon on a
+# session's own pull request.
 #
 # Timestamps are ISO-8601 with a trailing Z, which sort correctly as strings, so
 # the cutoff comparison needs no date arithmetic.
@@ -118,27 +119,28 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 #
 # An inline comment's `line` is null once later commits have moved the line the
 # user wrote it on. So the projection falls back to `original_line`, the line as
-# it stood then, rather than reporting nothing.
+# it stood then, rather than reporting nothing. Both hold the last line when the
+# comment covers a range, and both are null when it is about the whole file.
 result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
   | jq --arg cutoff "$cutoff" --arg footer "$footer" --arg me "$me" '
-  def is_from_user($author; $at):
+  def is_new_from_user($author; $at):
     $author == $me and $at > $cutoff
     and ((.body // "") | contains($footer) | not);
 
   def says_something:
-    .body != "" or (.kind == "review" and .verdict != "COMMENTED");
+    .body != "" or .verdict == "APPROVED" or .verdict == "CHANGES_REQUESTED";
 
   . as $pr
   | (input | add // []) as $inline_comments
   | [ ($pr.comments[]
-       | select(is_from_user(.author.login; .createdAt))
+       | select(is_new_from_user(.author.login; .createdAt))
        | {kind: "comment", createdAt, body: (.body // "")})
     , ($pr.reviews[]
-       | select(is_from_user(.author.login; .submittedAt))
+       | select(is_new_from_user(.author.login; .submittedAt))
        | {kind: "review", createdAt: .submittedAt, body: (.body // ""),
           verdict: .state})
     , ($inline_comments[]
-       | select(is_from_user(.user.login; .created_at))
+       | select(is_new_from_user(.user.login; .created_at))
        | {kind: "inlineComment", createdAt: .created_at, body: (.body // ""),
           path, line: (.line // .original_line), id})
     ]
@@ -157,7 +159,7 @@ if [ -n "$newest" ]; then
     || die "cannot write the watermark file $watermark_file"
 fi
 
-# Emit what the caller acts on: the state, the new replies, and the watermark path
-# for teardown. This drops the internal `newest` field.
+# Emit what the caller acts on: the state, the new replies, and the watermark
+# path for teardown. This drops the internal `newest` field.
 printf '%s' "$result" | jq --arg watermark_file "$watermark_file" \
   '{state, replies, watermarkFile: $watermark_file}'
