@@ -101,10 +101,8 @@ So each standard has one home, shared by all of them. A skill or agent file
 loads a guide rather than restating a rule from it. The
 [/dream:less skill](plugins/dream/skills/less/SKILL.md) is a deliberate
 exception for both guides, since it carries only the bare minimum for changes
-small enough to skip the full guides. Its Coherence and Don't over-build
-sections restate two coherent coding rules instead of loading that guide. Its
-Communication style section inlines two Plain English rules instead of loading
-that guide.
+small enough to skip the full guides. It inlines a subset of rules from the
+coherent coding and plain English guides instead of loading either in full.
 
 Ways the two layers get crossed:
 

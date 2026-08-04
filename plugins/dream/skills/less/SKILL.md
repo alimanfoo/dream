@@ -43,8 +43,8 @@ generalisation, no half-finished extra feature.
 
 ## Communication style
 
-Write in plain English: write to inform, not to impress, and put one idea in
-each sentence.
+Write and speak in plain English. Use common words, not jargon. One idea per
+sentence.
 
 Write each paragraph on a single line in a PR description or comment, since
 GitHub reflows it (see
