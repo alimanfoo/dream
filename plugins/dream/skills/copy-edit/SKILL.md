@@ -56,5 +56,5 @@ Read the arguments the user gives.
    reason and meet the rule another way.
 5. Report the number of findings addressed this round. Name each finding you set
    aside when you combined them, and give the reason in one sentence.
-6. If the review returned no findings, or you have reached the cap, stop.
+6. If you made no edits this round, or you have reached the cap, stop.
 7. Otherwise, start the next round.
