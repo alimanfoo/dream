@@ -118,6 +118,7 @@ plugins/:
         Issue validator:
           Read the project:
           Read the issue:
+          Search for an issue that covers the same ground:
           Read the code:
           Answer the questions in order:
           Confirm each answer before you write it:
@@ -379,7 +380,7 @@ plugins/:
             Resolve the label:
             List the issues:
             Launch the validators:
-            Read the comments together:
+            Compare the comments:
             Copy-edit the comments:
             Post each comment and remove the label:
       watcher/:

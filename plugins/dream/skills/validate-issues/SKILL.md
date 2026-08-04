@@ -46,10 +46,10 @@ Write each issue's number and title in your turn output, so the user sees the
 scale of the work before it starts. Stop and say so when nothing carries the
 label.
 
-Then read the repository's slug once, with `gh repo view --json nameWithOwner`.
-Every subagent needs it.
-
 ## Launch the validators
+
+Read the repository's slug once, with `gh repo view --json nameWithOwner`. Every
+subagent needs it.
 
 Spawn the `dream:issue-validator` subagent once per issue, via the Agent tool,
 all in one message so they run in parallel. Give each one the repository slug,
@@ -64,7 +64,7 @@ Once the subagents are running, go idle: end your turn and let their comments
 land. They arrive on their own when each subagent finishes. Don't sleep. Don't
 poll for progress. Don't write that you are waiting.
 
-## Read the comments together
+## Compare the comments
 
 Go idle again after each comment, until every validator you launched is in, in
 every batch. They land one subagent at a time.
@@ -72,19 +72,19 @@ every batch. They land one subagent at a time.
 Don't check a comment's answers again. Each comment arrives confirmed: the
 validator checked its answers against what it read, and says what it read.
 
-Then read the comments together. A validator sees only its own issue, so it
-can't tell when two of the issues ask for the same change, or when two
-recommendations pull the same design different ways. Say so in both comments
-when you find such a pair. Write each paragraph you add on a single line, since
-GitHub reflows it (see
+Then read the comments against each other. A validator reads the other issues
+but none of the other comments, so only you see two recommendations that clash:
+a pair that would close each other as duplicates, or that pull the same design
+different ways. Add a sentence to both comments when you find such a pair. Write
+it on a single line, since GitHub reflows it (see
 [Text for GitHub](../../plain-english.md#text-for-github)).
 
 ## Copy-edit the comments
 
 Write each comment to its own temporary file outside this repository, so the
-working tree stays clean. Then run the `/dream:copy-edit` skill over those
-files, naming them as the target. Without a target it reviews the branch's diff
-instead.
+working tree stays clean. Then run the `/dream:copy-edit` skill once, giving it
+every one of those files as the target. Without a target it reviews the branch's
+diff instead.
 
 ## Post each comment and remove the label
 

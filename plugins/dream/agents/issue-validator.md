@@ -36,6 +36,17 @@ gh api repos/<owner>/<repo>/issues/<issue>/sub_issues
 
 A sub-issue carries part of the same request.
 
+## Search for an issue that covers the same ground
+
+Search the tracker for another issue on the same surface, open or closed:
+
+```bash
+gh issue list --repo <owner/repo> --state all --search "<terms>"
+```
+
+Read the ones that look close. An issue another one already covers is not valid,
+and you cannot tell without looking.
+
 ## Read the code
 
 Read the code the issue names, and the code around it. An issue can sit for a
@@ -55,8 +66,8 @@ may already be done.
 Stop at the first no, and recommend closing the issue.
 
 When all four answers are yes, weigh the pros and cons of implementing the issue
-against dropping it. Recommend implementing only when the pros outweigh the
-cons. Recommend closing otherwise.
+against closing it. Recommend implementing only when the pros outweigh the cons.
+Recommend closing otherwise.
 
 ## Confirm each answer before you write it
 
