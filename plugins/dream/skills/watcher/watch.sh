@@ -18,17 +18,16 @@
 # separate baseline or init step.
 #
 # The watermark file lives under $HOME so it survives the days a slow reviewer
-# may take, across many cron firings in separate processes. It is keyed by the
-# repository and pull request, so two worktree sessions on the same repository
-# never collide. The script emits its path as `watermarkFile`, so the caller can
-# delete it at teardown without re-deriving the key.
+# may take, across many cron firings in separate processes. The key is the
+# repository and pull request, so two worktree sessions on the
+# same repository never collide. The script emits its path as `watermarkFile`, so
+# the caller can delete it at teardown without re-deriving the key.
 #
-# The user writes in three places, so the script reads three sources: the
-# conversation comments and the review bodies, both from `gh pr view`, and the
-# inline comments on the diff, which `gh pr view` does not carry and a second
-# call fetches.
+# The script reads every place the user writes: the conversation comments and the
+# review bodies, both from `gh pr view`, and the inline comments on the diff,
+# which `gh pr view` does not carry and a second call fetches.
 #
-# One rule picks the user's items out of all three. The session and the user
+# One rule picks the user's items out of all of them. The session and the user
 # post through the same GitHub account, so the rule reads the body: an item is
 # the user's when it comes from that account, has a body, and that body lacks
 # the Claude Code footer. The caller marks everything it posts with that footer,
@@ -37,8 +36,8 @@
 # Matching the account also drops anything from another account, a bot or
 # another collaborator, which isn't the user's reply.
 #
-# The footer string is therefore essential: a change to it would break the
-# filter, and the caller's own comments would read back as the user's input.
+# So a change to the footer string would break the filter, and the caller's own
+# comments would read back as the user's input.
 #
 # Requiring a body is what drops the review GitHub wraps around a single inline
 # comment. GitHub creates such a review whenever anyone comments on one line,
@@ -82,7 +81,7 @@ me=$(gh api user --jq .login 2>/dev/null) \
   || die "cannot read the authenticated GitHub account"
 
 # The watermark file, keyed by repository and pull request. The repository name
-# stays a real path segment (owner/name), rather than being flattened, so two
+# stays a real path segment (owner/name), rather than flattening it, so two
 # repositories never collide: acme-corp/api and acme/corp-api are distinct
 # paths, not one shared key. A nameWithOwner holds exactly one slash and neither
 # half can be "..", so the path never escapes the directory.
@@ -109,9 +108,11 @@ inline=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate --slurp
 #
 # An inline comment comes from the REST API, which returns far more than the
 # caller acts on, so the filter keeps only the fields it needs: the body, where
-# it sits, and the id to reply to it by. Its `line` is null once later commits
-# have moved the line it was written on, so the filter falls back to the line it
-# was written on, rather than reporting nothing.
+# it sits, and the id to reply to it by.
+#
+# Its `line` is null once later commits have moved the line the user wrote it on.
+# So the filter falls back to `original_line`, the line as it stood then, rather
+# than reporting nothing.
 result=$(printf '%s\n%s\n' "$raw" "$inline" \
   | jq --arg cutoff "$cutoff" --arg footer "$footer" --arg me "$me" '
   def from_user($author; $at):
@@ -142,6 +143,6 @@ if [ -n "$newest" ]; then
 fi
 
 # Emit what the caller acts on: the state, the new items, and the watermark path
-# for teardown. The internal `newest` field is dropped.
+# for teardown. This drops the internal `newest` field.
 printf '%s' "$result" | jq --arg watermark_file "$watermark_file" \
   '{state, comments, reviews, inlineComments, watermarkFile: $watermark_file}'

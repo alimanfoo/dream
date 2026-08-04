@@ -416,9 +416,9 @@ Read `state` first. `MERGED` and `CLOSED` are terminal, so tear
   already closed, so post the closing record and end.
 
 Otherwise the PR is still open, so act on what the watch surfaced: the user's
-new replies, as one combined batch. Every channel carries the same intents
-below. An item can carry more than one. Act on all of them, in this order, and
-drop nothing:
+new replies, as one combined batch. The channel a reply came through makes no
+difference to how you read it. An item can carry more than one of these intents.
+Act on all of them, in this order, and drop nothing:
 
 1. **Feedback** is the user's review. Triage it and make a task for each
    accepted point, as in

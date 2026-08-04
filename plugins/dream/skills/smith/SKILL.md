@@ -251,10 +251,10 @@ The watch you started when the PR opened surfaces the user's replies as they
 arrive. Act on each, whether it answers a question that you raised mid-session
 or reviews the PR once it is ready.
 
-Read the PR `state` that the watch reports first. When `state` is `MERGED`, tear
-the watch down and continue to the [collect step](#collect). When `state` is
-`CLOSED`, tear the watch down, post a comment naming where the work stopped,
-then end the session.
+Read the PR `state` that the watch reports, before you act on anything else.
+When `state` is `MERGED`, tear the watch down and continue to the
+[collect step](#collect). When `state` is `CLOSED`, tear the watch down, post a
+comment naming where the work stopped, then end the session.
 
 Otherwise, act on the items that the watch surfaced, oldest first. An item can
 carry more than one of these:

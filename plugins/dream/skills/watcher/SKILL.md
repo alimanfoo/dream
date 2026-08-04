@@ -1,7 +1,7 @@
 ---
 name: watcher
 description:
-  Watch a pull request for the user's replies, and surface each new one to the
+  Watch a pull request for the user's replies. Surface each new one to the
   session. Use only when explicitly invoked.
 argument-hint: "<pr> [interval]"
 ---
@@ -12,9 +12,11 @@ Watch a pull request for the user's replies. This is how a session receives
 input from the user via GitHub rather than in the session itself.
 
 The watch is one recurring background check for the whole session. It starts
-when you invoke this skill and runs until the pull request merges or closes, or
-you tear it down. Each check returns whatever the user has written since the
-last one, so you see every reply exactly once, whenever it arrives.
+when you invoke this skill. It runs until the pull request merges or closes, or
+until you tear it down.
+
+Each firing returns whatever the user has written since the last one. So you see
+every reply exactly once, whenever it arrives.
 
 The machinery is a shell script, `watch.sh`, in this skill's directory. It reads
 the pull request and tracks what you have already seen. This skill wraps it into
@@ -47,8 +49,8 @@ Watch check for pull request #<pr>. Run:
 
 Read the whole JSON result. If `state` is `MERGED` or `CLOSED`, the watch is
 done: tear it down and finish per your session's rules. Otherwise act on
-`comments`, `reviews`, and `inlineComments` per your session's rules. When all
-three are empty, nothing is new, so return to idle.
+`comments`, `reviews`, and `inlineComments` per your session's rules. Return to
+idle when all three are empty, since nothing is new.
 ```
 
 Note the cron job ID in your turn output. Teardown needs it, and nothing else
@@ -60,8 +62,8 @@ You do not poll it.
 ## On each firing
 
 The cron prompt runs `watch.sh` and hands you the result. It returns the pull
-request `state`, the `watermarkFile` path that teardown needs, and what the user
-newly wrote, in three arrays:
+request `state` and the `watermarkFile` path that teardown needs. What the user
+newly wrote comes in one array per channel:
 
 - `comments`, what the user wrote on the conversation.
 - `reviews`, the summary the user wrote on each review.
