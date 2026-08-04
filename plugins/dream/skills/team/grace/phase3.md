@@ -3,62 +3,33 @@
 Write every turn output, message and artefact in this phase using
 `/dream:plain-english`.
 
-The goal of this phase is the accepted design. Follow the steps below in
-sequence.
+The goal of this phase is the design. Follow the steps below in sequence.
 
 ## Step 3.1: Produce the design options
 
-Run the `/dream:design` skill, focused on the accepted requirements analysis and
-code analysis. Give it the session input too, so it sources any design steer the
+Run the `/dream:design` skill, focused on the requirements analysis and code
+analysis. Give it the session input too, so it sources any design steer the
 input carries. The requirements analysis leaves that steer out, so this is its
 only route into the design.
 
 The skill returns the design options: the proposed design (its recommendation)
 and any alternative designs, each with its trade-off named.
 
-## Step 3.2: Share the design options with the user
+## Step 3.2: Share the design
 
-Under autopilot, keep this step to one line, then continue in the same turn:
-_"Taking the design as proposed (autopilot). Proceeding to Phase 4: Plan."_
-
-Otherwise, send the design options to the user. Lead with the proposed design,
-your recommendation. Then give each alternative with the trade-off it carries.
-The proposed design is the default if the user just accepts. Ask the user to
-accept: _"Accept the design to proceed to Phase 4: Plan."_
-
-## Step 3.3: Seek user acceptance of the design
-
-Under autopilot, take this gate's default and continue without waiting.
-
-Otherwise, wait for the user's reply.
-
-If the user accepts, continue to
-[Step 3.4](#step-34-send-the-accepted-design-to-junio-and-ralph). If the user
-pushes back, revise and return to
-[Step 3.2](#step-32-share-the-design-options-with-the-user). Repeat until
-accepted.
-
-This is one of the protocol's
-[user acceptance gates](../protocol.md#acceptance-gates).
-
-## Step 3.4: Send the accepted design to Junio and Ralph
+Take the proposed design. It is the skill's recommendation, weighed against the
+alternatives it names.
 
 Write the following to a temporary file outside this repo, via Bash:
 
-- the accepted design (the option the user picked, plus any changes from the
-  acceptance discussion)
-- every alternative design, so both the chosen design and the alternatives are
-  available when posting to the PR
+- the design you took
+- every alternative design, under an "Alternatives considered" heading, so the
+  record shows what was weighed and not chosen. When there was no alternative
+  design, omit the heading.
 
-Send Junio and Ralph the file's absolute path: two `SendMessage` calls in the
-same turn, for information only.
+Then:
 
-## Step 3.5: Post the accepted design to the PR
-
-Post the accepted design to the PR from the file written in
-[Step 3.4](#step-34-send-the-accepted-design-to-junio-and-ralph) (see
-[Writing to GitHub](../../../agents/Grace.md#writing-to-github)).
-
-Make the body the design the user accepted. Put every alternative design under
-an "Alternatives considered" heading: the designs weighed and not chosen. When
-there was no alternative design, omit the heading.
+- **Send it to Junio and Ralph.** Give them the file's absolute path: two
+  `SendMessage` calls in the same turn, for information only.
+- **Post it to the PR** from that same file, per
+  [Writing to GitHub](../../../agents/Grace.md#writing-to-github).

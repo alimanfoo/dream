@@ -12,7 +12,7 @@ Before the per-task loop runs, one setup step.
 
 ### Step 5.1: Create the shared task list
 
-Create the task list from the accepted plan, one `TaskCreate` call per task.
+Create the task list from the plan, one `TaskCreate` call per task.
 
 ## Per-task workflow
 
@@ -60,14 +60,14 @@ Once the task delivers, mark it complete (`TaskUpdate status=completed`).
 
 ### Step 5.5: Request the audit
 
-Ask Junio for the coherence audit only for a task from the accepted plan. A task
-added to the list after [Step 5.1](#step-51-create-the-shared-task-list) is a
-follow-on, and no follow-on is audited, however many one audit generates. For a
-follow-on, go straight to [Step 5.7](#step-57-loop).
+Ask Junio for the coherence audit only for a task from the plan. A task added to
+the list after [Step 5.1](#step-51-create-the-shared-task-list) is a follow-on,
+and no follow-on is audited, however many one audit generates. For a follow-on,
+go straight to [Step 5.7](#step-57-loop).
 
-When you need to check which one a task is, read it against the accepted plan.
-Step 5.1 creates one task per plan task, ahead of any other, so a follow-on
-always carries a higher task number.
+When you need to check which one a task is, read it against the plan. Step 5.1
+creates one task per plan task, ahead of any other, so a follow-on always
+carries a higher task number.
 
 Send Junio every commit SHA on the task, in order, closing with
 `Reply via SendMessage.` Wait for his numbered list (or "no substantive
@@ -92,7 +92,7 @@ If a finding proposes a docstring, comment, or section-header to express a
 contract, invariant, precondition, or convention, apply the
 [code-shape-first check](../../../agents/Grace.md#code-shape-first-check) to it.
 
-When the coherence audit raises a **challenge**, assess whether an accepted
+When the coherence audit raises a **challenge**, assess whether a settled
 artifact really no longer holds. If it does, take it to the user (accept or
 reject) following the "challenge" shape. If not, continue triage as normal.
 

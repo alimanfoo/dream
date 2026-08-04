@@ -101,9 +101,9 @@ Then tell the user:
 - that they can watch the loop with `tmux attach -t dreamcatcher`, or follow the
   log with `tail -f dreamcatcher.log`, that `Ctrl+B` then `d` detaches, and that
   `tmux kill-session -t dreamcatcher` stops the loop.
-- that each issue runs in its own tmux session named
-  `dream-GH<n>-<timestamp>-auto`, and that `Ctrl+B` then `s` switches between
-  the loop and every dispatched session, so any of them is one keystroke away.
+- that each issue runs in its own tmux session named `dream-GH<n>-<timestamp>`,
+  and that `Ctrl+B` then `s` switches between the loop and every dispatched
+  session, so any of them is one keystroke away.
 - that tmux sessions stop on reboot, so re-running `/dream:catcher` restarts the
   loop, and that a machine that must survive reboots should run
   `catch.sh --once` from cron or launchd, where each firing runs a single tick.

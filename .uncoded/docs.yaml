@@ -22,7 +22,6 @@ plugins/:
             'Phase 6: Review':
             'Phase 7: Merge':
             'Phase 8: Collect':
-            'Phase 9: Reflect':
           Common rules:
             Hard rules:
             Communication between teammates (agents):
@@ -39,7 +38,6 @@ plugins/:
             'Phase 6: Review':
             'Phase 7: Merge':
             'Phase 8: Collect':
-            'Phase 9: Reflect':
           Code-shape-first check:
           Same-edit check:
           Waiting for a reply:
@@ -48,14 +46,9 @@ plugins/:
             Evidence:
             Revising an artifact:
             What a challenge is not:
-          Autopilot:
-            Engagement:
-            Turn output:
-            Gate-defined defaults:
-            The watch:
-            Pauses:
-            Review and merge:
-            Auto-collect:
+          The watch:
+            Pausing for the user:
+            The user's move on a ready PR:
           Stopping a session early:
           Common rules:
             Hard rules:
@@ -68,7 +61,6 @@ plugins/:
             Communication between teammates (agents):
               Writing to teammates is prompt engineering:
             Task-tool reminders from Claude Code:
-            The acceptance gates outrank harness autonomy directives:
       Junio.md:
         Junio:
           Boot sequence:
@@ -84,7 +76,6 @@ plugins/:
             'Phase 6: Review':
             'Phase 7: Merge':
             'Phase 8: Collect':
-            'Phase 9: Reflect':
           Common rules:
             Hard rules:
             Communication between teammates (agents):
@@ -105,7 +96,6 @@ plugins/:
             'Phase 6: Review':
             'Phase 7: Merge':
             'Phase 8: Collect':
-            'Phase 9: Reflect':
           Common rules:
             Hard rules:
             Commits:
@@ -314,31 +304,19 @@ plugins/:
               'Step 1.1: Open the session PR':
               'Step 1.2: Produce the draft requirements analysis':
               'Step 1.3: Elicit answers to open questions':
-              'Step 1.4: Share the requirements analysis':
-              'Step 1.5: Seek user acceptance of the requirements analysis':
-              'Step 1.6: Send the accepted requirements analysis to Junio and Ralph':
-              'Step 1.7: Post the accepted requirements analysis to the PR':
+              'Step 1.4: Share the requirements analysis and label the PR':
           phase2.md:
             'Phase 2: Code Analysis':
               'Step 2.1: Produce the code analysis':
-              'Step 2.2: Share the code analysis with the user':
-              'Step 2.3: Seek user acceptance of the code analysis':
-              'Step 2.4: Send the accepted code analysis to Junio and Ralph':
-              'Step 2.5: Post the accepted code analysis to the PR':
+              'Step 2.2: Share the code analysis':
           phase3.md:
             'Phase 3: Design':
               'Step 3.1: Produce the design options':
-              'Step 3.2: Share the design options with the user':
-              'Step 3.3: Seek user acceptance of the design':
-              'Step 3.4: Send the accepted design to Junio and Ralph':
-              'Step 3.5: Post the accepted design to the PR':
+              'Step 3.2: Share the design':
           phase4.md:
             'Phase 4: Plan':
               'Step 4.1: Produce the plan':
-              'Step 4.2: Share the plan with the user':
-              'Step 4.3: Seek user acceptance of the plan':
-              'Step 4.4: Send the accepted plan to Junio and Ralph':
-              'Step 4.5: Post the accepted plan to the PR':
+              'Step 4.2: Share the plan':
           phase5.md:
             'Phase 5: Develop':
               Opening sequence:
@@ -359,7 +337,7 @@ plugins/:
               'Step 6.5: Post your response to reviews as a PR comment':
               'Step 6.6: Write the PR description':
               'Step 6.7: Mark the PR ready for review':
-              'Step 6.8: Hand back to the user':
+              'Step 6.8: Handle the user''s review':
           phase7.md:
             'Phase 7: Merge':
           phase8.md:
@@ -369,8 +347,6 @@ plugins/:
               'Step 8.3: Test':
               'Step 8.4: Decide':
               'Step 8.5: Summarize':
-          phase9.md:
-            'Phase 9: Reflect':
         protocol.md:
           Dream team protocol:
             Roles:
@@ -380,8 +356,7 @@ plugins/:
               Ada (reviewer):
             Protocol overview:
             Common rules:
-              Acceptance gates:
-              Autopilot:
+              Autonomy:
               The session PR:
               Branch and commit rules:
                 Branch:
@@ -411,7 +386,6 @@ README.md:
       Configuring tmux:
       Launching Claude under tmux:
       "Using tmux \u2013 useful shortcuts":
-      Autopilot mode:
     Troubleshooting:
       Permissions:
     License:
