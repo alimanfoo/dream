@@ -33,18 +33,18 @@ symbol.
 ## Read what the project is for
 
 Read the project's own docs: the README, `AGENTS.md`, `CLAUDE.md`. They tell you
-what the project is trying to be, which you need to judge whether the issue
-takes it there.
+what the project is trying to be. You need that to judge whether the issue takes
+it there.
 
 Then read the code around the surfaces the issue names, and the code that would
 have to change to satisfy it.
 
 ## Work through the checks
 
-Work through the checks below in order. For each one, write the evidence you
-found, then your answer, before you start the next check. Stop at the first
-check you answer "no", and say which check stopped you. You cannot answer a
-check you never reached.
+Work through these checks in order. For each one, write the evidence you found,
+then your answer, before you start the next check. Stop at the first check you
+answer "no", and say which check stopped you. You cannot answer a check you
+never reached.
 
 1. **Valid.** Check the issue against the code as it stands today. Does the
    problem it describes still happen, or the gap it names still stand open? An
@@ -55,7 +55,7 @@ check you never reached.
 3. **Aligned.** Check the issue against the project's goals. Does it take the
    project where its docs say it is going?
 4. **Coherent.** Check the issue against the design and behaviour already in the
-   code. Does it fit, or does it jar? Name what it would cut across.
+   code. Does it fit, or does it jar? Name what it would contradict.
 5. **Worth it.** Weigh implementing the issue against dropping it. Give the pros
    and the cons of each.
 

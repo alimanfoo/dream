@@ -126,7 +126,7 @@ The README lists the utility skills a user can run on their own. That list is
 their one home. Add a new skill of this kind there. `coherence-review` is one
 such skill.
 
-A skill that fans work out to subagents must check and verify what they return
+A skill that hands work out to subagents must check and verify what they return
 against the code before it acts on the result. `code-review`,
 `coherence-review`, and `validate-issues` each carry this step. Write it into a
 new such skill from the start.

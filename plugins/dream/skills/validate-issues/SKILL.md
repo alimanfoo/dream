@@ -26,10 +26,10 @@ Resolve the label against the repository:
 gh label list --search "<label>"
 ```
 
-A repository's label often carries more than the word you were given, such as a
-trailing emoji, and `gh issue list --label` matches the full name only. Take the
-match as the resolved label. Stop and tell the user if the search finds none.
-Don't sweep with a guess.
+Take the match as the resolved label. A repository's label often carries more
+than the word you were given, such as a trailing emoji, and
+`gh issue list --label` matches the full name only. Stop and tell the user if
+the search finds no match. Don't sweep with a guess.
 
 List the open issues carrying the resolved label:
 
@@ -64,14 +64,15 @@ one, and treat that issue as one you could not judge.
 ## Draft a comment for each issue
 
 Draft each issue's comment in its own file, in a temporary directory outside the
-repository. The drafts belong to this run, not to the repository, so don't
-commit them.
+repository. Don't commit the drafts. They belong to this run, not to the
+repository.
 
 Head each comment `## Validation`. Give a line for each check the investigation
-reached, with its answer and the evidence behind it. Close with the
-recommendation in one sentence, naming the check that stopped it when you
-recommend closing. Keep the whole comment short. The reader is whoever filed the
-issue, so write for someone who was not in this session.
+ran, with its answer and the evidence behind it. Close with the recommendation
+in one sentence, naming the check that stopped it when you recommend closing.
+
+Write for someone who was not in this session. The reader is whoever filed the
+issue. Keep the whole comment short.
 
 Write each paragraph on a single line, since GitHub reflows it (see
 [Text for GitHub](../../plain-english.md#text-for-github)).
@@ -102,7 +103,7 @@ investigation. Clearing it before the comment posts drops the issue out of the
 queue with nothing to show for it.
 
 Leave the label alone for any issue you did not comment on: one you could not
-judge, and one whose comment failed to post or was blocked.
+judge, and one whose comment `gh` failed to post.
 
 Recommend, and stop there. Don't close an issue, however clear the case for it.
 Closing is the user's call.
