@@ -54,8 +54,8 @@ Every subagent needs it.
 Spawn the `dream:issue-validator` subagent once per issue, via the Agent tool,
 all in one message so they run in parallel. Give each one the repository slug,
 the absolute path of this checkout, and the one issue it validates. A subagent
-can't resolve a path relative to its own prompt file. Its own instructions carry
-the method, so brief it with nothing else.
+can't resolve a path relative to its own prompt file. Brief it with nothing
+else, since its own instructions carry the method.
 
 Launch at most eight at a time. Work through a longer list in batches, since
 each validator reads the whole project.
@@ -66,11 +66,11 @@ poll for progress. Don't write that you are waiting.
 
 ## Read the comments together
 
-Comments land one subagent at a time. So go idle again after each, until every
-validator you launched is in, in every batch.
+Go idle again after each comment, until every validator you launched is in, in
+every batch. They land one subagent at a time.
 
-Each comment arrives confirmed. The validator checked its answers against what
-it read, and says what it read. So don't check them again.
+Don't check a comment's answers again. Each comment arrives confirmed: the
+validator checked its answers against what it read, and says what it read.
 
 Then read the comments together. A validator sees only its own issue, so it
 can't tell when two of the issues ask for the same change, or when two

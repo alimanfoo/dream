@@ -34,7 +34,7 @@ Then check whether it has sub-issues, and read each one you find:
 gh api repos/<owner>/<repo>/issues/<issue>/sub_issues
 ```
 
-A sub-issue carries part of the same ask.
+A sub-issue carries part of the same request.
 
 ## Read the code
 
@@ -46,7 +46,7 @@ may already be done.
 ## Answer the questions in order
 
 1. Is the issue valid? A valid issue describes a problem or a gap that is really
-   there, and that no other issue already covers.
+   there. No other issue already covers it.
 2. Is there at least one workable solution? Name why there is none, when you
    find none.
 3. Does the issue fit what the project is for?
@@ -60,8 +60,8 @@ cons. Recommend closing otherwise.
 
 ## Confirm each answer before you write it
 
-Say what you read that establishes each answer. When you cannot point at
-anything, you do not have an answer yet, so go and read.
+Say what you read that establishes each answer. Go back and read more when you
+cannot point at anything. You do not have the answer yet.
 
 Weigh what the issue claims about the code against the code itself. A claim is
 not true because someone wrote it down.
@@ -72,13 +72,13 @@ Write the comment in this order:
 
 - One paragraph per question you answered, in the order you answered them. Each
   says what you read that establishes the answer.
-- A short list of pros and a short list of cons, when you reached the weighing.
-- The recommendation in a final sentence: implement, or close. Name the question
+- A short list of pros and a short list of cons, when you weighed them.
+- A final sentence that recommends implementing or closing. Name the question
   that failed, when you stopped early.
 
 Keep the whole comment brief: one or two sentences per answer. The reader has
-the issue above your comment, so don't quote it back. Don't design the solution
-either. One sentence on the shape of a workable solution is the most you write.
+the issue above your comment, so don't quote it back. Write at most one sentence
+on the shape of a workable solution. Don't design it.
 
 Write each paragraph on a single line, since GitHub reflows it.
 
