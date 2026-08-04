@@ -73,8 +73,8 @@ poll for progress. Don't write that you are waiting.
 Findings land one subagent at a time. So go idle again after each, until every
 subagent you launched is in.
 
-Then combine their findings into one list, dropping duplicates that point at the
-same line or mechanism.
+Then combine their findings into one list. Drop duplicates and resolve
+inconsistencies.
 
 Read the code each finding cites. Keep only the findings you can confirm.
 
