@@ -99,7 +99,11 @@ Two guides sit at the plugin root, not inside any one skill: the
 [coherent coding guide](plugins/dream/coherent-coding.md). The whole plugin
 works to them, the team agents at runtime and the utility skills when invoked.
 So each standard has one home, shared by all of them. A skill or agent file
-loads a guide rather than restating a rule from it.
+loads a guide rather than restating a rule from it. The
+[/dream:less skill](plugins/dream/skills/less/SKILL.md) is a deliberate
+exception for both guides, since it carries only the bare minimum for changes
+small enough to skip the full guides. It inlines a subset of rules from the
+coherent coding and plain English guides instead of loading either in full.
 
 Ways the two layers get crossed:
 
