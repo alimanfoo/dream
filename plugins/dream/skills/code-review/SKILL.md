@@ -64,8 +64,11 @@ poll for progress. Don't write that you are waiting.
 
 ## Combine and verify
 
-Combine their findings into one list, dropping duplicates that point at the same
-line or mechanism.
+Wait for every subagent to finish before you act on any finding. When one
+subagent's findings land while others are still running, go idle again.
+
+Then combine their findings into one list, dropping duplicates that point at the
+same line or mechanism.
 
 Read the code each finding cites. Keep only the findings you can confirm.
 

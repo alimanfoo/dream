@@ -126,19 +126,20 @@ The README lists the utility skills a user can run on their own. That list is
 their one home. Add a new skill of this kind there. `coherence-review` is one
 such skill.
 
-A skill that fans a review out to parallel subagents must combine their findings
-into one list before it returns or applies any of them. No subagent reads
-another's passage or another's findings. So only the skill can drop a duplicate,
-or settle two findings that pull the same site different ways. `code-review`,
-`coherence-review`, and `copy-edit` all carry this step. Give a new such skill
-the same one.
+A skill that fans a review out to parallel subagents must wait for every one of
+them, then combine their findings into one list before it returns or applies any
+of them. Findings land one subagent at a time, and no subagent reads another's
+passage or another's findings. So only the skill, and only once every subagent
+is in, can drop a duplicate or settle two findings that pull the same site
+different ways. `code-review`, `coherence-review`, and `copy-edit` all carry
+this step. Give a new such skill the same one.
 
-Each of those skills checks its findings too, in one place only. The lens
+Each of those skills confirms its findings too, in one place only. The lens
 subagents of `code-review` and `coherence-review` don't confirm a finding. So
-both skills check each one against the code themselves. The `dream:copy-editor`
-subagent does confirm each finding before it returns it. So `copy-edit` leaves
-the check to it. Pick one of those two homes for a new such skill. Don't put the
-check in both.
+both skills confirm each one against the code themselves. The
+`dream:copy-editor` subagent does confirm each finding before it returns it. So
+`copy-edit` confirms nothing itself. Pick one of those two homes for a new such
+skill. Don't pick both.
 
 A skill that spawns subagents must also tell the agent to go idle while they
 run, rather than sleep, poll, or narrate the wait. `code-review`,

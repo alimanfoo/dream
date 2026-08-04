@@ -48,13 +48,13 @@ Read the arguments the user gives.
    subagent's findings land while others are still running, go idle again. Then
    combine the findings into one list. Each subagent judged its own passage
    alone, so you are the only reader who sees them all. Drop duplicates that
-   point at the same span. When two findings pull one span different ways,
-   choose one. When a fix would word one passage differently from another that
-   says the same thing, word both the same way.
+   point at the same span. When two findings pull one span different ways, keep
+   one and drop the other. When a fix would word one passage differently from
+   another that says the same thing, word both the same way.
 4. Resolve every finding on the combined list. You are the author. Make each
    edit yourself and keep the meaning. When a fix would drop a reason, keep the
    reason and meet the rule another way.
-5. Report the number of findings resolved this round. Name each finding you set
-   aside when you combined them, and give the reason in one sentence.
+5. Report the number of findings resolved this round. Name each finding you
+   dropped when you combined them, and give the reason in one sentence.
 6. If you made no edits this round, or you have reached the cap, stop.
 7. Otherwise, start the next round.
