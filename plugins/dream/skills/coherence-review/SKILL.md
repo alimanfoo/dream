@@ -70,8 +70,8 @@ poll for progress. Don't write that you are waiting.
 
 ## Combine and verify
 
-Wait for every subagent to finish before you act on any finding. When one
-subagent's findings land while others are still running, go idle again.
+Findings land one subagent at a time. So go idle again after each, until every
+subagent you launched is in.
 
 Then combine their findings into one list, dropping duplicates that point at the
 same line or mechanism.

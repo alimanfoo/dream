@@ -44,17 +44,17 @@ Read the arguments the user gives.
    running, go idle: end your turn and let their findings land. They arrive on
    their own when each subagent finishes. Don't sleep. Don't poll for progress.
    Don't write that you are waiting.
-3. Wait for every subagent to finish before you act on any finding. When one
-   subagent's findings land while others are still running, go idle again. Then
-   combine the findings into one list. Each subagent judged its own passage
-   alone, so you are the only reader who sees them all. Drop duplicates that
-   point at the same span. When two findings pull one span different ways, keep
-   one and drop the other. When a fix would word one passage differently from
-   another that says the same thing, word both the same way.
+3. Findings land one subagent at a time, so go idle again after each until every
+   subagent you launched is in. Then combine the findings into one list. Each
+   subagent judged its own passage alone, so you are the only reader who sees
+   them all. Drop duplicates that point at the same span. When two findings pull
+   one span different ways, keep one and drop the other. When a fix would word
+   one passage differently from another that says the same thing, word both the
+   same way. Write the combined list in your turn output, and give the reason in
+   one sentence for each finding you dropped.
 4. Resolve every finding on the combined list. You are the author. Make each
    edit yourself and keep the meaning. When a fix would drop a reason, keep the
    reason and meet the rule another way.
-5. Report the number of findings resolved this round. Name each finding you
-   dropped when you combined them, and give the reason in one sentence.
+5. Report the number of findings resolved this round.
 6. If you made no edits this round, or you have reached the cap, stop.
 7. Otherwise, start the next round.
