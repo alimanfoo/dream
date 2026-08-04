@@ -402,7 +402,10 @@ plugins/:
             Find the labelled issues:
             Validate each issue:
             Verify each recommendation:
-            Report what you found:
+            Draft a comment for each issue:
+            Copy-edit the drafts:
+            Post each comment and clear the label:
+            Report what you did:
       watcher/:
         SKILL.md:
           Watcher:

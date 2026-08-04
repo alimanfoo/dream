@@ -61,8 +61,54 @@ Make the call yourself when dropping an unconfirmed claim changes the
 recommendation. Set the recommendation aside when what is left cannot support
 one, and treat that issue as one you could not judge.
 
-## Report what you found
+## Draft a comment for each issue
 
-Report each issue in your turn output: its number, its recommendation, and the
-check that stopped it when you recommend closing. Name separately any issue you
+Draft each issue's comment in its own file, in a temporary directory outside the
+repository. The drafts belong to this run, not to the repository, so don't
+commit them.
+
+Head each comment `## Validation`. Give a line for each check the investigation
+reached, with its answer and the evidence behind it. Close with the
+recommendation in one sentence, naming the check that stopped it when you
+recommend closing. Keep the whole comment short. The reader is whoever filed the
+issue, so write for someone who was not in this session.
+
+Write each paragraph on a single line, since GitHub reflows it (see
+[Text for GitHub](../../plain-english.md#text-for-github)).
+
+End each comment with the Claude Code footer, which marks it as agent-authored:
+
+> 🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+## Copy-edit the drafts
+
+Run the `/dream:copy-edit` skill over the draft files, giving it their absolute
+paths.
+
+Then post what the copy-edited files hold, word for word. Don't reword a comment
+on its way to GitHub, or the copy-edit buys you nothing.
+
+## Post each comment and clear the label
+
+Post an issue's comment, then take the label off that issue:
+
+```bash
+gh issue comment <number> --body-file <draft file>
+gh issue edit <number> --remove-label "<resolved label>"
+```
+
+Hold that order. The label is what marks the issue as still owed an
+investigation. Clearing it before the comment posts drops the issue out of the
+queue with nothing to show for it.
+
+Leave the label alone for any issue you did not comment on: one you could not
+judge, and one whose comment failed to post or was blocked.
+
+Recommend, and stop there. Don't close an issue, however clear the case for it.
+Closing is the user's call.
+
+## Report what you did
+
+Report each issue in your turn output: its number, its recommendation, and
+whether its comment posted and its label came off. Name separately any issue you
 could not judge.
