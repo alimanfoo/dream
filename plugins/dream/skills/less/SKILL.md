@@ -63,7 +63,8 @@ End every commit with the `Co-Authored-By` trailer:
 Co-Authored-By: Claude <claude@anthropic.com>
 ```
 
-End every PR body and comment with the Claude Code footer:
+End every PR body and comment with the Claude Code footer, a reply on a line of
+the diff included:
 
 > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
@@ -201,7 +202,7 @@ carry more than one of these:
 - **An answer to a question that you raised.** Fold it into the work in hand and
   carry on.
 
-An approving review, or a comment with nothing to act on, needs no reply.
+An approval, or anything with nothing to act on, needs no reply.
 
 Once the PR is ready and you have nothing left to do, go idle and let the watch
 wake you when the user replies. Idling is not ending: the watch is your only

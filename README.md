@@ -268,16 +268,16 @@ reminder to re-engage autopilot afterwards to resume full autonomy.
 
 Once the PR is ready, Grace keeps watching it and carries it through:
 
-- a review with feedback sends her back to revise
-- a review asking to resolve conflicts has her update the branch so it can merge
-- a review asking to defer the merge sends her to the collect stage, leaving the
-  PR open for you to merge later
+- feedback sends her back to revise
+- a request to resolve conflicts has her update the branch so it can merge
+- a request to defer the merge sends her to the collect stage, leaving the PR
+  open for you to merge later
 - a merge sends her on to the collect stage
 - a close without a merge ends the session as declined
 
-Give your feedback as a PR review. She watches for reviews, not plain PR
-comments. You can also give it in the session, but the PR alone is enough to
-steer the whole session.
+Give your feedback on the PR, however suits you: a review, a plain comment, or a
+note on a line of the diff all reach her. You can also give it in the session,
+but the PR alone is enough to steer the whole session.
 
 The collect stage still waits for your approval by default. Turn on auto-collect
 separately to let it run unattended, filing or commenting on issues without

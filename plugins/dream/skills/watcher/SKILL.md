@@ -49,8 +49,8 @@ Watch check for pull request #<pr>. Run:
 
 Read the whole JSON result. If `state` is `MERGED` or `CLOSED`, the watch is
 done: tear it down and finish per your session's rules. Otherwise act on
-`comments`, `reviews`, and `inlineComments` per your session's rules. Return to
-idle when all three are empty, since nothing is new.
+`replies` per your session's rules. Return to idle when `replies` is empty, since
+nothing is new.
 ```
 
 Note the cron job ID in your turn output. Teardown needs it, and nothing else
@@ -62,27 +62,28 @@ You do not poll it.
 ## On each firing
 
 The cron prompt runs `watch.sh` and hands you the result. It returns the pull
-request `state` and the `watermarkFile` path that teardown needs. What the user
-newly wrote comes in one array per channel:
+request `state`, the `watermarkFile` path that teardown needs, and `replies`,
+what the user newly wrote, oldest first.
 
-- `comments`, what the user wrote on the conversation.
-- `reviews`, the summary the user wrote on each review.
-- `inlineComments`, what the user wrote on a line of the diff. Each one carries
-  its `path`, `line`, `body`, and `id`.
+Every reply carries its `kind`, the `createdAt` it was written at, and the
+`body` the user wrote. The `kind` says where it came from:
+
+- A `comment` is on the conversation.
+- A `review` also carries the user's `verdict`, so an approval reaches you even
+  when the user left the body empty.
+- An `inlineComment` is on a line of the diff. It carries the `path` and `line`
+  the user wrote it on, which later commits may since have moved, and the `id`
+  of its thread.
 
 The first firing returns everything on the pull request so far. Each later
 firing returns only what is new since the one before. A reply that arrives while
 you are still handling an earlier batch surfaces on the next firing, never
 dropped.
 
-By default, treat each item as normal turn input and act accordingly.
+By default, treat each reply as normal turn input and act accordingly.
 
-Answer an inline comment in its own thread, by its `id`, so your reply sits with
-the point it answers:
-
-```bash
-gh api repos/{owner}/{repo}/pulls/<pr>/comments/<id>/replies -f body='...'
-```
+Reply to an `inlineComment` in its own thread, by its `id`, so your words sit
+with the point they address.
 
 ## Teardown
 

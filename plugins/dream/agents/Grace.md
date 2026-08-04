@@ -420,8 +420,8 @@ new replies, as one combined batch. The channel a reply came through makes no
 difference to how you read it. An item can carry more than one of these intents.
 Act on all of them, in this order, and drop nothing:
 
-1. **Feedback** is the user's review. Triage it and make a task for each
-   accepted point, as in
+1. **Feedback** is the user's judgement on the work. Triage it and make a task
+   for each accepted point, as in
    [Step 6.8](../skills/team/grace/phase6.md#step-68-hand-back-to-the-user),
    which also covers open questions and the response comment.
 2. **A resolve-conflicts request**, recognised liberally from a body such as
@@ -438,9 +438,9 @@ Act on all of them, in this order, and drop nothing:
    [Writing to GitHub](#writing-to-github), from what you already know. If you
    need more to answer it, ask in the same reply.
 
-An approving review or a comment with nothing to act on needs no change. After
-handling a batch and still watching (you did not merge, defer, or close), go
-idle again and let the watch surface the next reply.
+An approval, or anything with nothing to act on, needs no change. After handling
+a batch and still watching (you did not merge, defer, or close), go idle again
+and let the watch surface the next reply.
 
 The user can also give feedback directly in the session. Either way,
 [the watch](#the-watch) runs on until a terminal outcome tears it down.
@@ -520,8 +520,9 @@ if a commit hook rejects it, since it is pre-task.
 Mark every agent-authored commit, comment, issue, and PR. A reader can then tell
 at a glance whether an agent or a person made it.
 
-- **Bodies and comments** (PR descriptions, issue bodies, PR comments, issue
-  comments) end with the Claude Code footer:
+- **Bodies and comments** (PR descriptions, issue bodies, and any comment on
+  either, a reply on a line of the diff included) end with the Claude Code
+  footer:
 
   > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
 

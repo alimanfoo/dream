@@ -27,11 +27,15 @@
 # review bodies, both from `gh pr view`, and the inline comments on the diff,
 # which `gh pr view` does not carry and a second call fetches.
 #
-# One rule picks the user's items out of all of them. The session and the user
-# post through the same GitHub account, so the rule reads the body: an item is
-# the user's when it comes from that account, has a body, and that body lacks
-# the Claude Code footer. The caller marks everything it posts with that footer,
-# so its own items drop out.
+# They come back as one list, `replies`, oldest first. Each reply names its
+# `kind`, so the caller reads the user's words in the order they were written and
+# still knows how to answer each one.
+#
+# One rule picks the user's replies out of the three sources. The session and the
+# user post through the same GitHub account, so the rule reads the body: a reply
+# is the user's when it comes from that account and its body lacks the Claude
+# Code footer. The caller marks everything it posts with that footer, so its own
+# items drop out.
 #
 # Matching the account also drops anything from another account, a bot or
 # another collaborator, which isn't the user's reply.
@@ -39,12 +43,13 @@
 # So a change to the footer string would break the filter, and the caller's own
 # comments would read back as the user's input.
 #
-# Requiring a body is what drops the review GitHub wraps around a single inline
-# comment. GitHub creates such a review whenever anyone comments on one line,
-# the caller replying to the user included, and gives it an empty body. Nothing
-# is lost: the review's content is its inline comments, which come through as
-# their own items, and a review with no body of its own carries nothing to act
-# on.
+# A second rule drops anything the user said nothing in. GitHub wraps a single
+# inline comment in a review of its own, with an empty body and a COMMENTED
+# state, whenever anyone comments on one line. That includes the caller replying
+# to the user, whose reply would otherwise come back as the user's. The wrapper
+# says nothing, so it goes, while the inline comments it wrapped come through on
+# their own. A review the user approved or requested changes on says something in
+# its verdict, so it stays even with an empty body.
 #
 # One rare misread remains: a user comment that quotes an earlier caller
 # comment, footer and all, reads as the caller's own and is dropped, until a
@@ -96,43 +101,53 @@ raw=$(gh pr view "$pr" --repo "$repo" --json state,comments,reviews 2>/dev/null)
 
 # The inline comments, which `gh pr view` does not carry. `--slurp` returns one
 # array per page, which the filter joins back into one list.
-inline=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate --slurp 2>/dev/null) \
+inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate --slurp 2>/dev/null) \
   || die "cannot read the inline comments on pull request #$pr in $repo"
 
-# Select the user's new items and record the newest timestamp among them, so the
-# watermark can advance to it. `max` over an empty array is null, which leaves
-# the watermark unchanged.
+# Select the user's new replies and record the newest timestamp among them, so
+# the watermark can advance to it. `max` over an empty array is null, which
+# leaves the watermark unchanged.
 #
 # Both documents go in on stdin, the pull request first and the inline comment
 # pages second, so neither has to fit in an argument.
 #
-# An inline comment comes from the REST API, which returns far more than the
-# caller acts on, so the filter keeps only the fields it needs: the body, where
-# it sits, and the id to reply to it by.
+# Each source names its author, its timestamp, and its body differently, and the
+# REST API returns far more than the caller acts on. So each projection converts
+# its source into the one reply shape, and keeps only the fields the caller acts
+# on.
 #
-# Its `line` is null once later commits have moved the line the user wrote it on.
-# So the filter falls back to `original_line`, the line as it stood then, rather
-# than reporting nothing.
-result=$(printf '%s\n%s\n' "$raw" "$inline" \
+# An inline comment's `line` is null once later commits have moved the line the
+# user wrote it on. So the projection falls back to `original_line`, the line as
+# it stood then, rather than reporting nothing.
+result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
   | jq --arg cutoff "$cutoff" --arg footer "$footer" --arg me "$me" '
-  def from_user($author; $at):
-    select($author == $me and $at > $cutoff
-           and (.body // "") != "" and (.body | contains($footer) | not));
+  def is_from_user($author; $at):
+    $author == $me and $at > $cutoff
+    and ((.body // "") | contains($footer) | not);
+
+  def says_something:
+    .body != "" or (.kind == "review" and .verdict != "COMMENTED");
 
   . as $pr
-  | (input | add // []) as $inline
-  | ($pr.comments | map(from_user(.author.login; .createdAt))) as $comments
-  | ($pr.reviews | map(from_user(.author.login; .submittedAt))) as $reviews
-  | ($inline
-     | map(from_user(.user.login; .created_at)
-           | {id, path, line: (.line // .original_line), body,
-              createdAt: .created_at})) as $inline_comments
+  | (input | add // []) as $inline_comments
+  | [ ($pr.comments[]
+       | select(is_from_user(.author.login; .createdAt))
+       | {kind: "comment", createdAt, body: (.body // "")})
+    , ($pr.reviews[]
+       | select(is_from_user(.author.login; .submittedAt))
+       | {kind: "review", createdAt: .submittedAt, body: (.body // ""),
+          verdict: .state})
+    , ($inline_comments[]
+       | select(is_from_user(.user.login; .created_at))
+       | {kind: "inlineComment", createdAt: .created_at, body: (.body // ""),
+          path, line: (.line // .original_line), id})
+    ]
+  | map(select(says_something))
+  | sort_by(.createdAt) as $replies
   | {
       state: $pr.state,
-      comments: $comments,
-      reviews: $reviews,
-      inlineComments: $inline_comments,
-      newest: ([$comments[].createdAt, $reviews[].submittedAt, $inline_comments[].createdAt] | max),
+      replies: $replies,
+      newest: ($replies | map(.createdAt) | max),
     }
 ') || die "cannot parse the pull request activity"
 
@@ -142,7 +157,7 @@ if [ -n "$newest" ]; then
     || die "cannot write the watermark file $watermark_file"
 fi
 
-# Emit what the caller acts on: the state, the new items, and the watermark path
+# Emit what the caller acts on: the state, the new replies, and the watermark path
 # for teardown. This drops the internal `newest` field.
 printf '%s' "$result" | jq --arg watermark_file "$watermark_file" \
-  '{state, comments, reviews, inlineComments, watermarkFile: $watermark_file}'
+  '{state, replies, watermarkFile: $watermark_file}'
