@@ -47,8 +47,8 @@ Watch check for pull request #<pr>. Run:
 
 Read the whole JSON result. If `state` is `MERGED` or `CLOSED`, the watch is
 done: tear it down and finish per your session's rules. Otherwise act on
-`comments` and `reviews` per your session's rules. When both are empty, nothing
-is new, so return to idle.
+`comments`, `reviews`, and `inlineComments` per your session's rules. When all
+three are empty, nothing is new, so return to idle.
 ```
 
 Note the cron job ID in your turn output. Teardown needs it, and nothing else
@@ -59,17 +59,28 @@ You do not poll it.
 
 ## On each firing
 
-The cron prompt runs `watch.sh` and hands you the result. The script returns the
-pull request `state`, the user's new `comments` and `reviews`, and the
-`watermarkFile` path that teardown needs.
+The cron prompt runs `watch.sh` and hands you the result. It returns the pull
+request `state`, the `watermarkFile` path that teardown needs, and what the user
+newly wrote, in three arrays:
+
+- `comments`, what the user wrote on the conversation.
+- `reviews`, the summary the user wrote on each review.
+- `inlineComments`, what the user wrote on a line of the diff. Each one carries
+  its `path`, `line`, `body`, and `id`.
 
 The first firing returns everything on the pull request so far. Each later
 firing returns only what is new since the one before. A reply that arrives while
 you are still handling an earlier batch surfaces on the next firing, never
 dropped.
 
-By default, treat each user comment or review as normal turn input and act
-accordingly.
+By default, treat each item as normal turn input and act accordingly.
+
+Answer an inline comment in its own thread, by its `id`, so your reply sits with
+the point it answers:
+
+```bash
+gh api repos/{owner}/{repo}/pulls/<pr>/comments/<id>/replies -f body='...'
+```
 
 ## Teardown
 
