@@ -42,9 +42,10 @@ List the open issues carrying the label you resolved:
 gh issue list --label "<resolved label>" --limit 100
 ```
 
-Write each issue's number and title in your turn output, so the user sees the
-scale of the work before it starts. Stop and say so when nothing carries the
-label.
+Write the label you resolved, and each issue's number and title, in your turn
+output. The user then sees which label you took and how many issues it reaches,
+before anything is posted. Stop and say so when nothing carries the label. Say
+so too when the list fills the limit, since there may be more behind it.
 
 ## Launch the validators
 
@@ -57,17 +58,14 @@ the absolute path of this checkout, and the one issue it validates. A subagent
 can't resolve a path relative to its own prompt file. Brief it with nothing
 else, since its own instructions carry the method.
 
-Launch at most eight at a time. Work through a longer list in batches, since
-each validator reads the whole project.
-
 Once the subagents are running, go idle: end your turn and let their comments
 land. They arrive on their own when each subagent finishes. Don't sleep. Don't
 poll for progress. Don't write that you are waiting.
 
 ## Compare the comments
 
-Go idle again after each comment, until every validator you launched is in, in
-every batch. They land one subagent at a time.
+Go idle again after each comment, until every validator you launched is in. They
+land one subagent at a time.
 
 Don't check a comment's answers again. Each comment arrives confirmed: the
 validator checked its answers against what it read, and says what it read.
@@ -82,9 +80,9 @@ it on a single line, since GitHub reflows it (see
 ## Copy-edit the comments
 
 Write each comment to its own temporary file outside this repository, so the
-working tree stays clean. Then run the `/dream:copy-edit` skill once, giving it
-every one of those files as the target. Without a target it reviews the branch's
-diff instead.
+working tree stays clean. Then run the `/dream:copy-edit` skill over each file
+in turn, naming that file as the target. It takes one target, and without one it
+reviews the branch's diff instead.
 
 ## Post each comment and remove the label
 

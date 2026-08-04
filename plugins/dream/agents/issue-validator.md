@@ -45,14 +45,16 @@ gh issue list --repo <owner/repo> --state all --search "<terms>"
 ```
 
 Read the ones that look close. An issue another one already covers is not valid,
-and you cannot tell without looking.
+and you cannot tell without looking. Try more than one wording, since a
+duplicate filed in different words won't match your first search.
 
 ## Read the code
 
 Read the code the issue names, and the code around it. An issue can sit for a
 while before anyone validates it, so what it says about the code may no longer
 be true. A symbol it names may be renamed, a file may have moved, or the work
-may already be done.
+may already be done. Search for a surface you cannot find at the place the issue
+puts it, and read it where it went.
 
 ## Answer the questions in order
 
@@ -63,19 +65,24 @@ may already be done.
 3. Does the issue fit what the project is for?
 4. Does it cohere with the design and behaviour already there, or does it jar?
 
+Answer no when what you read doesn't settle a question, and say what would
+settle it. An unsettled question is not a yes.
+
 Stop at the first no, and recommend closing the issue.
 
 When all four answers are yes, weigh the pros and cons of implementing the issue
-against closing it. Recommend implementing only when the pros outweigh the cons.
-Recommend closing otherwise.
+against closing it. The cons carry what the work costs after it lands: the
+machinery to keep, the complexity it adds, and the work it pushes aside.
+Recommend implementing only when the pros outweigh the cons. Recommend closing
+otherwise.
 
 ## Confirm each answer before you write it
 
 Say what you read that establishes each answer. Go back and read more when you
 cannot point at anything. You do not have the answer yet.
 
-Weigh what the issue claims about the code against the code itself. A claim is
-not true because someone wrote it down.
+Weigh what the issue claims against what you read. A claim is not true because
+someone wrote it down.
 
 ## Write the comment
 
@@ -84,12 +91,13 @@ Write the comment in this order:
 - One paragraph per question you answered, in the order you answered them. Each
   says what you read that establishes the answer.
 - A short list of pros and a short list of cons, when you weighed them.
-- A final sentence that recommends implementing or closing. Name the question
-  that failed, when you stopped early.
+- A final sentence that recommends implementing or closing. Name what failed,
+  when you stopped early.
 
 Keep the whole comment brief: one or two sentences per answer. The reader has
 the issue above your comment, so don't quote it back. Write at most one sentence
-on the shape of a workable solution. Don't design it.
+on the shape of a workable solution. The cap is on what you write, not on what
+you work out: take the solution far enough to see that it holds.
 
 Write each paragraph on a single line, since GitHub reflows it.
 
