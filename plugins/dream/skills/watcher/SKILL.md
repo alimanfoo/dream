@@ -28,10 +28,10 @@ Code footer:
 > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
 The watch tells your own comments from the user's by that footer, and drops any
-comment that carries it. Without it, your own posts read back as the user's
-input, and the watch surfaces them to you as replies to act on. A comment is the
-only channel that this applies to. You post no reviews, so the watch takes every
-review as the user's.
+comment that carries it. Without it, your own words read back as the user's
+input, and the watch surfaces them to you as fresh instructions to act on. This
+covers a reply to an inline comment on the diff as much as a comment on the
+conversation.
 
 ## Set up the watch
 
