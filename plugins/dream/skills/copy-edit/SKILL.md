@@ -18,9 +18,9 @@ the standard you rewrite the prose toward.
 Read the arguments the user gives.
 
 - A number sets the cap on rounds. Without it, use one.
-- Anything else names a target: a git range, a file, a section, or a passage to
-  review. Without a target, review the whole branch against `origin/main`
-  (`origin/main...HEAD`).
+- Anything else names a target: a git range, one or more files, a section, or a
+  passage to review. Without a target, review the whole branch against
+  `origin/main` (`origin/main...HEAD`).
 
 ## Each round
 

@@ -59,8 +59,8 @@ never reached.
    problem it describes still happen, or the gap it names still stand open? An
    issue filed a while back may already be fixed, or may name a surface that has
    since moved.
-2. **Workable.** Name at least one solution that would work. If none would, say
-   what blocks every route you tried.
+2. **Workable.** Is there at least one solution that would work? Name it. If
+   none would, say what blocks every route you tried.
 3. **Aligned.** Check the issue against the project's goals. Does it take the
    project where its docs say it is going?
 4. **Coherent.** Check the issue against the design and behaviour already in the
@@ -79,6 +79,8 @@ name the check that stopped you.
 Report your answers, your evidence, and your recommendation as your final
 message.
 
+- Name the check each answer belongs to. Whoever briefed you reports a line per
+  check, and cannot tell your answers apart without it.
 - Keep each answer to a sentence or two.
 - Cite what establishes each answer: a file and line, an issue number, or a
   command you ran.

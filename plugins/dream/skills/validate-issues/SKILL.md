@@ -28,8 +28,10 @@ gh label list --search "<label>"
 
 Take the match as the resolved label. A repository's label often carries more
 than the word you were given, such as a trailing emoji, and
-`gh issue list --label` matches the full name only. Stop and tell the user if
-the search finds no match. Don't sweep with a guess.
+`gh issue list --label` matches the full name only. Don't sweep with a guess.
+Stop and tell the user when the search finds no match, and ask which one to
+sweep when it finds several. The search reads each label's description too, so a
+word can match a label that has nothing to do with it.
 
 List the open issues carrying the resolved label:
 
@@ -57,12 +59,14 @@ its own, and its recommendation drives a call to close real work.
 
 Make the call yourself when dropping an unconfirmed claim changes the
 recommendation. Set the recommendation aside when what is left cannot support
-one, and treat that issue as one you could not judge.
+one, and treat that issue as one you could not judge. An issue whose subagent
+returned nothing is one you could not judge too.
 
 ## Draft a comment for each issue
 
-Draft each issue's comment in its own file, in a temporary directory outside the
-repository. Don't commit the drafts. They belong to this run, not to the
+Draft a comment for each issue you could judge, each in its own file, in a
+temporary directory outside the repository. Draft nothing for an issue you could
+not judge. Don't commit the drafts. They belong to this run, not to the
 repository.
 
 Head each comment `## Validation`. Give a line for each check the investigation
@@ -70,7 +74,8 @@ ran, with its answer and the evidence behind it. Close with the recommendation
 in one sentence, naming the check that stopped it when you recommend closing.
 
 Write for someone who was not in this session. The reader is whoever filed the
-issue. Keep the whole comment short.
+issue, and has never seen the checks, so say what each one asked in plain words
+rather than giving its name alone. Keep the whole comment short.
 
 Write each paragraph on a single line, since GitHub reflows it (see
 [Text for GitHub](../../plain-english.md#text-for-github)).
@@ -109,5 +114,6 @@ Closing is the user's call.
 ## Report what you did
 
 Report each issue in your turn output: its number, its recommendation, and
-whether its comment posted and its label came off. Name separately any issue you
-could not judge.
+whether its comment posted and its label came off. Say where your own reading
+changed the recommendation the subagent returned, and what changed it. Name
+separately any issue you could not judge.
