@@ -124,6 +124,13 @@ plugins/:
           Write the record to a temporary file:
           Write your findings, rule by rule:
           Return only confirmed findings:
+      issue-validator.md:
+        Issue validator:
+          Read the issue:
+          Read what the project is for:
+          Work through the checks:
+          Recommend:
+          Reporting:
     coherent-coding.md:
       Coherent coding guide:
         Golden rule:
