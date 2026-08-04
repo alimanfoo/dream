@@ -156,9 +156,8 @@ enhancement. Re-decide the rest as `drop` in the table, with the reason
 Draft the exact issue or comment text for every row that isn't a plain `drop`.
 Write the drafts to a temporary file outside the repo.
 
-Then run the `/dream:copy-edit` skill over that file. Issue drafts run dense,
-and a second pass against the Plain English guide catches what writing them the
-first time misses.
+Then run the `/dream:copy-edit` skill over that file. A second pass against the
+Plain English guide catches what writing the drafts the first time missed.
 
 File the drafts. Never file text the copy-edited file doesn't hold.
 
@@ -193,7 +192,7 @@ the comment. Capture each comment's URL when you post it in Step 8.4, so it's
 ready to use here. Skip a plain `drop`, since it produced nothing to link. Skip
 the summary comment entirely if every candidate dropped.
 
-The session's work ends here. Tell the user so in one line, and that they can
-wind the team down from the main session (`/exit`).
-
 Post it per [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
+
+The session's work ends there. Tell the user so in one line, and that they can
+wind the team down from the main session (`/exit`).

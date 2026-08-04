@@ -245,9 +245,8 @@ Revising the artifact is ordinary work: return to the phase that owns it and
 follow the protocol as normal from there. Re-read that phase's instruction file
 (`grace/phase<N>.md`) before re-running its steps. A challenge suppresses the
 phase marker that normally cues the load, and you've likely run past that phase
-since. Revise and re-settle the artifact through that phase's usual flow. The
-work downstream then reshapes to match: keep what still stands, redo what the
-revision changes.
+since. Revise the artifact through that phase's usual flow. The work downstream
+then reshapes to match: keep what still stands, redo what the revision changes.
 
 The downstream reshape includes the PR, which has been open since Phase 1. Write
 the revised artifact to a new temporary file, per

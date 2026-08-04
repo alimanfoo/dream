@@ -45,9 +45,9 @@
 #
 # Layout: the coordinator assumes the standard worktree layout, where each
 # dispatched worktree is a sibling of the main checkout under a directory
-# dedicated to this repo. It creates them as <container>/GH<n>-<timestamp>-auto.
-# The timestamp makes each attempt unique, so a retry never collides with an
-# earlier attempt's branch or pull request.
+# dedicated to this repo. It creates them as <container>/GH<n>-<timestamp>. The
+# timestamp makes each attempt unique, so a retry never collides with an earlier
+# attempt's branch or pull request.
 
 set -uo pipefail
 
@@ -162,17 +162,17 @@ repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) || die "
 
 # --- one tick --------------------------------------------------------------
 
-# A worktree or branch this coordinator created, named GH<n>-<timestamp>-auto.
-# The pattern is anchored to that exact shape, so cleanup never removes a
-# worktree a human happens to name with an "auto" token.
-is_auto_branch() { [[ "$1" =~ ^GH[0-9]+-[0-9]{8}-[0-9]{6}-auto$ ]]; }
+# A worktree or branch this coordinator created, named GH<n>-<timestamp>. The
+# pattern is anchored to that exact shape, so cleanup never removes a worktree a
+# human named after the same issue.
+is_session_branch() { [[ "$1" =~ ^GH[0-9]+-[0-9]{8}-[0-9]{6}$ ]]; }
 
 # The path of every worktree of this repo, one per line. sed, not awk, keeps a
 # path that contains a space intact.
 worktree_paths() { git -C "$main_root" worktree list --porcelain | sed -n 's/^worktree //p'; }
 
-# The branch of every live dispatched session, one per line: an "-auto" worktree
-# for this repo whose tmux session is still running. A crashed session's tmux
+# The branch of every live dispatched session, one per line: a dispatched
+# worktree for this repo whose tmux session is still running. A crashed session's tmux
 # session is gone. It drops out here. That is why it never wedges the slot or
 # fills the cap. The slot gate and the cap gate both count off this one
 # definition of a live session.
@@ -181,7 +181,7 @@ live_sessions() {
   while read -r wt; do
     [ -n "$wt" ] || continue
     branch=$(basename "$wt")
-    is_auto_branch "$branch" || continue
+    is_session_branch "$branch" || continue
     tmux has-session -t "dream-$branch" 2>/dev/null || continue
     printf '%s\n' "$branch"
   done < <(worktree_paths)
@@ -231,7 +231,7 @@ at_session_cap() {
 already_handled() {
   local n=$1 count
   count=$(gh pr list --repo "$repo" --state all --limit 500 --json headRefName,state 2>/dev/null \
-    | jq -r --arg n "$n" '[.[] | select(.headRefName | test("^GH" + $n + "(-.*)?-auto$")) | select(.state == "OPEN" or .state == "MERGED")] | length' 2>/dev/null)
+    | jq -r --arg n "$n" '[.[] | select(.headRefName | test("^GH" + $n + "-[0-9]{8}-[0-9]{6}$")) | select(.state == "OPEN" or .state == "MERGED")] | length' 2>/dev/null)
   [ -n "$count" ] || return 0
   [ "$count" -ne 0 ]
 }
@@ -295,7 +295,7 @@ clean_up_finished() {
   while read -r wt; do
     [ -n "$wt" ] || continue
     branch=$(basename "$wt")
-    is_auto_branch "$branch" || continue
+    is_session_branch "$branch" || continue
     done_at=$(gh pr list --repo "$repo" --head "$branch" --state all --json state,mergedAt,closedAt \
       --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED") | (.mergedAt // .closedAt)] | map(select(.)) | sort | last // empty' \
       2>/dev/null)
@@ -310,11 +310,10 @@ clean_up_finished() {
 }
 
 # Create the worktree and launch a session for it in a detached tmux session.
-# The branch name carries the issue number and the auto token. A dispatched
-# session reads the issue number at boot to take the issue as its input. The auto
-# token marks the branch as this script's. The timestamp between them makes the
-# name unique per attempt, so a retry never collides with an earlier attempt's
-# branch or pull request.
+# The branch name carries the issue number and a timestamp. A dispatched session
+# reads the issue number at boot to take the issue as its input. The timestamp
+# makes the name unique per attempt, so a retry never collides with an earlier
+# attempt's branch or pull request.
 #
 # `git worktree add` creates the worktree, not `claude -w`. That lands it at a
 # predictable sibling path, with a branch name the cap, cleanup, and dedup checks
@@ -332,7 +331,7 @@ clean_up_finished() {
 dispatch() {
   local n=$1 skill=$2 ts branch wt session err writes run
   ts=$(date -u +%Y%m%d-%H%M%S)
-  branch="GH${n}-${ts}-auto"
+  branch="GH${n}-${ts}"
   wt="$container/${branch}"
   session="dream-${branch}"
   log "dispatching GH${n} ($skill) as $branch"
