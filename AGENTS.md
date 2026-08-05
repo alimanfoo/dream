@@ -145,6 +145,22 @@ and it names no phase, step or artefact to them. A change that makes it more
 thorough at the cost of feeling like a form is the wrong trade. Judge an edit to
 it by what the user experiences, not by what the skill covers.
 
+`/dream:spark`'s body is written in the user's voice, as if the user typed it:
+"ask me", "send me five and I'll answer the first and the last". Every other
+skill addresses the agent the way a spec does. This one is the setup typing the
+user would otherwise do, so it opens the conversation rather than describing
+one. An agent continues the register it is handed, and this is the strongest
+lever on that register. Don't normalise it back to the third person. Its
+frontmatter `description` stays third person, since the harness reads that to
+pick the skill.
+
+Keep the verb first even so, and put the "I" in the reason rather than in a
+hedge before it: "Don't flatter me. It's noise", not "I'd prefer it if you
+didn't flatter me." A polite request reads as a soft preference, and the agent
+treats it as one. This is how the user's voice and the
+[Plain English guide](plugins/dream/plain-english.md)'s instruction shape hold
+together.
+
 A skill that fans a review out to parallel subagents must wait for every one of
 them, then combine their findings into one list before it returns or applies any
 finding. Findings land one subagent at a time, and no subagent reads another's
