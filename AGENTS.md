@@ -114,6 +114,37 @@ Ways the two layers get crossed:
   "in a SendMessage to a teammate". Use third-party voice instead: "the
   dream-team agents", "the team surfaces…", "to another agent".
 
+## Two hosts
+
+The plugin installs under Claude Code and under Codex. Write every skill and
+agent file so both can follow it.
+
+What each host gives you differs in three ways that matter:
+
+- **Codex has no scheduler.** There is no `CronCreate`, so
+  [/dream:watcher](plugins/dream/skills/watcher/SKILL.md) runs under Claude Code
+  alone. `/dream:smith` and `/dream:less` depend on it to pick up the user's
+  review, so they do too.
+- **Codex has no registry of named agents.** It spawns a subagent from a prompt,
+  so the files in `plugins/dream/agents` reach it only as a path to read. A
+  `dream:foo` subagent type resolves under Claude Code and nowhere else.
+- **Codex knows the same `dream:foo` skill names.** It namespaces a plugin's
+  skills by the plugin name, just as Claude Code does. Only the leading slash is
+  Claude Code's.
+
+`/dream:catcher` launches `claude` itself, and `/dream:team` needs the agent
+teams feature, so both are Claude Code only.
+
+The plugin manifest has one home, `plugins/dream/.codex-plugin/plugin.json`, and
+`plugins/dream/.claude-plugin/plugin.json` is a relative symlink to it. Both
+hosts then read the same bytes, so the version cannot drift. Don't invert the
+two: Codex's installer drops a symlink, and Claude Code's follows one, so the
+real file has to sit where Codex looks. `claude plugin validate` warns that it
+ignores the `interface` block Codex needs, and still passes.
+
+The marketplace has one home too, `.claude-plugin/marketplace.json`. Codex reads
+that file when a repo carries no `.agents/plugins/marketplace.json` of its own.
+
 ## Development notes
 
 `protocol.md` is the source of truth for shared session flow and cross-agent

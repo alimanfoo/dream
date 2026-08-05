@@ -1,7 +1,7 @@
 # dream
 
-A Claude Code plugin for delivering great code and keeping the codebase
-coherent, with minimal human input.
+A plugin for delivering great code and keeping the codebase coherent, with
+minimal human input. It installs under Claude Code and under Codex.
 
 `/dream:team` runs a multi-agent team on a task. `/dream:smith` runs a single
 agent on a smaller task. `/dream:less` runs a cut-back single agent on a very
@@ -23,11 +23,30 @@ The plugin works best with the `gh` command line tool available. This lets the
 team interact with GitHub, for example opening a pull request and posting
 issues.
 
+## What runs under Codex
+
+The utility skills run under Codex as they do under Claude Code. Name one the
+same way you name any Codex skill, for example `$dream:code-review`.
+
+The session skills need Claude Code. `/dream:smith` and `/dream:less` watch the
+pull request for your review, and that watch runs on Claude Code's scheduler,
+which Codex has no equivalent of. `/dream:catcher` launches `claude` itself.
+`/dream:team` needs the agent teams feature.
+
 ## Installation
+
+Under Claude Code:
 
 ```text
 /plugin marketplace add alimanfoo/dream
 /plugin install dream@dream
+```
+
+Under Codex:
+
+```bash
+codex plugin marketplace add alimanfoo/dream
+codex plugin add dream@dream
 ```
 
 ## Coherent development with /dream:team
