@@ -417,13 +417,12 @@ Mark every agent-authored commit, comment, issue, and PR. A reader can then tell
 at a glance whether an agent or a person made it.
 
 - **Bodies and comments** (PR descriptions, issue bodies, and any comment on
-  either, a reply on a line of the diff included) end with the Claude Code
-  footer:
+  either, a reply on a line of the diff included) end with the dream footer:
 
-  > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
+  > `🤖 Generated with [dream](https://github.com/alimanfoo/dream)`
 
 - **Commits** carry the `Co-Authored-By` trailer (see "Branch and commit
-  operations") but not the Claude Code footer.
+  operations") but not the dream footer.
 
 - **Titles** (PR titles, commit subjects, issue titles) state the change itself.
   They carry no agent-author prefix (for example `[claude]` or `[dream]`). The

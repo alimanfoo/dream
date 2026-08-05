@@ -178,7 +178,7 @@ imperative. Add a body sentence on the _why_ only when the subject doesn't carry
 it. End with the `Co-Authored-By` trailer:
 
 ```text
-Co-Authored-By: Claude <claude@anthropic.com>
+Co-Authored-By: dream <noreply@github.com>
 ```
 
 ### Communication between teammates (agents)

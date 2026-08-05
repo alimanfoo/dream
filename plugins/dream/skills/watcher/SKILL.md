@@ -24,10 +24,10 @@ the recurring check and tells you how to act on each result.
 
 ## The footer precondition
 
-Mark every comment that you post to the watched pull request with the Claude
-Code footer:
+Mark every comment that you post to the watched pull request with the dream
+footer:
 
-> 🤖 Generated with [Claude Code](https://claude.com/claude-code)
+> 🤖 Generated with [dream](https://github.com/alimanfoo/dream)
 
 The watch tells your own comments from the user's by that footer, and drops any
 comment that carries it. Without it, your own words read back as the user's

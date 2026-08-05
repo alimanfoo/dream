@@ -78,8 +78,8 @@ clean review still has to reach her. Only `SendMessage` reaches Grace, not turn
 output. Add nothing to it, and drop nothing from it. Grace posts it as a PR
 comment, so follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
-Do not include the Claude Code footer. Grace adds GitHub-visible footer metadata
-when posting.
+Do not include the dream footer. Grace adds GitHub-visible footer metadata when
+posting.
 
 ### Phase 7: Merge
 

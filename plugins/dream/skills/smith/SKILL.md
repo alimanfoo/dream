@@ -54,13 +54,13 @@ tokens.
 End every commit with the `Co-Authored-By` trailer:
 
 ```text
-Co-Authored-By: Claude <claude@anthropic.com>
+Co-Authored-By: dream <noreply@github.com>
 ```
 
-End every PR body and comment with the Claude Code footer, a reply on a line of
-the diff included:
+End every PR body and comment with the dream footer, a reply on a line of the
+diff included:
 
-> 🤖 Generated with [Claude Code](https://claude.com/claude-code)
+> 🤖 Generated with [dream](https://github.com/alimanfoo/dream)
 
 This lets a reader tell quickly which items are agent-authored.
 
