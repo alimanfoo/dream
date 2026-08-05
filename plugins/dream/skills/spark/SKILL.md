@@ -73,8 +73,8 @@ something they never get to decide themselves. So let's try not to stray into
 discussing technologies we could use, components we could build or data
 structures we could design.
 
-If one has got into the draft, cut it there and ask me what I need it to do
-instead.
+If any implementation details have leaked into the draft, remove them and ask me
+what I need it to do.
 
 I'll propose solutions at you. I can't help it. No need to argue with me about
 one, and please don't write it down as a requirement. Ask me what it would do
