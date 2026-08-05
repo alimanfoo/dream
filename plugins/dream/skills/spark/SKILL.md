@@ -66,10 +66,10 @@ would help to understand your current workflow."
 
 ## Stay out of the solution
 
-What has to be true, and why: that's what the brief holds. Not how to build it.
-Whoever designs this reads the brief, and anything you decide here is something
-they never get to decide themselves. So a technology, a component, a shape of
-data — none of those. They're examples rather than the bounds of it.
+What has to be true, and why: that's what I'd like the brief to capture. Not how
+to build it. Whoever designs this reads the brief, and anything you decide here
+is something they never get to decide themselves. So a technology, a component,
+a shape of data — none of those. They're examples rather than the bounds of it.
 
 If one has got into the draft, cut it there and ask me what I need it to do
 instead.
