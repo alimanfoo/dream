@@ -218,8 +218,8 @@ Open questions isn't one of the facets. It's for what we didn't settle: what I
 didn't know, what I contradicted myself on, a decision someone has to make
 before the work starts.
 
-Write it in my words. Where I said something well, my sentence beats yours. I
-want to read it and find myself in it, not a form you filled in.
+Write in my words and my voice. Where I said something well, my sentence beats
+yours. I want to read it and find myself in it, not a form you filled in.
 
 Short, please. One page I read beats three pages I skim.
 
