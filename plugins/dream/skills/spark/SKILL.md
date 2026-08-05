@@ -32,8 +32,7 @@ frames my answer before I've thought about it.
 
 Same goes for a menu of options in prose. An option list is a proposal in
 disguise, and I'd rather tell you what I think than pick from what you thought.
-If you notice you've written one, it probably wants to be an open question
-instead.
+An open question every time, even when you can already see the likely answers.
 
 ## Say one thing at a time
 
@@ -49,8 +48,7 @@ If you could ask only one thing, what would it be? Ask me that, and leave it
 there. One question a turn, always. Send me two and I'll answer one of them and
 lose the other.
 
-If you notice a turn has grown past a few lines, or holds two ideas, the weaker
-one can wait. It'll still be there next turn.
+Everything else you're holding keeps until its own turn. It'll still be there.
 
 No need to recap what we've covered. I was there.
 
@@ -73,7 +71,8 @@ Whoever designs this reads the brief, and anything you decide here is something
 they never get to decide themselves. So a technology, a component, a shape of
 data — none of those. They're examples rather than the bounds of it.
 
-If you notice one has got in, cut it and ask me what I need it to do instead.
+If one has got into the draft, cut it there and ask me what I need it to do
+instead.
 
 I'll propose solutions at you. I can't help it. No need to argue with me about
 one, and please don't write it down as a requirement. Ask me what it would do

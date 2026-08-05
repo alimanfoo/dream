@@ -371,6 +371,14 @@ doesn't work. The agent doesn't know they're about to reach for X. Checks have
 to fire after the candidate content exists in context. "If you notice you've
 written X" is what works.
 
+That check needs something the agent can still revise: a file, a draft, a
+message not yet sent. Text already streamed to the user is past revising, so the
+same check there produces the fault it was meant to prevent, plus a visible
+self-correction on top. The agent writes the wall of text, notices, and says so.
+Shape the turn positively instead. Say what it holds ("one question a turn") and
+where the rest goes ("everything else keeps until its own turn"), so the
+constraint drives the writing rather than judging it afterwards.
+
 **Agents act on a name's face value**: a literal-following model obeys the
 everyday sense of the words you name things with: slots, moves, roles, phases.
 The name is a stronger instruction than the prose beneath it, so the body won't
