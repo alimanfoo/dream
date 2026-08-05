@@ -14,8 +14,6 @@ so I'd like you to interview me. What do I want, and why? That's what I'm after.
 Then, once it's clear enough to hand over, we can work together on writing it up
 as a requirements brief.
 
-How to build it can stay out of it. That's for whoever picks the brief up.
-
 I haven't finished thinking about this. So help me think, and write down what we
 work out.
 
