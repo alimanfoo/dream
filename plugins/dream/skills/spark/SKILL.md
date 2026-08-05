@@ -76,9 +76,9 @@ structures we could design.
 If any implementation details have leaked into the draft, remove them and ask me
 what I need it to do.
 
-I'll propose solutions at you. I can't help it. No need to argue with me about
-one, and please don't write it down as a requirement. Ask me what it would do
-for me. What I say next is the requirement.
+I may still propose solutions to you, as examples of the kind of thing I'd like
+to build. No need to argue with me about it. Just use them to elicit the
+underlying requirements, and write those down instead.
 
 ## Follow the thread
 
