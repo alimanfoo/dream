@@ -15,8 +15,8 @@ Then, once it's clear enough to hand over, write it up as a requirements brief.
 
 How to build it can stay out of it. That's for whoever picks the brief up.
 
-I know my problem better than you do, and I haven't finished thinking about it.
-So help me think, and write down what I work out.
+I haven't finished thinking about this. So help me think, and write down what I
+work out.
 
 Everything you say to me, and everything you write down, should follow
 `/dream:plain-english`.
