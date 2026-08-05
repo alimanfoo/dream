@@ -234,10 +234,9 @@ so you believe every line, including the ones you invented. Someone who wasn't
 there sees what you can't.
 
 Spawn a `general-purpose` subagent with the Agent tool. Paste in the whole brief
-and my own answers from the conversation, and ask it one thing: you have to
-build this starting tomorrow, so what would you have to ask first? Tell it to
-say so plainly if it could just start, rather than invent questions to have
-something to say.
+and nothing else, and ask it one thing: you have to build this starting
+tomorrow, so what would you have to ask first? Tell it to say so plainly if it
+could just start, rather than invent questions to have something to say.
 
 Once it's running, go idle: end your turn and let its findings land. They arrive
 on their own when it finishes. Don't sleep, don't poll for progress, and don't
