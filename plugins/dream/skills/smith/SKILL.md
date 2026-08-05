@@ -28,8 +28,8 @@ Work autonomously to the end. When you need to decide something, choose the
 coherent option and explain your reasoning in the PR.
 
 If you cannot decide something without the user, post a question as a comment on
-the PR. Assume the user only follows the PR, not this session. Don't use
-`AskUserQuestion` or the chat. The user won't see it, and the session stalls.
+the PR. Assume the user only follows the PR, not this session. Don't ask in the
+session itself. The user won't see it, and the session stalls.
 
 ## Coherence
 
