@@ -146,10 +146,17 @@ The `dream:copy-editor` subagent does confirm each finding before it returns it.
 So `copy-edit` doesn't confirm them again. Pick one of those two homes for a new
 such skill. Don't pick both.
 
-A skill that spawns subagents must also tell the agent to go idle while they
-run, rather than sleep, poll, or narrate the wait. `code-review`,
-`coherence-review`, `copy-edit`, and `smith` each carry that line at the spawn
-site. Give a new one the same line.
+A skill that spawns subagents must also tell the agent to wait while they run,
+rather than sleep, poll, or narrate the wait. `code-review`, `coherence-review`,
+`copy-edit`, and `smith` each carry that line at the spawn site. Give a new one
+the same line.
+
+A spawn site that names one of the plugin's own subagents must also give that
+subagent's file as a fallback. Codex has no registry of named agents, so a
+`dream:foo` subagent type resolves under Claude Code and nowhere else. The
+fallback tells the agent to spawn a plain subagent and hand it the agent file to
+read. `code-review`, `coherence-review`, and `copy-edit` each carry it. Give a
+new one the same.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,

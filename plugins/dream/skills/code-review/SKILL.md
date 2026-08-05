@@ -47,10 +47,13 @@ Choose from these or invent your own. They are examples, not a checklist:
   missing, and what is there but they do not need
 - alignment: compliance with agent instructions (AGENTS.md or CLAUDE.md)
 
-Spawn the `dream:code-review-lens` subagent once per lens, via the Agent tool,
-all in a single message so they run in parallel. Give each the target, as a git
-range like `origin/main...HEAD` or an absolute path, and the one lens it
-applies. A subagent can't resolve a path relative to its own prompt file.
+Spawn the `dream:code-review-lens` subagent once per lens, all in a single
+message so they run in parallel. Where your session has no subagent of that
+name, spawn a plain subagent instead and give it the absolute path to
+[the lens subagent's instructions](../../agents/code-review-lens.md) to read and
+work to. Either way, give each the target, as a git range like
+`origin/main...HEAD` or an absolute path, and the one lens it applies. A
+subagent can't resolve a path relative to its own prompt file.
 
 In inline mode, run the lenses yourself instead of spawning subagents. Read
 [the lens subagent's instructions](../../agents/code-review-lens.md) first and

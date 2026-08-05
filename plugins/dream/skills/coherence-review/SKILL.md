@@ -25,10 +25,12 @@ Read the [coherent coding guide](../../coherent-coding.md). It is the home of
 the disciplines this review checks. The lens subagents can't read it themselves,
 so paste each lens the guide text it needs.
 
-Launch the generic `dream:code-review-lens` subagent via the Agent tool, once
-per lens below, all in one message so they run in parallel. Brief each with the
-target and its guide section or sections, pasting the heading and the text
-beneath it into the briefing.
+Launch the generic `dream:code-review-lens` subagent once per lens below, all in
+one message so they run in parallel. Where your session has no subagent of that
+name, launch a plain subagent instead and give it the absolute path to
+[the lens subagent's instructions](../../agents/code-review-lens.md) to read and
+work to. Brief each with the target and its guide section or sections, pasting
+the heading and the text beneath it into the briefing.
 
 - **Root cause.** The
   [Resolve the root cause](../../coherent-coding.md#resolve-the-root-cause)
