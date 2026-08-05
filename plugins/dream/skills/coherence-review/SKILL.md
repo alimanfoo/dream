@@ -66,13 +66,13 @@ the heading and the text beneath it into the briefing.
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
 
-Once the subagents are running, go idle: end your turn and let their findings
-land. They arrive on their own when each subagent finishes. Don't sleep. Don't
-poll for progress. Don't write that you are waiting.
+Once the subagents are running, wait for their findings. They arrive on their
+own when each subagent finishes. Don't sleep. Don't poll for progress. Don't
+write that you are waiting.
 
 ## Combine and verify
 
-Findings land one subagent at a time. So go idle again after each, until every
+Findings land one subagent at a time. So keep waiting after each, until every
 subagent you launched is in.
 
 Then combine their findings into one list. Drop duplicates and resolve

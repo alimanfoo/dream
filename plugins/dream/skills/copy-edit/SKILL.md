@@ -43,10 +43,10 @@ Read the arguments the user gives.
    the surrounding code to work out who the reader is. For a small passage, give
    one subagent the whole of it. For a large passage, split it by file or
    section. Launch parallel `dream:copy-editor` subagents, one per part. Once
-   the subagents are running, go idle: end your turn and let their findings
-   land. They arrive on their own when each subagent finishes. Don't sleep.
-   Don't poll for progress. Don't write that you are waiting.
-3. Findings land one subagent at a time, so go idle again after each until every
+   the subagents are running, wait for their findings. They arrive on their own
+   when each subagent finishes. Don't sleep. Don't poll for progress. Don't
+   write that you are waiting.
+3. Findings land one subagent at a time, so keep waiting after each until every
    subagent you launched is in. Then combine the findings into one list. Drop
    duplicates and resolve inconsistencies. Write the combined list in your turn
    output.
