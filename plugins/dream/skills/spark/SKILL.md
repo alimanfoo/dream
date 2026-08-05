@@ -69,8 +69,9 @@ would help to understand your current workflow."
 What's the problem we're trying to solve, or the thing we're trying to make
 possible, and why: that's what I'd like the brief to capture. Not how to build
 it. Whoever designs this reads the brief, and anything you decide here is
-something they never get to decide themselves. So a technology, a component, a
-shape of data — none of those. They're examples rather than the bounds of it.
+something they never get to decide themselves. So let's try not to stray into
+discussing technologies we could use, components we could build or data
+structures we could design.
 
 If one has got into the draft, cut it there and ask me what I need it to do
 instead.
