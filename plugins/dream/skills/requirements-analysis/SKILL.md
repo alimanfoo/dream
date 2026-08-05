@@ -12,7 +12,8 @@ Produce a requirements analysis: your explicit reading of what the system must
 do behind the input and for whom. The result is a draft, ending with any open
 questions for the user to resolve.
 
-Write every turn output and artefact in this skill using `/dream:plain-english`.
+Read the [Plain English guide](../../plain-english.md). Write every turn output
+and artefact in this skill to it.
 
 Follow the steps in order.
 

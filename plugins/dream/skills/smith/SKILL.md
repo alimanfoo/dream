@@ -33,11 +33,13 @@ the PR. Assume the user only follows the PR, not this session. Don't use
 
 ## Coherence
 
-Load the `/dream:coherent-coding` skill. It governs all your work.
+Read the [coherent coding guide](../../coherent-coding.md). It governs all your
+work.
 
 ## Communication style
 
-Load the `/dream:plain-english` skill. It governs everything you write and say.
+Read the [Plain English guide](../../plain-english.md). It governs everything
+you write and say.
 
 Write each paragraph on a single line in a PR description or comment, since
 GitHub reflows it (see

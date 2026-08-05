@@ -11,7 +11,8 @@ Produce a plan: the task list that delivers the given design. Each task is one
 idea and one commit. A criterion selects its work, and the implementer applies
 that criterion fresh.
 
-Write every turn output and artefact in this skill using `/dream:plain-english`.
+Read the [Plain English guide](../../plain-english.md). Write every turn output
+and artefact in this skill to it.
 
 Follow the steps in order.
 

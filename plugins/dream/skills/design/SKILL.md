@@ -11,10 +11,11 @@ argument-hint: "<requirements and code analysis | text>"
 Produce design options: the proposed design, your recommendation for what the
 code will look like when the work is done, and any credible alternative designs.
 
-Write every turn output and artefact in this skill using `/dream:plain-english`.
+Read the [Plain English guide](../../plain-english.md). Write every turn output
+and artefact in this skill to it.
 
-Load the `/dream:coherent-coding` skill. It provides guiding principles for the
-design you propose.
+Read the [coherent coding guide](../../coherent-coding.md). It provides guiding
+principles for the design you propose.
 
 Follow the steps in order.
 

@@ -11,7 +11,8 @@ Produce a code analysis: a verifiable read of what the current code does and
 where, with file:line or symbol citations throughout. It stays factual, not a
 proposal.
 
-Write every turn output and artefact in this skill using `/dream:plain-english`.
+Read the [Plain English guide](../../plain-english.md). Write every turn output
+and artefact in this skill to it.
 
 Follow the steps in order.
 
