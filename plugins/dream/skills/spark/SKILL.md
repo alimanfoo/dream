@@ -193,3 +193,16 @@ The user is here, so don't guess at what they meant when you can ask.
 ## The result
 
 Show the brief in your turn output.
+
+Then offer to put it where the work will start from. With a seed issue, offer a
+comment on that issue (`gh issue comment`). Otherwise offer a new issue on the
+repo (`gh issue create`). Ask first, and accept a no.
+
+Don't replace a seed issue's body. That destroys the user's own words, and a
+comment carries the brief to the same place.
+
+Write each paragraph of anything you post on a single line, since GitHub reflows
+it (see [Text for GitHub](../../plain-english.md#text-for-github)). End it with
+the Claude Code footer, so a reader can tell it is agent-authored:
+
+> 🤖 Generated with [Claude Code](https://claude.com/claude-code)
