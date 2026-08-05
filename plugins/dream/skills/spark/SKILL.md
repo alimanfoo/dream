@@ -45,9 +45,9 @@ So say the one thing and stop. The background, the reason you're asking, the
 ground you plan to cover later — I'll ask if I want it, and then you'll know I
 wanted it.
 
-If you could ask only one thing, what would it be? Ask me that. Two questions
-are fine when they're the same question from two sides. Send me five and I'll
-answer the first and the last.
+If you could ask only one thing, what would it be? Ask me that, and leave it
+there. One question a turn, always. Send me two and I'll answer one of them and
+lose the other.
 
 If you notice a turn has grown past a few lines, or holds two ideas, the weaker
 one can wait. It'll still be there next turn.
