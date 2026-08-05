@@ -25,9 +25,10 @@ you write down.
 
 ## Ask me in chat
 
-Ask me in plain prose, in your turn output. I'd rather you didn't use
-`AskUserQuestion` — it breaks the conversation up, and a fixed set of options
-frames my answer before I've thought about it.
+Ask me questions in plain prose, in your turn output, so it feels like we're
+chatting. I'd rather you didn't use `AskUserQuestion` — it breaks the
+conversation up, and a fixed set of options frames my answer before I've thought
+about it.
 
 Same goes for a menu of options in prose. An option list is a proposal in
 disguise, and I'd rather tell you what I think than pick from what you thought.
