@@ -5,9 +5,9 @@ minimal human input. It installs under Claude Code and under Codex.
 
 `/dream:team` runs a multi-agent team on a task. `/dream:smith` runs a single
 agent on a smaller task. `/dream:less` runs a cut-back single agent on a very
-small one. Neither needs the agent teams feature. `/dream:catcher` runs any of
-them unattended across a repository's labelled issues. Utility skills you can
-run on their own ship alongside: `/dream:plain-english`,
+small one. Those two need no agent teams feature. `/dream:catcher` runs any of
+them unattended across a repository's labelled issues. Utility skills ship
+alongside, and you can run each on its own: `/dream:plain-english`,
 `/dream:coherent-coding`, `/dream:copy-edit`, `/dream:code-analysis`,
 `/dream:requirements-analysis`, `/dream:design`, `/dream:plan`,
 `/dream:coherence-review`, `/dream:code-review`, and `/dream:watcher`.
@@ -15,7 +15,7 @@ run on their own ship alongside: `/dream:plain-english`,
 ## Prerequisites
 
 `/dream:team`, and `/dream:catcher` when it dispatches a `/dream:team` session,
-require Claude Code's
+need Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
 `/dream:smith`, `/dream:less`, and the utility skills do not.
 

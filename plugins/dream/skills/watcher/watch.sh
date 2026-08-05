@@ -32,10 +32,10 @@
 # knows how to answer each one.
 #
 # One rule picks the user's posts out of the three sources. The session and the
-# user write through the same account, so the rule reads the body: a post is the
-# user's when it comes from that account and its body carries no footer the
-# caller writes. The caller marks everything it writes with a footer, so its own
-# posts drop out.
+# user write through the same account, so the rule reads the body instead. A
+# post is the user's when it comes from that account and its body carries no
+# footer the caller writes. The caller marks everything it writes with a footer,
+# so its own posts drop out.
 #
 # Matching the account also drops anything from another account, a bot or
 # another collaborator, which the user did not write.
@@ -71,9 +71,9 @@ done
 # footer the plugin appends to comments, set in the agents' and skills' "mark
 # your work" rules. A change there has to change here too, or the filter breaks.
 #
-# The second is the footer the plugin used before it named itself rather than
-# Claude Code. A session that started before that change keeps writing the old
-# footer, because its instructions are already in its context. Matching both
+# The second is the Claude Code footer, which the plugin used before it started
+# signing as itself. A session that started before that change keeps writing the
+# old footer, because its instructions are already in its context. Matching both
 # strings means the filter still drops its posts. Drop the old string once no
 # such session can still be running.
 footers=$(jq -n '["Generated with [dream](", "claude.com/claude-code"]')

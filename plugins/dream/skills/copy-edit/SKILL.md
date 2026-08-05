@@ -31,21 +31,26 @@ Read the arguments the user gives.
    paragraph it holds is whole. The subagent judges only what you hand it, so a
    passage cut mid-paragraph is one it cannot judge. Review prose, not diff
    markup.
-2. Review it with the `dream:copy-editor` subagent. Where your session has no
-   subagent of that name, use a plain subagent and give it the absolute path to
-   [the copy editor's instructions](../../agents/copy-editor.md) to read and
-   work to. Give each subagent the Plain English guide's absolute path in its
-   prompt. A subagent can't resolve a path relative to its own prompt file.
-   Locate each passage exactly: give its absolute path with the line range, or
-   the text inline when it isn't in a file yet. A passage you name only by
-   section costs the subagent a read of the whole file to find. Name who reads
-   the passage, so the subagent judges it for that reader rather than reading
-   the surrounding code to work out who the reader is. For a small passage, give
-   one subagent the whole of it. For a large passage, split it by file or
-   section. Launch parallel `dream:copy-editor` subagents, one per part. Once
-   the subagents are running, wait for their findings. They arrive on their own
-   when each subagent finishes. Don't sleep. Don't poll for progress. Don't
+2. Split the prose into parts, one per subagent. Give one subagent the whole of
+   a small passage. Split a large one by file or section.
+
+   Review each part with the `dream:copy-editor` subagent. Where your session
+   has no subagent of that name, use a plain subagent and give it the absolute
+   path to [the copy editor's instructions](../../agents/copy-editor.md) to read
+   and work to. Launch them all in parallel, one per part.
+
+   Give each subagent the Plain English guide's absolute path in its prompt. A
+   subagent can't resolve a path relative to its own prompt file. Locate its
+   part exactly: give the absolute path with the line range, or the text inline
+   when it isn't in a file yet. A passage you name only by section costs the
+   subagent a read of the whole file to find. Name who reads the passage, so the
+   subagent judges it for that reader rather than reading the surrounding code
+   to work out who the reader is.
+
+   Once the subagents are running, wait for their findings. They arrive on their
+   own when each subagent finishes. Don't sleep. Don't poll for progress. Don't
    write that you are waiting.
+
 3. Findings land one subagent at a time, so keep waiting after each until every
    subagent you launched is in. Then combine the findings into one list. Drop
    duplicates and resolve inconsistencies. Write the combined list in your turn

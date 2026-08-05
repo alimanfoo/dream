@@ -119,7 +119,7 @@ Ways the two layers get crossed:
 The plugin installs under Claude Code and under Codex. Write every skill and
 agent file so both can follow it.
 
-What each host gives you differs in three ways that matter:
+What each host gives you differs in ways that matter:
 
 - **Codex has no scheduler.** There is no `CronCreate`, so
   [/dream:watcher](plugins/dream/skills/watcher/SKILL.md) runs under Claude Code
@@ -132,15 +132,17 @@ What each host gives you differs in three ways that matter:
   skills by the plugin name, just as Claude Code does. Only the leading slash is
   Claude Code's.
 
-`/dream:catcher` launches `claude` itself, and `/dream:team` needs the agent
-teams feature, so both are Claude Code only.
+Two more skills are Claude Code only. `/dream:catcher` launches `claude` itself.
+`/dream:team` needs the agent teams feature.
 
 The plugin manifest has one home, `plugins/dream/.codex-plugin/plugin.json`, and
 `plugins/dream/.claude-plugin/plugin.json` is a relative symlink to it. Both
-hosts then read the same bytes, so the version cannot drift. Don't invert the
-two: Codex's installer drops a symlink, and Claude Code's follows one, so the
-real file has to sit where Codex looks. `claude plugin validate` warns that it
-ignores the `interface` block Codex needs, and still passes.
+hosts then read the same bytes, so the version cannot drift. Keep the real file
+where Codex looks, because Codex's installer drops a symlink and Claude Code's
+follows one.
+
+`claude plugin validate` warns that it ignores the `interface` block Codex
+needs, and still passes.
 
 The marketplace has one home too, `.claude-plugin/marketplace.json`. Codex reads
 that file when a repo carries no `.agents/plugins/marketplace.json` of its own.
@@ -229,10 +231,10 @@ throughout:
   it. Both hosts know that identifier. The slash is Claude Code's prompt syntax,
   so a Codex session would read it as part of the name.
 - Write a skill invocation as `/dream:foo`, a leading slash in backticks, where
-  the text names the command a user types: the README, a banner, these dev
-  notes, and `/dream:catcher`'s account of what each label dispatches. Drop the
-  backticks in a frontmatter `description:` field, a markdown heading, or a
-  fenced command block.
+  the text names the command a user types. That covers the README, a banner,
+  these dev notes, and `/dream:catcher`'s account of what each label dispatches.
+  Drop the backticks in a frontmatter `description:` field, a markdown heading,
+  or a fenced command block.
 - Write a subagent-type identifier as `dream:foo`, since it is not a slash
   command.
 - Write an issue label as "dream:foo".

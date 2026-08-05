@@ -12,7 +12,7 @@
   "interface": {
     "displayName": "dream",
     "shortDescription": "Deliver great code and keep the codebase coherent.",
-    "longDescription": "Skills for coding that holds a codebase together. One agent carries an issue to a pull request on its own. Other skills analyse code, design and plan a change, review it for defects and for coherence, and copy-edit its prose.",
+    "longDescription": "Skills for coding that holds a codebase together. One agent carries an issue to a pull request on its own. Other skills analyse the code you have. They design and plan a change. They review it for defects and for coherence. They copy-edit its prose.",
     "developerName": "Alistair Miles",
     "category": "Productivity",
     "capabilities": ["Interactive", "Read", "Write"],
