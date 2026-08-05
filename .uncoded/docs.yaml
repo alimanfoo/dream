@@ -293,6 +293,16 @@ plugins/:
             Handle what the user posts:
             Merge:
             Collect:
+      spark/:
+        SKILL.md:
+          Spark:
+            Stay out of the solution:
+            Ask in chat:
+            Arguments:
+            Read the seed:
+            Interview the user:
+            Draft the brief:
+            The result:
       team/:
         SKILL.md:
           Dream team:
