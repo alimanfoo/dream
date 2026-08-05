@@ -11,8 +11,8 @@ run on their own ship alongside: `/dream:plain-english`,
 `/dream:coherent-coding`, `/dream:copy-edit`, `/dream:code-analysis`,
 `/dream:spark`, `/dream:requirements-analysis`, `/dream:design`, `/dream:plan`,
 `/dream:coherence-review`, `/dream:code-review`, and `/dream:watcher`. Two of
-those cover requirements: `/dream:spark` interviews you to turn a rough idea
-into a brief, and `/dream:requirements-analysis` works one up on its own from
+those cover requirements. `/dream:spark` interviews you to turn a rough idea
+into a brief. `/dream:requirements-analysis` produces one on its own, from
 material you already wrote.
 
 ## Prerequisites

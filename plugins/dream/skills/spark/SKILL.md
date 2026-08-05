@@ -21,9 +21,9 @@ Follow the steps in order.
 
 ## Stay out of the solution
 
-Write only what must be true and why, never how to build it. The brief serves
-whoever designs the work next, and a design call made here is one they never get
-to make.
+Write only what must be true and why, never how to build it. Whoever designs the
+work next reads this brief. Decide something for them here and they never get to
+decide it themselves.
 
 This rules out naming a technology, a component, or a shape of data. Those are
 examples of the rule, not its bounds.
@@ -34,11 +34,11 @@ it to do instead.
 ## Ask in chat
 
 Ask every question as plain prose in your turn output. Don't use
-`AskUserQuestion`. It breaks the conversation up, and a fixed set of options
+`AskUserQuestion`. It breaks the conversation up. A fixed set of options also
 frames the answer before the user has thought about it.
 
-For the same reason, don't offer the user a menu of options in prose either. An
-option list is a proposal in disguise.
+Don't offer the user a menu of options in prose either. An option list is a
+proposal in disguise.
 
 ## Arguments
 
@@ -48,13 +48,13 @@ its comments. Without an argument, start from what the user says next.
 
 ## Read the seed
 
-Sort what the seed already settles against the five facets of the brief: vision,
+Sort what the seed already settles against the facets of the brief: vision,
 problem, requirements, constraints, and success. Then open the interview by
 saying which facets it covers, and ask only about the gaps. A question the user
 already answered in writing wastes their time and reads as if you didn't look.
 
-When the seed already holds a brief in this format, treat its sections as the
-starting draft. Ask only about what is thin, missing, or out of date.
+Treat the seed's sections as the starting draft when it already holds a brief in
+this format. Ask only about what is thin, missing, or out of date.
 
 ## Interview the user
 
@@ -65,8 +65,7 @@ Work the facets in order: vision, problem, requirements, constraints, success.
 Each rests on the one before.
 
 Ask one to three questions per turn, then stop and wait. A longer list gets a
-partial answer, and the answers to the later questions depend on the earlier
-ones.
+partial answer. The answer to a later question often depends on an earlier one.
 
 After each answer, write one line naming what it settled and which facet it
 lands in. The user can then correct a misread on the spot.
@@ -78,19 +77,18 @@ showed you?"
 Don't discard a solution the user proposes, and don't promote it to a
 requirement. Ask whether they mean it as a boundary the work must respect. If
 they do, it is a constraint. If they don't, it is a steer for whoever designs
-the work, and it belongs nowhere in this brief.
+the work. It belongs nowhere in this brief.
 
 Move on from a facet once you have enough to write its section, or once the user
 says they don't know. Don't press a second time. Keep a note of what they didn't
 know, so the brief can record it.
 
-Say when you have covered all five, and ask the user to confirm before you
+Say when you have covered every facet. Then ask the user to confirm before you
 draft.
 
 ## Draft the brief
 
-Write the brief to a temporary file outside the repo. Never write it into the
-user's repo.
+Write the brief to a temporary file outside the repo.
 
 Use these headings:
 
@@ -132,24 +130,24 @@ which lines to check with the user before building on them.
 ## Check what you inferred
 
 Read the brief back from the file. Take each unmarked item in turn and find the
-thing the user actually said that it rests on. When you can't find one, mark it
-inferred, or cut it if it adds nothing.
+thing the user actually said that it rests on. Mark it inferred when you can't
+find one. Cut it instead if it adds nothing.
 
 Name in your turn output every item you changed. Say so plainly when you changed
 nothing.
 
 ## Launch the lenses
 
-Have fresh subagents attack the draft. You ran the interview, so you already
-believe every line of what you wrote. A reader who wasn't there sees what you
-can't.
+Have fresh subagents look for what is wrong with the draft. You ran the
+interview, so you already believe every line of what you wrote. A reader who
+wasn't there sees what you can't.
 
 Spawn a `general-purpose` subagent per lens, via the Agent tool, all in a single
 message so they run in parallel. Paste the whole draft brief into each prompt,
 along with the one lens it applies. The subagent has no context from the
 interview, so anything you leave out is something it cannot judge. Ask each for
-findings with concrete rewrites, and tell it to say plainly when the brief is
-already sound rather than manufacture nitpicks.
+findings with concrete rewrites. Tell it to say plainly when the brief is
+already sound, rather than invent small complaints.
 
 The lenses:
 
@@ -161,9 +159,9 @@ The lenses:
 - **Downstream fit.** Could a developer start work from this brief without
   asking anything first? What would send them the wrong way?
 
-Don't add a lens for whether each item traces to something the user said. Only
-you hold the conversation, so a subagent asked that would be guessing. You
-already checked it yourself.
+Keep the tracing check to yourself. Only you hold the conversation, so a
+subagent asked whether an item traces to something the user said would be
+guessing. You already checked it.
 
 Once the subagents are running, go idle: end your turn and let their findings
 land. They arrive on their own when each subagent finishes. Don't sleep. Don't
@@ -178,8 +176,8 @@ Then combine their findings into one list. Drop duplicates and resolve
 inconsistencies. No subagent read another's findings, so only you can settle two
 that pull the same line different ways.
 
-Read the brief and recall the interview for each finding. Keep only the findings
-you can confirm.
+Read the brief again for each finding. Recall what the user said in the
+interview. Keep only the findings you can confirm.
 
 Then split the confirmed findings two ways:
 
@@ -188,7 +186,7 @@ Then split the confirmed findings two ways:
 - **The user's to answer.** Intent, scope, and a missing fact. Ask in chat, then
   revise the file with what they say.
 
-The user is here, so don't guess at what they meant when you can ask.
+Ask the user rather than guess at what they meant. They are right here.
 
 ## The result
 

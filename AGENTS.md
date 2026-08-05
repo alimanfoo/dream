@@ -133,7 +133,7 @@ such skill.
 
 `/dream:spark` and `/dream:requirements-analysis` overlap on purpose.
 `/dream:spark` interviews the user to draw requirements out of them.
-`/dream:requirements-analysis` works them up on its own from material the user
+`/dream:requirements-analysis` produces them on its own, from material the user
 already wrote. The duplication between them is a decision, not a defect, so
 don't single-home it.
 
@@ -147,9 +147,9 @@ carry this step. Give a new such skill the same one.
 
 Each of those skills confirms its findings too. Only one place does that
 confirming. The lens subagents of `code-review`, `coherence-review`, and `spark`
-don't confirm a finding. So all three skills confirm each one themselves. The
-`dream:copy-editor` subagent does confirm each finding before it returns it. So
-`copy-edit` doesn't confirm them again. Pick one of those two homes for a new
+don't confirm a finding. So each of those skills confirms every finding itself.
+The `dream:copy-editor` subagent does confirm each finding before it returns it.
+So `copy-edit` doesn't confirm them again. Pick one of those two homes for a new
 such skill. Don't pick both.
 
 A skill that spawns subagents must also tell the agent to go idle while they
