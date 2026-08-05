@@ -139,11 +139,11 @@ don't single-home it.
 
 `/dream:spark` is the one skill the user experiences as a conversation rather
 than a result. So it is written to a different bar: how the turns feel to the
-person on the other end. Its checks stay out of sight, its subagent's findings
-come back to the user as questions, and it names no phase, step or artefact to
-them. A change that makes it more thorough at the cost of feeling like a form is
-the wrong trade. Judge an edit to it by what the user experiences, not by what
-the skill covers.
+person on the other end. Its turns stay small, one idea at a time. Its checks
+stay out of sight, its subagent's findings come back to the user as questions,
+and it names no phase, step or artefact to them. A change that makes it more
+thorough at the cost of feeling like a form is the wrong trade. Judge an edit to
+it by what the user experiences, not by what the skill covers.
 
 A skill that fans a review out to parallel subagents must wait for every one of
 them, then combine their findings into one list before it returns or applies any
