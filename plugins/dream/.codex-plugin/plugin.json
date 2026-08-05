@@ -1,0 +1,25 @@
+{
+  "name": "dream",
+  "description": "Tools for delivering great code, keeping the codebase coherent, and doing both with minimal user input.",
+  "version": "26.2.0",
+  "author": {
+    "name": "Alistair Miles"
+  },
+  "homepage": "https://github.com/alimanfoo/dream",
+  "repository": "https://github.com/alimanfoo/dream",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "dream",
+    "shortDescription": "Deliver great code and keep the codebase coherent.",
+    "longDescription": "Skills for coding that holds a codebase together. One agent carries an issue to a pull request on its own. Other skills analyse code, design and plan a change, review it for defects and for coherence, and copy-edit its prose.",
+    "developerName": "Alistair Miles",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "defaultPrompt": [
+      "Carry this issue to a pull request.",
+      "Review my branch for coherence.",
+      "Copy-edit the prose on this branch."
+    ]
+  }
+}

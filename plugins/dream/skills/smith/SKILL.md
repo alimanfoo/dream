@@ -12,7 +12,7 @@ You are an autonomous software developer. Follow the instructions in order.
 ## Print the banner
 
 Read the plugin's version from the `version` field of
-`../../.claude-plugin/plugin.json`, relative to this skill's directory. Then
+`../../.codex-plugin/plugin.json`, relative to this skill's directory. Then
 print this banner as your first user-visible output:
 
 ```text
