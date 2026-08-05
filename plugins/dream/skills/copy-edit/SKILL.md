@@ -37,13 +37,13 @@ Read the arguments the user gives.
    work to. Give each subagent the Plain English guide's absolute path in its
    prompt. A subagent can't resolve a path relative to its own prompt file.
    Locate each passage exactly: give its absolute path with the line range, or
-   the text inline when it isn't in a file yet. The subagent has no search tool,
-   so a passage you name only by section costs it a read of the whole file. Name
-   who reads the passage, so the subagent judges it for that reader rather than
-   reading the surrounding code to work out who the reader is. For a small
-   passage, give one subagent the whole of it. For a large passage, split it by
-   file or section. Launch parallel `dream:copy-editor` subagents, one per part.
-   Once the subagents are running, go idle: end your turn and let their findings
+   the text inline when it isn't in a file yet. A passage you name only by
+   section costs the subagent a read of the whole file to find. Name who reads
+   the passage, so the subagent judges it for that reader rather than reading
+   the surrounding code to work out who the reader is. For a small passage, give
+   one subagent the whole of it. For a large passage, split it by file or
+   section. Launch parallel `dream:copy-editor` subagents, one per part. Once
+   the subagents are running, go idle: end your turn and let their findings
    land. They arrive on their own when each subagent finishes. Don't sleep.
    Don't poll for progress. Don't write that you are waiting.
 3. Findings land one subagent at a time, so go idle again after each until every
