@@ -154,12 +154,21 @@ lever on that register. Don't normalise it back to the third person. Its
 frontmatter `description` stays third person, since the harness reads that to
 pick the skill.
 
-Keep the verb first even so, and put the "I" in the reason rather than in a
-hedge before it: "Don't flatter me. It's noise", not "I'd prefer it if you
-didn't flatter me." A polite request reads as a soft preference, and the agent
-treats it as one. This is how the user's voice and the
-[Plain English guide](plugins/dream/plain-english.md)'s instruction shape hold
-together.
+So it asks rather than orders: "I'd rather you didn't use `AskUserQuestion`",
+"flattery I can do without", "if you could ask only one thing, what would it
+be?". The register is itself the instruction. An agent handed a stack of orders
+runs the interview in that register, and an interview issued as orders is the
+failure mode the skill exists to avoid. The
+[Plain English guide](plugins/dream/plain-english.md)'s instruction shape, verb
+first, is for a spec addressed to an agent. This file is speech, so the guide's
+"write as if speaking" rule wins where the two pull apart.
+
+Hedge the ask, not the fact. "I'd rather you asked me one thing at a time" is
+polite and still says exactly what is wanted. "You might want to consider
+shorter turns" says nothing. What loses an agent is vagueness about what is
+wanted, not the absence of an imperative mood. So a want stays open ("that's
+what I'm after", "one line is worth it"), and a fact about the user or the work
+stays flat ("I'll propose solutions at you. I can't help it").
 
 A skill that fans a review out to parallel subagents must wait for every one of
 them, then combine their findings into one list before it returns or applies any
