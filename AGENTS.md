@@ -137,17 +137,25 @@ such skill.
 already wrote. The duplication between them is a decision, not a defect, so
 don't single-home it.
 
+`/dream:spark` is the one skill the user experiences as a conversation rather
+than a result. So it is written to a different bar: how the turns feel to the
+person on the other end. Its checks stay out of sight, its subagent's findings
+come back to the user as questions, and it names no phase, step or artefact to
+them. A change that makes it more thorough at the cost of feeling like a form is
+the wrong trade. Judge an edit to it by what the user experiences, not by what
+the skill covers.
+
 A skill that fans a review out to parallel subagents must wait for every one of
 them, then combine their findings into one list before it returns or applies any
 finding. Findings land one subagent at a time, and no subagent reads another's
 passage or another's findings. So only the skill, and only once every subagent
 is in, can drop a duplicate or settle two findings that pull the same site
-different ways. `code-review`, `coherence-review`, `copy-edit`, and `spark` all
-carry this step. Give a new such skill the same one.
+different ways. `code-review`, `coherence-review`, and `copy-edit` all carry
+this step. Give a new such skill the same one.
 
 Each of those skills confirms its findings too. Only one place does that
-confirming. The lens subagents of `code-review`, `coherence-review`, and `spark`
-don't confirm a finding. So each of those skills confirms every finding itself.
+confirming. The lens subagents of `code-review` and `coherence-review` don't
+confirm a finding. So both skills confirm each one against the code themselves.
 The `dream:copy-editor` subagent does confirm each finding before it returns it.
 So `copy-edit` doesn't confirm them again. Pick one of those two homes for a new
 such skill. Don't pick both.
