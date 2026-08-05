@@ -1,0 +1,20 @@
+{
+  "name": "dream",
+  "interface": {
+    "displayName": "dream"
+  },
+  "plugins": [
+    {
+      "name": "dream",
+      "source": {
+        "source": "local",
+        "path": "./plugins/dream"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
