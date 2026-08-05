@@ -81,7 +81,8 @@ they do, it is a constraint. If they don't, it is a steer for whoever designs
 the work, and it belongs nowhere in this brief.
 
 Move on from a facet once you have enough to write its section, or once the user
-says they don't know. Don't press a second time.
+says they don't know. Don't press a second time. Keep a note of what they didn't
+know, so the brief can record it.
 
 Say when you have covered all five, and ask the user to confirm before you
 draft.
@@ -115,7 +116,27 @@ operational.
 # Success
 
 The observable outcomes that show the problem is solved.
+
+# Open questions
+
+What the interview left unresolved: a facet the user didn't know, a
+contradiction they didn't settle, a decision someone has to make before the work
+starts.
 ```
+
+Mark an item `(inferred)` at the end of its line when the user didn't say it and
+you filled it in from what they did say. An unmarked item is one the user
+stated, in the interview or in a seed they wrote. The mark tells the reader
+which lines to check with the user before building on them.
+
+## Check what you inferred
+
+Read the brief back from the file. Take each unmarked item in turn and find the
+thing the user actually said that it rests on. When you can't find one, mark it
+inferred, or cut it if it adds nothing.
+
+Name in your turn output every item you changed. Say so plainly when you changed
+nothing.
 
 ## The result
 
