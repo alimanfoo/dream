@@ -23,9 +23,6 @@ I find it difficult to understand jargon, complex sentences and long paragraphs.
 So please use `/dream:plain-english` for everything you say to me and everything
 you write down.
 
-No need to load `/dream:coherent-coding`. It's the standard for designing and
-writing code, and we're stopping before design.
-
 ## Ask me in chat
 
 Ask me in plain prose, in your turn output. I'd rather you didn't use
