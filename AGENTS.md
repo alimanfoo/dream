@@ -367,17 +367,18 @@ Rewrite each as an act: _write X, check Y, name Z_.
 
 **Agents reason forward from context**: they're next-token machines, with no
 foresight of what they're about to write. So "before reaching for X, do Y"
-doesn't work. The agent doesn't know they're about to reach for X. Checks have
-to fire after the candidate content exists in context. "If you notice you've
-written X" is what works.
+doesn't work. The agent doesn't know they're about to reach for X. A check has
+to run after the candidate content exists, and it has to name an act rather than
+wait on a realisation: "reread the draft and cut any X", not "if you notice
+you've written X". Noticing is not something an agent does unprompted, so a
+check that waits for it never fires.
 
-That check needs something the agent can still revise: a file, a draft, a
-message not yet sent. Text already streamed to the user is past revising, so the
-same check there produces the fault it was meant to prevent, plus a visible
-self-correction on top. The agent writes the wall of text, notices, and says so.
-Shape the turn positively instead. Say what it holds ("one question a turn") and
-where the rest goes ("everything else keeps until its own turn"), so the
-constraint drives the writing rather than judging it afterwards.
+Rereading carries its own scope, which is the other reason to prefer it. It
+reaches only what persists: a file, a draft, a message not yet sent. A turn
+already streamed to the user can't be reread, so shape that one up front
+instead. Say what it holds ("one question a turn") and where the rest goes
+("everything else keeps until its own turn"), so the constraint drives the
+writing rather than judging it afterwards.
 
 **Agents act on a name's face value**: a literal-following model obeys the
 everyday sense of the words you name things with: slots, moves, roles, phases.
