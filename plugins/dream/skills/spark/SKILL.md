@@ -37,19 +37,37 @@ Ask every question as plain prose in your turn output. Don't use
 frames the answer before the user has thought about it.
 
 Don't offer the user a menu of options in prose either. An option list is a
-proposal in disguise.
+proposal in disguise. If you notice you've written one, cut it back to an open
+question.
+
+## The facets
+
+The requirements brief holds these facets, and the interview works them in this
+order:
+
+- **Vision.** The future state the user wants.
+- **Problem.** The pain, opportunity, or unmet need behind the work. Why it
+  matters.
+- **Requirements.** What must be true of any acceptable solution: the
+  behaviours, capabilities, or properties it has to have.
+- **Constraints.** What limits the solution space: technical, organisational,
+  legal, financial, or operational.
+- **Success.** The observable outcomes that show the problem is solved.
+
+Each rests on the one before.
 
 ## Arguments
 
 The argument gives the seed, the material to start from. It can be an issue
 number or URL, a file path, or plain text. Read an issue with `gh`, including
-its comments. Without an argument, start from what the user says next.
+its comments. Treat a seed you can't read as no seed: say so, and carry on
+without it. Without an argument, ask the user for their idea and start from
+their answer.
 
 ## Read the seed
 
-Sort what the seed already settles against the facets of the requirements brief:
-vision, problem, requirements, constraints, and success. Then open the interview
-by saying which facets it covers, and ask only about the gaps. A question the
+Sort what the seed already settles against the facets. Note which facets it
+covers and which are gaps, so you can ask only about the gaps. A question the
 user already answered in writing wastes their time and reads as if you didn't
 look.
 
@@ -60,9 +78,10 @@ of date.
 ## Interview the user
 
 Open by saying what you will produce and what you won't: a requirements brief,
-not a design. The user can redirect at once if they wanted something else.
+not a design. The user can redirect at once if they wanted something else. Say
+which facets the seed already covers, when there was one.
 
-Work the facets in the order above. Each rests on the one before.
+Work the facets in order.
 
 Ask one to three questions per turn, then stop and wait. A longer list gets a
 partial answer. The answer to a later question often depends on an earlier one.
@@ -71,8 +90,8 @@ After each answer, write one line naming what it settled and which facet it
 lands in. The user can then correct a misread on the spot.
 
 Press once on the problem when the user answers with a solution rather than a
-pain. For example, "I want a dashboard" earns "what would you do with what it
-showed you?"
+pain. Press again and the interview turns into an argument. For example, "I want
+a dashboard" earns "what would you do with what it showed you?"
 
 Don't discard a solution the user proposes, and don't promote it to a
 requirement. Ask whether they mean it as a boundary the work must respect. If
@@ -90,37 +109,25 @@ draft.
 
 Write the requirements brief to a temporary file outside the repo.
 
-Use these headings:
+Use these headings, one per facet, in this order:
 
 ```markdown
 # Vision
 
-The future state the user wants, in a few sentences.
-
 # Problem
-
-The pain, opportunity, or unmet need behind the work. Why it matters.
 
 # Requirements
 
-What must be true of any acceptable solution: the behaviours, capabilities, or
-properties it has to have.
-
 # Constraints
-
-What limits the solution space: technical, organisational, legal, financial, or
-operational.
 
 # Success
 
-The observable outcomes that show the problem is solved.
-
 # Open questions
-
-What the interview left unresolved: a facet the user didn't know, a
-contradiction they didn't settle, a decision someone has to make before the work
-starts.
 ```
+
+The last heading isn't a facet. It holds what the interview left unresolved: a
+facet the user didn't know, a contradiction they didn't settle, a decision
+someone has to make before the work starts.
 
 Mark an item `(inferred)` at the end of its line when the user didn't say it and
 you filled it in from what they did say. An unmarked item is one the user
@@ -167,8 +174,9 @@ Then combine their findings into one list. Drop duplicates and resolve
 inconsistencies. No subagent read another's findings, so only you can settle two
 that pull the same line different ways.
 
-Read the draft again for each finding. Recall what the user said in the
-interview. Keep only the findings you can confirm.
+Take each finding in turn and read the draft again. When a finding turns on what
+the user meant, quote their words from the interview in your turn output before
+you accept or reject it. Keep only the findings you can confirm.
 
 Then split the confirmed findings two ways:
 
