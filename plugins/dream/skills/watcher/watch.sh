@@ -33,8 +33,8 @@
 #
 # One rule picks the user's posts out of the three sources. The session and the
 # user write through the same account, so the rule reads the body: a post is the
-# user's when it comes from that account and its body lacks the Claude Code
-# footer. The caller marks everything it writes with that footer, so its own
+# user's when it comes from that account and its body carries no footer the
+# caller writes. The caller marks everything it writes with a footer, so its own
 # posts drop out.
 #
 # Matching the account also drops anything from another account, a bot or
@@ -67,11 +67,16 @@ for tool in gh jq; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
 done
 
-# The footer string that marks a body as the caller's own. It must match the
-# Claude Code footer the plugin appends to comments, set in the agents' and
-# skills' "mark your work" rules. A change there has to change here too, or the
-# filter breaks.
-footer="claude.com/claude-code"
+# The strings that mark a body as the caller's own. The first must match the
+# footer the plugin appends to comments, set in the agents' and skills' "mark
+# your work" rules. A change there has to change here too, or the filter breaks.
+#
+# The second is the footer the plugin used before it named itself rather than
+# Claude Code. A session that started before that change keeps writing the old
+# footer, because its instructions are already in its context. Matching both
+# strings means the filter still drops its posts. Drop the old string once no
+# such session can still be running.
+footers=$(jq -n '["Generated with [dream](", "claude.com/claude-code"]')
 
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
@@ -118,10 +123,11 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 # it stood then, rather than reporting nothing. Both hold the last line when the
 # comment covers a range, and both are null when it is about the whole file.
 result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
-  | jq --arg cutoff "$cutoff" --arg footer "$footer" --arg me "$me" '
+  | jq --arg cutoff "$cutoff" --argjson footers "$footers" --arg me "$me" '
   def is_new_from_user($author; $at):
     $author == $me and $at > $cutoff
-    and ((.body // "") | contains($footer) | not);
+    and ((.body // "") as $body
+         | $footers | any(. as $footer | $body | contains($footer)) | not);
 
   def says_something:
     .body != "" or .verdict == "APPROVED" or .verdict == "CHANGES_REQUESTED";
