@@ -182,9 +182,11 @@ So `copy-edit` doesn't confirm them again. Pick one of those two homes for a new
 such skill. Don't pick both.
 
 A skill that spawns subagents must also tell the agent to wait while they run,
-rather than sleep, poll, or narrate the wait. `code-review`, `coherence-review`,
-`copy-edit`, and `smith` each carry that line at the spawn site. Give a new one
-the same line.
+rather than sleep, poll, or narrate the wait. Name ending the turn as the way to
+wait, conditionally, since that is what Claude Code needs and Codex does not.
+Waiting alone is a state, and an agent needs an act. `code-review`,
+`coherence-review`, `copy-edit`, and `smith` each carry that line at the spawn
+site. Give a new one the same line.
 
 A spawn site that names one of the plugin's own subagents must also give that
 subagent's file as a fallback. Codex has no registry of named agents, so a

@@ -36,7 +36,7 @@ reviewed it.
 
 ## Step 6.4: Triage each finding
 
-Decide each finding from both reviews on its merits, weighed against the the
+Decide each finding from both reviews on its merits, weighed against the
 coherent coding guide. Each finding takes one of these paths:
 
 - Accept: make it a follow-on task and run it through the standard per-task

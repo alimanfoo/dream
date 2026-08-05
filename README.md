@@ -14,8 +14,12 @@ labelled issues. Utility skills ship alongside, and you can run each on its own:
 
 ## Prerequisites
 
-The utility skills run under Claude Code and under Codex alike. Under Codex,
-name one the way you name any Codex skill, for example `$dream:code-review`.
+The utility skills run under Claude Code and under Codex alike. Under Codex, you
+name one in the prompt the way you name any Codex skill:
+
+```text
+$dream:code-review
+```
 
 The session skills need Claude Code. `/dream:smith` and `/dream:less` watch the
 pull request for your review, and that watch runs on Claude Code's scheduler,

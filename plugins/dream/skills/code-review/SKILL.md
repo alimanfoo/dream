@@ -59,9 +59,9 @@ In inline mode, run the lenses yourself instead of spawning subagents. Read
 [the lens subagent's instructions](../../agents/code-review-lens.md) first and
 work to them, since you are the one applying each lens.
 
-Once the subagents are running, wait for their findings. They arrive on their
-own when each subagent finishes. Don't sleep. Don't poll for progress. Don't
-write that you are waiting.
+Once the subagents are running, wait for their findings. End your turn if that
+is how your session waits. They arrive on their own when each subagent finishes.
+Don't sleep. Don't poll for progress. Don't write that you are waiting.
 
 ## Combine and verify
 

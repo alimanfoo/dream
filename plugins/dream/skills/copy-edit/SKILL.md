@@ -47,9 +47,10 @@ Read the arguments the user gives.
    subagent judges it for that reader rather than reading the surrounding code
    to work out who the reader is.
 
-   Once the subagents are running, wait for their findings. They arrive on their
-   own when each subagent finishes. Don't sleep. Don't poll for progress. Don't
-   write that you are waiting.
+   Once the subagents are running, wait for their findings. End your turn if
+   that is how your session waits. They arrive on their own when each subagent
+   finishes. Don't sleep. Don't poll for progress. Don't write that you are
+   waiting.
 
 3. Findings land one subagent at a time, so keep waiting after each until every
    subagent you launched is in. Then combine the findings into one list. Drop

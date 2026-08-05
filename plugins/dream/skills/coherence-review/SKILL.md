@@ -66,9 +66,9 @@ the heading and the text beneath it into the briefing.
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
 
-Once the subagents are running, wait for their findings. They arrive on their
-own when each subagent finishes. Don't sleep. Don't poll for progress. Don't
-write that you are waiting.
+Once the subagents are running, wait for their findings. End your turn if that
+is how your session waits. They arrive on their own when each subagent finishes.
+Don't sleep. Don't poll for progress. Don't write that you are waiting.
 
 ## Combine and verify
 

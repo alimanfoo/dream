@@ -40,8 +40,10 @@
 # Matching the account also drops anything from another account, a bot or
 # another collaborator, which the user did not write.
 #
-# So a change to the footer string would break the filter, and the caller's own
-# comments would read back as the user's input.
+# The script matches a list of footer strings, not one, so that it still knows
+# its own posts across a change to the footer. A change that leaves the list
+# behind would break the filter, and the caller's own comments would read back
+# as the user's input.
 #
 # A second rule drops any post the user said nothing in. GitHub wraps a single
 # inline comment in a review of its own, with an empty body, whenever anyone
@@ -76,7 +78,7 @@ done
 # old footer, because its instructions are already in its context. Matching both
 # strings means the filter still drops its posts. Drop the old string once no
 # such session can still be running.
-footers=$(jq -n '["Generated with [dream](", "claude.com/claude-code"]')
+footers='["Generated with [dream](", "claude.com/claude-code"]'
 
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"

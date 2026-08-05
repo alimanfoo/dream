@@ -186,9 +186,10 @@ watch it for what the user posts. It surfaces each new post as it arrives.
 ## Plan
 
 Spawn a subagent to plan. Give it the session input, the code you read, and the
-session type. Ask it for a step-by-step plan. Then wait for the plan. It arrives
-on its own when the subagent finishes. Don't sleep. Don't poll for progress.
-Don't write that you are waiting.
+session type. Ask it for a step-by-step plan. Then wait for the plan. End your
+turn if that is how your session waits. It arrives on its own when the subagent
+finishes. Don't sleep. Don't poll for progress. Don't write that you are
+waiting.
 
 Post the returned plan as a PR comment. Head it `Plan`.
 
