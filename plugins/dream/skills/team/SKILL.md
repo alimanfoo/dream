@@ -22,7 +22,7 @@ Grace does all the session's GitHub writes. She opens the PR at the start. As
 the session runs, she posts each artifact (`gh pr create`, `gh pr comment`, and
 others). Claude Code's auto-mode classifier may prompt you to approve these
 writes. Allowlist `gh pr create` and `gh pr comment` in
-`~/.claude/settings.json` or the host project's `.claude/settings.json` to skip
+`~/.claude/settings.json` or the user's project `.claude/settings.json` to skip
 the prompts.
 
 ## Spawning the team

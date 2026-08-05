@@ -427,7 +427,7 @@ at a glance whether an agent or a person made it.
 - **Titles** (PR titles, commit subjects, issue titles) state the change itself.
   They carry no agent-author prefix (for example `[claude]` or `[dream]`). The
   marking is in the trailers and footer above. Prior agent-authored titles in
-  the host repo aren't a style precedent. Treat them as you would any other
+  the user's repo aren't a style precedent. Treat them as you would any other
   contributor's work.
 
 ### Writing to GitHub

@@ -119,6 +119,9 @@ Ways the two layers get crossed:
 The plugin installs under Claude Code and under Codex. Write every skill and
 agent file so both can follow it.
 
+"Host" means one of those two, throughout the plugin's prose. Say "the user's
+repo" for the codebase a session works on, never "the host repo".
+
 What each host gives you differs in ways that matter:
 
 - **Codex has no scheduler.** There is no `CronCreate`, so
@@ -129,8 +132,7 @@ What each host gives you differs in ways that matter:
   so the files in `plugins/dream/agents` reach it only as a path to read. A
   `dream:foo` subagent type resolves under Claude Code and nowhere else.
 - **Codex knows the same `dream:foo` skill names.** It namespaces a plugin's
-  skills by the plugin name, just as Claude Code does. Only the leading slash is
-  Claude Code's.
+  skills by the plugin name, just as Claude Code does.
 
 Two more skills are Claude Code only. `/dream:catcher` launches `claude` itself.
 `/dream:team` needs the agent teams feature.
@@ -196,6 +198,13 @@ subagent reads the body and nothing else, so the `model`, `effort`, and `tools`
 fields never reach it, and a limit those fields carry is lost on that path.
 `code-review-lens.md` and `copy-editor.md` each say in their body what they may
 not write.
+
+Change the commit trailer and the pull request footer together, everywhere. They
+are stated in `Grace.md`, `Ralph.md`, `smith/SKILL.md`, `less/SKILL.md`, and
+`watcher/SKILL.md`, and `watch.sh` matches the footer to tell a session's own
+posts from the user's. A footer changed in the prose but not in `watch.sh` makes
+the watch read a session's own comments back as the user's input, and the
+session acts on its own words.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,

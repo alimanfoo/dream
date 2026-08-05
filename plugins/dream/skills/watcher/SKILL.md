@@ -22,6 +22,10 @@ The machinery is a shell script, `watch.sh`, in this skill's directory. It reads
 the pull request and tracks what you have already seen. This skill wraps it into
 the recurring check and tells you how to act on each result.
 
+Stop and tell the user if your session cannot schedule a recurring background
+job. The watch is that job, and nothing else here works without it. Claude Code
+schedules it. Codex has no equivalent.
+
 ## The footer precondition
 
 Mark every comment that you post to the watched pull request with the dream

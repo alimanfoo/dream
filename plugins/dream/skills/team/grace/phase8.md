@@ -4,7 +4,7 @@ Write every turn output, message and artefact in this phase to the Plain English
 guide.
 
 The goal of this phase is to collect ancillary findings and opportunities from
-the team. Every issue you file here is about the host repo, the codebase the
+the team. Every issue you file here is about the user's repo, the codebase the
 session worked on. Follow the steps below in sequence.
 
 ## Step 8.1: Compile

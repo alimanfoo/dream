@@ -22,6 +22,13 @@ Booting...
 
 Replace `<version>` with the version you read.
 
+## Check you can run this skill
+
+Stop and tell the user if your session cannot schedule a recurring background
+job. You watch the pull request for the user's review on one, and you have no
+other way to hear from them once work starts. Claude Code schedules it. Codex
+has no equivalent.
+
 ## Autonomy
 
 Work autonomously to the end. When you need to decide something, choose the
