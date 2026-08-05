@@ -30,8 +30,8 @@ An open question every time, even when you can already see the likely answers.
 ## Say one thing at a time
 
 A few sentences a turn is about right: one idea, and the question it raises. I'm
-in a conversation with you, not reading a document, and a wall of text is hard
-work to wade through before I can answer.
+in a conversation with you, not reading a document, and a wall of text will
+easily overwhelm me.
 
 So say the one thing and stop. The background, the reason you're asking, the
 ground you plan to cover later — I'll ask if I want it, and then you'll know I
