@@ -138,6 +138,58 @@ inferred, or cut it if it adds nothing.
 Name in your turn output every item you changed. Say so plainly when you changed
 nothing.
 
+## Launch the lenses
+
+Have fresh subagents attack the draft. You ran the interview, so you already
+believe every line of what you wrote. A reader who wasn't there sees what you
+can't.
+
+Spawn a `general-purpose` subagent per lens, via the Agent tool, all in a single
+message so they run in parallel. Paste the whole draft brief into each prompt,
+along with the one lens it applies. The subagent has no context from the
+interview, so anything you leave out is something it cannot judge. Ask each for
+findings with concrete rewrites, and tell it to say plainly when the brief is
+already sound rather than manufacture nitpicks.
+
+The lenses:
+
+- **Solution leakage.** Does any line say how rather than what?
+- **Vagueness and gaps.** What would a builder need to know that the brief
+  doesn't say?
+- **Testable success.** Could two people read a success item and disagree on
+  whether it was met?
+- **Downstream fit.** Could a developer start work from this brief without
+  asking anything first? What would send them the wrong way?
+
+Don't add a lens for whether each item traces to something the user said. Only
+you hold the conversation, so a subagent asked that would be guessing. You
+already checked it yourself.
+
+Once the subagents are running, go idle: end your turn and let their findings
+land. They arrive on their own when each subagent finishes. Don't sleep. Don't
+poll for progress. Don't write that you are waiting.
+
+## Combine and act on the findings
+
+Findings land one subagent at a time. So go idle again after each, until every
+subagent you launched is in.
+
+Then combine their findings into one list. Drop duplicates and resolve
+inconsistencies. No subagent read another's findings, so only you can settle two
+that pull the same line different ways.
+
+Read the brief and recall the interview for each finding. Keep only the findings
+you can confirm.
+
+Then split the confirmed findings two ways:
+
+- **Yours to fix.** Wording, structure, and solution leakage. Revise the file
+  yourself.
+- **The user's to answer.** Intent, scope, and a missing fact. Ask in chat, then
+  revise the file with what they say.
+
+The user is here, so don't guess at what they meant when you can ask.
+
 ## The result
 
 Show the brief in your turn output.
