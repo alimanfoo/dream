@@ -83,9 +83,9 @@ somewhere.
 
 #### Step 5.2: Identify coherence gaps
 
-Use the `dream:coherent-coding` skill to decide what a coherent end state should
-be. Then name what the change still needs to reach it. Does it create
-maintenance work, or leave work undone?
+Use the coherent coding guide to decide what a coherent end state should be.
+Then name what the change still needs to reach it. Does it create maintenance
+work, or leave work undone?
 
 #### Step 5.3: Sort what you found
 

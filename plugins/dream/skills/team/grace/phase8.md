@@ -1,7 +1,7 @@
 # Phase 8: Collect
 
-Write every turn output, message and artefact in this phase using
-`dream:plain-english`.
+Write every turn output, message and artefact in this phase to the Plain English
+guide.
 
 The goal of this phase is to collect ancillary findings and opportunities from
 the team. Every issue you file here is about the host repo, the codebase the
@@ -98,8 +98,8 @@ arbitrary constant).
 
 Make one call per candidate: drop, reinforce, re-frame, or file fresh. Use the
 source observations, the issue history, what the [test step](#step-83-test)
-showed, and `dream:coherent-coding` principles. Don't send candidates back to
-Ralph or Junio for another round of judgement.
+showed, and the coherent coding guide. Don't send candidates back to Ralph or
+Junio for another round of judgement.
 
 The bar for filing a **new** issue from a finding is _a behaviour gap with a
 real consumer_. Findings that clear the bar are decided on the merits. Findings
@@ -168,9 +168,9 @@ open branch.
 
 Apply a category label to each new issue. See "GitHub labels" in Common rules.
 
-**Issue shape.** When filing, write for a junior developer, using
-`dream:plain-english`. Don't duplicate what's visible in the source. Keep it
-tight. Don't sample existing issues for style. Order the issue body:
+**Issue shape.** When filing, write for a junior developer, to the Plain English
+guide. Don't duplicate what's visible in the source. Keep it tight. Don't sample
+existing issues for style. Order the issue body:
 
 - the concern, in one sentence
 - the cause, with a file/symbol citation

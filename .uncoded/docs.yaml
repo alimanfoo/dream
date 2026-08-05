@@ -374,7 +374,6 @@ plugins/:
 README.md:
   dream:
     Prerequisites:
-    What runs under Codex:
     Installation:
     Coherent development with /dream:team:
     Smaller tasks with /dream:smith:

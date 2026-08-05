@@ -1,7 +1,7 @@
 # Phase 6: Review
 
-Write every turn output, message and artefact in this phase using
-`dream:plain-english`.
+Write every turn output, message and artefact in this phase to the Plain English
+guide.
 
 When development is complete, follow the steps below. Ralph copy-edits the
 branch's prose first. Then Ada and Junio review in parallel, then the user. You
@@ -36,8 +36,8 @@ reviewed it.
 
 ## Step 6.4: Triage each finding
 
-Decide each finding from both reviews on its merits, weighed against the
-`dream:coherent-coding` principles. Each finding takes one of these paths:
+Decide each finding from both reviews on its merits, weighed against the the
+coherent coding guide. Each finding takes one of these paths:
 
 - Accept: make it a follow-on task and run it through the standard per-task
   workflow.

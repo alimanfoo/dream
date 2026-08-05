@@ -5,33 +5,28 @@ minimal human input. It installs under Claude Code and under Codex.
 
 `/dream:team` runs a multi-agent team on a task. `/dream:smith` runs a single
 agent on a smaller task. `/dream:less` runs a cut-back single agent on a very
-small one. Those two need no agent teams feature. `/dream:catcher` runs any of
-them unattended across a repository's labelled issues. Utility skills ship
-alongside, and you can run each on its own: `/dream:plain-english`,
-`/dream:coherent-coding`, `/dream:copy-edit`, `/dream:code-analysis`,
-`/dream:requirements-analysis`, `/dream:design`, `/dream:plan`,
-`/dream:coherence-review`, `/dream:code-review`, and `/dream:watcher`.
+small one. `/dream:catcher` runs any of them unattended across a repository's
+labelled issues. Utility skills ship alongside, and you can run each on its own:
+`/dream:plain-english`, `/dream:coherent-coding`, `/dream:copy-edit`,
+`/dream:code-analysis`, `/dream:requirements-analysis`, `/dream:design`,
+`/dream:plan`, `/dream:coherence-review`, `/dream:code-review`, and
+`/dream:watcher`.
 
 ## Prerequisites
 
-`/dream:team`, and `/dream:catcher` when it dispatches a `/dream:team` session,
-need Claude Code's
-[experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
-`/dream:smith`, `/dream:less`, and the utility skills do not.
-
-The plugin works best with the `gh` command line tool available. This lets the
-team interact with GitHub, for example opening a pull request and posting
-issues.
-
-## What runs under Codex
-
-The utility skills run under Codex as they do under Claude Code. Name one the
-same way you name any Codex skill, for example `$dream:code-review`.
+The utility skills run under Claude Code and under Codex alike. Under Codex,
+name one the way you name any Codex skill, for example `$dream:code-review`.
 
 The session skills need Claude Code. `/dream:smith` and `/dream:less` watch the
 pull request for your review, and that watch runs on Claude Code's scheduler,
 which Codex has no equivalent of. `/dream:catcher` launches `claude` itself.
-`/dream:team` needs the agent teams feature.
+`/dream:team`, and `/dream:catcher` when it dispatches a `/dream:team` session,
+also need Claude Code's
+[experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
+
+The plugin works best with the `gh` command line tool available. This lets the
+team interact with GitHub, for example opening a pull request and posting
+issues.
 
 ## Installation
 

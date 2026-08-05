@@ -191,6 +191,12 @@ fallback tells the agent to spawn a plain subagent and hand it the agent file to
 read. `code-review`, `coherence-review`, and `copy-edit` each carry it. Give a
 new one the same.
 
+State in an agent file's body every limit the reader must hold to. A plain
+subagent reads the body and nothing else, so the `model`, `effort`, and `tools`
+fields never reach it, and a limit those fields carry is lost on that path.
+`code-review-lens.md` and `copy-editor.md` each say in their body what they may
+not write.
+
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
 written there as a plain instruction to that agent. When such a rule lands in
@@ -217,6 +223,12 @@ into `Ralph.md` or `grace/phase3.md` resolves for `remark-validate-links`, since
 both files sit on disk together, but the agent reading `Junio.md` never follows
 it. State the fact directly instead of citing where another agent's instructions
 happen to say it too.
+
+Name the skill, not the file, when an agent file loads a guide. An agent reads
+its own file as a system prompt, with no path to resolve a relative link
+against. So `Grace.md` loads `dream:plain-english` where `smith/SKILL.md` reads
+`../../plain-english.md`, and `copy-editor.md` takes the guide's absolute path
+in its spawn prompt. A skill knows its own directory. An agent does not.
 
 The plugin's prose names a phase or step by its lowercase name and the word
 "phase" or "step", linked to its section: "the collect phase", "the decide

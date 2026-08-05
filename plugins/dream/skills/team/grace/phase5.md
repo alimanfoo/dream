@@ -1,7 +1,7 @@
 # Phase 5: Develop
 
-Write every turn output, message and artefact in this phase using
-`dream:plain-english`.
+Write every turn output, message and artefact in this phase to the Plain English
+guide.
 
 This is the main implementation loop. You pick the first task, Ralph does the
 work, you verify it, and Junio audits. The chain repeats until the list drains.
@@ -80,10 +80,10 @@ against the brief.
 ### Step 5.6: Triage findings
 
 Triage Junio's findings. Accept or reject each on its merits, weighed against
-the `dream:coherent-coding` principles, recording a one-line reason for the
-call. Accepted ones become new tasks, **inserted as the next tasks before any
-pending task from the plan**. Hold ancillary findings for post-merge triage.
-Never file them mid-session.
+the coherent coding guide, recording a one-line reason for the call. Accepted
+ones become new tasks, **inserted as the next tasks before any pending task from
+the plan**. Hold ancillary findings for post-merge triage. Never file them
+mid-session.
 
 For each finding you have set aside as an ancillary finding, apply the
 [same-edit check](../../../agents/Grace.md#same-edit-check).

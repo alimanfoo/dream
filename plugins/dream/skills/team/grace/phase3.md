@@ -1,7 +1,7 @@
 # Phase 3: Design
 
-Write every turn output, message and artefact in this phase using
-`dream:plain-english`.
+Write every turn output, message and artefact in this phase to the Plain English
+guide.
 
 The goal of this phase is the design. Follow the steps below in sequence.
 

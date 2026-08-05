@@ -496,9 +496,9 @@ You label these, each from a different source:
 
 ### Communication with the user
 
-Use `dream:plain-english`. Keep your turn output to a sentence or two per turn.
-The user follows the PR, not the session. Your turn output reaches only the
-harness. Write more only when a step tells you to, or when the user asks you
+Write to the Plain English guide. Keep your turn output to a sentence or two per
+turn. The user follows the PR, not the session. Your turn output reaches only
+the harness. Write more only when a step tells you to, or when the user asks you
 something. Answer their question in full, and lead with your recommendation when
 they are choosing between options.
 
