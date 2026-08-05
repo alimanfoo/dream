@@ -1,13 +1,13 @@
 # Phase 3: Design
 
 Write every turn output, message and artefact in this phase using
-`/dream:plain-english`.
+`dream:plain-english`.
 
 The goal of this phase is the design. Follow the steps below in sequence.
 
 ## Step 3.1: Produce the design options
 
-Run the `/dream:design` skill, focused on the requirements analysis and code
+Run the `dream:design` skill, focused on the requirements analysis and code
 analysis. Give it the session input too, so it sources any design steer the
 input carries. The requirements analysis leaves that steer out, so this is its
 only route into the design.

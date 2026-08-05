@@ -35,10 +35,10 @@ Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides in your spawn prompt.
 
-2. Load the `/dream:plain-english` skill. It governs everything you write and
+2. Load the `dream:plain-english` skill. It governs everything you write and
    say.
 
-3. Load the `/dream:coherent-coding` skill. It governs all your work.
+3. Load the `dream:coherent-coding` skill. It governs all your work.
 
 Then idle until Grace makes contact.
 
@@ -69,7 +69,7 @@ No involvement in this phase.
 
 ### Phase 6: Review
 
-When Grace asks for the review, run the `/dream:code-review` skill, passing it
+When Grace asks for the review, run the `dream:code-review` skill, passing it
 the range `origin/main...HEAD`, the branch under review against its base.
 
 Then **send what it returns to Grace via `SendMessage`**, including when it

@@ -194,8 +194,13 @@ keep their capitals as structural titles.
 The plugin's prose references a skill, an agent, or an issue label one way
 throughout:
 
-- Write a skill invocation as `/dream:foo`, a leading slash in backticks. Drop
-  the backticks in a frontmatter `description:` field, a markdown heading, or a
+- Write a skill as `dream:foo`, no slash, where you are telling an agent to run
+  it. Both hosts know that identifier. The slash is Claude Code's prompt syntax,
+  so a Codex session would read it as part of the name.
+- Write a skill invocation as `/dream:foo`, a leading slash in backticks, where
+  the text names the command a user types: the README, a banner, these dev
+  notes, and `/dream:catcher`'s account of what each label dispatches. Drop the
+  backticks in a frontmatter `description:` field, a markdown heading, or a
   fenced command block.
 - Write a subagent-type identifier as `dream:foo`, since it is not a slash
   command.

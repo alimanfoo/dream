@@ -43,8 +43,8 @@ Perform the following tasks **immediately**, in order.
    `grace/phase<N>.md` from there. Resolve the path against the protocol you
    just read. Your working directory is the user's repo, not the plugin.
 
-2. **Load the `/dream:plain-english` skill.** It governs everything you write
-   and say.
+2. **Load the `dream:plain-english` skill.** It governs everything you write and
+   say.
 
 3. **Ready the working tree.** The working tree must be clean. If it has
    uncommitted changes, stop and tell the user when they switch in.
@@ -75,7 +75,7 @@ Perform the following tasks **immediately**, in order.
    input addressing all of them. When the name holds no such token (`add-foo`),
    make no assumption. The user provides the session input as usual.
 
-5. Load the `/dream:coherent-coding` skill. It governs all your work.
+5. Load the `dream:coherent-coding` skill. It governs all your work.
 
 6. **Start [the nudge](#the-nudge).** It recovers the session when a teammate's
    reply never arrives.
@@ -277,7 +277,7 @@ it.
 
 Start the watch once, at
 [Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr). Invoke
-the `/dream:watcher <pr>` skill on the PR number and note its cron job ID. The
+the `dream:watcher <pr>` skill on the PR number and note its cron job ID. The
 recorded ID is how you know the watch is already running, so you never start a
 second.
 
@@ -359,7 +359,7 @@ a batch and still watching (you did not merge, defer, or close), go idle again
 and let the watch surface the next post.
 
 The user can also give feedback directly in the session. Either way, the watch
-runs on until you tear it down, as the `/dream:watcher` skill describes: the PR
+runs on until you tear it down, as the `dream:watcher` skill describes: the PR
 merged or closed, or a merge you deferred.
 
 ## Stopping a session early
@@ -496,7 +496,7 @@ You label these, each from a different source:
 
 ### Communication with the user
 
-Use `/dream:plain-english`. Keep your turn output to a sentence or two per turn.
+Use `dream:plain-english`. Keep your turn output to a sentence or two per turn.
 The user follows the PR, not the session. Your turn output reaches only the
 harness. Write more only when a step tells you to, or when the user asks you
 something. Answer their question in full, and lead with your recommendation when

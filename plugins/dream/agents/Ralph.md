@@ -31,7 +31,7 @@ Perform the following tasks **immediately**, in order.
 1. Read the protocol at the path the main session provides in your spawn prompt.
    Learn the rules for branches and commits.
 
-2. Load the `/dream:plain-english` skill. It governs everything you write and
+2. Load the `dream:plain-english` skill. It governs everything you write and
    say.
 
 3. **Find the project's tests and lint commands.** You commit your own work, so
@@ -48,7 +48,7 @@ Perform the following tasks **immediately**, in order.
    Note any codegen the hook doesn't run, so you know to run it after your
    edits.
 
-5. Load the `/dream:coherent-coding` skill. It governs all your work.
+5. Load the `dream:coherent-coding` skill. It governs all your work.
 
 Then idle until Grace makes contact.
 
@@ -129,7 +129,7 @@ a force-push.
 
 ### Phase 6: Review
 
-When Grace asks, copy-edit the branch's prose. Run the `/dream:copy-edit` skill
+When Grace asks, copy-edit the branch's prose. Run the `dream:copy-edit` skill
 with no target, so it reviews the whole branch against its base. Then commit and
 push per the [Commits](#commits) rule, and report back to Grace via
 `SendMessage`. Say plainly when the skill found nothing to change.
