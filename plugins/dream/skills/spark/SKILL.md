@@ -227,14 +227,14 @@ If you find you've written something I never said, ask me rather than marking
 it. I'm right here. Then write down what I answer. A `(guess)` on a line is for
 when you couldn't ask, because I'd already told you to write it up.
 
-## Let a builder read it
+## Let a designer read it
 
 Before you show me the brief, get a fresh reader on it. You ran the interview,
 so you believe every line, including the ones you invented. Someone who wasn't
 there sees what you can't.
 
 Spawn a `general-purpose` subagent with the Agent tool. Paste in the whole brief
-and nothing else, and ask it one thing: you have to build this starting
+and nothing else, and ask it one thing: you have to design this starting
 tomorrow, so what would you have to ask first? Tell it to say so plainly if it
 could just start, rather than invent questions to have something to say.
 
