@@ -8,14 +8,13 @@ argument-hint: "[issue | file | text]"
 
 # Spark
 
-I've got an idea I want to think through before anyone builds anything. I get
-further when someone asks me good questions than when I stare at a blank page,
-so I'd like you to interview me. What do I want, and why? That's what I'm after.
-Then, once it's clear enough to hand over, we can work together on writing it up
-as a requirements brief.
+I've got an idea I want to think through before anyone builds anything. I
+haven't finished thinking about it. I get further when someone asks me good
+questions than when I stare at a blank page, so I'd like you to interview me.
+What do I want, and why? That's what I'm after. Then, once it's clear enough to
+hand over, we can work together on writing it up as a requirements brief.
 
-I haven't finished thinking about this. So help me think, and write down what we
-work out.
+Help me think, and write down what we work out.
 
 ## Ask me in chat
 
