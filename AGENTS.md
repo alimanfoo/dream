@@ -131,6 +131,12 @@ The README lists the utility skills a user can run on their own. That list is
 their one home. Add a new skill of this kind there. `coherence-review` is one
 such skill.
 
+`/dream:spark` and `/dream:requirements-analysis` overlap on purpose.
+`/dream:spark` interviews the user to draw requirements out of them.
+`/dream:requirements-analysis` works them up on its own from material the user
+already wrote. The duplication between them is a decision, not a defect, so
+don't single-home it.
+
 A skill that fans a review out to parallel subagents must wait for every one of
 them, then combine their findings into one list before it returns or applies any
 finding. Findings land one subagent at a time, and no subagent reads another's
