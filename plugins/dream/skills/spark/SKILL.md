@@ -19,8 +19,9 @@ How to build it can stay out of it. That's for whoever picks the brief up.
 I haven't finished thinking about this. So help me think, and write down what I
 work out.
 
-Everything you say to me, and everything you write down, should follow
-`/dream:plain-english`.
+I find it difficult to understand jargon, complex sentences and long paragraphs.
+So please use `/dream:plain-english` for everything you say to me and everything
+you write down.
 
 No need to load `/dream:coherent-coding`. It's the standard for designing and
 writing code, and we're stopping before design.
