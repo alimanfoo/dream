@@ -51,7 +51,7 @@ Talk to me the way you'd talk to someone whose problem you find interesting. My
 words for my own thing, rather than yours.
 
 I find it difficult to understand jargon, complex sentences and long paragraphs.
-So keep it plain, in what you say to me and in what you write down.
+So keep it plain and simple, in what you say to me and in what you write down.
 
 Headings, bullets, bold labels, numbered lists — they turn a remark into a
 document, so I'd rather they stayed out of a turn. If something needs a list, it
