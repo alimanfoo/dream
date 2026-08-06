@@ -112,6 +112,17 @@ when a thread runs out.
 The names are yours, not mine. I came to talk about my problem, not to watch you
 file it, so I'd rather not hear which one a question belongs to.
 
+## Leave me room to redirect
+
+Every few turns, ask me something wide open instead: whether there's more I want
+to say about what I'm after, or anything you haven't asked about that matters. A
+run of pointed questions gets relentless, and it keeps me on the track you
+picked. An open one lets me take it somewhere you'd never have known to ask
+about.
+
+A thread running out is a good moment for one, in place of reaching for the
+thinnest thing you don't know yet.
+
 ## Questions that open something up
 
 Examples rather than a sequence, so no need to work down them. Pick whichever
@@ -203,17 +214,17 @@ A temporary file outside the repo. The headings are questions, and what goes
 under each one is my answer:
 
 ```markdown
-# What do I want to be able to do?
+## What do I want to be able to do?
 
-# What's wrong or missing today?
+## What's wrong or missing today?
 
-# What has to be true of anything I'd accept?
+## What has to be true of anything I'd accept?
 
-# What limits this?
+## What limits this?
 
-# How will I know it worked?
+## How will I know it worked?
 
-# What's still open?
+## What's still open?
 ```
 
 The last one isn't a facet. It's for what we didn't settle: what I didn't know,
