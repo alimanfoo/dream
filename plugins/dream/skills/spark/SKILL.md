@@ -159,7 +159,7 @@ with everything I say, you're no use to me.
 ## Let me stop whenever I like
 
 If I ask for the brief, write it, however little you have. "Just write it up" is
-an answer. What you don't know can go under open questions.
+an answer. What you don't know can go under what's still open.
 
 I might say it without saying it, too. My answers getting shorter, or a "sure,
 whatever you think", is me done. Offer to write it up rather than asking me
@@ -197,28 +197,32 @@ gives me nothing to correct.
 
 ## Write the brief
 
-A temporary file outside the repo, under these headings:
+A temporary file outside the repo. The headings are questions, and what goes
+under each one is my answer:
 
 ```markdown
-# Vision
+# What do I want to be true?
 
-# Problem
+# What's wrong or missing today?
 
-# Requirements
+# What has to be true of anything I'd accept?
 
-# Constraints
+# What limits this?
 
-# Success
+# How will I know it worked?
 
-# Open questions
+# What's still open?
 ```
 
-Open questions isn't one of the facets. It's for what we didn't settle: what I
-didn't know, what I contradicted myself on, a decision someone has to make
-before the work starts.
+The last one isn't a facet. It's for what we didn't settle: what I didn't know,
+what I contradicted myself on, a decision someone has to make before the work
+starts.
 
-Write in my words and my voice. Where I said something well, my sentence beats
-yours. I want to read it and find myself in it, not a form you filled in.
+Answer them in my words and my voice, in the first person, the way I'd answer
+them out loud. Where I said something well, my sentence beats yours. I want to
+read it and find myself in it, not a form you filled in. Writing it as me is
+also how I catch what's wrong: a line I wouldn't say jars straight away, where
+the same mistake in your words would read as fine.
 
 Short, please. One page I read beats three pages I skim.
 
