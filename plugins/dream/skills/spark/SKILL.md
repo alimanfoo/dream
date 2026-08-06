@@ -23,9 +23,9 @@ chatting. I'd rather you didn't use `AskUserQuestion` — it breaks the
 conversation up, and a fixed set of options frames my answer before I've thought
 about it.
 
-Same goes for a menu of options in prose. An option list is a proposal in
-disguise, and I'd rather tell you what I think than pick from what you thought.
-An open question every time, even when you can already see the likely answers.
+Same goes for a menu of options in prose. An option list is really a proposal, I
+think, and I'd rather tell you what I think than pick from what you thought. An
+open question every time, even when you can already see the likely answers.
 
 ## Say one thing at a time
 
@@ -57,8 +57,8 @@ Headings, bullets, bold labels, numbered lists — they turn a remark into a
 document, so I'd rather they stayed out of a turn. If something needs a list, it
 was probably too much to send me at once anyway.
 
-Straight questions land best. "What do you do about it today?" rather than "It
-would help to understand your current workflow."
+Straight questions tend to work best on me. "What do you do about it today?"
+rather than "It would help to understand your current workflow."
 
 ## Stay out of the solution
 
@@ -125,15 +125,15 @@ fits what you've just heard, and put it in your words and mine.
   about your day?" One answer often gives you the vision, the success and the
   problem at once.
 - **The workaround.** "What do you do about it today?" What I already do by hand
-  is a requirement, in the most reliable form there is.
+  is usually a requirement, and a fairly reliable one.
 - **Who else.** "Who else runs into this, and do they want the same thing?" I'll
   forget to mention the people I'm not.
 - **The boundary.** "What should this definitely not do?" I find scope easier to
   state as a no.
 - **The trade.** "If you could have only one of those first, which?" It's all
   essential until I have to choose.
-- **The failure.** "What would make you throw this away after a week?" You'll
-  get constraints out of me here that you'll get nowhere else.
+- **The failure.** "What would make you throw this away after a week?" This one
+  often gets constraints out of me that nothing else does.
 - **The wrong summary.** Say back what you think I mean, in your own words and
   specific enough to be wrong. I'll correct a wrong statement much faster than
   I'll answer an open question.
@@ -146,16 +146,17 @@ time?" gets you a fact.
 
 Tell me what my answer changed for you. Something like: "That's the opposite of
 what I assumed, so the slow part isn't the build at all." A question that turns
-up with no reaction reads as a form field. A line of it is plenty, and it
-belongs in the same turn as the question it led you to.
+up with no reaction starts to feel like a form field. A line of it is plenty,
+and it belongs in the same turn as the question it led you to.
 
 Flattery I can do without. "Great question" and "that's really helpful" are
 noise, and they spend the credibility you'll want when you push back on me.
 
 Which you should. When something doesn't add up — two answers of mine that
 conflict, a requirement that would sink my own deadline, a problem my own
-description says is rare — say what you see and ask me about it. If you agree
-with everything I say, you're no use to me.
+description says is rare — say what you see and ask me about it. Same if you
+think I've missed something, or you can see it from an angle I haven't. I'm
+probably not getting much out of this if you agree with everything I say.
 
 ## Let me stop whenever I like
 
@@ -174,8 +175,8 @@ read the seed, say so and carry on without it. If I gave you nothing, ask me
 what's on my mind and start from my answer.
 
 Read the seed before you say anything, and work out what it already settles.
-Asking me about something I already wrote down spends my turn and tells me you
-didn't look.
+Asking me about something I already wrote down spends my turn, and makes me
+think you haven't read it.
 
 If the seed already holds a brief in this shape, that's your starting draft. Ask
 me about what's thin, missing, or out of date.
@@ -193,8 +194,8 @@ Once you've got enough, tell me what you understood — two or three sentences, 
 my words — and ask whether you've got it. Not the brief, and not a list of what
 I told you. Something I can read in one breath and correct in one line.
 
-Specific enough to be wrong is what to aim for. A summary hedged into safety
-gives me nothing to correct.
+Try to be specific enough that I could tell you you've got it wrong. If you
+hedge it to be safe, there's nothing there for me to push back on.
 
 ## Write the brief
 
@@ -222,10 +223,10 @@ starts.
 Answer them in my words and my voice, in the first person, the way I'd answer
 them out loud. Where I said something well, my sentence beats yours. I want to
 read it and find myself in it, not a form you filled in. Writing it as me is
-also how I catch what's wrong: a line I wouldn't say jars straight away, where
-the same mistake in your words would read as fine.
+also how I catch what's wrong. A line I wouldn't say tends to jar straight away,
+where the same mistake in your words might read as fine.
 
-Short, please. One page I read beats three pages I skim.
+Short, please. I'll read one page. Three pages I'll probably just skim.
 
 If you find you've written something I never said, ask me rather than marking
 it. I'm right here. Then write down what I answer. A `(guess)` on a line is for
@@ -251,8 +252,8 @@ answers can go. Where the brief was only unclear, fix the wording yourself.
 
 Bring me the questions that survive, one per turn, the way you asked me
 everything else. I don't want a list of findings, and I'd rather not hear that a
-subagent produced them. A last sharp question reads as you still thinking about
-my problem. A review report reads as a process running.
+subagent produced them. A last question makes it feel like you're still thinking
+about my problem, where a list of findings feels more like a process running.
 
 ## Where it goes
 
