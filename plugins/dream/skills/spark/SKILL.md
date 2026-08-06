@@ -97,7 +97,8 @@ when my last answer has nothing left in it.
 
 ## What the brief needs to cover
 
-- **Vision.** The future I want.
+- **Vision.** What I want to be able to do, or to make possible. It usually
+  arrives as a "wouldn't it be good if".
 - **Problem.** The pain or the missed chance behind it. Why it matters.
 - **Requirements.** What has to be true of anything I'd accept.
 - **Constraints.** What limits the solution: technical, money, legal, people,
@@ -201,7 +202,7 @@ A temporary file outside the repo. The headings are questions, and what goes
 under each one is my answer:
 
 ```markdown
-# What do I want to be true?
+# What do I want to be able to do?
 
 # What's wrong or missing today?
 
