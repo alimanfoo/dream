@@ -152,21 +152,11 @@ Its body is written in the user's voice, as if the user typed it: "ask me",
 in the plugin programs an agent precisely. This one shapes a conversation, so it
 opens one rather than describing one. An agent continues the register it is
 handed, which makes this the strongest lever there is on how the interview
-feels. Don't normalise it back to the third person. The frontmatter
-`description` stays third person, since the harness reads that to pick the
-skill. The body asks for plain writing in its own words rather than naming the
-[Plain English guide](plugins/dream/plain-english.md) for the same reason:
-nobody says "load this document" out loud.
-
-So it asks rather than orders: "I'd rather you didn't use `AskUserQuestion`",
-"flattery I can do without". An agent handed a stack of orders runs the
-interview in that register, which is the failure the skill exists to avoid. But
-hedge the ask, not the fact. "I'd rather you asked me one thing at a time" says
-exactly what is wanted. "You might want to consider shorter turns" says nothing.
-What loses an agent is vagueness about what is wanted, not the absence of an
-imperative mood. So a want stays open ("that's what I'm after"), and a fact
-about the user or the work stays flat ("a wall of text will easily overwhelm
-me").
+feels. Don't normalise it back to the third person, or into a stack of orders.
+The frontmatter `description` stays third person, since the harness reads that
+to pick the skill. The body asks for plain writing in its own words rather than
+naming the [Plain English guide](plugins/dream/plain-english.md) for the same
+reason: nobody says "load this document" out loud.
 
 A skill that fans a review out to parallel subagents must wait for every one of
 them, then combine their findings into one list before it returns or applies any
