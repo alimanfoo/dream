@@ -105,9 +105,9 @@ exception for both guides, since it carries only the bare minimum for changes
 small enough to skip the full guides. It inlines a subset of rules from the
 coherent coding and plain English guides instead of loading either in full. The
 [/dream:spark skill](plugins/dream/skills/spark/SKILL.md) is the other
-exception, and loads neither. The guides govern the prose the plugin writes
-about itself, and spark writes a conversation with a person and a brief in that
-person's words. It asks for what it wants in the user's own voice instead.
+exception, and loads neither. The Plain English guide reaches what an agent
+writes to the user, so spark's turns and its brief do sit inside its scope. But
+spark's body is the user speaking, and naming a document would break that voice.
 
 Ways the two layers get crossed:
 
@@ -162,11 +162,12 @@ So it asks rather than orders: "I'd rather you didn't use `AskUserQuestion`",
 "flattery I can do without", "if you could ask only one thing, what would it
 be?". The register is itself the instruction. An agent handed a stack of orders
 runs the interview in that register, and an interview issued as orders is the
-failure mode the skill exists to avoid. That is also why it asks for plain
-writing in its own words rather than loading the
-[Plain English guide](plugins/dream/plain-english.md): naming a guide is the one
-move that would break the voice, since nobody says "load this document" out
-loud.
+failure mode the skill exists to avoid. It is also why the body asks for plain
+writing in its own words rather than naming the
+[Plain English guide](plugins/dream/plain-english.md): nobody says "load this
+document" out loud. The skill is shaping a conversation, where every other
+prompt in the plugin is programming an agent precisely, and that is the split
+that decides how each one is written.
 
 Hedge the ask, not the fact. "I'd rather you asked me one thing at a time" is
 polite and still says exactly what is wanted. "You might want to consider
