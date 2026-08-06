@@ -105,9 +105,7 @@ exception for both guides, since it carries only the bare minimum for changes
 small enough to skip the full guides. It inlines a subset of rules from the
 coherent coding and plain English guides instead of loading either in full. The
 [/dream:spark skill](plugins/dream/skills/spark/SKILL.md) is the other
-exception, and loads neither. The Plain English guide reaches what an agent
-writes to the user, so spark's turns and its brief do sit inside its scope. But
-spark's body is the user speaking, and naming a document would break that voice.
+exception, and loads neither. It is an experiment, off-convention on purpose.
 
 Ways the two layers get crossed:
 
@@ -141,40 +139,34 @@ such skill.
 already wrote. The duplication between them is a decision, not a defect, so
 don't single-home it.
 
-`/dream:spark` is the one skill the user experiences as a conversation rather
-than a result. So it is written to a different bar: how the turns feel to the
-person on the other end. Its turns stay small, one idea at a time. Its checks
-stay out of sight, its subagent's findings come back to the user as questions,
-and it names no phase, step or artefact to them. A change that makes it more
-thorough at the cost of feeling like a form is the wrong trade. Judge an edit to
-it by what the user experiences, not by what the skill covers.
+`/dream:spark` is an experiment, trying a different approach from the rest of
+the plugin. It runs against repo convention on purpose, so treat a deviation as
+deliberate rather than as drift to tidy up. It is also the one skill the user
+experiences as a conversation rather than a result, so judge an edit to it by
+what the person on the other end experiences, not by what the skill covers. A
+change that makes it more thorough at the cost of feeling like a form is the
+wrong trade.
 
-`/dream:spark`'s body is written in the user's voice, as if the user typed it:
-"ask me", "send me two and I'll answer one of them and lose the other". Every
-other skill addresses the agent the way a spec does. This one is the setup
-typing the user would otherwise do, so it opens the conversation rather than
-describing one. An agent continues the register it is handed, and this is the
-strongest lever on that register. Don't normalise it back to the third person.
-Its frontmatter `description` stays third person, since the harness reads that
-to pick the skill.
+Its body is written in the user's voice, as if the user typed it: "ask me",
+"send me two and I'll answer one of them and lose the other". Every other prompt
+in the plugin programs an agent precisely. This one shapes a conversation, so it
+opens one rather than describing one. An agent continues the register it is
+handed, which makes this the strongest lever there is on how the interview
+feels. Don't normalise it back to the third person. The frontmatter
+`description` stays third person, since the harness reads that to pick the
+skill. The body asks for plain writing in its own words rather than naming the
+[Plain English guide](plugins/dream/plain-english.md) for the same reason:
+nobody says "load this document" out loud.
 
 So it asks rather than orders: "I'd rather you didn't use `AskUserQuestion`",
-"flattery I can do without", "if you could ask only one thing, what would it
-be?". The register is itself the instruction. An agent handed a stack of orders
-runs the interview in that register, and an interview issued as orders is the
-failure mode the skill exists to avoid. It is also why the body asks for plain
-writing in its own words rather than naming the
-[Plain English guide](plugins/dream/plain-english.md): nobody says "load this
-document" out loud. The skill is shaping a conversation, where every other
-prompt in the plugin is programming an agent precisely, and that is the split
-that decides how each one is written.
-
-Hedge the ask, not the fact. "I'd rather you asked me one thing at a time" is
-polite and still says exactly what is wanted. "You might want to consider
-shorter turns" says nothing. What loses an agent is vagueness about what is
-wanted, not the absence of an imperative mood. So a want stays open ("that's
-what I'm after", "one line is worth it"), and a fact about the user or the work
-stays flat ("a wall of text will easily overwhelm me").
+"flattery I can do without". An agent handed a stack of orders runs the
+interview in that register, which is the failure the skill exists to avoid. But
+hedge the ask, not the fact. "I'd rather you asked me one thing at a time" says
+exactly what is wanted. "You might want to consider shorter turns" says nothing.
+What loses an agent is vagueness about what is wanted, not the absence of an
+imperative mood. So a want stays open ("that's what I'm after"), and a fact
+about the user or the work stays flat ("a wall of text will easily overwhelm
+me").
 
 A skill that fans a review out to parallel subagents must wait for every one of
 them, then combine their findings into one list before it returns or applies any
