@@ -293,6 +293,23 @@ plugins/:
             Handle what the user posts:
             Merge:
             Collect:
+      spark/:
+        SKILL.md:
+          Spark:
+            Ask me in chat:
+            Say one thing at a time:
+            Sound like a person:
+            Stay out of the solution:
+            Follow the thread:
+            What the brief needs to cover:
+            Questions that open something up:
+            Have a reaction:
+            Let me stop whenever I like:
+            Start from what I've given you:
+            Play it back:
+            Write the brief:
+            Let a designer read it:
+            Where it goes:
       team/:
         SKILL.md:
           Dream team:

@@ -103,7 +103,9 @@ loads a guide rather than restating a rule from it. The
 [/dream:less skill](plugins/dream/skills/less/SKILL.md) is a deliberate
 exception for both guides, since it carries only the bare minimum for changes
 small enough to skip the full guides. It inlines a subset of rules from the
-coherent coding and plain English guides instead of loading either in full.
+coherent coding and plain English guides instead of loading either in full. The
+[/dream:spark skill](plugins/dream/skills/spark/SKILL.md) is the other
+exception, and loads neither. It is an experiment, off-convention on purpose.
 
 Ways the two layers get crossed:
 
@@ -131,6 +133,31 @@ The README lists the utility skills a user can run on their own. That list is
 their one home. Add a new skill of this kind there. `coherence-review` is one
 such skill.
 
+`/dream:spark` and `/dream:requirements-analysis` overlap on purpose.
+`/dream:spark` interviews the user to draw requirements out of them.
+`/dream:requirements-analysis` produces them on its own, from material the user
+already wrote. The duplication between them is a decision, not a defect, so
+don't single-home it.
+
+`/dream:spark` is an experiment, trying a different approach from the rest of
+the plugin. It runs against repo convention on purpose, so treat a deviation as
+deliberate rather than as drift to tidy up. It is also the one skill the user
+experiences as a conversation rather than a result, so judge an edit to it by
+what the person on the other end experiences, not by what the skill covers. A
+change that makes it more thorough at the cost of feeling like a form is the
+wrong trade.
+
+Its body is written in the user's voice, as if the user typed it: "ask me",
+"send me two and I'll answer one of them and lose the other". Every other prompt
+in the plugin programs an agent precisely. This one shapes a conversation, so it
+opens one rather than describing one. An agent continues the register it is
+handed, which makes this the strongest lever there is on how the interview
+feels. Don't normalise it back to the third person, or into a stack of orders.
+The frontmatter `description` stays third person, since the harness reads that
+to pick the skill. The body asks for plain writing in its own words rather than
+naming the [Plain English guide](plugins/dream/plain-english.md) for the same
+reason: nobody says "load this document" out loud.
+
 A skill that fans a review out to parallel subagents must wait for every one of
 them, then combine their findings into one list before it returns or applies any
 finding. Findings land one subagent at a time, and no subagent reads another's
@@ -148,8 +175,8 @@ such skill. Don't pick both.
 
 A skill that spawns subagents must also tell the agent to go idle while they
 run, rather than sleep, poll, or narrate the wait. `code-review`,
-`coherence-review`, `copy-edit`, and `smith` each carry that line at the spawn
-site. Give a new one the same line.
+`coherence-review`, `copy-edit`, `smith`, and `spark` each carry that line at
+the spawn site. Give a new one the same line.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
@@ -328,9 +355,18 @@ Rewrite each as an act: _write X, check Y, name Z_.
 
 **Agents reason forward from context**: they're next-token machines, with no
 foresight of what they're about to write. So "before reaching for X, do Y"
-doesn't work. The agent doesn't know they're about to reach for X. Checks have
-to fire after the candidate content exists in context. "If you notice you've
-written X" is what works.
+doesn't work. The agent doesn't know they're about to reach for X. A check has
+to run after the candidate content exists, and it has to name an act rather than
+wait on a realisation: "reread the draft and cut any X", not "if you notice
+you've written X". Noticing is not something an agent does unprompted, so a
+check that waits for it never fires.
+
+Rereading carries its own scope, which is the other reason to prefer it. It
+reaches only what persists: a file, a draft, a message not yet sent. A turn
+already streamed to the user can't be reread, so shape that one up front
+instead. Say what it holds ("one question a turn") and where the rest goes
+("everything else keeps until its own turn"), so the constraint drives the
+writing rather than judging it afterwards.
 
 **Agents act on a name's face value**: a literal-following model obeys the
 everyday sense of the words you name things with: slots, moves, roles, phases.
