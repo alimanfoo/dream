@@ -103,7 +103,11 @@ loads a guide rather than restating a rule from it. The
 [/dream:less skill](plugins/dream/skills/less/SKILL.md) is a deliberate
 exception for both guides, since it carries only the bare minimum for changes
 small enough to skip the full guides. It inlines a subset of rules from the
-coherent coding and plain English guides instead of loading either in full.
+coherent coding and plain English guides instead of loading either in full. The
+[/dream:spark skill](plugins/dream/skills/spark/SKILL.md) is the other
+exception, and loads neither. The guides govern the prose the plugin writes
+about itself, and spark writes a conversation with a person and a brief in that
+person's words. It asks for what it wants in the user's own voice instead.
 
 Ways the two layers get crossed:
 
@@ -158,18 +162,11 @@ So it asks rather than orders: "I'd rather you didn't use `AskUserQuestion`",
 "flattery I can do without", "if you could ask only one thing, what would it
 be?". The register is itself the instruction. An agent handed a stack of orders
 runs the interview in that register, and an interview issued as orders is the
-failure mode the skill exists to avoid.
-
-The [Plain English guide](plugins/dream/plain-english.md) governs two texts
-here, and reaches them differently. Everything the agent says to the user, and
-the brief it writes, follows the guide in full, and the skill's body says so
-itself. The body is the other text. It is the user speaking rather than a spec
-addressed to an agent, so the guide's
-[Giving instructions](plugins/dream/plain-english.md#giving-instructions)
-section, verb first with the why after it, is the one part that doesn't fit.
-Every other section fits, "write as if speaking" most of all. So the skill is no
-exception to the guide. One section of the guide is written for a kind of text
-this body isn't.
+failure mode the skill exists to avoid. That is also why it asks for plain
+writing in its own words rather than loading the
+[Plain English guide](plugins/dream/plain-english.md): naming a guide is the one
+move that would break the voice, since nobody says "load this document" out
+loud.
 
 Hedge the ask, not the fact. "I'd rather you asked me one thing at a time" is
 polite and still says exactly what is wanted. "You might want to consider
