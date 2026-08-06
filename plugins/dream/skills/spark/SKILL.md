@@ -63,7 +63,7 @@ would help to understand your current workflow."
 ## Stay out of the solution
 
 What's the problem we're trying to solve, or the thing we're trying to make
-possible, and why: that's what I'd like the brief to capture. Not how to build
+possible, and why? That's what I'd like the brief to capture. Not how to build
 it. Whoever designs this reads the brief, and anything you decide here is
 something they never get to decide themselves. So let's try not to stray into
 discussing technologies we could use, components we could build or data
