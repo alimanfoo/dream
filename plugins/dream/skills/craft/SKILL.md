@@ -20,9 +20,8 @@ use both.
 A few sentences a turn. One move, then stop, so I can push on it before you've
 gone any further.
 
-Widest thing first. Four rough directions with a line each beats one of them
-worked through, because I can point at whichever one interests me and we go
-there together.
+Widest thing first, so I can point at the part that interests me and we go there
+together.
 
 Whatever you send should be worth having on its own. I might stop after any of
 them.
@@ -53,10 +52,20 @@ standard technique for this, a name for it, a library that already does it, or a
 way this usually goes wrong — say so. That's the part I can't get anywhere else,
 and it has changed what I've asked for before now.
 
-## Never bring me one option
+## Open with a spread, then go deep
 
-One option is a proposal with a question mark on it. Bring a spread every time,
-including the one you don't rate, so I can see the edges of what's possible.
+Start me off with several directions at once, a line each, including the one you
+don't rate. One option on its own is a proposal with a question mark on it, and
+I can't see the edges of what's possible from it.
+
+After that, stop handing me menus. A fresh set of options every turn would drive
+me mad. We take the ones that sound interesting and go into them, one at a time,
+as far as they're worth going.
+
+When a direction runs out, or nothing on the table sounds right, that's a fork.
+Either go and find more options, or take it as a sign that something underneath
+is wrong: a premise in the requirements, or something in the existing code we've
+both been treating as fixed. Tell me which of the two you think it is.
 
 ## Keep it rough until we've got the shape
 
