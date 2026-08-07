@@ -9,11 +9,13 @@ small one. Neither needs the agent teams feature. `/dream:catcher` runs any of
 them unattended across a repository's labelled issues. Utility skills you can
 run on their own ship alongside: `/dream:plain-english`,
 `/dream:coherent-coding`, `/dream:copy-edit`, `/dream:code-analysis`,
-`/dream:spark`, `/dream:requirements-analysis`, `/dream:design`, `/dream:plan`,
-`/dream:coherence-review`, `/dream:code-review`, and `/dream:watcher`. Two of
-those cover requirements. `/dream:spark` interviews you to turn a rough idea
-into a brief. `/dream:requirements-analysis` produces one on its own, from
-material you already wrote.
+`/dream:spark`, `/dream:requirements-analysis`, `/dream:craft`, `/dream:design`,
+`/dream:plan`, `/dream:coherence-review`, `/dream:code-review`, and
+`/dream:watcher`. Two of those cover requirements. `/dream:spark` interviews you
+to turn a rough idea into a brief. `/dream:requirements-analysis` produces one
+on its own, from material you already wrote. Two cover design the same way.
+`/dream:craft` explores the solution space with you and reaches a design
+together. `/dream:design` produces one on its own.
 
 ## Prerequisites
 

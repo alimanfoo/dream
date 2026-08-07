@@ -104,8 +104,11 @@ loads a guide rather than restating a rule from it. The
 exception for both guides, since it carries only the bare minimum for changes
 small enough to skip the full guides. It inlines a subset of rules from the
 coherent coding and plain English guides instead of loading either in full. The
-[/dream:spark skill](plugins/dream/skills/spark/SKILL.md) is the other
-exception, and loads neither. It is an experiment, off-convention on purpose.
+[/dream:spark skill](plugins/dream/skills/spark/SKILL.md) and the
+[/dream:craft skill](plugins/dream/skills/craft/SKILL.md) are the other
+exceptions, off-convention on purpose. Spark loads neither guide. Craft loads
+the coherent coding guide when it draws the finished design, but not the Plain
+English guide.
 
 Ways the two layers get crossed:
 
@@ -139,6 +142,12 @@ such skill.
 already wrote. The duplication between them is a decision, not a defect, so
 don't single-home it.
 
+`/dream:craft` and `/dream:design` overlap the same way, and the decision behind
+it is stronger. Craft explores the solution space with the user and reaches a
+design together. Design produces one on its own. Craft was built standalone
+rather than calling design, so the duplication runs through the whole skill.
+Don't single-home it either.
+
 `/dream:spark` is an experiment, trying a different approach from the rest of
 the plugin. It runs against repo convention on purpose, so treat a deviation as
 deliberate rather than as drift to tidy up. It is also the one skill the user
@@ -157,6 +166,12 @@ The frontmatter `description` stays third person, since the harness reads that
 to pick the skill. The body asks for plain writing in its own words rather than
 naming the [Plain English guide](plugins/dream/plain-english.md) for the same
 reason: nobody says "load this document" out loud.
+
+`/dream:craft` is written the same way and judged the same way. Everything in
+the two paragraphs above applies to it, including the first-person body and the
+third-person frontmatter. It does name the
+[coherent coding guide](plugins/dream/coherent-coding.md), because by then the
+user is asking for a careful drawing rather than a conversation.
 
 A skill that fans a review out to parallel subagents must wait for every one of
 them, then combine their findings into one list before it returns or applies any
