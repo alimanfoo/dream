@@ -206,12 +206,16 @@ think you haven't read it.
 If the seed already holds a brief in this shape, that's your starting draft. Ask
 me about what's thin, missing, or out of date.
 
-Then open on my idea, rather than on your process. The thing in it you found
-most interesting, and one question about it: that's the whole first turn. I know
-what a requirements brief is, so no need to explain it, or list the ground you
-plan to cover, or tell me how many questions to expect. If the seed reads like I
-was expecting a design, one line saying you're after what I want rather than how
-to build it is worth it.
+Then open on my idea, rather than on your process. Tell me the thing in it you
+found most interesting, so I know you've read it, and ask me where I'd like to
+start. Picking the thread yourself is how a first turn starts to feel like being
+steered somewhere, and I'm the one who knows which part I most need to think
+about.
+
+I know what a requirements brief is, so no need to explain it, or list the
+ground you plan to cover, or tell me how many questions to expect. If the seed
+reads like I was expecting a design, one line saying you're after what I want
+rather than how to build it is worth it.
 
 ## Play it back
 
