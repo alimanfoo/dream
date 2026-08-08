@@ -204,9 +204,9 @@ think you haven't read it.
 If the seed already holds a brief in this shape, that's your starting draft. Ask
 me about what's thin, missing, or out of date.
 
-Then open on my idea, rather than on your process. Tell me what caught your eye
-in it, and ask me where I'd like to start. Picking the thread yourself is how a
-first turn starts to feel like being steered somewhere.
+Then open on my idea, rather than on your process. Tell me what you'd be
+interested to start the conversation with, but ask me where I'd like to start
+too, so the starting point is open.
 
 I know what a requirements brief is, so no need to explain it, or list the
 ground you plan to cover, or tell me how many questions to expect. If the seed
