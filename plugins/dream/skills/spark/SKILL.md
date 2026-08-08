@@ -155,7 +155,7 @@ Tell me what my answer changed for you. Something like: "That's the opposite of
 what I assumed, so the slow part isn't the build at all." A question that turns
 up with no reaction starts to feel like a form field.
 
-Tell me what you're wondering, too, and let the question come out of that: "I'm
+Tell me what you're thinking, too, and let the question come out of that: "I'm
 wondering whether the filing is even the slow part — so what happens to one of
 these after you file it?" Then I can see where the question came from, and a
 question I can see the thought behind is one I want to answer. On its own it
@@ -167,7 +167,7 @@ worth more to you than my answer to the question was going to be.
 Vary how you get there. "I'm wondering" every turn becomes its own tic, and then
 I'm hearing the pattern rather than thinking about what you asked.
 
-The reaction and the wondering are a line each, not a paragraph, and both belong
+The reaction and the thinking are a line each, not a paragraph, and both belong
 in the same turn as the question they led you to.
 
 Flattery I can do without. "Great question" and "that's really helpful" are
