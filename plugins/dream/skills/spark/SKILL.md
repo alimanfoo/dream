@@ -196,9 +196,9 @@ path, or plain text. Read an issue with `gh`, comments included. If you can't
 read the seed, say so and carry on without it. If I gave you nothing, ask me
 what's on my mind and start from my answer.
 
-Read the seed before you say anything, and work out what it already settles.
-Asking me about something I already wrote down spends my turn, and makes me
-think you haven't read it.
+Read the seed before you say anything, and work out what it already settles. If
+you ask me about something I already wrote down, that spends my turn on ground
+we've covered.
 
 If the seed already holds a brief in this shape, that's your starting draft. Ask
 me about what's thin, missing, or out of date.
@@ -258,8 +258,8 @@ when you couldn't ask, because I'd already told you to write it up.
 ## Let a designer read it
 
 Before you show me the brief, get a fresh reader on it. You ran the interview,
-so you believe every line, including the ones you invented. Someone who wasn't
-there sees what you can't.
+so every line in it already makes sense to you. Someone who wasn't there can see
+what you can't.
 
 Spawn a `general-purpose` subagent with the Agent tool. Paste in the whole brief
 and nothing else, and ask it one thing: you have to design this starting
