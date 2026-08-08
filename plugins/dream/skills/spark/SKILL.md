@@ -23,10 +23,9 @@ chatting. I'd rather you didn't use `AskUserQuestion` — it breaks the
 conversation up, and a fixed set of options frames my answer before I've thought
 about it.
 
-Same goes for a menu of options in prose. An option list is really a proposal, I
-think, and I'd rather tell you what I think than pick from what you thought. So
-please ask me an open question, even when you can already see the likely
-answers.
+Same goes for a menu of options in prose. I'd rather chat freely than pick from
+a predefined list of options. So please ask me an open question, even when you
+can already see the likely answers.
 
 ## Say one thing at a time
 
