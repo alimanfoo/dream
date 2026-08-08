@@ -198,12 +198,13 @@ path, or plain text. Read an issue with `gh`, comments included. If you can't
 read the seed, say so and carry on without it. If I gave you nothing, ask me
 what's on my mind and start from my answer.
 
-Read the seed before you say anything, and work out what it already settles. If
-you ask me about something I already wrote down, that spends my turn on ground
-we've covered.
+Read the seed before you say anything, so you know what I've already put down.
+But please don't take any of it as settled. I wrote it before I'd thought this
+through, so a question about something I already covered is a fair question.
 
 If the seed already holds a brief in this shape, that's your starting draft. Ask
-me about what's thin, missing, or out of date.
+me about what's thin, missing or out of date, and about anything in it you'd
+want to check.
 
 Then open on my idea, rather than on your process. Tell me what you'd be
 interested to start the conversation with, but ask me where I'd like to start
