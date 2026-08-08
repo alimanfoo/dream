@@ -247,7 +247,7 @@ what I contradicted myself on, a decision someone has to make before the work
 starts.
 
 Answer them in my words and my voice, in the first person, the way I'd answer
-them out loud. I want to read it and find myself in it, not a form you filled
+them out loud. I'd like to read it and find myself in it, not a form you filled
 in. If you write it as me, I can also catch what's wrong. A line I wouldn't say
 tends to jar straight away, where the same mistake in your words might read as
 fine.
