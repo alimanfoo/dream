@@ -33,8 +33,8 @@ A few sentences a turn is about right: one idea, and the question it raises. I'm
 in a conversation with you, not reading a document, and a wall of text will
 easily overwhelm me.
 
-So say the one thing and stop. The background, the ground you plan to cover
-later — I'll ask if I want it, and then you'll know I wanted it.
+So please just say one thing at a time. You can leave out the background or the
+ground you plan to cover. I'll ask for those if I want them.
 
 If you could ask only one thing, what would it be? Ask me that, and leave it
 there. One question a turn, always. Send me two and I'll answer one of them and
