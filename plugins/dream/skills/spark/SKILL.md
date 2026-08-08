@@ -24,8 +24,9 @@ conversation up, and a fixed set of options frames my answer before I've thought
 about it.
 
 Same goes for a menu of options in prose. An option list is really a proposal, I
-think, and I'd rather tell you what I think than pick from what you thought. An
-open question every time, even when you can already see the likely answers.
+think, and I'd rather tell you what I think than pick from what you thought. So
+please ask me an open question, even when you can already see the likely
+answers.
 
 ## Say one thing at a time
 
@@ -37,8 +38,7 @@ So please just say one thing at a time. You can leave out the background or the
 ground you plan to cover. I'll ask for those if I want them.
 
 If you could ask only one thing, what would it be? Ask me that, and leave it
-there. One question a turn, always. Send me two and I'll answer one of them and
-lose the other.
+there. If you send me two I'll answer one of them and lose the other.
 
 Everything else you're holding keeps until its own turn. It'll still be there.
 
@@ -46,8 +46,8 @@ No need to recap what we've covered. I was there.
 
 ## Sound like a person
 
-Talk to me the way you'd talk to someone whose problem you find interesting. My
-words for my own thing, rather than yours.
+Talk to me the way you'd talk to someone whose problem you find interesting. And
+please use my words for my own thing, rather than yours.
 
 I find it difficult to understand jargon, complex sentences and long paragraphs.
 So keep it plain and simple, in what you say to me and in what you write down.
@@ -74,9 +74,8 @@ underlying requirements, and write those down instead.
 
 ## Follow the thread
 
-What I just said is the best source of your next question. A question that
-obviously grew out of my answer is how I know you were listening, so start
-there.
+What I just said is the best source of your next question. When a question
+obviously grew out of my answer, I can tell you were listening, so start there.
 
 Things worth pulling on, whichever is strongest:
 
@@ -88,8 +87,8 @@ Things worth pulling on, whichever is strongest:
 - the part I wrote most about, or complained about hardest
 
 Stay on a thread while it's still giving you something. When my answers start to
-repeat, or I say I don't know, it's done. Reaching for a fresh question is for
-when my last answer has nothing left in it.
+repeat, or I say I don't know, it's done. Save a fresh question for when my last
+answer has nothing left in it.
 
 ## What the brief needs to cover
 
@@ -116,13 +115,13 @@ run of pointed questions gets relentless, and it keeps me on the track you
 picked. An open one lets me take it somewhere you'd never have known to ask
 about.
 
-A thread running out is a good moment for one, in place of reaching for the
-thinnest thing you don't know yet.
+When a thread runs out, that's a good moment for one, instead of reaching for
+the thinnest thing you don't know yet.
 
 ## Questions that open something up
 
-Examples rather than a sequence, so no need to work down them. Pick whichever
-fits what you've just heard, and put it in your words and mine.
+These are examples rather than a sequence, so there's no need to work down them.
+Pick whichever fits what you've just heard, and put it in your words and mine.
 
 - **The last time.** "When did this last bite you, and what happened?" I'll
   describe a real instance far better than I'll describe the general case.
@@ -223,8 +222,8 @@ hedge it to be safe, there's nothing there for me to push back on.
 
 ## Write the brief
 
-A temporary file outside the repo. The headings are questions, and what goes
-under each one is my answer:
+Please write it to a temporary file outside the repo. The headings are
+questions, and what goes under each one is my answer:
 
 ```markdown
 ## What do I want to be able to do?
@@ -246,8 +245,8 @@ starts.
 
 Answer them in my words and my voice, in the first person, the way I'd answer
 them out loud. Where I said something well, my sentence beats yours. I want to
-read it and find myself in it, not a form you filled in. Writing it as me is
-also how I catch what's wrong. A line I wouldn't say tends to jar straight away,
+read it and find myself in it, not a form you filled in. If you write it as me,
+I can also catch what's wrong. A line I wouldn't say tends to jar straight away,
 where the same mistake in your words might read as fine.
 
 Short, please. I'll read one page. Three pages I'll probably just skim.
