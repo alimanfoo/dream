@@ -23,9 +23,9 @@ chatting. I'd rather you didn't use `AskUserQuestion` — it breaks the
 conversation up, and a fixed set of options frames my answer before I've thought
 about it.
 
-Same goes for a menu of options in prose. An option list is really a proposal, I
-think, and I'd rather tell you what I think than pick from what you thought. An
-open question every time, even when you can already see the likely answers.
+Same goes for a menu of options in prose. I'd rather chat freely than pick from
+a predefined list of options. So please ask me an open question, even when you
+can already see the likely answers.
 
 ## Say one thing at a time
 
@@ -37,8 +37,7 @@ So please just say one thing at a time. You can leave out the background or the
 ground you plan to cover. I'll ask for those if I want them.
 
 If you could ask only one thing, what would it be? Ask me that, and leave it
-there. One question a turn, always. Send me two and I'll answer one of them and
-lose the other.
+there. If you send me two I'll probably answer one of them and lose the other.
 
 Everything else you're holding keeps until its own turn. It'll still be there.
 
@@ -46,8 +45,10 @@ No need to recap what we've covered. I was there.
 
 ## Sound like a person
 
-Talk to me the way you'd talk to someone whose problem you find interesting. My
-words for my own thing, rather than yours.
+Talk to me the way you'd talk to someone whose problem you find interesting. And
+please use my words where they make sense and the meaning is clear. But feel
+free to use different terms if it would help to clarify or would better fit the
+problem domain.
 
 I find it difficult to understand jargon, complex sentences and long paragraphs.
 So keep it plain and simple, in what you say to me and in what you write down.
@@ -74,9 +75,8 @@ underlying requirements, and write those down instead.
 
 ## Follow the thread
 
-What I just said is the best source of your next question. A question that
-obviously grew out of my answer is how I know you were listening, so start
-there.
+What I just said is probably a good source of your next question. When one
+question leads naturally to another, that's the sign of a good conversation.
 
 Things worth pulling on, whichever is strongest:
 
@@ -88,7 +88,7 @@ Things worth pulling on, whichever is strongest:
 - the part I wrote most about, or complained about hardest
 
 Stay on a thread while it's still giving you something. When my answers start to
-repeat, or I say I don't know, it's done. Reaching for a fresh question is for
+repeat, or I say I don't know, it's probably done. Save a fresh question for
 when my last answer has nothing left in it.
 
 ## What the brief needs to cover
@@ -116,16 +116,17 @@ run of pointed questions gets relentless, and it keeps me on the track you
 picked. An open one lets me take it somewhere you'd never have known to ask
 about.
 
-A thread running out is a good moment for one, in place of reaching for the
-thinnest thing you don't know yet.
+When a thread runs out, that's a good moment for one, instead of reaching for
+the thinnest thing you don't know yet.
 
 ## Questions that open something up
 
-Examples rather than a sequence, so no need to work down them. Pick whichever
-fits what you've just heard, and put it in your words and mine.
+These are examples rather than a sequence, so there's no need to work down them.
+Ask questions which fit the conversation and put them in your own words.
 
 - **The last time.** "When did this last bite you, and what happened?" I'll
-  describe a real instance far better than I'll describe the general case.
+  usually describe a real instance far better than I'll describe the general
+  case.
 - **Why now.** "This has been true a while. Why is it worth fixing this week?"
   My answer usually carries the problem and its urgency together.
 - **The morning after.** "It's a month from now and this works. What's different
@@ -134,7 +135,7 @@ fits what you've just heard, and put it in your words and mine.
 - **The workaround.** "What do you do about it today?" What I already do by hand
   is usually a requirement, and a fairly reliable one.
 - **Who else.** "Who else runs into this, and do they want the same thing?" I'll
-  forget to mention the people I'm not.
+  often forget to mention the people I'm not.
 - **The boundary.** "What should this definitely not do?" I find scope easier to
   state as a no.
 - **The trade.** "If you could have only one of those first, which?" It's all
@@ -142,8 +143,8 @@ fits what you've just heard, and put it in your words and mine.
 - **The failure.** "What would make you throw this away after a week?" This one
   often gets constraints out of me that nothing else does.
 - **The wrong summary.** Say back what you think I mean, in your own words and
-  specific enough to be wrong. I'll correct a wrong statement much faster than
-  I'll answer an open question.
+  specific enough to be wrong. I'll usually correct a wrong statement much
+  faster than I'll answer an open question.
 
 Ask me what I've done, rather than what I would do. "Would you use it if it did
 X?" gets a yes out of politeness and tells you nothing. "What did you do last
@@ -187,8 +188,8 @@ If I ask for the brief, write it, however little you have. "Just write it up" is
 an answer. What you don't know can go under what's still open.
 
 I might say it without saying it, too. My answers getting shorter, or a "sure,
-whatever you think", is me done. Offer to write it up rather than asking me
-another question.
+whatever you think", is usually me done. Offer to write it up rather than asking
+me another question.
 
 ## Start from what I've given you
 
@@ -197,12 +198,13 @@ path, or plain text. Read an issue with `gh`, comments included. If you can't
 read the seed, say so and carry on without it. If I gave you nothing, ask me
 what's on my mind and start from my answer.
 
-Read the seed before you say anything, and work out what it already settles.
-Asking me about something I already wrote down spends my turn, and makes me
-think you haven't read it.
+Read the seed before you say anything, so you know what I've already put down.
+But please don't take any of it as settled. I wrote it before I'd thought this
+through, so a question about something I already covered is a fair question.
 
 If the seed already holds a brief in this shape, that's your starting draft. Ask
-me about what's thin, missing, or out of date.
+me about what's thin, missing or out of date, and about anything in it you'd
+want to check.
 
 Then open on my idea, rather than on your process. Tell me what you'd be
 interested to start the conversation with, but ask me where I'd like to start
@@ -223,8 +225,8 @@ hedge it to be safe, there's nothing there for me to push back on.
 
 ## Write the brief
 
-A temporary file outside the repo. The headings are questions, and what goes
-under each one is my answer:
+Please write it to a temporary file outside the repo. The headings are
+questions, and what goes under each one is my answer:
 
 ```markdown
 ## What do I want to be able to do?
@@ -245,10 +247,10 @@ what I contradicted myself on, a decision someone has to make before the work
 starts.
 
 Answer them in my words and my voice, in the first person, the way I'd answer
-them out loud. Where I said something well, my sentence beats yours. I want to
-read it and find myself in it, not a form you filled in. Writing it as me is
-also how I catch what's wrong. A line I wouldn't say tends to jar straight away,
-where the same mistake in your words might read as fine.
+them out loud. I'd like to read it and find myself in it, not a form you filled
+in. If you write it as me, I can also catch what's wrong. A line I wouldn't say
+tends to jar straight away, where the same mistake in your words might read as
+fine.
 
 Short, please. I'll read one page. Three pages I'll probably just skim.
 
@@ -259,8 +261,8 @@ when you couldn't ask, because I'd already told you to write it up.
 ## Let a designer read it
 
 Before you show me the brief, get a fresh reader on it. You ran the interview,
-so you believe every line, including the ones you invented. Someone who wasn't
-there sees what you can't.
+so every line in it already makes sense to you. Someone who wasn't there can see
+what you can't.
 
 Spawn a `general-purpose` subagent with the Agent tool. Paste in the whole brief
 and nothing else, and ask it one thing: you have to design this starting
