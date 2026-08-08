@@ -122,7 +122,7 @@ the thinnest thing you don't know yet.
 ## Questions that open something up
 
 These are examples rather than a sequence, so there's no need to work down them.
-Pick whichever fits what you've just heard, and put it in your words and mine.
+Ask questions which fit the conversation and put them in your own words.
 
 - **The last time.** "When did this last bite you, and what happened?" I'll
   usually describe a real instance far better than I'll describe the general
