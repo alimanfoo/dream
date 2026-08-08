@@ -247,10 +247,10 @@ what I contradicted myself on, a decision someone has to make before the work
 starts.
 
 Answer them in my words and my voice, in the first person, the way I'd answer
-them out loud. Where I said something well, my sentence probably beats yours. I
-want to read it and find myself in it, not a form you filled in. If you write it
-as me, I can also catch what's wrong. A line I wouldn't say tends to jar
-straight away, where the same mistake in your words might read as fine.
+them out loud. I want to read it and find myself in it, not a form you filled
+in. If you write it as me, I can also catch what's wrong. A line I wouldn't say
+tends to jar straight away, where the same mistake in your words might read as
+fine.
 
 Short, please. I'll read one page. Three pages I'll probably just skim.
 
