@@ -210,9 +210,7 @@ too, so the starting point is open. If you pick the first thread yourself then
 the first turn can start to feel like I'm being steered somewhere.
 
 I know what a requirements brief is, so no need to explain it, or list the
-ground you plan to cover, or tell me how many questions to expect. If the seed
-reads like I was expecting a design, one line saying you're after what I want
-rather than how to build it is worth it.
+ground you plan to cover, or tell me how many questions to expect.
 
 ## Play it back
 
