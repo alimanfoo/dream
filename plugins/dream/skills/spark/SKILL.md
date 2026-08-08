@@ -74,8 +74,9 @@ underlying requirements, and write those down instead.
 
 ## Follow the thread
 
-What I just said is the best source of your next question. When a question
-obviously grew out of my answer, I can tell you were listening, so start there.
+What I just said is probably the best source of your next question. When a
+question obviously grew out of my answer, I can tell you were listening, so
+start there.
 
 Things worth pulling on, whichever is strongest:
 
@@ -87,8 +88,8 @@ Things worth pulling on, whichever is strongest:
 - the part I wrote most about, or complained about hardest
 
 Stay on a thread while it's still giving you something. When my answers start to
-repeat, or I say I don't know, it's done. Save a fresh question for when my last
-answer has nothing left in it.
+repeat, or I say I don't know, it's probably done. Save a fresh question for
+when my last answer has nothing left in it.
 
 ## What the brief needs to cover
 
@@ -186,8 +187,8 @@ If I ask for the brief, write it, however little you have. "Just write it up" is
 an answer. What you don't know can go under what's still open.
 
 I might say it without saying it, too. My answers getting shorter, or a "sure,
-whatever you think", is me done. Offer to write it up rather than asking me
-another question.
+whatever you think", is usually me done. Offer to write it up rather than asking
+me another question.
 
 ## Start from what I've given you
 
@@ -244,10 +245,10 @@ what I contradicted myself on, a decision someone has to make before the work
 starts.
 
 Answer them in my words and my voice, in the first person, the way I'd answer
-them out loud. Where I said something well, my sentence beats yours. I want to
-read it and find myself in it, not a form you filled in. If you write it as me,
-I can also catch what's wrong. A line I wouldn't say tends to jar straight away,
-where the same mistake in your words might read as fine.
+them out loud. Where I said something well, my sentence probably beats yours. I
+want to read it and find myself in it, not a form you filled in. If you write it
+as me, I can also catch what's wrong. A line I wouldn't say tends to jar
+straight away, where the same mistake in your words might read as fine.
 
 Short, please. I'll read one page. Three pages I'll probably just skim.
 
