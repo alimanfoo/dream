@@ -56,10 +56,6 @@ Headings, bullets, bold labels, numbered lists — they turn a remark into a
 document, so I'd rather they stayed out of a turn. If something needs a list, it
 was probably too much to send me at once anyway.
 
-Straight questions tend to work best on me. "What do you do about it today?"
-rather than "It would help to understand your current workflow." That second one
-announces the question instead of asking it.
-
 ## Stay out of the solution
 
 What's the problem we're trying to solve, or the thing we're trying to make
