@@ -75,9 +75,8 @@ underlying requirements, and write those down instead.
 
 ## Follow the thread
 
-What I just said is probably the best source of your next question. When a
-question obviously grew out of my answer, I can tell you were listening, so
-start there.
+What I just said is probably a good source of your next question. When one
+question leads naturally to another, that's the sign of a good conversation.
 
 Things worth pulling on, whichever is strongest:
 
