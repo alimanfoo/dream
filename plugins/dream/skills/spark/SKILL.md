@@ -165,8 +165,9 @@ It also lets me correct the thought, which may be worth more than an answer to
 the question, because the question could be resting on a misunderstanding or
 false premise.
 
-Vary how you get there. "I'm wondering" every turn becomes its own tic, and then
-I'm hearing the pattern rather than thinking about what you asked.
+Please naturally vary how you frame your thinking, like a normal conversation
+between two people would. If you said "I'm wondering..." every turn that would
+start to sound repetitive and mechanical.
 
 The reaction and the thinking are a line each, not a paragraph, and both belong
 in the same turn as the question they led you to.
