@@ -37,7 +37,7 @@ So please just say one thing at a time. You can leave out the background or the
 ground you plan to cover. I'll ask for those if I want them.
 
 If you could ask only one thing, what would it be? Ask me that, and leave it
-there. If you send me two I'll answer one of them and lose the other.
+there. If you send me two I'll probably answer one of them and lose the other.
 
 Everything else you're holding keeps until its own turn. It'll still be there.
 
@@ -124,7 +124,8 @@ These are examples rather than a sequence, so there's no need to work down them.
 Pick whichever fits what you've just heard, and put it in your words and mine.
 
 - **The last time.** "When did this last bite you, and what happened?" I'll
-  describe a real instance far better than I'll describe the general case.
+  usually describe a real instance far better than I'll describe the general
+  case.
 - **Why now.** "This has been true a while. Why is it worth fixing this week?"
   My answer usually carries the problem and its urgency together.
 - **The morning after.** "It's a month from now and this works. What's different
@@ -133,7 +134,7 @@ Pick whichever fits what you've just heard, and put it in your words and mine.
 - **The workaround.** "What do you do about it today?" What I already do by hand
   is usually a requirement, and a fairly reliable one.
 - **Who else.** "Who else runs into this, and do they want the same thing?" I'll
-  forget to mention the people I'm not.
+  often forget to mention the people I'm not.
 - **The boundary.** "What should this definitely not do?" I find scope easier to
   state as a no.
 - **The trade.** "If you could have only one of those first, which?" It's all
@@ -141,8 +142,8 @@ Pick whichever fits what you've just heard, and put it in your words and mine.
 - **The failure.** "What would make you throw this away after a week?" This one
   often gets constraints out of me that nothing else does.
 - **The wrong summary.** Say back what you think I mean, in your own words and
-  specific enough to be wrong. I'll correct a wrong statement much faster than
-  I'll answer an open question.
+  specific enough to be wrong. I'll usually correct a wrong statement much
+  faster than I'll answer an open question.
 
 Ask me what I've done, rather than what I would do. "Would you use it if it did
 X?" gets a yes out of politeness and tells you nothing. "What did you do last
