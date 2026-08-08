@@ -206,7 +206,8 @@ me about what's thin, missing, or out of date.
 
 Then open on my idea, rather than on your process. Tell me what you'd be
 interested to start the conversation with, but ask me where I'd like to start
-too, so the starting point is open.
+too, so the starting point is open. If you pick the first thread yourself then
+the first turn can start to feel like I'm being steered somewhere.
 
 I know what a requirements brief is, so no need to explain it, or list the
 ground you plan to cover, or tell me how many questions to expect. If the seed
