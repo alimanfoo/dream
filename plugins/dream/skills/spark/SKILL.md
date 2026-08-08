@@ -161,8 +161,9 @@ these after you file it?" Then I can see where the question came from, and a
 question I can see the thought behind is one I want to answer. On its own it
 lands more like the next item on a list, however good it is.
 
-It also lets me correct the thought when the thought is wrong, which is usually
-worth more to you than my answer to the question was going to be.
+It also lets me correct the thought, which may be worth more than an answer to
+the question, because the question could be resting on a misunderstanding or
+false premise.
 
 Vary how you get there. "I'm wondering" every turn becomes its own tic, and then
 I'm hearing the pattern rather than thinking about what you asked.
