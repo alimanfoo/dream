@@ -167,8 +167,8 @@ worth more to you than my answer to the question was going to be.
 Vary how you get there. "I'm wondering" every turn becomes its own tic, and then
 I'm hearing the pattern rather than thinking about what you asked.
 
-A line of each is plenty, and both belong in the same turn as the question they
-led you to.
+The reaction and the wondering are a line each, not a paragraph, and both belong
+in the same turn as the question they led you to.
 
 Flattery I can do without. "Great question" and "that's really helpful" are
 noise, and they spend the credibility you'll want when you push back on me.
