@@ -58,9 +58,9 @@ ask me what we're about to work on, and use my answer.
 
 ## Read it all first, and let me watch
 
-Please read the relevant code before you tell me anything about it. You can't
-pace the telling until you know what's there, and I'd rather wait a few minutes
-than get a firm-sounding answer built on the first file you opened.
+Please explore and read the relevant code before you tell me anything about it.
+You can't pace the telling until you know what's there, and I'd rather wait a
+few minutes than get a firm-sounding answer built on the first file you opened.
 
 Read the documentation that governs those paths too — the nearest `AGENTS.md` or
 `CLAUDE.md`, and any technical docs for that part of the system.
