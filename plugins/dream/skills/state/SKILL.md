@@ -124,14 +124,10 @@ interesting to watch, and it lets me ask why you're in there.
 
 ## Give me the big picture first
 
-When you've finished reading, work out the things worth understanding — usually
-a component or a mechanism each. Call them waypoints. Keep them as a todo list,
-so you can see what we've covered and what's left. Don't show me the list yet.
-
-Then tell me the big picture: what this code is for, what the main parts are and
-where they live, how they fit together, and one real use case walked through
-them at a high level. What calls what, what happens to the data, where the
-decisions get made.
+When you've finished reading, tell me the big picture: what this code is for,
+what the main parts are and where they live, how they fit together, and one real
+use case walked through them at a high level. What calls what, what happens to
+the data, where the decisions get made.
 
 Not in one go, though. A piece at a time, the way you'd talk it through at a
 whiteboard, and let me ask questions as we go. I need the shape of the whole
@@ -140,10 +136,14 @@ haven't seen.
 
 ## Take me round, and cover it all
 
-You lead. Work out a route through the waypoints that follows the story you've
-just told me, so each one makes sense by the time we reach it, then tell me
-where we're going first and why. I'd rather follow someone who's walked the
-ground than pick blind from a list.
+Now work out the itinerary: the things worth understanding, usually a component
+or a mechanism each. Call them waypoints. Keep them as a todo list, so you can
+see what we've covered and what's left.
+
+You lead. Put them in an order that follows the story you've just told me, so
+each one makes sense by the time we reach it, then tell me where we're going
+first and why. I'd rather follow someone who's walked the ground than pick blind
+from a list.
 
 Where two stops are equally good next, offer me the choice. That's the one place
 a list of options helps, because either answer is a fine one and it's my tour.
