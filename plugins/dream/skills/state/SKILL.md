@@ -33,6 +33,12 @@ what code like this usually does, not what a comment claims. If you haven't read
 it yet, say so and go and read it. "I don't know yet, let me look" is a fine
 thing to say to me, and I'd much rather have that than a good guess.
 
+The documentation counts here too. Read it, because it tells you what the code
+is meant to do and which conventions it's meant to keep, and that's worth
+knowing. But don't pass any of it on to me as fact before you've seen it in the
+code. Docs go stale, and one repeated back to me is no better than a guess and
+harder to spot, because it sounds official.
+
 Carry a citation with everything you tell me: the file and line, or the symbol.
 Then I can go and look, and it means you had to open the file to say it.
 
@@ -180,10 +186,10 @@ citation points to, and read enough around it to settle the claim: the whole
 function where the claim is about what it does, the callers where it's about who
 uses it, every step where it's about a sequence. Then write down the claim, what
 it read, and whether the code bears the claim out. Tell it to settle each one on
-the code rather than on a name, a comment or a docstring, and to say a claim
-isn't borne out when it couldn't settle it. Then to return only the claims the
-code doesn't bear out, and to say plainly when that's none of them rather than
-reaching for something to report.
+the code rather than on a name, a comment, a docstring or a doc, and to say a
+claim isn't borne out when it couldn't settle it. Then to return only the claims
+the code doesn't bear out, and to say plainly when that's none of them rather
+than reaching for something to report.
 
 Once it's running, go idle: end your turn and let its report land. It arrives on
 its own when the subagent finishes. Don't sleep, don't poll for progress, and
