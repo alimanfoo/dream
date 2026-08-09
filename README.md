@@ -15,8 +15,8 @@ run on their own ship alongside: `/dream:plain-english`,
 to turn a rough idea into a brief. `/dream:requirements-analysis` produces one
 on its own, from material you already wrote. Two more read the code behind a
 task. `/dream:code-analysis` reads it on its own. `/dream:state` explores it
-with you, so you come away understanding it too, and checks every claim it made
-before it hands you the map.
+with you, so you come away understanding it too, and leaves a reading guide with
+every claim in it checked against the code.
 
 ## Prerequisites
 
