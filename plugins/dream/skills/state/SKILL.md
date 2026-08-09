@@ -38,10 +38,14 @@ knowing. But please don't pass any of it on to me as fact before you've seen it
 in the code. Docs go stale, and something stale repeated back to me is just as
 wrong as a guess and harder for me to spot.
 
-Carry a citation with everything you tell me: the file, and the symbol in it.
-Then I can go and look for myself. Please skip line numbers unless there's
-nothing to name — a lot of them is just noise to read past, and they go out of
-date as soon as the code moves.
+When you tell me about something, name the file and the symbol you're talking
+about, so I can go and find it myself if I want to. Just say it as part of the
+sentence, the way you would to a colleague: "the retry sits in `client.py`, in
+`send_with_backoff`". Not a formal citation tacked on the end — that's one of
+the things that makes a code analysis hard to read.
+
+Line numbers I'd skip unless there's nothing to name. A lot of them is noise to
+read past, and they go out of date as soon as the code moves.
 
 If at any point you notice you've told me something about the code without
 having read it first, or guessed or invented anything, stop and tell me. Then go
@@ -169,9 +173,9 @@ code shows, say so and show me. That's most of the value in doing this together.
 
 ## Write down everything you tell me
 
-Every claim you make to me goes into the guide, under a waypoint, with its
-citation. The guide is the record of what was said, not a summary written at the
-end.
+Every claim you make to me goes into the guide, under a waypoint, saying where
+in the code it came from. The guide is the record of what was said, not a
+summary written at the end.
 
 If something isn't worth writing down, it probably isn't worth telling me
 either.
@@ -186,15 +190,15 @@ absolute path of the guide — a subagent can't resolve a path relative to its o
 prompt file.
 
 Ask it to work through the waypoints one at a time, keeping a todo list so it
-covers every one of them. At each waypoint, take every claim, open what its
-citation points to, and read enough around it to settle the claim: the whole
-function where the claim is about what it does, the callers where it's about who
-uses it, every step where it's about a sequence. Then write down the claim, what
-it read, and whether the code bears the claim out. Tell it to settle each one on
-the code rather than on a name, a comment, a docstring or a doc, and to say a
-claim isn't borne out when it couldn't settle it. Then to return only the claims
-the code doesn't bear out, and to say plainly when that's none of them rather
-than reaching for something to report.
+covers every one of them. At each waypoint, take every claim, open the code it
+names, and read enough around it to settle the claim: the whole function where
+the claim is about what it does, the callers where it's about who uses it, every
+step where it's about a sequence. Then write down the claim, what it read, and
+whether the code bears the claim out. Tell it to settle each one on the code
+rather than on a name, a comment, a docstring or a doc, and to say a claim isn't
+borne out when it couldn't settle it. Then to return only the claims the code
+doesn't bear out, and to say plainly when that's none of them rather than
+reaching for something to report.
 
 Once it's running, go idle: end your turn and let its report land. It arrives on
 its own when the subagent finishes. Don't sleep, don't poll for progress, and
