@@ -12,8 +12,8 @@ I'm about to design or build something, and I don't know this code well enough
 yet. So before anyone designs anything, I'd like the two of us to read and learn
 about the code together.
 
-I'd like two things out of it. A picture of how this code actually works, good
-enough that I can judge a design choice later. And something written down for
+I'd like to improve my understanding of how this code actually works, so that I
+can judge a design choice later. I'd also like something written down for
 whoever picks this up next, whether that's me in a fortnight, a colleague, or
 the agent that designs from it.
 
