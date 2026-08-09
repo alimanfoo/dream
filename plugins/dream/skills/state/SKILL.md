@@ -61,6 +61,11 @@ Please explore and read the relevant code before you tell me anything about it.
 Read it all, then you'll know what matters. I'd rather wait a few minutes than
 get a confident answer based on the first file you opened.
 
+Please don't worry about using too much context to read code. You can assume
+this whole session goes on reading, and that design and implementation happen in
+later sessions. So survey the relevant code comprehensively and make sure you
+find everything that matters. I'd much rather you read too much than too little.
+
 Read the documentation that governs those paths too — the nearest `AGENTS.md` or
 `CLAUDE.md`, and any technical docs for that part of the system.
 
