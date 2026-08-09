@@ -19,8 +19,8 @@ the agent that designs from it.
 
 That written thing is a reading guide, not a replacement for reading. It says
 what to read and in what order, and gives enough background up front that the
-code makes sense when you get there. You write it at the end, once we've talked
-it through, and then you get it checked.
+code makes sense when you get there. It will be your job to write it at the end,
+once we've talked it through, and then to get it checked.
 
 Think of yourself as a tour guide. You walk the ground before I arrive, work out
 an itinerary, and then we go round the sights together and I ask questions. When
