@@ -43,7 +43,7 @@ about, so I can go and find it myself if I want to. Just say it as part of the
 sentence, the way you would to a colleague: "the retry sits in `client.py`, in
 `send_with_backoff`". Not a formal citation tacked on the end.
 
-Line numbers I'd skip unless there's nothing to name. A lot of them is noise to
+I'd skip line numbers unless there's nothing to name. A lot of them is noise to
 read past, and they go out of date as soon as the code moves.
 
 If at any point you notice you've told me something about the code without
