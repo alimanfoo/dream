@@ -21,6 +21,8 @@ That written thing is a reading guide, not a replacement for reading. It says
 what to read and in what order, and gives enough background up front that the
 code makes sense when you get there.
 
+We write it together as we talk, and at the end you get it checked.
+
 ## Never make anything up
 
 This is the one I care about most. I've noticed that agents sometimes read code
@@ -41,104 +43,14 @@ wrong as a guess and harder for me to spot.
 When you tell me about something, name the file and the symbol you're talking
 about, so I can go and find it myself if I want to. Just say it as part of the
 sentence, the way you would to a colleague: "the retry sits in `client.py`, in
-`send_with_backoff`". Not a formal citation tacked on the end.
-
-I'd skip line numbers unless there's nothing to name. A lot of them is noise to
-read past, and they go out of date as soon as the code moves.
+`send_with_backoff`". Not a formal citation tacked on the end. I'd skip line
+numbers unless there's nothing to name. A lot of them is noise to read past, and
+they go out of date as soon as the code moves.
 
 If at any point you notice you've told me something about the code without
 having read it first, or guessed or invented anything, stop and tell me. Then go
 and read the code and put it right. It all gets checked at the end anyway, but
 I'd much rather hear about it now than an hour later.
-
-## Start from what I've given you
-
-Whatever I passed you is the scope: a requirements brief, an issue number or
-URL, a file path, or plain text. Usually it'll be a brief from `/dream:spark`,
-sitting as a comment on an issue. Read an issue with `gh`, comments included.
-
-That's what draws the line around which code is relevant. If I gave you nothing,
-ask me what we're about to work on, and use my answer.
-
-## Read it all first, and let me watch
-
-Please explore and read the relevant code before you tell me anything about it.
-Read it all, then you'll know what matters. I'd rather wait a few minutes than
-get a confident answer based on the first file you opened.
-
-Please don't worry about using too much context to read code. You can assume
-this whole session goes on reading, and that design and implementation happen in
-later sessions. So survey the relevant code comprehensively and make sure you
-find everything that matters. I'd much rather you read too much than too little.
-
-Read the documentation that governs those paths too — the nearest `AGENTS.md` or
-`CLAUDE.md`, and any technical docs for that part of the system.
-
-Say what you're opening and why as you go. A line each time, not a report. It's
-interesting to watch, and it lets me ask why you're in there.
-
-## Lay the guide out before you say anything about the code
-
-Write the guide to a temporary file outside the repo. Lay out its headings
-first, while they're still empty, in these four layers:
-
-```markdown
-## Where we are
-
-## The parts
-
-## How it works
-
-## The sharp edges
-```
-
-**Where we are** is one paragraph: what this code is for, and where it sits.
-
-**The parts** are the components the work touches, what each is for, and where
-each one lives. Then the boundaries and conventions between them, and for each
-convention, how it holds: a type, a check, documentation, or nothing but habit.
-
-**How it works** is the control flow and the data flow through those parts, and
-the algorithms doing the real work. This is the layer I get the most from, so
-give it room. If there's a use case that exercises a lot of it, walking through
-that one at a high level is usually the clearest way in: what calls what, what
-happens to the data, where the decisions get made.
-
-**The sharp edges** are the parts that were hard to understand, and anything
-that looks like earlier over-building or patching round a problem. Name it and
-say where it lives. Whether it can be cut or untangled is for whoever designs
-next, not for us now.
-
-Under each heading, say where to go and read: the file, and the function or
-symbol worth starting from. Someone should be able to work out from the guide
-what to open next, and roughly what they'll find there.
-
-Every heading under those four is a waypoint. Keep them small enough that one
-waypoint is one thing worth understanding. An empty waypoint is somewhere we
-haven't been yet, so the file itself shows what's left.
-
-## Let me steer, and cover it all anyway
-
-Start with the bird's eye view: where we are, what the parts are, and how they
-fit together. Not the detail, just the overall shape, so I've got something to
-fit the rest into. If you start me at a waypoint I'm looking at one corner of a
-place I haven't seen.
-
-Then tell me what the waypoints are and let me pick where to zoom in. That's the
-one place I'm happy to be handed a list of options, because you've seen the code
-and I haven't.
-
-Fill each waypoint in as we cover it. When I stop steering, work down whatever's
-still empty and bring it to me.
-
-Please don't finish while a waypoint is still empty. If I keep steering one way,
-I'd still like to hear about the parts I never picked — I don't know what's down
-there, so I can't know to ask. That's a rule for you rather than for me, though.
-I can stop whenever I like, and "just write it up" is an answer: fill the rest
-in yourself from what you've read, and carry on to the checking and the guide.
-
-If a waypoint turns out not to be relevant after all, write down why. That fills
-it like any other.
 
 ## Say one thing at a time
 
@@ -170,14 +82,99 @@ question with no thought behind it starts to feel like a form field.
 Please push back on me, too. If something I say doesn't square with what the
 code shows, say so and show me. That's most of the value in doing this together.
 
-## Write down everything you tell me
+## Start from what I've given you
 
-Every claim you make to me goes into the guide, under a waypoint, saying where
-in the code it came from. The guide is the record of what was said, not a
-summary written at the end.
+Whatever I passed you is the scope: a requirements brief, an issue number or
+URL, a file path, or plain text. Usually it'll be a brief from `/dream:spark`,
+sitting as a comment on an issue. Read an issue with `gh`, comments included.
 
-If something isn't worth writing down, it probably isn't worth telling me
-either.
+That's what draws the line around which code is relevant. If I gave you nothing,
+ask me what we're about to work on, and use my answer.
+
+## Explore and read it all, and let me watch
+
+Please explore and read the relevant code before you tell me anything about it.
+Read it all, then you'll know what matters. I'd rather wait a few minutes than
+get a confident answer based on the first file you opened.
+
+Please don't worry about using too much context to read code. You can assume
+this whole session goes on reading, and that design and implementation happen in
+later sessions. So survey the relevant code comprehensively and make sure you
+find everything that matters. I'd much rather you read too much than too little.
+
+Read the documentation that governs those paths too — the nearest `AGENTS.md` or
+`CLAUDE.md`, and any technical docs for that part of the system.
+
+Say what you're opening and why as you go. A line each time, not a report. It's
+interesting to watch, and it lets me ask why you're in there.
+
+## Start the guide, and give me the big picture
+
+When you've finished reading, write the guide to a temporary file outside the
+repo. It looks like this:
+
+```markdown
+## The big picture
+
+## <one heading per thing worth understanding>
+
+## The sharp edges
+```
+
+Write **the big picture** now, before you say anything to me about the code.
+What this code is for, what the main parts are and where they live, and how they
+fit together. Then walk one real use case through them at a high level: what
+calls what, what happens to the data, where the decisions get made. Keep it to
+about a page, and leave the detail out.
+
+Then fill in the middle headings, still empty. One per thing worth understanding
+— usually a component or a mechanism. These are the waypoints, and each is
+somewhere we can go and look properly. An empty one is somewhere we haven't been
+yet, so the file shows what's left to do.
+
+**The sharp edges** stays empty for now. It's for anything that was hard to
+understand, and anything that looks like earlier over-building or patching round
+a problem. We'll add to it as we go.
+
+Now tell me the big picture. Not by reading it out in one go — walk me through
+it a piece at a time, the way you would at a whiteboard, and let me ask
+questions. I need the shape of the whole thing before any of the detail, or I'm
+looking at one corner of a place I haven't seen.
+
+## Let me steer the waypoints, and cover them all
+
+Then tell me what the waypoints are and let me pick where to start. That's the
+one place I'm happy to be handed a list of options, because you've seen the code
+and I haven't.
+
+At each one, tell me what it's for, where it lives, and how it works. Fill the
+waypoint in as we talk about it, and add anything sharp to the last section.
+
+When I stop steering, work down whatever's still empty and bring it to me.
+Please don't finish while a waypoint is still empty. If I keep steering one way,
+I'd still like to hear about the parts I never picked — I don't know what's down
+there, so I can't know to ask.
+
+That's a rule for you rather than for me, though. I can stop whenever I like,
+and "just write it up" is an answer: fill the rest in yourself from what you've
+read, and carry on to the checking.
+
+If a waypoint turns out not to be relevant after all, write down why. That fills
+it like any other.
+
+## We're writing it together
+
+Everything you tell me about the code goes into the guide as you say it. If it
+isn't worth writing down, it probably isn't worth telling me.
+
+The guide isn't yours alone, though. What I ask, correct or already know is part
+of it too. If a question of mine turns out to be the thing worth answering in
+there, answer it in there. If I put something better than you had it, use my
+words. If something I say sends you back to the code and the answer changes, fix
+what we wrote earlier, including the big picture.
+
+So it should end up as what the two of us worked out, not a document you wrote
+and read out to me.
 
 ## Get it checked before you show me the final guide
 
@@ -188,16 +185,16 @@ Spawn one `general-purpose` subagent with the Agent tool, on Sonnet. Give it the
 absolute path of the guide — a subagent can't resolve a path relative to its own
 prompt file.
 
-Ask it to work through the waypoints one at a time, keeping a todo list so it
-covers every one of them. At each waypoint, take every claim, open the code it
-names, and read enough around it to settle the claim: the whole function where
-the claim is about what it does, the callers where it's about who uses it, every
-step where it's about a sequence. Then write down the claim, what it read, and
-whether the code bears the claim out. Tell it to settle each one on the code
-rather than on a name, a comment, a docstring or a doc, and to say a claim isn't
-borne out when it couldn't settle it. Then to return only the claims the code
-doesn't bear out, and to say plainly when that's none of them rather than
-reaching for something to report.
+Ask it to work through the guide section by section, keeping a todo list so it
+covers every one. In each section, take every claim, open the code it names, and
+read enough around it to settle the claim: the whole function where the claim is
+about what it does, the callers where it's about who uses it, every step where
+it's about a sequence. Then write down the claim, what it read, and whether the
+code bears the claim out. Tell it to settle each one on the code rather than on
+a name, a comment, a docstring or a doc, and to say a claim isn't borne out when
+it couldn't settle it. Then to return only the claims the code doesn't bear out,
+and to say plainly when that's none of them rather than reaching for something
+to report.
 
 Once it's running, go idle: end your turn and let its report land. It arrives on
 its own when the subagent finishes. Don't sleep, don't poll for progress, and
@@ -218,10 +215,9 @@ Cut it down to what's worth keeping, by editing the file you've just had checked
 rather than writing a fresh one from it. Cutting and reordering can't add a
 claim nobody checked. Rewriting can.
 
-Keep the shape: the high level before the detail, and every detail under the
-part it belongs to, so a reader always knows where they are. Keep the pointers
-into the code, too. A line I can act on — open this file, start at this function
-— is worth more to me than a paragraph describing it.
+Keep the shape: the big picture first, then the waypoints, then the sharp edges.
+Keep the pointers into the code, too. A line I can act on — open this file,
+start at this function — is worth more to me than a paragraph describing it.
 
 Short, please. Short enough that I read it properly rather than skim it, and
 clear enough that coming back to it in a fortnight is easy.
