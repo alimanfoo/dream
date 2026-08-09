@@ -41,8 +41,7 @@ wrong as a guess and harder for me to spot.
 When you tell me about something, name the file and the symbol you're talking
 about, so I can go and find it myself if I want to. Just say it as part of the
 sentence, the way you would to a colleague: "the retry sits in `client.py`, in
-`send_with_backoff`". Not a formal citation tacked on the end — that's one of
-the things that makes a code analysis hard to read.
+`send_with_backoff`". Not a formal citation tacked on the end.
 
 Line numbers I'd skip unless there's nothing to name. A lot of them is noise to
 read past, and they go out of date as soon as the code moves.
