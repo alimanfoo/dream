@@ -195,10 +195,10 @@ carry this step. Give a new such skill the same one.
 Each of those skills confirms its findings too. Only one place does that
 confirming. The lens subagents of `code-review` and `coherence-review` don't
 confirm a finding. So both skills confirm each one against the code themselves.
-The `dream:copy-editor` and `dream:code-verifier` subagents do confirm each
-finding before returning it, against the guide and against the code
-respectively. So `copy-edit` and `state` don't confirm them again. Pick one of
-those two homes for a new such skill. Don't pick both.
+The `dream:copy-editor` subagent does confirm each finding against the guide
+before returning it, and `state`'s subagents confirm each claim against the
+code. So `copy-edit` and `state` don't confirm them again. Pick one of those two
+homes for a new such skill. Don't pick both.
 
 A skill that spawns subagents must also tell the agent to go idle while they
 run, rather than sleep, poll, or narrate the wait. `code-review`,

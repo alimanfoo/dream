@@ -157,10 +157,21 @@ either.
 You read this code, so you believe your own read of it, including the parts you
 filled in. Someone who wasn't here has to check it.
 
-Split the guide by waypoint and spawn one `dream:code-verifier` subagent per
-part with the Agent tool, all in a single message so they run in parallel. Give
-each one the absolute path of the file and the part it covers — a subagent can't
+Split the guide by waypoint and spawn one `general-purpose` subagent per part
+with the Agent tool, all in a single message so they run in parallel. Give each
+one the absolute path of the file and the part it covers — a subagent can't
 resolve a path relative to its own prompt file.
+
+Ask them all for the same thing. Take every claim in the part, open what its
+citation points to, and read enough around it to settle the claim: the whole
+function where the claim is about what it does, the callers where it's about who
+uses it, every step where it's about a sequence. Then write down the claim, what
+it read, and whether the code bears the claim out. Tell it to work through every
+claim rather than a sample of them, to settle each one on the code rather than
+on a name, a comment or a docstring, and to say a claim isn't borne out when it
+couldn't settle it. Then to return only the claims the code doesn't bear out,
+and to say plainly when that's none of them rather than reaching for something
+to report.
 
 Once they're running, go idle: end your turn and let their reports land. They
 arrive on their own as each subagent finishes. Don't sleep, don't poll for

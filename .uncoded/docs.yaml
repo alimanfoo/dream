@@ -106,13 +106,6 @@ plugins/:
           The lens:
           Read the change:
           Reporting:
-      code-verifier.md:
-        Code verifier:
-          Read the claims you were given:
-          Check each claim against the code:
-          Write the record to a temporary file:
-          Write your record, claim by claim:
-          Return what the code doesn't support:
       copy-editor.md:
         Copy editor:
           Read the Plain English guide:
