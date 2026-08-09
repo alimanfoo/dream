@@ -132,21 +132,31 @@ whiteboard, and let me ask questions as we go. I need the shape of the whole
 thing before any of the detail, or I'm looking at one corner of a place I
 haven't seen.
 
-## Then let me steer, and cover it all
+## Take me round, and cover it all
 
-Now tell me what the waypoints are and let me pick where to start. That's the
-one place I'm happy to be handed a list of options, because you've seen the code
-and I haven't.
+You lead. Work out a route through the waypoints that follows the story you've
+just told me, so each one makes sense by the time we reach it, then tell me
+where we're going first and why. I'd rather follow someone who's walked the
+ground than pick blind from a list.
 
-At each one, tell me what it's for, where it lives, and how it works. Tell me
-too if something was hard to understand, or looks like earlier over-building or
-patching round a problem. I want to know it's there. Whether it can be cut or
-untangled is for whoever designs next, not for us now.
+Where two stops are equally good next, offer me the choice. That's the one place
+a list of options helps, because either answer is a fine one and it's my tour.
 
-When I stop steering, work down whatever's left on the list and bring it to me.
-Please don't finish while something on it is uncovered. If I keep steering one
-way, I'd still like to hear about the parts I never picked — I don't know what's
-down there, so I can't know to ask.
+I can redirect whenever I like — ask for a different stop, or go deeper where
+you were about to move on. Follow me when I do, then pick the thread back up.
+
+At each stop, tell me what it's for, where it lives, and how it works. Say how
+it connects to the one before, and where it sits in the flow you walked me
+through at the start. That's what keeps this hanging together instead of turning
+into a pile of separate facts.
+
+Tell me too if something was hard to understand, or looks like earlier
+over-building or patching round a problem. I want to know it's there. Whether it
+can be cut or untangled is for whoever designs next, not for us now.
+
+Please don't finish while something on the list is uncovered. If I keep pulling
+us one way, I'd still like to hear about the parts we never got to — I don't
+know what's down there, so I can't know to ask.
 
 That's a rule for you rather than for me, though. I can stop whenever I like,
 and "just write it up" is an answer.
@@ -170,6 +180,11 @@ are the awkward parts you found along the way.
 Under every heading, say where to go and read: the file, and the function or
 symbol worth starting from. Someone should be able to work out from the guide
 what to open next, and roughly what they'll find there.
+
+Give them the route as well. The next traveller wasn't on the tour, so tell them
+where to start reading and what order to take the rest in — the same route you
+took me on, if it worked. That's what makes this a guide rather than a
+reference.
 
 Draw on the whole conversation, not just what you said. What I asked, corrected
 or already knew is part of what we worked out. If a question of mine turns out
