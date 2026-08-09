@@ -131,8 +131,8 @@ what, what happens to the data, where the decisions get made.
 
 Not in one go, though. A piece at a time, the way you'd talk it through at a
 whiteboard, and let me ask questions as we go. I need the shape of the whole
-thing before any of the detail, or I'm looking at one corner of a place I
-haven't seen.
+thing before any of the detail, because that's what the detail hangs off.
+Without it I'm collecting facts I've got nowhere to put, and they won't stick.
 
 ## Take me round, and cover it all
 
