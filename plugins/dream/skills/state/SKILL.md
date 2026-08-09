@@ -38,8 +38,10 @@ knowing. But please don't pass any of it on to me as fact before you've seen it
 in the code. Docs go stale, and something stale repeated back to me is just as
 wrong as a guess and harder for me to spot.
 
-Carry a citation with everything you tell me: the file and line, or the symbol.
-Then I can go and look for myself.
+Carry a citation with everything you tell me: the file, and the symbol in it.
+Then I can go and look for myself. Please skip line numbers unless there's
+nothing to name — a lot of them is just noise to read past, and they go out of
+date as soon as the code moves.
 
 If at any point you notice you've told me something about the code without
 having read it first, or guessed or invented anything, stop and tell me. Then go
