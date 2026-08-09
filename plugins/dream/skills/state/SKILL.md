@@ -19,9 +19,8 @@ the agent that designs from it.
 
 That written thing is a reading guide, not a replacement for reading. It says
 what to read and in what order, and gives enough background up front that the
-code makes sense when you get there.
-
-We write it together as we talk, and at the end you get it checked.
+code makes sense when you get there. You write it at the end, once we've talked
+it through, and then you get it checked.
 
 ## Never make anything up
 
@@ -49,8 +48,8 @@ they go out of date as soon as the code moves.
 
 If at any point you notice you've told me something about the code without
 having read it first, or guessed or invented anything, stop and tell me. Then go
-and read the code and put it right. It all gets checked at the end anyway, but
-I'd much rather hear about it now than an hour later.
+and read the code and put it right. The guide gets checked at the end anyway,
+but I'd much rather hear about it now than an hour later.
 
 ## Say one thing at a time
 
@@ -108,78 +107,75 @@ Read the documentation that governs those paths too — the nearest `AGENTS.md` 
 Say what you're opening and why as you go. A line each time, not a report. It's
 interesting to watch, and it lets me ask why you're in there.
 
-## Start the guide, and give me the big picture
+## Give me the big picture first
 
-When you've finished reading, write the guide to a temporary file outside the
-repo. It looks like this:
+When you've finished reading, work out the things worth understanding — usually
+a component or a mechanism each. Call them waypoints. Keep them as a todo list,
+so you can see what we've covered and what's left. Don't show me the list yet.
+
+Then tell me the big picture: what this code is for, what the main parts are and
+where they live, how they fit together, and one real use case walked through
+them at a high level. What calls what, what happens to the data, where the
+decisions get made.
+
+Not in one go, though. A piece at a time, the way you'd talk it through at a
+whiteboard, and let me ask questions as we go. I need the shape of the whole
+thing before any of the detail, or I'm looking at one corner of a place I
+haven't seen.
+
+## Then let me steer, and cover it all
+
+Now tell me what the waypoints are and let me pick where to start. That's the
+one place I'm happy to be handed a list of options, because you've seen the code
+and I haven't.
+
+At each one, tell me what it's for, where it lives, and how it works. Tell me
+too if something was hard to understand, or looks like earlier over-building or
+patching round a problem. I want to know it's there. Whether it can be cut or
+untangled is for whoever designs next, not for us now.
+
+When I stop steering, work down whatever's left on the list and bring it to me.
+Please don't finish while something on it is uncovered. If I keep steering one
+way, I'd still like to hear about the parts I never picked — I don't know what's
+down there, so I can't know to ask.
+
+That's a rule for you rather than for me, though. I can stop whenever I like,
+and "just write it up" is an answer.
+
+## Write the guide
+
+When we're done talking, write the guide to a temporary file outside the repo:
 
 ```markdown
 ## The big picture
 
-## <one heading per thing worth understanding>
+## <one heading per waypoint>
 
 ## The sharp edges
 ```
 
-Write **the big picture** now, before you say anything to me about the code.
-What this code is for, what the main parts are and where they live, and how they
-fit together. Then walk one real use case through them at a high level: what
-calls what, what happens to the data, where the decisions get made. Keep it to
-about a page, and leave the detail out.
+The big picture is what you opened with, and what we made of it between us. Each
+waypoint gets what it's for, where it lives and how it works. The sharp edges
+are the awkward parts you found along the way.
 
-Then fill in the middle headings, still empty. One per thing worth understanding
-— usually a component or a mechanism. These are the waypoints, and each is
-somewhere we can go and look properly. An empty one is somewhere we haven't been
-yet, so the file shows what's left to do.
+Under every heading, say where to go and read: the file, and the function or
+symbol worth starting from. Someone should be able to work out from the guide
+what to open next, and roughly what they'll find there.
 
-**The sharp edges** stays empty for now. It's for anything that was hard to
-understand, and anything that looks like earlier over-building or patching round
-a problem. We'll add to it as we go.
+Draw on the whole conversation, not just what you said. What I asked, corrected
+or already knew is part of what we worked out. If a question of mine turns out
+to be the thing worth answering, answer it in there. If I put something better
+than you had it, use my words.
 
-Now tell me the big picture. Not by reading it out in one go — walk me through
-it a piece at a time, the way you would at a whiteboard, and let me ask
-questions. I need the shape of the whole thing before any of the detail, or I'm
-looking at one corner of a place I haven't seen.
+Short, please. Short enough that I read it properly rather than skim it, and
+clear enough that coming back to it in a fortnight is easy. High level before
+detail, and every detail under the part it belongs to, so a reader always knows
+where they are.
 
-## Let me steer the waypoints, and cover them all
+## Get it checked before you show me
 
-Then tell me what the waypoints are and let me pick where to start. That's the
-one place I'm happy to be handed a list of options, because you've seen the code
-and I haven't.
-
-At each one, tell me what it's for, where it lives, and how it works. Fill the
-waypoint in as we talk about it, and add anything sharp to the last section.
-
-When I stop steering, work down whatever's still empty and bring it to me.
-Please don't finish while a waypoint is still empty. If I keep steering one way,
-I'd still like to hear about the parts I never picked — I don't know what's down
-there, so I can't know to ask.
-
-That's a rule for you rather than for me, though. I can stop whenever I like,
-and "just write it up" is an answer: fill the rest in yourself from what you've
-read, and carry on to the checking.
-
-If a waypoint turns out not to be relevant after all, write down why. That fills
-it like any other.
-
-## We're writing it together
-
-Everything you tell me about the code goes into the guide as you say it. If it
-isn't worth writing down, it probably isn't worth telling me.
-
-The guide isn't yours alone, though. What I ask, correct or already know is part
-of it too. If a question of mine turns out to be the thing worth answering in
-there, answer it in there. If I put something better than you had it, use my
-words. If something I say sends you back to the code and the answer changes, fix
-what we wrote earlier, including the big picture.
-
-So it should end up as what the two of us worked out, not a document you wrote
-and read out to me.
-
-## Get it checked before you show me the final guide
-
-You did the reading, so it all looks right to you, including anything you filled
-in. Someone who wasn't here needs to check it.
+You did the reading, so it all looks right to you. Someone who wasn't here needs
+to check it.
 
 Spawn one `general-purpose` subagent with the Agent tool, on Sonnet. Give it the
 absolute path of the guide — a subagent can't resolve a path relative to its own
@@ -204,23 +200,9 @@ Then read what it sends back, and please don't check any of it again yourself.
 It read the code and reached a verdict, and going over that again risks talking
 yourself back into what you thought in the first place.
 
-Then tell me, plainly, everything that came back unsupported — including
-something you told me an hour ago, because I'll have been building on it since.
-Say what you told me, what the code actually shows, and what that changes. Then
-fix the guide.
-
-## Then tidy the guide up
-
-Cut it down to what's worth keeping, by editing the file you've just had checked
-rather than writing a fresh one from it. Cutting and reordering can't add a
-claim nobody checked. Rewriting can.
-
-Keep the shape: the big picture first, then the waypoints, then the sharp edges.
-Keep the pointers into the code, too. A line I can act on — open this file,
-start at this function — is worth more to me than a paragraph describing it.
-
-Short, please. Short enough that I read it properly rather than skim it, and
-clear enough that coming back to it in a fortnight is easy.
+Fix the guide. Then tell me, plainly, anything that came back unsupported which
+you'd also told me out loud — I'll have been building on it since, so I need to
+know what changed.
 
 ## Where it goes
 

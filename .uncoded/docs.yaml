@@ -319,11 +319,10 @@ plugins/:
             Sound like a person:
             Start from what I've given you:
             Explore and read it all, and let me watch:
-            Start the guide, and give me the big picture:
-            Let me steer the waypoints, and cover them all:
-            We're writing it together:
-            Get it checked before you show me the final guide:
-            Then tidy the guide up:
+            Give me the big picture first:
+            Then let me steer, and cover it all:
+            Write the guide:
+            Get it checked before you show me:
             Where it goes:
       team/:
         SKILL.md:
