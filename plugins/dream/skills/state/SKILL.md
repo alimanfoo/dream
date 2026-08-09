@@ -124,10 +124,10 @@ interesting to watch, and it lets me ask why you're in there.
 
 ## Give me the big picture first
 
-When you've finished reading, tell me the big picture: what this code is for,
-what the main parts are and where they live, and how they fit together. If you
-can, also walk me through them at a high level, based on a use case: what calls
-what, what happens to the data, where the decisions get made.
+When you've finished reading, tell me a story about what this code is for, what
+the main parts are and where they live, and how they fit together. If you can,
+also walk me through them at a high level, based on a use case: what calls what,
+what happens to the data, where the decisions get made.
 
 Not in one go, though. A piece at a time, the way you'd talk it through at a
 whiteboard, and let me ask questions as we go. I need the shape of the whole
