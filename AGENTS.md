@@ -104,8 +104,10 @@ loads a guide rather than restating a rule from it. The
 exception for both guides, since it carries only the bare minimum for changes
 small enough to skip the full guides. It inlines a subset of rules from the
 coherent coding and plain English guides instead of loading either in full. The
-[/dream:spark skill](plugins/dream/skills/spark/SKILL.md) is the other
-exception, and loads neither. It is an experiment, off-convention on purpose.
+[/dream:spark skill](plugins/dream/skills/spark/SKILL.md) and the
+[/dream:state skill](plugins/dream/skills/state/SKILL.md) are the other
+exceptions, and load neither. Both are written in the user's voice, which can't
+name a document to load without breaking its own register.
 
 Ways the two layers get crossed:
 
@@ -139,44 +141,63 @@ such skill.
 already wrote. The duplication between them is a decision, not a defect, so
 don't single-home it.
 
+`/dream:state` and `/dream:code-analysis` overlap too, and that one is
+provisional. Both read the code behind a task to ground the design work that
+follows. `/dream:code-analysis` runs on its own and aims at getting the relevant
+code into an agent's head. `/dream:state` explores it with the user, so the user
+comes away able to judge a design choice, and it verifies its claims before
+handing them over. If the interactive approach proves better in practice,
+`/dream:code-analysis` is retired and its callers move to `/dream:state`. Until
+the user makes that call, keep both and keep them independent. Don't single-home
+them, and don't retire either on your own initiative.
+
 `/dream:spark` is an experiment, trying a different approach from the rest of
 the plugin. It runs against repo convention on purpose, so treat a deviation as
-deliberate rather than as drift to tidy up. It is also the one skill the user
-experiences as a conversation rather than a result, so judge an edit to it by
-what the person on the other end experiences, not by what the skill covers. A
-change that makes it more thorough at the cost of feeling like a form is the
-wrong trade.
+deliberate rather than as drift to tidy up.
 
-Its body is written in the user's voice, as if the user typed it: "ask me",
-"send me two and I'll answer one of them and lose the other". Every other prompt
-in the plugin programs an agent precisely. This one shapes a conversation, so it
-opens one rather than describing one. An agent continues the register it is
-handed, which makes this the strongest lever there is on how the interview
-feels. Don't normalise it back to the third person, or into a stack of orders.
-The frontmatter `description` stays third person, since the harness reads that
-to pick the skill. The body asks for plain writing in its own words rather than
-naming the [Plain English guide](plugins/dream/plain-english.md) for the same
-reason: nobody says "load this document" out loud.
+`/dream:spark` and `/dream:state` are the two skills the user experiences as a
+conversation, and both bodies are written in the user's voice, as if the user
+typed it: "ask me", "tell me only what you've read". Every other prompt in the
+plugin programs an agent precisely. These two shape a conversation, so they open
+one rather than describing one. An agent continues the register it is handed,
+which makes this the strongest lever there is on how the conversation feels.
+Don't normalise either back to the third person, or into a stack of orders.
+Judge an edit to either by what the person on the other end experiences, not by
+what the skill covers. A change that makes one more thorough at the cost of
+feeling like a form is the wrong trade.
+
+The frontmatter `description` stays third person in both, since the harness
+reads that to pick the skill. Both bodies ask for plain writing in their own
+words rather than naming the
+[Plain English guide](plugins/dream/plain-english.md), for the same reason:
+nobody says "load this document" out loud.
+
+The register carries a precise protocol without loosening it. `/dream:spark`
+specifies its fresh-reader subagent in the user's voice, and `/dream:state`
+specifies its verification pass the same way. A step that needs to be exact is
+written exactly, in the first person, rather than lifted out into a third-person
+block.
 
 A skill that fans a review out to parallel subagents must wait for every one of
 them, then combine their findings into one list before it returns or applies any
 finding. Findings land one subagent at a time, and no subagent reads another's
 passage or another's findings. So only the skill, and only once every subagent
 is in, can drop a duplicate or settle two findings that pull the same site
-different ways. `code-review`, `coherence-review`, and `copy-edit` all carry
-this step. Give a new such skill the same one.
+different ways. `code-review`, `coherence-review`, `copy-edit`, and `state` all
+carry this step. Give a new such skill the same one.
 
 Each of those skills confirms its findings too. Only one place does that
 confirming. The lens subagents of `code-review` and `coherence-review` don't
 confirm a finding. So both skills confirm each one against the code themselves.
-The `dream:copy-editor` subagent does confirm each finding before it returns it.
-So `copy-edit` doesn't confirm them again. Pick one of those two homes for a new
-such skill. Don't pick both.
+The `dream:copy-editor` and `dream:code-verifier` subagents do confirm each
+finding before returning it, against the guide and against the code
+respectively. So `copy-edit` and `state` don't confirm them again. Pick one of
+those two homes for a new such skill. Don't pick both.
 
 A skill that spawns subagents must also tell the agent to go idle while they
 run, rather than sleep, poll, or narrate the wait. `code-review`,
-`coherence-review`, `copy-edit`, `smith`, and `spark` each carry that line at
-the spawn site. Give a new one the same line.
+`coherence-review`, `copy-edit`, `smith`, `spark`, and `state` each carry that
+line at the spawn site. Give a new one the same line.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,

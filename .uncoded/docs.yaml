@@ -106,6 +106,13 @@ plugins/:
           The lens:
           Read the change:
           Reporting:
+      code-verifier.md:
+        Code verifier:
+          Read the claims you were given:
+          Check each claim against the code:
+          Write the record to a temporary file:
+          Write your record, claim by claim:
+          Return what the code doesn't support:
       copy-editor.md:
         Copy editor:
           Read the Plain English guide:
@@ -310,6 +317,20 @@ plugins/:
             Play it back:
             Write the brief:
             Let a designer read it:
+            Where it goes:
+      state/:
+        SKILL.md:
+          State:
+            Never make anything up:
+            Start from what I've given you:
+            Read it all first, and let me watch:
+            Lay the map out before you say anything about the code:
+            Let me steer, and cover it all anyway:
+            Say one thing at a time:
+            Sound like a person:
+            Write down everything you tell me:
+            Get it checked before you show me:
+            Then tidy the map up:
             Where it goes:
       team/:
         SKILL.md:
