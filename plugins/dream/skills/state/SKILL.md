@@ -17,9 +17,9 @@ enough that I can judge a design choice later. And something written down for
 whoever picks this up next, whether that's me in a fortnight, a colleague, or
 the agent that designs from it.
 
-That written thing is a reading guide rather than a substitute for reading. It
-says what to read and in what order, and gives enough of a frame up front that
-the code makes sense when you get there.
+That written thing is a reading guide, not a replacement for reading. It says
+what to read and in what order, and gives enough background up front that the
+code makes sense when you get there.
 
 ## Never make anything up
 
@@ -35,17 +35,16 @@ thing to say to me, and I'd much rather have that than a good guess.
 The documentation counts here too. Read it, because it tells you what the code
 is meant to do and which conventions it's meant to keep, and that's worth
 knowing. But please don't pass any of it on to me as fact before you've seen it
-in the code. Docs go stale, and one repeated back to me is no better than a
-guess and harder to spot, because it sounds official.
+in the code. Docs go stale, and something stale repeated back to me is just as
+wrong as a guess and harder for me to spot.
 
 Carry a citation with everything you tell me: the file and line, or the symbol.
-Then I can go and look, and it means you had to open the file to say it.
+Then I can go and look for myself.
 
 If at any point you notice you've told me something about the code without
-having read it first, or guessed or invented anything, stop right there and tell
-me. Then go and read the code and correct yourself. Everything gets checked at
-the end anyway, but a correction while we're still talking about it is worth far
-more to me than one an hour later.
+having read it first, or guessed or invented anything, stop and tell me. Then go
+and read the code and put it right. It all gets checked at the end anyway, but
+I'd much rather hear about it now than an hour later.
 
 ## Start from what I've given you
 
@@ -89,20 +88,20 @@ first, while they're still empty, in these four layers:
 each one lives. Then the boundaries and conventions between them, and for each
 convention, how it holds: a type, a check, documentation, or nothing but habit.
 
-**How it works** is how the machine actually behaves: the control flow and the
-data flow through those parts, and the algorithms doing the real work. It's the
-layer that does most of the work for me, so give it room. Where a use case
-exercises a good deal of it, walking that one through at a high level — what
-calls what, what happens to the data, where the decisions get made — is usually
-the most concrete way in, and the easiest for me to follow.
+**How it works** is the control flow and the data flow through those parts, and
+the algorithms doing the real work. This is the layer I get the most from, so
+give it room. If there's a use case that exercises a lot of it, walking through
+that one at a high level is usually the clearest way in: what calls what, what
+happens to the data, where the decisions get made.
 
-**The sharp edges** are what resisted understanding, and what looks like earlier
-over-building or patching round a problem. Name it and say where it lives.
-Whether it can be cut or untangled is for whoever designs next, not for us now.
+**The sharp edges** are the parts that were hard to understand, and anything
+that looks like earlier over-building or patching round a problem. Name it and
+say where it lives. Whether it can be cut or untangled is for whoever designs
+next, not for us now.
 
 Under each heading, say where to go and read: the file, and the function or
 symbol worth starting from. Someone should be able to work out from the guide
-what to open next, and go in already knowing roughly what they'll find.
+what to open next, and roughly what they'll find there.
 
 Every heading under those four is a waypoint. Keep them small enough that one
 waypoint is one thing worth understanding. An empty waypoint is somewhere we
@@ -111,13 +110,13 @@ haven't been yet, so the file itself shows what's left.
 ## Let me steer, and cover it all anyway
 
 Start with the bird's eye view: where we are, what the parts are, and how they
-fit and flow together. Not the detail of any of it, just enough of the whole
-shape that I've got somewhere to hang everything that comes after. Going
-straight to a waypoint drops me into one corner of a place I haven't seen yet.
+fit together. Not the detail, just the overall shape, so I've got something to
+fit the rest into. If you start me at a waypoint I'm looking at one corner of a
+place I haven't seen.
 
 Then tell me what the waypoints are and let me pick where to zoom in. That's the
-one place I'm happy to be handed a list of options, because you've seen this
-ground and I haven't.
+one place I'm happy to be handed a list of options, because you've seen the code
+and I haven't.
 
 Fill each waypoint in as we cover it. When I stop steering, work down whatever's
 still empty and bring it to me.
@@ -167,13 +166,13 @@ Every claim you make to me goes into the guide, under a waypoint, with its
 citation. The guide is the record of what was said, not a summary written at the
 end.
 
-If something isn't worth writing down, it probably isn't worth asserting to me
+If something isn't worth writing down, it probably isn't worth telling me
 either.
 
 ## Get it checked before you show me the final guide
 
-You read this code, so you believe your own read of it, including the parts you
-filled in. Someone who wasn't here has to check it.
+You did the reading, so it all looks right to you, including anything you filled
+in. Someone who wasn't here needs to check it.
 
 Spawn one `general-purpose` subagent with the Agent tool, on Sonnet. Give it the
 absolute path of the guide — a subagent can't resolve a path relative to its own
@@ -195,8 +194,8 @@ its own when the subagent finishes. Don't sleep, don't poll for progress, and
 don't write that you're waiting.
 
 Then read what it sends back, and please don't check any of it again yourself.
-It read the code and reached a verdict, and doing it twice just gives a
-confident wrong answer a second chance.
+It read the code and reached a verdict, and going over that again risks talking
+yourself back into what you thought in the first place.
 
 Then tell me, plainly, everything that came back unsupported — including
 something you told me an hour ago, because I'll have been building on it since.
@@ -206,16 +205,16 @@ fix the guide.
 ## Then tidy the guide up
 
 Cut it down to what's worth keeping, by editing the file you've just had checked
-rather than writing a fresh one from it. Cutting, compressing and reordering
-can't introduce a claim nobody checked. Rewriting can.
+rather than writing a fresh one from it. Cutting and reordering can't add a
+claim nobody checked. Rewriting can.
 
-Keep the shape: the high level before the detail, and every detail hanging off
-the structure it belongs to, so a reader always knows where they are. Keep the
-pointers into the code, too. A line I can act on — open this file, start at this
-function — is worth more to me than a paragraph describing it.
+Keep the shape: the high level before the detail, and every detail under the
+part it belongs to, so a reader always knows where they are. Keep the pointers
+into the code, too. A line I can act on — open this file, start at this function
+— is worth more to me than a paragraph describing it.
 
-Short, please. Compressed enough that coming back to this in a fortnight is
-easy, and short enough that I read it rather than skim it.
+Short, please. Short enough that I read it properly rather than skim it, and
+clear enough that coming back to it in a fortnight is easy.
 
 ## Where it goes
 
