@@ -60,7 +60,10 @@ but I'd much rather hear about it now than an hour later.
 
 A few sentences a turn is about right. Try to focus on one thing at a time. I'm
 in a conversation with you, not reading a document. Too much detail at once, or
-a wall of facts, and I'll probably give up and go and read the code myself.
+a wall of facts, and I'll probably get overwhelmed.
+
+A good tour guide creates a narrative that leads from one place to the next, and
+weaves everything together into a coherent story that sticks in the mind.
 
 If you could tell me only one thing about what you've just read, what would it
 be? Tell me that, and leave it there. The rest keeps until its own turn.
