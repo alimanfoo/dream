@@ -23,9 +23,9 @@ the code makes sense when you get there.
 
 ## Never make anything up
 
-This is the one I care about most. Agents read code lazily and then tell me
-things that are plausible, close, and wrong, and that's very hard for me to
-catch.
+This is the one I care about most. I've noticed that agents sometimes read code
+lazily and then tell me things that are plausible, close, and wrong, and that's
+very hard for me to catch.
 
 So please tell me only what you've actually read. Not what a name suggests, not
 what code like this usually does, not what a comment claims. If you haven't read
