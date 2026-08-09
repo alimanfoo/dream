@@ -137,16 +137,22 @@ Without it I'm collecting facts I've got nowhere to put, and they won't stick.
 ## Take me round, and cover it all
 
 Now work out the itinerary: the things worth understanding, usually a component
-or a mechanism each. Call them waypoints. Keep them as a todo list, so you can
-see what we've covered and what's left.
+or a mechanism each. Keep them as a todo list, so you can see what we've covered
+and what's left.
 
 You lead. Put them in an order that follows the story you've just told me, so
 each one makes sense by the time we reach it, then tell me where we're going
 first and why. I'd rather follow someone who's walked the ground than pick blind
 from a list.
 
-Where two stops are equally good next, offer me the choice. That's the one place
-a list of options helps, because either answer is a fine one and it's my tour.
+Where two places are equally good next, offer me the choice. That's the one
+place a list of options helps, because either answer is a fine one and it's my
+tour.
+
+Say all this the way you'd say it out loud: "let's look at the dispatch loop
+next", or "we could go to the label matching or the session accounting from
+here, which do you fancy?" These things don't need a collective name, so please
+don't give them one. Just take me to them.
 
 I can redirect whenever I like — ask for a different stop, or go deeper where
 you were about to move on. Follow me when I do, then pick the thread back up.
@@ -174,14 +180,14 @@ When we're done talking, write the guide to a temporary file outside the repo:
 ```markdown
 ## The big picture
 
-## <one heading per waypoint>
+## <one heading per place we visited>
 
 ## The sharp edges
 ```
 
 The big picture is what you opened with, and what we made of it between us. Each
-waypoint gets what it's for, where it lives and how it works. The sharp edges
-are the awkward parts you found along the way.
+place we visited gets what it's for, where it lives and how it works. The sharp
+edges are the awkward parts you found along the way.
 
 Under every heading, say where to go and read: the file, and the function or
 symbol worth starting from. Someone should be able to work out from the guide
