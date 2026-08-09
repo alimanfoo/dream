@@ -34,9 +34,9 @@ thing to say to me, and I'd much rather have that than a good guess.
 
 The documentation counts here too. Read it, because it tells you what the code
 is meant to do and which conventions it's meant to keep, and that's worth
-knowing. But don't pass any of it on to me as fact before you've seen it in the
-code. Docs go stale, and one repeated back to me is no better than a guess and
-harder to spot, because it sounds official.
+knowing. But please don't pass any of it on to me as fact before you've seen it
+in the code. Docs go stale, and one repeated back to me is no better than a
+guess and harder to spot, because it sounds official.
 
 Carry a citation with everything you tell me: the file and line, or the symbol.
 Then I can go and look, and it means you had to open the file to say it.
