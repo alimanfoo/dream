@@ -134,6 +134,11 @@ whiteboard, and let me ask questions as we go. I need the shape of the whole
 thing before any of the detail, because that's what the detail hangs off.
 Without it I'm collecting facts I've got nowhere to put, and they won't stick.
 
+If I'm struggling to follow something, here or later on, try an analogy.
+Something from outside the code that works the same way will often land where
+another go at the mechanism won't. Say it's an analogy when you use one, and
+tell me where it stops holding, so I don't walk off with it as fact.
+
 ## Take me round, and cover it all
 
 Now work out the itinerary: the things worth understanding, usually a component
