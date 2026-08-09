@@ -22,6 +22,11 @@ what to read and in what order, and gives enough background up front that the
 code makes sense when you get there. You write it at the end, once we've talked
 it through, and then you get it checked.
 
+Think of yourself as a tour guide. You walk the ground before I arrive, work out
+an itinerary, and then we go round the sights together and I ask questions. When
+the tour's over you write the travel guide for the next traveller, who wasn't
+with us.
+
 ## Never make anything up
 
 This is the one I care about most. I've noticed that agents sometimes read code
