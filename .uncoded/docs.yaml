@@ -313,7 +313,7 @@ plugins/:
             Where it goes:
       state/:
         SKILL.md:
-          State:
+          dream:state:
             Never make anything up:
             Start from what I've given you:
             Read it all first, and let me watch:
@@ -322,7 +322,7 @@ plugins/:
             Say one thing at a time:
             Sound like a person:
             Write down everything you tell me:
-            Get it checked before you show me:
+            Get it checked before you show me the final guide:
             Then tidy the guide up:
             Where it goes:
       team/:

@@ -6,13 +6,14 @@ description:
 argument-hint: "[requirements | issue | file | text]"
 ---
 
-# State
+# dream:state
 
 I'm about to design or build something, and I don't know this code well enough
 yet. You don't either — you start every session with nothing. So before anyone
-designs anything, I'd like the two of us to go and look at it together.
+designs anything, I'd like the two of us to read and learn about the code
+together.
 
-I want two things out of it. A picture of how this code actually works, good
+I'd like two things out of it. A picture of how this code actually works, good
 enough that I can judge a design choice later. And something written down for
 whoever picks this up next, whether that's me in a fortnight, a colleague, or
 the agent that designs from it.
@@ -34,6 +35,12 @@ thing to say to me, and I'd much rather have that than a good guess.
 
 Carry a citation with everything you tell me: the file and line, or the symbol.
 Then I can go and look, and it means you had to open the file to say it.
+
+If at any point you notice you've told me something about the code without
+having read it first, or guessed or invented anything, stop right there and tell
+me. Then go and read the code and correct yourself. Everything gets checked at
+the end anyway, but a correction while we're still talking about it is worth far
+more to me than one an hour later.
 
 ## Start from what I've given you
 
@@ -77,29 +84,35 @@ first, while they're still empty, in these four layers:
 each one lives. Then the boundaries and conventions between them, and for each
 convention, how it holds: a type, a check, documentation, or nothing but habit.
 
-**How it works** is the one that does most of the work for me. Take a real use
-case and trace it end to end, in order, through the parts: what calls what, what
-happens to the data, where the decisions get made. Then the algorithms that
-sequence runs through. Tracing one real case tells me far more than describing
-the general one, and it's the part you can't write without having read the code.
+**How it works** is how the machine actually behaves: the control flow and the
+data flow through those parts, and the algorithms doing the real work. It's the
+layer that does most of the work for me, so give it room. Where a use case
+exercises a good deal of it, walking that one through at a high level — what
+calls what, what happens to the data, where the decisions get made — is usually
+the most concrete way in, and the easiest for me to follow.
 
 **The sharp edges** are what resisted understanding, and what looks like earlier
 over-building or patching round a problem. Name it and say where it lives.
 Whether it can be cut or untangled is for whoever designs next, not for us now.
 
+Under each heading, say where to go and read: the file, and the function or
+symbol worth starting from. Someone should be able to work out from the guide
+what to open next, and go in already knowing roughly what they'll find.
+
 Every heading under those four is a waypoint. Keep them small enough that one
 waypoint is one thing worth understanding. An empty waypoint is somewhere we
 haven't been yet, so the file itself shows what's left.
 
-Under each one, say where to go and read: the file, and the function or symbol
-worth starting from. Someone should be able to work out from the guide what to
-open next, and go in already knowing roughly what they'll find.
-
 ## Let me steer, and cover it all anyway
 
-Give me the orientation paragraph, then tell me what the waypoints are and let
-me pick where to go. That's the one place I'm happy to be handed a list of
-options, because you've seen this ground and I haven't.
+Start with the bird's eye view: where we are, what the parts are, and how they
+fit and flow together. Not the detail of any of it, just enough of the whole
+shape that I've got somewhere to hang everything that comes after. Going
+straight to a waypoint drops me into one corner of a place I haven't seen yet.
+
+Then tell me what the waypoints are and let me pick where to zoom in. That's the
+one place I'm happy to be handed a list of options, because you've seen this
+ground and I haven't.
 
 Fill each waypoint in as we cover it. When I stop steering, work down whatever's
 still empty and bring it to me.
@@ -152,35 +165,33 @@ end.
 If something isn't worth writing down, it probably isn't worth asserting to me
 either.
 
-## Get it checked before you show me
+## Get it checked before you show me the final guide
 
 You read this code, so you believe your own read of it, including the parts you
 filled in. Someone who wasn't here has to check it.
 
-Split the guide by waypoint and spawn one `general-purpose` subagent per part
-with the Agent tool, all in a single message so they run in parallel. Give each
-one the absolute path of the file and the part it covers — a subagent can't
-resolve a path relative to its own prompt file.
+Spawn one `general-purpose` subagent with the Agent tool, on Sonnet. Give it the
+absolute path of the guide — a subagent can't resolve a path relative to its own
+prompt file.
 
-Ask them all for the same thing. Take every claim in the part, open what its
+Ask it to work through the waypoints one at a time, keeping a todo list so it
+covers every one of them. At each waypoint, take every claim, open what its
 citation points to, and read enough around it to settle the claim: the whole
 function where the claim is about what it does, the callers where it's about who
 uses it, every step where it's about a sequence. Then write down the claim, what
-it read, and whether the code bears the claim out. Tell it to work through every
-claim rather than a sample of them, to settle each one on the code rather than
-on a name, a comment or a docstring, and to say a claim isn't borne out when it
-couldn't settle it. Then to return only the claims the code doesn't bear out,
-and to say plainly when that's none of them rather than reaching for something
-to report.
+it read, and whether the code bears the claim out. Tell it to settle each one on
+the code rather than on a name, a comment or a docstring, and to say a claim
+isn't borne out when it couldn't settle it. Then to return only the claims the
+code doesn't bear out, and to say plainly when that's none of them rather than
+reaching for something to report.
 
-Once they're running, go idle: end your turn and let their reports land. They
-arrive on their own as each subagent finishes. Don't sleep, don't poll for
-progress, and don't write that you're waiting.
+Once it's running, go idle: end your turn and let its report land. It arrives on
+its own when the subagent finishes. Don't sleep, don't poll for progress, and
+don't write that you're waiting.
 
-They land one at a time, so go idle again after each until every one is in. Then
-combine what they send back into one list and drop the duplicates. Please don't
-check any of it again yourself. They read the code and rendered the verdict, and
-doing it twice just gives a confident wrong answer a second chance.
+Then read what it sends back, and please don't check any of it again yourself.
+It read the code and reached a verdict, and doing it twice just gives a
+confident wrong answer a second chance.
 
 Then tell me, plainly, everything that came back unsupported — including
 something you told me an hour ago, because I'll have been building on it since.
