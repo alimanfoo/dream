@@ -178,6 +178,12 @@ specifies its verification pass the same way. A step that needs to be exact is
 written exactly, in the first person, rather than lifted out into a third-person
 block.
 
+Keep `/dream:copy-edit` off both bodies. It rewrites prose towards the Plain
+English guide, a different end point, and the register is what would go. A
+`/dream:smith` session runs it over everything the branch changed, so skip that
+pass on a branch touching either file. This only arises here, where the plugin's
+own skills develop the plugin. Everywhere else copy-edit is doing its job.
+
 A skill that fans a review out to parallel subagents must wait for every one of
 them, then combine their findings into one list before it returns or applies any
 finding. Findings land one subagent at a time, and no subagent reads another's
