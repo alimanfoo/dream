@@ -214,18 +214,13 @@ absolute path of the guide — a subagent can't resolve a path relative to its o
 prompt file.
 
 Ask it to check every claim in the guide against the code, working section by
-section and keeping a todo list so it skips none of them.
+section and keeping a todo list so it skips none of them. For each claim, open
+the code the guide names and read enough to settle it — against the code itself,
+not against a name, a comment or a doc.
 
-For each claim: open the code the guide names, and read enough to settle it.
-Then write down the claim, what it read, and whether the code bears the claim
-out.
-
-Two things to be firm about. It settles a claim on the code, not on a name, a
-comment or a doc. And a claim it couldn't settle is one the code doesn't bear
-out.
-
-Then ask it to return the claims that failed, and nothing else. If none of them
-did, saying so is a fine answer.
+Then ask it to return two kinds of claim, and nothing else: the ones the code
+contradicts, and the ones it couldn't verify because the evidence isn't there.
+If there are none of either, saying so is a fine answer.
 
 Once it's running, go idle: end your turn and let its report land. It arrives on
 its own when the subagent finishes. Don't sleep, don't poll for progress, and
