@@ -85,6 +85,9 @@ call. Accepted ones become new tasks, **inserted as the next tasks before any
 pending task from the plan**. Hold ancillary findings for post-merge triage.
 Never file them mid-session.
 
+For each finding you accept, apply the
+[removal-first check](../../../agents/Grace.md#removal-first-check).
+
 For each finding you have set aside as an ancillary finding, apply the
 [same-edit check](../../../agents/Grace.md#same-edit-check).
 

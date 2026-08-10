@@ -46,6 +46,9 @@ Decide each finding from both reviews on its merits, weighed against the
 - Raise a challenge: take it to the user per the "challenge" shape. Use this
   when the finding shows a settled artifact no longer holds.
 
+For each finding you accept from the coherence review, apply the
+[removal-first check](../../../agents/Grace.md#removal-first-check).
+
 For each finding you called out of scope, apply the
 [same-edit check](../../../agents/Grace.md#same-edit-check).
 
