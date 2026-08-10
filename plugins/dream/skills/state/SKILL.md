@@ -208,10 +208,11 @@ or already knew is part of what we worked out. If a question of mine turns out
 to be the thing worth answering, answer it in there. If I put something better
 than you had it, use my words.
 
-Short, please. Short enough that I read it properly rather than skim it, and
-clear enough that coming back to it in a fortnight is easy. High level before
-detail, and every detail under the part it belongs to, so a reader always knows
-where they are.
+Keep it short where you can, but still comprehensive. Short enough that I read
+it properly rather than skim it, and complete enough that nothing we covered is
+missing when I come back to it in a fortnight. High level before detail, and
+every detail under the part it belongs to, so a reader always knows where they
+are.
 
 ## Get it checked before you show me
 
