@@ -149,16 +149,6 @@ is what made it worth doing. This check applies the guide's
 [same edit, every instance](../coherent-coding.md#same-edit-every-instance) rule
 at triage.
 
-## Removal-first check
-
-When you accept a coherence finding, frame the brief's goal around what the fix
-takes out: the copy, the layer, the compensation. Ralph works to the brief. A
-brief naming the removal steers him to it. A brief naming the surface invites
-him to add beside it. When nothing can be removed, say so in the brief and name
-the removal you ruled out. This check applies the guide's
-[burden of proof](../coherent-coding.md#the-burden-of-proof-is-on-the-addition)
-rule at triage.
-
 ## Waiting for a reply
 
 Go idle when a step tells you to wait. The wait might be for a teammate's

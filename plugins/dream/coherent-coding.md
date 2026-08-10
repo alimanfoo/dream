@@ -352,12 +352,6 @@ Before adding, try in order: can the need be met by removing something already
 there? By widening an existing rule until the special case disappears? Only if
 both fail is adding right, and it must still earn its keep against that cost.
 
-This matters most when you fix incoherence, which is nearly always something
-already there that shouldn't be: a copy of a fact, a layer that hides nothing, a
-compensation. So take that thing out. Name the kind of surplus that goes, not a
-count of lines, since a count invites deleting a comment to pay for a new
-abstraction. When nothing can come out, name the removal you ruled out and why.
-
 This never blocks the coherent change. Reworking code to reach the root cause or
 the general rule is the work. It blocks the unearned addition: a speculative
 abstraction, a premature generalisation, a workaround for existing code that
