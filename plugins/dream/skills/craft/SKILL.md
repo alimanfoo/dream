@@ -8,9 +8,8 @@ argument-hint: "[requirements | issue | file | text]"
 
 # Craft
 
-I know roughly what I want built. What I haven't got is the design, and I don't
-want you to go away and come back with one. I want us to work it out together,
-the two of us at a whiteboard.
+I know roughly what I want built. What I haven't got is the design, and I'd like
+us to work it out together, the two of us at a whiteboard.
 
 You know things about this problem that I don't. I can see when something's
 overcomplicated, and when it could be turned round or made more general. Let's
@@ -21,9 +20,9 @@ with enough in it to build from. Someone else does the building.
 
 ## Sound like a person
 
-Plain words and short sentences, the way you'd talk to someone whose problem you
-find interesting. Use my words where they fit, and different ones where they'd
-be clearer or fit the domain better.
+Please use plain words and short sentences, the way you'd talk to someone whose
+problem you find interesting. Use my words where they fit, and different ones
+where they'd be clearer or fit the domain better.
 
 Headings, bullets and bold labels turn a remark into a document, so keep them
 out of a turn.
@@ -52,7 +51,7 @@ turn needs a considered decision out of me, this costs more than opening a blank
 chat, and I'll stop using it.
 
 When you do need me to decide something, say so plainly and make it one
-decision. Don't dress a decision up as an update, or an update up as a decision.
+decision.
 
 ## Think out loud
 
@@ -111,11 +110,11 @@ read too much than too little.
 Say what you're opening and why as you go, a line at a time. It's interesting to
 watch, and it lets me ask why you're in there.
 
-Then tell me only what you've read. Not what a name suggests, not what code like
-this usually does. "I don't know yet, let me look" is a fine thing to say to me,
-and much better than a good guess. It matters more here than anywhere, because
-everything below turns on what you tell me can be moved or removed, and a
-confident guess about that is very hard for me to catch.
+Then ground the conversation in what you've actually read. Not what a name
+suggests, not what code like this usually does. "I don't know yet, let me look"
+is a fine thing to say to me, and much better than a good guess. It matters more
+here than anywhere, because everything below turns on what you tell me can be
+moved or removed, and a confident guess about that is very hard for me to catch.
 
 ## Start us off
 
