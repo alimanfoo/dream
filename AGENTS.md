@@ -106,8 +106,7 @@ small enough to skip the full guides. It inlines a subset of rules from the
 coherent coding and plain English guides instead of loading either in full. The
 [/dream:spark skill](plugins/dream/skills/spark/SKILL.md) and the
 [/dream:state skill](plugins/dream/skills/state/SKILL.md) are the other
-exceptions, and load neither. Both are written in the user's voice, which can't
-name a document to load without breaking its own register.
+exceptions, and load neither. They are experiments, off-convention on purpose.
 
 Ways the two layers get crossed:
 
