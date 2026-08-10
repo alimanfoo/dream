@@ -212,8 +212,8 @@ finding names. Prefer the fix that takes something out, per
 Commit and push the fixes.
 
 Post the findings and how you acted on them as a PR comment, naming what each
-fix took out. Head it `Coherence review`. For any finding you didn't act on,
-give the reason in one sentence.
+fix took out, or the removal you ruled out and why. Head it `Coherence review`.
+For any finding you didn't act on, give the reason in one sentence.
 
 ## Code review
 
