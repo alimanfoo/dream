@@ -143,7 +143,7 @@ the title from the session input.
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
 
-**Start the watch.** Invoke the `/dream:watcher <pr>` skill on the PR number to
+**Start the watch.** Invoke the `dream:watcher <pr>` skill on the PR number to
 watch it for what the user posts. It surfaces each new post as it arrives.
 
 ## Implement
@@ -160,7 +160,7 @@ Implement the change in small steps, each its own commit. For each step:
 
 ## Code review
 
-Run the `/dream:code-review` skill in `inline` mode over the branch's changes
+Run the `dream:code-review` skill in `inline` mode over the branch's changes
 against the base (`origin/main...HEAD`), so it reviews without spawning
 subagents. It returns findings. It does not apply them. Weigh each on its merits
 and apply the ones that stand up. Commit and push the fixes.
@@ -209,8 +209,8 @@ Once the PR is ready and you have nothing left to do, go idle and let the watch
 wake you when the user replies. Idling is not ending: the watch is your only
 signal that the user has replied.
 
-Tear the watch down as the `/dream:watcher` skill describes, at a merge, a
-close, or a deferred merge.
+Tear the watch down as the `dream:watcher` skill describes, at a merge, a close,
+or a deferred merge.
 
 ## Merge
 
