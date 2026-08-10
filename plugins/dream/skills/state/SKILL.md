@@ -228,7 +228,8 @@ don't write that you're waiting.
 
 Then fix the guide. And tell me, plainly, anything that came back unsupported
 which you'd also told me out loud. Fixing the guide doesn't fix what's in my
-head. I believed it when you said it, so I need to hear that it's gone.
+head. I believed it when you said it, so I need to hear that it's gone or been
+corrected.
 
 ## Where it goes
 
