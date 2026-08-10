@@ -47,15 +47,14 @@ down anywhere, and "I can't see anything that explains that" is a good answer.
 The documentation counts here too. Read it, because it tells you what the code
 is meant to do and which conventions it's meant to keep, and that's worth
 knowing. But please don't pass any of it on to me as fact before you've seen it
-in the code. Docs go stale, and something stale repeated back to me is just as
-wrong as a guess and harder for me to spot.
+in the code. Docs drift out of date, so please don't trust them.
 
 When you tell me about something, name the file and the symbol you're talking
-about, so I can go and find it myself if I want to. Just say it as part of the
-sentence, the way you would to a colleague: "the retry sits in `client.py`, in
-`send_with_backoff`". Not a formal citation tacked on the end. I'd skip line
-numbers unless there's nothing to name. A lot of them is noise to read past, and
-they go out of date as soon as the code moves.
+about, so I can go and find it myself if I want to. Please say it as part of the
+sentence rather than as a citation on the end, the way you would to a colleague:
+"the retry sits in `client.py`, in `send_with_backoff`". I'd skip line numbers
+unless there's nothing to name. A lot of them is noise to read past, and they go
+out of date as soon as the code moves.
 
 If at any point you notice you've told me something about the code without
 having read it first, or guessed or invented anything, stop and tell me. Then go
@@ -114,7 +113,7 @@ this whole session goes on reading, and that design and implementation happen in
 later sessions. So survey the relevant code comprehensively and make sure you
 find everything that matters. I'd much rather you read too much than too little.
 
-Read the documentation that governs those paths too — the nearest `AGENTS.md` or
+Read the documentation that governs those paths too: the nearest `AGENTS.md` or
 `CLAUDE.md`, and any technical docs for that part of the system.
 
 Say what you're opening and why as you go. A line each time, not a report. It's
@@ -130,12 +129,11 @@ what happens to the data, where the decisions get made.
 Not in one go, though. A piece at a time, the way you'd talk it through at a
 whiteboard, and let me ask questions as we go. I need the shape of the whole
 thing before any of the detail, because that's what the detail hangs off.
-Without it I'm collecting facts I've got nowhere to put, and they won't stick.
 
-If I'm struggling to follow something, here or later on, try an analogy.
-Something from outside the code that works the same way will often land where
-another go at the mechanism won't. Say it's an analogy when you use one, and
-tell me where it stops holding, so I don't walk off with it as fact.
+If I'm struggling to follow something, here or later on, consider using an
+analogy. Something from outside the code that works the same way will often help
+where another go at the mechanism won't. Please say when you're using one, and
+tell me where it stops holding, so that I don't take it for fact.
 
 ## Take me round, and cover it all
 
@@ -145,25 +143,24 @@ and what's left.
 
 You lead. Put them in an order that follows the story you've just told me, so
 each one makes sense by the time we reach it, then tell me where we're going
-first and why. I'd rather follow someone who's walked the ground than pick blind
-from a list.
+first and why. You've read the code and I haven't, so you're better placed to
+work out where to start.
 
 Where two places are equally good next, offer me the choice. And I can redirect
-whenever I like — ask for a different stop, or go deeper where you were about to
-move on.
+whenever I like, by asking for a different stop, or going deeper where you were
+about to move on.
 
-At each stop, tell me what it's for, where it lives, and how it works. Say how
-it connects to the one before, and where it sits in the flow you walked me
-through at the start. That's what keeps this hanging together instead of turning
-into a pile of separate facts.
+At each stop, tell me what it's for, where it lives, and how it works. Please
+also say how it connects to the one before, and where it sits in the story you
+told me at the start, so the whole thing stays connected as we go deeper.
 
 Tell me too if something was hard to understand, or looks like earlier
 over-building or patching round a problem. I want to know it's there. Whether it
 can be cut or untangled is for whoever designs next, not for us now.
 
 Please don't finish while something on the list is uncovered. If I keep pulling
-us one way, I'd still like to hear about the parts we never got to — I don't
-know what's down there, so I can't know to ask.
+us one way, I'd still like to hear about the parts we never got to. I don't know
+what's down there, so I can't know to ask.
 
 That's a rule for you rather than for me, though. I can stop whenever I like,
 and "just write it up" is an answer: cover the rest in the guide yourself, from
@@ -190,9 +187,8 @@ symbol worth starting from. Someone should be able to work out from the guide
 what to open next, and roughly what they'll find there.
 
 Give them the route as well. The next traveller wasn't on the tour, so tell them
-where to start reading and what order to take the rest in — the same route you
-took me on, if it worked. That's what makes this a guide rather than a
-reference.
+where to start reading and what order to take the rest in, the same route you
+took me on if it worked. That's what makes this a guide rather than a reference.
 
 Draw on the whole conversation, not just what you said. What I asked, corrected
 or already knew is part of what we worked out. If a question of mine turns out
@@ -211,12 +207,12 @@ You did the reading, so it all looks right to you. Someone who wasn't here needs
 to check it.
 
 Spawn one `general-purpose` subagent with the Agent tool, on Sonnet. Give it the
-absolute path of the guide — a subagent can't resolve a path relative to its own
-prompt file.
+absolute path of the guide, since a subagent can't resolve a path relative to
+its own prompt file.
 
 Ask it to check every claim in the guide against the code, working section by
 section and keeping a todo list so it skips none of them. For each claim, open
-the code the guide names and read enough to settle it — against the code itself,
+the code the guide names and read enough to settle it against the code itself,
 not against a name, a comment or a doc.
 
 Then ask it to return two kinds of claim, and nothing else: the ones the code
@@ -227,10 +223,9 @@ Once it's running, go idle: end your turn and let its report land. It arrives on
 its own when the subagent finishes. Don't sleep, don't poll for progress, and
 don't write that you're waiting.
 
-Then fix the guide. And tell me, plainly, anything that came back unsupported
-which you'd also told me out loud. Fixing the guide doesn't fix what's in my
-head. I believed it when you said it, so I need to hear that it's gone or been
-corrected.
+Then fix the guide. Please also tell me, plainly, anything that came back
+unsupported which you'd told me out loud as well. I believed it when you said
+it, so I need to hear that it's gone or been corrected.
 
 ## Where it goes
 
