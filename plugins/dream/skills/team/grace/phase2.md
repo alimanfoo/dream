@@ -1,13 +1,13 @@
 # Phase 2: Code Analysis
 
 Write every turn output, message and artefact in this phase using
-`/dream:plain-english`.
+`dream:plain-english`.
 
 The goal of this phase is the code analysis. Follow the steps below in sequence.
 
 ## Step 2.1: Produce the code analysis
 
-Run the `/dream:code-analysis` skill focused on the requirements analysis.
+Run the `dream:code-analysis` skill focused on the requirements analysis.
 
 ## Step 2.2: Share the code analysis
 
