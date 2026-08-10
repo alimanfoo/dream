@@ -184,6 +184,9 @@ waiting.
 
 Post the returned plan as a PR comment. Head it `Plan`.
 
+Create a TODO list from the plan, one task per step, so you can track progress
+against it as you implement.
+
 ## Implement
 
 Open the draft PR before you change any code, if it isn't already open
@@ -192,9 +195,12 @@ the user once work starts.
 
 Implement the plan, one step at a time. For each step:
 
-- Run the tests you found.
+- Mark its task in progress.
+- Implement.
+- Run the tests.
 - Commit with a short subject.
 - Push.
+- Mark its task completed.
 
 ## Copy-edit
 
