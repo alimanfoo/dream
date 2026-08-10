@@ -168,17 +168,17 @@ them, then combine their findings into one list before it returns or applies any
 finding. Findings land one subagent at a time, and no subagent reads another's
 passage or another's findings. So only the skill, and only once every subagent
 is in, can drop a duplicate or settle two findings that pull the same site
-different ways. `code-review`, `coherence-review`, and `copy-edit` all carry
-this step. Give a new such skill the same one.
+different ways. `code-review`, `coherence-review`, `copy-edit`, and `spark` all
+carry this step. Give a new such skill the same one.
 
 Any skill that takes findings from a subagent confirms them too, whether it
 spawned one or several. Only one place does that confirming. The lens subagents
 of `code-review` and `coherence-review` don't confirm a finding. So both skills
 confirm each one against the code themselves. The `dream:copy-editor` subagent
 does confirm each finding against the guide before returning it, and `state`'s
-subagent confirms each claim against the code. So `copy-edit` and `state` don't
-confirm them again. Pick one of those two homes for a new such skill. Don't pick
-both.
+subagent and `spark`'s second reader confirm each claim against the code. So
+`copy-edit`, `state`, and `spark` don't confirm them again. Pick one of those
+two homes for a new such skill. Don't pick both.
 
 A skill that spawns subagents must also tell the agent to go idle while they
 run, rather than sleep, poll, or narrate the wait. `code-review`,
