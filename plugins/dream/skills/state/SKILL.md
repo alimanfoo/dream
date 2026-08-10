@@ -246,8 +246,8 @@ Then read what it sends back and act on it. No need to check any of it again
 yourself. It read the code to reach its verdict, and that was the check.
 
 Fix the guide. Then tell me, plainly, anything that came back unsupported which
-you'd also told me out loud — I'll have been building on it since, so I need to
-know what changed.
+you'd also told me out loud. Fixing the guide doesn't fix what's in my head. I
+believed it when you said it, so I need to hear that it's gone.
 
 ## Where it goes
 
