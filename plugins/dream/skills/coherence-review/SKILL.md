@@ -65,10 +65,10 @@ Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
 
 Tell each lens to give every finding a proposal that resolves it by taking out
-more code than it puts in, naming what goes and from where. A lens that can't
-propose one drops the finding. Fixing incoherence by adding is what makes a
-codebase harder to maintain the more carefully it is reviewed, so a finding with
-no removal behind it costs more than it returns.
+more code than it puts in, naming what goes and from where. Fixing incoherence
+by adding makes a codebase harder to maintain, however careful the review that
+found it. So a finding with no removal behind it costs more than it returns. A
+lens that can't propose one drops the finding.
 
 Once the subagents are running, go idle: end your turn and let their findings
 land. They arrive on their own when each subagent finishes. Don't sleep. Don't
@@ -84,11 +84,15 @@ inconsistencies.
 
 Read the code each finding cites. Keep only the findings you can confirm.
 
-Confirm each proposal against the code too. Check that what it removes is really
-there, and that carrying it out leaves less code than before. Drop any finding
-whose proposal fails either check. A lens proposes without being able to see
-another lens's work, so two proposals can want the same code gone, and one can
-rest on a removal another already counted.
+Confirm each proposal against the code too: what it removes is really there,
+removing it resolves the finding, and the result is less code than before. Drop
+any finding whose proposal fails one of those. The middle check is the one that
+matters most, since a cheap deletion stapled to an unrelated finding passes the
+other two.
+
+Each lens proposes blind to the others, so two can claim the same removal. Give
+it to one of them and recheck the other, which may no longer take out more than
+it puts in.
 
 ## Rank and return
 
