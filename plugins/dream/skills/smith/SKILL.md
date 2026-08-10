@@ -207,7 +207,9 @@ Run the `/dream:coherence-review` skill over the branch's changes against the
 base (`origin/main...HEAD`). It returns findings across the coherence lenses. It
 does not apply them. Weigh each on its merits and apply the ones that stand up.
 Reach for the coherent fix even when it goes wider than the site the finding
-names. Commit and push the fixes.
+names. Fix each finding by taking something out, per
+[Fix incoherence by removing](../../coherent-coding.md#fix-incoherence-by-removing).
+Commit and push the fixes.
 
 Post the findings and how you acted on them as a PR comment. Head it
 `Coherence review`. For any finding you didn't act on, give the reason in one
