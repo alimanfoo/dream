@@ -48,18 +48,23 @@ the skill. Keep `/dream:copy-edit` off both bodies. It rewrites prose towards
 the Plain English guide, a different end point, and the register is what would
 go.
 
-The plugin's prose references a skill, an agent, or an issue label one way
+The prose in this repo references a skill, an agent, or an issue label one way
 throughout:
 
-- Write a skill invocation as `/dream:foo`, a leading slash in backticks. Drop
-  the backticks in a frontmatter `description:` field, a markdown heading, or a
-  fenced command block.
-- Write a subagent-type identifier as `dream:foo`, since it is not a slash
-  command.
+- Write a skill reference as `dream:foo`, with no leading slash. Both hosts
+  resolve that identifier, and it is what the Skill tool takes, so an agent can
+  act on it as written.
+- Keep the leading slash, `/dream:foo`, where the reference stands for what a
+  person types: the README, a frontmatter `description:` field, a launch banner,
+  and a line the agent shows the user.
+- Drop the backticks in a frontmatter `description:` field, a markdown heading,
+  or a fenced command block.
+- Write a subagent-type identifier as `dream:foo`.
 - Write an issue label as "dream:foo".
 - `catch.sh` keeps its own shell register, where backticks and quotes would
-  misread.
-- Keep a skill reference (`/dream:team`) distinct from the multi-agent team
+  misread. Its `/dream:foo` strings keep the slash, since they are the prompt a
+  session's host reads.
+- Keep a skill reference (`dream:team`) distinct from the multi-agent team
   concept, "the dream team", which stays plain prose.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
