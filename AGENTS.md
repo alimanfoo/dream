@@ -57,7 +57,8 @@ throughout:
   and a line the agent shows the user.
 - Drop the backticks in a frontmatter `description:` field, a markdown heading,
   or a fenced command block.
-- Write a subagent-type identifier as `dream:foo`.
+- Write a subagent-type identifier as `dream:foo`. That is what an `Agent`
+  call's `subagent_type` takes.
 - Write an issue label as "dream:foo".
 - `catch.sh` keeps its own shell register, where backticks and quotes would
   misread. Its `/dream:foo` strings keep the slash, since they are the prompt a
