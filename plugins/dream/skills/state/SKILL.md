@@ -242,9 +242,8 @@ Once it's running, go idle: end your turn and let its report land. It arrives on
 its own when the subagent finishes. Don't sleep, don't poll for progress, and
 don't write that you're waiting.
 
-Then read what it sends back, and please don't check any of it again yourself.
-It read the code and reached a verdict, and going over that again risks talking
-yourself back into what you thought in the first place.
+Then read what it sends back and act on it. No need to check any of it again
+yourself. It read the code to reach its verdict, and that was the check.
 
 Fix the guide. Then tell me, plainly, anything that came back unsupported which
 you'd also told me out loud — I'll have been building on it since, so I need to
