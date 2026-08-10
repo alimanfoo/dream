@@ -88,11 +88,6 @@ Confirm each proposed fix against the code too: what it removes is really there,
 removing it resolves the finding, and the result is less code than before. Drop
 any finding whose proposed fix fails one of those.
 
-Two lenses can propose removing the same code, since neither sees the other's
-work. That code can only be removed once. So recheck every other fix that
-counted on it, and drop the ones that no longer take out more code than they put
-in.
-
 ## Rank and return
 
 Return the verified findings as turn output: a numbered list, most important
