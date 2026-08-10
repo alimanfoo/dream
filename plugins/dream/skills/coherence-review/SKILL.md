@@ -64,6 +64,12 @@ beneath it into the briefing.
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
 
+Tell each lens to give every finding a proposed fix that resolves it by taking
+out more code than it puts in, naming what goes and from where. Fixing
+incoherence by adding makes a codebase harder to maintain, however careful the
+review that found it. So a finding with no removal behind it costs more than it
+returns. A lens that can't propose one drops the finding.
+
 Once the subagents are running, go idle: end your turn and let their findings
 land. They arrive on their own when each subagent finishes. Don't sleep. Don't
 poll for progress. Don't write that you are waiting.
@@ -78,8 +84,13 @@ inconsistencies.
 
 Read the code each finding cites. Keep only the findings you can confirm.
 
+Confirm each proposed fix against the code too: what it removes is really there,
+removing it resolves the finding, and the result is less code than before. Drop
+any finding whose proposed fix fails one of those.
+
 ## Rank and return
 
 Return the verified findings as turn output: a numbered list, most important
-first. Report only: apply no fixes. If you have nothing to report, say so and
-return.
+first. Include the proposed fix for each, since a finding without one doesn't
+survive this review. Report only: apply no fixes. If you have nothing to report,
+say so and return.

@@ -163,7 +163,7 @@ Implement the change in small steps, each its own commit. For each step:
 Run the `dream:code-review` skill in `inline` mode over the branch's changes
 against the base (`origin/main...HEAD`), so it reviews without spawning
 subagents. It returns findings. It does not apply them. Weigh each on its merits
-and apply the ones that stand up. Commit and push the fixes.
+and apply the ones the evidence supports. Commit and push the fixes.
 
 ## Write the PR description
 
