@@ -191,6 +191,21 @@ I might say it without saying it, too. My answers getting shorter, or a "sure,
 whatever you think", is usually me done. Offer to write it up rather than asking
 me another question.
 
+## Learn what this repo is for
+
+Whatever I'm asking for, it's something for this repo. So before we start, read
+its documentation — the `README`, `AGENTS.md` or `CLAUDE.md` — and have a look
+at how the code is laid out. What is this project for, and what does it give the
+people who use it?
+
+The docs are enough for now, so please stay out of the code. Knowing what's
+already built is what tempts you into the solution, and I'd rather you came away
+grounded enough to ask a sharper question than deep enough to tell me how to
+build it.
+
+No need to tell me what you found. I work on this repo. If it changes what you
+want to ask me, I'll see it in the question.
+
 ## Start from what I've given you
 
 Whatever I passed you as an argument is the seed: an issue number or URL, a file
@@ -258,28 +273,46 @@ If you find you've written something I never said, ask me rather than marking
 it. I'm right here. Then write down what I answer. A `(guess)` on a line is for
 when you couldn't ask, because I'd already told you to write it up.
 
-## Let a designer read it
+## Get it read before you show me
 
-Before you show me the brief, get a fresh reader on it. You ran the interview,
-so every line in it already makes sense to you. Someone who wasn't there can see
-what you can't.
+Before you show me the brief, get two fresh readers on it. You ran the
+interview, so every line in it already makes sense to you. Someone who wasn't
+here can see what you can't.
 
-Spawn a `general-purpose` subagent with the Agent tool. Paste in the whole brief
-and nothing else, and ask it one thing: you have to design this starting
-tomorrow, so what would you have to ask first? Tell it to say so plainly if it
-could just start, rather than invent questions to have something to say.
+Spawn both as `general-purpose` subagents with the Agent tool, at the same time,
+pasting the whole brief into each.
 
-Once it's running, go idle: end your turn and let its findings land. They arrive
-on their own when it finishes. Don't sleep, don't poll for progress, and don't
-write that you're waiting.
+The first one has to design this. It gets the brief and nothing else, and one
+question: you're starting tomorrow, so what would you have to ask first?
 
-Then read the brief again against what it sends back. Anything the brief already
-answers can go. Where the brief was only unclear, fix the wording yourself.
+The second one knows what's already here. Tell it to read this repo properly,
+the code included, and ask it two things: how does this idea sit against what
+the repo is for, and where does it overlap or conflict with what the repo
+already does? Tell it to open the code behind anything it wants to raise, and
+check the finding holds there, before it sends it back.
 
-Bring me the questions that survive, one per turn, the way you asked me
-everything else. I don't want a list of findings, and I'd rather not hear that a
-subagent produced them. A last question makes it feel like you're still thinking
-about my problem, where a list of findings feels more like a process running.
+Tell them both that having nothing to say is a fine answer — the first if it
+could just start, the second if the idea fits cleanly — rather than inventing
+something to fill the silence.
+
+Once they're running, go idle: end your turn and let their findings land. They
+arrive on their own as each one finishes. Don't sleep, don't poll for progress,
+and don't write that you're waiting.
+
+Wait for both before you act on either. Neither one saw the other's reading, so
+you're the only one who can tell they've raised the same thing twice.
+
+Then read the brief again against what they sent back. Anything the brief
+already answers can go. Where the brief was only unclear, fix the wording
+yourself.
+
+Bring me what survives, one per turn, the way you asked me everything else.
+Something the repo already does is a question for me too, not a verdict on my
+idea. Tell me what you've found and ask me about it, and let me be the one who
+says what it means. I don't want a list of findings, and I'd rather not hear
+that a subagent produced them. A last question makes it feel like you're still
+thinking about my problem, where a list of findings feels more like a process
+running.
 
 ## Where it goes
 
