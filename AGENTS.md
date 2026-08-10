@@ -61,8 +61,8 @@ throughout:
   call's `subagent_type` takes.
 - Write an issue label as "dream:foo".
 - `catch.sh` keeps its own shell register, where backticks and quotes would
-  misread. Its `/dream:foo` strings keep the slash, since they are the prompt a
-  session's host reads.
+  misread. Every `/dream:foo` in it keeps the slash, since the script builds and
+  documents the prompt a session's host reads.
 - Keep a skill reference (`dream:team`) distinct from the multi-agent team
   concept, "the dream team", which stays plain prose.
 
