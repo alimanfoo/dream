@@ -24,42 +24,46 @@ This repo has two layers, easy to confuse:
 
 ## Development notes
 
-`/dream:spark` and `/dream:state` are an experiment, trying a different approach
+`dream:spark` and `dream:state` are an experiment, trying a different approach
 from the rest of the plugin. They run against repo convention on purpose, so
 treat a deviation as deliberate rather than as drift to tidy up.
 
-`/dream:spark` and `/dream:requirements-analysis` overlap on purpose.
-`/dream:spark` interviews the user to draw requirements out of them.
-`/dream:requirements-analysis` produces them on its own, from material the user
+`dream:spark` and `dream:requirements-analysis` overlap on purpose.
+`dream:spark` interviews the user to draw requirements out of them.
+`dream:requirements-analysis` produces them on its own, from material the user
 already wrote. The duplication between them is a decision, not a defect, so
 don't single-home it.
 
-`/dream:state` and `/dream:code-analysis` overlap on purpose too. Both read the
-code behind a task to ground the design work that follows. `/dream:state`
+`dream:state` and `dream:code-analysis` overlap on purpose too. Both read the
+code behind a task to ground the design work that follows. `dream:state`
 explores it with the user, so the user comes away understanding it as well.
-`/dream:code-analysis` reads it on its own. The duplication between them is a
+`dream:code-analysis` reads it on its own. The duplication between them is a
 decision, not a defect, so don't single-home it.
 
-The `/dream:spark` and `/dream:state` bodies are written in the user's voice, as
+The `dream:spark` and `dream:state` bodies are written in the user's voice, as
 if the user typed it: "ask me", "tell me only what you've read". Don't normalise
 either back to the third person, or into a stack of orders. The frontmatter
 `description` stays third person in both, since the harness reads that to pick
-the skill. Keep `/dream:copy-edit` off both bodies. It rewrites prose towards
-the Plain English guide, a different end point, and the register is what would
-go.
+the skill. Keep `dream:copy-edit` off both bodies. It rewrites prose towards the
+Plain English guide, a different end point, and the register is what would go.
 
-The plugin's prose references a skill, an agent, or an issue label one way
+The prose in this repo references a skill, an agent, or an issue label one way
 throughout:
 
-- Write a skill invocation as `/dream:foo`, a leading slash in backticks. Drop
-  the backticks in a frontmatter `description:` field, a markdown heading, or a
-  fenced command block.
-- Write a subagent-type identifier as `dream:foo`, since it is not a slash
-  command.
+- Write a skill reference as `dream:foo`, with no leading slash. Both hosts
+  resolve that identifier, so an agent can act on it as written.
+- Keep the leading slash, `/dream:foo`, where the reference stands for what a
+  person types: the README, a frontmatter `description:` field, a launch banner,
+  and a line the agent shows the user.
+- Drop the backticks in a frontmatter `description:` field, a markdown heading,
+  or a fenced command block.
+- Write a subagent-type identifier as `dream:foo`. That is what an `Agent`
+  call's `subagent_type` takes.
 - Write an issue label as "dream:foo".
 - `catch.sh` keeps its own shell register, where backticks and quotes would
-  misread.
-- Keep a skill reference (`/dream:team`) distinct from the multi-agent team
+  misread. Every `/dream:foo` in it keeps the slash, since the script builds and
+  documents the prompt a session's host reads.
+- Keep a skill reference (`dream:team`) distinct from the multi-agent team
   concept, "the dream team", which stays plain prose.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test

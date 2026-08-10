@@ -14,8 +14,8 @@ argument-hint:
 
 # Dreamcatcher
 
-Watch a repository for issues marked for the `/dream:team`, the `/dream:smith`
-skill, or the `/dream:less` skill, and dispatch a fresh session for each, chosen
+Watch a repository for issues marked for the `dream:team`, the `dream:smith`
+skill, or the `dream:less` skill, and dispatch a fresh session for each, chosen
 by the issue's label. The sessions already do the work. This is the coordinator
 around them. It notices a labelled issue and dispatches a session for it.
 
@@ -45,16 +45,16 @@ argument named. Let the script default the rest. Ask the user only whether to
 override a default. State the options you resolved before launching, so a
 misread surfaces at once.
 
-- **Team label.** The label that dispatches a `/dream:team` session.
-- **Smith label.** The label that dispatches a `/dream:smith` session.
-- **Less label.** The label that dispatches a `/dream:less` session.
-- **Team effort.** The reasoning effort a `/dream:team` session runs under. A
+- **Team label.** The label that dispatches a `dream:team` session.
+- **Smith label.** The label that dispatches a `dream:smith` session.
+- **Less label.** The label that dispatches a `dream:less` session.
+- **Team effort.** The reasoning effort a `dream:team` session runs under. A
   model override makes no sense here, since each of its agents carries its own
   model.
-- **Smith model.** The model a `/dream:smith` session runs under.
-- **Smith effort.** The reasoning effort a `/dream:smith` session runs under.
-- **Less model.** The model a `/dream:less` session runs under.
-- **Less effort.** The reasoning effort a `/dream:less` session runs under.
+- **Smith model.** The model a `dream:smith` session runs under.
+- **Smith effort.** The reasoning effort a `dream:smith` session runs under.
+- **Less model.** The model a `dream:less` session runs under.
+- **Less effort.** The reasoning effort a `dream:less` session runs under.
 - **Assignee.** Whose issues to pick up.
 - **Interval.** Seconds between ticks.
 - **Linger.** Minutes a finished session lingers before it is cleaned up.
@@ -112,11 +112,11 @@ Then tell the user:
 
 Answer questions about the coordinator's behaviour from here.
 
-- **Skill by label.** The team label dispatches a `/dream:team` session, the
-  smith label a `/dream:smith` session, the less label a `/dream:less` session.
-  An issue needs one of the labels and the right assignee to be picked up. One
-  carrying more than one goes to the heaviest: `/dream:team` over `/dream:smith`
-  over `/dream:less`. Neither `/dream:smith` nor `/dream:less` needs the agent
+- **Skill by label.** The team label dispatches a `dream:team` session, the
+  smith label a `dream:smith` session, the less label a `dream:less` session. An
+  issue needs one of the labels and the right assignee to be picked up. One
+  carrying more than one goes to the heaviest: `dream:team` over `dream:smith`
+  over `dream:less`. Neither `dream:smith` nor `dream:less` needs the agent
   teams feature, so those dispatches launch without one. The slot, worktree
   setup, and unattended permissions are the same for all three.
 - **One session develops at a time.** A session holds the slot from dispatch

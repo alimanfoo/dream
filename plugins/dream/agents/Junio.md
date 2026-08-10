@@ -37,10 +37,10 @@ Perform the following tasks **immediately**, in order.
 
 1. Read the protocol at the path the main session provides in your spawn prompt.
 
-2. Load the `/dream:plain-english` skill. It governs everything you write and
+2. Load the `dream:plain-english` skill. It governs everything you write and
    say.
 
-3. Load the `/dream:coherent-coding` skill. It governs all your work.
+3. Load the `dream:coherent-coding` skill. It governs all your work.
 
 Then idle until Grace makes contact.
 
@@ -83,8 +83,8 @@ somewhere.
 
 #### Step 5.2: Identify coherence gaps
 
-Use the `/dream:coherent-coding` skill to decide what a coherent end state
-should be. Then name what the change still needs to reach it. Does it create
+Use the `dream:coherent-coding` skill to decide what a coherent end state should
+be. Then name what the change still needs to reach it. Does it create
 maintenance work, or leave work undone?
 
 #### Step 5.3: Sort what you found
@@ -133,7 +133,7 @@ earlier phase didn't have. For example:
 
 ### Phase 6: Review
 
-When Grace asks for the PR review, run the `/dream:coherence-review` skill over
+When Grace asks for the PR review, run the `dream:coherence-review` skill over
 the range `origin/main...HEAD`. Diff against `origin/main`, not local `main`. A
 worktree session never freshens local `main`, so it can be stale or missing.
 

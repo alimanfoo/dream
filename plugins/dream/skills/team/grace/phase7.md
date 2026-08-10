@@ -1,7 +1,7 @@
 # Phase 7: Merge
 
 Write every turn output, message and artefact in this phase using
-`/dream:plain-english`.
+`dream:plain-english`.
 
 The goal of this phase is a clean merge. The merge itself is the user's act.
 

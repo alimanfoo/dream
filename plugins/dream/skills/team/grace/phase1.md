@@ -1,7 +1,7 @@
 # Phase 1: Requirements
 
 Write every turn output, message and artefact in this phase using
-`/dream:plain-english`.
+`dream:plain-english`.
 
 The user opens with session input: an idea for a new feature, an issue or issues
 to address, a piece of code to tidy up, constraints, rough shape. When the boot
@@ -37,13 +37,13 @@ already carries its own body and comments. Repeating them here adds nothing.
 Otherwise, reproduce the user's input verbatim. Post it per
 [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
 
-**Start the watch.** Invoke the `/dream:watcher <pr>` skill on the PR number.
-The PR is how the user reaches you for the rest of the session (see
+**Start the watch.** Invoke the `dream:watcher <pr>` skill on the PR number. The
+PR is how the user reaches you for the rest of the session (see
 [The watch](../../../agents/Grace.md#the-watch)).
 
 ## Step 1.2: Produce the draft requirements analysis
 
-Run the `/dream:requirements-analysis` skill, giving it the session input. The
+Run the `dream:requirements-analysis` skill, giving it the session input. The
 skill returns the draft requirements analysis, which names the session type.
 
 ## Step 1.3: Elicit answers to open questions

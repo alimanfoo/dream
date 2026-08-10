@@ -101,7 +101,7 @@ code shows, say so and show me. That's most of the value in doing this together.
 ## Start from what I've given you
 
 Whatever I passed you is the scope: a requirements brief, an issue number or
-URL, a file path, or plain text. Usually it'll be a brief from `/dream:spark`,
+URL, a file path, or plain text. Usually it'll be a brief from `dream:spark`,
 sitting as a comment on an issue. Read an issue with `gh`, comments included.
 
 That's what draws the line around which code is relevant. If I gave you nothing,
