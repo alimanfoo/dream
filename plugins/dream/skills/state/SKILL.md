@@ -223,16 +223,20 @@ Spawn one `general-purpose` subagent with the Agent tool, on Sonnet. Give it the
 absolute path of the guide — a subagent can't resolve a path relative to its own
 prompt file.
 
-Ask it to work through the guide section by section, keeping a todo list so it
-covers every one. In each section, take every claim, open the code it names, and
-read enough around it to settle the claim: the whole function where the claim is
-about what it does, the callers where it's about who uses it, every step where
-it's about a sequence. Then write down the claim, what it read, and whether the
-code bears the claim out. Tell it to settle each one on the code rather than on
-a name, a comment, a docstring or a doc, and to say a claim isn't borne out when
-it couldn't settle it. Then to return only the claims the code doesn't bear out,
-and to say plainly when that's none of them rather than reaching for something
-to report.
+Ask it to check every claim in the guide against the code, working section by
+section and keeping a todo list so it skips none of them.
+
+For each claim: open the code the guide names, and read enough to settle it. The
+whole function, the callers, or every step of a sequence, depending on what the
+claim says. Then write down the claim, what it read, and whether the code bears
+the claim out.
+
+Two things to be firm about. It settles a claim on the code, not on a name, a
+comment or a doc. And a claim it couldn't settle is one the code doesn't bear
+out.
+
+Then ask it to return the claims that failed, and nothing else. If none of them
+did, saying so is a fine answer.
 
 Once it's running, go idle: end your turn and let its report land. It arrives on
 its own when the subagent finishes. Don't sleep, don't poll for progress, and
