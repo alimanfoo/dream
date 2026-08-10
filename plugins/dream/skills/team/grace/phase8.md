@@ -74,7 +74,7 @@ proposes new work, with no surface to remove or behaviour to defend. Route each
 opportunity straight to the [decide step](#step-84-decide). For findings, apply
 them in order, starting with removal.
 
-**[The removal question](../../../coherent-coding.md#fix-incoherence-by-removing)**:
+**[The removal question](../../../coherent-coding.md#the-burden-of-proof-is-on-the-addition)**:
 
 > _Could removing something (a feature, a branch, a layer of code, a decorative
 > phrase) resolve the concern more simply than fixing the surface?_

@@ -207,13 +207,13 @@ Run the `/dream:coherence-review` skill over the branch's changes against the
 base (`origin/main...HEAD`). It returns findings across the coherence lenses. It
 does not apply them. Weigh each on its merits and apply the ones the evidence
 supports. Reach for the coherent fix even when it goes wider than the site the
-finding names. Fix each finding by taking something out, per
-[Fix incoherence by removing](../../coherent-coding.md#fix-incoherence-by-removing).
+finding names. Prefer the fix that takes something out, per
+[The burden of proof is on the addition](../../coherent-coding.md#the-burden-of-proof-is-on-the-addition).
 Commit and push the fixes.
 
-Post the findings and how you acted on them as a PR comment. Head it
-`Coherence review`. For any finding you didn't act on, give the reason in one
-sentence.
+Post the findings and how you acted on them as a PR comment, naming what each
+fix took out. Head it `Coherence review`. For any finding you didn't act on,
+give the reason in one sentence.
 
 ## Code review
 

@@ -352,25 +352,14 @@ Before adding, try in order: can the need be met by removing something already
 there? By widening an existing rule until the special case disappears? Only if
 both fail is adding right, and it must still earn its keep against that cost.
 
+This matters most when you fix incoherence, which is nearly always something
+already there that shouldn't be: a copy of a fact, a layer that hides nothing, a
+compensation. So take that thing out. Name the kind of surplus that goes, not a
+count of lines, since a count invites deleting a comment to pay for a new
+abstraction. When nothing can come out, name the removal you ruled out and why.
+
 This never blocks the coherent change. Reworking code to reach the root cause or
 the general rule is the work. It blocks the unearned addition: a speculative
 abstraction, a premature generalisation, a workaround for existing code that
 should be refactored. The disciplines above raise your ambition. This one bounds
 it.
-
-## Fix incoherence by removing
-
-Draft the fix for a coherence defect, then reread it and name what it takes out
-of the tree. The defect is nearly always something already there that shouldn't
-be: a copy of a fact, a layer that hides nothing, a compensation. Removing that
-thing is the fix. Name the kind of surplus that goes, not a count of lines,
-since a count invites deleting a comment to pay for a new abstraction. When your
-draft takes nothing out, name the removal you tried and why it couldn't do the
-job.
-
-This is not a rule to keep the diff small. Reworking existing code to reach the
-root cause is the work (see [Tidy first](#tidy-first)). What it bounds is the
-fix that leaves the surplus in place and adds beside it.
-
-A few fixes only add: a missing instance of an edit made elsewhere, or a check
-for a rule that spans sites and has no home.
