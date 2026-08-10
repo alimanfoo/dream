@@ -362,11 +362,11 @@ it.
 
 Draft the fix for a coherence defect, then reread it and name what it takes out
 of the tree. The defect is nearly always something already there that shouldn't
-be: a copy of a fact, a layer that hides nothing, a compensation, a second model
-to convert between. Removing that thing is the fix. When your draft takes
-nothing out, name the removal you tried and why it couldn't do the job. Name the
-kind of surplus that goes, the copy or the layer or the branch. Don't count
-lines, since a count invites deleting a comment to pay for a new abstraction.
+be: a copy of a fact, a layer that hides nothing, a compensation. Removing that
+thing is the fix. Name the kind of surplus that goes, not a count of lines,
+since a count invites deleting a comment to pay for a new abstraction. When your
+draft takes nothing out, name the removal you tried and why it couldn't do the
+job.
 
 This is not a rule to keep the diff small. Reworking existing code to reach the
 root cause is the work (see [Tidy first](#tidy-first)). What it bounds is the

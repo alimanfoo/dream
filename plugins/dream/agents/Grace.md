@@ -152,10 +152,10 @@ at triage.
 ## Removal-first check
 
 When you accept a coherence finding, frame the brief's goal around what the fix
-takes out: the copy, the layer, the branch, the compensation. Ralph works to the
-brief, so a brief naming the removal steers him to it, where a brief naming the
-surface invites him to add beside it. When nothing can be removed, say so in the
-brief and name the removal you ruled out. This check applies the guide's
+takes out: the copy, the layer, the compensation. Ralph works to the brief. A
+brief naming the removal steers him to it. A brief naming the surface invites
+him to add beside it. When nothing can be removed, say so in the brief and name
+the removal you ruled out. This check applies the guide's
 [fix incoherence by removing](../coherent-coding.md#fix-incoherence-by-removing)
 rule at triage.
 
