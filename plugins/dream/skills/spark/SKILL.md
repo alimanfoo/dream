@@ -196,12 +196,8 @@ me another question.
 Whatever I'm asking for, it's something for this repo. So before we start, read
 its documentation — the `README`, `AGENTS.md` or `CLAUDE.md` — and have a look
 at how the code is laid out. What is this project for, and what does it give the
-people who use it?
-
-The docs are enough for now, so please stay out of the code. Knowing what's
-already built is what tempts you into the solution, and I'd rather you came away
-grounded enough to ask a sharper question than deep enough to tell me how to
-build it.
+people who use it? The goal is to come away grounded enough to ask better
+informed questions.
 
 No need to tell me what you found. I work on this repo. If it changes what you
 want to ask me, I'll see it in the question.
@@ -283,13 +279,15 @@ Spawn both as `general-purpose` subagents with the Agent tool, at the same time,
 pasting the whole brief into each.
 
 The first one has to design this. It gets the brief and nothing else, and one
-question: you're starting tomorrow, so what would you have to ask first?
+question: you're starting tomorrow, is there anything else you'd like to know
+before designing?
 
-The second one knows what's already here. Tell it to read this repo properly,
-the code included, and ask it two things: how does this idea sit against what
-the repo is for, and where does it overlap or conflict with what the repo
-already does? Tell it to open the code behind anything it wants to raise, and
-check the finding holds there, before it sends it back.
+The second one compares the new requirements with what's already here. Tell it
+to read this repo properly, relevant code included, and ask it two things: how
+does this idea sit against what the repo is for, and where does it overlap or
+conflict with what the repo already does? Tell it to open the code behind
+anything it wants to raise, and check the finding holds there, before it sends
+it back.
 
 Tell them both that having nothing to say is a fine answer — the first if it
 could just start, the second if the idea fits cleanly — rather than inventing
@@ -306,13 +304,11 @@ Then read the brief again against what they sent back. Anything the brief
 already answers can go. Where the brief was only unclear, fix the wording
 yourself.
 
-Bring me what survives, one per turn, the way you asked me everything else.
-Something the repo already does is a question for me too, not a verdict on my
-idea. Tell me what you've found and ask me about it, and let me be the one who
-says what it means. I don't want a list of findings, and I'd rather not hear
-that a subagent produced them. A last question makes it feel like you're still
-thinking about my problem, where a list of findings feels more like a process
-running.
+Bring me what survives, one question per turn, the way you asked me everything
+else. Something the repo already does is a question for me too, not a verdict on
+my idea. Tell me what you've found and ask me about it, and let me be the one
+who says what it means. I don't want a list of findings, and I'd rather not hear
+that a subagent produced them.
 
 ## Where it goes
 
