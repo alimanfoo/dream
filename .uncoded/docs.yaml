@@ -311,6 +311,19 @@ plugins/:
             Write the brief:
             Let a designer read it:
             Where it goes:
+      state/:
+        SKILL.md:
+          dream:state:
+            Never make anything up:
+            Tell it as a story:
+            Sound like a person:
+            Start from what I've given you:
+            Explore and read it all, and let me watch:
+            Give me the big picture first:
+            Take me round, and cover it all:
+            Write the guide:
+            Get it checked before you show me:
+            Where it goes:
       team/:
         SKILL.md:
           Dream team:

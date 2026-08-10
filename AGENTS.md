@@ -104,8 +104,9 @@ loads a guide rather than restating a rule from it. The
 exception for both guides, since it carries only the bare minimum for changes
 small enough to skip the full guides. It inlines a subset of rules from the
 coherent coding and plain English guides instead of loading either in full. The
-[/dream:spark skill](plugins/dream/skills/spark/SKILL.md) is the other
-exception, and loads neither. It is an experiment, off-convention on purpose.
+[/dream:spark skill](plugins/dream/skills/spark/SKILL.md) and the
+[/dream:state skill](plugins/dream/skills/state/SKILL.md) are the other
+exceptions, and load neither. They are experiments, off-convention on purpose.
 
 Ways the two layers get crossed:
 
@@ -133,30 +134,34 @@ The README lists the utility skills a user can run on their own. That list is
 their one home. Add a new skill of this kind there. `coherence-review` is one
 such skill.
 
+`/dream:spark` and `/dream:state` are an experiment, trying a different approach
+from the rest of the plugin. They run against repo convention on purpose, so
+treat a deviation as deliberate rather than as drift to tidy up.
+
 `/dream:spark` and `/dream:requirements-analysis` overlap on purpose.
 `/dream:spark` interviews the user to draw requirements out of them.
 `/dream:requirements-analysis` produces them on its own, from material the user
 already wrote. The duplication between them is a decision, not a defect, so
 don't single-home it.
 
-`/dream:spark` is an experiment, trying a different approach from the rest of
-the plugin. It runs against repo convention on purpose, so treat a deviation as
-deliberate rather than as drift to tidy up. It is also the one skill the user
-experiences as a conversation rather than a result, so judge an edit to it by
-what the person on the other end experiences, not by what the skill covers. A
-change that makes it more thorough at the cost of feeling like a form is the
-wrong trade.
+`/dream:state` and `/dream:code-analysis` overlap on purpose too. Both read the
+code behind a task to ground the design work that follows. `/dream:state`
+explores it with the user, so the user comes away understanding it as well.
+`/dream:code-analysis` reads it on its own. The duplication between them is a
+decision, not a defect, so don't single-home it.
 
-Its body is written in the user's voice, as if the user typed it: "ask me",
-"send me two and I'll answer one of them and lose the other". Every other prompt
-in the plugin programs an agent precisely. This one shapes a conversation, so it
-opens one rather than describing one. An agent continues the register it is
-handed, which makes this the strongest lever there is on how the interview
-feels. Don't normalise it back to the third person, or into a stack of orders.
-The frontmatter `description` stays third person, since the harness reads that
-to pick the skill. The body asks for plain writing in its own words rather than
-naming the [Plain English guide](plugins/dream/plain-english.md) for the same
-reason: nobody says "load this document" out loud.
+The `/dream:spark` and `/dream:state` bodies are written in the user's voice, as
+if the user typed it: "ask me", "tell me only what you've read". Don't normalise
+either back to the third person, or into a stack of orders. Judge an edit to
+either by what the person on the other end experiences, not by what the skill
+covers. The frontmatter `description` stays third person in both, since the
+harness reads that to pick the skill.
+
+Keep `/dream:copy-edit` off both bodies. It rewrites prose towards the Plain
+English guide, a different end point, and the register is what would go. A
+`/dream:smith` session runs it over everything the branch changed, so skip that
+pass on a branch touching either file. This only arises here, where the plugin's
+own skills develop the plugin. Everywhere else copy-edit is doing its job.
 
 A skill that fans a review out to parallel subagents must wait for every one of
 them, then combine their findings into one list before it returns or applies any
@@ -166,17 +171,19 @@ is in, can drop a duplicate or settle two findings that pull the same site
 different ways. `code-review`, `coherence-review`, and `copy-edit` all carry
 this step. Give a new such skill the same one.
 
-Each of those skills confirms its findings too. Only one place does that
-confirming. The lens subagents of `code-review` and `coherence-review` don't
-confirm a finding. So both skills confirm each one against the code themselves.
-The `dream:copy-editor` subagent does confirm each finding before it returns it.
-So `copy-edit` doesn't confirm them again. Pick one of those two homes for a new
-such skill. Don't pick both.
+Any skill that takes findings from a subagent confirms them too, whether it
+spawned one or several. Only one place does that confirming. The lens subagents
+of `code-review` and `coherence-review` don't confirm a finding. So both skills
+confirm each one against the code themselves. The `dream:copy-editor` subagent
+does confirm each finding against the guide before returning it, and `state`'s
+subagent confirms each claim against the code. So `copy-edit` and `state` don't
+confirm them again. Pick one of those two homes for a new such skill. Don't pick
+both.
 
 A skill that spawns subagents must also tell the agent to go idle while they
 run, rather than sleep, poll, or narrate the wait. `code-review`,
-`coherence-review`, `copy-edit`, `smith`, and `spark` each carry that line at
-the spawn site. Give a new one the same line.
+`coherence-review`, `copy-edit`, `smith`, `spark`, and `state` each carry that
+line at the spawn site. Give a new one the same line.
 
 All four agents read protocol.md, so it covers only what they share, and it does
 so in the third person. A rule for one agent alone goes in that agent's file,
