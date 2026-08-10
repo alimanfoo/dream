@@ -64,11 +64,11 @@ beneath it into the briefing.
 Pass the target as a git range, or as an absolute path. A subagent can't resolve
 a path relative to its own prompt file.
 
-Tell each lens to give every finding a proposal that resolves it by taking out
-more code than it puts in, naming what goes and from where. Fixing incoherence
-by adding makes a codebase harder to maintain, however careful the review that
-found it. So a finding with no removal behind it costs more than it returns. A
-lens that can't propose one drops the finding.
+Tell each lens to give every finding a proposed fix that resolves it by taking
+out more code than it puts in, naming what goes and from where. Fixing
+incoherence by adding makes a codebase harder to maintain, however careful the
+review that found it. So a finding with no removal behind it costs more than it
+returns. A lens that can't propose one drops the finding.
 
 Once the subagents are running, go idle: end your turn and let their findings
 land. They arrive on their own when each subagent finishes. Don't sleep. Don't
@@ -84,19 +84,18 @@ inconsistencies.
 
 Read the code each finding cites. Keep only the findings you can confirm.
 
-Confirm each proposal against the code too: what it removes is really there,
+Confirm each proposed fix against the code too: what it removes is really there,
 removing it resolves the finding, and the result is less code than before. Drop
-any finding whose proposal fails one of those. The middle check is the one that
-matters most, since a cheap deletion stapled to an unrelated finding passes the
-other two.
+any finding whose proposed fix fails one of those.
 
-Each lens proposes blind to the others, so two can claim the same removal. Give
-it to one of them and recheck the other, which may no longer take out more than
-it puts in.
+Two lenses can propose removing the same code, since neither sees the other's
+work. That code can only be removed once. So recheck every other fix that
+counted on it, and drop the ones that no longer take out more code than they put
+in.
 
 ## Rank and return
 
 Return the verified findings as turn output: a numbered list, most important
-first. Give each its proposal, since a finding without one doesn't survive this
-review. Report only: apply no fixes. If you have nothing to report, say so and
-return.
+first. Include the proposed fix for each, since a finding without one doesn't
+survive this review. Report only: apply no fixes. If you have nothing to report,
+say so and return.
