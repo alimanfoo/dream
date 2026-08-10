@@ -184,6 +184,9 @@ waiting.
 
 Post the returned plan as a PR comment. Head it `Plan`.
 
+Create a TODO list from the plan, one task per step, so you can track progress
+against it as you implement.
+
 ## Implement
 
 Open the draft PR before you change any code, if it isn't already open
@@ -192,9 +195,12 @@ the user once work starts.
 
 Implement the plan, one step at a time. For each step:
 
-- Run the tests you found.
+- Mark its task in progress.
+- Implement.
+- Run the tests.
 - Commit with a short subject.
 - Push.
+- Mark its task completed.
 
 ## Copy-edit
 
@@ -205,9 +211,9 @@ Run the `/dream:copy-edit` skill over the branch's changes against the base
 
 Run the `/dream:coherence-review` skill over the branch's changes against the
 base (`origin/main...HEAD`). It returns findings across the coherence lenses. It
-does not apply them. Weigh each on its merits and apply the ones that stand up.
-Reach for the coherent fix even when it is larger than the site the finding
-names. Commit and push the fixes.
+does not apply them. Weigh each on its merits and apply the ones the evidence
+supports. Reach for the coherent fix even when it goes wider than the site the
+finding names. Commit and push the fixes.
 
 Post the findings and how you acted on them as a PR comment. Head it
 `Coherence review`. For any finding you didn't act on, give the reason in one
@@ -217,9 +223,9 @@ sentence.
 
 Run the `/dream:code-review` skill over the branch's changes against the base
 (`origin/main...HEAD`). It returns findings across the review lenses. It does
-not apply them. Weigh each on its merits and apply the ones that stand up. Reach
-for the coherent fix even when it is larger than the site the finding names.
-Commit and push the fixes.
+not apply them. Weigh each on its merits and apply the ones the evidence
+supports. Reach for the coherent fix even when it goes wider than the site the
+finding names. Commit and push the fixes.
 
 Post the findings and how you acted on them as a PR comment. Head it
 `Code review`. For any finding you didn't act on, give the reason in one
