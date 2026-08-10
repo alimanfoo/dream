@@ -216,10 +216,9 @@ prompt file.
 Ask it to check every claim in the guide against the code, working section by
 section and keeping a todo list so it skips none of them.
 
-For each claim: open the code the guide names, and read enough to settle it. The
-whole function, the callers, or every step of a sequence, depending on what the
-claim says. Then write down the claim, what it read, and whether the code bears
-the claim out.
+For each claim: open the code the guide names, and read enough to settle it.
+Then write down the claim, what it read, and whether the code bears the claim
+out.
 
 Two things to be firm about. It settles a claim on the code, not on a name, a
 comment or a doc. And a claim it couldn't settle is one the code doesn't bear
