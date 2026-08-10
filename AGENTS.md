@@ -150,28 +150,12 @@ decision, not a defect, so don't single-home it.
 from the rest of the plugin. They run against repo convention on purpose, so
 treat a deviation as deliberate rather than as drift to tidy up.
 
-`/dream:spark` and `/dream:state` are the two skills the user experiences as a
-conversation, and both bodies are written in the user's voice, as if the user
-typed it: "ask me", "tell me only what you've read". Every other prompt in the
-plugin programs an agent precisely. These two shape a conversation, so they open
-one rather than describing one. An agent continues the register it is handed,
-which makes this the strongest lever there is on how the conversation feels.
-Don't normalise either back to the third person, or into a stack of orders.
-Judge an edit to either by what the person on the other end experiences, not by
-what the skill covers. A change that makes one more thorough at the cost of
-feeling like a form is the wrong trade.
-
-The frontmatter `description` stays third person in both, since the harness
-reads that to pick the skill. Both bodies ask for plain writing in their own
-words rather than naming the
-[Plain English guide](plugins/dream/plain-english.md), for the same reason:
-nobody says "load this document" out loud.
-
-The register carries a precise protocol without loosening it. `/dream:spark`
-specifies its fresh-reader subagent in the user's voice, and `/dream:state`
-specifies its verification pass the same way. A step that needs to be exact is
-written exactly, in the first person, rather than lifted out into a third-person
-block.
+Both bodies are written in the user's voice, as if the user typed it: "ask me",
+"tell me only what you've read". Don't normalise either back to the third
+person, or into a stack of orders. Judge an edit to either by what the person on
+the other end experiences, not by what the skill covers. The frontmatter
+`description` stays third person in both, since the harness reads that to pick
+the skill.
 
 Keep `/dream:copy-edit` off both bodies. It rewrites prose towards the Plain
 English guide, a different end point, and the register is what would go. A
