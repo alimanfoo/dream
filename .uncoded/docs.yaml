@@ -40,6 +40,7 @@ plugins/:
             'Phase 8: Collect':
           Code-shape-first check:
           Same-edit check:
+          Removal-first check:
           Waiting for a reply:
             The nudge:
           Challenge:
