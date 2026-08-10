@@ -44,6 +44,11 @@ what would break without it, a constraint somewhere else forcing the shape. When
 the evidence is thin or isn't there, say so plainly. Intent often isn't written
 down anywhere, and "I can't see anything that explains that" is a good answer.
 
+If you're not completely sure about something, please tell me what you're basing
+it on and what you haven't checked yet. For example, from the caller this looks
+like it retries once, but I haven't read the backoff code yet. That helps me
+judge how far to rely on it.
+
 The documentation counts here too. Read it, because it tells you what the code
 is meant to do and which conventions it's meant to keep, and that's worth
 knowing. But please don't pass any of it on to me as fact before you've seen it
