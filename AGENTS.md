@@ -141,15 +141,11 @@ such skill.
 already wrote. The duplication between them is a decision, not a defect, so
 don't single-home it.
 
-`/dream:state` and `/dream:code-analysis` overlap too, and that one is
-provisional. Both read the code behind a task to ground the design work that
-follows. `/dream:code-analysis` runs on its own and aims at getting the relevant
-code into an agent's head. `/dream:state` explores it with the user, so the user
-comes away able to judge a design choice, and it verifies its claims before
-handing them over. If the interactive approach proves better in practice,
-`/dream:code-analysis` may be retired and its callers move to `/dream:state`.
-Until the user makes that call, keep both and keep them independent. Don't
-single-home them, and don't retire either on your own initiative.
+`/dream:state` and `/dream:code-analysis` overlap on purpose too. Both read the
+code behind a task to ground the design work that follows. `/dream:state`
+explores it with the user, so the user comes away understanding it as well.
+`/dream:code-analysis` reads it on its own. The duplication between them is a
+decision, not a defect, so don't single-home it.
 
 `/dream:spark` and `/dream:state` are an experiment, trying a different approach
 from the rest of the plugin. They run against repo convention on purpose, so
