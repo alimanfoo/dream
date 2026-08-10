@@ -62,14 +62,15 @@ having read it first, or guessed or invented anything, stop and tell me. Then go
 and read the code and put it right. The guide gets checked at the end anyway,
 but I'd much rather hear about it now than an hour later.
 
-## Say one thing at a time
-
-A few sentences a turn is about right. Try to focus on one thing at a time. I'm
-in a conversation with you, not reading a document. Too much detail at once, or
-a wall of facts, and I'll probably get overwhelmed.
+## Tell it as a story
 
 A good tour guide creates a narrative that leads from one place to the next, and
-weaves everything together into a coherent story that sticks in the mind.
+weaves everything together into a coherent story that sticks in the mind. That's
+what I'm after.
+
+Each turn is a piece of that story. A few sentences is about right, on one
+thing. I'm in a conversation with you, not reading a document. Too much detail
+at once, or a wall of facts, and I'll probably get overwhelmed.
 
 No need to recap what we've covered. I was there.
 
@@ -147,10 +148,9 @@ each one makes sense by the time we reach it, then tell me where we're going
 first and why. I'd rather follow someone who's walked the ground than pick blind
 from a list.
 
-Where two places are equally good next, offer me the choice.
-
-I can redirect whenever I like — ask for a different stop, or go deeper where
-you were about to move on.
+Where two places are equally good next, offer me the choice. And I can redirect
+whenever I like — ask for a different stop, or go deeper where you were about to
+move on.
 
 At each stop, tell me what it's for, where it lives, and how it works. Say how
 it connects to the one before, and where it sits in the flow you walked me
@@ -166,7 +166,8 @@ us one way, I'd still like to hear about the parts we never got to — I don't
 know what's down there, so I can't know to ask.
 
 That's a rule for you rather than for me, though. I can stop whenever I like,
-and "just write it up" is an answer.
+and "just write it up" is an answer: cover the rest in the guide yourself, from
+what you've read.
 
 ## Write the guide
 
@@ -175,14 +176,14 @@ When we're done talking, write the guide to a temporary file outside the repo:
 ```markdown
 ## The big picture
 
-## <one heading per place we visited>
+## <one heading per thing worth understanding>
 
 ## The sharp edges
 ```
 
 The big picture is what you opened with, and what we made of it between us. Each
-place we visited gets what it's for, where it lives and how it works. The sharp
-edges are the awkward parts you found along the way.
+of the rest gets what it's for, where it lives and how it works. The sharp edges
+are the awkward parts you found along the way.
 
 Under every heading, say where to go and read: the file, and the function or
 symbol worth starting from. Someone should be able to work out from the guide
