@@ -134,6 +134,10 @@ The README lists the utility skills a user can run on their own. That list is
 their one home. Add a new skill of this kind there. `coherence-review` is one
 such skill.
 
+`/dream:spark` and `/dream:state` are an experiment, trying a different approach
+from the rest of the plugin. They run against repo convention on purpose, so
+treat a deviation as deliberate rather than as drift to tidy up.
+
 `/dream:spark` and `/dream:requirements-analysis` overlap on purpose.
 `/dream:spark` interviews the user to draw requirements out of them.
 `/dream:requirements-analysis` produces them on its own, from material the user
@@ -146,16 +150,12 @@ explores it with the user, so the user comes away understanding it as well.
 `/dream:code-analysis` reads it on its own. The duplication between them is a
 decision, not a defect, so don't single-home it.
 
-`/dream:spark` and `/dream:state` are an experiment, trying a different approach
-from the rest of the plugin. They run against repo convention on purpose, so
-treat a deviation as deliberate rather than as drift to tidy up.
-
-Both bodies are written in the user's voice, as if the user typed it: "ask me",
-"tell me only what you've read". Don't normalise either back to the third
-person, or into a stack of orders. Judge an edit to either by what the person on
-the other end experiences, not by what the skill covers. The frontmatter
-`description` stays third person in both, since the harness reads that to pick
-the skill.
+The `/dream:spark` and `/dream:state` bodies are written in the user's voice, as
+if the user typed it: "ask me", "tell me only what you've read". Don't normalise
+either back to the third person, or into a stack of orders. Judge an edit to
+either by what the person on the other end experiences, not by what the skill
+covers. The frontmatter `description` stays third person in both, since the
+harness reads that to pick the skill.
 
 Keep `/dream:copy-edit` off both bodies. It rewrites prose towards the Plain
 English guide, a different end point, and the register is what would go. A
