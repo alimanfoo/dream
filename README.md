@@ -9,14 +9,17 @@ small one. Neither needs the agent teams feature. `/dream:catcher` runs any of
 them unattended across a repository's labelled issues. Utility skills you can
 run on their own ship alongside: `/dream:plain-english`,
 `/dream:coherent-coding`, `/dream:copy-edit`, `/dream:code-analysis`,
-`/dream:state`, `/dream:spark`, `/dream:requirements-analysis`, `/dream:design`,
-`/dream:plan`, `/dream:coherence-review`, `/dream:code-review`, and
-`/dream:watcher`. Two of those cover requirements. `/dream:spark` interviews you
-to turn a rough idea into a brief. `/dream:requirements-analysis` produces one
-on its own, from material you already wrote. Two more read the code behind a
+`/dream:state`, `/dream:spark`, `/dream:requirements-analysis`, `/dream:craft`,
+`/dream:design`, `/dream:plan`, `/dream:coherence-review`, `/dream:code-review`,
+and `/dream:watcher`. Two of those cover requirements. `/dream:spark` interviews
+you to turn a rough idea into a brief. `/dream:requirements-analysis` produces
+one on its own, from material you already wrote. Two more read the code behind a
 task. `/dream:code-analysis` reads it on its own. `/dream:state` explores it
 with you, so you come away understanding it too, and leaves a reading guide with
-every claim in it checked against the code.
+every claim in it checked against the code. Two more reach a design.
+`/dream:design` produces one on its own. `/dream:craft` works one out with you
+at a whiteboard, asking what if until the shape stops moving, then what breaks
+until nothing more comes off.
 
 ## Prerequisites
 
