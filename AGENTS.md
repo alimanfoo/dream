@@ -51,8 +51,7 @@ The prose in this repo references a skill, an agent, or an issue label one way
 throughout:
 
 - Write a skill reference as `dream:foo`, with no leading slash. Both hosts
-  resolve that identifier, and it is what the Skill tool takes, so an agent can
-  act on it as written.
+  resolve that identifier, so an agent can act on it as written.
 - Keep the leading slash, `/dream:foo`, where the reference stands for what a
   person types: the README, a frontmatter `description:` field, a launch banner,
   and a line the agent shows the user.
