@@ -25,10 +25,11 @@ Read the [coherent coding guide](../../coherent-coding.md). It is the home of
 the disciplines this review checks. The lens subagents can't read it themselves,
 so paste each lens the guide text it needs.
 
-Launch the generic `dream:code-review-lens` subagent via the Agent tool, once
-per lens below, all in one message so they run in parallel. Brief each with the
-target and its guide section or sections, pasting the heading and the text
-beneath it into the briefing.
+Launch a subagent once per lens, all at the same time so they run in parallel.
+Use Sonnet under Claude Code. Give each the absolute path of
+[the lens instructions](../../subagents/code-review-lens.md) and tell it to work
+to them. Brief each with the target and its guide section or sections, pasting
+the heading and the text beneath it into the briefing.
 
 - **Root cause.** The
   [Resolve the root cause](../../coherent-coding.md#resolve-the-root-cause)
@@ -61,8 +62,7 @@ beneath it into the briefing.
   [Names that tell the truth](../../coherent-coding.md#names-that-tell-the-truth)
   section.
 
-Pass the target as a git range, or as an absolute path. A subagent can't resolve
-a path relative to its own prompt file.
+Pass the target as a git range, or as an absolute path.
 
 Tell each lens to give every finding a proposed fix that resolves it by taking
 out more code than it puts in, naming what goes and from where. Fixing

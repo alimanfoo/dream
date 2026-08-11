@@ -31,19 +31,20 @@ Read the arguments the user gives.
    paragraph it holds is whole. The subagent judges only what you hand it, so a
    passage cut mid-paragraph is one it cannot judge. Review prose, not diff
    markup.
-2. Review it with the `dream:copy-editor` subagent. Give each subagent the Plain
-   English guide's absolute path in its prompt. A subagent can't resolve a path
-   relative to its own prompt file. Locate each passage exactly: give its
-   absolute path with the line range, or the text inline when it isn't in a file
-   yet. The subagent has no search tool, so a passage you name only by section
-   costs it a read of the whole file. Name who reads the passage, so the
+2. Spawn subagents to review it. Use Sonnet under Claude Code. Give each the
+   absolute path of
+   [the copy editor's instructions](../../subagents/copy-editor.md) and tell it
+   to work to them. Give each the Plain English guide's absolute path too.
+   Locate each passage exactly: give its absolute path with the line range, or
+   the text inline when it isn't in a file yet. A passage you name only by
+   section costs the subagent a search. Name who reads the passage, so the
    subagent judges it for that reader rather than reading the surrounding code
    to work out who the reader is. For a small passage, give one subagent the
    whole of it. For a large passage, split it by file or section. Launch
-   parallel `dream:copy-editor` subagents, one per part. The next thing you
-   write to me carries their reports. So wait for the reports however your
-   session waits, then continue — don't sleep, don't poll for progress, and
-   don't write that you're waiting.
+   parallel subagents, one per part. The next thing you write to me carries
+   their reports. So wait for the reports however your session waits, then
+   continue — don't sleep, don't poll for progress, and don't write that you're
+   waiting.
 3. Wait again after each, however your session waits, until every subagent you
    launched is in, since findings land one subagent at a time. Then combine the
    findings into one list. Drop duplicates and resolve inconsistencies. Write
