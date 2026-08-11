@@ -20,10 +20,10 @@ every claim in it checked against the code.
 
 ## Prerequisites
 
-Every skill runs under Claude Code. Codex support is a work in progress.
+Every skill runs under Claude Code. Codex support isn't finished yet.
 `/dream:spark`, `/dream:state`, `/dream:copy-edit`, `/dream:code-review` and
-`/dream:coherence-review` run there today. Name a skill in a Codex prompt with a
-`$` in front of it:
+`/dream:coherence-review` run there today. Put a `$` in front of the skill's
+name in a Codex prompt:
 
 ```text
 $dream:state
