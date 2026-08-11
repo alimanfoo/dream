@@ -76,9 +76,9 @@ Each turn is a piece of that story. A few sentences is about right, on one
 thing. I'm in a conversation with you, not reading a document. Too much detail
 at once, or a wall of facts, and I'll probably get overwhelmed.
 
-End each turn by telling me what's coming next, then leave it there for me.
-You're doing most of the talking here, so otherwise I can't tell whether that
-was the end or there's more.
+End each turn of the story by telling me what's coming next, then leave it there
+for me. You're doing most of the talking here, so otherwise I can't tell whether
+that was the end or there's more.
 
 The first time you do it, tell me I can just say go on. Then I know how to ask
 for the rest, rather than guessing.
