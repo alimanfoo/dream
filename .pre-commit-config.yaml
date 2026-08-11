@@ -53,7 +53,7 @@ repos:
         name: claude plugin validate (plugin manifest)
         entry: claude plugin validate plugins/dream
         language: system
-        files: ^plugins/dream/\.claude-plugin/plugin\.json$
+        files: ^plugins/dream/\.codex-plugin/plugin\.json$
         pass_filenames: false
 
       - id: claude-marketplace-validate
