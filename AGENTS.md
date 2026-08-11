@@ -24,46 +24,50 @@ This repo has two layers, easy to confuse:
 
 ## Development notes
 
-`/dream:spark`, `/dream:state` and `/dream:craft` are an experiment, trying a
+`dream:spark`, `dream:state` and `dream:craft` are an experiment, trying a
 different approach from the rest of the plugin. They run against repo convention
 on purpose, so treat a deviation as deliberate rather than as drift to tidy up.
 
 Three pairs of skills overlap on purpose. Each pair does the same job twice,
 once with the user and once alone:
 
-- `/dream:spark` interviews the user to draw requirements out of them.
-  `/dream:requirements-analysis` produces them on its own, from material the
-  user already wrote.
-- `/dream:state` explores the code behind a task with the user, so the user
-  comes away understanding it as well. `/dream:code-analysis` reads it on its
-  own.
-- `/dream:craft` explores the solution space with the user and reaches a design
-  together. `/dream:design` produces one on its own.
+- `dream:spark` interviews the user to draw requirements out of them.
+  `dream:requirements-analysis` produces them on its own, from material the user
+  already wrote.
+- `dream:state` explores the code behind a task with the user, so the user comes
+  away understanding it as well. `dream:code-analysis` reads it on its own.
+- `dream:craft` explores the solution space with the user and reaches a design
+  together. `dream:design` produces one on its own.
 
 The duplication within each pair is a decision, not a defect, so don't
-single-home it. `/dream:craft` was built standalone rather than calling
-`/dream:design`, so its duplication runs through the whole skill.
+single-home it. `dream:craft` was built standalone rather than calling
+`dream:design`, so its duplication runs through the whole skill.
 
-The `/dream:spark`, `/dream:state` and `/dream:craft` bodies are written in the
+The `dream:spark`, `dream:state` and `dream:craft` bodies are written in the
 user's voice, as if the user typed it: "ask me", "tell me only what you've
 read". Don't normalise any of them back to the third person, or into a stack of
 orders. The frontmatter `description` stays third person in all three, since the
-harness reads that to pick the skill. Keep `/dream:copy-edit` off all three
+harness reads that to pick the skill. Keep `dream:copy-edit` off all three
 bodies. It rewrites prose towards the Plain English guide, a different end
 point, and the register is what would go.
 
-The plugin's prose references a skill, an agent, or an issue label one way
+The prose in this repo references a skill, an agent, or an issue label one way
 throughout:
 
-- Write a skill invocation as `/dream:foo`, a leading slash in backticks. Drop
-  the backticks in a frontmatter `description:` field, a markdown heading, or a
-  fenced command block.
-- Write a subagent-type identifier as `dream:foo`, since it is not a slash
-  command.
+- Write a skill reference as `dream:foo`, with no leading slash. Both hosts
+  resolve that identifier, so an agent can act on it as written.
+- Keep the leading slash, `/dream:foo`, where the reference stands for what a
+  person types: the README, a frontmatter `description:` field, a launch banner,
+  and a line the agent shows the user.
+- Drop the backticks in a frontmatter `description:` field, a markdown heading,
+  or a fenced command block.
+- Write a subagent-type identifier as `dream:foo`. That is what an `Agent`
+  call's `subagent_type` takes.
 - Write an issue label as "dream:foo".
 - `catch.sh` keeps its own shell register, where backticks and quotes would
-  misread.
-- Keep a skill reference (`/dream:team`) distinct from the multi-agent team
+  misread. Every `/dream:foo` in it keeps the slash, since the script builds and
+  documents the prompt a session's host reads.
+- Keep a skill reference (`dream:team`) distinct from the multi-agent team
   concept, "the dream team", which stays plain prose.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test

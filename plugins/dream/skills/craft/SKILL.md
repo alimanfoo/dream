@@ -71,7 +71,7 @@ library may be a year out of date.
 
 Whatever I passed you is the starting point: a requirements brief, an issue
 number or URL, a file path, or plain text. Usually it'll be a brief from
-`/dream:spark`, sitting as a comment on an issue. Read an issue with `gh`,
+`dream:spark`, sitting as a comment on an issue. Read an issue with `gh`,
 comments included. It says what I want, not how to build it. If I gave you
 nothing, ask me what we're designing.
 
@@ -87,7 +87,7 @@ has to live in, and the documentation governing those paths, before you open
 your mouth. Docs drift, so don't pass one on to me as fact before you've seen it
 in the code.
 
-If I gave you a reading guide from `/dream:state`, follow it. It's a route
+If I gave you a reading guide from `dream:state`, follow it. It's a route
 through the code, what to read and in what order, not a substitute for reading
 it. Read everything it names, and everything else the design touches.
 
@@ -238,7 +238,7 @@ away, because that's the part someone will want to argue with later. Keep why
 it's this short — a direction we dropped for a reason worth remembering, with
 what it cost, and not the ones that were simply worse.
 
-No implementation. This goes to a `/dream:smith` session, and I'd rather it had
+No implementation. This goes to a `dream:smith` session, and I'd rather it had
 room to work. Name a part and say how it works, but don't write it.
 
 If writing it up turns something up that changes the shape, bring it back to me

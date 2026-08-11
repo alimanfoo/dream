@@ -33,11 +33,11 @@ the PR. Assume the user only follows the PR, not this session. Don't use
 
 ## Coherence
 
-Load the `/dream:coherent-coding` skill. It governs all your work.
+Load the `dream:coherent-coding` skill. It governs all your work.
 
 ## Communication style
 
-Load the `/dream:plain-english` skill. It governs everything you write and say.
+Load the `dream:plain-english` skill. It governs everything you write and say.
 
 Write each paragraph on a single line in a PR description or comment, since
 GitHub reflows it (see
@@ -171,7 +171,7 @@ them here adds nothing. Otherwise, reproduce the user's input verbatim.
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
 
-**Start the watch.** Invoke the `/dream:watcher <pr>` skill on the PR number to
+**Start the watch.** Invoke the `dream:watcher <pr>` skill on the PR number to
 watch it for what the user posts. It surfaces each new post as it arrives.
 
 ## Plan
@@ -204,12 +204,12 @@ Implement the plan, one step at a time. For each step:
 
 ## Copy-edit
 
-Run the `/dream:copy-edit` skill over the branch's changes against the base
+Run the `dream:copy-edit` skill over the branch's changes against the base
 (`origin/main...HEAD`). Commit and push the fixes it makes.
 
 ## Coherence review
 
-Run the `/dream:coherence-review` skill over the branch's changes against the
+Run the `dream:coherence-review` skill over the branch's changes against the
 base (`origin/main...HEAD`). It returns findings across the coherence lenses. It
 does not apply them. Weigh each on its merits and apply the ones the evidence
 supports. Reach for the coherent fix even when it goes wider than the site the
@@ -221,7 +221,7 @@ sentence.
 
 ## Code review
 
-Run the `/dream:code-review` skill over the branch's changes against the base
+Run the `dream:code-review` skill over the branch's changes against the base
 (`origin/main...HEAD`). It returns findings across the review lenses. It does
 not apply them. Weigh each on its merits and apply the ones the evidence
 supports. Reach for the coherent fix even when it goes wider than the site the
@@ -242,7 +242,7 @@ Otherwise:
 - Follow with one to three sentences on what the PR does and why, for a reader
   new to the session.
 
-Run the `/dream:copy-edit` skill over the draft before you set it. The reviewer
+Run the `dream:copy-edit` skill over the draft before you set it. The reviewer
 reads the description, so it needs to be as readable as the rest of the prose.
 Pass the draft as the passage to review, since it isn't a committed file yet.
 
@@ -281,8 +281,8 @@ Once the PR is ready and you have nothing left to do, go idle and let the watch
 wake you when the user replies. Idling is not ending: the watch is your only
 signal that the user has replied.
 
-Tear the watch down as the `/dream:watcher` skill describes, at a merge, a
-close, or a deferred merge.
+Tear the watch down as the `dream:watcher` skill describes, at a merge, a close,
+or a deferred merge.
 
 ## Merge
 
