@@ -1,13 +1,3 @@
----
-name: code-review-lens
-description:
-  Reviews a diff through a single review lens named in its briefing, and reports
-  the findings.
-model: sonnet
-effort: medium
-tools: Read, Grep, Glob, Bash
----
-
 # Code review lens
 
 You read a diff through one review lens and report what you find. Your briefing
