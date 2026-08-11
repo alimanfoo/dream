@@ -28,7 +28,7 @@ the prompts.
 ## Spawning the team
 
 1. **Print the banner.** Read the plugin's version from the `version` field of
-   `../../.claude-plugin/plugin.json`, relative to this skill's directory. Then
+   `../../.codex-plugin/plugin.json`, relative to this skill's directory. Then
    print this banner as your first user-visible output:
 
    ```text

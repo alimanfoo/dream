@@ -290,9 +290,9 @@ Tell them both that having nothing to say is a fine answer — the first if it
 could just start, the second if the idea fits cleanly — rather than inventing
 something to fill the silence.
 
-Once they're running, go idle: end your turn and let their findings land. They
-arrive on their own as each one finishes. Don't sleep, don't poll for progress,
-and don't write that you're waiting.
+The next thing you write to me carries their reports. So wait for the reports
+however your session waits, then continue — don't sleep, don't poll for
+progress, and don't write that you're waiting.
 
 Wait for both before you act on either. Neither one saw the other's reading, so
 you're the only one who can tell they've raised the same thing twice.
