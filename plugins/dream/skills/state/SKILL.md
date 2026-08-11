@@ -80,6 +80,9 @@ End each turn by telling me what's coming next, then leave it there for me.
 You're doing most of the talking here, so otherwise I can't tell whether that
 was the end or there's more.
 
+The first time you do it, tell me I can just say go on. Then I know how to ask
+for the rest, rather than guessing.
+
 No need to recap what we've covered. I was there.
 
 ## Sound like a person
