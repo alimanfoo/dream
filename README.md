@@ -23,19 +23,19 @@ every claim in it checked against the code.
 Every skill runs under Claude Code. These run under Codex too:
 `/dream:plain-english`, `/dream:coherent-coding`, `/dream:spark`,
 `/dream:state`, `/dream:code-analysis`, `/dream:requirements-analysis`,
-`/dream:design` and `/dream:plan`. Name one in the prompt the way you name any
-Codex skill:
+`/dream:design` and `/dream:plan`. Name one in a Codex prompt with a `$` in
+front of it:
 
 ```text
 $dream:state
 ```
 
 The rest need Claude Code. `/dream:watcher` runs on a recurring schedule that
-Codex has no equivalent of. `/dream:smith` and `/dream:less` need
-`/dream:watcher` to pick up your review. `/dream:catcher` launches the `claude`
-command itself. `/dream:copy-edit`, `/dream:code-review` and
+Codex has no equivalent of. `/dream:copy-edit`, `/dream:code-review` and
 `/dream:coherence-review` each spawn a subagent this plugin registers. Codex has
-no registry to spawn it from.
+no registry to spawn it from. `/dream:less` needs `/dream:watcher` to pick up
+your review. `/dream:smith` needs `/dream:watcher` too, and runs those three
+skills. `/dream:catcher` launches the `claude` command itself.
 
 `/dream:team`, and `/dream:catcher` when it dispatches a `/dream:team` session,
 also need Claude Code's
