@@ -37,7 +37,7 @@ command itself. `/dream:copy-edit`, `/dream:code-review` and
 `/dream:coherence-review` each spawn a subagent this plugin registers. Codex has
 no registry to spawn it from.
 
-`/dream:team`, and `/dream:catcher` when it launches a `/dream:team` session,
+`/dream:team`, and `/dream:catcher` when it dispatches a `/dream:team` session,
 also need Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
 
