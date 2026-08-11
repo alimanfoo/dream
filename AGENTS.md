@@ -52,7 +52,7 @@ file there to a plain subagent, by absolute path. That works under both Claude
 Code and Codex. Codex has no field for a plugin's agent definitions, so a
 subagent spawned by name doesn't work there.
 
-`plugins/dream/agents/` holds the four dream-team members and nothing else.
+`plugins/dream/agents/` holds the four dream-team agents and nothing else.
 Claude Code registers each by name from its frontmatter. `dream:team` spawns
 them by that name. `dream:team` needs Claude Code's agent teams feature, so it
 stays Claude-only.
@@ -75,6 +75,9 @@ throughout:
   documents the prompt a session's host reads.
 - Keep a skill reference (`dream:team`) distinct from the multi-agent team
   concept, "the dream team", which stays plain prose.
+- Call the four dream-team members agents, not subagents. They are peers on a
+  team. Keep "subagent" for one a session spawns to do a job for it, and for the
+  literal `subagent_type` parameter.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 suite. When changing behaviour, read the affected skill and agent prompts
