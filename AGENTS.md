@@ -48,9 +48,9 @@ the skill. Keep `dream:copy-edit` off both bodies. It rewrites prose towards the
 Plain English guide, a different end point, and the register is what would go.
 
 Put new subagent instructions in `plugins/dream/subagents/`. A skill hands a
-file there to a plain `general-purpose` subagent, by absolute path. That works
-under both Claude Code and Codex. Codex has no field for a plugin's agent
-definitions, so a subagent spawned by name doesn't work there.
+file there to a plain subagent, by absolute path. That works under both Claude
+Code and Codex. Codex has no field for a plugin's agent definitions, so a
+subagent spawned by name doesn't work there.
 
 `plugins/dream/agents/` holds the four dream-team members and nothing else.
 Claude Code registers each by name from its frontmatter. `dream:team` spawns
