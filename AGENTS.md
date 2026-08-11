@@ -191,7 +191,7 @@ There is no release process. The plugin is installed directly from this GitHub
 repo's main branch.
 
 When opening a PR, include a version bump in
-`plugins/dream/.claude-plugin/plugin.json`, so every change merged to main is
+`plugins/dream/.codex-plugin/plugin.json`, so every change merged to main is
 versioned. Which part to bump:
 
 - **Major**: a structural or breaking change to existing behaviour.
