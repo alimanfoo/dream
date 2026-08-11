@@ -50,12 +50,12 @@ Plain English guide, a different end point, and the register is what would go.
 Put new subagent instructions in `plugins/dream/subagents/`. A skill hands a
 file there to a plain `general-purpose` subagent, by absolute path. That works
 under both Claude Code and Codex. Codex has no field for a plugin's agent
-definitions, so a named agent doesn't work there.
+definitions, so a subagent spawned by name doesn't work there.
 
-`plugins/dream/agents/` holds the four dream-team agents and nothing else.
-Claude Code registers those by name from their frontmatter. `dream:team` spawns
-them that way. `dream:team` needs Claude Code's agent teams feature, so it stays
-Claude-only.
+`plugins/dream/agents/` holds the four dream-team members and nothing else.
+Claude Code registers each by name from its frontmatter. `dream:team` spawns
+them by that name. `dream:team` needs Claude Code's agent teams feature, so it
+stays Claude-only.
 
 The prose in this repo references a skill, an agent, or an issue label one way
 throughout:
