@@ -40,14 +40,14 @@ Read the arguments the user gives.
    subagent judges it for that reader rather than reading the surrounding code
    to work out who the reader is. For a small passage, give one subagent the
    whole of it. For a large passage, split it by file or section. Launch
-   parallel `dream:copy-editor` subagents, one per part. Once the subagents are
-   running, go idle: end your turn and let their findings land. They arrive on
-   their own when each subagent finishes. Don't sleep. Don't poll for progress.
-   Don't write that you are waiting.
-3. Findings land one subagent at a time, so go idle again after each until every
-   subagent you launched is in. Then combine the findings into one list. Drop
-   duplicates and resolve inconsistencies. Write the combined list in your turn
-   output.
+   parallel `dream:copy-editor` subagents, one per part. The next thing you
+   write to me carries their reports. So wait for the reports however your
+   session waits, then continue — don't sleep, don't poll for progress, and
+   don't write that you're waiting.
+3. Wait again after each, however your session waits, until every subagent you
+   launched is in, since findings land one subagent at a time. Then combine the
+   findings into one list. Drop duplicates and resolve inconsistencies. Write
+   the combined list in your turn output.
 4. Resolve every finding on the combined list. You are the author. Make each
    edit yourself and keep the meaning. When a fix would drop a reason, keep the
    reason and meet the rule another way.

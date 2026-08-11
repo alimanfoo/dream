@@ -1,8 +1,1 @@
-{
-  "name": "dream",
-  "description": "Tools for delivering great code, keeping the codebase coherent, and doing both with minimal user input.",
-  "version": "27.1.0",
-  "author": {
-    "name": "Alistair Miles"
-  }
-}
+../.codex-plugin/plugin.json

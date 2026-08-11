@@ -224,9 +224,9 @@ Then ask it to return two kinds of claim, and nothing else: the ones the code
 contradicts, and the ones it couldn't verify because the evidence isn't there.
 If there are none of either, saying so is a fine answer.
 
-Once it's running, go idle: end your turn and let its report land. It arrives on
-its own when the subagent finishes. Don't sleep, don't poll for progress, and
-don't write that you're waiting.
+The next thing you write to me carries its report. So wait for the report
+however your session waits, then continue — don't sleep, don't poll for
+progress, and don't write that you're waiting.
 
 Then fix the guide. Please also tell me, plainly, anything that came back
 unsupported which you'd told me out loud as well. I believed it when you said

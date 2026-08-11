@@ -58,14 +58,14 @@ In inline mode, run the lenses yourself instead of spawning subagents. Read
 [the lens subagent's instructions](../../agents/code-review-lens.md) first and
 work to them, since you are the one applying each lens.
 
-Once the subagents are running, go idle: end your turn and let their findings
-land. They arrive on their own when each subagent finishes. Don't sleep. Don't
-poll for progress. Don't write that you are waiting.
+The next thing you write to me carries their reports. So wait for the reports
+however your session waits, then continue — don't sleep, don't poll for
+progress, and don't write that you're waiting.
 
 ## Combine and verify
 
-Findings land one subagent at a time. So go idle again after each, until every
-subagent you launched is in.
+Wait again after each, however your session waits, until every subagent you
+launched is in, since findings land one subagent at a time.
 
 Then combine their findings into one list. Drop duplicates and resolve
 inconsistencies.

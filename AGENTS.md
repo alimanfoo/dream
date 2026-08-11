@@ -195,8 +195,18 @@ There is no release process. The plugin is installed directly from this GitHub
 repo's main branch.
 
 When opening a PR, include a version bump in
-`plugins/dream/.claude-plugin/plugin.json`, so every change merged to main is
-versioned. Which part to bump:
+`plugins/dream/.codex-plugin/plugin.json`, so every change merged to main is
+versioned.
+
+The manifest sits under `.codex-plugin` because Codex drops symlinks when it
+installs a plugin, and Claude Code follows them. So
+`plugins/dream/.claude-plugin/plugin.json` is a symlink to it, and both hosts
+read one file.
+
+`claude plugin validate` reads that file too, and warns that it ignores the
+`interface` block. Codex needs the block, so leave it in place.
+
+Which part to bump:
 
 - **Major**: a structural or breaking change to existing behaviour.
 - **Minor**: an additive, non-breaking change.

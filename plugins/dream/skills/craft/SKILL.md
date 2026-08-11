@@ -263,10 +263,11 @@ check anything it wants to raise against that code first, and answer two things:
 does this fit the code as it actually is, and is there enough here to plan the
 build from without coming back to ask?
 
-Once they're running, go idle: end your turn and let their findings land. Don't
-sleep, don't poll for progress, and don't write that you're waiting. Wait for
-both before you act on either, since you're the only one who can see they've
-raised the same thing twice.
+The next thing you write to me carries their reports. So wait for the reports
+however your session waits, then continue — don't sleep, don't poll for
+progress, and don't write that you're waiting. Wait for both before you act on
+either, since you're the only one who can see they've raised the same thing
+twice.
 
 Then bring me what survives, one thing a turn. A cut is mine to rule on rather
 than yours to make, so tell me what it takes out and what that costs. Anything
