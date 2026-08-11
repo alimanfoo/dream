@@ -34,7 +34,7 @@ Read the arguments the user gives.
 2. Spawn subagents to review it. Use Sonnet under Claude Code. Give each the
    absolute path of
    [the copy editor's instructions](../../subagents/copy-editor.md) and tell it
-   to work to them. Give each the Plain English guide's absolute path too. A
+   to work to them. Give each the Plain English guide's absolute path too.
    Locate each passage exactly: give its absolute path with the line range, or
    the text inline when it isn't in a file yet. A passage you name only by
    section costs the subagent a search. Name who reads the passage, so the
