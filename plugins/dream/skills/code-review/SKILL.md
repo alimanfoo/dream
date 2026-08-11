@@ -54,8 +54,6 @@ and tell it to work to them. Give each the target too, as a git range like
 `origin/main...HEAD` or an absolute path, and the one lens it applies. A
 subagent can't resolve a path relative to its own prompt file.
 
-The subagent is read-only by tool design: it reads and reports.
-
 In inline mode, run the lenses yourself instead of spawning subagents. Read
 [the lens instructions](../../subagents/code-review-lens.md) first and work to
 them, since you are the one applying each lens.
