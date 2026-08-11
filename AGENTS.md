@@ -47,6 +47,16 @@ either back to the third person, or into a stack of orders. The frontmatter
 the skill. Keep `dream:copy-edit` off both bodies. It rewrites prose towards the
 Plain English guide, a different end point, and the register is what would go.
 
+Put new subagent instructions in `plugins/dream/subagents/`. A file there is
+handed to a plain `general-purpose` subagent by absolute path, which works under
+both Claude Code and Codex. Codex has no field for a plugin's agent definitions,
+so a named agent resolves to nothing there.
+
+`plugins/dream/agents/` holds the four dream-team agents and nothing else.
+Claude Code registers those by name from their frontmatter, and `dream:team`
+spawns them that way. `dream:team` needs Claude Code's agent teams feature, so
+it stays Claude-only.
+
 The prose in this repo references a skill, an agent, or an issue label one way
 throughout:
 
