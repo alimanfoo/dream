@@ -47,8 +47,8 @@ Choose from these or invent your own. They are examples, not a checklist:
   missing, and what is there but they do not need
 - alignment: compliance with agent instructions (AGENTS.md or CLAUDE.md)
 
-Spawn a subagent once per lens, on Sonnet, all at the same time so they run in
-parallel. Give each the absolute path of
+Spawn a subagent once per lens, all at the same time so they run in parallel.
+Use Sonnet under Claude Code. Give each the absolute path of
 [the lens instructions](../../subagents/code-review-lens.md) and tell it to work
 to them. Give each the target too, as a git range like `origin/main...HEAD` or
 an absolute path, and the one lens it applies. A subagent can't resolve a path

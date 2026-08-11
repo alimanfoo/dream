@@ -25,8 +25,8 @@ Read the [coherent coding guide](../../coherent-coding.md). It is the home of
 the disciplines this review checks. The lens subagents can't read it themselves,
 so paste each lens the guide text it needs.
 
-Launch a subagent on Sonnet, once per lens, all at the same time so they run in
-parallel. Give each the absolute path of
+Launch a subagent once per lens, all at the same time so they run in parallel.
+Use Sonnet under Claude Code. Give each the absolute path of
 [the lens instructions](../../subagents/code-review-lens.md) and tell it to work
 to them. Brief each with the target and its guide section or sections, pasting
 the heading and the text beneath it into the briefing.

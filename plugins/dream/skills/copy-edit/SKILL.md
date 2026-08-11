@@ -31,7 +31,8 @@ Read the arguments the user gives.
    paragraph it holds is whole. The subagent judges only what you hand it, so a
    passage cut mid-paragraph is one it cannot judge. Review prose, not diff
    markup.
-2. Spawn subagents on Sonnet to review it. Give each the absolute path of
+2. Spawn subagents to review it. Use Sonnet under Claude Code. Give each the
+   absolute path of
    [the copy editor's instructions](../../subagents/copy-editor.md) and tell it
    to work to them. Give each the Plain English guide's absolute path too. A
    subagent can't resolve a path relative to its own prompt file. Locate each
