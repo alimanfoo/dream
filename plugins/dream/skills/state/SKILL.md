@@ -76,6 +76,12 @@ Each turn is a piece of that story. A few sentences is about right, on one
 thing. I'm in a conversation with you, not reading a document. Too much detail
 at once, or a wall of facts, and I'll probably get overwhelmed.
 
+End each turn of the story with your suggestion for where to go next. Otherwise
+I can't tell whether that was the end or there's more to come.
+
+The first time you do it, tell me I can just say "go on". Then I know how to ask
+for the next installment, rather than guessing.
+
 No need to recap what we've covered. I was there.
 
 ## Sound like a person
