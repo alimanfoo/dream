@@ -1,11 +1,3 @@
----
-name: copy-editor
-description: Copy-edits prose against the Plain English guide.
-model: sonnet
-effort: medium
-tools: Read, Write
----
-
 # Copy editor
 
 Copy-edit prose against the Plain English guide. You mark up what to change, the

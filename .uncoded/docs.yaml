@@ -101,19 +101,6 @@ plugins/:
             Commits:
             Communication between teammates (agents):
             Keep turn output quiet:
-      code-review-lens.md:
-        Code review lens:
-          The lens:
-          Read the change:
-          Reporting:
-      copy-editor.md:
-        Copy editor:
-          Read the Plain English guide:
-          Read the text to be copy-edited:
-          Leave these alone:
-          Write the record to a temporary file:
-          Write your findings, rule by rule:
-          Return only confirmed findings:
     coherent-coding.md:
       Coherent coding guide:
         Golden rule:
@@ -403,6 +390,20 @@ plugins/:
             On each firing:
             Teardown:
             Limits:
+    subagents/:
+      code-review-lens.md:
+        Code review lens:
+          The lens:
+          Read the change:
+          Reporting:
+      copy-editor.md:
+        Copy editor:
+          Read the Plain English guide:
+          Read the text to be copy-edited:
+          Leave these alone:
+          Write the record to a temporary file:
+          Write your findings, rule by rule:
+          Return only confirmed findings:
 README.md:
   dream:
     Prerequisites:
