@@ -51,8 +51,7 @@ Spawn a subagent once per lens, all at the same time so they run in parallel.
 Use Sonnet under Claude Code. Give each the absolute path of
 [the lens instructions](../../subagents/code-review-lens.md) and tell it to work
 to them. Give each the target too, as a git range like `origin/main...HEAD` or
-an absolute path, and the one lens it applies. A subagent can't resolve a path
-relative to its own prompt file.
+an absolute path, and the one lens it applies.
 
 In inline mode, run the lenses yourself instead of spawning subagents. Read
 [the lens instructions](../../subagents/code-review-lens.md) first and work to

@@ -62,8 +62,7 @@ the heading and the text beneath it into the briefing.
   [Names that tell the truth](../../coherent-coding.md#names-that-tell-the-truth)
   section.
 
-Pass the target as a git range, or as an absolute path. A subagent can't resolve
-a path relative to its own prompt file.
+Pass the target as a git range, or as an absolute path.
 
 Tell each lens to give every finding a proposed fix that resolves it by taking
 out more code than it puts in, naming what goes and from where. Fixing
