@@ -70,14 +70,14 @@ incoherence by adding makes a codebase harder to maintain, however careful the
 review that found it. So a finding with no removal behind it costs more than it
 returns. A lens that can't propose one drops the finding.
 
-Once the subagents are running, go idle: end your turn and let their findings
-land. They arrive on their own when each subagent finishes. Don't sleep. Don't
-poll for progress. Don't write that you are waiting.
+The next thing you write to me carries their reports. So wait for the reports
+however your session waits, then continue — don't sleep, don't poll for
+progress, and don't write that you're waiting.
 
 ## Combine and verify
 
-Findings land one subagent at a time. So go idle again after each, until every
-subagent you launched is in.
+Findings land one subagent at a time. So wait again after each, however your
+session waits, until every subagent you launched is in.
 
 Then combine their findings into one list. Drop duplicates and resolve
 inconsistencies.
