@@ -30,18 +30,19 @@ Codex skill:
 $dream:state
 ```
 
-The rest need Claude Code. `/dream:watcher` runs on a recurring schedule, which
-Codex has no equivalent of, and `/dream:smith` and `/dream:less` use it to pick
-up your review. `/dream:catcher` launches `claude` itself. `/dream:copy-edit`,
-`/dream:code-review` and `/dream:coherence-review` each spawn a subagent this
-plugin registers, and Codex has no registry to read it from.
+The rest need Claude Code. `/dream:watcher` runs on a recurring schedule that
+Codex has no equivalent of. `/dream:smith` and `/dream:less` need
+`/dream:watcher` to pick up your review. `/dream:catcher` launches the `claude`
+command itself. `/dream:copy-edit`, `/dream:code-review` and
+`/dream:coherence-review` each spawn a subagent this plugin registers. Codex has
+no registry to spawn it from.
 
-`/dream:team`, and `/dream:catcher` when it dispatches a `/dream:team` session,
+`/dream:team`, and `/dream:catcher` when it launches a `/dream:team` session,
 also need Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
 
 The plugin works best with the `gh` command line tool available. This lets the
-team interact with GitHub, for example opening a pull request and posting
+plugin interact with GitHub, for example opening a pull request and posting
 issues.
 
 ## Installation

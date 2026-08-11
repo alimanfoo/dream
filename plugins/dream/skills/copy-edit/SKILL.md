@@ -44,8 +44,8 @@ Read the arguments the user gives.
    write to me carries their reports. So wait for the reports however your
    session waits, then continue — don't sleep, don't poll for progress, and
    don't write that you're waiting.
-3. Findings land one subagent at a time, so wait again after each, however your
-   session waits, until every subagent you launched is in. Then combine the
+3. Wait again after each, however your session waits, until every subagent you
+   launched is in, since findings land one subagent at a time. Then combine the
    findings into one list. Drop duplicates and resolve inconsistencies. Write
    the combined list in your turn output.
 4. Resolve every finding on the combined list. You are the author. Make each

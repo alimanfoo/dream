@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "dream",
     "shortDescription": "Deliver great code and keep the codebase coherent.",
-    "longDescription": "Skills for coding that holds a codebase together. One interviews you to turn a rough idea into a brief. One explores the code behind a task with you, and leaves you a reading guide to it. Others work on their own: they read the code you have, draw out the requirements, design a change, and plan it.",
+    "longDescription": "Skills for coding that holds a codebase together. One interviews you to turn a rough idea into a brief. One explores the code behind a task with you, and leaves you a reading guide to that code. Others work on their own: they read the code you have, draw out the requirements, design a change, and plan it.",
     "developerName": "Alistair Miles",
     "category": "Productivity",
     "capabilities": ["Interactive", "Read", "Write"],

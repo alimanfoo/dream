@@ -76,8 +76,8 @@ progress, and don't write that you're waiting.
 
 ## Combine and verify
 
-Findings land one subagent at a time. So wait again after each, however your
-session waits, until every subagent you launched is in.
+Wait again after each, however your session waits, until every subagent you
+launched is in, since findings land one subagent at a time.
 
 Then combine their findings into one list. Drop duplicates and resolve
 inconsistencies.
