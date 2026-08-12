@@ -59,14 +59,8 @@ set -uo pipefail
 
 die() { printf 'dream:watcher: %s\n' "$*" >&2; exit 2; }
 
-case $# in
-  1)
-    pr=$1
-    ;;
-  *)
-    die "usage: watch.sh <pr>"
-    ;;
-esac
+[ $# -eq 1 ] || die "usage: watch.sh <pr>"
+pr=$1
 [[ "$pr" =~ ^[1-9][0-9]*$ ]] || die "pull request must be a positive whole number, got '$pr'"
 
 for tool in gh jq; do

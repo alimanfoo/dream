@@ -32,6 +32,9 @@ Code footer:
 The watch drops comments that carry this footer, so your own replies do not come
 back as fresh user posts.
 
+Add the footer to replies on lines of the diff too, not only to comments on the
+pull request conversation.
+
 ## Set up the watch
 
 Create a recurring cron job (`CronCreate`) that fires every `interval` minutes,
