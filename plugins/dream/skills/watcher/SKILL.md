@@ -22,6 +22,10 @@ The machinery is a shell script, `watch.sh`, in this skill's directory. It reads
 the pull request and tracks what you have already seen. This skill wraps it into
 the recurring check and tells you how to act on each result.
 
+The script also accepts `--peek`, which reports the same result without
+advancing the watermark. `dream:catcher` uses that to decide whether to resume a
+bounded round without consuming the user's posts.
+
 ## The footer precondition
 
 Mark every comment that you post to the watched pull request with the Claude

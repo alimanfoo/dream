@@ -5,8 +5,8 @@
 # One query, one command, no subcommand. Given a pull request number, it returns
 # the pull request state and everything the user wrote on it newer than a
 # per-pull-request watermark. It then advances the watermark to the newest post
-# it returned. The caller runs it on a recurring cron to watch a pull request
-# while the session works elsewhere.
+# it returned, unless the caller passes --peek. The caller runs it on a recurring
+# cron to watch a pull request while the session works elsewhere.
 #
 # The watermark is the newest post seen, never the wall clock. So a post that
 # lands while the caller is busy handling an earlier batch still stays above the
@@ -59,8 +59,20 @@ set -uo pipefail
 
 die() { printf 'dream:watcher: %s\n' "$*" >&2; exit 2; }
 
-[ $# -eq 1 ] || die "usage: watch.sh <pr>"
-pr=$1
+peek=0
+case $# in
+  1)
+    pr=$1
+    ;;
+  2)
+    [ "$1" = "--peek" ] || die "usage: watch.sh [--peek] <pr>"
+    peek=1
+    pr=$2
+    ;;
+  *)
+    die "usage: watch.sh [--peek] <pr>"
+    ;;
+esac
 [[ "$pr" =~ ^[1-9][0-9]*$ ]] || die "pull request must be a positive whole number, got '$pr'"
 
 for tool in gh jq; do
@@ -150,7 +162,7 @@ result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
 ') || die "cannot parse the pull request activity"
 
 newest=$(printf '%s' "$result" | jq -r '.newest // empty')
-if [ -n "$newest" ]; then
+if [ -n "$newest" ] && [ "$peek" -eq 0 ]; then
   printf '%s' "$newest" > "$watermark_file" \
     || die "cannot write the watermark file $watermark_file"
 fi
