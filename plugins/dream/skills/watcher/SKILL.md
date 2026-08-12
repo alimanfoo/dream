@@ -22,10 +22,6 @@ The machinery is a shell script, `watch.sh`, in this skill's directory. It reads
 the pull request and tracks what you have already seen. This skill wraps it into
 the recurring check and tells you how to act on each result.
 
-The script also accepts `--peek`, which reports the same result without
-advancing the watermark. `dream:catcher` uses that to decide whether to resume a
-bounded round without consuming the user's posts.
-
 ## The footer precondition
 
 Mark every comment that you post to the watched pull request with the Claude
@@ -33,11 +29,8 @@ Code footer:
 
 > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
-The watch tells your own comments from the user's by that footer, and drops any
-comment that carries it. Without it, your own words read back as the user's
-input, and the watch surfaces them to you as fresh instructions to act on. This
-covers a reply to an inline comment on the diff as much as a comment on the
-conversation.
+The watch drops comments that carry this footer, so your own replies do not come
+back as fresh user posts.
 
 ## Set up the watch
 

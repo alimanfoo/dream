@@ -64,10 +64,7 @@ the diff included:
 
 > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
-This lets a reader tell quickly which items are agent-authored. It also lets
-`watch.sh` filter out agent-authored PR posts when `dream:catcher` decides what
-the user has added. Keep the footer exact, or a later round can read its own
-comments as user input and answer itself.
+This lets a reader tell quickly which items are agent-authored.
 
 ## Orient to the repo
 
@@ -176,9 +173,6 @@ them here adds nothing. Otherwise, reproduce the user's input verbatim.
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
 
-Do not start `dream:watcher`. This skill runs bounded rounds. The PR is still
-how the user reaches you, and the next round checks it for new input.
-
 ## Plan
 
 Run a Plan subagent. Give it the session input, the code you read, and the
@@ -259,9 +253,9 @@ Mark the PR ready for review.
 
 ## Handle what the user posts
 
-Do not idle or start `dream:watcher`. When no work is ready to do, end your
-turn. A hand-run session waits at the prompt for the user. A dispatched session
-exits, and `dream:catcher` resumes it when the PR has new input.
+When no work is ready to do, end your turn. An interactive session waits at the
+prompt for the user. A headless session exits, and `dream:catcher` resumes it
+when the PR has new input.
 
 When a turn starts with a watch-check prompt, run the command it gives you and
 read the whole JSON result. Read the PR `state` before you act on anything else.

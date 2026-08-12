@@ -32,10 +32,8 @@ configuration, run the preflight checks, and launch it.
 
 ## Arguments
 
-The user may pass any option below as a `--flag value` pair, in any order:
-`--smith-label`, `--less-label`, `--smith-model`, `--smith-effort`,
-`--less-model`, `--less-effort`, `--assignee`, `--interval`, and `--max-agents`.
-Take whichever are present.
+The user may pass any option shown in the `argument-hint` frontmatter as a
+`--flag value` pair, in any order. Take whichever are present.
 
 ## Gather the configuration
 
@@ -131,12 +129,12 @@ Answer questions about the coordinator's behaviour from here.
   this when one issue depends on another, or when one tidies an area the other
   would otherwise work through.
 - **Finished worktrees.** The coordinator removes a worktree and its branch
-  after the pull request has merged or closed, the final round has started, and
-  no agent round is running. It leaves `$HOME/.dream/catcher` state in place.
+  after the pull request has merged or closed, and the final round has finished.
+  It leaves `$HOME/.dream/catcher` state in place.
 - **Permissions.** An agent round runs in auto mode, with the recurring
   unattended writes passed as narrow allow rules at launch. Resumed rounds also
   get a narrow allow rule for the resolved `watch.sh` command they must run.
-  Auto mode resolves these before its classifier runs. A broad `Bash` allow
-  can't serve here: auto mode drops broad allow rules and keeps only narrow
-  ones. Auto mode blocks any other command it does not clear, and notifies
-  instead of running it unattended.
+  Auto mode resolves these specific permissions before its classifier runs. A
+  broad `Bash` allow can't serve here: auto mode drops broad allow rules and
+  keeps only narrow ones. Auto mode blocks any other command it does not clear,
+  and notifies instead of running it unattended.
