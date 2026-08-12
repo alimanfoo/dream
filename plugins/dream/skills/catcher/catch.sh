@@ -248,8 +248,35 @@ unblocked() {
 # repositories do not collide.
 catcher_state_dir() { printf '%s/.dream/catcher/%s/%s\n' "$HOME" "$repo" "$1"; }
 agent_log_file() { printf '%s/agent.log\n' "$(catcher_state_dir "$1")"; }
+skill_file() { printf '%s/skill\n' "$(catcher_state_dir "$1")"; }
 final_marker_file() { printf '%s/final-started\n' "$(catcher_state_dir "$1")"; }
 watcher_watermark_file() { printf '%s/.dream/watcher/%s/pr%s\n' "$HOME" "$repo" "$1"; }
+
+# The label chooses the skill at dispatch. After that, the session's skill is
+# state, not live GitHub metadata: labels can change while the same branch is
+# still waiting for review, merge, or close.
+record_branch_skill() {
+  local branch=$1 skill=$2 state_dir
+  case "$skill" in
+    smith|less) ;;
+    *) log "unknown skill '$skill' for $branch"; return 1;;
+  esac
+  state_dir=$(catcher_state_dir "$branch")
+  mkdir -p "$state_dir" \
+    || { log "cannot create catcher state directory for $branch"; return 1; }
+  printf '%s\n' "$skill" >"$(skill_file "$branch")" \
+    || { log "cannot record skill for $branch"; return 1; }
+}
+
+read_branch_skill() {
+  local branch=$1 skill
+  [ -f "$(skill_file "$branch")" ] || return 1
+  IFS= read -r skill <"$(skill_file "$branch")" || return 1
+  case "$skill" in
+    smith|less) printf '%s\n' "$skill";;
+    *) return 1;;
+  esac
+}
 
 # Remove a worktree and its branch together. This backs out a failed dispatch and
 # reclaims a finished session. Catcher state under $HOME/.dream/catcher stays in
@@ -367,6 +394,11 @@ dispatch() {
     || { log "fetch failed for GH${n}: $err"; return 1; }
   err=$(git -C "$main_root" worktree add -b "$branch" "$wt" origin/main 2>&1) \
     || { log "could not create worktree $wt for GH${n}: $err"; return 1; }
+  if ! record_branch_skill "$branch" "$skill"; then
+    log "could not record session state for GH${n}, discarding worktree"
+    discard_worktree "$wt" "$branch"
+    return 1
+  fi
   prompt="/dream:$skill"
   if ! launch_agent_round "$wt" "$branch" "$skill" 0 0 "$prompt"; then
     log "could not start first round for GH${n}, discarding worktree"
@@ -386,28 +418,6 @@ list_labelled() {
     --jq ".[] | [.createdAt, (.number | tostring), \"$skill\"] | @tsv" 2>/dev/null
 }
 
-issue_in_label_list() {
-  local target=$1 list=$2 created number skill
-  while IFS=$'\t' read -r created number skill; do
-    [ -n "$created" ] || continue
-    [ "$number" = "$target" ] && return 0
-  done <<<"$list"
-  return 1
-}
-
-skill_for_issue() {
-  local n=$1
-  if issue_in_label_list "$n" "$smith_list"; then
-    printf 'smith\n'
-    return 0
-  fi
-  if issue_in_label_list "$n" "$less_list"; then
-    printf 'less\n'
-    return 0
-  fi
-  return 1
-}
-
 # Resume the first existing branch that needs a round. Open pull requests resume
 # only when watch.sh --peek sees user posts. Merged or closed pull requests get
 # one final round, guarded by final-started.
@@ -417,11 +427,12 @@ resume_existing_work() {
     [ -n "$wt" ] || continue
     tmux has-session -t "dream-$branch" 2>/dev/null && continue
     n=$(issue_number_of_branch "$branch") || continue
-    skill=$(skill_for_issue "$n") \
-      || { log "skipping $branch: GH${n} no longer has a smith or less label"; continue; }
+    skill=$(read_branch_skill "$branch") \
+      || { log "skipping $branch: no recorded skill; see $(agent_log_file "$branch")"; continue; }
     pr_json=$(pr_for_branch "$branch") \
       || { log "cannot read pull request for $branch; will retry next tick"; continue; }
-    [ -n "$pr_json" ] || continue
+    [ -n "$pr_json" ] \
+      || { log "skipping $branch: no pull request yet; see $(agent_log_file "$branch")"; continue; }
     pr_number=$(printf '%s' "$pr_json" | jq -r '.number')
     state=$(printf '%s' "$pr_json" | jq -r '.state')
     case "$state" in
@@ -449,11 +460,7 @@ tick() {
   if at_agent_cap; then
     return 0
   fi
-  local smith_list less_list smith_open less_open candidates n skill
-  smith_list=$(list_labelled "$smith_label" smith all) \
-    || { log "cannot list issues; will retry next tick"; return 1; }
-  less_list=$(list_labelled "$less_label" less all) \
-    || { log "cannot list issues; will retry next tick"; return 1; }
+  local smith_open less_open candidates n skill
   resume_existing_work && return 0
   smith_open=$(list_labelled "$smith_label" smith open) \
     || { log "cannot list issues; will retry next tick"; return 1; }

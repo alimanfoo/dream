@@ -71,7 +71,10 @@ the diff included:
 
 > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
-This lets a reader tell quickly which items are agent-authored.
+This lets a reader tell quickly which items are agent-authored. It also lets
+`watch.sh` filter out agent-authored PR posts when `dream:catcher` decides what
+the user has added. Keep the footer exact, or a later round can read its own
+comments as user input and answer itself.
 
 ## Orient to the repo
 

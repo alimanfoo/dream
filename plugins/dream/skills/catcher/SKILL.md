@@ -98,9 +98,10 @@ Then tell the user:
 - that each running agent round has its own tmux session named
   `dream-GH<n>-<timestamp>`, and that the tmux session disappears when that
   round ends.
-- that each round appends output to
-  `$HOME/.dream/catcher/<owner>/<repo>/GH<n>-<timestamp>/agent.log`, which stays
-  in place after cleanup for debugging.
+- that each round keeps catcher state under
+  `$HOME/.dream/catcher/<owner>/<repo>/GH<n>-<timestamp>/`: `agent.log`, the
+  dispatched skill, and the final-round marker. This state stays in place after
+  cleanup for debugging.
 - that tmux sessions stop on reboot, so re-running `/dream:catcher` restarts the
   loop, and that a machine that must survive reboots should run
   `catch.sh --once` from cron or launchd, where each firing runs a single tick.
@@ -116,7 +117,8 @@ Answer questions about the coordinator's behaviour from here.
 - **Skill by label.** The smith label dispatches a `dream:smith` session, and
   the less label dispatches a `dream:less` session. An issue needs one of the
   labels and the right assignee to be picked up. One carrying both goes to
-  `dream:smith`.
+  `dream:smith`. The coordinator records the chosen skill when it dispatches the
+  branch, so changing labels later does not change the session.
 - **Bounded rounds.** A session does not stay alive while it waits for the user.
   It ends each round when it has no work to do. The coordinator resumes it later
   from the same worktree and session history.
