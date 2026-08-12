@@ -448,7 +448,7 @@ launch_agent_round() {
     || { log "cannot create catcher state directory for $branch"; return 1; }
   agent_cmd=$(round_command "$wt" "$branch" "$session_harness" "$skill" "$model" "$effort" "$resume" "$prompt") \
     || { log "cannot build agent command for $branch"; return 1; }
-  run="{ printf '%s  starting $branch ($round)\n' \"\$(date -u +%FT%TZ)\"; $agent_cmd; status=\$?; printf '%s  exited with status %s\n' \"\$(date -u +%FT%TZ)\" \"\$status\"; exit \"\$status\"; } 2>&1 | tee -a $(shell_quote "$log_file")"
+  run="{ printf '%s  starting $branch ($round)\n' \"\$(date -u +%FT%TZ)\"; $agent_cmd; agent_status=\$?; printf '%s  exited with status %s\n' \"\$(date -u +%FT%TZ)\" \"\$agent_status\"; exit \"\$agent_status\"; } 2>&1 | tee -a $(shell_quote "$log_file")"
   if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" "$run"; then
     log "tmux launch failed for $branch"
     return 1
