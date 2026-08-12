@@ -178,8 +178,8 @@ dispatching the matching skill. Override a label with a flag, for example
 named `dream-GH<n>-<timestamp>`, which disappears when that round ends. The
 round's output is appended to
 `$HOME/.dream/catcher/<owner>/<repo>/GH<n>-<timestamp>/agent.log`. Catcher state
-there also records the dispatched skill, resume attempts, and final-round
-marker, and stays in place after cleanup for debugging.
+there also records the latest PR inbox and final-round marker, and stays in
+place after cleanup for debugging.
 
 How it picks work:
 

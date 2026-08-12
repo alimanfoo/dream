@@ -98,8 +98,8 @@ Then tell the user:
   round ends.
 - that each round keeps catcher state under
   `$HOME/.dream/catcher/<owner>/<repo>/GH<n>-<timestamp>/`: `agent.log`, the
-  dispatched skill, resume attempts, and the final-round marker. This state
-  stays in place after cleanup for debugging.
+  latest PR inbox, and the final-round marker. This state stays in place after
+  cleanup for debugging.
 - that tmux sessions stop on reboot, so re-running `/dream:catcher` restarts the
   loop, and that a machine that must survive reboots should run
   `catch.sh --once` from cron or launchd, where each firing runs a single tick.
@@ -132,9 +132,8 @@ Answer questions about the coordinator's behaviour from here.
   after the pull request has merged or closed, and the final round has finished.
   It leaves `$HOME/.dream/catcher` state in place.
 - **Permissions.** An agent round runs in auto mode, with the recurring
-  unattended writes passed as narrow allow rules at launch. Resumed rounds also
-  get a narrow allow rule for the resolved `watch.sh` command they must run.
-  Auto mode resolves these specific permissions before its classifier runs. A
-  broad `Bash` allow can't serve here: auto mode drops broad allow rules and
-  keeps only narrow ones. Auto mode blocks any other command it does not clear,
-  and notifies instead of running it unattended.
+  unattended writes passed as narrow allow rules at launch. Auto mode resolves
+  these specific permissions before its classifier runs. A broad `Bash` allow
+  can't serve here: auto mode drops broad allow rules and keeps only narrow
+  ones. Auto mode blocks any other command it does not clear, and notifies
+  instead of running it unattended.

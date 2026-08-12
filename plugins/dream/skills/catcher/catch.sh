@@ -32,11 +32,10 @@
 #
 # Permissions: a dispatched session runs in auto mode. dispatch passes the
 # recurring unattended writes (gh pr create, gh issue create, git push, and so
-# on), plus the resolved watch.sh command for resumed rounds, as narrow
-# --allowedTools rules. Auto mode resolves these before its classifier runs. The
-# classifier would otherwise stall an unattended session on a command it can't
-# attribute to the user. Auto mode handles the rest and notifies on anything it
-# blocks.
+# on) as narrow --allowedTools rules. Auto mode resolves these before its
+# classifier runs. The classifier would otherwise stall an unattended session on
+# a write it can't attribute to the user. Auto mode handles the rest and notifies
+# on anything it blocks.
 #
 # Layout: the coordinator assumes the standard worktree layout, where each
 # dispatched worktree is a sibling of the main checkout under a directory
@@ -249,52 +248,20 @@ unblocked() {
 # repositories do not collide.
 catcher_state_dir() { printf '%s/.dream/catcher/%s/%s\n' "$HOME" "$repo" "$1"; }
 agent_log_file() { printf '%s/agent.log\n' "$(catcher_state_dir "$1")"; }
-skill_file() { printf '%s/skill\n' "$(catcher_state_dir "$1")"; }
-resume_attempt_file() { printf '%s/resume-attempted-newest\n' "$(catcher_state_dir "$1")"; }
+inbox_file() { printf '%s/inbox.json\n' "$(catcher_state_dir "$1")"; }
 final_marker_file() { printf '%s/final-started\n' "$(catcher_state_dir "$1")"; }
 watcher_watermark_file() { printf '%s/.dream/watcher/%s/pr%s\n' "$HOME" "$repo" "$1"; }
 
-# The label chooses the skill at dispatch. After that, the session's skill is
-# state, not live GitHub metadata: labels can change while the same branch is
-# still waiting for review, merge, or close.
-record_branch_skill() {
-  local branch=$1 skill=$2 state_dir
-  case "$skill" in
-    smith|less) ;;
-    *) log "unknown skill '$skill' for $branch"; return 1;;
-  esac
+# Write the filtered PR input for the round the catcher is about to resume.
+# watch.sh has already filtered the posts and advanced its watermark. The inbox
+# is the handoff: the prompt carries only this path, not the user's words.
+write_inbox() {
+  local branch=$1 json=$2 state_dir
   state_dir=$(catcher_state_dir "$branch")
   mkdir -p "$state_dir" \
     || { log "cannot create catcher state directory for $branch"; return 1; }
-  printf '%s\n' "$skill" >"$(skill_file "$branch")" \
-    || { log "cannot record skill for $branch"; return 1; }
-}
-
-read_branch_skill() {
-  local branch=$1 skill
-  [ -f "$(skill_file "$branch")" ] || return 1
-  IFS= read -r skill <"$(skill_file "$branch")" || return 1
-  case "$skill" in
-    smith|less) printf '%s\n' "$skill";;
-    *) return 1;;
-  esac
-}
-
-# A resumed round is meant to consume the posts the catcher peeked. If it exits
-# before it runs watch.sh, the watermark stays where it was and the same posts
-# still appear on the next tick. Record the newest post timestamp at launch, so
-# the catcher skips that same failed batch instead of relaunching forever.
-record_resume_attempt() {
-  local branch=$1 newest=$2
-  printf '%s\n' "$newest" >"$(resume_attempt_file "$branch")" \
-    || log "could not record resume attempt for $branch"
-}
-
-resume_already_attempted() {
-  local branch=$1 newest=$2 previous
-  [ -f "$(resume_attempt_file "$branch")" ] || return 1
-  IFS= read -r previous <"$(resume_attempt_file "$branch")" || return 1
-  [ "$previous" = "$newest" ]
+  printf '%s\n' "$json" >"$(inbox_file "$branch")" \
+    || { log "cannot write inbox for $branch"; return 1; }
 }
 
 # Remove a worktree and its branch together. This backs out a failed dispatch and
@@ -337,19 +304,17 @@ clean_up_finished() {
 }
 
 # The fixed prompt for every resumed round. It carries the pull request number
-# and watch.sh path only. Pull request activity stays out of the command line:
-# the resumed agent runs watch.sh itself, which consumes the posts only after the
-# process that acts on them has started.
+# and inbox path only. Pull request activity stays out of the command line: the
+# resumed agent reads the filtered batch from the inbox file.
 resume_prompt() {
-  local pr=$1 watch_cmd
-  watch_cmd="bash $(shell_quote "$watch_script") $pr"
+  local pr=$1 inbox=$2
   cat <<EOF
-Watch check for pull request #$pr. Run:
+PR-inbox prompt for pull request #$pr:
 
-  $watch_cmd
+  $inbox
 
-Read the whole JSON result. Read state before anything else. If state is MERGED
-or CLOSED, finish per your session's rules. Otherwise act on posts per your
+Read that JSON file. Read state before anything else. If state is MERGED or
+CLOSED, finish per your session's rules. Otherwise act on posts per your
 session's rules. End your turn when done.
 EOF
 }
@@ -357,18 +322,18 @@ EOF
 # Build the Claude Code command for one headless agent round. The same command
 # shape starts the first round and resumes later ones; resume adds --continue.
 claude_round_command() {
-  local branch=$1 skill=$2 resume=$3 prompt=$4 writes watch_rule allowed cmd
+  local branch=$1 skill=$2 resume=$3 prompt=$4 writes cmd
   writes="Bash(gh pr create:*) Bash(gh pr comment:*) Bash(gh pr edit:*) Bash(gh pr ready:*) Bash(gh pr close:*) Bash(gh issue create:*) Bash(gh issue comment:*) Bash(git commit:*) Bash(git push:*)"
-  watch_rule="Bash(bash $(shell_quote "$watch_script"):*)"
-  allowed=$writes
-  [ "$resume" -eq 1 ] && allowed="$allowed $watch_rule"
-  cmd="claude --print --permission-mode auto --allowedTools $(shell_quote "$allowed") --name $(shell_quote "$branch")"
-  [ "$resume" -eq 1 ] && cmd="$cmd --continue"
-  case "$skill" in
-    smith) cmd="$cmd --model $(shell_quote "$smith_model") --effort $(shell_quote "$smith_effort")";;
-    less)  cmd="$cmd --model $(shell_quote "$less_model") --effort $(shell_quote "$less_effort")";;
-    *)     return 1;;
-  esac
+  cmd="claude --print --permission-mode auto --allowedTools $(shell_quote "$writes") --name $(shell_quote "$branch")"
+  if [ "$resume" -eq 1 ]; then
+    cmd="$cmd --continue"
+  else
+    case "$skill" in
+      smith) cmd="$cmd --model $(shell_quote "$smith_model") --effort $(shell_quote "$smith_effort")";;
+      less)  cmd="$cmd --model $(shell_quote "$less_model") --effort $(shell_quote "$less_effort")";;
+      *)     return 1;;
+    esac
+  fi
   printf '%s %s\n' "$cmd" "$(shell_quote "$prompt")"
 }
 
@@ -376,15 +341,17 @@ claude_round_command() {
 # gives the catcher a liveness signal while the process runs. The log survives
 # the tmux session ending and stays out of the worktree.
 launch_agent_round() {
-  local wt=$1 branch=$2 skill=$3 resume=$4 final=$5 prompt=$6 session state_dir log_file agent_cmd run marker
+  local wt=$1 branch=$2 skill=$3 resume=$4 final=$5 prompt=$6 session state_dir log_file agent_cmd run marker round
   session="dream-$branch"
   state_dir=$(catcher_state_dir "$branch")
   log_file=$(agent_log_file "$branch")
+  round=$skill
+  [ "$resume" -eq 1 ] && round=resume
   mkdir -p "$state_dir" \
     || { log "cannot create catcher state directory for $branch"; return 1; }
   agent_cmd=$(claude_round_command "$branch" "$skill" "$resume" "$prompt") \
     || { log "unknown skill '$skill' for $branch"; return 1; }
-  run="{ printf '%s  starting $branch ($skill)\n' \"\$(date -u +%FT%TZ)\"; $agent_cmd; status=\$?; printf '%s  exited with status %s\n' \"\$(date -u +%FT%TZ)\" \"\$status\"; exit \"\$status\"; } 2>&1 | tee -a $(shell_quote "$log_file")"
+  run="{ printf '%s  starting $branch ($round)\n' \"\$(date -u +%FT%TZ)\"; $agent_cmd; status=\$?; printf '%s  exited with status %s\n' \"\$(date -u +%FT%TZ)\" \"\$status\"; exit \"\$status\"; } 2>&1 | tee -a $(shell_quote "$log_file")"
   if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" "$run"; then
     log "tmux launch failed for $branch"
     return 1
@@ -394,7 +361,7 @@ launch_agent_round() {
     printf '%s\n' "$(date -u +%FT%TZ)" >"$marker" \
       || log "could not write final marker for $branch"
   fi
-  log "started $skill round for $branch in tmux session $session"
+  log "started $round round for $branch in tmux session $session"
 }
 
 # Create the worktree and launch the first headless round for it. The branch name
@@ -416,11 +383,6 @@ dispatch() {
     || { log "fetch failed for GH${n}: $err"; return 1; }
   err=$(git -C "$main_root" worktree add -b "$branch" "$wt" origin/main 2>&1) \
     || { log "could not create worktree $wt for GH${n}: $err"; return 1; }
-  if ! record_branch_skill "$branch" "$skill"; then
-    log "could not record session state for GH${n}, discarding worktree"
-    discard_worktree "$wt" "$branch"
-    return 1
-  fi
   prompt="/dream:$skill"
   if ! launch_agent_round "$wt" "$branch" "$skill" 0 0 "$prompt"; then
     log "could not start first round for GH${n}, discarding worktree"
@@ -441,15 +403,13 @@ list_labelled() {
 }
 
 # Resume the first existing branch that needs a round. Open pull requests resume
-# only when watch.sh --peek sees user posts. Merged or closed pull requests get
+# only when watch.sh returns new user posts. Merged or closed pull requests get
 # one final round, guarded by final-started.
 resume_existing_work() {
-  local wt branch skill pr_json pr_number state watch_json posts newest prompt
+  local wt branch pr_json pr_number state watch_json posts prompt
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
     tmux has-session -t "dream-$branch" 2>/dev/null && continue
-    skill=$(read_branch_skill "$branch") \
-      || { log "skipping $branch: no recorded skill; see $(agent_log_file "$branch")"; continue; }
     pr_json=$(pr_for_branch "$branch") \
       || { log "cannot read pull request for $branch; will retry next tick"; continue; }
     [ -n "$pr_json" ] \
@@ -458,29 +418,22 @@ resume_existing_work() {
     state=$(printf '%s' "$pr_json" | jq -r '.state')
     case "$state" in
       OPEN)
-        watch_json=$(bash "$watch_script" --peek "$pr_number" 2>/dev/null) \
-          || { log "cannot peek pull request #$pr_number for $branch"; continue; }
+        watch_json=$(bash "$watch_script" "$pr_number" 2>/dev/null) \
+          || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
         posts=$(printf '%s' "$watch_json" | jq -r '.posts | length' 2>/dev/null) \
           || { log "cannot parse watch result for pull request #$pr_number"; continue; }
         [ "${posts:-0}" -gt 0 ] || continue
-        newest=$(printf '%s' "$watch_json" | jq -r '(.posts | map(.createdAt) | max) // empty' 2>/dev/null) \
-          || { log "cannot parse newest post for pull request #$pr_number"; continue; }
-        [ -n "$newest" ] \
-          || { log "cannot find newest post for pull request #$pr_number"; continue; }
-        if resume_already_attempted "$branch" "$newest"; then
-          log "skipping $branch: pull request #$pr_number still has posts already attempted at $newest; see $(agent_log_file "$branch") or remove $(resume_attempt_file "$branch") to retry"
-          continue
-        fi
-        prompt=$(resume_prompt "$pr_number")
-        if launch_agent_round "$wt" "$branch" "$skill" 1 0 "$prompt"; then
-          record_resume_attempt "$branch" "$newest"
-          return 0
-        fi
+        write_inbox "$branch" "$watch_json" || continue
+        prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
+        launch_agent_round "$wt" "$branch" "" 1 0 "$prompt" && return 0
         ;;
       MERGED|CLOSED)
         [ -f "$(final_marker_file "$branch")" ] && continue
-        prompt=$(resume_prompt "$pr_number")
-        launch_agent_round "$wt" "$branch" "$skill" 1 1 "$prompt" && return 0
+        watch_json=$(bash "$watch_script" "$pr_number" 2>/dev/null) \
+          || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
+        write_inbox "$branch" "$watch_json" || continue
+        prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
+        launch_agent_round "$wt" "$branch" "" 1 1 "$prompt" && return 0
         ;;
     esac
   done < <(session_worktrees | sort -t$'\t' -k2,2)

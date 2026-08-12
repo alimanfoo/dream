@@ -257,12 +257,11 @@ When no work is ready to do, end your turn. An interactive session waits at the
 prompt for the user. A headless session exits, and `dream:catcher` resumes it
 when the PR has new input.
 
-When a turn starts with a watch-check prompt, run the command it gives you and
-read the whole JSON result. Read the PR `state` before you act on anything else.
-When `state` is `MERGED`, continue to the [collect step](#collect), unless you
-already completed Collect after a deferred merge; in that case, end your turn.
-When `state` is `CLOSED`, post a comment naming where the work stopped, then end
-your turn.
+When a turn starts with a PR-inbox prompt, read the JSON file it names. Read the
+PR `state` before you act on anything else. When `state` is `MERGED`, continue
+to the [collect step](#collect), unless you already completed Collect after a
+deferred merge; in that case, end your turn. When `state` is `CLOSED`, post a
+comment naming where the work stopped, then end your turn.
 
 Otherwise, act on the returned `posts`, oldest first. A post can carry more than
 one of these:
