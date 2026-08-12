@@ -111,12 +111,6 @@ Use it when a task doesn't need the full team, but you want more than a single
 one-shot attempt. The agent runs the work itself and brings in fresh subagents
 to plan and review.
 
-Start Claude Code and invoke the skill:
-
-```text
-/dream:smith
-```
-
 Like the team, it takes the task from the branch name. If the name contains one
 or more issue numbers (for example `GH83`), it works on those. Otherwise it asks
 you for the task.
@@ -137,12 +131,6 @@ review. But it trims the process to match the size of the work. It skips
 planning and the separate copy-edit and coherence-review passes. It runs a
 lighter code review, writes a minimal pull request description, and files no
 follow-ups once you merge.
-
-Start Claude Code and invoke the skill:
-
-```text
-/dream:less
-```
 
 Reach for it when a change is small and self-contained.
 
@@ -197,7 +185,8 @@ It also records the selected harness settings, the latest PR inbox, and the
 final-round marker there. This state stays in place with the worktree for
 debugging.
 
-Restart the catcher with the same host to resume those sessions.
+Restart the catcher under either host. Each existing session resumes under the
+harness recorded when the catcher dispatched it.
 
 How it picks work:
 
@@ -231,8 +220,8 @@ pull request and ends the round. You can reply on the pull request without
 opening the agent session.
 
 It stops on reboot, so start `dream:catcher` again to restart it. Run
-`catch.sh --once` from cron or launchd if the catcher must restart after a
-reboot. Each run performs one tick.
+`catch.sh --harness <claude|codex> --once` from cron or launchd if the catcher
+must restart after a reboot. Each run performs one tick.
 
 ## /dream:team advanced usage
 

@@ -113,12 +113,13 @@ Then tell the user:
   `agent.log`, the selected harness settings in `session.json`, the latest PR
   inbox, and the final-round marker. This state stays in place with the worktree
   for debugging.
-- that an existing session resumes only when the restarted catcher selects the
-  same harness.
+- that each existing session resumes under its recorded harness, whichever host
+  restarts the catcher.
 - that tmux sessions stop on reboot. Re-running `dream:catcher` restarts the
   loop.
-- that they should run `catch.sh --once` from cron or launchd if the catcher
-  must restart after a reboot. Each run performs one tick.
+- that they should run `catch.sh --harness <claude|codex> --once` from cron or
+  launchd if the catcher must restart after a reboot. Each run performs one
+  tick.
 
 ## How it picks work
 

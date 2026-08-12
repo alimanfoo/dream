@@ -8,8 +8,9 @@
 # Each tick reads the current state from git, tmux, `gh`, and the small amount of
 # catcher state under $HOME/.dream/catcher. It first looks for existing
 # dispatched work to resume. It dispatches a new issue when no existing session
-# needs a round. The default is a background loop. Run `catch.sh --once` from
-# cron on a machine that must restart the catcher after a reboot.
+# needs a round. The default is a background loop. Run
+# `catch.sh --harness <claude|codex> --once` from cron on a machine that must
+# restart the catcher after a reboot.
 #
 # Agent rounds run headless inside detached tmux sessions. The tmux session shows
 # whether the round is running and gives the user a place to attach. When the
@@ -285,32 +286,40 @@ inbox_file() { printf '%s/inbox.json\n' "$(catcher_state_dir "$1")"; }
 final_marker_file() { printf '%s/final-started\n' "$(catcher_state_dir "$1")"; }
 session_config_file() { printf '%s/session.json\n' "$(catcher_state_dir "$1")"; }
 
-# Record the harness settings that Codex does not recover on resume. Keeping the
-# selected skill too makes its model and effort stable across loop restarts and
-# --once firings, even if the command's defaults later change.
+# Record the harness settings that Codex does not recover on resume. The saved
+# values stay stable across loop restarts and --once runs, even if the command's
+# defaults later change.
 write_session_config() {
-  local branch=$1 session_harness=$2 skill=$3 model=$4 effort=$5 state_dir
+  local branch=$1 session_harness=$2 model=$3 effort=$4 state_dir
   state_dir=$(catcher_state_dir "$branch")
   mkdir -p "$state_dir" \
     || { log "cannot create catcher state directory for $branch"; return 1; }
-  jq -n --arg harness "$session_harness" --arg skill "$skill" \
-    --arg model "$model" --arg effort "$effort" \
-    '{harness: $harness, skill: $skill, model: $model, effort: $effort}' \
+  jq -n --arg harness "$session_harness" --arg model "$model" \
+    --arg effort "$effort" \
+    '{harness: $harness, model: $model, effort: $effort}' \
     >"$(session_config_file "$branch")" \
     || { log "cannot write session config for $branch"; return 1; }
 }
 
 # Read a branch's recorded harness settings. A branch from before this file
-# existed is a Claude Code session, whose resume command needs no model, effort,
-# or skill value.
+# existed is a Claude Code session, whose resume command needs no model or effort
+# value.
 read_session_config() {
   local branch=$1 file
   file=$(session_config_file "$branch")
   if [ -f "$file" ]; then
-    jq -c '{harness: (.harness // ""), skill: (.skill // ""),
-            model: (.model // ""), effort: (.effort // "")}' "$file"
+    jq -ec '
+      if .harness == "claude" then
+        {harness, model: (.model // ""), effort: (.effort // "")}
+      elif .harness == "codex" and (.model | strings | length > 0)
+           and (.effort | strings | length > 0) then
+        {harness, model, effort}
+      else
+        error("incomplete session config")
+      end
+    ' "$file"
   else
-    printf '%s\n' '{"harness":"claude","skill":"","model":"","effort":""}'
+    printf '%s\n' '{"harness":"claude","model":"","effort":""}'
   fi
 }
 
@@ -366,12 +375,9 @@ claude_base_command() {
 }
 
 claude_first_round_command() {
-  local branch=$1 skill=$2 model=$3 effort=$4 prompt=$5 cmd
+  local branch=$1 model=$2 effort=$3 prompt=$4 cmd
   cmd=$(claude_base_command "$branch") || return 1
-  case "$skill" in
-    smith|less) cmd="$cmd --model $(shell_quote "$model") --effort $(shell_quote "$effort")";;
-    *)     return 1;;
-  esac
+  cmd="$cmd --model $(shell_quote "$model") --effort $(shell_quote "$effort")"
   printf '%s %s\n' "$cmd" "$(shell_quote "$prompt")"
 }
 
@@ -385,11 +391,7 @@ claude_resume_command() {
 # the recorded session from its worktree, replay the settings that Codex does not
 # retain, and let --last select the right session through Codex's cwd filter.
 codex_first_round_command() {
-  local wt=$1 skill=$2 model=$3 effort=$4 prompt=$5
-  case "$skill" in
-    smith|less) ;;
-    *)     return 1;;
-  esac
+  local wt=$1 model=$2 effort=$3 prompt=$4
   printf 'codex exec -C %s --approve-for-me -c %s --model %s -c %s %s\n' \
     "$(shell_quote "$wt")" \
     "$(shell_quote 'sandbox_workspace_write.network_access=true')" \
@@ -414,11 +416,11 @@ codex_resume_command() {
 # this boundary, so a maintainer can add a harness without changing worktree,
 # tmux, inbox, or final-round behaviour.
 round_command() {
-  local wt=$1 branch=$2 session_harness=$3 skill=$4 model=$5 effort=$6 resume=$7 prompt=$8
+  local wt=$1 branch=$2 session_harness=$3 model=$4 effort=$5 resume=$6 prompt=$7
   case "$session_harness:$resume" in
-    claude:0) claude_first_round_command "$branch" "$skill" "$model" "$effort" "$prompt";;
+    claude:0) claude_first_round_command "$branch" "$model" "$effort" "$prompt";;
     claude:1) claude_resume_command "$branch" "$prompt";;
-    codex:0)  codex_first_round_command "$wt" "$skill" "$model" "$effort" "$prompt";;
+    codex:0)  codex_first_round_command "$wt" "$model" "$effort" "$prompt";;
     codex:1)  codex_resume_command "$model" "$effort" "$prompt";;
     *)        return 1;;
   esac
@@ -446,7 +448,7 @@ launch_agent_round() {
   [ "$resume" -eq 1 ] && round=resume
   mkdir -p "$state_dir" \
     || { log "cannot create catcher state directory for $branch"; return 1; }
-  agent_cmd=$(round_command "$wt" "$branch" "$session_harness" "$skill" "$model" "$effort" "$resume" "$prompt") \
+  agent_cmd=$(round_command "$wt" "$branch" "$session_harness" "$model" "$effort" "$resume" "$prompt") \
     || { log "cannot build agent command for $branch"; return 1; }
   run="{ printf '%s  starting $branch ($round)\n' \"\$(date -u +%FT%TZ)\"; $agent_cmd; agent_status=\$?; printf '%s  exited with status %s\n' \"\$(date -u +%FT%TZ)\" \"\$agent_status\"; exit \"\$agent_status\"; } 2>&1 | tee -a $(shell_quote "$log_file")"
   if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" "$run"; then
@@ -484,7 +486,7 @@ dispatch() {
     less)  model=$less_model; effort=$less_effort;;
     *)     log "unknown skill '$skill' for GH${n}"; discard_worktree "$wt" "$branch"; return 1;;
   esac
-  write_session_config "$branch" "$harness" "$skill" "$model" "$effort" \
+  write_session_config "$branch" "$harness" "$model" "$effort" \
     || { discard_worktree "$wt" "$branch"; return 1; }
   prompt=$(first_round_prompt "$harness" "$skill") \
     || { log "cannot build first-round prompt for GH${n}"; discard_worktree "$wt" "$branch"; return 1; }
@@ -510,7 +512,7 @@ list_labelled() {
 # only when watch.sh returns new user posts. Merged or closed pull requests get
 # one final round, guarded by final-started.
 resume_existing_work() {
-  local wt branch config session_harness skill model effort pr_json pr_number state watch_json posts prompt
+  local wt branch config session_harness model effort pr_json pr_number state watch_json posts prompt
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
     tmux has-session -t "$branch" 2>/dev/null && continue
@@ -518,16 +520,10 @@ resume_existing_work() {
     config=$(read_session_config "$branch") \
       || { log "cannot read session config for $branch; will retry next tick"; continue; }
     session_harness=$(printf '%s' "$config" | jq -r '.harness')
-    skill=$(printf '%s' "$config" | jq -r '.skill')
     model=$(printf '%s' "$config" | jq -r '.model')
     effort=$(printf '%s' "$config" | jq -r '.effort')
-    [ "$session_harness" = "$harness" ] \
-      || { log "skipping $branch: started with $session_harness, current harness is $harness"; continue; }
-    if [ "$session_harness" = codex ] \
-      && { [ -z "$skill" ] || [ -z "$model" ] || [ -z "$effort" ]; }; then
-      log "skipping $branch: Codex session config is incomplete"
-      continue
-    fi
+    command -v "$session_harness" >/dev/null 2>&1 \
+      || { log "skipping $branch: $session_harness is not on the PATH"; continue; }
     pr_json=$(pr_for_branch "$branch") \
       || { log "cannot read pull request for $branch; will retry next tick"; continue; }
     [ -n "$pr_json" ] \
@@ -543,7 +539,7 @@ resume_existing_work() {
         [ "${posts:-0}" -gt 0 ] || continue
         write_inbox "$branch" "$watch_json" || continue
         prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
-        launch_agent_round "$wt" "$branch" "$session_harness" "$skill" "$model" "$effort" 1 0 "$prompt" && return 0
+        launch_agent_round "$wt" "$branch" "$session_harness" "" "$model" "$effort" 1 0 "$prompt" && return 0
         ;;
       MERGED|CLOSED)
         [ -f "$(final_marker_file "$branch")" ] && continue
@@ -551,7 +547,7 @@ resume_existing_work() {
           || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
         write_inbox "$branch" "$watch_json" || continue
         prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
-        launch_agent_round "$wt" "$branch" "$session_harness" "$skill" "$model" "$effort" 1 1 "$prompt" && return 0
+        launch_agent_round "$wt" "$branch" "$session_harness" "" "$model" "$effort" 1 1 "$prompt" && return 0
         ;;
     esac
   done < <(session_worktrees | sort -t$'\t' -k2,2)
