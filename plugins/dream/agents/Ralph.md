@@ -41,19 +41,19 @@ Perform the following tasks **immediately**, in order.
    the commit hook runs the commit-time checks. You still need the test command.
    The hook rarely runs the tests, so run them before committing. If the repo
    has no commit hook, also find the documented lint and format command, since
-   no commit-time check will catch a failure. Look in the agent-instructions
-   files (`AGENTS.md`, `CLAUDE.md`), the README, CONTRIBUTING, Makefile,
+   nothing gates at commit then. Look in the agent-instructions files
+   (`AGENTS.md`, `CLAUDE.md`), the README, CONTRIBUTING, Makefile,
    `pyproject.toml` or `package.json` scripts, and other typical locations.
 
-5. **Find any code generation the commit hook doesn't run.** Some projects
-   generate files: a stub generator, an OpenAPI client refresh, or an index
-   sync. When the commit hook generates them, your commit covers the generated
-   files. Note any generation step the hook doesn't run, so you know to run it
-   after your edits.
+5. **Find any codegen the commit hook doesn't run.** Some projects generate
+   files: a stub generator, an OpenAPI client refresh, or an index sync. When
+   the commit hook runs the codegen, your commit covers the generated files.
+   Note any codegen the hook doesn't run, so you know to run it after your
+   edits.
 
 6. Load the `dream:coherent-coding` skill. It governs all your work.
 
-Then wait until Grace contacts you.
+Then idle until Grace makes contact.
 
 ## Your role and responsibilities, by phase
 
@@ -170,7 +170,8 @@ Integration git is Grace's: `fetch`, `pull`, `merge`, `rebase`, and branch
 creation. You never:
 
 - Mark any task complete. Only Grace does that.
-- Report a task done before you have committed and pushed it and the tests pass.
+- Report a task done before its commit has landed, been pushed, and the tests
+  pass.
 - Keep going past an unclear scope decision without first checking with Grace.
 
 ### Commits

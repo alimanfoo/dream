@@ -9,8 +9,8 @@
 # catcher state under $HOME/.dream/catcher. It first looks for existing
 # dispatched work to resume. It dispatches a new issue when no existing session
 # needs a round. The default is a background loop. Run
-# `catch.sh --harness <claude|codex> --once` from cron on a machine that must
-# restart the catcher after a reboot.
+# `catch.sh --harness <claude|codex> --once` from the main checkout in cron on a
+# machine that must restart the catcher after a reboot.
 #
 # Agent rounds run headless inside detached tmux sessions. The tmux session shows
 # whether the round is running and gives the user a place to attach. When the
@@ -290,15 +290,19 @@ session_config_file() { printf '%s/session.json\n' "$(catcher_state_dir "$1")"; 
 # values stay stable across loop restarts and --once runs, even if the command's
 # defaults later change.
 write_session_config() {
-  local branch=$1 session_harness=$2 model=$3 effort=$4 state_dir
+  local branch=$1 session_harness=$2 model=$3 effort=$4 state_dir file pending
   state_dir=$(catcher_state_dir "$branch")
+  file=$(session_config_file "$branch")
+  pending="$file.pending"
   mkdir -p "$state_dir" \
     || { log "cannot create catcher state directory for $branch"; return 1; }
   jq -n --arg harness "$session_harness" --arg model "$model" \
     --arg effort "$effort" \
     '{harness: $harness, model: $model, effort: $effort}' \
-    >"$(session_config_file "$branch")" \
+    >"$pending" \
     || { log "cannot write session config for $branch"; return 1; }
+  mv "$pending" "$file" \
+    || { log "cannot publish session config for $branch"; return 1; }
 }
 
 # Read a branch's recorded harness settings. A branch from before this file
@@ -518,7 +522,7 @@ resume_existing_work() {
     tmux has-session -t "$branch" 2>/dev/null && continue
     [ -f "$(final_marker_file "$branch")" ] && continue
     config=$(read_session_config "$branch") \
-      || { log "cannot read session config for $branch; will retry next tick"; continue; }
+      || { log "cannot read $(session_config_file "$branch"); skipping $branch"; continue; }
     session_harness=$(printf '%s' "$config" | jq -r '.harness')
     model=$(printf '%s' "$config" | jq -r '.model')
     effort=$(printf '%s' "$config" | jq -r '.effort')

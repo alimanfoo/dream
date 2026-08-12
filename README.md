@@ -148,7 +148,8 @@ on live agent rounds controls how many token-spending processes run at once.
 
 `/dream:catcher` needs `git`, `gh`, `jq`, and `tmux` on your PATH, with `gh`
 signed in. It also needs the host that runs it: `claude` for Claude Code or
-`codex` for Codex.
+`codex` for Codex. Install both runners if this catcher may resume sessions that
+another host dispatched.
 
 Start Claude Code from the repository's main checkout, not a linked worktree:
 
@@ -219,9 +220,9 @@ When a session hits a question it cannot answer, it posts the question to the
 pull request and ends the round. You can reply on the pull request without
 opening the agent session.
 
-It stops on reboot, so start `dream:catcher` again to restart it. Run
-`catch.sh --harness <claude|codex> --once` from cron or launchd if the catcher
-must restart after a reboot. Each run performs one tick.
+It stops on reboot, so start `dream:catcher` again to restart it. A cron or
+launchd job can change to the repository's main checkout, then run
+`catch.sh --harness <claude|codex> --once`. Each run performs one tick.
 
 ## /dream:team advanced usage
 

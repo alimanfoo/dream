@@ -19,8 +19,8 @@ Each firing returns whatever the user has written since the last one. So you see
 every post exactly once, whenever it arrives.
 
 The machinery is a shell script, `watch.sh`, in this skill's directory. It reads
-the pull request and tracks what you have already seen. This skill runs that
-check repeatedly and tells you how to act on each result.
+the pull request and tracks what you have already seen. This skill wraps it into
+the recurring check and tells you how to act on each result.
 
 ## The footer precondition
 

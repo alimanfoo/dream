@@ -247,8 +247,8 @@ Then, if I want it somewhere the work can start from, offer to post it as a
 comment on the issue I gave you (`gh issue comment`). Ask me first, and a no is
 a fine answer.
 
-Write each paragraph you post on a single line, since GitHub reflows it. Read
-the `commentFooter` value from
+Anything you post wants each paragraph on a single line, since GitHub reflows
+it. Read the `commentFooter` value from
 [`agent-written-marks.json`](../../agent-written-marks.json), then end the post
 with that exact value as a blockquote. This lets a reader tell an agent wrote
 it.

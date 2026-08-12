@@ -70,7 +70,8 @@ Run each check before launching. Stop and tell the user if one fails.
 - Confirm git, gh, jq, and tmux are each on the PATH, with a separate
   `command -v` for each. Confirm the selected harness is there too: `claude` for
   Claude Code or `codex` for Codex. One `command -v` over the whole list passes
-  when any single tool resolves.
+  when any single tool resolves. Confirm both runners if retained sessions may
+  come from either harness.
 - Confirm each label exists with `gh label list --search "<label>"`, which
   avoids the 30-label default page. Offer to create any that is missing with
   `gh label create`.
@@ -117,9 +118,9 @@ Then tell the user:
   restarts the catcher.
 - that tmux sessions stop on reboot. Re-running `dream:catcher` restarts the
   loop.
-- that they should run `catch.sh --harness <claude|codex> --once` from cron or
-  launchd if the catcher must restart after a reboot. Each run performs one
-  tick.
+- that a cron or launchd job should change to the repository's main checkout,
+  then run `catch.sh --harness <claude|codex> --once`, if the catcher must
+  restart after a reboot. Each run performs one tick.
 
 ## How it picks work
 

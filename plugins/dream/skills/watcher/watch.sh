@@ -130,11 +130,15 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
   | jq --arg cutoff "$cutoff" --arg footer "$footer_words" \
        --arg legacy_footer "$legacy_footer_words" --arg me "$me" '
+  def has_agent_footer:
+    ((.body // "") | split("\n") | map(select(length > 0)) | (last // ""))
+    as $line
+    | ($line | startswith("> "))
+      and (($line | endswith($footer)) or ($line | contains($legacy_footer)));
+
   def is_new_from_user($author; $at):
     $author == $me and $at > $cutoff
-    and ((.body // "")
-         | (contains($footer) or contains($legacy_footer))
-         | not);
+    and (has_agent_footer | not);
 
   def says_something:
     .body != "" or .verdict == "APPROVED" or .verdict == "CHANGES_REQUESTED";
