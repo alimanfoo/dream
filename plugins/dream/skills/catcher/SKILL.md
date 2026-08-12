@@ -94,12 +94,12 @@ Then tell the user:
   log with `tail -f dreamcatcher.log`, that `Ctrl+B` then `d` detaches, and that
   `tmux kill-session -t dreamcatcher` stops the loop.
 - that each running agent round has its own tmux session named
-  `dream-GH<n>-<timestamp>`, and that the tmux session disappears when that
-  round ends.
+  `dream-catcher-GH<n>-<timestamp>`, and that the tmux session disappears when
+  that round ends.
 - that each round keeps catcher state under
-  `$HOME/.dream/catcher/<owner>/<repo>/GH<n>-<timestamp>/`: `agent.log`, the
-  latest PR inbox, and the final-round marker. This state stays in place after
-  cleanup for debugging.
+  `$HOME/.dream/catcher/<owner>/<repo>/catcher-GH<n>-<timestamp>/`: `agent.log`,
+  the latest PR inbox, and the final-round marker. This state stays in place
+  after cleanup for debugging.
 - that tmux sessions stop on reboot, so re-running `/dream:catcher` restarts the
   loop, and that a machine that must survive reboots should run
   `catch.sh --once` from cron or launchd, where each firing runs a single tick.

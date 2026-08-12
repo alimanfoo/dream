@@ -39,9 +39,9 @@
 #
 # Layout: the coordinator assumes the standard worktree layout, where each
 # dispatched worktree is a sibling of the main checkout under a directory
-# dedicated to this repo. It creates them as <container>/GH<n>-<timestamp>. The
-# timestamp makes each attempt unique, so a retry never collides with an earlier
-# attempt's branch or pull request.
+# dedicated to this repo. It creates them as
+# <container>/catcher-GH<n>-<timestamp>. The timestamp makes each attempt unique,
+# so a retry never collides with an earlier attempt's branch or pull request.
 
 set -uo pipefail
 
@@ -153,14 +153,14 @@ watch_script="$script_dir/../watcher/watch.sh"
 
 # --- one tick --------------------------------------------------------------
 
-# A worktree or branch this coordinator created, named GH<n>-<timestamp>. The
-# pattern is anchored to that exact shape, so cleanup never removes a worktree a
-# human named after the same issue.
-is_session_branch() { [[ "$1" =~ ^GH[0-9]+-[0-9]{8}-[0-9]{6}$ ]]; }
+# A worktree or branch this coordinator created, named
+# catcher-GH<n>-<timestamp>. The pattern is anchored to that exact shape, so
+# cleanup never removes a worktree a human named after the same issue.
+is_session_branch() { [[ "$1" =~ ^catcher-GH[0-9]+-[0-9]{8}-[0-9]{6}$ ]]; }
 
 issue_number_of_branch() {
   local branch=$1
-  [[ "$branch" =~ ^GH([0-9]+)-[0-9]{8}-[0-9]{6}$ ]] || return 1
+  [[ "$branch" =~ ^catcher-GH([0-9]+)-[0-9]{8}-[0-9]{6}$ ]] || return 1
   printf '%s\n' "${BASH_REMATCH[1]}"
 }
 
@@ -227,7 +227,7 @@ already_handled() {
   local n=$1 count
   dispatched_worktree_exists "$n" && return 0
   count=$(gh pr list --repo "$repo" --state all --limit 500 --json headRefName,state 2>/dev/null \
-    | jq -r --arg n "$n" '[.[] | select(.headRefName | test("^GH" + $n + "-[0-9]{8}-[0-9]{6}$")) | select(.state == "OPEN" or .state == "MERGED")] | length' 2>/dev/null)
+    | jq -r --arg n "$n" '[.[] | select(.headRefName | test("^catcher-GH" + $n + "-[0-9]{8}-[0-9]{6}$")) | select(.state == "OPEN" or .state == "MERGED")] | length' 2>/dev/null)
   [ -n "$count" ] || return 0
   [ "$count" -ne 0 ]
 }
@@ -376,7 +376,7 @@ launch_agent_round() {
 dispatch() {
   local n=$1 skill=$2 ts branch wt err prompt
   ts=$(date -u +%Y%m%d-%H%M%S)
-  branch="GH${n}-${ts}"
+  branch="catcher-GH${n}-${ts}"
   wt="$container/${branch}"
   log "dispatching GH${n} ($skill) as $branch"
   err=$(git -C "$main_root" fetch origin main --quiet 2>&1) \
