@@ -109,6 +109,7 @@ less_effort=$default_less_effort
 assignee=$default_assignee
 interval=$default_interval
 max_agents=$default_max_agents
+harness=claude
 once=0
 
 while [ $# -gt 0 ]; do
@@ -316,6 +317,17 @@ claude_round_command() {
   printf '%s %s\n' "$cmd" "$(shell_quote "$prompt")"
 }
 
+# Build one headless command for the selected harness. The lifecycle calls only
+# this boundary, so worktree, tmux, inbox, and final-round behaviour stays
+# shared as another harness is added.
+round_command() {
+  local branch=$1 skill=$2 resume=$3 prompt=$4
+  case "$harness" in
+    claude) claude_round_command "$branch" "$skill" "$resume" "$prompt";;
+    *)      return 1;;
+  esac
+}
+
 # Start one headless agent round in tmux and append its output to agent.log. tmux
 # gives the catcher a liveness signal while the process runs. The log survives
 # the tmux session ending and stays out of the worktree.
@@ -328,8 +340,8 @@ launch_agent_round() {
   [ "$resume" -eq 1 ] && round=resume
   mkdir -p "$state_dir" \
     || { log "cannot create catcher state directory for $branch"; return 1; }
-  agent_cmd=$(claude_round_command "$branch" "$skill" "$resume" "$prompt") \
-    || { log "unknown skill '$skill' for $branch"; return 1; }
+  agent_cmd=$(round_command "$branch" "$skill" "$resume" "$prompt") \
+    || { log "cannot build agent command for $branch"; return 1; }
   run="{ printf '%s  starting $branch ($round)\n' \"\$(date -u +%FT%TZ)\"; $agent_cmd; status=\$?; printf '%s  exited with status %s\n' \"\$(date -u +%FT%TZ)\" \"\$status\"; exit \"\$status\"; } 2>&1 | tee -a $(shell_quote "$log_file")"
   if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" "$run"; then
     log "tmux launch failed for $branch"
