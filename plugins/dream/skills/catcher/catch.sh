@@ -32,10 +32,11 @@
 #
 # Permissions: a dispatched session runs in auto mode. dispatch passes the
 # recurring unattended writes (gh pr create, gh issue create, git push, and so
-# on) as narrow --allowedTools rules. Auto mode resolves these before its
-# classifier runs. The classifier would otherwise stall an unattended session on
-# a write it can't attribute to the user. Auto mode handles the rest and notifies
-# on anything it blocks.
+# on), plus the resolved watch.sh command for resumed rounds, as narrow
+# --allowedTools rules. Auto mode resolves these before its classifier runs. The
+# classifier would otherwise stall an unattended session on a command it can't
+# attribute to the user. Auto mode handles the rest and notifies on anything it
+# blocks.
 #
 # Layout: the coordinator assumes the standard worktree layout, where each
 # dispatched worktree is a sibling of the main checkout under a directory
@@ -249,6 +250,7 @@ unblocked() {
 catcher_state_dir() { printf '%s/.dream/catcher/%s/%s\n' "$HOME" "$repo" "$1"; }
 agent_log_file() { printf '%s/agent.log\n' "$(catcher_state_dir "$1")"; }
 skill_file() { printf '%s/skill\n' "$(catcher_state_dir "$1")"; }
+resume_attempt_file() { printf '%s/resume-attempted-newest\n' "$(catcher_state_dir "$1")"; }
 final_marker_file() { printf '%s/final-started\n' "$(catcher_state_dir "$1")"; }
 watcher_watermark_file() { printf '%s/.dream/watcher/%s/pr%s\n' "$HOME" "$repo" "$1"; }
 
@@ -276,6 +278,23 @@ read_branch_skill() {
     smith|less) printf '%s\n' "$skill";;
     *) return 1;;
   esac
+}
+
+# A resumed round is meant to consume the posts the catcher peeked. If it exits
+# before it runs watch.sh, the watermark stays where it was and the same posts
+# still appear on the next tick. Record the newest post timestamp at launch, so
+# the catcher skips that same failed batch instead of relaunching forever.
+record_resume_attempt() {
+  local branch=$1 newest=$2
+  printf '%s\n' "$newest" >"$(resume_attempt_file "$branch")" \
+    || log "could not record resume attempt for $branch"
+}
+
+resume_already_attempted() {
+  local branch=$1 newest=$2 previous
+  [ -f "$(resume_attempt_file "$branch")" ] || return 1
+  IFS= read -r previous <"$(resume_attempt_file "$branch")" || return 1
+  [ "$previous" = "$newest" ]
 }
 
 # Remove a worktree and its branch together. This backs out a failed dispatch and
@@ -338,9 +357,12 @@ EOF
 # Build the Claude Code command for one headless agent round. The same command
 # shape starts the first round and resumes later ones; resume adds --continue.
 claude_round_command() {
-  local branch=$1 skill=$2 resume=$3 prompt=$4 writes cmd
+  local branch=$1 skill=$2 resume=$3 prompt=$4 writes watch_rule allowed cmd
   writes="Bash(gh pr create:*) Bash(gh pr comment:*) Bash(gh pr edit:*) Bash(gh pr ready:*) Bash(gh pr close:*) Bash(gh issue create:*) Bash(gh issue comment:*) Bash(git commit:*) Bash(git push:*)"
-  cmd="claude --print --permission-mode auto --allowedTools $(shell_quote "$writes") --name $(shell_quote "$branch")"
+  watch_rule="Bash(bash $(shell_quote "$watch_script"):*)"
+  allowed=$writes
+  [ "$resume" -eq 1 ] && allowed="$allowed $watch_rule"
+  cmd="claude --print --permission-mode auto --allowedTools $(shell_quote "$allowed") --name $(shell_quote "$branch")"
   [ "$resume" -eq 1 ] && cmd="$cmd --continue"
   case "$skill" in
     smith) cmd="$cmd --model $(shell_quote "$smith_model") --effort $(shell_quote "$smith_effort")";;
@@ -422,11 +444,10 @@ list_labelled() {
 # only when watch.sh --peek sees user posts. Merged or closed pull requests get
 # one final round, guarded by final-started.
 resume_existing_work() {
-  local wt branch n skill pr_json pr_number state watch_json posts prompt
+  local wt branch skill pr_json pr_number state watch_json posts newest prompt
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
     tmux has-session -t "dream-$branch" 2>/dev/null && continue
-    n=$(issue_number_of_branch "$branch") || continue
     skill=$(read_branch_skill "$branch") \
       || { log "skipping $branch: no recorded skill; see $(agent_log_file "$branch")"; continue; }
     pr_json=$(pr_for_branch "$branch") \
@@ -442,8 +463,19 @@ resume_existing_work() {
         posts=$(printf '%s' "$watch_json" | jq -r '.posts | length' 2>/dev/null) \
           || { log "cannot parse watch result for pull request #$pr_number"; continue; }
         [ "${posts:-0}" -gt 0 ] || continue
+        newest=$(printf '%s' "$watch_json" | jq -r '(.posts | map(.createdAt) | max) // empty' 2>/dev/null) \
+          || { log "cannot parse newest post for pull request #$pr_number"; continue; }
+        [ -n "$newest" ] \
+          || { log "cannot find newest post for pull request #$pr_number"; continue; }
+        if resume_already_attempted "$branch" "$newest"; then
+          log "skipping $branch: pull request #$pr_number still has posts already attempted at $newest; see $(agent_log_file "$branch") or remove $(resume_attempt_file "$branch") to retry"
+          continue
+        fi
         prompt=$(resume_prompt "$pr_number")
-        launch_agent_round "$wt" "$branch" "$skill" 1 0 "$prompt" && return 0
+        if launch_agent_round "$wt" "$branch" "$skill" 1 0 "$prompt"; then
+          record_resume_attempt "$branch" "$newest"
+          return 0
+        fi
         ;;
       MERGED|CLOSED)
         [ -f "$(final_marker_file "$branch")" ] && continue
