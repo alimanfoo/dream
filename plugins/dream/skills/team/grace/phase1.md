@@ -20,8 +20,8 @@ started in a worktree, the branch already exists.
 
 **Create the bootstrap commit and push.** Create an empty bootstrap commit
 (`git commit --allow-empty`) so the draft PR has a commit to anchor to. Give it
-a short subject (the issue ref or slug) and the `Co-Authored-By` trailer only
-(see
+a short subject (the issue ref or slug) and the agent-written commit trailer
+only (see
 [Branch and commit operations](../../../agents/Grace.md#branch-and-commit-operations)).
 Push the branch. All work runs against the session-start state of `main`. The
 [merge phase](../../../agents/Grace.md#phase-7-merge) handles any drift on

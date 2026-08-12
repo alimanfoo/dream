@@ -24,10 +24,9 @@ the recurring check and tells you how to act on each result.
 
 ## The footer precondition
 
-Mark every comment that you post to the watched pull request with the Claude
-Code footer:
-
-> 🤖 Generated with [Claude Code](https://claude.com/claude-code)
+Read the `commentFooter` value from
+[`agent-written-marks.json`](../../agent-written-marks.json). End every comment
+that you post to the watched pull request with that exact value as a blockquote.
 
 The watch drops comments that carry this footer, so your own replies do not come
 back as fresh user posts.

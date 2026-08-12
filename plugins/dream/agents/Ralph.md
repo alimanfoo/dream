@@ -31,10 +31,13 @@ Perform the following tasks **immediately**, in order.
 1. Read the protocol at the path the main session provides in your spawn prompt.
    Learn the rules for branches and commits.
 
-2. Load the `dream:plain-english` skill. It governs everything you write and
+2. Read the [agent-written marks](../agent-written-marks.json). Use the exact
+   `commitTrailer` value whenever the rules below tell you to mark a commit.
+
+3. Load the `dream:plain-english` skill. It governs everything you write and
    say.
 
-3. **Find the project's tests and lint commands.** You commit your own work, so
+4. **Find the project's tests and lint commands.** You commit your own work, so
    the commit hook runs the commit-time checks. You still need the test command.
    The hook rarely runs the tests, so run them before committing. If the repo
    has no commit hook, also find the documented lint and format command, since
@@ -42,13 +45,13 @@ Perform the following tasks **immediately**, in order.
    (`AGENTS.md`, `CLAUDE.md`), the README, CONTRIBUTING, Makefile,
    `pyproject.toml` or `package.json` scripts, and other typical locations.
 
-4. **Find any codegen the commit hook doesn't run.** Some projects generate
+5. **Find any codegen the commit hook doesn't run.** Some projects generate
    files: a stub generator, an OpenAPI client refresh, or an index sync. When
    the commit hook runs the codegen, your commit covers the generated files.
    Note any codegen the hook doesn't run, so you know to run it after your
    edits.
 
-5. Load the `dream:coherent-coding` skill. It governs all your work.
+6. Load the `dream:coherent-coding` skill. It governs all your work.
 
 Then idle until Grace makes contact.
 
@@ -175,11 +178,8 @@ creation. You never:
 
 Commit each task's work yourself, then push. Use a short subject in the
 imperative. Add a body sentence on the _why_ only when the subject doesn't carry
-it. End with the `Co-Authored-By` trailer:
-
-```text
-Co-Authored-By: Claude <claude@anthropic.com>
-```
+it. End with the exact `commitTrailer` value from the
+[agent-written marks](../agent-written-marks.json).
 
 ### Communication between teammates (agents)
 

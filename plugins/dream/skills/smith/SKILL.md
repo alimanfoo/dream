@@ -53,16 +53,11 @@ tokens.
 
 ## Mark your work
 
-End every commit with the `Co-Authored-By` trailer:
-
-```text
-Co-Authored-By: Claude <claude@anthropic.com>
-```
-
-End every PR body and comment with the Claude Code footer, a reply on a line of
-the diff included:
-
-> 🤖 Generated with [Claude Code](https://claude.com/claude-code)
+Read the `commentFooter` and `commitTrailer` values from
+[`agent-written-marks.json`](../../agent-written-marks.json). End every commit
+with the exact `commitTrailer` value. End every PR body and comment with the
+exact `commentFooter` value as a blockquote, a reply on a line of the diff
+included.
 
 This lets a reader tell quickly which items are agent-authored.
 
