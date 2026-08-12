@@ -177,7 +177,7 @@ dispatching the matching skill. Override a label with a flag, for example
 `tail -f dreamcatcher.log`. Each running agent round has its own tmux session
 named `dream-catcher-GH<n>-<timestamp>`, which disappears when that round ends.
 The round's output is appended to
-`$HOME/.dream/catcher/<owner>/<repo>/catcher-GH<n>-<timestamp>/agent.log`.
+`$HOME/.dream/catcher/<owner>/<repo>/dream-catcher-GH<n>-<timestamp>/agent.log`.
 Catcher state there also records the latest PR inbox and final-round marker, and
 stays in place after cleanup for debugging.
 
