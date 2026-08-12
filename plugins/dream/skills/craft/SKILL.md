@@ -75,17 +75,17 @@ number or URL, a file path, or plain text. Usually it'll be a brief from
 comments included. It says what I want, not how to build it. If I gave you
 nothing, ask me what we're designing.
 
-Don't take it as settled, though. I wrote it before either of us had looked at
-the code, so a requirement that turns out to be expensive, or to conflict with
-another one, is worth raising with me.
+Don't take it as settled, though. It may have been written before either of us
+had looked at the code. It may also have been written by another agent, and so
+should not be taken as gospel.
 
 ## Read the code before you say anything about it
 
 Usually I'm putting something new into a codebase that already exists, and the
 real question is what has to move or go to make room for it. So read what this
-has to live in, and the documentation governing those paths, before you open
-your mouth. Docs drift, so don't pass one on to me as fact before you've seen it
-in the code.
+has to live in, and the documentation governing those paths, before you start
+talking. Docs drift, so please don't pass one on to me as fact before you've
+seen it in the code.
 
 If I gave you a reading guide from `dream:state`, follow it. It's a route
 through the code, what to read and in what order, not a substitute for reading
@@ -238,8 +238,8 @@ away, because that's the part someone will want to argue with later. Keep why
 it's this short — a direction we dropped for a reason worth remembering, with
 what it cost, and not the ones that were simply worse.
 
-No implementation. This goes to a `dream:smith` session, and I'd rather it had
-room to work. Name a part and say how it works, but don't write it.
+No implementation. This goes to a different session, and I'd rather it had room
+to work. Name a part and say how it works, but don't implement it.
 
 If writing it up turns something up that changes the shape, bring it back to me
 as a question rather than absorbing it. That's the thing I'd most want to hear
@@ -248,11 +248,11 @@ about, and the easiest one to swallow quietly.
 ## Get it checked before you show me
 
 We've both been in this a while, and neither of us can see it fresh any more. So
-before you show me the design, get two readers on it. Spawn both as
-`general-purpose` subagents with the Agent tool, at the same time, giving each
-the absolute path of the design, since a subagent can't resolve a path relative
-to its own prompt file. Tell them both that having nothing to say is a fine
-answer, rather than inventing something to fill the silence.
+before you show me the design, get two readers on it. Spawn both as subagents,
+at the same time, giving each the absolute path of the design, since a subagent
+can't resolve a path relative to its own prompt file. Tell them both that having
+nothing to say is a fine answer, rather than inventing something to fill the
+silence.
 
 The first one hunts for too much. It gets the design and what I asked for and
 nothing else, and one question: what could come out of this and still meet the
