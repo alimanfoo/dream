@@ -24,10 +24,11 @@ comes off.
 
 ## Prerequisites
 
-Every skill runs under Claude Code. Codex support isn't finished yet.
-`/dream:spark`, `/dream:state`, `/dream:copy-edit`, `/dream:code-review` and
-`/dream:coherence-review` run there today. Put a `$` in front of the skill's
-name in a Codex prompt:
+Every skill runs under Claude Code. Codex support is partial. `dream:smith`,
+`dream:less`, and `dream:catcher` now run there alongside `dream:spark`,
+`dream:state`, `dream:copy-edit`, `dream:code-review`, and
+`dream:coherence-review`. Put a `$` in front of the skill's name in a Codex
+prompt:
 
 ```text
 $dream:state
@@ -157,8 +158,9 @@ when the work is ready, and ends. The catcher watches existing pull requests and
 resumes a session when you review, merge, or close one. A cap on live agent
 rounds controls how many token-spending processes run at once.
 
-`/dream:catcher` needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
-with `gh` signed in.
+`/dream:catcher` needs `git`, `gh`, `jq`, and `tmux` on your PATH, with `gh`
+signed in. It also needs the runner you select: `claude` for Claude Code or
+`codex` for Codex.
 
 Start Claude Code from the main checkout of that repository, not a linked
 worktree, then run:
@@ -166,6 +168,15 @@ worktree, then run:
 ```text
 /dream:catcher
 ```
+
+To run the same lifecycle under Codex, start Codex from the main checkout and
+run:
+
+```text
+$dream:catcher --harness codex
+```
+
+The harness defaults to Claude Code.
 
 It watches the repository you started Claude Code in. By default it picks up
 open issues labelled "dream:smith" or "dream:less" and assigned to you,
@@ -178,8 +189,9 @@ dispatching the matching skill. Override a label with a flag, for example
 named `dream-catcher-GH<n>-<timestamp>`, which disappears when that round ends.
 The round's output is appended to
 `$HOME/.dream/catcher/<owner>/<repo>/dream-catcher-GH<n>-<timestamp>/agent.log`.
-Catcher state there also records the latest PR inbox and final-round marker, and
-stays in place with the worktree for debugging.
+Catcher state there also records the selected harness settings, the latest PR
+inbox, and the final-round marker, and stays in place with the worktree for
+debugging. Restart the catcher with the same harness to resume those sessions.
 
 How it picks work:
 
@@ -190,6 +202,9 @@ How it picks work:
 - **Skill by label.** The smith label dispatches a `/dream:smith` session, for
   smaller tasks. The less label dispatches a `/dream:less` session, for very
   small ones. An issue carrying both goes to `/dream:smith`.
+- **Runner by harness.** `--harness claude` runs the chosen skill under Claude
+  Code. `--harness codex` runs it under Codex. The harness changes the runner,
+  permissions, and model defaults, not the label semantics.
 - **Max agents.** `--max-agents` caps live agent rounds, defaulting to one. It
   does not cap how many pull requests can be waiting between rounds. Raise it to
   spend faster.
@@ -197,12 +212,13 @@ How it picks work:
   GitHub issue view to make it wait for that one. `/dream:catcher` skips a
   blocked issue until its blocker closes, then picks it up.
 - **Finished worktrees.** `/dream:catcher` launches one final round after the
-  pull request merges or closes. It leaves the worktree, branch, logs, inbox,
-  final marker, and watcher watermark in place for debugging.
+  pull request merges or closes. It leaves the worktree, branch, logs, session
+  settings, inbox, final marker, and watcher watermark in place for debugging.
 
 Each session runs unattended. It needs permissions to interact with GitHub:
-creating the pull request, posting comments, committing, and pushing.
-`/dream:catcher` passes these to each round as allow rules at launch. When a
+creating the pull request, posting comments, committing, and pushing. The Claude
+Code harness launches in auto mode with narrow allow rules. The Codex harness
+uses automatic approval review, workspace-write, and network access. When a
 session hits a question it cannot answer, it posts the question to the pull
 request and ends the round. You can reply there without dropping into the
 session.

@@ -6,9 +6,10 @@ description:
   its issue to a pull request for the user to review and merge. Only use when
   the user explicitly runs /dream:catcher.
 argument-hint:
-  "[--smith-label <label>] [--less-label <label>] [--smith-model <model>]
-  [--smith-effort <effort>] [--less-model <model>] [--less-effort <effort>]
-  [--assignee <user>] [--interval <seconds>] [--max-agents <n>]"
+  "[--harness <claude|codex>] [--smith-label <label>] [--less-label <label>]
+  [--smith-model <model>] [--smith-effort <effort>] [--less-model <model>]
+  [--less-effort <effort>] [--assignee <user>] [--interval <seconds>]
+  [--max-agents <n>]"
 ---
 
 # Dreamcatcher
@@ -44,10 +45,15 @@ misread surfaces at once.
 
 - **Smith label.** The label that dispatches a `dream:smith` session.
 - **Less label.** The label that dispatches a `dream:less` session.
-- **Smith model.** The model a `dream:smith` session runs under.
-- **Smith effort.** The reasoning effort a `dream:smith` session runs under.
-- **Less model.** The model a `dream:less` session runs under.
-- **Less effort.** The reasoning effort a `dream:less` session runs under.
+- **Harness.** The agent runner: Claude Code or Codex.
+- **Smith model.** The model a `dream:smith` session runs under. Its default
+  depends on the harness.
+- **Smith effort.** The reasoning effort a `dream:smith` session runs under. Its
+  default depends on the harness.
+- **Less model.** The model a `dream:less` session runs under. Its default
+  depends on the harness.
+- **Less effort.** The reasoning effort a `dream:less` session runs under. Its
+  default depends on the harness.
 - **Assignee.** Whose issues to pick up.
 - **Interval.** Seconds between ticks.
 - **Max agents.** Most concurrent agent rounds to run.
@@ -59,9 +65,10 @@ The repository is the one in the current working directory.
 Run each check before launching. Stop and tell the user if one fails.
 
 - Run `gh auth status`. It must succeed.
-- Confirm git, gh, jq, claude, and tmux are each on the PATH, with a separate
-  `command -v` for each. One `command -v` over the whole list passes when any
-  single tool resolves.
+- Confirm git, gh, jq, and tmux are each on the PATH, with a separate
+  `command -v` for each. Confirm the selected harness is there too: `claude` for
+  Claude Code or `codex` for Codex. One `command -v` over the whole list passes
+  when any single tool resolves.
 - Confirm each label exists with `gh label list --search "<label>"`, which
   avoids the 30-label default page. Offer to create any that is missing with
   `gh label create`.
@@ -70,8 +77,8 @@ Run each check before launching. Stop and tell the user if one fails.
   worktree's `.git` is a file, so dispatched worktrees would land in the wrong
   place.
 
-No permission setup is needed here. The coordinator grants each agent round its
-writes at launch.
+No permission setup is needed here. The coordinator gives each round its
+harness-specific unattended permissions at launch.
 
 ## Launch
 
@@ -98,8 +105,11 @@ Then tell the user:
   that round ends.
 - that each round keeps catcher state under
   `$HOME/.dream/catcher/<owner>/<repo>/dream-catcher-GH<n>-<timestamp>/`:
-  `agent.log`, the latest PR inbox, and the final-round marker. This state stays
-  in place with the worktree for debugging.
+  `agent.log`, the selected harness settings in `session.json`, the latest PR
+  inbox, and the final-round marker. This state stays in place with the worktree
+  for debugging.
+- that an existing session resumes only when the restarted catcher selects the
+  same harness.
 - that tmux sessions stop on reboot, so re-running `/dream:catcher` restarts the
   loop, and that a machine that must survive reboots should run
   `catch.sh --once` from cron or launchd, where each firing runs a single tick.
@@ -116,6 +126,10 @@ Answer questions about the coordinator's behaviour from here.
   the less label dispatches a `dream:less` session. An issue needs one of the
   labels and the right assignee to be picked up. One carrying both goes to
   `dream:smith`.
+- **Runner by harness.** `--harness claude` runs the chosen skill under Claude
+  Code. `--harness codex` runs it under Codex. The harness changes the runner,
+  command, permissions, model defaults, and prompt spelling. It does not change
+  what the labels mean.
 - **Bounded rounds.** A session does not stay alive while it waits for the user.
   It ends each round when it has no work to do. The coordinator resumes it later
   from the same worktree and session history.
@@ -128,11 +142,10 @@ Answer questions about the coordinator's behaviour from here.
   this when one issue depends on another, or when one tidies an area the other
   would otherwise work through.
 - **Finished worktrees.** The coordinator launches one final round after the
-  pull request merges or closes. It leaves the worktree, branch, logs, inbox,
-  final marker, and watcher watermark in place for debugging.
-- **Permissions.** An agent round runs in auto mode, with the recurring
-  unattended writes passed as narrow allow rules at launch. Auto mode resolves
-  these specific permissions before its classifier runs. A broad `Bash` allow
-  can't serve here: auto mode drops broad allow rules and keeps only narrow
-  ones. Auto mode blocks any other command it does not clear, and notifies
-  instead of running it unattended.
+  pull request merges or closes. It leaves the worktree, branch, logs, session
+  settings, inbox, final marker, and watcher watermark in place for debugging.
+- **Permissions.** A Claude Code round runs in auto mode, with recurring writes
+  passed as narrow allow rules. A Codex round starts with `--approve-for-me`,
+  workspace-write, and network access. On resume, the coordinator replays the
+  Codex model, effort, sandbox, network, and approval settings recorded for the
+  session, because Codex does not retain them all.
