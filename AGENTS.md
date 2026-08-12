@@ -189,6 +189,8 @@ The repo uses [`pre-commit`](https://pre-commit.com/) for lightweight checks:
 - the documentation index (`uncoded sync`, which regenerates
   `.uncoded/docs.yaml` and the `/uncoded-doc-navigation` skill)
 
+Check manual shell-script changes with both `bash -n` and `shellcheck`.
+
 At the start of each session, pull the latest `main` and install the hooks:
 
 ```bash
