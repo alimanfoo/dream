@@ -33,15 +33,16 @@
 #
 # One rule picks the user's posts out of the three sources. The session and the
 # user write through the same account, so the rule reads the body: a post is the
-# user's when it comes from that account and its body lacks the Claude Code
+# user's when it comes from that account and its body lacks an agent-written
 # footer. The caller marks everything it writes with that footer, so its own
 # posts drop out.
 #
 # Matching the account also drops anything from another account, a bot or
 # another collaborator, which the user did not write.
 #
-# So a change to the footer string would break the filter, and the caller's own
-# comments would read back as the user's input.
+# During a footer migration, the filter accepts the legacy footer too. A session
+# already running can keep writing the legacy footer from its context after a
+# newer plugin version starts this script.
 #
 # A second rule drops any post the user said nothing in. GitHub wraps a single
 # inline comment in a review of its own, with an empty body, whenever anyone
@@ -67,11 +68,19 @@ for tool in gh jq; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
 done
 
-# The footer string that marks a body as the caller's own. It must match the
-# Claude Code footer the plugin appends to comments, set in the agents' and
-# skills' "mark your work" rules. A change there has to change here too, or the
-# filter breaks.
-footer="claude.com/claude-code"
+# Read the current footer from the same file as the callers. Match on its words,
+# not its emoji, because the words carry the contract. Keep the old footer words
+# here during the migration, so sessions started before the change still filter
+# their own comments.
+script_dir=$(CDPATH=; cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd) \
+  || die "cannot resolve the watcher script directory"
+marks_file="$script_dir/../../agent-written-marks.json"
+[ -f "$marks_file" ] || die "cannot find the agent-written marks file"
+footer=$(jq -r '.commentFooter // empty' "$marks_file") \
+  || die "cannot read the agent-written comment footer"
+[ -n "$footer" ] || die "the agent-written comment footer is empty"
+footer_words=${footer#* }
+legacy_footer_words="Generated with [Claude Code]"
 
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
@@ -118,10 +127,13 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 # it stood then, rather than reporting nothing. Both hold the last line when the
 # comment covers a range, and both are null when it is about the whole file.
 result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
-  | jq --arg cutoff "$cutoff" --arg footer "$footer" --arg me "$me" '
+  | jq --arg cutoff "$cutoff" --arg footer "$footer_words" \
+       --arg legacy_footer "$legacy_footer_words" --arg me "$me" '
   def is_new_from_user($author; $at):
     $author == $me and $at > $cutoff
-    and ((.body // "") | contains($footer) | not);
+    and ((.body // "")
+         | (contains($footer) or contains($legacy_footer))
+         | not);
 
   def says_something:
     .body != "" or .verdict == "APPROVED" or .verdict == "CHANGES_REQUESTED";
