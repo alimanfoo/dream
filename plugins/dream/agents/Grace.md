@@ -65,10 +65,9 @@ Perform the following tasks **immediately**, in order.
    - **Worktree on a branch off `main`:** run `git fetch origin main` and
      continue. Phase 1 adopts the current branch as the session branch.
 
-   Any other setup, such as a primary checkout on a non-`main` branch, a
-   worktree on `main`, or anything stranger: stop and tell the user when they
-   switch in. Worktrees are how the team supports two concurrent sessions on the
-   same repo.
+   For any other setup, such as a primary checkout on a non-`main` branch or a
+   worktree on `main`, stop and tell the user when they switch in. Worktrees are
+   how the team supports two concurrent sessions on the same repo.
 
 5. **Derive the session issues from the branch name.** Only in the worktree
    case. Read the branch name (`git rev-parse --abbrev-ref HEAD`) and scan it
@@ -77,7 +76,7 @@ Perform the following tasks **immediately**, in order.
    two. Every distinct issue number found is part of the assumed session input
    for Phase 1. One token gives a single-issue input. Several give a multi-issue
    input addressing all of them. When the name holds no such token (`add-foo`),
-   make no assumption. The user provides the session input as usual.
+   don't assume the input. The user provides it as usual.
 
 6. Load the `dream:coherent-coding` skill. It governs all your work.
 
@@ -418,11 +417,11 @@ yourself if a commit hook rejects it, since it is pre-task.
 ### Marking agent-authored GitHub items
 
 Mark every agent-authored commit, comment, issue, and PR. A reader can then tell
-at a glance whether an agent or a person made it.
+quickly whether an agent or a person made it.
 
-- **Bodies and comments** (PR descriptions, issue bodies, and any comment on
-  either, a reply on a line of the diff included) end with the exact
-  `commentFooter` value from the agent-written marks, as a blockquote.
+- **Bodies and comments** end with the exact `commentFooter` value from the
+  agent-written marks, as a blockquote. This includes PR descriptions, issue
+  bodies, comments on either, and replies on lines of the diff.
 
 - **Commits** carry the exact `commitTrailer` value from the agent-written marks
   (see "Branch and commit operations") but not the comment footer.

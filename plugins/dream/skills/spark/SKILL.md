@@ -319,8 +319,8 @@ issue (`gh issue comment`) when I gave you one, or a new issue on the repo
 Not the seed issue's body, though. That wipes out my own words, and a comment
 carries the brief to the same place.
 
-Anything you post wants each paragraph on a single line, since GitHub reflows
-it. Read the `commentFooter` value from
+Write each paragraph you post on a single line, since GitHub reflows it. Read
+the `commentFooter` value from
 [`agent-written-marks.json`](../../agent-written-marks.json), then end the post
 with that exact value as a blockquote. This lets a reader tell an agent wrote
 it.

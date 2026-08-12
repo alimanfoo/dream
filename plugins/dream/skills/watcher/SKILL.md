@@ -19,8 +19,8 @@ Each firing returns whatever the user has written since the last one. So you see
 every post exactly once, whenever it arrives.
 
 The machinery is a shell script, `watch.sh`, in this skill's directory. It reads
-the pull request and tracks what you have already seen. This skill wraps it into
-the recurring check and tells you how to act on each result.
+the pull request and tracks what you have already seen. This skill runs that
+check repeatedly and tells you how to act on each result.
 
 ## The footer precondition
 
@@ -28,8 +28,8 @@ Read the `commentFooter` value from
 [`agent-written-marks.json`](../../agent-written-marks.json). End every comment
 that you post to the watched pull request with that exact value as a blockquote.
 
-The watch drops comments that carry this footer, so your own replies do not come
-back as fresh user posts.
+The watch ignores comments that carry this footer, so your own replies do not
+come back as fresh user posts.
 
 Add the footer to replies on lines of the diff too, not only to comments on the
 pull request conversation.

@@ -5,27 +5,28 @@
 # The issue's label selects the skill: the smith label dispatches dream:smith,
 # and the less label dispatches dream:less. An issue carrying both goes to smith.
 #
-# Each tick reads live truth from git, tmux, `gh`, and the small amount of
+# Each tick reads the current state from git, tmux, `gh`, and the small amount of
 # catcher state under $HOME/.dream/catcher. It first looks for existing
-# dispatched work to resume. Only when none needs a round does it dispatch a new
-# issue. The default is a background loop. Drive `catch.sh --once` from cron for
-# a machine that must survive reboots.
+# dispatched work to resume. It dispatches a new issue when no existing session
+# needs a round. The default is a background loop. Run `catch.sh --once` from
+# cron on a machine that must restart the catcher after a reboot.
 #
-# Agent rounds run headless inside detached tmux sessions. The tmux session is a
-# liveness probe and a place to attach while the round is running. When the round
-# ends, tmux exits. The session's context stays on disk, so the next round resumes
-# it from the worktree.
+# Agent rounds run headless inside detached tmux sessions. The tmux session shows
+# whether the round is running and gives the user a place to attach. When the
+# round ends, tmux exits. The session's context stays on disk, so the next round
+# resumes it from the worktree.
 #
 # The number of live agent rounds has a cap. --max-agents bounds how many agent
 # processes run at once, so the user can choose how fast to spend tokens. The
 # default is one.
 #
 # Each dispatched issue has its own worktree and branch. A round is its own
-# process. Concurrent rounds are isolated by worktree; --max-agents paces token
-# use, not repository safety.
+# process. Worktrees isolate concurrent rounds. --max-agents paces token use,
+# not repository safety.
 #
 # A merged or closed pull request gets one final round. The final-started marker
-# records that the round was launched, so a later tick does not launch it again.
+# records that the catcher launched the round, so a later tick does not launch it
+# again.
 # The worktree and branch stay in place for debugging.
 #
 # Permissions depend on the selected harness. Claude Code runs in auto mode with
@@ -58,13 +59,13 @@ Usage:
   --harness      Agent harness to run. Default: $default_harness.
   --smith-label  Issue label that dispatches a dream:smith session. Default: $default_smith_label.
   --less-label   Issue label that dispatches a dream:less session. Default: $default_less_label.
-  --smith-model  Model a dream:smith session runs under. Defaults: Claude Code $default_claude_smith_model; Codex $default_codex_smith_model.
-  --smith-effort Reasoning effort a dream:smith session runs under. Defaults: Claude Code $default_claude_smith_effort; Codex $default_codex_smith_effort.
-  --less-model   Model a dream:less session runs under. Defaults: Claude Code $default_claude_less_model; Codex $default_codex_less_model.
-  --less-effort  Reasoning effort a dream:less session runs under. Defaults: Claude Code $default_claude_less_effort; Codex $default_codex_less_effort.
+  --smith-model  Model for a dream:smith session. Defaults: Claude Code $default_claude_smith_model; Codex $default_codex_smith_model.
+  --smith-effort Reasoning effort for a dream:smith session. Defaults: Claude Code $default_claude_smith_effort; Codex $default_codex_smith_effort.
+  --less-model   Model for a dream:less session. Defaults: Claude Code $default_claude_less_model; Codex $default_codex_less_model.
+  --less-effort  Reasoning effort for a dream:less session. Defaults: Claude Code $default_claude_less_effort; Codex $default_codex_less_effort.
   --assignee    Whose issues to pick up. Default: $default_assignee.
   --interval    Seconds between ticks in loop mode. Default: $default_interval.
-  --max-agents  Most concurrent agent rounds to run. Default: $default_max_agents.
+  --max-agents  Maximum agent rounds to run at once. Default: $default_max_agents.
   --once        A single tick, then exit, instead of looping.
 EOF
 }
@@ -72,9 +73,8 @@ EOF
 log() { printf '%s  %s\n' "$(date -u +%FT%TZ)" "$*"; }
 die() { printf 'dreamcatcher: %s\n' "$*" >&2; exit 2; }
 
-# Die unless the value is a positive whole number. One home for the check every
-# numeric flag shares, so a new flag or a change to what counts as valid lands
-# in one place.
+# Die unless the value is a positive whole number. Keep the shared numeric check
+# here, so new flags and validation changes need one edit.
 require_positive_int() { [[ "$2" =~ ^[1-9][0-9]*$ ]] || die "--$1 must be a positive whole number of $3"; }
 
 # Quote one value for the shell command tmux will run. Values can include spaces
@@ -88,8 +88,8 @@ shell_quote() {
 # --- configuration ---------------------------------------------------------
 
 # The defaults have their own home, which usage() reads, so --help always shows
-# the true defaults whatever the parsing loop sets. Each working variable seeds
-# from its default, then a flag may override it.
+# the true defaults whatever the parsing loop sets. Each working variable starts
+# with its default, then a flag may override it.
 default_smith_label="dream:smith"
 default_less_label="dream:less"
 default_harness="claude"
@@ -155,10 +155,9 @@ case "$harness" in
     ;;
 esac
 
-# Reject a non-numeric interval or max-agents at parse time. A bad value would
-# otherwise fail only where it is used, with a message that hides the cause. In
-# tick's cap comparison it makes the test fail open, so dispatch runs with no
-# cap. Dying here names the flag instead.
+# Reject a non-numeric interval or max-agents at parse time. Otherwise the code
+# fails later with a message that hides the cause. A bad cap also lets dispatch
+# run without a limit. Dying here names the flag instead.
 require_positive_int interval "$interval" seconds
 require_positive_int max-agents "$max_agents" agents
 
@@ -317,7 +316,8 @@ read_session_config() {
 
 # Write the filtered PR input for the round the catcher is about to resume.
 # watch.sh has already filtered the posts and advanced its watermark. The inbox
-# is the handoff: the prompt carries only this path, not the user's words.
+# hands the input to the round: the prompt carries only this path, not the user's
+# words.
 write_inbox() {
   local branch=$1 json=$2 state_dir
   state_dir=$(catcher_state_dir "$branch")
@@ -411,8 +411,8 @@ codex_resume_command() {
 }
 
 # Build one headless command for the selected harness. The lifecycle calls only
-# this boundary, so worktree, tmux, inbox, and final-round behaviour stays
-# shared as another harness is added.
+# this boundary, so a maintainer can add a harness without changing worktree,
+# tmux, inbox, or final-round behaviour.
 round_command() {
   local wt=$1 branch=$2 session_harness=$3 skill=$4 model=$5 effort=$6 resume=$7 prompt=$8
   case "$session_harness:$resume" in
@@ -450,13 +450,13 @@ launch_agent_round() {
     || { log "cannot build agent command for $branch"; return 1; }
   run="{ printf '%s  starting $branch ($round)\n' \"\$(date -u +%FT%TZ)\"; $agent_cmd; agent_status=\$?; printf '%s  exited with status %s\n' \"\$(date -u +%FT%TZ)\" \"\$agent_status\"; exit \"\$agent_status\"; } 2>&1 | tee -a $(shell_quote "$log_file")"
   if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" "$run"; then
-    log "tmux launch failed for $branch"
+    log "tmux failed to launch the round for $branch"
     return 1
   fi
   if [ "$final" -eq 1 ]; then
     marker=$(final_marker_file "$branch")
     printf '%s\n' "$(date -u +%FT%TZ)" >"$marker" \
-      || log "could not write final marker for $branch"
+      || log "cannot write final marker for $branch"
   fi
   log "started $round round for $branch in tmux session $session"
 }
@@ -468,7 +468,7 @@ launch_agent_round() {
 # or pull request.
 #
 # `git worktree add` creates the worktree. That lands it at a predictable sibling
-# path, with a branch name the cap and dedup checks match on.
+# path, with a branch name the cap and duplicate checks match on.
 dispatch() {
   local n=$1 skill=$2 ts branch wt err prompt model effort
   ts=$(date -u +%Y%m%d-%H%M%S)
@@ -478,7 +478,7 @@ dispatch() {
   err=$(git -C "$main_root" fetch origin main --quiet 2>&1) \
     || { log "fetch failed for GH${n}: $err"; return 1; }
   err=$(git -C "$main_root" worktree add -b "$branch" "$wt" origin/main 2>&1) \
-    || { log "could not create worktree $wt for GH${n}: $err"; return 1; }
+    || { log "cannot create worktree $wt for GH${n}: $err"; return 1; }
   case "$skill" in
     smith) model=$smith_model; effort=$smith_effort;;
     less)  model=$less_model; effort=$less_effort;;
@@ -489,7 +489,7 @@ dispatch() {
   prompt=$(first_round_prompt "$harness" "$skill") \
     || { log "cannot build first-round prompt for GH${n}"; discard_worktree "$wt" "$branch"; return 1; }
   if ! launch_agent_round "$wt" "$branch" "$harness" "$skill" "$model" "$effort" 0 0 "$prompt"; then
-    log "could not start first round for GH${n}, discarding worktree"
+    log "cannot start first round for GH${n}, discarding worktree"
     discard_worktree "$wt" "$branch"
     return 1
   fi
@@ -569,10 +569,10 @@ tick() {
   less_open=$(list_labelled "$less_label" less open) \
     || { log "cannot list issues; will retry next tick"; return 1; }
   # Oldest eligible issue first across both labels. A stable sort on the
-  # timestamp alone keeps the lists in fed order for an issue that carries both
+  # timestamp alone keeps the lists in input order for an issue that carries both
   # labels: smith first, then less. Such an issue dispatches to smith, since that
-  # line is fed first. The timestamp has served its purpose once sorted, so drop
-  # it and keep the issue number and skill.
+  # line enters first. Drop the timestamp after sorting, and keep the issue
+  # number and skill. The later code no longer needs the timestamp.
   candidates=$(printf '%s\n%s\n' "$smith_open" "$less_open" | sort -s -t$'\t' -k1,1 | cut -f2-)
   while IFS=$'\t' read -r n skill; do
     [ -n "$n" ] || continue

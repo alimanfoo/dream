@@ -15,10 +15,10 @@ argument-hint:
 # Dreamcatcher
 
 Watch a repository for issues marked for the `dream:smith` or `dream:less`
-skill, and dispatch a fresh session for each, chosen by the issue's label. The
-sessions already do the work. This is the coordinator around them. It notices a
-labelled issue, starts a bounded round for it, and later resumes that session
-when its pull request has new input.
+skill. The issue's label tells the coordinator which skill to run. The sessions
+already do the work. This is the coordinator around them. It starts a bounded
+round for each labelled issue. It later resumes the session when its pull
+request has new input.
 
 Each round runs headless in its own tmux session. The round ends when the agent
 marks the pull request ready, posts a question it needs the user to answer, or
@@ -38,14 +38,16 @@ The user may pass any option shown in the `argument-hint` frontmatter as a
 
 ## Gather the configuration
 
-Every option has a default. Run `catch.sh --help` to see them. Use what the
-argument named. Let the script default the rest. Ask the user only whether to
-override a default. State the options you resolved before launching, so a
-misread surfaces at once.
+Every option has a default. Run `catch.sh --help` to see them. Keep each flag
+and value the user passed. Let the script default the rest. Ask no configuration
+questions unless the user asks to change a default. State the options you
+resolved before launching, so the user can correct a misread at once.
 
 - **Smith label.** The label that dispatches a `dream:smith` session.
 - **Less label.** The label that dispatches a `dream:less` session.
-- **Harness.** The agent runner: Claude Code or Codex.
+- **Harness.** Use `claude` when this skill is running under Claude Code. Use
+  `codex` when it is running under Codex. An explicit `--harness` argument
+  overrides this choice.
 - **Smith model.** The model a `dream:smith` session runs under. Its default
   depends on the harness.
 - **Smith effort.** The reasoning effort a `dream:smith` session runs under. Its
@@ -56,7 +58,7 @@ misread surfaces at once.
   default depends on the harness.
 - **Assignee.** Whose issues to pick up.
 - **Interval.** Seconds between ticks.
-- **Max agents.** Most concurrent agent rounds to run.
+- **Max agents.** Maximum number of agent rounds to run at once.
 
 The repository is the one in the current working directory.
 
@@ -77,29 +79,32 @@ Run each check before launching. Stop and tell the user if one fails.
   worktree's `.git` is a file, so dispatched worktrees would land in the wrong
   place.
 
-No permission setup is needed here. The coordinator gives each round its
-harness-specific unattended permissions at launch.
+Do not set up permissions here. The coordinator gives each round its
+harness-specific unattended permissions when it starts the round.
 
 ## Launch
 
 Run the loop in its own detached tmux session, so it outlives this session. Pass
-only the flags the user overrode. The script applies its own default for every
-option left out. The user can then attach to watch it tick, the same way they
+the selected harness even when the user did not name one. Pass the other flags
+only when the user overrode them. The script applies its own default for every
+other option. The user can then attach to watch it tick, the same way they
 attach to a dispatched session:
 
 ```bash
 tmux new-session -d -s dreamcatcher -x 220 -y 50 \
   -c "<the repository's main checkout>" \
   "bash '<absolute path to catch.sh in this skill's directory>' \
-   <the flags the user overrode, and no others> \
+   --harness <claude or codex> \
+   <the other flags the user overrode, and no others> \
    2>&1 | tee -a dreamcatcher.log"
 ```
 
 Then tell the user:
 
 - that they can watch the loop with `tmux attach -t dreamcatcher`, or follow the
-  log with `tail -f dreamcatcher.log`, that `Ctrl+B` then `d` detaches, and that
-  `tmux kill-session -t dreamcatcher` stops the loop.
+  log with `tail -f dreamcatcher.log`.
+- that `Ctrl+B` then `d` detaches from the tmux session.
+- that `tmux kill-session -t dreamcatcher` stops the loop.
 - that each running agent round has its own tmux session named
   `dream-catcher-GH<n>-<timestamp>`, and that the tmux session disappears when
   that round ends.
@@ -110,13 +115,14 @@ Then tell the user:
   for debugging.
 - that an existing session resumes only when the restarted catcher selects the
   same harness.
-- that tmux sessions stop on reboot, so re-running `/dream:catcher` restarts the
-  loop, and that a machine that must survive reboots should run
-  `catch.sh --once` from cron or launchd, where each firing runs a single tick.
+- that tmux sessions stop on reboot. Re-running `dream:catcher` restarts the
+  loop.
+- that they should run `catch.sh --once` from cron or launchd if the catcher
+  must restart after a reboot. Each run performs one tick.
 
 ## How it picks work
 
-Answer questions about the coordinator's behaviour from here.
+Use these rules to answer questions about the coordinator's behaviour.
 
 - **Resume before dispatch.** Each tick first looks at existing catcher
   worktrees. If an open pull request has new user posts, or if a merged or
@@ -124,12 +130,12 @@ Answer questions about the coordinator's behaviour from here.
   session. It dispatches a new issue only when no existing work needs a round.
 - **Skill by label.** The smith label dispatches a `dream:smith` session, and
   the less label dispatches a `dream:less` session. An issue needs one of the
-  labels and the right assignee to be picked up. One carrying both goes to
+  labels and must match the configured assignee. One carrying both goes to
   `dream:smith`.
 - **Runner by harness.** `--harness claude` runs the chosen skill under Claude
   Code. `--harness codex` runs it under Codex. The harness changes the runner,
-  command, permissions, model defaults, and prompt spelling. It does not change
-  what the labels mean.
+  command, permissions, model defaults, and prompt spelling. The labels keep the
+  same meaning.
 - **Bounded rounds.** A session does not stay alive while it waits for the user.
   It ends each round when it has no work to do. The coordinator resumes it later
   from the same worktree and session history.
@@ -144,8 +150,8 @@ Answer questions about the coordinator's behaviour from here.
 - **Finished worktrees.** The coordinator launches one final round after the
   pull request merges or closes. It leaves the worktree, branch, logs, session
   settings, inbox, final marker, and watcher watermark in place for debugging.
-- **Permissions.** A Claude Code round runs in auto mode, with recurring writes
-  passed as narrow allow rules. A Codex round starts with `--approve-for-me`,
-  workspace-write, and network access. On resume, the coordinator replays the
-  Codex model, effort, sandbox, network, and approval settings recorded for the
-  session, because Codex does not retain them all.
+- **Permissions.** A Claude Code round runs in auto mode. The coordinator passes
+  recurring writes as narrow allow rules. A Codex round starts with
+  `--approve-for-me`, workspace-write, and network access. When the coordinator
+  resumes a Codex round, it replays the recorded model, effort, sandbox,
+  network, and approval settings. Codex does not retain all of them.

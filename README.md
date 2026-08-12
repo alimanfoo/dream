@@ -149,49 +149,55 @@ Reach for it when a change is small and self-contained.
 ## Unattended runs with /dream:catcher
 
 `/dream:catcher` watches a repository for labelled issues and dispatches a
-session for each. It runs the `/dream:smith` or `/dream:less` skill, chosen by
-the issue's label.
+session for each. The catcher uses the issue's label to choose `/dream:smith` or
+`/dream:less`.
 
-Each session runs as bounded headless rounds. A round opens or updates the pull
-request, posts a question if it needs your answer, marks the pull request ready
-when the work is ready, and ends. The catcher watches existing pull requests and
-resumes a session when you review, merge, or close one. A cap on live agent
-rounds controls how many token-spending processes run at once.
+Each session runs in bounded headless rounds. A round opens or updates the pull
+request. It may post a question if it needs your answer. It marks the pull
+request ready when the work is ready, then ends. The catcher watches existing
+pull requests and resumes a session when you review, merge, or close one. A cap
+on live agent rounds controls how many token-spending processes run at once.
 
 `/dream:catcher` needs `git`, `gh`, `jq`, and `tmux` on your PATH, with `gh`
-signed in. It also needs the runner you select: `claude` for Claude Code or
+signed in. It also needs the host that runs it: `claude` for Claude Code or
 `codex` for Codex.
 
-Start Claude Code from the main checkout of that repository, not a linked
-worktree, then run:
+Start Claude Code from the repository's main checkout, not a linked worktree:
 
-```text
-/dream:catcher
+```bash
+claude -p /dream:catcher
 ```
 
-To run the same lifecycle under Codex, start Codex from the main checkout and
-run:
+Start Codex from the main checkout in the same way:
 
-```text
-$dream:catcher --harness codex
+```bash
+codex exec '$dream:catcher'
 ```
 
-The harness defaults to Claude Code.
+The host that starts `dream:catcher` also runs the dispatched sessions. The
+Claude Code command selects the Claude Code harness. The Codex command selects
+the Codex harness. Direct `catch.sh` calls can override this with
+`--harness claude` or `--harness codex`; the script defaults to Claude Code for
+backward compatibility.
 
-It watches the repository you started Claude Code in. By default it picks up
-open issues labelled "dream:smith" or "dream:less" and assigned to you,
-dispatching the matching skill. Override a label with a flag, for example
-`/dream:catcher --smith-label auto`.
+The catcher watches the repository where you started it. By default it picks up
+open issues labelled "dream:smith" or "dream:less" and assigned to you. It
+dispatches the matching skill. Override a label with a flag, for example
+`$dream:catcher --smith-label auto` under Codex.
 
 `/dream:catcher` runs in its own tmux session. Attach to it with
 `tmux attach -t dreamcatcher`, or follow its log with
 `tail -f dreamcatcher.log`. Each running agent round has its own tmux session
-named `dream-catcher-GH<n>-<timestamp>`, which disappears when that round ends.
-The round's output is appended to
+named `dream-catcher-GH<n>-<timestamp>`. That tmux session disappears when the
+round ends.
+
+The catcher appends the round's output to
 `$HOME/.dream/catcher/<owner>/<repo>/dream-catcher-GH<n>-<timestamp>/agent.log`.
-Catcher state there also records the selected harness settings, the latest PR
-inbox, and the final-round marker, and stays in place with the worktree for
-debugging. Restart the catcher with the same harness to resume those sessions.
+It also records the selected harness settings, the latest PR inbox, and the
+final-round marker there. This state stays in place with the worktree for
+debugging.
+
+Restart the catcher with the same host to resume those sessions.
 
 How it picks work:
 
@@ -204,10 +210,10 @@ How it picks work:
   small ones. An issue carrying both goes to `/dream:smith`.
 - **Runner by harness.** `--harness claude` runs the chosen skill under Claude
   Code. `--harness codex` runs it under Codex. The harness changes the runner,
-  permissions, and model defaults, not the label semantics.
+  permissions, and model defaults. It does not change what the labels mean.
 - **Max agents.** `--max-agents` caps live agent rounds, defaulting to one. It
   does not cap how many pull requests can be waiting between rounds. Raise it to
-  spend faster.
+  run more rounds and spend tokens faster.
 - **Oldest eligible issue first.** Mark an issue blocked by another in the
   GitHub issue view to make it wait for that one. `/dream:catcher` skips a
   blocked issue until its blocker closes, then picks it up.
@@ -218,14 +224,15 @@ How it picks work:
 Each session runs unattended. It needs permissions to interact with GitHub:
 creating the pull request, posting comments, committing, and pushing. The Claude
 Code harness launches in auto mode with narrow allow rules. The Codex harness
-uses automatic approval review, workspace-write, and network access. When a
-session hits a question it cannot answer, it posts the question to the pull
-request and ends the round. You can reply there without dropping into the
-session.
+uses automatic approval review, workspace-write, and network access.
 
-It stops on reboot, so re-run `/dream:catcher` to restart it. For a machine that
-must survive reboots, drive `catch.sh --once` from cron or launchd. Each firing
-runs a single tick.
+When a session hits a question it cannot answer, it posts the question to the
+pull request and ends the round. You can reply on the pull request without
+opening the agent session.
+
+It stops on reboot, so start `dream:catcher` again to restart it. Run
+`catch.sh --once` from cron or launchd if the catcher must restart after a
+reboot. Each run performs one tick.
 
 ## /dream:team advanced usage
 

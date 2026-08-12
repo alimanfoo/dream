@@ -75,8 +75,7 @@ the range `origin/main...HEAD`, the branch under review against its base.
 Then **send what it returns to Grace via `SendMessage`**, including when it
 returns no findings. Grace waits for your review before she can carry on, so a
 clean review still has to reach her. Only `SendMessage` reaches Grace, not turn
-output. Add nothing to it, and drop nothing from it. Grace posts it as a PR
-comment, so follow
+output. Send the review unchanged. Grace posts it as a PR comment, so follow
 [GitHub-rendered artefacts](../skills/team/protocol.md#github-rendered-artefacts).
 Do not include the [agent-written comment footer](../agent-written-marks.json).
 Grace adds it when posting.

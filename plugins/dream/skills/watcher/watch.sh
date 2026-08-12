@@ -46,15 +46,16 @@
 #
 # A second rule drops any post the user said nothing in. GitHub wraps a single
 # inline comment in a review of its own, with an empty body, whenever anyone
-# comments on one line. That includes the caller replying to the user, whose
-# reply would otherwise come back as the user's. The wrapper says nothing, so it
-# goes, while the inline comments it wrapped come through on their own. A review
-# the user approved or requested changes on says something in its verdict, so it
-# stays even with an empty body. Any other bodiless review, such as one GitHub
-# dismissed when a later commit landed, says nothing and goes.
+# comments on one line. This also happens when the caller replies to the user.
+# Without the rule, the wrapper around that reply would come back as user input.
+# The wrapper says nothing, so it goes, while the inline comments it wrapped come
+# through on their own. A review with an APPROVED or CHANGES_REQUESTED verdict
+# says something, so it stays even with an empty body. Any other review with no
+# body, such as one GitHub dismissed when a later commit landed, says nothing and
+# goes.
 #
-# Timestamps are ISO-8601 with a trailing Z, which sort correctly as strings, so
-# the cutoff comparison needs no date arithmetic.
+# Timestamps are ISO-8601 with a trailing Z. They sort correctly as strings, so
+# the script can compare them without date arithmetic.
 
 set -uo pipefail
 
