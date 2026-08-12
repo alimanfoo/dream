@@ -25,10 +25,9 @@
 # process. Concurrent rounds are isolated by worktree; --max-agents paces token
 # use, not repository safety.
 #
-# Each tick also cleans up finished worktrees. A worktree whose pull request was
-# merged or closed, whose final round has started, and whose tmux round is no
-# longer running is done. Cleanup removes the worktree and branch. It leaves
-# $HOME/.dream/catcher state in place for debugging early lifecycle problems.
+# A merged or closed pull request gets one final round. The final-started marker
+# records that the round was launched, so a later tick does not launch it again.
+# The worktree and branch stay in place for debugging.
 #
 # Permissions: a dispatched session runs in auto mode. dispatch passes the
 # recurring unattended writes (gh pr create, gh issue create, git push, and so
@@ -156,7 +155,7 @@ watch_script="$script_dir/../watcher/watch.sh"
 
 # A worktree or branch this coordinator created, named
 # dream-catcher-GH<n>-<timestamp>. The pattern is anchored to that exact shape,
-# so cleanup never removes a worktree a human named after the same issue.
+# so the catcher never treats a human worktree as its own.
 is_session_branch() { [[ "$1" =~ ^dream-catcher-GH[0-9]+-[0-9]{8}-[0-9]{6}$ ]]; }
 
 issue_number_of_branch() {
@@ -205,25 +204,31 @@ at_agent_cap() {
   return 1
 }
 
-# True when a worktree for this issue already exists. This covers a round that
-# started, then died before it opened a pull request. Without this guard, the next
-# tick would dispatch the same issue again under a fresh timestamp.
+# True when an active worktree for this issue already exists. This covers a
+# round that started, then died before it opened a pull request. Without this
+# guard, the next tick would dispatch the same issue again under a fresh
+# timestamp. A worktree whose final round has already started is done, so it no
+# longer blocks a later attempt.
 dispatched_worktree_exists() {
   local target=$1 wt branch n
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
+    if [ -f "$(final_marker_file "$branch")" ] \
+      && ! tmux has-session -t "$branch" 2>/dev/null; then
+      continue
+    fi
     n=$(issue_number_of_branch "$branch") || continue
     [ "$n" = "$target" ] && return 0
   done < <(session_worktrees)
   return 1
 }
 
-# True when the issue already has a catcher worktree, or has an open or merged
-# pull request from an earlier catcher branch. The issue's closed state can lag in
-# `gh issue list`, so a merged pull request still counts. A closed-unmerged pull
-# request without a worktree does not count, so an old declined attempt never
-# locks the issue out. A read failure returns true, so a transient error never
-# re-dispatches an issue already under way.
+# True when the issue already has an active catcher worktree, or has an open or
+# merged pull request from an earlier catcher branch. The issue's closed state
+# can lag in `gh issue list`, so a merged pull request still counts. A
+# closed-unmerged pull request without an active worktree does not count, so an
+# old declined attempt never locks the issue out. A read failure returns true, so
+# a transient error never re-dispatches an issue already under way.
 already_handled() {
   local n=$1 count
   dispatched_worktree_exists "$n" && return 0
@@ -251,7 +256,6 @@ catcher_state_dir() { printf '%s/.dream/catcher/%s/%s\n' "$HOME" "$repo" "$1"; }
 agent_log_file() { printf '%s/agent.log\n' "$(catcher_state_dir "$1")"; }
 inbox_file() { printf '%s/inbox.json\n' "$(catcher_state_dir "$1")"; }
 final_marker_file() { printf '%s/final-started\n' "$(catcher_state_dir "$1")"; }
-watcher_watermark_file() { printf '%s/.dream/watcher/%s/pr%s\n' "$HOME" "$repo" "$1"; }
 
 # Write the filtered PR input for the round the catcher is about to resume.
 # watch.sh has already filtered the posts and advanced its watermark. The inbox
@@ -265,9 +269,7 @@ write_inbox() {
     || { log "cannot write inbox for $branch"; return 1; }
 }
 
-# Remove a worktree and its branch together. This backs out a failed dispatch and
-# reclaims a finished session. Catcher state under $HOME/.dream/catcher stays in
-# place for debugging.
+# Remove a worktree and its branch together. This backs out a failed dispatch.
 discard_worktree() {
   git -C "$main_root" worktree remove --force "$1" 2>/dev/null
   git -C "$main_root" branch -D "$2" 2>/dev/null
@@ -278,30 +280,6 @@ discard_worktree() {
 pr_for_branch() {
   gh pr list --repo "$repo" --head "$1" --state all --json number,state \
     --jq 'sort_by(.number) | last // empty' 2>/dev/null
-}
-
-# Clean up finished sessions. A worktree whose pull request has ended, whose
-# final round has started, and whose tmux round is no longer alive is done. The
-# final marker records start, not success; a final round that dies partway is not
-# retried.
-clean_up_finished() {
-  local wt branch pr_json pr_number state
-  while IFS=$'\t' read -r wt branch; do
-    [ -n "$wt" ] || continue
-    tmux has-session -t "$branch" 2>/dev/null && continue
-    pr_json=$(pr_for_branch "$branch") || continue
-    [ -n "$pr_json" ] || continue
-    state=$(printf '%s' "$pr_json" | jq -r '.state')
-    case "$state" in
-      MERGED|CLOSED) ;;
-      *) continue;;
-    esac
-    [ -f "$(final_marker_file "$branch")" ] || continue
-    pr_number=$(printf '%s' "$pr_json" | jq -r '.number')
-    log "cleaning up $branch (PR #$pr_number is $state and final round has started)"
-    rm -f "$(watcher_watermark_file "$pr_number")"
-    discard_worktree "$wt" "$branch"
-  done < <(session_worktrees)
 }
 
 # The fixed prompt for every resumed round. It carries the pull request number
@@ -372,8 +350,8 @@ launch_agent_round() {
 # or pull request.
 #
 # `git worktree add` creates the worktree, not `claude -w`. That lands it at a
-# predictable sibling path, with a branch name the cap, cleanup, and dedup checks
-# match on.
+# predictable sibling path, with a branch name the cap and dedup checks match
+# on.
 dispatch() {
   local n=$1 skill=$2 ts branch wt err prompt
   ts=$(date -u +%Y%m%d-%H%M%S)
@@ -411,6 +389,7 @@ resume_existing_work() {
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
     tmux has-session -t "$branch" 2>/dev/null && continue
+    [ -f "$(final_marker_file "$branch")" ] && continue
     pr_json=$(pr_for_branch "$branch") \
       || { log "cannot read pull request for $branch; will retry next tick"; continue; }
     [ -n "$pr_json" ] \
@@ -442,7 +421,6 @@ resume_existing_work() {
 }
 
 tick() {
-  clean_up_finished
   if at_agent_cap; then
     return 0
   fi

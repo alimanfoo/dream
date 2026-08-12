@@ -179,7 +179,7 @@ named `dream-catcher-GH<n>-<timestamp>`, which disappears when that round ends.
 The round's output is appended to
 `$HOME/.dream/catcher/<owner>/<repo>/dream-catcher-GH<n>-<timestamp>/agent.log`.
 Catcher state there also records the latest PR inbox and final-round marker, and
-stays in place after cleanup for debugging.
+stays in place with the worktree for debugging.
 
 How it picks work:
 
@@ -189,19 +189,16 @@ How it picks work:
   only when no existing work needs a round.
 - **Skill by label.** The smith label dispatches a `/dream:smith` session, for
   smaller tasks. The less label dispatches a `/dream:less` session, for very
-  small ones. An issue carrying both goes to `/dream:smith`. The catcher records
-  the chosen skill when it dispatches the branch, so changing labels later does
-  not change the session.
+  small ones. An issue carrying both goes to `/dream:smith`.
 - **Max agents.** `--max-agents` caps live agent rounds, defaulting to one. It
   does not cap how many pull requests can be waiting between rounds. Raise it to
   spend faster.
 - **Oldest eligible issue first.** Mark an issue blocked by another in the
   GitHub issue view to make it wait for that one. `/dream:catcher` skips a
   blocked issue until its blocker closes, then picks it up.
-- **Finished worktrees.** `/dream:catcher` removes a worktree and its branch
-  after the pull request has merged or closed, the final round has started, and
-  no agent round is running. It leaves `$HOME/.dream/catcher` files in place for
-  debugging.
+- **Finished worktrees.** `/dream:catcher` launches one final round after the
+  pull request merges or closes. It leaves the worktree, branch, logs, inbox,
+  final marker, and watcher watermark in place for debugging.
 
 Each session runs unattended. It needs permissions to interact with GitHub:
 creating the pull request, posting comments, committing, and pushing.
