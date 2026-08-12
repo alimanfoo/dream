@@ -30,6 +30,8 @@ coherent option and explain your reasoning in the PR.
 If you cannot decide something without the user, post a question as a comment on
 the PR. Assume the user only follows the PR, not this session. Don't use
 `AskUserQuestion` or the chat. The user won't see it, and the session stalls.
+After you post the question, end your turn. A later round resumes when the user
+replies on the PR.
 
 ## Coherence
 
@@ -143,9 +145,6 @@ the title from the session input.
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
 
-**Start the watch.** Invoke the `dream:watcher <pr>` skill on the PR number to
-watch it for what the user posts. It surfaces each new post as it arrives.
-
 ## Implement
 
 Open the draft PR before you change any code, if it isn't already open
@@ -182,35 +181,30 @@ Mark the PR ready for review.
 
 ## Handle what the user posts
 
-The watch you started when the PR opened surfaces the user's posts as they
-arrive. Act on each, whether it answers a question that you raised mid-session
-or reviews the PR once it is ready.
+When no work is ready to do, end your turn. An interactive session waits at the
+prompt for the user. A headless session exits, and `dream:catcher` resumes it
+when the PR has new input.
 
-Read the PR `state` that the watch reports, before you act on anything else.
-When `state` is `MERGED`, tear the watch down and end the session. When `state`
-is `CLOSED`, tear the watch down, post a comment naming where the work stopped,
-then end the session.
+When a turn starts with a PR-inbox prompt, read the JSON file it names. Read the
+PR `state` before you act on anything else. When `state` is `MERGED`, end your
+turn. When `state` is `CLOSED`, post a comment naming where the work stopped,
+then end your turn.
 
-Otherwise, act on the posts that the watch surfaced, oldest first. A post can
-carry more than one of these:
+Otherwise, act on the returned `posts`, oldest first. A post can carry more than
+one of these:
 
 - **A requested change.** Implement it. Commit and push. Reply on the PR.
 - **A resolve-conflicts request.** Update the branch as the [merge step](#merge)
   describes.
-- **A defer-merge request.** Tear the watch down and end the session, leaving
-  the PR open for the user to merge later.
+- **A defer-merge request.** End your turn, leaving the PR open for the user to
+  merge later.
 - **A question.** Answer it as a PR comment.
 - **An answer to a question that you raised.** Fold it into the work in hand and
   carry on.
 
 An approval, or anything with nothing to act on, needs no reply.
 
-Once the PR is ready and you have nothing left to do, go idle and let the watch
-wake you when the user replies. Idling is not ending: the watch is your only
-signal that the user has replied.
-
-Tear the watch down as the `dream:watcher` skill describes, at a merge, a close,
-or a deferred merge.
+Once the PR is ready and you have nothing left to do, end your turn.
 
 ## Merge
 

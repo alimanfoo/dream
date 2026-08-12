@@ -29,11 +29,11 @@ Code footer:
 
 > 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
-The watch tells your own comments from the user's by that footer, and drops any
-comment that carries it. Without it, your own words read back as the user's
-input, and the watch surfaces them to you as fresh instructions to act on. This
-covers a reply to an inline comment on the diff as much as a comment on the
-conversation.
+The watch drops comments that carry this footer, so your own replies do not come
+back as fresh user posts.
+
+Add the footer to replies on lines of the diff too, not only to comments on the
+pull request conversation.
 
 ## Set up the watch
 

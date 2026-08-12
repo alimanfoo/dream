@@ -2,39 +2,32 @@
 #
 # Dreamcatcher: dispatch labelled issues to dream sessions.
 #
-# The issue's label selects the skill: the team label dispatches a /dream:team
-# session, the smith label a /dream:smith session, the less label a /dream:less
-# session. An issue carrying more than one goes to the heaviest: team over smith
-# over less. Everything below the choice of skill is shared.
+# The issue's label selects the skill: the smith label dispatches a /dream:smith
+# session, and the less label dispatches a /dream:less session. An issue carrying
+# both goes to smith.
 #
-# Each tick is stateless. It reads live truth from git, tmux, and `gh`, then
-# dispatches at most one session. Nothing is stored between ticks: the worktrees
-# on disk, the tmux sessions, and the issues and pull requests on GitHub are the
-# only state. So any trigger works. The default is a background loop. Drive
-# `catch.sh --once` from cron for a machine that must survive reboots.
+# Each tick reads live truth from git, tmux, `gh`, and the small amount of
+# catcher state under $HOME/.dream/catcher. It first looks for existing
+# dispatched work to resume. Only when none needs a round does it dispatch a new
+# issue. The default is a background loop. Drive `catch.sh --once` from cron for
+# a machine that must survive reboots.
 #
-# Dispatched sessions run in a detached tmux session, not `claude --bg`. A
-# background session dies when the team goes idle between steps. A tmux session
-# stays alive and drives the work to completion, the same as a session run by
-# hand.
+# Agent rounds run headless inside detached tmux sessions. The tmux session is a
+# liveness probe and a place to attach while the round is running. When the round
+# ends, tmux exits. The session's context stays on disk, so the next round resumes
+# it from the worktree.
 #
-# One session develops at a time. The coordinator holds the slot from dispatch
-# until the pull request is ready for review, then frees it for the next
-# dispatch. Sessions awaiting review pile up alongside the one still developing.
+# The number of live agent rounds has a cap. --max-agents bounds how many agent
+# processes run at once, so the user can choose how fast to spend tokens. The
+# default is one.
 #
-# The number of live sessions has a cap. --max-sessions bounds how many run at
-# once. Without it, a burst of labelled issues could dispatch sessions until tmux
-# refuses to open more. Once the count reaches the cap, dispatch defers. Each
-# tick reclaims finished sessions before that check. So a capped loop drains as
-# the user merges.
+# Each dispatched issue has its own worktree and branch. A round is its own
+# process. Concurrent rounds are isolated by worktree; --max-agents paces token
+# use, not repository safety.
 #
-# Each session is its own process, in its own worktree, on its own branch, so
-# concurrent sessions are isolated. The slot paces dispatch. It is not a
-# corruption guard.
-#
-# Each tick also cleans up finished sessions. It kills and removes a worktree
-# whose pull request was merged or closed past a linger period. That keeps tmux
-# sessions from piling up until tmux refuses to open more.
+# A merged or closed pull request gets one final round. The final-started marker
+# records that the round was launched, so a later tick does not launch it again.
+# The worktree and branch stay in place for debugging.
 #
 # Permissions: a dispatched session runs in auto mode. dispatch passes the
 # recurring unattended writes (gh pr create, gh issue create, git push, and so
@@ -45,9 +38,10 @@
 #
 # Layout: the coordinator assumes the standard worktree layout, where each
 # dispatched worktree is a sibling of the main checkout under a directory
-# dedicated to this repo. It creates them as <container>/GH<n>-<timestamp>. The
-# timestamp makes each attempt unique, so a retry never collides with an earlier
-# attempt's branch or pull request.
+# dedicated to this repo. It creates them as
+# <container>/dream-catcher-GH<n>-<timestamp>. The timestamp makes each attempt
+# unique, so a retry never collides with an earlier attempt's branch or pull
+# request.
 
 set -uo pipefail
 
@@ -56,25 +50,21 @@ usage() {
 Dreamcatcher: dispatch labelled issues to dream sessions.
 
 Usage:
-  catch.sh [--team-label <label>] [--smith-label <label>] [--less-label <label>]
-           [--team-effort <effort>]
+  catch.sh [--smith-label <label>] [--less-label <label>]
            [--smith-model <model>] [--smith-effort <effort>]
            [--less-model <model>] [--less-effort <effort>]
-           [--assignee <who>] [--interval <seconds>] [--linger <minutes>]
-           [--max-sessions <n>] [--once]
+           [--assignee <who>] [--interval <seconds>]
+           [--max-agents <n>] [--once]
 
-  --team-label  Issue label that dispatches a /dream:team session. Default: $default_team_label.
   --smith-label  Issue label that dispatches a /dream:smith session. Default: $default_smith_label.
   --less-label  Issue label that dispatches a /dream:less session. Default: $default_less_label.
-  --team-effort Reasoning effort a /dream:team session runs under. Default: $default_team_effort.
   --smith-model  Model a /dream:smith session runs under. Default: $default_smith_model.
   --smith-effort Reasoning effort a /dream:smith session runs under. Default: $default_smith_effort.
   --less-model  Model a /dream:less session runs under. Default: $default_less_model.
   --less-effort Reasoning effort a /dream:less session runs under. Default: $default_less_effort.
   --assignee    Whose issues to pick up. Default: $default_assignee.
   --interval    Seconds between ticks in loop mode. Default: $default_interval.
-  --linger      Minutes a finished session lingers before it is cleaned up. Default: $default_linger.
-  --max-sessions  Most concurrent live sessions to run. Default: $default_max_sessions.
+  --max-agents  Most concurrent agent rounds to run. Default: $default_max_agents.
   --once        A single tick, then exit, instead of looping.
 EOF
 }
@@ -87,66 +77,63 @@ die() { printf 'dreamcatcher: %s\n' "$*" >&2; exit 2; }
 # in one place.
 require_positive_int() { [[ "$2" =~ ^[1-9][0-9]*$ ]] || die "--$1 must be a positive whole number of $3"; }
 
+# Quote one value for the shell command tmux will run. Values can include spaces
+# because a repository path can. Keeping the quote rule in one helper means the
+# launch and resume paths do not grow their own variants.
+shell_quote() {
+  local value=${1//\'/\'\\\'\'}
+  printf "'%s'" "$value"
+}
+
 # --- configuration ---------------------------------------------------------
 
 # The defaults have their own home, which usage() reads, so --help always shows
 # the true defaults whatever the parsing loop sets. Each working variable seeds
 # from its default, then a flag may override it.
-default_team_label="dream:team"
 default_smith_label="dream:smith"
 default_less_label="dream:less"
-default_team_effort="high"
 default_smith_model="opus[1m]"
 default_smith_effort="xhigh"
 default_less_model="sonnet"
 default_less_effort="high"
 default_assignee="@me"
 default_interval=300
-default_linger=30
-default_max_sessions=10
+default_max_agents=1
 
-team_label=$default_team_label
 smith_label=$default_smith_label
 less_label=$default_less_label
-team_effort=$default_team_effort
 smith_model=$default_smith_model
 smith_effort=$default_smith_effort
 less_model=$default_less_model
 less_effort=$default_less_effort
 assignee=$default_assignee
 interval=$default_interval
-linger=$default_linger
-max_sessions=$default_max_sessions
+max_agents=$default_max_agents
 once=0
 
 while [ $# -gt 0 ]; do
   case "$1" in
-    --team-label) [ $# -ge 2 ] || die "--team-label requires a value"; team_label=$2; shift 2;;
     --smith-label) [ $# -ge 2 ] || die "--smith-label requires a value"; smith_label=$2; shift 2;;
     --less-label) [ $# -ge 2 ] || die "--less-label requires a value"; less_label=$2; shift 2;;
-    --team-effort) [ $# -ge 2 ] || die "--team-effort requires a value"; team_effort=$2; shift 2;;
     --smith-model) [ $# -ge 2 ] || die "--smith-model requires a value"; smith_model=$2; shift 2;;
     --smith-effort) [ $# -ge 2 ] || die "--smith-effort requires a value"; smith_effort=$2; shift 2;;
     --less-model) [ $# -ge 2 ] || die "--less-model requires a value"; less_model=$2; shift 2;;
     --less-effort) [ $# -ge 2 ] || die "--less-effort requires a value"; less_effort=$2; shift 2;;
     --assignee) [ $# -ge 2 ] || die "--assignee requires a value"; assignee=$2; shift 2;;
     --interval) [ $# -ge 2 ] || die "--interval requires a value"; interval=$2; shift 2;;
-    --linger)   [ $# -ge 2 ] || die "--linger requires a value"; linger=$2; shift 2;;
-    --max-sessions) [ $# -ge 2 ] || die "--max-sessions requires a value"; max_sessions=$2; shift 2;;
+    --max-agents) [ $# -ge 2 ] || die "--max-agents requires a value"; max_agents=$2; shift 2;;
     --once)     once=1; shift;;
     -h|--help)  usage; exit 0;;
     *)          die "unknown argument: $1";;
   esac
 done
 
-# Reject a non-numeric interval, linger, or max-sessions at parse time. A bad
-# value would otherwise fail only where it is used, with a message that hides the
-# cause. In clean_up_finished's arithmetic it aborts the whole loop under set -u.
-# In tick's cap comparison it makes the test fail open, so dispatch runs with no
+# Reject a non-numeric interval or max-agents at parse time. A bad value would
+# otherwise fail only where it is used, with a message that hides the cause. In
+# tick's cap comparison it makes the test fail open, so dispatch runs with no
 # cap. Dying here names the flag instead.
 require_positive_int interval "$interval" seconds
-require_positive_int linger "$linger" minutes
-require_positive_int max-sessions "$max_sessions" sessions
+require_positive_int max-agents "$max_agents" agents
 
 for tool in git gh jq claude tmux; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
@@ -159,79 +146,94 @@ main_root=$(git rev-parse --show-toplevel 2>/dev/null) || die "not in a git repo
 [ -d "$main_root/.git" ] || die "run this from the main checkout, not a linked worktree"
 container=$(dirname "$main_root")
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) || die "cannot read the GitHub repository"
+script_dir=$(CDPATH=; cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd) \
+  || die "cannot resolve the catcher script directory"
+watch_script="$script_dir/../watcher/watch.sh"
+[ -f "$watch_script" ] || die "cannot find watch.sh next to the catcher skill"
 
 # --- one tick --------------------------------------------------------------
 
-# A worktree or branch this coordinator created, named GH<n>-<timestamp>. The
-# pattern is anchored to that exact shape, so cleanup never removes a worktree a
-# human named after the same issue.
-is_session_branch() { [[ "$1" =~ ^GH[0-9]+-[0-9]{8}-[0-9]{6}$ ]]; }
+# A worktree or branch this coordinator created, named
+# dream-catcher-GH<n>-<timestamp>. The pattern is anchored to that exact shape,
+# so the catcher never treats a human worktree as its own.
+is_session_branch() { [[ "$1" =~ ^dream-catcher-GH[0-9]+-[0-9]{8}-[0-9]{6}$ ]]; }
+
+issue_number_of_branch() {
+  local branch=$1
+  [[ "$branch" =~ ^dream-catcher-GH([0-9]+)-[0-9]{8}-[0-9]{6}$ ]] || return 1
+  printf '%s\n' "${BASH_REMATCH[1]}"
+}
 
 # The path of every worktree of this repo, one per line. sed, not awk, keeps a
 # path that contains a space intact.
 worktree_paths() { git -C "$main_root" worktree list --porcelain | sed -n 's/^worktree //p'; }
 
-# The branch of every live dispatched session, one per line: a dispatched
-# worktree for this repo whose tmux session is still running. A crashed session's tmux
-# session is gone. It drops out here. That is why it never wedges the slot or
-# fills the cap. The slot gate and the cap gate both count off this one
-# definition of a live session.
-live_sessions() {
+# Every dispatched worktree of this repo, as path<TAB>branch. The branch name
+# pattern is the source of truth for whether the catcher made it.
+session_worktrees() {
   local wt branch
   while read -r wt; do
     [ -n "$wt" ] || continue
     branch=$(basename "$wt")
     is_session_branch "$branch" || continue
-    tmux has-session -t "dream-$branch" 2>/dev/null || continue
-    printf '%s\n' "$branch"
+    printf '%s\t%s\n' "$wt" "$branch"
   done < <(worktree_paths)
 }
 
-# True when a live session still holds the slot: its branch has no pull request
-# that is merged, closed, or ready for review. isDraft is the signal every
-# dispatched session type emits at the same point, team, smith, and less alike, so
-# this reads uniformly across all three. Each branch is unique per attempt, so
-# its pull request state is that session's alone, never an earlier attempt's.
-session_developing() {
-  local branch reached_review
-  while read -r branch; do
-    reached_review=$(gh pr list --repo "$repo" --head "$branch" --state all --json state,isDraft \
-      --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED" or (.state == "OPEN" and .isDraft == false))] | length' \
-      2>/dev/null || echo 0)
-    if [ "${reached_review:-0}" -eq 0 ]; then
-      log "deferring: $branch is still developing"
-      return 0
-    fi
-  done < <(live_sessions)
-  return 1
+# The branch of every live agent round, one per line. A finished or crashed round
+# drops out here because its tmux session is gone.
+live_agents() {
+  local wt branch
+  while IFS=$'\t' read -r wt branch; do
+    [ -n "$wt" ] || continue
+    tmux has-session -t "$branch" 2>/dev/null || continue
+    printf '%s\n' "$branch"
+  done < <(session_worktrees)
 }
 
-# True when the live sessions fill the cap. tick calls this after
-# session_developing, so every session counted here is awaiting review.
-# Deferring once the count reaches max_sessions makes it a hard ceiling.
-# Dispatching at the cap would push the total past it. clean_up_finished runs
-# earlier each tick, so even at the cap the loop reclaims finished worktrees as
-# the user merges.
-at_session_cap() {
+# True when live agent rounds fill the cap. Deferring once the count reaches
+# max-agents makes it a hard ceiling. Dispatching at the cap would push the total
+# past it.
+at_agent_cap() {
   local live
-  live=$(live_sessions | wc -l)
-  if [ "$live" -ge "$max_sessions" ]; then
-    log "deferring: $live live sessions at the cap of $max_sessions"
+  live=$(live_agents | wc -l)
+  if [ "$live" -ge "$max_agents" ]; then
+    log "deferring: $live live agent rounds at the cap of $max_agents"
     return 0
   fi
   return 1
 }
 
-# True when the issue already has an open or merged pull request: a current or
-# earlier session still going, or one already merged. The issue's closed state
+# True when an active worktree for this issue already exists. This covers a
+# round that started, then died before it opened a pull request. Without this
+# guard, the next tick would dispatch the same issue again under a fresh
+# timestamp. A worktree whose final round has already started is done, so it no
+# longer blocks a later attempt.
+dispatched_worktree_exists() {
+  local target=$1 wt branch n
+  while IFS=$'\t' read -r wt branch; do
+    [ -n "$wt" ] || continue
+    if [ -f "$(final_marker_file "$branch")" ] \
+      && ! tmux has-session -t "$branch" 2>/dev/null; then
+      continue
+    fi
+    n=$(issue_number_of_branch "$branch") || continue
+    [ "$n" = "$target" ] && return 0
+  done < <(session_worktrees)
+  return 1
+}
+
+# True when the issue already has an active catcher worktree, or has an open or
+# merged pull request from an earlier catcher branch. The issue's closed state
 # can lag in `gh issue list`, so a merged pull request still counts. A
-# closed-unmerged pull request does not count, so an old declined attempt never
-# locks the issue out. A read failure returns true, so a transient error never
-# re-dispatches an issue already under way.
+# closed-unmerged pull request without an active worktree does not count, so an
+# old declined attempt never locks the issue out. A read failure returns true, so
+# a transient error never re-dispatches an issue already under way.
 already_handled() {
   local n=$1 count
+  dispatched_worktree_exists "$n" && return 0
   count=$(gh pr list --repo "$repo" --state all --limit 500 --json headRefName,state 2>/dev/null \
-    | jq -r --arg n "$n" '[.[] | select(.headRefName | test("^GH" + $n + "-[0-9]{8}-[0-9]{6}$")) | select(.state == "OPEN" or .state == "MERGED")] | length' 2>/dev/null)
+    | jq -r --arg n "$n" '[.[] | select(.headRefName | test("^dream-catcher-GH" + $n + "-[0-9]{8}-[0-9]{6}$")) | select(.state == "OPEN" or .state == "MERGED")] | length' 2>/dev/null)
   [ -n "$count" ] || return 0
   [ "$count" -ne 0 ]
 }
@@ -247,152 +249,196 @@ unblocked() {
   [ "${open:-0}" -eq 0 ]
 }
 
-epoch_of() {
-  date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$1" +%s 2>/dev/null || date -u -d "$1" +%s 2>/dev/null
+# The catcher keeps per-branch diagnostics under $HOME. The repository stays as
+# owner/name path segments, matching watch.sh's watermark key, so similarly named
+# repositories do not collide.
+catcher_state_dir() { printf '%s/.dream/catcher/%s/%s\n' "$HOME" "$repo" "$1"; }
+agent_log_file() { printf '%s/agent.log\n' "$(catcher_state_dir "$1")"; }
+inbox_file() { printf '%s/inbox.json\n' "$(catcher_state_dir "$1")"; }
+final_marker_file() { printf '%s/final-started\n' "$(catcher_state_dir "$1")"; }
+
+# Write the filtered PR input for the round the catcher is about to resume.
+# watch.sh has already filtered the posts and advanced its watermark. The inbox
+# is the handoff: the prompt carries only this path, not the user's words.
+write_inbox() {
+  local branch=$1 json=$2 state_dir
+  state_dir=$(catcher_state_dir "$branch")
+  mkdir -p "$state_dir" \
+    || { log "cannot create catcher state directory for $branch"; return 1; }
+  printf '%s\n' "$json" >"$(inbox_file "$branch")" \
+    || { log "cannot write inbox for $branch"; return 1; }
 }
 
-# Mark the worktree as trusted, so the session does not block on the
-# workspace-trust prompt. A background session skips that prompt, but an
-# interactive tmux session hits it on a fresh directory. The flag lives in
-# ~/.claude.json under the worktree's absolute path. The write is atomic.
-trust_worktree() {
-  local dir=$1 cfg="$HOME/.claude.json" tmp
-  [ -f "$cfg" ] || printf '{}\n' >"$cfg"
-  tmp=$(mktemp) || return 1
-  # shellcheck disable=SC2015  # the fallback is correct cleanup whether jq or mv fails
-  jq --arg d "$dir" '.projects[$d].hasTrustDialogAccepted = true' "$cfg" >"$tmp" 2>/dev/null \
-    && mv "$tmp" "$cfg" || { rm -f "$tmp"; return 1; }
-}
-
-# Undo trust_worktree, so a removed worktree leaves no entry behind in
-# ~/.claude.json. The write is atomic.
-untrust_worktree() {
-  local dir=$1 cfg="$HOME/.claude.json" tmp
-  [ -f "$cfg" ] || return 0
-  tmp=$(mktemp) || return 1
-  # shellcheck disable=SC2015  # the fallback is correct cleanup whether jq or mv fails
-  jq --arg d "$dir" 'del(.projects[$d])' "$cfg" >"$tmp" 2>/dev/null \
-    && mv "$tmp" "$cfg" || { rm -f "$tmp"; return 1; }
-}
-
-# Remove a worktree, its branch, and its trust entry together, so nothing is
-# left behind. This backs out a failed dispatch and reclaims a finished session.
+# Remove a worktree and its branch together. This backs out a failed dispatch.
 discard_worktree() {
   git -C "$main_root" worktree remove --force "$1" 2>/dev/null
   git -C "$main_root" branch -D "$2" 2>/dev/null
-  untrust_worktree "$1"
 }
 
-# Clean up finished sessions to free tmux's session slots. A worktree whose pull
-# request has been merged or closed for at least the linger period is done. Its
-# Collect has already run, so kill its tmux session and remove the worktree. This
-# automates the cleanup a user would otherwise do by hand. No reliable "team
-# idle" signal exists, so the linger period, set above any Collect run, is the
-# guard against cleaning up mid-Collect.
-clean_up_finished() {
-  local cutoff wt branch done_at done_epoch
-  cutoff=$(( $(date -u +%s) - linger * 60 ))
-  while read -r wt; do
-    [ -n "$wt" ] || continue
-    branch=$(basename "$wt")
-    is_session_branch "$branch" || continue
-    done_at=$(gh pr list --repo "$repo" --head "$branch" --state all --json state,mergedAt,closedAt \
-      --jq '[.[] | select(.state == "MERGED" or .state == "CLOSED") | (.mergedAt // .closedAt)] | map(select(.)) | sort | last // empty' \
-      2>/dev/null)
-    [ -n "$done_at" ] || continue
-    done_epoch=$(epoch_of "$done_at")
-    [ -n "$done_epoch" ] || continue
-    [ "$done_epoch" -le "$cutoff" ] || continue
-    log "cleaning up $branch (PR finished $done_at, past ${linger}m linger)"
-    tmux kill-session -t "dream-$branch" 2>/dev/null
-    discard_worktree "$wt" "$branch"
-  done < <(worktree_paths)
+# The pull request for a branch, as a single JSON object. A branch is unique per
+# attempt, so the newest matching pull request is the session's own.
+pr_for_branch() {
+  gh pr list --repo "$repo" --head "$1" --state all --json number,state \
+    --jq 'sort_by(.number) | last // empty' 2>/dev/null
 }
 
-# Create the worktree and launch a session for it in a detached tmux session.
-# The branch name carries the issue number and a timestamp. A dispatched session
-# reads the issue number at boot to take the issue as its input. The timestamp
-# makes the name unique per attempt, so a retry never collides with an earlier
-# attempt's branch or pull request.
+# The fixed prompt for every resumed round. It carries the pull request number
+# and inbox path only. Pull request activity stays out of the command line: the
+# resumed agent reads the filtered batch from the inbox file.
+resume_prompt() {
+  local pr=$1 inbox=$2
+  cat <<EOF
+PR-inbox prompt for pull request #$pr:
+
+  $inbox
+
+Read that JSON file. Read state before anything else. If state is MERGED or
+CLOSED, finish per your session's rules. Otherwise act on posts per your
+session's rules. End your turn when done.
+EOF
+}
+
+# Build the Claude Code command for one headless agent round. The same command
+# shape starts the first round and resumes later ones; resume adds --continue.
+claude_round_command() {
+  local branch=$1 skill=$2 resume=$3 prompt=$4 writes cmd
+  writes="Bash(gh pr create:*) Bash(gh pr comment:*) Bash(gh pr edit:*) Bash(gh pr ready:*) Bash(gh pr close:*) Bash(gh issue create:*) Bash(gh issue comment:*) Bash(git commit:*) Bash(git push:*)"
+  cmd="claude --print --permission-mode auto --allowedTools $(shell_quote "$writes") --name $(shell_quote "$branch")"
+  if [ "$resume" -eq 1 ]; then
+    cmd="$cmd --continue"
+  else
+    case "$skill" in
+      smith) cmd="$cmd --model $(shell_quote "$smith_model") --effort $(shell_quote "$smith_effort")";;
+      less)  cmd="$cmd --model $(shell_quote "$less_model") --effort $(shell_quote "$less_effort")";;
+      *)     return 1;;
+    esac
+  fi
+  printf '%s %s\n' "$cmd" "$(shell_quote "$prompt")"
+}
+
+# Start one headless agent round in tmux and append its output to agent.log. tmux
+# gives the catcher a liveness signal while the process runs. The log survives
+# the tmux session ending and stays out of the worktree.
+launch_agent_round() {
+  local wt=$1 branch=$2 skill=$3 resume=$4 final=$5 prompt=$6 session state_dir log_file agent_cmd run marker round
+  session=$branch
+  state_dir=$(catcher_state_dir "$branch")
+  log_file=$(agent_log_file "$branch")
+  round=$skill
+  [ "$resume" -eq 1 ] && round=resume
+  mkdir -p "$state_dir" \
+    || { log "cannot create catcher state directory for $branch"; return 1; }
+  agent_cmd=$(claude_round_command "$branch" "$skill" "$resume" "$prompt") \
+    || { log "unknown skill '$skill' for $branch"; return 1; }
+  run="{ printf '%s  starting $branch ($round)\n' \"\$(date -u +%FT%TZ)\"; $agent_cmd; status=\$?; printf '%s  exited with status %s\n' \"\$(date -u +%FT%TZ)\" \"\$status\"; exit \"\$status\"; } 2>&1 | tee -a $(shell_quote "$log_file")"
+  if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" "$run"; then
+    log "tmux launch failed for $branch"
+    return 1
+  fi
+  if [ "$final" -eq 1 ]; then
+    marker=$(final_marker_file "$branch")
+    printf '%s\n' "$(date -u +%FT%TZ)" >"$marker" \
+      || log "could not write final marker for $branch"
+  fi
+  log "started $round round for $branch in tmux session $session"
+}
+
+# Create the worktree and launch the first headless round for it. The branch name
+# carries the issue number and a timestamp. A dispatched session reads the issue
+# number at boot to take the issue as its input. The timestamp makes the name
+# unique per attempt, so a retry never collides with an earlier attempt's branch
+# or pull request.
 #
 # `git worktree add` creates the worktree, not `claude -w`. That lands it at a
-# predictable sibling path, with a branch name the cap, cleanup, and dedup checks
-# match on. tmux hosts the session. The launch differs by skill: a team session
-# runs under the experimental agent teams feature in teammate tmux mode, a smith
-# or less session under neither. A team session sets --team-effort as the whole
-# session's effort, which the team inherits; a model override makes no sense
-# there, since each agent carries its own model. A smith or less session instead
-# sets its model and effort, the --smith-model/--smith-effort or
-# --less-model/--less-effort values, because its single agent would otherwise
-# take the launcher's defaults, where the team's agents carry their own. All run
-# in auto mode, and the narrow allow rules passed at launch handle unattended
-# writes. Every session also carries its branch name as its display name, so it
-# reads the same in the prompt box, the terminal title, and the /resume picker.
+# predictable sibling path, with a branch name the cap and dedup checks match
+# on.
 dispatch() {
-  local n=$1 skill=$2 ts branch wt session err writes run
+  local n=$1 skill=$2 ts branch wt err prompt
   ts=$(date -u +%Y%m%d-%H%M%S)
-  branch="GH${n}-${ts}"
+  branch="dream-catcher-GH${n}-${ts}"
   wt="$container/${branch}"
-  session="dream-${branch}"
   log "dispatching GH${n} ($skill) as $branch"
   err=$(git -C "$main_root" fetch origin main --quiet 2>&1) \
     || { log "fetch failed for GH${n}: $err"; return 1; }
   err=$(git -C "$main_root" worktree add -b "$branch" "$wt" origin/main 2>&1) \
     || { log "could not create worktree $wt for GH${n}: $err"; return 1; }
-  trust_worktree "$wt" \
-    || { log "could not pre-trust $wt, skipping GH${n}"; discard_worktree "$wt" "$branch"; return 1; }
-  # The writes a session makes unattended, as narrow per-command allow rules.
-  # Auto mode drops a broad Bash allow, so only narrow rules serve here.
-  writes="Bash(gh pr create:*) Bash(gh pr comment:*) Bash(gh pr edit:*) Bash(gh pr ready:*) Bash(gh pr close:*) Bash(gh issue create:*) Bash(gh issue comment:*) Bash(git commit:*) Bash(git push:*)"
-  run="claude --permission-mode auto --allowedTools '$writes' --name '$branch'"
-  case "$skill" in
-    team) run="CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 exec $run --effort '$team_effort' --teammate-mode tmux '/dream:team'";;
-    smith) run="exec $run --model '$smith_model' --effort '$smith_effort' '/dream:smith'";;
-    less) run="exec $run --model '$less_model' --effort '$less_effort' '/dream:less'";;
-    *)    log "unknown skill '$skill' for GH${n}, discarding worktree"; discard_worktree "$wt" "$branch"; return 1;;
-  esac
-  if ! tmux new-session -d -s "$session" -x 220 -y 50 -c "$wt" "$run"; then
-    log "tmux launch failed for GH${n}, discarding worktree"
+  prompt="/dream:$skill"
+  if ! launch_agent_round "$wt" "$branch" "$skill" 0 0 "$prompt"; then
+    log "could not start first round for GH${n}, discarding worktree"
     discard_worktree "$wt" "$branch"
     return 1
   fi
-  log "dispatched GH${n} ($skill) into tmux session $session"
+  log "dispatched GH${n} ($skill) as $branch"
 }
 
 # Open issues carrying a label, one per line as createdAt<TAB>number<TAB>skill.
 # The skill is the one the label dispatches, so a caller can order across labels
 # by the timestamp and still know which skill each issue selected.
 list_labelled() {
-  local lbl=$1 skill=$2
+  local lbl=$1 skill=$2 state=${3:-open}
   gh issue list --repo "$repo" --assignee "$assignee" --label "$lbl" \
-    --state open --limit 500 --json number,createdAt \
+    --state "$state" --limit 500 --json number,createdAt \
     --jq ".[] | [.createdAt, (.number | tostring), \"$skill\"] | @tsv" 2>/dev/null
 }
 
+# Resume the first existing branch that needs a round. Open pull requests resume
+# only when watch.sh returns new user posts. Merged or closed pull requests get
+# one final round, guarded by final-started.
+resume_existing_work() {
+  local wt branch pr_json pr_number state watch_json posts prompt
+  while IFS=$'\t' read -r wt branch; do
+    [ -n "$wt" ] || continue
+    tmux has-session -t "$branch" 2>/dev/null && continue
+    [ -f "$(final_marker_file "$branch")" ] && continue
+    pr_json=$(pr_for_branch "$branch") \
+      || { log "cannot read pull request for $branch; will retry next tick"; continue; }
+    [ -n "$pr_json" ] \
+      || { log "skipping $branch: no pull request yet; see $(agent_log_file "$branch")"; continue; }
+    pr_number=$(printf '%s' "$pr_json" | jq -r '.number')
+    state=$(printf '%s' "$pr_json" | jq -r '.state')
+    case "$state" in
+      OPEN)
+        watch_json=$(bash "$watch_script" "$pr_number" 2>/dev/null) \
+          || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
+        posts=$(printf '%s' "$watch_json" | jq -r '.posts | length' 2>/dev/null) \
+          || { log "cannot parse watch result for pull request #$pr_number"; continue; }
+        [ "${posts:-0}" -gt 0 ] || continue
+        write_inbox "$branch" "$watch_json" || continue
+        prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
+        launch_agent_round "$wt" "$branch" "" 1 0 "$prompt" && return 0
+        ;;
+      MERGED|CLOSED)
+        [ -f "$(final_marker_file "$branch")" ] && continue
+        watch_json=$(bash "$watch_script" "$pr_number" 2>/dev/null) \
+          || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
+        write_inbox "$branch" "$watch_json" || continue
+        prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
+        launch_agent_round "$wt" "$branch" "" 1 1 "$prompt" && return 0
+        ;;
+    esac
+  done < <(session_worktrees | sort -t$'\t' -k2,2)
+  return 1
+}
+
 tick() {
-  clean_up_finished
-  if session_developing; then
+  if at_agent_cap; then
     return 0
   fi
-  if at_session_cap; then
-    return 0
-  fi
-  local team_list smith_list less_list candidates n skill
-  team_list=$(list_labelled "$team_label" team) \
+  local smith_open less_open candidates n skill
+  resume_existing_work && return 0
+  smith_open=$(list_labelled "$smith_label" smith open) \
     || { log "cannot list issues; will retry next tick"; return 1; }
-  smith_list=$(list_labelled "$smith_label" smith) \
+  less_open=$(list_labelled "$less_label" less open) \
     || { log "cannot list issues; will retry next tick"; return 1; }
-  less_list=$(list_labelled "$less_label" less) \
-    || { log "cannot list issues; will retry next tick"; return 1; }
-  # Oldest eligible issue first across all three labels. A stable sort on the
-  # timestamp alone keeps the lists in fed order for an issue that carries more
-  # than one label: team first, then smith, then less. Such an issue dispatches to
-  # the heaviest of its labels, since that line is fed first. The timestamp has
-  # served its purpose once sorted, so drop it and keep the issue number and skill.
-  candidates=$(printf '%s\n%s\n%s\n' "$team_list" "$smith_list" "$less_list" | sort -s -t$'\t' -k1,1 | cut -f2-)
+  # Oldest eligible issue first across both labels. A stable sort on the
+  # timestamp alone keeps the lists in fed order for an issue that carries both
+  # labels: smith first, then less. Such an issue dispatches to smith, since that
+  # line is fed first. The timestamp has served its purpose once sorted, so drop
+  # it and keep the issue number and skill.
+  candidates=$(printf '%s\n%s\n' "$smith_open" "$less_open" | sort -s -t$'\t' -k1,1 | cut -f2-)
   while IFS=$'\t' read -r n skill; do
     [ -n "$n" ] || continue
-    already_handled "$n" && continue   # already has an open or merged pull request
+    already_handled "$n" && continue   # already has a worktree or active PR
     unblocked "$n" || continue     # a blocker is still open
     dispatch "$n" "$skill" && return 0
   done <<<"$candidates"
@@ -401,7 +447,7 @@ tick() {
 
 # --- run -------------------------------------------------------------------
 
-log "dreamcatcher watching $repo for labels '$team_label' (team), '$smith_label' (smith), and '$less_label' (less), assignee '$assignee'"
+log "dreamcatcher watching $repo for labels '$smith_label' (smith) and '$less_label' (less), assignee '$assignee'"
 if [ "$once" -eq 1 ]; then
   tick
 else

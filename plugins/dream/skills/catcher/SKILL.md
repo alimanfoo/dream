@@ -2,41 +2,38 @@
 name: catcher
 description:
   Watch a repository for labelled issues and dispatch an autonomous coding
-  session for each. Each session runs unattended and carries its issue to a pull
-  request for the user to review and merge. Only use when the user explicitly
-  runs /dream:catcher.
+  session for each. Each session runs unattended in bounded rounds and carries
+  its issue to a pull request for the user to review and merge. Only use when
+  the user explicitly runs /dream:catcher.
 argument-hint:
-  "[--team-label <label>] [--smith-label <label>] [--less-label <label>]
-  [--team-effort <effort>] [--smith-model <model>] [--smith-effort <effort>]
-  [--less-model <model>] [--less-effort <effort>] [--assignee <user>]
-  [--interval <seconds>] [--linger <minutes>] [--max-sessions <n>]"
+  "[--smith-label <label>] [--less-label <label>] [--smith-model <model>]
+  [--smith-effort <effort>] [--less-model <model>] [--less-effort <effort>]
+  [--assignee <user>] [--interval <seconds>] [--max-agents <n>]"
 ---
 
 # Dreamcatcher
 
-Watch a repository for issues marked for the `dream:team`, the `dream:smith`
-skill, or the `dream:less` skill, and dispatch a fresh session for each, chosen
-by the issue's label. The sessions already do the work. This is the coordinator
-around them. It notices a labelled issue and dispatches a session for it.
+Watch a repository for issues marked for the `dream:smith` or `dream:less`
+skill, and dispatch a fresh session for each, chosen by the issue's label. The
+sessions already do the work. This is the coordinator around them. It notices a
+labelled issue, starts a bounded round for it, and later resumes that session
+when its pull request has new input.
 
-A session holds the slot from dispatch until its pull request is ready for
-review, then frees it for the next dispatch. Sessions awaiting review pile up
-alongside the one still developing, while the user is away. A cap bounds how
-many run at once, so a burst of labelled issues cannot exhaust the machine's
-tmux sessions.
+Each round runs headless in its own tmux session. The round ends when the agent
+marks the pull request ready, posts a question it needs the user to answer, or
+finishes a later review, merge, or close step. A cap bounds how many agent
+rounds run at once, so the user controls token spend.
 
 The coordinator is a shell script, `catch.sh`, in this skill's directory. It
-runs a tick on a loop and reads live state each time, so nothing is stored
-between ticks. Your job is to gather its configuration, run the preflight
-checks, and launch it.
+runs a tick on a loop and reads live state each time. It uses git worktrees,
+tmux sessions, GitHub state, watcher watermarks, and retained catcher
+diagnostics under `$HOME/.dream/catcher`. Your job is to gather its
+configuration, run the preflight checks, and launch it.
 
 ## Arguments
 
-The user may pass any option below as a `--flag value` pair, in any order:
-`--team-label`, `--smith-label`, `--less-label`, `--team-effort`,
-`--smith-model`, `--smith-effort`, `--less-model`, `--less-effort`,
-`--assignee`, `--interval`, `--linger`, and `--max-sessions`. Take whichever are
-present.
+The user may pass any option shown in the `argument-hint` frontmatter as a
+`--flag value` pair, in any order. Take whichever are present.
 
 ## Gather the configuration
 
@@ -45,20 +42,15 @@ argument named. Let the script default the rest. Ask the user only whether to
 override a default. State the options you resolved before launching, so a
 misread surfaces at once.
 
-- **Team label.** The label that dispatches a `dream:team` session.
 - **Smith label.** The label that dispatches a `dream:smith` session.
 - **Less label.** The label that dispatches a `dream:less` session.
-- **Team effort.** The reasoning effort a `dream:team` session runs under. A
-  model override makes no sense here, since each of its agents carries its own
-  model.
 - **Smith model.** The model a `dream:smith` session runs under.
 - **Smith effort.** The reasoning effort a `dream:smith` session runs under.
 - **Less model.** The model a `dream:less` session runs under.
 - **Less effort.** The reasoning effort a `dream:less` session runs under.
 - **Assignee.** Whose issues to pick up.
 - **Interval.** Seconds between ticks.
-- **Linger.** Minutes a finished session lingers before it is cleaned up.
-- **Max sessions.** Most concurrent live sessions to run.
+- **Max agents.** Most concurrent agent rounds to run.
 
 The repository is the one in the current working directory.
 
@@ -78,8 +70,8 @@ Run each check before launching. Stop and tell the user if one fails.
   worktree's `.git` is a file, so dispatched worktrees would land in the wrong
   place.
 
-No permission setup is needed here. The coordinator grants each dispatched
-session its writes at launch.
+No permission setup is needed here. The coordinator grants each agent round its
+writes at launch.
 
 ## Launch
 
@@ -101,9 +93,13 @@ Then tell the user:
 - that they can watch the loop with `tmux attach -t dreamcatcher`, or follow the
   log with `tail -f dreamcatcher.log`, that `Ctrl+B` then `d` detaches, and that
   `tmux kill-session -t dreamcatcher` stops the loop.
-- that each issue runs in its own tmux session named `dream-GH<n>-<timestamp>`,
-  and that `Ctrl+B` then `s` switches between the loop and every dispatched
-  session, so any of them is one keystroke away.
+- that each running agent round has its own tmux session named
+  `dream-catcher-GH<n>-<timestamp>`, and that the tmux session disappears when
+  that round ends.
+- that each round keeps catcher state under
+  `$HOME/.dream/catcher/<owner>/<repo>/dream-catcher-GH<n>-<timestamp>/`:
+  `agent.log`, the latest PR inbox, and the final-round marker. This state stays
+  in place with the worktree for debugging.
 - that tmux sessions stop on reboot, so re-running `/dream:catcher` restarts the
   loop, and that a machine that must survive reboots should run
   `catch.sh --once` from cron or launchd, where each firing runs a single tick.
@@ -112,27 +108,31 @@ Then tell the user:
 
 Answer questions about the coordinator's behaviour from here.
 
-- **Skill by label.** The team label dispatches a `dream:team` session, the
-  smith label a `dream:smith` session, the less label a `dream:less` session. An
-  issue needs one of the labels and the right assignee to be picked up. One
-  carrying more than one goes to the heaviest: `dream:team` over `dream:smith`
-  over `dream:less`. Neither `dream:smith` nor `dream:less` needs the agent
-  teams feature, so those dispatches launch without one. The slot, worktree
-  setup, and unattended permissions are the same for all three.
-- **One session develops at a time.** A session holds the slot from dispatch
-  until its pull request is ready for review, then frees it for the next
-  dispatch. Sessions awaiting review pile up alongside the one still developing,
-  up to a cap on how many run at once. Once the pile reaches that cap, dispatch
-  defers until the coordinator reclaims a finished session, so the loop cannot
-  exhaust the machine's tmux sessions.
+- **Resume before dispatch.** Each tick first looks at existing catcher
+  worktrees. If an open pull request has new user posts, or if a merged or
+  closed pull request needs its final round, the coordinator resumes that
+  session. It dispatches a new issue only when no existing work needs a round.
+- **Skill by label.** The smith label dispatches a `dream:smith` session, and
+  the less label dispatches a `dream:less` session. An issue needs one of the
+  labels and the right assignee to be picked up. One carrying both goes to
+  `dream:smith`.
+- **Bounded rounds.** A session does not stay alive while it waits for the user.
+  It ends each round when it has no work to do. The coordinator resumes it later
+  from the same worktree and session history.
+- **Max agents.** `--max-agents` caps live agent rounds, defaulting to one. It
+  does not cap how many worktrees or pull requests can be waiting between
+  rounds.
 - **Oldest eligible issue first.** Mark an issue blocked by another in the
   GitHub issue view to make it wait for that one. The coordinator skips an issue
   whose blocker is still open, and picks it up once the blocker is closed. Use
   this when one issue depends on another, or when one tidies an area the other
   would otherwise work through.
-- **Permissions.** A dispatched session runs in auto mode, with the recurring
+- **Finished worktrees.** The coordinator launches one final round after the
+  pull request merges or closes. It leaves the worktree, branch, logs, inbox,
+  final marker, and watcher watermark in place for debugging.
+- **Permissions.** An agent round runs in auto mode, with the recurring
   unattended writes passed as narrow allow rules at launch. Auto mode resolves
-  these before its classifier runs. A broad `Bash` allow can't serve here: auto
-  mode drops broad allow rules and keeps only narrow ones. Auto mode blocks any
-  other command it does not clear, and notifies instead of running it
-  unattended.
+  these specific permissions before its classifier runs. A broad `Bash` allow
+  can't serve here: auto mode drops broad allow rules and keeps only narrow
+  ones. Auto mode blocks any other command it does not clear, and notifies
+  instead of running it unattended.
