@@ -31,6 +31,28 @@ tmux new-session -d -s dreamcatcher -x 220 -y 50 \
    2>&1 | tee -a dreamcatcher.log"
 ```
 
+Run this outer tmux command with host access. The catcher manages tmux sessions,
+persistent state under `$HOME/.dream/catcher`, sibling worktrees, and GitHub, so
+the harness sandbox cannot contain it.
+
+Under Codex, request escalated permission for the command before its first
+attempt. Under Claude Code, run the command normally and let the Bash permission
+prompt handle it.
+
+If the session has no approval path or permission is refused, stop. Do not retry
+inside the sandbox or change the tmux socket path. Tell the user to restart from
+the repository's main checkout. They can start `claude`, run `/dream:catcher`,
+and approve the tmux command. Or they can start `codex`, run `$dream:catcher`,
+and approve the tmux command. Under Codex, also offer this reviewed
+non-interactive launch:
+
+```bash
+codex --approve-for-me exec '$dream:catcher'
+```
+
+After the launch command returns, run `tmux has-session -t dreamcatcher`. Report
+success only when that check passes.
+
 Tell the user that the catcher started. Include these commands:
 
 - `tmux attach -t dreamcatcher` watches it.

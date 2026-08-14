@@ -437,4 +437,5 @@ README.md:
       "Using tmux \u2013 useful shortcuts":
     Troubleshooting:
       Permissions:
+      Dreamcatcher cannot create its tmux socket:
     License:
