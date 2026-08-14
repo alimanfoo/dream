@@ -236,9 +236,9 @@ GitHub.
 
 ### Dreamcatcher cannot create its tmux socket
 
-If you see `error creating ... (Operation not permitted)` when you launch the
-catcher, the launcher stayed inside the harness sandbox. Changing the socket
-path will not help. Restart the catcher with the supported launch steps above.
+`error creating ... (Operation not permitted)` means the tmux command ran inside
+the harness sandbox. Changing the socket path will not help. Restart the catcher
+with the supported launch steps above.
 
 ## License
 

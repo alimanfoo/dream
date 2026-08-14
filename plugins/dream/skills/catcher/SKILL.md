@@ -28,7 +28,8 @@ tmux new-session -d -s dreamcatcher -x 220 -y 50 \
   "bash '<absolute path to catch.sh in this skill's directory>' \
    --harness <claude or codex> \
    <the arguments the user supplied> \
-   2>&1 | tee -a dreamcatcher.log"
+   2>&1 | tee -a dreamcatcher.log" &&
+  tmux has-session -t dreamcatcher
 ```
 
 Run this outer tmux command with host access. The catcher manages tmux sessions,
@@ -43,21 +44,18 @@ Stop when the current harness cannot ask the user for permission or the user
 refuses the request. Do not retry the command inside the sandbox or change the
 tmux socket path.
 
-Tell Claude Code users to start `claude` in the repository's main checkout. Then
-tell them to run `/dream:catcher` and approve the tmux command.
+Give the user the matching interactive steps when you stop: start `claude` in
+the repository's main checkout and run `/dream:catcher`, or start `codex` there
+and run `$dream:catcher`. Tell them to approve the tmux command.
 
-Tell Codex users to start `codex` in the repository's main checkout. Then tell
-them to run `$dream:catcher` and approve the tmux command. Also offer this
-reviewed non-interactive launch:
+Give Codex users this reviewed non-interactive launch when you stop:
 
 ```bash
 codex --approve-for-me exec '$dream:catcher'
 ```
 
-Run `tmux has-session -t dreamcatcher` when the launch command returns. Report
-success only when that check passes.
-
-Tell the user that the catcher started. Include these commands:
+Tell the user that the catcher started only after both tmux commands pass.
+Include these commands:
 
 - `tmux attach -t dreamcatcher` watches it.
 - `tail -f dreamcatcher.log` follows its log.
