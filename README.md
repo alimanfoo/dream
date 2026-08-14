@@ -1,33 +1,25 @@
 # dream
 
 A plugin for delivering great code and keeping the codebase coherent, with
-minimal human input. It installs under Claude Code and under Codex.
+minimal human input. It installs under Claude Code and Codex.
 
-`/dream:team` runs a multi-agent team on a task. `/dream:smith` runs a single
-agent on a smaller task. `/dream:less` runs a cut-back single agent on a very
-small one. Neither needs the agent teams feature. `/dream:catcher` runs
-`/dream:smith` and `/dream:less` unattended across a repository's labelled
-issues. Utility skills you can run on their own ship alongside:
-`/dream:plain-english`, `/dream:coherent-coding`, `/dream:copy-edit`,
-`/dream:code-analysis`, `/dream:state`, `/dream:spark`,
-`/dream:requirements-analysis`, `/dream:craft`, `/dream:design`, `/dream:plan`,
-`/dream:coherence-review`, `/dream:code-review`, and `/dream:watcher`. Two of
-those cover requirements. `/dream:spark` interviews you to turn a rough idea
-into a brief. `/dream:requirements-analysis` produces one on its own, from
-material you already wrote. Two more read the code behind a task.
-`/dream:code-analysis` reads it on its own. `/dream:state` explores it with you,
-so you come away understanding it too, and leaves a reading guide with every
-claim in it checked against the code. Two more reach a design. `/dream:design`
-produces one on its own. `/dream:craft` works one out with you at a whiteboard,
-asking what if until the shape stops moving, then what breaks until nothing more
-comes off.
+Choose the workflow that fits the task:
+
+- `/dream:team` gives a substantial task to a four-agent team.
+- `/dream:smith` gives a smaller task to one agent, with planning and review.
+- `/dream:less` carries a very small task straight through to a pull request.
+- `/dream:catcher` runs agents unattended from labelled issues.
+
+The plugin also includes standalone skills for requirements, code analysis,
+design, planning, copy-editing, and review. Run the skills list in your host to
+see them all.
 
 ## Prerequisites
 
-Every skill runs under Claude Code. Codex support isn't finished yet.
-`/dream:spark`, `/dream:state`, `/dream:copy-edit`, `/dream:code-review` and
-`/dream:coherence-review` run there today. Put a `$` in front of the skill's
-name in a Codex prompt:
+Every skill runs under Claude Code. Codex support is partial: it includes
+`dream:smith`, `dream:less`, `dream:catcher`, `dream:spark`, `dream:state`,
+`dream:copy-edit`, `dream:code-review`, and `dream:coherence-review`. Put a `$`
+in front of a skill's name in a Codex prompt:
 
 ```text
 $dream:state
@@ -36,9 +28,8 @@ $dream:state
 `/dream:team` needs Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
 
-The plugin works best with the `gh` command line tool available. This lets the
-plugin interact with GitHub, for example opening a pull request and posting
-issues.
+Install the `gh` command-line tool and sign in when you want dream to work with
+GitHub pull requests and issues.
 
 ## Installation
 
@@ -70,146 +61,60 @@ Then invoke the `/dream:team` skill:
 /dream:team
 ```
 
-Team members then start in separate sessions. Switch to the `@Grace` session and
-give her the task. Like the single-agent skills, she also takes it from the
-branch name. If the name of a worktree branch contains one or more issue numbers
-(for example `GH83`), those issues are the task. She then starts without waiting
-for you.
+Switch to the `@Grace` session and give her the task. If the current branch name
+contains issue numbers such as `GH83`, she uses those issues instead.
 
-The team then runs on its own, with no approval steps. Grace opens a draft pull
-request and posts each artifact there as it lands: the requirements analysis,
-the code analysis, the design, and the plan. The team develops the work and
-reviews it. Grace then marks the pull request ready and watches it for your
-review. Once you merge, she files anything the session left out of scope as new
-issues.
-
-Grace stops for you on an open question from the requirements analysis, and on
-something unexpected turning up later that breaks one of those artifacts. She
-posts each to the pull request and waits for your reply there, so you can
-unblock her without dropping into the session.
-
-The pull request is enough to steer the whole session. Anything you write there
-reaches her: a review, a plain comment, or a note on a line of the diff. It can
-send her back to revise, ask her to update the branch so it can merge, ask her
-to defer the merge and leave the pull request open, or ask her a question.
-Merging sends her on to file the follow-ups. Closing without a merge ends the
-session as declined. You can also steer her in the session itself.
-
-See
-[`plugins/dream/skills/team/protocol.md`](plugins/dream/skills/team/protocol.md)
-for the full protocol.
+The team opens a draft pull request, develops and reviews the work, then marks
+the pull request ready. Use comments and reviews on that pull request to answer
+questions or request changes. Merge when you are satisfied, or close the pull
+request to end the session.
 
 ## Smaller tasks with /dream:smith
 
-`/dream:smith` is a single-agent alternative to the team, for smaller,
-well-specified tasks. It needs no agent teams feature. One agent carries the
-work from an issue to a pull request marked ready for your review, hands-off,
-and files any follow-ups it noticed once you merge.
+`/dream:smith` carries a smaller, well-specified task through planning,
+implementation, and review. It opens a draft pull request and marks it ready
+when the work is complete. It needs no agent teams feature.
 
-Use it when a task doesn't need the full team, but you want more than a single
-one-shot attempt. The agent runs the work itself and brings in fresh subagents
-to plan and review.
-
-Start Claude Code and invoke the skill:
-
-```text
-/dream:smith
-```
-
-Like the team, it takes the task from the branch name. If the name contains one
-or more issue numbers (for example `GH83`), it works on those. Otherwise it asks
-you for the task.
-
-It then runs on its own, with no approval steps. It opens a draft pull request,
-plans and implements the work, reviews and tidies it, and marks the pull request
-ready. Then it ends its turn. If you started it by hand, tell it when to check
-the pull request. If `/dream:catcher` dispatched it, the catcher resumes it when
-you review, merge, or close the pull request. Once you merge, it files anything
-it left out of scope as new issues.
+Run `/dream:smith` under Claude Code or `$dream:smith` under Codex. If the
+current branch name contains issue numbers such as `GH83`, Smith uses those
+issues as the task. Otherwise it asks you for one.
 
 ## Even smaller tasks with /dream:less
 
-`/dream:less` is a cut-back version of `/dream:smith`, for a very small change
-you want carried from issue to pull request fast. It runs the same bounded-round
-way as `/dream:smith`: one agent, no approval steps, and a pull request for your
-review. But it trims the process to match the size of the work. It skips
-planning and the separate copy-edit and coherence-review passes. It runs a
-lighter code review, writes a minimal pull request description, and files no
-follow-ups once you merge.
+`/dream:less` is a cut-back Smith for a small, self-contained change. It skips
+planning and the separate copy-edit and coherence-review passes.
 
-Start Claude Code and invoke the skill:
-
-```text
-/dream:less
-```
-
-Reach for it when a change is small and self-contained.
+Run `/dream:less` under Claude Code or `$dream:less` under Codex.
 
 ## Unattended runs with /dream:catcher
 
-`/dream:catcher` watches a repository for labelled issues and dispatches a
-session for each. It runs the `/dream:smith` or `/dream:less` skill, chosen by
-the issue's label.
+`/dream:catcher` watches assigned issues labelled "dream:smith" or "dream:less"
+and carries each one to a pull request. It returns to a session when you review,
+merge, or close its pull request.
 
-Each session runs as bounded headless rounds. A round opens or updates the pull
-request, posts a question if it needs your answer, marks the pull request ready
-when the work is ready, and ends. The catcher watches existing pull requests and
-resumes a session when you review, merge, or close one. A cap on live agent
-rounds controls how many token-spending processes run at once.
+Install `git`, `gh`, `jq`, and `tmux`, and sign in with `gh`. Install the
+harness you want to use: `claude` for Claude Code or `codex` for Codex.
 
-`/dream:catcher` needs `git`, `gh`, `jq`, `claude`, and `tmux` on your PATH,
-with `gh` signed in.
+Start Claude Code from the repository's main checkout, not a linked worktree:
 
-Start Claude Code from the main checkout of that repository, not a linked
-worktree, then run:
-
-```text
-/dream:catcher
+```bash
+claude -p /dream:catcher
 ```
 
-It watches the repository you started Claude Code in. By default it picks up
-open issues labelled "dream:smith" or "dream:less" and assigned to you,
-dispatching the matching skill. Override a label with a flag, for example
-`/dream:catcher --smith-label auto`.
+Start Codex from the main checkout in the same way:
 
-`/dream:catcher` runs in its own tmux session. Attach to it with
-`tmux attach -t dreamcatcher`, or follow its log with
-`tail -f dreamcatcher.log`. Each running agent round has its own tmux session
-named `dream-catcher-GH<n>-<timestamp>`, which disappears when that round ends.
-The round's output is appended to
-`$HOME/.dream/catcher/<owner>/<repo>/dream-catcher-GH<n>-<timestamp>/agent.log`.
-Catcher state there also records the latest PR inbox and final-round marker, and
-stays in place with the worktree for debugging.
+```bash
+codex exec '$dream:catcher'
+```
 
-How it picks work:
+The command you use selects the harness for the sessions it dispatches. Run it
+from the repository's main checkout. To use different issue labels, add options
+such as `--smith-label auto` to the skill invocation.
 
-- **Resume before dispatch.** Each tick first checks existing catcher worktrees.
-  It resumes a session whose open pull request has new user posts, or whose
-  merged or closed pull request needs one final round. It dispatches a new issue
-  only when no existing work needs a round.
-- **Skill by label.** The smith label dispatches a `/dream:smith` session, for
-  smaller tasks. The less label dispatches a `/dream:less` session, for very
-  small ones. An issue carrying both goes to `/dream:smith`.
-- **Max agents.** `--max-agents` caps live agent rounds, defaulting to one. It
-  does not cap how many pull requests can be waiting between rounds. Raise it to
-  spend faster.
-- **Oldest eligible issue first.** Mark an issue blocked by another in the
-  GitHub issue view to make it wait for that one. `/dream:catcher` skips a
-  blocked issue until its blocker closes, then picks it up.
-- **Finished worktrees.** `/dream:catcher` launches one final round after the
-  pull request merges or closes. It leaves the worktree, branch, logs, inbox,
-  final marker, and watcher watermark in place for debugging.
-
-Each session runs unattended. It needs permissions to interact with GitHub:
-creating the pull request, posting comments, committing, and pushing.
-`/dream:catcher` passes these to each round as allow rules at launch. When a
-session hits a question it cannot answer, it posts the question to the pull
-request and ends the round. You can reply there without dropping into the
-session.
-
-It stops on reboot, so re-run `/dream:catcher` to restart it. For a machine that
-must survive reboots, drive `catch.sh --once` from cron or launchd. Each firing
-runs a single tick.
+The catcher runs in a tmux session. Use `tmux attach -t dreamcatcher` to watch
+it, `tail -f dreamcatcher.log` to follow its log, or
+`tmux kill-session -t dreamcatcher` to stop it. Run the launch command again
+after a reboot.
 
 ## /dream:team advanced usage
 

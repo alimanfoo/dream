@@ -320,6 +320,7 @@ Not the seed issue's body, though. That wipes out my own words, and a comment
 carries the brief to the same place.
 
 Anything you post wants each paragraph on a single line, since GitHub reflows
-it. End it with the Claude Code footer, so a reader can tell an agent wrote it:
-
-> 🤖 Generated with [Claude Code](https://claude.com/claude-code)
+it. Read the `commentFooter` value from
+[`agent-written-marks.json`](../../agent-written-marks.json), then end the post
+with that exact value as a blockquote. This lets a reader tell an agent wrote
+it.

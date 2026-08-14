@@ -43,10 +43,14 @@ Perform the following tasks **immediately**, in order.
    `grace/phase<N>.md` from there. Resolve the path against the protocol you
    just read. Your working directory is the user's repo, not the plugin.
 
-2. **Load the `dream:plain-english` skill.** It governs everything you write and
+2. **Read the [agent-written marks](../agent-written-marks.json).** Use the
+   exact `commentFooter` and `commitTrailer` values whenever the rules below
+   tell you to mark work.
+
+3. **Load the `dream:plain-english` skill.** It governs everything you write and
    say.
 
-3. **Ready the working tree.** The working tree must be clean. If it has
+4. **Ready the working tree.** The working tree must be clean. If it has
    uncommitted changes, stop and tell the user when they switch in.
 
    Then detect whether you're in a git worktree:
@@ -66,7 +70,7 @@ Perform the following tasks **immediately**, in order.
    switch in. Worktrees are how the team supports two concurrent sessions on the
    same repo.
 
-4. **Derive the session issues from the branch name.** Only in the worktree
+5. **Derive the session issues from the branch name.** Only in the worktree
    case. Read the branch name (`git rev-parse --abbrev-ref HEAD`) and scan it
    for `gh<number>` tokens, case-insensitive: `GH83`, `gh83-add-foo`, and
    `claude/gh341-defer-candidates` each yield one. `fix-gh12-and-gh34` yields
@@ -75,12 +79,12 @@ Perform the following tasks **immediately**, in order.
    input addressing all of them. When the name holds no such token (`add-foo`),
    make no assumption. The user provides the session input as usual.
 
-5. Load the `dream:coherent-coding` skill. It governs all your work.
+6. Load the `dream:coherent-coding` skill. It governs all your work.
 
-6. **Start [the nudge](#the-nudge).** It recovers the session when a teammate's
+7. **Start [the nudge](#the-nudge).** It recovers the session when a teammate's
    reply never arrives.
 
-After boot, when step 4 derived one or more issues, open Phase 1 with them as
+After boot, when step 5 derived one or more issues, open Phase 1 with them as
 the session input, without waiting for the user. State the assumption in one
 line as you open the phase. For example: _On worktree branch
 `fix-gh12-and-gh34`, treating issues GH12 and GH34 as the session input._
@@ -408,28 +412,26 @@ commit message.
 You own the branch and the bootstrap commit. Make the empty bootstrap commit at
 session setup (see
 [Step 1.1](../skills/team/grace/phase1.md#step-11-open-the-session-pr)). It is
-not a task, so it carries the `Co-Authored-By` trailer only. Resolve it yourself
-if a commit hook rejects it, since it is pre-task.
+not a task, so it carries the agent-written commit trailer only. Resolve it
+yourself if a commit hook rejects it, since it is pre-task.
 
 ### Marking agent-authored GitHub items
 
 Mark every agent-authored commit, comment, issue, and PR. A reader can then tell
 at a glance whether an agent or a person made it.
 
-- **Bodies and comments** (PR descriptions, issue bodies, and any comment on
-  either, a reply on a line of the diff included) end with the Claude Code
-  footer:
+- **Bodies and comments** end with the exact `commentFooter` value from the
+  agent-written marks, as a blockquote. This includes PR descriptions, issue
+  bodies, comments on either, and replies on lines of the diff.
 
-  > `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
-
-- **Commits** carry the `Co-Authored-By` trailer (see "Branch and commit
-  operations") but not the Claude Code footer.
+- **Commits** carry the exact `commitTrailer` value from the agent-written marks
+  (see "Branch and commit operations") but not the comment footer.
 
 - **Titles** (PR titles, commit subjects, issue titles) state the change itself.
   They carry no agent-author prefix (for example `[claude]` or `[dream]`). The
-  marking is in the trailers and footer above. Prior agent-authored titles in
-  the host repo aren't a style precedent. Treat them as you would any other
-  contributor's work.
+  marking is in the commit trailer and comment footer above. Prior
+  agent-authored titles in the host repo aren't a style precedent. Treat them as
+  you would any other contributor's work.
 
 ### Writing to GitHub
 
