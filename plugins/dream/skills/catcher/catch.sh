@@ -192,6 +192,8 @@ issue_number_of_branch() {
   printf '%s\n' "${BASH_REMATCH[1]}"
 }
 
+agent_session_name() { printf '%s\n' "$1"; }
+
 # The path of every worktree of this repo, one per line. sed, not awk, keeps a
 # path that contains a space intact.
 worktree_paths() { git -C "$main_root" worktree list --porcelain | sed -n 's/^worktree //p'; }
@@ -214,7 +216,7 @@ live_agents() {
   local wt branch
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
-    tmux has-session -t "$branch" 2>/dev/null || continue
+    tmux has-session -t "$(agent_session_name "$branch")" 2>/dev/null || continue
     printf '%s\n' "$branch"
   done < <(session_worktrees)
 }
@@ -242,7 +244,7 @@ dispatched_worktree_exists() {
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
     if [ -f "$(final_marker_file "$branch")" ] \
-      && ! tmux has-session -t "$branch" 2>/dev/null; then
+      && ! tmux has-session -t "$(agent_session_name "$branch")" 2>/dev/null; then
       continue
     fi
     n=$(issue_number_of_branch "$branch") || continue
@@ -441,7 +443,7 @@ first_round_prompt() {
 launch_agent_round() {
   local wt=$1 branch=$2 session_harness=$3 skill=$4 model=$5 effort=$6 resume=$7 final=$8 prompt=$9
   local session state_dir log_file agent_cmd run marker round
-  session=$branch
+  session=$(agent_session_name "$branch")
   state_dir=$(catcher_state_dir "$branch")
   log_file=$(agent_log_file "$branch")
   round=$skill
@@ -515,7 +517,7 @@ resume_existing_work() {
   local wt branch config session_harness model effort pr_json pr_number state watch_json posts prompt
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
-    tmux has-session -t "$branch" 2>/dev/null && continue
+    tmux has-session -t "$(agent_session_name "$branch")" 2>/dev/null && continue
     [ -f "$(final_marker_file "$branch")" ] && continue
     config=$(read_session_config "$branch") \
       || { log "cannot read $(session_config_file "$branch"); skipping $branch"; continue; }
