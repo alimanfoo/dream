@@ -192,7 +192,13 @@ issue_number_of_branch() {
   printf '%s\n' "${BASH_REMATCH[1]}"
 }
 
-agent_session_name() { printf '%s\n' "$1"; }
+# Include the repository in each agent-round session name, so sessions from
+# different catchers stay distinct. Replace tmux target punctuation with '-'.
+agent_session_name() {
+  local branch=$1 repo_slug
+  repo_slug=${repo//[^[:alnum:]_-]/-}
+  printf '%s-%s\n' "$repo_slug" "$branch"
+}
 
 # The path of every worktree of this repo, one per line. sed, not awk, keeps a
 # path that contains a space intact.
