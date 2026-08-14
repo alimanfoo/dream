@@ -199,8 +199,14 @@ agent_tmux_session_name() {
   printf '%s-%s\n' "${repo//./+}" "$branch"
 }
 
+# Recognize a branch-only session from an older version only when it started in
+# this worktree. This keeps the migration check from crossing repositories.
 agent_round_is_live() {
-  tmux has-session -t "=$(agent_tmux_session_name "$1")" 2>/dev/null
+  local wt=$1 branch=$2 legacy_worktree
+  tmux has-session -t "=$(agent_tmux_session_name "$branch")" 2>/dev/null && return 0
+  legacy_worktree=$(tmux list-panes -t "=$branch" -F '#{pane_start_path}' 2>/dev/null) \
+    || return 1
+  [ "$legacy_worktree" = "$wt" ]
 }
 
 # The path of every worktree of this repo, one per line. sed, not awk, keeps a
@@ -225,7 +231,7 @@ live_agents() {
   local wt branch
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
-    agent_round_is_live "$branch" || continue
+    agent_round_is_live "$wt" "$branch" || continue
     printf '%s\n' "$branch"
   done < <(session_worktrees)
 }
@@ -253,7 +259,7 @@ dispatched_worktree_exists() {
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
     if [ -f "$(final_marker_file "$branch")" ] \
-      && ! agent_round_is_live "$branch"; then
+      && ! agent_round_is_live "$wt" "$branch"; then
       continue
     fi
     n=$(issue_number_of_branch "$branch") || continue
@@ -526,7 +532,7 @@ resume_existing_work() {
   local wt branch config session_harness model effort pr_json pr_number state watch_json posts prompt
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
-    agent_round_is_live "$branch" && continue
+    agent_round_is_live "$wt" "$branch" && continue
     [ -f "$(final_marker_file "$branch")" ] && continue
     config=$(read_session_config "$branch") \
       || { log "cannot read $(session_config_file "$branch"); skipping $branch"; continue; }
