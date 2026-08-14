@@ -8,7 +8,7 @@ Choose the workflow that fits the task:
 - `/dream:team` gives a substantial task to a four-agent team.
 - `/dream:smith` gives a smaller task to one agent, with planning and review.
 - `/dream:less` carries a very small task straight through to a pull request.
-- `/dream:catcher` runs Smith and Less unattended from labelled issues.
+- `/dream:catcher` runs agents unattended from labelled issues.
 
 The plugin also includes standalone skills for requirements, code analysis,
 design, planning, copy-editing, and review. Run the skills list in your host to
