@@ -107,22 +107,22 @@ Start Codex from the main checkout in the same way:
 codex exec '$dream:catcher'
 ```
 
-The command you use selects the harness for the sessions it dispatches. Run it
-from the repository's main checkout. To use different issue labels, add options
-such as `--smith-label auto` to the skill invocation.
+The launch command selects the harness for the dispatched sessions. Run the
+command from the repository's main checkout. Add options such as
+`--smith-label auto` when you want different issue labels.
 
-The catcher runs in a tmux session named after the repository's full GitHub
-identity. Set the session name from the repository's main checkout. Dots become
-plus signs because tmux rewrites dots in session names:
+Run these commands from the repository's main checkout to build the tmux session
+name from the repository owner and name. Dots become plus signs because tmux
+rewrites dots in session names:
 
 ```bash
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner)
 session="${repo//./+}-dreamcatcher"
 ```
 
-- `tmux attach -t "=$session"` watches it.
-- `tail -f dreamcatcher.log` follows its log.
-- `tmux kill-session -t "=$session"` stops it.
+- `tmux attach -t "=$session"` watches the coordinator.
+- `tail -f dreamcatcher.log` follows the coordinator log.
+- `tmux kill-session -t "=$session"` stops the coordinator.
 
 Run the launch command again after a reboot.
 

@@ -13,18 +13,19 @@ argument-hint:
 
 # Dreamcatcher
 
-Start `catch.sh` from this skill's directory. The script owns its configuration,
-validation, and runtime behaviour.
+Use `catch.sh` in this skill's directory. The script owns its configuration,
+validates it, and controls runtime behaviour.
 
 Use `claude` as the harness under Claude Code and `codex` under Codex. Pass that
 harness and any arguments the user supplied to the script. Do not ask the user
 to confirm defaults.
 
-Read the repository's full GitHub identity and use it in the coordinator's tmux
+Read the repository owner and name, then use both in the coordinator's tmux
 session name. Replace dots with plus signs, since tmux rewrites dots as
 underscores and GitHub does not allow plus signs in repository names.
 
-Run the script in that detached tmux session so it outlives this session:
+Run the script in that detached tmux session so the catcher keeps running after
+this session ends:
 
 ```bash
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner)
@@ -38,9 +39,9 @@ tmux new-session -d -s "$session" -x 220 -y 50 \
    2>&1 | tee -a dreamcatcher.log"
 ```
 
-Tell the user that the catcher started. Include the session name and these
-commands, with `$session` replaced by its value:
+Replace `$session` below with its value. Tell the user that the catcher started,
+and include the session name and these commands:
 
-- `tmux attach -t "=$session"` watches it.
-- `tail -f dreamcatcher.log` follows its log.
-- `tmux kill-session -t "=$session"` stops it.
+- `tmux attach -t "=$session"` watches the coordinator.
+- `tail -f dreamcatcher.log` follows the coordinator log.
+- `tmux kill-session -t "=$session"` stops the coordinator.
