@@ -99,6 +99,10 @@ Start the harness from the repository's main checkout. The catcher creates
 sibling worktrees beside that checkout, so do not start it from a linked
 worktree.
 
+The catcher needs host access because it manages tmux sessions, writes data
+under `$HOME/.dream/catcher`, creates sibling worktrees, and calls GitHub. When
+you launch it interactively, the harness can ask for that access.
+
 Under Claude Code:
 
 1. Run `claude`.
@@ -110,10 +114,6 @@ Under Codex:
 1. Run `codex`.
 2. Run `$dream:catcher` in the session.
 3. Approve the tmux command when Codex asks to run it outside the sandbox.
-
-The catcher needs host access because it manages tmux sessions, writes data
-under `$HOME/.dream/catcher`, creates sibling worktrees, and calls GitHub. When
-you launch it interactively, the harness can ask for that access.
 
 Let Codex's automatic reviewer assess the host-access request when you launch
 the catcher non-interactively:
@@ -129,9 +129,9 @@ different issue labels.
 
 Use these commands to control the catcher's tmux session:
 
-- `tmux attach -t dreamcatcher` watches it.
+- `tmux attach -t =dreamcatcher` watches it.
 - `tail -f dreamcatcher.log` follows its log.
-- `tmux kill-session -t dreamcatcher` stops it.
+- `tmux kill-session -t =dreamcatcher` stops it.
 
 Launch the catcher again after a reboot.
 
