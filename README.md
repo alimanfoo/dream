@@ -127,12 +127,6 @@ The catcher uses the same harness for the sessions it dispatches.
 Add options such as `--smith-label auto` to the skill invocation to use
 different issue labels.
 
-Use these commands to control the catcher's tmux session:
-
-- `tmux attach -t =dreamcatcher` watches it.
-- `tail -f dreamcatcher.log` follows its log.
-- `tmux kill-session -t =dreamcatcher` stops it.
-
 Launch the catcher again after a reboot.
 
 ## /dream:team advanced usage
