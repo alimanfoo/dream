@@ -40,10 +40,6 @@
 # Matching the account also drops anything from another account, a bot or
 # another collaborator, which the user did not write.
 #
-# During a footer migration, the filter accepts the legacy footer too. A session
-# already running can keep writing the legacy footer from its context after a
-# newer plugin version starts this script.
-#
 # A second rule drops any post the user said nothing in. GitHub wraps a single
 # inline comment in a review of its own, with an empty body, whenever anyone
 # comments on one line. This also happens when the caller replies to the user.
@@ -69,10 +65,8 @@ for tool in gh jq; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
 done
 
-# Read the current footer from the same file as the callers. Match on its words,
-# not its emoji, because the words carry the contract. Keep the old footer words
-# here during the migration, so sessions started before the change still filter
-# their own comments.
+# Read the footer from the same file as the callers. Match on its words, not its
+# emoji, because the words carry the contract.
 script_dir=$(CDPATH=; cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd) \
   || die "cannot resolve the watcher script directory"
 marks_file="$script_dir/../../agent-written-marks.json"
@@ -81,7 +75,6 @@ footer=$(jq -r '.commentFooter // empty' "$marks_file") \
   || die "cannot read the agent-written comment footer"
 [ -n "$footer" ] || die "the agent-written comment footer is empty"
 footer_words=${footer#* }
-legacy_footer_words="Generated with [Claude Code]"
 
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
@@ -128,13 +121,12 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 # it stood then, rather than reporting nothing. Both hold the last line when the
 # comment covers a range, and both are null when it is about the whole file.
 result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
-  | jq --arg cutoff "$cutoff" --arg footer "$footer_words" \
-       --arg legacy_footer "$legacy_footer_words" --arg me "$me" '
+  | jq --arg cutoff "$cutoff" --arg footer "$footer_words" --arg me "$me" '
   def has_agent_footer:
     ((.body // "") | split("\n") | map(select(length > 0)) | (last // ""))
     as $line
     | ($line | startswith("> "))
-      and (($line | endswith($footer)) or ($line | contains($legacy_footer)));
+      and ($line | endswith($footer));
 
   def is_new_from_user($author; $at):
     $author == $me and $at > $cutoff

@@ -50,14 +50,14 @@ usage() {
 Dreamcatcher: dispatch labelled issues to dream sessions.
 
 Usage:
-  catch.sh [--harness <claude|codex>]
+  catch.sh --harness <claude|codex>
            [--smith-label <label>] [--less-label <label>]
            [--smith-model <model>] [--smith-effort <effort>]
            [--less-model <model>] [--less-effort <effort>]
            [--assignee <who>] [--interval <seconds>]
            [--max-agents <n>] [--once]
 
-  --harness      Agent harness to run. Default: $default_harness.
+  --harness      Agent harness to run. Required.
   --smith-label  Issue label that dispatches a dream:smith session. Default: $default_smith_label.
   --less-label   Issue label that dispatches a dream:less session. Default: $default_less_label.
   --smith-model  Model for a dream:smith session. Defaults: Claude Code $default_claude_smith_model; Codex $default_codex_smith_model.
@@ -93,7 +93,6 @@ shell_quote() {
 # with its default, then a flag may override it.
 default_smith_label="dream:smith"
 default_less_label="dream:less"
-default_harness="claude"
 default_claude_smith_model="opus[1m]"
 default_claude_smith_effort="xhigh"
 default_claude_less_model="sonnet"
@@ -115,7 +114,7 @@ less_effort=
 assignee=$default_assignee
 interval=$default_interval
 max_agents=$default_max_agents
-harness=$default_harness
+harness=
 once=0
 
 while [ $# -gt 0 ]; do
@@ -138,6 +137,7 @@ done
 
 # Resolve model and effort defaults after parsing, because the selected harness
 # owns them. The common flags remain overrides whichever harness runs.
+[ -n "$harness" ] || die "--harness is required"
 case "$harness" in
   claude)
     smith_model=${smith_model:-$default_claude_smith_model}
@@ -305,26 +305,22 @@ write_session_config() {
     || { log "cannot publish session config for $branch"; return 1; }
 }
 
-# Read a branch's recorded harness settings. A branch from before this file
-# existed is a Claude Code session, whose resume command needs no model or effort
-# value.
+# Read and validate a branch's recorded harness settings. Every session has this
+# file. Missing or incomplete configuration is invalid state, so the caller
+# skips that branch.
 read_session_config() {
   local branch=$1 file
   file=$(session_config_file "$branch")
-  if [ -f "$file" ]; then
-    jq -ec '
-      if .harness == "claude" then
-        {harness, model: (.model // ""), effort: (.effort // "")}
-      elif .harness == "codex" and (.model | strings | length > 0)
-           and (.effort | strings | length > 0) then
+  [ -f "$file" ] || return 1
+  jq -ec '
+      if (.harness == "claude" or .harness == "codex")
+         and (.model | type == "string" and length > 0)
+         and (.effort | type == "string" and length > 0) then
         {harness, model, effort}
       else
         error("incomplete session config")
       end
     ' "$file"
-  else
-    printf '%s\n' '{"harness":"claude","model":"","effort":""}'
-  fi
 }
 
 # Write the filtered PR input for the round the catcher is about to resume.
