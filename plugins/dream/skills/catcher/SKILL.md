@@ -32,25 +32,29 @@ tmux new-session -d -s dreamcatcher -x 220 -y 50 \
 ```
 
 Run this outer tmux command with host access. The catcher manages tmux sessions,
-persistent state under `$HOME/.dream/catcher`, sibling worktrees, and GitHub, so
-the harness sandbox cannot contain it.
+writes data under `$HOME/.dream/catcher`, creates sibling worktrees, and calls
+GitHub. It cannot run inside the harness sandbox.
 
-Under Codex, request escalated permission for the command before its first
-attempt. Under Claude Code, run the command normally and let the Bash permission
-prompt handle it.
+Request escalated permission before you run the command under Codex. Run the
+command normally under Claude Code; Claude Code's Bash permission prompt asks
+for host access.
 
-If the session has no approval path or permission is refused, stop. Do not retry
-inside the sandbox or change the tmux socket path. Tell the user to restart from
-the repository's main checkout. They can start `claude`, run `/dream:catcher`,
-and approve the tmux command. Or they can start `codex`, run `$dream:catcher`,
-and approve the tmux command. Under Codex, also offer this reviewed
-non-interactive launch:
+Stop when the current harness cannot ask the user for permission or the user
+refuses the request. Do not retry the command inside the sandbox or change the
+tmux socket path.
+
+Tell Claude Code users to start `claude` in the repository's main checkout. Then
+tell them to run `/dream:catcher` and approve the tmux command.
+
+Tell Codex users to start `codex` in the repository's main checkout. Then tell
+them to run `$dream:catcher` and approve the tmux command. Also offer this
+reviewed non-interactive launch:
 
 ```bash
 codex --approve-for-me exec '$dream:catcher'
 ```
 
-After the launch command returns, run `tmux has-session -t dreamcatcher`. Report
+Run `tmux has-session -t dreamcatcher` when the launch command returns. Report
 success only when that check passes.
 
 Tell the user that the catcher started. Include these commands:
