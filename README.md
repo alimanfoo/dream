@@ -111,10 +111,20 @@ The command you use selects the harness for the sessions it dispatches. Run it
 from the repository's main checkout. To use different issue labels, add options
 such as `--smith-label auto` to the skill invocation.
 
-The catcher runs in a tmux session. Use `tmux attach -t dreamcatcher` to watch
-it, `tail -f dreamcatcher.log` to follow its log, or
-`tmux kill-session -t dreamcatcher` to stop it. Run the launch command again
-after a reboot.
+The catcher runs in a tmux session named after the repository's full GitHub
+identity. Set the session name from the repository's main checkout. Dots become
+plus signs because tmux rewrites dots in session names:
+
+```bash
+repo=$(gh repo view --json nameWithOwner -q .nameWithOwner)
+session="${repo//./+}-dreamcatcher"
+```
+
+- `tmux attach -t "=$session"` watches it.
+- `tail -f dreamcatcher.log` follows its log.
+- `tmux kill-session -t "=$session"` stops it.
+
+Run the launch command again after a reboot.
 
 ## /dream:team advanced usage
 

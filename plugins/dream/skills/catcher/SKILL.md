@@ -20,10 +20,17 @@ Use `claude` as the harness under Claude Code and `codex` under Codex. Pass that
 harness and any arguments the user supplied to the script. Do not ask the user
 to confirm defaults.
 
-Run the script in a detached tmux session so it outlives this session:
+Read the repository's full GitHub identity and use it in the coordinator's tmux
+session name. Replace dots with plus signs, since tmux rewrites dots as
+underscores and GitHub does not allow plus signs in repository names.
+
+Run the script in that detached tmux session so it outlives this session:
 
 ```bash
-tmux new-session -d -s dreamcatcher -x 220 -y 50 \
+repo=$(gh repo view --json nameWithOwner -q .nameWithOwner)
+session="${repo//./+}-dreamcatcher"
+
+tmux new-session -d -s "$session" -x 220 -y 50 \
   -c "<the repository's main checkout>" \
   "bash '<absolute path to catch.sh in this skill's directory>' \
    --harness <claude or codex> \
@@ -31,8 +38,9 @@ tmux new-session -d -s dreamcatcher -x 220 -y 50 \
    2>&1 | tee -a dreamcatcher.log"
 ```
 
-Tell the user that the catcher started. Include these commands:
+Tell the user that the catcher started. Include the session name and these
+commands, with `$session` replaced by its value:
 
-- `tmux attach -t dreamcatcher` watches it.
+- `tmux attach -t "=$session"` watches it.
 - `tail -f dreamcatcher.log` follows its log.
-- `tmux kill-session -t dreamcatcher` stops it.
+- `tmux kill-session -t "=$session"` stops it.
