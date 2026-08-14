@@ -1,7 +1,8 @@
 ---
 name: code-analysis
 description:
-  Read and analyse code to understand how it works and how it's organised.
+  Read and analyse code to understand how it works and how it's organised. Use
+  only when explicitly invoked.
 argument-hint: "<requirements | issue | file | symbol | text>"
 ---
 

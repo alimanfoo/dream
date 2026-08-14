@@ -2,7 +2,8 @@
 name: requirements-analysis
 description:
   Analyse the requirements behind a task and return a draft. It states who the
-  task serves, what it must do, and the open questions it raises.
+  task serves, what it must do, and the open questions it raises. Use only when
+  explicitly invoked.
 argument-hint: "<issue | file or symbol | text>"
 ---
 

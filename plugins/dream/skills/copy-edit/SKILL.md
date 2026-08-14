@@ -1,6 +1,8 @@
 ---
 name: copy-edit
-description: Bring a passage of prose into line with the Plain English guide.
+description:
+  Bring a passage of prose into line with the Plain English guide. Use only when
+  explicitly invoked.
 argument-hint: "[target] [max-iterations]"
 ---
 

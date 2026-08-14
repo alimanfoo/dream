@@ -2,7 +2,7 @@
 name: design
 description:
   Produce design options for a task, a recommended design plus any credible
-  alternatives.
+  alternatives. Use only when explicitly invoked.
 argument-hint: "<requirements and code analysis | text>"
 ---
 
