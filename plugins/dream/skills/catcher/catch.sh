@@ -193,7 +193,10 @@ issue_number_of_branch() {
 }
 
 # Include the repository in each agent-round session name, so sessions from
-# different catchers stay distinct. Replace tmux target punctuation with '-'.
+# different catchers stay distinct.
+#
+# Use only letters, numbers, underscores, and hyphens in the repository part,
+# so tmux can use the result as a target.
 agent_session_name() {
   local branch=$1 repo_slug
   repo_slug=${repo//[^[:alnum:]_-]/-}
