@@ -108,17 +108,27 @@ codex exec '$dream:catcher'
 ```
 
 The launch command selects the harness for the dispatched sessions. Run the
-command from the repository's main checkout. Add options such as
-`--smith-label auto` when you want different issue labels.
+command from the repository's main checkout. Put any catcher options inside the
+quoted skill prompt. For example:
+
+```bash
+claude -p '/dream:catcher --smith-label auto'
+codex exec '$dream:catcher --smith-label auto'
+```
 
 Run these commands from the repository's main checkout to build the tmux session
 name from the repository owner and name. Dots become plus signs because tmux
 rewrites dots in session names:
 
 ```bash
-repo=$(gh repo view --json nameWithOwner -q .nameWithOwner)
-session="${repo//./+}-dreamcatcher"
+session=
+if repo=$(gh repo view --json nameWithOwner -q .nameWithOwner); then
+  session="${repo//./+}-dreamcatcher"
+fi
 ```
+
+Stop if `gh repo view` fails. A session name without the repository could
+collide with another catcher.
 
 - `tmux attach -t "=$session"` watches the coordinator.
 - `tail -f dreamcatcher.log` follows the coordinator log.

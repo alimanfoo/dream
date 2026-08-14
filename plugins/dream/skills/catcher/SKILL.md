@@ -22,13 +22,15 @@ to confirm defaults.
 
 Read the repository owner and name, then use both in the coordinator's tmux
 session name. Replace dots with plus signs, since tmux rewrites dots as
-underscores and GitHub does not allow plus signs in repository names.
+underscores and GitHub does not allow plus signs in repository names. Stop if
+the repository lookup fails, so an incomplete name cannot collide with another
+catcher.
 
 Run the script in that detached tmux session so the catcher keeps running after
 this session ends:
 
 ```bash
-repo=$(gh repo view --json nameWithOwner -q .nameWithOwner)
+repo=$(gh repo view --json nameWithOwner -q .nameWithOwner) || exit 1
 session="${repo//./+}-dreamcatcher"
 
 tmux new-session -d -s "$session" -x 220 -y 50 \
@@ -36,11 +38,11 @@ tmux new-session -d -s "$session" -x 220 -y 50 \
   "bash '<absolute path to catch.sh in this skill's directory>' \
    --harness <claude or codex> \
    <the arguments the user supplied> \
-   2>&1 | tee -a dreamcatcher.log"
+   2>&1 | tee -a dreamcatcher.log" || exit 1
 ```
 
-Replace `$session` below with its value. Tell the user that the catcher started,
-and include the session name and these commands:
+Tell the user only after `tmux new-session` succeeds. Replace `$session` below
+with its value, then include the session name and these commands:
 
 - `tmux attach -t "=$session"` watches the coordinator.
 - `tail -f dreamcatcher.log` follows the coordinator log.
