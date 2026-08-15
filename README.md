@@ -95,26 +95,45 @@ merge, or close its pull request.
 Install `git`, `gh`, `jq`, and `tmux`, and sign in with `gh`. Install the
 harness you want to use: `claude` for Claude Code or `codex` for Codex.
 
-Start Claude Code from the repository's main checkout, not a linked worktree:
+Start the harness from the repository's main checkout. The catcher creates
+sibling worktrees beside that checkout, so do not start it from a linked
+worktree.
+
+The catcher needs host access because it manages tmux sessions, writes data
+under `$HOME/.dream/catcher`, creates sibling worktrees, and calls GitHub. When
+you launch it interactively, the harness can ask for that access.
+
+Under Claude Code:
+
+1. Run `claude`.
+2. Run `/dream:catcher` in the session.
+3. Approve the tmux command when Claude asks.
+
+Under Codex:
+
+1. Run `codex`.
+2. Run `$dream:catcher` in the session.
+3. Approve the tmux command when Codex asks to run it outside the sandbox.
+
+Use Claude Code's auto permission mode for a non-interactive launch:
 
 ```bash
-claude -p /dream:catcher
+claude --print --permission-mode auto /dream:catcher
 ```
 
-Start Codex from the main checkout in the same way:
+Let Codex's automatic reviewer assess the host-access request when you launch
+the catcher non-interactively:
 
 ```bash
-codex exec '$dream:catcher'
+codex --approve-for-me exec '$dream:catcher'
 ```
 
-The command you use selects the harness for the sessions it dispatches. Run it
-from the repository's main checkout. To use different issue labels, add options
-such as `--smith-label auto` to the skill invocation.
+The catcher uses the same harness for the sessions it dispatches.
 
-The catcher runs in a tmux session. Use `tmux attach -t dreamcatcher` to watch
-it, `tail -f dreamcatcher.log` to follow its log, or
-`tmux kill-session -t dreamcatcher` to stop it. Run the launch command again
-after a reboot.
+Add options such as `--smith-label auto` to the skill invocation to use
+different issue labels.
+
+Launch the catcher again after a reboot.
 
 ## /dream:team advanced usage
 
@@ -214,6 +233,12 @@ the team. This should handle most permissions automatically.
 
 You may still hit occasional permissions blocks, for example when posting to
 GitHub.
+
+### Dreamcatcher cannot create its tmux socket
+
+`error creating ... (Operation not permitted)` means the tmux command ran inside
+the harness sandbox. Changing the socket path will not help. Restart the catcher
+with the supported launch steps above.
 
 ## License
 
