@@ -168,6 +168,13 @@ them here adds nothing. Otherwise, reproduce the user's input verbatim.
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
 
+## Interrupted work
+
+Post a comment on the PR before you end a turn when an interruption or other
+failure prevents you from finishing the work. Name what was interrupted and
+where the work stopped. Turn output is not enough, because the user follows the
+PR. An interrupted tool or subagent call counts.
+
 ## Plan
 
 Run a Plan subagent. Give it the session input, the code you read, and the
