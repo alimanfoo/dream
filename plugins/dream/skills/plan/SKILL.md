@@ -1,14 +1,15 @@
 ---
 name: plan
 description:
-  Produce an implementation plan, a task list that delivers the given design.
-  Use only when explicitly invoked.
-argument-hint: "<design and code analysis | text>"
+  Produce an implementation plan, a task list that delivers a design or a
+  well-specified task. Use only when explicitly invoked.
+argument-hint:
+  "<design and code analysis | task, code read and session type | text>"
 ---
 
 # Plan
 
-Produce a plan: the task list that delivers the given design. Each task is one
+Produce a plan: the task list that delivers the given focus. Each task is one
 idea and one commit. A criterion selects its work, and the implementer applies
 that criterion fresh.
 
@@ -18,16 +19,22 @@ Follow the steps in order.
 
 ## Arguments
 
-The argument gives the focus for the plan: the design and code analysis the plan
-must serve. Without an argument, derive the focus from your context. If you
-cannot identify a focus, ask the user.
+The argument gives the focus for the plan. It can be a design with its code
+analysis, or a well-specified task with a verified code read and session type.
+Without an argument, derive the focus from your context. If you cannot identify
+a focus, ask the user.
 
 ## Compose the draft plan
 
-Compose the draft plan, the task list that delivers the design.
+Compose the draft plan, the task list that delivers the focus.
 
-Derive tasks from the design and the code analysis. Don't translate the session
-input directly into tasks. The design may have already reshaped it where needed.
+Derive tasks from the design and code analysis when they are available. For a
+task-led focus, use the well-specified task for the intended shape and the
+verified code read to ground it. Use the session type to preserve or change
+behaviour as the task requires. Don't invent a separate design phase.
+
+Don't translate raw session input directly into tasks. Use the design or task's
+stated direction, which may have already reshaped the original ask.
 
 Each task should be one idea and one commit.
 
@@ -108,4 +115,4 @@ split ran along the wrong line, so split the pair a different way.
 
 ## The result
 
-Return the completed plan from the file: the task list that delivers the design.
+Return the completed plan from the file: the task list that delivers the focus.
