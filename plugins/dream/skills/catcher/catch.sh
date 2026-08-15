@@ -377,11 +377,11 @@ EOF
 }
 
 # Build the part of every Claude Code command that carries its unattended
-# permissions and session name.
+# permissions, session name, and real-time event stream.
 claude_base_command() {
   local branch=$1 writes
   writes="Bash(gh pr create:*) Bash(gh pr comment:*) Bash(gh pr edit:*) Bash(gh pr ready:*) Bash(gh pr close:*) Bash(gh issue create:*) Bash(gh issue comment:*) Bash(git commit:*) Bash(git push:*)"
-  printf 'claude --print --permission-mode auto --allowedTools %s --name %s\n' \
+  printf 'claude --print --output-format stream-json --verbose --permission-mode auto --allowedTools %s --name %s\n' \
     "$(shell_quote "$writes")" "$(shell_quote "$branch")"
 }
 
