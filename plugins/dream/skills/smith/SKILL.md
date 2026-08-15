@@ -171,7 +171,8 @@ apply none when there's no clean match.
 ## Plan
 
 Run the `dream:plan` skill in this session, focused on the intended result in
-the session input, the current code you read, and the session type.
+the session input, how the current code works and is organised, and the session
+type.
 
 Post the returned plan as a PR comment. Head it `Plan`.
 

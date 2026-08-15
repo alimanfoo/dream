@@ -20,18 +20,18 @@ Follow the steps in order.
 
 ## Arguments
 
-The argument gives the focus for the plan: the intended result, what the current
-code does, and whether behaviour must be preserved or changed. Without an
-argument, derive the focus from your context. If you cannot identify a focus,
-ask the user.
+The argument gives the focus for the plan. Identify the intended result, how the
+current code works and is organised, and whether behaviour must be preserved or
+changed from that focus. Without an argument, derive the focus from your
+context. If you cannot identify a focus, ask the user.
 
 ## Compose the draft plan
 
 Compose the draft plan.
 
 Derive tasks from the focus. Use the intended result to decide what must change.
-Use what the current code does to decide where the work belongs. Use the
-behaviour requirement to keep each task within scope.
+Use how the current code works and is organised to decide where the work
+belongs. Use the behaviour requirement to keep each task within scope.
 
 Use the intended result instead of translating the original ask directly into
 tasks. The intended result may have already reshaped the ask.
