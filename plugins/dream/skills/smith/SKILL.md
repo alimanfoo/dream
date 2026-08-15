@@ -168,6 +168,13 @@ them here adds nothing. Otherwise, reproduce the user's input verbatim.
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
 
+## Interrupted work
+
+After you open the PR, post a comment there before you end a turn if anything
+disrupts the work and prevents you from finishing it. Say what disrupted the
+work and where you stopped. The user follows the PR, so turn output alone is not
+enough.
+
 ## Plan
 
 Run a Plan subagent. Give it the session input, the code you read, and the

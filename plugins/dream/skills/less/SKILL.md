@@ -140,6 +140,13 @@ the title from the session input.
 `gh label list` once to find the repo's closest label for each category, and
 apply none when there's no clean match.
 
+## Interrupted work
+
+After you open the PR, post a comment there before you end a turn if anything
+disrupts the work and prevents you from finishing it. Say what disrupted the
+work and where you stopped. The user follows the PR, so turn output alone is not
+enough.
+
 ## Implement
 
 Open the draft PR before you change any code, if it isn't already open
