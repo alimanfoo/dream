@@ -20,11 +20,10 @@ Use `claude` as the harness under Claude Code and `codex` under Codex. Pass that
 harness and any arguments the user supplied to the script. Do not ask the user
 to confirm defaults.
 
-Read the repository owner and name, then use both in the coordinator's tmux
-session name. Replace dots with plus signs, since tmux rewrites dots as
-underscores and GitHub does not allow plus signs in repository names. Stop if
-the repository lookup fails, so an incomplete name cannot collide with another
-catcher.
+Read the repository owner and name, then use both in the catcher's tmux session
+name. Replace dots with plus signs, since tmux rewrites dots as underscores and
+GitHub does not allow plus signs in repository names. Stop if the repository
+lookup fails, so an incomplete name cannot collide with another catcher.
 
 Run the script in that detached tmux session so the catcher keeps running after
 this session ends:
@@ -44,6 +43,6 @@ tmux new-session -d -s "$session" -x 220 -y 50 \
 Tell the user only after `tmux new-session` succeeds. Replace `$session` below
 with its value, then include the session name and these commands:
 
-- `tmux attach -t "=$session"` watches the coordinator.
-- `tail -f dreamcatcher.log` follows the coordinator log.
-- `tmux kill-session -t "=$session"` stops the coordinator.
+- `tmux attach -t "=$session"` watches the catcher.
+- `tail -f dreamcatcher.log` follows the catcher log.
+- `tmux kill-session -t "=$session"` stops the catcher.

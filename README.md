@@ -116,24 +116,6 @@ claude -p '/dream:catcher --smith-label auto'
 codex exec '$dream:catcher --smith-label auto'
 ```
 
-Run these commands from the repository's main checkout to build the tmux session
-name from the repository owner and name. Dots become plus signs because tmux
-rewrites dots in session names:
-
-```bash
-session=
-if repo=$(gh repo view --json nameWithOwner -q .nameWithOwner); then
-  session="${repo//./+}-dreamcatcher"
-fi
-```
-
-Stop if `gh repo view` fails. A session name without the repository could
-collide with another catcher.
-
-- `tmux attach -t "=$session"` watches the coordinator.
-- `tail -f dreamcatcher.log` follows the coordinator log.
-- `tmux kill-session -t "=$session"` stops the coordinator.
-
 Run the launch command again after a reboot.
 
 ## /dream:team advanced usage
