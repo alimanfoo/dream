@@ -1,10 +1,9 @@
 ---
 name: plan
 description:
-  Produce an implementation plan, a task list that delivers a design or a
-  well-specified task. Use only when explicitly invoked.
-argument-hint:
-  "<design and code analysis | task, code read and session type | text>"
+  Produce an implementation plan, a task list that delivers the given focus. Use
+  only when explicitly invoked.
+argument-hint: "<focus | text>"
 ---
 
 # Plan
@@ -21,27 +20,21 @@ Follow the steps in order.
 
 ## Arguments
 
-The argument gives the focus for the plan in one of these forms:
-
-- a design and code analysis
-- a well-specified task, verified code read, and session type
-
-Without an argument, derive the focus from your context. If you cannot identify
-a focus, ask the user.
+The argument gives the focus for the plan: the intended result, what the current
+code does, and whether behaviour must be preserved or changed. Without an
+argument, derive the focus from your context. If you cannot identify a focus,
+ask the user.
 
 ## Compose the draft plan
 
 Compose the draft plan.
 
-Derive tasks from the design and code analysis when they are available. For a
-task-led focus, use the well-specified task to set the intended result. Use the
-verified code read to choose work that fits the current code. Use the session
-type to preserve or change behaviour as the task requires. Don't invent a
-separate design phase.
+Derive tasks from the focus. Use the intended result to decide what must change.
+Use what the current code does to decide where the work belongs. Use the
+behaviour requirement to keep each task within scope.
 
-Use the design or task's stated direction instead of translating raw session
-input directly into tasks. That direction may have already reshaped the original
-ask.
+Use the intended result instead of translating the original ask directly into
+tasks. The intended result may have already reshaped the ask.
 
 Each task should be one idea and one commit.
 

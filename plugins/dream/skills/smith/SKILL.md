@@ -170,8 +170,8 @@ apply none when there's no clean match.
 
 ## Plan
 
-Run the `dream:plan` skill in this session, focused on the session input, the
-verified code read, and the session type.
+Run the `dream:plan` skill in this session, focused on the intended result in
+the session input, the current code you read, and the session type.
 
 Post the returned plan as a PR comment. Head it `Plan`.
 
