@@ -170,10 +170,10 @@ apply none when there's no clean match.
 
 ## Interrupted work
 
-Post a comment on the PR before you end a turn when an interruption or other
-failure prevents you from finishing the work. Name what was interrupted and
-where the work stopped. Turn output is not enough, because the user follows the
-PR. An interrupted tool or subagent call counts.
+Post a comment on the PR before you end a turn if anything disrupts the work and
+prevents you from finishing it. Say what disrupted the work and where you
+stopped. The user follows the PR, so turn output alone is not enough. This rule
+covers any tool call or subagent call that does not finish.
 
 ## Plan
 
