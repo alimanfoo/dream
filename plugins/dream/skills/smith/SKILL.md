@@ -170,11 +170,8 @@ apply none when there's no clean match.
 
 ## Plan
 
-Run a Plan subagent. Give it the session input, the code you read, and the
-session type, and ask for a step-by-step plan. The next thing you write to me
-carries its report. So wait for the report however your session waits, then
-continue — don't sleep, don't poll for progress, and don't write that you're
-waiting.
+Run the `dream:plan` skill in this session, focused on the session input, the
+verified code read, and the session type.
 
 Post the returned plan as a PR comment. Head it `Plan`.
 
