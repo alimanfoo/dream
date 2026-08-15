@@ -125,10 +125,16 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 # comment covers a range, and both are null when it is about the whole file.
 result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
   | jq --arg cutoff "$cutoff" --arg footer_marker "$footer_marker" --arg me "$me" '
+  def is_footer_decoration:
+    test("^[\\p{S}\\p{M}\\p{Cf}\\s]*$");
+
   def has_agent_footer:
-    ((.body // "") | split("\n") | map(select(length > 0)) | (last // ""))
+    ((.body // "") | split("\n") | map(select(test("\\S"))) | (last // ""))
     as $line
-    | ($line | test("^> [^[:alnum:]]*" + $footer_marker + "[^[:alnum:]]*$"));
+    | ($line | split($footer_marker)) as $parts
+    | ($parts | length == 2)
+      and ($parts[0] | test("^> [\\p{S}\\p{M}\\p{Cf}\\s]*$"))
+      and ($parts[1] | is_footer_decoration);
 
   def is_new_from_user($author; $at):
     $author == $me and $at > $cutoff
