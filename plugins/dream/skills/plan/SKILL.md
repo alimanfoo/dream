@@ -9,9 +9,11 @@ argument-hint:
 
 # Plan
 
-Produce a plan: the task list that delivers the given focus. Each task is one
-idea and one commit. A criterion selects its work, and the implementer applies
-that criterion fresh.
+A plan is the task list that delivers the given focus. Each task is one idea and
+one commit.
+
+Each task states a criterion that tells the implementer which work belongs in
+the task. The implementer applies the criterion when starting the task.
 
 Write every turn output and artefact in this skill using `dream:plain-english`.
 
@@ -19,22 +21,27 @@ Follow the steps in order.
 
 ## Arguments
 
-The argument gives the focus for the plan. It can be a design with its code
-analysis, or a well-specified task with a verified code read and session type.
+The argument gives the focus for the plan in one of these forms:
+
+- a design and code analysis
+- a well-specified task, verified code read, and session type
+
 Without an argument, derive the focus from your context. If you cannot identify
 a focus, ask the user.
 
 ## Compose the draft plan
 
-Compose the draft plan, the task list that delivers the focus.
+Compose the draft plan.
 
 Derive tasks from the design and code analysis when they are available. For a
-task-led focus, use the well-specified task for the intended shape and the
-verified code read to ground it. Use the session type to preserve or change
-behaviour as the task requires. Don't invent a separate design phase.
+task-led focus, use the well-specified task to set the intended result. Use the
+verified code read to choose work that fits the current code. Use the session
+type to preserve or change behaviour as the task requires. Don't invent a
+separate design phase.
 
-Don't translate raw session input directly into tasks. Use the design or task's
-stated direction, which may have already reshaped the original ask.
+Use the design or task's stated direction instead of translating raw session
+input directly into tasks. That direction may have already reshaped the original
+ask.
 
 Each task should be one idea and one commit.
 
@@ -115,4 +122,4 @@ split ran along the wrong line, so split the pair a different way.
 
 ## The result
 
-Return the completed plan from the file: the task list that delivers the focus.
+Return the completed plan from the file.
