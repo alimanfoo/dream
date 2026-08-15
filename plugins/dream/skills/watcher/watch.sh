@@ -65,9 +65,9 @@ for tool in gh jq; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
 done
 
-# Read the displayed footer and its stable marker from the same file as the
-# callers. The display can move or change its decoration between versions. The
-# marker stays fixed, so either version still recognizes the other's footer.
+# Read the displayed footer and its stable marker from the callers' shared marks
+# file. Plugin versions can move or change the decoration around the marker.
+# The fixed marker lets the watcher recognize footers written by those versions.
 script_dir=$(CDPATH=; cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd) \
   || die "cannot resolve the watcher script directory"
 marks_file="$script_dir/../../agent-written-marks.json"
