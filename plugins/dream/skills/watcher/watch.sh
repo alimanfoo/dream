@@ -65,8 +65,9 @@ for tool in gh jq; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
 done
 
-# Read the footer from the same file as the callers. Match on its words, not its
-# emoji, because the words carry the contract.
+# Read the displayed footer and its stable marker from the same file as the
+# callers. The display can move or change its decoration between versions. The
+# marker stays fixed, so either version still recognizes the other's footer.
 script_dir=$(CDPATH=; cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd) \
   || die "cannot resolve the watcher script directory"
 marks_file="$script_dir/../../agent-written-marks.json"
@@ -74,7 +75,11 @@ marks_file="$script_dir/../../agent-written-marks.json"
 footer=$(jq -r '.commentFooter // empty' "$marks_file") \
   || die "cannot read the agent-written comment footer"
 [ -n "$footer" ] || die "the agent-written comment footer is empty"
-footer_words=${footer#* }
+footer_marker=$(jq -r '.commentFooterMarker // empty' "$marks_file") \
+  || die "cannot read the agent-written comment footer marker"
+[ -n "$footer_marker" ] || die "the agent-written comment footer marker is empty"
+[[ "$footer" == *"$footer_marker"* ]] \
+  || die "the agent-written comment footer does not contain its marker"
 
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
@@ -121,12 +126,12 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 # it stood then, rather than reporting nothing. Both hold the last line when the
 # comment covers a range, and both are null when it is about the whole file.
 result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
-  | jq --arg cutoff "$cutoff" --arg footer "$footer_words" --arg me "$me" '
+  | jq --arg cutoff "$cutoff" --arg footer_marker "$footer_marker" --arg me "$me" '
   def has_agent_footer:
     ((.body // "") | split("\n") | map(select(length > 0)) | (last // ""))
     as $line
     | ($line | startswith("> "))
-      and ($line | endswith($footer));
+      and ($line | contains($footer_marker));
 
   def is_new_from_user($author; $at):
     $author == $me and $at > $cutoff
