@@ -1,6 +1,8 @@
 ---
 name: plain-english
-description: Write prose to the dream plugin's Plain English guide.
+description:
+  Write prose to the dream plugin's Plain English guide. Use only when
+  explicitly invoked.
 ---
 
 # Plain English

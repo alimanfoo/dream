@@ -1,6 +1,8 @@
 ---
 name: coherence-review
-description: Review changed code for coherence and maintainability.
+description:
+  Review changed code for coherence and maintainability. Use only when
+  explicitly invoked.
 argument-hint: "[target]"
 ---
 

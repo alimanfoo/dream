@@ -2,6 +2,7 @@
 name: plan
 description:
   Produce an implementation plan, a task list that delivers the given design.
+  Use only when explicitly invoked.
 argument-hint: "<design and code analysis | text>"
 ---
 
