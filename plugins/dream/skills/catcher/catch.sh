@@ -543,8 +543,8 @@ resume_existing_work() {
     state=$(printf '%s' "$pr_json" | jq -r '.state')
     case "$state" in
       OPEN)
-        watch_json=$(bash "$watch_script" "$pr_number" 2>&1) \
-          || { log "cannot read pull request #$pr_number activity for $branch: $watch_json"; continue; }
+        watch_json=$(bash "$watch_script" "$pr_number" 2>/dev/null) \
+          || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
         posts=$(printf '%s' "$watch_json" | jq -r '.posts | length' 2>/dev/null) \
           || { log "cannot parse watch result for pull request #$pr_number"; continue; }
         [ "${posts:-0}" -gt 0 ] || continue
@@ -554,8 +554,8 @@ resume_existing_work() {
         ;;
       MERGED|CLOSED)
         [ -f "$(final_marker_file "$branch")" ] && continue
-        watch_json=$(bash "$watch_script" "$pr_number" 2>&1) \
-          || { log "cannot read pull request #$pr_number activity for $branch: $watch_json"; continue; }
+        watch_json=$(bash "$watch_script" "$pr_number" 2>/dev/null) \
+          || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
         write_inbox "$branch" "$watch_json" || continue
         prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
         launch_agent_round "$wt" "$branch" "$session_harness" "" "$model" "$effort" 1 1 "$prompt" && return 0

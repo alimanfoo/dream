@@ -65,7 +65,7 @@ for tool in gh jq; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
 done
 
-# Read the displayed footer and its stable marker from the shared marks file.
+# Read the footer from the same file as the callers.
 script_dir=$(CDPATH=; cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd) \
   || die "cannot resolve the watcher script directory"
 marks_file="$script_dir/../../agent-written-marks.json"
@@ -73,11 +73,6 @@ marks_file="$script_dir/../../agent-written-marks.json"
 footer=$(jq -r '.commentFooter // empty' "$marks_file") \
   || die "cannot read the agent-written comment footer"
 [ -n "$footer" ] || die "the agent-written comment footer is empty"
-footer_marker=$(jq -r '.commentFooterMarker // empty' "$marks_file") \
-  || die "cannot read the agent-written comment footer marker"
-[ -n "$footer_marker" ] || die "the agent-written comment footer marker is empty"
-[[ "$footer" == *"$footer_marker"* ]] \
-  || die "the agent-written comment footer does not contain its marker"
 
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) \
   || die "cannot read the GitHub repository from the current directory"
@@ -124,17 +119,9 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 # it stood then, rather than reporting nothing. Both hold the last line when the
 # comment covers a range, and both are null when it is about the whole file.
 result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
-  | jq --arg cutoff "$cutoff" --arg footer_marker "$footer_marker" --arg me "$me" '
-  def is_footer_decoration:
-    test("^[\\p{S}\\p{M}\\p{Cf}\\s]*$");
-
+  | jq --arg cutoff "$cutoff" --arg footer "$footer" --arg me "$me" '
   def has_agent_footer:
-    ((.body // "") | split("\n") | map(select(test("\\S"))) | (last // ""))
-    as $line
-    | ($line | split($footer_marker)) as $parts
-    | ($parts | length == 2)
-      and ($parts[0] | test("^> [\\p{S}\\p{M}\\p{Cf}\\s]*$"))
-      and ($parts[1] | is_footer_decoration);
+    ((.body // "") | contains($footer));
 
   def is_new_from_user($author; $at):
     $author == $me and $at > $cutoff
