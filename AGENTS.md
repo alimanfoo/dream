@@ -83,6 +83,10 @@ throughout:
   team. Keep "subagent" for one a session spawns to do a job for it, and for the
   literal `subagent_type` parameter.
 
+Keep `commentFooterMarker` unchanged across versions. Change only the decoration
+in `commentFooter`, so an older watcher still recognises a newer session's
+comments.
+
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 suite. When changing behaviour, read the affected skill and agent prompts
 together. Check that lifecycle, role boundaries, and tool permissions stay

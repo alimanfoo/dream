@@ -65,9 +65,7 @@ for tool in gh jq; do
   command -v "$tool" >/dev/null 2>&1 || die "$tool is not on the PATH"
 done
 
-# Read the displayed footer and its stable marker from the callers' shared marks
-# file. Plugin versions can move or change the decoration around the marker.
-# The fixed marker lets the watcher recognize footers written by those versions.
+# Read the displayed footer and its stable marker from the shared marks file.
 script_dir=$(CDPATH=; cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd) \
   || die "cannot resolve the watcher script directory"
 marks_file="$script_dir/../../agent-written-marks.json"
@@ -130,8 +128,7 @@ result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
   def has_agent_footer:
     ((.body // "") | split("\n") | map(select(length > 0)) | (last // ""))
     as $line
-    | ($line | startswith("> "))
-      and ($line | contains($footer_marker));
+    | ($line | test("^> [^[:alnum:]]*" + $footer_marker + "[^[:alnum:]]*$"));
 
   def is_new_from_user($author; $at):
     $author == $me and $at > $cutoff
