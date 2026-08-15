@@ -184,8 +184,8 @@ plugin_version=$(jq -er '.version | select(type == "string" and length > 0)' \
 
 # Copy every file the running catcher may read from the plugin installation.
 # Codex can replace that installation while this process is asleep between
-# ticks. A versioned copy stays stable for this process and lets a newer catcher
-# publish its own bundle without changing the files this one uses.
+# ticks. A versioned copy stays stable for this process. A newer catcher can
+# publish its own bundle without changing this process's files.
 runtime_dir="$HOME/.dream/catcher/$repo/runtime/$plugin_version"
 for runtime_file in \
   agent-written-marks.json \
