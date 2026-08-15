@@ -25,8 +25,8 @@ writes data under `$HOME/.dream/catcher`, creates sibling worktrees, and calls
 GitHub. It cannot run inside the harness sandbox.
 
 Request escalated permission before you run the command under Codex. Run the
-command normally under Claude Code; Claude Code's Bash permission prompt asks
-for host access.
+command normally under Claude Code. Claude Code's current permission mode
+handles the Bash request.
 
 Run the script in a detached tmux session so it outlives this session:
 
@@ -37,7 +37,7 @@ tmux new-session -d -s dreamcatcher -x 220 -y 50 \
    --harness <claude or codex> \
    <the arguments the user supplied> \
    2>&1 | tee -a dreamcatcher.log" &&
-  tmux has-session -t =dreamcatcher
+  tmux has-session -t '=dreamcatcher'
 ```
 
 Handle a blocked permission request by its cause:
@@ -51,18 +51,27 @@ Handle a blocked permission request by its cause:
   `/dream:catcher`, or start `codex` there and run `$dream:catcher`. Tell them
   to approve the tmux command.
 
-Offer this reviewed non-interactive launch to Codex users only when the current
-session has no approval path:
+Offer the matching non-interactive launch only when the current session has no
+approval path.
+
+Under Claude Code:
+
+```bash
+claude --print --permission-mode auto /dream:catcher
+```
+
+Under Codex:
 
 ```bash
 codex --approve-for-me exec '$dream:catcher'
 ```
 
-Do not offer the same command again when Codex's automatic reviewer refused it.
+Do not offer either command again when it was already used for the current
+launch.
 
 Tell the user that the catcher started only after both tmux commands pass.
 Include these commands:
 
-- `tmux attach -t =dreamcatcher` watches it.
+- `tmux attach -t '=dreamcatcher'` watches it.
 - `tail -f dreamcatcher.log` follows its log.
-- `tmux kill-session -t =dreamcatcher` stops it.
+- `tmux kill-session -t '=dreamcatcher'` stops it.

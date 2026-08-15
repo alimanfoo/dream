@@ -115,6 +115,12 @@ Under Codex:
 2. Run `$dream:catcher` in the session.
 3. Approve the tmux command when Codex asks to run it outside the sandbox.
 
+Use Claude Code's auto permission mode for a non-interactive launch:
+
+```bash
+claude --print --permission-mode auto /dream:catcher
+```
+
 Let Codex's automatic reviewer assess the host-access request when you launch
 the catcher non-interactively:
 
