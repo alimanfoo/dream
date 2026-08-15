@@ -13,12 +13,17 @@ argument-hint:
 
 # Dreamcatcher
 
-Start `catch.sh` from this skill's directory. The script owns its configuration,
-validation, and runtime behaviour.
+Use `catch.sh` in this skill's directory. The script owns its configuration,
+validates it, and controls runtime behaviour.
 
 Use `claude` as the harness under Claude Code and `codex` under Codex. Pass that
 harness and any arguments the user supplied to the script. Do not ask the user
 to confirm defaults.
+
+Read the repository owner and name, then use both in the catcher's tmux session
+name. Replace dots with plus signs, since tmux rewrites dots as underscores and
+GitHub does not allow plus signs in repository names. Stop if the repository
+lookup fails, so an incomplete name cannot collide with another catcher.
 
 Run the outer tmux command with host access. The catcher manages tmux sessions,
 writes data under `$HOME/.dream/catcher`, creates sibling worktrees, and calls
@@ -28,16 +33,20 @@ Request escalated permission before you run the command under Codex. Run the
 command normally under Claude Code. Claude Code's current permission mode
 handles the Bash request.
 
-Run the script in a detached tmux session so it outlives this session:
+Run the script in a detached tmux session so the catcher keeps running after
+this session ends:
 
 ```bash
-tmux new-session -d -s dreamcatcher -x 220 -y 50 \
+repo=$(gh repo view --json nameWithOwner -q .nameWithOwner) || exit 1
+session="${repo//./+}-dreamcatcher"
+
+tmux new-session -d -s "$session" -x 220 -y 50 \
   -c "<the repository's main checkout>" \
   "bash '<absolute path to catch.sh in this skill's directory>' \
    --harness <claude or codex> \
    <the arguments the user supplied> \
-   2>&1 | tee -a dreamcatcher.log" &&
-  tmux has-session -t '=dreamcatcher'
+   2>&1 | tee -a dreamcatcher.log" || exit 1
+tmux has-session -t "=$session" || exit 1
 ```
 
 Handle a blocked permission request by its cause:
@@ -70,8 +79,9 @@ Do not offer either command again when it was already used for the current
 launch.
 
 Tell the user that the catcher started only after both tmux commands pass.
-Include these commands:
+Replace `$session` below with its value, then include the session name and these
+commands:
 
-- `tmux attach -t '=dreamcatcher'` watches it.
-- `tail -f dreamcatcher.log` follows its log.
-- `tmux kill-session -t '=dreamcatcher'` stops it.
+- `tmux attach -t "=$session"` watches the catcher.
+- `tail -f dreamcatcher.log` follows the catcher log.
+- `tmux kill-session -t "=$session"` stops the catcher.
