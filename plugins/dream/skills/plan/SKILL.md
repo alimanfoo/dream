@@ -1,16 +1,18 @@
 ---
 name: plan
 description:
-  Produce an implementation plan, a task list that delivers the given design.
-  Use only when explicitly invoked.
-argument-hint: "<design and code analysis | text>"
+  Produce an implementation plan, a task list that delivers the given focus. Use
+  only when explicitly invoked.
+argument-hint: "<focus | text>"
 ---
 
 # Plan
 
-Produce a plan: the task list that delivers the given design. Each task is one
-idea and one commit. A criterion selects its work, and the implementer applies
-that criterion fresh.
+A plan is the task list that delivers the given focus. Each task is one idea and
+one commit.
+
+Each task states a criterion that tells the implementer which work belongs in
+the task. The implementer applies the criterion when starting the task.
 
 Write every turn output and artefact in this skill using `dream:plain-english`.
 
@@ -18,16 +20,21 @@ Follow the steps in order.
 
 ## Arguments
 
-The argument gives the focus for the plan: the design and code analysis the plan
-must serve. Without an argument, derive the focus from your context. If you
-cannot identify a focus, ask the user.
+The argument gives the focus for the plan. Identify the intended result, how the
+current code works and is organised, and whether behaviour must be preserved or
+changed from that focus. Without an argument, derive the focus from your
+context. If you cannot identify a focus, ask the user.
 
 ## Compose the draft plan
 
-Compose the draft plan, the task list that delivers the design.
+Compose the draft plan.
 
-Derive tasks from the design and the code analysis. Don't translate the session
-input directly into tasks. The design may have already reshaped it where needed.
+Derive tasks from the focus. Use the intended result to decide what must change.
+Use how the current code works and is organised to decide where the work
+belongs. Use the behaviour requirement to keep each task within scope.
+
+Use the intended result instead of translating the original ask directly into
+tasks. The intended result may have already reshaped the ask.
 
 Each task should be one idea and one commit.
 
@@ -108,4 +115,4 @@ split ran along the wrong line, so split the pair a different way.
 
 ## The result
 
-Return the completed plan from the file: the task list that delivers the design.
+Return the completed plan from the file.
