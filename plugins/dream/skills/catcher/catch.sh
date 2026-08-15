@@ -178,29 +178,17 @@ script_dir=$(CDPATH=; cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd) \
   || die "cannot resolve the catcher script directory"
 plugin_root=$(CDPATH=; cd -- "$script_dir/../.." && pwd) \
   || die "cannot resolve the dream plugin directory"
-plugin_version=$(jq -er '.version | select(type == "string" and length > 0)' \
-  "$plugin_root/.codex-plugin/plugin.json" 2>/dev/null) \
-  || die "cannot read the dream plugin version"
 
-# Copy every file the running catcher may read from the plugin installation.
-# Codex can replace that installation while this process is asleep between
-# ticks. A versioned copy stays stable for this process. A newer catcher can
-# publish its own bundle without changing this process's files.
-runtime_dir="$HOME/.dream/catcher/$repo/runtime/$plugin_version"
-for runtime_file in \
-  agent-written-marks.json \
-  skills/catcher/catch.sh \
-  skills/watcher/watch.sh
-do
-  runtime_target="$runtime_dir/$runtime_file"
-  runtime_pending="$runtime_target.pending.$$"
-  mkdir -p "$(dirname "$runtime_target")" \
-    || die "cannot create the Dreamcatcher runtime directory"
-  cp "$plugin_root/$runtime_file" "$runtime_pending" \
-    || die "cannot snapshot $runtime_file for Dreamcatcher"
-  mv "$runtime_pending" "$runtime_target" \
-    || die "cannot publish $runtime_file for Dreamcatcher"
-done
+# Copy the plugin tree because its helpers can read files outside their own
+# directories. Codex can replace the installation while this process is asleep
+# between ticks. A private snapshot stays stable for this process.
+runtime_root="$HOME/.dream/catcher/$repo/runtime"
+mkdir -p "$runtime_root" \
+  || die "cannot create the Dreamcatcher runtime directory"
+runtime_dir=$(mktemp -d "$runtime_root/session.XXXXXX") \
+  || die "cannot create a Dreamcatcher runtime snapshot"
+cp -R "$plugin_root/." "$runtime_dir" \
+  || die "cannot snapshot the dream plugin for Dreamcatcher"
 watch_script="$runtime_dir/skills/watcher/watch.sh"
 
 # --- one tick --------------------------------------------------------------
