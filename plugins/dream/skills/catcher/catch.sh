@@ -36,7 +36,7 @@
 # approval reviewer. Either harness can carry the workflow without waiting for a
 # person at the terminal.
 #
-# Layout: the coordinator assumes the standard worktree layout, where each
+# Layout: the catcher assumes the standard worktree layout, where each
 # dispatched worktree is a sibling of the main checkout under a directory
 # dedicated to this repo. It creates them as
 # <container>/dream-catcher-GH<n>-<timestamp>. The timestamp makes each attempt
@@ -181,7 +181,7 @@ watch_script="$script_dir/../watcher/watch.sh"
 
 # --- one tick --------------------------------------------------------------
 
-# A worktree or branch this coordinator created, named
+# A worktree or branch this catcher created, named
 # dream-catcher-GH<n>-<timestamp>. The pattern is anchored to that exact shape,
 # so the catcher never treats a human worktree as its own.
 is_session_branch() { [[ "$1" =~ ^dream-catcher-GH[0-9]+-[0-9]{8}-[0-9]{6}$ ]]; }
