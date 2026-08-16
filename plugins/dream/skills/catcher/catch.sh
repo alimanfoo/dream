@@ -187,9 +187,11 @@ mkdir -p "$runtime_root" \
   || die "cannot create the Dreamcatcher runtime directory"
 runtime_dir=$(mktemp -d "$runtime_root/session.XXXXXX") \
   || die "cannot create a Dreamcatcher runtime snapshot"
+trap 'rm -rf -- "$runtime_dir"' EXIT
 cp -R "$plugin_root/." "$runtime_dir" \
   || die "cannot snapshot the dream plugin for Dreamcatcher"
 watch_script="$runtime_dir/skills/watcher/watch.sh"
+[ -f "$watch_script" ] || die "cannot find watch.sh in the Dreamcatcher runtime snapshot"
 
 # --- one tick --------------------------------------------------------------
 
