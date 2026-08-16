@@ -192,8 +192,13 @@ cp -R "$plugin_root/." "$runtime_dir" \
   || die "cannot snapshot the dream plugin for Dreamcatcher"
 watch_script="$runtime_dir/skills/watcher/watch.sh"
 [ -f "$watch_script" ] || die "cannot find watch.sh in the Dreamcatcher runtime snapshot"
-render_script="$runtime_dir/skills/catcher/render-claude.sh"
-[ -f "$render_script" ] || die "cannot find render-claude.sh in the Dreamcatcher runtime snapshot"
+
+# Take render-claude.sh from the installation, not the snapshot. A round runs
+# the script for as long as the round lasts, and a round outlives this process
+# under --once, which dispatches and returns. This process deletes the snapshot
+# as it exits, so a round reading from there would find the script gone.
+render_script="$script_dir/render-claude.sh"
+[ -f "$render_script" ] || die "cannot find render-claude.sh beside the catcher script"
 
 # --- one tick --------------------------------------------------------------
 
@@ -392,10 +397,11 @@ session's rules. End your turn when done.
 EOF
 }
 
-# Build the part of every Claude Code command that carries its unattended
-# permissions, session name, and real-time event stream. The stream is JSON, so
-# render-claude.sh runs the command and writes the round's story to agent.log as
-# text a person can read.
+# Build the part of every Claude Code command that carries its session name, its
+# real-time event stream, and the permissions it needs to run unattended.
+#
+# That stream is JSON, which no person can read. So render-claude.sh runs the
+# command and renders the stream for agent.log.
 claude_base_command() {
   local branch=$1 writes
   writes="Bash(gh pr create:*) Bash(gh pr comment:*) Bash(gh pr edit:*) Bash(gh pr ready:*) Bash(gh pr close:*) Bash(gh issue create:*) Bash(gh issue comment:*) Bash(git commit:*) Bash(git push:*)"
