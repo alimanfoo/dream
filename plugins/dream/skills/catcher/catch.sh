@@ -537,7 +537,7 @@ list_labelled() {
 # only when watch.sh returns new user posts. Merged or closed pull requests get
 # one final round, guarded by final-started.
 resume_existing_work() {
-  local wt branch config session_harness model effort pr_json pr_number state watch_json posts prompt
+  local wt branch config session_harness model effort pr_json pr_number state final watch_json posts prompt
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
     agent_round_is_live "$branch" && continue
@@ -555,26 +555,23 @@ resume_existing_work() {
       || { log "skipping $branch: no pull request yet; see $(agent_log_file "$branch")"; continue; }
     pr_number=$(printf '%s' "$pr_json" | jq -r '.number')
     state=$(printf '%s' "$pr_json" | jq -r '.state')
+    # The pull request state decides whether this round is the branch's last.
     case "$state" in
-      OPEN)
-        watch_json=$(bash "$watch_script" "$pr_number" 2>/dev/null) \
-          || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
-        posts=$(printf '%s' "$watch_json" | jq -r '.posts | length' 2>/dev/null) \
-          || { log "cannot parse watch result for pull request #$pr_number"; continue; }
-        [ "${posts:-0}" -gt 0 ] || continue
-        write_inbox "$branch" "$watch_json" || continue
-        prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
-        launch_agent_round "$wt" "$branch" "$session_harness" "" "$model" "$effort" 1 0 "$prompt" && return 0
-        ;;
-      MERGED|CLOSED)
-        [ -f "$(final_marker_file "$branch")" ] && continue
-        watch_json=$(bash "$watch_script" "$pr_number" 2>/dev/null) \
-          || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
-        write_inbox "$branch" "$watch_json" || continue
-        prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
-        launch_agent_round "$wt" "$branch" "$session_harness" "" "$model" "$effort" 1 1 "$prompt" && return 0
-        ;;
+      OPEN)          final=0;;
+      MERGED|CLOSED) final=1;;
+      *)             continue;;
     esac
+    watch_json=$(bash "$watch_script" "$pr_number" 2>/dev/null) \
+      || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
+    if [ "$state" = OPEN ]; then
+      posts=$(printf '%s' "$watch_json" | jq -r '.posts | length' 2>/dev/null) \
+        || { log "cannot parse watch result for pull request #$pr_number"; continue; }
+      [ "${posts:-0}" -gt 0 ] || continue
+    fi
+    write_inbox "$branch" "$watch_json" || continue
+    prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
+    launch_agent_round "$wt" "$branch" "$session_harness" "" "$model" "$effort" 1 "$final" "$prompt" \
+      && return 0
   done < <(session_worktrees | sort -t$'\t' -k2,2)
   return 1
 }
