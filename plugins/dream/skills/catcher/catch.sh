@@ -187,7 +187,11 @@ mkdir -p "$runtime_root" \
   || die "cannot create the Dreamcatcher runtime directory"
 runtime_dir=$(mktemp -d "$runtime_root/session.XXXXXX") \
   || die "cannot create a Dreamcatcher runtime snapshot"
-trap 'rm -rf -- "$runtime_dir"' EXIT
+# Where the watcher's error messages land. It sits beside the snapshot rather
+# than inside it, so the snapshot holds the plugin and nothing else. Its name
+# derives from the snapshot's, so two catchers on one repository never share it.
+watch_error_file="$runtime_dir.err"
+trap 'rm -rf -- "$runtime_dir" "$watch_error_file"' EXIT
 cp -R "$plugin_root/." "$runtime_dir" \
   || die "cannot snapshot the dream plugin for Dreamcatcher"
 watch_script="$runtime_dir/skills/watcher/watch.sh"
@@ -561,8 +565,12 @@ resume_existing_work() {
       MERGED|CLOSED) final=1;;
       *)             continue;;
     esac
-    watch_json=$(bash "$watch_script" "$pr_number" 2>/dev/null) \
-      || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
+    # Keep the watcher's own message, which names the cause: an unreadable pull
+    # request, a missing tool, a watermark it cannot write. The catcher retries
+    # the branch every tick, so without the message the log repeats a failure no
+    # one can act on.
+    watch_json=$(bash "$watch_script" "$pr_number" 2>"$watch_error_file") \
+      || { log "cannot read pull request #$pr_number activity for $branch: $(cat "$watch_error_file")"; continue; }
     if [ "$state" = OPEN ]; then
       posts=$(printf '%s' "$watch_json" | jq -r '.posts | length' 2>/dev/null) \
         || { log "cannot parse watch result for pull request #$pr_number"; continue; }
