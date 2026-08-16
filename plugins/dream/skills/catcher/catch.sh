@@ -176,8 +176,22 @@ container=$(dirname "$main_root")
 repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) || die "cannot read the GitHub repository"
 script_dir=$(CDPATH=; cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd) \
   || die "cannot resolve the catcher script directory"
-watch_script="$script_dir/../watcher/watch.sh"
-[ -f "$watch_script" ] || die "cannot find watch.sh next to the catcher skill"
+plugin_root=$(CDPATH=; cd -- "$script_dir/../.." && pwd) \
+  || die "cannot resolve the dream plugin directory"
+
+# Copy the plugin tree because its helpers can read files outside their own
+# directories. Codex can replace the installation while this process is asleep
+# between ticks. A private snapshot stays stable for this process.
+runtime_root="$HOME/.dream/catcher/$repo/runtime"
+mkdir -p "$runtime_root" \
+  || die "cannot create the Dreamcatcher runtime directory"
+runtime_dir=$(mktemp -d "$runtime_root/session.XXXXXX") \
+  || die "cannot create a Dreamcatcher runtime snapshot"
+trap 'rm -rf -- "$runtime_dir"' EXIT
+cp -R "$plugin_root/." "$runtime_dir" \
+  || die "cannot snapshot the dream plugin for Dreamcatcher"
+watch_script="$runtime_dir/skills/watcher/watch.sh"
+[ -f "$watch_script" ] || die "cannot find watch.sh in the Dreamcatcher runtime snapshot"
 
 # --- one tick --------------------------------------------------------------
 
