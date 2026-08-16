@@ -52,6 +52,12 @@
 #
 # Timestamps are ISO-8601 with a trailing Z. They sort correctly as strings, so
 # the script can compare them without date arithmetic.
+#
+# Every failure leaves through `die`, which writes one line to stderr and stops.
+# So the script writes to stdout only once it has succeeded, and a caller can
+# merge the two streams and still parse what it gets. Keep it that way: write
+# nothing to stderr on a run that goes on to succeed, and redirect the stderr of
+# each command this script runs.
 
 set -uo pipefail
 

@@ -378,11 +378,11 @@ discard_worktree() {
   git -C "$main_root" branch -D "$2" 2>/dev/null
 }
 
-# The pull request for a branch, as a single JSON object. A branch is unique per
-# attempt, so the newest matching pull request is the session's own.
-pr_for_branch() {
-  gh pr list --repo "$repo" --head "$1" --state all --json number,state \
-    --jq 'sort_by(.number) | last // empty' 2>/dev/null
+# The number of a branch's pull request. A branch is unique per attempt, so the
+# newest matching pull request is the session's own.
+pr_number_for_branch() {
+  gh pr list --repo "$repo" --head "$1" --state all --json number \
+    --jq 'sort_by(.number) | last | .number // empty' 2>/dev/null
 }
 
 # The fixed prompt for every resumed round. It carries the pull request number
@@ -404,7 +404,7 @@ EOF
 # Build the part of every Claude Code command that carries its session name, its
 # real-time event stream, and the permissions it needs to run unattended.
 #
-# That stream is JSON, which no person can read. So render-claude.sh runs the
+# That stream is JSON, which no one can read. So render-claude.sh runs the
 # command and renders the stream for agent.log.
 claude_base_command() {
   local branch=$1 writes
@@ -552,7 +552,7 @@ list_labelled() {
 # only when watch.sh returns new user posts. Merged or closed pull requests get
 # one final round, guarded by final-started.
 resume_existing_work() {
-  local wt branch config session_harness model effort pr_json pr_number state watch_json posts prompt
+  local wt branch config session_harness model effort pr_number state final watch_json posts prompt
   while IFS=$'\t' read -r wt branch; do
     [ -n "$wt" ] || continue
     agent_round_is_live "$branch" && continue
@@ -564,32 +564,38 @@ resume_existing_work() {
     effort=$(printf '%s' "$config" | jq -r '.effort')
     command -v "$session_harness" >/dev/null 2>&1 \
       || { log "skipping $branch: $session_harness is not on the PATH"; continue; }
-    pr_json=$(pr_for_branch "$branch") \
+    pr_number=$(pr_number_for_branch "$branch") \
       || { log "cannot read pull request for $branch; will retry next tick"; continue; }
-    [ -n "$pr_json" ] \
+    [ -n "$pr_number" ] \
       || { log "skipping $branch: no pull request yet; see $(agent_log_file "$branch")"; continue; }
-    pr_number=$(printf '%s' "$pr_json" | jq -r '.number')
-    state=$(printf '%s' "$pr_json" | jq -r '.state')
+    # Keep whatever the watcher wrote. It names the cause: an unreadable pull
+    # request, a missing tool, a watermark it cannot write. The catcher retries
+    # the branch every tick, so without it the log repeats a failure no one can
+    # act on.
+    #
+    # The watcher writes to stdout only once it has succeeded. So merging its
+    # error stream into its output cannot corrupt the JSON.
+    watch_json=$(bash "$watch_script" "$pr_number" 2>&1) \
+      || { log "cannot read pull request #$pr_number activity for $branch: $watch_json"; continue; }
+    posts=$(printf '%s' "$watch_json" | jq -r '.posts | length' 2>/dev/null) \
+      || { log "cannot parse pull request #$pr_number activity for $branch: $watch_json"; continue; }
+    # Take the state from the watcher, which read it alongside the posts. The
+    # round and the inbox the agent reads then agree on whether the pull request
+    # is still open.
+    state=$(printf '%s' "$watch_json" | jq -r '.state')
+    # The state decides whether this round is the branch's last.
     case "$state" in
-      OPEN)
-        watch_json=$(bash "$watch_script" "$pr_number" 2>/dev/null) \
-          || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
-        posts=$(printf '%s' "$watch_json" | jq -r '.posts | length' 2>/dev/null) \
-          || { log "cannot parse watch result for pull request #$pr_number"; continue; }
-        [ "${posts:-0}" -gt 0 ] || continue
-        write_inbox "$branch" "$watch_json" || continue
-        prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
-        launch_agent_round "$wt" "$branch" "$session_harness" "" "$model" "$effort" 1 0 "$prompt" && return 0
-        ;;
-      MERGED|CLOSED)
-        [ -f "$(final_marker_file "$branch")" ] && continue
-        watch_json=$(bash "$watch_script" "$pr_number" 2>/dev/null) \
-          || { log "cannot read pull request #$pr_number activity for $branch"; continue; }
-        write_inbox "$branch" "$watch_json" || continue
-        prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
-        launch_agent_round "$wt" "$branch" "$session_harness" "" "$model" "$effort" 1 1 "$prompt" && return 0
-        ;;
+      OPEN)          final=0;;
+      MERGED|CLOSED) final=1;;
+      *)             continue;;
     esac
+    # The last round always runs, since it winds the session up. Any other round
+    # runs once the user has posted.
+    [ "$final" -eq 1 ] || [ "${posts:-0}" -gt 0 ] || continue
+    write_inbox "$branch" "$watch_json" || continue
+    prompt=$(resume_prompt "$pr_number" "$(inbox_file "$branch")")
+    launch_agent_round "$wt" "$branch" "$session_harness" "" "$model" "$effort" 1 "$final" "$prompt" \
+      && return 0
   done < <(session_worktrees | sort -t$'\t' -k2,2)
   return 1
 }

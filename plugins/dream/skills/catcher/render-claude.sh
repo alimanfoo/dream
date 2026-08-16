@@ -3,7 +3,7 @@
 # Run a Claude Code round and write its output as text a person can read.
 #
 # Claude Code streams JSON events under --output-format stream-json. That gives
-# the catcher a live view of a round, but no person can read it. This script
+# the catcher a live view of a round, but no one can read it. This script
 # renders each event as a line, so agent.log tells the story of the round: what
 # the model said, what it did, and what failed.
 #
