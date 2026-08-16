@@ -193,12 +193,16 @@ cp -R "$plugin_root/." "$runtime_dir" \
 watch_script="$runtime_dir/skills/watcher/watch.sh"
 [ -f "$watch_script" ] || die "cannot find watch.sh in the Dreamcatcher runtime snapshot"
 
-# Take render-claude.sh from the installation, not the snapshot. A round runs
-# the script for as long as the round lasts, and a round outlives this process
-# under --once, which dispatches and returns. This process deletes the snapshot
-# as it exits, so a round reading from there would find the script gone.
-render_script="$script_dir/render-claude.sh"
-[ -f "$render_script" ] || die "cannot find render-claude.sh beside the catcher script"
+# Keep render-claude.sh where a round can reach it for as long as the round
+# lasts. A round outlives this process under --once, and it outlives the
+# installed plugin, which an upgrade can move out from under a running catcher.
+# So neither the snapshot above nor the installation will do. Publish with mv,
+# which is atomic, so a running round never reads a half-written script.
+render_script="$HOME/.dream/catcher/$repo/render-claude.sh"
+cp "$script_dir/render-claude.sh" "$render_script.pending" \
+  || die "cannot copy render-claude.sh for Dreamcatcher rounds"
+mv "$render_script.pending" "$render_script" \
+  || die "cannot publish render-claude.sh for Dreamcatcher rounds"
 
 # --- one tick --------------------------------------------------------------
 

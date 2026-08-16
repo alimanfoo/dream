@@ -18,10 +18,9 @@
 # The script runs the command rather than filtering a pipe, so it can exit with
 # the command's own status. The caller logs that status.
 #
-# The script passes through unchanged any line it does not render: a warning
-# from the harness, or an event whose shape it does not expect. So the log keeps
-# everything, and a change to the event format costs one line's rendering, not
-# the round's.
+# The script passes a line through unchanged when it cannot render it: a warning
+# from the harness, or an event whose shape breaks the rendering. So a broken
+# render costs one line, not the round's log.
 
 set -uo pipefail
 
@@ -55,11 +54,6 @@ command -v jq >/dev/null 2>&1 || die "jq is not on the PATH"
        // $in.description // $in.prompt // $in)
     | shorten;
 
-  def duration:
-    (. / 1000 | floor) as $seconds
-    | if $seconds >= 60 then "\($seconds / 60 | floor)m\($seconds % 60)s"
-      else "\($seconds)s" end;
-
   def render_assistant:
     if .type == "text" then "\n" + .text
     elif .type == "tool_use" then "[\(.name)] \(tool_summary)"
@@ -80,14 +74,10 @@ command -v jq >/dev/null 2>&1 || die "jq is not on the PATH"
       "[session] model \(.model), id \(.session_id)"
     elif .type == "assistant" then render_blocks(render_assistant)
     elif .type == "user" then render_blocks(render_tool_failure)
-    elif .type == "result" then
-      "[result] \(.subtype), \(.num_turns) turn"
-      + (if .num_turns == 1 then "" else "s" end)
-      + ", \(.duration_ms | duration)"
-      + ", session cost $\(.total_cost_usd * 100 | round / 100)"
+    elif .type == "result" then "[result] \(.subtype)"
     else empty end;
 
-  def indent: split("\n") | map("  " + .) | join("\n");
+  def indent: gsub("(?m)^"; "  ");
 
   . as $line
   | try (fromjson
