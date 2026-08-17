@@ -404,8 +404,9 @@ EOF
 # Build the part of every Claude Code command that carries its session name, its
 # real-time event stream, and the permissions it needs to run unattended.
 #
-# That stream is JSON, which no one can read. So render-claude.sh runs the
-# command and renders the stream for agent.log.
+# That stream is JSON, which no one can read. So the command starts with
+# render-claude.sh, which runs the rest of it and renders the stream for
+# agent.log.
 claude_base_command() {
   local branch=$1 writes
   writes="Bash(gh pr create:*) Bash(gh pr comment:*) Bash(gh pr edit:*) Bash(gh pr ready:*) Bash(gh pr close:*) Bash(gh issue create:*) Bash(gh issue comment:*) Bash(git commit:*) Bash(git push:*)"
