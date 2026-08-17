@@ -17,9 +17,8 @@
 #
 # A subagent's report is the substance of the work it did, so the script gives it
 # a line. It renders the completion event, which carries the report whether the
-# subagent ran in the foreground or the background. The subagent's own words
-# reach the stream too, but only when its events stream inline, so they are the
-# report's home for some subagents and not others.
+# subagent ran in the foreground or the background. A subagent's own words carry
+# the report too, but they reach the stream only when its events stream inline.
 #
 # The script runs the command rather than filtering a pipe, so it can exit with
 # the command's own status. The caller logs that status.
