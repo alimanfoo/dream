@@ -178,6 +178,11 @@ plugin_root=$(CDPATH=; cd -- "$script_dir/../.." && pwd) \
 # Copy the plugin tree because its helpers can read files outside their own
 # directories. Codex can replace the installation while this process is asleep
 # between ticks. A private snapshot stays stable for this process.
+#
+# This process deletes the snapshot as it exits, so only this process can read
+# it. That suits watch.sh, which the catcher runs itself inside a tick. Don't
+# point a round at the snapshot. A round runs in its own tmux session, so it can
+# outlive this process, and it needs a copy that lasts as long as it does.
 runtime_root="$HOME/.dream/catcher/$repo/runtime"
 mkdir -p "$runtime_root" \
   || die "cannot create the Dreamcatcher runtime directory"
@@ -190,10 +195,11 @@ watch_script="$runtime_dir/skills/watcher/watch.sh"
 [ -f "$watch_script" ] || die "cannot find watch.sh in the Dreamcatcher runtime snapshot"
 
 # Keep render-claude.sh where a round can reach it for as long as the round
-# lasts. A round outlives this process under --once, and it outlives the
-# installed plugin, which an upgrade can move out from under a running catcher.
-# So neither the snapshot above nor the installation will do. Publish with mv,
-# which is atomic, so a running round never reads a half-written script.
+# lasts. A round outlives this process, which the user can stop while the round
+# runs. It also outlives the installed plugin, which an upgrade can move out
+# from under a running catcher. So neither the snapshot above nor the
+# installation will do. Publish with mv, which is atomic, so a running round
+# never reads a half-written script.
 render_script="$HOME/.dream/catcher/$repo/render-claude.sh"
 cp "$script_dir/render-claude.sh" "$render_script.pending" \
   || die "cannot copy render-claude.sh for Dreamcatcher rounds"
@@ -319,8 +325,8 @@ final_marker_file() { printf '%s/final-started\n' "$(catcher_state_dir "$1")"; }
 session_config_file() { printf '%s/session.json\n' "$(catcher_state_dir "$1")"; }
 
 # Record the harness settings that Codex does not recover on resume. The saved
-# values stay stable across loop restarts and --once runs, even if the command's
-# defaults later change.
+# values stay stable across catcher restarts, even if the command's defaults
+# later change.
 write_session_config() {
   local branch=$1 session_harness=$2 model=$3 effort=$4 state_dir file pending
   state_dir=$(catcher_state_dir "$branch")
