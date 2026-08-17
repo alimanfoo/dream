@@ -19,6 +19,7 @@
 # a line. It renders the completion event, which carries the report whether the
 # subagent ran in the foreground or the background. A subagent's own words carry
 # the report too, but they reach the stream only when its events stream inline.
+# So the script drops them, and the report has one home.
 #
 # The script runs the command rather than filtering a pipe, so it can exit with
 # the command's own status. The caller logs that status.
@@ -83,7 +84,7 @@ command -v jq >/dev/null 2>&1 || die "jq is not on the PATH"
     | select(length > 0)
     | join("\n");
 
-  def indent: gsub("(?m)^"; "  ");
+  def indent: split("\n") | map("  " + .) | join("\n");
 
   def render:
     if .type == "system" and .subtype == "init" then
