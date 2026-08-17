@@ -8,7 +8,7 @@
 # Each tick reads the current state from git, tmux, `gh`, and the small amount of
 # catcher state under $HOME/.dream/catcher. It first looks for existing
 # dispatched work to resume. It dispatches a new issue when no existing session
-# needs a round. The catcher loops until it is stopped. Run
+# needs a round. The catcher loops until the user stops it. Run
 # `catch.sh --harness <claude|codex>` from the main checkout.
 #
 # Agent rounds run headless inside detached tmux sessions. The tmux session shows
@@ -180,9 +180,10 @@ plugin_root=$(CDPATH=; cd -- "$script_dir/../.." && pwd) \
 # between ticks. A private snapshot stays stable for this process.
 #
 # This process deletes the snapshot as it exits, so only this process can read
-# it. That suits watch.sh, which the catcher runs itself inside a tick. Don't
-# point a round at the snapshot. A round runs in its own tmux session, so it can
-# outlive this process, and it needs a copy that lasts as long as it does.
+# it. That suits watch.sh, which the catcher runs inside a tick. Don't point a
+# round at the snapshot. A round runs in its own tmux session, so it can outlive
+# this process. Anything a round runs needs a copy that lasts as long as the
+# round.
 runtime_root="$HOME/.dream/catcher/$repo/runtime"
 mkdir -p "$runtime_root" \
   || die "cannot create the Dreamcatcher runtime directory"
