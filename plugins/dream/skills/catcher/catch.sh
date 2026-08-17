@@ -8,9 +8,8 @@
 # Each tick reads the current state from git, tmux, `gh`, and the small amount of
 # catcher state under $HOME/.dream/catcher. It first looks for existing
 # dispatched work to resume. It dispatches a new issue when no existing session
-# needs a round. The default is a background loop. Run
-# `catch.sh --harness <claude|codex> --once` from the main checkout in cron on a
-# machine that must restart the catcher after a reboot.
+# needs a round. The catcher loops until it is stopped. Run
+# `catch.sh --harness <claude|codex>` from the main checkout.
 #
 # Agent rounds run headless inside detached tmux sessions. The tmux session shows
 # whether the round is running and gives the user a place to attach. When the
@@ -55,7 +54,7 @@ Usage:
            [--smith-model <model>] [--smith-effort <effort>]
            [--less-model <model>] [--less-effort <effort>]
            [--assignee <who>] [--interval <seconds>]
-           [--max-agents <n>] [--once]
+           [--max-agents <n>]
 
   --harness      Agent harness to run. Required.
   --smith-label  Issue label that dispatches a dream:smith session. Default: $default_smith_label.
@@ -65,9 +64,8 @@ Usage:
   --less-model   Model for a dream:less session. Defaults: Claude Code $default_claude_less_model; Codex $default_codex_less_model.
   --less-effort  Reasoning effort for a dream:less session. Defaults: Claude Code $default_claude_less_effort; Codex $default_codex_less_effort.
   --assignee    Whose issues to pick up. Default: $default_assignee.
-  --interval    Seconds between ticks in loop mode. Default: $default_interval.
+  --interval    Seconds between ticks. Default: $default_interval.
   --max-agents  Maximum agent rounds to run at once. Default: $default_max_agents.
-  --once        A single tick, then exit, instead of looping.
 EOF
 }
 
@@ -115,7 +113,6 @@ assignee=$default_assignee
 interval=$default_interval
 max_agents=$default_max_agents
 harness=
-once=0
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -129,7 +126,6 @@ while [ $# -gt 0 ]; do
     --assignee) [ $# -ge 2 ] || die "--assignee requires a value"; assignee=$2; shift 2;;
     --interval) [ $# -ge 2 ] || die "--interval requires a value"; interval=$2; shift 2;;
     --max-agents) [ $# -ge 2 ] || die "--max-agents requires a value"; max_agents=$2; shift 2;;
-    --once)     once=1; shift;;
     -h|--help)  usage; exit 0;;
     *)          die "unknown argument: $1";;
   esac
@@ -629,11 +625,7 @@ tick() {
 # --- run -------------------------------------------------------------------
 
 log "dreamcatcher using $harness, watching $repo for labels '$smith_label' (smith) and '$less_label' (less), assignee '$assignee'"
-if [ "$once" -eq 1 ]; then
-  tick
-else
-  while true; do
-    tick || log "tick error; continuing"
-    sleep "$interval"
-  done
-fi
+while true; do
+  tick || log "tick error; continuing"
+  sleep "$interval"
+done
