@@ -193,6 +193,17 @@ cp -R "$plugin_root/." "$runtime_dir" \
 watch_script="$runtime_dir/skills/watcher/watch.sh"
 [ -f "$watch_script" ] || die "cannot find watch.sh in the Dreamcatcher runtime snapshot"
 
+# Keep render-claude.sh where a round can reach it for as long as the round
+# lasts. A round outlives this process under --once, and it outlives the
+# installed plugin, which an upgrade can move out from under a running catcher.
+# So neither the snapshot above nor the installation will do. Publish with mv,
+# which is atomic, so a running round never reads a half-written script.
+render_script="$HOME/.dream/catcher/$repo/render-claude.sh"
+cp "$script_dir/render-claude.sh" "$render_script.pending" \
+  || die "cannot copy render-claude.sh for Dreamcatcher rounds"
+mv "$render_script.pending" "$render_script" \
+  || die "cannot publish render-claude.sh for Dreamcatcher rounds"
+
 # --- one tick --------------------------------------------------------------
 
 # A worktree or branch this catcher created, named
@@ -390,12 +401,17 @@ session's rules. End your turn when done.
 EOF
 }
 
-# Build the part of every Claude Code command that carries its unattended
-# permissions, session name, and real-time event stream.
+# Build the part of every Claude Code command that carries its session name, its
+# real-time event stream, and the permissions it needs to run unattended.
+#
+# That stream is JSON, which no one can read. So the command starts with
+# render-claude.sh, which runs the rest of it and renders the stream for
+# agent.log.
 claude_base_command() {
   local branch=$1 writes
   writes="Bash(gh pr create:*) Bash(gh pr comment:*) Bash(gh pr edit:*) Bash(gh pr ready:*) Bash(gh pr close:*) Bash(gh issue create:*) Bash(gh issue comment:*) Bash(git commit:*) Bash(git push:*)"
-  printf 'claude --print --output-format stream-json --verbose --permission-mode auto --allowedTools %s --name %s\n' \
+  printf 'bash %s claude --print --output-format stream-json --verbose --permission-mode auto --allowedTools %s --name %s\n' \
+    "$(shell_quote "$render_script")" \
     "$(shell_quote "$writes")" "$(shell_quote "$branch")"
 }
 
