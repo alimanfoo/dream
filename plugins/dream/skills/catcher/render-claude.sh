@@ -63,11 +63,13 @@ command -v jq >/dev/null 2>&1 || die "jq is not on the PATH"
        // $in.description // $in.prompt // $in)
     | shorten;
 
+  def is_subagent: .parent_tool_use_id != null;
+
   def is_report:
     .type == "system" and .subtype == "task_notification" and .usage != null;
 
-  def render_assistant($subagent):
-    if .type == "text" then (if $subagent then empty else "\n" + .text end)
+  def render_assistant($is_subagent):
+    if .type == "text" then (if $is_subagent then empty else "\n" + .text end)
     elif .type == "tool_use" then "[\(.name)] \(tool_summary)"
     else empty end;
 
@@ -81,22 +83,24 @@ command -v jq >/dev/null 2>&1 || die "jq is not on the PATH"
     | select(length > 0)
     | join("\n");
 
-  def render($subagent):
+  def indent: gsub("(?m)^"; "  ");
+
+  def render:
     if .type == "system" and .subtype == "init" then
       "[session] model \(.model), id \(.session_id)"
-    elif is_report then "[report] \(.status)\n\(.summary)"
-    elif .type == "assistant" then render_blocks(render_assistant($subagent))
+    elif is_report then ("[report] \(.status)\n\(.summary)" | indent)
+    elif .type == "assistant" then
+      is_subagent as $is_subagent
+      | render_blocks(render_assistant($is_subagent))
     elif .type == "user" then render_blocks(render_tool_failure)
     elif .type == "result" then "[result] \(.subtype)"
     else empty end;
 
-  def indent: gsub("(?m)^"; "  ");
-
   . as $line
   | try (fromjson
          | if type != "object" then $line
-           else (.parent_tool_use_id != null or is_report) as $is_subagent
-             | render($is_subagent)
+           else is_subagent as $is_subagent
+             | render
              | if $is_subagent then indent else . end
            end)
     catch $line
