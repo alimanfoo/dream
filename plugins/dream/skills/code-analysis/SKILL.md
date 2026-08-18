@@ -6,7 +6,7 @@ description:
 argument-hint: "<requirements | issue | file | symbol | text>"
 ---
 
-# Code analysis
+# dream:code-analysis
 
 Produce a code analysis: a verifiable read of what the current code does and
 where, with file:line or symbol citations throughout. It stays factual, not a

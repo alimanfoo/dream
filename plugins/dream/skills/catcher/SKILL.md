@@ -11,7 +11,7 @@ argument-hint:
   [--assignee <user>] [--interval <seconds>] [--max-agents <n>]"
 ---
 
-# Dreamcatcher
+# dream:catcher
 
 Use `catch.sh` in this skill's directory. The script owns its configuration,
 validates it, and controls runtime behaviour.

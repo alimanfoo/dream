@@ -6,7 +6,7 @@ description:
 argument-hint: "[target] [max-iterations]"
 ---
 
-# Copy-edit
+# dream:copy-edit
 
 Bring a passage of prose into line with the Plain English guide. Work in rounds.
 

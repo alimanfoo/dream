@@ -6,7 +6,7 @@ description:
 argument-hint: "[requirements | issue | file | text]"
 ---
 
-# Shape
+# dream:shape
 
 I know roughly what I want built. What I haven't got is the design, and I'd like
 us to work it out together, the two of us at a whiteboard.

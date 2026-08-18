@@ -145,10 +145,10 @@ plugins/:
     skills/:
       catcher/:
         SKILL.md:
-          Dreamcatcher:
+          dream:catcher:
       code-analysis/:
         SKILL.md:
-          Code analysis:
+          dream:code-analysis:
             Arguments:
             Read the documentation:
             Read the code:
@@ -159,7 +159,7 @@ plugins/:
             The result:
       code-review/:
         SKILL.md:
-          Code review:
+          dream:code-review:
             Arguments:
             Read the diff:
             Launch the lenses:
@@ -167,7 +167,7 @@ plugins/:
             Rank and return:
       coherence-review/:
         SKILL.md:
-          Coherence review:
+          dream:coherence-review:
             Arguments:
             Read the diff:
             Launch the lenses:
@@ -175,19 +175,19 @@ plugins/:
             Rank and return:
       coherent-coding/:
         SKILL.md:
-          Coherent coding:
+          dream:coherent-coding:
             Read the guide first:
             Reply with a brief confirmation:
             Follow it as you work:
       copy-edit/:
         SKILL.md:
-          Copy-edit:
+          dream:copy-edit:
             First, read the Plain English guide:
             Arguments:
             Each round:
       design/:
         SKILL.md:
-          Design:
+          dream:design:
             Arguments:
             Generate analogies:
             Survey existing tools:
@@ -199,7 +199,7 @@ plugins/:
             The result:
       less/:
         SKILL.md:
-          Dream Less:
+          dream:less:
             Print the banner:
             Autonomy:
             Coherence:
@@ -222,13 +222,13 @@ plugins/:
             Handle what the user posts:
       plain-english/:
         SKILL.md:
-          Plain English:
+          dream:plain-english:
             Read the guide first:
             Reply with a brief confirmation:
             Follow it as you write:
       plan/:
         SKILL.md:
-          Plan:
+          dream:plan:
             Arguments:
             Compose the draft plan:
             Check each task for a tidying precursor:
@@ -237,7 +237,7 @@ plugins/:
             The result:
       requirements-analysis/:
         SKILL.md:
-          Requirements analysis:
+          dream:requirements-analysis:
             Arguments:
             Orient to the repo:
             Read the cited material:
@@ -249,7 +249,7 @@ plugins/:
             The result:
       shape/:
         SKILL.md:
-          Shape:
+          dream:shape:
             Sound like a person:
             Say one thing at a time:
             Let "go on" be enough:
@@ -270,7 +270,7 @@ plugins/:
             Where it goes:
       smith/:
         SKILL.md:
-          Dreamsmith:
+          dream:smith:
             Print the banner:
             Autonomy:
             Coherence:
@@ -298,7 +298,7 @@ plugins/:
             Collect:
       spark/:
         SKILL.md:
-          Spark:
+          dream:spark:
             Ask me in chat:
             Say one thing at a time:
             Sound like a person:
@@ -330,7 +330,7 @@ plugins/:
             Where it goes:
       team/:
         SKILL.md:
-          Dream team:
+          dream:team:
             Spawning the team:
             During the session:
         grace/:
@@ -400,7 +400,7 @@ plugins/:
               GitHub-rendered artefacts:
       watcher/:
         SKILL.md:
-          Watcher:
+          dream:watcher:
             The footer precondition:
             Set up the watch:
             On each firing:
