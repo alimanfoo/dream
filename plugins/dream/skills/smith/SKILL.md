@@ -228,8 +228,23 @@ them. Weigh each on its merits and apply the ones the evidence supports. Reach
 for the coherent fix even when it goes wider than the site the finding names.
 Commit and push the fixes.
 
-Post the findings and how you acted on them as a PR comment. For any finding you
-didn't act on, give the reason in one sentence.
+Post the findings and how you acted on them as a PR comment, in this shape:
+
+```text
+## {heading}
+
+> 1. {the finding, word for word}
+
+Addressed. {what you did}
+
+> 2. {the finding, word for word}
+
+Not addressed. {why not, in one sentence}
+```
+
+Quote each finding word for word, and keep the number the review gave it. The
+blockquote then shows the reader what the review said, and the line under it
+shows what you did about it.
 
 ## Write the PR description
 
