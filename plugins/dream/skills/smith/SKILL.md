@@ -259,8 +259,9 @@ when the PR has new input.
 
 When a turn starts with a PR-inbox prompt, read the JSON file it names. Read the
 PR `state` before you act on anything else. When `state` is `MERGED`, continue
-to the [collect step](#collect). When `state` is `CLOSED`, post a comment naming
-where the work stopped, then end your turn.
+to the [collect step](#collect), unless you already completed Collect after a
+deferred merge; in that case, end your turn. When `state` is `CLOSED`, post a
+comment naming where the work stopped, then end your turn.
 
 Otherwise, act on the returned `posts`, oldest first. A post can carry more than
 one of these:
@@ -282,10 +283,8 @@ Once the PR is ready and you have nothing left to do, end your turn.
 
 ## Collect
 
-Run this step only when the user merges the PR, or asks you to defer the merge.
+Run this step only after the user merges the PR, or asks you to defer the merge.
 Neither holds just because you read this far in the file.
-
-Run it once in a session. When you have already run it, end your turn instead.
 
 File anything you noticed but left out of scope as a new GitHub issue
 (`gh issue create`). This keeps it from being lost. Skip this step when there's
