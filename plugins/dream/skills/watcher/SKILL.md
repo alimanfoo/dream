@@ -78,8 +78,10 @@ gives that range as `startLine` and `endLine`. An `inlineComment` on one line
 gives that line as both ends. An `inlineComment` on the whole file gives null
 for both.
 
-`side` says which version of the file the lines are in. `RIGHT` is the file
-after the change, `LEFT` the file before it.
+`side` says which version of the file the lines are in. `RIGHT` means the file
+after the change, so read `startLine` to `endLine` from your working tree.
+`LEFT` means the file before it, so the change removed those lines and your
+working tree no longer holds them.
 
 `diffHunk` holds the patch text the user was reading, from the hunk's own `@@`
 header down to `endLine`. It shows you the exact lines the comment is about.
