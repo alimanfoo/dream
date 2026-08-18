@@ -214,24 +214,17 @@ Run the `dream:copy-edit` skill over the branch's changes against the base
 
 ## Review
 
-Run these reviews in turn:
-
-- `dream:coherence-review`, whose comment you head `Coherence review`.
-- `dream:code-review`, whose comment you head `Code review`.
-
-Finish one, including its comment, before you start the next. The second review
-then reads the fixes the first one led to.
-
-For each review, run its skill over the branch's changes against the base
-(`origin/main...HEAD`). It returns findings across its lenses, and applies none
-of them.
+Run the `dream:coherence-review` skill over the branch's changes against the
+base (`origin/main...HEAD`). It returns findings across its lenses, and applies
+none of them.
 
 Weigh each finding on its merits and apply the ones the evidence supports. Reach
 for the coherent fix even when it goes wider than the site the finding names.
 
 Commit and push the fixes.
 
-Post the findings and how you acted on them as a PR comment, in this shape:
+Post the findings and how you acted on them as a PR comment, headed
+`Coherence review`, in this shape:
 
 ```text
 ## {heading}
@@ -243,10 +236,22 @@ Addressed. {what you did}
 > 2. {the finding, verbatim}
 
 Not addressed. {the reason, in one sentence}
+
+...and so on, one block per finding.
 ```
 
-The blockquote shows the reader what the review said, and the line under it
-shows what you did.
+Quote each finding verbatim, so the reader can tell the review's words from
+yours. Drop the number the review gave it, since the block already carries one.
+
+Start every line of a quote with `>`, blank lines included. GitHub ends a quote
+at the first line without one, so the rest of a finding that runs to two
+paragraphs would read as your own words.
+
+If a review returns no findings, post the heading and one line saying so.
+
+Then run the `dream:code-review` skill the same way, and head its comment
+`Code review`. It goes second so that it reads the fixes the coherence review
+led to.
 
 ## Write the PR description
 
