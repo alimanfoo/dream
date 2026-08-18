@@ -111,23 +111,17 @@ Read everything the user cites in their session input:
 - linked PRs
 - named files or symbols
 
-For each cited issue, also check whether it has sub-issues:
+For each cited issue, also check whether it has sub-issues or a parent:
 
 ```bash
-gh api repos/{owner}/{repo}/issues/<N>/sub_issues
+gh issue view <N> --json subIssues,parent
 ```
 
 Read the sub-issues too. They carry part of the same input.
 
-Also check whether the cited issue has a parent:
-
-```bash
-gh api repos/{owner}/{repo}/issues/<N> --jq .parent_issue_url
-```
-
 Read the parent too. It names the wider goal the cited issue serves.
 
-Only the cited issue is yours to do, not the parent's other sub-issues.
+Only the cited issue is in scope, not the parent's other sub-issues.
 
 ## Read the code
 

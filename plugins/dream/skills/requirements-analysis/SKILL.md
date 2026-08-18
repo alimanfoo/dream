@@ -45,19 +45,13 @@ they reference, linked PRs, named files or symbols. Comments often reframe an
 issue or carry a decision the body doesn't show, so an issue read without them
 can miss what it has become.
 
-For each cited issue, check whether it has sub-issues:
+For each cited issue, check whether it has sub-issues or a parent:
 
 ```bash
-gh api repos/{owner}/{repo}/issues/<N>/sub_issues
+gh issue view <N> --json subIssues,parent
 ```
 
 Read the sub-issues too. They carry part of the same requirement.
-
-Also check whether the cited issue has a parent:
-
-```bash
-gh api repos/{owner}/{repo}/issues/<N> --jq .parent_issue_url
-```
 
 Read the parent too. It names the wider goal the cited issue serves.
 
