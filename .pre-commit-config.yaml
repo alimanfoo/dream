@@ -64,7 +64,7 @@ repos:
         pass_filenames: false
 
       - id: validate-skill
-        name: validate skill frontmatter
+        name: validate skill frontmatter and heading
         entry: python3 scripts/validate_skill.py
         language: python
         additional_dependencies: [pyyaml]

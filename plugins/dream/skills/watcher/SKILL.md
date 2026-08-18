@@ -6,7 +6,7 @@ description:
 argument-hint: "<pr> [interval]"
 ---
 
-# Watcher
+# dream:watcher
 
 Watch a pull request for what the user posts on it. This is how a session
 receives input from the user via GitHub rather than in the session itself.

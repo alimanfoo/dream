@@ -7,7 +7,7 @@ description:
 argument-hint: "<issue | file or symbol | text>"
 ---
 
-# Requirements analysis
+# dream:requirements-analysis
 
 Produce a requirements analysis: your explicit reading of what the system must
 do behind the input and for whom. The result is a draft, ending with any open

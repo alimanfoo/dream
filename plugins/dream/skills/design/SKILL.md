@@ -6,7 +6,7 @@ description:
 argument-hint: "<requirements and code analysis | text>"
 ---
 
-# Design
+# dream:design
 
 Produce design options: the proposed design, your recommendation for what the
 code will look like when the work is done, and any credible alternative designs.

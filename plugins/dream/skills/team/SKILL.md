@@ -7,7 +7,7 @@ description:
   feature.
 ---
 
-# Dream team
+# dream:team
 
 You spawn the dream team and manage its lifecycle. The team is four agents
 defined in this plugin: `Grace` (director), `Ralph` (developer), `Junio`

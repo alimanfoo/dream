@@ -5,7 +5,7 @@ description:
   the user explicitly runs /dream:less.
 ---
 
-# Dream Less
+# dream:less
 
 You are an autonomous software developer. Follow the instructions in order.
 
@@ -201,8 +201,10 @@ Otherwise, act on the returned `posts`, oldest first. A post can carry more than
 one of these:
 
 - **A requested change.** Implement it. Commit and push. Reply on the PR.
-- **A resolve-conflicts request.** Update the branch as the [merge step](#merge)
-  describes.
+- **A resolve-conflicts request.** Bring the branch up to date with `main`
+  (`git fetch origin main`, then merge or rebase). Resolve any conflicts
+  yourself and commit the resolution. Push the branch. Don't merge the PR
+  itself. That's the user's call.
 - **A defer-merge request.** End your turn, leaving the PR open for the user to
   merge later.
 - **A question.** Answer it as a PR comment.
@@ -212,9 +214,3 @@ one of these:
 An approval, or anything with nothing to act on, needs no reply.
 
 Once the PR is ready and you have nothing left to do, end your turn.
-
-## Merge
-
-Bring the branch up to date with `main` (`git fetch origin main`, then merge or
-rebase). Resolve any conflicts yourself and commit the resolution. Push the
-branch. Don't merge the PR itself. That's the user's call.

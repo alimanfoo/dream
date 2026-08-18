@@ -5,7 +5,7 @@ description:
   explicitly invoked.
 ---
 
-# Plain English
+# dream:plain-english
 
 Adopt the dream plugin's Plain English guide.
 

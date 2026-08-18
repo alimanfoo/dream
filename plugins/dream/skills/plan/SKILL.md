@@ -6,7 +6,7 @@ description:
 argument-hint: "<focus | text>"
 ---
 
-# Plan
+# dream:plan
 
 A plan is the task list that delivers the given focus. Each task is one idea and
 one commit.

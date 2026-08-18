@@ -6,7 +6,7 @@ description:
 argument-hint: "[target]"
 ---
 
-# Coherence review
+# dream:coherence-review
 
 Review changed code for coherence and maintainability.
 
