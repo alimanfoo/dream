@@ -70,9 +70,15 @@ the user wrote. The `kind` says where it came from:
 - A `comment` is on the conversation.
 - A `review` also carries the user's `verdict`, so an approval reaches you even
   when the user left the body empty.
-- An `inlineComment` is on a line of the diff, and carries the `path` and `line`
-  the user wrote it on, plus the `id` of its thread. The `line` is the last one
-  when the comment covers a range, and null when it is about the whole file.
+- An `inlineComment` is on the diff, and carries where it sits plus the `id` of
+  its thread.
+
+An `inlineComment` sits on a range of lines in the file that `path` names, and
+gives that range as `startLine` and `endLine`. A comment on one line gives that
+line as both ends. A comment on the whole file gives null for both.
+
+`side` says which version of the file the lines are in. `RIGHT` is the file
+after the change, `LEFT` the file before it.
 
 The first firing returns everything on the pull request so far. Each later
 firing returns only what is new since the one before. A post that arrives while

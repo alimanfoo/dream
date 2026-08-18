@@ -120,10 +120,16 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 # on. So each projection converts its source into the one post shape, and keeps
 # only the fields the caller acts on.
 #
-# An inline comment's `line` is null once later commits have moved the line the
-# user wrote it on. So the projection falls back to `original_line`, the line as
-# it stood then, rather than reporting nothing. Both hold the last line when the
-# comment covers a range, and both are null when it is about the whole file.
+# An inline comment sits on a range of lines, which the REST API reports as two
+# pairs. `start_line` and `line` hold the range where it sits now, and
+# `original_start_line` and `original_line` hold where it sat when the user
+# wrote. Later commits that move those lines null the whole current pair, so the
+# projection reads one pair or the other, never one end from each.
+#
+# A single-line comment leaves its start null, and the projection reports the
+# range as that one line, so the caller never has to read a null start as a
+# whole range. A whole-file comment has no lines at all, and both ends stay
+# null.
 result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
   | jq --arg cutoff "$cutoff" --arg footer "$footer" --arg me "$me" '
   def has_agent_footer:
@@ -135,6 +141,12 @@ result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
 
   def says_something:
     .body != "" or .verdict == "APPROVED" or .verdict == "CHANGES_REQUESTED";
+
+  def line_range:
+    if .line == null
+    then {startLine: (.original_start_line // .original_line), endLine: .original_line}
+    else {startLine: (.start_line // .line), endLine: .line}
+    end;
 
   . as $pr
   | (input | add // []) as $inline_comments
@@ -148,7 +160,7 @@ result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
     , ($inline_comments[]
        | select(is_new_from_user(.user.login; .created_at))
        | {kind: "inlineComment", createdAt: .created_at, body: (.body // ""),
-          path, line: (.line // .original_line), id})
+          path, side, id} + line_range)
     ]
   | map(select(says_something))
   | sort_by(.createdAt) as $posts
