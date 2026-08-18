@@ -282,9 +282,8 @@ Once the PR is ready and you have nothing left to do, end your turn.
 
 ## Collect
 
-You reach this step from
-[Handle what the user posts](#handle-what-the-user-posts). Reading this far in
-the file is not a reason to run this step.
+Run this step only when the user merges the PR, or asks you to defer the merge.
+Neither holds just because you read this far in the file.
 
 Run it once in a session. When you have already run it, end your turn instead.
 
