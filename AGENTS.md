@@ -71,6 +71,8 @@ throughout:
   and a line the agent shows the user.
 - Drop the backticks in a frontmatter `description:` field, a markdown heading,
   or a fenced command block.
+- Write a skill file's title heading as `dream:foo`, so it names the skill a
+  reader came looking for. `scripts/validate_skill.py` checks this on commit.
 - Write a subagent-type identifier as `dream:foo`. That is what an `Agent`
   call's `subagent_type` takes.
 - Write an issue label as "dream:foo".
