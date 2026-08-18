@@ -119,6 +119,16 @@ gh api repos/{owner}/{repo}/issues/<N>/sub_issues
 
 A sub-issue carries part of the same input. Read it too.
 
+Check too whether the cited issue has a parent:
+
+```bash
+gh api repos/{owner}/{repo}/issues/<N> --jq .parent_issue_url
+```
+
+A parent issue names the wider goal the cited issue serves, so read it for that.
+Don't take on the parent's other sub-issues. Only the cited issue is yours to
+do.
+
 ## Read the code
 
 Read the relevant code, callers, tests, and docs for the named surfaces.

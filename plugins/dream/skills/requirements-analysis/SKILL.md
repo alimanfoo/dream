@@ -53,6 +53,16 @@ gh api repos/{owner}/{repo}/issues/<N>/sub_issues
 
 A sub-issue carries part of the same requirement. Read it too.
 
+Check too whether the cited issue has a parent:
+
+```bash
+gh api repos/{owner}/{repo}/issues/<N> --jq .parent_issue_url
+```
+
+A parent issue names the wider goal the cited issue serves, so read it for that.
+Don't widen the requirements to the parent's other sub-issues. Only the cited
+issue is in scope.
+
 ## Read the code for the requirements it already satisfies
 
 Read the relevant code, callers, tests, and docs for the named surfaces, holding

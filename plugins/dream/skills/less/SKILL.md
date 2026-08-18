@@ -106,6 +106,16 @@ For each cited issue, check whether it has sub-issues and read them too:
 gh api repos/{owner}/{repo}/issues/<N>/sub_issues
 ```
 
+Check too whether it has a parent, and read that for the wider goal the cited
+issue serves:
+
+```bash
+gh api repos/{owner}/{repo}/issues/<N> --jq .parent_issue_url
+```
+
+Don't take on the parent's other sub-issues. Only the cited issue is yours to
+do.
+
 Then read the relevant code, callers, tests, and docs for the named surfaces. As
 you read, check the input against the current code, since it may have changed
 since the issue was filed. A symbol it names may be renamed, a file may have
