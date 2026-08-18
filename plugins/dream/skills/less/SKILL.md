@@ -100,11 +100,16 @@ session input.
 
 Read everything the user cites in their session input: issue bodies and their
 comments, prior issues they reference, linked PRs, and named files or symbols.
-For each cited issue, check whether it has sub-issues and read them too:
+For each cited issue, check whether it has sub-issues or a parent:
 
 ```bash
 gh api repos/{owner}/{repo}/issues/<N>/sub_issues
+gh api repos/{owner}/{repo}/issues/<N> --jq .parent_issue_url
 ```
+
+Read the sub-issues too. They carry part of the same input. Read the parent too,
+at the URL the second command prints. It names the wider goal the cited issue
+serves. Only the cited issue is in scope, not the parent's other sub-issues.
 
 Then read the relevant code, callers, tests, and docs for the named surfaces. As
 you read, check the input against the current code, since it may have changed
