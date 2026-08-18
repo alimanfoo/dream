@@ -117,17 +117,17 @@ For each cited issue, also check whether it has sub-issues:
 gh api repos/{owner}/{repo}/issues/<N>/sub_issues
 ```
 
-A sub-issue carries part of the same input. Read it too.
+Read the sub-issues too. They carry part of the same input.
 
-Check too whether the cited issue has a parent:
+Also check whether the cited issue has a parent:
 
 ```bash
 gh api repos/{owner}/{repo}/issues/<N> --jq .parent_issue_url
 ```
 
-A parent issue names the wider goal the cited issue serves, so read it for that.
-Don't take on the parent's other sub-issues. Only the cited issue is yours to
-do.
+Read the parent too. It names the wider goal the cited issue serves.
+
+Only the cited issue is yours to do, not the parent's other sub-issues.
 
 ## Read the code
 
