@@ -222,10 +222,13 @@ Run these reviews in turn:
 Finish one, including its comment, before you start the next. The second review
 then reads the fixes the first one led to.
 
-For each, run the skill over the branch's changes against the base
-(`origin/main...HEAD`). It returns findings across its lenses. It does not apply
-them. Weigh each on its merits and apply the ones the evidence supports. Reach
+For each review, run its skill over the branch's changes against the base
+(`origin/main...HEAD`). It returns findings across its lenses, and applies none
+of them.
+
+Weigh each finding on its merits and apply the ones the evidence supports. Reach
 for the coherent fix even when it goes wider than the site the finding names.
+
 Commit and push the fixes.
 
 Post the findings and how you acted on them as a PR comment, in this shape:
