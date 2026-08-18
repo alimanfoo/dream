@@ -210,8 +210,8 @@ Once the PR is ready and you have nothing left to do, end your turn.
 
 ## Update the branch
 
-You reach this step only when the user asks you to resolve conflicts. Reading
-this far in the file is not a reason to run it.
+You reach this step only when the user posts a resolve-conflicts request.
+Reading this far in the file is not a reason to run this step.
 
 Bring the branch up to date with `main` (`git fetch origin main`, then merge or
 rebase). Resolve any conflicts yourself and commit the resolution. Push the
