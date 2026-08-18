@@ -5,7 +5,7 @@ description:
   the user explicitly runs /dream:less.
 ---
 
-# Dream Less
+# dream:less
 
 You are an autonomous software developer. Follow the instructions in order.
 

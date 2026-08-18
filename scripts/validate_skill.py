@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the YAML frontmatter of a SKILL.md file.
+"""Validate the YAML frontmatter and title heading of a SKILL.md file.
 
 Schema sourced from the Claude Code skill frontmatter reference at
 https://code.claude.com/docs/en/skills.md (refreshed 2026-05-13). Refresh
@@ -109,6 +109,22 @@ def validate_skill(skill_md: Path) -> tuple[bool, str]:
         return False, (
             f"{skill_md}: combined description + when_to_use too long "
             f"({combined} chars, max {DESCRIPTION_CAP})"
+        )
+
+    # A skill's title heading names the skill a reader is looking for, so it
+    # carries the identifier a host resolves rather than a prose title.
+    plugin = skill_md.resolve().parent.parent.parent.name
+    identifier = f"{plugin}:{name or skill_md.parent.name}"
+    body = content[match.end():]
+    heading = next(
+        (line for line in body.splitlines() if line.startswith("# ")), None
+    )
+    if heading is None:
+        return False, f"{skill_md}: no title heading, expected '# {identifier}'"
+    if heading.strip() != f"# {identifier}":
+        return False, (
+            f"{skill_md}: title heading is '{heading.strip()}', "
+            f"expected '# {identifier}'"
         )
 
     return True, f"{skill_md}: ok"

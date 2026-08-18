@@ -5,7 +5,7 @@ description:
   explicitly invoked.
 ---
 
-# Coherent coding
+# dream:coherent-coding
 
 Adopt the dream plugin's coherent coding guide.
 

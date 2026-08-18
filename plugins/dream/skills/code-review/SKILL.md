@@ -6,7 +6,7 @@ description:
 argument-hint: "[target] [inline]"
 ---
 
-# Code review
+# dream:code-review
 
 Review changed code through review lenses chosen to fit the diff.
 

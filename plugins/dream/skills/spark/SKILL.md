@@ -6,7 +6,7 @@ description:
 argument-hint: "[issue | file | text]"
 ---
 
-# Spark
+# dream:spark
 
 I've got an idea I want to think through before anyone builds anything. I
 haven't finished thinking about it. I get further when someone asks me good
