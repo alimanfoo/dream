@@ -48,12 +48,14 @@ can miss what it has become.
 For each cited issue, check whether it has sub-issues or a parent:
 
 ```bash
-gh issue view <N> --json subIssues,parent
+gh api repos/{owner}/{repo}/issues/<N>/sub_issues
+gh api repos/{owner}/{repo}/issues/<N> --jq .parent_issue_url
 ```
 
 Read the sub-issues too. They carry part of the same requirement.
 
-Read the parent too. It names the wider goal the cited issue serves.
+Read the parent too, at the URL the second command prints. It names the wider
+goal the cited issue serves.
 
 Only the cited issue is in scope, not the parent's other sub-issues.
 
