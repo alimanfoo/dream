@@ -64,29 +64,26 @@ The cron prompt runs `watch.sh` and hands you the result. It returns the pull
 request `state`, the `watermarkFile` path that teardown needs, and `posts`, what
 the user newly wrote, oldest first.
 
-Every post carries its `kind`, the `createdAt` it was written at, and the `body`
-the user wrote. The `kind` says where it came from:
+Each post holds GitHub's own fields, as its REST API returns them, plus a `kind`
+naming which of the three sources it came from. A `comment` is on the
+conversation, a `review` is the body of a review, and an `inlineComment` is on a
+line of the diff. A `review` carries its `state`, so an approval reaches you
+even when the user left the body empty.
 
-- A `comment` is on the conversation.
-- A `review` also carries the user's `verdict`, so an approval reaches you even
-  when the user left the body empty.
-- An `inlineComment` is on the diff, and carries where it sits plus the `id` of
-  its thread.
+An `inlineComment` gives its lines as two pairs. `start_line` and `line` hold
+where the comment sits in the current diff. `original_start_line` and
+`original_line` hold where it sat when the user wrote it. Read one pair or the
+other, never one end from each. A null `line` means later commits moved those
+lines, leaving only the original pair. A null start means the comment is on the
+single line that the end names.
 
-An `inlineComment` sits on a range of lines in the file that `path` names, and
-gives that range as `startLine` and `endLine`. An `inlineComment` on one line
-gives that line as both ends. An `inlineComment` on the whole file gives null
-for both.
+A `subject_type` of `file` means the user commented on the whole file rather
+than on any line of it. GitHub reports line 1 for one of those, which is not a
+line the user picked.
 
-`diffHunk` holds the patch text the user was reading, from the hunk's own `@@`
-header down to `endLine`. Read it before you go to the file, because later
-commits can move the lines that `startLine` and `endLine` name. It is empty on a
-few old comments, and then those line numbers are all you have.
-
-`side` says which version of the file the lines are in. `RIGHT` means the file
-after the change, so you can find those lines in your working tree. `LEFT` means
-the file before it, so the change removed them and your working tree no longer
-holds them.
+Read `diff_hunk` before you go to the file, because later commits can move the
+lines the pairs name. It is empty on a few old comments, and then those line
+numbers are all you have.
 
 The first firing returns everything on the pull request so far. Each later
 firing returns only what is new since the one before. A post that arrives while
