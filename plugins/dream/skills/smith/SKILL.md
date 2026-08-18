@@ -236,18 +236,17 @@ Post the findings and how you acted on them as a PR comment, in this shape:
 ```text
 ## {heading}
 
-> 1. {the finding, word for word}
+> 1. {the finding, verbatim}
 
 Addressed. {what you did}
 
-> 2. {the finding, word for word}
+> 2. {the finding, verbatim}
 
-Not addressed. {why not, in one sentence}
+Not addressed. {the reason, in one sentence}
 ```
 
-Quote each finding word for word, and keep the number the review gave it. The
-blockquote then shows the reader what the review said, and the line under it
-shows what you did about it.
+The blockquote shows the reader what the review said, and the line under it
+shows what you did.
 
 ## Write the PR description
 
