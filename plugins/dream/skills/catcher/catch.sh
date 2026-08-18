@@ -179,8 +179,8 @@ plugin_root=$(CDPATH=; cd -- "$script_dir/../.." && pwd) \
 # directories. Codex can replace the installation while this process is asleep
 # between ticks. A private snapshot stays stable for this process.
 #
-# This process deletes the snapshot as it exits, so only this process can read
-# it. That suits watch.sh, which the catcher runs inside a tick. Don't point a
+# This process deletes the snapshot as it exits, so nothing can read it after
+# that. That suits watch.sh, which the catcher runs inside a tick. Don't point a
 # round at the snapshot. A round runs in its own tmux session, so it outlives
 # this process whenever the user stops the catcher.
 runtime_root="$HOME/.dream/catcher/$repo/runtime"
@@ -195,7 +195,7 @@ watch_script="$runtime_dir/skills/watcher/watch.sh"
 [ -f "$watch_script" ] || die "cannot find watch.sh in the Dreamcatcher runtime snapshot"
 
 # Keep render-claude.sh where a round can reach it for as long as the round
-# lasts. A round outlives this process, and it outlives the installed plugin,
+# lasts. A round can outlive this process, and it outlives the installed plugin,
 # which an upgrade can move out from under a running catcher. So neither the
 # snapshot above nor the installation will do. Publish with mv, which is atomic,
 # so a running round never reads a half-written script.
