@@ -24,7 +24,7 @@ This repo has two layers, easy to confuse:
 
 ## Development notes
 
-`dream:spark`, `dream:state` and `dream:craft` are an experiment, trying a
+`dream:spark`, `dream:state` and `dream:shape` are an experiment, trying a
 different approach from the rest of the plugin. They run against repo convention
 on purpose, so treat a deviation as deliberate rather than as drift to tidy up.
 
@@ -36,14 +36,14 @@ once with the user and once alone:
   already wrote.
 - `dream:state` explores the code behind a task with the user, so the user comes
   away understanding it as well. `dream:code-analysis` reads it on its own.
-- `dream:craft` explores the solution space with the user and reaches a design
+- `dream:shape` explores the solution space with the user and reaches a design
   together. `dream:design` produces one on its own.
 
 The duplication within each pair is a decision, not a defect, so don't
-single-home it. `dream:craft` was built standalone rather than calling
+single-home it. `dream:shape` was built standalone rather than calling
 `dream:design`, so its duplication runs through the whole skill.
 
-The `dream:spark`, `dream:state` and `dream:craft` bodies are written in the
+The `dream:spark`, `dream:state` and `dream:shape` bodies are written in the
 user's voice, as if the user typed it: "ask me", "tell me only what you've
 read". Don't normalise any of them back to the third person, or into a stack of
 orders. The frontmatter `description` stays third person in all three, since the

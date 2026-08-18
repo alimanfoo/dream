@@ -1,12 +1,12 @@
 ---
-name: craft
+name: shape
 description:
   Explore the solution space with the user and reach a design together. Use only
-  when the user explicitly runs /dream:craft.
+  when the user explicitly runs /dream:shape.
 argument-hint: "[requirements | issue | file | text]"
 ---
 
-# Craft
+# Shape
 
 I know roughly what I want built. What I haven't got is the design, and I'd like
 us to work it out together, the two of us at a whiteboard.

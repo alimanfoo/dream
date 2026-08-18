@@ -185,27 +185,6 @@ plugins/:
             First, read the Plain English guide:
             Arguments:
             Each round:
-      craft/:
-        SKILL.md:
-          Craft:
-            Sound like a person:
-            Say one thing at a time:
-            Let "go on" be enough:
-            Think out loud:
-            Tell me things I don't know:
-            Start from what I've given you:
-            Read the code before you say anything about it:
-            Start us off:
-            '"What if" until the shape stops moving':
-            Follow it before you judge it:
-            What is this actually an instance of?:
-            Cut first, price it after:
-            Keep it rough while the shape is moving:
-            The moment the shape stops moving:
-            '"What breaks" until nothing more comes off':
-            Write it up:
-            Get it checked before you show me:
-            Where it goes:
       design/:
         SKILL.md:
           Design:
@@ -269,6 +248,27 @@ plugins/:
             Name the session type:
             Compose the draft:
             The result:
+      shape/:
+        SKILL.md:
+          Shape:
+            Sound like a person:
+            Say one thing at a time:
+            Let "go on" be enough:
+            Think out loud:
+            Tell me things I don't know:
+            Start from what I've given you:
+            Read the code before you say anything about it:
+            Start us off:
+            '"What if" until the shape stops moving':
+            Follow it before you judge it:
+            What is this actually an instance of?:
+            Cut first, price it after:
+            Keep it rough while the shape is moving:
+            The moment the shape stops moving:
+            '"What breaks" until nothing more comes off':
+            Write it up:
+            Get it checked before you show me:
+            Where it goes:
       smith/:
         SKILL.md:
           Dreamsmith:
