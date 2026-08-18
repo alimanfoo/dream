@@ -129,6 +129,10 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 # A single-line comment leaves its start null, so the projection falls back to
 # the end and reports the range as that one line.
 #
+# A comment on the whole file reports line 1 in both pairs, rather than no line
+# at all. So the projection reads `subject_type` to tell that case apart, and
+# reports neither end.
+#
 # The line numbers alone do not say what the user was reading, so the projection
 # carries `diff_hunk` too. The same call already returns it.
 result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
@@ -144,7 +148,9 @@ result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
     .body != "" or .verdict == "APPROVED" or .verdict == "CHANGES_REQUESTED";
 
   def line_range:
-    if .line == null
+    if .subject_type == "file"
+    then {startLine: null, endLine: null}
+    elif .line == null
     then {startLine: (.original_start_line // .original_line), endLine: .original_line}
     else {startLine: (.start_line // .line), endLine: .line}
     end;
