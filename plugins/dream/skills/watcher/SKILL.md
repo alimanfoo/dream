@@ -74,15 +74,18 @@ the user wrote. The `kind` says where it came from:
   its thread.
 
 An `inlineComment` sits on a range of lines in the file that `path` names, and
-gives that range as `startLine` and `endLine`. A comment on one line gives that
-line as both ends. A comment on the whole file gives null for both.
+gives that range as `startLine` and `endLine`. An `inlineComment` on one line
+gives that line as both ends. An `inlineComment` on the whole file gives null
+for both.
 
 `side` says which version of the file the lines are in. `RIGHT` is the file
 after the change, `LEFT` the file before it.
 
 `diffHunk` holds the patch text the user was reading, from the hunk's own `@@`
 header down to `endLine`. It shows you the exact lines the comment is about.
-Read it before you go to the file, because later commits can move those lines.
+
+Read `diffHunk` before you go to the file, because later commits can move the
+lines that `startLine` and `endLine` name.
 
 The first firing returns everything on the pull request so far. Each later
 firing returns only what is new since the one before. A post that arrives while

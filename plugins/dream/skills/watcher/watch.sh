@@ -115,16 +115,16 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 # pages second, so neither has to fit in an argument.
 #
 # Each source names its fields differently. `gh pr view` calls the author
-# `author` and the REST API calls it `user`, and each of the three names its
-# timestamp its own way. The REST API also returns far more than the caller acts
-# on. So each projection converts its source into the one post shape, and keeps
-# only the fields the caller acts on.
+# `author` and the REST API calls it `user`, and each names its timestamp its own
+# way. The REST API also returns far more than the caller acts on. So
+# each projection converts its source into the one post shape, and keeps only
+# the fields the caller acts on.
 #
 # An inline comment sits on a range of lines, which the REST API reports as two
 # pairs. `start_line` and `line` hold the range where it sits now, and
 # `original_start_line` and `original_line` hold where it sat when the user
-# wrote. Later commits that move those lines null the whole current pair, so the
-# projection reads one pair or the other, never one end from each.
+# wrote it. Later commits that move those lines null the whole current pair, so
+# the projection reads one pair or the other, never one end from each.
 #
 # A single-line comment leaves its start null, and the projection reports the
 # range as that one line, so the caller never has to read a null start as a
@@ -132,9 +132,10 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 # null.
 #
 # Whichever pair the projection reports, the line numbers alone do not say what
-# the user was reading. So it carries `diff_hunk` too, the patch text running
-# down to the last line of the range. That hands the caller the exact lines
-# under discussion, and the same call already returns it.
+# the user was reading. So the projection carries `diff_hunk` too, the patch
+# text running down to the last line of the range. That hands the caller the
+# exact lines under discussion. The hunk comes back from the same call, so
+# carrying it costs nothing extra.
 result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
   | jq --arg cutoff "$cutoff" --arg footer "$footer" --arg me "$me" '
   def has_agent_footer:
