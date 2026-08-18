@@ -130,6 +130,11 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 # range as that one line, so the caller never has to read a null start as a
 # whole range. A whole-file comment has no lines at all, and both ends stay
 # null.
+#
+# Whichever pair the projection reports, the line numbers alone do not say what
+# the user was reading. So it carries `diff_hunk` too, the patch text running
+# down to the last line of the range. That hands the caller the exact lines
+# under discussion, and the same call already returns it.
 result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
   | jq --arg cutoff "$cutoff" --arg footer "$footer" --arg me "$me" '
   def has_agent_footer:
@@ -160,7 +165,7 @@ result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
     , ($inline_comments[]
        | select(is_new_from_user(.user.login; .created_at))
        | {kind: "inlineComment", createdAt: .created_at, body: (.body // ""),
-          path, side, id} + line_range)
+          path, side, diffHunk: .diff_hunk, id} + line_range)
     ]
   | map(select(says_something))
   | sort_by(.createdAt) as $posts

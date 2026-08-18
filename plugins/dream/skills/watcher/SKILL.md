@@ -80,6 +80,10 @@ line as both ends. A comment on the whole file gives null for both.
 `side` says which version of the file the lines are in. `RIGHT` is the file
 after the change, `LEFT` the file before it.
 
+`diffHunk` holds the patch text the user was reading, from the hunk's own `@@`
+header down to `endLine`. It shows you the exact lines the comment is about.
+Read it before you go to the file, because later commits can move those lines.
+
 The first firing returns everything on the pull request so far. Each later
 firing returns only what is new since the one before. A post that arrives while
 you are still handling an earlier batch surfaces on the next firing, never
