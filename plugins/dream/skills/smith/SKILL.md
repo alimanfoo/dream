@@ -266,8 +266,10 @@ Otherwise, act on the returned `posts`, oldest first. A post can carry more than
 one of these:
 
 - **A requested change.** Implement it. Commit and push. Reply on the PR.
-- **A resolve-conflicts request.** Update the branch as the
-  [update-the-branch step](#update-the-branch) describes.
+- **A resolve-conflicts request.** Bring the branch up to date with `main`
+  (`git fetch origin main`, then merge or rebase). Resolve any conflicts
+  yourself and commit the resolution. Push the branch. Don't merge the PR
+  itself. That's the user's call.
 - **A defer-merge request.** Continue to the [collect step](#collect), leaving
   the PR open for the user to merge later.
 - **A question.** Answer it as a PR comment.
@@ -278,19 +280,11 @@ An approval, or anything with nothing to act on, needs no reply.
 
 Once the PR is ready and you have nothing left to do, end your turn.
 
-## Update the branch
-
-You reach this step only when the user posts a resolve-conflicts request.
-Reading this far in the file is not a reason to run this step.
-
-Bring the branch up to date with `main` (`git fetch origin main`, then merge or
-rebase). Resolve any conflicts yourself and commit the resolution. Push the
-branch. Don't merge the PR itself. That's the user's call.
-
 ## Collect
 
-You reach this step when the user merges the PR, or posts a defer-merge request.
-Reading this far in the file is not a reason to run this step.
+You reach this step from
+[Handle what the user posts](#handle-what-the-user-posts). Reading this far in
+the file is not a reason to run this step.
 
 Run it once in a session. When you have already run it, end your turn instead.
 

@@ -5,9 +5,7 @@ Write every turn output, message and artefact in this phase using
 
 The goal of this phase is a clean merge. The merge itself is the user's act.
 
-You reach this phase when [the watch](../../../agents/Grace.md#the-watch)
-reports that the user merged the PR, or asked you to defer the merge. If nothing
-is in the way, move on to the
+If nothing is in the way, move on to the
 [collect phase](../../../agents/Grace.md#phase-8-collect).
 
 The merge can be deferred. When a second human reviewer is needed, or the user

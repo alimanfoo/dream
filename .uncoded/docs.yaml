@@ -241,7 +241,6 @@ plugins/:
             Write the PR description:
             Mark the PR ready for review:
             Handle what the user posts:
-            Update the branch:
       plain-english/:
         SKILL.md:
           Plain English:
@@ -296,7 +295,6 @@ plugins/:
             Write the PR description:
             Mark the PR ready for review:
             Handle what the user posts:
-            Update the branch:
             Collect:
       spark/:
         SKILL.md:
