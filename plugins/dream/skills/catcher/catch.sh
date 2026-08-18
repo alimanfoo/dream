@@ -8,9 +8,8 @@
 # Each tick reads the current state from git, tmux, `gh`, and the small amount of
 # catcher state under $HOME/.dream/catcher. It first looks for existing
 # dispatched work to resume. It dispatches a new issue when no existing session
-# needs a round. The default is a background loop. Run
-# `catch.sh --harness <claude|codex> --once` from the main checkout in cron on a
-# machine that must restart the catcher after a reboot.
+# needs a round. The catcher loops until the user stops it. Run
+# `catch.sh --harness <claude|codex>` from the main checkout.
 #
 # Agent rounds run headless inside detached tmux sessions. The tmux session shows
 # whether the round is running and gives the user a place to attach. When the
@@ -55,7 +54,7 @@ Usage:
            [--smith-model <model>] [--smith-effort <effort>]
            [--less-model <model>] [--less-effort <effort>]
            [--assignee <who>] [--interval <seconds>]
-           [--max-agents <n>] [--once]
+           [--max-agents <n>]
 
   --harness      Agent harness to run. Required.
   --smith-label  Issue label that dispatches a dream:smith session. Default: $default_smith_label.
@@ -65,9 +64,8 @@ Usage:
   --less-model   Model for a dream:less session. Defaults: Claude Code $default_claude_less_model; Codex $default_codex_less_model.
   --less-effort  Reasoning effort for a dream:less session. Defaults: Claude Code $default_claude_less_effort; Codex $default_codex_less_effort.
   --assignee    Whose issues to pick up. Default: $default_assignee.
-  --interval    Seconds between ticks in loop mode. Default: $default_interval.
+  --interval    Seconds between ticks. Default: $default_interval.
   --max-agents  Maximum agent rounds to run at once. Default: $default_max_agents.
-  --once        A single tick, then exit, instead of looping.
 EOF
 }
 
@@ -115,7 +113,6 @@ assignee=$default_assignee
 interval=$default_interval
 max_agents=$default_max_agents
 harness=
-once=0
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -129,7 +126,6 @@ while [ $# -gt 0 ]; do
     --assignee) [ $# -ge 2 ] || die "--assignee requires a value"; assignee=$2; shift 2;;
     --interval) [ $# -ge 2 ] || die "--interval requires a value"; interval=$2; shift 2;;
     --max-agents) [ $# -ge 2 ] || die "--max-agents requires a value"; max_agents=$2; shift 2;;
-    --once)     once=1; shift;;
     -h|--help)  usage; exit 0;;
     *)          die "unknown argument: $1";;
   esac
@@ -182,6 +178,11 @@ plugin_root=$(CDPATH=; cd -- "$script_dir/../.." && pwd) \
 # Copy the plugin tree because its helpers can read files outside their own
 # directories. Codex can replace the installation while this process is asleep
 # between ticks. A private snapshot stays stable for this process.
+#
+# This process deletes the snapshot as it exits, so nothing can read it after
+# that. That suits watch.sh, which the catcher runs inside a tick. Don't point a
+# round at the snapshot. A round runs in its own tmux session, so it outlives
+# this process whenever the user stops the catcher.
 runtime_root="$HOME/.dream/catcher/$repo/runtime"
 mkdir -p "$runtime_root" \
   || die "cannot create the Dreamcatcher runtime directory"
@@ -194,10 +195,10 @@ watch_script="$runtime_dir/skills/watcher/watch.sh"
 [ -f "$watch_script" ] || die "cannot find watch.sh in the Dreamcatcher runtime snapshot"
 
 # Keep render-claude.sh where a round can reach it for as long as the round
-# lasts. A round outlives this process under --once, and it outlives the
-# installed plugin, which an upgrade can move out from under a running catcher.
-# So neither the snapshot above nor the installation will do. Publish with mv,
-# which is atomic, so a running round never reads a half-written script.
+# lasts. A round can outlive this process, and it outlives the installed plugin,
+# which an upgrade can move out from under a running catcher. So neither the
+# snapshot above nor the installation will do. Publish with mv, which is atomic,
+# so a running round never reads a half-written script.
 render_script="$HOME/.dream/catcher/$repo/render-claude.sh"
 cp "$script_dir/render-claude.sh" "$render_script.pending" \
   || die "cannot copy render-claude.sh for Dreamcatcher rounds"
@@ -323,8 +324,8 @@ final_marker_file() { printf '%s/final-started\n' "$(catcher_state_dir "$1")"; }
 session_config_file() { printf '%s/session.json\n' "$(catcher_state_dir "$1")"; }
 
 # Record the harness settings that Codex does not recover on resume. The saved
-# values stay stable across loop restarts and --once runs, even if the command's
-# defaults later change.
+# values stay stable across catcher restarts, even if the command's defaults
+# later change.
 write_session_config() {
   local branch=$1 session_harness=$2 model=$3 effort=$4 state_dir file pending
   state_dir=$(catcher_state_dir "$branch")
@@ -629,11 +630,7 @@ tick() {
 # --- run -------------------------------------------------------------------
 
 log "dreamcatcher using $harness, watching $repo for labels '$smith_label' (smith) and '$less_label' (less), assignee '$assignee'"
-if [ "$once" -eq 1 ]; then
-  tick
-else
-  while true; do
-    tick || log "tick error; continuing"
-    sleep "$interval"
-  done
-fi
+while true; do
+  tick || log "tick error; continuing"
+  sleep "$interval"
+done
