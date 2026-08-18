@@ -284,7 +284,6 @@ Once the PR is ready and you have nothing left to do, end your turn.
 ## Collect
 
 Run this step only after the user merges the PR, or asks you to defer the merge.
-Neither holds just because you read this far in the file.
 
 File anything you noticed but left out of scope as a new GitHub issue
 (`gh issue create`). This keeps it from being lost. Skip this step when there's
