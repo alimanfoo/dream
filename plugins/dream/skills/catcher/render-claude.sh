@@ -15,6 +15,12 @@
 # session under ~/.claude/projects. The session line names the id, so a reader
 # can find it.
 #
+# A subagent's report is the substance of the work it did, so the script gives it
+# a line. It renders the completion event, which carries the report whether the
+# subagent ran in the foreground or the background. A subagent's own words carry
+# the report too, but they reach the stream only when its events stream inline.
+# So the script drops them, and the report has one home.
+#
 # The script runs the command rather than filtering a pipe, so it can exit with
 # the command's own status. The caller logs that status.
 #
@@ -39,6 +45,10 @@ command -v jq >/dev/null 2>&1 || die "jq is not on the PATH"
 # The script indents a subagent's lines, so the main thread stays easy to
 # follow.
 #
+# A subagent reports its token usage when it finishes, and a background command
+# does not. So the usage block tells the two completion events apart, and only
+# the subagent's becomes a report.
+#
 # A path under the worktree loses that prefix. The prefix is the same on every
 # line, and most of the path's length.
 "$@" | jq -Rr --unbuffered --arg cwd "$PWD" '
@@ -54,8 +64,13 @@ command -v jq >/dev/null 2>&1 || die "jq is not on the PATH"
        // $in.description // $in.prompt // $in)
     | shorten;
 
-  def render_assistant:
-    if .type == "text" then "\n" + .text
+  def is_subagent: .parent_tool_use_id != null;
+
+  def is_report:
+    .type == "system" and .subtype == "task_notification" and .usage != null;
+
+  def render_assistant($is_subagent):
+    if .type == "text" then (if $is_subagent then empty else "\n" + .text end)
     elif .type == "tool_use" then "[\(.name)] \(tool_summary)"
     else empty end;
 
@@ -69,20 +84,23 @@ command -v jq >/dev/null 2>&1 || die "jq is not on the PATH"
     | select(length > 0)
     | join("\n");
 
+  def indent: split("\n") | map("  " + .) | join("\n");
+
   def render:
     if .type == "system" and .subtype == "init" then
       "[session] model \(.model), id \(.session_id)"
-    elif .type == "assistant" then render_blocks(render_assistant)
+    elif is_report then ("[report] \(.status)\n\(.summary)" | indent)
+    elif .type == "assistant" then
+      is_subagent as $is_subagent
+      | render_blocks(render_assistant($is_subagent))
     elif .type == "user" then render_blocks(render_tool_failure)
     elif .type == "result" then "[result] \(.subtype)"
     else empty end;
 
-  def indent: gsub("(?m)^"; "  ");
-
   . as $line
   | try (fromjson
          | if type != "object" then $line
-           else (.parent_tool_use_id != null) as $is_subagent
+           else is_subagent as $is_subagent
              | render
              | if $is_subagent then indent else . end
            end)

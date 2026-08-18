@@ -23,9 +23,9 @@
 # never collide. The script emits its path as `watermarkFile`, so the caller can
 # delete it at teardown without re-deriving the key.
 #
-# The script reads every place the user writes: the conversation comments and
-# the review bodies, both from `gh pr view`, and the inline comments on the
-# diff, which `gh pr view` does not carry and a second call fetches.
+# The script reads every place the user writes: the conversation comments, the
+# review bodies, and the inline comments on the diff. Each is its own REST list,
+# and one more call reads the pull request state.
 #
 # They come back as one list, `posts`, oldest first. Each post names its `kind`,
 # so the caller reads the user's words in the order they were written, and still
@@ -99,11 +99,17 @@ watermark_file="$dir/pr${pr}"
 
 cutoff=$(cat "$watermark_file" 2>/dev/null)
 
-raw=$(gh pr view "$pr" --repo "$repo" --json state,comments,reviews 2>/dev/null) \
+state=$(gh pr view "$pr" --repo "$repo" --json state --jq .state 2>/dev/null) \
   || die "cannot read pull request #$pr in $repo"
 
-# The inline comments, which `gh pr view` does not carry. `--slurp` returns one
-# array per page, which the filter joins back into one list.
+# The three places the user writes. Each is its own REST list, and `--slurp`
+# returns one array per page, which the filter joins back into one list.
+conversation_pages=$(gh api "repos/$repo/issues/$pr/comments?per_page=100" --paginate --slurp 2>/dev/null) \
+  || die "cannot read the conversation comments on pull request #$pr in $repo"
+
+review_pages=$(gh api "repos/$repo/pulls/$pr/reviews?per_page=100" --paginate --slurp 2>/dev/null) \
+  || die "cannot read the reviews on pull request #$pr in $repo"
+
 inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate --slurp 2>/dev/null) \
   || die "cannot read the inline comments on pull request #$pr in $repo"
 
@@ -111,51 +117,56 @@ inline_pages=$(gh api "repos/$repo/pulls/$pr/comments?per_page=100" --paginate -
 # watermark can advance to it. `max` over an empty array is null, which leaves
 # the watermark unchanged.
 #
-# Both documents go in on stdin, the pull request first and the inline comment
-# pages second, so neither has to fit in an argument.
+# The three documents go in on stdin, in the order the variables above read
+# them, so none has to fit in an argument.
 #
-# Each source names its fields differently. `gh pr view` calls the author
-# `author` and the REST API calls it `user`, and each of the three names its
-# timestamp its own way. The REST API also returns far more than the caller acts
-# on. So each projection converts its source into the one post shape, and keeps
-# only the fields the caller acts on.
+# Each post keeps GitHub's own field names and values. The caller is a model
+# that has read this API's JSON many times over, so GitHub's names cost it
+# nothing to read, and a name this script invented would. The script adds one
+# field, `kind`, because the three sources arrive as one list and nothing in the
+# payload says which source a post came from.
 #
-# An inline comment's `line` is null once later commits have moved the line the
-# user wrote it on. So the projection falls back to `original_line`, the line as
-# it stood then, rather than reporting nothing. Both hold the last line when the
-# comment covers a range, and both are null when it is about the whole file.
-result=$(printf '%s\n%s\n' "$raw" "$inline_pages" \
-  | jq --arg cutoff "$cutoff" --arg footer "$footer" --arg me "$me" '
-  def has_agent_footer:
-    ((.body // "") | contains($footer));
+# The REST API returns far more than the caller acts on, so each source keeps
+# only the fields it acts on. Everything kept is passed through untouched.
+#
+# The one author field, `user.login`, and the one footer rule read the same way
+# across all three sources, because all three come from the same API. Only the
+# timestamp differs: a review records when it was submitted, and the other two
+# when they were created.
+result=$(printf '%s\n%s\n%s\n' "$conversation_pages" "$review_pages" "$inline_pages" \
+  | jq --arg cutoff "$cutoff" --arg footer "$footer" --arg me "$me" \
+       --arg state "$state" '
+  def written_at:
+    .created_at // .submitted_at;
 
-  def is_new_from_user($author; $at):
-    $author == $me and $at > $cutoff
-    and (has_agent_footer | not);
+  def is_new_from_user:
+    .user.login == $me and written_at > $cutoff
+    and (((.body // "") | contains($footer)) | not);
 
   def says_something:
-    .body != "" or .verdict == "APPROVED" or .verdict == "CHANGES_REQUESTED";
+    (.body // "") != "" or .state == "APPROVED" or .state == "CHANGES_REQUESTED";
 
-  . as $pr
+  (. | add // []) as $conversation
+  | (input | add // []) as $reviews
   | (input | add // []) as $inline_comments
-  | [ ($pr.comments[]
-       | select(is_new_from_user(.author.login; .createdAt))
-       | {kind: "comment", createdAt, body: (.body // "")})
-    , ($pr.reviews[]
-       | select(is_new_from_user(.author.login; .submittedAt))
-       | {kind: "review", createdAt: .submittedAt, body: (.body // ""),
-          verdict: .state})
+  | [ ($conversation[]
+       | select(is_new_from_user)
+       | {kind: "comment", id, created_at, body})
+    , ($reviews[]
+       | select(is_new_from_user)
+       | {kind: "review", id, submitted_at, body, state})
     , ($inline_comments[]
-       | select(is_new_from_user(.user.login; .created_at))
-       | {kind: "inlineComment", createdAt: .created_at, body: (.body // ""),
-          path, line: (.line // .original_line), id})
+       | select(is_new_from_user)
+       | {kind: "inlineComment", id, created_at, body, path, subject_type,
+          side, start_side, start_line, line,
+          original_start_line, original_line, diff_hunk})
     ]
   | map(select(says_something))
-  | sort_by(.createdAt) as $posts
+  | sort_by(written_at) as $posts
   | {
-      state: $pr.state,
+      state: $state,
       posts: $posts,
-      newest: ($posts | map(.createdAt) | max),
+      newest: ($posts | map(written_at) | max),
     }
 ') || die "cannot parse the pull request activity"
 
