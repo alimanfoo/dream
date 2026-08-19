@@ -31,6 +31,9 @@ conflict markers and running any script that regenerates files: a sync script, a
 stub regenerator, or an index refresh. Write the brief as you would for any
 other Ralph task. Ralph resolves the markers, stages, commits, and pushes.
 
+After Ralph pushes, refresh the PR description per
+[Keep it current](../../../reviewers-guide.md#keep-it-current).
+
 Junio is not involved. Do only what the conflict resolution needs.
 
 The phase ends when the PR is merged.

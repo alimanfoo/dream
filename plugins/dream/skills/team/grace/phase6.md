@@ -88,8 +88,8 @@ Write it for a reviewer who has not read the thread. Check whether the repo has
 contribution rules (`CONTRIBUTING.md`, a PR template) and follow them. Include
 this content:
 
-- Open with a bullet list of issues addressed, one per line. Use `- Closes #N`
-  for each issue the PR fully resolves, and `- Related to #N` for any it partly
+- Add a bullet list of issues addressed, one per line. Use `- Closes #N` for
+  each issue the PR fully resolves, and `- Related to #N` for any it partly
   addresses. `Closes` triggers GitHub auto-close on merge; `Related to` does
   not.
 - Follow with one to three sentences stating what the PR does and why, without
@@ -126,7 +126,9 @@ lands, and carries the PR on through the merge or a close (see
 Address the user's comments the way you addressed Ada's and Junio's. Triage
 each, and make a task for each one you accept. Post any question you can't
 resolve without the user to the PR as a comment, the same as
-[Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions). Then post one
+[Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions). After an
+accepted task lands, refresh the description per
+[Keep it current](../../../reviewers-guide.md#keep-it-current). Then post one
 response comment, the same as
 [Step 6.5](#step-65-post-your-response-to-reviews-as-a-pr-comment).
 
