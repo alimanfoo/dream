@@ -217,9 +217,8 @@ are.
 You did the reading, so it all looks right to you. Someone who wasn't here needs
 to check it.
 
-Spawn one `general-purpose` subagent with the Agent tool, on Sonnet. Give it the
-absolute path of the guide, since a subagent can't resolve a path relative to
-its own prompt file.
+Spawn one subagent. Give it the absolute path of the guide, since a subagent
+can't resolve a path relative to its own prompt file.
 
 Ask it to check every claim in the guide against the code, working section by
 section and keeping a todo list so it skips none of them. For each claim, open
