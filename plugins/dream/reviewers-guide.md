@@ -7,9 +7,9 @@ these sections:
 - `### Read first`: name the smallest set of files or parts the reviewer should
   read. Put them in order, and say what each one contains. Include generated
   output when it needs review.
-- `### Where the risk lives`: name any behaviour or design choices that need
-  closer review than the rest. Point to evidence the reviewer can inspect, such
-  as a code path, a command they can run, or a PR comment. Say
+- `### Check carefully`: name any behaviour or design choices that need closer
+  review than the rest. Point to evidence the reviewer can inspect, such as a
+  code path, a command they can run, or a PR comment. Say
   `Nothing beyond the diff` when no part needs closer review.
 - `### Safe to skip`: name only changes where review would add no value, and say
   why. A generated or mechanical change is not safe to skip by default. Say
