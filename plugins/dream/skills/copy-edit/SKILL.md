@@ -33,9 +33,11 @@ Read the arguments the user gives.
    paragraph it holds is whole. The subagent judges only what you hand it, so a
    passage cut mid-paragraph is one it cannot judge. Review prose, not diff
    markup.
-2. Spawn subagents to review it. Use the `dream:copy-editor` subagent in Claude
-   Code. The agent definition sets the model and effort. Use a plain subagent in
-   Codex. Give the Codex subagent the absolute path of
+2. Use the `dream:copy-editor` subagent in Claude Code. The agent definition
+   sets the model and effort. Use a plain subagent in Codex. Set its
+   `fork_turns` to `none`, which lets Codex override the parent session's
+   effort. Set its `reasoning_effort` to `medium`. Give the Codex subagent the
+   absolute path of
    [the copy editor's instructions](../../agents/copy-editor.md) and tell it to
    follow them. Give every subagent the Plain English guide's absolute path.
    Locate each passage exactly: give its absolute path with the line range, or
@@ -43,14 +45,13 @@ Read the arguments the user gives.
    section costs the subagent a search. Name who reads the passage, so the
    subagent judges it for that reader rather than reading the surrounding code
    to work out who the reader is. Give one subagent the whole passage when it is
-   small. Split a large passage by file or section. Launch parallel subagents,
-   one per part. Wait for every report however your session waits, because your
-   next message must carry them. Don't sleep or poll for progress. Don't write
-   that you're waiting.
-3. Wait again after each, however your session waits, until every subagent you
-   launched is in, since findings land one subagent at a time. Then combine the
-   findings into one list. Drop duplicates and resolve inconsistencies. Write
-   the combined list in your turn output.
+   small. Split a large passage by file or section. Launch the subagents in
+   parallel, one per part.
+3. Wait however your session waits until every launched subagent has replied.
+   Reports arrive one at a time, so keep waiting after an early report. Don't
+   sleep or poll for progress. Then combine the findings into one list. Drop
+   duplicates and resolve inconsistencies. Write the combined list in your next
+   turn output. Don't write a waiting update before it.
 4. Resolve every finding on the combined list. You are the author. Make each
    edit yourself and keep the meaning. When a fix would drop a reason, keep the
    reason and meet the rule another way.
