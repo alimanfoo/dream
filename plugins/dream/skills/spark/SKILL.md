@@ -272,8 +272,7 @@ when you couldn't ask, because I'd already told you to write it up.
 ## Get it read before you show me
 
 Before you show me the brief, get two fresh readers on it. Spawn both as
-`general-purpose` subagents with the Agent tool, at the same time, pasting the
-whole brief into each.
+subagents, at the same time, pasting the whole brief into each.
 
 The first one has to design this. It gets the brief and nothing else, and one
 question: you're starting tomorrow, is there anything else you'd like to know
