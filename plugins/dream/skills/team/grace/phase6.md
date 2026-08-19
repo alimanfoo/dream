@@ -5,7 +5,7 @@ Write every turn output, message and artefact in this phase using
 
 Follow the steps below when development is complete. Ralph copy-edits the
 branch's prose first. Then Ada and Junio review in parallel, then the user. You
-triage all three reviews the same way.
+triage every review the same way.
 
 ## Step 6.1: Ask Ralph to copy-edit the branch's prose
 
@@ -18,6 +18,8 @@ Triage nothing from this. Ralph is the author, so he resolves the findings
 himself.
 
 ## Step 6.2: Send the review requests
+
+Record the current `HEAD` as the reviewed commit.
 
 Tell Ada and Junio that development is complete and ask each for their review.
 Two `SendMessage` calls in the same turn, one to each, both carrying the PR
@@ -60,6 +62,8 @@ this shape:
 
 ```text
 ## {heading}
+
+Reviewed commit: {commit}
 
 > {the finding, verbatim}
 
@@ -122,8 +126,8 @@ attention. If no findings were accepted, flip immediately.
 
 ## Step 6.7: Handle the user's review
 
-The PR is ready once you have addressed every comment from Ada and Junio. The
-user's review is the last of the three.
+The PR is ready once you have addressed every finding from Ada's and Junio's
+reviews. The user's review comes last.
 
 Go idle (see
 [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)). The watch
@@ -131,16 +135,21 @@ has been running since the PR opened. It brings the user's review back when it
 lands, and carries the PR on through the merge or a close (see
 [The watch](../../../agents/Grace.md#the-watch)).
 
-Address each finding in the user's review the way you addressed the earlier
-review findings. Triage each finding. Make a task for each one you accept. Post
-any question you can't resolve without the user to the PR as a comment, the same
-as [Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions). After an
-accepted task is complete, refresh the description per
-[Keep it current](../../../reviewers-guide.md#keep-it-current). Then post one
-response comment for the whole set of findings. Use the outcome lines from
-[Step 6.4](#step-64-post-each-review-and-response-as-a-pr-comment), but name
-each user finding briefly instead of quoting it. The finding is already public
-in the PR thread.
+Handle the user's review in this order:
+
+1. Triage each finding as in [Step 6.3](#step-63-triage-each-finding).
+2. Make a task for each finding you accept.
+3. Post any question you can't resolve without the user to the PR as a comment,
+   the same as [Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions).
+4. Wait until every accepted task is complete and every open question has an
+   answer.
+5. Refresh the description per
+   [Keep it current](../../../reviewers-guide.md#keep-it-current).
+6. Post one response comment for the whole set of findings. Use the outcome
+   lines from
+   [Step 6.4](#step-64-post-each-review-and-response-as-a-pr-comment), but name
+   each user finding briefly instead of quoting it. The finding is already
+   public in the PR thread.
 
 The branch freezes once every review is addressed, the user's included. From
 then on you fold no new development into the PR, and a finding becomes an issue
