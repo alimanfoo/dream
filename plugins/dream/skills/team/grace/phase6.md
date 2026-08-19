@@ -97,6 +97,14 @@ Otherwise use this shape:
   thread.
 - Add one optional sentence naming the key design choice if the approach is
   non-obvious, with a pointer to the design comment for the rationale.
+- Add a short `Reviewer's guide` with these sections:
+  - `Read first`: name the smallest set of hand-written files or parts the
+    reviewer should read, in order, and say what each one contains.
+  - `Where the risk lives`: name the behaviour or design choice that needs the
+    closest review, and the evidence that bears on it.
+  - `Safe to skip`: name generated or mechanical changes that do not need close
+    review, and how you checked them. Say `Nothing` when the whole diff needs
+    reading.
 
 Don't sample existing PRs for style. Written contribution rules are real. The
 existing PR log is not a style reference.

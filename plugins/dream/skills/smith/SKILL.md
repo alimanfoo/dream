@@ -269,6 +269,14 @@ Otherwise:
   PR fully resolves, and `Related to #N` for any it partly addresses.
 - Follow with one to three sentences on what the PR does and why, for a reader
   new to the session.
+- Add a short `Reviewer's guide` with these sections:
+  - `Read first`: name the smallest set of hand-written files or parts the
+    reviewer should read, in order, and say what each one contains.
+  - `Where the risk lives`: name the behaviour or design choice that needs the
+    closest review, and the evidence that bears on it.
+  - `Safe to skip`: name generated or mechanical changes that do not need close
+    review, and how you checked them. Say `Nothing` when the whole diff needs
+    reading.
 
 Run the `dream:copy-edit` skill over the draft before you set it. The reviewer
 reads the description, so it needs to be as readable as the rest of the prose.
