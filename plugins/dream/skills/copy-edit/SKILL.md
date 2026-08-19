@@ -35,18 +35,19 @@ Read the arguments the user gives.
    markup.
 2. Spawn subagents to review it. Use the `dream:copy-editor` subagent in Claude
    Code. The agent definition sets the model and effort. Use a plain subagent in
-   Codex. Give the Codex subagent the absolute path of
-   [the copy editor's instructions](../../agents/copy-editor.md) and tell it to
-   follow them. Give every subagent the Plain English guide's absolute path.
-   Locate each passage exactly: give its absolute path with the line range, or
-   the text inline when it isn't in a file yet. A passage you name only by
-   section costs the subagent a search. Name who reads the passage, so the
-   subagent judges it for that reader rather than reading the surrounding code
-   to work out who the reader is. Give one subagent the whole passage when it is
-   small. Split a large passage by file or section. Launch parallel subagents,
-   one per part. Wait for every report however your session waits, because your
-   next message must carry them. Don't sleep or poll for progress. Don't write
-   that you're waiting.
+   Codex. Set its `fork_turns` to `none` so the effort can be overridden, then
+   set its `reasoning_effort` to `medium`. Give the Codex subagent the absolute
+   path of [the copy editor's instructions](../../agents/copy-editor.md) and
+   tell it to follow them. Give every subagent the Plain English guide's
+   absolute path. Locate each passage exactly: give its absolute path with the
+   line range, or the text inline when it isn't in a file yet. A passage you
+   name only by section costs the subagent a search. Name who reads the passage,
+   so the subagent judges it for that reader rather than reading the surrounding
+   code to work out who the reader is. Give one subagent the whole passage when
+   it is small. Split a large passage by file or section. Launch parallel
+   subagents, one per part. Wait for every report however your session waits,
+   because your next message must carry them. Don't sleep or poll for progress.
+   Don't write that you're waiting.
 3. Wait again after each, however your session waits, until every subagent you
    launched is in, since findings land one subagent at a time. Then combine the
    findings into one list. Drop duplicates and resolve inconsistencies. Write
