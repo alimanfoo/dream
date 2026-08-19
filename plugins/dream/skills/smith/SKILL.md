@@ -214,8 +214,10 @@ Run the `dream:copy-edit` skill over the branch's changes against the base
 
 ## Review
 
-Run the `dream:coherence-review` skill over the branch's changes against the
-base (`origin/main...HEAD`).
+Run two reviews in sequence as described below.
+
+First, run the `dream:coherence-review` skill over the branch's changes against
+the base (`origin/main...HEAD`).
 
 Weigh each finding on its merits and apply the ones the evidence supports. Reach
 for the coherent fix even when it goes wider than the site the finding names.
@@ -253,7 +255,7 @@ paragraphs would read as your own words.
 
 If a review returns no findings, post the heading and one line saying so.
 
-Then run the `dream:code-review` skill the same way, and head its comment
+Second, run the `dream:code-review` skill the same way, and head its comment
 `Code review`. It goes second so that it reads the fixes the coherence review
 led to.
 
