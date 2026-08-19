@@ -84,27 +84,27 @@ Write the description for the PR you opened in Phase 1
 [Step 1.1](phase1.md#step-11-open-the-session-pr), replacing the `WIP`
 placeholder.
 
-Write it for a cold reviewer who has not read the thread. Check whether the repo
-has contribution rules (`CONTRIBUTING.md`, a PR template) and follow them.
-Otherwise use this shape:
+Write it for a reviewer who has not read the thread. Check whether the repo has
+contribution rules (`CONTRIBUTING.md`, a PR template) and follow them. Include
+this content:
 
-- Open with a bullet list of issues addressed, one per line. Use `- Closes #N`
-  for each issue the PR fully resolves, and `- Related to #N` for any it partly
+- Add a bullet list of issues addressed, one per line. Use `- Closes #N` for
+  each issue the PR fully resolves, and `- Related to #N` for any it partly
   addresses. `Closes` triggers GitHub auto-close on merge; `Related to` does
   not.
-- Follow with one to three sentences stating what the PR does and why, in
-  mechanism-neutral terms, so a cold reviewer can orient without reading the
+- Follow with one to three sentences stating what the PR does and why, without
+  implementation details, so a reviewer can understand it without reading the
   thread.
-- Add one optional sentence naming the key design choice if the approach is
-  non-obvious, with a pointer to the design comment for the rationale.
+- If the approach is not clear, add one sentence that names the key design
+  choice and links to the design comment that explains why.
 
-Don't sample existing PRs for style. Written contribution rules are real. The
-existing PR log is not a style reference.
+Read and follow the [reviewer's guide](../../../reviewers-guide.md).
 
-Write it per [Writing to GitHub](../../../agents/Grace.md#writing-to-github).
-After writing the description, verify that every issue the PR fully resolves is
-recognised: run `gh pr view <N> --json closingIssuesReferences` to confirm each
-issue appears.
+Follow written contribution rules instead of copying the style of existing PRs.
+
+Follow [Writing to GitHub](../../../agents/Grace.md#writing-to-github). After
+writing the description, run `gh pr view <N> --json closingIssuesReferences`.
+Confirm that GitHub recognises every issue the PR fully resolves.
 
 ## Step 6.7: Mark the PR ready for review
 
@@ -126,7 +126,9 @@ lands, and carries the PR on through the merge or a close (see
 Address the user's comments the way you addressed Ada's and Junio's. Triage
 each, and make a task for each one you accept. Post any question you can't
 resolve without the user to the PR as a comment, the same as
-[Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions). Then post one
+[Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions). After an
+accepted task lands, refresh the description per
+[Keep it current](../../../reviewers-guide.md#keep-it-current). Then post one
 response comment, the same as
 [Step 6.5](#step-65-post-your-response-to-reviews-as-a-pr-comment).
 

@@ -262,13 +262,15 @@ led to.
 ## Write the PR description
 
 Draft the description, now that the work is final. Check the repo for
-contribution rules (`CONTRIBUTING.md`, a PR template) and follow them.
-Otherwise:
+contribution rules (`CONTRIBUTING.md`, a PR template) and follow them. Include
+this content:
 
-- Open with a bullet list of issues addressed. Use `Closes #N` for each one the
-  PR fully resolves, and `Related to #N` for any it partly addresses.
+- Add a bullet list of issues addressed. Use `Closes #N` for each one the PR
+  fully resolves, and `Related to #N` for any it partly addresses.
 - Follow with one to three sentences on what the PR does and why, for a reader
   new to the session.
+
+Read and follow the [reviewer's guide](../../reviewers-guide.md).
 
 Run the `dream:copy-edit` skill over the draft before you set it. The reviewer
 reads the description, so it needs to be as readable as the rest of the prose.
@@ -295,11 +297,14 @@ comment naming where the work stopped, then end your turn.
 Otherwise, act on the returned `posts`, oldest first. A post can carry more than
 one of these:
 
-- **A requested change.** Implement it. Commit and push. Reply on the PR.
+- **A requested change.** Implement it. Commit and push. Refresh the description
+  per [Keep it current](../../reviewers-guide.md#keep-it-current). Reply on the
+  PR.
 - **A resolve-conflicts request.** Bring the branch up to date with `main`
   (`git fetch origin main`, then merge or rebase). Resolve any conflicts
-  yourself and commit the resolution. Push the branch. Don't merge the PR
-  itself. That's the user's call.
+  yourself and commit the resolution. Push the branch. Refresh the description
+  per [Keep it current](../../reviewers-guide.md#keep-it-current). Don't merge
+  the PR itself. That's the user's call.
 - **A defer-merge request.** Continue to the [collect step](#collect), leaving
   the PR open for the user to merge later.
 - **A question.** Answer it as a PR comment.
