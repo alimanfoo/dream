@@ -341,10 +341,10 @@ new posts, as one combined batch. The channel a post came through makes no
 difference to how you read it. A post can carry more than one of these intents.
 Act on all of them, in this order, and drop nothing:
 
-1. **Feedback** is the user's judgement on the work. Triage it and make a task
-   for each accepted point, as in
-   [Step 6.7](../skills/team/grace/phase6.md#step-67-handle-the-users-review),
-   which also covers open questions and the response comment.
+1. **Feedback** is the user's judgement on the work. Triage it as
+   [Step 6.7](../skills/team/grace/phase6.md#step-67-handle-the-users-review)
+   describes. Make a task for each accepted point. That step also covers open
+   questions and the response comment.
 2. **A resolve-conflicts request** means you can make the PR mergeable.
    Recognise it liberally from a body such as _"resolve conflicts"_ or _"update
    the branch"_. Resolve the conflict as Phase 7 describes. It counts as the

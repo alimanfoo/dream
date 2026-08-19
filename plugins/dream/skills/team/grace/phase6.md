@@ -3,7 +3,7 @@
 Write every turn output, message and artefact in this phase using
 `dream:plain-english`.
 
-When development is complete, follow the steps below. Ralph copy-edits the
+Follow the steps below when development is complete. Ralph copy-edits the
 branch's prose first. Then Ada and Junio review in parallel, then the user. You
 triage all three reviews the same way.
 
@@ -40,7 +40,7 @@ For each finding you called out of scope, apply the
 [same-edit check](../../../agents/Grace.md#same-edit-check).
 
 Keep one response note per finding as you triage. Accepted findings record the
-follow-on task and, once complete, the commit or PR-visible evidence that
+follow-on task and, once complete, the commit or evidence on the PR that
 addressed it. Rejected findings record the reason. Out-of-scope findings record
 that they are held for post-merge triage. These notes are the raw material for
 the review comments you post after triage.
@@ -51,10 +51,10 @@ contract, invariant, precondition, or convention, apply the
 
 ## Step 6.4: Post each review and response as a PR comment
 
-After all accepted findings have been handled through the standard per-task
-workflow, post each review and its response as one PR comment. Head the code
-review comment `Code review` and the coherence review comment
-`Coherence review`. Use this shape:
+Post each review and its response as one PR comment after you have handled all
+accepted findings through the standard per-task workflow. Head the code review
+comment `Code review` and the coherence review comment `Coherence review`. Use
+this shape:
 
 ```text
 ## {heading}
@@ -83,8 +83,8 @@ paragraphs would read as your own words.
 
 If a review raised no findings, post the heading and one line saying so.
 
-Keep agent names off GitHub. The headings name what was reviewed, not who
-reviewed it. Post per
+Keep agent names off GitHub. Use the headings to name each review, not the agent
+who wrote it. Post per
 [Writing to GitHub](../../../agents/Grace.md#writing-to-github). Do not use
 `gh pr review`. It carries more weight than these advisory reviews should.
 
@@ -133,13 +133,13 @@ has been running since the PR opened. It brings the user's review back when it
 lands, and carries the PR on through the merge or a close (see
 [The watch](../../../agents/Grace.md#the-watch)).
 
-Address the user's comments the way you addressed Ada's and Junio's. Triage
-each, and make a task for each one you accept. Post any question you can't
-resolve without the user to the PR as a comment, the same as
-[Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions). After an
-accepted task lands, refresh the description per
+Address each finding in the user's review the way you addressed the earlier
+review findings. Triage each finding. Make a task for each one you accept. Post
+any question you can't resolve without the user to the PR as a comment, the same
+as [Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions). After an
+accepted task is complete, refresh the description per
 [Keep it current](../../../reviewers-guide.md#keep-it-current). Then post one
-response comment. Use the outcome lines from
+response comment for the whole set of findings. Use the outcome lines from
 [Step 6.4](#step-64-post-each-review-and-response-as-a-pr-comment), but name
 each user finding briefly instead of quoting it. The finding is already public
 in the PR thread.
