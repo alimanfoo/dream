@@ -18,8 +18,9 @@ see them all.
 
 Every skill runs under Claude Code. Codex support is partial: it includes
 `dream:smith`, `dream:less`, `dream:catcher`, `dream:spark`, `dream:state`,
-`dream:copy-edit`, `dream:code-review`, and `dream:coherence-review`. Put a `$`
-in front of a skill's name in a Codex prompt:
+`dream:shape`, `dream:copy-edit`, `dream:code-review`, and
+`dream:coherence-review`. Put a `$` in front of a skill's name in a Codex
+prompt:
 
 ```text
 $dream:state
