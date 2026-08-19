@@ -273,7 +273,7 @@ Otherwise:
   - `Read first`: name the smallest set of hand-written files or parts the
     reviewer should read, in order, and say what each one contains.
   - `Where the risk lives`: name the behaviour or design choice that needs the
-    closest review, and the evidence that bears on it.
+    closest review, and the evidence the reviewer should use to judge it.
   - `Safe to skip`: name generated or mechanical changes that do not need close
     review, and how you checked them. Say `Nothing` when the whole diff needs
     reading.
