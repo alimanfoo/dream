@@ -3,6 +3,7 @@ name: copy-edit
 description:
   Bring a passage of prose into line with the Plain English guide. Use only when
   explicitly invoked.
+effort: medium
 argument-hint: "[target] [max-iterations]"
 ---
 
