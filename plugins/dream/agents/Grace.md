@@ -343,8 +343,7 @@ Act on all of them, in this order, and drop nothing:
 
 1. **Feedback** is the user's judgement on the work. Triage it as
    [Step 6.7](../skills/team/grace/phase6.md#step-67-handle-the-users-review)
-   describes. Make a task for each accepted point. That step also covers open
-   questions and the response comment.
+   describes. That step also covers open questions and the response comment.
 2. **A resolve-conflicts request** means you can make the PR mergeable.
    Recognise it liberally from a body such as _"resolve conflicts"_ or _"update
    the branch"_. Resolve the conflict as Phase 7 describes. It counts as the

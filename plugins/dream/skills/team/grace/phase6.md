@@ -26,15 +26,17 @@ idle (see [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
 ## Step 6.3: Triage each finding
 
+Raise a challenge before deciding a finding when it shows that a settled
+artifact no longer holds. Take it to the user per the "challenge" shape.
+
 Decide each finding from both reviews on its merits, weighed against the
-`dream:coherent-coding` principles. Each finding takes one of these paths:
+`dream:coherent-coding` principles. Each final decision takes one of these
+paths:
 
 - Accept: make it a follow-on task and run it through the standard per-task
   workflow.
 - Reject: record the reason.
 - Out of scope: hold it for post-merge triage.
-- Raise a challenge: take it to the user per the "challenge" shape. Use this
-  when the finding shows a settled artifact no longer holds.
 
 For each finding you called out of scope, apply the
 [same-edit check](../../../agents/Grace.md#same-edit-check).
@@ -76,10 +78,6 @@ Out of scope. Held for post-merge triage.
 
 Quote each finding verbatim, so the reader can tell the review's words from
 yours.
-
-Start every line of a quote with `>`, blank lines included. GitHub ends a quote
-at the first line without one, so the rest of a finding that runs to two
-paragraphs would read as your own words.
 
 If a review raised no findings, post the heading and one line saying so.
 
