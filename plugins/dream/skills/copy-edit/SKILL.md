@@ -34,10 +34,10 @@ Read the arguments the user gives.
    passage cut mid-paragraph is one it cannot judge. Review prose, not diff
    markup.
 2. Spawn subagents to review it. Use the `dream:copy-editor` subagent in Claude
-   Code, whose definition owns its model and effort. Use a plain subagent in
-   Codex. Give each the absolute path of
-   [the copy editor's instructions](../../subagents/copy-editor.md) and tell it
-   to work to them. Give each the Plain English guide's absolute path too.
+   Code. The agent definition sets the model and effort. Use a plain subagent in
+   Codex. Give the Codex subagent the absolute path of
+   [the copy editor's instructions](../../agents/copy-editor.md) and tell it to
+   follow them. Give every subagent the Plain English guide's absolute path.
    Locate each passage exactly: give its absolute path with the line range, or
    the text inline when it isn't in a file yet. A passage you name only by
    section costs the subagent a search. Name who reads the passage, so the
