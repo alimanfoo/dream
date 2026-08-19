@@ -262,21 +262,15 @@ led to.
 ## Write the PR description
 
 Draft the description, now that the work is final. Check the repo for
-contribution rules (`CONTRIBUTING.md`, a PR template) and follow them.
-Otherwise:
+contribution rules (`CONTRIBUTING.md`, a PR template) and follow them. Include
+this content:
 
 - Open with a bullet list of issues addressed. Use `Closes #N` for each one the
   PR fully resolves, and `Related to #N` for any it partly addresses.
 - Follow with one to three sentences on what the PR does and why, for a reader
   new to the session.
-- Add a short `Reviewer's guide` with these sections:
-  - `Read first`: name the smallest set of hand-written files or parts the
-    reviewer should read, in order, and say what each one contains.
-  - `Where the risk lives`: name the behaviour or design choice that needs the
-    closest review, and the evidence the reviewer should use to judge it.
-  - `Safe to skip`: name generated or mechanical changes that do not need close
-    review, and how you checked them. Say `Nothing` when the whole diff needs
-    reading.
+
+Read and follow the [reviewer's guide](../../reviewers-guide.md).
 
 Run the `dream:copy-edit` skill over the draft before you set it. The reviewer
 reads the description, so it needs to be as readable as the rest of the prose.

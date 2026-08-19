@@ -85,8 +85,8 @@ Write the description for the PR you opened in Phase 1
 placeholder.
 
 Write it for a reviewer who has not read the thread. Check whether the repo has
-contribution rules (`CONTRIBUTING.md`, a PR template) and follow them. Otherwise
-use this shape:
+contribution rules (`CONTRIBUTING.md`, a PR template) and follow them. Include
+this content:
 
 - Open with a bullet list of issues addressed, one per line. Use `- Closes #N`
   for each issue the PR fully resolves, and `- Related to #N` for any it partly
@@ -97,14 +97,8 @@ use this shape:
   thread.
 - If the approach is not clear, add one sentence that names the key design
   choice and links to the design comment that explains why.
-- Add a short `Reviewer's guide` with these sections:
-  - `Read first`: name the smallest set of hand-written files or parts the
-    reviewer should read, in order, and say what each one contains.
-  - `Where the risk lives`: name the behaviour or design choice that needs the
-    closest review, and the evidence the reviewer should use to judge it.
-  - `Safe to skip`: name generated or mechanical changes that do not need close
-    review, and how you checked them. Say `Nothing` when the whole diff needs
-    reading.
+
+Read and follow the [reviewer's guide](../../../reviewers-guide.md).
 
 Follow written contribution rules instead of copying the style of existing PRs.
 
