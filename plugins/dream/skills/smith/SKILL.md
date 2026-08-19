@@ -212,29 +212,52 @@ Implement the plan, one step at a time. For each step:
 Run the `dream:copy-edit` skill over the branch's changes against the base
 (`origin/main...HEAD`). Commit and push the fixes it makes.
 
-## Coherence review
+## Review
 
-Run the `dream:coherence-review` skill over the branch's changes against the
-base (`origin/main...HEAD`). It returns findings across the coherence lenses. It
-does not apply them. Weigh each on its merits and apply the ones the evidence
-supports. Reach for the coherent fix even when it goes wider than the site the
-finding names. Commit and push the fixes.
+Run two reviews in sequence as described below.
 
-Post the findings and how you acted on them as a PR comment. Head it
-`Coherence review`. For any finding you didn't act on, give the reason in one
-sentence.
+First, run the `dream:coherence-review` skill over the branch's changes against
+the base (`origin/main...HEAD`).
 
-## Code review
+Weigh each finding on its merits and apply the ones the evidence supports. Reach
+for the coherent fix even when it goes wider than the site the finding names.
+Defer one that holds but needs a PR of its own.
 
-Run the `dream:code-review` skill over the branch's changes against the base
-(`origin/main...HEAD`). It returns findings across the review lenses. It does
-not apply them. Weigh each on its merits and apply the ones the evidence
-supports. Reach for the coherent fix even when it goes wider than the site the
-finding names. Commit and push the fixes.
+Commit and push the fixes.
 
-Post the findings and how you acted on them as a PR comment. Head it
-`Code review`. For any finding you didn't act on, give the reason in one
-sentence.
+Post the findings and how you acted on them as a PR comment, headed
+`Coherence review`, in this shape:
+
+```text
+## {heading}
+
+> {the finding, verbatim}
+
+Accepted. {what you did}
+
+> {the finding, verbatim}
+
+Rejected. {the reason, in one sentence}
+
+> {the finding, verbatim}
+
+Deferred. {why it needs a PR of its own, in one sentence}
+
+...and so on, one block per finding.
+```
+
+Quote each finding verbatim, so the reader can tell the review's words from
+yours.
+
+Start every line of a quote with `>`, blank lines included. GitHub ends a quote
+at the first line without one, so the rest of a finding that runs to two
+paragraphs would read as your own words.
+
+If a review returns no findings, post the heading and one line saying so.
+
+Second, run the `dream:code-review` skill the same way, and head its comment
+`Code review`. It goes second so that it reads the fixes the coherence review
+led to.
 
 ## Write the PR description
 
@@ -292,8 +315,8 @@ Once the PR is ready and you have nothing left to do, end your turn.
 Run this step only after the user merges the PR, or asks you to defer the merge.
 
 File anything you noticed but left out of scope as a new GitHub issue
-(`gh issue create`). This keeps it from being lost. Skip this step when there's
-nothing to file.
+(`gh issue create`), every finding you deferred in a review included. This keeps
+it from being lost. Skip this step when there's nothing to file.
 
 File every bug.
 

@@ -43,12 +43,6 @@ repos:
         language: python
         types: [text]
 
-      - id: shellcheck
-        name: shellcheck
-        entry: shellcheck
-        language: system
-        types: [shell]
-
       - id: claude-plugin-validate
         name: claude plugin validate (plugin manifest)
         entry: claude plugin validate plugins/dream

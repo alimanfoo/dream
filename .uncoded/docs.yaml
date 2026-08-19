@@ -290,8 +290,7 @@ plugins/:
             Plan:
             Implement:
             Copy-edit:
-            Coherence review:
-            Code review:
+            Review:
             Write the PR description:
             Mark the PR ready for review:
             Handle what the user posts:
