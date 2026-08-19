@@ -215,11 +215,11 @@ Run the `dream:copy-edit` skill over the branch's changes against the base
 ## Review
 
 Run the `dream:coherence-review` skill over the branch's changes against the
-base (`origin/main...HEAD`). It returns findings across its lenses, and applies
-none of them.
+base (`origin/main...HEAD`).
 
 Weigh each finding on its merits and apply the ones the evidence supports. Reach
 for the coherent fix even when it goes wider than the site the finding names.
+Defer one that holds but needs a PR of its own.
 
 Commit and push the fixes.
 
@@ -229,19 +229,23 @@ Post the findings and how you acted on them as a PR comment, headed
 ```text
 ## {heading}
 
-> 1. {the finding, verbatim}
+> {the finding, verbatim}
 
-Addressed. {what you did}
+Accepted. {what you did}
 
-> 2. {the finding, verbatim}
+> {the finding, verbatim}
 
-Not addressed. {the reason, in one sentence}
+Rejected. {the reason, in one sentence}
+
+> {the finding, verbatim}
+
+Deferred. {why it needs a PR of its own, in one sentence}
 
 ...and so on, one block per finding.
 ```
 
 Quote each finding verbatim, so the reader can tell the review's words from
-yours. Drop the number the review gave it, since the block already carries one.
+yours.
 
 Start every line of a quote with `>`, blank lines included. GitHub ends a quote
 at the first line without one, so the rest of a finding that runs to two
@@ -309,8 +313,8 @@ Once the PR is ready and you have nothing left to do, end your turn.
 Run this step only after the user merges the PR, or asks you to defer the merge.
 
 File anything you noticed but left out of scope as a new GitHub issue
-(`gh issue create`). This keeps it from being lost. Skip this step when there's
-nothing to file.
+(`gh issue create`), every finding you deferred in a review included. This keeps
+it from being lost. Skip this step when there's nothing to file.
 
 File every bug.
 
