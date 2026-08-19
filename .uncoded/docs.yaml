@@ -101,6 +101,8 @@ plugins/:
             Commits:
             Communication between teammates (agents):
             Keep turn output quiet:
+      copy-editor.md:
+        Copy editor:
     coherent-coding.md:
       Coherent coding guide:
         Golden rule:

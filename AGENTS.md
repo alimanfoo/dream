@@ -51,15 +51,16 @@ harness reads that to pick the skill. Keep `dream:copy-edit` off all three
 bodies. It rewrites prose towards the Plain English guide, a different end
 point, and the register is what would go.
 
-Put new subagent instructions in `plugins/dream/subagents/`. A skill hands a
-file there to a plain subagent, by absolute path. That works under both Claude
-Code and Codex. Codex has no field for a plugin's agent definitions, so a
-subagent spawned by name doesn't work there.
+Put new subagent task instructions in `plugins/dream/subagents/`. Pass their
+absolute path to the subagent. This keeps the task prompt usable under both
+Claude Code and Codex.
 
-`plugins/dream/agents/` holds the four dream-team agents and nothing else.
-Claude Code registers each by name from its frontmatter. `dream:team` spawns
-them by that name. `dream:team` needs Claude Code's agent teams feature, so it
-stays Claude-only.
+`plugins/dream/agents/` holds Claude Code agent definitions. The four full
+definitions there are the dream-team agents. Keep any other definition as a thin
+wrapper around task instructions in `plugins/dream/subagents/`, so the prompt is
+stored in one place. Codex does not register plugin agent definitions, so it
+uses a plain subagent instead. `dream:team` spawns its agents by name. It needs
+Claude Code's agent teams feature, so it stays Claude-only.
 
 The prose in this repo references a skill, an agent, or an issue label one way
 throughout:
