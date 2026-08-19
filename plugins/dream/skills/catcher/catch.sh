@@ -100,7 +100,7 @@ default_codex_smith_effort="xhigh"
 default_codex_less_model="gpt-5.6-terra"
 default_codex_less_effort="high"
 default_assignee="@me"
-default_interval=300
+default_interval=120
 default_max_agents=1
 
 smith_label=$default_smith_label
