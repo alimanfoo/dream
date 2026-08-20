@@ -255,6 +255,18 @@ Second, run the `dream:code-review` skill the same way, and head its comment
 `Code review`. It goes second so that it reads the fixes the coherence review
 led to.
 
+## Find simplification opportunities
+
+Reread the finished change after both reviews. Ask whether the PR could remove a
+lot of code or complexity by changing the design or constraints given in the
+session input or delivering less, while losing little functionality.
+
+Post the result as a PR comment headed `Simplification opportunities`. Give the
+opportunities as a numbered list, each saying what to remove or simplify and
+what functionality the PR would give up. Order them so that the strongest
+opportunities appear first. If there are no significant opportunities, say so in
+the comment.
+
 ## Write the PR description
 
 Draft the description, now that the work is final. Check the repo for

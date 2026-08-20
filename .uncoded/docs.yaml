@@ -302,6 +302,7 @@ plugins/:
             Implement:
             Copy-edit:
             Review:
+            Find simplification opportunities:
             Write the PR description:
             Mark the PR ready for review:
             Handle what the user posts:
