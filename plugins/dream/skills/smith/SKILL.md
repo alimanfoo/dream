@@ -261,10 +261,9 @@ led to.
 
 ## Find simplification opportunities
 
-Reread the finished change after both reviews. Ask what significant
-simplifications would become possible if the PR could depart from the brief or
-deliver less. Look especially for places where you could remove a lot of code or
-complexity while losing little functionality.
+Reread the finished change after both reviews. Ask whether the PR could remove a
+lot of code or complexity by changing what the brief asks for or delivering
+less, while losing little functionality.
 
 Post the result as a PR comment headed `Simplification opportunities`. List each
 opportunity, saying what to remove or simplify and what functionality the PR
