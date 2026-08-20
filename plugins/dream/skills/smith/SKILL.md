@@ -249,10 +249,6 @@ Deferred. {why it needs a PR of its own, in one sentence}
 Quote each finding verbatim, so the reader can tell the review's words from
 yours.
 
-Start every line of a quote with `>`, blank lines included. GitHub ends a quote
-at the first line without one, so the rest of a finding that runs to two
-paragraphs would read as your own words.
-
 If a review returns no findings, post the heading and one line saying so.
 
 Second, run the `dream:code-review` skill the same way, and head its comment

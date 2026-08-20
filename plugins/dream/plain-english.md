@@ -182,3 +182,6 @@ issue descriptions, and comments. GitHub reflows each paragraph to the reader's
 window, so a hard-wrapped paragraph breaks into short, uneven lines. Newlines
 inside fenced code blocks and between table rows are structural. Leave those
 alone.
+
+Start every line of a blockquote with `>`, blank lines included. GitHub ends a
+quote at the first line without one, so the rest would read as your own words.
