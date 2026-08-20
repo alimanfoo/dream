@@ -262,8 +262,8 @@ led to.
 ## Find simplification opportunities
 
 Reread the finished change after both reviews. Ask whether the PR could remove a
-lot of code or complexity by changing what the brief asks for or delivering
-less, while losing little functionality.
+lot of code or complexity by changing the session input or delivering less,
+while losing little functionality.
 
 Post the result as a PR comment headed `Simplification opportunities`. List each
 opportunity, saying what to remove or simplify and what functionality the PR
