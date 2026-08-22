@@ -55,22 +55,24 @@ rests on must look ahead or guess.
 ## Reason forward
 
 State evidence before you conclude. A conclusion stated first anchors the reader
-and the writer. Evidence that follows confirms it rather than tests it. For example: "The build takes 12 minutes.
-  The cache is cold on every run. Warming the cache should help.", not "Warming
-  the cache should help. The build takes 12 minutes and the cache is cold."
-  
-State a hypothesis before testing it. For example: "The request might be
-  timing out. The logs show it drops at 30 seconds. The default timeout is 30
-  seconds.", not "The request is timing out. The logs confirm it drops at 30
-  seconds."
+and the writer. Evidence that follows confirms it rather than tests it. For
+example: "The build takes 12 minutes. The cache is cold on every run. Warming
+the cache should help.", not "Warming the cache should help. The build takes 12
+minutes and the cache is cold."
+
+State a hypothesis before testing it. For example: "The request might be timing
+out. The logs show it drops at 30 seconds. The default timeout is 30 seconds.",
+not "The request is timing out. The logs confirm it drops at 30 seconds."
 
 ## One idea per paragraph
 
-Each paragraph carries one idea. Name it in the first sentence. If a paragraph holds two ideas, split it.
+Each paragraph carries one idea. Name it in the first sentence. If a paragraph
+holds two ideas, split it.
 
 ## Say it once
 
-Say it once. For example, "this holds only when X" already says "if not X, it does not". Do not add the inverse.
+Say it once. For example, "this holds only when X" already says "if not X, it
+does not". Do not add the inverse.
 
 ## Use active voice
 
@@ -135,8 +137,8 @@ when either changes. For example: write "the sources", not "the three sources".
 
 ## Prefer the common word
 
-Prefer the common word. No unnecessary jargon or idioms. Don't invent a term when plain
-words already say it. For example:
+Prefer the common word. No unnecessary jargon or idioms. Don't invent a term
+when plain words already say it. For example:
 
 - "X owns the schema", not "X is the operational source of truth"
 - "might go out of sync", not "has drift potential"
