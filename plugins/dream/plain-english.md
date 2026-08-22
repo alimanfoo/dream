@@ -10,7 +10,8 @@ Write to inform, not to impress.
 
 ## Write to be understood
 
-Your readers include people who do not speak English as a first language.
+Your readers include people who do not speak English as a first language. Write
+so they cannot misunderstand you.
 
 ## Write as if speaking
 
