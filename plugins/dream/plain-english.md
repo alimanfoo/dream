@@ -13,6 +13,23 @@ Write to inform, not to impress.
 Your readers include people who do not speak English as a first language. Write
 so they cannot misunderstand you.
 
+Leave in the words that show how the other words relate. English lets you drop
+them, and a first-language reader puts them back without noticing. Your reader
+may not.
+
+- Keep "that". Write "the file that the parser reads", not "the file the parser
+  reads".
+- Repeat the word rather than leave a gap. Write "a command that completed needs
+  no second line, and one that failed gets one", not "a command that completed
+  needs no second line. One that did not gets one".
+- Put a preposition between stacked nouns. Write "the chain that picks the most
+  telling input", not "the most-telling-input fallback chain".
+- Keep the subject and the verb at the front. Write "the parser ignores every
+  other event type", not "Ignored: every other event type".
+
+Drop a word when putting it in makes the sentence harder to read. That happens
+when several "that"s land in one sentence.
+
 ## Write as if speaking
 
 Write as if you are speaking to someone. Prefer the sentence constructions of
