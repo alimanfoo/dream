@@ -19,9 +19,9 @@ may not.
 
 - Keep "that". Write "the file that the parser reads", not "the file the parser
   reads".
-- Repeat the word rather than leave a gap. Write "a command that completed needs
-  no second line, and one that failed gets one", not "a command that completed
-  needs no second line. One that did not gets one".
+- Repeat the word rather than leave a gap. Write "the parser reads the header,
+  and the renderer reads the body", not "the parser reads the header, the
+  renderer the body".
 - Put a preposition between stacked nouns. Write "the chain that picks the most
   telling input", not "the most-telling-input fallback chain".
 - Keep the subject and the verb at the front. Write "the parser ignores every
@@ -155,8 +155,9 @@ when either changes. For example: write "the sources", not "the three sources".
 
 ## Prefer the common word
 
-Prefer the common word. No unnecessary jargon or idioms. Don't invent a term
-when plain words already say it. For example:
+Prefer the common word. No jargon or idioms, unless they convey important
+meaning that no plain words can. Don't invent a term when plain words already
+say it. For example:
 
 - "X owns the schema", not "X is the operational source of truth"
 - "might go out of sync", not "has drift potential"
