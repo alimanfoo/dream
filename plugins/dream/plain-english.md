@@ -89,8 +89,8 @@ cold."
 
 ## One idea per paragraph
 
-Each paragraph carries one idea. Name it in the first sentence. If a paragraph
-holds two ideas, split it.
+Put one idea in a paragraph, and say what it is in the first sentence. If you
+find two ideas in there, split it into two paragraphs.
 
 ## Say it once
 
