@@ -18,9 +18,14 @@ For example: "Sentences that don't flow naturally can still be hard to read,
 even if the words are plain and simple.", not "Simple words can still sit in a
 construction no fluent writer uses."
 
-## Write to inform
+## Write to communicate
 
-Write to inform, not to impress.
+Write to communicate. You might be informing, asking a question, or thinking
+something through with someone. Whatever the case, the point is that it lands
+with the reader.
+
+Writing to impress works against that, and so does a clever turn of phrase or an
+idiom you liked the sound of. Nobody is giving out prizes for this.
 
 ## Write to be understood
 
