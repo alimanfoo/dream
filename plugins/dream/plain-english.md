@@ -4,6 +4,17 @@ This guide sets the standard for written text. It covers prompts, documentation,
 the messages between agents, the artefacts they write for GitHub, and what they
 write to the user.
 
+## Write as if speaking
+
+Write as if you are speaking to someone. Prefer the sentence constructions of
+speech, not those of formal writing. A sentence can use plain words and still
+read stiffly, because no one would say it that way. This is about construction,
+not tone. Keep the words as plain and precise as ever.
+
+For example: "Sentences that don't flow naturally can still be hard to read,
+even if the words are plain and simple.", not "Simple words can still sit in a
+construction no fluent writer uses."
+
 ## Write to inform
 
 Write to inform, not to impress.
@@ -29,17 +40,6 @@ may not.
 
 Drop a word when putting it in makes the sentence harder to read. That happens
 when several "that"s land in one sentence.
-
-## Write as if speaking
-
-Write as if you are speaking to someone. Prefer the sentence constructions of
-speech, not those of formal writing. A sentence can use plain words and still
-read stiffly, because no one would say it that way. This is about construction,
-not tone. Keep the words as plain and precise as ever.
-
-For example: "Sentences that don't flow naturally can still be hard to read,
-even if the words are plain and simple.", not "Simple words can still sit in a
-construction no fluent writer uses."
 
 ## Write for the reader's context
 
