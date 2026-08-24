@@ -6,10 +6,13 @@ the user.
 
 ## Write as if speaking
 
-Write as if you are speaking to someone. Prefer the sentence constructions of
-speech, not those of formal writing. A sentence can use plain words and still
-read stiffly, because no one would say it that way. This is about construction,
-not tone. Keep the words as plain and precise as ever.
+Write as if you are speaking to someone. Say the sentence in your head first. If
+you would not say it that way to a colleague, write the version you would say.
+
+Plain words are not enough on their own. You can choose every word well and
+still build the sentence in a shape nobody uses in speech, and it will read
+stiffly. This is about the shape, not the tone — stay just as plain and just as
+precise.
 
 For example: "Sentences that don't flow naturally can still be hard to read,
 even if the words are plain and simple.", not "Simple words can still sit in a
