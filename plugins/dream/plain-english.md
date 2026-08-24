@@ -1,8 +1,8 @@
 # Plain English guide
 
-This guide sets the standard for written text. It covers prompts, documentation,
-the messages between agents, the artefacts they write for GitHub, and what they
-write to the user.
+Follow this guide in everything you write. That means prompts, documentation,
+the messages you send other agents, what you post on GitHub, and what you say to
+the user.
 
 ## Write as if speaking
 
