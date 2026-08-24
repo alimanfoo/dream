@@ -66,18 +66,17 @@ example:
 
 ## Strict narrative order
 
-Write instructions in the order the reader must follow them. For example: "Knead
-the dough, then put it in the oven.", not "Put the dough in the oven, but make
-sure you knead it first." Other content may come between instructions, but they
-must still follow strict narrative order.
+Write instructions in the order the reader has to follow them. For example:
+"Knead the dough, then put it in the oven.", not "Put the dough in the oven, but
+make sure you knead it first." Other things can come between instructions, as
+long as the instructions themselves still run in order.
 
-The same holds beyond instructions. A reader who meets a point before the one it
-rests on must look ahead or guess.
+The same goes for anything else you write, not just instructions. If a reader
+hits a point before the one it depends on, they have to jump ahead or guess.
 
-- When one point depends on another, put the other first.
-- Do not refer forward. Phrases like "as described below" and "see the next
-  section" are forward references. Markdown links to later sections are also
-  forward references.
+- When one point depends on another, put the other one first.
+- Don't point the reader forward. "As described below" and "see the next
+  section" both point forward, and so does a markdown link to a later section.
 
 ## Reason forward
 
