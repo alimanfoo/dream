@@ -6,8 +6,8 @@ the user.
 
 ## Write as if speaking
 
-Write as if you are speaking to someone. Say the sentence in your head first. If
-you would not say it that way to a colleague, write the version you would say.
+Write as if you are speaking to someone. Build every sentence the way it would
+come out in speech, not the way formal writing would build it.
 
 Plain words are not enough on their own. You can choose every word well and
 still build the sentence in a shape nobody uses in speech, and it will read
