@@ -29,25 +29,26 @@ idiom you liked the sound of. Nobody is giving out prizes for this.
 
 ## Write to be understood
 
-Your readers include people who do not speak English as a first language. Write
-so they cannot misunderstand you.
+Some of your readers are reading in a second language. Write so they can't
+misunderstand you.
 
-Leave in the words that show how the other words relate. English lets you drop
-them, and a first-language reader puts them back without noticing. Your reader
-may not.
+Leave in the words that show how the sentence fits together. English lets you
+drop them, and someone reading in their first language fills them back in
+without noticing. Your reader has to stop and work them out.
 
 - Keep "that". Write "the file that the parser reads", not "the file the parser
   reads".
 - Repeat the word rather than leave a gap. Write "the parser reads the header,
   and the renderer reads the body", not "the parser reads the header, the
   renderer the body".
-- Put a preposition between stacked nouns. Write "the chain that picks the most
-  telling input", not "the most-telling-input fallback chain".
-- Keep the subject and the verb at the front. Write "the parser ignores every
-  other event type", not "Ignored: every other event type".
+- Break a pile of nouns apart with a small word like "of" or "that". Write "the
+  chain that picks the most telling input", not "the most-telling-input fallback
+  chain".
+- Start with who does what. Write "the parser ignores every other event type",
+  not "Ignored: every other event type".
 
-Drop a word when putting it in makes the sentence harder to read. That happens
-when several "that"s land in one sentence.
+Leave a word out when putting it in makes the sentence harder to read. That
+mostly happens when several "that"s pile up in one sentence.
 
 ## Write for the reader's context
 
