@@ -80,15 +80,12 @@ hits a point before the one it depends on, they have to jump ahead or guess.
 
 ## Reason forward
 
-State evidence before you conclude. A conclusion stated first anchors the reader
-and the writer. Evidence that follows confirms it rather than tests it. For
-example: "The build takes 12 minutes. The cache is cold on every run. Warming
-the cache should help.", not "Warming the cache should help. The build takes 12
-minutes and the cache is cold."
-
-State a hypothesis before testing it. For example: "The request might be timing
-out. The logs show it drops at 30 seconds. The default timeout is 30 seconds.",
-not "The request is timing out. The logs confirm it drops at 30 seconds."
+State evidence before you conclude. Once you have written a conclusion down, you
+start looking for things that support it, instead of collecting evidence and
+seeing which conclusion it actually favours. For example: "The build takes 12
+minutes. The cache is cold on every run. Warming the cache should help.", not
+"Warming the cache should help. The build takes 12 minutes and the cache is
+cold."
 
 ## One idea per paragraph
 
