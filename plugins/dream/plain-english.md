@@ -52,17 +52,17 @@ mostly happens when several "that"s pile up in one sentence.
 
 ## Write for the reader's context
 
-Model the reader: who they are, why they are reading. Cut what the reader does
-not need to know. These shapes recur, and do not bound the rule:
+Think about who is reading and why, then cut anything they don't need. For
+example:
 
-- an example pinned to a name from your own code. For example: "grep for the
+- Don't build an example around a name only you know. Write "grep for the
   function's name", not "grep -rn 'def parse_header'".
-- a definition by contrast with something the reader may not know. For example:
-  "This runs on every commit.", not "This runs on every commit, unlike the
-  nightly job."
-- the history behind a thing, when the reader needs only the thing. For example:
-  "Set the timeout to 30 seconds.", not "Set the timeout to 30 seconds. We chose
-  30 after load testing."
+- Don't explain a thing by contrasting it with something the reader may never
+  have heard of. Write "This runs on every commit.", not "This runs on every
+  commit, unlike the nightly job."
+- Don't tell the reader how a decision got made when they only need the
+  decision. Write "Set the timeout to 30 seconds.", not "Set the timeout to 30
+  seconds. We chose 30 after load testing."
 
 ## Strict narrative order
 
