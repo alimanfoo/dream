@@ -94,8 +94,13 @@ find two ideas in there, split it into two paragraphs.
 
 ## Say it once
 
-Say it once. For example, "this holds only when X" already says "if not X, it
-does not". Do not add the inverse.
+Say a thing once. When you say it again in different words, the reader looks for
+what changed and finds nothing. For example:
+
+- Don't add the inverse. "This holds only when X" already tells the reader it
+  doesn't hold otherwise.
+- Don't say the same thing several ways across a paragraph. When four sentences
+  each say one point a little differently, keep the one that says it best.
 
 ## Use active voice
 
