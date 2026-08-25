@@ -113,9 +113,10 @@ The passive lets you leave the actor out altogether, which is the worse case:
 
 ## Writing lists
 
-- Put steps in a vertical list, not a run-on sentence.
-- Leave a blank line before and after a list. Without it, markdown formatters
-  absorb any text that follows directly into the last bullet.
+Put steps in a vertical list rather than running them together in one sentence.
+
+Leave a blank line before and after a list. Without it, a markdown formatter
+pulls whatever follows straight into the last bullet.
 
 ## One reading per sentence
 
