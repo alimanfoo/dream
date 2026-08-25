@@ -87,6 +87,15 @@ minutes. The cache is cold on every run. Warming the cache should help.", not
 "Warming the cache should help. The build takes 12 minutes and the cache is
 cold."
 
+## Start from what the reader has
+
+Begin a sentence with something the reader already has, and end it with what is
+new. A sentence that opens on new material gives the reader nowhere to put it,
+so they hold it until the rest of the sentence arrives.
+
+For example: "If you delete the config, the worker falls back to defaults.", not
+"Delete the config and the worker falls back to defaults."
+
 ## One idea per paragraph
 
 Put one idea in a paragraph, and say what it is in the first sentence. If you
