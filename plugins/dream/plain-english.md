@@ -187,7 +187,10 @@ example:
 
 ## Use verbs, not noun forms
 
-Use verbs, not noun forms of verbs. Write "decide", not "make a decision".
+Use verbs, not noun forms of verbs. The noun form needs a second verb to prop it
+up, and that verb is usually empty — make, perform, carry out. It also lets the
+actor disappear, since "a decision was made" needs nobody to have made it. Write
+"decide", not "make a decision".
 
 ## Skip the Latin
 
