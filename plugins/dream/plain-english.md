@@ -153,7 +153,8 @@ Lead with what to do. Add what not to do only to support it.
 ## Use a small vocabulary
 
 Use a small, consistent vocabulary. One word per meaning, one meaning per word,
-within each piece of text you write. Do not swap in a synonym for variety.
+within each piece of text you write. Don't swap in a synonym for variety,
+because a reader who meets a new word looks for a new meaning behind it.
 
 ## Leave the count out of a list
 
