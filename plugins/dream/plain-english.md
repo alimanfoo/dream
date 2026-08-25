@@ -104,8 +104,12 @@ what changed and finds nothing. For example:
 
 ## Use active voice
 
-Use active voice. For example: "The parser reads the file before validation.",
-not "The file is read by the parser before validation."
+Use active voice, so the reader can see who does what. For example: "The parser
+reads the file before validation.", not "The file is read by the parser before
+validation."
+
+The passive lets you leave the actor out altogether, which is the worse case:
+"the file is read before validation" never says what reads it.
 
 ## Writing lists
 
