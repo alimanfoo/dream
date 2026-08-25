@@ -173,9 +173,10 @@ For example: write "the sources", not "the three sources".
 
 ## Prefer the common word
 
-Prefer the common word. No jargon or idioms, unless they convey important
-meaning that no plain words can. Don't invent a term when plain words already
-say it. For example:
+Prefer the common word, because a reader who has to stop and decode a word has
+stopped reading. No jargon or idioms, unless they convey important meaning that
+no plain words can. Don't invent a term when plain words already say it. For
+example:
 
 - "X owns the schema", not "X is the operational source of truth"
 - "might go out of sync", not "has drift potential"
