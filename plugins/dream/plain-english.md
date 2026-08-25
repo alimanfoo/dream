@@ -158,8 +158,9 @@ because a reader who meets a new word looks for a new meaning behind it.
 
 ## Leave the count out of a list
 
-Do not state a count of items you then list. The count and the list drift apart
-when either changes. For example: write "the sources", not "the three sources".
+Don't say how many items are coming before you list them. If you add or remove
+an item later, the count becomes wrong, and mistakes are confusing for a reader.
+For example: write "the sources", not "the three sources".
 
 ## Prefer the common word
 
