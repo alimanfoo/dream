@@ -109,7 +109,8 @@ reads the file before validation.", not "The file is read by the parser before
 validation."
 
 The passive lets you leave the actor out altogether, which is the worse case:
-"the file is read before validation" never says what reads it.
+"the file is read before validation" never says what reads it. The same goes for
+"the trap is" and "there is", which start a sentence without naming anyone.
 
 ## Writing lists
 
@@ -134,24 +135,18 @@ completes. Release it after the first row, and the next row sees stale data."
 Build an instruction in parts, in this order: the imperative, the why, examples,
 exceptions.
 
-- Open with the verb, so the reader sees what to do first. For example:
-  - "Pull the latest main before you branch, to avoid a conflict.", not "To
-    avoid a conflict, pull the latest main before you branch."
-- Give the why. Say what the instruction defends, or why a default is risky.
-- Give one to three examples. They show the rule. They do not bound it.
-- Put exceptions last. An edge case comes after the main rule, never before. For
-  example:
-  - "Save on exit. If the file is read-only, skip it.", not "Unless the file is
-    read-only, save on exit."
+- Open with the verb, so the reader sees what to do first. Write "Pull the
+  latest main before you branch, to avoid a conflict.", not "To avoid a
+  conflict, pull the latest main before you branch."
+- Give the why. Say what the instruction is for, or what goes wrong without it.
+- Give one to three examples. They show the rule and don't bound it.
+- Put exceptions last. Write "Save on exit. If the file is read-only, skip it.",
+  not "Unless the file is read-only, save on exit."
 
-A bare imperative is enough when the act is obvious. Skip the parts you do not
-need.
-
-Hold the order even so. A why before the verb, or an exception before the rule,
-makes the reader decode before they can act.
-
-Name the actor. Say who or what does the action, not "the trap is" or "there
-is".
+Skip any part you don't need. A bare imperative is enough when the act is
+obvious. Keep the order for the parts you do use, because a why before the verb,
+or an exception before the rule, makes the reader decode the sentence before
+they can act on it.
 
 Lead with what to do. Add what not to do only to support it.
 
