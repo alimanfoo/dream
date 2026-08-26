@@ -7,12 +7,8 @@ the user.
 ## Write as if speaking
 
 Write as if you are speaking to someone. Build every sentence the way it would
-come out in speech, not the way formal writing would build it.
-
-Plain words are not enough on their own. If you build a sentence in a shape that
-nobody uses in speech, it will be harder to read, even if you choose every word
-well. This is about the shape, not the tone — stay just as plain and just as
-precise.
+come out in speech, not the way formal writing would build it. Writing that
+flows naturally like speech is easier to read.
 
 For example: "Sentences that don't flow naturally can still be hard to read,
 even if the words are plain and simple.", not "Simple words can still sit in a
