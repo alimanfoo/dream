@@ -86,8 +86,8 @@ cache is cold."
 
 Begin a sentence with something the reader already has, and end it with what is
 new. If you start a sentence with new material, it will break the flow of
-information. The reader has nothing to connect it to, so has to hold it until
-the connection arrives.
+information. The reader has nothing to connect it to, so they have to hold it
+until the connection arrives.
 
 For example, write "Each round writes a feed. The feed names every command the
 agent ran.", not "Each round writes a feed. Every command the agent ran appears
