@@ -85,8 +85,9 @@ cache is cold."
 ## Start from what the reader has
 
 Begin a sentence with something the reader already has, and end it with what is
-new. A sentence that opens on new material gives the reader nowhere to put it,
-so they hold it until the rest of the sentence arrives.
+new. If you start a sentence with new material, it breaks the flow of
+information. The reader has nothing to connect it to, so has to hold it until
+the connection arrives.
 
 For example, write "Each round writes a feed. The feed names every command the
 agent ran.", not "Each round writes a feed. Every command the agent ran appears
