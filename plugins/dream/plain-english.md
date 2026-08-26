@@ -194,7 +194,10 @@ actor disappear, since "a decision was made" needs nobody to have made it. Write
 
 ## Skip the Latin
 
-Skip the Latin. Write "for example", not "e.g.".
+Skip the Latin, because a reader who has to look up or guess what it stands for
+has stopped reading. Write "for example", not "e.g.". "i.e." is harder, because
+it stands for several different things — "that is", "in other words", "which
+means", "namely" — so writing it out makes you pick the one you actually mean.
 
 ## Skip the flourish
 
