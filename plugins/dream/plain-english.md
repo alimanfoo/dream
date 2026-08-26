@@ -36,33 +36,32 @@ Leave in the words that show how the sentence fits together. English lets you
 drop them, and someone reading in their first language fills them back in
 without noticing. Your reader has to stop and work them out.
 
-- Keep "that". Write "the file that the parser reads", not "the file the parser
-  reads".
-- Repeat the word rather than leave a gap. Write "the parser reads the header,
-  and the renderer reads the body", not "the parser reads the header, the
-  renderer the body".
-- Break a pile of nouns apart with a small word like "of" or "that". Write "the
-  chain that picks the most telling input", not "the most-telling-input fallback
-  chain".
-- Start with who does what. Write "the parser ignores every other event type",
-  not "Ignored: every other event type".
+- Keep "that". For example, write "the file that the parser reads", not "the
+  file the parser reads".
+- Repeat the word rather than leave a gap. For example, write "the parser reads
+  the header, and the renderer reads the body", not "the parser reads the
+  header, the renderer the body".
+- Break a pile of nouns apart with a small word like "of" or "that". For
+  example, write "the chain that picks the most telling input", not "the
+  most-telling-input fallback chain".
+- Start with who does what. For example, write "the parser ignores every other
+  event type", not "Ignored: every other event type".
 
 Leave a word out when putting it in makes the sentence harder to read. That
 mostly happens when several "that"s pile up in one sentence.
 
 ## Write for the reader's context
 
-Think about who is reading and why, then cut anything they don't need. For
-example:
+Think about who is reading and why, then cut anything they don't need.
 
-- Don't build an example around a name only you know. Write "grep for the
-  function's name", not "grep -rn 'def parse_header'".
+- Don't build an example around a name only you know. For example, write "grep
+  for the function's name", not "grep -rn 'def parse_header'".
 - Don't explain a thing by contrasting it with something the reader may never
-  have heard of. Write "This runs on every commit.", not "This runs on every
-  commit, unlike the nightly job."
+  have heard of. For example, write "This runs on every commit.", not "This runs
+  on every commit, unlike the nightly job."
 - Don't tell the reader how a decision got made when they only need the
-  decision. Write "Set the timeout to 30 seconds.", not "Set the timeout to 30
-  seconds. We chose 30 after load testing."
+  decision. For example, write "Set the timeout to 30 seconds.", not "Set the
+  timeout to 30 seconds. We chose 30 after load testing."
 
 ## Strict narrative order
 
@@ -145,15 +144,15 @@ Build an instruction in parts, in this order: any condition, the imperative, the
 why, examples, exceptions.
 
 - Put a condition before the verb it governs, so a reader it doesn't cover can
-  stop there. Write "If the file is read-only, skip it.", not "Skip it if the
-  file is read-only."
-- Otherwise open with the verb, so the reader sees what to do first. Write "Pull
-  the latest main before you branch, to avoid a conflict.", not "To avoid a
-  conflict, pull the latest main before you branch."
+  stop there. For example, write "If the file is read-only, skip it.", not "Skip
+  it if the file is read-only."
+- Otherwise open with the verb, so the reader sees what to do first. For
+  example, write "Pull the latest main before you branch, to avoid a conflict.",
+  not "To avoid a conflict, pull the latest main before you branch."
 - Give the why. Say what the instruction is for, or what goes wrong without it.
 - Give one to three examples. They show the rule and don't bound it.
-- Put exceptions last. Write "Save on exit. If the file is read-only, skip it.",
-  not "Unless the file is read-only, save on exit."
+- Put exceptions last. For example, write "Save on exit. If the file is
+  read-only, skip it.", not "Unless the file is read-only, save on exit."
 
 Skip any part you don't need. A bare imperative is enough when the act is
 obvious. Keep the order for the parts you do use, because a why before the verb,
@@ -200,10 +199,10 @@ actor disappear, since "a decision was made" needs nobody to have made it. Write
 "The" tells the reader you mean a particular thing and that they can tell which
 one. When they can't, they stop and look for it.
 
-- Don't write "the" for something you haven't introduced. Write "Put steps in
-  order.", not "Put the steps in order."
-- Don't write "the" when you mean every one of them. Write "Every round writes a
-  feed.", not "The round writes a feed."
+- Don't write "the" for something you haven't introduced. For example, write
+  "Put steps in order.", not "Put the steps in order."
+- Don't write "the" when you mean every one of them. For example, write "Every
+  round writes a feed.", not "The round writes a feed."
 
 ## Skip the Latin
 
@@ -215,14 +214,14 @@ means", "namely" — so writing it out makes you pick the one you actually mean.
 ## Skip the flourish
 
 Skip the flourish, because it adds words the reader has to get past to reach
-what you meant. For example:
+what you meant.
 
-- No filler opener. Write "The cache is the bottleneck.", not "Here's my honest
-  take: the cache is the bottleneck."
-- No three-part list for effect. Write "The change is small and safe.", not "The
-  change is small, safe, and sensible."
-- No neat opposite. Write "The problem is in the spec.", not "The problem isn't
-  the parser, it's the spec."
+- No filler opener. For example, write "The cache is the bottleneck.", not
+  "Here's my honest take: the cache is the bottleneck."
+- No three-part list for effect. For example, write "The change is small and
+  safe.", not "The change is small, safe, and sensible."
+- No neat opposite. For example, write "The problem is in the spec.", not "The
+  problem isn't the parser, it's the spec."
 - No clever closing line.
 
 ## Text for GitHub
