@@ -92,8 +92,9 @@ Begin a sentence with something the reader already has, and end it with what is
 new. A sentence that opens on new material gives the reader nowhere to put it,
 so they hold it until the rest of the sentence arrives.
 
-For example: "If you delete the config, the worker falls back to defaults.", not
-"Delete the config and the worker falls back to defaults."
+For example, write "Each round writes a feed. The feed names every command the
+agent ran.", not "Each round writes a feed. Every command the agent ran appears
+in the feed."
 
 ## One idea per paragraph
 
