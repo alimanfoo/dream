@@ -97,6 +97,16 @@ The same holds for a consequence. Write "If you rename the column, every saved
 query using the old name will break.", not "Every saved query using the old
 column name will break when you rename it."
 
+## Introduce before you point
+
+Introduce a thing before you refer back to it. Words like "the", "it" and "this"
+tell the reader to look for something they already have, and when they have
+nothing to find, they will stop and search anyway.
+
+For example, write "Each round runs on its own branch. Delete the branch when
+the round finishes.", not "Each round runs in a worktree. Delete the branch when
+the round finishes."
+
 ## One idea per paragraph
 
 Put one idea in a paragraph, and say what it is in the first sentence. If you
@@ -197,15 +207,15 @@ up, and that verb is usually empty — make, perform, carry out. It also lets th
 actor disappear, since "a decision was made" needs nobody to have made it. Write
 "decide", not "make a decision".
 
-## Say "the" only when you mean one
+## Say how many you mean
 
-"The" tells the reader you mean a particular thing and that they can tell which
-one. When they can't, they stop and look for it.
+Say whether you mean one, some, or every one. A claim about one thing is a
+different claim from a claim about all of them, and the reader will take the one
+you give them.
 
-- Don't write "the" for something you haven't introduced. For example, write
-  "Put steps in order.", not "Put the steps in order."
-- Don't write "the" when you mean every one of them. For example, write "Every
-  round writes a feed.", not "The round writes a feed."
+For example, when you mean all of them, write "Every round writes a feed.", not
+"The round writes a feed." When you mean any one of them, write "Any user can
+delete a record.", not "A user can delete a record."
 
 ## Skip the Latin
 
