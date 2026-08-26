@@ -201,11 +201,16 @@ means", "namely" — so writing it out makes you pick the one you actually mean.
 
 ## Skip the flourish
 
-Skip the flourish. No filler opener. No three-part lists for effect. No neat
-opposites. No clever closing line. For example:
+Skip the flourish, because it adds words the reader has to get past to reach
+what you meant. For example:
 
-- "The cache is the bottleneck.", not "Here's my honest take: the cache is the
-  bottleneck."
+- No filler opener. Write "The cache is the bottleneck.", not "Here's my honest
+  take: the cache is the bottleneck."
+- No three-part list for effect. Write "The change is small and safe.", not "The
+  change is small, safe, and sensible."
+- No neat opposite. Write "The problem is in the spec.", not "The problem isn't
+  the parser, it's the spec."
+- No clever closing line.
 
 ## Text for GitHub
 
