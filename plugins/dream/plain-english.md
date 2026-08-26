@@ -192,6 +192,16 @@ up, and that verb is usually empty — make, perform, carry out. It also lets th
 actor disappear, since "a decision was made" needs nobody to have made it. Write
 "decide", not "make a decision".
 
+## Say "the" only when you mean one
+
+"The" tells the reader you mean a particular thing and that they can tell which
+one. When they can't, they stop and look for it.
+
+- Don't write "the" for something you haven't introduced. Write "Put steps in
+  order.", not "Put the steps in order."
+- Don't write "the" when you mean every one of them. Write "Every round writes a
+  feed.", not "The round writes a feed."
+
 ## Skip the Latin
 
 Skip the Latin, because a reader who has to look up or guess what it stands for
