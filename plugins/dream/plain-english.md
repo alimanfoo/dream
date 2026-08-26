@@ -9,9 +9,9 @@ the user.
 Write as if you are speaking to someone. Build every sentence the way it would
 come out in speech, not the way formal writing would build it.
 
-Plain words are not enough on their own. You can choose every word well and
-still build the sentence in a shape nobody uses in speech, and it will read
-stiffly. This is about the shape, not the tone — stay just as plain and just as
+Plain words are not enough on their own. If you build a sentence in a shape that
+nobody uses in speech, it will be harder to read, even if you choose every word
+well. This is about the shape, not the tone — stay just as plain and just as
 precise.
 
 For example: "Sentences that don't flow naturally can still be hard to read,
