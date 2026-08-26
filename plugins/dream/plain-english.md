@@ -180,8 +180,8 @@ For example: write "the sources", not "the three sources".
 Use common words instead of jargon or idioms where possible. Don't invent a new
 term when you can use plain words to say the same thing. Common words are more
 likely to be understood. It is still important to be precise, however. Technical
-terms are appropriate where no common words can easily convey the same meaning.
-For example:
+terms are appropriate when they are common within a given domain and no common
+word says the same thing as precisely. For example:
 
 - "X owns the schema", not "X is the operational source of truth"
 - "might go out of sync", not "has drift potential"
