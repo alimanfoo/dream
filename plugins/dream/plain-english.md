@@ -96,6 +96,10 @@ For example, write "Each round writes a feed. The feed names every command the
 agent ran.", not "Each round writes a feed. Every command the agent ran appears
 in the feed."
 
+The same holds for a consequence. Write "If you rename the column, every saved
+query using the old name will break.", not "Every saved query using the old
+column name will break when you rename it."
+
 ## One idea per paragraph
 
 Put one idea in a paragraph, and say what it is in the first sentence. If you
