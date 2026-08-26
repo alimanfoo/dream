@@ -8,7 +8,8 @@ the user.
 
 Write as if you are speaking to someone. Build every sentence the way it would
 come out in speech, not the way formal writing would build it. Writing that
-flows naturally like speech is easier to read.
+flows naturally like speech is easier to read. This is about sentence structure,
+not tone or choice of words.
 
 For example: "Sentences that don't flow naturally can still be hard to read,
 even if the words are plain and simple.", not "Simple words can still sit in a
