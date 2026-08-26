@@ -76,9 +76,8 @@ hits a point before the one it depends on, they have to jump ahead or guess.
 
 ## Reason forward
 
-State evidence before you conclude. If you write a conclusion first, it will
-create a bias to report evidence that supports it. Instead, report evidence
-first, then see which conclusion has the strongest support. For example: "The
+State evidence before you draw any conclusions. If you write a conclusion first,
+it will create a bias to report evidence that supports it. For example: "The
 build takes 12 minutes. The cache is cold on every run. Warming the cache should
 help.", not "Warming the cache should help. The build takes 12 minutes and the
 cache is cold."
