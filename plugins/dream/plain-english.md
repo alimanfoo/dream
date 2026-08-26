@@ -85,7 +85,7 @@ cache is cold."
 ## Start from what the reader has
 
 Begin a sentence with something the reader already has, and end it with what is
-new. If you start a sentence with new material, it breaks the flow of
+new. If you start a sentence with new material, it will break the flow of
 information. The reader has nothing to connect it to, so has to hold it until
 the connection arrives.
 
