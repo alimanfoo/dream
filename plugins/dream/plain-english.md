@@ -100,7 +100,7 @@ column name will break when you rename it."
 ## One idea per paragraph
 
 Put one idea in a paragraph, and say what it is in the first sentence. If you
-find two ideas in there, split it into two paragraphs.
+find two ideas in one paragraph, split it into two paragraphs.
 
 ## Say it once
 
