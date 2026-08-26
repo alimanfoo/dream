@@ -169,7 +169,7 @@ Use a small, consistent vocabulary. One word per meaning, one meaning per word,
 within each piece of text you write. Don't swap in a synonym for variety,
 because a reader who meets a new word looks for a new meaning behind it.
 
-## Leave the count out of a list
+## Leave the count out
 
 Don't say how many items are coming before you list them. If you add or remove
 an item later, the count becomes wrong, and mistakes are confusing for a reader.
