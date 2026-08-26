@@ -25,7 +25,7 @@ something through with someone. Whatever the case, the point is that the reader
 understands.
 
 Writing to impress works against that, and so does a clever turn of phrase or an
-idiom you liked the sound of. Nobody is giving out prizes for this.
+idiom you liked the sound of.
 
 ## Write to be understood
 
