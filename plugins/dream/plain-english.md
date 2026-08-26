@@ -76,12 +76,12 @@ hits a point before the one it depends on, they have to jump ahead or guess.
 
 ## Reason forward
 
-State evidence before you conclude. Once you have written a conclusion down, you
-start looking for things that support it, instead of collecting evidence and
-seeing which conclusion it actually favours. For example: "The build takes 12
-minutes. The cache is cold on every run. Warming the cache should help.", not
-"Warming the cache should help. The build takes 12 minutes and the cache is
-cold."
+State evidence before you conclude. If you write a conclusion first, it will
+create a bias to report evidence that supports it. Instead, report evidence
+first, then see which conclusion has the strongest support. For example: "The
+build takes 12 minutes. The cache is cold on every run. Warming the cache should
+help.", not "Warming the cache should help. The build takes 12 minutes and the
+cache is cold."
 
 ## Start from what the reader has
 
