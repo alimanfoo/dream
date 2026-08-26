@@ -122,13 +122,6 @@ The passive lets you leave the actor out altogether, which is the worse case:
 "the file is read before validation" never says what reads it. The same goes for
 "the trap is" and "there is", which start a sentence without naming anyone.
 
-## Writing lists
-
-Put steps in a vertical list rather than running them together in one sentence.
-
-Leave a blank line before and after a list. Without it, a markdown formatter
-pulls whatever follows straight into the last bullet.
-
 ## One reading per sentence
 
 Be precise. A reader who can take a sentence two ways may pick the wrong
@@ -162,6 +155,13 @@ or an exception before the rule, makes the reader decode the sentence before
 they can act on it.
 
 Lead with what to do. Add what not to do only to support it.
+
+## Writing lists
+
+Put steps in a vertical list rather than running them together in one sentence.
+
+Leave a blank line before and after a list. Without it, a markdown formatter
+pulls whatever follows straight into the last bullet.
 
 ## Use a small vocabulary
 
