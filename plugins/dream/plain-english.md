@@ -209,9 +209,8 @@ actor disappear, since "a decision was made" needs nobody to have made it. Write
 
 ## Say how many you mean
 
-Say whether you mean one, some, or every one. A claim about one thing is a
-different claim from a claim about all of them, and the reader will take the one
-you give them.
+Say whether you mean one, some, or every one. The reader will take you
+literally, so "the round" means one round to them.
 
 For example, when you mean all of them, write "Every round writes a feed.", not
 "The round writes a feed." When you mean any one of them, write "Any user can
