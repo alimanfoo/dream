@@ -141,11 +141,14 @@ completes. Release it after the first row, and the next row sees stale data."
 
 ## Giving instructions
 
-Build an instruction in parts, in this order: the imperative, the why, examples,
-exceptions.
+Build an instruction in parts, in this order: any condition, the imperative, the
+why, examples, exceptions.
 
-- Open with the verb, so the reader sees what to do first. Write "Pull the
-  latest main before you branch, to avoid a conflict.", not "To avoid a
+- Put a condition before the verb it governs, so a reader it doesn't cover can
+  stop there. Write "If the file is read-only, skip it.", not "Skip it if the
+  file is read-only."
+- Otherwise open with the verb, so the reader sees what to do first. Write "Pull
+  the latest main before you branch, to avoid a conflict.", not "To avoid a
   conflict, pull the latest main before you branch."
 - Give the why. Say what the instruction is for, or what goes wrong without it.
 - Give one to three examples. They show the rule and don't bound it.
