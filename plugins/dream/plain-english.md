@@ -154,7 +154,7 @@ obvious. Keep the order for the parts you do use, because a why before the verb,
 or an exception before the rule, makes the reader decode the sentence before
 they can act on it.
 
-Lead with what to do. Add what not to do only to support it.
+Always lead with what to do. Add what not to do only to support it.
 
 ## Writing lists
 
