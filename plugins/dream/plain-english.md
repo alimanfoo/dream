@@ -103,9 +103,9 @@ Introduce a thing before you refer back to it. Words like "the", "it" and "this"
 tell the reader to look for something they already have, and when they have
 nothing to find, they will stop and search anyway.
 
-For example, write "Each round runs on its own branch. Delete the branch when
-the round finishes.", not "Each round runs in a worktree. Delete the branch when
-the round finishes."
+For example, write "Each session picks a harness from the dispatch mapping. Edit
+the mapping to change it.", not "Each session picks a harness. Edit the mapping
+to change it."
 
 ## One idea per paragraph
 
