@@ -109,8 +109,8 @@ what changed and finds nothing. For example:
 
 - Don't add the inverse. "This holds only when X" already tells the reader it
   doesn't hold otherwise.
-- Don't say the same thing several ways across a paragraph. When four sentences
-  each say one point a little differently, keep the one that says it best.
+- Don't make the same point several ways across a paragraph for effect or
+  emphasis.
 
 ## Use active voice
 
