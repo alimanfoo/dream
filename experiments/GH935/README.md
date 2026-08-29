@@ -33,8 +33,10 @@ piece of text.
 
 - `snapshot/` — frozen copies of the guide and the copy editor's instructions,
   so the arms keep working when the plugin moves on.
-- `fixtures/` — one folder per kind of writing, each with a seed prompt, the
-  reader, and the source file it documents. `sources/` holds the code.
+- `fixtures/` — one folder per fixture, each with a seed prompt, the reader,
+  and the source file it documents. `sources/` holds the code. A fixture is
+  one instance of a kind of writing, so `docstring-1` is the first docstring
+  and there will be others.
 - `arms/` — the prompt templates and `run.sh`. Numbered arms are the baseline
   set. Lettered arms are candidate approaches, and there will be more of them.
 - `runs/` — captured output, verbatim.
@@ -46,7 +48,7 @@ read the code rather than how well it wrote.
 
 ## Running
 
-    arms/1-vanilla/run.sh docstring 1
+    arms/1-vanilla/run.sh docstring-1 1
 
 Arms 3, 4, 5 and 6 read the output of the arm they build on, so run them in
 order. `WRITER_MODEL`, `WRITER_EFFORT`, `EDITOR_MODEL` and `EDITOR_EFFORT`
