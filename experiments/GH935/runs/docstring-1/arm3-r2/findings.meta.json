@@ -1,0 +1,11 @@
+{
+  "fixture": "docstring-1",
+  "arm": "3",
+  "replicate": "2",
+  "call": "findings",
+  "model": "sonnet",
+  "effort": "medium",
+  "prompt_sha256": "c3e0b05cff0bca8046ba44b470de208d37697f085ee40775ee95a6f012d4ebb5",
+  "snapshot_commit": "0b004e95918b53e5dc10183aee0b35d3077fdd16",
+  "generated_at": "2026-08-29T17:13:24Z"
+}
