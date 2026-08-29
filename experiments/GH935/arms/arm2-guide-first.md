@@ -1,0 +1,5 @@
+<guide>
+{{GUIDE}}
+</guide>
+
+{{SEED}}
