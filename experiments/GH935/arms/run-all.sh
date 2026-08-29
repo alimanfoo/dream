@@ -3,6 +3,11 @@
 #
 #   ./run-all.sh <fixture> [replicates] [at-once]
 #
+# A run that already has an output.md is left alone, so a stage that failed
+# part way can be filled in without paying for the runs that worked, and
+# without repointing a later arm at text the record does not hold. Set FORCE=1
+# to generate everything again.
+#
 # Arms that build on another arm's output have to wait for it, so the work goes
 # in three stages.
 #
@@ -22,10 +27,16 @@ REPS=${2:-3}
 AT_ONCE=${3:-3}
 ATTEMPTS=3
 HERE=$(cd "$(dirname "$0")" && pwd)
+E_RUNS=$(cd "$HERE/.." && pwd)/runs/$FIXTURE
 failed=0
 
 attempt() {
   local arm=$1 rep=$2 n
+  local armno=${arm%%-*}
+  if [ -z "${FORCE:-}" ] && [ -f "$E_RUNS/arm$armno-r$rep/output.md" ]; then
+    echo "  $arm replicate $rep already done"
+    return 0
+  fi
   for n in $(seq 1 "$ATTEMPTS"); do
     if "$HERE/$arm/run.sh" "$FIXTURE" "$rep"; then return 0; fi
     echo "  $arm replicate $rep failed on attempt $n"
