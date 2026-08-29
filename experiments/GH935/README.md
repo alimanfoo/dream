@@ -46,7 +46,13 @@ read the code rather than how well it wrote.
 
 ## Running
 
-    arms/run.sh docstring 1 1
+    arms/1-vanilla/run.sh docstring 1
 
 Arms 3, 4, 5 and A read the output of the arm they build on, so run them in
-order.
+order. `WRITER_MODEL`, `WRITER_EFFORT`, `EDITOR_MODEL` and `EDITOR_EFFORT`
+override the defaults, which is how to smoke-test a change cheaply.
+
+Each call writes two files. The `.md` holds the text. The `.jsonl` holds the
+run's events, which say which tools ran, how long it took, what it cost, and
+whether it failed, so a run can be audited without being repeated. Token
+deltas are dropped, since they only restate the text.
