@@ -5,6 +5,7 @@
 # text of the prompt.
 set -euo pipefail
 
+ARM=${ARM:?each arm sets ARM before sourcing this}
 FIXTURE=${1:?fixture name, e.g. docstring}
 REP=${2:?replicate number}
 
@@ -31,10 +32,12 @@ sys.stdout.write(text)
 ' "$@"; }
 
 # gen <prompt-file> <model> <effort> <output-stem>
-# Writes <stem>.md with the text and <stem>.jsonl with the run's events. The
-# events say which tools ran, how long it took, what it cost, and whether it
-# failed, so a run can be audited without being repeated. Token deltas are
-# dropped; they only restate the text.
+# Writes three files. <stem>.md holds the text. <stem>.jsonl holds the run's
+# events, which say which tools ran, how long it took, what it cost and whether
+# it failed, so a run can be audited without being repeated; token deltas are
+# dropped, since they only restate the text. <stem>.meta.json says where the
+# text came from, so a file that has been moved or copied for judging can still
+# be traced back.
 gen() {
   local prompt=$1 model=$2 effort=$3 stem=$4
   ( cd "$WORK" && claude -p --model "$model" --effort "$effort" \
@@ -44,6 +47,16 @@ gen() {
   jq -e 'select(.type=="result") | .is_error | not' "$stem.jsonl" > /dev/null \
     || { echo "run failed, see $stem.jsonl" >&2; return 1; }
   jq -r 'select(.type=="result") | .result' "$stem.jsonl" > "$stem.md"
+
+  # The prompt hash pins which version of an arm produced this. Revise an arm's
+  # prompt and its old output stops matching, rather than being mistaken for new.
+  jq -n \
+    --arg fixture "$FIXTURE" --arg arm "$ARM" --arg replicate "$REP" \
+    --arg model "$model" --arg effort "$effort" \
+    --arg prompt_sha256 "$(sha256sum < "$prompt" | cut -d" " -f1)" \
+    --arg snapshot_commit "$(git -C "$E" rev-parse HEAD)" \
+    --arg generated_at "$(date -u +%FT%TZ)" \
+    '$ARGS.named' > "$stem.meta.json"
   echo "wrote $stem.md ($(wc -c < "$stem.md") bytes)"
 }
 

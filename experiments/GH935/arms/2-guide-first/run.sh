@@ -2,6 +2,7 @@
 # Arm 2: the Plain English guide, then the seed prompt.
 #
 #   ./run.sh <fixture> <replicate>
+ARM=2
 source "$(dirname "$0")/../common.sh"
 fill "$ARMS/2-guide-first/prompt.md" \
   '{{GUIDE}}' "$GUIDE" \

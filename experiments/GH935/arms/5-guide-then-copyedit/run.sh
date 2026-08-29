@@ -3,6 +3,7 @@
 # does today.
 #
 #   ./run.sh <fixture> <replicate>
+ARM=5
 source "$(dirname "$0")/../common.sh"
 source "$(dirname "$0")/../3-copyedit/round.sh"
 copyedit_round "$(need 2)" "$RUNS/arm5-r$REP"
