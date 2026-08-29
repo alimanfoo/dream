@@ -5,4 +5,4 @@
 ARM=3
 source "$(dirname "$0")/../common.sh"
 source "$(dirname "$0")/round.sh"
-copyedit_round "$(need 1)" "$RUNS/arm3-r$REP"
+copyedit_round "$(need 1)" "$(run_dir)"

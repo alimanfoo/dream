@@ -31,34 +31,44 @@ for i in range(2, len(sys.argv), 2):
 sys.stdout.write(text)
 ' "$@"; }
 
-# gen <prompt-file> <model> <effort> <output-stem>
-# Writes three files. <stem>.md holds the text. <stem>.jsonl holds the run's
-# events, which say which tools ran, how long it took, what it cost and whether
-# it failed, so a run can be audited without being repeated; token deltas are
-# dropped, since they only restate the text. <stem>.meta.json says where the
-# text came from, so a file that has been moved or copied for judging can still
-# be traced back.
+# gen <prompt-file> <model> <effort> <run-dir> <call-name>
+# Writes three files into the run's folder, named after the call that made
+# them. <call>.md holds the text. <call>.jsonl holds the run's events, which
+# say which tools ran, how long it took, what it cost and whether it failed,
+# so a call can be audited without being repeated; token deltas are dropped,
+# since they only restate the text. <call>.meta.json says where the text came
+# from, so a file copied out for judging can still be traced back.
+#
+# An arm's result is always output.md. An arm that takes more than one call
+# names its earlier ones, so arm 3 leaves findings.md beside its output.md.
 gen() {
-  local prompt=$1 model=$2 effort=$3 stem=$4
+  local prompt=$1 model=$2 effort=$3 dir=$4 call=$5
+  mkdir -p "$dir"
+  local stem="$dir/$call"
   ( cd "$WORK" && claude -p --model "$model" --effort "$effort" \
       --strict-mcp-config --output-format stream-json --verbose \
       "$(cat "$prompt")" < /dev/null ) \
     | jq -c 'select(.type != "stream_event")' > "$stem.jsonl"
   jq -e 'select(.type=="result") | .is_error | not' "$stem.jsonl" > /dev/null \
-    || { echo "run failed, see $stem.jsonl" >&2; return 1; }
+    || { echo "call failed, see $stem.jsonl" >&2; return 1; }
   jq -r 'select(.type=="result") | .result' "$stem.jsonl" > "$stem.md"
 
   # The prompt hash pins which version of an arm produced this. Revise an arm's
   # prompt and its old output stops matching, rather than being mistaken for new.
+  # The prompt itself is not kept, since the arm, the snapshot and the fixture
+  # are all committed and rebuild it exactly.
   jq -n \
     --arg fixture "$FIXTURE" --arg arm "$ARM" --arg replicate "$REP" \
-    --arg model "$model" --arg effort "$effort" \
+    --arg call "$call" --arg model "$model" --arg effort "$effort" \
     --arg prompt_sha256 "$(sha256sum < "$prompt" | cut -d" " -f1)" \
     --arg snapshot_commit "$(git -C "$E" rev-parse HEAD)" \
     --arg generated_at "$(date -u +%FT%TZ)" \
     '$ARGS.named' > "$stem.meta.json"
   echo "wrote $stem.md ($(wc -c < "$stem.md") bytes)"
 }
+
+# Where this run's files go.
+run_dir() { echo "$RUNS/arm$ARM-r$REP"; }
 
 # The seed prompt, with {{CODE}} replaced by the source file the fixture names.
 seed_prompt() {
@@ -73,7 +83,7 @@ seed_prompt() {
 
 # The output of an earlier arm this one builds on.
 need() {
-  local f="$RUNS/arm$1-r$REP.md"
+  local f="$RUNS/arm$1-r$REP/output.md"
   [ -f "$f" ] || { echo "needs arm $1 replicate $REP; run that first" >&2; exit 1; }
   echo "$f"
 }

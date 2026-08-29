@@ -6,4 +6,4 @@
 ARM=6
 source "$(dirname "$0")/../common.sh"
 fill "$ARMS/6-dialogue/prompt.md" '{{TEXT}}' "$(need 1)" > "$WORK/prompt.md"
-gen "$WORK/prompt.md" "$WRITER_MODEL" "$WRITER_EFFORT" "$RUNS/arm6-r$REP"
+gen "$WORK/prompt.md" "$WRITER_MODEL" "$WRITER_EFFORT" "$(run_dir)" output
