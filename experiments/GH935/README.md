@@ -48,11 +48,27 @@ read the code rather than how well it wrote.
 
 ## Running
 
-    arms/1-vanilla/run.sh docstring-1 1
+    cd arms
+    make                 say what running everything would do, and do none of it
+    make all -j3         every arm, every replicate
+    make arm6 -j3        one arm, and whatever it needs
+    make all F=readme-1  a different fixture
 
-Arms 3, 4, 5 and 6 read the output of the arm they build on, so run them in
-order. `WRITER_MODEL`, `WRITER_EFFORT`, `EDITOR_MODEL` and `EDITOR_EFFORT`
-override the defaults, which is how to smoke-test a change cheaply.
+An arm that reads another arm's output is a prerequisite of it, so make works
+out the order and what is already done. Keep `-j` small: a copy-edit round
+holds a large prompt open for about two minutes, and enough of those at once
+fail in the transport rather than in the model.
+
+A rebuild costs minutes and money, and gives different text rather than the
+same text again, so plain `make` only reports. Nothing is spent until you ask
+for it by name. After a clone or a branch switch every output looks stale,
+because the timestamps moved without the content moving; `make -t all` marks
+them current without running anything.
+
+An arm can also be run on its own, which is how to smoke-test a change
+cheaply, since the models are overridable:
+
+    WRITER_MODEL=haiku WRITER_EFFORT=low 1-vanilla/run.sh docstring-1 1
 
 Each run gets a folder, `runs/<fixture>/arm<N>-r<replicate>/`, holding three
 files per call the arm makes. The arm's result is always `output.md`. An arm
