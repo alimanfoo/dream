@@ -35,8 +35,8 @@ piece of text.
   so the arms keep working when the plugin moves on.
 - `fixtures/` — one folder per kind of writing, each with a seed prompt, the
   reader, and the source file it documents. `sources/` holds the code.
-- `arms/` — the prompt templates and `run.sh`.
-- `implementations/` — one folder per candidate approach, named by a letter.
+- `arms/` — the prompt templates and `run.sh`. Numbered arms are the baseline
+  set. Lettered arms are candidate approaches, and there will be more of them.
 - `runs/` — captured output, verbatim.
 
 `runs/model-effort-2x2/` is a separate one-off: the same docstring request at

@@ -81,12 +81,12 @@ need() {  # the output of an earlier arm this one builds on
 
 case "$ARM" in
   1) gen "$WORK/seed.md" "$WRITER_MODEL" "$WRITER_EFFORT" "$OUT" ;;
-  2) fill "$E/arms/arm2-guide-first.md" '{{GUIDE}}' "$GUIDE" '{{SEED}}' "$WORK/seed.md" > "$WORK/p.md"
+  2) fill "$E/arms/guide-first.md" '{{GUIDE}}' "$GUIDE" '{{SEED}}' "$WORK/seed.md" > "$WORK/p.md"
      gen "$WORK/p.md" "$WRITER_MODEL" "$WRITER_EFFORT" "$OUT" ;;
   3) copyedit "$(need 1)" "$OUT" ;;
   4) copyedit "$(need 3)" "$OUT" ;;
   5) copyedit "$(need 2)" "$OUT" ;;
-  A) fill "$E/implementations/A/prompt.md" '{{TEXT}}' "$(need 1)" > "$WORK/p.md"
+  A) fill "$E/arms/A-dialogue.md" '{{TEXT}}' "$(need 1)" > "$WORK/p.md"
      gen "$WORK/p.md" "$WRITER_MODEL" "$WRITER_EFFORT" "$OUT" ;;
   *) echo "unknown arm: $ARM" >&2; exit 1 ;;
 esac
