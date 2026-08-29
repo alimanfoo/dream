@@ -19,13 +19,13 @@ except what a prompt hands it deliberately.
 | 3 | arm 1, then one copy-edit round |
 | 4 | arm 3, then a second copy-edit round |
 | 5 | arm 2, then one copy-edit round: what `dream:smith` does today |
-| A | arm 1, then implementation A |
+| 6 | arm 1, then a rewrite as a conversation |
 
 Arms 1, 2, 3 and 5 form a 2x2: guide before writing or not, against
 copy-editing afterwards or not. Arm 4 extends arm 3 to see whether a second
 round makes things worse.
 
-Three replicates of arms 1 and 2. Arms 3, 4, 5 and A each run once per
+Three replicates of arms 1 and 2. Arms 3, 4, 5 and 6 each run once per
 replicate of the arm they build on, so each of them is paired to a specific
 piece of text.
 
@@ -48,7 +48,7 @@ read the code rather than how well it wrote.
 
     arms/1-vanilla/run.sh docstring 1
 
-Arms 3, 4, 5 and A read the output of the arm they build on, so run them in
+Arms 3, 4, 5 and 6 read the output of the arm they build on, so run them in
 order. `WRITER_MODEL`, `WRITER_EFFORT`, `EDITOR_MODEL` and `EDITOR_EFFORT`
 override the defaults, which is how to smoke-test a change cheaply.
 
