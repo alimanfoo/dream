@@ -1,7 +1,9 @@
-Recursively combines two mappings, with `overlay` winning wherever the two disagree, and returns a new dictionary rather than modifying either argument.
+Recursively combines two nested dictionaries, with `overlay` taking precedence. Keys present only in `base` are preserved at every level, so this is an additive update rather than a replacement.
 
-The copying is shallow, which is the main thing to be careful about. Only dictionaries that appear on both sides get fresh copies; every other value in the result — lists, sets, custom objects, and whole subtrees present in just one of the inputs — is the same object held by `base` or `overlay`. Mutating one of those in the result mutates it in the original too, so treat the result as read-only unless you deep-copy first.
+Two values are merged only when both are dictionaries. Any other pairing — including a dict in `base` against a scalar in `overlay`, or vice versa — is resolved by taking the `overlay` value wholesale. Lists are values, not containers: they are replaced, never concatenated or merged element-wise. There is no way to express a deletion; an `overlay` value of `None` sets the key to `None` rather than removing it.
 
-Merging happens only when both sides hold a `dict` (or a `dict` subclass) at the same key. Any other type is replaced wholesale: a list in `overlay` supersedes a list in `base` instead of extending it, and a scalar or `None` in `overlay` discards whatever structure `base` had there. There is no way to express "delete this key" or "leave this key alone" — a key absent from `overlay` is inherited, and a key present is applied. Mappings that are not `dict` subclasses are treated as opaque values and replaced.
+Neither input is modified, but the result is not a deep copy. Subtrees that `overlay` does not touch are shared by reference with `base`, and values taken from `overlay` are likewise inserted by reference. Mutating the returned structure in place can therefore be observed through either input, and vice versa; copy explicitly if you need isolation.
 
-Key order follows `base`, with keys unique to `overlay` appended in their own order. Recursion depth tracks the nesting depth of the shared structure, so deeply nested or self-referential input can exhaust the stack.
+Merging is done with `isinstance` checks against `dict`, so dict subclasses such as `OrderedDict` or `defaultdict` are merged but come back as plain dicts, losing their type and any associated behavior. Mapping types that do not subclass `dict` are treated as opaque values and replaced.
+
+Recursion depth follows the nesting depth of the inputs; very deeply nested structures can exhaust the interpreter's recursion limit, and self-referential dictionaries will not terminate.
