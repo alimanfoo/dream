@@ -61,9 +61,13 @@ fail in the transport rather than in the model.
 
 A rebuild costs minutes and money, and gives different text rather than the
 same text again, so plain `make` only reports. Nothing is spent until you ask
-for it by name. After a clone or a branch switch every output looks stale,
-because the timestamps moved without the content moving; `make -t all` marks
-them current without running anything.
+for it by name.
+
+make decides from timestamps and git records none, so a clone or a branch
+switch would stamp every file with the current time and leave most outputs
+looking stale. `restore-mtimes.sh` gives each file back the time its content
+last changed, and the Makefile runs it before looking at any target, so a
+fresh clone needs nothing remembered.
 
 An arm can also be run on its own, which is how to smoke-test a change
 cheaply, since the models are overridable:

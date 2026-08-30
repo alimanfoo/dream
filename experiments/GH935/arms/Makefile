@@ -22,12 +22,20 @@
 # There is no clean target. And plain `make` only reports, so nothing is spent
 # until you ask for it by name.
 #
-# make reads timestamps, and a timestamp moves without the content moving:
-# cloning the repository, switching branch and renaming a file all do it, and
-# every output then looks stale. When that happens and the outputs are the
-# ones you want, `make -t all` marks them current without running anything.
-# Each output also records the hash of the prompt behind it, in its
-# meta.json, which settles what a timestamp cannot.
+# make reads timestamps, and git records none, so cloning the repository or
+# switching branch would stamp every file with the current time and leave
+# most outputs looking stale. restore-mtimes.sh puts back the time each
+# file's content last changed, and runs below while this file is read, which
+# is before make looks at any target. So a fresh clone needs nothing
+# remembered.
+#
+# If a timestamp is wrong anyway, `make -t all` marks every output current
+# without running anything, and each output records the hash of the prompt
+# behind it in its meta.json.
+
+# Before anything else, and before make stats a single target: give each file
+# back the time its content last changed. See the note above.
+RESTORED := $(shell $(dir $(lastword $(MAKEFILE_LIST)))restore-mtimes.sh 2>&1)
 
 F ?= docstring-1
 REPS ?= 3
