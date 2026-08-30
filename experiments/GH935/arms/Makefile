@@ -37,7 +37,7 @@
 # back the time its content last changed. See the note above.
 RESTORED := $(shell $(dir $(lastword $(MAKEFILE_LIST)))restore-mtimes.sh 2>&1)
 
-F ?= docstring-1
+F ?= docstring-2
 REPS ?= 3
 ATTEMPTS ?= 3
 

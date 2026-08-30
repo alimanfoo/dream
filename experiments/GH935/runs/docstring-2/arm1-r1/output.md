@@ -1,0 +1,7 @@
+Combine two mappings into a new one, with `overlay` taking precedence. Nested dictionaries are merged recursively rather than replaced, so a key present in both is only overwritten at the leaves where `overlay` actually supplies a value.
+
+Precedence is strict for everything that is not a dict-on-dict pair: if the value in `overlay` is a list, set, or scalar, it replaces the corresponding value in `base` outright — lists are not concatenated and sets are not unioned. The same holds when the two values disagree in kind, so a dict in `base` is discarded wholesale if `overlay` maps that key to a scalar, and vice versa. An explicit `None` in `overlay` is a value like any other and will overwrite a populated entry; there is no way to express "leave this key alone" other than omitting it. Only `dict` instances trigger the recursive path — mappings that are not dict subclasses, such as those from `collections.abc`, are treated as opaque values.
+
+Neither input is modified. The result is a fresh dict at every level that was merged, but subtrees taken from only one side are inserted by reference, so mutating a nested container in the result may be visible through `base` or `overlay`, and vice versa. Copy the result deeply if independent ownership matters.
+
+Recursion tracks the nesting depth of the shared structure, so inputs nested more deeply than the interpreter's recursion limit will raise `RecursionError`. Self-referential dictionaries are not detected and will not terminate.

@@ -1,0 +1,7 @@
+Combines two nested mappings into a new dictionary, with `overlay`'s values taking precedence. Where a key holds a dictionary in both inputs, the two are merged recursively; in every other case the overlay's value replaces the base's outright. That asymmetry matters: if the base holds a dictionary and the overlay holds a scalar (or a list, or `None`) under the same key, the entire base subtree is discarded rather than merged. Lists are never concatenated or merged element-wise — an overlay list wholly replaces a base list.
+
+There is no way to express deletion. A key present in the base survives unless the overlay supplies a replacement value, so an overlay cannot remove configuration, only override it. Supplying `None` sets the key to `None` rather than dropping it.
+
+The returned dictionary is a fresh top-level object, but the copy is shallow at every level: any value not itself produced by a recursive merge — lists, sets, custom objects, and dictionaries that appear in only one of the two inputs — is shared by reference with `base` or `overlay`. Mutating the result in place can therefore mutate the inputs, and vice versa. Deep-copy the result if either input may be modified afterwards. Note also that merged sub-dictionaries come back as plain `dict` instances, so `dict` subclasses such as `OrderedDict` or `defaultdict` lose their type wherever a merge actually occurs.
+
+Recursion depth follows the nesting depth of the inputs; deeply nested or self-referential structures will exhaust the stack.
