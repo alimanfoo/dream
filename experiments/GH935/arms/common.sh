@@ -43,11 +43,15 @@ call() {
   local stem="$dir/$name"
   # An arm that edits a file needs PERMISSION_MODE, or the write is declined
   # and the call reports work it was never allowed to do.
+  # Capture to the work directory and move the finished file into place, so a
+  # call that is killed part way leaves nothing behind. A half-written capture
+  # would otherwise sit in the run folder looking like a record of the call.
   ( cd "$WORK" && claude -p --model "$model" --effort "$effort" \
       ${PERMISSION_MODE:+--permission-mode "$PERMISSION_MODE"} \
       --strict-mcp-config --output-format stream-json --verbose \
       "$(cat "$prompt")" < /dev/null ) \
-    | jq -c 'select(.type != "stream_event")' > "$stem.jsonl"
+    | jq -c 'select(.type != "stream_event")' > "$WORK/$name.jsonl"
+  mv "$WORK/$name.jsonl" "$stem.jsonl"
   jq -e 'select(.type=="result") | .is_error | not' "$stem.jsonl" > /dev/null \
     || { echo "call failed, see $stem.jsonl" >&2; return 1; }
 
