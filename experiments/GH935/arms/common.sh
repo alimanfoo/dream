@@ -31,27 +31,25 @@ for i in range(2, len(sys.argv), 2):
 sys.stdout.write(text)
 ' "$@"; }
 
-# gen <prompt-file> <model> <effort> <run-dir> <call-name>
-# Writes three files into the run's folder, named after the call that made
-# them. <call>.md holds the text. <call>.jsonl holds the run's events, which
-# say which tools ran, how long it took, what it cost and whether it failed,
-# so a call can be audited without being repeated; token deltas are dropped,
-# since they only restate the text. <call>.meta.json says where the text came
-# from, so a file copied out for judging can still be traced back.
-#
-# An arm's result is always output.md. An arm that takes more than one call
-# names its earlier ones, so arm 3 leaves findings.md beside its output.md.
-gen() {
-  local prompt=$1 model=$2 effort=$3 dir=$4 call=$5
+# Run one call, and record what it did. Writes <call>.jsonl with the run's
+# events, which say which tools ran, how long it took, what it cost and whether
+# it failed, so a call can be audited without being repeated; token deltas are
+# dropped, since they only restate the text. Writes <call>.meta.json to say
+# where the text came from, so a file copied out for judging can still be
+# traced back.
+call() {
+  local prompt=$1 model=$2 effort=$3 dir=$4 name=$5
   mkdir -p "$dir"
-  local stem="$dir/$call"
+  local stem="$dir/$name"
+  # An arm that edits a file needs PERMISSION_MODE, or the write is declined
+  # and the call reports work it was never allowed to do.
   ( cd "$WORK" && claude -p --model "$model" --effort "$effort" \
+      ${PERMISSION_MODE:+--permission-mode "$PERMISSION_MODE"} \
       --strict-mcp-config --output-format stream-json --verbose \
       "$(cat "$prompt")" < /dev/null ) \
     | jq -c 'select(.type != "stream_event")' > "$stem.jsonl"
   jq -e 'select(.type=="result") | .is_error | not' "$stem.jsonl" > /dev/null \
     || { echo "call failed, see $stem.jsonl" >&2; return 1; }
-  jq -r 'select(.type=="result") | .result' "$stem.jsonl" > "$stem.md"
 
   # The prompt hash pins which version of an arm produced this. Revise an arm's
   # prompt and its old output stops matching, rather than being mistaken for new.
@@ -59,11 +57,30 @@ gen() {
   # are all committed and rebuild it exactly.
   jq -n \
     --arg fixture "$FIXTURE" --arg arm "$ARM" --arg replicate "$REP" \
-    --arg call "$call" --arg model "$model" --arg effort "$effort" \
+    --arg call "$name" --arg model "$model" --arg effort "$effort" \
     --arg prompt_sha256 "$(sha256sum < "$prompt" | cut -d" " -f1)" \
     --arg snapshot_commit "$(git -C "$E" rev-parse HEAD)" \
     --arg generated_at "$(date -u +%FT%TZ)" \
     '$ARGS.named' > "$stem.meta.json"
+}
+
+# gen <prompt-file> <model> <effort> <run-dir> <call-name>
+# For a call whose answer is what it says. An arm's result is always output.md,
+# and an arm that takes more than one call names its earlier ones, so arm 3
+# leaves findings.md beside its output.md.
+gen() {
+  call "$@"
+  local stem="$4/$5"
+  jq -r 'select(.type=="result") | .result' "$stem.jsonl" > "$stem.md"
+  echo "wrote $stem.md ($(wc -c < "$stem.md") bytes)"
+}
+
+# gen_edit <prompt-file> <model> <effort> <run-dir> <call-name> <edited-file>
+# For a call whose answer is a file it edited rather than anything it said.
+gen_edit() {
+  call "$1" "$2" "$3" "$4" "$5"
+  local stem="$4/$5"
+  cp "$6" "$stem.md"
   echo "wrote $stem.md ($(wc -c < "$stem.md") bytes)"
 }
 
