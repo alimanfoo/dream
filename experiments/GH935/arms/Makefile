@@ -42,7 +42,7 @@ REPS ?= 3
 ATTEMPTS ?= 3
 
 REPLICATES := $(shell seq 1 $(REPS))
-ARM_NUMBERS := 1 2 3 4 5 6 7 8
+ARM_NUMBERS := 1 2 3 4 5 7 8
 
 RUNS := ../runs/$(F)
 FIX := ../fixtures/$(F)
@@ -91,6 +91,11 @@ $(RUNS)/arm4-r%/output.md: $(RUNS)/arm3-r%/output.md $(COPYEDIT) 4-copyedit-twic
 
 $(RUNS)/arm5-r%/output.md: $(RUNS)/arm2-r%/output.md $(COPYEDIT) 5-guide-then-copyedit/run.sh
 	$(call attempt,5-guide-then-copyedit,$*)
+
+# Arm 6 is retired. It invents, so it is not worth judging, and it is out of
+# ARM_NUMBERS so `make all` leaves it alone. Its runs stand as the evidence,
+# and `make arm6` still builds it.
+arm6: $(foreach r,$(REPLICATES),$(RUNS)/arm6-r$(r)/output.md)
 
 $(RUNS)/arm6-r%/output.md: $(RUNS)/arm1-r%/output.md 6-dialogue/prompt.md 6-dialogue/run.sh
 	$(call attempt,6-dialogue,$*)
