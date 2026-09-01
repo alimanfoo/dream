@@ -42,7 +42,7 @@ REPS ?= 3
 ATTEMPTS ?= 3
 
 REPLICATES := $(shell seq 1 $(REPS))
-ARM_NUMBERS := 1 2 3 4 5 7 8
+ARM_NUMBERS := 1 2 3 4 5 7 8 9
 
 RUNS := ../runs/$(F)
 FIX := ../fixtures/$(F)
@@ -69,7 +69,7 @@ define attempt
  done
 endef
 
-.PHONY: all list arm1 arm2 arm3 arm4 arm5 arm6 arm7 arm8
+.PHONY: all list arm1 arm2 arm3 arm4 arm5 arm6 arm7 arm8 arm9
 .DEFAULT_GOAL := list
 
 all: $(OUTPUTS)
@@ -106,6 +106,9 @@ $(RUNS)/arm7-r%/output.md: $(RUNS)/arm1-r%/output.md 7-dialogue-bounded/prompt-1
 
 $(RUNS)/arm8-r%/output.md: $(RUNS)/arm1-r%/output.md 8-altitude/prompt.md 8-altitude/run.sh
 	$(call attempt,8-altitude,$*)
+
+$(RUNS)/arm9-r%/output.md: $(RUNS)/arm1-r%/output.md 9-altitude-voice/prompt.md 9-altitude-voice/run.sh
+	$(call attempt,9-altitude-voice,$*)
 
 # What running everything would do. Runs nothing.
 list:
