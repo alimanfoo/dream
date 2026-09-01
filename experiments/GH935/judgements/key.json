@@ -1,0 +1,27 @@
+{
+  "seed": 20260901,
+  "fixture": "docstring-2",
+  "comparisons": [
+    {
+      "id": 1,
+      "replicate": 1,
+      "question": "does copy-editing help or hurt?",
+      "A": "arm1",
+      "B": "arm3"
+    },
+    {
+      "id": 2,
+      "replicate": 2,
+      "question": "does copy-editing help or hurt?",
+      "A": "arm3",
+      "B": "arm1"
+    },
+    {
+      "id": 3,
+      "replicate": 3,
+      "question": "does copy-editing help or hurt?",
+      "A": "arm1",
+      "B": "arm3"
+    }
+  ]
+}
