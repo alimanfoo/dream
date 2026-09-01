@@ -23,4 +23,3 @@ Version one gives each behaviour its own short sentence and paragraph, so a read
 Version two carries the same facts with far less friction — it drops version one's drumbeat of "The function…" openings and folds the related caveats into parallel clauses ("lists are not concatenated, sets are not unioned"), so each paragraph has one clear topic instead of a run of short sentences that each restate the subject.
 
 The tradeoff worth knowing: two's sentences are long, and its second paragraph packs four distinct gotchas into two sentences, so it scans slightly worse than one if a reader is hunting for a single behaviour. If that matters, splitting the deletion-sentinel point back out as its own short paragraph would give you two's prose with one's scannability.
-
