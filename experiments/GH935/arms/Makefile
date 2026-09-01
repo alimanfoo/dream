@@ -100,7 +100,8 @@ arm6: $(foreach r,$(REPLICATES),$(RUNS)/arm6-r$(r)/output.md)
 $(RUNS)/arm6-r%/output.md: $(RUNS)/arm1-r%/output.md 6-dialogue/prompt.md 6-dialogue/run.sh
 	$(call attempt,6-dialogue,$*)
 
-$(RUNS)/arm7-r%/output.md: $(RUNS)/arm1-r%/output.md 7-dialogue-bounded/prompt.md 7-dialogue-bounded/run.sh
+$(RUNS)/arm7-r%/output.md: $(RUNS)/arm1-r%/output.md 7-dialogue-bounded/prompt-1.md \
+                           7-dialogue-bounded/prompt-2.md 7-dialogue-bounded/run.sh
 	$(call attempt,7-dialogue-bounded,$*)
 
 $(RUNS)/arm8-r%/output.md: $(RUNS)/arm1-r%/output.md 8-altitude/prompt.md 8-altitude/run.sh

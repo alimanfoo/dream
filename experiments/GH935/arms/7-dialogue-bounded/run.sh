@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 # Arm 7: arm 1's text, passed through a conversation and set out again.
 #
-# The conversation and the passage come from one call, in that order, so the
-# passage is written inside the register the conversation has already
-# established. full.md keeps both; output.md is the passage alone, which is
-# what the other arms produce and so what can be compared with them.
+# Two calls. The first holds the conversation. The second sees that
+# conversation and nothing else, so the passage has to be built from what was
+# said rather than copied from the text it came from. A single call, with the
+# original still in front of it, reproduced the original verbatim.
 #
 #   ./run.sh <fixture> <replicate>
 ARM=7
 source "$(dirname "$0")/../common.sh"
-fill "$ARMS/7-dialogue-bounded/prompt.md" '{{TEXT}}' "$(need 1)" > "$WORK/prompt.md"
-gen "$WORK/prompt.md" "$WRITER_MODEL" "$WRITER_EFFORT" "$(run_dir)" full
-sed -n '/<passage>/,/<\/passage>/p' "$(run_dir)/full.md" \
-  | sed '1d;$d' > "$(run_dir)/output.md"
-[ -s "$(run_dir)/output.md" ] || { echo "no passage in the answer" >&2; exit 1; }
-echo "wrote $(run_dir)/output.md ($(wc -c < "$(run_dir)/output.md") bytes)"
+
+fill "$ARMS/7-dialogue-bounded/prompt-1.md" '{{TEXT}}' "$(need 1)" > "$WORK/prompt-1.md"
+gen "$WORK/prompt-1.md" "$WRITER_MODEL" "$WRITER_EFFORT" "$(run_dir)" conversation
+
+sed -n '/<conversation>/,/<\/conversation>/p' "$(run_dir)/conversation.md" \
+  | sed '1d;$d' > "$WORK/conversation.md"
+[ -s "$WORK/conversation.md" ] || { echo "no conversation in the first answer" >&2; exit 1; }
+
+fill "$ARMS/7-dialogue-bounded/prompt-2.md" '{{CONVERSATION}}' "$WORK/conversation.md" > "$WORK/prompt-2.md"
+gen "$WORK/prompt-2.md" "$WRITER_MODEL" "$WRITER_EFFORT" "$(run_dir)" output

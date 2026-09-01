@@ -24,12 +24,3 @@ Format the conversation as:
 ```
 
 ...and so on.
-
-Then set out the knowledge again, in the form it has above, built from the
-sentences of the answers:
-
-```
-<passage>
-{the knowledge, in the form it has above}
-</passage>
-```
