@@ -3,10 +3,69 @@
 Read this after a comparison has been judged, not before. It says which arm
 produced what, and a judge who knows that is no longer judging the prose.
 
-Each finding says where it comes from. A counted one can be checked by running
-`./measure.py`, which reports the table at the foot of this file. A read one
-comes from the session record and from the repository owner's own reading, and
+Each finding says where it comes from. A judged one rests on the repository
+owner's blind answers, which `./judge.py --tally` reports. A counted one can be
+checked by running `./measure.py`, which reports the table at the foot of this
+file. A read one comes from the session record and from someone's reading, and
 the runs behind it are still here to be read again.
+
+Every pair below ran three replicates, so a 2-1 is one answer away from a 1-2
+and settles nothing. Only a 3-0 is worth leaning on, and the cycle two sections
+down shows what happens to anyone who forgets it.
+
+## What the judging says
+
+Judged. All thirty-three comparisons, answered blind, one at a time, with the
+page carrying two passages and one question that never changed.
+
+| pair | question | result |
+| --- | --- | --- |
+| 1v3 | does copy-editing help or hurt? | arm1 2, arm3 1 |
+| 3v4 | does a second copy-edit round help or hurt? | no preference 3 |
+| 1v2 | does reading the guide before writing help or hurt? | arm2 2, arm1 1 |
+| 2v5 | does copy-editing help or hurt text written from the guide? | arm2 1, no preference 2 |
+| 3v8 | which repair reads better? | arm3 2, arm8 1 |
+| 1v8 | does working down from paragraphs to clauses help or hurt? | arm8 2, arm1 1 |
+| 1v7 | does a pass through a conversation help or hurt? | arm1 3 |
+| 7v8 | which candidate reads better? | arm8 3 |
+| 1v10 | does rebuilding the passage from its story help or hurt? | arm1 3 |
+| 3v10 | which reads better? | arm3 3 |
+| 9v10 | which candidate reads better? | arm10 1, arm9 1, no preference 1 |
+
+## The four sweeps all say the same thing
+
+Judged. Four pairs came out 3-0, and they are the only results here that three
+replicates can carry.
+
+Arm 7 loses to arm 1 and to arm 8. Arm 10 loses to arm 1 and to arm 3. Those
+are the two arms that throw the sentences away and write the passage again,
+one through a conversation and one from a story spine. Every arm that beat them
+either repairs what it was given or only moves it.
+
+The owner named arm 7 through the blinding: "B is obviously the conversation
+arm and unfortunately really doesn't work for this, too conversational", and on
+another replicate, "A is more enjoyable to read, but too informal for code
+documentation". So the conversation register survives the round trip and is
+wrong for the genre, which is a fact about the register rather than about the
+passage.
+
+Arm 10 loses without any such tell. It reads acceptably and still lost six
+times out of six.
+
+## Three replicates cannot separate arms that are close
+
+Judged. The close pairs make a cycle. Arm 1 beats arm 3 by 2-1, arm 3 beats
+arm 8 by 2-1, and arm 8 beats arm 1 by 2-1. All three cannot be true of a
+consistent ranking, so at least one is noise, and nothing in the numbers says
+which.
+
+That is the sharpest thing this round produced. Four pairs of the eleven came
+out 2-1, and a 2-1 over three replicates is what a coin does more than a third
+of the time. Any claim resting on one of them is a claim about three passages,
+not about an arm.
+
+The four sweeps are safe from this, and so are the pairs that came out with no
+preference at all.
 
 ## Copy-editing trades agentless prose for a named actor
 
@@ -20,23 +79,51 @@ does. Each span, on its own, reads better with an actor in front of it. The
 paragraph they add up to says "the function" at the head of almost every
 sentence, which no single finding asked for.
 
-## The owner prefers the copy-edited version, and a model judge does not
+## The owner does not prefer the copy-edited version
 
-Read. On comparison 1 the owner chose the copy-edited version, saying the
-vanilla one had "a greyness, a quality of being flat that makes it very hard
-to engage with", and that the copy-edited one "felt more like there was a
-person behind it".
+Judged. This replaces an earlier finding that rested on one comparison.
 
-Three of four blind Opus judges chose the other one, and so did my own
-recorded call. Every model reached for compactness: "packs the same content
-into far less space", "tighter prose", "less friction". That is the
-compression ratchet #936 took out of the guide, arriving back through the
-models doing the judging. `judgements/blind-judges-1.md` and
-`judgements/claude-call-1.md` hold the verdicts, both written before the owner
-gave theirs.
+On comparison 1 the owner chose the copy-edited version, saying the vanilla one
+had "a greyness, a quality of being flat that makes it very hard to engage
+with", and that the copy-edited one "felt more like there was a person behind
+it". That was the only comparison anyone had at the time, and it was read as
+the owner preferring what copy-editing does.
 
-So a model judge does not stand in for the owner here, and the cheap way to
-scale this evaluation is closed.
+Both other replicates of the pair went the other way. Arm 1 takes it 2-1, which
+by the section above settles nothing either way, but it does settle that
+comparison 1 was not a general preference.
+
+The finding about model judges weakens with it. Three of four blind Opus judges
+chose arm 1 on comparison 1, and so did my own recorded call, every one of them
+reaching for compactness: "packs the same content into far less space",
+"tighter prose", "less friction". That was read as a model judge failing to
+stand in for the owner. Over the whole pair the owner chose arm 1 twice, which
+is the side those models preferred. So one comparison in three is all the
+disagreement there ever was, and whether a model judge can stand in for the
+owner is open again. Polling the models on the other thirty-two would answer
+it, and nothing else will.
+
+`judgements/blind-judges-1.md` and `judgements/claude-call-1.md` hold the
+verdicts, both written before the owner gave theirs.
+
+## Copy-editing is neutral here, which is not what it was suspected of
+
+Judged. #935 asked whether `dream:copy-edit` improves prose or damages it. Over
+three pairs it does neither.
+
+On vanilla text the pair goes 2-1 to the version that was not copy-edited,
+which is within noise. On text written from the guide, which is what
+`dream:smith` does, two of three replicates drew and the third went to the
+version that was not copy-edited. A second round drew all three, with the owner
+writing "nearly identical" on each.
+
+So the step is not doing the damage #935 suspected of it. It is also not paying
+for itself. A round is two model calls, one of them holding a large prompt open
+for about two minutes, and it buys no preference a reader can detect.
+
+Arm 3 does beat both rewriting candidates, 3-0 against arm 10 and 2-1 against
+arm 8, so copy-edited prose is not bad prose. It is prose nobody prefers to
+what it started as.
 
 ## The reader and the measurements agree on what differs
 
@@ -54,9 +141,11 @@ same number of times: nine, nought and five.
 
 The second editor has little to report, because the first round already
 satisfied the rules it checks. Its findings run 1116, 588 and 1106 bytes
-against the first round's 2563, 1562 and 1528. Whether the small change it
-does make helps or hurts is still a judgement, and comparison 3-against-4 is
-still worth showing.
+against the first round's 2563, 1562 and 1528.
+
+Judged, and the reader agrees. All three replicates drew, and the owner wrote
+"nearly identical" on each of them without being told the two were a round
+apart.
 
 ## Asking for an actor makes the drumbeat, and asking for a voice does not
 
@@ -128,9 +217,10 @@ drumbeat. It leaves the agentless passives at five, eight and seven, against
 arm 1's seven, eight and six, so it does not repair voice either. It runs a
 little longer, at 250, 293 and 266 words against 218, 225 and 214.
 
-So arm 10 moves what these counts do not measure. Whether the prose reads as an
-explanation rather than as a revision is what it is for, and only a reader
-answers that.
+So arm 10 moves what these counts do not measure. What it moves, the owner did
+not want. Judged, it lost 3-0 to arm 1 and 3-0 to arm 3, and split its pair
+with arm 9 one each and a draw. Six comparisons against a baseline, six losses,
+with no note saying why: unlike arm 7 it gives no tell, it simply never won.
 
 It does not copy its input, which is the failure arm 7 hit, but it sits closer
 to it than it did. The prompt used to open by telling the writer not to edit or
@@ -150,8 +240,10 @@ eight per replicate against arm 1's six to eight. On `docstring-1` it made
 real repairs, including splitting a `TypeError` out of an `Exception:` entry
 that was hiding it.
 
-So arm 8 costs nothing in voice. Whether it gains anything is a judgement, and
-1-against-8 has not been shown.
+So arm 8 costs nothing in voice. Judged, it is the best of the candidates: it
+beats arm 1 by 2-1 and sweeps arm 7 3-0, and loses to arm 3 by 1-2. Both close
+results are within noise, and the sweep is not. The arm that only moves text
+outlasted both arms that rewrite it.
 
 ## Some runs escape the trade, and not all by addressing the reader
 
@@ -169,6 +261,13 @@ than not rather than every time.
 
 What would test the second person is a prompt that asks for the reader to be
 addressed, run against the same fixture.
+
+The count understates it. On comparison 15 the owner chose a version because
+"it's speaking to me", quoting "Treat the result as read-only" as advice. That
+is an imperative, which addresses the reader without the word "you", and the
+run it came from counts one "you" in the whole passage. So the escape is wider
+than the column measuring it, and a prompt asking for the second person should
+be judged rather than counted.
 
 ## The conversation round-trip makes prose longer and more personal
 
@@ -194,7 +293,8 @@ recovers a fact the writer never had.
 
 Every count is a string match rather than a parse, and every one is a lower
 bound. Counts made by reading run higher, and both are right under their own
-rule. The session record says the copy editor named the function nine times on
+rule. The "you" column is the weakest of them, since an imperative addresses
+the reader and contains no pronoun to match. The session record says the copy editor named the function nine times on
 `docstring-1`, counting a whole file. The table below says five for the same
 run, counting the writer's prose and leaving out the `Args`, `Returns` and
 `Raises` template, which is the fixture's structure rather than anything the

@@ -3,6 +3,7 @@
 
     ./judge.py             serve the next unjudged comparison
     ./judge.py --progress  say how many are answered and how many are left
+    ./judge.py --tally     say what each pair came to
     ./judge.py --report    say which arm won each comparison already judged
 
 The page names the two versions A and B and says nothing else about them, and
@@ -49,6 +50,9 @@ PAGE = """<!doctype html>
   textarea {{ width: 100%; font: inherit; padding: .6rem; border: 1px solid #ccc; }}
   button {{ font: inherit; padding: .6rem 1.6rem; margin-right: .75rem;
            cursor: pointer; border: 1px solid #444; background: #fff; }}
+  fieldset {{ border: 1px solid #ddd; margin: 0 0 1.25rem; padding: .75rem 1rem; }}
+  legend {{ color: #666; padding: 0 .4rem; }}
+  fieldset label {{ margin-right: 1.5rem; }}
   button:hover {{ background: #f0f0ee; }}
   .done {{ color: #666; }}
   @media (max-width: 60rem) {{ .pair {{ grid-template-columns: 1fr; }} }}
@@ -125,6 +129,13 @@ def next_page(key):
 <div class="pair">{versions}</div>
 <form method="post" action="/vote">
   <input type="hidden" name="id" value="{id}">
+  <fieldset>
+    <legend>Would you accept each of these as it stands?</legend>
+    <label>A: <input type="radio" name="accept_A" value="yes"> yes
+              <input type="radio" name="accept_A" value="no"> no</label>
+    <label>B: <input type="radio" name="accept_B" value="yes"> yes
+              <input type="radio" name="accept_B" value="no"> no</label>
+  </fieldset>
   <p><label>Why, in your own words (optional)<br>
      <textarea name="notes" rows="4"></textarea></label></p>
   <button name="choice" value="A">A is better</button>
@@ -135,13 +146,25 @@ def next_page(key):
     return PAGE.format(title="Judging", body=body)
 
 
-def record(comparison_id, choice, notes):
-    """Append the answer. The letter goes in and the arm stays out."""
+def record(comparison_id, choice, notes, accepted):
+    """Append the answer. The letter goes in and the arm stays out.
+
+    A preference and an acceptance are different questions, and one does not
+    give the other. A reader can prefer one of two passages and still send
+    both back, which is worth knowing about an arm that keeps winning.
+    """
     when = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     entry = [
         "\n## comparison %d\n\n" % comparison_id,
         "Chose %s. %s\n" % (choice, when),
     ]
+    said = [
+        "Would %saccept %s." % ("" if accepted[letter] == "yes" else "not ", letter)
+        for letter in ("A", "B")
+        if accepted.get(letter)
+    ]
+    if said:
+        entry.append("\n" + " ".join(said) + "\n")
     if notes.strip():
         entry.append("\n" + "\n".join("> " + l for l in notes.strip().splitlines()) + "\n")
     with ANSWERS.open("a") as f:
@@ -164,7 +187,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
         size = int(self.headers.get("Content-Length", 0))
         form = urllib.parse.parse_qs(self.rfile.read(size).decode())
         record(
-            int(form["id"][0]), form["choice"][0], form.get("notes", [""])[0]
+            int(form["id"][0]),
+            form["choice"][0],
+            form.get("notes", [""])[0],
+            {letter: (form.get("accept_" + letter) or [None])[0] for letter in "AB"},
         )
         self.reply(303, headers=[("Location", "/")])
 
@@ -177,6 +203,38 @@ def progress():
     key, done = load_key(), judged()
     total = len(key["comparisons"])
     print(f"{len(done)} of {total} answered, {total - len(done)} to go")
+
+
+def tally():
+    """What each pair came to, once its comparisons have answers."""
+    key = load_key()
+    answers = dict(
+        re.findall(r"^## comparison (\d+)\n\nChose (\w+)\.", ANSWERS.read_text(), re.M)
+    )
+    seen = []
+    for c in key["comparisons"]:
+        if c["pair"] not in seen:
+            seen.append(c["pair"])
+    print("| pair | question | result |")
+    print("| --- | --- | --- |")
+    for pair in seen:
+        group = [c for c in key["comparisons"] if c["pair"] == pair]
+        wins, undecided, unanswered = {}, 0, 0
+        for c in group:
+            choice = answers.get(str(c["id"]))
+            if choice is None:
+                unanswered += 1
+            elif choice in ("A", "B"):
+                wins[c[choice]] = wins.get(c[choice], 0) + 1
+            else:
+                undecided += 1
+        parts = [f"{arm} {n}" for arm, n in
+                 sorted(wins.items(), key=lambda kv: (-kv[1], kv[0]))]
+        if undecided:
+            parts.append(f"no preference {undecided}")
+        if unanswered:
+            parts.append(f"unanswered {unanswered}")
+        print(f"| {pair} | {group[0]['question']} | {', '.join(parts)} |")
 
 
 def report():
@@ -199,6 +257,8 @@ if __name__ == "__main__":
         report()
     elif "--progress" in sys.argv:
         progress()
+    elif "--tally" in sys.argv:
+        tally()
     else:
         print(f"judging {load_key()['fixture']} at http://127.0.0.1:{PORT}")
         http.server.HTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
