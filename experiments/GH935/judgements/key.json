@@ -8,6 +8,10 @@
     {
       "seed": 20260903,
       "comparisons": "4-24"
+    },
+    {
+      "seed": 202609032,
+      "comparisons": "25-33"
     }
   ],
   "comparisons": [
@@ -202,6 +206,78 @@
       "question": "which candidate reads better?",
       "A": "arm7",
       "B": "arm8"
+    },
+    {
+      "id": 25,
+      "pair": "1v10",
+      "replicate": 1,
+      "question": "does rebuilding the passage from its story help or hurt?",
+      "A": "arm10",
+      "B": "arm1"
+    },
+    {
+      "id": 26,
+      "pair": "1v10",
+      "replicate": 2,
+      "question": "does rebuilding the passage from its story help or hurt?",
+      "A": "arm1",
+      "B": "arm10"
+    },
+    {
+      "id": 27,
+      "pair": "1v10",
+      "replicate": 3,
+      "question": "does rebuilding the passage from its story help or hurt?",
+      "A": "arm10",
+      "B": "arm1"
+    },
+    {
+      "id": 28,
+      "pair": "3v10",
+      "replicate": 1,
+      "question": "which reads better?",
+      "A": "arm3",
+      "B": "arm10"
+    },
+    {
+      "id": 29,
+      "pair": "3v10",
+      "replicate": 2,
+      "question": "which reads better?",
+      "A": "arm3",
+      "B": "arm10"
+    },
+    {
+      "id": 30,
+      "pair": "3v10",
+      "replicate": 3,
+      "question": "which reads better?",
+      "A": "arm10",
+      "B": "arm3"
+    },
+    {
+      "id": 31,
+      "pair": "9v10",
+      "replicate": 1,
+      "question": "which candidate reads better?",
+      "A": "arm10",
+      "B": "arm9"
+    },
+    {
+      "id": 32,
+      "pair": "9v10",
+      "replicate": 2,
+      "question": "which candidate reads better?",
+      "A": "arm10",
+      "B": "arm9"
+    },
+    {
+      "id": 33,
+      "pair": "9v10",
+      "replicate": 3,
+      "question": "which candidate reads better?",
+      "A": "arm9",
+      "B": "arm10"
     }
   ]
 }
