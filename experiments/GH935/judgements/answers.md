@@ -185,3 +185,67 @@ Chose A. 2026-09-03T17:35:42Z
 ## comparison 33
 
 Chose neither. 2026-09-03T17:36:20Z
+
+## comparison 34
+
+Chose B. 2026-09-03T17:55:34Z
+
+Would accept A. Would accept B.
+
+> B reads more naturally.
+
+## comparison 35
+
+Chose A. 2026-09-03T17:56:59Z
+
+Would accept A. Would not accept B.
+
+> B has some odd writing, e.g.: Values that are not dictionaries include lists. A list in `base` therefore gives way whole to the list in `overlay`;
+
+## comparison 36
+
+Chose B. 2026-09-03T17:58:10Z
+
+Would not accept A. Would accept B.
+
+> A has odd writing, e.g.: That recursion reaches only genuine `dict` instances. Any other `Mapping` — `OrderedDict`'s cousins from other libraries, say — it treats as an opaque value and replaces whole.
+
+## comparison 37
+
+Chose B. 2026-09-03T17:59:31Z
+
+Would accept A. Would accept B.
+
+> B's writing is more natural.
+
+## comparison 38
+
+Chose B. 2026-09-03T18:00:36Z
+
+Would not accept A. Would accept B.
+
+> Odd writing in A, e.g.: Values that are not dictionaries include lists.
+
+## comparison 39
+
+Chose B. 2026-09-03T18:01:23Z
+
+Would not accept A. Would accept B.
+
+## comparison 40
+
+Chose B. 2026-09-03T18:02:06Z
+
+Would accept A. Would accept B.
+
+## comparison 41
+
+Chose B. 2026-09-03T18:03:18Z
+
+Would not accept A. Would accept B.
+
+## comparison 42
+
+Chose A. 2026-09-03T18:04:01Z
+
+Would accept A. Would not accept B.
