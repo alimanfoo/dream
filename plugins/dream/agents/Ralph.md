@@ -132,13 +132,8 @@ a force-push.
 
 ### Phase 6: Review
 
-When Grace asks, copy-edit the branch's prose. Run the `dream:copy-edit` skill
-with no target, so it reviews the whole branch against its base. Then commit and
-push per the [Commits](#commits) rule, and report back to Grace via
-`SendMessage`. Say plainly when the skill found nothing to change.
-
-Otherwise no direct involvement. If Grace accepts a reviewer's finding, it comes
-to you as a standard task, handled per Phase 5.
+If Grace accepts a reviewer's finding, it comes to you as a standard task,
+handled per Phase 5. Otherwise no direct involvement.
 
 ### Phase 7: Merge
 

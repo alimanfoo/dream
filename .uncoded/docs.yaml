@@ -302,7 +302,6 @@ plugins/:
             Interrupted work:
             Plan:
             Implement:
-            Copy-edit:
             Review:
             Find simplification opportunities:
             Write the PR description:
@@ -378,13 +377,12 @@ plugins/:
                 'Step 5.7: Loop':
           phase6.md:
             'Phase 6: Review':
-              'Step 6.1: Ask Ralph to copy-edit the branch''s prose':
-              'Step 6.2: Send the review requests':
-              'Step 6.3: Triage each finding':
-              'Step 6.4: Post each review and response as a PR comment':
-              'Step 6.5: Write the PR description':
-              'Step 6.6: Mark the PR ready for review':
-              'Step 6.7: Handle the user''s review':
+              'Step 6.1: Send the review requests':
+              'Step 6.2: Triage each finding':
+              'Step 6.3: Post each review and response as a PR comment':
+              'Step 6.4: Write the PR description':
+              'Step 6.5: Mark the PR ready for review':
+              'Step 6.6: Handle the user''s review':
           phase7.md:
             'Phase 7: Merge':
           phase8.md:
