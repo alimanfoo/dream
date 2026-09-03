@@ -297,7 +297,7 @@ Pause on these, and only these:
 - **An unanswered open question**, raised via
   [Step 1.3](../skills/team/grace/phase1.md#step-13-elicit-answers-to-open-questions)
   or while addressing the user's review in
-  [Step 6.7](../skills/team/grace/phase6.md#step-67-handle-the-users-review). If
+  [Step 6.6](../skills/team/grace/phase6.md#step-66-handle-the-users-review). If
   the user leaves any question unanswered, re-ask the unanswered ones before
   continuing. You marked the question open. You cannot proceed correctly without
   the user's answer.
@@ -342,7 +342,7 @@ difference to how you read it. A post can carry more than one of these intents.
 Act on all of them, in this order, and drop nothing:
 
 1. **Feedback** is the user's judgement on the work. Triage it as
-   [Step 6.7](../skills/team/grace/phase6.md#step-67-handle-the-users-review)
+   [Step 6.6](../skills/team/grace/phase6.md#step-66-handle-the-users-review)
    describes. That step also covers open questions and the response comment.
 2. **A resolve-conflicts request** means you can make the PR mergeable.
    Recognise it liberally from a body such as _"resolve conflicts"_ or _"update
