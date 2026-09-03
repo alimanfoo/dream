@@ -1,15 +1,15 @@
-This function recursively combines two nested dictionaries, a `base` and an `overlay`, into a new dictionary; where the two disagree, `overlay` wins.
+Recursively combines two nested dictionaries, with `overlay` taking precedence. It preserves keys present only in `base` at every level, so it updates `base` additively rather than replacing it.
 
-The function merges two values only when both of them are dictionaries. For every other pairing — a dict in `base` against a scalar in `overlay`, or the reverse, or two scalars — it takes the `overlay` value wholesale.
+It merges two values only when both are dictionaries. For any other pairing — including a dict in `base` against a scalar in `overlay`, or vice versa — it takes the `overlay` value wholesale.
 
-Keys that appear only in `base` never meet an `overlay` value at all, and the function carries them through to the result at every level. A call is therefore an additive update rather than a replacement.
+To decide whether a value counts as a dictionary, it uses `isinstance` checks against `dict`. Dict subclasses such as `OrderedDict` or `defaultdict` therefore pass the check and merge, but they come back as plain dicts, losing their type and any associated behavior. Mapping types that do not subclass `dict` fail the check, so it treats them as opaque values and replaces them.
 
-Lists count as values here, not as containers. The function replaces a `base` list with an `overlay` list wholesale, and it never concatenates the two or merges them element-wise.
+Lists count as values, not containers: it replaces them outright and never concatenates them or merges them element-wise.
 
-An `overlay` value of `None` is likewise just a value: the function sets the key to `None` rather than removing it. The caller therefore has no way to express a deletion.
+An `overlay` cannot express a deletion: a value of `None` sets its key to `None` rather than removing it.
 
-The function makes that test for a dictionary with an `isinstance` check against `dict`. Dict subclasses such as `OrderedDict` or `defaultdict` pass it and get merged, but the function builds the result out of plain dicts, so they come back stripped of their type and of any behavior that came with it. Mapping types that do not subclass `dict` fail it, and the function replaces them as opaque values.
+It modifies neither input; instead it builds and returns a new dictionary.
 
-The function modifies neither input, but the dictionary it returns is not a deep copy either. It shares the subtrees that `overlay` never touches with `base` by reference, and it inserts the values it takes from `overlay` by reference too. Code that mutates the returned structure in place can therefore change what either input holds, and code that mutates either input can change the result. If you need isolation, copy explicitly.
+That new dictionary is not a deep copy. The result holds every subtree that `overlay` does not touch as a reference into `base`, and it holds values from `overlay` as references too. Mutating the result in place can therefore show through either input, and mutating either input can show in the result. Copy explicitly if you need isolation.
 
-The function recurses as deeply as the inputs nest, and nothing bounds that depth. A deeply nested pair of dictionaries can therefore exhaust the interpreter's recursion limit, and a self-referential dictionary keeps the function recursing until it does.
+Recursion depth follows the nesting depth of the inputs; very deeply nested structures can exhaust the interpreter's recursion limit, and self-referential dictionaries will not terminate.

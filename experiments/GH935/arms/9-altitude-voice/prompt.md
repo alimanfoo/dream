@@ -11,7 +11,7 @@ back to the file before you start the next one.
 3. Within each paragraph, put the sentences in the order the reader needs
    them, so that whatever a sentence depends on has already arrived.
 
-4. Within each paragraph, say who or what does each thing.
+4. Within each paragraph, use active voice.
 
 5. Within each sentence, begin with what the reader already has and end with
    what is new.

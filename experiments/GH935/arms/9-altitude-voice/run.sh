@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
-# Arm 9: arm 8, with a step that says who does what.
+# Arm 9: arm 8, with a step that applies the guide's active voice rule.
 #
 # Arm 8's steps only move things. This one adds a step that rewrites, so it
 # carries the risk arm 8 was free of, and the two arms differ by that step
 # alone.
 #
-# The step sits before the given-new step rather than after it. Saying who
-# does a thing decides what the subject of a sentence is, and the given-new
-# step arranges a sentence around its subject, so voice has to settle first or
-# the last step is arranging what the next one will move.
+# The step sits before the given-new step rather than after it. Voice decides
+# what the subject of a sentence is, and the given-new step arranges a sentence
+# around its subject, so voice has to settle first or the last step is
+# arranging what the next one will move.
+#
+# The step says "use active voice", the guide's own words, rather than naming
+# an actor for every action. An earlier wording, "say who or what does each
+# thing", asked for an explicit actor in every sentence and got the same one
+# every time. Its runs are in the history at cf9224d.
 #
 #   ./run.sh <fixture> <replicate>
 ARM=9
