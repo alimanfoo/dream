@@ -24,9 +24,19 @@ import pathlib
 import re
 import sys
 
-# The actor these fixtures are about is the function being documented, so
-# naming it is what the drumbeat sounds like.
-ACTOR = re.compile(r"\b(?:this|the)\s+(?:\w+\s+)?function\b", re.I)
+# The drumbeat is one subject at the head of sentence after sentence. Which
+# noun it is does not matter and must not be named here: an earlier version of
+# this file counted "the function" and scored nought for a passage that said
+# "the merge" nine times, which is the same fault under another word.
+SENTENCE = re.compile(r"(?<=[.!?])\s+")
+# Words that can stand in front of a subject without being one.
+LEADING = {
+    "a", "an", "the", "this", "that", "these", "those", "its", "their", "his",
+    "her", "our", "my", "your", "and", "but", "so", "then", "therefore", "thus",
+    "because", "if", "when", "while", "since", "although", "though", "for",
+    "as", "in", "on", "at", "by", "with", "any", "some", "no", "each", "every",
+    "both", "either", "neither", "only", "also", "just", "still", "now",
+}
 SECOND_PERSON = re.compile(r"\byou(?:r|rs)?\b", re.I)
 
 BE = r"(?:is|are|was|were|be|been|being|gets?|got)"
@@ -76,11 +86,32 @@ def prose(text):
     return "\n".join(kept)
 
 
+def subject_head(sentence):
+    """The first word that could be a subject, or None."""
+    for word in re.findall(r"[A-Za-z`][\w`'-]*", sentence):
+        bare = word.strip("`").lower().rstrip(".,;:")
+        if bare and bare not in LEADING:
+            return bare[:-1] if bare.endswith("s") and len(bare) > 3 else bare
+    return None
+
+
+def repeated_subject(text):
+    """How many sentences open on the single most repeated subject."""
+    heads = [h for h in (subject_head(s) for s in SENTENCE.split(text)) if h]
+    if not heads:
+        return 0, ""
+    top = max(set(heads), key=heads.count)
+    count = heads.count(top)
+    return (count, top) if count > 1 else (0, "")
+
+
 def measure(path):
     text = prose(path.read_text())
+    count, head = repeated_subject(text)
     return {
         "words": len(text.split()),
-        "actor": len(ACTOR.findall(text)),
+        "repeated": count,
+        "subject": head,
         "you": len(SECOND_PERSON.findall(text)),
         "passive": len(PASSIVE.findall(text)),
     }
@@ -96,12 +127,13 @@ def main(fixtures):
         if not runs:
             sys.exit(f"no runs under runs/{fixture}")
         print(f"\n## {fixture}\n")
-        print("| run | words | actor named | you | agentless passive |")
-        print("| --- | ---: | ---: | ---: | ---: |")
+        print("| run | words | repeated subject | you | agentless passive |")
+        print("| --- | ---: | :--- | ---: | ---: |")
         for path in runs:
             m = measure(path)
+            drum = f"{m['repeated']} \u00d7 \"{m['subject']}\"" if m["repeated"] else "-"
             print(
-                f"| {path.parent.name} | {m['words']} | {m['actor']} "
+                f"| {path.parent.name} | {m['words']} | {drum} "
                 f"| {m['you']} | {m['passive']} |"
             )
 

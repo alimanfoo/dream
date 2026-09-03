@@ -3,7 +3,7 @@
 
     ./judge.py             serve the next unjudged comparison
     ./judge.py --progress  say how many are answered and how many are left
-    ./judge.py --tally     say what each pair came to
+    ./judge.py --tally     say what each pair came to, and what was acceptable
     ./judge.py --report    say which arm won each comparison already judged
 
 The page names the two versions A and B and says nothing else about them, and
@@ -205,6 +205,30 @@ def progress():
     print(f"{len(done)} of {total} answered, {total - len(done)} to go")
 
 
+def acceptance():
+    """How often each arm would have been accepted as it stands.
+
+    A preference is relative and always names a winner. An acceptance is not,
+    so an arm can win a pair and still be prose the reader would send back.
+    """
+    key = load_key()
+    by_id = {c["id"]: c for c in key["comparisons"]}
+    blocks = re.split(r"^## comparison (\d+)\s*$", ANSWERS.read_text(), flags=re.M)[1:]
+    counts = {}
+    for cid, body in zip(blocks[::2], blocks[1::2]):
+        for negated, letter in re.findall(r"Would (not )?accept ([AB])\.", body):
+            arm = by_id[int(cid)][letter]
+            yes, no = counts.get(arm, (0, 0))
+            counts[arm] = (yes + (not negated), no + bool(negated))
+    if not counts:
+        return
+    print("\n| arm | would accept | would not |")
+    print("| --- | ---: | ---: |")
+    for arm in sorted(counts, key=lambda a: int(a[3:])):
+        yes, no = counts[arm]
+        print(f"| {arm} | {yes} | {no} |")
+
+
 def tally():
     """What each pair came to, once its comparisons have answers."""
     key = load_key()
@@ -235,6 +259,7 @@ def tally():
         if unanswered:
             parts.append(f"unanswered {unanswered}")
         print(f"| {pair} | {group[0]['question']} | {', '.join(parts)} |")
+    acceptance()
 
 
 def report():

@@ -147,7 +147,12 @@ along with whether the reader would accept each version as it stands.
 
     ./measure.py docstring-1 docstring-2
 
-That counts, for each run, the words, the times the function is named, the
+That counts, for each run, the words, the most repeated sentence subject, the
 times the reader is addressed, and the agentless passives. Every count is a
-string match rather than a parse, and every one is a lower bound, so compare
-an arm against another arm and read nothing into an absolute number.
+string match rather than a parse, and every one is a lower bound, so compare an
+arm against another arm and read nothing into an absolute number.
+
+The repeated-subject column names no word of its own. An earlier version looked
+for "the function" and scored nought for a passage that opened five sentences
+with "The merge", which is the same fault under another noun. A measure that
+names the token it looks for measures the token.
