@@ -207,11 +207,6 @@ Implement the plan, one step at a time. For each step:
 - Push.
 - Mark its task completed.
 
-## Copy-edit
-
-Run the `dream:copy-edit` skill over the branch's changes against the base
-(`origin/main...HEAD`). Commit and push the fixes it makes.
-
 ## Review
 
 Run two reviews in sequence as described below.
@@ -280,11 +275,7 @@ this content:
 
 Read and follow the [reviewer's guide](../../reviewers-guide.md).
 
-Run the `dream:copy-edit` skill over the draft before you set it. The reviewer
-reads the description, so it needs to be as readable as the rest of the prose.
-Pass the draft as the passage to review, since it isn't a committed file yet.
-
-Replace the `WIP` placeholder with the copy-edited description.
+Replace the `WIP` placeholder with the description.
 
 ## Mark the PR ready for review
 

@@ -156,10 +156,7 @@ enhancement. Re-decide the rest as `drop` in the table, with the reason
 Draft the exact issue or comment text for every row that isn't a plain `drop`.
 Write the drafts to a temporary file outside the repo.
 
-Then run the `dream:copy-edit` skill over that file. A second pass against the
-Plain English guide catches what writing the drafts the first time missed.
-
-File the drafts. Never file text the copy-edited file doesn't hold.
+File the drafts.
 
 You don't implement anything in any phase. What enters the backlog is an issue
 or a comment, never a fix. This holds even when merge was deferred and the PR is

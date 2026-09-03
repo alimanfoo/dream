@@ -3,21 +3,10 @@
 Write every turn output, message and artefact in this phase using
 `dream:plain-english`.
 
-Follow the steps below when development is complete. Ralph copy-edits the
-branch's prose first. Then Ada and Junio review in parallel, then the user. You
-triage every review the same way.
+Follow the steps below when development is complete. Ada and Junio review in
+parallel, then the user. You triage every review the same way.
 
-## Step 6.1: Ask Ralph to copy-edit the branch's prose
-
-Ask Ralph to run the `dream:copy-edit` skill over the whole branch, and to
-commit and push what it changes. One `SendMessage`, closed with
-`Reply via SendMessage.` Wait for his report by going idle (see
-[Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
-
-Triage nothing from this. Ralph is the author, so he resolves the findings
-himself.
-
-## Step 6.2: Send the review requests
+## Step 6.1: Send the review requests
 
 Record the current `HEAD` as the reviewed commit.
 
@@ -26,7 +15,7 @@ Two `SendMessage` calls in the same turn, one to each, both carrying the PR
 number. Close each with `Reply via SendMessage.` Wait for both reviews by going
 idle (see [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
-## Step 6.3: Triage each finding
+## Step 6.2: Triage each finding
 
 Raise a challenge before deciding a finding when it shows that a settled
 artifact no longer holds. Take it to the user per the "challenge" shape.
@@ -53,7 +42,7 @@ If a finding proposes a docstring, comment, or section-header to express a
 contract, invariant, precondition, or convention, apply the
 [code-shape-first check](../../../agents/Grace.md#code-shape-first-check) to it.
 
-## Step 6.4: Post each review and response as a PR comment
+## Step 6.3: Post each review and response as a PR comment
 
 Post each review and its response as one PR comment after you have handled all
 accepted findings through the standard per-task workflow. Head the code review
@@ -90,7 +79,7 @@ who wrote it. Post per
 [Writing to GitHub](../../../agents/Grace.md#writing-to-github). Do not use
 `gh pr review`. It carries more weight than these advisory reviews should.
 
-## Step 6.5: Write the PR description
+## Step 6.4: Write the PR description
 
 Write the description for the PR you opened in Phase 1
 [Step 1.1](phase1.md#step-11-open-the-session-pr), replacing the `WIP`
@@ -118,13 +107,13 @@ Follow [Writing to GitHub](../../../agents/Grace.md#writing-to-github). After
 writing the description, run `gh pr view <N> --json closingIssuesReferences`.
 Confirm that GitHub recognises every issue the PR fully resolves.
 
-## Step 6.6: Mark the PR ready for review
+## Step 6.5: Mark the PR ready for review
 
 Once all accepted follow-ons from triage are complete, run `gh pr ready <N>`.
 Flipping from draft to ready signals to the user that the PR is now worth their
 attention. If no findings were accepted, flip immediately.
 
-## Step 6.7: Handle the user's review
+## Step 6.6: Handle the user's review
 
 The PR is ready once you have addressed every finding from Ada's and Junio's
 reviews. The user's review comes last.
@@ -137,7 +126,7 @@ lands, and carries the PR on through the merge or a close (see
 
 Handle the user's review in this order:
 
-1. Triage each finding as in [Step 6.3](#step-63-triage-each-finding).
+1. Triage each finding as in [Step 6.2](#step-62-triage-each-finding).
 2. Make a task for each finding you accept.
 3. Post any question you can't resolve without the user to the PR as a comment,
    the same as [Step 1.3](phase1.md#step-13-elicit-answers-to-open-questions).
@@ -147,7 +136,7 @@ Handle the user's review in this order:
    [Keep it current](../../../reviewers-guide.md#keep-it-current).
 6. Post one response comment for the whole set of findings. Use the outcome
    lines from
-   [Step 6.4](#step-64-post-each-review-and-response-as-a-pr-comment), but name
+   [Step 6.3](#step-63-post-each-review-and-response-as-a-pr-comment), but name
    each user finding briefly instead of quoting it. The finding is already
    public in the PR thread.
 
