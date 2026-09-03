@@ -132,14 +132,16 @@ the steps, and did not test what it looks like it tested.
     ./judge.py
 
 That serves the next comparison that has no answer, at
-`http://127.0.0.1:8765`. It shows two versions, named A and B, and the
-question the pair answers. It never names an arm, and the answer it writes
-records the letter, so the key holds for every comparison still to come.
+`http://127.0.0.1:8765`. It shows two passages, named A and B, and one question
+that never changes. It says nothing about which comparison this is, since the
+question a pair answers would say what was done to one of the two and the
+position in the sequence would say which pair it belongs to. The answer it
+writes records the letter, so the key holds for every comparison still to come,
+along with whether the reader would accept each version as it stands.
 
-    ./judge.py --report
-
-That resolves the letters against the key, for the comparisons that already
-have an answer.
+    ./judge.py --progress    how many are answered, and nothing about them
+    ./judge.py --tally       what each pair came to
+    ./judge.py --report      which arm won each comparison already answered
 
 ## Measuring
 

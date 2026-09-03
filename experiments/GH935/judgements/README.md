@@ -12,10 +12,19 @@ the seed behind each batch, so a draw can be repeated.
 
 `answers.md` holds the answers, one entry per comparison. An entry says A or
 B and never says which arm that was, so giving an answer gives nothing away
-about the comparisons still to come.
+about the comparisons still to come. It also holds whether the reader would
+accept each version as it stands, which a preference does not give: a reader
+can prefer one of two passages and still send both back.
 
 `../judge.py` serves the next unjudged comparison at
-`http://127.0.0.1:8765`, and appends the answer. `../judge.py --report`
+`http://127.0.0.1:8765`, and appends the answer. The page shows two passages
+and one question that never changes, since the question a pair answers would
+say what was done to one of the two versions and the position in the sequence
+would say which pair this is.
+
+`../judge.py --progress` says how many are answered and how many are left, and
+nothing about any of them, so it is safe to run part way through.
+`../judge.py --tally` says what each pair came to. `../judge.py --report`
 resolves the letters against the key, for the comparisons that already have an
 answer.
 
