@@ -245,6 +245,36 @@ beats arm 1 by 2-1 and sweeps arm 7 3-0, and loses to arm 3 by 1-2. Both close
 results are within noise, and the sweep is not. The arm that only moves text
 outlasted both arms that rewrite it.
 
+The notes split it cleanly. Arm 8 won where the owner wrote about structure:
+"A breaks up the information into pieces well", and "once I've got the idea, I
+know I can safely skim the rest of the paragraph. Rather, if a paragraph might
+contain 2 or more ideas, I don't know when I can skim." It lost where they
+wrote about voice: "writing is better in A", and "B feels like it's speaking to
+me".
+
+That is the arm doing exactly what it is: it moves text and never rewrites a
+sentence, so it can reach structure and cannot reach voice. Arm 9 is this arm
+plus the steps that do reach voice, and it has never been judged against a
+baseline, which is what pairs 1v9, 3v9 and 8v9 are for.
+
+## The reader names one mechanism, and it is not the one under suspicion
+
+Judged. Across the notes, the property the owner names by itself is one idea to
+a paragraph, and the reason given is skimming: knowing where an idea ends is
+knowing where it is safe to stop reading. It is named for arm 8 twice and for
+arm 3 once, so it travels with the arm rather than with the treatment.
+
+It has a far end. Against arm 5 the note reads "nearly identical, but B seems a
+little fragmented", so breaking a passage up stops paying at some point and the
+same reader can see it.
+
+Nothing in the notes praises what the copy editor does span by span, and
+nothing praises an actor being named. The one note about voice that decides a
+comparison praises a passage for "speaking to me", quoting an imperative. So
+the structural rule earns its place in this reader's account, and the
+span-level voice repair, which is what produces the drumbeat, never comes up
+except as a fault.
+
 ## Some runs escape the trade, and not all by addressing the reader
 
 Counted. Six runs have neither the drumbeat nor an agentless passive.
@@ -294,7 +324,9 @@ recovers a fact the writer never had.
 Every count is a string match rather than a parse, and every one is a lower
 bound. Counts made by reading run higher, and both are right under their own
 rule. The "you" column is the weakest of them, since an imperative addresses
-the reader and contains no pronoun to match. The session record says the copy editor named the function nine times on
+the reader and contains no pronoun to match.
+
+The session record says the copy editor named the function nine times on
 `docstring-1`, counting a whole file. The table below says five for the same
 run, counting the writer's prose and leaving out the `Args`, `Returns` and
 `Raises` template, which is the fixture's structure rather than anything the

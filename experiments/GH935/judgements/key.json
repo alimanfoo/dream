@@ -12,6 +12,10 @@
     {
       "seed": 202609032,
       "comparisons": "25-33"
+    },
+    {
+      "seed": 202609033,
+      "comparisons": "34-42"
     }
   ],
   "comparisons": [
@@ -278,6 +282,78 @@
       "question": "which candidate reads better?",
       "A": "arm9",
       "B": "arm10"
+    },
+    {
+      "id": 34,
+      "pair": "1v9",
+      "replicate": 1,
+      "question": "does the ladder, structure then voice, help or hurt?",
+      "A": "arm9",
+      "B": "arm1"
+    },
+    {
+      "id": 35,
+      "pair": "1v9",
+      "replicate": 2,
+      "question": "does the ladder, structure then voice, help or hurt?",
+      "A": "arm1",
+      "B": "arm9"
+    },
+    {
+      "id": 36,
+      "pair": "1v9",
+      "replicate": 3,
+      "question": "does the ladder, structure then voice, help or hurt?",
+      "A": "arm9",
+      "B": "arm1"
+    },
+    {
+      "id": 37,
+      "pair": "3v9",
+      "replicate": 1,
+      "question": "which reads better, the copy editor's repair or the ladder?",
+      "A": "arm3",
+      "B": "arm9"
+    },
+    {
+      "id": 38,
+      "pair": "3v9",
+      "replicate": 2,
+      "question": "which reads better, the copy editor's repair or the ladder?",
+      "A": "arm9",
+      "B": "arm3"
+    },
+    {
+      "id": 39,
+      "pair": "3v9",
+      "replicate": 3,
+      "question": "which reads better, the copy editor's repair or the ladder?",
+      "A": "arm9",
+      "B": "arm3"
+    },
+    {
+      "id": 40,
+      "pair": "8v9",
+      "replicate": 1,
+      "question": "what do the rewriting steps add to the moves?",
+      "A": "arm9",
+      "B": "arm8"
+    },
+    {
+      "id": 41,
+      "pair": "8v9",
+      "replicate": 2,
+      "question": "what do the rewriting steps add to the moves?",
+      "A": "arm9",
+      "B": "arm8"
+    },
+    {
+      "id": 42,
+      "pair": "8v9",
+      "replicate": 3,
+      "question": "what do the rewriting steps add to the moves?",
+      "A": "arm8",
+      "B": "arm9"
     }
   ]
 }
