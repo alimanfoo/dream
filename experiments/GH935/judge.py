@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """Show one comparison at a time, and record which version the reader chose.
 
-    ./judge.py            serve the next unjudged comparison
-    ./judge.py --report   say which arm won each comparison already judged
+    ./judge.py             serve the next unjudged comparison
+    ./judge.py --progress  say how many are answered and how many are left
+    ./judge.py --report    say which arm won each comparison already judged
 
-The page names the two versions A and B and says nothing else about them. The
-key stays on disk and the reader never sees it, so a preference for an arm
-cannot follow from knowing which arm it is.
+The page names the two versions A and B and says nothing else about them, and
+nothing about which comparison it is. The question a pair answers would say
+what was done to one of the two versions, and the position in the sequence
+would say which pair this is, so the page carries neither and asks the same
+question every time. The key stays on disk and the reader never sees it, so a
+preference for an arm cannot follow from knowing which arm it is.
 
 The record this writes says A or B and never an arm, so writing an answer
 gives nothing away about the comparisons still to come. `--report` resolves
@@ -117,8 +121,7 @@ def next_page(key):
         for letter in ("A", "B")
     )
     body = """
-<h1>Comparison {id} of {total} &middot; {left} left</h1>
-<h2>{question}</h2>
+<h2>Which of these reads better?</h2>
 <div class="pair">{versions}</div>
 <form method="post" action="/vote">
   <input type="hidden" name="id" value="{id}">
@@ -128,14 +131,8 @@ def next_page(key):
   <button name="choice" value="B">B is better</button>
   <button name="choice" value="neither">No preference</button>
 </form>
-""".format(
-        id=c["id"],
-        total=len(key["comparisons"]),
-        left=len(todo),
-        question=html.escape(c["question"]),
-        versions=versions,
-    )
-    return PAGE.format(title="Comparison %d" % c["id"], body=body)
+""".format(id=c["id"], versions=versions)
+    return PAGE.format(title="Judging", body=body)
 
 
 def record(comparison_id, choice, notes):
@@ -175,6 +172,13 @@ class Handler(http.server.BaseHTTPRequestHandler):
         pass
 
 
+def progress():
+    """How far through, without saying anything about any comparison."""
+    key, done = load_key(), judged()
+    total = len(key["comparisons"])
+    print(f"{len(done)} of {total} answered, {total - len(done)} to go")
+
+
 def report():
     key, done = load_key(), judged()
     if not done:
@@ -193,6 +197,8 @@ def report():
 if __name__ == "__main__":
     if "--report" in sys.argv:
         report()
+    elif "--progress" in sys.argv:
+        progress()
     else:
         print(f"judging {load_key()['fixture']} at http://127.0.0.1:{PORT}")
         http.server.HTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
