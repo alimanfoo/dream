@@ -1,13 +1,13 @@
-Combine two nested dictionaries, with `overlay` taking precedence over `base`.
+Merge two nested `dict`s, with `overlay` taking precedence over `base`.
 
-The merge recurses only where *both* sides hold a `dict`. Anywhere else it replaces one value with the other outright. It never concatenates lists or unions sets, and a scalar in `overlay` silently overwrites an entire nested subtree in `base` — or the reverse — rather than raising a type error.
+The merge recurses only where *both* inputs hold a `dict`. It replaces any other value wholesale rather than merging it: it does not concatenate lists or union sets, and a scalar in `overlay` silently replaces an entire nested `dict` in `base` (and vice versa) instead of raising on the type mismatch.
 
-The merge decides what counts as a `dict` with `isinstance(..., dict)`. That test lets `dict` subclasses (`OrderedDict`, `defaultdict`) recurse, but they come back as plain `dict`, losing subclass behaviour such as a default factory. It treats non-dict mappings as opaque values.
+The merge decides where to recurse with `isinstance(..., dict)`. That test admits `dict` subclasses such as `OrderedDict` and `defaultdict`, which recurse but come back as plain `dict`s, losing subclass behaviour such as a default factory; it rejects non-`dict` mappings, which the merge treats as ordinary values.
 
-The merge applies every key present in `overlay`, whatever its value. Nothing in `overlay` can therefore signal a deletion: an explicit `None` overwrites a real value with `None`, and a key disappears only if you leave it out of `overlay` entirely.
+The merge applies every key present in `overlay`, so it offers no sentinel for deletion. An explicit `None` therefore overwrites a real value instead of deleting it, and dropping a key from the result requires leaving it out of `overlay` entirely.
 
-Key order follows `base`, and keys unique to `overlay` follow in their own order.
+Key order follows `base`, and the merge appends keys unique to `overlay` in their own order.
 
-The merge leaves both inputs unmodified, but its result is not a deep copy. The result holds every value the merge did not build itself — a list, a nested dict present in only one input — as a reference to the original in `base` or `overlay`. Mutating one of those values in place therefore changes what the inputs see too. If you plan to mutate the result, copy it explicitly first.
+The merge leaves both inputs unmodified, but it does not deep-copy the result: any value it does not itself merge — a list, a `dict` present in only one input — stays shared with its source by reference, so mutating the result in place can show through `base` or `overlay`. If you will mutate the result, copy it explicitly.
 
-Nesting depth runs up against the interpreter's recursion limit, and the merge never terminates on a structure containing a reference cycle.
+Deep nesting can hit the interpreter's recursion limit, and an input containing a reference cycle makes the merge run forever.
