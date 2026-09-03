@@ -1,8 +1,5 @@
 Rewrite the passage below to make it easier and more natural to read.
 
-Do not edit or improve the existing sentences. Instead, reconstruct the passage
-from its underlying story, then write it again.
-
 ## 1. Find the story
 
 Before writing, work out what is actually happening in the passage.
@@ -20,7 +17,7 @@ Reduce this to a simple story spine: a sequence of concrete statements showing
 the movement of the thought from beginning to end.
 
 Do not preserve the source's sentences, syntax, or ordering merely because they
-are already there. Recover the intended meaning beneath them.
+are already there. Recover the story beneath them.
 
 ## 2. Tell the story
 

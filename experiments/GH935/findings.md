@@ -123,17 +123,24 @@ here and `measure.py` has none.
 Counted. Arm 10 works out what the passage is about, reduces that to a spine of
 concrete statements, and writes the passage again from the spine.
 
-It does not copy its input, which is the failure arm 7 hit. Against the arm 1
-text it was given, its longest shared run is thirteen, six and four words.
-
-It names the function nought, one and nought times, so it does not produce the
-drumbeat. It leaves the agentless passives at seven in every replicate, against
-arm 1's seven, eight and six, so it does not repair voice either. It runs
-longer, at 263, 375 and 287 words against 218, 225 and 214.
+It names the function nought, once and nought times, so it does not make the
+drumbeat. It leaves the agentless passives at five, eight and seven, against
+arm 1's seven, eight and six, so it does not repair voice either. It runs a
+little longer, at 250, 293 and 266 words against 218, 225 and 214.
 
 So arm 10 moves what these counts do not measure. Whether the prose reads as an
 explanation rather than as a revision is what it is for, and only a reader
 answers that.
+
+It does not copy its input, which is the failure arm 7 hit, but it sits closer
+to it than it did. The prompt used to open by telling the writer not to edit or
+improve the existing sentences, which the rest of the prompt looked like it
+already covered. Dropping that line raised the similarity to the input in all
+three replicates, from 0.54, 0.35 and 0.33 to 0.61, 0.49 and 0.34, and the
+longest shared run from thirteen, six and four words to fourteen, fourteen and
+six. The replicates are paired, since each rewrites the same arm 1 text before
+and after, so three moving the same way says more than three independent runs
+would. It is still thin. The earlier runs are in the history at 90d3a44.
 
 ## Working down from paragraphs to clauses leaves the voice alone
 
@@ -252,6 +259,6 @@ into an absolute number.
 | arm9-r1 | 243 | 0 | 1 | 0 |
 | arm9-r2 | 336 | 0 | 1 | 0 |
 | arm9-r3 | 243 | 0 | 0 | 1 |
-| arm10-r1 | 263 | 0 | 0 | 7 |
-| arm10-r2 | 375 | 1 | 1 | 7 |
-| arm10-r3 | 287 | 0 | 0 | 7 |
+| arm10-r1 | 250 | 0 | 0 | 5 |
+| arm10-r2 | 293 | 1 | 1 | 8 |
+| arm10-r3 | 266 | 0 | 0 | 7 |
