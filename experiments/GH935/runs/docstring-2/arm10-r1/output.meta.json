@@ -1,0 +1,11 @@
+{
+  "fixture": "docstring-2",
+  "arm": "10",
+  "replicate": "1",
+  "call": "output",
+  "model": "opus",
+  "effort": "high",
+  "prompt_sha256": "6ce29cb410dd9ff321dc5d1a5837fd279c2565589e255d2db13f1dc78049c900",
+  "snapshot_commit": "d318d8fe25553bdc15c9caa527d51af999f71a8b",
+  "generated_at": "2026-09-03T16:13:20Z"
+}

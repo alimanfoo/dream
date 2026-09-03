@@ -42,7 +42,7 @@ REPS ?= 3
 ATTEMPTS ?= 3
 
 REPLICATES := $(shell seq 1 $(REPS))
-ARM_NUMBERS := 1 2 3 4 5 7 8 9
+ARM_NUMBERS := 1 2 3 4 5 7 8 9 10
 
 RUNS := ../runs/$(F)
 FIX := ../fixtures/$(F)
@@ -69,7 +69,7 @@ define attempt
  done
 endef
 
-.PHONY: all list arm1 arm2 arm3 arm4 arm5 arm6 arm7 arm8 arm9
+.PHONY: all list arm1 arm2 arm3 arm4 arm5 arm6 arm7 arm8 arm9 arm10
 .DEFAULT_GOAL := list
 
 all: $(OUTPUTS)
@@ -117,6 +117,9 @@ list:
 	  | sed -E 's|/run\.sh [^ ]+ | replicate |; s|^|  would run |' | sort -u \
 	  || echo "  everything is up to date"
 	@echo "  (make all to run them; make -t all to mark them current instead)"
+
+$(RUNS)/arm10-r%/output.md: $(RUNS)/arm1-r%/output.md 10-story-spine/prompt.md 10-story-spine/run.sh
+	$(call attempt,10-story-spine,$*)
 
 # A failed call must not leave a half-written output behind, or the next run
 # would take it for finished work.
