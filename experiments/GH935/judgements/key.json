@@ -1,9 +1,19 @@
 {
-  "seed": 20260901,
   "fixture": "docstring-2",
+  "draws": [
+    {
+      "seed": 20260901,
+      "comparisons": "1-3"
+    },
+    {
+      "seed": 20260903,
+      "comparisons": "4-24"
+    }
+  ],
   "comparisons": [
     {
       "id": 1,
+      "pair": "1v3",
       "replicate": 1,
       "question": "does copy-editing help or hurt?",
       "A": "arm1",
@@ -11,6 +21,7 @@
     },
     {
       "id": 2,
+      "pair": "1v3",
       "replicate": 2,
       "question": "does copy-editing help or hurt?",
       "A": "arm3",
@@ -18,10 +29,179 @@
     },
     {
       "id": 3,
+      "pair": "1v3",
       "replicate": 3,
       "question": "does copy-editing help or hurt?",
       "A": "arm1",
       "B": "arm3"
+    },
+    {
+      "id": 4,
+      "pair": "3v4",
+      "replicate": 1,
+      "question": "does a second copy-edit round help or hurt?",
+      "A": "arm3",
+      "B": "arm4"
+    },
+    {
+      "id": 5,
+      "pair": "3v4",
+      "replicate": 2,
+      "question": "does a second copy-edit round help or hurt?",
+      "A": "arm4",
+      "B": "arm3"
+    },
+    {
+      "id": 6,
+      "pair": "3v4",
+      "replicate": 3,
+      "question": "does a second copy-edit round help or hurt?",
+      "A": "arm4",
+      "B": "arm3"
+    },
+    {
+      "id": 7,
+      "pair": "1v2",
+      "replicate": 1,
+      "question": "does reading the guide before writing help or hurt?",
+      "A": "arm1",
+      "B": "arm2"
+    },
+    {
+      "id": 8,
+      "pair": "1v2",
+      "replicate": 2,
+      "question": "does reading the guide before writing help or hurt?",
+      "A": "arm2",
+      "B": "arm1"
+    },
+    {
+      "id": 9,
+      "pair": "1v2",
+      "replicate": 3,
+      "question": "does reading the guide before writing help or hurt?",
+      "A": "arm2",
+      "B": "arm1"
+    },
+    {
+      "id": 10,
+      "pair": "2v5",
+      "replicate": 1,
+      "question": "does copy-editing help or hurt text written from the guide?",
+      "A": "arm2",
+      "B": "arm5"
+    },
+    {
+      "id": 11,
+      "pair": "2v5",
+      "replicate": 2,
+      "question": "does copy-editing help or hurt text written from the guide?",
+      "A": "arm5",
+      "B": "arm2"
+    },
+    {
+      "id": 12,
+      "pair": "2v5",
+      "replicate": 3,
+      "question": "does copy-editing help or hurt text written from the guide?",
+      "A": "arm2",
+      "B": "arm5"
+    },
+    {
+      "id": 13,
+      "pair": "3v8",
+      "replicate": 1,
+      "question": "which repair reads better?",
+      "A": "arm3",
+      "B": "arm8"
+    },
+    {
+      "id": 14,
+      "pair": "3v8",
+      "replicate": 2,
+      "question": "which repair reads better?",
+      "A": "arm3",
+      "B": "arm8"
+    },
+    {
+      "id": 15,
+      "pair": "3v8",
+      "replicate": 3,
+      "question": "which repair reads better?",
+      "A": "arm8",
+      "B": "arm3"
+    },
+    {
+      "id": 16,
+      "pair": "1v8",
+      "replicate": 1,
+      "question": "does working down from paragraphs to clauses help or hurt?",
+      "A": "arm8",
+      "B": "arm1"
+    },
+    {
+      "id": 17,
+      "pair": "1v8",
+      "replicate": 2,
+      "question": "does working down from paragraphs to clauses help or hurt?",
+      "A": "arm8",
+      "B": "arm1"
+    },
+    {
+      "id": 18,
+      "pair": "1v8",
+      "replicate": 3,
+      "question": "does working down from paragraphs to clauses help or hurt?",
+      "A": "arm1",
+      "B": "arm8"
+    },
+    {
+      "id": 19,
+      "pair": "1v7",
+      "replicate": 1,
+      "question": "does a pass through a conversation help or hurt?",
+      "A": "arm1",
+      "B": "arm7"
+    },
+    {
+      "id": 20,
+      "pair": "1v7",
+      "replicate": 2,
+      "question": "does a pass through a conversation help or hurt?",
+      "A": "arm7",
+      "B": "arm1"
+    },
+    {
+      "id": 21,
+      "pair": "1v7",
+      "replicate": 3,
+      "question": "does a pass through a conversation help or hurt?",
+      "A": "arm7",
+      "B": "arm1"
+    },
+    {
+      "id": 22,
+      "pair": "7v8",
+      "replicate": 1,
+      "question": "which candidate reads better?",
+      "A": "arm8",
+      "B": "arm7"
+    },
+    {
+      "id": 23,
+      "pair": "7v8",
+      "replicate": 2,
+      "question": "which candidate reads better?",
+      "A": "arm7",
+      "B": "arm8"
+    },
+    {
+      "id": 24,
+      "pair": "7v8",
+      "replicate": 3,
+      "question": "which candidate reads better?",
+      "A": "arm7",
+      "B": "arm8"
     }
   ]
 }
