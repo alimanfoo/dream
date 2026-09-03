@@ -84,6 +84,42 @@ the token. An arm optimised against such a measure will satisfy it and keep the
 fault. And the only thing that caught it was a reader, which is the argument
 for judging that the counts cannot make on their own.
 
+## The active voice step is what makes the drumbeat
+
+Counted. Arm 9 has run in three configurations and arm 8 in one, and together
+they separate the steps, since arm 9 is arm 8 plus a vocabulary step and an
+active voice step.
+
+| configuration | agentless passive | repeated subject |
+| --- | --- | --- |
+| arm 8: given-new, neither other step | 7, 8, 7 | none, none, 2 |
+| arm 9: "say who or what does each thing" | 0, 1, 0 | 5, 6, 3 |
+| arm 9: "use active voice", no vocabulary | 0, 0, 0 | 4, 3, 2 |
+| arm 9: vocabulary and active voice | 0, 0, 1 | 5, 5, 2 |
+
+Arm 8 carries the given-new step and neither of the others, and it has no
+repeated subject and seven or eight agentless passives. So given-new ordering
+does not make the drumbeat, which matters because that rule was added to the
+guide to answer #935.
+
+The vocabulary step moves the count from four, three and two to five, five and
+two, which is nothing to speak of over three replicates.
+
+The active voice step does it, in every wording tried. Every configuration that
+carries it holds agentless passives at nought or one and repeats a subject two
+to six times. The one configuration without it does the opposite on both counts.
+
+An earlier finding here said the wording decided it, that asking for an actor
+made the drumbeat and asking for a voice did not. It did not decide anything.
+The two wordings differ in which noun the passage settles on, "function"
+against "merge", and the measure was looking for the first and blind to the
+second.
+
+So the mechanism is not a wording and cannot be fixed by choosing better words
+for the rule. Taking the agentless passives out of a passage means giving every
+sentence a subject, and the subject to hand is the thing being documented. The
+drumbeat is what that costs. The reader sent the result back six times in nine.
+
 ## Every arm that rewrites sentences loses
 
 Judged. Six pairs came out 3-0, and they are the only results three replicates
