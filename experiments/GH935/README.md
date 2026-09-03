@@ -10,6 +10,9 @@ Nothing resolves a skill or installs a plugin, so the arms differ only in the
 text of the prompt, and no arm can be affected by anything the plugin says
 except what a prompt hands it deliberately.
 
+`findings.md` says what the runs have shown so far. Read it after a comparison
+has been judged rather than before, since it says which arm produced what.
+
 ## The arms
 
 | Arm | What it is |
@@ -20,14 +23,28 @@ except what a prompt hands it deliberately.
 | 4 | arm 3, then a second copy-edit round |
 | 5 | arm 2, then one copy-edit round: what `dream:smith` does today |
 | 6 | arm 1, then a rewrite as a conversation |
+| 7 | arm 1, through a conversation and set out again as prose |
+| 8 | arm 1, worked down from paragraphs to clauses |
+| 9 | arm 8, plus a step for vocabulary and a step for active voice |
+| 10 | arm 1, rewritten from the story underneath it |
 
 Arms 1, 2, 3 and 5 form a 2x2: guide before writing or not, against
 copy-editing afterwards or not. Arm 4 extends arm 3 to see whether a second
 round makes things worse.
 
-Three replicates of arms 1 and 2. Arms 3, 4, 5 and 6 each run once per
-replicate of the arm they build on, so each of them is paired to a specific
-piece of text.
+Arms 7 to 10 are candidate approaches. Arms 8 and 9 differ by the steps that
+rewrite rather than move, so what such a step costs can be read off the pair.
+Arm 9's steps run from the widest scope to the narrowest, which is why
+vocabulary comes first: the passage is the only place that property lives.
+Arm 10 takes a different route, recovering the story under the passage and
+writing it again from that, so it repairs nothing and rebuilds everything.
+
+Arm 6 is retired, because it invents knowledge the passage never gave it. Its
+runs stand as the evidence for that, `make arm6` still builds it, and `make
+all` leaves it alone.
+
+Three replicates of arms 1 and 2. Every other arm runs once per replicate of
+the arm it builds on, so each of them is paired to a specific piece of text.
 
 ## Layout
 
@@ -40,6 +57,22 @@ piece of text.
 - `arms/` — the prompt templates and `run.sh`. Numbered arms are the baseline
   set. Lettered arms are candidate approaches, and there will be more of them.
 - `runs/` — captured output, verbatim.
+- `judgements/` — the key saying which arm is A in each comparison, and the
+  answers as they are given.
+- `judge.py` — shows one comparison at a time and records the answer.
+- `measure.py` — counts the prose features the arms are compared on.
+- `findings.md` — what has been found, and the measurements behind it.
+
+## The fixtures
+
+`docstring-2` is the default. It documents a dict merge and asks for the prose
+alone.
+
+`docstring-1` documents a retry helper and includes the `Args`, `Returns` and
+`Raises` template. That template turned out to carry most of the structure and
+to confound every comparison, which is why `docstring-2` drops it. Both the
+owner and an earlier session have read most of `docstring-1`, so it is spent
+as judging material and stands as a record instead.
 
 `runs/model-effort-2x2/` is a separate one-off: the same docstring request at
 Sonnet and Opus, low and high effort. It asked whether writing quality depends
@@ -51,7 +84,7 @@ read the code rather than how well it wrote.
     cd arms
     make                 say what running everything would do, and do none of it
     make all -j3         every arm, every replicate
-    make arm6 -j3        one arm, and whatever it needs
+    make arm8 -j3        one arm, and whatever it needs
     make all F=readme-1  a different fixture
 
 An arm that reads another arm's output is a prerequisite of it, so make works
@@ -89,3 +122,30 @@ that takes more than one call names its earlier ones, so arm 3 leaves
   revising an arm's prompt makes its old output stop matching rather than pass
   for new. The prompt itself is not kept, since the arm, the snapshot and the
   fixture are all committed and rebuild it exactly.
+
+An arm that writes the passage back to a file after each step records one
+write per step in its events. Fewer writes than steps means the run collapsed
+the steps, and did not test what it looks like it tested.
+
+## Judging
+
+    ./judge.py
+
+That serves the next comparison that has no answer, at
+`http://127.0.0.1:8765`. It shows two versions, named A and B, and the
+question the pair answers. It never names an arm, and the answer it writes
+records the letter, so the key holds for every comparison still to come.
+
+    ./judge.py --report
+
+That resolves the letters against the key, for the comparisons that already
+have an answer.
+
+## Measuring
+
+    ./measure.py docstring-1 docstring-2
+
+That counts, for each run, the words, the times the function is named, the
+times the reader is addressed, and the agentless passives. Every count is a
+string match rather than a parse, and every one is a lower bound, so compare
+an arm against another arm and read nothing into an absolute number.
