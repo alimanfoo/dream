@@ -59,10 +59,15 @@ call() {
   # prompt and its old output stops matching, rather than being mistaken for new.
   # The prompt itself is not kept, since the arm, the snapshot and the fixture
   # are all committed and rebuild it exactly.
+  #
+  # The work directory is stamped out before hashing. It is a fresh mktemp path
+  # every run, so an arm that names a file in its prompt would otherwise hash
+  # differently every time, and the hash would say a prompt had changed when
+  # only the temporary directory had.
   jq -n \
     --arg fixture "$FIXTURE" --arg arm "$ARM" --arg replicate "$REP" \
     --arg call "$name" --arg model "$model" --arg effort "$effort" \
-    --arg prompt_sha256 "$(sha256sum < "$prompt" | cut -d" " -f1)" \
+    --arg prompt_sha256 "$(sed "s|$WORK|{{WORK}}|g" "$prompt" | sha256sum | cut -d" " -f1)" \
     --arg snapshot_commit "$(git -C "$E" rev-parse HEAD)" \
     --arg generated_at "$(date -u +%FT%TZ)" \
     '$ARGS.named' > "$stem.meta.json"
