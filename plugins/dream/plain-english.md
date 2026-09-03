@@ -122,16 +122,6 @@ what changed and finds nothing. For example:
 - Don't make the same point several ways across a paragraph for effect or
   emphasis.
 
-## Use active voice
-
-Use active voice, so the reader can see who does what. For example: "The parser
-reads the file before validation.", not "The file is read by the parser before
-validation."
-
-The passive lets you leave the actor out altogether, which is the worse case:
-"the file is read before validation" never says what reads it. The same goes for
-"the trap is" and "there is", which start a sentence without naming anyone.
-
 ## One reading per sentence
 
 Be precise. A reader who can take a sentence two ways may pick the wrong
