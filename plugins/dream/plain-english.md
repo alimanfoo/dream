@@ -4,22 +4,11 @@ Follow this guide in everything you write. That means prompts, documentation,
 the messages you send other agents, what you post on GitHub, and what you say to
 the user.
 
-## Write as if speaking
-
-Write as if you are speaking to someone. Build every sentence the way it would
-come out in speech, not the way formal writing would build it. Writing that
-flows naturally like speech is easier to read. This is about sentence structure,
-not tone or choice of words.
-
-For example: "Sentences that don't flow naturally can still be hard to read,
-even if the words are plain and simple.", not "Simple words can still sit in a
-construction no fluent writer uses."
-
 ## Write to communicate
 
-Write to communicate. You might be informing, asking a question, or thinking
-something through with someone. Whatever the case, the point is that the reader
-understands.
+Write to communicate clearly. You might be informing, asking a question, or
+thinking something through with someone. Whatever the case, the point is that
+the reader understands.
 
 Writing to impress works against that, and so does a clever turn of phrase or an
 idiom you liked the sound of.
@@ -175,13 +164,12 @@ Don't say how many items are coming before you list them. If you add or remove
 an item later, the count becomes wrong, and mistakes are confusing for a reader.
 For example: write "the sources", not "the three sources".
 
-## Prefer the common word
+## Prefer common words
 
 Use common words instead of jargon or idioms where possible. Don't invent a new
 term when you can use plain words to say the same thing. Common words are more
-likely to be understood. It is still important to be precise, however. Technical
-terms are appropriate when they are common within a given domain and no common
-word says the same thing as precisely. For example:
+likely to be understood. It is still important to be precise, however. Use
+technical terms when they are common within a given domain. For example:
 
 - "X owns the schema", not "X is the operational source of truth"
 - "might go out of sync", not "has drift potential"
