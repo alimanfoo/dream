@@ -6,7 +6,7 @@ the user.
 
 ## Write to communicate
 
-Write to communicate. You might be informing, asking a question, or thinking
+Write to communicate clearly. You might be informing, asking a question, or thinking
 something through with someone. Whatever the case, the point is that the reader
 understands.
 
