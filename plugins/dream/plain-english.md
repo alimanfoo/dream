@@ -30,8 +30,6 @@ without noticing. Your reader has to stop and work them out.
 - Break a pile of nouns apart with a small word like "of" or "that". For
   example, write "the chain that picks the most telling input", not "the
   most-telling-input fallback chain".
-- Start with who does what. For example, write "the parser ignores every other
-  event type", not "Ignored: every other event type".
 
 Leave a word out when putting it in makes the sentence harder to read. That
 mostly happens when several "that"s pile up in one sentence.
