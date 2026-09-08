@@ -1,0 +1,11 @@
+{
+  "fixture": "readme-1",
+  "arm": "11",
+  "replicate": "2",
+  "call": "output",
+  "model": "opus",
+  "effort": "high",
+  "prompt_sha256": "035bfb0c38e74c1083e748aff77d147d34047801e8fd357adeecd7850089e122",
+  "snapshot_commit": "0d2b9eea514dad77d6e2ff43b9fc4c49a9ddb60c",
+  "generated_at": "2026-09-08T23:21:37Z"
+}

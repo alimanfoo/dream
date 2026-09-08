@@ -27,29 +27,34 @@ has been judged rather than before, since it says which arm produced what.
 | 8 | arm 1, worked down from paragraphs to clauses |
 | 9 | arm 8, plus a step for vocabulary and a step for active voice |
 | 10 | arm 1, rewritten from the story underneath it |
+| 11 | the guide as it stands, with "Write as if speaking" put back |
+| 12 | the guide as it stands, then the seed prompt |
 
-Arms 1, 2, 3 and 5 form a 2x2: guide before writing or not, against
-copy-editing afterwards or not. Arm 4 extends arm 3 to see whether a second
-round makes things worse.
+Arms 1, 2, 11 and 12 are the live set, and the rest are retired. A retired arm
+keeps its prompts and its runs, and `make arm7` still builds it. It stays out
+of `ARM_NUMBERS`, so `make all` leaves it alone.
 
-Arms 7 to 10 are candidate approaches. Arms 8 and 9 differ by the steps that
-rewrite rather than move, so what such a step costs can be read off the pair.
-Arm 9's steps run from the widest scope to the narrowest, which is why
-vocabulary comes first: the passage is the only place that property lives.
-Arm 10 takes a different route, recovering the story under the passage and
-writing it again from that, so it repairs nothing and rebuilds everything.
+Arms 2, 11 and 12 differ only in which version of the guide they read, and
+`snapshot/guides/` holds one file per version. Arm 2 reads the guide as it was
+before any of this. Arm 12 reads it as it stands, after #938 removed "Use
+active voice", #940 removed "Write as if speaking", and be5d1d38 removed the
+last of the active voice rule. Arm 11 reads that same guide with "Write as if
+speaking" put back, so the pair against arm 12 says what #940 cost on its own.
 
-Arm 6 is retired, because it invents knowledge the passage never gave it. Its
-runs stand as the evidence for that, `make arm6` still builds it, and `make
-all` leaves it alone.
+Arms 1, 2, 3 and 5 formed a 2x2: guide before writing or not, against
+copy-editing afterwards or not. Arms 3, 4 and 5 retired when #939 took the
+copy-edit step out of the developer skills, so they now test something no skill
+does. Arm 6 invents. Arms 7, 9 and 10 each rewrite whole sentences, and each
+lost every pair it was judged in.
 
 Three replicates of arms 1 and 2. Every other arm runs once per replicate of
 the arm it builds on, so each of them is paired to a specific piece of text.
 
 ## Layout
 
-- `snapshot/` — frozen copies of the guide and the copy editor's instructions,
-  so the arms keep working when the plugin moves on.
+- `snapshot/` — frozen copies of the copy editor's instructions and, under
+  `guides/`, one copy of the Plain English guide per version an arm reads, so
+  the arms keep working when the plugin moves on.
 - `fixtures/` — one folder per fixture, each with a seed prompt, the reader,
   and the source file it documents. `sources/` holds the code. A fixture is
   one instance of a kind of writing, so `docstring-1` is the first docstring
@@ -57,8 +62,9 @@ the arm it builds on, so each of them is paired to a specific piece of text.
 - `arms/` — the prompt templates and `run.sh`. Numbered arms are the baseline
   set. Lettered arms are candidate approaches, and there will be more of them.
 - `runs/` — captured output, verbatim.
-- `judgements/` — the key saying which arm is A in each comparison, and the
-  answers as they are given.
+- `judgements/<fixture>/` — the key saying which arm is A in each comparison,
+  and the answers as they are given. One folder per fixture, since a key names
+  runs and runs belong to a fixture.
 - `judge.py` — shows one comparison at a time and records the answer.
 - `measure.py` — counts the prose features the arms are compared on.
 - `findings.md` — what has been found, and the measurements behind it.
@@ -73,6 +79,12 @@ alone.
 to confound every comparison, which is why `docstring-2` drops it. Both the
 owner and an earlier session have read most of `docstring-1`, so it is spent
 as judging material and stands as a record instead.
+
+`readme-1` is the first fixture outside the docstring genre. It asks for the
+prose that introduces a small command-line tool, which addresses a reader who
+has not decided to use it rather than one who has. It asks for about 300 words,
+because a docstring is bounded by the function's contract and a README
+introduction is bounded by nothing.
 
 `runs/model-effort-2x2/` is a separate one-off: the same docstring request at
 Sonnet and Opus, low and high effort. It asked whether writing quality depends
@@ -129,9 +141,10 @@ the steps, and did not test what it looks like it tested.
 
 ## Judging
 
-    ./judge.py
+    ./judge.py [fixture]
 
-That serves the next comparison that has no answer, at
+That serves the next comparison that has no answer, taking the fixture that has
+any if only one does, at
 `http://127.0.0.1:8765`. It shows two passages, named A and B, and one question
 that never changes. It says nothing about which comparison this is, since the
 question a pair answers would say what was done to one of the two and the

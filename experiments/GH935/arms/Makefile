@@ -42,11 +42,14 @@ REPS ?= 3
 ATTEMPTS ?= 3
 
 REPLICATES := $(shell seq 1 $(REPS))
-ARM_NUMBERS := 1 2 3 4 5 7 8 9 10
+# The live set. A retired arm keeps its rule below and its own target, so
+# `make arm7` still builds it, and stays out of here so `make all` does not.
+ARM_NUMBERS := 1 2 11 12
 
 RUNS := ../runs/$(F)
 FIX := ../fixtures/$(F)
-GUIDE := ../snapshot/plain-english.md
+GUIDES := ../snapshot/guides
+GUIDE := $(GUIDES)/plain-english-177fb63.md
 EDITOR_AGENT := ../snapshot/copy-editor.md
 
 SOURCE := $(addprefix ../fixtures/sources/,$(shell cat $(FIX)/source 2>/dev/null))
@@ -69,7 +72,7 @@ define attempt
  done
 endef
 
-.PHONY: all list arm1 arm2 arm3 arm4 arm5 arm6 arm7 arm8 arm9 arm10
+.PHONY: all list arm1 arm2 arm3 arm4 arm5 arm6 arm7 arm8 arm9 arm10 arm11 arm12
 .DEFAULT_GOAL := list
 
 all: $(OUTPUTS)
@@ -91,6 +94,9 @@ $(RUNS)/arm4-r%/output.md: $(RUNS)/arm3-r%/output.md $(COPYEDIT) 4-copyedit-twic
 
 $(RUNS)/arm5-r%/output.md: $(RUNS)/arm2-r%/output.md $(COPYEDIT) 5-guide-then-copyedit/run.sh
 	$(call attempt,5-guide-then-copyedit,$*)
+
+$(foreach a,3 4 5 7 8 9 10,$(eval arm$(a): \
+  $(foreach r,$(REPLICATES),$(RUNS)/arm$(a)-r$(r)/output.md)))
 
 # Arm 6 is retired. It invents, so it is not worth judging, and it is out of
 # ARM_NUMBERS so `make all` leaves it alone. Its runs stand as the evidence,
@@ -120,6 +126,14 @@ list:
 
 $(RUNS)/arm10-r%/output.md: $(RUNS)/arm1-r%/output.md 10-story-spine/prompt.md 10-story-spine/run.sh
 	$(call attempt,10-story-spine,$*)
+
+$(RUNS)/arm11-r%/output.md: $(SEED) $(GUIDES)/plain-english-be5d1d38-plus-speech.md \
+                            2-guide-first/prompt.md 11-guide-plus-speech/run.sh
+	$(call attempt,11-guide-plus-speech,$*)
+
+$(RUNS)/arm12-r%/output.md: $(SEED) $(GUIDES)/plain-english-be5d1d38.md \
+                            2-guide-first/prompt.md 12-guide-current/run.sh
+	$(call attempt,12-guide-current,$*)
 
 # A failed call must not leave a half-written output behind, or the next run
 # would take it for finished work.

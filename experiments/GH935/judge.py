@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Show one comparison at a time, and record which version the reader chose.
 
-    ./judge.py             serve the next unjudged comparison
+    ./judge.py [fixture]   serve the next unjudged comparison
     ./judge.py --progress  say how many are answered and how many are left
     ./judge.py --tally     say what each pair came to, and what was acceptable
     ./judge.py --report    say which arm won each comparison already judged
@@ -28,9 +28,9 @@ import urllib.parse
 from datetime import datetime, timezone
 
 HERE = pathlib.Path(__file__).parent
-KEY = HERE / "judgements" / "key.json"
-ANSWERS = HERE / "judgements" / "answers.md"
+JUDGEMENTS = HERE / "judgements"
 PORT = 8765
+KEY = ANSWERS = None   # set by use(), below
 HEADING = re.compile(r"^## comparison (\d+)\b", re.M)
 
 PAGE = """<!doctype html>
@@ -59,6 +59,35 @@ PAGE = """<!doctype html>
 </style>
 {body}
 """
+
+
+def use(fixture=None):
+    """Point at one fixture's key and answers.
+
+    With no fixture named, take the one that still has comparisons without an
+    answer, so the common case needs no argument and an ambiguous one says so
+    rather than guessing.
+    """
+    global KEY, ANSWERS
+    available = sorted(d.name for d in JUDGEMENTS.iterdir()
+                       if (d / "key.json").exists())
+    if fixture is None:
+        unfinished = []
+        for name in available:
+            KEY = JUDGEMENTS / name / "key.json"
+            ANSWERS = JUDGEMENTS / name / "answers.md"
+            if len(judged()) < len(load_key()["comparisons"]):
+                unfinished.append(name)
+        if len(unfinished) != 1:
+            sys.exit(f"name a fixture: {', '.join(available)}"
+                     + (f" (unanswered: {', '.join(unfinished)})" if unfinished
+                        else " (all answered)"))
+        fixture = unfinished[0]
+    if fixture not in available:
+        sys.exit(f"no key for {fixture}: {', '.join(available)}")
+    KEY = JUDGEMENTS / fixture / "key.json"
+    ANSWERS = JUDGEMENTS / fixture / "answers.md"
+    return fixture
 
 
 def load_key():
@@ -278,6 +307,8 @@ def report():
 
 
 if __name__ == "__main__":
+    named = [a for a in sys.argv[1:] if not a.startswith("-")]
+    fixture = use(named[0] if named else None)
     if "--report" in sys.argv:
         report()
     elif "--progress" in sys.argv:
@@ -285,5 +316,5 @@ if __name__ == "__main__":
     elif "--tally" in sys.argv:
         tally()
     else:
-        print(f"judging {load_key()['fixture']} at http://127.0.0.1:{PORT}")
+        print(f"judging {fixture} at http://127.0.0.1:{PORT}")
         http.server.HTTPServer(("127.0.0.1", PORT), Handler).serve_forever()

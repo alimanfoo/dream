@@ -17,7 +17,9 @@ trap 'rm -rf "$WORK"' EXIT
 WRITER_MODEL=${WRITER_MODEL:-opus};     WRITER_EFFORT=${WRITER_EFFORT:-high}     # the session that writes and edits
 EDITOR_MODEL=${EDITOR_MODEL:-sonnet}; EDITOR_EFFORT=${EDITOR_EFFORT:-medium}   # what copy-editor.md's frontmatter pins
 
-GUIDE="$E/snapshot/plain-english.md"
+# The guide an arm reads. Arms differ in which version they get, so an arm
+# sets GUIDE before sourcing this and the original stands as the default.
+GUIDE=${GUIDE:-"$E/snapshot/guides/plain-english-177fb63.md"}
 READER="$E/fixtures/$FIXTURE/reader.md"
 RUNS="$E/runs/$FIXTURE"
 mkdir -p "$RUNS"

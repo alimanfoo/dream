@@ -1,5 +1,9 @@
 # Judgements
 
+One folder per fixture, since a key names runs and a run belongs to a fixture.
+`../judge.py <fixture>` picks one, and takes the fixture with unanswered
+comparisons when only one has any.
+
 `key.json` says which arm is A and which is B in each comparison. It is
 written before any comparison is shown, and read only once the comparison it
 covers has been judged.

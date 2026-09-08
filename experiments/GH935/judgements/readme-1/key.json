@@ -1,0 +1,83 @@
+{
+  "fixture": "readme-1",
+  "draws": [
+    {
+      "seed": 20260909,
+      "comparisons": "1-9"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": 1,
+      "pair": "2v12",
+      "replicate": 1,
+      "question": "what did the three removals come to together?",
+      "A": "arm2",
+      "B": "arm12"
+    },
+    {
+      "id": 2,
+      "pair": "2v12",
+      "replicate": 2,
+      "question": "what did the three removals come to together?",
+      "A": "arm12",
+      "B": "arm2"
+    },
+    {
+      "id": 3,
+      "pair": "2v12",
+      "replicate": 3,
+      "question": "what did the three removals come to together?",
+      "A": "arm2",
+      "B": "arm12"
+    },
+    {
+      "id": 4,
+      "pair": "11v12",
+      "replicate": 1,
+      "question": "did removing \"write as if speaking\" cost anything?",
+      "A": "arm12",
+      "B": "arm11"
+    },
+    {
+      "id": 5,
+      "pair": "11v12",
+      "replicate": 2,
+      "question": "did removing \"write as if speaking\" cost anything?",
+      "A": "arm11",
+      "B": "arm12"
+    },
+    {
+      "id": 6,
+      "pair": "11v12",
+      "replicate": 3,
+      "question": "did removing \"write as if speaking\" cost anything?",
+      "A": "arm11",
+      "B": "arm12"
+    },
+    {
+      "id": 7,
+      "pair": "1v12",
+      "replicate": 1,
+      "question": "does the guide as it stands beat no guide at all?",
+      "A": "arm1",
+      "B": "arm12"
+    },
+    {
+      "id": 8,
+      "pair": "1v12",
+      "replicate": 2,
+      "question": "does the guide as it stands beat no guide at all?",
+      "A": "arm1",
+      "B": "arm12"
+    },
+    {
+      "id": 9,
+      "pair": "1v12",
+      "replicate": 3,
+      "question": "does the guide as it stands beat no guide at all?",
+      "A": "arm12",
+      "B": "arm1"
+    }
+  ]
+}

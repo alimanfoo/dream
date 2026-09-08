@@ -1,0 +1,9 @@
+The tool takes a path for a lock file, a staleness time in seconds, and a command to run. If it can create the lock file, it runs the command, deletes the lock file, and exits with the command's own exit code. If the lock file already exists and was last modified within the staleness time, the tool exits with status 0 and never runs the command. If the lock file exists and is older than the staleness time, the tool deletes it and takes the lock itself.
+
+A skipped run reports success on purpose. Cron mails you the output of any job that exits non-zero, and a job that overlaps often would mail you often, so the tool treats "another copy is already doing this" as a normal outcome rather than a failure.
+
+Reach for it when you run a job on a fixed schedule and any one run can outlast the gap before the next one starts. Backups, mirrors, index rebuilds and log shipping all behave this way: the work is worth doing again in five minutes, and two copies at once would either corrupt the result or thrash the disk.
+
+A process that is killed outright never deletes its lock file, and the staleness time is what stops one dead run from blocking every run after it. The check for a stale lock is not atomic, though. Two copies that find the same expired lock at the same moment can both delete it, and both then run. Set the staleness time well above the longest run you expect.
+
+Reach for something else if every run has to happen, because this tool drops runs instead of queueing them, and a job runner with a queue fits that need. Reach for flock if you want the second copy to wait for the first rather than give up. Keep the lock file on a local disk, because the exclusive create and the modification time both need one filesystem on one machine to mean anything. If you already start the job from a systemd timer, you don't need any of this, since systemd will not start a service that is still running.
