@@ -200,6 +200,13 @@ def record(comparison_id, choice, notes, accepted):
         f.write("".join(entry))
 
 
+class Server(http.server.HTTPServer):
+    # A judging session outlives a shell, so a server from a previous round is
+    # often still holding the port. Without this the bind fails with a stack
+    # trace, and the stale server keeps answering with whatever code it loaded.
+    allow_reuse_address = True
+
+
 class Handler(http.server.BaseHTTPRequestHandler):
     def reply(self, status, body="", headers=()):
         self.send_response(status)
@@ -317,4 +324,8 @@ if __name__ == "__main__":
         tally()
     else:
         print(f"judging {fixture} at http://127.0.0.1:{PORT}")
-        http.server.HTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
+        try:
+            Server(("127.0.0.1", PORT), Handler).serve_forever()
+        except OSError as err:
+            sys.exit(f"cannot listen on {PORT}: {err}. A judge.py from an "
+                     "earlier round may still be running; stop it first.")
