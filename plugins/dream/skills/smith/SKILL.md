@@ -209,7 +209,7 @@ Implement the plan, one step at a time. For each step:
 
 ## Review
 
-Run two reviews in sequence as described below.
+Run the reviews below in sequence.
 
 First, run the `dream:coherence-review` skill over the branch's changes against
 the base (`origin/main...HEAD`).
@@ -247,14 +247,18 @@ yours.
 If a review returns no findings, post the heading and one line saying so.
 
 Second, run the `dream:code-review` skill the same way, and head its comment
-`Code review`. It goes second so that it reads the fixes the coherence review
-led to.
+`Code review`. It follows the coherence review so that it reads the fixes that
+review led to.
+
+Third, run the `dream:precedent-review` skill the same way, and head its comment
+`Precedent review`. It comes last so that it reads the change as the reviewer
+would find it, with the earlier reviews' fixes already in.
 
 ## Find simplification opportunities
 
-Reread the finished change after both reviews. Ask whether the PR could remove a
-lot of code or complexity by changing the design or constraints given in the
-session input or delivering less, while losing little functionality.
+Reread the finished change once the reviews are done. Ask whether the PR could
+remove a lot of code or complexity by changing the design or constraints given
+in the session input or delivering less, while losing little functionality.
 
 Post the result as a PR comment headed `Simplification opportunities`. Give the
 opportunities as a numbered list, each saying what to remove or simplify and
