@@ -57,6 +57,10 @@ it in `plugins/dream/agents/` when Claude Code needs a named definition for
 host-specific settings. Pass an agent file's absolute path to a plain Codex
 subagent.
 
+Make every skill that launches subagents under both hosts read
+[`subagent-waiting.md`](plugins/dream/subagent-waiting.md). It owns the
+cross-host completion rule.
+
 `plugins/dream/agents/` holds Claude Code agent definitions. Four are the
 dream-team agents. `dream:team` spawns its agents by name. It needs Claude
 Code's agent teams feature, so it stays Claude-only.

@@ -49,23 +49,37 @@ Choose from these or invent your own. They are examples, not a checklist:
   missing, and what is there but they do not need
 - alignment: compliance with agent instructions (AGENTS.md or CLAUDE.md)
 
-Spawn a subagent once per lens, all at the same time so they run in parallel.
-Use Sonnet under Claude Code. Give each the absolute path of
-[the lens instructions](../../subagents/code-review-lens.md) and tell it to work
-to them. Give each the target too, as a git range like `origin/main...HEAD` or
-an absolute path, and the one lens it applies.
+Prepare one subagent per lens. Give every subagent the target, as a git range
+like `origin/main...HEAD` or an absolute path, and the one lens it applies.
+
+Under Claude Code:
+
+- Use the `dream:code-review-lens` subagent. Its definition sets the model and
+  effort.
+
+Under Codex:
+
+- Use a plain subagent.
+- Set its `fork_turns` to `none`, which lets Codex override the parent session's
+  effort. Set its `reasoning_effort` to `medium`.
+- Give it the absolute path of
+  [the lens instructions](../../agents/code-review-lens.md) and tell it to
+  follow them.
+
+Launch every prepared subagent at the same time so they run in parallel.
 
 In inline mode, run the lenses yourself instead of spawning subagents. Read
-[the lens instructions](../../subagents/code-review-lens.md) first and work to
+[the lens instructions](../../agents/code-review-lens.md) first and work to
 them, since you are the one applying each lens.
+
+## Wait for the lenses
+
+If you launched any subagents, read and follow the
+[subagent waiting protocol](../../subagent-waiting.md) for them.
 
 ## Combine and verify
 
-Wait however your session waits until every launched subagent has replied.
-Reports arrive one at a time, so keep waiting after an early report. Don't
-sleep, poll for progress, or write that you're waiting.
-
-Then combine their findings into one list. Drop duplicates and resolve
+Combine their findings into one list. Drop duplicates and resolve
 inconsistencies.
 
 Read the code each finding cites. Keep only the findings you can confirm.

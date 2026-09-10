@@ -40,10 +40,12 @@ or an absolute path, along with the pull request to leave out.
 Pin no model and no effort. The subagent inherits the session's, and this review
 wants a reader as strong as the session running it.
 
-## Verify
+## Wait for the review
 
-Wait however your session waits until the subagent has replied. Don't sleep,
-poll for progress, or write that you're waiting.
+Read and follow the [subagent waiting protocol](../../subagent-waiting.md) for
+the launched subagent.
+
+## Verify
 
 The report opens with the precedent the review drew on. That is context for
 weighing the findings, not a finding itself.

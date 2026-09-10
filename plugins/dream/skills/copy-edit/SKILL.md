@@ -47,11 +47,10 @@ Read the arguments the user gives.
    to work out who the reader is. Give one subagent the whole passage when it is
    small. Split a large passage by file or section. Launch the subagents in
    parallel, one per part.
-3. Wait however your session waits until every launched subagent has replied.
-   Reports arrive one at a time, so keep waiting after an early report. Don't
-   sleep or poll for progress. Then combine the findings into one list. Drop
-   duplicates and resolve inconsistencies. Write the combined list in your next
-   turn output. Don't write a waiting update before it.
+3. If you launched any subagents, read and follow the
+   [subagent waiting protocol](../../subagent-waiting.md) for them. Then combine
+   the findings into one list. Drop duplicates and resolve inconsistencies.
+   Write the combined list in your next turn output.
 4. Resolve every finding on the combined list. You are the author. Make each
    edit yourself and keep the meaning. When a fix would drop a reason, keep the
    reason and meet the rule another way.
