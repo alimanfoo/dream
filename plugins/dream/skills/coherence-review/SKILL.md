@@ -27,15 +27,6 @@ Read the [coherent coding guide](../../coherent-coding.md). It is the home of
 the disciplines this review checks. The lens subagents can't read it themselves,
 so paste each lens the guide text it needs.
 
-Launch a subagent once per lens, all at the same time so they run in parallel.
-Use the `dream:code-review-lens` subagent in Claude Code. Its definition sets
-the model and effort. Use a plain subagent in Codex. Set its `fork_turns` to
-`none`, which lets Codex override the parent session's effort. Set its
-`reasoning_effort` to `medium`. Give the Codex subagent the absolute path of
-[the lens instructions](../../agents/code-review-lens.md) and tell it to follow
-them. Brief every subagent with the target and its guide section or sections,
-pasting the heading and the text beneath it into the briefing.
-
 - **Root cause.** The
   [Resolve the root cause](../../coherent-coding.md#resolve-the-root-cause)
   section.
@@ -74,6 +65,26 @@ out more code than it puts in, naming what goes and from where. Fixing
 incoherence by adding makes a codebase harder to maintain, however careful the
 review that found it. So a finding with no removal behind it costs more than it
 returns. A lens that can't propose one drops the finding.
+
+Prepare one subagent per lens. Brief every subagent with the target and its
+guide section or sections, pasting the heading and the text beneath it into the
+briefing.
+
+Under Claude Code:
+
+- Use the `dream:code-review-lens` subagent. Its definition sets the model and
+  effort.
+
+Under Codex:
+
+- Use a plain subagent.
+- Set its `fork_turns` to `none`, which lets Codex override the parent session's
+  effort. Set its `reasoning_effort` to `medium`.
+- Give it the absolute path of
+  [the lens instructions](../../agents/code-review-lens.md) and tell it to
+  follow them.
+
+Launch every prepared subagent at the same time so they run in parallel.
 
 ## Wait for the lenses
 

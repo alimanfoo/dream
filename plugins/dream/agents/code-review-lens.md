@@ -1,8 +1,6 @@
 ---
 name: code-review-lens
-description:
-  Claude Code runs this agent when dream:code-review or dream:coherence-review
-  delegates a lens.
+description: Reviews code through one lens and reports the findings.
 model: sonnet
 effort: medium
 tools: Read, Grep, Glob, Bash
