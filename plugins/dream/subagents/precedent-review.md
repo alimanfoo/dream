@@ -77,8 +77,7 @@ misses the pattern.
 ## Review the change
 
 Read the diff and the source files you need for context. Review the change as
-you find it, against what you wrote down. Review from the diff itself, not from
-any surrounding description.
+you find it, against the precedent you wrote down.
 
 ## Reporting
 
