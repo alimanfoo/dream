@@ -247,6 +247,15 @@ plugins/:
             Check each task is one idea:
             Check each task can be committed:
             The result:
+      precedent-review/:
+        SKILL.md:
+          dream:precedent-review:
+            Arguments:
+            Read the diff:
+            Gather what the subagent needs:
+            Launch the review:
+            Verify:
+            Rank and return:
       requirements-analysis/:
         SKILL.md:
           dream:requirements-analysis:
@@ -420,6 +429,13 @@ plugins/:
         Code review lens:
           The lens:
           Read the change:
+          Reporting:
+      precedent-review.md:
+        Precedent review:
+          Gather the precedent:
+          Stop when there is too little:
+          Write down the precedent:
+          Review the change:
           Reporting:
 README.md:
   dream:
