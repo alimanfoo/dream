@@ -23,12 +23,7 @@ path. Without one, review the whole branch against `origin/main`
 Read the diff and the source files you need for context. This read gives you the
 context to verify what the review returns.
 
-## Gather what the subagent needs
-
-Read the `commentFooter` value from
-[`agent-written-marks.json`](../../agent-written-marks.json). The subagent
-cannot read it for itself, so pass it the value. The reviewer and the agent post
-through one account, and this marker is what separates their comments.
+## Find the pull request to leave out
 
 Read the pull request for the current branch
 (`gh pr view --json number --jq .number`). Pass its number too, so the review
@@ -40,8 +35,8 @@ the branch has no pull request, say there is none to leave out.
 Spawn one subagent. Give it the absolute path of
 [the reviewer's instructions](../../subagents/precedent-review.md) and tell it
 to work to them. Give it the target too, as a git range like
-`origin/main...HEAD` or an absolute path, along with the marker value and the
-pull request to leave out.
+`origin/main...HEAD` or an absolute path, along with the pull request to leave
+out.
 
 Pin no model and no effort. The subagent inherits the session's, and this review
 wants a reader as strong as the session running it.

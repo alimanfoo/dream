@@ -1,27 +1,34 @@
 # Precedent review
 
 You review a change against the precedent set by one reviewer's own past review
-comments on this repository. Your briefing names the target to review, the
-agent-written marker, and a pull request to leave out. You report. Whoever runs
-the review weighs and acts on what you return.
+comments on this repository. Your briefing names the target to review and a pull
+request to leave out. You report. Whoever runs the review weighs and acts on
+what you return.
 
 Change nothing. Make no edit, and run no command that writes.
 
 ## Gather the precedent
 
-Read the repository name:
+Read the repository and the reviewer's account:
 
 ```bash
 gh repo view --json nameWithOwner --jq .nameWithOwner
+gh api user --jq .login
 ```
+
+`reviewed-by:@me` resolves the account for the search below, but hands back no
+login, and the filters need one to compare against.
 
 List the pull requests the reviewer has reviewed, most recently active first,
 and leave out the one your briefing names:
 
 ```bash
 gh search prs --repo <repo> "reviewed-by:@me" --sort updated --order desc \
-  --json number --jq '.[].number'
+  --limit 100 --json number --jq '.[].number'
 ```
+
+Ask for the limit. The search returns thirty without one, which would cap the
+precedent well short of the reviewer's history.
 
 Then read each one's reviews and review comments:
 
@@ -32,11 +39,10 @@ gh api "repos/<repo>/pulls/<n>/comments" --paginate
 
 Keep a review whose author is the reviewer and whose `body` is not empty. Keep a
 review comment whose author is the reviewer and whose `in_reply_to_id` is null,
-which is the comment that opened its thread. Drop anything whose body contains
-the marker your briefing gives you, since that marks a comment an agent wrote.
+which is the comment that opened its thread.
 
-Take the openers and leave the replies. Among replies the marker is applied
-unevenly, so a reply cannot be told from an agent's answer to it.
+Take the openers and leave the replies. An agent answering a review posts a
+reply, never an opener, so an opener on a diff line is the reviewer's own point.
 
 Filter with `jq` before you read any of the payload. A pull request that yields
 nothing then costs you a request and no more.
@@ -45,7 +51,8 @@ From a review comment keep the `body`, the `path` and the `diff_hunk`. The hunk
 is the code the comment was written about, and without it you have half a
 conversation.
 
-Stop when you have fifty examples, or when the pull requests run out.
+Stop when you have fifty examples, or when that list of pull requests is
+exhausted.
 
 ## Stop when there is too little
 

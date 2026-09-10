@@ -252,7 +252,7 @@ plugins/:
           dream:precedent-review:
             Arguments:
             Read the diff:
-            Gather what the subagent needs:
+            Find the pull request to leave out:
             Launch the review:
             Verify:
             Rank and return:
