@@ -28,10 +28,13 @@ the disciplines this review checks. The lens subagents can't read it themselves,
 so paste each lens the guide text it needs.
 
 Launch a subagent once per lens, all at the same time so they run in parallel.
-Use Sonnet under Claude Code. Give each the absolute path of
-[the lens instructions](../../subagents/code-review-lens.md) and tell it to work
-to them. Brief each with the target and its guide section or sections, pasting
-the heading and the text beneath it into the briefing.
+Use the `dream:code-review-lens` subagent in Claude Code. Its definition sets
+the model and effort. Use a plain subagent in Codex. Set its `fork_turns` to
+`none`, which lets Codex override the parent session's effort. Set its
+`reasoning_effort` to `medium`. Give the Codex subagent the absolute path of
+[the lens instructions](../../agents/code-review-lens.md) and tell it to follow
+them. Brief every subagent with the target and its guide section or sections,
+pasting the heading and the text beneath it into the briefing.
 
 - **Root cause.** The
   [Resolve the root cause](../../coherent-coding.md#resolve-the-root-cause)
@@ -72,13 +75,14 @@ incoherence by adding makes a codebase harder to maintain, however careful the
 review that found it. So a finding with no removal behind it costs more than it
 returns. A lens that can't propose one drops the finding.
 
+## Wait for the lenses
+
+Read and follow the [subagent waiting protocol](../../subagent-waiting.md) for
+the launched lenses.
+
 ## Combine and verify
 
-Wait however your session waits until every launched subagent has replied.
-Reports arrive one at a time, so keep waiting after an early report. Don't
-sleep, poll for progress, or write that you're waiting.
-
-Then combine their findings into one list. Drop duplicates and resolve
+Combine their findings into one list. Drop duplicates and resolve
 inconsistencies.
 
 Read the code each finding cites. Keep only the findings you can confirm.

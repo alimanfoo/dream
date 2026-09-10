@@ -101,6 +101,11 @@ plugins/:
             Commits:
             Communication between teammates (agents):
             Keep turn output quiet:
+      code-review-lens.md:
+        Code review lens:
+          The lens:
+          Read the change:
+          Reporting:
       copy-editor.md:
         Copy editor:
           Read the Plain English guide:
@@ -175,6 +180,7 @@ plugins/:
             Arguments:
             Read the diff:
             Launch the lenses:
+            Wait for the lenses:
             Combine and verify:
             Rank and return:
       coherence-review/:
@@ -183,6 +189,7 @@ plugins/:
             Arguments:
             Read the diff:
             Launch the lenses:
+            Wait for the lenses:
             Combine and verify:
             Rank and return:
       coherent-coding/:
@@ -254,6 +261,7 @@ plugins/:
             Read the diff:
             Find the pull request to leave out:
             Launch the review:
+            Wait for the review:
             Verify:
             Rank and return:
       requirements-analysis/:
@@ -424,12 +432,12 @@ plugins/:
             On each firing:
             Teardown:
             Limits:
+    subagent-waiting.md:
+      Subagent waiting protocol:
+        Claude Code:
+        Codex:
+        While you wait:
     subagents/:
-      code-review-lens.md:
-        Code review lens:
-          The lens:
-          Read the change:
-          Reporting:
       precedent-review.md:
         Precedent review:
           Gather the precedent:

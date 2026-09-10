@@ -289,9 +289,8 @@ Tell them both that having nothing to say is a fine answer — the first if it
 could just start, the second if the idea fits cleanly — rather than inventing
 something to fill the silence.
 
-The next thing you write to me carries their reports. So wait for the reports
-however your session waits, then continue — don't sleep, don't poll for
-progress, and don't write that you're waiting.
+Please read and follow the
+[subagent waiting protocol](../../subagent-waiting.md) for those two readers.
 
 Wait for both before you act on either. Neither one saw the other's reading, so
 you're the only one who can tell they've raised the same thing twice.

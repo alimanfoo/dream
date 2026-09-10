@@ -1,3 +1,13 @@
+---
+name: code-review-lens
+description:
+  Claude Code runs this agent when dream:code-review or dream:coherence-review
+  delegates a lens.
+model: sonnet
+effort: medium
+tools: Read, Grep, Glob, Bash
+---
+
 # Code review lens
 
 You read a diff through one review lens and report what you find. Your briefing
