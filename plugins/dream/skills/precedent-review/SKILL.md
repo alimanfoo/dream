@@ -45,15 +45,12 @@ wants a reader as strong as the session running it.
 Wait however your session waits until the subagent has replied. Don't sleep,
 poll for progress, or write that you're waiting.
 
-The report opens with the precedent the review drew on: the principles it read
-out of the user's past comments, with examples behind them. Read it before the
-findings. It is context for weighing them, not a finding itself, so keep it out
-of anything that asks for findings alone.
+The report opens with the precedent the review drew on. That is context for
+weighing the findings, not a finding itself.
 
 Read the code each finding cites. Keep only the findings you can confirm.
 
 ## Rank and return
 
-Return the precedent, then the verified findings as a numbered list, most
-important first. Report only: apply no fixes. If you have nothing to report, say
-so and return.
+Return the verified findings as a numbered list, most important first. Report
+only: apply no fixes. If you have nothing to report, say so and return.

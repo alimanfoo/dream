@@ -64,13 +64,11 @@ exactly like one that worked.
 ## Write down the precedent
 
 Write down what the user keeps coming back to, as turn output, in your own
-words, before you read the diff. Write it out rather than hold it in mind,
-because a thought you haven't written is one you won't use.
+words, before you read the diff.
 
 Generalise from the examples to the principles the user would apply to any
-change on this repository, and note the specific points that bear on this one.
-Cite the examples behind each inference, so whoever reads your report can judge
-whether you read them right.
+change on this repository. Cite the examples behind each inference, so whoever
+reads your report can judge whether you read them right.
 
 Read the examples first and the diff second. The other way round, you go looking
 in the examples for whatever matches the diff, which finds the one-off point and
