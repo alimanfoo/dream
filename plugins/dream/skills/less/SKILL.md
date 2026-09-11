@@ -133,6 +133,10 @@ and switch to it. Name it after the session input. For example, `GH123` for an
 issue, a short slug like `add-foo` for an unscoped task. If the session started
 on another branch, adopt that as the session branch.
 
+**Adopt an open PR on the branch.** Check whether the branch already has an open
+PR (`gh pr view`). When it does, that PR is the session PR, so skip the rest of
+this step. A second PR on the same branch splits the record in two.
+
 **Create the bootstrap commit and push.** Create an empty bootstrap commit
 (`git commit --allow-empty`) with a short subject (the issue ref or slug), so
 the draft PR has a commit to anchor to. Push the branch.
@@ -180,7 +184,7 @@ template) and follow them. Otherwise:
   PR fully resolves, and `Related to #N` for any it partly addresses.
 - Follow with one sentence on what the PR does and why.
 
-Replace the `WIP` placeholder with the description.
+Replace the PR's description with it.
 
 ## Mark the PR ready for review
 
