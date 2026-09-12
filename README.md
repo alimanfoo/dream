@@ -76,16 +76,18 @@ request to end the session.
 implementation, and review. It opens a draft pull request and marks it ready
 when the work is complete. It needs no agent teams feature.
 
-Run `/dream:smith` under Claude Code or `$dream:smith` under Codex. If the
-current branch name contains issue numbers such as `GH83`, Smith uses those
-issues as the task. Otherwise it asks you for one.
+Run `/dream:smith` under Claude Code or `$dream:smith` under Codex. Name the
+task as an argument, such as `/dream:smith GH123`. Without one, Smith uses the
+issue numbers in the current branch name, such as `GH83`. Without those, it asks
+you for the task.
 
 ## Even smaller tasks with /dream:less
 
 `/dream:less` is a cut-back Smith for a small, self-contained change. It skips
 planning and the separate copy-edit and coherence-review passes.
 
-Run `/dream:less` under Claude Code or `$dream:less` under Codex.
+Run `/dream:less` under Claude Code or `$dream:less` under Codex. It takes the
+task the same way Smith does.
 
 ## Unattended runs with /dream:catcher
 
