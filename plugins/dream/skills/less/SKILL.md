@@ -109,9 +109,10 @@ gh api repos/{owner}/{repo}/issues/<N>/sub_issues
 gh api repos/{owner}/{repo}/issues/<N> --jq .parent_issue_url
 ```
 
-Read the sub-issues too. They carry part of the same input. Read the parent too,
-at the URL the second command prints. It names the wider goal the cited issue
-serves. Only the cited issue is in scope, not the parent's other sub-issues.
+Read the sub-issues and their comments too. They carry part of the same input.
+Read the parent and its comments too, at the URL the second command prints. It
+names the wider goal the cited issue serves. Only the cited issue is in scope,
+not the parent's other sub-issues.
 
 Then read the relevant code, callers, tests, and docs for the named surfaces. As
 you read, check the input against the current code, since it may have changed
