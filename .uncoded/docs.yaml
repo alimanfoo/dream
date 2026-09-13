@@ -276,6 +276,24 @@ plugins/:
             Name the session type:
             Compose the draft:
             The result:
+      seer/:
+        SKILL.md:
+          dream:seer:
+            Sound like a person:
+            Say one thing at a time:
+            Let "go on" be enough:
+            Think out loud:
+            Start from what I've given you:
+            Read the code before you divide the work:
+            Stop when the work does not need a roadmap:
+            Agree the breakdown:
+            Walk the stages:
+            Keep the specifications together:
+            Revisit the size:
+            Put dependency and risk in order:
+            Write the roadmap:
+            Get it checked before you show me:
+            Where it goes:
       shape/:
         SKILL.md:
           dream:shape:
@@ -445,10 +463,21 @@ plugins/:
           Write down the precedent:
           Review the change:
           Reporting:
+      seer-design-fit.md:
+        Roadmap design review:
+          Read the work:
+          Check the sequence:
+          Reporting:
+      seer-stage-readiness.md:
+        Stage readiness review:
+          Read the work:
+          Check every stage:
+          Reporting:
 README.md:
   dream:
     Prerequisites:
     Installation:
+    Roadmaps with /dream:seer:
     Coherent development with /dream:team:
     Smaller tasks with /dream:smith:
     Even smaller tasks with /dream:less:

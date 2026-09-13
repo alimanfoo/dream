@@ -11,16 +11,16 @@ Choose the workflow that fits the task:
 - `/dream:catcher` runs agents unattended from labelled issues.
 
 The plugin also includes standalone skills for requirements, code analysis,
-design, planning, copy-editing, and review. Run the skills list in your host to
-see them all.
+design, roadmapping, planning, copy-editing, and review. Run the skills list in
+your host to see them all.
 
 ## Prerequisites
 
 Every skill runs under Claude Code. Codex support is partial: it includes
 `dream:smith`, `dream:less`, `dream:catcher`, `dream:spark`, `dream:state`,
-`dream:shape`, `dream:copy-edit`, `dream:code-review`, `dream:coherence-review`,
-and `dream:precedent-review`. Put a `$` in front of a skill's name in a Codex
-prompt:
+`dream:shape`, `dream:seer`, `dream:copy-edit`, `dream:code-review`,
+`dream:coherence-review`, and `dream:precedent-review`. Put a `$` in front of a
+skill's name in a Codex prompt:
 
 ```text
 $dream:state
@@ -29,8 +29,9 @@ $dream:state
 `/dream:team` needs Claude Code's
 [experimental agent teams](https://code.claude.com/docs/en/agent-teams) feature.
 
-Install the `gh` command-line tool and sign in when you want dream to work with
-GitHub pull requests and issues.
+Install `gh` 2.94.0 or later and sign in when you want dream to work with GitHub
+pull requests and issues. `dream:seer` uses the parent and blocked-by flags that
+this version introduced.
 
 ## Installation
 
@@ -47,6 +48,17 @@ Under Codex:
 codex plugin marketplace add alimanfoo/dream
 codex plugin add dream@dream
 ```
+
+## Roadmaps with /dream:seer
+
+`/dream:seer` works with you to break a finished design into an ordered roadmap,
+where each stage is one reviewable pull request. It posts the roadmap on a
+parent issue and can create one blocked-by-chained child issue per stage.
+
+Run `/dream:seer GH123` under Claude Code or `$dream:seer GH123` under Codex,
+where the issue carries the requirements, reading guide and design. Seer leaves
+the child issues unassigned and unlabelled, so you decide when implementation
+starts.
 
 ## Coherent development with /dream:team
 

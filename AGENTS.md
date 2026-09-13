@@ -24,9 +24,10 @@ This repo has two layers, easy to confuse:
 
 ## Development notes
 
-`dream:spark`, `dream:state` and `dream:shape` are an experiment, trying a
-different approach from the rest of the plugin. They run against repo convention
-on purpose, so treat a deviation as deliberate rather than as drift to tidy up.
+`dream:spark`, `dream:state`, `dream:shape` and `dream:seer` are an experiment,
+trying a different approach from the rest of the plugin. They run against repo
+convention on purpose, so treat a deviation as deliberate rather than as drift
+to tidy up.
 
 Three pairs of skills overlap on purpose. Each pair does the same job twice,
 once with the user and once alone:
@@ -43,12 +44,12 @@ The duplication within each pair is a decision, not a defect, so don't
 single-home it. `dream:shape` was built standalone rather than calling
 `dream:design`, so its duplication runs through the whole skill.
 
-The `dream:spark`, `dream:state` and `dream:shape` bodies are written in the
-user's voice, as if the user typed it: "ask me", "tell me only what you've
-read". Don't normalise any of them back to the third person, or into a stack of
-orders. The frontmatter `description` stays third person in all three, since the
-harness reads that to pick the skill. Keep `dream:copy-edit` off all three
-bodies. It rewrites prose towards the Plain English guide, a different end
+The `dream:spark`, `dream:state`, `dream:shape` and `dream:seer` bodies are
+written in the user's voice, as if the user typed it: "ask me", "tell me only
+what you've read". Don't normalise any of them back to the third person, or into
+a stack of orders. The frontmatter `description` stays third person in all four,
+since the harness reads that to pick the skill. Keep `dream:copy-edit` off all
+four bodies. It rewrites prose towards the Plain English guide, a different end
 point, and the register is what would go.
 
 Store every subagent task prompt in its own file that both hosts can read. Put
