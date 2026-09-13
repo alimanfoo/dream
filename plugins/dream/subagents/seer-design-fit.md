@@ -23,10 +23,6 @@ Check these things across the roadmap as a whole:
 - Every part of the design lands in a stage.
 - No stage invents work that the requirements or design never asked for.
 
-Late stages may carry less detail than near ones. Don't report that by itself
-when the stage still says what it delivers, how to know it is done, and what it
-leaves out.
-
 ## Reporting
 
 Report only confirmed gaps, false dependencies, ordering errors and invented

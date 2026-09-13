@@ -95,21 +95,22 @@ one pull request. Let's not write a roadmap if we don't need to.
 
 ## Discuss the breakdown
 
-Put up two or three ways to cut the same work, sketching what each one means for
-this design. Name the line that each cut follows, such as a layer, a thin
-end-to-end path, which client or backend comes first, or the simple case before
-the awkward ones. These are examples of axes, not a menu to work down.
+Please open the discussion by suggesting two or three ways to cut the same work,
+sketching what each one means for this design. Name the line that each cut
+follows, such as a layer, a thin end-to-end path, which client or backend comes
+first, or the simple case before the awkward ones. These are examples of axes,
+not a menu to work down.
 
 Make every candidate the strongest version of its own cut. Don't present one
 real breakdown and weak alternatives that only make it look inevitable. When
 only one cut makes sense, say why in a line rather than inventing another.
 
-Tell me which cut you prefer and why, then ask me to settle on one
-provisionally. The choice can reopen when we learn more.
+Tell me which cut you prefer and why, then let's discuss pros and cons. The goal
+is to work towards an agreed approach, but there is no need to be hasty. Let's
+explore options together. The choice can also reopen when we learn more.
 
-Make the first outline coarser than you think the finished roadmap will be. A
-stage is cheap to split once its boundaries are visible. Merging stages later
-throws away two scopes, two proof criteria and a dependency edge.
+Start with a coarse outline. We can split a stage as we learn more, which is
+easier than merging two detailed stages later.
 
 ## Walk the stages
 
@@ -119,18 +120,13 @@ Take one stage at a time. Work out these things with me:
 - how we would know that it is done
 - what it deliberately leaves for later
 
-Every stage needs all three. The delivery gives its `dream:smith` session a
-focus. The proof keeps that session from stopping short or adding more than the
+Every stage needs all three. The delivery gives its implementing agent a clear
+goal. The proof keeps that agent from stopping short or adding more than the
 stage needs. The deferral bounds it from above, where nothing inside the
 implementing session can.
 
 State an ordinary proof when that is the honest one. A pure restructure may be
 done when the tests pass and behaviour has not changed.
-
-Let detail taper with distance. We can specify the near stages closely. Sketch
-the far ones until earlier work makes them clearer, because a confident guess
-about a late stage becomes an instruction that another agent will follow. Keep
-the delivery, proof and deferral even when the detail tapers.
 
 As each stage takes shape, sketch its change surface in the conversation. Say
 which modules and functions are new, which ones change, and which behaviour
@@ -161,8 +157,9 @@ Judge size by what I can review and hold in my head. A stage also has to fit in
 one agent session, but assume a frontier model with a million tokens of context;
 reviewability will usually be the tighter bound.
 
-Split or merge where the review says to. When a split creates a new stage, take
-us briefly back through its delivery, proof and deferral before moving on.
+Split or merge where needed to make each stage easier for me to review. When a
+split creates a new stage, take us briefly back through its delivery, proof and
+deferral before moving on.
 
 Don't estimate duration, dates, effort or points. The number of stages is enough
 sizing for this roadmap.
@@ -195,8 +192,8 @@ Under `How these run`, include these standing notes and nothing else:
 
 - The stages run in the order below. Every child issue after the first is
   blocked by the one before it. Merging one stage closes its issue and unblocks
-  the next, which becomes eligible once the user has given it the `dream:smith`
-  label and an assignee.
+  the next, which becomes eligible once the user has given it a dispatch label
+  and an assignee.
 - Every session that implements a stage corrects the specifications as details
   change and says on its pull request what it corrected. It may correct details
   within a stage. It raises a structural change with the user instead of
