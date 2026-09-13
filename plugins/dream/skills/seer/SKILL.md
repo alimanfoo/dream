@@ -13,9 +13,9 @@ I've got a design for something too large to build in one pull request. I'd like
 the two of us to break it into stages, where each stage is one pull request that
 I can review and merge before the next one starts.
 
-The result is a roadmap that another agent can work down, one `dream:smith`
-session per stage. Help me find the boundaries, make each stage clear enough to
-build from, and put the risky work where it cannot surprise us late.
+The result is a roadmap that another agent can work down, one session per stage.
+Help me find the boundaries, make each stage clear enough to build from, and put
+the risky work where it cannot surprise us late.
 
 This is planning the sequence, not designing the thing. Some missing design
 detail may surface when we try to draw a boundary. Bring that detail back to me
@@ -70,8 +70,8 @@ a reading guide and a design in its comments. Read an issue with `gh`, comments
 included. If I gave you nothing, ask me what work we're breaking down.
 
 Read everything the seed cites. Use the requirements to keep the result in
-scope, the reading guide to find your way through the code, and the design to
-establish what has to be built.
+scope, the reading guide to find your way through the code as it currently
+stands, and the design to establish what has to be built.
 
 If there is no design, tell me before we start and ask whether I want to carry
 on. Without one, drawing stage boundaries will make design decisions on the way
@@ -79,9 +79,9 @@ past, and the roadmap cannot be checked against an agreed whole.
 
 ## Read the code before you divide the work
 
-Follow the reading guide from `dream:state` when there is one. Read everything
-it names, then read anything else that the design touches. Read the
-documentation that governs those paths too.
+Follow the reading guide when there is one. Read everything it names, then read
+anything else that the design touches. Read the documentation that governs those
+paths too.
 
 Ground every claim about the code in what you read. A wrong dependency can look
 plausible until several stages later, when correcting it is expensive. If you
@@ -91,11 +91,9 @@ go and read it.
 ## Stop when the work does not need a roadmap
 
 After you have read the design and the code, say so and stop if the work fits in
-one or two pull requests. Don't write a roadmap or create any issues. An agent
-asked to find stages will find them whether the work earns them or not, and two
-ordinary sessions need no parent roadmap to coordinate them.
+one pull request. Let's not write a roadmap if we don't need to.
 
-## Agree the breakdown
+## Discuss the breakdown
 
 Put up two or three ways to cut the same work, sketching what each one means for
 this design. Name the line that each cut follows, such as a layer, a thin
