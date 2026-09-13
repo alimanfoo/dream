@@ -463,16 +463,6 @@ plugins/:
           Write down the precedent:
           Review the change:
           Reporting:
-      seer-design-fit.md:
-        Roadmap design review:
-          Read the work:
-          Check the sequence:
-          Reporting:
-      seer-stage-readiness.md:
-        Stage readiness review:
-          Read the work:
-          Check every stage:
-          Reporting:
 README.md:
   dream:
     Prerequisites:

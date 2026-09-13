@@ -52,11 +52,11 @@ since the harness reads that to pick the skill. Keep `dream:copy-edit` off all
 four bodies. It rewrites prose towards the Plain English guide, a different end
 point, and the register is what would go.
 
-Store every subagent task prompt in its own file that both hosts can read. Put
-the file in `plugins/dream/subagents/` when both hosts use plain subagents. Put
-it in `plugins/dream/agents/` when Claude Code needs a named definition for
-host-specific settings. Pass an agent file's absolute path to a plain Codex
-subagent.
+Keep a simple subagent task prompt inline in the skill that launches it. When a
+task prompt earns its own file, put it in `plugins/dream/subagents/` if both
+hosts use plain subagents. Put it in `plugins/dream/agents/` only when Claude
+Code needs a named definition for host-specific settings. Pass a shared prompt
+file's absolute path to a plain Codex subagent.
 
 Make every skill that launches subagents under both hosts read
 [`subagent-waiting.md`](plugins/dream/subagent-waiting.md). It owns the

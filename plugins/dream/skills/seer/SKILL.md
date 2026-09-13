@@ -216,16 +216,20 @@ Before you show me the roadmap, get two fresh readers on it. Spawn both as
 subagents at the same time. Give each one the absolute path of the roadmap and
 the seed, including the issue number when the design lives in an issue.
 
-Give the first one the absolute path of
-[`seer-stage-readiness.md`](../../subagents/seer-stage-readiness.md) and tell it
-to work to those instructions. It reads each stage as the agent that has to
-implement it and checks whether it could do so without coming back to ask.
+Ask the first one to read the seed, the roadmap and the relevant code. It reads
+each stage as the agent that has to implement it, and answers one question:
+could it do so without coming back to ask? Ask it to report only a stage that
+would force a question, naming what is missing or ambiguous and the question it
+would have to ask.
 
-Give the second one the absolute path of
-[`seer-design-fit.md`](../../subagents/seer-design-fit.md) and tell it to work
-to those instructions. It checks that the dependencies are real and ordered,
-that every part of the design lands somewhere, and that the roadmap invented
-nothing.
+Ask the second one to read the requirements and design before the roadmap, then
+enough of the code to check every dependency it raises. It checks that the
+dependencies are real and ordered, that every part of the design lands in a
+stage, and that no stage invented work. Ask it to report only confirmed gaps,
+false dependencies, ordering errors and invented work, with the evidence for
+each one.
+
+Tell both readers to change nothing, and that finding nothing is a fine answer.
 
 Don't add an over-engineering review or a search for existing tools here.
 `dream:shape` already did that work against the design, where those questions
