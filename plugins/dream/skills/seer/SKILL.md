@@ -54,9 +54,10 @@ because I proposed it.
 ## Start from what I've given you
 
 Whatever I passed you is the seed: a design, an issue number or URL, a file
-path, or plain text. Usually it will be an issue or spec carrying a requirements
-brief, a reading guide and a design in its comments. Read an issue with `gh`,
-comments included. If I gave you nothing, ask me what work we're breaking down.
+path, or plain text. Usually it will be an issue whose comments carry a
+requirements brief, a reading guide and a design, or one of those specifications
+as a file in the repo. Read an issue with `gh`, comments included. If I gave you
+nothing, ask me what work we're breaking down.
 
 Read everything the seed cites. Use the requirements to keep the result in
 scope, the reading guide to find your way through the code as it currently
