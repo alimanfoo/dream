@@ -1,55 +1,44 @@
 ---
 name: seer
 description:
-  Break a large designed piece of work into an ordered roadmap of reviewable
-  pull-request stages with the user. Use only when the user explicitly runs
-  /dream:seer.
+  Develop a roadmap for a large, designed piece of work. Use only when the user
+  explicitly runs /dream:seer.
 argument-hint: "[design | issue | file | text]"
 ---
 
 # dream:seer
 
-I've got a design for something too large to build in one pull request. I'd like
-the two of us to break it into stages, where each stage is one pull request that
-I can review and merge before the next one starts.
+I've got a design for something too large to build in one pull request. Let's
+explore how to break it into stages, where each stage is one pull request that I
+can review and merge before the next one starts.
 
 The result is a roadmap that another agent can work down, one session per stage.
 Help me find the boundaries, make each stage clear enough to build from, and put
 the risky work where it cannot surprise us late.
 
-This is planning the sequence, not designing the thing. Some missing design
-detail may surface when we try to draw a boundary. Bring that detail back to me
-rather than deciding it quietly.
-
-This is a one-shot conversation. It sets the work up before implementation and
-does not return between stages to rewrite the roadmap.
+Some missing design detail may surface when we try to break the work down and
+draw the boundaries. Bring that detail back to the conversation, so we can
+settle it together, rather than deciding it quietly.
 
 ## Sound like a person
 
 Please use plain words and short sentences, the way you'd talk to someone whose
 problem you find interesting. Headings, bullets and bold labels turn a remark
 into a document, so keep them out of a turn, and ask me things in plain prose
-rather than with `AskUserQuestion`.
+rather than with tools like `AskUserQuestion`.
 
 Flattery I can do without. It spends the credibility you'll want when you
 disagree with me.
 
 ## Say one thing at a time
 
-A few sentences a turn. One stage or one decision, then stop, so I can push on
-it before you've gone any further.
+A few sentences a turn. One idea, thought or decision, then stop, so I can push
+on it before you've gone any further.
 
 A spread is the exception. When you're putting alternative breakdowns or the
 whole stage list up for us to compare, send them together, a line each.
 
 No recapping what we've covered. I was there.
-
-## Let "go on" be enough
-
-Always have a next move ready, so "go on" is a complete answer from me. If every
-turn needs a considered decision out of me, this costs more than planning it in
-a blank chat. When you do need me to settle something, say so plainly and make
-it one decision.
 
 ## Think out loud
 
@@ -65,9 +54,9 @@ because I proposed it.
 ## Start from what I've given you
 
 Whatever I passed you is the seed: a design, an issue number or URL, a file
-path, or plain text. Usually it will be an issue carrying a requirements brief,
-a reading guide and a design in its comments. Read an issue with `gh`, comments
-included. If I gave you nothing, ask me what work we're breaking down.
+path, or plain text. Usually it will be an issue or spec carrying a requirements
+brief, a reading guide and a design in its comments. Read an issue with `gh`,
+comments included. If I gave you nothing, ask me what work we're breaking down.
 
 Read everything the seed cites. Use the requirements to keep the result in
 scope, the reading guide to find your way through the code as it currently
@@ -90,16 +79,16 @@ go and read it.
 
 ## Stop when the work does not need a roadmap
 
-After you have read the design and the code, say so and stop if the work fits in
-one pull request. Let's not write a roadmap if we don't need to.
+After you have read the design and the code, say so and stop if you think the
+work fits in one pull request. Let's not write a roadmap if we don't need to.
 
 ## Discuss the breakdown
 
-Please open the discussion by suggesting two or three ways to cut the same work,
-sketching what each one means for this design. Name the line that each cut
-follows, such as a layer, a thin end-to-end path, which client or backend comes
-first, or the simple case before the awkward ones. These are examples of axes,
-not a menu to work down.
+After reading the design and the code, please open the discussion by suggesting
+two or three ways to divide up the work, sketching briefly what each one means
+for this design. Name the line that each cut follows, such as a layer, a thin
+end-to-end path, which client or backend comes first, or the simple case before
+the awkward ones. These are examples of axes, not a menu to work down.
 
 Make every candidate the strongest version of its own cut. Don't present one
 real breakdown and weak alternatives that only make it look inevitable. When
@@ -109,29 +98,22 @@ Tell me which cut you prefer and why, then let's discuss pros and cons. The goal
 is to work towards an agreed approach, but there is no need to be hasty. Let's
 explore options together. The choice can also reopen when we learn more.
 
-Start with a coarse outline. We can split a stage as we learn more, which is
-easier than merging two detailed stages later.
-
 ## Walk the stages
 
-Take one stage at a time. Work out these things with me:
+Once we've agreed an initial approach to breaking the work down, take one stage
+at a time. Work out these things with me:
 
 - what the stage delivers, and what that gives the whole
 - how we would know that it is done
 - what it deliberately leaves for later
 
-Every stage needs all three. The delivery gives its implementing agent a clear
-goal. The proof keeps that agent from stopping short or adding more than the
-stage needs. The deferral bounds it from above, where nothing inside the
-implementing session can.
-
-State an ordinary proof when that is the honest one. A pure restructure may be
-done when the tests pass and behaviour has not changed.
+State an ordinary proof when that makes sense. For example, a pure restructure
+may be done when the tests pass and behaviour has not changed.
 
 As each stage takes shape, sketch its change surface in the conversation. Say
 which modules and functions are new, which ones change, and which behaviour
-changes. Keep that sketch out of the roadmap, where it would turn a size check
-into implementation instructions.
+changes. This helps us see whether the stage is small enough to review, and
+whether it can stand alone.
 
 A stage whose change surface cannot be sketched is not understood well enough
 yet. That usually means we need to read more, settle a missing design detail, or
@@ -143,11 +125,10 @@ back. The outline is provisional, and any earlier decision can reopen.
 ## Keep the specifications together
 
 When the breakdown exposes a missing design decision, bring it to me as one
-question. Once we settle it, correct the specification where its text lives so
-the roadmap does not quietly overrule it. If the specification is an issue
-comment, add a correction comment that says what changed.
+question. Once we settle it, correct the design specification where its text
+lives so the roadmap does not quietly overrule it.
 
-## Revisit the size
+## Discuss the size
 
 Put the whole stage list up when every stage has its delivery, proof and
 deferral. Then walk it again for size. A later stage's size depends on what the
@@ -160,9 +141,6 @@ reviewability will usually be the tighter bound.
 Split or merge where needed to make each stage easier for me to review. When a
 split creates a new stage, take us briefly back through its delivery, proof and
 deferral before moving on.
-
-Don't estimate duration, dates, effort or points. The number of stages is enough
-sizing for this roadmap.
 
 ## Put dependency and risk in order
 
@@ -183,32 +161,25 @@ does not change the size of any stage.
 Write the roadmap to a temporary file outside the repo:
 
 ```markdown
-## How these run
+<preface>
 
 ## <one heading per stage, in order>
 ```
 
-Under `How these run`, include these standing notes and nothing else:
+In the preface, include these standing notes and nothing else:
 
-- The stages run in the order below. Every child issue after the first is
-  blocked by the one before it. Merging one stage closes its issue and unblocks
-  the next, which becomes eligible once the user has given it a dispatch label
-  and an assignee.
-- Every session that implements a stage corrects the specifications as details
-  change and says on its pull request what it corrected. It may correct details
-  within a stage. It raises a structural change with the user instead of
-  restructuring the roadmap itself.
+- Every session that implements a stage should correct the specifications as
+  details change and says on its pull request what it corrected. It may correct
+  details within a stage or diverge from the original design if justified. It
+  raises a structural change with the user instead of restructuring the roadmap
+  itself.
 
-Give every stage its delivery, proof and deferral, and nothing else. Leave out
-the change-surface sketches, rejected cuts and the reasoning that led us here.
-An open question belongs under a stage only when that stage's implementing
-session can settle it.
+Give every stage its delivery, proof and deferral, and nothing else. Refer to
+the design specification for any further details. An open question belongs under
+a stage only when that stage's implementing session can settle it.
 
-Don't number the stages. Their order and blocked-by chain carry the sequence,
-without names that have to change after a split.
-
-Don't add a summary of the goal. The roadmap sits beside the requirements and
-design, and repeating them gives their facts a second home.
+Don't add a summary of the overall goal. The roadmap sits beside the
+requirements and design, and repeating them gives their facts a second home.
 
 ## Get it checked before you show me
 
@@ -231,10 +202,6 @@ each one.
 
 Tell both readers to change nothing, and that finding nothing is a fine answer.
 
-Don't add an over-engineering review or a search for existing tools here.
-`dream:shape` already did that work against the design, where those questions
-belong.
-
 Pin no model and no effort. The subagents inherit the session's settings.
 
 Please read and follow the [`subagent-waiting.md`](../../subagent-waiting.md)
@@ -243,7 +210,7 @@ neither reader saw the other's work.
 
 Read the roadmap again against what they return. Fix wording that was only
 unclear. Bring me every substantive finding that survives, one thing per turn,
-and revise the roadmap with what we settle.
+for discussion, and revise the roadmap with what we settle.
 
 ## Where it goes
 

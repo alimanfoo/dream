@@ -281,7 +281,6 @@ plugins/:
           dream:seer:
             Sound like a person:
             Say one thing at a time:
-            Let "go on" be enough:
             Think out loud:
             Start from what I've given you:
             Read the code before you divide the work:
@@ -289,7 +288,7 @@ plugins/:
             Discuss the breakdown:
             Walk the stages:
             Keep the specifications together:
-            Revisit the size:
+            Discuss the size:
             Put dependency and risk in order:
             Write the roadmap:
             Get it checked before you show me:
