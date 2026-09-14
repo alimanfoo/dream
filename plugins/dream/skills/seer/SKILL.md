@@ -9,16 +9,16 @@ argument-hint: "[design | issue | file | text]"
 # dream:seer
 
 I've got a design for something too large to build in one pull request. Let's
-explore how to break it into stages, where each stage is one pull request that I
-can review and merge before the next one starts.
+explore together how to break it into stages, where each stage is one pull
+request that I can review and merge before the next one starts.
 
 The result is a roadmap that another agent can work down, one session per stage.
-Help me find the boundaries, make each stage clear enough to build from, and put
-the risky work where it cannot surprise us late.
+Help me to decide the boundaries, make each stage clear enough to build from,
+and put the risky work where it cannot surprise us late.
 
-Some missing design detail may surface when we try to break the work down and
-draw the boundaries. Bring that detail back to the conversation, so we can
-settle it together, rather than deciding it quietly.
+Some missing design detail may surface when we try to break the work down. Bring
+that detail back to the conversation, so we can settle it together, rather than
+deciding it quietly.
 
 ## Sound like a person
 
@@ -55,17 +55,15 @@ because I proposed it.
 
 Whatever I passed you is the seed: a design, an issue number or URL, a file
 path, or plain text. Usually it will be an issue whose comments carry a
-requirements brief, a reading guide and a design, or one of those specifications
-as a file in the repo. Read an issue with `gh`, comments included. If I gave you
-nothing, ask me what work we're breaking down.
+requirements brief, a reading guide and a design. Read an issue with `gh`,
+comments included. If I gave you nothing, ask me what work we're breaking down.
 
 Read everything the seed cites. Use the requirements to keep the result in
 scope, the reading guide to find your way through the code as it currently
 stands, and the design to establish what has to be built.
 
 If there is no design, tell me before we start and ask whether I want to carry
-on. Without one, drawing stage boundaries will make design decisions on the way
-past, and the roadmap cannot be checked against an agreed whole.
+on.
 
 ## Read the code before you divide the work
 
@@ -86,13 +84,14 @@ work fits in one pull request. Let's not write a roadmap if we don't need to.
 ## Discuss the breakdown
 
 After reading the design and the code, please open the discussion by suggesting
-two or three ways to divide up the work, sketching briefly what each one means
-for this design. Name the line that each cut follows, such as a layer, a thin
-end-to-end path, which client or backend comes first, or the simple case before
-the awkward ones. These are examples of axes, not a menu to work down.
+two or three different approaches to dividing up the work, sketching briefly
+what each one would mean for this design. Name the line that each cut follows,
+such as a layer, a thin end-to-end path, which client or backend comes first, or
+the simple case before the awkward ones. These are examples of axes, not a menu
+to work down.
 
-Make every candidate the strongest version of its own cut. Don't present one
-real breakdown and weak alternatives that only make it look inevitable. When
+Make every candidate the strongest version of its own cut. Please don't present
+one real breakdown and weak alternatives that only make it look inevitable. When
 only one cut makes sense, say why in a line rather than inventing another.
 
 Tell me which cut you prefer and why, then let's discuss pros and cons. The goal
@@ -109,7 +108,7 @@ at a time. Work out these things with me:
 - what it deliberately leaves for later
 
 State an ordinary proof when that makes sense. For example, a pure restructure
-may be done when the tests pass and behaviour has not changed.
+stage may be done when the tests pass and behaviour has not changed.
 
 As each stage takes shape, sketch its change surface in the conversation. Say
 which modules and functions are new, which ones change, and which behaviour
@@ -154,12 +153,13 @@ unknown, or fake a dependency so risky work can happen earlier. A spike earns a
 stage only when it retires a named unknown and leaves evidence that the later
 stage can use.
 
-Do this after sizing. A split changes the sequence, while changing the order
-does not change the size of any stage.
+Usually it's best to do this after sizing. A split changes the sequence, while
+changing the order does not change the size of any stage.
 
 ## Write the roadmap
 
-Write the roadmap to a temporary file outside the repo:
+Once we've settled on the stages and the order, write the roadmap to a temporary
+file outside the repo:
 
 ```markdown
 <preface>
@@ -176,9 +176,9 @@ In the preface, include these standing notes and nothing else:
   boundaries, order or dependencies with the user instead of restructuring the
   roadmap itself.
 
-Give every stage its delivery, proof and deferral, and nothing else. Refer to
-the design specification for any further details. An open question belongs under
-a stage only when that stage's implementing session can settle it.
+Give every stage its delivery, proof and deferral. Refer to the design
+specification for any further details. An open question belongs under a stage
+only when that stage's implementing session can settle it.
 
 Don't add a summary of the overall goal. The roadmap sits beside the
 requirements and design, and repeating them gives their facts a second home.
