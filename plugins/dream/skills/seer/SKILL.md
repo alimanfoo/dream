@@ -169,10 +169,11 @@ Write the roadmap to a temporary file outside the repo:
 In the preface, include these standing notes and nothing else:
 
 - Every session that implements a stage should correct the specifications as
-  details change and says on its pull request what it corrected. It may correct
-  details within a stage or diverge from the original design if justified. It
-  raises a structural change with the user instead of restructuring the roadmap
-  itself.
+  details change and say on its pull request what it corrected. It may change
+  how it delivers the stage when earlier work or implementation discoveries
+  justify that change. It should raise any change to the roadmap's stages,
+  boundaries, order or dependencies with the user instead of restructuring the
+  roadmap itself.
 
 Give every stage its delivery, proof and deferral, and nothing else. Refer to
 the design specification for any further details. An open question belongs under
