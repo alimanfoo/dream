@@ -310,15 +310,19 @@ Show me the brief, with my last answers folded in. It's the one long thing you
 send me, so let it stand on its own: no introduction, no summary underneath, no
 list of what changed since the playback.
 
-Then, if I want it somewhere the work can start from, a comment on the seed
-issue (`gh issue comment`) when I gave you one, or a new issue on the repo
-(`gh issue create`) when I didn't. Ask me first, and a no is a fine answer.
+Then, if I want it somewhere the work can start from, offer to put it in the
+repo as `requirements.md` and open a pull request, following the
+[spec files](../../spec-files.md) rules.
 
-Not the seed issue's body, though. That wipes out my own words, and a comment
-carries the brief to the same place.
+If I'd rather not have a file, offer to post it as a comment on the seed issue
+(`gh issue comment`) when I gave you one, or as a new issue on the repo
+(`gh issue create`) when I didn't. Not the seed issue's body, though. That wipes
+out my own words, and a comment carries the brief to the same place.
 
-Anything you post wants each paragraph on a single line, since GitHub reflows
-it. Read the `commentFooter` value from
+Ask me first, whichever it is, and a no is a fine answer.
+
+Anything you post as a comment or an issue wants each paragraph on a single
+line, since GitHub reflows it. Read the `commentFooter` value from
 [`agent-written-marks.json`](../../agent-written-marks.json), then end the post
 with that exact value as a blockquote. This lets a reader tell an agent wrote
 it.

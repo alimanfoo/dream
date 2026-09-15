@@ -71,9 +71,9 @@ library may be a year out of date.
 
 Whatever I passed you is the starting point: a requirements brief, an issue
 number or URL, a file path, or plain text. Usually it'll be a brief from
-`dream:spark`, sitting as a comment on an issue. Read an issue with `gh`,
-comments included. It says what I want, not how to build it. If I gave you
-nothing, ask me what we're designing.
+`dream:spark`, either a `requirements.md` in the repo or a comment on an issue.
+Read an issue with `gh`, comments included. It says what I want, not how to
+build it. If I gave you nothing, ask me what we're designing.
 
 Don't take it as settled, though. It may have been written before either of us
 had looked at the code. It may also have been written by another agent, and so
@@ -278,12 +278,16 @@ Show me the design, with whatever we settled at the end folded in. It's the one
 long thing you send me, so let it stand on its own: no introduction, no summary
 underneath, and no list of what changed.
 
-Then, if I want it somewhere the work can start from, a comment on the issue I
-gave you (`gh issue comment`), or a new issue on the repo (`gh issue create`) if
-I didn't. Ask me first, and a no is a fine answer.
+Then, if I want it somewhere the work can start from, offer to put it in the
+repo as `design.md` and open a pull request, following the
+[spec files](../../spec-files.md) rules.
 
-Anything you post wants each paragraph on a single line, since GitHub reflows
-it. Read the `commentFooter` value from
+If I'd rather not have a file, offer to post it as a comment on the issue I gave
+you (`gh issue comment`), or as a new issue on the repo (`gh issue create`) if I
+didn't. Ask me first, whichever it is, and a no is a fine answer.
+
+Anything you post as a comment or an issue wants each paragraph on a single
+line, since GitHub reflows it. Read the `commentFooter` value from
 [`agent-written-marks.json`](../../agent-written-marks.json), then end the post
 with that exact value as a blockquote. This lets a reader tell an agent wrote
 it.
