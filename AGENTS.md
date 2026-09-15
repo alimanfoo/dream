@@ -62,6 +62,11 @@ Make every skill that launches subagents under both hosts read
 [`subagent-waiting.md`](plugins/dream/subagent-waiting.md). It owns the
 cross-host completion rule.
 
+`dream:spark`, `dream:state`, `dream:shape` and `dream:seer` all read
+[`spec-files.md`](plugins/dream/spec-files.md). It owns where a specification
+file goes and how it reaches the user on a pull request, so those four skills
+don't each carry their own copy of the convention.
+
 `plugins/dream/agents/` holds Claude Code agent definitions. Four are the
 dream-team agents. `dream:team` spawns its agents by name. It needs Claude
 Code's agent teams feature, so it stays Claude-only.

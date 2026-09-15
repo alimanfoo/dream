@@ -449,6 +449,11 @@ plugins/:
             On each firing:
             Teardown:
             Limits:
+    spec-files.md:
+      Spec files:
+        Where the files go:
+        The pull request:
+        Correcting an earlier specification:
     subagent-waiting.md:
       Subagent waiting protocol:
         Claude Code:

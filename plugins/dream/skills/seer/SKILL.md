@@ -54,9 +54,10 @@ because I proposed it.
 ## Start from what I've given you
 
 Whatever I passed you is the seed: a design, an issue number or URL, a file
-path, or plain text. Usually it will be an issue whose comments carry a
-requirements brief, a reading guide and a design. Read an issue with `gh`,
-comments included. If I gave you nothing, ask me what work we're breaking down.
+path, or plain text. Usually it will be a folder of specifications holding a
+requirements brief, a reading guide and a design, or an issue whose comments
+carry them. Read an issue with `gh`, comments included. If I gave you nothing,
+ask me what work we're breaking down.
 
 Read everything the seed cites. Use the requirements to keep the result in
 scope, the reading guide to find your way through the code as it currently
@@ -220,23 +221,27 @@ Show me the roadmap with the reviews folded in. It is the one long thing you
 send me, so let it stand on its own: no introduction, no summary underneath, and
 no list of what changed.
 
-Then offer to post it as a comment on the seed issue (`gh issue comment`). That
-issue becomes the parent. If I gave you no issue, offer to create a parent issue
-first (`gh issue create`), using the seed for its title and body, then post the
-roadmap as a comment. Ask me before either write, and a no is a fine answer.
+Then offer to put it in the repo as `roadmap.md` and open a pull request,
+following the [spec files](../../spec-files.md) rules. If I'd rather not have a
+file, offer to post it as a comment on the seed issue (`gh issue comment`)
+instead. Ask me before either write, and a no is a fine answer.
 
-After the roadmap is posted, ask me separately whether to create its child
-issues. Create them in stage order, one issue per stage. Name each issue after
-its stage. Give each body one pointer: read the roadmap on the parent issue and
-implement the stage named here.
+After the roadmap has a home, ask me separately whether to create its child
+issues. They hang off a parent issue: the seed issue when I gave you one, or one
+you offer to create (`gh issue create`), using the seed for its title and body.
+
+Create the children in stage order, one issue per stage. Name each issue after
+its stage. Give each body one pointer to the roadmap, either its path in the
+repo or the parent issue's comment, and one instruction: implement the stage
+named here.
 
 Create the first child with `gh issue create --parent`. Create every later child
 with `--parent` and `--blocked-by`, naming the child immediately before it. Add
 no label and no assignee. Creating the roadmap and deciding to start work are
 separate acts.
 
-Anything you post wants each paragraph on a single line, since GitHub reflows
-it. Read the `commentFooter` value from
-[`agent-written-marks.json`](../../agent-written-marks.json), then end the
-roadmap comment and every child issue body with that exact value as a
-blockquote. This lets a reader tell an agent wrote it.
+Anything you post as a comment or an issue wants each paragraph on a single
+line, since GitHub reflows it. Read the `commentFooter` value from
+[`agent-written-marks.json`](../../agent-written-marks.json), then end every
+post with that exact value as a blockquote. This lets a reader tell an agent
+wrote it.
