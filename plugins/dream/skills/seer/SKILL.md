@@ -59,9 +59,9 @@ requirements brief, a reading guide and a design, or an issue whose comments
 carry them. Read an issue with `gh`, comments included. If I gave you nothing,
 ask me what work we're breaking down.
 
-Read everything the seed cites. Use the requirements to keep the result in
-scope, the reading guide to find your way through the code as it currently
-stands, and the design to establish what has to be built.
+Read everything the seed cites. Use the requirements to understand the problem,
+need or opportunity, the reading guide to find your way through the code as it
+currently stands, and the design to establish what has to be built.
 
 If there is no design, tell me before we start and ask whether I want to carry
 on.
