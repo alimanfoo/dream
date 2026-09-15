@@ -22,20 +22,15 @@ When the work already has a folder, write into that one rather than starting
 another. The seed usually names it. Otherwise look for it under `specs/`, and
 ask the user when you can't tell which folder is the right one.
 
-Name the file after the specification it holds:
-
-- `requirements.md` for the requirements brief, from `dream:spark`
-- `reading-guide.md` for the route through the code as it stands, from
-  `dream:state`
-- `design.md` for the design, from `dream:shape`
-- `roadmap.md` for the roadmap, from `dream:seer`
+Each skill names its own file, so the folder ends up holding one file per
+specification.
 
 ## The pull request
 
 Once the user has agreed to the file, open a pull request for it:
 
 - Create a branch off the current branch, named after the folder's slug.
-- Copy the draft into the folder, under its file name.
+- Copy the draft into the folder, under that name.
 - Commit it. Read the `commitTrailer` value from
   [`agent-written-marks.json`](agent-written-marks.json), and end the commit
   message with that exact value.
