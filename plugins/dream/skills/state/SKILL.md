@@ -243,7 +243,7 @@ Show me the guide. It's the one long thing you send me, so let it stand on its
 own: no introduction and no summary underneath.
 
 Then, if I want it somewhere the work can start from, put it in the repo as
-`current_state.md` and open a pull request, following the
+`reading-guide.md` and open a pull request, following the
 [spec files](../../spec-files.md) rules.
 
 If I'd rather not have a file, post it as a comment on the issue I gave you

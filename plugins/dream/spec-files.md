@@ -25,7 +25,8 @@ ask the user when you can't tell which folder is the right one.
 Name the file after the specification it holds:
 
 - `requirements.md` for the requirements brief, from `dream:spark`
-- `current_state.md` for the guide to the code as it stands, from `dream:state`
+- `reading-guide.md` for the route through the code as it stands, from
+  `dream:state`
 - `design.md` for the design, from `dream:shape`
 - `roadmap.md` for the roadmap, from `dream:seer`
 
