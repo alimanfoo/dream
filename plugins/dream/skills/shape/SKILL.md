@@ -278,12 +278,12 @@ Show me the design, with whatever we settled at the end folded in. It's the one
 long thing you send me, so let it stand on its own: no introduction, no summary
 underneath, and no list of what changed.
 
-Then, if I want it somewhere the work can start from, put it in the repo as
-`design.md` and open a pull request, following the
+Then, if I want it somewhere the work can start from, offer to put it in the
+repo as `design.md` and open a pull request, following the
 [spec files](../../spec-files.md) rules.
 
-If I'd rather not have a file, post it as a comment on the issue I gave you
-(`gh issue comment`), or as a new issue on the repo (`gh issue create`) if I
+If I'd rather not have a file, offer to post it as a comment on the issue I gave
+you (`gh issue comment`), or as a new issue on the repo (`gh issue create`) if I
 didn't. Ask me first, whichever it is, and a no is a fine answer.
 
 Anything you post as a comment or an issue wants each paragraph on a single

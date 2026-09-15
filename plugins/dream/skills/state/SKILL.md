@@ -242,12 +242,13 @@ it, so I need to hear that it's gone or been corrected.
 Show me the guide. It's the one long thing you send me, so let it stand on its
 own: no introduction and no summary underneath.
 
-Then, if I want it somewhere the work can start from, put it in the repo as
-`reading-guide.md` and open a pull request, following the
+Then, if I want it somewhere the work can start from, offer to put it in the
+repo as `reading-guide.md` and open a pull request, following the
 [spec files](../../spec-files.md) rules.
 
-If I'd rather not have a file, post it as a comment on the issue I gave you
-(`gh issue comment`). Ask me first, whichever it is, and a no is a fine answer.
+If I'd rather not have a file, offer to post it as a comment on the issue I gave
+you (`gh issue comment`). Ask me first, whichever it is, and a no is a fine
+answer.
 
 Anything you post as a comment wants each paragraph on a single line, since
 GitHub reflows it. Read the `commentFooter` value from
