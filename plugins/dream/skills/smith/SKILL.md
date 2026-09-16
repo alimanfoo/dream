@@ -230,30 +230,9 @@ Defer one that holds but needs a PR of its own.
 Commit and push the fixes.
 
 Post the findings and how you acted on them as a PR comment, headed
-`Coherence review`, in this shape:
-
-```text
-## {heading}
-
-> {the finding, verbatim}
-
-Accepted. {what you did}
-
-> {the finding, verbatim}
-
-Rejected. {the reason, in one sentence}
-
-> {the finding, verbatim}
-
-Deferred. {why it needs a PR of its own, in one sentence}
-
-...and so on, one block per finding.
-```
-
-Quote each finding verbatim, so the reader can tell the review's words from
-yours.
-
-If a review returns no findings, post the heading and one line saying so.
+`Coherence review`, per the [review comment](../../review-comment.md). Write
+each response as `Accepted.` and what you did, `Rejected.` and the reason in one
+sentence, or `Deferred.` and why it needs a PR of its own, in one sentence.
 
 Second, run the `dream:code-review` skill the same way, and head its comment
 `Code review`. It follows the coherence review so that it reads the fixes that

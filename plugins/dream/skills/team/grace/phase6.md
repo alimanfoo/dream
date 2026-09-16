@@ -45,34 +45,13 @@ contract, invariant, precondition, or convention, apply the
 ## Step 6.3: Post each review and response as a PR comment
 
 Post each review and its response as one PR comment after you have handled all
-accepted findings through the standard per-task workflow. Head the code review
-comment `Code review` and the coherence review comment `Coherence review`. Use
-this shape:
-
-```text
-## {heading}
-
-Reviewed commit: {commit}
-
-> {the finding, verbatim}
-
-Accepted. {what you did}
-
-> {the finding, verbatim}
-
-Rejected. {the reason}
-
-> {the finding, verbatim}
-
-Out of scope. Held for post-merge triage.
-
-...and so on, one block per finding.
-```
-
-Quote each finding verbatim, so the reader can tell the review's words from
-yours.
-
-If a review raised no findings, post the heading and one line saying so.
+accepted findings through the standard per-task workflow, per the
+[review comment](../../../review-comment.md). Head the code review comment
+`Code review` and the coherence review comment `Coherence review`. Put a
+`Reviewed commit: {commit}` line under the heading, naming the commit you
+recorded in [Step 6.1](#step-61-send-the-review-requests). Write each response
+as `Accepted.` and what you did, `Rejected.` and the reason, or
+`Out of scope. Held for post-merge triage.`
 
 Keep agent names off GitHub. Use the headings to name each review, not the agent
 who wrote it. Post per

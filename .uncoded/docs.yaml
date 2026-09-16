@@ -156,6 +156,8 @@ plugins/:
         Skip the Latin:
         Skip the flourish:
         Text for GitHub:
+    review-comment.md:
+      Review comment:
     reviewers-guide.md:
       Reviewer's guide:
         Keep it current:
