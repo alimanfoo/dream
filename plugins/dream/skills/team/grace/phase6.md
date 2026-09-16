@@ -38,8 +38,7 @@ For each finding you called out of scope, apply the
 
 Write a response to each finding into the comment file as you triage it:
 `Accepted.` and the follow-on task, `Rejected.` and the reason, or
-`Out of scope. Held for post-merge triage.` Once a follow-on task is complete,
-add the commit or evidence on the PR that addressed it.
+`Out of scope. Held for post-merge triage.`
 
 If a finding proposes a docstring, comment, or section-header to express a
 contract, invariant, precondition, or convention, apply the
