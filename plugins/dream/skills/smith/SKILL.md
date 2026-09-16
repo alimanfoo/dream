@@ -233,8 +233,8 @@ Defer one that holds but needs a PR of its own.
 Commit and push the fixes.
 
 Then fill in each response and post the comment. Write `Accepted.` and what you
-did, `Rejected.` and the reason in one sentence, or `Deferred.` and why it needs
-a PR of its own, in one sentence.
+did, `Rejected.` and the reason, or `Deferred.` and why it needs a PR of its
+own, each in one sentence.
 
 Second, run the `dream:code-review` skill the same way, and head its comment
 `Code review`. It follows the coherence review so that it reads the fixes that

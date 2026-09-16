@@ -9,14 +9,15 @@ decision you took.
 Write the comment into a temporary file outside the repo as soon as the review
 arrives, before you weigh any finding or change any code. Put in the heading,
 then each finding, copied across word for word, and leave the space under each
-quote empty.
+quote empty. Name the file after the comment's heading, so one review's file
+never overwrites another's.
 
 A review's words fade as you work. Starting the comment after the fixes are in
 leaves you retelling each finding from memory, so the reader gets your words in
 place of the review's.
 
-If the review returned no findings, write the heading and one line saying so,
-then post the file.
+If the review returned no findings, the comment is the heading and one line
+saying so.
 
 ## Fill in each response
 

@@ -15,14 +15,13 @@ Two `SendMessage` calls in the same turn, one to each, both carrying the PR
 number. Close each with `Reply via SendMessage.` Wait for both reviews by going
 idle (see [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
-## Step 6.2: Triage each finding
+Start each review's PR comment as soon as that review arrives, following the
+[review comment](../../../review-comment.md) rules. Head the code review comment
+`Code review` and the coherence review comment `Coherence review`. Put a
+`Reviewed commit: {commit}` line under the heading, naming the commit you
+recorded above.
 
-Start each review's PR comment as soon as that review arrives, before you triage
-any of its findings, following the [review comment](../../../review-comment.md)
-rules. Head the code review comment `Code review` and the coherence review
-comment `Coherence review`. Put a `Reviewed commit: {commit}` line under the
-heading, naming the commit you recorded in
-[Step 6.1](#step-61-send-the-review-requests).
+## Step 6.2: Triage each finding
 
 Raise a challenge before deciding a finding when it shows that a settled
 artifact no longer holds. Take it to the user per the "challenge" shape.
@@ -39,11 +38,10 @@ paths:
 For each finding you called out of scope, apply the
 [same-edit check](../../../agents/Grace.md#same-edit-check).
 
-Write each response into the comment file under its finding's quote as you
-triage: `Accepted.` and what you did, `Rejected.` and the reason, or
-`Out of scope. Held for post-merge triage.` An accepted finding's response names
-the follow-on task, and once that task is complete, the commit or evidence on
-the PR that addressed it.
+Respond to each finding as you triage it: `Accepted.` and what you did,
+`Rejected.` and the reason, or `Out of scope. Held for post-merge triage.` An
+accepted finding's response names the follow-on task, and once that task is
+complete, the commit or evidence on the PR that addressed it.
 
 If a finding proposes a docstring, comment, or section-header to express a
 contract, invariant, precondition, or convention, apply the
