@@ -38,10 +38,10 @@ paths:
 For each finding you called out of scope, apply the
 [same-edit check](../../../agents/Grace.md#same-edit-check).
 
-Respond to each finding as you triage it: `Accepted.` and what you did,
-`Rejected.` and the reason, or `Out of scope. Held for post-merge triage.` An
-accepted finding's response names the follow-on task, and once that task is
-complete, the commit or evidence on the PR that addressed it.
+Respond to each finding as you triage it: `Accepted.` and the follow-on task,
+`Rejected.` and the reason, or `Out of scope. Held for post-merge triage.` Once
+a follow-on task is complete, add the commit or evidence on the PR that
+addressed it.
 
 If a finding proposes a docstring, comment, or section-header to express a
 contract, invariant, precondition, or convention, apply the

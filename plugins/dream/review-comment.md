@@ -21,8 +21,8 @@ saying so.
 
 ## Fill in each response
 
-Write your response into the file under a finding's quote once you have acted on
-that finding. The comment then reads:
+Write your response into the file under a finding's quote once you have decided
+what to do about that finding. The comment then reads:
 
 ```text
 ## {heading}
@@ -42,4 +42,4 @@ that finding. The comment then reads:
 
 Reread the file once every response is in. Replace any finding you have
 summarised with the review's own words, so the reader can tell the review's
-words from yours. Then post the file as a PR comment, with `--body-file`.
+words from yours. Then post the file as a PR comment.
