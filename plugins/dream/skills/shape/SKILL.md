@@ -232,14 +232,16 @@ Then write the design to a temporary file outside the repo:
 ```
 
 How it works is the architecture and the algorithms. Open it by walking one real
-case through the system in order, from what sets it off to what finishes it, so
-a reader meets the whole before the parts and can place any one part in it. Then
-the parts: what each one is for, and what passes between them. Enough that
-someone could plan the build from it without coming back to ask me. Say what
-each deletion buys under what goes away, because that's the part someone will
-want to argue with later. Keep why it's this short — a direction we dropped for
-a reason worth remembering, with what it cost, and not the ones that were simply
-worse.
+case through the system, from what sets it off to what finishes it, so someone
+reading about a single part later can place it in the whole. Then the parts:
+what each one is for, and what passes between them. Enough that someone could
+plan the build from it without coming back to ask me.
+
+Say what each deletion buys under what goes away, because that's the part
+someone will want to argue with later.
+
+Keep why it's this short — a direction we dropped for a reason worth
+remembering, with what it cost, and not the ones that were simply worse.
 
 No implementation. This goes to a different session, and I'd rather it had room
 to work. Name a part and say how it works, but don't implement it.
