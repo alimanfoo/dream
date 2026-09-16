@@ -232,16 +232,18 @@ Run the reviews below in sequence.
 First, run the `dream:coherence-review` skill over the branch's changes against
 the base (`origin/main...HEAD`).
 
+Start its PR comment as soon as the skill returns, following the
+[review comment](../../review-comment.md) rules. Head it `Coherence review`.
+
 Weigh each finding on its merits and apply the ones the evidence supports. Reach
 for the coherent fix even when it goes wider than the site the finding names.
 Defer one that holds but needs a PR of its own.
 
 Commit and push the fixes.
 
-Post the findings and how you acted on them as a PR comment, headed
-`Coherence review`, per the [review comment](../../review-comment.md). Write
-each response as `Accepted.` and what you did, `Rejected.` and the reason in one
-sentence, or `Deferred.` and why it needs a PR of its own, in one sentence.
+Then fill in each response and post the comment. Write `Accepted.` and what you
+did, `Rejected.` and the reason in one sentence, or `Deferred.` and why it needs
+a PR of its own, in one sentence.
 
 Second, run the `dream:code-review` skill the same way, and head its comment
 `Code review`. It follows the coherence review so that it reads the fixes that

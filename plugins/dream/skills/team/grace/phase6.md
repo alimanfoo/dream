@@ -17,6 +17,13 @@ idle (see [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
 ## Step 6.2: Triage each finding
 
+Start each review's PR comment as soon as that review arrives, before you triage
+any of its findings, following the [review comment](../../../review-comment.md)
+rules. Head the code review comment `Code review` and the coherence review
+comment `Coherence review`. Put a `Reviewed commit: {commit}` line under the
+heading, naming the commit you recorded in
+[Step 6.1](#step-61-send-the-review-requests).
+
 Raise a challenge before deciding a finding when it shows that a settled
 artifact no longer holds. Take it to the user per the "challenge" shape.
 
@@ -32,26 +39,20 @@ paths:
 For each finding you called out of scope, apply the
 [same-edit check](../../../agents/Grace.md#same-edit-check).
 
-Keep one response note per finding as you triage. Accepted findings record the
-follow-on task and, once complete, the commit or evidence on the PR that
-addressed it. Rejected findings record the reason. Out-of-scope findings record
-that they are held for post-merge triage. These notes are the raw material for
-the review comments you post after triage.
+Write each response into the comment file under its finding's quote as you
+triage: `Accepted.` and what you did, `Rejected.` and the reason, or
+`Out of scope. Held for post-merge triage.` An accepted finding's response names
+the follow-on task, and once that task is complete, the commit or evidence on
+the PR that addressed it.
 
 If a finding proposes a docstring, comment, or section-header to express a
 contract, invariant, precondition, or convention, apply the
 [code-shape-first check](../../../agents/Grace.md#code-shape-first-check) to it.
 
-## Step 6.3: Post each review and response as a PR comment
+## Step 6.3: Post each review comment
 
-Post each review and its response as one PR comment after you have handled all
-accepted findings through the standard per-task workflow, per the
-[review comment](../../../review-comment.md). Head the code review comment
-`Code review` and the coherence review comment `Coherence review`. Put a
-`Reviewed commit: {commit}` line under the heading, naming the commit you
-recorded in [Step 6.1](#step-61-send-the-review-requests). Write each response
-as `Accepted.` and what you did, `Rejected.` and the reason, or
-`Out of scope. Held for post-merge triage.`
+Post each review's comment after you have handled all its accepted findings
+through the standard per-task workflow.
 
 Keep agent names off GitHub. Use the headings to name each review, not the agent
 who wrote it. Post per
@@ -114,10 +115,9 @@ Handle the user's review in this order:
 5. Refresh the description per
    [Keep it current](../../../reviewers-guide.md#keep-it-current).
 6. Post one response comment for the whole set of findings. Use the outcome
-   lines from
-   [Step 6.3](#step-63-post-each-review-and-response-as-a-pr-comment), but name
-   each user finding briefly instead of quoting it. The finding is already
-   public in the PR thread.
+   lines from [Step 6.2](#step-62-triage-each-finding), but name each user
+   finding briefly instead of quoting it. The finding is already public in the
+   PR thread.
 
 The branch freezes once every review is addressed, the user's included. From
 then on you fold no new development into the PR, and a finding becomes an issue

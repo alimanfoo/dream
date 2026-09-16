@@ -69,8 +69,9 @@ don't each carry their own copy of the convention.
 
 `dream:smith` and `dream:team` both post a review's findings to a pull request,
 and both read [`review-comment.md`](plugins/dream/review-comment.md). It owns
-the comment's shape and the rule to quote each finding verbatim. Each skill
-keeps only what is its own, such as the wording of a response.
+when to start the comment, its shape, and the rule to quote each finding
+verbatim. Each skill keeps only what is its own, such as the wording of a
+response.
 
 `plugins/dream/agents/` holds Claude Code agent definitions. Four are the
 dream-team agents. `dream:team` spawns its agents by name. It needs Claude
