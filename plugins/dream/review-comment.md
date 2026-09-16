@@ -41,4 +41,4 @@ that finding. The comment then reads:
 
 Reread the file once every response is in. Replace any finding you have
 summarised with the review's own words, so the reader can tell the review's
-words from yours. Then post the file as a PR comment.
+words from yours. Then post the file as a PR comment, with `--body-file`.
