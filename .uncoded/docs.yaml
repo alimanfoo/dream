@@ -156,6 +156,11 @@ plugins/:
         Skip the Latin:
         Skip the flourish:
         Text for GitHub:
+    review-comment.md:
+      Review comment:
+        Start the comment when the review arrives:
+        Fill in each response:
+        Post the comment:
     reviewers-guide.md:
       Reviewer's guide:
         Keep it current:
@@ -412,7 +417,7 @@ plugins/:
             'Phase 6: Review':
               'Step 6.1: Send the review requests':
               'Step 6.2: Triage each finding':
-              'Step 6.3: Post each review and response as a PR comment':
+              'Step 6.3: Post each review comment':
               'Step 6.4: Write the PR description':
               'Step 6.5: Mark the PR ready for review':
               'Step 6.6: Handle the user''s review':
