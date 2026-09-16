@@ -17,9 +17,7 @@ idle (see [Waiting for a reply](../../../agents/Grace.md#waiting-for-a-reply)).
 
 Start each review's PR comment as soon as that review arrives, following the
 [review comment](../../../review-comment.md) rules. Head the code review comment
-`Code review` and the coherence review comment `Coherence review`. Put a
-`Reviewed commit: {commit}` line under the heading, naming the commit you
-recorded above.
+`Code review` and the coherence review comment `Coherence review`.
 
 ## Step 6.2: Triage each finding
 
@@ -38,10 +36,10 @@ paths:
 For each finding you called out of scope, apply the
 [same-edit check](../../../agents/Grace.md#same-edit-check).
 
-Respond to each finding as you triage it: `Accepted.` and the follow-on task,
-`Rejected.` and the reason, or `Out of scope. Held for post-merge triage.` Once
-a follow-on task is complete, add the commit or evidence on the PR that
-addressed it.
+Write a response to each finding into the comment file as you triage it:
+`Accepted.` and the follow-on task, `Rejected.` and the reason, or
+`Out of scope. Held for post-merge triage.` Once a follow-on task is complete,
+add the commit or evidence on the PR that addressed it.
 
 If a finding proposes a docstring, comment, or section-header to express a
 contract, invariant, precondition, or convention, apply the

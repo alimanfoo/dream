@@ -12,10 +12,6 @@ then each finding, copied across word for word, and leave the space under each
 quote empty. Name the file after the comment's heading, so one review's file
 never overwrites another's.
 
-A review's words fade as you work. Starting the comment after the fixes are in
-leaves you retelling each finding from memory, so the reader gets your words in
-place of the review's.
-
 If the review returned no findings, the comment is the heading and one line
 saying so.
 
@@ -40,6 +36,5 @@ what to do about that finding. The comment then reads:
 
 ## Post the comment
 
-Reread the file once every response is in. Replace any finding you have
-summarised with the review's own words, so the reader can tell the review's
-words from yours. Then post the file as a PR comment.
+After all findings are addressed and responses written to the comment file, post
+the file as a PR comment.

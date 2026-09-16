@@ -228,9 +228,10 @@ Start its PR comment as soon as the skill returns, following the
 
 Weigh each finding on its merits and apply the ones the evidence supports. Reach
 for the coherent fix even when it goes wider than the site the finding names.
-Defer one that holds but needs a PR of its own. Respond to each finding as you
-settle it: `Accepted.` and what you did, `Rejected.` and the reason, or
-`Deferred.` and why it needs a PR of its own, each in one sentence.
+Defer one that holds but needs a PR of its own. Write a response to each finding
+into the comment file as you settle it: `Accepted.` and what you did,
+`Rejected.` and the reason, or `Deferred.` and why it needs a PR of its own,
+each in one sentence.
 
 Commit and push the fixes, then post the comment.
 
