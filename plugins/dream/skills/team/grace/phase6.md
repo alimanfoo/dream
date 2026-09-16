@@ -37,8 +37,8 @@ For each finding you called out of scope, apply the
 [same-edit check](../../../agents/Grace.md#same-edit-check).
 
 Write a response to each finding into the comment file as you triage it:
-`Accepted.` and the follow-on task, `Rejected.` and the reason, or
-`Out of scope. Held for post-merge triage.`
+`Accepted.` and the follow-on task, `Rejected.` and the reason, or `Deferred.`
+and why it needs a PR of its own, each in one sentence.
 
 If a finding proposes a docstring, comment, or section-header to express a
 contract, invariant, precondition, or convention, apply the
