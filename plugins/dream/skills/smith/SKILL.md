@@ -46,6 +46,14 @@ Write each paragraph on a single line in a PR description or comment, since
 GitHub reflows it (see
 [Text for GitHub](../../plain-english.md#text-for-github)).
 
+## Writing to GitHub
+
+Write each body you post to GitHub into a temporary file outside the repo, then
+post it with `--body-file <path>`. That covers a PR description, an issue body,
+and a comment. A long body passed inline with `--body` invites quoting and
+escaping errors, and a body with a blockquote or a fenced block invites them
+most.
+
 ## Turn output
 
 Keep your turn output brief, usually one sentence per turn, unless a step asks
@@ -173,10 +181,11 @@ Give it a short subject (the issue ref or slug). Push the branch.
 the title from the session input.
 
 **Post the session input as the first comment.** Post the session input as a PR
-comment (`gh pr comment <N> --body "..."`). Head it `Session input`. When the
-input is nothing but issue references, give them as a bullet list, one bare `#N`
-per line. The linked issue already carries its own body and comments. Repeating
-them here adds nothing. Otherwise, reproduce the user's input verbatim.
+comment (`gh pr comment <N> --body-file <path>`). Head it `Session input`. When
+the input is nothing but issue references, give them as a bullet list, one bare
+`#N` per line. The linked issue already carries its own body and comments.
+Repeating them here adds nothing. Otherwise, reproduce the user's input
+verbatim.
 
 **Label the PR.** Apply the session type's category label with
 `gh pr edit --add-label`: `enhancement`, `maintenance`, or `bug`. Run
