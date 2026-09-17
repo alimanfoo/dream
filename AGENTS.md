@@ -67,15 +67,11 @@ cross-host completion rule.
 file goes and how it reaches the user on a pull request, so those four skills
 don't each carry their own copy of the convention.
 
-`dream:smith` and `dream:team` both post a review's findings to a pull request,
-and both read [`review-comment.md`](plugins/dream/review-comment.md). It owns
+`dream:smith` posts a review's findings to a pull request, and reads
+[`review-comment.md`](plugins/dream/review-comment.md) to do it. That file owns
 when to start the comment, its shape, and the rule to quote each finding
-verbatim. Each skill keeps only what is its own, such as the wording of a
+verbatim. The skill keeps only what is its own, such as the wording of a
 response.
-
-`plugins/dream/agents/` holds Claude Code agent definitions. Four are the
-dream-team agents. `dream:team` spawns its agents by name. It needs Claude
-Code's agent teams feature, so it stays Claude-only.
 
 The prose in this repo references a skill, an agent, or an issue label one way
 throughout:
@@ -92,11 +88,6 @@ throughout:
 - Write a subagent-type identifier as `dream:foo`. That is what an `Agent`
   call's `subagent_type` takes.
 - Write an issue label as "dream:foo".
-- Keep a skill reference (`dream:team`) distinct from the multi-agent team
-  concept, "the dream team", which stays plain prose.
-- Call the four dream-team members agents, not subagents. They are peers on a
-  team. Keep "subagent" for one a session spawns to do a job for it, and for the
-  literal `subagent_type` parameter.
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 suite. When changing behaviour, read the affected skill and agent prompts
@@ -131,9 +122,9 @@ traits rather than fight them.
 
 ## Writing agent prompts
 
-The dream-team agents are LLMs. Writing well for them depends on what each agent
-needs to know, the shape of an instruction, and the properties of the agent as a
-reader.
+An agent prompt in this repo is read by an LLM. Writing well for it depends on
+what the agent needs to know, the shape of an instruction, and the properties of
+the agent as a reader.
 
 ### Tell each agent only what it needs
 
