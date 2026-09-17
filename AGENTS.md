@@ -163,8 +163,8 @@ These properties of that reader change how you write for it.
 **Agents reason by producing tokens**: thinking tokens, turn output, or tokens
 written to files or messages. An instruction like "pause and consider X"
 produces no tokens and has no effect. The agent reads it and moves on. To make a
-check real, direct the agent to externalise: write the answer in turn output, in
-a `SendMessage` to another agent, or in an artifact.
+check real, direct the agent to externalise: write the answer in turn output or
+in an artifact.
 
 **Agents reason forward from context**: they're next-token machines, with no
 foresight of what they're about to write. So "before reaching for X, do Y"
