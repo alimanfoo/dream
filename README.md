@@ -9,6 +9,10 @@ Choose the workflow that fits the task:
 - `/dream:smith` gives a smaller task to one agent, with planning and review.
 - `/dream:less` carries a very small task straight through to a pull request.
 
+`/dream:smith` and `/dream:less` also run unattended, from a repository's
+labelled issues. Dreamcatcher does that, as a separate package, at
+[alimanfoo/dreamcatcher](https://github.com/alimanfoo/dreamcatcher).
+
 The plugin also includes standalone skills for requirements, code analysis,
 design, roadmapping, planning, copy-editing, and review. Run the skills list in
 your host to see them all.
@@ -100,13 +104,6 @@ planning and the separate copy-edit and coherence-review passes.
 
 Run `/dream:less` under Claude Code or `$dream:less` under Codex. It takes the
 task the same way Smith does.
-
-## Unattended runs
-
-Dreamcatcher watches a repository's labelled issues and carries each one to a
-pull request, running `/dream:smith` or `/dream:less` unattended. It is a
-separate package, at
-[alimanfoo/dreamcatcher](https://github.com/alimanfoo/dreamcatcher).
 
 ## /dream:team advanced usage
 
