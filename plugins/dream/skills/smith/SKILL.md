@@ -1,8 +1,8 @@
 ---
 name: smith
 description:
-  A minimal autonomous developer skill for implementing smaller tasks. Use only
-  when the user explicitly runs /dream:smith.
+  A minimal autonomous developer skill for implementing a well-specified task.
+  Use only when the user explicitly runs /dream:smith.
 argument-hint: "[issue | text]"
 ---
 

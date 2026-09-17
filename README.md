@@ -5,7 +5,7 @@ minimal human input. It installs under Claude Code and Codex.
 
 Choose the workflow that fits the task:
 
-- `/dream:smith` gives a task to one agent, with planning and review.
+- `/dream:smith` plans a task, implements it, and reviews the result.
 - `/dream:less` carries a small task straight through to a pull request.
 
 `/dream:smith` and `/dream:less` also run unattended, from a repository's
