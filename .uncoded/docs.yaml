@@ -165,9 +165,6 @@ plugins/:
       Reviewer's guide:
         Keep it current:
     skills/:
-      catcher/:
-        SKILL.md:
-          dream:catcher:
       code-analysis/:
         SKILL.md:
           dream:code-analysis:
@@ -480,7 +477,6 @@ README.md:
     Coherent development with /dream:team:
     Smaller tasks with /dream:smith:
     Even smaller tasks with /dream:less:
-    Unattended runs with /dream:catcher:
     /dream:team advanced usage:
       Alias claude with experimental agent teams support:
       Models and effort:
@@ -490,5 +486,4 @@ README.md:
       "Using tmux \u2013 useful shortcuts":
     Troubleshooting:
       Permissions:
-      Dreamcatcher cannot create its tmux socket:
     License:
