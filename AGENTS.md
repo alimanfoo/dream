@@ -92,9 +92,6 @@ throughout:
 - Write a subagent-type identifier as `dream:foo`. That is what an `Agent`
   call's `subagent_type` takes.
 - Write an issue label as "dream:foo".
-- `catch.sh` keeps its own shell register, where backticks and quotes would
-  misread. Every `/dream:foo` in it keeps the slash, since the script builds and
-  documents the prompt a session's host reads.
 - Keep a skill reference (`dream:team`) distinct from the multi-agent team
   concept, "the dream team", which stays plain prose.
 - Call the four dream-team members agents, not subagents. They are peers on a
