@@ -122,9 +122,9 @@ traits rather than fight them.
 
 ## Writing agent prompts
 
-An agent prompt in this repo is read by an LLM. Writing well for it depends on
-what the agent needs to know, the shape of an instruction, and the properties of
-the agent as a reader.
+Every agent prompt in this repo is read by an LLM. Writing well for that agent
+depends on what it needs to know, the shape of an instruction, and its
+properties as a reader.
 
 ### Tell each agent only what it needs
 
