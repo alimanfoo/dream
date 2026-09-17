@@ -8,7 +8,6 @@ Choose the workflow that fits the task:
 - `/dream:team` gives a substantial task to a four-agent team.
 - `/dream:smith` gives a smaller task to one agent, with planning and review.
 - `/dream:less` carries a very small task straight through to a pull request.
-- `/dream:catcher` runs agents unattended from labelled issues.
 
 The plugin also includes standalone skills for requirements, code analysis,
 design, roadmapping, planning, copy-editing, and review. Run the skills list in
@@ -17,10 +16,10 @@ your host to see them all.
 ## Prerequisites
 
 Every skill runs under Claude Code. Codex support is partial: it includes
-`dream:smith`, `dream:less`, `dream:catcher`, `dream:spark`, `dream:state`,
-`dream:shape`, `dream:seer`, `dream:copy-edit`, `dream:code-review`,
-`dream:coherence-review`, and `dream:precedent-review`. Put a `$` in front of a
-skill's name in a Codex prompt:
+`dream:smith`, `dream:less`, `dream:spark`, `dream:state`, `dream:shape`,
+`dream:seer`, `dream:copy-edit`, `dream:code-review`, `dream:coherence-review`,
+and `dream:precedent-review`. Put a `$` in front of a skill's name in a Codex
+prompt:
 
 ```text
 $dream:state
@@ -102,54 +101,12 @@ planning and the separate copy-edit and coherence-review passes.
 Run `/dream:less` under Claude Code or `$dream:less` under Codex. It takes the
 task the same way Smith does.
 
-## Unattended runs with /dream:catcher
+## Unattended runs
 
-`/dream:catcher` watches assigned issues labelled "dream:smith" or "dream:less"
-and carries each one to a pull request. It returns to a session when you review,
-merge, or close its pull request.
-
-Install `git`, `gh`, `jq`, and `tmux`, and sign in with `gh`. Install the
-harness you want to use: `claude` for Claude Code or `codex` for Codex.
-
-Start the harness from the repository's main checkout. The catcher creates
-sibling worktrees beside that checkout, so do not start it from a linked
-worktree.
-
-The catcher needs host access because it manages tmux sessions, writes data
-under `$HOME/.dream/catcher`, creates sibling worktrees, and calls GitHub. When
-you launch it interactively, the harness can ask for that access.
-
-Under Claude Code:
-
-1. Run `claude`.
-2. Run `/dream:catcher` in the session.
-3. Approve the tmux command when Claude asks.
-
-Under Codex:
-
-1. Run `codex`.
-2. Run `$dream:catcher` in the session.
-3. Approve the tmux command when Codex asks to run it outside the sandbox.
-
-Use Claude Code's auto permission mode for a non-interactive launch:
-
-```bash
-claude --print --permission-mode auto /dream:catcher
-```
-
-Let Codex's automatic reviewer assess the host-access request when you launch
-the catcher non-interactively:
-
-```bash
-codex --approve-for-me exec '$dream:catcher'
-```
-
-The catcher uses the same harness for the sessions it dispatches.
-
-Add options such as `--smith-label auto` to the skill invocation to use
-different issue labels.
-
-Launch the catcher again after a reboot.
+Dreamcatcher watches a repository's labelled issues and carries each one to a
+pull request, running `/dream:smith` or `/dream:less` unattended. It is a
+separate package, at
+[alimanfoo/dreamcatcher](https://github.com/alimanfoo/dreamcatcher).
 
 ## /dream:team advanced usage
 
@@ -249,12 +206,6 @@ the team. This should handle most permissions automatically.
 
 You may still hit occasional permissions blocks, for example when posting to
 GitHub.
-
-### Dreamcatcher cannot create its tmux socket
-
-`error creating ... (Operation not permitted)` means the tmux command ran inside
-the harness sandbox. Changing the socket path will not help. Restart the catcher
-with the supported launch steps above.
 
 ## License
 

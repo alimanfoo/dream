@@ -196,8 +196,8 @@ Mark the PR ready for review.
 ## Handle what the user posts
 
 When no work is ready to do, end your turn. An interactive session waits at the
-prompt for the user. A headless session exits, and `dream:catcher` resumes it
-when the PR has new input.
+prompt for the user. A headless session exits, and whatever launched it resumes
+it when the PR has new input.
 
 When a turn starts with a PR-inbox prompt, read the JSON file it names. Read the
 PR `state` before you act on anything else. When `state` is `MERGED`, end your
