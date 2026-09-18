@@ -74,17 +74,6 @@ plugins/:
       Reviewer's guide:
         Keep it current:
     skills/:
-      code-analysis/:
-        SKILL.md:
-          dream:code-analysis:
-            Arguments:
-            Read the documentation:
-            Read the code:
-              How it works:
-              How it's organised:
-            Identify and investigate code smells:
-            Compose the code analysis:
-            The result:
       code-review/:
         SKILL.md:
           dream:code-review:
@@ -115,18 +104,6 @@ plugins/:
             First, read the Plain English guide:
             Arguments:
             Each round:
-      design/:
-        SKILL.md:
-          dream:design:
-            Arguments:
-            Generate analogies:
-            Survey existing tools:
-            Generate design sketches:
-            Draft the design options:
-              The proposed design:
-              The alternative designs:
-            Revise the design against the coherent coding guide:
-            The result:
       less/:
         SKILL.md:
           dream:less:
@@ -175,18 +152,6 @@ plugins/:
             Wait for the review:
             Verify:
             Rank and return:
-      requirements-analysis/:
-        SKILL.md:
-          dream:requirements-analysis:
-            Arguments:
-            Orient to the repo:
-            Read the cited material:
-            Read the code for the requirements it already satisfies:
-            Consult the record:
-            Check the input against the current code:
-            Name the session type:
-            Compose the draft:
-            The result:
       seer/:
         SKILL.md:
           dream:seer:
