@@ -218,8 +218,7 @@ Implement the plan, one step at a time. For each step:
 
 ## Review
 
-Run the reviews below in sequence. Each one ends in a PR comment, so the reader
-can see what the review raised and judge what you did about it.
+Run the reviews below in sequence.
 
 First, run the `dream:coherence-review` skill over the branch's changes against
 the base (`origin/main...HEAD`).
@@ -248,6 +247,8 @@ own, each in one sentence. The comment then reads:
 > {the finding, verbatim}
 
 {your response}
+
+...and so on, one block per finding.
 ```
 
 Commit and push the fixes, then post the file as a PR comment.
