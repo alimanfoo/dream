@@ -10,97 +10,6 @@
 plugins/:
   dream/:
     agents/:
-      Ada.md:
-        Ada:
-          Boot sequence:
-          Your role and responsibilities, by phase:
-            'Phase 1: Requirements':
-            'Phase 2: Code Analysis':
-            'Phase 3: Design':
-            'Phase 4: Plan':
-            'Phase 5: Develop':
-            'Phase 6: Review':
-            'Phase 7: Merge':
-            'Phase 8: Collect':
-          Common rules:
-            Hard rules:
-            Communication between teammates (agents):
-            Keep turn output quiet:
-      Grace.md:
-        Grace:
-          Boot sequence:
-          Your role and responsibilities, by phase:
-            'Phase 1: Requirements':
-            'Phase 2: Code Analysis':
-            'Phase 3: Design':
-            'Phase 4: Plan':
-            'Phase 5: Develop':
-            'Phase 6: Review':
-            'Phase 7: Merge':
-            'Phase 8: Collect':
-          Code-shape-first check:
-          Same-edit check:
-          Waiting for a reply:
-            The nudge:
-          Challenge:
-            Evidence:
-            Revising an artifact:
-            What a challenge is not:
-          The watch:
-            Pausing for the user:
-            The user's move on a ready PR:
-          Stopping a session early:
-          Common rules:
-            Hard rules:
-            Branch and commit operations:
-            Marking agent-authored GitHub items:
-            Writing to GitHub:
-            GitHub-write failures and blocks:
-            GitHub labels:
-            Communication with the user:
-            Communication between teammates (agents):
-              Writing to teammates is prompt engineering:
-            Task-tool reminders from Claude Code:
-      Junio.md:
-        Junio:
-          Boot sequence:
-          Your role and responsibilities, by phase:
-            'Phases 1 to 4: Requirements, Code Analysis, Design, Plan':
-            'Phase 5: Develop':
-              'Step 5.1: Read the task''s change':
-              'Step 5.2: Identify coherence gaps':
-              'Step 5.3: Sort what you found':
-              'Step 5.4: Send the coherence audit to Grace via `SendMessage`':
-              Coherence audit format:
-              Challenge:
-            'Phase 6: Review':
-            'Phase 7: Merge':
-            'Phase 8: Collect':
-          Common rules:
-            Hard rules:
-            Communication between teammates (agents):
-            Keep turn output quiet:
-      Ralph.md:
-        Ralph:
-          Boot sequence:
-          Your role and responsibilities, by phase:
-            'Phases 1 to 4: Requirements, Code Analysis, Design, Plan':
-            'Phase 5: Develop':
-              'Step 5.1: Read the task description':
-              'Step 5.2: Do the work':
-              'Step 5.3: Run the tests':
-              'Step 5.4: Run any codegen the commit hook doesn''t run':
-              'Step 5.5: Commit and push':
-              'Step 5.6: Report back to Grace via `SendMessage`':
-              'Step 5.7: Close any gap Grace reports':
-            'Phase 6: Review':
-            'Phase 7: Merge':
-            'Phase 8: Collect':
-          Common rules:
-            Hard rules:
-            Commits:
-            Communication between teammates (agents):
-            Keep turn output quiet:
       code-review-lens.md:
         Code review lens:
           The lens:
@@ -375,74 +284,6 @@ plugins/:
             Write the guide:
             Get it checked before you show me:
             Where it goes:
-      team/:
-        SKILL.md:
-          dream:team:
-            Spawning the team:
-            During the session:
-        grace/:
-          phase1.md:
-            'Phase 1: Requirements':
-              'Step 1.1: Open the session PR':
-              'Step 1.2: Produce the draft requirements analysis':
-              'Step 1.3: Elicit answers to open questions':
-              'Step 1.4: Share the requirements analysis and label the PR':
-          phase2.md:
-            'Phase 2: Code Analysis':
-              'Step 2.1: Produce the code analysis':
-              'Step 2.2: Share the code analysis':
-          phase3.md:
-            'Phase 3: Design':
-              'Step 3.1: Produce the design options':
-              'Step 3.2: Share the design':
-          phase4.md:
-            'Phase 4: Plan':
-              'Step 4.1: Produce the plan':
-              'Step 4.2: Share the plan':
-          phase5.md:
-            'Phase 5: Develop':
-              Opening sequence:
-                'Step 5.1: Create the shared task list':
-              Per-task workflow:
-                'Step 5.2: Assign':
-                'Step 5.3: Implement':
-                'Step 5.4: Verify delivery':
-                'Step 5.5: Request the audit':
-                'Step 5.6: Triage findings':
-                'Step 5.7: Loop':
-          phase6.md:
-            'Phase 6: Review':
-              'Step 6.1: Send the review requests':
-              'Step 6.2: Triage each finding':
-              'Step 6.3: Post each review comment':
-              'Step 6.4: Write the PR description':
-              'Step 6.5: Mark the PR ready for review':
-              'Step 6.6: Handle the user''s review':
-          phase7.md:
-            'Phase 7: Merge':
-          phase8.md:
-            'Phase 8: Collect':
-              'Step 8.1: Compile':
-              'Step 8.2: Deepen':
-              'Step 8.3: Test':
-              'Step 8.4: Decide':
-              'Step 8.5: Summarize':
-        protocol.md:
-          Dream team protocol:
-            Roles:
-              Grace (director):
-              Ralph (developer):
-              Junio (maintainer):
-              Ada (reviewer):
-            Protocol overview:
-            Common rules:
-              Autonomy:
-              The session PR:
-              Branch and commit rules:
-                Branch:
-                Commits:
-              Reference syntax:
-              GitHub-rendered artefacts:
       watcher/:
         SKILL.md:
           dream:watcher:
@@ -474,16 +315,8 @@ README.md:
     Prerequisites:
     Installation:
     Roadmaps with /dream:seer:
-    Coherent development with /dream:team:
-    Smaller tasks with /dream:smith:
-    Even smaller tasks with /dream:less:
-    /dream:team advanced usage:
-      Alias claude with experimental agent teams support:
-      Models and effort:
-      Concurrent sessions:
-      Configuring tmux:
-      Launching Claude under tmux:
-      "Using tmux \u2013 useful shortcuts":
+    Tasks with /dream:smith:
+    Smaller tasks with /dream:less:
     Troubleshooting:
       Permissions:
     License:

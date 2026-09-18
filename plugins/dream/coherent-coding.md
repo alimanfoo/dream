@@ -249,9 +249,9 @@ Three cautions:
 
 - Reach for an existing tool first. An off-the-shelf checker (a ruff rule, a
   mypy setting, numpydoc) is cheaper and steadier than one you write yourself.
-- A flaky check is worse than none. An agent team reads each false failure as a
-  work item and keeps trying to fix what is not broken. Make it as reliable as
-  the rule it guards, or leave it out.
+- A flaky check is worse than none. Any agent reads each false failure as a work
+  item and keeps trying to fix what is not broken. Make it as reliable as the
+  rule it guards, or leave it out.
 - A check grounds out in the product. Aim a coverage gate or a test at the
   product the repo delivers, not at the tooling built around it.
 
