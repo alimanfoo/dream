@@ -29,21 +29,6 @@ trying a different approach from the rest of the plugin. They run against repo
 convention on purpose, so treat a deviation as deliberate rather than as drift
 to tidy up.
 
-Three pairs of skills overlap on purpose. Each pair does the same job twice,
-once with the user and once alone:
-
-- `dream:spark` interviews the user to draw requirements out of them.
-  `dream:requirements-analysis` produces them on its own, from material the user
-  already wrote.
-- `dream:state` explores the code behind a task with the user, so the user comes
-  away understanding it as well. `dream:code-analysis` reads it on its own.
-- `dream:shape` explores the solution space with the user and reaches a design
-  together. `dream:design` produces one on its own.
-
-The duplication within each pair is a decision, not a defect, so don't
-single-home it. `dream:shape` was built standalone rather than calling
-`dream:design`, so its duplication runs through the whole skill.
-
 The `dream:spark`, `dream:state`, `dream:shape` and `dream:seer` bodies are
 written in the user's voice, as if the user typed it: "ask me", "tell me only
 what you've read". Don't normalise any of them back to the third person, or into
