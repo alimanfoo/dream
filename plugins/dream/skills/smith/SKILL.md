@@ -284,9 +284,27 @@ this content:
 - Follow with one to three sentences on what the PR does and why, for a reader
   new to the session.
 
-Read and follow the [reviewer's guide](../../reviewers-guide.md).
+Then fit a short `## Reviewer's guide` into the repository's PR template. Put it
+near the start, after the issue references and summary when the template allows.
+Use these sections:
+
+- `### Read first`: name the smallest set of files or parts the reviewer should
+  read. Put them in order, and say what each one contains. Include generated
+  output when it needs review.
+- `### Check carefully`: name any behaviour or design choices that need closer
+  review than the rest. Point to evidence the reviewer can inspect, such as a
+  code path, a command they can run, or a PR comment. Say
+  `Nothing beyond the diff` when no part needs closer review.
+- `### Safe to skip`: name only changes where review would add no value, and say
+  why. A generated or mechanical change is not safe to skip by default. Say
+  `Nothing` when the reviewer should read the whole diff.
 
 Replace the PR's description with it.
+
+## Keep the description current
+
+Reread the description after any later commit. Update the summary and reviewer's
+guide when the diff changes what they say.
 
 ## Mark the PR ready for review
 
@@ -308,12 +326,12 @@ Otherwise, act on the returned `posts`, oldest first. A post can carry more than
 one of these:
 
 - **A requested change.** Implement it. Commit and push. Refresh the description
-  per [Keep it current](../../reviewers-guide.md#keep-it-current). Reply on the
-  PR.
+  per [Keep the description current](#keep-the-description-current). Reply on
+  the PR.
 - **A resolve-conflicts request.** Bring the branch up to date with `main`
   (`git fetch origin main`, then merge or rebase). Resolve any conflicts
   yourself and commit the resolution. Push the branch. Refresh the description
-  per [Keep it current](../../reviewers-guide.md#keep-it-current). Don't merge
+  per [Keep the description current](#keep-the-description-current). Don't merge
   the PR itself. That's the user's call.
 - **A defer-merge request.** Continue to the [collect step](#collect), leaving
   the PR open for the user to merge later.

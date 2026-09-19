@@ -57,9 +57,6 @@ plugins/:
         Skip the Latin:
         Skip the flourish:
         Text for GitHub:
-    reviewers-guide.md:
-      Reviewer's guide:
-        Keep it current:
     skills/:
       code-review/:
         SKILL.md:
@@ -195,6 +192,7 @@ plugins/:
             Review:
             Find simplification opportunities:
             Write the PR description:
+            Keep the description current:
             Mark the PR ready for review:
             Handle what the user posts:
             Collect:
