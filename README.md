@@ -6,12 +6,8 @@ Hand a task to an autonomous skill and get back a pull request. The skill plans
 the work, writes the code, reviews what it wrote, and asks you on the pull
 request when it needs a decision.
 
-Take an idea through requirements, design and a roadmap with the agent first,
-one question at a time, when the task isn't ready to hand over yet.
-
-Two guides sit behind the skills, one for coherent code and one for plain
-English. The skills work to them, and you can load either guide into a session
-of your own.
+When the task isn't ready to hand over yet, take an idea through requirements,
+design and a roadmap with the agent, one question at a time.
 
 ## Installation
 
@@ -38,8 +34,7 @@ $dream:smith
 ```
 
 Most of the skills work with GitHub issues and pull requests. For those, install
-`gh` 2.94.0 or later and sign in. `/dream:seer` needs that version for the
-parent and blocked-by flags it uses.
+`gh` 2.94.0 or later and sign in.
 
 ## Autonomous coding skills
 
@@ -66,18 +61,16 @@ current branch name, such as `GH83`. Without those, it asks you for the task.
 the plan and runs one review rather than three. It takes its task the same way
 Smith does.
 
-### Running unattended
-
 Both skills also run without you there. Dreamcatcher watches a repository for
 labelled issues and starts a session for each one, as a separate package at
 [alimanfoo/dreamcatcher](https://github.com/alimanfoo/dreamcatcher).
 
 ## Collaborative product management skills
 
-These four work through the thinking that comes before code, and they work at
-your pace: one question at a time, in chat, with room for you to redirect. Each
-one ends in a written specification, which it offers to put in the repository as
-a markdown file on a pull request. You read it there and comment on any line.
+These work through the thinking that comes before code, and they work at your
+pace: one question at a time, in chat, with room for you to redirect. Each one
+ends in a written specification, which it offers to put in the repository as a
+markdown file on a pull request. You read it there and comment on any line.
 
 Run them in order on a large piece of work, or run whichever one you need. Each
 takes an issue, a file or free text as an argument, so you can point one at what
@@ -114,8 +107,8 @@ work fits in one pull request, Seer tells you so and stops.
 
 ## Utility skills
 
-The autonomous skills run most of these for you. Run one yourself when you want
-that piece on its own.
+The autonomous skills run most of these for you, and you can run any of them
+yourself.
 
 The review skills read the whole branch against `origin/main` by default, and
 take a git range or a path as an argument.
@@ -163,8 +156,8 @@ that version when you report a problem.
 
 ### Permissions
 
-If you have it on your plan, switch to `auto` permissions mode before you start
-a session. This should handle most permissions automatically.
+If your plan has `auto` permissions mode, switch to it before you start a
+session. This should handle most permissions automatically.
 
 You may still hit occasional permissions blocks, for example when posting to
 GitHub.
