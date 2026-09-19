@@ -244,14 +244,6 @@ plugins/:
             Write the guide:
             Get it checked before you show me:
             Where it goes:
-      watcher/:
-        SKILL.md:
-          dream:watcher:
-            The footer precondition:
-            Set up the watch:
-            On each firing:
-            Teardown:
-            Limits:
     spec-files.md:
       Spec files:
         Where the files go:
