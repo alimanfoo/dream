@@ -281,12 +281,12 @@ this content:
 
 - Add a bullet list of issues addressed. Use `Closes #N` for each one the PR
   fully resolves, and `Related to #N` for any it partly addresses.
-- Follow with one to three sentences on what the PR does and why, for a reader
-  new to the session.
+- Follow with a summary, one to three sentences on what the PR does and why, for
+  a reader new to the session.
 
-Then fit a short `## Reviewer's guide` into the repository's PR template. Put it
-near the start, after the issue references and summary when the template allows.
-Use these sections:
+Add a short `## Reviewer's guide` to the description. Put it near the start,
+after the issue references and summary, unless the repo's template says
+otherwise. Use these sections:
 
 - `### Read first`: name the smallest set of files or parts the reviewer should
   read. Put them in order, and say what each one contains. Include generated
@@ -299,9 +299,7 @@ Use these sections:
   why. A generated or mechanical change is not safe to skip by default. Say
   `Nothing` when the reviewer should read the whole diff.
 
-Replace the PR's description with it.
-
-## Keep the description current
+Replace the PR's description with the draft.
 
 Reread the description after any later commit. Update the summary and reviewer's
 guide when the diff changes what they say.
@@ -326,13 +324,12 @@ Otherwise, act on the returned `posts`, oldest first. A post can carry more than
 one of these:
 
 - **A requested change.** Implement it. Commit and push. Refresh the description
-  per [Keep the description current](#keep-the-description-current). Reply on
-  the PR.
+  per [Write the PR description](#write-the-pr-description). Reply on the PR.
 - **A resolve-conflicts request.** Bring the branch up to date with `main`
   (`git fetch origin main`, then merge or rebase). Resolve any conflicts
   yourself and commit the resolution. Push the branch. Refresh the description
-  per [Keep the description current](#keep-the-description-current). Don't merge
-  the PR itself. That's the user's call.
+  per [Write the PR description](#write-the-pr-description). Don't merge the PR
+  itself. That's the user's call.
 - **A defer-merge request.** Continue to the [collect step](#collect), leaving
   the PR open for the user to merge later.
 - **A question.** Answer it as a PR comment.
