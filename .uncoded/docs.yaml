@@ -57,9 +57,6 @@ plugins/:
         Skip the Latin:
         Skip the flourish:
         Text for GitHub:
-    reviewers-guide.md:
-      Reviewer's guide:
-        Keep it current:
     skills/:
       code-review/:
         SKILL.md:
