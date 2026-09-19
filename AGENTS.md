@@ -66,6 +66,10 @@ throughout:
   call's `subagent_type` takes.
 - Write an issue label as "dream:foo".
 
+Update a skill's entry in `README.md` when its name, arguments or behaviour
+change. The README carries one entry per skill, and a reader new to the repo
+meets the skill there first.
+
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 suite. When changing behaviour, read the affected skill and agent prompts
 together. Check that lifecycle, role boundaries, and tool permissions stay

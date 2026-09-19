@@ -95,7 +95,7 @@ Bring an idea you haven't finished thinking about.
 `/dream:state` reads the code behind a task with you, and leaves a reading guide
 to it. Use it when you are about to design something in code you don't know well
 enough yet. It explores while you watch, gives you the big picture first, then
-takes you round the parts that matter. It never makes anything up.
+takes you round the parts that matter.
 
 ### /dream:shape
 
@@ -153,9 +153,8 @@ a reader in a second language.
 
 ### /dream:plan
 
-`/dream:plan` turns a focus into an implementation plan. Each task is one idea
-and one commit, and each states the criterion that tells the implementer what
-belongs in it.
+`/dream:plan` turns a focus into an implementation plan, where each task is one
+idea and one commit.
 
 ## Troubleshooting
 
