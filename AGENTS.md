@@ -36,10 +36,14 @@ a stack of orders. The frontmatter `description` stays third person in all four,
 since the harness reads that to pick the skill.
 
 Keep a simple subagent task prompt inline in the skill that launches it. When a
-task prompt earns its own file, put it in `plugins/dream/subagents/` if both
-hosts use plain subagents. Put it in `plugins/dream/agents/` only when Claude
-Code needs a named definition for host-specific settings. Pass a shared prompt
-file's absolute path to a plain Codex subagent.
+task prompt earns its own file, put it in `plugins/dream/agents/`. Claude Code
+reads a file there as a named agent, and a plain Codex subagent takes the same
+file's absolute path, so one file serves both hosts.
+
+Name an agent for the job it does, not for the skill that launches it. Both
+hosts resolve a skill and an agent from the same `dream:foo` identifier, so an
+agent sharing its skill's name leaves the reference ambiguous.
+`code-review-lens` and `precedent-reviewer` are named this way.
 
 Make every skill that launches subagents under both hosts read
 [`subagent-waiting.md`](plugins/dream/subagent-waiting.md). It owns the
