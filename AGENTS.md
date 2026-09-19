@@ -52,12 +52,6 @@ cross-host completion rule.
 file goes and how it reaches the user on a pull request, so those four skills
 don't each carry their own copy of the convention.
 
-`dream:smith` posts a review's findings to a pull request, and reads
-[`review-comment.md`](plugins/dream/review-comment.md) to do it. That file owns
-when to start the comment, its shape, and the rule to quote each finding
-verbatim. The skill keeps only what is its own, such as the wording of a
-response.
-
 The prose in this repo references a skill, an agent, or an issue label one way
 throughout:
 
