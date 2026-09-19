@@ -40,10 +40,10 @@ task prompt earns its own file, put it in `plugins/dream/agents/`. Claude Code
 reads a file there as a named agent, and a plain Codex subagent takes the same
 file's absolute path, so one file serves both hosts.
 
-Name an agent for the job it does, not for the skill that launches it. Both
-hosts resolve a skill and an agent from the same `dream:foo` identifier, so an
-agent sharing its skill's name leaves the reference ambiguous.
-`code-review-lens` and `precedent-reviewer` are named this way.
+Name an agent for the job it does, not for the skill that launches it. Claude
+Code takes an agent's name as a `dream:foo` subagent type, the same shape a
+skill reference takes, so an agent sharing its skill's name leaves the reference
+ambiguous. `code-review-lens` and `precedent-reviewer` are named this way.
 
 Make every skill that launches subagents under both hosts read
 [`subagent-waiting.md`](plugins/dream/subagent-waiting.md). It owns the
