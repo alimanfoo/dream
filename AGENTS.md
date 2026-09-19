@@ -43,7 +43,7 @@ file's absolute path, so one file serves both hosts.
 Name an agent for the job it does, not for the skill that launches it. Claude
 Code takes an agent's name as a `dream:foo` subagent type, the same shape a
 skill reference takes, so an agent sharing its skill's name leaves the reference
-ambiguous. `code-review-lens` and `precedent-reviewer` are named this way.
+ambiguous.
 
 Make every skill that launches subagents under both hosts read
 [`subagent-waiting.md`](plugins/dream/subagent-waiting.md). It owns the

@@ -32,7 +32,7 @@ When the branch has no pull request, say there is none to leave out.
 
 ## Launch the review
 
-Spawn one subagent. Brief it with the target, as a git range like
+Prepare one subagent. Brief it with the target, as a git range like
 `origin/main...HEAD` or an absolute path, along with the pull request to leave
 out.
 
@@ -48,7 +48,10 @@ Under Codex:
 - Use a plain subagent.
 - Give it the absolute path of
   [the review instructions](../../agents/precedent-reviewer.md) and tell it to
-  follow them.
+  follow them, skipping the file's YAML frontmatter, which configures the agent
+  under Claude Code.
+
+Launch the prepared subagent.
 
 ## Wait for the review
 
