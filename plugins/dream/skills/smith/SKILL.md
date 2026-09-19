@@ -223,17 +223,35 @@ Run the reviews below in sequence.
 First, run the `dream:coherence-review` skill over the branch's changes against
 the base (`origin/main...HEAD`).
 
-Start its PR comment as soon as the skill returns, following the
-[review comment](../../review-comment.md) rules. Head it `Coherence review`.
+Start the comment as soon as the skill returns, before you weigh any finding or
+change any code. Write it to a temporary file outside the repo, named after the
+comment's heading so one review's file never overwrites another's. Head it
+`Coherence review`. Put in each finding, copied across word for word, and leave
+the space under each quote empty. When the review returned no findings, the
+comment is the heading and one line saying so.
 
 Weigh each finding on its merits and apply the ones the evidence supports. Reach
 for the coherent fix even when it goes wider than the site the finding names.
-Defer one that holds but needs a PR of its own. Write a response to each finding
-into the comment file as you settle it: `Accepted.` and what you did,
-`Rejected.` and the reason, or `Deferred.` and why it needs a PR of its own,
-each in one sentence.
+Defer one that holds but needs a PR of its own. Once you settle a finding, write
+its response into the file under that finding's quote: `Accepted.` and what you
+did, `Rejected.` and the reason, or `Deferred.` and why it needs a PR of its
+own, each in one sentence. The comment then reads:
 
-Commit and push the fixes, then post the comment.
+```text
+## {heading}
+
+> {the finding, verbatim}
+
+{your response}
+
+> {the finding, verbatim}
+
+{your response}
+
+...and so on, one block per finding.
+```
+
+Commit and push the fixes, then post the file as a PR comment.
 
 Second, run the `dream:code-review` skill the same way, and head its comment
 `Code review`. It follows the coherence review so that it reads the fixes that
