@@ -1,13 +1,14 @@
 # dream
 
-A plugin for Claude Code and Codex, for building software with an agent.
+A plugin for Claude Code and Codex, for building software with agents.
 
-Hand a task to an autonomous skill and get back a pull request. The skill plans
-the work, writes the code, reviews what it wrote, and asks you on the pull
-request when it needs a decision.
+The plugin provides skills. A skill is a named set of instructions you call from
+the prompt, and it puts the agent to work in a particular way.
 
-When the task isn't ready to hand over yet, take an idea through requirements,
-design and a roadmap with the agent, one question at a time.
+Some of the skills work on their own: give one a task and it carries the task to
+a pull request while you do something else. Some work with you, one question at
+a time, on the thinking that comes before code. The rest do one job each, such
+as a review or a plan.
 
 ## Installation
 
@@ -38,14 +39,15 @@ Most of the skills work with GitHub issues and pull requests. For those, install
 
 ## Autonomous coding skills
 
-Give one of these a task and it carries the task to a pull request on its own.
-It opens the pull request as a draft before it touches any code, and marks it
-ready when the work is done. That pull request is where you follow the session,
-and where the skill asks you anything it can't decide for itself.
+Give one of these skills a task and it carries the task to a pull request on its
+own. It opens the pull request as a draft before it touches any code, and marks
+it ready when the work is done. That pull request is where you can follow the
+session, and where the skill asks you anything it can't decide for itself.
 
-Dreamcatcher runs these skills without you there. It watches a repository for
-labelled issues and starts a session for each one, as a separate package at
-[alimanfoo/dreamcatcher](https://github.com/alimanfoo/dreamcatcher).
+These skills can be used with
+[alimanfoo/dreamcatcher](https://github.com/alimanfoo/dreamcatcher), a separate
+package that watches a GitHub repository for labelled issues and dispatches
+agents to implement them.
 
 ### /dream:smith
 
@@ -62,15 +64,17 @@ current branch name, such as `GH83`. Without those, it asks you for the task.
 ### /dream:less
 
 `/dream:less` is a cut-back Smith for a small, self-contained change. It skips
-the plan and runs one review rather than three. It takes its task the same way
-Smith does.
+the plan and runs one review rather than three. Name the task as an argument,
+such as `/dream:less GH123`, or leave it out and Less reads the issue numbers in
+the branch name.
 
 ## Collaborative product management skills
 
-These work through the thinking that comes before code, and they work at your
-pace: one question at a time, in chat, with room for you to redirect. Each one
-ends in a written specification, which it offers to put in the repository as a
-markdown file on a pull request. You read it there and comment on any line.
+These skills work through the thinking that comes before code, and they work at
+your pace: one question at a time, in chat, with room for you to redirect. Each
+one ends in a written specification, which it offers to put in the repository as
+a markdown file on a pull request. You can read it there and comment on any
+line.
 
 Run them in order on a large piece of work, or run whichever one you need. Each
 takes an issue, a file or free text as an argument, so you can point one at what
@@ -85,14 +89,14 @@ Bring an idea you haven't finished thinking about.
 
 ### /dream:state
 
-`/dream:state` reads the code behind a task with you, and leaves a reading guide
-to it. Use it when you are about to design something in code you don't know well
-enough yet. It explores while you watch, gives you the big picture first, then
-takes you round the parts that matter.
+`/dream:state` reads existing code with you, and leaves a reading guide to it.
+Use it when you are about to design something in code you don't know well enough
+yet. It explores while you watch, gives you the big picture first, then takes
+you round the parts that matter.
 
 ### /dream:shape
 
-`/dream:shape` works out a design with you. It keeps asking what if until the
+`/dream:shape` works out a design with you. It keeps asking "what if" until the
 shape stops moving, then asks what breaks until nothing more comes off, and
 writes up the design you reach together. Bring a rough idea of what you want
 built.
@@ -102,8 +106,7 @@ built.
 `/dream:seer` breaks a finished design into an ordered roadmap, where each stage
 is one reviewable pull request. Once the roadmap has a home, it offers to create
 one issue per stage, chained so each is blocked by the one before. It leaves
-them unassigned and unlabelled, so you decide when implementation starts. If the
-work fits in one pull request, Seer tells you so and stops.
+them unassigned and unlabelled, so you decide when implementation starts.
 
 ## Utility skills
 
@@ -146,8 +149,8 @@ a reader in a second language.
 
 ### /dream:plan
 
-`/dream:plan` turns a focus into an implementation plan, where each task is one
-idea and one commit.
+`/dream:plan` turns a focus into an implementation plan for a single pull
+request, where each task is one idea and one commit.
 
 ## Troubleshooting
 
@@ -156,11 +159,22 @@ that version when you report a problem.
 
 ### Permissions
 
-If your plan has `auto` permissions mode, switch to it before you start a
-session. This should handle most permissions automatically.
+Start a session in an automatic permissions mode, so that most permissions are
+handled for you.
 
-You may still hit occasional permissions blocks, for example when posting to
-GitHub.
+Under Claude Code, when your plan includes `auto` mode:
+
+```bash
+claude --permission-mode auto
+```
+
+Under Codex:
+
+```bash
+codex --approve-for-me
+```
+
+If you hit permissions blocks, please raise an issue.
 
 ## License
 
