@@ -32,13 +32,26 @@ When the branch has no pull request, say there is none to leave out.
 
 ## Launch the review
 
-Spawn one subagent. Give it the absolute path of
-[the review instructions](../../subagents/precedent-review.md) and tell it to
-work to them. Give it the target too, as a git range like `origin/main...HEAD`
-or an absolute path, along with the pull request to leave out.
+Prepare one subagent. Brief it with the target, as a git range like
+`origin/main...HEAD` or an absolute path, along with the pull request to leave
+out.
 
 Pin no model and no effort. The subagent inherits the session's, and this review
 wants a reader as strong as the session running it.
+
+Under Claude Code:
+
+- Use the `dream:precedent-reviewer` subagent.
+
+Under Codex:
+
+- Use a plain subagent.
+- Give it the absolute path of
+  [the review instructions](../../agents/precedent-reviewer.md) and tell it to
+  follow them, skipping the file's YAML frontmatter, which configures the agent
+  under Claude Code.
+
+Launch the prepared subagent.
 
 ## Wait for the review
 

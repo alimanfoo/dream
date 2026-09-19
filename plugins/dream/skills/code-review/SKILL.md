@@ -64,7 +64,8 @@ Under Codex:
   effort. Set its `reasoning_effort` to `medium`.
 - Give it the absolute path of
   [the lens instructions](../../agents/code-review-lens.md) and tell it to
-  follow them.
+  follow them, skipping the file's YAML frontmatter, which configures the agent
+  under Claude Code.
 
 Launch every prepared subagent at the same time so they run in parallel.
 
