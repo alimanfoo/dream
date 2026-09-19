@@ -13,15 +13,15 @@ labelled issues. Dreamcatcher does that, as a separate package, at
 [alimanfoo/dreamcatcher](https://github.com/alimanfoo/dreamcatcher).
 
 The plugin also includes standalone skills for requirements, code analysis,
-design, roadmapping, planning, copy-editing, and review. Run the skills list in
-your host to see them all.
+design, roadmapping, planning, and review. Run the skills list in your host to
+see them all.
 
 ## Prerequisites
 
 Every skill runs under Claude Code. Codex support is partial: it includes
 `dream:smith`, `dream:less`, `dream:spark`, `dream:state`, `dream:shape`,
-`dream:seer`, `dream:copy-edit`, `dream:code-review`, `dream:coherence-review`,
-and `dream:precedent-review`. Put a `$` in front of a skill's name in a Codex
+`dream:seer`, `dream:code-review`, `dream:coherence-review`, and
+`dream:precedent-review`. Put a `$` in front of a skill's name in a Codex
 prompt:
 
 ```text
@@ -74,7 +74,7 @@ you for the task.
 ## Smaller tasks with /dream:less
 
 `/dream:less` is a cut-back Smith for a small, self-contained change. It skips
-planning and the separate copy-edit and coherence-review passes.
+planning and performs a lighter code review.
 
 Run `/dream:less` under Claude Code or `$dream:less` under Codex. It takes the
 task the same way Smith does.

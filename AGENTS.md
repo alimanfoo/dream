@@ -33,9 +33,7 @@ The `dream:spark`, `dream:state`, `dream:shape` and `dream:seer` bodies are
 written in the user's voice, as if the user typed it: "ask me", "tell me only
 what you've read". Don't normalise any of them back to the third person, or into
 a stack of orders. The frontmatter `description` stays third person in all four,
-since the harness reads that to pick the skill. Keep `dream:copy-edit` off all
-four bodies. It rewrites prose towards the Plain English guide, a different end
-point, and the register is what would go.
+since the harness reads that to pick the skill.
 
 Keep a simple subagent task prompt inline in the skill that launches it. When a
 task prompt earns its own file, put it in `plugins/dream/subagents/` if both
