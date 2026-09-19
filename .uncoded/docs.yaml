@@ -250,11 +250,22 @@ plugins/:
           Reporting:
 README.md:
   dream:
-    Prerequisites:
     Installation:
-    Roadmaps with /dream:seer:
-    Tasks with /dream:smith:
-    Smaller tasks with /dream:less:
+    Autonomous coding skills:
+      /dream:smith:
+      /dream:less:
+    Collaborative product management skills:
+      /dream:spark:
+      /dream:state:
+      /dream:shape:
+      /dream:seer:
+    Utility skills:
+      /dream:code-review:
+      /dream:coherence-review:
+      /dream:precedent-review:
+      /dream:coherent-coding:
+      /dream:plain-english:
+      /dream:plan:
     Troubleshooting:
       Permissions:
     License:
