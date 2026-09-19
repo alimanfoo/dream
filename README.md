@@ -74,7 +74,7 @@ you for the task.
 ## Smaller tasks with /dream:less
 
 `/dream:less` is a cut-back Smith for a small, self-contained change. It skips
-planning and the separate coherence-review and precedent-review passes.
+planning and performs a lighter code review.
 
 Run `/dream:less` under Claude Code or `$dream:less` under Codex. It takes the
 task the same way Smith does.
