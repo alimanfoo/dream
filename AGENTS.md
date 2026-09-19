@@ -68,9 +68,9 @@ throughout:
 
 This repo is mostly plugin metadata, skills, and agent prompts. There is no test
 suite. When changing behaviour, read the affected skill and agent prompts
-together. Check that lifecycle, role boundaries, tool permissions, and the
-skill's `README.md` entry stay consistent. Run the pre-commit hooks to check
-formatting. See the Linting section.
+together. Check that lifecycle, role boundaries, and tool permissions stay
+consistent. Run the pre-commit hooks to check formatting. See the Linting
+section.
 
 ## What the design is answering
 

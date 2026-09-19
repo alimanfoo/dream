@@ -25,8 +25,8 @@ codex plugin marketplace add alimanfoo/dream
 codex plugin add dream@dream
 ```
 
-Every skill runs under both hosts. Call one by name, with a leading slash under
-Claude Code and a `$` under Codex:
+Every skill runs under Claude Code and under Codex. Call one by name, with a
+leading slash under Claude Code and a `$` under Codex:
 
 ```text
 /dream:smith
@@ -42,6 +42,10 @@ Give one of these a task and it carries the task to a pull request on its own.
 It opens the pull request as a draft before it touches any code, and marks it
 ready when the work is done. That pull request is where you follow the session,
 and where the skill asks you anything it can't decide for itself.
+
+Dreamcatcher runs these skills without you there. It watches a repository for
+labelled issues and starts a session for each one, as a separate package at
+[alimanfoo/dreamcatcher](https://github.com/alimanfoo/dreamcatcher).
 
 ### /dream:smith
 
@@ -60,10 +64,6 @@ current branch name, such as `GH83`. Without those, it asks you for the task.
 `/dream:less` is a cut-back Smith for a small, self-contained change. It skips
 the plan and runs one review rather than three. It takes its task the same way
 Smith does.
-
-Both skills also run without you there. Dreamcatcher watches a repository for
-labelled issues and starts a session for each one, as a separate package at
-[alimanfoo/dreamcatcher](https://github.com/alimanfoo/dreamcatcher).
 
 ## Collaborative product management skills
 
