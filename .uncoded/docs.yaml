@@ -15,6 +15,13 @@ plugins/:
           The lens:
           Read the change:
           Reporting:
+      precedent-reviewer.md:
+        Precedent reviewer:
+          Gather the precedent:
+          Stop when there is too little:
+          Write down the precedent:
+          Review the change:
+          Reporting:
     coherent-coding.md:
       Coherent coding guide:
         Golden rule:
@@ -240,14 +247,6 @@ plugins/:
         Claude Code:
         Codex:
         While you wait:
-    subagents/:
-      precedent-review.md:
-        Precedent review:
-          Gather the precedent:
-          Stop when there is too little:
-          Write down the precedent:
-          Review the change:
-          Reporting:
 README.md:
   dream:
     Prerequisites:
