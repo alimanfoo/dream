@@ -94,9 +94,9 @@ Use it when you are about to design something in code you don't know well enough
 yet. It explores while you watch, gives you the big picture first, then takes
 you round the parts that matter.
 
-### /dream:shape
+### /dream:weave
 
-`/dream:shape` works out a design with you. It keeps asking "what if" until the
+`/dream:weave` works out a design with you. It keeps asking "what if" until the
 shape stops moving, then asks what breaks until nothing more comes off, and
 writes up the design you reach together. Bring a rough idea of what you want
 built.
