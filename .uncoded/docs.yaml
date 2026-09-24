@@ -137,6 +137,19 @@ plugins/:
             Wait for the review:
             Verify:
             Rank and return:
+      scout/:
+        SKILL.md:
+          dream:scout:
+            Never make anything up:
+            Tell it as a story:
+            Sound like a person:
+            Start from what I've given you:
+            Explore and read it all, and let me watch:
+            Give me the big picture first:
+            Take me round, and cover it all:
+            Write the guide:
+            Get it checked before you show me:
+            Where it goes:
       seer/:
         SKILL.md:
           dream:seer:
@@ -221,19 +234,6 @@ plugins/:
             Write the brief:
             Get it read before you show me:
             Where it goes:
-      state/:
-        SKILL.md:
-          dream:state:
-            Never make anything up:
-            Tell it as a story:
-            Sound like a person:
-            Start from what I've given you:
-            Explore and read it all, and let me watch:
-            Give me the big picture first:
-            Take me round, and cover it all:
-            Write the guide:
-            Get it checked before you show me:
-            Where it goes:
     spec-files.md:
       Spec files:
         Where the files go:
@@ -252,7 +252,7 @@ README.md:
       /dream:less:
     Collaborative product management skills:
       /dream:spark:
-      /dream:state:
+      /dream:scout:
       /dream:shape:
       /dream:seer:
     Utility skills:

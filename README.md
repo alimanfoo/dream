@@ -87,9 +87,9 @@ requirements brief. It stays out of the solution, follows whichever thread you
 are pulling on, and plays back what it heard before it writes anything down.
 Bring an idea you haven't finished thinking about.
 
-### /dream:state
+### /dream:scout
 
-`/dream:state` reads existing code with you, and leaves a reading guide to it.
+`/dream:scout` reads existing code with you, and leaves a reading guide to it.
 Use it when you are about to design something in code you don't know well enough
 yet. It explores while you watch, gives you the big picture first, then takes
 you round the parts that matter.
