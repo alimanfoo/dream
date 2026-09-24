@@ -80,16 +80,8 @@ that agent what to do.
 `/dream:scout` investigates an issue before any implementation work, and answers
 your questions about it. It checks what the issue claims against the code, says
 which of its own claims it checked and which it inferred, and cites the code it
-relies on. Point dreamcatcher's `[conversation]` block at it:
-
-```toml
-[conversation]
-label = "agent:conversation"
-harness = "claude"
-prompt = "/dream:scout GH{issue}"
-model = "opus[1m]"
-effort = "high"
-```
+relies on. To use it, set `prompt = "/dream:scout GH{issue}"` in dreamcatcher's
+`[conversation]` block.
 
 ## Collaborative product management skills
 
