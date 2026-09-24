@@ -35,6 +35,11 @@ any of them back to the third person, or into a stack of orders. The frontmatter
 `description` stays third person in all of them, since the harness reads that to
 pick the skill.
 
+The collaborative skills all read
+[`spec-files.md`](plugins/dream/spec-files.md). It owns where a specification
+file goes and how it reaches the user on a pull request, so those skills don't
+each carry their own copy of the convention.
+
 Keep a simple subagent task prompt inline in the skill that launches it. When a
 task prompt earns its own file, put it in `plugins/dream/agents/`. Claude Code
 reads a file there as a named agent, and a plain Codex subagent takes the same
@@ -48,11 +53,6 @@ ambiguous.
 Make every skill that launches subagents under both hosts read
 [`subagent-waiting.md`](plugins/dream/subagent-waiting.md). It owns the
 cross-host completion rule.
-
-The collaborative skills all read
-[`spec-files.md`](plugins/dream/spec-files.md). It owns where a specification
-file goes and how it reaches the user on a pull request, so those skills don't
-each carry their own copy of the convention.
 
 The prose in this repo references a skill, an agent, or an issue label one way
 throughout:
