@@ -101,12 +101,12 @@ shape stops moving, then asks what breaks until nothing more comes off, and
 writes up the design you reach together. Bring a rough idea of what you want
 built.
 
-### /dream:seer
+### /dream:quest
 
-`/dream:seer` breaks a finished design into an ordered roadmap, where each stage
-is one reviewable pull request. Once the roadmap has a home, it offers to create
-one issue per stage, chained so each is blocked by the one before. It leaves
-them unassigned and unlabelled, so you decide when implementation starts.
+`/dream:quest` breaks a finished design into an ordered roadmap, where each
+stage is one reviewable pull request. Once the roadmap has a home, it offers to
+create one issue per stage, chained so each is blocked by the one before. It
+leaves them unassigned and unlabelled, so you decide when implementation starts.
 
 ## Utility skills
 

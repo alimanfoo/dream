@@ -137,22 +137,9 @@ plugins/:
             Wait for the review:
             Verify:
             Rank and return:
-      scout/:
+      quest/:
         SKILL.md:
-          dream:scout:
-            Never make anything up:
-            Tell it as a story:
-            Sound like a person:
-            Start from what I've given you:
-            Explore and read it all, and let me watch:
-            Give me the big picture first:
-            Take me round, and cover it all:
-            Write the guide:
-            Get it checked before you show me:
-            Where it goes:
-      seer/:
-        SKILL.md:
-          dream:seer:
+          dream:quest:
             Sound like a person:
             Say one thing at a time:
             Think out loud:
@@ -165,6 +152,19 @@ plugins/:
             Discuss the size:
             Put dependency and risk in order:
             Write the roadmap:
+            Get it checked before you show me:
+            Where it goes:
+      scout/:
+        SKILL.md:
+          dream:scout:
+            Never make anything up:
+            Tell it as a story:
+            Sound like a person:
+            Start from what I've given you:
+            Explore and read it all, and let me watch:
+            Give me the big picture first:
+            Take me round, and cover it all:
+            Write the guide:
             Get it checked before you show me:
             Where it goes:
       smith/:
@@ -254,7 +254,7 @@ README.md:
       /dream:spark:
       /dream:scout:
       /dream:weave:
-      /dream:seer:
+      /dream:quest:
     Utility skills:
       /dream:code-review:
       /dream:coherence-review:
