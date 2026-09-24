@@ -46,7 +46,8 @@ Cite the code you rely on by path and line, so the user can check it.
 When a question has more than one reasonable answer, recommend one and say why.
 
 When you can't answer part of a question, say so, and say what would find the
-answer.
+answer. If you need something from the user, ask for it in the answer. The user
+reads only the answer, so a question you ask anywhere else goes unseen.
 
 Keep the answer as short as the question allows.
 
@@ -56,4 +57,4 @@ Write each paragraph on a single line, since GitHub reflows it (see
 Read the `commentFooter` value from
 [`agent-written-marks.json`](../../agent-written-marks.json). End the answer
 with the exact value as a blockquote, so a reader can tell that an agent wrote
-it.
+it. Leave the value off `NO_REPLY`, which has to stand alone.
