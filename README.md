@@ -70,18 +70,15 @@ the branch name.
 
 ## Issue conversation skills
 
-[alimanfoo/dreamcatcher](https://github.com/alimanfoo/dreamcatcher) can also
-answer questions that you post as comments on an issue. It runs an agent on each
-new comment and posts the agent's answer back to the issue. These skills tell
-that agent what to do.
+[alimanfoo/dreamcatcher](https://github.com/alimanfoo/dreamcatcher) can answer
+questions that you post as comments on an issue. This skill tells its agent what
+to do.
 
 ### /dream:scout
 
 `/dream:scout` investigates an issue before any implementation work, and answers
-your questions about it. It checks what the issue claims against the code, says
-which of its own claims it checked and which it inferred, and cites the code it
-relies on. To use it, set `prompt = "/dream:scout GH{issue}"` in dreamcatcher's
-`[conversation]` block.
+your questions about it from the code. To use it, set
+`prompt = "/dream:scout GH{issue}"` in dreamcatcher's `[conversation]` block.
 
 ## Collaborative product management skills
 

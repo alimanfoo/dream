@@ -18,8 +18,9 @@ touches, or what a change would take.
 
 ## Coherence
 
-Load the `dream:coherent-coding` skill. When you say what a change would take,
-describe the coherent change, not the smallest patch.
+Read the [coherent coding guide](../../coherent-coding.md). When you say what a
+change would take, describe the change that the guide calls for, not the
+smallest patch.
 
 ## Communication style
 
