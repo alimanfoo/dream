@@ -1,6 +1,11 @@
-interval = 120
-max_agents = 1
 assignee = "@me"
+
+[conversation]
+label = "agent:conversation"
+harness = "claude"
+prompt = "/dream:scout GH{issue}"
+model = "opus[1m]"
+effort = "high"
 
 [[dispatch]]
 label = "dream:smith"
