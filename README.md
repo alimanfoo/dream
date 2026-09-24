@@ -97,9 +97,9 @@ you round the parts that matter.
 ### /dream:weave
 
 `/dream:weave` works out a design with you. It keeps asking "what if" until the
-shape stops moving, then asks what breaks until nothing more comes off, and
-writes up the design you reach together. Bring a rough idea of what you want
-built.
+shape of the design stops moving, then asks what breaks until nothing more comes
+off, and writes up the design you reach together. Bring a rough idea of what you
+want built.
 
 ### /dream:quest
 
