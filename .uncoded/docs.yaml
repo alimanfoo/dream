@@ -137,6 +137,13 @@ plugins/:
             Wait for the review:
             Verify:
             Rank and return:
+      scout/:
+        SKILL.md:
+          dream:scout:
+            Coherence:
+            Communication style:
+            Investigate:
+            Answer:
       seer/:
         SKILL.md:
           dream:seer:
@@ -250,6 +257,8 @@ README.md:
     Autonomous coding skills:
       /dream:smith:
       /dream:less:
+    Issue conversation skills:
+      /dream:scout:
     Collaborative product management skills:
       /dream:spark:
       /dream:state:

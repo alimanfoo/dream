@@ -68,6 +68,29 @@ the plan and runs one review rather than three. Name the task as an argument,
 such as `/dream:less GH123`, or leave it out and Less reads the issue numbers in
 the branch name.
 
+## Issue conversation skills
+
+[alimanfoo/dreamcatcher](https://github.com/alimanfoo/dreamcatcher) can also
+answer questions that you post as comments on an issue. It runs an agent on each
+new comment and posts the agent's answer back to the issue. These skills tell
+that agent what to do.
+
+### /dream:scout
+
+`/dream:scout` investigates an issue before any implementation work, and answers
+your questions about it. It checks what the issue claims against the code, says
+which of its own claims it checked and which it inferred, and cites the code it
+relies on. Point dreamcatcher's `[conversation]` block at it:
+
+```toml
+[conversation]
+label = "agent:conversation"
+harness = "claude"
+prompt = "/dream:scout GH{issue}"
+model = "opus[1m]"
+effort = "high"
+```
+
 ## Collaborative product management skills
 
 These skills work through the thinking that comes before code, and they work at
