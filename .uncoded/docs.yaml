@@ -157,16 +157,10 @@ plugins/:
       scout/:
         SKILL.md:
           dream:scout:
-            Never make anything up:
-            Tell it as a story:
-            Sound like a person:
-            Start from what I've given you:
-            Explore and read it all, and let me watch:
-            Give me the big picture first:
-            Take me round, and cover it all:
-            Write the guide:
-            Get it checked before you show me:
-            Where it goes:
+            Coherence:
+            Communication style:
+            Investigate:
+            Answer:
       smith/:
         SKILL.md:
           dream:smith:
@@ -213,6 +207,19 @@ plugins/:
             Write the brief:
             Get it read before you show me:
             Where it goes:
+      trace/:
+        SKILL.md:
+          dream:trace:
+            Never make anything up:
+            Tell it as a story:
+            Sound like a person:
+            Start from what I've given you:
+            Explore and read it all, and let me watch:
+            Give me the big picture first:
+            Take me round, and cover it all:
+            Write the guide:
+            Get it checked before you show me:
+            Where it goes:
       weave/:
         SKILL.md:
           dream:weave:
@@ -250,9 +257,11 @@ README.md:
     Autonomous coding skills:
       /dream:smith:
       /dream:less:
+    Issue conversation skills:
+      /dream:scout:
     Collaborative product management skills:
       /dream:spark:
-      /dream:scout:
+      /dream:trace:
       /dream:weave:
       /dream:quest:
     Utility skills:

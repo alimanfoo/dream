@@ -24,7 +24,7 @@ This repo has two layers, easy to confuse:
 
 ## Development notes
 
-The collaborative product management skills, `dream:spark`, `dream:scout`,
+The collaborative product management skills, `dream:spark`, `dream:trace`,
 `dream:weave` and `dream:quest`, are an experiment, trying a different approach
 from the rest of the plugin. They run against repo convention on purpose, so
 treat a deviation as deliberate rather than as drift to tidy up.
