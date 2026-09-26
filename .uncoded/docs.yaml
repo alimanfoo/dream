@@ -137,9 +137,9 @@ plugins/:
             Wait for the review:
             Verify:
             Rank and return:
-      seer/:
+      quest/:
         SKILL.md:
-          dream:seer:
+          dream:quest:
             Sound like a person:
             Say one thing at a time:
             Think out loud:
@@ -154,25 +154,17 @@ plugins/:
             Write the roadmap:
             Get it checked before you show me:
             Where it goes:
-      shape/:
+      scout/:
         SKILL.md:
-          dream:shape:
+          dream:scout:
+            Never make anything up:
+            Tell it as a story:
             Sound like a person:
-            Say one thing at a time:
-            Let "go on" be enough:
-            Think out loud:
-            Tell me things I don't know:
             Start from what I've given you:
-            Read the code before you say anything about it:
-            Start us off:
-            '"What if" until the shape stops moving':
-            Follow it before you judge it:
-            What is this actually an instance of?:
-            Cut first, price it after:
-            Keep it rough while the shape is moving:
-            The moment the shape stops moving:
-            '"What breaks" until nothing more comes off':
-            Write it up:
+            Explore and read it all, and let me watch:
+            Give me the big picture first:
+            Take me round, and cover it all:
+            Write the guide:
             Get it checked before you show me:
             Where it goes:
       smith/:
@@ -221,17 +213,25 @@ plugins/:
             Write the brief:
             Get it read before you show me:
             Where it goes:
-      state/:
+      weave/:
         SKILL.md:
-          dream:state:
-            Never make anything up:
-            Tell it as a story:
+          dream:weave:
             Sound like a person:
+            Say one thing at a time:
+            Let "go on" be enough:
+            Think out loud:
+            Tell me things I don't know:
             Start from what I've given you:
-            Explore and read it all, and let me watch:
-            Give me the big picture first:
-            Take me round, and cover it all:
-            Write the guide:
+            Read the code before you say anything about it:
+            Start us off:
+            '"What if" until the shape stops moving':
+            Follow it before you judge it:
+            What is this actually an instance of?:
+            Cut first, price it after:
+            Keep it rough while the shape is moving:
+            The moment the shape stops moving:
+            '"What breaks" until nothing more comes off':
+            Write it up:
             Get it checked before you show me:
             Where it goes:
     spec-files.md:
@@ -252,9 +252,9 @@ README.md:
       /dream:less:
     Collaborative product management skills:
       /dream:spark:
-      /dream:state:
-      /dream:shape:
-      /dream:seer:
+      /dream:scout:
+      /dream:weave:
+      /dream:quest:
     Utility skills:
       /dream:code-review:
       /dream:coherence-review:
