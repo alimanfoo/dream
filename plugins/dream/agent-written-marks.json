@@ -1,4 +1,7 @@
 {
   "commentFooter": "written by an agent",
-  "commitTrailer": "Co-Authored-By: AI agent <noreply@github.com>"
+  "commitTrailer": {
+    "claude": "Co-Authored-By: Claude <noreply@anthropic.com>",
+    "codex": "Co-Authored-By: Codex <noreply@openai.com>"
+  }
 }
