@@ -54,8 +54,3 @@ Keep the answer as short as the question allows.
 
 Write each paragraph on a single line, since GitHub reflows it (see
 [Text for GitHub](../../plain-english.md#text-for-github)).
-
-Read the `commentFooter` value from
-[`agent-written-marks.json`](../../agent-written-marks.json). End the answer
-with the exact value as a blockquote, so a reader can tell that an agent wrote
-it. Leave the value off `NO_REPLY`, which has to stand alone.
