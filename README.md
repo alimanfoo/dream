@@ -74,11 +74,11 @@ the branch name.
 questions that you post as comments on an issue. This skill tells its agent what
 to do.
 
-### /dream:scout
+### /dream:trace
 
-`/dream:scout` investigates an issue before any implementation work, and answers
+`/dream:trace` investigates an issue before any implementation work, and answers
 your questions about it from the code. To use it, set
-`prompt = "/dream:scout GH{issue}"` in dreamcatcher's `[conversation]` block.
+`prompt = "/dream:trace GH{issue}"` in dreamcatcher's `[conversation]` block.
 
 ## Collaborative product management skills
 

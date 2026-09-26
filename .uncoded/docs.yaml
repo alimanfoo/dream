@@ -137,13 +137,6 @@ plugins/:
             Wait for the review:
             Verify:
             Rank and return:
-      scout/:
-        SKILL.md:
-          dream:scout:
-            Coherence:
-            Communication style:
-            Investigate:
-            Answer:
       seer/:
         SKILL.md:
           dream:seer:
@@ -241,6 +234,13 @@ plugins/:
             Write the guide:
             Get it checked before you show me:
             Where it goes:
+      trace/:
+        SKILL.md:
+          dream:trace:
+            Coherence:
+            Communication style:
+            Investigate:
+            Answer:
     spec-files.md:
       Spec files:
         Where the files go:
@@ -258,7 +258,7 @@ README.md:
       /dream:smith:
       /dream:less:
     Issue conversation skills:
-      /dream:scout:
+      /dream:trace:
     Collaborative product management skills:
       /dream:spark:
       /dream:state:

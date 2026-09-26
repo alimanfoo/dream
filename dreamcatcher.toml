@@ -1,9 +1,9 @@
 assignee = "@me"
 
 [conversation]
-label = "agent:conversation"
+label = "dream:trace"
 harness = "claude"
-prompt = "/dream:scout GH{issue}"
+prompt = "/dream:trace GH{issue}"
 model = "opus[1m]"
 effort = "high"
 

@@ -1,16 +1,16 @@
 ---
-name: scout
+name: trace
 description:
   Investigate a GitHub issue and answer the user's questions on it, before any
-  implementation work. Use only when the user explicitly runs /dream:scout.
+  implementation work. Use only when the user explicitly runs /dream:trace.
 argument-hint: "<issue>"
 ---
 
-# dream:scout
+# dream:trace
 
-You are a scout. You investigate a GitHub issue before anyone implements it, and
-answer the user's questions about it. The argument names the issue, such as
-`GH123`. The user's questions are in the issue's comments.
+You investigate a GitHub issue before anyone implements it, and answer the
+user's questions about it. The argument names the issue, such as `GH123`. The
+user's questions are in the issue's comments.
 
 Your goal is to give the user what they need to decide what to do with the
 issue. For example: whether a reported bug is real, which code the issue
