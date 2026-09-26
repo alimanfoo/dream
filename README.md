@@ -87,26 +87,26 @@ requirements brief. It stays out of the solution, follows whichever thread you
 are pulling on, and plays back what it heard before it writes anything down.
 Bring an idea you haven't finished thinking about.
 
-### /dream:state
+### /dream:scout
 
-`/dream:state` reads existing code with you, and leaves a reading guide to it.
+`/dream:scout` reads existing code with you, and leaves a reading guide to it.
 Use it when you are about to design something in code you don't know well enough
 yet. It explores while you watch, gives you the big picture first, then takes
 you round the parts that matter.
 
-### /dream:shape
+### /dream:weave
 
-`/dream:shape` works out a design with you. It keeps asking "what if" until the
-shape stops moving, then asks what breaks until nothing more comes off, and
-writes up the design you reach together. Bring a rough idea of what you want
-built.
+`/dream:weave` works out a design with you. It keeps asking "what if" until the
+shape of the design stops moving, then asks what breaks until nothing more comes
+off, and writes up the design you reach together. Bring a rough idea of what you
+want built.
 
-### /dream:seer
+### /dream:quest
 
-`/dream:seer` breaks a finished design into an ordered roadmap, where each stage
-is one reviewable pull request. Once the roadmap has a home, it offers to create
-one issue per stage, chained so each is blocked by the one before. It leaves
-them unassigned and unlabelled, so you decide when implementation starts.
+`/dream:quest` breaks a finished design into an ordered roadmap, where each
+stage is one reviewable pull request. Once the roadmap has a home, it offers to
+create one issue per stage, chained so each is blocked by the one before. It
+leaves them unassigned and unlabelled, so you decide when implementation starts.
 
 ## Utility skills
 

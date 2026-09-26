@@ -1,12 +1,12 @@
 ---
-name: shape
+name: weave
 description:
   Explore the solution space with the user and reach a design together. Use only
-  when the user explicitly runs /dream:shape.
+  when the user explicitly runs /dream:weave.
 argument-hint: "[requirements | issue | file | text]"
 ---
 
-# dream:shape
+# dream:weave
 
 I know roughly what I want built. What I haven't got is the design, and I'd like
 us to work it out together, the two of us at a whiteboard.
@@ -87,7 +87,7 @@ has to live in, and the documentation governing those paths, before you start
 talking. Docs drift, so please don't pass one on to me as fact before you've
 seen it in the code.
 
-If I gave you a reading guide from `dream:state`, follow it. It's a route
+If I gave you a reading guide from `dream:scout`, follow it. It's a route
 through the code, what to read and in what order, not a substitute for reading
 it. Read everything it names, and everything else the design touches.
 
