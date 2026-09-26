@@ -1,12 +1,12 @@
 ---
-name: state
+name: scout
 description:
   Explore the code behind a task with the user, and leave a verified reading
-  guide to it. Use only when the user explicitly runs /dream:state.
+  guide to it. Use only when the user explicitly runs /dream:scout.
 argument-hint: "[requirements | issue | file | text]"
 ---
 
-# dream:state
+# dream:scout
 
 I'm about to design or build something, and I don't know this code well enough
 yet. So before anyone designs anything, I'd like the two of us to read and learn

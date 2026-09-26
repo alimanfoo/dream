@@ -1,12 +1,12 @@
 ---
-name: seer
+name: quest
 description:
   Develop a roadmap for a large, designed piece of work. Use only when the user
-  explicitly runs /dream:seer.
+  explicitly runs /dream:quest.
 argument-hint: "[design | issue | file | text]"
 ---
 
-# dream:seer
+# dream:quest
 
 I've got a design for something too large to build in one pull request. Let's
 explore together how to break it into stages, where each stage is one pull
