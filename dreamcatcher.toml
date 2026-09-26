@@ -2,9 +2,13 @@ assignee = "@me"
 
 [conversation]
 label = "agent:conversation"
-harness = "claude"
+[conversation.claude]
 prompt = "Answer questions on GH{issue}."
 model = "opus[1m]"
+effort = "high"
+[conversation.codex]
+prompt = "Answer questions on GH{issue}."
+model = "gpt-5.6-sol"
 effort = "high"
 
 [[dispatch]]
