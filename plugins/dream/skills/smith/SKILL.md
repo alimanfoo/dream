@@ -257,6 +257,10 @@ Accepted: Preserved empty fields in `parse_row`.
 > `parse_row` should reject rows with empty fields.
 
 Rejected: Empty fields are valid input.
+
+> `parse_row` accepts duplicate fields, so a later value replaces the first.
+
+Deferred: Rejecting duplicate fields changes the input contract and needs a PR of its own.
 ```
 
 Commit and push the fixes, then post the file as a PR comment.
