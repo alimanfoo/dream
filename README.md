@@ -74,12 +74,12 @@ the branch name.
 questions that you post as comments on an issue. This skill tells its agent what
 to do.
 
-### /dream:trace
+### /dream:scout
 
-`/dream:trace` investigates an issue before any implementation work, and answers
+`/dream:scout` investigates an issue before any implementation work, and answers
 your questions about it from the code. To use it, set the `prompt` in each
 harness block under dreamcatcher's `[conversation]` block:
-`"/dream:trace GH{issue}"` for Claude Code and `"$dream:trace GH{issue}"` for
+`"/dream:scout GH{issue}"` for Claude Code and `"$dream:scout GH{issue}"` for
 Codex.
 
 ## Collaborative product management skills
@@ -101,9 +101,9 @@ requirements brief. It stays out of the solution, follows whichever thread you
 are pulling on, and plays back what it heard before it writes anything down.
 Bring an idea you haven't finished thinking about.
 
-### /dream:scout
+### /dream:trace
 
-`/dream:scout` reads existing code with you, and leaves a reading guide to it.
+`/dream:trace` reads existing code with you, and leaves a reading guide to it.
 Use it when you are about to design something in code you don't know well enough
 yet. It explores while you watch, gives you the big picture first, then takes
 you round the parts that matter.

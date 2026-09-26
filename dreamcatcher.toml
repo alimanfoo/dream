@@ -1,13 +1,13 @@
 assignee = "@me"
 
 [conversation]
-label = "dream:trace"
+label = "dream:scout"
 [conversation.claude]
-prompt = "/dream:trace GH{issue}"
+prompt = "/dream:scout GH{issue}"
 model = "opus[1m]"
 effort = "high"
 [conversation.codex]
-prompt = "$dream:trace GH{issue}"
+prompt = "$dream:scout GH{issue}"
 model = "gpt-5.6-sol"
 effort = "high"
 
