@@ -1,6 +1,11 @@
-interval = 120
-max_agents = 1
 assignee = "@me"
+
+[conversation]
+label = "agent:conversation"
+harness = "claude"
+prompt = "Answer questions on GH{issue}."
+model = "opus[1m]"
+effort = "high"
 
 [[dispatch]]
 label = "dream:smith"
@@ -17,9 +22,9 @@ effort = "high"
 label = "dream:less"
 [dispatch.claude]
 prompt = "/dream:less GH{issue}"
-model = "sonnet[1m]"
+model = "opus[1m]"
 effort = "high"
 [dispatch.codex]
 prompt = "$dream:less GH{issue}"
-model = "gpt-5.6-terra"
+model = "gpt-5.6-sol"
 effort = "high"
