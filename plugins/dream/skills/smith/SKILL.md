@@ -227,33 +227,36 @@ the base (`origin/main...HEAD`).
 Start the comment as soon as the skill returns, before you weigh any finding or
 change any code. Write it to a temporary file outside the repo, named after the
 comment's heading so one review's file never overwrites another's. Head it
-`Coherence review`. Put in each finding, copied across word for word, and leave
-the space under each quote empty. When the review returned no findings, the
-comment is the heading and one line saying so.
+`Coherence review`. When the review returned findings, add each finding verbatim
+as a blockquote and leave one blank line under it for the response. When the
+review returned no findings, the comment is the heading and one line saying so.
 
 Weigh each finding on its merits and apply the ones the evidence supports. Reach
 for the coherent fix even when it goes wider than the site the finding names.
 Defer one that holds but needs a PR of its own. Once you settle a finding, write
-its response into the file under that finding's quote: `Accepted.` and what you
-did, `Rejected.` and the reason, or `Deferred.` and why it needs a PR of its
-own, each in one sentence.
+one response line under its blockquote. Use exactly one of these forms:
 
-If the review returned findings, reread the file after you settle them and
-correct it to the shape below. Apart from the required footer, keep no text
-outside the heading and finding blocks.
+- `Accepted: {what you did}`
+- `Rejected: {reason}`
+- `Deferred: {why it needs a PR of its own}`
+
+Keep the response to one sentence.
+
+Before you post a comment that has findings, reread the file. Between the
+heading and the required footer, keep only repeating finding-and-response
+blocks. Keep each finding verbatim and make each response match one of the forms
+above. A finished comment looks like this:
 
 ```text
-## {heading}
+## Code review
 
-> {the finding, verbatim}
+> The parser drops empty fields, so callers cannot preserve them.
 
-{your response}
+Accepted: Preserved empty fields in `parse_row`.
 
-> {the finding, verbatim}
+> `parse_row` should reject rows with empty fields.
 
-{your response}
-
-...and so on, one block per finding.
+Rejected: Empty fields are valid input.
 ```
 
 Commit and push the fixes, then post the file as a PR comment.
