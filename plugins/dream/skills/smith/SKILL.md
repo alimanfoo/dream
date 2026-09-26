@@ -235,7 +235,11 @@ for the coherent fix even when it goes wider than the site the finding names.
 Defer one that holds but needs a PR of its own. Once you settle a finding, write
 its response into the file under that finding's quote: `Accepted.` and what you
 did, `Rejected.` and the reason, or `Deferred.` and why it needs a PR of its
-own, each in one sentence. The comment then reads:
+own, each in one sentence.
+
+After every finding is settled, reread the file and correct it to the shape
+below. Apart from the required footer, keep no text outside the heading and
+finding blocks.
 
 ```text
 ## {heading}
