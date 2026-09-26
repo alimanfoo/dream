@@ -61,11 +61,12 @@ tokens.
 
 ## Mark your work
 
-Read the `commentFooter` and `commitTrailer` values from
+Read the `commentFooter` value, and the `commitTrailer` value for the harness
+you run under (`claude` or `codex`), from
 [`agent-written-marks.json`](../../agent-written-marks.json). End every commit
-with the exact `commitTrailer` value. End every PR body and comment with the
-exact `commentFooter` value as a blockquote. Replies on lines of the diff count
-as comments.
+with that exact trailer. End every PR body and comment with the exact
+`commentFooter` value as a blockquote. Replies on lines of the diff count as
+comments.
 
 This lets a reader tell quickly which items are agent-authored.
 

@@ -31,7 +31,8 @@ Once the user has agreed to the file, open a pull request for it:
 
 - Create a branch off the current branch, named after the folder's slug.
 - Copy the draft into the folder, under that name.
-- Commit it. Read the `commitTrailer` value from
+- Commit it. Read the `commitTrailer` value for the harness you run under
+  (`claude` or `codex`) from
   [`agent-written-marks.json`](agent-written-marks.json), and end the commit
   message with that exact value.
 - Push the branch, then run `gh pr create`. Title the pull request after the
