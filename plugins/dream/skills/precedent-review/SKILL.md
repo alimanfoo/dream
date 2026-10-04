@@ -65,7 +65,7 @@ weighing the findings, not a finding itself.
 
 Read the code each finding cites. Keep only the findings you can confirm.
 
-## Rank and return
+## Rank and output
 
-Return the verified findings as a numbered list, most important first. Report
-only: apply no fixes. If you have nothing to report, say so and return.
+Output the verified findings as a numbered list, most important first. If you
+have nothing to report, say so.

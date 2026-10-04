@@ -103,9 +103,8 @@ Confirm each proposed fix against the code too: what it removes is really there,
 removing it resolves the finding, and the result is less code than before. Drop
 any finding whose proposed fix fails one of those.
 
-## Rank and return
+## Rank and output
 
-Return the verified findings as turn output: a numbered list, most important
-first. Include the proposed fix for each, since a finding without one doesn't
-survive this review. Report only: apply no fixes. If you have nothing to report,
-say so and return.
+Output the verified findings as a numbered list, most important first. Include
+the proposed fix for each, since a finding without one doesn't survive this
+review. If you have nothing to report, say so.
