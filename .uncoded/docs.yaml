@@ -73,7 +73,7 @@ plugins/:
             Launch the lenses:
             Wait for the lenses:
             Combine and verify:
-            Rank and return:
+            Rank and output:
       coherence-review/:
         SKILL.md:
           dream:coherence-review:
@@ -82,7 +82,7 @@ plugins/:
             Launch the lenses:
             Wait for the lenses:
             Combine and verify:
-            Rank and return:
+            Rank and output:
       coherent-coding/:
         SKILL.md:
           dream:coherent-coding:
@@ -136,7 +136,7 @@ plugins/:
             Launch the review:
             Wait for the review:
             Verify:
-            Rank and return:
+            Rank and output:
       quest/:
         SKILL.md:
           dream:quest:

@@ -105,6 +105,6 @@ any finding whose proposed fix fails one of those.
 
 ## Rank and output
 
-Output the verified findings as a numbered list, most important first. Include the
-proposed fix for each, since a finding without one doesn't survive this review. 
-If you have nothing to report, say so.
+Output the verified findings as a numbered list, most important first. Include
+the proposed fix for each, since a finding without one doesn't survive this
+review. If you have nothing to report, say so.
