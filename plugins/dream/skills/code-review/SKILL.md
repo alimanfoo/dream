@@ -87,5 +87,5 @@ Read the code each finding cites. Keep only the findings you can confirm.
 
 ## Rank and output
 
-Output the verified findings: a numbered list, most important first. If you have
+Output the verified findings as a numbered list, most important first. If you have
 nothing to report, say so.
