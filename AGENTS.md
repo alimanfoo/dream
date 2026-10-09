@@ -60,8 +60,8 @@ throughout:
 - Write a skill reference as `dream:foo`, with no leading slash. Both hosts
   resolve that identifier, so an agent can act on it as written.
 - Keep the leading slash, `/dream:foo`, where the reference stands for what a
-  person types: the README, a frontmatter `description:` field, a launch banner,
-  and a line the agent shows the user.
+  person types: the documentation site, a frontmatter `description:` field, a
+  launch banner, and a line the agent shows the user.
 - Drop the backticks in a frontmatter `description:` field, a markdown heading,
   or a fenced command block.
 - Write a skill file's title heading as `dream:foo`, so it names the skill a
@@ -188,6 +188,26 @@ on every push and pull request (see `.github/workflows/lint.yml`). The
 installs it via `npm`. The `uncoded` hook requires `uvx` on `PATH`. CI provides
 it via `astral-sh/setup-uv`.
 
+## Documentation site
+
+The documentation site is one page, built with MkDocs and the Material theme.
+The page text is in `docs/index.md`, and the headline and lede are in its front
+matter. The hero, including a sample `dream:smith` session, is in
+`overrides/home.html`, and the styling is in `docs/assets/dream.css`. The `docs`
+workflow builds the site on every pull request that touches it, and publishes it
+to GitHub Pages from main.
+
+When you add a skill, remove one, or change what one does, update
+`docs/index.md`, because it describes every skill. Keep each skill to one row in
+its table, so a reader can take in the whole plugin at a glance. When
+`dream:smith` changes the steps it reports, update the sample session to match.
+
+Preview the site locally:
+
+```bash
+uvx --with-requirements docs/requirements.txt mkdocs serve
+```
+
 ## Release protocol
 
 There is no release process. The plugin is installed directly from this GitHub
@@ -211,8 +231,8 @@ Which part to bump:
 - **Minor**: an additive, non-breaking change.
 - **Micro**: a bug fix.
 
-A change that touches only this developer meta-doc (`AGENTS.md`) needs no bump.
-It isn't part of the installed plugin.
+A change that touches only this developer meta-doc (`AGENTS.md`) or the
+documentation site needs no bump. Neither is part of the installed plugin.
 
 Keep the PR description short and current: say what the PR does and why, and
 leave line-by-line detail to the diff. Update the body whenever a later commit
