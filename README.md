@@ -5,7 +5,3 @@ less input from you.
 
 Read the documentation at
 **[alimanfoo.github.io/dream](https://alimanfoo.github.io/dream/)**.
-
-## License
-
-MIT. See [LICENSE](LICENSE).
