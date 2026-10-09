@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+
+{% block content %}
+<section class="dh">
+  <p class="dh-eyebrow"><span class="dh-pulse"></span>Claude Code &middot; Codex</p>
+  <h1 class="dh-headline">{{ page.meta.headline }}</h1>
+  <p class="dh-lede">{{ page.meta.lede }}</p>
+
+  <figure class="dh-term" aria-label="A Smith session, from issue to a pull request ready for review">
+    <div class="dh-term__bar">
+      <span class="dh-term__path">~/uploader</span>
+      <span class="dh-term__mode">autonomous</span>
+    </div>
+    <ol class="dh-term__log">
+      <li style="--i:0" class="dh-in"><span class="dh-prompt">&gt;</span> /dream:smith GH42</li>
+      <li style="--i:1"><span class="dh-mark">&#9679;</span><span class="dh-k">Opened draft PR #57</span><span class="dh-v">Add retries to the upload client</span></li>
+      <li style="--i:2"><span class="dh-mark">&#9679;</span><span class="dh-k">Posted the plan</span><span class="dh-v">4 tasks</span></li>
+      <li style="--i:3"><span class="dh-mark dh-ok">&#10003;</span><span class="dh-k">Commit 1/4</span><span class="dh-v">Extract the request loop</span></li>
+      <li style="--i:4"><span class="dh-mark dh-ok">&#10003;</span><span class="dh-k">Commit 2/4</span><span class="dh-v">Add a backoff policy</span></li>
+      <li style="--i:5"><span class="dh-mark dh-ok">&#10003;</span><span class="dh-k">Commit 3/4</span><span class="dh-v">Retry on 429 and 5xx</span></li>
+      <li style="--i:6"><span class="dh-mark dh-ok">&#10003;</span><span class="dh-k">Commit 4/4</span><span class="dh-v">Cover retries in tests</span></li>
+      <li style="--i:7"><span class="dh-mark">&#9679;</span><span class="dh-k">Coherence review</span><span class="dh-v">2 accepted</span></li>
+      <li style="--i:8"><span class="dh-mark">&#9679;</span><span class="dh-k">Code review</span><span class="dh-v">1 accepted, 1 rejected</span></li>
+      <li style="--i:9"><span class="dh-mark">&#9679;</span><span class="dh-k">Precedent review</span><span class="dh-v">no findings</span></li>
+      <li style="--i:10"><span class="dh-mark dh-ok">&#10003;</span><span class="dh-k">Ready for review</span><span class="dh-v">#57</span></li>
+      <li style="--i:11" class="dh-idle"><span class="dh-prompt">&gt;</span> <span class="dh-caret"></span></li>
+    </ol>
+  </figure>
+</section>
+
+{{ page.content }}
+{% endblock %}

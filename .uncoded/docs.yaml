@@ -253,26 +253,13 @@ plugins/:
         While you wait:
 docs/:
   index.md:
-    dream:
-      Install:
-      Hand off a task:
-        /dream:smith:
-        /dream:less:
-      Think it through together:
-        /dream:spark:
-        /dream:trace:
-        /dream:weave:
-        /dream:quest:
-      Answer questions on an issue:
-        /dream:scout:
-      Do one job:
-        /dream:code-review:
-        /dream:coherence-review:
-        /dream:precedent-review:
-        /dream:plan:
-        /dream:coherent-coding:
-        /dream:plain-english:
-      If something goes wrong:
+    Install:
+    Hand off a task:
+    Think it through together:
+    Answer questions on an issue:
+    Review a change:
+    Plan and write:
+    If something goes wrong:
 README.md:
   dream:
     Installation:

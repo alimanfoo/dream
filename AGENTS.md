@@ -190,15 +190,18 @@ it via `astral-sh/setup-uv`.
 
 ## Documentation site
 
-The documentation site is one page, `docs/index.md`, built with MkDocs and the
-Material theme, and styled by `docs/assets/dream.css`. The `docs` workflow
-builds it on every pull request that touches it, and publishes it to GitHub
-Pages from main.
+The documentation site is one page, built with MkDocs and the Material theme.
+The page text is in `docs/index.md`, and the headline and lede are in its front
+matter. The hero, including a sample `dream:smith` session, is in
+`overrides/home.html`, and the styling is in `docs/assets/dream.css`. The `docs`
+workflow builds the site on every pull request that touches it, and publishes it
+to GitHub Pages from main.
 
 When you add a skill, remove one, or change what one does, update both the
-README and `docs/index.md`, because each of them describes every skill. Keep the
-page to a line or two per skill, so a reader can take in the whole plugin at a
-glance.
+README and `docs/index.md`, because each of them describes every skill. Keep
+each skill to one row in its table, so a reader can take in the whole plugin at
+a glance. When `dream:smith` changes the steps it reports, update the sample
+session to match.
 
 Preview the site locally:
 

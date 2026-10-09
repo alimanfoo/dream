@@ -1,15 +1,15 @@
 ---
+title: dream
+template: home.html
 hide:
   - navigation
   - toc
+headline: Skills for building software with agents
+lede:
+  A plugin for Claude Code and Codex. A skill is a named set of instructions
+  that you call from the prompt, and it puts the agent to work in a particular
+  way.
 ---
-
-# dream
-
-Skills for building software with agents, in Claude Code and Codex.
-
-A skill is a named set of instructions that you call from the prompt. Each skill
-puts the agent to work in a particular way.
 
 ## Install
 
@@ -35,14 +35,10 @@ Give one of these skills a task, and it carries the task to a pull request on
 its own. The skill opens the pull request as a draft before it touches any code.
 Follow the session there, and answer anything the skill asks you.
 
-### /dream:smith
-
-For a well-specified task. Smith posts a plan, implements the plan one commit at
-a time, then reviews the branch three ways and acts on every finding.
-
-### /dream:less
-
-For a small, self-contained change. Less skips the plan and runs one review.
+| Skill          | What it does                                                             |
+| -------------- | ------------------------------------------------------------------------ |
+| `/dream:smith` | Plans a well-specified task, builds it one commit at a time, reviews it. |
+| `/dream:less`  | Builds a small, self-contained change, with no plan and one review.      |
 
 Name the task as an argument: an issue such as `GH123`, or free text. Without an
 argument, the skill takes the issue numbers in the branch name.
@@ -56,67 +52,45 @@ These skills work with you on the thinking that comes before code, one question
 at a time. Each skill ends in a written specification, and offers to put it on a
 pull request where you can comment on any line.
 
+| Skill          | What it does                                                        |
+| -------------- | ------------------------------------------------------------------- |
+| `/dream:spark` | Interviews you about a rough idea, and writes a requirements brief. |
+| `/dream:trace` | Reads unfamiliar code with you, and writes a reading guide to it.   |
+| `/dream:weave` | Works out a design with you, and tests it by asking what breaks.    |
+| `/dream:quest` | Breaks a design into a roadmap of pull requests, one issue each.    |
+
 Run them in order on a large piece of work, or run the one you need. Each skill
 takes an issue, a file or free text, so you can point it at what the one before
 it wrote.
 
-### /dream:spark
-
-Interviews you about a rough idea, and turns it into a requirements brief.
-
-### /dream:trace
-
-Reads unfamiliar code with you, and leaves a reading guide to it.
-
-### /dream:weave
-
-Works out a design with you, and tests it by asking what breaks.
-
-### /dream:quest
-
-Breaks a design into an ordered roadmap, where each stage is one pull request.
-It offers to create one issue per stage.
-
 ## Answer questions on an issue
 
-### /dream:scout
+| Skill          | What it does                                                             |
+| -------------- | ------------------------------------------------------------------------ |
+| `/dream:scout` | Investigates an issue before any code, and answers your questions on it. |
 
-Investigates an issue before any implementation work, and answers the questions
-you post on it from the code. Set it as the `prompt` under dreamcatcher's
-`[conversation]` block: `"/dream:scout GH{issue}"`.
+To use it, set the `prompt` under dreamcatcher's `[conversation]` block to
+`"/dream:scout GH{issue}"`.
 
-## Do one job
+## Review a change
 
-The hand-off skills run these for you, and you can run any of them yourself.
 Each review reads the branch against `origin/main`, or takes a git range or a
-path.
+path. Smith runs all of them before it marks a pull request ready, and you can
+run any of them yourself.
 
-### /dream:code-review
+| Skill                     | What it looks for                                                   |
+| ------------------------- | ------------------------------------------------------------------- |
+| `/dream:coherence-review` | The fix that stopped at the symptom, and the fact with two homes.   |
+| `/dream:code-review`      | Bugs, through lenses chosen to fit the diff, each finding verified. |
+| `/dream:precedent-review` | What you would catch, learned from your own past review comments.   |
 
-Reviews changed code through lenses chosen to fit the diff, and verifies every
-finding before it reports it.
+## Plan and write
 
-### /dream:coherence-review
-
-Reviews changed code for the fix that stopped at the symptom, the edit that
-missed a site, and the fact that now has two homes.
-
-### /dream:precedent-review
-
-Reviews changed code against your own past review comments, so it catches what
-you would catch.
-
-### /dream:plan
-
-Turns a focus into a plan for one pull request, where each task is one commit.
-
-### /dream:coherent-coding
-
-Loads the coherent coding guide, so the agent designs and writes code to it.
-
-### /dream:plain-english
-
-Loads the Plain English guide, so the agent writes to be understood.
+| Skill                    | What it does                                                       |
+| ------------------------ | ------------------------------------------------------------------ |
+| `/dream:plan`            | Turns a focus into a plan for one pull request, a commit per task. |
+| `/dream:coherent-coding` | Loads the coherent coding guide, for the agent to code to.         |
+| `/dream:plain-english`   | Loads the Plain English guide, for the agent to write to.          |
 
 ## If something goes wrong
 
