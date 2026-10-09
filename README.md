@@ -1,6 +1,6 @@
 # dream
 
-Skills for Claude Code and Codex, for better software from coding agents with
+Skills for better software from coding agents with
 less input from you.
 
 Read the documentation at
