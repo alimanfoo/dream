@@ -4,11 +4,12 @@ template: home.html
 hide:
   - navigation
   - toc
-headline: Skills for building software with agents
+headline: Better software from coding agents, with less input from you
 lede:
-  A plugin for Claude Code and Codex. A skill is a named set of instructions
-  that you call from the prompt, and it puts the agent to work in a particular
-  way.
+  Hand off a task and get back a planned, built and reviewed pull request. Work
+  through requirements and design with the agent before any code. The skills put
+  structure around the ways coding agents go wrong, such as fixing the symptom,
+  over-building, and agreeing with whoever spoke last.
 ---
 
 ## Install
