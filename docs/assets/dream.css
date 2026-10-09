@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
+
+/* Palette: warm paper by day, deep night after dark, one violet accent. */
+
+[data-md-color-scheme="default"] {
+  --dream-glow: rgba(124, 92, 255, 0.13);
+  --dream-hairline: rgba(29, 27, 42, 0.09);
+  --md-default-bg-color: #faf9f6;
+  --md-default-fg-color: rgba(29, 27, 42, 0.9);
+  --md-default-fg-color--light: rgba(29, 27, 42, 0.6);
+  --md-default-fg-color--lighter: rgba(29, 27, 42, 0.32);
+  --md-default-fg-color--lightest: rgba(29, 27, 42, 0.08);
+  --md-primary-fg-color: #5b45d6;
+  --md-primary-fg-color--light: #7c66ec;
+  --md-primary-fg-color--dark: #4532b8;
+  --md-accent-fg-color: #7c5cff;
+  --md-typeset-a-color: #5b45d6;
+  --md-code-bg-color: #f2f0f8;
+  --md-code-fg-color: #2a2540;
+}
+
+[data-md-color-scheme="slate"] {
+  --dream-glow: rgba(140, 116, 255, 0.16);
+  --dream-hairline: rgba(226, 223, 245, 0.09);
+  --md-default-bg-color: #0d0e1a;
+  --md-default-fg-color: rgba(230, 228, 245, 0.9);
+  --md-default-fg-color--light: rgba(230, 228, 245, 0.6);
+  --md-default-fg-color--lighter: rgba(230, 228, 245, 0.32);
+  --md-default-fg-color--lightest: rgba(230, 228, 245, 0.08);
+  --md-primary-fg-color: #ada0ff;
+  --md-primary-fg-color--light: #c6bdff;
+  --md-primary-fg-color--dark: #8f7ff5;
+  --md-accent-fg-color: #c6bdff;
+  --md-typeset-a-color: #ada0ff;
+  --md-code-bg-color: #15162a;
+  --md-code-fg-color: #e2dff5;
+}
+
+:root {
+  --dream-serif: "Instrument Serif", Georgia, serif;
+}
+
+/* One narrow column for header, page and footer alike. */
+
+.md-grid {
+  max-width: 44rem;
+}
+
+.md-main {
+  background: radial-gradient(
+      48rem 26rem at 50% -8rem,
+      var(--dream-glow),
+      transparent 70%
+    )
+    no-repeat;
+}
+
+/* Header: quiet, translucent, no bar of colour. */
+
+.md-header {
+  background-color: color-mix(
+    in srgb,
+    var(--md-default-bg-color) 82%,
+    transparent
+  );
+  color: var(--md-default-fg-color);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.md-header--shadow {
+  box-shadow: 0 1px 0 var(--dream-hairline);
+}
+
+.md-header__button.md-logo {
+  color: var(--md-primary-fg-color);
+}
+
+.md-header__title {
+  font-family: var(--dream-serif);
+  font-size: 1.15rem;
+}
+
+.md-source {
+  color: var(--md-default-fg-color--light);
+}
+
+/* One page has no menu, so phones keep the repository link in the header. */
+
+.md-header__button[for="__drawer"] {
+  display: none;
+}
+
+@media screen and (max-width: 59.984375em) {
+  .md-header__source {
+    display: block;
+    width: auto;
+    margin-left: 0.4rem;
+  }
+
+  .md-source__icon + .md-source__repository {
+    display: none;
+  }
+}
+
+/* Type. */
+
+.md-typeset {
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.md-content__inner {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+.md-typeset h1 {
+  margin: 1.5rem 0 1rem;
+  font-family: var(--dream-serif);
+  font-size: 5.2em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--md-primary-fg-color);
+}
+
+.md-typeset h1 + p {
+  margin-top: 0;
+  font-size: 1.3em;
+  line-height: 1.45;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset h1 + p + p {
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset h2 {
+  margin: 1.8em 0 0.6em;
+  padding-top: 1.1em;
+  border-top: 1px solid var(--dream-hairline);
+  font-family: var(--dream-serif);
+  font-size: 2em;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--md-default-fg-color);
+}
+
+/* A skill: the command in mono, its line beneath. */
+
+.md-typeset h3 {
+  margin: 1.7em 0 0.25em;
+  font-family: var(--md-code-font-family);
+  font-size: 0.95em;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--md-primary-fg-color);
+}
+
+.md-typeset h3 + p {
+  margin-top: 0;
+}
+
+.md-typeset .headerlink {
+  color: var(--md-default-fg-color--lighter);
+}
+
+/* Code. */
+
+.md-typeset code {
+  border-radius: 0.3em;
+}
+
+.md-typeset pre > code {
+  padding: 0.9em 1.2em;
+}
+
+.md-typeset .highlight {
+  margin: 1em 0;
+}
+
+.md-typeset .highlight pre,
+.md-typeset .highlight span.filename {
+  border: 1px solid var(--dream-hairline);
+}
+
+.md-typeset .highlight pre {
+  margin: 0;
+  border-radius: 0.6em;
+}
+
+.md-typeset .highlight span.filename {
+  margin-top: 0;
+  padding: 0.55em 1.2em;
+  border-bottom: none;
+  border-radius: 0.6em 0.6em 0 0;
+  background-color: transparent;
+  font-family: var(--md-text-font-family);
+  font-size: 0.75em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .highlight span.filename + pre {
+  border-radius: 0 0 0.6em 0.6em;
+}
+
+.md-typeset .highlight span.filename + pre > code {
+  border-radius: 0 0 0.6em 0.6em;
+}
+
+/* Footer: one faint line. */
+
+.md-footer,
+.md-footer-meta {
+  background-color: transparent;
+  color: var(--md-default-fg-color--lighter);
+}
+
+.md-footer-meta {
+  border-top: 1px solid var(--dream-hairline);
+}
+
+.md-footer-meta__inner {
+  justify-content: center;
+}
+
+.md-copyright {
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+html .md-footer-meta.md-typeset a {
+  color: inherit;
+}

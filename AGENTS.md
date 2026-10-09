@@ -188,6 +188,24 @@ on every push and pull request (see `.github/workflows/lint.yml`). The
 installs it via `npm`. The `uncoded` hook requires `uvx` on `PATH`. CI provides
 it via `astral-sh/setup-uv`.
 
+## Documentation site
+
+The documentation site is one page, `docs/index.md`, built with MkDocs and the
+Material theme, and styled by `docs/assets/dream.css`. The `docs` workflow
+builds it on every pull request that touches it, and publishes it to GitHub
+Pages from main.
+
+When you add a skill, remove one, or change what one does, update both the
+README and `docs/index.md`, because each of them describes every skill. Keep the
+page to a line or two per skill, so a reader can take in the whole plugin at a
+glance.
+
+Preview the site locally:
+
+```bash
+uvx --with-requirements docs/requirements.txt mkdocs serve
+```
+
 ## Release protocol
 
 There is no release process. The plugin is installed directly from this GitHub
@@ -211,8 +229,8 @@ Which part to bump:
 - **Minor**: an additive, non-breaking change.
 - **Micro**: a bug fix.
 
-A change that touches only this developer meta-doc (`AGENTS.md`) needs no bump.
-It isn't part of the installed plugin.
+A change that touches only this developer meta-doc (`AGENTS.md`) or the
+documentation site needs no bump. Neither is part of the installed plugin.
 
 Keep the PR description short and current: say what the PR does and why, and
 leave line-by-line detail to the diff. Update the body whenever a later commit

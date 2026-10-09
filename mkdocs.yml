@@ -1,0 +1,50 @@
+site_name: dream
+site_url: https://alimanfoo.github.io/dream/
+site_description: Skills for building software with agents, in Claude Code and Codex.
+repo_url: https://github.com/alimanfoo/dream
+repo_name: alimanfoo/dream
+edit_uri: ""
+copyright: MIT License
+
+theme:
+  name: material
+  language: en
+  font:
+    text: Geist
+    code: Geist Mono
+  icon:
+    logo: material/moon-waning-crescent
+    repo: fontawesome/brands/github
+  favicon: assets/favicon.svg
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - content.code.copy
+
+# One short page needs no search.
+plugins: []
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+extra:
+  generator: false
+
+extra_css:
+  - assets/dream.css
