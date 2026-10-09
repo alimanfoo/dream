@@ -60,8 +60,8 @@ throughout:
 - Write a skill reference as `dream:foo`, with no leading slash. Both hosts
   resolve that identifier, so an agent can act on it as written.
 - Keep the leading slash, `/dream:foo`, where the reference stands for what a
-  person types: the README, a frontmatter `description:` field, a launch banner,
-  and a line the agent shows the user.
+  person types: the documentation site, a frontmatter `description:` field, a
+  launch banner, and a line the agent shows the user.
 - Drop the backticks in a frontmatter `description:` field, a markdown heading,
   or a fenced command block.
 - Write a skill file's title heading as `dream:foo`, so it names the skill a
@@ -197,11 +197,10 @@ matter. The hero, including a sample `dream:smith` session, is in
 workflow builds the site on every pull request that touches it, and publishes it
 to GitHub Pages from main.
 
-When you add a skill, remove one, or change what one does, update both the
-README and `docs/index.md`, because each of them describes every skill. Keep
-each skill to one row in its table, so a reader can take in the whole plugin at
-a glance. When `dream:smith` changes the steps it reports, update the sample
-session to match.
+When you add a skill, remove one, or change what one does, update
+`docs/index.md`, because it describes every skill. Keep each skill to one row in
+its table, so a reader can take in the whole plugin at a glance. When
+`dream:smith` changes the steps it reports, update the sample session to match.
 
 Preview the site locally:
 

@@ -262,24 +262,4 @@ docs/:
     If something goes wrong:
 README.md:
   dream:
-    Installation:
-    Autonomous coding skills:
-      /dream:smith:
-      /dream:less:
-    Issue conversation skills:
-      /dream:scout:
-    Collaborative product management skills:
-      /dream:spark:
-      /dream:trace:
-      /dream:weave:
-      /dream:quest:
-    Utility skills:
-      /dream:code-review:
-      /dream:coherence-review:
-      /dream:precedent-review:
-      /dream:coherent-coding:
-      /dream:plain-english:
-      /dream:plan:
-    Troubleshooting:
-      Permissions:
     License:
