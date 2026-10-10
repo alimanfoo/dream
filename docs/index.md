@@ -8,8 +8,7 @@ headline: Better software from coding agents, with less input from you
 lede:
   Hand off a task and get back a planned, built and reviewed pull request. Or
   work through requirements and design with the agent before any code. The
-  skills aim to help coding agents do good software engineering, not just write
-  code.
+  skills aim to help agents be thoughtful engineers, not just write code.
 ---
 
 ## Install
