@@ -6,10 +6,10 @@ hide:
   - toc
 headline: Better software from coding agents, with less input from you
 lede:
-  Hand off a task and get back a planned, built and reviewed pull request. Work
-  through requirements and design with the agent before any code. The skills put
-  structure around the ways coding agents go wrong, such as fixing the symptom,
-  over-building, and agreeing with whoever spoke last.
+  Hand off a task and get back a planned, built and reviewed pull request. Or
+  work through requirements and design with the agent before any code. Coding
+  agents tend to fix the symptom, build too much, and agree with whoever spoke
+  last. These skills are built to stop that.
 ---
 
 ## Install
