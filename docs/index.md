@@ -44,8 +44,29 @@ Follow the session there, and answer anything the skill asks you.
 Name the task as an argument: an issue such as `GH123`, or free text. Without an
 argument, the skill takes the issue numbers in the branch name.
 
-[dreamcatcher](https://alimanfoo.github.io/dreamcatcher/) watches a repository
-for labelled issues, and starts an agent on each one.
+## Run them from labelled issues
+
+[dreamcatcher](https://alimanfoo.github.io/dreamcatcher/) runs these skills for
+you, with no session to watch. Label a GitHub issue, and dreamcatcher starts an
+agent on it in a worktree of its own, with several agents at a time. You talk to
+each agent on GitHub. Reply on the pull request, and dreamcatcher passes your
+reply to the agent. When you merge or close the pull request, dreamcatcher gives
+the agent a last round to wrap up.
+
+dreamcatcher runs a skill as an assignment or as a conversation. An assignment
+carries an issue to a pull request. A conversation answers the questions that
+you post as comments on an issue, and writes no code.
+
+| Skill          | Under dreamcatcher                                                                |
+| -------------- | --------------------------------------------------------------------------------- |
+| `/dream:smith` | Runs as an assignment, and on its own.                                            |
+| `/dream:less`  | Runs as an assignment, and on its own.                                            |
+| `/dream:scout` | Answers your questions on an issue, before any code. Runs only as a conversation. |
+
+`dreamcatcher init` installs this plugin, and routes a label of each skill's
+name to that skill. Follow the
+[dreamcatcher tutorial](https://alimanfoo.github.io/dreamcatcher/tutorial/) for
+a first run.
 
 ## Think it through together
 
@@ -63,15 +84,6 @@ pull request where you can comment on any line.
 Run them in order on a large piece of work, or run the one you need. Each skill
 takes an issue, a file or free text, so you can point it at what the one before
 it wrote.
-
-## Answer questions on an issue
-
-| Skill          | What it does                                                             |
-| -------------- | ------------------------------------------------------------------------ |
-| `/dream:scout` | Investigates an issue before any code, and answers your questions on it. |
-
-To use it, set the `prompt` under dreamcatcher's `[conversation]` block to
-`"/dream:scout GH{issue}"`.
 
 ## Review a change
 
