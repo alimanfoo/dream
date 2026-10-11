@@ -221,15 +221,15 @@ Implement the plan, one step at a time. For each step:
 
 Run the reviews below in sequence.
 
-First, run the `dream:coherence-review` skill over the branch's changes against
-the base (`origin/main...HEAD`).
+First, run the `dream:code-review` skill over the branch's changes against the
+base (`origin/main...HEAD`).
 
 Start the comment as soon as the skill returns, before you weigh any finding or
 change any code. Write it to a temporary file outside the repo, named after the
 comment's heading so one review's file never overwrites another's. Head it
-`Coherence review`. When the review returned findings, add each finding verbatim
-as a blockquote and leave one blank line under it for the response. When the
-review returned no findings, the comment is the heading and one line saying so.
+`Code review`. When the review returned findings, add each finding verbatim as a
+blockquote and leave one blank line under it for the response. When the review
+returned no findings, the comment is the heading and one line saying so.
 
 Weigh each finding on its merits and apply the ones the evidence supports. Reach
 for the coherent fix even when it goes wider than the site the finding names.
@@ -265,9 +265,9 @@ Deferred: Rejecting duplicate fields changes the input contract and needs a PR o
 
 Commit and push the fixes, then post the file as a PR comment.
 
-Second, run the `dream:code-review` skill the same way, and head its comment
-`Code review`. It follows the coherence review so that it reads the fixes that
-review led to.
+Second, run the `dream:coherence-review` skill the same way, and head its
+comment `Coherence review`. It follows the code review so that it reads the
+fixes that review led to.
 
 Third, run the `dream:precedent-review` skill the same way, and head its comment
 `Precedent review`. It comes last so that it reads the change as the reviewer
