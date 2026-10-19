@@ -27,36 +27,27 @@ Read the [coherent coding guide](../../coherent-coding.md). It is the home of
 the disciplines this review checks. The lens subagents can't read it themselves,
 so paste each lens the guide text it needs.
 
-- **Root cause.** The
-  [Resolve the root cause](../../coherent-coding.md#resolve-the-root-cause)
-  section.
-- **Same edit.** The
-  [Same edit, every instance](../../coherent-coding.md#same-edit-every-instance)
-  section.
-- **One home.** The
-  [One fact, one home](../../coherent-coding.md#one-fact-one-home) section.
-- **One model.** The
-  [One concept, one model](../../coherent-coding.md#one-concept-one-model)
-  section.
-- **Separation.** The
-  [Separation and boundaries](../../coherent-coding.md#separation-and-boundaries)
-  section.
-- **Deep modules.** The [Deep modules](../../coherent-coding.md#deep-modules)
-  section.
-- **Defensive code.** The
-  [Define errors out of existence](../../coherent-coding.md#define-errors-out-of-existence),
-  [Code-shape ladder](../../coherent-coding.md#code-shape-ladder), and
-  [Wrong-layer defensive code](../../coherent-coding.md#wrong-layer-defensive-code)
+- **Scope and consistency.** Does the change address the cause and carry its
+  rule through every affected site? Use the
+  [Resolve the root cause](../../coherent-coding.md#resolve-the-root-cause),
+  [Same edit, every instance](../../coherent-coding.md#same-edit-every-instance),
+  [Cross-site rules](../../coherent-coding.md#cross-site-rules), and
+  [Names that tell the truth](../../coherent-coding.md#names-that-tell-the-truth)
   sections.
-- **Cross-site rules.** The
-  [Cross-site rules](../../coherent-coding.md#cross-site-rules) section.
-- **Compensation and scaffolding.** The
-  [Strip the compensation](../../coherent-coding.md#strip-the-compensation) and
+- **Facts and boundaries.** Does each fact and concept have one home, with
+  boundaries that hide complexity? Use the
+  [One fact, one home](../../coherent-coding.md#one-fact-one-home),
+  [One concept, one model](../../coherent-coding.md#one-concept-one-model),
+  [Separation and boundaries](../../coherent-coding.md#separation-and-boundaries),
+  and [Deep modules](../../coherent-coding.md#deep-modules) sections.
+- **Unnecessary code.** Could the change remove defensive or compensating
+  machinery? Use the
+  [Define errors out of existence](../../coherent-coding.md#define-errors-out-of-existence),
+  [Code-shape ladder](../../coherent-coding.md#code-shape-ladder),
+  [Wrong-layer defensive code](../../coherent-coding.md#wrong-layer-defensive-code),
+  [Strip the compensation](../../coherent-coding.md#strip-the-compensation), and
   [Defend behaviour, not surface](../../coherent-coding.md#defend-behaviour-not-surface)
   sections.
-- **Naming.** The
-  [Names that tell the truth](../../coherent-coding.md#names-that-tell-the-truth)
-  section.
 
 Pass the target as a git range, or as an absolute path.
 
@@ -66,9 +57,9 @@ incoherence by adding makes a codebase harder to maintain, however careful the
 review that found it. So a finding with no removal behind it costs more than it
 returns. A lens that can't propose one drops the finding.
 
-Prepare one subagent per lens. Brief every subagent with the target and its
-guide section or sections, pasting the heading and the text beneath it into the
-briefing.
+Prepare one subagent per lens. Brief every subagent with the target and all the
+guide sections listed for its lens, pasting each heading and the text beneath it
+into the briefing.
 
 Under Claude Code:
 
