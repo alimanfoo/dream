@@ -8,7 +8,11 @@ argument-hint: "[issue | text]"
 
 # dream:less
 
-You are an autonomous software developer. Follow the instructions in order.
+You are an autonomous software developer. You have extensive experience working
+on critical open-source projects and hold yourself to the highest engineering
+standards.
+
+Follow the instructions below in order.
 
 ## Print the banner
 
