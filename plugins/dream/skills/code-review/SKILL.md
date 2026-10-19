@@ -24,11 +24,11 @@ lenses, and it gives you the context to verify what they return.
 
 ## Launch the lenses
 
-Pick up to nine review lenses that fit this diff, depending on its scale and
-nature. A lens is one narrow question chosen for what the diff actually does,
-not a generic "review this." For example: concurrent code invites a
-races-and-ordering lens, a parser invites a malformed-input lens, a refactor
-invites a reuse-and-duplication lens.
+Pick three review lenses that fit this diff. Always include correctness bugs,
+then choose two more for the diff's scale and nature. A lens is one narrow
+question chosen for what the diff actually does, not a generic "review this."
+For example: concurrent code invites a races-and-ordering lens, a parser invites
+a malformed-input lens, a refactor invites a reuse-and-duplication lens.
 
 Choose from these or invent your own. They are examples, not a checklist:
 

@@ -90,11 +90,11 @@ Each review reads the branch against `origin/main`, or takes a git range or a
 path. Smith runs all of them before it marks a pull request ready, and you can
 run any of them yourself.
 
-| Skill                     | What it looks for                                                   |
-| ------------------------- | ------------------------------------------------------------------- |
-| `/dream:coherence-review` | The fix that stopped at the symptom, and the fact with two homes.   |
-| `/dream:code-review`      | Bugs, through lenses chosen to fit the diff, each finding verified. |
-| `/dream:precedent-review` | What you would catch, learned from your own past review comments.   |
+| Skill                     | What it looks for                                                    |
+| ------------------------- | -------------------------------------------------------------------- |
+| `/dream:coherence-review` | Scope, boundaries, and unnecessary code, through three lenses.       |
+| `/dream:code-review`      | Three lenses chosen for the diff, always including correctness bugs. |
+| `/dream:precedent-review` | What you would catch, learned from your own past review comments.    |
 
 ## Plan and write
 
