@@ -52,15 +52,17 @@ each agent on GitHub. Reply on the pull request, and dreamcatcher passes your
 reply to the agent. When you merge or close the pull request, dreamcatcher gives
 the agent a last round to wrap up.
 
-dreamcatcher runs a skill as an assignment or as a conversation. An assignment
-carries an issue to a pull request. A conversation answers the questions that
-you post as comments on an issue, and writes no code.
+dreamcatcher runs a skill as an assignment, a conversation or a campaign. An
+assignment carries an issue to a pull request. A conversation answers the
+questions that you post as comments on an issue, and writes no code. A campaign
+carries the sub-issues of a parent issue through their assignments to merge.
 
-| Skill          | Under dreamcatcher                                                                |
-| -------------- | --------------------------------------------------------------------------------- |
-| `/dream:smith` | Runs as an assignment, and on its own.                                            |
-| `/dream:less`  | Runs as an assignment, and on its own.                                            |
-| `/dream:scout` | Answers your questions on an issue, before any code. Runs only as a conversation. |
+| Skill          | Under dreamcatcher                                                                                    |
+| -------------- | ----------------------------------------------------------------------------------------------------- |
+| `/dream:smith` | Runs as an assignment, and on its own.                                                                |
+| `/dream:less`  | Runs as an assignment, and on its own.                                                                |
+| `/dream:scout` | Answers your questions on an issue, before any code. Runs only as a conversation.                     |
+| `/dream:lead`  | Starts each sub-issue's assignment, and reviews and merges its pull request. Runs only as a campaign. |
 
 `dreamcatcher init` installs this plugin, and routes a label of each skill's
 name to that skill. Follow the
