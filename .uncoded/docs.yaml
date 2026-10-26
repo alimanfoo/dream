@@ -65,6 +65,20 @@ plugins/:
         Skip the flourish:
         Text for GitHub:
     skills/:
+      big/:
+        SKILL.md:
+          dream:big:
+            Limits:
+            Write to the user:
+            Each round:
+            Read the plan:
+            Answer the user:
+            Choose the sub-issues to take up:
+            Take up a sub-issue:
+            Start the stages:
+            Review a stage:
+            Merge a stage:
+            Investigate a fault:
       code-review/:
         SKILL.md:
           dream:code-review:
@@ -89,20 +103,6 @@ plugins/:
             Read the guide first:
             Reply with a brief confirmation:
             Follow it as you work:
-      lead/:
-        SKILL.md:
-          dream:lead:
-            Limits:
-            Write to the user:
-            Each round:
-            Read the plan:
-            Answer the user:
-            Choose the sub-issues to take up:
-            Take up a sub-issue:
-            Start the stages:
-            Review a stage:
-            Merge a stage:
-            Investigate a fault:
       less/:
         SKILL.md:
           dream:less:
