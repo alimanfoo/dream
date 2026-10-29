@@ -322,26 +322,19 @@ Mark the PR ready for review.
 
 ## Handle what the user posts
 
-When no work is ready to do, end your turn. An interactive session waits at the
-prompt for the user. A headless session exits, and whatever launched it resumes
-it when the PR has new input.
+When no work is ready to do, end your turn. A later round resumes when there is
+new input. Never merge the PR yourself. The user decides when to merge it.
 
-When a turn starts with a PR-inbox prompt, read the JSON file it names. Read the
-PR `state` before you act on anything else. When `state` is `MERGED`, continue
-to the [collect step](#collect), unless you already completed Collect after a
-deferred merge; in that case, end your turn. When `state` is `CLOSED`, post a
-comment naming where the work stopped, then end your turn.
+After the PR merges, continue to the [collect step](#collect), unless you
+already completed Collect after a deferred merge; in that case, end your turn.
+After the PR closes, post a comment naming where the work stopped, then end your
+turn.
 
-Otherwise, act on the returned `posts`, oldest first. A post can carry more than
-one of these:
+Otherwise, act on each user post, oldest first. A post can carry more than one
+of these:
 
 - **A requested change.** Implement it. Commit and push. Refresh the description
   per [Write the PR description](#write-the-pr-description). Reply on the PR.
-- **A resolve-conflicts request.** Bring the branch up to date with `main`
-  (`git fetch origin main`, then merge or rebase). Resolve any conflicts
-  yourself and commit the resolution. Push the branch. Refresh the description
-  per [Write the PR description](#write-the-pr-description). Don't merge the PR
-  itself. That's the user's call.
 - **A defer-merge request.** Continue to the [collect step](#collect), leaving
   the PR open for the user to merge later.
 - **A question.** Answer it as a PR comment.
