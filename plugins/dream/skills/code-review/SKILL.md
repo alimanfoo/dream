@@ -50,18 +50,16 @@ Choose from these or invent your own. They are examples, not a checklist:
 - alignment: compliance with agent instructions (AGENTS.md or CLAUDE.md)
 
 Prepare one subagent per lens. Give every subagent the target, as a git range
-like `origin/main...HEAD` or an absolute path, and the one lens it applies.
+like `origin/main...HEAD` or an absolute path, and the one lens it applies. The
+lenses inherit the session's model and effort.
 
 Under Claude Code:
 
-- Use the `dream:code-review-lens` subagent. Its definition sets the model and
-  effort.
+- Use the `dream:code-review-lens` subagent.
 
 Under Codex:
 
 - Use a plain subagent.
-- Set its `fork_turns` to `none`, which lets Codex override the parent session's
-  effort. Set its `reasoning_effort` to `medium`.
 - Give it the absolute path of
   [the lens instructions](../../agents/code-review-lens.md) and tell it to
   follow them, skipping the file's YAML frontmatter, which configures the agent

@@ -59,18 +59,15 @@ returns. A lens that can't propose one drops the finding.
 
 Prepare one subagent per lens. Brief every subagent with the target and all the
 guide sections listed for its lens, pasting each heading and the text beneath it
-into the briefing.
+into the briefing. The lenses inherit the session's model and effort.
 
 Under Claude Code:
 
-- Use the `dream:code-review-lens` subagent. Its definition sets the model and
-  effort.
+- Use the `dream:code-review-lens` subagent.
 
 Under Codex:
 
 - Use a plain subagent.
-- Set its `fork_turns` to `none`, which lets Codex override the parent session's
-  effort. Set its `reasoning_effort` to `medium`.
 - Give it the absolute path of
   [the lens instructions](../../agents/code-review-lens.md) and tell it to
   follow them, skipping the file's YAML frontmatter, which configures the agent

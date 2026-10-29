@@ -1,8 +1,6 @@
 ---
 name: code-review-lens
 description: Reviews code through one lens and reports the findings.
-model: sonnet
-effort: medium
 tools: Read, Grep, Glob, Bash
 ---
 
