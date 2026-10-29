@@ -217,6 +217,9 @@ When opening a PR, include a version bump in
 `plugins/dream/.codex-plugin/plugin.json`, so every change merged to main is
 versioned.
 
+`pyproject.toml` has a placeholder version that uv requires. Never bump it. The
+plugin's version lives only in `plugins/dream/.codex-plugin/plugin.json`.
+
 The manifest sits under `.codex-plugin` because Codex drops symlinks when it
 installs a plugin, and Claude Code follows them. So
 `plugins/dream/.claude-plugin/plugin.json` is a symlink to it, and both hosts
