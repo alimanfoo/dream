@@ -193,12 +193,11 @@ Judge whether the stage meets its goal and its "done when", stays coherent with
 the other stages and the campaign's goal, and gives later stages what they need.
 Leave detailed code review to the skill that the stage's assignment runs.
 
-Take the evidence for the stage's proof from the pull request's description and
-checks. Treat the evidence as proof only when it covers the pull request's
-current head. If the proof names a command that CI does not run, ask the stage's
-agent on the pull request to show the command and its output for that head. Do
-the same when the proof needs a run in another repository. Don't run the proof
-yourself.
+Treat the pull request's description, checks and comments as proof only when
+they cover its current head. If the proof names a command that CI does not run,
+ask the stage's agent on the pull request to show the command and its output for
+that head. Do the same when the proof needs a run in another repository. Don't
+run the proof yourself.
 
 Take account of changes on main that bear on the stage. Look at what reached
 main since the pull request's branch left it:
