@@ -49,7 +49,9 @@ argument, the skill takes the issue numbers in the branch name.
 you, with no session to watch. Label a GitHub issue, and dreamcatcher starts an
 agent on it in a worktree of its own, with several agents at a time. You talk to
 each agent on GitHub. Reply on the pull request, and dreamcatcher passes your
-reply to the agent. When you merge or close the pull request, dreamcatcher gives
+reply to the agent. dreamcatcher also wakes the agent when the pull request
+falls behind main or conflicts with it, or when a check fails, so the agent can
+fix it on its own. When you merge or close the pull request, dreamcatcher gives
 the agent a last round to wrap up.
 
 dreamcatcher runs a skill as an assignment, a conversation or a campaign. An
