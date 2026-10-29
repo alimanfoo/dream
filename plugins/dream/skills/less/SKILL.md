@@ -1,8 +1,8 @@
 ---
 name: less
 description:
-  The lightest autonomous developer skill, for small changes. Use only when the
-  user explicitly runs /dream:less.
+  The lightest autonomous developer skill, for relatively easy changes. Use only
+  when the user explicitly runs /dream:less.
 argument-hint: "[issue | text]"
 ---
 
@@ -40,8 +40,8 @@ replies on the PR.
 
 ## Coherence
 
-This skill is for changes small enough to carry without heavy process. Hold
-coherence anyway: fix the cause, not the symptom, and leave the codebase whole.
+This skill is for relatively easy changes. Hold coherence anyway: fix the cause,
+not the symptom, and leave the codebase whole.
 
 ## Don't over-build
 
