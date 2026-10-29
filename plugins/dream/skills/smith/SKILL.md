@@ -273,10 +273,6 @@ Second, run the `dream:coherence-review` skill the same way, and head its
 comment `Coherence review`. It follows the code review so that it reads the
 fixes that review led to.
 
-Third, run the `dream:precedent-review` skill the same way, and head its comment
-`Precedent review`. It comes last so that it reads the change as the reviewer
-would find it, with the earlier reviews' fixes already in.
-
 ## Find simplification opportunities
 
 Reread the finished change once the reviews are done. Ask whether the PR could
