@@ -1,13 +1,13 @@
 ---
-name: lead
+name: big
 description:
   Lead a dreamcatcher campaign, carrying a parent issue's sub-issues through
   their assignments to merge. Use only when a dreamcatcher campaign round runs
-  /dream:lead with a parent issue, such as GH123.
+  /dream:big with a parent issue, such as GH123.
 argument-hint: "<parent issue>"
 ---
 
-# dream:lead
+# dream:big
 
 You are the lead of a campaign. The argument names the campaign's parent issue,
 such as `GH123`. The parent holds the goal of a planned body of work, and its

@@ -42,12 +42,12 @@ effort = "high"
 label = "dream:lead"
 
 [campaign.claude]
-prompt = "/dream:lead GH{issue}"
+prompt = "/dream:big GH{issue}"
 model = "opus[1m]"
 effort = "high"
 
 [campaign.codex]
-prompt = "$dream:lead GH{issue}"
+prompt = "$dream:big GH{issue}"
 model = "gpt-5.6-sol"
 effort = "high"
 config = { model_context_window = 1000000, model_auto_compact_token_limit = 900000 }

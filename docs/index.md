@@ -62,10 +62,10 @@ carries the sub-issues of a parent issue through their assignments to merge.
 | `/dream:smith` | Runs as an assignment, and on its own.                                                                |
 | `/dream:less`  | Runs as an assignment, and on its own.                                                                |
 | `/dream:scout` | Answers your questions on an issue, before any code. Runs only as a conversation.                     |
-| `/dream:lead`  | Starts each sub-issue's assignment, and reviews and merges its pull request. Runs only as a campaign. |
+| `/dream:big`   | Starts each sub-issue's assignment, and reviews and merges its pull request. Runs only as a campaign. |
 
-`dreamcatcher init` installs this plugin, and routes a label of each skill's
-name to that skill. Follow the
+`dreamcatcher init` installs this plugin, and routes a label to each skill.
+Follow the
 [dreamcatcher tutorial](https://alimanfoo.github.io/dreamcatcher/tutorial/) for
 a first run.
 
