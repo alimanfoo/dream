@@ -23,10 +23,10 @@ repos:
     hooks:
       - id: uncoded
         name: maintain documentation index
-        entry: uvx uncoded@2 sync
+        entry: uv run uncoded sync
         language: system
         pass_filenames: false
-        files: (\.md$|^\.uncoded\.toml$)
+        always_run: true
 
       - id: prettier
         name: format markdown with prettier
