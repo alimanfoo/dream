@@ -185,7 +185,7 @@ uvx pre-commit install
 Run all hooks once: `uvx pre-commit run --all-files`. The same hooks run in CI
 on every push and pull request (see `.github/workflows/lint.yml`). The
 `claude plugin validate` hook requires the Claude Code CLI on `PATH`. CI
-installs it via `npm`. The `uncoded` hook requires `uvx` on `PATH`. CI provides
+installs it via `npm`. The `uncoded` hook requires `uv` on `PATH`. CI provides
 it via `astral-sh/setup-uv`.
 
 ## Documentation site
