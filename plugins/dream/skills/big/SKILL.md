@@ -182,8 +182,8 @@ that head in this session and its proof held, and no comment has arrived on the
 pull request since, don't review it again. Read its checks and its
 `merge_state`, and merge it if it is ready.
 
-Otherwise, read the pull request's description and every comment on it,
-including the user's. Read its checks with `gh pr checks <N>`.
+Otherwise, read the pull request's description, its diff and every comment on
+it, including the user's. Read its checks with `gh pr checks <N>`.
 
 If the stage's agent asked a question, answer it on the pull request when the
 plan settles the answer. If the answer needs the user, ask on the parent
@@ -194,9 +194,11 @@ the other stages and the campaign's goal, and gives later stages what they need.
 Leave detailed code review to the skill that the stage's assignment runs.
 
 Take the evidence for the stage's proof from the pull request's description and
-checks. If the proof names a command that CI does not run, ask the stage's agent
-on the pull request to show the command and its output. Do the same when the
-proof needs a run in another repository. Don't run the proof yourself.
+checks. Treat the evidence as proof only when it covers the pull request's
+current head. If the proof names a command that CI does not run, ask the stage's
+agent on the pull request to show the command and its output for that head. Do
+the same when the proof needs a run in another repository. Don't run the proof
+yourself.
 
 Take account of changes on main that bear on the stage. Look at what reached
 main since the pull request's branch left it:
