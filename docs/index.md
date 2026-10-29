@@ -75,12 +75,12 @@ These skills work with you on the thinking that comes before code, one question
 at a time. Each skill ends in a written specification, and offers to put it on a
 pull request where you can comment on any line.
 
-| Skill          | What it does                                                             |
-| -------------- | ------------------------------------------------------------------------ |
-| `/dream:spark` | Interviews you about a rough idea, and writes a requirements brief.      |
-| `/dream:trace` | Reads unfamiliar code with you, and writes a reading guide to it.        |
-| `/dream:weave` | Works out a design with you, and tests it by asking what breaks.         |
-| `/dream:quest` | Breaks a design into a roadmap of pull requests, with only needed links. |
+| Skill          | What it does                                                                                |
+| -------------- | ------------------------------------------------------------------------------------------- |
+| `/dream:spark` | Interviews you about a rough idea, and writes a requirements brief.                         |
+| `/dream:trace` | Reads unfamiliar code with you, and writes a reading guide to it.                           |
+| `/dream:weave` | Works out a design with you, and tests it by asking what breaks.                            |
+| `/dream:quest` | Breaks a design into a roadmap of pull requests, with each issue blocked only by its needs. |
 
 Run them in order on a large piece of work, or run the one you need. Each skill
 takes an issue, a file or free text, so you can point it at what the one before
