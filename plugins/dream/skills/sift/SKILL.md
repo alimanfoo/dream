@@ -26,6 +26,12 @@ Use GitHub and the current project documents for the latest product decisions.
 Search closed issues and pull requests on the same mechanism before you
 recommend anything.
 
+## Start from what I've given you
+
+Use any issue numbers or URLs that I pass as the initial scope. Read each named
+issue's body and every comment before you investigate it. If I pass no issue,
+start with the queue described below.
+
 ## Questions for each issue
 
 Here are some questions we should ask of every issue:
@@ -101,11 +107,12 @@ Use the repository's label for one primary type: `bug`, `enhancement` or
   for and what to do when it happens. In later sessions, check only whether that
   event has happened. Once it has, replace the label with `ready-to-implement`.
 
-Inspect the repository's labels before triage. If it does not have all four
-outcome labels, ask me whether to create the missing labels or map each outcome
-onto an existing label. If I choose a mapping, ask before writing it as one line
-in the repository's `AGENTS.md`, so a later session can read it there. Use this
-form:
+Inspect the repository's labels and read any existing outcome mapping from its
+`AGENTS.md` before triage. Use the four outcome labels when they all exist, or
+use the stored mapping. When neither is available, ask me whether to create the
+missing labels or map each outcome onto an existing label. If I choose a
+mapping, ask before writing it as one line in `AGENTS.md`, so a later session
+can read it there. Use this form:
 
 ```text
 dream:sift outcome labels: needs-info=<label>; needs-discussion=<label>; ready-to-implement=<label>; blocked-externally=<label>.
