@@ -175,6 +175,17 @@ plugins/:
             Communication style:
             Investigate:
             Answer:
+      sift/:
+        SKILL.md:
+          dream:sift:
+            Learn how this repository decides:
+            Start from what I've given you:
+            Questions for each issue:
+            Pace and responsibility:
+            Labels and outcomes:
+            Record the decision:
+            Dispatch:
+            Judgments:
       smith/:
         SKILL.md:
           dream:smith:
