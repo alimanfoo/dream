@@ -118,9 +118,8 @@ can read it there. Use this form:
 dream:sift outcome labels: needs-info=<label>; needs-discussion=<label>; ready-to-implement=<label>; blocked-externally=<label>.
 ```
 
-Read that mapping from `AGENTS.md` in later sessions. Don't create labels or
-write the mapping without my answer. Once I choose, create the missing labels or
-use the mapping that I approved.
+Don't create labels or write the mapping without my answer. Once I choose,
+create the missing labels or use the mapping that I approved.
 
 Replace the previous outcome when the decision changes; don't leave conflicting
 outcomes on an issue. Apply an outcome only after triage. An idea may remain
