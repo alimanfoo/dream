@@ -38,7 +38,7 @@ Follow the session there, and answer anything the skill asks you.
 | Skill          | What it does                                                             |
 | -------------- | ------------------------------------------------------------------------ |
 | `/dream:smith` | Plans a well-specified task, builds it one commit at a time, reviews it. |
-| `/dream:less`  | Builds a small, self-contained change, with no plan and one review.      |
+| `/dream:less`  | Builds a relatively easy change, with no plan and one review.            |
 
 Name the task as an argument: an issue such as `GH123`, or free text. Without an
 argument, the skill takes the issue numbers in the branch name.
