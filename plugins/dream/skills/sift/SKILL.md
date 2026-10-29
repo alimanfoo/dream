@@ -13,8 +13,8 @@ Please help me to triage this repository's GitHub issues.
 
 ## Learn how this repository decides
 
-Before you start, load dream:coherent-coding and judge every proposed change by
-its guide.
+Before you start, load `dream:coherent-coding` and judge every proposed change
+by its guide.
 
 Read the repository's `AGENTS.md` or `CLAUDE.md` and its documentation. Find and
 read any project-specific decision principles, user stories and concept
