@@ -57,12 +57,12 @@ assignment carries an issue to a pull request. A conversation answers the
 questions that you post as comments on an issue, and writes no code. A campaign
 carries the sub-issues of a parent issue through their assignments to merge.
 
-| Skill          | Under dreamcatcher                                                                                    |
-| -------------- | ----------------------------------------------------------------------------------------------------- |
-| `/dream:smith` | Runs as an assignment, and on its own.                                                                |
-| `/dream:less`  | Runs as an assignment, and on its own.                                                                |
-| `/dream:scout` | Answers your questions on an issue, before any code. Runs only as a conversation.                     |
-| `/dream:big`   | Starts each sub-issue's assignment, and reviews and merges its pull request. Runs only as a campaign. |
+| Skill          | Under dreamcatcher                                                                                                                |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `/dream:smith` | Runs as an assignment, and on its own.                                                                                            |
+| `/dream:less`  | Runs as an assignment, and on its own.                                                                                            |
+| `/dream:scout` | Answers your questions on an issue, before any code. Runs only as a conversation.                                                 |
+| `/dream:big`   | Starts each sub-issue's assignment, checks that its pull request meets the campaign plan, and merges it. Runs only as a campaign. |
 
 `dreamcatcher init` installs this plugin, and routes a label to each skill.
 Follow the
