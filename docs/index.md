@@ -89,8 +89,8 @@ it wrote.
 ## Review a change
 
 Each review reads the branch against `origin/main`, or takes a git range or a
-path. Smith runs all of them before it marks a pull request ready, and you can
-run any of them yourself.
+path. Smith runs the code and coherence reviews before it marks a pull request
+ready, and you can run any of them yourself.
 
 | Skill                     | What it looks for                                                      |
 | ------------------------- | ---------------------------------------------------------------------- |
