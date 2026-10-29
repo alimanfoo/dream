@@ -177,9 +177,11 @@ In the preface, include these standing notes and nothing else:
   boundaries, order or dependencies with the user instead of restructuring the
   roadmap itself.
 
-Give every stage its delivery, proof and deferral. Refer to the design
-specification for any further details. An open question belongs under a stage
-only when that stage's implementing session can settle it.
+Give every stage its delivery, proof, deferral and needs. The needs line names
+each stage that this one needs, and what it needs from it. Say that it needs
+nothing when none do. Refer to the design specification for any further details.
+An open question belongs under a stage only when that stage's implementing
+session can settle it.
 
 Don't add a summary of the overall goal. The roadmap sits beside the
 requirements and design, and repeating them gives their facts a second home.
@@ -235,10 +237,10 @@ its stage. Give each body one pointer to the roadmap, either its path in the
 repo or the parent issue's comment, and one instruction: implement the stage
 named here.
 
-Create the first child with `gh issue create --parent`. Create every later child
-with `--parent` and `--blocked-by`, naming the child immediately before it. Add
-no label and no assignee. Creating the roadmap and deciding to start work are
-separate acts.
+Create each child with `gh issue create --parent`. Add `--blocked-by` with
+exactly the child issues its needs line names, and nothing more. A stage that
+needs nothing gets `--parent` alone. Add no label and no assignee. Creating the
+roadmap and deciding to start work are separate acts.
 
 Anything you post as a comment or an issue wants each paragraph on a single
 line, since GitHub reflows it. Read the `commentFooter` value from
