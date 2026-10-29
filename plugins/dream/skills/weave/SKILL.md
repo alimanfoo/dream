@@ -39,9 +39,9 @@ comes one at a time.
 
 No recapping what we've covered. I was there.
 
-## Let "go on" be enough
+## Let "ok" be enough
 
-Always have a next move ready, so "go on" is a complete answer from me. If every
+Always have a next move ready, so "ok" is a complete answer from me. If every
 turn needs a considered decision out of me, this costs more than opening a blank
 chat, and I'll stop using it. When you do need me to decide something, say so
 plainly and make it one decision.
