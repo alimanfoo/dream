@@ -146,6 +146,8 @@ suggestions.
   skills follow protocols much more than others.
 - How strict the hand-offs between dream's own skills should be.
 - dreamcatcher's contract needs correcting to match, which is a change in
-  dreamcatcher.
+  dreamcatcher:
+  [alimanfoo/dreamcatcher#899](https://github.com/alimanfoo/dreamcatcher/issues/899).
 - Analysing the feeds from real use, to see whether the product works as
-  intended, is a separate issue. It still needs filing.
+  intended, is a separate issue:
+  [#1048](https://github.com/alimanfoo/dream/issues/1048).
