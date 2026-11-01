@@ -210,11 +210,74 @@ requests open at once can take the same number (#991).
 `.claude-plugin/marketplace.json` gives the plugin's source as
 `./plugins/dream`, so a user gets whatever main held when their host last
 fetched the marketplace. That holds for the docs' install commands and for
-`dreamcatcher init`. A test earlier in this work showed both hosts accept a
-`git-subdir` source pinned to a sha. Claude followed a moved pin on a normal
-update. Codex needed a fresh `plugin add` from a local marketplace, and its
-behaviour with a Git marketplace is unconfirmed. `AGENTS.md`: "There is no
-release process."
+`dreamcatcher init`, which installs once and never updates or checks the
+version. When each host fetches differs a great deal, as the next section says.
+`AGENTS.md`: "There is no release process."
+
+## How the two hosts install and update
+
+This section draws on Claude Code's documentation at code.claude.com (the plugin
+pages `loading.md`, `install.md`, `marketplace-reference.md`,
+`host-marketplace.md` and `cli-reference.md`), and on Codex's source at tag
+`rust-v0.164.0`, which matches the installed `codex-cli 0.164.0`. Claude Code
+2.1.316 is installed here.
+
+**What triggers an update.**
+
+- Claude: auto-update is off by default for third-party marketplaces, dream's
+  included. A user gets a change when they run `claude plugin update` or
+  reinstall, since `claude plugin install dream@dream` refreshes the marketplace
+  first. The update follows the computed version: `plugin.json`'s `version`,
+  then the marketplace entry's, then the commit sha. If the content changes and
+  the version doesn't, `update` reports "already at the latest version" and
+  changes nothing.
+- Codex: every session start upgrades every configured Git marketplace. The
+  thread is `plugins-marketplace-auto-upgrade` in `core-plugins/src/manager.rs`.
+  It runs `git ls-remote` on the marketplace's ref, and if the revision moved,
+  it re-clones the snapshot and force-reinstalls every configured plugin,
+  whatever the version says. `codex exec`, which dreamcatcher runs, starts the
+  same task through `InProcessAppServerClient`. There is no setting for this
+  apart from turning plugins off. There is no `codex plugin update`. Codex's
+  docs don't mention the startup upgrade.
+
+So today a merge to main reaches Codex users at their next session, and Claude
+users when they update, if the version changed.
+
+**The cache.** Both hosts keep one folder per version, named from `plugin.json`:
+`~/.claude/plugins/cache/dream/dream/<version>/` and
+`~/.codex/plugins/cache/dream/dream/<version>/`. Claude removes an old version
+14 days after an update. Codex removes every other version as soon as it
+installs a new one (`remove_old_plugin_versions` in
+`core-plugins/src/store.rs`). Codex agents read dream's files at absolute
+versioned paths, such as `.../dream/dream/46.1.0/skills/plan/SKILL.md` in the
+GH891 round on the dreamcatcher repo.
+
+**Pinning.** Both hosts can pin the marketplace itself to a ref. Claude takes
+`alimanfoo/dream#ref` or `@ref` and then follows that ref on update. Codex takes
+`@ref` or `--ref`, and changing the ref means removing the marketplace and
+adding it again. Both hosts also accept a `git-subdir` plugin source with `url`,
+`path`, `ref` and a full `sha`, and both check out the `sha` when it is given.
+Codex has no `github` source type, so an entry both hosts can read uses
+`git-subdir`. With such an entry on main, every merge still moves the
+marketplace revision, so Codex re-clones and reinstalls the same pinned commit
+at each session start.
+
+**Release tooling.** `claude plugin tag` creates an annotated
+`dream--v<version>` tag after checking that `plugin.json` and the marketplace
+entry agree. Claude's documented pattern for stable and early-access tracks is
+two marketplaces with different names. Codex compares `ls-remote` output with
+the checked-out commit, so a marketplace whose ref is an annotated tag never
+matches, and Codex re-clones it at every start.
+
+**Manifests.** Codex reads `.agents/plugins/marketplace.json` before
+`.claude-plugin/marketplace.json`, and only the first that exists. It reads
+`.codex-plugin/plugin.json` first, and only when that is a real file, which it
+is in dream. Codex's copy drops symlinks, so its installed `.claude-plugin/`
+folder is empty. Claude keeps a symlink that stays inside the plugin's folder.
+Neither host's documentation says how a relative path in a `SKILL.md` resolves.
+dream relies on that for `../../plain-english.md` and the banner's
+`../../.codex-plugin/plugin.json`. Claude prints "Base directory for this skill"
+when it loads one, and agents work from that.
 
 ## The tracker
 
@@ -314,8 +377,17 @@ dream: the separate Claude Code and Codex blocks in the review skills.
   relies on.
 - **Checks don't gate.** CI runs, but main requires no status check, and admins
   are exempt.
-- **The version means "a PR merged".** Every merge ships to every user at their
-  next update. Concurrent bumps collide.
+- **The version means "a PR merged".** Every merge reaches Codex users at their
+  next session, and Claude users at their next update. Concurrent bumps collide.
+- **Codex deletes the version a session is using.** When a merge bumps the
+  version, the next Codex session to start, in any repository, deletes the old
+  version's folder, and a running or resumed Codex session's paths point into
+  it. This follows from the source and from the paths in the feeds. No failed
+  read turned up in the feeds on this machine.
+- **The banner shows the wrong version on dream itself.** On dream's own repo,
+  less under Codex read `plugins/dream/.codex-plugin/plugin.json` from the
+  working tree (GH1040), so it printed the branch's version, not the installed
+  one.
 - **Deliberate departures and drift look alike.** The user-voice skills are
   exempt from convention, so an agent can't tell a chosen difference from a
   stale one.
