@@ -299,6 +299,39 @@ directory for this skill" when it loads one, and Codex wraps the skill in
 `${CLAUDE_PLUGIN_ROOT}`, which it substitutes in skill text. Codex substitutes
 neither in skill text, so a skill shared by both hosts can't rely on them.
 
+**What this means for a release.** These follow from the facts above. They
+describe what any release design has to work with, not a choice between designs.
+
+- With today's relative-path source, the two hosts already differ. A Claude user
+  stays on their version until the version string changes and they update. A
+  Codex user runs main's latest at their next session. A fresh install or
+  reinstall on either host gets main's latest, under whatever version main
+  carries.
+- While users install from main, the plugin entry in main's
+  `.claude-plugin/marketplace.json` is the only thing dream controls that
+  decides what Codex users run. A `git-subdir` entry pinned to a release's `sha`
+  holds both hosts to that release. Claude users still need a version change to
+  move to the next one, and Codex users move at their next session.
+- dreamcatcher's Claude rounds stay on whatever was installed until someone
+  updates, because headless rounds never auto-update. Its Codex rounds follow
+  main's marketplace file at every session start.
+- The Codex hazard of deleting the version a session is using exists whatever
+  the release design is. Each version change sets it off, so fewer version
+  changes make it rarer, and a merge that keeps the version swaps the folder's
+  contents in place.
+- A Codex user who pins the marketplace's ref to an annotated tag, such as one
+  `claude plugin tag` creates, gets a re-clone and reinstall at every session
+  start.
+
+**How this was checked.** On 2 November every claim in this section was checked
+against Claude's docs, fetched and read directly, or against Codex's source at
+`rust-v0.164.0`, and the cache layouts and the symlinks against the installs on
+this machine. The Codex chain from `codex exec` to the upgrade thread was traced
+call by call. The Claude claims rest on its docs alone, apart from an earlier
+test in which Claude installed a `git-subdir` source pinned to a sha and moved
+to a new pin on a normal update. Nothing here has been seen to fail in the
+dreamcatcher feeds.
+
 ## The tracker
 
 Read Collect in `skills/smith/SKILL.md`, then `skills/sift/SKILL.md`.
