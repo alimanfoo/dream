@@ -13,9 +13,9 @@ Review changed code through review lenses chosen to fit the diff.
 ## Arguments
 
 Read the arguments the user gives. `target` names what to review: a git range,
-or a path. Without it, review the whole branch against `origin/main`
-(`origin/main...HEAD`). If `inline` is given, run the lenses yourself without
-spawning subagents.
+or a path. Without it, follow [Review base](../../branch-bases.md#review-base)
+and review `origin/<base>...HEAD`. If `inline` is given, run the lenses yourself
+without spawning subagents.
 
 ## Read the diff
 
@@ -50,8 +50,8 @@ Choose from these or invent your own. They are examples, not a checklist:
 - alignment: compliance with agent instructions (AGENTS.md or CLAUDE.md)
 
 Prepare one subagent per lens. Give every subagent the target, as a git range
-like `origin/main...HEAD` or an absolute path, and the one lens it applies. The
-lenses inherit the session's model and effort.
+like `origin/<base>...HEAD` or an absolute path, and the one lens it applies.
+The lenses inherit the session's model and effort.
 
 Under Claude Code:
 

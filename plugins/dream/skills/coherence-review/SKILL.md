@@ -13,8 +13,8 @@ Review changed code for coherence and maintainability.
 ## Arguments
 
 Read the argument the user gives. It names what to review: a git range, or a
-path. Without one, review the whole branch against `origin/main`
-(`origin/main...HEAD`).
+path. Without one, follow [Review base](../../branch-bases.md#review-base) and
+review `origin/<base>...HEAD`.
 
 ## Read the diff
 

@@ -15,8 +15,8 @@ stands on its own.
 ## Arguments
 
 Read the argument the user gives. It names what to review: a git range, or a
-path. Without one, review the whole branch against `origin/main`
-(`origin/main...HEAD`).
+path. Without one, follow [Review base](../../branch-bases.md#review-base) and
+review `origin/<base>...HEAD`.
 
 ## Read the diff
 
@@ -33,7 +33,7 @@ When the branch has no pull request, say there is none to leave out.
 ## Launch the review
 
 Prepare one subagent. Brief it with the target, as a git range like
-`origin/main...HEAD` or an absolute path, along with the pull request to leave
+`origin/<base>...HEAD` or an absolute path, along with the pull request to leave
 out.
 
 Pin no model and no effort. The subagent inherits the session's, and this review

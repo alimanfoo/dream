@@ -95,9 +95,10 @@ makes the generated files match the source before you commit.
 
 Check the working tree. Stop and tell the user if it has uncommitted changes.
 
-Read the branch name (`git rev-parse --abbrev-ref HEAD`).
+Read the branch name (`git rev-parse --abbrev-ref HEAD`). Find the default
+branch by following [Default branch](../../branch-bases.md#default-branch).
 
-If the branch is `main`, pull the latest changes.
+If the current branch is the default branch, pull the latest changes.
 
 ## Obtain session input
 
@@ -161,10 +162,10 @@ Select the session type:
 
 Open the session branch and PR before the work begins.
 
-**Set the session branch.** If the session started on `main`, create the branch
-and switch to it. Name it after the session input. For example, `GH123` for an
-issue, a short slug like `add-foo` for an unscoped task. If the session started
-on another branch, adopt that as the session branch.
+**Set the session branch.** If the session started on the default branch, create
+the branch and switch to it. Name it after the session input. For example,
+`GH123` for an issue, a short slug like `add-foo` for an unscoped task. If the
+session started on another branch, adopt that as the session branch.
 
 **Adopt an open PR on the branch.** Check whether the branch already has an open
 PR (`gh pr view`). When it does, that PR is the session PR, so skip the rest of
@@ -225,8 +226,11 @@ Implement the plan, one step at a time. For each step:
 
 Run the reviews below in sequence.
 
-First, run the `dream:code-review` skill over the branch's changes against the
-base (`origin/main...HEAD`).
+Find and fetch the session PR's base by following
+[Review base](../../branch-bases.md#review-base). Use `origin/<base>...HEAD` as
+the target for both reviews.
+
+First, run the `dream:code-review` skill over that target.
 
 Start the comment as soon as the skill returns, before you weigh any finding or
 change any code. Write it to a temporary file outside the repo, named after the
