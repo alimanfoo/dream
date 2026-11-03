@@ -80,7 +80,7 @@ Work through these steps in order, then end your turn:
 Read the parent issue and every comment on it. Read each sub-issue, and any
 specification, roadmap or design that the parent or the sub-issues link to, in
 your worktree or on GitHub. Your worktree is checked out at the `revision` of
-main that the input names.
+the default branch that the input names.
 
 From the plan, learn each stage's goal and how the plan says you can tell that
 the stage is done. A plan may call that the stage's "done when", its acceptance
@@ -199,13 +199,15 @@ ask the stage's agent on the pull request to show the command and its output for
 that head. Do the same when the proof needs a run in another repository. Don't
 run the proof yourself.
 
-Take account of changes on main that bear on the stage. Look at what reached
-main since the pull request's branch left it:
+Take account of changes on the stage's base branch that bear on the stage. Read
+the base from the stage's pull request, then look at what reached that branch
+since the pull request's branch left it:
 
 ```sh
-git fetch origin main
+base=$(gh pr view <N> --json baseRefName --jq .baseRefName)
+git fetch origin "$base"
 git fetch origin pull/<N>/head
-git log --oneline $(git merge-base FETCH_HEAD origin/main)..origin/main
+git log --oneline "$(git merge-base FETCH_HEAD "origin/$base")..origin/$base"
 ```
 
 Read only the commits that touch what the stage touches. A commit that doesn't
@@ -270,7 +272,7 @@ gh pr merge <N> --<method> --match-head-commit <reviewed head>
 If the head has changed, don't merge. Review the new head and prove it first.
 
 Don't bypass the repository's merge rules, for example with `--admin`. If GitHub
-refuses the merge, read why. A pull request that is behind main reaches the
+refuses the merge, read why. A pull request that is behind its base reaches the
 stage's agent on its own, so end your turn and wait.
 
 When every sub-issue is closed, post on the parent once to say so. The user then

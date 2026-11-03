@@ -91,8 +91,10 @@ files match the source before you commit.
 
 Check the working tree. Stop and tell the user if it has uncommitted changes.
 
-Read the branch name (`git rev-parse --abbrev-ref HEAD`). If the branch is
-`main`, pull the latest changes.
+Read the branch name (`git rev-parse --abbrev-ref HEAD`). Refresh the default
+branch ref (`git remote set-head origin --auto`), then read it with
+`git symbolic-ref --short refs/remotes/origin/HEAD` and strip its `origin/`
+prefix. If the current branch is the default branch, pull the latest changes.
 
 ## Obtain session input
 
@@ -136,10 +138,10 @@ Select the session type:
 
 Open the session branch and PR before the work begins.
 
-**Set the session branch.** If the session started on `main`, create the branch
-and switch to it. Name it after the session input. For example, `GH123` for an
-issue, a short slug like `add-foo` for an unscoped task. If the session started
-on another branch, adopt that as the session branch.
+**Set the session branch.** If the session started on the default branch, create
+the branch and switch to it. Name it after the session input. For example,
+`GH123` for an issue, a short slug like `add-foo` for an unscoped task. If the
+session started on another branch, adopt that as the session branch.
 
 **Adopt an open PR on the branch.** Check whether the branch already has an open
 PR (`gh pr view`). When it does, that PR is the session PR, so skip the rest of
@@ -178,10 +180,12 @@ Implement the change in small steps, each its own commit. For each step:
 
 ## Code review
 
-Run the `dream:code-review` skill in `inline` mode over the branch's changes
-against the base (`origin/main...HEAD`), so it reviews without spawning
-subagents. It returns findings. It does not apply them. Weigh each on its merits
-and apply the ones the evidence supports. Commit and push the fixes.
+Read the session PR's base branch
+(`gh pr view --json baseRefName --jq .baseRefName`) and fetch it. Run the
+`dream:code-review` skill in `inline` mode with `origin/<base>...HEAD` as its
+target, so it reviews without spawning subagents. It returns findings. It does
+not apply them. Weigh each on its merits and apply the ones the evidence
+supports. Commit and push the fixes.
 
 ## Write the PR description
 

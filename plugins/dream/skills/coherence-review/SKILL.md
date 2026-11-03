@@ -13,8 +13,12 @@ Review changed code for coherence and maintainability.
 ## Arguments
 
 Read the argument the user gives. It names what to review: a git range, or a
-path. Without one, review the whole branch against `origin/main`
-(`origin/main...HEAD`).
+path. Without one, read the current branch's open pull request base with
+`gh pr view --json baseRefName --jq .baseRefName`. If the branch has no open
+pull request, refresh the default branch ref
+(`git remote set-head origin --auto`), read it with
+`git symbolic-ref --short refs/remotes/origin/HEAD`, and strip its `origin/`
+prefix. Fetch the branch that you found, then review `origin/<base>...HEAD`.
 
 ## Read the diff
 

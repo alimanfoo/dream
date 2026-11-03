@@ -15,8 +15,12 @@ stands on its own.
 ## Arguments
 
 Read the argument the user gives. It names what to review: a git range, or a
-path. Without one, review the whole branch against `origin/main`
-(`origin/main...HEAD`).
+path. Without one, read the current branch's open pull request base with
+`gh pr view --json baseRefName --jq .baseRefName`. If the branch has no open
+pull request, refresh the default branch ref
+(`git remote set-head origin --auto`), read it with
+`git symbolic-ref --short refs/remotes/origin/HEAD`, and strip its `origin/`
+prefix. Fetch the branch that you found, then review `origin/<base>...HEAD`.
 
 ## Read the diff
 
@@ -33,7 +37,7 @@ When the branch has no pull request, say there is none to leave out.
 ## Launch the review
 
 Prepare one subagent. Brief it with the target, as a git range like
-`origin/main...HEAD` or an absolute path, along with the pull request to leave
+`origin/<base>...HEAD` or an absolute path, along with the pull request to leave
 out.
 
 Pin no model and no effort. The subagent inherits the session's, and this review

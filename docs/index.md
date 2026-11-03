@@ -50,9 +50,9 @@ you, with no session to watch. Label a GitHub issue, and dreamcatcher starts an
 agent on it in a worktree of its own, with several agents at a time. You talk to
 each agent on GitHub. Reply on the pull request, and dreamcatcher passes your
 reply to the agent. dreamcatcher also wakes the agent when the pull request
-falls behind main or conflicts with it, or when a check fails, so the agent can
-fix it on its own. When you merge or close the pull request, dreamcatcher gives
-the agent a last round to wrap up.
+falls behind its base or conflicts with it, or when a check fails, so the agent
+can fix it on its own. When you merge or close the pull request, dreamcatcher
+gives the agent a last round to wrap up.
 
 dreamcatcher runs a skill as an assignment, a conversation or a campaign. An
 assignment carries an issue to a pull request. A conversation answers the
@@ -93,9 +93,10 @@ it at what the one before it wrote.
 
 ## Review a change
 
-Each review reads the branch against `origin/main`, or takes a git range or a
-path. Smith runs the code and coherence reviews before it marks a pull request
-ready, and you can run any of them yourself.
+Each review reads the branch against its open pull request's base, or against
+the repository's default branch when there is no pull request. You can give it a
+git range or a path instead. Smith runs the code and coherence reviews before it
+marks a pull request ready, and you can run any of them yourself.
 
 | Skill                     | What it looks for                                                      |
 | ------------------------- | ---------------------------------------------------------------------- |
