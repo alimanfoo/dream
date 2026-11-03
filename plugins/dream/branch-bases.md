@@ -2,7 +2,7 @@
 
 ## Default branch
 
-Run `git remote set-head origin --auto`. Read
+Run `git fetch origin`, then `git remote set-head origin --auto`. Read
 `git symbolic-ref --short refs/remotes/origin/HEAD` and remove `origin/`.
 
 ## Review base

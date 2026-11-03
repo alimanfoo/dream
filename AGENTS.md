@@ -40,6 +40,10 @@ The collaborative product management skills that write a specification all read
 file goes and how it reaches the user on a pull request, so those skills don't
 each carry their own copy of the convention.
 
+Make every skill that needs the default branch or the current branch's review
+base read [`branch-bases.md`](plugins/dream/branch-bases.md). It owns how a
+skill finds the default branch and the review base.
+
 Keep a simple subagent task prompt inline in the skill that launches it. When a
 task prompt earns its own file, put it in `plugins/dream/agents/`. Claude Code
 reads a file there as a named agent, and a plain Codex subagent takes the same
