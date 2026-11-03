@@ -13,13 +13,9 @@ Review changed code through review lenses chosen to fit the diff.
 ## Arguments
 
 Read the arguments the user gives. `target` names what to review: a git range,
-or a path. Without it, read the current branch's open pull request base with
-`gh pr view --json baseRefName --jq .baseRefName`. If the branch has no open
-pull request, refresh the default branch ref
-(`git remote set-head origin --auto`), read it with
-`git symbolic-ref --short refs/remotes/origin/HEAD`, and strip its `origin/`
-prefix. Fetch the branch that you found, then review `origin/<base>...HEAD`. If
-`inline` is given, run the lenses yourself without spawning subagents.
+or a path. Without it, follow [Review base](../../branch-bases.md#review-base)
+and review `origin/<base>...HEAD`. If `inline` is given, run the lenses yourself
+without spawning subagents.
 
 ## Read the diff
 

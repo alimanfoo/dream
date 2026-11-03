@@ -91,10 +91,9 @@ files match the source before you commit.
 
 Check the working tree. Stop and tell the user if it has uncommitted changes.
 
-Read the branch name (`git rev-parse --abbrev-ref HEAD`). Refresh the default
-branch ref (`git remote set-head origin --auto`), then read it with
-`git symbolic-ref --short refs/remotes/origin/HEAD` and strip its `origin/`
-prefix. If the current branch is the default branch, pull the latest changes.
+Read the branch name (`git rev-parse --abbrev-ref HEAD`). Find the default
+branch by following [Default branch](../../branch-bases.md#default-branch). If
+the current branch is the default branch, pull the latest changes.
 
 ## Obtain session input
 
@@ -180,12 +179,12 @@ Implement the change in small steps, each its own commit. For each step:
 
 ## Code review
 
-Read the session PR's base branch
-(`gh pr view --json baseRefName --jq .baseRefName`) and fetch it. Run the
-`dream:code-review` skill in `inline` mode with `origin/<base>...HEAD` as its
-target, so it reviews without spawning subagents. It returns findings. It does
-not apply them. Weigh each on its merits and apply the ones the evidence
-supports. Commit and push the fixes.
+Find and fetch the session PR's base by following
+[Review base](../../branch-bases.md#review-base). Run the `dream:code-review`
+skill in `inline` mode with `origin/<base>...HEAD` as its target, so it reviews
+without spawning subagents. It returns findings. It does not apply them. Weigh
+each on its merits and apply the ones the evidence supports. Commit and push the
+fixes.
 
 ## Write the PR description
 

@@ -95,10 +95,8 @@ makes the generated files match the source before you commit.
 
 Check the working tree. Stop and tell the user if it has uncommitted changes.
 
-Read the branch name (`git rev-parse --abbrev-ref HEAD`). Refresh the default
-branch ref (`git remote set-head origin --auto`), then read it with
-`git symbolic-ref --short refs/remotes/origin/HEAD` and strip its `origin/`
-prefix.
+Read the branch name (`git rev-parse --abbrev-ref HEAD`). Find the default
+branch by following [Default branch](../../branch-bases.md#default-branch).
 
 If the current branch is the default branch, pull the latest changes.
 
@@ -228,9 +226,9 @@ Implement the plan, one step at a time. For each step:
 
 Run the reviews below in sequence.
 
-Read the session PR's base branch
-(`gh pr view --json baseRefName --jq .baseRefName`) and fetch it. Use
-`origin/<base>...HEAD` as the target for both reviews.
+Find and fetch the session PR's base by following
+[Review base](../../branch-bases.md#review-base). Use `origin/<base>...HEAD` as
+the target for both reviews.
 
 First, run the `dream:code-review` skill over that target.
 
