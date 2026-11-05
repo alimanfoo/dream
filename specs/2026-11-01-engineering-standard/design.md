@@ -174,8 +174,8 @@ source.
 Nobody has yet moved an existing install from the relative path to a pinned
 entry. Codex should do it on its own: its forced reinstall clones the pinned
 commit. Claude has been seen to install from a pinned entry and to move to a new
-pin when it updates. Before the first release, try the switch on both hosts from
-a branch.
+pin when it updates. If an existing install doesn't follow the switch at the
+first release, reinstalling fixes it, and the changelog says so.
 
 ### The guide to agent mechanics
 
@@ -336,8 +336,8 @@ in three places: the definition of done, the consistency review at each release,
 and the compatibility page, which states the contract version dream meets.
 Corrections to the contract itself belong to
 [alimanfoo/dreamcatcher#899](https://github.com/alimanfoo/dreamcatcher/issues/899).
-Until it lands, smith and less don't meet version 1 to the letter, so the
-compatibility page names the contract version only once the correction is in.
+Until it lands, smith and less don't meet version 1 to the letter, so it lands
+before the compatibility page is written.
 
 ### The infrastructure floor
 
@@ -385,9 +385,10 @@ sites do, so between releases it can describe what users don't have yet.
   in the user's voice. `AGENTS.md` describes both as normal, neither as the
   exception, and both are under the same maintenance: the definition of done,
   the reviews, the consistency review and the measurement.
-- **The one-page site goes.** The home page's hidden navigation and the "one
-  short page needs no search" setting change, and the note in `AGENTS.md` that
-  the site is one page goes.
+- **The one-page site goes.** The "one short page needs no search" setting
+  changes, and the note in `AGENTS.md` that the site is one page goes. The home
+  page keeps hiding its navigation, as dreamcatcher's does, and the other pages
+  show it.
 
 ## Why it's this and not something else
 
