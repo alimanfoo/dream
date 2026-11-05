@@ -4,6 +4,7 @@ version: 2
 # ecosystem has two groups, and opens one pull request for each, majors included.
 # A version update waits until its release is a week old, so a compromised
 # release has time to be found and pulled first. Security updates do not wait.
+# Dependabot has no security updates for pre-commit, so it has one group.
 
 updates:
   - package-ecosystem: "uv"
@@ -40,9 +41,6 @@ updates:
       default-days: 7
     groups:
       pre-commit:
-        patterns: ["*"]
-      pre-commit-security:
-        applies-to: security-updates
         patterns: ["*"]
 
   - package-ecosystem: "github-actions"
