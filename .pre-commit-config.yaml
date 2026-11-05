@@ -19,6 +19,14 @@ repos:
         # which paths to skip.
         exclude: &markdown_non_source (^CLAUDE\.md$|^\.claude/|^\.agents/)
 
+  # zizmor checks that the workflows are secure. Its online audits need a
+  # token, so it runs offline.
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: c92afdf2c6ca336aaa8f39e2bd8d48f62dbd8e1f # frozen: v1.31.1
+    hooks:
+      - id: zizmor
+        args: [--offline]
+
   - repo: local
     hooks:
       - id: uncoded
