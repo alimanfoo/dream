@@ -18,8 +18,8 @@ uncoded's setup:
   pinned to a commit, and every remote pre-commit hook frozen to one;
 - read-only `permissions` on `lint.yml`, which has none today;
 - `.github/dependabot.yml` for the `github-actions`, `pre-commit` and `uv`
-  ecosystems, as uncoded has, plus `pip` for `docs/requirements.txt`, with
-  uncoded's one-week cooldown and its groups, except a security group for
+  ecosystems, as uncoded has, where `uv` also covers `docs/requirements.txt`,
+  with uncoded's one-week cooldown and its groups, except a security group for
   `pre-commit`, which Dependabot has no security updates for;
 - zizmor as a pre-commit hook, run offline as uncoded runs it;
 - a `SECURITY.md`.
