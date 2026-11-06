@@ -15,19 +15,21 @@ own, not handed to an agent to build alone.
 uncoded's setup:
 
 - every action in `.github/workflows/lint.yml` and `.github/workflows/docs.yml`
-  pinned to a commit;
+  pinned to a commit, and every remote pre-commit hook frozen to one;
 - read-only `permissions` on `lint.yml`, which has none today;
 - `.github/dependabot.yml` for the `github-actions`, `pre-commit` and `uv`
-  ecosystems, as uncoded has, plus `pip` for `docs/requirements.txt`, with
-  uncoded's one-week cooldown and its groups;
+  ecosystems, as uncoded has, where `uv` also covers `docs/requirements.txt`,
+  with uncoded's one-week cooldown and its groups, except a security group for
+  `pre-commit`, which Dependabot has no security updates for;
 - zizmor as a pre-commit hook, run offline as uncoded runs it;
 - a `SECURITY.md`.
 
 After it merges, the user changes main's branch protection by hand: require the
 `lint` check, apply protection to admins, and turn off "require branches to be
 up to date". Only `lint` can be required, because the docs build runs only when
-the docs change. The user also turns on private vulnerability reporting, which
-`SECURITY.md` points reporters to and which is off for dream today.
+the docs change. Before it merges, the user turns on private vulnerability
+reporting, which `SECURITY.md` points reporters to, and Dependabot alerts and
+security updates, without which the security groups open no pull request.
 
 **Done when.** zizmor passes on both workflows, Dependabot accepts its
 configuration, and after the settings change

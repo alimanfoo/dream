@@ -7,6 +7,7 @@ version: 2
 # Dependabot has no security updates for pre-commit, so it has one group.
 
 updates:
+  # The uv ecosystem also updates docs/requirements.txt.
   - package-ecosystem: "uv"
     directory: "/"
     schedule:
@@ -17,19 +18,6 @@ updates:
       uv:
         patterns: ["*"]
       uv-security:
-        applies-to: security-updates
-        patterns: ["*"]
-
-  - package-ecosystem: "pip"
-    directory: "/docs"
-    schedule:
-      interval: "weekly"
-    cooldown:
-      default-days: 7
-    groups:
-      pip:
-        patterns: ["*"]
-      pip-security:
         applies-to: security-updates
         patterns: ["*"]
 
