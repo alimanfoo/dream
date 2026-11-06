@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.12"
 
 [[package]]
@@ -86,13 +86,13 @@ wheels = [
 
 [[package]]
 name = "uncoded"
-version = "6.0.0"
+version = "6.0.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "markdown-it-py" },
     { name = "pyyaml" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/71/50/c7281493d2f5e17b1bb15c1734af43a6434d1ca6465cdf235c02e1c52630/uncoded-6.0.0.tar.gz", hash = "sha256:050a218fdb7cc9b9221d0199066dc0a087d7fa0f99e8bce39ec82b79893527b3", size = 31274, upload-time = "2026-10-29T13:40:58.401Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e6/f4/fd1d842878c015a0ef673bd23cfa0bcb8016e99107bc68f02d89e1d6676b/uncoded-6.0.1.tar.gz", hash = "sha256:1b5744002b16cb9b4efbce34b5bcfadaf134d2e80e15b11d6ec7aad6b2883224", size = 31362, upload-time = "2026-10-29T16:32:19.555Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ee/39/7c80149c086d44a30e5c85f7e1ae265e81a237289baf519e3e07c316ff3b/uncoded-6.0.0-py3-none-any.whl", hash = "sha256:89f701c7c34028c080d89a14d2ff4ac906ede24b90733e9b3467b2cbb4d1df8d", size = 36343, upload-time = "2026-10-29T13:40:57.139Z" },
+    { url = "https://files.pythonhosted.org/packages/8e/aa/fe18cc2bb8dbc089672b8eae60c84f09f9b4b270e5f6bdbc08c2579801f7/uncoded-6.0.1-py3-none-any.whl", hash = "sha256:f8e9b9afed72b20f986449b726c064963225bad77cec01979cce0c28855ad101", size = 36442, upload-time = "2026-10-29T16:32:17.896Z" },
 ]
