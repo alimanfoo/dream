@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: cef0300fd0fc4d2a87a85fa2093c6b283ea36f4b # frozen: v5.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -10,7 +10,7 @@ repos:
       - id: check-yaml
 
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.18.1
+    rev: d7a4f7cf4914d3bffb9b83bdbc45fd2a00c91ff9 # frozen: v0.18.1
     hooks:
       - id: markdownlint-cli2
         # Skip markdown that is not authored source: the CLAUDE.md symlink to
@@ -18,6 +18,14 @@ repos:
         # format, and link-check hooks share this list, so they never drift on
         # which paths to skip.
         exclude: &markdown_non_source (^CLAUDE\.md$|^\.claude/|^\.agents/)
+
+  # zizmor checks that the workflows are secure. Its online audits need a
+  # token, so it runs offline.
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: c92afdf2c6ca336aaa8f39e2bd8d48f62dbd8e1f # frozen: v1.31.1
+    hooks:
+      - id: zizmor
+        args: [--offline]
 
   - repo: local
     hooks:

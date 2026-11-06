@@ -175,6 +175,7 @@ The repo uses [`pre-commit`](https://pre-commit.com/) for lightweight checks:
 - invisible characters such as non-breaking spaces, zero-width marks, and bidi
   controls (`scripts/check_invisible_chars.py`)
 - `claude plugin validate` on the plugin and marketplace manifests
+- GitHub Actions workflow security (`zizmor`, run offline)
 - YAML frontmatter validation on skill and agent files
 - the documentation index (`uncoded sync`, which regenerates
   `.uncoded/docs.yaml` and the `/uncoded-doc-navigation` skill)
