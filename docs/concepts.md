@@ -114,3 +114,11 @@ delivers a change in one pull request. Each implementation step is one idea and
 one commit.
 
 Replaces: "task", for an implementation step.
+
+### Review and finding
+
+A **review** is a reading of a change, or of code or documents, that reports
+each way the work could be better as a **finding**. A finding is one claim about
+the work read, with the evidence for it. For example, a finding can name a bug,
+a simpler form, a fact kept in two places, something a reader is missing, or a
+departure from the repository's instructions.
