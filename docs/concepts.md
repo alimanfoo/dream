@@ -14,6 +14,11 @@ issues.
 **dream** is a plugin of skills for building software with coding agents. Its
 name is written in lower case, even at the start of a sentence.
 
+### Coding agent
+
+A **coding agent** is a language model that works on software by calling tools,
+such as reading files, running commands and editing code, in a loop.
+
 ### Harness
 
 A **harness** is a program that runs a coding agent, such as Claude Code or
