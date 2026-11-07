@@ -16,13 +16,26 @@ name is written in lower case, even at the start of a sentence.
 
 ### Coding agent
 
-A **coding agent** is a language model that works on software by calling tools,
-such as reading files, running commands and editing code, in a loop.
+A **coding agent** is a language model that works on software by using tools in
+a loop, such as reading files, running commands and editing code, and that
+decides for itself which tool to use next.
+
+### Context
+
+A coding agent's **context** is the sequence of tokens from which its language
+model generates its next output. It includes every earlier input to the model
+and every output from it.
+
+### Compaction
+
+**Compaction** is an operation that replaces earlier parts of a coding agent's
+context with a summary of them.
 
 ### Harness
 
-A **harness** is a program that runs a coding agent, such as Claude Code or
-Codex.
+A **harness** is a program that turns a language model into a coding agent. It
+supplies the tools, runs the loop and manages the context. Claude Code and Codex
+are harnesses.
 
 Replaces: "host".
 
@@ -39,9 +52,3 @@ which the agent reads or runs only when the body points it at them.
 
 The **user** is the person who gives a coding agent its input, and on whose
 behalf the agent works.
-
-### Context
-
-A coding agent's **context** is the sequence of tokens from which its language
-model generates its next output. It includes every earlier input to the model
-and every output from it.
