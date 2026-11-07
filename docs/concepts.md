@@ -93,6 +93,14 @@ An **issue** is a GitHub issue on the repository. It can record anything worth
 tracking, such as a bug, a maintenance chore, a small enhancement or an epic
 describing a major new feature.
 
+### Sub-issue and parent issue
+
+A **sub-issue** is an issue that GitHub links beneath another issue, its
+**parent issue**. A parent issue can have many sub-issues, and a sub-issue can
+be a parent issue in turn.
+
+Replaces: "child", "child issue".
+
 ### Pull request
 
 A **pull request** is a GitHub pull request on the repository: a proposal to
