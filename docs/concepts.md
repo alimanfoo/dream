@@ -29,3 +29,8 @@ a body. The name and description are in the agent's context from the start. The
 body loads into the agent's context only when the skill is invoked, by a person
 or by the agent itself. The folder can also bundle scripts and other files,
 which the agent reads or runs only when the body points it at them.
+
+### User
+
+The **user** is the person who gives a coding agent its input, and on whose
+behalf the agent works.
