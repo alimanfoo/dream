@@ -106,3 +106,10 @@ Replaces: "child", "child issue".
 A **pull request** is a GitHub pull request on the repository: a proposal to
 merge the changes on one branch into another, where the changes can be reviewed
 and discussed before they merge.
+
+### Implementation plan and step
+
+An **implementation plan** is an ordered list of **steps** that delivers a
+change in one pull request. Each step is one idea and one commit.
+
+Replaces: "task", for a step.
