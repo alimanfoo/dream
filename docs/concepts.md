@@ -9,11 +9,6 @@ issues.
 
 ## Definitions
 
-### dream
-
-**dream** is a plugin of skills for building software with coding agents. Its
-name is written in lower case, even at the start of a sentence.
-
 ### Coding agent
 
 A **coding agent** is a language model that works on software by using tools in
@@ -77,3 +72,13 @@ frontmatter holds a name and a description, and its body holds the instructions
 the subagent starts from.
 
 Replaces: "agent prompt", "named agent".
+
+### Plugin
+
+A **plugin** is a bundle of skills, subagent files and other extensions that a
+harness installs as one unit.
+
+### dream
+
+**dream** is a plugin of skills for building software with coding agents. Its
+name is written in lower case, even at the start of a sentence.
