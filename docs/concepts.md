@@ -86,3 +86,9 @@ name is written in lower case, even at the start of a sentence.
 ### Repository
 
 A **repository** is the git repository that a coding agent works in.
+
+### Issue
+
+An **issue** is a GitHub issue on the repository. It can record anything worth
+tracking, such as a bug, a maintenance chore, a small enhancement or an epic
+describing a major new feature.
