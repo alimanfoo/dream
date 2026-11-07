@@ -92,3 +92,9 @@ A **repository** is the git repository that a coding agent works in.
 An **issue** is a GitHub issue on the repository. It can record anything worth
 tracking, such as a bug, a maintenance chore, a small enhancement or an epic
 describing a major new feature.
+
+### Pull request
+
+A **pull request** is a GitHub pull request on the repository: a proposal to
+merge the changes on one branch into another, where the changes can be reviewed
+and discussed before they merge.
