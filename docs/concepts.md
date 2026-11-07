@@ -20,3 +20,8 @@ A **harness** is a program that runs a coding agent, such as Claude Code or
 Codex.
 
 Replaces: "host".
+
+### Skill
+
+A **skill** is a named file of instructions or information that a harness gives
+its coding agent when the skill is invoked.
