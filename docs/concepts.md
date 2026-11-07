@@ -13,3 +13,10 @@ issues.
 
 **dream** is a plugin of skills for building software with coding agents. Its
 name is written in lower case, even at the start of a sentence.
+
+### Harness
+
+A **harness** is a program that runs a coding agent, such as Claude Code or
+Codex.
+
+Replaces: "host".
