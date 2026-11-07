@@ -57,3 +57,9 @@ behalf the agent works.
 
 A **session** is one conversation between a user and a coding agent, run by a
 harness, with a context of its own.
+
+### Turn
+
+A **turn** is a coding agent's whole response to one input, from when the input
+arrives until the agent answers without asking for another tool. A session is a
+sequence of turns.
