@@ -69,3 +69,11 @@ sequence of turns.
 A **subagent** is a coding agent that another coding agent starts inside its
 session to do a delegated task. It has a context of its own, and its final
 output returns to the agent that started it.
+
+### Subagent file
+
+A **subagent file** is a Markdown file that defines a kind of subagent. Its
+frontmatter holds a name and a description, and its body holds the instructions
+the subagent starts from.
+
+Replaces: "agent prompt", "named agent".
