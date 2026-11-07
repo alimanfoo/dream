@@ -39,3 +39,9 @@ which the agent reads or runs only when the body points it at them.
 
 The **user** is the person who gives a coding agent its input, and on whose
 behalf the agent works.
+
+### Context
+
+A coding agent's **context** is the sequence of tokens from which its language
+model generates its next output. It includes every earlier input to the model
+and every output from it.
