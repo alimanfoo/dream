@@ -82,3 +82,7 @@ harness installs as one unit.
 
 **dream** is a plugin of skills for building software with coding agents. Its
 name is written in lower case, even at the start of a sentence.
+
+### Repository
+
+A **repository** is the git repository that a coding agent works in.
