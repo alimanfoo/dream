@@ -128,3 +128,12 @@ departure from the repository's instructions.
 A **review lens** is one narrow question that a review asks of the work it
 reads. For example, whether a change introduces races, or whether each fact has
 one home.
+
+### Specification and specification folder
+
+A **specification** is a document in the repository that records thinking about
+a piece of work before it is built. For example, a requirements brief, a reading
+guide, a design or a roadmap. The specifications for one piece of work are kept
+together in a **specification folder**.
+
+Replaces: "spec", for a specification.
