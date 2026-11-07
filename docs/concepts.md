@@ -63,3 +63,9 @@ harness, with a context of its own.
 A **turn** is a coding agent's whole response to one input, from when the input
 arrives until the agent answers without asking for another tool. A session is a
 sequence of turns.
+
+### Subagent
+
+A **subagent** is a coding agent that another coding agent starts inside its
+session to do a delegated task. It has a context of its own, and its final
+output returns to the agent that started it.
