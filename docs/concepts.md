@@ -23,5 +23,9 @@ Replaces: "host".
 
 ### Skill
 
-A **skill** is a named file of instructions or information that a harness gives
-its coding agent when the skill is invoked.
+A **skill** is a folder of instructions or information that a harness gives its
+coding agent. Its one required file, `SKILL.md`, holds a name, a description and
+a body. The name and description are in the agent's context from the start. The
+body loads into the agent's context only when the skill is invoked, by a person
+or by the agent itself. The folder can also bundle scripts and other files,
+which the agent reads or runs only when the body points it at them.
