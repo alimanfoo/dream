@@ -98,3 +98,7 @@ describing a major new feature.
 A **pull request** is a GitHub pull request on the repository: a proposal to
 merge the changes on one branch into another, where the changes can be reviewed
 and discussed before they merge.
+
+### Task
+
+A **task** is a piece of work that the user hands to a coding agent to do.
