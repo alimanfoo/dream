@@ -123,7 +123,8 @@ the work read, with the evidence for it. For example, a finding can name a bug,
 a simpler form, a fact kept in two places, something a reader is missing, or a
 departure from the repository's instructions.
 
-### Lens
+### Review lens
 
-A **lens** is one narrow question that a review asks of the work it reads. For
-example, whether a change introduces races, or whether each fact has one home.
+A **review lens** is one narrow question that a review asks of the work it
+reads. For example, whether a change introduces races, or whether each fact has
+one home.
