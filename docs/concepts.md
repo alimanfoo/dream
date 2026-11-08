@@ -173,3 +173,9 @@ describes what each stage will deliver, how to tell it is done, what it leaves
 for later, and which earlier stages it needs.
 
 Replaces: "plan" and "campaign plan", for a roadmap.
+
+### Issue triage and triage outcome
+
+**Issue triage** is deciding what should happen next to an issue. The decision
+is its **triage outcome**: the issue needs information, needs discussion, is
+ready to implement, waits on something outside the repository, or is closed.
