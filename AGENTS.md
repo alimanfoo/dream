@@ -22,6 +22,11 @@ This repo has two layers, easy to confuse:
 - **Developer support**: AGENTS.md. It supports plugin development and is not
   part of the installed plugin.
 
+## Concepts
+
+[`docs/concepts.md`](docs/concepts.md) says what the words for dream's domain
+mean. Use its words and no others, in the skills, the documents and the issues.
+
 ## Development notes
 
 The collaborative product management skills, `dream:sift`, `dream:spark`,
