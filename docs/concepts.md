@@ -164,3 +164,12 @@ what changes and what goes away, why it takes this shape and not another, and
 what is still open.
 
 Replaces: "design", for a design specification.
+
+### Roadmap and stage
+
+A **roadmap** is a specification that breaks a piece of work too large for one
+pull request into ordered **stages**, each delivered by one pull request. It
+describes what each stage will deliver, how to tell it is done, what it leaves
+for later, and which earlier stages it needs.
+
+Replaces: "plan" and "campaign plan", for a roadmap.
