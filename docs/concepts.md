@@ -132,19 +132,21 @@ one home.
 ### Specification and specification folder
 
 A **specification** is a document in the repository that records thinking about
-a piece of work before it is built. For example, a requirements brief, a reading
-guide, a design or a roadmap. The specifications for one piece of work are kept
-together in a **specification folder**.
+a piece of work before it is built. For example, a requirements specification, a
+reading guide, a design specification or a roadmap. The specifications for one
+piece of work are kept together in a **specification folder**.
 
 Replaces: "spec", for a specification.
 
-### Requirements brief
+### Requirements specification
 
-A **requirements brief** is a specification of what the user wants and why,
-without a solution. It says what the user wants to be able to do, what is wrong
-or missing today, what has to be true of anything they would accept, what
+A **requirements specification** is a specification of what the user wants and
+why, without a solution. It says what the user wants to be able to do, what is
+wrong or missing today, what has to be true of anything they would accept, what
 constraints any solution must work within, how they will know it worked, and
 what is still open.
+
+Replaces: "requirements brief", "brief".
 
 ### Reading guide
 
@@ -152,3 +154,13 @@ A **reading guide** is a specification that leads a reader through the existing
 code behind a piece of work. It recommends what to read and in what order, gives
 the background that makes the code make sense, and names the code's awkward
 parts.
+
+### Design specification
+
+A **design specification** is a specification of what a piece of work will
+create: the architecture and algorithms of the result, in enough detail to plan
+the build from, without the implementation. It says what is being built, how it
+works, what changes and what goes away, why it takes this shape and not another,
+and what is still open.
+
+Replaces: "design", for a design specification.
