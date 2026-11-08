@@ -137,3 +137,11 @@ guide, a design or a roadmap. The specifications for one piece of work are kept
 together in a **specification folder**.
 
 Replaces: "spec", for a specification.
+
+### Requirements brief
+
+A **requirements brief** is a specification of what the user wants and why,
+without a solution. It says what the user wants to be able to do, what is wrong
+or missing today, what has to be true of anything they would accept, what
+constraints any solution must work within, how they will know it worked, and
+what is still open.
