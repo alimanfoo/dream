@@ -188,3 +188,14 @@ naming or structure, without changing behaviour. A **bug fix** repairs incorrect
 behaviour.
 
 Replaces: "issue type", "session type", "category".
+
+### dreamcatcher
+
+**dreamcatcher** is a program that dispatches coding agents to work autonomously
+on a repository's issues, with the user steering them from GitHub. Some of
+dream's skills are designed to be compatible with it, so dreamcatcher can use
+them to drive and direct that work. Words for what dreamcatcher does, such as
+dispatch label, dispatch route, agent assignment, issue conversation, campaign
+and agent round, mean what
+[dreamcatcher's concepts page](https://alimanfoo.github.io/dreamcatcher/concepts/)
+says they mean.
