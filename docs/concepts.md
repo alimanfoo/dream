@@ -145,3 +145,10 @@ without a solution. It says what the user wants to be able to do, what is wrong
 or missing today, what has to be true of anything they would accept, what
 constraints any solution must work within, how they will know it worked, and
 what is still open.
+
+### Reading guide
+
+A **reading guide** is a specification that leads a reader through the existing
+code behind a piece of work. It recommends what to read and in what order, gives
+the background that makes the code make sense, and names the code's awkward
+parts.
