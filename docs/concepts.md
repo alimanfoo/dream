@@ -140,9 +140,9 @@ Replaces: "spec", for a specification.
 
 ### Requirements specification
 
-A **requirements specification** is a specification of what the user wants and
-why, without a solution. It says what the user wants to be able to do, what is
-wrong or missing today, what has to be true of anything they would accept, what
+A **requirements specification** describes what the user wants and why, without
+a solution. It says what the user wants to be able to do, what is wrong or
+missing today, what has to be true of anything they would accept, what
 constraints any solution must work within, how they will know it worked, and
 what is still open.
 
@@ -157,10 +157,10 @@ parts.
 
 ### Design specification
 
-A **design specification** is a specification of what a piece of work will
-create: the architecture and algorithms of the result, in enough detail to plan
-the build from, without the implementation. It says what is being built, how it
-works, what changes and what goes away, why it takes this shape and not another,
-and what is still open.
+A **design specification** describes what a piece of work will create: the
+architecture and algorithms of the result, in enough detail to plan the build
+from, without the implementation. It says what is being built, how it works,
+what changes and what goes away, why it takes this shape and not another, and
+what is still open.
 
 Replaces: "design", for a design specification.
