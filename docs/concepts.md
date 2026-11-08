@@ -104,6 +104,12 @@ A **pull request** is a GitHub pull request on the repository: a proposal to
 merge the changes on one branch into another, where the changes can be reviewed
 and discussed before they merge.
 
+### Default branch and base branch
+
+The **default branch** is the branch on GitHub that a new pull request merges
+into unless another is chosen. A pull request's **base branch** is the branch it
+would merge into.
+
 ### Implementation plan and implementation step
 
 An **implementation plan** is an ordered list of **implementation steps** that
