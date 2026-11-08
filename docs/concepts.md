@@ -1,6 +1,7 @@
 # Concepts
 
-This page names the things dream deals with and says what the words mean.
+This page names the things dream deals with and says what the words mean. It
+defines the domain that dream works in, not dream itself.
 
 Each entry uses only words defined before it. An entry ends with the words that
 its concept replaces, where it replaces any, in a line that begins "Replaces:".
@@ -78,11 +79,6 @@ Replaces: "agent prompt", "named agent".
 
 A **plugin** is a bundle of skills, subagent files and other extensions that an
 agent harness installs as one unit.
-
-### dream
-
-**dream** is a plugin of skills for building software with coding agents. Its
-name is written in lower case, even at the start of a sentence.
 
 ### Repository
 
@@ -200,10 +196,3 @@ dispatch label, dispatch route, agent assignment, issue conversation, campaign
 and agent round, mean what
 [dreamcatcher's concepts page](https://alimanfoo.github.io/dreamcatcher/concepts/)
 says they mean.
-
-### Shared file
-
-A **shared file** is a file in dream, outside any skill's folder, that more than
-one skill reads, so that what it holds has one home. For example, the Plain
-English guide, the coherent coding guide, and the convention for where
-specifications go.

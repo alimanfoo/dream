@@ -51,10 +51,10 @@ short page needs no search" setting revisited, and the note in `AGENTS.md` that
 the site is one page removed.
 
 Then `docs/concepts.md`, worked out with the user, in the form of the other two
-projects' concepts pages. Each term has an entry that uses only terms defined
-before it and ends with the words it replaces. Old skill names go in those
-"Replaces:" lines, such as craft and shape for weave, lead for big, and state
-for scout. `AGENTS.md` points at the page and says to use its words.
+projects' concepts pages. It defines the domain dream works in, not dream
+itself, so dream's own skills and files have no entries. Each term has an entry
+that uses only terms defined before it and ends with the words it replaces.
+`AGENTS.md` points at the page and says to use its words.
 
 **Done when.** The user has agreed every entry, the site builds in strict mode
 with Concepts under Development, and the home page looks as it does today.
