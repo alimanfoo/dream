@@ -179,3 +179,12 @@ Replaces: "plan" and "campaign plan", for a roadmap.
 **Issue triage** is deciding what should happen next to an issue. The decision
 is its **triage outcome**: the issue needs information, needs discussion, is
 ready to implement, waits on something outside the repository, or is closed.
+
+### Change type
+
+A **change type** says what kind of change some work makes. An **enhancement**
+adds a capability that doesn't exist yet. **Maintenance** improves coherence,
+naming or structure, without changing behaviour. A **bug fix** repairs incorrect
+behaviour.
+
+Replaces: "issue type", "session type", "category".
