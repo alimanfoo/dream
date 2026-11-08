@@ -26,44 +26,45 @@ and every output from it.
 **Compaction** is an operation that replaces earlier parts of a coding agent's
 context with a summary of them.
 
-### Harness
+### Agent harness
 
-A **harness** is a program that turns a language model into a coding agent. It
-supplies the tools, runs the loop and manages the context. Claude Code and Codex
-are harnesses.
+An **agent harness** is a program that turns a language model into a coding
+agent. It supplies the tools, runs the loop and manages the context. Claude Code
+and Codex are agent harnesses.
 
 Replaces: "host".
 
 ### Skill
 
-A **skill** is a folder of instructions or information that a harness gives its
-coding agent. Its one required file, `SKILL.md`, holds a name, a description and
-a body. The name and description are in the agent's context from the start. The
-body loads into the agent's context only when the skill is invoked, by a person
-or by the agent itself. The folder can also bundle scripts and other files,
-which the agent reads or runs only when the body points it at them.
+A **skill** is a folder of instructions or information that an agent harness
+gives its coding agent. Its one required file, `SKILL.md`, holds a name, a
+description and a body. The name and description are in the agent's context from
+the start. The body loads into the agent's context only when the skill is
+invoked, by a person or by the agent itself. The folder can also bundle scripts
+and other files, which the agent reads or runs only when the body points it at
+them.
 
 ### User
 
 The **user** is the person who gives a coding agent its input, and on whose
 behalf the agent works.
 
-### Session
+### Harness session
 
-A **session** is one conversation between a user and a coding agent, run by a
-harness, with a context of its own.
+A **harness session** is one conversation between a user and a coding agent, run
+by an agent harness, with a context of its own.
 
 ### Turn
 
 A **turn** is a coding agent's whole response to one input, from when the input
-arrives until the agent answers without asking for another tool. A session is a
-sequence of turns.
+arrives until the agent answers without asking for another tool. A harness
+session is a sequence of turns.
 
 ### Subagent
 
 A **subagent** is a coding agent that another coding agent starts inside its
-session to do a delegated task. It has a context of its own, and its final
-output returns to the agent that started it.
+harness session to do a delegated task. It has a context of its own, and its
+final output returns to the agent that started it.
 
 ### Subagent file
 
@@ -75,8 +76,8 @@ Replaces: "agent prompt", "named agent".
 
 ### Plugin
 
-A **plugin** is a bundle of skills, subagent files and other extensions that a
-harness installs as one unit.
+A **plugin** is a bundle of skills, subagent files and other extensions that an
+agent harness installs as one unit.
 
 ### dream
 
@@ -199,3 +200,10 @@ dispatch label, dispatch route, agent assignment, issue conversation, campaign
 and agent round, mean what
 [dreamcatcher's concepts page](https://alimanfoo.github.io/dreamcatcher/concepts/)
 says they mean.
+
+### Shared file
+
+A **shared file** is a file in dream, outside any skill's folder, that more than
+one skill reads, so that what it holds has one home. For example, the Plain
+English guide, the coherent coding guide, and the convention for where
+specifications go.
