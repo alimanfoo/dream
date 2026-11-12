@@ -6,6 +6,9 @@ repo_name: alimanfoo/dream
 edit_uri: ""
 copyright: MIT License
 
+validation:
+  omitted_files: warn
+
 theme:
   name: material
   custom_dir: overrides
@@ -33,9 +36,13 @@ theme:
         name: Switch to dark mode
   features:
     - content.code.copy
+    - navigation.sections
+    - toc.follow
 
-# One short page needs no search.
-plugins: []
+nav:
+  - Home: index.md
+  - Development:
+      - concepts.md
 
 markdown_extensions:
   - tables

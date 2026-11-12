@@ -22,6 +22,11 @@ This repo has two layers, easy to confuse:
 - **Developer support**: AGENTS.md. It supports plugin development and is not
   part of the installed plugin.
 
+## Concepts
+
+[`docs/concepts.md`](docs/concepts.md) says what the words for dream's domain
+mean. Use its words and no others, in the skills, the documents and the issues.
+
 ## Development notes
 
 The collaborative product management skills, `dream:sift`, `dream:spark`,
@@ -195,12 +200,12 @@ it via `astral-sh/setup-uv`.
 
 ## Documentation site
 
-The documentation site is one page, built with MkDocs and the Material theme.
-The page text is in `docs/index.md`, and the headline and lede are in its front
-matter. The hero, including a sample `dream:smith` session, is in
-`overrides/home.html`, and the styling is in `docs/assets/dream.css`. The `docs`
-workflow builds the site on every pull request that touches it, and publishes it
-to GitHub Pages from main.
+The documentation site is built with MkDocs and the Material theme. `mkdocs.yml`
+sets the navigation, so add every new page to it. The home page text is in
+`docs/index.md`, and the headline and lede are in its front matter. The hero,
+including a sample `dream:smith` session, is in `overrides/home.html`, and the
+styling is in `docs/assets/dream.css`. The `docs` workflow builds the site on
+every pull request that touches it, and publishes it to GitHub Pages from main.
 
 When you add a skill, remove one, or change what one does, update
 `docs/index.md`, because it describes every skill. Keep each skill to one row in

@@ -138,9 +138,9 @@ and writes the section from them.
 3. Measure every criterion in the standard, and replace `docs/measurement.md`
    with the results.
 4. Bring the open issues up to date. Search them for each word that a
-   "Replaces:" line on the concepts page has retired, such as an old skill name.
-   Rewrite each issue that uses one, and close each whose work is done or no
-   longer applies, saying why.
+   "Replaces:" line on the concepts page has retired, such as "host". Rewrite
+   each issue that uses one, and close each whose work is done or no longer
+   applies, saying why.
 5. File an issue for each finding and shortfall that no open issue already owns.
    None of them holds the release back. A failing check does.
 6. Write the changelog section and set the version, then merge, tag, publish,
@@ -240,13 +240,13 @@ from a concept.
 
 ### Intent written down
 
-`docs/concepts.md` names dream's concepts and says what each word means.
-`docs/stories.md` says what the user and the agents do with dream, why, and what
-they see, organised by the practices that `docs/index.md` already uses: handing
-off a task, running skills from labelled issues, thinking it through together,
-reviewing a change, and planning and writing. dream's stories cover the
-practices. dreamcatcher's stories cover the mechanics of running them
-unattended.
+`docs/concepts.md` names the concepts of the domain dream works in and says what
+each word means. `docs/stories.md` says what the user and the agents do with
+dream, why, and what they see, organised by the practices that `docs/index.md`
+already uses: handing off a task, running skills from labelled issues, thinking
+it through together, reviewing a change, and planning and writing. dream's
+stories cover the practices. dreamcatcher's stories cover the mechanics of
+running them unattended.
 
 Both pages are for developers and agents. They sit in the docs site's
 Development section, as the other two projects' do. `docs/index.md` stays the
