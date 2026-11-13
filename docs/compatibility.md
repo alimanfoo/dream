@@ -1,9 +1,7 @@
 # Compatibility
 
 This page says what dream keeps the same from one release to the next, and how a
-release's version number tells you what changed. dream follows these rules from
-its first release. Until then, every merge to the default branch reaches users
-as soon as it lands, and the version changes with every pull request.
+release's version number tells you what changed.
 
 ## The interface
 
