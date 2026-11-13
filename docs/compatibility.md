@@ -5,13 +5,7 @@ release's version number tells you what changed.
 
 ## The interface
 
-dream's interface is its names. A name is resolved before any language model
-reads anything: an agent harness resolves a skill's name when a user types it,
-and dreamcatcher resolves the skill names in its configuration. Everything a
-name leads to is read by a coding agent, and a coding agent adapts to what it
-reads.
-
-The interface is:
+dream's interface is what users and dreamcatcher rely on to stay the same:
 
 - the plugin's name, `dream`;
 - the marketplace that offers the plugin: the repository `alimanfoo/dream`, and
