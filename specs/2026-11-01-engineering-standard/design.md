@@ -88,15 +88,17 @@ someone else defines them:
 - the `> written by an agent` footer;
 - the parent issue, its sub-issues and their blocked-by links. That graph is
   dreamcatcher's input, and dreamcatcher gives it its meaning. Quest, big and
-  the user are three of the things that write it.
+  the user are three of the things that write it;
+- the names of the plugin's subagent files and the paths of its files. Only
+  dream's own skills use them.
 
 **The version follows the interface.** A release is major when it renames or
 removes a skill, the plugin or the marketplace, moves to a new contract version,
-or drops a host. It is minor when it adds a skill or changes what a skill does.
-It is a patch when it makes a skill do what it was meant to, or rewords one
-without changing what it does. Of ten pull requests merged between 29 October
-and 3 November, only the rename of `dream:lead` to `dream:big` (#1023) would
-have been major. Three were.
+or drops a host. It is minor when it adds a skill or a host, or changes what a
+skill does. It is a patch when it makes a skill do what it was meant to, or
+rewords one without changing what it does. Of ten pull requests merged between
+29 October and 3 November, only the rename of `dream:lead` to `dream:big`
+(#1023) would have been major. Three were.
 
 `docs/compatibility.md` states the interface and these rules. No script guards
 the interface: a rename or removal shows in a pull request as a deleted skill
@@ -288,11 +290,13 @@ costs the user triage time at best. At worst it gets "fixed", and the fix is
 churn for the next review to find. So the judging step is the one to keep
 strongest, and two parts of the loop wait for their judge:
 
-- The "contract still met" question waits for
+- The "contract still met" question waited for
   [alimanfoo/dreamcatcher#899](https://github.com/alimanfoo/dreamcatcher/issues/899)
-  to correct the contract. Today the contract says a skill must tell the agent
-  to read `pull_request_state` first, which smith rightly doesn't, so the
-  question would report a false violation.
+  to correct the contract. The contract said a skill must tell the agent to read
+  `pull_request_state` first, which smith rightly doesn't, so the question would
+  have reported a false violation.
+  [alimanfoo/dreamcatcher#910](https://github.com/alimanfoo/dreamcatcher/pull/910)
+  corrected it.
 - Releases wait for the concepts, the stories and the standard. The concepts and
   the stories are each worked out with the user in a session of their own. Once
   all three exist, the first release runs the whole checklist like every release
@@ -334,10 +338,10 @@ The definition of done carries the standard's questions into every pull request.
 A change to smith, less, big or scout is checked against dreamcatcher's contract
 in three places: the definition of done, the consistency review at each release,
 and the compatibility page, which states the contract version dream meets.
-Corrections to the contract itself belong to
-[alimanfoo/dreamcatcher#899](https://github.com/alimanfoo/dreamcatcher/issues/899).
-Until it lands, smith and less don't meet version 1 to the letter, so it lands
-before the compatibility page is written.
+Corrections to the contract itself belong to dreamcatcher.
+[alimanfoo/dreamcatcher#910](https://github.com/alimanfoo/dreamcatcher/pull/910)
+cut the contract to what a skill must say, and left it at version 1, so dream
+meets version 1.
 
 ### The infrastructure floor
 
@@ -419,7 +423,6 @@ sites do, so between releases it can describe what users don't have yet.
 
 ## What's still open
 
-- The interface is held loosely. It may need refining once it's written down.
 - How the guide is used beyond `AGENTS.md`: a review lens that checks skill
   changes against it, an agent raising an issue about a skill, or the
   consistency review reading the skills against it. Each waits until the guide
@@ -437,5 +440,3 @@ Related work has issues of its own:
   revisited once the guide exists.
 - [#1048](https://github.com/alimanfoo/dream/issues/1048): analysing the feeds
   from real use.
-- [alimanfoo/dreamcatcher#899](https://github.com/alimanfoo/dreamcatcher/issues/899):
-  correcting dreamcatcher's contract.

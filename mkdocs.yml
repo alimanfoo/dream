@@ -41,6 +41,8 @@ theme:
 
 nav:
   - Home: index.md
+  - Reference:
+      - compatibility.md
   - Development:
       - concepts.md
 
