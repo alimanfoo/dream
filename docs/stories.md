@@ -36,9 +36,3 @@ request without doing the work themselves.
 
 The user has a reviewed pull request that does what the issue asked, and an
 issue for each thing it left.
-
-Under dreamcatcher, the user labels the issue instead of running smith, and
-never needs to tell smith anything. dreamcatcher passes each comment and the
-merge to smith, as
-[dreamcatcher's stories](https://alimanfoo.github.io/dreamcatcher/stories/)
-tell.
