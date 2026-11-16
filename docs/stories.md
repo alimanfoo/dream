@@ -315,3 +315,25 @@ each stage.
 
 The user can enter this sequence at any skill, with what they already have as
 its seed.
+
+## Review a change
+
+### The user has agents review a change for correctness bugs and other opportunities for improvement
+
+The user has a change on a branch, with an open pull request. They want it
+reviewed for correctness bugs, and for the other opportunities for improvement
+that matter most for what the change does.
+
+1. The user runs `/dream:code-review`.
+2. The agent reads the changes the branch makes since it left the pull request's
+   base branch, and the code it needs for context.
+3. The agent picks three review lenses that fit the change. One is always
+   correctness bugs. It chooses the other two for what the change does, such as
+   races and ordering for concurrent code, or malformed input for a parser.
+4. The agent has one subagent apply each lens.
+5. The agent combines the subagents' findings, drops duplicates, and keeps only
+   the findings it can confirm in the code.
+6. The agent lists the findings, most important first.
+
+The user has a list of confirmed findings about the change, to act on as they
+choose.
