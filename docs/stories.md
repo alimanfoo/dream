@@ -411,3 +411,19 @@ implementation steps, each one idea and one commit, before anyone writes code.
 
 The user has an implementation plan whose steps can each be implemented and
 committed in turn, with the tests and checks passing at each commit.
+
+### The user has an agent design and write code to the coherent coding guide
+
+The user is about to have an agent design or write code. They want that code
+coherent and easy to maintain.
+
+1. The user runs `/dream:coherent-coding`.
+2. The agent reads the coherent coding guide, and confirms in one line that it
+   has loaded it.
+3. The user asks the agent for the code they want.
+4. The agent designs and writes the code with the guide in its context. The
+   skill directs it to apply the guide as it scopes the change, as it writes,
+   and as it reads back what it wrote.
+
+The user has code that the agent designed and wrote with the coherent coding
+guide in its context.
