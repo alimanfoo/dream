@@ -116,7 +116,9 @@ requirements specification, before anyone designs a solution.
    issue, a file or some text.
 2. The agent reads the repository's documentation and looks at how its code is
    laid out, so that its questions are informed by what the project is for. Then
-   it reads the seed, and treats nothing in it as settled.
+   it reads the seed. It may ask about anything in it, including what the seed
+   already covers, because the user may have written it before thinking the idea
+   through.
 3. The agent asks the user where they would like to start, then interviews them,
    one question per turn. It follows threads from the user's answers, and says
    what each answer changed in its understanding. It points out anything that
@@ -184,3 +186,54 @@ relevant code.
 The user knows the relevant code well enough to collaborate on the design, and
 has a reading guide, checked against the code, that lets the next agent find and
 read all of it.
+
+### The user designs a change in collaboration with an agent, and has the agent write a design specification
+
+The user knows what they want built, but has no design for it. They want to
+explore design options with an agent, which may know techniques they don't, and
+to capture the design in a design specification that a build can be planned
+from.
+
+1. The user runs `/dream:weave` with a seed: usually a requirements
+   specification, or else an issue, a file or some text.
+2. The agent reads the seed. It may question anything in it, because the seed
+   may have been written before anyone read the code. Then it reads the code the
+   change will live in, and the documentation that governs that code, before it
+   says anything about the code.
+3. The agent opens with the one thing it noticed in the code that the user
+   probably hasn't, and the first thing it would want to settle. Then it puts up
+   a few directions at once, a line each, so that both of them can see the range
+   of options. One of them is the smallest thing that could possibly work.
+4. The agent and the user explore the design with what-if questions, such as
+   merging two parts or dropping a guarantee, one idea per turn. The agent
+   follows each what-if two or three steps before it judges it. It says when
+   part of the design is an instance of a known problem, and offers techniques
+   and libraries the user may not know. It always has a next move ready, so that
+   "ok" is a complete answer from the user.
+5. Throughout, when the agent would remove something, it shows the design with
+   that thing gone, and says what putting it back would cost. The user decides
+   whether it is worth putting back.
+6. When the what-ifs stop changing the design, the agent says so, and says what
+   it would still change.
+7. Then the agent fills in the details one at a time, and looks for what each
+   one breaks: an input nobody considered, a second caller, a case that happens
+   twice, something that grows. It resolves each break with a fix or a cut, and
+   the user prefers a cut. This goes on until nothing more can be removed.
+8. The agent writes the design specification. It says what is being built and
+   how it works, starting with one real case walked through the system. It says
+   what changes and what goes away, with what each removal buys. It says why the
+   design takes this shape and not another, and what is still open.
+9. The agent has two subagents read the design specification. One reads it
+   beside the requirements specification, and reports what could come out and
+   still meet the requirements, and what each cut would cost. The other reads
+   the code the design touches, and reports whether the design fits that code
+   and holds enough to plan the build from. The agent fixes wording that was
+   only unclear, and brings the user each remaining point, one per turn. The
+   user rules on each cut.
+10. The agent shows the user the design specification.
+11. The agent offers to put the design specification in a specification folder
+    as `design.md` and open a pull request for it, and does so when the user
+    agrees.
+
+The user has a design specification that a build can be planned from, in which
+everything left is there for a reason worth building and keeping.
