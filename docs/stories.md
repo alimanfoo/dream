@@ -79,8 +79,8 @@ hold for the current code, and an issue may duplicate another. The user wants to
 decide the triage outcome of each one, and record each decision clearly enough
 that an agent can later implement the issue without asking for more.
 
-1. The user runs `/dream:sift`, optionally naming the issues to take. Otherwise
-   the agent takes every issue that has no triage outcome.
+1. The user runs `/dream:sift`. The agent takes every issue that has no triage
+   outcome.
 2. The agent reads the repository's documentation to find guidance on
    engineering decisions and on what the product is meant to do for this
    project, such as its `AGENTS.md`, decision principles, stories and concepts.
@@ -101,7 +101,7 @@ that an agent can later implement the issue without asking for more.
    outcome by labelling the issue as ready to implement, needing information,
    needing discussion, or waiting on something outside the repository, or by
    closing the issue with the reason.
-8. Steps 3 to 7 repeat for each issue, until none are left or the user stops.
+8. Steps 3 to 7 repeat for each issue, until none are left.
 
 The user has a decision and its reason on every issue they triaged. An agent can
 implement each issue that is ready to implement without asking for more.
@@ -112,9 +112,8 @@ The user has an idea for a change to the repository. They want an agent to
 elicit their requirements by interviewing them, and to capture them in a
 requirements specification, before anyone designs a solution.
 
-1. The user runs `/dream:spark`, optionally with a seed, the material to start
-   from: an issue, a file or some text. Without a seed, the agent asks the user
-   what is on their mind.
+1. The user runs `/dream:spark` with a seed, the material to start from: an
+   issue, a file or some text.
 2. The agent reads the repository's documentation and looks at how its code is
    laid out, so that its questions are informed by what the project is for. Then
    it reads the seed, and treats nothing in it as settled.
@@ -124,9 +123,7 @@ requirements specification, before anyone designs a solution.
    doesn't add up, such as two answers that conflict. It keeps the conversation
    on what the user wants and why, not on how to build it.
 4. When it understands enough to write the specification, the agent says back
-   what it understood in two or three sentences, and the user corrects it. If
-   the user asks for the specification sooner, the agent writes it at once, and
-   puts what it doesn't know under what is still open.
+   what it understood in two or three sentences, and the user corrects it.
 5. The agent writes the requirements specification in the first person, in the
    user's words. It says what the user wants to be able to do, what is wrong or
    missing today, what has to be true of anything they would accept, what limits
@@ -140,9 +137,50 @@ requirements specification, before anyone designs a solution.
    revises the specification.
 7. The agent shows the user the specification.
 8. The agent offers to put the specification in a specification folder as
-   `requirements.md` and open a pull request for it. If the user doesn't want a
-   file, it offers to post the specification as a comment on the seed issue, or
-   as a new issue when there is no seed issue. The user may decline.
+   `requirements.md` and open a pull request for it, and does so when the user
+   agrees.
 
 The user has a requirements specification, in their own words, that a design can
 start from.
+
+### The user learns the code relevant to an upcoming change, and has an agent write a reading guide to it
+
+The user is about to design a change in collaboration with an agent. They want
+to learn the existing code relevant to the change, so that they are better able
+to collaborate on its design. They also want a reading guide to that code, so
+that the agent that designs or implements the change can find and read all the
+relevant code.
+
+1. The user runs `/dream:trace` with a seed that sets the scope: usually a
+   requirements specification, or else an issue, a file or some text.
+2. The agent reads all the code relevant to that scope, and the documentation
+   that governs it, before it tells the user anything about the code. As it
+   goes, it says in a line what it opens and why.
+3. The agent tells the user, a piece at a time, what the code is for, what its
+   main parts are and where they live, and how they fit together.
+4. The agent makes a list of the components and mechanisms worth understanding,
+   and takes the user round each one, in an order that follows that account. At
+   each one it says what it is for, where it lives, how it works and how it
+   connects to the one before. It points out code that is hard to understand, or
+   that looks over-built or patched round a problem.
+5. Throughout, the agent tells the user only what it has read in the code, names
+   the file and symbol for each thing it describes, and says where its evidence
+   is thin.
+6. The user asks questions, pushes back or redirects, and the agent answers from
+   the code. The agent covers everything on its list.
+7. The agent writes the reading guide. The guide has the big picture, a section
+   for each component or mechanism, and the code's awkward parts. Each part says
+   where to start reading and in what order. The agent draws on the whole
+   conversation, the user's questions and corrections included.
+8. The agent has a subagent check every claim in the reading guide against the
+   code, and corrects each claim the subagent finds contradicted or unsupported.
+   If the agent had told the user any of those claims during the tour, it tells
+   them which.
+9. The agent shows the user the reading guide.
+10. The agent offers to put the reading guide in a specification folder as
+    `reading-guide.md` and open a pull request for it, and does so when the user
+    agrees.
+
+The user knows the relevant code well enough to collaborate on the design, and
+has a reading guide, checked against the code, that lets the next agent find and
+read all of it.
