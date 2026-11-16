@@ -116,9 +116,8 @@ requirements specification, before anyone designs a solution.
    issue, a file or some text.
 2. The agent reads the repository's documentation and looks at how its code is
    laid out, so that its questions are informed by what the project is for. Then
-   it reads the seed. It may ask about anything in it, including what the seed
-   already covers, because the user may have written it before thinking the idea
-   through.
+   it reads the seed. It may question anything in it, because the seed is a
+   starting point, and the interview may change any part of it.
 3. The agent asks the user where they would like to start, then interviews them,
    one question per turn. It follows threads from the user's answers, and says
    what each answer changed in its understanding. It points out anything that
@@ -196,10 +195,10 @@ from.
 
 1. The user runs `/dream:weave` with a seed: usually a requirements
    specification, or else an issue, a file or some text.
-2. The agent reads the seed. It may question anything in it, because the seed
-   may have been written before anyone read the code. Then it reads the code the
-   change will live in, and the documentation that governs that code, before it
-   says anything about the code.
+2. The agent reads the seed. It may question anything in it, because the seed is
+   a starting point, and designing may change any part of it. Then it reads the
+   code the change will live in, and the documentation that governs that code,
+   before it says anything about the code.
 3. The agent opens with the one thing it noticed in the code that the user
    probably hasn't, and the first thing it would want to settle. Then it puts up
    a few directions at once, a line each, so that both of them can see the range
