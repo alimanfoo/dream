@@ -327,9 +327,9 @@ that matter most for what the change does.
 1. The user runs `/dream:code-review`.
 2. The agent reads the changes the branch makes since it left the pull request's
    base branch, and the code it needs for context.
-3. The agent picks three review lenses that fit the change. One is always
-   correctness bugs. It chooses the other two for what the change does, such as
-   races and ordering for concurrent code, or malformed input for a parser.
+3. The agent picks review lenses that fit the change. One is always correctness
+   bugs. It chooses the others for what the change does, such as races and
+   ordering for concurrent code, or malformed input for a parser.
 4. The agent has one subagent apply each lens.
 5. The agent combines the subagents' findings, drops duplicates, and keeps only
    the findings it can confirm in the code.
@@ -337,3 +337,26 @@ that matter most for what the change does.
 
 The user has a list of confirmed findings about the change, to act on as they
 choose.
+
+### The user has agents review a change for coherence and maintainability
+
+The user has a change on a branch, with an open pull request. They want to know
+where the change leaves the code less coherent or harder to maintain, with a fix
+for each problem that takes out more code than it puts in.
+
+1. The user runs `/dream:coherence-review`.
+2. The agent reads the changes the branch makes since it left the pull request's
+   base branch, and the code it needs for context.
+3. The agent has subagents review the change, each through a review lens drawn
+   from the coherent coding guide, such as whether each fact and each concept
+   has one home.
+4. Each subagent proposes, for each finding, a fix that takes out more code than
+   it puts in. It drops any finding it can't fix that way.
+5. The agent combines the subagents' findings, and drops duplicates. It keeps
+   only the findings it can confirm in the code whose fix holds: what the fix
+   removes is there, removing it resolves the finding, and the result is less
+   code.
+6. The agent lists the findings, each with its fix, most important first.
+
+The user has a list of confirmed findings about the change, each with a fix that
+leaves less code, to act on as they choose.
