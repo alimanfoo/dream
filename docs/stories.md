@@ -236,3 +236,56 @@ from.
 
 The user has a design specification that a build can be planned from, in which
 everything left is there for a reason worth building and keeping.
+
+### The user divides a piece of work into stages in collaboration with an agent, and has the agent write a roadmap
+
+The user has a design specification for a piece of work too large to build in
+one pull request. They want to explore with an agent how to divide the work into
+stages and how to order them, and to record the stages in a roadmap that agents
+can implement, one stage per session.
+
+1. The user runs `/dream:quest` with a seed: usually a specification folder
+   holding a requirements specification, a reading guide and a design
+   specification, or an issue whose comments hold them.
+2. The agent reads every specification the seed cites. It follows the reading
+   guide through the code, then reads anything else the design touches, and the
+   documentation that governs that code.
+3. The agent suggests two or three ways to divide the work, such as by layer, a
+   thin end-to-end path first, or the simple case before the awkward ones. It
+   makes each the strongest version of itself, rather than setting weak options
+   beside the one it prefers. It says which it prefers and why, and the user and
+   the agent discuss them until they agree on one.
+4. The agent and the user take one stage at a time. For each, they settle what
+   it delivers, how they will know it is done, and what it leaves for later. The
+   agent sketches which modules and functions the stage adds or changes, and
+   which behaviour changes. That lets them judge whether the stage can stand
+   alone and is small enough to review.
+5. Throughout, when dividing the work exposes a missing design decision, the
+   agent brings it to the user as one question, and corrects the design
+   specification with what they settle.
+6. The agent puts up the whole list of stages. The user and the agent split or
+   merge stages until each one is small enough to review.
+7. The agent puts the stages in dependency order. For each dependency it names
+   what the later stage needs from the earlier one, and drops any dependency
+   that has no such need. It looks for risky work that sits late, and discusses
+   with the user whether to bring it earlier.
+8. The agent writes the roadmap. For each stage, the roadmap says what the stage
+   delivers, how to tell it is done, what it leaves for later, and which earlier
+   stages it needs.
+9. The agent has two subagents read the roadmap. One reads each stage as the
+   agent that will implement it, and reports any stage that would force it to
+   ask a question. The other checks that every dependency is real and in order,
+   that every part of the design lands in a stage, and that no stage invents
+   work. The agent fixes wording that was only unclear, brings the user each
+   remaining point, one per turn, and revises the roadmap.
+10. The agent shows the user the roadmap.
+11. The agent offers to put the roadmap in the specification folder as
+    `roadmap.md` and open a pull request for it, and does so when the user
+    agrees.
+12. The agent offers to create an issue for each stage, as a sub-issue of a
+    parent issue. Each sub-issue is blocked by the sub-issues for the stages it
+    needs. The agent does so when the user agrees, and adds no label and no
+    assignee.
+
+The user has a roadmap that divides the work into ordered stages, each one pull
+request, and a sub-issue for each stage.
