@@ -6,13 +6,17 @@ building or reviewing a change. Other skills guide an agent and the user through
 interactive work, such as capturing requirements, exploring design options, or
 triaging issues.
 
-Most skills are designed to be run directly by the user within an interactive
-session with Claude Code or Codex. Some skills are designed to be used within
+Most skills are designed to be run directly by the user within a harness session
+in Claude Code or Codex. Some skills are designed to be used within
 dreamcatcher, an application that allows coding agents to be steered via GitHub.
+
+This page records what dream is meant to do, for the people and agents who
+change it. Each story gives the user's goal, then the steps in order, each with
+one actor, then what the user has at the end.
 
 ## Hand off a task
 
-### The user has an agent build a well-specified issue that needs thorough engineering
+### The user has an agent implement a well-specified issue
 
 The user has a well-specified issue that is large enough to need careful and
 thorough engineering. They want a high-quality pull request for it.
@@ -23,10 +27,12 @@ thorough engineering. They want a high-quality pull request for it.
 3. The agent opens a draft pull request and posts its plan there.
 4. The agent builds the plan one step at a time, committing and pushing each
    step.
-5. The agent has the change reviewed twice, by reviewers outside its own
-   session: a code review, then a coherence review. It applies each finding the
-   evidence supports, defers each one that holds but needs a pull request of its
-   own, and posts each review with its response to every finding.
+5. The agent runs a code review and then a coherence review, each of which reads
+   the change through subagents. The coherence review looks for fixes that miss
+   the root cause, duplicated facts, weak boundaries and unnecessary code. The
+   agent applies each finding the evidence supports, defers each one that holds
+   but needs a pull request of its own, and posts each review with its response
+   to every finding.
 6. The agent looks for code or complexity the change could remove by changing
    the design or the constraints in the issue, or by delivering less. It posts
    each opportunity with what it would give up, for the user to accept or
@@ -43,7 +49,7 @@ thorough engineering. They want a high-quality pull request for it.
 The user has a reviewed pull request that does what the issue asked, and an
 issue for each thing it left out of scope.
 
-### The user has an agent build a clear, low-risk change
+### The user has an agent make a clear, low-risk change
 
 The user has an issue for a change that is clear and low-risk enough that a plan
 and a second review would add nothing. They want a pull request for it quickly.
@@ -52,7 +58,7 @@ and a second review would add nothing. They want a pull request for it quickly.
 2. The agent reads the issue, its comments and the code the issue touches.
 3. The agent opens a draft pull request.
 4. The agent makes the change in small steps, committing and pushing each one.
-5. The agent runs a code review in its own session, and applies each finding the
+5. The agent runs a code review without subagents, and applies each finding the
    evidence supports.
 6. The agent writes a short description and marks the pull request ready for
    review.
@@ -78,7 +84,8 @@ that an agent can later implement the issue without asking for more.
 2. The agent reads the repository's documentation to find guidance on
    engineering decisions and on what the product is meant to do for this
    project, such as its `AGENTS.md`, decision principles, stories and concepts.
-   It also loads the coherent coding guide.
+   It also loads the coherent coding guide, which sets the standard for the code
+   an agent designs and writes.
 3. For one issue, the agent reads the issue and its comments, checks its claims
    against the code as it is now, and searches earlier issues and pull requests
    on the same subject.
