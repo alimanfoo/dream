@@ -446,6 +446,32 @@ context.
 
 ## Run skills under dreamcatcher
 
+### The user has an agent implement an issue they have labelled
+
+The user has an issue that is ready to implement. They want an agent to
+implement it on a pull request, and to steer the work from GitHub, without a
+session of their own.
+
+1. The user assigns the issue to themselves, and adds the dispatch label that
+   their dreamcatcher configuration routes to smith or to less. That starts an
+   agent assignment.
+2. dreamcatcher opens a draft pull request for the issue, and starts an agent
+   with that skill, as described by
+   [dreamcatcher's stories](https://alimanfoo.github.io/dreamcatcher/stories/).
+3. The agent adopts the draft pull request, and implements the issue as the
+   story for its skill describes, up to marking the pull request ready for
+   review.
+4. The user reviews the pull request and comments on it.
+5. dreamcatcher passes the user's comments to the agent.
+6. The agent makes the changes asked for, and replies. Steps 4 to 6 repeat until
+   the user is satisfied.
+7. The user merges the pull request.
+8. dreamcatcher gives the agent a last round, in which the agent finishes as the
+   story for its skill describes.
+
+The user has a merged pull request that does what the issue asked, without
+having run a session or told the agent anything outside GitHub.
+
 ### The user has an agent investigate an issue and answer their questions on it
 
 The user has an issue they want investigated before anyone implements it, such
