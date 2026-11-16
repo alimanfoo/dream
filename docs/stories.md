@@ -325,14 +325,14 @@ reviewed for correctness bugs, and for the other opportunities for improvement
 that matter most for what the change does.
 
 1. The user runs `/dream:code-review`.
-2. The agent reads the changes the branch makes since it left the pull request's
-   base branch, and the code it needs for context.
+2. The agent reads the changes on the branch since it branched from the pull
+   request's base branch, and the code it needs for context.
 3. The agent picks review lenses that fit the change. One is always correctness
    bugs. It chooses the others for what the change does, such as races and
    ordering for concurrent code, or malformed input for a parser.
 4. The agent has one subagent apply each lens.
-5. The agent combines the subagents' findings, drops duplicates, and keeps only
-   the findings it can confirm in the code.
+5. The agent combines the subagents' findings, drops duplicates, reads the code
+   each finding cites, and keeps only the findings it can confirm.
 6. The agent lists the findings, most important first.
 
 The user has a list of confirmed findings about the change, to act on as they
@@ -345,18 +345,41 @@ where the change leaves the code less coherent or harder to maintain, with a fix
 for each problem that takes out more code than it puts in.
 
 1. The user runs `/dream:coherence-review`.
-2. The agent reads the changes the branch makes since it left the pull request's
-   base branch, and the code it needs for context.
+2. The agent reads the changes on the branch since it branched from the pull
+   request's base branch, and the code it needs for context.
 3. The agent has subagents review the change, each through a review lens drawn
    from the coherent coding guide, such as whether each fact and each concept
    has one home.
 4. Each subagent proposes, for each finding, a fix that takes out more code than
    it puts in. It drops any finding it can't fix that way.
-5. The agent combines the subagents' findings, and drops duplicates. It keeps
-   only the findings it can confirm in the code whose fix holds: what the fix
-   removes is there, removing it resolves the finding, and the result is less
-   code.
+5. The agent combines the subagents' findings, and drops duplicates. It reads
+   the code each finding cites, and keeps only the findings it can confirm whose
+   fix holds: what the fix removes is there, removing it resolves the finding,
+   and the result is less code.
 6. The agent lists the findings, each with its fix, most important first.
 
 The user has a list of confirmed findings about the change, each with a fix that
 leaves less code, to act on as they choose.
+
+### The user has an agent review a change against the principles behind their own past review comments
+
+The user has a change on a branch, with an open pull request, and has reviewed
+earlier pull requests on the repository. They want the change reviewed against
+the principles they applied in those reviews.
+
+1. The user runs `/dream:precedent-review`.
+2. The agent reads the changes on the branch since it branched from the pull
+   request's base branch, and the code it needs for context.
+3. The agent has a subagent read the user's past review comments on the
+   repository's pull requests. The subagent leaves out the user's comments on
+   this change's own pull request, so that they don't steer the review. Before
+   it reads the change, it writes down the principles the user keeps coming back
+   to, citing the comments behind each.
+4. The subagent reviews the change against those principles.
+5. The agent reads the code each finding cites, and keeps only the findings it
+   can confirm.
+6. The agent lists the findings, most important first.
+
+The user has a list of confirmed findings about the change, each a place where
+the change departs from a principle behind their past reviews, to act on as they
+choose.
