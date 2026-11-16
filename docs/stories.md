@@ -443,3 +443,32 @@ reading, even a reader whose first language isn't English.
 
 The user has writing that the agent produced with the Plain English guide in its
 context.
+
+## Run skills under dreamcatcher
+
+### The user has an agent investigate an issue and answer their questions on it
+
+The user has an issue they want investigated before anyone implements it, such
+as a question about the code, a suspected bug or a doubt about a design. They
+want answers from the code, on the issue, without starting a session of their
+own.
+
+1. The user assigns the issue to themselves, and adds the dispatch label that
+   their dreamcatcher configuration routes to scout. That starts an issue
+   conversation. The user asks their question in a comment on the issue.
+2. dreamcatcher starts an agent with `/dream:scout GH123`, as
+   [dreamcatcher's stories](https://alimanfoo.github.io/dreamcatcher/stories/)
+   tell.
+3. The agent reads the issue and its comments, and traces the code that the
+   question touches, with its callers, tests and docs. It checks every claim in
+   the issue against the code, and runs the code where that settles the
+   question.
+4. The agent answers the latest question in a paragraph or two, as a maintainer
+   would on an open-source issue. It cites the code its answer rests on by path
+   and line, says where the answer rests on an inference, and recommends one
+   answer where there are several.
+5. dreamcatcher posts the answer on the issue.
+6. The user replies with a follow-up question, and steps 3 to 5 repeat.
+
+The user has answers on the issue, checked against the code, from which they can
+decide what to do with it.
