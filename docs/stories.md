@@ -289,3 +289,29 @@ can implement, one stage per session.
 
 The user has a roadmap that divides the work into ordered stages, each one pull
 request, and a sub-issue for each stage.
+
+### The user takes a piece of work from an idea to a roadmap with the assistance of agents
+
+The user has an idea for a piece of work too large for one pull request. They
+want to take it to a roadmap, through requirements, the existing code and a
+design.
+
+1. The user runs `/dream:spark` with the idea as its seed, and the agent puts a
+   requirements specification in a new specification folder.
+2. The user runs `/dream:trace` with the requirements specification as its seed,
+   and the agent adds a reading guide to the folder.
+3. The user runs `/dream:weave` with the requirements specification and the
+   reading guide as its seed, and the agent adds a design specification to the
+   folder.
+4. The user runs `/dream:quest` with the specification folder as its seed, and
+   the agent adds a roadmap to the folder and creates a sub-issue for each
+   stage.
+5. In steps 2 to 4, each agent corrects an earlier specification where its own
+   work shows it to be wrong or incomplete.
+
+The user has a specification folder that records the work from requirements to
+roadmap, with each specification consistent with the others, and a sub-issue for
+each stage.
+
+The user can enter this sequence at any skill, with what they already have as
+its seed.
