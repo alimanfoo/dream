@@ -105,3 +105,44 @@ that an agent can later implement the issue without asking for more.
 
 The user has a decision and its reason on every issue they triaged. An agent can
 implement each issue that is ready to implement without asking for more.
+
+### The user captures their requirements with the assistance of an agent
+
+The user has an idea for a change to the repository. They want an agent to
+elicit their requirements by interviewing them, and to capture them in a
+requirements specification, before anyone designs a solution.
+
+1. The user runs `/dream:spark`, optionally with a seed, the material to start
+   from: an issue, a file or some text. Without a seed, the agent asks the user
+   what is on their mind.
+2. The agent reads the repository's documentation and looks at how its code is
+   laid out, so that its questions are informed by what the project is for. Then
+   it reads the seed, and treats nothing in it as settled.
+3. The agent asks the user where they would like to start, then interviews them,
+   one question per turn. It follows threads from the user's answers, and says
+   what each answer changed in its understanding. It points out anything that
+   doesn't add up, such as two answers that conflict. It keeps the conversation
+   on what the user wants and why, not on how to build it.
+4. When it understands enough to write the specification, the agent says back
+   what it understood in two or three sentences, and the user corrects it. If
+   the user asks for the specification sooner, the agent writes it at once, and
+   puts what it doesn't know under what is still open.
+5. The agent writes the requirements specification in the first person, in the
+   user's words. It says what the user wants to be able to do, what is wrong or
+   missing today, what has to be true of anything they would accept, what limits
+   a solution, how they will know it worked, and what is still open.
+6. The agent has two subagents read the specification. One reads as the agent
+   that will design a solution, and reports what else it would need to know. The
+   other reports how the idea sits against what the repository is for, and where
+   it overlaps or conflicts with what the repository already does. The agent
+   drops what the specification already answers, and fixes wording that was only
+   unclear. Then it brings the user each remaining point, one per turn, and
+   revises the specification.
+7. The agent shows the user the specification.
+8. The agent offers to put the specification in a specification folder as
+   `requirements.md` and open a pull request for it. If the user doesn't want a
+   file, it offers to post the specification as a comment on the seed issue, or
+   as a new issue when there is no seed issue. The user may decline.
+
+The user has a requirements specification, in their own words, that a design can
+start from.
