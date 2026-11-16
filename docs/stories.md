@@ -87,12 +87,14 @@ that an agent can later implement the issue without asking for more.
    way to meet the need at its root. It recommends one and says why. When the
    issue raises several points, it takes them one at a time.
 5. The user decides, or asks questions until they can.
-6. The agent posts the decision on the issue, written for the agent that will
-   implement it. It labels the issue with its change type and records the triage
-   outcome. It labels the issue as ready to implement, needing information,
-   needing discussion, or waiting on something outside the repository, or it
-   closes the issue and says why.
-7. Steps 3 to 6 repeat for each issue, until none are left or the user stops.
+6. The agent posts the decision on the issue. It writes the decision for the
+   agent that will implement the issue, and names anything still missing or
+   undecided.
+7. The agent labels the issue with its change type. It records the triage
+   outcome by labelling the issue as ready to implement, needing information,
+   needing discussion, or waiting on something outside the repository, or by
+   closing the issue with the reason.
+8. Steps 3 to 7 repeat for each issue, until none are left or the user stops.
 
 The user has a decision and its reason on every issue they triaged. An agent can
 implement each issue that is ready to implement without asking for more.
