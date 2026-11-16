@@ -383,3 +383,31 @@ the principles they applied in those reviews.
 The user has a list of confirmed findings about the change, each a place where
 the change departs from a principle behind their past reviews, to act on as they
 choose.
+
+## Plan and write
+
+### The user has an agent write an implementation plan for a change
+
+The user has a change to make in one pull request. They want it divided into
+implementation steps, each one idea and one commit, before anyone writes code.
+
+1. The user runs `/dream:plan` with a description of the change they want.
+2. The agent identifies from the description the intended result, how the code
+   that the change touches works and is organised, and whether the change must
+   keep behaviour the same or change it.
+3. The agent drafts the implementation steps. Each step states its goal, a
+   criterion that decides which work belongs in it, and examples of that work.
+   Whoever implements the step applies the criterion, and finds every instance
+   themselves.
+4. Where the shape of the code that a step changes would make the step harder,
+   the agent adds a step ahead of it that restructures that code without
+   changing behaviour. It adds one only where that makes the later step clearly
+   easier or safer.
+5. The agent splits any step that holds more than one idea, and merges any step
+   that leaves a change half-done into the step that completes it.
+6. The agent orders the steps so that none depends on work a later step does.
+   The tests and checks then pass at each commit.
+7. The agent shows the user the implementation plan.
+
+The user has an implementation plan whose steps can each be implemented and
+committed in turn, with the tests and checks passing at each commit.
