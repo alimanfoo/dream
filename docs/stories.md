@@ -60,3 +60,36 @@ and a second review would add nothing. They want a pull request for it quickly.
 9. The user merges the pull request.
 
 The user has a pull request that does what the issue asked.
+
+## Think it through together
+
+### The user triages issues with the assistance of an agent
+
+The user has issues that have not been triaged. Any of them may be wrong,
+already fixed, out of date, or a duplicate. The user wants to decide the triage
+outcome of each one, and record it clearly enough for another agent to implement
+it later.
+
+1. The user runs `/dream:sift`, optionally naming the issues to take. Otherwise
+   the agent takes every issue that has no triage outcome.
+2. The agent reads the repository's documentation to find guidance on
+   engineering decisions and on what the product is meant to do for this
+   project, such as its `AGENTS.md`, decision principles, stories and concepts.
+   It also loads the coherent coding guide.
+3. For one issue, the agent reads the issue and its comments, checks its claims
+   against the code as it is now, and searches earlier issues and pull requests
+   on the same subject.
+4. The agent states the problem in a few sentences and offers three options: the
+   strongest answer to the issue as it stands, the best real alternative, and a
+   way to meet the need at its root. It recommends one and says why. When the
+   issue raises several points, it takes them one at a time.
+5. The user decides, or asks questions until they can.
+6. The agent posts the decision on the issue, written for the agent that will
+   implement it. It gives the issue its change type and records the triage
+   outcome. It labels the issue as ready to implement, needing information,
+   needing discussion, or waiting on something outside the repository, or it
+   closes the issue and says why.
+7. Steps 3 to 6 repeat for each issue, until none are left or the user stops.
+
+The user has a decision and its reason on every issue they triaged. The issues
+that are ready can go to an agent as they are.
