@@ -14,17 +14,18 @@ dreamcatcher, an application that allows coding agents to be steered via GitHub.
 
 ### The user hands an issue to smith
 
-The user has an issue that says what to build. They want it built on a pull
-request without doing the work themselves.
+The user has a well-specified issue that is large enough to need careful and
+thorough engineering. They want a high-quality pull request for it.
 
 1. The user runs `/dream:smith GH123`.
 2. Smith reads the issue, its comments and the code the issue touches, and
    checks the issue against the code as it is now.
 3. Smith opens a draft pull request and posts its plan there.
 4. Smith builds the plan one step at a time, committing and pushing each step.
-5. Smith runs a code review and then a coherence review. It applies each finding
-   the evidence supports, defers each one that holds but needs a pull request of
-   its own, and posts each review with its response to every finding.
+5. Smith has the change reviewed twice, by reviewers outside its own session: a
+   code review, then a coherence review. It applies each finding the evidence
+   supports, defers each one that holds but needs a pull request of its own, and
+   posts each review with its response to every finding.
 6. Smith looks for code or complexity the change could remove by changing the
    design or the constraints in the issue, or by delivering less. It posts each
    opportunity with what it would give up, for the user to decide.
