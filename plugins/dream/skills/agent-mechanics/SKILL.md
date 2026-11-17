@@ -28,8 +28,9 @@ Three consequences follow.
 1. **Nothing exists outside the context.** The model's trained weights are
    fixed. The computation that generates each token is determined by the tokens
    in the context, and nothing from it persists except the token it generates.
-   There is no hidden thought process apart from token generation. Thinking,
-   too, is tokens in the context.
+   There is no hidden process apart from token generation. Thinking is token
+   generation too: the model generates tokens in a thinking block, which is part
+   of the context but usually not shown to the user.
 2. **Reasoning is token generation.** The model's reasoning consists of the
    tokens it generates: its thinking, its turn output and its tool calls. Each
    generated token is appended to the context, and the next token is generated
