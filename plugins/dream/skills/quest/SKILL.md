@@ -243,7 +243,8 @@ needs nothing gets `--parent` alone. Add no label and no assignee. Creating the
 roadmap and deciding to start work are separate acts.
 
 Anything you post as a comment or an issue wants each paragraph on a single
-line, since GitHub reflows it. Read the `commentFooter` value from
+line, since GitHub reflows it (see [Text for GitHub](../../github-text.md)).
+Read the `commentFooter` value from
 [`agent-written-marks.json`](../../agent-written-marks.json), then end every
 post with that exact value as a blockquote. This lets a reader tell an agent
 wrote it.

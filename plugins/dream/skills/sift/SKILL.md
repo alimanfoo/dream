@@ -136,11 +136,11 @@ agent: state the decision, the sites to change and what is out of scope. For
 Keep to what the investigation established instead of inventing details to fill
 the shape.
 
-Write each paragraph of a GitHub comment on one line, since GitHub reflows it.
-Read the `commentFooter` value from
-[`agent-written-marks.json`](../../agent-written-marks.json), then end every
-comment with that exact value as a blockquote. This lets a reader tell that an
-agent wrote it.
+Write each paragraph of a GitHub comment on one line, since GitHub reflows it
+(see [Text for GitHub](../../github-text.md)). Read the `commentFooter` value
+from [`agent-written-marks.json`](../../agent-written-marks.json), then end
+every comment with that exact value as a blockquote. This lets a reader tell
+that an agent wrote it.
 
 Post the decision comment before you apply any dispatch label. The implementing
 agent reads the issue and its comments when it starts. Once an assignment has

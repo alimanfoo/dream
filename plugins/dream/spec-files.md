@@ -41,7 +41,8 @@ Once the user has agreed to the file, open a pull request for it:
   the body with that exact value as a blockquote, so a reader can tell an agent
   wrote it.
 
-Put each paragraph of the body on a single line, since GitHub reflows it.
+Put each paragraph of the body on a single line, since GitHub reflows it (see
+[Text for GitHub](github-text.md)).
 
 ## Correcting an earlier specification
 
