@@ -292,7 +292,8 @@ you (`gh issue comment`), or as a new issue on the repo (`gh issue create`) if I
 didn't. Ask me first, whichever it is, and a no is a fine answer.
 
 Anything you post as a comment or an issue wants each paragraph on a single
-line, since GitHub reflows it. Read the `commentFooter` value from
+line, since GitHub reflows it (see [Text for GitHub](../../github-text.md)).
+Read the `commentFooter` value from
 [`agent-written-marks.json`](../../agent-written-marks.json), then end the post
 with that exact value as a blockquote. This lets a reader tell an agent wrote
 it.

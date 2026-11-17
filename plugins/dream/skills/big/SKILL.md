@@ -53,9 +53,8 @@ decision you need, or a problem you can't solve. Don't use the parent as a log
 of what you did, because your feed already records every action. Don't post on
 the parent to say that you merged a stage or started one.
 
-Load the `dream:plain-english` skill. It governs everything you post. Keep each
-post brief. Put each paragraph on a single line, because GitHub reflows it (see
-[Text for GitHub](../../plain-english.md#text-for-github)).
+Keep each post brief. Put each paragraph on a single line, because GitHub
+reflows it (see [Text for GitHub](../../github-text.md)).
 
 Read the `commentFooter` value from
 [`agent-written-marks.json`](../../agent-written-marks.json). You post under the
