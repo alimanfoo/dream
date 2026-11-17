@@ -19,7 +19,7 @@ define, without defining them again.
 
 ## Hand off a task
 
-### The user has an agent implement a well-specified issue
+### An agent implements a well-specified issue
 
 The user has a well-specified issue that is large enough to need careful and
 thorough engineering. They want a high-quality pull request for it.
@@ -52,7 +52,7 @@ thorough engineering. They want a high-quality pull request for it.
 The user has a reviewed pull request that does what the issue asked, and an
 issue for each thing it left out of scope.
 
-### The user has an agent make a clear, low-risk change
+### An agent makes a clear, low-risk change
 
 The user has an issue for a change that is clear and low-risk enough that a plan
 and a second review would add nothing. They want a pull request for it quickly.
@@ -321,7 +321,7 @@ its seed.
 
 ## Review a change
 
-### The user has agents review a change for bugs and possible improvements
+### Agents review a change for bugs and possible improvements
 
 The user has a change on a branch, with an open pull request. They want it
 reviewed for correctness bugs, and for the other opportunities for improvement
@@ -341,7 +341,7 @@ that matter most for what the change does.
 The user has a list of confirmed findings about the change, to act on as they
 choose.
 
-### The user has agents review a change for coherence and maintainability
+### Agents review a change for coherence and maintainability
 
 The user has a change on a branch, with an open pull request. They want to know
 where the change leaves the code less coherent or harder to maintain, with a fix
@@ -364,7 +364,7 @@ for each problem that takes out more code than it puts in.
 The user has a list of confirmed findings about the change, each with a fix that
 leaves less code, to act on as they choose.
 
-### The user has agents review a change against principles from their past reviews
+### Agents review a change against principles from the user's past reviews
 
 The user has a change on a branch, with an open pull request, and has reviewed
 earlier pull requests on the repository. They want the change reviewed against
@@ -389,7 +389,7 @@ choose.
 
 ## Plan and write
 
-### The user has an agent write an implementation plan for a change
+### An agent writes an implementation plan for a change
 
 The user has a change to make in one pull request. They want it divided into
 implementation steps, each one idea and one commit, before anyone writes code.
@@ -415,7 +415,7 @@ implementation steps, each one idea and one commit, before anyone writes code.
 The user has an implementation plan whose steps can each be implemented and
 committed in turn, with the tests and checks passing at each commit.
 
-### The user has an agent design and write code to the coherent coding guide
+### An agent designs and writes code to the coherent coding guide
 
 The user is about to have an agent design or write code. They want that code
 coherent and easy to maintain.
@@ -431,7 +431,7 @@ coherent and easy to maintain.
 The user has code that the agent designed and wrote with the coherent coding
 guide in its context.
 
-### The user has an agent write to the Plain English guide
+### An agent writes to the Plain English guide
 
 The user is about to have an agent write, whether documentation, a message on
 GitHub or a reply to the user. They want the reader to understand it at first
@@ -449,7 +449,7 @@ context.
 
 ## Run skills under dreamcatcher
 
-### The user has an agent implement an issue they have labelled
+### An agent implements an issue the user has labelled
 
 The user has an issue that is ready to implement. They want an agent to
 implement it on a pull request, and to steer the work from GitHub, without a
@@ -462,9 +462,9 @@ session of their own.
    with that skill, as described by
    [dreamcatcher's stories](https://alimanfoo.github.io/dreamcatcher/stories/).
 3. The agent adopts the draft pull request, and implements the issue as the
-   story for [smith](#the-user-has-an-agent-implement-a-well-specified-issue) or
-   [less](#the-user-has-an-agent-make-a-clear-low-risk-change) describes, up to
-   marking the pull request ready for review.
+   story for [smith](#an-agent-implements-a-well-specified-issue) or
+   [less](#an-agent-makes-a-clear-low-risk-change) describes, up to marking the
+   pull request ready for review.
 4. The user reviews the pull request and comments on it.
 5. dreamcatcher passes the user's comments to the agent.
 6. The agent makes the changes asked for, and replies. Steps 4 to 6 repeat until
@@ -476,7 +476,7 @@ session of their own.
 The user has a merged pull request that does what the issue asked, without
 having run a session or told the agent anything outside GitHub.
 
-### The user has an agent investigate an issue and answer their questions on it
+### An agent investigates an issue and answers the user's questions on it
 
 The user has an issue they want investigated before anyone implements it, such
 as a question about the code, a suspected bug or a doubt about a design. They
@@ -502,7 +502,7 @@ own.
 The user has answers on the issue, checked against the code, from which they can
 decide what to do with it.
 
-### The user has an agent lead a campaign through a roadmap's stages
+### An agent leads a campaign through a roadmap's stages
 
 The user has a parent issue whose sub-issues are the stages of a roadmap, with
 blocked-by links between them. They want an agent to carry every stage through
