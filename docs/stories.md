@@ -7,12 +7,12 @@ interactive work, such as capturing requirements, exploring design options, or
 triaging issues.
 
 Most skills are designed to be run directly by the user within a harness session
-in Claude Code or Codex. Some skills are designed to be used within
-dreamcatcher, an application that allows coding agents to be steered via GitHub.
+in Claude Code or Codex. Some skills are designed to be used under dreamcatcher,
+an application that allows coding agents to be steered via GitHub.
 
 This page records what dream is meant to do, for the people and agents who
-change it. Each story gives the user's goal, then the steps in order, each with
-one actor, then what the user has at the end.
+change it. Each story gives the user's goal, then the steps in order, each
+saying who acts, then what the user has at the end.
 
 ## Hand off a task
 
@@ -25,7 +25,7 @@ thorough engineering. They want a high-quality pull request for it.
 2. The agent reads the issue, its comments and the code the issue touches, and
    checks the issue against the code as it is now.
 3. The agent opens a draft pull request and posts its plan there.
-4. The agent builds the plan one step at a time, committing and pushing each
+4. The agent implements the plan one step at a time, committing and pushing each
    step.
 5. The agent runs a code review and then a coherence review, each of which reads
    the change through subagents. The coherence review looks for fixes that miss
@@ -72,7 +72,7 @@ The user has a pull request that does what the issue asked.
 
 ## Think it through together
 
-### The user triages issues with the assistance of an agent
+### The user triages issues in collaboration with an agent
 
 The user has issues that have not been triaged. An issue's claims may no longer
 hold for the current code, and an issue may duplicate another. The user wants to
@@ -82,10 +82,10 @@ that an agent can later implement the issue without asking for more.
 1. The user runs `/dream:sift`. The agent takes every issue that has no triage
    outcome.
 2. The agent reads the repository's documentation to find guidance on
-   engineering decisions and on what the product is meant to do for this
-   project, such as its `AGENTS.md`, decision principles, stories and concepts.
-   It also loads the coherent coding guide, which sets the standard for the code
-   an agent designs and writes.
+   engineering decisions and on what the product is meant to do, such as its
+   `AGENTS.md`, decision principles, stories and concepts. It also loads the
+   coherent coding guide, which sets the standard for the code an agent designs
+   and writes.
 3. For one issue, the agent reads the issue and its comments, checks its claims
    against the code as it is now, and searches earlier issues and pull requests
    on the same subject.
@@ -106,7 +106,7 @@ that an agent can later implement the issue without asking for more.
 The user has a decision and its reason on every issue they triaged. An agent can
 implement each issue that is ready to implement without asking for more.
 
-### The user captures their requirements with the assistance of an agent
+### The user captures their requirements in collaboration with an agent
 
 The user has an idea for a change to the repository. They want an agent to
 elicit their requirements by interviewing them, and to capture them in a
@@ -290,7 +290,7 @@ can implement, one stage per session.
 The user has a roadmap that divides the work into ordered stages, each one pull
 request, and a sub-issue for each stage.
 
-### The user takes a piece of work from an idea to a roadmap with the assistance of agents
+### The user takes a piece of work from an idea to a roadmap in collaboration with agents
 
 The user has an idea for a piece of work too large for one pull request. They
 want to take it to a roadmap, through requirements, the existing code and a
@@ -361,7 +361,7 @@ for each problem that takes out more code than it puts in.
 The user has a list of confirmed findings about the change, each with a fix that
 leaves less code, to act on as they choose.
 
-### The user has an agent review a change against the principles behind their own past review comments
+### The user has agents review a change against the principles behind their own past review comments
 
 The user has a change on a branch, with an open pull request, and has reviewed
 earlier pull requests on the repository. They want the change reviewed against
