@@ -30,6 +30,13 @@ them. Read them before you work.
 
 ## Development notes
 
+Before you change a skill or a subagent file, read the guide to agent mechanics
+at `plugins/dream/skills/agent-mechanics/SKILL.md`. It describes how an agent
+will read and act on what you write. Before you change code, read the coherent
+coding guide at `plugins/dream/coherent-coding.md`. Read both by these paths in
+the working tree, not by skill name, since a skill name loads the installed copy
+of the plugin, which can be older than the working tree.
+
 The collaborative product management skills, `dream:sift`, `dream:spark`,
 `dream:trace`, `dream:weave` and `dream:quest`, are an experiment, trying a
 different approach from the rest of the plugin. They run against repo convention
@@ -51,14 +58,16 @@ base read [`branch-bases.md`](plugins/dream/branch-bases.md). It owns how a
 skill finds the default branch and the review base.
 
 Keep a simple subagent task prompt inline in the skill that launches it. When a
-task prompt earns its own file, put it in `plugins/dream/agents/`. Claude Code
-reads a file there as a named agent, and a plain Codex subagent takes the same
-file's absolute path, so one file serves both hosts.
+task prompt earns its own file, put it in `plugins/dream/agents/`, so that one
+file serves both agent harnesses. The
+[guide to agent mechanics](plugins/dream/skills/agent-mechanics/SKILL.md#subagents)
+says how each agent harness reads a file there.
 
-Name an agent for the job it does, not for the skill that launches it. Claude
-Code takes an agent's name as a `dream:foo` subagent type, the same shape a
-skill reference takes, so an agent sharing its skill's name leaves the reference
-ambiguous.
+Name an agent for the job it does, not for the skill that launches it. Under
+Claude Code, an agent that shares its skill's name makes a `dream:foo` reference
+ambiguous, as the
+[guide to agent mechanics](plugins/dream/skills/agent-mechanics/SKILL.md#subagents)
+explains.
 
 Make every skill that launches subagents under both hosts read
 [`subagent-waiting.md`](plugins/dream/subagent-waiting.md). It owns the
@@ -114,8 +123,9 @@ traits rather than fight them.
 
 ## Writing agent prompts
 
-Writing well for an agent depends on what it needs to know, the shape of an
-instruction, and its properties as a reader.
+Writing well for an agent depends on what it needs to know and the shape of an
+instruction. How an agent reads what you write is in the guide to agent
+mechanics.
 
 ### Tell each agent only what it needs
 
@@ -146,22 +156,6 @@ Two more rules govern the instruction's content:
 - **Keep rules small.** A single sentence usually does the work of a
   prescriptive template. Don't add scaffolding (mandatory tails, worked
   examples, taxonomies) unless the bare rule leaves a real ambiguity.
-
-### The agent as a reader
-
-These properties of that reader change how you write for it.
-
-**Agents reason by producing tokens**: thinking tokens, turn output, or tokens
-written to files or messages. An instruction like "pause and consider X"
-produces no tokens and has no effect. The agent reads it and moves on. To make a
-check real, direct the agent to externalise: write the answer in turn output or
-in an artifact.
-
-**Agents reason forward from context**: they're next-token machines, with no
-foresight of what they're about to write. So "before reaching for X, do Y"
-doesn't work. The agent doesn't know they're about to reach for X. A check has
-to run after the candidate content exists, and it has to name an act: "reread
-the draft and cut any X".
 
 ## Writing prose
 

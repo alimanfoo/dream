@@ -111,6 +111,7 @@ marks a pull request ready, and you can run any of them yourself.
 | `/dream:plan`            | Turns a focus into a plan for one pull request, a commit per task. |
 | `/dream:coherent-coding` | Loads the coherent coding guide, for the agent to code to.         |
 | `/dream:plain-english`   | Loads the Plain English guide, for the agent to write to.          |
+| `/dream:agent-mechanics` | Loads a guide to how coding agents work, for writing prompts to.   |
 
 ## If something goes wrong
 
