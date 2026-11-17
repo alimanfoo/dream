@@ -45,6 +45,7 @@ nav:
       - compatibility.md
   - Development:
       - concepts.md
+      - stories.md
 
 markdown_extensions:
   - tables
