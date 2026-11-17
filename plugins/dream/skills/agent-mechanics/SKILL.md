@@ -25,9 +25,11 @@ earlier positions ([Vaswani et al., 2017, §3.2.3][transformer]).
 
 Three consequences follow.
 
-1. **The context is all the model has.** Its trained weights are fixed, so
-   between one token and the next the only thing that changes is the context.
-   Whatever the model works from at a given moment is in its context.
+1. **Nothing exists outside the context.** The model's trained weights are
+   fixed. The computation that generates each token is determined by the tokens
+   in the context, and nothing from it persists except the token it generates.
+   There is no hidden thought process apart from token generation. Thinking,
+   too, is tokens in the context.
 2. **Reasoning is token generation.** The model's reasoning consists of the
    tokens it generates: its thinking, its turn output and its tool calls. Each
    generated token is appended to the context, and the next token is generated
