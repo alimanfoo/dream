@@ -60,6 +60,11 @@ Code takes an agent's name as a `dream:foo` subagent type, the same shape a
 skill reference takes, so an agent sharing its skill's name leaves the reference
 ambiguous.
 
+Make every skill that tells the agent to write text that GitHub renders, such as
+a pull request description or a comment, link
+[`github-text.md`](plugins/dream/github-text.md). It owns how that text is laid
+out.
+
 Make every skill that launches subagents under both hosts read
 [`subagent-waiting.md`](plugins/dream/subagent-waiting.md). It owns the
 cross-host completion rule.
@@ -128,9 +133,9 @@ whether this reader uses it to do their job. If not, cut it.
 
 ### Instruction paragraphs
 
-The Plain English guide ([`plain-english.md`](plugins/dream/plain-english.md))
-sets the shape of an instruction paragraph: the imperative first, then the why,
-then examples, then exceptions.
+Build an instruction paragraph in this order: any condition, the imperative, the
+why, examples, exceptions. Skip any part you don't need, but keep the order of
+the parts you use, so the reader knows what to do before they read why.
 
 The why is the one that motivates the act, not the one that motivates the
 design. The reason the prompt is _built_ this way (design history, justification
@@ -162,12 +167,6 @@ foresight of what they're about to write. So "before reaching for X, do Y"
 doesn't work. The agent doesn't know they're about to reach for X. A check has
 to run after the candidate content exists, and it has to name an act: "reread
 the draft and cut any X".
-
-## Writing prose
-
-The prose standard for this repo is the Plain English guide
-([`plain-english.md`](plugins/dream/plain-english.md)). Follow it for every
-prose artifact: agent prompts, the protocol, skill bodies, these dev notes.
 
 ## Linting
 

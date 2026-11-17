@@ -50,12 +50,8 @@ generalisation, no half-finished extra feature.
 
 ## Communication style
 
-Write and speak in plain English. Use common words, not jargon. One idea per
-sentence.
-
 Write each paragraph on a single line in a PR description or comment, since
-GitHub reflows it (see
-[Text for GitHub](../../plain-english.md#text-for-github)).
+GitHub reflows it (see [Text for GitHub](../../github-text.md)).
 
 ## Turn output
 

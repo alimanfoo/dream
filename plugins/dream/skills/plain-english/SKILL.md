@@ -11,8 +11,8 @@ Adopt the dream plugin's Plain English guide.
 
 ## Read the guide first
 
-Read the [Plain English guide](../../plain-english.md) before you write. It sets
-the standard for everything you write and say.
+Read the [Plain English guide](plain-english.md) before you write. It sets the
+standard for everything you write and say.
 
 ## Reply with a brief confirmation
 
