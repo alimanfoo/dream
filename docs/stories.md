@@ -17,9 +17,9 @@ that [dream's concepts page](concepts.md) and
 [dreamcatcher's concepts page](https://alimanfoo.github.io/dreamcatcher/concepts/)
 define, without defining them again.
 
-## Hand off a task
+## Implement a change
 
-### An agent implements a well-specified issue
+### An agent implements a large, well-specified change
 
 The user has a well-specified issue that is large enough to need careful and
 thorough engineering. They want a high-quality pull request for it.
@@ -52,7 +52,7 @@ thorough engineering. They want a high-quality pull request for it.
 The user has a reviewed pull request that does what the issue asked, and an
 issue for each thing it left out of scope.
 
-### An agent makes a clear, low-risk change
+### An agent implements a clear, low-risk change
 
 The user has an issue for a change that is clear and low-risk enough that a plan
 and a second review would add nothing. They want a pull request for it quickly.
@@ -73,7 +73,7 @@ and a second review would add nothing. They want a pull request for it quickly.
 
 The user has a pull request that does what the issue asked.
 
-## Think it through together
+## Decide what to build
 
 ### The user triages issues with an agent
 
@@ -462,9 +462,9 @@ session of their own.
    with that skill, as described by
    [dreamcatcher's stories](https://alimanfoo.github.io/dreamcatcher/stories/).
 3. The agent adopts the draft pull request, and implements the issue as the
-   story for [smith](#an-agent-implements-a-well-specified-issue) or
-   [less](#an-agent-makes-a-clear-low-risk-change) describes, up to marking the
-   pull request ready for review.
+   story for [smith](#an-agent-implements-a-large-well-specified-change) or
+   [less](#an-agent-implements-a-clear-low-risk-change) describes, up to marking
+   the pull request ready for review.
 4. The user reviews the pull request and comments on it.
 5. dreamcatcher passes the user's comments to the agent.
 6. The agent makes the changes asked for, and replies. Steps 4 to 6 repeat until
