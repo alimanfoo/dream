@@ -16,16 +16,17 @@ This repo has two layers, easy to confuse:
 - **Developer support**: AGENTS.md. It supports plugin development and is not
   part of the installed plugin.
 
-## Concepts
+## The enduring documents
 
-[`docs/concepts.md`](docs/concepts.md) says what the words for dream's domain
-mean. Use its words and no others, in the skills, the documents and the issues.
+These documents carry dream's lasting understanding, and the skills are held to
+them. Read them before you work.
 
-## Stories
-
-[`docs/stories.md`](docs/stories.md) records what dream is meant to do: what the
-user does with its skills, what the agent does, and what the user has at the
-end.
+- [`docs/concepts.md`](docs/concepts.md) says what the words for dream's domain
+  mean. Use its words and no others, in the skills, the documents and the
+  issues.
+- [`docs/stories.md`](docs/stories.md) records what dream is meant to do: what
+  the user does with its skills, what the agent does, and what the user has at
+  the end.
 
 ## Development notes
 
