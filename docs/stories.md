@@ -17,62 +17,6 @@ that [dream's concepts page](concepts.md) and
 [dreamcatcher's concepts page](https://alimanfoo.github.io/dreamcatcher/concepts/)
 define, without defining them again.
 
-## Implement a change
-
-### An agent implements a large, well-specified change
-
-The user has a well-specified issue that is large enough to need careful and
-thorough engineering. They want a high-quality pull request for it.
-
-1. The user runs `/dream:smith GH123`, where `GH123` names issue 123.
-2. The agent reads the issue, its comments and the code the issue touches, and
-   checks the issue against the code as it is now.
-3. The agent opens a draft pull request and posts its plan there.
-4. The agent implements the plan one step at a time, committing and pushing each
-   step.
-5. The agent runs a code review and then a coherence review, each of which reads
-   the change through subagents. The coherence review looks for fixes that miss
-   the root cause, duplicated facts, weak boundaries and unnecessary code. The
-   agent applies each finding the evidence supports, defers each one that holds
-   but needs a pull request of its own, and posts each review with its response
-   to every finding.
-6. The agent looks for code or complexity the change could remove by changing
-   the design or the constraints in the issue, or by delivering less. It posts
-   each opportunity with what it would give up, for the user to accept or
-   decline.
-7. The agent writes the description and marks the pull request ready for review.
-8. The user reviews the pull request, comments on it, and tells the agent there
-   are comments.
-9. The agent makes the changes asked for, and replies. Steps 8 and 9 repeat
-   until the user is satisfied.
-10. The user merges the pull request, and tells the agent.
-11. The agent files an issue for each thing it left out of scope, each deferred
-    finding included, and lists them on the pull request.
-
-The user has a reviewed pull request that does what the issue asked, and an
-issue for each thing it left out of scope.
-
-### An agent implements a clear, low-risk change
-
-The user has an issue for a change that is clear and low-risk enough that a plan
-and a second review would add nothing. They want a pull request for it quickly.
-
-1. The user runs `/dream:less GH123`.
-2. The agent reads the issue, its comments and the code the issue touches.
-3. The agent opens a draft pull request.
-4. The agent makes the change in small steps, committing and pushing each one.
-5. The agent runs a code review without subagents, and applies each finding the
-   evidence supports.
-6. The agent writes a short description and marks the pull request ready for
-   review.
-7. The user reviews the pull request, comments on it, and tells the agent there
-   are comments.
-8. The agent makes the changes asked for, and replies. Steps 7 and 8 repeat
-   until the user is satisfied.
-9. The user merges the pull request.
-
-The user has a pull request that does what the issue asked.
-
 ## Decide what to build
 
 ### The user triages issues with an agent
@@ -319,6 +263,62 @@ each stage.
 The user can enter this sequence at any skill, with what they already have as
 its seed.
 
+## Implement a change
+
+### An agent implements a large, well-specified change
+
+The user has a well-specified issue that is large enough to need careful and
+thorough engineering. They want a high-quality pull request for it.
+
+1. The user runs `/dream:smith GH123`, where `GH123` names issue 123.
+2. The agent reads the issue, its comments and the code the issue touches, and
+   checks the issue against the code as it is now.
+3. The agent opens a draft pull request and posts its plan there.
+4. The agent implements the plan one step at a time, committing and pushing each
+   step.
+5. The agent runs a code review and then a coherence review, each of which reads
+   the change through subagents. The coherence review looks for fixes that miss
+   the root cause, duplicated facts, weak boundaries and unnecessary code. The
+   agent applies each finding the evidence supports, defers each one that holds
+   but needs a pull request of its own, and posts each review with its response
+   to every finding.
+6. The agent looks for code or complexity the change could remove by changing
+   the design or the constraints in the issue, or by delivering less. It posts
+   each opportunity with what it would give up, for the user to accept or
+   decline.
+7. The agent writes the description and marks the pull request ready for review.
+8. The user reviews the pull request, comments on it, and tells the agent there
+   are comments.
+9. The agent makes the changes asked for, and replies. Steps 8 and 9 repeat
+   until the user is satisfied.
+10. The user merges the pull request, and tells the agent.
+11. The agent files an issue for each thing it left out of scope, each deferred
+    finding included, and lists them on the pull request.
+
+The user has a reviewed pull request that does what the issue asked, and an
+issue for each thing it left out of scope.
+
+### An agent implements a clear, low-risk change
+
+The user has an issue for a change that is clear and low-risk enough that a plan
+and a second review would add nothing. They want a pull request for it quickly.
+
+1. The user runs `/dream:less GH123`.
+2. The agent reads the issue, its comments and the code the issue touches.
+3. The agent opens a draft pull request.
+4. The agent makes the change in small steps, committing and pushing each one.
+5. The agent runs a code review without subagents, and applies each finding the
+   evidence supports.
+6. The agent writes a short description and marks the pull request ready for
+   review.
+7. The user reviews the pull request, comments on it, and tells the agent there
+   are comments.
+8. The agent makes the changes asked for, and replies. Steps 7 and 8 repeat
+   until the user is satisfied.
+9. The user merges the pull request.
+
+The user has a pull request that does what the issue asked.
+
 ## Review a change
 
 ### Agents review a change for bugs and possible improvements
@@ -386,66 +386,6 @@ the principles they applied in those reviews.
 The user has a list of confirmed findings about the change, each a place where
 the change departs from a principle behind their past reviews, to act on as they
 choose.
-
-## Plan and write
-
-### An agent writes an implementation plan for a change
-
-The user has a change to make in one pull request. They want it divided into
-implementation steps, each one idea and one commit, before anyone writes code.
-
-1. The user runs `/dream:plan` with a description of the change they want.
-2. The agent identifies from the description the intended result, how the code
-   that the change touches works and is organised, and whether the change must
-   keep behaviour the same or change it.
-3. The agent drafts the implementation steps. Each step states its goal, a
-   criterion that decides which work belongs in it, and examples of that work.
-   Whoever implements the step applies the criterion, and finds every instance
-   themselves.
-4. Where the shape of the code that a step changes would make the step harder,
-   the agent adds a step ahead of it that restructures that code without
-   changing behaviour. It adds one only where that makes the later step clearly
-   easier or safer.
-5. The agent splits any step that holds more than one idea, and merges any step
-   that leaves a change half-done into the step that completes it.
-6. The agent orders the steps so that none depends on work a later step does.
-   The tests and checks then pass at each commit.
-7. The agent shows the user the implementation plan.
-
-The user has an implementation plan whose steps can each be implemented and
-committed in turn, with the tests and checks passing at each commit.
-
-### An agent designs and writes code to the coherent coding guide
-
-The user is about to have an agent design or write code. They want that code
-coherent and easy to maintain.
-
-1. The user runs `/dream:coherent-coding`.
-2. The agent reads the coherent coding guide, and confirms in one line that it
-   has loaded it.
-3. The user asks the agent for the code they want.
-4. The agent designs and writes the code with the guide in its context. The
-   skill directs it to apply the guide as it scopes the change, as it writes,
-   and as it reads back what it wrote.
-
-The user has code that the agent designed and wrote with the coherent coding
-guide in its context.
-
-### An agent writes to the Plain English guide
-
-The user is about to have an agent write, whether documentation, a message on
-GitHub or a reply to the user. They want the reader to understand it at first
-reading, even a reader whose first language isn't English.
-
-1. The user runs `/dream:plain-english`.
-2. The agent reads the Plain English guide, dream's standard for everything an
-   agent writes and says, and confirms in one line that it has loaded it.
-3. The user asks the agent for the writing they want.
-4. The agent writes with the guide in its context. The skill directs it to apply
-   the guide as it drafts and as it revises.
-
-The user has writing that the agent produced with the Plain English guide in its
-context.
 
 ## Run skills under dreamcatcher
 
@@ -541,3 +481,66 @@ settle.
 
 The user has every stage of the roadmap merged, each reviewed against the
 roadmap's account of how to tell it is done.
+
+## Utility skills
+
+These skills are mainly run by other skills. A user can also run them directly,
+as these stories describe.
+
+### An agent writes an implementation plan for a change
+
+The user has a change to make in one pull request. They want it divided into
+implementation steps, each one idea and one commit, before anyone writes code.
+
+1. The user runs `/dream:plan` with a description of the change they want.
+2. The agent identifies from the description the intended result, how the code
+   that the change touches works and is organised, and whether the change must
+   keep behaviour the same or change it.
+3. The agent drafts the implementation steps. Each step states its goal, a
+   criterion that decides which work belongs in it, and examples of that work.
+   Whoever implements the step applies the criterion, and finds every instance
+   themselves.
+4. Where the shape of the code that a step changes would make the step harder,
+   the agent adds a step ahead of it that restructures that code without
+   changing behaviour. It adds one only where that makes the later step clearly
+   easier or safer.
+5. The agent splits any step that holds more than one idea, and merges any step
+   that leaves a change half-done into the step that completes it.
+6. The agent orders the steps so that none depends on work a later step does.
+   The tests and checks then pass at each commit.
+7. The agent shows the user the implementation plan.
+
+The user has an implementation plan whose steps can each be implemented and
+committed in turn, with the tests and checks passing at each commit.
+
+### An agent designs and writes code to the coherent coding guide
+
+The user is about to have an agent design or write code. They want that code
+coherent and easy to maintain.
+
+1. The user runs `/dream:coherent-coding`.
+2. The agent reads the coherent coding guide, and confirms in one line that it
+   has loaded it.
+3. The user asks the agent for the code they want.
+4. The agent designs and writes the code with the guide in its context. The
+   skill directs it to apply the guide as it scopes the change, as it writes,
+   and as it reads back what it wrote.
+
+The user has code that the agent designed and wrote with the coherent coding
+guide in its context.
+
+### An agent writes to the Plain English guide
+
+The user is about to have an agent write, whether documentation, a message on
+GitHub or a reply to the user. They want the reader to understand it at first
+reading, even a reader whose first language isn't English.
+
+1. The user runs `/dream:plain-english`.
+2. The agent reads the Plain English guide, dream's standard for everything an
+   agent writes and says, and confirms in one line that it has loaded it.
+3. The user asks the agent for the writing they want.
+4. The agent writes with the guide in its context. The skill directs it to apply
+   the guide as it drafts and as it revises.
+
+The user has writing that the agent produced with the Plain English guide in its
+context.
