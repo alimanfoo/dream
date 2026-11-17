@@ -14,14 +14,28 @@ calls a tool or runs out of room. It covers Claude Code and Codex, and names a
 difference between them only where the difference changes what follows. Each
 claim links to its source.
 
-## The language model
+## How the model reasons
 
-A coding agent's language model generates its output one token at a time. Each
-token is predicted from every token before it in the context
-([glossary][api-glossary]). Two consequences follow. The model reasons only by
-producing tokens, whether thinking, turn output, tool calls or text written to a
-file. And when it writes a token, it has no access to the tokens it has not yet
-written.
+A language model generates text one token at a time. To generate each token, it
+computes over the whole context, meaning every token before it. The generated
+token is then appended to the context, and the model computes again to generate
+the next one. This process is called autoregressive generation ([Claude
+glossary][api-glossary]). The computation for one position can draw only on
+earlier positions ([Vaswani et al., 2017, §3.2.3][transformer]).
+
+Three consequences follow.
+
+1. **The context is all the model has.** Its trained weights are fixed, so
+   between one token and the next the only thing that changes is the context.
+   Whatever the model works from at a given moment is in its context.
+2. **Reasoning is token generation.** The model's reasoning consists of the
+   tokens it generates: its thinking, its turn output and its tool calls. Each
+   generated token is appended to the context, and the next token is generated
+   from that context.
+3. **Generation runs forward only.** When the model generates a token, the
+   tokens after it don't exist yet. A generated token can't be revised. The
+   model can only generate further tokens, and those can contradict or correct
+   the earlier ones.
 
 ## The context
 
@@ -252,6 +266,7 @@ Code sources are its documentation as of November 2026.
   https://code.claude.com/docs/en/sub-agents#frontmatter-reference
 [cc-sub-scoped]:
   https://code.claude.com/docs/en/sub-agents#invoke-subagents-explicitly
+[transformer]: https://arxiv.org/abs/1706.03762
 [cx-agents-md]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/agents_md.rs#L1-L19
 [cx-approval]:
