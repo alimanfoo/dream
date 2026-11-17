@@ -75,7 +75,7 @@ The user has a pull request that does what the issue asked.
 
 ## Think it through together
 
-### The user triages issues in collaboration with an agent
+### The user triages issues with an agent
 
 The user has issues that have not been triaged. An issue's claims may no longer
 hold for the current code, and an issue may duplicate another. The user wants to
@@ -109,7 +109,7 @@ that an agent can later implement the issue without asking for more.
 The user has a decision and its reason on every issue they triaged. An agent can
 implement each issue that is ready to implement without asking for more.
 
-### The user captures their requirements in collaboration with an agent
+### The user captures their requirements with an agent
 
 The user has an idea for a change to the repository. They want an agent to
 elicit their requirements by interviewing them, and to capture them in a
@@ -147,7 +147,7 @@ requirements specification, before anyone designs a solution.
 The user has a requirements specification, in their own words, that a design can
 start from.
 
-### The user learns the code relevant to an upcoming change, and has an agent write a reading guide to it
+### The user explores the code for a change with an agent
 
 The user is about to design a change in collaboration with an agent. They want
 to learn the existing code relevant to the change, so that they are better able
@@ -189,7 +189,7 @@ The user knows the relevant code well enough to collaborate on the design, and
 has a reading guide, checked against the code, that lets the next agent find and
 read all of it.
 
-### The user designs a change in collaboration with an agent, and has the agent write a design specification
+### The user designs a change with an agent
 
 The user knows what they want built, but has no design for it. They want to
 explore design options with an agent, which may know techniques they don't, and
@@ -240,7 +240,7 @@ from.
 The user has a design specification that a build can be planned from, in which
 everything left is there for a reason worth building and keeping.
 
-### The user divides a piece of work into stages in collaboration with an agent, and has the agent write a roadmap
+### The user breaks down a large piece of work with an agent
 
 The user has a design specification for a piece of work too large to build in
 one pull request. They want to explore with an agent how to divide the work into
@@ -293,7 +293,7 @@ can implement, one stage per session.
 The user has a roadmap that divides the work into ordered stages, each one pull
 request, and a sub-issue for each stage.
 
-### The user takes a piece of work from an idea to a roadmap in collaboration with agents
+### The user takes a piece of work from idea to roadmap with agents
 
 The user has an idea for a piece of work too large for one pull request. They
 want to take it to a roadmap, through requirements, the existing code and a
@@ -321,7 +321,7 @@ its seed.
 
 ## Review a change
 
-### The user has agents review a change for correctness bugs and other opportunities for improvement
+### The user has agents review a change for bugs and possible improvements
 
 The user has a change on a branch, with an open pull request. They want it
 reviewed for correctness bugs, and for the other opportunities for improvement
@@ -364,7 +364,7 @@ for each problem that takes out more code than it puts in.
 The user has a list of confirmed findings about the change, each with a fix that
 leaves less code, to act on as they choose.
 
-### The user has agents review a change against the principles behind their own past review comments
+### The user has agents review a change against principles from their past reviews
 
 The user has a change on a branch, with an open pull request, and has reviewed
 earlier pull requests on the repository. They want the change reviewed against
