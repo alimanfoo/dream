@@ -3,12 +3,6 @@
 This repo defines the dream plugin for Claude Code and Codex. You are a coding
 assistant helping the user to develop the dream plugin.
 
-## Stories
-
-[`docs/stories.md`](docs/stories.md) records what dream is meant to do: what the
-user does with its skills, what the agent does, and what the user has at the
-end.
-
 ## Introduction and orientation
 
 The dream plugin lives in the `plugins/dream` folder.
@@ -26,6 +20,12 @@ This repo has two layers, easy to confuse:
 
 [`docs/concepts.md`](docs/concepts.md) says what the words for dream's domain
 mean. Use its words and no others, in the skills, the documents and the issues.
+
+## Stories
+
+[`docs/stories.md`](docs/stories.md) records what dream is meant to do: what the
+user does with its skills, what the agent does, and what the user has at the
+end.
 
 ## Development notes
 
