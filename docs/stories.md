@@ -12,7 +12,10 @@ an application that allows coding agents to be steered via GitHub.
 
 This page records what dream is meant to do, for the people and agents who
 change it. Each story gives the user's goal, then the steps in order, each
-saying who acts, then what the user has at the end.
+saying who acts, then what the user has at the end. The stories use the words
+that [dream's concepts page](concepts.md) and
+[dreamcatcher's concepts page](https://alimanfoo.github.io/dreamcatcher/concepts/)
+define, without defining them again.
 
 ## Hand off a task
 
@@ -21,7 +24,7 @@ saying who acts, then what the user has at the end.
 The user has a well-specified issue that is large enough to need careful and
 thorough engineering. They want a high-quality pull request for it.
 
-1. The user runs `/dream:smith GH123`.
+1. The user runs `/dream:smith GH123`, where `GH123` names issue 123.
 2. The agent reads the issue, its comments and the code the issue touches, and
    checks the issue against the code as it is now.
 3. The agent opens a draft pull request and posts its plan there.
@@ -459,15 +462,16 @@ session of their own.
    with that skill, as described by
    [dreamcatcher's stories](https://alimanfoo.github.io/dreamcatcher/stories/).
 3. The agent adopts the draft pull request, and implements the issue as the
-   story for its skill describes, up to marking the pull request ready for
-   review.
+   story for [smith](#the-user-has-an-agent-implement-a-well-specified-issue) or
+   [less](#the-user-has-an-agent-make-a-clear-low-risk-change) describes, up to
+   marking the pull request ready for review.
 4. The user reviews the pull request and comments on it.
 5. dreamcatcher passes the user's comments to the agent.
 6. The agent makes the changes asked for, and replies. Steps 4 to 6 repeat until
    the user is satisfied.
 7. The user merges the pull request.
-8. dreamcatcher gives the agent a last round, in which the agent finishes as the
-   story for its skill describes.
+8. dreamcatcher gives the agent a last round, in which the agent finishes as
+   that story describes.
 
 The user has a merged pull request that does what the issue asked, without
 having run a session or told the agent anything outside GitHub.
