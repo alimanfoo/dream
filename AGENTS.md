@@ -3,11 +3,11 @@
 This repo defines the dream plugin for Claude Code and Codex. You are a coding
 assistant helping the user to develop the dream plugin.
 
-## The dream
+## Stories
 
-This project provides tools for autonomous software engineering. The goal is to
-enable coding agents to perform high-quality software development with less
-input from humans.
+[`docs/stories.md`](docs/stories.md) records what dream is meant to do: what the
+user does with its skills, what the agent does, and what the user has at the
+end.
 
 ## Introduction and orientation
 
@@ -87,7 +87,8 @@ section.
 
 ## What the design is answering
 
-Coding agents carry inherent traits that work against the dream. These include:
+Coding agents carry inherent traits that work against good software engineering.
+These include:
 
 - **Perimeter fixation**: fixes the named site, not the cause. Resists working
   past a self-imposed boundary.
