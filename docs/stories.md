@@ -551,8 +551,7 @@ The user is having an agent engineer a system with LLM agents in it, such as a
 prompt, a skill, a subagent file or a program that runs agents. They want the
 agent to predict what the agents in that system will do from how agents work.
 
-1. The user runs `/dream:agent-mechanics`. An agent working on dream reads the
-   guide by its path instead, as `AGENTS.md` directs.
+1. The user runs `/dream:agent-mechanics`.
 2. The guide is appended to the agent's context. It describes how a coding agent
    works: how the model generates tokens from its context, what the context
    holds, the turn, skills, files and paths, subagents, tools and permissions,

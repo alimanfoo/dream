@@ -10,11 +10,18 @@ description:
 
 # dream:agent-mechanics
 
-This guide describes the mechanics of a coding agent: what is in its context,
-how a turn runs, and what happens when it invokes a skill, starts a subagent,
-calls a tool or runs out of room. It covers Claude Code and Codex, and names a
-difference between them only where the difference changes what follows. Each
-claim links to its source.
+This guide describes the mechanics of a coding agent, for reasoning about what
+the agents in a system will do: a prompt, a skill, a subagent file or a program
+that runs agents. It covers what is in an agent's context, how a turn runs, and
+what happens when an agent invokes a skill, starts a subagent, calls a tool or
+runs out of room. It names a difference between Claude Code and Codex only where
+the difference changes what follows. Each section cites its sources.
+
+A coding agent is a language model that works on software by using tools in a
+loop. An agent harness, such as Claude Code or Codex, is the program that runs
+the loop: it supplies the tools and manages the model's context. A harness
+session is one conversation between a user and a coding agent, run by an agent
+harness.
 
 ## How the model reasons
 
@@ -22,26 +29,21 @@ A language model generates text one token at a time. The sequence of tokens from
 which it generates the next token is its context. To generate each token, the
 model computes over the whole context. The generated token is then appended to
 the context, and the model computes again to generate the next one. This process
-is called autoregressive generation ([Claude glossary][api-glossary]). The
-computation for one position can draw only on earlier positions ([Vaswani et
-al., 2017, §3.2.3][transformer]).
+is called autoregressive generation ([Claude glossary][api-glossary]).
 
-Three consequences follow.
+Two consequences follow.
 
-1. **Nothing exists outside the context.** The model's trained weights are
-   fixed. The computation that generates each token is determined by the tokens
-   in the context, and nothing from it persists except the token it generates.
-   There is no hidden process apart from token generation. Thinking is token
-   generation too: the model generates tokens in a thinking block, which is part
-   of the context but usually not shown to the user.
-2. **Reasoning is token generation.** The model's reasoning consists of the
-   tokens it generates: its thinking, its turn output and its tool calls. Each
-   generated token is appended to the context, and the next token is generated
-   from that context.
-3. **Generation runs forward only.** When the model generates a token, the
-   tokens after it don't exist yet. A generated token can't be revised. The
-   model can only generate further tokens, and those can contradict or correct
-   the earlier ones.
+1. **Only the context carries forward.** The model's trained weights are fixed.
+   The computation that generates each token is determined by the tokens in the
+   context, and nothing from it carries forward except the token it generates.
+   So thinking carries forward only as tokens: the model generates them in a
+   thinking block, which is usually not shown to the user.
+2. **Generation runs forward only.** When the model generates a token, the
+   tokens after it don't exist yet, and the computation for each token draws
+   only on that token and the ones before it ([Vaswani et al., 2017,
+   §3.2.3][transformer]). A generated token can't be revised. The model can only
+   generate further tokens, and those can contradict or correct the earlier
+   ones.
 
 ## What the context holds
 
@@ -61,17 +63,18 @@ Claude Code works][cc-sessions]).
 
 ## The turn
 
-A tool call is a structured block of tokens that names a tool and gives the
-tool's input. When the model generates a tool call, its generation stops and the
-agent harness runs the tool. The agent harness then appends the tool's result to
-the context, and the model generates again from that context ([Claude tool
-use][api-tool-use], [Codex `turn.rs`][cx-turn]).
+A turn is the agent's whole response to one input, usually a message from the
+user. It starts when the input arrives and ends when the model generates a
+response that contains no tool call. That response is the turn output ([Claude
+Code glossary][cc-glossary-turn], [Codex `turn.rs`][cx-turn]). Between turns the
+model generates nothing.
 
-This loop repeats until the model generates a response that contains no tool
-call. That response is the turn output, and it ends the turn. A turn starts when
-input arrives, usually a message from the user ([Claude Code
-glossary][cc-glossary-turn], [Codex `turn.rs`][cx-turn]). Between turns the
-model generates nothing. The next turn starts only when new input arrives.
+Within a turn, the model can call tools. A tool call is a structured block of
+tokens that names a tool and gives the tool's input. When the model generates a
+tool call, its generation stops and the agent harness runs the tool. The agent
+harness then appends the tool's result to the context, and the model generates
+again from that context ([Claude tool use][api-tool-use], [Codex
+`turn.rs`][cx-turn]).
 
 A tool can change things outside the context, such as a file on disk or the
 state of a repository. The context gains only the tool call and the result that
@@ -84,11 +87,11 @@ description and a body. When a harness session starts, the agent harness appends
 the name and description of every available skill to the context ([Claude Code
 skills][cc-skills-invoke], [Codex `fragments.rs`][cx-fragments]).
 
-Invoking a skill appends its body to the context ([Claude Code
-skills][cc-skills-life], [Codex `fragments.rs`][cx-fragments]). Either the user
-or the agent can invoke a skill. Nothing else happens: invoking a skill starts
-no other process, transfers no control and returns no value. The same model goes
-on generating tokens, from a context that now includes the body.
+Either the user or the agent can invoke a skill. Invoking it appends its body to
+the context ([Claude Code skills][cc-skills-life], [Codex
+`fragments.rs`][cx-fragments]). Nothing else happens: invoking a skill starts no
+other process, transfers no control and returns no value. The same model goes on
+generating tokens, from a context that now includes the body.
 
 The body stays in the context once it is appended. Editing the skill's file
 afterwards doesn't change the tokens already appended, so a session that loaded
@@ -97,31 +100,35 @@ skills][cc-skills-life], [how Claude Code works][cc-resume]).
 
 ## Files and paths
 
-A file enters the context only when the agent generates a tool call that reads
-it. That includes a file that a skill refers to ([Claude Code
-skills][cc-skills-files]). The agent resolves the file's path itself, so a
-relative path has no fixed base. Codex's list of skills tells the agent to
-resolve a skill's relative paths against the folder that holds its `SKILL.md`
-([Codex `catalog_prompt.rs`][cx-catalog]). A shell command runs in the working
-directory, wherever the skill is ([Claude Code skills][cc-skills-cwd]).
+Apart from what the agent harness loads itself, a file enters the context only
+when the agent generates a tool call that reads it. That includes a file that a
+skill refers to ([Claude Code skills][cc-skills-files]).
 
-An installed plugin is a copy, kept apart from any repository's working tree.
-Invoking a skill by name, such as `dream:foo`, loads the installed copy ([Claude
-Code plugins][cc-plugin-cache]).
+The agent resolves the file's path itself, so a relative path has no fixed base.
+Codex's list of skills tells the agent to resolve a skill's relative paths
+against the folder that holds its `SKILL.md` ([Codex
+`catalog_prompt.rs`][cx-catalog]). Claude Code instead replaces
+`${CLAUDE_SKILL_DIR}` in a skill's body with that folder ([Claude Code
+skills][cc-skills-subst]). A shell command runs in the working directory,
+wherever the skill is ([Claude Code skills][cc-skills-cwd]).
+
+Invoking a skill by name, such as `dream:foo`, loads it from the installed
+plugin, not from a path. An installed plugin is a copy, kept apart from any
+repository's working tree ([Claude Code plugins][cc-plugin-cache]).
 
 ## Subagents
 
 A subagent is a second agent that an agent starts with a tool call. It has a
-context of its own. A fresh subagent's context starts with its own system prompt
-and the task message, without the parent's transcript. A fork's context starts
-with a copy of the parent's transcript. Whether a subagent is fresh or a fork
-depends on the call and the agent harness ([Claude Code
+context of its own, and it is either fresh or a fork. A fresh subagent's context
+starts with its own system prompt and the task message, and none of the parent's
+context. A fork's context starts with a copy of the parent's context. Which kind
+starts depends on the call and the agent harness ([Claude Code
 subagents][cc-sub-context], [Codex `spawn.rs`][cx-spawn-v2]).
 
-A subagent calls tools like any agent, so what its tools change outside the
-context stays changed. When it finishes, its final turn output is appended to
-the parent's context. Nothing else from its context is ([Claude Code
-subagents][cc-sub-fork], [Codex `multi_agents_spec.rs`][cx-spawn-spec]).
+When a subagent finishes, its final turn output is appended to the parent's
+context. Nothing else from its context is ([Claude Code subagents][cc-sub-fork],
+[Codex `multi_agents_spec.rs`][cx-spawn-spec]). What its tools changed outside
+the context stays changed, though, since a subagent calls tools like any agent.
 
 The two agent harnesses find subagent files differently. Claude Code reads each
 file in a plugin's `agents/` directory as a subagent type, named with the
@@ -173,6 +180,8 @@ Code sources are its documentation as of November 2026.
 [cc-skills-files]: https://code.claude.com/docs/en/skills#add-supporting-files
 [cc-skills-cwd]:
   https://code.claude.com/docs/en/skills#how-injected-commands-run
+[cc-skills-subst]:
+  https://code.claude.com/docs/en/skills#available-string-substitutions
 [cx-catalog]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/ext/skills/src/catalog_prompt.rs
 [cc-skills-invoke]:
