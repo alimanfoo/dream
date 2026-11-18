@@ -16,12 +16,13 @@ claim links to its source.
 
 ## How the model reasons
 
-A language model generates text one token at a time. To generate each token, it
-computes over the whole context, meaning every token before it. The generated
-token is then appended to the context, and the model computes again to generate
-the next one. This process is called autoregressive generation ([Claude
-glossary][api-glossary]). The computation for one position can draw only on
-earlier positions ([Vaswani et al., 2017, §3.2.3][transformer]).
+A language model generates text one token at a time. The sequence of tokens from
+which it generates the next token is its context. To generate each token, the
+model computes over the whole context. The generated token is then appended to
+the context, and the model computes again to generate the next one. This process
+is called autoregressive generation ([Claude glossary][api-glossary]). The
+computation for one position can draw only on earlier positions ([Vaswani et
+al., 2017, §3.2.3][transformer]).
 
 Three consequences follow.
 
@@ -40,7 +41,7 @@ Three consequences follow.
    model can only generate further tokens, and those can contradict or correct
    the earlier ones.
 
-## The context
+## What the context holds
 
 The agent harness builds the context. When a harness session starts, the context
 holds the agent harness's system prompt, the repository's instruction files, and
