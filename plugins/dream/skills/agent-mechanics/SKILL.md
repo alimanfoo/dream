@@ -89,34 +89,18 @@ The term "turn" has one meaning on both agent harnesses. Claude Code's
 `maxTurns` field and `--max-turns` flag limit "agentic turns", a count its
 documentation does not define ([Claude Code subagents][cc-sub-frontmatter]).
 
-## Skills
+## What a skill is
 
-A skill is not called, and it returns nothing. Invoking one adds the text of its
-`SKILL.md` to the context, and the same agent carries on with that text in its
-context.
+A skill is a folder whose one required file, `SKILL.md`, holds a name, a
+description and a body. When a harness session starts, the agent harness appends
+the name and description of every available skill to the context ([Claude Code
+skills][cc-skills-invoke], [Codex `fragments.rs`][cx-fragments]).
 
-The agent harness lists each skill's name and description in the context from
-the start. A skill's body enters the context in one of two ways:
-
-- **The agent harness adds it.** Claude Code adds the body as a message when the
-  user or the agent invokes the skill ([Claude Code skills][cc-skills-life]).
-  Codex adds the body, with the skill's name and the path to its `SKILL.md`,
-  when the user names the skill in a message ([Codex
-  `fragments.rs`][cx-fragments], [Codex `turn.rs`][cx-turn-skills]).
-- **The agent reads the file.** When a Codex agent chooses a skill itself, it
-  opens the `SKILL.md` with a file tool, so the body arrives as a tool result
-  ([Codex `catalog_prompt.rs`][cx-catalog]).
-
-Once in the context, the body stays there for later turns. Claude Code does not
-read the file again, so an edit to the file after the skill loaded leaves the
-copy in the context unchanged ([Claude Code skills][cc-skills-life]). A resumed
-session keeps the same copy, because resuming appends to the existing transcript
-([how Claude Code works][cc-resume]). Invoking the skill again adds the current
-text, unless it is identical to the loaded copy ([Claude Code
-skills][cc-skills-life]).
-
-A skill's body can refer to other files. Those files enter the context only when
-the agent reads them with a tool ([Claude Code skills][cc-skills-files]).
+Invoking a skill appends its body to the context ([Claude Code
+skills][cc-skills-life], [Codex `fragments.rs`][cx-fragments]). Either the user
+or the agent can invoke a skill. Nothing else happens: invoking a skill starts
+no other process, transfers no control and returns no value. The same model goes
+on generating tokens, from a context that now includes the body.
 
 ## Files and paths
 
@@ -241,13 +225,10 @@ Code sources are its documentation as of November 2026.
 [cc-permissions]: https://code.claude.com/docs/en/permissions#permission-system
 [cc-plugin-cache]:
   https://code.claude.com/docs/en/plugins/loading#in-place-and-copied-plugins
-[cc-resume]:
-  https://code.claude.com/docs/en/how-claude-code-works#resume-or-fork-sessions
 [cc-sessions]:
   https://code.claude.com/docs/en/how-claude-code-works#work-with-sessions
 [cc-skills-cwd]:
   https://code.claude.com/docs/en/skills#how-injected-commands-run
-[cc-skills-files]: https://code.claude.com/docs/en/skills#add-supporting-files
 [cc-skills-invoke]:
   https://code.claude.com/docs/en/skills#control-who-invokes-a-skill
 [cc-skills-name]:
@@ -296,5 +277,3 @@ Code sources are its documentation as of November 2026.
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/turn.rs#L718-L730
 [cx-turn-pending]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/turn.rs#L718
-[cx-turn-skills]:
-  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/turn.rs#L1360-L1390
