@@ -1,9 +1,10 @@
 # Engineering standard
 
-This page says what dream holds itself to. It is one of the three enduring
-documents, beside [the concepts page](concepts.md), which fixes the words, and
-[the stories](stories.md), which fix what the user does and sees. This page says
-how good the result has to be, and how we tell. It adapts the standard that
+This page defines the engineering standards that dream adheres to. It is one of
+the three enduring documents, beside [the concepts page](concepts.md), which
+fixes the words, and [the stories](stories.md), which fix what the user does and
+sees. It says how good the result has to be, and how we tell. It adapts the
+standard that
 [dreamcatcher](https://github.com/alimanfoo/dreamcatcher/blob/main/docs/standard.md)
 keeps.
 
