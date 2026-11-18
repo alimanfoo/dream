@@ -1,8 +1,9 @@
 # Sources for dream:agent-mechanics
 
 This file lists the sources that support each paragraph of the guide to agent
-mechanics, under the guide's own headings. Each entry gives the paragraph's
-opening words, then its sources.
+mechanics, `plugins/dream/skills/agent-mechanics/SKILL.md`, under the guide's
+own headings. Each entry gives the paragraph's opening words, then its sources.
+When a paragraph of the guide changes, its entry here changes with it.
 
 The Claude API and Claude Code sources are Anthropic's documentation as of
 November 2026. The Codex sources are pinned to commit `49d657a` of

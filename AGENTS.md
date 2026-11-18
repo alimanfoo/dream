@@ -37,6 +37,12 @@ coding guide at `plugins/dream/coherent-coding.md`. Read both by these paths in
 the working tree, not by skill name, since a skill name loads the installed copy
 of the plugin, which can be older than the working tree.
 
+When you change the guide to agent mechanics, check each changed claim against
+its sources, and update the paragraph's entry in
+[`docs/agent-mechanics-sources.md`](docs/agent-mechanics-sources.md). That file
+lists the sources that support each paragraph of the guide, and the versions
+they are pinned to.
+
 The collaborative product management skills, `dream:sift`, `dream:spark`,
 `dream:trace`, `dream:weave` and `dream:quest`, are an experiment, trying a
 different approach from the rest of the plugin. They run against repo convention

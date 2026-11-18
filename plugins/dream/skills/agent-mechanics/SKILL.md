@@ -13,8 +13,7 @@ systems, who build systems that contain agents, such as prompts, skills,
 subagent definitions and programs that run agents. From these mechanics, an
 engineer can predict what the agents in such a system will do. Where Claude Code
 and Codex differ in a way that changes an agent's behaviour, the guide describes
-both. Each statement holds for the versions given in [`sources.md`](sources.md),
-which lists the sources that support each paragraph.
+both.
 
 A coding agent has two components. The first is a language model, which predicts
 the next token of a text from the tokens before it. The second is an agent

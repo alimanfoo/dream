@@ -46,6 +46,7 @@ nav:
   - Development:
       - concepts.md
       - stories.md
+      - agent-mechanics-sources.md
 
 markdown_extensions:
   - tables
