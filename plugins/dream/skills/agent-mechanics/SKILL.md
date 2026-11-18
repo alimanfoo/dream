@@ -91,8 +91,12 @@ on generating tokens, from a context that now includes the body.
 ## Files and paths
 
 A file enters the context only when the agent generates a tool call that reads
-it. That includes a file that a skill refers to. The agent resolves the file's
-path itself, so a relative path has no fixed base.
+it. That includes a file that a skill refers to ([Claude Code
+skills][cc-skills-files]). The agent resolves the file's path itself, so a
+relative path has no fixed base. Codex's list of skills tells the agent to
+resolve a skill's relative paths against the folder that holds its `SKILL.md`
+([Codex `catalog_prompt.rs`][cx-catalog]). A shell command runs in the working
+directory, wherever the skill is ([Claude Code skills][cc-skills-cwd]).
 
 An installed plugin is a copy, kept apart from any repository's working tree.
 Invoking a skill by name, such as `dream:foo`, loads the installed copy ([Claude
@@ -157,6 +161,11 @@ Code sources are its documentation as of November 2026.
   https://code.claude.com/docs/en/plugins/loading#in-place-and-copied-plugins
 [cc-sessions]:
   https://code.claude.com/docs/en/how-claude-code-works#work-with-sessions
+[cc-skills-files]: https://code.claude.com/docs/en/skills#add-supporting-files
+[cc-skills-cwd]:
+  https://code.claude.com/docs/en/skills#how-injected-commands-run
+[cx-catalog]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/ext/skills/src/catalog_prompt.rs
 [cc-skills-invoke]:
   https://code.claude.com/docs/en/skills#control-who-invokes-a-skill
 [cc-skills-life]: https://code.claude.com/docs/en/skills#skill-content-lifecycle
