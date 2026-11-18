@@ -88,14 +88,13 @@ Three consequences follow.
 
 ## What the context holds
 
-Every request carries the harness's system prompt and its tool definitions, each
-of which gives a tool's name, description and input schema ([Claude tool
-use][api-tool-use-pricing]). Claude Code sends its system prompt ahead of the
-conversation on every request ([Claude Code
-glossary][cc-glossary-system-prompt]). By default it defers the definitions of
-MCP tools, the tools that external servers provide through the Model Context
-Protocol: until the model uses one, only the tools' names and their servers'
-instructions occupy the context ([how Claude Code works][cc-context-fills]).
+Claude Code sends its system prompt ahead of the conversation on every request
+([Claude Code glossary][cc-glossary-system-prompt]). A request's tool
+definitions give each tool's name, description and input schema, and count
+toward the request's input tokens ([Claude tool use][api-tool-use-pricing]).
+Both harnesses can defer the definitions of MCP tools, so that a tool's full
+definition enters the context only when the model looks it up, as described
+under [Built-in, MCP and server tools](#built-in-mcp-and-server-tools).
 Everything else the harness adds, from instruction files to conversation
 history, occupies the context window too ([Claude Code
 glossary][cc-glossary-context]).
@@ -152,8 +151,8 @@ inserts system reminders of its own, such as text that a hook returns as
 `additionalContext`, or a note that a file the model edited earlier has changed
 on disk. A hook is a handler, such as a shell command, that the harness runs at
 a fixed point in its lifecycle, for example before a tool runs or at session
-start ([Claude Code glossary][cc-glossary-reminder], [Claude Code
-glossary][cc-glossary-hook]).
+start, as described under [Hooks](#hooks) ([Claude Code
+glossary][cc-glossary-reminder], [Claude Code glossary][cc-glossary-hook]).
 
 ### Across sessions
 
@@ -171,19 +170,27 @@ under Claude Code, the auto memory index, `MEMORY.md`, whose first 200 lines or
 
 A turn is one complete response from the agent: it begins when the user sends a
 message and ends when the agent finishes responding, with any number of tool
-calls in between ([Claude Code glossary][cc-glossary-turn]). The harness appends
-the message to the conversation and sends an inference request. Each response
-ends with a stop reason. When the stop reason is `tool_use`, the response
-contains one or more tool-use blocks, and the harness executes them, appends
-their results, and sends the next request. When it is `end_turn`, the model has
+calls in between ([Claude Code glossary][cc-glossary-turn]). A turn can also
+begin without a user message, as described under
+[Asynchronous notifications](#asynchronous-notifications). The harness appends
+the input to the conversation and sends an inference request. Each response ends
+with a stop reason. When the stop reason is `tool_use`, the response contains
+one or more tool-use blocks, and the harness executes them, appends their
+results, and sends the next request. When it is `end_turn`, the model has
 finished, and that response is the turn's output ([Claude stop
 reasons][api-stop-reasons], [Claude tool use][api-tool-use]). Codex runs the
 same loop: it sends another request when the model has called a tool, when the
 response does not end the turn, or when the user has queued further input
-([Codex `stream_events_utils.rs`][cx-tool-follow], [Codex `turn.rs`][cx-turn]).
-Between turns, Claude Code sends no request for the main conversation, except to
-compact a long conversation that has been left idle ([Claude Code
-settings][cc-idle-compaction]), but background subagents can go on running
+([Codex `stream_events_utils.rs`][cx-tool-follow], [Codex
+`turn.rs`][cx-turn-endturn], [Codex `turn.rs`][cx-turn]). Between turns, the
+harness starts no new turn until new input arrives, but it can still send a
+request. By default, in an interactive session, Claude Code compacts a
+conversation of at least 200,000 tokens that has been idle for about an hour
+([Claude Code settings][cc-idle-compaction]). With a provider that supports
+WebSockets, Codex sends a warm-up request, which generates no output, when a
+session starts or an idle thread resumes ([Codex
+`startup_prewarm.rs`][cx-prewarm], [Codex `client.rs`][cx-prewarm-request]).
+Background work, such as a background subagent, can go on running between turns
 ([Claude Code subagents][cc-sub-background]).
 
 ### Other ends and continuations
@@ -203,6 +210,48 @@ conversation ([Claude Code hooks][cc-hooks-stop], [Codex `turn.rs`][cx-turn]).
 The user can also interrupt a turn at any point ([Claude Code
 glossary][cc-glossary-loop]).
 
+### Asynchronous notifications
+
+Under Claude Code, work that runs in the background reports back through task
+notifications. The model starts a background shell command by setting
+`run_in_background: true`, and the command writes its output to a file that the
+model can read ([Claude Code tools reference][cc-bg-commands], [Claude Code
+interactive mode][cc-bg-how]). A background shell command and a background
+subagent send a notification when they complete, fail or are stopped ([Agent
+SDK][cc-sdk-task-notification]). By default, an MCP call in the main
+conversation of an interactive session that is still running after two minutes
+moves to the background and delivers its result in the same way ([Claude Code
+MCP][cc-mcp-auto-background]). A Monitor watch usually runs a script in the
+background and delivers each line that the script prints as it arrives, and it
+can instead deliver each message from a WebSocket ([Claude Code tools
+reference][cc-monitor-tool]). Claude Code prefixes each task notification,
+except a scheduled-trigger delivery, with a notice that no human input has
+occurred ([Agent SDK][cc-sdk-task-notification]). A notification that arrives
+while no turn is running can start a turn without a user prompt ([Agent
+SDK][cc-sdk-origin], [Claude Code MCP][cc-mcp-task-result]).
+
+Under Codex, `exec_command` returns a session ID for a command that is still
+running, and the model receives the command's later output only by polling that
+session with `write_stdin` ([Codex `shell_spec.rs`][cx-write-stdin]). When the
+command exits, Codex sends an event to its client but adds nothing to the
+conversation ([Codex `async_watcher.rs`][cx-exec-exit-event]). A version 2
+subagent's completion reaches its parent as a message in the parent's mailbox
+([Codex `completion.rs`][cx-subagent-completion]), and a version 1 subagent's
+completion is injected into the parent as a notification without starting a turn
+([Codex `agent/control.rs`][cx-subagent-v1-notify], [Codex
+`inject.rs`][cx-inject-no-turn]). While the parent's turn is running and its
+model has not yet given a final answer, Codex adds a mailbox message to the
+history before the next request, and sends that request because of it. Otherwise
+the message waits for the next turn ([Codex `turn.rs`][cx-turn-pending], [Codex
+`input_queue.rs`][cx-mailbox-defer]). An idle parent starts a turn for a message
+only when the sender asked for one, as `followup_task` does, or when the
+`wake_on_agent_messages` feature, off by default, is on ([Codex
+`session/handlers.rs`][cx-mailbox-wake], [Codex
+`followup_task.rs`][cx-followup-task]). Codex's goal extension, on by default,
+can also start a turn when the thread is idle and a goal is active ([Codex
+`features/lib.rs`][cx-goals-default], [Codex
+`ext/goal/extension.rs`][cx-goal-idle]).
+
 ## Tool calls and permissions
 
 A tool call is a tool-use block in the model's output: it names a tool and gives
@@ -215,6 +264,77 @@ its next request. A tool can change state outside the context, such as files on
 disk or a repository's history. The context gains only the call and its result,
 so the model can condition on such a change only through what the result
 reports.
+
+### Built-in, MCP and server tools
+
+Under Claude Code, the model's tools are of three kinds. Built-in tools are
+implemented by Claude Code itself, which lists them in its tools reference, and
+a skill runs through the built-in `Skill` tool rather than adding a tool of its
+own ([Claude Code tools reference][cc-tools-reference]). MCP tools are provided
+by MCP servers, as described below. Server tools run on Anthropic's
+infrastructure rather than in the harness ([Claude tool use][api-tool-use]), and
+Claude Code's advisor tool is one ([Claude Code tools
+reference][cc-tools-available]). Codex builds the model's tools for each step
+from its core tools, such as `exec_command` and `apply_patch`, from MCP tools,
+from tools that its extensions provide, from tools that a client supplies, and,
+where the provider supports it, from a hosted web search tool ([Codex
+`spec_plan.rs`][cx-tool-router], [Codex `spec_plan.rs`][cx-hosted-search]).
+
+An MCP server is a program that gives the model tools, prompts or resources over
+the Model Context Protocol ([Claude Code glossary][cc-glossary-mcp-server]).
+Claude Code names an MCP tool `mcp__<server>__<tool>`, and a tool from a
+plugin's server `mcp__plugin_<plugin>_<server>__<tool>`, and permission rules
+refer to MCP tools by these names ([Claude Code
+permissions][cc-permissions-mcp], [Claude Code plugin
+components][cc-plugin-mcp-names]). Codex reads its MCP servers from the
+`mcp_servers` table of `config.toml` ([Codex `config_toml.rs`][cx-mcp-config]).
+By default, it presents each server's tools to the model in a namespace named
+`mcp__<server>`. It replaces any character other than an ASCII letter, a digit
+or an underscore with an underscore, and adjusts names where necessary so that
+each is unique and at most 128 bytes long ([Codex
+`codex-mcp/tools.rs`][cx-mcp-names], [Codex
+`codex-mcp/mcp/mod.rs`][cx-mcp-sanitize], [Codex
+`handlers/mcp.rs`][cx-mcp-namespace]).
+
+By default, Claude Code defers the definitions of MCP tools. At session start,
+only the tools' names and the servers' instructions enter the context, and the
+model loads a tool's full definition, when it decides to use the tool, with the
+`ToolSearch` tool ([Claude Code MCP][cc-mcp-tool-search], [Claude Code tools
+reference][cc-tools-reference]). Setting `ENABLE_TOOL_SEARCH` to `false` loads
+every definition upfront, and a server marked `alwaysLoad` has its tools loaded
+upfront regardless of `ENABLE_TOOL_SEARCH` ([Claude Code
+MCP][cc-mcp-configure-search], [Claude Code MCP][cc-mcp-always-load]). Codex
+defers MCP tools when the model supports tool search, as every model bundled at
+the pinned commit does, unless a server's configuration keeps its tools direct
+([Codex `mcp_tool_exposure.rs`][cx-mcp-deferred], [Codex
+`spec_plan.rs`][cx-mcp-exposure-final], [Codex `models.json`][cx-models]). It
+omits deferred tools from the definitions sent with each request, and the model
+finds them by calling `tool_search`, which ranks them with BM25 and adds the
+full definitions of the best matches to the history: up to eight by default, or
+as many as the call's `limit` asks for ([Codex
+`tool_search_spec.rs`][cx-tool-search-spec], [Codex
+`tool_search.rs`][cx-tool-search-limit], [Codex
+`tools/context.rs`][cx-tool-search-output]). A Codex server's instructions
+become the description of its namespace ([Codex
+`rmcp_client.rs`][cx-mcp-instructions]).
+
+By default, Claude Code saves a successful MCP result without images to a file
+when it exceeds 25,000 tokens or, for a call that completes in the foreground,
+50,000 characters, unless the tool declares its own limit. It replaces the
+result in the context with a message that names the file ([Claude Code
+MCP][cc-mcp-output-limits]). An allow rule for an MCP tool takes no specifier
+([Claude Code permissions][cc-permissions-mcp]). Codex truncates an MCP result
+to the tool's configured output limit or, failing that, to the model's
+truncation policy ([Codex `handlers/mcp.rs`][cx-mcp-truncation]). By default,
+Codex decides from a tool's annotations whether a call to it needs approval: a
+tool annotated as read-only needs none, and any other tool needs approval unless
+it is annotated as neither destructive nor open-world ([Codex
+`mcp_tool_call.rs`][cx-mcp-approval]). Under the `never` policy, a call that
+needs approval is denied unless a `PermissionRequest` hook or an automatic
+reviewer approves it ([Codex `mcp_tool_call.rs`][cx-mcp-approval-never], [Codex
+`approvals.rs`][cx-approvals-flow]). It is approved without asking when Codex
+applies no sandbox of its own or grants full write access to the disk ([Codex
+`codex-mcp/mcp/mod.rs`][cx-mcp-auto-approve]).
 
 ### Permissions under Claude Code
 
@@ -257,6 +377,163 @@ run outside the sandbox where the filesystem policy permits it ([Codex
 `sandboxing.rs`][cx-sandbox-bypass]). A rejection or a failure inside the
 sandbox is returned to the model as the call's result ([Codex
 `protocol.rs`][cx-approval]).
+
+## Hooks
+
+A hook is a handler that the harness runs at a fixed point in its lifecycle,
+such as before a tool runs or when the model finishes responding ([Claude Code
+hooks][cc-hooks-lifecycle]). Hooks are deterministic: they fire at those points
+rather than at the model's discretion ([Claude Code
+glossary][cc-glossary-hook]). Their output can block an action, approve a tool
+call, keep a turn going or add text to the context. Claude Code supports five
+types of handler: a shell command, an HTTP endpoint, an MCP tool, a prompt that
+a Claude model evaluates, and an experimental subagent ([Claude Code
+hooks][cc-hooks-handlers]). Codex runs command and MCP-tool handlers, and skips
+prompt and agent handlers as not yet supported ([Codex
+`protocol/hooks.rs`][cx-hook-handlers], [Codex
+`hooks/discovery.rs`][cx-hook-skip]).
+
+### Hook events
+
+Both harnesses fire hooks at the start and end of a session (`SessionStart`,
+`SessionEnd`), when the user submits a prompt (`UserPromptSubmit`), around a
+tool call (`PreToolUse`, `PermissionRequest`, `PostToolUse`), around compaction
+(`PreCompact`, `PostCompact`), when the main agent finishes responding (`Stop`),
+and when a subagent starts or finishes (`SubagentStart`, `SubagentStop`)
+([Claude Code hooks][cc-hooks-lifecycle], [Codex
+`hooks/lib.rs`][cx-hook-events]). Claude Code defines further events, for
+example for failed tool calls, notifications, changes to configuration and
+files, and model switches ([Claude Code hooks][cc-hooks-lifecycle]). Codex adds
+`Interrupt`, when a turn is interrupted, and `PreModelRequest` and
+`PostModelRequest`, around each request to the model ([Codex
+`hook_runtime.rs`][cx-hook-interrupt], [Codex
+`hook_runtime/sampling.rs`][cx-hook-model-request]). A matcher restricts a hook
+to some occurrences of its event, such as calls to a particular tool ([Claude
+Code hooks][cc-hooks-config], [Codex `matcher.rs`][cx-hook-matcher]).
+
+### Hook input and output
+
+A command hook receives the event as JSON on standard input, under both
+harnesses, and a Claude Code HTTP hook receives it as the body of a POST request
+([Claude Code hooks][cc-hooks-input], [Codex `dispatcher.rs`][cx-hook-stdin]).
+Exit code 0 means success, and the hook can print a JSON object whose fields
+carry its decisions. Exit code 2 blocks the action on an event that can block,
+and under Codex it also requires a message on standard error ([Claude Code
+hooks][cc-hooks-exit], [Codex `pre_tool_use.rs`][cx-hook-pretooluse]).
+
+Under Claude Code, the fields of valid JSON output decide whatever the exit
+code. Any other exit code with plain or empty output, invalid JSON or a failure
+to start is a non-blocking error, and a hook that times out is cancelled and its
+output discarded ([Claude Code hooks][cc-hooks-exit], [Claude Code
+hooks][cc-hooks-timeouts]). Under Codex, any other exit code, a timeout or a
+failure to run is a non-blocking error ([Codex
+`pre_tool_use.rs`][cx-hook-pretooluse]). Under either harness, on most events
+the action then goes ahead. On a Claude Code command or HTTP hook,
+`onFailure: "block"` makes a failure act as exit code 2 would on that event,
+except that it denies a `PermissionRequest`. It has no effect on asynchronous
+hooks, or on `Stop`, `SubagentStop`, `TaskCompleted` and `TeammateIdle` hooks
+([Claude Code hooks][cc-hooks-onfailure]). A hook that runs asynchronously
+cannot block or decide anything under either harness ([Claude Code
+hooks][cc-hooks-background], [Codex `engine/mod.rs`][cx-hook-async]).
+
+### What a hook can control
+
+Under Claude Code, a `PreToolUse` hook can deny a tool call, force a prompt, let
+the call skip the prompt, with some exceptions, or, in a non-interactive run
+whose turn makes a single tool call, defer it. When hooks disagree, deny takes
+precedence over defer, defer over ask, and ask over allow, and an allow does not
+override a deny or ask rule ([Claude Code hooks][cc-hooks-pretooluse]). A
+`PermissionRequest` hook answers a permission prompt with allow or deny, and its
+allow does not override a matching deny rule ([Claude Code
+hooks][cc-hooks-permissionrequest]). Under Codex, a `PreToolUse` hook can deny a
+call but cannot approve one, and it can return `allow` only to rewrite the
+call's input ([Codex `output_parser.rs`][cx-hook-allow]). A Codex
+`PermissionRequest` hook can allow or deny. Any deny wins, and an allow takes
+effect unless an execution-policy rule requires a person to approve the command
+([Codex `permission_request.rs`][cx-hook-permission], [Codex
+`approvals.rs`][cx-hook-approvals], [Codex
+`exec_policy.rs`][cx-exec-policy-human]).
+
+A `Stop` hook can keep a turn going. When it returns a block decision with a
+reason, or exits with code 2, the harness gives the reason to the model, which
+then generates again instead of ending the turn ([Claude Code
+hooks][cc-hooks-stop-decision], [Codex `stop.rs`][cx-hook-stop], [Codex
+`turn.rs`][cx-hook-continue]). By default, after stop hooks have continued a
+turn eight times in a row with no tool call between, Claude Code overrides the
+next block and ends the turn, and `CLAUDE_CODE_STOP_HOOK_BLOCK_CAP` raises that
+limit ([Claude Code hooks][cc-hooks-stop-input]). Codex delivers the reason as a
+user message wrapped in a `<hook_prompt>` element ([Codex
+`items.rs`][cx-hook-prompt-xml], [Codex `items.rs`][cx-hook-prompt-item]). A
+`SubagentStop` hook does the same for a subagent ([Claude Code
+hooks][cc-hooks-subagentstop], [Codex `hook_runtime.rs`][cx-hook-subagent]).
+
+### Hook output in the context
+
+Under Claude Code, a hook adds text to the context through its
+`additionalContext` field, or through plain standard output on events such as
+`SessionStart` and `UserPromptSubmit` ([Claude Code hooks][cc-hooks-context],
+[Claude Code hooks][cc-hooks-exit0]). Claude Code wraps the text in a system
+reminder and inserts it where the hook fired: at the start of the conversation
+for `SessionStart`, beside the prompt for `UserPromptSubmit`, beside the tool
+result for the tool events, and at the end of the turn for `Stop` ([Claude Code
+hooks][cc-hooks-context]). It caps each such string at 10,000 characters and
+replaces a longer one with a file path and a preview ([Claude Code
+hooks][cc-hooks-json]). The text that mid-session events add is saved in the
+transcript and replayed when the session is resumed, and `SessionStart` hooks
+run again instead ([Claude Code hooks][cc-hooks-context]). At compaction the
+text is summarised with the rest of the conversation, but `SessionStart` hooks
+that match compaction run again and add their output afresh ([Claude Code
+context window][cc-compact]). A synchronous hook's `systemMessage` is a warning
+shown to the user, and some events discard it. An asynchronous hook's
+`systemMessage` goes to the model instead ([Claude Code hooks][cc-hooks-json],
+[Claude Code hooks][cc-hooks-async-exec]).
+
+Under Codex, only `SessionStart`, `SubagentStart`, `UserPromptSubmit`,
+`PreToolUse` and `PostToolUse` hooks can add text to the context, through
+`additionalContext` or, on the first three, plain standard output ([Codex
+`hooks/discovery.rs`][cx-hook-context-events], [Codex
+`session_start.rs`][cx-hook-stdout-context]). Codex records each piece of text
+as a separate message with the developer role ([Codex
+`hook_additional_context.rs`][cx-hook-context-item], [Codex
+`hook_runtime.rs`][cx-hook-context-separate]). It writes text over 2,500 tokens,
+by default, to a file and keeps a preview that names the file ([Codex
+`output_spill.rs`][cx-hook-spill]). Neither local nor remote compaction keeps
+these messages in the history, and after compaction, `SessionStart` hooks run
+again with the source `compact` ([Codex `compact.rs`][cx-hook-compact-local],
+[Codex `compact_remote_v2.rs`][cx-hook-compact-remote], [Codex
+`session/mod.rs`][cx-hook-compact-restart]).
+
+### Where hooks are defined
+
+Claude Code reads hooks from user, project and local settings, from managed
+policy settings and from an enabled plugin's `hooks/hooks.json`. A skill's
+frontmatter can also define hooks, which apply for the rest of the session once
+the skill is invoked, and a subagent's frontmatter can define hooks that apply
+while that subagent runs ([Claude Code hooks][cc-hooks-locations]). A program
+using the Agent SDK can also pass hooks as callbacks ([Agent SDK
+hooks][cc-sdk-hooks]). Definitions from different places add together rather
+than replacing one another, though an identical handler defined in several
+settings files runs once ([Claude Code hooks][cc-hooks-locations], [Claude Code
+hooks][cc-hooks-handlers]). Hooks from settings, managed policy and plugins also
+run inside subagents ([Claude Code hooks][cc-hooks-locations]). In an
+interactive session, hooks from settings files wait until the user accepts the
+workspace-trust dialog ([Claude Code hooks][cc-hooks-trust]). The managed
+setting `allowManagedHooksOnly` blocks user, project, local and plugin hooks,
+except hooks from plugins that managed settings force-enable ([Claude Code
+hooks][cc-hooks-locations]).
+
+Codex reads hooks from managed requirements, from enabled plugins, and from each
+enabled configuration layer, where a `hooks.json` file in the layer's folder or
+a `[hooks]` table in its `config.toml` can define them. Definitions from all
+these sources add together ([Codex `hooks/discovery.rs`][cx-hook-sources]). A
+hook that is not managed runs only when it is enabled and trusted. The user's
+trust is recorded against a hash of the hook's definition and, for a plugin's
+hook, of the plugin's contents, so a changed hook is not trusted until the user
+trusts it again ([Codex `hooks/discovery.rs`][cx-plugin-hook-trust]). The
+requirement `allow_managed_hooks_only` drops every hook that is not managed
+([Codex `hooks/discovery.rs`][cx-hook-managed-only]). Hooks also run inside
+subagents, whose ID their input carries ([Codex
+`hook_runtime.rs`][cx-hook-subagent-input]).
 
 ## Plugins
 
@@ -557,11 +834,143 @@ and re-inserts the session's initial context ([Codex
 `compact_remote_v2.rs`][cx-compact-remote-retain], [Codex
 `compact_remote_v2_installation.rs`][cx-compact-remote-install]).
 
+## Running an agent from a program
+
+A program can run either harness with no person present. The program supplies
+the input and reads the output, and the harness still builds the context and
+runs the loop as the earlier sections describe. What differs is what the run
+loads, how requests for the user's approval resolve, and how the output returns
+to the program.
+
+### Programmatic interfaces
+
+Claude Code runs non-interactively with the `-p` flag, which takes the prompt as
+an argument, and also reads input piped to standard input ([Claude Code
+headless][cc-headless-basic], [Claude Code headless][cc-headless-pipe]). The
+Agent SDK, for Python and TypeScript, is a library that runs the Claude Code
+binary ([Agent SDK][cc-sdk-overview]). Its `query()` function yields messages as
+the agent loop runs: an initial system message, the model's responses and the
+tool calls between them, and finally a result message that holds the final text,
+the token usage, the cost and the session ID ([Agent SDK agent
+loop][cc-sdk-loop]).
+
+Codex runs non-interactively with `codex exec`, which takes the prompt as an
+argument or from standard input. Given both, it appends standard input to the
+prompt in a `<stdin>` block ([Codex `exec/cli.rs`][cx-exec-prompt]). By default,
+`codex exec` drives an app-server that it starts in its own process, and with
+`--remote`, it connects to an existing one ([Codex
+`exec/lib.rs`][cx-exec-inproc], [Codex `exec/cli.rs`][cx-exec-remote]). A
+program can also run `codex app-server`, an experimental server that accepts
+requests such as `thread/start` and `turn/start` over standard I/O, a Unix
+socket or a WebSocket ([Codex `cli/main.rs`][cx-app-server-experimental], [Codex
+`cli/main.rs`][cx-app-server-listen], [Codex `common.rs`][cx-app-server-thread],
+[Codex `common.rs`][cx-app-server-turn]). Its protocol is modelled on JSON-RPC
+2.0 but omits the `"jsonrpc"` field ([Codex `rpc.rs`][cx-app-server-rpc]).
+Codex's TypeScript SDK runs `codex exec` as a child process, and its Python SDK
+runs `codex app-server` ([Codex `sdk/typescript/src/exec.ts`][cx-sdk-ts], [Codex
+`sdk/python/src/openai_codex/client.py`][cx-sdk-py]).
+
+### Output and exit status
+
+By default, `claude -p` prints the final response as plain text. With
+`--output-format json`, it prints a JSON object that holds the result, the
+session ID and metadata, and with `stream-json`, it prints newline-delimited
+JSON events as the run proceeds, ending with a `result` message ([Claude Code
+headless][cc-headless-output], [Claude Code headless][cc-headless-stream]). It
+exits with code 0 on success and a non-zero code on failure, and it prints a
+failure inside the run, such as missing authentication, as the result on
+standard output ([Claude Code headless][cc-headless-basic]). A run can stay open
+after its turn to wait for background work that the model started. It waits for
+a background command that the main conversation started until the command exits
+or reaches its time limit. It waits for other background work, such as subagents
+and Monitor watches, until the work finishes or, by default, 10 minutes of idle
+waiting pass ([Claude Code headless][cc-headless-bg-exit]).
+
+By default, `codex exec` writes nothing to standard output but the final agent
+message, and writes everything else to standard error. With `--json`, it writes
+one JSON event per line to standard output instead, such as `thread.started`,
+`item.completed` and `turn.completed` ([Codex `exec/lib.rs`][cx-exec-streams],
+[Codex `exec_events.rs`][cx-exec-events]). `--output-last-message` also writes
+the final message to a file ([Codex `exec/cli.rs`][cx-exec-last]). `codex exec`
+exits with status 1 when its turn fails, is interrupted or reports an error that
+it will not retry ([Codex `exec/lib.rs`][cx-exec-exit], [Codex
+`exec/lib.rs`][cx-exec-exit-call]).
+
+### What a non-interactive run loads
+
+By default, `claude -p` discovers and loads what an interactive session would,
+including hooks, skills, plugins, MCP servers and `CLAUDE.md` files. With
+`--bare`, it skips that discovery: the model has the Bash, file read and file
+edit tools, and the run loads only what the program passes with flags such as
+`--mcp-config` and `--settings`, except that hooks never run in bare mode
+([Claude Code headless][cc-headless-bare]). The Agent SDK reads the same user,
+project and local settings, `CLAUDE.md` files and skills unless the program
+narrows its `settingSources` ([Agent SDK][cc-sdk-sources]). Unless the program
+sets a system prompt, the SDK uses a minimal one that covers tool calling,
+whereas `claude -p` uses Claude Code's full system prompt ([Agent
+SDK][cc-sdk-system-prompt]). A non-interactive run shows no workspace-trust
+dialog and treats the folder as trusted ([Claude Code hooks][cc-hooks-trust]).
+
+`codex exec` starts an in-process app-server as the interactive client does
+([Codex `exec/lib.rs`][cx-exec-startup], [Codex `tui/lib.rs`][cx-tui-startup]),
+and loads `AGENTS.md` files, preferring `AGENTS.override.md` ([Codex
+`exec/tests/suite/agents_md.rs`][cx-exec-agents-test]). It disables the
+configuration of a project that is not trusted, including the project's MCP
+servers, until the program trusts the project with `--trust`, which does not
+override a project explicitly marked untrusted ([Codex
+`exec/lib.rs`][cx-exec-trust], [Codex `exec/cli.rs`][cx-exec-trust-flag]). Hooks
+also need recorded trust, unless the program passes
+`--dangerously-bypass-hook-trust` ([Codex `shared_options.rs`][cx-hook-bypass]).
+
+### Approvals and limits in a non-interactive run
+
+From Claude Code v2.1.302, a `claude -p` or Agent SDK run with no permission
+mode set starts in Manual mode. A call that needs approval is then denied unless
+an allow rule, a hook, the SDK's `canUseTool` callback or a
+`--permission-prompt-tool` approves it ([Claude Code permission
+modes][cc-perm-noninteractive]), as described under
+[Permissions under Claude Code](#permissions-under-claude-code). A program can
+bound the run with `--max-turns` and `--max-budget-usd`, and request output that
+matches a JSON Schema with `--json-schema` ([Claude Code CLI][cc-cli-flags]).
+The Agent SDK has equivalent turn and budget options, and when a limit is
+reached, it returns a result with an error subtype such as `error_max_turns`
+([Agent SDK agent loop][cc-sdk-limits]).
+
+`codex exec` sets the approval policy to `never`, unless an automatic reviewer
+is configured ([Codex `exec/lib.rs`][cx-exec-default], [Codex
+`exec/lib.rs`][cx-exec-reviewer]), and rejects any request for approval that
+reaches it ([Codex `exec/lib.rs`][cx-exec-requests]). Its sandbox defaults to
+workspace-write in a project with a trust decision and to read-only otherwise
+([Codex `config_toml.rs`][cx-exec-sandbox]). `--output-schema` constrains the
+final message to a JSON Schema ([Codex `v2/turn.rs`][cx-output-schema]).
+`codex exec` has no flag that limits the number of turns or tokens ([Codex
+`exec/cli.rs`][cx-exec-options], [Codex
+`shared_options.rs`][cx-shared-options]).
+
+### Sessions across runs
+
+A program continues the most recent Claude Code session with `--continue`, or a
+specific one with `--resume` and the session ID from an earlier run's JSON
+output ([Claude Code headless][cc-headless-continue]). The resumed context holds
+the conversation history, with the last compaction's summary in place of the
+messages that the compaction summarised, but options such as `--mcp-config` and
+`--plugin-dir` must be passed again ([Claude Code
+sessions][cc-sessions-restore], [Claude Code sessions][cc-sessions-flags]).
+
+`codex exec resume` continues a session given its ID, or the most recent one
+with `--last`. The ID arrives in the `thread.started` event ([Codex
+`exec/cli.rs`][cx-exec-resume], [Codex `exec_events.rs`][cx-exec-events]). Codex
+rebuilds the history from the stored session, and the current run's sandbox and
+approval policy, and its model when one is set, apply to the resumed session
+([Codex `session/mod.rs`][cx-resume-history], [Codex
+`exec/lib.rs`][cx-exec-resume-settings]).
+
 ## Sources
 
 The Claude API and Claude Code sources are Anthropic's documentation as of
 November 2026. The Codex sources are pinned to commit `49d657a` of
-`openai/codex`, and their paths are relative to its `codex-rs` directory.
+`openai/codex`, and their paths are relative to its `codex-rs` directory, except
+paths that begin with `sdk/`, which are relative to the repository's root.
 
 [api-glossary-context]:
   https://platform.claude.com/docs/en/about-claude/glossary#context-window
@@ -581,10 +990,13 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview#pricing
 [api-tool-use-when]:
   https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview#when-claude-uses-tools
+[cc-bg-commands]:
+  https://code.claude.com/docs/en/tools-reference#background-commands
+[cc-bg-how]:
+  https://code.claude.com/docs/en/interactive-mode#how-backgrounding-works
+[cc-cli-flags]: https://code.claude.com/docs/en/cli-reference#cli-flags
 [cc-compact]:
   https://code.claude.com/docs/en/context-window#what-survives-compaction
-[cc-context-fills]:
-  https://code.claude.com/docs/en/how-claude-code-works#when-context-fills-up
 [cc-context-full]:
   https://code.claude.com/docs/en/context-window#when-your-context-fills-up
 [cc-context-timeline]:
@@ -593,21 +1005,71 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
 [cc-glossary-harness]: https://code.claude.com/docs/en/glossary#agentic-harness
 [cc-glossary-hook]: https://code.claude.com/docs/en/glossary#hook
 [cc-glossary-loop]: https://code.claude.com/docs/en/glossary#agentic-loop
+[cc-glossary-mcp-server]: https://code.claude.com/docs/en/glossary#mcp-server
 [cc-glossary-reminder]: https://code.claude.com/docs/en/glossary#system-reminder
 [cc-glossary-system-prompt]:
   https://code.claude.com/docs/en/glossary#system-prompt
 [cc-glossary-thinking]:
   https://code.claude.com/docs/en/glossary#extended-thinking
 [cc-glossary-turn]: https://code.claude.com/docs/en/glossary#turn
+[cc-headless-bare]:
+  https://code.claude.com/docs/en/headless#start-faster-with-bare-mode
+[cc-headless-basic]: https://code.claude.com/docs/en/headless#basic-usage
+[cc-headless-bg-exit]:
+  https://code.claude.com/docs/en/headless#background-tasks-at-exit
+[cc-headless-continue]:
+  https://code.claude.com/docs/en/headless#continue-conversations
+[cc-headless-output]:
+  https://code.claude.com/docs/en/headless#get-structured-output
 [cc-headless-perm]:
   https://code.claude.com/docs/en/headless#turn-off-permission-prompts-in-unattended-runs
+[cc-headless-pipe]:
+  https://code.claude.com/docs/en/headless#pipe-data-through-claude
+[cc-headless-stream]: https://code.claude.com/docs/en/headless#stream-responses
+[cc-hooks-async-exec]:
+  https://code.claude.com/docs/en/hooks#how-async-hooks-execute
+[cc-hooks-background]:
+  https://code.claude.com/docs/en/hooks#run-hooks-in-the-background
+[cc-hooks-config]: https://code.claude.com/docs/en/hooks#configuration
+[cc-hooks-context]: https://code.claude.com/docs/en/hooks#add-context-for-claude
+[cc-hooks-exit]: https://code.claude.com/docs/en/hooks#exit-code-output
+[cc-hooks-exit0]: https://code.claude.com/docs/en/hooks#exit-code-0
+[cc-hooks-handlers]: https://code.claude.com/docs/en/hooks#hook-handler-fields
+[cc-hooks-input]: https://code.claude.com/docs/en/hooks#common-input-fields
+[cc-hooks-json]: https://code.claude.com/docs/en/hooks#json-output
+[cc-hooks-lifecycle]: https://code.claude.com/docs/en/hooks#hook-lifecycle
+[cc-hooks-locations]: https://code.claude.com/docs/en/hooks#hook-locations
+[cc-hooks-onfailure]:
+  https://code.claude.com/docs/en/hooks#block-the-action-when-a-hook-fails
+[cc-hooks-permissionrequest]:
+  https://code.claude.com/docs/en/hooks#permissionrequest-decision-control
+[cc-hooks-pretooluse]:
+  https://code.claude.com/docs/en/hooks#pretooluse-decision-control
 [cc-hooks-stop]:
   https://code.claude.com/docs/en/hooks#exit-code-2-behavior-per-event
+[cc-hooks-stop-decision]:
+  https://code.claude.com/docs/en/hooks#stop-decision-control
+[cc-hooks-stop-input]: https://code.claude.com/docs/en/hooks#stop-input
+[cc-hooks-subagentstop]: https://code.claude.com/docs/en/hooks#subagentstop
+[cc-hooks-timeouts]: https://code.claude.com/docs/en/hooks#timeouts
+[cc-hooks-trust]: https://code.claude.com/docs/en/hooks#workspace-trust
 [cc-idle-compaction]:
   https://code.claude.com/docs/en/settings-reference#idlecompaction
 [cc-loop]:
   https://code.claude.com/docs/en/how-claude-code-works#the-agentic-loop
+[cc-mcp-always-load]:
+  https://code.claude.com/docs/en/mcp#exempt-a-server-from-deferral
+[cc-mcp-auto-background]:
+  https://code.claude.com/docs/en/mcp#automatic-backgrounding-of-long-tool-calls
+[cc-mcp-configure-search]:
+  https://code.claude.com/docs/en/mcp#configure-tool-search
+[cc-mcp-output-limits]:
+  https://code.claude.com/docs/en/mcp#mcp-output-limits-and-warnings
 [cc-mcp-plugin]: https://code.claude.com/docs/en/mcp#plugin-provided-mcp-servers
+[cc-mcp-task-result]:
+  https://code.claude.com/docs/en/mcp#stop-an-mcp-task-or-get-its-result
+[cc-mcp-tool-search]:
+  https://code.claude.com/docs/en/mcp#scale-with-mcp-tool-search
 [cc-memory-agents]:
   https://code.claude.com/docs/en/memory#when-claude-code-reads-agents-md
 [cc-memory-auto]: https://code.claude.com/docs/en/memory#how-it-works
@@ -618,12 +1080,16 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
 [cc-memory-rules]: https://code.claude.com/docs/en/memory#set-up-rules
 [cc-memory-where]:
   https://code.claude.com/docs/en/memory#choose-where-to-put-claude-md-files
+[cc-monitor-tool]: https://code.claude.com/docs/en/tools-reference#monitor-tool
+[cc-perm-noninteractive]:
+  https://code.claude.com/docs/en/permission-modes#which-mode-a-non-interactive-run-starts-in
 [cc-permissions-comment]:
   https://code.claude.com/docs/en/permissions#add-a-comment-when-you-answer-a-permission-prompt
 [cc-permissions-hooks]:
   https://code.claude.com/docs/en/permissions#extend-permissions-with-hooks
 [cc-permissions-manage]:
   https://code.claude.com/docs/en/permissions#manage-permissions
+[cc-permissions-mcp]: https://code.claude.com/docs/en/permissions#mcp
 [cc-permissions-precedence]:
   https://code.claude.com/docs/en/permissions#precedence-among-rules-hooks-and-mods
 [cc-permissions-system]:
@@ -642,6 +1108,8 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://code.claude.com/docs/en/plugins/manifest-reference#fields
 [cc-plugin-manifest-file]:
   https://code.claude.com/docs/en/plugins/manifest-reference#manifest-file
+[cc-plugin-mcp-names]:
+  https://code.claude.com/docs/en/plugins/components#server-names-tool-names-and-reloads
 [cc-plugin-monitors]:
   https://code.claude.com/docs/en/plugins/components#monitors
 [cc-plugin-name]:
@@ -653,8 +1121,27 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://code.claude.com/docs/en/plugins#understand-what-a-plugin-is
 [cc-resume]:
   https://code.claude.com/docs/en/how-claude-code-works#resume-or-fork-sessions
+[cc-sdk-hooks]: https://code.claude.com/docs/en/agent-sdk/hooks#configure-hooks
+[cc-sdk-limits]:
+  https://code.claude.com/docs/en/agent-sdk/agent-loop#turns-and-budget
+[cc-sdk-loop]:
+  https://code.claude.com/docs/en/agent-sdk/agent-loop#the-loop-at-a-glance
+[cc-sdk-origin]:
+  https://code.claude.com/docs/en/agent-sdk/typescript#sdkmessageorigin
+[cc-sdk-overview]:
+  https://code.claude.com/docs/en/agent-sdk/overview#compare-the-agent-sdk-to-other-claude-tools
+[cc-sdk-sources]:
+  https://code.claude.com/docs/en/agent-sdk/claude-code-features#control-filesystem-settings-with-settingsources
+[cc-sdk-system-prompt]:
+  https://code.claude.com/docs/en/agent-sdk/modifying-system-prompts#how-system-prompts-work
+[cc-sdk-task-notification]:
+  https://code.claude.com/docs/en/agent-sdk/typescript#sdktasknotificationmessage
 [cc-sessions]:
   https://code.claude.com/docs/en/how-claude-code-works#work-with-sessions
+[cc-sessions-flags]:
+  https://code.claude.com/docs/en/sessions#flags-to-pass-again-when-you-resume
+[cc-sessions-restore]:
+  https://code.claude.com/docs/en/sessions#what-a-resumed-session-restores
 [cc-skills-cut]:
   https://code.claude.com/docs/en/skills#skill-descriptions-are-cut-short
 [cc-skills-cwd]:
@@ -685,6 +1172,9 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://code.claude.com/docs/en/sub-agents#choose-the-subagent-scope
 [cc-sub-startup]:
   https://code.claude.com/docs/en/sub-agents#what-loads-at-startup
+[cc-tools-available]:
+  https://code.claude.com/docs/en/tools-reference#check-which-tools-are-available
+[cc-tools-reference]: https://code.claude.com/docs/en/tools-reference
 [cx-agent-control]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/agent/control.rs#L524-L587
 [cx-agent-plugin-manifest]:
@@ -695,8 +1185,20 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/agents_md_manager.rs#L69-L135
 [cx-agents-md-replace]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/context/world_state/agents_md.rs#L11-L13
+[cx-app-server-experimental]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/cli/src/main.rs#L178
+[cx-app-server-listen]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/cli/src/main.rs#L602-L613
+[cx-app-server-rpc]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/app-server-protocol/src/rpc.rs#L1-L2
+[cx-app-server-thread]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/app-server-protocol/src/protocol/common.rs#L575-L592
+[cx-app-server-turn]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/app-server-protocol/src/protocol/common.rs#L1113-L1136
 [cx-approval]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/protocol/src/protocol.rs#L1184-L1207
+[cx-approvals-flow]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/approvals.rs#L600-L705
 [cx-catalog]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/ext/skills/src/catalog_prompt.rs
 [cx-command-migration]:
@@ -723,26 +1225,162 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/protocol/src/models.rs#L1385-L1390
 [cx-doc-max]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/config/src/config_toml.rs#L76
+[cx-exec-agents-test]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/tests/suite/agents_md.rs#L6-L74
 [cx-exec-default]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/lib.rs#L640-L642
+[cx-exec-events]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/exec_events.rs#L9-L43
+[cx-exec-exit]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/lib.rs#L1474-L1491
+[cx-exec-exit-call]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/lib.rs#L1543-L1544
+[cx-exec-exit-event]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/unified_exec/async_watcher.rs#L155-L243
+[cx-exec-inproc]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/lib.rs#L1107-L1113
+[cx-exec-last]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/cli.rs#L95-L102
+[cx-exec-options]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/cli.rs#L15-L109
 [cx-exec-policy]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/exec_policy.rs#L897-L911
+[cx-exec-policy-human]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/exec_policy.rs#L470-L474
 [cx-exec-policy-rules]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/exec_policy.rs#L421-L509
+[cx-exec-prompt]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/cli.rs#L104-L108
+[cx-exec-remote]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/cli.rs#L20-L27
+[cx-exec-requests]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/lib.rs#L2289-L2421
+[cx-exec-resume]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/cli.rs#L228-L296
+[cx-exec-resume-settings]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/lib.rs#L1607-L1633
+[cx-exec-reviewer]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/lib.rs#L854-L887
+[cx-exec-sandbox]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/config/src/config_toml.rs#L913-L922
+[cx-exec-startup]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/lib.rs#L800-L827
+[cx-exec-streams]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/lib.rs#L1-L4
+[cx-exec-trust]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/lib.rs#L684-L696
+[cx-exec-trust-flag]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec/src/cli.rs#L58-L61
+[cx-followup-task]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/handlers/multi_agents_v2/followup_task.rs#L41-L47
 [cx-fork-history]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/agent/history.rs#L87-L134
 [cx-fresh-retained]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/agent/history.rs#L46-L84
+[cx-goal-idle]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/ext/goal/src/extension.rs#L180-L201
+[cx-goals-default]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/features/src/lib.rs#L2285-L2290
 [cx-home-instructions]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/codex-home/src/instructions/mod.rs#L40-L83
+[cx-hook-allow]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/engine/output_parser.rs#L441-L482
+[cx-hook-approvals]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/approvals.rs#L600-L627
+[cx-hook-async]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/engine/mod.rs#L195-L210
+[cx-hook-bypass]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/utils/cli/src/shared_options.rs#L61-L64
+[cx-hook-compact-local]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/compact.rs#L635-L651
+[cx-hook-compact-remote]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/compact_remote_v2.rs#L618-L679
+[cx-hook-compact-restart]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/mod.rs#L5040-L5043
+[cx-hook-context-events]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/engine/discovery.rs#L686-L703
+[cx-hook-context-item]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/context/hook_additional_context.rs#L19-L42
+[cx-hook-context-separate]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/hook_runtime.rs#L911-L917
+[cx-hook-continue]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/turn.rs#L848-L866
+[cx-hook-events]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/lib.rs#L29-L44
+[cx-hook-handlers]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/protocol/src/hooks.rs#L140-L188
+[cx-hook-interrupt]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/hook_runtime.rs#L500-L546
+[cx-hook-managed-only]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/engine/discovery.rs#L112-L140
+[cx-hook-matcher]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/engine/matcher.rs#L11-L41
+[cx-hook-model-request]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/hook_runtime/sampling.rs#L57-L119
+[cx-hook-permission]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/events/permission_request.rs#L153-L173
+[cx-hook-pretooluse]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/events/pre_tool_use.rs#L268-L298
+[cx-hook-prompt-item]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/protocol/src/items.rs#L756-L788
+[cx-hook-prompt-xml]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/protocol/src/items.rs#L132-L139
+[cx-hook-skip]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/engine/discovery.rs#L782-L801
+[cx-hook-sources]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/engine/discovery.rs#L156-L346
+[cx-hook-spill]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/output_spill.rs#L12-L13
+[cx-hook-stdin]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/engine/dispatcher.rs#L242-L251
+[cx-hook-stdout-context]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/events/session_start.rs#L305-L314
+[cx-hook-stop]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/events/stop.rs#L299-L356
+[cx-hook-subagent]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/hook_runtime.rs#L376-L453
+[cx-hook-subagent-input]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/hook_runtime.rs#L1088-L1107
+[cx-hosted-search]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/spec_plan.rs#L724-L754
 [cx-initial-context]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/mod.rs#L5142-L5149
+[cx-inject-no-turn]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/inject.rs#L198-L225
 [cx-legacy-manifests]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec-server-protocol/src/protocol.rs#L54-L59
+[cx-mailbox-defer]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/input_queue.rs#L395-L416
+[cx-mailbox-wake]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/handlers.rs#L84-L104
+[cx-mcp-approval]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/mcp_tool_call.rs#L2840-L2867
+[cx-mcp-approval-never]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/mcp_tool_call.rs#L1893-L1901
+[cx-mcp-auto-approve]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/codex-mcp/src/mcp/mod.rs#L96-L115
+[cx-mcp-config]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/config/src/config_toml.rs#L306-L310
+[cx-mcp-deferred]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/mcp_tool_exposure.rs#L155-L159
+[cx-mcp-exposure-final]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/spec_plan.rs#L284-L319
+[cx-mcp-instructions]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/codex-mcp/src/rmcp_client.rs#L1073-L1075
+[cx-mcp-names]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/codex-mcp/src/tools.rs#L126-L303
+[cx-mcp-namespace]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/handlers/mcp.rs#L611-L616
+[cx-mcp-sanitize]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/codex-mcp/src/mcp/mod.rs#L651-L666
+[cx-mcp-truncation]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/handlers/mcp.rs#L298-L301
 [cx-models]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/models-manager/models.json
 [cx-multiagent-version]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/config/mod.rs#L1780-L1807
+[cx-output-schema]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/app-server-protocol/src/protocol/v2/turn.rs#L290-L293
 [cx-plugin-cache]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core-plugins/src/store.rs#L112-L120
 [cx-plugin-components]:
@@ -757,12 +1395,24 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core-plugins/src/loader.rs#L667-L672
 [cx-preserve-fork]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/config/mod.rs#L1479
+[cx-prewarm]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/startup_prewarm.rs#L1
+[cx-prewarm-request]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/client.rs#L2614-L2660
+[cx-resume-history]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/mod.rs#L1980-L2008
 [cx-roles-builtin]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/agent/role.rs#L315-L350
 [cx-roles-loader]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/agent-roles/src/loader.rs#L23-L117
 [cx-sandbox-bypass]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/sandboxing.rs#L265-L283
+[cx-sdk-py]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/sdk/python/src/openai_codex/client.py#L215-L256
+[cx-sdk-ts]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/sdk/typescript/src/exec.ts#L94-L95
+[cx-shared-options]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/utils/cli/src/shared_options.rs
 [cx-skill-mention-chars]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/skills/src/mentions.rs#L226-L228
 [cx-skill-namespace]:
@@ -793,12 +1443,32 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/handlers/multi_agents_v2/spawn.rs#L209-L239
 [cx-spawn-v2-schema]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/handlers/multi_agents_spec.rs#L664-L669
+[cx-subagent-completion]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/agent/control/completion.rs#L28-L152
+[cx-subagent-v1-notify]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/agent/control.rs#L582-L587
 [cx-thread-instructions]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/thread_manager.rs#L2263-L2301
 [cx-tool-follow]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/stream_events_utils.rs#L360-L421
+[cx-tool-router]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/spec_plan.rs#L122-L218
+[cx-tool-search-limit]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/handlers/tool_search.rs#L237
+[cx-tool-search-output]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/context.rs#L290-L305
+[cx-tool-search-spec]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/handlers/tool_search_spec.rs#L93-L95
+[cx-tui-startup]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/tui/src/lib.rs#L667-L690
 [cx-turn]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/turn.rs#L692-L866
+[cx-turn-endturn]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/turn.rs#L3677-L3679
+[cx-turn-pending]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/turn.rs#L537-L560
 [cx-world-state]:
   https://github.com/openai/codex/tree/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/context/world_state
+[cx-write-stdin]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/handlers/shell_spec.rs#L75-L138
 [transformer]: https://arxiv.org/abs/1706.03762
