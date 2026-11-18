@@ -71,23 +71,21 @@ the instruction files ([how Claude Code works][cc-sessions]).
 
 ## The turn
 
-A turn starts when input arrives. The model then either calls tools or answers.
-When it calls a tool, the agent harness runs the tool, adds the result to the
-context and calls the model again. When the model answers without calling a
-tool, the turn ends ([Codex `turn.rs`][cx-turn], [Claude Code
-glossary][cc-glossary-turn]). Input that the user sends during a turn joins that
-turn once the running tool calls finish ([Claude Code][cc-steer], [Codex
-`turn.rs`][cx-turn-pending]).
+A tool call is a structured block of tokens that names a tool and gives the
+tool's input. When the model generates a tool call, its generation stops and the
+agent harness runs the tool. The agent harness then appends the tool's result to
+the context, and the model generates again from that context ([Claude tool
+use][api-tool-use], [Codex `turn.rs`][cx-turn]).
 
-Between turns the agent does nothing. The next turn starts only when new input
-arrives: a message from the user, or a notification from the agent harness, such
-as a background subagent finishing ([Claude Code subagents][cc-sub-background]).
-In a non-interactive run, such as `claude -p`, the run ends with the turn
-([Claude Code headless][cc-headless]).
+This loop repeats until the model generates a response that contains no tool
+call. That response is the turn output, and it ends the turn. A turn starts when
+input arrives, usually a message from the user ([Claude Code
+glossary][cc-glossary-turn], [Codex `turn.rs`][cx-turn]). Between turns the
+model generates nothing. The next turn starts only when new input arrives.
 
-The term "turn" has one meaning on both agent harnesses. Claude Code's
-`maxTurns` field and `--max-turns` flag limit "agentic turns", a count its
-documentation does not define ([Claude Code subagents][cc-sub-frontmatter]).
+A tool can change things outside the context, such as a file on disk or the
+state of a repository. The context gains only the tool call and the result that
+the agent harness appends.
 
 ## What a skill is
 
@@ -206,6 +204,8 @@ subagents][cc-sub-compact]).
 The Codex sources are pinned to commit `49d657a` of `openai/codex`. The Claude
 Code sources are its documentation as of November 2026.
 
+[api-tool-use]:
+  https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview#how-tool-use-works
 [api-glossary]: https://platform.claude.com/docs/en/about-claude/glossary
 [api-thinking]:
   https://platform.claude.com/docs/en/build-with-claude/context-windows
@@ -213,7 +213,6 @@ Code sources are its documentation as of November 2026.
   https://code.claude.com/docs/en/context-window#what-survives-compaction
 [cc-glossary-reminder]: https://code.claude.com/docs/en/glossary#system-reminder
 [cc-glossary-turn]: https://code.claude.com/docs/en/glossary#turn
-[cc-headless]: https://code.claude.com/docs/en/headless
 [cc-headless-perm]:
   https://code.claude.com/docs/en/headless#turn-off-permission-prompts-in-unattended-runs
 [cc-memory-delivery]:
@@ -234,8 +233,6 @@ Code sources are its documentation as of November 2026.
 [cc-skills-name]:
   https://code.claude.com/docs/en/skills#how-a-skill-gets-its-command-name
 [cc-skills-life]: https://code.claude.com/docs/en/skills#skill-content-lifecycle
-[cc-steer]:
-  https://code.claude.com/docs/en/how-claude-code-works#interrupt-and-steer
 [cc-sub-background]:
   https://code.claude.com/docs/en/sub-agents#tools-permissions-and-results-of-background-subagents
 [cc-sub-checkpoints]:
@@ -246,8 +243,6 @@ Code sources are its documentation as of November 2026.
 [cc-sub-files]: https://code.claude.com/docs/en/sub-agents#write-subagent-files
 [cc-sub-fork]:
   https://code.claude.com/docs/en/sub-agents#fork-the-current-conversation
-[cc-sub-frontmatter]:
-  https://code.claude.com/docs/en/sub-agents#frontmatter-reference
 [cc-sub-scoped]:
   https://code.claude.com/docs/en/sub-agents#invoke-subagents-explicitly
 [transformer]: https://arxiv.org/abs/1706.03762
@@ -275,5 +270,3 @@ Code sources are its documentation as of November 2026.
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/turn.rs#L200-L213
 [cx-turn-compact]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/turn.rs#L718-L730
-[cx-turn-pending]:
-  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/turn.rs#L718
