@@ -314,10 +314,10 @@ bar and a check, and each shortfall becomes an issue.
   ledger is `docs/special-cases.md`, as in the other two projects, and the
   Claude Code and Codex blocks in the skills are its first entries.
 - Translated: Cohesive modules becomes one job per skill. No unused exports
-  becomes a reader for every shared file and agent. One way becomes one fact,
-  one home across skills. No suppressions covers markdownlint and Prettier
-  markers, of which there are none today. Versioned contract becomes the
-  compatibility page.
+  becomes a reader for every file in the plugin, and two for a shared file. One
+  way becomes one fact, one home across skills. No suppressions covers
+  markdownlint and Prettier markers, of which there are none today. Versioned
+  contract becomes the compatibility page.
 - Dropped, because they are about code: Focused functions, Fast readable tests,
   and Invariants by construction.
 - Added: Size. At each release it counts the lines of each skill, of the shared

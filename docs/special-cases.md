@@ -1,0 +1,18 @@
+# Special cases
+
+This page lists every place in the plugin that applies to one particular
+situation, rather than states a general rule, with the cause of each. It is the
+ledger that [the standard](standard.md)'s "Rules not cases" criterion measures,
+and the standard sets the bar for each entry's cause.
+
+Text that applies a general rule is not listed, even where it names a situation.
+An example is `dream:smith` labelling its pull request by change type, which
+applies the change types that [the concepts page](concepts.md) defines.
+
+## Agent harnesses
+
+| Where                                                                                                                | Situation                                                                                                                                                                             | Cause                                                                                                                                                                                                                         |
+| -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dream:code-review` and `dream:coherence-review`, "Launch the lenses"; `dream:precedent-review`, "Launch the review" | Under Claude Code, the skill launches the plugin's subagent type. Under Codex, it launches a plain subagent, gives it the subagent file's path, and tells it to skip the frontmatter. | Claude Code registers each file in a plugin's `agents/` directory as a subagent type. Codex does not read a plugin's `agents/` directory, so a subagent file reaches a Codex subagent only as a path that the subagent reads. |
+| `subagent-waiting.md`                                                                                                | Under Claude Code, the agent ends its turn until a subagent reports. Under Codex, it calls `list_agents` and `wait_agent` within its turn.                                            | Claude Code starts a turn when a subagent's completion notification arrives. Codex gives a subagent's completion to an idle parent only at the parent's next turn, so a parent that ended its turn would not resume.          |
+| `agent-written-marks.json`, read by `dream:smith`, `dream:less` and `spec-files.md`                                  | The commit trailer names a different co-author under each agent harness.                                                                                                              | Each agent harness runs a different vendor's model, and the trailer credits that vendor's model.                                                                                                                              |
