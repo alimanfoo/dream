@@ -5,10 +5,6 @@ situation, rather than states a general rule, with the cause of each. It is the
 ledger that [the standard](standard.md)'s "Rules not cases" criterion measures,
 and the standard sets the bar for each entry's cause.
 
-Text that applies a general rule is not listed, even where it names a situation.
-An example is `dream:smith` labelling its pull request by change type, which
-applies the change types that [the concepts page](concepts.md) defines.
-
 ## Agent harnesses
 
 | Where                                                                                                                | Situation                                                                                                                                                                             | Cause                                                                                                                                                                                                                         |
