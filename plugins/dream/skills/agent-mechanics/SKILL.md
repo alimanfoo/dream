@@ -1,11 +1,8 @@
 ---
 name: agent-mechanics
 description:
-  Explains how a coding agent works under Claude Code and Codex, covering the
-  model, the context, the turn, tool calls and permissions, skills, subagents
-  and compaction. Use when engineering a system that has LLM agents in it, such
-  as a prompt, a skill, a subagent file or a program that runs agents, to reason
-  about what the agents will do.
+  Explains how coding agents work under Claude Code and Codex. Use only when
+  explicitly invoked.
 ---
 
 # dream:agent-mechanics
@@ -44,6 +41,8 @@ sequence of tokens from which the model generates its output, and its length is
 bounded by the model's context window, the amount of text that the model can
 refer to when generating ([Claude glossary][api-glossary-context]).
 
+### Autoregressive generation
+
 Claude's underlying model is autoregressive ([Claude
 glossary][api-glossary-pretraining]). In the Transformer architecture of Vaswani
 et al., an autoregressive model generates its output one token at a time,
@@ -56,6 +55,8 @@ glossary][api-glossary-temperature]). Generation continues until a stop
 condition is met, for example when the model finishes its response, emits a tool
 call or reaches a token limit ([Claude stop reasons][api-stop-reasons]).
 
+### Inference requests
+
 The harness obtains each response by sending the model an inference request. The
 Claude Messages API is stateless: the client sends the full conversation with
 every request. With message threads, a beta feature, the API keeps the
@@ -64,6 +65,8 @@ API][api-messages]). Either way, the context of a request holds what the harness
 has supplied, namely a system prompt, the definitions of the available tools and
 the conversation so far, together with a tool-use system prompt that the API
 adds whenever tools are defined ([Claude tool use][api-tool-use-pricing]).
+
+### Consequences
 
 Three consequences follow.
 
@@ -97,6 +100,8 @@ Everything else the harness adds, from instruction files to conversation
 history, occupies the context window too ([Claude Code
 glossary][cc-glossary-context]).
 
+### At session start
+
 At session start, the harness adds further content. Before the user types
 anything, Claude Code loads instruction files, auto memory, the names of MCP
 tools, the listing of skills and information about the environment ([Claude Code
@@ -104,7 +109,9 @@ context window][cc-context-timeline]). Codex builds an initial context from
 sections that include the instruction files, the listing of skills and the
 environment ([Codex `session/mod.rs`][cx-initial-context], [Codex
 `world_state`][cx-world-state]). The listing of skills is described under
-[Skills](#skills).
+[The skill listing](#the-skill-listing).
+
+### Instruction files
 
 Claude Code loads `CLAUDE.md` and `CLAUDE.local.md` from the working directory
 and every directory above it ([Claude Code memory][cc-memory-load]), the
@@ -136,6 +143,8 @@ the model a replacement for the instructions it gave before ([Codex
 `agents_md_manager.rs`][cx-agents-md-refresh], [Codex
 `world_state/agents_md.rs`][cx-agents-md-replace]).
 
+### During the session
+
 As the session runs, the harness appends each user message, each response that
 the model generates, including its text and tool-use blocks, and each tool
 result ([Messages API][api-messages], [Claude tool use][api-tool-use]). It also
@@ -145,6 +154,8 @@ on disk. A hook is a handler, such as a shell command, that the harness runs at
 a fixed point in its lifecycle, for example before a tool runs or at session
 start ([Claude Code glossary][cc-glossary-reminder], [Claude Code
 glossary][cc-glossary-hook]).
+
+### Across sessions
 
 Each new harness session starts with a fresh context window, without the
 conversation history of earlier sessions ([how Claude Code works][cc-sessions]).
@@ -175,6 +186,8 @@ compact a long conversation that has been left idle ([Claude Code
 settings][cc-idle-compaction]), but background subagents can go on running
 ([Claude Code subagents][cc-sub-background]).
 
+### Other ends and continuations
+
 A turn can also end, or continue, in other ways. A response can stop because it
 reached `max_tokens`, matched a stop sequence, reached the iteration limit of
 the server-tool loop, was a refusal, or filled the context window, and the
@@ -203,6 +216,8 @@ disk or a repository's history. The context gains only the call and its result,
 so the model can condition on such a change only through what the result
 reports.
 
+### Permissions under Claude Code
+
 Claude Code first runs any `PreToolUse` hooks. A hook can deny the call, force a
 prompt, or let the call proceed without one ([Claude Code
 permissions][cc-permissions-hooks]), and a hook that exits with code 2 blocks
@@ -228,6 +243,8 @@ is in effect: a call that would prompt is then denied unless a
 approve the request and not to retry it ([Claude Code
 headless][cc-headless-perm]).
 
+### Approval under Codex
+
 Codex decides according to its approval policy ([Codex
 `protocol.rs`][cx-approval]). Under the `never` policy, which non-interactive
 `codex exec` runs use by default ([Codex `exec/src/lib.rs`][cx-exec-default]),
@@ -250,6 +267,8 @@ frontmatter field is optional: the name defaults to the folder's name, and the
 description to the first non-empty line of the body ([Claude Code
 skills][cc-skills-frontmatter]).
 
+### The skill listing
+
 At session start, the harness adds a listing of the available skills to the
 context, from which the model can decide to use one. The listing is bounded in
 size. By default, Claude Code lists every skill's name but drops descriptions to
@@ -261,6 +280,8 @@ By default, Codex lists each skill's name, description and path within a budget
 of 2% of the context window, caps each description at 1,024 characters, and
 omits any skill that does not allow implicit invocation ([Codex
 `render.rs`][cx-skills-budget], [Codex `host.rs`][cx-skills-hidden]).
+
+### Invocation under Claude Code
 
 Under Claude Code, a skill runs when the user puts its name, as `/name`, at the
 start of a message, unless its frontmatter sets `user-invocable: false`, or when
@@ -280,6 +301,8 @@ runs in a new subagent instead, which receives the rendered content as its
 prompt and does not see the conversation history ([Claude Code
 skills][cc-skills-subagent]).
 
+### Invocation under Codex
+
 Under Codex, a skill's body enters the context in one of two ways. When the
 user's input mentions the skill as `$name`, the harness reads the whole of
 `SKILL.md`, frontmatter included, and injects it into the conversation in a
@@ -295,6 +318,8 @@ with an ordinary file or shell tool call, and other skills with the
 `skills.read` tool. The file then reaches the context as that call's result
 ([Codex `models.json`][cx-models], [Codex `catalog_prompt.rs`][cx-catalog]).
 
+### Invoked content over time
+
 Once appended, a skill's content is part of the conversation and stays there
 across later turns. Claude Code does not re-read the skill file, so editing the
 file does not change the content already in the context. If the skill is invoked
@@ -304,6 +329,8 @@ After compaction, Claude Code re-attaches the most recent invocation of each
 skill, keeping at most the first 5,000 tokens of each and 25,000 tokens in all,
 and drops the oldest invocations first ([Claude Code skills][cc-skills-life]).
 
+### Installed plugin copies
+
 Under Claude Code, which file a plugin's skill is rendered from depends on how
 the plugin was installed. Claude Code copies a plugin installed from a
 marketplace into a versioned cache directory and loads that copy, with three
@@ -312,6 +339,8 @@ relative-path plugin in a marketplace added from a local path, and a
 `command`-source plugin in link mode. Edits to a relative-path plugin take
 effect at the next session start or after `/reload-plugins` ([Claude Code
 plugins][cc-plugin-cache]).
+
+### Supporting files and paths
 
 Other files in a skill's folder enter the context only when the model reads
 them, or, under Claude Code, when a `` !`command` `` placeholder injects their
@@ -338,6 +367,8 @@ subagents][cc-sub-fork]), and a skill with `context: fork` runs in a subagent
 ([Claude Code skills][cc-skills-subagent]). A subagent starts either fresh,
 without the parent's conversation history, or as a fork, with a copy of it.
 
+### Initial context under Claude Code
+
 Under Claude Code, a fresh subagent's initial context holds its own system
 prompt with environment details, the task message, the same `CLAUDE.md` files
 that the main conversation loads, a snapshot of the repository's git status when
@@ -349,6 +380,8 @@ skills already invoked in it, or the files already read ([Claude Code
 subagents][cc-sub-startup]). A fork sees the same system prompt, tools, model
 and message history as its parent, and the model can start one itself while fork
 mode is on, as it is by default ([Claude Code subagents][cc-sub-fork]).
+
+### Initial context under Codex
 
 Under Codex, the default depends on the multi-agent version. In version 1, a
 subagent starts fresh unless the call sets `fork_context` ([Codex
@@ -370,6 +403,8 @@ the parent always retains, and then receives the task message as its input
 `history.rs`][cx-fresh-retained], [Codex
 `agent/control/spawn.rs`][cx-spawn-input]).
 
+### Results and side effects
+
 When a subagent finishes, the harness adds its final result to the parent's
 context, and the subagent's own tool calls and results stay out of it. Under
 Claude Code, a subagent's summary comes back with a small metadata trailer
@@ -383,6 +418,8 @@ Changes that a subagent's tool calls make outside the context, such as edits to
 files, persist after it finishes. Under Claude Code, a fork started with
 `isolation: "worktree"` writes its file edits to a separate git worktree instead
 of the user's checkout ([Claude Code subagents][cc-sub-fork]).
+
+### Subagent definitions
 
 The two harnesses find subagent definitions in different places. Claude Code
 registers each Markdown file in a plugin's `agents/` directory, searched
@@ -401,24 +438,30 @@ inherited in a fork.
 
 ## Compaction
 
-Compaction removes content from the context. Claude Code compacts automatically
-when the context window approaches its limit, and by default also when a long
-conversation has been left idle. The user can compact on demand with `/compact`.
-Compaction replaces the conversation history with a summary ([Claude Code
-context window][cc-context-full], [Claude Code settings][cc-idle-compaction],
-[Claude Code context window][cc-compact]).
+Compaction removes content from the context.
+
+### Compaction under Claude Code
+
+Claude Code compacts automatically when the context window approaches its limit,
+and by default also when a long conversation has been left idle. The user can
+compact on demand with `/compact`. Compaction replaces the conversation history
+with a summary ([Claude Code context window][cc-context-full], [Claude Code
+settings][cc-idle-compaction], [Claude Code context window][cc-compact]).
 
 After compaction, the system prompt still applies, and Claude Code re-injects
 the project-root `CLAUDE.md`, rules without path patterns, auto memory, and the
 listing of skills. It also re-injects a fresh git status if the session started
 with one, up to five of the files that the model read or edited, most recently
 modified first, and recent skill invocations within the limits given under
-[Skills](#skills). A re-read file over 5,000 tokens returns only as a path.
-Nested `CLAUDE.md` files and path-scoped rules return only when the model next
-works with files they cover. Instructions given only in the conversation, and
-context that hooks added earlier, survive only as far as the summary records
-them, although `SessionStart` hooks that match compaction run again and add
-their output ([Claude Code context window][cc-compact]).
+[Invoked content over time](#invoked-content-over-time). A re-read file over
+5,000 tokens returns only as a path. Nested `CLAUDE.md` files and path-scoped
+rules return only when the model next works with files they cover. Instructions
+given only in the conversation, and context that hooks added earlier, survive
+only as far as the summary records them, although `SessionStart` hooks that
+match compaction run again and add their output ([Claude Code context
+window][cc-compact]).
+
+### Compaction under Codex
 
 Codex compacts automatically when the context reaches 90% of the context window,
 or a lower configured limit ([Codex `openai_models.rs`][cx-compact-limit]). It
