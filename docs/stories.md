@@ -536,8 +536,8 @@ GitHub or a reply to the user. They want the reader to understand it at first
 reading, even a reader whose first language isn't English.
 
 1. The user runs `/dream:plain-english`.
-2. The agent reads the Plain English guide, dream's standard for everything an
-   agent writes and says, and confirms in one line that it has loaded it.
+2. The agent reads the Plain English guide and confirms in one line that it has
+   loaded it.
 3. The user asks the agent for the writing they want.
 4. The agent writes with the guide in its context. The skill directs it to apply
    the guide as it drafts and as it revises.

@@ -20,10 +20,6 @@ the issue.
 Read the [coherent coding guide](../../coherent-coding.md). When you recommend a
 change, recommend the one the guide calls for, not the smallest patch.
 
-## Communication style
-
-Load the `dream:plain-english` skill. It governs the answer you write.
-
 ## Investigate
 
 Answer from the code, not from the issue's account of it. Treat every claim in
@@ -60,4 +56,4 @@ Reread your draft and cut anything the user doesn't need to answer their
 question.
 
 Write each paragraph on a single line, since GitHub reflows it (see
-[Text for GitHub](../../plain-english.md#text-for-github)).
+[Text for GitHub](../../github-text.md)).

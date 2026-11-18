@@ -14,8 +14,6 @@ one commit.
 Each task states a criterion that tells the implementer which work belongs in
 the task. The implementer applies the criterion when starting the task.
 
-Write every turn output and artefact in this skill using `dream:plain-english`.
-
 Follow the steps in order.
 
 ## Arguments
