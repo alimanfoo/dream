@@ -68,8 +68,8 @@ session is a sequence of turns.
 A **subagent** is a coding agent that another coding agent starts inside its
 harness session to do a delegated task. It has a context of its own, and its
 final output returns to the agent that started it. A subagent starts either
-fresh, from its own system prompt and a task message, or as a **fork**, with a
-copy of its parent's context.
+fresh, without its parent's conversation history, or as a **fork**, with a copy
+of that history.
 
 ### Subagent file
 
