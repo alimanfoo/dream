@@ -558,8 +558,10 @@ behaviour or functionality.
    how a coding agent works: how the model generates text, what the context
    holds, the turn, tool calls and permissions, hooks, plugins, skills,
    subagents, compaction, and running an agent from a program.
-3. The user asks the agent for the work they want.
-4. The agent reasons about the system from the information about agent mechanics
+3. The agent reads the details for Claude Code, for Codex, or for both,
+   depending on which harnesses the system will run under.
+4. The user asks the agent for the work they want.
+5. The agent reasons about the system from the information about agent mechanics
    in its context. For example, it can tell that an instruction in a skill acts
    only through the tokens generated after it, or that a fresh subagent does not
    see its parent's conversation.

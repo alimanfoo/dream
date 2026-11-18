@@ -31,11 +31,12 @@ them. Read them before you work.
 ## Development notes
 
 Before you change a skill or a subagent file, read the guide to agent mechanics
-at `plugins/dream/skills/agent-mechanics/SKILL.md`. It describes how an agent
-will read and act on what you write. Before you change code, read the coherent
-coding guide at `plugins/dream/coherent-coding.md`. Read both by these paths in
-the working tree, not by skill name, since a skill name loads the installed copy
-of the plugin, which can be older than the working tree.
+in `plugins/dream/skills/agent-mechanics/`: `SKILL.md`, then `claude-code.md`
+and `codex.md`, since dream runs under both agent harnesses. It describes how an
+agent will read and act on what you write. Before you change code, read the
+coherent coding guide at `plugins/dream/coherent-coding.md`. Read both by these
+paths in the working tree, not by skill name, since a skill name loads the
+installed copy of the plugin, which can be older than the working tree.
 
 When you change the guide to agent mechanics, check each changed claim against
 its sources, and update the paragraph's entry in
@@ -65,14 +66,15 @@ skill finds the default branch and the review base.
 
 Keep a simple subagent task prompt inline in the skill that launches it. When a
 task prompt earns its own file, put it in `plugins/dream/agents/`, so that one
-file serves both agent harnesses. The
-[guide to agent mechanics](plugins/dream/skills/agent-mechanics/SKILL.md#subagent-definitions)
-says how each agent harness reads a file there.
+file serves both agent harnesses. The guide to agent mechanics says how
+[Claude Code](plugins/dream/skills/agent-mechanics/claude-code.md#subagent-definitions)
+and [Codex](plugins/dream/skills/agent-mechanics/codex.md#subagent-definitions)
+each read a file there.
 
 Name an agent for the job it does, not for the skill that launches it. Under
 Claude Code, an agent that shares its skill's name makes a `dream:foo` reference
 ambiguous, as the
-[guide to agent mechanics](plugins/dream/skills/agent-mechanics/SKILL.md#plugin-names)
+[guide to agent mechanics](plugins/dream/skills/agent-mechanics/claude-code.md#plugin-names)
 explains.
 
 Make every skill that tells the agent to write text that GitHub renders, such as
