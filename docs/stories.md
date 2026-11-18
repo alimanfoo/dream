@@ -556,7 +556,7 @@ behaviour or functionality.
 1. The user runs `/dream:agent-mechanics`.
 2. A guide to agent mechanics is appended to the agent's context. It describes
    how a coding agent works: how the model generates text, what the context
-   holds, the turn, tool calls and permissions, skills, subagents and
+   holds, the turn, tool calls and permissions, plugins, skills, subagents and
    compaction.
 3. The user asks the agent for the work they want.
 4. The agent reasons about the system from the information about agent mechanics

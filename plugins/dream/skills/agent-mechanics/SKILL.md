@@ -258,6 +258,93 @@ run outside the sandbox where the filesystem policy permits it ([Codex
 sandbox is returned to the model as the call's result ([Codex
 `protocol.rs`][cx-approval]).
 
+## Plugins
+
+A plugin is a directory of components, such as skills, subagent definitions and
+hooks, that an agent harness installs and loads as one unit ([Claude Code
+plugins][cc-plugins]). A plugin's name usually comes from its manifest. Under
+Claude Code, the manifest is `.claude-plugin/plugin.json` and `name` is its only
+required field. The manifest is optional, and a plugin without one takes its
+name from its marketplace entry, or from its directory when it is loaded with
+`--plugin-dir` ([Claude Code plugin manifest][cc-plugin-manifest-file], [Claude
+Code plugin manifest][cc-plugin-manifest-fields]). Codex recognises a
+`plugin.json` at the plugin's root that declares an Agent Plugins `$schema`, and
+otherwise reads, in order, `.codex-plugin/plugin.json`,
+`.claude-plugin/plugin.json` and `.cursor-plugin/plugin.json` as a legacy
+manifest ([Codex `plugin_namespace.rs`][cx-agent-plugin-manifest], [Codex
+`exec-server-protocol/protocol.rs`][cx-legacy-manifests]).
+
+### What a plugin contributes
+
+A Claude Code plugin can bundle skills, commands, subagent definitions, hooks,
+MCP and LSP servers, monitors, executables and several other kinds of component
+([Claude Code plugin manifest][cc-plugin-layout]). While the plugin is enabled,
+the name and description of each skill, subagent and command that the model can
+invoke itself are in the context on every turn, within the limits given under
+[The skill listing](#the-skill-listing), and the full text loads only when it is
+used ([Claude Code plugins][cc-plugin-adds]). A `CLAUDE.md` at the plugin's root
+is not loaded into the context ([Claude Code plugin
+manifest][cc-plugin-layout]).
+
+Other components act whether or not the model uses the plugin's skills. Claude
+Code registers the plugin's hooks when the session loads the plugin, and they
+fire on their events from then on ([Claude Code plugin
+components][cc-plugin-hooks]). It starts the plugin's MCP servers at session
+start ([Claude Code MCP][cc-mcp-plugin]). In an interactive session, a monitor
+runs a shell command in the background, and what the command prints reaches the
+model as notifications. Monitors do not start in a non-interactive run ([Claude
+Code plugin components][cc-plugin-monitors]). The plugin's executables are on
+the `PATH` of the shell that runs the model's shell commands ([Claude Code
+plugin components][cc-plugin-executables]).
+
+A Codex plugin can bundle skills, MCP servers, apps and hooks, and has no
+manifest field for subagent definitions ([Codex
+`plugin/manifest.rs`][cx-plugin-components]). Codex loads a plugin's hooks only
+from a legacy manifest, not from an Agent Plugins one ([Codex
+`core-plugins/loader.rs`][cx-plugin-hooks]). It runs a plugin's hook only when
+the hook is enabled and is either managed, trusted or exempt from trust checks.
+The recorded trust covers a hash of the plugin's contents, so editing the plugin
+withdraws that trust ([Codex `hooks/discovery.rs`][cx-plugin-hook-trust]). When
+it installs a plugin with a legacy manifest, it converts the plugin's commands
+into skills, skipping any it cannot convert ([Codex
+`store.rs`][cx-command-migration]).
+
+### Plugin names
+
+Claude Code namespaces every component of a plugin under the plugin's name, so a
+subagent `reviewer` in a plugin `deploy-tools` is `deploy-tools:reviewer`
+([Claude Code plugin manifest][cc-plugin-name]). A plugin's skill is invoked as
+`/<plugin>:<directory>`, and a `name` in the skill's frontmatter replaces the
+directory in that name ([Claude Code plugin components][cc-plugin-skills]). A
+skill and a subagent in the same plugin can therefore have the same scoped name.
+A plugin's skill loads alongside a skill of the same name from elsewhere,
+because the prefix keeps them apart ([Claude Code skills][cc-skills-names]), but
+when subagents share a name, a plugin's has the lowest priority ([Claude Code
+subagents][cc-sub-scope]). Codex lists a plugin's skills with the plugin's name
+as a prefix, as in `plugin:skill`, and a user can mention one as `$plugin:skill`
+([Codex `namespace.rs`][cx-skill-namespace], [Codex
+`mentions.rs`][cx-skill-mention-chars]).
+
+### Which copy of a plugin loads
+
+Claude Code copies a plugin installed from a marketplace into a versioned cache
+directory and loads that copy, with three exceptions that load in place: a
+plugin loaded with `--plugin-dir`, a relative-path plugin in a marketplace added
+from a local path, and a `command`-source plugin in link mode. Edits to a
+relative-path plugin take effect at the next session start or after
+`/reload-plugins` ([Claude Code plugins][cc-plugin-cache]). A running session
+keeps the versions it loaded, even when a plugin updates during it ([Claude Code
+plugins][cc-plugin-update]).
+
+Codex loads an installed plugin from a copy in its cache, at
+`plugins/cache/<marketplace>/<plugin>/<version>` under its home directory
+([Codex `store.rs`][cx-plugin-cache]). Installing copies the plugin's
+directories and regular files but not its symbolic links ([Codex
+`store.rs`][cx-plugin-copy]). Codex's automatic refresh reinstalls a plugin only
+when its version changes, so an edit to the plugin's source that keeps the same
+version does not reach the cached copy ([Codex
+`core-plugins/loader.rs`][cx-plugin-refresh]).
+
 ## Skills
 
 A skill is a folder that contains a required file, `SKILL.md` ([Claude Code
@@ -308,11 +395,11 @@ user's input mentions the skill as `$name`, the harness reads the whole of
 `SKILL.md`, frontmatter included, and injects it into the conversation in a
 `<skill>` element ([Codex `selection.rs`][cx-skills-mention], [Codex
 `host_outcome.rs`][cx-skills-read-file], [Codex
-`fragments.rs`][cx-skills-inject]). It truncates the injected file at 8,000
-bytes for a skill from a plugin in the agent-plugin manifest format, but not for
-one from a plugin with a `.codex-plugin/plugin.json` manifest ([Codex
-`host_prompt.rs`][cx-skills-truncate], [Codex
-`core-plugins/loader.rs`][cx-plugin-format]). Otherwise, the model reads
+`fragments.rs`][cx-skills-inject]). Codex injects skills by one of two paths,
+which truncate differently at 8,000 bytes: its skills extension truncates every
+skill that it injects, and its core path truncates only a skill from a plugin
+with an Agent Plugins manifest ([Codex `extension.rs`][cx-skills-ext-truncate],
+[Codex `host_prompt.rs`][cx-skills-truncate]). Otherwise, the model reads
 `SKILL.md` itself, as the instructions it is given direct: a filesystem skill
 with an ordinary file or shell tool call, and other skills with the
 `skills.read` tool. The file then reaches the context as that call's result
@@ -328,17 +415,6 @@ content is unchanged, and appends the full content again when it has changed.
 After compaction, Claude Code re-attaches the most recent invocation of each
 skill, keeping at most the first 5,000 tokens of each and 25,000 tokens in all,
 and drops the oldest invocations first ([Claude Code skills][cc-skills-life]).
-
-### Installed plugin copies
-
-Under Claude Code, which file a plugin's skill is rendered from depends on how
-the plugin was installed. Claude Code copies a plugin installed from a
-marketplace into a versioned cache directory and loads that copy, with three
-exceptions that load in place: a plugin loaded with `--plugin-dir`, a
-relative-path plugin in a marketplace added from a local path, and a
-`command`-source plugin in link mode. Edits to a relative-path plugin take
-effect at the next session start or after `/reload-plugins` ([Claude Code
-plugins][cc-plugin-cache]).
 
 ### Supporting files and paths
 
@@ -424,10 +500,10 @@ of the user's checkout ([Claude Code subagents][cc-sub-fork]).
 The two harnesses find subagent definitions in different places. Claude Code
 registers each Markdown file in a plugin's `agents/` directory, searched
 recursively, as a subagent type with a scoped name such as
-`my-plugin:review:security` ([Claude Code subagents][cc-sub-scope]). That is the
-same `plugin:name` form by which a plugin's skills are invoked, so a skill and a
-subagent in the same plugin can have the same scoped name ([Claude Code
-skills][cc-skills-names]). Besides its built-in `default`, `explorer` and
+`my-plugin:review:security`, named as described under
+[Plugin names](#plugin-names). It ignores the `hooks`, `mcpServers` and
+`permissionMode` fields of a plugin's subagent definitions ([Claude Code
+subagents][cc-sub-scope]). Besides its built-in `default`, `explorer` and
 `worker` roles ([Codex `role.rs`][cx-roles-builtin]), Codex loads agent roles
 only from its configuration layers, as `[agents.<name>]` tables in `config.toml`
 and as TOML files in each configuration folder's `agents/` directory. It does
@@ -531,6 +607,7 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://code.claude.com/docs/en/settings-reference#idlecompaction
 [cc-loop]:
   https://code.claude.com/docs/en/how-claude-code-works#the-agentic-loop
+[cc-mcp-plugin]: https://code.claude.com/docs/en/mcp#plugin-provided-mcp-servers
 [cc-memory-agents]:
   https://code.claude.com/docs/en/memory#when-claude-code-reads-agents-md
 [cc-memory-auto]: https://code.claude.com/docs/en/memory#how-it-works
@@ -551,8 +628,29 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://code.claude.com/docs/en/permissions#precedence-among-rules-hooks-and-mods
 [cc-permissions-system]:
   https://code.claude.com/docs/en/permissions#permission-system
+[cc-plugin-adds]:
+  https://code.claude.com/docs/en/plugins#what-an-enabled-plugin-adds-to-your-sessions
 [cc-plugin-cache]:
   https://code.claude.com/docs/en/plugins/loading#in-place-and-copied-plugins
+[cc-plugin-executables]:
+  https://code.claude.com/docs/en/plugins/components#executables
+[cc-plugin-hooks]:
+  https://code.claude.com/docs/en/plugins/components#when-plugin-hooks-fire
+[cc-plugin-layout]:
+  https://code.claude.com/docs/en/plugins/manifest-reference#standard-layout
+[cc-plugin-manifest-fields]:
+  https://code.claude.com/docs/en/plugins/manifest-reference#fields
+[cc-plugin-manifest-file]:
+  https://code.claude.com/docs/en/plugins/manifest-reference#manifest-file
+[cc-plugin-monitors]:
+  https://code.claude.com/docs/en/plugins/components#monitors
+[cc-plugin-name]:
+  https://code.claude.com/docs/en/plugins/manifest-reference#name
+[cc-plugin-skills]: https://code.claude.com/docs/en/plugins/components#skills
+[cc-plugin-update]:
+  https://code.claude.com/docs/en/plugins/loading#when-auto-update-runs
+[cc-plugins]:
+  https://code.claude.com/docs/en/plugins#understand-what-a-plugin-is
 [cc-resume]:
   https://code.claude.com/docs/en/how-claude-code-works#resume-or-fork-sessions
 [cc-sessions]:
@@ -589,6 +687,8 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://code.claude.com/docs/en/sub-agents#what-loads-at-startup
 [cx-agent-control]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/agent/control.rs#L524-L587
+[cx-agent-plugin-manifest]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/utils/plugins/src/plugin_namespace.rs#L12-L80
 [cx-agents-md]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/agents_md.rs#L199-L302
 [cx-agents-md-refresh]:
@@ -599,6 +699,8 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/protocol/src/protocol.rs#L1184-L1207
 [cx-catalog]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/ext/skills/src/catalog_prompt.rs
+[cx-command-migration]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core-plugins/src/store.rs#L639-L646
 [cx-compact-limit]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/protocol/src/openai_models.rs#L583-L594
 [cx-compact-local]:
@@ -635,12 +737,24 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/codex-home/src/instructions/mod.rs#L40-L83
 [cx-initial-context]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/mod.rs#L5142-L5149
+[cx-legacy-manifests]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/exec-server-protocol/src/protocol.rs#L54-L59
 [cx-models]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/models-manager/models.json
 [cx-multiagent-version]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/config/mod.rs#L1780-L1807
-[cx-plugin-format]:
-  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core-plugins/src/loader.rs#L887-L890
+[cx-plugin-cache]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core-plugins/src/store.rs#L112-L120
+[cx-plugin-components]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/plugin/src/manifest.rs#L19-L25
+[cx-plugin-copy]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core-plugins/src/store.rs#L736-L760
+[cx-plugin-hook-trust]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/hooks/src/engine/discovery.rs#L836-L924
+[cx-plugin-hooks]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core-plugins/src/loader.rs#L942-L952
+[cx-plugin-refresh]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core-plugins/src/loader.rs#L667-L672
 [cx-preserve-fork]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/config/mod.rs#L1479
 [cx-roles-builtin]:
@@ -649,8 +763,14 @@ November 2026. The Codex sources are pinned to commit `49d657a` of
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/agent-roles/src/loader.rs#L23-L117
 [cx-sandbox-bypass]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/sandboxing.rs#L265-L283
+[cx-skill-mention-chars]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/skills/src/mentions.rs#L226-L228
+[cx-skill-namespace]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/ext/skills/src/loader/namespace.rs#L176-L181
 [cx-skills-budget]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/ext/skills/src/render.rs#L23-L27
+[cx-skills-ext-truncate]:
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/ext/skills/src/extension.rs#L446-L458
 [cx-skills-hidden]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/ext/skills/src/provider/host.rs#L170-L172
 [cx-skills-inject]:

@@ -60,13 +60,13 @@ skill finds the default branch and the review base.
 Keep a simple subagent task prompt inline in the skill that launches it. When a
 task prompt earns its own file, put it in `plugins/dream/agents/`, so that one
 file serves both agent harnesses. The
-[guide to agent mechanics](plugins/dream/skills/agent-mechanics/SKILL.md#subagents)
+[guide to agent mechanics](plugins/dream/skills/agent-mechanics/SKILL.md#subagent-definitions)
 says how each agent harness reads a file there.
 
 Name an agent for the job it does, not for the skill that launches it. Under
 Claude Code, an agent that shares its skill's name makes a `dream:foo` reference
 ambiguous, as the
-[guide to agent mechanics](plugins/dream/skills/agent-mechanics/SKILL.md#subagents)
+[guide to agent mechanics](plugins/dream/skills/agent-mechanics/SKILL.md#plugin-names)
 explains.
 
 Make every skill that tells the agent to write text that GitHub renders, such as

@@ -81,8 +81,10 @@ Replaces: "agent prompt", "named agent".
 
 ### Plugin
 
-A **plugin** is a bundle of skills, subagent files and other extensions that an
-agent harness installs as one unit.
+A **plugin** is a directory of components, such as skills, subagent files and
+hooks, that an agent harness installs and loads as one unit. It has a name,
+usually given in its manifest, which the harness uses as a prefix for the names
+of the plugin's skills.
 
 ### Repository
 
