@@ -27,6 +27,8 @@ them. Read them before you work.
 - [`docs/stories.md`](docs/stories.md) records what dream is meant to do: what
   the user does with its skills, what the agent does, and what the user has at
   the end.
+- [`docs/standard.md`](docs/standard.md) says how good dream has to be and how
+  we tell. Its definition of done holds every pull request to it.
 
 ## Development notes
 
@@ -44,16 +46,14 @@ the sources listed for its section in
 any new source to that list. The file also gives the versions the sources are
 pinned to.
 
-The collaborative product management skills, `dream:sift`, `dream:spark`,
-`dream:trace`, `dream:weave` and `dream:quest`, are an experiment, trying a
-different approach from the rest of the plugin. They run against repo convention
-on purpose, so treat a deviation as deliberate rather than as drift to tidy up.
-
-The bodies of the collaborative product management skills are written in the
-user's voice, as if the user typed it: "ask me", "tell me only what you've
-read". Don't normalise any of them back to the third person, or into a stack of
-orders. The frontmatter `description` stays third person in all of them, since
-the harness reads that to pick the skill.
+dream has two kinds of skill. Most give a coding agent instructions. The
+collaborative product management skills, `dream:sift`, `dream:spark`,
+`dream:trace`, `dream:weave` and `dream:quest`, are written in the user's voice,
+as if the user typed them: "ask me", "tell me only what you've read". Keep each
+skill in its own kind: don't turn a skill in the user's voice into the third
+person or a stack of orders. The frontmatter `description` stays third person in
+every skill, since the agent harness reads it to pick the skill. Both kinds are
+held to the same standard and answer the same definition of done.
 
 The collaborative product management skills that write a specification all read
 [`spec-files.md`](plugins/dream/spec-files.md). It owns where a specification
@@ -102,11 +102,12 @@ throughout:
   call's `subagent_type` takes.
 - Write an issue label as "dream:foo".
 
-This repo is mostly plugin metadata, skills, and agent prompts. There is no test
-suite. When changing behaviour, read the affected skill and agent prompts
-together. Check that lifecycle, role boundaries, and tool permissions stay
-consistent. Run the pre-commit hooks to check formatting. See the Linting
-section.
+End every pull request description with a "Definition of done" section that
+answers each question in
+[the standard's definition of done](docs/standard.md#definition-of-done) by its
+title, with evidence. The questions make you look past the diff to every place
+the change reaches. There is no test suite, so the checks that must pass are the
+pre-commit hooks in the Linting section.
 
 ## What the design is answering
 
