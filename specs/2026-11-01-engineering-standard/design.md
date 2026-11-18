@@ -188,15 +188,11 @@ only be seen in transcripts and shift from one model to the next, and it offers
 no opinions or instructions. It gives a conceptual foundation: the fundamental
 concepts of a coding agent, from which another model can reason about what a
 prompt will do. It names a particular host's behaviour only where that changes
-what follows from a concept, and never as a catalogue of differences. "Turn" is
-one that earns its place. Claude Code calls each call of the model, with the
-tool calls it asks for, a turn, while Codex calls the agent's whole response to
-one prompt a turn. In both, the agent ends its turn when the model answers
-without asking for another tool, and dream's skills tell agents to do exactly
-that. dreamcatcher's concepts page already records this, under "Ambiguous
-terms". Facts about how each host installs and updates a plugin belong to
-dream's release process, not to the guide. It is written carefully from what's
-known, citing docs and source where they exist.
+what follows from a concept, and never as a catalogue of differences. Which
+subagent files each host reads is one that earns its place. Facts about how each
+host installs and updates a plugin belong to dream's release process, not to the
+guide. It is written carefully from what's known, citing docs and source where
+they exist.
 
 Its first use is in `AGENTS.md`, which tells an agent working on dream to read
 it before changing a skill. That puts it in front of the agent at the moment the
@@ -222,8 +218,8 @@ from a concept.
 
 - The session: a growing transcript of input, thinking, tool calls, tool results
   and turn output. A turn ends when the model stops calling tools.
-- How the model reasons: only by producing tokens, forward, one at a time, with
-  no foresight of what it is about to write.
+- How the model reasons: only by generating tokens, forward, one at a time.
+  Nothing carries from one token to the next except the tokens in the context.
 - What is in context: the system prompt, the project's `AGENTS.md` or
   `CLAUDE.md`, and the transcript. Nothing carries over from an earlier session.
 - What a skill is: a name and description always in context. When invoked, its
@@ -232,9 +228,9 @@ from a concept.
 - Files and paths: the host finds a skill by its name, while the agent resolves
   a path itself. A skill's text stays in the transcript while the files beneath
   it can change.
-- Subagents: a fresh session that starts from one prompt and sees nothing of the
-  parent's context. Only its final message comes back, and it may have acted
-  along the way.
+- Subagents: a session with a context of its own, which starts either fresh from
+  one prompt or with a copy of the parent's transcript. Only its final message
+  comes back, and it may have acted along the way.
 - Tools and permissions: the agent can do only what its tools allow, and in a
   headless run nothing answers a prompt.
 - Long sessions: when the transcript outgrows the window, the host summarises

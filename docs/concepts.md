@@ -10,40 +10,42 @@ issues.
 
 ## Definitions
 
+### Agent harness
+
+An **agent harness** is a program that calls a language model in a loop to work
+on software. Each time it calls the model, the model's output can ask for a
+tool, such as reading a file, running a command or editing code. The agent
+harness runs the tool and calls the model again. Claude Code and Codex are agent
+harnesses.
+
+Replaces: "host".
+
 ### Coding agent
 
-A **coding agent** is a language model that works on software by using tools in
-a loop, such as reading files, running commands and editing code, and that
-decides for itself which tool to use next.
+A **coding agent** is a language model and the agent harness that calls it,
+working together. The model decides which tool comes next, and the agent harness
+acts on it.
 
 ### Context
 
 A coding agent's **context** is the sequence of tokens from which its language
 model generates its next output. It includes every earlier input to the model
-and every output from it.
+and every output from it. The agent harness builds it.
 
 ### Compaction
 
 **Compaction** is an operation that replaces earlier parts of a coding agent's
 context with a summary of them.
 
-### Agent harness
-
-An **agent harness** is a program that turns a language model into a coding
-agent. It supplies the tools, runs the loop and manages the context. Claude Code
-and Codex are agent harnesses.
-
-Replaces: "host".
-
 ### Skill
 
 A **skill** is a folder of instructions or information that an agent harness
 gives its coding agent. Its one required file, `SKILL.md`, holds a name, a
-description and a body. The name and description are in the agent's context from
-the start. The body loads into the agent's context only when the skill is
-invoked, by a person or by the agent itself. The folder can also bundle scripts
-and other files, which the agent reads or runs only when the body points it at
-them.
+description and a body. From the start, the agent harness lists the available
+skills in the agent's context, by name and, within a size limit, by description.
+The body enters the context only when the skill is invoked, by a person or by
+the agent itself. The folder can also bundle scripts and other files, which
+enter the context only when the agent reads them or receives a script's output.
 
 ### User
 
@@ -65,7 +67,9 @@ session is a sequence of turns.
 
 A **subagent** is a coding agent that another coding agent starts inside its
 harness session to do a delegated task. It has a context of its own, and its
-final output returns to the agent that started it.
+final output returns to the agent that started it. A subagent starts either
+fresh, without its parent's conversation history, or as a **fork**, with a copy
+of that history.
 
 ### Subagent file
 
@@ -77,8 +81,10 @@ Replaces: "agent prompt", "named agent".
 
 ### Plugin
 
-A **plugin** is a bundle of skills, subagent files and other extensions that an
-agent harness installs as one unit.
+A **plugin** is a directory of components, such as skills, subagent files and
+hooks, that an agent harness installs and loads as one unit. It has a name,
+usually given in its manifest, which the harness uses as a prefix for the names
+of the plugin's skills.
 
 ### Repository
 

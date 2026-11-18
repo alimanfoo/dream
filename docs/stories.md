@@ -544,3 +544,26 @@ reading, even a reader whose first language isn't English.
 
 The user has writing that the agent produced with the Plain English guide in its
 context.
+
+### An agent reasons about a system that has agents in it
+
+The user is working with a coding agent to develop a system with LLM agents in
+it, such as a prompt, a skill, a subagent file or a program that runs agents.
+They want the coding agent to be able to reason about what the agents in that
+system will do, and how the system can be engineered to achieve the desired
+behaviour or functionality.
+
+1. The user runs `/dream:agent-mechanics`.
+2. A guide to agent mechanics is appended to the agent's context. It describes
+   how a coding agent works: how the model generates text, what the context
+   holds, the turn, tool calls and permissions, hooks, plugins, skills,
+   subagents, compaction, and running an agent from a program.
+3. The agent reads the details for Claude Code, for Codex, or for both,
+   depending on which harnesses the system will run under.
+4. The user asks the agent for the work they want.
+5. The agent reasons about the system from the information about agent mechanics
+   in its context. For example, it can tell that an instruction in a skill acts
+   only through the tokens generated after it, or that a fresh subagent does not
+   see its parent's conversation.
+
+The user has work whose predictions about agents rest on how agents work.
