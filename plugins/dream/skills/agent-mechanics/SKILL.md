@@ -90,102 +90,51 @@ on generating tokens, from a context that now includes the body.
 
 ## Files and paths
 
-The agent harness finds a skill or a subagent by its name. The agent finds a
-file by its path, which it resolves itself.
+A file enters the context only when the agent generates a tool call that reads
+it. That includes a file that a skill refers to. The agent resolves the file's
+path itself, so a relative path has no fixed base.
 
-A relative path in a skill has no fixed base. Codex's skill list tells the agent
-to resolve it against the directory that holds the `SKILL.md` ([Codex
-`catalog_prompt.rs`][cx-catalog]). Claude Code puts the skill's directory at the
-head of the loaded text, as "Base directory for this skill" (observed in a
-Claude Code transcript; not documented). A shell command runs in the working
-directory, not in the skill's directory ([Claude Code skills][cc-skills-cwd]).
-
-An installed plugin is a copy. Claude Code copies a marketplace plugin into a
-directory named for its version, so the copy's path changes with each version
-([Claude Code plugins][cc-plugin-cache]). The copy in use is therefore not the
-one in a repository's working tree, and a name such as `dream:foo` loads the
-installed copy.
+An installed plugin is a copy, kept apart from any repository's working tree.
+Invoking a skill by name, such as `dream:foo`, loads the installed copy ([Claude
+Code plugins][cc-plugin-cache]).
 
 ## Subagents
 
-A subagent is a second agent that the first agent starts with a tool call. It
-runs in a context of its own ([Claude Code subagents][cc-sub-context], [Codex
-`multi_agents_spec.rs`][cx-spawn-spec]).
+A subagent is a second agent that an agent starts with a tool call. It has a
+context of its own. A fresh subagent's context starts with its own system prompt
+and the task message, without the parent's transcript. A fork's context starts
+with a copy of the parent's transcript. Whether a subagent is fresh or a fork
+depends on the call and the agent harness ([Claude Code
+subagents][cc-sub-context], [Codex `spawn.rs`][cx-spawn-v2]).
 
-What the subagent starts with depends on how it is started:
+A subagent calls tools like any agent, so what its tools change outside the
+context stays changed. When it finishes, its final turn output is appended to
+the parent's context. Nothing else from its context is ([Claude Code
+subagents][cc-sub-fork], [Codex `multi_agents_spec.rs`][cx-spawn-spec]).
 
-- **A fresh subagent** starts from a system prompt and the task message the
-  parent wrote. It does not see the parent's transcript or the skills the parent
-  has loaded. Under Claude Code, it also loads the repository's instruction
-  files ([Claude Code subagents][cc-sub-context]), and its system prompt is the
-  body of the subagent file with the working directory appended, without the
-  file's location ([Claude Code subagents][cc-sub-files]).
-- **A fork** starts with a copy of the parent's whole transcript ([Claude Code
-  subagents][cc-sub-fork]). In Codex's multi-agent version 2, a spawned agent is
-  a fork unless the call passes `fork_turns: "none"` ([Codex
-  `spawn.rs`][cx-spawn-v2]). In version 1 it is fresh unless the call passes
-  `fork_context: true` ([Codex `multi_agents_spec.rs`][cx-spawn-spec]). Which
-  version runs depends on the configuration and the model ([Codex
-  `config/mod.rs`][cx-mav]).
-
-A subagent works with its own tools while it runs, so the files it writes and
-the commands it runs take effect ([Claude Code subagents][cc-sub-checkpoints]).
-When it finishes, its final message returns to the parent. Its tool calls do not
-([Claude Code subagents][cc-sub-fork], [Codex
-`multi_agents_spec.rs`][cx-spawn-spec]).
-
-The two agent harnesses deliver that final message differently:
-
-- **Claude Code** starts a subagent in the background by default. Its result
-  reaches the parent as a notification, which starts a later turn ([Claude Code
-  subagents][cc-sub-background]).
-- **Codex** returns control to the parent at once. The parent calls `wait_agent`
-  to block until an agent reaches a final status, and `list_agents` to see which
-  agents are still running ([Codex `multi_agents_spec.rs`][cx-spawn-spec]).
-
-The two agent harnesses also name subagents differently:
-
-- **Claude Code** reads each Markdown file in a plugin's `agents/` directory as
-  a subagent type, named with the plugin's prefix, such as
-  `my-plugin:code-reviewer` ([Claude Code subagents][cc-sub-scoped]). A skill in
-  the same plugin is named the same way ([Claude Code skills][cc-skills-name]),
-  so a skill and a subagent type can share a name.
-- **Codex** reads agent roles only from its configuration: the `agents` table
-  and TOML files in a configuration folder's `agents/` directory ([Codex
-  `loader.rs`][cx-roles-loader], [Codex `discovery.rs`][cx-roles-discovery]). It
-  does not read a plugin's `agents/` files. A plain Codex subagent can read such
-  a file only when the task message gives it the path.
+The two agent harnesses find subagent files differently. Claude Code reads each
+file in a plugin's `agents/` directory as a subagent type, named with the
+plugin's prefix as a skill is, so `dream:foo` could name either ([Claude Code
+subagents][cc-sub-scoped]). Codex doesn't read a plugin's `agents/` directory
+([Codex `loader.rs`][cx-roles-loader]). A Codex subagent reads such a file only
+when its task message gives the path.
 
 ## Tools and permissions
 
-The agent acts only through its tools. Before a tool call runs, the agent
-harness checks it against the permission mode and rules, and either runs it,
-asks the user, or denies it ([Claude Code permissions][cc-permissions]).
-
-When no one can answer a request for approval, the call does not run. In a
-`claude -p` run in Manual mode, a call that needs approval is denied unless
-something else approves it ([Claude Code headless][cc-headless-perm]). Under
-Codex's `never` approval policy, a failed call returns to the model and is never
-put to the user ([Codex `protocol.rs`][cx-approval]). A denied call returns to
-the model as a tool result, and the turn continues ([Claude Code
-headless][cc-headless-perm], [Codex `protocol.rs`][cx-approval]).
+Before the agent harness runs a tool call, it checks the call against its
+permission settings. It then runs the call, asks the user, or denies it ([Claude
+Code permissions][cc-permissions]). When no one is there to answer, a call that
+needs approval is denied. The denial is appended to the context as the call's
+result ([Claude Code headless][cc-headless-perm], [Codex
+`protocol.rs`][cx-approval]).
 
 ## Compaction
 
 When the context nears the model's limit, the agent harness compacts it: it
-replaces the earlier transcript with a summary that the model writes. Detail
-that is not in the summary is gone from the context.
-
-- **Claude Code** keeps the system prompt, and loads the project-root
-  `CLAUDE.md` and up to five recently used files again from disk. It attaches
-  the most recent copy of each invoked skill, up to 5,000 tokens each and 25,000
-  in all, dropping the oldest first ([Claude Code context window][cc-compact]).
-- **Codex** keeps the summary and the user's most recent messages, up to about
-  20,000 tokens ([Codex `compact.rs`][cx-compact]). It can compact during a turn
-  as well as between turns ([Codex `turn.rs`][cx-turn-compact]).
-
-A subagent compacts its own context, separately from its parent ([Claude Code
-subagents][cc-sub-compact]).
+replaces earlier parts of the context with a summary that the model generates.
+What the summary leaves out is no longer in the context. The agent harness then
+appends some content again, such as the instruction files ([Claude Code context
+window][cc-compact], [Codex `compact.rs`][cx-compact]).
 
 ## Sources
 
@@ -208,21 +157,11 @@ Code sources are its documentation as of November 2026.
   https://code.claude.com/docs/en/plugins/loading#in-place-and-copied-plugins
 [cc-sessions]:
   https://code.claude.com/docs/en/how-claude-code-works#work-with-sessions
-[cc-skills-cwd]:
-  https://code.claude.com/docs/en/skills#how-injected-commands-run
 [cc-skills-invoke]:
   https://code.claude.com/docs/en/skills#control-who-invokes-a-skill
-[cc-skills-name]:
-  https://code.claude.com/docs/en/skills#how-a-skill-gets-its-command-name
 [cc-skills-life]: https://code.claude.com/docs/en/skills#skill-content-lifecycle
-[cc-sub-background]:
-  https://code.claude.com/docs/en/sub-agents#tools-permissions-and-results-of-background-subagents
-[cc-sub-checkpoints]:
-  https://code.claude.com/docs/en/skills#run-skills-in-a-subagent
-[cc-sub-compact]: https://code.claude.com/docs/en/sub-agents#auto-compaction
 [cc-sub-context]:
   https://code.claude.com/docs/en/sub-agents#what-loads-at-startup
-[cc-sub-files]: https://code.claude.com/docs/en/sub-agents#write-subagent-files
 [cc-sub-fork]:
   https://code.claude.com/docs/en/sub-agents#fork-the-current-conversation
 [cc-sub-scoped]:
@@ -232,16 +171,10 @@ Code sources are its documentation as of November 2026.
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/agents_md.rs#L1-L19
 [cx-approval]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/protocol/src/protocol.rs#L1184-L1206
-[cx-catalog]:
-  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/ext/skills/src/catalog_prompt.rs
 [cx-compact]:
-  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/compact.rs#L733-L800
+  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/compact.rs#L673-L800
 [cx-fragments]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/ext/skills/src/fragments.rs
-[cx-mav]:
-  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/config/mod.rs#L1780-L1807
-[cx-roles-discovery]:
-  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/agent-roles/src/discovery.rs
 [cx-roles-loader]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/agent-roles/src/loader.rs
 [cx-spawn-spec]:
@@ -250,5 +183,3 @@ Code sources are its documentation as of November 2026.
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/tools/handlers/multi_agents_v2/spawn.rs#L213-L239
 [cx-turn]:
   https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/turn.rs#L200-L213
-[cx-turn-compact]:
-  https://github.com/openai/codex/blob/49d657aad0e878fb7ab156b91126828c21a0005f/codex-rs/core/src/session/turn.rs#L718-L730
