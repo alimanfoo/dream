@@ -3,7 +3,9 @@ name: agent-mechanics
 description:
   Explains how a coding agent works under Claude Code and Codex, covering the
   context, the turn, skills, subagents, tools and compaction. Use when
-  predicting what a prompt, a skill or a subagent file will make an agent do.
+  engineering a system that has LLM agents in it, such as a prompt, a skill, a
+  subagent file or a program that runs agents, to reason about what the agents
+  will do.
 ---
 
 # dream:agent-mechanics
@@ -88,6 +90,11 @@ or the agent can invoke a skill. Nothing else happens: invoking a skill starts
 no other process, transfers no control and returns no value. The same model goes
 on generating tokens, from a context that now includes the body.
 
+The body stays in the context once it is appended. Editing the skill's file
+afterwards doesn't change the tokens already appended, so a session that loaded
+the body keeps that copy, including when it is resumed ([Claude Code
+skills][cc-skills-life], [how Claude Code works][cc-resume]).
+
 ## Files and paths
 
 A file enters the context only when the agent generates a tool call that reads
@@ -159,6 +166,8 @@ Code sources are its documentation as of November 2026.
 [cc-permissions]: https://code.claude.com/docs/en/permissions#permission-system
 [cc-plugin-cache]:
   https://code.claude.com/docs/en/plugins/loading#in-place-and-copied-plugins
+[cc-resume]:
+  https://code.claude.com/docs/en/how-claude-code-works#resume-or-fork-sessions
 [cc-sessions]:
   https://code.claude.com/docs/en/how-claude-code-works#work-with-sessions
 [cc-skills-files]: https://code.claude.com/docs/en/skills#add-supporting-files
