@@ -42,32 +42,19 @@ Three consequences follow.
 
 ## The context
 
-The agent harness builds the context that the model reads. It holds:
+The agent harness builds the context. When a harness session starts, the context
+holds the agent harness's system prompt, the repository's instruction files, and
+the name and description of each available skill. The instruction files are
+`CLAUDE.md` under Claude Code and `AGENTS.md` under Codex ([Claude Code
+memory][cc-memory-load], [Codex `agents_md.rs`][cx-agents-md]).
 
-1. the agent harness's system prompt;
-2. the repository's instruction files, `CLAUDE.md` under Claude Code and
-   `AGENTS.md` under Codex ([Claude Code memory][cc-memory-load], [Codex
-   `agents_md.rs`][cx-agents-md]);
-3. the name and description of each available skill ([Claude Code
-   skills][cc-skills-invoke], [Codex `fragments.rs`][cx-fragments]);
-4. the transcript: each input, thinking, tool call, tool result and turn output.
-
-The agent harness also adds messages of its own as the session runs, such as a
-note that a file changed on disk ([system reminder][cc-glossary-reminder]).
-
-An instruction file is text in the context, delivered after the system prompt as
-a message ([Claude Code memory][cc-memory-delivery]). Nothing in the agent
-harness checks that the agent follows it. Only permission rules and hooks act on
-a tool call whatever the agent decided ([Claude Code memory][cc-memory-intro]).
-
-Thinking from an earlier turn may or may not stay in the context. Some Claude
-models keep it, and others drop it when the next turn starts ([context
-windows][api-thinking]). Turn output, tool results and files on disk do not
-depend on the model in this way.
+As the session runs, the agent harness appends to the context each input, each
+token the model generates, and each tool result. It can also append messages of
+its own ([system reminder][cc-glossary-reminder]).
 
 A new harness session starts with a fresh context. Nothing from an earlier
-session is in it, except what the agent harness loads again from disk, such as
-the instruction files ([how Claude Code works][cc-sessions]).
+session is in it, except what the agent harness loads again from disk ([how
+Claude Code works][cc-sessions]).
 
 ## The turn
 
@@ -207,18 +194,12 @@ Code sources are its documentation as of November 2026.
 [api-tool-use]:
   https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview#how-tool-use-works
 [api-glossary]: https://platform.claude.com/docs/en/about-claude/glossary
-[api-thinking]:
-  https://platform.claude.com/docs/en/build-with-claude/context-windows
 [cc-compact]:
   https://code.claude.com/docs/en/context-window#what-survives-compaction
 [cc-glossary-reminder]: https://code.claude.com/docs/en/glossary#system-reminder
 [cc-glossary-turn]: https://code.claude.com/docs/en/glossary#turn
 [cc-headless-perm]:
   https://code.claude.com/docs/en/headless#turn-off-permission-prompts-in-unattended-runs
-[cc-memory-delivery]:
-  https://code.claude.com/docs/en/memory#troubleshoot-memory-issues
-[cc-memory-intro]:
-  https://code.claude.com/docs/en/memory#claude-md-vs-auto-memory
 [cc-memory-load]:
   https://code.claude.com/docs/en/memory#how-claude-md-files-load
 [cc-permissions]: https://code.claude.com/docs/en/permissions#permission-system
