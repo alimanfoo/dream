@@ -5,6 +5,15 @@ It follows the headings of `SKILL.md`, which describes the mechanics that Claude
 Code and Codex share and should be read first, and adds to a section only what
 is specific to Claude Code.
 
+## How the model generates text
+
+### Inference requests
+
+The Claude Messages API is stateless: the client sends the full conversation
+with every request. With message threads, a beta feature, the API keeps the
+conversation instead, and each request sends only the new messages. The Claude
+API adds a tool-use system prompt to a request whenever tools are defined.
+
 ## What the context holds
 
 Claude Code sends its system prompt ahead of the conversation on every request.

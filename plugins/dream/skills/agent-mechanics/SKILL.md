@@ -43,25 +43,27 @@ the amount of text that the model can refer to when generating.
 
 ### Autoregressive generation
 
-Claude's underlying model is autoregressive. In the Transformer architecture of
-Vaswani et al., an autoregressive model generates its output one token at a
-time, consuming the tokens it has already generated as additional input when it
-generates the next, and a softmax converts its output at each step into
-probabilities for the next token. A token is then selected. The temperature
+Language models such as Claude's are autoregressive. In the Transformer
+architecture of Vaswani et al., an autoregressive model generates its output one
+token at a time, consuming the tokens it has already generated as additional
+input when it generates the next, and a softmax converts its output at each step
+into probabilities for the next token. A token is then selected. The temperature
 parameter controls how random the selection is, and even at temperature 0 the
-output is not fully deterministic. Generation continues until a stop condition
-is met, for example when the model finishes its response, emits a tool call or
-reaches a token limit.
+output need not be fully deterministic. Generation stops when the selected token
+is an end-of-sequence token, a special token in the model's vocabulary that
+marks the end of its output, when the output matches a stop sequence that the
+request specifies, or when the output reaches the request's token limit.
 
 ### Inference requests
 
 The harness obtains each response by sending the model an inference request,
 whose context holds what the harness has supplied: a system prompt, the
-definitions of the available tools and the conversation so far. The Claude
-Messages API, for example, is stateless: the client sends the full conversation
-with every request. With message threads, a beta feature, the API keeps the
-conversation instead, and each request sends only the new messages. The Claude
-API also adds a tool-use system prompt to a request whenever tools are defined.
+definitions of the available tools and the conversation so far. The model
+retains nothing from one request to the next, so either the harness sends the
+whole conversation with every request, or the provider's API keeps the
+conversation and each request sends only the new messages. The provider's API
+can also add content of its own to a request, such as instructions for using
+tools.
 
 ### Consequences
 

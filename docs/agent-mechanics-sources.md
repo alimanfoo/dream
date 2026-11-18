@@ -8,10 +8,11 @@ part for each file of the guide, under that file's own headings. Each entry
 gives the paragraph's opening words, then its sources. When a paragraph of the
 guide changes, its entry here changes with it.
 
-The Claude API and Claude Code sources are Anthropic's documentation as of
-November 2026. The Codex sources are pinned to commit `49d657a` of
-`openai/codex`, and their paths are relative to its `codex-rs` directory, except
-paths that begin with `sdk/`, which are relative to the repository's root.
+The Claude API, Claude Code and Hugging Face Transformers sources are their
+documentation as of November 2026. The Codex sources are pinned to commit
+`49d657a` of `openai/codex`, and their paths are relative to its `codex-rs`
+directory, except paths that begin with `sdk/`, which are relative to the
+repository's root.
 
 ## `SKILL.md`
 
@@ -28,11 +29,14 @@ paths that begin with `sdk/`, which are relative to the repository's root.
 
 #### Autoregressive generation
 
-- Claude's underlying model is autoregressive. In the Transformer…
+- Language models such as Claude's are autoregressive. In…
   [Claude glossary](https://platform.claude.com/docs/en/about-claude/glossary#pretraining),
   [§3](https://arxiv.org/abs/1706.03762),
   [§3.4](https://arxiv.org/abs/1706.03762),
   [Claude glossary](https://platform.claude.com/docs/en/about-claude/glossary#temperature),
+  [Hugging Face `EosTokenCriteria`](https://huggingface.co/docs/transformers/internal/generation_utils#transformers.EosTokenCriteria),
+  [Hugging Face `StopStringCriteria`](https://huggingface.co/docs/transformers/internal/generation_utils#transformers.StopStringCriteria),
+  [Hugging Face `MaxLengthCriteria`](https://huggingface.co/docs/transformers/internal/generation_utils#transformers.MaxLengthCriteria),
   [Claude stop reasons](https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons#stop-reason-values)
 
 #### Inference requests
@@ -288,6 +292,14 @@ paths that begin with `sdk/`, which are relative to the repository's root.
 ### Running an agent from a program
 
 ## `claude-code.md`
+
+### How the model generates text
+
+#### Inference requests
+
+- The Claude Messages API is stateless: the client…
+  [Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages#multiple-conversational-turns),
+  [Claude tool use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview#pricing)
 
 ### What the context holds
 
