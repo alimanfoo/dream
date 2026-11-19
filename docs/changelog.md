@@ -1,5 +1,6 @@
 # Changelog
 
-This page says what changed for a user in each release of dream, newest first.
-Each release's version follows the rules on
-[the compatibility page](compatibility.md#versions).
+This page records each release of dream, newest first: what the release changed
+for a user, and each name in dream's interface that it renamed or removed. A
+release's version follows the rules in [Versions](compatibility.md#versions) on
+the compatibility page.
