@@ -24,9 +24,9 @@ them. Read them before you work.
 - [`docs/concepts.md`](docs/concepts.md) says what the words for dream's domain
   mean. Use its words and no others, in the skills, the documents and the
   issues.
-- [`docs/stories.md`](docs/stories.md) records what dream is meant to do: what
-  the user does with its skills, what the agent does, and what the user has at
-  the end.
+- [`docs/stories.md`](docs/stories.md) specifies dream's intended behaviour as
+  scenarios. Each story gives the user's goal, the steps that the user and the
+  agents take, and the outcome.
 - [`docs/standard.md`](docs/standard.md) says how good dream has to be and how
   we tell. Its definition of done holds every pull request to it.
 

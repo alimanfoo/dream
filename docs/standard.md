@@ -4,9 +4,9 @@ This page defines the engineering standards that dream adheres to. It sets out
 the criteria the project is held to, how each is measured, and what enforces it.
 It is one of three enduring documents. The other two are
 [the concepts page](concepts.md), which defines the terms for dream's domain,
-and [the stories](stories.md), which specify what a user does with each skill,
-what the coding agent does, and what the user has at the end. The page is
-adapted from
+and [the stories](stories.md), which specify dream's intended behaviour as
+scenarios. Each story gives the user's goal, the steps that the user and the
+agents take, and the outcome. The page is adapted from
 [dreamcatcher's engineering standard](https://github.com/alimanfoo/dreamcatcher/blob/main/docs/standard.md).
 
 The standard covers the plugin and its documentation. The plugin is the
