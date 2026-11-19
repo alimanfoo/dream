@@ -313,11 +313,12 @@ bar and a check, and each shortfall becomes an issue.
   concepts, Symmetry (smith and less, the two hosts), and Rules not cases. Its
   ledger is `docs/special-cases.md`, as in the other two projects, and the
   Claude Code and Codex blocks in the skills are its first entries.
-- Translated: Cohesive modules becomes one job per skill. No unused exports
-  becomes a reader for every file in the plugin, and two for a shared file. One
-  way becomes one fact, one home across skills. No suppressions covers
-  markdownlint and Prettier markers, of which there are none today. Versioned
-  contract becomes the compatibility page.
+- Translated: Cohesive modules becomes Single responsibility, for each skill,
+  subagent file and shared file. No unused exports becomes No orphaned files:
+  every file in the plugin other than an entry point is referenced, and every
+  shared file is referenced at least twice. One way becomes one fact, one home
+  across skills. No suppressions covers markdownlint and Prettier markers, of
+  which there are none today. Versioned contract becomes the compatibility page.
 - Dropped, because they are about code: Focused functions, Fast readable tests,
   and Invariants by construction.
 - Added: Size. At each release it counts the lines of each skill, of the shared
