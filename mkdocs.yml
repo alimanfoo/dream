@@ -43,10 +43,12 @@ nav:
   - Home: index.md
   - Reference:
       - compatibility.md
+      - changelog.md
   - Development:
       - concepts.md
       - stories.md
       - standard.md
+      - releasing.md
       - special-cases.md
       - agent-mechanics-sources.md
 

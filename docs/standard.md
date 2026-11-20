@@ -52,12 +52,9 @@ Three mechanisms serve as checks:
   request and on every push to main.
 - **Review**: a reviewer's reading of a pull request before it merges, including
   its answers to the [definition of done](#definition-of-done).
-- **Release checks**: three checks run before each release, starting with the
-  first release. The consistency review reads the plugin and the documentation
-  for pairs of statements about one concept that disagree. The issue sweep
-  searches open issues for terms that the concepts page retires, rewrites the
-  issues that use them, and closes issues whose work is done or no longer
-  applies. The [measurement](#measurement) records each criterion's measure.
+- **Release checks**: the consistency review, the issue sweep and the
+  [measurement](#measurement), which [the release checklist](releasing.md) runs
+  before each release, starting with the first release.
 
 Review is the check for every criterion that does not qualify for an automated
 check under [Machine-checked rules](#machine-checked-rules). It is the intended
