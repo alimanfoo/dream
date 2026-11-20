@@ -48,6 +48,7 @@ nav:
       - concepts.md
       - stories.md
       - standard.md
+      - measurement.md
       - releasing.md
       - special-cases.md
       - agent-mechanics-sources.md

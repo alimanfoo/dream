@@ -199,7 +199,7 @@ particular tool.
 
 A command hook receives the event as JSON on standard input. Exit code 0 means
 success, and the hook can print a JSON object whose fields carry its decisions.
-Exit code 2 blocks the action on an event that can block. By default, a hook
+Exit code 2 can block the action on an event that can block. By default, a hook
 that fails, for example by timing out, does not block, so on most events the
 action goes ahead. A hook that runs asynchronously cannot block or decide
 anything.
