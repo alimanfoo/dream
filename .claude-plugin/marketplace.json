@@ -7,7 +7,12 @@
   "plugins": [
     {
       "name": "dream",
-      "source": "./plugins/dream",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alimanfoo/dream.git",
+        "path": "plugins/dream",
+        "sha": "d522fcd17b7e9186013b0648defcc5c1a892cba5"
+      },
       "description": "Tools for developing and maintaining great code with minimal user input."
     }
   ]
