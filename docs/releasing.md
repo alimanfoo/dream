@@ -26,7 +26,7 @@ by this process, and its second pull request replaces the entry's relative-path
 source with the `git-subdir` source that step 8 pins.
 
 The release pull request's branch starts from the current main, and every step
-that changes the repository commits to it.
+before the merge in step 7 that changes the repository commits to it.
 
 ## 1. Choose the version
 
@@ -39,11 +39,12 @@ git log --merges --first-parent --oneline v<last>..HEAD
 ```
 
 The version's increment is the highest that any of them calls for, under the
-rules in [Versions](compatibility.md#versions) on the compatibility page. Those
-rules classify a change by its effect on the interface that the page defines, so
-compare each part of the interface with the last release directly, as well as
-through the descriptions. The skill names, which are the `name` fields in the
-skills' frontmatter, differ wherever this prints a line:
+rules in [Versions](compatibility.md#versions) on the compatibility page. A
+change to the interface that the page defines calls for a major increment, and a
+change to what a skill does calls for a minor or patch increment. Compare each
+part of the interface with the last release directly, as well as through the
+descriptions, so that no major change is missed. The skill names, which are the
+`name` fields in the skills' frontmatter, differ wherever this prints a line:
 
 ```bash
 diff <(git grep -h '^name:' v<last> -- 'plugins/dream/skills/*/SKILL.md' | sort) \

@@ -293,10 +293,13 @@ thorough engineering. They want a high-quality pull request for it.
    until the user is satisfied.
 10. The user merges the pull request, and tells the agent.
 11. The agent files an issue for each thing it left out of scope, each deferred
-    finding included, and lists them on the pull request.
+    finding included, except that it files at most two maintenance issues,
+    choosing those that would cut the most maintenance burden. It lists the
+    issues on the pull request.
 
 The user has a reviewed pull request that does what the issue asked, and an
-issue for each thing it left out of scope.
+issue for each thing it left out of scope, with no more than two for
+maintenance.
 
 ### An agent implements a clear, low-risk change
 
@@ -484,8 +487,9 @@ roadmap's account of how to tell it is done.
 
 ## Utility skills
 
-These skills are mainly run by other skills. A user can also run them directly,
-as these stories describe.
+`dream:smith` runs `dream:plan`, and `dream:smith` and `dream:sift` load
+`dream:coherent-coding`. A user can run any of these skills directly, as these
+stories describe.
 
 ### An agent writes an implementation plan for a change
 

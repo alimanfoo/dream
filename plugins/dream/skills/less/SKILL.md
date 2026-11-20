@@ -85,7 +85,8 @@ files match the source before you commit.
 
 ## Check the working tree
 
-Check the working tree. Stop and tell the user if it has uncommitted changes.
+Check the working tree. If it has uncommitted changes, stop and tell the user,
+in a comment on the branch's open PR if it has one.
 
 Read the branch name (`git rev-parse --abbrev-ref HEAD`). Find the default
 branch by following [Default branch](../../branch-bases.md#default-branch). If
@@ -156,10 +157,10 @@ apply none when there's no clean match.
 
 ## Interrupted work
 
-After you open the PR, post a comment there before you end a turn if anything
-disrupts the work and prevents you from finishing it. Say what disrupted the
-work and where you stopped. The user follows the PR, so turn output alone is not
-enough.
+Once the session PR exists, post a comment there before you end a turn if
+anything disrupts the work and prevents you from finishing it. Say what
+disrupted the work and where you stopped. The user follows the PR, so turn
+output alone is not enough.
 
 ## Implement
 
@@ -188,7 +189,8 @@ Keep it minimal. Check the repo for contribution rules (`CONTRIBUTING.md`, a PR
 template) and follow them. Otherwise:
 
 - Open with a bullet list of issues addressed. Use `Closes #N` for each one the
-  PR fully resolves, and `Related to #N` for any it partly addresses.
+  PR fully resolves, and `Related to #N` for any it partly addresses. Keep any
+  `Closes #N` link that the description already has.
 - Follow with one sentence on what the PR does and why.
 
 Replace the PR's description with it.

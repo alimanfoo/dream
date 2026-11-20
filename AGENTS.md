@@ -75,8 +75,8 @@ works against good software engineering:
 An instruction not to show a tendency does not remove it. The plugin instead
 changes the structure around each tendency, and where it can, works with the
 tendency rather than against it. For example, the Collect step of `dream:smith`
-has the agent file an issue for each thing it left out of scope, which records
-the work that perimeter fixation and reactivity would otherwise drop.
+has the agent file issues for the work it left out of scope, which records the
+work that perimeter fixation and reactivity would otherwise drop.
 
 ## Changing the plugin
 
@@ -248,15 +248,20 @@ Keep the rest of the description short and current: say what the pull request
 does and why, and leave line-by-line detail to the diff. Update the description
 whenever a later commit materially changes what the pull request does.
 
-If a pull request changes `plugins/dream`, bump the version in
-`plugins/dream/.codex-plugin/plugin.json`, so that every change to the installed
-plugin merges to main with its own version. Bump the part that the change calls
-for, by the rules on [the compatibility page](docs/compatibility.md#versions).
+Say in the description what the pull request changes for a user, and whether it
+renames or removes a name in
+[the interface](docs/compatibility.md#the-interface). The next release's
+changelog is written from these descriptions. Leave the version and the
+changelog unchanged, because both change only at a release.
 
-## Versions and the manifest
+## Releases and the manifest
 
-There is no release process yet. Users install the plugin from the main branch,
-through the marketplace in `.claude-plugin/marketplace.json`.
+Users install a release, not main. The plugin entry in
+`.claude-plugin/marketplace.json` is pinned to the tagged commit of the latest
+release. Make a release only when the user asks for one, in a harness session
+with them, by following [the release checklist](docs/releasing.md). The release
+takes its version by the rules on
+[the compatibility page](docs/compatibility.md#versions).
 
 The plugin's version is set only in `plugins/dream/.codex-plugin/plugin.json`.
 `pyproject.toml` has a placeholder version that `uv` requires; never change it.

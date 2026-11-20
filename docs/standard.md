@@ -167,8 +167,8 @@ the site.
 #### Versioned contract
 
 [The compatibility page](compatibility.md) defines dream's public interface, and
-each release's version number follows from the changes to that interface, by the
-rules the page states.
+each release's version number follows from the release's changes, by the rules
+the page states.
 
 - Measure: whether the compatibility page states the interface, the rules for a
   major, minor and patch release, and the version of dreamcatcher's agent
