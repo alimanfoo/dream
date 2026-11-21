@@ -15,6 +15,8 @@ development. Its main parts are:
 - `docs/`, `mkdocs.yml` and `overrides/`: the documentation site.
 - `specs/`: the specifications, one folder per piece of work.
 - `scripts/`: the scripts that the pre-commit hooks run.
+- `.claude/skills/maintainer/`: the skill for a harness session in which an
+  agent maintains dream with the user.
 - `AGENTS.md`: this file, which `CLAUDE.md` imports.
 
 A rule written here governs development only. A rule that the installed skills
@@ -77,6 +79,15 @@ changes the structure around each tendency, and where it can, works with the
 tendency rather than against it. For example, the Collect step of `dream:smith`
 has the agent file issues for the work it left out of scope, which records the
 work that perimeter fixation and reactivity would otherwise drop.
+
+## How we judge
+
+Apply these judgments beside the enduring documents and the design rationale
+whenever you weigh a proposed change, whether it comes in an issue, a review
+finding or a pull request. Each is a lesson from past triage. Add one only when
+the user approves it.
+
+There are none yet.
 
 ## Changing the plugin
 
