@@ -17,7 +17,7 @@ repos:
         # AGENTS.md, and the uncoded-generated skill files. The markdown lint,
         # format, and link-check hooks share this list, so they never drift on
         # which paths to skip.
-        exclude: &markdown_non_source (^CLAUDE\.md$|^\.claude/|^\.agents/)
+        exclude: &markdown_non_source (^CLAUDE\.md$|^\.(claude|agents)/skills/uncoded-)
 
   # zizmor checks that the workflows are secure. Its online audits need a
   # token, so it runs offline.
