@@ -1,13 +1,12 @@
 # Developing dream
 
-This repository holds dream, a plugin of skills for Claude Code and Codex. This
-file tells anyone who develops or maintains dream, person or coding agent, which
-documents to read and which conventions to follow.
+dream is a plugin of skills for Claude Code and Codex. This is its contributor
+guide: what to read before you work, and the conventions this repository
+follows.
 
 ## The repository
 
-Users install only `plugins/dream`. The rest of the repository exists to develop
-it. The main parts are:
+Users install only `plugins/dream`; everything else supports its development:
 
 - `plugins/dream/`: the plugin's skills, subagent files, shared files and
   manifest.
@@ -19,28 +18,27 @@ it. The main parts are:
   agent maintains dream with the user.
 - `AGENTS.md`: this file, which `CLAUDE.md` imports.
 
-A rule written here governs development only. A rule that the installed skills
-must follow belongs in the plugin.
+Rules here govern development. Rules that the installed skills follow belong in
+the plugin.
 
 ## Starting a session
 
-At the start of each harness session, bring your branch up to date with main and
-install the pre-commit hooks:
+At the start of each session, update from main and install the pre-commit hooks:
 
 ```bash
 git pull origin main
 uvx pre-commit install
 ```
 
-Before you search, read or edit any Markdown file, load the
-`uncoded-doc-navigation` skill. It directs you to the documentation index,
-`.uncoded/docs.yaml`, which lists every Markdown file and its headings.
+Before you search, read or edit Markdown, load the `uncoded-doc-navigation`
+skill. It points you to `.uncoded/docs.yaml`, an index of every Markdown file
+and its headings.
 
 ## The enduring documents
 
-Three documents define dream's vocabulary, its intended behaviour and the
-criteria it is held to. Read them before you work. When you change behaviour
-that one of them describes, update that document in the same pull request.
+Three documents define dream's vocabulary, its intended behaviour and its
+quality criteria. Read them before you work. A pull request that changes
+behaviour one of them describes updates that document too.
 
 - [`docs/concepts.md`](docs/concepts.md) defines the terms for dream's domain.
   Use its terms, not the ones its "Replaces:" lines retire, in the skills, the
@@ -73,18 +71,17 @@ The plugin is designed around these tendencies of coding agents:
   it.
 - **Reactivity**: answers what is asked and volunteers nothing.
 
-An instruction not to show a tendency does not remove it. Instead, the plugin
-adds structure around each tendency, such as a step or a subagent, and where it
-can, puts the tendency to work. For example, the Collect step of `dream:smith`
-has the agent file an issue for each piece of work it left out of scope, work
-that perimeter fixation and reactivity would otherwise drop.
+An instruction not to show a tendency does not remove it. The plugin counters
+each tendency with structure, such as a step or a subagent, and where it can,
+puts the tendency to work. For example, `dream:smith`'s Collect step has the
+agent file an issue for each piece of work it left out of scope, which perimeter
+fixation and reactivity would otherwise drop.
 
 ## How we judge
 
-Apply these judgments, with the enduring documents and the design rationale,
-whenever you weigh a proposed change from an issue, a review finding or a pull
-request. Each is a lesson from past triage. Add one only when the user approves
-it.
+Apply these judgments, alongside the enduring documents and the design
+rationale, whenever you weigh a proposed change. Each records a lesson from past
+triage; add one only with the user's approval.
 
 - **Recorded behaviour outranks predicted behaviour.** How agents behave under a
   skill is established by records of harness sessions that ran it: pull
@@ -111,14 +108,11 @@ it.
 
 ### Read the guides first
 
-Before you change a skill or a subagent file, read the guide to agent mechanics,
-which describes how a coding agent reads and acts on what you write: its
-`SKILL.md` in `plugins/dream/skills/agent-mechanics/`, then `claude-code.md` and
-`codex.md` beside it, since dream runs under both agent harnesses. Before you
-change code, read the coherent coding guide, `plugins/dream/coherent-coding.md`.
-Read both guides at these paths in the working tree, not by invoking their
-skills, because an invoked skill loads from the installed plugin, which can be
-older.
+Before you change a skill or a subagent file, read the guide to agent mechanics
+in `plugins/dream/skills/agent-mechanics/`: `SKILL.md`, then `claude-code.md`
+and `codex.md`. Before you change code, read `plugins/dream/coherent-coding.md`.
+Read both from the working tree, not by invoking their skills: an invoked skill
+loads from the installed plugin, which may be an older release.
 
 When you change the guide to agent mechanics, check each changed claim against
 the sources that
@@ -141,9 +135,8 @@ it to choose a skill.
 
 ### Shared files
 
-Each shared file at the plugin's root holds a convention or guide that several
-skills follow. When a skill follows a convention or guide listed here, reference
-its file rather than copying it into the skill:
+Each shared file at the plugin's root holds one convention or guide that several
+skills follow. Reference the file from a skill; don't copy its content:
 
 - [`agent-written-marks.json`](plugins/dream/agent-written-marks.json): the
   comment footer and commit trailer that mark work as written by an agent.
@@ -160,13 +153,11 @@ its file rather than copying it into the skill:
 
 ### Subagent files
 
-Keep a short subagent task inline in the skill that launches it. When a task is
-too long to keep inline, or more than one skill launches it, write it as a
-subagent file in `plugins/dream/agents/`, so that one file serves both agent
-harnesses. The guide to agent mechanics says how
-[Claude Code](plugins/dream/skills/agent-mechanics/claude-code.md#subagent-definitions)
-and [Codex](plugins/dream/skills/agent-mechanics/codex.md#subagent-definitions)
-each read a file there.
+Keep a short subagent task inline in the skill that launches it. Move it to a
+subagent file in `plugins/dream/agents/` when it is long or more than one skill
+launches it. Both agent harnesses read that file, each in its own way:
+[Claude Code](plugins/dream/skills/agent-mechanics/claude-code.md#subagent-definitions),
+[Codex](plugins/dream/skills/agent-mechanics/codex.md#subagent-definitions).
 
 Name a subagent file for the task it performs, not for the skill that launches
 it, because under Claude Code a subagent and a skill with the same name share
@@ -175,7 +166,7 @@ the scoped name `dream:foo`, which makes a reference to it ambiguous (see the
 
 ### References to skills, subagent types and labels
 
-Write a reference to a skill, a subagent type or an issue label in these forms:
+Use these forms for references to skills, subagent types and labels:
 
 - Write a skill reference as `dream:foo`, with no leading slash. Both agent
   harnesses resolve that identifier, so a coding agent can act on it as written.
@@ -229,15 +220,15 @@ Two further rules govern an instruction's content:
 ## Checks
 
 There is no test suite. The checks are the [pre-commit](https://pre-commit.com/)
-hooks in `.pre-commit-config.yaml`. The standard's
+hooks in `.pre-commit-config.yaml`, which CI (`.github/workflows/lint.yml`) runs
+on every pull request and every push to main. Run them all with
+`uvx pre-commit run --all-files`. The standard's
 [Machine-checked rules](docs/standard.md#machine-checked-rules) says what each
-enforces, and `zizmor` also audits the workflows. Run them all with
-`uvx pre-commit run --all-files`. CI runs the same hooks on every pull request
-and every push to main, in `.github/workflows/lint.yml`.
+enforces; `zizmor` also audits the workflows.
 
-Two hooks rewrite files. Prettier rewraps Markdown prose at 80 columns, so do
-not wrap lines by hand. `uncoded sync` regenerates `.uncoded/docs.yaml` and the
-`uncoded-doc-navigation` skill, so do not edit either by hand.
+Prettier formats Markdown at 80 columns, and `uncoded sync` regenerates
+`.uncoded/docs.yaml` and the `uncoded-doc-navigation` skill. Don't hand-wrap
+Markdown, and don't hand-edit the generated files.
 
 Two hooks need a tool on `PATH`: `claude plugin validate` needs the Claude Code
 CLI, and `uncoded sync` needs `uv`.
@@ -250,14 +241,14 @@ defines the navigation; add every new page to it. The home page's text is in
 including a sample `dream:smith` session, is in `overrides/home.html`, and the
 styles are in `docs/assets/dream.css`.
 
-The `docs` workflow runs when a pull request or a push to main changes `docs/`,
-`mkdocs.yml`, `overrides/` or the workflow itself. It builds the site, and on
-main it also deploys the site to GitHub Pages.
+The `docs` workflow builds the site when a pull request or a push to main
+changes `docs/`, `mkdocs.yml`, `overrides/` or the workflow, and deploys it to
+GitHub Pages from main.
 
-When you add or remove a skill, or change what one does, update `docs/index.md`,
-which describes every skill. Keep each skill to one table row, so that a reader
-can take in the whole plugin at a glance. When `dream:smith` changes the steps
-it reports, update the sample session in `overrides/home.html` to match.
+When you add, remove or change what a skill does, update `docs/index.md`. Keep
+each skill to one table row, so the table shows the whole plugin at a glance.
+When `dream:smith` changes the steps it reports, update the sample session in
+`overrides/home.html` to match.
 
 Preview the site locally:
 
@@ -270,18 +261,17 @@ uvx --with-requirements docs/requirements.txt mkdocs serve
 End every pull request description with a "Definition of done" section that
 answers each question in
 [the standard's definition of done](docs/standard.md#definition-of-done) by its
-title, with evidence. The questions make you look beyond the diff to every place
-the change affects.
+title, with evidence. The questions reach past the diff to every place the
+change affects.
 
 Keep the rest of the description short and current: say what the pull request
 does and why, and leave line-by-line detail to the diff. Update the description
 whenever a later commit changes what the pull request does.
 
-Say in the description what the pull request changes for a user, and whether it
-renames or removes a name in
-[the interface](docs/compatibility.md#the-interface). The next release's
-changelog is written from these descriptions. Leave the version and the
-changelog unchanged, because both change only at a release.
+Say what the pull request changes for a user, and whether it renames or removes
+a name in [the interface](docs/compatibility.md#the-interface): the next
+release's changelog is written from these descriptions. Leave the version and
+the changelog alone; both change only at a release.
 
 ## Releases and the manifest
 
@@ -292,11 +282,11 @@ with them, by following [the release checklist](docs/releasing.md). It sets the
 version by the rules on
 [the compatibility page](docs/compatibility.md#versions).
 
-The plugin's version is set only in `plugins/dream/.codex-plugin/plugin.json`.
-`pyproject.toml` has a placeholder version that `uv` requires; never change it.
+The plugin's version lives only in `plugins/dream/.codex-plugin/plugin.json`.
+The version in `pyproject.toml` is a placeholder that `uv` requires; never
+change it.
 
-Keep the manifest at `plugins/dream/.codex-plugin/plugin.json`, with
-`plugins/dream/.claude-plugin/plugin.json` as a symlink to it, so that both
-agent harnesses read one file: Codex drops symlinks when it installs a plugin,
-and Claude Code follows them. `claude plugin validate` warns that it ignores the
-manifest's `interface` block. Keep the block, because Codex needs it.
+The manifest is a real file under `.codex-plugin/`, and
+`.claude-plugin/plugin.json` is a symlink to it, because Codex drops symlinks
+when it installs a plugin and Claude Code follows them. `claude plugin validate`
+warns that it ignores the `interface` block; keep the block, which Codex needs.
