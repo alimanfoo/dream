@@ -67,7 +67,8 @@ options, each in a line or two:
 - **C:** what you would do after stepping back and looking at the problem from
   higher up. Find a way to meet the need at its root or design the need out of
   existence, instead of adding machinery to serve its current shape. Always give
-  me a real third way, never "none".
+  me a real third way, never "none", and never one that leads to the same
+  outcome as A or B.
 
 Recommend one option and say why. Take one decision per turn. When an issue
 raises several points, take them one at a time in the same shape. Don't end
