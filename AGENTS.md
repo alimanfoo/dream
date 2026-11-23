@@ -6,18 +6,7 @@ follows.
 
 ## The repository
 
-Users install only `plugins/dream`; everything else supports its development:
-
-- `plugins/dream/`: the plugin's skills, subagent files, shared files and
-  manifest.
-- `.claude-plugin/marketplace.json`: the marketplace that offers the plugin.
-- `docs/`, `mkdocs.yml` and `overrides/`: the documentation site.
-- `specs/`: the specifications, one folder per piece of work.
-- `scripts/`: the scripts that the pre-commit hooks run.
-- `.claude/skills/maintainer/`: the skill for a harness session in which an
-  agent maintains dream with the user.
-- `AGENTS.md`: this file, which `CLAUDE.md` imports.
-
+Users install only `plugins/dream`; everything else supports its development.
 Rules here govern development. Rules that the installed skills follow belong in
 the plugin.
 
@@ -40,15 +29,10 @@ Three documents define dream's vocabulary, its intended behaviour and its
 quality criteria. Read them before you work. A pull request that changes
 behaviour one of them describes updates that document too.
 
-- [`docs/concepts.md`](docs/concepts.md) defines the terms for dream's domain.
-  Use its terms, not the ones its "Replaces:" lines retire, in the skills, the
-  documents and the issues.
-- [`docs/stories.md`](docs/stories.md) specifies dream's intended behaviour as
-  scenarios. Each story gives the user's goal, the steps that the user and the
-  agents take, and the outcome.
-- [`docs/standard.md`](docs/standard.md) sets out the criteria dream is held to,
-  how each is measured, and what enforces each. Its definition of done applies
-  to every pull request.
+- [`docs/concepts.md`](docs/concepts.md): the vocabulary.
+- [`docs/stories.md`](docs/stories.md): the intended behaviour.
+- [`docs/standard.md`](docs/standard.md): the quality criteria and the
+  definition of done.
 
 ## Design rationale
 
@@ -117,8 +101,7 @@ loads from the installed plugin, which may be an older release.
 When you change the guide to agent mechanics, check each changed claim against
 the sources that
 [`docs/agent-mechanics-sources.md`](docs/agent-mechanics-sources.md) lists for
-its section, and add any new source to that list. That file also gives the
-version each source is pinned to.
+its section, and add any new source to that list.
 
 ### Two kinds of skill
 
@@ -126,8 +109,7 @@ Most skills instruct a coding agent. The collaborative product management
 skills, `dream:sift`, `dream:spark`, `dream:trace`, `dream:weave` and
 `dream:quest`, are written in the user's voice, as if the user had typed them:
 "ask me", "tell me only what you've read". Do not rewrite a skill in the user's
-voice as third-person instructions to the agent. Both kinds are held to the same
-standard.
+voice as third-person instructions to the agent.
 
 In every skill, write the frontmatter `description` in the third person, because
 the agent harness lists it in the coding agent's context, where the model reads
@@ -135,29 +117,14 @@ it to choose a skill.
 
 ### Shared files
 
-Each shared file at the plugin's root holds one convention or guide that several
-skills follow. Reference the file from a skill; don't copy its content:
-
-- [`agent-written-marks.json`](plugins/dream/agent-written-marks.json): the
-  comment footer and commit trailer that mark work as written by an agent.
-- [`branch-bases.md`](plugins/dream/branch-bases.md): how to find the default
-  branch and the current branch's review base.
-- [`coherent-coding.md`](plugins/dream/coherent-coding.md): the coherent coding
-  guide, for skills that design, write or review code.
-- [`github-text.md`](plugins/dream/github-text.md): the layout of text that
-  GitHub renders, such as a pull request description or a comment.
-- [`spec-files.md`](plugins/dream/spec-files.md): where a specification file
-  goes, and how it reaches the user on a pull request.
-- [`subagent-waiting.md`](plugins/dream/subagent-waiting.md): how to wait for
-  launched subagents to finish, under each agent harness.
+Each file at the plugin's root holds one convention or guide that several skills
+follow. Reference the file from a skill; don't copy its content.
 
 ### Subagent files
 
 Keep a short subagent task inline in the skill that launches it. Move it to a
 subagent file in `plugins/dream/agents/` when it is long or more than one skill
-launches it. Both agent harnesses read that file, each in its own way:
-[Claude Code](plugins/dream/skills/agent-mechanics/claude-code.md#subagent-definitions),
-[Codex](plugins/dream/skills/agent-mechanics/codex.md#subagent-definitions).
+launches it.
 
 Name a subagent file for the task it performs, not for the skill that launches
 it, because under Claude Code a subagent and a skill with the same name share
@@ -224,31 +191,19 @@ hooks in `.pre-commit-config.yaml`, which CI (`.github/workflows/lint.yml`) runs
 on every pull request and every push to main. Run them all with
 `uvx pre-commit run --all-files`. The standard's
 [Machine-checked rules](docs/standard.md#machine-checked-rules) says what each
-enforces; `zizmor` also audits the workflows.
+enforces.
 
 Prettier formats Markdown at 80 columns, and `uncoded sync` regenerates
 `.uncoded/docs.yaml` and the `uncoded-doc-navigation` skill. Don't hand-wrap
 Markdown, and don't hand-edit the generated files.
 
-Two hooks need a tool on `PATH`: `claude plugin validate` needs the Claude Code
-CLI, and `uncoded sync` needs `uv`.
-
 ## Documentation site
 
-The documentation site is built with MkDocs and the Material theme. `mkdocs.yml`
-defines the navigation; add every new page to it. The home page's text is in
-`docs/index.md`, with its headline and lede in the front matter. The hero,
-including a sample `dream:smith` session, is in `overrides/home.html`, and the
-styles are in `docs/assets/dream.css`.
-
-The `docs` workflow builds the site when a pull request or a push to main
-changes `docs/`, `mkdocs.yml`, `overrides/` or the workflow, and deploys it to
-GitHub Pages from main.
-
-When you add, remove or change what a skill does, update `docs/index.md`. Keep
-each skill to one table row, so the table shows the whole plugin at a glance.
-When `dream:smith` changes the steps it reports, update the sample session in
-`overrides/home.html` to match.
+Add every new page to the navigation in `mkdocs.yml`. When you add, remove or
+change what a skill does, update `docs/index.md`. Keep each skill to one table
+row, so the table shows the whole plugin at a glance. When `dream:smith` changes
+the steps it reports, update the sample session in `overrides/home.html` to
+match.
 
 Preview the site locally:
 
@@ -258,15 +213,11 @@ uvx --with-requirements docs/requirements.txt mkdocs serve
 
 ## Pull requests
 
-End every pull request description with a "Definition of done" section that
-answers each question in
-[the standard's definition of done](docs/standard.md#definition-of-done) by its
-title, with evidence. The questions reach past the diff to every place the
-change affects.
-
-Keep the rest of the description short and current: say what the pull request
-does and why, and leave line-by-line detail to the diff. Update the description
-whenever a later commit changes what the pull request does.
+Answer [the definition of done](docs/standard.md#definition-of-done) in every
+pull request description, as the standard specifies. Keep the rest of the
+description short and current: say what the pull request does and why, and leave
+line-by-line detail to the diff. Update the description whenever a later commit
+changes what the pull request does.
 
 Say what the pull request changes for a user, and whether it renames or removes
 a name in [the interface](docs/compatibility.md#the-interface): the next
