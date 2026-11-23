@@ -8,7 +8,7 @@ effort = "high"
 
 [conversation.codex]
 prompt = "$dream:scout GH{issue}"
-model = "gpt-5.6-sol"
+model = "gpt-6.2-sol"
 effort = "high"
 
 [[assignment]]
@@ -21,7 +21,7 @@ effort = "high"
 
 [assignment.codex]
 prompt = "$dream:smith GH{issue}"
-model = "gpt-5.6-sol"
+model = "gpt-6.2-sol"
 effort = "high"
 config = { model_context_window = 1000000, model_auto_compact_token_limit = 900000 }
 
@@ -35,7 +35,7 @@ effort = "high"
 
 [assignment.codex]
 prompt = "$dream:less GH{issue}"
-model = "gpt-5.6-terra"
+model = "gpt-6.1-terra"
 effort = "high"
 
 [[campaign]]
@@ -48,6 +48,6 @@ effort = "high"
 
 [campaign.codex]
 prompt = "$dream:big GH{issue}"
-model = "gpt-5.6-sol"
+model = "gpt-6.2-sol"
 effort = "high"
 config = { model_context_window = 1000000, model_auto_compact_token_limit = 900000 }
