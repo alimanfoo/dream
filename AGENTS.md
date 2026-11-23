@@ -87,7 +87,26 @@ whenever you weigh a proposed change, whether it comes in an issue, a review
 finding or a pull request. Each is a lesson from past triage. Add one only when
 the user approves it.
 
-There are none yet.
+- **Recorded behaviour outranks predicted behaviour.** How agents behave under a
+  skill is established by records of harness sessions that ran it: pull
+  requests, issue comments and session transcripts. A prediction made by reading
+  the skill's text is a hypothesis until such a record confirms it.
+- **An instruction has a cost in every session.** Each instruction in a skill
+  adds tokens to the context of every harness session that invokes the skill,
+  and competes with the skill's other instructions for the model's attention. It
+  helps only in the cases it covers, so weigh that cost against how often those
+  cases occur.
+- **Change the system that defines the behaviour.** When a fix in a skill would
+  restate how dreamcatcher, an agent harness or GitHub behaves, or compensate
+  for that behaviour, make the fix in that system instead. If the system is
+  outside the user's control, close the issue and record the behaviour as a
+  limitation in the closing comment.
+- **Weigh a measurement finding against the skill's purpose.** The release
+  measurement reports each place where the plugin misses a criterion of the
+  standard, such as Symmetry between paired skills. When the fix for a finding
+  would remove a difference that a skill needs for its purpose, such as less
+  using fewer tokens than smith, keep the difference and state it in the
+  stories.
 
 ## Changing the plugin
 
