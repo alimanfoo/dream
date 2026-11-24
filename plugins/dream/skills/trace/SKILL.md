@@ -1,8 +1,8 @@
 ---
 name: trace
 description:
-  Explore the code behind a task with the user, and leave a verified reading
-  guide to it. Use only when the user explicitly runs /dream:trace.
+  Explores the code behind a task with the user, and leaves a verified reading
+  guide to it. Use only when explicitly invoked.
 argument-hint: "[requirements | issue | file | text]"
 ---
 

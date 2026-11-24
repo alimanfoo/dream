@@ -1,8 +1,8 @@
 ---
 name: scout
 description:
-  Investigate a GitHub issue and answer the user's questions on it, before any
-  implementation work. Use only when the user explicitly runs /dream:scout.
+  Investigates a GitHub issue and answers the user's questions on it, before any
+  implementation work. Use only when explicitly invoked.
 argument-hint: "<issue>"
 ---
 

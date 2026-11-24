@@ -1,7 +1,7 @@
 ---
 name: code-review
 description:
-  Review changed code through review lenses chosen to fit the diff. Use only
+  Reviews changed code through review lenses chosen to fit the diff. Use only
   when explicitly invoked.
 argument-hint: "[target] [inline]"
 ---

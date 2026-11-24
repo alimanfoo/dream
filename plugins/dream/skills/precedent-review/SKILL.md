@@ -1,7 +1,7 @@
 ---
 name: precedent-review
 description:
-  Review changed code against the precedent set by the user's own past review
+  Reviews changed code against the precedent set by the user's own past review
   comments. Use only when explicitly invoked.
 argument-hint: "[target]"
 ---

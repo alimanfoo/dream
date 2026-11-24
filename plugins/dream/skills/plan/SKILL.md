@@ -1,8 +1,8 @@
 ---
 name: plan
 description:
-  Produce an implementation plan, a task list that delivers the given focus. Use
-  only when explicitly invoked.
+  Produces an implementation plan, a list of implementation steps that delivers
+  the given focus. Use only when explicitly invoked.
 argument-hint: "<focus | text>"
 ---
 

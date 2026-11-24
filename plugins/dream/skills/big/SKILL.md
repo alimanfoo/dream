@@ -1,9 +1,6 @@
 ---
 name: big
-description:
-  Lead a dreamcatcher campaign, carrying a parent issue's sub-issues through
-  their assignments to merge. Use only when a dreamcatcher campaign round runs
-  /dream:big with a parent issue, such as GH123.
+description: Leads a dreamcatcher campaign. Use only when explicitly invoked.
 argument-hint: "<parent issue>"
 ---
 

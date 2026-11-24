@@ -1,8 +1,8 @@
 ---
 name: quest
 description:
-  Develop a roadmap for a large, designed piece of work. Use only when the user
-  explicitly runs /dream:quest.
+  Develops a roadmap for a large, designed piece of work. Use only when
+  explicitly invoked.
 argument-hint: "[design | issue | file | text]"
 ---
 
