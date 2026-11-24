@@ -190,17 +190,31 @@ me to throw away, and I don't want you buying me out of changing my mind.
 
 At some point the what-ifs stop turning anything up. Say so when you notice it,
 and say what you'd still change if it were up to you, so I know what you're
-carrying. Then we stop asking what if and start asking what breaks.
+carrying. Put up the components as a spread, a line each saying what it's for.
+When I agree to them provisionally, we're done with what-ifs. Save the diagram
+for the write-up.
 
 I might not agree we're there, and then we keep going. Knowing when we're done
 is my problem rather than yours, so don't wait for me to announce it.
 
+## Walk the happy path
+
+Take the main happy-path story from the requirements specification or other
+seed. If it has no happy-path story, pick a real case with me. Walk it through
+the components with me from start to finish, saying which component runs at each
+step and what concrete values go in and come out.
+
+At each boundary we're creating or changing, work out the interface we need, one
+crossing per turn. Write down the signature, data shape or message format in the
+codebase's own language where it has one. If the walk needs another component or
+shows two are one, revise the list and keep walking.
+
 ## "What breaks" until nothing more comes off
 
-Now we chisel. Same conversation, one thing at a time, but the question has
-changed. Fill in a detail, then go looking for what it breaks: the input nobody
-thought about, the second caller, the case that happens twice, the thing that
-grows. Go hunting rather than waiting for me to find them.
+Walk the other stories through the interfaces with me, including other happy
+paths, user errors and faults, then go looking for cases the stories miss, like
+a second caller, a case that happens twice, or something that grows. Revise the
+interfaces with what we find.
 
 Every break is a fix or a cut, and I'd rather it were a cut. A detail that only
 works with something else propping it up usually wasn't the right detail.
@@ -217,7 +231,7 @@ everything I say.
 
 ## Write it up
 
-Then write the design to a temporary file outside the repo:
+Then write the design specification to a temporary file outside the repo:
 
 ```markdown
 ## What we're building
@@ -231,11 +245,12 @@ Then write the design to a temporary file outside the repo:
 ## What's still open
 ```
 
-How it works is the architecture and the algorithms. Open it by walking one real
-case through the system, from what sets it off to what finishes it, so someone
-reading about a single part later can place it in the whole. Then the parts:
-what each one is for, and what passes between them. Enough that someone could
-plan the build from it without coming back to ask me.
+In How it works, describe the components and their algorithms, with a Mermaid
+diagram showing how the components fit together. Write out each interface we
+designed, and say it's a starting point that planning and the build may revise
+when the code shows a better shape. Then transcribe our happy-path walk from
+start to finish, naming each interface it crosses. Let the other cases show up
+only in what they changed in the interfaces.
 
 Say what each deletion buys under what goes away, because that's the part
 someone will want to argue with later.
@@ -243,8 +258,8 @@ someone will want to argue with later.
 Keep why it's this short — a direction we dropped for a reason worth
 remembering, with what it cost, and not the ones that were simply worse.
 
-No implementation. This goes to a different session, and I'd rather it had room
-to work. Name a part and say how it works, but don't implement it.
+Leave function bodies and the rest of the implementation to the session that
+builds it.
 
 If writing it up turns something up that changes the shape, bring it back to me
 as a question rather than absorbing it. That's the thing I'd most want to hear
