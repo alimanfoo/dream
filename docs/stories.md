@@ -168,8 +168,8 @@ from.
    crossing per turn, and revise the components as the walk calls for it.
 8. They walk further cases through those interfaces, starting with the other
    stories and then looking for cases the stories miss. They use what breaks to
-   revise the interfaces, preferring cuts to fixes, until nothing more can be
-   removed.
+   revise the interfaces and revisit any affected happy-path steps. They prefer
+   cuts to fixes and keep going until nothing more can be removed.
 9. The agent writes the design specification. It says what is being built. To
    show how it works, it describes the components with a Mermaid diagram, writes
    out the interfaces as a starting point that planning and the build may

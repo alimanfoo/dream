@@ -214,7 +214,8 @@ shows two are one, revise the list and keep walking.
 Walk the other stories through the interfaces with me, including other happy
 paths, user errors and faults, then go looking for cases the stories miss, like
 a second caller, a case that happens twice, or something that grows. Revise the
-interfaces with what we find.
+interfaces with what we find and walk any affected happy-path steps with me
+again.
 
 Every break is a fix or a cut, and I'd rather it were a cut. A detail that only
 works with something else propping it up usually wasn't the right detail.
