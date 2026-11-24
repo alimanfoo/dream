@@ -166,11 +166,13 @@ parts.
 
 ### Design specification
 
-A **design specification** describes what a piece of work will create and how it
-works, using the models the design needs. The models give planning and the build
-a starting point they may revise. The specification leaves implementation to the
-build. It also says what changes and what goes away, why the result takes this
-shape, and what is still open.
+A **design specification** describes a solution: how the software in the
+repository will meet a set of requirements, in enough detail to plan its
+implementation. It may present the solution using design models, such as a
+component model with its interfaces, a data model, a lifecycle or an algorithm.
+It may also say which parts of the existing software the solution changes or
+removes, which alternatives were rejected and why, and which questions remain
+open.
 
 Replaces: "design", for a design specification.
 
