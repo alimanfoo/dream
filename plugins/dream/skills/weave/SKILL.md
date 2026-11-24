@@ -1,8 +1,8 @@
 ---
 name: weave
 description:
-  Explore the solution space with the user and reach a design together. Use only
-  when the user explicitly runs /dream:weave.
+  Explores the solution space with the user and reaches a design together. Use
+  only when the user explicitly runs /dream:weave.
 argument-hint: "[requirements | issue | file | text]"
 ---
 

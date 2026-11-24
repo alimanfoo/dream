@@ -1,7 +1,7 @@
 ---
 name: coherent-coding
 description:
-  Design and write code which is coherent and easy to maintain. Use only when
+  Designs and writes code which is coherent and easy to maintain. Use only when
   explicitly invoked.
 ---
 

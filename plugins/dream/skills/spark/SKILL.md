@@ -1,8 +1,8 @@
 ---
 name: spark
 description:
-  Interview the user to turn a rough idea into a requirements brief. Use only
-  when the user explicitly runs /dream:spark.
+  Interviews the user to turn a rough idea into a requirements specification.
+  Use only when the user explicitly runs /dream:spark.
 argument-hint: "[issue | file | text]"
 ---
 
