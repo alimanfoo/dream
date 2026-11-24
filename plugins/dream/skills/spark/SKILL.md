@@ -2,7 +2,7 @@
 name: spark
 description:
   Interviews the user to turn a rough idea into a requirements specification.
-  Use only when the user explicitly runs /dream:spark.
+  Use only when explicitly invoked.
 argument-hint: "[issue | file | text]"
 ---
 

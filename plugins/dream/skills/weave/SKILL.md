@@ -2,7 +2,7 @@
 name: weave
 description:
   Explores the solution space with the user and reaches a design together. Use
-  only when the user explicitly runs /dream:weave.
+  only when explicitly invoked.
 argument-hint: "[requirements | issue | file | text]"
 ---
 

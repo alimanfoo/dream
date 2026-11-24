@@ -2,7 +2,7 @@
 name: smith
 description:
   An autonomous developer skill for implementing a well-specified task. Use only
-  when the user explicitly runs /dream:smith.
+  when explicitly invoked.
 argument-hint: "[issue | text]"
 ---
 

@@ -2,8 +2,7 @@
 name: sift
 description:
   Triages GitHub issues with the user, one decision at a time, and prepares
-  accepted work for implementation. Use only when the user explicitly runs
-  /dream:sift.
+  accepted work for implementation. Use only when explicitly invoked.
 argument-hint: "[issue...]"
 ---
 
