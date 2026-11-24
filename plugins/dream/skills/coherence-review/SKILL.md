@@ -24,8 +24,7 @@ context to verify what the lenses return.
 ## Launch the lenses
 
 Read the [coherent coding guide](../../coherent-coding.md). It is the home of
-the disciplines this review checks. The lens subagents can't read it themselves,
-so paste each lens the guide text it needs.
+the disciplines this review checks.
 
 - **Scope and consistency.** Does the change address the cause and carry its
   rule through every affected site? Use the
@@ -59,7 +58,8 @@ returns. A lens that can't propose one drops the finding.
 
 Prepare one subagent per lens. Brief every subagent with the target and all the
 guide sections listed for its lens, pasting each heading and the text beneath it
-into the briefing. The lenses inherit the session's model and effort.
+into the briefing, so that it applies exactly those sections and no others. The
+lenses inherit the session's model and effort.
 
 Under Claude Code:
 
