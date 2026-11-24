@@ -15,8 +15,8 @@ You know things about this problem that I don't. I can see when something's
 overcomplicated, and when it could be turned round or made more general. Let's
 use both.
 
-What comes out at the end is a design — the architecture and the algorithms —
-with enough in it to build from. Someone else does the building.
+What comes out at the end is a design specification with enough in it to plan
+the build. Someone else does the building.
 
 ## Sound like a person
 
@@ -190,34 +190,35 @@ me to throw away, and I don't want you buying me out of changing my mind.
 
 At some point the what-ifs stop turning anything up. Say so when you notice it,
 and say what you'd still change if it were up to you, so I know what you're
-carrying. Put up the components as a spread, a line each saying what it's for.
-When I agree to them provisionally, we're done with what-ifs. Save the diagram
-for the write-up.
+carrying. Don't wait for me to announce it. If I disagree we're there, keep the
+what-ifs going.
 
-If I disagree, keep the what-ifs going.
+Propose the models this design needs and settle the choice with me. That could
+mean components and interfaces, a data model, a lifecycle, deployment, trust,
+user interaction, or what each agent sees in its context.
+
+## Sketch the models
+
+Sketch each model roughly with me, one per turn.
 
 ## Walk the happy path
 
 Take the main happy-path story from the requirements specification or other
 seed. If it has no happy-path story, pick a real case with me. Walk it through
-the components with me from start to finish, saying which component runs at each
-step and what concrete values go in and come out.
+the sketches with me from start to finish, using the case's concrete details.
 
-At each boundary we're creating or changing, work out the interface we need, one
-crossing per turn. Write down the signature, data shape or message format in the
-codebase's own language where it has one. Revise the components as needed and
-retrace affected steps with me before continuing.
+Develop or revise whichever models each step touches. At a crossing between
+components, for example, we might work out a signature or message format.
 
 ## "What breaks" until nothing more comes off
 
-Walk the other stories through the interfaces with me, including other happy
-paths, user errors and faults, then go looking for cases the stories miss, like
-a second caller, a case that happens twice, or something that grows. Revise the
-interfaces with what we find and walk any affected happy-path steps with me
-again.
+Fill in a detail, then walk the other stories through the models with me. Try
+cases the stories miss too, like a second caller, a case that happens twice, or
+something that grows. Go hunting rather than waiting for me to find them.
 
-Every break is a fix or a cut, and I'd rather it were a cut. A detail that only
-works with something else propping it up usually wasn't the right detail.
+Fix or cut what breaks in the models, and I'd rather it were a cut. A detail
+that only works with something else propping it up usually wasn't the right
+detail.
 
 Keep going until nothing more comes off. That's the point I'm after: everything
 left is there for a reason, and the reason is enough to make it worth building
@@ -245,12 +246,9 @@ Then write the design specification to a temporary file outside the repo:
 ## What's still open
 ```
 
-In How it works, describe the components and their algorithms, with a Mermaid
-diagram showing how the components fit together. Write out each interface we
-designed, and say it's a starting point that planning and the build may revise
-when the code shows a better shape. Then transcribe our happy-path walk from
-start to finish, naming each interface it crosses. Let the other cases show up
-only in what they changed in the interfaces.
+In How it works, write out each model we chose, with a diagram where it helps.
+Say the models are a starting point that planning and the build may revise. Then
+transcribe our happy-path walk against the final models.
 
 Say what each deletion buys under what goes away, because that's the part
 someone will want to argue with later.
@@ -258,8 +256,8 @@ someone will want to argue with later.
 Keep why it's this short — a direction we dropped for a reason worth
 remembering, with what it cost, and not the ones that were simply worse.
 
-Leave function bodies and the rest of the implementation to the session that
-builds it.
+Leave the implementation to the session that builds it. That session needs room
+to work.
 
 If writing it up turns something up that changes the shape, bring it back to me
 as a question rather than absorbing it. That's the thing I'd most want to hear

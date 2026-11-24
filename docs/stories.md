@@ -160,32 +160,31 @@ from.
    that thing gone, and says what putting it back would cost. The user decides
    whether it is worth putting back.
 6. When the what-ifs stop changing the design, the agent says so, and says what
-   it would still change. It lists the components and what each is for. The user
-   agrees to them provisionally, ending the what-ifs.
-7. They walk the main happy-path story through the components using concrete
-   inputs and outputs. If the seed has no happy-path story, they pick a real
-   case together. They design the interface at each new or changed boundary, one
-   crossing per turn. They revise the components as needed and retrace affected
-   steps.
-8. They walk further cases through those interfaces, starting with the other
-   stories and then looking for cases the stories miss. They use what breaks to
-   revise the interfaces and revisit any affected happy-path steps. They prefer
-   cuts to fixes and keep going until nothing more can be removed.
-9. The agent writes the design specification. It says what is being built. To
-   show how it works, it describes the components with a Mermaid diagram, writes
-   out the interfaces as a starting point that planning and the build may
-   revise, then records the happy-path walk they worked through together. It
-   says what changes and what goes away, with what each removal buys. It says
-   why the design takes this shape and not another, and what is still open.
-10. The agent has two subagents read the design specification. One reads it
+   it would still change. It proposes which models the design needs, and the
+   user agrees to the choice.
+7. The agent sketches each model roughly with the user, one per turn.
+8. They walk the main happy-path story through the sketches using the case's
+   concrete details. If the seed has no happy-path story, they pick a real case
+   together. They develop or revise the models each step touches.
+9. They fill in details and walk further cases through the models, starting with
+   the other stories and then hunting for cases the stories miss. They use what
+   breaks to revise the models, preferring cuts to fixes, until nothing more can
+   be removed.
+10. The agent writes the design specification. It says what is being built. To
+    show how it works, it presents the chosen models with diagrams where they
+    help, marks them as a starting point that planning and the build may revise,
+    then records the happy-path walk against the final models. It says what
+    changes and what goes away, with what each removal buys. It says why the
+    design takes this shape and what is still open.
+11. The agent has two subagents read the design specification. One reads it
     beside the requirements specification, and reports what could come out and
     still meet the requirements, and what each cut would cost. The other reads
     the code the design touches, and reports whether the design fits that code
     and holds enough to plan the build from. The agent fixes wording that was
     only unclear, and brings the user each remaining point, one per turn. The
     user rules on each cut.
-11. The agent shows the user the design specification.
-12. The agent offers to put the design specification in a specification folder
+12. The agent shows the user the design specification.
+13. The agent offers to put the design specification in a specification folder
     as `design.md` and open a pull request for it, and does so when the user
     agrees.
 
