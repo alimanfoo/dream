@@ -58,8 +58,8 @@ The plugin is designed around these tendencies of coding agents:
 An instruction not to show a tendency does not remove it. The plugin counters
 each tendency with structure, such as a step or a subagent, and where it can,
 puts the tendency to work. For example, `dream:smith`'s Collect step has the
-agent file an issue for each piece of work it left out of scope, which perimeter
-fixation and reactivity would otherwise drop.
+agent file issues for the work it left out of scope, which perimeter fixation
+and reactivity would otherwise drop.
 
 ## How we judge
 
