@@ -24,8 +24,8 @@ context to verify what the lenses return.
 ## Launch the lenses
 
 Read the [coherent coding guide](../../coherent-coding.md). It is the home of
-the disciplines this review checks. The lens subagents can't read it themselves,
-so paste each lens the guide text it needs.
+the disciplines this review checks. Paste each lens the guide sections listed
+for it, so that it applies exactly those sections and no others.
 
 - **Scope and consistency.** Does the change address the cause and carry its
   rule through every affected site? Use the
