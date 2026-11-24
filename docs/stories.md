@@ -475,11 +475,11 @@ settle.
 8. The stage's agent addresses the comment. Steps 6 to 8 repeat until the stage
    is done.
 9. The lead passes to each later stage what this stage changed for it, then
-   merges the pull request once its checks pass.
+   merges the pull request once its required checks pass.
 10. Throughout, when neither the roadmap nor the user's earlier answers settle a
-    question, the lead asks the user on the parent issue, and holds back the
+    question, the lead asks the user on the parent issue, and merges none of the
     stages the question bears on until they answer. If the lead cannot tell
-    which stages it bears on, it holds back every stage.
+    which stages it bears on, it merges no stage.
 11. Steps 4 to 9 repeat until every sub-issue is closed. The lead says so on the
     parent issue.
 
