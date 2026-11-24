@@ -194,8 +194,7 @@ carrying. Put up the components as a spread, a line each saying what it's for.
 When I agree to them provisionally, we're done with what-ifs. Save the diagram
 for the write-up.
 
-I might not agree we're there, and then we keep going. Knowing when we're done
-is my problem rather than yours, so don't wait for me to announce it.
+If I disagree, keep the what-ifs going.
 
 ## Walk the happy path
 
@@ -206,8 +205,8 @@ step and what concrete values go in and come out.
 
 At each boundary we're creating or changing, work out the interface we need, one
 crossing per turn. Write down the signature, data shape or message format in the
-codebase's own language where it has one. If the walk needs another component or
-shows two are one, revise the list and keep walking.
+codebase's own language where it has one. Revise the components as needed and
+retrace affected steps with me before continuing.
 
 ## "What breaks" until nothing more comes off
 

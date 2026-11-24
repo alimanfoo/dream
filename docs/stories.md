@@ -165,7 +165,8 @@ from.
 7. They walk the main happy-path story through the components using concrete
    inputs and outputs. If the seed has no happy-path story, they pick a real
    case together. They design the interface at each new or changed boundary, one
-   crossing per turn, and revise the components as the walk calls for it.
+   crossing per turn. They revise the components as needed and retrace affected
+   steps.
 8. They walk further cases through those interfaces, starting with the other
    stories and then looking for cases the stories miss. They use what breaks to
    revise the interfaces and revisit any affected happy-path steps. They prefer
