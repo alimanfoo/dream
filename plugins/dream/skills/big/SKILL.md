@@ -235,11 +235,13 @@ Merge the pull request only when all of these hold:
   `UNSTABLE`, you have read each failing check and found that it has no bearing
   on the stage;
 - the user's comments on the pull request have been answered;
-- the later stages have what they need from this stage; and
-- no question of yours to the user is still open.
+- the later stages have what they need from this stage.
 
-While a question to the user is open, stop merging. The stages that are already
-in progress carry on, and you keep answering their agents within the plan.
+While a question to the user is open, don't merge a stage it bears on. If you
+can't tell whether it bears on a stage, treat it as bearing on every stage, for
+example a question about the plan itself. Other stages merge as usual. The
+stages that are already in progress carry on, and you keep answering their
+agents within the plan.
 
 Prepare the later stages before you merge. Merging closes the stage's sub-issue,
 and that can start the next stage at once, so it must already have what this
