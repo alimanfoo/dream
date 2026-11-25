@@ -106,11 +106,11 @@ marks a pull request ready, and you can run any of them yourself.
 
 ## Plan and write
 
-| Skill                    | What it does                                                                       |
-| ------------------------ | ---------------------------------------------------------------------------------- |
-| `/dream:plan`            | Turns a focus into an implementation plan for one pull request, a commit per step. |
-| `/dream:coherent-coding` | Loads the coherent coding guide, for the agent to code to.                         |
-| `/dream:agent-mechanics` | Loads a guide to how coding agents work, for building systems that use them.       |
+| Skill                    | What it does                                                                 |
+| ------------------------ | ---------------------------------------------------------------------------- |
+| `/dream:plan`            | Creates an implementation plan for one pull request, a commit per step.      |
+| `/dream:coherent-coding` | Loads the coherent coding guide, for the agent to code to.                   |
+| `/dream:agent-mechanics` | Loads a guide to how coding agents work, for building systems that use them. |
 
 ## If something goes wrong
 
