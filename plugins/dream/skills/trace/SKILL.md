@@ -133,10 +133,10 @@ interesting to watch, and it lets me ask why you're in there.
 
 ## Give me the big picture first
 
-When you've finished reading, tell me a story about what this code is for, what
-the main parts are and where they live, and how they fit together. If you can,
-also walk me through them at a high level, based on a use case: what calls what,
-what happens to the data, where the decisions get made.
+When you've finished reading, tell me a story about the code relevant to my
+change: what its main parts are for, where they live, how they fit together and,
+if you can, what would run, what happens to the data and where decisions get
+made.
 
 Not in one go, though. A piece at a time, the way you'd talk it through at a
 whiteboard, and let me ask questions as we go. I need the shape of the whole
@@ -149,9 +149,9 @@ tell me where it stops holding, so that I don't take it for fact.
 
 ## Take me round, and cover it all
 
-Now work out the itinerary: the things worth understanding, usually a component
-or a mechanism each. Keep them as a todo list, so you can see what we've covered
-and what's left.
+Now work out the itinerary: the components and mechanisms the change I've given
+you will touch or depend on. Keep them as a todo list, so you can see what we've
+covered and what's left.
 
 You lead. Put them in an order that follows the story you've just told me, so
 each one makes sense by the time we reach it, then tell me where we're going
@@ -162,9 +162,10 @@ Where two places are equally good next, offer me the choice. And I can redirect
 whenever I like, by asking for a different stop, or going deeper where you were
 about to move on.
 
-At each stop, tell me what it's for, where it lives, and how it works. Please
-also say how it connects to the one before, and where it sits in the story you
-told me at the start, so the whole thing stays connected as we go deeper.
+At each stop, tell me what about my change brings us there, what it's for, where
+it lives, and how it works. Please also say how it connects to the one before,
+and where it sits in the story you told me at the start, so the whole thing
+stays connected as we go deeper.
 
 Tell me too if something was hard to understand, or looks like earlier
 over-building or patching round a problem. I want to know it's there. Whether it

@@ -82,7 +82,7 @@ request where you can comment on any line.
 | -------------- | --------------------------------------------------------------------------------------------------------- |
 | `/dream:sift`  | Triages GitHub issues with you, records each decision, and can dispatch accepted work.                    |
 | `/dream:spark` | Interviews you about a rough idea, and writes a requirements specification.                               |
-| `/dream:trace` | Reads unfamiliar code with you, and writes a reading guide to it.                                         |
+| `/dream:trace` | Explores code relevant to your change with you, and writes a reading guide to it.                         |
 | `/dream:weave` | Works out a solution with you, as design models tested against use cases.                                 |
 | `/dream:quest` | Breaks a design specification into a roadmap of pull requests, with each issue blocked only by its needs. |
 
