@@ -2,7 +2,7 @@
 
 Follow the steps below in order.
 
-## Print the banner
+## A. Print the banner
 
 Read the plugin's version from the `version` field of
 `.codex-plugin/plugin.json`, in the folder that holds this file. Then print this
@@ -16,7 +16,7 @@ Booting...
 
 Replace `<version>` with the version you read.
 
-## Session rules
+## B. Session rules
 
 Follow these rules for the rest of the session.
 
@@ -60,7 +60,7 @@ anything disrupts the work and prevents you from finishing it. Say what
 disrupted the work and where you stopped. The user follows the PR, so turn
 output alone is not enough.
 
-## Orient to the repo
+## C. Orient to the repo
 
 Determine what the repo is for as a whole. Read the repo's own docs
 (`AGENTS.md`, `README`, `CLAUDE.md`) and explore its structure.
@@ -71,7 +71,7 @@ configuration, or something else.
 
 Determine how that product is organised into its major components.
 
-## Find the tests and checks
+## D. Find the tests and checks
 
 Determine the tests, checks, build steps, and tooling built around the product
 to produce, verify, and maintain it.
@@ -84,7 +84,7 @@ Find any codegen a commit hook doesn't run. Examples: a stub generator, an
 OpenAPI client refresh, an index sync. Run it after an edit that needs it. This
 makes the generated files match the source before you commit.
 
-## Check the working tree
+## E. Check the working tree
 
 Check the working tree. If it has uncommitted changes, stop and tell the user,
 in a comment on the branch's open PR if it has one.
@@ -93,7 +93,7 @@ Read the branch name (`git rev-parse --abbrev-ref HEAD`). Find the default
 branch by following [Default branch](branch-bases.md#default-branch). If the
 current branch is the default branch, pull the latest changes.
 
-## Obtain session input
+## F. Obtain session input
 
 Take the argument the user gives as the session input. It names an issue, such
 as `GH123`, or describes the task in free text.
@@ -106,7 +106,7 @@ found is part of the session input.
 When the name holds no such token either, ask the user to provide the session
 input.
 
-## Read the cited material and the code
+## G. Read the cited material and the code
 
 Read everything the user cites in their session input: issue bodies and their
 comments, prior issues they reference, linked PRs, and named files or symbols.
@@ -132,7 +132,7 @@ ask may already be done.
 Reach for git history only to fill a real gap the reads left. For example, a
 surface the input names that is no longer there. Trace where it went.
 
-## Name the change type
+## H. Name the change type
 
 Select the change type, which says what kind of change the work makes:
 
@@ -140,7 +140,7 @@ Select the change type, which says what kind of change the work makes:
 - **Maintenance.** Coherence, naming, structure. Behaviour already correct.
 - **Bug fix.** Incorrect behaviour to repair.
 
-## Open the session PR
+## I. Open the session PR
 
 Open the session branch and PR before the work begins.
 
