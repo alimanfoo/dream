@@ -16,7 +16,7 @@ Booting...
 
 Replace `<version>` with the version you read.
 
-## B. Session rules
+## B. Adopt the session rules
 
 Follow these rules for the rest of the session.
 
