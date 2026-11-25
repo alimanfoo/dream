@@ -14,17 +14,11 @@ standards.
 
 Follow the instructions below in order.
 
-## 1. Print the banner
+## 1. Boot
 
-Print the banner that [Banner](../../assignment-banner.md) describes.
+Run the [boot sequence](../../assignment-boot.md).
 
-## 2. Session rules
-
-Read the [session rules](../../assignment-session-rules.md) and follow them for
-the rest of the session. Read them again whenever the conversation has been
-summarised, since a summary can drop them.
-
-## 3. Engineering principles
+## 2. Adopt the engineering principles
 
 This skill is for relatively easy changes. Hold coherence anyway: fix the cause,
 not the symptom, and leave the codebase whole.
@@ -32,40 +26,7 @@ not the symptom, and leave the codebase whole.
 Add nothing the task doesn't need. No speculative abstraction, no premature
 generalisation, no half-finished extra feature.
 
-## 4. Orient to the repo
-
-Orient to the repo as [Orientation](../../assignment-orientation.md) describes.
-
-## 5. Find the tests and checks
-
-Find the tests and checks as
-[Tests and checks](../../assignment-tests-and-checks.md) describes.
-
-## 6. Check the working tree
-
-Check the working tree as [Working tree](../../assignment-working-tree.md)
-describes.
-
-## 7. Obtain session input
-
-Obtain the session input as [Session input](../../assignment-session-input.md)
-describes.
-
-## 8. Read the cited material and the code
-
-Read the cited material and the code as
-[Cited material and code](../../assignment-cited-material-and-code.md)
-describes.
-
-## 9. Name the change type
-
-Select the change type from [Change types](../../assignment-change-types.md).
-
-## 10. Open the session PR
-
-Open the session PR as [Session PR](../../assignment-session-pr.md) describes.
-
-## 11. Implement
+## 3. Implement
 
 Implement the change in small steps, each its own commit. For each step:
 
@@ -73,7 +34,7 @@ Implement the change in small steps, each its own commit. For each step:
 - Commit with a short subject.
 - Push.
 
-## 12. Code review
+## 4. Code review
 
 Find and fetch the session PR's base by following
 [Review base](../../branch-bases.md#review-base). Run the `dream:code-review`
@@ -81,7 +42,7 @@ skill in `inline` mode with `origin/<base>...HEAD` as its target, so it reviews
 without spawning subagents. Weigh each finding on its merits and apply the ones
 the evidence supports. Commit and push the fixes.
 
-## 13. Write the PR description
+## 5. Write the PR description
 
 Keep it minimal. Check the repo for contribution rules (`CONTRIBUTING.md`, a PR
 template) and follow them. Otherwise:
@@ -93,11 +54,11 @@ template) and follow them. Otherwise:
 
 Replace the PR's description with it.
 
-## 14. Mark the PR ready for review
+## 6. Mark the PR ready for review
 
 Mark the PR ready for review.
 
-## 15. Handle what the user posts
+## 7. Handle user posts
 
 When no work is ready to do, end your turn. A later round resumes when there is
 new input. Never merge the PR yourself. The user decides when to merge it.
@@ -116,5 +77,3 @@ of these:
   carry on.
 
 An approval, or anything with nothing to act on, needs no reply.
-
-Once the PR is ready and you have nothing left to do, end your turn.
