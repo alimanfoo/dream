@@ -135,10 +135,10 @@ read all of it.
 
 ### The user designs a change with an agent
 
-The user knows what they want built, but has no design for it. They want to
-explore design options with an agent, which may know techniques they don't, and
-to capture the design in a design specification that a build can be planned
-from.
+The user has requirements for a change to the software, but no solution. They
+want to explore solutions with an agent, which may know techniques they don't,
+and to record the chosen solution in a design specification detailed enough to
+plan its implementation.
 
 1. The user runs `/dream:weave` with a seed: usually a requirements
    specification, or else an issue, a file or some text.
@@ -159,37 +159,50 @@ from.
 5. Throughout, when the agent would remove something, it shows the design with
    that thing gone, and says what putting it back would cost. The user decides
    whether it is worth putting back.
-6. When the what-ifs stop changing the design, the agent says so, and says what
-   it would still change. It proposes which models the design needs, and the
-   user agrees to the choice.
-7. The agent sketches each model roughly with the user, one per turn.
-8. They walk the main happy-path story through the sketches using the case's
-   concrete details. If the seed has no happy-path story, they pick a real case
-   together. They develop or revise the models each step touches.
-9. They fill in details and walk further cases through the models, starting with
-   the other stories and then hunting for cases the stories miss. They use what
-   breaks to revise the models, preferring cuts to fixes, until nothing more can
-   be removed.
-10. The agent writes the design specification. It says what is being built. To
-    show how it works, it presents the chosen models with diagrams where they
-    help, marks them as a starting point that planning and the build may revise,
-    then records the happy-path walk against the final models. It says what
-    changes and what goes away, with what each removal buys. It says why the
-    design takes this shape and what is still open.
-11. The agent has two subagents read the design specification. One reads it
-    beside the requirements specification, and reports what could come out and
-    still meet the requirements, and what each cut would cost. The other reads
-    the code the design touches, and reports whether the design fits that code
-    and holds enough to plan the build from. The agent fixes wording that was
-    only unclear, and brings the user each remaining point, one per turn. The
-    user rules on each cut.
-12. The agent shows the user the design specification.
-13. The agent offers to put the design specification in a specification folder
+6. When the what-ifs stop changing the design, the agent says so, and names any
+   reservations it still has about the design. The user decides whether to move
+   on or keep asking what-ifs.
+7. The agent proposes which design models to use, and the user and the agent
+   settle the choice together.
+8. The agent sketches each chosen design model roughly, one per turn, and the
+   user and the agent discuss each sketch before the next.
+9. The user and the agent take the use case that motivates the work, or, where
+   the requirements name none, an example use case they choose together. They
+   walk it through the sketches step by step, from start to finish, making each
+   step concrete with examples. At each step, they develop or revise the design
+   models that the step involves.
+10. The user and the agent fill in the details of the design models, and test
+    them with further cases. The agent suggests cases, and they walk each one
+    through the models together: first the other use cases, then the errors and
+    faults that can occur in them, then, for each assumption the design rests
+    on, a case in which it fails. Where a walk shows that the models fail a
+    case, do more than the case needs, or hold a part that no case uses, they
+    revise the models, and prefer removing a part to adding one. When further
+    cases stop changing the models, the agent says so, and the user decides
+    whether to stop.
+11. The agent writes the design specification. It summarises the solution and
+    presents the chosen design models, with a diagram where one makes a model
+    clearer. It marks the models as a starting point that planning and
+    implementation may revise. It writes out the walk of the motivating use case
+    through the final models. It says which parts of the existing software the
+    solution changes or removes, and the benefit of each removal. It says which
+    alternatives were rejected and why, and which questions remain open.
+12. The agent has two subagents read the design specification. One reads it
+    beside the requirements, and reports which parts could be removed with the
+    requirements still met, and what each removal would give up. The other reads
+    the existing code that the solution changes or depends on. It reports
+    whether the design specification is consistent with that code, and whether
+    it contains enough detail to plan the solution's implementation. The agent
+    fixes each point that needs only clearer wording, and brings the user each
+    remaining point, one per turn. The user decides on each removal.
+13. The agent shows the user the design specification.
+14. The agent offers to put the design specification in a specification folder
     as `design.md` and open a pull request for it, and does so when the user
     agrees.
 
-The user has a design specification that a build can be planned from, in which
-everything left is there for a reason worth building and keeping.
+The user has a design specification detailed enough to plan the solution's
+implementation, in which every part of the solution has a reason that justifies
+building and maintaining it.
 
 ### The user breaks down a large piece of work with an agent
 
