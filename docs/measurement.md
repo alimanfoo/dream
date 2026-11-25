@@ -4,263 +4,284 @@ This page holds the latest measurement of dream against
 [the standard](standard.md). Step 3 of [the release checklist](releasing.md)
 replaces it before each release. Earlier measurements are in Git history.
 
-Measured on 2026-11-24 for the 47.0.0 release. The plugin and the documentation
-were read on the release branch, which starts from `ba0bf8bd`. Its working tree
+Measured on 2026-11-25 for the 47.1.0 release. The plugin and the documentation
+were read on the release branch, which starts from `f277a9f6`. Its working tree
 differed from that commit in the version in the manifest, the new changelog
-section, and the fixes from the release's consistency review, which change
-`AGENTS.md` and the stories but not the plugin. Each measure is compared with
-the measurement for the last release, 46.5.0, tagged `v46.5.0`, whose figures
-are given in brackets.
+section, and the consistency review's one fix, to a row of the ledger of special
+cases. True documents records what this reading found at `f277a9f6`, before any
+fix from the release's consistency review. Each measure is compared with the
+measurement for the last release, 47.0.0, tagged `v47.0.0`, whose figures are
+given in brackets.
 
 ## Results
 
-| Criterion             | Measured                                                                                                        | Status  |
-| --------------------- | --------------------------------------------------------------------------------------------------------------- | ------- |
-| Single responsibility | 0 of 24 files without a one-sentence purpose (0 of 25)                                                          | met     |
-| No orphaned files     | 0 unreferenced files; every shared file has at least 4 referrers (unchanged)                                    | met     |
-| One fact, one home    | 35 rules or facts stated in more than one file (35)                                                             | not met |
-| Size                  | 4,331 lines in the plugin (4,566), a change of −235                                                             | no bar  |
-| One vocabulary        | 109 uses on 108 lines of the plugin, 4 lines of the documentation, 3 open issues use retired terms (110, 5, 18) | not met |
-| True documents        | 0 statements that the plugin contradicts, after the consistency review fixed 3 (1)                              | met     |
-| Docs by purpose       | 0 misplaced pages, 0 links to a Development page (0, 0)                                                         | met     |
-| Versioned contract    | The compatibility page states all three; 47.0.0 is a major release, as removing a skill requires                | met     |
-| Machine-checked rules | 0 rules missed twice by review that a small check could enforce (0)                                             | met     |
-| No suppressions       | 0 markers (0)                                                                                                   | met     |
-| Current tracker       | 3 of 15 open issues out of date (24 of 74)                                                                      | not met |
-| Reviewed changes      | 11 of 11 pull requests answer every definition-of-done question (2 of 2)                                        | met     |
-| Rules not cases       | 2 special cases not on the ledger; 0 ledger entries with an internal cause (3; 0)                               | not met |
-| Few concepts          | 0 concepts added since 46.5.0 (0)                                                                               | met     |
-| Symmetry              | 23 unshared or unmatched steps across the three pairs (23)                                                      | not met |
+| Criterion             | Measured                                                                                                    | Status  |
+| --------------------- | ----------------------------------------------------------------------------------------------------------- | ------- |
+| Single responsibility | 0 of 33 files without a one-sentence purpose (0 of 24)                                                      | met     |
+| No orphaned files     | 0 unreferenced files; every shared file has at least 2 referring skills (at least 4)                        | met     |
+| One fact, one home    | 33 rules or facts stated in more than one file (35)                                                         | not met |
+| Size                  | 4,284 lines in the plugin (4,331), a change of −47                                                          | no bar  |
+| One vocabulary        | 0 uses in the plugin, 0 in the documentation, 0 open issues use retired terms (109 uses on 108 lines, 4, 3) | met     |
+| True documents        | 0 statements that the plugin contradicts, at `f277a9f6` (0, after the consistency review fixed 3)           | met     |
+| Docs by purpose       | 0 misplaced pages, 0 links to a Development page (0, 0)                                                     | met     |
+| Versioned contract    | The compatibility page states all three; 47.1.0 is a minor release, as changes to what skills do require    | met     |
+| Machine-checked rules | 0 rules missed twice by review that a small check could enforce (0)                                         | met     |
+| No suppressions       | 0 markers (0)                                                                                               | met     |
+| Current tracker       | 0 of 13 open issues out of date (3 of 15)                                                                   | met     |
+| Reviewed changes      | 4 of 4 pull requests answer every definition-of-done question (11 of 11)                                    | met     |
+| Rules not cases       | 2 special cases not on the ledger; 0 ledger entries with an internal cause (2; 0)                           | not met |
+| Few concepts          | 0 concepts added since 47.0.0 (0)                                                                           | met     |
+| Symmetry              | 10 unshared or unmatched steps across the three pairs (23)                                                  | not met |
 
 ## Shortfalls
 
 Each shortfall is filed as an issue unless an open issue already covers it.
 
-1. **One fact, one home.** 35 rules or facts are stated in more than one skill,
-   subagent file or shared file, as at 46.5.0. The list is under
-   [One fact, one home](#one-fact-one-home) below. #1083 covers the marks, the
-   rules common to the skills in the user's voice, and the restatements of the
-   coherent coding guide, 11 in all. #1086 covers 9 of the 16 steps written out
-   in both `dream:smith` and `dream:less`, and #1091 the other 7, with the rules
-   shared by `dream:code-review` and `dream:coherence-review`. #1102, filed by
-   this release, covers the copies of the review rules in
+1. **One fact, one home.** 33 rules or facts are stated in more than one skill,
+   subagent file or shared file. The list is under
+   [One fact, one home](#one-fact-one-home) below. #1091 covers the four steps
+   still written out in both `dream:smith` and `dream:less` whose differences it
+   asks about, and the copies in `dream:code-review` and
+   `dream:coherence-review`. #1102 covers the copies of the review rules in
    `dream:precedent-review` and `dream:quest`, the report rules of the two
    subagent files, and the reason for an absolute path in `dream:trace` and
-   `dream:weave`.
-2. **One vocabulary.** Retired terms name their concepts in 108 lines of the
-   plugin and 4 of the documentation: "requirements brief" and "brief", "design"
-   for a design specification, "plan" for a roadmap, "task" for an
-   implementation step, "session type", "issue type" and "category" for a change
-   type, "child" for a sub-issue, and "spec" for a specification. #1082 covers
-   the plugin and the documentation. The 3 open issues that use a retired term
-   were edited by step 4 of the checklist, the issue sweep, except a quotation
-   in the user's own comment on #930.
-3. **Current tracker.** 3 of the 15 open issues used a retired term, all in
-   comments. The issue sweep edited the agent-written comments; the remaining
-   use is in the user's own comment on #930.
-4. **Rules not cases.** Two special cases are not on the ledger: the
-   `AskUserQuestion` tool named in six skills, and `dream:sift`'s condition on
-   `dreamcatcher.toml`. #1085 covers both.
-5. **Symmetry.** `dream:smith` and `dream:less` write out 16 shared steps in
-   each file, and each has one step the other lacks without a story to say why.
-   `dream:code-review` and `dream:coherence-review` write out 5 shared steps in
-   each file. #1086 covers 9 of the 16 smith and less steps, and #1091 the other
-   7, the two unmatched steps, the 5 review steps and the step names.
+   `dream:weave`. #1083 covers the marks, the 11 rules common to the skills in
+   the user's voice, and the restatements of the coherent coding guide. No open
+   issue covered 6, and this release added them to #1102: the persona paragraph,
+   the rule to read the session rules again after a summary, and Mark the PR
+   ready for review, all in `dream:smith` and `dream:less`; the change-type
+   labels in `assignment-session-pr.md` and `dream:sift`; checking an issue's
+   claims against the current code; and writing a draft to a temporary file
+   outside the repo.
+2. **Rules not cases.** Two special cases are not on the ledger: the
+   `AskUserQuestion` tool, named in `assignment-session-rules.md` and four
+   skills, and `dream:sift`'s condition on `dreamcatcher.toml`. #1085 covers
+   both.
+3. **Symmetry.** `dream:smith` and `dream:less` write out 5 steps in each file
+   that do the same thing in both, and `dream:code-review` and
+   `dream:coherence-review` write out 5. #1091 covers all of them except Mark
+   the PR ready for review, which #1086 covered until #1107 closed it and this
+   release added to #1102. #1091 also covers the step that `dream:smith` names
+   "Review" and `dream:less` "Code review".
 
 ## Notes
 
 ### Single responsibility and Size
 
-Every file in the plugin was read whole, in descending order of size. Each has
-one purpose, stated in the table. `dream:smith` and `dream:big` are long, but
-each is one procedure. The change is from the same commands run on a copy of the
-plugin at `v46.5.0`, which reproduce that measurement's 4,566 lines.
-`git diff --shortstat v46.5.0 HEAD -- plugins/dream` reports 17 files changed,
-39 insertions and 274 deletions, a net change of −235.
+The files that changed since 47.0.0 were read whole, in descending order of
+size. The rest, `skills/agent-mechanics/`, `coherent-coding.md`, the review
+skills, the subagent files, `dream:scout`, `dream:coherent-coding`,
+`branch-bases.md`, `github-text.md`, `subagent-waiting.md`,
+`agent-written-marks.json` and the manifest, are unchanged since `v47.0.0`, as
+`git diff` shows, and all but the guide to agent mechanics and the coherent
+coding guide were read again. Each file has one purpose, stated in the table.
+`dream:smith` and `dream:big` are long, but each is one procedure. Each of the
+nine `assignment-*.md` files that #1107 added holds one step that `dream:smith`
+and `dream:less` share, or, in `assignment-session-rules.md`, the rules that
+hold for their whole session.
 
-| File                                | Lines | Change | Purpose                                                                                 |
-| ----------------------------------- | ----: | -----: | --------------------------------------------------------------------------------------- |
-| `skills/agent-mechanics/` (3 files) |   986 |      0 | Explains how a coding agent works under Claude Code and Codex.                          |
-| `skills/smith/`                     |   371 |      0 | Carries a well-specified issue to a planned, reviewed pull request.                     |
-| `coherent-coding.md`                |   359 |      0 | States the coherent coding guide.                                                       |
-| `skills/spark/`                     |   329 |      0 | Interviews the user and writes a requirements specification.                            |
-| `skills/weave/`                     |   299 |      0 | Works out a design with the user and writes a design specification.                     |
-| `skills/big/`                       |   288 |     −1 | Leads a dreamcatcher campaign through its stages to merge.                              |
-| `skills/trace/`                     |   258 |      0 | Tours the code with the user and writes a checked reading guide.                        |
-| `skills/quest/`                     |   250 |      0 | Breaks a design into a roadmap of stages, and its sub-issues.                           |
-| `skills/sift/`                      |   228 |      0 | Triages issues with the user, one decision at a time.                                   |
-| `skills/less/`                      |   222 |      0 | Carries an easy change to a pull request with one inline review.                        |
-| `skills/plan/`                      |   116 |      0 | Writes an implementation plan.                                                          |
-| `agents/precedent-reviewer.md`      |   102 |      0 | Reviews a change against the user's past review comments.                               |
-| `skills/coherence-review/`          |    98 |      0 | Reviews a change for coherence through lenses drawn from the guide.                     |
-| `skills/code-review/`               |    89 |      0 | Reviews a change through lenses chosen for the diff.                                    |
-| `skills/precedent-review/`          |    71 |      0 | Launches the precedent reviewer and verifies its findings.                              |
-| `skills/scout/`                     |    59 |      0 | Answers the user's questions on an issue from the code.                                 |
-| `spec-files.md`                     |    55 |      0 | Says where a specification file goes and how it reaches a pull request.                 |
-| `agents/code-review-lens.md`        |    50 |      0 | Reviews a diff through one lens.                                                        |
-| `subagent-waiting.md`               |    26 |      0 | Says how to wait for launched subagents under each agent harness.                       |
-| `skills/coherent-coding/`           |    25 |      0 | Loads the coherent coding guide.                                                        |
-| `.codex-plugin/plugin.json`         |    17 |      0 | The manifest. `.claude-plugin/plugin.json` is a symlink to it and is not counted twice. |
-| `github-text.md`                    |    15 |     +3 | Says how to lay out text that GitHub renders, and how to pass it to `gh`.               |
-| `branch-bases.md`                   |    11 |      0 | Says how to find the default branch and the review base.                                |
-| `agent-written-marks.json`          |     7 |      0 | Holds the comment footer and the commit trailers.                                       |
-| `skills/plain-english/` (removed)   |     0 |   −237 | Removed by #1095.                                                                       |
-| **Plugin total**                    | 4,331 |   −235 |                                                                                         |
+The change is from the same commands run on a copy of the plugin at `v47.0.0`,
+which reproduce that measurement's 4,331 lines.
+`git diff --shortstat v47.0.0 HEAD -- plugins/dream` reports 19 files changed,
+479 insertions and 526 deletions, a net change of −47. `dream:smith` and
+`dream:less` lost 239 lines and the nine shared files hold 158, so the two
+skills and what they read fell from 593 lines to 512.
 
-A zero change can hide edits that add and remove the same number of lines:
-`dream:smith`, `dream:sift` and the descriptions of most skills changed without
+| File                                    | Lines | Change | Purpose                                                                                                        |
+| --------------------------------------- | ----: | -----: | -------------------------------------------------------------------------------------------------------------- |
+| `skills/agent-mechanics/` (3 files)     |   986 |      0 | Explains how a coding agent works under Claude Code and Codex.                                                 |
+| `coherent-coding.md`                    |   359 |      0 | States the coherent coding guide.                                                                              |
+| `skills/spark/`                         |   329 |      0 | Interviews the user and writes a requirements specification.                                                   |
+| `skills/weave/`                         |   326 |    +27 | Works out a solution with the user in design models, and writes a design specification.                        |
+| `skills/big/`                           |   289 |     +1 | Leads a dreamcatcher campaign through its stages to merge.                                                     |
+| `skills/trace/`                         |   258 |      0 | Tours the code with the user and writes a checked reading guide.                                               |
+| `skills/quest/`                         |   256 |     +6 | Breaks a design specification into a roadmap of stages, and its sub-issues.                                    |
+| `skills/smith/`                         |   234 |   −137 | Carries a well-specified issue to a planned, reviewed pull request.                                            |
+| `skills/sift/`                          |   228 |      0 | Triages issues with the user, one decision at a time.                                                          |
+| `skills/less/`                          |   120 |   −102 | Carries an easy change to a pull request with one inline review.                                               |
+| `skills/plan/`                          |   116 |      0 | Writes an implementation plan.                                                                                 |
+| `agents/precedent-reviewer.md`          |   102 |      0 | Reviews a change against the user's past review comments.                                                      |
+| `skills/coherence-review/`              |    98 |      0 | Reviews a change for coherence through lenses drawn from the guide.                                            |
+| `skills/code-review/`                   |    89 |      0 | Reviews a change through lenses chosen for the diff.                                                           |
+| `skills/precedent-review/`              |    71 |      0 | Launches the precedent reviewer and verifies its findings.                                                     |
+| `skills/scout/`                         |    59 |      0 | Answers the user's questions on an issue from the code.                                                        |
+| `specification-files.md`                |    55 |      0 | Says where a specification file goes and how it reaches a pull request. Renamed from `spec-files.md` by #1106. |
+| `agents/code-review-lens.md`            |    50 |      0 | Reviews a diff through one lens.                                                                               |
+| `assignment-session-rules.md`           |    41 |    +41 | States the rules that `dream:smith` and `dream:less` follow for the whole session.                             |
+| `assignment-session-pr.md`              |    30 |    +30 | Says how to set the session branch and open the session PR.                                                    |
+| `subagent-waiting.md`                   |    26 |      0 | Says how to wait for launched subagents under each agent harness.                                              |
+| `assignment-cited-material-and-code.md` |    25 |    +25 | Says how to read the cited material and the code, and check the input against the code.                        |
+| `skills/coherent-coding/`               |    25 |      0 | Loads the coherent coding guide.                                                                               |
+| `.codex-plugin/plugin.json`             |    17 |      0 | The manifest. `.claude-plugin/plugin.json` is a symlink to it and is not counted twice.                        |
+| `github-text.md`                        |    15 |      0 | Says how to lay out text that GitHub renders, and how to pass it to `gh`.                                      |
+| `assignment-banner.md`                  |    13 |    +13 | Says how to print the banner with the plugin's version.                                                        |
+| `assignment-session-input.md`           |    12 |    +12 | Says where the session input comes from.                                                                       |
+| `assignment-tests-and-checks.md`        |    12 |    +12 | Says how to find the tests, checks and code generation to run.                                                 |
+| `branch-bases.md`                       |    11 |      0 | Says how to find the default branch and the review base.                                                       |
+| `assignment-orientation.md`             |    10 |    +10 | Says how to orient to the repository.                                                                          |
+| `assignment-working-tree.md`            |     8 |     +8 | Says how to check the working tree and update the default branch.                                              |
+| `agent-written-marks.json`              |     7 |      0 | Holds the comment footer and the commit trailers.                                                              |
+| `assignment-change-types.md`            |     7 |     +7 | Defines the three change types.                                                                                |
+| **Plugin total**                        | 4,284 |    −47 |                                                                                                                |
+
+A zero change can hide edits that add and remove the same number of lines: #1106
+changed `dream:spark`, `dream:trace`, `dream:sift` and `dream:plan` without
 changing their length.
 
 ### No orphaned files
 
-Apart from the 15 `SKILL.md` files and the manifest, the plugin holds 10 files.
-Each is referenced by path or link: `agent-written-marks.json` from 9 files,
-`branch-bases.md` from 5, `coherent-coding.md` from 4, `github-text.md` from 10,
-`spec-files.md` from 4, `subagent-waiting.md` from 7,
+Apart from the 15 `SKILL.md` files and the manifest, the plugin holds 19 files.
+Each is referenced by path or link. Counting only skills and subagent files,
+`agent-written-marks.json` is referenced from 6 skills, `branch-bases.md` from
+5, `coherent-coding.md` from 4, `github-text.md` from 7,
+`specification-files.md` from 4, `subagent-waiting.md` from 7, each of the nine
+`assignment-*.md` files from `dream:smith` and `dream:less`,
 `agents/code-review-lens.md` from 2 skills, `agents/precedent-reviewer.md` from
 `dream:precedent-review`, and `claude-code.md` and `codex.md` from
-`dream:agent-mechanics`. The counts are those of 46.5.0, less the removed
-`plain-english.md`.
+`dream:agent-mechanics`. `dream:smith` and `dream:less` now reach
+`agent-written-marks.json` and `github-text.md` through
+`assignment-session-rules.md`, and the default branch through
+`assignment-working-tree.md`. The fewest referring skills for a shared file is
+2, the bar's minimum, for each of the nine new files.
 
 ### One fact, one home
 
 A rule counts once however many files repeat it. A one-line summary beside a
 link to the rule's home counts as a reference, not a copy; that is how most
-skills point to `github-text.md`. Each of the 35 rules and facts that 46.5.0
-listed was checked again in the files as they now stand, and each is still
-stated in the same files. The changes since 46.5.0 add no copy: the rule about
-passing a multi-line body to `gh` is stated only in `github-text.md`, and the
-command that `dream:smith` showed for it is removed. The closing "Use only when
-explicitly invoked." that #1100 gave every skill's description is frontmatter
-that each skill needs for itself, and is not counted. The 35:
+skills point to `github-text.md`, and how each numbered step of `dream:smith`
+and `dream:less` points to its `assignment-*.md` file. The closing "Use only
+when explicitly invoked." in every skill's description is frontmatter that each
+skill needs for itself, and is not counted.
 
-- **`dream:smith` and `dream:less`, 16.** Print the banner, Autonomy,
-  Communication style, Turn output, Mark your work, Find the tests and checks,
-  Check the working tree, Obtain session input, reading the cited issues with
-  their sub-issues and parent, Name the session type, Open the session PR,
-  Interrupted work, the opening paragraph of Implement, the issue list in Write
-  the PR description, Mark the PR ready for review, and Handle what the user
-  posts. `dream:sift` restates the change-type labels a third time. #1086 covers
-  the 9 that its decision names: Print the banner, Autonomy, Communication
-  style, Turn output, Mark your work, Check the working tree, Name the session
-  type, Interrupted work, and Mark the PR ready for review. #1091 covers the
-  other 7.
-- **The review skills, 6.** The default target, Read the diff, keeping only the
-  findings the code confirms, and Rank and output, in `dream:code-review`,
-  `dream:coherence-review` and `dream:precedent-review`. How to launch a
-  subagent file under Codex, in the same three. That subagents inherit the
+The list was made afresh from the files as they stand. #1107 moved 12 of the 16
+steps that 47.0.0 counted in both `dream:smith` and `dream:less` into the nine
+`assignment-*.md` files. The reading also counts 9 rules that were stated in
+more than one file at 47.0.0 but were not counted then, and 1 that #1107 added.
+The 33:
+
+- **`dream:smith` and `dream:less`, 7.** Written out in both skills: the opening
+  persona, "You are an autonomous software developer…" with "Follow the
+  instructions below in order."; step 2's rule to read the session rules again
+  whenever the conversation has been summarised, which #1107 added; Implement's
+  loop of running the tests, committing with a short subject and pushing at each
+  step; the review base, the `origin/<base>...HEAD` target, and weighing each
+  finding on its merits, in smith's Review and less's Code review; Write the PR
+  description's contribution rules and its issue list; Mark the PR ready for
+  review; and Handle what the user posts. The persona and the review text were
+  in both at 47.0.0, but not counted. #1091 covers Implement, Review, Write the
+  PR description and Handle what the user posts. No open issue covered the
+  persona, the rule to read the session rules again, or Mark the PR ready for
+  review, which #1086 covered until #1107 closed it; this release added them to
+  #1102.
+- **Change-type labels, 1.** `assignment-session-pr.md` and `dream:sift` each
+  list the labels `enhancement`, `maintenance` and `bug`. 47.0.0 counted sift's
+  copy as a third copy of smith and less's Name the session type step. This
+  release added it to #1102.
+- **The review skills, 6.** As at 47.0.0, since none of the files has changed:
+  the default target, Read the diff, keeping only the findings the code
+  confirms, and Rank and output, in `dream:code-review`,
+  `dream:coherence-review` and `dream:precedent-review`; how to launch a
+  subagent file under Codex, in the same three; and that subagents inherit the
   session's model and effort, in those three and `dream:quest`. #1091 covers the
-  copies in `dream:code-review` and `dream:coherence-review`. #689 and #791,
-  which 46.5.0 cited, are closed as not planned.
+  copies in `dream:code-review` and `dream:coherence-review`, and #1102 those in
+  `dream:precedent-review` and `dream:quest`.
 - **The marks, 2.** How to apply the comment footer, as a closing blockquote so
-  that a reader can tell an agent wrote it, in 8 skills and `spec-files.md`. How
-  to apply the commit trailer, in `dream:smith`, `dream:less` and
-  `spec-files.md`. #1083 covers both.
+  that a reader can tell an agent wrote it, in `dream:spark`, `dream:trace`,
+  `dream:weave`, `dream:quest`, `dream:big`, `dream:sift`,
+  `assignment-session-rules.md` and `specification-files.md`. How to apply the
+  commit trailer, in `assignment-session-rules.md` and `specification-files.md`.
+  #1083 covers both.
 - **The two subagent files, 1.** The report rules: change nothing, say what
   establishes a claim of absence, two or three sentences, only findings, clean
-  is a valid answer.
+  is a valid answer. #1102 covers it.
 - **Subagent paths, 1.** "A subagent can't resolve a path relative to its own
-  prompt file", in `dream:trace` and `dream:weave`. #770, which 46.5.0 cited, is
-  closed.
-- **The skills in the user's voice, 7.** One thing per turn, with no recap;
-  plain words, no headings or lists in a turn, and no `AskUserQuestion`; no
-  flattery; how to start from the seed; that documents drift, so their claims
-  are checked in the code; the two fresh readers, launched together and waited
-  for together; and Where it goes. Each appears in two to four of `dream:spark`,
-  `dream:trace`, `dream:weave` and `dream:quest`. #1083 covers them.
-- **The coherent coding guide, 2.** `dream:less` restates "Resolve the root
-  cause" and "The burden of proof is on the addition" in its Coherence and Don't
-  over-build steps. `dream:sift`'s Judgments restate several of the guide's
-  rules, although sift loads the guide. #1083 covers both.
+  prompt file", in `dream:trace` and `dream:weave`. #1102 covers it.
+- **The skills in the user's voice, 11.** The 7 that 47.0.0 listed, each still
+  in two to four of `dream:spark`, `dream:trace`, `dream:weave` and
+  `dream:quest`: one thing per turn, with no recap; plain words, no headings or
+  lists in a turn, and no `AskUserQuestion`; no flattery; how to start from the
+  seed; that documents drift, so their claims are checked in the code; the two
+  fresh readers, launched together and waited for together; and Where it goes.
+  Four more were there at 47.0.0 but not counted: think out loud, with "Tell me
+  what you're thinking, not what you're doing" in both `dream:weave` and
+  `dream:quest`; push back on the user, in all four; tell the user only what you
+  have read in the code, with "I don't know yet, let me look" in both
+  `dream:weave` and `dream:trace`; and say when you use an analogy and where it
+  stops holding, in nearly the same words in `dream:weave` and `dream:trace`.
+  #1083 covers the rules common to the four skills.
+- **The coherent coding guide, 2.** `dream:less`'s Engineering principles step
+  restates "Resolve the root cause" and "The burden of proof is on the
+  addition". `dream:sift`'s Judgments restate several of the guide's rules,
+  although sift loads the guide. #1083 covers both, and decided to replace each
+  restatement with a reference to the guide's section. Since then #1107 has
+  added to `dream:less`'s story that it "follows a short summary of the
+  engineering principles, rather than loading the full coherent coding guide",
+  so the fix for less is a summary beside links to the guide's sections, not a
+  load of the guide.
+- **Checking an issue's claims against the current code, 1.**
+  `assignment-cited-material-and-code.md`, `dream:scout`'s Investigate and
+  `dream:sift`'s Judgments each say to check the input's claims against the
+  current code, because the code may have changed since the issue was written.
+  This release added it to #1102.
+- **Drafts in a temporary file, 1.** `dream:smith`'s Review, `dream:plan`,
+  `dream:spark`, `dream:trace`, `dream:weave` and `dream:quest` each write their
+  draft to a temporary file outside the repo. This release added it to #1102.
 
 ### One vocabulary
 
-Each line was found by the searches under [Method](#method), then read to judge
-whether the term names the concept that retires it. A line is counted once per
-term, so line 58 of `dream:quest`, which has both "requirements brief" and
-"design", counts twice: 109 uses on 108 lines. At 46.5.0 the same count by term
-gave 110. The line numbers are those at `ba0bf8bd`.
+The searches under [Method](#method) find no retired term that names its concept
+in the plugin, the documentation or the open issues. #1106 replaced the 109 uses
+that 47.0.0 counted in the plugin and the 4 lines in the documentation, and
+renamed `spec-files.md` to `specification-files.md`. A search for the multi-word
+terms split across a line break finds none.
 
-- "requirements brief" or "brief", 21: `dream:spark` lines 15, 63, 64, 94, 187,
-  216, 225, 231, 237, 274, 275, 277, 298, 299, 309 and 320; `dream:trace` 109
-  and 110; `dream:weave` 72 and 73; `dream:quest` 58. #1100 removed the one in
-  spark's description. "brief" as an adjective, "Brief" as a verb, and "each
-  brief" for a step of `dream:plan` are not counted.
-- "design" for a design specification, 19: `dream:weave` 18, 220, 256, 257, 262,
-  278 and 282; `dream:quest` 6 (the `argument-hint`), 11, 56, 58, 64, 66, 82,
-  87, 187, 193 and 201; `dream:big` 77. "design" for the design being worked
-  out, as in "the design touches", "a design decision" or "reaches a design
-  together", is not counted.
-- "plan" for a roadmap, 16: `dream:big` 11, 18, 41, 69, 74, 81, 82, 106, 152,
-  161, 163, 185, 213, 214, 242 and 244. Line 242, "a question about the plan
-  itself", was added by #1099.
-- "task" for an implementation step, 33: `dream:plan` 11, 14, 15, 30, 32, 35,
-  37, 55, 60, 62, 67, 69, 73, 77, 78, 80, 82, 83, 85, 86, 89, 90, 92, 93, 95,
-  97, 98, 99, 103, 104, 106, 109 and 110. #1100 removed the one in plan's
-  description. "task" in the descriptions of `dream:smith` and `dream:trace`, in
-  its TODO-list sense in `dream:smith`, and for a subagent's task is not an
-  implementation step.
-- "session type", "issue type" and "category" for a change type, 11:
-  `dream:smith` 151, 153, 185, 187, 364 and 366; `dream:less` 125, 127, 153 and
-  155; `dream:sift` 94.
-- "child" for a sub-issue, 4: `dream:quest` 231, 235, 240 and 241. `children` in
-  `dream:big` is the name of a field in dreamcatcher's input, and is not
-  counted.
-- "spec" for a specification, 5: the title of `spec-files.md`, and the link text
-  "spec files" in `dream:spark`, `dream:trace`, `dream:weave` and `dream:quest`.
-  "the spec" in `coherent-coding.md`'s "Generate the client from the spec" is an
-  API specification, and is not counted.
+The remaining hits are other senses, as at 47.0.0: "brief" as an adjective or a
+verb; `children` in `dream:big`, the name of a field in dreamcatcher's input;
+the `specs/` folder in `specification-files.md`; "the spec" for an API in
+`coherent-coding.md`; "child process" in `codex.md`; "permission host" in
+`claude-code.md`; "task" for a piece of work or a TODO item; "plan" for an
+implementation plan; and "design" for the solution being worked out, as in "the
+design touches". The 47.1.0 section of the changelog names "requirements brief",
+"campaign plan" and "session type" as the terms that #1106 replaced, which is
+not a use.
 
-In the documentation, 4 lines: the `dream:spark` row of the home page
-("requirements brief"), the `dream:quest` row ("a design"), the `dream:plan` row
-("a commit per task"), and "4 tasks" in the sample session in
-`overrides/home.html`. #1099 rewrote the `dream:big` row, which removed
-"campaign plan". "Host" appears only as the example in `releasing.md` and as
-"permission host" in `claude-code.md`, which is a different concept.
-
-3 open issues use a retired term for its concept, in text other than a quotation
-of the plugin: #930 ("generate code from the design" in its first comment, and
-"the dreamcatcher campaigns design" for a `design.md` in its second), #1043 ("a
-settled, green child's pull request" in its decision comment), and #1050 ("The
-brief's headings become" and "keep the brief short" in its decision comment). A
-retired term in a quoted step name, such as "Name the session type" in #1086, or
-named as a term, as throughout #1082, is not counted.
+The 3 open issues that 47.0.0 counted no longer use a retired term: the issue
+sweep edited the comments on #1043 and #1050, and #1105 closed #930.
 
 ### True documents
 
 Every statement of the concepts page, the stories, the standard, the
-compatibility page, the home page and `AGENTS.md` was read against the plugin.
-At `ba0bf8bd`, the plugin contradicted 3 statements, which the release's
-consistency review found. Each was checked against the plugin, and the release
-branch corrects each:
+compatibility page, the home page and `AGENTS.md` was read against the plugin at
+`f277a9f6`. None is contradicted.
 
-- `AGENTS.md`, "Design rationale", said that `dream:smith`'s Collect step has
-  the agent file "an issue for each piece of work it left out of scope". Collect
-  caps maintenance issues at two. #1094 introduced the wording.
-- The stories' campaign step 9 said that the lead merges a stage "once its
-  checks pass". `dream:big`'s "Merge a stage" requires only the checks that the
-  repository requires to pass, and lets an `UNSTABLE` stage merge with failing
-  checks that have no bearing on it.
-- The stories' campaign step 10 said that the lead "holds back" the stages an
-  open question bears on. `dream:big` only declines to merge them, and lets
-  stages in progress carry on. #1099 introduced the wording.
+Since 47.0.0, #1105 rewrote the concepts page's "Design specification", the
+weave story and weave's row on the home page; #1106 changed the home page's
+spark, quest and plan rows and the sample session's "4 steps"; and #1107 changed
+the less story. Each agrees with the plugin: the weave story's steps 6 to 12
+follow `dream:weave`'s sections from "When the what-ifs stop changing the
+design" to "Get it checked before you show me", and its step 11 the design
+specification's headings; the less story's steps 2 and 4 match the shared "Read
+the cited material and the code" and less's Engineering principles step; and the
+home page's rows match the skills. The home page's sift row, "can dispatch
+accepted work", is still true at `f277a9f6`; #1085 will remove dispatch and that
+phrase together.
 
-With those fixes, none disagrees. The disagreement that 46.5.0 found is
-resolved: #1100 put every skill's frontmatter `description` in the third person,
-as `AGENTS.md` says, and #1095 removed `dream:plain-english`, the last skill
-with an imperative description. The home page and the stories no longer describe
-`dream:plain-english` (#1095). Every other rule in `AGENTS.md`, which #1094
-rewrote, that describes the plugin holds, such as the shared files at the
-plugin's root, the two kinds of skill and the title heading that
-`scripts/validate_skill.py` checks.
+Three statements were weighed and not counted:
 
-The sample session in `overrides/home.html` omits the Session input and
-Simplification opportunities comments that `dream:smith` posts. It shows a
-selection of steps, so it is not counted.
+- The smith and less stories say that the agent opens a draft pull request, but
+  not that it posts the session input there as its first comment, which both
+  skills now do. That is an omission, not a contradiction.
+- The compatibility page says "Each skill is one file that both read."
+  `dream:agent-mechanics` has three files, and `dream:smith` and `dream:less`
+  now read nine shared files. The sentence says that both agent harnesses read
+  the same files, which holds.
+- The sample session in `overrides/home.html` omits the Session input and
+  Simplification opportunities comments that `dream:smith` posts. It shows a
+  selection of steps.
 
 ### Docs by purpose
 
-The navigation in `mkdocs.yml` is unchanged since 46.5.0. It puts the home page
+The navigation in `mkdocs.yml` is unchanged since 47.0.0. It puts the home page
 alone, the compatibility page and the changelog under Reference, and the
 concepts, stories, standard, measurement, release checklist, ledger and
 agent-mechanics sources under Development. The home page links only to
@@ -271,106 +292,112 @@ site.
 
 ### Versioned contract
 
-The compatibility page, unchanged since 46.5.0, states the interface under "The
+The compatibility page, unchanged since 47.0.0, states the interface under "The
 interface", the rules for a major, minor and patch release under "Versions", and
 version 1 of dreamcatcher's agent contract under "dreamcatcher's contract". The
-comparison of skill names from step 1 of the checklist prints one line,
-`name: plain-english`, the skill that #1095 removed. Removing a skill calls for
-a major increment, and 46.5.0 to 47.0.0 is one. At `ba0bf8bd`, the manifest is
-as at `v46.5.0`, and `.claude-plugin/marketplace.json` differs only in the
-plugin's source, which #1089 pinned to the commit tagged `v46.5.0`. Neither is a
-change to the interface.
+comparison of skill names from step 1 of the checklist prints nothing. At
+`f277a9f6`, the manifest is as at `v47.0.0`, and
+`.claude-plugin/marketplace.json` differs only in the plugin's source, which a
+pull request, #1104, pinned to the commit tagged `v47.0.0`. Changes to what a
+skill does, to `dream:weave` in #1105 and to `dream:less` in #1107, call for a
+minor increment. The rename by #1106 of the steps "Name the session type" and
+"Read the plan" is not a change to the interface, which names no step. 47.0.0 to
+47.1.0 is a minor increment.
 
 ### Machine-checked rules
 
 The hooks in `.pre-commit-config.yaml` are those the standard lists, plus
-`zizmor`, which covers the workflows. Since 46.5.0, #1090 narrowed the Markdown
-hooks' exclusion to the generated skill files, and #1098 made
-`scripts/validate_skill.py` require a non-empty `description`. Among the pull
-requests since 46.5.0, review missed One vocabulary once: #1099 added "plan" for
-a roadmap to `dream:big`, and its Concepts' words answer says it adds no retired
-term. "plan" has other senses, so no small check could find it without false
-positives. Review missed True documents twice, in #1094 and #1099, as listed
-under [True documents](#true-documents), but whether a statement agrees with the
-plugin takes a reading, not a small check. No other rule was missed more than
-once. The multi-word retired terms are still in the plugin, so the condition
-that 46.5.0 set for a check on them, that they come back after removal, has not
-arisen.
+`zizmor`, which covers the workflows, and neither they nor the scripts have
+changed since 47.0.0. Among the pull requests since 47.0.0, no rule was missed
+by review more than once. The multi-word retired terms are now gone from the
+plugin; the condition that 46.5.0 set for a check on them, that they come back
+after removal, has not arisen.
 
 ### Current tracker
 
-All 15 open issues were read with their comments, and each claim that work is
-done was checked against the plugin. 46.5.0 counted 74 open issues. 3 issues
-count, each for a retired term: issues #930, #1043 and #1050, listed under
-[One vocabulary](#one-vocabulary).
+All 13 open issues were read with their comments, and each claim that work is
+done was checked against the plugin. 47.0.0 counted 15 open issues. None counts.
+The release's issue sweep updated the agent-written decisions on #1050, #1083
+and #1085, which quoted step names and a file name that #1106 and #1107 had
+changed.
 
-No open issue asks for work already done. #1042 is half done, as its decision
-comment says, and the half it leaves, a turn-output rule for `dream:big`, is
-not. #930, #1049, #1050, #1082, #1083, #1085, #1086 and #1088 each ask for a
-change that the plugin does not yet have. No open issue concerns only a skill
-the plugin no longer has: #686 names `solo`, an earlier name of `dream:less`,
-but asks for a skill for every pull request comment, and #1042 names the removed
-Plain English guide but asks for a change to `dream:big`. No open issue asks for
-behaviour that a story excludes.
+No open issue uses a retired term for its concept (see
+[One vocabulary](#one-vocabulary)). No open issue asks only for work already
+done. #1091 is part done: its comments record that #1107 settled Obtain session
+input, Read the cited material, Find the tests and checks, Open the session PR,
+Orient to the repo, and the names of steps 1 to 10, and it still asks about
+Implement, Code review, Write the PR description, Handle what the user posts,
+the remaining step names and the review pair. Issue #1042 is half done, as its
+decision comment says. The body of #1083 gives 47.0.0's counts, but its decision
+comment scopes what remains, and none of that is done. The plugin does not yet
+have the change that each of #1049, #1050, #1083, #1085, #1088 and #1102 asks
+for. Issues #1043 and #1046 wait on alimanfoo/dreamcatcher#917 and #894, which
+are both still open. No open issue concerns only a skill the plugin no longer
+has: #686 names `solo`, an earlier name of `dream:less`, but asks for a skill
+for every pull request comment. No open issue asks for behaviour that a story
+excludes. Issue #1102 has no triage outcome yet.
 
 ### Reviewed changes
 
-The window is the pull requests merged since `v46.5.0`, in order of merge: pull
-requests #1089, #1090, #1093, #1094, #1096, #1095, #1101, #1098, #1097, #1100
-and #1099. Dependabot's #1077 and #1078, which reached main as single commits,
-are excluded. Each of the 11 says what it changes and why, links the issue it
-closes or relates to, or says that none relates to it (#1090), and answers all
-eleven definition-of-done questions by title under a "Definition of done"
-heading. The measure counts an answer that is present; an answer can still be
-wrong, as #1099's Concepts' words answer is (see
-[Machine-checked rules](#machine-checked-rules)).
+The window is the pull requests merged since `v47.0.0`, in order of merge: pull
+requests #1104, #1105, #1106 and #1107. No commit reached main without a merge.
+Each of the 4 says what it changes and why, links the issue it closes or relates
+to, or, for #1104, the release pull request it follows, and answers all eleven
+definition-of-done questions by title under a "Definition of done" heading. The
+answers in #1107 each open with "Yes", and its Explained answer is only "Yes,
+above."; the standard says that "Yes" alone is not an answer. The measure counts
+an answer that is present, and the other answers in #1107 give their evidence.
 
 ### Rules not cases
 
-The ledger has 3 entries, unchanged since 46.5.0, each caused by a difference
-between the agent harnesses, and each still matches the plugin. The guide to
-agent mechanics is not searched for special cases, because the agent harnesses
-are its subject. Two special cases elsewhere in the plugin are not on the
-ledger:
+The ledger has 3 entries, unchanged since 47.0.0 except that #1106 renamed
+`spec-files.md` in one. Each is caused by a difference between the agent
+harnesses, and each still matches the plugin. At `f277a9f6` the `commitTrailer`
+entry named `dream:smith` and `dream:less` as its readers, which since #1107
+read the trailer through `assignment-session-rules.md`. The release's
+consistency review found this, and the release branch corrects the entry to name
+that file. The guide to agent mechanics is not searched for special cases,
+because the agent harnesses are its subject. Two special cases elsewhere in the
+plugin are not on the ledger:
 
-- `dream:smith`, `dream:less`, `dream:spark`, `dream:trace`, `dream:weave` and
-  `dream:quest` name `AskUserQuestion`, a Claude Code tool, to say how not to
-  ask the user a question. Under Codex the name refers to nothing.
+- `assignment-session-rules.md`, which `dream:smith` and `dream:less` share, and
+  `dream:spark`, `dream:trace`, `dream:weave` and `dream:quest` name
+  `AskUserQuestion`, a Claude Code tool, to say how not to ask the user a
+  question. Under Codex the name refers to nothing.
 - `dream:sift` offers dispatch only when the repository has a
   `dreamcatcher.toml`. Triage of #1085 decided to remove dispatch from the
   skill.
 
-  46.5.0 also counted `dream:code-review`'s `inline` mode. Triage of #1085
-  decided that it is an option of the skill, which any user can pass and its
-  `argument-hint` lists, and so not a special case. The plugin's text is
-  unchanged; the count falls from 3 to 2 by that decision alone. The changes
-  since 46.5.0 add no special case: `dream:big`'s new rule for an open question
-  applies to every stage.
+The changes since 47.0.0 add no special case. `assignment-banner.md` reads the
+version from `.codex-plugin/plugin.json`, which is the manifest under both agent
+harnesses, so it does not differ between them.
 
 ### Few concepts
 
-The concepts page has 27 entries. No commit since `v46.5.0` changes it, so no
-concept was added.
+The concepts page has 27 entries. Three commits since `v47.0.0` change it, all
+from #1105, which rewrote the "Design specification" entry. No entry was added.
 
 ### Symmetry
 
 The concepts page and the stories state the steps that only `dream:smith` has:
 Plan, the coherence review, Find simplification opportunities and Collect. They
-also state that `dream:less` runs its code review without subagents. The step
-headings of both pairs are as at 46.5.0, and so are the counts.
+also state that `dream:less` runs its code review without subagents, and, since
+pull request #1107, that it follows a short summary of the engineering
+principles rather than loading the coherent coding guide.
 
-- **`dream:smith` and `dream:less`.** 16 steps that do the same thing are
-  written out in both, as listed under [One fact, one home](#one-fact-one-home).
-  No story states two differences: `dream:less` has a "Don't over-build" step,
-  and `dream:smith` posts the session input as the first comment on its pull
-  request. The names also differ where the steps correspond: `dream:smith`'s
-  "Read the cited material", "Read the code" and "Check the session input
-  against the current code" are `dream:less`'s "Read the cited material and the
-  code", and "Review" is "Code review". Both have a step named "Coherence":
-  `dream:smith`'s loads the guide, and `dream:less`'s states two of its rules.
-- **`dream:code-review` and `dream:coherence-review`.** The step headings match.
-  Arguments, Read the diff, Launch the lenses, Combine and verify, and Rank and
-  output are written out in both.
+- **`dream:smith` and `dream:less`.** Steps 1 to 10 have the same names in both,
+  and each points to the same `assignment-*.md` file, except step 3, Engineering
+  principles, whose difference less's story states. Five later steps do the same
+  thing in both and are written out in each: Implement, smith's Review and
+  less's Code review, Write the PR description, Mark the PR ready for review,
+  and Handle what the user posts. The two steps that 47.0.0 found in only one
+  skill are gone: less's "Don't over-build" is part of its Engineering
+  principles, and less now posts the session input as the first comment on its
+  pull request. Corresponding names still differ in one place, smith's "Review"
+  and less's "Code review".
+- **`dream:code-review` and `dream:coherence-review`.** Unchanged since 47.0.0.
+  The step headings match. Arguments, Read the diff, Launch the lenses, Combine
+  and verify, and Rank and output are written out in both.
 - **The two agent harnesses.** Each launch step and `subagent-waiting.md` give
   both agent harnesses corresponding instructions. `claude-code.md` and
   `codex.md` are unchanged since 46.5.0, and each adds to a heading of
@@ -403,12 +430,14 @@ documentation is `docs/`, `overrides/home.html`, `README.md` and `AGENTS.md`.
 
 - **Single responsibility, One fact, one home, Rules not cases and Symmetry.**
   Read every file in the plugin whole, largest first. For the pairs, compare
-  their step headings, and then their text step by step:
+  their step headings, without the step numbers or the headings inside fenced
+  examples, and then their text step by step:
 
-  ```bash
-  diff <(grep '^## ' plugins/dream/skills/smith/SKILL.md) <(grep '^## ' plugins/dream/skills/less/SKILL.md)
-  diff <(grep '^## ' plugins/dream/skills/code-review/SKILL.md) <(grep '^## ' plugins/dream/skills/coherence-review/SKILL.md)
-  ```
+  ````bash
+  h() { awk '/^```/{f=!f} !f && sub(/^## ([0-9]+\. )?/, "")' "$1"; }
+  diff <(h plugins/dream/skills/smith/SKILL.md) <(h plugins/dream/skills/less/SKILL.md)
+  diff <(h plugins/dream/skills/code-review/SKILL.md) <(h plugins/dream/skills/coherence-review/SKILL.md)
+  ````
 
   To find text that applies under one agent harness, search outside the guide to
   agent mechanics:
@@ -421,19 +450,22 @@ documentation is `docs/`, `overrides/home.html`, `README.md` and `AGENTS.md`.
   files that name it:
 
   ```bash
-  cd plugins/dream && for f in agent-written-marks.json branch-bases.md coherent-coding.md github-text.md spec-files.md subagent-waiting.md code-review-lens.md precedent-reviewer.md claude-code.md codex.md; do echo "$f: $(grep -rl --include='*.md' "$f" skills agents *.md | grep -v "$f\$" | tr '\n' ' ')"; done
+  cd plugins/dream && for f in agent-written-marks.json assignment-banner.md assignment-change-types.md assignment-cited-material-and-code.md assignment-orientation.md assignment-session-input.md assignment-session-pr.md assignment-session-rules.md assignment-tests-and-checks.md assignment-working-tree.md branch-bases.md coherent-coding.md github-text.md specification-files.md subagent-waiting.md code-review-lens.md precedent-reviewer.md claude-code.md codex.md; do echo "$f: $(grep -rl --include='*.md' "$f" skills agents *.md | grep -v "$f\$" | tr '\n' ' ')"; done
   ```
 
-  Compare the loop's list with `find plugins/dream -type f`, so that a file
-  added since the last measurement joins it.
+  Count only the skills and subagent files among the referrers. Compare the
+  loop's list with `find plugins/dream -type f`, so that a file added since the
+  last measurement joins it.
 
 - **One vocabulary.** Search for each retired term on the concepts page's
   "Replaces:" lines, then read each hit. "design", "plan" and "task" have other
-  senses, so search for them as whole words and judge each line:
+  senses, so search for them as whole words and judge each line. The third
+  search finds a multi-word term split across a line break:
 
   ```bash
   rg -niP '\bhosts?\b|agent prompt|named agent|\bchild(ren)?\b|\bspecs?\b|requirements brief|\bbriefs?\b|campaign plan|issue type|session type|\bcategor' plugins/dream docs overrides README.md AGENTS.md -g '!docs/concepts.md' -g '!docs/measurement.md' -g '!docs/assets/**'
   rg -niw 'design|plans?|tasks?' plugins/dream docs overrides README.md AGENTS.md -g '!docs/concepts.md' -g '!docs/measurement.md' -g '!docs/assets/**'
+  rg -niUP 'requirements\s+brief|session\s+type|issue\s+type|campaign\s+plan|agent\s+prompt|named\s+agent|child\s+issue' plugins/dream docs overrides README.md AGENTS.md -g '!docs/concepts.md' -g '!docs/measurement.md'
   ```
 
   Search the body and every comment of each open issue, fetched as under Current
