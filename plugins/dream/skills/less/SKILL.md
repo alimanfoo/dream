@@ -82,9 +82,8 @@ Implement the change in small steps, each its own commit. For each step:
 Find and fetch the session PR's base by following
 [Review base](../../branch-bases.md#review-base). Run the `dream:code-review`
 skill in `inline` mode with `origin/<base>...HEAD` as its target, so it reviews
-without spawning subagents. It returns findings. It does not apply them. Weigh
-each on its merits and apply the ones the evidence supports. Commit and push the
-fixes.
+without spawning subagents. Weigh each finding on its merits and apply the ones
+the evidence supports. Commit and push the fixes.
 
 ## 13. Write the PR description
 
