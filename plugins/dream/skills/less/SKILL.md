@@ -41,11 +41,8 @@ structure to know what it produces and how the part you're changing fits.
 
 ## 6. Find the tests and checks
 
-Find the project's test command. Look in the README, `AGENTS.md`, `CLAUDE.md`, a
-Makefile, or `pyproject.toml`/`package.json` scripts. Run it yourself before
-every commit, because a commit hook rarely runs the test suite. Find any codegen
-a commit hook doesn't run. Run it after an edit that needs it, so the generated
-files match the source before you commit.
+Find the tests and checks as
+[Tests and checks](../../assignment-tests-and-checks.md) describes.
 
 ## 7. Check the working tree
 
