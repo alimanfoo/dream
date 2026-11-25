@@ -14,54 +14,15 @@ standards.
 
 Follow the instructions below in order.
 
-## 1. Print the banner
+## 1. Boot
 
-Print the banner that [Banner](../../assignment-banner.md) describes.
+Follow the [boot sequence](../../assignment-boot.md).
 
-## 2. Session rules
-
-Read the [session rules](../../assignment-session-rules.md) and follow them for
-the rest of the session. Read them again whenever the conversation has been
-summarised, since a summary can drop them.
-
-## 3. Engineering principles
+## 2. Engineering principles
 
 Load the `dream:coherent-coding` skill. It governs all your work.
 
-## 4. Orient to the repo
-
-Orient to the repo as [Orientation](../../assignment-orientation.md) describes.
-
-## 5. Find the tests and checks
-
-Find the tests and checks as
-[Tests and checks](../../assignment-tests-and-checks.md) describes.
-
-## 6. Check the working tree
-
-Check the working tree as [Working tree](../../assignment-working-tree.md)
-describes.
-
-## 7. Obtain session input
-
-Obtain the session input as [Session input](../../assignment-session-input.md)
-describes.
-
-## 8. Read the cited material and the code
-
-Read the cited material and the code as
-[Cited material and code](../../assignment-cited-material-and-code.md)
-describes.
-
-## 9. Name the change type
-
-Select the change type from [Change types](../../assignment-change-types.md).
-
-## 10. Open the session PR
-
-Open the session PR as [Session PR](../../assignment-session-pr.md) describes.
-
-## 11. Plan
+## 3. Plan
 
 Run the `dream:plan` skill in this session, focused on the intended result in
 the session input, how the current code works and is organised, and the change
@@ -72,7 +33,7 @@ Post the returned plan as a PR comment. Head it `Plan`.
 Create a TODO list from the plan, one task per step, so you can track progress
 against it as you implement.
 
-## 12. Implement
+## 4. Implement
 
 Implement the plan, one step at a time. For each step:
 
@@ -83,7 +44,7 @@ Implement the plan, one step at a time. For each step:
 - Push.
 - Mark its task completed.
 
-## 13. Review
+## 5. Review
 
 Run the reviews below in sequence.
 
@@ -138,7 +99,7 @@ Second, run the `dream:coherence-review` skill the same way, and head its
 comment `Coherence review`. It follows the code review so that it reads the
 fixes that review led to.
 
-## 14. Find simplification opportunities
+## 6. Find simplification opportunities
 
 Reread the finished change once the reviews are done. Ask whether the PR could
 remove a lot of code or complexity by changing the design or constraints given
@@ -150,7 +111,7 @@ what functionality the PR would give up. Order them so that the strongest
 opportunities appear first. If there are no significant opportunities, say so in
 the comment.
 
-## 15. Write the PR description
+## 7. Write the PR description
 
 Draft the description, now that the work is final. Check the repo for
 contribution rules (`CONTRIBUTING.md`, a PR template) and follow them. Include
@@ -182,16 +143,16 @@ Replace the PR's description with the draft.
 Reread the description after any later commit. Update the summary and reviewer's
 guide when the diff changes what they say.
 
-## 16. Mark the PR ready for review
+## 8. Mark the PR ready for review
 
 Mark the PR ready for review.
 
-## 17. Handle what the user posts
+## 9. Handle what the user posts
 
 When no work is ready to do, end your turn. A later round resumes when there is
 new input. Never merge the PR yourself. The user decides when to merge it.
 
-After the PR merges, continue to the [collect step](#18-collect), unless you
+After the PR merges, continue to the [collect step](#10-collect), unless you
 already completed Collect after a deferred merge; in that case, end your turn.
 After the PR closes, post a comment naming where the work stopped, then end your
 turn.
@@ -200,8 +161,8 @@ Otherwise, act on each user post, oldest first. A post can carry more than one
 of these:
 
 - **A requested change.** Implement it. Commit and push. Refresh the description
-  per [Write the PR description](#15-write-the-pr-description). Reply on the PR.
-- **A defer-merge request.** Continue to the [collect step](#18-collect),
+  per [Write the PR description](#7-write-the-pr-description). Reply on the PR.
+- **A defer-merge request.** Continue to the [collect step](#10-collect),
   leaving the PR open for the user to merge later.
 - **A question.** Answer it as a PR comment.
 - **An answer to a question that you raised.** Fold it into the work in hand and
@@ -211,7 +172,7 @@ An approval, or anything with nothing to act on, needs no reply.
 
 Once the PR is ready and you have nothing left to do, end your turn.
 
-## 18. Collect
+## 10. Collect
 
 Run this step only after the user merges the PR, or asks you to defer the merge.
 
@@ -225,9 +186,10 @@ Cap maintenance issues at two, picking the ones that affect the most code and
 cut the most maintenance burden.
 
 Label each issue with its own change type, picking the repo's label the same way
-you did for the PR (see [Open the session PR](#10-open-the-session-pr)). An
-issue's change type is the finding's, not the session's, so one session can file
-across all three.
+you did for the PR (see
+[Open the session PR](../../assignment-boot.md#open-the-session-pr)). An issue's
+change type is the finding's, not the session's, so one session can file across
+all three.
 
 List each issue you filed as a PR comment. Head it `Collect`.
 
