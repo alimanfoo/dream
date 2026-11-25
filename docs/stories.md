@@ -106,11 +106,12 @@ relevant code.
    goes, it says in a line what it opens and why.
 3. The agent tells the user, a piece at a time, what the code is for, what its
    main parts are and where they live, and how they fit together.
-4. The agent makes a list of the components and mechanisms worth understanding,
-   and takes the user round each one, in an order that follows that account. At
-   each one it says what it is for, where it lives, how it works and how it
-   connects to the one before. It points out code that is hard to understand, or
-   that looks over-built or patched round a problem.
+4. The agent makes a list of the components and mechanisms the change will touch
+   or depend on, and takes the user round each one, in an order that follows
+   that account. At each one it says why the change brings them there, what it
+   is for, where it lives, how it works and how it connects to the one before.
+   It points out code that is hard to understand, or that looks over-built or
+   patched round a problem.
 5. Throughout, the agent tells the user only what it has read in the code, names
    the file and symbol for each thing it describes, and says where its evidence
    is thin.
