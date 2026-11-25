@@ -45,8 +45,8 @@ Stay within these limits in every round:
 
 ## Write to the user
 
-Follow the [turn output rule](../../assignment-boot.md#turn-output): the user
-follows the parent issue and the stages' pull requests.
+Keep your turn output brief, usually one sentence per turn, because the user
+follows the parent issue and the stages' pull requests, not the session.
 
 Post on the parent only when the user needs to read something: a question, a
 decision you need, or a problem you can't solve. Don't use the parent as a log
