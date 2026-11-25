@@ -5,6 +5,34 @@ for a user, and each name in dream's interface that it renamed or removed. A
 release's version follows the rules in [Versions](compatibility.md#versions) on
 the compatibility page.
 
+## 47.1.0 (2026-11-25)
+
+`dream:weave` now works out the solution in design models chosen to suit it,
+such as a component model with its interfaces, a data model, a lifecycle or an
+algorithm. Once the what-ifs stop changing the design, you and the agent choose
+the models, sketch each one, and walk the use case that motivates the work
+through them, developing the models at each step. You then test them with the
+other use cases, their errors and faults, and a failure of each assumption the
+design rests on. The design specification it writes presents the chosen models
+and the walk of the motivating use case, so its headings change.
+([#1105](https://github.com/alimanfoo/dream/pull/1105))
+
+`dream:less` now does what `dream:smith` does in the steps they share: it
+orients to the whole repository, looks for all of its tests and checks, not only
+the test command, checks the issue against the code as it is now, and posts the
+session input as the first comment on its pull request. The two skills share the
+text of these steps, and number their steps with the same names.
+([#1107](https://github.com/alimanfoo/dream/pull/1107))
+
+The skills use the terms that dream's concepts page defines, such as
+"requirements specification" for a requirements brief, "roadmap" for a campaign
+plan and "change type" for a session type. Two step names change with them:
+"Name the change type" in `dream:smith` and `dream:less`, and "Read the roadmap"
+in `dream:big`. ([#1106](https://github.com/alimanfoo/dream/pull/1106))
+
+This release renames and removes no name in
+[the interface](compatibility.md#the-interface).
+
 ## 47.0.0 (2026-11-24)
 
 `dream:plain-english` is removed, with the Plain English guide that it loaded.
