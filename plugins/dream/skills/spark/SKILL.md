@@ -93,20 +93,16 @@ when my last answer has nothing left in it.
 
 ## What the specification needs to cover
 
-- **Vision.** What I want to be able to do, or to make possible. It usually
-  arrives as a "wouldn't it be good if".
-- **Problem.** The pain or the missed chance behind it. Why it matters.
-- **Requirements.** What has to be true of anything I'd accept.
-- **Constraints.** What limits the solution: technical, money, legal, people,
-  time.
-- **Success.** What I'll be able to see, once it works.
+Start with why I want this. Ask about the problem or idea that brought me here
+and what I'd like to make possible.
 
-This is a checklist for your own head, not a route to walk me down. Between
-turns: which of them do you know, and which is thinnest? Go for the thinnest one
-when a thread runs out.
+Then ask me for stories. Start with the happy paths, how I see things working
+when they go well. Once those are clear, ask what should happen when someone
+makes a mistake or something fails.
 
-The names are yours, not mine. I came to talk about my problem, not to watch you
-file it, so I'd rather not hear which one a question belongs to.
+Keep constraints in mind as we talk, such as which platforms it has to work on
+or how much time or money I have. When a thread runs out, ask about what you
+still know least about at that point in the conversation.
 
 ## Leave me room to redirect
 
@@ -130,8 +126,7 @@ Ask questions which fit the conversation and put them in your own words.
 - **Why now.** "This has been true a while. Why is it worth fixing this week?"
   My answer usually carries the problem and its urgency together.
 - **The morning after.** "It's a month from now and this works. What's different
-  about your day?" One answer often gives you the vision, the success and the
-  problem at once.
+  about your day?" One answer often gives you both the vision and the problem.
 - **The workaround.** "What do you do about it today?" What I already do by hand
   is usually a requirement, and a fairly reliable one.
 - **Who else.** "Who else runs into this, and do they want the same thing?" I'll
@@ -140,8 +135,8 @@ Ask questions which fit the conversation and put them in your own words.
   state as a no.
 - **The trade.** "If you could have only one of those first, which?" It's all
   essential until I have to choose.
-- **The failure.** "What would make you throw this away after a week?" This one
-  often gets constraints out of me that nothing else does.
+- **The interruption.** "What should happen if that stops halfway through?" I'll
+  often have a clearer idea once we have a story to start from.
 - **The wrong summary.** Say back what you think I mean, in your own words and
   specific enough to be wrong. I'll usually correct a wrong statement much
   faster than I'll answer an open question.
@@ -195,9 +190,9 @@ me another question.
 
 Whatever I'm asking for, it's something for this repo. So before we start, read
 its documentation — the `README`, `AGENTS.md` or `CLAUDE.md` — and have a look
-at how the code is laid out. What is this project for, and what does it give the
-people who use it? The goal is to come away grounded enough to ask better
-informed questions.
+at how the code is laid out. If the repo keeps stories, read them too. What is
+this project for, and what does it give the people who use it? The goal is to
+come away grounded enough to ask better informed questions.
 
 No need to tell me what you found. I work on this repo. If it changes what you
 want to ask me, I'll see it in the question.
@@ -213,14 +208,13 @@ Read the seed before you say anything, so you know what I've already put down.
 But please don't take any of it as settled. I wrote it before I'd thought this
 through, so a question about something I already covered is a fair question.
 
-If the seed already holds a requirements specification in this shape, that's
-your starting draft. Ask me about what's thin, missing or out of date, and about
-anything in it you'd want to check.
+If the seed already holds a requirements specification, use it as your starting
+draft. Ask me about what's thin, missing or out of date, and about anything in
+it you'd want to check.
 
-Then open on my idea, rather than on your process. Tell me what you'd be
-interested to start the conversation with, but ask me where I'd like to start
-too, so the starting point is open. If you pick the first thread yourself then
-the first turn can start to feel like I'm being steered somewhere.
+Open by asking me about the motivation for the idea. Pick up on something I put
+in the seed if it gives us a way in, and let me take the conversation where it
+needs to go.
 
 I know what a requirements specification is, so no need to explain it, or list
 the ground you plan to cover, or tell me how many questions to expect.
@@ -240,18 +234,18 @@ Please write it to a temporary file outside the repo. The headings are
 questions, and what goes under each one is my answer:
 
 ```markdown
-## What do I want to be able to do?
+## What do I want and why?
 
-## What's wrong or missing today?
-
-## What has to be true of anything I'd accept?
+## How do I see it working?
 
 ## What limits this?
 
-## How will I know it worked?
-
 ## What's still open?
 ```
+
+Put the stories under "How do I see it working?", with happy paths first. For
+each one, say what someone is trying to do, what happens and how it turns out.
+Say which of the repo's stories this would extend or change, if any.
 
 The last one isn't about the idea itself. It's for what we didn't settle: what I
 didn't know, what I contradicted myself on, a decision someone has to make

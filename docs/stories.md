@@ -62,20 +62,21 @@ requirements specification, before anyone designs a solution.
 1. The user runs `/dream:spark` with a seed, the material to start from: an
    issue, a file or some text.
 2. The agent reads the repository's documentation and looks at how its code is
-   laid out, so that its questions are informed by what the project is for. Then
-   it reads the seed. It may question anything in it, because the seed is a
-   starting point, and the interview may change any part of it.
-3. The agent asks the user where they would like to start, then interviews them,
-   one question per turn. It follows threads from the user's answers, and says
-   what each answer changed in its understanding. It points out anything that
-   doesn't add up, such as two answers that conflict. It keeps the conversation
-   on what the user wants and why, not on how to build it.
+   laid out, so that its questions are informed by what the project is for. It
+   reads any stories the repository keeps, then reads the seed. It may question
+   anything in the seed, since the interview may change any part of it.
+3. The agent interviews the user, one question per turn. It asks about the
+   problem or idea and the user's vision first, then about the stories, starting
+   with happy paths before asking about user errors and faults. It follows
+   threads from the user's answers, says what each answer changed in its
+   understanding, and points out anything that doesn't add up. It keeps the
+   conversation on what the user wants and why.
 4. When it understands enough to write the specification, the agent says back
    what it understood in two or three sentences, and the user corrects it.
 5. The agent writes the requirements specification in the first person, in the
-   user's words. It says what the user wants to be able to do, what is wrong or
-   missing today, what has to be true of anything they would accept, what limits
-   a solution, how they will know it worked, and what is still open.
+   user's words. It records the motivation, the stories with happy paths first,
+   the constraints and what is still open. It says which existing repository
+   stories the idea extends or changes, if any.
 6. The agent has two subagents read the specification. One reads as the agent
    that will design a solution, and reports what else it would need to know. The
    other reports how the idea sits against what the repository is for, and where

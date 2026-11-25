@@ -150,10 +150,8 @@ Replaces: "spec", for a specification.
 ### Requirements specification
 
 A **requirements specification** describes what the user wants and why, without
-a solution. It says what the user wants to be able to do, what is wrong or
-missing today, what has to be true of anything they would accept, what
-constraints any solution must work within, how they will know it worked, and
-what is still open.
+a solution. It records the motivation, the stories of how the user sees things
+working, the constraints a solution must work within, and what is still open.
 
 Replaces: "requirements brief", "brief".
 
