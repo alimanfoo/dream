@@ -16,53 +16,17 @@ Follow the instructions below in order.
 
 ## Print the banner
 
-Read the plugin's version from the `version` field of
-`../../.codex-plugin/plugin.json`, relative to this skill's directory. Then
-print this banner as your first user-visible output:
+Print the banner that [Banner](../../banner.md) describes.
 
-```text
-# /dream:smith · dream v<version>
-Booting...
-```
+## Session rules
 
-Replace `<version>` with the version you read.
-
-## Autonomy
-
-Work autonomously to the end. When you need to decide something, choose the
-coherent option and explain your reasoning in the PR.
-
-If you cannot decide something without the user, post a question as a comment on
-the PR. Assume the user only follows the PR, not this session. Don't use
-`AskUserQuestion` or the chat. The user won't see it, and the session stalls.
-After you post the question, end your turn. A later round resumes when the user
-replies on the PR.
+Read the [session rules](../../session-rules.md) and follow them for the rest of
+the session. Read them again whenever the conversation has been summarised,
+since a summary can drop them.
 
 ## Coherence
 
 Load the `dream:coherent-coding` skill. It governs all your work.
-
-## Communication style
-
-Write each paragraph on a single line in a PR description or comment, since
-GitHub reflows it (see [Text for GitHub](../../github-text.md)).
-
-## Turn output
-
-Keep your turn output brief, usually one sentence per turn, unless a step asks
-you to write more. The user interacts via GitHub, so turn output is wasted
-tokens.
-
-## Mark your work
-
-Read the `commentFooter` value, and the `commitTrailer` value for the harness
-you run under (`claude` or `codex`), from
-[`agent-written-marks.json`](../../agent-written-marks.json). End every commit
-with that exact trailer. End every PR or issue body and every comment with the
-exact `commentFooter` value as a blockquote. Replies on lines of the diff count
-as comments.
-
-This lets a reader tell quickly which items are agent-authored.
 
 ## Orient to the repo
 
@@ -90,13 +54,7 @@ makes the generated files match the source before you commit.
 
 ## Check the working tree
 
-Check the working tree. If it has uncommitted changes, stop and tell the user,
-in a comment on the branch's open PR if it has one.
-
-Read the branch name (`git rev-parse --abbrev-ref HEAD`). Find the default
-branch by following [Default branch](../../branch-bases.md#default-branch).
-
-If the current branch is the default branch, pull the latest changes.
+Check the working tree as [Working tree](../../working-tree.md) describes.
 
 ## Obtain session input
 
@@ -150,11 +108,7 @@ surface the input names that is no longer there. Trace where it went.
 
 ## Name the change type
 
-Select the change type:
-
-- **Enhancement.** New feature or capability that doesn't currently exist.
-- **Maintenance.** Coherence, naming, structure. Behaviour already correct.
-- **Bug fix.** Incorrect behaviour to repair.
+Select the change type from [Change types](../../change-types.md).
 
 ## Open the session PR
 
@@ -186,13 +140,6 @@ Otherwise, reproduce the user's input verbatim.
 `enhancement`, `maintenance`, or `bug`. Run `gh label list` once to find the
 repo's closest label for each change type, and apply none when there's no clean
 match.
-
-## Interrupted work
-
-Once the session PR exists, post a comment there before you end a turn if
-anything disrupts the work and prevents you from finishing it. Say what
-disrupted the work and where you stopped. The user follows the PR, so turn
-output alone is not enough.
 
 ## Plan
 
