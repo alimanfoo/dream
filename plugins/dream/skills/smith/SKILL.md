@@ -168,8 +168,6 @@ of these:
 
 An approval, or anything with nothing to act on, needs no reply.
 
-Once the PR is ready and you have nothing left to do, end your turn.
-
 ## 10. Collect
 
 File anything you noticed but left out of scope as a new GitHub issue

@@ -77,5 +77,3 @@ of these:
   carry on.
 
 An approval, or anything with nothing to act on, needs no reply.
-
-Once the PR is ready and you have nothing left to do, end your turn.
