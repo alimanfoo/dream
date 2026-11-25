@@ -5,6 +5,20 @@ for a user, and each name in dream's interface that it renamed or removed. A
 release's version follows the rules in [Versions](compatibility.md#versions) on
 the compatibility page.
 
+## 47.2.0 (2026-11-25)
+
+`dream:smith` and `dream:less` start by running one shared boot sequence, with
+its steps lettered A to I, and then adopt their engineering principles: smith
+loads the coherent coding guide, and less follows its short summary. Smith now
+loads the guide after opening the session PR, not before it orients to the
+repository. Neither skill now rereads its session rules after the conversation
+is summarised. The steps after the boot are renumbered, and "Handle what the
+user posts" is now "Handle user posts".
+([#1111](https://github.com/alimanfoo/dream/pull/1111))
+
+This release renames and removes no name in
+[the interface](compatibility.md#the-interface).
+
 ## 47.1.0 (2026-11-25)
 
 `dream:weave` now works out the solution in design models chosen to suit it,
