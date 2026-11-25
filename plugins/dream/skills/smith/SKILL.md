@@ -24,7 +24,7 @@ Read the [session rules](../../assignment-session-rules.md) and follow them for
 the rest of the session. Read them again whenever the conversation has been
 summarised, since a summary can drop them.
 
-## 3. Coherence
+## 3. Engineering principles
 
 Load the `dream:coherent-coding` skill. It governs all your work.
 

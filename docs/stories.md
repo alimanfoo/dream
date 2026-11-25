@@ -330,6 +330,8 @@ and a second review would add nothing. They want a pull request for it quickly.
 2. The agent reads the issue, its comments and the code the issue touches.
 3. The agent opens a draft pull request.
 4. The agent makes the change in small steps, committing and pushing each one.
+   It follows a short summary of the engineering principles, rather than loading
+   the full coherent coding guide as `dream:smith` does.
 5. The agent runs a code review without subagents, and applies each finding the
    evidence supports.
 6. The agent writes a short description and marks the pull request ready for

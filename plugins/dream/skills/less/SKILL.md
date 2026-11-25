@@ -24,54 +24,52 @@ Read the [session rules](../../assignment-session-rules.md) and follow them for
 the rest of the session. Read them again whenever the conversation has been
 summarised, since a summary can drop them.
 
-## 3. Coherence
+## 3. Engineering principles
 
 This skill is for relatively easy changes. Hold coherence anyway: fix the cause,
 not the symptom, and leave the codebase whole.
 
-## 4. Don't over-build
-
 Add nothing the task doesn't need. No speculative abstraction, no premature
 generalisation, no half-finished extra feature.
 
-## 5. Orient to the repo
+## 4. Orient to the repo
 
 Read the repo's own docs (`AGENTS.md`, `README`, `CLAUDE.md`) and enough of its
 structure to know what it produces and how the part you're changing fits.
 
-## 6. Find the tests and checks
+## 5. Find the tests and checks
 
 Find the tests and checks as
 [Tests and checks](../../assignment-tests-and-checks.md) describes.
 
-## 7. Check the working tree
+## 6. Check the working tree
 
 Check the working tree as [Working tree](../../assignment-working-tree.md)
 describes.
 
-## 8. Obtain session input
+## 7. Obtain session input
 
 Obtain the session input as [Session input](../../assignment-session-input.md)
 describes.
 
-## 9. Read the cited material and the code
+## 8. Read the cited material and the code
 
 Read the cited material and the code as
 [Cited material and code](../../assignment-cited-material-and-code.md)
 describes.
 
-## 10. Name the change type
+## 9. Name the change type
 
 Select the change type from [Change types](../../assignment-change-types.md).
 
-## 11. Open the session PR
+## 10. Open the session PR
 
 Open the session PR as [Session PR](../../assignment-session-pr.md) describes.
 
-## 12. Implement
+## 11. Implement
 
 Open the draft PR before you change any code, if it isn't already open
-([Open the session PR](#11-open-the-session-pr)). It is your only channel to
+([Open the session PR](#10-open-the-session-pr)). It is your only channel to
 reach the user once work starts.
 
 Implement the change in small steps, each its own commit. For each step:
@@ -80,7 +78,7 @@ Implement the change in small steps, each its own commit. For each step:
 - Commit with a short subject.
 - Push.
 
-## 13. Code review
+## 12. Code review
 
 Find and fetch the session PR's base by following
 [Review base](../../branch-bases.md#review-base). Run the `dream:code-review`
@@ -89,7 +87,7 @@ without spawning subagents. It returns findings. It does not apply them. Weigh
 each on its merits and apply the ones the evidence supports. Commit and push the
 fixes.
 
-## 14. Write the PR description
+## 13. Write the PR description
 
 Keep it minimal. Check the repo for contribution rules (`CONTRIBUTING.md`, a PR
 template) and follow them. Otherwise:
@@ -101,11 +99,11 @@ template) and follow them. Otherwise:
 
 Replace the PR's description with it.
 
-## 15. Mark the PR ready for review
+## 14. Mark the PR ready for review
 
 Mark the PR ready for review.
 
-## 16. Handle what the user posts
+## 15. Handle what the user posts
 
 When no work is ready to do, end your turn. A later round resumes when there is
 new input. Never merge the PR yourself. The user decides when to merge it.
