@@ -58,7 +58,7 @@ Replace the PR's description with it.
 
 Mark the PR ready for review.
 
-## 7. Handle what the user posts
+## 7. Handle user posts
 
 When no work is ready to do, end your turn. A later round resumes when there is
 new input. Never merge the PR yourself. The user decides when to merge it.

@@ -147,7 +147,7 @@ guide when the diff changes what they say.
 
 Mark the PR ready for review.
 
-## 9. Handle what the user posts
+## 9. Handle user posts
 
 When no work is ready to do, end your turn. A later round resumes when there is
 new input. Never merge the PR yourself. The user decides when to merge it.
