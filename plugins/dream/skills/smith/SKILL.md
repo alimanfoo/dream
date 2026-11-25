@@ -152,18 +152,16 @@ Mark the PR ready for review.
 When no work is ready to do, end your turn. A later round resumes when there is
 new input. Never merge the PR yourself. The user decides when to merge it.
 
-After the PR merges, continue to the [collect step](#10-collect), unless you
-already completed Collect after a deferred merge; in that case, end your turn.
-After the PR closes, post a comment naming where the work stopped, then end your
-turn.
+After the PR merges, go on to Collect, unless you already completed Collect
+after a deferred merge; in that case, end your turn. After the PR closes, post a
+comment naming where the work stopped, then end your turn.
 
 Otherwise, act on each user post, oldest first. A post can carry more than one
 of these:
 
-- **A requested change.** Implement it. Commit and push. Refresh the description
-  per [Write the PR description](#7-write-the-pr-description). Reply on the PR.
-- **A defer-merge request.** Continue to the [collect step](#10-collect),
-  leaving the PR open for the user to merge later.
+- **A requested change.** Implement it. Commit and push. Reply on the PR.
+- **A defer-merge request.** Go on to Collect, leaving the PR open for the user
+  to merge later.
 - **A question.** Answer it as a PR comment.
 - **An answer to a question that you raised.** Fold it into the work in hand and
   carry on.
@@ -173,8 +171,6 @@ An approval, or anything with nothing to act on, needs no reply.
 Once the PR is ready and you have nothing left to do, end your turn.
 
 ## 10. Collect
-
-Run this step only after the user merges the PR, or asks you to defer the merge.
 
 File anything you noticed but left out of scope as a new GitHub issue
 (`gh issue create`), every finding you deferred in a review included. This keeps
@@ -186,10 +182,8 @@ Cap maintenance issues at two, picking the ones that affect the most code and
 cut the most maintenance burden.
 
 Label each issue with its own change type, picking the repo's label the same way
-you did for the PR (see
-[Open the session PR](../../assignment-boot.md#open-the-session-pr)). An issue's
-change type is the finding's, not the session's, so one session can file across
-all three.
+you did for the PR. An issue's change type is the finding's, not the session's,
+so one session can file across all three.
 
 List each issue you filed as a PR comment. Head it `Collect`.
 
