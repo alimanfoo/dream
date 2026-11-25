@@ -8,15 +8,15 @@ argument-hint: "[requirements | issue | file | text]"
 
 # dream:weave
 
-I know roughly what I want built. What I haven't got is the design, and I'd like
-us to work it out together, the two of us at a whiteboard.
+I know roughly what I want. What I haven't got is the solution, and I'd like us
+to work it out together, the two of us at a whiteboard.
 
 You know things about this problem that I don't. I can see when something's
 overcomplicated, and when it could be turned round or made more general. Let's
 use both.
 
-What comes out at the end is a design — the architecture and the algorithms —
-with enough in it to build from. Someone else does the building.
+What comes out at the end is a design specification, detailed enough to plan the
+implementation from. Someone else does the implementing.
 
 ## Sound like a person
 
@@ -112,7 +112,7 @@ They're not there for me to pick one. They're there so we can both see the
 ground we're working on. A single option is a proposal with a question mark on
 it, and I can't see the edges of what's possible from it.
 
-## "What if" until the shape stops moving
+## Ask what if
 
 Then we're at the whiteboard, and the move is "what if". Ask them, lots of them,
 and mean them. One you already know the answer to isn't a what-if, it's a way of
@@ -186,102 +186,129 @@ No contracts, no careful naming, no structure worked through, not yet. Rough on
 purpose, so it stays cheap to bin. Something that looks finished is harder for
 me to throw away, and I don't want you buying me out of changing my mind.
 
-## The moment the shape stops moving
+## When the what-ifs stop changing the design
 
-At some point the what-ifs stop turning anything up. Say so when you notice it,
-and say what you'd still change if it were up to you, so I know what you're
-carrying. Then we stop asking what if and start asking what breaks.
+When the what-ifs stop changing the design, say so, rather than waiting for me
+to notice. Tell me any reservations you still have about the design, so we can
+discuss them. Then I'll decide whether we move on or keep asking what if.
 
-I might not agree we're there, and then we keep going. Knowing when we're done
-is my problem rather than yours, so don't wait for me to announce it.
+## Choose the design models
 
-## "What breaks" until nothing more comes off
+Propose the design models we'll use to work out and describe the solution. For
+each, say which aspect of the solution it describes, and why we need it. Which
+models fit depends on what we're designing. Examples include a component model
+with its interfaces, a data model, a lifecycle, an algorithm, a deployment model
+and what each agent sees in its context. We'll settle the choice together.
 
-Now we chisel. Same conversation, one thing at a time, but the question has
-changed. Fill in a detail, then go looking for what it breaks: the input nobody
-thought about, the second caller, the case that happens twice, the thing that
-grows. Go hunting rather than waiting for me to find them.
+## Sketch the design models
 
-Every break is a fix or a cut, and I'd rather it were a cut. A detail that only
-works with something else propping it up usually wasn't the right detail.
+Sketch each design model we chose, one per turn, so we can discuss each sketch
+before the next. Take each only as far as we need to walk a use case through it,
+because the walks may change it.
 
-Keep going until nothing more comes off. That's the point I'm after: everything
-left is there for a reason, and the reason is enough to make it worth building
-and keeping.
+## Walk the motivating use case
+
+Take the use case that motivates this work. If the requirements don't name one,
+we'll choose an example use case together. Walk it through the sketches with me,
+step by step from start to finish, making each step concrete with examples. At
+each step, develop or revise the design models the step involves. For example,
+where a step crosses from one component to another, we might work out the
+interface between them, down to its signature or message format.
+
+## Test and refine the design models with further cases
+
+Now fill in the details of the design models, and test them with further cases.
+Suggest the cases rather than waiting for me to find them, and walk each one
+through the models with me: first the other use cases, then the errors and
+faults that can occur in them, then, for each assumption the design rests on, a
+case in which it fails. For example, a service may assume that requests arrive
+one at a time, or a user interface that the user follows the steps in order.
+
+Where a walk shows that the models fail a case, do more than the case needs, or
+hold a part that no case uses, revise them. I'd rather you removed a part than
+added one, so that every part left has a reason that justifies building and
+maintaining it. A part that only works when another is added to support it is
+usually the wrong part.
+
+When further cases stop changing the models, say so, and I'll decide whether we
+stop.
 
 Push back on me here. If two things I've asked for don't fit together, or I've
-talked myself into something complicated, say what you see. Whether a piece is
-load-bearing is a fact about the design and you know it better than I do, so
-argue for it when it holds. I'm getting nothing out of this if you agree with
+talked myself into something complicated, say so. Whether a part is needed is a
+fact about the design, and you know the design better than I do, so argue for a
+part when it is needed. I'm getting nothing out of this if you agree with
 everything I say.
 
 ## Write it up
 
-Then write the design to a temporary file outside the repo:
+Then write the design specification to a temporary file outside the repo:
 
 ```markdown
-## What we're building
+## The solution
 
-## How it works
+## Design models
 
-## What changes, and what goes away
+## The motivating use case, walked through
 
-## Why it's this and not something else
+## What changes, and what's removed
 
-## What's still open
+## Alternatives we rejected
+
+## Open questions
 ```
 
-How it works is the architecture and the algorithms. Open it by walking one real
-case through the system, from what sets it off to what finishes it, so someone
-reading about a single part later can place it in the whole. Then the parts:
-what each one is for, and what passes between them. Enough that someone could
-plan the build from it without coming back to ask me.
+Under Design models, write out each model we chose, with a diagram where one
+makes the model clearer. Say that the models are a starting point, which
+planning and implementation may revise. In the next section, write out the walk
+of the motivating use case through the final models.
 
-Say what each deletion buys under what goes away, because that's the part
-someone will want to argue with later.
+Under What changes, say what each removal gains, because that's the part someone
+will want to argue with later.
 
-Keep why it's this short — a direction we dropped for a reason worth
-remembering, with what it cost, and not the ones that were simply worse.
+Keep Alternatives we rejected short: an alternative we dropped for a reason
+worth remembering, with what it would have cost, and not the ones that were
+simply worse.
 
-No implementation. This goes to a different session, and I'd rather it had room
-to work. Name a part and say how it works, but don't implement it.
+Leave out the implementation, such as function bodies, because the session that
+implements the design will follow whatever you write.
 
-If writing it up turns something up that changes the shape, bring it back to me
-as a question rather than absorbing it. That's the thing I'd most want to hear
-about, and the easiest one to swallow quietly.
+If writing it up shows that a design model needs to change, bring the change to
+me as a question rather than making it yourself. That's the change I'd most want
+to hear about, and the easiest one for you to make without telling me.
 
 ## Get it checked before you show me
 
 We've both been in this a while, and neither of us can see it fresh any more. So
-before you show me the design, get two readers on it. Spawn both as subagents,
-at the same time, giving each the absolute path of the design, since a subagent
-can't resolve a path relative to its own prompt file. Tell them both that having
-nothing to say is a fine answer, rather than inventing something to fill the
-silence.
+before you show me the design specification, get two readers on it. Spawn both
+as subagents, at the same time, giving each the absolute path of the design
+specification, since a subagent can't resolve a path relative to its own prompt
+file. Tell them both that having nothing to say is a fine answer, rather than
+inventing something to fill the silence.
 
-The first one hunts for too much. It gets the design and what I asked for and
-nothing else, and one question: what could come out of this and still meet the
-requirements, and what would each cut cost?
+The first one looks for what could be removed. It gets the design specification
+and what I asked for and nothing else, and one question: which parts could be
+removed with the requirements still met, and what would each removal give up?
 
-The second one has to build this. Tell it to read the code the design touches,
-check anything it wants to raise against that code first, and answer two things:
-does this fit the code as it actually is, and is there enough here to plan the
-build from without coming back to ask?
+The second one reads it as the session that will implement it. Tell it to read
+the existing code that the solution changes or depends on, check anything it
+wants to raise against that code first, and answer two things: is the design
+specification consistent with the code as it actually is, and does it contain
+enough detail to plan the implementation without coming back to ask?
 
 Please read and follow the
 [subagent waiting protocol](../../subagent-waiting.md) for those two readers.
 Wait for both before you act on either, since you're the only one who can see
 they've raised the same thing twice.
 
-Then bring me what survives, one thing a turn. A cut is mine to rule on rather
-than yours to make, so tell me what it takes out and what that costs. Anything
-that only needs the design putting it more clearly, fix yourself.
+Then bring me each point that remains, one a turn. A removal is mine to decide
+rather than yours to make, so tell me what it takes out and what it gives up.
+Anything that needs only clearer wording, fix yourself.
 
 ## Where it goes
 
-Show me the design, with whatever we settled at the end folded in. It's the one
-long thing you send me, so let it stand on its own: no introduction, no summary
-underneath, and no list of what changed.
+Show me the design specification, with whatever we settled at the end folded in.
+It's the one long thing you send me, so let it stand on its own: no
+introduction, no summary underneath, and no list of what changed.
 
 Then, if I want it somewhere the work can start from, offer to put it in the
 repo as `design.md` and open a pull request, following the
