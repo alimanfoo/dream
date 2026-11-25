@@ -14,159 +14,58 @@ standards.
 
 Follow the instructions below in order.
 
-## Print the banner
+## 1. Print the banner
 
-Read the plugin's version from the `version` field of
-`../../.codex-plugin/plugin.json`, relative to this skill's directory. Then
-print this banner as your first user-visible output:
+Print the banner that [Banner](../../assignment-banner.md) describes.
 
-```text
-# /dream:less · dream v<version>
-Booting...
-```
+## 2. Session rules
 
-Replace `<version>` with the version you read.
+Read the [session rules](../../assignment-session-rules.md) and follow them for
+the rest of the session. Read them again whenever the conversation has been
+summarised, since a summary can drop them.
 
-## Autonomy
-
-Work autonomously to the end. When you need to decide something, choose the
-coherent option and explain your reasoning in the PR.
-
-If you cannot decide something without the user, post a question as a comment on
-the PR. Assume the user only follows the PR, not this session. Don't use
-`AskUserQuestion` or the chat. The user won't see it, and the session stalls.
-After you post the question, end your turn. A later round resumes when the user
-replies on the PR.
-
-## Coherence
+## 3. Engineering principles
 
 This skill is for relatively easy changes. Hold coherence anyway: fix the cause,
 not the symptom, and leave the codebase whole.
 
-## Don't over-build
-
 Add nothing the task doesn't need. No speculative abstraction, no premature
 generalisation, no half-finished extra feature.
 
-## Communication style
+## 4. Orient to the repo
 
-Write each paragraph on a single line in a PR description or comment, since
-GitHub reflows it (see [Text for GitHub](../../github-text.md)).
+Orient to the repo as [Orientation](../../assignment-orientation.md) describes.
 
-## Turn output
+## 5. Find the tests and checks
 
-Keep your turn output brief, usually one sentence per turn, unless a step asks
-you to write more. The user interacts via GitHub, so turn output is wasted
-tokens.
+Find the tests and checks as
+[Tests and checks](../../assignment-tests-and-checks.md) describes.
 
-## Mark your work
+## 6. Check the working tree
 
-Read the `commentFooter` value, and the `commitTrailer` value for the harness
-you run under (`claude` or `codex`), from
-[`agent-written-marks.json`](../../agent-written-marks.json). End every commit
-with that exact trailer. End every PR body and comment with the exact
-`commentFooter` value as a blockquote. Replies on lines of the diff count as
-comments.
+Check the working tree as [Working tree](../../assignment-working-tree.md)
+describes.
 
-This lets a reader tell quickly which items are agent-authored.
+## 7. Obtain session input
 
-## Orient to the repo
+Obtain the session input as [Session input](../../assignment-session-input.md)
+describes.
 
-Read the repo's own docs (`AGENTS.md`, `README`, `CLAUDE.md`) and enough of its
-structure to know what it produces and how the part you're changing fits.
+## 8. Read the cited material and the code
 
-## Find the tests and checks
+Read the cited material and the code as
+[Cited material and code](../../assignment-cited-material-and-code.md)
+describes.
 
-Find the project's test command. Look in the README, `AGENTS.md`, `CLAUDE.md`, a
-Makefile, or `pyproject.toml`/`package.json` scripts. Run it yourself before
-every commit, because a commit hook rarely runs the test suite. Find any codegen
-a commit hook doesn't run. Run it after an edit that needs it, so the generated
-files match the source before you commit.
+## 9. Name the change type
 
-## Check the working tree
+Select the change type from [Change types](../../assignment-change-types.md).
 
-Check the working tree. If it has uncommitted changes, stop and tell the user,
-in a comment on the branch's open PR if it has one.
+## 10. Open the session PR
 
-Read the branch name (`git rev-parse --abbrev-ref HEAD`). Find the default
-branch by following [Default branch](../../branch-bases.md#default-branch). If
-the current branch is the default branch, pull the latest changes.
+Open the session PR as [Session PR](../../assignment-session-pr.md) describes.
 
-## Obtain session input
-
-Take the argument the user gives as the session input. It names an issue, such
-as `GH123`, or describes the task in free text. Without an argument, scan the
-branch name for `gh<number>` tokens, case-insensitive: `GH83`, `gh83-add-foo`,
-and `claude/gh341-defer-candidates` each yield one. `fix-gh12-and-gh34` yields
-two. Every distinct issue number found is part of the session input. When the
-name holds no such token either, ask the user to provide the session input.
-
-## Read the cited material and the code
-
-Read everything the user cites in their session input: issue bodies and their
-comments, prior issues they reference, linked PRs, and named files or symbols.
-For each cited issue, check whether it has sub-issues or a parent:
-
-```bash
-gh api repos/{owner}/{repo}/issues/<N>/sub_issues
-gh api repos/{owner}/{repo}/issues/<N> --jq .parent_issue_url
-```
-
-Read the sub-issues and their comments too. They carry part of the same input.
-Read the parent and its comments too, at the URL the second command prints. It
-names the wider goal the cited issue serves. Only the cited issue is in scope,
-not the parent's other sub-issues.
-
-Then read the relevant code, callers, tests, and docs for the named surfaces. As
-you read, check the input against the current code, since it may have changed
-since the issue was filed. A symbol it names may be renamed, a file may have
-moved, or part of the ask may already be done.
-
-## Name the change type
-
-Select the change type:
-
-- **Enhancement.** New feature or capability that doesn't currently exist.
-- **Maintenance.** Coherence, naming, structure. Behaviour already correct.
-- **Bug fix.** Incorrect behaviour to repair.
-
-## Open the session PR
-
-Open the session branch and PR before the work begins.
-
-**Set the session branch.** If the session started on the default branch, create
-the branch and switch to it. Name it after the session input. For example,
-`GH123` for an issue, a short slug like `add-foo` for an unscoped task. If the
-session started on another branch, adopt that as the session branch.
-
-**Adopt an open PR on the branch.** Check whether the branch already has an open
-PR (`gh pr view`). When it does, that PR is the session PR, so skip the rest of
-this step. A second PR on the same branch would split the record in two.
-
-**Create the bootstrap commit and push.** Create an empty bootstrap commit
-(`git commit --allow-empty`) with a short subject (the issue ref or slug), so
-the draft PR has a commit to anchor to. Push the branch.
-
-**Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
-the title from the session input.
-
-**Label the PR.** Apply the change type's label with `gh pr edit --add-label`:
-`enhancement`, `maintenance`, or `bug`. Run `gh label list` once to find the
-repo's closest label for each change type, and apply none when there's no clean
-match.
-
-## Interrupted work
-
-Once the session PR exists, post a comment there before you end a turn if
-anything disrupts the work and prevents you from finishing it. Say what
-disrupted the work and where you stopped. The user follows the PR, so turn
-output alone is not enough.
-
-## Implement
-
-Open the draft PR before you change any code, if it isn't already open
-([Open the session PR](#open-the-session-pr)). It is your only channel to reach
-the user once work starts.
+## 11. Implement
 
 Implement the change in small steps, each its own commit. For each step:
 
@@ -174,16 +73,15 @@ Implement the change in small steps, each its own commit. For each step:
 - Commit with a short subject.
 - Push.
 
-## Code review
+## 12. Code review
 
 Find and fetch the session PR's base by following
 [Review base](../../branch-bases.md#review-base). Run the `dream:code-review`
 skill in `inline` mode with `origin/<base>...HEAD` as its target, so it reviews
-without spawning subagents. It returns findings. It does not apply them. Weigh
-each on its merits and apply the ones the evidence supports. Commit and push the
-fixes.
+without spawning subagents. Weigh each finding on its merits and apply the ones
+the evidence supports. Commit and push the fixes.
 
-## Write the PR description
+## 13. Write the PR description
 
 Keep it minimal. Check the repo for contribution rules (`CONTRIBUTING.md`, a PR
 template) and follow them. Otherwise:
@@ -195,11 +93,11 @@ template) and follow them. Otherwise:
 
 Replace the PR's description with it.
 
-## Mark the PR ready for review
+## 14. Mark the PR ready for review
 
 Mark the PR ready for review.
 
-## Handle what the user posts
+## 15. Handle what the user posts
 
 When no work is ready to do, end your turn. A later round resumes when there is
 new input. Never merge the PR yourself. The user decides when to merge it.
