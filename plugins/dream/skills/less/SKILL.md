@@ -14,32 +14,32 @@ standards.
 
 Follow the instructions below in order.
 
-## Print the banner
+## 1. Print the banner
 
 Print the banner that [Banner](../../assignment-banner.md) describes.
 
-## Session rules
+## 2. Session rules
 
 Read the [session rules](../../assignment-session-rules.md) and follow them for
 the rest of the session. Read them again whenever the conversation has been
 summarised, since a summary can drop them.
 
-## Coherence
+## 3. Coherence
 
 This skill is for relatively easy changes. Hold coherence anyway: fix the cause,
 not the symptom, and leave the codebase whole.
 
-## Don't over-build
+## 4. Don't over-build
 
 Add nothing the task doesn't need. No speculative abstraction, no premature
 generalisation, no half-finished extra feature.
 
-## Orient to the repo
+## 5. Orient to the repo
 
 Read the repo's own docs (`AGENTS.md`, `README`, `CLAUDE.md`) and enough of its
 structure to know what it produces and how the part you're changing fits.
 
-## Find the tests and checks
+## 6. Find the tests and checks
 
 Find the project's test command. Look in the README, `AGENTS.md`, `CLAUDE.md`, a
 Makefile, or `pyproject.toml`/`package.json` scripts. Run it yourself before
@@ -47,27 +47,27 @@ every commit, because a commit hook rarely runs the test suite. Find any codegen
 a commit hook doesn't run. Run it after an edit that needs it, so the generated
 files match the source before you commit.
 
-## Check the working tree
+## 7. Check the working tree
 
 Check the working tree as [Working tree](../../assignment-working-tree.md)
 describes.
 
-## Obtain session input
+## 8. Obtain session input
 
 Obtain the session input as [Session input](../../assignment-session-input.md)
 describes.
 
-## Read the cited material and the code
+## 9. Read the cited material and the code
 
 Read the cited material and the code as
 [Cited material and code](../../assignment-cited-material-and-code.md)
 describes.
 
-## Name the change type
+## 10. Name the change type
 
 Select the change type from [Change types](../../assignment-change-types.md).
 
-## Open the session PR
+## 11. Open the session PR
 
 Open the session branch and PR before the work begins.
 
@@ -92,11 +92,11 @@ the title from the session input.
 repo's closest label for each change type, and apply none when there's no clean
 match.
 
-## Implement
+## 12. Implement
 
 Open the draft PR before you change any code, if it isn't already open
-([Open the session PR](#open-the-session-pr)). It is your only channel to reach
-the user once work starts.
+([Open the session PR](#11-open-the-session-pr)). It is your only channel to
+reach the user once work starts.
 
 Implement the change in small steps, each its own commit. For each step:
 
@@ -104,7 +104,7 @@ Implement the change in small steps, each its own commit. For each step:
 - Commit with a short subject.
 - Push.
 
-## Code review
+## 13. Code review
 
 Find and fetch the session PR's base by following
 [Review base](../../branch-bases.md#review-base). Run the `dream:code-review`
@@ -113,7 +113,7 @@ without spawning subagents. It returns findings. It does not apply them. Weigh
 each on its merits and apply the ones the evidence supports. Commit and push the
 fixes.
 
-## Write the PR description
+## 14. Write the PR description
 
 Keep it minimal. Check the repo for contribution rules (`CONTRIBUTING.md`, a PR
 template) and follow them. Otherwise:
@@ -125,11 +125,11 @@ template) and follow them. Otherwise:
 
 Replace the PR's description with it.
 
-## Mark the PR ready for review
+## 15. Mark the PR ready for review
 
 Mark the PR ready for review.
 
-## Handle what the user posts
+## 16. Handle what the user posts
 
 When no work is ready to do, end your turn. A later round resumes when there is
 new input. Never merge the PR yourself. The user decides when to merge it.

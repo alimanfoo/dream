@@ -14,21 +14,21 @@ standards.
 
 Follow the instructions below in order.
 
-## Print the banner
+## 1. Print the banner
 
 Print the banner that [Banner](../../assignment-banner.md) describes.
 
-## Session rules
+## 2. Session rules
 
 Read the [session rules](../../assignment-session-rules.md) and follow them for
 the rest of the session. Read them again whenever the conversation has been
 summarised, since a summary can drop them.
 
-## Coherence
+## 3. Coherence
 
 Load the `dream:coherent-coding` skill. It governs all your work.
 
-## Orient to the repo
+## 4. Orient to the repo
 
 Determine what the repo is for as a whole. Read the repo's own docs
 (`AGENTS.md`, `README`, `CLAUDE.md`) and explore its structure.
@@ -39,7 +39,7 @@ configuration, or something else.
 
 Determine how that product is organised into its major components.
 
-## Find the tests and checks
+## 5. Find the tests and checks
 
 Determine the tests, checks, build steps, and tooling built around the product
 to produce, verify, and maintain it.
@@ -52,27 +52,27 @@ Find any codegen a commit hook doesn't run. Examples: a stub generator, an
 OpenAPI client refresh, an index sync. Run it after an edit that needs it. This
 makes the generated files match the source before you commit.
 
-## Check the working tree
+## 6. Check the working tree
 
 Check the working tree as [Working tree](../../assignment-working-tree.md)
 describes.
 
-## Obtain session input
+## 7. Obtain session input
 
 Obtain the session input as [Session input](../../assignment-session-input.md)
 describes.
 
-## Read the cited material and the code
+## 8. Read the cited material and the code
 
 Read the cited material and the code as
 [Cited material and code](../../assignment-cited-material-and-code.md)
 describes.
 
-## Name the change type
+## 9. Name the change type
 
 Select the change type from [Change types](../../assignment-change-types.md).
 
-## Open the session PR
+## 10. Open the session PR
 
 Open the session branch and PR before the work begins.
 
@@ -103,7 +103,7 @@ Otherwise, reproduce the user's input verbatim.
 repo's closest label for each change type, and apply none when there's no clean
 match.
 
-## Plan
+## 11. Plan
 
 Run the `dream:plan` skill in this session, focused on the intended result in
 the session input, how the current code works and is organised, and the change
@@ -114,11 +114,11 @@ Post the returned plan as a PR comment. Head it `Plan`.
 Create a TODO list from the plan, one task per step, so you can track progress
 against it as you implement.
 
-## Implement
+## 12. Implement
 
 Open the draft PR before you change any code, if it isn't already open
-([Open the session PR](#open-the-session-pr)). It is your only channel to reach
-the user once work starts.
+([Open the session PR](#10-open-the-session-pr)). It is your only channel to
+reach the user once work starts.
 
 Implement the plan, one step at a time. For each step:
 
@@ -129,7 +129,7 @@ Implement the plan, one step at a time. For each step:
 - Push.
 - Mark its task completed.
 
-## Review
+## 13. Review
 
 Run the reviews below in sequence.
 
@@ -184,7 +184,7 @@ Second, run the `dream:coherence-review` skill the same way, and head its
 comment `Coherence review`. It follows the code review so that it reads the
 fixes that review led to.
 
-## Find simplification opportunities
+## 14. Find simplification opportunities
 
 Reread the finished change once the reviews are done. Ask whether the PR could
 remove a lot of code or complexity by changing the design or constraints given
@@ -196,7 +196,7 @@ what functionality the PR would give up. Order them so that the strongest
 opportunities appear first. If there are no significant opportunities, say so in
 the comment.
 
-## Write the PR description
+## 15. Write the PR description
 
 Draft the description, now that the work is final. Check the repo for
 contribution rules (`CONTRIBUTING.md`, a PR template) and follow them. Include
@@ -228,16 +228,16 @@ Replace the PR's description with the draft.
 Reread the description after any later commit. Update the summary and reviewer's
 guide when the diff changes what they say.
 
-## Mark the PR ready for review
+## 16. Mark the PR ready for review
 
 Mark the PR ready for review.
 
-## Handle what the user posts
+## 17. Handle what the user posts
 
 When no work is ready to do, end your turn. A later round resumes when there is
 new input. Never merge the PR yourself. The user decides when to merge it.
 
-After the PR merges, continue to the [collect step](#collect), unless you
+After the PR merges, continue to the [collect step](#18-collect), unless you
 already completed Collect after a deferred merge; in that case, end your turn.
 After the PR closes, post a comment naming where the work stopped, then end your
 turn.
@@ -246,9 +246,9 @@ Otherwise, act on each user post, oldest first. A post can carry more than one
 of these:
 
 - **A requested change.** Implement it. Commit and push. Refresh the description
-  per [Write the PR description](#write-the-pr-description). Reply on the PR.
-- **A defer-merge request.** Continue to the [collect step](#collect), leaving
-  the PR open for the user to merge later.
+  per [Write the PR description](#15-write-the-pr-description). Reply on the PR.
+- **A defer-merge request.** Continue to the [collect step](#18-collect),
+  leaving the PR open for the user to merge later.
 - **A question.** Answer it as a PR comment.
 - **An answer to a question that you raised.** Fold it into the work in hand and
   carry on.
@@ -257,7 +257,7 @@ An approval, or anything with nothing to act on, needs no reply.
 
 Once the PR is ready and you have nothing left to do, end your turn.
 
-## Collect
+## 18. Collect
 
 Run this step only after the user merges the PR, or asks you to defer the merge.
 
@@ -271,9 +271,9 @@ Cap maintenance issues at two, picking the ones that affect the most code and
 cut the most maintenance burden.
 
 Label each issue with its own change type, picking the repo's label the same way
-you did for the PR (see [Open the session PR](#open-the-session-pr)). An issue's
-change type is the finding's, not the session's, so one session can file across
-all three.
+you did for the PR (see [Open the session PR](#10-open-the-session-pr)). An
+issue's change type is the finding's, not the session's, so one session can file
+across all three.
 
 List each issue you filed as a PR comment. Head it `Collect`.
 
