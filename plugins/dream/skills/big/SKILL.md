@@ -45,6 +45,9 @@ Stay within these limits in every round:
 
 ## Write to the user
 
+Keep your turn output brief, usually one sentence per turn, because the user
+follows the parent issue and the stages' pull requests, not the session.
+
 Post on the parent only when the user needs to read something: a question, a
 decision you need, or a problem you can't solve. Don't use the parent as a log
 of what you did, because your feed already records every action. Don't post on
