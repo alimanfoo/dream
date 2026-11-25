@@ -80,7 +80,7 @@ moved, or part of the ask may already be done.
 
 ## Name the change type
 
-Select the change type from [Change types](../../change-types.md).
+Select the change type from [Change types](../../assignment-change-types.md).
 
 ## Open the session PR
 

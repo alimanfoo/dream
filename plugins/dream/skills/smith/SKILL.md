@@ -101,7 +101,7 @@ surface the input names that is no longer there. Trace where it went.
 
 ## Name the change type
 
-Select the change type from [Change types](../../change-types.md).
+Select the change type from [Change types](../../assignment-change-types.md).
 
 ## Open the session PR
 
