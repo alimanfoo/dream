@@ -34,8 +34,7 @@ generalisation, no half-finished extra feature.
 
 ## 4. Orient to the repo
 
-Read the repo's own docs (`AGENTS.md`, `README`, `CLAUDE.md`) and enough of its
-structure to know what it produces and how the part you're changing fits.
+Orient to the repo as [Orientation](../../assignment-orientation.md) describes.
 
 ## 5. Find the tests and checks
 
