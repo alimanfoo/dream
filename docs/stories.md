@@ -104,8 +104,9 @@ relevant code.
 2. The agent reads all the code relevant to that scope, and the documentation
    that governs it, before it tells the user anything about the code. As it
    goes, it says in a line what it opens and why.
-3. The agent tells the user, a piece at a time, what the code is for, what its
-   main parts are and where they live, and how they fit together.
+3. The agent tells the user, a piece at a time, about the code relevant to the
+   change: what its main parts are for, where they live and how they fit
+   together.
 4. The agent makes a list of the components and mechanisms the change will touch
    or depend on, and takes the user round each one, in an order that follows
    that account. At each one it says why the change brings them there, what it
