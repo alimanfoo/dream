@@ -67,10 +67,6 @@ Open the session PR as [Session PR](../../assignment-session-pr.md) describes.
 
 ## 11. Implement
 
-Open the draft PR before you change any code, if it isn't already open
-([Open the session PR](#10-open-the-session-pr)). It is your only channel to
-reach the user once work starts.
-
 Implement the change in small steps, each its own commit. For each step:
 
 - Run the tests you found.
