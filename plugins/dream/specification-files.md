@@ -1,4 +1,4 @@
-# Spec files
+# Specification files
 
 A specification goes into the repo as a markdown file, on a pull request. The
 user reads it there, and can comment on any line of it. A later session corrects

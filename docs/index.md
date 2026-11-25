@@ -78,13 +78,13 @@ or question at a time. The triage skill records each decision on the issue. The
 other skills end in a written specification, and offer to put it on a pull
 request where you can comment on any line.
 
-| Skill          | What it does                                                                                |
-| -------------- | ------------------------------------------------------------------------------------------- |
-| `/dream:sift`  | Triages GitHub issues with you, records each decision, and can dispatch accepted work.      |
-| `/dream:spark` | Interviews you about a rough idea, and writes a requirements brief.                         |
-| `/dream:trace` | Reads unfamiliar code with you, and writes a reading guide to it.                           |
-| `/dream:weave` | Works out a solution with you, as design models tested against use cases.                   |
-| `/dream:quest` | Breaks a design into a roadmap of pull requests, with each issue blocked only by its needs. |
+| Skill          | What it does                                                                                              |
+| -------------- | --------------------------------------------------------------------------------------------------------- |
+| `/dream:sift`  | Triages GitHub issues with you, records each decision, and can dispatch accepted work.                    |
+| `/dream:spark` | Interviews you about a rough idea, and writes a requirements specification.                               |
+| `/dream:trace` | Reads unfamiliar code with you, and writes a reading guide to it.                                         |
+| `/dream:weave` | Works out a solution with you, as design models tested against use cases.                                 |
+| `/dream:quest` | Breaks a design specification into a roadmap of pull requests, with each issue blocked only by its needs. |
 
 Run `/dream:sift` to work through a repository's issue queue. Run the
 specification skills in order on a large piece of work, or run the one you need.
@@ -106,11 +106,11 @@ marks a pull request ready, and you can run any of them yourself.
 
 ## Plan and write
 
-| Skill                    | What it does                                                                 |
-| ------------------------ | ---------------------------------------------------------------------------- |
-| `/dream:plan`            | Turns a focus into a plan for one pull request, a commit per task.           |
-| `/dream:coherent-coding` | Loads the coherent coding guide, for the agent to code to.                   |
-| `/dream:agent-mechanics` | Loads a guide to how coding agents work, for building systems that use them. |
+| Skill                    | What it does                                                                       |
+| ------------------------ | ---------------------------------------------------------------------------------- |
+| `/dream:plan`            | Turns a focus into an implementation plan for one pull request, a commit per step. |
+| `/dream:coherent-coding` | Loads the coherent coding guide, for the agent to code to.                         |
+| `/dream:agent-mechanics` | Loads a guide to how coding agents work, for building systems that use them.       |
 
 ## If something goes wrong
 

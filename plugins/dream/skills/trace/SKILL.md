@@ -106,10 +106,10 @@ code shows, say so and show me. That's most of the value in doing this together.
 
 ## Start from what I've given you
 
-Whatever I passed you is the scope: a requirements brief, an issue number or
-URL, a file path, or plain text. Usually it'll be a brief from `dream:spark`,
-either a `requirements.md` in the repo or a comment on an issue. Read an issue
-with `gh`, comments included.
+Whatever I passed you is the scope: a requirements specification, an issue
+number or URL, a file path, or plain text. Usually it'll be a requirements
+specification from `dream:spark`, either a `requirements.md` in the repo or a
+comment on an issue. Read an issue with `gh`, comments included.
 
 That's what draws the line around which code is relevant. If I gave you nothing,
 ask me what we're about to work on, and use my answer.
@@ -244,7 +244,7 @@ own: no introduction and no summary underneath.
 
 Then, if I want it somewhere the work can start from, offer to put it in the
 repo as `reading-guide.md` and open a pull request, following the
-[spec files](../../spec-files.md) rules.
+[specification files](../../specification-files.md) rules.
 
 If I'd rather not have a file, offer to post it as a comment on the issue I gave
 you (`gh issue comment`). Ask me first, whichever it is, and a no is a fine

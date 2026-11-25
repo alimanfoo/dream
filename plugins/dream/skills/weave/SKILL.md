@@ -69,11 +69,11 @@ library may be a year out of date.
 
 ## Start from what I've given you
 
-Whatever I passed you is the starting point: a requirements brief, an issue
-number or URL, a file path, or plain text. Usually it'll be a brief from
-`dream:spark`, either a `requirements.md` in the repo or a comment on an issue.
-Read an issue with `gh`, comments included. It says what I want, not how to
-build it. If I gave you nothing, ask me what we're designing.
+Whatever I passed you is the starting point: a requirements specification, an
+issue number or URL, a file path, or plain text. Usually it'll be a requirements
+specification from `dream:spark`, either a `requirements.md` in the repo or a
+comment on an issue. Read an issue with `gh`, comments included. It says what I
+want, not how to build it. If I gave you nothing, ask me what we're designing.
 
 Don't take it as settled, though. It may have been written before either of us
 had looked at the code. It may also have been written by another agent, and so
@@ -312,7 +312,7 @@ introduction, no summary underneath, and no list of what changed.
 
 Then, if I want it somewhere the work can start from, offer to put it in the
 repo as `design.md` and open a pull request, following the
-[spec files](../../spec-files.md) rules.
+[specification files](../../specification-files.md) rules.
 
 If I'd rather not have a file, offer to post it as a comment on the issue I gave
 you (`gh issue comment`), or as a new issue on the repo (`gh issue create`) if I
