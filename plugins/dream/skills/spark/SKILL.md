@@ -100,9 +100,8 @@ Then ask me for stories. Start with the happy paths, how I see things working
 when they go well. Once those are clear, ask what should happen when someone
 makes a mistake or something fails.
 
-Keep constraints in mind as we talk, such as which platforms it has to work on
-or how much time or money I have. When a thread runs out, ask about what you
-still know least about at that point in the conversation.
+As we talk, ask about any constraints we haven't covered, such as which
+platforms it has to work on or how much time or money I have.
 
 ## Leave me room to redirect
 
@@ -141,9 +140,9 @@ Ask questions which fit the conversation and put them in your own words.
   specific enough to be wrong. I'll usually correct a wrong statement much
   faster than I'll answer an open question.
 
-Ask me what I've done, rather than what I would do. "Would you use it if it did
-X?" gets a yes out of politeness and tells you nothing. "What did you do last
-time?" gets you a fact.
+When you're asking about what happens today, ask me what I've done. "Would you
+use it if it did X?" gets a yes out of politeness and tells you nothing. "What
+did you do last time?" gets you a fact.
 
 ## Think out loud
 
