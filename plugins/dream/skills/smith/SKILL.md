@@ -18,7 +18,7 @@ Follow the instructions below in order.
 
 Run the [boot sequence](../../assignment-boot.md).
 
-## 2. Engineering principles
+## 2. Adopt the engineering principles
 
 Load the `dream:coherent-coding` skill. It governs all your work.
 

@@ -18,7 +18,7 @@ Follow the instructions below in order.
 
 Run the [boot sequence](../../assignment-boot.md).
 
-## 2. Engineering principles
+## 2. Adopt the engineering principles
 
 This skill is for relatively easy changes. Hold coherence anyway: fix the cause,
 not the symptom, and leave the codebase whole.
