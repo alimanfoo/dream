@@ -16,13 +16,13 @@ Follow the instructions below in order.
 
 ## Print the banner
 
-Print the banner that [Banner](../../banner.md) describes.
+Print the banner that [Banner](../../assignment-banner.md) describes.
 
 ## Session rules
 
-Read the [session rules](../../session-rules.md) and follow them for the rest of
-the session. Read them again whenever the conversation has been summarised,
-since a summary can drop them.
+Read the [session rules](../../assignment-session-rules.md) and follow them for
+the rest of the session. Read them again whenever the conversation has been
+summarised, since a summary can drop them.
 
 ## Coherence
 
@@ -54,11 +54,13 @@ makes the generated files match the source before you commit.
 
 ## Check the working tree
 
-Check the working tree as [Working tree](../../working-tree.md) describes.
+Check the working tree as [Working tree](../../assignment-working-tree.md)
+describes.
 
 ## Obtain session input
 
-Obtain the session input as [Session input](../../session-input.md) describes.
+Obtain the session input as [Session input](../../assignment-session-input.md)
+describes.
 
 ## Read the cited material
 
