@@ -16,7 +16,7 @@ Follow the instructions below in order.
 
 ## 1. Boot
 
-Follow the [boot sequence](../../assignment-boot.md).
+Run the [boot sequence](../../assignment-boot.md).
 
 ## 2. Engineering principles
 
