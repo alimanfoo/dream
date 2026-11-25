@@ -259,8 +259,8 @@ Then write the design specification to a temporary file outside the repo:
 
 Under Design models, write out each model we chose, with a diagram where one
 makes the model clearer. Say that the models are a starting point, which
-planning and implementation may revise. Then write out the walk of the
-motivating use case through the final models.
+planning and implementation may revise. In the next section, write out the walk
+of the motivating use case through the final models.
 
 Under What changes, say what each removal gains, because that's the part someone
 will want to argue with later.
