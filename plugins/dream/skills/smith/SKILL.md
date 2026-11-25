@@ -148,9 +148,9 @@ ask may already be done.
 Reach for git history only to fill a real gap the reads left. For example, a
 surface the input names that is no longer there. Trace where it went.
 
-## Name the session type
+## Name the change type
 
-Select the session type:
+Select the change type:
 
 - **Enhancement.** New feature or capability that doesn't currently exist.
 - **Maintenance.** Coherence, naming, structure. Behaviour already correct.
@@ -182,10 +182,10 @@ references, give them as a bullet list, one bare `#N` per line. The linked issue
 already carries its own body and comments. Repeating them here adds nothing.
 Otherwise, reproduce the user's input verbatim.
 
-**Label the PR.** Apply the session type's category label with
-`gh pr edit --add-label`: `enhancement`, `maintenance`, or `bug`. Run
-`gh label list` once to find the repo's closest label for each category, and
-apply none when there's no clean match.
+**Label the PR.** Apply the change type's label with `gh pr edit --add-label`:
+`enhancement`, `maintenance`, or `bug`. Run `gh label list` once to find the
+repo's closest label for each change type, and apply none when there's no clean
+match.
 
 ## Interrupted work
 
@@ -197,7 +197,7 @@ output alone is not enough.
 ## Plan
 
 Run the `dream:plan` skill in this session, focused on the intended result in
-the session input, how the current code works and is organised, and the session
+the session input, how the current code works and is organised, and the change
 type.
 
 Post the returned plan as a PR comment. Head it `Plan`.
@@ -361,10 +361,10 @@ File every bug.
 Cap maintenance issues at two, picking the ones that affect the most code and
 cut the most maintenance burden.
 
-Label each issue with its own category, picking the repo's label the same way
+Label each issue with its own change type, picking the repo's label the same way
 you did for the PR (see [Open the session PR](#open-the-session-pr)). An issue's
-category is the finding's, not the session's, so one session can file across all
-three.
+change type is the finding's, not the session's, so one session can file across
+all three.
 
 List each issue you filed as a PR comment. Head it `Collect`.
 

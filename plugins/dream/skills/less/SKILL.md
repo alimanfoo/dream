@@ -122,9 +122,9 @@ you read, check the input against the current code, since it may have changed
 since the issue was filed. A symbol it names may be renamed, a file may have
 moved, or part of the ask may already be done.
 
-## Name the session type
+## Name the change type
 
-Select the session type:
+Select the change type:
 
 - **Enhancement.** New feature or capability that doesn't currently exist.
 - **Maintenance.** Coherence, naming, structure. Behaviour already correct.
@@ -150,10 +150,10 @@ the draft PR has a commit to anchor to. Push the branch.
 **Open the draft PR.** Run `gh pr create --draft` with `WIP` as the body. Derive
 the title from the session input.
 
-**Label the PR.** Apply the session type's category label with
-`gh pr edit --add-label`: `enhancement`, `maintenance`, or `bug`. Run
-`gh label list` once to find the repo's closest label for each category, and
-apply none when there's no clean match.
+**Label the PR.** Apply the change type's label with `gh pr edit --add-label`:
+`enhancement`, `maintenance`, or `bug`. Run `gh label list` once to find the
+repo's closest label for each change type, and apply none when there's no clean
+match.
 
 ## Interrupted work
 

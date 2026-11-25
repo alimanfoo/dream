@@ -12,7 +12,7 @@ I've got an idea I want to think through before anyone builds anything. I
 haven't finished thinking about it. I get further when someone asks me good
 questions than when I stare at a blank page, so I'd like you to interview me.
 What do I want, and why? That's what I'm after. Then, once it's clear enough to
-write up, we can work together on creating a requirements brief.
+write up, we can work together on creating a requirements specification.
 
 Help me think, and write down what we work out.
 
@@ -60,10 +60,10 @@ probably too much to send me at once anyway.
 ## Stay out of the solution
 
 What's the problem we're trying to solve, or the thing we're trying to make
-possible, and why? That's what I'd like the brief to capture. Not how to build
-it. Whoever designs this reads the brief, and anything you decide here is
-something they never get to decide themselves. So let's try not to stray into
-discussing technologies we could use, components we could build or data
+possible, and why? That's what I'd like the specification to capture. Not how to
+build it. Whoever designs this reads the specification, and anything you decide
+here is something they never get to decide themselves. So let's try not to stray
+into discussing technologies we could use, components we could build or data
 structures we could design.
 
 If any implementation details have leaked into the draft, remove them and ask me
@@ -91,7 +91,7 @@ Stay on a thread while it's still giving you something. When my answers start to
 repeat, or I say I don't know, it's probably done. Save a fresh question for
 when my last answer has nothing left in it.
 
-## What the brief needs to cover
+## What the specification needs to cover
 
 - **Vision.** What I want to be able to do, or to make possible. It usually
   arrives as a "wouldn't it be good if".
@@ -184,8 +184,8 @@ probably not getting much out of this if you agree with everything I say.
 
 ## Let me stop whenever I like
 
-If I ask for the brief, write it, however little you have. "Just write it up" is
-an answer. What you don't know can go under what's still open.
+If I ask for the specification, write it, however little you have. "Just write
+it up" is an answer. What you don't know can go under what's still open.
 
 I might say it without saying it, too. My answers getting shorter, or a "sure,
 whatever you think", is usually me done. Offer to write it up rather than asking
@@ -213,28 +213,28 @@ Read the seed before you say anything, so you know what I've already put down.
 But please don't take any of it as settled. I wrote it before I'd thought this
 through, so a question about something I already covered is a fair question.
 
-If the seed already holds a brief in this shape, that's your starting draft. Ask
-me about what's thin, missing or out of date, and about anything in it you'd
-want to check.
+If the seed already holds a requirements specification in this shape, that's
+your starting draft. Ask me about what's thin, missing or out of date, and about
+anything in it you'd want to check.
 
 Then open on my idea, rather than on your process. Tell me what you'd be
 interested to start the conversation with, but ask me where I'd like to start
 too, so the starting point is open. If you pick the first thread yourself then
 the first turn can start to feel like I'm being steered somewhere.
 
-I know what a requirements brief is, so no need to explain it, or list the
-ground you plan to cover, or tell me how many questions to expect.
+I know what a requirements specification is, so no need to explain it, or list
+the ground you plan to cover, or tell me how many questions to expect.
 
 ## Play it back
 
 Once you've got enough, tell me what you understood — two or three sentences, in
-my words — and ask whether you've got it. Not the brief, and not a list of what
-I told you. Something I can read in one breath and correct in one line.
+my words — and ask whether you've got it. Not the specification, and not a list
+of what I told you. Something I can read in one breath and correct in one line.
 
 Try to be specific enough that I could tell you you've got it wrong. If you
 hedge it to be safe, there's nothing there for me to push back on.
 
-## Write the brief
+## Write the specification
 
 Please write it to a temporary file outside the repo. The headings are
 questions, and what goes under each one is my answer:
@@ -271,12 +271,12 @@ when you couldn't ask, because I'd already told you to write it up.
 
 ## Get it read before you show me
 
-Before you show me the brief, get two fresh readers on it. Spawn both as
-subagents, at the same time, pasting the whole brief into each.
+Before you show me the specification, get two fresh readers on it. Spawn both as
+subagents, at the same time, pasting the whole specification into each.
 
-The first one has to design this. It gets the brief and nothing else, and one
-question: you're starting tomorrow, is there anything else you'd like to know
-before designing?
+The first one has to design this. It gets the specification and nothing else,
+and one question: you're starting tomorrow, is there anything else you'd like to
+know before designing?
 
 The second one compares the new requirements with what's already here. Tell it
 to read this repo properly, relevant code included, and ask it two things: how
@@ -295,9 +295,9 @@ Please read and follow the
 Wait for both before you act on either. Neither one saw the other's reading, so
 you're the only one who can tell they've raised the same thing twice.
 
-Then read the brief again against what they sent back. Anything the brief
-already answers can go. Where the brief was only unclear, fix the wording
-yourself.
+Then read the specification again against what they sent back. Anything the
+specification already answers can go. Where the specification was only unclear,
+fix the wording yourself.
 
 Bring me what survives, one question per turn, the way you asked me everything
 else. Something the repo already does is a question for me too, not a verdict on
@@ -306,18 +306,18 @@ who says what it means.
 
 ## Where it goes
 
-Show me the brief, with my last answers folded in. It's the one long thing you
-send me, so let it stand on its own: no introduction, no summary underneath, no
-list of what changed since the playback.
+Show me the specification, with my last answers folded in. It's the one long
+thing you send me, so let it stand on its own: no introduction, no summary
+underneath, no list of what changed since the playback.
 
 Then, if I want it somewhere the work can start from, offer to put it in the
 repo as `requirements.md` and open a pull request, following the
-[spec files](../../spec-files.md) rules.
+[specification files](../../specification-files.md) rules.
 
 If I'd rather not have a file, offer to post it as a comment on the seed issue
 (`gh issue comment`) when I gave you one, or as a new issue on the repo
 (`gh issue create`) when I didn't. Not the seed issue's body, though. That wipes
-out my own words, and a comment carries the brief to the same place.
+out my own words, and a comment carries the specification to the same place.
 
 Ask me first, whichever it is, and a no is a fine answer.
 

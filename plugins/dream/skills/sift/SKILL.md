@@ -91,9 +91,9 @@ check described below.
 
 ## Labels and outcomes
 
-Keep issue type, triage outcome and dispatch separate.
+Keep change type, triage outcome and dispatch separate.
 
-Use the repository's label for one primary type: `bug`, `enhancement` or
+Use the repository's label for one change type: `bug`, `enhancement` or
 `maintenance`. After triage, give an open issue one current outcome:
 
 - `needs-info`: facts such as reproduction steps, logs or a concrete example are

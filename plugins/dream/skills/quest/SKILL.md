@@ -3,14 +3,14 @@ name: quest
 description:
   Develops a roadmap for a large, designed piece of work. Use only when
   explicitly invoked.
-argument-hint: "[design | issue | file | text]"
+argument-hint: "[design specification | issue | file | text]"
 ---
 
 # dream:quest
 
-I've got a design for something too large to build in one pull request. Let's
-explore together how to break it into stages, where each stage is one pull
-request that I can review and merge before the next one starts.
+I've got a design specification for something too large to build in one pull
+request. Let's explore together how to break it into stages, where each stage is
+one pull request that I can review and merge before the next one starts.
 
 The result is a roadmap that another agent can work down, one session per stage.
 Help me to decide the boundaries, make each stage clear enough to build from,
@@ -53,18 +53,19 @@ because I proposed it.
 
 ## Start from what I've given you
 
-Whatever I passed you is the seed: a design, an issue number or URL, a file
-path, or plain text. Usually it will be a folder of specifications holding a
-requirements brief, a reading guide and a design, or an issue whose comments
-carry them. Read an issue with `gh`, comments included. If I gave you nothing,
-ask me what work we're breaking down.
+Whatever I passed you is the seed: a design specification, an issue number or
+URL, a file path, or plain text. Usually it will be a specification folder
+holding a requirements specification, a reading guide and a design
+specification, or an issue whose comments carry them. Read an issue with `gh`,
+comments included. If I gave you nothing, ask me what work we're breaking down.
 
 Read everything the seed cites. Use the requirements to understand the problem,
 need or opportunity, the reading guide to find your way through the code as it
-currently stands, and the design to establish what has to be built.
+currently stands, and the design specification to establish what has to be
+built.
 
-If there is no design, tell me before we start and ask whether I want to carry
-on.
+If there is no design specification, tell me before we start and ask whether I
+want to carry on.
 
 ## Read the code before you divide the work
 
@@ -79,17 +80,18 @@ go and read it.
 
 ## Stop when the work does not need a roadmap
 
-After you have read the design and the code, say so and stop if you think the
-work fits in one pull request. Let's not write a roadmap if we don't need to.
+After you have read the design specification and the code, say so and stop if
+you think the work fits in one pull request. Let's not write a roadmap if we
+don't need to.
 
 ## Discuss the breakdown
 
-After reading the design and the code, please open the discussion by suggesting
-two or three different approaches to dividing up the work, sketching briefly
-what each one would mean for this design. Name the line that each cut follows,
-such as a layer, a thin end-to-end path, which client or backend comes first, or
-the simple case before the awkward ones. These are examples of axes, not a menu
-to work down.
+After reading the design specification and the code, please open the discussion
+by suggesting two or three different approaches to dividing up the work,
+sketching briefly what each one would mean for this design. Name the line that
+each cut follows, such as a layer, a thin end-to-end path, which client or
+backend comes first, or the simple case before the awkward ones. These are
+examples of axes, not a menu to work down.
 
 Make every candidate the strongest version of its own cut. Please don't present
 one real breakdown and weak alternatives that only make it look inevitable. When
@@ -184,13 +186,15 @@ An open question belongs under a stage only when that stage's implementing
 session can settle it.
 
 Don't add a summary of the overall goal. The roadmap sits beside the
-requirements and design, and repeating them gives their facts a second home.
+requirements and design specifications, and repeating them gives their facts a
+second home.
 
 ## Get it checked before you show me
 
 Before you show me the roadmap, get two fresh readers on it. Spawn both as
 subagents at the same time. Give each one the absolute path of the roadmap and
-the seed, including the issue number when the design lives in an issue.
+the seed, including the issue number when the design specification lives in an
+issue.
 
 Ask the first one to read the seed, the roadmap and the relevant code. It reads
 each stage as the agent that has to implement it, and answers one question:
@@ -198,12 +202,12 @@ could it do so without coming back to ask? Ask it to report only a stage that
 would force a question, naming what is missing or ambiguous and the question it
 would have to ask.
 
-Ask the second one to read the requirements and design before the roadmap, then
-enough of the code to check every dependency it raises. It checks that the
-dependencies are real and ordered, that every part of the design lands in a
-stage, and that no stage invented work. Ask it to report only confirmed gaps,
-false dependencies, ordering errors and invented work, with the evidence for
-each one.
+Ask the second one to read the requirements and design specifications before the
+roadmap, then enough of the code to check every dependency it raises. It checks
+that the dependencies are real and ordered, that every part of the design lands
+in a stage, and that no stage invented work. Ask it to report only confirmed
+gaps, false dependencies, ordering errors and invented work, with the evidence
+for each one.
 
 Tell both readers to change nothing, and that finding nothing is a fine answer.
 
@@ -224,21 +228,23 @@ send me, so let it stand on its own: no introduction, no summary underneath, and
 no list of what changed.
 
 Then offer to put it in the repo as `roadmap.md` and open a pull request,
-following the [spec files](../../spec-files.md) rules. If I'd rather not have a
-file, offer to post it as a comment on the seed issue (`gh issue comment`)
-instead. Ask me before either write, and a no is a fine answer.
+following the [specification files](../../specification-files.md) rules. If I'd
+rather not have a file, offer to post it as a comment on the seed issue
+(`gh issue comment`) instead. Ask me before either write, and a no is a fine
+answer.
 
-After the roadmap has a home, ask me separately whether to create its child
-issues. They hang off a parent issue: the seed issue when I gave you one, or one
-you offer to create (`gh issue create`), using the seed for its title and body.
+After the roadmap has a home, ask me separately whether to create its
+sub-issues. They hang off a parent issue: the seed issue when I gave you one, or
+one you offer to create (`gh issue create`), using the seed for its title and
+body.
 
-Create the children in stage order, one issue per stage. Name each issue after
+Create the sub-issues in stage order, one issue per stage. Name each issue after
 its stage. Give each body one pointer to the roadmap, either its path in the
 repo or the parent issue's comment, and one instruction: implement the stage
 named here.
 
-Create each child with `gh issue create --parent`. Add `--blocked-by` with
-exactly the child issues its needs line names, and nothing more. A stage that
+Create each sub-issue with `gh issue create --parent`. Add `--blocked-by` with
+exactly the sub-issues its needs line names, and nothing more. A stage that
 needs nothing gets `--parent` alone. Add no label and no assignee. Creating the
 roadmap and deciding to start work are separate acts.
 
