@@ -81,7 +81,7 @@ request where you can comment on any line.
 | Skill          | What it does                                                                                              |
 | -------------- | --------------------------------------------------------------------------------------------------------- |
 | `/dream:sift`  | Triages GitHub issues with you, records each decision, and can dispatch accepted work.                    |
-| `/dream:spark` | Draws out why you want a change and how you see it working, then writes a requirements specification.     |
+| `/dream:spark` | Interviews you about an idea and how you see it working, then writes a requirements specification.        |
 | `/dream:trace` | Explores code relevant to your change with you, and writes a reading guide to it.                         |
 | `/dream:weave` | Works out a solution with you, as design models tested against use cases.                                 |
 | `/dream:quest` | Breaks a design specification into a roadmap of pull requests, with each issue blocked only by its needs. |

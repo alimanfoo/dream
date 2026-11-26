@@ -93,15 +93,13 @@ when my last answer has nothing left in it.
 
 ## What the specification needs to cover
 
-Start with why I want this. Ask about the problem or idea that brought me here
-and what I'd like to make possible.
-
-Then ask me for stories. Start with the happy paths, how I see things working
-when they go well. Once those are clear, ask what should happen when someone
-makes a mistake or something fails.
-
-As we talk, ask about any constraints we haven't covered, such as which
-platforms it has to work on or how much time or money I have.
+- **Motivation.** Start by asking about the problem or idea that brought me
+  here, why it matters, and what I'd like to make possible.
+- **Stories.** Then ask for the happy paths, how I see things working when they
+  go well. Once those are clear, ask what should happen when someone makes a
+  mistake or something fails.
+- **Constraints.** As we talk, ask about any limits we haven't covered, such as
+  platforms, budget, legal obligations, people, or time.
 
 ## Leave me room to redirect
 
@@ -133,8 +131,8 @@ Ask questions which fit the conversation and put them in your own words.
   state as a no.
 - **The trade.** "If you could have only one of those first, which?" It's all
   essential until I have to choose.
-- **The interruption.** "What should happen if that stops halfway through?" I'll
-  often have a clearer idea once we have a story to start from.
+- **The failed upload.** "If the upload fails halfway through, what would you
+  want to happen next?"
 - **The wrong summary.** Say back what you think I mean, in your own words and
   specific enough to be wrong. I'll usually correct a wrong statement much
   faster than I'll answer an open question.
@@ -184,9 +182,9 @@ me another question.
 
 Whatever I'm asking for, it's something for this repo. So before we start, read
 its documentation — the `README`, `AGENTS.md` or `CLAUDE.md` — and have a look
-at how the code is laid out. If the repo keeps stories, read them too. What is
-this project for, and what does it give the people who use it? The goal is to
-come away grounded enough to ask better informed questions.
+at how the code is laid out. If the repo maintains documented requirements, read
+them too. What is this project for, and what does it give the people who use it?
+The goal is to come away grounded enough to ask better informed questions.
 
 No need to tell me what you found. I work on this repo. If it changes what you
 want to ask me, I'll see it in the question.
@@ -237,7 +235,8 @@ questions, and what goes under each one is my answer:
 
 Put the stories under "How do I see it working?", with happy paths first. For
 each one, say what someone is trying to do, what happens and how it turns out.
-Say which of the repo's stories this would extend or change, if any.
+Say which of the repo's documented requirements this would extend or change, if
+any.
 
 The last one isn't about the idea itself. It's for what we didn't settle: what I
 didn't know, what I contradicted myself on, a decision someone has to make
