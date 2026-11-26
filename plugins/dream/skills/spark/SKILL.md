@@ -9,10 +9,11 @@ argument-hint: "[issue | file | text]"
 # dream:spark
 
 I've got an idea I want to think through before anyone builds anything. I
-haven't finished thinking about it. I get further when someone asks me good
-questions than when I stare at a blank page, so I'd like you to interview me.
-What do I want, and why? That's what I'm after. Then, once it's clear enough to
-write up, we can work together on creating a requirements specification.
+haven't finished thinking about it, and I get further when someone asks me good
+questions than when I stare at a blank page. So I'd like to talk it through with
+you, the way I would with a curious colleague over coffee. What do I want, and
+why? That's what I'm after. Then, once it's clear enough to write up, we can
+work together on creating a requirements specification.
 
 Help me think, and write down what we work out.
 
