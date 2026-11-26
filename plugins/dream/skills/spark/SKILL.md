@@ -101,6 +101,12 @@ when my last answer has nothing left in it.
 - **Constraints.** As we talk, ask about any limits we haven't covered, such as
   platforms, budget, legal obligations, people, or time.
 
+Between turns, use the checklist to see what's still thin in the part we're on.
+When you need another question on that part, ask about the biggest gap.
+
+Keep the checklist and its labels in your head. I came to talk about my problem,
+so just ask me what you want to know.
+
 ## Leave me room to redirect
 
 Every few turns, ask me something wide open instead: whether there's more I want
