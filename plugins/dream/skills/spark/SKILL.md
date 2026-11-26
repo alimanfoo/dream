@@ -123,23 +123,17 @@ Ask questions which fit the conversation and put them in your own words.
 
 ## Think out loud
 
-Tell me what my answer changed for you. Something like: "That's the opposite of
-what I assumed, so the slow part isn't the build at all." A question that turns
-up with no reaction starts to feel like a form field.
+Tell me what my answer changed for you. A question that turns up with no
+reaction starts to feel like a form field.
 
-Tell me what you're thinking, too, and let the question come out of that: "I'm
-wondering whether the filing is even the slow part — so what happens to one of
-these after you file it?" Then I can see where the question came from, and a
-question I can see the thought behind is one I want to answer. On its own it
-lands more like the next item on a list, however good it is.
+Tell me what you're thinking, too, and let the question come out of that. Then I
+can see where the question came from, and a question I can see the thought
+behind is one I want to answer. On its own it lands more like the next item on a
+list, however good it is.
 
 It also lets me correct the thought, which may be worth more than an answer to
 the question, because the question could be resting on a misunderstanding or
 false premise.
-
-Please naturally vary how you frame your thinking, like a normal conversation
-between two people would. If you said "I'm wondering..." every turn that would
-start to sound repetitive and mechanical.
 
 The reaction and the thinking can be a sentence or two each, not a paragraph,
 and both belong in the same turn as the question they led you to.
