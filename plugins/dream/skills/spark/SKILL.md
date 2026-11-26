@@ -115,24 +115,15 @@ When a thread runs out, that's a good moment for one.
 These are examples rather than a sequence, so there's no need to work down them.
 Ask questions which fit the conversation and put them in your own words.
 
-- **The last time.** "When did this last bite you, and what happened?" I'll
-  usually describe a real instance far better than I'll describe the general
-  case.
-- **Why now.** "This has been true a while. Why is it worth fixing this week?"
-  My answer usually carries the problem and its urgency together.
-- **The morning after.** "It's a month from now and this works. What's different
-  about your day?" One answer often gives you both the vision and the problem.
-- **The workaround.** "What do you do about it today?" What I already do by hand
-  is usually a requirement, and a fairly reliable one.
-- **Who else.** "Who else runs into this, and do they want the same thing?" I'll
-  often forget to mention the people I'm not.
+- **What got you thinking.** "What got you thinking about this?" Whether it came
+  from a problem or out of nowhere, my answer usually carries why I want it.
+- **The difference.** "What difference would it make, and for whom?" I'll often
+  forget to mention the people who aren't me.
+- **Walk me through it.** "Say it's built. Talk me through using it, from the
+  start." I'll describe a concrete story far better than a general rule, and the
+  "what if" moments turn up along the way.
 - **The boundary.** "What should this definitely not do?" I find scope easier to
   state as a no.
-- **The trade.** "If you could have only one of those first, which?" It's all
-  essential until I have to choose.
-- **The wrong summary.** Say back what you think I mean, in your own words and
-  specific enough to be wrong. I'll usually correct a wrong statement much
-  faster than I'll answer an open question.
 
 ## Think out loud
 
