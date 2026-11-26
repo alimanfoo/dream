@@ -68,10 +68,10 @@ requirements specification, before anyone designs a solution.
    any part of it.
 3. The agent interviews the user, one question per turn. It asks about the
    problem or idea and the user's vision first, then about the stories, starting
-   with happy paths before asking about user errors and faults. It follows
-   threads from the user's answers, says what each answer changed in its
-   understanding, and points out anything that doesn't add up. It keeps the
-   conversation on what the user wants and why.
+   with happy paths before asking about user errors and faults, and last about
+   constraints. It follows threads from the user's answers, says what each
+   answer changed in its understanding, and points out anything that doesn't add
+   up. It keeps the conversation on what the user wants and why.
 4. When it understands enough to write the specification, the agent says back
    what it understood in two or three sentences, and the user corrects it.
 5. The agent writes the requirements specification in the first person, in the

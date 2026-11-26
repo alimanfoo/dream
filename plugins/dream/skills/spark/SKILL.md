@@ -98,8 +98,8 @@ when my last answer has nothing left in it.
 - **Stories.** Then ask for the happy paths, how I see things working when they
   go well. Once those are clear, ask what should happen when someone makes a
   mistake or something fails.
-- **Constraints.** As we talk, ask about any limits we haven't covered, such as
-  platforms, budget, legal obligations, people, or time.
+- **Constraints.** Once the stories are clear, ask about any limits we haven't
+  covered, such as platforms, budget, legal obligations, people, or time.
 
 Between turns, use the checklist to see what's still thin in the part we're on.
 When you need another question on that part, ask about the biggest gap.
