@@ -94,10 +94,11 @@ when my last answer has nothing left in it.
 ## What I'd like us to work out
 
 By the end, I'd like us both to know why I want this, how I see it working, both
-when things go well and when someone makes a mistake or something fails, and
-what it has to fit within. Let the conversation find its own way through those,
-and just make sure each one gets covered at some point. If I don't raise limits
-myself, leave them until the idea has some shape, so they don't box it in early.
+when things go well and when someone makes a mistake or something fails, and the
+constraints a solution must work within. Let the conversation find its own way
+through those, and just make sure each one gets covered at some point. If I
+don't raise constraints myself, leave them until the idea has some shape, so
+they don't box it in early.
 
 ## Leave me room to redirect
 
