@@ -51,9 +51,6 @@ please use my words where they make sense and the meaning is clear. But feel
 free to use different terms if it would help to clarify or would better fit the
 problem domain.
 
-I find it difficult to understand jargon, complex sentences and long paragraphs.
-So keep it plain and simple, in what you say to me and in what you write down.
-
 Headings, bullets, bold labels and numbered lists turn a remark into a document,
 so I'd rather they stayed out of a turn. If something needs a list, it was
 probably too much to send me at once anyway.
