@@ -5,6 +5,32 @@ for a user, and each name in dream's interface that it renamed or removed. A
 release's version follows the rules in [Versions](compatibility.md#versions) on
 the compatibility page.
 
+## 47.3.0 (2026-11-26)
+
+`dream:spark` talks your idea through the way a curious colleague would, and
+builds the requirements specification around stories. Instead of working down a
+checklist, it lets the conversation set the order, and makes sure that by the
+end it has covered why you want the change, the stories of how you see it
+working, from the happy paths to what should happen when someone makes a mistake
+or something fails, and the constraints a solution must work within. It leaves
+constraints until the idea has taken shape, unless you raise them. The
+specification it writes has four headings: "What do I want and why?", "How do I
+see it working?", "What limits this?" and "What's still open?". Each story gives
+its goal, its steps and its outcome. Spark also reads any documented
+requirements your repository keeps, and says which ones the idea extends or
+changes. ([#1116](https://github.com/alimanfoo/dream/pull/1116))
+
+`dream:trace` keeps its tour to the code relevant to your change: its opening
+story covers that code, and every stop is a component or mechanism the change
+will touch or depend on. ([#1115](https://github.com/alimanfoo/dream/pull/1115))
+
+`dream:big` keeps its turn output brief, since you follow the parent issue and
+the stages' pull requests rather than the session.
+([#1114](https://github.com/alimanfoo/dream/pull/1114))
+
+This release renames and removes no name in
+[the interface](compatibility.md#the-interface).
+
 ## 47.2.0 (2026-11-25)
 
 `dream:smith` and `dream:less` start by running one shared boot sequence, with
