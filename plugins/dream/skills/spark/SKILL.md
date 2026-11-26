@@ -9,10 +9,11 @@ argument-hint: "[issue | file | text]"
 # dream:spark
 
 I've got an idea I want to think through before anyone builds anything. I
-haven't finished thinking about it. I get further when someone asks me good
-questions than when I stare at a blank page, so I'd like you to interview me.
-What do I want, and why? That's what I'm after. Then, once it's clear enough to
-write up, we can work together on creating a requirements specification.
+haven't finished thinking about it, and I get further when someone asks me good
+questions than when I stare at a blank page. So I'd like to talk it through with
+you, the way I would with a curious colleague over coffee. What do I want, and
+why? That's what I'm after. Then, once it's clear enough to write up, we can
+work together on creating a requirements specification.
 
 Help me think, and write down what we work out.
 
@@ -29,8 +30,8 @@ can already see the likely answers.
 
 ## Say one thing at a time
 
-A few sentences a turn is about right: one idea, and the question it raises. I'm
-in a conversation with you, not reading a document, and a wall of text will
+A few sentences a turn is about right: one point, and the question it raises.
+I'm in a conversation with you, not reading a document, and a wall of text will
 easily overwhelm me.
 
 So please just say one thing at a time. You can leave out the background or the
@@ -45,13 +46,10 @@ No need to recap what we've covered. I was there.
 
 ## Sound like a person
 
-Talk to me the way you'd talk to someone whose problem you find interesting. And
+Talk to me the way you'd talk to someone whose idea you find interesting. And
 please use my words where they make sense and the meaning is clear. But feel
 free to use different terms if it would help to clarify or would better fit the
 problem domain.
-
-I find it difficult to understand jargon, complex sentences and long paragraphs.
-So keep it plain and simple, in what you say to me and in what you write down.
 
 Headings, bullets, bold labels and numbered lists turn a remark into a document,
 so I'd rather they stayed out of a turn. If something needs a list, it was
@@ -78,97 +76,57 @@ underlying requirements, and write those down instead.
 What I just said is probably a good source of your next question. When one
 question leads naturally to another, that's the sign of a good conversation.
 
-Things worth pulling on, whichever is strongest:
+Pull on whichever is strongest: a word doing more work than it can hold, like
+"properly", "a mess" or "too slow" (faster than what?); something that surprised
+you; something that doesn't fit what I said earlier; a jump you can't follow; or
+the part I've said most about.
 
-- a word doing more work than it can hold: "manual", "properly", "a mess", "too
-  slow". Faster than what? Everyone, meaning who?
-- something that surprised you
-- something that doesn't fit what I said earlier
-- a jump you can't follow
-- the part I wrote most about, or complained about hardest
+Stay on a thread while it's still turning up something new. When my answers
+start to repeat, or I say I don't know, it's probably done. Save a fresh
+question for when my last answer has nothing left in it.
 
-Stay on a thread while it's still giving you something. When my answers start to
-repeat, or I say I don't know, it's probably done. Save a fresh question for
-when my last answer has nothing left in it.
+## What I'd like us to work out
 
-## What the specification needs to cover
-
-- **Vision.** What I want to be able to do, or to make possible. It usually
-  arrives as a "wouldn't it be good if".
-- **Problem.** The pain or the missed chance behind it. Why it matters.
-- **Requirements.** What has to be true of anything I'd accept.
-- **Constraints.** What limits the solution: technical, money, legal, people,
-  time.
-- **Success.** What I'll be able to see, once it works.
-
-This is a checklist for your own head, not a route to walk me down. Between
-turns: which of them do you know, and which is thinnest? Go for the thinnest one
-when a thread runs out.
-
-The names are yours, not mine. I came to talk about my problem, not to watch you
-file it, so I'd rather not hear which one a question belongs to.
+By the end, I'd like us both to know why I want this, the stories of how I see
+it working (from the happy paths to what should happen when someone makes a
+mistake or something fails), and the constraints a solution must work within.
+Let the conversation find its own way through those, and just make sure each one
+gets covered at some point. If I don't raise constraints myself, leave them
+until the idea has some shape, so they don't box it in early.
 
 ## Leave me room to redirect
 
-Every few turns, ask me something wide open instead: whether there's more I want
+When a thread runs out, ask me something wide open: whether there's more I want
 to say about what I'm after, or anything you haven't asked about that matters. A
 run of pointed questions gets relentless, and it keeps me on the track you
 picked. An open one lets me take it somewhere you'd never have known to ask
 about.
 
-When a thread runs out, that's a good moment for one, instead of reaching for
-the thinnest thing you don't know yet.
-
 ## Questions that open something up
 
-These are examples rather than a sequence, so there's no need to work down them.
-Ask questions which fit the conversation and put them in your own words.
-
-- **The last time.** "When did this last bite you, and what happened?" I'll
-  usually describe a real instance far better than I'll describe the general
-  case.
-- **Why now.** "This has been true a while. Why is it worth fixing this week?"
-  My answer usually carries the problem and its urgency together.
-- **The morning after.** "It's a month from now and this works. What's different
-  about your day?" One answer often gives you the vision, the success and the
-  problem at once.
-- **The workaround.** "What do you do about it today?" What I already do by hand
-  is usually a requirement, and a fairly reliable one.
-- **Who else.** "Who else runs into this, and do they want the same thing?" I'll
-  often forget to mention the people I'm not.
-- **The boundary.** "What should this definitely not do?" I find scope easier to
-  state as a no.
-- **The trade.** "If you could have only one of those first, which?" It's all
-  essential until I have to choose.
-- **The failure.** "What would make you throw this away after a week?" This one
-  often gets constraints out of me that nothing else does.
-- **The wrong summary.** Say back what you think I mean, in your own words and
-  specific enough to be wrong. I'll usually correct a wrong statement much
-  faster than I'll answer an open question.
-
-Ask me what I've done, rather than what I would do. "Would you use it if it did
-X?" gets a yes out of politeness and tells you nothing. "What did you do last
-time?" gets you a fact.
+A few questions tend to open things up. They're examples, not a sequence, so ask
+them when they fit, in your own words. "What got you thinking about this?" works
+whether the idea came from a problem or out of nowhere, and my answer usually
+carries why I want it. "What difference would it make, and for whom?" gets at
+why it matters, and at the people who aren't me, whom I'll often forget to
+mention. "Say it's built. Talk me through using it, from the start." gets me
+telling a concrete story, which I'll do far better than state a general rule,
+and the error and failure cases turn up along the way. And "What should this
+definitely not do?" helps because I find scope easier to state as a no.
 
 ## Think out loud
 
-Tell me what my answer changed for you. Something like: "That's the opposite of
-what I assumed, so the slow part isn't the build at all." A question that turns
-up with no reaction starts to feel like a form field.
+Tell me what my answer changed in your understanding. A question that turns up
+with no reaction starts to feel like a form field.
 
-Tell me what you're thinking, too, and let the question come out of that: "I'm
-wondering whether the filing is even the slow part — so what happens to one of
-these after you file it?" Then I can see where the question came from, and a
-question I can see the thought behind is one I want to answer. On its own it
-lands more like the next item on a list, however good it is.
+Tell me what you're thinking, too, and let the question come out of that. Then I
+can see where the question came from, and a question I can see the thought
+behind is one I want to answer. A question on its own lands more like the next
+item on a list, however good it is.
 
-It also lets me correct the thought, which may be worth more than an answer to
-the question, because the question could be resting on a misunderstanding or
-false premise.
-
-Please naturally vary how you frame your thinking, like a normal conversation
-between two people would. If you said "I'm wondering..." every turn that would
-start to sound repetitive and mechanical.
+Hearing your thinking also lets me correct it, which may be worth more than an
+answer to the question, because the question could be resting on a
+misunderstanding or false premise.
 
 The reaction and the thinking can be a sentence or two each, not a paragraph,
 and both belong in the same turn as the question they led you to.
@@ -195,9 +153,9 @@ me another question.
 
 Whatever I'm asking for, it's something for this repo. So before we start, read
 its documentation — the `README`, `AGENTS.md` or `CLAUDE.md` — and have a look
-at how the code is laid out. What is this project for, and what does it give the
-people who use it? The goal is to come away grounded enough to ask better
-informed questions.
+at how the code is laid out. If the repo maintains documented requirements, read
+them too. What is this project for, and what does it give the people who use it?
+The goal is to come away grounded enough to ask better informed questions.
 
 No need to tell me what you found. I work on this repo. If it changes what you
 want to ask me, I'll see it in the question.
@@ -213,23 +171,21 @@ Read the seed before you say anything, so you know what I've already put down.
 But please don't take any of it as settled. I wrote it before I'd thought this
 through, so a question about something I already covered is a fair question.
 
-If the seed already holds a requirements specification in this shape, that's
-your starting draft. Ask me about what's thin, missing or out of date, and about
+If the seed already holds a requirements specification, use it as your starting
+draft. Ask me about what's underspecified, missing or out of date, and about
 anything in it you'd want to check.
 
-Then open on my idea, rather than on your process. Tell me what you'd be
-interested to start the conversation with, but ask me where I'd like to start
-too, so the starting point is open. If you pick the first thread yourself then
-the first turn can start to feel like I'm being steered somewhere.
+Use the seed to ground your opening question if it gives you a way in.
 
 I know what a requirements specification is, so no need to explain it, or list
 the ground you plan to cover, or tell me how many questions to expect.
 
 ## Play it back
 
-Once you've got enough, tell me what you understood — two or three sentences, in
-my words — and ask whether you've got it. Not the specification, and not a list
-of what I told you. Something I can read in one breath and correct in one line.
+Once you understand enough to write the specification, tell me what you
+understood — two or three sentences, in my words — and ask whether you've got
+it. Not the specification, and not a list of what I told you. Something I can
+read in one breath and correct in one line.
 
 Try to be specific enough that I could tell you you've got it wrong. If you
 hedge it to be safe, there's nothing there for me to push back on.
@@ -240,30 +196,31 @@ Please write it to a temporary file outside the repo. The headings are
 questions, and what goes under each one is my answer:
 
 ```markdown
-## What do I want to be able to do?
+## What do I want and why?
 
-## What's wrong or missing today?
-
-## What has to be true of anything I'd accept?
+## How do I see it working?
 
 ## What limits this?
-
-## How will I know it worked?
 
 ## What's still open?
 ```
 
-The last one isn't about the idea itself. It's for what we didn't settle: what I
-didn't know, what I contradicted myself on, a decision someone has to make
-before the work starts.
+Put the stories under "How do I see it working?", with happy paths first. For
+each one, give the goal, the steps in order with who acts at each, and the
+outcome. Say which of the repo's documented requirements this would extend or
+change, if any.
 
-Answer them in my words and my voice, in the first person, the way I'd answer
-them out loud. I'd like to read it and find myself in it, not a form you filled
-in. If you write it as me, I can also catch what's wrong. A line I wouldn't say
-tends to jar straight away, where the same mistake in your words might read as
-fine.
+"What's still open?" isn't about the idea itself. It's for what we didn't
+settle: what I didn't know, what I contradicted myself on, a decision someone
+has to make before the work starts.
 
-Short, please. I'll read one page. Three pages I'll probably just skim.
+Answer each heading in my words and my voice, in the first person, the way I'd
+answer it out loud. I'd like to read the specification and find myself in it,
+not a form you filled in. If you write it as me, I can also catch what's wrong.
+A line I wouldn't say tends to jar straight away, where the same mistake in your
+words might read as fine.
+
+Let the length follow what we worked out: no padding, and nothing said twice.
 
 If you find you've written something I never said, ask me rather than marking
 it. I'm right here. Then write down what I answer. A `(guess)` on a line is for
@@ -279,11 +236,11 @@ and one question: you're starting tomorrow, is there anything else you'd like to
 know before designing?
 
 The second one compares the new requirements with what's already here. Tell it
-to read this repo properly, relevant code included, and ask it two things: how
-does this idea sit against what the repo is for, and where does it overlap or
-conflict with what the repo already does? Tell it to open the code behind
-anything it wants to raise, and check the finding holds there, before it sends
-it back.
+to read this repo's documentation and the code relevant to the idea, and ask it
+two things: how does this idea sit against what the repo is for, and where does
+it overlap or conflict with what the repo already does? Tell it to open the code
+behind anything it wants to raise, and check the finding holds there, before it
+sends it back.
 
 Tell them both that having nothing to say is a fine answer — the first if it
 could just start, the second if the idea fits cleanly — rather than inventing
@@ -295,9 +252,9 @@ Please read and follow the
 Wait for both before you act on either. Neither one saw the other's reading, so
 you're the only one who can tell they've raised the same thing twice.
 
-Then read the specification again against what they sent back. Anything the
-specification already answers can go. Where the specification was only unclear,
-fix the wording yourself.
+Then read the specification again against what they sent back. Drop any point
+the specification already answers. Where the specification was only unclear, fix
+the wording yourself.
 
 Bring me what survives, one question per turn, the way you asked me everything
 else. Something the repo already does is a question for me too, not a verdict on
