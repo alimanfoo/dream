@@ -76,14 +76,10 @@ underlying requirements, and write those down instead.
 What I just said is probably a good source of your next question. When one
 question leads naturally to another, that's the sign of a good conversation.
 
-Things worth pulling on, whichever is strongest:
-
-- a word doing more work than it can hold: "manual", "properly", "a mess", "too
-  slow". Faster than what? Everyone, meaning who?
-- something that surprised you
-- something that doesn't fit what I said earlier
-- a jump you can't follow
-- the part I wrote most about, or complained about hardest
+Pull on whichever is strongest: a word doing more work than it can hold, like
+"properly", "a mess" or "too slow" (faster than what?); something that surprised
+you; something that doesn't fit what I said earlier; a jump you can't follow; or
+the part I've said most about.
 
 Stay on a thread while it's still giving you something. When my answers start to
 repeat, or I say I don't know, it's probably done. Save a fresh question for
@@ -108,18 +104,15 @@ about.
 
 ## Questions that open something up
 
-These are examples rather than a sequence, so there's no need to work down them.
-Ask questions which fit the conversation and put them in your own words.
-
-- **What got you thinking.** "What got you thinking about this?" Whether it came
-  from a problem or out of nowhere, my answer usually carries why I want it.
-- **The difference.** "What difference would it make, and for whom?" I'll often
-  forget to mention the people who aren't me.
-- **Walk me through it.** "Say it's built. Talk me through using it, from the
-  start." I'll describe a concrete story far better than a general rule, and the
-  "what if" moments turn up along the way.
-- **The boundary.** "What should this definitely not do?" I find scope easier to
-  state as a no.
+A few questions tend to open things up. They're examples, not a sequence, so ask
+them when they fit, in your own words. "What got you thinking about this?" works
+whether the idea came from a problem or out of nowhere, and my answer usually
+carries why I want it. "What difference would it make, and for whom?" gets at
+why it matters, and at the people who aren't me, whom I'll often forget to
+mention. "Say it's built. Talk me through using it, from the start." gets me
+telling a concrete story, which I'll do far better than state a general rule,
+and the "what if" moments turn up along the way. And "What should this
+definitely not do?" helps because I find scope easier to state as a no.
 
 ## Think out loud
 
