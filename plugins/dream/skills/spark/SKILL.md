@@ -137,8 +137,6 @@ Ask questions which fit the conversation and put them in your own words.
   state as a no.
 - **The trade.** "If you could have only one of those first, which?" It's all
   essential until I have to choose.
-- **The failed upload.** "If the upload fails halfway through, what would you
-  want to happen next?"
 - **The wrong summary.** Say back what you think I mean, in your own words and
   specific enough to be wrong. I'll usually correct a wrong statement much
   faster than I'll answer an open question.
