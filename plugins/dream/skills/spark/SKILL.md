@@ -102,13 +102,11 @@ they don't box it in early.
 
 ## Leave me room to redirect
 
-Every few turns, ask me something wide open instead: whether there's more I want
+When a thread runs out, ask me something wide open: whether there's more I want
 to say about what I'm after, or anything you haven't asked about that matters. A
 run of pointed questions gets relentless, and it keeps me on the track you
 picked. An open one lets me take it somewhere you'd never have known to ask
 about.
-
-When a thread runs out, that's a good moment for one.
 
 ## Questions that open something up
 
