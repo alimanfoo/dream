@@ -91,21 +91,13 @@ Stay on a thread while it's still giving you something. When my answers start to
 repeat, or I say I don't know, it's probably done. Save a fresh question for
 when my last answer has nothing left in it.
 
-## What the specification needs to cover
+## What I'd like us to work out
 
-- **Motivation.** Start by asking about the problem or idea that brought me
-  here, why it matters, and what I'd like to make possible.
-- **Stories.** Then ask for the happy paths, how I see things working when they
-  go well. Once those are clear, ask what should happen when someone makes a
-  mistake or something fails.
-- **Constraints.** Once the stories are clear, ask about any limits we haven't
-  covered, such as platforms, budget, legal obligations, people, or time.
-
-Between turns, use the checklist to see what's still thin in the part we're on.
-When you need another question on that part, ask about the biggest gap.
-
-Keep the checklist and its labels in your head. I came to talk about my problem,
-so just ask me what you want to know.
+By the end, I'd like us both to know why I want this, how I see it working, both
+when things go well and when someone makes a mistake or something fails, and
+what it has to fit within. Let the conversation find its own way through those,
+and just make sure each one gets covered at some point. If I don't raise limits
+myself, leave them until the idea has some shape, so they don't box it in early.
 
 ## Leave me room to redirect
 
