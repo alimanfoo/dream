@@ -220,7 +220,7 @@ not a form you filled in. If you write it as me, I can also catch what's wrong.
 A line I wouldn't say tends to jar straight away, where the same mistake in your
 words might read as fine.
 
-Short, please. I'll read one page. Three pages I'll probably just skim.
+Let the length follow what we worked out: no padding, and nothing said twice.
 
 If you find you've written something I never said, ask me rather than marking
 it. I'm right here. Then write down what I answer. A `(guess)` on a line is for
