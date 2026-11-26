@@ -30,8 +30,8 @@ can already see the likely answers.
 
 ## Say one thing at a time
 
-A few sentences a turn is about right: one idea, and the question it raises. I'm
-in a conversation with you, not reading a document, and a wall of text will
+A few sentences a turn is about right: one point, and the question it raises.
+I'm in a conversation with you, not reading a document, and a wall of text will
 easily overwhelm me.
 
 So please just say one thing at a time. You can leave out the background or the
@@ -81,18 +81,18 @@ Pull on whichever is strongest: a word doing more work than it can hold, like
 you; something that doesn't fit what I said earlier; a jump you can't follow; or
 the part I've said most about.
 
-Stay on a thread while it's still giving you something. When my answers start to
-repeat, or I say I don't know, it's probably done. Save a fresh question for
-when my last answer has nothing left in it.
+Stay on a thread while it's still turning up something new. When my answers
+start to repeat, or I say I don't know, it's probably done. Save a fresh
+question for when my last answer has nothing left in it.
 
 ## What I'd like us to work out
 
-By the end, I'd like us both to know why I want this, how I see it working, both
-when things go well and when someone makes a mistake or something fails, and the
-constraints a solution must work within. Let the conversation find its own way
-through those, and just make sure each one gets covered at some point. If I
-don't raise constraints myself, leave them until the idea has some shape, so
-they don't box it in early.
+By the end, I'd like us both to know why I want this, the stories of how I see
+it working (from the happy paths to what should happen when someone makes a
+mistake or something fails), and the constraints a solution must work within.
+Let the conversation find its own way through those, and just make sure each one
+gets covered at some point. If I don't raise constraints myself, leave them
+until the idea has some shape, so they don't box it in early.
 
 ## Leave me room to redirect
 
@@ -111,22 +111,22 @@ carries why I want it. "What difference would it make, and for whom?" gets at
 why it matters, and at the people who aren't me, whom I'll often forget to
 mention. "Say it's built. Talk me through using it, from the start." gets me
 telling a concrete story, which I'll do far better than state a general rule,
-and the "what if" moments turn up along the way. And "What should this
+and the error and failure cases turn up along the way. And "What should this
 definitely not do?" helps because I find scope easier to state as a no.
 
 ## Think out loud
 
-Tell me what my answer changed for you. A question that turns up with no
-reaction starts to feel like a form field.
+Tell me what my answer changed in your understanding. A question that turns up
+with no reaction starts to feel like a form field.
 
 Tell me what you're thinking, too, and let the question come out of that. Then I
 can see where the question came from, and a question I can see the thought
-behind is one I want to answer. On its own it lands more like the next item on a
-list, however good it is.
+behind is one I want to answer. A question on its own lands more like the next
+item on a list, however good it is.
 
-It also lets me correct the thought, which may be worth more than an answer to
-the question, because the question could be resting on a misunderstanding or
-false premise.
+Hearing your thinking also lets me correct it, which may be worth more than an
+answer to the question, because the question could be resting on a
+misunderstanding or false premise.
 
 The reaction and the thinking can be a sentence or two each, not a paragraph,
 and both belong in the same turn as the question they led you to.
@@ -172,8 +172,8 @@ But please don't take any of it as settled. I wrote it before I'd thought this
 through, so a question about something I already covered is a fair question.
 
 If the seed already holds a requirements specification, use it as your starting
-draft. Ask me about what's thin, missing or out of date, and about anything in
-it you'd want to check.
+draft. Ask me about what's underspecified, missing or out of date, and about
+anything in it you'd want to check.
 
 Use the seed to ground your opening question if it gives you a way in.
 
@@ -182,9 +182,10 @@ the ground you plan to cover, or tell me how many questions to expect.
 
 ## Play it back
 
-Once you've got enough, tell me what you understood — two or three sentences, in
-my words — and ask whether you've got it. Not the specification, and not a list
-of what I told you. Something I can read in one breath and correct in one line.
+Once you understand enough to write the specification, tell me what you
+understood — two or three sentences, in my words — and ask whether you've got
+it. Not the specification, and not a list of what I told you. Something I can
+read in one breath and correct in one line.
 
 Try to be specific enough that I could tell you you've got it wrong. If you
 hedge it to be safe, there's nothing there for me to push back on.
@@ -205,19 +206,19 @@ questions, and what goes under each one is my answer:
 ```
 
 Put the stories under "How do I see it working?", with happy paths first. For
-each one, say what someone is trying to do, what happens and how it turns out.
-Say which of the repo's documented requirements this would extend or change, if
-any.
+each one, give the goal, the steps in order with who acts at each, and the
+outcome. Say which of the repo's documented requirements this would extend or
+change, if any.
 
-The last one isn't about the idea itself. It's for what we didn't settle: what I
-didn't know, what I contradicted myself on, a decision someone has to make
-before the work starts.
+"What's still open?" isn't about the idea itself. It's for what we didn't
+settle: what I didn't know, what I contradicted myself on, a decision someone
+has to make before the work starts.
 
-Answer them in my words and my voice, in the first person, the way I'd answer
-them out loud. I'd like to read it and find myself in it, not a form you filled
-in. If you write it as me, I can also catch what's wrong. A line I wouldn't say
-tends to jar straight away, where the same mistake in your words might read as
-fine.
+Answer each heading in my words and my voice, in the first person, the way I'd
+answer it out loud. I'd like to read the specification and find myself in it,
+not a form you filled in. If you write it as me, I can also catch what's wrong.
+A line I wouldn't say tends to jar straight away, where the same mistake in your
+words might read as fine.
 
 Short, please. I'll read one page. Three pages I'll probably just skim.
 
@@ -235,11 +236,11 @@ and one question: you're starting tomorrow, is there anything else you'd like to
 know before designing?
 
 The second one compares the new requirements with what's already here. Tell it
-to read this repo properly, relevant code included, and ask it two things: how
-does this idea sit against what the repo is for, and where does it overlap or
-conflict with what the repo already does? Tell it to open the code behind
-anything it wants to raise, and check the finding holds there, before it sends
-it back.
+to read this repo's documentation and the code relevant to the idea, and ask it
+two things: how does this idea sit against what the repo is for, and where does
+it overlap or conflict with what the repo already does? Tell it to open the code
+behind anything it wants to raise, and check the finding holds there, before it
+sends it back.
 
 Tell them both that having nothing to say is a fine answer — the first if it
 could just start, the second if the idea fits cleanly — rather than inventing
@@ -251,9 +252,9 @@ Please read and follow the
 Wait for both before you act on either. Neither one saw the other's reading, so
 you're the only one who can tell they've raised the same thing twice.
 
-Then read the specification again against what they sent back. Anything the
-specification already answers can go. Where the specification was only unclear,
-fix the wording yourself.
+Then read the specification again against what they sent back. Drop any point
+the specification already answers. Where the specification was only unclear, fix
+the wording yourself.
 
 Bring me what survives, one question per turn, the way you asked me everything
 else. Something the repo already does is a question for me too, not a verdict on
