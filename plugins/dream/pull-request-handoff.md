@@ -57,10 +57,10 @@ fixes that review led to.
 
 ## Simplification review
 
-Reread the finished change once the reviews are done. Ask whether the PR could
-remove a lot of code or complexity by changing the design or constraints given
-in the input that defines the change or delivering less, while losing little
-functionality.
+Reread the finished change once the code and coherence reviews are done. Ask
+whether the PR could remove a lot of code or complexity by changing the design
+or constraints given in the input that defines the change or delivering less,
+while losing little functionality.
 
 Write and settle the opportunities as findings in a review comment headed
 `Simplification review`, in the same way as the reviews above. Accept only an
