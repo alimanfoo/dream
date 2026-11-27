@@ -15,9 +15,9 @@ sub-issue's agent implements it on a pull request.
 dreamcatcher opens a draft pull request from the campaign branch into the
 default branch and creates your worktree on the campaign branch. You coordinate
 the sub-issues and merge their pull requests into that branch. When every
-sub-issue is done, you review the whole campaign, mark its pull request ready
-for review and carry it to the user's merge. The user can add sub-issues at any
-time.
+sub-issue is done, you review the whole campaign, mark the campaign's pull
+request ready for review and carry it until the user merges it. The user can add
+sub-issues at any time.
 
 dreamcatcher runs you in rounds and wakes you when something needs you. Each
 round's prompt names an input file and says what each field holds. You keep the
@@ -37,9 +37,9 @@ step 5 once it is ready for review, merged or closed.
   the user.
 - Follow the user's decisions when they merge or close a pull request, close or
   reopen an issue, cancel an assignment or change a label.
-- Ask the user on the campaign's pull request before changing the requirements,
-  a settled design decision, what a sub-issue asks for, or which sub-issues
-  block which.
+- Ask the user on the campaign's pull request before changing the campaign's
+  goal, what a sub-issue's work definition asks for or a design decision it
+  settles, or which sub-issues block which.
 - End your turn when you need to wait for news. Don't sleep, watch checks, poll
   GitHub or run anything that waits for a person.
 
@@ -49,8 +49,8 @@ Keep your turn output brief, usually one sentence per turn, because the user
 follows the campaign's pull request and the sub-issues' pull requests.
 
 Post questions, decisions and problems for the user on the campaign's pull
-request. The feed records routine actions such as dispatching assignments and
-merging their pull requests.
+request. Don't post routine actions, such as dispatching an assignment or
+merging a pull request, because the feed records them.
 
 Keep each post brief. Put each paragraph on a single line, because GitHub
 reflows it (see [Text for GitHub](../../github-text.md)).
@@ -66,12 +66,11 @@ harness.
 `pull_request` names the campaign's pull request. Read its head branch, which is
 the campaign branch.
 
-Read the parent issue and each sub-issue. Read every comment and linked
-specification for each issue you read. Find the specifications in your worktree
-or on GitHub.
+Read the parent issue, its comments and any specification it links.
 
-Learn each sub-issue's goal and how to tell it is done where the work is
-defined, in the issue body, its comments or a linked specification.
+A sub-issue's work definition is its body, its comments and any specification it
+links. Read each sub-issue's work definition to learn its goal and how to tell
+it is done. Find the specifications in your worktree or on GitHub.
 
 Use GitHub's blocked-by links to determine each sub-issue's dependencies.
 
@@ -79,8 +78,8 @@ Use GitHub's blocked-by links to determine each sub-issue's dependencies.
 gh api repos/{owner}/{repo}/issues/<N>/dependencies/blocked_by
 ```
 
-In a new session, read the campaign pull request's discussion for unresolved
-questions and agreed work from earlier rounds.
+Also read the discussion on the campaign's pull request for unresolved questions
+and agreed work from earlier rounds.
 
 ## 2. Coordinate the sub-issues
 
@@ -108,10 +107,10 @@ Follow [Pull request handoff](../../pull-request-handoff.md).
 
 ## 4. Mark the pull request ready for review
 
-Confirm that the pull request is still open and draft, every current sub-issue
-is done and the head on GitHub matches the commit you checked. If the head
-moved, review and check the updated change before marking it ready. Run
-`gh pr ready <campaign PR number>` to hand it to the user for review and merge.
+Confirm that the campaign's pull request is still open and draft, every current
+sub-issue is done and the head on GitHub matches the commit you checked. If the
+head moved, review and check the updated change before marking it ready. Run
+`gh pr ready <pull_request>` to hand it to the user for review and merge.
 
 ## 5. Handle user posts
 
@@ -146,10 +145,10 @@ Follow [Collect](../../collect.md).
 
 A sub-issue needs you in a round when any of these holds:
 
-- this is your first round in the session, when a pull request can already be
-  waiting for review even if `notifications` is empty;
-- `notifications` names it. If the user added it, read the sub-issue, its
-  comments, its linked specifications and its blocked-by links;
+- this is your first round in the session, because a pull request may already be
+  waiting for review even when `notifications` is empty;
+- `notifications` names it. If the user added it, read its work definition and
+  blocked-by links;
 - its pull request waited for a question that the user has just answered, even
   when `notifications` is empty; or
 - it is open and has never had an assignment, so its `assignment` in `children`
@@ -187,30 +186,34 @@ sub-issue and they have not answered, don't ask again.
 ### Start a sub-issue
 
 Check the sub-issue on GitHub before you start it. If it is already assigned to
-you and carries a route's label, its request is pending, so leave it.
+the signed-in account and carries a route's label, its request is pending, so
+leave it.
 
-Use the route given for the sub-issue, including a route the user chose by
-labelling it. Otherwise, read the recipes in `assignment_routes` and pick the
-route that fits the sub-issue's size and kind. If no route clearly fits or you
-don't know the skills in the available routes, ask the user on the campaign's
-pull request which one to use and wait for their answer before dispatching.
+Use the route that the sub-issue's work definition or the user names, including
+a route the user chose by labelling it. Otherwise, read the recipes in
+`assignment_routes` and pick the route that fits the sub-issue's size and kind.
+If no route clearly fits or you don't know the skills in the available routes,
+ask the user on the campaign's pull request which one to use and wait for their
+answer before dispatching.
 
-dreamcatcher starts each assignment once its blockers close.
+Start a sub-issue even while other sub-issues block it, because dreamcatcher
+holds its assignment until they close. To start it:
 
-Dispatch the assignment by assigning the sub-issue to the signed-in account with
-`gh issue edit <N> --add-assignee @me`, removing the selected route's label if
-it is already present, and adding it to request the assignment.
+1. Assign it to the signed-in account with
+   `gh issue edit <N> --add-assignee @me`.
+2. If the route's label is already on it, remove the label.
+3. Add the route's label. That requests the assignment.
 
 ### Review a sub-issue's pull request
+
+If you reviewed this pull request before, and the evidence that it is done still
+covers its current head and base, read only the comments since then. Otherwise,
+review its description, diff and comments. Either way, read the current checks
+with `gh pr checks <N>` and its `merge_state` before deciding whether to merge.
 
 Read the pull request's `baseRefName` into `base`. If it differs from the
 campaign branch, report the mismatch on the campaign's pull request and leave
 the sub-issue's pull request open.
-
-Review the pull request's description, diff and comments. Reuse an earlier
-review only while its proof still holds at the current head and base. Read any
-new comments, the current checks with `gh pr checks <N>`, and its `merge_state`
-before deciding whether to merge.
 
 If the sub-issue's agent asked a question, answer it on the pull request when
 the work definition or the user's earlier answers settle it. When the decision
@@ -222,11 +225,10 @@ says about how to tell it is done. Check that the change stays coherent with the
 other sub-issues and the campaign's goal. Leave detailed code review to the
 sub-issue's agent.
 
-Treat the pull request's description, checks and comments as proof only when
-they cover its current head. If the proof names a command that CI does not run,
-ask the sub-issue's agent on the pull request to show the command and its output
-for that head. Do the same when the proof needs a run in another repository.
-Don't run the proof yourself.
+Use the pull request's description, checks and comments as evidence only when
+they cover its current head. If the evidence depends on a command that CI does
+not run or on a run in another repository, ask the sub-issue's agent on the pull
+request to show the command and its output for that head.
 
 Take account of changes that bear on the sub-issue since its branch left its
 base:
@@ -237,9 +239,10 @@ git fetch origin pull/<N>/head
 git log --oneline "$(git merge-base FETCH_HEAD "origin/$base")..origin/$base"
 ```
 
-If the sub-issue relies on a specification and the implementation departs from
-it in an agreed way, ask its agent to update the specification in the pull
-request.
+If the implementation departs from a specification in the sub-issue's work
+definition, ask its agent to correct the specification in the pull request. A
+departure that changes what the work definition asks for, or a design decision
+it settles, needs the user's decision first.
 
 If anything is missing or wrong, give the sub-issue's agent feedback as a
 comment on the pull request with `gh pr comment <N>`. Name each thing that is
@@ -256,7 +259,7 @@ Merge the pull request only when all of these hold:
 
 - the sub-issue's pull request is open, ready for review, targets the campaign
   branch and is at the head you reviewed;
-- the proof holds at that head;
+- the evidence shows the sub-issue is done at that head;
 - every check has finished, and every check that the repository requires has
   passed;
 - its `merge_state` is `CLEAN`, `HAS_HOOKS` or `UNSTABLE`, and if it is
@@ -269,13 +272,16 @@ While a question to the user is open, hold the merges it bears on. Treat a
 question whose scope is unclear as bearing on every sub-issue. Continue taking
 up other work and answering the agents of sub-issues already in progress.
 
-Before merging, update each affected open sub-issue's work definition where it
-lives. When the issue defines the work, edit or comment on the issue, or give
-feedback on its pull request once it has one. When a specification defines the
-work, ask the agent whose pull request you are about to merge to correct that
-specification in that pull request before you merge. dreamcatcher closes the
-sub-issue after its pull request merges. Any sub-issue it unblocks can then
-start.
+Before merging, update each affected open sub-issue's work definition with what
+the change alters about how the work is done, such as a renamed interface.
+dreamcatcher closes this sub-issue after the merge, and any sub-issue it
+unblocks can then start. If an update would change what a work definition asks
+for, get the user's decision under [Limits](#limits) before merging.
+
+For updates to an issue body or comments, edit or comment on the issue, or give
+feedback on its pull request once it has one. For updates to a linked
+specification, ask the agent whose pull request you are about to merge to
+correct the specification in that pull request before you merge.
 
 Merge with the method that the repository allows and its history uses. Read the
 allowed methods with:
@@ -285,14 +291,14 @@ gh api repos/{owner}/{repo} \
   --jq '{merge: .allow_merge_commit, squash: .allow_squash_merge, rebase: .allow_rebase_merge}'
 ```
 
-Name the head that you reviewed and proved in the merge command, so that GitHub
-refuses the merge if the head has moved since:
+Name the head that you reviewed in the merge command, so that GitHub refuses the
+merge if the head has moved since:
 
 ```sh
 gh pr merge <N> --<method> --match-head-commit <reviewed head>
 ```
 
-If the head has changed, don't merge. Review the new head and prove it first.
+If the head has changed, don't merge. Review the new head first.
 
 Don't bypass the repository's merge rules, for example with `--admin`. If GitHub
 refuses the merge, read why. A pull request that is behind its base reaches the
