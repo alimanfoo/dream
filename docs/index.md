@@ -65,7 +65,7 @@ lead on the campaign's pull request, then review and merge it when ready.
 | `/dream:smith` | Runs an assignment.  |
 | `/dream:less`  | Runs an assignment.  |
 | `/dream:scout` | Runs a conversation. |
-| `/dream:big`   | Leads a campaign.    |
+| `/dream:big`   | Runs a campaign.     |
 
 `dreamcatcher init` installs this plugin, and routes a label to each skill.
 Follow the

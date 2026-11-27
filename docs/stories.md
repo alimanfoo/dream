@@ -477,42 +477,56 @@ decide what to do with it.
 ### An agent leads a campaign through a roadmap's stages
 
 The user has a parent issue whose sub-issues are the stages of a roadmap, with
-blocked-by links between them. They want an agent to coordinate the stages so
-they can review the whole change in one pull request.
+blocked-by links between them. They want an agent to carry every stage through
+to a merged pull request, and to ask them only the questions the roadmap doesn't
+settle.
 
-1. The user assigns the parent issue to themselves and adds the dispatch label
-   that their dreamcatcher configuration routes to big. dreamcatcher opens a
-   draft pull request from the campaign branch into the default branch and
-   starts the lead with `/dream:big GH123`, as described by
+1. The user assigns the parent issue to themselves, and adds the dispatch label
+   that their dreamcatcher configuration routes to big. That starts a campaign.
+2. dreamcatcher opens a draft pull request from the campaign branch into the
+   default branch, then starts the lead with `/dream:big GH123`, as described by
    [dreamcatcher's stories](https://alimanfoo.github.io/dreamcatcher/stories/).
-2. The lead reads the parent issue, its comments, each sub-issue, and the
+3. The lead reads the parent issue, its comments, each sub-issue, and the
    specifications they link to. It learns each stage's goal, how to tell it is
    done, and which stages it depends on.
-3. The lead assigns each sub-issue it can start to the user's account and
-   applies the dispatch label of the route that suits it, removing the label
-   first if already present. dreamcatcher starts an assignment once that
-   sub-issue's blockers have closed.
-4. When a stage's pull request is ready, the lead checks whether it meets the
-   roadmap's goal and acceptance criteria, stays coherent with the other stages,
-   and gives later stages what they need. The stage's agent does the detailed
-   code review and addresses the lead's feedback on that pull request.
-5. When the stage is done and its required checks pass, the lead passes on what
-   later stages need to know and merges the pull request into the campaign
-   branch. dreamcatcher closes the stage's sub-issue.
-6. Throughout, the lead asks the user questions on the campaign's pull request
-   and holds any stage merge that needs an answer. When it judges every
-   sub-issue done, it pulls the campaign branch, reviews the whole change,
-   pushes any fixes, and marks the campaign's pull request ready for review.
-7. The lead handles conflicts or lag against the default branch, failing checks
-   and the user's requested changes on the campaign's pull request. The user can
-   add sub-issues in either phase, and the lead dispatches and reviews them
-   while keeping a ready pull request ready.
-8. The user reviews and merges the campaign's pull request, closing the parent
-   issue. If the user closes the pull request without merging, the lead records
-   where work stopped. The lead wraps up in either case.
+4. The lead starts each stage that is ready. It assigns the stage's sub-issue to
+   the user's account, and adds the dispatch label of the route that suits the
+   stage.
+5. dreamcatcher starts an agent assignment for each labelled stage, once the
+   sub-issues that block it have closed.
+6. When a stage's pull request is ready, the lead reviews it. It checks whether
+   the stage does what the roadmap says it delivers, by the roadmap's account of
+   how to tell it is done. It also checks whether the stage stays coherent with
+   the other stages, and gives later stages what they need. It leaves detailed
+   code review to the skill the stage runs.
+7. When something is missing or wrong, the lead says so in a comment on the pull
+   request.
+8. The stage's agent addresses the comment. Steps 6 to 8 repeat until the stage
+   is done.
+9. The lead passes to each later stage what this stage changed for it, then
+   merges the pull request into the campaign branch once its required checks
+   pass.
+10. dreamcatcher closes the stage's sub-issue when its pull request merges.
+11. Throughout, when neither the roadmap nor the user's earlier answers settle a
+    question, the lead asks the user on the campaign's pull request, and merges
+    none of the stages the question bears on until they answer. If the lead
+    cannot tell which stages it bears on, it merges no stage.
+12. Steps 4 to 9 repeat until the lead judges every stage done. The lead reviews
+    the whole change, posts simplification opportunities, writes the description
+    and marks the pull request ready, as in
+    [smith's story](#an-agent-implements-a-large-well-specified-change).
+13. The user reviews the pull request and comments on it. They may add
+    sub-issues at any time.
+14. The lead takes up new sub-issues as in steps 4 to 9 while keeping the pull
+    request ready. It makes the changes the user asks for, keeps the pull
+    request current with the default branch and its checks passing, and replies.
+    Steps 13 and 14 repeat until the user is satisfied.
+15. The user merges the campaign's pull request, which closes the parent issue.
+16. The lead files an issue for each thing it left out of scope and lists the
+    issues on the campaign's pull request, as in smith's story.
 
-The user has one pull request for the campaign, with each stage reviewed against
-the roadmap and the whole change reviewed before handoff.
+The user has the campaign merged, with each stage reviewed against the roadmap's
+account of how to tell it is done.
 
 ## Utility skills
 

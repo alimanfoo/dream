@@ -60,12 +60,10 @@ harness.
 
 ## Each round
 
-1. Read `pull_request_state` in the input file first. If it is `MERGED` or
-   `CLOSED`, [wrap up](#wrap-up) and end your turn. Otherwise, `pull_request`
-   names the campaign's pull request. Read its state, head branch and draft
-   status on GitHub. If it is already merged or closed, end your turn and let
-   the terminal round handle wrap-up. A draft is in the coordinating phase and a
-   pull request ready for review is in the finishing phase.
+1. `pull_request` names the campaign's pull request. Read its head branch, which
+   is the campaign branch, and whether it is a draft. A draft is in the
+   coordinating phase, and a pull request ready for review is in the finishing
+   phase.
 2. Read the roadmap if you have not read it in this session.
 3. In the finishing phase,
    [carry the campaign's pull request to merge](#carry-the-campaign-pull-request-to-merge),
@@ -148,9 +146,8 @@ sub-issue and they have not answered, don't ask again.
 
 ## Start the stages
 
-Check the sub-issue on GitHub before you start it. If you already applied its
-dispatch label for this request and dreamcatcher has yet to start the
-assignment, leave the request pending.
+Check the sub-issue on GitHub before you start it. If it is already assigned to
+you and carries a route's label, its request is pending, so leave it.
 
 Use the route that the roadmap or the user named for the stage, including a
 route the user chose by labelling the sub-issue. Otherwise, read the recipes in
@@ -290,23 +287,15 @@ it.
 ## Review the campaign and mark it ready
 
 Once you judge every sub-issue done, switch the worktree to the campaign branch
-and pull it to pick up the merged stages. Find and fetch the campaign pull
-request's base by following [Review base](../../branch-bases.md#review-base).
+and pull it to pick up the merged stages. Apply any agreed campaign changes, run
+the project's checks, and commit and push any changes to that branch.
 
-1. Apply any agreed campaign changes. Run the project's checks and commit any
-   changes locally.
-2. Run `dream:code-review` over `origin/<base>...HEAD`. Fix supported findings,
-   check any fixes and commit them locally.
-3. Run `dream:coherence-review` over the same range. Fix supported findings,
-   check any fixes and commit them locally.
-4. Push any new commits to the campaign branch and post the review results on
-   the campaign's pull request. If you replace the description, preserve its
-   existing `Closes #N` link.
-5. Confirm that the pull request is still open and draft, every current
-   sub-issue is done and the head on GitHub matches the commit you checked. If
-   the head moved, review and check the updated change before marking it ready.
-   Run `gh pr ready <campaign PR number>` to hand it to the user for review and
-   merge.
+Follow [Pull request handoff](../../pull-request-handoff.md).
+
+Confirm that the pull request is still open and draft, every current sub-issue
+is done and the head on GitHub matches the commit you checked. If the head
+moved, review and check the updated change before marking it ready. Run
+`gh pr ready <campaign PR number>` to hand it to the user for review and merge.
 
 ## Carry the campaign pull request to merge
 
@@ -321,5 +310,5 @@ branch.
 ## Wrap-up
 
 If the user closed the campaign's pull request without merging, post where work
-stopped on that pull request. After a merge, end your turn. dreamcatcher
-completes the campaign after the wrap-up round.
+stopped on that pull request. After a merge, follow [Collect](../../collect.md)
+for the campaign pull request.
