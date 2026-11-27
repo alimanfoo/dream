@@ -11,7 +11,7 @@
         "source": "git-subdir",
         "url": "https://github.com/alimanfoo/dream.git",
         "path": "plugins/dream",
-        "sha": "aa79a365377f3e5d0f9b5079d0e027dc22acb39c"
+        "sha": "071098e29576ea3fdace3786906a9bdf6e6a9aa0"
       },
       "description": "Tools for developing and maintaining great code with minimal user input."
     }
