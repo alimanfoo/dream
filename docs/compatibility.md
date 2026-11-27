@@ -29,8 +29,8 @@ because something else defines them:
   repository has;
 - the `> written by an agent` footer;
 - a parent issue, its sub-issues and the links that say which blocks which.
-  dreamcatcher gives that graph its meaning, and `dream:quest`, `dream:big` and
-  the user are three of the things that write it;
+  dreamcatcher gives that graph its meaning. The user can write it directly or
+  with `dream:quest`;
 - the names of the plugin's subagent files and the paths of its files. Only
   dream's own skills use them.
 
