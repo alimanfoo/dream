@@ -29,8 +29,8 @@ because something else defines them:
   repository has;
 - the `> written by an agent` footer;
 - a parent issue, its sub-issues and the links that say which blocks which.
-  dreamcatcher gives that graph its meaning, and `dream:quest`, `dream:big` and
-  the user are three of the things that write it;
+  dreamcatcher gives that graph its meaning. The user can write it directly or
+  with `dream:quest`;
 - the names of the plugin's subagent files and the paths of its files. Only
   dream's own skills use them.
 
@@ -51,7 +51,7 @@ dream runs on Claude Code and Codex. Each skill is one file that both read.
 
 ## dreamcatcher's contract
 
-dream meets version 1 of
+dream meets version 2 of
 [dreamcatcher's agent contract](https://alimanfoo.github.io/dreamcatcher/contract/).
 Under it, `dream:smith` and `dream:less` are assignment skills, `dream:big` is a
 campaign skill, and `dream:scout` is a conversation skill. dreamcatcher's

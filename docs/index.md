@@ -57,7 +57,8 @@ gives the agent a last round to wrap up.
 dreamcatcher runs a skill as an assignment, a conversation or a campaign. An
 assignment carries an issue to a pull request. A conversation answers the
 questions that you post as comments on an issue, and writes no code. A campaign
-carries the sub-issues of a parent issue through their assignments to merge.
+merges the sub-issues' pull requests into a campaign branch. You talk to the
+lead on the campaign's pull request, then review and merge it when ready.
 
 | Skill          | Under dreamcatcher   |
 | -------------- | -------------------- |
