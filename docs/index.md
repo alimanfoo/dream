@@ -96,8 +96,9 @@ it at what the one before it wrote.
 
 Each review reads the branch against its open pull request's base, or against
 the repository's default branch when there is no pull request. You can give it a
-git range or a path instead. Smith runs the code and coherence reviews before it
-marks a pull request ready, and you can run any of them yourself.
+git range or a path instead. Smith and Big run the code and coherence reviews,
+then a simplification review, before they mark a pull request ready, and you can
+run the review skills yourself.
 
 | Skill                     | What it looks for                                                      |
 | ------------------------- | ---------------------------------------------------------------------- |

@@ -24,7 +24,7 @@ one response line under its blockquote. Use exactly one of these forms:
 
 - `Accepted: {what you did}`
 - `Rejected: {reason}`
-- `Deferred: {why it needs a PR of its own}`
+- `Deferred: {why it needs a PR of its own or the user's decision}`
 
 Keep the response to one sentence.
 
@@ -55,18 +55,18 @@ Second, run the `dream:coherence-review` skill the same way, and head its
 comment `Coherence review`. It follows the code review so that it reads the
 fixes that review led to.
 
-## Find simplification opportunities
+## Simplification review
 
-Reread the finished change once the reviews are done. Ask whether the PR could
-remove a lot of code or complexity by changing the design or constraints given
-in the input that defines the change or delivering less, while losing little
-functionality.
+Reread the finished change once the code and coherence reviews are done. Ask
+whether the PR could remove a lot of code or complexity by changing the design
+or constraints given in the input that defines the change or delivering less,
+while losing little functionality.
 
-Post the result as a PR comment headed `Simplification opportunities`. Give the
-opportunities as a numbered list, each saying what to remove or simplify and
-what functionality the PR would give up. Order them so that the strongest
-opportunities appear first. If there are no significant opportunities, say so in
-the comment.
+Write and settle the opportunities as findings in a review comment headed
+`Simplification review`, in the same way as the reviews above. Accept only an
+opportunity that stays within what the input asks for. Defer one that changes
+the input's constraints or delivers less than it asks for, since that needs the
+user's decision. Commit and push accepted changes before posting the comment.
 
 ## Write the PR description
 

@@ -309,9 +309,10 @@ thorough engineering. They want a high-quality pull request for it.
    but needs a pull request of its own, and posts each review with its response
    to every finding.
 6. The agent looks for code or complexity the change could remove by changing
-   the design or the constraints in the issue, or by delivering less. It posts
-   each opportunity with what it would give up, for the user to accept or
-   decline.
+   the design or the constraints in the issue, or by delivering less. It applies
+   opportunities that stay within what the issue asks for, defers those that
+   need the user's decision, and posts each with its response as a
+   simplification review.
 7. The agent writes the description and marks the pull request ready for review.
 8. The user reviews the pull request, comments on it, and tells the agent there
    are comments.
@@ -512,7 +513,7 @@ the whole campaign to them for review and merge.
     answers. The lead holds every sub-issue's merge if the question's scope is
     unclear.
 12. Steps 4 to 10 repeat until the lead judges every sub-issue done. The lead
-    reviews the whole change, posts simplification opportunities, writes the
+    reviews the whole change, including a simplification review, writes the
     description and marks the pull request ready, as in
     [smith's story](#an-agent-implements-a-large-well-specified-change).
 13. The user reviews the pull request and comments on it. They may add
