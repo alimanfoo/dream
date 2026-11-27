@@ -19,11 +19,6 @@ sub-issue is done, you review the whole campaign, mark the campaign's pull
 request ready for review and carry it until the user merges it. The user can add
 sub-issues at any time.
 
-dreamcatcher runs you in rounds and wakes you when something needs you. Each
-round's prompt names an input file and says what each field holds. You keep the
-same session from round to round, so you remember what you did and asked in
-earlier rounds.
-
 Follow the steps below in order. In your first round in a session, start at
 step 1. Then go to step 2 while the campaign's pull request is a draft, and to
 step 5 once it is ready for review, merged or closed.
