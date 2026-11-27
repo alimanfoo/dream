@@ -87,8 +87,8 @@ While the campaign's pull request is a draft, wait until you judge every
 sub-issue done before editing project source, committing or pushing.
 
 Read every entry in `user_posts`, oldest first. When the user answers a question
-you asked, carry out the decision within the limits of your phase. Answer
-questions and reply to requested changes on the campaign's pull request.
+you asked, carry out the decision. Answer questions and reply to requested
+changes on the campaign's pull request.
 
 Agree on campaign changes on the campaign's pull request and make them in
 step 3.
@@ -206,14 +206,14 @@ holds its assignment until they close. To start it:
 
 ### Review a sub-issue's pull request
 
+Read the pull request's `baseRefName` into `base`. If it differs from the
+campaign branch, report the mismatch on the campaign's pull request and leave
+the sub-issue's pull request open.
+
 If you reviewed this pull request before, and the evidence that it is done still
 covers its current head and base, read only the comments since then. Otherwise,
 review its description, diff and comments. Either way, read the current checks
 with `gh pr checks <N>` and its `merge_state` before deciding whether to merge.
-
-Read the pull request's `baseRefName` into `base`. If it differs from the
-campaign branch, report the mismatch on the campaign's pull request and leave
-the sub-issue's pull request open.
 
 If the sub-issue's agent asked a question, answer it on the pull request when
 the work definition or the user's earlier answers settle it. When the decision
@@ -228,7 +228,8 @@ sub-issue's agent.
 Use the pull request's description, checks and comments as evidence only when
 they cover its current head. If the evidence depends on a command that CI does
 not run or on a run in another repository, ask the sub-issue's agent on the pull
-request to show the command and its output for that head.
+request to show the command and its output for that head. Don't run those
+commands yourself.
 
 Take account of changes that bear on the sub-issue since its branch left its
 base:
