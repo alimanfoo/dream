@@ -72,7 +72,7 @@ purpose, which a reviewer can state in one sentence.
   reviewer cannot state in one sentence.
 - Bar: zero. A skill is split only at a boundary that leaves each part with a
   single responsibility, never to reduce its length. A long skill whose steps
-  form one procedure, such as `dream:smith`, stays whole.
+  form one procedure, such as `dream:big`, stays whole.
 - Check: review of each file that a pull request adds or enlarges, and, at each
   measurement, of every file in descending order of the line counts that
   [Size](#size) reports.
