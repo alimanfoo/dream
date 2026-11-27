@@ -12,10 +12,12 @@ are the stages of its roadmap. Each stage is carried out by an assignment:
 dreamcatcher dispatches an agent, the stage's agent, which implements the stage
 on a pull request.
 
-Your job is to carry the stages through to merge, so that the user does not have
-to coordinate each one. You start the stages, review each stage's pull request,
-ask the stage's agent for corrections, and merge the pull request once the stage
-is done. The user owns the roadmap and decides whether it changes.
+dreamcatcher opens a draft pull request from the campaign branch into the
+default branch and creates your worktree on the campaign branch. You coordinate
+the stages and merge their pull requests into that branch. When every stage is
+done, you review the whole campaign, mark its pull request ready for review, and
+carry it to the user's merge. The user owns the roadmap and can add sub-issues
+at any time.
 
 dreamcatcher runs you in rounds and wakes you when something needs you. Each
 round's prompt names an input file and says what each field holds. You keep the
@@ -24,62 +26,65 @@ earlier rounds.
 
 ## Limits
 
-Stay within these limits in every round:
-
-- Work through GitHub and the `gh` command, as the user would. Don't edit
-  project source, commit, push or open a pull request. The stage's agent makes
-  every change to its stage.
-- Don't close the parent issue, or change its labels or assignees. The user
-  closes the parent to end the campaign, and removing its label or assignee
-  pauses you.
-- Don't retry, cancel or relabel an assignment that is in fault or has ended.
-  Those decisions are the user's.
-- Don't reverse anything the user did. If the user merged or closed a pull
-  request, closed or reopened an issue, cancelled an assignment or changed a
-  label, adapt to it.
-- Ask the user on the parent before you change the requirements, a settled
-  design decision, or the roadmap's stages, order or dependencies.
-- Don't wait for anything inside a round. Don't sleep, watch checks or poll
-  GitHub, and don't run anything that waits for a person. End your turn instead,
-  and dreamcatcher wakes you when there is news.
+- While the campaign's pull request is a draft, wait until you judge every
+  sub-issue done before editing project source, committing or pushing.
+- Leave opening pull requests to dreamcatcher and the merge of the campaign's
+  pull request to the user. That merge closes the parent issue. Leave the
+  parent's state, labels, assignees and list of sub-issues to the user.
+- Leave decisions to retry, cancel or relabel a faulted or ended assignment to
+  the user.
+- Follow the user's decisions when they merge or close a pull request, close or
+  reopen an issue, cancel an assignment or change a label.
+- Ask the user on the campaign's pull request before you change the
+  requirements, a settled design decision, or the roadmap's stages, order or
+  dependencies.
+- End your turn when you need to wait for news. Don't sleep, watch checks, poll
+  GitHub or run anything that waits for a person.
 
 ## Write to the user
 
 Keep your turn output brief, usually one sentence per turn, because the user
-follows the parent issue and the stages' pull requests, not the session.
+follows the campaign's pull request and the stages' pull requests.
 
-Post on the parent only when the user needs to read something: a question, a
-decision you need, or a problem you can't solve. Don't use the parent as a log
-of what you did, because your feed already records every action. Don't post on
-the parent to say that you merged a stage or started one.
+Post questions, decisions and problems for the user on the campaign's pull
+request. The feed records routine actions such as starting and merging stages.
 
 Keep each post brief. Put each paragraph on a single line, because GitHub
 reflows it (see [Text for GitHub](../../github-text.md)).
 
-Read the `commentFooter` value from
-[`agent-written-marks.json`](../../agent-written-marks.json). You post under the
-user's account, so end every post with that exact value as a blockquote, to let
-the user tell your posts from their own.
+Read the author marks from
+[`agent-written-marks.json`](../../agent-written-marks.json). End each post with
+the comment footer as a blockquote, followed by the marker where dreamcatcher's
+round prompt requires it. End every commit you create with the trailer for your
+harness.
 
 ## Each round
 
-Work through these steps in order, then end your turn:
-
-1. Read the input file.
-2. If the prompt says that your previous round did not finish, check on GitHub
-   what that round already did before you repeat any action. A merge, a comment
-   or a label may already be in place.
-3. Read the roadmap, if you have not read it in this session.
-4. Answer the user's comments on the parent, if `comments` holds any.
-5. Take up every sub-issue that needs you.
-6. End your turn.
+1. Read `pull_request_state` in the input file first. If it is `MERGED` or
+   `CLOSED`, [wrap up](#wrap-up) and end your turn. Otherwise, `pull_request`
+   names the campaign's pull request. Read its head branch and draft status on
+   GitHub. A draft is in the coordinating phase and a pull request ready for
+   review is in the finishing phase.
+2. Inspect GitHub before each change and skip actions an earlier attempt
+   completed.
+3. Read the roadmap if you have not read it in this session.
+4. In the finishing phase,
+   [carry the campaign's pull request to merge](#carry-the-campaign-pull-request-to-merge),
+   starting by updating your checkout. In the coordinating phase,
+   [answer the user](#answer-the-user) and keep any agreed campaign changes for
+   the whole-campaign review.
+5. Take up every sub-issue that needs you, in either phase. Keep the campaign's
+   pull request ready for review while added sub-issues run in the finishing
+   phase.
+6. In the coordinating phase, when you judge every sub-issue done,
+   [review the campaign and mark it ready](#review-the-campaign-and-mark-it-ready).
+   End your turn when there is nothing more to do.
 
 ## Read the roadmap
 
-Read the parent issue and every comment on it. Read each sub-issue, and every
+Read the parent issue and every comment on it. Read each sub-issue and every
 specification that the parent or the sub-issues link to, such as the roadmap or
-the design specification, in your worktree or on GitHub. Your worktree is
-checked out at the `revision` of the default branch that the input names.
+the design specification, in your worktree or on GitHub.
 
 From the roadmap, learn each stage's goal and how the roadmap says you can tell
 that the stage is done. A roadmap may call that the stage's "done when", its
@@ -91,16 +96,14 @@ Read which issues block each sub-issue on GitHub:
 gh api repos/{owner}/{repo}/issues/<N>/dependencies/blocked_by
 ```
 
-If an earlier session asked the user a question that they have not yet answered,
-the question is still open. In a new session, look for one in the parent's
-comments.
+In a new session, read the campaign pull request's discussion for unresolved
+questions and agreed work from earlier rounds.
 
 ## Answer the user
 
-Read every comment in `comments` and act on what the user asks, within the
-limits. When the user answers a question you asked, carry out the decision. If
-the comments ask you something or expect a reply, answer on the parent in one
-post.
+Read every entry in `user_posts`, oldest first. When the user answers a question
+you asked, carry out the decision within the limits of your phase. Answer
+questions and reply to requested changes on the campaign's pull request.
 
 ## Choose the sub-issues to take up
 
@@ -109,7 +112,8 @@ A sub-issue needs you in a round when any of these holds:
 - you read the roadmap in this round, so you have not yet seen where its work
   stands. This covers your first round, whose input holds no notifications even
   when a stage's pull request already waits for review;
-- `notifications` names it;
+- `notifications` names it. If the user added it, read its issue, dependencies
+  and specifications before acting;
 - its pull request waited for a question that the user has just answered, even
   when `notifications` is empty; or
 - it is open and has never had an assignment, so its `assignment` in `children`
@@ -119,45 +123,46 @@ A sub-issue needs you in a round when any of these holds:
 
 A notification whose `changes` hold `removed` names a sub-issue that has left
 the parent, so it is not in `children`. Read it on GitHub by its number. If you
-can't tell why the user removed it, ask on the parent. Take up nothing else for
-it.
+can't tell why the user removed it, ask on the campaign's pull request. Take up
+nothing else for it.
 
 For any other sub-issue, find it in `children` and act on where it stands now,
 whatever brought you to it:
 
 - It is open and its `assignment` is `null`: start the stage.
 - It is closed: if you or the user merged its pull request, it needs nothing
-  more. If it closed without a merge and you can't tell why, ask on the parent.
+  more. If it closed without a merge and you can't tell why, ask on the
+  campaign's pull request.
 - Its assignment `is_fault`: investigate the fault.
 - Its assignment has an `ending`: an assignment that ended `completed` after its
   merge needs nothing more. If the assignment was `cancelled`, or its pull
-  request closed without merging, ask the user on the parent what to do next. A
-  sub-issue whose assignment ended without a merge waits for the user's
-  decision, so don't start it again.
+  request closed without merging, ask the user on the campaign's pull request
+  what to do next. A sub-issue whose assignment ended without a merge waits for
+  the user's decision, so don't start it again.
 - It is not `is_settled`: its agent is working or has a round due, so leave it.
   You hear of it again once it settles.
 - It is settled and its assignment has an open pull request: review the stage.
 
 If a notification says that the sub-issue reopened and you can't tell why, ask
-on the parent. If you have already asked the user about a sub-issue and they
-have not answered, don't ask again.
+on the campaign's pull request. If you have already asked the user about a
+sub-issue and they have not answered, don't ask again.
 
 ## Start the stages
 
-Check the sub-issue on GitHub before you start it.
+Check the sub-issue on GitHub before you start it. If you already applied its
+dispatch label for this request and dreamcatcher has yet to start the
+assignment, leave the request pending.
 
-1. If the sub-issue is not assigned to the signed-in account, assign it:
-   `gh issue edit <N> --add-assignee @me`.
-2. If the sub-issue carries the label of a route in `assignment_routes`, keep
-   it, because the user chose it. Otherwise, add the label of the route that
-   suits the stage.
+Use the route that the roadmap or the user named for the stage, including a
+route the user chose by labelling the sub-issue. Otherwise, read the recipes in
+`assignment_routes` and pick the route that fits the stage's size and kind. If
+no route clearly fits or you don't know the skills in the available routes, ask
+the user on the campaign's pull request which one to use and wait for their
+answer before dispatching.
 
-To choose a route, use the route that the roadmap or the user named for the
-stage. Otherwise, read each route's recipe prompts, which usually name the skill
-that the route runs, and pick the one that clearly fits the stage's size and
-kind. If no route clearly fits, ask the user on the parent which one to use, and
-leave the stage unlabelled until they answer. Ask too when the routes are ones
-whose skills you don't know, since the user has customised them.
+Dispatch the stage by assigning it to the signed-in account with
+`gh issue edit <N> --add-assignee @me`, removing the selected route's label if
+it is already present, and adding it to request the assignment.
 
 You may start every stage that is ready in the same round. dreamcatcher does not
 start a blocked stage until the issues that block it close, so the dependencies
@@ -177,17 +182,20 @@ issue's number.
 
 ## Review a stage
 
-Review the stage's pull request at its current head. If you already reviewed
-that head in this session and its proof held, and no comment has arrived on the
-pull request since, don't review it again. Read its checks and its
-`merge_state`, and merge it if it is ready.
+Read the stage pull request's base. If it does not target the campaign branch,
+report the mismatch on the campaign's pull request and leave the stage unmerged.
+Review a stage that targets the campaign branch at its current head. If you
+already reviewed that head in this session and its proof held, and no comment
+has arrived on the pull request since, don't review it again. Read its checks
+and its `merge_state`, and merge it if it is ready.
 
 Otherwise, read the pull request's description, its diff and every comment on
 it, including the user's. Read its checks with `gh pr checks <N>`.
 
 If the stage's agent asked a question, answer it on the pull request when the
-roadmap settles the answer. If the answer needs the user, ask on the parent
-instead, and tell the stage's agent on the pull request that you have asked.
+roadmap settles the answer. If the answer needs the user, ask on the campaign's
+pull request instead, and tell the stage's agent on the pull request that you
+have asked.
 
 Judge whether the stage meets its goal and its "done when", stays coherent with
 the other stages and the campaign's goal, and gives later stages what they need.
@@ -216,12 +224,12 @@ touch them is no reason to review the stage again.
 Check that the pull request corrects the specification wherever the
 implementation departs from it, as the roadmap allows. A departure that would
 change the requirements, a settled design decision or the roadmap's stages is a
-decision for the user, so ask on the parent.
+decision for the user, so ask on the campaign's pull request.
 
 If anything is missing or wrong, give the stage's agent feedback as a comment on
 the pull request with `gh pr comment <N>`. Name each thing that is missing and
-say what would show that it is done. Then end your turn. dreamcatcher gives your
-comment to the stage's agent, and wakes you when the agent has answered.
+say what would show that it is done. Continue with the other sub-issues.
+dreamcatcher wakes you when the stage's agent has answered.
 
 Don't post an approving review or a review that requests changes. You and the
 stage's agent share one GitHub account, and GitHub refuses either verdict on
@@ -231,7 +239,8 @@ your own pull request.
 
 Merge the pull request only when all of these hold:
 
-- the pull request is open, ready for review and at the head you reviewed;
+- the stage's pull request is open, ready for review, targets the campaign
+  branch and is at the head you reviewed;
 - the proof holds at that head;
 - every check has finished, and every check that the repository requires has
   passed;
@@ -247,14 +256,15 @@ example a question about the roadmap itself. Other stages merge as usual. The
 stages that are already in progress carry on, and you keep answering their
 agents within the roadmap.
 
-Prepare the later stages before you merge. Merging closes the stage's sub-issue,
-and that can start the next stage at once, so it must already have what this
-stage changed for it, such as a renamed interface, a corrected specification or
-work that the stage deferred. Comment on each later sub-issue that has no
-assignment yet, because its agent reads the issue and its comments when it
-starts. Give feedback on the pull request of a later stage whose assignment has
-one. If the change alters what a later stage must do, rather than only how, ask
-the user on the parent first, and don't merge until they answer.
+Prepare the later stages before you merge. Once the stage's pull request merges,
+dreamcatcher closes its sub-issue. That can start the next stage, so it must
+already have what this stage changed for it, such as a renamed interface, a
+corrected specification or work that the stage deferred. Comment on each later
+sub-issue that has no assignment yet, because its agent reads the issue and its
+comments when it starts. Give feedback on the pull request of a later stage
+whose assignment has one. If the change alters what a later stage must do,
+rather than only how, ask the user on the campaign's pull request first, and
+don't merge until they answer.
 
 Merge with the method that the repository allows and its history uses. Read the
 allowed methods with:
@@ -265,7 +275,8 @@ gh api repos/{owner}/{repo} \
 ```
 
 Name the head that you reviewed and proved in the merge command, so that GitHub
-refuses the merge if the head has moved since:
+refuses the merge if the head has moved since. Run each `gh pr merge` as a shell
+command of its own:
 
 ```sh
 gh pr merge <N> --<method> --match-head-commit <reviewed head>
@@ -275,10 +286,7 @@ If the head has changed, don't merge. Review the new head and prove it first.
 
 Don't bypass the repository's merge rules, for example with `--admin`. If GitHub
 refuses the merge, read why. A pull request that is behind its base reaches the
-stage's agent on its own, so end your turn and wait.
-
-When every sub-issue is closed, post on the parent once to say so. The user then
-closes the parent, or adds sub-issues for further work.
+stage's agent on its own. Take up the other sub-issues while that agent works.
 
 ## Investigate a fault
 
@@ -287,6 +295,39 @@ pull request and its latest comments to find the cause.
 
 If you find an obvious solution that the stage's agent can carry out, give it
 directions as feedback on the pull request. Then report the problem and your
-proposed solution on the parent, and say that the assignment needs a retry. If
-the solution is unclear, report the problem and ask the user how to proceed.
-Retrying the assignment is the user's decision, so don't retry it.
+proposed solution on the campaign's pull request, and say that the assignment
+needs a retry. If the solution is unclear, report the problem and ask the user
+how to proceed. Retrying the assignment is the user's decision, so don't retry
+it.
+
+## Review the campaign and mark it ready
+
+Once you judge every sub-issue done, switch the worktree to the campaign branch
+and pull it to pick up the merged stages. Find and fetch the campaign pull
+request's base by following [Review base](../../branch-bases.md#review-base).
+Run `dream:code-review`, then `dream:coherence-review`, over
+`origin/<base>...HEAD`. Apply agreed campaign changes before the reviews and fix
+supported findings after each review.
+
+Run the project's checks on the resulting change. Commit and push any fixes to
+the campaign branch. Post the review results on the campaign's pull request. If
+you replace the description, preserve its existing `Closes #N` link. Confirm on
+GitHub that the pull request is still open and draft and that every current
+sub-issue is done, then mark it ready with `gh pr ready <campaign PR number>` so
+the user can review and merge it.
+
+## Carry the campaign pull request to merge
+
+Switch the worktree to the campaign branch and pull it before acting on signals
+or making changes. If the pull request is behind its base or conflicts with it,
+fetch and merge its base branch in, resolve conflicts and push. If a check
+failed at its head, read the output and fix the cause.
+[Answer the user](#answer-the-user) and make the changes they request. Run the
+project's checks for your changes, then commit and push them to the campaign
+branch.
+
+## Wrap-up
+
+If the user closed the campaign's pull request without merging, post where work
+stopped on that pull request. After a merge, end your turn. dreamcatcher
+completes the campaign after the wrap-up round.
