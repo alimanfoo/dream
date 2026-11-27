@@ -5,6 +5,43 @@ for a user, and each name in dream's interface that it renamed or removed. A
 release's version follows the rules in [Versions](compatibility.md#versions) on
 the compatibility page.
 
+## 48.0.0 (2026-11-27)
+
+dream meets version 2 of dreamcatcher's agent contract, in place of version 1.
+`dream:big` needs dreamcatcher 10.0.0, the release that brings version 2, and
+does not run campaigns under earlier releases. `dream:smith`, `dream:less` and
+`dream:scout` run under either.
+([#1120](https://github.com/alimanfoo/dream/pull/1120))
+
+`dream:big` leads a campaign through a pull request of its own, from the
+campaign branch into your default branch. You talk to the lead on that pull
+request instead of on the parent issue. The lead merges each sub-issue's pull
+request into the campaign branch. When every sub-issue is done, it reviews the
+whole change, writes the description and marks the pull request ready for
+review. It then makes the changes you ask for, keeps the pull request current
+with the default branch, and takes up any sub-issue you add. When you merge the
+pull request, which closes the parent issue, the lead files an issue for each
+thing it left out of scope. A campaign is any parent issue whose sub-issues
+define the work, with blocked-by links between them. The sub-issues can define
+their work inline or point to a specification such as a roadmap, and the lead
+takes their dependencies only from the blocked-by links.
+([#1120](https://github.com/alimanfoo/dream/pull/1120))
+
+`dream:smith` shares its review, description and Collect steps with `dream:big`,
+so its steps after implementing are renumbered: 5, "Review and prepare the pull
+request", 6, "Mark the PR ready for review", 7, "Handle user posts", and 8,
+"Collect". ([#1120](https://github.com/alimanfoo/dream/pull/1120))
+
+Simplification opportunities become a third review, after the code and coherence
+reviews, in `dream:smith` and `dream:big`. The agent applies each opportunity
+that stays within what the issue asks for, and defers each one that needs your
+decision, which Collect files as an issue.
+([#1122](https://github.com/alimanfoo/dream/pull/1122))
+
+This release renames and removes no name in
+[the interface](compatibility.md#the-interface). It changes the version of
+dreamcatcher's agent contract that dream meets, from 1 to 2.
+
 ## 47.3.0 (2026-11-26)
 
 `dream:spark` talks your idea through the way a curious colleague would, and
