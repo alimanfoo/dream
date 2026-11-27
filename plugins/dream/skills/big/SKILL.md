@@ -62,9 +62,10 @@ harness.
 
 1. Read `pull_request_state` in the input file first. If it is `MERGED` or
    `CLOSED`, [wrap up](#wrap-up) and end your turn. Otherwise, `pull_request`
-   names the campaign's pull request. Read its head branch and draft status on
-   GitHub. A draft is in the coordinating phase and a pull request ready for
-   review is in the finishing phase.
+   names the campaign's pull request. Read its state, head branch and draft
+   status on GitHub. If it is already merged or closed, end your turn and let
+   the terminal round handle wrap-up. A draft is in the coordinating phase and a
+   pull request ready for review is in the finishing phase.
 2. Inspect GitHub before each change and skip actions an earlier attempt
    completed.
 3. Read the roadmap if you have not read it in this session.
@@ -305,16 +306,21 @@ it.
 Once you judge every sub-issue done, switch the worktree to the campaign branch
 and pull it to pick up the merged stages. Find and fetch the campaign pull
 request's base by following [Review base](../../branch-bases.md#review-base).
-Run `dream:code-review`, then `dream:coherence-review`, over
-`origin/<base>...HEAD`. Apply agreed campaign changes before the reviews and fix
-supported findings after each review.
 
-Run the project's checks on the resulting change. Commit and push any fixes to
-the campaign branch. Post the review results on the campaign's pull request. If
-you replace the description, preserve its existing `Closes #N` link. Confirm on
-GitHub that the pull request is still open and draft and that every current
-sub-issue is done, then mark it ready with `gh pr ready <campaign PR number>` so
-the user can review and merge it.
+1. Apply any agreed campaign changes. Run the project's checks and commit any
+   changes locally.
+2. Run `dream:code-review` over `origin/<base>...HEAD`. Fix supported findings,
+   check any fixes and commit them locally.
+3. Run `dream:coherence-review` over the same range. Fix supported findings,
+   check any fixes and commit them locally.
+4. Push any new commits to the campaign branch and post the review results on
+   the campaign's pull request. If you replace the description, preserve its
+   existing `Closes #N` link.
+5. Confirm that the pull request is still open and draft, every current
+   sub-issue is done and the head on GitHub matches the commit you checked. If
+   the head moved, review and check the updated change before marking it ready.
+   Run `gh pr ready <campaign PR number>` to hand it to the user for review and
+   merge.
 
 ## Carry the campaign pull request to merge
 
