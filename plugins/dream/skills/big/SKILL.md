@@ -24,10 +24,12 @@ round's prompt names an input file and says what each field holds. You keep the
 same session from round to round, so you remember what you did and asked in
 earlier rounds.
 
+Follow the steps below in order. In your first round in a session, start at
+step 1. Then go to step 2 while the campaign's pull request is a draft, and to
+step 5 once it is ready for review, merged or closed.
+
 ## Limits
 
-- While the campaign's pull request is a draft, wait until you judge every
-  sub-issue done before editing project source, committing or pushing.
 - Leave opening pull requests to dreamcatcher and the merge of the campaign's
   pull request to the user. That merge closes the parent issue. Leave the
   parent's state, labels, assignees and list of sub-issues to the user.
@@ -59,29 +61,12 @@ the comment footer as a blockquote, followed by the marker where dreamcatcher's
 round prompt requires it. End every commit you create with the trailer for your
 harness.
 
-## Each round
+## 1. Read the campaign
 
-1. `pull_request` names the campaign's pull request. Read its head branch, which
-   is the campaign branch, and whether it is a draft. A draft is in the
-   coordinating phase, and a pull request ready for review is in the finishing
-   phase.
-2. [Read the campaign issues](#read-the-campaign-issues).
-3. In the finishing phase,
-   [carry the campaign's pull request to merge](#carry-the-campaign-pull-request-to-merge),
-   starting by updating your checkout. In the coordinating phase,
-   [answer the user](#answer-the-user) and keep any agreed campaign changes for
-   the whole-campaign review.
-4. Take up every sub-issue that needs you, in either phase. Keep the campaign's
-   pull request ready for review while added sub-issues run in the finishing
-   phase.
-5. In the coordinating phase, when you judge every sub-issue done,
-   [review the campaign and mark it ready](#review-the-campaign-and-mark-it-ready).
-   End your turn when there is nothing more to do.
+`pull_request` names the campaign's pull request. Read its head branch, which is
+the campaign branch.
 
-## Read the campaign issues
-
-In your first round in the session, read the parent issue and each sub-issue. In
-later rounds, read each sub-issue the user adds. Read every comment and linked
+Read the parent issue and each sub-issue. Read every comment and linked
 specification for each issue you read. Find the specifications in your worktree
 or on GitHub.
 
@@ -97,25 +82,80 @@ gh api repos/{owner}/{repo}/issues/<N>/dependencies/blocked_by
 In a new session, read the campaign pull request's discussion for unresolved
 questions and agreed work from earlier rounds.
 
-## Answer the user
+## 2. Coordinate the sub-issues
+
+While the campaign's pull request is a draft, wait until you judge every
+sub-issue done before editing project source, committing or pushing.
 
 Read every entry in `user_posts`, oldest first. When the user answers a question
 you asked, carry out the decision within the limits of your phase. Answer
 questions and reply to requested changes on the campaign's pull request.
 
-## Choose the sub-issues to take up
+Agree on campaign changes on the campaign's pull request and make them in
+step 3.
+
+[Work on the sub-issues](#work-on-the-sub-issues). When you judge every
+sub-issue done, go on to step 3. End your turn when nothing is ready.
+
+## 3. Review and prepare the pull request
+
+Once you judge every sub-issue done, switch the worktree to the campaign branch
+and pull it to pick up the merged sub-issue changes. Apply any agreed campaign
+changes, run the project's checks, and commit and push any changes to that
+branch.
+
+Follow [Pull request handoff](../../pull-request-handoff.md).
+
+## 4. Mark the pull request ready for review
+
+Confirm that the pull request is still open and draft, every current sub-issue
+is done and the head on GitHub matches the commit you checked. If the head
+moved, review and check the updated change before marking it ready. Run
+`gh pr ready <campaign PR number>` to hand it to the user for review and merge.
+
+## 5. Handle user posts
+
+After the campaign's pull request merges, go on to step 6. If the user closed
+the campaign's pull request without merging, post where work stopped on that
+pull request and end your turn.
+
+Switch the worktree to the campaign branch and pull it before making changes.
+
+Read every entry in `user_posts`, oldest first. A post can carry more than one
+of these:
+
+- **A requested change.** Implement it, run the project's checks, then commit
+  and push to the campaign branch. Reply on the campaign's pull request.
+- **A question.** Answer it on the campaign's pull request.
+- **An answer to a question that you raised.** Fold it into the work in hand and
+  carry on.
+
+An approval, or anything with nothing to act on, needs no reply.
+
+[Work on the sub-issues](#work-on-the-sub-issues), keeping the campaign's pull
+request ready for review while added sub-issues run. Never merge the campaign's
+pull request yourself. End your turn when nothing is ready.
+
+## 6. Collect
+
+Follow [Collect](../../collect.md).
+
+## Work on the sub-issues
+
+### Choose the sub-issues to take up
 
 A sub-issue needs you in a round when any of these holds:
 
 - this is your first round in the session, when a pull request can already be
   waiting for review even if `notifications` is empty;
-- `notifications` names it;
+- `notifications` names it. If the user added it, read the sub-issue, its
+  comments, its linked specifications and its blocked-by links;
 - its pull request waited for a question that the user has just answered, even
   when `notifications` is empty; or
 - it is open and has never had an assignment, so its `assignment` in `children`
   is `null`.
 
-## Take up a sub-issue
+### Take up a sub-issue
 
 A notification whose `changes` hold `removed` names a sub-issue that has left
 the parent, so it is not in `children`. Read it on GitHub by its number. If you
@@ -144,7 +184,7 @@ If a notification says that the sub-issue reopened and you can't tell why, ask
 on the campaign's pull request. If you have already asked the user about a
 sub-issue and they have not answered, don't ask again.
 
-## Start a sub-issue
+### Start a sub-issue
 
 Check the sub-issue on GitHub before you start it. If it is already assigned to
 you and carries a route's label, its request is pending, so leave it.
@@ -161,7 +201,7 @@ Dispatch the assignment by assigning the sub-issue to the signed-in account with
 `gh issue edit <N> --add-assignee @me`, removing the selected route's label if
 it is already present, and adding it to request the assignment.
 
-## Review a sub-issue's pull request
+### Review a sub-issue's pull request
 
 Read the pull request's `baseRefName` into `base`. If it differs from the
 campaign branch, report the mismatch on the campaign's pull request and leave
@@ -210,7 +250,7 @@ Don't post an approving review or a review that requests changes. You and the
 sub-issue's agent share one GitHub account, and GitHub refuses either verdict on
 your own pull request.
 
-## Merge a sub-issue's pull request
+### Merge a sub-issue's pull request
 
 Merge the pull request only when all of these hold:
 
@@ -259,7 +299,7 @@ refuses the merge, read why. A pull request that is behind its base reaches the
 sub-issue's agent on its own. Take up the other sub-issues while that agent
 works.
 
-## Investigate a fault
+### Investigate a fault
 
 An assignment in fault has stopped because its rounds kept failing. Read its
 pull request and its latest comments to find the cause.
@@ -270,33 +310,3 @@ proposed solution on the campaign's pull request, and say that the assignment
 needs a retry. If the solution is unclear, report the problem and ask the user
 how to proceed. Retrying the assignment is the user's decision, so don't retry
 it.
-
-## Review the campaign and mark it ready
-
-Once you judge every sub-issue done, switch the worktree to the campaign branch
-and pull it to pick up the merged sub-issue changes. Apply any agreed campaign
-changes, run the project's checks, and commit and push any changes to that
-branch.
-
-Follow [Pull request handoff](../../pull-request-handoff.md).
-
-Confirm that the pull request is still open and draft, every current sub-issue
-is done and the head on GitHub matches the commit you checked. If the head
-moved, review and check the updated change before marking it ready. Run
-`gh pr ready <campaign PR number>` to hand it to the user for review and merge.
-
-## Carry the campaign pull request to merge
-
-Switch the worktree to the campaign branch and pull it before acting on signals
-or making changes. If the pull request is behind its base or conflicts with it,
-fetch and merge its base branch in, resolve conflicts and push. If a check
-failed at its head, read the output and fix the cause.
-[Answer the user](#answer-the-user) and make the changes they request. Run the
-project's checks for your changes, then commit and push them to the campaign
-branch.
-
-## Wrap-up
-
-If the user closed the campaign's pull request without merging, post where work
-stopped on that pull request. After a merge, follow [Collect](../../collect.md)
-for the campaign pull request.
