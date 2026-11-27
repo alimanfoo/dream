@@ -66,18 +66,16 @@ harness.
    status on GitHub. If it is already merged or closed, end your turn and let
    the terminal round handle wrap-up. A draft is in the coordinating phase and a
    pull request ready for review is in the finishing phase.
-2. Inspect GitHub before each change and skip actions an earlier attempt
-   completed.
-3. Read the roadmap if you have not read it in this session.
-4. In the finishing phase,
+2. Read the roadmap if you have not read it in this session.
+3. In the finishing phase,
    [carry the campaign's pull request to merge](#carry-the-campaign-pull-request-to-merge),
    starting by updating your checkout. In the coordinating phase,
    [answer the user](#answer-the-user) and keep any agreed campaign changes for
    the whole-campaign review.
-5. Take up every sub-issue that needs you, in either phase. Keep the campaign's
+4. Take up every sub-issue that needs you, in either phase. Keep the campaign's
    pull request ready for review while added sub-issues run in the finishing
    phase.
-6. In the coordinating phase, when you judge every sub-issue done,
+5. In the coordinating phase, when you judge every sub-issue done,
    [review the campaign and mark it ready](#review-the-campaign-and-mark-it-ready).
    End your turn when there is nothing more to do.
 
@@ -161,16 +159,8 @@ no route clearly fits or you don't know the skills in the available routes, ask
 the user on the campaign's pull request which one to use and wait for their
 answer before dispatching.
 
-Dispatch the stage by assigning it to the signed-in account with
-`gh issue edit <N> --add-assignee @me`, removing the selected route's label if
-it is already present, and adding it to request the assignment.
-
-You may start every stage that is ready in the same round. dreamcatcher does not
-start a blocked stage until the issues that block it close, so the dependencies
-on GitHub decide which stage starts first. If the roadmap says that a stage
-depends on another and GitHub does not record it, record the dependency before
-you label the stage, because the dependency is already part of the agreed
-roadmap:
+Before dispatch, record any of the agreed roadmap's blocked-by links that are
+missing on GitHub. dreamcatcher starts each assignment once its blockers close.
 
 ```sh
 gh api repos/{owner}/{repo}/issues/<N>/dependencies/blocked_by \
@@ -181,17 +171,20 @@ The blocking issue's `id` comes from
 `gh api repos/{owner}/{repo}/issues/<blocking N> --jq .id`. It is not the
 issue's number.
 
+Dispatch the stage by assigning it to the signed-in account with
+`gh issue edit <N> --add-assignee @me`, removing the selected route's label if
+it is already present, and adding it to request the assignment.
+
 ## Review a stage
 
-Read the stage pull request's base. If it does not target the campaign branch,
-report the mismatch on the campaign's pull request and leave the stage unmerged.
-Review a stage that targets the campaign branch at its current head. If you
-already reviewed that head in this session and its proof held, and no comment
-has arrived on the pull request since, don't review it again. Read its checks
-and its `merge_state`, and merge it if it is ready.
+Read the stage pull request's `baseRefName` into `base`. If it differs from the
+campaign branch, report the mismatch on the campaign's pull request and leave
+the stage unmerged.
 
-Otherwise, read the pull request's description, its diff and every comment on
-it, including the user's. Read its checks with `gh pr checks <N>`.
+Review the pull request's description, diff and comments. Reuse an earlier
+review only while its proof still holds at the current head and base. Read any
+new comments, the current checks with `gh pr checks <N>`, and its `merge_state`
+before deciding whether to merge.
 
 If the stage's agent asked a question, answer it on the pull request when the
 roadmap settles the answer. If the answer needs the user, ask on the campaign's
@@ -208,19 +201,13 @@ ask the stage's agent on the pull request to show the command and its output for
 that head. Do the same when the proof needs a run in another repository. Don't
 run the proof yourself.
 
-Take account of changes on the stage's base branch that bear on the stage. Read
-the base from the stage's pull request, then look at what reached that branch
-since the pull request's branch left it:
+Take account of changes that bear on the stage since its branch left its base:
 
 ```sh
-base=$(gh pr view <N> --json baseRefName --jq .baseRefName)
 git fetch origin "$base"
 git fetch origin pull/<N>/head
 git log --oneline "$(git merge-base FETCH_HEAD "origin/$base")..origin/$base"
 ```
-
-Read only the commits that touch what the stage touches. A commit that doesn't
-touch them is no reason to review the stage again.
 
 Check that the pull request corrects the specification wherever the
 implementation departs from it, as the roadmap allows. A departure that would
@@ -276,8 +263,7 @@ gh api repos/{owner}/{repo} \
 ```
 
 Name the head that you reviewed and proved in the merge command, so that GitHub
-refuses the merge if the head has moved since. Run each `gh pr merge` as a shell
-command of its own:
+refuses the merge if the head has moved since:
 
 ```sh
 gh pr merge <N> --<method> --match-head-commit <reviewed head>
